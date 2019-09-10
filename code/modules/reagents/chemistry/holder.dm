@@ -1,4 +1,4 @@
- #define CHEMICAL_QUANTISATION_LEVEL 0.001
+#define CHEMICAL_QUANTISATION_LEVEL 0.001
 
 /proc/build_chemical_reagent_list()
 	//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
