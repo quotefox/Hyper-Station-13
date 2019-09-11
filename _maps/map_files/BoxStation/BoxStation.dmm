@@ -3030,7 +3030,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "agi" = (
-/obj/machinery/computer/prisoner,
+/obj/machinery/computer/prisoner/management,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "agj" = (
@@ -4602,7 +4602,7 @@
 /turf/open/space,
 /area/solar/port/fore)
 "ajf" = (
-/obj/machinery/gulag_teleporter,
+/obj/machinery/prisoner/gulag_teleporter,
 /turf/open/floor/plasteel,
 /area/security/processing)
 "ajg" = (
@@ -20539,7 +20539,7 @@
 /turf/closed/wall/r_wall,
 /area/hallway/primary/central)
 "aTC" = (
-/obj/machinery/computer/prisoner,
+/obj/machinery/computer/prisoner/management,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
