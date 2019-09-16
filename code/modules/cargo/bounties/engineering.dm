@@ -94,6 +94,6 @@
 
 /datum/bounty/item/engineering/energy_ball
 	name = "Contained Tesla Ball"
-	description = "Station 24 is being overrun by hordes of angry Mothpeople. They are requesting the ultimate bug zapper."
+	description = "Station 24 is being overrun by hordes of angry insects. They are requesting the ultimate bug zapper."
 	reward = 50000 //requires 14k credits of purchases, not to mention cooperation with engineering/heads of staff to set up inside the cramped shuttle
 	wanted_types = list(/obj/singularity/energy_ball)

@@ -52,8 +52,7 @@
 	var/body_markings = ""	//for bodypart markings
 	var/body_markings_icon = 'modular_citadel/icons/mob/mam_markings.dmi'
 	var/list/markings_color = list()
-	var/auxmarking = ""
-	var/list/auxmarking_color = list()
+	var/aux_marking
 
 	var/digitigrade_type
 
@@ -322,7 +321,7 @@
 		base_bp_icon = DEFAULT_BODYPART_ICON
 		no_update = TRUE
 		body_markings = "husk" // reeee
-		auxmarking = "husk"
+		aux_marking = "husk"
 
 	if(no_update)
 		return
@@ -381,16 +380,16 @@
 			if(Smark)
 				body_markings_icon = Smark.icon
 			if(H.dna.features["mam_body_markings"] != "None")
-				body_markings = Smark?.icon_state || lowertext(H.dna.features["mam_body_markings"])
-				auxmarking = Smark?.icon_state || lowertext(H.dna.features["mam_body_markings"])
+				body_markings = lowertext(H.dna.features["mam_body_markings"])
+				aux_marking = lowertext(H.dna.features["mam_body_markings"])
 			else
 				body_markings = "plain"
-				auxmarking = "plain"
+				aux_marking = "plain"
 			markings_color = list(colorlist)
 
 		else
 			body_markings = null
-			auxmarking = null
+			aux_marking = null
 
 		if(!dropping_limb && H.dna.check_mutation(HULK))
 			mutation_color = "00aa00"
@@ -405,7 +404,7 @@
 	if(status == BODYPART_ROBOTIC)
 		dmg_overlay_type = "robotic"
 		body_markings = null
-		auxmarking = null
+		aux_marking = null
 
 	if(dropping_limb)
 		no_update = TRUE //when attached, the limb won't be affected by the appearance changes of its mob owner.
@@ -504,13 +503,13 @@
 
 		if(aux_zone)
 			aux = image(limb.icon, "[species_id]_[aux_zone]", -aux_layer, image_dir)
-			. += aux
-			if(body_markings)
+			if(!isnull(aux_marking))
 				if(species_id == "husk")
 					auxmarking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[aux_zone]", -aux_layer, image_dir)
 				else
 					auxmarking = image(body_markings_icon, "[body_markings]_[aux_zone]", -aux_layer, image_dir)
-				. += auxmarking
+			. += aux
+			. += auxmarking
 
 	else
 		limb.icon = icon
@@ -522,7 +521,7 @@
 		if(aux_zone)
 			aux = image(limb.icon, "[aux_zone]", -aux_layer, image_dir)
 			. += aux
-			if(!isnull(auxmarking))
+			if(!isnull(aux_marking))
 				if(species_id == "husk")
 					auxmarking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[aux_zone]", -aux_layer, image_dir)
 				else
@@ -551,8 +550,11 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone)
 				aux.color = "#[draw_color]"
-				if(!isnull(auxmarking))
-					auxmarking.color = list(markings_color)
+				if(!isnull(aux_marking))
+					if(species_id == "husk")
+						auxmarking.color = "#141414"
+					else
+						auxmarking.color = list(markings_color)
 
 			if(!isnull(body_markings))
 				if(species_id == "husk")

@@ -41,6 +41,10 @@
 			handle_embedded_objects()
 		dna.species.spec_life(src) // for mutantraces
 
+	if(stat != DEAD)
+		//process your dick energy
+		handle_arousal()
+
 	//Update our name based on whether our face is obscured/disfigured
 	name = get_visible_name()
 
@@ -56,7 +60,7 @@
 		var/obj/item/clothing/CH = head
 		if (CS.clothing_flags & STOPSPRESSUREDAMAGE && (headless || (CH.clothing_flags & STOPSPRESSUREDAMAGE)))
 			return ONE_ATMOSPHERE
-	if(istype(loc, /obj/belly)) //START OF CIT CHANGES - Makes it so you don't suffocate while inside vore organs. Remind me to modularize this some time - Bhijn
+	if(isbelly(loc)) //START OF CIT CHANGES - Makes it so you don't suffocate while inside vore organs. Remind me to modularize this some time - Bhijn
 		return ONE_ATMOSPHERE
 	if(istype(loc, /obj/item/dogborg/sleeper))
 		return ONE_ATMOSPHERE //END OF CIT CHANGES

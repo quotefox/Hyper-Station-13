@@ -1,6 +1,7 @@
 // This code handles different species in the game.
 
 GLOBAL_LIST_EMPTY(roundstart_races)
+GLOBAL_LIST_EMPTY(roundstart_race_names)
 
 /datum/species
 	var/id	// if the game needs to manually check your race to do something not included in a proc here, it will use this
@@ -15,6 +16,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/hair_color	// this allows races to have specific hair colors... if null, it uses the H's hair/facial hair colors. if "mutcolor", it uses the H's mutant_color
 	var/hair_alpha = 255	// the alpha used by the hair. 255 is completely solid, 0 is transparent.
 	var/wing_color
+	var/horn_color 
 
 	var/use_skintones = 0	// does it use skintones or not? (spoiler alert this is only used by humans)
 	var/exotic_blood = ""	// If your race wants to bleed something other than bog standard blood, change this to reagent id.
@@ -105,6 +107,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		var/datum/species/S = new I
 		if(S.check_roundstart_eligible())
 			GLOB.roundstart_races += S.id
+			GLOB.roundstart_race_names["[S.name]"] = S.id
 			qdel(S)
 	if(!GLOB.roundstart_races.len)
 		GLOB.roundstart_races += "human"
@@ -267,7 +270,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		C.hud_used.update_locked_slots()
 
 	// this needs to be FIRST because qdel calls update_body which checks if we have DIGITIGRADE legs or not and if not then removes DIGITIGRADE from species_traits
-	if(("legs" in C.dna.species.mutant_bodyparts) && C.dna.features["legs"] == "Digitigrade Legs")
+	if(("legs" in C.dna.species.mutant_bodyparts) && (C.dna.features["legs"] == "Digitigrade" || C.dna.features["legs"] == "Avian"))
 		species_traits += DIGITIGRADE
 	if(DIGITIGRADE in species_traits)
 		C.Digitigrade_Leg_Swap(FALSE)
@@ -301,8 +304,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		for(var/datum/disease/A in C.diseases)
 			A.cure(FALSE)
 
-	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
-
 //CITADEL EDIT
 	if(NOAROUSAL in species_traits)
 		C.canbearoused = FALSE
@@ -314,6 +315,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(NOGENITALS in H.dna.species.species_traits)
 			H.give_genitals(TRUE) //call the clean up proc to delete anything on the mob then return.
 
+	SEND_SIGNAL(C, COMSIG_SPECIES_GAIN, src, old_species)
 // EDIT ENDS
 
 /datum/species/proc/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
@@ -630,15 +632,15 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!H.dna.features["wings"] || H.dna.features["wings"] == "None" || (H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(src, H.wear_suit.species_exception))))
 			bodyparts_to_add -= "wings"
 
-	if("moth_fluff" in mutant_bodyparts)
-		if(!H.dna.features["moth_fluff"] || H.dna.features["moth_fluff"] == "None" || H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
-			bodyparts_to_add -= "moth_fluff"
-
 	if("wings_open" in mutant_bodyparts)
 		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(src, H.wear_suit.species_exception)))
 			bodyparts_to_add -= "wings_open"
 		else if ("wings" in mutant_bodyparts)
 			bodyparts_to_add -= "wings_open"
+
+	if("insect_fluff" in mutant_bodyparts)
+		if(!H.dna.features["insect_fluff"] || H.dna.features["insect_fluff"] == "None" || H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+			bodyparts_to_add -= "insect_fluff"
 
 //CITADEL EDIT
 	//Race specific bodyparts:
@@ -747,10 +749,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					S = GLOB.deco_wings_list[H.dna.features["deco_wings"]]
 				if("legs")
 					S = GLOB.legs_list[H.dna.features["legs"]]
-				if("moth_wings")
-					S = GLOB.moth_wings_list[H.dna.features["moth_wings"]]
-				if("moth_fluff")
-					S = GLOB.moth_fluffs_list[H.dna.features["moth_fluff"]]
+				if("insect_wings")
+					S = GLOB.insect_wings_list[H.dna.features["insect_wings"]]
+				if("insect_fluff")
+					S = GLOB.insect_fluffs_list[H.dna.features["insect_fluff"]]
 				if("moth_markings")
 					S = GLOB.moth_markings_list[H.dna.features["moth_markings"]]
 				if("caps")
@@ -798,8 +800,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				bodypart = "snout"
 			if(bodypart == "xenohead")
 				bodypart = "xhead"
-			if(bodypart == "moth_wings" || bodypart == "deco_wings")
-				bodypart = "moth_wings"
+			if(bodypart == "insect_wings" || bodypart == "deco_wings")
+				bodypart = "insect_wings"
 
 			if(S.gender_specific)
 				accessory_overlay.icon_state = "[g]_[bodypart]_[S.icon_state]_[layertext]"
@@ -853,6 +855,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 							accessory_overlay.color = "#[H.eye_color]"
 						if(WINGCOLOR)
 							accessory_overlay.color = "#[H.wing_color]"
+						if(HORNCOLOR)
+							accessory_overlay.color = "#[H.horn_color]"
 				else
 					accessory_overlay.color = forced_colour
 			else
@@ -920,6 +924,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						extra_accessory_overlay.color = "#[H.eye_color]"
 					if(WINGCOLOR)
 						extra_accessory_overlay.color = "#[H.wing_color]"
+					if(HORNCOLOR)
+						extra_accessory_overlay.color = "#[H.horn_color]"
 				standing += extra_accessory_overlay
 
 			if(S.extra2) //apply the extra overlay, if there is one
@@ -954,6 +960,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 							extra2_accessory_overlay.color = "#[H.hair_color]"
 					if(WINGCOLOR)
 						extra2_accessory_overlay.color = "#[H.wing_color]"
+					if(HORNCOLOR)
+						extra2_accessory_overlay.color = "#[H.horn_color]"
 				standing += extra2_accessory_overlay
 
 
@@ -1880,36 +1888,67 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!target.resting)
 			target.adjustStaminaLoss(5)
 
-		if(target.is_shove_knockdown_blocked())
-			return
 
 		var/turf/target_oldturf = target.loc
 		var/shove_dir = get_dir(user.loc, target_oldturf)
 		var/turf/target_shove_turf = get_step(target.loc, shove_dir)
 		var/mob/living/carbon/human/target_collateral_human
+		var/obj/structure/table/target_table
 		var/shove_blocked = FALSE //Used to check if a shove is blocked so that if it is knockdown logic can be applied
 
 		//Thank you based whoneedsspace
 		target_collateral_human = locate(/mob/living/carbon/human) in target_shove_turf.contents
-		if(target_collateral_human && target_collateral_human.resting)
+		if(target_collateral_human)
 			shove_blocked = TRUE
 		else
-			target_collateral_human = null
 			target.Move(target_shove_turf, shove_dir)
 			if(get_turf(target) == target_oldturf)
-				shove_blocked = TRUE
+				if(target_shove_turf.density)
+					shove_blocked = TRUE
+				else
+					var/thoushallnotpass = FALSE
+					for(var/obj/O in target_shove_turf)
+						if(istype(O, /obj/structure/table))
+							target_table = O
+						else if(!O.CanPass(src, target_shove_turf))
+							shove_blocked = TRUE
+							thoushallnotpass = TRUE
+					if(thoushallnotpass)
+						target_table = null
 
-		if(shove_blocked && !target.buckled)
-			var/directional_blocked = !target.Adjacent(target_shove_turf)
+		if(target.is_shove_knockdown_blocked())
+			return
+
+		if(shove_blocked || target_table)
+			var/directional_blocked = FALSE
+			if(shove_dir in GLOB.cardinals) //Directional checks to make sure that we're not shoving through a windoor or something like that
+				var/target_turf = get_turf(target)
+				for(var/obj/O in target_turf)
+					if(O.flags_1 & ON_BORDER_1 && O.dir == shove_dir && O.density)
+						directional_blocked = TRUE
+						break
+				if(target_turf != target_shove_turf) //Make sure that we don't run the exact same check twice on the same tile
+					for(var/obj/O in target_shove_turf)
+						if(O.flags_1 & ON_BORDER_1 && O.dir == turn(shove_dir, 180) && O.density)
+							directional_blocked = TRUE
+							break
 			var/targetatrest = target.resting
-			if((directional_blocked || (!target_collateral_human && !target_shove_turf.shove_act(target, user))) && !targetatrest)
+			if(((!target_table && !target_collateral_human) || directional_blocked) && !targetatrest)
 				target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
 				user.visible_message("<span class='danger'>[user.name] shoves [target.name], knocking them down!</span>",
 					"<span class='danger'>You shove [target.name], knocking them down!</span>", null, COMBAT_MESSAGE_RANGE)
 				log_combat(user, target, "shoved", "knocking them down")
+			else if(target_table)
+				if(!targetatrest)
+					target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
+				user.visible_message("<span class='danger'>[user.name] shoves [target.name] onto \the [target_table]!</span>",
+					"<span class='danger'>You shove [target.name] onto \the [target_table]!</span>", null, COMBAT_MESSAGE_RANGE)
+				target.forceMove(target_shove_turf)
+				log_combat(user, target, "shoved", "onto [target_table]")
 			else if(target_collateral_human && !targetatrest)
 				target.Knockdown(SHOVE_KNOCKDOWN_HUMAN)
-				target_collateral_human.Knockdown(SHOVE_KNOCKDOWN_COLLATERAL)
+				if(!target_collateral_human.resting)
+					target_collateral_human.Knockdown(SHOVE_KNOCKDOWN_COLLATERAL)
 				user.visible_message("<span class='danger'>[user.name] shoves [target.name] into [target_collateral_human.name]!</span>",
 					"<span class='danger'>You shove [target.name] into [target_collateral_human.name]!</span>", null, COMBAT_MESSAGE_RANGE)
 				log_combat(user, target, "shoved", "into [target_collateral_human.name]")

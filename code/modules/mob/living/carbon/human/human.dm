@@ -1084,9 +1084,6 @@
 /mob/living/carbon/human/species/lizard/ashwalker
 	race = /datum/species/lizard/ashwalker
 
-/mob/living/carbon/human/species/moth
-	race = /datum/species/moth
-
 /mob/living/carbon/human/species/mush
 	race = /datum/species/mush
 

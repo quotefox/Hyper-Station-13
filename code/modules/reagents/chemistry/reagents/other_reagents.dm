@@ -683,7 +683,7 @@
 	name = "Insect Mutation Toxin"
 	description = "A glowing toxin."
 	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/moth
+	race = /datum/species/insect
 	mutationtext = "<span class='danger'>The pain subsides. You feel... attracted to light.</span>"
 
 /datum/reagent/mutationtoxin/pod
@@ -2251,27 +2251,13 @@
 	taste_mult = 0
 
 // Adding new mutation toxin stuff from /code/modules/reagent/chemistry/recipes/slime_extracts.dm
-//Some other stuff like moth and felinid ( /datum/reagent/mutationtoxin/moth and /datum/reagent/mutationtoxin/felinid ) already exists. - Chemlight
+//Some other stuff like moth and felinid ( /datum/reagent/mutationtoxin/insect and /datum/reagent/mutationtoxin/felinid ) already exists. - Chemlight
 /datum/reagent/mutationtoxin/mammal
 	name = "Mammal Mutation Toxin"
 	description = "A fuzzy toxin."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/mammal
 	mutationtext = "<span class='danger'>The pain subsides. You feel... furry.</span>"
-
-/datum/reagent/mutationtoxin/avian
-	name = "Avian Mutation Toxin"
-	description = "A bird-like toxin."
-	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/avian
-	mutationtext = "<span class='danger'>The pain subsides. You feel... feathery.</span>"
-
-/datum/reagent/mutationtoxin/aquatic
-	name = "Aquatic Mutation Toxin"
-	description = "A aquatic toxin."
-	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/aquatic
-	mutationtext = "<span class='danger'>The pain subsides. You feel... parched and wet.</span>"
 
 /datum/reagent/mutationtoxin/xeno
 	name = "Xeno Mutation Toxin"

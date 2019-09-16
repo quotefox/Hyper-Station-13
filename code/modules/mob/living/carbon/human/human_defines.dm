@@ -14,18 +14,20 @@
 	var/facial_hair_color = "000"
 	var/facial_hair_style = "Shaved"
 
-	//Eye colour
+	//Detail colours
 	var/eye_color = "000"
 
-	var/wing_color = "fff"		//wings too
+	var/wing_color = "fff"
+	var/horn_color = "865"
 
-	var/skin_tone = "caucasian1"	//Skin tone
+	var/skin_tone = "caucasian1"
 
 	var/lip_style = null	//no lipstick by default- arguably misleading, as it could be used for general makeup
 	var/lip_color = "white"
 
 	var/nail_style = null
 	var/nail_color = "white"
+
 
 	var/age = 30		//Player's age
 
@@ -47,6 +49,7 @@
 	var/obj/item/l_store = null
 	var/obj/item/s_store = null
 
+	//Code-related stuff mostly
 	var/special_voice = "" // For changing our voice. Used by a symptom.
 
 	var/bleed_rate = 0 //how much are we bleeding
