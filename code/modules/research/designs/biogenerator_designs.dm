@@ -50,6 +50,22 @@
 	build_path = /obj/item/reagent_containers/food/condiment/peppermill
 	make_reagents = list()
 	category = list("initial","Food")
+	
+/datum/design/enzyme
+	name = "10u Universal Enzyme"
+	id = "enzyme"
+	build_type = BIOGENERATOR
+	materials = list(MAT_BIOMASS = 30)
+	make_reagents = list(/datum/reagent/consumable/enzyme = 10)
+	category = list("initial","Food")
+
+/datum/design/flour_sack
+	name = "Flour Sack"
+	id = "flour_sack"
+	build_type = BIOGENERATOR
+	materials = list(MAT_BIOMASS = 150)
+	build_path = /obj/item/reagent_containers/food/condiment/flour
+	category = list("initial","Food")
 
 /datum/design/monkey_cube
 	name = "Monkey Cube"
