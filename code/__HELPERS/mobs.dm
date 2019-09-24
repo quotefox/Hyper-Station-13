@@ -147,7 +147,7 @@
 		"legs" = pick("Normal Legs","Digitigrade Legs"),
 		"caps" = pick(GLOB.caps_list),
 		"moth_wings" = pick(GLOB.moth_wings_list),
-		"moth_markings" = pick(GLOB.moth_markings),
+		"moth_markings" = pick(GLOB.moth_markings_list),
 		"taur" = "None",
 		"mam_body_markings" = pick(snowflake_markings_list),
 		"mam_ears" 			= pick(snowflake_ears_list),
