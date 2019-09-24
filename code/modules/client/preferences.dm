@@ -104,6 +104,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"body_markings" = "None",
 		"legs" = "Normal Legs",
 		"moth_wings" = "Plain",
+		"moth_markings" = "None",
 		"mcolor2" = "FFF",
 		"mcolor3" = "FFF",
 		"mam_body_markings" = "Plain",
