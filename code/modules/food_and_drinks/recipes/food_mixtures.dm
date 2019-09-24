@@ -161,5 +161,3 @@
 	new /obj/item/reagent_containers/food/snacks/salad/ricebowl(location)
 	if(holder && holder.my_atom)
 		qdel(holder.my_atom)
-
-
