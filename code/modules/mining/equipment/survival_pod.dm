@@ -67,10 +67,20 @@
 		new /obj/effect/particle_effect/smoke(get_turf(src))
 		qdel(src)
 
+/obj/item/survivalcapsule/advanced
+	name = "advanced bluespace shelter capsule"
+	desc = "A medium sized and slightly more advanced shelter capsule stored within a pocket of bluespace."
+	template_id = "shelter_beta"
+
+/obj/item/survivalcapsule/deluxe
+	name = "deluxe bluespace shelter capsule"
+	desc = "A large shelter capsule stored within a pocket of bluespace."
+	template_id = "shelter_charlie"
+
 /obj/item/survivalcapsule/luxury
 	name = "luxury bluespace shelter capsule"
-	desc = "An exorbitantly expensive luxury suite stored within a pocket of bluespace."
-	template_id = "shelter_beta"
+	desc = "A nice luxury bluespace capsule for miners with spare time. Comes with a bar, bedroom, basic pod equipment and an observation deck."
+	template_id = "shelter_delta"
 
 //Pod objects
 
