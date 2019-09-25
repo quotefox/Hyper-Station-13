@@ -45,7 +45,22 @@
 	/obj/machinery/door/airlock/maintenance/glass,
 	/obj/machinery/door/airlock/command/,
 	/obj/machinery/door/airlock/command/glass,
+	/obj/machinery/door/airlock/engineering,
+	/obj/machinery/door/airlock/engineering/glass,
+	/obj/machinery/door/airlock/engineering/abandoned,
+	/obj/machinery/door/airlock/security,
+	/obj/machinery/door/airlock/security/glass,
+	/obj/machinery/door/airlock/maintenance/abandoned,
+	/obj/machinery/door/poddoor/shutters/preopen,
+	/obj/machinery/door/poddoor/shutters,
+	/obj/machinery/door/window/eastright,
+	/obj/machinery/door/window/eastleft,
+	/obj/machinery/door/window/northleft,
+	/obj/machinery/door/window/northright,
+	/obj/machinery/door/airlock/external,
+	/obj/machinery/door/airlock,
 	/obj/machinery/door)
+
 
 	smooth = SMOOTH_TRUE
 
