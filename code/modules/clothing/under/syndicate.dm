@@ -67,3 +67,11 @@
 	icon_state = "syndicate_combat"
 	item_color = "syndicate_combat"
 	can_adjust = FALSE
+
+/obj/item/clothing/under/syndicate/comfortable
+	name = "Comfortable Uniform"
+	desc = "A modified combat uniform, it has had much of it's armor stripped out and replaced with padding to make it as comfortable as possible."
+	icon_state = "syndicate_combat"
+	item_color = "syndicate_combat"
+	can_adjust = FALSE
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 40)
