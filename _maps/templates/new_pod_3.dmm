@@ -1,0 +1,42 @@
+"a" = (/turf/closed/wall/mineral/titanium/survival,/area/survivalpod)
+"b" = (/obj/machinery/door/airlock/survival_pod,/obj/structure/fans/tiny,/turf/closed/wall/mineral/titanium/survival,/area/survivalpod)
+"c" = (/obj/machinery/sleeper/survival_pod,/turf/open/floor/pod/dark,/area/survivalpod)
+"d" = (/obj/machinery/vending/wallmed{pixel_y = 24},/obj/machinery/light{dir = 4; light_color = "#DDFFD3"},/turf/open/floor/pod/dark,/area/survivalpod)
+"e" = (/turf/open/floor/pod,/area/survivalpod)
+"f" = (/obj/structure/fans,/obj/structure/window/reinforced/survival_pod{dir = 8},/turf/closed/wall/mineral/titanium/survival,/area/survivalpod)
+"g" = (/obj/machinery/smartfridge/survival_pod,/turf/open/floor/pod,/area/survivalpod)
+"h" = (/obj/item/gps/computer,/turf/open/floor/pod,/area/survivalpod)
+"i" = (/obj/structure/table/survival_pod,/obj/item/storage/firstaid/regular{pixel_y = 9},/obj/item/storage/firstaid/brute,/turf/open/floor/pod/dark,/area/survivalpod)
+"j" = (/turf/open/floor/pod/dark,/area/survivalpod)
+"k" = (/obj/structure/window/reinforced/survival_pod{dir = 8},/turf/open/floor/pod,/area/survivalpod)
+"l" = (/obj/machinery/door/airlock/survival_pod/glass,/turf/open/floor/pod/dark,/area/survivalpod)
+"m" = (/obj/structure/table/survival_pod,/turf/open/floor/pod/light,/area/survivalpod)
+"n" = (/obj/machinery/mineral/equipment_vendor,/turf/open/floor/pod,/area/survivalpod)
+"o" = (/obj/structure/bed,/obj/effect/spawner/lootdrop/bedsheet,/obj/machinery/light{icon_state = "tube"; dir = 1},/turf/open/floor/pod/light,/area/survivalpod)
+"p" = (/obj/structure/window/reinforced/survival_pod{icon_state = "pwindow"; dir = 6},/turf/open/floor/pod,/area/survivalpod)
+"q" = (/obj/structure/window/reinforced/survival_pod,/turf/open/floor/pod,/area/survivalpod)
+"r" = (/obj/structure/window/reinforced/survival_pod,/obj/structure/ore_box,/turf/open/floor/pod,/area/survivalpod)
+"s" = (/obj/machinery/light{icon_state = "tube"; dir = 8},/turf/open/floor/pod,/area/survivalpod)
+"t" = (/obj/structure/chair{icon_state = "chair"; dir = 1},/turf/open/floor/pod/light,/area/survivalpod)
+"u" = (/obj/machinery/door/window/survival_pod{icon_state = "windoor"; dir = 4},/turf/open/floor/pod,/area/survivalpod)
+"v" = (/turf/open/floor/pod/light,/area/survivalpod)
+"w" = (/obj/structure/sink/kitchen{icon_state = "sink_alt"; dir = 4; pixel_x = -13},/turf/open/floor/pod/light,/area/survivalpod)
+"x" = (/obj/structure/window/reinforced/survival_pod{icon_state = "pwindow"; dir = 4},/turf/open/floor/pod,/area/survivalpod)
+"y" = (/obj/effect/spawner/lootdrop/mre,/obj/effect/spawner/lootdrop/mre,/obj/effect/spawner/lootdrop/mre,/obj/effect/spawner/lootdrop/mre,/obj/effect/spawner/lootdrop/mre,/obj/effect/spawner/lootdrop/mre,/obj/structure/rack,/turf/open/floor/pod,/area/survivalpod)
+"z" = (/obj/structure/closet/secure_closet/miner,/turf/open/floor/pod,/area/survivalpod)
+"A" = (/obj/machinery/door/airlock/survival_pod,/obj/structure/fans/tiny,/turf/open/floor/pod,/area/survivalpod)
+"B" = (/obj/machinery/door/airlock/survival_pod/glass,/turf/open/floor/pod/light,/area/survivalpod)
+"C" = (/obj/structure/toilet{icon_state = "toilet00"; dir = 1},/obj/structure/curtain{alpha = 240; color = "#454545"; icon_state = "closed"; open = 0},/turf/open/floor/pod/light,/area/survivalpod)
+"D" = (/obj/machinery/shower{icon_state = "shower"; dir = 1},/obj/structure/curtain{alpha = 240; color = "#454545"; icon_state = "closed"; open = 0},/turf/open/floor/pod/light,/area/survivalpod)
+
+(1,1,1) = {"
+aaaabaaaa
+acdaefgha
+aijlekeea
+aaaaeeeea
+amoaseena
+atvaepqra
+awvBeueea
+aCDaexyza
+aaaaAaaaa
+"}
