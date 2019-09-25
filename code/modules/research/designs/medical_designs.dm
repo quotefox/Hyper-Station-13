@@ -182,6 +182,16 @@
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
+/datum/design/chem_pack
+	name = "Intravenous Medicine Bag"
+	desc = "A plastic pressure bag for IV administration of drugs."
+	id = "chem_pack"
+	build_type = PROTOLATHE
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	materials = list(MAT_PLASTIC = 2000)
+	build_path = /obj/item/reagent_containers/chem_pack
+	category = list("Medical Designs")
+
 /datum/design/blood_bag
 	name = "Empty Blood Bag"
 	desc = "A small sterilized plastic bag for blood."

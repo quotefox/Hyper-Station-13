@@ -489,7 +489,21 @@
 	/obj/machinery/door/airlock/maintenance/glass,
 	/obj/machinery/door/airlock/command/,
 	/obj/machinery/door/airlock/command/glass,
-	/obj/machinery/door,)
+	/obj/machinery/door/airlock/engineering,
+	/obj/machinery/door/airlock/engineering/glass,
+	/obj/machinery/door/airlock/engineering/abandoned,
+	/obj/machinery/door/airlock/security,
+	/obj/machinery/door/airlock/security/glass,
+	/obj/machinery/door/airlock/maintenance/abandoned,
+	/obj/machinery/door/poddoor/shutters/preopen,
+	/obj/machinery/door/poddoor/shutters,
+	/obj/machinery/door/window/eastright,
+	/obj/machinery/door/window/eastleft,
+	/obj/machinery/door/window/northleft,
+	/obj/machinery/door/window/northright,
+	/obj/machinery/door/airlock/external,
+	/obj/machinery/door/airlock,
+	/obj/machinery/door)
 //	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
 	glass_amount = 2
 
@@ -504,7 +518,50 @@
 	fulltile = TRUE
 	flags_1 = PREVENT_CLICK_UNDER_1
 	smooth = SMOOTH_TRUE
-	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
+	//canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
+
+	canSmoothWith = list(
+	/turf/closed/wall,
+	/turf/closed/wall/r_wall,
+	/obj/structure/falsewall,
+	/obj/structure/falsewall/brass,
+	/obj/structure/falsewall/reinforced,
+	/turf/closed/wall/rust,
+	/turf/closed/wall/r_wall/rust,
+	/turf/closed/wall/clockwork,
+	/obj/structure/window/fulltile,
+	/obj/structure/window/reinforced/fulltile,
+	/obj/structure/window/reinforced/tinted/fulltile,
+	/obj/structure/window/plasma/fulltile,
+	/obj/structure/window/plasma/reinforced/fulltile,
+	/obj/machinery/door/airlock/,
+	/obj/machinery/door/airlock/mining,
+	/obj/machinery/door/airlock/mining/glass,
+	/obj/machinery/door/airlock/medical,
+	/obj/machinery/door/airlock/medical/glass,
+	/obj/machinery/door/airlock/public,
+	/obj/machinery/door/airlock/public/glass,
+	/obj/machinery/door/airlock/research,
+	/obj/machinery/door/airlock/research/glass,
+	/obj/machinery/door/airlock/maintenance,
+	/obj/machinery/door/airlock/maintenance/glass,
+	/obj/machinery/door/airlock/command/,
+	/obj/machinery/door/airlock/command/glass,
+	/obj/machinery/door/airlock/engineering,
+	/obj/machinery/door/airlock/engineering/glass,
+	/obj/machinery/door/airlock/engineering/abandoned,
+	/obj/machinery/door/airlock/security,
+	/obj/machinery/door/airlock/security/glass,
+	/obj/machinery/door/airlock/maintenance/abandoned,
+	/obj/machinery/door/poddoor/shutters/preopen,
+	/obj/machinery/door/poddoor/shutters,
+	/obj/machinery/door/window/eastright,
+	/obj/machinery/door/window/eastleft,
+	/obj/machinery/door/window/northleft,
+	/obj/machinery/door/window/northright,
+	/obj/machinery/door/airlock/external,
+	/obj/machinery/door/airlock,
+	/obj/machinery/door)
 	glass_amount = 2
 
 /obj/structure/window/plasma/fulltile/unanchored
@@ -558,6 +615,20 @@
 	/obj/machinery/door/airlock/maintenance/glass,
 	/obj/machinery/door/airlock/command/,
 	/obj/machinery/door/airlock/command/glass,
+	/obj/machinery/door/airlock/engineering,
+	/obj/machinery/door/airlock/engineering/glass,
+	/obj/machinery/door/airlock/engineering/abandoned,
+	/obj/machinery/door/airlock/security,
+	/obj/machinery/door/airlock/security/glass,
+	/obj/machinery/door/airlock/maintenance/abandoned,
+	/obj/machinery/door/poddoor/shutters/preopen,
+	/obj/machinery/door/poddoor/shutters,
+	/obj/machinery/door/window/eastright,
+	/obj/machinery/door/window/eastleft,
+	/obj/machinery/door/window/northleft,
+	/obj/machinery/door/window/northright,
+	/obj/machinery/door/airlock/external,
+	/obj/machinery/door/airlock,
 	/obj/machinery/door)
 
 	level = 3
@@ -573,6 +644,7 @@
 	fulltile = TRUE
 	flags_1 = PREVENT_CLICK_UNDER_1
 	smooth = SMOOTH_TRUE
+
 	canSmoothWith = list(
 	/turf/closed/wall,
 	/turf/closed/wall/r_wall,
@@ -600,7 +672,23 @@
 	/obj/machinery/door/airlock/maintenance/glass,
 	/obj/machinery/door/airlock/command/,
 	/obj/machinery/door/airlock/command/glass,
+	/obj/machinery/door/airlock/engineering,
+	/obj/machinery/door/airlock/engineering/glass,
+	/obj/machinery/door/airlock/engineering/abandoned,
+	/obj/machinery/door/airlock/security,
+	/obj/machinery/door/airlock/security/glass,
+	/obj/machinery/door/airlock/maintenance/abandoned,
+	/obj/machinery/door/poddoor/shutters/preopen,
+	/obj/machinery/door/poddoor/shutters,
+	/obj/machinery/door/window/eastright,
+	/obj/machinery/door/window/eastleft,
+	/obj/machinery/door/window/northleft,
+	/obj/machinery/door/window/northright,
+	/obj/machinery/door/airlock/external,
+	/obj/machinery/door/airlock,
 	/obj/machinery/door)
+
+	//Old code left of reference
 	//canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
 	level = 3
 	glass_amount = 2
