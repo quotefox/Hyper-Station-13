@@ -845,11 +845,6 @@
 	icon_state = "winfre"
 	item_state = "winfre"
 	attack_verb = list("cackled", "swirlie'd", "stepped on")
-	squeak_override = list(
-	'modular_citadel/sound/voice/scream_f1.ogg' = 1,
-	'modular_citadel/sound/voice/scream_f2.ogg' = 1
-	)
-
 
 /obj/item/toy/plush/mammal/zed
 	desc = "A masked stuffed toy that resembles a fierce miner. He even comes with his own little crusher!"
@@ -930,7 +925,6 @@
 	icon_state = "marie"
 	item_state = "marie"
 	attack_verb = list("awoo'd", "shoved", "bonked")
-	squeak_override = list('modular_citadel/sound/voice/awoo.ogg' = 1)
 
 /obj/item/toy/plush/catgirl
 	name = "feline plushie"
