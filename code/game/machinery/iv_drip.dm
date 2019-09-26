@@ -129,7 +129,9 @@
 				if(istype(beaker, /obj/item/reagent_containers/blood))
 					// speed up transfer on blood packs
 					transfer_amount = 10
-				beaker.reagents.trans_to(attached, transfer_amount, method = INJECT, show_message = FALSE)
+				var/fraction = min(transfer_amount/beaker.reagents.total_volume, 1) //the fraction that is transfered of the total volume
+				beaker.reagents.reaction(attached, INJECT, fraction, FALSE) //make reagents reacts, but don't spam messages
+				beaker.reagents.trans_to(attached, transfer_amount)
 				update_icon()
 
 		// Take blood
