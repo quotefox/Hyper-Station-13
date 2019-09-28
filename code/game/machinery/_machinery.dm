@@ -187,7 +187,7 @@ Class Procs:
 	density = TRUE
 	if(!target)
 		for(var/am in loc)
-		if (!(can_be_occupant(am)))
+			if (!(can_be_occupant(am)))
 				continue
 			var/atom/movable/AM = am
 			if(AM.has_buckled_mobs())

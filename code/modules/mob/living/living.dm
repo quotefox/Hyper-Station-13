@@ -339,7 +339,7 @@
 		death()
 
 
-/mob/living/incapacitated(ignore_restraints, ignore_grab. ignore_stasis)
+/mob/living/incapacitated(ignore_restraints, ignore_grab, ignore_stasis)
 	if(stat || IsUnconscious() || IsStun() || IsKnockdown() || recoveringstam || (!ignore_restraints && restrained(ignore_grab))) // CIT CHANGE - adds recoveringstam check here
 		return TRUE
 
@@ -603,7 +603,7 @@
 		..(pressure_difference, direction, pressure_resistance_prob_delta)
 
 /mob/living/can_resist()
-	return !((next_move > world.time) || incapacitated(ignore_restraints = TRUE. ignore_stasis= TRUE))
+	return !((next_move > world.time) || incapacitated(ignore_restraints = TRUE, ignore_stasis= TRUE))
 
 /mob/living/verb/resist()
 	set name = "Resist"
@@ -1012,7 +1012,7 @@
 	var/has_arms = get_num_arms()
 	var/ignore_legs = get_leg_ignore()
 	var/in_stasis = IsInStasis()
-	var/canmove = !IsImmobilized() && !stun && conscious && !paralyzed && !buckled && (!stat_softcrit || !pulledby) && !chokehold && !IsFrozen() && !in_stasis && (has_arms || ignore_legs || has_legs)
+	var/canmove = !buckled && (pulledby) && !chokehold && !IsFrozen() && !in_stasis && (has_arms || ignore_legs || has_legs)
 	var/pinned = resting && pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE // Cit change - adds pinning for aggressive-grabbing people on the ground
 	if(ko || move_and_fall || IsStun() || chokehold) // Cit change - makes resting not force you to drop everything
 		drop_all_held_items()
