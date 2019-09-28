@@ -80,6 +80,7 @@
 	// If we're pulling something then drop what we're currently pulling and pull this instead.
 	if(pulling)
 		if(gs==0)
+			stop_pulling()
 			return FALSE
 		// Are we trying to pull something we are already pulling? Then enter grab cycle and end.
 		if(AM == pulling)
