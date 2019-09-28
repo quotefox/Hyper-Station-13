@@ -80,7 +80,6 @@
 	// If we're pulling something then drop what we're currently pulling and pull this instead.
 	if(pulling)
 		if(gs==0)
-			stop_pulling()
 			return FALSE
 		// Are we trying to pull something we are already pulling? Then enter grab cycle and end.
 		if(AM == pulling)
@@ -88,11 +87,13 @@
 			if(istype(AM,/mob/living))
 				var/mob/living/AMob = AM
 				AMob.grabbedby(src)
+
 			return TRUE
 		stop_pulling()
 	if(AM.pulledby)
 		log_combat(AM, AM.pulledby, "pulled from", src)
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
+
 	pulling = AM
 	AM.pulledby = src
 	grab_state = gs
@@ -102,8 +103,31 @@
 		var/mob/M = AM
 		log_combat(src, M, "grabbed", addition="passive grab")
 		visible_message("[src] has grabbed [M] passively.</span>")
-
 	return TRUE
+
+//move character into tile whos grabbing you
+/atom/movable/proc/adjust_position()
+
+	var/pull_dir = get_dir(src, pulledby)
+	if (pulledby <> null)
+		switch(pull_dir)
+			if(NORTH)
+				animate(src, pixel_x=0, pixel_y=8, time=5)
+			if(NORTHEAST)
+				animate(src, pixel_x=8, pixel_y=8, time=5)
+			if(NORTHWEST)
+				animate(src, pixel_x=-8, pixel_y=8, time=5)
+			if(SOUTHEAST)
+				animate(src, pixel_x=8, pixel_y=-8, time=5)
+			if(SOUTHWEST)
+				animate(src, pixel_x=-8, pixel_y=-8, time=5)
+			if(SOUTH)
+				animate(src, pixel_x=0, pixel_y=-8, time=5)
+			if(WEST)
+				animate(src, pixel_x=-8, pixel_y=0, time=5)
+			if(EAST)
+				animate(src, pixel_x=8, pixel_y=0, time=5)
+
 
 /atom/movable/proc/stop_pulling()
 	if(pulling)
@@ -111,9 +135,11 @@
 		var/mob/living/ex_pulled = pulling
 		pulling = null
 		grab_state = 0
+
 		if(isliving(ex_pulled))
 			var/mob/living/L = ex_pulled
 			L.update_canmove()// mob gets up if it was lyng down in a chokehold
+
 
 /atom/movable/proc/Move_Pulled(atom/A)
 	if(!pulling)
@@ -132,9 +158,12 @@
 		return
 	step(pulling, get_dir(pulling.loc, A))
 
+
+
 /atom/movable/proc/check_pulling()
 	if(pulling)
 		var/atom/movable/pullee = pulling
+
 		if(pullee && get_dist(src, pullee) > 1)
 			stop_pulling()
 			return
@@ -148,6 +177,11 @@
 		if(pulling.anchored)
 			stop_pulling()
 			return
+
+
+
+
+
 
 ////////////////////////////////////////
 // Here's where we rewrite how byond handles movement except slightly different
@@ -220,6 +254,7 @@
 			// place due to a Crossed, Bumped, etc. call will interrupt
 			// the second half of the diagonal movement, or the second attempt
 			// at a first half if step() fails because we hit something.
+
 			if (direct & NORTH)
 				if (direct & EAST)
 					if (step(src, NORTH) && moving_diagonally)
@@ -276,6 +311,7 @@
 	if(. && pulling && pulling == pullee) //we were pulling a thing and didn't lose it during our move.
 		if(pulling.anchored)
 			stop_pulling()
+
 		else
 			var/pull_dir = get_dir(src, pulling)
 			//puller and pullee more than one tile away or in diagonal position
@@ -283,6 +319,7 @@
 				pulling.Move(T, get_dir(pulling, T)) //the pullee tries to reach our previous position
 				if(pulling && get_dist(src, pulling) > 1) //the pullee couldn't keep up
 					stop_pulling()
+
 			if(pulledby && moving_diagonally != FIRST_DIAG_STEP && get_dist(src, pulledby) > 1)//separated from our puller and not in the middle of a diagonal move.
 				pulledby.stop_pulling()
 
