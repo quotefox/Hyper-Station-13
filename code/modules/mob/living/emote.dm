@@ -16,6 +16,17 @@
 	message_param = "bows to %t."
 	restraint_check = TRUE
 
+/datum/emote/sound/carbon/bruh
+	key = "bruh"
+	key_third_person = "makes this a bruh moment."
+	message = "makes this a bruh moment
+	message_param = "bruh's at %t."
+	muzzle_ignore = FALSE
+	restraint_check = FALSE
+	emote_type = EMOTE_AUDIBLE
+	sound = 'sound/effects/bruh.ogg'
+	mob_type_allowed_typecache = list(/mob/living/carbon/)
+
 /datum/emote/living/burp
 	key = "burp"
 	key_third_person = "burps"
