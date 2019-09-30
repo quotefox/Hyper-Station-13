@@ -16,7 +16,7 @@
 	message_param = "bows to %t."
 	restraint_check = TRUE
 
-/datum/emote/sound/carbon/bruh
+/datum/emote/living/bruh
 	key = "bruh"
 	key_third_person = "makes this a bruh moment."
 	message = "makes this a bruh moment
