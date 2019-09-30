@@ -16,17 +16,6 @@
 	message_param = "bows to %t."
 	restraint_check = TRUE
 
-/datum/emote/living/bruh
-	key = "bruh"
-	key_third_person = "makes this a bruh moment."
-	message = "makes this a bruh moment
-	message_param = "bruh's at %t."
-	muzzle_ignore = FALSE
-	restraint_check = FALSE
-	emote_type = EMOTE_AUDIBLE
-	sound = 'sound/effects/bruh.ogg'
-	mob_type_allowed_typecache = list(/mob/living/carbon/)
-
 /datum/emote/living/burp
 	key = "burp"
 	key_third_person = "burps"
@@ -498,6 +487,17 @@
 	message_param = "beeps at %t."
 	sound = 'sound/machines/twobeep.ogg'
 	mob_type_allowed_typecache = list(/mob/living/brain, /mob/living/silicon, /mob/living/carbon/human)
+
+/datum/emote/sound/bruh
+	key = "bruh"
+	key_third_person = "makes this a bruh moment."
+	message = "makes this a bruh moment."
+	message_param = "bruh's at %t."
+	muzzle_ignore = FALSE
+	restraint_check = FALSE
+	emote_type = EMOTE_AUDIBLE
+	sound = 'sound/effects/bruh.ogg'
+	mob_type_allowed_typecache = list(/mob/living/carbon/)
 
 /datum/emote/living/circle
 	key = "circle"
