@@ -68,7 +68,7 @@
 
 /datum/design/medkit
 	name = "Medkit Cabinent"
-	id = "medkit_cabinent"
+	id = "medkit_cabinet"
 	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_METAL = 4000)
 	build_path = /obj/item/wallframe/medkit_cabinet
