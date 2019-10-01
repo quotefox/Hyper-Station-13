@@ -1,3 +1,6 @@
+///Reuses fire extinguisher cabinet wall mount code to create an equivalent for medkits. Honestly not sure how most of this works beyond that it does work.
+
+//structure code
 /obj/structure/medkit_cabinet
 	name = "Medkit Cabinet"
 	desc = "A small wall mounted cabinet designed to hold a medical kit."
@@ -10,6 +13,7 @@
 	var/obj/item/storage/firstaid/regular/stored_medkit
 	var/opened = FALSE
 
+//initilization stuff for when map is loading, think it spawns medkits possibly. Honestly not sure what it does.
 /obj/structure/medkit_cabinet/Initialize(mapload, ndir, building)
 	. = ..()
 	if(building)
@@ -31,15 +35,17 @@
 		stored_medkit = null
 	return ..()
 
-//obj/structure/medkit_cabinet/contents_explosion(severity, target)
-	//if(stored_medkit)
-		//stored_medkit.ex_act(severity, target)
+//code from fire extinguishers, doesn't apply here so far as I can tell so commented out.
+obj/structure/medkit_cabinet/contents_explosion(severity, target)
+	if(stored_medkit)
+		stored_medkit.ex_act(severity, target)
 
 /obj/structure/medkit_cabinet/handle_atom_del(atom/A)
 	if(A == stored_medkit)
 		stored_medkit = null
 		update_icon()
 
+//disassembly code
 /obj/structure/medkit_cabinet/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/wrench) && !stored_medkit)
 		to_chat(user, "<span class='notice'>You start unsecuring [name]...</span>")
@@ -67,7 +73,7 @@
 	else
 		return ..()
 
-
+//storing and removing medkits.
 /obj/structure/medkit_cabinet/attack_hand(mob/user)
 	. = ..()
 	if(.)
@@ -101,6 +107,7 @@
 /obj/structure/medkit_cabinet/attack_paw(mob/user)
 	return attack_hand(user)
 
+//closes it
 /obj/structure/medkit_cabinet/AltClick(mob/living/user)
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
@@ -114,18 +121,20 @@
 		opened = !opened
 		update_icon()
 
+//sprite code
 /obj/structure/medkit_cabinet/update_icon()
 	if(!opened)
 		icon_state = "medkit_closed"
 		return
 	if(stored_medkit)
-		if(istype(stored_medkit, /obj/item/storage/hypospraykit))
+		if(istype(stored_medkit, /obj/item/storage/firstaid))
 			icon_state = "medkit_white"
 		else
 			icon_state = "medkit_white"
 	else
 		icon_state = "medkit_empty"
 
+//drops medkit when busted
 /obj/structure/medkit_cabinet/obj_break(damage_flag)
 	if(!broken && !(flags_1 & NODECONSTRUCT_1))
 		broken = 1
@@ -135,7 +144,7 @@
 			stored_medkit = null
 		update_icon()
 
-
+//I think this is the code to determine mats you get out of it?
 /obj/structure/medkit_cabinet/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
 		if(disassembled)
@@ -147,6 +156,7 @@
 			stored_medkit = null
 	qdel(src)
 
+//wall mount to put it on a wall
 /obj/item/wallframe/medkit_cabinet
 	name = "Medkit wall frame."
 	desc = "Used for building wall-mounted medkit cabinets."
