@@ -1,5 +1,5 @@
 /datum/job/cmo
-	minimal_player_age = 10
+	minimal_player_age = 3
 
 /datum/outfit/job/doctor
 	backpack_contents = list(/obj/item/storage/hypospraykit/regular)
