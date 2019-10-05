@@ -34,6 +34,22 @@
 	build_path = /obj/item/reagent_containers/food/drinks/bottle/cream
 	category = list("initial","Food")
 
+/datum/design/enzyme
+	name = "10u Universal Enzyme"
+	id = "enzyme"
+	build_type = BIOGENERATOR
+	materials = list(MAT_BIOMASS = 30)
+	make_reagents = list("enzyme" = 10)
+	category = list("initial","Food")
+
+/datum/design/flour
+	name = "10u Synthflour"
+	id = "synthflour"
+	build_type = BIOGENERATOR
+	materials = list(MAT_BIOMASS = 15)
+	make_reagents = list("flour" = 10)
+	category = list("initial","Food")
+
 /datum/design/black_pepper
 	name = "10u Black Pepper"
 	id = "black_pepper"
