@@ -20,6 +20,7 @@ Thus, the two variables affect pump operation are set in New():
 	can_unwrench = TRUE
 
 	var/transfer_rate = MAX_TRANSFER_RATE
+	var/overclocked = FALSE
 
 	var/frequency = 0
 	var/id = null
@@ -32,6 +33,8 @@ Thus, the two variables affect pump operation are set in New():
 	. = ..()
 	to_chat(user,"<span class='notice'>You can hold <b>Ctrl</b> and click on it to toggle it on and off.</span>")
 	to_chat(user,"<span class='notice'>You can hold <b>Alt</b> and click on it to maximize its pressure.</span>")
+	if(overclocked)
+		to_chat(user,"Its warning light is on" + (on ? " and it's spewing gas!" : "."))
 
 /obj/machinery/atmospherics/components/binary/volume_pump/CtrlClick(mob/user)
 	var/area/A = get_area(src)
@@ -86,17 +89,32 @@ Thus, the two variables affect pump operation are set in New():
 	var/datum/gas_mixture/air1 = airs[1]
 	var/datum/gas_mixture/air2 = airs[2]
 
-// Pump mechanism just won't do anything if the pressure is too high/too low
+// Pump mechanism just won't do anything if the pressure is too high/too low unless you overclock it.
 
 	var/input_starting_pressure = air1.return_pressure()
 	var/output_starting_pressure = air2.return_pressure()
 
-	if((input_starting_pressure < 0.01) || (output_starting_pressure > 9000))
+	if((input_starting_pressure < 0.01) || ((output_starting_pressure > 9000))&&!overclocked)
+		return
+
+	if((input_starting_pressure < 0.01) || ((output_starting_pressure > 15000)))//Overclocked pumps can only force gas a certain amount.
 		return
 
 	var/transfer_ratio = transfer_rate/air1.volume
 
 	var/datum/gas_mixture/removed = air1.remove_ratio(transfer_ratio)
+
+	if(overclocked)//Some of the gas from the mixture leaks to the environment when overclocked
+		var/turf/open/T = loc
+		if(istype(T))
+			if(output_starting_pressure > 9000)
+				var/datum/gas_mixture/leaked = removed.remove_ratio(VOLUME_PUMP_THRESHOLD_LEAK_AMOUNT)
+				T.assume_air(leaked)
+				T.air_update_turf()
+			else
+				var/datum/gas_mixture/leaked = removed.remove_ratio(VOLUME_PUMP_LEAK_AMOUNT)
+				T.assume_air(leaked)
+				T.air_update_turf()
 
 	air2.merge(removed)
 
@@ -208,3 +226,12 @@ Thus, the two variables affect pump operation are set in New():
 		investigate_log("Pump, [src.name], was unwrenched by [key_name(usr)] at [x], [y], [z], [A]", INVESTIGATE_ATMOS)
 		message_admins("Pump, [src.name], was unwrenched by [ADMIN_LOOKUPFLW(user)] at [A]")
 		return TRUE
+
+/obj/machinery/atmospherics/components/binary/volume_pump/multitool_act(mob/living/user, obj/item/I)
+	if(!overclocked)
+		overclocked = TRUE
+		to_chat(user, "The pump makes a grinding noise and air starts to hiss out as you disable its pressure limits.")
+	else
+		overclocked = FALSE
+		to_chat(user, "The pump quiets down as you turn its limiters back on.")
+	return TRUE
