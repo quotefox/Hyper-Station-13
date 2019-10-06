@@ -68,9 +68,9 @@
 	item_color = "syndicate_combat"
 	can_adjust = FALSE
 
-/obj/item/clothing/under/syndicate/comfortable
-	name = "Comfortable Uniform"
-	desc = "A modified combat uniform, it has had much of it's armor stripped out and replaced with padding to make it as comfortable as possible."
+/obj/item/clothing/under/syndicate/combat/comfortable
+	name = "Padded Uniform"
+	desc = "A uniform of similar design to the combat uniform, it has had it's armor replaced with extra padding while providing pockets to hold useful gear."
 	icon_state = "syndicate_combat"
 	item_color = "syndicate_combat"
 	can_adjust = FALSE
