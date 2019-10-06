@@ -50,7 +50,7 @@ menu "menu"
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 640x440
 		anchor1 = none
 		anchor2 = none
@@ -94,10 +94,11 @@ window "mainwindow"
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
 	elem "map"
@@ -115,7 +116,7 @@ window "mapwindow"
 window "infowindow"
 	elem "infowindow"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
@@ -128,6 +129,7 @@ window "infowindow"
 		size = 640x445
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
 		left = "statwindow"
 		right = "outputwindow"
@@ -197,7 +199,7 @@ window "infowindow"
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 0,0
+		pos = 281,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
@@ -274,25 +276,27 @@ window "statwindow"
 window "preferences_window"
 	elem "preferences_window"
 		type = MAIN
-		pos = 372,0
+		pos = 281,0
 		size = 1280x1000
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
 	elem "preferences_browser"
 		type = BROWSER
-		pos = 0,0
+		pos = 320,0
 		size = 960x1000
 		anchor1 = 0,0
 		anchor2 = 75,100
+		background-color = none
 		saved-params = ""
 	elem "character_preview_map"
 		type = MAP
-		pos = 960,0
+		pos = 0,0
 		size = 320x1000
-		anchor1 = 75,0
+		anchor1 = 0,0
 		anchor2 = 100,100
 		right-click = true
 		saved-params = "zoom;letterbox;zoom-mode"
