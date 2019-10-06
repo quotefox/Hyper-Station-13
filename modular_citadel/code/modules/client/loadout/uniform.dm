@@ -144,9 +144,9 @@
 	path = /obj/item/clothing/under/pants/track
 
 /datum/gear/comfortable
-	name = "padded uniform"
+	name = "Padded Uniform"
 	category =  SLOT_W_UNIFORM
-	path = /obj/item/clothing/under/syndicate/combat/comfortable
+	path = /obj/item/clothing/under/syndicate/comfortable
 
 // Pantsless Sweaters
 

@@ -25,6 +25,7 @@
 	icon_state = "tactifool"
 	item_state = "bl_suit"
 	item_color = "tactifool"
+	has_sensor = HAS_SENSORS
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 40)
 
 /obj/item/clothing/under/syndicate/tacticool/skirt
@@ -33,6 +34,7 @@
 	icon_state = "tactifool_skirt"
 	item_state = "bl_suit"
 	item_color = "tactifool_skirt"
+	has_sensor = HAS_SENSORS
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 40)
 	fitted = FEMALE_UNIFORM_TOP
 
@@ -68,10 +70,11 @@
 	item_color = "syndicate_combat"
 	can_adjust = FALSE
 
-/obj/item/clothing/under/syndicate/combat/comfortable
+/obj/item/clothing/under/syndicate/comfortable
 	name = "Padded Uniform"
 	desc = "A uniform of similar design to the combat uniform, it has had it's armor replaced with extra padding while providing pockets to hold useful gear."
 	icon_state = "syndicate_combat"
 	item_color = "syndicate_combat"
 	can_adjust = FALSE
+	has_sensor = HAS_SENSORS
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 40)
