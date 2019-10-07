@@ -187,6 +187,14 @@
 	icon = 'icons/turf/walls/rusty_wall.dmi'
 	hardness = 45
 
+
+/obj/effect/decal/walldivider
+	name = "wall divider"
+	desc = "To make things look neat"
+	icon = 'icons/obj/decals.dmi'
+	icon_state = "walldiv"
+
+
 /turf/closed/wall/r_wall/rust
 	name = "rusted reinforced wall"
 	desc = "A huge chunk of rusted reinforced metal."

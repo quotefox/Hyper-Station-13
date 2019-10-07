@@ -129,7 +129,6 @@ window "infowindow"
 		size = 640x445
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = none
 		saved-params = "splitter"
 		left = "statwindow"
 		right = "outputwindow"
@@ -276,8 +275,8 @@ window "statwindow"
 window "preferences_window"
 	elem "preferences_window"
 		type = MAIN
-		pos = 281,0
-		size = 1280x1000
+		pos = 435,99
+		size = 1000x600
 		anchor1 = none
 		anchor2 = none
 		background-color = none
@@ -286,18 +285,18 @@ window "preferences_window"
 		statusbar = false
 	elem "preferences_browser"
 		type = BROWSER
-		pos = 320,0
-		size = 960x1000
-		anchor1 = 0,0
-		anchor2 = 75,100
+		pos = 250,0
+		size = 750x618
+		anchor1 = 25,0
+		anchor2 = 100,100
 		background-color = none
 		saved-params = ""
 	elem "character_preview_map"
 		type = MAP
 		pos = 0,0
-		size = 320x1000
+		size = 250x618
 		anchor1 = 0,0
-		anchor2 = 100,100
+		anchor2 = 25,100
 		right-click = true
 		saved-params = "zoom;letterbox;zoom-mode"
 
