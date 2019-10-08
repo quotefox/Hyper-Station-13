@@ -222,6 +222,17 @@
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
+/datum/design/hypospray
+	name = "MKII Hypospray"
+	desc = "A cartridge based medical applicator."
+	id = "hypospray"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 2000, MAT_GLASS = 500, MAT_SILVER= 500, MAT_GOLD = 250, MAT_PLASTIC = 2500)
+	build_path = /obj/item/hypospray/mkii
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+
 ////////////////////////////////////////
 //////////Defibrillator Tech////////////
 ////////////////////////////////////////
