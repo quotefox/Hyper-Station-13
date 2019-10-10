@@ -92,6 +92,7 @@ PROBABILITY SECRET_EXTENDED 0
 PROBABILITY DEVIL 0
 PROBABILITY DEVIL_AGENTS 0
 PROBABILITY CLOWNOPS 0
+PROBABILITY WEREWOLF 1
 
 ## You probably want to keep sandbox off by default for secret and random.
 PROBABILITY SANDBOX 0
@@ -114,6 +115,7 @@ CONTINUOUS CLOCKWORK_CULT
 CONTINUOUS CHANGELING
 CONTINUOUS WIZARD
 #CONTINUOUS MONKEY
+#CONTINUOUS WEREWOLF
 
 ##Note: do not toggle continuous off for these modes, as they have no antagonists and would thus end immediately!
 
@@ -136,6 +138,7 @@ MIDROUND_ANTAG CLOCKWORK_CULT
 MIDROUND_ANTAG CHANGELING
 MIDROUND_ANTAG WIZARD
 #MIDROUND_ANTAG  MONKEY
+#MIDROUND_ANTAG  WEREWOLF
 
 ## Uncomment these for overrides of the minimum / maximum number of players in a round type.
 ## If you set any of these occasionally check to see if you still need them as the modes
@@ -175,6 +178,9 @@ MIDROUND_ANTAG WIZARD
 
 #MIN_POP MONKEY 20
 #MAX_POP MONKEY -1
+
+#MIN_POP WEREWOLF 20
+#MAX_POP WEREWOLF -1
 
 #MIN_POP METEOR 0
 #MAX_POP METEOR -1
