@@ -127,11 +127,11 @@
 			if(!I.imp_in || !I.allow_teleport || !isliving(I.imp_in))
 				continue
 			else
-				var/mob/living/M = I.loc
+				var/mob/living/M = I.imp_in
 				if(M.stat == DEAD)
 					if(M.timeofdeath + I.lifespan_postmortem < world.time)
 						continue
-				if(is_eligible(I))
+				if(is_eligible(M))
 					L[avoid_assoc_duplicate_keys(M.real_name, areaindex)] = I
 
 		var/desc = input("Please select a location to lock in.", "Locking Computer") as null|anything in L
