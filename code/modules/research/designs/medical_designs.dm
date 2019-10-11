@@ -609,36 +609,6 @@
 /////////////////////
 //Adv Surgery Tools//
 /////////////////////
-/datum/design/laserscalpel
-	name = "Laser Scalpel"
-	desc = "A laser scalpel used for precise cutting."
-	id = "laserscalpel"
-	build_path = /obj/item/scalpel/advanced
-	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 6000, MAT_GLASS = 1500, MAT_SILVER = 2000, MAT_GOLD = 1500, MAT_DIAMOND = 200, MAT_TITANIUM = 4000)
-	category = list("Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
-
-/datum/design/mechanicalpinches
-	name = "Mechanical Pinches"
-	desc = "These pinches can be either used as retractor or hemostat."
-	id = "mechanicalpinches"
-	build_path = /obj/item/retractor/advanced
-	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 12000, MAT_GLASS = 4000, MAT_SILVER = 4000, MAT_TITANIUM = 5000)
-	category = list("Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
-
-/datum/design/searingtool
-	name = "Searing Tool"
-	desc = "Used to mend tissue togheter."
-	id = "searingtool"
-	build_path = /obj/item/cautery/advanced
-	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 4000, MAT_GLASS = 2000, MAT_PLASMA = 2000, MAT_URANIUM = 3000, MAT_TITANIUM = 3000)
-	category = list("Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
-
 /datum/design/drapes
 	name = "Plastic Drapes"
 	desc = "A large surgery drape made of plastic."
@@ -649,6 +619,35 @@
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
+/datum/design/retractor_adv
+	name = "Advanced Retractor"
+	desc = "An almagation of rods and gears, able to function as both a surgical clamp and retractor. "
+	id = "retractor_adv"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 500, MAT_GLASS = 500, MAT_SILVER = 1500, MAT_GOLD = 1000)
+	build_path = /obj/item/retractor/advanced
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/surgicaldrill_adv
+	name = "Surgical Laser Drill"
+	desc = "It projects a high power laser used for medical applications."
+	id = "surgicaldrill_adv"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 2500, MAT_GLASS = 2500, MAT_SILVER = 6000, MAT_GOLD = 5500, MAT_DIAMOND = 3500)
+	build_path = /obj/item/surgicaldrill/advanced
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/scalpel_adv
+	name = "Laser Scalpel"
+	desc = "An advanced scalpel which uses laser technology to cut."
+	id = "scalpel_adv"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 1500, MAT_GLASS = 1500, MAT_SILVER = 4000, MAT_GOLD = 2500)
+	build_path = /obj/item/scalpel/advanced
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
 /////////////////////////////////////////
 //////////Alien Surgery Tools////////////
