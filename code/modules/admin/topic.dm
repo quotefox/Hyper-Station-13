@@ -15,7 +15,7 @@
 	..()
 
 	if(usr.client != src.owner || !check_rights(0))
-		message_admins("[usr.key] has attempted to override the admin panel!")
+		message_admins("[usr.key]  tried to use the admin panel without authorization.")
 		log_admin("[key_name(usr)] tried to use the admin panel without authorization.")
 		return
 
