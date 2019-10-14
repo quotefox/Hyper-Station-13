@@ -273,8 +273,8 @@
 	if (P.cached_length >= 20.5 && P.cached_length < 21)
 		if(H.w_uniform || H.wear_suit|| H.arousalloss > 33)
 			var/target = M.get_bodypart(BODY_ZONE_CHEST)
-			to_chat(M, "<span class='warning'>Your cock begin to strain against your clothes tightly!</b></span>")
-			M.apply_damage(2.5, BRUTE, target)
+			to_chat(M, "<span class='warning'>Your cock begins to strain against your clothes tightly!</b></span>")
+			M.apply_damage(1, BRUTE, target)
 
 	P.update()
 	..()

@@ -151,10 +151,14 @@
 
 	var/items = o.get_contents()
 	for(var/obj/item/W in items)
-		if(W == o.w_uniform || W == o.wear_suit)
-			o.dropItemToGround(W, TRUE)
-			playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
-			to_chat(owner, "<span class='warning'>Your enormous package is way to large to fit anything over!</b></span>")
+		if (o.arousalloss > 32) // warning that your shaft is getting errect!
+			if(W == o.w_uniform || W == o.wear_suit )
+				to_chat(M, "<span class='warning'>Your swelling cock begins to strain against your clothes tightly!</b></span>")
+		if (o.arousalloss > 33)
+			if(W == o.w_uniform || W == o.wear_suit )
+				o.dropItemToGround(W, TRUE)
+				playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
+				to_chat(owner, "<span class='warning'>Your erect member is way to large to fit anything over! You will need to be flaccid again to wear clothes!</b></span>")
 /*
 	switch(round(P.cached_length))
 		if(21)
