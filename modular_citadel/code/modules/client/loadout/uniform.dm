@@ -143,6 +143,11 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/pants/track
 
+/datum/gear/comfortable
+	name = "Padded Uniform"
+	category =  SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/syndicate/comfortable
+
 // Pantsless Sweaters
 
 /datum/gear/turtleneck
