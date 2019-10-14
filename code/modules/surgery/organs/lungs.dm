@@ -317,7 +317,8 @@
 			H.adjustFireLoss(nitryl_pp/4)
 		gas_breathed = breath_gases[/datum/gas/nitryl]
 		if (gas_breathed > gas_stimulation_min)
-			H.reagents.add_reagent("no2",1)
+			var/existing = H.reagents.get_reagent_amount("no2")
+			H.reagents.add_reagent("no2", max(0, 5 - existing))
 
 		breath_gases[/datum/gas/nitryl]-=gas_breathed
 
