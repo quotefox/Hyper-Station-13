@@ -30,10 +30,10 @@
 
 		if(stat != DEAD)
 			handle_brain_damage()
-
+/* Bug cause?
 		if(stat != DEAD)
 			handle_liver()
-
+*/
 	if(stat == DEAD)
 		stop_sound_channel(CHANNEL_HEARTBEAT)
 		rot()
