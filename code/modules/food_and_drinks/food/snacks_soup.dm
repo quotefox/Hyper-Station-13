@@ -225,3 +225,11 @@
 	bonus_reagents = list("nutriment" = 4, "vitamin" = 6)
 	tastes = list("beet" = 1)
 	foodtype = VEGETABLES
+
+/obj/item/reagent_containers/food/snacks/soup/macaco
+	name = "Macaco soup"
+	desc = "To think, the monkey would've beat you to death and steal your gun."
+	icon_state = "macaco"
+	bonus_reagents = list("nutriment" = 1, "omnizine" = 5, "vitamin" = 5)
+	tastes = list("Monkey" = 1)
+	foodtype = MEAT | VEGETABLES

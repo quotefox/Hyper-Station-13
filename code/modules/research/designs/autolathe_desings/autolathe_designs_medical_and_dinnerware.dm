@@ -65,6 +65,15 @@
 ///Medical//
 ////////////
 
+
+/datum/design/medkit
+	name = "Medkit Cabinent"
+	id = "medkit_cabinet"
+	build_type = AUTOLATHE | PROTOLATHE
+	materials = list(MAT_METAL = 4000)
+	build_path = /obj/item/wallframe/medkit_cabinet
+	category = list("initial", "Medical")
+
 /datum/design/scalpel
 	name = "Scalpel"
 	id = "scalpel"

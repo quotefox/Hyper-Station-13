@@ -1328,10 +1328,12 @@
 	..()
 	ADD_TRAIT(L, TRAIT_STUNIMMUNE, id)
 	ADD_TRAIT(L, TRAIT_SLEEPIMMUNE, id)
+	ADD_TRAIT(L, TRAIT_NOSLIPALL, id)
 
 /datum/reagent/stimulum/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_STUNIMMUNE, id)
 	REMOVE_TRAIT(L, TRAIT_SLEEPIMMUNE, id)
+	REMOVE_TRAIT(L, TRAIT_NOSLIPALL, id)
 	..()
 
 /datum/reagent/stimulum/on_mob_life(mob/living/carbon/M)
@@ -1357,6 +1359,11 @@
 /datum/reagent/nitryl/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_GOTTAGOFAST, id)
 	..()
+
+/datum/reagent/nitryl/on_mob_life(mob/living/carbon/M)
+	current_cycle++
+	holder.remove_reagent(id, 0.99)		//Gives time for the next tick of life().
+	. = TRUE //Update status effects.
 
 /////////////////////////Coloured Crayon Powder////////////////////////////
 //For colouring in /proc/mix_color_from_reagents
