@@ -40,12 +40,12 @@
 					update_damage_overlays()
 			else
 				adjustStaminaLoss(damage * hit_percent)
-		if(BRAIN)
-			adjustBrainLoss(damage * hit_percent)
 		//citadel code
 		if(AROUSAL)
 			adjustArousalLoss(damage * hit_percent)
 	return TRUE
+
+
 
 //These procs fetch a cumulative total damage from all bodyparts
 /mob/living/carbon/getBruteLoss()
@@ -61,6 +61,7 @@
 		var/obj/item/bodypart/BP = X
 		amount += BP.burn_dam
 	return amount
+
 
 /mob/living/carbon/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE)
 	if(!forced && (status_flags & GODMODE))
@@ -154,6 +155,7 @@
 			maximum = O.maxHealth
 		O.applyOrganDamage(amount, maximum)
 		O.onDamage(amount, maximum)
+
 
 ////////////////////////////////////////////
 
@@ -296,3 +298,4 @@
 	if(B)
 		var/adjusted_amount = amount - B.get_brain_damage()
 		B.adjust_brain_damage(adjusted_amount, null)
+*/

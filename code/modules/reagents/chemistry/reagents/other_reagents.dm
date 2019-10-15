@@ -3,7 +3,6 @@
 	name = "Blood"
 	id = "blood"
 	color = "#C80000" // rgb: 200, 0, 0
-	description = "Blood from a human, or otherwise."
 	metabolization_rate = 5 //fast rate so it disappears fast.
 	taste_description = "iron"
 	taste_mult = 1.3
@@ -201,20 +200,22 @@
 	pH = 7.5 //God is alkaline
 
 /datum/reagent/water/holywater/on_mob_metabolize(mob/living/L)
-	. = ..()
+	..()
 	ADD_TRAIT(L, TRAIT_HOLY, id)
-
-	if(is_servant_of_ratvar(L))
-		to_chat(L, "<span class='userdanger'>A fog spreads through your mind, purging the Justiciar's influence!</span>")
-	else if(iscultist(L))
-		to_chat(L, "<span class='userdanger'>A fog spreads through your mind, weakening your connection to the veil and purging Nar-sie's influence</span>")
 
 /datum/reagent/water/holywater/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_HOLY, id)
-	if(iscultist(L))
-		for(var/datum/action/innate/cult/blood_magic/BM in L.actions)
-			BM.holy_dispel = FALSE
-	return ..()
+	..()
+
+/datum/reagent/water/holywater/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
+	if(is_servant_of_ratvar(M))
+		to_chat(M, "<span class='userdanger'>A fog spreads through your mind, purging the Justiciar's influence!</span>")
+	..()
+
+/datum/reagent/water/holywater/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
+	if(iscultist(M))
+		to_chat(M, "<span class='userdanger'>A fog spreads through your mind, weakening your connection to the veil and purging Nar-sie's influence</span>")
+	..()
 
 /datum/reagent/water/holywater/on_mob_life(mob/living/carbon/M)
 	if(!data)
@@ -223,11 +224,9 @@
 	M.jitteriness = min(M.jitteriness+4,10)
 	if(iscultist(M))
 		for(var/datum/action/innate/cult/blood_magic/BM in M.actions)
-			if(!BM.holy_dispel)
-				BM.holy_dispel = TRUE
-				to_chat(M, "<span class='cultlarge'>Your blood rites falter as holy water scours your body!</span>")
-				for(var/datum/action/innate/cult/blood_spell/BS in BM.spells)
-					qdel(BS)
+			to_chat(M, "<span class='cultlarge'>Your blood rites falter as holy water scours your body!</span>")
+			for(var/datum/action/innate/cult/blood_spell/BS in BM.spells)
+				qdel(BS)
 	if(data >= 25)		// 10 units, 45 seconds @ metabolism 0.4 units & tick rate 1.8 sec
 		if(!M.stuttering)
 			M.stuttering = 1
@@ -537,12 +536,12 @@
 	race = /datum/species/fly
 	mutationtext = "<span class='danger'>The pain subsides. You feel... buzzy.</span>"
 
-/datum/reagent/mutationtoxin/insect
-	name = "Insect Mutation Toxin"
+/datum/reagent/mutationtoxin/moth
+	name = "Moth Mutation Toxin"
 	id = "mothmutationtoxin"
 	description = "A glowing toxin."
 	color = "#5EFF3B" //RGB: 94, 255, 59
-	race = /datum/species/insect
+	race = /datum/species/moth
 	mutationtext = "<span class='danger'>The pain subsides. You feel... attracted to light.</span>"
 
 /datum/reagent/mutationtoxin/pod
@@ -1223,7 +1222,7 @@
 	description = "A perfluoronated sulfonic acid that forms a foam when mixed with water."
 	color = "#9E6B38" // rgb: 158, 107, 56
 	taste_description = "metal"
-	pH = 11
+	pH = 13
 
 /datum/reagent/foaming_agent// Metal foaming agent. This is lithium hydride. Add other recipes (e.g. LiH + H2O -> LiOH + H2) eventually.
 	name = "Foaming agent"
@@ -1232,7 +1231,7 @@
 	reagent_state = SOLID
 	color = "#664B63" // rgb: 102, 75, 99
 	taste_description = "metal"
-	pH = 11.5
+	pH = 12.5
 
 /datum/reagent/smart_foaming_agent //Smart foaming agent. Functions similarly to metal foam, but conforms to walls.
 	name = "Smart foaming agent"
@@ -1329,10 +1328,12 @@
 	..()
 	ADD_TRAIT(L, TRAIT_STUNIMMUNE, id)
 	ADD_TRAIT(L, TRAIT_SLEEPIMMUNE, id)
+	ADD_TRAIT(L, TRAIT_NOSLIPALL, id)
 
 /datum/reagent/stimulum/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_STUNIMMUNE, id)
 	REMOVE_TRAIT(L, TRAIT_SLEEPIMMUNE, id)
+	REMOVE_TRAIT(L, TRAIT_NOSLIPALL, id)
 	..()
 
 /datum/reagent/stimulum/on_mob_life(mob/living/carbon/M)
@@ -1358,6 +1359,11 @@
 /datum/reagent/nitryl/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_GOTTAGOFAST, id)
 	..()
+
+/datum/reagent/nitryl/on_mob_life(mob/living/carbon/M)
+	current_cycle++
+	holder.remove_reagent(id, 0.99)		//Gives time for the next tick of life().
+	. = TRUE //Update status effects.
 
 /////////////////////////Coloured Crayon Powder////////////////////////////
 //For colouring in /proc/mix_color_from_reagents
@@ -1446,6 +1452,9 @@
 	color = "#FFFFFF" // white
 	random_color_list = list("#FFFFFF") //doesn't actually change appearance at all
 
+
+
+
 //////////////////////////////////Hydroponics stuff///////////////////////////////
 
 /datum/reagent/plantnutriment
@@ -1487,7 +1496,15 @@
 	tox_prob = 15
 	pH = 1
 
+
+
+
+
+
+
 // GOON OTHERS
+
+
 
 /datum/reagent/oil
 	name = "Oil"
@@ -1519,6 +1536,20 @@
 	color = "#694600"
 	taste_description = "metal"
 	pH = 4.5
+
+/datum/reagent/carpet
+	name = "Carpet"
+	id = "carpet"
+	description = "For those that need a more creative way to roll out a red carpet."
+	reagent_state = LIQUID
+	color = "#b51d05"
+	taste_description = "carpet" // Your tounge feels furry.
+
+/datum/reagent/carpet/reaction_turf(turf/T, reac_volume)
+	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
+		var/turf/open/floor/F = T
+		F.PlaceOnTop(/turf/open/floor/carpet)
+	..()
 
 /datum/reagent/bromine
 	name = "Bromine"
@@ -1652,7 +1683,7 @@
 	reagent_state = LIQUID
 	color = "#FFFFD6" // very very light yellow
 	taste_description = "alkali" //who put ACID for NaOH ????
-	pH = 11.9
+	pH = 13
 
 /datum/reagent/drying_agent
 	name = "Drying agent"
@@ -1672,143 +1703,6 @@
 		var/t_loc = get_turf(O)
 		qdel(O)
 		new /obj/item/clothing/shoes/galoshes/dry(t_loc)
-
-// Liquid Carpets
-/datum/reagent/carpet
-	name = "Liquid Carpet"
-	id = "carpet"
-	description = "For those that need a more creative way to roll out a carpet."
-	reagent_state = LIQUID
-	color = "#b51d05"
-	taste_description = "carpet" // Your tounge feels furry.
-
-/datum/reagent/carpet/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet)
-	..()
-
-/datum/reagent/carpet/black
-	name = "Liquid Black Carpet"
-	id = "blackcarpet"
-	color = "#363636"
-
-/datum/reagent/carpet/black/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet/black)
-	..()
-
-/datum/reagent/carpet/blackred
-	name = "Liquid Red Black Carpet"
-	id = "blackredcarpet"
-	color = "#342125"
-
-/datum/reagent/carpet/blackred/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet/blackred)
-	..()
-
-/datum/reagent/carpet/monochrome
-	name = "Liquid Monochrome Carpet"
-	id = "monochromecarpet"
-	color = "#b4b4b4"
-
-/datum/reagent/carpet/monochrome/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet/monochrome)
-	..()
-
-/datum/reagent/carpet/blue
-	name = "Liquid Blue Carpet"
-	id = "bluecarpet"
-	color = "#1256ff"
-
-/datum/reagent/carpet/blue/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet/blue)
-	..()
-
-/datum/reagent/carpet/cyan
-	name = "Liquid Cyan Carpet"
-	id = "cyancarpet"
-	color = "#3acfb9"
-
-/datum/reagent/carpet/cyan/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet/cyan)
-	..()
-
-/datum/reagent/carpet/green
-	name = "Liquid Green Carpet"
-	id = "greencarpet"
-	color = "#619b62"
-
-/datum/reagent/carpet/green/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet/green)
-	..()
-
-/datum/reagent/carpet/orange
-	name = "Liquid Orange Carpet"
-	id = "orangecarpet"
-	color = "#cc7900"
-
-/datum/reagent/carpet/orange/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet/orange)
-	..()
-
-/datum/reagent/carpet/purple
-	name = "Liquid Purple Carpet"
-	id = "purplecarpet"
-	color = "#6d3392"
-
-/datum/reagent/carpet/purple/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet/purple)
-	..()
-
-/datum/reagent/carpet/red
-	name = "Liquid Red Carpet"
-	id = "redcarpet"
-	color = "#871515"
-
-/datum/reagent/carpet/red/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet/red)
-	..()
-
-/datum/reagent/carpet/royalblack
-	name = "Liquid Royal Black Carpet"
-	id = "royalblackcarpet"
-	color = "#483d05"
-
-/datum/reagent/carpet/royalblack/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet/royalblack)
-	..()
-
-/datum/reagent/carpet/royalblue
-	name = "Liquid Royal Blue Carpet"
-	id = "royalbluecarpet"
-	color = "#24227e"
-
-/datum/reagent/carpet/royalblue/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet/royalblue)
-	..()
-
 
 // Virology virus food chems.
 
@@ -2116,7 +2010,7 @@
 	can_synth = FALSE
 	var/datum/dna/original_dna
 	var/reagent_ticks = 0
-	chemical_flags = REAGENT_INVISIBLE
+	invisible = TRUE
 
 /datum/reagent/changeling_string/on_mob_metabolize(mob/living/carbon/C)
 	if(C && C.dna && data["desired_dna"])
@@ -2144,25 +2038,3 @@
 /datum/reagent/changeling_string/Destroy()
 	qdel(original_dna)
 	return ..()
-
-/datum/reagent/mustardgrind
-	name = "Mustardgrind"
-	id = "mustardgrind"
-	description = "A powerd that is mixed with water and enzymes to make mustard."
-	color = "#BCC740" //RGB: 188, 199, 64
-	taste_description = "plant dust"
-
-/datum/reagent/pax/catnip
-	name = "catnip"
-	id = "catnip"
-	taste_description = "grass"
-	description = "A colorless liquid that makes people more peaceful and felines more happy."
-	metabolization_rate = 1.75 * REAGENTS_METABOLISM
-
-/datum/reagent/pax/catnip/on_mob_life(mob/living/carbon/M)
-	if(prob(20))
-		M.emote("nya")
-	if(prob(20))
-		to_chat(M, "<span class = 'notice'>[pick("Headpats feel nice.", "The feeling of a hairball...", "Backrubs would be nice.", "Whats behind those doors?")]</span>")
-	M.adjustArousalLoss(2)
-	..()

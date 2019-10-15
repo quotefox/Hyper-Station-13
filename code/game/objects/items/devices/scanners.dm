@@ -189,7 +189,6 @@ SLIME SCANNER
 		if(Br)
 			if(Br.cached_size>5)
 				msg += "\t<span class='info'>Subject has a sizeable bosom with a [Br.size] cup.</span>\n"
-
 		if (M.getOrganLoss(ORGAN_SLOT_BRAIN) >= 200 || !M.getorgan(/obj/item/organ/brain))
 			msg += "\t<span class='alert'>Subject's brain function is non-existent.</span>\n"
 		else if (M.getOrganLoss(ORGAN_SLOT_BRAIN) >= 120)
@@ -198,6 +197,7 @@ SLIME SCANNER
 			msg += "\t<span class='alert'>Brain damage detected.</span>\n"
 
 	if(iscarbon(M))
+
 		var/mob/living/carbon/C = M
 		if(LAZYLEN(C.get_traumas()))
 			var/list/trauma_text = list()
@@ -219,7 +219,8 @@ SLIME SCANNER
 		msg += "\t<span class='info'>Brain Activity Level: [(200 - M.getOrganLoss(ORGAN_SLOT_BRAIN))/2]%.</span>\n"
 	if(M.radiation)
 		msg += "\t<span class='alert'>Subject is irradiated.</span>\n"
-		msg += "\t<span class='info'>Radiation Level: [M.radiation] rad</span>\n"
+		if(advanced)
+			msg += "\t<span class='info'>Radiation Level: [M.radiation]%.</span>\n"
 
 	if(advanced && M.hallucinating())
 		msg += "\t<span class='info'>Subject is hallucinating.</span>\n"
@@ -300,7 +301,7 @@ SLIME SCANNER
 			for(var/obj/item/bodypart/org in damaged)
 				msg += "\t\t<span class='info'>[capitalize(org.name)]: [(org.brute_dam > 0) ? "<font color='red'>[org.brute_dam]</font></span>" : "<font color='red'>0</font>"]-[(org.burn_dam > 0) ? "<font color='#FF8000'>[org.burn_dam]</font>" : "<font color='#FF8000'>0</font>"]\n"
 
-	//Organ damages report
+//Organ damages report
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		var/minor_damage
@@ -352,7 +353,6 @@ SLIME SCANNER
 			msg += "[minor_damage]"
 			msg += "[major_damage]"
 			msg += "[max_damage]"
-
 
 	// Species and body temperature
 	if(ishuman(M))
@@ -441,7 +441,7 @@ SLIME SCANNER
 			if(M.reagents.reagent_list.len)
 				var/list/datum/reagent/reagents = list()
 				for(var/datum/reagent/R in M.reagents.reagent_list)
-					if(R.chemical_flags & REAGENT_INVISIBLE)
+					if(R.invisible)
 						continue
 					reagents += R
 
@@ -460,21 +460,6 @@ SLIME SCANNER
 					msg += "<span class='danger'>[R.name]</span>\n"
 			else
 				msg += "<span class='notice'>Subject is not addicted to any reagents.</span>\n"
-
-			if(M.reagents.has_reagent("fermiTox"))
-				var/datum/reagent/fermiTox = M.reagents.has_reagent("fermiTox")
-				switch(fermiTox.volume)
-					if(5 to 10)
-						msg += "<span class='notice'>Subject contains a low amount of toxic isomers.</span>\n"
-					if(10 to 25)
-						msg += "<span class='danger'>Subject contains toxic isomers.</span>\n"
-					if(25 to 50)
-						msg += "<span class='danger'>Subject contains a substantial amount of toxic isomers.</span>\n"
-					if(50 to 95)
-						msg += "<span class='danger'>Subject contains a high amount of toxic isomers.</span>\n"
-					if(95 to INFINITY)
-						msg += "<span class='danger'>Subject contains a extremely dangerous amount of toxic isomers.</span>\n"
-
 			msg += "*---------*</span>"
 			to_chat(user, msg)
 
@@ -683,10 +668,9 @@ SLIME SCANNER
 				to_chat(user, "<span class='notice'>[target] is empty!</span>")
 
 		if(cached_scan_results && cached_scan_results["fusion"]) //notify the user if a fusion reaction was detected
-			var/fusion_power = round(cached_scan_results["fusion"], 0.01)
-			var/tier = fusionpower2text(fusion_power)
+			var/instability = round(cached_scan_results["fusion"], 0.01)
 			to_chat(user, "<span class='boldnotice'>Large amounts of free neutrons detected in the air indicate that a fusion reaction took place.</span>")
-			to_chat(user, "<span class='notice'>Power of the last fusion reaction: [fusion_power]\n This power indicates it was a [tier]-tier fusion reaction.</span>")
+			to_chat(user, "<span class='notice'>Instability of the last fusion reaction: [instability].</span>")
 	return
 
 //slime scanner

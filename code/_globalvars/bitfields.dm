@@ -177,7 +177,6 @@ GLOBAL_LIST_INIT(bitfields, list(
 		"CAN_CARRY"	= CAN_CARRY,
 		"CAN_RESIST" = CAN_RESIST
 	),
-	))
 
 	"organ_flags" = list(
 		"ORGAN_SYNTHETIC" = ORGAN_SYNTHETIC,

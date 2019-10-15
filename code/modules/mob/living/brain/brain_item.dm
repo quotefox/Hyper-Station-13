@@ -42,7 +42,7 @@
 		if(brainmob.mind)
 			brainmob.mind.transfer_to(C)
 		else
-			brainmob.transfer_ckey(C)
+			C.key = brainmob.key
 
 		QDEL_NULL(brainmob)
 
