@@ -46,7 +46,7 @@
 		if(W == o.w_uniform || W == o.wear_suit)
 			o.dropItemToGround(W, TRUE)
 			playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
-			to_chat(o, "<span class='warning'>Your clothes give, ripping into pieces under the strain of your swelling breasts! Unless you manage to reduce the size of your breasts, there's no way you're going to be able to put anything on over these melons..!</b></span>")
+			to_chat(o, "<span class='warning'>Your clothes give, ripping into peices under the strain of your swelling breasts! Unless you manage to reduce the size of your breasts, there's no way you're going to be able to put anything on over these melons..!</b></span>")
 			o.visible_message("<span class='boldnotice'>[o]'s chest suddenly bursts forth, ripping their clothes off!'</span>")
 		else
 			to_chat(o, "<span class='notice'>Your bountiful bosom is so rich with mass, you seriously doubt you'll be able to fit any clothes over it.</b></span>")
@@ -55,21 +55,17 @@
 /datum/status_effect/chem/breast_enlarger/tick(mob/living/carbon/human/H)//If you try to wear clothes, you fail. Slows you down if you're comically huge
 	var/mob/living/carbon/human/o = owner
 	var/obj/item/organ/genital/breasts/B = o.getorganslot("breasts")
-
-	// HYPER CHANGE: Speed modifier and damage removed.
-	/*moveCalc = 1+((round(B.cached_size) - 9)/3) //Afffects how fast you move, and how often you can click.
+	moveCalc = 1+((round(B.cached_size) - 9)/3) //Afffects how fast you move, and how often you can click.
 	if(!B)
 		o.remove_movespeed_modifier(BREAST_MOVEMENT_SPEED)
 		sizeMoveMod(1)
 		owner.remove_status_effect(src)
-	*/
 	var/items = o.get_contents()
 	for(var/obj/item/W in items)
 		if(W == o.w_uniform || W == o.wear_suit)
 			o.dropItemToGround(W, TRUE)
 			playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
 			to_chat(owner, "<span class='warning'>Your enormous breasts are way too large to fit anything over them!</b></span>")
-	/*
 	if (B.size == "huge")
 		if(prob(1))
 			to_chat(owner, "<span class='notice'>Your back is feeling sore.</span>")
@@ -85,7 +81,6 @@
 	else if (B.breast_values[B.size] < B.breast_values[B.prev_size])
 		o.add_movespeed_modifier(BREAST_MOVEMENT_SPEED, TRUE, 100, NONE, override = TRUE, multiplicative_slowdown = moveCalc)
 		sizeMoveMod(moveCalc)
-	*/
 	if((B.cached_size) < 16)
 		switch(round(B.cached_size))
 			if(9)
@@ -98,7 +93,6 @@
 			to_chat(owner, "<span class='notice'>Your back is feeling a little sore.</span>")
 		..()
 
-/*
 /datum/status_effect/chem/breast_enlarger/on_remove(mob/living/carbon/M)
 	log_game("FERMICHEM: [owner]'s breasts has reduced to an acceptable size. ID: [owner.key]")
 	owner.remove_movespeed_modifier(BREAST_MOVEMENT_SPEED)
@@ -110,7 +104,7 @@
 	owner.next_move_modifier /= cachedmoveCalc
 	owner.next_move_modifier *= value
 	cachedmoveCalc = value
-*/
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/status_effect/chem/penis_enlarger
@@ -118,7 +112,6 @@
 	alert_type = null
 	var/bloodCalc
 	var/moveCalc
-
 
 /datum/status_effect/chem/penis_enlarger/on_apply(mob/living/carbon/human/H)//Removes clothes, they're too small to contain you. You belong to space now.
 	log_game("FERMICHEM: [owner]'s dick has reached comical sizes. ID: [owner.key]")
@@ -136,10 +129,8 @@
 	return ..()
 
 
-
 /datum/status_effect/chem/penis_enlarger/tick(mob/living/carbon/M)
 	var/mob/living/carbon/human/o = owner
-	/* HYPER CHANGE: Removes blood loss and movement penalties
 	var/obj/item/organ/genital/penis/P = o.getorganslot("penis")
 	moveCalc = 1+((round(P.length) - 21)/3) //effects how fast you can move
 	bloodCalc = 1+((round(P.length) - 21)/15) //effects how much blood you need (I didn' bother adding an arousal check because I'm spending too much time on this organ already.)
@@ -147,15 +138,12 @@
 		o.remove_movespeed_modifier(DICK_MOVEMENT_SPEED)
 		o.ResetBloodVol()
 		owner.remove_status_effect(src)
-	*/
-
 	var/items = o.get_contents()
 	for(var/obj/item/W in items)
 		if(W == o.w_uniform || W == o.wear_suit)
 			o.dropItemToGround(W, TRUE)
 			playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
 			to_chat(owner, "<span class='warning'>Your enormous package is way to large to fit anything over!</b></span>")
-/*
 	switch(round(P.cached_length))
 		if(21)
 			to_chat(o, "<span class='notice'>Your rascally willy has become a more managable size, liberating your movements.</b></span>")
@@ -166,15 +154,13 @@
 				to_chat(o, "<span class='warning'>Your indulgent johnson is so substantial, it's taking all your blood and affecting your movements!</b></span>")
 			o.add_movespeed_modifier(DICK_MOVEMENT_SPEED, TRUE, 100, NONE, override = TRUE, multiplicative_slowdown = moveCalc)
 			o.AdjustBloodVol(bloodCalc)
-*/
 	..()
 
-/*
 /datum/status_effect/chem/penis_enlarger/on_remove(mob/living/carbon/human/o)
 	log_game("FERMICHEM: [owner]'s dick has reduced to an acceptable size. ID: [owner.key]")
 	owner.remove_movespeed_modifier(DICK_MOVEMENT_SPEED)
 	owner.ResetBloodVol()
-*/
+
 
 /*//////////////////////////////////////////
 		Mind control functions
@@ -244,8 +230,7 @@
 	//	owner.remove_status_effect(src)//At the moment, a user can enthrall themselves, toggle this back in if that should be removed.
 	redirect_component = WEAKREF(owner.AddComponent(/datum/component/redirect, list(COMSIG_LIVING_RESIST = CALLBACK(src, .proc/owner_resist)))) //Do resistance calc if resist is pressed#
 	RegisterSignal(owner, COMSIG_MOVABLE_HEAR, .proc/owner_hear)
-	var/obj/item/organ/brain/B = M.getorganslot(ORGAN_SLOT_BRAIN) //It's their brain!
-	mental_capacity = 500 - B.get_brain_damage()
+	mental_capacity = 500 - M.getOrganLoss(ORGAN_SLOT_BRAIN)//It's their brain!
 	var/mob/living/carbon/human/H = owner
 	if(H)//Prefs
 		if(!H.canbearoused)
@@ -348,7 +333,7 @@
 				if(owner.client?.prefs.lewdchem && !customEcho)
 					to_chat(owner, "<span class='love'><i>[pick("I belong to [enthrallGender].", "[enthrallGender] knows whats best for me.", "Obedence is pleasure.",  "I exist to serve [enthrallGender].", "[enthrallGender] is so dominant, it feels right to obey them.")].</i></span>")
 		if (4) //mindbroken
-			if (mental_capacity >= 499 && (owner.getBrainLoss() <=0 || HAS_TRAIT(M, TRAIT_MINDSHIELD)) && !owner.reagents.has_reagent("MKUltra"))
+			if (mental_capacity >= 499 && (owner.getOrganLoss(ORGAN_SLOT_BRAIN) <=0 || HAS_TRAIT(M, TRAIT_MINDSHIELD)) && !owner.reagents.has_reagent("MKUltra"))
 				phase = 2
 				mental_capacity = 500
 				customTriggers = list()
@@ -387,8 +372,8 @@
 			M.hallucination = max(0, M.hallucination - 5)
 			M.stuttering = max(0, M.stuttering - 5)
 			M.jitteriness = max(0, M.jitteriness - 5)
-			if(owner.getBrainLoss() >=20)
-				owner.adjustBrainLoss(-0.2)
+			if(owner.getOrganLoss(ORGAN_SLOT_BRAIN) >=20)
+				owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.2)
 			if(withdrawal == TRUE)
 				REMOVE_TRAIT(owner, TRAIT_PACIFISM, "MKUltra")
 				SEND_SIGNAL(M, COMSIG_CLEAR_MOOD_EVENT, "EnthMissing1")
@@ -409,7 +394,7 @@
 				if(prob(5))
 					to_chat(owner, "<span class='notice'><i>You're starting to miss [(owner.client?.prefs.lewdchem?"your [enthrallGender]":"[master]")].</i></span>")
 				if(prob(5))
-					owner.adjustBrainLoss(0.1)
+					owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.1)
 					to_chat(owner, "<i>[(owner.client?.prefs.lewdchem?"[enthrallGender]":"[master]")] will surely be back soon</i>") //denial
 			if(36)
 				var/message = "[(owner.client?.prefs.lewdchem?"I feel empty when [enthrallGender]'s not around..":"I miss [master]'s presence")]"
@@ -417,11 +402,11 @@
 			if(37 to 65)//barganing
 				if(prob(10))
 					to_chat(owner, "<i>They are coming back, right...?</i>")
-					owner.adjustBrainLoss(0.5)
+					owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.5)
 				if(prob(10))
 					if(owner.client?.prefs.lewdchem)
 						to_chat(owner, "<i>I just need to be a good pet for [enthrallGender], they'll surely return if I'm a good pet.</i>")
-					owner.adjustBrainLoss(-1.5)
+					owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1.5)
 			if(66)
 				SEND_SIGNAL(M, COMSIG_CLEAR_MOOD_EVENT, "EnthMissing1")
 				var/message = "[(owner.client?.prefs.lewdchem?"I feel so lost in this complicated world without [enthrallGender]..":"I have to return to [master]!")]"
@@ -466,7 +451,7 @@
 						to_chat(owner, "<span class='warning'><i>You're unable to hold back your tears, suddenly sobbing as the desire to see your [enthrallGender] oncemore overwhelms you.</i></span>")
 					else
 						to_chat(owner, "<span class='warning'><i>You are overwheled with withdrawl from [master].</i></span>")
-					owner.adjustBrainLoss(1)
+					owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1)
 					owner.stuttering += 35
 					owner.jitteriness += 35
 					if(prob(10))//2% chance
@@ -482,14 +467,14 @@
 			if(140 to INFINITY) //acceptance
 				if(prob(15))
 					deltaResist += 5
-					owner.adjustBrainLoss(-1)
+					owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1)
 					if(prob(20))
 						if(owner.client?.prefs.lewdchem)
 							to_chat(owner, "<i><span class='small green'>Maybe you'll be okay without your [enthrallGender].</i></span>")
 						else
 							to_chat(owner, "<i><span class='small green'>You feel your mental functions slowly begin to return.</i></span>")
 				if(prob(5))
-					owner.adjustBrainLoss(1)
+					owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1)
 					M.hallucination += 30
 
 		withdrawalTick += 0.5//Enough to leave you with a major brain trauma, but not kill you.
