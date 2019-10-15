@@ -46,7 +46,7 @@
 		if(W == o.w_uniform || W == o.wear_suit)
 			o.dropItemToGround(W, TRUE)
 			playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
-			to_chat(o, "<span class='warning'>Your clothes give, ripping into peices under the strain of your swelling breasts! Unless you manage to reduce the size of your breasts, there's no way you're going to be able to put anything on over these melons..!</b></span>")
+			to_chat(o, "<span class='warning'>Your clothes give, ripping into pieces under the strain of your swelling breasts! Unless you manage to reduce the size of your breasts, there's no way you're going to be able to put anything on over these melons..!</b></span>")
 			o.visible_message("<span class='boldnotice'>[o]'s chest suddenly bursts forth, ripping their clothes off!'</span>")
 		else
 			to_chat(o, "<span class='notice'>Your bountiful bosom is so rich with mass, you seriously doubt you'll be able to fit any clothes over it.</b></span>")
@@ -55,17 +55,21 @@
 /datum/status_effect/chem/breast_enlarger/tick(mob/living/carbon/human/H)//If you try to wear clothes, you fail. Slows you down if you're comically huge
 	var/mob/living/carbon/human/o = owner
 	var/obj/item/organ/genital/breasts/B = o.getorganslot("breasts")
-	moveCalc = 1+((round(B.cached_size) - 9)/3) //Afffects how fast you move, and how often you can click.
+
+	// HYPER CHANGE: Speed modifier and damage removed.
+	/*moveCalc = 1+((round(B.cached_size) - 9)/3) //Afffects how fast you move, and how often you can click.
 	if(!B)
 		o.remove_movespeed_modifier(BREAST_MOVEMENT_SPEED)
 		sizeMoveMod(1)
 		owner.remove_status_effect(src)
+	*/
 	var/items = o.get_contents()
 	for(var/obj/item/W in items)
 		if(W == o.w_uniform || W == o.wear_suit)
 			o.dropItemToGround(W, TRUE)
 			playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
 			to_chat(owner, "<span class='warning'>Your enormous breasts are way too large to fit anything over them!</b></span>")
+	/*
 	if (B.size == "huge")
 		if(prob(1))
 			to_chat(owner, "<span class='notice'>Your back is feeling sore.</span>")
@@ -81,6 +85,7 @@
 	else if (B.breast_values[B.size] < B.breast_values[B.prev_size])
 		o.add_movespeed_modifier(BREAST_MOVEMENT_SPEED, TRUE, 100, NONE, override = TRUE, multiplicative_slowdown = moveCalc)
 		sizeMoveMod(moveCalc)
+	*/
 	if((B.cached_size) < 16)
 		switch(round(B.cached_size))
 			if(9)
@@ -93,6 +98,7 @@
 			to_chat(owner, "<span class='notice'>Your back is feeling a little sore.</span>")
 		..()
 
+/*
 /datum/status_effect/chem/breast_enlarger/on_remove(mob/living/carbon/M)
 	log_game("FERMICHEM: [owner]'s breasts has reduced to an acceptable size. ID: [owner.key]")
 	owner.remove_movespeed_modifier(BREAST_MOVEMENT_SPEED)
@@ -104,7 +110,7 @@
 	owner.next_move_modifier /= cachedmoveCalc
 	owner.next_move_modifier *= value
 	cachedmoveCalc = value
-
+*/
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /datum/status_effect/chem/penis_enlarger
@@ -112,6 +118,7 @@
 	alert_type = null
 	var/bloodCalc
 	var/moveCalc
+
 
 /datum/status_effect/chem/penis_enlarger/on_apply(mob/living/carbon/human/H)//Removes clothes, they're too small to contain you. You belong to space now.
 	log_game("FERMICHEM: [owner]'s dick has reached comical sizes. ID: [owner.key]")
@@ -129,8 +136,10 @@
 	return ..()
 
 
+
 /datum/status_effect/chem/penis_enlarger/tick(mob/living/carbon/M)
 	var/mob/living/carbon/human/o = owner
+	/* HYPER CHANGE: Removes blood loss and movement penalties
 	var/obj/item/organ/genital/penis/P = o.getorganslot("penis")
 	moveCalc = 1+((round(P.length) - 21)/3) //effects how fast you can move
 	bloodCalc = 1+((round(P.length) - 21)/15) //effects how much blood you need (I didn' bother adding an arousal check because I'm spending too much time on this organ already.)
@@ -138,12 +147,19 @@
 		o.remove_movespeed_modifier(DICK_MOVEMENT_SPEED)
 		o.ResetBloodVol()
 		owner.remove_status_effect(src)
+	*/
+
 	var/items = o.get_contents()
 	for(var/obj/item/W in items)
-		if(W == o.w_uniform || W == o.wear_suit)
-			o.dropItemToGround(W, TRUE)
-			playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
-			to_chat(owner, "<span class='warning'>Your enormous package is way to large to fit anything over!</b></span>")
+		if (o.arousalloss > 32) // warning that your shaft is getting errect!
+			if(W == o.w_uniform || W == o.wear_suit )
+				to_chat(M, "<span class='warning'>Your swelling cock begins to strain against your clothes tightly!</b></span>")
+		if (o.arousalloss > 33)
+			if(W == o.w_uniform || W == o.wear_suit )
+				o.dropItemToGround(W, TRUE)
+				playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
+				to_chat(owner, "<span class='warning'>Your erect member is way to large to fit anything over! You will need to be flaccid again to wear clothes!</b></span>")
+/*
 	switch(round(P.cached_length))
 		if(21)
 			to_chat(o, "<span class='notice'>Your rascally willy has become a more managable size, liberating your movements.</b></span>")
@@ -154,13 +170,15 @@
 				to_chat(o, "<span class='warning'>Your indulgent johnson is so substantial, it's taking all your blood and affecting your movements!</b></span>")
 			o.add_movespeed_modifier(DICK_MOVEMENT_SPEED, TRUE, 100, NONE, override = TRUE, multiplicative_slowdown = moveCalc)
 			o.AdjustBloodVol(bloodCalc)
+*/
 	..()
 
+/*
 /datum/status_effect/chem/penis_enlarger/on_remove(mob/living/carbon/human/o)
 	log_game("FERMICHEM: [owner]'s dick has reduced to an acceptable size. ID: [owner.key]")
 	owner.remove_movespeed_modifier(DICK_MOVEMENT_SPEED)
 	owner.ResetBloodVol()
-
+*/
 
 /*//////////////////////////////////////////
 		Mind control functions
@@ -230,6 +248,7 @@
 	//	owner.remove_status_effect(src)//At the moment, a user can enthrall themselves, toggle this back in if that should be removed.
 	redirect_component = WEAKREF(owner.AddComponent(/datum/component/redirect, list(COMSIG_LIVING_RESIST = CALLBACK(src, .proc/owner_resist)))) //Do resistance calc if resist is pressed#
 	RegisterSignal(owner, COMSIG_MOVABLE_HEAR, .proc/owner_hear)
+	var/obj/item/organ/brain/B = M.getorganslot(ORGAN_SLOT_BRAIN) //It's their brain!
 	mental_capacity = 500 - M.getOrganLoss(ORGAN_SLOT_BRAIN)//It's their brain!
 	var/mob/living/carbon/human/H = owner
 	if(H)//Prefs
