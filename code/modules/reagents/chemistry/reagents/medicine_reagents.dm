@@ -44,7 +44,7 @@
 	M.heal_bodypart_damage(5,5)
 	M.adjustToxLoss(-5, 0, TRUE)
 	M.hallucination = 0
-	M.setOrganLoss(ORGAN_SLOT_BRAIN, 0)
+	M.setOrganM.blood
 	REMOVE_TRAITS_NOT_IN(M, list(SPECIES_TRAIT, ROUNDSTART_TRAIT, ORGAN_TRAIT))
 	M.set_blurriness(0)
 	M.set_blindness(0)
@@ -856,7 +856,6 @@
 			if(M.notify_ghost_cloning(source = M))
 				spawn (100) //so the ghost has time to re-enter
 					return
-
 			else
 				M.adjustOxyLoss(-20, 0)
 				M.adjustToxLoss(-20, 0)
@@ -1180,6 +1179,7 @@
 	overdose_threshold = 25
 	pH = 11
 
+//Hyperstation 13 nerf.
 /datum/reagent/medicine/earthsblood/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(-3 * REM, 0)
 	M.adjustFireLoss(-3 * REM, 0)
@@ -1187,7 +1187,7 @@
 	M.adjustToxLoss(-3 * REM, 0, TRUE) //Heals TOXINLOVERS
 	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2 * REM, 150) //This does, after all, come from ambrosia, and the most powerful ambrosia in existence, at that!
 	M.adjustCloneLoss(-1 * REM, 0)
-	M.adjustStaminaLoss(-13 * REM, 0)
+	M.adjustStaminaLoss(-3 * REM, 0)
 	M.jitteriness = min(max(0, M.jitteriness + 3), 30)
 	M.druggy = min(max(0, M.druggy + 10), 15) //See above
 	..()
