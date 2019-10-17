@@ -1,34 +1,34 @@
 /datum/bounty/item/chef/birthday_cake
 	name = "Birthday Cake"
 	description = "Winfre's birthday is coming up! Ship them a birthday cake to celebrate!"
-	reward = 4000
+	reward = 1000
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/store/cake/birthday, /obj/item/reagent_containers/food/snacks/cakeslice/birthday)
 
 /datum/bounty/item/chef/soup
 	name = "Soup"
 	description = "To quell the homeless uprising, Kinaris will be serving soup to all underpaid workers. Ship any type of soup."
-	reward = 3000
+	reward = 700
 	required_count = 3
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/soup)
 
 /datum/bounty/item/chef/popcorn
 	name = "Popcorn Bags"
 	description = "Upper management wants to host a movie night. Ship bags of popcorn for the occasion."
-	reward = 3000
+	reward = 800
 	required_count = 3
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/popcorn)
 
 /datum/bounty/item/chef/onionrings
 	name = "Onion Rings"
 	description = "Kinaris.co is remembering Saturn day. Ship onion rings to show the station's support."
-	reward = 3000
+	reward = 800
 	required_count = 3
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/onionrings)
 
 /datum/bounty/item/chef/icecreamsandwich
 	name = "Ice Cream Sandwiches"
 	description = "Upper management has been screaming non-stop for ice cream. Please send some."
-	reward = 4000
+	reward = 800
 	required_count = 3
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/icecreamsandwich)
 
@@ -47,21 +47,21 @@
 /datum/bounty/item/chef/salad
 	name = "Salad or Rice Bowls"
 	description = "CentCom management is going on a health binge. Your order is to ship salad or rice bowls."
-	reward = 3000
+	reward = 1200
 	required_count = 3
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/salad)
 
 /datum/bounty/item/chef/carrotfries
 	name = "Carrot Fries"
 	description = "Night sight can mean life or death! A shipment of carrot fries is the order."
-	reward = 3500
+	reward = 1300
 	required_count = 3
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/carrotfries)
 
 /datum/bounty/item/chef/superbite
 	name = "Super Bite Burger"
 	description = "Commander Tubbs thinks he can set a competitive eating world record. All he needs is a super bite burger shipped to him."
-	reward = 12000
+	reward = 1800
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/burger/superbite)
 
 /datum/bounty/item/chef/poppypretzel
@@ -73,19 +73,19 @@
 /datum/bounty/item/chef/cubancarp
 	name = "Cuban Carp"
 	description = "To celebrate the birth of Castro XXVII, ship one cuban carp to CentCom."
-	reward = 8000
+	reward = 3000
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/cubancarp)
 
 /datum/bounty/item/chef/hotdog
 	name = "Hot Dog"
 	description = "Kinaris.co is conducting taste tests to determine the best hot dog recipe. Ship your station's version to participate."
-	reward = 8000
+	reward = 4000
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/hotdog)
 
 /datum/bounty/item/chef/eggplantparm
 	name = "Eggplant Parmigianas"
 	description = "A famous singer will be arriving at CentCom, and their contract demands that they only be served Eggplant Parmigiana. Ship some, please!"
-	reward = 3500
+	reward = 2500
 	required_count = 3
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/eggplantparm)
 
@@ -99,33 +99,33 @@
 /datum/bounty/item/chef/chawanmushi
 	name = "Chawanmushi"
 	description = "Kinaris.Co wants to improve relations with its sister company, Donk.Co. Ship Chawanmushi immediately."
-	reward = 8000
+	reward = 5000
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/chawanmushi)
 
 /datum/bounty/item/chef/kebab
 	name = "Kebabs"
 	description = "Remove all kebab from station you are best food. Ship to CentCom to remove from the premises."
-	reward = 3500
+	reward = 1500
 	required_count = 3
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/kebab)
 
 /datum/bounty/item/chef/soylentgreen
 	name = "Soylent Green"
 	description = "CentCom has heard wonderful things about the product 'Soylent Green', and would love to try some. If you endulge them, expect a pleasant bonus."
-	reward = 5000
+	reward = 4000
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/soylentgreen)
 
 /datum/bounty/item/chef/pancakes
 	name = "Pancakes"
 	description = "Here at Kinaris.Co we consider employees to be family. And you know what families love? Pancakes. Ship a baker's dozen."
-	reward = 5000
+	reward = 4000
 	required_count = 13
 	wanted_types = list(/datum/crafting_recipe/food/pancakes)
 
 /datum/bounty/item/chef/nuggies
 	name = "Chicken Nuggets"
 	description = "The vice president's son won't shut up about chicken nuggies. Would you mind shipping some?"
-	reward = 4000
+	reward = 2500
 	required_count = 6
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/nugget)
 
