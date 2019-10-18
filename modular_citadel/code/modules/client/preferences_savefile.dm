@@ -72,6 +72,7 @@
 	WRITE_FILE(S["feature_vag_color"], features["vag_color"])
 	//womb features
 	WRITE_FILE(S["feature_has_womb"], features["has_womb"])
+	WRITE_FILE(S["feature_can_get_preg"], features["can_get_preg"])
 	//flavor text
 	WRITE_FILE(S["feature_flavor_text"], features["flavor_text"])
 

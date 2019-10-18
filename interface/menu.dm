@@ -68,11 +68,29 @@ GLOBAL_LIST_EMPTY(menulist)
 	var/atom/verb/verbpath = Get_checked(C)
 	if (!verbpath || !(verbpath in typesof("[type]/verb")))
 		return
-	
+
 	if (copytext(verbpath.name,1,2) == "@")
 		winset(C, null, list2params(list("command" = copytext(verbpath.name,2))))
 	else
 		winset(C, null, list2params(list("command" = replacetext(verbpath.name, " ", "-"))))
+
+//Hypestation 13 changes
+
+/datum/verbs/menu/Settings/FPS
+	checkbox = CHECKBOX_GROUP
+	default = /datum/verbs/menu/Settings/FPS/verb/high
+
+/datum/verbs/menu/Settings/FPS/verb/low()
+	set name = "LowFPS"
+	set desc = "&20 fps"
+	usr.client.prefs.clientfps = 20
+	usr.client.prefs.parent.fps = 20
+
+/datum/verbs/menu/Settings/FPS/verb/high()
+	set name = "HighFPS"
+	set desc = "&30 fps (High-end machine)"
+	usr.client.prefs.clientfps = 30
+	usr.client.prefs.parent.fps = 30
 
 /datum/verbs/menu/Icon/Size
 	checkbox = CHECKBOX_GROUP

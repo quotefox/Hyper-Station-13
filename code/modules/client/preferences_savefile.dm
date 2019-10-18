@@ -367,6 +367,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_vag_color"]				>> features["vag_color"]
 	//womb features
 	S["feature_has_womb"]				>> features["has_womb"]
+	S["feature_can_get_preg"]			>> features["can_get_preg"] //hyperstation 13
 	//flavor text
 	//Let's make our players NOT cry desperately as we wipe their savefiles of their special snowflake texts:
 	if((S["flavor_text"] != "") && (S["flavor_text"] != null) && S["flavor_text"]) //If old text isn't null and isn't "" but still exists.

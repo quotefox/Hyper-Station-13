@@ -200,6 +200,7 @@
 		"vag_clit_diam"		= 0.25,
 		"vag_clit_len"		= 0.25,
 		"has_womb"			= FALSE,
+		"can_get_preg"		= FALSE,
 		"womb_cum_rate"		= CUM_RATE,
 		"womb_cum_mult"		= CUM_RATE_MULT,
 		"womb_efficiency"	= CUM_EFFICIENCY,
