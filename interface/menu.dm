@@ -81,13 +81,13 @@ GLOBAL_LIST_EMPTY(menulist)
 	default = /datum/verbs/menu/Settings/FPS/verb/high
 
 /datum/verbs/menu/Settings/FPS/verb/low()
-//	set name = "LowFPS"
+	set name = "LowFPS"
 	set desc = "&20 fps"
 	usr.client.prefs.clientfps = 20
 	usr.client.prefs.parent.fps = 20
 
 /datum/verbs/menu/Settings/FPS/verb/high()
-//	set name = "HighFPS"
+	set name = "HighFPS"
 	set desc = "&30 fps (High-end machines)"
 	usr.client.prefs.clientfps = 30
 	usr.client.prefs.parent.fps = 30
