@@ -136,7 +136,7 @@
 	var/mob/living/carbon/human/H = pushed_mob
 	SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "table", /datum/mood_event/table)
 
-/*
+/* You don't shove people onto a table frame.
 /obj/structure/table/shove_act(mob/living/target, mob/living/user)
 	if(!target.resting)
 		target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
