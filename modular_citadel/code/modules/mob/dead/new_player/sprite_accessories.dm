@@ -741,6 +741,14 @@
 	name = "hShark"
 	icon_state = "hshark"
 
+/datum/sprite_accessory/mam_snouts/hjackal
+	name = "Jackal"
+	icon_state = "hjackal"
+
+/datum/sprite_accessory/mam_snouts/hspots
+	name = "Hyena"
+	icon_state = "hspots"
+
 /datum/sprite_accessory/mam_snouts/hhorse
 	name = "Horse"
 	icon_state = "hhorse"
