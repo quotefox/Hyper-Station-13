@@ -21,7 +21,6 @@
 	anchored = TRUE
 	layer = TABLE_LAYER
 	climbable = TRUE
-	obj_flags = CAN_BE_HIT|SHOVABLE_ONTO
 	pass_flags = LETPASSTHROW //You can throw objects over this, despite it's density.")
 	var/frame = /obj/structure/table_frame
 	var/framestack = /obj/item/stack/rods
@@ -137,6 +136,7 @@
 	var/mob/living/carbon/human/H = pushed_mob
 	SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "table", /datum/mood_event/table)
 
+/*
 /obj/structure/table/shove_act(mob/living/target, mob/living/user)
 	if(!target.resting)
 		target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
@@ -145,6 +145,7 @@
 	target.forceMove(src.loc)
 	log_combat(user, target, "shoved", "onto [src] (table)")
 	return TRUE
+*/
 
 /obj/structure/table/attackby(obj/item/I, mob/user, params)
 	if(!(flags_1 & NODECONSTRUCT_1))
@@ -290,7 +291,6 @@
 /obj/structure/table/plasmaglass/New()
 	. = ..()
 	debris += new frame
-	debris += new /obj/item/shard/plasma
 
 /obj/structure/table/plasmaglass/Destroy()
 	QDEL_LIST(debris)

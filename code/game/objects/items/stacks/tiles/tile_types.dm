@@ -99,8 +99,7 @@
 	icon_state = "tile-carpet"
 	turf_type = /turf/open/floor/carpet
 	resistance_flags = FLAMMABLE
-
-tableVariant = /obj/structure/table/wood/fancy
+	tableVariant = /obj/structure/table/wood/fancy
 
 /obj/item/stack/tile/carpet/black
 	name = "black carpet"
