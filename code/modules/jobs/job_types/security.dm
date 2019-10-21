@@ -134,7 +134,7 @@ Warden
 Detective
 */
 /datum/job/detective
-	title = "Detective"
+	title = "Vigilante"
 	flag = DETECTIVE
 	department_head = list("Head of Security")
 	department_flag = ENGSEC
