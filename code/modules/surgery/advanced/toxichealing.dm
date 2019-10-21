@@ -17,7 +17,7 @@
 
 /datum/surgery_step/toxichealing
 	name = "rejuvenate body"
-	implements = list(TOOL_HEMOSTAT  = 100, TOOL_SCREWDRIVER = 35, /obj/item/pen = 15)
+	implements = list(/obj/item/hemostat = 100, TOOL_SCREWDRIVER = 35, /obj/item/pen = 15)
 	repeatable = TRUE
 	time = 25
 

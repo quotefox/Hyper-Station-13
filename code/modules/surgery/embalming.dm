@@ -11,9 +11,9 @@
 
 /datum/surgery_step/embalming
 	name = "embalming body"
-	implements = list(/obj/item/reagent_containers/syringe = 100, /obj/item/pen = 30)
+	implements = list(/obj/item/hemostat = 100)
 	time = 10
-	chems_needed = list("drying_agent", "sterilizine")
+	chems_needed = list("drying_agent","formaldehyde")
 	require_all_chems = FALSE
 
 /datum/surgery_step/embalming/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
