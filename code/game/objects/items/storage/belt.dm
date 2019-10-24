@@ -599,7 +599,7 @@
 	icon_state = "bandolier-durathread"
 	item_state = "bandolier-durathread"
 	resistance_flags = FIRE_PROOF
-	
+
 /obj/item/storage/belt/bandolier/durathread/ComponentInitialize()
 	. = ..()
 	GET_COMPONENT(STR, /datum/component/storage)
@@ -776,3 +776,27 @@
 	if(attack_type == PROJECTILE_ATTACK)
 		final_block_chance = 0 //To thin to block bullets
 	return ..()
+
+/obj/item/storage/belt/botany
+	name = "botany belt"
+	desc = "A belt used to hold most janitorial supplies."
+	icon_state = "grenadebeltold" //reusing the old grenade belt sprite, can't go wrong.
+	item_state = "grenadebeltold"
+
+/obj/item/storage/belt/botany/ComponentInitialize()
+	. = ..()
+	GET_COMPONENT(STR, /datum/component/storage)
+	STR.max_items = 8
+	STR.max_w_class = WEIGHT_CLASS_NORMAL
+	STR.can_hold = typecacheof(list(
+		/obj/item/reagent_containers/glass/beaker,
+		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/syringe,
+		/obj/item/reagent_containers/spray,
+		/obj/item/disk/plantgene,
+		/obj/item/seeds,
+		/obj/item/shovel/spade,
+		/obj/item/cultivator,
+		/obj/item/hatchet,
+		/obj/item/plant_analyzer
+		))
