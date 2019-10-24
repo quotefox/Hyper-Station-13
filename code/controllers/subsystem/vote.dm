@@ -212,7 +212,7 @@ SUBSYSTEM_DEF(vote)
 				for(var/i in choices)//this is necessary because otherwise we'll end up with a bunch of /datum/map_config's as the default vote value instead of 0 as intended
 					choices[i] = 0
 			if("roundtype") //CIT CHANGE - adds the roundstart secret/extended vote
-				choices.Add("secret", "extended")
+				choices.Add("secret", "extended","dynamic")
 			if("custom")
 				question = stripped_input(usr,"What is the vote for?")
 				if(!question)
