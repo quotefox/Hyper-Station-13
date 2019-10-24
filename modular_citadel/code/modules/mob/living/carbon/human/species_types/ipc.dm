@@ -10,7 +10,7 @@
 	inherent_biotypes = list(MOB_ROBOTIC, MOB_HUMANOID)
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna")
 	default_features = list("ipc_screen" = "Blank", "ipc_antenna" = "None")
-	meat = null //robots can't make meat silly!
+	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/ipc
 //Just robo looking parts.
 	mutant_heart = /obj/item/organ/heart/ipc
 	mutantlungs = /obj/item/organ/lungs/ipc
@@ -19,7 +19,7 @@
 	mutanteyes = /obj/item/organ/eyes/ipc
 	mutanttongue = /obj/item/organ/tongue/robot
 
-	exotic_bloodtype = "oil"
+	exotic_bloodtype = "HF"
 
 	var/datum/action/innate/monitor_change/screen
 
