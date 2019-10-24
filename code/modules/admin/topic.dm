@@ -290,6 +290,11 @@
 
 	else if(href_list["editrights"])
 		edit_rights_topic(href_list)
+	
+	else if(href_list["gamemode_panel"])
+		if(!check_rights(R_ADMIN))
+			return
+		SSticker.mode.admin_panel()
 
 	else if(href_list["call_shuttle"])
 		if(!check_rights(R_ADMIN))
