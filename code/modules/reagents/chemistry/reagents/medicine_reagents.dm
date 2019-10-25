@@ -1103,10 +1103,10 @@
 	..()
 
 /datum/reagent/medicine/tricordrazine/overdose_process(mob/living/M)
-	M.adjustToxLoss(2*REM, 0)
-	M.adjustOxyLoss(2*REM, 0)
-	M.adjustBruteLoss(2*REM, 0)
-	M.adjustFireLoss(2*REM, 0)
+	M.adjustToxLoss(0.5*REM, 0)
+	M.adjustOxyLoss(0.5*REM, 0)
+	M.adjustBruteLoss(0.5*REM, 0)
+	M.adjustFireLoss(0.5*REM, 0)
 	..()
 	. = 1
 
