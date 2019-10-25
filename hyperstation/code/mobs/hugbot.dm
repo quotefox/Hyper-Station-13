@@ -123,7 +123,7 @@
 
 	if(ishuman(C))
 		var/mob/living/carbon/human/H = C
-		GET_COMPONENT_FROM(mood, /datum/component/mood, H)
+		var/datum/component/mood/mood = H.GetComponent(/datum/component/mood)
 		if(emagged != 2) // EVERYONE GETS HUGS!
 			for(var/datum/mood_event/i in  mood.mood_events)
 				if (i.description == "<span class='nicegreen'>Hugs are nice.</span>\n" )
