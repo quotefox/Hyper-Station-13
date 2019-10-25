@@ -284,13 +284,7 @@
 		parts += "[GLOB.TAB]Round ID: <b>[info]</b>"
 		var/list/voting_results = SSvote.stored_gamemode_votes
 		
-	if(length(voting_results))
-		parts += "[GLOB.TAB]Voting: "
-		var/total_score = 0
-		for(var/choice in voting_results)
-			var/score = voting_results[choice]
-			total_score += score
-			parts += "[GLOB.TAB][GLOB.TAB][choice]: [score]"
+
 			
 	parts += "[GLOB.TAB]Shift Duration: <B>[DisplayTimeText(world.time - SSticker.round_start_time)]</B>"
 	parts += "[GLOB.TAB]Station Integrity: <B>[mode.station_was_nuked ? "<span class='redtext'>Destroyed</span>" : "[popcount["station_integrity"]]%"]</B>"
