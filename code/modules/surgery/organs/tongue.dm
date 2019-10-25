@@ -23,6 +23,9 @@
 		/datum/language/aphasia,
 		/datum/language/slime,
 	))
+	healing_factor = STANDARD_ORGAN_HEALING*5 //Fast!!
+	decay_factor = STANDARD_ORGAN_DECAY/2
+
 
 /obj/item/organ/tongue/Initialize(mapload)
 	. = ..()
