@@ -54,7 +54,7 @@
 			if (restrict_ghost_roles && M.mind.assigned_role in GLOB.exp_specialmap[EXP_TYPE_SPECIAL]) // Are they playing a ghost role?
 				trimmed_list.Remove(M)
 				continue
-			if (M.mind.assigned_role in restricted_roles || M.has_trait(TRAIT_MINDSHIELD)) // Does their job allow it or are they mindshielded?
+			if (M.mind.assigned_role in restricted_roles || HAS_TRAIT(M, TRAIT_MINDSHIELD)) // Does their job allow it or are they mindshielded?
 				trimmed_list.Remove(M)
 				continue
 			if ((exclusive_roles.len > 0) && !(M.mind.assigned_role in exclusive_roles)) // Is the rule exclusive to their job?
