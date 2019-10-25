@@ -773,6 +773,12 @@
 	name = "Mammal, Short ALT"
 	icon_state = "scanidalt"
 
+/datum/sprite_accessory/mam_snouts/skulldog
+	name = "Skulldog"
+	icon_state = "skulldog"
+	extra = TRUE
+	extra_color_src = MATRIXED
+
 /datum/sprite_accessory/mam_snouts/wolf
 	name = "Mammal, Thick"
 	icon_state = "wolf"
