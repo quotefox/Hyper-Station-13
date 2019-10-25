@@ -8,6 +8,8 @@
 	internal 		= TRUE
 	fluid_id 		= "femcum"
 	producing		= TRUE
+	var/pregnant	= FALSE //this is for pregnancy code
+
 
 /obj/item/organ/genital/womb/on_life()
 	if(QDELETED(src))

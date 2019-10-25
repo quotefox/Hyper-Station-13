@@ -145,6 +145,8 @@
 		give_vagina()
 	if(dna.features["has_womb"])
 		give_womb()
+	if(dna.features["can_get_preg"])
+		make_breedable() //hyperstation set up the pregnancy stuff
 	if(dna.features["has_balls"])
 		give_balls()
 	if(dna.features["has_breasts"]) // since we have multi-boobs as a thing, we'll want to at least draw over these. but not over the pingas.
@@ -266,6 +268,10 @@
 		if(W)
 			W.update()
 
+/mob/living/carbon/human/proc/make_breedable()
+	//Hyperstation, This makes the character able to use the impreg features of the game
+	breedable = 1
+	impregchance = 30	//30% is a good base chance
 
 /datum/species/proc/genitals_layertext(layer)
 	switch(layer)

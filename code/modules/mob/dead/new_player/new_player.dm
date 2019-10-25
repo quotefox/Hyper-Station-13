@@ -576,9 +576,10 @@
 	//h13 assign your characters custom height.
 	if (H.custom_body_size > 0)
 		H.resize = (H.custom_body_size * 0.01)
-		//Move large characters up slightly. small character dont really need this.
-		H.pixel_y = min(((H.custom_body_size-100) * 0.25), 0)
 
+	//h13 give your starting impregchance (30%)
+	if (H.breedable == TRUE)
+		H.impregchance = 30
 
 	. = H
 	new_character = .
