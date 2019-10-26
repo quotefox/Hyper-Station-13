@@ -81,6 +81,8 @@
 		propability = 1
 	else if(locate(/obj/structure/table, T))
 		propability = 0.8
+	else if(locate(/obj/machinery/stasis, T))
+		propability = 0.9
 	else if(locate(/obj/structure/bed, T))
 		propability = 0.7
 
@@ -98,7 +100,7 @@
 		var/datum/species/abductor/S = H.dna.species
 		if(S.scientist)
 			return TRUE
-	
+
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/R = user
 		var/obj/item/surgical_processor/SP = locate() in R.module.modules
@@ -106,7 +108,7 @@
 			return FALSE
 		if(type in SP.advanced_surgeries)
 			return TRUE
-	
+
 	var/turf/T = get_turf(target)
 	var/obj/structure/table/optable/table = locate(/obj/structure/table/optable, T)
 	if(!table || !table.computer)
