@@ -166,8 +166,6 @@
 		/obj/item/clothing/glasses,
 		/obj/item/wrench/medical,
 		/obj/item/clothing/mask/muzzle,
-		/obj/item/storage/bag/chemistry,
-		/obj/item/storage/bag/bio,
 		/obj/item/reagent_containers/blood,
 		/obj/item/tank/internals/emergency_oxygen,
 		/obj/item/gun/syringe/syndicate,
@@ -270,7 +268,6 @@
 		/obj/item/kitchen/knife,
 		/obj/item/reagent_containers/hypospray,
 		/obj/item/gps,
-		/obj/item/storage/bag/ore,
 		/obj/item/survivalcapsule,
 		/obj/item/t_scanner/adv_mining_scanner,
 		/obj/item/reagent_containers/pill,
@@ -279,7 +276,6 @@
 		/obj/item/reagent_containers/food/drinks,
 		/obj/item/organ/regenerative_core,
 		/obj/item/wormhole_jaunter,
-		/obj/item/storage/bag/plants,
 		/obj/item/stack/marker_beacon
 		))
 
@@ -599,7 +595,7 @@
 	icon_state = "bandolier-durathread"
 	item_state = "bandolier-durathread"
 	resistance_flags = FIRE_PROOF
-	
+
 /obj/item/storage/belt/bandolier/durathread/ComponentInitialize()
 	. = ..()
 	GET_COMPONENT(STR, /datum/component/storage)
