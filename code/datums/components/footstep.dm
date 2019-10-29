@@ -3,7 +3,7 @@
 	var/volume
 	var/e_range
 
-/datum/component/footstep/Initialize(volume_ = 0.5, e_range_ = -1)
+/datum/component/footstep/Initialize(volume_ = 0.4, e_range_ = -1)
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 	volume = volume_
@@ -35,7 +35,7 @@
 			e -= 4
 	steps++
 
-	if(steps >= 2)
+	if(steps >= 3)
 		steps = 0
 
 	else
