@@ -32,10 +32,10 @@
 			return
 		if(ishuman(C) && C.m_intent == MOVE_INTENT_WALK)
 			v /= 2
-			e -= 5
+			e -= 4
 	steps++
 
-	if(steps >= 3)
+	if(steps >= 2)
 		steps = 0
 
 	else
@@ -58,7 +58,7 @@
 	if(isclawfoot(LM))
 		if(isalienadult(LM)) //xenos are stealthy and get quieter footsteps
 			v /= 3
-			e -= 5
+			e -= 4
 
 		playsound(T, pick(GLOB.clawfootstep[T.clawfootstep][1]),
 				GLOB.clawfootstep[T.clawfootstep][2] * v,
