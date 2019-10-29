@@ -1,11 +1,11 @@
 /obj/mecha/proc/get_armour_facing(relative_dir)
 	switch(relative_dir)
 		if(0) // BACKSTAB!
-			return facing_modifiers[BACK_ARMOUR]
+			return facing_modifiers[MECHA_BACK_ARMOUR]
 		if(45, 90, 270, 315)
-			return facing_modifiers[SIDE_ARMOUR]
+			return facing_modifiers[MECHA_SIDE_ARMOUR]
 		if(225, 180, 135)
-			return facing_modifiers[FRONT_ARMOUR]
+			return facing_modifiers[MECHA_FRONT_ARMOUR]
 	return 1 //always return non-0
 
 /obj/mecha/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
@@ -199,23 +199,23 @@
 		else
 			to_chat(user, "<span class='warning'>Maintenance protocols disabled by operator.</span>")
 	else if(istype(W, /obj/item/wrench))
-		if(state==1)
-			state = 2
+		if(construction_state==1)
+			construction_state = 2
 			to_chat(user, "<span class='notice'>You undo the securing bolts.</span>")
-		else if(state==2)
-			state = 1
+		else if(construction_state==2)
+			construction_state = 1
 			to_chat(user, "<span class='notice'>You tighten the securing bolts.</span>")
 		return
 	else if(istype(W, /obj/item/crowbar))
-		if(state==2)
-			state = 3
+		if(construction_state==2)
+			construction_state = 3
 			to_chat(user, "<span class='notice'>You open the hatch to the power unit.</span>")
-		else if(state==3)
-			state=2
+		else if(construction_state==3)
+			construction_state=2
 			to_chat(user, "<span class='notice'>You close the hatch to the power unit.</span>")
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
-		if(state == 3 && (internal_damage & MECHA_INT_SHORT_CIRCUIT))
+		if(construction_state == 3 && (internal_damage & MECHA_INT_SHORT_CIRCUIT))
 			var/obj/item/stack/cable_coil/CC = W
 			if(CC.use(2))
 				clearInternalDamage(MECHA_INT_SHORT_CIRCUIT)
@@ -227,19 +227,19 @@
 		if(internal_damage & MECHA_INT_TEMP_CONTROL)
 			clearInternalDamage(MECHA_INT_TEMP_CONTROL)
 			to_chat(user, "<span class='notice'>You repair the damaged temperature controller.</span>")
-		else if(state==3 && cell)
+		else if(construction_state==3 && cell)
 			cell.forceMove(loc)
 			cell = null
-			state = 4
+			construction_state = 4
 			to_chat(user, "<span class='notice'>You unscrew and pry out the powercell.</span>")
 			log_message("Powercell removed")
-		else if(state==4 && cell)
-			state=3
+		else if(construction_state==4 && cell)
+			construction_state=3
 			to_chat(user, "<span class='notice'>You screw the cell in place.</span>")
 		return
 
 	else if(istype(W, /obj/item/stock_parts/cell))
-		if(state==4)
+		if(construction_state==4)
 			if(!cell)
 				if(!user.transferItemToLoc(W, src))
 					return

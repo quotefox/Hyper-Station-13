@@ -134,4 +134,9 @@
 /obj/machinery/stasis/crowbar_act(mob/living/user, obj/item/I)
 	return default_deconstruction_crowbar(I)
 
+/obj/machinery/stasis/attack_robot(mob/user)
+	if(Adjacent(user) && occupant)
+		unbuckle_mob(occupant)
+	else
+		..()
 #undef STASIS_TOGGLE_COOLDOWN
