@@ -126,7 +126,7 @@
 	desc = "A peel from a bluespace banana."
 	icon_state = "banana_peel_blue"
 
-//Banana Spider
+//Banana Spider.
 /obj/item/seeds/banana/exotic_banana
 	name = "pack of exotic banana seeds"
 	desc = "They're seeds that grow into banana trees. However, those bananas might be alive."
