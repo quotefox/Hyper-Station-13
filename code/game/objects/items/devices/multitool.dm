@@ -35,6 +35,10 @@
 	drop_sound = 'sound/items/handling/multitool_drop.ogg'
 	pickup_sound =  'sound/items/handling/multitool_pickup.ogg'
 
+/obj/item/multitool/chaplain/Initialize()
+	. = ..()
+	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
+
 /obj/item/multitool/examine(mob/user)
 	. = ..()
 	if(selected_io)

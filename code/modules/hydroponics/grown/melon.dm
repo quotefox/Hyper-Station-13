@@ -59,22 +59,23 @@
 	wine_power = 70 //Water to wine, baby.
 	wine_flavor = "divinity"
 
-/*/obj/item/reagent_containers/food/snacks/grown/holymelon/Initialize()
+/*
+/obj/item/reagent_containers/food/snacks/grown/holymelon/Initialize()
 	. = ..()
 	var/uses = 1
 	if(seed)
 		uses = round(seed.potency / 20)
-		AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, uses, TRUE, CALLBACK(src, .proc/block_magic), CALLBACK(src, .proc/expire)) //deliver us from evil o melon god
-*/
+	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, ITEM_SLOT_HANDS, uses, TRUE, CALLBACK(src, .proc/block_magic), CALLBACK(src, .proc/expire)) //deliver us from evil o melon god
+
 /obj/item/reagent_containers/food/snacks/grown/holymelon/proc/block_magic(mob/user, major)
 	if(major)
-		visible_message("<span class='warning'>[src] hums slightly, and seems to decay a bit.</span>")
+		to_chat(user, "<span class='warning'>[src] hums slightly, and seems to decay a bit.</span>")
 
 /obj/item/reagent_containers/food/snacks/grown/holymelon/proc/expire(mob/user)
-	visible_message("<span class='warning'>[src] rapidly turns into ash!</span>")
+	to_chat(user, "<span class='warning'>[src] rapidly turns into ash!</span>")
 	qdel(src)
 	new /obj/effect/decal/cleanable/ash(drop_location())
-
+*/
 //Milkmelon
 /obj/item/seeds/watermelon/milk
 	name = "pack of milkmelon seeds"
