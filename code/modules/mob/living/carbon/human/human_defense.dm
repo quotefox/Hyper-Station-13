@@ -673,6 +673,7 @@
 				var/status = ""
 				var/brutedamage = LB.brute_dam
 				var/burndamage = LB.burn_dam
+				var/broken = LB.broken
 				if(hallucination)
 					if(prob(30))
 						brutedamage += rand(30,40)
@@ -700,7 +701,8 @@
 						status += LB.medium_burn_msg
 					else if(burndamage > 0)
 						status += LB.light_burn_msg
-
+					if(broken == 1)
+						status = "broken"
 					if(status == "")
 						status = "OK"
 				var/no_damage
@@ -711,6 +713,7 @@
 				for(var/obj/item/I in LB.embedded_objects)
 					to_send += "\t <a href='?src=[REF(src)];embedded_object=[REF(I)];embedded_limb=[REF(LB)]' class='warning'>There is \a [I] embedded in your [LB.name]!</a>\n"
 
+			for(var/t in missing)
 			for(var/t in missing)
 				to_send += "<span class='boldannounce'>Your [parse_zone(t)] is missing!</span>\n"
 

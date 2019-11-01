@@ -86,7 +86,7 @@
 
 	var/widescreenlayout = FALSE //CIT CHANGE - adds support for different hud layouts depending on widescreen pref
 	if(owner.client && owner.client.prefs && owner.client.prefs.widescreenpref) //CIT CHANGE - ditto
-		widescreenlayout = TRUE // CIT CHANGE - ditto
+		widescreenlayout = FALSE // CIT CHANGE - ditto
 
 	var/obj/screen/using
 	var/obj/screen/inventory/inv_box
