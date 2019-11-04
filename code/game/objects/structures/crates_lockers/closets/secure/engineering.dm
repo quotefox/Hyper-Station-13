@@ -80,6 +80,7 @@
 	new /obj/item/clothing/mask/gas(src)
 	new /obj/item/clothing/glasses/meson/engine(src)
 	new /obj/item/storage/box/emptysandbags(src)
+	new /obj/item/storage/bag/construction(src)
 
 
 /obj/structure/closet/secure_closet/atmospherics
