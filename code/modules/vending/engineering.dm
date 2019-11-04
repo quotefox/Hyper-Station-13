@@ -12,7 +12,6 @@
 					/obj/item/storage/belt/utility = 4,
 					/obj/item/clothing/glasses/meson/engine = 4,
 					/obj/item/clothing/gloves/color/yellow = 4,
-					/obj/item/storage/bag/construction = 4,
 					/obj/item/screwdriver = 12,
 					/obj/item/crowbar = 12,
 					/obj/item/wirecutters = 12,
