@@ -29,7 +29,7 @@
 	ImpureChem 			= "BEsmaller" //If you make an inpure chem, it stalls growth
 	InverseChemVal 		= 0.35
 	InverseChem 		= "BEsmaller" //At really impure vols, it just becomes 100% inverse
-	can_synth = FALSE
+	can_synth = TRUE
 
 /datum/reagent/fermi/breast_enlarger/on_mob_add(mob/living/carbon/M)
 	. = ..()
@@ -144,7 +144,7 @@
 	color = "#E60584" // rgb: 96, 0, 255
 	taste_description = "a milky ice cream like flavour."
 	metabolization_rate = 0.25
-	can_synth = FALSE
+	can_synth = TRUE
 
 /datum/reagent/fermi/BEsmaller/on_mob_life(mob/living/carbon/M)
 	var/obj/item/organ/genital/breasts/B = M.getorganslot("breasts")
@@ -214,7 +214,7 @@
 	ImpureChem 			= "PEsmaller" //If you make an inpure chem, it stalls growth
 	InverseChemVal 		= 0.35
 	InverseChem 		= "PEsmaller" //At really impure vols, it just becomes 100% inverse and shrinks instead.
-	can_synth = FALSE
+	can_synth = TRUE
 
 /datum/reagent/fermi/penis_enlarger/on_mob_add(mob/living/carbon/M)
 	. = ..()
@@ -315,7 +315,7 @@
 	color = "#888888" // This is greyish..?
 	taste_description = "chinese dragon powder"
 	metabolization_rate = 0.5
-	can_synth = FALSE
+	can_synth = TRUE
 
 /datum/reagent/fermi/PEsmaller/on_mob_life(mob/living/carbon/M)
 	var/mob/living/carbon/human/H = M

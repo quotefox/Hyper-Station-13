@@ -29,7 +29,7 @@ I'd like to point out from my calculations it'll take about 60-80 minutes to die
 	var/antiGenetics = 255
 	var/sleepytime = 0
 	InverseChemVal = 0.25
-	can_synth = FALSE
+	can_synth = TRUE
 
 /datum/action/chem/astral
 	name = "Return to body"

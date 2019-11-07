@@ -216,7 +216,7 @@
 	InverseChem 		= "nanite_b_goneTox" //At really impure vols, it just becomes 100% inverse
 	taste_description = "what can only be described as licking a battery."
 	pH = 9
-	can_synth = FALSE
+	can_synth = TRUE
 
 /datum/reagent/fermi/nanite_b_gone/on_mob_life(mob/living/carbon/C)
 	//var/component/nanites/N = M.GetComponent(/datum/component/nanites)
@@ -412,7 +412,7 @@
 	color = "#ffc224"
 	var/catshift = FALSE
 	var/mob/living/simple_animal/pet/cat/custom_cat/catto = null
-	can_synth = FALSE
+	can_synth = TRUE
 
 /datum/reagent/fermi/secretcatchem/New()
 	name = "Catbalti[pick("a","u","e","y")]m [pick("apex", "prime", "meow")]"//rename

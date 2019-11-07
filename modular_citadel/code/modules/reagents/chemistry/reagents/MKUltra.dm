@@ -145,7 +145,7 @@ Creating a chem with a low purity will make you permanently fall in love with so
 	var/mob/living/creator
 	pH = 10
 	OnMobMergeCheck = TRUE //Procs on_mob_add when merging into a human
-	can_synth = FALSE
+	can_synth = TRUE
 
 
 /datum/reagent/fermi/enthrall/test
