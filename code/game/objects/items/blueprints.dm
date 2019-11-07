@@ -153,6 +153,8 @@
 		/area/centcom,
 		/area/asteroid,
 		/area/tdome,
+		/area/hilbertshotel,
+		/area/hilbertshotelstorage,
 		/area/wizard_station
 	)
 	for (var/type in SPECIALS)
