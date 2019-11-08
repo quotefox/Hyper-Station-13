@@ -78,7 +78,7 @@
 	if(burn_dam > DAMAGE_PRECISION)
 		to_chat(user, "<span class='warning'>This limb has [burn_dam > 30 ? "severe" : "minor"] burns.</span>")
 	if(broken == TRUE)
-		to_chat(user, "<span class='warning'>This limb is fractured.</span>")
+		to_chat(user, "<span class='warning'>This limb is broken.</span>")
 
 /obj/item/bodypart/blob_act()
 	take_damage(max_damage)

@@ -303,13 +303,6 @@ GENE SCANNER
 			msg += "<span class='info'>\tDamage: <span class='info'><font color='red'>Brute</font></span>-<font color='#FF8000'>Burn</font>-<font color='green'>Toxin</font>-<font color='blue'>Suffocation</font>\n\t\tSpecifics: <font color='red'>[brute_loss]</font>-<font color='#FF8000'>[fire_loss]</font>-<font color='green'>[tox_loss]</font>-<font color='blue'>[oxy_loss]</font></span>\n"
 			for(var/obj/item/bodypart/org in damaged)
 				msg += "\t\t<span class='info'>[capitalize(org.name)]: [(org.brute_dam > 0) ? "<font color='red'>[org.brute_dam]</font></span>" : "<font color='red'>0</font>"]-[(org.burn_dam > 0) ? "<font color='#FF8000'>[org.burn_dam]</font>" : "<font color='#FF8000'>0</font>"]\n"
-	// List broken bones!
-	if(iscarbon(M) && mode == 1)
-		var/mob/living/carbon/C = M
-		var/list/broken = C.bodyparts
-			for(var/obj/item/bodypart/org in broken)
-				if(org.broken)
-					msg += "\t<span class='alert'>Subjects [LB.name] is broken.</span>\n"
 
 //Organ damages report
 	if(ishuman(M))
