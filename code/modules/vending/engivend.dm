@@ -5,6 +5,7 @@
 	icon_deny = "engivend-deny"
 	req_access = list(ACCESS_ENGINE_EQUIP)
 	products = list(/obj/item/clothing/glasses/meson/engine = 5,
+					/obj/item/storage/bag/construction = 5,
 					/obj/item/clothing/glasses/welding = 5,
 					/obj/item/multitool = 5,
 					/obj/item/construction/rcd/loaded = 3,
