@@ -153,6 +153,8 @@
 #define TRAIT_FRIENDLY			"friendly"
 #define TRAIT_ASSBLASTUSA       "assblastusa"
 #define TRAIT_CULT_EYES 		"cult_eyes"
+#define TRAIT_XRAY_VISION       "xray_vision"
+#define TRAIT_THERMAL_VISION    "thermal_vision"
 
 
 // common trait sources
