@@ -913,7 +913,7 @@
 /datum/reagent/medicine/mutadone/on_mob_life(mob/living/carbon/M)
 	M.jitteriness = 0
 	if(M.has_dna())
-		M.dna.remove_all_mutations()
+		M.dna.remove_all_mutations(mutadone = TRUE)
 	if(!QDELETED(M)) //We were a monkey, now a human
 		..()
 
@@ -1103,10 +1103,10 @@
 	..()
 
 /datum/reagent/medicine/tricordrazine/overdose_process(mob/living/M)
-	M.adjustToxLoss(2*REM, 0)
-	M.adjustOxyLoss(2*REM, 0)
-	M.adjustBruteLoss(2*REM, 0)
-	M.adjustFireLoss(2*REM, 0)
+	M.adjustToxLoss(0.5*REM, 0)
+	M.adjustOxyLoss(0.5*REM, 0)
+	M.adjustBruteLoss(0.5*REM, 0)
+	M.adjustFireLoss(0.5*REM, 0)
 	..()
 	. = 1
 

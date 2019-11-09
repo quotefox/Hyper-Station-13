@@ -107,6 +107,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	merge_type = /obj/item/stack/sheet/metal
 	grind_results = list("iron" = 20)
 	point_value = 2
+	tableVariant = /obj/structure/table
 
 /obj/item/stack/sheet/metal/ratvar_act()
 	new /obj/item/stack/tile/brass(loc, amount)
@@ -168,6 +169,7 @@ GLOBAL_LIST_INIT(plasteel_recipes, list ( \
 	merge_type = /obj/item/stack/sheet/plasteel
 	grind_results = list("iron" = 20, "plasma" = 20)
 	point_value = 23
+	tableVariant = /obj/structure/table/reinforced
 
 /obj/item/stack/sheet/plasteel/Initialize(mapload, new_amount, merge = TRUE)
 	recipes = GLOB.plasteel_recipes
@@ -206,6 +208,7 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	new/datum/stack_recipe("apiary", /obj/structure/beebox, 40, time = 50),\
 	new/datum/stack_recipe("tiki mask", /obj/item/clothing/mask/gas/tiki_mask, 2), \
 	new/datum/stack_recipe("honey frame", /obj/item/honey_frame, 5, time = 10),\
+	new/datum/stack_recipe("cross", /obj/structure/kitchenspike/cross, 10, time = 10),\
 	new/datum/stack_recipe("ore box", /obj/structure/ore_box, 4, time = 50, one_per_turf = TRUE, on_floor = TRUE),\
 	new/datum/stack_recipe("wooden crate", /obj/structure/closet/crate/wooden, 6, time = 50, one_per_turf = TRUE, on_floor = TRUE),\
 	new/datum/stack_recipe("baseball bat", /obj/item/melee/baseball_bat, 5, time = 15),\
@@ -474,6 +477,7 @@ GLOBAL_LIST_INIT(brass_recipes, list ( \
 	novariants = FALSE
 	grind_results = list("iron" = 5, "teslium" = 15, "holyoil" = 1)
 	merge_type = /obj/item/stack/tile/brass
+	tableVariant = /obj/structure/table/reinforced/brass
 
 /obj/item/stack/tile/brass/narsie_act()
 	new /obj/item/stack/sheet/runed_metal(loc, amount)
@@ -526,6 +530,7 @@ GLOBAL_LIST_INIT(bronze_recipes, list ( \
 	novariants = FALSE
 	grind_results = list("iron" = 5, "copper" = 3) //we have no "tin" reagent so this is the closest thing
 	merge_type = /obj/item/stack/tile/bronze
+	tableVariant = /obj/structure/table/bronze
 
 /obj/item/stack/tile/bronze/attack_self(mob/living/user)
 	if(is_servant_of_ratvar(user)) //still lets them build with it, just gives a message

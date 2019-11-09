@@ -199,8 +199,8 @@
 						</head>
 						<body>
 						[add_req_access?"<a href='?src=[REF(src)];req_access=1;id_card=[REF(id_card)];user=[REF(user)]'>Edit operation keycodes</a>":null]
-						[maint_access?"<a href='?src=[REF(src)];maint_access=1;id_card=[REF(id_card)];user=[REF(user)]'>[(state>0) ? "Terminate" : "Initiate"] maintenance protocol</a>":null]
-						[(state>0) ?"<a href='?src=[REF(src)];set_internal_tank_valve=1;user=[REF(user)]'>Set Cabin Air Pressure</a>":null]
+						[maint_access?"<a href='?src=[REF(src)];maint_access=1;id_card=[REF(id_card)];user=[REF(user)]'>[(construction_state > MECHA_LOCKED) ? "Terminate" : "Initiate"] maintenance protocol</a>":null]
+						[(construction_state > MECHA_LOCKED) ?"<a href='?src=[REF(src)];set_internal_tank_valve=1;user=[REF(user)]'>Set Cabin Air Pressure</a>":null]
 						</body>
 						</html>"}
 	user << browse(., "window=exosuit_maint_console")
@@ -231,15 +231,15 @@
 		if(href_list["maint_access"] && maint_access)
 			var/mob/user = afilter.getMob("user")
 			if(user)
-				if(state==0)
-					state = 1
+				if(construction_state == MECHA_LOCKED)
+					construction_state = MECHA_SECURE_BOLTS
 					to_chat(user, "The securing bolts are now exposed.")
-				else if(state==1)
-					state = 0
+				else if(construction_state == MECHA_SECURE_BOLTS)
+					construction_state = MECHA_LOCKED
 					to_chat(user, "The securing bolts are now hidden.")
 				output_maintenance_dialog(afilter.getObj("id_card"),user)
 
-		if(href_list["set_internal_tank_valve"] && state >=1)
+		if(href_list["set_internal_tank_valve"] && construction_state)
 			var/mob/user = afilter.getMob("user")
 			if(user)
 				var/new_pressure = input(user,"Input new output pressure","Pressure setting",internal_tank_valve) as num
@@ -305,7 +305,7 @@
 		send_byjax(src.occupant,"exosuit.browser","t_id_upload","[add_req_access?"L":"Unl"]ock ID upload panel")
 
 	if(href_list["toggle_maint_access"])
-		if(state)
+		if(construction_state)
 			occupant_message("<span class='danger'>Maintenance protocols in effect</span>")
 			return
 		maint_access = !maint_access

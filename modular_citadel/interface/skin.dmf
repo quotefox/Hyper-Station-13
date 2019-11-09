@@ -98,7 +98,6 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
 	elem "map"
@@ -275,8 +274,8 @@ window "statwindow"
 window "preferences_window"
 	elem "preferences_window"
 		type = MAIN
-		pos = 435,99
-		size = 1000x600
+		pos = 281,0
+		size = 1600x980
 		anchor1 = none
 		anchor2 = none
 		background-color = none
@@ -285,8 +284,8 @@ window "preferences_window"
 		statusbar = false
 	elem "preferences_browser"
 		type = BROWSER
-		pos = 250,0
-		size = 750x618
+		pos = 399,0
+		size = 1200x980
 		anchor1 = 25,0
 		anchor2 = 100,100
 		background-color = none
@@ -294,7 +293,7 @@ window "preferences_window"
 	elem "character_preview_map"
 		type = MAP
 		pos = 0,0
-		size = 250x618
+		size = 400x998
 		anchor1 = 0,0
 		anchor2 = 25,100
 		right-click = true

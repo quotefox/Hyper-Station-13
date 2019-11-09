@@ -88,8 +88,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	//H13
 	var/body_size = 100					//Body Size in percent
-	var/body_size_alt = 0
-
+	var/can_get_preg = 0				//Body Size in percent
 
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	var/list/features = list("mcolor" = "FFF",
@@ -867,7 +866,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<b>Ghosts of Others:</b> <a href='?_src_=prefs;task=input;preference=ghostothers'>[button_name]</a><br>"
 			dat += "<br>"
-			dat += "<b>FPS:</b> <a href='?_src_=prefs;preference=clientfps;task=input'>[clientfps]</a><br>"
+			//dat += "<b>FPS:</b> <a href='?_src_=prefs;preference=clientfps;task=input'>[clientfps]</a><br>"
 			dat += "<b>Parallax (Fancy Space):</b> <a href='?_src_=prefs;preference=parallaxdown' oncontextmenu='window.location.href=\"?_src_=prefs;preference=parallaxup\";return false;'>"
 			switch (parallax)
 				if (PARALLAX_LOW)
@@ -2119,8 +2118,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					features["has_vag"] = !features["has_vag"]
 					if(features["has_vag"] == FALSE)
 						features["has_womb"] = FALSE
+						features["can_get_preg"] = FALSE
 				if("has_womb")
 					features["has_womb"] = !features["has_womb"]
+				if("can_get_preg")
+					features["can_get_preg"] = !features["can_get_preg"]
 				if("exhibitionist")
 					features["exhibitionist"] = !features["exhibitionist"]
 				if("widescreenpref")
@@ -2331,6 +2333,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	//h13 character custom body size, make sure to set to 100% if the player hasn't choosen one yet.
 	character.custom_body_size = body_size
+	character.breedable = 0
 
 	character.gender = gender
 	character.age = age

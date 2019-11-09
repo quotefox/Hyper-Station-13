@@ -21,6 +21,8 @@
 	var/held_index = 0 //are we a hand? if so, which one!
 	var/is_pseudopart = FALSE //For limbs that don't really exist, eg chainsaws
 
+	var/broken = FALSE //Broken bones
+
 	var/disabled = BODYPART_NOT_DISABLED //If disabled, limb is as good as missing
 	var/body_damage_coeff = 1 //Multiplier of the limb's damage that gets applied to the mob
 	var/stam_damage_coeff = 0.5
@@ -75,6 +77,8 @@
 		to_chat(user, "<span class='warning'>This limb has [brute_dam > 30 ? "severe" : "minor"] bruising.</span>")
 	if(burn_dam > DAMAGE_PRECISION)
 		to_chat(user, "<span class='warning'>This limb has [burn_dam > 30 ? "severe" : "minor"] burns.</span>")
+	if(broken == TRUE)
+		to_chat(user, "<span class='warning'>This limb is broken.</span>")
 
 /obj/item/bodypart/blob_act()
 	take_damage(max_damage)
