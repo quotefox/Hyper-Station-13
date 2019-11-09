@@ -163,6 +163,8 @@
 		missing -= BP.body_zone
 		for(var/obj/item/I in BP.embedded_objects)
 			msg += "<B>[t_He] [t_has] \a [icon2html(I, user)] [I] embedded in [t_his] [BP.name]!</B>\n"
+			if(BP.broken)
+				msg += "<B>[t_He] [t_has] \a [I] broken [BP.name]!</B>\n"
 
 	for(var/X in disabled)
 		var/obj/item/bodypart/BP = X

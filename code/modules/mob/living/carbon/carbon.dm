@@ -603,6 +603,14 @@
 				sight |= (SEE_TURFS|SEE_MOBS|SEE_OBJS)
 				see_in_dark = max(see_in_dark, 8)
 
+	if(HAS_TRAIT(src, TRAIT_THERMAL_VISION))
+		sight |= (SEE_MOBS)
+		lighting_alpha = min(lighting_alpha, LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
+
+	if(HAS_TRAIT(src, TRAIT_XRAY_VISION))
+		sight |= (SEE_TURFS|SEE_MOBS|SEE_OBJS)
+		see_in_dark = max(see_in_dark, 8)
+
 	if(see_override)
 		see_invisible = see_override
 	. = ..()
@@ -702,7 +710,7 @@
 		clear_fullscreen("critvision")
 
 	//Oxygen damage overlay
-	var/windedup = getOxyLoss() + getStaminaLoss() * 0.2 + stamdamageoverlaytemp
+	var/windedup = getOxyLoss() + getStaminaLoss() * 0.2
 	if(windedup)
 		var/severity = 0
 		switch(windedup)
@@ -814,7 +822,7 @@
 		reagents.clear_reagents()
 	var/obj/item/organ/brain/B = getorgan(/obj/item/organ/brain)
 	if(B)
-		B.damaged_brain = FALSE
+		B.brain_death = FALSE
 	for(var/thing in diseases)
 		var/datum/disease/D = thing
 		if(D.severity != DISEASE_SEVERITY_POSITIVE)

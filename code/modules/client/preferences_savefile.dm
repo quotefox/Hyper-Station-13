@@ -120,7 +120,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["cit_toggles"]		>> cit_toggles
 	S["lewdchem"]			>> lewdchem
 
-	//try to fix any outdated data if necessary
+	//try to fix any outdated data if necessfary
 	if(needs_update >= 0)
 		update_preferences(needs_update, S)		//needs_update = savefile_version if we need an update (positive integer)
 
@@ -137,6 +137,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	toggles			= sanitize_integer(toggles, 0, 65535, initial(toggles))
 	clientfps		= sanitize_integer(clientfps, 0, 1000, 0)
 	body_size		= sanitize_integer(body_size, 90, 110, 0)
+	can_get_preg	= sanitize_integer(body_size, 0, 1, 0)
 	parallax		= sanitize_integer(parallax, PARALLAX_INSANE, PARALLAX_DISABLE, null)
 	ambientocclusion	= sanitize_integer(ambientocclusion, 0, 1, initial(ambientocclusion))
 	auto_fit_viewport	= sanitize_integer(auto_fit_viewport, 0, 1, initial(auto_fit_viewport))
@@ -291,6 +292,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_lizard_body_markings"]	>> features["body_markings"]
 	S["feature_lizard_legs"]			>> features["legs"]
 	S["feature_moth_wings"]				>> features["moth_wings"]
+	S["feature_moth_markings"]			>> features["moth_markings"]
 	S["feature_human_tail"]				>> features["tail_human"]
 	S["feature_human_ears"]				>> features["ears"]
 
@@ -366,6 +368,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_vag_color"]				>> features["vag_color"]
 	//womb features
 	S["feature_has_womb"]				>> features["has_womb"]
+	S["feature_can_get_preg"]			>> features["can_get_preg"] //hyperstation 13
 	//flavor text
 	//Let's make our players NOT cry desperately as we wipe their savefiles of their special snowflake texts:
 	if((S["flavor_text"] != "") && (S["flavor_text"] != null) && S["flavor_text"]) //If old text isn't null and isn't "" but still exists.
@@ -433,6 +436,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	features["body_markings"] 	= sanitize_inlist(features["body_markings"], GLOB.body_markings_list)
 	features["feature_lizard_legs"]	= sanitize_inlist(features["legs"], GLOB.legs_list)
 	features["moth_wings"] 	= sanitize_inlist(features["moth_wings"], GLOB.moth_wings_list)
+	features["moth_markings"] 	= sanitize_inlist(features["moth_markings"], GLOB.moth_markings_list, "None")
 
 	joblessrole	= sanitize_integer(joblessrole, 1, 3, initial(joblessrole))
 	job_civilian_high = sanitize_integer(job_civilian_high, 0, 65535, initial(job_civilian_high))
@@ -507,6 +511,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["feature_lizard_body_markings"]	, features["body_markings"])
 	WRITE_FILE(S["feature_lizard_legs"]			, features["legs"])
 	WRITE_FILE(S["feature_moth_wings"]			, features["moth_wings"])
+	WRITE_FILE(S["feature_moth_markings"]		, features["moth_markings"])
 
 	//Custom names
 	for(var/custom_name_id in GLOB.preferences_custom_names)

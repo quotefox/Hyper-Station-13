@@ -80,6 +80,8 @@
 	name = "cloning data disk"
 	icon_state = "datadisk0" //Gosh I hope syndies don't mistake them for the nuke disk.
 	var/list/fields = list()
+	var/list/mutations = list()
+	var/max_mutations = 6
 	var/read_only = 0 //Well,it's still a floppy disk
 
 //Disk stuff.
@@ -127,7 +129,7 @@
 	return examine(user)
 
 //Start growing a human clone in the pod!
-/obj/machinery/clonepod/proc/growclone(ckey, clonename, ui, se, mindref, datum/species/mrace, list/features, factions, list/quirks)
+/obj/machinery/clonepod/proc/growclone(ckey, clonename, ui, mutation_index, mindref, datum/species/mrace, list/features, factions, list/quirks)
 	if(panel_open)
 		return FALSE
 	if(mess || attempting)
@@ -161,10 +163,10 @@
 
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
 
-	H.hardset_dna(ui, se, H.real_name, null, mrace, features)
+	H.hardset_dna(ui, mutation_index, H.real_name, null, mrace, features)
 
 	if(prob(50 - efficiency*10)) //Chance to give a bad mutation.
-		H.randmutb() //100% bad mutation. Can be cured with mutadone.
+		H.easy_randmut(NEGATIVE+MINOR_NEGATIVE) //100% bad mutation. Can be cured with mutadone.
 
 	H.silent = 20 //Prevents an extreme edge case where clones could speak if they said something at exactly the right moment.
 	occupant = H
@@ -241,13 +243,15 @@
 				var/obj/item/I = pick_n_take(unattached_flesh)
 				if(isorgan(I))
 					var/obj/item/organ/O = I
+					O.organ_flags &= ~ORGAN_FROZEN
 					O.Insert(mob_occupant)
 				else if(isbodypart(I))
 					var/obj/item/bodypart/BP = I
 					BP.attach_limb(mob_occupant)
 
 			//Premature clones may have brain damage.
-			mob_occupant.adjustBrainLoss(-((speed_coeff / 2) * dmg_mult))
+			mob_occupant.adjustOrganLoss(ORGAN_SLOT_BRAIN, -((speed_coeff / 2) * dmg_mult))
+
 
 			use_power(7500) //This might need tweaking.
 
@@ -261,6 +265,7 @@
 			for(var/i in unattached_flesh)
 				if(isorgan(i))
 					var/obj/item/organ/O = i
+					O.organ_flags &= ~ORGAN_FROZEN
 					O.Insert(mob_occupant)
 				else if(isbodypart(i))
 					var/obj/item/bodypart/BP = i
@@ -344,6 +349,9 @@
 	if(mess) //Clean that mess and dump those gibs!
 		for(var/obj/fl in unattached_flesh)
 			fl.forceMove(T)
+			if(istype(fl, /obj/item/organ))
+				var/obj/item/organ/O = fl
+				O.organ_flags &= ~ORGAN_FROZEN
 		unattached_flesh.Cut()
 		mess = FALSE
 		new /obj/effect/gibspawner/generic(get_turf(src))
@@ -440,7 +448,7 @@
 		unattached_flesh.Cut()
 
 	H.setCloneLoss(CLONE_INITIAL_DAMAGE)     //Yeah, clones start with very low health, not with random, because why would they start with random health
-	H.setBrainLoss(CLONE_INITIAL_DAMAGE)
+	//H.setOrganLoss(ORGAN_SLOT_BRAIN, CLONE_INITIAL_DAMAGE)
 	// In addition to being cellularly damaged and having barely any
 
 	// brain function, they also have no limbs or internal organs.
@@ -456,8 +464,9 @@
 
 	for(var/o in H.internal_organs)
 		var/obj/item/organ/organ = o
-		if(!istype(organ) || organ.vital)
+		if(!istype(organ) || (organ.organ_flags & ORGAN_VITAL))
 			continue
+		organ.organ_flags |= ORGAN_FROZEN
 		organ.Remove(H, special=TRUE)
 		organ.forceMove(src)
 		unattached_flesh += organ

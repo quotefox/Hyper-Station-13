@@ -12,7 +12,7 @@
 	overdose_threshold = 20
 
 /datum/reagent/medicine/macrocillin/on_mob_life(mob/living/M, method=INGEST)
-	for(var/size in list(SIZESCALE_SMALL, SIZESCALE_NORMAL, SIZESCALE_BIG, SIZESCALE_HUGE))
+		for(var/size in list(SIZESCALE_SMALL, SIZESCALE_NORMAL, SIZESCALE_BIG, SIZESCALE_HUGE))
 		if(M.size_multiplier < size)
 			M.sizescale(size)
 			M << "<font color='green'>You grow!</font>"
@@ -84,7 +84,7 @@
 	return
 
 /datum/reagent/medicine/sizeoxadone/overdose_process(mob/living/M)
-	M.adjustBrainLoss(1)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1)
 	M.adjustToxLoss(1)
 	..()
 	. = 1

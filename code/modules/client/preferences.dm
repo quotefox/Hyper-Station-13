@@ -88,8 +88,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	//H13
 	var/body_size = 100					//Body Size in percent
-	var/body_size_alt = 0
-
+	var/can_get_preg = 0				//Body Size in percent
 
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	var/list/features = list("mcolor" = "FFF",
@@ -104,6 +103,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"body_markings" = "None",
 		"legs" = "Normal Legs",
 		"moth_wings" = "Plain",
+		"moth_markings" = "None",
 		"mcolor2" = "FFF",
 		"mcolor3" = "FFF",
 		"mam_body_markings" = "Plain",
@@ -157,6 +157,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"vag_clits" = 1,
 		"vag_clit_diam" = 0.25,
 		"has_womb" = FALSE,
+		"can_get_preg" = FALSE,
 		"womb_cum_rate" = CUM_RATE,
 		"womb_cum_mult" = CUM_RATE_MULT,
 		"womb_efficiency" = CUM_EFFICIENCY,
@@ -459,6 +460,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(mutant_category >= MAX_MUTANT_ROWS)
 					dat += "</td>"
 					mutant_category = 0
+
+			if("moth_markings" in pref_species.default_features)
+				if(!mutant_category)
+					dat += APPEARANCE_CATEGORY_COLUMN
+
+				dat += "<h3>Moth markings</h3>"
+
+				dat += "<a href='?_src_=prefs;preference=moth_markings;task=input'>[features["moth_markings"]]</a><BR>"
+
+				mutant_category++
+				if(mutant_category >= MAX_MUTANT_ROWS)
+					dat += "</td>"
+					mutant_category = 0
+
 			if("tail_human" in pref_species.default_features)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
@@ -750,6 +765,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "<b>Vagina Color:</b></a><BR>"
 						dat += "<span style='border: 1px solid #161616; background-color: #[features["vag_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=vag_color;task=input'>Change</a><br>"
 					dat += "<b>Has Womb:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=has_womb'>[features["has_womb"] == TRUE ? "Yes" : "No"]</a>"
+				if(features["has_womb"])
+					dat += "<b>Can Get Pregnant:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=can_get_preg'>[features["can_get_preg"] == TRUE ? "Yes" : "No"]</a>"
 				dat += "</td>"
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Breasts</h3>"
@@ -849,7 +866,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<b>Ghosts of Others:</b> <a href='?_src_=prefs;task=input;preference=ghostothers'>[button_name]</a><br>"
 			dat += "<br>"
-			dat += "<b>FPS:</b> <a href='?_src_=prefs;preference=clientfps;task=input'>[clientfps]</a><br>"
+			//dat += "<b>FPS:</b> <a href='?_src_=prefs;preference=clientfps;task=input'>[clientfps]</a><br>"
 			dat += "<b>Parallax (Fancy Space):</b> <a href='?_src_=prefs;preference=parallaxdown' oncontextmenu='window.location.href=\"?_src_=prefs;preference=parallaxup\";return false;'>"
 			switch (parallax)
 				if (PARALLAX_LOW)
@@ -1788,6 +1805,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_moth_wings)
 						features["moth_wings"] = new_moth_wings
 
+				if("moth_markings")
+					var/new_moth_markings
+					new_moth_markings = input(user, "Choose your character's markings:", "Character Preference") as null|anything in GLOB.moth_markings_list
+					if(new_moth_markings)
+						features["moth_markings"] = new_moth_markings
+
 				if("s_tone")
 					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in GLOB.skin_tones
 					if(new_s_tone)
@@ -2095,8 +2118,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					features["has_vag"] = !features["has_vag"]
 					if(features["has_vag"] == FALSE)
 						features["has_womb"] = FALSE
+						features["can_get_preg"] = FALSE
 				if("has_womb")
 					features["has_womb"] = !features["has_womb"]
+				if("can_get_preg")
+					features["can_get_preg"] = !features["can_get_preg"]
 				if("exhibitionist")
 					features["exhibitionist"] = !features["exhibitionist"]
 				if("widescreenpref")
@@ -2307,6 +2333,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	//h13 character custom body size, make sure to set to 100% if the player hasn't choosen one yet.
 	character.custom_body_size = body_size
+	character.breedable = 0
 
 	character.gender = gender
 	character.age = age

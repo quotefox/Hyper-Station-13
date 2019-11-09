@@ -9,7 +9,7 @@
 	if (notransform)
 		return
 
-	if(..())
+	if(..() && !IsInStasis())
 
 		if(!client)
 			if(stat == CONSCIOUS)
@@ -38,7 +38,7 @@
 		if(radiation > RAD_MOB_MUTATE)
 			if(prob(1))
 				to_chat(src, "<span class='danger'>You mutate!</span>")
-				randmutb()
+				easy_randmut(NEGATIVE+MINOR_NEGATIVE)
 				emote("gasp")
 				domutcheck()
 

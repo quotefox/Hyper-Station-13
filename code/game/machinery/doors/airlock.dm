@@ -1241,6 +1241,10 @@
 			icon = 'icons/obj/doors/airlocks/station/medical.dmi'
 			overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
 			assemblytype = /obj/structure/door_assembly/door_assembly_med
+		if("Medical Double")
+			icon = 'icons/obj/doors/airlocks/station/medbaydouble.dmi'
+			overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
+//			assemblytype = /obj/structure/door_assembly/door_assembly_med
 		if("Research")
 			icon = 'icons/obj/doors/airlocks/station/research.dmi'
 			overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'

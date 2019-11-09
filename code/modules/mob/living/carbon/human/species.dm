@@ -44,6 +44,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/siemens_coeff = 1 //base electrocution coefficient
 	var/damage_overlay_type = "human" //what kind of damage overlays (if any) appear on our species when wounded?
 	var/fixed_mut_color = "" //to use MUTCOLOR with a fixed color that's independent of dna.feature["mcolor"]
+	var/inert_mutation = DWARFISM //special mutation that can be found in the genepool. Dont leave empty or changing species will be a headache
 	var/list/special_step_sounds //Sounds to override barefeet walkng
 	var/grab_sound //Special sound for grabbing
 
@@ -317,6 +318,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	for(var/X in inherent_traits)
 		REMOVE_TRAIT(C, X, SPECIES_TRAIT)
 
+	//If their inert mutation is not the same, swap it out
+	if((inert_mutation != new_species.inert_mutation) && LAZYLEN(C.dna.mutation_index) && (inert_mutation in C.dna.mutation_index))
+		C.dna.remove_mutation(inert_mutation)
+		//keep it at the right spot, so we can't have people taking shortcuts
+		var/location = C.dna.mutation_index.Find(inert_mutation)
+		C.dna.mutation_index[location] = new_species.inert_mutation
+		C.dna.mutation_index[new_species.inert_mutation] = create_sequence(new_species.inert_mutation)
+
 	SEND_SIGNAL(C, COMSIG_SPECIES_LOSS, src)
 
 /datum/species/proc/handle_hair(mob/living/carbon/human/H, forced_colour)
@@ -529,7 +538,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					var/digilegs = (DIGITIGRADE in species_traits) ? "_d" : ""
 					var/mutable_appearance/MA = mutable_appearance(S.icon, "[S.icon_state][digilegs]", -BODY_LAYER)
 					if(UNDIE_COLORABLE(S))
-						MA.color = "[H.socks_color]"
+						MA.color = "#[H.socks_color]"
 					standing += MA
 
 	if(standing.len)
@@ -719,6 +728,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					S = GLOB.legs_list[H.dna.features["legs"]]
 				if("moth_wings")
 					S = GLOB.moth_wings_list[H.dna.features["moth_wings"]]
+				if("moth_markings")
+					S = GLOB.moth_markings_list[H.dna.features["moth_markings"]]
 				if("caps")
 					S = GLOB.caps_list[H.dna.features["caps"]]
 				if("ipc_screen")
@@ -1196,9 +1207,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(mood && mood.sanity > SANITY_DISTURBED)
 			hunger_rate *= max(0.5, 1 - 0.002 * mood.sanity) //0.85 to 0.75
 
-		if(H.satiety > 0)
+		// Whether we cap off our satiety or move it towards 0
+		if(H.satiety > MAX_SATIETY)
+			H.satiety = MAX_SATIETY
+		else if(H.satiety > 0)
 			H.satiety--
-		if(H.satiety < 0)
+		else if(H.satiety < -MAX_SATIETY)
+			H.satiety = -MAX_SATIETY
+		else if(H.satiety < 0)
 			H.satiety++
 			if(prob(round(-H.satiety/40)))
 				H.Jitter(5)
@@ -1263,7 +1279,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if(radiation > RAD_MOB_MUTATE)
 		if(prob(1))
 			to_chat(H, "<span class='danger'>You mutate!</span>")
-			H.randmutb()
+			H.easy_randmut(NEGATIVE+MINOR_NEGATIVE)
 			H.emote("gasp")
 			H.domutcheck()
 
@@ -1683,7 +1699,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			if(BODY_ZONE_HEAD)
 				if(!I.is_sharp() && armor_block < 50)
 					if(prob(I.force))
-						H.adjustBrainLoss(20)
+						H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20)
 						if(H.stat == CONSCIOUS)
 							H.visible_message("<span class='danger'>[H] has been knocked senseless!</span>", \
 											"<span class='userdanger'>[H] has been knocked senseless!</span>")
@@ -1692,7 +1708,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						if(prob(10))
 							H.gain_trauma(/datum/brain_trauma/mild/concussion)
 					else
-						H.adjustBrainLoss(I.force * 0.2)
+						H.adjustOrganLoss(ORGAN_SLOT_BRAIN, I.force * 0.2)
 
 					if(H.stat == CONSCIOUS && H != user && prob(I.force + ((100 - H.health) * 0.5))) // rev deconversion through blunt trauma.
 						var/datum/antagonist/rev/rev = H.mind.has_antag_datum(/datum/antagonist/rev)
@@ -1781,14 +1797,13 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(CLONE)
 			H.adjustCloneLoss(damage * hit_percent * H.physiology.clone_mod)
 		if(STAMINA)
-			H.stamdamageoverlaytemp = 20
 			if(BP)
 				if(damage > 0 ? BP.receive_damage(0, 0, damage * hit_percent * H.physiology.stamina_mod) : BP.heal_damage(0, 0, abs(damage * hit_percent * H.physiology.stamina_mod), only_robotic = FALSE, only_organic = FALSE))
 					H.update_stamina()
 			else
 				H.adjustStaminaLoss(damage * hit_percent * H.physiology.stamina_mod)
 		if(BRAIN)
-			H.adjustBrainLoss(damage * hit_percent * H.physiology.brain_mod)
+			H.adjustOrganLoss(ORGAN_SLOT_BRAIN, damage * hit_percent * H.physiology.brain_mod)
 		if(AROUSAL)											//Citadel edit - arousal
 			H.adjustArousalLoss(damage * hit_percent)
 	return 1

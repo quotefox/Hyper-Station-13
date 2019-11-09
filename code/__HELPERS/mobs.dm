@@ -72,6 +72,8 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, GLOB.wings_list)
 	if(!GLOB.moth_wings_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_wings, GLOB.moth_wings_list)
+	if(!GLOB.moth_markings_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)
 
 	//CIT CHANGES - genitals and such
 	if(!GLOB.cock_shapes_list.len)
@@ -145,6 +147,7 @@
 		"legs" = pick("Normal Legs","Digitigrade Legs"),
 		"caps" = pick(GLOB.caps_list),
 		"moth_wings" = pick(GLOB.moth_wings_list),
+		"moth_markings" = pick(GLOB.moth_markings_list),
 		"taur" = "None",
 		"mam_body_markings" = pick(snowflake_markings_list),
 		"mam_ears" 			= pick(snowflake_ears_list),
@@ -197,6 +200,7 @@
 		"vag_clit_diam"		= 0.25,
 		"vag_clit_len"		= 0.25,
 		"has_womb"			= FALSE,
+		"can_get_preg"		= FALSE,
 		"womb_cum_rate"		= CUM_RATE,
 		"womb_cum_mult"		= CUM_RATE_MULT,
 		"womb_efficiency"	= CUM_EFFICIENCY,

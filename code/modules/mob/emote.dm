@@ -46,3 +46,32 @@
 					riding_datum.force_dismount(M)
 			else
 				R.unbuckle_all_mobs()
+
+/datum/emote/speen
+	key = "speen"
+	key_third_person = "speeeeens!"
+	restraint_check = TRUE
+	mob_type_allowed_typecache = list(/mob/living, /mob/dead/observer)
+	mob_type_ignore_stat_typecache = list(/mob/dead/observer)
+
+/datum/emote/speen/run_emote(mob/user)
+	. = ..()
+	if(.)
+		user.spin(20, 1)
+
+		if(iscyborg(user) && user.has_buckled_mobs())
+			var/mob/living/silicon/robot/R = user
+			GET_COMPONENT_FROM(riding_datum, /datum/component/riding, R)
+			if(riding_datum)
+				for(var/mob/M in R.buckled_mobs)
+					riding_datum.force_dismount(M)
+			else
+				R.unbuckle_all_mobs()
+
+/datum/emote/speen/run_emote(mob/living/user, params)
+	if(ishuman(user))
+		if(user.nextsoundemote >= world.time)
+			return
+		user.nextsoundemote = world.time + 7
+		playsound(user, 'modular_citadel/sound/voice/speen.ogg', 50, 1, -1)
+	. = ..()

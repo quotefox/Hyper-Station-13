@@ -28,21 +28,22 @@
 	if (QDELETED(src))
 		return 0
 
-	if(.) //not dead
-		handle_active_genes()
+	if(!IsInStasis())
+		if(.) //not dead
+			handle_active_genes()
 
-	if(stat != DEAD)
-		//heart attack stuff
-		handle_heart()
+		if(stat != DEAD)
+			//heart attack stuff
+			handle_heart()
 
-	if(stat != DEAD)
-		//Stuff jammed in your limbs hurts
-		handle_embedded_objects()
+		if(stat != DEAD)
+			//Stuff jammed in your limbs hurts
+			handle_embedded_objects()
+		dna.species.spec_life(src) // for mutantraces
 
 	//Update our name based on whether our face is obscured/disfigured
 	name = get_visible_name()
 
-	dna.species.spec_life(src) // for mutantraces
 
 	if(stat != DEAD)
 		return 1
@@ -70,7 +71,7 @@
 	else if(eye_blurry)			//blurry eyes heal slowly
 		adjust_blurriness(-1)
 
-	if (getBrainLoss() >= 30) //Citadel change to make memes more often.
+	if (getOrganLoss(ORGAN_SLOT_BRAIN) >= 30) //Citadel change to make memes more often.
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "brain_damage", /datum/mood_event/brain_damage)
 		if(prob(3))
 			if(prob(25))

@@ -68,11 +68,65 @@ GLOBAL_LIST_EMPTY(menulist)
 	var/atom/verb/verbpath = Get_checked(C)
 	if (!verbpath || !(verbpath in typesof("[type]/verb")))
 		return
-	
+
 	if (copytext(verbpath.name,1,2) == "@")
 		winset(C, null, list2params(list("command" = copytext(verbpath.name,2))))
 	else
 		winset(C, null, list2params(list("command" = replacetext(verbpath.name, " ", "-"))))
+
+//Hypestation 13 changes
+
+/datum/verbs/menu/Settings/FPS
+	checkbox = CHECKBOX_GROUP
+	default = /datum/verbs/menu/Settings/FPS/verb/high
+
+/datum/verbs/menu/Settings/FPS/verb/low()
+	set name = "Low-end FPS"
+	set desc = "&20 fps"
+	set category = "Preferences"
+	set hidden = 1
+	usr.client.prefs.clientfps = 20
+	usr.client.prefs.parent.fps = 20
+
+
+/datum/verbs/menu/Settings/FPS/verb/high()
+	set name = "High-end FPS"
+	set desc = "&25 fps"
+	set category = "Preferences"
+	set hidden = 1
+	usr.client.prefs.clientfps = 25
+	usr.client.prefs.parent.fps = 25
+
+
+/datum/verbs/menu/Settings/FPS/verb/vhigh()
+	set name = "Higher-end FPS"
+	set desc = "&30 fps"
+	set category = "Preferences"
+	set hidden = 1
+	usr.client.prefs.clientfps = 30
+	usr.client.prefs.parent.fps = 30
+
+
+/datum/verbs/menu/Settings/ChatOutput
+	checkbox = CHECKBOX_GROUP
+	default = /datum/verbs/menu/Settings/ChatOutput/verb/newchat
+
+/datum/verbs/menu/Settings/ChatOutput/verb/oldchat()
+	set name = "Old Chat"
+	set desc = "&Old Chat (Faster)"
+	set hidden = 1
+	set category = "Preferences"
+	winset(src, "output", "is-visible=true;is-disabled=false")
+	winset(src, "browseroutput", "is-visible=false")
+
+/datum/verbs/menu/Settings/ChatOutput/verb/newchat()
+	set name = "Fancy Chat"
+	set desc = "&Fancy Chat (Slower)"
+	set hidden = 1
+	set category = "Preferences"
+	winset(src, "output", "is-visible=false")
+	winset(src, "browseroutput", "is-disabled=false;is-visible=true")
+
 
 /datum/verbs/menu/Icon/Size
 	checkbox = CHECKBOX_GROUP
@@ -115,4 +169,3 @@ GLOBAL_LIST_EMPTY(menulist)
 /datum/verbs/menu/Icon/Scaling/verb/BL()
 	set name = "@.winset \"mapwindow.map.zoom-mode=blur\""
 	set desc = "Bilinear"
-

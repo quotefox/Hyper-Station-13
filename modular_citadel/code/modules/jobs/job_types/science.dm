@@ -1,2 +1,2 @@
 /datum/job/rd
-	minimal_player_age = 10
+	minimal_player_age = 3

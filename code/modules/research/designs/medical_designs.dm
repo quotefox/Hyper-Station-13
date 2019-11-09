@@ -162,6 +162,16 @@
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
+/datum/design/genescanner
+	name = "Genetic Sequence Analyzer"
+	desc = "A handy hand-held analyzers for quickly determining mutations and collecting the full sequence."
+	id = "genescanner"
+	build_path = /obj/item/sequence_scanner
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 1000, MAT_GLASS = 500)
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
 /datum/design/healthanalyzer_advanced
 	name = "Advanced Health Analyzer"
 	desc = "A hand-held body scanner able to distinguish vital signs of the subject with high accuracy."
@@ -181,6 +191,16 @@
 	build_path = /obj/item/storage/firstaid //So we dont spawn medical items in it
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/chem_pack
+	name = "Intravenous Medicine Bag"
+	desc = "A plastic pressure bag for IV administration of drugs."
+	id = "chem_pack"
+	build_type = PROTOLATHE
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+	materials = list(MAT_PLASTIC = 2000)
+	build_path = /obj/item/reagent_containers/chem_pack
+	category = list("Medical Designs")
 
 /datum/design/blood_bag
 	name = "Empty Blood Bag"
@@ -524,6 +544,17 @@
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
+/datum/design/cybernetic_heart_u
+	name = "Upgraded Cybernetic Heart"
+	desc = "An upgraded cybernetic heart"
+	id = "cybernetic_heart_u"
+	build_type = PROTOLATHE | MECHFAB
+	construction_time = 50
+	materials = list(MAT_METAL = 500, MAT_GLASS = 500, MAT_SILVER = 500)
+	build_path = /obj/item/organ/heart/cybernetic/upgraded
+	category = list("Misc", "Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
 /datum/design/cybernetic_liver_u
 	name = "Upgraded Cybernetic Liver"
 	desc = "An upgraded cybernetic liver"
@@ -564,9 +595,39 @@
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
+
 /////////////////////
 //Adv Surgery Tools//
 /////////////////////
+/datum/design/laserscalpel
+	name = "Laser Scalpel"
+	desc = "A laser scalpel used for precise cutting."
+	id = "laserscalpel"
+	build_path = /obj/item/scalpel/advanced
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 6000, MAT_GLASS = 1500, MAT_SILVER = 2000, MAT_GOLD = 1500, MAT_DIAMOND = 200, MAT_TITANIUM = 4000)
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/mechanicalpinches
+	name = "Mechanical Pinches"
+	desc = "These pinches can be either used as retractor or hemostat."
+	id = "mechanicalpinches"
+	build_path = /obj/item/retractor/advanced
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 12000, MAT_GLASS = 4000, MAT_SILVER = 4000, MAT_TITANIUM = 5000)
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/searingtool
+	name = "Searing Tool"
+	desc = "Used to mend tissue togheter."
+	id = "searingtool"
+	build_path = /obj/item/cautery/advanced
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 4000, MAT_GLASS = 2000, MAT_PLASMA = 2000, MAT_URANIUM = 3000, MAT_TITANIUM = 3000)
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/drapes
 	name = "Plastic Drapes"
@@ -578,65 +639,6 @@
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
-/datum/design/retractor_adv
-	name = "Advanced Retractor"
-	desc = "A high-class, premium retractor, featuring precision crafted, silver-plated hook-ends and an electrum handle."
-	id = "retractor_adv"
-	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 500, MAT_GLASS = 500, MAT_SILVER = 1500, MAT_GOLD = 1000)
-	build_path = /obj/item/retractor/adv
-	category = list("Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
-
-/datum/design/hemostat_adv
-	name = "Advanced Hemostat"
-	desc = "An exceptionally fine pair of arterial forceps. These appear to be plated in electrum and feel soft to the touch."
-	id = "hemostat_adv"
-	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 500, MAT_GLASS = 500, MAT_SILVER = 1000, MAT_GOLD = 1500)
-	build_path = /obj/item/hemostat/adv
-	category = list("Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
-
-/datum/design/cautery_adv
-	name = "Electrocautery" //This is based on real-life science.
-	desc = "A high-tech unipolar Electrocauter. This tiny device contains an extremely powerful microbattery that uses arcs of electricity to painlessly sear wounds shut. It seems to recharge with the user's body-heat. Wow!"
-	id = "cautery_adv"
-	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 500, MAT_GLASS = 500, MAT_SILVER = 1000, MAT_GOLD = 1500)
-	build_path = /obj/item/cautery/adv
-	category = list("Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
-
-/datum/design/surgicaldrill_adv
-	name = "Surgical Autodrill"
-	desc = "With a diamond tip and built-in depth and safety sensors, this drill alerts the user before overpenetrating a patient's skull or tooth. There also appears to be a disable switch."
-	id = "surgicaldrill_adv"
-	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 2500, MAT_GLASS = 2500, MAT_SILVER = 6000, MAT_GOLD = 5500, MAT_DIAMOND = 3500)
-	build_path = /obj/item/surgicaldrill/adv
-	category = list("Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
-
-/datum/design/scalpel_adv
-	name = "Precision Scalpel"
-	desc = "A perfectly balanced electrum scalpel with a silicon-coated edge to eliminate wear and tear."
-	id = "scalpel_adv"
-	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 1500, MAT_GLASS = 1500, MAT_SILVER = 4000, MAT_GOLD = 2500)
-	build_path = /obj/item/scalpel/adv
-	category = list("Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
-
-/datum/design/circular_saw_adv
-	name = "Diamond-Grit Circular Saw"
-	desc = "For those Assistants with REALLY thick skulls."
-	id = "circular_saw_adv"
-	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 7500, MAT_GLASS = 6000, MAT_SILVER = 6500, MAT_GOLD = 7500, MAT_DIAMOND = 4500)
-	build_path = /obj/item/circular_saw/adv
-	category = list("Medical Designs")
-	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
 /////////////////////////////////////////
 //////////Alien Surgery Tools////////////
@@ -702,6 +704,28 @@
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
+/datum/design/cybernetic_ears
+	name = "Cybernetic Ears"
+	desc = "A pair of cybernetic ears."
+	id = "cybernetic_ears"
+	build_type = PROTOLATHE | MECHFAB
+	construction_time = 30
+	materials = list(MAT_METAL = 250, MAT_GLASS = 400)
+	build_path = /obj/item/organ/ears/cybernetic
+	category = list("Misc", "Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/cybernetic_ears_u
+	name = "Upgraded Cybernetic Ears"
+	desc = "A pair of upgraded cybernetic ears."
+	id = "cybernetic_ears_u"
+	build_type = PROTOLATHE | MECHFAB
+	construction_time = 40
+	materials = list(MAT_METAL = 500, MAT_GLASS = 500, MAT_SILVER = 500)
+	build_path = /obj/item/organ/ears/cybernetic/upgraded
+	category = list("Misc", "Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
 /////////////////////
 ///Surgery Designs///
 /////////////////////
@@ -740,6 +764,13 @@
 	desc = "A surgical procedure that gradually repairs damage done to a body without the assistance of chemicals. Unlike classic medicine, it is effective on corpses."
 	id = "surgery_reconstruction"
 	surgery = /datum/surgery/advanced/reconstruction
+	research_icon_state = "surgery_chest"
+
+/datum/design/surgery/surgery_toxinhealing
+	name = "Body Rejuvenation"
+	desc = "A surgical procedure that helps deal with oxygen  deprecation, and treat toxic damaged. Works on corpses and alive alike without chemicals."
+	id = "surgery_toxinhealing"
+	surgery = /datum/surgery/advanced/toxichealing
 	research_icon_state = "surgery_chest"
 
 /datum/design/surgery/revival

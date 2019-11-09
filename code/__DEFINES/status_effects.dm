@@ -72,6 +72,7 @@
 
 #define STATUS_EFFECT_ICHORIAL_STAIN /datum/status_effect/ichorial_stain //Prevents a servant from being revived by vitality matrices for one minute.
 
+#define STATUS_EFFECT_STASIS /datum/status_effect/incapacitating/stasis //Halts biological functions like bleeding, chemical processing, blood regeneration, walking, etc
 /////////////
 // NEUTRAL //
 /////////////
@@ -90,3 +91,5 @@
 
 #define STATUS_EFFECT_RAINBOWPROTECTION /datum/status_effect/rainbow_protection //Invulnerable and pacifistic
 #define STATUS_EFFECT_SLIMESKIN /datum/status_effect/slimeskin //Increased armor
+
+#define STATUS_EFFECT_DNA_MELT /datum/status_effect/dna_melt //usually does something horrible to you when you hit 100 genetic instability

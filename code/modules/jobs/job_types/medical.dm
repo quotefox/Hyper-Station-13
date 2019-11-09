@@ -13,10 +13,10 @@ Chief Medical Officer
 	supervisors = "the captain"
 	selection_color = "#ffddf0"
 	req_admin_notify = 1
-	minimal_player_age = 7
-	exp_requirements = 180
-	exp_type = EXP_TYPE_CREW
-	exp_type_department = EXP_TYPE_MEDICAL
+	minimal_player_age = 3
+//	exp_requirements = 180
+//	exp_type = EXP_TYPE_CREW
+//	exp_type_department = EXP_TYPE_MEDICAL
 
 	outfit = /datum/outfit/job/cmo
 
@@ -164,6 +164,7 @@ Geneticist
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	suit =  /obj/item/clothing/suit/toggle/labcoat/genetics
 	suit_store =  /obj/item/flashlight/pen
+	l_pocket = /obj/item/sequence_scanner
 
 	backpack = /obj/item/storage/backpack/genetics
 	satchel = /obj/item/storage/backpack/satchel/gen

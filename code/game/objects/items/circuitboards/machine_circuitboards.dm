@@ -7,6 +7,14 @@
 		/obj/item/stack/cable_coil = 1,
 		/obj/item/stack/sheet/glass = 2)
 
+/obj/item/circuitboard/machine/stasis
+	name = "Lifeform Stasis Unit (Machine Board)"
+	build_path = /obj/machinery/stasis
+	req_components = list(
+		/obj/item/stack/cable_coil = 3,
+		/obj/item/stock_parts/manipulator = 1,
+		/obj/item/stock_parts/capacitor = 1)
+
 /obj/item/circuitboard/machine/vr_sleeper
 	name = "VR Sleeper (Machine Board)"
 	build_path = /obj/machinery/vr_sleeper
@@ -57,7 +65,7 @@
 	build_path = /obj/machinery/dna_scannernew
 	req_components = list(
 		/obj/item/stock_parts/scanning_module = 1,
-		/obj/item/stock_parts/manipulator = 1,
+		/obj/item/stock_parts/matter_bin = 1,
 		/obj/item/stock_parts/micro_laser = 1,
 		/obj/item/stack/sheet/glass = 1,
 		/obj/item/stack/cable_coil = 2)
@@ -399,6 +407,7 @@
 		/obj/machinery/smartfridge/food = "food",
 		/obj/machinery/smartfridge/drinks = "drinks",
 		/obj/machinery/smartfridge/extract = "slimes",
+		/obj/machinery/smartfridge/organ = "organs",
 		/obj/machinery/smartfridge/chemistry = "chems",
 		/obj/machinery/smartfridge/chemistry/virology = "viruses",
 		/obj/machinery/smartfridge/disks = "disks")
