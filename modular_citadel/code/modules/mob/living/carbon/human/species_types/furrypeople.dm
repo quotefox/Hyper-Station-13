@@ -169,6 +169,13 @@
 		return 9 //flyswatters deal 10x damage to moths
 	return 0
 
+/datum/species/insect/space_move(mob/living/carbon/human/H)
+	. = ..()
+	if(H.loc && !isspaceturf(H.loc) && H.dna.features["moth_wings"] != "Burnt Off")
+		var/datum/gas_mixture/current = H.loc.return_air()
+		if(current && (current.return_pressure() >= ONE_ATMOSPHERE*0.85)) //as long as there's reasonable pressure and no gravity, flight is possible
+			return TRUE
+
 /datum/species/insect/spec_death(gibbed, mob/living/carbon/human/H)
 	if(H)
 		stop_wagging_tail(H)
