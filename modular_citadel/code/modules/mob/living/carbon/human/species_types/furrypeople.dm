@@ -154,8 +154,20 @@
 	attack_verb = "flutter" //wat?
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
-	liked_food = MEAT | FRUIT
-	disliked_food = TOXIC
+	liked_food = VEGETABLES | DAIRY| CLOTH
+	disliked_food = FRUIT | GROSS
+	toxic_food = MEAT | RAW
+
+/datum/species/insect/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
+	. = ..()
+	if(chem.type == /datum/reagent/toxin/pestkiller)
+		H.adjustToxLoss(3)
+		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM)
+
+/datum/species/insect/check_species_weakness(obj/item/weapon, mob/living/attacker)
+	if(istype(weapon, /obj/item/melee/flyswatter))
+		return 9 //flyswatters deal 10x damage to moths
+	return 0
 
 /datum/species/insect/spec_death(gibbed, mob/living/carbon/human/H)
 	if(H)
