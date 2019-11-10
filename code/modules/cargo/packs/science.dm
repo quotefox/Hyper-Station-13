@@ -22,7 +22,7 @@
 /datum/supply_pack/science/beakers
 	name = "Chemistry Beakers Crate"
 	desc = "Glassware for any chemistry lab! Contains four small beakers, three large, two plastic, and one metamaterial. As well as three droppers and two pairs of latex gloves."
-	cost = 2000
+	cost = 1500
 	contains = list(/obj/item/reagent_containers/glass/beaker,
 					/obj/item/reagent_containers/glass/beaker,
 					/obj/item/reagent_containers/glass/beaker,
@@ -72,6 +72,13 @@
 					/obj/item/integrated_electronics/wirer)
 	crate_name = "circuitry starter pack crate"
 
+/datum/supply_pack/science/monkey
+	name = "Monkey Cube Crate"
+	desc = "Stop monkeying around! Contains seven monkey cubes. Just add water!"
+	cost = 2000
+	contains = list (/obj/item/storage/box/monkeycubes)
+	crate_name = "monkey cube crate"
+
 /datum/supply_pack/science/nitrilegloves
 	name = "Nitrile Gloves Crate"
 	desc = "Handling toxic chemicals? Well worry not, keep your flesh intact with some nitrile made gloves! Contains three pairs of nitrile gloves."
@@ -80,6 +87,17 @@
 					/obj/item/clothing/gloves/color/latex/nitrile,
 					/obj/item/clothing/gloves/color/latex/nitrile)
 	crate_name = "nitrile gloves crate"
+
+/datum/supply_pack/science/nuke_b_gone
+	name = "Nuke Defusal Kit"
+	desc = "Contains set of tools to defuse a nuke."
+	cost = 7500 //Usefull for traitors/nukies that fucked up
+	dangerous = TRUE
+	DropPodOnly = TRUE
+	contains = list(/obj/item/nuke_core_container/nt,
+					/obj/item/screwdriver/nuke/nt,
+					/obj/item/paper/guides/nt/nuke_instructions)
+	crate_name = "safe defusal kit storage"
 
 /datum/supply_pack/science/plasma
 	name = "Plasma Assembly Crate"
@@ -100,6 +118,15 @@
 					/obj/item/assembly/timer)
 	crate_name = "plasma assembly crate"
 	crate_type = /obj/structure/closet/crate/secure/plasma
+
+/datum/supply_pack/science/relic
+	name = "Relic Crate"
+	desc = "Ever want to play with old discounted toys? Look no more. Contains two relics."
+	cost = 1000
+	contraband = TRUE
+	contains = list(/obj/item/relic,
+					/obj/item/relic)
+	crate_name = "relic crate"
 
 /datum/supply_pack/science/robotics
 	name = "Robotics Assembly Crate"
@@ -136,6 +163,17 @@
 	contains = list(/obj/item/slime_extract/grey)
 	crate_name = "slime core crate"
 	crate_type = /obj/structure/closet/crate/secure/science
+
+/datum/supply_pack/science/supermater
+	name = "Supermatter Extraction Tools Crate"
+	desc = "Contains a set of tools to extract a sliver of supermatter. Consult your CE today!"
+	cost = 7500 //Usefull for traitors that fucked up
+	hidden = TRUE
+	contains = list(/obj/item/nuke_core_container/supermatter,
+					/obj/item/scalpel/supermatter,
+					/obj/item/hemostat/supermatter,
+					/obj/item/paper/guides/antag/supermatter_sliver)
+	crate_name = "supermatter extraction kit crate"
 
 /datum/supply_pack/science/tablets
 	name = "Tablet Crate"
