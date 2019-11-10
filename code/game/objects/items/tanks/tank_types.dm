@@ -35,6 +35,10 @@
 	icon_state = "oxygen_fr"
 	dog_fashion = null
 
+/obj/item/tank/internals/oxygen/empty/New()
+	..()
+	air_contents.gases[/datum/gas/oxygen] = (0*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
+	return
 
 /*
  * Anesthetic
@@ -105,6 +109,10 @@
 	air_contents.gases[/datum/gas/plasma] = (10*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 	return
 
+/obj/item/tank/internals/plasma/empty/New()
+	..()
+	air_contents.gases[/datum/gas/plasma] = (0*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
+	return
 
 /*
  * Plasmaman Plasma Tank
@@ -164,6 +172,11 @@
 	air_contents.gases[/datum/gas/oxygen] = (3*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
 	return
 
+/obj/item/tank/internals/emergency_oxygen/empty/New()
+	..()
+	air_contents.gases[/datum/gas/oxygen] = (0*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
+	return
+
 /obj/item/tank/internals/emergency_oxygen/engi
 	name = "extended-capacity emergency oxygen tank"
 	icon_state = "emergency_engi"
@@ -173,3 +186,8 @@
 	name = "double emergency oxygen tank"
 	icon_state = "emergency_double"
 	volume = 10
+
+/obj/item/tank/internals/emergency_oxygen/double/empty/New()
+	..()
+	air_contents.gases[/datum/gas/oxygen] = (0*ONE_ATMOSPHERE)*volume/(R_IDEAL_GAS_EQUATION*T20C)
+	return
