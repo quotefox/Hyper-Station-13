@@ -307,3 +307,9 @@
 	id = "psicodine"
 	results = list("psicodine" = 5)
 	required_reagents = list( "mannitol" = 2, "water" = 2, "impedrezene" = 1)
+
+/datum/chemical_reaction/prussian_blue
+	name = "Prussian Blue"
+	id = "prussian_blue"
+	results = list("prussian_blue" = 2)
+	required_reagents = list( "iron" = 1, "cyanide" = 6)
