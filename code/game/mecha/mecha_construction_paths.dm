@@ -1784,35 +1784,40 @@
 			"back_key" = TOOL_SCREWDRIVER,
 			"desc" = "Capacitor is secured."
 		),
-
 		//14
+		list(
+			"key" = TOOL_SCREWDRIVER,
+			"back_key" = TOOL_CROWBAR,
+			"desc" = "The power cell is installed."
+		//15
+		),
 		list(
 			"key" = /obj/item/stack/sheet/metal,
 			"amount" = 5,
 			"back_key" = TOOL_SCREWDRIVER,
 			"desc" = "The power cell is secured."
 		),
-		//15
+		//16
 		list(
 			"key" = TOOL_SCREWDRIVER,
 			"back_key" = TOOL_CROWBAR,
 			"desc" = "The power cell is installed."
 		),
-		//16
+		//17
 		list(
 			"key" = TOOL_WRENCH,
 			"back_key" = TOOL_CROWBAR,
 			"desc" = "Internal armor is installed."
 		),
 
-		//17
+		//18
 		list(
 			"key" = TOOL_WELDER,
 			"back_key" = TOOL_WRENCH,
 			"desc" = "Internal armor is wrenched."
 		),
 
-		//18
+		//19
 		list(
 			"key" = /obj/item/stack/sheet/plasteel,
 			"amount" = 5,
@@ -1820,14 +1825,14 @@
 			"desc" = "Internal armor is welded."
 		),
 
-		//19
+		//20
 		list(
 			"key" = TOOL_WRENCH,
 			"back_key" = TOOL_CROWBAR,
 			"desc" = "External armor is installed."
 		),
 
-		//20
+		//21
 		list(
 			"key" = TOOL_WELDER,
 			"back_key" = TOOL_WRENCH,
