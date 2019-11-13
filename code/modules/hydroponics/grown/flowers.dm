@@ -68,8 +68,8 @@
 	icon_grow = "spacemanstrumpet-grow"
 	icon_dead = "spacemanstrumpet-dead"
 	mutatelist = list()
-	genes = list(/datum/plant_gene/reagent/polypyr)
-	reagents_add = list(/datum/reagent/consumable/nutriment = 0.05)
+	genes = list( "Polypyrylium Oligomers")
+	reagents_add = list("nutriment" = 0.05)
 	rarity = 30
 
 /obj/item/seeds/poppy/lily/trumpet/Initialize()
