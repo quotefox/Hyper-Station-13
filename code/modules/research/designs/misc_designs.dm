@@ -277,6 +277,50 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 /////////////////////////////////////////
+//////////////Atmos Tanks////////////////
+/////////////////////////////////////////
+
+/datum/design/emergency_oxygen
+	name = "Emergency Oxygen Tank"
+	desc = "An empty emergency oxygen tank. Used for emergencies."
+	id = "emergency_oxygen"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 1000)
+	build_path = /obj/item/tank/internals/emergency_oxygen
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_ALL
+
+/datum/design/emergency_oxygen_double
+	name = "Double Emergency Oxygen Tank"
+	desc = "An double emergency oxygen tank."
+	id = "double_emergency_oxygen"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 1500, MAT_SILVER = 200)
+	build_path = /obj/item/tank/internals/emergency_oxygen/double/empty
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_CARGO
+
+/datum/design/oxygen_tank
+	name = "Oxygen Tank"
+	desc = "An empty oxygen tank."
+	id = "oxygen_tank"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 2000)
+	build_path = /obj/item/tank/internals/oxygen/empty
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SCIENCE
+
+/datum/design/plasma_tank
+	name = "Plasma Tank"
+	desc = "An empty plasma tank."
+	id = "plasma_tank"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 2000)
+	build_path = /obj/item/tank/internals/plasma/empty
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING | DEPARTMENTAL_FLAG_SCIENCE
+
+/////////////////////////////////////////
 ////////////Janitor Designs//////////////
 /////////////////////////////////////////
 
