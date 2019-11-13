@@ -106,6 +106,13 @@ GLOBAL_LIST_EMPTY(menulist)
 	usr.client.prefs.clientfps = 30
 	usr.client.prefs.parent.fps = 30
 
+/datum/verbs/menu/Settings/FPS/verb/vvhigh()
+	set name = "Very Higher-end FPS"
+	set desc = "&40 fps"
+	set category = "Preferences"
+	set hidden = 1
+	usr.client.prefs.clientfps = 40
+	usr.client.prefs.parent.fps = 40
 
 /datum/verbs/menu/Settings/ChatOutput
 	checkbox = CHECKBOX_GROUP
