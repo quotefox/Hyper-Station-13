@@ -116,7 +116,7 @@ GLOBAL_LIST_EMPTY(menulist)
 
 
 /datum/verbs/menu/Settings/FPS/verb/60fps()
-	set name = "Very Higher-End (60) FPS"
+	set name = "Very Very Higher-End (60) FPS"
 	set desc = "&60 fps"
 	set category = "Preferences"
 	set hidden = 1
