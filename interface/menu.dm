@@ -78,10 +78,10 @@ GLOBAL_LIST_EMPTY(menulist)
 
 /datum/verbs/menu/Settings/FPS
 	checkbox = CHECKBOX_GROUP
-	default = /datum/verbs/menu/Settings/FPS/verb/high
+	default = /datum/verbs/menu/Settings/FPS/verb/25fps
 
-/datum/verbs/menu/Settings/FPS/verb/low()
-	set name = "Low-end FPS"
+/datum/verbs/menu/Settings/FPS/verb/20fps()
+	set name = "Low-End (20) FPS"
 	set desc = "&20 fps"
 	set category = "Preferences"
 	set hidden = 1
@@ -89,8 +89,8 @@ GLOBAL_LIST_EMPTY(menulist)
 	usr.client.prefs.parent.fps = 20
 
 
-/datum/verbs/menu/Settings/FPS/verb/high()
-	set name = "High-end FPS"
+/datum/verbs/menu/Settings/FPS/verb/25fps()
+	set name = "High-End (25) FPS"
 	set desc = "&25 fps"
 	set category = "Preferences"
 	set hidden = 1
@@ -98,14 +98,30 @@ GLOBAL_LIST_EMPTY(menulist)
 	usr.client.prefs.parent.fps = 25
 
 
-/datum/verbs/menu/Settings/FPS/verb/vhigh()
-	set name = "Higher-end FPS"
+/datum/verbs/menu/Settings/FPS/verb/30fps()
+	set name = "Higher-End (30) FPS"
 	set desc = "&30 fps"
 	set category = "Preferences"
 	set hidden = 1
 	usr.client.prefs.clientfps = 30
 	usr.client.prefs.parent.fps = 30
 
+/datum/verbs/menu/Settings/FPS/verb/40fps()
+	set name = "Very Higher-End (40) FPS"
+	set desc = "&40 fps"
+	set category = "Preferences"
+	set hidden = 1
+	usr.client.prefs.clientfps = 40
+	usr.client.prefs.parent.fps = 40
+
+
+/datum/verbs/menu/Settings/FPS/verb/60fps()
+	set name = "Very Very Higher-End (60) FPS"
+	set desc = "&60 fps"
+	set category = "Preferences"
+	set hidden = 1
+	usr.client.prefs.clientfps = 60
+	usr.client.prefs.parent.fps = 60
 
 /datum/verbs/menu/Settings/ChatOutput
 	checkbox = CHECKBOX_GROUP
