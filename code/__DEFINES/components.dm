@@ -103,3 +103,9 @@
   */
 #define ELEMENT_BESPOKE		(1 << 1)
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"	//Called when the movable's glide size is updated: (new_glide_size)
+
+#define COMPONENT_ALLOW_EXAMINE 1
+
+#define COMSIG_LIVING_FULLY_HEAL "living_fully_healed"		//from base of /mob/living/fully_heal(): (admin_revive)
+#define COMSIG_LIVING_REGENERATE_LIMBS "living_regenerate_limbs"	//from base of /mob/living/regenerate_limbs(): (noheal, excluded_limbs)
+
