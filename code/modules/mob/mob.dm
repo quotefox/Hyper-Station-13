@@ -942,10 +942,6 @@
 /mob/proc/can_hold_items()
 	return FALSE
 
-/mob/proc/get_idcard()
-	return
-
-
 /mob/vv_get_dropdown()
 	. = ..()
 	. += "---"
