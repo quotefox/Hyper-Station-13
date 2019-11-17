@@ -926,6 +926,16 @@
 	item_state = "marie"
 	attack_verb = list("awoo'd", "shoved", "bonked")
 
+/obj/item/toy/plush/mammal/marisol
+	desc = "An adorable stuffed toy resembling a demi-wolf security officer. That a baton, or is she happy to see you..?"
+	icon_state = "marisol"
+	item_state = "marisol"
+
+/obj/item/toy/plush/mammal/marilyn
+	desc = "A cute stuffed fox toy. Now, about that sponge bath..."
+	icon_state = "marilyn"
+	item_state = "marilyn"
+
 /obj/item/toy/plush/catgirl
 	name = "feline plushie"
 	desc = "An adorable stuffed toy that resembles a feline."
@@ -940,7 +950,7 @@
 	item_state = "mikeel"
 
 /obj/item/toy/plush/catgirl/skylar
-	desc = "An adorable stuffed toy that resembles a degenerate."
+	desc = "An adorable stuffed toy that resembles a pure and good cat boy."
 	icon_state = "skylar"
 	item_state = "skylar"
 	attack_verb = list("powergamed", "merged", "tabled")
