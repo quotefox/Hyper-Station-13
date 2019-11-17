@@ -360,7 +360,7 @@
 	target = null
 
 /mob/living/simple_animal/bot/floorbot/update_icon()
-	icon_state = "[toolbox_color]floorbot-c"
+	icon_state = "[toolbox_color]floorbot[on]"
 
 
 /mob/living/simple_animal/bot/floorbot/explode()
