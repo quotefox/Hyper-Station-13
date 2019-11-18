@@ -36,7 +36,7 @@
 	var/datum/point/vector/trajectory
 	var/trajectory_ignore_forcemove = FALSE	//instructs forceMove to NOT reset our trajectory to the new location!
 
-	var/speed = 0.8			//Amount of deciseconds it takes for projectile to travel
+	var/speed = 0.6			//Amount of deciseconds it takes for projectile to travel
 	var/Angle = 0
 	var/original_angle = 0		//Angle at firing
 	var/nondirectional_sprite = FALSE //Set TRUE to prevent projectiles from having their sprites rotated based on firing angle
@@ -88,6 +88,8 @@
 		//Effects
 	var/stun = 0
 	var/knockdown = 0
+	var/knockdown_stamoverride
+	var/knockdown_stam_max
 	var/unconscious = 0
 	var/irradiate = 0
 	var/stutter = 0
@@ -202,7 +204,7 @@
 	else
 		L.log_message("has been shot by [firer] with [src]", LOG_ATTACK, color="orange")
 
-	return L.apply_effects(stun, knockdown, unconscious, irradiate, slur, stutter, eyeblur, drowsy, blocked, stamina, jitter)
+	return L.apply_effects(stun, knockdown, unconscious, irradiate, slur, stutter, eyeblur, drowsy, blocked, stamina, jitter, knockdown_stamoverride, knockdown_stam_max)
 
 /obj/item/projectile/proc/vol_by_damage()
 	if(src.damage)

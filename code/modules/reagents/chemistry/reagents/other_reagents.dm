@@ -296,7 +296,7 @@
 		if(ishuman(M) && M.blood_volume < (BLOOD_VOLUME_NORMAL*M.blood_ratio))
 			M.blood_volume += 3
 	else  // Will deal about 90 damage when 50 units are thrown
-		M.adjustBrainLoss(3, 150)
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3, 150)
 		M.adjustToxLoss(2, 0)
 		M.adjustFireLoss(2, 0)
 		M.adjustOxyLoss(2, 0)
@@ -315,7 +315,7 @@
 	M.IgniteMob()			//Only problem with igniting people is currently the commonly availible fire suits make you immune to being on fire
 	M.adjustToxLoss(1, 0)
 	M.adjustFireLoss(1, 0)		//Hence the other damages... ain't I a bastard?
-	M.adjustBrainLoss(5, 150)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5, 150)
 	holder.remove_reagent(id, 1)
 	pH = 0.1
 
@@ -805,7 +805,7 @@
 		step(M, pick(GLOB.cardinals))
 	if(prob(5))
 		M.emote(pick("twitch","drool","moan"))
-	M.adjustBrainLoss(1)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1)
 	..()
 
 /datum/reagent/sulfur
@@ -1172,7 +1172,7 @@
 /datum/reagent/impedrezene/on_mob_life(mob/living/carbon/M)
 	M.jitteriness = max(M.jitteriness-5,0)
 	if(prob(80))
-		M.adjustBrainLoss(2*REM)
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2*REM)
 	if(prob(50))
 		M.drowsyness = max(M.drowsyness, 3)
 	if(prob(10))
@@ -1328,10 +1328,12 @@
 	..()
 	ADD_TRAIT(L, TRAIT_STUNIMMUNE, id)
 	ADD_TRAIT(L, TRAIT_SLEEPIMMUNE, id)
+	ADD_TRAIT(L, TRAIT_NOSLIPALL, id)
 
 /datum/reagent/stimulum/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_STUNIMMUNE, id)
 	REMOVE_TRAIT(L, TRAIT_SLEEPIMMUNE, id)
+	REMOVE_TRAIT(L, TRAIT_NOSLIPALL, id)
 	..()
 
 /datum/reagent/stimulum/on_mob_life(mob/living/carbon/M)
@@ -1357,6 +1359,11 @@
 /datum/reagent/nitryl/on_mob_end_metabolize(mob/living/L)
 	REMOVE_TRAIT(L, TRAIT_GOTTAGOFAST, id)
 	..()
+
+/datum/reagent/nitryl/on_mob_life(mob/living/carbon/M)
+	current_cycle++
+	holder.remove_reagent(id, 0.99)		//Gives time for the next tick of life().
+	. = TRUE //Update status effects.
 
 /////////////////////////Coloured Crayon Powder////////////////////////////
 //For colouring in /proc/mix_color_from_reagents
@@ -1530,20 +1537,6 @@
 	taste_description = "metal"
 	pH = 4.5
 
-/datum/reagent/carpet
-	name = "Carpet"
-	id = "carpet"
-	description = "For those that need a more creative way to roll out a red carpet."
-	reagent_state = LIQUID
-	color = "#b51d05"
-	taste_description = "carpet" // Your tounge feels furry.
-
-/datum/reagent/carpet/reaction_turf(turf/T, reac_volume)
-	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
-		var/turf/open/floor/F = T
-		F.PlaceOnTop(/turf/open/floor/carpet)
-	..()
-
 /datum/reagent/bromine
 	name = "Bromine"
 	id = "bromine"
@@ -1696,6 +1689,142 @@
 		var/t_loc = get_turf(O)
 		qdel(O)
 		new /obj/item/clothing/shoes/galoshes/dry(t_loc)
+
+// Liquid Carpets
+/datum/reagent/carpet
+	name = "Liquid Carpet"
+	id = "carpet"
+	description = "For those that need a more creative way to roll out a carpet."
+	reagent_state = LIQUID
+	color = "#b51d05"
+	taste_description = "carpet" // Your tounge feels furry.
+
+/datum/reagent/carpet/reaction_turf(turf/T, reac_volume)
+	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
+		var/turf/open/floor/F = T
+		F.PlaceOnTop(/turf/open/floor/carpet)
+	..()
+
+/datum/reagent/carpet/black
+	name = "Liquid Black Carpet"
+	id = "blackcarpet"
+	color = "#363636"
+
+/datum/reagent/carpet/black/reaction_turf(turf/T, reac_volume)
+	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
+		var/turf/open/floor/F = T
+		F.PlaceOnTop(/turf/open/floor/carpet/black)
+	..()
+
+/datum/reagent/carpet/blackred
+	name = "Liquid Red Black Carpet"
+	id = "blackredcarpet"
+	color = "#342125"
+
+/datum/reagent/carpet/blackred/reaction_turf(turf/T, reac_volume)
+	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
+		var/turf/open/floor/F = T
+		F.PlaceOnTop(/turf/open/floor/carpet/blackred)
+	..()
+
+/datum/reagent/carpet/monochrome
+	name = "Liquid Monochrome Carpet"
+	id = "monochromecarpet"
+	color = "#b4b4b4"
+
+/datum/reagent/carpet/monochrome/reaction_turf(turf/T, reac_volume)
+	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
+		var/turf/open/floor/F = T
+		F.PlaceOnTop(/turf/open/floor/carpet/monochrome)
+	..()
+
+/datum/reagent/carpet/blue
+	name = "Liquid Blue Carpet"
+	id = "bluecarpet"
+	color = "#1256ff"
+
+/datum/reagent/carpet/blue/reaction_turf(turf/T, reac_volume)
+	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
+		var/turf/open/floor/F = T
+		F.PlaceOnTop(/turf/open/floor/carpet/blue)
+	..()
+
+/datum/reagent/carpet/cyan
+	name = "Liquid Cyan Carpet"
+	id = "cyancarpet"
+	color = "#3acfb9"
+
+/datum/reagent/carpet/cyan/reaction_turf(turf/T, reac_volume)
+	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
+		var/turf/open/floor/F = T
+		F.PlaceOnTop(/turf/open/floor/carpet/cyan)
+	..()
+
+/datum/reagent/carpet/green
+	name = "Liquid Green Carpet"
+	id = "greencarpet"
+	color = "#619b62"
+
+/datum/reagent/carpet/green/reaction_turf(turf/T, reac_volume)
+	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
+		var/turf/open/floor/F = T
+		F.PlaceOnTop(/turf/open/floor/carpet/green)
+	..()
+
+/datum/reagent/carpet/orange
+	name = "Liquid Orange Carpet"
+	id = "orangecarpet"
+	color = "#cc7900"
+
+/datum/reagent/carpet/orange/reaction_turf(turf/T, reac_volume)
+	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
+		var/turf/open/floor/F = T
+		F.PlaceOnTop(/turf/open/floor/carpet/orange)
+	..()
+
+/datum/reagent/carpet/purple
+	name = "Liquid Purple Carpet"
+	id = "purplecarpet"
+	color = "#6d3392"
+
+/datum/reagent/carpet/purple/reaction_turf(turf/T, reac_volume)
+	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
+		var/turf/open/floor/F = T
+		F.PlaceOnTop(/turf/open/floor/carpet/purple)
+	..()
+
+/datum/reagent/carpet/red
+	name = "Liquid Red Carpet"
+	id = "redcarpet"
+	color = "#871515"
+
+/datum/reagent/carpet/red/reaction_turf(turf/T, reac_volume)
+	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
+		var/turf/open/floor/F = T
+		F.PlaceOnTop(/turf/open/floor/carpet/red)
+	..()
+
+/datum/reagent/carpet/royalblack
+	name = "Liquid Royal Black Carpet"
+	id = "royalblackcarpet"
+	color = "#483d05"
+
+/datum/reagent/carpet/royalblack/reaction_turf(turf/T, reac_volume)
+	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
+		var/turf/open/floor/F = T
+		F.PlaceOnTop(/turf/open/floor/carpet/royalblack)
+	..()
+
+/datum/reagent/carpet/royalblue
+	name = "Liquid Royal Blue Carpet"
+	id = "royalbluecarpet"
+	color = "#24227e"
+
+/datum/reagent/carpet/royalblue/reaction_turf(turf/T, reac_volume)
+	if(isplatingturf(T) || istype(T, /turf/open/floor/plasteel))
+		var/turf/open/floor/F = T
+		F.PlaceOnTop(/turf/open/floor/carpet/royalblue)
+	..()
 
 // Virology virus food chems.
 
@@ -2031,3 +2160,18 @@
 /datum/reagent/changeling_string/Destroy()
 	qdel(original_dna)
 	return ..()
+
+/datum/reagent/pax/catnip
+	name = "catnip"
+	id = "catnip"
+	taste_description = "grass"
+	description = "A colorless liquid that makes people more peaceful and felines more happy."
+	metabolization_rate = 1.75 * REAGENTS_METABOLISM
+
+/datum/reagent/pax/catnip/on_mob_life(mob/living/carbon/M)
+	if(prob(20))
+		M.emote("nya")
+	if(prob(20))
+		to_chat(M, "<span class = 'notice'>[pick("Headpats feel nice.", "The feeling of a hairball...", "Backrubs would be nice.", "Whats behind those doors?")]</span>")
+	M.adjustArousalLoss(2)
+	..()

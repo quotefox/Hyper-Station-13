@@ -301,7 +301,7 @@
 				setArousalLoss(min_arousal)
 
 
-/mob/living/carbon/human/proc/mob_climax_partner(obj/item/organ/genital/G, mob/living/L, spillage = TRUE, mb_time = 30) //Used for climaxing with any living thing
+/mob/living/carbon/human/proc/mob_climax_partner(obj/item/organ/genital/G, mob/living/L, spillage = TRUE, impreg = FALSE, mb_time = 30) //Used for climaxing with any living thing
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = null
 
@@ -329,8 +329,11 @@
 								"<span class='userlove'>You have climaxed with someone[spillage ? ", spilling out of them":""], using your [G.name].</span>")
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 			SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
+
 			if(G.can_climax)
+
 				setArousalLoss(min_arousal)
+
 	else //knots and other non-spilling orgasms
 		if(do_after(src, mb_time, target = src) && in_range(src, L))
 			fluid_source.trans_to(L, total_fluids)
@@ -340,8 +343,16 @@
 								"<span class='userlove'>You have climaxed inside someone, your [G.name] spilling nothing.</span>")
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 			SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
+
 			if(G.can_climax)
 				setArousalLoss(min_arousal)
+
+	if(impreg)
+		//Role them odds, only people with the dicks can send the chance to the person with the settings enabled at the momment.
+		if (rand(0,100) < L.impregchance && L.breedable == 1)
+			log_game("Debug: [L] has been impregnated by [src]")
+			var/obj/item/organ/genital/womb/W = L.getorganslot("womb")
+			W.pregnant = 1
 
 
 /mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time = 30) //For beaker-filling, beware the bartender
@@ -555,12 +566,30 @@
 				if(picked_organ)
 					var/mob/living/partner = pick_partner() //Get someone
 					if(partner)
-						var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as anything in list("Yes", "No")
-						if(spillage == "Yes")
-							mob_climax_partner(picked_organ, partner, TRUE)
-						else
-							mob_climax_partner(picked_organ, partner, FALSE)
-						return
+						if(partner.breedable == 1 && picked_organ.name == "penis")
+							var/impreg = input(src, "Would this action carry the risk of pregnancy?", "Choose a option", "Yes") as anything in list("Yes", "No")
+							if(impreg == "Yes") //If we are impregging
+								var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as anything in list("Yes", "No")
+								if(spillage == "Yes")
+									mob_climax_partner(picked_organ, partner, TRUE, TRUE)
+								else
+									mob_climax_partner(picked_organ, partner, FALSE, TRUE)
+							else
+								var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as anything in list("Yes", "No")
+								if(spillage == "Yes")
+									mob_climax_partner(picked_organ, partner, TRUE, FALSE)
+								else
+									mob_climax_partner(picked_organ, partner, FALSE, FALSE) //Wow, im trash at coding, I need to find a better way of coding this, ill rewrite it later.-quote
+								return
+
+						else //If we arent impregging
+							var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as anything in list("Yes", "No")
+							if(spillage == "Yes")
+								mob_climax_partner(picked_organ, partner, TRUE, FALSE)
+							else
+								mob_climax_partner(picked_organ, partner, FALSE, FALSE)
+							return
+
 					else
 						to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
 						return

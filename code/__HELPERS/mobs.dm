@@ -200,6 +200,7 @@
 		"vag_clit_diam"		= 0.25,
 		"vag_clit_len"		= 0.25,
 		"has_womb"			= FALSE,
+		"can_get_preg"		= FALSE,
 		"womb_cum_rate"		= CUM_RATE,
 		"womb_cum_mult"		= CUM_RATE_MULT,
 		"womb_efficiency"	= CUM_EFFICIENCY,
@@ -394,6 +395,12 @@ GLOBAL_LIST_EMPTY(species_list)
 		if(QDELETED(user) || user.stat || user.IsKnockdown() || user.IsStun() || (!drifting && user.loc != Uloc) || (extra_checks && !extra_checks.Invoke()))
 			. = 0
 			break
+
+		if(isliving(user))
+			var/mob/living/L = user
+			if(L.recoveringstam)
+				. = 0
+				break
 
 		if(!QDELETED(Tloc) && (QDELETED(target) || Tloc != target.loc))
 			if((Uloc != Tloc || Tloc != user) && !drifting)

@@ -60,7 +60,7 @@
 	display_name = "Biological Technology"
 	description = "What makes us tick."	//the MC, silly!
 	prereq_ids = list("base")
-	design_ids = list("medicalkit", "chem_heater", "chem_master", "chem_dispenser", "sleeper", "vr_sleeper", "pandemic", "defibmount", "operating", "soda_dispenser", "beer_dispenser", "healthanalyzer", "blood_bag")
+	design_ids = list("medicalkit", "chem_heater", "chem_master", "chem_dispenser", "sleeper", "vr_sleeper", "pandemic", "defibmount", "operating", "soda_dispenser", "beer_dispenser", "healthanalyzer", "blood_bag","genescanner")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
 
@@ -96,7 +96,7 @@
 	display_name = "Advanced Surgery Tools"
 	description = "Refined and improved redesigns for the run-of-the-mill medical utensils."
 	prereq_ids = list("adv_biotech", "adv_surgery")
-	design_ids = list("drapes", "retractor_adv", "hemostat_adv", "cautery_adv", "surgicaldrill_adv", "scalpel_adv", "circular_saw_adv")
+	design_ids = list("drapes", "laserscalpel", "mechanicalpinches", "searingtool" )
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
 
@@ -115,7 +115,7 @@
 	display_name = "Advanced Surgery"
 	description = "When simple medicine doesn't cut it."
 	prereq_ids = list("adv_biotech")
-	design_ids = list("surgery_lobotomy", "surgery_reconstruction", "organbox")
+	design_ids = list("surgery_lobotomy", "surgery_reconstruction","surgery_toxinhealing", "organbox",)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
 
@@ -163,7 +163,7 @@
 	prereq_ids = list("base")
 	design_ids = list("solarcontrol", "recharger", "powermonitor", "rped", "pacman", "adv_capacitor", "adv_scanning", "emitter", "high_cell", "adv_matter_bin",
 	"atmosalerts", "atmos_control", "recycler", "autolathe", "high_micro_laser", "nano_mani", "mesons", "thermomachine", "rad_collector", "tesla_coil", "grounding_rod",
-	"apc_control", "cell_charger", "power control", "airlock_board", "firelock_board", "airalarm_electronics", "firealarm_electronics", "cell_charger", "stack_console", "stack_machine")
+	"apc_control", "cell_charger", "power control", "airlock_board", "firelock_board", "airalarm_electronics", "firealarm_electronics", "cell_charger", "stack_console", "stack_machine", "emergency_oxygen", "oxygen_tank", "plasma_tank")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 6000)
 	export_price = 5000
 
@@ -172,7 +172,7 @@
 	display_name = "Advanced Engineering"
 	description = "Pushing the boundaries of physics, one chainsaw-fist at a time."
 	prereq_ids = list("engineering", "emp_basic")
-	design_ids = list("engine_goggles", "magboots", "forcefield_projector", "weldingmask", "tray_goggles_prescription", "engine_goggles_prescription", "mesons_prescription")
+	design_ids = list("engine_goggles", "magboots", "forcefield_projector", "weldingmask", "tray_goggles_prescription", "engine_goggles_prescription", "mesons_prescription", "double_emergency_oxygen")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
 	export_price = 5000
 
@@ -526,9 +526,17 @@
 	display_name = "Cybernetic Organs"
 	description = "We have the technology to rebuild him."
 	prereq_ids = list("adv_biotech")
-	design_ids = list("cybernetic_heart", "cybernetic_liver", "cybernetic_liver_u", "cybernetic_lungs", "cybernetic_lungs_u", "cybernetic_tongue")
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	design_ids = list("cybernetic_ears", "cybernetic_heart", "cybernetic_liver", "cybernetic_lungs", "cybernetic_tongue")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 	export_price = 5000
+
+/datum/techweb_node/cyber_organs_upgraded
+	id = "cyber_organs_upgraded"
+	display_name = "Upgraded Cybernetic Organs"
+	description = "We have the technology to upgrade him."
+	prereq_ids = list("cyber_organs")
+	design_ids = list("cybernetic_ears_u", "cybernetic_heart_u", "cybernetic_liver_u", "cybernetic_lungs_u")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
 
 /datum/techweb_node/cyber_implants
 	id = "cyber_implants"

@@ -78,7 +78,7 @@
 				to_chat(user, "<span class='notice'>[src] are useless on the dead.</span>")
 				return
 			if(H != user)
-				H.visible_message("[user] forces [H] to apply [src]... [H.p_they()] quickly regenerate all injuries!")
+				H.visible_message("[user] forces [H] to apply [src]... they quickly regenerate all injuries!")
 				SSblackbox.record_feedback("nested tally", "hivelord_core", 1, list("[type]", "used", "other"))
 			else
 				to_chat(user, "<span class='notice'>You start to smear [src] on yourself. It feels and smells disgusting, but you feel amazingly refreshed in mere moments.</span>")

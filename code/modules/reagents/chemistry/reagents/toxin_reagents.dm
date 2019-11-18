@@ -9,6 +9,7 @@
 	taste_description = "bitterness"
 	taste_mult = 1.2
 	var/toxpwr = 1.5
+	var/silent_toxin = FALSE //won't produce a pain message when processed by liver/life() if there isn't another non-silent toxin present.
 
 /datum/reagent/toxin/on_mob_life(mob/living/carbon/M)
 	if(toxpwr)
@@ -43,9 +44,9 @@
 	if((method==VAPOR && prob(min(33, reac_volume))) || method==INGEST || method==PATCH || method==INJECT)
 		M.randmuti()
 		if(prob(98))
-			M.randmutb()
+			M.easy_randmut(NEGATIVE+MINOR_NEGATIVE)
 		else
-			M.randmutg()
+			M.easy_randmut(POSITIVE)
 		M.updateappearance()
 		M.domutcheck()
 	..()
@@ -313,25 +314,6 @@
 			. = 1
 	..()
 
-/datum/reagent/toxin/chloralhydratedelayed //sedates half as quickly and does not cause toxloss. same name/desc so it doesn't give away sleepypens
-	name = "Chloral Hydrate"
-	id = "chloralhydratedelayed"
-	description = "A powerful sedative that induces confusion and drowsiness before putting its target to sleep."
-	reagent_state = SOLID
-	color = "#000067" // rgb: 0, 0, 103
-	toxpwr = 0
-	metabolization_rate = 1 * REAGENTS_METABOLISM
-
-/datum/reagent/toxin/chloralhydratedelayed/on_mob_life(mob/living/carbon/M)
-	switch(current_cycle)
-		if(10 to 20)
-			M.confused += 1
-			M.drowsyness += 1
-			M.adjustStaminaLoss(7.5)
-		if(20 to INFINITY)
-			M.Sleeping(40, 0)
-	..()
-
 /datum/reagent/toxin/fakebeer	//disguised as normal beer for use by emagged brobots
 	name = "Beer"
 	id = "fakebeer"
@@ -389,12 +371,12 @@
 	id = "tirizene"
 	description = "A nonlethal poison that causes extreme fatigue and weakness in its victim."
 	color = "#6E2828"
-	data = 13
+	data = 15
 	toxpwr = 0
 
 /datum/reagent/toxin/staminatoxin/on_mob_life(mob/living/carbon/M)
 	M.adjustStaminaLoss(REM * data, 0)
-	data = max(data - 1, 3)
+	data = max(data - 1, 5)
 	..()
 	. = 1
 
@@ -490,7 +472,7 @@
 	toxpwr = 0
 
 /datum/reagent/toxin/fentanyl/on_mob_life(mob/living/carbon/M)
-	M.adjustBrainLoss(3*REM, 150)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3*REM, 150)
 	if(M.toxloss <= 60)
 		M.adjustToxLoss(1*REM, 0)
 	if(current_cycle >= 18)
@@ -918,6 +900,25 @@
 	taste_description = "bone hurting"
 	overdose_threshold = 20
 
+
+/datum/reagent/toxin/bungotoxin
+	name = "Bungotoxin"
+	id = "bungotoxin"
+	description = "A horrible cardiotoxin that protects the humble bungo pit."
+	silent_toxin = TRUE
+	color = "#EBFF8E"
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	toxpwr = 0
+	taste_description = "tannin"
+
+/datum/reagent/toxin/bungotoxin/on_mob_life(mob/living/carbon/M)
+	M.adjustOrganLoss(ORGAN_SLOT_HEART, 3)
+	M.confused = M.dizziness //add a tertiary effect here if this is isn't an effective poison.
+	if(current_cycle >= 12 && prob(8))
+		var/tox_message = pick("You feel your heart spasm in your chest.", "You feel faint.","You feel you need to catch your breath.","You feel a prickle of pain in your chest.")
+		to_chat(M, "<span class='notice'>[tox_message]</span>")
+	. = 1
+	..()
 /datum/reagent/toxin/bonehurtingjuice/on_mob_add(mob/living/carbon/M)
 	M.say("oof ouch my bones", forced = /datum/reagent/toxin/bonehurtingjuice)
 
@@ -969,3 +970,20 @@
 				to_chat(M, "<span class='warning'>Your missing arm aches from wherever you left it.</span>")
 				M.emote("sigh")
 	return ..()
+
+/datum/reagent/toxin/brainhurtingjuice //oof ouch
+	name = "Brain Hurting Juice"
+	id = "brainhurtingjuice"
+	color = "#AAAAAA77" //RGBA: 170, 170, 170, 77
+	toxpwr = 0
+	taste_description = "brain hurting"
+	metabolization_rate = 5
+
+/datum/reagent/toxin/brainhurtingjuice/on_mob_life(mob/living/carbon/M)
+	if(prob(50))
+		M.gain_trauma_type(BRAIN_TRAUMA_MILD)
+	else if(prob(50))
+		M.gain_trauma_type(BRAIN_TRAUMA_SEVERE)
+	else
+		M.gain_trauma_type(BRAIN_TRAUMA_SPECIAL)
+	..()

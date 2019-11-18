@@ -351,6 +351,7 @@
 	switch(user.m_intent)
 		if(MOVE_INTENT_WALK)
 			icon_state = "walking"
+
 		if(MOVE_INTENT_RUN)
 			icon_state = "running"
 

@@ -53,8 +53,10 @@
 
 	var/mob_size = MOB_SIZE_HUMAN
 
-//H13 custom body size
+//H13 custom body size and impregnation
 	var/custom_body_size = 1
+	var/breedable = 0
+	var/impregchance = 0
 
 
 	var/list/mob_biotypes = list(MOB_ORGANIC)

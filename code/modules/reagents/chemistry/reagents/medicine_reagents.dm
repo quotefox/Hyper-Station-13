@@ -44,7 +44,7 @@
 	M.heal_bodypart_damage(5,5)
 	M.adjustToxLoss(-5, 0, TRUE)
 	M.hallucination = 0
-	M.setBrainLoss(0)
+	M.setOrganLoss(ORGAN_SLOT_BRAIN, 0)
 	REMOVE_TRAITS_NOT_IN(M, list(SPECIES_TRAIT, ROUNDSTART_TRAIT, ORGAN_TRAIT))
 	M.set_blurriness(0)
 	M.set_blindness(0)
@@ -63,6 +63,10 @@
 	M.cure_all_traumas(TRAUMA_RESILIENCE_MAGIC)
 	if(M.blood_volume < (BLOOD_VOLUME_NORMAL*M.blood_ratio))
 		M.blood_volume = (BLOOD_VOLUME_NORMAL*M.blood_ratio)
+
+	for(var/organ in M.internal_organs)
+		var/obj/item/organ/O = organ
+		O.setOrganDamage(0)
 
 	for(var/thing in M.diseases)
 		var/datum/disease/D = thing
@@ -267,7 +271,7 @@
 	pH = 10.7
 
 /datum/reagent/medicine/oxandrolone/on_mob_life(mob/living/carbon/M)
-	if(M.getFireLoss() > 50)
+	if(M.getFireLoss() > 25)
 		M.adjustFireLoss(-4*REM, 0) //Twice as effective as silver sulfadiazine for severe burns
 	else
 		M.adjustFireLoss(-0.5*REM, 0) //But only a quarter as effective for more minor ones
@@ -541,7 +545,7 @@
 
 
 /datum/reagent/medicine/sal_acid/on_mob_life(mob/living/carbon/M)
-	if(M.getBruteLoss() > 50)
+	if(M.getBruteLoss() > 25)
 		M.adjustBruteLoss(-4*REM, 0) //Twice as effective as styptic powder for severe bruising
 	else
 		M.adjustBruteLoss(-0.5*REM, 0) //But only a quarter as effective for more minor ones
@@ -855,7 +859,12 @@
 			else
 				M.adjustOxyLoss(-20, 0)
 				M.adjustToxLoss(-20, 0)
+				var/mob/living/carbon/H = M
+				for(var/organ in H.internal_organs)
+					var/obj/item/organ/O = organ
+					O.setOrganDamage(0)
 				M.updatehealth()
+
 				if(M.revive())
 					M.emote("gasp")
 					log_combat(M, M, "revived", src)
@@ -875,7 +884,7 @@
 	pH = 10.4
 
 /datum/reagent/medicine/mannitol/on_mob_life(mob/living/carbon/C)
-	C.adjustBrainLoss(-2*REM)
+	C.adjustOrganLoss(ORGAN_SLOT_BRAIN, -2*REM)
 	if(prob(10))
 		C.cure_trauma_type(resilience = TRAUMA_RESILIENCE_BASIC)
 	..()
@@ -904,7 +913,7 @@
 /datum/reagent/medicine/mutadone/on_mob_life(mob/living/carbon/M)
 	M.jitteriness = 0
 	if(M.has_dna())
-		M.dna.remove_all_mutations()
+		M.dna.remove_all_mutations(mutadone = TRUE)
 	if(!QDELETED(M)) //We were a monkey, now a human
 		..()
 
@@ -1094,10 +1103,10 @@
 	..()
 
 /datum/reagent/medicine/tricordrazine/overdose_process(mob/living/M)
-	M.adjustToxLoss(2*REM, 0)
-	M.adjustOxyLoss(2*REM, 0)
-	M.adjustBruteLoss(2*REM, 0)
-	M.adjustFireLoss(2*REM, 0)
+	M.adjustToxLoss(0.5*REM, 0)
+	M.adjustOxyLoss(0.5*REM, 0)
+	M.adjustBruteLoss(0.5*REM, 0)
+	M.adjustFireLoss(0.5*REM, 0)
 	..()
 	. = 1
 
@@ -1130,7 +1139,7 @@
 	M.adjustFireLoss(-5*REM, 0)
 	M.adjustOxyLoss(-15, 0)
 	M.adjustToxLoss(-5*REM, 0)
-	M.adjustBrainLoss(-15*REM)
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -15*REM)
 	M.adjustCloneLoss(-3*REM, 0)
 	M.adjustStaminaLoss(-20*REM,0)
 	..()
@@ -1170,14 +1179,15 @@
 	overdose_threshold = 25
 	pH = 11
 
+//Hyperstation 13 nerf.
 /datum/reagent/medicine/earthsblood/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(-3 * REM, 0)
 	M.adjustFireLoss(-3 * REM, 0)
 	M.adjustOxyLoss(-15 * REM, 0)
 	M.adjustToxLoss(-3 * REM, 0, TRUE) //Heals TOXINLOVERS
-	M.adjustBrainLoss(2 * REM, 150) //This does, after all, come from ambrosia, and the most powerful ambrosia in existence, at that!
+	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2 * REM, 150) //This does, after all, come from ambrosia, and the most powerful ambrosia in existence, at that!
 	M.adjustCloneLoss(-1 * REM, 0)
-	M.adjustStaminaLoss(-30 * REM, 0)
+	M.adjustStaminaLoss(-3 * REM, 0)
 	M.jitteriness = min(max(0, M.jitteriness + 3), 30)
 	M.druggy = min(max(0, M.druggy + 10), 15) //See above
 	..()
@@ -1207,7 +1217,7 @@
 	if (M.hallucination >= 5)
 		M.hallucination -= 5
 	if(prob(20))
-		M.adjustBrainLoss(1*REM, 50)
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 1*REM, 50)
 	M.adjustStaminaLoss(2.5*REM, 0)
 	..()
 	return TRUE
@@ -1406,5 +1416,51 @@
 /datum/reagent/medicine/psicodine/overdose_process(mob/living/M)
 	M.hallucination = min(max(0, M.hallucination + 5), 60)
 	M.adjustToxLoss(1, 0)
+	..()
+	. = 1
+
+/datum/reagent/medicine/silibinin
+	name = "Silibinin"
+	id = "silibinin"
+	description = "A thistle derrived hepatoprotective flavolignan mixture that help reverse damage to the liver."
+	reagent_state = SOLID
+	color = "#FFFFD0"
+	metabolization_rate = 1.5 * REAGENTS_METABOLISM
+
+/datum/reagent/medicine/silibinin/on_mob_life(mob/living/carbon/M)
+	M.adjustOrganLoss(ORGAN_SLOT_LIVER, -2)//Add a chance to cure liver trauma once implemented.
+	..()
+	. = 1
+
+/datum/reagent/medicine/polypyr  //This is intended to be an ingredient in advanced chems.
+	name = "Polypyrylium Oligomers"
+	id = "polypyrylium_oligomers"
+	description = "A?purple mixture of short polyelectrolyte chains not easily synthesized in the laboratory. It is valued as an intermediate in the synthesis of the cutting edge pharmaceuticals."
+	reagent_state = SOLID
+	color = "#9423FF"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = 50
+	taste_description = "numbing bitterness"
+
+/datum/reagent/medicine/polypyr/on_mob_life(mob/living/carbon/M) //I w?nted a collection of small positive effects, this is as hard to obtain as coniine after all.
+	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -0.25)
+	M.adjustBruteLoss(-0.35, 0)
+	if(prob(50))
+		if(ishuman(M))
+			var/mob/living/carbon/human/H = M
+			H.bleed_rate = max(H.bleed_rate - 1, 0)
+	..()
+	. = 1
+
+/datum/reagent/medicine/polypyr/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
+	if(method == TOUCH || method == VAPOR)
+		if(M && ishuman(M) && reac_volume >= 0.5)
+			var/mob/living/carbon/human/H = M
+			H.hair_color = "92f"
+			H.facial_hair_color = "92f"
+			H.update_hair()
+
+/datum/reagent/medicine/polypyr/overdose_process(mob/living/M)
+	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, 0.5)
 	..()
 	. = 1

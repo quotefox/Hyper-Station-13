@@ -19,6 +19,7 @@
 	icon_state = "fork"
 	force = 5
 	w_class = WEIGHT_CLASS_TINY
+	grind_results = list(/datum/reagent/iron = 3, /datum/reagent/silver = 3)
 	throwforce = 0
 	throw_speed = 3
 	throw_range = 5
@@ -58,6 +59,7 @@
 	name = "kitchen knife"
 	icon_state = "knife"
 	desc = "A general purpose Chef's Knife made by SpaceCook Incorporated. Guaranteed to stay sharp for years to come."
+	grind_results = list(/datum/reagent/iron = 3, /datum/reagent/silver = 3)
 	flags_1 = CONDUCT_1
 	force = 10
 	w_class = WEIGHT_CLASS_SMALL

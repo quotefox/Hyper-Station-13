@@ -79,8 +79,7 @@ GLOBAL_LIST_INIT(summoned_special_magic, list(
 	/obj/item/storage/belt/wands/full,
 	/obj/item/antag_spawner/contract,
 	/obj/item/gun/magic/staff/chaos,
-	/obj/item/necromantic_stone,
-	/obj/item/blood_contract))
+	/obj/item/necromantic_stone))
 
 // If true, it's the probability of triggering "survivor" antag.
 GLOBAL_VAR_INIT(summon_guns_triggered, FALSE)

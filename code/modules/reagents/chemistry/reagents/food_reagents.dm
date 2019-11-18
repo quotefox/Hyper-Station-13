@@ -537,6 +537,27 @@
 	color = "#00F0FF"
 	taste_description = "blue cherry"
 
+/datum/reagent/consumable/garlic //NOTE: having garlic in your blood stops vampires from biting you.
+	name = "Garlic Juice"
+	id = "garlic"
+	description = "Crushed garlic. Chefs love it, but it can make you smell bad."
+	color = "#FEFEFE"
+	taste_description = "garlic"
+	metabolization_rate = 0.15 * REAGENTS_METABOLISM
+
+/datum/reagent/consumable/garlic/on_mob_life(mob/living/carbon/M)
+	if(isvampire(M)) //incapacitating but not lethal. Unfortunately, vampires cannot vomit.
+		if(prob(min(25,current_cycle)))
+			to_chat(M, "<span class='danger'>You can't get the scent of garlic out of your nose! You can barely think...</span>")
+			M.Jitter(10)
+	else if(ishuman(M))
+		var/mob/living/carbon/human/H = M
+		if(H.job == "Cook")
+			if(prob(20)) //stays in the system much longer than sprinkles/banana juice, so heals slower to partially compensate
+				H.heal_bodypart_damage(1,1, 0)
+				. = 1
+	..()
+
 /datum/reagent/consumable/rice
 	name = "Rice"
 	id = "rice"
@@ -684,7 +705,7 @@
 		. = 1
 	if(prob(20))
 		M.losebreath += 4
-		M.adjustBrainLoss(2*REM, 150)
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 2*REM, 150)
 		M.adjustToxLoss(3*REM,0)
 		M.adjustStaminaLoss(10*REM,0)
 		M.blur_eyes(5)
