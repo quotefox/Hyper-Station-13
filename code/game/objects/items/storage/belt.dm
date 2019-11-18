@@ -594,12 +594,12 @@
 		))
 
 /obj/item/storage/belt/bandolier/durathread
-	name = "durathread bandolier"
+	name = "Durathread Bandolier"
 	desc = "An double stacked bandolier made out of durathread."
 	icon_state = "bandolier-durathread"
 	item_state = "bandolier-durathread"
 	resistance_flags = FIRE_PROOF
-	
+
 /obj/item/storage/belt/bandolier/durathread/ComponentInitialize()
 	. = ..()
 	GET_COMPONENT(STR, /datum/component/storage)
