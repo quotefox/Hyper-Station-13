@@ -912,7 +912,15 @@
 	time = 30
 	category = CAT_CLOTHING
 
-/datum/crafting_recipe/durathread_helmet
+/datum/crafting_recipe/durathread_bandolier
+	name = "Durathread Bandolier"
+	result = /obj/item/storage/belt/bandolier/durathread
+	reqs = list(/obj/item/stack/sheet/durathread = 6,
+				/obj/item/stack/sheet/leather = 2)
+	time = 50
+	category = CAT_CLOTHING
+	
+	/datum/crafting_recipe/durathread_helmet
 	name = "Makeshift Durathread Helmet"
 	result = /obj/item/clothing/head/helmet/durathread
 	reqs = list(/obj/item/stack/sheet/durathread = 4,
