@@ -1539,15 +1539,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_hair_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in GLOB.hair_styles_list
 					if(new_hair_style)
 						hair_style = new_hair_style
-						if(new_hair_style == "tail hair" && clientckey <> "quotefox")
-							hair_style = "bald"
+						if(new_hair_style == "Tail Hair" && clientckey <> "duote3ox")
+							hair_style = "Bald"
 
 
 				if("next_hair_style")
 					hair_style = next_list_item(hair_style, GLOB.hair_styles_list)
+					if(hair_style == "Tail Hair" && clientckey <> "duote3ox")
+						hair_style = "Bald"
 
 				if("previous_hair_style")
 					hair_style = previous_list_item(hair_style, GLOB.hair_styles_list)
+					if(hair_style == "Tail Hair" && clientckey <> "duote3ox")
+						hair_style = "Bald"
 
 				if("facial")
 					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference","#"+facial_hair_color) as color|null
