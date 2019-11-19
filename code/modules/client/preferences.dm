@@ -13,6 +13,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/client/parent
 	//doohickeys for savefiles
 	var/path
+	var/clientckey
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
 	var/max_save_slots = 8
 
@@ -233,6 +234,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(istype(C))
 		if(!IsGuestKey(C.key))
 			load_path(C.ckey)
+			clientckey = C.ckey
 			unlock_content = C.IsByondMember()
 			if(unlock_content)
 				max_save_slots = 16
@@ -1537,6 +1539,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_hair_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in GLOB.hair_styles_list
 					if(new_hair_style)
 						hair_style = new_hair_style
+						if(new_hair_style == "tail hair" && clientckey <> "quotefox")
+							hair_style = "bald"
+
 
 				if("next_hair_style")
 					hair_style = next_list_item(hair_style, GLOB.hair_styles_list)
