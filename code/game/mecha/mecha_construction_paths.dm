@@ -1746,7 +1746,6 @@
 			"back_key" = TOOL_CROWBAR,
 			"desc" = "Peripherals control module is installed."
 		),
-
 		//9
 		list(
 			"key" = /obj/item/stock_parts/scanning_module,
@@ -1784,40 +1783,37 @@
 			"back_key" = TOOL_SCREWDRIVER,
 			"desc" = "Capacitor is secured."
 		),
-		//14
+
+		//11
 		list(
 			"key" = TOOL_SCREWDRIVER,
 			"back_key" = TOOL_CROWBAR,
 			"desc" = "The power cell is installed."
-		//15
 		),
+
+		//12
 		list(
 			"key" = /obj/item/stack/sheet/metal,
 			"amount" = 5,
 			"back_key" = TOOL_SCREWDRIVER,
 			"desc" = "The power cell is secured."
 		),
-		//16
-		list(
-			"key" = TOOL_SCREWDRIVER,
-			"back_key" = TOOL_CROWBAR,
-			"desc" = "The power cell is installed."
-		),
-		//17
+
+		//13
 		list(
 			"key" = TOOL_WRENCH,
 			"back_key" = TOOL_CROWBAR,
 			"desc" = "Internal armor is installed."
 		),
 
-		//18
+		//14
 		list(
 			"key" = TOOL_WELDER,
 			"back_key" = TOOL_WRENCH,
 			"desc" = "Internal armor is wrenched."
 		),
 
-		//19
+		//15
 		list(
 			"key" = /obj/item/stack/sheet/plasteel,
 			"amount" = 5,
@@ -1825,21 +1821,20 @@
 			"desc" = "Internal armor is welded."
 		),
 
-		//20
+		//16
 		list(
 			"key" = TOOL_WRENCH,
 			"back_key" = TOOL_CROWBAR,
 			"desc" = "External armor is installed."
 		),
 
-		//21
+		//17
 		list(
 			"key" = TOOL_WELDER,
 			"back_key" = TOOL_WRENCH,
 			"desc" = "External armor is wrenched."
 		),
 	)
-
 /datum/component/construction/mecha/odysseus/custom_action(obj/item/I, mob/living/user, diff)
 	if(!..())
 		return FALSE
