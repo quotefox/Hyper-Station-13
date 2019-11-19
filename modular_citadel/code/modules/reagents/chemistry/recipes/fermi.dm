@@ -411,14 +411,14 @@
 /datum/chemical_reaction/fermi/acidic_buffer//done test
 	name = "Acetic acid buffer"
 	id = "acidic_buffer"
-	results = list("acidic_buffer" = 2) //acetic acid
-	required_reagents = list("salglu_solution" = 0.2, "ethanol" = 0.6, "oxygen" = 0.6, "water" = 0.6)
+	results = list("acidic_buffer" = 10) //acetic acid
+	required_reagents = list("salglu_solution" = 1, "ethanol" = 3, "oxygen" = 3, "water" = 3)
 	//FermiChem vars:
 	OptimalTempMin 	= 250
 	OptimalTempMax 	= 500
 	ExplodeTemp 	= 9999 //check to see overflow doesn't happen!
-	OptimalpHMin 	= 2
-	OptimalpHMax 	= 6
+	OptimalpHMin 	= 0
+	OptimalpHMax 	= 14
 	ReactpHLim 		= 0
 	//CatalystFact 	= 0 //To do 1
 	CurveSharpT 	= 4
@@ -438,15 +438,15 @@
 /datum/chemical_reaction/fermi/basic_buffer//done test
 	name = "Ethyl Ethanoate buffer"
 	id = "basic_buffer"
-	results = list("basic_buffer" = 1.5)
-	required_reagents = list("acidic_buffer" = 0.5, "ethanol" = 0.5, "water" = 0.5)
+	results = list("basic_buffer" = 5)
+	required_reagents = list("lye" = 1, "ethanol" = 2, "water" = 2)
 	required_catalysts = list("sacid" = 1) //vagely acetic
-	//FermiChem vars:x
+	//FermiChem vars:
 	OptimalTempMin 	= 250
 	OptimalTempMax 	= 500
 	ExplodeTemp 	= 9999 //check to see overflow doesn't happen!
-	OptimalpHMin 	= 5
-	OptimalpHMax 	= 12
+	OptimalpHMin 	= 0
+	OptimalpHMax 	= 14
 	ReactpHLim 		= 0
 	//CatalystFact 	= 0 //To do 1
 	CurveSharpT 	= 4
