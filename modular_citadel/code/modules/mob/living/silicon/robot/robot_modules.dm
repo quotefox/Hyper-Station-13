@@ -221,7 +221,7 @@
 
 /obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Marina", "Droid", "Eyebot", "BootyF", "BootyM")
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Marina", "Droid", "Eyebot", "BootyF", "BootyM", "Haydee")
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -251,6 +251,9 @@
 			cyborg_base_icon = "bootymedicalM"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
+		if("Haydee")
+			cyborg_base_icon = "haydeemedical"
+			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 	return ..()
 
 /obj/item/robot_module/janitor/be_transformed_to(obj/item/robot_module/old_module)
