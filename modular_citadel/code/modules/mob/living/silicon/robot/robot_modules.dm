@@ -37,6 +37,7 @@
 		/obj/item/clothing/mask/gas/sechailer/cyborg,
 		/obj/item/soap/tongue,
 		/obj/item/analyzer/nose,
+		/obj/item/holosign_creator/security,
 		/obj/item/dogborg/sleeper/K9,
 		/obj/item/gun/energy/disabler/cyborg,
 		/obj/item/pinpointer/crew)
@@ -88,9 +89,12 @@
 		/obj/item/healthanalyzer,
 		/obj/item/dogborg/sleeper/medihound,
 		/obj/item/roller/robo,
+		/obj/item/crowbar/cyborg,
+		/obj/item/borg/apparatus/beaker,
 		/obj/item/reagent_containers/borghypo,
 		/obj/item/twohanded/shockpaddles/cyborg/hound,
 		/obj/item/stack/medical/gauze/cyborg,
+		/obj/item/reagent_containers/syringe,
 		/obj/item/pinpointer/crew,
 		/obj/item/sensor_device)
 	emag_modules = list(/obj/item/dogborg/pounce)
@@ -132,9 +136,13 @@
 	basic_modules = list(
 		/obj/item/dogborg/jaws/small,
 		/obj/item/analyzer/nose,
+		/obj/item/crowbar/cyborg,
 		/obj/item/soap/tongue/scrubpup,
+		/obj/item/stack/tile/plasteel/cyborg,
+		/obj/item/storage/bag/trash/cyborg,
 		/obj/item/lightreplacer/cyborg,
 		/obj/item/extinguisher/mini,
+		/obj/item/holosign_creator,
 		/obj/item/dogborg/sleeper/compactor)
 	emag_modules = list(/obj/item/dogborg/pounce)
 	ratvar_modules = list(
@@ -168,7 +176,12 @@
 		/obj/item/storage/bag/borgdelivery,
 		/obj/item/analyzer/nose,
 		/obj/item/soap/tongue,
+		/obj/item/cookiesynth,
+		/obj/item/holosign_creator/cyborg,
+		/obj/item/crowbar/cyborg,
+		/obj/item/borg/projectile_dampen,
 		/obj/item/healthanalyzer,
+		/obj/item/reagent_containers/borghypo/peace,
 		/obj/item/extinguisher/mini,
 		/obj/item/borg/cyborghug)
 	emag_modules = list(/obj/item/dogborg/pounce)
