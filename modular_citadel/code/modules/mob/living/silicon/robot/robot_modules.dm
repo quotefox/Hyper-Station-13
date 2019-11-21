@@ -37,6 +37,7 @@
 		/obj/item/clothing/mask/gas/sechailer/cyborg,
 		/obj/item/soap/tongue,
 		/obj/item/analyzer/nose,
+		/obj/item/holosign_creator/security,
 		/obj/item/dogborg/sleeper/K9,
 		/obj/item/gun/energy/disabler/cyborg,
 		/obj/item/pinpointer/crew)
@@ -88,9 +89,12 @@
 		/obj/item/healthanalyzer,
 		/obj/item/dogborg/sleeper/medihound,
 		/obj/item/roller/robo,
+		/obj/item/crowbar/cyborg,
+		/obj/item/borg/apparatus/beaker,
 		/obj/item/reagent_containers/borghypo,
 		/obj/item/twohanded/shockpaddles/cyborg/hound,
 		/obj/item/stack/medical/gauze/cyborg,
+		/obj/item/reagent_containers/syringe,
 		/obj/item/pinpointer/crew,
 		/obj/item/sensor_device)
 	emag_modules = list(/obj/item/dogborg/pounce)
@@ -132,9 +136,13 @@
 	basic_modules = list(
 		/obj/item/dogborg/jaws/small,
 		/obj/item/analyzer/nose,
+		/obj/item/crowbar/cyborg,
 		/obj/item/soap/tongue/scrubpup,
+		/obj/item/stack/tile/plasteel/cyborg,
+		/obj/item/storage/bag/trash/cyborg,
 		/obj/item/lightreplacer/cyborg,
 		/obj/item/extinguisher/mini,
+		/obj/item/holosign_creator,
 		/obj/item/dogborg/sleeper/compactor)
 	emag_modules = list(/obj/item/dogborg/pounce)
 	ratvar_modules = list(
@@ -168,7 +176,12 @@
 		/obj/item/storage/bag/borgdelivery,
 		/obj/item/analyzer/nose,
 		/obj/item/soap/tongue,
+		/obj/item/cookiesynth,
+		/obj/item/holosign_creator/cyborg,
+		/obj/item/crowbar/cyborg,
+		/obj/item/borg/projectile_dampen,
 		/obj/item/healthanalyzer,
+		/obj/item/reagent_containers/borghypo/peace,
 		/obj/item/extinguisher/mini,
 		/obj/item/borg/cyborghug)
 	emag_modules = list(/obj/item/dogborg/pounce)
@@ -221,7 +234,7 @@
 
 /obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Marina", "Droid", "Eyebot", "BootyF", "BootyM", "Haydee")
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Marina", "Droid", "Eyebot", "BootyF", "BootyM", "BootyS", "Haydee")
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -251,14 +264,19 @@
 			cyborg_base_icon = "bootymedicalM"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
+		if("BootyS")
+			cyborg_base_icon = "bootymedicalS"
+			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
+			hat_offset = 3
 		if("Haydee")
 			cyborg_base_icon = "haydeemedical"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
+			hat_offset = 3
 	return ..()
 
 /obj/item/robot_module/janitor/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/list/janimodels = list("Default", "Sleek", "Marina", "Can", "Heavy", "BootyF", "BootyM")
+	var/list/janimodels = list("Default", "Sleek", "Marina", "Can", "Heavy", "BootyF", "BootyM", "BootyS")
 	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in janimodels
 	if(!borg_icon)
 		return FALSE
@@ -285,11 +303,15 @@
 			cyborg_base_icon = "bootyjanitorM"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
+		if("BootyS")
+			cyborg_base_icon = "bootyjanitorS"
+			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
+			hat_offset = 3
 	return ..()
 
 /obj/item/robot_module/peacekeeper/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Spider", "BootyF", "BootyM")
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Spider", "BootyF", "BootyM", "BootyS")
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -306,11 +328,15 @@
 			cyborg_base_icon = "bootypeaceM"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
+		if("BootyS")
+			cyborg_base_icon = "bootypeaceS"
+			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
+			hat_offset = 3
 	return ..()
 
 /obj/item/robot_module/security/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Default - Treads", "Heavy", "Sleek", "Can", "Marina", "Spider", "BootyF", "BootyM")
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Default - Treads", "Heavy", "Sleek", "Can", "Marina", "Spider", "BootyF", "BootyM", "BootyS")
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -343,11 +369,15 @@
 			cyborg_base_icon = "bootysecurityM"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
+		if("BootyS")
+			cyborg_base_icon = "bootysecurityS"
+			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
+			hat_offset = 3
 	return ..()
 
 /obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Waitress", "Heavy", "Sleek", "Butler", "Tophat", "Kent", "Bro", "BootyF", "BootyM")
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Waitress", "Heavy", "Sleek", "Butler", "Tophat", "Kent", "Bro", "BootyF", "BootyM", "BootyS")
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -381,11 +411,15 @@
 			cyborg_base_icon = "bootyserviceM"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
+		if("BootyS")
+			cyborg_base_icon = "bootyserviceS"
+			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
+			hat_offset = 3
 	return ..()
 
 /obj/item/robot_module/engineering/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/list/engymodels = list("Default", "Default - Treads", "Heavy", "Sleek", "Marina", "Can", "Spider", "Loader","Handy", "Pup Dozer", "BootyF", "BootyM")
+	var/list/engymodels = list("Default", "Default - Treads", "Heavy", "Sleek", "Marina", "Can", "Spider", "Loader","Handy", "Pup Dozer", "BootyF", "BootyM", "BootyS")
 	if(R.client && R.client.ckey in list("nezuli"))
 		engymodels += "Alina"
 	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in engymodels
@@ -445,11 +479,15 @@
 			cyborg_base_icon = "bootyengineerM"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
+		if("BootyS")
+			cyborg_base_icon = "bootyengineerS"
+			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
+			hat_offset = 3
 	return ..()
 
 /obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Lavaland", "Heavy", "Sleek", "Marina", "Can", "Spider", "Asteroid", "Droid", "BootyF", "BootyM")
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Lavaland", "Heavy", "Sleek", "Marina", "Can", "Spider", "Asteroid", "Droid", "BootyF", "BootyM", "BootyS")
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -485,11 +523,15 @@
 			cyborg_base_icon = "bootyminerM"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
+		if("BootyS")
+			cyborg_base_icon = "bootyminerS"
+			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
+			hat_offset = 3
 	return ..()
 
 /obj/item/robot_module/standard/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Standard", "BootyF", "BootyM" )
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Standard", "BootyF", "BootyM", "BootyS")
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -503,11 +545,15 @@
 			cyborg_base_icon = "bootystandardM"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
+		if("BootyS")
+			cyborg_base_icon = "bootystandardS"
+			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
+			hat_offset = 3
 	return ..()
 
 /obj/item/robot_module/clown/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Standard", "BootyF", "BootyM" )
+	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Standard", "BootyF", "BootyM", "BootyS")
 	if(!borg_icon)
 		return FALSE
 	switch(borg_icon)
@@ -519,6 +565,10 @@
 			hat_offset = 3
 		if("BootyM")
 			cyborg_base_icon = "bootyclownM"
+			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
+			hat_offset = 3
+		if("BootyS")
+			cyborg_base_icon = "bootyclownS"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
 	return ..()
