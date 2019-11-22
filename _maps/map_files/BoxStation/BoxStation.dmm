@@ -3776,7 +3776,7 @@
 "buF" = (/turf/open/floor/plasteel/dark,/area/science/robotics/lab)
 "buG" = (/obj/structure/table/optable{name = "Robotics Operating Table"},/obj/effect/landmark/event_spawn,/turf/open/floor/plasteel/dark,/area/science/robotics/lab)
 "buH" = (/obj/machinery/computer/operating{dir = 1; name = "Robotics Operating Computer"},/turf/open/floor/plasteel/dark,/area/science/robotics/lab)
-"buI" = (/obj/structure/window/reinforced{dir = 4},/turf/open/floor/plasteel/dark,/area/science/robotics/lab)
+"buI" = (/obj/structure/window/reinforced{dir = 4},/obj/item/mmi/posibrain,/obj/item/mmi/posibrain,/turf/open/floor/plasteel/dark,/area/science/robotics/lab)
 "buJ" = (/obj/structure/reagent_dispensers/fueltank,/obj/effect/turf_decal/tile/blue{dir = 1},/turf/open/floor/plasteel/white,/area/science/robotics/lab)
 "buK" = (/obj/machinery/camera{c_tag = "Robotics Lab - South"; dir = 1; network = list("ss13","rd")},/turf/open/floor/plasteel/white,/area/science/robotics/lab)
 "buL" = (/obj/machinery/light,/turf/open/floor/plasteel/white,/area/science/robotics/lab)
