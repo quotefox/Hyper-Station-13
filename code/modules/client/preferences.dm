@@ -13,6 +13,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/client/parent
 	//doohickeys for savefiles
 	var/path
+	var/clientckey
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
 	var/max_save_slots = 8
 
@@ -233,6 +234,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(istype(C))
 		if(!IsGuestKey(C.key))
 			load_path(C.ckey)
+			clientckey = C.ckey
 			unlock_content = C.IsByondMember()
 			if(unlock_content)
 				max_save_slots = 16
@@ -1533,16 +1535,27 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						hair_color = sanitize_hexcolor(new_hair)
 
 				if("hair_style")
+					var/list/snowflake_hairs_list = list()	//i hate this. i hate this stupid fucking copypaste code and i hate citcode and i hate that i don't know how to FIX IT
+					for(var/path in GLOB.hair_styles_list)
+						var/datum/sprite_accessory/hair/instance = GLOB.hair_styles_list[path]
+						if(istype(instance, /datum/sprite_accessory))	//why the fuck is /datum/sprite_accessories/hair not a true child of /datum/sprite_accessories
+							var/datum/sprite_accessory/S = instance
+							if((!S.ckeys_allowed) || (S.ckeys_allowed.Find(user.client.ckey)))
+								snowflake_hairs_list[S.name] = path
 					var/new_hair_style
-					new_hair_style = input(user, "Choose your character's hair style:", "Character Preference")  as null|anything in GLOB.hair_styles_list
+					new_hair_style = input(user, "Choose your character's hair style:", "Character Preference") as null|anything in snowflake_hairs_list
 					if(new_hair_style)
 						hair_style = new_hair_style
 
 				if("next_hair_style")
 					hair_style = next_list_item(hair_style, GLOB.hair_styles_list)
+					if(hair_style == "Tail Hair" && clientckey != "quotefox")
+						hair_style = "Bald"	//there is probably a better way to do this than making people bald
 
 				if("previous_hair_style")
 					hair_style = previous_list_item(hair_style, GLOB.hair_styles_list)
+					if(hair_style == "Tail Hair" && clientckey != "quotefox")
+						hair_style = "Bald"
 
 				if("facial")
 					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference","#"+facial_hair_color) as color|null
