@@ -514,7 +514,7 @@
 		/obj/item/robot_module/medical,
 		/obj/item/robot_module/syndicate_medical,
 		/obj/item/robot_module/medihound,
-		/obj/item/robot_module/borgi) 
+		/obj/item/robot_module/borgi)
 
 /obj/item/borg/upgrade/advhealth/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
@@ -619,6 +619,32 @@
 		var/obj/item/storage/part_replacer/cyborg/RPED = locate() in R.module
 		if (RPED)
 			R.module.remove_module(RPED, TRUE)
+
+/obj/item/borg/upgrade/circuit_app
+	name = "circuit manipulation apparatus"
+	desc = "An engineering cyborg upgrade allowing for manipulation of circuit boards."
+	icon_state = "cyborg_upgrade3"
+	require_module = TRUE
+	module_type = list(/obj/item/robot_module/engineering)
+
+/obj/item/borg/upgrade/circuit_app/action(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if(.)
+		var/obj/item/borg/apparatus/circuit/C = locate() in R.module.modules
+		if(C)
+			to_chat(user, "<span class='warning'>This unit is already equipped with a circuit apparatus!</span>")
+			return FALSE
+
+		C = new(R.module)
+		R.module.basic_modules += C
+		R.module.add_module(C, FALSE, TRUE)
+
+/obj/item/borg/upgrade/circuit_app/deactivate(mob/living/silicon/robot/R, user = usr)
+	. = ..()
+	if (.)
+		var/obj/item/borg/apparatus/circuit/C = locate() in R.module.modules
+		if (C)
+			R.module.remove_module(C, TRUE)
 
 /obj/item/borg/upgrade/pinpointer
 	name = "medical cyborg crew pinpointer"

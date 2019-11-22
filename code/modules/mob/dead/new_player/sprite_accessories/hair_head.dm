@@ -754,6 +754,7 @@
 	name = "Very Long with Fringe"
 	icon_state = "hair_vlongfringe"
 
+<<<<<<< HEAD
 /datum/sprite_accessory/hair/short_oe
 	name = "Very Short Over Eye"
 	icon_state = "hair_veryshortovereye"
@@ -773,3 +774,8 @@
 /datum/sprite_accessory/hair/ziegler
 	name = "Ziegler"
 	icon_state = "hair_ziegler"
+=======
+/datum/sprite_accessory/hair/quotey
+	name = "Tail Hair"
+	icon_state = "hair_tailhair"
+>>>>>>> c8169d289f34ebcf9dab9b302314500e2d30177a

@@ -24,7 +24,7 @@
 	var/list/add_overlays // a very temporary list of overlays to add
 
 	var/list/managed_vis_overlays //vis overlays managed by SSvis_overlays to automaticaly turn them like other overlays
-
+	var/list/managed_overlays
 	var/datum/proximity_monitor/proximity_monitor
 	var/buckle_message_cooldown = 0
 	var/fingerprintslast
@@ -254,6 +254,28 @@
 
 /atom/proc/get_examine_string(mob/user, thats = FALSE)
 	. = "[icon2html(src, user)] [thats? "That's ":""][get_examine_name(user)]"
+
+/atom/proc/update_icon_state()
+
+/atom/proc/update_overlaysb()
+	SHOULD_CALL_PARENT(1)
+	. = list()
+	SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_OVERLAYS, .)
+
+/atom/proc/update_iconb()
+	var/signalOut = SEND_SIGNAL(src, COMSIG_ATOM_UPDATE_ICON)
+
+	if(!(signalOut & COMSIG_ATOM_NO_UPDATE_ICON_STATE))
+		update_icon_state()
+
+	if(!(signalOut & COMSIG_ATOM_NO_UPDATE_OVERLAYS))
+		var/list/new_overlays = update_overlaysb()
+		if(managed_overlays)
+			cut_overlay(managed_overlays)
+			managed_overlays = null
+		if(length(new_overlays))
+			managed_overlays = new_overlays
+			add_overlay(new_overlays)
 
 /atom/proc/examine(mob/user)
 	to_chat(user, get_examine_string(user, TRUE))
