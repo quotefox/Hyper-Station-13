@@ -32,8 +32,10 @@ GLOBAL_VAR(restart_counter)
 
 	load_admins()
 	LoadVerbs(/datum/verbs/menu)
-	if(CONFIG_GET(flag/usewhitelist))
-		load_whitelist()
+	load_paniclist()
+// Hyperstation: Whitelists do not work.
+//	if(CONFIG_GET(flag/usewhitelist))
+//		load_whitelist()
 	LoadBans()
 	reload_custom_roundstart_items_list()//Cit change - loads donator items. Remind me to remove when I port over bay's loadout system
 

@@ -1,3 +1,6 @@
+#define PANICFILE "[global.config.directory]/whitelist.txt"
+
+
 /client/proc/panicbunker()
 	set category = "Server"
 	set name = "Toggle Panic Bunker"
@@ -25,9 +28,10 @@
 		return
 
 	GLOB.bunker_passthrough |= ckey(ckeytobypass)
-	log_admin("[key_name(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
-	message_admins("[key_name_admin(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
-	send2irc("Panic Bunker", "[key_name(usr)] has added [ckeytobypass] to the current round's bunker bypass list.")
+	log_admin("[key_name(usr)] has added [ckeytobypass] to the bunker bypass list.")
+	message_admins("[key_name_admin(usr)] has added [ckeytobypass] to the bunker bypass list.")
+	send2irc("Panic Bunker", "[key_name(usr)] has added [ckeytobypass] to the bunker bypass list.")
+	save_paniclist()
 
 /client/proc/revokebunkerbypass(ckeytobypass as text)
 	set category = "Special Verbs"
@@ -41,3 +45,23 @@
 	log_admin("[key_name(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
 	message_admins("[key_name_admin(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
 	send2irc("Panic Bunker", "[key_name(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
+	save_paniclist()
+
+//Hyperchange, we altered the panic bunker into a whitelist. So it will load whitelist.txt and treat it as a bypass to the panic bunker.
+
+/proc/load_paniclist()
+	GLOB.bunker_passthrough = list()
+	for(var/line in world.file2list(PANICFILE))
+		if(!line)
+			continue
+		if(findtextEx(line,"#",1,2))
+			continue
+		GLOB.bunker_passthrough += ckey(line)
+
+	if(!GLOB.bunker_passthrough.len)
+		GLOB.bunker_passthrough = null
+
+/proc/save_paniclist()
+	var/namelist = list2text(GLOB.bunker_passthrough, ",")
+	var/paniclist = PANICFILE
+	paniclist << namelist
