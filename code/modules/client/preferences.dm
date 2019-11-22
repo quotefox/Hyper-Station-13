@@ -1552,21 +1552,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("next_hair_style")
 					hair_style = next_list_item(hair_style, GLOB.hair_styles_list)
-<<<<<<< HEAD
 					if(hair_style == "Tail Hair" && clientckey != "quotefox")
 						hair_style = "Bald"	//there is probably a better way to do this than making people bald
 
 				if("previous_hair_style")
 					hair_style = previous_list_item(hair_style, GLOB.hair_styles_list)
 					if(hair_style == "Tail Hair" && clientckey != "quotefox")
-=======
-					if(hair_style == "Tail Hair" && clientckey <> "quotefox")
-						hair_style = "Bald"
-
-				if("previous_hair_style")
-					hair_style = previous_list_item(hair_style, GLOB.hair_styles_list)
-					if(hair_style == "Tail Hair" && clientckey <> "quotefox")
->>>>>>> c8169d289f34ebcf9dab9b302314500e2d30177a
 						hair_style = "Bald"
 
 				if("facial")
