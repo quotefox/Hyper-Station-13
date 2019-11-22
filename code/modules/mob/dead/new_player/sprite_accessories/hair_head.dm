@@ -773,7 +773,3 @@
 /datum/sprite_accessory/hair/ziegler
 	name = "Ziegler"
 	icon_state = "hair_ziegler"
-
-/datum/sprite_accessory/hair/quotey
-	name = "Tail Hair"
-	icon_state = "hair_tailhair"
