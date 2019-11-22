@@ -501,7 +501,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	if(!query_client_in_db.NextRow())
 		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey] && !(ckey in GLOB.bunker_passthrough))
 			log_access("Failed Login: [key] - New account attempting to connect during panic bunker")
-			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect during panic bunker</span>")
+			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect without being whitelisted!</span>")
 			to_chat(src, "<span class='notice'>You must first join the Discord to verify your account before joining this server.<br>To do so, read the rules here http://hyperstation13.com/rules and post a request in the #whitelist-application under the \"Main server\" category in the Discord server linked here: <a href='https://discordapp.com/invite/PCtX2fH'>https://discordapp.com/invite/PCtX2fH</a></span>") //CIT CHANGE - makes the panic bunker disconnect message point to the discord
 			var/list/connectiontopic_a = params2list(connectiontopic)
 			var/list/panic_addr = CONFIG_GET(string/panic_server_address)
