@@ -500,19 +500,25 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		return
 	if(!query_client_in_db.NextRow())
 		if (CONFIG_GET(flag/panic_bunker) && !holder && !GLOB.deadmins[ckey] && !(ckey in GLOB.bunker_passthrough))
-			log_access("Failed Login: [key] - New account attempting to connect during panic bunker")
-			message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect without being whitelisted!</span>")
-			to_chat(src, "<span class='notice'>You must first join the Discord to verify your account before joining this server.<br>To do so, read the rules here http://hyperstation13.com/rules and post a request in the #whitelist-application under the \"Main server\" category in the Discord server linked here: <a href='https://discordapp.com/invite/PCtX2fH'>https://discordapp.com/invite/PCtX2fH</a></span>") //CIT CHANGE - makes the panic bunker disconnect message point to the discord
-			var/list/connectiontopic_a = params2list(connectiontopic)
-			var/list/panic_addr = CONFIG_GET(string/panic_server_address)
-			if(panic_addr && !connectiontopic_a["redirect"])
-				var/panic_name = CONFIG_GET(string/panic_server_name)
-				to_chat(src, "<span class='notice'>Sending you to [panic_name ? panic_name : panic_addr].</span>")
-				winset(src, null, "command=.options")
-				src << link("[panic_addr]?redirect=1")
-			qdel(query_client_in_db)
-			qdel(src)
-			return
+			var/datum/DBQuery/query_client_in_db_whitelist = SSdbcore.NewQuery("SELECT 1 FROM [format_table_name("whitelist")] WHERE ckey = '[sql_ckey]'")
+			if(!query_client_in_db_whitelist.Execute())
+				qdel(query_client_in_db_whitelist)
+				return
+			if(!query_client_in_db_whitelist.NextRow()) //they are not on the whitelist OR have played before! on the database!
+
+				log_access("Failed Login: [key] - New account attempting to connect during panic bunker")
+				message_admins("<span class='adminnotice'>Failed Login: [key] - New account attempting to connect without being whitelisted!</span>")
+				to_chat(src, "<span class='notice'>You must first join the Discord to verify your account before joining this server.<br>To do so, read the rules here http://hyperstation13.com/rules and post a request in the #whitelist-application under the \"Main server\" category in the Discord server linked here: <a href='https://discordapp.com/invite/PCtX2fH'>https://discordapp.com/invite/PCtX2fH</a></span>") //CIT CHANGE - makes the panic bunker disconnect message point to the discord
+				var/list/connectiontopic_a = params2list(connectiontopic)
+				var/list/panic_addr = CONFIG_GET(string/panic_server_address)
+				if(panic_addr && !connectiontopic_a["redirect"])
+					var/panic_name = CONFIG_GET(string/panic_server_name)
+					to_chat(src, "<span class='notice'>Sending you to [panic_name ? panic_name : panic_addr].</span>")
+					winset(src, null, "command=.options")
+					src << link("[panic_addr]?redirect=1")
+				qdel(query_client_in_db)
+				qdel(src)
+				return
 
 		new_player = 1
 		account_join_date = sanitizeSQL(findJoinDate())

@@ -1,6 +1,3 @@
-#define PANICFILE "[global.config.directory]/whitelist.txt"
-
-
 /client/proc/panicbunker()
 	set category = "Server"
 	set name = "Toggle Panic Bunker"
@@ -22,16 +19,31 @@
 /client/proc/addbunkerbypass(ckeytobypass as text)
 	set category = "Special Verbs"
 	set name = "Whitelist"
-	set desc = "Allows a given ckey to connect despite the panic bunker for a given round."
+	set desc = "Adds a given ckey onto the whitelist to bypass the panic bunker."
 	if(!CONFIG_GET(flag/sql_enabled))
 		to_chat(usr, "<span class='adminnotice'>The Database is not enabled!</span>")
 		return
 
 	GLOB.bunker_passthrough |= ckey(ckeytobypass)
-	log_admin("[key_name(usr)] has added [ckeytobypass] to the bunker bypass list.")
-	message_admins("[key_name_admin(usr)] has added [ckeytobypass] to the bunker bypass list.")
-	send2irc("Panic Bunker", "[key_name(usr)] has added [ckeytobypass] to the bunker bypass list.")
-	save_paniclist()
+	log_admin("[key_name(usr)] has added [ckeytobypass] to the whitelist.")
+	message_admins("[key_name_admin(usr)] has added [ckeytobypass] to the whitelist.")
+	send2irc("Panic Bunker", "[key_name(usr)] has added [ckeytobypass] to the whitelist.")
+
+
+	//Hyperstation13 change Adds to a whitelist on the database table "whitelist", so players can join at a later date!
+	var/sql_ckey = sanitizeSQL(ckeytobypass)
+	var/datum/DBQuery/query_client_in_db = SSdbcore.NewQuery("SELECT 1 FROM [format_table_name("whitelist")] WHERE ckey = '[sql_ckey]'")
+	if(!query_client_in_db.Execute())
+		qdel(query_client_in_db)
+		return
+	if(!query_client_in_db.NextRow())
+		//add to database!
+		var/datum/DBQuery/query_add_player_whitelist = SSdbcore.NewQuery("INSERT INTO [format_table_name("whitelist")] (`ckey`) VALUES ('[sql_ckey]')")
+		if(!query_add_player_whitelist.Execute())
+			qdel(query_client_in_db)
+			qdel(query_add_player_whitelist)
+			return
+
 
 /client/proc/revokebunkerbypass(ckeytobypass as text)
 	set category = "Special Verbs"
@@ -45,23 +57,3 @@
 	log_admin("[key_name(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
 	message_admins("[key_name_admin(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
 	send2irc("Panic Bunker", "[key_name(usr)] has removed [ckeytobypass] from the current round's bunker bypass list.")
-	save_paniclist()
-
-//Hyperchange, we altered the panic bunker into a whitelist. So it will load whitelist.txt and treat it as a bypass to the panic bunker.
-
-/proc/load_paniclist()
-	GLOB.bunker_passthrough = list()
-	for(var/line in world.file2list(PANICFILE))
-		if(!line)
-			continue
-		if(findtextEx(line,"#",1,2))
-			continue
-		GLOB.bunker_passthrough += ckey(line)
-
-	if(!GLOB.bunker_passthrough.len)
-		GLOB.bunker_passthrough = null
-
-/proc/save_paniclist()
-	var/namelist = list2text(GLOB.bunker_passthrough, ",")
-	var/paniclist = PANICFILE
-	paniclist << namelist
