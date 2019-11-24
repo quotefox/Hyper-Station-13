@@ -1743,6 +1743,7 @@ datum/reagent/consumable/ethanol/creme_de_coconut
 	value = 2
 
 /datum/reagent/consumable/ethanol/peppermint_patty/on_mob_life(mob/living/carbon/M)
+	M.apply_status_effect(/datum/status_effect/throat_soothed)
 	M.adjust_bodytemperature(5 * TEMPERATURE_DAMAGE_COEFFICIENT, 0, BODYTEMP_NORMAL)
 	..()
 
