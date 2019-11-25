@@ -101,6 +101,7 @@
 	else
 		return trim(html_encode(name), max_length)
 
+
 //Filters out undesirable characters from names
 /proc/reject_bad_name(t_in, allow_numbers=0, max_length=MAX_NAME_LEN)
 	if(!t_in || length(t_in) > max_length)

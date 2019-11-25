@@ -15,6 +15,7 @@
 	var/heal_burn = 0
 	var/stop_bleeding = 0
 	var/self_delay = 50
+	var/fix_bone= 0
 
 /obj/item/stack/medical/attack(mob/living/M, mob/user)
 
@@ -93,6 +94,9 @@
 		if(affecting.status == BODYPART_ORGANIC) //Limb must be organic to be healed - RR
 			if(affecting.heal_damage(heal_brute, heal_burn))
 				C.update_damage_overlays()
+			if (fix_bone) //Fix broken bones on targeted limb
+				affecting.broken = 0
+				affecting.disabled = 0
 		else
 			to_chat(user, "<span class='notice'>Medicine won't work on a robotic limb!</span>")
 	else
@@ -100,7 +104,19 @@
 
 	use(1)
 
+/obj/item/stack/medical/plaster_gauze
+	name = "plaster gauze"
+	gender = PLURAL
+	singular_name = "plaster gauze"
+	desc = "A roll of plaster of paris that is extremely effective at aiding bone fratcutres, but does not heal wounds."
+	icon_state = "pgauze"
+	self_delay = 300
+	max_amount = 10
+	fix_bone = 1
 
+/obj/item/stack/medical/plaster_gauze/suicide_act(mob/user)
+	user.visible_message("<span class='suicide'>[user] is bludgeoning [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
+	return (BRUTELOSS)
 
 /obj/item/stack/medical/bruise_pack
 	name = "bruise pack"

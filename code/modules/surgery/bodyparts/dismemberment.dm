@@ -358,6 +358,7 @@
 			L.burn_dam = 0
 			L.brutestate = 0
 			L.burnstate = 0
+			L.broken = 0
 
 		L.attach_limb(src, 1)
 		return 1
