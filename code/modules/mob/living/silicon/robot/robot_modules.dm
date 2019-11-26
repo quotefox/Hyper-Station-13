@@ -237,6 +237,7 @@
 		R.hud_used.update_robot_modules_display()
 	SSblackbox.record_feedback("tally", "cyborg_modules", 1, R.module)
 
+/* //Broken
 /obj/item/robot_module/standard
 	name = "Standard"
 	basic_modules = list(
@@ -263,6 +264,7 @@
 		/obj/item/clockwork/replica_fabricator/cyborg)
 	moduleselect_icon = "standard"
 	hat_offset = -3
+*/
 
 /obj/item/robot_module/medical
 	name = "Medical"
