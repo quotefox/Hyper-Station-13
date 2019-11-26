@@ -300,9 +300,9 @@
 
 	if(reagents.has_reagent(/datum/reagent/fermi/astral))
 		if(mind)
-			msg += " and have a strange, abnormal look to them.\n"
+			msg += " and they have a strange, abnormal look to them.\n"
 		else
-			msg += " and don't look like they're all there.\n"
+			msg += " and they don't look like they're all there.\n"
 
 	if(isliving(user))
 		var/mob/living/L = user
