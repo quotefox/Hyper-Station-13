@@ -154,9 +154,8 @@
 	attack_verb = "flutter" //wat?
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
-	liked_food = VEGETABLES | DAIRY| CLOTH
-	disliked_food = FRUIT | GROSS
-	toxic_food = MEAT | RAW
+	liked_food = VEGETABLES | DAIRY| CLOTH |FRUIT
+	toxic_food = GROSS | RAW | FRIED
 
 /datum/species/insect/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
 	. = ..()

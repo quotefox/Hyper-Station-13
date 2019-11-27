@@ -30,6 +30,7 @@
 /obj/item/storage/firstaid/regular/PopulateContents()
 	if(empty)
 		return
+	new /obj/item/stack/medical/plaster_gauze(src)
 	new /obj/item/stack/medical/gauze(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/bruise_pack(src)
@@ -337,7 +338,7 @@
 /obj/item/storage/pill_bottle/penis_enlargement/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/reagent_containers/pill/penis_enlargement(src)
-    
+
 /obj/item/storage/pill_bottle/breast_enlargement
 	name = "breast enlargement pills"
 	desc = "Made by Fermichem - They have a woman with breasts larger than she is on them. The warming states not to take more than 10u at a time."

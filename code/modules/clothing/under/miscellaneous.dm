@@ -709,9 +709,15 @@
 	icon_state = "durathread"
 	item_state = "durathread"
 	item_color = "durathread"
-	can_adjust = FALSE
 	armor = list("melee" = 10, "laser" = 10, "fire" = 40, "acid" = 10, "bomb" = 5)
-	
+/obj/item/clothing/under/durathread/skirt
+	name = "durathread jumpskirt"
+	desc = "A jumpskirt made from durathread, its resilient fibres provide some protection to the wearer."
+	icon_state = "duraskirt"
+	item_state = "duraskirt"
+	item_color = "duraskirt"
+	can_adjust = FALSE
+
 /obj/item/clothing/under/gear_harness
 	name = "gear harness"
 	desc = "A simple, inconspicuous harness replacement for a jumpsuit."

@@ -237,6 +237,7 @@
 		R.hud_used.update_robot_modules_display()
 	SSblackbox.record_feedback("tally", "cyborg_modules", 1, R.module)
 
+/* //Broken
 /obj/item/robot_module/standard
 	name = "Standard"
 	basic_modules = list(
@@ -250,6 +251,7 @@
 		/obj/item/stack/rods/cyborg,
 		/obj/item/stack/tile/plasteel/cyborg,
 		/obj/item/extinguisher,
+		/obj/item/borg/apparatus/beaker/service,
 		/obj/item/pickaxe,
 		/obj/item/t_scanner/adv_mining_scanner,
 		/obj/item/restraints/handcuffs/cable/zipties,
@@ -262,6 +264,7 @@
 		/obj/item/clockwork/replica_fabricator/cyborg)
 	moduleselect_icon = "standard"
 	hat_offset = -3
+*/
 
 /obj/item/robot_module/medical
 	name = "Medical"
@@ -269,6 +272,7 @@
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/healthanalyzer,
 		/obj/item/reagent_containers/borghypo,
+		/obj/item/borg/apparatus/beaker,
 		/obj/item/reagent_containers/glass/beaker/large,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/reagent_containers/syringe,
@@ -280,6 +284,8 @@
 		/obj/item/scalpel,
 		/obj/item/circular_saw,
 		/obj/item/extinguisher/mini,
+		/obj/item/soap/nanotrasen,
+		/obj/item/crowbar/cyborg,
 		/obj/item/roller/robo,
 		/obj/item/borg/cyborghug/medical,
 		/obj/item/stack/medical/gauze/cyborg,
@@ -311,8 +317,11 @@
 		/obj/item/multitool/cyborg,
 		/obj/item/t_scanner,
 		/obj/item/analyzer,
+		/obj/item/soap/nanotrasen,
+		/obj/item/borg/cyborghug,
 		/obj/item/geiger_counter/cyborg,
 		/obj/item/assembly/signaler/cyborg,
+		/obj/item/holosign_creator/atmos,
 		/obj/item/areaeditor/blueprints/cyborg,
 		/obj/item/electroadaptive_pseudocircuit,
 		/obj/item/stack/sheet/metal/cyborg,
@@ -335,9 +344,15 @@
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
 		/obj/item/restraints/handcuffs/cable/zipties,
+		/obj/item/holosign_creator/security,
 		/obj/item/melee/baton/loaded,
 		/obj/item/gun/energy/disabler/cyborg,
+		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/clothing/mask/gas/sechailer/cyborg,
+		/obj/item/extinguisher/mini,
+		/obj/item/borg/cyborghug,
+		/obj/item/soap/nanotrasen,
+		/obj/item/crowbar/cyborg,
 		/obj/item/pinpointer/crew)
 	emag_modules = list(/obj/item/gun/energy/laser/cyborg)
 	ratvar_modules = list(/obj/item/clockwork/slab/cyborg/security,
@@ -361,7 +376,9 @@
 		/obj/item/reagent_containers/borghypo/peace,
 		/obj/item/holosign_creator/cyborg,
 		/obj/item/borg/cyborghug/peacekeeper,
-		/obj/item/extinguisher,
+		/obj/item/soap/nanotrasen,
+		/obj/item/extinguisher/mini,
+		/obj/item/crowbar/cyborg,
 		/obj/item/borg/projectile_dampen)
 	emag_modules = list(/obj/item/reagent_containers/borghypo/peace/hacked)
 	ratvar_modules = list(
@@ -386,6 +403,7 @@
 		/obj/item/stack/tile/plasteel/cyborg,
 		/obj/item/soap/nanotrasen,
 		/obj/item/storage/bag/trash/cyborg,
+		/obj/item/borg/cyborghug,
 		/obj/item/extinguisher/mini,
 		/obj/item/mop/cyborg,
 		/obj/item/lightreplacer/cyborg,
@@ -434,15 +452,19 @@
 		/obj/item/bikehorn,
 		/obj/item/bikehorn/airhorn,
 		/obj/item/paint/anycolor,
-		/obj/item/soap/nanotrasen,
+		/obj/item/cookiesynth,
 		/obj/item/pneumatic_cannon/pie/selfcharge/cyborg,
 		/obj/item/razor,					//killbait material
 		/obj/item/lipstick/purple,
+		/obj/item/soap/nanotrasen,
 		/obj/item/reagent_containers/spray/waterflower/cyborg,
 		/obj/item/borg/cyborghug/peacekeeper,
 		/obj/item/borg/lollipop/clown,
 		/obj/item/picket_sign/cyborg,
+		/obj/item/reagent_containers/borghypo/borgshaker,
 		/obj/item/reagent_containers/borghypo/clown,
+		/obj/item/borg/apparatus/beaker/service,
+		/obj/item/reagent_containers/glass/beaker/large,
 		/obj/item/extinguisher/mini)
 	emag_modules = list(
 		/obj/item/reagent_containers/borghypo/clown/hacked,
@@ -459,16 +481,20 @@
 	name = "Service"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
-		/obj/item/reagent_containers/food/drinks/drinkingglass,
+		/obj/item/reagent_containers/glass/beaker/large,
+		/obj/item/borg/apparatus/beaker/service,
 		/obj/item/reagent_containers/food/condiment/enzyme,
 		/obj/item/pen,
 		/obj/item/toy/crayon/spraycan/borg,
 		/obj/item/extinguisher/mini,
 		/obj/item/hand_labeler/borg,
 		/obj/item/razor,
+		/obj/item/crowbar/cyborg,
 		/obj/item/instrument/violin,
+		/obj/item/soap/nanotrasen,
 		/obj/item/instrument/guitar,
 		/obj/item/rsf/cyborg,
+		/obj/item/borg/cyborghug,
 		/obj/item/reagent_containers/dropper,
 		/obj/item/lighter,
 		/obj/item/storage/bag/tray,
@@ -497,6 +523,8 @@
 		/obj/item/shovel,
 		/obj/item/crowbar/cyborg,
 		/obj/item/weldingtool/mini,
+		/obj/item/borg/cyborghug,
+		/obj/item/soap/nanotrasen,
 		/obj/item/extinguisher/mini,
 		/obj/item/storage/bag/sheetsnatcher/borg,
 		/obj/item/t_scanner/adv_mining_scanner,

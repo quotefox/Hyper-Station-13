@@ -304,6 +304,15 @@ GENE SCANNER
 			for(var/obj/item/bodypart/org in damaged)
 				msg += "\t\t<span class='info'>[capitalize(org.name)]: [(org.brute_dam > 0) ? "<font color='red'>[org.brute_dam]</font></span>" : "<font color='red'>0</font>"]-[(org.burn_dam > 0) ? "<font color='#FF8000'>[org.burn_dam]</font>" : "<font color='#FF8000'>0</font>"]\n"
 
+	//Bones broken report! Hyperstation 13
+	if(iscarbon(M) && mode == 1)
+		var/mob/living/carbon/C = M
+		for(var/X in C.bodyparts)
+			var/obj/item/bodypart/LB = X
+			var/broken = LB.broken
+			if(broken == 1)
+				msg += "\t<span class='alert'><font color='red'>Subjects [LB.name] is fractured!</font></span>\n"
+
 //Organ damages report
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M

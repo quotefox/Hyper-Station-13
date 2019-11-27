@@ -112,6 +112,7 @@
 		return
 	adjustStaminaLoss(diff, updating, forced)
 
+
 /** adjustOrganLoss
   * inputs: slot (organ slot, like ORGAN_SLOT_HEART), amount (damage to be done), and maximum (currently an arbitrarily large number, can be set so as to limit damage)
   * outputs:

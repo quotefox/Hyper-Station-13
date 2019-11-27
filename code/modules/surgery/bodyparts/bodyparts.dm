@@ -83,6 +83,7 @@
 /obj/item/bodypart/blob_act()
 	take_damage(max_damage)
 
+
 /obj/item/bodypart/Destroy()
 	if(owner)
 		owner.bodyparts -= src

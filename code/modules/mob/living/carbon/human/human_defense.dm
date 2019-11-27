@@ -702,7 +702,7 @@
 					else if(burndamage > 0)
 						status += LB.light_burn_msg
 					if(broken == 1)
-						status = "broken"
+						status = "fractured"
 					if(status == "")
 						status = "OK"
 				var/no_damage

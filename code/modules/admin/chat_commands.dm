@@ -138,6 +138,6 @@ GLOBAL_LIST(round_end_notifiees)
 
 	GLOB.bunker_passthrough |= ckey(params)
 
-	log_admin("[sender.friendly_name] has added [params] to the current round's bunker bypass list.")
-	message_admins("[sender.friendly_name] has added [params] to the current round's bunker bypass list.")
+	log_admin("[sender.friendly_name] has added [params] to the bunker bypass list.")
+	message_admins("[sender.friendly_name] has added [params] to the bunker bypass list.")
 	return "[params] has been added to the current round's bunker bypass list."

@@ -462,3 +462,7 @@
 /datum/sprite_accessory/hair/longestalt
 	name = "Very Long with Fringe"
 	icon_state = "hair_vlongfringe"
+
+/datum/sprite_accessory/hair/quotey
+	name = "Tail Hair"
+	icon_state = "hair_tailhair"

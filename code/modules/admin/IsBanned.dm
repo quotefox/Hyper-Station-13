@@ -30,7 +30,7 @@
 				addclientmessage(ckey,"<span class='adminnotice'>You have been allowed to bypass the whitelist</span>")
 			else
 				log_access("Failed Login: [key] - Not on whitelist")
-				return list("reason"="whitelist", "desc" = "\nReason: You are not on the white list for this server")
+				return list("reason"="whitelist", "desc" = "\nReason: You are not on the whitelist for this server, apply in the station's discord server.")
 
 	//Guest Checking
 	if(!real_bans_only && IsGuestKey(key))
