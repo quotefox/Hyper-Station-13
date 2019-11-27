@@ -476,6 +476,15 @@
 	category = list("Phazon")
 
 //Exosuit Equipment
+/datum/design/ripleyupgrade
+	name = "Ripley MK-1 to MK-II conversion kit"
+	id = "ripleyupgrade"
+	build_type = MECHFAB
+	build_path = /obj/item/mecha_parts/mecha_equipment/ripleyupgrade
+	materials = list(MAT_METAL=10000,MAT_PLASMA=10000)
+	construction_time = 100
+	category = list("Exosuit Equipment")
+
 /datum/design/mech_hydraulic_clamp
 	name = "Exosuit Engineering Equipment (Hydraulic Clamp)"
 	id = "mech_hydraulic_clamp"
