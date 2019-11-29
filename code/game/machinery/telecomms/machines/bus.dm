@@ -32,7 +32,7 @@
 			return
 
 	// Try sending it!
-	var/list/try_send = list(signal.server_type, /obj/machinery/telecomms/hub, /obj/machinery/telecomms/broadcaster, /obj/machinery/telecomms/bus)
+	var/list/try_send = list(signal.server_type, /obj/machinery/telecomms/hub, /obj/machinery/telecomms/broadcaster)
 
 	for(var/send in try_send)
 		if(relay_information(signal, send))
