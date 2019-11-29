@@ -25,8 +25,7 @@
 //////////////////////////////////////////////////////////////////
 
 // /datum signals
-#define COMSIG_PARENT_QDELETED "parent_qdeleted"				//after a datum's Destroy() is called: (force, qdel_hint), at this point none of the other components chose to interrupt qdel and Destroy has been called
-
+#define COMSIG_PARENT_QDELETING "parent_qdeleting"			//just before a datum's Destroy() is called: (force), at this point none of the other components chose to interrupt qdel and Destroy will be called
 // /atom signals
 	//Positions for overrides list
 	//End positions
@@ -96,3 +95,8 @@
 //Ouch my toes!
 #define CALTROP_BYPASS_SHOES 1
 #define CALTROP_IGNORE_WALKERS 2
+
+#define ELEMENT_INCOMPATIBLE 1 // Return value to cancel attaching
+
+// /datum/element flags
+#define ELEMENT_DETACH		(1 << 0)
