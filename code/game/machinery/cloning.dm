@@ -74,6 +74,23 @@
 	if(heal_level > 100)
 		heal_level = 100
 
+/obj/machinery/clonepod/attack_hand(mob/user)
+	. = ..()
+	if(.)
+		return
+	user.examinate(src)
+
+/obj/machinery/clonepod/attack_ai(mob/user)
+	return attack_hand(user)
+
+/obj/machinery/clonepod/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>The <i>linking</i> device can be <i>scanned<i> with a multitool.</span>"
+	if(in_range(user, src) || isobserver(user))
+		. += "<span class='notice'>The status display reads: Cloning speed at <b>[speed_coeff*50]%</b>.<br>Predicted amount of cellular damage: <b>[100-heal_level]%</b>.</span>"
+		if(efficiency > 5)
+			. += "<span class='notice'>Pod has been upgraded to support autoprocessing and apply beneficial mutations.</span>"
+
 //The return of data disks?? Just for transferring between genetics machine/cloning machine.
 //TO-DO: Make the genetics machine accept them.
 /obj/item/disk/data
@@ -129,41 +146,42 @@
 	return examine(user)
 
 //Start growing a human clone in the pod!
-/obj/machinery/clonepod/proc/growclone(ckey, clonename, ui, mutation_index, mindref, datum/species/mrace, list/features, factions, list/quirks)
+/obj/machinery/clonepod/proc/growclone(clonename, ui, mutation_index, mindref, last_death, blood_type, datum/species/mrace, list/features, factions, list/quirks, datum/bank_account/insurance, list/traumas, empty)
 	if(panel_open)
 		return FALSE
 	if(mess || attempting)
 		return FALSE
-	clonemind = locate(mindref) in SSticker.minds
-	if(!istype(clonemind))	//not a mind
-		return FALSE
-	if(!QDELETED(clonemind.current))
-		if(clonemind.current.stat != DEAD)	//mind is associated with a non-dead body
+	if(!empty) //Doesn't matter if we're just making a copy
+		clonemind = locate(mindref) in SSticker.minds
+		if(!istype(clonemind))	//not a mind
 			return FALSE
-		if(clonemind.current.suiciding) // Mind is associated with a body that is suiciding.
+//		if(clonemind.last_death != last_death) //The soul has advanced, the record has not.
+//			return FALSE
+		if(!QDELETED(clonemind.current))
+			if(clonemind.current.stat != DEAD)	//mind is associated with a non-dead body
+				return NONE
+			if(clonemind.current.suiciding) // Mind is associated with a body that is suiciding.
+				return NONE
+		if(!clonemind.active)
+			// get_ghost() will fail if they're unable to reenter their body
+			var/mob/dead/observer/G = clonemind.get_ghost()
+			if(!G)
+				return NONE
+			if(G.suiciding) // The ghost came from a body that is suiciding.
+				return NONE
+		if(clonemind.damnation_type) //Can't clone the damned.
+			INVOKE_ASYNC(src, .proc/horrifyingsound)
+			mess = TRUE
+			icon_state = "pod_g"
+			update_icon()
 			return FALSE
-	if(clonemind.active)	//somebody is using that mind
-		if( ckey(clonemind.key)!=ckey )
-			return FALSE
-	else
-		// get_ghost() will fail if they're unable to reenter their body
-		var/mob/dead/observer/G = clonemind.get_ghost()
-		if(!G)
-			return FALSE
-		if(G.suiciding) // The ghost came from a body that is suiciding.
-			return FALSE
-	if(clonemind.damnation_type) //Can't clone the damned.
-		INVOKE_ASYNC(src, .proc/horrifyingsound)
-		mess = TRUE
-		update_icon()
-		return FALSE
 
 	attempting = TRUE //One at a time!!
 	countdown.start()
 
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
 
-	H.hardset_dna(ui, mutation_index, H.real_name, null, mrace, features)
+	H.hardset_dna(ui, mutation_index, H.real_name, blood_type, mrace, features)
 
 	if(prob(50 - efficiency*10)) //Chance to give a bad mutation.
 		H.easy_randmut(NEGATIVE+MINOR_NEGATIVE) //100% bad mutation. Can be cured with mutadone.
@@ -184,15 +202,16 @@
 	ADD_TRAIT(H, TRAIT_NOCRITDAMAGE, "cloning")
 	H.Unconscious(80)
 
-	clonemind.transfer_to(H)
+	if(!empty)
+		clonemind.transfer_to(H)
 
-	if(grab_ghost_when == CLONER_FRESH_CLONE)
-		H.grab_ghost()
-		to_chat(H, "<span class='notice'><b>Consciousness slowly creeps over you as your body regenerates.</b><br><i>So this is what cloning feels like?</i></span>")
+		if(grab_ghost_when == CLONER_FRESH_CLONE)
+			H.grab_ghost()
+			to_chat(H, "<span class='notice'><b>Consciousness slowly creeps over you as your body regenerates.</b><br><i>So this is what cloning feels like?</i></span>")
 
-	if(grab_ghost_when == CLONER_MATURE_CLONE)
-		H.ghostize(TRUE)	//Only does anything if they were still in their old body and not already a ghost
-		to_chat(H.get_ghost(TRUE), "<span class='notice'>Your body is beginning to regenerate in a cloning pod. You will become conscious when it is complete.</span>")
+		if(grab_ghost_when == CLONER_MATURE_CLONE)
+			H.ghostize(TRUE)	//Only does anything if they were still in their old body and not already a ghost
+			to_chat(H.get_ghost(TRUE), "<span class='notice'>Your body is beginning to regenerate in a cloning pod. You will become conscious when it is complete.</span>")
 
 	if(H)
 		H.faction |= factions
@@ -381,6 +400,7 @@
 	unattached_flesh.Cut()
 
 	occupant = null
+	clonemind = null
 
 /obj/machinery/clonepod/proc/malfunction()
 	var/mob/living/mob_occupant = occupant
@@ -391,7 +411,7 @@
 		mess = TRUE
 		maim_clone(mob_occupant)	//Remove every bit that's grown back so far to drop later, also destroys bits that haven't grown yet
 		update_icon()
-		if(mob_occupant.mind != clonemind)
+		if(clonemind && mob_occupant.mind != clonemind)
 			clonemind.transfer_to(mob_occupant)
 		mob_occupant.grab_ghost() // We really just want to make you suffer.
 		flash_color(mob_occupant, flash_color="#960000", flash_time=100)
