@@ -43,6 +43,9 @@
     icon_state = "hemiknot"
     name = "Knotted Hemi"
 
+/datum/sprite_accessory/penis/thick
+	icon_state = "thick"
+	name = "thick"
 
 ////////////////////////
 // Taur cocks go here //
