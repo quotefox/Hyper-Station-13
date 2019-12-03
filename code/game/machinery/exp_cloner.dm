@@ -295,3 +295,4 @@
 		pod.growclone(null, mob_occupant.real_name, dna.uni_identity, dna.mutation_index, clone_species, dna.features, mob_occupant.faction)
 		temp = "[mob_occupant.real_name] => <font class='good'>Cloning data sent to pod.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
+

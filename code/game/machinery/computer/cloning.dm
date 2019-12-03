@@ -513,3 +513,4 @@
 	board.records = records
 	scantemp = "Subject successfully scanned."
 	playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
+
