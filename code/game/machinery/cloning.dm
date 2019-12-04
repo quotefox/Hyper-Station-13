@@ -19,7 +19,7 @@
 	circuit = /obj/item/circuitboard/machine/clonepod
 
 	var/heal_level //The clone is released once its health reaches this level.
-	var/obj/machinery/computer/cloning/connected = null //So we remember the connected clone machine.
+	var/obj/machinery/computer/cloning/connected //So we remember the connected clone machine.
 	var/mess = FALSE //Need to clean out it if it's full of exploded clone.
 	var/attempting = FALSE //One clone attempt at a time thanks
 	var/speed_coeff
@@ -122,7 +122,7 @@
 //Clonepod
 
 /obj/machinery/clonepod/examine(mob/user)
-	..()
+	. = ..()
 	var/mob/living/mob_occupant = occupant
 	if(mess)
 		to_chat(user, "It's filled with blood and viscera. You swear you can see it moving...")
@@ -237,7 +237,7 @@
 
 		H.suiciding = FALSE
 	attempting = FALSE
-	return TRUE
+	return CLONING_SUCCESS
 
 //Grow clones to maturity then kick them out.  FREELOADERS
 /obj/machinery/clonepod/process()

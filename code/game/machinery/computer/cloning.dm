@@ -7,7 +7,7 @@
 	icon_keyboard = "med_key"
 	circuit = /obj/item/circuitboard/computer/cloning
 	req_access = list(ACCESS_HEADS) //ONLY USED FOR RECORD DELETION RIGHT NOW.
-	var/obj/machinery/dna_scannernew/scanner = null //Linked scanner. For scanning.
+	var/obj/machinery/dna_scannernew/scanner //Linked scanner. For scanning.
 	var/list/pods //Linked cloning pods
 	var/temp = "Inactive"
 	var/scantemp_ckey
@@ -490,11 +490,12 @@
 	var/datum/dna/dna
 
 	// Do not use unless you know what they are.
+	var/mob/living/carbon/C = mob_occupant
+	var/mob/living/brain/B = mob_occupant
+
 	if(ishuman(mob_occupant))
-		var/mob/living/carbon/C = mob_occupant
 		dna = C.has_dna()
 	if(isbrain(mob_occupant))
-		var/mob/living/brain/B = mob_occupant
 		dna = B.stored_dna
 
 	if(!istype(dna))
