@@ -1,0 +1,23 @@
+[2019-12-04 05:12:46.881] Starting up round ID .
+ - -------------------------
+[2019-12-04 05:12:49.468] HREF: BigFatAnimeTiddies (usr:BigFatAnimeTiddies[(11,174,1)]) : _src_=chat&proc=analyzeClientData&param[cookie]={"connData":[{"ckey":"bigfatanimetiddies","ip":"68.38.94.206","compid":"3498261404"},{"ckey":"bigfatanimetiddies","ip":null,"compid":"3498261404"},{"ckey":"bigfatanimetiddies","ip":"127.0.0.1","compid":"3498261404"},{"ckey":"guest3498261404","ip":null,"compid":"3498261404"}]}
+[2019-12-04 05:13:43.968] HREF: BigFatAnimeTiddies (usr:BigFatAnimeTiddies[(11,174,1)]) : BigFatAnimeTiddies src=[mob_9];late_join=1
+[2019-12-04 05:13:47.405] HREF: BigFatAnimeTiddies (usr:BigFatAnimeTiddies[(11,174,1)]) : BigFatAnimeTiddies src=[mob_9];SelectedJob=Chief%20Medical%20Officer
+[2019-12-04 05:15:45.786] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(154,115,2)]) : bigfatanimetiddies's admin datum (!localhost!) src=[0x210012a7];admin_token=810014961010010072692845736252074921;create_object=1
+[2019-12-04 05:15:54.162] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(154,115,2)]) : bigfatanimetiddies's admin datum (!localhost!) src=%5B0x210012a7%5D%3Badmin_token%3D810014961010010072692845736252074921&admin_token=810014961010010072692845736252074921&filter=part&offset=x%2Cy%2Cz&offset_type=relative&object_count=1&object_dir=&object_name=&object_where=onfloor&object_list=%2Fobj%2Fitem%2Fstorage%2Fbox%2Fstockparts%2Fdeluxe
+[2019-12-04 05:15:57.756] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(154,115,2)]) : bigfatanimetiddies's admin datum (!localhost!) src=%5B0x210012a7%5D%3Badmin_token%3D810014961010010072692845736252074921&admin_token=810014961010010072692845736252074921&filter=part&offset=x%2Cy%2Cz&offset_type=relative&object_count=1&object_dir=&object_name=&object_where=onfloor&object_list=%2Fobj%2Fitem%2Fstorage%2Fpart_replacer%2Fbluespace
+[2019-12-04 05:16:15.695] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(153,113,2)]) : The cloning console src=[0x200798f];task=autoprocess
+[2019-12-04 05:17:26.114] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(154,114,2)]) : The cloning console src=[0x200798f];menu=2
+[2019-12-04 05:17:27.116] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(154,114,2)]) : The cloning console src=[0x200798f];view_rec=bbfb
+[2019-12-04 05:21:21.459] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(158,116,2)]) : The �DNA scanner access console src=[0x200767c];task=inspect;num=1;
+[2019-12-04 05:21:21.992] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(158,116,2)]) : The �DNA scanner access console src=[0x200767c];task=inspect;num=2;
+[2019-12-04 05:21:22.318] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(158,116,2)]) : The �DNA scanner access console src=[0x200767c];task=inspect;num=3;
+[2019-12-04 05:21:22.866] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(158,116,2)]) : The �DNA scanner access console src=[0x200767c];task=inspect;num=2;
+[2019-12-04 05:21:23.726] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(158,116,2)]) : The �DNA scanner access console src=[0x200767c];task=pulsegene;num=5;path=/datum/mutation/human/race;
+[2019-12-04 05:21:33.927] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(153,114,2)]) : The cloning console src=[0x200798f];menu=2
+[2019-12-04 05:21:35.623] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(154,114,2)]) : The cloning console src=[0x200798f];menu=1
+[2019-12-04 05:21:38.936] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(154,114,2)]) : The cloning console src=[0x200798f];scan=1
+[2019-12-04 05:21:42.226] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(154,114,2)]) : The cloning console src=[0x200798f];scan=1;body_only=1
+[2019-12-04 05:21:45.233] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(154,114,2)]) : The cloning console src=[0x200798f];menu=2
+[2019-12-04 05:21:46.295] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(154,114,2)]) : The cloning console src=[0x200798f];view_rec=2fa3
+[2019-12-04 05:21:50.311] HREF: BigFatAnimeTiddies (usr:Alessandra Joghs[(154,114,2)]) : The cloning console src=[0x200798f];clone=2fa3;empty=TRUE

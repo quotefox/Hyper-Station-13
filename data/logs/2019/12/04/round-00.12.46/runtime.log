@@ -1,0 +1,64 @@
+[2019-12-04 05:12:46.882] Starting up round ID .
+ - -------------------------
+[2019-12-04 05:12:46.886] Running /tg/ revision: 2019-12-04
+ - origin/master: 95e35dc714ec059af1ba4f6355f717d810b87fa6
+ - HEAD: 2cbcd7d49519db45ac762495b8c325f79919db0e
+[2019-12-04 05:12:47.946] Initialized Title Screen subsystem within 0 seconds!
+[2019-12-04 05:12:47.947] Initialized Database subsystem within 0 seconds!
+[2019-12-04 05:12:47.949] Initialized Blackbox subsystem within 0 seconds!
+[2019-12-04 05:12:47.951] Initialized Server Tasks subsystem within 0 seconds!
+[2019-12-04 05:12:47.953] Initialized Input subsystem within 0 seconds!
+[2019-12-04 05:12:47.954] Initialized Vis contents overlays subsystem within 0 seconds!
+[2019-12-04 05:12:47.976] Initialized Research subsystem within 0 seconds!
+[2019-12-04 05:12:47.980] Initialized Events subsystem within 0 seconds!
+[2019-12-04 05:12:47.985] Initialized Jobs subsystem within 0 seconds!
+[2019-12-04 05:12:47.988] Initialized Quirks subsystem within 0 seconds!
+[2019-12-04 05:12:47.998] Initialized Ticker subsystem within 0 seconds!
+[2019-12-04 05:12:48.002] Loading Box Station...
+[2019-12-04 05:12:53.091] Loaded Station in 5s!
+[2019-12-04 05:12:54.302] Loaded Lavaland in 1.2s!
+[2019-12-04 05:12:55.190] Ruin loader finished with 0 left to spend.
+[2019-12-04 05:12:56.255] Ruin loader finished with 0 left to spend.
+[2019-12-04 05:12:56.466] Initialized Mapping subsystem within 8.4 seconds!
+[2019-12-04 05:12:56.469] Initialized Networks subsystem within 0 seconds!
+[2019-12-04 05:13:00.030] ### MAP WARNING, the airlock cyclelink helper at Brig (119, 168, 2) tried to set Brig cyclelinkeddir, but it's already set!
+[2019-12-04 05:13:00.071] ### MAP WARNING, the airlock cyclelink helper at Brig (119, 165, 2) tried to set Brig cyclelinkeddir, but it's already set!
+[2019-12-04 05:13:12.829] Initialized Atoms subsystem within 16.4 seconds!
+[2019-12-04 05:13:12.865] Initialized Language subsystem within 0 seconds!
+[2019-12-04 05:13:12.978] Initialized Machines subsystem within 0.1 seconds!
+[2019-12-04 05:13:13.015] Initialized Circuit subsystem within 0.1 seconds!
+[2019-12-04 05:13:13.018] Initialized Disease subsystem within 0 seconds!
+[2019-12-04 05:13:13.020] Initialized Jukeboxes subsystem within 0 seconds!
+[2019-12-04 05:13:13.022] Initialized Medals subsystem within 0 seconds!
+[2019-12-04 05:13:13.023] Initialized Processing subsystem within 0 seconds!
+[2019-12-04 05:13:13.024] Initialized Night Shift subsystem within 0 seconds!
+[2019-12-04 05:13:13.026] Initialized Parallax subsystem within 0 seconds!
+[2019-12-04 05:13:13.214] Initialized Traumas subsystem within 0.2 seconds!
+[2019-12-04 05:13:13.217] Initialized Weather subsystem within 0 seconds!
+[2019-12-04 05:13:15.029] ## WARNING: There are 127 active turfs at roundstart, this is a mapping error caused by a difference of the air between the adjacent turfs. You can see its coordinates using "Mapping -> Show roundstart AT list" verb (debug verbs required)
+[2019-12-04 05:13:15.044] ## WARNING: HEY! LISTEN! right now were wasted processing 127 turf(s) (connected to 837 other turfs) with atmos differences at round start.
+[2019-12-04 05:13:15.241] ## WARNING: build_pipeline(): /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden added to a pipenet while still having one. (pipes leading to the same spot stacking in one turf) Nearby: (159, 121, 2)
+[2019-12-04 05:13:15.242] ## WARNING: build_pipeline(): /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden added to a pipenet while still having one. (pipes leading to the same spot stacking in one turf) Nearby: (157, 121, 2)
+[2019-12-04 05:13:15.243] ## WARNING: build_pipeline(): /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden added to a pipenet while still having one. (pipes leading to the same spot stacking in one turf) Nearby: (160, 121, 2)
+[2019-12-04 05:13:15.245] ## WARNING: build_pipeline(): /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden added to a pipenet while still having one. (pipes leading to the same spot stacking in one turf) Nearby: (158, 121, 2)
+[2019-12-04 05:13:15.246] ## WARNING: build_pipeline(): /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden added to a pipenet while still having one. (pipes leading to the same spot stacking in one turf) Nearby: (156, 121, 2)
+[2019-12-04 05:13:15.247] ## WARNING: build_pipeline(): /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden added to a pipenet while still having one. (pipes leading to the same spot stacking in one turf) Nearby: (161, 121, 2)
+[2019-12-04 05:13:15.249] ## WARNING: build_pipeline(): /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden added to a pipenet while still having one. (pipes leading to the same spot stacking in one turf) Nearby: (155, 121, 2)
+[2019-12-04 05:13:15.251] ## WARNING: build_pipeline(): /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden added to a pipenet while still having one. (pipes leading to the same spot stacking in one turf) Nearby: (162, 121, 2)
+[2019-12-04 05:13:15.252] ## WARNING: build_pipeline(): /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden added to a pipenet while still having one. (pipes leading to the same spot stacking in one turf) Nearby: (154, 121, 2)
+[2019-12-04 05:13:15.253] ## WARNING: build_pipeline(): /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden added to a pipenet while still having one. (pipes leading to the same spot stacking in one turf) Nearby: (163, 121, 2)
+[2019-12-04 05:13:15.257] ## WARNING: build_pipeline(): further messages about pipenets will be suppressed
+[2019-12-04 05:13:15.279] Initialized Atmospherics subsystem within 2 seconds!
+[2019-12-04 05:13:15.282] Initialized Atmospherics - Turfs subsystem within 0 seconds!
+[2019-12-04 05:13:17.104] Initialized Assets subsystem within 1.9 seconds!
+[2019-12-04 05:13:20.289] Initialized Icon Smoothing subsystem within 3.1 seconds!
+[2019-12-04 05:13:20.835] Initialized Overlay subsystem within 0.6 seconds!
+[2019-12-04 05:13:20.837] Initialized XKeyScore subsystem within 0 seconds!
+[2019-12-04 05:13:20.840] Initialized Sticky Ban subsystem within 0 seconds!
+[2019-12-04 05:13:26.753] Initialized Lighting subsystem within 5.9 seconds!
+[2019-12-04 05:13:29.212] Initialized Shuttle subsystem within 2.5 seconds!
+[2019-12-04 05:13:29.252] Initialized Minor Mapping subsystem within 0 seconds!
+[2019-12-04 05:13:29.256] Initialized Pathfinder subsystem within 0 seconds!
+[2019-12-04 05:13:29.288] Initialized Persistence subsystem within 0 seconds!
+[2019-12-04 05:13:29.289] Initializations complete within 41.3 seconds!
+[2019-12-04 05:13:42.801] Game start took 0s
