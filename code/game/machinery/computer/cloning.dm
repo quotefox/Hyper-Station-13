@@ -82,7 +82,7 @@
 		var/result = grow_clone_from_record(pod, R)
 		if(result & CLONING_SUCCESS)
 			temp = "[R.fields["name"]] => <font class='good'>Cloning cycle in progress...</font>"
-			log_cloning("Cloning of [key_name(R.fields["mind"])] automatically started via autoprocess - [src] at [AREACOORD(src)]. Pod: [pod] at [AREACOORD(pod)].")
+			log_cloning("Cloning of [key_name(R.fields["mindref"])] automatically started via autoprocess - [src] at [AREACOORD(src)]. Pod: [pod] at [AREACOORD(pod)].")
 		if(result & CLONING_DELETE_RECORD)
 			records -= R
 
@@ -367,7 +367,7 @@
 			var/obj/item/card/id/C = usr.get_active_held_item()
 			if (istype(C)||istype(C, /obj/item/pda))
 				if(src.check_access(C))
-					log_cloning("[key_name(usr)] deleted [key_name(active_record.fields["mind"])]'s cloning records from [src] at [AREACOORD(src)].")
+					log_cloning("[key_name(usr)] deleted [key_name(active_record.fields["mindref"])]'s cloning records from [src] at [AREACOORD(src)].")
 					src.temp = "[src.active_record.fields["name"]] => Record deleted."
 					src.records.Remove(active_record)
 					active_record = null
@@ -454,9 +454,9 @@
 					menu = 1
 					success = TRUE
 					if(!empty)
-						log_cloning("[key_name(usr)] initiated cloning of [key_name(C.fields["mind"])] via [src] at [AREACOORD(src)]. Pod: [pod] at [AREACOORD(pod)].")
+						log_cloning("[key_name(usr)] initiated cloning of [key_name(C.fields["mindref"])] via [src] at [AREACOORD(src)]. Pod: [pod] at [AREACOORD(pod)].")
 					else
-						log_cloning("[key_name(usr)] initiated EMPTY cloning of [key_name(C.fields["mind"])] via [src] at [AREACOORD(src)]. Pod: [pod] at [AREACOORD(pod)].")
+						log_cloning("[key_name(usr)] initiated EMPTY cloning of [key_name(C.fields["mindref"])] via [src] at [AREACOORD(src)]. Pod: [pod] at [AREACOORD(pod)].")
 				if(result &	CLONING_DELETE_RECORD)
 					if(active_record == C)
 						active_record = null
@@ -559,7 +559,7 @@
 			imp.implant(mob_occupant)
 		R.fields["imp"] = "[REF(imp)]"
 
-	var/datum/data/record/old_record = find_record("mind", REF(mob_occupant.mind), records)
+	var/datum/data/record/old_record = find_record("mindref", REF(mob_occupant.mind), records)
 	if(body_only)
 		old_record = find_record("UE", dna.unique_enzymes, records) //Body-only records cannot be identified by mind, so we use the DNA
 		if(old_record && ((old_record.fields["UI"] != dna.uni_identity) || (!old_record.fields["body_only"]))) //Never overwrite a mind-and-body record if it exists
