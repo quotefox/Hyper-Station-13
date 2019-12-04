@@ -60,8 +60,7 @@
 				. = pod
 
 /proc/grow_clone_from_record(obj/machinery/clonepod/pod, datum/data/record/R, empty)
-	return pod.growclone(R.fields["ckey"], R.fields["name"], R.fields["UI"], R.fields["SE"], R.fields["mind"], R.fields["last_death"], R.fields["blood_type"], R.fields["mrace"], R.fields["features"], R.fields["factions"], R.fields["quirks"], empty)
-//If for some reason this doesn't work, re-adding the Ckey field next commit ~Synn
+	return pod.growclone(R.fields["name"], R.fields["UI"], R.fields["SE"], R.fields["mindref"], R.fields["last_death"], R.fields["blood_type"], R.fields["mrace"], R.fields["features"], R.fields["factions"], R.fields["quirks"], empty)
 
 /obj/machinery/computer/cloning/process()
 	if(!(scanner && LAZYLEN(pods) && autoprocess))
@@ -71,13 +70,13 @@
 		scan_occupant(scanner.occupant)
 
 	for(var/datum/data/record/R in records)
-		var/obj/machinery/clonepod/pod = GetAvailableEfficientPod(R.fields["mind"])
+		var/obj/machinery/clonepod/pod = GetAvailableEfficientPod(R.fields["mindref"])
 
 		if(!pod)
 			return
 
 		if(pod.occupant)
-			break
+			continue
 
 		var/result = grow_clone_from_record(pod, R)
 		if(result & CLONING_SUCCESS)
@@ -514,10 +513,10 @@
 		scantemp = "<font class='bad'>Mental interface failure.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 		return
-	if (find_record("ckey", mob_occupant.ckey, records))
-		scantemp = "<font class='average'>Subject already in database.</font>"
-		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
-		return
+//	if (find_record("ckey", mob_occupant.ckey, records))
+//		scantemp = "<font class='average'>Subject already in database.</font>"
+//		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
+//		return
 
 	var/datum/data/record/R = new()
 	if(dna.species)
@@ -530,7 +529,7 @@
 		var/datum/species/rando_race = pick(GLOB.roundstart_races)
 		R.fields["mrace"] = rando_race.type
 
-	R.fields["ckey"] = mob_occupant.ckey
+	//R.fields["ckey"] = mob_occupant.ckey
 	R.fields["name"] = mob_occupant.real_name
 	R.fields["id"] = copytext(md5(mob_occupant.real_name), 2, 6)
 	R.fields["UE"] = dna.unique_enzymes
@@ -544,7 +543,7 @@
 		var/datum/quirk/T = V
 		R.fields["quirks"][T.type] = T.clone_data()
 
-	R.fields["mind"] = "[REF(mob_occupant.mind)]"
+	R.fields["mindref"] = "[REF(mob_occupant.mind)]"
 	R.fields["last_death"] = mob_occupant.stat == DEAD ? mob_occupant.mind.last_death : -1
 	R.fields["body_only"] = body_only
 
