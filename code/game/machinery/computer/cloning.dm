@@ -60,7 +60,7 @@
 				. = pod
 
 /proc/grow_clone_from_record(obj/machinery/clonepod/pod, datum/data/record/R, empty)
-	return pod.growclone(R.fields["name"], R.fields["UI"], R.fields["SE"], R.fields["mindref"], R.fields["last_death"], R.fields["blood_type"], R.fields["mrace"], R.fields["features"], R.fields["factions"], R.fields["quirks"], R.fields["bank_account"], R.fields["traumas"], empty)
+	return pod.growclone(R.fields["ckey"], R.fields["name"], R.fields["UI"], R.fields["SE"], R.fields["mind"], R.fields["last_death"], R.fields["blood_type"], R.fields["mrace"], R.fields["features"], R.fields["factions"], R.fields["quirks"], empty)
 //If for some reason this doesn't work, re-adding the Ckey field next commit ~Synn
 
 /obj/machinery/computer/cloning/process()
@@ -460,6 +460,8 @@
 				if(result &	CLONING_DELETE_RECORD)
 					if(active_record == C)
 						active_record = null
+					menu = 1
+					records -= C
 
 			if(!success)
 				temp = "[C.fields["name"]] => <font class='bad'>Initialisation failure.</font>"
@@ -542,7 +544,7 @@
 		var/datum/quirk/T = V
 		R.fields["quirks"][T.type] = T.clone_data()
 
-	R.fields["mindref"] = "[REF(mob_occupant.mind)]"
+	R.fields["mind"] = "[REF(mob_occupant.mind)]"
 	R.fields["last_death"] = mob_occupant.stat == DEAD ? mob_occupant.mind.last_death : -1
 	R.fields["body_only"] = body_only
 
