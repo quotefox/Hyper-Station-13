@@ -13,19 +13,18 @@
 	var/scantemp_ckey
 	var/scantemp = "Ready to Scan"
 	var/menu = 1 //Which menu screen to display
+	var/list/records = list()
 	var/datum/data/record/active_record = null
 	var/obj/item/disk/data/diskette = null //Mostly so the geneticist can steal everything.
+
 	var/loading = 0 // Nice loading text
 	var/autoprocess = 0
-	var/list/records = list()
 
 	light_color = LIGHT_COLOR_BLUE
 
 /obj/machinery/computer/cloning/Initialize()
 	. = ..()
 	updatemodules(TRUE)
-	var/obj/item/circuitboard/computer/cloning/board = circuit
-	records = board.records
 
 
 /obj/machinery/computer/cloning/Destroy()
@@ -62,6 +61,7 @@
 
 /proc/grow_clone_from_record(obj/machinery/clonepod/pod, datum/data/record/R, empty)
 	return pod.growclone(R.fields["name"], R.fields["UI"], R.fields["SE"], R.fields["mindref"], R.fields["last_death"], R.fields["blood_type"], R.fields["mrace"], R.fields["features"], R.fields["factions"], R.fields["quirks"], R.fields["bank_account"], R.fields["traumas"], empty)
+//If for some reason this doesn't work, re-adding the Ckey field next commit ~Synn
 
 /obj/machinery/computer/cloning/process()
 	if(!(scanner && LAZYLEN(pods) && autoprocess))
@@ -77,7 +77,7 @@
 			return
 
 		if(pod.occupant)
-			continue	//how though?
+			break
 
 		var/result = grow_clone_from_record(pod, R)
 		if(result & CLONING_SUCCESS)
@@ -138,7 +138,9 @@
 			to_chat(user, "<span class='notice'>You insert [W].</span>")
 			playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, 0)
 			src.updateUsrDialog()
-	else if(istype(W, /obj/item/multitool))
+	else if(W.tool_behaviour == TOOL_MULTITOOL)
+		if(!multitool_check_buffer(user, W))
+			return
 		var/obj/item/multitool/P = W
 
 		if(istype(P.buffer, /obj/machinery/clonepod))
@@ -249,7 +251,14 @@
 					dat += "<font class='bad'>Unable to locate Health Implant.</font><br /><br />"
 
 				dat += "<b>Unique Identifier:</b><br /><span class='highlight'>[src.active_record.fields["UI"]]</span><br>"
-				dat += "<b>Structural Enzymes:</b><br /><span class='highlight'>[src.active_record.fields["SE"]]</span><br>"
+				dat += "<b>Structural Enzymes:</b><br /><span class='highlight'>"
+				for(var/key in active_record.fields["SE"])
+					if(key != RACEMUT)
+						var/val = active_record.fields["SE"][key]
+						var/alias = GLOB.all_mutations[key].alias
+						dat +="[alias]: [val]<br />"
+
+				dat += "</span><br />"
 
 				if(diskette && diskette.fields)
 					dat += "<div class='block'>"
@@ -306,19 +315,13 @@
 
 	else if ((href_list["scan"]) && !isnull(scanner) && scanner.is_operational())
 		scantemp = ""
-
 		var/body_only = href_list["body_only"]
 		loading = 1
 		src.updateUsrDialog()
 		playsound(src, 'sound/machines/terminal_prompt.ogg', 50, 0)
 		say("Initiating scan...")
 
-		spawn(20)
-			src.scan_occupant(scanner.occupant, usr, body_only)
-
-			loading = 0
-			src.updateUsrDialog()
-			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
+		addtimer(CALLBACK(src, .proc/do_scan, usr, body_only), 2 SECONDS)
 
 
 		//No locking an open scanner.
@@ -334,14 +337,9 @@
 		playsound(src, "terminal_type", 25, 0)
 		src.active_record = find_record("id", href_list["view_rec"], records)
 		if(active_record)
-			if(!active_record.fields["ckey"])
-				records -= active_record
-				active_record = null
-				src.temp = "<font class='bad'>Record Corrupt</font>"
-			else
-				src.menu = 3
+			menu = 3
 		else
-			src.temp = "Record missing."
+			temp = "Record missing."
 
 	else if (href_list["del_rec"])
 		if ((!src.active_record) || (src.menu < 3))
@@ -369,13 +367,12 @@
 			var/obj/item/card/id/C = usr.get_active_held_item()
 			if (istype(C)||istype(C, /obj/item/pda))
 				if(src.check_access(C))
+					log_cloning("[key_name(usr)] deleted [key_name(active_record.fields["mindref"])]'s cloning records from [src] at [AREACOORD(src)].")
 					src.temp = "[src.active_record.fields["name"]] => Record deleted."
 					src.records.Remove(active_record)
 					active_record = null
 					playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 					src.menu = 2
-					var/obj/item/circuitboard/computer/cloning/board = circuit
-					board.records = records
 				else
 					src.temp = "<font class='bad'>Access Denied.</font>"
 					playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
@@ -480,6 +477,13 @@
 	src.updateUsrDialog()
 	return
 
+/obj/machinery/computer/cloning/proc/do_scan(mob/user, body_only)
+	scan_occupant(scanner.occupant, user, body_only)
+
+	loading = FALSE
+	updateUsrDialog()
+	playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+
 /obj/machinery/computer/cloning/proc/scan_occupant(occupant, mob/M, body_only)
 	var/mob/living/mob_occupant = get_mob_or_brainmob(occupant)
 	var/datum/dna/dna
@@ -533,14 +537,14 @@
 	R.fields["blood_type"] = dna.blood_type
 	R.fields["features"] = dna.features
 	R.fields["factions"] = mob_occupant.faction
-	R.fields["body_only"] = body_only
 	R.fields["quirks"] = list()
 	for(var/V in mob_occupant.roundstart_quirks)
 		var/datum/quirk/T = V
 		R.fields["quirks"][T.type] = T.clone_data()
 
-	if (!isnull(mob_occupant.mind)) //Save that mind so traitors can continue traitoring after cloning.
-		R.fields["mind"] = "[REF(mob_occupant.mind)]"
+	R.fields["mindref"] = "[REF(mob_occupant.mind)]"
+	R.fields["last_death"] = mob_occupant.stat == DEAD ? mob_occupant.mind.last_death : -1
+	R.fields["body_only"] = body_only
 
 	if(!body_only)
 	    //Add an implant if needed
@@ -565,9 +569,5 @@
 		scantemp = "Subject successfully scanned."
 	src.records += R
 	log_cloning("[M ? key_name(M) : "Autoprocess"] added the [body_only ? "body-only " : ""]record of [key_name(mob_occupant)] to [src] at [AREACOORD(src)].")
-
-	var/obj/item/circuitboard/computer/cloning/board = circuit
-	board.records = records
-	scantemp = "Subject successfully scanned."
 	playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 
