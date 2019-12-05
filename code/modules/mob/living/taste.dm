@@ -4,6 +4,7 @@
 	var/last_taste_time
 	var/last_taste_text
 	var/last_ph_taste_time
+	var/last_ph_taste_number
 
 /mob/living/proc/get_taste_sensitivity()
 	return DEFAULT_TASTE_SENSITIVITY
@@ -51,17 +52,29 @@
 		return
 	if (!HAS_TRAIT(src, TRAIT_AGEUSIA)) //I'll let you get away with not having 1 damage.
 		if(last_ph_taste_time + 50 < world.time)
+			var/ph_taste_number
 			switch(from.pH)
 				if(11.5 to INFINITY)
-					to_chat(src, "<span class='warning'>You taste a strong alkaline flavour!</span>")
+					ph_taste_number = 1
 				if(8.5 to 11.5)
-					to_chat(src, "<span class='notice'>You taste a sort of soapy tone in the mixture.</span>")
+					ph_taste_number = 2
 				if(2.5 to 5.5)
-					to_chat(src, "<span class='notice'>You taste a sort of acid tone in the mixture.</span>")
+					ph_taste_number = 3
 				if(-INFINITY to 2.5)
+					ph_taste_number = 4
+
+			if(ph_taste_number != last_ph_taste_number || last_ph_taste_time + 200 < world.time)
+				if (ph_taste_number == 1)
+					to_chat(src, "<span class='warning'>You taste a strong alkaline flavour!</span>")
+				if (ph_taste_number == 2)
+					to_chat(src, "<span class='notice'>You taste a sort of soapy tone in the mixture.</span>")
+				if (ph_taste_number == 3)
+					to_chat(src, "<span class='notice'>You taste a sort of acid tone in the mixture.</span>")
+				if (ph_taste_number == 4)
 					to_chat(src, "<span class='warning'>You taste a strong acidic flavour!</span>")
 
-			last_ph_taste_time = world.time
+				last_ph_taste_time = world.time
+				last_ph_taste_number = ph_taste_number
 
 
 #undef DEFAULT_TASTE_SENSITIVITY
