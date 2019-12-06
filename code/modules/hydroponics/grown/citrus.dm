@@ -49,7 +49,7 @@
 	icon_grow = "lime-grow"
 	icon_dead = "lime-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	mutatelist = list(/obj/item/seeds/lime)
+	mutatelist = list(/obj/item/seeds/lime, /obj/item/seeds/orange_3d)
 	reagents_add = list("vitamin" = 0.04, "nutriment" = 0.05)
 
 /obj/item/reagent_containers/food/snacks/grown/citrus/orange
@@ -77,7 +77,7 @@
 	icon_grow = "lime-grow"
 	icon_dead = "lime-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list("vitamin" = 0.04, "nutriment" = 0.05)
+	reagents_add = list("vitamin" = 0.04, "nutriment" = 0.05, "haloperidol" = 0.15)
 
 /obj/item/reagent_containers/food/snacks/grown/citrus/orange_3d
 	seed = /obj/item/seeds/orange
