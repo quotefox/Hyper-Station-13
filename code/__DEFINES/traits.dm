@@ -126,6 +126,7 @@
 #define TRAIT_LAW_ENFORCEMENT_METABOLISM "law-enforcement-metabolism"
 #define	TRAIT_STRONG_GRABBER	"strong_grabber"
 #define	TRAIT_CALCIUM_HEALER	"calcium_healer"
+#define TRAIT_MAGIC_CHOKE		"magic_choke"
 #define TRAIT_ALCOHOL_LIGHTWEIGHT	"alcohol_lightweight" //Skyrat port
 #define TRAIT_CURSED_BLOOD	"cursed_blood" //Yo dawg I heard you like bloodborne references so I put a
 #define TRAIT_HEAT_DETECT	"heat_detect"
