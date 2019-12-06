@@ -54,3 +54,28 @@
 /obj/structure/loom/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood (get_turf(src), 10)
 	qdel(src)
+
+
+
+/*///Handles the weaving.
+/obj/structure/loom/proc/weave(obj/item/stack/sheet/S, mob/user)
+	if(!istype(S) || !S.is_fabric)
+		return FALSE
+	if(!anchored)
+		user.show_message("<span class='notice'>The loom needs to be wrenched down.</span>", MSG_VISUAL)
+		return FALSE
+	if(S.amount < FABRIC_PER_SHEET)
+		user.show_message("<span class='notice'>You need at least [FABRIC_PER_SHEET] units of fabric before using this.</span>", 1)
+		return FALSE
+	user.show_message("<span class='notice'>You start weaving \the [S.name] through the loom..</span>", MSG_VISUAL)
+	if(S.use_tool(src, user, S.pull_effort))
+		if(S.amount >= FABRIC_PER_SHEET)
+			new S.loom_result(drop_location())
+			S.use(FABRIC_PER_SHEET)
+			user.show_message("<span class='notice'>You weave \the [S.name] into a workable fabric.</span>", MSG_VISUAL)
+	return TRUE
+
+/obj/structure/loom/unanchored
+	anchored = FALSE
+
+#undef FABRIC_PER_SHEET */
