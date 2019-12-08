@@ -37,8 +37,6 @@ Head of Security
 
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/nonviolent, /datum/quirk/paraplegic, /datum/quirk/insanity)
-
 /datum/outfit/job/hos
 	name = "Head of Security"
 	jobtype = /datum/job/hos
@@ -97,7 +95,6 @@ Warden
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM) //SEE /DATUM/JOB/WARDEN/GET_ACCESS()
 
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/nonviolent, /datum/quirk/paraplegic)
 
 /datum/job/warden/get_access()
 	var/list/L = list()
@@ -153,7 +150,6 @@ Detective
 	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_COURT, ACCESS_BRIG, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM)
 
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/nonviolent, /datum/quirk/paraplegic)
 
 /datum/outfit/job/detective
 	name = "Detective"
@@ -209,7 +205,6 @@ Security Officer
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM) //BUT SEE /DATUM/JOB/WARDEN/GET_ACCESS()
 
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/nonviolent, /datum/quirk/paraplegic)
 
 /datum/job/officer/get_access()
 	var/list/L = list()
