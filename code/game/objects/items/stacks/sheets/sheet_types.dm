@@ -240,7 +240,7 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
  */
 
 GLOBAL_LIST_INIT(bamboo_recipes, list ( \
-	new/datum/stack_recipe("punji sticks trap", /obj/structure/punji_sticks, 10, time = 90, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("punji sticks trap", /obj/structure/punji_sticks, 10, time = 160, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("blow gun", /obj/item/gun/syringe/blowgun, 10, time = 70), \
 	))
 
