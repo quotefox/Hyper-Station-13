@@ -12,6 +12,9 @@
 	construction_type = /obj/item/pipe/trinary/flippable
 	pipe_state = "filter"
 
+	ui_x = 475
+	ui_y = 185
+
 /obj/machinery/atmospherics/components/trinary/filter/examine(mob/user)
 	. = ..()
 	to_chat(user,"<span class='notice'>You can hold <b>Ctrl</b> and click on it to toggle it on and off.</span>")
