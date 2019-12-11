@@ -17,9 +17,9 @@
 	var/list/available_chems
 	var/controls_inside = FALSE
 	var/list/possible_chems = list(
-		list("epinephrine", "morphine", "salbutamol", "bicaridine", "kelotane"),
+		list("epinephrine", "dexalin", "bicaridine", "kelotane","antitoxin"),
 		list("oculine","inacusiate"),
-		list("antitoxin", "mutadone", "mannitol", "pen_acid"),
+		list( "mutadone", "mannitol", "prussian_blue"),
 		list("omnizine")
 	)
 	var/list/chem_buttons	//Used when emagged to scramble which chem is used, eg: antitoxin -> morphine
