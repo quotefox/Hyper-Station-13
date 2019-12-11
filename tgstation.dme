@@ -3079,6 +3079,7 @@
 #include "modular_citadel\code\modules\reagents\objects\clothes.dm"
 #include "modular_citadel\code\modules\reagents\objects\items.dm"
 #include "modular_citadel\code\modules\reagents\reagent container\cit_kegs.dm"
+#include "modular_citadel\code\modules\reagents\reagent container\hypospraydisposable.dm"
 #include "modular_citadel\code\modules\reagents\reagent container\hypospraymkii.dm"
 #include "modular_citadel\code\modules\reagents\reagent container\hypovial.dm"
 #include "modular_citadel\code\modules\reagents\reagents\cit_reagents.dm"
