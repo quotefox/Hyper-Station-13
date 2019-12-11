@@ -52,6 +52,8 @@
 	materials = list(MAT_GLASS = 2500, MAT_PLASTIC = 3000)
 	build_path = /obj/item/reagent_containers/glass/beaker/plastic
 	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SERVICE
+
 
 /datum/design/meta_beaker
 	name = "Metamaterial Beaker"
@@ -61,6 +63,7 @@
 	materials = list(MAT_GLASS = 2500, MAT_PLASTIC = 3000, MAT_GOLD = 1000, MAT_TITANIUM = 1000)
 	build_path = /obj/item/reagent_containers/glass/beaker/meta
 	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SERVICE
 
 /datum/design/bluespacesyringe
 	name = "Bluespace Syringe"
