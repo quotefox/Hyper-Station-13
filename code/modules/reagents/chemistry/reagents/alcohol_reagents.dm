@@ -2227,3 +2227,48 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	taste_description = flavor
 	if(holder.my_atom)
 		holder.my_atom.on_reagent_change()
+
+/datum/reagent/consumable/ethanol/gunfire
+	name = "Gunfire"
+	id = "gunfire"
+	description = "A drink that tastes like tiny explosions."
+	color = "#e4830d"
+	boozepwr = 40
+	quality = DRINK_GOOD
+	taste_description = "tiny explosions"
+	glass_icon_state = "gunfire"
+	glass_name = "Gunfire"
+	glass_desc = "It pops constantly as you look at it, giving off tiny sparks."
+
+/datum/reagent/consumable/ethanol/hellfire/on_mob_life(mob/living/carbon/M)
+	if (prob(3))
+		to_chat(M,"<span class='notice'>You feel the gunfire pop in your mouth.</span>")
+	return ..()
+
+/datum/reagent/consumable/ethanol/hellfire
+	name = "Hellfire"
+	id = "hellfire"
+	description = "A nice drink that isn't quite as hot as it looks."
+	color = "#fb2203"
+	boozepwr = 60
+	quality = DRINK_VERYGOOD
+	taste_description = "cold flames that lick at the top of your mouth"
+	glass_icon_state = "hellfire"
+	glass_name = "Hellfire"
+	glass_desc = "An amber colored drink that isn't quite as hot as it looks."
+
+/datum/reagent/consumable/ethanol/hellfire/on_mob_life(mob/living/carbon/M)
+	M.adjust_bodytemperature(30 * TEMPERATURE_DAMAGE_COEFFICIENT, 0, BODYTEMP_NORMAL + 30)
+	return ..()
+
+/datum/reagent/consumable/ethanol/sins_delight
+	name = "Sin's Delight"
+	id = "sins_delight"
+	description = "The drink smells like the seven sins."
+	color = "#330000"
+	boozepwr = 66
+	quality = DRINK_FANTASTIC
+	taste_description = "sin"
+	glass_icon_state = "sins_delight"
+	glass_name = "Sin's Delight"
+	glass_desc = "You can smell the seven sins rolling off the top of the glass."
