@@ -34,6 +34,7 @@
 	var/inject_self = SELF_INJECT
 	var/quickload = FALSE
 	var/penetrates = FALSE
+	var/reloadable = TRUE
 
 /obj/item/hypospray/mkii/brute
 	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/preloaded/bicaridine
@@ -52,6 +53,16 @@
 
 /obj/item/hypospray/mkii/enlarge
 	spawnwithvial = FALSE
+
+//A vial-loaded hypospray. Cartridge-based!
+/obj/item/hypospray/mkii/disposable
+	name = "disposable hypospray mk.II"
+	icon = 'modular_citadel/icons/obj/hypospraymkii.dmi'
+	icon_state = "hypo2"
+	desc = "A cheaply made knock off verson of the MKII hypospray. You cannot remove a hypovial from it making it nonreusable."
+	w_class = WEIGHT_CLASS_TINY
+	spawnwithvial = FALSE
+	reloadable = FALSE
 
 /obj/item/hypospray/mkii/CMO
 	name = "hypospray mk.II deluxe"
@@ -96,21 +107,24 @@
 
 /obj/item/hypospray/mkii/examine(mob/user)
 	. = ..()
-	to_chat(user, "[vial] has [vial.reagents.total_volume]u remaining.")
 	to_chat(user, "[src] is set to [mode ? "Inject" : "Spray"] contents on application.")
 
 /obj/item/hypospray/mkii/proc/unload_hypo(obj/item/I, mob/user)
-	if((istype(I, /obj/item/reagent_containers/glass/bottle/vial)))
-		var/obj/item/reagent_containers/glass/bottle/vial/V = I
-		V.forceMove(user.loc)
-		user.put_in_hands(V)
-		to_chat(user, "<span class='notice'>You remove [vial] from [src].</span>")
-		vial = null
-		update_icon()
-		playsound(loc, 'sound/weapons/empty.ogg', 50, 1)
+	if (reloadable == TRUE)
+		if((istype(I, /obj/item/reagent_containers/glass/bottle/vial)))
+			var/obj/item/reagent_containers/glass/bottle/vial/V = I
+			V.forceMove(user.loc)
+			user.put_in_hands(V)
+			to_chat(user, "<span class='notice'>You remove [vial] from [src].</span>")
+			vial = null
+			update_icon()
+			playsound(loc, 'sound/weapons/empty.ogg', 50, 1)
+		else
+			to_chat(user, "<span class='notice'>This hypo isn't loaded!</span>")
+			return
 	else
-		to_chat(user, "<span class='notice'>This hypo isn't loaded!</span>")
-		return
+		if((istype(I, /obj/item/reagent_containers/glass/bottle/vial)))
+			to_chat(user, "<span class='notice'>You cannot remove [vial] from [src] without destroying both.</span>")
 
 /obj/item/hypospray/mkii/attackby(obj/item/I, mob/living/user)
 	if((istype(I, /obj/item/reagent_containers/glass/bottle/vial) && vial != null))

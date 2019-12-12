@@ -76,6 +76,21 @@ SUBSYSTEM_DEF(vote)
 					choices[GLOB.master_mode] += non_voters.len
 					if(choices[GLOB.master_mode] >= greatest_votes)
 						greatest_votes = choices[GLOB.master_mode]
+			else if(mode == "transfer") // austation begin -- Crew autotransfer vote
+				var/factor = 1
+				switch(world.time / (1 MINUTES ))
+					if(0 to 60)
+						factor = 0.5
+					if(61 to 120)
+						factor = 0.8
+					if(121 to 240)
+						factor = 1
+					if(241 to 300)
+						factor = 1.2
+					else
+						factor = 1.4
+				choices["Initiate Crew Transfer"] += round(non_voters.len * factor) // austation end
+
 	//get all options with that many votes and return them in a list
 	. = list()
 	if(greatest_votes)
@@ -152,6 +167,13 @@ SUBSYSTEM_DEF(vote)
 				log_admin("The map has been voted for and will change to: [VM.map_name]")
 				if(SSmapping.changemap(config.maplist[.]))
 					to_chat(world, "<span class='boldannounce'>The map vote has chosen [VM.map_name] for next round!</span>")
+			if("transfer") // austation begin -- Crew autotransfer vote
+				if(. == "Initiate Crew Transfer")
+					//TODO find a cleaner way to do this
+					SSshuttle.requestEvac(null,"Crew transfer requested.")
+					var/obj/machinery/computer/communications/C = locate() in GLOB.machines
+					if(C)
+						C.post_status("shuttle") // austation end
 	if(restart)
 		var/active_admins = 0
 		for(var/client/C in GLOB.admins)
@@ -200,6 +222,7 @@ SUBSYSTEM_DEF(vote)
 				to_chat(usr, "<span class='warning'>A vote was initiated recently, you must wait [DisplayTimeText(next_allowed_time-world.time)] before a new vote can be started!</span>")
 				return 0
 
+		SEND_SOUND(world, sound('sound/misc/notice2.ogg'))
 		reset()
 		obfuscated = hideresults //CIT CHANGE - adds obfuscated votes
 		switch(vote_type)
@@ -211,6 +234,8 @@ SUBSYSTEM_DEF(vote)
 				choices.Add(config.maplist)
 				for(var/i in choices)//this is necessary because otherwise we'll end up with a bunch of /datum/map_config's as the default vote value instead of 0 as intended
 					choices[i] = 0
+			if("transfer") // austation begin -- Crew autotranfer vote
+				choices.Add("Initiate Crew Transfer","Continue Playing") // austation end
 			if("roundtype") //CIT CHANGE - adds the roundstart secret/extended vote
 				choices.Add("secret", "extended")
 			if("custom")
@@ -225,7 +250,7 @@ SUBSYSTEM_DEF(vote)
 			else
 				return 0
 		mode = vote_type
-		initiator = initiator_key
+		initiator = initiator_key ? initiator_key : "the Server" // austation -- Crew autotransfer vote
 		started_time = world.time
 		var/text = "[capitalize(mode)] vote started by [initiator]."
 		if(mode == "custom")

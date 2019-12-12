@@ -69,7 +69,7 @@
 /obj/item/clothing/shoes/clown_shoes
 	desc = "The prankster's standard-issue clowning shoes. Damn, they're huge!"
 	name = "clown shoes"
-	icon_state = "clown"
+	icon_state = "clown_shoes"
 	item_state = "clown_shoes"
 	slowdown = SHOES_SLOWDOWN+1
 	item_color = "clown"
@@ -312,3 +312,24 @@
 		set_light(0)
 		lightCycle = 0
 		active = FALSE
+
+/obj/item/clothing/shoes/wraps
+	name = "gilded leg wraps"
+	desc = "Ankle coverings. These ones have a golden design."
+	icon_state = "gildedcuffs"
+	body_parts_covered = FALSE
+
+/obj/item/clothing/shoes/wraps/silver
+	name = "silver leg wraps"
+	desc = "Ankle coverings. Not made of real silver."
+	icon_state = "silvergildedcuffs"
+
+/obj/item/clothing/shoes/wraps/red
+	name = "red leg wraps"
+	desc = "Ankle coverings. Show off your style with these shiny red ones!"
+	icon_state = "redcuffs"
+
+/obj/item/clothing/shoes/wraps/blue
+	name = "blue leg wraps"
+	desc = "Ankle coverings. Hang ten, brother."
+	icon_state = "bluecuffs" 

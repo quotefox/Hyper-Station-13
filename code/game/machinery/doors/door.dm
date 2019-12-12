@@ -332,6 +332,7 @@
 			C.bleed(DOOR_CRUSH_DAMAGE)
 		else
 			L.add_splatter_floor(location)
+
 	for(var/obj/mecha/M in get_turf(src))
 		M.take_damage(DOOR_CRUSH_DAMAGE)
 

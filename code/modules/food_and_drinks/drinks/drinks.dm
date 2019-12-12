@@ -14,6 +14,7 @@
 	volume = 50
 	resistance_flags = NONE
 	var/isGlass = TRUE //Whether the 'bottle' is made of glass or not so that milk cartons dont shatter when someone gets hit by it
+	splashable = TRUE
 
 /obj/item/reagent_containers/food/drinks/on_reagent_change(changetype)
 	if (gulp_size < 5)
@@ -104,6 +105,7 @@
 /obj/item/reagent_containers/food/drinks/throw_impact(atom/target, datum/thrownthing/throwinfo)
 	. = ..()
 	if(!.) //if the bottle wasn't caught
+		SplashReagents(target)
 		smash(target, throwinfo.thrower, TRUE)
 
 /obj/item/reagent_containers/food/drinks/proc/smash(atom/target, mob/thrower, ranged = FALSE)

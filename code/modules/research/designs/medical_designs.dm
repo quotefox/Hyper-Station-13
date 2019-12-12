@@ -909,3 +909,16 @@
 	build_path = /obj/item/bodypart/r_arm/robot/surplus_upgraded
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+
+
+/datum/design/adv_r_arm
+	name = "Disposable  Hypospray MK.II"
+	desc = "A cheaply made hypospray"
+	id = "disposable_hypospray"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 100, MAT_PLASTIC = 500)
+	construction_time = 40
+	build_path = /obj/item/hypospray/mkii/disposable
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
