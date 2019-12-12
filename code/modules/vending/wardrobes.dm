@@ -131,6 +131,7 @@
 					/obj/item/clothing/mask/bandana/skull = 2)
 	premium = list(/obj/item/radio/headset/headset_rob = 2) //Cit change
 	contraband = list(/obj/item/clothing/suit/hooded/techpriest = 2)
+	contraband = list(/obj/item/organ/tongue/robot = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/robo_wardrobe
 
 /obj/item/vending_refill/wardrobe/robo_wardrobe
