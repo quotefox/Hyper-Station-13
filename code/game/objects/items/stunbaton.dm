@@ -250,4 +250,21 @@
 	sparkler?.activate()
 	. = ..()
 
+/obj/item/melee/baton/staff
+	name = "batonstaff"
+	desc = "This... is two batons duct taped together?"
+	icon_state = "batonstaff_nocell"
+	item_state = "staff"
+	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+	force = 10
+	block_chance = 20
+	throwforce = 7
+	stunforce = 160
+	hitcost = 1200
+	throw_hit_chance = 20
+	slot_flags = ITEM_SLOT_BACK
+
+
 #undef STUNBATON_CHARGE_LENIENCY

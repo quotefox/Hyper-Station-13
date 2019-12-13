@@ -54,6 +54,15 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
+/datum/crafting_recipe/batonstaff
+	name = "Stun Baton Staff"
+	result = /obj/item/melee/baton/staff
+	reqs = list(/obj/item/melee/baton = 2,
+				/obj/item/stack/packageWrap = 1)
+	time = 40
+	category = CAT_WEAPONRY
+	subcategory = CAT_WEAPON
+
 /datum/crafting_recipe/makeshiftshield
 	name = "Makeshift Metal Shield"
 	result = /obj/item/shield/makeshift
