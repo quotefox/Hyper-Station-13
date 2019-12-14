@@ -25,7 +25,7 @@
 	name = "Plastic Fork"
 	id = "plastic_fork"
 	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/plastic = 80)
+	materials = list(MAT_PLASTIC = 80)
 	build_path = /obj/item/kitchen/fork/plastic
 	category = list("initial", "Tool Designs", "Dinnerware")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
@@ -34,7 +34,7 @@
 	name = "Plastic Spoon"
 	id = "plastic_spoon"
 	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/plastic = 120)
+	materials = list(MAT_PLASTIC = 120)
 	build_path = /obj/item/kitchen/spoon/plastic
 	category = list("initial", "Tool Designs", "Dinnerware")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
@@ -43,7 +43,7 @@
 	name = "Plastic Knife"
 	id = "plastic_knife"
 	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(/datum/material/plastic = 100)
+	materials = list(MAT_PLASTIC = 100)
 	build_path = /obj/item/kitchen/knife/plastic
 	category = list("initial", "Tool Designs","Dinnerware")
 
