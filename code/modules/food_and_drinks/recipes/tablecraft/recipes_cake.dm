@@ -69,8 +69,9 @@
 /datum/crafting_recipe/food/birthdaycake
 	name = "Birthday cake"
 	reqs = list(
-		/obj/item/clothing/head/hardhat/cakehat = 1,
-		/obj/item/reagent_containers/food/snacks/store/cake/plain = 1
+		/obj/item/reagent_containers/food/snacks/store/cake/plain = 1,
+		/obj/item/candle = 1,
+		/datum/reagent/consumable/sugar = 5,
 	)
 	result = /obj/item/reagent_containers/food/snacks/store/cake/birthday
 	subcategory = CAT_CAKE
