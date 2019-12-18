@@ -909,7 +909,7 @@
 
 
 
-/datum/design/adv_r_arm
+/datum/design/adv_dis_hypo
 	name = "Disposable  Hypospray MK.II"
 	desc = "A cheaply made hypospray"
 	id = "disposable_hypospray"
