@@ -12,7 +12,7 @@
 	"destructive_analyzer", "circuit_imprinter", "experimentor", "rdconsole", "design_disk", "tech_disk", "rdserver", "rdservercontrol", "mechfab",
 	"space_heater", "xlarge_beaker", "sec_rshot", "sec_bshot", "sec_slug", "sec_Islug", "sec_dart", "sec_38", "sec_38lethal",
 	"rglass","plasteel","plastitanium","plasmaglass","plasmareinforcedglass","titaniumglass","plastitaniumglass","chem_pack","medkit_cabinet",
-	"disposable_hypospray")
+	"disposable_hypospray","plastic_knife","plastic_fork","plastic_spoon")
 
 /datum/techweb_node/mmi
 	id = "mmi"
