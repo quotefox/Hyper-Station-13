@@ -17,6 +17,7 @@
 	var/spillable = FALSE
 	var/beaker_weakness_bitflag = NONE//Bitflag!
 	var/container_HP = 2
+	var/splashable = FALSE
 
 /obj/item/reagent_containers/Initialize(mapload, vol)
 	. = ..()
@@ -92,7 +93,7 @@
 	transform = initial(transform)
 
 /obj/item/reagent_containers/proc/SplashReagents(atom/target, thrown = FALSE)
-	if(!reagents || !reagents.total_volume || !spillable)
+	if(!reagents || !reagents.total_volume || !(splashable ? splashable : spillable))
 		return
 
 	if(ismob(target) && target.reagents)

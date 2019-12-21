@@ -795,3 +795,24 @@
 	id = "red_queen"
 	results = list("red_queen" = 10)
 	required_reagents = list("tea" = 6, "mercury" = 2, "blackpepper" = 1, "growthserum" = 1)
+
+/datum/chemical_reaction/gunfire
+	name = "Gunfire"
+	id = "gunfire"
+	results = list("gunfire" = 4)
+	required_reagents = list("rum" = 1, "tea" = 3)
+	mix_message = "A loud popping begins to fill the air as the drink is mixed."
+
+/datum/chemical_reaction/hellfire
+	name = "Hellfire"
+	id = "hellfire"
+	results = list("hellfire" = 5)
+	required_reagents = list("rum" = 1, "beer" = 1, "ice" = 1, "capsaicin" = 1, "limejuice" = 1)
+	mix_message = "The liquid begins to churn as it changes to an amber orange and catches on fire."
+
+/datum/chemical_reaction/sins_delight
+	name = "Sins Delight"
+	id = "sins_delight"
+	results = list("sins_delight" = 5)
+	required_reagents = list("demonsblood" = 2, "triple_sec" = 1, "martini" = 1, "changelingsting" = 1)
+	mix_message = "The liquid starts swirling, before forming a pink cloud that dissipates in the air."

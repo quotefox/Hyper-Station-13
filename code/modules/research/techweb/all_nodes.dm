@@ -11,7 +11,8 @@
 	design_ids = list("basic_matter_bin", "basic_cell", "basic_scanning", "basic_capacitor", "basic_micro_laser", "micro_mani",
 	"destructive_analyzer", "circuit_imprinter", "experimentor", "rdconsole", "design_disk", "tech_disk", "rdserver", "rdservercontrol", "mechfab",
 	"space_heater", "xlarge_beaker", "sec_rshot", "sec_bshot", "sec_slug", "sec_Islug", "sec_dart", "sec_38", "sec_38lethal",
-	"rglass","plasteel","plastitanium","plasmaglass","plasmareinforcedglass","titaniumglass","plastitaniumglass","chem_pack","medkit_cabinet")
+	"rglass","plasteel","plastitanium","plasmaglass","plasmareinforcedglass","titaniumglass","plastitaniumglass","chem_pack","medkit_cabinet",
+	"disposable_hypospray","plastic_knife","plastic_fork","plastic_spoon")
 
 /datum/techweb_node/mmi
 	id = "mmi"
@@ -34,7 +35,7 @@
 	display_name = "Mechanical Exosuits"
 	description = "Mechanized exosuits that are several magnitudes stronger and more powerful than the average human."
 	design_ids = list("mecha_tracking", "mechacontrol", "mechapower", "mech_recharger", "ripley_chassis", "firefighter_chassis", "ripley_torso", "ripley_left_arm", "ripley_right_arm", "ripley_left_leg", "ripley_right_leg",
-	"ripley_main", "ripley_peri", "mech_hydraulic_clamp")
+	"ripley_main", "ripley_peri", "ripleyupgrade", "mech_hydraulic_clamp")
 
 /datum/techweb_node/mech_tools
 	id = "mech_tools"
@@ -1052,7 +1053,7 @@
 	display_name = "Illegal Technology"
 	description = "Dangerous research used to create dangerous objects."
 	prereq_ids = list("adv_engi", "adv_weaponry", "explosive_weapons")
-	design_ids = list("decloner", "borg_syndicate_module", "suppressor", "largecrossbow", "donksofttoyvendor")
+	design_ids = list("decloner", "borg_syndicate_module", "suppressor", "largecrossbow", "donksofttoyvendor", "advanced_camera")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	export_price = 5000
 	hidden = TRUE

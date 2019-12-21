@@ -54,6 +54,21 @@
 	else
 		return ..()
 
+/obj/item/kitchen/fork/plastic
+	name = "plastic fork"
+	desc = "Really takes you back to highschool lunch."
+	icon_state = "plastic_fork"
+	force = 0
+	w_class = WEIGHT_CLASS_TINY
+	throwforce = 0
+	grind_results = list(/datum/material/plastic=80)
+	var/break_chance = 25
+
+/obj/item/kitchen/fork/plastic/afterattack(mob/living/carbon/user)
+	.=..()
+	if(prob(break_chance))
+		user.visible_message("<span class='danger'>[user]'s fork snaps into tiny pieces in their hand.</span>")
+		qdel(src)
 
 /obj/item/kitchen/knife
 	name = "kitchen knife"
@@ -88,6 +103,26 @@
 						"<span class='suicide'>[user] is slitting [user.p_their()] throat with the [src.name]! It looks like [user.p_theyre()] trying to commit suicide.</span>", \
 						"<span class='suicide'>[user] is slitting [user.p_their()] stomach open with the [src.name]! It looks like [user.p_theyre()] trying to commit seppuku.</span>"))
 	return (BRUTELOSS)
+
+/obj/item/kitchen/knife/plastic
+	name = "plastic knife"
+	icon_state = "plastic_knife"
+	item_state = "knife"
+	desc = "A very safe, barely sharp knife made of plastic. Good for cutting food and not much else."
+	force = 0
+	w_class = WEIGHT_CLASS_TINY
+	throwforce = 0
+	throw_range = 5
+	grind_results = list(/datum/material/plastic = 100)
+	attack_verb = list("prodded", "whiffed","scratched", "poked")
+	sharpness = IS_SHARP
+	var/break_chance = 25
+
+/obj/item/kitchen/knife/plastic/afterattack(mob/living/carbon/user)
+	.=..()
+	if(prob(break_chance))
+		user.visible_message("<span class='danger'>[user]'s knife snaps into tiny pieces in their hand.</span>")
+		qdel(src)
 
 /obj/item/kitchen/knife/ritual
 	name = "ritual knife"
@@ -174,6 +209,22 @@
 	user.visible_message("<span class='suicide'>[user] begins flattening [user.p_their()] head with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return BRUTELOSS
 /* Trays  moved to /obj/item/storage/bag */
+
+/obj/item/kitchen/spoon/plastic
+	name = "plastic spoon"
+	desc = "Just be careful your food doesn't melt the spoon first."
+	icon_state = "plastic_spoon"
+	force = 0
+	w_class = WEIGHT_CLASS_TINY
+	throwforce = 0
+	grind_results = list(/datum/material/plastic=120)
+	var/break_chance = 25
+
+/obj/item/kitchen/knife/plastic/afterattack(mob/living/carbon/user)
+	.=..()
+	if(prob(break_chance))
+		user.visible_message("<span class='danger'>[user]'s spoon snaps into tiny pieces in their hand.</span>")
+		qdel(src)
 
 /obj/item/kitchen/knife/scimitar
 	name = "Scimitar knife"

@@ -39,6 +39,8 @@
 
 /datum/config_entry/flag/log_game	// log game events
 
+/datum/config_entry/flag/log_cloning // log cloning actions.
+
 /datum/config_entry/flag/log_vote	// log voting
 
 /datum/config_entry/flag/log_whisper	// log client whisper
@@ -74,6 +76,16 @@
 
 /datum/config_entry/number/vote_period  // length of voting period (deciseconds, default 1 minute)
 	config_entry_value = 600
+	min_val = 0
+
+/datum/config_entry/number/vote_autotransfer_initial //length of time before the first autotransfer vote is called (deciseconds, default 2 hours)
+	config_entry_value = 72000
+	integer = FALSE
+	min_val = 0
+
+/datum/config_entry/number/vote_autotransfer_interval //length of time to wait before subsequent autotransfer votes (deciseconds, default 30 minutes)
+	config_entry_value = 18000
+	integer = FALSE
 	min_val = 0
 
 /datum/config_entry/flag/default_no_vote	// vote does not default to nochange/norestart
@@ -419,3 +431,4 @@
 /datum/config_entry/flag/log_pictures
 
 /datum/config_entry/flag/picture_logging_camera
+

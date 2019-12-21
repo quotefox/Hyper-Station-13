@@ -205,8 +205,6 @@ SUBSYSTEM_DEF(ticker)
 			mode.process(wait * 0.1)
 			check_queue()
 			check_maprotate()
-			scripture_states = scripture_unlock_alert(scripture_states)
-			SSshuttle.autoEnd()
 
 			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
 				current_state = GAME_STATE_FINISHED
