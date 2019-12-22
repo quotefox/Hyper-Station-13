@@ -332,4 +332,19 @@
 /obj/item/clothing/shoes/wraps/blue
 	name = "blue leg wraps"
 	desc = "Ankle coverings. Hang ten, brother."
-	icon_state = "bluecuffs" 
+	icon_state = "bluecuffs"
+
+/obj/item/clothing/shoes/winterboots/christmasbootsr
+	name = "red christmas boots"
+	desc = "A pair of fluffy red christmas boots!"
+	icon_state = "christmasbootsr"
+
+/obj/item/clothing/shoes/winterboots/christmasbootsg
+	name = "green christmas boots"
+	desc = "A pair of fluffy green christmas boots!"
+	icon_state = "christmasbootsg"
+
+/obj/item/clothing/shoes/winterboots/santaboots
+	name = "santa boots"
+	desc = "A pair of santa boots! How traditional!!"
+	icon_state = "santaboots"
