@@ -47,6 +47,9 @@
 	new/obj/structure/fluff/empty_cryostasis_sleeper(get_turf(src))
 	return ..()
 
+/obj/effect/mob_spawn/human/duohermit/special(mob/living/carbon/human/new_spawn)
+	ADD_TRAIT(new_spawn,TRAIT_EXEMPT_HEALTH_EVENTS,GHOSTROLE_TRAIT)
+
 //Exiles: Stranded exiles that have been left in Snowdin. Can be easily adapted for other roles as well.
 /obj/effect/mob_spawn/human/exiled
 	name = "used bed"
@@ -105,3 +108,6 @@
 /obj/effect/mob_spawn/human/exiled/Destroy()
 	new/obj/structure/bed(get_turf(src))
 	return ..()
+
+/obj/effect/mob_spawn/human/exiled/special(mob/living/carbon/human/new_spawn)
+	ADD_TRAIT(new_spawn,TRAIT_EXEMPT_HEALTH_EVENTS,GHOSTROLE_TRAIT)
