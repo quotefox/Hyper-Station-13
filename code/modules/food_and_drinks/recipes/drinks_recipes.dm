@@ -300,12 +300,6 @@
 	results = list("barefoot" = 3)
 	required_reagents = list("berryjuice" = 1, "cream" = 1, "vermouth" = 1)
 
-/datum/chemical_reaction/commander_and_chief
-	name = "Commander and Chief"
-	id = "commander_and_chief"
-	results = list("commander_and_chief" = 50)
-	required_reagents = list("alliescocktail" = 50, "champagne" = 20, "doctorsdelight" = 10, "quadruple_sec" = 10, "screwdrivercocktail" = 10)
-	mix_message = " Bartending - Legendary."
 
 ////DRINKS THAT REQUIRED IMPROVED SPRITES BELOW:: -Agouri/////
 
