@@ -214,7 +214,7 @@ SUBSYSTEM_DEF(vote)
 
 		SEND_SOUND(world, sound('sound/misc/notice2.ogg'))
 		reset()
-		obfuscated = hideresults //CIT CHANGE - adds obfuscated votes
+		obfuscated = FALSE //CIT CHANGE - adds obfuscated votes
 		switch(vote_type)
 			if("restart")
 				choices.Add("Restart Round","Continue Playing")
