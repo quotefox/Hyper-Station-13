@@ -30,7 +30,7 @@ var opts = {
 	'scrollSnapTolerance': 10, //If within x pixels of bottom
 	'clickTolerance': 10, //Keep focus if outside x pixels of mousedown position on mouseup
 	'imageRetryDelay': 50, //how long between attempts to reload images (in ms)
-	'imageRetryLimit': 50, //how many attempts should we make? 
+	'imageRetryLimit': 50, //how many attempts should we make?
 	'popups': 0, //Amount of popups opened ever
 	'wasd': false, //Is the user in wasd mode?
 	'priorChatHeight': 0, //Thing for height-resizing detection
@@ -159,7 +159,7 @@ function byondDecode(message) {
 	// The replace for + is because FOR SOME REASON, BYOND replaces spaces with a + instead of %20, and a plus with %2b.
 	// Marvelous.
 	message = message.replace(/\+/g, "%20");
-	try { 
+	try {
 		// This is a workaround for the above not always working when BYOND's shitty url encoding breaks. (byond bug id:2399401)
 		if (decodeURIComponent) {
 			message = decodeURIComponent(message);
@@ -420,8 +420,8 @@ function handleClientData(ckey, ip, compid) {
 				return; //Record already exists
 			}
 		}
-
-		if (opts.clientData.length >= opts.clientDataLimit) {
+		//Lets make sure we obey our limit (can connect from server with higher limit)
+		while (opts.clientData.length >= opts.clientDataLimit) {
 			opts.clientData.shift();
 		}
 	} else {
