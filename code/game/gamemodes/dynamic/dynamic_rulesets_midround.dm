@@ -17,6 +17,7 @@
 	var/list/living_antags = list()
 	var/list/dead_players = list()
 	var/list/list_observers = list()
+	var/list/ghost_eligible = list()
 
 /datum/dynamic_ruleset/midround/from_ghosts
 	weight = 0
@@ -32,10 +33,11 @@
 	// So for example you can get the list of all current dead players with var/list/dead_players = candidates[CURRENT_DEAD_PLAYERS]
 	// Make sure to properly typecheck the mobs in those lists, as the dead_players list could contain ghosts, or dead players still in their bodies.
 	// We're still gonna trim the obvious (mobs without clients, jobbanned players, etc)
-    living_players = trim_list(mode.current_players[CURRENT_LIVING_PLAYERS])
-    living_antags = trim_list(mode.current_players[CURRENT_LIVING_ANTAGS])
-    dead_players = trim_list(mode.current_players[CURRENT_DEAD_PLAYERS])
-    list_observers = trim_list(mode.current_players[CURRENT_OBSERVERS])
+	living_players = trim_list(mode.current_players[CURRENT_LIVING_PLAYERS])
+	living_antags = trim_list(mode.current_players[CURRENT_LIVING_ANTAGS])
+	list_observers = trim_list(mode.current_players[CURRENT_OBSERVERS])
+	var/datum/element/ghost_role_eligibility/eligibility = SSdcs.GetElement(/datum/element/ghost_role_eligibility)
+	ghost_eligible = trim_list(eligibility.get_all_ghost_role_eligible())
 
 /datum/dynamic_ruleset/midround/proc/trim_list(list/L = list())
 	var/list/trimmed_list = L.Copy()
@@ -65,6 +67,25 @@
 				continue
 	return trimmed_list
 
+/datum/dynamic_ruleset/midround/from_ghosts/trim_list(list/L = list())
+	var/list/trimmed_list = L.Copy()
+	for(var/mob/M in trimmed_list)
+		if (!M.client) // Are they connected?
+			trimmed_list.Remove(M)
+			continue
+		if(!mode.check_age(M.client, minimum_required_age))
+			trimmed_list.Remove(M)
+			continue
+		if(antag_flag_override)
+			if(!(antag_flag_override in M.client.prefs.be_special) || jobban_isbanned(M.ckey, antag_flag_override))
+				trimmed_list.Remove(M)
+				continue
+		else
+			if(!(antag_flag in M.client.prefs.be_special) || jobban_isbanned(M.ckey, antag_flag))
+				trimmed_list.Remove(M)
+				continue
+	return trimmed_list
+
 // You can then for example prompt dead players in execute() to join as strike teams or whatever
 // Or autotator someone
 
@@ -85,15 +106,16 @@
 			return FALSE
 	return TRUE
 
-/datum/dynamic_ruleset/midround/from_ghosts/execute()
-	var/list/possible_candidates = list()
-	possible_candidates.Add(dead_players)
-	possible_candidates.Add(list_observers)
-	send_applications(possible_candidates)
-	if(assigned.len > 0)
-		return TRUE
-	else
+/datum/dynamic_ruleset/midround/from_ghosts/ready(forced = FALSE)
+	if (required_candidates > ghost_eligible.len)
+		SSblackbox.record_feedback("tally","dynamic",1,"Times rulesets rejected due to not enough ghosts")
 		return FALSE
+	return ..()
+
+
+/datum/dynamic_ruleset/midround/from_ghosts/execute()
+	var/application_successful = send_applications(ghost_eligible)
+	return assigned.len > 0 && application_successful
 
 /// This sends a poll to ghosts if they want to be a ghost spawn from a ruleset.
 /datum/dynamic_ruleset/midround/from_ghosts/proc/send_applications(list/possible_volunteers = list())
