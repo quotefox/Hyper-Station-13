@@ -16,7 +16,7 @@
 /datum/bounty/lewd/applies_to(obj/O)
 	if(!istype(O, /obj/item/reagent_containers))
 		return FALSE
-	if(!O.reagents || !O.reagents.has_reagent(wanted_reagent.id))
+	if(!O.reagents || !O.reagents.has_reagent(wanted_reagent.type))
 		return FALSE
 	if(O.flags_1 & HOLOGRAM_1)
 		return FALSE
@@ -25,7 +25,7 @@
 /datum/bounty/lewd/ship(obj/O)
     if(!applies_to(O))
         return
-    shipped_volume += O.reagents.get_reagent_amount(wanted_reagent.id)
+    shipped_volume += O.reagents.get_reagent_amount(wanted_reagent.type)
     if(shipped_volume > required_volume)
         shipped_volume = required_volume
 

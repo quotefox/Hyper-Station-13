@@ -475,19 +475,18 @@ GENE SCANNER
 			msg += "*---------*</span>"
 			to_chat(user, msg)
 
-			if(M.reagents.has_reagent("fermiTox"))
-				var/datum/reagent/fermiTox = M.reagents.has_reagent("fermiTox")
-				switch(fermiTox.volume)
-					if(5 to 10)
-						msg += "<span class='notice'>Subject contains a low amount of toxic isomers.</span>\n"
-					if(10 to 25)
-						msg += "<span class='danger'>Subject contains toxic isomers.</span>\n"
-					if(25 to 50)
-						msg += "<span class='danger'>Subject contains a substantial amount of toxic isomers.</span>\n"
-					if(50 to 95)
-						msg += "<span class='danger'>Subject contains a high amount of toxic isomers.</span>\n"
-					if(95 to INFINITY)
-						msg += "<span class='danger'>Subject contains a extremely dangerous amount of toxic isomers.</span>\n"
+			var/datum/reagent/impure/fermiTox/F = M.reagents.has_reagent(/datum/reagent/impure/fermiTox)
+			switch(F?.volume)
+				if(5 to 10)
+					msg += "<span class='notice'>Subject contains a low amount of toxic isomers.</span>\n"
+				if(10 to 25)
+					msg += "<span class='danger'>Subject contains toxic isomers.</span>\n"
+				if(25 to 50)
+					msg += "<span class='danger'>Subject contains a substantial amount of toxic isomers.</span>\n"
+				if(50 to 95)
+					msg += "<span class='danger'>Subject contains a high amount of toxic isomers.</span>\n"
+				if(95 to INFINITY)
+					msg += "<span class='danger'>Subject contains a extremely dangerous amount of toxic isomers.</span>\n"
 
 /obj/item/healthanalyzer/verb/toggle_mode()
 	set name = "Switch Verbosity"
@@ -526,7 +525,7 @@ GENE SCANNER
 	throw_range = 7
 	tool_behaviour = TOOL_ANALYZER
 	materials = list(MAT_METAL=30, MAT_GLASS=20)
-	grind_results = list("mercury" = 5, "iron" = 5, "silicon" = 5)
+	grind_results = list(/datum/reagent/mercury = 5, /datum/reagent/iron = 5, /datum/reagent/silicon = 5)
 	var/cooldown = FALSE
 	var/cooldown_time = 250
 	var/accuracy // 0 is the best accuracy.

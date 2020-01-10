@@ -12,6 +12,7 @@
 	yield = 2
 	potency = 10
 	growthstages = 3
+	grind_results = list(/datum/reagent/mustardgrind = 1)
 	growing_icon = 'icons/obj/hydroponics/growing_flowers.dmi'
 	genes = list(/datum/plant_gene/trait/plant_type/weed_hardy)
 	mutatelist = list()//add /obj/item/seeds/starthistle/corpse_flower when corpse flowers work.
@@ -81,7 +82,7 @@
 	growing_icon = 'icons/obj/hydroponics/growing_flowers.dmi'
 	genes = list(/datum/plant_gene/trait/plant_type/weed_hardy, /datum/plant_gene/trait/invasive)
 	mutatelist = list()
-	reagents_add = list("nutriment" = 0.05, "silibinin" = 0.1)
+	reagents_add = list(/datum/reagent/consumable/nutriment = 0.05, /datum/reagent/medicine/silibinin = 0.1)
 
 /obj/item/seeds/galaxythistle/Initialize(mapload, nogenes = FALSE)
 	. = ..()
@@ -116,7 +117,7 @@
 	growing_icon = 'icons/obj/hydroponics/growing_vegetables.dmi'
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	mutatelist = list(/obj/item/seeds/replicapod)
-	reagents_add = list("vitamin" = 0.04, "nutriment" = 0.1)
+	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/cabbage
 	seed = /obj/item/seeds/cabbage
@@ -141,8 +142,8 @@
 	endurance = 50
 	maturation = 3
 	yield = 4
-	growthstages = 3
-	reagents_add = list("sugar" = 0.25)
+	growthstages = 2
+	reagents_add = list(/datum/reagent/consumable/sugar = 0.25)
 	mutatelist = list(/obj/item/seeds/bamboo)
 
 /obj/item/reagent_containers/food/snacks/grown/sugarcane
@@ -153,7 +154,7 @@
 	filling_color = "#FFD700"
 	bitesize_mod = 2
 	foodtype = VEGETABLES | SUGAR
-	distill_reagent = "rum"
+	distill_reagent = /datum/reagent/consumable/ethanol/rum
 
 // Gatfruit
 /obj/item/seeds/gatfruit
@@ -173,7 +174,7 @@
 	growthstages = 2
 	rarity = 60 // Obtainable only with xenobio+superluck.
 	growing_icon = 'icons/obj/hydroponics/growing_fruits.dmi'
-	reagents_add = list("sulfur" = 0.1, "carbon" = 0.1, "nitrogen" = 0.07, "potassium" = 0.05)
+	reagents_add = list(/datum/reagent/sulfur = 0.1, /datum/reagent/carbon = 0.1, /datum/reagent/nitrogen = 0.07, /datum/reagent/potassium = 0.05)
 
 /obj/item/reagent_containers/food/snacks/grown/shell/gatfruit
 	seed = /obj/item/seeds/gatfruit
@@ -195,7 +196,7 @@
 	plantname = "Cherry Bomb Tree"
 	product = /obj/item/reagent_containers/food/snacks/grown/cherry_bomb
 	mutatelist = list()
-	reagents_add = list("nutriment" = 0.1, "sugar" = 0.1, "blackpowder" = 0.7)
+	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1, /datum/reagent/consumable/sugar = 0.1, /datum/reagent/blackpowder = 0.7)
 	rarity = 60 //See above
 
 /obj/item/reagent_containers/food/snacks/grown/cherry_bomb
@@ -257,7 +258,7 @@
 	icon_dead = "coconut-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	forbiddengenes = list(/datum/plant_gene/trait/squash, /datum/plant_gene/trait/stinging)
-	reagents_add = list("coconutmilk" = 0.3)
+	reagents_add = list(/datum/reagent/consumable/coconutmilk = 0.3)
 
 /obj/item/reagent_containers/food/snacks/grown/coconut
 	seed = /obj/item/seeds/coconut
@@ -427,21 +428,30 @@
 		to_chat(user, "<span class='warning'>[src] is empty!</span>")
 		return
 
-	if(istype(M))
-		if(user.a_intent == INTENT_HARM && spillable == TRUE)
-			var/R
-			M.visible_message("<span class='danger'>[user] splashes the contents of [src] onto [M]!</span>", \
-							"<span class='userdanger'>[user] splashes the contents of [src] onto [M]!</span>")
-			if(reagents)
-				for(var/datum/reagent/A in reagents.reagent_list)
-					R += A.id + " ("
-					R += num2text(A.volume) + "),"
-			if(isturf(target) && reagents.reagent_list.len && thrownby)
-				log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
-				message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
-			reagents.reaction(M, TOUCH)
-			log_combat(user, M, "splashed", R)
-			reagents.clear_reagents()
+	if(user.a_intent == INTENT_HARM && spillable)
+		var/R
+		M.visible_message("<span class='danger'>[user] splashes the contents of [src] onto [M]!</span>", \
+						"<span class='userdanger'>[user] splashes the contents of [src] onto [M]!</span>")
+		if(reagents)
+			for(var/datum/reagent/A in reagents.reagent_list)
+				R += A.type + " ("
+				R += num2text(A.volume) + "),"
+		if(isturf(target) && reagents.reagent_list.len && thrownby)
+			log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
+			message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
+		reagents.reaction(M, TOUCH)
+		log_combat(user, M, "splashed", R)
+		reagents.clear_reagents()
+	else
+		if(M != user)
+			M.visible_message("<span class='danger'>[user] attempts to feed something to [M].</span>", \
+						"<span class='userdanger'>[user] attempts to feed something to you.</span>")
+			if(!do_mob(user, M))
+				return
+			if(!reagents || !reagents.total_volume)
+				return // The drink might be empty after the delay, such as by spam-feeding
+			M.visible_message("<span class='danger'>[user] feeds something to [M].</span>", "<span class='userdanger'>[user] feeds something to you.</span>")
+			log_combat(user, M, "fed", reagents.log_list())
 		else
 			if(M != user)
 				M.visible_message("<span class='danger'>[user] attempts to feed something to [M].</span>", \
