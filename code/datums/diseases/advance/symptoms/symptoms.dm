@@ -66,6 +66,9 @@
 	new_symp.id = id
 	new_symp.neutered = neutered
 	return new_symp
+	
+/datum/symptom/proc/OnDeath(datum/disease/advance/A)
+	return !neutered
 
 /datum/symptom/proc/generate_threshold_desc()
 	return
