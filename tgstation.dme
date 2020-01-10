@@ -2175,7 +2175,7 @@
 #include "code\modules\mob\living\simple_animal\guardian\types\standard.dm"
 #include "code\modules\mob\living\simple_animal\guardian\types\support.dm"
 #include "code\modules\mob\living\simple_animal\hostile\alien.dm"
-#include "code\modules\mob\living\simple_animal\hostile\heart.dm
+#include "code\modules\mob\living\simple_animal\hostile\heart.dm"
 #include "code\modules\mob\living\simple_animal\hostile\bear.dm"
 #include "code\modules\mob\living\simple_animal\hostile\bees.dm"
 #include "code\modules\mob\living\simple_animal\hostile\carp.dm"
