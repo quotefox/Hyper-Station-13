@@ -48,6 +48,10 @@
 /mob/living/proc/spawn_dust(just_ash = FALSE)
 	new /obj/effect/decal/cleanable/ash(loc)
 
+for(var/datum/disease/advance/D in diseases)
+		for(var/symptom in D.symptoms)
+			var/datum/symptom/S = symptom
+			S.OnDeath(D)
 
 /mob/living/death(gibbed)
 	stat = DEAD
