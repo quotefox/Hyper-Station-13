@@ -15,6 +15,10 @@
 		/obj/item/stock_parts/manipulator = 1,
 		/obj/item/stock_parts/capacitor = 1)
 
+/obj/item/circuitboard/machine/sleeper/syndie
+	name = "Syndicate Sleeper (Machine Board)"
+	build_path = /obj/machinery/sleeper/syndie
+
 /obj/item/circuitboard/machine/vr_sleeper
 	name = "VR Sleeper (Machine Board)"
 	build_path = /obj/machinery/vr_sleeper
