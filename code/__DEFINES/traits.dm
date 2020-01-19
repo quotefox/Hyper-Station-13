@@ -171,7 +171,8 @@
 #define TRAIT_AUTO_CATCH_ITEM	"auto_catch_item"
 #define TRAIT_CLOWN_MENTALITY	"clown_mentality" // The future is now, clownman.
 #define TRAIT_FREESPRINT		"free_sprinting"
-
+#define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
+#define TRAIT_NO_ALCOHOL		"alcohol_intolerance"
 
 // common trait sources
 #define TRAIT_GENERIC "generic"
@@ -221,3 +222,11 @@
 #define LOCKED_HELMET_TRAIT "locked-helmet"
 #define NINJA_SUIT_TRAIT "ninja-suit"
 #define ANTI_DROP_IMPLANT_TRAIT "anti-drop-implant"
+#define SLEEPING_CARP_TRAIT "sleeping_carp"
+#define RISING_BASS_TRAIT "rising_bass"
+#define ABDUCTOR_ANTAGONIST "abductor-antagonist"
+#define NUKEOP_ANTAGONIST "nukeop-antagonist"
+#define MADE_UNCLONEABLE "made-uncloneable"
+#define NUKEOP_TRAIT "nuke-op"
+#define MEGAFAUNA_TRAIT "megafauna"
+#define DEATHSQUAD_TRAIT "deathsquad"
