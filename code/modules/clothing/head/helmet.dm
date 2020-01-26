@@ -218,7 +218,14 @@
 	strip_delay = 80
 	dog_fashion = null
 	mutantrace_variation = MUTANTRACE_VARIATION
-
+	
+ /obj/item/clothing/head/helmet/sagaru/plasteel
+	name = "northern plasteel helmet"
+	desc = "A helmet similar to that of a Samurai warrior, with ear fittings. Made from plasteel, with a cushioned durathread interior for maximum comfort - Comes with a static titanium glass visor, tactical."
+	icon_state = "sagaru_h"
+	flags_cover = HEADCOVERSEYES
+	item_state = "sagaru_h"
+	armor = list("melee" = 70, "bullet" = 15, "laser" = 15,"energy" = 15, "bomb" = 40, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 50)
 
 /obj/item/clothing/head/helmet/knight/Initialize(mapload)
 	. = ..()
