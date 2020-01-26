@@ -258,6 +258,6 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	blood_overlay_type = "armor"
-	armor = list("melee" = 70, "bullet" = 15, "laser" = 15, "energy" = 15, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
+	armor = list("melee" = 55, "bullet" = 25, "laser" = 25, "energy" = 25, "bomb" = 40, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 0)
 	clothing_flags = THICKMATERIAL
 	var/hit_reflect_chance = 15
