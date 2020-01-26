@@ -225,7 +225,7 @@
 	icon_state = "sagaru_h"
 	flags_cover = HEADCOVERSEYES
 	item_state = "sagaru_h"
-	armor = list("melee" = 70, "bullet" = 15, "laser" = 15,"energy" = 15, "bomb" = 40, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 50)
+	armor = list("melee" = 55, "bullet" = 25, "laser" = 25,"energy" = 25, "bomb" = 40, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 50)
 
 /obj/item/clothing/head/helmet/knight/Initialize(mapload)
 	. = ..()
