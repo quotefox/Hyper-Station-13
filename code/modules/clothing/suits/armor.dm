@@ -38,13 +38,13 @@
 
 /obj/item/clothing/suit/armor/vest/blueshirt
 	name = "large armor vest"
-	desc = "A large, yet comfortable piece of armor, protecting you from some threats."
+	desc = "A large, yet comfortable piece of armor, protecting you from some threats. About that beer I owed ya'..."
 	icon_state = "blueshift"
 	item_state = "blueshift"
 
 /obj/item/clothing/suit/armor/hos
 	name = "armored greatcoat"
-	desc = "A greatcoat enhanced with a special alloy for some extra protection and style for those with a commanding presence."
+	desc = "A greatcoat enhanced with a special alloy for some extra protection and style for those with a commanding presence. Where are your papers?"
 	icon_state = "hos"
 	item_state = "greatcoat"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
@@ -81,7 +81,7 @@
 
 /obj/item/clothing/suit/armor/vest/leather
 	name = "security overcoat"
-	desc = "Lightly armored leather overcoat meant as casual wear for high-ranking officers. Bears the crest of Nanotrasen Security."
+	desc = "Lightly armored leather overcoat meant as casual wear for high-ranking officers. Bears the crest of Nanotrasen Security. Why are you locked in the bathroom?"
 	icon_state = "leathercoat-sec"
 	item_state = "hostrench"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
@@ -133,18 +133,18 @@
 	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS
 
 /obj/item/clothing/suit/armor/bulletproof
-	name = "bulletproof armor"
-	desc = "A Type III heavy bulletproof vest that excels in protecting the wearer against traditional projectile weaponry and explosives to a minor extent."
+	name = "plate carrier"
+	desc = "A modern plate carrier vest that excels in protecting the wearer against traditional projectile weaponry with the use of titanium and ceramics, providing protection against shrapnel too."
 	icon_state = "bulletproof"
 	item_state = "armor"
 	blood_overlay_type = "armor"
-	armor = list("melee" = 15, "bullet" = 60, "laser" = 10, "energy" = 10, "bomb" = 40, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+	armor = list("melee" = 15, "bullet" = 70, "laser" = 5, "energy" = 5, "bomb" = 40, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
 	strip_delay = 70
 	equip_delay_other = 50
 
 /obj/item/clothing/suit/armor/laserproof
-	name = "reflector vest"
-	desc = "A vest that excels in protecting the wearer against energy projectiles, as well as occasionally reflecting them."
+	name = "ablative armor vest"
+	desc = "A vest that excels in protecting the wearer against energy blasts via absorption and redistribution, as well as occasionally reflecting them."
 	icon_state = "armor_reflec"
 	item_state = "armor_reflec"
 	blood_overlay_type = "armor"
@@ -249,3 +249,15 @@
 	max_integrity = 200
 	resistance_flags = FLAMMABLE
 	armor = list("melee" = 20, "bullet" = 10, "laser" = 30, "energy" = 5, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 50)
+	
+ /obj/item/clothing/suit/armor/sagaru/plasteel
+	name = "northern plasteel armor"
+	desc = "Almost tribal or medieval in design, it's a set of several plasteel armor plates with a durathread interior for maximum comfort, held together by kevlar strings. Thanks to the armor's dented plates, it has a very small chance to reflect projectiles."
+	icon_state = "sagaru_plas"
+	item_state = "sagaru_plas"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	heat_protection = CHEST|GROIN|LEGS|ARMS
+	blood_overlay_type = "armor"
+	armor = list("melee" = 70, "bullet" = 15, "laser" = 15, "energy" = 15, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 0)
+	clothing_flags = THICKMATERIAL
+	var/hit_reflect_chance = 15
