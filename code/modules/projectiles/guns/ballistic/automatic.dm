@@ -211,15 +211,17 @@
 //WARFRAME WEAPONS INSERT
 /obj/item/gun/ballistic/automatic/braton
 	name = "\improper Braton"
-	desc = "An unusual weapon in design; sporting a high firing rate and capacity. There is a lotus decal on the underside of the barrel."
+	desc = "An unusual weapon in design; sporting a high firing rate and capacity, but low damage. There is a lotus decal on the underside of the barrel."
 	icon_state = "braton"
 	item_state = "braton"
+	w_class = WEIGHT_CLASS_HUGE
 	slot_flags = 0
-	mag_type = /obj/item/ammo_box/magazine/m556
+	mag_type = /obj/item/ammo_box/magazine/bratonmag
 	fire_sound = 'sound/weapons/gunshot_braton.ogg'
 	can_suppress = FALSE
 	burst_size = 5
-	fire_delay = 0
+	fire_delay = 1
+//ENDS HERE
 
 /obj/item/gun/ballistic/automatic/tommygun
 	name = "\improper Thompson SMG"
