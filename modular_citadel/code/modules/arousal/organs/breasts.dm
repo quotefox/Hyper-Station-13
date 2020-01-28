@@ -14,6 +14,7 @@
 	var/statuscheck			= FALSE
 	fluid_id				= "milk"
 	var/amount				= 2
+	fluid_mult				= 0.25 // Set to a lower value due to production scaling with size (I.E. D cups produce the "normal" amount)
 	producing				= TRUE
 	shape					= "Pair"
 	can_masturbate_with		= TRUE
@@ -27,16 +28,12 @@
 		return
 	if(!reagents || !owner)
 		return
-	reagents.maximum_volume = fluid_max_volume
+	reagents.maximum_volume = fluid_max_volume * cached_size * fluid_mult // fluid amount is also scaled by the size of the organ
 	if(fluid_id && producing)
 		if(reagents.total_volume == 0) // Apparently, 0.015 gets rounded down to zero and no reagents are created if we don't start it with 0.1 in the tank.
 			fluid_rate = 0.1
 		else
-			fluid_rate = CUM_RATE
-		if(reagents.total_volume >= 5)
-			fluid_mult = 0.5
-		else
-			fluid_mult = 1
+			fluid_rate = CUM_RATE * cached_size * fluid_mult // fluid rate is scaled by the size of the organ
 		generate_milk()
 
 /obj/item/organ/genital/breasts/proc/generate_milk()
@@ -49,7 +46,12 @@
 		return FALSE
 	sent_full_message = FALSE
 	reagents.isolate_reagent(fluid_id)
-	reagents.add_reagent(fluid_id, (fluid_mult * fluid_rate))
+	reagents.add_reagent(fluid_id, (fluid_rate))
+
+/obj/item/organ/genital/breasts/proc/send_full_message(msg = "Your breasts finally feel full, again.")
+	if(owner && istext(msg))
+		to_chat(owner, msg)
+		return TRUE
 
 /obj/item/organ/genital/breasts/proc/send_full_message(msg = "Your breasts finally feel full, again.")
 	if(owner && istext(msg))
@@ -76,7 +78,7 @@
 			desc += " You estimate that they're [uppertext(size)]-cups."
 			//string = "breasts_[lowertext(shape)]_[size]-s"
 
-	if(producing && aroused_state)
+	if(producing && sent_full_message)
 		desc += " They're leaking [fluid_id]."
 	var/string
 	if(owner)
@@ -103,7 +105,6 @@
 //this is far too lewd wah
 
 /obj/item/organ/genital/breasts/update_size()//wah
-
 	if(!ishuman(owner) || !owner)
 		return
 	if(cached_size < 0)//I don't actually know what round() does to negative numbers, so to be safe!!fixed
