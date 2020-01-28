@@ -26,6 +26,7 @@
 	name = "\improper Lato"
 	desc = "A strange sidearm, sporting low damage but a high firing rate and capacity. There is a lotus decal on the barrel."
 	icon_state = "lato"
+	item_state = "lato"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/latomag
 	can_suppress = FALSE
