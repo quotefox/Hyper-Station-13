@@ -34,8 +34,3 @@
 	name = "10mm incendiary bullet"
 	damage = 15
 	fire_stacks = 2
-
-// lato
-/obj/item/projectile/bullet/latob
-	name = "Lato-class bullet"
-	damage = 13

@@ -14,8 +14,3 @@
 	name = "enchanted 7.62 bullet"
 	damage = 5
 	stamina = 80
-
-// bratonmag (Braton)
-/obj/item/projectile/bullet/bratonb
-	name = "braton bullet"
-	damage = 10
