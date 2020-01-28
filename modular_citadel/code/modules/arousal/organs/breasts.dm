@@ -53,11 +53,6 @@
 		to_chat(owner, msg)
 		return TRUE
 
-/obj/item/organ/genital/breasts/proc/send_full_message(msg = "Your breasts finally feel full, again.")
-	if(owner && istext(msg))
-		to_chat(owner, msg)
-		return TRUE
-
 /obj/item/organ/genital/breasts/update_appearance()
 	var/lowershape = lowertext(shape)
 	switch(lowershape)
