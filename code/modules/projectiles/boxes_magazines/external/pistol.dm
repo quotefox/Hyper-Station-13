@@ -1,3 +1,11 @@
+//Lato Ammo
+/obj/item/ammo_box/magazine/latomag
+	name = "pistol magazine (lato)"
+	desc = "A magazine fitted for lato-class weapons. A lotus decal is inscribed on the backside."
+	icon_state = "latomag"
+	ammo_type = /obj/item/ammo_casing/latob
+	max_ammo = 15
+
 /obj/item/ammo_box/magazine/m10mm
 	name = "pistol magazine (10mm)"
 	desc = "A gun magazine."
