@@ -20,6 +20,7 @@
 	masturbation_verb 		= "massage"
 	can_climax				= TRUE
 	fluid_transfer_factor 	= 0.5
+	var/sent_full_message	= TRUE //defaults to 1 since they're full to start
 
 /obj/item/organ/genital/breasts/on_life()
 	if(QDELETED(src))
@@ -41,8 +42,19 @@
 /obj/item/organ/genital/breasts/proc/generate_milk()
 	if(owner.stat == DEAD)
 		return FALSE
+	if(reagents.total_volume >= reagents.maximum_volume)
+		if(!sent_full_message)
+			send_full_message()
+			sent_full_message = TRUE
+		return FALSE
+	sent_full_message = FALSE
 	reagents.isolate_reagent(fluid_id)
 	reagents.add_reagent(fluid_id, (fluid_mult * fluid_rate))
+
+/obj/item/organ/genital/breasts/proc/send_full_message(msg = "Your breasts finally feel full, again.")
+	if(owner && istext(msg))
+		to_chat(owner, msg)
+		return TRUE
 
 /obj/item/organ/genital/breasts/update_appearance()
 	var/lowershape = lowertext(shape)
