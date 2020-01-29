@@ -483,10 +483,10 @@
 	category = list("Equipment")
 	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING
 
-/datum/design/rpd
+/datum/design/pipe_dispenser
 	name = "Rapid Pipe Dispenser (RPD)"
 	desc = "A tool that can construct and deconstruct pipes on the fly."
-	id = "rpd"
+	id = "pipe_dispenser"
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 75000, MAT_GLASS = 37500)
 	build_path = /obj/item/pipe_dispenser
