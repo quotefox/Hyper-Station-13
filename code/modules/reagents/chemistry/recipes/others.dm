@@ -233,13 +233,13 @@
 /datum/chemical_reaction/virus_food_laughter
 	name = "Anomolous virus food"
 	id = "virusfood_laughter"
-	results = list(laughtervirusfood = 1)
+	results = list("laughtervirusfood" = 1)
 	required_reagents = list("laughter" = 5, "virus_food" = 1)
 
 /datum/chemical_reaction/virus_food_admin
 	name = "Highly unstable virus Food"
 	id = "virusfood_admin"
-	results = list(advvirusfood = 1)
+	results = list("advvirusfood" = 1)
 	required_reagents = list("viralbase" = 1, "uranium" = 20)
 	mix_message = "The mixture turns every colour of the rainbow, soon settling on a bright white. There's no way this isn't a good idea."
 
