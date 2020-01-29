@@ -233,14 +233,14 @@
 /datum/chemical_reaction/virus_food_laughter
 	name = "Anomolous virus food"
 	id = "virusfood_laughter"
-	results = list(/datum/reagent/consumable/laughter/laughtervirusfood = 1)
-	required_reagents = list(/datum/reagent/consumable/laughter = 5, /datum/reagent/consumable/virus_food = 1)
+	results = list("laughtervirusfood" = 1)
+	required_reagents = list("laughter" = 5, "virus_food" = 1)
 
 /datum/chemical_reaction/virus_food_admin
 	name = "Highly unstable virus Food"
 	id = "virusfood_admin"
-	results = list(/datum/reagent/consumable/virus_food/advvirusfood = 1)
-	required_reagents = list(/datum/reagent/consumable/virus_food/viralbase = 1, /datum/reagent/uranium = 20)
+	results = list("advvirusfood" = 1)
+	required_reagents = list("viralbase" = 1, "uranium" = 20)
 	mix_message = "The mixture turns every colour of the rainbow, soon settling on a bright white. There's no way this isn't a good idea."
 
 /datum/chemical_reaction/mix_virus/mix_virus_2
@@ -335,7 +335,7 @@
 	
 	name = "Mix Virus 13"
 	id = "mixvirus13"
-	required_reagents = list(/datum/reagent/consumable/laughter/laughtervirusfood = 1)
+	required_reagents = list("laughtervirusfood" = 1)
 	level_min = 0
 	level_max = 0
 	
@@ -343,7 +343,7 @@
 
 	name = "Mix Virus 14"
 	id = "mixvirus14"
-	required_reagents = list(/datum/reagent/consumable/virus_food/advvirusfood = 1)
+	required_reagents = list("advvirusfood" = 1)
 	level_min = 9
 	level_max = 9
 

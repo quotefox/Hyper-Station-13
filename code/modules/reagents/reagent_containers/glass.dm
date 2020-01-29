@@ -130,7 +130,7 @@
 /obj/item/reagent_containers/glass/bottle/viralbase
 	name = "Highly potent Viral Base Bottle"
 	desc = "A small bottle. Contains a trace amount of a substance found by scientists that can be used to create extremely advanced diseases once exposed to uranium."
-	list_reagents = list(/datum/reagent/consumable/virus_food/viralbase = 1)
+	list_reagents = list("viralbase" = 1)
 
 /obj/item/reagent_containers/glass/beaker/update_icon()
 	cut_overlays()
