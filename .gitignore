@@ -1,2 +1,5 @@
 
 tgstation.int
+*.before
+*.backup
+*.pyc
