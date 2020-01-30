@@ -423,6 +423,26 @@
 ////////////Tools//////////////
 ///////////////////////////////
 
+/datum/design/rcd_upgrade/frames
+	name = "RCD frames designs upgrade"
+	desc = "Adds the computer frame and machine frame to the RCD."
+	id = "rcd_upgrade_frames"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 5000, MAT_GLASS = 2500, MAT_SILVER = 1500, MAT_TITANIUM = 2000)
+	build_path = /obj/item/rcd_upgrade/frames
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+
+/datum/design/rcd_upgrade/simple_circuits
+	name = "RCD simple circuits designs upgrade"
+	desc = "Adds the simple circuits to the RCD."
+	id = "rcd_upgrade_simple_circuits"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 5000, MAT_GLASS = 2500, MAT_SILVER = 1500, MAT_TITANIUM = 2000)
+	build_path = /obj/item/rcd_upgrade/simple_circuits
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+
 /datum/design/exwelder
 	name = "Experimental Welding Tool"
 	desc = "An experimental welder capable of self-fuel generation."
@@ -452,6 +472,26 @@
 	materials = list(MAT_METAL = 4500, MAT_SILVER = 2500, MAT_TITANIUM = 3500)
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+
+/datum/design/rcd_loaded
+	name = "Rapid Construction Device (RCD)"
+	desc = "A tool that can construct and deconstruct walls, airlocks and floors on the fly."
+	id = "rcd_loaded"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL=48000, MAT_GLASS=32000)  // costs more than what it did in the autolathe, this one comes loaded.
+	build_path = /obj/item/construction/rcd/loaded
+	category = list("Equipment")
+	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING
+
+/datum/design/pipe_dispenser
+	name = "Rapid Pipe Dispenser (RPD)"
+	desc = "A tool that can construct and deconstruct pipes on the fly."
+	id = "pipe_dispenser"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 75000, MAT_GLASS = 37500)
+	build_path = /obj/item/pipe_dispenser
+	category = list("Equipment")
+	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING
 
 /datum/design/alienwrench
 	name = "Alien Wrench"
