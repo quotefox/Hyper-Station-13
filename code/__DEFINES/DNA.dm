@@ -115,6 +115,7 @@
 #define DRINKSBLOOD		15
 #define NOEYES			16
 #define MARKINGS		17
+#define WINGCOLOR		18
 
 //organ slots
 #define ORGAN_SLOT_BRAIN "brain"

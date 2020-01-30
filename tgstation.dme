@@ -1941,6 +1941,7 @@
 #include "code\modules\mob\dead\new_player\sprite_accessories\hair_head.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\horns.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\legs.dm"
+#include "code\modules\mob\dead\new_player\sprite_accessories\moth_fluff.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\moth_wings.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\pines.dm"
 #include "code\modules\mob\dead\new_player\sprite_accessories\snouts.dm"
