@@ -416,7 +416,7 @@ SUBSYSTEM_DEF(job)
 		H.mind.assigned_role = rank
 
 	if(job)
-		if(!job.dresscodecompliant)// CIT CHANGE - dress code compliance
+		if(!job.dresscodecompliant && !/datum/species/plasmaman)// CIT CHANGE - dress code compliance
 			equip_loadout(N, H) // CIT CHANGE - allows players to spawn with loadout items
 		var/new_mob = job.equip(H, null, null, joined_late)
 		if(ismob(new_mob))
