@@ -35,7 +35,6 @@
 #define LOG_GAME		(1 << 12)
 #define LOG_ADMIN_PRIVATE (1 << 13)
 #define LOG_ASAY		(1 << 14)
-#define LOG_CLONING			(1 << 15)
 
 //Individual logging panel pages
 #define INDIVIDUAL_ATTACK_LOG		(LOG_ATTACK)
