@@ -10,7 +10,7 @@
 	var/stage_speed = 0
 	var/transmittable = 0
 	// The type level of the symptom. Higher is harder to generate.
-	var/level = 0
+	var/level = -1
 	// The severity level of the symptom. Higher is more dangerous.
 	var/severity = 0
 	// The hash tag for our diseases, we will add it up with our other symptoms to get a unique id! ID MUST BE UNIQUE!!!
@@ -66,6 +66,9 @@
 	new_symp.id = id
 	new_symp.neutered = neutered
 	return new_symp
+	
+/datum/symptom/proc/OnDeath(datum/disease/advance/A)
+	return !neutered
 
 /datum/symptom/proc/generate_threshold_desc()
 	return

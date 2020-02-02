@@ -6,6 +6,7 @@
 	icon_screen = "dna"
 	icon_keyboard = "med_key"
 	circuit = /obj/item/circuitboard/computer/cloning
+
 	req_access = list(ACCESS_GENETICS) //for modifying records
 	var/obj/machinery/dna_scannernew/scanner //Linked scanner. For scanning.
 	var/list/pods //Linked cloning pods
@@ -29,6 +30,8 @@
 /obj/machinery/computer/cloning/Initialize()
 	. = ..()
 	updatemodules(TRUE)
+	var/obj/item/circuitboard/computer/cloning/board = circuit
+	records = board.records
 
 /obj/machinery/computer/cloning/Destroy()
 	if(pods)
@@ -41,7 +44,7 @@
 	if(pods)
 		for(var/P in pods)
 			var/obj/machinery/clonepod/pod = P
-			if(pod.occupant && mind && pod.clonemind == mind)
+			if(pod.occupant && pod.clonemind == mind)
 				return null
 			if(pod.is_operational() && !(pod.occupant || pod.mess))
 				return pod
@@ -62,9 +65,6 @@
 			else if(!. && pod.is_operational() && !(pod.occupant || pod.mess) && pod.efficiency > 5)
 				. = pod
 
-/proc/grow_clone_from_record(obj/machinery/clonepod/pod, datum/data/record/R, empty)
-	return pod.growclone(R.fields["name"], R.fields["UI"], R.fields["SE"], R.fields["mindref"], R.fields["last_death"], R.fields["blood_type"], R.fields["mrace"], R.fields["features"], R.fields["factions"], R.fields["quirks"], empty)
-
 /obj/machinery/computer/cloning/process()
 	if(!(scanner && LAZYLEN(pods) && autoprocess))
 		return
@@ -73,7 +73,7 @@
 		scan_occupant(scanner.occupant)
 
 	for(var/datum/data/record/R in records)
-		var/obj/machinery/clonepod/pod = GetAvailableEfficientPod(R.fields["mindref"])
+		var/obj/machinery/clonepod/pod = GetAvailableEfficientPod(R.fields["mind"])
 
 		if(!pod)
 			return
@@ -81,11 +81,8 @@
 		if(pod.occupant)
 			break
 
-		var/result = grow_clone_from_record(pod, R)
-		if(result & CLONING_SUCCESS)
+		if(pod.growclone(R.fields["ckey"], R.fields["name"], R.fields["UI"], R.fields["SE"], R.fields["mind"], R.fields["mrace"], R.fields["features"], R.fields["factions"], R.fields["quirks"]))
 			temp = "[R.fields["name"]] => <font class='good'>Cloning cycle in progress...</font>"
-			log_cloning("Cloning of [key_name(R.fields["mindref"])] automatically started via autoprocess - [src] at [AREACOORD(src)]. Pod: [pod] at [AREACOORD(pod)].")
-		if(result & CLONING_DELETE_RECORD)
 			records -= R
 
 
@@ -239,11 +236,8 @@
 			if (!active_record)
 				dat += "<font class='bad'>Record not found.</font>"
 			else
-				var/body_only = active_record.fields["body_only"]
-				dat += "<h4>[active_record.fields["name"]][body_only ? " - BODY-ONLY" : ""]</h4>"
-				dat += "Scan ID [active_record.fields["id"]] \
-					[!body_only ? "<a href='byond://?src=[REF(src)];clone=[active_record.fields["id"]]'>Clone</a>" : "" ]\
-				 	<a href='byond://?src=[REF(src)];clone=[active_record.fields["id"]];empty=TRUE'>Empty Clone</a><br>"
+				dat += "<h4>[src.active_record.fields["name"]]</h4>"
+				dat += "Scan ID [src.active_record.fields["id"]] <a href='byond://?src=[REF(src)];clone=[active_record.fields["id"]]'>Clone</a><br>"
 
 				var/obj/item/implant/health/H = locate(active_record.fields["imp"])
 
@@ -357,7 +351,12 @@
 		playsound(src, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
 		say("Initiating scan...")
 
-		addtimer(CALLBACK(src, .proc/do_scan, usr, body_only), 2 SECONDS)
+		spawn(20)
+			src.scan_occupant(scanner.occupant)
+
+			loading = 0
+			src.updateUsrDialog()
+			playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 
 		//No locking an open scanner.
 	else if ((href_list["lock"]) && !isnull(scanner) && scanner.is_operational())
@@ -372,9 +371,14 @@
 		playsound(src, "terminal_type", 25, FALSE)
 		active_record = find_record("id", href_list["view_rec"], records)
 		if(active_record)
-			menu = 3
+			if(!active_record.fields["ckey"])
+				records -= active_record
+				active_record = null
+				src.temp = "<font class='bad'>Record Corrupt</font>"
+			else
+				src.menu = 3
 		else
-			temp = "Record missing."
+			src.temp = "Record missing."
 
 	else if (href_list["del_rec"])
 		if ((!active_record) || (menu < 3))
@@ -461,14 +465,12 @@
 
 	else if (href_list["clone"])
 		var/datum/data/record/C = find_record("id", href_list["clone"], records)
-		var/empty = href_list["empty"]
 		//Look for that player! They better be dead!
 		if(C)
 			if(C.fields["body_only"] && !empty)
 				temp = "<font class='bad'>Cannot initiate regular cloning with body-only scans.</font>"
 				playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 			var/obj/machinery/clonepod/pod = GetAvailablePod()
-			var/success = FALSE
 			//Can't clone without someone to clone.  Or a pod.  Or if the pod is busy. Or full of gibs.
 			if(!LAZYLEN(pods))
 				temp = "<font class='bad'>No Clonepods detected.</font>"
@@ -517,31 +519,21 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/computer/cloning/proc/do_scan(mob/user, body_only)
-	scan_occupant(scanner.occupant, user, body_only)
-
-	loading = FALSE
-	updateUsrDialog()
-	playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
-
-/obj/machinery/computer/cloning/proc/scan_occupant(occupant, mob/M, body_only)
+/obj/machinery/computer/cloning/proc/scan_occupant(occupant)
 	var/mob/living/mob_occupant = get_mob_or_brainmob(occupant)
 	var/datum/dna/dna
-
-	// Do not use unless you know what they are.
-	var/mob/living/carbon/C = mob_occupant
-	var/mob/living/brain/B = mob_occupant
-
 	if(ishuman(mob_occupant))
+		var/mob/living/carbon/C = mob_occupant
 		dna = C.has_dna()
 	if(isbrain(mob_occupant))
+		var/mob/living/brain/B = mob_occupant
 		dna = B.stored_dna
 
 	if(!istype(dna))
 		scantemp = "<font class='bad'>Unable to locate valid genetic data.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 		return
-	if(!body_only && (mob_occupant.suiciding || mob_occupant.hellbound))
+	if(mob_occupant.suiciding || mob_occupant.hellbound)
 		scantemp = "<font class='bad'>Subject's brain is not responding to scanning stimuli.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 		return
@@ -549,7 +541,7 @@
 		scantemp = "<font class='bad'>Subject no longer contains the fundamental materials required to create a living clone.</font>"
 		playsound(src, 'sound/machines/terminal_alert.ogg', 50, FALSE)
 		return
-	if (!body_only && isnull(mob_occupant.mind))
+	if ((!mob_occupant.ckey) || (!mob_occupant.client))
 		scantemp = "<font class='bad'>Mental interface failure.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, FALSE)
 		return

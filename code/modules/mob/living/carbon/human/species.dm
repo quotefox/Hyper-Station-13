@@ -14,6 +14,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	var/hair_color	// this allows races to have specific hair colors... if null, it uses the H's hair/facial hair colors. if "mutcolor", it uses the H's mutant_color
 	var/hair_alpha = 255	// the alpha used by the hair. 255 is completely solid, 0 is transparent.
+	var/wing_color
 
 	var/use_skintones = 0	// does it use skintones or not? (spoiler alert this is only used by humans)
 	var/exotic_blood = ""	// If your race wants to bleed something other than bog standard blood, change this to reagent id.
@@ -615,6 +616,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(!H.dna.features["wings"] || H.dna.features["wings"] == "None" || (H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(src, H.wear_suit.species_exception))))
 			bodyparts_to_add -= "wings"
 
+	if("moth_fluff" in mutant_bodyparts)
+		if(!H.dna.features["moth_fluff"] || H.dna.features["moth_fluff"] == "None" || H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT))
+			bodyparts_to_add -= "moth_fluff"
+
 	if("wings_open" in mutant_bodyparts)
 		if(H.wear_suit && (H.wear_suit.flags_inv & HIDEJUMPSUIT) && (!H.wear_suit.species_exception || !is_type_in_list(src, H.wear_suit.species_exception)))
 			bodyparts_to_add -= "wings_open"
@@ -724,10 +729,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					S = GLOB.wings_list[H.dna.features["wings"]]
 				if("wingsopen")
 					S = GLOB.wings_open_list[H.dna.features["wings"]]
+				if("deco_wings")
+					S = GLOB.deco_wings_list[H.dna.features["deco_wings"]]
 				if("legs")
 					S = GLOB.legs_list[H.dna.features["legs"]]
 				if("moth_wings")
 					S = GLOB.moth_wings_list[H.dna.features["moth_wings"]]
+				if("moth_fluff")
+					S = GLOB.moth_fluffs_list[H.dna.features["moth_fluff"]]
 				if("moth_markings")
 					S = GLOB.moth_markings_list[H.dna.features["moth_markings"]]
 				if("caps")
@@ -775,6 +784,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				bodypart = "snout"
 			if(bodypart == "xenohead")
 				bodypart = "xhead"
+			if(bodypart == "moth_wings" || bodypart == "deco_wings")
+				bodypart = "moth_wings"
 
 			if(S.gender_specific)
 				accessory_overlay.icon_state = "[g]_[bodypart]_[S.icon_state]_[layertext]"
@@ -826,6 +837,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 							accessory_overlay.color = "#[H.facial_hair_color]"
 						if(EYECOLOR)
 							accessory_overlay.color = "#[H.eye_color]"
+						if(WINGCOLOR)
+							accessory_overlay.color = "#[H.wing_color]"
 				else
 					accessory_overlay.color = forced_colour
 			else
@@ -891,6 +904,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						extra_accessory_overlay.color = "#[H.facial_hair_color]"
 					if(EYECOLOR)
 						extra_accessory_overlay.color = "#[H.eye_color]"
+					if(WINGCOLOR)
+						extra_accessory_overlay.color = "#[H.wing_color]"
 				standing += extra_accessory_overlay
 
 			if(S.extra2) //apply the extra overlay, if there is one
@@ -923,6 +938,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 							extra2_accessory_overlay.color = "#[H.dna.features["mcolor"]]"
 						else
 							extra2_accessory_overlay.color = "#[H.hair_color]"
+					if(WINGCOLOR)
+						extra2_accessory_overlay.color = "#[H.wing_color]"
 				standing += extra2_accessory_overlay
 
 

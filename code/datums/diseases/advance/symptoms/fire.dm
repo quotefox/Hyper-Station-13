@@ -67,14 +67,14 @@ Bonus
 
 /datum/symptom/fire/proc/Firestacks_stage_4(mob/living/M, datum/disease/advance/A)
 	M.adjust_fire_stacks(1 * power)
-	M.adjustFireLoss(3 * power)
+	M.take_overall_damage(burn = 3 * power, required_status = BODYPART_ORGANIC)
 	if(infective)
 		A.spread(2)
 	return 1
 
 /datum/symptom/fire/proc/Firestacks_stage_5(mob/living/M, datum/disease/advance/A)
 	M.adjust_fire_stacks(3 * power)
-	M.adjustFireLoss(5 * power)
+	M.take_overall_damage(burn = 5 * power, required_status = BODYPART_ORGANIC)
 	if(infective)
 		A.spread(4)
 	return 1
@@ -105,7 +105,7 @@ Bonus
 	resistance = -2
 	stage_speed = -2
 	transmittable = -2
-	level = 7
+	level = 9
 	severity = 6
 	base_message_chance = 100
 	symptom_delay_min = 30
@@ -137,32 +137,34 @@ Bonus
 			if(prob(base_message_chance))
 				to_chat(M, "<span class='warning'>[pick("Your veins boil.", "You feel hot.", "You smell meat cooking.")]</span>")
 		if(4)
+			if(M.fire_stacks < 0)
+				M.visible_message("<span class='warning'>[M]'s sweat sizzles and pops on contact with water!</span>")
+				explosion(get_turf(M),-1,(-1 + explosion_power),(2 * explosion_power))
 			Alkali_fire_stage_4(M, A)
 			M.IgniteMob()
 			to_chat(M, "<span class='userdanger'>Your sweat bursts into flames!</span>")
 			M.emote("scream")
 		if(5)
+			if(M.fire_stacks < 0)
+				M.visible_message("<span class='warning'>[M]'s sweat sizzles and pops on contact with water!</span>")
+				explosion(get_turf(M),-1,(-1 + explosion_power),(2 * explosion_power))
 			Alkali_fire_stage_5(M, A)
 			M.IgniteMob()
 			to_chat(M, "<span class='userdanger'>Your skin erupts into an inferno!</span>")
 			M.emote("scream")
-			if(M.fire_stacks < 0)
-				M.visible_message("<span class='warning'>[M]'s sweat sizzles and pops on contact with water!</span>")
-				explosion(get_turf(M),0,0,2 * explosion_power)
-				Alkali_fire_stage_5(M, A)
-
+			
 /datum/symptom/alkali/proc/Alkali_fire_stage_4(mob/living/M, datum/disease/advance/A)
 	var/get_stacks = 6 * power
 	M.adjust_fire_stacks(get_stacks)
-	M.adjustFireLoss(get_stacks/2)
+	M.take_overall_damage(burn = get_stacks / 2, required_status = BODYPART_ORGANIC)
 	if(chems)
-		M.reagents.add_reagent("clf3", 2 * power)
+		M.reagents.add_reagent(/datum/reagent/clf3, 2 * power)
 	return 1
 
 /datum/symptom/alkali/proc/Alkali_fire_stage_5(mob/living/M, datum/disease/advance/A)
 	var/get_stacks = 8 * power
 	M.adjust_fire_stacks(get_stacks)
-	M.adjustFireLoss(get_stacks)
+	M.take_overall_damage(burn = get_stacks, required_status = BODYPART_ORGANIC)
 	if(chems)
-		M.reagents.add_reagent_list(list("napalm" = 4 * power, "clf3" = 4 * power))
+		M.reagents.add_reagent_list(list(/datum/reagent/napalm = 4 * power, /datum/reagent/clf3 = 4 * power))
 	return 1

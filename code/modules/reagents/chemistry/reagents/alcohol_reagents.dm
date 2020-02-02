@@ -1373,6 +1373,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 /datum/reagent/consumable/ethanol/neurotoxin
 	name = "Neurotoxin"
+	id = "neurotoxin"
 	description = "A strong neurotoxin that puts the subject into a death-like state."
 	color = "#2E2E61" // rgb: 46, 46, 97
 	boozepwr = 50
@@ -1415,6 +1416,26 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	REMOVE_TRAIT(M, TRAIT_PARALYSIS_R_LEG, type)
 	REMOVE_TRAIT(M, TRAIT_PARALYSIS_L_LEG, type)
 	M.adjustStaminaLoss(10)
+	..()
+
+/datum/reagent/consumable/ethanol/neurosmash
+	name = "Neurosmash"
+	id = "neurosmash"
+	description = "A mostly safe alcoholic drink for the true daredevils. Do not mix with Neurotoxin."
+	color = "#2E2E61" // rgb: 46, 46, 97
+	boozepwr = 60
+	quality = DRINK_VERYGOOD
+	taste_description = "a numbing sensation"
+	glass_icon_state = "neurosmashglass"
+	glass_name = "Neurosmash"
+	glass_desc = "A mostly safe alcoholic drink for the true daredevils. Do not mix with Neurotoxin."
+
+/datum/reagent/consumable/ethanol/neurosmash/on_mob_life(mob/living/carbon/M)
+	if(holder.has_reagent("neurotoxin"))
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.5*REM, 150)
+	else
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1.0*REM, 150)
+		M.dizziness +=2
 	..()
 
 /datum/reagent/consumable/ethanol/hippies_delight
