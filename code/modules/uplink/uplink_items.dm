@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 //All bundles and telecrystals
 /datum/uplink_item/bundles_TC
-	category = "Bundles and Telecrystals"
+	category = "Telecrystals and Bundles"
 	surplus = 0
 	cant_discount = TRUE
 
@@ -288,7 +288,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 // Dangerous Items
 /datum/uplink_item/dangerous
-	category = "Conspicuous and Dangerous Weapons"
+	category = "Conspicuous Weapons"
 
 /datum/uplink_item/dangerous/pistol
 	name = "Stechkin Pistol"
@@ -544,7 +544,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 // Stealthy Weapons
 /datum/uplink_item/stealthy_weapons
-	category = "Stealthy and Inconspicuous Weapons"
+	category = "Stealthy Weapons"
 
 /datum/uplink_item/stealthy_weapons/combatglovesplus
 	name = "Combat Gloves Plus"
@@ -921,7 +921,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/explosives
-	category = "Grenades and Explosives"
+	category = "Explosives"
 
 /datum/uplink_item/explosives/bioterrorfoam
 	name = "Bioterror Foam Grenade"
@@ -1079,7 +1079,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 //Support and Mechs
 /datum/uplink_item/support
-	category = "Support and Mechanized Exosuits"
+	category = "Support and Exosuits"
 	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear)
 
@@ -1275,7 +1275,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 //Space Suits and Hardsuits
 /datum/uplink_item/suits
-	category = "Space Suits, Hardsuits and Clothing"
+	category = "Clothing"
 	surplus = 40
 
 /datum/uplink_item/suits/turtlenck
@@ -1352,7 +1352,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 // Devices and Tools
 /datum/uplink_item/device_tools
-	category = "Devices and Tools"
+	category = "Misc. Gadgets"
 
 /datum/uplink_item/device_tools/emag
 	name = "Cryptographic Sequencer"
