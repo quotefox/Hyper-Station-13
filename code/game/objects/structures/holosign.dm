@@ -81,6 +81,9 @@
 	. = ..()
 	air_update_turf(TRUE)
 
+/obj/structure/holosign/barrier/atmos/blocksTemperature()
+	return TRUE
+
 /obj/structure/holosign/barrier/cyborg
 	name = "Energy Field"
 	desc = "A fragile energy field that blocks movement. Excels at blocking lethal projectiles."
