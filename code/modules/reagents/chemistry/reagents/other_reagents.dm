@@ -1584,16 +1584,19 @@
 
 /datum/reagent/consumable/laughter/laughtervirusfood
 	name = "anomolous virus food"
+	id = "laughtervirusfood"
 	color = "#ffa6ff" //rgb: 255,166,255
 	taste_description = "a bad idea"
 	
 /datum/reagent/consumable/virus_food/advvirusfood
 	name = "highly unstable virus food"
+	id = "advvirusfood"
 	color = "#ffffff" //rgb: 255,255,255 ITS PURE WHITE CMON
 	taste_description = "an EXTREMELY bad idea"
 
 /datum/reagent/consumable/virus_food/viralbase
 	name = "Experimental viral base"
+	id = "viralbase"
 	description = "Recently discovered by Nanotrasen's top scientists after years of research, this substance can be used as the base for extremely rare and extremely dangerous viruses once exposed to uranium."
 	color = "#fff0da"
 	taste_description = "tears of scientists"
