@@ -162,7 +162,7 @@
 	setting_overlay = mutable_appearance(icon,setting_iconstate())
 	add_overlay(setting_overlay)
 
-	/obj/item/gun/energy/dueling/examine(mob/user)
+/obj/item/gun/energy/dueling/examine(mob/user)
 	. = ..()
 	if(duel)
 		. += "Its linking number is [duel.id]."
