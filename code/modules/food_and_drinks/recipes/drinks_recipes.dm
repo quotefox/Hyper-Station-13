@@ -259,10 +259,10 @@
 	required_reagents = list("gin" = 2, "sodawater" = 1, "limejuice" = 1)
 
 /datum/chemical_reaction/bahama_mama
-	name = "Bahama mama"
+	name = "Bahama Mama"
 	id = "bahama_mama"
-	results = list("bahama_mama" = 6)
-	required_reagents = list("rum" = 2, "orangejuice" = 2, "limejuice" = 1, "ice" = 1)
+	results = list("bahama_mama" = 5)
+	required_reagents = list("rum" = 2, "creme_de_coconut" = 1, "kahlua" = 1, "pineapplejuice" = 1)
 
 /datum/chemical_reaction/singulo
 	name = "Singulo"
@@ -299,6 +299,19 @@
 	id = "barefoot"
 	results = list("barefoot" = 3)
 	required_reagents = list("berryjuice" = 1, "cream" = 1, "vermouth" = 1)
+
+
+/datum/chemical_reaction/painkiller
+	name = "Painkiller"
+	id = "painkiller"
+	results = list("painkiller" = 10)
+	required_reagents = list("creme_de_coconut" = 5, "pineapplejuice" = 4, "orangejuice" = 1)
+
+/datum/chemical_reaction/pina_colada
+	name = "Pina Colada"
+	id = "pina_colada"
+	results = list("pina_colada" = 5)
+	required_reagents = list("creme_de_coconut" = 1, "pineapplejuice" = 2, "rum" = 1, "limejuice" = 1)
 
 
 ////DRINKS THAT REQUIRED IMPROVED SPRITES BELOW:: -Agouri/////
@@ -830,8 +843,8 @@
 /datum/chemical_reaction/hellfire
 	name = "Hellfire"
 	id = "hellfire"
-	results = list("hellfire" = 5)
-	required_reagents = list("rum" = 1, "beer" = 1, "ice" = 1, "capsaicin" = 1, "limejuice" = 1)
+	results = list("hellfire" = 4)
+	required_reagents = list("rum" = 2, "ice" = 1, "crevice_spike" = 1)
 	mix_message = "The liquid begins to churn as it changes to an amber orange and catches on fire."
 
 /datum/chemical_reaction/sins_delight
@@ -840,3 +853,33 @@
 	results = list("sins_delight" = 5)
 	required_reagents = list("demonsblood" = 2, "triple_sec" = 1, "martini" = 1, "changelingsting" = 1)
 	mix_message = "The liquid starts swirling, before forming a pink cloud that dissipates in the air."
+
+/datum/chemical_reaction/strawberry_daiquiri
+	name = "Strawberry Daiquiri"
+	id = "strawberry_daiquiri"
+	results = list("strawberry_daiquiri" = 7)
+	required_reagents = list("rum" = 2, "limejuice" = 1, "sugar" = 1, "strawberryjuice" = 2, "ice" = 1)
+
+/datum/chemical_reaction/miami_vice
+	name = "Miami Vice"
+	id = "miami_vice"
+	results = list("miami_vice" = 2)
+	required_reagents = list("pina_colada" = 1, "strawberry_daiquiri" = 1)
+
+/datum/chemical_reaction/malibu_sunset
+	name = "Malibu Sunset"
+	id = "malibu_sunset"
+	results = list("malibu_sunset" = 5)
+	required_reagents = list("creme_de_coconut" = 1, "pineapplejuice" = 1, "grenadine" = 1, "orangejuice" = 1, "ice" = 1)
+
+/datum/chemical_reaction/liz_fizz
+	name = "Liz Fizz"
+	id = "liz_fizz"
+	results = list("liz_fizz" = 5)
+	required_reagents = list("triple_citrus" = 3, "ice" = 1, "cream" = 1)
+
+/datum/chemical_reaction/hotlime_miami
+	name = "Hotlime Miami"
+	id = "hotlime_miami"
+	results = list("hotlime_miami" = 2)
+	required_reagents = list("ephedrine" = 1, "pina_colada" = 1)
