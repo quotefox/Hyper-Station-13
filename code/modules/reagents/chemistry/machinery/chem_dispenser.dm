@@ -488,6 +488,7 @@
 		"pwr_game",
 		"shamblers",
 		"sugar",
+		"pineapplejuice",
 		"orangejuice",
 		"grenadine",
 		"limejuice",
@@ -502,7 +503,8 @@
 	)
 	upgrade_reagents2 = list(
 		"banana",
-		"berryjuice"
+		"berryjuice",
+		"strawberryjuice"
 	)
 	upgrade_reagents3 = null
 	emagged_reagents = list(
@@ -554,6 +556,7 @@
 		"hcider",
 		"creme_de_menthe",
 		"creme_de_cacao",
+		"creme_de_coconut",
 		"triple_sec",
 		"sake",
 		"applejack"
