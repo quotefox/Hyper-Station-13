@@ -21,32 +21,6 @@
 	build_path = /obj/item/kitchen/fork
 	category = list("initial","Dinnerware")
 
-/datum/design/plastic_fork
-	name = "Plastic Fork"
-	id = "plastic_fork"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(MAT_PLASTIC = 80)
-	build_path = /obj/item/kitchen/fork/plastic
-	category = list("initial", "Tool Designs", "Dinnerware")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
-
-/datum/design/plastic_spoon
-	name = "Plastic Spoon"
-	id = "plastic_spoon"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(MAT_PLASTIC = 120)
-	build_path = /obj/item/kitchen/spoon/plastic
-	category = list("initial", "Tool Designs", "Dinnerware")
-	departmental_flags = DEPARTMENTAL_FLAG_SERVICE
-
-/datum/design/plastic_knife
-	name = "Plastic Knife"
-	id = "plastic_knife"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(MAT_PLASTIC = 100)
-	build_path = /obj/item/kitchen/knife/plastic
-	category = list("initial", "Tool Designs","Dinnerware")
-
 /datum/design/tray
 	name = "Tray"
 	id = "tray"
@@ -91,78 +65,77 @@
 ///Medical//
 ////////////
 
-
-/datum/design/medkit
-	name = "Medkit Cabinent"
-	id = "medkit_cabinet"
-	build_type = AUTOLATHE | PROTOLATHE
-	materials = list(MAT_METAL = 4000)
-	build_path = /obj/item/wallframe/medkit_cabinet
-	category = list("initial", "Medical")
-
 /datum/design/scalpel
 	name = "Scalpel"
 	id = "scalpel"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_METAL = 4000, MAT_GLASS = 1000)
 	build_path = /obj/item/scalpel
-	category = list("initial", "Medical")
+	category = list("initial", "Medical","Tool Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/circular_saw
 	name = "Circular Saw"
 	id = "circular_saw"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_METAL = 10000, MAT_GLASS = 6000)
 	build_path = /obj/item/circular_saw
-	category = list("initial", "Medical")
+	category = list("initial", "Medical","Tool Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/surgicaldrill
 	name = "Surgical Drill"
 	id = "surgicaldrill"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_METAL = 10000, MAT_GLASS = 6000)
 	build_path = /obj/item/surgicaldrill
-	category = list("initial", "Medical")
+	category = list("initial", "Medical","Tool Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/retractor
 	name = "Retractor"
 	id = "retractor"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_METAL = 6000, MAT_GLASS = 3000)
 	build_path = /obj/item/retractor
-	category = list("initial", "Medical")
+	category = list("initial", "Medical","Tool Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/cautery
 	name = "Cautery"
 	id = "cautery"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_METAL = 2500, MAT_GLASS = 750)
 	build_path = /obj/item/cautery
-	category = list("initial", "Medical")
+	category = list("initial", "Medical","Tool Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/hemostat
 	name = "Hemostat"
 	id = "hemostat"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_METAL = 5000, MAT_GLASS = 2500)
 	build_path = /obj/item/hemostat
-	category = list("initial", "Medical")
+	category = list("initial", "Medical","Tool Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/beaker
 	name = "Beaker"
 	id = "beaker"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_GLASS = 500)
 	build_path = /obj/item/reagent_containers/glass/beaker
-	category = list("initial", "Medical")
+	category = list("initial", "Medical","Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SERVICE | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/large_beaker
 	name = "Large Beaker"
 	id = "large_beaker"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_GLASS = 2500)
 	build_path = /obj/item/reagent_containers/glass/beaker/large
-	category = list("initial", "Medical")
+	category = list("initial", "Medical","Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SERVICE | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/healthanalyzer
 	name = "Health Analyzer"
@@ -176,10 +149,11 @@
 /datum/design/pillbottle
 	name = "Pill Bottle"
 	id = "pillbottle"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_METAL = 20, MAT_GLASS = 100)
 	build_path = /obj/item/storage/pill_bottle
-	category = list("initial", "Medical")
+	category = list("initial", "Medical","Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
 /datum/design/syringe
 	name = "Syringe"
@@ -200,15 +174,17 @@
 /datum/design/hypovialsmall
 	name = "Hypovial"
 	id = "hypovial"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_METAL = 500)
 	build_path = /obj/item/reagent_containers/glass/bottle/vial/small
-	category = list("initial","Medical")
+	category = list("initial","Medical","Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
 /datum/design/hypoviallarge
 	name = "Large Hypovial"
 	id = "large_hypovial"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_METAL = 2500)
 	build_path = /obj/item/reagent_containers/glass/bottle/vial/large
-	category = list("initial","Medical")
+	category = list("initial","Medical","Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL

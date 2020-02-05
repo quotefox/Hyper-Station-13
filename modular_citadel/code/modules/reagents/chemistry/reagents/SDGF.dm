@@ -39,24 +39,18 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 //Clone serum #chemClone
 /datum/reagent/fermi/SDGF //vars, mostly only care about keeping track if there's a player in the clone or not.
 	name = "synthetic-derived growth factor"
-	id = "SDGF"
 	description = "A rapidly diving mass of Embryonic stem cells. These cells are missing a nucleus and quickly replicate a host’s DNA before growing to form an almost perfect clone of the host. In some cases neural replication takes longer, though the underlying reason underneath has yet to be determined."
 	color = "#a502e0" // rgb: 96, 0, 255
 	var/playerClone = FALSE
 	var/unitCheck = FALSE
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	taste_description = "a weird chemical fleshy flavour"
-	//var/datum/status_effect/chem/SDGF/candidates/candies
 	var/list/candies = list()
-	//var/polling = FALSE
-	var/list/result = list()
-	var/list/group = null
 	var/pollStarted = FALSE
-	var/location_created
 	var/startHunger
-	ImpureChem 			= "SDGFtox"
-	InverseChemVal 		= 0.5
-	InverseChem 		= "SDZF"
+	impure_chem 			= /datum/reagent/impure/SDGFtox
+	inverse_chem_val 		= 0.5
+	inverse_chem		= /datum/reagent/impure/SDZF
 	can_synth = TRUE
 
 
@@ -68,11 +62,10 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 			startHunger = M.nutrition
 			if(pollStarted == FALSE)
 				pollStarted = TRUE
-				candies = pollGhostCandidates("Do you want to play as a clone of [M], and do you agree to respect their character and act in a similar manner to them? Do not engage in ERP as them unless you have LOOC permission from them, and ensure it is permission from the original, not a clone.")
+				candies = pollGhostCandidates("Do you want and agree to play as a clone of [M], respect their character and not engage in ERP without permission from the original?", ignore_category = POLL_IGNORE_CLONE)
 				log_game("FERMICHEM: [M] ckey: [M.key] has taken SDGF, and ghosts have been polled.")
 		if(20 to INFINITY)
 			if(LAZYLEN(candies) && playerClone == FALSE) //If there's candidates, clone the person and put them in there!
-				log_game("FERMICHEM: [M] ckey: [M.key] is creating a clone, controlled by [candies]")
 				to_chat(M, "<span class='warning'>The cells reach a critical micelle concentration, nucleating rapidly within your body!</span>")
 				var/typepath = M.type
 				var/mob/living/carbon/human/fermi_Gclone = new typepath(M.loc)
@@ -81,16 +74,27 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 					SM.real_name = M.real_name
 					M.dna.transfer_identity(SM)
 					SM.updateappearance(mutcolor_update=1)
-				var/mob/dead/observer/C = pick(candies)
-				message_admins("Ghost candidate found! [C] key [C.key] is becoming a clone of [M] key: [M.key] (They agreed to respect the character they're becoming, and agreed to not ERP without express permission from the original.)")
-				SM.key = C.key
+
+				//Process the willing ghosts, and make sure they're actually in the body when they're moved into it!
+				candies = shuffle(candies)//Shake those ghosts up!
+				for(var/mob/dead/observer/C2 in candies)
+					if(C2.key && C2)
+						C2.transfer_ckey(SM, FALSE)
+						message_admins("Ghost candidate found! [C2] key [C2.key] is becoming a clone of [M] key: [M.key] (They agreed to respect the character they're becoming, and agreed to not ERP without express permission from the original.)")
+						log_game("FERMICHEM: [M] ckey: [M.key] is creating a clone, controlled by [C2]")
+						break
+					else
+						candies -= C2
+				if(!SM.mind) //Something went wrong, use alt mechanics
+					return ..()
 				SM.mind.enslave_mind_to_creator(M)
+				SM.mind.store_memory(M.mind.memory)
 
 				//If they're a zombie, they can try to negate it with this.
 				//I seriously wonder if anyone will ever use this function.
 				if(M.getorganslot(ORGAN_SLOT_ZOMBIE))//sure, it "treats" it, but "you've" still got it. Doesn't always work as well; needs a ghost.
 					var/obj/item/organ/zombie_infection/ZI = M.getorganslot(ORGAN_SLOT_ZOMBIE)
-					ZI.Remove(M)
+					ZI.Remove()
 					ZI.Insert(SM)
 					log_game("FERMICHEM: [M] ckey: [M.key]'s zombie_infection has been transferred to their clone")
 
@@ -117,11 +121,11 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 				SM.nutrition = startHunger/2
 
 				//Transfer remaining reagent to clone. I think around 30u will make a healthy clone, otherwise they'll have clone damage, blood loss, brain damage and hunger.
-				SM.reagents.add_reagent("SDGFheal", volume)
-				M.reagents.remove_reagent(id, volume)
+				SM.reagents.add_reagent(/datum/reagent/fermi/SDGFheal, volume)
+				M.reagents.remove_reagent(type, volume)
 				log_game("FERMICHEM: [volume]u of SDGFheal has been transferred to the clone")
 				SSblackbox.record_feedback("tally", "fermi_chem", 1, "Sentient clones made")
-				return
+				return ..()
 
 			else if(playerClone == FALSE) //No candidates leads to two outcomes; if there's already a braincless clone, it heals the user, as well as being a rare souce of clone healing (thematic!).
 				unitCheck = TRUE
@@ -136,7 +140,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 							M.adjustBruteLoss(-1, 0)
 							M.adjustFireLoss(-1, 0)
 							M.heal_bodypart_damage(1,1)
-							M.reagents.remove_reagent(id, 1)//faster rate of loss.
+							M.reagents.remove_reagent(type, 1)//faster rate of loss.
 				else //If there's no ghosts, but they've made a large amount, then proceed to make flavourful clone, where you become fat and useless until you split.
 					switch(current_cycle)
 						if(21)
@@ -180,7 +184,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 							log_game("FERMICHEM: [M] ckey: [M.key] has created a mindless clone of themselves")
 							SSblackbox.record_feedback("tally", "fermi_chem", 1, "Braindead clones made")
 						if(87 to INFINITY)
-							M.reagents.remove_reagent(id, volume)//removes SGDF on completion. Has to do it this way because of how i've coded it. If some madlab gets over 1k of SDGF, they can have the clone healing.
+							M.reagents.remove_reagent(type, volume)//removes SGDF on completion. Has to do it this way because of how i've coded it. If some madlab gets over 1k of SDGF, they can have the clone healing.
 
 
 	..()
@@ -260,19 +264,19 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 			SM.set_species(mutation)
 
 		//Transfer remaining reagent to clone. I think around 30u will make a healthy clone, otherwise they'll have clone damage, blood loss, brain damage and hunger.
-		SM.reagents.add_reagent("SDGFheal", volume)
-		M.reagents.remove_reagent(id, volume)
-
+		SM.reagents.add_reagent(/datum/reagent/fermi/SDGFheal, volume)
+		log_combat(M, M, "SDGF clone-vived", src)
+		M.reagents.del_reagent(type)
 		SM.updatehealth()
 		SM.emote("gasp")
-		log_combat(M, M, "SDGF clone-vived", src)
+		return
 	..()
 
 //Unobtainable, used in clone spawn.
 /datum/reagent/fermi/SDGFheal
-	name = "synthetic-derived growth factor"
-	id = "SDGFheal"
-	metabolization_rate = 1
+	name = "synthetic-derived healing factor"
+	description = "Leftover SDGF is transferred into the resulting clone, which quickly heals up the stresses from suddenly splitting. Restores blood, nutrition, and repaires brain and clone damage quickly. Only obtainable from using excess SDGF, and only enters the cloned body."
+	metabolization_rate = 0.8
 	can_synth = FALSE
 
 /datum/reagent/fermi/SDGFheal/on_mob_life(mob/living/carbon/M)//Used to heal the clone after splitting, the clone spawns damaged. (i.e. insentivies players to make more than required, so their clone doesn't have to be treated)
@@ -284,29 +288,29 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 	..()
 
 //Unobtainable, used if SDGF is impure but not too impure
-/datum/reagent/fermi/SDGFtox
-	name = "synthetic-derived growth factor"
-	id = "SDGFtox"
-	description = "A chem that makes a certain chemcat angry at you if you're reading this, how did you get this???"//i.e. tell me please, figure it's a good way to get pinged for bugfixes.
+/datum/reagent/impure/SDGFtox
+	name = "Synthetic-derived apoptosis factor"
+	description = "Impure synthetic-derived growth factor causes certain cells to undergo cell death, causing clone damage, and damaging blood cells."//i.e. tell me please, figure it's a good way to get pinged for bugfixes.
 	metabolization_rate = 1
 	can_synth = FALSE
 
-/datum/reagent/fermi/SDGFtox/on_mob_life(mob/living/carbon/M)//Damages the taker if their purity is low. Extended use of impure chemicals will make the original die. (thus can't be spammed unless you've very good)
+/datum/reagent/impure/SDGFtox/on_mob_life(mob/living/carbon/M)//Damages the taker if their purity is low. Extended use of impure chemicals will make the original die. (thus can't be spammed unless you've very good)
 	M.blood_volume -= 10
 	M.adjustCloneLoss(2, 0)
 	..()
 
 //Fail state of SDGF
-/datum/reagent/fermi/SDZF
-	name = "synthetic-derived growth factor"
-	id = "SDZF"
-	description = "A horribly peverse mass of Embryonic stem cells made real by the hands of a failed chemist. This message should never appear, how did you manage to get a hold of this?"
+/datum/reagent/impure/SDZF
+	name = "synthetic-derived zombie factor"
+	description = "A horribly peverse mass of Embryonic stem cells made real by the hands of a failed chemist. Emulates normal synthetic-derived growth factor, but produces a hostile zombie at the end of it."
 	color = "#a502e0" // rgb: 96, 0, 255
-	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	metabolization_rate = 0.2 * REAGENTS_METABOLISM
 	var/startHunger
 	can_synth = TRUE
+	taste_description = "a weird chemical fleshy flavour"
+	chemical_flags = REAGENT_SNEAKYNAME
 
-/datum/reagent/fermi/SDZF/on_mob_life(mob/living/carbon/M) //If you're bad at fermichem, turns your clone into a zombie instead.
+/datum/reagent/impure/SDZF/on_mob_life(mob/living/carbon/M) //If you're bad at fermichem, turns your clone into a zombie instead.
 	switch(current_cycle)//Pretends to be normal
 		if(20)
 			to_chat(M, "<span class='notice'>You feel the synethic cells rest uncomfortably within your body as they start to pulse and grow rapidly.</span>")
@@ -330,7 +334,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 			M.adjustToxLoss(1, 0)// the warning!
 
 		if(86)//mean clone time!
-			if (!M.reagents.has_reagent("pen_acid"))//Counterplay is pent.)
+			if (!M.reagents.has_reagent(/datum/reagent/medicine/pen_acid))//Counterplay is pent.)
 				message_admins("(non-infectious) SDZF: Zombie spawned at [M] [COORD(M)]!")
 				M.nutrition = startHunger - 500//YOU BEST BE RUNNING AWAY AFTER THIS YOU BADDIE
 				M.next_move_modifier = 1
@@ -344,7 +348,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 				ZI.name = M.real_name
 				ZI.desc = "[M]'s clone, gone horribly wrong."
 				log_game("FERMICHEM: [M] ckey: [M.key]'s clone has become a horrifying zombie instead")
-				M.reagents.remove_reagent(id, 20)
+				M.reagents.remove_reagent(type, 20)
 
 			else//easier to deal with
 				to_chat(M, "<span class='notice'>The pentetic acid seems to have stopped the decay for now, clumping up the cells into a horrifying tumour!</span>")
@@ -354,11 +358,12 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 				S.name = "Living teratoma"
 				S.real_name = "Living teratoma"//horrifying!!
 				S.rabid = 1//Make them an angery boi
-				M.reagents.remove_reagent(id, volume)
+				M.reagents.remove_reagent(type, volume)
 				to_chat(M, "<span class='warning'>A large glob of the tumour suddenly splits itself from your body. You feel grossed out and slimey...</span>")
 				log_game("FERMICHEM: [M] ckey: [M.key]'s clone has become a horrifying teratoma instead")
 				SSblackbox.record_feedback("tally", "fermi_chem", 1, "Zombie clones made!")
 
 		if(87 to INFINITY)
-			M.adjustToxLoss(1, 0)
+			M.adjustToxLoss(2, 0)
+			M.reagents.remove_reagent(type, 1)
 	..()

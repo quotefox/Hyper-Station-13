@@ -12,7 +12,7 @@
 	var/datum/component/storage/detached_pockets
 
 /obj/item/clothing/accessory/proc/attach(obj/item/clothing/under/U, user)
-	GET_COMPONENT(storage, /datum/component/storage)
+	var/datum/component/storage/storage = GetComponent(/datum/component/storage)
 	if(storage)
 		if(SEND_SIGNAL(U, COMSIG_CONTAINS_STORAGE))
 			return FALSE
@@ -67,16 +67,18 @@
 	return
 
 /obj/item/clothing/accessory/AltClick(mob/user)
+	. = ..()
 	if(istype(user) && user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		if(initial(above_suit))
 			above_suit = !above_suit
 			to_chat(user, "[src] will be worn [above_suit ? "above" : "below"] your suit.")
+			return TRUE
 
 /obj/item/clothing/accessory/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>\The [src] can be attached to a uniform. Alt-click to remove it once attached.</span>")
+	. = ..()
+	. += "<span class='notice'>\The [src] can be attached to a uniform. Alt-click to remove it once attached.</span>"
 	if(initial(above_suit))
-		to_chat(user, "<span class='notice'>\The [src] can be worn above or below your suit. Alt-click to toggle.</span>")
+		. += "<span class='notice'>\The [src] can be worn above or below your suit. Alt-click to toggle.</span>"
 
 /obj/item/clothing/accessory/waistcoat
 	name = "waistcoat"
@@ -355,27 +357,38 @@
 	above_suit = TRUE
 	armor = list("melee" = 5, "bullet" = 5, "laser" = 5, "energy" = 5, "bomb" = 20, "bio" = 20, "rad" = 5, "fire" = 0, "acid" = 25)
 
+/obj/item/clothing/accessory/skullcodpiece/fake
+	name = "false codpiece"
+	desc = "A plastic ornament, intended to protect the important things in life. It's not very good at it."
+	icon_state = "skull"
+	item_color = "skull"
+	above_suit = TRUE
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+
 /////////////////////
-//Synda Accessories//
+//Syndie Accessories//
 /////////////////////
 
 /obj/item/clothing/accessory/padding
-	name = "soft padding"
-	desc = "Some long sheets of padding to help soften the blows of a physical attacks."
+	name = "protective padding"
+	desc = "A soft padding meant to cushion the wearer from melee harm."
 	icon_state = "padding"
 	item_color = "nothing"
-	armor = list("melee" = 15, "bullet" = 10, "laser" = 0, "energy" = 0, "bomb" = 5, "bio" = 0, "rad" = 0, "fire" = -20, "acid" = 45)
+	armor = list("melee" = 20, "bullet" = 10, "laser" = 0, "energy" = 0, "bomb" = 5, "bio" = 0, "rad" = 0, "fire" = -20, "acid" = 45)
+	flags_inv = HIDEACCESSORY //hidden from indiscrete mob examines.
 
 /obj/item/clothing/accessory/kevlar
-	name = "kevlar sheets"
-	desc = "Long thin sheets of kevlar to help resist bullets and some physical attacks.."
+	name = "kevlar padding"
+	desc = "A layered kevlar padding meant to cushion the wearer from ballistic harm."
 	icon_state = "padding"
 	item_color = "nothing"
 	armor = list("melee" = 10, "bullet" = 20, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 25)
+	flags_inv = HIDEACCESSORY
 
 /obj/item/clothing/accessory/plastics
-	name = "underling plastic sheet"
-	desc = "A full body sheet of white plastic to help defuse lasers and energy based weapons."
+	name = "ablative padding"
+	desc = "A thin ultra-refractory composite padding meant to cushion the wearer from energy lasers harm."
 	icon_state = "plastics"
 	item_color = "nothing"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 20, "energy" = 10, "bomb" = 0, "bio" = 30, "rad" = 0, "fire" = 0, "acid" = -40)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 20, "energy" = 10, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 20, "acid" = -40)
+	flags_inv = HIDEACCESSORY

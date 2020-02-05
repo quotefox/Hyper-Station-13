@@ -4,7 +4,7 @@
 //Potential replacement for genetics revives or something I dunno (?)
 
 #define CLONE_INITIAL_DAMAGE     150    //Clones in clonepods start with 150 cloneloss damage and 150 brainloss damage, thats just logical
-#define MINIMUM_HEAL_LEVEL 40
+#define MINIMUM_HEAL_LEVEL 20
 
 #define SPEAK(message) radio.talk_into(src, message, radio_channel)
 
@@ -67,12 +67,9 @@
 	for(var/obj/item/stock_parts/scanning_module/S in component_parts)
 		efficiency += S.rating
 	for(var/obj/item/stock_parts/manipulator/P in component_parts)
-		speed_coeff += P.rating
-	heal_level = (efficiency * 15) + 10
-	if(heal_level < MINIMUM_HEAL_LEVEL)
-		heal_level = MINIMUM_HEAL_LEVEL
-	if(heal_level > 100)
-		heal_level = 100
+		speed_coeff += (P.rating / 2)
+	speed_coeff = max(1, speed_coeff)
+	heal_level = CLAMP((efficiency * 10) + 10, MINIMUM_HEAL_LEVEL, 100)
 
 //The return of data disks?? Just for transferring between genetics machine/cloning machine.
 //TO-DO: Make the genetics machine accept them.
@@ -80,8 +77,6 @@
 	name = "cloning data disk"
 	icon_state = "datadisk0" //Gosh I hope syndies don't mistake them for the nuke disk.
 	var/list/fields = list()
-	var/list/mutations = list()
-	var/max_mutations = 6
 	var/read_only = 0 //Well,it's still a floppy disk
 
 //Disk stuff.
@@ -95,20 +90,25 @@
 	to_chat(user, "<span class='notice'>You flip the write-protect tab to [read_only ? "protected" : "unprotected"].</span>")
 
 /obj/item/disk/data/examine(mob/user)
-	..()
-	to_chat(user, "The write-protect tab is set to [read_only ? "protected" : "unprotected"].")
+	. = ..()
+	. += "The write-protect tab is set to [read_only ? "protected" : "unprotected"]."
 
 
 //Clonepod
 
 /obj/machinery/clonepod/examine(mob/user)
-	..()
+	. = ..()
 	var/mob/living/mob_occupant = occupant
+	. += "<span class='notice'>The <i>linking</i> device can be <i>scanned<i> with a multitool.</span>"
 	if(mess)
-		to_chat(user, "It's filled with blood and viscera. You swear you can see it moving...")
+		. += "It's filled with blood and viscera. You swear you can see it moving..."
+	if(in_range(user, src) || isobserver(user))
+		. += "<span class='notice'>The status display reads: Cloning speed at <b>[speed_coeff*50]%</b>.<br>Predicted amount of cellular damage: <b>[100-heal_level]%</b>.</span>"
+		if(efficiency > 5)
+			to_chat(user, "<span class='notice'>Pod has been upgraded to support autoprocessing.<span>")
 	if(is_operational() && mob_occupant)
 		if(mob_occupant.stat != DEAD)
-			to_chat(user, "Current clone cycle is [round(get_completion())]% complete.")
+			. += "Current clone cycle is [round(get_completion())]% complete."
 
 /obj/machinery/clonepod/return_air()
 	// We want to simulate the clone not being in contact with
@@ -129,7 +129,7 @@
 	return examine(user)
 
 //Start growing a human clone in the pod!
-/obj/machinery/clonepod/proc/growclone(ckey, clonename, ui, mutation_index, mindref, datum/species/mrace, list/features, factions, list/quirks)
+/obj/machinery/clonepod/proc/growclone(ckey, clonename, ui, se, mindref, datum/species/mrace, list/features, factions, list/quirks)
 	if(panel_open)
 		return FALSE
 	if(mess || attempting)
@@ -157,16 +157,16 @@
 		mess = TRUE
 		update_icon()
 		return FALSE
+	if(isvamp(clonemind)) //If the mind is a bloodsucker
+		return FALSE
 
 	attempting = TRUE //One at a time!!
 	countdown.start()
 
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
 
-	H.hardset_dna(ui, mutation_index, H.real_name, null, mrace, features)
-
-	if(prob(50 - efficiency*10)) //Chance to give a bad mutation.
-		H.easy_randmut(NEGATIVE+MINOR_NEGATIVE) //100% bad mutation. Can be cured with mutadone.
+	H.hardset_dna(ui, se, H.real_name, null, mrace, features)
+	H.randmutb() //100% bad mutation. Can be cured with mutadone.
 
 	H.silent = 20 //Prevents an extreme edge case where clones could speak if they said something at exactly the right moment.
 	occupant = H
@@ -177,11 +177,12 @@
 
 	//Get the clone body ready
 	maim_clone(H)
-	ADD_TRAIT(H, TRAIT_STABLEHEART, "cloning")
-	ADD_TRAIT(H, TRAIT_EMOTEMUTE, "cloning")
-	ADD_TRAIT(H, TRAIT_MUTE, "cloning")
-	ADD_TRAIT(H, TRAIT_NOBREATH, "cloning")
-	ADD_TRAIT(H, TRAIT_NOCRITDAMAGE, "cloning")
+	ADD_TRAIT(H, TRAIT_STABLEHEART, CLONING_POD_TRAIT)
+	ADD_TRAIT(H, TRAIT_STABLELIVER, CLONING_POD_TRAIT)
+	ADD_TRAIT(H, TRAIT_EMOTEMUTE, CLONING_POD_TRAIT)
+	ADD_TRAIT(H, TRAIT_MUTE, CLONING_POD_TRAIT)
+	ADD_TRAIT(H, TRAIT_NOBREATH, CLONING_POD_TRAIT)
+	ADD_TRAIT(H, TRAIT_NOCRITDAMAGE, CLONING_POD_TRAIT)
 	H.Unconscious(80)
 
 	clonemind.transfer_to(H)
@@ -251,7 +252,6 @@
 
 			//Premature clones may have brain damage.
 			mob_occupant.adjustOrganLoss(ORGAN_SLOT_BRAIN, -((speed_coeff / 2) * dmg_mult))
-
 
 			use_power(7500) //This might need tweaking.
 
@@ -325,10 +325,12 @@
 		return ..()
 
 /obj/machinery/clonepod/emag_act(mob/user)
+	. = ..()
 	if(!occupant)
 		return
 	to_chat(user, "<span class='warning'>You corrupt the genetic compiler.</span>")
 	malfunction()
+	return TRUE
 
 //Put messages in the connected computer's temp var for display.
 /obj/machinery/clonepod/proc/connected_message(message)
@@ -354,7 +356,8 @@
 				O.organ_flags &= ~ORGAN_FROZEN
 		unattached_flesh.Cut()
 		mess = FALSE
-		new /obj/effect/gibspawner/generic(get_turf(src))
+		if(mob_occupant)
+			mob_occupant.spawn_gibs()
 		audible_message("<span class='italics'>You hear a splat.</span>")
 		update_icon()
 		return
@@ -362,11 +365,12 @@
 	if(!mob_occupant)
 		return
 
-	REMOVE_TRAIT(mob_occupant, TRAIT_STABLEHEART, "cloning")
-	REMOVE_TRAIT(mob_occupant, TRAIT_EMOTEMUTE, "cloning")
-	REMOVE_TRAIT(mob_occupant, TRAIT_MUTE, "cloning")
-	REMOVE_TRAIT(mob_occupant, TRAIT_NOCRITDAMAGE, "cloning")
-	REMOVE_TRAIT(mob_occupant, TRAIT_NOBREATH, "cloning")
+	REMOVE_TRAIT(mob_occupant, TRAIT_STABLEHEART, CLONING_POD_TRAIT)
+	REMOVE_TRAIT(mob_occupant, TRAIT_STABLELIVER, CLONING_POD_TRAIT)
+	REMOVE_TRAIT(mob_occupant, TRAIT_EMOTEMUTE, CLONING_POD_TRAIT)
+	REMOVE_TRAIT(mob_occupant, TRAIT_MUTE, CLONING_POD_TRAIT)
+	REMOVE_TRAIT(mob_occupant, TRAIT_NOCRITDAMAGE, CLONING_POD_TRAIT)
+	REMOVE_TRAIT(mob_occupant, TRAIT_NOBREATH, CLONING_POD_TRAIT)
 
 	if(grab_ghost_when == CLONER_MATURE_CLONE)
 		mob_occupant.grab_ghost()
@@ -467,13 +471,11 @@
 		if(!istype(organ) || (organ.organ_flags & ORGAN_VITAL))
 			continue
 		organ.organ_flags |= ORGAN_FROZEN
-		organ.Remove(H, special=TRUE)
+		organ.Remove(TRUE)
 		organ.forceMove(src)
 		unattached_flesh += organ
 
 	flesh_number = unattached_flesh.len
-
-#define CRYOMOBS 'icons/obj/cryo_mobs.dmi'
 
 /obj/machinery/clonepod/update_icon()
 	cut_overlays()
@@ -552,4 +554,3 @@
 #undef CLONE_INITIAL_DAMAGE
 #undef SPEAK
 #undef MINIMUM_HEAL_LEVEL
-

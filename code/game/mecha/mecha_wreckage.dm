@@ -30,9 +30,9 @@
 	AI.remote_control = null
 
 /obj/structure/mecha_wreckage/examine(mob/user)
-	..()
+	. = ..()
 	if(AI)
-		to_chat(user, "<span class='notice'>The AI recovery beacon is active.</span>")
+		. += "<span class='notice'>The AI recovery beacon is active.</span>"
 
 /obj/structure/mecha_wreckage/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/weldingtool))
@@ -161,22 +161,6 @@
 			welder_salvage += part
 			parts -= part
 
-/obj/structure/mecha_wreckage/ripley/mkii
-	name = "\improper Ripley MK-II wreckage"
-	icon_state = "ripleymkii-broken"
-
-/obj/structure/mecha_wreckage/ripley/mkii/Initialize()
-	. = ..()
-	var/list/parts = list(/obj/item/mecha_parts/part/ripley_torso,
-								/obj/item/mecha_parts/part/ripley_left_arm,
-								/obj/item/mecha_parts/part/ripley_right_arm,
-								/obj/item/mecha_parts/part/ripley_left_leg,
-								/obj/item/mecha_parts/part/ripley_right_leg)
-	for(var/i = 0; i < 2; i++)
-		if(parts.len && prob(40))
-			var/part = pick(parts)
-			welder_salvage += part
-			parts -= part
 
 /obj/structure/mecha_wreckage/ripley/firefighter
 	name = "\improper Firefighter wreckage"

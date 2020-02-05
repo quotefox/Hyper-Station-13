@@ -33,8 +33,8 @@
 /obj/item/survivalcapsule/examine(mob/user)
 	. = ..()
 	get_template()
-	to_chat(user, "This capsule has the [template.name] stored.")
-	to_chat(user, template.description)
+	. += "This capsule has the [template.name] stored."
+	. += template.description
 
 /obj/item/survivalcapsule/attack_self()
 	//Can't grab when capsule is New() because templates aren't loaded then
@@ -67,20 +67,17 @@
 		new /obj/effect/particle_effect/smoke(get_turf(src))
 		qdel(src)
 
-/obj/item/survivalcapsule/advanced
-	name = "advanced bluespace shelter capsule"
-	desc = "A medium sized and slightly more advanced shelter capsule stored within a pocket of bluespace."
-	template_id = "shelter_beta"
-
-/obj/item/survivalcapsule/deluxe
-	name = "deluxe bluespace shelter capsule"
-	desc = "A large shelter capsule stored within a pocket of bluespace."
-	template_id = "shelter_charlie"
+//Non-default pods
 
 /obj/item/survivalcapsule/luxury
 	name = "luxury bluespace shelter capsule"
-	desc = "A nice luxury bluespace capsule for miners with spare time. Comes with a bar, bedroom, basic pod equipment and an observation deck."
-	template_id = "shelter_delta"
+	desc = "An exorbitantly expensive luxury suite stored within a pocket of bluespace."
+	template_id = "shelter_beta"
+
+/obj/item/survivalcapsule/luxuryelite
+	name = "luxury elite bar capsule"
+	desc = "A luxury bar in a capsule. Bartender required and not included."
+	template_id = "shelter_charlie"
 
 //Pod objects
 

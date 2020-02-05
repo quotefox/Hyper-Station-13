@@ -52,6 +52,7 @@
 			if(2)	//steal
 				var/datum/objective/steal/special/O = new /datum/objective/steal/special()
 				O.owner = owner
+				O.find_target()
 				objectives += O
 
 			if(3)	//protect/kill
@@ -96,7 +97,6 @@
 	var/datum/objective/O = new /datum/objective/survive()
 	O.owner = owner
 	objectives += O
-	owner.objectives |= objectives
 
 /proc/remove_ninja(mob/living/L)
 	if(!L || !L.mind)

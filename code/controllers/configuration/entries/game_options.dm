@@ -66,9 +66,16 @@
 
 /datum/config_entry/flag/disable_human_mood
 
+/datum/config_entry/flag/disable_borg_flash_knockdown //Should borg flashes be capable of knocking humanoid entities down?
+
+/datum/config_entry/flag/weaken_secborg //Brings secborgs and k9s back in-line with the other borg modules
+
 /datum/config_entry/flag/disable_secborg	// disallow secborg module to be chosen.
 
 /datum/config_entry/flag/disable_peaceborg
+
+/datum/config_entry/number/minimum_secborg_alert	//Minimum alert level for secborgs to be chosen.
+	config_entry_value = 3
 
 /datum/config_entry/number/traitor_scaling_coeff	//how much does the amount of players get divided by to determine traitors
 	config_entry_value = 6
@@ -131,6 +138,14 @@
 	integer = FALSE
 	min_val = 0
 	max_val = 1
+
+/datum/config_entry/number/suicide_reenter_round_timer
+	config_entry_value = 30
+	min_val = 0
+
+/datum/config_entry/number/roundstart_suicide_time_limit
+	config_entry_value = 30
+	min_val = 0
 
 /datum/config_entry/number/shuttle_refuel_delay
 	config_entry_value = 12000
@@ -233,6 +248,18 @@
 /datum/config_entry/number/movedelay/run_delay
 
 /datum/config_entry/number/movedelay/walk_delay
+
+/datum/config_entry/number/movedelay/sprint_speed_increase
+	config_entry_value = 1
+
+/datum/config_entry/number/movedelay/sprint_buffer_max
+	config_entry_value = 42
+
+/datum/config_entry/number/movedelay/sprint_stamina_cost
+	config_entry_value = 0.7
+
+/datum/config_entry/number/movedelay/sprint_buffer_regen_per_ds
+	config_entry_value = 0.3
 
 /////////////////////////////////////////////////Outdated move delay
 /datum/config_entry/number/outdated_movedelay
@@ -347,6 +374,15 @@
 
 /datum/config_entry/flag/enable_night_shifts
 
+/datum/config_entry/number/night_shift_public_areas_only
+	config_entry_value = NIGHTSHIFT_AREA_PUBLIC
+
+/datum/config_entry/flag/nightshift_toggle_requires_auth
+	config_entry_value = FALSE
+
+/datum/config_entry/flag/nightshift_toggle_public_requires_auth
+	config_entry_value = TRUE
+
 /datum/config_entry/flag/randomize_shift_time
 
 /datum/config_entry/flag/shift_time_realtime
@@ -361,6 +397,28 @@
 
 /datum/config_entry/flag/disable_stambuffer
 
+/datum/config_entry/keyed_list/box_random_engine
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_NUM
+	lowercase = FALSE
+	splitter = ","
+
 /datum/config_entry/number/auto_transfer_delay
 	config_entry_value = 72000
 	min_val = 0
+
+/datum/config_entry/flag/pai_custom_holoforms
+
+/datum/config_entry/number/marauder_delay_non_reebe
+	config_entry_value = 1800
+	min_val = 0
+
+/datum/config_entry/flag/allow_clockwork_marauder_on_station
+	config_entry_value = TRUE
+
+/datum/config_entry/flag/modetier_voting
+
+/datum/config_entry/number/dropped_modes
+	config_entry_value = 3
+
+/datum/config_entry/flag/suicide_allowed

@@ -27,6 +27,8 @@
 	var/pullshocksafely = FALSE //Dose the unit have the healdisk upgrade?
 	var/primetime = 0 // is the defib faster
 	var/timedeath = 10
+	var/disarm_shock_time = 10
+	var/always_emagged = FALSE
 
 /obj/item/defibrillator/get_cell()
 	return cell
@@ -39,15 +41,13 @@
 
 /obj/item/defibrillator/loaded/Initialize() //starts with hicap
 	. = ..()
-	paddles = make_paddles()
 	cell = new(src)
 	update_icon()
 	return
 
 /obj/item/defibrillator/update_icon()
 	update_power()
-	update_overlays()
-	update_charge()
+	return ..()
 
 /obj/item/defibrillator/proc/update_power()
 	if(!QDELETED(cell))
@@ -58,23 +58,20 @@
 	else
 		powered = FALSE
 
-/obj/item/defibrillator/proc/update_overlays()
-	cut_overlays()
+/obj/item/defibrillator/update_overlays()
+	. = ..()
 	if(!on)
-		add_overlay("[initial(icon_state)]-paddles")
+		. += "[initial(icon_state)]-paddles"
 	if(powered)
-		add_overlay("[initial(icon_state)]-powered")
-	if(!cell)
-		add_overlay("[initial(icon_state)]-nocell")
-	if(!safety)
-		add_overlay("[initial(icon_state)]-emagged")
-
-/obj/item/defibrillator/proc/update_charge()
-	if(powered) //so it doesn't show charge if it's unpowered
+		. += "[initial(icon_state)]-powered"
 		if(!QDELETED(cell))
 			var/ratio = cell.charge / cell.maxcharge
 			ratio = CEILING(ratio*4, 1) * 25
 			add_overlay("[initial(icon_state)]-charge[ratio]")
+	if(!cell)
+		. += "[initial(icon_state)]-nocell"
+	if(!safety)
+		. += "[initial(icon_state)]-emagged"
 
 /obj/item/defibrillator/CheckParts(list/parts_list)
 	..()
@@ -105,7 +102,7 @@
 
 /obj/item/defibrillator/MouseDrop(obj/over_object)
 	. = ..()
-	if(ismob(loc))
+	if(!. && ismob(loc) && loc == usr)
 		var/mob/M = loc
 		if(!M.incapacitated() && istype(over_object, /obj/screen/inventory/hand))
 			var/obj/screen/inventory/hand/H = over_object
@@ -141,6 +138,7 @@
 
 /obj/item/defibrillator/emag_act(mob/user)
 	. = ..()
+	always_emagged = TRUE
 	safety = !safety
 	to_chat(user, "<span class='warning'>You silently [safety ? "enable" : "disable"] [src]'s safety protocols with the cryptographic sequencer.</span>")
 	return TRUE
@@ -155,7 +153,7 @@
 		safety = FALSE
 		visible_message("<span class='notice'>[src] beeps: Safety protocols disabled!</span>")
 		playsound(src, 'sound/machines/defib_saftyOff.ogg', 50, 0)
-	else
+	else if(!always_emagged)
 		safety = TRUE
 		visible_message("<span class='notice'>[src] beeps: Safety protocols enabled!</span>")
 		playsound(src, 'sound/machines/defib_saftyOn.ogg', 50, 0)
@@ -193,7 +191,7 @@
 		remove_paddles(user)
 		update_icon()
 
-/obj/item/defibrillator/item_action_slot_check(slot, mob/user)
+/obj/item/defibrillator/item_action_slot_check(slot, mob/user, datum/action/A)
 	if(slot == user.getBackSlot())
 		return 1
 
@@ -208,8 +206,8 @@
 		var/M = get(paddles, /mob)
 		remove_paddles(M)
 	QDEL_NULL(paddles)
-	. = ..()
-	update_icon()
+	QDEL_NULL(cell)
+	return ..()
 
 /obj/item/defibrillator/proc/deductcharge(chrgdeductamt)
 	if(cell)
@@ -244,13 +242,12 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BELT
 
-/obj/item/defibrillator/compact/item_action_slot_check(slot, mob/user)
+/obj/item/defibrillator/compact/item_action_slot_check(slot, mob/user, datum/action/A)
 	if(slot == user.getBeltSlot())
 		return TRUE
 
 /obj/item/defibrillator/compact/loaded/Initialize()
 	. = ..()
-	paddles = make_paddles()
 	cell = new(src)
 	update_icon()
 
@@ -259,10 +256,11 @@
 	desc = "A belt-equipped blood-red defibrillator that can be rapidly deployed. Does not have the restrictions or safeties of conventional defibrillators and can revive through space suits."
 	combat = TRUE
 	safety = FALSE
+	always_emagged = TRUE
+	disarm_shock_time = 0
 
 /obj/item/defibrillator/compact/combat/loaded/Initialize()
 	. = ..()
-	paddles = make_paddles()
 	cell = new /obj/item/stock_parts/cell/infinite(src)
 	update_icon()
 
@@ -296,32 +294,30 @@
 	var/combat = FALSE //If it penetrates armor and gives additional functionality
 	var/grab_ghost = FALSE
 	var/tlimit = DEFIB_TIME_LIMIT * 10
+	var/disarm_shock_time = 10
 
-	var/datum/component/mobhook
+	var/mob/listeningTo
 
 /obj/item/twohanded/shockpaddles/equipped(mob/user, slot)
 	. = ..()
-	if(req_defib)
-		if (mobhook && mobhook.parent != user)
-			QDEL_NULL(mobhook)
-		if (!mobhook)
-			mobhook = user.AddComponent(/datum/component/redirect, list(COMSIG_MOVABLE_MOVED = CALLBACK(src, .proc/check_range)))
+	if(!req_defib)
+		return
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/check_range)
 
 /obj/item/twohanded/shockpaddles/Moved()
 	. = ..()
 	check_range()
 
 /obj/item/twohanded/shockpaddles/proc/check_range()
-	if(!req_defib)
+	if(!req_defib || !defib)
 		return
 	if(!in_range(src,defib))
 		var/mob/living/L = loc
 		if(istype(L))
 			to_chat(L, "<span class='warning'>[defib]'s paddles overextend and come out of your hands!</span>")
-			L.temporarilyRemoveItemFromInventory(src,TRUE)
 		else
 			visible_message("<span class='notice'>[src] snap back into [defib].</span>")
-			snap_back()
+		snap_back()
 
 /obj/item/twohanded/shockpaddles/proc/recharge(var/time)
 	if(req_defib || !time)
@@ -362,14 +358,14 @@
 /obj/item/twohanded/shockpaddles/dropped(mob/user)
 	if(!req_defib)
 		return ..()
-	if (mobhook)
-		QDEL_NULL(mobhook)
 	if(user)
+		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 		var/obj/item/twohanded/offhand/O = user.get_inactive_held_item()
 		if(istype(O))
 			O.unwield()
-		to_chat(user, "<span class='notice'>The paddles snap back into the main unit.</span>")
-		snap_back()
+		if(user != loc)
+			to_chat(user, "<span class='notice'>The paddles snap back into the main unit.</span>")
+			snap_back()
 	return unwield(user)
 
 /obj/item/twohanded/shockpaddles/proc/snap_back()
@@ -456,14 +452,15 @@
 	return TRUE
 
 /obj/item/twohanded/shockpaddles/proc/shock_touching(dmg, mob/H)
-	if(req_defib)
-		if(defib.pullshocksafely && isliving(H.pulledby))
-			H.visible_message("<span class='danger'>The defibrillator safely discharges the excessive charge into the floor!</span>")
-	else
-		var/mob/living/M = H.pulledby
-		if(M.electrocute_act(30, src))
-			M.visible_message("<span class='danger'>[M] is electrocuted by [M.p_their()] contact with [H]!</span>")
-			M.emote("scream")
+	if(!H.pulledby || !isliving(H.pulledby))
+		return
+	if(req_defib && defib.pullshocksafely)
+		H.visible_message("<span class='danger'>The defibrillator safely discharges the excessive charge into the floor!</span>")
+		return
+	var/mob/living/M = H.pulledby
+	if(M.electrocute_act(30, src))
+		M.visible_message("<span class='danger'>[M] is electrocuted by [M.p_their()] contact with [H]!</span>")
+		M.emote("scream")
 
 /obj/item/twohanded/shockpaddles/proc/do_disarm(mob/living/M, mob/living/user)
 	if(req_defib && defib.safety)
@@ -473,7 +470,7 @@
 	M.visible_message("<span class='danger'>[user] hastily places [src] on [M]'s chest!</span>", \
 			"<span class='userdanger'>[user] hastily places [src] on [M]'s chest!</span>")
 	busy = TRUE
-	if(do_after(user, 10, target = M))
+	if(do_after(user, isnull(defib?.disarm_shock_time)? disarm_shock_time : defib.disarm_shock_time, target = M))
 		M.visible_message("<span class='danger'>[user] zaps [M] with [src]!</span>", \
 				"<span class='userdanger'>[user] zaps [M] with [src]!</span>")
 		M.adjustStaminaLoss(50)
@@ -740,9 +737,8 @@
 /obj/item/disk/medical
 	name = "Defibrillator Upgrade Disk"
 	desc = "A blank upgrade disk, made for a defibrillator"
-	icon = 'modular_citadel/icons/obj/defib_disks.dmi'
-	icon_state = "upgrade_disk"
-	item_state = "heal_disk"
+	icon_state = "heal_disk"
+	item_state = "defib_disk"
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/disk/medical/defib_heal
@@ -768,5 +764,3 @@
 	desc = "An upgrade to the defibrillator capacitors, which let it charge faster"
 	icon_state = "fast_disk"
 	materials = list(MAT_METAL=16000, MAT_GLASS = 8000, MAT_GOLD = 26000, MAT_SILVER = 26000)
-
-#undef HALFWAYCRITDEATH

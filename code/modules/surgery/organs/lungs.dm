@@ -12,10 +12,12 @@
 	var/operated = FALSE	//whether we can still have our damages fixed through surgery
 
 	//health
-	maxHealth = LUNGS_MAX_HEALTH
+	maxHealth = 3 * STANDARD_ORGAN_THRESHOLD
 
 	healing_factor = STANDARD_ORGAN_HEALING
 	decay_factor = STANDARD_ORGAN_DECAY
+	high_threshold = 0.6 * LUNGS_MAX_HEALTH	//threshold at 180
+	low_threshold = 0.3 * LUNGS_MAX_HEALTH	//threshold at 90
 
 	high_threshold_passed = "<span class='warning'>You feel some sort of constriction around your chest as your breathing becomes shallow and rapid.</span>"
 	now_fixed = "<span class='warning'>Your lungs seem to once again be able to hold air.</span>"
@@ -67,7 +69,7 @@
 	var/heat_level_3_damage = HEAT_GAS_DAMAGE_LEVEL_3
 	var/heat_damage_type = BURN
 
-	var/crit_stabilizing_reagent = "epinephrine"
+	var/crit_stabilizing_reagent = /datum/reagent/medicine/epinephrine
 
 
 
@@ -299,13 +301,13 @@
 		var/bz_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/bz])
 		if(bz_pp > BZ_trip_balls_min)
 			H.hallucination += 10
-			H.reagents.add_reagent("bz_metabolites",5)
+			H.reagents.add_reagent(/datum/reagent/bz_metabolites,5)
 			if(prob(33))
 				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3, 150)
 
 		else if(bz_pp > 0.01)
 			H.hallucination += 5
-			H.reagents.add_reagent("bz_metabolites",1)
+			H.reagents.add_reagent(/datum/reagent/bz_metabolites,1)
 
 
 	// Tritium
@@ -329,16 +331,15 @@
 			H.adjustFireLoss(nitryl_pp/4)
 		gas_breathed = breath_gases[/datum/gas/nitryl]
 		if (gas_breathed > gas_stimulation_min)
-			var/existing = H.reagents.get_reagent_amount("no2")
-			H.reagents.add_reagent("no2", max(0, 5 - existing))
+			H.reagents.add_reagent(/datum/reagent/nitryl,1)
 
 		breath_gases[/datum/gas/nitryl]-=gas_breathed
 
 	// Stimulum
 		gas_breathed = breath_gases[/datum/gas/stimulum]
 		if (gas_breathed > gas_stimulation_min)
-			var/existing = H.reagents.get_reagent_amount("stimulum")
-			H.reagents.add_reagent("stimulum", max(0, 5 - existing))
+			var/existing = H.reagents.get_reagent_amount(/datum/reagent/stimulum)
+			H.reagents.add_reagent(/datum/reagent/stimulum, max(0, 5 - existing))
 		breath_gases[/datum/gas/stimulum]-=gas_breathed
 
 	// Miasma
@@ -458,7 +459,7 @@
 
 /obj/item/organ/lungs/prepare_eat()
 	var/obj/S = ..()
-	S.reagents.add_reagent("salbutamol", 5)
+	S.reagents.add_reagent(/datum/reagent/medicine/salbutamol, 5)
 	return S
 
 /obj/item/organ/lungs/plasmaman

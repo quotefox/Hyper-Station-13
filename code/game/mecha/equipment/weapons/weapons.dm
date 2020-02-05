@@ -1,6 +1,6 @@
 /obj/item/mecha_parts/mecha_equipment/weapon
 	name = "mecha weapon"
-	range = MECHA_RANGED
+	range = RANGED
 	var/projectile
 	var/fire_sound
 	var/projectiles_per_shot = 1
@@ -53,7 +53,7 @@
 
 	if(kickback)
 		chassis.newtonian_move(turn(chassis.dir,180))
-	chassis.log_message("Fired from [src.name], targeting [target].")
+	chassis.mecha_log_message("Fired from [src.name], targeting [target].")
 	return 1
 
 
@@ -154,7 +154,7 @@
 	icon_state = "mecha_honker"
 	energy_drain = 200
 	equip_cooldown = 150
-	range = MECHA_MELEE|MECHA_RANGED
+	range = MELEE|RANGED
 	kickback = FALSE
 
 /obj/item/mecha_parts/mecha_equipment/weapon/honker/can_attach(obj/mecha/combat/honker/M)
@@ -184,7 +184,7 @@
 		else
 			M.Jitter(500)
 
-	log_message("Honked from [src.name]. HONK!")
+	mecha_log_message("Honked from [src.name]. HONK!")
 	var/turf/T = get_turf(src)
 	message_admins("[ADMIN_LOOKUPFLW(chassis.occupant)] used a Mecha Honker in [ADMIN_VERBOSEJMP(T)]")
 	log_game("[key_name(chassis.occupant)] used a Mecha Honker in [AREACOORD(T)]")
@@ -220,7 +220,7 @@
 			projectiles_to_add--
 			chassis.use_power(projectile_energy_cost)
 	send_byjax(chassis.occupant,"exosuit.browser","[REF(src)]",src.get_equip_info())
-	log_message("Rearmed [src.name].")
+	mecha_log_message("Rearmed [src.name].")
 	return 1
 
 
@@ -279,12 +279,12 @@
 	name = "\improper Melon Seed \"Scattershot\""
 	desc = "A weapon for combat exosuits. Shoots a spread of pellets, shaped as seed."
 	icon_state = "mecha_scatter"
-	equip_cooldown = 30
+	equip_cooldown = 20
 	projectile = /obj/item/projectile/bullet/seed
-	projectiles = 4
-	projectile_energy_cost = 55
+	projectiles = 20
+	projectile_energy_cost = 25
 	projectiles_per_shot = 10
-	variance = 20
+	variance = 25
 	harmful = TRUE
 
 /obj/item/mecha_parts/mecha_equipment/weapon/ballistic/lmg
@@ -323,7 +323,7 @@
 		return
 	var/obj/O = new projectile(chassis.loc)
 	playsound(chassis, fire_sound, 50, 1)
-	log_message("Launched a [O.name] from [name], targeting [target].")
+	mecha_log_message("Launched a [O.name] from [name], targeting [target].")
 	projectiles--
 	proj_init(O)
 	O.throw_at(target, missile_range, missile_speed, chassis.occupant, FALSE, diagonals_first = diags_first)
@@ -405,7 +405,7 @@
 	icon_state = "mecha_punching_glove"
 	energy_drain = 250
 	equip_cooldown = 20
-	range = MECHA_MELEE|MECHA_RANGED
+	range = MELEE|RANGED
 	missile_range = 5
 	projectile = /obj/item/punching_glove
 	fire_sound = 'sound/items/bikehorn.ogg'
@@ -436,7 +436,7 @@
 	throwforce = 35
 	icon_state = "punching_glove"
 
-/obj/item/punching_glove/throw_impact(atom/hit_atom)
+/obj/item/punching_glove/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(!..())
 		if(ismovableatom(hit_atom))
 			var/atom/movable/AM = hit_atom

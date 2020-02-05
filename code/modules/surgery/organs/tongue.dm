@@ -22,10 +22,11 @@
 		/datum/language/ratvar,
 		/datum/language/aphasia,
 		/datum/language/slime,
+		/datum/language/vampiric,
+		/datum/language/dwarf,
 	))
 	healing_factor = STANDARD_ORGAN_HEALING*5 //Fast!!
 	decay_factor = STANDARD_ORGAN_DECAY/2
-
 
 /obj/item/organ/tongue/Initialize(mapload)
 	. = ..()
@@ -63,7 +64,7 @@
 		to_chat(owner, "<span class='notice'>Your tongue is really starting to hurt.</span>")
 
 
-/obj/item/organ/tongue/Insert(mob/living/carbon/M, special = 0)
+/obj/item/organ/tongue/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)
 	..()
 	if(say_mod && M.dna && M.dna.species)
 		M.dna.species.say_mod = say_mod
@@ -71,12 +72,13 @@
 		RegisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
 	M.UnregisterSignal(M, COMSIG_MOB_SAY)
 
-/obj/item/organ/tongue/Remove(mob/living/carbon/M, special = 0)
-	..()
-	if(say_mod && M.dna && M.dna.species)
-		M.dna.species.say_mod = initial(M.dna.species.say_mod)
-	UnregisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
-	M.RegisterSignal(M, COMSIG_MOB_SAY, /mob/living/carbon/.proc/handle_tongueless_speech)
+/obj/item/organ/tongue/Remove(special = FALSE)
+	if(!QDELETED(owner))
+		if(say_mod && owner.dna?.species)
+			owner.dna.species.say_mod = initial(owner.dna.species.say_mod)
+		UnregisterSignal(owner, COMSIG_MOB_SAY, .proc/handle_speech)
+		owner.RegisterSignal(owner, COMSIG_MOB_SAY, /mob/living/carbon/.proc/handle_tongueless_speech)
+	return ..()
 
 /obj/item/organ/tongue/could_speak_in_language(datum/language/dt)
 	return is_type_in_typecache(dt, languages_possible)
@@ -125,6 +127,32 @@
 	taste_sensitivity = 101 // ayys cannot taste anything.
 	maxHealth = 120 //Ayys probe a lot
 	modifies_speech = TRUE
+	var/mothership
+
+/obj/item/organ/tongue/abductor/attack_self(mob/living/carbon/human/H)
+	if(!istype(H))
+		return
+
+	var/obj/item/organ/tongue/abductor/T = H.getorganslot(ORGAN_SLOT_TONGUE)
+	if(!istype(T))
+		return
+
+	if(T.mothership == mothership)
+		to_chat(H, "<span class='notice'>[src] is already attuned to the same channel as your own.</span>")
+		return
+
+	H.visible_message("<span class='notice'>[H] holds [src] in their hands, and concentrates for a moment.</span>", "<span class='notice'>You attempt to modify the attunation of [src].</span>")
+	if(do_after(H, delay=15, target=src))
+		to_chat(H, "<span class='notice'>You attune [src] to your own channel.</span>")
+		mothership = T.mothership
+
+/obj/item/organ/tongue/abductor/examine(mob/M)
+	. = ..()
+	if(HAS_TRAIT(M, TRAIT_ABDUCTOR_TRAINING) || HAS_TRAIT(M.mind, TRAIT_ABDUCTOR_TRAINING) || isobserver(M))
+		if(!mothership)
+			. += "<span class='notice'>It is not attuned to a specific mothership.</span>"
+		else
+			. += "<span class='notice'>It is attuned to [mothership].</span>"
 
 /obj/item/organ/tongue/abductor/handle_speech(datum/source, list/speech_args)
 	//Hacks
@@ -163,7 +191,7 @@
 		var/insertpos = rand(1, message_list.len - 1)
 		var/inserttext = message_list[insertpos]
 
-		if(!(copytext(inserttext, length(inserttext) - 2) == "..."))
+		if(!(copytext(inserttext, -3) == "..."))//3 == length("...")
 			message_list[insertpos] = inserttext + "..."
 
 		if(prob(20) && message_list.len > 3)
@@ -212,6 +240,8 @@
 	phomeme_type = pick(phomeme_types)
 
 /obj/item/organ/tongue/bone/applyOrganDamage(var/d, var/maximum = maxHealth)
+	if(d < 0)
+		return
 	if(!owner)
 		return
 	var/target = owner.get_bodypart(BODY_ZONE_HEAD)
@@ -232,7 +262,6 @@
 	name = "plasma bone \"tongue\""
 	desc = "Like animated skeletons, Plasmamen vibrate their teeth in order to produce speech."
 	icon_state = "tongueplasma"
-	maxHealth = "alien"
 	modifies_speech = FALSE
 
 /obj/item/organ/tongue/robot
@@ -263,7 +292,7 @@
 
 /obj/item/organ/tongue/fluffy/handle_speech(datum/source, list/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
-	if(copytext(message, 1, 2) != "*")
+	if(message[1] != "*")
 		message = replacetext(message, "ne", "nye")
 		message = replacetext(message, "nu", "nyu")
 		message = replacetext(message, "na", "nya")

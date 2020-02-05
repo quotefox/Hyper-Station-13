@@ -13,5 +13,5 @@
       <ui-button state='{{selected ? "selected" : null}}'
         action='filter' params='{"mode": {{id}}}'>{{name}}</ui-button>
     {{/each}}
-  </ui-section>
+	</ui-section>
 </ui-display>

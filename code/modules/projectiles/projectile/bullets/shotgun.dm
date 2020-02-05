@@ -5,7 +5,7 @@
 /obj/item/projectile/bullet/shotgun_beanbag
 	name = "beanbag slug"
 	damage = 5
-	stamina = 80
+	stamina = 70
 
 /obj/item/projectile/bullet/incendiary/shotgun
 	name = "incendiary slug"
@@ -53,7 +53,7 @@
 /obj/item/projectile/bullet/shotgun_frag12/on_hit(atom/target, blocked = FALSE)
 	..()
 	explosion(target, -1, 0, 1)
-	return TRUE
+	return BULLET_ACT_HIT
 
 /obj/item/projectile/bullet/pellet
 	var/tile_dropoff = 0.75
@@ -61,12 +61,12 @@
 
 /obj/item/projectile/bullet/pellet/shotgun_buckshot
 	name = "buckshot pellet"
-	damage = 12.5
+	damage = 10
 
 /obj/item/projectile/bullet/pellet/shotgun_rubbershot
 	name = "rubbershot pellet"
-	damage = 3
-	stamina = 25
+	damage = 2
+	stamina = 15
 
 /obj/item/projectile/bullet/pellet/Range()
 	..()

@@ -208,6 +208,7 @@
 	owner.adjustToxLoss(-grace_heal, TRUE, TRUE)
 	owner.adjustOxyLoss(-(grace_heal * 2))
 	owner.adjustCloneLoss(-grace_heal)
+	owner.adjustStaminaLoss(-(grace_heal * 25))
 
 /datum/status_effect/his_grace/on_remove()
 	owner.log_message("lost His Grace's stun immunity", LOG_ATTACK)
@@ -291,6 +292,7 @@
 			var/mob/living/carbon/C = owner
 			for(var/X in C.bodyparts)
 				var/obj/item/bodypart/BP = X
+				BP.max_damage *= 10
 				BP.brute_dam *= 10
 				BP.burn_dam *= 10
 		owner.toxloss *= 10
@@ -355,7 +357,7 @@
 		var/new_staminaloss = owner.getStaminaLoss()
 		if(new_staminaloss < last_staminaloss)
 			var/heal_amount = -5 // CIT CHANGE - makes blood drunk status effect not exhaust you
-			owner.adjustStaminaLoss(heal_amount, updating_health = FALSE)
+			owner.adjustStaminaLoss(heal_amount, FALSE)
 			new_staminaloss = owner.getStaminaLoss()
 			needs_health_update = TRUE
 		last_staminaloss = new_staminaloss
@@ -376,6 +378,7 @@
 			var/obj/item/bodypart/BP = X
 			BP.brute_dam *= 0.1
 			BP.burn_dam *= 0.1
+			BP.max_damage /= 10
 	owner.toxloss *= 0.1
 	owner.oxyloss *= 0.1
 	owner.cloneloss *= 0.1

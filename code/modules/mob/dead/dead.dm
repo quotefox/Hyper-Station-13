@@ -4,6 +4,7 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 
 /mob/dead
 	sight = SEE_TURFS | SEE_MOBS | SEE_OBJS | SEE_SELF
+	move_resist = INFINITY
 	throwforce = 0
 
 /mob/dead/Initialize()
@@ -19,6 +20,9 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 		verbs += /mob/dead/proc/server_hop
 	set_focus(src)
 	return INITIALIZE_HINT_NORMAL
+
+/mob/dead/canUseStorage()
+	return FALSE
 
 /mob/dead/dust(just_ash, drop_items, force)	//ghosts can't be vaporised.
 	return

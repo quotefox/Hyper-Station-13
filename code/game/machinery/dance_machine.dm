@@ -364,7 +364,7 @@
 			//for(var/mob/living/carbon/NS in rangers)
 			//	NS.resting = !NS.resting
 			//	NS.update_canmove()
-		 time--
+		time--
 
 /obj/machinery/jukebox/disco/proc/dance5(var/mob/living/M)
 	animate(M, transform = matrix(180, MATRIX_ROTATE), time = 1, loop = 0)
@@ -406,12 +406,11 @@
 	lying_prev = 0
 
 /obj/machinery/jukebox/proc/dance_over()
-	SSjukeboxes.removejukebox(SSjukeboxes.findjukeboxindex(src))
+	var/position = SSjukeboxes.findjukeboxindex(src)
+	if(!position)
+		return
+	SSjukeboxes.removejukebox(position)
 	STOP_PROCESSING(SSobj, src)
-	for(var/mob/living/L in rangers)
-		if(!L || !L.client)
-			continue
-		L.stop_sound_channel(CHANNEL_JUKEBOX)
 	rangers = list()
 
 /obj/machinery/jukebox/disco/dance_over()

@@ -77,7 +77,7 @@
 	shuttleId = "mining"
 	possible_destinations = "mining_home;mining_away;landing_zone_dock;mining_public"
 	no_destination_swap = 1
-	var/global/list/dumb_rev_heads = list()
+	var/static/list/dumb_rev_heads = list()
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/machinery/computer/shuttle/mining/attack_hand(mob/user)
@@ -86,6 +86,14 @@
 		dumb_rev_heads += user.mind
 		return
 	. = ..()
+
+/obj/machinery/computer/shuttle/mining/common
+	name = "lavaland shuttle console"
+	desc = "Used to call and send the lavaland shuttle."
+	req_access = list()
+	circuit = /obj/item/circuitboard/computer/mining_shuttle/common
+	shuttleId = "mining_common"
+	possible_destinations = "whiteship_home;lavaland_common_away;landing_zone_dock;mining_public"
 
 /**********************Mining car (Crate like thing, not the rail car)**************************/
 

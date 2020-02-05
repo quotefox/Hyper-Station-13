@@ -55,6 +55,20 @@
 	item_state = "botany_envirosuit"
 	item_color = "botany_envirosuit"
 
+/obj/item/clothing/under/plasmaman/hop
+	name = "head of personell's envirosuit"
+	desc = "A prestigious azure envirosuit designed for head of personell."
+	icon_state = "hop_envirosuit"
+	item_state = "hop_envirosuit"
+	item_color = "hop_envirosuit"
+
+/obj/item/clothing/under/plasmaman/captain
+	name = "captain's envirosuit"
+	desc = "An expensive piece of plasmaman envirosuit fashion. guaranteed to keep you cool while the station goes down in fierceful fires."
+	icon_state = "captain_envirosuit"
+	item_state = "captain_envirosuit"
+	item_color = "captain_envirosuit"
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 100, "rad" = 0, "fire" = 95, "acid" = 95)
 
 /obj/item/clothing/under/plasmaman/mime
 	name = "mime envirosuit"
@@ -83,4 +97,4 @@
 			H.visible_message("<span class='warning'>[H]'s suit spews out a tonne of space lube!</span>","<span class='warning'>Your suit spews out a tonne of space lube!</span>")
 			H.ExtinguishMob()
 			new /obj/effect/particle_effect/foam(loc) //Truely terrifying.
-	return 0
+	return FALSE

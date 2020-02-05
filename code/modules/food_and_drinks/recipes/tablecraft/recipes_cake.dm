@@ -69,9 +69,10 @@
 /datum/crafting_recipe/food/birthdaycake
 	name = "Birthday cake"
 	reqs = list(
-		/obj/item/reagent_containers/food/snacks/store/cake/plain = 1,
-		/obj/item/candle = 1,
 		/datum/reagent/consumable/sugar = 5,
+		/datum/reagent/consumable/caramel =2,
+		/obj/item/candle = 1,
+		/obj/item/reagent_containers/food/snacks/store/cake/plain = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/store/cake/birthday
 	subcategory = CAT_CAKE
@@ -168,6 +169,26 @@
 		/obj/item/reagent_containers/food/snacks/grown/vanillapod = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/store/cake/vanilla_cake
+	subcategory = CAT_CAKE
+
+/datum/crafting_recipe/food/peachcake
+	name = "Peach cake"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/store/cake/plain = 1,
+		/obj/item/reagent_containers/food/snacks/grown/peach = 5
+	)
+	result = /obj/item/reagent_containers/food/snacks/store/cake/peach_cake
+	subcategory = CAT_CAKE
+
+/datum/crafting_recipe/food/trumpetcake
+	name = "Spaceman's Cake"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/store/cake/plain = 1,
+		/obj/item/reagent_containers/food/snacks/grown/trumpet = 2,
+		/datum/reagent/consumable/cream = 5,
+		/datum/reagent/consumable/berryjuice = 5
+	)
+	result = /obj/item/reagent_containers/food/snacks/store/cake/trumpet
 	subcategory = CAT_CAKE
 
 /datum/crafting_recipe/food/cak

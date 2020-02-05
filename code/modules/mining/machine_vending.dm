@@ -22,7 +22,7 @@
 		new /datum/data/mining_equipment("Alien Toy",					/obj/item/clothing/mask/facehugger/toy,								300),
 		new /datum/data/mining_equipment("Stabilizing Serum",			/obj/item/hivelordstabilizer,										400),
 		new /datum/data/mining_equipment("Fulton Beacon",				/obj/item/fulton_core,												400),
-		new /datum/data/mining_equipment("Basic Shelter Capsule",		/obj/item/survivalcapsule,											400),
+		new /datum/data/mining_equipment("Shelter Capsule",				/obj/item/survivalcapsule,											400),
 		new /datum/data/mining_equipment("Survival Knife",				/obj/item/kitchen/knife/combat/survival,							450),
 		new /datum/data/mining_equipment("GAR Meson Scanners",			/obj/item/clothing/glasses/meson/gar,								500),
 		new /datum/data/mining_equipment("Explorer's Webbing",			/obj/item/storage/belt/mining,										500),
@@ -45,7 +45,6 @@
 		new /datum/data/mining_equipment("Mining Conscription Kit",		/obj/item/storage/backpack/duffelbag/mining_conscript,				1000),
 		new /datum/data/mining_equipment("1000 Point Transfer Card",	/obj/item/card/mining_point_card/mp1000,							1000),
 		new /datum/data/mining_equipment("1500 Point Transfer Card",	/obj/item/card/mining_point_card/mp1500,							1500),
-		new /datum/data/mining_equipment("Advanced Shelter Capsule",	/obj/item/survivalcapsule/advanced,									1500),
 		new /datum/data/mining_equipment("2000 Point Transfer Card",	/obj/item/card/mining_point_card/mp2000,							2000),
 		new /datum/data/mining_equipment("Jetpack Upgrade",				/obj/item/tank/jetpack/suit,										2000),
 		new /datum/data/mining_equipment("Space Cash",					/obj/item/stack/spacecash/c1000,									2000),
@@ -54,8 +53,8 @@
 		new /datum/data/mining_equipment("Spare Suit Voucher",			/obj/item/suit_voucher,												2000),
 		new /datum/data/mining_equipment("Super Resonator",				/obj/item/resonator/upgraded,										2500),
 		new /datum/data/mining_equipment("Jump Boots",					/obj/item/clothing/shoes/bhop,										2500),
-		new /datum/data/mining_equipment("Deluxe Shelter Capsule",		/obj/item/survivalcapsule/deluxe,									2500),
-		new /datum/data/mining_equipment("Luxury Shelter Capsule",		/obj/item/survivalcapsule/luxury,									6000),
+		new /datum/data/mining_equipment("Luxury Shelter Capsule",		/obj/item/survivalcapsule/luxury,									3000),
+		new /datum/data/mining_equipment("Luxury Bar Capsule",			/obj/item/survivalcapsule/luxuryelite,								10000),
 		new /datum/data/mining_equipment("Nanotrasen Minebot",			/mob/living/simple_animal/hostile/mining_drone,						800),
 		new /datum/data/mining_equipment("Minebot Melee Upgrade",		/obj/item/mine_bot_upgrade,											400),
 		new /datum/data/mining_equipment("Minebot Armor Upgrade",		/obj/item/mine_bot_upgrade/health,									400),
@@ -96,60 +95,42 @@
 
 /obj/machinery/mineral/equipment_vendor/ui_interact(mob/user)
 	. = ..()
-	var/dat
-	dat +="<div class='statusDisplay'>"
-	if(istype(inserted_id))
-		dat += "You have [inserted_id.mining_points] mining points collected. <A href='?src=[REF(src)];choice=eject'>Eject ID.</A><br>"
-	else
-		dat += "No ID inserted.  <A href='?src=[REF(src)];choice=insert'>Insert ID.</A><br>"
-	dat += "</div>"
+	var/list/dat = list()
 	dat += "<br><b>Equipment point cost list:</b><BR><table border='0' width='300'>"
 	for(var/datum/data/mining_equipment/prize in prize_list)
 		dat += "<tr><td>[prize.equipment_name]</td><td>[prize.cost]</td><td><A href='?src=[REF(src)];purchase=[REF(prize)]'>Purchase</A></td></tr>"
 	dat += "</table>"
 
 	var/datum/browser/popup = new(user, "miningvendor", "Mining Equipment Vendor", 400, 350)
-	popup.set_content(dat)
+	popup.set_content(dat.Join())
 	popup.open()
 	return
 
 /obj/machinery/mineral/equipment_vendor/Topic(href, href_list)
 	if(..())
 		return
-	if(href_list["choice"])
-		if(istype(inserted_id))
-			if(href_list["choice"] == "eject")
-				to_chat(usr, "<span class='notice'>You eject the ID from [src]'s card slot.</span>")
-				inserted_id.forceMove(loc)
-				inserted_id.verb_pickup()
-				inserted_id = null
-		else if(href_list["choice"] == "insert")
-			var/obj/item/card/id/I = usr.get_active_held_item()
-			if(istype(I))
-				if(!usr.transferItemToLoc(I, src))
-					return
-				inserted_id = I
-				to_chat(usr, "<span class='notice'>You insert the ID into [src]'s card slot.</span>")
-			else
-				to_chat(usr, "<span class='warning'>Error: No valid ID!</span>")
-				flick(icon_deny, src)
 	if(href_list["purchase"])
-		if(istype(inserted_id))
-			var/datum/data/mining_equipment/prize = locate(href_list["purchase"])
+		var/mob/M = usr
+		var/obj/item/card/id/I = M.get_idcard(TRUE)
+		if(istype(I))
+			var/datum/data/mining_equipment/prize = locate(href_list["purchase"]) in prize_list
 			if (!prize || !(prize in prize_list))
 				to_chat(usr, "<span class='warning'>Error: Invalid choice!</span>")
 				flick(icon_deny, src)
 				return
-			if(prize.cost > inserted_id.mining_points)
-				to_chat(usr, "<span class='warning'>Error: Insufficient points for [prize.equipment_name]!</span>")
+			if(prize.cost > I.mining_points)
+				to_chat(usr, "<span class='warning'>Error: Insufficient credits for [prize.equipment_name] on [I]!</span>")
 				flick(icon_deny, src)
 			else
-				inserted_id.mining_points -= prize.cost
-				to_chat(usr, "<span class='notice'>[src] clanks to life briefly before vending [prize.equipment_name]!</span>")
-				new prize.equipment_path(src.loc)
-				SSblackbox.record_feedback("nested tally", "mining_equipment_bought", 1, list("[type]", "[prize.equipment_path]"))
+				if (I.mining_points -= prize.cost)
+					to_chat(usr, "<span class='notice'>[src] clanks to life briefly before vending [prize.equipment_name]!</span>")
+					new prize.equipment_path(src.loc)
+					SSblackbox.record_feedback("nested tally", "mining_equipment_bought", 1, list("[type]", "[prize.equipment_path]"))
+				else
+					to_chat(usr, "<span class='warning'>Error: Transaction failure, please try again later!</span>")
+					flick(icon_deny, src)
 		else
-			to_chat(usr, "<span class='warning'>Error: Please insert a valid ID!</span>")
+			to_chat(usr, "<span class='warning'>Error: An ID with a registered account is required!</span>")
 			flick(icon_deny, src)
 	updateUsrDialog()
 	return
@@ -160,15 +141,6 @@
 		return
 	if(istype(I, /obj/item/suit_voucher))
 		RedeemSVoucher(I, user)
-		return
-	if(istype(I, /obj/item/card/id))
-		var/obj/item/card/id/C = usr.get_active_held_item()
-		if(istype(C) && !istype(inserted_id))
-			if(!usr.transferItemToLoc(C, src))
-				return
-			inserted_id = C
-			to_chat(usr, "<span class='notice'>You insert the ID into [src]'s card slot.</span>")
-			interact(user)
 		return
 	if(default_deconstruction_screwdriver(user, "mining-open", "mining", I))
 		updateUsrDialog()
@@ -213,7 +185,6 @@
 	if(prob(50 / severity) && severity < 3)
 		qdel(src)
 
-
 /****************Golem Point Vendor**************************/
 
 /obj/machinery/mineral/equipment_vendor/golem
@@ -229,7 +200,6 @@
 		new /datum/data/mining_equipment("Monkey Cube",					/obj/item/reagent_containers/food/snacks/monkeycube,        	300),
 		new /datum/data/mining_equipment("Toolbelt",					/obj/item/storage/belt/utility,	    							350),
 		new /datum/data/mining_equipment("Royal Cape of the Liberator", /obj/item/bedsheet/rd/royal_cape, 								500),
-		new /datum/data/mining_equipment("Sulphuric Acid",				/obj/item/reagent_containers/glass/beaker/sulphuric,        	500),
 		new /datum/data/mining_equipment("Grey Slime Extract",			/obj/item/slime_extract/grey,									1000),
 		new /datum/data/mining_equipment("Modification Kit",    		/obj/item/borg/upgrade/modkit/trigger_guard,					1700),
 		new /datum/data/mining_equipment("The Liberator's Legacy",  	/obj/item/storage/box/rndboards,								2000)
@@ -291,8 +261,8 @@
 	..()
 
 /obj/item/card/mining_point_card/examine(mob/user)
-	..()
-	to_chat(user, "There's [points] point\s on the card.")
+	. = ..()
+	. += "There's [points] point\s on the card."
 
 ///Conscript kit
 /obj/item/card/mining_access_card
@@ -324,12 +294,15 @@
 	new /obj/item/encryptionkey/headset_cargo(src)
 	new /obj/item/clothing/mask/gas/explorer(src)
 	new /obj/item/card/mining_access_card(src)
+	new /obj/item/gun/energy/kinetic_accelerator(src)
+	new /obj/item/kitchen/knife/combat/survival(src)
+	new /obj/item/flashlight/seclite(src)
 
-//CITADEL ADDITIONS BELOW
+	//CITADEL ADDITIONS BELOW
 
 /obj/item/storage/backpack/duffelbag/mining_cloned
 	name = "mining replacement kit"
-	desc = "A large bag that has advance tools and a spare jumpsuit, boots, and gloves for a newly cloned miner to get back in the field. Even as a new Id!"
+	desc = "A large bag that has advance tools and a spare jumpsuit, boots, and gloves for a newly cloned miner to get back in the field. Even has a new ID!"
 
 /obj/item/storage/backpack/duffelbag/mining_cloned/PopulateContents()
 	new /obj/item/pickaxe/mini(src)
@@ -337,6 +310,7 @@
 	new /obj/item/clothing/shoes/workboots/mining(src)
 	new /obj/item/clothing/gloves/color/black(src)
 	new /obj/item/implanter/tracking/gps(src)
+	new /obj/item/gun/energy/kinetic_accelerator(src)
 	new /obj/item/kitchen/knife/combat/survival(src)
 	new /obj/item/storage/firstaid/regular(src)
 	new /obj/item/reagent_containers/hypospray/medipen/survival(src)

@@ -26,52 +26,17 @@
 	/obj/structure/falsewall/reinforced,
 	/turf/closed/wall/rust,
 	/turf/closed/wall/r_wall/rust,
-	/turf/closed/wall/clockwork,
-	/obj/structure/window/fulltile,
-	/obj/structure/window/reinforced/fulltile,
-	/obj/structure/window/reinforced/tinted/fulltile,
-	/obj/structure/window/plasma/fulltile,
-	/obj/structure/window/plasma/reinforced/fulltile,
-	/obj/machinery/door/airlock/,
-	/obj/machinery/door/airlock/mining,
-	/obj/machinery/door/airlock/mining/glass,
-	/obj/machinery/door/airlock/medical,
-	/obj/machinery/door/airlock/medical/glass,
-	/obj/machinery/door/airlock/public,
-	/obj/machinery/door/airlock/public/glass,
-	/obj/machinery/door/airlock/research,
-	/obj/machinery/door/airlock/research/glass,
-	/obj/machinery/door/airlock/maintenance,
-	/obj/machinery/door/airlock/maintenance/glass,
-	/obj/machinery/door/airlock/command/,
-	/obj/machinery/door/airlock/command/glass,
-	/obj/machinery/door/airlock/engineering,
-	/obj/machinery/door/airlock/engineering/glass,
-	/obj/machinery/door/airlock/engineering/abandoned,
-	/obj/machinery/door/airlock/security,
-	/obj/machinery/door/airlock/security/glass,
-	/obj/machinery/door/airlock/maintenance/abandoned,
-	/obj/machinery/door/poddoor/shutters/preopen,
-	/obj/machinery/door/poddoor/shutters,
-	/obj/machinery/door/window/eastright,
-	/obj/machinery/door/window/eastleft,
-	/obj/machinery/door/window/northleft,
-	/obj/machinery/door/window/northright,
-	/obj/machinery/door/airlock/external,
-	/obj/machinery/door/airlock,
-	/obj/machinery/door)
-
-
+	/turf/closed/wall/clockwork)
 	smooth = SMOOTH_TRUE
 
 	var/list/dent_decals
 
 /turf/closed/wall/examine(mob/user)
-	..()
+	. = ..()
 	deconstruction_hints(user)
 
 /turf/closed/wall/proc/deconstruction_hints(mob/user)
-	to_chat(user, "<span class='notice'>The outer plating is <b>welded</b> firmly in place.</span>")
+	return "<span class='notice'>The outer plating is <b>welded</b> firmly in place.</span>"
 
 /turf/closed/wall/attack_tk()
 	return

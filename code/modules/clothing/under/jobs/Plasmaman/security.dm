@@ -12,3 +12,10 @@
 	icon_state = "warden_envirosuit"
 	item_state = "warden_envirosuit"
 	item_color = "warden_envirosuit"
+
+/obj/item/clothing/under/plasmaman/security/hos
+	name = "security plasma envirosuit"
+	desc = "A slick black and red plasmaman containment suit designed for the head of security, also called the LAW."
+	icon_state = "hos_envirosuit"
+	item_state = "hos_envirosuit"
+	item_color = "hos_envirosuit"

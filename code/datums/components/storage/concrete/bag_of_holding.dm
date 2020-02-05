@@ -19,7 +19,7 @@
 		qdel(W)
 		playsound(loccheck,'sound/effects/supermatter.ogg', 200, 1)
 		user.gib(TRUE, TRUE, TRUE)
-		for(var/turf/T in range(2,loccheck))
+		for(var/turf/T in range(6,loccheck))
 			if(istype(T, /turf/open/space/transit))
 				continue
 			for(var/mob/living/M in T)

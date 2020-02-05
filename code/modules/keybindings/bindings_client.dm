@@ -3,6 +3,7 @@
 /client/verb/keyDown(_key as text)
 	set instant = TRUE
 	set hidden = TRUE
+
 	client_keysend_amount += 1
 
 	var/cache = client_keysend_amount
@@ -24,7 +25,7 @@
 		else
 			log_admin("Client [ckey] was just autokicked for flooding keysends; likely abuse but potentially lagspike.")
 			message_admins("Client [ckey] was just autokicked for flooding keysends; likely abuse but potentially lagspike.")
-			QDEL_IN(src, 1)
+			qdel(src)
 			return
 
 	///Check if the key is short enough to even be a real key
@@ -34,11 +35,10 @@
 		message_admins("Client [ckey] just attempted to send an invalid keypress. Keymessage was over [MAX_KEYPRESS_COMMANDLENGTH] characters, autokicking due to likely abuse.")
 		QDEL_IN(src, 1)
 		return
-	//offset by 1 because the buffer address is 0 indexed because the math was simpler
-	keys_held[current_key_address + 1] = _key
-	//the time a key was pressed isn't actually used anywhere (as of 2019-9-10) but this allows easier access usage/checking
-	keys_held[_key] = world.time
-	current_key_address = ((current_key_address + 1) % HELD_KEY_BUFFER_LENGTH)
+
+	if(length(keys_held) > MAX_HELD_KEYS)
+		keys_held.Cut(1,2)
+	keys_held[_key] = TRUE
 	var/movement = SSinput.movement_keys[_key]
 	if(!(next_move_dir_sub & movement) && !keys_held["Ctrl"])
 		next_move_dir_add |= movement
@@ -69,11 +69,7 @@
 	set instant = TRUE
 	set hidden = TRUE
 
-	//Can't just do a remove because it would alter the length of the rolling buffer, instead search for the key then null it out if it exists
-	for(var/i in 1 to HELD_KEY_BUFFER_LENGTH)
-		if(keys_held[i] == _key)
-			keys_held[i] = null
-			break
+	keys_held -= _key
 	var/movement = SSinput.movement_keys[_key]
 	if(!(next_move_dir_add & movement))
 		next_move_dir_sub |= movement

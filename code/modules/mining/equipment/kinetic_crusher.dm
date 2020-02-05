@@ -1,22 +1,20 @@
 /*********************Mining Hammer****************/
 /obj/item/twohanded/kinetic_crusher
 	icon = 'icons/obj/mining.dmi'
-	icon_state = "mining_hammer"
-	item_state = "mining_hammer"
+	icon_state = "crusher"
+	item_state = "crusher0"
 	lefthand_file = 'icons/mob/inhands/weapons/hammers_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/hammers_righthand.dmi'
 	name = "proto-kinetic crusher"
 	desc = "An early design of the proto-kinetic accelerator, it is little more than an combination of various mining tools cobbled together, forming a high-tech club. \
 	While it is an effective mining tool, it did little to aid any but the most skilled and/or suicidal miners against local fauna."
-	force = 0 //just in case
+	force = 0 //You can't hit stuff unless wielded
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
-	force_unwielded = 0 //ditto
+	force_unwielded = 0
 	force_wielded = 20
 	throwforce = 5
 	throw_speed = 4
-	light_range = 7
-	light_power = 2
 	armour_penetration = 10
 	materials = list(MAT_METAL=1150, MAT_GLASS=2075)
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -29,7 +27,16 @@
 	var/detonation_damage = 50
 	var/backstab_bonus = 30
 	var/light_on = FALSE
-	var/brightness_on = 5	//same light as a lit seclite on a PKA
+	var/brightness_on = 7
+
+/obj/item/twohanded/kinetic_crusher/cyborg //probably give this a unique sprite later
+	desc = "An integrated version of the standard kinetic crusher with a grinded down axe head to dissuade mis-use against crewmen. Deals damage equal to the standard crusher against creatures, however."
+	force = 10 //wouldn't want to give a borg a 20 brute melee weapon unemagged now would we
+	detonation_damage = 60
+	wielded = 1
+
+/obj/item/twohanded/kinetic_crusher/cyborg/unwield()
+	return
 
 /obj/item/twohanded/kinetic_crusher/Initialize()
 	. = ..()
@@ -40,9 +47,9 @@
 	return ..()
 
 /obj/item/twohanded/kinetic_crusher/examine(mob/living/user)
-	. =..()
-	. += "<span class='notice'>Mark a large creature with the destabilizing force, then hit them in melee to do <b>[force + detonation_damage]</b> damage.</span>"
-	. += "<span class='notice'>Does <b>[force + detonation_damage + backstab_bonus]</b> damage if the target is backstabbed, instead of <b>[force + detonation_damage]</b>.</span>"
+	. = ..()
+	. += "<span class='notice'>Mark a large creature with the destabilizing force, then hit them in melee to do <b>[force_wielded + detonation_damage]</b> damage.</span>"
+	. += "<span class='notice'>Does <b>[force_wielded + detonation_damage + backstab_bonus]</b> damage if the target is backstabbed, instead of <b>[force_wielded + detonation_damage]</b>.</span>"
 	for(var/t in trophies)
 		var/obj/item/crusher_trophy/T = t
 		. += "<span class='notice'>It has \a [T] attached, which causes [T.effect_desc()].</span>"
@@ -65,8 +72,7 @@
 
 /obj/item/twohanded/kinetic_crusher/attack(mob/living/target, mob/living/carbon/user)
 	if(!wielded)
-		to_chat(user, "<span class='warning'>[src] is too heavy to use with one hand. You fumble and drop everything.")
-		user.drop_all_held_items()
+		to_chat(user, "<span class='warning'>[src] is too heavy to use with one hand.")
 		return
 	var/datum/status_effect/crusher_damage/C = target.has_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
 	var/target_health = target.health
@@ -83,6 +89,8 @@
 	if(istype(target, /obj/item/crusher_trophy))
 		var/obj/item/crusher_trophy/T = target
 		T.add_to(src, user)
+	if(!wielded)
+		return
 	if(!proximity_flag && charged)//Mark a target, or mine a tile.
 		var/turf/proj_turf = user.loc
 		if(!isturf(proj_turf))
@@ -97,7 +105,7 @@
 		playsound(user, 'sound/weapons/plasma_cutter.ogg', 100, 1)
 		D.fire()
 		charged = FALSE
-		icon_state = "mining_hammer"
+		update_icon()
 		addtimer(CALLBACK(src, .proc/Recharge), charge_time)
 		return
 	if(proximity_flag && isliving(target))
@@ -146,6 +154,7 @@
 		set_light(brightness_on)
 	else
 		set_light(0)
+
 /obj/item/twohanded/kinetic_crusher/update_icon()
 	..()
 	cut_overlays()
@@ -157,7 +166,7 @@
 		for(var/X in actions)
 			var/datum/action/A = X
 			A.UpdateButtonIcon()
-	item_state = "mining_hammer[wielded]"
+	item_state = "crusher[wielded]"
 
 //destablizing force
 /obj/item/projectile/destabilizer
@@ -201,8 +210,8 @@
 	var/denied_type = /obj/item/crusher_trophy
 
 /obj/item/crusher_trophy/examine(mob/living/user)
-	..()
-	to_chat(user, "<span class='notice'>Causes [effect_desc()] when attached to a kinetic crusher.</span>")
+	. = ..()
+	. += "<span class='notice'>Causes [effect_desc()] when attached to a kinetic crusher.</span>"
 
 /obj/item/crusher_trophy/proc/effect_desc()
 	return "errors"
@@ -261,7 +270,7 @@
 	desc = "A wing ripped from a watcher. Suitable as a trophy for a kinetic crusher."
 	icon_state = "watcher_wing"
 	denied_type = /obj/item/crusher_trophy/watcher_wing
-	bonus_value = 50
+	bonus_value = 10
 
 /obj/item/crusher_trophy/watcher_wing/effect_desc()
 	return "mark detonation to prevent certain creatures from using certain attacks for <b>[bonus_value*0.1]</b> second\s"

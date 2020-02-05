@@ -31,7 +31,6 @@
 
 /obj/machinery/computer/camera_advanced/syndie
 	icon_keyboard = "syndie_key"
-	circuit = /obj/item/circuitboard/computer/advanced_camera
 
 /obj/machinery/computer/camera_advanced/proc/CreateEye()
 	eyeobj = new()
@@ -288,9 +287,9 @@
 
 /obj/machinery/computer/camera_advanced/ratvar/CreateEye()
 	..()
-	eyeobj.visible_icon = 1
-	eyeobj.icon = 'icons/obj/abductor.dmi' //in case you still had any doubts
-	eyeobj.icon_state = "camera_target"
+	eyeobj.visible_icon = TRUE
+	eyeobj.icon = 'icons/mob/cameramob.dmi' //in case you still had any doubts
+	eyeobj.icon_state = "generic_camera"
 
 /obj/machinery/computer/camera_advanced/ratvar/GrantActions(mob/living/carbon/user)
 	..()

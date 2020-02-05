@@ -3,7 +3,7 @@
 	var/volume
 	var/e_range
 
-/datum/component/footstep/Initialize(volume_ = 0.4, e_range_ = -1)
+/datum/component/footstep/Initialize(volume_ = 0.5, e_range_ = -1)
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 	volume = volume_
@@ -32,7 +32,7 @@
 			return
 		if(ishuman(C) && C.m_intent == MOVE_INTENT_WALK)
 			v /= 2
-			e -= 4
+			e -= 5
 	steps++
 
 	if(steps >= 3)
@@ -58,7 +58,7 @@
 	if(isclawfoot(LM))
 		if(isalienadult(LM)) //xenos are stealthy and get quieter footsteps
 			v /= 3
-			e -= 4
+			e -= 5
 
 		playsound(T, pick(GLOB.clawfootstep[T.clawfootstep][1]),
 				GLOB.clawfootstep[T.clawfootstep][2] * v,

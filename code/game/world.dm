@@ -1,8 +1,9 @@
 #define RESTART_COUNTER_PATH "data/round_counter.txt"
-#define TOPIC_LENGTH_LIMIT 8192 //The reason why this is so large is to allow TGS topic calls to function without issue.
-#define TOPIC_COOLDOWN 1 //90% sure there isnt anything that does multiple topic calls in a single decisecond.
 
 GLOBAL_VAR(restart_counter)
+
+GLOBAL_VAR(topic_status_lastcache)
+GLOBAL_LIST(topic_status_cache)
 
 //This happens after the Master subsystem new(s) (it's a global datum)
 //So subsystems globals exist, but are not initialised
@@ -33,10 +34,12 @@ GLOBAL_VAR(restart_counter)
 #endif
 
 	load_admins()
+	load_mentors()
 	LoadVerbs(/datum/verbs/menu)
 	if(CONFIG_GET(flag/usewhitelist))
 		load_whitelist()
 	LoadBans()
+	initialize_global_loadout_items()
 	reload_custom_roundstart_items_list()//Cit change - loads donator items. Remind me to remove when I port over bay's loadout system
 
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
@@ -47,8 +50,6 @@ GLOBAL_VAR(restart_counter)
 
 	if(NO_INIT_PARAMETER in params)
 		return
-
-	cit_initialize()
 
 	Master.Initialize(10, FALSE, TRUE)
 
@@ -102,6 +103,7 @@ GLOBAL_VAR(restart_counter)
 		GLOB.picture_log_directory = "data/picture_logs/[override_dir]"
 
 	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
+	GLOB.world_virus_log = "[GLOB.log_directory]/virus.log"
 	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
 	GLOB.world_pda_log = "[GLOB.log_directory]/pda.log"
 	GLOB.world_telecomms_log = "[GLOB.log_directory]/telecomms.log"
@@ -109,9 +111,15 @@ GLOBAL_VAR(restart_counter)
 	GLOB.world_href_log = "[GLOB.log_directory]/hrefs.log"
 	GLOB.sql_error_log = "[GLOB.log_directory]/sql.log"
 	GLOB.world_qdel_log = "[GLOB.log_directory]/qdel.log"
+	GLOB.world_map_error_log = "[GLOB.log_directory]/map_errors.log"
 	GLOB.world_runtime_log = "[GLOB.log_directory]/runtime.log"
 	GLOB.query_debug_log = "[GLOB.log_directory]/query_debug.log"
 	GLOB.world_job_debug_log = "[GLOB.log_directory]/job_debug.log"
+	GLOB.tgui_log = "[GLOB.log_directory]/tgui.log"
+	GLOB.subsystem_log = "[GLOB.log_directory]/subsystem.log"
+	GLOB.reagent_log = "[GLOB.log_directory]/reagents.log"
+	GLOB.world_crafting_log = "[GLOB.log_directory]/crafting.log"
+
 
 #ifdef UNIT_TESTS
 	GLOB.test_log = file("[GLOB.log_directory]/tests.log")
@@ -126,6 +134,10 @@ GLOBAL_VAR(restart_counter)
 	start_log(GLOB.world_qdel_log)
 	start_log(GLOB.world_runtime_log)
 	start_log(GLOB.world_job_debug_log)
+	start_log(GLOB.tgui_log)
+	start_log(GLOB.subsystem_log)
+	start_log(GLOB.reagent_log)
+	start_log(GLOB.world_crafting_log)
 
 	GLOB.changelog_hash = md5('html/changelog.html') //for telling if the changelog has changed recently
 	if(fexists(GLOB.config_error_log))
@@ -141,26 +153,15 @@ GLOBAL_VAR(restart_counter)
 	log_runtime(GLOB.revdata.get_log_message())
 
 /world/Topic(T, addr, master, key)
-	var/static/list/bannedsourceaddrs = list()
-	var/static/list/lasttimeaddr = list()
-
-	if(addr in bannedsourceaddrs)
-		return
-
-	if(length(T) >= TOPIC_LENGTH_LIMIT)
-		log_topic("Oversized topic, banning address. from:[addr]")
-		bannedsourceaddrs |= addr
-		return
-
-	if(addr in lasttimeaddr && world.time < (lasttimeaddr["[addr]"] + TOPIC_COOLDOWN))
-		log_topic("Too many topic calls from address in [TOPIC_COOLDOWN] ds, banning address. from:[addr]")
-		bannedsourceaddrs |= addr
-		return
-
-	lasttimeaddr["[addr]"] = world.time
-
-
 	TGS_TOPIC	//redirect to server tools if necessary
+
+	if(!SSfail2topic)
+		return "Server not initialized."
+	else if(SSfail2topic.IsRateLimited(addr))
+		return "Rate limited."
+
+	if(length(T) > CONFIG_GET(number/topic_max_size))
+		return "Payload too large!"
 
 	var/static/list/topic_handlers = TopicHandlers()
 
@@ -178,7 +179,7 @@ GLOBAL_VAR(restart_counter)
 		return
 
 	handler = new handler()
-	return handler.TryRun(input)
+	return handler.TryRun(input, addr)
 
 /world/proc/AnnouncePR(announcement, list/payload)
 	var/static/list/PRcounts = list()	//PR id -> number of times announced this round
@@ -280,8 +281,8 @@ GLOBAL_VAR(restart_counter)
 
 	s += "<b>[station_name()]</b>";
 	s += " ("
-	s += "<a href=\"http://hyperstation13.com//\">" //Change this to wherever you want the hub to link to. CIT CHANGE - links to cit's website on the hub
-	s += "Website"  //Replace this with something else. Or ever better, delete it and uncomment the game version. CIT CHANGE - modifies the hub entry link
+	s += "<a href=\"https://citadel-station.net/home/\">" //Change this to wherever you want the hub to link to. CIT CHANGE - links to cit's website on the hub
+	s += "Citadel"  //Replace this with something else. Or ever better, delete it and uncomment the game version. CIT CHANGE - modifies the hub entry link
 	s += "</a>"
 	s += ")\]" //CIT CHANGE - encloses the server title in brackets to make the hub entry fancier
 	s += "<br>[CONFIG_GET(string/servertagline)]<br>" //CIT CHANGE - adds a tagline!
@@ -323,4 +324,3 @@ GLOBAL_VAR(restart_counter)
 	maxz++
 	SSmobs.MaxZChanged()
 	SSidlenpcpool.MaxZChanged()
-

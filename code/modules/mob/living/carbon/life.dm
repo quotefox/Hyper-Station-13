@@ -8,33 +8,34 @@
 		damageoverlaytemp = 0
 		update_damage_hud()
 
+	//Reagent processing needs to come before breathing, to prevent edge cases.
+	handle_organs()
 
-	if(!IsInStasis())
-		//Reagent processing needs to come before breathing, to prevent edge cases.
-		handle_organs()
+	. = ..()
 
-		. = ..()
+	if (QDELETED(src))
+		return
 
-		if (QDELETED(src))
-			return
+	if(.) //not dead
+		handle_blood()
 
-		if(.) //not dead
-			handle_blood()
+	if(stat != DEAD)
+		var/bprv = handle_bodyparts()
+		if(bprv & BODYPART_LIFE_UPDATE_HEALTH)
+			updatehealth()
+	update_stamina()
 
-		if(stat != DEAD)
-			var/bprv = handle_bodyparts()
-			if(bprv & BODYPART_LIFE_UPDATE_HEALTH)
-				updatehealth()
-		update_stamina()
+	if(stat != DEAD)
+		handle_brain_damage()
 
-		if(stat != DEAD)
-			handle_brain_damage()
-/* Bug cause?
-		if(stat != DEAD)
-			handle_liver()
-*/
+	/* BUG_PROBABLE_CAUSE
+	if(stat != DEAD)
+		handle_liver()
+	*/
+
 	if(stat == DEAD)
 		stop_sound_channel(CHANNEL_HEARTBEAT)
+		handle_death()
 		rot()
 
 	//Updates the number of stored chemicals for powers
@@ -42,6 +43,12 @@
 
 	if(stat != DEAD)
 		return 1
+
+//Procs called while dead
+/mob/living/carbon/proc/handle_death()
+	for(var/datum/reagent/R in reagents.reagent_list)
+		if(R.chemical_flags & REAGENT_DEAD_PROCESS)
+			R.on_mob_dead(src)
 
 ///////////////
 // BREATHING //
@@ -73,7 +80,7 @@
 //Second link in a breath chain, calls check_breath()
 /mob/living/carbon/proc/breathe()
 	var/obj/item/organ/lungs = getorganslot(ORGAN_SLOT_LUNGS)
-	if(reagents.has_reagent("lexorin"))
+	if(reagents.has_reagent(/datum/reagent/toxin/lexorin))
 		return
 	if(istype(loc, /obj/machinery/atmospherics/components/unary/cryo_cell))
 		return
@@ -91,7 +98,7 @@
 	var/datum/gas_mixture/breath
 
 	if(!getorganslot(ORGAN_SLOT_BREATHING_TUBE))
-		if(health <= HEALTH_THRESHOLD_FULLCRIT || (pulledby && pulledby.grab_state >= GRAB_KILL) || lungs.organ_flags & ORGAN_FAILING)
+		if(health <= HEALTH_THRESHOLD_FULLCRIT || (pulledby && pulledby.grab_state >= GRAB_KILL) || HAS_TRAIT(src, TRAIT_MAGIC_CHOKE) || (lungs && lungs.organ_flags & ORGAN_FAILING))
 			losebreath++  //You can't breath at all when in critical or when being choked, so you're going to miss a breath
 
 		else if(health <= crit_threshold)
@@ -149,7 +156,7 @@
 
 	//CRIT
 	if(!breath || (breath.total_moles() == 0) || !lungs)
-		if(reagents.has_reagent("epinephrine") && lungs)
+		if(reagents.has_reagent(/datum/reagent/medicine/epinephrine) && lungs)
 			return
 		adjustOxyLoss(1)
 
@@ -327,9 +334,10 @@
 	var/obj/item/clothing/check
 	var/internals = FALSE
 
-	for(check in GET_INTERNAL_SLOTS(src))
-		if(CHECK_BITFIELD(check.clothing_flags, ALLOWINTERNALS))
-			internals = TRUE
+	if(!HAS_TRAIT(src, TRAIT_NO_INTERNALS))
+		for(check in GET_INTERNAL_SLOTS(src))
+			if(CHECK_BITFIELD(check.clothing_flags, ALLOWINTERNALS))
+				internals = TRUE
 	if(internal)
 		if(internal.loc != src)
 			internal = null
@@ -350,7 +358,7 @@
 		return
 
 	// No decay if formaldehyde in corpse or when the corpse is charred
-	if(reagents.has_reagent("formaldehyde", 15) || HAS_TRAIT(src, TRAIT_HUSK))
+	if(reagents.has_reagent(/datum/reagent/toxin/formaldehyde, 15) || HAS_TRAIT(src, TRAIT_HUSK))
 		return
 
 	// Also no decay if corpse chilled or not organic/undead
@@ -394,8 +402,6 @@
 			if(O)
 				O.on_death() //Needed so organs decay while inside the body.
 
-
-
 /mob/living/carbon/handle_diseases()
 	for(var/thing in diseases)
 		var/datum/disease/D = thing
@@ -419,6 +425,7 @@
 
 /mob/living/carbon/handle_mutations_and_radiation()
 	if(dna && dna.temporary_mutations.len)
+		var/datum/mutation/human/HM
 		for(var/mut in dna.temporary_mutations)
 			if(dna.temporary_mutations[mut] < world.time)
 				if(mut == UI_CHANGED)
@@ -441,9 +448,9 @@
 						dna.previous.Remove("blood_type")
 					dna.temporary_mutations.Remove(mut)
 					continue
-		for(var/datum/mutation/human/HM in dna.mutations)
-			if(HM && HM.timed)
-				dna.remove_mutation(HM.type)
+				HM = GLOB.mutations_list[mut]
+				HM.force_lose(src)
+				dna.temporary_mutations.Remove(mut)
 
 	radiation -= min(radiation, RAD_LOSS_PER_TICK)
 	if(radiation > RAD_MOB_SAFE)
@@ -500,7 +507,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 /mob/living/carbon/handle_status_effects()
 	..()
 	if(getStaminaLoss() && !combatmode)//CIT CHANGE - prevents stamina regen while combat mode is active
-		adjustStaminaLoss(resting ? (recoveringstam ? -7.5 : -3) : -1.5)//CIT CHANGE - decreases adjuststaminaloss to stop stamina damage from being such a joke
+		adjustStaminaLoss(resting ? (recoveringstam ? -7.5 : -6) : -3)//CIT CHANGE - decreases adjuststaminaloss to stop stamina damage from being such a joke
 
 	if(!recoveringstam && incomingstammult != 1)
 		incomingstammult = max(0.01, incomingstammult)
@@ -510,7 +517,6 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 	if(bufferedstam && world.time > stambufferregentime)
 		var/drainrate = max((bufferedstam*(bufferedstam/(5)))*0.1,1)
 		bufferedstam = max(bufferedstam - drainrate, 0)
-		adjustStaminaLoss(drainrate*0.5)
 	//END OF CIT CHANGES
 
 	var/restingpwr = 1 + 4 * resting
@@ -653,6 +659,9 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 
 //used in human and monkey handle_environment()
 /mob/living/carbon/proc/natural_bodytemperature_stabilization()
+	if (HAS_TRAIT(src, TRAIT_COLDBLOODED))
+		return 0 //Return 0 as your natural temperature. Species proc handle_environment() will adjust your temperature based on this.
+
 	var/body_temperature_difference = BODYTEMP_NORMAL - bodytemperature
 	switch(bodytemperature)
 		if(-INFINITY to BODYTEMP_COLD_DAMAGE_LIMIT) //Cold damage limit is 50 below the default, the temperature where you start to feel effects.
@@ -696,7 +705,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 /mob/living/carbon/proc/liver_failure()
 	reagents.end_metabolization(src, keep_liverless = TRUE) //Stops trait-based effects on reagents, to prevent permanent buffs
 	reagents.metabolize(src, can_overdose=FALSE, liverless = TRUE)
-	if(HAS_TRAIT(src, TRAIT_STABLEHEART))
+	if(HAS_TRAIT(src, TRAIT_STABLELIVER))
 		return
 	adjustToxLoss(4, TRUE,  TRUE)
 	if(prob(30))

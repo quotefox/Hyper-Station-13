@@ -47,11 +47,11 @@ RLD
 
 /obj/item/construction/examine(mob/user)
 	. = ..()
-	to_chat(user, "It currently holds [matter]/[max_matter] matter-units." )
+	. += "It currently holds [matter]/[max_matter] matter-units."
 	if(upgrade & RCD_UPGRADE_FRAMES)
-		to_chat(user, "It contains the design for machine frames, computer frames and deconstruction." )
+		. += "It contains the design for machine frames, computer frames and deconstruction."
 	if(upgrade & RCD_UPGRADE_SIMPLE_CIRCUITS)
-		to_chat(user, "It contains the design for firelock, air alarm, fire alarm, apc circuits and crap power cells.")
+		. += "It contains the design for firelock, air alarm, fire alarm, apc circuits and crap power cells."
 
 /obj/item/construction/Destroy()
 	QDEL_NULL(spark_system)
@@ -614,7 +614,6 @@ RLD
 	desc = "A device used to rapidly build and deconstruct. Reload with metal, plasteel, glass or compressed matter cartridges. This RCD has been upgraded to be able to remove Rwalls!"
 	icon_state = "ircd"
 	item_state = "ircd"
-	upgrade = TRUE
 	max_matter = 500
 	matter = 500
 	canRturf = TRUE
@@ -625,7 +624,6 @@ RLD
 	item_state = "ircd"
 	max_matter = 500
 	matter = 500
-	upgrade = TRUE
 	delay_mod = 0.6
 	sheetmultiplier	= 8
 
@@ -663,7 +661,6 @@ RLD
 	max_matter = 300
 	matter = 300
 	delay_mod = 0.6
-	upgrade = TRUE
 	ranged = TRUE
 	icon_state = "arcd"
 	item_state = "oldrcd"
@@ -680,18 +677,18 @@ RLD
 	icon_state = "rld"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
-	matter = 500
-	max_matter = 500
-	sheetmultiplier = 16
+	matter = 200
+	max_matter = 200
+	sheetmultiplier = 5
 	var/mode = LIGHT_MODE
 	actions_types = list(/datum/action/item_action/pick_color)
 	ammo_sections = 5
 	has_ammobar = TRUE
 
-	var/wallcost = 10
-	var/floorcost = 15
-	var/launchcost = 5
-	var/deconcost = 10
+	var/wallcost = 20
+	var/floorcost = 25
+	var/launchcost = 10
+	var/deconcost = 20
 
 	var/walldelay = 10
 	var/floordelay = 10

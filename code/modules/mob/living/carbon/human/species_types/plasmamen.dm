@@ -4,17 +4,18 @@
 	say_mod = "rattles"
 	sexes = 0
 	meat = /obj/item/stack/sheet/mineral/plasma
-	species_traits = list(NOBLOOD,NOTRANSSTING)
-	inherent_traits = list(TRAIT_RESISTCOLD,TRAIT_RADIMMUNE,TRAIT_NOHUNGER)
+	species_traits = list(NOBLOOD,NOTRANSSTING,NOGENITALS)
+	inherent_traits = list(TRAIT_RESISTCOLD,TRAIT_RADIMMUNE,TRAIT_NOHUNGER,TRAIT_CALCIUM_HEALER)
 	inherent_biotypes = list(MOB_INORGANIC, MOB_HUMANOID)
 	mutantlungs = /obj/item/organ/lungs/plasmaman
 	mutanttongue = /obj/item/organ/tongue/bone/plasmaman
 	mutantliver = /obj/item/organ/liver/plasmaman
 	mutantstomach = /obj/item/organ/stomach/plasmaman
+	dangerous_existence = 1 //So so much
+	blacklisted = 1 //See above
 	burnmod = 1.5
 	heatmod = 1.5
 	breathid = "tox"
-	speedmod = 1
 	damage_overlay_type = ""//let's not show bloody wounds or burns over bones.
 	var/internal_fire = FALSE //If the bones themselves are burning clothes won't help you much
 	disliked_food = FRUIT
@@ -50,10 +51,10 @@
 /datum/species/plasmaman/handle_fire(mob/living/carbon/human/H, no_protection)
 	if(internal_fire)
 		no_protection = TRUE
-	. = ..()
+	..()
 
 /datum/species/plasmaman/before_equip_job(datum/job/J, mob/living/carbon/human/H, visualsOnly = FALSE)
-	var/current_job = J.title
+	var/current_job = J?.title
 	var/datum/outfit/plasmaman/O = new /datum/outfit/plasmaman
 	switch(current_job)
 		if("Chaplain")
@@ -113,6 +114,24 @@
 		if("Atmospheric Technician")
 			O = new /datum/outfit/plasmaman/atmospherics
 
+		if("Captain")
+			O = new /datum/outfit/plasmaman/captain
+
+		if("Head of Personnel")
+			O = new /datum/outfit/plasmaman/hop
+
+		if("Head of Security")
+			O = new /datum/outfit/plasmaman/hos
+
+		if("Chief Engineer")
+			O = new /datum/outfit/plasmaman/ce
+
+		if("Chief Medical Officer")
+			O = new /datum/outfit/plasmaman/cmo
+
+		if("Research Director")
+			O = new /datum/outfit/plasmaman/rd
+
 		if("Mime")
 			O = new /datum/outfit/plasmaman/mime
 
@@ -134,18 +153,3 @@
 		randname += " [lastname]"
 
 	return randname
-
-/datum/species/plasmaman/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
-	. = ..()
-	if(chem.type == /datum/reagent/consumable/milk)
-		if(chem.volume >= 6)
-			H.reagents.remove_reagent(chem.type, chem.volume - 5)
-			to_chat(H, "<span class='warning'>The excess milk is dripping off your bones!</span>")
-		H.heal_bodypart_damage(1.5,0, 0)
-		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM)
-		return TRUE
-
-	if(chem.type == /datum/reagent/toxin/bonehurtingjuice)
-		H.adjustBruteLoss(0.5, 0)
-		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM)
-		return TRUE

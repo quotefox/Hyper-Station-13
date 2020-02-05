@@ -37,7 +37,7 @@
 				PA = new(src)
 				user.put_in_hands(PA)
 
-/obj/item/chrono_eraser/item_action_slot_check(slot, mob/user)
+/obj/item/chrono_eraser/item_action_slot_check(slot, mob/user, datum/action/A)
 	if(slot == SLOT_BACK)
 		return 1
 
@@ -242,7 +242,7 @@
 		if(Pgun && istype(Pgun))
 			Pgun.field_connect(src)
 	else
-		return 0
+		return BULLET_ACT_HIT
 
 /obj/effect/chrono_field/assume_air()
 	return 0

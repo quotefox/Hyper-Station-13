@@ -1,6 +1,6 @@
 /datum/species/pod
 	// A mutation caused by a human being ressurected in a revival pod. These regain health in light, and begin to wither in darkness.
-	name = "Podperson"
+	name = "Anthromorphic Plant"
 	id = "pod"
 	default_color = "59CE00"
 	species_traits = list(MUTCOLORS,EYECOLOR)
@@ -36,8 +36,8 @@
 		var/turf/T = H.loc
 		light_amount = min(1,T.get_lumcount()) - 0.5
 		H.nutrition += light_amount * light_nutrition_gain_factor
-		if(H.nutrition > NUTRITION_LEVEL_FULL)
-			H.nutrition = NUTRITION_LEVEL_FULL
+		if(H.nutrition >= NUTRITION_LEVEL_FULL)
+			H.nutrition = NUTRITION_LEVEL_FULL - 1
 		if(light_amount > 0.2) //if there's enough light, heal
 			H.heal_overall_damage(light_bruteheal, light_burnheal)
 			H.adjustToxLoss(-light_toxheal)
@@ -47,9 +47,9 @@
 		H.take_overall_damage(2,0)
 
 /datum/species/pod/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
-	if(chem.id == "plantbgone")
+	if(chem.type == /datum/reagent/toxin/plantbgone)
 		H.adjustToxLoss(3)
-		H.reagents.remove_reagent(chem.id, REAGENTS_METABOLISM)
+		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM)
 		return 1
 
 /datum/species/pod/on_hit(obj/item/projectile/P, mob/living/carbon/human/H)
@@ -60,9 +60,9 @@
 				H.Knockdown(100)
 				H.visible_message("<span class='warning'>[H] writhes in pain as [H.p_their()] vacuoles boil.</span>", "<span class='userdanger'>You writhe in pain as your vacuoles boil!</span>", "<span class='italics'>You hear the crunching of leaves.</span>")
 				if(prob(80))
-					H.easy_randmut(NEGATIVE+MINOR_NEGATIVE)
+					H.randmutb()
 				else
-					H.easy_randmut(POSITIVE)
+					H.randmutg()
 				H.domutcheck()
 			else
 				H.adjustFireLoss(rand(5,15))
@@ -71,6 +71,7 @@
 			H.nutrition = min(H.nutrition+30, NUTRITION_LEVEL_FULL)
 
 /datum/species/pod/pseudo_weak
+	name = "Anthromorphic Plant"
 	id = "podweak"
 	limbs_id = "pod"
 	species_traits = list(EYECOLOR,HAIR,FACEHAIR,LIPS,MUTCOLORS)

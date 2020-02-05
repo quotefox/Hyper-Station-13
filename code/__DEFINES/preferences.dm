@@ -30,7 +30,6 @@
 #define CHAT_GHOSTPDA		(1<<8)
 #define CHAT_GHOSTRADIO 	(1<<9)
 #define CHAT_LOOC			(1<<10)
-#define SHOW_TYPING			(1<<11)
 
 #define TOGGLES_DEFAULT_CHAT (CHAT_OOC|CHAT_DEAD|CHAT_GHOSTEARS|CHAT_GHOSTSIGHT|CHAT_PRAYER|CHAT_RADIO|CHAT_PULLR|CHAT_GHOSTWHISPER|CHAT_GHOSTPDA|CHAT_GHOSTRADIO|CHAT_LOOC)
 
@@ -71,3 +70,15 @@
 #define DB_FLAG_EXEMPT 1
 
 #define DEFAULT_CYBORG_NAME "Default Cyborg Name"
+
+//Job preferences levels
+#define JP_LOW 1
+#define JP_MEDIUM 2
+#define JP_HIGH 3
+
+//Chaos levels for dynamic voting
+#define CHAOS_NONE "None (Extended)"
+#define CHAOS_LOW "Low"
+#define CHAOS_MED "Medium"
+#define CHAOS_HIGH "High"
+#define CHAOS_MAX "Maximum"

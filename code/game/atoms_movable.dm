@@ -3,6 +3,9 @@
 	var/last_move = null
 	var/last_move_time = 0
 	var/anchored = FALSE
+	var/move_resist = MOVE_RESIST_DEFAULT
+	var/move_force = MOVE_FORCE_DEFAULT
+	var/pull_force = PULL_FORCE_DEFAULT
 	var/datum/thrownthing/throwing = null
 	var/throw_speed = 2 //How many tiles to move per ds when being thrown. Float values are fully supported
 	var/throw_range = 7
@@ -19,21 +22,65 @@
 	var/atom/inertia_last_loc
 	var/inertia_moving = 0
 	var/inertia_next_move = 0
-	var/inertia_move_delay = 7
+	var/inertia_move_delay = 5
 	var/pass_flags = 0
 	var/moving_diagonally = 0 //0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
 	var/list/client_mobs_in_contents // This contains all the client mobs within this container
 	var/list/acted_explosions	//for explosion dodging
-	glide_size = 13
+	glide_size = 8
 	appearance_flags = TILE_BOUND|PIXEL_SCALE
 	var/datum/forced_movement/force_moving = null	//handled soley by forced_movement.dm
-	var/floating = FALSE
 	var/movement_type = GROUND		//Incase you have multiple types, you automatically use the most useful one. IE: Skating on ice, flippers on water, flying over chasm/space, etc.
 	var/atom/movable/pulling
 	var/grab_state = 0
 	var/throwforce = 0
 	var/datum/component/orbiter/orbiting
 	var/can_be_z_moved = TRUE
+
+	var/zfalling = FALSE
+
+/atom/movable/proc/can_zFall(turf/source, levels = 1, turf/target, direction)
+	if(!direction)
+		direction = DOWN
+	if(!source)
+		source = get_turf(src)
+		if(!source)
+			return FALSE
+	if(!target)
+		target = get_step_multiz(source, direction)
+		if(!target)
+			return FALSE
+	return !(movement_type & FLYING) && has_gravity(source) && !throwing
+
+/atom/movable/proc/onZImpact(turf/T, levels)
+	var/atom/highest = T
+	for(var/i in T.contents)
+		var/atom/A = i
+		if(!A.density)
+			continue
+		if(isobj(A) || ismob(A))
+			if(A.layer > highest.layer)
+				highest = A
+	INVOKE_ASYNC(src, .proc/SpinAnimation, 5, 2)
+	throw_impact(highest)
+	return TRUE
+
+//For physical constraints to travelling up/down.
+/atom/movable/proc/can_zTravel(turf/destination, direction)
+	var/turf/T = get_turf(src)
+	if(!T)
+		return FALSE
+	if(!direction)
+		if(!destination)
+			return FALSE
+		direction = get_dir(T, destination)
+	if(direction != UP && direction != DOWN)
+		return FALSE
+	if(!destination)
+		destination = get_step_multiz(src, direction)
+		if(!destination)
+			return FALSE
+	return T.zPassOut(src, direction, destination) && destination.zPassIn(src, direction, T)
 
 /atom/movable/vv_edit_var(var_name, var_value)
 	var/static/list/banned_edits = list("step_x", "step_y", "step_size")
@@ -71,64 +118,37 @@
 			return FALSE
 	return ..()
 
-/atom/movable/proc/start_pulling(atom/movable/AM,gs)
+/atom/movable/proc/start_pulling(atom/movable/AM, state, force = move_force, supress_message = FALSE)
 	if(QDELETED(AM))
 		return FALSE
-	if(!(AM.can_be_pulled(src)))
+	if(!(AM.can_be_pulled(src, state, force)))
 		return FALSE
 
 	// If we're pulling something then drop what we're currently pulling and pull this instead.
 	if(pulling)
-		if(gs==0)
+		if(state == 0)
 			stop_pulling()
 			return FALSE
 		// Are we trying to pull something we are already pulling? Then enter grab cycle and end.
 		if(AM == pulling)
-			grab_state = gs
+			grab_state = state
 			if(istype(AM,/mob/living))
 				var/mob/living/AMob = AM
 				AMob.grabbedby(src)
-
 			return TRUE
 		stop_pulling()
 	if(AM.pulledby)
 		log_combat(AM, AM.pulledby, "pulled from", src)
 		AM.pulledby.stop_pulling() //an object can't be pulled by two mobs at once.
-
 	pulling = AM
 	AM.pulledby = src
-	grab_state = gs
-
-
+	grab_state = state
 	if(ismob(AM))
 		var/mob/M = AM
 		log_combat(src, M, "grabbed", addition="passive grab")
-		visible_message("[src] has grabbed [M] passively.</span>")
+		if(!supress_message)
+			visible_message("<span class='warning'>[src] has grabbed [M] passively!</span>")
 	return TRUE
-
-//move character into tile whos grabbing you
-/atom/movable/proc/adjust_position()
-
-	var/pull_dir = get_dir(src, pulledby)
-	if (pulledby <> null)
-		switch(pull_dir)
-			if(NORTH)
-				animate(src, pixel_x=0, pixel_y=8, time=5)
-			if(NORTHEAST)
-				animate(src, pixel_x=8, pixel_y=8, time=5)
-			if(NORTHWEST)
-				animate(src, pixel_x=-8, pixel_y=8, time=5)
-			if(SOUTHEAST)
-				animate(src, pixel_x=8, pixel_y=-8, time=5)
-			if(SOUTHWEST)
-				animate(src, pixel_x=-8, pixel_y=-8, time=5)
-			if(SOUTH)
-				animate(src, pixel_x=0, pixel_y=-8, time=5)
-			if(WEST)
-				animate(src, pixel_x=-8, pixel_y=0, time=5)
-			if(EAST)
-				animate(src, pixel_x=8, pixel_y=0, time=5)
-
 
 /atom/movable/proc/stop_pulling()
 	if(pulling)
@@ -136,16 +156,14 @@
 		var/mob/living/ex_pulled = pulling
 		pulling = null
 		grab_state = 0
-
 		if(isliving(ex_pulled))
 			var/mob/living/L = ex_pulled
 			L.update_canmove()// mob gets up if it was lyng down in a chokehold
 
-
 /atom/movable/proc/Move_Pulled(atom/A)
 	if(!pulling)
 		return
-	if(pulling.anchored || !pulling.Adjacent(src))
+	if(pulling.anchored || pulling.move_resist > move_force || !pulling.Adjacent(src))
 		stop_pulling()
 		return
 	if(isliving(pulling))
@@ -159,12 +177,9 @@
 		return
 	step(pulling, get_dir(pulling.loc, A))
 
-
-
 /atom/movable/proc/check_pulling()
 	if(pulling)
 		var/atom/movable/pullee = pulling
-
 		if(pullee && get_dist(src, pullee) > 1)
 			stop_pulling()
 			return
@@ -175,14 +190,9 @@
 			log_game("DEBUG:[src]'s pull on [pullee] wasn't broken despite [pullee] being in [pullee.loc]. Pull stopped manually.")
 			stop_pulling()
 			return
-		if(pulling.anchored)
+		if(pulling.anchored || pulling.move_resist > move_force)
 			stop_pulling()
 			return
-
-
-
-
-
 
 ////////////////////////////////////////
 // Here's where we rewrite how byond handles movement except slightly different
@@ -255,7 +265,6 @@
 			// place due to a Crossed, Bumped, etc. call will interrupt
 			// the second half of the diagonal movement, or the second attempt
 			// at a first half if step() fails because we hit something.
-
 			if (direct & NORTH)
 				if (direct & EAST)
 					if (step(src, NORTH) && moving_diagonally)
@@ -312,7 +321,6 @@
 	if(. && pulling && pulling == pullee) //we were pulling a thing and didn't lose it during our move.
 		if(pulling.anchored)
 			stop_pulling()
-
 		else
 			var/pull_dir = get_dir(src, pulling)
 			//puller and pullee more than one tile away or in diagonal position
@@ -320,7 +328,6 @@
 				pulling.Move(T, get_dir(pulling, T)) //the pullee tries to reach our previous position
 				if(pulling && get_dist(src, pulling) > 1) //the pullee couldn't keep up
 					stop_pulling()
-
 			if(pulledby && moving_diagonally != FIRST_DIAG_STEP && get_dist(src, pulledby) > 1)//separated from our puller and not in the middle of a diagonal move.
 				pulledby.stop_pulling()
 
@@ -463,6 +470,9 @@
 		var/atom/movable/AM = item
 		AM.onTransitZ(old_z,new_z)
 
+/atom/movable/proc/setMovetype(newval)
+	movement_type = newval
+
 //Called whenever an object moves and by mobs when they attempt to move themselves through space
 //And when an object or action applies a force on src, see newtonian_move() below
 //Return 0 to have src start/keep drifting in a no-grav area and 1 to stop/not start drifting
@@ -502,17 +512,19 @@
 /atom/movable/proc/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	set waitfor = 0
 	SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
-	return hit_atom.hitby(src)
+	return hit_atom.hitby(src, throwingdatum=throwingdatum)
 
-/atom/movable/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked)
-	if(!anchored && hitpush)
+/atom/movable/hitby(atom/movable/AM, skipcatch, hitpush = TRUE, blocked, datum/thrownthing/throwingdatum)
+	if(!anchored && hitpush && (!throwingdatum || (throwingdatum.force >= (move_resist * MOVE_FORCE_PUSH_RATIO))))
 		step(src, AM.dir)
 	..()
 
-/atom/movable/proc/safe_throw_at(atom/target, range, speed, mob/thrower, spin=TRUE, diagonals_first = FALSE, var/datum/callback/callback)
-	return throw_at(target, range, speed, thrower, spin, diagonals_first, callback)
+/atom/movable/proc/safe_throw_at(atom/target, range, speed, mob/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = INFINITY, messy_throw = TRUE)
+	if((force < (move_resist * MOVE_FORCE_THROW_RATIO)) || (move_resist == INFINITY))
+		return
+	return throw_at(target, range, speed, thrower, spin, diagonals_first, callback, force, messy_throw)
 
-/atom/movable/proc/throw_at(atom/target, range, speed, mob/thrower, spin=TRUE, diagonals_first = FALSE, var/datum/callback/callback) //If this returns FALSE then callback will not be called.
+/atom/movable/proc/throw_at(atom/target, range, speed, mob/thrower, spin = TRUE, diagonals_first = FALSE, datum/callback/callback, force = INFINITY, messy_throw = TRUE) //If this returns FALSE then callback will not be called.
 	. = FALSE
 	if (!target || speed <= 0)
 		return
@@ -558,7 +570,10 @@
 	TT.speed = speed
 	TT.thrower = thrower
 	TT.diagonals_first = diagonals_first
+	TT.force = force
 	TT.callback = callback
+	if(!QDELETED(thrower))
+		TT.target_zone = thrower.zone_selected
 
 	var/dist_x = abs(target.x - src.x)
 	var/dist_y = abs(target.y - src.y)
@@ -605,6 +620,22 @@
 			buckled_mob.inertia_dir = last_move
 			return 0
 	return 1
+
+/atom/movable/proc/force_pushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
+	return FALSE
+
+/atom/movable/proc/force_push(atom/movable/AM, force = move_force, direction, silent = FALSE)
+	. = AM.force_pushed(src, force, direction)
+	if(!silent && .)
+		visible_message("<span class='warning'>[src] forcefully pushes against [AM]!</span>", "<span class='warning'>You forcefully push against [AM]!</span>")
+
+/atom/movable/proc/move_crush(atom/movable/AM, force = move_force, direction, silent = FALSE)
+	. = AM.move_crushed(src, force, direction)
+	if(!silent && .)
+		visible_message("<span class='danger'>[src] crushes past [AM]!</span>", "<span class='danger'>You crush [AM]!</span>")
+
+/atom/movable/proc/move_crushed(atom/movable/pusher, force = MOVE_FORCE_DEFAULT, direction)
+	return FALSE
 
 /atom/movable/CanPass(atom/movable/mover, turf/target)
 	if(mover in buckled_mobs)
@@ -725,14 +756,14 @@
 /atom/movable/proc/float(on)
 	if(throwing)
 		return
-	if(on && !floating)
+	if(on && !(movement_type & FLOATING))
 		animate(src, pixel_y = pixel_y + 2, time = 10, loop = -1)
 		sleep(10)
 		animate(src, pixel_y = pixel_y - 2, time = 10, loop = -1)
-		floating = TRUE
-	else if (!on && floating)
+		setMovetype(movement_type | FLOATING)
+	else if (!on && (movement_type & FLOATING))
 		animate(src, pixel_y = initial(pixel_y), time = 10)
-		floating = FALSE
+		setMovetype(movement_type & ~FLOATING)
 
 /* Language procs */
 /atom/movable/proc/get_language_holder(shadow=TRUE)
@@ -825,13 +856,14 @@
 /atom/movable/proc/get_cell()
 	return
 
-/atom/movable/proc/can_be_pulled(user)
+/atom/movable/proc/can_be_pulled(user, grab_state, force)
 	if(src == user || !isturf(loc))
 		return FALSE
 	if(anchored || throwing)
 		return FALSE
+	if(force < (move_resist * MOVE_FORCE_PULL_RATIO))
+		return FALSE
 	return TRUE
-
 
 /obj/item/proc/do_pickup_animation(atom/target)
 	set waitfor = FALSE

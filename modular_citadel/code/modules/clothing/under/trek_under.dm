@@ -14,6 +14,7 @@
 	desc = "Oooh... right."
 	icon = 'modular_citadel/icons/obj/clothing/trek_item_icon.dmi'
 	alternate_worn_icon = 'modular_citadel/icons/mob/clothing/trek_mob_icon.dmi'
+	mutantrace_variation = NONE
 	item_state = ""
 	can_adjust = FALSE	//to prevent you from "wearing it casually"
 
@@ -23,7 +24,7 @@
 	desc = "The uniform worn by command officers in the mid 2260s."
 	icon_state = "trek_command"
 	item_state = "trek_command"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0) 
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/under/rank/trek/engsec
 	name = "Operations Uniform"
@@ -96,7 +97,7 @@
 	alternate_worn_icon = 'modular_citadel/icons/mob/clothing/trek_mob_icon.dmi'
 	item_state = "trek_ds9_coat"
 	body_parts_covered = CHEST|GROIN|ARMS
-	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	mutantrace_variation = NONE
 	permeability_coefficient = 0.50
 	allowed = list(
 		/obj/item/flashlight, /obj/item/analyzer,
@@ -140,8 +141,7 @@
 	alternate_worn_icon = 'modular_citadel/icons/mob/clothing/trek_mob_icon.dmi'
 	icon_state = "fedcoat"
 	item_state = "fedcoat"
-	mutantrace_variation = NO_MUTANTRACE_VARIATION
-
+	mutantrace_variation = NONE
 	blood_overlay_type = "coat"
 	body_parts_covered = CHEST|GROIN|ARMS
 	allowed = list(

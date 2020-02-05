@@ -52,22 +52,22 @@
 	. = ..()
 	cant_hold = typecacheof(list(/obj/item/screwdriver/power))
 	can_hold = typecacheof(list(
-		/obj/item/kitchen/knife, /obj/item/switchblade, /obj/item/pen,
+		/obj/item/kitchen/knife, /obj/item/switchblade, /obj/item/pen, /obj/item/melee/cultblade/dagger,
 		/obj/item/scalpel, /obj/item/reagent_containers/syringe, /obj/item/dnainjector,
 		/obj/item/reagent_containers/hypospray/medipen, /obj/item/reagent_containers/dropper,
 		/obj/item/implanter, /obj/item/screwdriver, /obj/item/weldingtool/mini,
-		/obj/item/firing_pin
+		/obj/item/firing_pin, /obj/item/gun/ballistic/automatic/pistol
 		))
 
 /datum/component/storage/concrete/pockets/shoes/clown/Initialize()
 	. = ..()
 	cant_hold = typecacheof(list(/obj/item/screwdriver/power))
 	can_hold = typecacheof(list(
-		/obj/item/kitchen/knife, /obj/item/switchblade, /obj/item/pen,
+		/obj/item/kitchen/knife, /obj/item/switchblade, /obj/item/pen, /obj/item/melee/cultblade/dagger,
 		/obj/item/scalpel, /obj/item/reagent_containers/syringe, /obj/item/dnainjector,
 		/obj/item/reagent_containers/hypospray/medipen, /obj/item/reagent_containers/dropper,
 		/obj/item/implanter, /obj/item/screwdriver, /obj/item/weldingtool/mini,
-		/obj/item/firing_pin, /obj/item/bikehorn))
+		/obj/item/firing_pin, /obj/item/bikehorn, /obj/item/gun/ballistic/automatic/pistol))
 
 /datum/component/storage/concrete/pockets/pocketprotector
 	max_items = 3
@@ -87,3 +87,12 @@
 /datum/component/storage/concrete/pockets/pocketprotector/real_location()
 	// if the component is reparented to a jumpsuit, the items still go in the protector
 	return original_parent
+
+/datum/component/storage/concrete/pockets/small/rushelmet
+	max_items = 1
+	quickdraw = TRUE
+
+/datum/component/storage/concrete/pockets/small/rushelmet/Initialize()
+	. = ..()
+	can_hold = typecacheof(list(/obj/item/reagent_containers/glass/bottle,
+								/obj/item/ammo_box/a762))

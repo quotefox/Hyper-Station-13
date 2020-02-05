@@ -11,11 +11,9 @@
 	var/charge_cost = 30
 
 /obj/item/borg/stun/attack(mob/living/M, mob/living/user)
-	if(ishuman(M))
-		var/mob/living/carbon/human/H = M
-		if(H.check_shields(src, 0, "[M]'s [name]", MELEE_ATTACK))
-			playsound(M, 'sound/weapons/genhit.ogg', 50, 1)
-			return FALSE
+	if(M.check_shields(src, 0, "[M]'s [name]", MELEE_ATTACK))
+		playsound(M, 'sound/weapons/genhit.ogg', 50, 1)
+		return FALSE
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/R = user
 		if(!R.cell.use(charge_cost))
@@ -282,11 +280,13 @@
 	var/cooldown = 0
 
 /obj/item/harmalarm/emag_act(mob/user)
+	. = ..()
 	obj_flags ^= EMAGGED
 	if(obj_flags & EMAGGED)
 		to_chat(user, "<font color='red'>You short out the safeties on [src]!</font>")
 	else
 		to_chat(user, "<font color='red'>You reset the safeties on [src]!</font>")
+	return TRUE
 
 /obj/item/harmalarm/attack_self(mob/user)
 	var/safety = !(obj_flags & EMAGGED)
@@ -311,7 +311,7 @@
 			if(M.get_ear_protection() == FALSE)
 				M.confused += 6
 		audible_message("<font color='red' size='7'>HUMAN HARM</font>")
-		playsound(get_turf(src), 'sound/ai/harmalarm.ogg', 70, 3)
+		playsound(get_turf(src), 'sound/effects/harmalarm.ogg', 70, 3)
 		cooldown = world.time + 200
 		log_game("[key_name(user)] used a Cyborg Harm Alarm in [AREACOORD(user)]")
 		if(iscyborg(user))
@@ -428,7 +428,7 @@
 		A.BB.nodamage = FALSE
 	A.BB.speed = 0.5
 	playsound(src.loc, 'sound/machines/click.ogg', 50, 1)
-	A.fire_casing(target, user, params, 0, 0, null, 0)
+	A.fire_casing(target, user, params, 0, 0, null, 0, src)
 	user.visible_message("<span class='warning'>[user] blasts a flying lollipop at [target]!</span>")
 	check_amount()
 
@@ -444,7 +444,7 @@
 	A.BB.speed = 0.5
 	A.BB.color = rgb(rand(0, 255), rand(0, 255), rand(0, 255))
 	playsound(src.loc, 'sound/weapons/bulletflyby3.ogg', 50, 1)
-	A.fire_casing(target, user, params, 0, 0, null, 0)
+	A.fire_casing(target, user, params, 0, 0, null, 0, src)
 	user.visible_message("<span class='warning'>[user] shoots a high-velocity gumball at [target]!</span>")
 	check_amount()
 
@@ -747,201 +747,166 @@
 
 
 /**********************************************************************
-						Borg apparatus
+						Grippers oh god oh fuck
 ***********************************************************************/
-//These are tools that can hold only specific items. For example, the mediborg gets one that can only hold beakers and bottles.
 
-/obj/item/borg/apparatus/
-	name = "unknown storage apparatus"
-	desc = "This device seems nonfunctional."
-	icon = 'icons/mob/robot_items.dmi'
-	icon_state = "hugmodule"
-	var/obj/item/stored
-	var/list/storable = list()
+/obj/item/weapon/gripper
+	name = "circuit gripper"
+	desc = "A simple grasping tool for inserting circuitboards into machinary."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "gripper"
 
-/obj/item/borg/apparatus/Initialize()
-	. = ..()
-	RegisterSignal(loc.loc, COMSIG_BORG_SAFE_DECONSTRUCT, .proc/safedecon)
+	item_flags = NOBLUDGEON
 
-/obj/item/borg/apparatus/Destroy()
-	if(stored)
-		qdel(stored)
-	. = ..()
+	//Has a list of items that it can hold.
+	var/list/can_hold = list(
+		/obj/item/circuitboard
+		)
 
-///If we're safely deconstructed, we put the item neatly onto the ground, rather than deleting it.
-/obj/item/borg/apparatus/proc/safedecon()
-	if(stored)
-		stored.forceMove(get_turf(src))
-		stored = null
+	var/obj/item/wrapped = null // Item currently being held.
 
-/obj/item/borg/apparatus/Exited(atom/A)
-	if(A == stored) //sanity check
-		UnregisterSignal(stored, COMSIG_ATOM_UPDATE_ICON)
-		stored = null
-	update_icon()
-	. = ..()
+/obj/item/weapon/gripper/attack_self()
+	if(wrapped)
+		wrapped.forceMove(get_turf(wrapped))
+		wrapped = null
+	return ..()
 
-///A right-click verb, for those not using hotkey mode.
-/obj/item/borg/apparatus/verb/verb_dropHeld()
-	set category = "Object"
-	set name = "Drop"
+/obj/item/weapon/gripper/afterattack(var/atom/target, var/mob/living/user, proximity, params)
 
-	if(usr != loc || !stored)
+	if(!proximity)
 		return
-	stored.forceMove(get_turf(usr))
+
+	if(!wrapped)
+		for(var/obj/item/thing in src.contents)
+			wrapped = thing
+			break
+
+	if(wrapped) //Already have an item.
+		//Temporary put wrapped into user so target's attackby() checks pass.
+		wrapped.loc = user
+
+		//Pass the attack on to the target. This might delete/relocate wrapped.
+		var/resolved = target.attackby(wrapped,user)
+		if(!resolved && wrapped && target)
+			wrapped.afterattack(target,user,1)
+		//If wrapped was neither deleted nor put into target, put it back into the gripper.
+		if(wrapped && user && (wrapped.loc == user))
+			wrapped.loc = src
+		else
+			wrapped = null
+			return
+
+	else if(istype(target,/obj/item))
+
+		var/obj/item/I = target
+
+		var/grab = 0
+		for(var/typepath in can_hold)
+			if(istype(I,typepath))
+				grab = 1
+				break
+
+		//We can grab the item, finally.
+		if(grab)
+			to_chat(user, "You collect \the [I].")
+			I.loc = src
+			wrapped = I
+			return
+		else
+			to_chat(user, "<span class='danger'>Your gripper cannot hold \the [target].</span>")
+
+/obj/item/weapon/gripper/mining
+	name = "shelter capsule deployer"
+	desc = "A simple grasping tool for carrying and deploying shelter capsules."
+	icon_state = "gripper_mining"
+	can_hold = list(
+		/obj/item/survivalcapsule
+		)
+
+/obj/item/weapon/gripper/mining/attack_self()
+	if(wrapped)
+		wrapped.forceMove(get_turf(wrapped))
+		wrapped.attack_self()
+		wrapped = null
 	return
 
-/obj/item/borg/apparatus/attack_self(mob/living/silicon/robot/user)
-	if(!stored)
-		return ..()
-	if(user.client?.keys_held["Alt"])
-		stored.forceMove(get_turf(user))
-		return
-	stored.attack_self(user)
+/obj/item/gun/energy/plasmacutter/cyborg
+	name = "cyborg plasma cutter"
+	desc = "A basic variation of the plasma cutter, compressed into a cyborg chassis. Less effective than normal plasma cutters."
+	force = 15
+	ammo_type = list(/obj/item/ammo_casing/energy/plasma/weak)
+	can_charge = FALSE
+	selfcharge = EGUN_SELFCHARGE_BORG
+	cell_type = /obj/item/stock_parts/cell/secborg
+	charge_delay = 5
 
-/obj/item/borg/apparatus/pre_attack(atom/A, mob/living/user, params)
-	if(!stored)
-		var/itemcheck = FALSE
-		for(var/i in storable)
-			if(istype(A, i))
-				itemcheck = TRUE
-				break
-		if(itemcheck)
-			var/obj/item/O = A
-			O.forceMove(src)
-			stored = O
-			RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, /atom/.proc/update_iconb)
-			update_icon()
-			return
-	else
-		stored.melee_attack_chain(user, A, params)
-		return
+/obj/item/cyborg_clamp
+	name = "cyborg loading clamp"
+	desc = "Equipment for supply cyborgs. Lifts objects and loads them into cargo. Will not carry living beings."
+	icon = 'icons/mecha/mecha_equipment.dmi'
+	icon_state = "mecha_clamp"
+	tool_behaviour = TOOL_RETRACTOR
+	item_flags = NOBLUDGEON
+	flags_1 = NONE
+	var/cargo_capacity = 8
+	var/cargo = list()
+
+/obj/item/cyborg_clamp/attack(mob/M, mob/user, def_zone)
+	return
+
+/obj/item/cyborg_clamp/afterattack(atom/movable/target, mob/user, proximity)
 	. = ..()
-
-/obj/item/borg/apparatus/attackby(obj/item/W, mob/user, params)
-	if(stored)
-		W.melee_attack_chain(user, stored, params)
-		return
-	. = ..()
-
-/////////////////
-//beaker holder//
-/////////////////
-
-/obj/item/borg/apparatus/beaker
-	name = "beaker storage apparatus"
-	desc = "A special apparatus for carrying beakers without spilling the contents. Alt-Z or right-click to drop the beaker."
-	icon_state = "borg_beaker_apparatus"
-	storable = list(/obj/item/reagent_containers/glass/beaker,
-				/obj/item/reagent_containers/glass/bottle)
-
-/obj/item/borg/apparatus/beaker/Initialize()
-	. = ..()
-	stored = new /obj/item/reagent_containers/glass/beaker/large(src)
-	RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, /atom/.proc/update_iconb)
-	update_icon()
-
-/obj/item/borg/apparatus/beaker/Destroy()
-	if(stored)
-		var/obj/item/reagent_containers/C = stored
-		C.SplashReagents(get_turf(src))
-		qdel(stored)
-	. = ..()
-
-/obj/item/borg/apparatus/beaker/examine()
-	. = ..()
-	if(stored)
-		var/obj/item/reagent_containers/C = stored
-		. += "The apparatus currently has [C] secured, which contains:"
-		if(length(C.reagents.reagent_list))
-			for(var/datum/reagent/R in C.reagents.reagent_list)
-				. += "[R.volume] units of [R.name]"
+	if(!proximity)
+		return FALSE
+	if(isobj(target))
+		var/obj/O = target
+		if(!O.anchored)
+			if(contents.len < cargo_capacity)
+				user.visible_message("[user] lifts [target] and starts to load it into its cargo compartment.")
+				O.anchored = TRUE
+				if(do_mob(user, O, 20))
+					for(var/mob/chump in target.GetAllContents())
+						to_chat(user, "<span class='warning'>Error: Living entity detected in [target]. Cannot load.</span>")
+						O.anchored = initial(O.anchored)
+						return
+					for(var/obj/item/disk/nuclear/diskie in target.GetAllContents())
+						to_chat(user, "<span class='warning'>Error: Nuclear class authorization device detected in [target]. Cannot load.</span>")
+						O.anchored = initial(O.anchored)
+						return
+					if(contents.len < cargo_capacity) //check both before and after
+						cargo += O
+						O.forceMove(src)
+						O.anchored = FALSE
+						to_chat(user, "<span class='notice'>[target] successfully loaded.</span>")
+						playsound(loc, 'sound/effects/bin_close.ogg', 50, 0)
+					else
+						to_chat(user, "<span class='warning'>Not enough room in cargo compartment! Maximum of [cargo_capacity] objects!</span>")
+						O.anchored = initial(O.anchored)
+						return
+				else
+					O.anchored = initial(O.anchored)
+			else
+				to_chat(user, "<span class='warning'>Not enough room in cargo compartment! Maximum of [cargo_capacity] objects!</span>")
 		else
-			. += "Nothing."
+			to_chat(user, "<span class='warning'>[target] is firmly secured!</span>")
 
-/obj/item/borg/apparatus/beaker/update_icon()
-	cut_overlays()
-	if(stored)
-		COMPILE_OVERLAYS(stored)
-		stored.pixel_x = 0
-		stored.pixel_y = 0
-		var/image/img = image("icon"=stored, "layer"=FLOAT_LAYER)
-		var/image/arm = image("icon"="borg_beaker_apparatus_arm", "layer"=FLOAT_LAYER)
-		if(istype(stored, /obj/item/reagent_containers/glass/beaker))
-			arm.pixel_y = arm.pixel_y - 3
-		img.plane = FLOAT_PLANE
-		add_overlay(img)
-		add_overlay(arm)
-	else
-		var/image/arm = image("icon"="borg_beaker_apparatus_arm", "layer"=FLOAT_LAYER)
-		arm.pixel_y = arm.pixel_y - 5
-		add_overlay(arm)
-
-/obj/item/borg/apparatus/beaker/attack_self(mob/living/silicon/robot/user)
-	if(stored && !user.client?.keys_held["Alt"] && user.a_intent != "help")
-		var/obj/item/reagent_containers/C = stored
-		C.SplashReagents(get_turf(user))
-		loc.visible_message("<span class='notice'>[user] spills the contents of the [C] all over the floor.</span>")
+/obj/item/cyborg_clamp/attack_self(mob/user)
+	var/obj/chosen_cargo = input(user, "Drop what?") as null|anything in cargo
+	if(!chosen_cargo)
 		return
-	. = ..()
+	chosen_cargo.forceMove(get_turf(chosen_cargo))
+	cargo -= chosen_cargo
+	user.visible_message("[user] unloads [chosen_cargo] from its cargo.")
+	playsound(loc, 'sound/effects/bin_close.ogg', 50, 0)
 
-/obj/item/borg/apparatus/beaker/extra
-	name = "secondary beaker storage apparatus"
-	desc = "A supplementary beaker storage apparatus."
+/obj/item/cyborg_clamp/Destroy()
+	for(var/atom/movable/target in cargo)
+		target.forceMove(get_turf(src))
+	playsound(loc, 'sound/effects/bin_close.ogg', 50, 0)
+	return ..()
 
-/obj/item/borg/apparatus/beaker/service
-	name = "beverage storage apparatus"
-	desc = "A special apparatus for carrying drinks without spilling the contents. Alt-Z or right-click to drop the beaker."
-	icon_state = "borg_beaker_apparatus"
-	storable = list(/obj/item/reagent_containers/food/drinks/,
-				/obj/item/reagent_containers/food/condiment)
-
-/obj/item/borg/apparatus/beaker/service/Initialize()
-	. = ..()
-	stored = new /obj/item/reagent_containers/food/drinks/drinkingglass(src)
-	RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, /atom/.proc/update_iconb)
-	update_icon()
-
-////////////////////
-//engi part holder//
-////////////////////
-
-/obj/item/borg/apparatus/circuit
-	name = "circuit manipulation apparatus"
-	desc = "A special apparatus for carrying and manipulating circuit boards. Alt-Z or right-click to drop the stored object."
-	icon_state = "borg_hardware_apparatus"
-	storable = list(/obj/item/circuitboard,
-				/obj/item/electronics)
-
-/obj/item/borg/apparatus/circuit/Initialize()
-	. = ..()
-	update_icon()
-
-/obj/item/borg/apparatus/circuit/update_icon()
-	cut_overlays()
-	if(stored)
-		COMPILE_OVERLAYS(stored)
-		stored.pixel_x = -3
-		stored.pixel_y = 0
-		var/image/arm
-		if(istype(stored, /obj/item/circuitboard))
-			arm = image("icon"="borg_hardware_apparatus_arm1", "layer"=FLOAT_LAYER)
-		else
-			arm = image("icon"="borg_hardware_apparatus_arm2", "layer"=FLOAT_LAYER)
-		var/image/img = image("icon"=stored, "layer"=FLOAT_LAYER)
-		img.plane = FLOAT_PLANE
-		add_overlay(arm)
-		add_overlay(img)
-	else
-		var/image/arm = image("icon"="borg_hardware_apparatus_arm1", "layer"=FLOAT_LAYER)
-		add_overlay(arm)
-
-/obj/item/borg/apparatus/circuit/examine()
-	. = ..()
-	if(stored)
-		. += "The apparatus currently has [stored] secured."
-
-/obj/item/borg/apparatus/circuit/pre_attack(atom/A, mob/living/user, params)
-	. = ..()
-	if(istype(A, /obj/item/aiModule) && !stored) //If an admin wants a borg to upload laws, who am I to stop them? Otherwise, we can hint that it fails
-		to_chat(user, "<span class='warning'>This circuit board doesn't seem to have standard robot apparatus pin holes. You're unable to pick it up.</span>")
+/obj/item/card/id/miningborg
+	name = "mining point card"
+	desc = "A robotic ID strip used for claiming and transferring mining points. Must be held in an active slot to transfer points."
+	access = list(ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)
+	icon_state = "data_1"

@@ -60,8 +60,6 @@
 	desc = "A sign labelling a restroom."
 	icon_state = "restroom"
 
-
-
 /obj/structure/sign/departments/medbay
 	name = "\improper MEDBAY"
 	desc = "The Intergalactic symbol of Medical institutions. You'll probably get help here."

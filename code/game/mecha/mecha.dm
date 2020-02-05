@@ -1,3 +1,17 @@
+#define MECHA_INT_FIRE			(1<<0)
+#define MECHA_INT_TEMP_CONTROL	(1<<1)
+#define MECHA_INT_SHORT_CIRCUIT	(1<<2)
+#define MECHA_INT_TANK_BREACH	(1<<3)
+#define MECHA_INT_CONTROL_LOST	(1<<4)
+
+#define MELEE 1
+#define RANGED 2
+
+#define FRONT_ARMOUR 1
+#define SIDE_ARMOUR 2
+#define BACK_ARMOUR 3
+
+
 /obj/mecha
 	name = "mecha"
 	desc = "Exosuit"
@@ -21,9 +35,9 @@
 	max_integrity = 300 //max_integrity is base health
 	var/deflect_chance = 10 //chance to deflect the incoming projectiles, hits, or lesser the effect of ex_act.
 	armor = list("melee" = 20, "bullet" = 10, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
-	var/list/facing_modifiers = list(MECHA_FRONT_ARMOUR = 1.5, MECHA_SIDE_ARMOUR = 1, MECHA_BACK_ARMOUR = 0.5)
+	var/list/facing_modifiers = list(FRONT_ARMOUR = 1.5, SIDE_ARMOUR = 1, BACK_ARMOUR = 0.5)
 	var/obj/item/stock_parts/cell/cell
-	var/construction_state = MECHA_LOCKED
+	var/state = 0
 	var/list/log = new
 	var/last_message = 0
 	var/add_req_access = 1
@@ -35,6 +49,7 @@
 	var/lights = FALSE
 	var/lights_power = 6
 	var/last_user_hud = 1 // used to show/hide the mecha hud while preserving previous preference
+	var/completely_disabled = FALSE //stops the mech from doing anything
 	var/breach_time = 0
 	var/recharge_rate = 0
 
@@ -54,7 +69,7 @@
 	var/internal_damage = 0 //contains bitflags
 
 	var/list/operation_req_access = list()//required access level for mecha operation
-	var/list/internals_req_access = list(ACCESS_ENGINE,ACCESS_ROBOTICS)//REQUIRED ACCESS LEVEL TO OPEN CELL COMPARTMENT
+	var/list/internals_req_access = list(ACCESS_ROBOTICS)//REQUIRED ACCESS LEVEL TO OPEN CELL COMPARTMENT
 
 	var/wreckage
 
@@ -68,12 +83,6 @@
 
 	var/melee_cooldown = 10
 	var/melee_can_hit = 1
-
-	var/silicon_pilot = FALSE //set to true if an AI or MMI is piloting.
-
-	var/enter_delay = 40 //Time taken to enter the mech
-	var/enclosed = TRUE //Set to false for open-cockpit mechs
-	var/silicon_icon_state = null //if the mech has a different icon when piloted by an AI or MMI
 
 	//Action datums
 	var/datum/action/innate/mecha/mech_eject/eject_action = new
@@ -122,8 +131,7 @@
 	icon_state += "-open"
 	add_radio()
 	add_cabin()
-	if (enclosed)
-		add_airtank()
+	add_airtank()
 	spark_system.set_up(2, 0, src)
 	spark_system.attach(src)
 	smoke_system.set_up(3, src)
@@ -131,7 +139,7 @@
 	add_cell()
 	START_PROCESSING(SSobj, src)
 	GLOB.poi_list |= src
-	log_message("[src.name] created.")
+	mecha_log_message("[src.name] created.")
 	GLOB.mechas_list += src //global mech list
 	prepare_huds()
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
@@ -139,11 +147,6 @@
 	diag_hud_set_mechhealth()
 	diag_hud_set_mechcell()
 	diag_hud_set_mechstat()
-
-/obj/mecha/update_icon()
-	if (silicon_pilot && silicon_icon_state)
-		icon_state = silicon_icon_state
-	. = ..()
 
 /obj/mecha/get_cell()
 	return cell
@@ -268,28 +271,23 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 /obj/mecha/examine(mob/user)
-	..()
+	. = ..()
 	var/integrity = obj_integrity*100/max_integrity
 	switch(integrity)
 		if(85 to 100)
-			to_chat(user, "It's fully intact.")
+			. += "It's fully intact."
 		if(65 to 85)
-			to_chat(user, "It's slightly damaged.")
+			. += "It's slightly damaged."
 		if(45 to 65)
-			to_chat(user, "It's badly damaged.")
+			. += "It's badly damaged."
 		if(25 to 45)
-			to_chat(user, "It's heavily damaged.")
+			. += "It's heavily damaged."
 		else
-			to_chat(user, "It's falling apart.")
+			. += "It's falling apart."
 	if(equipment && equipment.len)
-		to_chat(user, "It's equipped with:")
+		. += "It's equipped with:"
 		for(var/obj/item/mecha_parts/mecha_equipment/ME in equipment)
-			to_chat(user, "[icon2html(ME, user)] \A [ME].")
-	if(!enclosed)
-		if(silicon_pilot)
-			to_chat(user, "[src] appears to be piloting itself...")
-		else if(occupant && occupant != user) //!silicon_pilot implied
-			to_chat(user, "You can see [occupant] inside.")
+			. += "[icon2html(ME, user)] \A [ME]."
 
 //processing internal damage, temperature, air regulation, alert updates, lights power use.
 /obj/mecha/process()
@@ -409,19 +407,13 @@
 	diag_hud_set_mechcell()
 	diag_hud_set_mechstat()
 
-/obj/mecha/fire_act() //Check if we should ignite the pilot of an open-canopy mech
-	if (occupant && !enclosed && !silicon_pilot)
-		if (occupant.fire_stacks < 5)
-			occupant.fire_stacks += 1
-		occupant.IgniteMob()
-
 /obj/mecha/proc/drop_item()//Derpfix, but may be useful in future for engineering exosuits.
 	return
 
-/obj/mecha/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode)
+/obj/mecha/Hear(message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode, atom/movable/source)
 	. = ..()
 	if(speaker == occupant)
-		if(radio?.broadcasting)
+		if(radio.broadcasting)
 			radio.talk_into(speaker, text, , spans, message_language)
 		//flick speech bubble
 		var/list/speech_bubble_recipients = list()
@@ -440,12 +432,14 @@
 		return
 	if(!locate(/turf) in list(target,target.loc)) // Prevents inventory from being drilled
 		return
+	if(completely_disabled)
+		return
 	if(phasing)
 		occupant_message("Unable to interact with objects while phasing")
 		return
 	if(user.incapacitated())
 		return
-	if(construction_state)
+	if(state)
 		occupant_message("<span class='warning'>Maintenance protocols in effect.</span>")
 		return
 	if(!get_charge())
@@ -497,9 +491,9 @@
 	. = ..()
 	if(.)
 		events.fireEvent("onMove",get_turf(src))
-	if (internal_tank?.disconnect()) // Something moved us and broke connection
+	if (internal_tank.disconnect()) // Something moved us and broke connection
 		occupant_message("<span class='warning'>Air port connection teared off!</span>")
-		log_message("Lost connection to gas port.")
+		mecha_log_message("Lost connection to gas port.")
 
 /obj/mecha/Process_Spacemove(var/movement_dir = 0)
 	. = ..()
@@ -517,18 +511,20 @@
 		return 1
 
 /obj/mecha/relaymove(mob/user,direction)
+	if(completely_disabled)
+		return
 	if(!direction)
 		return
 	if(user != occupant) //While not "realistic", this piece is player friendly.
 		user.forceMove(get_turf(src))
 		to_chat(user, "<span class='notice'>You climb out from [src].</span>")
 		return 0
-	if(internal_tank?.connected_port)
+	if(internal_tank.connected_port)
 		if(world.time - last_message > 20)
 			occupant_message("<span class='warning'>Unable to move while connected to the air system port!</span>")
 			last_message = world.time
 		return 0
-	if(construction_state)
+	if(state)
 		occupant_message("<span class='danger'>Maintenance protocols in effect.</span>")
 		return
 	return domove(direction)
@@ -698,7 +694,7 @@
  //Transfer from core or card to mech. Proc is called by mech.
 	switch(interaction)
 		if(AI_TRANS_TO_CARD) //Upload AI from mech to AI card.
-			if(construction_state) //Mech must be in maint mode to allow carding.
+			if(!state) //Mech must be in maint mode to allow carding.
 				to_chat(user, "<span class='warning'>[name] must have maintenance protocols active in order to allow a transfer.</span>")
 				return
 			AI = occupant
@@ -711,7 +707,6 @@
 			AI.disconnect_shell()
 			RemoveActions(AI, TRUE)
 			occupant = null
-			silicon_pilot = FALSE
 			AI.forceMove(card)
 			card.AI = AI
 			AI.controlled_mech = null
@@ -753,9 +748,7 @@
 	AI.ai_restore_power()
 	AI.forceMove(src)
 	occupant = AI
-	silicon_pilot = TRUE
 	icon_state = initial(icon_state)
-	update_icon()
 	playsound(src, 'sound/machines/windowdoor.ogg', 50, 1)
 	if(!internal_damage)
 		SEND_SOUND(occupant, sound('sound/mecha/nominal.ogg',volume=50))
@@ -829,7 +822,7 @@
 		return
 	if(!ishuman(user)) // no silicons or drones in mechas.
 		return
-	log_message("[user] tries to move in.")
+	mecha_log_message("[user] tries to move in.")
 	if (occupant)
 		to_chat(usr, "<span class='warning'>The [name] is already occupied!</span>")
 		log_append_to_last("Permission denied.")
@@ -858,7 +851,7 @@
 
 	visible_message("[user] starts to climb into [name].")
 
-	if(do_after(user, enter_delay, target = src))
+	if(do_after(user, 40, target = src))
 		if(obj_integrity <= 0)
 			to_chat(user, "<span class='warning'>You cannot get in the [name], it has been destroyed!</span>")
 		else if(occupant)
@@ -931,7 +924,6 @@
 	var/mob/living/brainmob = mmi_as_oc.brainmob
 	mmi_as_oc.mecha = src
 	occupant = brainmob
-	silicon_pilot = TRUE
 	brainmob.forceMove(src) //should allow relaymove
 	brainmob.reset_perspective(src)
 	brainmob.remote_control = src
@@ -940,7 +932,7 @@
 	icon_state = initial(icon_state)
 	update_icon()
 	setDir(dir_in)
-	log_message("[mmi_as_oc] moved in as pilot.")
+	mecha_log_message("[mmi_as_oc] moved in as pilot.")
 	if(!internal_damage)
 		SEND_SOUND(occupant, sound('sound/mecha/nominal.ogg',volume=50))
 	GrantActions(brainmob)
@@ -973,7 +965,6 @@
 			RemoveActions(occupant)
 			occupant.gib()  //If one Malf decides to steal a mech from another AI (even other Malfs!), they are destroyed, as they have nowhere to go when replaced.
 			occupant = null
-			silicon_pilot = FALSE
 			return
 		else
 			if(!AI.linked_core)
@@ -991,9 +982,8 @@
 		return
 	var/mob/living/L = occupant
 	occupant = null //we need it null when forceMove calls Exited().
-	silicon_pilot = FALSE
 	if(mob_container.forceMove(newloc))//ejecting mob container
-		log_message("[mob_container] moved out.")
+		mecha_log_message("[mob_container] moved out.")
 		L << browse(null, "window=exosuit")
 
 		if(istype(mob_container, /obj/item/mmi))
@@ -1038,19 +1028,16 @@
 			to_chat(occupant, "[icon2html(src, occupant)] [message]")
 	return
 
-/obj/mecha/log_message(message as text, message_type=LOG_GAME, color=null, log_globally)
+/obj/mecha/proc/mecha_log_message(message, color)
 	log.len++
-	log[log.len] = list("time"="[STATION_TIME_TIMESTAMP("hh:mm:ss")]","date","year"="[GLOB.year_integer+540]","message"="[color?"<font color='[color]'>":null][message][color?"</font>":null]")
-	..()
+	log[log.len] = list("time"="[STATION_TIME_TIMESTAMP("hh:mm:ss", world.time)]","date","year"="[GLOB.year_integer]","message"="[color?"<font color='[color]'>":null][message][color?"</font>":null]")
+	log_message(message, LOG_GAME, color)			//also do the normal admin logs I guess.
 	return log.len
 
 /obj/mecha/proc/log_append_to_last(message as text,red=null)
 	var/list/last_entry = log[log.len]
 	last_entry["message"] += "<br>[red?"<font color='red'>":null][message][red?"</font>":null]"
 	return
-
-GLOBAL_VAR_INIT(year, time2text(world.realtime,"YYYY"))
-GLOBAL_VAR_INIT(year_integer, text2num(year)) // = 2013???
 
 ///////////////////////
 ///// Power stuff /////

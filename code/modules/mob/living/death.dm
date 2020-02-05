@@ -13,14 +13,22 @@
 	if(!no_bodyparts)
 		spread_bodyparts(no_brain, no_organs)
 
+	for(var/X in implants)
+		var/obj/item/implant/I = X
+		qdel(I)
+
 	spawn_gibs(no_bodyparts)
 	qdel(src)
 
 /mob/living/proc/gib_animation()
 	return
 
-/mob/living/proc/spawn_gibs()
-	new /obj/effect/gibspawner/generic(drop_location(), null, get_static_viruses())
+/mob/living/proc/spawn_gibs(with_bodyparts, atom/loc_override)
+	var/location = loc_override ? loc_override.drop_location() : drop_location()
+	if(MOB_ROBOTIC in mob_biotypes)
+		new /obj/effect/gibspawner/robot(location, src, get_static_viruses())
+	else
+		new /obj/effect/gibspawner/generic(location, src, get_static_viruses())
 
 /mob/living/proc/spill_organs()
 	return
@@ -48,21 +56,14 @@
 /mob/living/proc/spawn_dust(just_ash = FALSE)
 	new /obj/effect/decal/cleanable/ash(loc)
 
+
 /mob/living/death(gibbed)
 	stat = DEAD
 	unset_machine()
 	timeofdeath = world.time
-	tod = STATION_TIME_TIMESTAMP("hh:mm:ss")
-	var/turf/T = get_turf(src)
+	tod = STATION_TIME_TIMESTAMP("hh:mm:ss", world.time)
 	for(var/obj/item/I in contents)
 		I.on_mob_death(src, gibbed)
-	for(var/datum/disease/advance/D in diseases)
-		for(var/symptom in D.symptoms)
-			var/datum/symptom/S = symptom
-			S.OnDeath(D)
-	if(mind && mind.name && mind.active && !istype(T.loc, /area/ctf))
-		var/rendered = "<span class='deadsay'><b>[mind.name]</b> has died at <b>[get_area_name(T)]</b>.</span>"
-		deadchat_broadcast(rendered, follow_target = src, turf_target = T, message_type=DEADCHAT_DEATHRATTLE)
 	if(mind)
 		mind.store_memory("Time of death: [tod]", 0)
 	GLOB.alive_mob_list -= src
@@ -84,8 +85,15 @@
 		addtimer(CALLBACK(src, .proc/med_hud_set_status), (DEFIB_TIME_LIMIT * 10) + 1)
 	stop_pulling()
 
-	SEND_SIGNAL(src, COMSIG_MOB_DEATH, gibbed)
+	var/signal = SEND_SIGNAL(src, COMSIG_MOB_DEATH, gibbed)
 
+	var/turf/T = get_turf(src)
+	if(mind && mind.name && mind.active && !istype(T.loc, /area/ctf) && !(signal & COMPONENT_BLOCK_DEATH_BROADCAST))
+		var/rendered = "<span class='deadsay'><b>[mind.name]</b> has died at <b>[get_area_name(T)]</b>.</span>"
+		deadchat_broadcast(rendered, follow_target = src, turf_target = T, message_type=DEADCHAT_DEATHRATTLE)
+	if (client && client.prefs && client.prefs.auto_ooc)
+		if (!(client.prefs.chat_toggles & CHAT_OOC))
+			client.prefs.chat_toggles ^= CHAT_OOC
 	if (client)
 		client.move_delay = initial(client.move_delay)
 

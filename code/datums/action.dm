@@ -141,6 +141,17 @@
 		current_button.add_overlay(mutable_appearance(icon_icon, button_icon_state))
 		current_button.button_icon_state = button_icon_state
 
+/datum/action/ghost
+	icon_icon = 'icons/mob/mob.dmi'
+	button_icon_state = "ghost"
+	name = "Ghostize"
+	desc = "Turn into a ghost and freely come back to your body."
+
+/datum/action/ghost/Trigger()
+	if(!..())
+		return 0
+	var/mob/M = target
+	M.ghostize(1)
 
 //Presets for item actions
 /datum/action/item_action
@@ -245,11 +256,11 @@
 /datum/action/item_action/toggle_helmet_light
 	name = "Toggle Helmet Light"
 
-/datum/action/item_action/toggle_welding_screen/plasmaman
+/datum/action/item_action/toggle_welding_screen
 	name = "Toggle Welding Screen"
 
-/datum/action/item_action/toggle_welding_screen/plasmaman/Trigger()
-	var/obj/item/clothing/head/helmet/space/plasmaman/H = target
+/datum/action/item_action/toggle_welding_screen/Trigger()
+	var/obj/item/clothing/head/hardhat/weldhat/H = target
 	if(istype(H))
 		H.toggle_welding_screen(owner)
 
@@ -532,6 +543,9 @@
 		owner.forceMove(box)
 		cooldown = world.time
 		owner.playsound_local(box, 'sound/misc/box_deploy.ogg', 50, TRUE)
+
+/datum/action/item_action/flash
+	name = "Flash"
 
 //Preset for spells
 /datum/action/spell_action

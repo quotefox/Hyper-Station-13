@@ -1,4 +1,4 @@
-#define CHEMICAL_QUANTISATION_LEVEL 0.0001
+#define CHEMICAL_QUANTISATION_LEVEL 0.001
 
 /proc/build_chemical_reagent_list()
 	//Chemical Reagents - Initialises all /datum/reagent into a list indexed by reagent id
@@ -11,13 +11,13 @@
 
 	for(var/path in paths)
 		var/datum/reagent/D = new path()
-		GLOB.chemical_reagents_list[D.id] = D
+		GLOB.chemical_reagents_list[path] = D
 
 /proc/build_chemical_reactions_list()
 	//Chemical Reactions - Initialises all /datum/chemical_reaction into a list
 	// It is filtered into multiple lists within a list.
 	// For example:
-	// chemical_reaction_list["plasma"] is a list of all reactions relating to plasma
+	// chemical_reaction_list[/datum/reagent/toxin/plasma] is a list of all reactions relating to plasma
 
 	if(GLOB.chemical_reactions_list)
 		return
@@ -32,14 +32,11 @@
 		var/datum/chemical_reaction/D = new path()
 		var/list/reaction_ids = list()
 
-		if(!D.id)
-			continue
-
 		if(D.required_reagents && D.required_reagents.len)
 			for(var/reaction in D.required_reagents)
 				reaction_ids += reaction
 
-		// Create filters based on each reagent id in the required reagents list
+		// Create filters based on each reagent type in the required reagents list
 		for(var/id in reaction_ids)
 			if(!GLOB.chemical_reactions_list[id])
 				GLOB.chemical_reactions_list[id] = list()
@@ -63,7 +60,7 @@
 	var/targetVol = 0 //the target volume, i.e. the total amount that can be created during a fermichem reaction.
 	var/reactedVol = 0 //how much of the reagent is reacted during a fermireaction
 	var/fermiIsReacting = FALSE //that prevents multiple reactions from occurring (i.e. add_reagent calls to process_reactions(), this stops any extra reactions.)
-	var/fermiReactID = null //ID of the chem being made during a fermireaction, kept here so it's cache isn't lost between loops/procs.
+	var/fermiReactID //instance of the chem reaction used during a fermireaction, kept here so it's cache isn't lost between loops/procs.
 
 /datum/reagents/New(maximum=100, new_flags)
 	maximum_volume = maximum
@@ -96,7 +93,7 @@
 	var/list/data = list()
 	for(var/r in reagent_list) //no reagents will be left behind
 		var/datum/reagent/R = r
-		data += "[R.id] ([round(R.volume, CHEMICAL_QUANTISATION_LEVEL)]u)"
+		data += "[R.type] ([round(R.volume, CHEMICAL_QUANTISATION_LEVEL)]u)"
 		//Using IDs because SOME chemicals (I'm looking at you, chlorhydrate-beer) have the same names as other chemicals.
 	return english_list(data)
 
@@ -117,7 +114,7 @@
 			current_list_element = 1
 
 		var/datum/reagent/R = cached_reagents[current_list_element]
-		remove_reagent(R.id, 1)
+		remove_reagent(R.type, 1)
 
 		current_list_element++
 		total_transfered++
@@ -128,14 +125,12 @@
 
 /datum/reagents/proc/remove_all(amount = 1)
 	var/list/cached_reagents = reagent_list
-	if((total_volume - amount) <= 0)//Because this can result in 0, I don't want it to crash.
-		pH = 7
 	if(total_volume > 0)
 		var/part = amount / total_volume
 		for(var/reagent in cached_reagents)
 			var/datum/reagent/R = reagent
-			remove_reagent(R.id, R.volume * part, ignore_pH = TRUE)
-
+			remove_reagent(R.type, R.volume * part, ignore_pH = TRUE)
+		pH = REAGENT_NORMAL_PH
 		update_total()
 		handle_reactions()
 		return amount
@@ -154,15 +149,15 @@
 
 /datum/reagents/proc/get_master_reagent_id()
 	var/list/cached_reagents = reagent_list
-	var/id
+	var/max_type
 	var/max_volume = 0
 	for(var/reagent in cached_reagents)
 		var/datum/reagent/R = reagent
 		if(R.volume > max_volume)
 			max_volume = R.volume
-			id = R.id
+			max_type = R.type
 
-	return id
+	return max_type
 
 /datum/reagents/proc/get_master_reagent()
 	var/list/cached_reagents = reagent_list
@@ -176,7 +171,7 @@
 
 	return master
 
-/datum/reagents/proc/trans_to(obj/target, amount=1, multiplier=1, preserve_data=1, no_react = 0)//if preserve_data=0, the reagents data will be lost. Usefull if you use data for some strange stuff and don't want it to be transferred.
+/datum/reagents/proc/trans_to(obj/target, amount = 1, multiplier = 1, preserve_data = 1, no_react = 0, log = FALSE)//if preserve_data=0, the reagents data will be lost. Usefull if you use data for some strange stuff and don't want it to be transferred.
 	var/list/cached_reagents = reagent_list
 	if(!target || !total_volume)
 		return
@@ -193,16 +188,22 @@
 	amount = min(min(amount, src.total_volume), R.maximum_volume-R.total_volume)
 	var/part = amount / src.total_volume
 	var/trans_data = null
+	var/list/transferred = list()
 	for(var/reagent in cached_reagents)
 		var/datum/reagent/T = reagent
 		var/transfer_amount = T.volume * part
 		if(preserve_data)
 			trans_data = copy_data(T)
+		transferred += "[T] - [transfer_amount]"
 
+		R.add_reagent(T.type, transfer_amount * multiplier, trans_data, chem_temp, T.purity, pH, no_react = TRUE, ignore_pH = TRUE) //we only handle reaction after every reagent has been transfered.
+		remove_reagent(T.type, transfer_amount, ignore_pH = TRUE)
 
-		R.add_reagent(T.id, transfer_amount * multiplier, trans_data, chem_temp, T.purity, pH, no_react = TRUE, ignore_pH = TRUE) //we only handle reaction after every reagent has been transfered.
-
-		remove_reagent(T.id, transfer_amount, ignore_pH = TRUE)
+	if(log && amount > 0)
+		var/atom/us = my_atom
+		var/atom/them = R.my_atom
+		var/location_string = "FROM [(us && "[us] ([REF(us)]) [COORD(us)]") || "NULL"] TO [(them && "[them] ([REF(them)]) [COORD(them)]") || "NULL"]"
+		log_reagent_transfer("[location_string] - [key_name(usr)][istext(log) ? " - [log]" : ""]: trans_to with arguments [target] [amount] [multiplier] [preserve_data] [no_react] and reagents [english_list(transferred)]")
 
 	update_total()
 	R.update_total()
@@ -234,7 +235,7 @@
 		var/copy_amount = T.volume * part
 		if(preserve_data)
 			trans_data = T.data
-		R.add_reagent(T.id, copy_amount * multiplier, trans_data)
+		R.add_reagent(T.type, copy_amount * multiplier, trans_data)
 
 	src.update_total()
 	R.update_total()
@@ -242,7 +243,7 @@
 	src.handle_reactions()
 	return amount
 
-/datum/reagents/proc/trans_id_to(obj/target, reagent, amount=1, preserve_data=1)//Not sure why this proc didn't exist before. It does now! /N
+/datum/reagents/proc/trans_id_to(obj/target, reagent, amount = 1, preserve_data = TRUE, log = FALSE)//Not sure why this proc didn't exist before. It does now! /N
 	var/list/cached_reagents = reagent_list
 	if (!target)
 		return
@@ -258,12 +259,16 @@
 	var/trans_data = null
 	for (var/CR in cached_reagents)
 		var/datum/reagent/current_reagent = CR
-		if(current_reagent.id == reagent)
+		if(current_reagent.type == reagent)
 			if(preserve_data)
 				trans_data = current_reagent.data
-			R.add_reagent(current_reagent.id, amount, trans_data, chem_temp, current_reagent.purity, pH, no_react = TRUE)
-
-			remove_reagent(current_reagent.id, amount, 1)
+			R.add_reagent(current_reagent.type, amount, trans_data, chem_temp, current_reagent.purity, pH, no_react = TRUE)
+			remove_reagent(current_reagent.type, amount, 1)
+			if(log && amount > 0)
+				var/atom/us = my_atom
+				var/atom/them = R.my_atom
+				var/location_string = "FROM [(us && "[us] ([REF(us)]) [COORD(us)]") || "NULL"] TO [(them && "[them] ([REF(them)]) [COORD(them)]") || "NULL"]"
+				log_reagent_transfer("[location_string] - [key_name(usr)][istext(log) ? " - [log]" : ""]: trans_id_to with arguments [target] [reagent] [amount] [preserve_data]")
 			break
 
 	src.update_total()
@@ -315,18 +320,21 @@
 				var/datum/reagent/R = addiction
 				if(C && R)
 					R.addiction_stage++
-					if(1 <= R.addiction_stage && R.addiction_stage <= R.addiction_stage1_end)
-						need_mob_update += R.addiction_act_stage1(C)
-					else if(R.addiction_stage1_end <= R.addiction_stage && R.addiction_stage <= R.addiction_stage2_end)
-						need_mob_update += R.addiction_act_stage2(C)
-					else if(R.addiction_stage2_end <= R.addiction_stage && R.addiction_stage <= R.addiction_stage3_end)
-						need_mob_update += R.addiction_act_stage3(C)
-					else if(R.addiction_stage3_end <= R.addiction_stage && R.addiction_stage <= R.addiction_stage4_end)
-						need_mob_update += R.addiction_act_stage4(C)
-					else if(R.addiction_stage4_end <= R.addiction_stage)
-						to_chat(C, "<span class='notice'>You feel like you've gotten over your need for [R.name].</span>")
-						SEND_SIGNAL(C, COMSIG_CLEAR_MOOD_EVENT, "[R.id]_addiction")
-						cached_addictions.Remove(R)
+					switch(R.addiction_stage)
+						if(1 to R.addiction_stage1_end)
+							need_mob_update += R.addiction_act_stage1(C)
+						if(R.addiction_stage1_end to R.addiction_stage2_end)
+							need_mob_update += R.addiction_act_stage2(C)
+						if(R.addiction_stage2_end to R.addiction_stage3_end)
+							need_mob_update += R.addiction_act_stage3(C)
+						if(R.addiction_stage3_end to R.addiction_stage4_end)
+							need_mob_update += R.addiction_act_stage4(C)
+						if(R.addiction_stage4_end to INFINITY)
+							to_chat(C, "<span class='notice'>You feel like you've gotten over your need for [R.name].</span>")
+							SEND_SIGNAL(C, COMSIG_CLEAR_MOOD_EVENT, "[R.type]_addiction")
+							cached_addictions.Remove(R)
+						else
+							SEND_SIGNAL(C, COMSIG_CLEAR_MOOD_EVENT, "[R.type]_overdose")
 		addiction_tick++
 	if(C && need_mob_update) //some of the metabolized reagents had effects on the mob that requires some updates.
 		C.updatehealth()
@@ -365,7 +373,7 @@
 
 
 /datum/reagents/proc/handle_reactions()//HERE EDIT HERE THE MAIN REACTION
-	if(fermiIsReacting == TRUE)
+	if(fermiIsReacting) //This ARRESTS other reactions. If you don't want this, then remove it.
 		return
 
 	if(reagents_holder_flags & NO_REACT)
@@ -383,7 +391,7 @@
 		reaction_occurred = 0
 		for(var/reagent in cached_reagents)
 			var/datum/reagent/R = reagent
-			for(var/reaction in cached_reactions[R.id]) // Was a big list but now it should be smaller since we filtered it with our reagent id
+			for(var/reaction in cached_reactions[R.type]) // Was a big list but now it should be smaller since we filtered it with our reagent type
 				if(!reaction)
 					continue
 
@@ -404,7 +412,7 @@
 
 
 				for(var/B in cached_required_reagents)
-					if(!has_reagent(B, cached_required_reagents[B]))
+					if(!has_reagent(B, cached_required_reagents[B]))//Allows vols at less than 1 to react.
 						break
 					total_matching_reagents++
 				for(var/B in cached_required_catalysts)
@@ -464,43 +472,46 @@
 			//Temperature plays into a larger role too.
 			var/datum/chemical_reaction/C = selected_reaction
 
-			if (C.FermiChem == TRUE && !continue_reacting)
+			if (C.FermiChem && !continue_reacting)
 				if (chem_temp > C.ExplodeTemp) //This is first to ensure explosions.
-					var/datum/chemical_reaction/fermi/Ferm = selected_reaction
+					var/datum/chemical_reaction/Ferm = selected_reaction
 					fermiIsReacting = FALSE
 					SSblackbox.record_feedback("tally", "fermi_chem", 1, ("[Ferm] explosion"))
 					Ferm.FermiExplode(src, my_atom, volume = total_volume, temp = chem_temp, pH = pH)
 					return 0
 
+				//This is just to calc the on_reaction multiplier, and is a candidate for removal.
 				for(var/B in cached_required_reagents)
-					multiplier = min(multiplier, round((get_reagent_amount(B) / cached_required_reagents[B]), CHEMICAL_QUANTISATION_LEVEL))
+					multiplier = min(multiplier, round((get_reagent_amount(B) / cached_required_reagents[B]), 0.0001))
 				for(var/P in selected_reaction.results)
 					targetVol = cached_results[P]*multiplier
 
-				if( (chem_temp <= C.ExplodeTemp) && (chem_temp >= C.OptimalTempMin))
-					if( (pH >= (C.OptimalpHMin - C.ReactpHLim)) && (pH <= (C.OptimalpHMax + C.ReactpHLim)) )//To prevent pointless reactions
-
-						if (fermiIsReacting == TRUE)
-							return 0
-						else
-							START_PROCESSING(SSprocessing, src)
-							selected_reaction.on_reaction(src, my_atom, multiplier)
-							fermiIsReacting = TRUE
-							fermiReactID = selected_reaction
-							reaction_occurred = 1
-
-					else //It's a little bit of a confusing nest, but esstentially we check if it's a fermireaction, then temperature, then pH. If this is true, the remainer of this handler is run.
-						return 0 //If pH is out of range
+				if(!((chem_temp <= C.ExplodeTemp) && (chem_temp >= C.OptimalTempMin)))
+					return 0 //Not hot enough
+				if(! ((pH >= (C.OptimalpHMin - C.ReactpHLim)) && (pH <= (C.OptimalpHMax + C.ReactpHLim)) ))//To prevent pointless reactions
+					return 0
+				if (fermiIsReacting)
+					return 0
 				else
-					return 0 //If not hot enough
+					START_PROCESSING(SSprocessing, src)
+					selected_reaction.on_reaction(src, my_atom, multiplier)
+					fermiIsReacting = TRUE
+					fermiReactID = selected_reaction
+					reaction_occurred = 1
 
 		//Standard reaction mechanics:
 			else
-				if (C.FermiChem == TRUE)//Just to make sure
+				if (C.FermiChem)//Just to make sure, should only proc when grenades are combining.
+					if (chem_temp > C.ExplodeTemp) //To allow fermigrenades
+						var/datum/chemical_reaction/fermi/Ferm = selected_reaction
+						fermiIsReacting = FALSE
+						SSblackbox.record_feedback("tally", "fermi_chem", 1, ("[Ferm] explosion"))
+						Ferm.FermiExplode(src, my_atom, volume = total_volume, temp = chem_temp, pH = pH)
 					return 0
 
 				for(var/B in cached_required_reagents) //
 					multiplier = min(multiplier, round((get_reagent_amount(B) / cached_required_reagents[B]), CHEMICAL_QUANTISATION_LEVEL))
+
 
 				for(var/B in cached_required_reagents)
 					remove_reagent(B, (multiplier * cached_required_reagents[B]), safety = 1, ignore_pH = TRUE)
@@ -539,63 +550,67 @@
 	return 0
 
 /datum/reagents/process()
-	var/datum/chemical_reaction/fermi/C = fermiReactID
+	var/datum/chemical_reaction/C = fermiReactID
 
 	var/list/cached_required_reagents = C.required_reagents//update reagents list
 	var/list/cached_results = C.results//resultant chemical list
 	var/multiplier = INFINITY
-
 	for(var/B in cached_required_reagents) //
-		multiplier = min(multiplier, round((get_reagent_amount(B) / cached_required_reagents[B]), 0.001))
-	if (multiplier == 0)
+		multiplier = min(multiplier, round((get_reagent_amount(B) / cached_required_reagents[B]), 0.0001))
+	if (multiplier <= 0)//clarity
 		fermiEnd()
 		return
-	for(var/P in C.required_catalysts)
-		if(!has_reagent(P))
-			fermiEnd()
-			return
-	for(var/P in cached_results)
-		targetVol = cached_results[P]*multiplier
 
-	if (fermiIsReacting == FALSE)
-		CRASH("Fermi has refused to stop reacting even though we asked her nicely.")
-
-	if (chem_temp > C.OptimalTempMin && fermiIsReacting == TRUE)//To prevent pointless reactions
-		if( (pH >= (C.OptimalpHMin - C.ReactpHLim)) && (pH <= (C.OptimalpHMax + C.ReactpHLim)) )
-			if (reactedVol < targetVol)
-				reactedVol = fermiReact(fermiReactID, chem_temp, pH, reactedVol, targetVol, cached_required_reagents, cached_results, multiplier)
-			else//Volume is used up
+	if(C.required_catalysts)
+		for(var/P in C.required_catalysts)
+			if(!has_reagent(P))
 				fermiEnd()
 				return
-		else//pH is out of range
-			fermiEnd()
-			return
-	else//Temperature is too low, or reaction has stopped.
+
+	if (!fermiIsReacting)
+		CRASH("Fermi has refused to stop reacting even though we asked her nicely.")
+
+	if (!(chem_temp >= C.OptimalTempMin))//To prevent pointless reactions
 		fermiEnd()
 		return
 
+	if (!( (pH >= (C.OptimalpHMin - C.ReactpHLim)) && (pH <= (C.OptimalpHMax + C.ReactpHLim)) )) //if pH is too far out, (could possibly allow reactions at this point, after the reaction has started, but make purity = 0)
+		fermiEnd()
+		return
+
+	reactedVol = fermiReact(fermiReactID, chem_temp, pH, reactedVol, targetVol, cached_required_reagents, cached_results, multiplier)
+	if(round(reactedVol, CHEMICAL_QUANTISATION_LEVEL) == round(targetVol, CHEMICAL_QUANTISATION_LEVEL))
+		fermiEnd()
+	if(!reactedVol)//Maybe unnessicary.
+		fermiEnd()
+	return
+
 /datum/reagents/proc/fermiEnd()
-	var/datum/chemical_reaction/fermi/C = fermiReactID
+	var/datum/chemical_reaction/C = fermiReactID
 	STOP_PROCESSING(SSprocessing, src)
 	fermiIsReacting = FALSE
 	reactedVol = 0
 	targetVol = 0
+	//Cap off values
+	for(var/datum/reagent/R in reagent_list)
+		R.volume = round(R.volume, CHEMICAL_QUANTISATION_LEVEL)//To prevent runaways.
 	//pH check, handled at the end to reduce calls.
 	if(istype(my_atom, /obj/item/reagent_containers))
 		var/obj/item/reagent_containers/RC = my_atom
 		RC.pH_check()
-	C.FermiFinish(src, my_atom)
+	C.FermiFinish(src, my_atom, reactedVol)
+	reactedVol = 0
+	targetVol = 0
 	handle_reactions()
 	update_total()
 	//Reaction sounds and words
-	playsound(get_turf(my_atom), C.mix_sound, 80, 1)
 	var/list/seen = viewers(5, get_turf(my_atom))
 	var/iconhtml = icon2html(my_atom, seen)
 	for(var/mob/M in seen)
 		to_chat(M, "<span class='notice'>[iconhtml] [C.mix_message]</span>")
 
 /datum/reagents/proc/fermiReact(selected_reaction, cached_temp, cached_pH, reactedVol, targetVol, cached_required_reagents, cached_results, multiplier)
-	var/datum/chemical_reaction/fermi/C = selected_reaction
+	var/datum/chemical_reaction/C = selected_reaction
 	var/deltaT = 0
 	var/deltapH = 0
 	var/stepChemAmmount = 0
@@ -625,7 +640,7 @@
 		deltapH = 1
 	//This should never proc:
 	else
-		WARNING("[my_atom] attempted to determine FermiChem pH for '[C.id]' which broke for some reason! ([usr])")
+		WARNING("[my_atom] attempted to determine FermiChem pH for '[C.type]' which broke for some reason! ([usr])")
 
 	//Calculate DeltaT (Deviation of T from optimal)
 	if (cached_temp < C.OptimalTempMax && cached_temp >= C.OptimalTempMin)
@@ -645,16 +660,18 @@
 	//ONLY WORKS FOR ONE PRODUCT AT THE MOMENT
 	//Calculate how much product to make and how much reactant to remove factors..
 	for(var/P in cached_results)
-		//stepChemAmmount = CLAMP(((deltaT * multiplier), 0, ((targetVol - reactedVol)/cached_results[P]))  //used to have multipler, now it does
 		stepChemAmmount = (multiplier*cached_results[P])
-		if (stepChemAmmount >= C.RateUpLim)
-			stepChemAmmount = (C.RateUpLim)
+		if (stepChemAmmount > C.RateUpLim)
+			stepChemAmmount = C.RateUpLim
 		addChemAmmount = deltaT * stepChemAmmount
 		if (addChemAmmount >= (targetVol - reactedVol))
 			addChemAmmount = (targetVol - reactedVol)
 		if (addChemAmmount < CHEMICAL_QUANTISATION_LEVEL)
 			addChemAmmount = CHEMICAL_QUANTISATION_LEVEL
 		removeChemAmmount = (addChemAmmount/cached_results[P])
+		//keep limited.
+		addChemAmmount = round(addChemAmmount, CHEMICAL_QUANTISATION_LEVEL)
+		removeChemAmmount = round(removeChemAmmount, CHEMICAL_QUANTISATION_LEVEL)
 		//This is kept for future bugtesters.
 		//message_admins("Reaction vars: PreReacted: [reactedVol] of [targetVol]. deltaT [deltaT], multiplier [multiplier], Step [stepChemAmmount], uncapped Step [deltaT*(multiplier*cached_results[P])], addChemAmmount [addChemAmmount], removeFactor [removeChemAmmount] Pfactor [cached_results[P]], adding [addChemAmmount]")
 
@@ -667,18 +684,18 @@
 	for(var/P in cached_results)
 		SSblackbox.record_feedback("tally", "chemical_reaction", addChemAmmount, P)//log
 		SSblackbox.record_feedback("tally", "fermi_chem", addChemAmmount, P)
-		add_reagent(P, (addChemAmmount), null, cached_temp, purity)//add reagent function!! I THINK I can do this:
+		add_reagent(P, (addChemAmmount), null, cached_temp, purity)
 		TotalStep += addChemAmmount//for multiple products
 		//Above should reduce yeild based on holder purity.
 		//Purity Check
 		for(var/datum/reagent/R in my_atom.reagents.reagent_list)
-			if(P == R.id)
+			if(P == R.type)
 				if (R.purity < C.PurityMin)//If purity is below the min, blow it up.
 					fermiIsReacting = FALSE
 					SSblackbox.record_feedback("tally", "fermi_chem", 1, ("[P] explosion"))
-					C.FermiExplode(src, my_atom, (reactedVol+targetVol), cached_temp, pH)
+					C.FermiExplode(src, my_atom, (total_volume), cached_temp, pH)
 					STOP_PROCESSING(SSprocessing, src)
-					return 0
+					return
 
 	C.FermiCreate(src, addChemAmmount, purity)//proc that calls when step is done
 
@@ -693,18 +710,18 @@
 		//go to explode proc
 		fermiIsReacting = FALSE
 		SSblackbox.record_feedback("tally", "fermi_chem", 1, ("[C] explosions"))
-		C.FermiExplode(src, my_atom, (reactedVol+targetVol), chem_temp, pH)
+		C.FermiExplode(src, my_atom, (total_volume), chem_temp, pH)
 		STOP_PROCESSING(SSprocessing, src)
 		return
 
-	//Make sure things are limited.
+	//Make sure things are limited, but superacids/bases can push forward the reaction
 	pH = CLAMP(pH, 0, 14)
 
 	//return said amount to compare for next step.
 	return (reactedVol)
 
 //Currently calculates it irrespective of required reagents at the start
-/datum/reagents/proc/reactant_purity(var/datum/chemical_reaction/fermi/C, holder)
+/datum/reagents/proc/reactant_purity(var/datum/chemical_reaction/C, holder)
 	var/list/cached_reagents = reagent_list
 	var/i = 0
 	var/cachedPurity
@@ -712,21 +729,31 @@
 		if (R in cached_reagents)
 			cachedPurity += R.purity
 			i++
+	if(!i)//I've never seen it get here with 0, but in case
+		CRASH("No reactants found mid reaction for [fermiReactID]/[C], how it got here is beyond me. Beaker: [holder]")
 	return cachedPurity/i
+
+/datum/reagents/proc/uncache_purity(id)
+	var/datum/reagent/R = has_reagent(id)
+	if(!R)
+		return
+	if(R.cached_purity == 1)
+		return
+	R.purity = R.cached_purity
 
 /datum/reagents/proc/isolate_reagent(reagent)
 	var/list/cached_reagents = reagent_list
 	for(var/_reagent in cached_reagents)
 		var/datum/reagent/R = _reagent
-		if(R.id != reagent)
-			del_reagent(R.id)
+		if(R.type != reagent)
+			del_reagent(R.type)
 			update_total()
 
 /datum/reagents/proc/del_reagent(reagent)
 	var/list/cached_reagents = reagent_list
 	for(var/_reagent in cached_reagents)
 		var/datum/reagent/R = _reagent
-		if(R.id == reagent)
+		if(R.type == reagent)
 			if(my_atom && isliving(my_atom))
 				var/mob/living/M = my_atom
 				if(R.metabolizing)
@@ -745,18 +772,21 @@
 	total_volume = 0
 	for(var/reagent in cached_reagents)
 		var/datum/reagent/R = reagent
-		if(R.volume < CHEMICAL_QUANTISATION_LEVEL)
-			del_reagent(R.id)
+		if(R.volume <= 0)//For clarity
+			del_reagent(R.type)
+		if((R.volume < 0.01) && !fermiIsReacting)
+			del_reagent(R.type)
 		else
 			total_volume += R.volume
-
+	if(!reagent_list || !total_volume)
+		pH = REAGENT_NORMAL_PH
 	return 0
 
 /datum/reagents/proc/clear_reagents()
 	var/list/cached_reagents = reagent_list
 	for(var/reagent in cached_reagents)
 		var/datum/reagent/R = reagent
-		del_reagent(R.id)
+		del_reagent(R.type)
 	pH = REAGENT_NORMAL_PH
 	return 0
 
@@ -814,7 +844,7 @@
 	if(!isnum(amount) || !amount)
 		return FALSE
 
-	if(amount <= CHEMICAL_QUANTISATION_LEVEL)//To prevent small ammount problems.
+	if(amount < CHEMICAL_QUANTISATION_LEVEL)//To prevent small ammount problems.
 		return FALSE
 
 	var/datum/reagent/D = GLOB.chemical_reagents_list[reagent]
@@ -822,13 +852,13 @@
 		WARNING("[my_atom] attempted to add a reagent called '[reagent]' which doesn't exist. ([usr])")
 		return FALSE
 
-	if (D.id == "water" && no_react == FALSE && !istype(my_atom, /obj/item/reagent_containers/food)) //Do like an otter, add acid to water, but also don't blow up botany.
-		if (pH <= 2)
+	if (D.type == /datum/reagent/water && !no_react && !istype(my_atom, /obj/item/reagent_containers/food)) //Do like an otter, add acid to water, but also don't blow up botany.
+		if (pH < 2)
 			SSblackbox.record_feedback("tally", "fermi_chem", 1, "water-acid explosions")
 			var/datum/effect_system/smoke_spread/chem/s = new
 			var/turf/T = get_turf(my_atom)
 			var/datum/reagents/R = new/datum/reagents(3000)
-			R.add_reagent("fermiAcid", amount)
+			R.add_reagent(/datum/reagent/fermi/fermiAcid, amount)
 			for (var/datum/reagent/reagentgas in reagent_list)
 				R.add_reagent(reagentgas, amount/5)
 				remove_reagent(reagentgas, amount/5)
@@ -848,7 +878,6 @@
 	var/new_total = cached_total + amount
 	var/cached_temp = chem_temp
 	var/list/cached_reagents = reagent_list
-
 	var/cached_pH = pH
 
 
@@ -865,7 +894,7 @@
 	chem_temp = thermal_energy / (specific_heat * new_total)
 
 	//cacluate reagent based pH shift.
-	if(ignore_pH == TRUE)
+	if(ignore_pH)
 		pH = ((cached_pH * cached_total)+(other_pH * amount))/(cached_total + amount)//should be right
 	else
 		pH = ((cached_pH * cached_total)+(D.pH * amount))/(cached_total + amount)//should be right
@@ -876,19 +905,17 @@
 	//add the reagent to the existing if it exists
 	for(var/A in cached_reagents)
 		var/datum/reagent/R = A
-		if (R.id == reagent) //IF MERGING
+		if (R.type == reagent) //IF MERGING
 			//Add amount and equalize purity
-			R.volume += amount
+			R.volume += round(amount, CHEMICAL_QUANTISATION_LEVEL)
 			R.purity = ((R.purity * R.volume) + (other_purity * amount)) /((R.volume + amount)) //This should add the purity to the product
 
 			update_total()
 			if(my_atom)
 				my_atom.on_reagent_change(ADD_REAGENT)
 			if(isliving(my_atom))
-				if(R.OnMobMergeCheck == TRUE)//Forces on_mob_add proc when a chem is merged
+				if(R.chemical_flags & REAGENT_ONMOBMERGE)//Forces on_mob_add proc when a chem is merged
 					R.on_mob_add(my_atom, amount)
-				//else
-				//	R.on_merge(data, amount, my_atom, other_purity)
 			R.on_merge(data, amount, my_atom, other_purity)
 			if(!no_react)
 				handle_reactions()
@@ -900,13 +927,13 @@
 	var/datum/reagent/R = new D.type(data)
 	cached_reagents += R
 	R.holder = src
-	R.volume = amount
+	R.volume = round(amount, CHEMICAL_QUANTISATION_LEVEL)
 	R.purity = other_purity
 	R.loc = get_turf(my_atom)
 	if(data)
 		R.data = data
 		R.on_new(data)
-	if(R.addProc == TRUE)//Allows on new without data overhead.
+	if(R.chemical_flags & REAGENT_FORCEONNEW)//Allows on new without data overhead.
 		R.on_new(pH) //Add more as desired.
 
 
@@ -920,7 +947,7 @@
 	return TRUE
 
 
-/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null) // Like add_reagent but you can enter a list. Format it like this: list("toxin" = 10, "beer" = 15)
+/datum/reagents/proc/add_reagent_list(list/list_reagents, list/data=null) // Like add_reagent but you can enter a list. Format it like this: list(/datum/reagent/toxin = 10, /datum/reagent/consumable/ethanol/beer = 15)
 	for(var/r_id in list_reagents)
 		var/amt = list_reagents[r_id]
 		add_reagent(r_id, amt, data)
@@ -942,11 +969,11 @@
 
 	for(var/A in cached_reagents)
 		var/datum/reagent/R = A
-		if (R.id == reagent)
+		if (R.type == reagent)
 			if((total_volume - amount) <= 0)//Because this can result in 0, I don't want it to crash.
-				pH = 7
+				pH = REAGENT_NORMAL_PH
 			//In practice this is really confusing and players feel like it randomly melts their beakers, but I'm not sure how else to handle it. We'll see how it goes and I can remove this if it confuses people.
-			else if (ignore_pH == FALSE)
+			else if (!ignore_pH)
 				//if (((pH > R.pH) && (pH <= 7)) || ((pH < R.pH) && (pH >= 7)))
 				pH = (((pH - R.pH) / total_volume) * amount) + pH
 			if(istype(my_atom, /obj/item/reagent_containers/))
@@ -969,7 +996,7 @@
 	var/list/cached_reagents = reagent_list
 	for(var/_reagent in cached_reagents)
 		var/datum/reagent/R = _reagent
-		if (R.id == reagent)
+		if (R.type == reagent)
 			if(!amount)
 				return R
 			else
@@ -984,7 +1011,7 @@
 	var/list/cached_reagents = reagent_list
 	for(var/_reagent in cached_reagents)
 		var/datum/reagent/R = _reagent
-		if (R.id == reagent)
+		if (R.type == reagent)
 			return round(R.volume, CHEMICAL_QUANTISATION_LEVEL)
 
 	return 0
@@ -1017,7 +1044,7 @@
 		// We found a match, proceed to remove the reagent.	Keep looping, we might find other reagents of the same type.
 		if(matches)
 			// Have our other proc handle removement
-			has_removed_reagent = remove_reagent(R.id, amount, safety)
+			has_removed_reagent = remove_reagent(R.type, amount, safety)
 
 	return has_removed_reagent
 
@@ -1026,14 +1053,14 @@
 	var/list/cached_reagents = reagent_list
 	for(var/reagent in cached_reagents)
 		var/datum/reagent/R = reagent
-		if(R.id == reagent_id)
+		if(R.type == reagent_id)
 			return R.data
 
 /datum/reagents/proc/set_data(reagent_id, new_data)
 	var/list/cached_reagents = reagent_list
 	for(var/reagent in cached_reagents)
 		var/datum/reagent/R = reagent
-		if(R.id == reagent_id)
+		if(R.type == reagent_id)
 			R.data = new_data
 
 /datum/reagents/proc/copy_data(datum/reagent/current_reagent)
@@ -1095,7 +1122,7 @@
 				if(percent < minimum_percent)
 					continue
 				var/intensity_desc = "a hint of"
-				if(percent > minimum_percent * 2 || percent == 100)
+				if(ISINRANGE(percent, minimum_percent * 2, minimum_percent * 3)|| percent == 100)
 					intensity_desc = ""
 				else if(percent > minimum_percent * 3)
 					intensity_desc = "the strong flavor of"
@@ -1126,12 +1153,12 @@
 	reagents = new/datum/reagents(max_vol, flags)
 	reagents.my_atom = src
 
-/proc/get_random_reagent_id()	// Returns a random reagent ID minus blacklisted reagents
+/proc/get_random_reagent_id()	// Returns a random reagent type minus blacklisted reagents
 	var/static/list/random_reagents = list()
 	if(!random_reagents.len)
 		for(var/thing  in subtypesof(/datum/reagent))
 			var/datum/reagent/R = thing
 			if(initial(R.can_synth))
-				random_reagents += initial(R.id)
+				random_reagents += R
 	var/picked_reagent = pick(random_reagents)
 	return picked_reagent

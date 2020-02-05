@@ -4,7 +4,7 @@
 	set invisibility = 0
 	if (notransform)
 		return
-	if(..() && !IsInStasis()) //not dead and not in stasis
+	if(..()) //not dead
 		// GROW!
 		if(amount_grown < max_grown)
 			amount_grown++

@@ -1,11 +1,11 @@
 /obj/mecha/proc/get_armour_facing(relative_dir)
 	switch(relative_dir)
 		if(0) // BACKSTAB!
-			return facing_modifiers[MECHA_BACK_ARMOUR]
+			return facing_modifiers[BACK_ARMOUR]
 		if(45, 90, 270, 315)
-			return facing_modifiers[MECHA_SIDE_ARMOUR]
+			return facing_modifiers[SIDE_ARMOUR]
 		if(225, 180, 135)
-			return facing_modifiers[MECHA_FRONT_ARMOUR]
+			return facing_modifiers[FRONT_ARMOUR]
 	return 1 //always return non-0
 
 /obj/mecha/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir)
@@ -62,7 +62,7 @@
 	user.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
 	playsound(loc, 'sound/weapons/tap.ogg', 40, 1, -1)
 	user.visible_message("<span class='danger'>[user] hits [name]. Nothing happens</span>", null, null, COMBAT_MESSAGE_RANGE)
-	log_message("Attack by hand/paw. Attacker - [user].", color="red")
+	mecha_log_message("Attack by hand/paw. Attacker - [user].", color="red")
 	log_append_to_last("Armor saved.")
 
 /obj/mecha/attack_paw(mob/user as mob)
@@ -70,12 +70,12 @@
 
 
 /obj/mecha/attack_alien(mob/living/user)
-	log_message("Attack by alien. Attacker - [user].", color="red")
+	mecha_log_message("Attack by alien. Attacker - [user].", color="red")
 	playsound(src.loc, 'sound/weapons/slash.ogg', 100, 1)
 	attack_generic(user, 15, BRUTE, "melee", 0)
 
 /obj/mecha/attack_animal(mob/living/simple_animal/user)
-	log_message("Attack by simple animal. Attacker - [user].", color="red")
+	mecha_log_message("Attack by simple animal. Attacker - [user].", color="red")
 	if(!user.melee_damage_upper && !user.obj_damage)
 		user.emote("custom", message = "[user.friendly] [src].")
 		return 0
@@ -99,7 +99,7 @@
 /obj/mecha/attack_hulk(mob/living/carbon/human/user)
 	. = ..()
 	if(.)
-		log_message("Attack by hulk. Attacker - [user].", color="red")
+		mecha_log_message("Attack by hulk. Attacker - [user].", color="red")
 		log_combat(user, src, "punched", "hulk powers")
 
 /obj/mecha/blob_act(obj/structure/blob/B)
@@ -108,20 +108,17 @@
 /obj/mecha/attack_tk()
 	return
 
-/obj/mecha/hitby(atom/movable/A as mob|obj) //wrapper
-	log_message("Hit by [A].", color="red")
+/obj/mecha/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum) //wrapper
+	mecha_log_message("Hit by [AM].", color="red")
 	. = ..()
 
 
 /obj/mecha/bullet_act(obj/item/projectile/Proj) //wrapper
-	if (!enclosed && occupant && !silicon_pilot) //allows bullets to hit the pilot of open-canopy mechs
-		occupant.bullet_act(Proj) //If the sides are open, the occupant can be hit
-		return BULLET_ACT_HIT
-	log_message("Hit by projectile. Type: [Proj.name]([Proj.flag]).", color="red")
+	mecha_log_message("Hit by projectile. Type: [Proj.name]([Proj.flag]).", color="red")
 	. = ..()
 
 /obj/mecha/ex_act(severity, target)
-	log_message("Affected by explosion of severity: [severity].", color="red")
+	mecha_log_message("Affected by explosion of severity: [severity].", color="red")
 	if(prob(deflect_chance))
 		severity++
 		log_append_to_last("Armor saved, changing severity to [severity].")
@@ -151,7 +148,7 @@
 	if(get_charge())
 		use_power((cell.charge/3)/(severity*2))
 		take_damage(30 / severity, BURN, "energy", 1)
-	log_message("EMP detected", color="red")
+	mecha_log_message("EMP detected", color="red")
 
 	if(istype(src, /obj/mecha/combat))
 		mouse_pointer = 'icons/mecha/mecha_mouse-disable.dmi'
@@ -163,7 +160,7 @@
 
 /obj/mecha/temperature_expose(datum/gas_mixture/air, exposed_temperature, exposed_volume)
 	if(exposed_temperature>max_temperature)
-		log_message("Exposed to dangerous temperature.", color="red")
+		mecha_log_message("Exposed to dangerous temperature.", color="red")
 		take_damage(5, BURN, 0, 1)
 
 /obj/mecha/attackby(obj/item/W as obj, mob/user as mob, params)
@@ -202,23 +199,23 @@
 		else
 			to_chat(user, "<span class='warning'>Maintenance protocols disabled by operator.</span>")
 	else if(istype(W, /obj/item/wrench))
-		if(construction_state==1)
-			construction_state = 2
+		if(state==1)
+			state = 2
 			to_chat(user, "<span class='notice'>You undo the securing bolts.</span>")
-		else if(construction_state==2)
-			construction_state = 1
+		else if(state==2)
+			state = 1
 			to_chat(user, "<span class='notice'>You tighten the securing bolts.</span>")
 		return
 	else if(istype(W, /obj/item/crowbar))
-		if(construction_state==2)
-			construction_state = 3
+		if(state==2)
+			state = 3
 			to_chat(user, "<span class='notice'>You open the hatch to the power unit.</span>")
-		else if(construction_state==3)
-			construction_state=2
+		else if(state==3)
+			state=2
 			to_chat(user, "<span class='notice'>You close the hatch to the power unit.</span>")
 		return
 	else if(istype(W, /obj/item/stack/cable_coil))
-		if(construction_state == 3 && (internal_damage & MECHA_INT_SHORT_CIRCUIT))
+		if(state == 3 && (internal_damage & MECHA_INT_SHORT_CIRCUIT))
 			var/obj/item/stack/cable_coil/CC = W
 			if(CC.use(2))
 				clearInternalDamage(MECHA_INT_SHORT_CIRCUIT)
@@ -230,26 +227,26 @@
 		if(internal_damage & MECHA_INT_TEMP_CONTROL)
 			clearInternalDamage(MECHA_INT_TEMP_CONTROL)
 			to_chat(user, "<span class='notice'>You repair the damaged temperature controller.</span>")
-		else if(construction_state==3 && cell)
+		else if(state==3 && cell)
 			cell.forceMove(loc)
 			cell = null
-			construction_state = 4
+			state = 4
 			to_chat(user, "<span class='notice'>You unscrew and pry out the powercell.</span>")
-			log_message("Powercell removed")
-		else if(construction_state==4 && cell)
-			construction_state=3
+			mecha_log_message("Powercell removed")
+		else if(state==4 && cell)
+			state=3
 			to_chat(user, "<span class='notice'>You screw the cell in place.</span>")
 		return
 
 	else if(istype(W, /obj/item/stock_parts/cell))
-		if(construction_state==4)
+		if(state==4)
 			if(!cell)
 				if(!user.transferItemToLoc(W, src))
 					return
 				var/obj/item/stock_parts/cell/C = W
 				to_chat(user, "<span class='notice'>You install the powercell.</span>")
 				cell = C
-				log_message("Powercell installed")
+				mecha_log_message("Powercell installed")
 			else
 				to_chat(user, "<span class='notice'>There's already a powercell installed.</span>")
 		return
@@ -283,16 +280,16 @@
 		return ..()
 
 /obj/mecha/attacked_by(obj/item/I, mob/living/user)
-	log_message("Attacked by [I]. Attacker - [user]")
+	mecha_log_message("Attacked by [I]. Attacker - [user]")
 	..()
 
 /obj/mecha/proc/mech_toxin_damage(mob/living/target)
 	playsound(src, 'sound/effects/spray2.ogg', 50, 1)
 	if(target.reagents)
-		if(target.reagents.get_reagent_amount("cryptobiolin") + force < force*2)
-			target.reagents.add_reagent("cryptobiolin", force/2)
-		if(target.reagents.get_reagent_amount("toxin") + force < force*2)
-			target.reagents.add_reagent("toxin", force/2.5)
+		if(target.reagents.get_reagent_amount(/datum/reagent/cryptobiolin) + force < force*2)
+			target.reagents.add_reagent(/datum/reagent/cryptobiolin, force/2)
+		if(target.reagents.get_reagent_amount(/datum/reagent/toxin) + force < force*2)
+			target.reagents.add_reagent(/datum/reagent/toxin, force/2.5)
 
 
 /obj/mecha/mech_melee_attack(obj/mecha/M)

@@ -13,8 +13,8 @@
 		. += SOFTCRIT_ADD_SLOWDOWN
 
 /mob/living/carbon/slip(knockdown_amount, obj/O, lube)
-	if(movement_type & FLYING)
-		return 0
+	if(movement_type & FLYING && !(lube & FLYING_DOESNT_HELP))
+		return FALSE
 	if(!(lube&SLIDE_ICE))
 		log_combat(src, (O ? O : get_turf(src)), "slipped on the", null, ((lube & SLIDE) ? "(LUBE)" : null))
 	return loc.handle_slip(src, knockdown_amount, O, lube)
@@ -36,7 +36,7 @@
 
 /mob/living/carbon/Move(NewLoc, direct)
 	. = ..()
-	if(. && mob_has_gravity()) //floating is easy
+	if(. && (movement_type & FLOATING)) //floating is easy
 		if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 			nutrition = NUTRITION_LEVEL_FED - 1	//just less than feeling vigorous
 		else if(nutrition && stat != DEAD)

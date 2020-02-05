@@ -7,6 +7,7 @@
 	smooth = SMOOTH_MORE
 	sheet_type = /obj/item/stack/sheet/runed_metal
 	sheet_amount = 1
+	explosion_block = 10
 	girder_type = /obj/structure/girder/cult
 
 /turf/closed/wall/mineral/cult/Initialize()
@@ -24,7 +25,7 @@
 		if(stored_pulling)
 			stored_pulling.setDir(get_dir(stored_pulling.loc, newloc))
 			stored_pulling.forceMove(src)
-			H.start_pulling(stored_pulling, TRUE)
+			H.start_pulling(stored_pulling, supress_message = TRUE)
 
 /turf/closed/wall/mineral/cult/ratvar_act()
 	. = ..()
@@ -49,7 +50,7 @@
 /turf/closed/wall/clockwork
 	name = "clockwork wall"
 	desc = "A huge chunk of warm metal. The clanging of machinery emanates from within."
-	explosion_block = 2
+	explosion_block = 5
 	hardness = 10
 	slicing_duration = 80
 	sheet_type = /obj/item/stack/tile/brass
@@ -186,14 +187,6 @@
 	desc = "A rusted metal wall."
 	icon = 'icons/turf/walls/rusty_wall.dmi'
 	hardness = 45
-
-
-/obj/effect/decal/walldivider
-	name = "wall divider"
-	desc = "To make things look neat"
-	icon = 'icons/obj/decals.dmi'
-	icon_state = "walldiv"
-
 
 /turf/closed/wall/r_wall/rust
 	name = "rusted reinforced wall"

@@ -51,10 +51,12 @@
 		open_machine()
 
 /obj/machinery/harvester/AltClick(mob/user)
+	. = ..()
 	if(harvesting || !user || !isliving(user) || state_open)
 		return
 	if(can_harvest())
 		start_harvest()
+	return TRUE
 
 /obj/machinery/harvester/proc/can_harvest()
 	if(!powered(EQUIP) || state_open || !occupant || !iscarbon(occupant))
@@ -127,7 +129,7 @@
 /obj/machinery/harvester/proc/end_harvesting()
 	harvesting = FALSE
 	open_machine()
-	say("Subject has been succesfuly harvested.")
+	say("Subject has been successfully harvested.")
 	playsound(src, 'sound/machines/microwave/microwave-end.ogg', 100, 0)
 
 /obj/machinery/harvester/screwdriver_act(mob/living/user, obj/item/I)
@@ -138,7 +140,7 @@
 		to_chat(user, "<span class='warning'>[src] is currently occupied!</span>")
 		return
 	if(state_open)
-		to_chat(user, "<span class='warning'>[src] must be closed to [panel_open ? "close" : "open"] it's maintenance hatch!</span>")
+		to_chat(user, "<span class='warning'>[src] must be closed to [panel_open ? "close" : "open"] its maintenance hatch!</span>")
 		return
 	if(default_deconstruction_screwdriver(user, "[initial(icon_state)]-o", initial(icon_state), I))
 		return
@@ -158,11 +160,13 @@
 		open_machine()
 
 /obj/machinery/harvester/emag_act(mob/user)
+	. = ..()
 	if(obj_flags & EMAGGED)
 		return
 	obj_flags |= EMAGGED
 	allow_living = TRUE
 	to_chat(user, "<span class='warning'>You overload [src]'s lifesign scanners.</span>")
+	return TRUE
 
 /obj/machinery/harvester/container_resist(mob/living/user)
 	if(!harvesting)
@@ -181,10 +185,12 @@
 		container_resist(user)
 
 /obj/machinery/harvester/examine(mob/user)
-	..()
+	. = ..()
 	if(stat & BROKEN)
 		return
 	if(state_open)
-		to_chat(user, "<span class='notice'>[src] must be closed before harvesting.</span>")
+		. += "<span class='notice'>[src] must be closed before harvesting.</span>"
 	else if(!harvesting)
-		to_chat(user, "<span class='notice'>Alt-click [src] to start harvesting.</span>")
+		. += "<span class='notice'>Alt-click [src] to start harvesting.</span>"
+	if(in_range(user, src) || isobserver(user))
+		. += "<span class='notice'>The status display reads: Harvest speed at <b>[interval*0.1]</b> seconds per organ.<span>"

@@ -1,4 +1,4 @@
-/obj/vehicle/ridden/wheelchair //ported from Hippiestation (by Jujumatic)
+/obj/vehicle/ridden/wheelchair //ported from Hippiestation (by Jujumatic) Then ported by Fermis from tg!
 	name = "wheelchair"
 	desc = "A chair with big wheels. It looks like you can move in this on your own."
 	icon = 'icons/obj/vehicles.dmi'
@@ -9,8 +9,7 @@
 	legs_required = 0	//You'll probably be using this if you don't have legs
 	canmove = TRUE
 	density = FALSE		//Thought I couldn't fix this one easily, phew
-	// Run speed delay is multiplied with this for vehicle move delay.
-	var/delay_multiplier = 6.7
+	arms_required = 1
 
 /obj/vehicle/ridden/wheelchair/Initialize()
 	. = ..()
@@ -43,19 +42,16 @@
 			canmove = FALSE
 			addtimer(VARSET_CALLBACK(src, canmove, TRUE), 20)
 			return FALSE
-		set_move_delay(user)
+		var/datum/component/riding/D = GetComponent(/datum/component/riding)
+		//1.5 (movespeed as of this change) multiplied by 6.7 gets ABOUT 10 (rounded), the old constant for the wheelchair that gets divided by how many arms they have
+		//if that made no sense this simply makes the wheelchair speed change along with movement speed delay
+		D.vehicle_move_delay = round((CONFIG_GET(number/movedelay/run_delay) * 4) / min(user.get_num_arms(), 2), world.tick_lag)
 	return ..()
-
-/obj/vehicle/ridden/wheelchair/proc/set_move_delay(mob/living/user)
-	var/datum/component/riding/D = GetComponent(/datum/component/riding)
-	//1.5 (movespeed as of this change) multiplied by 6.7 gets ABOUT 10 (rounded), the old constant for the wheelchair that gets divided by how many arms they have
-	//if that made no sense this simply makes the wheelchair speed change along with movement speed delay
-	D.vehicle_move_delay = round(CONFIG_GET(number/movedelay/run_delay) * delay_multiplier) / min(user.get_num_arms(), 2)
 
 /obj/vehicle/ridden/wheelchair/Moved()
 	. = ..()
 	cut_overlays()
-	playsound(src, 'sound/effects/roll.ogg', 75, TRUE)
+	playsound(src, 'sound/effects/roll.ogg', 75, 1)
 	if(has_buckled_mobs())
 		handle_rotation_overlayed()
 
@@ -73,7 +69,6 @@
 	handle_rotation(newdir)
 
 /obj/vehicle/ridden/wheelchair/wrench_act(mob/living/user, obj/item/I)	//Attackby should stop it attacking the wheelchair after moving away during decon
-	..()
 	to_chat(user, "<span class='notice'>You begin to detach the wheels...</span>")
 	if(I.use_tool(src, user, 40, volume=50))
 		to_chat(user, "<span class='notice'>You detach the wheels and deconstruct the chair.</span>")

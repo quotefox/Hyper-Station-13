@@ -6,7 +6,6 @@
 ******************************************/
 
 //DEBUG STUFF
-var triggerError = attachErrorHandler('chatDebug', true);
 var escaper = encodeURIComponent || escape;
 var decoder = decodeURIComponent || unescape;
 window.onerror = function(msg, url, line, col, error) {
@@ -30,12 +29,12 @@ var opts = {
 	'scrollSnapTolerance': 10, //If within x pixels of bottom
 	'clickTolerance': 10, //Keep focus if outside x pixels of mousedown position on mouseup
 	'imageRetryDelay': 50, //how long between attempts to reload images (in ms)
-	'imageRetryLimit': 50, //how many attempts should we make?
+	'imageRetryLimit': 50, //how many attempts should we make? 
 	'popups': 0, //Amount of popups opened ever
 	'wasd': false, //Is the user in wasd mode?
 	'priorChatHeight': 0, //Thing for height-resizing detection
 	'restarting': false, //Is the round restarting?
-	'darkmode':false, //Are we using darkmode? If not WHY ARE YOU LIVING IN 2009???
+	'colorPreset': 0, 	// index in the color presets list.
 
 	//Options menu
 	'selectedSubLoop': null, //Contains the interval loop for closing the selected sub menu
@@ -73,6 +72,14 @@ var opts = {
 
 };
 
+// Array of names for chat display color presets.
+// If not set to normal, a CSS file `browserOutput_${name}.css` will be added to the head.
+var colorPresets = [
+	'normal',
+	'light',
+	'dark'
+]
+
 function clamp(val, min, max) {
 	return Math.max(min, Math.min(val, max))
 }
@@ -94,6 +101,12 @@ if (typeof String.prototype.trim !== 'function') {
 	String.prototype.trim = function () {
 		return this.replace(/^\s+|\s+$/g, '');
 	};
+}
+
+function updateColorPreset() {
+	var el = $("#colorPresetLink")[0];
+	el.href = "browserOutput_"+colorPresets[opts.colorPreset]+".css";
+	runByond('?_src_=chat&proc=colorPresetPost&preset='+colorPresets[opts.colorPreset]);
 }
 
 // Linkify the contents of a node, within its parent.
@@ -159,7 +172,7 @@ function byondDecode(message) {
 	// The replace for + is because FOR SOME REASON, BYOND replaces spaces with a + instead of %20, and a plus with %2b.
 	// Marvelous.
 	message = message.replace(/\+/g, "%20");
-	try {
+	try { 
 		// This is a workaround for the above not always working when BYOND's shitty url encoding breaks. (byond bug id:2399401)
 		if (decodeURIComponent) {
 			message = decodeURIComponent(message);
@@ -215,7 +228,7 @@ function highlightTerms(el) {
 							console.log(newWord)
 					}
 					newText += newWord || words[w].replace("<", "&lt;");
-					newText += w >= words.length ? '' : ' ';
+					newText += w >= words.length - 1 ? '' : ' ';
 				}
 			} else { //Every other type of element
 				newText += outerHTML(el.childNodes[c]);
@@ -393,19 +406,6 @@ function toHex(n) {
 	if (isNaN(n)) return "00";
 	n = Math.max(0,Math.min(n,255));
 	return "0123456789ABCDEF".charAt((n-n%16)/16) + "0123456789ABCDEF".charAt(n%16);
-}
-
-function swap() { //Swap to darkmode
-	if (opts.darkmode){
-		document.getElementById("sheetofstyles").href = "browserOutput_white.css";
-		opts.darkmode = false;
-		runByond('?_src_=chat&proc=swaptolightmode');
-	} else {
-		document.getElementById("sheetofstyles").href = "browserOutput.css";
-		opts.darkmode = true;
-		runByond('?_src_=chat&proc=swaptodarkmode');
-	}
-	setCookie('darkmode', (opts.darkmode ? 'true' : 'false'), 365);
 }
 
 function handleClientData(ckey, ip, compid) {
@@ -615,7 +615,7 @@ $(function() {
 		'shighlightColor': getCookie('highlightcolor'),
 		'smusicVolume': getCookie('musicVolume'),
 		'smessagecombining': getCookie('messagecombining'),
-		'sdarkmode': getCookie('darkmode'),
+		'scolorPreset': getCookie('colorpreset'),
 	};
 
 	if (savedConfig.sfontSize) {
@@ -625,9 +625,6 @@ $(function() {
 	if (savedConfig.slineHeight) {
 		$("body").css('line-height', savedConfig.slineHeight);
 		internalOutput('<span class="internal boldnshit">Loaded line height setting of: '+savedConfig.slineHeight+'</span>', 'internal');
-	}
-	if(savedConfig.sdarkmode == 'true'){
-		swap();
 	}
 	if (savedConfig.spingDisabled) {
 		if (savedConfig.spingDisabled == 'true') {
@@ -654,6 +651,13 @@ $(function() {
 		opts.highlightColor = savedConfig.shighlightColor;
 		internalOutput('<span class="internal boldnshit">Loaded highlight color of: '+savedConfig.shighlightColor+'</span>', 'internal');
 	}
+
+	if (savedConfig.scolorPreset) {
+		opts.colorPreset = Number(savedConfig.scolorPreset);
+		updateColorPreset();
+		internalOutput('<span class="internal boldnshit">Loaded color preset of: '+colorPresets[opts.colorPreset]+'</span>', 'internal');
+	}
+
 	if (savedConfig.smusicVolume) {
 		var newVolume = clamp(savedConfig.smusicVolume, 0, 100);
 		$('#adminMusic').prop('volume', newVolume / 100);
@@ -839,9 +843,6 @@ $(function() {
 	$('#toggleOptions').click(function(e) {
 		handleToggleClick($subOptions, $(this));
 	});
-	$('#darkmodetoggle').click(function(e) {
-		swap();
-	});
 	$('#toggleAudio').click(function(e) {
 		handleToggleClick($subAudio, $(this));
 	});
@@ -913,7 +914,7 @@ $(function() {
 
 		$.ajax({
 			type: 'GET',
-			url: 'browserOutput_white.css',
+			url: 'browserOutput.css',
 			success: function(styleData) {
 				var blob = new Blob(['<head><title>Chat Log</title><style>', styleData, '</style></head><body>', $messages.html(), '</body>']);
 
@@ -992,6 +993,13 @@ $(function() {
 		opts.messageCount = 0;
 	});
 	
+	$('#changeColorPreset').click(function() {
+		opts.colorPreset = (opts.colorPreset+1) % colorPresets.length;
+		updateColorPreset();
+		setCookie('colorpreset', opts.colorPreset, 365);
+		internalOutput('<span class="internal boldnshit">Changed color preset to: '+colorPresets[opts.colorPreset]);
+	});
+
 	$('#musicVolumeSpan').hover(function() {
 		$('#musicVolumeText').addClass('hidden');
 		$('#musicVolume').removeClass('hidden');

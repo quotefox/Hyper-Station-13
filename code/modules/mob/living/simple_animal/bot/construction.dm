@@ -101,7 +101,7 @@
 
 		if(ASSEMBLY_FOURTH_STEP)
 			if(istype(W, /obj/item/weldingtool))
-				if(W.use_tool(src, user, 0, volume=40))
+				if(W.use_tool(src, user, 0, volume=40) && build_step == ASSEMBLY_FOURTH_STEP)
 					name = "shielded frame assembly"
 					to_chat(user, "<span class='notice'>You weld the vest to [src].</span>")
 					build_step++
@@ -183,7 +183,7 @@
 		if(8)
 			if(istype(W, /obj/item/screwdriver))
 				to_chat(user, "<span class='notice'>You start attaching the gun to the frame...</span>")
-				if(W.use_tool(src, user, 40, volume=100))
+				if(W.use_tool(src, user, 40, volume=100) && build_step == 8)
 					name = "armed [name]"
 					to_chat(user, "<span class='notice'>Taser gun attached.</span>")
 					build_step++
@@ -208,7 +208,6 @@
 	throwforce = 10
 	created_name = "Floorbot"
 	var/toolbox = /obj/item/storage/toolbox/mechanical
-	var/toolbox_color = "" //Blank for blue, r for red, y for yellow, etc.
 
 /obj/item/bot_assembly/floorbot/Initialize()
 	. = ..()
@@ -220,24 +219,16 @@
 		if(ASSEMBLY_FIRST_STEP)
 			desc = initial(desc)
 			name = initial(name)
-			icon_state = "[toolbox_color]toolbox_tiles"
+			icon_state = initial(icon_state)
 
 		if(ASSEMBLY_SECOND_STEP)
 			desc = "It's a toolbox with tiles sticking out the top and a sensor attached."
 			name = "incomplete floorbot assembly"
-			icon_state = "[toolbox_color]toolbox_tiles_sensor"
+			icon_state = "toolbox_tiles_sensor"
 
-/obj/item/storage/toolbox/attackby(obj/item/stack/tile/plasteel/T, mob/user, params)
-	var/list/allowed_toolbox = list(/obj/item/storage/toolbox/emergency,	//which toolboxes can be made into floorbots
-							/obj/item/storage/toolbox/electrical,
-							/obj/item/storage/toolbox/mechanical,
-							/obj/item/storage/toolbox/artistic,
-							/obj/item/storage/toolbox/syndicate)
-
+/obj/item/storage/toolbox/mechanical/attackby(obj/item/stack/tile/plasteel/T, mob/user, params)
 	if(!istype(T, /obj/item/stack/tile/plasteel))
 		..()
-		return
-	if(!is_type_in_list(src, allowed_toolbox) && (type != /obj/item/storage/toolbox))
 		return
 	if(contents.len >= 1)
 		to_chat(user, "<span class='warning'>They won't fit in, as there is already stuff inside!</span>")
@@ -245,20 +236,8 @@
 	if(T.use(10))
 		var/obj/item/bot_assembly/floorbot/B = new
 		B.toolbox = type
-		switch(B.toolbox)
-			if(/obj/item/storage/toolbox)
-				B.toolbox_color = "r"
-			if(/obj/item/storage/toolbox/emergency)
-				B.toolbox_color = "r"
-			if(/obj/item/storage/toolbox/electrical)
-				B.toolbox_color = "y"
-			if(/obj/item/storage/toolbox/artistic)
-				B.toolbox_color = "g"
-			if(/obj/item/storage/toolbox/syndicate)
-				B.toolbox_color = "s"
 		user.put_in_hands(B)
-		B.update_icon()
-		to_chat(user, "<span class='notice'>You add the tiles into the empty [name]. They protrude from the top.</span>")
+		to_chat(user, "<span class='notice'>You add the tiles into the empty [src.name]. They protrude from the top.</span>")
 		qdel(src)
 	else
 		to_chat(user, "<span class='warning'>You need 10 floor tiles to start building a floorbot!</span>")
@@ -280,7 +259,7 @@
 			if(istype(W, /obj/item/bodypart/l_arm/robot) || istype(W, /obj/item/bodypart/r_arm/robot))
 				if(!can_finish_build(W, user))
 					return
-				var/mob/living/simple_animal/bot/floorbot/A = new(drop_location(), toolbox_color)
+				var/mob/living/simple_animal/bot/floorbot/A = new(drop_location())
 				A.name = created_name
 				A.robot_arm = W.type
 				A.toolbox = toolbox
@@ -499,18 +478,19 @@
 					to_chat(user, "<span class='notice'>The superglue binding [src]'s toy swords to its chassis snaps!</span>")
 					for(var/IS in 1 to toyswordamt)
 						new /obj/item/toy/sword(Tsec)
+						toyswordamt--
 
 		if(ASSEMBLY_FIFTH_STEP)
 			if(istype(I, /obj/item/melee/transforming/energy/sword/saber))
 				if(swordamt < 3)
 					if(!user.temporarilyRemoveItemFromInventory(I))
 						return
-						created_name = "General Beepsky"
-						name = "helmet/signaler/prox sensor/robot arm/energy sword assembly"
-						icon_state = "grievous_assembly"
-						to_chat(user, "<span class='notice'>You bolt [I] onto one of [src]'s arm slots.</span>")
-						qdel(I)
-						swordamt ++
+					created_name = "General Beepsky"
+					name = "helmet/signaler/prox sensor/robot arm/energy sword assembly"
+					icon_state = "grievous_assembly"
+					to_chat(user, "<span class='notice'>You bolt [I] onto one of [src]'s arm slots.</span>")
+					qdel(I)
+					swordamt ++
 				else
 					if(!can_finish_build(I, user))
 						return
@@ -526,6 +506,7 @@
 				to_chat(user, "<span class='notice'>You unbolt [src]'s energy swords</span>")
 				for(var/IS in 1 to swordamt)
 					new /obj/item/melee/transforming/energy/sword/saber(Tsec)
+					swordamt--
 
 //Firebot Assembly
 /obj/item/bot_assembly/firebot

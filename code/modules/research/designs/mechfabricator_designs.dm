@@ -476,15 +476,6 @@
 	category = list("Phazon")
 
 //Exosuit Equipment
-/datum/design/ripleyupgrade
-	name = "Ripley MK-1 to MK-II conversion kit"
-	id = "ripleyupgrade"
-	build_type = MECHFAB
-	build_path = /obj/item/mecha_parts/mecha_equipment/ripleyupgrade
-	materials = list(MAT_METAL=10000,MAT_PLASMA=10000)
-	construction_time = 100
-	category = list("Exosuit Equipment")
-
 /datum/design/mech_hydraulic_clamp
 	name = "Exosuit Engineering Equipment (Hydraulic Clamp)"
 	id = "mech_hydraulic_clamp"
@@ -633,12 +624,21 @@
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
 
-/datum/design/borg_upgrade_holding
-	name = "Cyborg Upgrade (Ore Satchel of Holding)"
-	id = "borg_upgrade_holding"
+/datum/design/borg_upgrade_advcutter
+	name = "Cyborg Upgrade (Advanced Plasma Cutter)"
+	id = "borg_upgrade_advcutter"
 	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/soh
-	materials = list(MAT_METAL = 10000, MAT_GOLD = 250, MAT_URANIUM = 500)
+	build_path = /obj/item/borg/upgrade/advcutter
+	materials = list(MAT_METAL=8000, MAT_PLASMA=2000, MAT_GOLD= 2000)
+	construction_time = 120
+	category = list("Cyborg Upgrade Modules")
+
+/datum/design/borg_upgrade_premiumka
+	name = "Cyborg Upgrade (Premium Kinetic Accelerator)"
+	id = "borg_upgrade_premiumka"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/premiumka
+	materials = list(MAT_METAL=8000, MAT_GLASS=4000, MAT_TITANIUM=2000)
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
 
@@ -705,15 +705,6 @@
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
 
-/datum/design/borg_upgrade_defibrillator
-	name = "Cyborg Upgrade (Defibrillator)"
-	id = "borg_upgrade_defibrillator"
-	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/defib
-	materials = list(MAT_METAL=15000, MAT_GLASS=15000, MAT_SILVER=10000, MAT_GOLD=10000, MAT_TITANIUM=5000, MAT_DIAMOND=5000)
-	construction_time = 120
-	category = list("Cyborg Upgrade Modules")
-
 /datum/design/borg_upgrade_surgicalprocessor
 	name = "Cyborg Upgrade (Surgical Processor)"
 	id = "borg_upgrade_surgicalprocessor"
@@ -765,15 +756,6 @@
 	build_type = MECHFAB
 	build_path = /obj/item/borg/upgrade/rped
 	materials = list(MAT_METAL = 10000, MAT_GLASS = 5000)
-	construction_time = 120
-	category = list("Cyborg Upgrade Modules")
-
-/datum/design/borg_upgrade_circuit_app
-	name = "Cyborg Upgrade (Circuit Manipulator)"
-	id = "borg_upgrade_circuitapp"
-	build_type = MECHFAB
-	build_path = /obj/item/borg/upgrade/circuit_app
-	materials = list(MAT_METAL=2000, MAT_TITANIUM=500)
 	construction_time = 120
 	category = list("Cyborg Upgrade Modules")
 

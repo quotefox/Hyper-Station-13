@@ -59,6 +59,17 @@
 /obj/item/ammo_casing/energy/laser/redtag/hitscan
 	projectile_type = /obj/item/projectile/beam/lasertag/redtag/hitscan
 
+/obj/item/ammo_casing/energy/laser/redtag/hitscan/holy
+	projectile_type = /obj/item/projectile/beam/lasertag/redtag/hitscan/holy
+
+/obj/item/ammo_casing/energy/laser/magtag
+	projectile_type = /obj/item/projectile/beam/lasertag/mag
+	select_name = "magtag"
+	pellets = 3
+	variance = 30
+	e_cost = 1000
+	fire_sound = 'sound/weapons/magburst.ogg'
+
 /obj/item/ammo_casing/energy/xray
 	projectile_type = /obj/item/projectile/beam/xray
 	e_cost = 50

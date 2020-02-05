@@ -4,7 +4,7 @@
 	if(digitalinvis)
 		handle_diginvis() //AI becomes unable to see mob
 
-	if((movement_type & FLYING) && !floating)	//TODO: Better floating
+	if((movement_type & FLYING) && !(movement_type & FLOATING))	//TODO: Better floating
 		float(on = TRUE)
 
 	if (client)
@@ -33,45 +33,43 @@
 		return
 	if(!loc)
 		return
-	if(!IsInStasis())
-		if(stat != DEAD)
-			//Mutations and radiation
-			handle_mutations_and_radiation()
+	var/datum/gas_mixture/environment = loc.return_air()
 
-		if(stat != DEAD)
-			//Breathing, if applicable
-			handle_breathing(times_fired)
+	if(stat != DEAD)
+		//Mutations and radiation
+		handle_mutations_and_radiation()
 
-		handle_diseases()// DEAD check is in the proc itself; we want it to spread even if the mob is dead, but to handle its disease-y properties only if you're not.
+	if(stat != DEAD)
+		//Breathing, if applicable
+		handle_breathing(times_fired)
 
-		if (QDELETED(src)) // diseases can qdel the mob via transformations
-			return
+	handle_diseases()// DEAD check is in the proc itself; we want it to spread even if the mob is dead, but to handle its disease-y properties only if you're not.
 
-		if(stat != DEAD)
-			//Random events (vomiting etc)
-			handle_random_events()
+	if (QDELETED(src)) // diseases can qdel the mob via transformations
+		return
 
-		//Handle temperature/pressure differences between body and environment
-		var/datum/gas_mixture/environment = loc.return_air()
-		if(environment)
-			handle_environment(environment)
+	if(stat != DEAD)
+		//Random events (vomiting etc)
+		handle_random_events()
 
-
-
-		//stuff in the stomach
-		handle_stomach()
-
-		handle_gravity()
-
-		if(stat != DEAD)
-			handle_traits() // eye, ear, brain damages
-			handle_status_effects() //all special effects, stun, knockdown, jitteryness, hallucination, sleeping, etc
+	//Handle temperature/pressure differences between body and environment
+	if(environment)
+		handle_environment(environment)
 
 	handle_fire()
+
+	//stuff in the stomach
+	handle_stomach()
+
+	handle_gravity()
 
 	if(machine)
 		machine.check_eye(src)
 
+	if(stat != DEAD)
+		handle_traits() // eye, ear, brain damages
+	if(stat != DEAD)
+		handle_status_effects() //all special effects, stun, knockdown, jitteryness, hallucination, sleeping, etc
 
 	if(stat != DEAD)
 		return 1

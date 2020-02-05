@@ -32,7 +32,6 @@
 	WRITE_FILE(S["feature_ipc_antenna"], features["ipc_antenna"])
 	//Citadel
 	WRITE_FILE(S["feature_genitals_use_skintone"], features["genitals_use_skintone"])
-	WRITE_FILE(S["feature_exhibitionist"], features["exhibitionist"])
 	WRITE_FILE(S["feature_mcolor2"], features["mcolor2"])
 	WRITE_FILE(S["feature_mcolor3"], features["mcolor3"])
 	WRITE_FILE(S["feature_mam_body_markings"], features["mam_body_markings"])
@@ -72,8 +71,6 @@
 	WRITE_FILE(S["feature_vag_color"], features["vag_color"])
 	//womb features
 	WRITE_FILE(S["feature_has_womb"], features["has_womb"])
-	//pregnancy features
-	WRITE_FILE(S["feature_can_get_preg"], features["can_get_preg"])
 	//flavor text
 	WRITE_FILE(S["feature_flavor_text"], features["flavor_text"])
 

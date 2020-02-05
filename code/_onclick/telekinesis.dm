@@ -1,10 +1,12 @@
 /*
 	Telekinesis
+
 	This needs more thinking out, but I might as well.
 */
 
 /*
 	Telekinetic attack:
+
 	By default, emulate the user's unarmed attack
 */
 
@@ -43,6 +45,7 @@
 /*
 	This is similar to item attack_self, but applies to anything
 	that you can grab with a telekinetic grab.
+
 	It is used for manipulating things at range, for example, opening and closing closets.
 	There are not a lot of defaults at this time, add more where appropriate.
 */
@@ -56,6 +59,7 @@
 
 /*
 	TK Grab Item (the workhorse of old TK)
+
 	* If you have not grabbed something, do a normal tk attack
 	* If you have something, throw it at the target.  If it is already adjacent, do a normal attackby()
 	* If you click what you are holding, or attack_self(), do an attack_self_tk() on it.
@@ -102,9 +106,8 @@
 
 /obj/item/tk_grab/examine(user)
 	if (focus)
-		focus.examine(user)
-	else
-		..()
+		return focus.examine(user)
+	return ..()
 
 /obj/item/tk_grab/attack_self(mob/user)
 	if(!focus)

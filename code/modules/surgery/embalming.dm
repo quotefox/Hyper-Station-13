@@ -5,15 +5,14 @@
 				/datum/surgery_step/embalming,
 				/datum/surgery_step/close)
 
-	species = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
+	target_mobtypes = list(/mob/living/carbon/human, /mob/living/carbon/monkey)
 	possible_locs = list(BODY_ZONE_CHEST)
 	requires_bodypart_type = 0
 
 /datum/surgery_step/embalming
 	name = "embalming body"
-	implements = list(/obj/item/hemostat = 100)
-	time = 10
-	chems_needed = list("drying_agent","formaldehyde")
+	implements = list(TOOL_HEMOSTAT = 100, TOOL_SCREWDRIVER = 35)
+	chems_needed = list(/datum/reagent/drying_agent, /datum/reagent/space_cleaner/sterilizine)
 	require_all_chems = FALSE
 
 /datum/surgery_step/embalming/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
@@ -22,7 +21,7 @@
 /datum/surgery_step/embalming/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	user.visible_message("[user] embalms [target]'s body.", "<span class='notice'>You succeed in embalming [target]'s body.</span>")
 	ADD_TRAIT(target, TRAIT_HUSK, MAGIC_TRAIT) //Husk's prevent body smell
-	return FALSE
+	return TRUE
 
 /datum/surgery_step/embalming/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	user.visible_message("[user] screws up!", "<span class='warning'>You screwed up!</span>")

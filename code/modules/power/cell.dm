@@ -13,13 +13,15 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/charge = 0	// note %age conveted to actual charge in New
 	var/maxcharge = 1000
+	var/start_charged = TRUE
 	materials = list(MAT_METAL=700, MAT_GLASS=50)
-	grind_results = list("lithium" = 15, "iron" = 5, "silicon" = 5)
+	grind_results = list(/datum/reagent/lithium = 15, /datum/reagent/iron = 5, /datum/reagent/silicon = 5)
 	var/rigged = FALSE	// true if rigged to explode
 	var/chargerate = 100 //how much power is given every tick in a recharger
 	var/self_recharge = 0 //does it self recharge, over time, or not?
 	var/ratingdesc = TRUE
 	var/grown_battery = FALSE // If it's a grown that acts as a battery, add a wire overlay to it.
+	rad_flags = RAD_NO_CONTAMINATE // Prevent the same cheese as with the stock parts
 
 /obj/item/stock_parts/cell/get_cell()
 	return src
@@ -31,7 +33,8 @@
 	create_reagents(5, INJECTABLE | DRAINABLE)
 	if (override_maxcharge)
 		maxcharge = override_maxcharge
-	charge = maxcharge
+	if(start_charged)
+		charge = maxcharge
 	if(ratingdesc)
 		desc += " This one has a rating of [DisplayEnergy(maxcharge)], and you should not swallow it."
 	update_icon()
@@ -93,11 +96,11 @@
 	return power_used
 
 /obj/item/stock_parts/cell/examine(mob/user)
-	..()
+	. = ..()
 	if(rigged)
-		to_chat(user, "<span class='danger'>This power cell seems to be faulty!</span>")
+		. += "<span class='danger'>This power cell seems to be faulty!</span>"
 	else
-		to_chat(user, "The charge meter reads [round(src.percent() )]%.")
+		. += "The charge meter reads [round(src.percent() )]%."
 
 /obj/item/stock_parts/cell/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is licking the electrodes of [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -105,7 +108,7 @@
 
 /obj/item/stock_parts/cell/on_reagent_change(changetype)
 	..()
-	rigged = reagents?.has_reagent("plasma", 5) ? TRUE : FALSE //has_reagent returns the reagent datum
+	rigged = reagents?.has_reagent(/datum/reagent/toxin/plasma, 5) ? TRUE : FALSE //has_reagent returns the reagent datum
 
 /obj/item/stock_parts/cell/proc/explode()
 	var/turf/T = get_turf(src.loc)
@@ -162,9 +165,8 @@
 	return rating * maxcharge
 
 /* Cell variants*/
-/obj/item/stock_parts/cell/empty/Initialize()
-	. = ..()
-	charge = 0
+/obj/item/stock_parts/cell/empty
+	start_charged = FALSE
 
 /obj/item/stock_parts/cell/crap
 	name = "\improper Nanotrasen brand rechargeable AA battery"
@@ -172,10 +174,8 @@
 	maxcharge = 500
 	materials = list(MAT_GLASS=40)
 
-/obj/item/stock_parts/cell/crap/empty/Initialize()
-	. = ..()
-	charge = 0
-	update_icon()
+/obj/item/stock_parts/cell/crap/empty
+	start_charged = FALSE
 
 /obj/item/stock_parts/cell/upgraded
 	name = "upgraded power cell"
@@ -191,17 +191,15 @@
 
 /obj/item/stock_parts/cell/secborg
 	name = "security borg rechargeable D battery"
-	maxcharge = 1750	//35/17/8 disabler/laser/taser shots.
+	maxcharge = 1250	//25/12/6 disabler/laser/taser shots.
 	materials = list(MAT_GLASS=40)
 
-/obj/item/stock_parts/cell/secborg/empty/Initialize()
-	. = ..()
-	charge = 0
-	update_icon()
+/obj/item/stock_parts/cell/secborg/empty
+	start_charged = FALSE
 
 /obj/item/stock_parts/cell/lascarbine
 	name = "laser carbine power supply"
-	maxcharge = 2500
+	maxcharge = 1500			//20 laser shots.
 
 /obj/item/stock_parts/cell/pulse //200 pulse shots
 	name = "pulse rifle power cell"
@@ -230,10 +228,8 @@
 	maxcharge = 15000
 	chargerate = 2250
 
-/obj/item/stock_parts/cell/high/empty/Initialize()
-	. = ..()
-	charge = 0
-	update_icon()
+/obj/item/stock_parts/cell/high/empty
+	start_charged = FALSE
 
 /obj/item/stock_parts/cell/super
 	name = "super-capacity power cell"
@@ -242,10 +238,8 @@
 	materials = list(MAT_GLASS=300)
 	chargerate = 2000
 
-/obj/item/stock_parts/cell/super/empty/Initialize()
-	. = ..()
-	charge = 0
-	update_icon()
+/obj/item/stock_parts/cell/super/empty
+	start_charged = FALSE
 
 /obj/item/stock_parts/cell/hyper
 	name = "hyper-capacity power cell"
@@ -254,10 +248,8 @@
 	materials = list(MAT_GLASS=400)
 	chargerate = 3000
 
-/obj/item/stock_parts/cell/hyper/empty/Initialize()
-	. = ..()
-	charge = 0
-	update_icon()
+/obj/item/stock_parts/cell/hyper/empty
+	start_charged = FALSE
 
 /obj/item/stock_parts/cell/bluespace
 	name = "bluespace power cell"
@@ -267,10 +259,8 @@
 	materials = list(MAT_GLASS=600)
 	chargerate = 4000
 
-/obj/item/stock_parts/cell/bluespace/empty/Initialize()
-	. = ..()
-	charge = 0
-	update_icon()
+/obj/item/stock_parts/cell/bluespace/empty
+	start_charged = FALSE
 
 /obj/item/stock_parts/cell/infinite
 	name = "infinite-capacity power cell!"
@@ -320,14 +310,12 @@
 	maxcharge = 500
 	rating = 3
 
-/obj/item/stock_parts/cell/emproof/empty/Initialize()
-	. = ..()
-	charge = 0
-	update_icon()
-
-/obj/item/stock_parts/cell/emproof/empty/ComponentInitialize()
+/obj/item/stock_parts/cell/emproof/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/empprotection, EMP_PROTECT_SELF)
+
+/obj/item/stock_parts/cell/emproof/empty
+	start_charged = FALSE
 
 /obj/item/stock_parts/cell/emproof/corrupt()
 	return
@@ -359,3 +347,26 @@
 	var/area/A = get_area(src)
 	if(!A.lightswitch || !A.light_power)
 		charge = 0 //For naturally depowered areas, we start with no power
+
+//found inside the inducers ordered from cargo.
+/obj/item/stock_parts/cell/inducer_supply
+	maxcharge = 5000
+
+/obj/item/stock_parts/cell/magnetic
+	name = "magrifle power supply"
+	maxcharge = 12000
+	chargerate = 600
+
+/obj/item/stock_parts/cell/magnetic/empty
+	start_charged = FALSE
+
+/obj/item/stock_parts/cell/magnetic/pistol
+	name = "magpistol power supply"
+	maxcharge = 6000
+
+/obj/item/stock_parts/cell/magnetic/pistol/empty
+	start_charged = FALSE
+
+/obj/item/stock_parts/cell/toymagburst
+	name = "toy mag burst rifle power supply"
+	maxcharge = 4000

@@ -20,8 +20,6 @@
 		else
 			return "000"
 
-#define UNDIE_COLORABLE(U) (U?.has_color)
-
 /proc/random_underwear(gender)
 	if(!GLOB.underwear_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/underwear/bottom, GLOB.underwear_list, GLOB.underwear_m, GLOB.underwear_f)
@@ -59,7 +57,7 @@
 	if(!GLOB.horns_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/horns, GLOB.horns_list)
 	if(!GLOB.ears_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/ears, GLOB.horns_list)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/ears, GLOB.ears_list)
 	if(!GLOB.frills_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/frills, GLOB.frills_list)
 	if(!GLOB.spines_list.len)
@@ -72,12 +70,12 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/wings, GLOB.wings_list)
 	if(!GLOB.deco_wings_list.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/deco_wings, GLOB.deco_wings_list)
-	if(!GLOB.moth_wings_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_wings, GLOB.moth_wings_list)
-	if(!GLOB.moth_fluffs_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_fluff, GLOB.moth_fluffs_list)
-	if(!GLOB.moth_markings_list.len)
-		init_sprite_accessory_subtypes(/datum/sprite_accessory/moth_markings, GLOB.moth_markings_list)
+	if(!GLOB.insect_wings_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/insect_wings, GLOB.insect_wings_list)
+	if(!GLOB.insect_fluffs_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/insect_fluff, GLOB.insect_fluffs_list)
+	if(!GLOB.insect_markings_list.len)
+		init_sprite_accessory_subtypes(/datum/sprite_accessory/insect_markings, GLOB.insect_markings_list)
 
 	//CIT CHANGES - genitals and such
 	if(!GLOB.cock_shapes_list.len)
@@ -136,24 +134,25 @@
 
 	//CIT CHANGE - changes this entire return to support cit's snowflake parts
 	return(list(
-		"mcolor" = color1,
-		"mcolor2" = color2,
-		"mcolor3" = color3,
-		"tail_lizard" = pick(GLOB.tails_list_lizard),
-		"tail_human" = "None",
-		"wings" = "None",
-		"snout" = pick(GLOB.snouts_list),
-		"horns" = pick(GLOB.horns_list),
-		"ears" = "None",
-		"frills" = pick(GLOB.frills_list),
-		"spines" = pick(GLOB.spines_list),
-		"body_markings" = pick(GLOB.body_markings_list),
-		"legs" = pick("Normal Legs","Digitigrade Legs"),
-		"caps" = pick(GLOB.caps_list),
-		"moth_wings" = pick(GLOB.moth_wings_list),
-		"moth_markings" = pick(GLOB.moth_markings_list),
+		"mcolor"			= color1,
+		"mcolor2"			= color2,
+		"mcolor3"			= color3,
+		"tail_lizard"		= pick(GLOB.tails_list_lizard),
+		"tail_human"		= "None",
+		"wings"				= "None",
+		"deco_wings"		= "None",
+		"snout"				= pick(GLOB.snouts_list),
+		"horns"				= pick(GLOB.horns_list),
+		"ears"				= "None",
+		"frills"			= pick(GLOB.frills_list),
+		"spines"			= pick(GLOB.spines_list),
+		"body_markings"		= pick(GLOB.body_markings_list),
+		"legs"				= pick("Plantigrade","Digitigrade"),
+		"caps"				= pick(GLOB.caps_list),
+		"insect_wings"		= pick(GLOB.insect_wings_list),
 		"insect_fluff"		= "None",
-		"taur" 				= "None",
+		"insect_markings"     = pick(GLOB.insect_markings_list),
+		"taur"				= "None",
 		"mam_body_markings" = pick(snowflake_markings_list),
 		"mam_ears" 			= pick(snowflake_ears_list),
 		"mam_snouts"		= pick(snowflake_mam_snouts_list),
@@ -162,7 +161,6 @@
 		"xenodorsal" 		= "Standard",
 		"xenohead" 			= "Standard",
 		"xenotail" 			= "Xenomorph Tail",
-		"exhibitionist" 	= FALSE,
 		"genitals_use_skintone"	= FALSE,
 		"has_cock"			= FALSE,
 		"cock_shape"		= pick(GLOB.cock_shapes_list),
@@ -205,14 +203,15 @@
 		"vag_clit_diam"		= 0.25,
 		"vag_clit_len"		= 0.25,
 		"has_womb"			= FALSE,
-		"can_get_preg"		= FALSE,
 		"womb_cum_rate"		= CUM_RATE,
 		"womb_cum_mult"		= CUM_RATE_MULT,
 		"womb_efficiency"	= CUM_EFFICIENCY,
 		"womb_fluid" 		= "femcum",
-		"ipc_screen" = "Sunburst",
-		"ipc_antenna" = "None",
-		"flavor_text"		= ""))
+		"ipc_screen"		= "Sunburst",
+		"ipc_antenna"		= "None",
+		"flavor_text"		= "",
+		"meat_type"			= "Mammalian"
+		))
 
 /proc/random_hair_style(gender)
 	switch(gender)
@@ -524,12 +523,14 @@ GLOBAL_LIST_EMPTY(species_list)
 		else
 			prefs = new
 
-		var/adminoverride = 0
+		var/override = FALSE
 		if(M.client && M.client.holder && (prefs.chat_toggles & CHAT_DEAD))
-			adminoverride = 1
-		if(isnewplayer(M) && !adminoverride)
+			override = TRUE
+		if(HAS_TRAIT(M, TRAIT_SIXTHSENSE))
+			override = TRUE
+		if(isnewplayer(M) && !override)
 			continue
-		if(M.stat != DEAD && !adminoverride)
+		if(M.stat != DEAD && !override)
 			continue
 		if(speaker_key && speaker_key in prefs.ignoring)
 			continue
