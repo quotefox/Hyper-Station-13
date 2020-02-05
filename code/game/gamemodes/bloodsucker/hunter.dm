@@ -1,4 +1,5 @@
 
+
 /*
 // Called from game mode pre_setup()
 /datum/game_mode/proc/assign_monster_hunters(monster_count = 4, guaranteed_hunters = FALSE, list/datum/mind/exclude_from_hunter)
