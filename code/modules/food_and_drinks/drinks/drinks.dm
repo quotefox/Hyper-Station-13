@@ -113,6 +113,7 @@
 		return
 	if(bartender_check(target) && ranged)
 		return
+	SplashReagents(target)
 	var/obj/item/broken_bottle/B = new (loc)
 	B.icon_state = icon_state
 	var/icon/I = new('icons/obj/drinks.dmi', src.icon_state)
@@ -333,6 +334,11 @@
 				icon_state = "grapebox"
 				name = "grape juice box"
 				desc = "Tasty grape juice in a fun little container. Non-alcoholic!"
+				foodtype = FRUIT | BREAKFAST
+			if("pineapplejuice")
+				icon_state = "pineapplebox"
+				name = "pineapple juice box"
+				desc = "Why would you even want this?"
 				foodtype = FRUIT | BREAKFAST
 			if("chocolate_milk")
 				icon_state = "chocolatebox"

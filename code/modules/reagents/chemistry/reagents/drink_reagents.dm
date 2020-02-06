@@ -121,6 +121,15 @@
 	glass_desc = "Sour..."
 	pH = 2
 
+/datum/reagent/consumable/strawberryjuice
+	name = "Strawberry Juice"
+	id = "strawberryjuice"
+	description = "Refreshing seasonal summer drink."
+	color = "#F2163A"
+	taste_description = "strawberry"
+	glass_name = "glass of strawberry juice"
+	glass_desc = "Refreshing seasonal summer drink."
+
 /datum/reagent/consumable/banana
 	name = "Banana Juice"
 	description = "The raw essence of a banana. HONK"
@@ -804,6 +813,15 @@
 	color = "#FFA500"
 	taste_description = "parsnip"
 	glass_name = "glass of parsnip juice"
+
+/datum/reagent/consumable/pineapplejuice
+	name = "Pineapple Juice"
+	id = "pineapplejuice"
+	description = "Tart, tropical, and hotly debated."
+	color = "#F7D435"
+	taste_description = "pineapple"
+	glass_name = "glass of pineapple juice"
+	glass_desc = "Tart, tropical, and hotly debated."
 
 /datum/reagent/consumable/peachjuice //Intended to be extremely rare due to being the limiting ingredients in the blazaam drink
 	name = "Peach Juice"

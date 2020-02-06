@@ -262,5 +262,6 @@
 	name = "strawberry"
 	icon_state = "strawberry"
 	filling_color = "#7FFF00"
+	juice_results = list("strawberryjuice" = 0)
 	tastes = list("strawberries" = 1)
 	wine_power = 20

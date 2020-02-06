@@ -473,6 +473,28 @@
 	isGlass = FALSE
 	list_reagents = list(/datum/reagent/consumable/menthol = 100)
 
+/obj/item/reagent_containers/food/drinks/bottle/pineapplejuice
+	name = "pineapple juice"
+	desc = "Extremely tart, yellow juice."
+	icon_state = "pineapplejuice"
+	item_state = "carton"
+	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
+	isGlass = FALSE
+	list_reagents = list("pineapplejuice" = 100)
+	foodtype = FRUIT | PINEAPPLE
+
+/obj/item/reagent_containers/food/drinks/bottle/strawberryjuice
+	name = "strawberry juice"
+	desc = "Slushy, reddish juice."
+	icon_state = "strawberryjuice"
+	item_state = "carton"
+	lefthand_file = 'icons/mob/inhands/equipment/kitchen_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
+	isGlass = FALSE
+	list_reagents = list("strawberryjuice" = 100)
+	foodtype = FRUIT
+
 /obj/item/reagent_containers/food/drinks/bottle/grenadine
 	name = "Jester Grenadine"
 	desc = "Contains 0% real cherries!"
