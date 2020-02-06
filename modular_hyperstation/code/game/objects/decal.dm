@@ -1,7 +1,7 @@
 /obj/decal/stencil
 	name = "stencil"
 	desc = "A letter, one of many used to make words."
-	icon = 'hyperstation/icons/decals/decal_new.dmi'
+	icon = 'modular_hyperstation/icons/decals/decal_new.dmi'
 	icon_state = "a"
 	anchored = TRUE
 	layer = WALL_OBJ_LAYER

@@ -1,6 +1,6 @@
 /mob/living/simple_animal/hostile/mimic
 	name = "Mimic"
-	icon = 'hyperstation/icons/mobs/mimic.dmi'
+	icon = 'modular_hyperstation/icons/mobs/mimic.dmi'
 	icon_state = "mimic"
 	icon_living = "mimic"
 	icon_dead = "mimic_dead"
@@ -30,29 +30,11 @@
 	Mimictransform()
 
 /mob/living/simple_animal/hostile/mimic/proc/Mimictransform()
+	if(unstealth == FALSE) //why are there switches for the SAME thing?
+		icon = 'icons/obj/drinks.dmi'
+		icon_state = "glass_empty"
+		aggro_vision_range = 0
 
-	var/transformitem = rand(1,3)
-
-	if (unstealth == FALSE)
-		switch(transformitem)
-			if(1)
-				//Glass
-				icon = 'icons/obj/drinks.dmi'
-				icon_state = "glass_empty"
-				aggro_vision_range = 0
-
-			if(2)
-				//Glass
-				icon = 'icons/obj/drinks.dmi'
-				icon_state = "glass_empty"
-				aggro_vision_range = 0
-
-			if(3)
-				//Glass
-				icon = 'icons/obj/drinks.dmi'
-				icon_state = "glass_empty"
-				aggro_vision_range = 0
-	else
-		//back to normal
-		icon = 'hyperstation/icons/mobs/mimic.dmi'
+	else //back to normal
+		icon = 'modular_hyperstation/icons/mobs/mimic.dmi'
 		icon_state = "mimic"

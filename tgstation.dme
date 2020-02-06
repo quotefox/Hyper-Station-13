@@ -3204,4 +3204,5 @@
 #include "modular_hyperstation\code\game\objects\decal.dm"
 #include "modular_hyperstation\code\game\objects\holy_weapons.dm"
 #include "modular_hyperstation\code\game\objects\pregnancytester.dm"
+#include "modular_hyperstation\code\game\objects\structures\medwall.dm"
 // END_INCLUDE

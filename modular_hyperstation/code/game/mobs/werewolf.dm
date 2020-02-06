@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/werewolf
 	name = "Werewolf"
 	desc = "A towering creature!"
-	icon = 'hyperstation/icons/mobs/werewolf.dmi'
+	icon = 'modular_hyperstation/icons/mobs/werewolf.dmi'
 	icon_state = "idle"
 	icon_living = "idle"
 	icon_dead = "idle"

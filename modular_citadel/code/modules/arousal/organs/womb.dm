@@ -8,3 +8,4 @@
 	genital_flags = GENITAL_INTERNAL|GENITAL_FUID_PRODUCTION
 	fluid_id = /datum/reagent/consumable/femcum
 	linked_organ_slot = ORGAN_SLOT_VAGINA
+	var/pregnant = FALSE
