@@ -123,7 +123,6 @@
 
 /datum/reagent/consumable/strawberryjuice
 	name = "Strawberry Juice"
-	id = "strawberryjuice"
 	description = "Refreshing seasonal summer drink."
 	color = "#F2163A"
 	taste_description = "strawberry"

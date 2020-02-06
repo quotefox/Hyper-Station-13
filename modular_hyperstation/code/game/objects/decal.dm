@@ -5,11 +5,12 @@
 	icon_state = "a"
 	anchored = TRUE
 	layer = WALL_OBJ_LAYER
+	alpha = 200
+	pixel_y = 8
 
 	left
 		pixel_x = -3 //fine-tune from this offset
-		pixel_y = 8
-		alpha = 200
+
 		a
 			name = "a"
 			icon_state = "a"
@@ -121,8 +122,7 @@
 
 		right
 			pixel_x = 13 // fine-tune from this offset
-			pixel_y = 8
-			alpha = 200
+
 			a
 				name = "a"
 				icon_state = "a"

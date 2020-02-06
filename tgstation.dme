@@ -3199,8 +3199,9 @@
 #include "modular_citadel\code\modules\reagents\objects\items.dm"
 #include "modular_citadel\code\modules\reagents\reagents\cit_reagents.dm"
 #include "modular_citadel\interface\skin.dmf"
-#include "modular_hyperstation\code\mobs\mimic.dm"
-#include "modular_hyperstation\code\mobs\werewolf.dm"
-#include "modular_hyperstation\code\obj\decal.dm"
-#include "modular_hyperstation\code\obj\pregnancytester.dm"
+#include "modular_hyperstation\code\game\mobs\mimic.dm"
+#include "modular_hyperstation\code\game\mobs\werewolf.dm"
+#include "modular_hyperstation\code\game\objects\decal.dm"
+#include "modular_hyperstation\code\game\objects\holy_weapons.dm"
+#include "modular_hyperstation\code\game\objects\pregnancytester.dm"
 // END_INCLUDE
