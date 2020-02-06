@@ -31,15 +31,11 @@
 #define COMSIG_ATOM_RATVAR_ACT "atom_ratvar_act"				//from base of atom/ratvar_act(): ()
 /////////////////
 
-
-
 // /area signals
 
 // /turf signals
 
 // /atom/movable signals
-
-// /mob signals
 
 // /mob/living signals
 

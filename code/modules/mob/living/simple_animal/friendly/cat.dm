@@ -31,9 +31,9 @@
 	var/mob/living/simple_animal/mouse/movement_target
 	gold_core_spawnable = FRIENDLY_SPAWN
 	collar_type = "cat"
-	can_be_held = "cat2"
 	size_multiplier = 0.5
 
+	var/held_icon = "cat2"
 	do_footstep = TRUE
 
 /mob/living/simple_animal/pet/cat/Initialize()
@@ -43,6 +43,7 @@
 /mob/living/simple_animal/pet/cat/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/wuv, "purrs!", EMOTE_AUDIBLE, /datum/mood_event/pet_animal, "hisses!", EMOTE_AUDIBLE)
+	AddElement(/datum/element/mob_holder, held_icon)
 
 /mob/living/simple_animal/pet/cat/update_canmove()
 	..()
@@ -62,6 +63,7 @@
 	icon_state = "spacecat"
 	icon_living = "spacecat"
 	icon_dead = "spacecat_dead"
+	held_icon = "spacecat"
 	unsuitable_atmos_damage = 0
 	minbodytemp = TCMB
 	maxbodytemp = T0C + 40
@@ -73,6 +75,7 @@
 	icon_state = "original"
 	icon_living = "original"
 	icon_dead = "original_dead"
+	held_icon = "original"
 	collar_type = null
 	unique_pet = TRUE
 
@@ -86,7 +89,7 @@
 	pass_flags = PASSMOB
 	mob_size = MOB_SIZE_SMALL
 	collar_type = "kitten"
-	can_be_held = "cat"
+	held_icon = "cat"
 
 //RUNTIME IS ALIVE! SQUEEEEEEEE~
 /mob/living/simple_animal/pet/cat/Runtime
@@ -251,7 +254,7 @@
 	attacked_sound = 'sound/items/eatfood.ogg'
 	deathmessage = "loses its false life and collapses!"
 	death_sound = "bodyfall"
-	can_be_held = "cak"
+	held_icon = "cak"
 
 /mob/living/simple_animal/pet/cat/cak/CheckParts(list/parts)
 	..()
