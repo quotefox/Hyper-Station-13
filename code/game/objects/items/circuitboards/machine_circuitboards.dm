@@ -290,7 +290,6 @@
 		if(!choiceposition)
 			return
 		var/typepath = GLOB.vending_machines[choiceposition]
-		var/namepath = vending_names_paths[choiceposition]
 		set_type(typepath)
 	else
 		return ..()
