@@ -26848,7 +26848,6 @@
 /obj/machinery/vending/snack/orange,
 /obj/machinery/light{
 	dir = 1;
-	pixel_x = 0;
 	pixel_y = 16
 	},
 /obj/structure/sign/poster/contraband/donut_corp{
