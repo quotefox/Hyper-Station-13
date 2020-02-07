@@ -15,7 +15,7 @@
 	var/content = ""
 
 
-/datum/browser/New(nuser, nwindow_id, ntitle = 0, nwidth = 0, nheight = 0, var/atom/nref = null)
+/datum/browser/New(nuser, nwindow_id, ntitle = 0, nwidth = 0, nheight = 0, atom/nref = null)
 
 	user = nuser
 	window_id = nwindow_id
@@ -91,7 +91,7 @@
 	[get_footer()]
 	"}
 
-/datum/browser/proc/open(use_onclose = 1)
+/datum/browser/proc/open(use_onclose = TRUE)
 	if(isnull(window_id))	//null check because this can potentially nuke goonchat
 		WARNING("Browser [title] tried to open with a null ID")
 		to_chat(user, "<span class='userdanger'>The [title] browser you tried to open failed a sanity check! Please report this on github!</span>")
@@ -120,7 +120,7 @@
 	else
 		WARNING("Browser [title] tried to close with a null ID")
 
-/datum/browser/modal/alert/New(User,Message,Title,Button1="Ok",Button2,Button3,StealFocus = 1,Timeout=6000)
+/datum/browser/modal/alert/New(User, Message, Title, Button1="Ok", Button2, Button3, StealFocus = TRUE, Timeout=6000)
 	if (!User)
 		return
 
@@ -151,7 +151,7 @@
 	close()
 
 //designed as a drop in replacement for alert(); functions the same. (outside of needing User specified)
-/proc/tgalert(var/mob/User, Message, Title, Button1="Ok", Button2, Button3, StealFocus = 1, Timeout = 6000)
+/proc/tgalert(mob/User, Message, Title, Button1="Ok", Button2, Button3, StealFocus = TRUE, Timeout = 6000)
 	if (!User)
 		User = usr
 	switch(askuser(User, Message, Title, Button1, Button2, Button3, StealFocus, Timeout))
@@ -163,7 +163,7 @@
 			return Button3
 
 //Same shit, but it returns the button number, could at some point support unlimited button amounts.
-/proc/askuser(var/mob/User,Message, Title, Button1="Ok", Button2, Button3, StealFocus = 1, Timeout = 6000)
+/proc/askuser(mob/User, Message, Title, Button1="Ok", Button2, Button3, StealFocus = TRUE, Timeout = 6000)
 	if (!istype(User))
 		if (istype(User, /client/))
 			var/client/C = User
@@ -182,7 +182,7 @@
 	var/selectedbutton = 0
 	var/stealfocus
 
-/datum/browser/modal/New(nuser, nwindow_id, ntitle = 0, nwidth = 0, nheight = 0, var/atom/nref = null, StealFocus = 1, Timeout = 6000)
+/datum/browser/modal/New(nuser, nwindow_id, ntitle = 0, nwidth = 0, nheight = 0, atom/nref = null, StealFocus = TRUE, Timeout = 6000)
 	..()
 	stealfocus = StealFocus
 	if (!StealFocus)
@@ -194,15 +194,15 @@
 	.=..()
 	opentime = 0
 
-/datum/browser/modal/open(use_onclose = 1)
+/datum/browser/modal/open(use_onclose = TRUE)
 	set waitfor = 0
 	opentime = world.time
 
 	if (stealfocus)
-		. = ..(use_onclose = 1)
+		. = ..(use_onclose = TRUE)
 	else
 		var/focusedwindow = winget(user, null, "focus")
-		. = ..(use_onclose = 1)
+		. = ..(use_onclose = TRUE)
 
 		//waits for the window to show up client side before attempting to un-focus it
 		//winexists sleeps until it gets a reply from the client, so we don't need to bother sleeping
@@ -223,7 +223,7 @@
 /datum/browser/modal/listpicker
 	var/valueslist = list()
 
-/datum/browser/modal/listpicker/New(User,Message,Title,Button1="Ok",Button2,Button3,StealFocus = 1, Timeout = FALSE,list/values,inputtype="checkbox", width, height, slidecolor)
+/datum/browser/modal/listpicker/New(User, Message, Title, Button1="Ok", Button2, Button3, StealFocus = TRUE, Timeout = FALSE, list/values,inputtype="checkbox", width, height, slidecolor)
 	if (!User)
 		return
 
@@ -257,7 +257,7 @@
 	..(User, ckey("[User]-[Message]-[Title]-[world.time]-[rand(1,10000)]"), Title, width, height, src, StealFocus, Timeout)
 	set_content(output)
 
-/datum/browser/modal/listpicker/Topic(href,href_list)
+/datum/browser/modal/listpicker/Topic(href, href_list)
 	if (href_list["close"] || !user || !user.client)
 		opentime = 0
 		return
@@ -274,7 +274,7 @@
 	opentime = 0
 	close()
 
-/proc/presentpicker(var/mob/User,Message, Title, Button1="Ok", Button2, Button3, StealFocus = 1,Timeout = 6000,list/values, inputtype = "checkbox", width, height, slidecolor)
+/proc/presentpicker(mob/User,Message, Title, Button1="Ok", Button2, Button3, StealFocus = TRUE,Timeout = 6000, list/values, inputtype = "checkbox", width, height, slidecolor)
 	if (!istype(User))
 		if (istype(User, /client/))
 			var/client/C = User
@@ -287,7 +287,7 @@
 	if (A.selectedbutton)
 		return list("button" = A.selectedbutton, "values" = A.valueslist)
 
-/proc/input_bitfield(var/mob/User, title, bitfield, current_value, nwidth = 350, nheight = 350, nslidecolor, allowed_edit_list = null)
+/proc/input_bitfield(mob/User, title, bitfield, current_value, nwidth = 350, nheight = 350, nslidecolor, allowed_edit_list = null)
 	if (!User || !(bitfield in GLOB.bitfields))
 		return
 	var/list/pickerlist = list()
@@ -314,7 +314,7 @@
 	var/icon/preview_icon = null
 	var/datum/callback/preview_update
 
-/datum/browser/modal/preflikepicker/New(User,Message,Title,Button1="Ok",Button2,Button3,StealFocus = 1, Timeout = FALSE,list/settings,inputtype="checkbox", width = 600, height, slidecolor)
+/datum/browser/modal/preflikepicker/New(User, Message, Title, Button1="Ok", Button2, Button3, StealFocus = TRUE, Timeout = FALSE, list/settings,inputtype="checkbox", width = 600, height, slidecolor)
 	if (!User)
 		return
 	src.settings = settings
@@ -398,7 +398,7 @@
 	opentime = 0
 	close()
 
-/proc/presentpreflikepicker(var/mob/User,Message, Title, Button1="Ok", Button2, Button3, StealFocus = 1,Timeout = 6000,list/settings, width, height, slidecolor)
+/proc/presentpreflikepicker(mob/User,Message, Title, Button1="Ok", Button2, Button3, StealFocus = TRUE,Timeout = 6000, list/settings, width, height, slidecolor)
 	if (!istype(User))
 		if (istype(User, /client/))
 			var/client/C = User

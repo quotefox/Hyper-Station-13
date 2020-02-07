@@ -27,7 +27,7 @@
 			candidates.Remove(P)
 			continue
 
-/datum/dynamic_ruleset/latejoin/ready(forced = 0)
+/datum/dynamic_ruleset/latejoin/ready(forced = FALSE)
 	if (!forced)
 		var/job_check = 0
 		if (enemy_roles.len > 0)
@@ -161,7 +161,7 @@
 		return RULESET_STOP_PROCESSING
 
 /// Checks for revhead loss conditions and other antag datums.
-/datum/dynamic_ruleset/latejoin/provocateur/proc/check_eligible(var/datum/mind/M)
+/datum/dynamic_ruleset/latejoin/provocateur/proc/check_eligible(datum/mind/M)
 	var/turf/T = get_turf(M.current)
 	if(!considered_afk(M) && considered_alive(M) && is_station_level(T.z) && !M.antag_datums?.len && !HAS_TRAIT(M, TRAIT_MINDSHIELD))
 		return TRUE

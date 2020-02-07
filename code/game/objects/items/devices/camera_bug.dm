@@ -49,7 +49,7 @@
 /obj/item/camera_bug/interact(mob/user)
 	ui_interact(user)
 
-/obj/item/camera_bug/ui_interact(mob/user = usr)
+/obj/item/camera_bug/ui_interact(mob/user)
 	. = ..()
 	var/datum/browser/popup = new(user, "camerabug","Camera Bug",nref=src)
 	popup.set_content(menu(get_cameras()))
@@ -189,7 +189,7 @@
 	else
 		return "Camera Offline<br>"
 
-/obj/item/camera_bug/Topic(href,list/href_list)
+/obj/item/camera_bug/Topic(href, list/href_list)
 	if(usr != loc)
 		usr.unset_machine()
 		usr << browse(null, "window=camerabug")
@@ -295,7 +295,7 @@
 				break
 	src.updateSelfDialog()
 
-/obj/item/camera_bug/proc/same_z_level(var/obj/machinery/camera/C)
+/obj/item/camera_bug/proc/same_z_level(obj/machinery/camera/C)
 	var/turf/T_cam = get_turf(C)
 	var/turf/T_bug = get_turf(loc)
 	if(!T_bug || T_cam.z != T_bug.z)

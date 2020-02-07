@@ -47,7 +47,7 @@ This file contains the cult dagger and rune list code
 	var/list/shields = list()
 	var/area/A = get_area(src)
 
-	var/datum/antagonist/cult/user_antag = user.mind.has_antag_datum(/datum/antagonist/cult,TRUE)
+	var/datum/antagonist/cult/user_antag = user.mind.has_antag_datum(/datum/antagonist/cult, TRUE)
 	if(!user_antag)
 		return
 

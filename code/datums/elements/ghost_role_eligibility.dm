@@ -43,7 +43,7 @@
 	var/datum/element/ghost_role_eligibility/eli = SSdcs.GetElement(/datum/element/ghost_role_eligibility)
 	return eli.can_reenter_round(src,silent)
 
-/datum/element/ghost_role_eligibility/proc/can_reenter_round(var/mob/M,silent = FALSE)
+/datum/element/ghost_role_eligibility/proc/can_reenter_round(mob/M, silent = FALSE)
 	if(!(M in eligible_mobs))
 		return FALSE
 	if(!(M.ckey in timeouts))

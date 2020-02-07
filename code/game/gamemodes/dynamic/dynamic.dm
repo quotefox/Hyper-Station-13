@@ -291,7 +291,7 @@ GLOBAL_VAR_INIT(dynamic_storyteller_type, null)
 		if(rule.flags & HIGHLANDER_RULESET)
 			return rule.check_finished()
 
-/datum/game_mode/dynamic/proc/log_threat(var/log_str,var/verbose = FALSE)
+/datum/game_mode/dynamic/proc/log_threat(log_str, verbose = FALSE)
 	threat_log_verbose += ("[worldtime2text()]: "+log_str)
 	SSblackbox.record_feedback("tally","dynamic_threat_log",1,log_str)
 	if(!verbose)

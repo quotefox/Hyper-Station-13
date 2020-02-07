@@ -325,7 +325,7 @@
 	mine_limit = CLAMP(new_mine_limit, lower_limit, upper_limit)
 	return TRUE
 
-/obj/machinery/computer/arcade/minesweeper/proc/make_mines(var/reset_everything)
+/obj/machinery/computer/arcade/minesweeper/proc/make_mines(reset_everything)
 	if(mine_placed < mine_limit)
 		for(var/y1=1;y1<rows;y1++)	//Board resetting and mine building
 			for(var/x1=1;x1<columns;x1++)
@@ -337,7 +337,7 @@
 		reset_everything = FALSE
 		make_mines()	//In case the first pass doesn't generate enough mines
 
-/obj/machinery/computer/arcade/minesweeper/proc/work_squares(var/y2, var/x2, var/y3, var/x3)
+/obj/machinery/computer/arcade/minesweeper/proc/work_squares(y2, x2, y3, x3)
 	if(y3 > 0 && x3 > 0)
 		y2 = y3
 		x2 = x3

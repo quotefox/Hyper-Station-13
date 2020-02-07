@@ -97,7 +97,7 @@ SUBSYSTEM_DEF(vote)
 				. += option
 	return .
 
-/datum/controller/subsystem/vote/proc/calculate_condorcet_votes(var/blackbox_text)
+/datum/controller/subsystem/vote/proc/calculate_condorcet_votes(blackbox_text)
 	// https://en.wikipedia.org/wiki/Schulze_method#Implementation
 	var/list/d[][] = new/list(choices.len,choices.len) // the basic vote matrix, how many times a beats b
 	for(var/ckey in voted)
@@ -139,7 +139,7 @@ SUBSYSTEM_DEF(vote)
 					choices[choices[i]]++ // higher shortest path = better candidate, so we add to choices here
 					// choices[choices[i]] is the schulze ranking, here, rather than raw vote numbers
 
-/datum/controller/subsystem/vote/proc/calculate_majority_judgement_vote(var/blackbox_text)
+/datum/controller/subsystem/vote/proc/calculate_majority_judgement_vote(blackbox_text)
 	// https://en.wikipedia.org/wiki/Majority_judgment
 	var/list/scores_by_choice = list()
 	for(var/choice in choices)
@@ -187,7 +187,7 @@ SUBSYSTEM_DEF(vote)
 			score.Cut(median_pos,median_pos+1)
 			choices[score_name]++
 
-/datum/controller/subsystem/vote/proc/calculate_scores(var/blackbox_text)
+/datum/controller/subsystem/vote/proc/calculate_scores(blackbox_text)
 	var/list/scores_by_choice = list()
 	for(var/choice in choices)
 		scores_by_choice += "[choice]"

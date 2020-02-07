@@ -24,16 +24,16 @@ AI MODULES
 	var/bypass_law_amt_check = 0
 	materials = list(MAT_GOLD=50)
 
-/obj/item/aiModule/examine(var/mob/user as mob)
+/obj/item/aiModule/examine(mob/user)
 	. = ..()
 	if(Adjacent(user))
 		show_laws(user)
 
-/obj/item/aiModule/attack_self(var/mob/user as mob)
+/obj/item/aiModule/attack_self(mob/user)
 	..()
 	show_laws(user)
 
-/obj/item/aiModule/proc/show_laws(var/mob/user as mob)
+/obj/item/aiModule/proc/show_laws(mob/user)
 	if(laws.len)
 		to_chat(user, "<B>Programmed Law[(laws.len > 1) ? "s" : ""]:</B>")
 		for(var/law in laws)

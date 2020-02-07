@@ -450,7 +450,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	else
 		icon_state = "holopad0"
 
-/obj/machinery/holopad/proc/set_holo(mob/living/user, var/obj/effect/overlay/holo_pad_hologram/h)
+/obj/machinery/holopad/proc/set_holo(mob/living/user, obj/effect/overlay/holo_pad_hologram/h)
 	LAZYSET(masters, user, h)
 	LAZYSET(holorays, user, new /obj/effect/overlay/holoray(loc))
 	var/mob/living/silicon/ai/AI = user
@@ -476,7 +476,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	return TRUE
 
 //Try to transfer hologram to another pad that can project on T
-/obj/machinery/holopad/proc/transfer_to_nearby_pad(turf/T,mob/holo_owner)
+/obj/machinery/holopad/proc/transfer_to_nearby_pad(turf/T, mob/holo_owner)
 	var/obj/effect/overlay/holo_pad_hologram/h = masters[holo_owner]
 	if(!h || h.HC) //Holocalls can't change source.
 		return FALSE
@@ -598,7 +598,7 @@ For the other part of the code, check silicon say.dm. Particularly robot talk.*/
 	temp = "Recording...<br>"
 	temp += "<A href='?src=[REF(src)];record_stop=1'>End recording.</A>"
 
-/obj/machinery/holopad/proc/record_message(mob/living/speaker,message,language)
+/obj/machinery/holopad/proc/record_message(mob/living/speaker, message, language)
 	if(!record_mode)
 		return
 	//make this command so you can have multiple languages in single record

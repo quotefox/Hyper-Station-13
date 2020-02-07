@@ -21,7 +21,7 @@
 /obj/machinery/turnstile/bullet_act(obj/item/projectile/P, def_zone)
 	return BULLET_ACT_FORCE_PIERCE //Pass through!
 
-/obj/machinery/turnstile/proc/allowed_access(var/mob/B)
+/obj/machinery/turnstile/proc/allowed_access(mob/B)
 	if(B.pulledby && ismob(B.pulledby))
 		return allowed(B.pulledby) | allowed(B)
 	else

@@ -238,7 +238,7 @@
 	internal_tank = new /obj/machinery/portable_atmospherics/canister/air(src)
 	return internal_tank
 
-/obj/mecha/proc/add_cell(var/obj/item/stock_parts/cell/C=null)
+/obj/mecha/proc/add_cell(obj/item/stock_parts/cell/C = null)
 	if(C)
 		C.forceMove(src)
 		cell = C
@@ -291,7 +291,7 @@
 
 //processing internal damage, temperature, air regulation, alert updates, lights power use.
 /obj/mecha/process()
-	var/internal_temp_regulation = 1
+	var/internal_temp_regulation = TRUE
 
 	if(internal_damage)
 		if(internal_damage & MECHA_INT_FIRE)
@@ -309,7 +309,7 @@
 					take_damage(4/round(max_temperature/cabin_air.return_temperature(),0.1), BURN, 0, 0)
 
 		if(internal_damage & MECHA_INT_TEMP_CONTROL)
-			internal_temp_regulation = 0
+			internal_temp_regulation = FALSE
 
 		if(internal_damage & MECHA_INT_TANK_BREACH) //remove some air from internal tank
 			if(internal_tank)
@@ -495,7 +495,7 @@
 		occupant_message("<span class='warning'>Air port connection teared off!</span>")
 		mecha_log_message("Lost connection to gas port.")
 
-/obj/mecha/Process_Spacemove(var/movement_dir = 0)
+/obj/mecha/Process_Spacemove(movement_dir = 0)
 	. = ..()
 	if(.)
 		return 1
@@ -510,7 +510,7 @@
 					to_chat(occupant, "<span class='info'>You push off of [backup] to propel yourself.</span>")
 		return 1
 
-/obj/mecha/relaymove(mob/user,direction)
+/obj/mecha/relaymove(mob/user, direction)
 	if(completely_disabled)
 		return
 	if(!direction)
@@ -582,7 +582,7 @@
 		playsound(src,stepsound,40,1)
 	return result
 
-/obj/mecha/Bump(var/atom/obstacle)
+/obj/mecha/Bump(atom/obstacle)
 	if(phasing && get_charge() >= phasing_energy_drain && !throwing)
 		spawn()
 			if(can_move)
@@ -619,7 +619,7 @@
 ////////  Internal damage  ////////
 ///////////////////////////////////
 
-/obj/mecha/proc/check_for_internal_damage(list/possible_int_damage,ignore_threshold=null)
+/obj/mecha/proc/check_for_internal_damage(list/possible_int_damage, ignore_threshold = null)
 	if(!islist(possible_int_damage) || isemptylist(possible_int_damage))
 		return
 	if(prob(20))

@@ -6,22 +6,22 @@
 /datum/mood_event/arcade
 	description = "<span class='nicegreen'>I beat the arcade game!</span>\n"
 	mood_change = 3
-	timeout = 3000
+	timeout = 5 MINUTES
 
 /datum/mood_event/blessing
 	description = "<span class='nicegreen'>I've been blessed.</span>\n"
 	mood_change = 3
-	timeout = 3000
+	timeout = 5 MINUTES
 
 /datum/mood_event/book_nerd
 	description = "<span class='nicegreen'>I have recently read a book.</span>\n"
 	mood_change = 3
-	timeout = 3000
+	timeout = 5 MINUTES
 
 /datum/mood_event/exercise
 	description = "<span class='nicegreen'>Working out releases those endorphins!</span>\n"
 	mood_change = 3
-	timeout = 3000
+	timeout = 5 MINUTES
 
 /datum/mood_event/pet_animal
 	description = "<span class='nicegreen'>Animals are adorable! I can't stop petting them!</span>\n"
@@ -34,17 +34,17 @@
 /datum/mood_event/honk
 	description = "<span class='nicegreen'>Maybe clowns aren't so bad after all. Honk!</span>\n"
 	mood_change = 2
-	timeout = 2400
+	timeout = 4 MINUTES
 
 /datum/mood_event/bshonk
 	description = "<span class='nicegreen'>Quantum mechanics can be fun and silly, too! Honk!</span>\n"
 	mood_change = 6
-	timeout = 4800
+	timeout = 8 MINUTES
 
 /datum/mood_event/perform_cpr
 	description = "<span class='nicegreen'>It feels good to save a life.</span>\n"
 	mood_change = 6
-	timeout = 3000
+	timeout = 5 MINUTES
 
 /datum/mood_event/oblivious
 	description = "<span class='nicegreen'>What a lovely day.</span>\n"
@@ -77,7 +77,7 @@
 /datum/mood_event/goodmusic
 	description = "<span class='nicegreen'>There is something soothing about this music.</span>\n"
 	mood_change = 3
-	timeout = 600
+	timeout = 1 MINUTES
 
 /datum/mood_event/chemical_euphoria
 	description = "<span class='nicegreen'>Heh...hehehe...hehe...</span>\n"
@@ -96,7 +96,7 @@
 /datum/mood_event/betterhug
 	description = "<span class='nicegreen'>Someone was very nice to me.</span>\n"
 	mood_change = 3
-	timeout = 3000
+	timeout = 5 MINUTES
 
 /datum/mood_event/betterhug/add_effects(mob/friend)
 	description = "<span class='nicegreen'>[friend.name] was very nice to me.</span>\n"
@@ -104,7 +104,7 @@
 /datum/mood_event/besthug
 	description = "<span class='nicegreen'>Someone is great to be around, they make me feel so happy!</span>\n"
 	mood_change = 5
-	timeout = 3000
+	timeout = 5 MINUTES
 
 /datum/mood_event/besthug/add_effects(mob/friend)
 	description = "<span class='nicegreen'>[friend.name] is great to be around, [friend.p_they()] makes me feel so happy!</span>\n"
@@ -112,9 +112,9 @@
 /datum/mood_event/happy_empath
 	description = "<span class='warning'>Someone seems happy!</span>\n"
 	mood_change = 3
-	timeout = 600
+	timeout = 1 MINUTES
 
-/datum/mood_event/happy_empath/add_effects(var/mob/happytarget)
+/datum/mood_event/happy_empath/add_effects(mob/happytarget)
 	description = "<span class='nicegreen'>[happytarget.name]'s happiness is infectious!</span>\n"
 
 /datum/mood_event/headpat
@@ -156,19 +156,19 @@
 /datum/mood_event/drankblood
 	description = "<span class='nicegreen'>I have fed greedly from that which nourishes me.</span>\n"
 	mood_change = 10
-	timeout = 900
+	timeout = 1.5 MINUTES
 
 /datum/mood_event/coffinsleep
 	description = "<span class='nicegreen'>I slept in a coffin during the day. I feel whole again.</span>\n"
 	mood_change = 8
-	timeout = 1200
+	timeout = 2 MINUTES
 
 //Cursed stuff below.
 
 /datum/mood_event/orgasm
 	description = "<span class='userlove'>I came!</span>\n" //funny meme haha
 	mood_change = 3
-	timeout = 100 SECONDS
+	timeout = 1.67 MINUTES //1.6666666666666666666666666666667
 
 /datum/mood_event/fedpred
 	description = "<span class='nicegreen'>I've devoured someone!</span>\n"

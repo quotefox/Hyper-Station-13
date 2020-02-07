@@ -89,7 +89,7 @@
 			S.End(src)
 	return ..()
 
-/datum/disease/advance/try_infect(var/mob/living/infectee, make_copy = TRUE)
+/datum/disease/advance/try_infect(mob/living/infectee, make_copy = TRUE)
 	//see if we are more transmittable than enough diseases to replace them
 	//diseases replaced in this way do not confer immunity
 	var/list/advance_diseases = list()
@@ -279,9 +279,7 @@
 			spread_text = "Airborne"
 
 /datum/disease/advance/proc/SetSeverity(level_sev)
-
 	switch(level_sev)
-
 		if(-INFINITY to 0)
 			severity = DISEASE_SEVERITY_POSITIVE
 		if(1)
@@ -396,7 +394,7 @@
 */
 
 // Mix a list of advance diseases and return the mixed result.
-/proc/Advance_Mix(var/list/D_list)
+/proc/Advance_Mix(list/D_list)
 	var/list/diseases = list()
 
 	for(var/datum/disease/advance/A in D_list)
