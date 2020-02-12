@@ -17087,6 +17087,9 @@
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/machinery/light{
+	dir = 1
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "aLI" = (
@@ -58947,18 +58950,6 @@
 	},
 /turf/open/space,
 /area/space/nearstation)
-"emi" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/hallway/primary/central)
 "fns" = (
 /obj/machinery/light,
 /turf/open/floor/plasteel,
@@ -58969,18 +58960,6 @@
 	},
 /turf/open/floor/engine,
 /area/science/xenobiology)
-"jtW" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/security/brig)
 "vId" = (
 /obj/machinery/light{
 	dir = 8
@@ -87086,7 +87065,7 @@ agJ
 agg
 agJ
 agg
-jtW
+aiM
 ajv
 akb
 akz
@@ -88398,7 +88377,7 @@ ahf
 ahf
 ahf
 ahf
-emi
+aIR
 aIP
 aLF
 aNf

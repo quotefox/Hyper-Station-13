@@ -2924,9 +2924,9 @@
 	name = "Kinkmate construction kit"
 	cost = 2000
 	contraband = TRUE
-	contains = list(/obj/item/vending_refill/kink, 
-					/obj/item/vending_refill/kink, 
-					/obj/item/vending_refill/kink, 
+	contains = list(/obj/item/vending_refill/kink,
+					/obj/item/vending_refill/kink,
+					/obj/item/vending_refill/kink,
 					/obj/item/circuitboard/machine/kinkmate)
 	crate_name = "Kinkmate construction kit"
 
@@ -2965,6 +2965,36 @@
 	contains = list(/obj/item/pen/fountain/captain)
 	crate_name = "captain pen"
 	crate_type = /obj/structure/closet/crate/secure/weapon //It is a combat pen
+
+/datum/supply_pack/misc/dueling_stam
+	name = "Dueling Pistols"
+	desc = "Resolve all your quarrels with some nonlethal fun."
+	cost = 2000
+	contains = list(/obj/item/storage/lockbox/dueling/hugbox/stamina,
+	/obj/item/storage/lockbox/dueling/hugbox/stamina,
+	/obj/item/storage/lockbox/dueling/hugbox/stamina,
+	/obj/item/storage/lockbox/dueling/hugbox/stamina,
+	/obj/item/storage/lockbox/dueling/hugbox/stamina)
+	crate_name = "dueling pistols"
+
+/datum/supply_pack/misc/dueling_lethal
+	name = "Lethal Dueling Pistols"
+	desc = "Settle your differences the true spaceman way."
+	cost = 3000
+	contraband = TRUE
+	contains = list(/obj/item/storage/lockbox/dueling/hugbox,
+	/obj/item/storage/lockbox/dueling/hugbox,
+	/obj/item/storage/lockbox/dueling/hugbox)
+	crate_name = "dueling pistols (lethal)"
+
+/datum/supply_pack/misc/dueling_death
+	name = "Elimination Dueling Pistols"
+	desc = "It's high noon."
+	cost = 5000
+	hidden = TRUE
+	contains = list(/obj/item/storage/lockbox/dueling)
+	crate_name = "dueling pistols (elimination)"
+
 
 /datum/supply_pack/misc/exoticfootwear
 	name = "Exotic Footwear Crate"
@@ -3006,7 +3036,7 @@
 					/obj/item/bedsheet/purple,
 					/obj/item/bedsheet/red,
 					/obj/item/bedsheet/yellow,
-					/obj/item/bedsheet/brown, 
+					/obj/item/bedsheet/brown,
 					/obj/item/bedsheet/black,
 					/obj/item/bedsheet/rainbow)
 	crate_name = "colored bedsheet crate"
