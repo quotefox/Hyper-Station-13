@@ -26,7 +26,7 @@
 	 /datum/reagent/consumable/sugar = list("emptycondiment", "sugar bottle", "Tasty spacey sugar!"),
 	 /datum/reagent/consumable/mayonnaise = list("mayonnaise", "mayonnaise jar", "An oily condiment made from egg yolks."),
 	 /datum/reagent/consumable/bbqsauce = list("bbqsauce", "BBQ sauce", "Hand wipes not included."),
-	 /datum/reagent/consumable/peanut_butter = list("peanutbutter", "peanut butter jar", "A deliciously and sticky spread made from peanuts."))
+	 /datum/reagent/consumable/peanut_butter = list("peanut_butter", "peanut butter jar", "A deliciously and sticky spread made from peanuts."))
 	var/originalname = "condiment" //Can't use initial(name) for this. This stores the name set by condimasters.
 
 /obj/item/reagent_containers/food/condiment/suicide_act(mob/living/carbon/user)
