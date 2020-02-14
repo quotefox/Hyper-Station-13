@@ -136,17 +136,6 @@
 	var/mob/living/carbon/human/H = pushed_mob
 	SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "table", /datum/mood_event/table)
 
-/* You don't shove people onto a table frame.
-/obj/structure/table/shove_act(mob/living/target, mob/living/user)
-	if(!target.resting)
-		target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
-	user.visible_message("<span class='danger'>[user.name] shoves [target.name] onto \the [src]!</span>",
-		"<span class='danger'>You shove [target.name] onto \the [src]!</span>", null, COMBAT_MESSAGE_RANGE)
-	target.forceMove(src.loc)
-	log_combat(user, target, "shoved", "onto [src] (table)")
-	return TRUE
-*/
-
 /obj/structure/table/attackby(obj/item/I, mob/user, params)
 	if(!(flags_1 & NODECONSTRUCT_1))
 		if(istype(I, /obj/item/screwdriver) && deconstruction_ready)
@@ -273,52 +262,6 @@
 		S.color = NARSIE_WINDOW_COLOUR
 
 /*
- * Plasmaglass tables
- */
-/obj/structure/table/plasmaglass
-	name = "plasmaglass table"
-	desc = "A glasstable, but it's pink and more sturdy. What will Nanotrasen design next with plasma?"
-	icon = 'icons/obj/smooth_structures/plasmaglass_table.dmi'
-	icon_state = "plasmaglass_table"
-	climbable = TRUE
-	buildstack = /obj/item/stack/sheet/plasmaglass
-	canSmoothWith = null
-	max_integrity = 270
-	resistance_flags = ACID_PROOF
-	armor = list("melee" = 10, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 100)
-	var/list/debris = list()
-
-/obj/structure/table/plasmaglass/New()
-	. = ..()
-	debris += new frame
-
-/obj/structure/table/plasmaglass/Destroy()
-	QDEL_LIST(debris)
-	. = ..()
-
-/obj/structure/table/plasmaglass/proc/check_break(mob/living/M)
-	return
-
-/obj/structure/table/plasmaglass/deconstruct(disassembled = TRUE, wrench_disassembly = 0)
-	if(!(flags_1 & NODECONSTRUCT_1))
-		if(disassembled)
-			..()
-			return
-		else
-			var/turf/T = get_turf(src)
-			playsound(T, "shatter", 50, 1)
-			for(var/X in debris)
-				var/atom/movable/AM = X
-				AM.forceMove(T)
-				debris -= AM
-	qdel(src)
-
-/obj/structure/table/plasmaglass/narsie_act()
-	color = NARSIE_WINDOW_COLOUR
-	for(var/obj/item/shard/S in debris)
-		S.color = NARSIE_WINDOW_COLOUR
-
-/*
  * Wooden tables
  */
 
@@ -358,83 +301,44 @@
 	frame = /obj/structure/table_frame
 	framestack = /obj/item/stack/rods
 	buildstack = /obj/item/stack/tile/carpet
-	canSmoothWith = list(/obj/structure/table/wood/fancy,
-		/obj/structure/table/wood/fancy/black,
-		/obj/structure/table/wood/fancy/blackred,
-		/obj/structure/table/wood/fancy/monochrome,
-		/obj/structure/table/wood/fancy/blue,
-		/obj/structure/table/wood/fancy/cyan,
-		/obj/structure/table/wood/fancy/green,
-		/obj/structure/table/wood/fancy/orange,
-		/obj/structure/table/wood/fancy/purple,
-		/obj/structure/table/wood/fancy/red,
-		/obj/structure/table/wood/fancy/royalblack,
-		/obj/structure/table/wood/fancy/royalblue)
-	var/smooth_icon = 'icons/obj/smooth_structures/fancy_table.dmi' // see Initialize()
+	canSmoothWith = list(/obj/structure/table/wood/fancy, /obj/structure/table/wood/fancy/black,	/obj/structure/table/wood/fancy/blackred,	/obj/structure/table/wood/fancy/monochrome)
 
-/obj/structure/table/wood/fancy/Initialize()
+/obj/structure/table/wood/fancy/New()
+	// New() is used so that the /black subtype can override `icon` easily and
+	// the correct value will be used by the smoothing subsystem.
 	. = ..()
 	// Needs to be set dynamically because table smooth sprites are 32x34,
 	// which the editor treats as a two-tile-tall object. The sprites are that
 	// size so that the north/south corners look nice - examine the detail on
 	// the sprites in the editor to see why.
-	icon = smooth_icon
+	icon = 'icons/obj/smooth_structures/fancy_table.dmi'
 
 /obj/structure/table/wood/fancy/black
 	icon_state = "fancy_table_black"
 	buildstack = /obj/item/stack/tile/carpet/black
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_black.dmi'
 
 /obj/structure/table/wood/fancy/blackred
-	icon_state = "fancy_table_blackred"
-	buildstack = /obj/item/stack/tile/carpet/blackred
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_blackred.dmi'
+	icon =	'icons/obj/structures.dmi'
+	icon_state =	"fancy_table_blackred"
+	buildstack =	/obj/item/stack/tile/carpet/blackred
+
+/obj/structure/table/wood/fancy/blackred/New()
+	. = ..()
+	icon	=	'icons/obj/smooth_structures/fancy_table_blackred.dmi'
 
 /obj/structure/table/wood/fancy/monochrome
-	icon_state = "fancy_table_monochrome"
-	buildstack = /obj/item/stack/tile/carpet/monochrome
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_monochrome.dmi'
+	icon =	'icons/obj/structures.dmi'
+	icon_state	=	"fancy_table_monochrome"
+	buildstack	=	/obj/item/stack/tile/carpet/monochrome
 
-/obj/structure/table/wood/fancy/blue
-	icon_state = "fancy_table_blue"
-	buildstack = /obj/item/stack/tile/carpet/blue
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_blue.dmi'
+/obj/structure/table/wood/fancy/monochrome/New()
+	. = ..()
+	icon	=	'icons/obj/smooth_structures/fancy_table_monochrome.dmi'
 
-/obj/structure/table/wood/fancy/cyan
-	icon_state = "fancy_table_cyan"
-	buildstack = /obj/item/stack/tile/carpet/cyan
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_cyan.dmi'
-
-/obj/structure/table/wood/fancy/green
-	icon_state = "fancy_table_green"
-	buildstack = /obj/item/stack/tile/carpet/green
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_green.dmi'
-
-/obj/structure/table/wood/fancy/orange
-	icon_state = "fancy_table_orange"
-	buildstack = /obj/item/stack/tile/carpet/orange
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_orange.dmi'
-
-/obj/structure/table/wood/fancy/purple
-	icon_state = "fancy_table_purple"
-	buildstack = /obj/item/stack/tile/carpet/purple
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_purple.dmi'
-
-/obj/structure/table/wood/fancy/red
-	icon_state = "fancy_table_red"
-	buildstack = /obj/item/stack/tile/carpet/red
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_red.dmi'
-
-/obj/structure/table/wood/fancy/royalblack
-	icon_state = "fancy_table_royalblack"
-	buildstack = /obj/item/stack/tile/carpet/royalblack
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_royalblack.dmi'
-
-/obj/structure/table/wood/fancy/royalblue
-	icon_state = "fancy_table_royalblue"
-	buildstack = /obj/item/stack/tile/carpet/royalblue
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_royalblue.dmi'
-
+/obj/structure/table/wood/fancy/black/New()
+	. = ..()
+	// Ditto above.
+	icon = 'icons/obj/smooth_structures/fancy_table_black.dmi'
 /*
  * Reinforced tables
  */
