@@ -15,6 +15,7 @@
 	fluid_id				= "milk"
 	var/amount				= 2
 	fluid_mult				= 0.25 // Set to a lower value due to production scaling with size (I.E. D cups produce the "normal" amount)
+	fluid_max_volume		= 5
 	producing				= TRUE
 	shape					= "Pair"
 	can_masturbate_with		= TRUE
@@ -28,7 +29,7 @@
 		return
 	if(!reagents || !owner)
 		return
-	reagents.maximum_volume = fluid_max_volume * cached_size * fluid_mult // fluid amount is also scaled by the size of the organ
+	reagents.maximum_volume = fluid_max_volume * cached_size// fluid amount is also scaled by the size of the organ
 	if(fluid_id && producing)
 		if(reagents.total_volume == 0) // Apparently, 0.015 gets rounded down to zero and no reagents are created if we don't start it with 0.1 in the tank.
 			fluid_rate = 0.1
@@ -43,6 +44,9 @@
 		if(!sent_full_message)
 			send_full_message()
 			sent_full_message = TRUE
+		if(HAS_TRAIT(owner, TRAIT_FLUID_LEAK))
+			reagents.get_master_reagent().reaction_turf(get_turf(owner), 3)
+			reagents.remove_reagent(fluid_id, 3)
 		return FALSE
 	sent_full_message = FALSE
 	reagents.isolate_reagent(fluid_id)
