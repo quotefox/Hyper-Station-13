@@ -41,3 +41,12 @@
 	var/active = FALSE
 	var/power = 0
 	var/cachedmoveCalc = 1
+
+/datum/quirk/fluid_leak
+	name = "Leaky fluids"
+	desc = "You don't stop making fluids, and you have a habbit of leaking everywhere when you are full"
+	mob_trait = TRAIT_FLUID_LEAK
+	value = 0
+	medical_record_text = "Patient poorly controls their fluids."
+	gain_text = "<span class='notice'>You feel like your leaking everywhere.</span>"
+	lose_text = "<span class='notice'>You feel like you can control your fluids.</span>"
