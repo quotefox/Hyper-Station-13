@@ -102,6 +102,8 @@
 	target.forceMove(src)
 	var/image/I = new //work around to retain the same appearance to the mob idependently from inhands/worn states.
 	I.appearance = target.appearance
+	I.layer = FLOAT_LAYER //So it doesn't get screwed up by layer overrides.
+	I.plane = FLOAT_PLANE //Same as above but for planes.
 	I.override = TRUE
 	add_overlay(I)
 	name = target.name
@@ -131,7 +133,7 @@
 	if(AM == held_mob)
 		held_mob.reset_perspective()
 		held_mob = null
-		qdel(src)
+		QDEL_IN(src, 1) //To avoid a qdel loop.
 
 /obj/item/clothing/head/mob_holder/Entered(atom/movable/AM, atom/newloc)
 	. = ..()
@@ -161,7 +163,7 @@
 /obj/item/clothing/head/mob_holder/container_resist()
 	if(isliving(loc))
 		var/mob/living/L = loc
-		L.visible_message("<span class='warning'>[src] escapes from [L]!</span>", "<span class='warning'>[src] escapes your grip!</span>")
+		L.visible_message("<span class='warning'>[held_mob] escapes from [L]!</span>", "<span class='warning'>[held_mob] escapes your grip!</span>")
 	release()
 
 /obj/item/clothing/head/mob_holder/assume_air(datum/gas_mixture/env)
@@ -173,7 +175,7 @@
 		location = location.loc
 		if(ismob(location))
 			return location.loc.assume_air(env)
-	return loc.assume_air(env)
+	return location.assume_air(env)
 
 /obj/item/clothing/head/mob_holder/remove_air(amount)
 	var/atom/location = loc
@@ -184,4 +186,4 @@
 		location = location.loc
 		if(ismob(location))
 			return location.loc.remove_air(amount)
-	return loc.remove_air(amount)
+	return location.remove_air(amount)
