@@ -43,8 +43,8 @@
 	var/cachedmoveCalc = 1
 
 /datum/quirk/fluid_leak
-	name = "Leaky fluids"
-	desc = "You don't stop making fluids, and you have a habbit of leaking everywhere when you are full"
+	name = "Leaky breasts"
+	desc = "You don't stop making milk, and you have a habit of leaking everywhere when your breasts are full"
 	mob_trait = TRAIT_FLUID_LEAK
 	value = 0
 	medical_record_text = "Patient poorly controls their fluids."
