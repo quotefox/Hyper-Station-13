@@ -118,7 +118,7 @@
 		option = "Fuck"
 
 	var/obj/item/organ/genital/vagina/V = portalunderwear.loc
-	if(!V)
+	if(!V || !iscarbon(V))
 		return
 	var/mob/living/carbon/human/M = V.owner
 
