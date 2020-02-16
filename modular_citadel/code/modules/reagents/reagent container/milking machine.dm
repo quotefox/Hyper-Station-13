@@ -1,5 +1,5 @@
 /obj/item/milker
-	icon = 'icons/obj/milking machine.dmi'
+	icon = 'modular_citadel/icons/obj/milking machine.dmi'
 	name = "milking machine"
 	icon_state = "Off"
 	item_state = "Off"
