@@ -28,7 +28,7 @@
 	unsuitable_atmos_damage = 15
 	faction = list("nanotrasenprivate")
 	status_flags = CANPUSH
-	speak = list("Stop resisting!", "I AM THE LAW!", "Get down on the floor, creep!", "Stop breaking the law, asshole!")
+	speak = list("Stop resisting!", "I AM THE LAW!", "Face the wrath of the golden bolt!", "Stop breaking the law, asshole!")
 	search_objects = 1
 
 	do_footstep = TRUE
@@ -46,7 +46,7 @@
 	ranged = 1
 	retreat_distance = 3
 	minimum_distance = 5
-	casingtype = /obj/item/ammo_casing/c45_nostamina
+	casingtype = /obj/item/ammo_casing/c45
 	projectilesound = 'sound/weapons/gunshot.ogg'
 	loot = list(/obj/item/gun/ballistic/automatic/pistol/m1911,
 				/obj/effect/mob_spawn/human/corpse/nanotrasensoldier)
