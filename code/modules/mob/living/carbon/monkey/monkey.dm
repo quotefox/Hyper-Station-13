@@ -3,7 +3,7 @@
 	verb_say = "chimpers"
 	initial_language_holder = /datum/language_holder/monkey
 	icon = 'icons/mob/monkey.dmi'
-	icon_state = "monkey1"
+	icon_state = ""
 	gender = NEUTER
 	pass_flags = PASSTABLE
 	ventcrawler = VENTCRAWLER_NUDE
@@ -31,7 +31,7 @@
 	. = ..()
 
 	if (cubespawned)
-		var/cap = CONFIG_GET(number/max_cube_monkeys)
+		var/cap = CONFIG_GET(number/monkeycap)
 		if (LAZYLEN(SSmobs.cubemonkeys) > cap)
 			if (spawner)
 				to_chat(spawner, "<span class='warning'>Bluespace harmonics prevent the spawning of more than [cap] monkeys on the station at one time!</span>")
@@ -61,9 +61,9 @@
 	. = ..()
 	remove_movespeed_modifier(MOVESPEED_ID_MONKEY_REAGENT_SPEEDMOD, TRUE)
 	var/amount
-	if(reagents.has_reagent(/datum/reagent/medicine/morphine))
+	if(reagents.has_reagent("morphine"))
 		amount = -1
-	if(reagents.has_reagent(/datum/reagent/consumable/nuka_cola))
+	if(reagents.has_reagent("nuka_cola"))
 		amount = -1
 	if(amount)
 		add_movespeed_modifier(MOVESPEED_ID_MONKEY_REAGENT_SPEEDMOD, TRUE, 100, override = TRUE, multiplicative_slowdown = amount)
@@ -71,18 +71,19 @@
 /mob/living/carbon/monkey/updatehealth()
 	. = ..()
 	var/slow = 0
-	if(!HAS_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN))
-		var/health_deficiency = (maxHealth - health)
-		if(health_deficiency >= 45)
-			slow += (health_deficiency / 25)
+	var/health_deficiency = (100 - health)
+	if(health_deficiency >= 45)
+		slow += (health_deficiency / 25)
 	add_movespeed_modifier(MOVESPEED_ID_MONKEY_HEALTH_SPEEDMOD, TRUE, 100, override = TRUE, multiplicative_slowdown = slow)
 
 /mob/living/carbon/monkey/adjust_bodytemperature(amount)
 	. = ..()
 	var/slow = 0
 	if (bodytemperature < 283.222)
-		slow += ((283.222 - bodytemperature) / 10) * 1.75
-	add_movespeed_modifier(MOVESPEED_ID_MONKEY_TEMPERATURE_SPEEDMOD, TRUE, 100, override = TRUE, multiplicative_slowdown = slow)
+		slow += (283.222 - bodytemperature) / 10 * 1.75
+	if(slow <= 0)
+		return
+	add_movespeed_modifier(MOVESPEED_ID_MONKEY_TEMPERATURE_SPEEDMOD, TRUE, 100, override = TRUE, multiplicative_slowdown = amount)
 
 /mob/living/carbon/monkey/Stat()
 	..()
@@ -151,15 +152,6 @@
 
 	return threatcount
 
-/mob/living/carbon/monkey/get_permeability_protection()
-	var/protection = 0
-	if(head)
-		protection = 1 - head.permeability_coefficient
-	if(wear_mask)
-		protection = max(1 - wear_mask.permeability_coefficient, protection)
-	protection = protection/7 //the rest of the body isn't covered.
-	return protection
-
 /mob/living/carbon/monkey/IsVocal()
 	if(!getorganslot(ORGAN_SLOT_LUNGS))
 		return 0
@@ -177,22 +169,6 @@
 		var/obj/item/clothing/head/helmet/justice/escape/helmet = new(src)
 		equip_to_slot_or_del(helmet,SLOT_HEAD)
 		helmet.attack_self(src) // todo encapsulate toggle
-
-
-//Special monkeycube subtype to track the number of them and prevent spam
-/mob/living/carbon/monkey/cube/Initialize()
-	. = ..()
-	GLOB.total_cube_monkeys++
-
-/mob/living/carbon/monkey/cube/death(gibbed)
-	GLOB.total_cube_monkeys--
-	..()
-
-//In case admins delete them before they die
-/mob/living/carbon/monkey/cube/Destroy()
-	if(stat != DEAD)
-		GLOB.total_cube_monkeys--
-	return ..()
 
 /mob/living/carbon/monkey/tumor
 	name = "living teratoma"
