@@ -756,3 +756,11 @@
 	item_state = "christmasfemaleg"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
+	
+/obj/item/clothing/under/monolith
+	name = "Urban CBRN BDU"
+	desc = "A splinter urban battle-dress uniform, fit for chemical, biological, radiological and nuclear activities. Has small lead buttons and protective padding."
+	icon_state = "camourban"
+	item_state = "camourban"
+	armor = list("melee" = 10, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 80, "rad" = 20, "fire" = 55, "acid" = 60)
+	can_adjust = FALSE
