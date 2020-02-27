@@ -85,11 +85,9 @@
 	name = "riot shotgun"
 	desc = "A sturdy shotgun with a longer magazine and a fixed tactical stock designed for non-lethal riot control."
 	icon_state = "riotshotgun"
+	item_state = "riotshotgun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/riot
 	sawn_desc = "Come with me if you want to live."
-	unique_reskin = list("Tatical" = "riotshotgun",
-						"Wood Stock" = "wood_riotshotgun"
-						)
 
 /obj/item/gun/ballistic/shotgun/riot/attackby(obj/item/A, mob/user, params)
 	..()
@@ -205,6 +203,7 @@
 	name = "combat shotgun"
 	desc = "A semi automatic shotgun with tactical furniture and a six-shell capacity underneath."
 	icon_state = "cshotgun"
+	item_state = "combatshotgun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/com
 	w_class = WEIGHT_CLASS_HUGE
 	unique_reskin = list("Tatical" = "cshotgun",
@@ -215,6 +214,7 @@
 	name = "warden's combat shotgun"
 	desc = "A modified version of the semi automatic combat shotgun with a collapsible stock. For close encounters."
 	icon_state = "cshotgunc"
+	item_state = "combatshotgun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/com
 	w_class = WEIGHT_CLASS_NORMAL
 	var/stock = FALSE
