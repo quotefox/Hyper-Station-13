@@ -249,3 +249,14 @@
 	max_integrity = 200
 	resistance_flags = FLAMMABLE
 	armor = list("melee" = 20, "bullet" = 10, "laser" = 30, "energy" = 5, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 50)
+	
+/obj/item/clothing/suit/armor/monolit
+	name = "Monolith PSZ-9d armor"
+	desc = "Features arms, elbow and kneepads of reinforced leather, a green tactical vest with carrying pouches and a mounting place for either an oxygen tank, a backpack or a jetpack. The vest's protection is slightly worse than that of bulletproof vest. "
+	icon_state = "monolit"
+	item_state = "monolit"
+	blood_overlay_type = "armor"
+	armor = list("melee" = 13, "bullet" = 50, "laser" = 8, "energy" = 8, "bomb" = 35, "bio" = 0, "rad" = 30, "fire" = 30, "acid" = 30)
+	strip_delay = 60
+	equip_delay_other = 40
+
