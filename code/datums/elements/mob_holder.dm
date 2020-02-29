@@ -153,7 +153,8 @@
 		L.forceMove(get_turf(L))
 		L.reset_perspective()
 		L.setDir(SOUTH)
-	qdel(src)
+	if(!QDELETED(src))
+		qdel(src)
 
 /obj/item/clothing/head/mob_holder/relaymove(mob/user)
 	return
