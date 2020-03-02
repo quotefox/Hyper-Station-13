@@ -2875,6 +2875,8 @@
 #include "hyperstation\code\mobs\werewolf.dm"
 #include "hyperstation\code\modules\antagonists\werewolf\werewolf.dm"
 #include "hyperstation\code\obj\decal.dm"
+#include "hyperstation\code\obj\patreon.dm"
+#include "hyperstation\code\obj\plushes.dm"
 #include "hyperstation\code\obj\pregnancytester.dm"
 #include "interface\interface.dm"
 #include "interface\menu.dm"
