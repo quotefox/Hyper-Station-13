@@ -20,6 +20,16 @@
 	item_state = "winterbloo"
 	attack_verb = list("hugged", "cuddled", "embraced")
 
+/obj/item/toy/plush/lizardplushie/chris
+	name = "Chris Plushie"
+	desc = "An adorable stuffed toy of an angry ashwalker. He even comes with his own little crusher!" // CHRIS CHRIS CHRIS!
+	icon = 'hyperstation/icons/obj/plushes.dmi'
+	gender = MALE
+	icon_state = "chris"
+	item_state = "chris"
+	squeak_override = list('sound/weapons/plasma_cutter.ogg' = 1) // The sound the crusher uses is the same as the plasma cutter :P
+
+
 /obj/item/toy/plush/slimeplushie/tania
 	desc = "An adorable stuffed toy of a slimegirl. She seems oddly damp..." // Milky slime
 	icon = 'hyperstation/icons/obj/plushes.dmi'
