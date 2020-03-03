@@ -249,3 +249,13 @@
 	max_integrity = 200
 	resistance_flags = FLAMMABLE
 	armor = list("melee" = 20, "bullet" = 10, "laser" = 30, "energy" = 5, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 50)
+	
+/obj/item/clothing/suit/armor/monolith
+	name = "Monolith suit"
+	desc = "The producer is unknown. Its protective properties are slightly worse then those of the bulletproof vest. Its structure combines a bulletproof vest and radiation protection plates. It provides good protection from gunfire."
+	icon_state = "monolit"
+	item_state = "monolit"
+	blood_overlay_type = "armor"
+	armor = list("melee" = 15, "bullet" = 55, "laser" = 5, "energy" = 5, "bomb" = 40, "bio" = 30, "rad" = 30, "fire" = 50, "acid" = 50)
+	strip_delay = 70
+	equip_delay_other = 50

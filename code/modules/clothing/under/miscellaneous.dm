@@ -756,3 +756,13 @@
 	item_state = "christmasfemaleg"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
+	
+/obj/item/clothing/under/zone/monolith
+	name = "Urban BDU"
+	desc = "A splinter urban camouflage Battle-Dress uniform."
+	icon_state = "camourban"
+	item_state = "camourban"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	fitted = NO_FEMALE_UNIFORM
+	can_adjust = FALSE
+	resistance_flags = NONE
