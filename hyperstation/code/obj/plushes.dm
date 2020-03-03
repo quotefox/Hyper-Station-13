@@ -8,7 +8,6 @@
 /obj/item/toy/plush/mammal/marilyn
 	desc = "A cute stuffed fox toy. Now, about that sponge bath..."
 	icon = 'hyperstation/icons/obj/plushes.dmi'
-	attack_verb = list("hugged", "cuddled", "embraced")
 	icon_state = "marilyn"
 	item_state = "marilyn"
 
@@ -18,7 +17,6 @@
 	icon = 'hyperstation/icons/obj/plushes.dmi'
 	icon_state = "winterbloo"
 	item_state = "winterbloo"
-	attack_verb = list("hugged", "cuddled", "embraced")
 
 /obj/item/toy/plush/lizardplushie/chris
 	name = "Chris Plushie"
