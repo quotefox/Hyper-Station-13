@@ -13,11 +13,17 @@
 	path = /obj/item/bikehorn
 	geargroupID = list("DONORTEST") //This is a list mainly for the sake of testing, but geargroupID works just fine with ordinary strings
 
+/datum/gear/quotestestitem
+	name = "Will Plushy"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/toy/plush/mammal/winterbloo
+	ckeywhitelist = list("quotefox")
+
 /datum/gear/winterblooplush
 	name = "Will Plush"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/toy/plush/mammal/winterbloo
-	ckeywhitelist = list("wolfy_wolf967")
+	ckeywhitelist = list("wolfy wolf967")
 
 /datum/gear/helioplush
 	name = "Chris Plushie"

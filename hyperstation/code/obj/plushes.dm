@@ -8,7 +8,6 @@
 /obj/item/toy/plush/mammal/marilyn
 	desc = "A cute stuffed fox toy. Now, about that sponge bath..."
 	icon = 'hyperstation/icons/obj/plushes.dmi'
-	attack_verb = list("hugged", "cuddled", "embraced")
 	icon_state = "marilyn"
 	item_state = "marilyn"
 
