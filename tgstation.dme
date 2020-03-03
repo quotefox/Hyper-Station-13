@@ -2874,6 +2874,8 @@
 #include "hyperstation\code\mobs\mimic.dm"
 #include "hyperstation\code\mobs\werewolf.dm"
 #include "hyperstation\code\modules\antagonists\werewolf\werewolf.dm"
+#include "hyperstation\code\modules\chemistry\reagents\drink_reagents.dm"
+#include "hyperstation\code\modules\hydroponics\grown\pear.dm"
 #include "hyperstation\code\obj\decal.dm"
 #include "hyperstation\code\obj\plushes.dm"
 #include "hyperstation\code\obj\pregnancytester.dm"
