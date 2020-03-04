@@ -23,7 +23,13 @@
 	name = "Will Plush"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/toy/plush/mammal/winterbloo
-	ckeywhitelist = list("wolfy wolf967")
+	ckeywhitelist = list("wolfy_wolf967")
+
+/datum/gear/winterblooplushextra
+	name = "Will Plush"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/toy/plush/mammal/winterbloo
+	ckeywhitelist = list("wolfywolf967")
 
 /datum/gear/helioplush
 	name = "Chris Plushie"
