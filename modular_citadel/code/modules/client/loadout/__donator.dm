@@ -7,16 +7,11 @@
 	path = /obj/item/bikehorn/golden
 	ckeywhitelist = list("This entry should never appear with this variable set.") //If it does, then that means somebody fucked up the whitelist system pretty hard
 
-/datum/gear/donortestingbikehorn
-	name = "Donor item testing bikehorn"
+/datum/gear/testreward
+	//Just so admins can test the recent rewards added.
+	name = "test reward"
 	category = SLOT_IN_BACKPACK
-	path = /obj/item/bikehorn
-	geargroupID = list("DONORTEST") //This is a list mainly for the sake of testing, but geargroupID works just fine with ordinary strings
-
-/datum/gear/quotestestitem
-	name = "Will Plushy"
-	category = SLOT_IN_BACKPACK
-	path = /obj/item/toy/plush/mammal/winterbloo
+	path = /obj/item/pen/bluemarker
 	ckeywhitelist = list("quotefox")
 
 /datum/gear/winterblooplush
@@ -26,6 +21,7 @@
 	ckeywhitelist = list("wolfy_wolf967")
 
 /datum/gear/winterblooplushextra
+	//for some reason bloo has had issues with his plushie
 	name = "Will Plush"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/toy/plush/mammal/winterbloo
@@ -36,3 +32,9 @@
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/toy/plush/lizardplushie/chris
 	ckeywhitelist = list("heliocintrini")
+
+/datum/gear/seramarker
+	name = "Blueberry Marker"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/pen/bluemarker
+	ckeywhitelist = list("blooberri")

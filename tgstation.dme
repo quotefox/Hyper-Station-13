@@ -2877,6 +2877,7 @@
 #include "hyperstation\code\obj\decal.dm"
 #include "hyperstation\code\obj\plushes.dm"
 #include "hyperstation\code\obj\pregnancytester.dm"
+#include "hyperstation\code\obj\rewards.dm"
 #include "interface\interface.dm"
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
