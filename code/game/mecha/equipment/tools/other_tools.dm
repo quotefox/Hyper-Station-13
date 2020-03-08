@@ -478,3 +478,46 @@
 /obj/item/mecha_parts/mecha_equipment/generator/nuclear/process()
 	if(..())
 		radiation_pulse(get_turf(src), rad_per_cycle)
+
+
+
+/////////////////////////////////////////// THRUSTER MODULE /////////////////////////////////////////////
+
+
+/obj/item/mecha_parts/mecha_equipment/thruster_module
+	name = "exosuit thruster module"
+	desc = "A set of heavy duty ion thrusters, capable of propelling industrial mechs"
+	icon_state = "tesla"
+	energy_drain = 50
+	range = 0
+	selectable = 0
+	var/datum/effect_system/trail_follow/ion/ion_trail
+	
+/obj/item/mecha_parts/mecha_equipment/thruster_module/Initialize()
+	ion_trail = new
+	ion_trail.set_up(src)
+	
+/obj/item/mecha_parts/mecha_equipment/thruster_module/Topic(href, href_list)
+	..()
+	if(href_list["toggle_thruster"])
+		if(equip_ready) //inactive
+			chassis.thrusters_active = TRUE
+			ion_trail.start()
+			set_ready_state(0)
+			log_message("Activated.")
+		else
+			chassis.thrusters_active = FALSE
+			ion_trail.stop()
+			set_ready_state(1)
+			log_message("Deactivated.")
+			
+/obj/item/mecha_parts/mecha_equipment/thruster_module/can_attach(obj/mecha/working/M)
+	if(..())
+		if(istype(M))
+			return 1
+	return 0
+	
+/obj/item/mecha_parts/mecha_equipment/thruster_module/get_equip_info()
+	if(!chassis)
+		return
+	return "<span style=\"color:[equip_ready?"#0f0":"#f00"];\">*</span>&nbsp; [src.name] - <a href='?src=[REF(src)];toggle_thruster=1'>[equip_ready?"A":"Dea"]ctivate</a>"
