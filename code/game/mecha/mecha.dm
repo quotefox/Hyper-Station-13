@@ -13,6 +13,7 @@
 	var/can_move = 0 //time of next allowed movement
 	var/mob/living/carbon/occupant = null
 	var/step_in = 10 //make a step in step_in/10 sec.
+	var/did_space_move = 0
 	var/dir_in = 2//What direction will the mech face when entered/powered on? Defaults to South.
 	var/normal_step_energy_drain = 10 //How much energy the mech will consume each time it moves. This variable is a backup for when leg actuators affect the energy drain.
 	var/step_energy_drain = 10
@@ -504,7 +505,9 @@
 /obj/mecha/Process_Spacemove(var/movement_dir = 0)
 	. = ..()
 	if(.)
+		did_space_move = 0
 		return 1
+	did_space_move = 1
 	if(thrusters_active && movement_dir && use_power(step_energy_drain))
 		return 1
 
@@ -577,12 +580,13 @@
 	if(strafe)
 		setDir(current_dir)
 	if(result && stepsound)
-		playsound(src,stepsound,40,1)
+		if (!did_space_move)
+			playsound(src,stepsound,40,1)
 	return result
 
 /obj/mecha/proc/mechsteprand()
 	var/result = step_rand(src)
-	if(result && stepsound)
+	if(result && stepsound && !did_space_move)
 		playsound(src,stepsound,40,1)
 	return result
 
