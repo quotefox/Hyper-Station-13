@@ -396,3 +396,13 @@
 	construction_time = 250
 	build_path = /obj/item/mecha_parts/mecha_equipment/medical/mechmedbeam
 	category = list("Exosuit Equipment")
+	
+/datum/design/mech_thruster_module
+	name = "Exosuit Module (Thruster Module)"
+	desc = "Thruster Module for space exploration."
+	id = "mech_repair_droid"
+	build_type = MECHFAB
+	build_path = /obj/item/mecha_parts/mecha_equipment/thruster_module
+	materials = list(MAT_METAL=10000,MAT_GLASS=5000,MAT_GOLD=1000,MAT_SILVER=2000)
+	construction_time = 100
+	category = list("Exosuit Equipment")
