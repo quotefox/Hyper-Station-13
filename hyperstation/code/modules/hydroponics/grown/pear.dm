@@ -17,7 +17,7 @@
 /obj/item/reagent_containers/food/snacks/grown/pear
 	seed = /obj/item/seeds/pear
 	name = "pear"
-	desc = "It's an delicous fresh grown pear."
+	desc = "It's a delicous fresh grown pear."
 	icon_state = "pear"
 	item_state = "pear"
 	filling_color = "#FFFF00"
