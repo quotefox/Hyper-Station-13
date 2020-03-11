@@ -90,6 +90,8 @@
 	var/key = copytext(message, 1, 2)
 	if(key == "#")
 		return MODE_WHISPER
+	else if(key == "%")
+		return MODE_SING
 	else if(key == ";")
 		return MODE_HEADSET
 	else if(length(message) > 2 && (key in GLOB.department_radio_prefixes))
