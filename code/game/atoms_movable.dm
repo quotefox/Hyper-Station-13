@@ -20,12 +20,12 @@
 	var/atom/inertia_last_loc
 	var/inertia_moving = 0
 	var/inertia_next_move = 0
-	var/inertia_move_delay = 7
+	var/inertia_move_delay = 10
 	var/pass_flags = 0
 	var/moving_diagonally = 0 //0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
 	var/list/client_mobs_in_contents // This contains all the client mobs within this container
 	var/list/acted_explosions	//for explosion dodging
-	glide_size = 9
+	glide_size = 7
 	appearance_flags = TILE_BOUND|PIXEL_SCALE
 	var/datum/forced_movement/force_moving = null	//handled soley by forced_movement.dm
 	var/floating = FALSE
