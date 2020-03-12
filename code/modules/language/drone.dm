@@ -3,6 +3,7 @@
 	desc = "A heavily encoded damage control coordination stream, with special flags for hats."
 	speech_verb = "chitters"
 	ask_verb = "chitters inquisitively"
+	sing_verb = "chimes"
 	exclaim_verb = "chitters loudly"
 	spans = list(SPAN_ROBOT)
 	key = "d"

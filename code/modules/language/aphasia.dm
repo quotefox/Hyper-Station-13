@@ -4,6 +4,7 @@
 	speech_verb = "garbles"
 	ask_verb = "mumbles"
 	whisper_verb = "mutters"
+	sing_verb = "gibbers"
 	exclaim_verb = "screams incoherently"
 	flags = LANGUAGE_HIDE_ICON_IF_NOT_UNDERSTOOD
 	key = "i"
