@@ -472,3 +472,21 @@
 /area/ruin/space/has_grav/powered/advancedlab
 	name = "Abductor Replication Lab"
 	icon_state = "yellow"
+
+//TANIA STATION
+
+/area/solar/tania
+	name = "Solar Array"
+	icon_state = "panelsS"
+
+/area/ruin/space/tania/maint
+	name = "Maintainence"
+	icon_state = "yellow"
+
+/area/ruin/space/tania/lounge
+	name = "Lounge"
+	icon_state = "yellow"
+
+/area/ruin/space/tania/dorms
+	name = "Dorms"
+	icon_state = "yellow"
