@@ -1,5 +1,5 @@
-/obj/item/milker
-	icon = 'modular_citadel/icons/obj/milking machine.dmi'
+/obj/item/milking_machine
+	icon = 'hyperstation/icons/obj/milking_machine.dmi'
 	name = "milking machine"
 	icon_state = "Off"
 	item_state = "Off"
@@ -13,7 +13,7 @@
 	var/transfer_rate = 0.25 // How much we transfer every 2 seconds
 	var/target_organ  = "breasts" // What organ we are transfering from
 
-/obj/item/milker/examine(mob/user)
+/obj/item/milking_machine/examine(mob/user)
 	. = ..()
 	to_chat(user, "<span class='notice'>[src] is currently [on ? "on" : "off"].</span>")
 	if (inserted_item)
@@ -29,7 +29,7 @@
 	else
 		return ..()
 
-/obj/item/milker/interact(mob/user)
+/obj/item/milking_machine/interact(mob/user)
 	if(!isAI(user) && inserted_item)
 		add_fingerprint(user)
 		on = !on
@@ -43,12 +43,12 @@
 	else
 		..()
 
-/obj/item/milker/proc/UpdateIcon()
+/obj/item/milking_machine/proc/UpdateIcon()
 	icon_state = "[on ? "On" : "Off"][inserted_item ? "Beaker" : ""]"
 	item_state = icon_state
 
 
-/obj/item/milker/AltClick(mob/living/user)
+/obj/item/milking_machine/AltClick(mob/living/user)
 	add_fingerprint(user)
 	user.put_in_hands(inserted_item)
 	inserted_item = null
@@ -56,7 +56,7 @@
 	STOP_PROCESSING(SSobj, src)
 	UpdateIcon()
 
-/obj/item/milker/process()
+/obj/item/milking_machine/process()
 	var/mob/living/carbon/W = loc
 	if (W)
 		var/obj/item/organ/genital/breasts/O = W.getorganslot(target_organ)
@@ -70,7 +70,7 @@
 					STOP_PROCESSING(SSobj, src)
 					UpdateIcon()
 
-/obj/item/milker/penis
+/obj/item/milking_machine/penis
 	name = "penis milking machine"
 	icon_state = "PenisOff"
 	item_state = "PenisOff"
@@ -78,6 +78,6 @@
 
 	target_organ  = "testicles" // Since semen is stored in the balls
 
-/obj/item/milker/penis/UpdateIcon()
+/obj/item/milking_machine/penis/UpdateIcon()
 	icon_state = "Penis[on ? "On" : "Off"][inserted_item ? "Beaker" : ""]"
 	item_state = icon_state
