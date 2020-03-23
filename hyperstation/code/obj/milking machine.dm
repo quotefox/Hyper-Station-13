@@ -19,7 +19,7 @@
 	if (inserted_item)
 		to_chat(user, "<span class='notice'>[inserted_item] contains [inserted_item.reagents.total_volume]/[inserted_item.reagents.maximum_volume] units</span>")
 
-/obj/item/milker/attackby(obj/item/W, mob/user, params)
+/obj/item/milking_machine/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
 	if(istype(W, /obj/item/reagent_containers/glass) && !inserted_item)
 		if(!user.transferItemToLoc(W, src))
