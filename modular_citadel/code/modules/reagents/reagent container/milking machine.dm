@@ -9,7 +9,7 @@
 
 	var/on = FALSE
 	var/obj/item/reagent_containers/glass/inserted_item = null
-	
+
 	var/transfer_rate = 0.25 // How much we transfer every 2 seconds
 	var/target_organ  = "breasts" // What organ we are transfering from
 
@@ -42,11 +42,11 @@
 		UpdateIcon()
 	else
 		..()
-		
+
 /obj/item/milker/proc/UpdateIcon()
 	icon_state = "[on ? "On" : "Off"][inserted_item ? "Beaker" : ""]"
 	item_state = icon_state
-	
+
 
 /obj/item/milker/AltClick(mob/living/user)
 	add_fingerprint(user)
@@ -75,9 +75,9 @@
 	icon_state = "PenisOff"
 	item_state = "PenisOff"
 	desc = "A pocket sized pump and tubing assembly designed to collect and store products from the penis."
-	
+
 	target_organ  = "testicles" // Since semen is stored in the balls
-		
+
 /obj/item/milker/penis/UpdateIcon()
 	icon_state = "Penis[on ? "On" : "Off"][inserted_item ? "Beaker" : ""]"
 	item_state = icon_state

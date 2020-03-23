@@ -1,3 +1,9 @@
+// lato
+/obj/item/ammo_casing/latob
+	name = "Lato-class bullet casing"
+	desc = "A Lato-class bullet casing. Signiature with lotus engravings."
+	projectile_type = /obj/item/projectile/bullet/latob
+
 // 10mm (Stechkin)
 
 /obj/item/ammo_casing/c10mm

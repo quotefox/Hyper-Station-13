@@ -14,6 +14,11 @@
 	damage = 10
 	fire_stacks = 1
 
+// lato
+/obj/item/projectile/bullet/latob
+	name = "Lato-class bullet"
+	damage = 13
+
 // 10mm (Stechkin)
 
 /obj/item/projectile/bullet/c10mm
