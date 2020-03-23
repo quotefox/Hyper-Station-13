@@ -254,9 +254,3 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 		to_chat_immediate(target, message, handle_whitespace)
 		return
 	SSchat.queue(target, message, handle_whitespace)
-
-/datum/chatOutput/proc/swaptolightmode() //Dark mode light mode stuff. Yell at KMC if this breaks! (See darkmode.dm for documentation)
-	owner.force_white_theme()
-
-/datum/chatOutput/proc/swaptodarkmode()
-	owner.force_dark_theme()
