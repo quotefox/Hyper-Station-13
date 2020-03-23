@@ -3,10 +3,10 @@
 	id = "mammal"
 	default_color = "4B4B4B"
 	should_draw_citadel = TRUE
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR)
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,WINGCOLOR)
 	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
-	mutant_bodyparts = list("mam_tail", "mam_ears", "mam_body_markings", "mam_snouts", "taur", "legs")
-	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_snouts" = "Husky", "mam_tail" = "Husky", "mam_ears" = "Husky", "mam_body_markings" = "Husky", "taur" = "None", "legs" = "Normal Legs")
+	mutant_bodyparts = list("mam_tail", "mam_ears", "mam_body_markings", "mam_snouts", "taur", "legs", "deco_wings")
+	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_snouts" = "Husky", "mam_tail" = "Husky", "mam_ears" = "Husky", "mam_body_markings" = "Husky", "taur" = "None", "legs" = "Normal Legs", "deco_wings" = "None")
 	attack_verb = "claw"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -54,10 +54,10 @@
 	say_mod = "chirps"
 	default_color = "BCAC9B"
 	should_draw_citadel = TRUE
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR)
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,WINGCOLOR)
 	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
-	mutant_bodyparts = list("mam_snouts", "wings", "taur", "mam_tail", "mam_body_markings", "taur")
-	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_snouts" = "Beak", "mam_body_markings" = "Hawk", "wings" = "None", "taur" = "None", "mam_tail" = "Hawk")
+	mutant_bodyparts = list("mam_snouts", "wings", "taur", "mam_tail", "mam_body_markings", "taur", "deco_wings")
+	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_snouts" = "Beak", "mam_body_markings" = "Hawk", "wings" = "None", "taur" = "None", "mam_tail" = "Hawk", "deco_wings" = "None")
 	attack_verb = "peck"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -100,10 +100,10 @@
 	id = "aquatic"
 	default_color = "BCAC9B"
 	should_draw_citadel = TRUE
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR)
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,WINGCOLOR)
 	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
-	mutant_bodyparts = list("mam_tail", "mam_ears","mam_body_markings", "taur", "legs", "mam_snouts")
-	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_tail" = "Shark", "mam_ears" = "None", "mam_body_markings" = "Shark", "mam_snouts" = "Round", "taur" = "None", "legs" = "Normal Legs")
+	mutant_bodyparts = list("mam_tail", "mam_ears","mam_body_markings", "taur", "legs", "mam_snouts", "deco_wings")
+	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_tail" = "Shark", "mam_ears" = "None", "mam_body_markings" = "Shark", "mam_snouts" = "Round", "taur" = "None", "legs" = "Normal Legs", "deco_wings" = "None")
 	attack_verb = "bite"
 	attack_sound = 'sound/weapons/bite.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -149,8 +149,8 @@
 	should_draw_citadel = TRUE
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR)
 	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID, MOB_BUG)
-	mutant_bodyparts = list("mam_ears", "mam_body_markings", "mam_tail", "taur", "moth_wings","moth_markings", "mam_snouts")
-	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_tail" = "None", "mam_ears" = "None", "moth_wings" = "Plain","moth_markings" = "None", "mam_snouts" = "Bug", "mam_body_markings" = "Moth", "taur" = "None")
+	mutant_bodyparts = list("mam_ears", "mam_body_markings", "mam_tail", "taur", "moth_wings","moth_markings", "mam_snouts", "moth_fluff")
+	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_tail" = "None", "mam_ears" = "None", "moth_wings" = "Plain","moth_markings" = "None", "mam_snouts" = "Bug", "mam_body_markings" = "Moth", "taur" = "None", "moth_fluff" = "Plain")
 	attack_verb = "flutter" //wat?
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -213,10 +213,10 @@
 	say_mod = "hisses"
 	default_color = "00FF00"
 	should_draw_citadel = TRUE
-	species_traits = list(MUTCOLORS,EYECOLOR,LIPS)
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,WINGCOLOR)
 	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
-	mutant_bodyparts = list("xenotail", "xenohead", "xenodorsal", "mam_body_markings", "taur", "legs")
-	default_features = list("xenotail"="Xenomorph Tail","xenohead"="Standard","xenodorsal"="Standard", "mam_body_markings" = "Xeno","mcolor" = "0F0","mcolor2" = "0F0","mcolor3" = "0F0","taur" = "None", "legs" = "Digitigrade Legs")
+	mutant_bodyparts = list("xenotail", "xenohead", "xenodorsal", "mam_body_markings", "taur", "legs", "deco_wings")
+	default_features = list("xenotail"="Xenomorph Tail","xenohead"="Standard","xenodorsal"="Standard", "mam_body_markings" = "Xeno","mcolor" = "0F0","mcolor2" = "0F0","mcolor3" = "0F0","taur" = "None", "legs" = "Digitigrade Legs", "deco_wings" = "None")
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'

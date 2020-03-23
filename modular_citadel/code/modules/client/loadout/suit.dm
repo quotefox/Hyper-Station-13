@@ -64,6 +64,21 @@
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/hooded/wintercoat
 
+/datum/gear/coat/aformal
+	name = "Assistant's formal winter coat"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/hooded/wintercoat/aformal
+
+/datum/gear/coat/runed
+	name = "Runed winter coat"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/hooded/wintercoat/narsie/fake
+
+/datum/gear/coat/brass
+	name = "Brass winter coat"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/hooded/wintercoat/ratvar/fake
+
 /datum/gear/militaryjacket
 	name = "Military Jacket"
 	category = SLOT_WEAR_SUIT

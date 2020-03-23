@@ -138,7 +138,7 @@
 	name = "pineapple flavored snowcone"
 	desc = "A pineapple flavord snowball in a paper cup."
 	icon_state = "pineapple_sc"
-	list_reagents = list("nutriment" = 1, "water" = 1)
+	list_reagents = list("nutriment" = 1, "pineapplejuice" = 5)
 	tastes = list("ice" = 1, "water" = 1, "pineapples" = 5)
 	foodtype = PINEAPPLE //Pineapple to allow all that like pineapple to enjoy
 

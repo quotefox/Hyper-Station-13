@@ -9,6 +9,9 @@
 	var/size_name			= "average"
 	shape					= "single"
 	var/sack_size			= BALLS_SACK_SIZE_DEF
+	var/cached_size			= 6
+	fluid_mult				= 0.133 // Set to a lower value due to production scaling with size (I.E. 6 inches the "normal" amount)
+	fluid_max_volume		= 3
 	fluid_id 				= "semen"
 	producing				= TRUE
 	can_masturbate_with		= FALSE
@@ -19,15 +22,14 @@
 /obj/item/organ/genital/testicles/on_life()
 	if(QDELETED(src))
 		return
-	if(reagents && producing)
+	if(!reagents || !owner)
+		return
+	reagents.maximum_volume = fluid_max_volume * cached_size// fluid amount is also scaled by the size of the organ
+	if(fluid_id && producing)
 		if(reagents.total_volume == 0) // Apparently, 0.015 gets rounded down to zero and no reagents are created if we don't start it with 0.1 in the tank.
 			fluid_rate = 0.1
 		else
-			fluid_rate = CUM_RATE
-		if(reagents.total_volume >= 5)
-			fluid_mult = 0.5
-		else
-			fluid_mult = 1
+			fluid_rate = CUM_RATE * cached_size * fluid_mult // fluid rate is scaled by the size of the organ
 		generate_cum()
 
 /obj/item/organ/genital/testicles/proc/generate_cum()
@@ -42,7 +44,7 @@
 	if(!linked_organ)
 		return FALSE
 	reagents.isolate_reagent(fluid_id)//remove old reagents if it changed and just clean up generally
-	reagents.add_reagent(fluid_id, (fluid_mult * fluid_rate))//generate the cum
+	reagents.add_reagent(fluid_id, (fluid_rate))//generate the cum
 
 /obj/item/organ/genital/testicles/update_link()
 	if(owner && !QDELETED(src))
@@ -50,7 +52,8 @@
 		if(linked_organ)
 			linked_organ.linked_organ = src
 			size = linked_organ.size
-
+			var/obj/item/organ/genital/penis/O = linked_organ
+			cached_size = O.length
 	else
 		if(linked_organ)
 			linked_organ.linked_organ = null

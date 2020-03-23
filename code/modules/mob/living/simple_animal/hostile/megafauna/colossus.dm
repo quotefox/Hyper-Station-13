@@ -125,6 +125,8 @@ Difficulty: Very Hard
 		if(H.mind)
 			if(H.mind.martial_art && prob(H.mind.martial_art.deflection_chance))
 				. = TRUE
+		if (is_species(H, /datum/species/golem/sand))
+			. = TRUE
 
 /mob/living/simple_animal/hostile/megafauna/colossus/proc/alternating_dir_shots()
 	dir_shots(GLOB.diagonals)

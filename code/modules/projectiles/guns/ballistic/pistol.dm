@@ -21,6 +21,20 @@
 	var/obj/item/suppressor/S = new(src)
 	install_suppressor(S)
 
+//WARFRAME WEAPONS INSERT
+/obj/item/gun/ballistic/automatic/pistol/lato
+	name = "\improper Lato"
+	desc = "A strange sidearm, sporting low damage but a high firing rate and capacity. There is a lotus decal on the barrel."
+	icon_state = "lato"
+	item_state = "lato"
+	w_class = WEIGHT_CLASS_NORMAL
+	mag_type = /obj/item/ammo_box/magazine/latomag
+	can_suppress = FALSE
+	fire_sound = 'sound/weapons/gunshot_lato.ogg'
+	fire_delay = 0
+//ENDS HERE
+
+
 /obj/item/gun/ballistic/automatic/pistol/m1911
 	name = "\improper M1911"
 	desc = "A classic .45 handgun with a small magazine capacity."

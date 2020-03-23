@@ -835,6 +835,7 @@ h1.alert, h2.alert		{color: #000000;}
 .greentext				{color: #00FF00;	font-size: 24px;}
 .redtext				{color: #FF0000;	font-size: 24px;}
 .clown					{color: #FF69Bf;	font-size: 24px; font-family: "Comic Sans MS", cursive, sans-serif; font-weight: bold;}
+.singing				{font-family: "Trebuchet MS", cursive, sans-serif; font-style: italic;}
 .hypnophrase			{color: #202020;	font-weight: bold; animation: hypnocolor 1500ms infinite;}
 @keyframes hypnocolor {
 	0% { color: #202020; }

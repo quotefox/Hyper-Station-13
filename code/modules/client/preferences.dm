@@ -86,6 +86,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/facial_hair_color = "000"		//Facial hair color
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
+	var/wing_color = "fff"				//Wing color
 
 	//H13
 	var/body_size = 100					//Body Size in percent
@@ -100,10 +101,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"ears" = "None",
 		"wings" = "None",
 		"frills" = "None",
+		"deco_wings" = "None",
 		"spines" = "None",
 		"body_markings" = "None",
 		"legs" = "Normal Legs",
 		"moth_wings" = "Plain",
+		"moth_fluff" = "None",
 		"moth_markings" = "None",
 		"mcolor2" = "FFF",
 		"mcolor3" = "FFF",
@@ -609,6 +612,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(mutant_category >= MAX_MUTANT_ROWS)
 					dat += "</td>"
 					mutant_category = 0
+			if("deco_wings" in pref_species.default_features)
+				if(!mutant_category)
+					dat += APPEARANCE_CATEGORY_COLUMN
+
+				dat += "<h3>Decorative wings</h3>"
+
+				dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=deco_wings;task=input'>[features["deco_wings"]]</a>"
+				dat += "<span style='border:1px solid #161616; background-color: #[wing_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=wings_color;task=input'>Change</a><BR>"
 			if("moth_wings" in pref_species.default_features)
 				if(!mutant_category)
 					dat += APPEARANCE_CATEGORY_COLUMN
@@ -617,6 +628,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=moth_wings;task=input'>[features["moth_wings"]]</a>"
 
+				mutant_category++
+				if(mutant_category >= MAX_MUTANT_ROWS)
+					dat += "</td>"
+					mutant_category = 0
+			if("moth_fluff" in pref_species.default_features)
+				if(!mutant_category)
+					dat += APPEARANCE_CATEGORY_COLUMN
+
+				dat += "<h3>Moth Fluff</h3>"
+
+				dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=moth_fluffs;task=input'>[features["moth_fluff"]]</a>"
 				mutant_category++
 				if(mutant_category >= MAX_MUTANT_ROWS)
 					dat += "</td>"
@@ -755,6 +777,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							dat += "<b>Testicles Color:</b></a><BR>"
 							dat += "<span style='border: 1px solid #161616; background-color: #[features["balls_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=balls_color;task=input'>Change</a><br>"
 						dat += "<b>Testicles showing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_shape;task=input'>[features["balls_shape"]]</a>"
+						dat += "<b>Produces:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>[features["balls_fluid"]]</a>"
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Vagina</h3>"
 				dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_vag'>[features["has_vag"] == TRUE ? "Yes" : "No"]</a>"
@@ -783,6 +806,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Cup Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_size;task=input'>[features["breasts_size"]]</a>"
 					dat += "<b>Breast Shape:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_shape;task=input'>[features["breasts_shape"]]</a>"
 					dat += "<b>Lactates:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_producing'>[features["breasts_producing"] == TRUE ? "Yes" : "No"]</a>"
+					if(features["breasts_producing"] == TRUE)
+						dat += "<b>Produces:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>[features["breasts_fluid"]]</a>"
+
 				dat += "</td>"
 			dat += "</td>"
 			dat += "</tr></table>"
@@ -1780,6 +1806,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_wings)
 						features["wings"] = new_wings
 
+				if("wings_color")
+					var/new_wing_color = input(user, "Choose your character's wing colour:", "Character Preference","#"+wing_color) as color|null
+					if(new_wing_color)
+						if (new_wing_color == "#000000")
+							wing_color = "#FFFFFF"
+						else
+							wing_color = sanitize_hexcolor(new_wing_color)
+
 				if("frills")
 					var/new_frills
 					new_frills = input(user, "Choose your character's frills:", "Character Preference") as null|anything in GLOB.frills_list
@@ -1813,6 +1847,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_moth_wings = input(user, "Choose your character's wings:", "Character Preference") as null|anything in GLOB.moth_wings_list
 					if(new_moth_wings)
 						features["moth_wings"] = new_moth_wings
+
+				if("moth_fluffs")
+					var/new_moth_fluff
+					new_moth_fluff = input(user, "Choose your character's fluff:", "Character Preference") as null|anything in GLOB.moth_fluffs_list
+					if(new_moth_fluff)
+						features["moth_fluff"] = new_moth_fluff
+
+				if("deco_wings")
+					var/new_deco_wings
+					new_deco_wings = input(user, "Choose your character's wings:", "Character Preference") as null|anything in GLOB.deco_wings_list
+					if(new_deco_wings)
+						features["deco_wings"] = new_deco_wings
 
 				if("moth_markings")
 					var/new_moth_markings
@@ -1951,6 +1997,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_shape)
 						features["balls_shape"] = new_shape
 
+				if("balls_fluid")
+					var/new_shape
+					new_shape = input(user, "Balls Fluid", "Character Preference") as null|anything in GLOB.genital_fluids_list
+					if(new_shape)
+						features["balls_fluid"] = new_shape
+
 				if("egg_size")
 					var/new_size
 					var/list/egg_sizes = list(1,2,3)
@@ -1978,6 +2030,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_shape = input(user, "Breast Shape", "Character Preference") as null|anything in GLOB.breasts_shapes_list
 					if(new_shape)
 						features["breasts_shape"] = new_shape
+
+				if("breasts_fluid")
+					var/new_shape
+					new_shape = input(user, "Breast Fluid", "Character Preference") as null|anything in GLOB.genital_fluids_list
+					if(new_shape)
+						features["breasts_fluid"] = new_shape
 
 				if("breasts_color")
 					var/new_breasts_color = input(user, "Breast Color:", "Character Preference") as color|null
@@ -2355,6 +2413,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		organ_eyes.old_eye_color = eye_color
 	character.hair_color = hair_color
 	character.facial_hair_color = facial_hair_color
+	character.wing_color = wing_color
 
 	character.skin_tone = skin_tone
 	character.hair_style = hair_style

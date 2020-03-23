@@ -267,7 +267,7 @@
 		to_chat(user, "<span class='brass'>There is an integration cog installed!</span>")
 
 	to_chat(user, "<span class='notice'>Alt-Click the APC to [ locked ? "unlock" : "lock"] the interface.</span>")
-	
+
 	if(issilicon(user))
 		to_chat(user, "<span class='notice'>Ctrl-Click the APC to switch the breaker [ operating ? "off" : "on"].</span>")
 
@@ -701,6 +701,52 @@
 	else
 		return ..()
 
+/obj/machinery/power/apc/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
+	if(the_rcd.upgrade & RCD_UPGRADE_SIMPLE_CIRCUITS)
+		if(!has_electronics)
+			if(stat & BROKEN)
+				to_chat(user, "<span class='warning'>[src]'s frame is too damaged to support a circuit.</span>")
+				return FALSE
+			return list("mode" = RCD_UPGRADE_SIMPLE_CIRCUITS, "delay" = 20, "cost" = 1)
+		else if(!cell)
+			if(stat & MAINT)
+				to_chat(user, "<span class='warning'>There's no connector for a power cell.</span>")
+				return FALSE
+			return list("mode" = RCD_UPGRADE_SIMPLE_CIRCUITS, "delay" = 50, "cost" = 10) //16 for a wall
+		else
+			to_chat(user, "<span class='warning'>[src] has both electronics and a cell.</span>")
+			return FALSE
+	return FALSE
+
+/obj/machinery/power/apc/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
+	switch(passed_mode)
+		if(RCD_UPGRADE_SIMPLE_CIRCUITS)
+			if(!has_electronics)
+				if(stat & BROKEN)
+					to_chat(user, "<span class='warning'>[src]'s frame is too damaged to support a circuit.</span>")
+					return
+				user.visible_message("<span class='notice'>[user] fabricates a circuit and places it into [src].</span>", \
+				"<span class='notice'>You adapt a power control board and click it into place in [src]'s guts.</span>")
+				has_electronics = TRUE
+				locked = TRUE
+				return TRUE
+			else if(!cell)
+				if(stat & MAINT)
+					to_chat(user, "<span class='warning'>There's no connector for a power cell.</span>")
+					return FALSE
+				var/obj/item/stock_parts/cell/crap/empty/C = new(src)
+				C.forceMove(src)
+				cell = C
+				chargecount = 0
+				user.visible_message("<span class='notice'>[user] fabricates a weak power cell and places it into [src].</span>", \
+				"<span class='warning'>Your [the_rcd.name] whirrs with strain as you create a weak power cell and place it into [src]!</span>")
+				update_icon()
+				return TRUE
+			else
+				to_chat(user, "<span class='warning'>[src] has both electronics and a cell.</span>")
+				return FALSE
+	return FALSE
+
 /obj/machinery/power/apc/AltClick(mob/user)
 	..()
 	if(!user.canUseTopic(src, !issilicon(user)) || !isturf(loc))
@@ -747,7 +793,7 @@
 	if(damage_flag == "melee" && damage_amount < damage_deflection)
 		return 0
 	. = ..()
-	
+
 /obj/machinery/power/apc/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
 		if(!(stat & BROKEN))
@@ -800,8 +846,6 @@
 	if(!ui)
 		ui = new(user, src, ui_key, "apc", name, 535, 515, master_ui, state)
 		ui.open()
-	if(ui)
-		ui.set_autoupdate(state = (failure_timer ? 1 : 0))
 
 /obj/machinery/power/apc/ui_data(mob/user)
 	var/list/data = list(

@@ -959,14 +959,14 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/bahama_mama
 	name = "Bahama Mama"
 	id = "bahama_mama"
-	description = "Tropical cocktail."
+	description = "A tropical cocktail with a complex blend of flavors."
 	color = "#FF7F3B" // rgb: 255, 127, 59
 	boozepwr = 35
 	quality = DRINK_GOOD
-	taste_description = "lime and orange"
+	taste_description = "pineapple, coconut, and a hint of coffee"
 	glass_icon_state = "bahama_mama"
 	glass_name = "Bahama Mama"
-	glass_desc = "Tropical cocktail."
+	glass_desc = "A tropical cocktail with a complex blend of flavors."
 
 /datum/reagent/consumable/ethanol/singulo
 	name = "Singulo"
@@ -1373,6 +1373,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 /datum/reagent/consumable/ethanol/neurotoxin
 	name = "Neurotoxin"
+	id = "neurotoxin"
 	description = "A strong neurotoxin that puts the subject into a death-like state."
 	color = "#2E2E61" // rgb: 46, 46, 97
 	boozepwr = 50
@@ -1382,6 +1383,11 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "neurotoxinglass"
 	glass_name = "Neurotoxin"
 	glass_desc = "A drink that is guaranteed to knock you silly."
+	pH = 4.3
+	//SplitChem			= TRUE
+	impure_chem 			= "neuroweak"
+	inverse_chem_val 		= 0.5 //Clear conversion
+	inverse_chem			= "neuroweak"
 
 /datum/reagent/consumable/ethanol/neurotoxin/proc/pickt()
 	return (pick(TRAIT_PARALYSIS_L_ARM,TRAIT_PARALYSIS_R_ARM,TRAIT_PARALYSIS_R_LEG,TRAIT_PARALYSIS_L_LEG))
@@ -1415,6 +1421,26 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	REMOVE_TRAIT(M, TRAIT_PARALYSIS_R_LEG, type)
 	REMOVE_TRAIT(M, TRAIT_PARALYSIS_L_LEG, type)
 	M.adjustStaminaLoss(10)
+	..()
+
+/datum/reagent/consumable/ethanol/neurosmash
+	name = "Neurosmash"
+	id = "neurosmash"
+	description = "A mostly safe alcoholic drink for the true daredevils. Do not mix with Neurotoxin."
+	color = "#2E2E61" // rgb: 46, 46, 97
+	boozepwr = 60
+	quality = DRINK_VERYGOOD
+	taste_description = "a numbing sensation"
+	glass_icon_state = "neurosmashglass"
+	glass_name = "Neurosmash"
+	glass_desc = "A mostly safe alcoholic drink for the true daredevils. Do not mix with Neurotoxin."
+
+/datum/reagent/consumable/ethanol/neurosmash/on_mob_life(mob/living/carbon/M)
+	if(holder.has_reagent("neurotoxin"))
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.5*REM, 150)
+	else
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1.0*REM, 150)
+		M.dizziness +=2
 	..()
 
 /datum/reagent/consumable/ethanol/hippies_delight
@@ -1525,6 +1551,17 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "glass_brown"
 	glass_name = "Creme de Cacao"
 	glass_desc = "A million hazing lawsuits and alcohol poisonings have started with this humble ingredient."
+
+datum/reagent/consumable/ethanol/creme_de_coconut
+	name = "Creme de Coconut"
+	id = "creme_de_coconut"
+	description = "A coconut liqueur for smooth, creamy, tropical drinks."
+	color = "#F7F0D0"
+	boozepwr = 20
+	taste_description = "a sweet milky flavor with notes of toasted sugar"
+	glass_icon_state = "glass_white"
+	glass_name = "Creme de Coconut"
+	glass_desc = "An unintimidating glass of coconut liqueur."
 
 /datum/reagent/consumable/ethanol/quadruple_sec
 	name = "Quadruple Sec"
@@ -2240,7 +2277,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_name = "Gunfire"
 	glass_desc = "It pops constantly as you look at it, giving off tiny sparks."
 
-/datum/reagent/consumable/ethanol/hellfire/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/ethanol/gunfire/on_mob_life(mob/living/carbon/M)
 	if (prob(3))
 		to_chat(M,"<span class='notice'>You feel the gunfire pop in your mouth.</span>")
 	return ..()
@@ -2272,3 +2309,91 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "sins_delight"
 	glass_name = "Sin's Delight"
 	glass_desc = "You can smell the seven sins rolling off the top of the glass."
+
+/datum/reagent/consumable/ethanol/painkiller
+	name = "Painkiller"
+	id = "painkiller"
+	description = "Dulls your pain. Your emotional pain, that is."
+	boozepwr = 20
+	color = "#EAD677"
+	quality = DRINK_NICE
+	taste_description = "sugary tartness"
+	glass_icon_state = "painkiller"
+	glass_name = "Painkiller"
+	glass_desc = "A combination of tropical juices and rum. Surely this will make you feel better."
+
+/datum/reagent/consumable/ethanol/pina_colada
+	name = "Pina Colada"
+	id = "pina_colada"
+	description = "A fresh pineapple drink with coconut rum. Yum."
+	boozepwr = 40
+	color = "#FFF1B2"
+	quality = DRINK_NICE
+	taste_description = "pineapple, coconut, and a hint of the ocean"
+	glass_icon_state = "pina_colada"
+	glass_name = "Pina Colada"
+	glass_desc = "If you like pina coladas, and getting caught in the rain... well, you'll like this drink."
+
+/datum/reagent/consumable/ethanol/strawberry_daiquiri
+	name = "Strawberry Daiquiri"
+	id = "strawberry_daiquiri"
+	description = "Pink looking alcoholic drink."
+	boozepwr = 20
+	color = "#FF4A74"
+	quality = DRINK_NICE
+	taste_description = "sweet strawberry, lime and the ocean breeze"
+	glass_icon_state = "strawberry_daiquiri"
+	glass_name = "Strawberry Daiquiri"
+	glass_desc = "Pink looking drink with flowers and a big straw to sip it. Looks sweet and refreshing, perfect for warm days."
+
+/datum/reagent/consumable/ethanol/liz_fizz
+	name = "Liz Fizz"
+	id = "liz_fizz"
+	description = "Triple citrus layered with some ice and cream."
+	boozepwr = 0
+	color = "#D8FF59"
+	taste_description = "brain freezing sourness"
+	glass_icon_state = "liz_fizz"
+	glass_name = "Liz Fizz"
+	glass_desc = "Looks like a citrus sherbet seperated in layers? Why would anyone want that is beyond you."
+
+/datum/reagent/consumable/ethanol/miami_vice
+	name = "Miami Vice"
+	id = "miami_vice"
+	description = "A drink layering Pina Colada and Strawberry Daiquiri"
+	boozepwr = 30
+	color = "#D8FF59"
+	quality = DRINK_FANTASTIC
+	taste_description = "sweet and refreshing flavor, complemented with strawberries and coconut, and hints of citrus"
+	glass_icon_state = "miami_vice"
+	glass_name = "Miami Vice"
+	glass_desc = "Strawberries and coconut, like yin and yang."
+
+/datum/reagent/consumable/ethanol/malibu_sunset
+	name = "Malibu Sunset"
+	id = "malibu_sunset"
+	description = "A drink consisting of creme de coconut and tropical juices"
+	boozepwr = 20
+	color = "#FF9473"
+	quality = DRINK_NICE
+	taste_description = "coconut, with orange and grenadine accents"
+	glass_icon_state = "malibu_sunset"
+	glass_name = "Malibu Sunset"
+	glass_desc = "Tropical looking drinks, with ice cubes hovering on the surface and grenadine coloring the bottom."
+
+/datum/reagent/consumable/ethanol/hotlime_miami
+	name = "Hotlime Miami"
+	id = "hotlime_miami"
+	description = "The essence of the 90's, if they were a bloody mess that is."
+	boozepwr = 40
+	color = "#A7FAE8"
+	quality = DRINK_FANTASTIC
+	taste_description = "coconut and aesthetic violence"
+	glass_icon_state = "hotlime_miami"
+	glass_name = "Hotlime Miami"
+	glass_desc = "This looks very aesthetically pleasing."
+
+/datum/reagent/consumable/ethanol/hotlime_miami/on_mob_life(mob/living/carbon/M)
+	M.set_drugginess(50)
+	M.adjustStaminaLoss(-2)
+	return ..()

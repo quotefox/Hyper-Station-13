@@ -259,10 +259,10 @@
 	required_reagents = list("gin" = 2, "sodawater" = 1, "limejuice" = 1)
 
 /datum/chemical_reaction/bahama_mama
-	name = "Bahama mama"
+	name = "Bahama Mama"
 	id = "bahama_mama"
-	results = list("bahama_mama" = 6)
-	required_reagents = list("rum" = 2, "orangejuice" = 2, "limejuice" = 1, "ice" = 1)
+	results = list("bahama_mama" = 5)
+	required_reagents = list("rum" = 2, "creme_de_coconut" = 1, "kahlua" = 1, "pineapplejuice" = 1)
 
 /datum/chemical_reaction/singulo
 	name = "Singulo"
@@ -299,6 +299,19 @@
 	id = "barefoot"
 	results = list("barefoot" = 3)
 	required_reagents = list("berryjuice" = 1, "cream" = 1, "vermouth" = 1)
+
+
+/datum/chemical_reaction/painkiller
+	name = "Painkiller"
+	id = "painkiller"
+	results = list("painkiller" = 10)
+	required_reagents = list("creme_de_coconut" = 5, "pineapplejuice" = 4, "orangejuice" = 1)
+
+/datum/chemical_reaction/pina_colada
+	name = "Pina Colada"
+	id = "pina_colada"
+	results = list("pina_colada" = 5)
+	required_reagents = list("creme_de_coconut" = 1, "pineapplejuice" = 2, "rum" = 1, "limejuice" = 1)
 
 
 ////DRINKS THAT REQUIRED IMPROVED SPRITES BELOW:: -Agouri/////
@@ -381,6 +394,33 @@
 	id = "neurotoxin"
 	results = list("neurotoxin" = 2)
 	required_reagents = list("gargleblaster" = 1, "morphine" = 1)
+	//FermiChem vars: Easy to make, but hard to make potent
+	OptimalTempMin 		= 200 // Lower area of bell curve for determining heat based rate reactions
+	OptimalTempMax		= 950 // Upper end for above
+	ExplodeTemp			= 999 //Temperature at which reaction explodes
+	OptimalpHMin		= 2 // Lowest value of pH determining pH a 1 value for pH based rate reactions (Plateu phase)
+	OptimalpHMax		= 3 // Higest value for above
+	ReactpHLim			= 5 // How far out pH wil react, giving impurity place (Exponential phase)
+	CatalystFact		= 0 // How much the catalyst affects the reaction (0 = no catalyst)
+	CurveSharpT 		= 2 // How sharp the temperature exponential curve is (to the power of value)
+	CurveSharppH 		= 4 // How sharp the pH exponential curve is (to the power of value)
+	ThermicConstant		= 10 //Temperature change per 1u produced
+	HIonRelease 		= 0.02 //pH change per 1u reaction
+	RateUpLim 			= 5 //Optimal/max rate possible if all conditions are perfect
+	FermiChem 			= TRUE//If the chemical uses the Fermichem reaction mechanics
+	FermiExplode 		= FALSE //If the chemical explodes in a special way
+	PurityMin			= 0 //The minimum purity something has to be above, otherwise it explodes.
+	clear_conversion	= REACTION_CLEAR_INVERSE
+
+/*
+/datum/chemical_reaction/neurotoxin/FermiFinish(datum/reagents/holder, var/atom/my_atom)
+	var/datum/reagent/consumable/ethanol/neurotoxin/Nt = locate(/datum/reagent/consumable/ethanol/neurotoxin) in my_atom.reagents.reagent_list
+	if(Nt)
+		var/cached_volume = Nt.volume
+		if(Nt.purity < 0.5)
+			holder.remove_reagent(src.id, cached_volume)
+			holder.add_reagent("neurosmash", cached_volume)
+*/
 
 /datum/chemical_reaction/snowwhite
 	name = "Snow White"
@@ -806,8 +846,8 @@
 /datum/chemical_reaction/hellfire
 	name = "Hellfire"
 	id = "hellfire"
-	results = list("hellfire" = 5)
-	required_reagents = list("rum" = 1, "beer" = 1, "ice" = 1, "capsaicin" = 1, "limejuice" = 1)
+	results = list("hellfire" = 4)
+	required_reagents = list("rum" = 2, "ice" = 1, "crevice_spike" = 1)
 	mix_message = "The liquid begins to churn as it changes to an amber orange and catches on fire."
 
 /datum/chemical_reaction/sins_delight
@@ -816,3 +856,33 @@
 	results = list("sins_delight" = 5)
 	required_reagents = list("demonsblood" = 2, "triple_sec" = 1, "martini" = 1, "changelingsting" = 1)
 	mix_message = "The liquid starts swirling, before forming a pink cloud that dissipates in the air."
+
+/datum/chemical_reaction/strawberry_daiquiri
+	name = "Strawberry Daiquiri"
+	id = "strawberry_daiquiri"
+	results = list("strawberry_daiquiri" = 7)
+	required_reagents = list("rum" = 2, "limejuice" = 1, "sugar" = 1, "strawberryjuice" = 2, "ice" = 1)
+
+/datum/chemical_reaction/miami_vice
+	name = "Miami Vice"
+	id = "miami_vice"
+	results = list("miami_vice" = 2)
+	required_reagents = list("pina_colada" = 1, "strawberry_daiquiri" = 1)
+
+/datum/chemical_reaction/malibu_sunset
+	name = "Malibu Sunset"
+	id = "malibu_sunset"
+	results = list("malibu_sunset" = 5)
+	required_reagents = list("creme_de_coconut" = 1, "pineapplejuice" = 1, "grenadine" = 1, "orangejuice" = 1, "ice" = 1)
+
+/datum/chemical_reaction/liz_fizz
+	name = "Liz Fizz"
+	id = "liz_fizz"
+	results = list("liz_fizz" = 5)
+	required_reagents = list("triple_citrus" = 3, "ice" = 1, "cream" = 1)
+
+/datum/chemical_reaction/hotlime_miami
+	name = "Hotlime Miami"
+	id = "hotlime_miami"
+	results = list("hotlime_miami" = 2)
+	required_reagents = list("ephedrine" = 1, "pina_colada" = 1)
