@@ -267,7 +267,7 @@
 		to_chat(user, "<span class='brass'>There is an integration cog installed!</span>")
 
 	to_chat(user, "<span class='notice'>Alt-Click the APC to [ locked ? "unlock" : "lock"] the interface.</span>")
-	
+
 	if(issilicon(user))
 		to_chat(user, "<span class='notice'>Ctrl-Click the APC to switch the breaker [ operating ? "off" : "on"].</span>")
 
@@ -793,7 +793,7 @@
 	if(damage_flag == "melee" && damage_amount < damage_deflection)
 		return 0
 	. = ..()
-	
+
 /obj/machinery/power/apc/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
 		if(!(stat & BROKEN))
@@ -846,8 +846,6 @@
 	if(!ui)
 		ui = new(user, src, ui_key, "apc", name, 535, 515, master_ui, state)
 		ui.open()
-	if(ui)
-		ui.set_autoupdate(state = (failure_timer ? 1 : 0))
 
 /obj/machinery/power/apc/ui_data(mob/user)
 	var/list/data = list(

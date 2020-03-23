@@ -123,15 +123,16 @@ There are several things that need to be remembered:
 			if(U.adjusted == ALT_STYLE)
 				t_color = "[t_color]_d"
 
-		if(U.mutantrace_variation)
-			if(U.suit_style == DIGITIGRADE_SUIT_STYLE)
-				U.alternate_worn_icon = 'modular_citadel/icons/mob/uniform_digi.dmi'
-				if(U.adjusted == ALT_STYLE)
-					t_color = "[t_color]_d_l"
-				else if(U.adjusted == NORMAL_STYLE)
-					t_color = "[t_color]_l"
-			else
-				U.alternate_worn_icon = null
+		if(!U.force_alternate_icon)
+			if(U.mutantrace_variation)
+				if(U.suit_style == DIGITIGRADE_SUIT_STYLE)
+					U.alternate_worn_icon = 'modular_citadel/icons/mob/uniform_digi.dmi'
+					if(U.adjusted == ALT_STYLE)
+						t_color = "[t_color]_d_l"
+					else if(U.adjusted == NORMAL_STYLE)
+						t_color = "[t_color]_l"
+				else
+					U.alternate_worn_icon = null
 
 		var/mutable_appearance/uniform_overlay
 
