@@ -477,7 +477,7 @@
 				limb.icon_state = "[species_id]_[body_zone]"
 
 		// Body markings
-		if(body_markings)
+		if(!isnull(body_markings))
 			if(species_id == "husk")
 				marking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[body_zone]", -MARKING_LAYER, image_dir)
 			else if(species_id == "husk" && use_digitigrade)
@@ -497,7 +497,7 @@
 		if(aux_zone)
 			aux = image(limb.icon, "[species_id]_[aux_zone]", -aux_layer, image_dir)
 			. += aux
-			if(body_markings)
+			if(!isnull(auxmarking))
 				if(species_id == "husk")
 					auxmarking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[aux_zone]", -aux_layer, image_dir)
 				else
