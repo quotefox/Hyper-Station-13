@@ -48,13 +48,16 @@
 				/obj/item/clothing/under/stripper_green = 5,
 				/obj/item/dildo/custom = 5,
 				/obj/item/reagent_containers/pill/penis_enlargement = 3,
-				/obj/item/reagent_containers/pill/breast_enlargement = 3
+				/obj/item/reagent_containers/pill/breast_enlargement = 3,
+				/obj/item/clothing/gloves/latexsleeves = 3,
+				/obj/item/clothing/shoes/highheels = 3
 
 				)
 	contraband = list(/obj/item/restraints/handcuffs/fake/kinky = 5,
 				/obj/item/clothing/neck/petcollar = 5,
 				/obj/item/clothing/under/mankini = 1,
-				/obj/item/dildo/flared/huge = 1
+				/obj/item/dildo/flared/huge = 1,
+				/obj/item/clothing/head/dominatrixcap = 1
 				)
 	premium = list(
 				/obj/item/electropack/shockcollar = 3,

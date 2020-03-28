@@ -2884,6 +2884,7 @@
 #include "hyperstation\code\modules\crafting\recipes.dm"
 #include "hyperstation\code\obj\decal.dm"
 #include "hyperstation\code\obj\fluff.dm"
+#include "hyperstation\code\obj\kinkyclothes.dm"
 #include "hyperstation\code\obj\milking machine.dm"
 #include "hyperstation\code\obj\plushes.dm"
 #include "hyperstation\code\obj\pregnancytester.dm"
