@@ -33,7 +33,6 @@
 		generate_cum()
 
 /obj/item/organ/genital/testicles/proc/generate_cum()
-	reagents.maximum_volume = fluid_max_volume
 	if(reagents.total_volume >= reagents.maximum_volume)
 		if(!sent_full_message)
 			send_full_message()
