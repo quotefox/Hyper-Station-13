@@ -160,6 +160,7 @@ RLD
 	var/mode = 1
 	var/ranged = FALSE
 	var/computer_dir = 1
+	var/airlock_dir = 1
 	var/airlock_type = /obj/machinery/door/airlock
 	var/airlock_glass = FALSE // So the floor's rcd_act knows how much ammo to use
 	var/window_type = /obj/structure/window/fulltile
@@ -280,6 +281,22 @@ RLD
 	if(user.incapacitated() || !user.Adjacent(src))
 		return FALSE
 	return TRUE
+
+/obj/item/construction/rcd/proc/change_airlock_direction(mob/user)
+	if(!user)
+		return
+	var/list/airlock_dirs = list(
+		"North/South" = image(icon = 'icons/mob/radial.dmi', icon_state = "airlocknorthsouth"),
+		"East/West" = image(icon = 'icons/mob/radial.dmi', icon_state = "airlockeastwest")
+		)
+	var/airlockdirs = show_radial_menu(user, src, airlock_dirs, custom_check = CALLBACK(src, .proc/check_menu, user), require_near = TRUE, tooltips = TRUE)
+	if(!check_menu(user))
+		return
+	switch(airlockdirs)
+		if("North/South")
+			airlock_dir = 1
+		if("East/West")
+			airlock_dir = 4
 
 /obj/item/construction/rcd/proc/change_computer_dir(mob/user)
 	if(!user)
@@ -486,6 +503,7 @@ RLD
 	if(mode == RCD_AIRLOCK)
 		choices += list(
 		"Change Access" = image(icon = 'icons/mob/radial.dmi', icon_state = "access"),
+		"Change Direction" = image(icon = 'icons/mob/radial.dmi', icon_state = "airlockrotation"),
 		"Change Airlock Type" = image(icon = 'icons/mob/radial.dmi', icon_state = "airlocktype")
 		)
 	else if(mode == RCD_WINDOWGRILLE)
@@ -512,6 +530,9 @@ RLD
 			return
 		if("Change Access")
 			change_airlock_access(user)
+			return
+		if("Change Direction")
+			change_airlock_direction(user)
 			return
 		if("Change Airlock Type")
 			change_airlock_setting(user)
