@@ -74,7 +74,10 @@
 	return
 
 /mob/living/proc/mob_try_pickup(mob/living/user)
-	if(!ishuman(user) || !src.Adjacent(user) || user.incapacitated() || !can_be_held || (abs(get_effective_size()/get_effective_size(user)) >= 2))
+	if(!ishuman(user) || !src.Adjacent(user) || user.incapacitated() || !can_be_held)
+		return FALSE
+	if(abs(user.get_effective_size()/src.get_effective_size()) < 2.0 )
+		to_chat(user, "<span class='warning'>They're too big to pick up!</span>")
 		return FALSE
 	if(user.get_active_held_item())
 		to_chat(user, "<span class='warning'>Your hands are full!</span>")
@@ -104,9 +107,6 @@
 	if(mob_try_pickup(user))
 		return TRUE
 
-
-// I didn't define these for mobs, because you shouldn't be able to breathe out of mobs using their loc isn't always the logical thing to do.
-/*
 /obj/item/clothing/head/mob_holder/assume_air(datum/gas_mixture/env)
 	var/atom/location = loc
 	if(!loc)
@@ -116,7 +116,7 @@
 		location = location.loc
 		if(ismob(location))
 			return location.loc.assume_air(env)
-	return loc.assume_air(env)
+	return location.assume_air(env)
 
 /obj/item/clothing/head/mob_holder/remove_air(amount)
 	var/atom/location = loc
@@ -126,7 +126,5 @@
 	while(location != T)
 		location = location.loc
 		if(ismob(location))
-			return location.loc.remove_air()
-	return loc.remove_air(amount)
-*/
-//Turned off for sizecode to work right now
+			return location.loc.remove_air(amount)
+	return location.remove_air(amount)

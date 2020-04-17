@@ -1,4 +1,4 @@
-//LETS GET THIS FUCKING SIZECONTENT GAMERS
+//I am not a coder. Please fucking tear apart my code, and insult me for how awful I am at coding. Please and thank you. -Dahlular
 var/const/RESIZE_MACRO = 6
 var/const/RESIZE_HUGE = 4
 var/const/RESIZE_BIG = 2
@@ -22,7 +22,6 @@ var/const/RESIZE_A_TINYMICRO = (RESIZE_TINY + RESIZE_MICRO) / 2
 	M.Scale(size_multiplier)
 	M.Translate(0, 16*(size_multiplier-1)) //translate by 16 * size_multiplier - 1 on Y axis
 	src.transform = M //the source of transform is M
-
 
 /mob/proc/get_effective_size()
 	return 100000
@@ -109,7 +108,7 @@ mob/living/get_effective_size()
 					sizediffBruteloss(tmob)
 				return 1
 
-//		if(src.a_inent == "grab"... goes here
+//		if(src.a_inent == "grab"... goes here... WIP
 
 	if(tmob.get_effective_size() > get_effective_size())
 		micro_step_under(tmob)
@@ -136,25 +135,12 @@ mob/living/get_effective_size()
 	var/B = (get_effective_size()/tmob.get_effective_size()*2) //macro divided by micro, times 2
 	tmob.adjustBruteLoss(B) //final result in brute loss
 
-//Proc for picking up people. WIP.
+//Proc for instantly grabbing valid size difference. Code optimizations soon(TM)
 /*
-/mob/living/proc/attempt_to_scoop(var/mob/living/M)
-	var/sizediv = get_effective_size()/M.get_effective_size()
-	if(!holder_default && holder_type)
-		holder_default = holder_type
-	if(!istype(M))
+/mob/living/proc/sizeinteractioncheck(var/mob/living/tmob)
+	if(abs(get_effective_size()/tmob.get_effective_size())>=2.0 && get_effective_size()>tmob.get_effective_size())
 		return 0
-	if(buckled)
-		to_chat(src,"<span class='notice'>You have to unbuckle them before you can pick them up.</span>")
-		return 0
-	if(sizediv >= 2)
-		holder_type = /obj/item/holder/micro
-		var/obj/item/holder/m_holder = get_scooped(M)
-		holder_type = holder_default
-		if (m_holder)
-			return 1
-		else
-			return 0
+	else
+		return 1
 */
-
 //Clothes coming off at different sizes, and health/speed/stam changes as well
