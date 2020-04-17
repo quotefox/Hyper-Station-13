@@ -1,355 +1,79 @@
-//IMPORTANT: Multiple animate() calls do not stack well, so try to do them all at once if you can.
-/mob/living/carbon/update_transform()
-	var/matrix/ntransform = matrix(transform) //aka transform.Copy()
-	var/final_pixel_y = pixel_y
-	var/final_dir = dir
-	var/changed = 0
-
-	if(lying != lying_prev && rotate_on_lying)
-		changed++
-		ntransform.TurnTo(lying_prev,lying)
-		if(lying == 0) //Lying to standing
-			final_pixel_y = get_standard_pixel_y_offset()
-			if(size_multiplier >= 1) //if its bigger than normal
-				ntransform.Translate(0,16 * (size_multiplier-1))
-			else
-				if(lying_prev == 90)
-					ntransform.Translate(16 * (size_multiplier-1),16 * (size_multiplier-1))
-
-				if(lying_prev == 270)
-					ntransform.Translate(-16 * (size_multiplier-1),16 * (size_multiplier-1))
-
-		else //if(lying != 0)
-			if(lying_prev == 0) //Standing to lying
-				pixel_y = get_standard_pixel_y_offset()
-				final_pixel_y = get_standard_pixel_y_offset(lying)
-				if(lying == 90)    //Check the angle of the sprite to offset it accordingly.
-					ntransform.Translate(-16 * (size_multiplier-1),0)
-					if(size_multiplier < 1) //if its smaller than normal
-						ntransform.Translate(0,16 * (size_multiplier-1)) //we additionally offset the sprite downwards
-
-				if(lying == 270) //check the angle of the sprite to offset it accordingly
-					ntransform.Translate(16 * (size_multiplier-1),0)
-					if(size_multiplier < 1) //if its smaller than normal
-						ntransform.Translate(0,16 * (size_multiplier-1)) //we additionally offset the sprite downwards
-
-				if(dir & (EAST|WEST)) //Facing east or west
-					final_dir = pick(NORTH, SOUTH) //So you fall on your side rather than your face or ass
-
-	if(resize != RESIZE_DEFAULT_SIZE)
-		changed++
-		ntransform.Scale(resize)
-		resize = RESIZE_DEFAULT_SIZE
-
-	//Apply size multiplier, thank NeverExisted for this
-	if(size_multiplier != previous_size)
-		changed++
-		//now we offset the sprite
-		//Scaling affects offset. There's probably a smarter and easier way to do this, but this way it works for sure (?)
-		//Just to be clear. All this bullshit is needed because someone wanted to store the old transform matrix instead of using a new one each iteration
-		//Winfre is currently doing a great job at coating my nuts in slobber while i code this
-		if(!lying) //when standing. People of all sizes are affected equally
-			ntransform.Translate(0,-16 * (previous_size-1))			//reset the sprite
-			ntransform.Scale(size_multiplier/previous_size)			//scale the sprite accordingly.
-			ntransform.Translate(0,16 * (size_multiplier-1))		//apply the new offset
-		else //when lying. Macros dont get an offset, Micros do. We must also check the cases when a micro becomes a macro and viceversa
-			if(previous_size <= 1 && size_multiplier <= 1) //micro stays a micro. We modify the side-offset
-				ntransform.Translate(0,-16 * (previous_size-1))		//reset the sprite
-				ntransform.Scale(size_multiplier/previous_size)		//scale the sprite accordingly
-				ntransform.Translate(0,16 * (size_multiplier-1))	//apply the new offset
-
-			if(previous_size <= 1 && size_multiplier > 1) //micro becomes a macro. We remove the side-offset
-				ntransform.Translate(0,-16 * (previous_size-1))		//reset the sprite
-				ntransform.Scale(size_multiplier/previous_size)		//scale the sprite accordingly
-
-			if(previous_size > 1 && size_multiplier <= 1) //macro becomes a micro. We add an offset
-				ntransform.Scale(size_multiplier/previous_size)		//scale the sprite accordingly.
-				ntransform.Translate(0,16 * (size_multiplier-1))	//apply the new offset
-
-			if(previous_size > 1 && size_multiplier > 1) //macro stays a macro. We just scale the sprite with no offset changes
-				ntransform.Scale(size_multiplier/previous_size)		//scale the sprite accordingly
-
-		previous_size = size_multiplier
-
-	if(changed)
-		animate(src, transform = ntransform, time = 2, pixel_y = final_pixel_y, dir = final_dir, easing = EASE_IN|EASE_OUT)
-		floating = 0  // If we were without gravity, the bouncing animation got stopped, so we make sure we restart it in next life().
+/mob/living/carbon/monkey/regenerate_icons()
+	if(!..())
+		update_body_parts()
+		update_hair()
+		update_inv_wear_mask()
+		update_inv_head()
+		update_inv_back()
+		update_transform()
 
 
-/mob/living/carbon
-	var/list/overlays_standing[TOTAL_LAYERS]
-
-/mob/living/carbon/proc/apply_overlay(cache_index)
-	if((. = overlays_standing[cache_index]))
-		add_overlay(.)
-
-/mob/living/carbon/proc/remove_overlay(cache_index)
-	var/I = overlays_standing[cache_index]
-	if(I)
-		cut_overlay(I)
-		overlays_standing[cache_index] = null
-
-/mob/living/carbon/regenerate_icons()
-	if(notransform)
-		return 1
-	update_inv_hands()
-	update_inv_handcuffed()
-	update_inv_legcuffed()
-	update_fire()
+////////
 
 
-/mob/living/carbon/update_inv_hands()
-	remove_overlay(HANDS_LAYER)
-	if (handcuffed)
-		drop_all_held_items()
+/mob/living/carbon/monkey/update_hair()
+	remove_overlay(HAIR_LAYER)
+
+	var/obj/item/bodypart/head/HD = get_bodypart(BODY_ZONE_HEAD)
+	if(!HD) //Decapitated
 		return
 
-	var/list/hands = list()
-	for(var/obj/item/I in held_items)
-		if(client && hud_used && hud_used.hud_version != HUD_STYLE_NOHUD)
-			I.screen_loc = ui_hand_position(get_held_index_of_item(I))
-			client.screen += I
-			if(observers && observers.len)
-				for(var/M in observers)
-					var/mob/dead/observe = M
-					if(observe.client && observe.client.eye == src)
-						observe.client.screen += I
-					else
-						observers -= observe
-						if(!observers.len)
-							observers = null
-							break
-
-		var/t_state = I.item_state
-		if(!t_state)
-			t_state = I.icon_state
-
-		var/icon_file = I.lefthand_file
-		if(get_held_index_of_item(I) % 2 == 0)
-			icon_file = I.righthand_file
-
-		hands += I.build_worn_icon(state = t_state, default_layer = HANDS_LAYER, default_icon_file = icon_file, isinhands = TRUE)
-
-	overlays_standing[HANDS_LAYER] = hands
-	apply_overlay(HANDS_LAYER)
-
-
-/mob/living/carbon/update_fire(var/fire_icon = "Generic_mob_burning")
-	remove_overlay(FIRE_LAYER)
-	if(on_fire)
-		var/mutable_appearance/new_fire_overlay = mutable_appearance('icons/mob/OnFire.dmi', fire_icon, -FIRE_LAYER)
-		new_fire_overlay.appearance_flags = RESET_COLOR
-		overlays_standing[FIRE_LAYER] = new_fire_overlay
-
-	apply_overlay(FIRE_LAYER)
-
-
-
-/mob/living/carbon/update_damage_overlays()
-	remove_overlay(DAMAGE_LAYER)
-
-	var/mutable_appearance/damage_overlay = mutable_appearance('icons/mob/dam_mob.dmi', "blank", -DAMAGE_LAYER)
-	overlays_standing[DAMAGE_LAYER] = damage_overlay
-
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		if(BP.dmg_overlay_type)
-			if(BP.brutestate)
-				damage_overlay.add_overlay("[BP.dmg_overlay_type]_[BP.body_zone]_[BP.brutestate]0")	//we're adding icon_states of the base image as overlays
-			if(BP.burnstate)
-				damage_overlay.add_overlay("[BP.dmg_overlay_type]_[BP.body_zone]_0[BP.burnstate]")
-
-	apply_overlay(DAMAGE_LAYER)
-
-
-/mob/living/carbon/update_inv_wear_mask()
-	remove_overlay(FACEMASK_LAYER)
-
-	if(!get_bodypart(BODY_ZONE_HEAD)) //Decapitated
+	if(HAS_TRAIT(src, TRAIT_HUSK))
 		return
 
-	if(client && hud_used && hud_used.inv_slots[SLOT_WEAR_MASK])
-		var/obj/screen/inventory/inv = hud_used.inv_slots[SLOT_WEAR_MASK]
-		inv.update_icon()
-
-	if(wear_mask)
-		if(!(head && (head.flags_inv & HIDEMASK)))
-			overlays_standing[FACEMASK_LAYER] = wear_mask.build_worn_icon(state = wear_mask.icon_state, default_layer = FACEMASK_LAYER, default_icon_file = 'icons/mob/mask.dmi')
-		update_hud_wear_mask(wear_mask)
-
-	apply_overlay(FACEMASK_LAYER)
-
-/mob/living/carbon/update_inv_neck()
-	remove_overlay(NECK_LAYER)
-
-	if(client && hud_used && hud_used.inv_slots[SLOT_NECK])
-		var/obj/screen/inventory/inv = hud_used.inv_slots[SLOT_NECK]
-		inv.update_icon()
-
-	if(wear_neck)
-		if(!(head && (head.flags_inv & HIDENECK)))
-			overlays_standing[NECK_LAYER] = wear_neck.build_worn_icon(state = wear_neck.icon_state, default_layer = NECK_LAYER, default_icon_file = 'icons/mob/neck.dmi')
-		update_hud_neck(wear_neck)
-
-	apply_overlay(NECK_LAYER)
-
-/mob/living/carbon/update_inv_back()
-	remove_overlay(BACK_LAYER)
-
-	if(client && hud_used && hud_used.inv_slots[SLOT_BACK])
-		var/obj/screen/inventory/inv = hud_used.inv_slots[SLOT_BACK]
-		inv.update_icon()
-
-	if(back)
-		overlays_standing[BACK_LAYER] = back.build_worn_icon(state = back.icon_state, default_layer = BACK_LAYER, default_icon_file = 'icons/mob/back.dmi')
-		update_hud_back(back)
-
-	apply_overlay(BACK_LAYER)
-
-/mob/living/carbon/update_inv_head()
-	remove_overlay(HEAD_LAYER)
-
-	if(!get_bodypart(BODY_ZONE_HEAD)) //Decapitated
-		return
-
-	if(client && hud_used && hud_used.inv_slots[SLOT_BACK])
-		var/obj/screen/inventory/inv = hud_used.inv_slots[SLOT_HEAD]
-		inv.update_icon()
+	var/hair_hidden = 0
 
 	if(head)
-		overlays_standing[HEAD_LAYER] = head.build_worn_icon(state = head.icon_state, default_layer = HEAD_LAYER, default_icon_file = 'icons/mob/head.dmi')
-		update_hud_head(head)
+		var/obj/item/I = head
+		if(I.flags_inv & HIDEHAIR)
+			hair_hidden = 1
+	if(wear_mask)
+		var/obj/item/clothing/mask/M = wear_mask
+		if(M.flags_inv & HIDEHAIR)
+			hair_hidden = 1
+	if(!hair_hidden)
+		if(!getorgan(/obj/item/organ/brain)) //Applies the debrained overlay if there is no brain
+			overlays_standing[HAIR_LAYER] = mutable_appearance('icons/mob/human_face.dmi', "debrained", -HAIR_LAYER)
+			apply_overlay(HAIR_LAYER)
 
-	apply_overlay(HEAD_LAYER)
 
+/mob/living/carbon/monkey/update_fire()
+	..("Monkey_burning")
 
-/mob/living/carbon/update_inv_handcuffed()
-	remove_overlay(HANDCUFF_LAYER)
-	if(handcuffed)
-		var/mutable_appearance/cuffs = mutable_appearance('icons/mob/restraints.dmi', handcuffed.item_state, -HANDCUFF_LAYER)
-		cuffs.color = handcuffed.color
-
-		overlays_standing[HANDCUFF_LAYER] = cuffs
-		apply_overlay(HANDCUFF_LAYER)
-
-/mob/living/carbon/update_inv_legcuffed()
+/mob/living/carbon/monkey/update_inv_legcuffed()
 	remove_overlay(LEGCUFF_LAYER)
 	clear_alert("legcuffed")
 	if(legcuffed)
 		var/mutable_appearance/legcuffs = mutable_appearance('icons/mob/restraints.dmi', legcuffed.item_state, -LEGCUFF_LAYER)
-		legcuffs.color = legcuffed.color
+		legcuffs.color = handcuffed.color
+		legcuffs.pixel_y = 8
 
 		overlays_standing[HANDCUFF_LAYER] = legcuffs
 		apply_overlay(LEGCUFF_LAYER)
 		throw_alert("legcuffed", /obj/screen/alert/restrained/legcuffed, new_master = legcuffed)
 
-//mob HUD updates for items in our inventory
-
-//update whether handcuffs appears on our hud.
-/mob/living/carbon/proc/update_hud_handcuffed()
-	if(hud_used)
-		for(var/hand in hud_used.hand_slots)
-			var/obj/screen/inventory/hand/H = hud_used.hand_slots[hand]
-			if(H)
-				H.update_icon()
+//monkey HUD updates for items in our inventory
 
 //update whether our head item appears on our hud.
-/mob/living/carbon/proc/update_hud_head(obj/item/I)
-	return
+/mob/living/carbon/monkey/update_hud_head(obj/item/I)
+	if(client && hud_used && hud_used.hud_shown)
+		I.screen_loc = ui_monkey_head
+		client.screen += I
 
 //update whether our mask item appears on our hud.
-/mob/living/carbon/proc/update_hud_wear_mask(obj/item/I)
-	return
+/mob/living/carbon/monkey/update_hud_wear_mask(obj/item/I)
+	if(client && hud_used && hud_used.hud_shown)
+		I.screen_loc = ui_monkey_mask
+		client.screen += I
 
 //update whether our neck item appears on our hud.
-/mob/living/carbon/proc/update_hud_neck(obj/item/I)
-	return
+/mob/living/carbon/monkey/update_hud_neck(obj/item/I)
+	if(client && hud_used && hud_used.hud_shown)
+		I.screen_loc = ui_monkey_neck
+		client.screen += I
 
 //update whether our back item appears on our hud.
-/mob/living/carbon/proc/update_hud_back(obj/item/I)
-	return
-
-
-
-//Overlays for the worn overlay so you can overlay while you overlay
-//eg: ammo counters, primed grenade flashing, etc.
-//"icon_file" is used automatically for inhands etc. to make sure it gets the right inhand file
-/obj/item/proc/worn_overlays(isinhands = FALSE, icon_file)
-	. = list()
-
-
-/mob/living/carbon/update_body()
-	update_body_parts()
-
-/mob/living/carbon/proc/update_body_parts()
-	//CHECK FOR UPDATE
-	var/oldkey = icon_render_key
-	icon_render_key = generate_icon_render_key()
-	if(oldkey == icon_render_key)
-		return
-
-	remove_overlay(BODYPARTS_LAYER)
-
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		BP.update_limb()
-
-	//LOAD ICONS
-	if(limb_icon_cache[icon_render_key])
-		load_limb_from_cache()
-		return
-
-	//GENERATE NEW LIMBS
-	var/list/new_limbs = list()
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		new_limbs += BP.get_limb_icon()
-	if(new_limbs.len)
-		overlays_standing[BODYPARTS_LAYER] = new_limbs
-		limb_icon_cache[icon_render_key] = new_limbs
-
-	apply_overlay(BODYPARTS_LAYER)
-	update_damage_overlays()
-
-
-
-/////////////////////
-// Limb Icon Cache //
-/////////////////////
-/*
-	Called from update_body_parts() these procs handle the limb icon cache.
-	the limb icon cache adds an icon_render_key to a human mob, it represents:
-	- skin_tone (if applicable)
-	- gender
-	- limbs (stores as the limb name and whether it is removed/fine, organic/robotic)
-	These procs only store limbs as to increase the number of matching icon_render_keys
-	This cache exists because drawing 6/7 icons for humans constantly is quite a waste
-	See RemieRichards on irc.rizon.net #coderbus
-*/
-
-//produces a key based on the mob's limbs
-
-/mob/living/carbon/proc/generate_icon_render_key()
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
-		. += "-[BP.body_zone]"
-		if(BP.use_digitigrade)
-			. += "-digitigrade[BP.use_digitigrade]"
-		if(BP.animal_origin)
-			. += "-[BP.animal_origin]"
-		if(BP.status == BODYPART_ORGANIC)
-			. += "-organic"
-		else
-			. += "-robotic"
-
-	if(HAS_TRAIT(src, TRAIT_HUSK))
-		. += "-husk"
-
-
-//change the mob's icon to the one matching its key
-/mob/living/carbon/proc/load_limb_from_cache()
-	if(limb_icon_cache[icon_render_key])
-		remove_overlay(BODYPARTS_LAYER)
-		overlays_standing[BODYPARTS_LAYER] = limb_icon_cache[icon_render_key]
-		apply_overlay(BODYPARTS_LAYER)
-	update_damage_overlays()
+/mob/living/carbon/monkey/update_hud_back(obj/item/I)
+	if(client && hud_used && hud_used.hud_shown)
+		I.screen_loc = ui_monkey_back
+		client.screen += I
