@@ -26,6 +26,7 @@
 	gold_core_spawnable = FRIENDLY_SPAWN
 	var/chew_probability = 1
 	can_be_held = TRUE
+	size_multiplier = 0.5
 
 /mob/living/simple_animal/mouse/Initialize()
 	. = ..()

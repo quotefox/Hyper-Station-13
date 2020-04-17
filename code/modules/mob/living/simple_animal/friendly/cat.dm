@@ -32,6 +32,7 @@
 	gold_core_spawnable = FRIENDLY_SPAWN
 	collar_type = "cat"
 	can_be_held = "cat2"
+	size_multiplier = 0.5
 
 	do_footstep = TRUE
 

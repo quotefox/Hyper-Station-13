@@ -13,6 +13,7 @@
 	see_in_dark = 5
 	speak_chance = 1
 	turns_per_move = 10
+	size_multiplier = 0.5
 
 	do_footstep = TRUE
 	can_be_held = TRUE
