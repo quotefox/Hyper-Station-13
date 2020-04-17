@@ -108,7 +108,7 @@
 
 	var/list/obj/effect/proc_holder/abilities = list()
 
-	var/can_be_held = FALSE	//whether this can be picked up and held.
+	var/can_be_held = TRUE	//whether this can be picked up and held. Currently needs to be on for sizecode to work, fix later.
 
 	var/radiation = 0 //If the mob is irradiated.
 	var/ventcrawl_layer = PIPING_LAYER_DEFAULT
