@@ -11,7 +11,7 @@
 	//Just so admins can test the recent rewards added.
 	name = "test reward"
 	category = SLOT_IN_BACKPACK
-	path = /obj/item/pen/bluemarker
+	path = /obj/item/clothing/suit/napoleonic
 	ckeywhitelist = list("quotefox")
 
 /datum/gear/winterblooplush
@@ -38,3 +38,10 @@
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/pen/bluemarker
 	ckeywhitelist = list("blooberri")
+
+/datum/gear/hubertsuit
+	name = "Napoleonic Uniform"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/suit/napoleonic
+	ckeywhitelist = list("hackertdog")
+

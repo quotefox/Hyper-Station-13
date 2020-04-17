@@ -854,9 +854,15 @@
 	.["Copy outfit"] = "?_src_=vars;[HrefToken()];copyoutfit=[REF(src)]"
 
 /mob/living/carbon/human/MouseDrop_T(mob/living/target, mob/living/user)
-	//If they dragged themselves and we're currently aggressively grabbing them try to piggyback
-	if(user == target && can_piggyback(target) && pulling == target && (HAS_TRAIT(src, TRAIT_PACIFISM) || grab_state >= GRAB_AGGRESSIVE) && stat == CONSCIOUS)
-		buckle_mob(target,TRUE,TRUE)
+	if(pulling == target && grab_state >= GRAB_AGGRESSIVE && stat == CONSCIOUS)
+		//If they dragged themselves and we're currently aggressively grabbing them try to piggyback
+		if(user == target && can_piggyback(target))
+			piggyback(target)
+			return
+		//If you dragged them to you and you're aggressively grabbing try to fireman carry them
+		else if(user != target)
+			fireman_carry(target)
+			return
 	. = ..()
 
 /mob/living/carbon/human/proc/piggyback_instant(mob/living/M)
@@ -1068,6 +1074,6 @@
 /mob/living/carbon/human/species/zombie/krokodil_addict
 	race = /datum/species/krokodil_addict
 
-//define holder_type on nibbas we wanna commit scoop to
+//define holder_type on nerds we wanna commit scoop to
 /mob/living/carbon/human
 	var/holder_type = /obj/item/clothing/head/mob_holder/micro

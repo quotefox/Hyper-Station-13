@@ -235,7 +235,7 @@
 		return BODYPART_DISABLED_PARALYSIS
 	if(can_dismember() && !HAS_TRAIT(owner, TRAIT_NODISMEMBER))
 		. = disabled //inertia, to avoid limbs healing 0.1 damage and being re-enabled
-		if((get_damage(TRUE) >= max_damage))
+		if((get_damage(TRUE) >= max_damage) || (HAS_TRAIT(owner, TRAIT_EASYLIMBDISABLE) && (get_damage(TRUE) >= (max_damage * 0.6)))) //Easy limb disable disables the limb at 40% health instead of 0%
 			return BODYPART_DISABLED_DAMAGE
 		if(disabled && (get_damage(TRUE) <= (max_damage * 0.5)))
 			return BODYPART_NOT_DISABLED
@@ -477,7 +477,7 @@
 				limb.icon_state = "[species_id]_[body_zone]"
 
 		// Body markings
-		if(!isnull(body_markings))
+		if(body_markings)
 			if(species_id == "husk")
 				marking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[body_zone]", -MARKING_LAYER, image_dir)
 			else if(species_id == "husk" && use_digitigrade)
@@ -497,7 +497,7 @@
 		if(aux_zone)
 			aux = image(limb.icon, "[species_id]_[aux_zone]", -aux_layer, image_dir)
 			. += aux
-			if(!isnull(auxmarking))
+			if(body_markings)
 				if(species_id == "husk")
 					auxmarking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[aux_zone]", -aux_layer, image_dir)
 				else
@@ -861,7 +861,7 @@
 	icon_state = "default_monkey_r_leg"
 	animal_origin = MONKEY_BODYPART
 	px_y = 4
-	
+
 /obj/item/bodypart/r_leg/monkey/teratoma
 	icon_state = "teratoma_r_leg"
 	animal_origin = TERATOMA_BODYPART

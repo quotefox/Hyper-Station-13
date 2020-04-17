@@ -242,10 +242,10 @@ CHECK_RANDOMIZER
 # WIKIURL http://www.tgstation13.org/wiki
 
 ## Rules address
-# RULESURL http://www.tgstation13.org/wiki/Rules
+# RULESURL https://hyperstation13.com/rules
 
 ## Github address
-# GITHUBURL https://www.github.com/tgstation/tgstation
+# GITHUBURL https://github.com/quotefox/Hyper-Station-13
 
 ## Round specific stats address
 ## Link to round specific parsed logs; IE statbus. It is appended with the RoundID automatically by ticker/Reboot()

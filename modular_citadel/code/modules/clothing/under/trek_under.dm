@@ -14,6 +14,7 @@
 	desc = "Oooh... right."
 	icon = 'modular_citadel/icons/obj/clothing/trek_item_icon.dmi'
 	alternate_worn_icon = 'modular_citadel/icons/mob/clothing/trek_mob_icon.dmi'
+	force_alternate_icon = TRUE
 	item_state = ""
 	can_adjust = FALSE	//to prevent you from "wearing it casually"
 
@@ -23,17 +24,20 @@
 	desc = "The uniform worn by command officers in the mid 2260s."
 	icon_state = "trek_command"
 	item_state = "trek_command"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0) 
+	force_alternate_icon = TRUE
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/under/rank/trek/engsec
 	name = "Operations Uniform"
 	desc = "The uniform worn by operations officers of the mid 2260s. You feel strangely vulnerable just seeing this..."
+	force_alternate_icon = TRUE
 	icon_state = "trek_engsec"
 	item_state = "trek_engsec"
 
 /obj/item/clothing/under/rank/trek/medsci
 	name = "MedSci Uniform"
 	desc = "The uniform worn by medsci officers in the mid 2260s."
+	force_alternate_icon = TRUE
 	icon_state = "trek_medsci"
 	item_state = "trek_medsci"
 	permeability_coefficient = 0.50

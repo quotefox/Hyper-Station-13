@@ -249,7 +249,7 @@
 		return
 	var/obj/item/nullrod/holy_weapon
 	var/list/holy_weapons_list = typesof(/obj/item/nullrod) + list(
-	/obj/item/melee/transforming/energy/sword/cx/chaplain
+	/obj/item/twohanded/dualsaber/hypereutactic/chaplain
 	)
 	var/list/display_names = list()
 	for(var/V in holy_weapons_list)
@@ -710,7 +710,7 @@
 	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("bashes", "smacks", "whacks")
-	
+
 /obj/item/nullrod/hypertool
 	icon = 'icons/obj/device.dmi'
 	icon_state = "hypertool"
