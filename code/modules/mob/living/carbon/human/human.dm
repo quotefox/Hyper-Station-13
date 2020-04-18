@@ -1099,3 +1099,7 @@
 
 /mob/living/carbon/human/species/zombie/krokodil_addict
 	race = /datum/species/krokodil_addict
+
+//define holder_type on nerds we wanna commit scoop to
+/mob/living/carbon/human
+	var/holder_type = /obj/item/clothing/head/mob_holder/micro

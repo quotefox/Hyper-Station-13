@@ -1,4 +1,3 @@
-
 /mob/living/carbon/monkey/regenerate_icons()
 	if(!..())
 		update_body_parts()
