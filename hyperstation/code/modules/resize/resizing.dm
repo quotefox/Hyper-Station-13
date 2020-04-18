@@ -67,54 +67,86 @@ mob/living/get_effective_size()
 		now_pushing = 0
 		return 1
 
-//Stepping on disarm intent
+//Stepping on disarm intent -- TO DO, OPTIMIZE ALL OF THIS SHIT
 /mob/living/proc/handle_micro_bump_other(var/mob/living/tmob)
 	ASSERT(isliving(tmob))
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
 
 	//Both small
-	if(src.get_effective_size() <= RESIZE_A_SMALLTINY && tmob.get_effective_size() <= RESIZE_A_SMALLTINY)
-		now_pushing = 0
-		src.forceMove(tmob.loc)
-		return 1
-
-	if(abs(get_effective_size()/tmob.get_effective_size()) >= 2)
-		if(src.a_intent == "disarm" && src.canmove && !src.buckled)
+		if(H.get_effective_size() <= RESIZE_A_SMALLTINY && tmob.get_effective_size() <= RESIZE_A_SMALLTINY)
 			now_pushing = 0
-			src.forceMove(tmob.loc)
-			if(get_effective_size() > tmob.get_effective_size() && iscarbon(src))
-				if(istype(tmob) && istype(tmob, /datum/sprite_accessory/taur/naga))
-					to_chat(src,"<span class='danger'>You carefully roll over [tmob] with your tail!</span>")
-					to_chat(tmob,"<span class='danger'>[src]'s huge tail rolls over you!</span>")
-					sizediffStamLoss(tmob)
-				else
-					to_chat(src,"<span class='danger'>You painfully but harmlessly step on [tmob]!<span>")
-					to_chat(tmob,"<span class='danger'>[src] steps onto you with force!</span>")
-					sizediffStamLoss(tmob)
-				return 1
+			H.forceMove(tmob.loc)
+			return 1
 
-		if(src.a_intent == "harm" && src.canmove && !src.buckled)
+		if(abs(get_effective_size()/tmob.get_effective_size()) >= 2)
+			if(H.a_intent == "disarm" && H.canmove && !H.buckled)
+				now_pushing = 0
+				H.forceMove(tmob.loc)
+				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
+					if(istype(tmob) && istype(tmob, /datum/sprite_accessory/taur/naga))
+						to_chat(H,"<span class='danger'>You carefully roll over [tmob] with your tail!</span>")
+						to_chat(tmob,"<span class='danger'>[H]'s huge tail rolls over you!</span>")
+						sizediffStamLoss(tmob)
+					else
+						to_chat(H,"<span class='danger'>You painfully but harmlessly step on [tmob]!<span>")
+						to_chat(tmob,"<span class='danger'>[H] steps onto you with force!</span>")
+						sizediffStamLoss(tmob)
+					return 1
+
+			if(H.a_intent == "harm" && H.canmove && !H.buckled)
+				now_pushing = 0
+				H.forceMove(tmob.loc)
+				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
+					if(istype(tmob) && istype(tmob, /datum/sprite_accessory/taur/naga))
+						to_chat(H,"<span class='danger'>You grind [tmob] into the floor with your tail!</span>")
+						to_chat(tmob,"<span class='danger'>[H]'s massive tail plows you into the floor!</span>")
+						sizediffStamLoss(tmob)
+						sizediffBruteloss(tmob)
+					else
+						to_chat(H,"<span class='danger'>You pound [tmob] into the floor underfoot!</span>")
+						to_chat(tmob,"<span class='danger'>[H] slams you into the ground, crushing you!</span>")
+						sizediffStamLoss(tmob)
+						sizediffBruteloss(tmob)
+					return 1
+
+			if(H.a_intent == "grab" && H.canmove && !H.buckled)
+				now_pushing = 0
+				H.forceMove(tmob.loc)
+				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
+					var/feetCover = (H.wear_suit && (H.wear_suit.body_parts_covered & FEET)) || (H.w_uniform && (H.w_uniform.body_parts_covered & FEET) || (H.shoes && (H.shoes.body_parts_covered & FEET)))
+					if(feetCover)
+						if(istype(tmob) && istype(tmob, /datum/sprite_accessory/taur/naga))
+							to_chat(H,"<span class='danger'>You pin [tmob] underneath your tail!</span>")
+							to_chat(tmob,"<span class='danger'>[H]'s plows you into the ground, pinning you helplessly!</span>")
+							sizediffStamLoss(tmob)
+							sizediffStun(tmob)
+						else
+							to_chat(H,"<span class='danger'>You pin [tmob] helplessly to the floor with your foot!</span>")
+							to_chat(tmob,"<span class='danger'>[H] weightfully pins you to the ground!</span>")
+							sizediffStamLoss(tmob)
+							sizediffStun(tmob)
+						return 1
+					else
+						if(istype(tmob) && istype(tmob, /datum/sprite_accessory/taur/naga))
+							to_chat(H,"<span class='danger'>You curl [tmob] up in the coils of your tail!</span>")
+							to_chat(tmob,"<span class='danger'>[H]'s tail winds around you and snatches you in its coils!</span>")
+							sizediffStamLoss(tmob)
+							sizediffStun(tmob)
+							tmob.mob_pickupfeet(H)
+						else
+							to_chat(H,"<span class='danger'>You stomp your foot into [tmob], curling your toes and picking them up!</span>")
+							to_chat(tmob,"span class='danger'>[H]'s toes pin you down and curl around you, picking you up!</span>'")
+							sizediffStamLoss(tmob)
+							sizediffStun(tmob)
+							tmob.mob_pickupfeet(H)
+						return 1
+
+		if(tmob.get_effective_size() > get_effective_size())
+			micro_step_under(tmob)
+			H.forceMove(tmob.loc)
 			now_pushing = 0
-			src.forceMove(tmob.loc)
-			if(get_effective_size() > tmob.get_effective_size() && iscarbon(src))
-				if(istype(tmob) && istype(tmob, /datum/sprite_accessory/taur/naga))
-					to_chat(src,"<span class='danger'>You grind [tmob] into the floor with your tail!</span>")
-					to_chat(tmob,"<span class='danger'>[src]'s massive tail plows you into the floor!</span>")
-					sizediffStamLoss(tmob)
-					sizediffBruteloss(tmob)
-				else
-					to_chat(src,"<span class='danger'>You pound [tmob] into the floor underfoot!</span>")
-					to_chat(tmob,"<span class='danger'>[src] slams you into the ground, crushing you!</span>")
-					sizediffStamLoss(tmob)
-					sizediffBruteloss(tmob)
-				return 1
-
-//		if(src.a_inent == "grab"... goes here... WIP
-
-	if(tmob.get_effective_size() > get_effective_size())
-		micro_step_under(tmob)
-		src.forceMove(tmob.loc)
-		now_pushing = 0
-		return 1
+			return 1
 
 //smaller person stepping under another person
 /mob/living/proc/micro_step_under(var/mob/living/tmob)
@@ -129,6 +161,11 @@ mob/living/get_effective_size()
 /mob/living/proc/sizediffStamLoss(var/mob/living/tmob)
 	var/S = (get_effective_size()/tmob.get_effective_size()*25) //macro divided by micro, times 25
 	tmob.Knockdown(S) //final result in stamina knockdown
+
+//Proc for scaling stuns on size difference (for grab intent)
+/mob/living/proc/sizediffStun(var/mob/living/tmob)
+	var/T = (get_effective_size()/tmob.get_effective_size()*15) //Macro divided by micro, times 15
+	tmob.Stun(T)
 
 //Proc for scaling brute damage on size difference
 /mob/living/proc/sizediffBruteloss(var/mob/living/tmob)
