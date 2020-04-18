@@ -108,7 +108,21 @@ mob/living/get_effective_size()
 					sizediffBruteloss(tmob)
 				return 1
 
-//		if(src.a_inent == "grab"... goes here... WIP
+		if(src.a_intent == "grab" && src.canmove && !src.buckled)
+			now_pushing = 0
+			src.forceMove(tmob.loc)
+			if(get_effective_size() > tmob.get_effective_size() && iscarbon(src))
+				if(istype(tmob) && istype(tmob, /datum/sprite_accessory/taur/naga))
+					to_chat(src,"<span class='danger'>You curl [tmob] up into your tail!</span>")
+					to_chat(tmob,"<span class='danger'>[src]'s massive tail catches you and wraps around you!</span>")
+					sizediffStamLoss(tmob)
+					sizediffStun(tmob)
+				else
+					to_chat(src,"<span class='danger'>You pin [tmob] helplessly to the floor with your foot!</span>")
+					to_chat(tmob,"<span class='danger'>[src] weightfully pins you to the ground!</span>")
+					sizediffStamLoss(tmob)
+					sizediffStun(tmob)
+				return 1
 
 	if(tmob.get_effective_size() > get_effective_size())
 		micro_step_under(tmob)
@@ -129,6 +143,11 @@ mob/living/get_effective_size()
 /mob/living/proc/sizediffStamLoss(var/mob/living/tmob)
 	var/S = (get_effective_size()/tmob.get_effective_size()*25) //macro divided by micro, times 25
 	tmob.Knockdown(S) //final result in stamina knockdown
+
+//Proc for scaling stuns on size difference (for grab intent)
+/mob/living/proc/sizediffStun(var/mob/living/tmob)
+	var/T = (get_effective_size()/tmob.get_effective_size()*15) //Macro divided by micro, times 15
+	tmob.Stun(T)
 
 //Proc for scaling brute damage on size difference
 /mob/living/proc/sizediffBruteloss(var/mob/living/tmob)
