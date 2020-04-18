@@ -73,6 +73,15 @@
 	L.put_in_hands(holder)
 	return
 
+//shoehorned (get it?) and lazy way to do instant foot pickups cause haha funny.
+/mob/living/proc/mob_pickupfeet(mob/living/L)
+	var/obj/item/clothing/head/mob_holder/holder = generate_mob_holder()
+	if(!holder)
+		return
+	drop_all_held_items()
+	L.equip_to_slot(holder, SLOT_SHOES)
+	return
+
 /mob/living/proc/mob_try_pickup(mob/living/user)
 	if(!ishuman(user) || !src.Adjacent(user) || user.incapacitated() || !can_be_held)
 		return FALSE
