@@ -136,7 +136,7 @@ mob/living/get_effective_size()
 							tmob.mob_pickupfeet(H)
 						else
 							to_chat(H,"<span class='danger'>You stomp your foot into [tmob], curling your toes and picking them up!</span>")
-							to_chat(tmob,"span class='danger'>[H]'s toes pin you down and curl around you, picking you up!</span>'")
+							to_chat(tmob,"<span class='danger'>[H]'s toes pin you down and curl around you, picking you up!</span>'")
 							sizediffStamLoss(tmob)
 							sizediffStun(tmob)
 							tmob.mob_pickupfeet(H)
