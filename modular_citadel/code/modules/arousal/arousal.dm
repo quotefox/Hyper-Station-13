@@ -349,10 +349,17 @@
 
 	if(impreg)
 		//Role them odds, only people with the dicks can send the chance to the person with the settings enabled at the momment.
-		if (rand(0,100) < L.impregchance && L.breedable == 1)
+		var/obj/item/organ/genital/womb/W = L.getorganslot("womb")
+		if (L.breedable == 1 && W.pregnant == 0) //Dont get pregnant again, if you are pregnant.
 			log_game("Debug: [L] has been impregnated by [src]")
-			var/obj/item/organ/genital/womb/W = L.getorganslot("womb")
-			W.pregnant = 1
+			to_chat(L, "<span class='userlove'>You feel your hormones change, and a motherly instinct take over.</span>") //leting them know magic has happened.
+			W.pregnant = 1 //self insert fetish
+
+			var/obj/item/organ/genital/breasts/B = L.getorganslot("womb")
+
+			if (B.fluid_mult < 0.5 && B) //pregnancy causes mammals to produce milk faster. no point setting their fluid, lower if they are already higher.
+				B.fluid_mult = 0.5
+
 
 
 /mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time = 30) //For beaker-filling, beware the bartender
