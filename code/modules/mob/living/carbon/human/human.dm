@@ -1102,4 +1102,4 @@
 
 //define holder_type on nerds we wanna commit scoop to
 /mob/living/carbon/human
-	var/holder_type = /obj/item/clothing/head/mob_holder/micro
+	var/holder_type = /obj/item/clothing/head/mob_holder
