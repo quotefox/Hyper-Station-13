@@ -42,6 +42,9 @@
 
 
 /mob/living/proc/generate_mob_holder()
+	if(ishuman(src))
+		var/obj/item/clothing/head/mob_holder/micro/holder = new(get_turf(src), src, (istext(can_be_held) ? can_be_held : ""), 'icons/mob/animals_held.dmi', 'icons/mob/animals_held_lh.dmi', 'icons/mob/animals_held_rh.dmi')
+		return holder
 	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, (istext(can_be_held) ? can_be_held : ""), 'icons/mob/animals_held.dmi', 'icons/mob/animals_held_lh.dmi', 'icons/mob/animals_held_rh.dmi')
 	return holder
 
@@ -1244,5 +1247,3 @@
 /mob/living
 	var/size_multiplier = 1 //multiplier for the mob's icon size atm
 	var/previous_size = 1
-	var/holder_default
-//	can_be_held = "micro"
