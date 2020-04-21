@@ -16,7 +16,7 @@
 
 /datum/gear/testrewardtwo
 	name = "Napoleonic Uniform"
-	category = SLOT_IN_BACKPACK
+	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/suit/napoleonic
 	ckeywhitelist = list("quotefox")
 
@@ -60,7 +60,7 @@
 
 /datum/gear/hshack
 	name = "Plastitanium Shackles"
-	category = SLOT_IN_BACKPACK
+	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/suit/shackles
 	ckeywhitelist = list("heliocintrini")
 
