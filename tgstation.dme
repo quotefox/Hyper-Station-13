@@ -2881,6 +2881,7 @@
 #include "hyperstation\code\mobs\mimic.dm"
 #include "hyperstation\code\mobs\werewolf.dm"
 #include "hyperstation\code\modules\antagonists\werewolf\werewolf.dm"
+#include "hyperstation\code\modules\clothing\head.dm"
 #include "hyperstation\code\modules\crafting\recipes.dm"
 #include "hyperstation\code\modules\resize\holder_micro.dm"
 #include "hyperstation\code\modules\resize\resizing.dm"

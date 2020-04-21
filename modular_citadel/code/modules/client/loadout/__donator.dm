@@ -9,9 +9,9 @@
 
 /datum/gear/testreward
 	//Just so admins can test the recent rewards added.
-	name = "Caveman Plush"
+	name = "Plastitanium Shackles"
 	category = SLOT_IN_BACKPACK
-	path = /obj/item/toy/plush/mammal/grug
+	path = /obj/item/clothing/suit/shackles
 	ckeywhitelist = list("quotefox")
 
 /datum/gear/testrewardtwo
@@ -56,3 +56,11 @@
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/toy/plush/mammal/grug
 	ckeywhitelist = list("herrdoktah")
+
+
+/datum/gear/hshack
+	name = "Plastitanium Shackles"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/suit/shackles
+	ckeywhitelist = list("heliocintrini")
+
