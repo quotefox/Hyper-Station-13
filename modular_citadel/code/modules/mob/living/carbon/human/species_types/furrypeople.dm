@@ -240,6 +240,7 @@
 		C.Digitigrade_Leg_Swap(TRUE)
 	. = ..()
 
+//Synthetic Lizard
 /datum/species/synthliz
 	name = "Synthetic Lizardperson"
 	id = "synthliz"
