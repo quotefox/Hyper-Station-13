@@ -654,6 +654,8 @@ generate/load female uniform sprites matching all previously decided variables
 			. += "-robotic"
 		if(BP.use_digitigrade)
 			. += "-digitigrade[BP.use_digitigrade]"
+			if(BP.digitigrade_type)
+				. += "-[BP.digitigrade_type]"
 		if(BP.dmg_overlay_type)
 			. += "-[BP.dmg_overlay_type]"
 		if(BP.body_markings)
