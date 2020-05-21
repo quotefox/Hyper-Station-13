@@ -225,6 +225,19 @@
 	mood_change = -6
 	timeout = 15 MINUTES
 
+/datum/mood_event/bloodsucker_disgust
+	description = "<span class='boldwarning'>Something I recently ate was horrifyingly disgusting.</span>\n"
+	mood_change = -5
+	timeout = 5 MINUTES
+	
+/datum/mood_event/nanite_sadness
+	description = "<span class='warning robot'>+++++++HAPPINESS SUPPRESSION+++++++</span>\n"
+	mood_change = -7
+
 /datum/mood_event/nanite_sadness/add_effects(message)
 	description = "<span class='warning robot'>+++++++[message]+++++++</span>\n"
 
+/datum/mood_event/artbad
+	description = "<span class='warning'>I've produced better art than that from my ass.</span>\n"
+	mood_change = -2
+	timeout = 1200

@@ -19,3 +19,6 @@
 #define VV_RESTORE_DEFAULT "Restore to Default"
 #define VV_MARKED_DATUM "Marked Datum"
 #define VV_BITFIELD "Bitfield"
+
+// paintings
+#define VV_HK_REMOVE_PAINTING "remove_painting"
