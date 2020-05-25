@@ -179,10 +179,10 @@
  * Book
  */
 /obj/item/book
-	name = "book"
+	name = "Datapad"
 	icon = 'icons/obj/library.dmi'
 	icon_state ="book"
-	desc = "Crack it open, inhale the musk of its pages, and learn something new."
+	desc = "A fancy new state of the art Digital-Readpad(tm) provided by Nanotrasen, No more 20th century paper!"
 	throw_speed = 1
 	throw_range = 5
 	w_class = WEIGHT_CLASS_NORMAL		 //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)

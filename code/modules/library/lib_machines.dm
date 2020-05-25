@@ -564,10 +564,10 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
  * Book binder
  */
 /obj/machinery/bookbinder
-	name = "book binder"
+	name = "Datapad transcriptor"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "binder"
-	desc = "Only intended for binding paper products."
+	desc = "Reads and scans papers placed into it for text to datapad conversion."
 	density = TRUE
 	var/busy = FALSE
 
