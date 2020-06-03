@@ -1970,7 +1970,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
 
 				if("cock_length")
-					var/new_length = input(user, "Penis length in inches:\n([COCK_SIZE_MIN]-[COCK_SIZE_MAX])", "Character Preference") as num|null
+					var/new_length = input(user, "Penis length in inches. WARNING: Lengths above 20 inches will not allow clothing to be worn.:\n([COCK_SIZE_MIN]-[COCK_SIZE_MAX])", "Character Preference") as num|null
 					if(new_length)
 						features["cock_length"] = max(min( round(text2num(new_length)), COCK_SIZE_MAX),COCK_SIZE_MIN)
 
@@ -2021,7 +2021,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("breasts_size")
 					var/new_size
-					new_size = input(user, "Breast Size", "Character Preference") as null|anything in GLOB.breasts_size_list
+					new_size = input(user, "Breast Size. Warning: Sizes above J will not allow clothing to be worn!", "Character Preference") as null|anything in GLOB.breasts_size_list
 					if(new_size)
 						features["breasts_size"] = new_size
 
