@@ -103,6 +103,7 @@
 #define TRAIT_HOLY				"holy"
 #define TRAIT_DEPRESSION		"depression"
 #define TRAIT_JOLLY				"jolly"
+#define TRAIT_HEADPAT_SLUT		"headpat_slut"
 #define TRAIT_NOCRITDAMAGE		"no_crit"
 #define TRAIT_NOSLIPWATER		"noslip_water"
 #define TRAIT_NOSLIPALL			"noslip_all"
