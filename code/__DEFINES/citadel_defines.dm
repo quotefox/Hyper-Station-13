@@ -40,11 +40,11 @@
 #define BALLS_SACK_SIZE_DEF	8
 #define BALLS_SACK_SIZE_MAX 40
 
-#define CUM_RATE			0.035
+#define CUM_RATE			5
 #define CUM_RATE_MULT		1
-#define CUM_EFFICIENCY		1//amount of nutrition required per life()
+#define CUM_EFFICIENCY		1 //amount of nutrition required per life()
 
-#define EGG_GIRTH_MIN		1//inches
+#define EGG_GIRTH_MIN		1 //inches
 #define EGG_GIRTH_DEF		6
 #define EGG_GIRTH_MAX		16
 
