@@ -203,16 +203,18 @@
 	name = "CentCom Commander"
 
 	uniform = /obj/item/clothing/under/rank/centcom_commander
-	suit = /obj/item/clothing/suit/armor/bulletproof
+	suit = /obj/item/clothing/suit/hooded/wintercoat/centcom
 	shoes = /obj/item/clothing/shoes/combat/swat
 	gloves = /obj/item/clothing/gloves/combat
 	ears = /obj/item/radio/headset/headset_cent/commander
-	glasses = /obj/item/clothing/glasses/eyepatch
+	glasses = /obj/item/clothing/glasses/thermal/eyepatch
 	mask = /obj/item/clothing/mask/cigarette/cigar/cohiba
 	head = /obj/item/clothing/head/centhat
-	belt = /obj/item/gun/ballistic/revolver/mateba
+	neck = /obj/item/clothing/neck/cloak/centcom
+	belt = /obj/item/gun/ballistic/automatic/pistol/lato
 	r_pocket = /obj/item/lighter
-	l_pocket = /obj/item/ammo_box/a357
+	l_pocket = /obj/item/ammo_box/magazine/latomag
+	l_hand = /obj/item/ammo_box/magazine/latomag
 	back = /obj/item/storage/backpack/satchel/leather
 	id = /obj/item/card/id
 
