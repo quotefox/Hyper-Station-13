@@ -102,3 +102,10 @@
 	medical_record_text = "Patient never skipped ass day."
 	gain_text = "<span class='notice'>Your ass rivals those of golems.</span>"
 	lose_text = "<span class='notice'>Your butt feels more squishy and slappable.</span>"
+	
+/datum/quirk/headpat_slut
+	name = "Headpat Slut"
+	desc = "You like headpats, alot, maybe even a little bit too much. Headpats give you a bigger mood boost and cause arousal"
+	mob_trait = TRAIT_HEADPAT_SLUT
+	value = 0
+	medical_record_text = "Patient seems overly affectionate"
