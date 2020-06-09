@@ -27,6 +27,7 @@
 	gold_core_spawnable = FRIENDLY_SPAWN
 	var/chew_probability = 1
 	size_multiplier = 0.5
+	faction = list("rat")
 
 /mob/living/simple_animal/mouse/Initialize()
 	. = ..()
@@ -61,11 +62,15 @@
 	else
 		..(gibbed)
 
+
 /mob/living/simple_animal/mouse/Crossed(AM as mob|obj)
 	if( ishuman(AM) )
 		if(!stat)
 			var/mob/M = AM
 			to_chat(M, "<span class='notice'>[icon2html(src, M)] Squeak!</span>")
+	if(istype(AM, /obj/item/reagent_containers/food/snacks/royalcheese))
+		evolve()
+		qdel(AM)
 	..()
 
 /mob/living/simple_animal/mouse/handle_automated_action()
@@ -86,6 +91,40 @@
 					C.deconstruct()
 					visible_message("<span class='warning'>[src] chews through the [C].</span>")
 
+	for(var/obj/item/reagent_containers/food/snacks/cheesewedge/cheese in range(1, src))
+		if(prob(10))
+			be_fruitful()
+			qdel(cheese)
+			return
+	for(var/obj/item/reagent_containers/food/snacks/royalcheese/bigcheese in range(1, src))
+		qdel(bigcheese)
+		evolve()
+		return
+
+/**
+  *Checks the mouse cap, if it's above the cap, doesn't spawn a mouse. If below, spawns a mouse and adds it to cheeserats.
+  */
+
+/mob/living/simple_animal/mouse/proc/be_fruitful()
+	var/cap = CONFIG_GET(number/ratcap)
+	if(LAZYLEN(SSmobs.cheeserats) >= cap)
+		visible_message("<span class='warning'>[src] carefully eats the cheese, hiding it from the [cap] mice on the station!</span>")
+		return
+	var/mob/living/newmouse = new /mob/living/simple_animal/mouse(loc)
+	SSmobs.cheeserats += newmouse
+	visible_message("<span class='notice'>[src] nibbles through the cheese, attracting another mouse!</span>")
+
+/**
+  *Spawns a new regal rat, says some good jazz, and if sentient, transfers the relivant mind.
+  */
+/mob/living/simple_animal/mouse/proc/evolve()
+	var/mob/living/simple_animal/hostile/regalrat = new /mob/living/simple_animal/hostile/regalrat(loc)
+	visible_message("<span class='warning'>[src] devours the cheese! He morphs into something... greater!</span>")
+	regalrat.say("RISE, MY SUBJECTS! SCREEEEEEE!")
+	if(mind)
+		mind.transfer_to(regalrat)
+	qdel(src)
+
 /*
  * Mouse types
  */
@@ -101,6 +140,10 @@
 /mob/living/simple_animal/mouse/brown
 	body_color = "brown"
 	icon_state = "mouse_brown"
+
+/mob/living/simple_animal/mouse/Destroy()
+	SSmobs.cheeserats -= src
+	return ..()
 
 //TOM IS ALIVE! SQUEEEEEEEE~K :)
 /mob/living/simple_animal/mouse/brown/Tom
