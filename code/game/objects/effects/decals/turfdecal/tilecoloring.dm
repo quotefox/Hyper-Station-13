@@ -6,7 +6,7 @@
 
 /obj/effect/turf_decal/tile/blue
 	name = "blue corner"
-	color = "#52B4E9"
+	color = "#8e9929"
 
 /obj/effect/turf_decal/tile/green
 	name = "green corner"
