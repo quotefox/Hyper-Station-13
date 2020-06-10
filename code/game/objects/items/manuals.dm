@@ -392,7 +392,7 @@
 	name = "Keeping communications"
 	icon_state = "book3"
 	author = "Engineering Encyclopedia"
-	title = "Keeping communications
+	title = "Keeping communications"
 	page_link = "Guide_to_Telecommunications"
 
 /obj/item/book/manual/wiki/atmospherics

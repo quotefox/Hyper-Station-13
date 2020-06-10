@@ -192,7 +192,7 @@
 	explosion_block = 3
 	flags_1 = CAN_BE_DIRTY_1 | CHECK_RICOCHET_1
 	sheet_type = /obj/item/stack/sheet/mineral/titanium
-	smooth = SMOOTH_MORE|SMOOTH_DIAGONAL
+	smooth = SMOOTH_MORE
 	canSmoothWith = list(/turf/closed/wall/mineral/titanium, /obj/machinery/door/airlock/shuttle, /obj/machinery/door/airlock, /obj/structure/window/shuttle, /obj/structure/shuttle/engine/heater, /obj/structure/falsewall/titanium)
 
 /turf/closed/wall/mineral/titanium/nodiagonal

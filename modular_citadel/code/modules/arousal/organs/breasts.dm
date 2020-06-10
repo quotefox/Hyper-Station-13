@@ -125,7 +125,9 @@
 			if(!owner.has_status_effect(/datum/status_effect/chem/breast_enlarger))
 				owner.apply_status_effect(/datum/status_effect/chem/breast_enlarger)
 				statuscheck = TRUE
-		if(16 to INFINITY) //if Rediculous
+		if(16 to 20) //if Rediculous
+			size = cached_size
+		if(20 to INFINITY) //if Hyper-Rediculous
 			size = cached_size
 
 	if(round(cached_size) < 16)//Because byond doesn't count from 0, I have to do this.
@@ -146,3 +148,5 @@
 		prev_size = size
 	else if (cached_size >= 16)
 		size = "huge"
+	else if (cached_size >= 20)
+		size = "massive"

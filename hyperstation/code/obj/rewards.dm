@@ -15,3 +15,13 @@
 	item_state = "napoleonic"
 	body_parts_covered = CHEST|GROIN|ARMS
 	cold_protection = CHEST|GROIN|ARMS
+
+/obj/item/clothing/suit/shackles
+	name = "Plastitanium Shackles"
+	desc = "A set of heavy plastitanium shackles, there are chains still attatched"
+	icon_state = "shackles"
+	item_state = "shackles"
+	icon = 'hyperstation/icons/mobs/rewards.dmi'
+	alternate_worn_icon = 'hyperstation/icons/mobs/rewards.dmi'
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+

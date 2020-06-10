@@ -9,8 +9,14 @@
 
 /datum/gear/testreward
 	//Just so admins can test the recent rewards added.
-	name = "test reward"
+	name = "Plastitanium Shackles"
 	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/suit/shackles
+	ckeywhitelist = list("quotefox")
+
+/datum/gear/testrewardtwo
+	name = "Napoleonic Uniform"
+	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/suit/napoleonic
 	ckeywhitelist = list("quotefox")
 
@@ -44,4 +50,17 @@
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/clothing/suit/napoleonic
 	ckeywhitelist = list("hackertdog")
+
+/datum/gear/grug
+	name = "Caveman Plushie"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/toy/plush/mammal/grug
+	ckeywhitelist = list("herrdoktah")
+
+
+/datum/gear/hshack
+	name = "Plastitanium Shackles"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/suit/shackles
+	ckeywhitelist = list("heliocintrini")
 
