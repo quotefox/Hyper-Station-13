@@ -40,6 +40,15 @@
 	QDEL_LIST(diseases)
 	return ..()
 
+
+/mob/living/proc/generate_mob_holder()
+	if(ishuman(src))
+		var/obj/item/clothing/head/mob_holder/micro/holder = new(get_turf(src), src, (istext(can_be_held) ? can_be_held : ""), 'icons/mob/animals_held.dmi', 'icons/mob/animals_held_lh.dmi', 'icons/mob/animals_held_rh.dmi')
+		return holder
+	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, (istext(can_be_held) ? can_be_held : ""), 'icons/mob/animals_held.dmi', 'icons/mob/animals_held_lh.dmi', 'icons/mob/animals_held_rh.dmi')
+	return holder
+
+
 /mob/living/proc/OpenCraftingMenu()
 	return
 
@@ -136,6 +145,11 @@
 		else if((M.restrained() || M.a_intent == INTENT_HELP) && (restrained() || a_intent == INTENT_HELP))
 			mob_swap = 1
 		if(mob_swap)
+
+			//handle micro bumping on help intent
+			if(handle_micro_bump_helping(M))
+				return 1
+
 			//switch our position with M
 			if(loc && !loc.Adjacent(M.loc))
 				return 1
@@ -168,6 +182,11 @@
 	//not if he's not CANPUSH of course
 	if(!(M.status_flags & CANPUSH))
 		return 1
+
+	//handle micro bumping on other intents
+	if(handle_micro_bump_other(M))
+		return 1
+
 	if(isliving(M))
 		var/mob/living/L = M
 		if(HAS_TRAIT(L, TRAIT_PUSHIMMUNE))
@@ -281,7 +300,11 @@
 				var/datum/disease/D = thing
 				if(D.spread_flags & DISEASE_SPREAD_CONTACT_SKIN)
 					ContactContractDisease(D)
-p
+
+			if(iscarbon(L))
+				var/mob/living/carbon/C = L
+				if(HAS_TRAIT(src, TRAIT_STRONG_GRABBER))
+					C.grippedby(src)
 
 //mob verbs are a lot faster than object verbs
 //for more info on why this is not atom/pull, see examinate() in mob.dm
@@ -1124,23 +1147,6 @@ p
 	if(can_be_held)
 		mob_try_pickup(over)
 
-/mob/living/proc/mob_pickup(mob/living/L)
-	return
-
-/mob/living/proc/mob_try_pickup(mob/living/user)
-	if(!ishuman(user))
-		return
-	if(user.get_active_held_item())
-		to_chat(user, "<span class='warning'>Your hands are full!</span>")
-		return FALSE
-	if(buckled)
-		to_chat(user, "<span class='warning'>[src] is buckled to something!</span>")
-		return FALSE
-	user.visible_message("<span class='notice'>[user] starts trying to scoop up [src]!</span>")
-	if(!do_after(user, 20, target = src))
-		return FALSE
-	mob_pickup(user)
-	return TRUE
 
 /mob/living/proc/get_static_viruses() //used when creating blood and other infective objects
 	if(!LAZYLEN(diseases))
@@ -1236,3 +1242,8 @@ p
 	update_canmove()
 	for(var/chem in healing_chems)
 		reagents.add_reagent(chem, healing_chems[chem])
+
+//retard edits below
+/mob/living
+	var/size_multiplier = 1 //multiplier for the mob's icon size atm
+	var/previous_size = 1

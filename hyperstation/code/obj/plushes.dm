@@ -43,3 +43,12 @@
 	else */
 	user.show_message("<span class='notice'>[src] hugs [Kisser]!</span>", 1,
 					  "<span class='notice'>[src] hugs [Kisser]!</span>", 0)
+
+/obj/item/toy/plush/mammal/grug
+	name = "Grug S. Cavemannington Plushie"
+	desc = " Everybody's favorite space faring caveman in plushie form. You feel an overwhelming urge to break things while holding it."
+	icon = 'hyperstation/icons/obj/plushes.dmi'
+	icon_state = "grug"
+	item_state = "grug"
+	attack_verb = list("thomped", "ook'd", "stoned")
+	squeak_override = list('sound/voice/gorillaplush.ogg' = 1)

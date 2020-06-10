@@ -22,7 +22,8 @@
 	maxHealth = 50
 	speed = 10
 	glide_size = 2
-
+	can_be_held = "sloth" //finally oranges can be held
+	size_multiplier = 0.5
 	do_footstep = TRUE
 
 

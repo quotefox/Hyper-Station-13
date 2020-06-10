@@ -11,7 +11,7 @@
  * Pens
  */
 /obj/item/pen
-	desc = "It's a normal black ink pen."
+	desc = "It's a black ink pen, modified for use with both paper and Nanotransen-brand Digital-Readpads™!"
 	name = "pen"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pen"
@@ -33,12 +33,12 @@
 	return(BRUTELOSS)
 
 /obj/item/pen/blue
-	desc = "It's a normal blue ink pen."
+	desc = "It's a blue ink pen, modified for use with both paper and Nanotransen-brand Digital-Readpads™!"
 	icon_state = "pen_blue"
 	colour = "blue"
 
 /obj/item/pen/red
-	desc = "It's a normal red ink pen."
+	desc = "It's a red ink pen, modified for use with both paper and Nanotransen-brand Digital-Readpads™!"
 	icon_state = "pen_red"
 	colour = "red"
 
@@ -48,7 +48,7 @@
 	colour = "white"
 
 /obj/item/pen/fourcolor
-	desc = "It's a fancy four-color ink pen, set to black."
+	desc = "It's a fancy four-color ink pen, set to black. Modified to be compatible with Nanotransen-brand Digital-Readpads™"
 	name = "four-color pen"
 	colour = "black"
 

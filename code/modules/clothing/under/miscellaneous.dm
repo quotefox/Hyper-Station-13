@@ -114,13 +114,13 @@
 	can_adjust = FALSE
 /obj/item/clothing/under/rank/centcom_officer
 	desc = "It's a jumpsuit worn by CentCom Officers."
-	name = "\improper CentCom officer's jumpsuit"
+	name = "\improper CentCom officer's jumpsuit, adorned with a golden K and a star. This is not Nanotrasen."
 	icon_state = "officer"
 	item_state = "g_suit"
 	item_color = "officer"
 	alt_covers_chest = TRUE
 /obj/item/clothing/under/rank/centcom_commander
-	desc = "It's a jumpsuit worn by CentCom's highest-tier Commanders."
+	desc = "It's a jumpsuit worn by CentCom's highest-tier Commanders, adorned with a golden K and a star. This is not Nanotrasen."
 	name = "\improper CentCom officer's jumpsuit"
 	icon_state = "centcom"
 	item_state = "dg_suit"
