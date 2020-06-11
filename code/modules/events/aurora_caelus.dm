@@ -14,13 +14,13 @@
 	announceWhen = 1
 	startWhen = 9
 	endWhen = 50
-	var/list/aurora_colors = list("#A2FF80", "#A2FF8B", "#A2FF96", "#A2FFA5", "#A2FFB6", "#A2FFC7", "#A2FFDE", "#A2FFEE")
+	var/list/aurora_colors = list("#ffd980", "#eaff80", "#eaff80", "#ffd980", "#eaff80", "#A2FFC7", "#A2FFDE", "#ffd980")
 	var/aurora_progress = 0 //this cycles from 1 to 8, slowly changing colors from gentle green to gentle blue
 
 /datum/round_event/aurora_caelus/announce()
-	priority_announce("[station_name()]: A harmless cloud of ions is approaching your station, and will exhaust their energy battering the hull. Nanotrasen has approved a short break for all employees to relax and observe this very rare event. During this time, starlight will be bright but gentle, shifting between quiet green and blue colors. Any staff who would like to view these lights for themselves may proceed to the area nearest to them with viewing ports to open space. We hope you enjoy the lights.",
+	priority_announce("[station_name()]: A harmless cloud of ions is approaching your station, and will exhaust their energy battering the hull. Winfre has approved a short break for all employees to relax and observe this very rare event. During this time, starlight will be bright but gentle, shifting between quiet green and blue colors. Any staff who would like to view these lights for themselves may proceed to the area nearest to them with viewing ports to open space. We hope you enjoy the lights.",
 	sound = 'sound/misc/notice2.ogg',
-	sender_override = "Nanotrasen Meteorology Division")
+	sender_override = "Kinaris Meteorology Division")
 	for(var/V in GLOB.player_list)
 		var/mob/M = V
 		if((M.client.prefs.toggles & SOUND_MIDI) && is_station_level(M.z))
@@ -51,7 +51,7 @@
 				fade_to_black(S)
 	priority_announce("The aurora caelus event is now ending. Starlight conditions will slowly return to normal. When this has concluded, please return to your workplace and continue work as normal. Have a pleasant shift, [station_name()], and thank you for watching with us.",
 	sound = 'sound/misc/notice2.ogg',
-	sender_override = "Nanotrasen Meteorology Division")
+	sender_override = "Kinaris Meteorology Division")
 
 /datum/round_event/aurora_caelus/proc/fade_to_black(turf/open/space/S)
 	set waitfor = FALSE
