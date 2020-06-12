@@ -15,8 +15,6 @@
 	var/last_message	= "" //Contains the last message sent by this client - used to protect against copy-paste spamming.
 	var/last_message_count = 0 //contins a number of how many times a message identical to last_message was sent.
 	var/ircreplyamount = 0
-	/// Messages currently seen by this client
-	var/list/seen_messages
 
 		/////////
 		//OTHER//
@@ -83,3 +81,6 @@
 	var/next_keysend_reset = 0
 	var/next_keysend_trip_reset = 0
 	var/keysend_tripped = FALSE
+
+	/// Messages currently seen by this client
+	var/list/seen_messages
