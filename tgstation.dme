@@ -297,6 +297,10 @@
 #include "code\datums\beam.dm"
 #include "code\datums\browser.dm"
 #include "code\datums\callback.dm"
+<<<<<<< HEAD
+=======
+#include "code\datums\chatmessage.dm"
+>>>>>>> parent of fe39969... Enable leash.dm
 #include "code\datums\cinematic.dm"
 #include "code\datums\dash_weapon.dm"
 #include "code\datums\datacore.dm"
@@ -829,6 +833,10 @@
 #include "code\game\objects\items\kitchen.dm"
 #include "code\game\objects\items\latexballoon.dm"
 #include "code\game\objects\items\manuals.dm"
+<<<<<<< HEAD
+=======
+#include "code\game\objects\items\mesmetron.dm"
+>>>>>>> parent of fe39969... Enable leash.dm
 #include "code\game\objects\items\miscellaneous.dm"
 #include "code\game\objects\items\mop.dm"
 #include "code\game\objects\items\paint.dm"
@@ -2740,6 +2748,10 @@
 #include "code\modules\station_goals\station_goal.dm"
 #include "code\modules\surgery\amputation.dm"
 #include "code\modules\surgery\brain_surgery.dm"
+<<<<<<< HEAD
+=======
+#include "code\modules\surgery\breast_augmentation.dm"
+>>>>>>> parent of fe39969... Enable leash.dm
 #include "code\modules\surgery\cavity_implant.dm"
 #include "code\modules\surgery\core_removal.dm"
 #include "code\modules\surgery\coronary_bypass.dm"
@@ -2756,6 +2768,10 @@
 #include "code\modules\surgery\nutcracker.dm"
 #include "code\modules\surgery\organ_manipulation.dm"
 #include "code\modules\surgery\organic_steps.dm"
+<<<<<<< HEAD
+=======
+#include "code\modules\surgery\penis_augmentation.dm"
+>>>>>>> parent of fe39969... Enable leash.dm
 #include "code\modules\surgery\plastic_surgery.dm"
 #include "code\modules\surgery\prosthetic_replacement.dm"
 #include "code\modules\surgery\remove_embedded_object.dm"
@@ -2889,7 +2905,10 @@
 #include "hyperstation\code\obj\decal.dm"
 #include "hyperstation\code\obj\fluff.dm"
 #include "hyperstation\code\obj\kinkyclothes.dm"
+<<<<<<< HEAD
 #include "hyperstation\code\obj\leash.dm"
+=======
+>>>>>>> parent of fe39969... Enable leash.dm
 #include "hyperstation\code\obj\milking machine.dm"
 #include "hyperstation\code\obj\plushes.dm"
 #include "hyperstation\code\obj\pregnancytester.dm"
