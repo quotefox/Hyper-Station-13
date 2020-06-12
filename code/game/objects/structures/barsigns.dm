@@ -314,12 +314,10 @@
 	icon = "thehive"
 	desc = "Comb in for some sweet drinks! Not known for serving any sappy drink."
 
-
 /datum/barsign/kinariscorp
-	var/name = "Kinaris.Co"
-	var/icon = "kinariscorp"
-	var/desc = "Provided in saturated olive, much like the drinks"
-
+	name = "Kinaris.Co"
+	icon = "kinariscorp"
+	desc = "Provided in saturated olive, Much like the drinks."
 
 /datum/barsign/hiddensigns
 	hidden = TRUE
