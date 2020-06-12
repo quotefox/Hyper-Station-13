@@ -273,7 +273,7 @@
 /obj/item/book/manual/wiki/chemistry
 	name = "Guide to chems"
 	icon_state ="chemistrybook"
-	author = "Nanotrasen"
+	author = "Kin-Chems"
 	title = "Guide to chems"
 	page_link = "Guide_to_chemistry"
 
@@ -300,9 +300,9 @@
 
 /obj/item/book/manual/wiki/security_space_law
 	name = "Space Law"
-	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
+	desc = "A set of Kin-Station guidelines for keeping law and order on their space stations."
 	icon_state = "bookSpaceLaw"
-	author = "Nanotrasen"
+	author = "Kin.Co PMC"
 	title = "Space Law"
 	page_link = "Space_Law"
 
@@ -334,7 +334,7 @@
 /obj/item/book/manual/wiki/detective
 	name = "The Film Noir: Proper Procedures for Investigations"
 	icon_state ="bookDetective"
-	author = "Nanotrasen"
+	author = "The Stranger"
 	title = "The Film Noir: Proper Procedures for Investigations"
 	page_link = "Detective"
 
