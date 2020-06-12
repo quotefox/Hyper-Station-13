@@ -48,7 +48,7 @@
 
 /datum/bounty/item/medical/lizard_tail
 	name = "Lizard Tail"
-	description = "The Wizard Federation has made off with Nanotrasen's supply of lizard tails. While CentCom is dealing with the wizards, can the station spare a tail of their own?"
+	description = "The Wizard Federation has made off with Kinaris.Co's supply of lizard tails. While CentCom is dealing with the wizards, can the station spare a tail of their own?"
 	reward = 3000
 	wanted_types = list(/obj/item/organ/tail/lizard)
 
@@ -60,7 +60,7 @@
 
 /datum/bounty/item/medical/blood
 	name = "Generic Blood"
-	description = "Nanotrasen's annual blood drive is back up to full speed, following the garlic incident. Good blood in good volumes accepted for Credit returns."
+	description = "The Kinaris annual blood drive is back up to full speed, following the garlic incident. Good blood in good volumes accepted for Credit returns."
 	reward = 3500
 	required_count = 600
 	wanted_types = list(/datum/reagent/blood)
@@ -79,7 +79,7 @@
 	required_count = 200
 	wanted_types = (L,/datum/reagent/blood)
 	if(istype(L,/datum/reagent/blood))
-	wanted_types += L 
+	wanted_types += L
 
 /datum/bounty/item/medical/bloodu //Dosnt work do to how blood is yet*
 	name = "U-Type Blood"
@@ -88,7 +88,7 @@
 	required_count = 200
 	wanted_types = (U,/datum/reagent/blood)
 	if(istype(U,/datum/reagent/blood))
-	wanted_types += U 
+	wanted_types += U
 
 */
 
