@@ -316,9 +316,9 @@
 
 
 /datum/barsign/kinariscorp
-	var/name = "Kinaris.Co"
-	var/icon = "kinariscorp"
-	var/desc = "Provided in saturated olive, much like the drinks"
+	name = "Kinaris.Co"
+	icon = "kinariscorp"
+	desc = "Provided in saturated olive, much like the drinks"
 
 
 /datum/barsign/hiddensigns
