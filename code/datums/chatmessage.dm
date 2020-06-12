@@ -47,8 +47,8 @@
 
 /datum/chatmessage/Destroy()
 	if (owned_by)
-		//if (owned_by.seen_messages)  //Im not sure what this is. the prog isnt in our code, works without it, hope it dont break shit. QuoteFox
-			//LAZYREMOVEASSOC(owned_by.seen_messages, message_loc, src)
+		if (owned_by.seen_messages)
+			LAZYREMOVEASSOC(owned_by.seen_messages, message_loc, src)
 		owned_by.images.Remove(message)
 	owned_by = null
 	message_loc = null
@@ -68,7 +68,7 @@
 /datum/chatmessage/proc/generate_image(text, atom/target, mob/owner, list/extra_classes, lifespan)
 	// Register client who owns this message
 	owned_by = owner.client
-	//RegisterSignal(owned_by, COMSIG_PARENT_QDELETING, .proc/qdel, src)
+	RegisterSignal(owned_by, COMSIG_PARENT_QDELETING, .proc/qdel, src)
 
 	// Clip message
 	var/maxlen = owned_by.prefs.max_chat_length
@@ -139,7 +139,7 @@
 	message.maptext = complete_text
 
 	// View the message
-	//LAZYADDASSOC(owned_by.seen_messages, message_loc, src)
+	LAZYADDASSOC(owned_by.seen_messages, message_loc, src)
 	owned_by.images |= message
 	animate(message, alpha = 255, time = CHAT_MESSAGE_SPAWN_TIME)
 
