@@ -281,3 +281,11 @@
 	bonus_reagents = list("nutriment" = 8, "vitamin" = 1)
 	tastes = list("bun" = 4, "bacon" = 2)
 	foodtype = GRAIN | MEAT
+
+/obj/item/reagent_containers/food/snacks/burger/cumburger
+	name = "Cumburger"
+	desc = "A sticky and salty burger."
+	icon_state = "cumburger"
+	tastes = list("bun" = 4, "salt" = 5)
+	bonus_reagents = list("nutriment" = 3, "vitamin" = 10, "semen" = 10, "aphro+" = 5)
+	foodtype = GRAIN
