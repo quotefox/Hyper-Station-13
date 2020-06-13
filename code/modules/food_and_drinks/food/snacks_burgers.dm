@@ -287,5 +287,5 @@
 	desc = "A sticky and salty burger."
 	icon_state = "cumburger"
 	tastes = list("bun" = 4, "salt" = 5)
-	bonus_reagents = list("nutriment" = 3, "vitamin" = 10, "semen" = 10, "aphro+" = 5)
+	bonus_reagents = list("nutriment" = 3, "vitamin" = 10, "semen" = 10, "aphro" = 5)
 	foodtype = GRAIN
