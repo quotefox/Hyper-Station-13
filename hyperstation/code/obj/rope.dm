@@ -47,3 +47,9 @@
 		if (!C.handcuffed)
 			return //Break when the rope is removed
 
+/datum/crafting_recipe/rope
+	name = "Soft Rope"
+	result = /obj/item/restraints/handcuffs/rope
+	time = 40
+	reqs = list(/obj/item/stack/sheet/cloth = 5)
+	category = CAT_MISC
