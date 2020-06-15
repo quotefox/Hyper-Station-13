@@ -11,7 +11,7 @@
 	var/sack_size			= BALLS_SACK_SIZE_DEF
 	var/cached_size			= 6
 	fluid_mult				= 0.133 // Set to a lower value due to production scaling with size (I.E. 6 inches the "normal" amount)
-	fluid_max_volume		= 3
+	fluid_max_volume		= 6
 	fluid_id 				= "semen"
 	producing				= TRUE
 	can_masturbate_with		= FALSE

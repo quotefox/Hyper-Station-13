@@ -15,7 +15,7 @@
 	fluid_id				= "milk"
 	var/amount				= 2
 	fluid_mult				= 0.25 // Set to a lower value due to production scaling with size (I.E. D cups produce the "normal" amount)
-	fluid_max_volume		= 5
+	fluid_max_volume		= 10
 	producing				= TRUE
 	shape					= "Pair"
 	can_masturbate_with		= TRUE
@@ -32,7 +32,7 @@
 	reagents.maximum_volume = fluid_max_volume * cached_size// fluid amount is also scaled by the size of the organ
 	if(fluid_id && producing)
 		if(reagents.total_volume == 0) // Apparently, 0.015 gets rounded down to zero and no reagents are created if we don't start it with 0.1 in the tank.
-			fluid_rate = 0.1
+			reagents.total_volume = 0.1
 		else
 			fluid_rate = CUM_RATE * cached_size * fluid_mult // fluid rate is scaled by the size of the organ
 		generate_milk()
@@ -133,6 +133,9 @@
 
 		if(18 to INFINITY) //if Hyper-Ridiculous
 			size = cached_size
+			if(!owner.has_status_effect(/datum/status_effect/chem/breast_enlarger))
+				owner.apply_status_effect(/datum/status_effect/chem/breast_enlarger)
+				statuscheck = TRUE
 
 
 	if(round(cached_size) < 17)//Because byond doesn't count from 0, I have to do this.
