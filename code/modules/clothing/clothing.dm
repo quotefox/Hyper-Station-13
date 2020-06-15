@@ -47,8 +47,8 @@
 	//Basically syntax is species_restricted = list("Species Name","Species Name")
 	//Add a "exclude" string to do the opposite, making it only only species listed that can't wear it.
 	//You append this to clothing objects.
-
-
+	//Hyper change// - Variables for HS13 checks
+	var/roomy = 0  //0 For false
 
 
 /obj/item/clothing/Initialize()
@@ -95,6 +95,18 @@
 		obj_integrity = max_integrity
 		to_chat(user, "<span class='notice'>You fix the damage on [src] with [C].</span>")
 		return 1
+	//Hyper Change//
+	if(istype(W, /obj/item/bluespace_thread))
+		var/obj/item/bluespace_thread/B = W
+		if (istype(src, /obj/item/clothing/under) || istype(src, /obj/item/clothing/suit)) //Make sure the thread is used on an item that could be ripped off in the first place
+			roomy = 1 //True
+			user.show_message("<span class='notice'>You add a few stiches to your clothing, and find them to fit a little looser.</span>", 1)
+			B.uses -= 1 //One use has been used
+			if(B.uses <= 0)
+				user.show_message("<span class='notice'>The thread has been used up!</span>", 1)
+				qdel(B)
+		else
+			user.show_message("<span class='notice'>You probably don't need any more room in that.</span>", 1)
 	return ..()
 
 /obj/item/clothing/Destroy()

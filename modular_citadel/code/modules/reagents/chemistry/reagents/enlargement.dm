@@ -98,10 +98,15 @@
 	B.cached_size = B.cached_size + 0.05
 	if (B.cached_size >= 8.5 && B.cached_size < 9)
 		if(H.w_uniform || H.wear_suit)
-			var/target = M.get_bodypart(BODY_ZONE_CHEST)
-			to_chat(M, "<span class='warning'>Your breasts begin to strain against your clothes tightly!</b></span>")
-			M.adjustOxyLoss(5, 0)
-			M.apply_damage(1, BRUTE, target)
+			//Hyper change// Check for a flag before we remove clothes.
+			var/obj/item/clothing/suit = H.get_item_by_slot(SLOT_W_UNIFORM)
+			var/obj/item/clothing/jacket = H.get_item_by_slot(SLOT_WEAR_SUIT)
+			if(!suit.roomy == 1 || !jacket.roomy == 1) //If the clothes are "roomy" then don't do this.
+			//End Hyper Change//
+				var/target = M.get_bodypart(BODY_ZONE_CHEST)
+				to_chat(M, "<span class='warning'>Your breasts begin to strain against your clothes tightly!</b></span>")
+				M.adjustOxyLoss(5, 0)
+				M.apply_damage(1, BRUTE, target)
 	B.update()
 	..()
 
@@ -272,9 +277,14 @@
 	P.cached_length = P.cached_length + 0.1
 	if (P.cached_length >= 20.5 && P.cached_length < 21)
 		if(H.w_uniform || H.wear_suit|| H.arousalloss > 33)
-			var/target = M.get_bodypart(BODY_ZONE_CHEST)
-			to_chat(M, "<span class='warning'>Your cock begins to strain against your clothes tightly!</b></span>")
-			M.apply_damage(1, BRUTE, target)
+			//Hyper change// Check for a flag before we remove clothes.
+			var/obj/item/clothing/suit = H.get_item_by_slot(SLOT_W_UNIFORM)
+			var/obj/item/clothing/jacket = H.get_item_by_slot(SLOT_WEAR_SUIT)
+			if(!suit.roomy == 1 || !jacket.roomy == 1) //If the clothes are "roomy" then don't do this.
+			//End Hyper Change//
+				var/target = M.get_bodypart(BODY_ZONE_CHEST)
+				to_chat(M, "<span class='warning'>Your cock begins to strain against your clothes tightly!</b></span>")
+				M.apply_damage(1, BRUTE, target)
 
 	P.update()
 	..()

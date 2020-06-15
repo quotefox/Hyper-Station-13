@@ -87,7 +87,7 @@ Icons, maybe?
 
 //Called when someone is clicked with the leash
 /obj/item/leash/attack(mob/living/carbon/C, mob/living/user) //C is the target, user is the one with the leash
-	if(istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/petcollar) || istype(C.get_item_by_slot(SLOT_NECK), /obj/item/electropack/shockcollar)) //TODO: Shock collars too why not
+	if(istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/petcollar) || istype(C.get_item_by_slot(SLOT_NECK), /obj/item/electropack/shockcollar))
 		var/leashtime = 50
 		if(C.handcuffed)
 			leashtime = 5
@@ -394,3 +394,10 @@ Icons, maybe?
 	QDEL_NULL(mobhook_leash_freepet)
 	leash_pet.add_movespeed_modifier(MOVESPEED_ID_LEASH, multiplicative_slowdown = 5)
 
+/datum/crafting_recipe/leash
+	name = "Leash"
+	result = /obj/item/leash
+	time = 40
+	reqs = list(/obj/item/stack/sheet/metal = 1,
+				/obj/item/stack/sheet/cloth = 3)
+	category = CAT_MISC
