@@ -9,8 +9,8 @@
 	size 					= BREASTS_SIZE_DEF  //SHOULD BE A LETTER, starts as a number...???
 	var/cached_size			= null //for enlargement SHOULD BE A NUMBER
 	var/prev_size			//For flavour texts SHOULD BE A LETTER
-	//var/breast_sizes 		= list ("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "huge", "massive", "flat")
-	var/breast_values 		= list ("a" =  1, "b" = 2, "c" = 3, "d" = 4, "e" = 5, "f" = 6, "g" = 7, "h" = 8, "i" = 9, "j" = 10, "k" = 11, "l" = 12, "m" = 13, "n" = 14, "o" = 15, "huge" = 16, "massive" = 17, "flat" = 0) // Note: Do not forget to define new sizes.
+	//var/breast_sizes 		= list ("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "huge", "massive", "giga", "flat")
+	var/breast_values 		= list ("a" =  1, "b" = 2, "c" = 3, "d" = 4, "e" = 5, "f" = 6, "g" = 7, "h" = 8, "i" = 9, "j" = 10, "k" = 11, "l" = 12, "m" = 13, "n" = 14, "o" = 15, "huge" = 16, "massive" = 17, "giga" = 18, "flat" = 0) // Note: Do not forget to define new sizes.
 	var/statuscheck			= FALSE
 	fluid_id				= "milk"
 	var/amount				= 2
@@ -125,20 +125,20 @@
 			if(!owner.has_status_effect(/datum/status_effect/chem/breast_enlarger))
 				owner.apply_status_effect(/datum/status_effect/chem/breast_enlarger)
 				statuscheck = TRUE
-		if(16 to 17) //if Ridiculous
+		if(16 to 18) //if Ridiculous
 			size = breast_values[round(cached_size)]
 			if(!owner.has_status_effect(/datum/status_effect/chem/breast_enlarger))
 				owner.apply_status_effect(/datum/status_effect/chem/breast_enlarger)
 				statuscheck = TRUE
 
-		if(18 to INFINITY) //if Hyper-Ridiculous
+		if(19 to INFINITY) //if Hyper-Ridiculous
 			size = cached_size
 			if(!owner.has_status_effect(/datum/status_effect/chem/breast_enlarger))
 				owner.apply_status_effect(/datum/status_effect/chem/breast_enlarger)
 				statuscheck = TRUE
 
 
-	if(round(cached_size) < 17)//Because byond doesn't count from 0, I have to do this.
+	if(round(cached_size) < 19)//Because byond doesn't count from 0, I have to do this.
 		if (prev_size == 0)
 			prev_size = "flat"
 		if(size == 0)//Bloody byond with it's counting from 1
@@ -154,5 +154,5 @@
 			var/mob/living/carbon/human/H = owner
 			H.Force_update_genitals()
 		prev_size = size
-	else if (cached_size >= 18)
-		size = "massive"
+	else if (cached_size >= 19)
+		size = "giga"
