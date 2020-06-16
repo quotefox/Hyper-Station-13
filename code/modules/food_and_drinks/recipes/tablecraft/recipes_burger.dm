@@ -294,7 +294,7 @@
 	result = /obj/item/reagent_containers/food/snacks/burger/baconburger
 	subcategory = CAT_BURGER
 
-/datum/crafting_recipe/food/burger
+/datum/crafting_recipe/food/cumburger
 	name = "Cumburger"
 	reqs = list(
 			/datum/reagent/consumable/semen = 10,
