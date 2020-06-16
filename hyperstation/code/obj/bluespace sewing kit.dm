@@ -8,7 +8,7 @@
 	icon_state = "thread"
 	item_state = "thread"
 	var/uses = 5 //Give it a few charges so it can last through the shift
-    w_class = WEIGHT_CLASS_TINY
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/bluespace_thread/attack_obj(obj/O, mob/living/user)
     . = ..()
