@@ -219,8 +219,8 @@
 	description = "An opaque white liquid produced by the mammary glands of mammals."
 	color = "#DFDFDF" // rgb: 223, 223, 223
 	taste_description = "milk"
-	glass_icon_state = "glass_white"
-	glass_name = "glass of milk"
+	glass_icon_state = "milkglass"
+	glass_name = "milk drum"
 	glass_desc = "White and nutritious goodness!"
 
 /datum/reagent/consumable/milk/on_mob_life(mob/living/carbon/M)
