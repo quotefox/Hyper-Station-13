@@ -1,6 +1,6 @@
 /obj/item/pregnancytest
 	name 				= "pregnancy test"
-	desc 				= "a one time use small device, used to determine if someone is pregnant or not."
+	desc 				= "A one time use small device, used to determine whether someone is pregnant or not."
 	icon 				= 'hyperstation/icons/obj/pregnancytest.dmi'
 	throwforce			= 0
 	icon_state 			= "ptest"
@@ -27,7 +27,7 @@
 	icon_state 	= "negative"
 	name = "[results] pregnancy test"
 	status = 1
-	to_chat(user, "<span class='notice'>You use the pregnancy test, the display reads positive!</span>")
+	to_chat(user, "<span class='notice'>You use the pregnancy test, the display reads negative!</span>")
 
 
 /obj/item/pregnancytest/proc/test(mob/living/user)
