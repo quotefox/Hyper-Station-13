@@ -1,0 +1,19 @@
+"a" = (/turf/closed/indestructible/riveted,/area/deepbluespace)
+"b" = (/turf/open/indestructible/deepBluespaceExit,/area/deepbluespace)
+"c" = (/turf/open/floor/plating,/area/deepbluespace)
+"e" = (/obj/machinery/power/apc/auto_name/north{cell_type = /obj/item/stock_parts/cell/bluespace},/turf/open/floor/plating,/area/deepbluespace)
+"f" = (/obj/machinery/light{dir = 8},/turf/open/floor/plating,/area/deepbluespace)
+"g" = (/obj/machinery/light{dir = 4},/turf/open/floor/plating,/area/deepbluespace)
+"h" = (/obj/machinery/light,/turf/open/floor/plating,/area/deepbluespace)
+
+(1,1,1) = {"
+aaaabaaaa
+aceccccca
+afcccccga
+accccccca
+accccccca
+accccccca
+afcccccga
+accchccca
+aaaaaaaaa
+"}
