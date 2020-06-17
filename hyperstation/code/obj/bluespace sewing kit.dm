@@ -7,7 +7,8 @@
 	icon = 'hyperstation/icons/obj/bluespace_thread.dmi'
 	icon_state = "thread"
 	item_state = "thread"
-	var/uses = 2 //Give it two charges, so you can hit your uniform and jacket
+	var/uses = 5 //Give it a few charges so it can last through the shift
+	w_class = WEIGHT_CLASS_TINY
 
 /obj/item/bluespace_thread/attack_obj(obj/O, mob/living/user)
     . = ..()
@@ -15,7 +16,6 @@
         user.show_message("<span class='notice'>You find yourself unable to stitch this.</span>", 1)
         return
 
-    
 /obj/item/bluespace_thread/attack_self(mob/living/user)
     user.show_message("<span class='notice'>The spool has [uses] uses remaining.</span>", 1)
 
@@ -31,5 +31,5 @@
 	result = /obj/item/bluespace_thread
 	time = 40
 	reqs = list(/obj/item/stack/ore/bluespace_crystal = 1,
-				/obj/item/stack/sheet/cloth = 2)
+				/obj/item/stack/sheet/cloth = 3)
 	category = CAT_MISC
