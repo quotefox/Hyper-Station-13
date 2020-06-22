@@ -10,8 +10,9 @@
 	shape					= "single"
 	var/sack_size			= BALLS_SACK_SIZE_DEF
 	var/cached_size			= 6
-	fluid_mult				= 0.133 // Set to a lower value due to production scaling with size (I.E. 6 inches the "normal" amount)
-	fluid_max_volume		= 6
+	//fluid_mult				= 0.133 // Set to a lower value due to production scaling with size (I.E. 6 inches the "normal" amount)
+	fluid_mult				= 1.0 //Defaults to 1 no matter what you do. It just does. Just gonna adapt I guess.
+	fluid_max_volume		= 3
 	fluid_id 				= "semen"
 	producing				= TRUE
 	can_masturbate_with		= FALSE
@@ -24,17 +25,19 @@
 		return
 	if(!reagents || !owner)
 		return
-	reagents.maximum_volume = fluid_max_volume * cached_size// fluid amount is also scaled by the size of the organ
+	//reagents.maximum_volume = fluid_max_volume * cached_size// fluid amount is also scaled by the size of the organ
+	reagents.maximum_volume = fluid_max_volume * ((cached_size / 2) + 1) * ((size / 2) + 1) * fluid_mult //Hyper - New calculation for more dynamic fluid levels. I can't believe I typed that.
 	if(fluid_id && producing)
 		if(reagents.total_volume == 0) // Apparently, 0.015 gets rounded down to zero and no reagents are created if we don't start it with 0.1 in the tank.
 			fluid_rate = 0.1
 		else
-			fluid_rate = CUM_RATE * cached_size * fluid_mult // fluid rate is scaled by the size of the organ
+			//fluid_rate = CUM_RATE * cached_size * fluid_mult // fluid rate is scaled by the size of the organ
+			fluid_rate = ((CUM_RATE / 5) * (cached_size / 3) * (size / 4) * fluid_mult) / 10 //Hyper - Production was way too high by default. This should drop it back down, but allow for it to get really high
 		generate_cum()
 
 /obj/item/organ/genital/testicles/proc/generate_cum()
-	reagents.maximum_volume = fluid_max_volume
-	if(reagents.total_volume >= reagents.maximum_volume)
+	//reagents.maximum_volume = fluid_max_volume //This is the line that broke cum for so long
+	if(reagents.total_volume >= reagents.maximum_volume - 0.1) //Hyper - Check for it being close to the maximum. It sometimes doesn't proc due to a rounding error.
 		if(!sent_full_message)
 			send_full_message()
 			sent_full_message = TRUE
@@ -66,11 +69,14 @@
 
 /obj/item/organ/genital/testicles/update_appearance()
 	switch(size)
-		if(0.1 to 1)
+		//if(0.1 to 1) //Hyper - Change the displayed ball sizes
+		if(0.1 to 3)
 			size_name = "average"
-		if(1.1 to 2)
+		//if(1.1 to 2)
+		if(3.1 to 8)
 			size_name = "enlarged"
-		if(2.1 to INFINITY)
+		//if(2.1 to INFINITY)
+		if(8.1 to INFINITY)
 			size_name = "engorged"
 		else
 			size_name = "nonexistant"

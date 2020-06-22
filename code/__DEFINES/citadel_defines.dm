@@ -32,9 +32,9 @@
 #define BALLS_VOLUME_BASE	25
 #define BALLS_VOLUME_MULT	1
 
-#define BALLS_SIZE_MIN		1
-#define BALLS_SIZE_DEF		2
-#define BALLS_SIZE_MAX		3
+#define BALLS_SIZE_MIN		1 //Hyper - Unchanged
+#define BALLS_SIZE_DEF		8 //Changed from 2
+#define BALLS_SIZE_MAX		40 //Changed from 3
 
 #define BALLS_SACK_SIZE_MIN 1
 #define BALLS_SACK_SIZE_DEF	8
