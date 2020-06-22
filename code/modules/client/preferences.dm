@@ -779,6 +779,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						else
 							dat += "<b>Testicles Color:</b></a><BR>"
 							dat += "<span style='border: 1px solid #161616; background-color: #[features["balls_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=balls_color;task=input'>Change</a><br>"
+						//dat += "<b>Ball Circumference:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=balls_size;task=input'>[features["balls_size"]] inch(es)</a>" // The menu works but doesn't do anything yet. Need to figure it out.
 						dat += "<b>Testicles showing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_shape;task=input'>[features["balls_shape"]]</a>"
 						dat += "<b>Produces:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>[features["balls_fluid"]]</a>"
 				dat += APPEARANCE_CATEGORY_COLUMN
@@ -1979,6 +1980,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_length = input(user, "Penis length in inches:\n([COCK_SIZE_MIN]-[COCK_SIZE_MAX])", "Character Preference") as num|null
 					if(new_length)
 						features["cock_length"] = max(min( round(text2num(new_length)), COCK_SIZE_MAX),COCK_SIZE_MIN)
+
+				if("balls_size")
+					var/new_balls_size = input(user, "Testicle circumference in inches:\n([BALLS_SIZE_MIN]-[BALLS_SIZE_MAX])", "Character Preference") as num|null
+					if(new_balls_size)
+						features["balls_size"] = max(min( round(text2num(new_balls_size)), BALLS_SIZE_MAX),BALLS_SIZE_MIN)
 
 				if("cock_shape")
 					var/new_shape
