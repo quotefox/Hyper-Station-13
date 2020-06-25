@@ -840,12 +840,6 @@
 	icon_state = "rae"
 	item_state = "rae"
 
-/obj/item/toy/plush/mammal/winfre
-	desc = "An adorable stuffed toy of a pissed hyena. She looks unamused."
-	icon_state = "winfre"
-	item_state = "winfre"
-	attack_verb = list("cackled", "swirlie'd", "stepped on")
-
 /obj/item/toy/plush/mammal/zed
 	desc = "A masked stuffed toy that resembles a fierce miner. He even comes with his own little crusher!"
 	icon_state = "zed"
@@ -930,11 +924,6 @@
 	desc = "An adorable stuffed toy resembling a demi-wolf security officer. That a baton, or is she happy to see you..?"
 	icon_state = "marisol"
 	item_state = "marisol"
-
-/obj/item/toy/plush/mammal/marilyn
-	desc = "A cute stuffed fox toy. Now, about that sponge bath..."
-	icon_state = "marilyn"
-	item_state = "marilyn"
 
 /obj/item/toy/plush/catgirl
 	name = "feline plushie"

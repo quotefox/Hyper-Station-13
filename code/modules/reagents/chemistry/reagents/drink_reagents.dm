@@ -126,6 +126,15 @@
 	glass_name = "glass of lemon juice"
 	glass_desc = "Sour..."
 
+/datum/reagent/consumable/strawberryjuice
+	name = "Strawberry Juice"
+	id = "strawberryjuice"
+	description = "Refreshing seasonal summer drink."
+	color = "#F2163A"
+	taste_description = "strawberry"
+	glass_name = "glass of strawberry juice"
+	glass_desc = "Refreshing seasonal summer drink."
+
 /datum/reagent/consumable/banana
 	name = "Banana Juice"
 	id = "banana"
@@ -210,8 +219,8 @@
 	description = "An opaque white liquid produced by the mammary glands of mammals."
 	color = "#DFDFDF" // rgb: 223, 223, 223
 	taste_description = "milk"
-	glass_icon_state = "glass_white"
-	glass_name = "glass of milk"
+	glass_icon_state = "milkglass"
+	glass_name = "milk drum"
 	glass_desc = "White and nutritious goodness!"
 
 /datum/reagent/consumable/milk/on_mob_life(mob/living/carbon/M)
@@ -815,6 +824,15 @@
 	color = "#FFA500"
 	taste_description = "parsnip"
 	glass_name = "glass of parsnip juice"
+
+/datum/reagent/consumable/pineapplejuice
+	name = "Pineapple Juice"
+	id = "pineapplejuice"
+	description = "Tart, tropical, and hotly debated."
+	color = "#F7D435"
+	taste_description = "pineapple"
+	glass_name = "glass of pineapple juice"
+	glass_desc = "Tart, tropical, and hotly debated."
 
 /datum/reagent/consumable/peachjuice //Intended to be extremely rare due to being the limiting ingredients in the blazaam drink
 	name = "Peach Juice"

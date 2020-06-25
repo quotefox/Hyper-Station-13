@@ -3,6 +3,7 @@
 	desc = "The common language of lizard-people, composed of sibilant hisses and rattles."
 	speech_verb = "hisses"
 	ask_verb = "hisses"
+	sing_verb = "sings"
 	exclaim_verb = "roars"
 	key = "o"
 	flags = TONGUELESS_SPEECH

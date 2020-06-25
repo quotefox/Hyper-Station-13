@@ -21,7 +21,7 @@
 
 /datum/bounty/item/engineering/gas/tritium_tank
 	name = "Full Tank of Tritium"
-	description = "Station 49 is looking to kickstart their research program. Ship them a tank full of Tritium."
+	description = "Station 42 is looking to kickstart their research program. Ship them a tank full of Tritium."
 	gas_type = /datum/gas/tritium
 
 /datum/bounty/item/engineering/pacman

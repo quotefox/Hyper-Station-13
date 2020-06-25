@@ -26,8 +26,6 @@ GLOBAL_VAR(query_debug_log)
 GLOBAL_PROTECT(query_debug_log)
 GLOBAL_VAR(world_job_debug_log)
 GLOBAL_PROTECT(world_job_debug_log)
-GLOBAL_VAR(world_cloning_log)
-GLOBAL_PROTECT(world_cloning_log)
 
 GLOBAL_LIST_EMPTY(bombers)
 GLOBAL_PROTECT(bombers)

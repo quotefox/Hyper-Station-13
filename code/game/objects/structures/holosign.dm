@@ -69,7 +69,7 @@
 /obj/structure/holosign/barrier/atmos
 	name = "holo firelock"
 	desc = "A holographic barrier resembling a firelock. Though it does not prevent solid objects from passing through, gas is kept out."
-	icon_state = "holo_firelock"
+	icon_state = "holo_fan"
 	density = FALSE
 	layer = ABOVE_MOB_LAYER
 	anchored = TRUE
@@ -80,6 +80,9 @@
 /obj/structure/holosign/barrier/atmos/Initialize()
 	. = ..()
 	air_update_turf(TRUE)
+
+/obj/structure/holosign/barrier/atmos/blocksTemperature()
+	return TRUE
 
 /obj/structure/holosign/barrier/cyborg
 	name = "Energy Field"

@@ -58,7 +58,7 @@
 			B.author	=	query_get_random_books.item[2]
 			B.title		=	query_get_random_books.item[3]
 			B.dat		=	query_get_random_books.item[4]
-			B.name		=	"Book: [B.title]"
+			B.name		=	"Datapad: [B.title]"
 			B.icon_state=	"book[rand(1,8)]"
 	qdel(query_get_random_books)
 

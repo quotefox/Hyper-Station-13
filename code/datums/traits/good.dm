@@ -203,3 +203,33 @@
 /datum/quirk/bloodpressure/remove()
 	var/mob/living/M = quirk_holder
 	M.blood_ratio = 1
+
+/datum/quirk/draconicspeaker
+	name = "Draconic speaker"
+	desc = "Due to your time spent around lizards, you can speak Draconic!"
+	value = 1
+	gain_text = "<span class='notice'>You feel sensitive to hissing noises and your tongue curls comfortably.</span>"
+	lose_text = "<span class='notice'>You forget how to speak Draconic!</span>"
+
+/datum/quirk/draconicspeaker/add()
+	var/mob/living/M = quirk_holder
+	M.grant_language(/datum/language/draconic)
+
+/datum/quirk/draconicspeaker/remove()
+	var/mob/living/M = quirk_holder
+	M.remove_language(/datum/language/draconic)
+
+/datum/quirk/slimespeaker
+	name = "Slime speaker"
+	desc = "Due to your time spent around slimes, you can speak Slimespeak!"
+	value = 1
+	gain_text = "<span class='notice'>You feel sensitive to blorbling noises, and your throat produces melodic sounds.</span>"
+	lose_text = "<span class='notice'>You forget how to speak Slimespeak!</span>"
+
+/datum/quirk/slimespeaker/add()
+	var/mob/living/M = quirk_holder
+	M.grant_language(/datum/language/slime)
+
+/datum/quirk/slimespeaker/remove()
+	var/mob/living/M = quirk_holder
+	M.remove_language(/datum/language/slime)

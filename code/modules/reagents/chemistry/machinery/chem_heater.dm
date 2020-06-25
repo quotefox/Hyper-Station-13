@@ -79,6 +79,15 @@
 		return
 	return ..()
 
+	if(beaker)
+		if(istype(I, /obj/item/reagent_containers/dropper))
+			var/obj/item/reagent_containers/dropper/D = I
+			D.afterattack(beaker, user, 1)
+
+		if(istype(I, /obj/item/reagent_containers/syringe))
+			var/obj/item/reagent_containers/syringe/S = I
+			S.afterattack(beaker, user, 1)
+
 /obj/machinery/chem_heater/on_deconstruction()
 	replace_beaker()
 	return ..()

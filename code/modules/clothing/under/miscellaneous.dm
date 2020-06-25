@@ -113,15 +113,15 @@
 	item_color = "vice"
 	can_adjust = FALSE
 /obj/item/clothing/under/rank/centcom_officer
-	desc = "It's a jumpsuit worn by CentCom Officers."
-	name = "\improper CentCom officer's jumpsuit"
+	desc = "CentCom officer's jumpsuit, adorned with a golden K and a star, signifying work under Kinaris."
+	name = "\improper CentCom Officer's jumpsuit"
 	icon_state = "officer"
 	item_state = "g_suit"
 	item_color = "officer"
 	alt_covers_chest = TRUE
 /obj/item/clothing/under/rank/centcom_commander
-	desc = "It's a jumpsuit worn by CentCom's highest-tier Commanders."
-	name = "\improper CentCom officer's jumpsuit"
+	desc = "It's a jumpsuit worn by CentCom's highest-tier Commanders, adorned with a golden K and a star. signifying work under Kinaris."
+	name = "\improper CentCom Commander's jumpsuit"
 	icon_state = "centcom"
 	item_state = "dg_suit"
 	item_color = "centcom"
@@ -756,3 +756,13 @@
 	item_state = "christmasfemaleg"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
+	
+/obj/item/clothing/under/zone/monolith
+	name = "Urban BDU"
+	desc = "A splinter urban camouflage Battle-Dress uniform."
+	icon_state = "camourban"
+	item_state = "camourban"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	fitted = NO_FEMALE_UNIFORM
+	can_adjust = FALSE
+	resistance_flags = NONE

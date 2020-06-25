@@ -1,3 +1,4 @@
+
 GLOBAL_VAR_INIT(LOOC_COLOR, null)//If this is null, use the CSS for OOC. Otherwise, use a custom colour.
 GLOBAL_VAR_INIT(normal_looc_colour, "#6699CC")
 

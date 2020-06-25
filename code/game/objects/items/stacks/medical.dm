@@ -95,8 +95,9 @@
 			if(affecting.heal_damage(heal_brute, heal_burn))
 				C.update_damage_overlays()
 			if (fix_bone) //Fix broken bones on targeted limb
-				affecting.broken = 0
-				affecting.disabled = 0
+				if(affecting.broken == 1)
+					affecting.broken = 0
+					affecting.disabled = 0
 		else
 			to_chat(user, "<span class='notice'>Medicine won't work on a robotic limb!</span>")
 	else
@@ -108,7 +109,7 @@
 	name = "plaster gauze"
 	gender = PLURAL
 	singular_name = "plaster gauze"
-	desc = "A roll of plaster of paris that is extremely effective at aiding bone fratcutres, but does not heal wounds."
+	desc = "A roll of plaster of paris that is extremely effective at aiding bone fractures, but does not heal wounds."
 	icon_state = "pgauze"
 	self_delay = 300
 	max_amount = 10

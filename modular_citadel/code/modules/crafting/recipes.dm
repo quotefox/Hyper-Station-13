@@ -9,3 +9,4 @@
 	reqs = list(/obj/item/stack/cable_coil = 1, /obj/item/stack/rods = 1,  /obj/item/reagent_containers/food/snacks/grown/potato = 1, /obj/item/aicard = 1 )
 	result = /obj/item/aicard/potato
 	category = CAT_ROBOT
+

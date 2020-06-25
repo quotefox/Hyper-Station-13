@@ -55,6 +55,13 @@
 	desc = "Worn by the Head of Personnel. It smells faintly of bureaucracy."
 	icon_state = "hopcloak"
 
+/obj/item/clothing/neck/cloak/centcom
+	name = "central command's cloak"
+	desc = "Worn by High-Ranking Central Command Personnel. I guess they needed one too."
+	icon_state = "centcomcloak"
+	armor = list("melee" = 35, "bullet" = 40, "laser" = 25, "energy" = 10, "bomb" = 25, "bio" = 20, "rad" = 20, "fire" = 60, "acid" = 60)
+	body_parts_covered = CHEST|GROIN|ARMS
+
 /obj/item/clothing/suit/hooded/cloak/goliath
 	name = "goliath cloak"
 	icon_state = "goliath_cloak"

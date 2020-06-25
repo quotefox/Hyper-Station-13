@@ -234,7 +234,7 @@
 	name = "Anomolous virus food"
 	id = "virusfood_laughter"
 	results = list("laughtervirusfood" = 1)
-	required_reagents = list("laughter" = 5, "virus_food" = 1)
+	required_reagents = list("laughter" = 5, "virusfood" = 1)
 
 /datum/chemical_reaction/virus_food_admin
 	name = "Highly unstable virus Food"

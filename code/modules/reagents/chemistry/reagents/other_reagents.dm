@@ -1586,17 +1586,20 @@
 	name = "anomolous virus food"
 	color = "#ffa6ff" //rgb: 255,166,255
 	taste_description = "a bad idea"
-	
+	id = "laughtervirusfood"
+
 /datum/reagent/consumable/virus_food/advvirusfood
 	name = "highly unstable virus food"
 	color = "#ffffff" //rgb: 255,255,255 ITS PURE WHITE CMON
 	taste_description = "an EXTREMELY bad idea"
+	id = "advvirusfood"
 
 /datum/reagent/consumable/virus_food/viralbase
 	name = "Experimental viral base"
 	description = "Recently discovered by Nanotrasen's top scientists after years of research, this substance can be used as the base for extremely rare and extremely dangerous viruses once exposed to uranium."
 	color = "#fff0da"
 	taste_description = "tears of scientists"
+	id = "viralbase"
 
 /datum/reagent/colorful_reagent/on_mob_life(mob/living/carbon/M)
 	if(!no_mob_color)
@@ -2148,7 +2151,7 @@
 	can_synth = FALSE
 	var/datum/dna/original_dna
 	var/reagent_ticks = 0
-	invisible = TRUE
+	chemical_flags = REAGENT_INVISIBLE
 
 /datum/reagent/changeling_string/on_mob_metabolize(mob/living/carbon/C)
 	if(C && C.dna && data["desired_dna"])
