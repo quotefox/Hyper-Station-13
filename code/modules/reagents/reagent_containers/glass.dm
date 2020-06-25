@@ -126,7 +126,7 @@
 
 /obj/item/reagent_containers/glass/beaker/on_reagent_change(changetype)
 	update_icon()
-	
+
 /obj/item/reagent_containers/glass/bottle/viralbase
 	name = "Highly potent Viral Base Bottle"
 	desc = "A small bottle. Contains a trace amount of a substance found by scientists that can be used to create extremely advanced diseases once exposed to uranium."
@@ -363,6 +363,16 @@
 
 /obj/item/reagent_containers/glass/beaker/waterbottle/large/empty
 	list_reagents = list()
+
+/obj/item/reagent_containers/glass/beaker/waterbottle/wataur
+	name = "Bottled Wataur"
+	desc = "Finally, a bottle as proportionate as you. Incredible!"
+	icon = 'icons/obj/drinks.dmi'
+	icon_state = "wataur"
+	list_reagents = list("water" = 100) //robust ass wataur
+	volume = 100
+	amount_per_transfer_from_this = 20
+	container_HP = 1
 
 /obj/item/reagent_containers/glass/get_belt_overlay()
 	return mutable_appearance('icons/obj/clothing/belt_overlays.dmi', "bottle")
