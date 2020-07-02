@@ -206,6 +206,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/current_tab = 0
 
 	var/unlock_content = 0
+	var/vip = 0
 
 	var/list/ignoring = list()
 
@@ -244,6 +245,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			unlock_content = C.IsByondMember()
 			if(unlock_content)
 				max_save_slots = 16
+			if(clientckey in GLOB.patreons)
+				vip = 1
 	var/loaded_preferences_successfully = load_preferences()
 	if(loaded_preferences_successfully)
 		if(load_character())
