@@ -23,6 +23,7 @@
 	var/inertia_move_delay = 10
 	var/pass_flags = 0
 	var/moving_diagonally = 0 //0: not doing a diagonal move. 1 and 2: doing the first/second step of the diagonal move
+	var/atom/movable/moving_from_pull
 	var/list/client_mobs_in_contents // This contains all the client mobs within this container
 	var/list/acted_explosions	//for explosion dodging
 	glide_size = 7
@@ -159,6 +160,7 @@
 	if(!Process_Spacemove(get_dir(pulling.loc, A)))
 		return
 	step(pulling, get_dir(pulling.loc, A))
+	return TRUE
 
 
 
@@ -179,6 +181,9 @@
 		if(pulling.anchored)
 			stop_pulling()
 			return
+
+	if(pulledby && moving_diagonally != FIRST_DIAG_STEP && get_dist(src, pulledby) > 1)		//separated from our puller and not in the middle of a diagonal move.
+		pulledby.stop_pulling()
 
 
 
@@ -235,13 +240,8 @@
 /atom/movable/Move(atom/newloc, direct)
 	var/atom/movable/pullee = pulling
 	var/turf/T = loc
-	if(pulling)
-		if(pullee && get_dist(src, pullee) > 1)
-			stop_pulling()
-
-		if(pullee && pullee.loc != loc && !isturf(pullee.loc) ) //to be removed once all code that changes an object's loc uses forceMove().
-			log_game("DEBUG:[src]'s pull on [pullee] wasn't broken despite [pullee] being in [pullee.loc]. Pull stopped manually.")
-			stop_pulling()
+	if(!moving_from_pull)
+		check_pulling()
 	if(!loc || !newloc)
 		return FALSE
 	var/atom/oldloc = loc
@@ -310,7 +310,7 @@
 
 	if(.)
 		Moved(oldloc, direct)
-	if(. && pulling && pulling == pullee) //we were pulling a thing and didn't lose it during our move.
+	if(. && pulling && pulling == pullee && pulling != moving_from_pull)//we were pulling a thing and didn't lose it during our move.
 		if(pulling.anchored)
 			stop_pulling()
 
@@ -318,12 +318,10 @@
 			var/pull_dir = get_dir(src, pulling)
 			//puller and pullee more than one tile away or in diagonal position
 			if(get_dist(src, pulling) > 1 || (moving_diagonally != SECOND_DIAG_STEP && ((pull_dir - 1) & pull_dir)))
+				pulling.moving_from_pull = src
 				pulling.Move(T, get_dir(pulling, T)) //the pullee tries to reach our previous position
-				if(pulling && get_dist(src, pulling) > 1) //the pullee couldn't keep up
-					stop_pulling()
 
-			if(pulledby && moving_diagonally != FIRST_DIAG_STEP && get_dist(src, pulledby) > 1)//separated from our puller and not in the middle of a diagonal move.
-				pulledby.stop_pulling()
+			pulling.moving_from_pull = null
 
 
 	last_move = direct
