@@ -19,7 +19,6 @@
 	var/ride_check_rider_restrained = FALSE
 	var/ride_check_ridden_incapacitated = FALSE
 	var/list/offhands = list() // keyed list containing all the current riding offsets associated by mob
-	var/del_on_unbuckle_all = FALSE
 
 /datum/component/riding/Initialize()
 	if(!ismovableatom(parent))
@@ -29,11 +28,8 @@
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, .proc/vehicle_moved)
 
 /datum/component/riding/proc/vehicle_mob_unbuckle(datum/source, mob/living/M, force = FALSE)
-	var/atom/movable/AM = parent
 	restore_position(M)
 	unequip_buckle_inhands(M)
-	if(del_on_unbuckle_all && !AM.has_buckled_mobs())
-		qdel(src)
 
 /datum/component/riding/proc/vehicle_mob_buckle(datum/source, mob/living/M, force = FALSE)
 	handle_vehicle_offsets()
@@ -195,7 +191,6 @@
 
 ///////Yes, I said humans. No, this won't end well...//////////
 /datum/component/riding/human
-	del_on_unbuckle_all = TRUE
 
 /datum/component/riding/human/Initialize()
 	. = ..()
@@ -249,7 +244,6 @@
 	user.visible_message("<span class='warning'>[AM] pushes [user] off of [AM.p_them()]!</span>")
 
 /datum/component/riding/cyborg
-	del_on_unbuckle_all = TRUE
 
 /datum/component/riding/cyborg/ride_check(mob/user)
 	var/atom/movable/AM = parent
