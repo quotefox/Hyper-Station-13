@@ -324,10 +324,8 @@
 	switch(M.dir)
 		if(NORTH)
 			animate(M, pixel_x = 0, pixel_y = offset, 3)
-			M.layer = 4
 		if(SOUTH)
 			animate(M, pixel_x = 0, pixel_y = -offset, 3)
-			M.layer = 3.9
 		if(EAST)
 			if(M.lying == 270) //update the dragged dude's direction if we've turned
 				M.lying = 90
