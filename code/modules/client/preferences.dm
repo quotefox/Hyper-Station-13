@@ -2142,9 +2142,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //Hyperstation Body Size
 
 				if("bodysize")
-					var/new_bodysize = input(user, "Choose your desired sprite size:\n(85%-110%), Warning: May make your character look distorted!", "Character Preference") as num|null
+					var/new_bodysize = input(user, "Choose your desired sprite size:\n([MIN_BODYSIZE]-[MAX_BODYSIZE]), Warning: May make your character look distorted!", "Character Preference") as num|null
 					if (new_bodysize)
-						body_size = max(min( round(text2num(new_bodysize)), 110),85)
+						body_size = max(min( round(text2num(new_bodysize)), MAX_BODYSIZE),MIN_BODYSIZE)
 
 
 
