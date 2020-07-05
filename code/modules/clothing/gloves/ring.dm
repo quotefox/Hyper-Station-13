@@ -19,14 +19,14 @@
 /obj/item/clothing/gloves/ring/diamond
 	name = "diamond ring"
 	item_state = "dring"
+	icon_state = "ringdiamond"
+	desc = "An expensive ring, studded with a diamond. Cultures have used these rings in courtship for a millenia."
 
 /obj/item/clothing/gloves/ring/diamond/attack_self(mob/user)
 	user.visible_message("<span class='warning'>\The [user] gets down on one knee, presenting \the [src].</span>","<span class='warning'>You get down on one knee, presenting \the [src].</span>")
-	desc = "An expensive ring, studded with a diamond. Cultures have used these rings in courtship for a millenia."
-	icon_state = "ringdiamond"
 
 /obj/item/clothing/gloves/ring/silver
 	name = "silver ring"
-	desc = "A tiny silver ring, sized to wrap around a finger."
-	icon_state = "ringsilver"
 	item_state = "sring"
+	icon_state = "ringsilver"
+	desc = "A tiny silver ring, sized to wrap around a finger."
