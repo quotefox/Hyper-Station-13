@@ -904,7 +904,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<b>Ghosts of Others:</b> <a href='?_src_=prefs;task=input;preference=ghostothers'>[button_name]</a><br>"
 			dat += "<br>"
-			//dat += "<b>FPS:</b> <a href='?_src_=prefs;preference=clientfps;task=input'>[clientfps]</a><br>"
+			dat += "<b>FPS:</b> <a href='?_src_=prefs;preference=clientfps;task=input'>[clientfps]</a><br>"
 			dat += "<b>Parallax (Fancy Space):</b> <a href='?_src_=prefs;preference=parallaxdown' oncontextmenu='window.location.href=\"?_src_=prefs;preference=parallaxup\";return false;'>"
 			switch (parallax)
 				if (PARALLAX_LOW)
@@ -2133,11 +2133,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if (pickedmap)
 						preferred_map = maplist[pickedmap]
 
-//				if ("clientfps")
-//					var/desiredfps = input(user, "Choose your desired fps. (0 = synced with server tick rate (currently:[world.fps]))", "Character Preference", clientfps)  as null|num
-//					if (!isnull(desiredfps))
-//						clientfps = desiredfps
-//						parent.fps = desiredfps
+				if ("clientfps")
+					var/desiredfps = input(user, "Choose your desired fps. (0 = synced with server tick rate (currently:[world.fps]))", "Character Preference", clientfps)  as null|num
+					if (!isnull(desiredfps))
+						clientfps = desiredfps
+						parent.fps = desiredfps
 
 //Hyperstation Body Size
 
