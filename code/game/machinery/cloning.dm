@@ -164,8 +164,6 @@
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
 
 	H.hardset_dna(ui, mutation_index, H.real_name, null, mrace, features)
-	if (H.custom_body_size)
-		H.size_multiplier =  (max(min( round((H.custom_body_size)), MAX_BODYSIZE),MIN_BODYSIZE)* 0.01) //set their size if they are cloning
 	if(prob(50 - efficiency*10)) //Chance to give a bad mutation.
 		H.easy_randmut(NEGATIVE+MINOR_NEGATIVE) //100% bad mutation. Can be cured with mutadone.
 
@@ -207,6 +205,8 @@
 
 		H.suiciding = FALSE
 	attempting = FALSE
+	if (H.custom_body_size)
+		H.size_multiplier =  (max(min( round((H.custom_body_size)), MAX_BODYSIZE),MIN_BODYSIZE)* 0.01) //set their size if they are cloning
 	return TRUE
 
 //Grow clones to maturity then kick them out.  FREELOADERS
