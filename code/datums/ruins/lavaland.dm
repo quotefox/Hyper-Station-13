@@ -223,3 +223,11 @@
 	description = "Mystery to be solved."
 	suffix = "lavaland_surface_puzzle.dmm"
 	cost = 5
+
+/datum/map_template/ruin/lavaland/oasis
+	name = "Oasis"
+	id = "oasis"
+	description = "A little paradise in the middle of hell."
+	suffix = "lavaland_surface_oasis.dmm"
+	allow_duplicates = FALSE
+	cost = 0
