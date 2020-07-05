@@ -205,7 +205,6 @@
 
 		H.suiciding = FALSE
 	attempting = FALSE
-	if (H.custom_body_size)
 		H.size_multiplier =  (max(min( round((H.custom_body_size)), MAX_BODYSIZE),MIN_BODYSIZE)* 0.01) //set their size if they are cloning
 	return TRUE
 
