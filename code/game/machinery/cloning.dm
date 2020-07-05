@@ -204,8 +204,10 @@
 		H.give_genitals(TRUE)
 
 		H.suiciding = FALSE
+		H.custom_body_size = H.client.prefs.body_size
+		//H.size_multiplier =  (max(min( round((H.custom_body_size)), MAX_BODYSIZE),MIN_BODYSIZE)* 0.01) //Not working dont know why.
 	attempting = FALSE
-		H.size_multiplier =  (max(min( round((H.custom_body_size)), MAX_BODYSIZE),MIN_BODYSIZE)* 0.01) //set their size if they are cloning
+
 	return TRUE
 
 //Grow clones to maturity then kick them out.  FREELOADERS
