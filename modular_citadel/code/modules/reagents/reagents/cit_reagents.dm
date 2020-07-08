@@ -10,6 +10,9 @@
 	color = "#FFFFFF" // rgb: 255, 255, 255
 	can_synth = FALSE
 	nutriment_factor = 0.5 * REAGENTS_METABOLISM
+	glass_icon_state = "semen"
+	glass_name = "chalice of semen"
+	glass_desc = "In the Sumerian mythology, Enki - the God of water, was believed to have created the Tigris and Euphrates rivers by masturbating and ejaculating into their empty riverbeds."
 
 /datum/reagent/consumable/semen/reaction_turf(turf/T, reac_volume)
 	if(!istype(T))
@@ -85,7 +88,7 @@
 		S = new(T)
 	if(data["blood_DNA"])
 		S.add_blood_DNA(list(data["blood_DNA"] = data["blood_type"]))
-		
+
 /datum/reagent/consumable/milk/reaction_turf(turf/T, reac_volume)
 	if(!istype(T))
 		return

@@ -20,7 +20,7 @@
 		else
 			fluid_rate = CUM_RATE
 		if(reagents.total_volume >= 5)
-			fluid_mult = 0.5
+			fluid_mult = 0.8
 		else
 			fluid_mult = 1
 		generate_femcum()

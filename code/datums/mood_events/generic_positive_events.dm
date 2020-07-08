@@ -113,3 +113,8 @@
 
 /datum/mood_event/happy_empath/add_effects(var/mob/happytarget)
 	description = "<span class='nicegreen'>[happytarget.name]'s happiness is infectious!</span>\n"
+	
+/datum/mood_event/lewd_headpat
+	description = "<span class='nicegreen'>I love headpats so much!</span>\n"
+	mood_change = 3
+	timeout = 2 MINUTES

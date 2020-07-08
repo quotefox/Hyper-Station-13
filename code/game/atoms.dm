@@ -13,6 +13,13 @@
 	//HUD images that this atom can provide.
 	var/list/hud_possible
 
+	/// Last name used to calculate a color for the chatmessage overlays
+	var/chat_color_name
+	/// Last color calculated for the the chatmessage overlays
+	var/chat_color
+	/// A luminescence-shifted value of the last color calculated for chatmessage overlays
+	var/chat_color_darkened
+
 	//Value used to increment ex_act() if reactionary_explosions is on
 	var/explosion_block = 0
 
