@@ -1,0 +1,91 @@
+"aa" = (/turf/template_noop,/area/template_noop)
+"ab" = (/turf/closed/indestructible/riveted/boss,/area/ruin/powered/oasis)
+"ac" = (/turf/open/lava,/area/ruin/powered/oasis)
+"ad" = (/turf/closed/indestructible/riveted/boss/see_through,/area/ruin/powered/oasis)
+"ae" = (/obj/structure/reagent_dispensers/keg/aphro/strong,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/ruin/powered/oasis)
+"af" = (/turf/open/floor/grass,/area/ruin/powered/oasis)
+"ag" = (/obj/machinery/light{dir = 1},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"ah" = (/obj/structure/flora/junglebush,/obj/machinery/light{dir = 1},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"ai" = (/obj/structure/flora/tree/jungle/small,/turf/open/floor/grass,/area/ruin/powered/oasis)
+"aj" = (/obj/structure/flora/junglebush/large,/turf/open/floor/grass,/area/ruin/powered/oasis)
+"ak" = (/turf/open/water,/area/ruin/powered/oasis)
+"al" = (/obj/structure/flora/junglebush,/turf/open/floor/grass,/area/ruin/powered/oasis)
+"am" = (/obj/machinery/light{dir = 8},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"an" = (/obj/machinery/light{dir = 4},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"ao" = (/obj/structure/flora/rock/jungle,/turf/open/floor/grass,/area/ruin/powered/oasis)
+"ap" = (/obj/structure/flora/tree/jungle,/turf/open/floor/grass,/area/ruin/powered/oasis)
+"aq" = (/obj/structure/flora/junglebush/c,/turf/open/floor/grass,/area/ruin/powered/oasis)
+"ar" = (/mob/living/simple_animal/hostile/retaliate/poison/snake,/turf/open/floor/grass,/area/ruin/powered/oasis)
+"as" = (/obj/item/reagent_containers/food/snacks/grown/apple,/turf/open/floor/grass,/area/ruin/powered/oasis)
+"at" = (/obj/structure/flora/junglebush/large,/obj/machinery/light{dir = 8},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"au" = (/obj/structure/flora/grass/jungle,/turf/open/floor/grass,/area/ruin/powered/oasis)
+"av" = (/obj/machinery/light,/turf/open/floor/grass,/area/ruin/powered/oasis)
+"aw" = (/obj/structure/stone_tile{dir = 1},/obj/structure/stone_tile{dir = 4},/obj/structure/stone_tile,/turf/open/floor/grass,/area/ruin/powered/oasis)
+"ax" = (/obj/structure/stone_tile{dir = 1},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"ay" = (/obj/structure/flora/grass/jungle/b,/turf/open/floor/grass,/area/ruin/powered/oasis)
+"az" = (/obj/structure/flora/rock,/turf/open/floor/grass,/area/ruin/powered/oasis)
+"aA" = (/obj/structure/stone_tile{dir = 4},/obj/structure/stone_tile{dir = 1},/obj/structure/stone_tile{dir = 8},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"aB" = (/obj/structure/stone_tile,/obj/structure/stone_tile{dir = 4},/obj/structure/stone_tile{dir = 1},/obj/structure/stone_tile{dir = 8},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"aC" = (/obj/structure/stone_tile,/obj/structure/stone_tile{dir = 4},/obj/structure/stone_tile{dir = 1},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"aD" = (/obj/structure/stone_tile,/obj/structure/stone_tile{dir = 4},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"aE" = (/obj/structure/stone_tile,/obj/structure/stone_tile{dir = 4},/obj/structure/stone_tile{dir = 1},/obj/machinery/light{dir = 8},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"aF" = (/obj/structure/stone_tile,/obj/structure/stone_tile{dir = 4},/obj/structure/stone_tile{dir = 8},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"aG" = (/obj/structure/stone_tile,/obj/structure/stone_tile{dir = 4},/obj/structure/stone_tile{dir = 8},/obj/machinery/light{dir = 4},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"aH" = (/obj/effect/mapping_helpers/no_lava,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors)
+"aI" = (/obj/effect/mapping_helpers/no_lava,/turf/open/floor/plating/asteroid/basalt/lava,/area/lavaland/surface/outdoors)
+"aJ" = (/obj/machinery/light,/turf/open/floor/pod/dark,/area/ruin/powered/beach)
+"aK" = (/obj/machinery/light,/turf/open/floor/pod/dark,/area/ruin/powered/oasis)
+"aL" = (/obj/structure/stone_tile,/obj/structure/stone_tile{dir = 4},/obj/machinery/light{dir = 8},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"aM" = (/turf/closed/wall/r_wall,/area/ruin/powered/oasis)
+"aN" = (/obj/structure/stone_tile,/obj/structure/stone_tile{dir = 1},/obj/structure/stone_tile{dir = 8},/turf/open/floor/grass,/area/ruin/powered/oasis)
+"aO" = (/obj/machinery/light{dir = 4},/turf/open/floor/pod/dark,/area/ruin/powered/oasis)
+"aP" = (/obj/structure/table,/obj/item/flashlight/lantern,/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"aQ" = (/obj/structure/dresser,/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"aR" = (/obj/machinery/door/airlock/hatch,/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"aS" = (/obj/structure/closet/secure_closet/freezer/kitchen/mining,/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"aT" = (/obj/structure/table,/obj/structure/showcase/machinery/microwave,/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"aU" = (/obj/machinery/light{dir = 8},/turf/open/floor/pod/dark,/area/ruin/powered/oasis)
+"aV" = (/obj/machinery/light{dir = 8},/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"aW" = (/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"aX" = (/obj/machinery/light{dir = 4},/obj/structure/sink{dir = 4; pixel_x = 11},/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"aY" = (/obj/structure/bed,/obj/item/bedsheet,/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"aZ" = (/obj/machinery/portable_atmospherics/canister/oxygen,/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"ba" = (/obj/structure/reagent_dispensers/fueltank,/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"bb" = (/obj/machinery/light,/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"bc" = (/obj/structure/table,/obj/item/storage/box/drinkingglasses,/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"bd" = (/obj/structure/table,/obj/item/storage/toolbox/mechanical,/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"be" = (/obj/structure/fans/tiny,/obj/machinery/door/airlock/hatch,/turf/open/floor/pod/light,/area/ruin/powered/oasis)
+"bf" = (/obj/machinery/light{dir = 1},/turf/open/floor/pod/dark,/area/ruin/powered/oasis)
+
+(1,1,1) = {"
+aaaaababababababababababababababababaaaa
+aaababacacacacacacacacacacacacacacababaa
+aaabacacadadadadadadadadadadadadacacabaa
+aaabacadadaeafagafafafafahafafadadacabaa
+aaabacadafaiafafajakakafafafalafadacabaa
+aaabacadamafafakakakakakakafafanadacabaa
+aaabacadafaoakakakakakakakafafafadacabaa
+aaabacadalafakakakapakakakakaqafadacabaa
+aaabacadafafaqakarasafakakafafafadacabaa
+aaabacadatafafafafafakakafafafanadacabaa
+aaabacadafafauafafafakafafafaiafadacabaa
+aaabacadadafavafafawaxayazavafadadacabaa
+aaabacacadadadadadaAaBadadadadadacacabaa
+aaababacacacacacadaCaDadacacacacacababaa
+aaaaabababababababaEaBabababababababaaaa
+aaaaaaaaaaaaaaaaabaBaCabaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaabaFaBabaaaaaaaaaaaaaaaa
+aaaaaaaaaaaaaaaaabaBaGabaHaHaaaaaaaaaaaa
+aaaaaaaaaaaaaHaHabaFaBabaHaHaHaaaaaaaaaa
+aaaaaaaaaaaHaHaHabaBaAabaHaHaHaHaaaaaaaa
+aaaaaaaHaHaIaIaHabaBaBabaHaHaHaHaHaaaaaa
+aaaHaHaHaIaKaIaHabaLaBabaHaHaJaIaIaHaaaa
+aaaHaHaIaMaMaMaMabaBaNabaMaMaMaMaIaHaHaH
+aaaHaHaOaMaPaQaMaMaRaRaMaMaSaTaMaUaIaHaH
+aaaHaHaHaMaVaWaWaWaWaWaWaWaWaXaMaIaHaHaa
+aHaHaHaOaMaYaZbabbaWaWbbaWbcbdaMaUaHaHaa
+aaaaaHaHaMaMaMaMaMbebeaMaMaMaMaMaIaHaHaa
+aaaaaHaHaHaIaIbfaIaIaIaIbfaIaIaHaHaHaHaa
+aaaHaHaHaHaIaIaIaIaIaIaIaIaIaIaIaHaaaaaa
+aaaHaaaaaaaHaaaaaIaIaaaaaaaaaaaaaaaaaaaa
+"}
