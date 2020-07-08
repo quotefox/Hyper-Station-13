@@ -2194,3 +2194,45 @@
 		to_chat(M, "<span class = 'notice'>[pick("Headpats feel nice.", "The feeling of a hairball...", "Backrubs would be nice.", "Whats behind those doors?")]</span>")
 	M.adjustArousalLoss(2)
 	..()
+
+// Adding new mutation toxin stuff from /code/modules/reagent/chemistry/recipes/slime_extracts.dm
+//Some other stuff like moth and felinid ( /datum/reagent/mutationtoxin/moth and /datum/reagent/mutationtoxin/felinid ) already exists. - Chemlight
+/datum/reagent/mutationtoxin/mammal
+	name = "Mammal Mutation Toxin"
+	id = "mammalmutationtoxin"
+	description = "A fuzzy toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/mammal
+	mutationtext = "<span class='danger'>The pain subsides. You feel... furry.</span>"
+
+/datum/reagent/mutationtoxin/avian
+	name = "Avian Mutation Toxin"
+	id = "avianmutationtoxin"
+	description = "A bird-like toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/avian
+	mutationtext = "<span class='danger'>The pain subsides. You feel... feathery.</span>"
+
+/datum/reagent/mutationtoxin/aquatic
+	name = "Aquatic Mutation Toxin"
+	id = "aquaticmutationtoxin"
+	description = "A aquatic toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/aquatic
+	mutationtext = "<span class='danger'>The pain subsides. You feel... parched and wet.</span>"
+
+/datum/reagent/mutationtoxin/xeno
+	name = "Xeno Mutation Toxin"
+	id = "xenomutationtoxin"
+	description = "A xenomorhpic toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/xeno
+	mutationtext = "<span class='danger'>The pain subsides. You feel... very alien compared to your previous self.</span>"
+	
+/datum/reagent/mutationtoxin/ipc
+	name = "IPC Mutation Toxin"
+	id = "ipcmutationtoxin"
+	description = "A robotic toxin." //NANOMACHINES SON.
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/ipc
+	mutationtext = "<span class='danger'>The pain subsides. You feel... metallic.</span>"
