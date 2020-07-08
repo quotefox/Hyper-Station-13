@@ -129,3 +129,8 @@
 	name = "nanotrasen logo"
 	desc = "The Nanotrasen corporate logo."
 	icon_state = "nanotrasen_sign1"
+
+/obj/structure/sign/logo/kinaris
+	name = "kinaris logo"
+	desc = "The Kinaris corprate logo. Radiant."
+	icon_state = "kinaris_sign1"
