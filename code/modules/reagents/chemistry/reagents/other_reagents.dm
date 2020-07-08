@@ -2228,6 +2228,14 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/xeno
 	mutationtext = "<span class='danger'>The pain subsides. You feel... very alien compared to your previous self.</span>"
+
+/datum/reagent/mutationtoxin/insect
+	name = "Insect Mutation Toxin"
+	id = "insectmutationtoxin"
+	description = "A buggy toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/insect
+	mutationtext = "<span class='danger'>The pain subsides. You feel... oddly attracted to light.</span>"
 	
 /datum/reagent/mutationtoxin/ipc
 	name = "IPC Mutation Toxin"

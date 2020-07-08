@@ -720,11 +720,11 @@
 	required_other = TRUE
 	required_container = /obj/item/slime_extract/green
 
-/datum/chemical_reaction/slime/slimemoth //Mothmen species, you have a strange attraction to... lamp..
-	name = "Moth Mutation Toxin"
-	id = "mothmuttoxin"
-	results = list("mothmutationtoxin" = 1)
-	required_reagents = list("ammonia" = 1) //Ammonia, in the recipe /datum/chemical_reaction/moff and the mut /datum/reagent/mutationtoxin/moth already exists in code, THIS ONE IS OPTIONAL AS WELL.
+/datum/chemical_reaction/slime/slimeinsect //insect species, you have a strange attraction to... lamp..
+	name = "Insect Mutation Toxin"
+	id = "insectmuttoxin"
+	results = list("insectmutationtoxin" = 1)
+	required_reagents = list("ammonia" = 1) //Ammonia, used for the mothman chemical reaction so it's more of a reference.
 	required_other = TRUE
 	required_container = /obj/item/slime_extract/green
 
