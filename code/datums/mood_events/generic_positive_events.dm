@@ -118,3 +118,7 @@
 	description = "<span class='nicegreen'>I love headpats so much!</span>\n"
 	mood_change = 3
 	timeout = 2 MINUTES
+
+/datum/mood_event/radiant
+	description = "<span class='nicegreen'>I have seen the light of The Phoenix; I cannot be stopped.</span>\n" 
+	mood_change = 12
