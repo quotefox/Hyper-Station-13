@@ -88,7 +88,7 @@
 /obj/structure/c_transit_tube/curved
 	icon_state = "curved0"
 	build_type = /obj/structure/transit_tube/curved
-	flipped_build_type = /obj/structure/transit_tube/curved/flipped
+	flipped_build_type = /obj/structure/c_transit_tube/curved/flipped
 	base_icon = "curved"
 
 /obj/structure/c_transit_tube/curved/flipped

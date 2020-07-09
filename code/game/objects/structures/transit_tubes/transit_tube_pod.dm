@@ -3,7 +3,7 @@
 	icon_state = "pod"
 	animate_movement = FORWARD_STEPS
 	anchored = TRUE
-	density = TRUE
+	density = FALSE
 	layer = BELOW_OBJ_LAYER
 	var/moving = 0
 	var/datum/gas_mixture/air_contents = new()
@@ -136,13 +136,11 @@
 		sleep(last_delay)
 		setDir(next_dir)
 		forceMove(next_loc) // When moving from one tube to another, skip collision and such.
-		density = current_tube.density
 
 		if(current_tube && current_tube.should_stop_pod(src, next_dir))
 			current_tube.pod_stopped(src, dir)
 			break
 
-	density = TRUE
 	moving = 0
 
 	var/obj/structure/transit_tube/TT = locate(/obj/structure/transit_tube) in loc

@@ -33,3 +33,11 @@
 	desc = "A signiature shell from a Braton, lined with engravings."
 	caliber = "bratonb"
 	projectile_type = /obj/item/projectile/bullet/bratonb
+
+//FAL bullet
+/obj/item/ammo_casing/fal762
+	name = "7.62x51 bullet casing"
+	desc = "A 7.62x51 bullet casing. Looks to be a bit shorter than the also ancient 7.62x54r, just without the rim."
+	icon_state = "762fal-casing"
+	caliber = "762fal"
+	projectile_type = /obj/item/projectile/bullet/fal762

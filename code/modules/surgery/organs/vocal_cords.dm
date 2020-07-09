@@ -1105,7 +1105,8 @@
 
 	//teir 2
 
-	/* removed for now
+	 //removed for now
+	 //Hyper change - Unremoved for now
 	//ORGASM
 	else if((findtext(message, orgasm_words)))
 		for(var/V in listeners)
@@ -1122,7 +1123,7 @@
 					E.cooldown += 6
 				else
 					H.throw_at(get_step_towards(user,H), 3 * power_multiplier, 1 * power_multiplier)
-	*/
+	
 
 
 	//awoo

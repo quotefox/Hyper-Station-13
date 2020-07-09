@@ -126,6 +126,7 @@
 /obj/structure/transit_tube/station/proc/launch_pod()
 	if(launch_cooldown >= world.time)
 		return
+	density = FALSE
 	for(var/obj/structure/transit_tube_pod/pod in loc)
 		if(!pod.moving)
 			pod_moving = 1
@@ -148,6 +149,7 @@
 			pod.setDir(tube_dirs[1]) //turning the pod around for next launch.
 		launch_cooldown = world.time + cooldown_delay
 		open_animation()
+		density = TRUE
 		sleep(OPEN_DURATION + 2)
 		pod_moving = 0
 		if(!QDELETED(pod))

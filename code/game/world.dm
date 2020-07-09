@@ -33,6 +33,7 @@ GLOBAL_VAR(restart_counter)
 #endif
 
 	load_admins()
+	load_patreons()
 	LoadVerbs(/datum/verbs/menu)
 	if(CONFIG_GET(flag/usewhitelist))
 		load_whitelist()

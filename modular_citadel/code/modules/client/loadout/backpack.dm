@@ -121,3 +121,21 @@
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/pen/fountain
 	cost = 2
+
+/datum/gear/ringbox_gold
+	name = "A gold ring box"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/storage/fancy/ringbox
+	cost = 3
+
+/datum/gear/ringbox_silver
+	name = "A silver ring box"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/storage/fancy/ringbox/silver
+	cost = 3
+
+/datum/gear/ringbox_diamond
+	name = "A diamond ring box"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/storage/fancy/ringbox/diamond
+	cost = 5
