@@ -166,3 +166,25 @@
 	secondary_color = "#FFFFFF"
 	tertiary_color = "#8CC6FF"
 	body_parts_covered = CHEST|GROIN
+
+/obj/item/clothing/under/polychromic/bikini
+	name = "polychromic bikini"
+	desc = "Perfect for summer."
+	icon_state = "polybikini"
+	item_color = "polybikini"
+	item_state = "rainbow"
+	primary_color = "#808080" //RGB in hexcode
+	secondary_color = "#FFFFFF"
+	tertiary_color = "#8CC6FF"
+	body_parts_covered = CHEST|GROIN
+
+/obj/item/clothing/under/polychromic/stripper
+	name = "polychromic stripper outfit"
+	desc = "Sexy with style."
+	icon_state = "polystripper"
+	item_color = "polystripper"
+	item_state = "rainbow"
+	primary_color = "#808080" //RGB in hexcode
+	secondary_color = "#FFFFFF"
+	tertiary_color = "#8CC6FF"
+	body_parts_covered = CHEST|GROIN

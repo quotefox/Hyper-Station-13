@@ -360,10 +360,31 @@
 	name = "Pink stripper outfit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/stripper_pink
-	cost = 3
 
 /datum/gear/greenstripper
 	name = "Green stripper outfit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/stripper_green
-	cost = 3
+
+/datum/gear/polybikini
+	name = "Polychromic Bikini"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/bikini
+	cost = 2
+
+/datum/gear/polystripper
+	name = "Polychromic Stripper Outfit"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/stripper
+	cost = 2
+
+/datum/gear/polypantsu
+	name = "Polychromic Panties"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/shortpants/pantsu
+
+/datum/gear/polybottomless
+	name = "Polychromic Bottomless Shirt"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/bottomless
+	cost = 2
