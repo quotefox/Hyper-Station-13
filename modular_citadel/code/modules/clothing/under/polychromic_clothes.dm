@@ -175,7 +175,6 @@
 	item_state = "rainbow"
 	primary_color = "#808080" //RGB in hexcode
 	secondary_color = "#FFFFFF"
-	tertiary_color = "#8CC6FF"
 	body_parts_covered = CHEST|GROIN
 
 /obj/item/clothing/under/polychromic/stripper
@@ -186,5 +185,4 @@
 	item_state = "rainbow"
 	primary_color = "#808080" //RGB in hexcode
 	secondary_color = "#FFFFFF"
-	tertiary_color = "#8CC6FF"
 	body_parts_covered = CHEST|GROIN
