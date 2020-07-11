@@ -64,7 +64,7 @@ mob/living/get_effective_size()
 				return 1
 
 		//Smaller person stepping under a larger person
-		if(tmob.get_effective_size() > get_effective_size())
+		if(abs(tmob.get_effective_size()/get_effective_size()) >= 2)
 			H.forceMove(tmob.loc)
 			now_pushing = 0
 			micro_step_under(tmob)
@@ -136,7 +136,7 @@ mob/living/get_effective_size()
 							tmob.mob_pickup_micro_feet(H)
 						return 1
 
-		if(tmob.get_effective_size() > get_effective_size())
+		if(abs(tmob.get_effective_size()/get_effective_size()) >= 2)
 			H.forceMove(tmob.loc)
 			now_pushing = 0
 			micro_step_under(tmob)
