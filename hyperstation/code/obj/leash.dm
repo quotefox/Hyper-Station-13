@@ -87,6 +87,9 @@ Icons, maybe?
 
 //Called when someone is clicked with the leash
 /obj/item/leash/attack(mob/living/carbon/C, mob/living/user) //C is the target, user is the one with the leash
+	if(C.has_status_effect(/datum/status_effect/leash_pet)) //If the pet is already leashed, do not leash them. For the love of god.
+		to_chat(user, "<span class='notice'>[C] has already been leashed.</span>")
+		return
 	if(istype(C.get_item_by_slot(SLOT_NECK), /obj/item/clothing/neck/petcollar) || istype(C.get_item_by_slot(SLOT_NECK), /obj/item/electropack/shockcollar))
 		var/leashtime = 50
 		if(C.handcuffed)
