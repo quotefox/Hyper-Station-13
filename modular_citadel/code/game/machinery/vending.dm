@@ -51,8 +51,10 @@
 				/obj/item/reagent_containers/pill/penis_enlargement = 3,
 				/obj/item/reagent_containers/pill/breast_enlargement = 3,
 				/obj/item/clothing/gloves/latexsleeves = 3,
-				/obj/item/clothing/shoes/highheels = 3
-
+				/obj/item/clothing/shoes/highheels = 3,
+				/obj/item/clothing/under/polychromic/stripper = 3,
+				/obj/item/clothing/under/polychromic/bikini = 3,
+				/obj/item/clothing/under/polychromic/shortpants/pantsu = 3
 				)
 	contraband = list(/obj/item/restraints/handcuffs/fake/kinky = 5,
 				/obj/item/clothing/neck/petcollar = 5,
