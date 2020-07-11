@@ -173,6 +173,7 @@
 	icon_state = "polybikini"
 	item_color = "polybikini"
 	item_state = "rainbow"
+	hastertiary = FALSE
 	primary_color = "#808080" //RGB in hexcode
 	secondary_color = "#FFFFFF"
 	body_parts_covered = CHEST|GROIN
@@ -183,6 +184,18 @@
 	icon_state = "polystripper"
 	item_color = "polystripper"
 	item_state = "rainbow"
+	hastertiary = FALSE
 	primary_color = "#808080" //RGB in hexcode
 	secondary_color = "#FFFFFF"
 	body_parts_covered = CHEST|GROIN
+
+/obj/item/clothing/under/polychromic/bulge
+	name = "polychromic voluminous thong"
+	desc = "What is this? Is there something hidden inside or is just to compensate the lack of?"
+	icon_state = "polybulge"
+	item_color = "polybulge"
+	item_state = "rainbow"
+	hastertiary = FALSE
+	primary_color = "#808080" //RGB in hexcode
+	secondary_color = "#FF3535"
+	body_parts_covered = GROIN

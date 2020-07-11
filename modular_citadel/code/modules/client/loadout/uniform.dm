@@ -383,6 +383,11 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/shortpants/pantsu
 
+/datum/gear/polybulge
+	name = "Polychromic Voluminous Thong"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/bulge
+
 /datum/gear/polybottomless
 	name = "Polychromic Bottomless Shirt"
 	category = SLOT_W_UNIFORM
