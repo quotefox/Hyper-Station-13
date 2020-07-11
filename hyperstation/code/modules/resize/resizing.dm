@@ -63,12 +63,12 @@ mob/living/get_effective_size()
 					to_chat(tmob,"<span class='notice'>[H] steps over you carefully!</span>")
 				return 1
 
-			//Smaller person stepping under a larger person
-			if(abs(tmob.get_effective_size()/get_effective_size()) <= 2)
-				H.forceMove(tmob.loc)
-				now_pushing = 0
-				micro_step_under(tmob)
-				return 1
+		//Smaller person stepping under a larger person
+		if(abs(tmob.get_effective_size()/get_effective_size()) >= 2)
+			H.forceMove(tmob.loc)
+			now_pushing = 0
+			micro_step_under(tmob)
+			return 1
 
 //Stepping on disarm intent -- TO DO, OPTIMIZE ALL OF THIS SHIT
 /mob/living/proc/handle_micro_bump_other(var/mob/living/tmob)
@@ -136,11 +136,11 @@ mob/living/get_effective_size()
 							tmob.mob_pickup_micro_feet(H)
 						return 1
 
-			if(abs(tmob.get_effective_size()/get_effective_size()) <= 2)
-				H.forceMove(tmob.loc)
-				now_pushing = 0
-				micro_step_under(tmob)
-				return 1
+		if(abs(tmob.get_effective_size()/get_effective_size()) >= 2)
+			H.forceMove(tmob.loc)
+			now_pushing = 0
+			micro_step_under(tmob)
+			return 1
 
 //smaller person stepping under another person... TO DO, fix and allow special interactions with naga legs to be seen
 /mob/living/proc/micro_step_under(var/mob/living/tmob)
