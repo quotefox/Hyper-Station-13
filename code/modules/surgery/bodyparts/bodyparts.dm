@@ -494,7 +494,7 @@
 				else
 					marking = image(body_markings_icon, "[body_markings]_[body_zone]", -MARKING_LAYER, image_dir)
 			else
-				marking = image(body_markings_icon, "[body_markings]_digitigrade_1_[use_digitigrade]_[body_zone]", -MARKING_LAYER, image_dir)
+				marking = image(body_markings_icon, "[body_markings]_digitigrade_[use_digitigrade]_[body_zone]", -MARKING_LAYER, image_dir)
 			. += marking
 
 		// Citadel End

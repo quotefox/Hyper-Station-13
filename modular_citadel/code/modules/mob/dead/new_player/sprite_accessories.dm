@@ -1587,9 +1587,17 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Synthetic Lizard - Plates"
 	icon_state = "synthlizscutes"
 
+/datum/sprite_accessory/mam_body_markings/synthliz/synthliz_noplates
+	name = "Synthetic Lizard - No plates"
+	icon_state = "synthliznoplates"
+
 /datum/sprite_accessory/mam_body_markings/synthliz/synthliz_pecs
 	name = "Synthetic Lizard - Pecs"
 	icon_state = "synthlizpecs"
+
+/datum/sprite_accessory/mam_body_markings/synthliz/synthliz_lights
+	name = "Synthetic Lizard - Lights"
+	icon_state = "synthlizlights"
 
 /datum/sprite_accessory/mam_body_markings/synthliz/synthliz_pecslight
 	name = "Synthetic Lizard - Pecs Light"
