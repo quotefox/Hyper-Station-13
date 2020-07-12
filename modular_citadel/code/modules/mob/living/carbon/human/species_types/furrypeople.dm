@@ -53,7 +53,7 @@
 	id = "avian"
 	say_mod = "chirps"
 	default_color = "BCAC9B"
-	should_draw_citadel = TRUE
+	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,WINGCOLOR)
 	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
 	mutant_bodyparts = list("mam_snouts", "wings", "taur", "mam_tail", "mam_body_markings", "taur", "deco_wings")
@@ -99,10 +99,10 @@
 	name = "Aquatic"
 	id = "aquatic"
 	default_color = "BCAC9B"
-	should_draw_citadel = TRUE
+	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,WINGCOLOR)
 	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
-	mutant_bodyparts = list("mam_tail", "mam_ears","mam_body_markings", "taur", "legs", "mam_snouts", "deco_wings")
+	mutant_bodyparts = list("mam_tail", "mam_ears","mam_body_markings", "taur", "mam_snouts", "deco_wings")
 	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_tail" = "Shark", "mam_ears" = "None", "mam_body_markings" = "Shark", "mam_snouts" = "Round", "taur" = "None", "legs" = "Normal Legs", "deco_wings" = "None")
 	attack_verb = "bite"
 	attack_sound = 'sound/weapons/bite.ogg'

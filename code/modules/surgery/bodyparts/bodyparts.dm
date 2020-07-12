@@ -444,7 +444,7 @@
 				else
 					. += image(body_markings_icon, "[body_markings]_[body_zone]", -MARKING_LAYER, image_dir)
 			else
-				. += image(body_markings_icon, "[body_markings]_[digitigrade_type]_[use_digitigrade]_[body_zone]", -MARKING_LAYER, image_dir)
+				. += image(body_markings_icon, "[body_markings]_digitigrade_1_[use_digitigrade]_[body_zone]", -MARKING_LAYER, image_dir)
 
 	var/image/limb = image(layer = -BODYPARTS_LAYER, dir = image_dir)
 	var/image/aux
@@ -474,9 +474,9 @@
 			limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
 		else if (use_digitigrade)
 			if(base_bp_icon == DEFAULT_BODYPART_ICON_ORGANIC) //Compatibility hack for the current iconset.
-				limb.icon_state = "[digitigrade_type]_[use_digitigrade]_[body_zone]"
+				limb.icon_state = "digitigrade_[use_digitigrade]_[body_zone]"
 			else
-				limb.icon_state = "[species_id]_[digitigrade_type]_[use_digitigrade]_[body_zone]"
+				limb.icon_state = "[species_id]_digitigrade_[use_digitigrade]_[body_zone]"
 
 		else
 			limb.icon_state = "[species_id]_[body_zone]"
@@ -494,7 +494,7 @@
 				else
 					marking = image(body_markings_icon, "[body_markings]_[body_zone]", -MARKING_LAYER, image_dir)
 			else
-				marking = image(body_markings_icon, "[body_markings]_digitigrade_[use_digitigrade]_[body_zone]", -MARKING_LAYER, image_dir)
+				marking = image(body_markings_icon, "[body_markings]_digitigrade_1_[use_digitigrade]_[body_zone]", -MARKING_LAYER, image_dir)
 			. += marking
 
 		// Citadel End
@@ -538,7 +538,7 @@
 				else
 					marking = image(body_markings_icon, "[body_markings]_[body_zone]", -MARKING_LAYER, image_dir)
 			else
-				marking = image(body_markings_icon, "[body_markings]_digitigrade_[use_digitigrade]_[body_zone]", -MARKING_LAYER, image_dir)
+				marking = image(body_markings_icon, "[body_markings]_digitigrade_1_[use_digitigrade]_[body_zone]", -MARKING_LAYER, image_dir)
 			. += marking
 		return
 

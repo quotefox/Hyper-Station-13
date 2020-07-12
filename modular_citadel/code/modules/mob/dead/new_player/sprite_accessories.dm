@@ -702,7 +702,7 @@
 /datum/sprite_accessory/mam_snouts
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_snouts.dmi'
-	recommended_species = list("mammal", "slimeperson", "insect", "podweak")
+	recommended_species = list("mammal", "slimeperson", "insect", "podweak", "avian", "aquatic")
 
 /datum/sprite_accessory/mam_snouts/none
 	name = "None"
@@ -1408,7 +1408,7 @@ datum/sprite_accessory/mam_tails/insect
 	color_src = MATRIXED
 	gender_specific = 0
 	icon = 'modular_citadel/icons/mob/mam_markings.dmi'
-	recommended_species = list("mammal", "xeno", "slimeperson", "podweak")
+	recommended_species = list("mammal", "xeno", "slimeperson", "podweak", "avian", "aquatic")
 
 /datum/sprite_accessory/mam_body_markings/none
 	name = "None"
@@ -1608,7 +1608,7 @@ datum/sprite_accessory/mam_tails/insect
 	dimension_x = 64
 	var/taur_mode = NOT_TAURIC
 	color_src = MATRIXED
-	recommended_species = list("human", "lizard", "insect", "mammal", "xeno", "jelly", "slimeperson", "podweak")
+	recommended_species = list("human", "lizard", "insect", "mammal", "xeno", "jelly", "slimeperson", "podweak", "avian", "aquatic")
 
 /datum/sprite_accessory/taur/none
 	name = "None"

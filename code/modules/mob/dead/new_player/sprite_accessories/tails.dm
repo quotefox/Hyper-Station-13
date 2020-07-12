@@ -433,7 +433,7 @@
 /datum/sprite_accessory/mam_tails
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
-	recommended_species = list("mammal", "slimeperson", "podweak", "felinid", "insect")
+	recommended_species = list("mammal", "slimeperson", "podweak", "felinid", "insect", "avian", "aquatic") //Despite not being mammals, avians and aquatic parts are in the mammal files here.
 
 /datum/sprite_accessory/mam_tails/none
 	name = "None"
