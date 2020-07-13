@@ -121,7 +121,6 @@
 #define TRAIT_LAW_ENFORCEMENT_METABOLISM "law-enforcement-metabolism"
 #define	TRAIT_STRONG_GRABBER	"strong_grabber"
 #define	TRAIT_CALCIUM_HEALER	"calcium_healer"
-#define TRAIT_BEEFRIEND 		"beefriend"
 
  //non-mob traits
 #define TRAIT_PARALYSIS			"paralysis" //Used for limb-based paralysis, where replacing the limb will fix it
@@ -168,7 +167,6 @@
 // common trait sources
 #define TRAIT_GENERIC "generic"
 #define EYE_DAMAGE "eye_damage"
-#define DISEASE_TRAIT "disease"
 #define GENETIC_MUTATION "genetic"
 #define OBESITY "obesity"
 #define MAGIC_TRAIT "magic"
