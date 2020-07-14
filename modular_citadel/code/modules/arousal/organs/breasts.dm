@@ -138,7 +138,7 @@
 				statuscheck = TRUE
 
 
-	if(round(cached_size) < 31)//Because byond doesn't count from 0, I have to do this.
+	if(round(cached_size) < 19 && round(cached_size) == 25 && round(cached_size) == 30)//Because byond doesn't count from 0, I have to do this.
 		if (prev_size == 0)
 			prev_size = "flat"
 		if(size == 0)//Bloody byond with it's counting from 1
