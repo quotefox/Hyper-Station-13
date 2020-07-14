@@ -5,48 +5,26 @@ is currently following.
 */
 
 GLOBAL_LIST_INIT(disease_ability_singletons, list(
-new /datum/disease_ability/action/cough,
-new /datum/disease_ability/action/sneeze,
-new /datum/disease_ability/action/infect,
-new /datum/disease_ability/symptom/mild/cough,
-new /datum/disease_ability/symptom/mild/sneeze,
-new /datum/disease_ability/symptom/medium/beard,
-new /datum/disease_ability/symptom/medium/hallucigen,
-new /datum/disease_ability/symptom/medium/confusion,
-new /datum/disease_ability/symptom/medium/vomit,
-new /datum/disease_ability/symptom/medium/voice_change,
-new /datum/disease_ability/symptom/medium/visionloss,
-new /datum/disease_ability/symptom/medium/deafness,
-new /datum/disease_ability/symptom/powerful/narcolepsy,
-new /datum/disease_ability/symptom/medium/fever,
-new /datum/disease_ability/symptom/medium/shivering,
-new /datum/disease_ability/symptom/medium/headache,
-new /datum/disease_ability/symptom/medium/nano_boost,
-new /datum/disease_ability/symptom/medium/nano_destroy,
-new /datum/disease_ability/symptom/medium/viraladaptation,
-new /datum/disease_ability/symptom/medium/viralevolution,
-new /datum/disease_ability/symptom/medium/vitiligo,
-new /datum/disease_ability/symptom/medium/revitiligo,
-new /datum/disease_ability/symptom/medium/itching,
-new /datum/disease_ability/symptom/medium/heal/weight_loss,
-new /datum/disease_ability/symptom/medium/heal/sensory_restoration,
-new /datum/disease_ability/symptom/medium/heal/mind_restoration,
-new /datum/disease_ability/symptom/powerful/fire,
-new /datum/disease_ability/symptom/powerful/flesh_eating,
-new /datum/disease_ability/symptom/powerful/genetic_mutation,
-new /datum/disease_ability/symptom/powerful/inorganic_adaptation,
-new /datum/disease_ability/symptom/powerful/heal/oxygen,
-new /datum/disease_ability/symptom/powerful/heal/chem,
-new /datum/disease_ability/symptom/powerful/heal/coma,
-new /datum/disease_ability/symptom/powerful/heal/teleport,
-new /datum/disease_ability/symptom/powerful/heal/growth,
-new /datum/disease_ability/symptom/powerful/heal/EMP,
-new /datum/disease_ability/symptom/powerful/heal/sweat,
-new /datum/disease_ability/symptom/powerful/wizarditis,
-new /datum/disease_ability/symptom/medium/pierrot,
-new /datum/disease_ability/symptom/medium/cockroach,
-new /datum/disease_ability/symptom/powerful/youth
-))
+	new /datum/disease_ability/action/cough(),
+	new /datum/disease_ability/action/sneeze(),
+	new /datum/disease_ability/action/infect(),
+	new /datum/disease_ability/symptom/cough(),
+	new /datum/disease_ability/symptom/sneeze(),\
+	new /datum/disease_ability/symptom/hallucigen(),
+	new /datum/disease_ability/symptom/choking(),
+	new /datum/disease_ability/symptom/confusion(),
+	new /datum/disease_ability/symptom/youth(),
+	new /datum/disease_ability/symptom/vomit(),
+	new /datum/disease_ability/symptom/voice_change(),
+	new /datum/disease_ability/symptom/visionloss(),
+	new /datum/disease_ability/symptom/viraladaptation(),
+	new /datum/disease_ability/symptom/vitiligo(),
+	new /datum/disease_ability/symptom/sensory_restoration(),
+	new /datum/disease_ability/symptom/itching(),
+	new /datum/disease_ability/symptom/weight_loss(),
+	new /datum/disease_ability/symptom/metabolism_heal(),
+	new /datum/disease_ability/symptom/coma_heal()
+	))
 
 /datum/disease_ability
 	var/name
@@ -256,180 +234,144 @@ new /datum/disease_ability/symptom/powerful/youth
 			O.AddComponent(/datum/component/infective, D.disease_template, 300)
 	StartCooldown()
 	return TRUE
-/*******************BASE SYMPTOM TYPES*******************/
-// cost is for convenience and can be changed. If you're changing req_tot_points then don't use the subtype...
-//healing no longer costs more, sans regen coma, due to how healing symptoms have been made scary
 
-/datum/disease_ability/symptom/mild
-	cost = 2
-	required_total_points = 4
-	category = "Symptom (Weak)"
+//passive symptom abilities
 
-/datum/disease_ability/symptom/medium
-	cost = 4
-	required_total_points = 8
-	category = "Symptom"
-
-/datum/disease_ability/symptom/medium/heal
-	cost = 5
-	category = "Symptom (+)"
-
-/datum/disease_ability/symptom/powerful
-	cost = 4
-	required_total_points = 16
-	category = "Symptom (Strong)"
-
-/datum/disease_ability/symptom/powerful/heal
-	cost = 8
-	category = "Symptom (Strong+)"
-
-/******MILD******/
-
-/datum/disease_ability/symptom/mild/cough
+/datum/disease_ability/symptom/cough
 	name = "Involuntary Coughing"
 	symptoms = list(/datum/symptom/cough)
+	cost = 2
+	required_total_points = 4
 	short_desc = "Cause victims to cough intermittently."
 	long_desc = "Cause victims to cough intermittently, spreading your infection if your transmissibility is high."
 
-/datum/disease_ability/symptom/mild/sneeze
+/datum/disease_ability/symptom/sneeze
 	name = "Involuntary Sneezing"
 	symptoms = list(/datum/symptom/sneeze)
+	cost = 2
+	required_total_points = 4
 	short_desc = "Cause victims to sneeze intermittently."
 	long_desc = "Cause victims to sneeze intermittently, spreading your infection and also increasing transmissibility and resistance, at the cost of stealth."
 
-/******MEDIUM******/
-
-/datum/disease_ability/symptom/medium/beard
+/datum/disease_ability/symptom/beard
+	//I don't think I need to justify the fact that this is the best symptom
+	name = "Beard Growth"
 	symptoms = list(/datum/symptom/beard)
+	cost = 1
+	required_total_points = 8
 	short_desc = "Cause all victims to grow a luscious beard."
-	long_desc = "Cause all victims to grow a luscious beard. Ineffective against Santa Claus."
+	long_desc = "Cause all victims to grow a luscious beard. Decreases stats slightly. Ineffective against Santa Claus."
 
-/datum/disease_ability/symptom/medium/hallucigen
+/datum/disease_ability/symptom/hallucigen
+	name = "Hallucinations"
 	symptoms = list(/datum/symptom/hallucigen)
+	cost = 4
+	required_total_points = 8
 	short_desc = "Cause victims to hallucinate."
 	long_desc = "Cause victims to hallucinate. Decreases stats, especially resistance."
 
-/datum/disease_ability/symptom/medium/confusion
+/datum/disease_ability/symptom/choking
+	name = "Choking"
+	symptoms = list(/datum/symptom/choking)
+	cost = 4
+	required_total_points = 8
+	short_desc = "Cause victims to choke."
+	long_desc = "Cause victims to choke, threatening asphyxiation. Decreases stats, especially transmissibility."
+
+
+/datum/disease_ability/symptom/confusion
+	name = "Confusion"
 	symptoms = list(/datum/symptom/confusion)
+	cost = 4
+	required_total_points = 8
 	short_desc = "Cause victims to become confused."
 	long_desc = "Cause victims to become confused intermittently."
 
-/datum/disease_ability/symptom/medium/vomit
-	symptoms = list(/datum/symptom/vomit)
-	short_desc = "Cause victims to vomit."
-	long_desc = "Cause victims to vomit. Slightly increases transmissibility. Vomiting also also causes the victims to lose nutrition and removes some toxin damage."
-
-/datum/disease_ability/symptom/medium/voice_change
-	symptoms = list(/datum/symptom/voice_change)
-	short_desc = "Change the voice of victims."
-	long_desc = "Change the voice of victims, causing confusion in communications."
-
-/datum/disease_ability/symptom/medium/visionloss
-	symptoms = list(/datum/symptom/visionloss)
-	short_desc = "Damage the eyes of victims, eventually causing blindness."
-	long_desc = "Damage the eyes of victims, eventually causing blindness. Decreases all stats."
-
-/datum/disease_ability/symptom/medium/deafness
-	symptoms = list(/datum/symptom/deafness)
-
-/datum/disease_ability/symptom/medium/fever
-	symptoms = list(/datum/symptom/fever)
-
-/datum/disease_ability/symptom/medium/shivering
-	symptoms = list(/datum/symptom/shivering)
-
-/datum/disease_ability/symptom/medium/headache
-	symptoms = list(/datum/symptom/headache)
-
-/datum/disease_ability/symptom/medium/nano_boost
-	symptoms = list(/datum/symptom/nano_boost)
-
-/datum/disease_ability/symptom/medium/nano_destroy
-	symptoms = list(/datum/symptom/nano_destroy)
-
-/datum/disease_ability/symptom/medium/viraladaptation
-	symptoms = list(/datum/symptom/viraladaptation)
-	short_desc = "Cause your infection to become more resistant to detection and eradication."
-	long_desc = "Cause your infection to mimic the function of normal body cells, becoming much harder to spot and to eradicate, but reducing its speed."
-
-/datum/disease_ability/symptom/medium/viralevolution
-	symptoms = list(/datum/symptom/viralevolution)
-
-/datum/disease_ability/symptom/medium/vitiligo
-	symptoms = list(/datum/symptom/vitiligo)
-
-/datum/disease_ability/symptom/medium/revitiligo
-	symptoms = list(/datum/symptom/revitiligo)
-
-/datum/disease_ability/symptom/medium/pierrot
-	symptoms = list(/datum/symptom/pierrot)
-
-/datum/disease_ability/symptom/medium/cockroach
-	symptoms = list(/datum/symptom/cockroach)
-
-/datum/disease_ability/symptom/medium/itching
-	symptoms = list(/datum/symptom/itching)
-	short_desc = "Cause victims to itch."
-	long_desc = "Cause victims to itch, increasing all stats except stealth."
-
-/datum/disease_ability/symptom/medium/heal/weight_loss
-	symptoms = list(/datum/symptom/weight_loss)
-	short_desc = "Cause victims to lose weight."
-	long_desc = "Cause victims to lose weight, and make it almost impossible for them to gain nutrition from food. Reduced nutrition allows your infection to spread more easily from hosts, especially by sneezing."
-
-/datum/disease_ability/symptom/medium/heal/sensory_restoration
-	symptoms = list(/datum/symptom/sensory_restoration)
-	short_desc = "Regenerate eye and ear damage of victims."
-	long_desc = "Regenerate eye and ear damage of victims."
-
-/datum/disease_ability/symptom/medium/heal/mind_restoration
-	symptoms = list(/datum/symptom/mind_restoration)
-
-/******POWERFUL******/
-
-/datum/disease_ability/symptom/powerful/fire
-	symptoms = list(/datum/symptom/fire)
-
-/datum/disease_ability/symptom/powerful/flesh_eating
-	symptoms = list(/datum/symptom/flesh_eating)
-
-/datum/disease_ability/symptom/powerful/wizarditis //strong because it can remove hardsuits and bio protection
-	symptoms = list(/datum/symptom/wizarditis)
-
-/datum/disease_ability/symptom/powerful/genetic_mutation
-	symptoms = list(/datum/symptom/genetic_mutation)
-
-/datum/disease_ability/symptom/powerful/inorganic_adaptation
-	symptoms = list(/datum/symptom/inorganic_adaptation)
-
-/datum/disease_ability/symptom/powerful/narcolepsy
-	symptoms = list(/datum/symptom/narcolepsy)
-
-/datum/disease_ability/symptom/powerful/youth
+/datum/disease_ability/symptom/youth
+	name = "Eternal Youth"
 	symptoms = list(/datum/symptom/youth)
+	cost = 4
+	required_total_points = 8
 	short_desc = "Cause victims to become eternally young."
 	long_desc = "Cause victims to become eternally young. Provides boosts to all stats except transmissibility."
 
-/****HEALING SUBTYPE****/
 
-/datum/disease_ability/symptom/powerful/heal/oxygen
-	symptoms = list(/datum/symptom/oxygen)
-
-/datum/disease_ability/symptom/powerful/heal/chem
-	symptoms = list(/datum/symptom/heal/chem)
+/datum/disease_ability/symptom/vomit
+	name = "Vomiting"
+	symptoms = list(/datum/symptom/vomit)
 	cost = 4
+	required_total_points = 8
+	short_desc = "Cause victims to vomit."
+	long_desc = "Cause victims to vomit. Slightly increases transmissibility. Vomiting also also causes the victims to lose nutrition and removes some toxin damage."
 
-/datum/disease_ability/symptom/powerful/heal/coma
+/datum/disease_ability/symptom/voice_change
+	name = "Voice Changing"
+	symptoms = list(/datum/symptom/voice_change)
+	cost = 4
+	required_total_points = 8
+	short_desc = "Change the voice of victims."
+	long_desc = "Change the voice of victims, causing confusion in communications."
+
+/datum/disease_ability/symptom/visionloss
+	name = "Vision Loss"
+	symptoms = list(/datum/symptom/visionloss)
+	cost = 4
+	required_total_points = 8
+	short_desc = "Damage the eyes of victims, eventually causing blindness."
+	long_desc = "Damage the eyes of victims, eventually causing blindness. Decreases all stats."
+
+/datum/disease_ability/symptom/viraladaptation
+	name = "Self-Adaptation"
+	symptoms = list(/datum/symptom/viraladaptation)
+	cost = 4
+	required_total_points = 8
+	short_desc = "Cause your infection to become more resistant to detection and eradication."
+	long_desc = "Cause your infection to mimic the function of normal body cells, becoming much harder to spot and to eradicate, but reducing its speed."
+
+/datum/disease_ability/symptom/vitiligo
+	name = "Skin Paleness"
+	symptoms = list(/datum/symptom/vitiligo)
+	cost = 1
+	required_total_points = 8
+	short_desc = "Cause victims to become pale."
+	long_desc = "Cause victims to become pale. Decreases all stats."
+
+/datum/disease_ability/symptom/sensory_restoration
+	name = "Sensory Restoration"
+	symptoms = list(/datum/symptom/sensory_restoration)
+	cost = 4
+	required_total_points = 8
+	short_desc = "Regenerate eye and ear damage of victims."
+	long_desc = "Regenerate eye and ear damage of victims."
+
+/datum/disease_ability/symptom/itching
+	name = "Itching"
+	symptoms = list(/datum/symptom/itching)
+	cost = 4
+	required_total_points = 8
+	short_desc = "Cause victims to itch."
+	long_desc = "Cause victims to itch, increasing all stats except stealth."
+
+/datum/disease_ability/symptom/weight_loss
+	name = "Weight Loss"
+	symptoms = list(/datum/symptom/weight_loss)
+	cost = 4
+	required_total_points = 8
+	short_desc = "Cause victims to lose weight."
+	long_desc = "Cause victims to lose weight, and make it almost impossible for them to gain nutrition from food. Reduced nutrition allows your infection to spread more easily from hosts, especially by sneezing."
+
+/datum/disease_ability/symptom/metabolism_heal
+	name = "Metabolic Boost"
+	symptoms = list(/datum/symptom/heal/metabolism)
+	cost = 4
+	required_total_points = 16
+	short_desc = "Increase the metabolism of victims, causing them to process chemicals and grow hungry faster."
+	long_desc = "Increase the metabolism of victims, causing them to process chemicals twice as fast and grow hungry more quickly."
+
+/datum/disease_ability/symptom/coma_heal
+	name = "Regenerative Coma"
 	symptoms = list(/datum/symptom/heal/coma)
-
-/datum/disease_ability/symptom/powerful/heal/teleport
-	symptoms = list(/datum/symptom/teleport)
-
-/datum/disease_ability/symptom/powerful/heal/growth
-	symptoms = list(/datum/symptom/growth)
-
-/datum/disease_ability/symptom/powerful/heal/EMP
-	symptoms = list(/datum/symptom/EMP)
-
-/datum/disease_ability/symptom/powerful/heal/sweat
-	symptoms = list(/datum/symptom/sweat)
+	cost = 8
+	required_total_points = 16
+	short_desc = "Cause victims to fall into a healing coma when hurt."
+	long_desc = "Cause victims to fall into a healing coma when hurt."
