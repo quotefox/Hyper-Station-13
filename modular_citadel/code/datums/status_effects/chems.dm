@@ -94,7 +94,7 @@
 		o.add_movespeed_modifier(BREAST_MOVEMENT_SPEED, TRUE, 100, NONE, override = TRUE, multiplicative_slowdown = moveCalc)
 		sizeMoveMod(moveCalc)
 	*/
-	if((B.cached_size) < 16)
+	if((B.cached_size) < 40) // :) If this number isn't kept up with new sizes, Sore back messages will break
 		switch(round(B.cached_size))
 			if(9)
 				if (B.breast_values[B.prev_size] != B.breast_values[B.size])
