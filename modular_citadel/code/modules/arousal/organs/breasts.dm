@@ -156,7 +156,7 @@
 		prev_size = size
 	else if (cached_size >= 18 && cached_size < 25)
 		size = "massive"
-	else if (cached_size >= 25)
+	else if (cached_size >= 25 && cached_size < 30)
 		size = "giga"
 	else if (cached_size >= 30)
 		size = "impossible"
