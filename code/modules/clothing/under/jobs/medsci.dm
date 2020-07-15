@@ -7,7 +7,7 @@
 	icon_state = "director"
 	item_state = "lb_suit"
 	item_color = "director"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 10, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 35)
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 10, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0)
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/research_director/skirt
