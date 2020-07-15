@@ -213,6 +213,7 @@
 /datum/reagent/medicine/rezadone/on_mob_life(mob/living/carbon/M)
 	M.setCloneLoss(0) //Rezadone is almost never used in favor of cryoxadone. Hopefully this will change that.
 	M.heal_bodypart_damage(1,1)
+	M.cure_husk()
 	REMOVE_TRAIT(M, TRAIT_DISFIGURED, TRAIT_GENERIC)
 	..()
 	. = 1
@@ -448,6 +449,8 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 
 /datum/reagent/medicine/synthflesh/overdose_start(mob/living/M)
 	metabolization_rate = 15 * REAGENTS_METABOLISM
+	if(M.getFireLoss() <= 20 && M.getBruteLoss() <= 20)
+		M.cure_husk()
 
 /datum/reagent/medicine/charcoal
 	name = "Charcoal"

@@ -27,6 +27,8 @@
 /datum/surgery_step/reconstruct/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	user.visible_message("[user] fixes some of [target]'s wounds.", "<span class='notice'>You succeed in fixing some of [target]'s wounds.</span>")
 	target.heal_bodypart_damage(10,10)
+	if(target.getFireLoss() <= 20 && target.getBruteLoss() <= 20)
+		target.cure_husk()
 	return TRUE
 
 /datum/surgery_step/reconstruct/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
