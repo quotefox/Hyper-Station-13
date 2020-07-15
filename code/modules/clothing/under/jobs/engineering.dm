@@ -5,7 +5,7 @@
 	icon_state = "chiefengineer"
 	item_state = "gy_suit"
 	item_color = "chief"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 10, "fire" = 80, "acid" = 40)
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 10, "fire" = 10, "acid" = 0)
 	resistance_flags = NONE
 
 /obj/item/clothing/under/rank/chief_engineer/skirt
@@ -24,6 +24,7 @@
 	icon_state = "atmos"
 	item_state = "atmos_suit"
 	item_color = "atmos"
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 10, "fire" = 10, "acid" = 0)
 	resistance_flags = NONE
 
 /obj/item/clothing/under/rank/atmospheric_technician/skirt
@@ -42,7 +43,7 @@
 	icon_state = "engine"
 	item_state = "engi_suit"
 	item_color = "engine"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 10, "fire" = 60, "acid" = 20)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 10, "fire" = 10, "acid" = 0)
 	resistance_flags = NONE
 /obj/item/clothing/under/rank/engineer/hazard
 	name = "engineer's hazard jumpsuit"
@@ -68,6 +69,7 @@
 	icon_state = "robotics"
 	item_state = "robotics"
 	item_color = "robotics"
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 10, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0) // Considering science department, it explodes a lot, bomb resist 10%
 	resistance_flags = NONE
 
 /obj/item/clothing/under/rank/roboticist/skirt
