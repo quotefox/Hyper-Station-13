@@ -102,3 +102,8 @@
 	name = "Green Santa Hat"
 	category = SLOT_HEAD
 	path = /obj/item/clothing/head/christmashatg
+
+/datum/gear/pharaohmhat
+	name = "Pharaoh Hat"
+	category = SLOT_HEAD
+	path = /obj/item/clothing/head/pharaoh
