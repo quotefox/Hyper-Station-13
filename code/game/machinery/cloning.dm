@@ -206,6 +206,7 @@
 		H.suiciding = FALSE
 		H.custom_body_size = H.client.prefs.body_size
 		//H.size_multiplier =  (max(min( round((H.custom_body_size)), MAX_BODYSIZE),MIN_BODYSIZE)* 0.01) //Not working dont know why.
+		H.resize(H.custom_body_size * 0.01)
 	attempting = FALSE
 
 	return TRUE
