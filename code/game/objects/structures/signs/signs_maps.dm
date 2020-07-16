@@ -50,6 +50,7 @@
 	name = "bar"
 	desc = "A direction sign, pointing out which way the Bar is."
 	icon_state = "direction_bar"
+
 /obj/structure/sign/directions/cafe
 	name = "cafe"
 	desc = "A direction sign, pointing out which way the Cafe is."
