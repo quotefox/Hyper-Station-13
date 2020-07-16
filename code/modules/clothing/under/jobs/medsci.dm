@@ -7,7 +7,7 @@
 	icon_state = "director"
 	item_state = "lb_suit"
 	item_color = "director"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 10, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 35)
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 10, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0)
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/research_director/skirt
@@ -26,7 +26,7 @@
 	icon_state = "rdwhimsy"
 	item_state = "rdwhimsy"
 	item_color = "rdwhimsy"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0)
 	can_adjust = TRUE
 	alt_covers_chest = TRUE
 
@@ -46,7 +46,7 @@
 	icon_state = "rdturtle"
 	item_state = "p_suit"
 	item_color = "rdturtle"
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0)
 	can_adjust = TRUE
 	alt_covers_chest = TRUE
 
@@ -86,7 +86,7 @@
 	item_state = "w_suit"
 	item_color = "chemistrywhite"
 	permeability_coefficient = 0.5
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 50, "acid" = 65)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 10)
 
 /obj/item/clothing/under/rank/chemist/skirt
 	name = "chemist's jumpskirt"
@@ -108,7 +108,7 @@
 	item_state = "w_suit"
 	item_color = "cmo"
 	permeability_coefficient = 0.5
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 10)
 
 /obj/item/clothing/under/rank/chief_medical_officer/skirt
 	name = "chief medical officer's jumpskirt"
@@ -127,7 +127,7 @@
 	item_state = "w_suit"
 	item_color = "geneticswhite"
 	permeability_coefficient = 0.5
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 5, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 5) // They work in both science and medical so split the values of bomb and acid by 5 and 5?
 
 /obj/item/clothing/under/rank/geneticist/skirt
 	name = "geneticist's jumpskirt"
@@ -146,7 +146,7 @@
 	item_state = "w_suit"
 	item_color = "virologywhite"
 	permeability_coefficient = 0.5
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 10)
 
 /obj/item/clothing/under/rank/virologist/skirt
 	name = "virologist's jumpskirt"
@@ -165,7 +165,7 @@
 	item_state = "w_suit"
 	item_color = "nursesuit"
 	permeability_coefficient = 0.5
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 10)
 	body_parts_covered = CHEST|GROIN|ARMS
 	fitted = NO_FEMALE_UNIFORM
 	can_adjust = FALSE
@@ -176,7 +176,7 @@
 	item_state = "w_suit"
 	item_color = "medical"
 	permeability_coefficient = 0.5
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 10)
 /obj/item/clothing/under/rank/medical/blue
 	name = "medical scrubs"
 	desc = "It's made of a special fiber that provides minor protection against biohazards. This one is in baby blue."

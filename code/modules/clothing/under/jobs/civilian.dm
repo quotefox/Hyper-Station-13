@@ -32,6 +32,7 @@
 	icon_state = "captain"
 	item_state = "b_suit"
 	item_color = "captain"
+	armor = list("melee" = 10, "bullet" = 10, "laser" = 10,"energy" = 10, "bomb" = 10, "bio" = 10, "rad" = 10, "fire" = 10, "acid" = 10)
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 
@@ -51,6 +52,7 @@
 	icon_state = "qm"
 	item_state = "lb_suit"
 	item_color = "qm"
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /obj/item/clothing/under/rank/cargo/skirt
 	name = "quartermaster's jumpskirt"
@@ -58,6 +60,7 @@
 	icon_state = "qm_skirt"
 	item_state = "lb_suit"
 	item_color = "qm_skirt"
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
@@ -68,6 +71,7 @@
 	icon_state = "cargotech"
 	item_state = "lb_suit"
 	item_color = "cargo"
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	body_parts_covered = CHEST|GROIN|ARMS
 	mutantrace_variation = MUTANTRACE_VARIATION
 	alt_covers_chest = TRUE
@@ -78,6 +82,7 @@
 	icon_state = "cargo_skirt"
 	item_state = "lb_suit"
 	item_color = "cargo_skirt"
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
@@ -193,6 +198,7 @@
 	icon_state = "hop"
 	item_state = "b_suit"
 	item_color = "hop"
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/head_of_personnel/skirt
