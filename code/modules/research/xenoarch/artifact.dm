@@ -1,7 +1,7 @@
 /obj/item/ancientartifact
 	name = "Admin Debug. Parent Artifact"
 	desc = "You shouldn't have this."
-	icon = 'modular_skyrat/code/modules/research/xenoarch/fossil_and_artifact.dmi'
+	icon = 'code/modules/research/xenoarch/fossil_and_artifact.dmi'
 
 /obj/item/ancientartifact/Initialize()
 	..()
@@ -83,7 +83,8 @@
 								/obj/item/seeds/telriis,
 								/obj/item/seeds/thaadra,
 								/obj/item/seeds/vale,
-								/obj/item/seeds/vaporsac
+								/obj/item/seeds/vaporsac,
+								/obj/item/seeds/random
 								))
 
 		new seed(get_turf(user))

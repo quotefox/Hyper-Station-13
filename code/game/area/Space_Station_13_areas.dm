@@ -1340,7 +1340,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 *************/
 
 /area/xenoarch
-	icon = 'modular_skyrat/icons/turf/areas.dmi'
 	icon_state = "xenogen"
 	has_gravity = STANDARD_GRAVITY
 

@@ -1,7 +1,7 @@
 /obj/item/xenoarch
 	name = "Parent Xenoarch"
 	desc = "Debug. Parent Clean"
-	icon = 'modular_skyrat/code/modules/research/xenoarch/tools.dmi'
+	icon = 'code/modules/research/xenoarch/tools.dmi'
 
 /obj/item/xenoarch/Initialize()
 	..()
@@ -151,10 +151,9 @@
 		var/export_text = E.total_printout(ex)
 		if(!export_text)
 			continue
-		var/datum/bank_account/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
-		if(D)
-			D.adjust_money(ex.total_value[E])
-	to_chat(user,"The [target] disappears!")
+		SSshuttle.points += ex.total_value[E]
+	to_chat(user,"You sell the [target].")
+
 
 
 // Storage: Belt and Locker and Bag
@@ -162,7 +161,7 @@
 /obj/item/storage/bag/strangerock
 	name = "strange rock bag"
 	desc = "A bag for strange rocks."
-	icon = 'modular_skyrat/code/modules/research/xenoarch/tools.dmi'
+	icon = 'code/modules/research/xenoarch/tools.dmi'
 	icon_state = "rockbag"
 	w_class = WEIGHT_CLASS_TINY
 	resistance_flags = FLAMMABLE
@@ -224,7 +223,7 @@
 /obj/item/storage/bag/strangerockadv
 	name = "bluespace strange rock bag"
 	desc = "A bag for strange rocks."
-	icon = 'modular_skyrat/code/modules/research/xenoarch/tools.dmi'
+	icon = 'code/modules/research/xenoarch/tools.dmi'
 	icon_state = "rockbagadv"
 	w_class = WEIGHT_CLASS_TINY
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -287,7 +286,7 @@
 /obj/item/storage/belt/xenoarch
 	name = "xenoarchaeologist belt"
 	desc = "used to store your tools for xenoarchaeology."
-	icon = 'modular_skyrat/code/modules/research/xenoarch/tools.dmi'
+	icon = 'code/modules/research/xenoarch/tools.dmi'
 	icon_state = "miningbelt"
 
 /obj/item/storage/belt/xenoarch/ComponentInitialize()
@@ -385,9 +384,9 @@
 	desc = "A hammer that destroys 1 cm of debris."
 	id = "hammercm1"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 500)
+	materials = list(MAT_PLASTIC = 500)
 	build_path = /obj/item/xenoarch/clean/hammer/cm1
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/hammercm2
@@ -395,9 +394,9 @@
 	desc = "A hammer that destroys 2 cm of debris."
 	id = "hammercm2"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 500)
+	materials = list(MAT_PLASTIC = 500)
 	build_path = /obj/item/xenoarch/clean/hammer/cm2
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/hammercm3
@@ -405,9 +404,9 @@
 	desc = "A hammer that destroys 3 cm of debris."
 	id = "hammercm3"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 500)
+	materials = list(MAT_PLASTIC = 500)
 	build_path = /obj/item/xenoarch/clean/hammer/cm3
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/hammercm4
@@ -415,9 +414,9 @@
 	desc = "A hammer that destroys 4 cm of debris."
 	id = "hammercm4"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 500)
+	materials = list(MAT_PLASTIC = 500)
 	build_path = /obj/item/xenoarch/clean/hammer/cm4
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/hammercm5
@@ -425,9 +424,9 @@
 	desc = "A hammer that destroys 5 cm of debris."
 	id = "hammercm5"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 500)
+	materials = list(MAT_PLASTIC = 500)
 	build_path = /obj/item/xenoarch/clean/hammer/cm5
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/hammercm6
@@ -435,9 +434,9 @@
 	desc = "A hammer that destroys 6 cm of debris."
 	id = "hammercm6"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 500)
+	materials = list(MAT_PLASTIC = 500)
 	build_path = /obj/item/xenoarch/clean/hammer/cm6
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/hammercm15
@@ -445,9 +444,9 @@
 	desc = "A hammer that destroys 15 cm of debris."
 	id = "hammercm15"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 500)
+	materials = list(MAT_PLASTIC = 500)
 	build_path = /obj/item/xenoarch/clean/hammer/cm15
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/hammercmadv
@@ -455,9 +454,9 @@
 	desc = "A hammer that destroys up to 30 cm of debris."
 	id = "hammercmadv"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 1500)
+	materials = list(MAT_PLASTIC = 1500)
 	build_path = /obj/item/xenoarch/clean/hammer/advanced
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/cleanbrush
@@ -465,9 +464,9 @@
 	desc = "A brush that cleans debris."
 	id = "hammerbrush"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 500)
+	materials = list(MAT_PLASTIC = 500)
 	build_path = /obj/item/xenoarch/clean/brush/basic
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/cleanbrushadv
@@ -475,9 +474,9 @@
 	desc = "A brush that cleans debris."
 	id = "hammerbrushadv"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 1500)
+	materials = list(MAT_PLASTIC = 1500)
 	build_path = /obj/item/xenoarch/clean/brush/adv
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 // Designs for tools
@@ -487,9 +486,9 @@
 	desc = "A tool that scans depths of rocks."
 	id = "xenoscanner"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 500)
+	materials = list(MAT_PLASTIC = 500)
 	build_path = /obj/item/xenoarch/help/scanner
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/advxenoscanner
@@ -497,9 +496,9 @@
 	desc = "A tool that scans depths of rocks."
 	id = "advxenoscanner"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 1500)
+	materials = list(MAT_PLASTIC = 1500)
 	build_path = /obj/item/xenoarch/help/scanneradv
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/xenomeasure
@@ -507,9 +506,9 @@
 	desc = "A tool to measure the dug depth of rocks."
 	id = "xenomeasure"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 500)
+	materials = list(MAT_PLASTIC = 500)
 	build_path = /obj/item/xenoarch/help/measuring
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/xenoresearch
@@ -517,9 +516,9 @@
 	desc = "A tool used to get research points from artifacts."
 	id = "xenoresearch"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 1000)
+	materials = list(MAT_PLASTIC = 1000)
 	build_path = /obj/item/xenoarch/help/research
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/xenoplant
@@ -527,9 +526,9 @@
 	desc = "A tool to extract the seeds from prehistoric fossils."
 	id = "xenoplant"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 1000)
+	materials = list(MAT_PLASTIC = 1000)
 	build_path = /obj/item/xenoarch/help/plant
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/advcargoscanner
@@ -537,9 +536,9 @@
 	desc = "A tool used to sell items, virtually."
 	id = "advcargoscanner"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 1000, /datum/material/bluespace = 1000)
+	materials = list(MAT_PLASTIC = 1000, MAT_BLUESPACE = 1000)
 	build_path = /obj/item/xenoarch/help/cargo
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_CARGO
 
 /datum/design/xenobelt
@@ -547,9 +546,9 @@
 	desc = "A belt used to store some xenoarch tools."
 	id = "xenobelt"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 2000)
+	materials = list(MAT_PLASTIC = 2000)
 	build_path = /obj/item/storage/belt/xenoarch
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/xenorockback
@@ -557,9 +556,9 @@
 	desc = "A bag used to store 10 strange rocks."
 	id = "xenorockback"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 2000)
+	materials = list(MAT_PLASTIC = 2000)
 	build_path = /obj/item/storage/bag/strangerock
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/xenorockbackadv
@@ -567,7 +566,11 @@
 	desc = "A bluespace bag used to store 50 strange rocks."
 	id = "xenorockbackadv"
 	build_type = PROTOLATHE
-	materials = list(/datum/material/plastic = 2000, /datum/material/bluespace = 1000)
+	materials = list(MAT_PLASTIC = 2000, MAT_BLUESPACE = 1000)
 	build_path = /obj/item/storage/bag/strangerockadv
-	category = list("Tool Designs")
+	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
+
+/obj/item/paper/fluff/stations/lavaland/xenoarch
+	name = "xenoarchaeology notice"
+	info = "<b><i>XENOARCHAEOLOGY GUIDE</i></b><br><br>So you want to figure out xenoarchaeology? Well, it's easy to learn and can be 'fun' to pick up!<br><br>First, make sure you mine some rocks and find those weird, strange rocks that are occasionally found.<br>Then, bring them back safely to the facility, or somewhere... ANYWHERE really. Just be cautious of onlookers!<br>Next, take your depth scanner and scan the sucker.<br><br>It'll have a base depth and a safe depth. These depths are important:<br><br>1) Base depth is the deepest the relic can be within the rock.<br>2) Safe depth is the depth from the base depth that is the earliest it will appear FROM the base depth.<br><br>Essentially, take the base depth and subtract the safe depth from it. Mine to this point and start to brush brush brush!<br>For example: You get a rock that has a base depth of 30 and a safe depth of 10. How deep should you mine?<br><br>You should mine to 20, and then start brushing away. Eventually you'll get the relic!<br><br>Hopefully this helps! If not well... I don't know what to tell you.<br><br>Peace!<br><i><b>Kobe Ivanov</b></i>,<br>P-A Xenoarchaeologist"
