@@ -160,8 +160,7 @@
 #define TRAIT_CULT_EYES 		"cult_eyes"
 #define TRAIT_XRAY_VISION       "xray_vision"
 #define TRAIT_THERMAL_VISION    "thermal_vision"
-#define TRAIT_CUM_PLUS			"cum_plus"
-#define TRAIT_NEVER_CLONE       "noclone"
+//#define TRAIT_CUM_PLUS			"cum_plus"
 
 
 // common trait sources
