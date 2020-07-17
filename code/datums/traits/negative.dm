@@ -368,7 +368,7 @@
 	medical_record_text = "Patient's mind is in a vulnerable state, and cannot recover from traumatic events."
 
 //Port from Shadow
-/datum/quirk/donotclone
+/datum/quirk/noclone
 	name = "DNC"
 	desc = "You have filed a Do Not Clone order, stating that you do not wish to be cloned. You can still be revived by other means."
 	value = -2
