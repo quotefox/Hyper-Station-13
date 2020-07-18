@@ -13,7 +13,7 @@
 	icon_grow = "nofruit-stage"
 	growthstages = 4
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list(/datum/reagent/consumable/nothing = 0.1, /datum/reagent/consumable/laughter = 0.1)
+	reagents_add = list("nothing" = 0.1, "laughter" = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/nofruit
 	seed = /obj/item/seeds/nofruit
@@ -24,5 +24,5 @@
 	filling_color = "#FF4500"
 	bitesize = 100
 	foodtype = FRUIT
-	juice_results = list(/datum/reagent/consumable/nothing = 0)
+	juice_results = list("nothing" = 0.1, "laughter" = 0.1)
 	tastes = list("entertainment" = 1)
