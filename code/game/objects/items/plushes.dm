@@ -708,6 +708,18 @@
 	icon_state = "scrubpuppy"
 	item_state = "scrubpuppy"
 
+/obj/item/toy/plush/borgplushie/meddrake
+	name = "MediDrake Plushie"
+	desc = "An adorable stuffed toy of a Medidrake."
+	icon_state = "meddrake"
+	item_state = "meddrake"
+
+/obj/item/toy/plush/borgplushie/secdrake
+	name = "SecDrake Plushie"
+	desc = "An adorable stuffed toy of a Secdrake."
+	icon_state = "secdrake"
+	item_state = "secdrake"
+
 /obj/item/toy/plush/borgplushie/seeking
 	icon_state = "seeking"
 	item_state = "seeking"
