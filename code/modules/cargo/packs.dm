@@ -2921,14 +2921,13 @@
 	crate_name = "security department supply crate"
 
 /datum/supply_pack/costumes_toys/kinkmate
-	name = "Kinkmate construction kit"
+	name = "Kinkmate kit"
 	cost = 2000
 	contraband = TRUE
 	contains = list(/obj/item/vending_refill/kink,
 					/obj/item/vending_refill/kink,
-					/obj/item/vending_refill/kink,
-					/obj/item/circuitboard/machine/kinkmate)
-	crate_name = "Kinkmate construction kit"
+					/obj/item/vending_refill/kink)
+	crate_name = "Kinkmate kit"
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Miscellaneous ///////////////////////////////////
@@ -3193,7 +3192,6 @@
 	contraband = TRUE
 	contains = list(/obj/item/dildo/custom,
 					/obj/item/dildo/custom,
-					/obj/item/circuitboard/machine/kinkmate,
 					/obj/item/vending_refill/kink,
 					/obj/item/vending_refill/kink,
 					/obj/item/vending_refill/kink,
