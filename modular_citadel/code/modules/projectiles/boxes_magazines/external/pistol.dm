@@ -30,7 +30,7 @@
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
  
- /datum/design/m10mm/ap
+/datum/design/m10mm/ap
  	name = "pistol magazine (10mm AP)"
  	desc = "A gun magazine. Loaded with rounds which penetrate armour, but are less effective against normal targets."
  	id = "10mmap"

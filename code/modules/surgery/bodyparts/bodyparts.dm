@@ -377,7 +377,7 @@
 			Smark = GLOB.mam_body_markings_list[H.dna.features["mam_body_markings"]]
 			if(Smark)
 				body_markings_icon = Smark.icon
-			if(H.dna.features.["mam_body_markings"] != "None")
+			if(H.dna.features["mam_body_markings"] != "None")
 				body_markings = Smark?.icon_state || lowertext(H.dna.features["mam_body_markings"])
 				auxmarking = Smark?.icon_state || lowertext(H.dna.features["mam_body_markings"])
 			else

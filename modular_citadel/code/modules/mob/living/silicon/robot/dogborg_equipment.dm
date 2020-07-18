@@ -34,7 +34,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	user.do_attack_animation(A, ATTACK_EFFECT_BITE)
 
 /obj/item/dogborg/jaws/small/attack_self(mob/user)
-	var/mob/living/silicon/robot.R = user
+	var/mob/living/silicon/robot/R = user
 	if(R.cell && R.cell.charge > 100)
 		if(R.emagged && status == 0)
 			name = "combat jaws"
@@ -166,7 +166,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	item_flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/soap/tongue/attack_self(mob/user)
-	var/mob/living/silicon/robot.R = user
+	var/mob/living/silicon/robot/R = user
 	if(R.cell && R.cell.charge > 100)
 		if(R.emagged && status == 0)
 			status = !status
@@ -186,7 +186,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	update_icon()
 
 /obj/item/soap/tongue/afterattack(atom/target, mob/user, proximity)
-	var/mob/living/silicon/robot.R = user
+	var/mob/living/silicon/robot/R = user
 	if(!proximity || !check_allowed_items(target))
 		return
 	if(R.client && (target in R.client.screen))
@@ -213,7 +213,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 			if(!do_after(R, 50, target = target))
 				return //If they moved away, you can't eat them.
 			to_chat(R, "<span class='notice'>You finish off \the [target.name].</span>")
-			var/obj/item/stock_parts/cell.C = target
+			var/obj/item/stock_parts/cell/C = target
 			R.cell.charge = R.cell.charge + (C.charge / 3) //Instant full cell upgrades op idgaf
 			qdel(target)
 			return
