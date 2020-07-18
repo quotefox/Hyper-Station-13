@@ -1334,3 +1334,35 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/tcommsat/lounge
 	name = "Telecommunications Satellite Lounge"
 	icon_state = "tcomsatlounge"
+
+/*************
+***XENOARCH***
+*************/
+
+/area/xenoarch
+	icon_state = "xenogen"
+	has_gravity = STANDARD_GRAVITY
+
+/area/xenoarch/arch
+	name = "Xenoarchaeology"
+	icon_state = "xenoarch"
+
+/area/xenoarch/bot
+	name = "Xenoarchaeology Botany"
+	icon_state = "xenobot"
+
+/area/xenoarch/eng
+	name = "Xenoarchaeology Engineering"
+	icon_state = "xenoeng"
+
+/area/xenoarch/gen
+	name = "Xenoarchaeology Living Quarters"
+	icon_state = "xenogen"
+
+/area/xenoarch/sec
+	name = "Xenoarchaeology Security"
+	icon_state = "xenosec" 
+
+/area/xenoarch/med
+	name = "Xenoarchaeology Medical"
+	icon_state = "xenomed" 
