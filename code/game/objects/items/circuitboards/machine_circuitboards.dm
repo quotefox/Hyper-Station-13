@@ -252,16 +252,22 @@
 		/obj/machinery/vending/wardrobe/viro_wardrobe = "ViroDrobe",
 		/obj/machinery/vending/clothing = "ClothesMate",
 		/obj/machinery/vending/medical = "NanoMed Plus",
-		/obj/machinery/vending/wallmed = "NanoMed")
+		/obj/machinery/vending/wallmed = "NanoMed",
+		/obj/machinery/vending/kink = "\improper KinkMate")
 
 /obj/item/circuitboard/machine/vendor/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/screwdriver))
-		var/position = vending_names_paths.Find(build_path)
-		position = (position == vending_names_paths.len) ? 1 : (position + 1)
-		var/typepath = vending_names_paths[position]
-
-		to_chat(user, "<span class='notice'>You set the board to \"[vending_names_paths[typepath]]\".</span>")
+		var/choice = show_radial_menu(user, src, GLOB.vending_m_choices, radius = 46, require_near = TRUE, tooltips = TRUE)
+		if(!choice)
+			return
+		var/static/list/vendinglist = GLOB.vending_m_choices
+		var/choiceposition = vendinglist.Find(choice)
+		if(!choiceposition)
+			return
+		var/typepath = GLOB.vending_machines[choiceposition]
+		var/namepath = vending_names_paths[choiceposition]
 		set_type(typepath)
+		to_chat(user, "<span class='notice'>You set the board to \"[vending_names_paths[namepath]]\".</span>")
 	else
 		return ..()
 
