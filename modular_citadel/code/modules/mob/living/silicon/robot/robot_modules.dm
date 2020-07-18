@@ -27,6 +27,19 @@
 	var/moduleselect_alternate_icon
 	var/dogborg = FALSE
 
+/**
+  * check_menu: Checks if we are allowed to interact with a radial menu
+  *
+  * Arguments:
+  * * user The mob interacting with a menu
+  */
+/obj/item/robot_module/proc/check_menu(mob/user)
+	if(!istype(user))
+		return FALSE
+	if(user.incapacitated() || !user.Adjacent(src))
+		return FALSE
+	return TRUE
+
 /obj/item/robot_module/k9
 	name = "Security K-9 Unit"
 	basic_modules = list(
@@ -62,13 +75,23 @@
 
 /obj/item/robot_module/k9/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/list/sechoundmodels = list("Default")
-	if(R.client && R.client.ckey in list("nezuli"))
-		sechoundmodels += "Alina"
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in sechoundmodels
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
+	var/static/list/k9_models
+	if(!k9_models)
+		k9_models = list()
+		var/list/L = list("Default" = "k9")
+		for(var/a in L)
+			var/image/wide = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = L[a])
+			wide.pixel_x = -16
+			k9_models[a] = wide
+		if(R.client?.ckey == "nezuli")
+			var/image/bad_snowflake = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "alina-sec")
+			bad_snowflake.pixel_x = -16
+			k9_models["Alina"] = bad_snowflake
+		k9_models = sortList(k9_models)
+	var/k9_borg_icon = show_radial_menu(R, R , k9_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
+	if(!k9_borg_icon)
+		return
+	switch(k9_borg_icon)
 		if("Default")
 			cyborg_base_icon = "k9"
 			moduleselect_icon = "k9"
@@ -113,13 +136,23 @@
 
 /obj/item/robot_module/medihound/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/list/medhoundmodels = list("Default", "Dark")
-	if(R.client && R.client.ckey in list("nezuli"))
-		medhoundmodels += "Alina"
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in medhoundmodels
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
+	var/static/list/medihound_models
+	if(!medihound_models)
+		medihound_models = list()
+		var/list/L = list("Default" = "medihound", "Dark" = "medihounddark")
+		for(var/a in L)
+			var/image/wide = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = L[a])
+			wide.pixel_x = -16
+			medihound_models[a] = wide
+		if(R.client?.ckey == "nezuli")
+			var/image/bad_snowflake = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "alina-med")
+			bad_snowflake.pixel_x = -16
+			medihound_models["Alina"] = bad_snowflake
+		medihound_models = sortList(medihound_models)
+	var/medihound_borg_icon = show_radial_menu(R, R , medihound_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
+	if(!medihound_borg_icon)
+		return
+	switch(medihound_borg_icon)
 		if("Default")
 			cyborg_base_icon = "medihound"
 		if("Dark")
@@ -234,10 +267,25 @@
 
 /obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Heavy", "Sleek", "Marina", "Droid", "Eyebot", "BootyF", "BootyM", "BootyS", "Haydee")
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
+	var/static/list/med_models
+	if(!med_models)
+		med_models = list(
+				"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "medical"),
+				"Droid" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "medical"),
+				"Sleek" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "sleekmed"),
+				"Marina" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinamed"),
+				"Eyebot" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "eyebotmed"),
+				"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavymed"),
+				"BootyF" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootymedical"),
+				"BootyM" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootymedicalM"),
+				"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootymedicalS"),
+				"Haydee" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "haydeemedical")
+		)
+		med_models = sortList(med_models)
+	var/medi_borg_icon = show_radial_menu(R, R , med_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
+	if(!medi_borg_icon)
+		return
+	switch(medi_borg_icon)
 		if("Default")
 			cyborg_base_icon = "medical"
 		if("Droid")
@@ -276,11 +324,23 @@
 
 /obj/item/robot_module/janitor/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/list/janimodels = list("Default", "Sleek", "Marina", "Can", "Heavy", "BootyF", "BootyM", "BootyS")
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in janimodels
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
+	var/static/list/jani_models
+	if(!jani_models)
+		jani_models = list(
+			"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "janitor"),
+			"Sleek" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "sleekjan"),
+			"Marina" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinajan"),
+			"Can" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "canjan"),
+			"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavyres"),
+			"BootyF" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyjanitor"),
+			"BootyM" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyjanitorM"),
+			"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyjanitorS")
+		)
+		jani_models = sortList(jani_models)
+	var/jani_borg_icon = show_radial_menu(R, R , jani_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
+	if(!jani_borg_icon)
+		return
+	switch(jani_borg_icon)
 		if("Default")
 			cyborg_base_icon = "janitor"
 		if("Marina")
@@ -311,10 +371,20 @@
 
 /obj/item/robot_module/peacekeeper/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Spider", "BootyF", "BootyM", "BootyS")
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
+	var/static/list/peace_models
+	if(!peace_models)
+		peace_models = list(
+			"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "peace"),
+			"Spider" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "whitespider"),
+			"BootyF" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootypeace"),
+			"BootyM" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootypeaceM"),
+			"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootypeaceS")
+		)
+		peace_models = sortList(peace_models)
+	var/peace_borg_icon = show_radial_menu(R, R , peace_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
+	if(!peace_borg_icon)
+		return
+	switch(peace_borg_icon)
 		if("Default")
 			cyborg_base_icon = "peace"
 		if("Spider")
@@ -336,10 +406,25 @@
 
 /obj/item/robot_module/security/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Default", "Default - Treads", "Heavy", "Sleek", "Can", "Marina", "Spider", "BootyF", "BootyM", "BootyS")
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
+	var/static/list/sec_models
+	if(!sec_models)
+		sec_models = list(
+			"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "sec"),
+			"Default - Treads" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "sec-tread"),
+			"Sleek" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "sleeksec"),
+			"Marina" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinasec"),
+			"Can" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "cansec"),
+			"Spider" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "spidersec"),
+			"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavysec"),
+			"BootyF" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootysecurity"),
+			"BootyM" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootysecurityM"),
+			"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootysecurityS")
+		)
+		sec_models = sortList(sec_models)
+	var/sec_borg_icon = show_radial_menu(R, R , sec_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
+	if(!sec_borg_icon)
+		return
+	switch(sec_borg_icon)
 		if("Default")
 			cyborg_base_icon = "sec"
 		if("Default - Treads")
@@ -377,10 +462,25 @@
 
 /obj/item/robot_module/butler/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Waitress", "Heavy", "Sleek", "Butler", "Tophat", "Kent", "Bro", "BootyF", "BootyM", "BootyS")
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
+	var/static/list/butler_models
+	if(!butler_models)
+		butler_models = list(
+			"Waitress" = image(icon = 'icons/mob/robots.dmi', icon_state = "service_f"),
+			"Butler" = image(icon = 'icons/mob/robots.dmi', icon_state = "service_m"),
+			"Bro" = image(icon = 'icons/mob/robots.dmi', icon_state = "brobot"),
+			"Kent" = image(icon = 'icons/mob/robots.dmi', icon_state = "kent"),
+			"Tophat" = image(icon = 'icons/mob/robots.dmi', icon_state = "tophat"),
+			"Sleek" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "sleekserv"),
+			"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavyserv"),
+			"BootyF" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyservice"),
+			"BootyM" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyserviceM"),
+			"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyserviceS")
+		)
+		butler_models = sortList(butler_models)
+	var/butler_borg_icon = show_radial_menu(R, R , butler_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
+	if(!butler_borg_icon)
+		return
+	switch(butler_borg_icon)
 		if("Waitress")
 			cyborg_base_icon = "service_f"
 		if("Butler")
@@ -419,13 +519,36 @@
 
 /obj/item/robot_module/engineering/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/list/engymodels = list("Default", "Default - Treads", "Heavy", "Sleek", "Marina", "Can", "Spider", "Loader","Handy", "Pup Dozer", "BootyF", "BootyM", "BootyS")
-	if(R.client && R.client.ckey in list("nezuli"))
-		engymodels += "Alina"
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in engymodels
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
+	var/static/list/eng_models
+	if(!eng_models)
+		eng_models = list(
+			"Default" = image(icon = 'icons/mob/robots.dmi', icon_state = "engineer"),
+			"Default - Treads" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "engi-tread"),
+			"Loader" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "loaderborg"),
+			"Handy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "handyeng"),
+			"Sleek" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "sleekeng"),
+			"Can" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "caneng"),
+			"Marina" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinaeng"),
+			"Spider" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "spidereng"),
+			"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavyeng"),
+			"BootyF" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyengineer"),
+			"BootyM" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyengineerM"),
+			"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyengineerS")
+		)
+		var/list/L = list("Pupdozer" = "pupdozer")
+		for(var/a in L)
+			var/image/wide = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = L[a])
+			wide.pixel_x = -16
+			eng_models[a] = wide
+		if(R.client?.ckey == "nezuli")
+			var/image/bad_snowflake = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "alina-sec")
+			bad_snowflake.pixel_x = -16
+			eng_models["Alina"] = bad_snowflake
+		eng_models = sortList(eng_models)
+	var/eng_borg_icon = show_radial_menu(R, R , eng_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
+	if(!eng_borg_icon)
+		return
+	switch(eng_borg_icon)
 		if("Default")
 			cyborg_base_icon = "engineer"
 		if("Default - Treads")
@@ -487,10 +610,26 @@
 
 /obj/item/robot_module/miner/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Lavaland", "Heavy", "Sleek", "Marina", "Can", "Spider", "Asteroid", "Droid", "BootyF", "BootyM", "BootyS")
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
+	var/static/list/miner_models
+	if(!miner_models)
+		miner_models = list(
+			"Lavaland" = image(icon = 'icons/mob/robots.dmi', icon_state = "miner"),
+			"Asteroid" = image(icon = 'icons/mob/robots.dmi', icon_state = "minerOLD"),
+			"Droid" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "miner"),
+			"Sleek" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "sleekmin"),
+			"Can" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "canmin"),
+			"Marina" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "marinamin"),
+			"Spider" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "spidermin"),
+			"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavymin"),
+			"BootyF" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyminer"),
+			"BootyM" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyminerM"),
+			"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyminerS")
+		)
+		miner_models = sortList(miner_models)
+	var/miner_borg_icon = show_radial_menu(R, R , miner_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
+	if(!miner_borg_icon)
+		return
+	switch(miner_borg_icon)
 		if("Lavaland")
 			cyborg_base_icon = "miner"
 		if("Asteroid")
@@ -531,12 +670,21 @@
 
 /obj/item/robot_module/standard/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Standard", "BootyF", "BootyM", "BootyS")
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
+	var/static/list/stand_models
+	if(!stand_models)
+		stand_models = list(
+			"Standard" = image(icon = 'icons/mob/robots.dmi', icon_state = "robot"),
+			"BootyF" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootystandard"),
+			"BootyM" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootystandardM"),
+			"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootystandardS")
+		)
+		stand_models = sortList(stand_models)
+	var/stand_borg_icon = show_radial_menu(R, R , stand_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
+	if(!stand_borg_icon)
+		return
+	switch(stand_borg_icon)
 		if("Standard")
-			cyborg_base_icon = "standard"
+			cyborg_base_icon = "robot"
 		if("BootyF")
 			cyborg_base_icon = "bootystandard"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
@@ -553,10 +701,19 @@
 
 /obj/item/robot_module/clown/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/borg_icon = input(R, "Select an icon!", "Robot Icon", null) as null|anything in list("Standard", "BootyF", "BootyM", "BootyS")
-	if(!borg_icon)
-		return FALSE
-	switch(borg_icon)
+	var/static/list/clown_models
+	if(!clown_models)
+		clown_models = list(
+			"Standard" = image(icon = 'icons/mob/robots.dmi', icon_state = "clown"),
+			"BootyF" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootystandard"),
+			"BootyM" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootystandardM"),
+			"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootystandardS")
+		)
+		clown_models = sortList(clown_models)
+	var/clown_borg_icon = show_radial_menu(R, R , clown_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
+	if(!clown_borg_icon)
+		return
+	switch(clown_borg_icon)
 		if("Standard")
 			cyborg_base_icon = "clown"
 		if("BootyF")

@@ -69,7 +69,6 @@
 			if(previous_size > 1 && size_multiplier > 1) //macro stays a macro. We just scale the sprite with no offset changes
 				ntransform.Scale(size_multiplier/previous_size)		//scale the sprite accordingly
 
-		previous_size = size_multiplier
 
 	if(changed)
 		animate(src, transform = ntransform, time = 2, pixel_y = final_pixel_y, dir = final_dir, easing = EASE_IN|EASE_OUT)
