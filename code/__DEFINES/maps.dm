@@ -72,7 +72,6 @@ require only minor tweaks.
 	ZTRAIT_DOWN = -1, \
 	ZTRAIT_BASETURF = /turf/open/lava/smooth/lava_land_surface) //You see Ivan, defines can't be modularized.
 #define ZTRAITS_LAVALAND_UNDERRGOUND list(\
-	ZTRAIT_MINING = TRUE, \
 	ZTRAIT_LAVA_UNDERGROUND = TRUE, \
 	ZTRAIT_BOMBCAP_MULTIPLIER = 2, \
 	ZTRAIT_UP = 1, \
