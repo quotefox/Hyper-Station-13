@@ -199,3 +199,14 @@
 	primary_color = "#808080" //RGB in hexcode
 	secondary_color = "#FF3535"
 	body_parts_covered = GROIN
+
+/obj/item/clothing/under/polychromic/polyskinight
+	name = "polychromic skin-tight suit"
+	desc = "Clings to your body like a shivering chimpanzee."
+	icon_state = "polyskinightsuit"
+	item_color = "polyskinightsuit"
+	item_state = "rainbow"
+	hassecondary = FALSE
+	hastertiary = FALSE
+	primary_color = "#FFFFFF" //RGB in hexcode
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
