@@ -75,8 +75,7 @@
 
 /obj/item/robot_module/k9/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/static/list/k9_models
-	
+	var/static/list/k9_models	
 	if(!k9_models)
 		k9_models = list(
 			"k9" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "k9"),

@@ -735,3 +735,12 @@
 	required_reagents = list("oil" = 1) //Oil, makes sense for it being their blood, so..
 	required_other = TRUE
 	required_container = /obj/item/slime_extract/green
+
+/datum/chemical_reaction/slime/slimesynthliz //They keep coming back for more
+	name = "Synthlizard Mutation Toxin"
+	id = "synthlizmuttoxin"
+	results = list("synthlizmutationtoxin" = 1)
+	required_reagents = list("silicon" = 1) //It'd be annoying to make it require synthflesh, so this will work
+	required_other = TRUE
+	required_container = /obj/item/slime_extract/green
+

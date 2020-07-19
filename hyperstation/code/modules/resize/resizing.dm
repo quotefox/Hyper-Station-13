@@ -7,6 +7,8 @@ var/const/RESIZE_SMALL = 0.75
 var/const/RESIZE_TINY = 0.50
 var/const/RESIZE_MICRO = 0.25
 
+#define MOVESPEED_ID_SIZE      "SIZECODE"
+
 //averages
 var/const/RESIZE_A_MACROHUGE = (RESIZE_MACRO + RESIZE_HUGE) / 2
 var/const/RESIZE_A_HUGEBIG = (RESIZE_HUGE + RESIZE_BIG) / 2
@@ -31,11 +33,20 @@ mob/living/get_effective_size()
 	return src.size_multiplier
 
 /mob/living/proc/resize(var/new_size, var/animate = TRUE)
-	if(size_multiplier == new_size)
+	size_multiplier = new_size //This will be passed into update_transform() and used to change health and speed.
+	if(size_multiplier == previous_size)
 		return 1
-
-	size_multiplier = new_size //Change size_multiplier so that other items can interact with them
 	src.update_transform() //WORK DAMN YOU
+	//Going to change the health and speed values too
+	var/inverse_size_multiplier = (1 / size_multiplier) //Get a positive value
+	src.remove_movespeed_modifier(MOVESPEED_ID_SIZE)
+	src.add_movespeed_modifier(MOVESPEED_ID_SIZE, multiplicative_slowdown = (max(size_multiplier, inverse_size_multiplier) - 1))
+	var/healthmod_old = ((previous_size * 50) - 50) //Get the old value to see what we must change.
+	var/healthmod_new = ((size_multiplier * 50) - 50) //A size of one would be zero. Big boys get health, small ones lose health.
+	var/healthchange = healthmod_new - healthmod_old //Get ready to apply the new value, and subtract the old one. (Negative values become positive)
+	src.maxHealth += healthchange
+	src.health += healthchange
+	previous_size = size_multiplier //And, change this now that we are finally done.
 
 //handle the big steppy, except nice
 /mob/living/proc/handle_micro_bump_helping(var/mob/living/tmob)

@@ -204,8 +204,6 @@
 		H.give_genitals(TRUE)
 
 		H.suiciding = FALSE
-		H.custom_body_size = H.client.prefs.body_size
-		//H.size_multiplier =  (max(min( round((H.custom_body_size)), MAX_BODYSIZE),MIN_BODYSIZE)* 0.01) //Not working dont know why.
 	attempting = FALSE
 
 	return TRUE
@@ -382,6 +380,10 @@
 		qdel(fl)
 	unattached_flesh.Cut()
 
+	//Do the resize on ejection. The clone pod seems to do a lot of matrix transforms the way size code does, so we will handle our resize after.
+	mob_occupant.previous_size = 1 //Set the previous size to default so the resize properly set health and speed.
+	mob_occupant.custom_body_size = mob_occupant.client.prefs.body_size
+	mob_occupant.resize(mob_occupant.custom_body_size * 0.01)
 	occupant = null
 
 /obj/machinery/clonepod/proc/malfunction()
