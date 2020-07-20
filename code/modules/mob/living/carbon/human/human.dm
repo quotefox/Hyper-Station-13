@@ -209,6 +209,11 @@
 	if(istype(MB))
 		MB.RunOver(src)
 
+	//Hyper Change - Step on people
+	var/mob/living/carbon/human/H = AM
+	if(istype(H) && lying && H.a_intent != INTENT_HELP)
+		H.handle_micro_bump_other(src)
+
 	spreadFire(AM)
 
 /mob/living/carbon/human/Topic(href, href_list)
