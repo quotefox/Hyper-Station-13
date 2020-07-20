@@ -265,3 +265,27 @@
 	item_state = "rainbow"
 	item_color = "rainbow_skirt"
 	can_adjust = FALSE
+
+/obj/item/clothing/under/color/kneepadded_skintightsuit
+	name = "knee padded skin-tight suit"
+	desc = "A grayish blue skin-tight suit with some knee pads to protect your frail little knees."
+	icon_state = "kneepadded_skintightsuit"
+	item_state = "rainbow"
+	item_color = "kneepadded_skintightsuit"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/color/slick_skintightsuit
+	name = "slick skin-tight suit"
+	desc = "A skin-tight suit that looks pretty slick and sci-fi looking."
+	icon_state = "slick_skintightsuit"
+	item_state = "rainbow"
+	item_color = "slick_skintightsuit"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/color/black_skintightsuit
+	name = "black skin-tight suit"
+	desc = "Clings to your body like a shivering chimpanzee."
+	icon_state = "black_skintightsuit"
+	item_state = "rainbow"
+	item_color = "black_skintightsuit"
+	can_adjust = FALSE

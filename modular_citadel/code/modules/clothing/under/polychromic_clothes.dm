@@ -200,11 +200,11 @@
 	secondary_color = "#FF3535"
 	body_parts_covered = GROIN
 
-/obj/item/clothing/under/polychromic/polyskinight
+/obj/item/clothing/under/polychromic/polyskintight
 	name = "polychromic skin-tight suit"
 	desc = "Clings to your body like a shivering chimpanzee."
-	icon_state = "polyskinightsuit"
-	item_color = "polyskinightsuit"
+	icon_state = "polyskintightsuit"
+	item_color = "polyskintightsuit"
 	item_state = "rainbow"
 	hassecondary = FALSE
 	hastertiary = FALSE
