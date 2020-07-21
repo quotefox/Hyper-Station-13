@@ -73,7 +73,7 @@
 
 //Bodysize Limits
 #define MIN_BODYSIZE		50
-#define MAX_BODYSIZE		175
+#define MAX_BODYSIZE		200
 
 #define BREASTS_SIZE_MIN 	BREASTS_SIZE_A
 #define BREASTS_SIZE_DEF	BREASTS_SIZE_D
