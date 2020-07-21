@@ -200,6 +200,24 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/keyholesweater
 
+/datum/gear/kneepadded_skintightsuit
+	name =  "knee padded skin-tight suit"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/color/kneepadded_skintightsuit
+	cost = 2
+
+/datum/gear/slick_skintightsuit
+	name =  "slick skin-tight suit"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/color/slick_skintightsuit
+	cost = 2
+
+/datum/gear/black_skintightsuit
+	name =  "black skin-tight suit"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/color/black_skintightsuit
+	cost = 2
+
 /datum/gear/polyskirt
 	name = "Polychromic Skirt"
 	category = SLOT_W_UNIFORM
