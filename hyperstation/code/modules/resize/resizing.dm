@@ -8,6 +8,7 @@ var/const/RESIZE_TINY = 0.50
 var/const/RESIZE_MICRO = 0.25
 
 #define MOVESPEED_ID_SIZE      "SIZECODE"
+#define MOVESPEED_ID_STOMP     "STEPPY"
 
 //averages
 var/const/RESIZE_A_MACROHUGE = (RESIZE_MACRO + RESIZE_HUGE) / 2
@@ -38,9 +39,8 @@ mob/living/get_effective_size()
 		return 1
 	src.update_transform() //WORK DAMN YOU
 	//Going to change the health and speed values too
-	var/inverse_size_multiplier = (1 / size_multiplier) //Get a positive value
 	src.remove_movespeed_modifier(MOVESPEED_ID_SIZE)
-	src.add_movespeed_modifier(MOVESPEED_ID_SIZE, multiplicative_slowdown = (max(size_multiplier, inverse_size_multiplier) - 1))
+	src.add_movespeed_modifier(MOVESPEED_ID_SIZE, multiplicative_slowdown = (abs(size_multiplier - 1) * 0.5 ))
 	var/healthmod_old = ((previous_size * 50) - 50) //Get the old value to see what we must change.
 	var/healthmod_new = ((size_multiplier * 50) - 50) //A size of one would be zero. Big boys get health, small ones lose health.
 	var/healthchange = healthmod_new - healthmod_old //Get ready to apply the new value, and subtract the old one. (Negative values become positive)
@@ -52,6 +52,15 @@ mob/living/get_effective_size()
 /mob/living/proc/handle_micro_bump_helping(var/mob/living/tmob)
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
+
+		if(tmob.pulledby == H)
+			return 0
+		
+		//Micro is on a table.
+		var/turf/steppyspot = tmob.loc
+		for(var/thing in steppyspot.contents)
+			if(istype(thing, /obj/structure/table))
+				return 1
 
 		//Both small.
 		if(H.get_effective_size() <= RESIZE_A_SMALLTINY && tmob.get_effective_size() <= RESIZE_A_SMALLTINY)
@@ -87,6 +96,15 @@ mob/living/get_effective_size()
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 
+		if(tmob.pulledby == H)
+			return 0
+
+	//If on a table, don't
+		var/turf/steppyspot = tmob.loc
+		for(var/thing in steppyspot.contents)
+			if(istype(thing, /obj/structure/table))
+				return 1
+
 	//Both small
 		if(H.get_effective_size() <= RESIZE_A_SMALLTINY && tmob.get_effective_size() <= RESIZE_A_SMALLTINY)
 			now_pushing = 0
@@ -98,6 +116,8 @@ mob/living/get_effective_size()
 				now_pushing = 0
 				H.forceMove(tmob.loc)
 				sizediffStamLoss(tmob)
+				H.add_movespeed_modifier(MOVESPEED_ID_STOMP, multiplicative_slowdown = 10) //Full stop
+				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 5) //0.5 second
 				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
 					if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
 						to_chat(H,"<span class='danger'>You carefully roll over [tmob] with your tail!</span>")
@@ -112,6 +132,9 @@ mob/living/get_effective_size()
 				H.forceMove(tmob.loc)
 				sizediffStamLoss(tmob)
 				sizediffBruteloss(tmob)
+				H.add_movespeed_modifier(MOVESPEED_ID_STOMP, multiplicative_slowdown = 10)
+				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 15) //1.5 second
+				//H.Stun(20)
 				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
 					if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
 						to_chat(H,"<span class='danger'>You grind [tmob] into the floor with your tail!</span>")
@@ -124,8 +147,11 @@ mob/living/get_effective_size()
 			if(H.a_intent == "grab" && H.canmove && !H.buckled)
 				now_pushing = 0
 				H.forceMove(tmob.loc)
-				sizediffStamLoss(tmob)
+				//sizediffStamLoss(tmob)
+				tmob.Knockdown(1)
 				sizediffStun(tmob)
+				H.add_movespeed_modifier(MOVESPEED_ID_STOMP, multiplicative_slowdown = 10)
+				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 10)//About 3/4th a second
 				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
 					var/feetCover = (H.wear_suit && (H.wear_suit.body_parts_covered & FEET)) || (H.w_uniform && (H.w_uniform.body_parts_covered & FEET) || (H.shoes && (H.shoes.body_parts_covered & FEET)))
 					if(feetCover)
@@ -164,12 +190,12 @@ mob/living/get_effective_size()
 
 //Proc for scaling stamina damage on size difference
 /mob/living/proc/sizediffStamLoss(var/mob/living/tmob)
-	var/S = (get_effective_size()/tmob.get_effective_size()*25) //macro divided by micro, times 25
+	var/S = (get_effective_size()/tmob.get_effective_size()*15) //macro divided by micro, times 15
 	tmob.Knockdown(S) //final result in stamina knockdown
 
 //Proc for scaling stuns on size difference (for grab intent)
 /mob/living/proc/sizediffStun(var/mob/living/tmob)
-	var/T = (get_effective_size()/tmob.get_effective_size()*15) //Macro divided by micro, times 15
+	var/T = (get_effective_size()/tmob.get_effective_size()*10) //Macro divided by micro, times 10
 	tmob.Stun(T)
 
 //Proc for scaling brute damage on size difference

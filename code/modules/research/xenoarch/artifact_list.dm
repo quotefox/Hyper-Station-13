@@ -6,6 +6,7 @@ GLOBAL_LIST_INIT(bas_artifact,list(	/obj/item/kitchen/fork=1,
 									/obj/item/shield/riot/roman/fake=1,
 									/obj/item/trash/plate=1,
 									/obj/item/extendohand=1,
+									/obj/item/toy/plush/random=1,
 									/obj/item/ancientartifact/useless=11
 									))
 
@@ -39,7 +40,7 @@ GLOBAL_LIST_INIT(ult_artifact,list(	/obj/item/nuke_core/supermatter_sliver=1,
 									/obj/item/gun/medbeam=1,
 									/obj/item/storage/box/syndie_kit/imp_storage=1,
 									/obj/item/pen/edagger=1,
-									/obj/item/dice/d20/fate=1,
+									/obj/item/dice/d20/fate/one_use=1,
 									/obj/item/instrument/violin/golden=1,
 									/obj/item/healthanalyzer/rad_laser=1,
 									/obj/item/clothing/suit/hooded/cloak/drake=1,

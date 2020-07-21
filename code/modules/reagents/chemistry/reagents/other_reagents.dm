@@ -2225,3 +2225,11 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/ipc
 	mutationtext = "<span class='danger'>The pain subsides. You feel... metallic.</span>"
+
+/datum/reagent/mutationtoxin/synthliz
+	name = "Synthlizard Mutation Toxin"
+	id = "synthlizmutationtoxin"
+	description = "A synthetic toxin." //NANOMACHINES SON.
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/synthliz
+	mutationtext = "<span class='danger'>The pain subsides. You feel... artificial.</span>"
