@@ -40,7 +40,7 @@ mob/living/get_effective_size()
 	src.update_transform() //WORK DAMN YOU
 	//Going to change the health and speed values too
 	src.remove_movespeed_modifier(MOVESPEED_ID_SIZE)
-	src.add_movespeed_modifier(MOVESPEED_ID_SIZE, multiplicative_slowdown = (abs(size_multiplier - 1) * 0.5 ))
+	src.add_movespeed_modifier(MOVESPEED_ID_SIZE, multiplicative_slowdown = (abs(size_multiplier - 1) * 0.8 ))
 	var/healthmod_old = ((previous_size * 50) - 50) //Get the old value to see what we must change.
 	var/healthmod_new = ((size_multiplier * 50) - 50) //A size of one would be zero. Big boys get health, small ones lose health.
 	var/healthchange = healthmod_new - healthmod_old //Get ready to apply the new value, and subtract the old one. (Negative values become positive)
@@ -63,7 +63,7 @@ mob/living/get_effective_size()
 				return 1
 
 		//Both small.
-		if(H.get_effective_size() <= RESIZE_A_SMALLTINY && tmob.get_effective_size() <= RESIZE_A_SMALLTINY)
+		if(H.get_effective_size() <= RESIZE_A_TINYMICRO && tmob.get_effective_size() <= RESIZE_A_TINYMICRO)
 			now_pushing = 0
 			H.forceMove(tmob.loc)
 			return 1
@@ -106,7 +106,7 @@ mob/living/get_effective_size()
 				return 1
 
 	//Both small
-		if(H.get_effective_size() <= RESIZE_A_SMALLTINY && tmob.get_effective_size() <= RESIZE_A_SMALLTINY)
+		if(H.get_effective_size() <= RESIZE_A_TINYMICRO && tmob.get_effective_size() <= RESIZE_A_TINYMICRO)
 			now_pushing = 0
 			H.forceMove(tmob.loc)
 			return 1
@@ -147,8 +147,7 @@ mob/living/get_effective_size()
 			if(H.a_intent == "grab" && H.canmove && !H.buckled)
 				now_pushing = 0
 				H.forceMove(tmob.loc)
-				//sizediffStamLoss(tmob)
-				tmob.Knockdown(1)
+				sizediffStamLoss(tmob)
 				sizediffStun(tmob)
 				H.add_movespeed_modifier(MOVESPEED_ID_STOMP, multiplicative_slowdown = 10)
 				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 10)//About 3/4th a second
@@ -190,12 +189,12 @@ mob/living/get_effective_size()
 
 //Proc for scaling stamina damage on size difference
 /mob/living/proc/sizediffStamLoss(var/mob/living/tmob)
-	var/S = (get_effective_size()/tmob.get_effective_size()*15) //macro divided by micro, times 15
+	var/S = (get_effective_size()/tmob.get_effective_size()*25) //macro divided by micro, times 25
 	tmob.Knockdown(S) //final result in stamina knockdown
 
 //Proc for scaling stuns on size difference (for grab intent)
 /mob/living/proc/sizediffStun(var/mob/living/tmob)
-	var/T = (get_effective_size()/tmob.get_effective_size()*10) //Macro divided by micro, times 10
+	var/T = (get_effective_size()/tmob.get_effective_size()*15) //Macro divided by micro, times 15
 	tmob.Stun(T)
 
 //Proc for scaling brute damage on size difference
