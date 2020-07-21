@@ -117,7 +117,7 @@ mob/living/get_effective_size()
 				H.forceMove(tmob.loc)
 				sizediffStamLoss(tmob)
 				H.add_movespeed_modifier(MOVESPEED_ID_STOMP, multiplicative_slowdown = 10) //Full stop
-				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 5) //0.5 second
+				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 3) //0.3 seconds
 				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
 					if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
 						to_chat(H,"<span class='danger'>You carefully roll over [tmob] with your tail!</span>")
@@ -133,7 +133,7 @@ mob/living/get_effective_size()
 				sizediffStamLoss(tmob)
 				sizediffBruteloss(tmob)
 				H.add_movespeed_modifier(MOVESPEED_ID_STOMP, multiplicative_slowdown = 10)
-				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 15) //1.5 second
+				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 10) //1 seconds
 				//H.Stun(20)
 				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
 					if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
@@ -150,7 +150,7 @@ mob/living/get_effective_size()
 				sizediffStamLoss(tmob)
 				sizediffStun(tmob)
 				H.add_movespeed_modifier(MOVESPEED_ID_STOMP, multiplicative_slowdown = 10)
-				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 10)//About 3/4th a second
+				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 7)//About 3/4th a second
 				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
 					var/feetCover = (H.wear_suit && (H.wear_suit.body_parts_covered & FEET)) || (H.w_uniform && (H.w_uniform.body_parts_covered & FEET) || (H.shoes && (H.shoes.body_parts_covered & FEET)))
 					if(feetCover)
