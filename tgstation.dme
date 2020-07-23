@@ -2899,6 +2899,7 @@
 #include "hyperstation\code\modules\patreon\patreon.dm"
 #include "hyperstation\code\modules\resize\holder_micro.dm"
 #include "hyperstation\code\modules\resize\resizing.dm"
+#include "hyperstation\code\modules\resize\sizechems.dm"
 #include "hyperstation\code\modules\resize\sizegun.dm"
 #include "hyperstation\code\obj\bluespace sewing kit.dm"
 #include "hyperstation\code\obj\decal.dm"
