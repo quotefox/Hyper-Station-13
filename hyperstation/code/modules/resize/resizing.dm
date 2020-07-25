@@ -76,11 +76,9 @@ mob/living/get_effective_size()
 			//Smaller person being stepped on
 			if(get_effective_size() > tmob.get_effective_size() && iscarbon(src))
 				if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-					to_chat(H,"<span class='notice'>You carefully slither around [tmob].</span>")
-					to_chat(tmob,"<span class='notice'>[H]'s huge tail slithers beside you!</span>")
+					H.visible_message("<span class='notice'>[H]'s huge tail slithers besides you.</span>", "<span class='notice'>[H] carefully slithers around [tmob].</span>")
 				else
-					to_chat(H,"<span class='notice'>You carefully step over [tmob].</span>")
-					to_chat(tmob,"<span class='notice'>[H] steps over you carefully!</span>")
+					H.visible_message("<span class='notice'>[H] steps over you carefully.</span>", "<span class='notice'>[H] carefully steps over [tmob].</span>")
 				return 1
 
 		//Smaller person stepping under a larger person
@@ -117,14 +115,12 @@ mob/living/get_effective_size()
 				H.forceMove(tmob.loc)
 				sizediffStamLoss(tmob)
 				H.add_movespeed_modifier(MOVESPEED_ID_STOMP, multiplicative_slowdown = 10) //Full stop
-				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 5) //0.5 second
+				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 3) //0.3 seconds
 				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
 					if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-						to_chat(H,"<span class='danger'>You carefully roll over [tmob] with your tail!</span>")
-						to_chat(tmob,"<span class='danger'>[H]'s huge tail rolls over you!</span>")
+						H.visible_message("<span class='danger'>[H]'s huge tail rolls over you!</span>", "<span class='danger'>[H] carefully rolls their tail over [tmob]!</span>")
 					else
-						to_chat(H,"<span class='danger'>You painfully but harmlessly step on [tmob]!<span>")
-						to_chat(tmob,"<span class='danger'>[H] steps onto you with force!</span>")
+						H.visible_message("<span class='danger'>[H] steps onto you with force!</span>", "<span class='danger'>[H] carefully steps on [tmob]!</span>")
 					return 1
 
 			if(H.a_intent == "harm" && H.canmove && !H.buckled)
@@ -133,15 +129,13 @@ mob/living/get_effective_size()
 				sizediffStamLoss(tmob)
 				sizediffBruteloss(tmob)
 				H.add_movespeed_modifier(MOVESPEED_ID_STOMP, multiplicative_slowdown = 10)
-				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 15) //1.5 second
+				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 10) //1 seconds
 				//H.Stun(20)
 				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
 					if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-						to_chat(H,"<span class='danger'>You grind [tmob] into the floor with your tail!</span>")
-						to_chat(tmob,"<span class='danger'>[H]'s massive tail plows you into the floor!</span>")
+						H.visible_message("<span class='userdanger'>[H] plows their tail over you mercilessly!</span>", "<span class='danger'>[H] mows down [tmob] under their tail!</span>")
 					else
-						to_chat(H,"<span class='danger'>You pound [tmob] into the floor underfoot!</span>")
-						to_chat(tmob,"<span class='danger'>[H] slams you into the ground, crushing you!</span>")
+						H.visible_message("<span class='userdanger'>[H] crushes you under their foot!</span>", "<span class='danger'>[H] slams their foot down on [tmob]!</span>")
 					return 1
 
 			if(H.a_intent == "grab" && H.canmove && !H.buckled)
@@ -150,25 +144,21 @@ mob/living/get_effective_size()
 				sizediffStamLoss(tmob)
 				sizediffStun(tmob)
 				H.add_movespeed_modifier(MOVESPEED_ID_STOMP, multiplicative_slowdown = 10)
-				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 10)//About 3/4th a second
+				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 7)//About 3/4th a second
 				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
 					var/feetCover = (H.wear_suit && (H.wear_suit.body_parts_covered & FEET)) || (H.w_uniform && (H.w_uniform.body_parts_covered & FEET) || (H.shoes && (H.shoes.body_parts_covered & FEET)))
 					if(feetCover)
 						if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-							to_chat(H,"<span class='danger'>You pin [tmob] underneath your tail!</span>")
-							to_chat(tmob,"<span class='danger'>[H]'s plows you into the ground, pinning you helplessly!</span>")
+							H.visible_message("<span class='danger'>[H] pins you beneath their tail!</span>", "<span class='danger'>[H] pins [tmob] under their tail!</span>")
 						else
-							to_chat(H,"<span class='danger'>You pin [tmob] helplessly to the floor with your foot!</span>")
-							to_chat(tmob,"<span class='danger'>[H] weightfully pins you to the ground!</span>")
+							H.visible_message("<span class='danger'>[H] pins you underfoot!</span>", "<span class='danger'>[H] pins [tmob] helplessly underfoot!</span>")
 						return 1
 					else
 						if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-							to_chat(H,"<span class='danger'>You curl [tmob] up in the coils of your tail!</span>")
-							to_chat(tmob,"<span class='danger'>[H]'s tail winds around you and snatches you in its coils!</span>")
+							H.visible_message("<span class='userdanger'>[H]'s tail winds around you and snatches you in its coils!</span>", "<span class='danger'>[H] snatches up [tmob] underneath their tail!</span>")
 							tmob.mob_pickup_micro_feet(H)
 						else
-							to_chat(H,"<span class='danger'>You stomp your foot into [tmob], curling your toes and picking them up!</span>")
-							to_chat(tmob,"<span class='danger'>[H]'s toes pin you down and curl around you, picking you up!</span>'")
+							H.visible_message("<span class='userdanger'>[H]'s toes pin you down and curl around you, picking you up!</span>", "<span class='danger'>[H] stomps down on [tmob], curling their toes and picking them up!</span>")
 							tmob.mob_pickup_micro_feet(H)
 						return 1
 
@@ -181,11 +171,9 @@ mob/living/get_effective_size()
 //smaller person stepping under another person... TO DO, fix and allow special interactions with naga legs to be seen
 /mob/living/proc/micro_step_under(var/mob/living/tmob)
 	if(istype(tmob) && istype(tmob, /datum/sprite_accessory/taur/naga))
-		to_chat(src,"<span class='notice'>You jump over [tmob]'s thick tail.</span>")
-		to_chat(tmob,"<span class='notice'>[src] bounds over your tail.</span>")
+		src.visible_message("<span class='notice'>[src] bounds over [tmob]'s tail.</span>", "<span class='notice'>You jump over [tmob]'s thick tail.</span>")
 	else
-		to_chat(src,"<span class='notice'>You run between [tmob]'s legs.</span>")
-		to_chat(tmob,"<span class='notice'>[src] runs between your legs.</span>")
+		src.visible_message("<span class='notice'>[src] runs between [tmob]'s legs.</span>", "<span class='notice'>You run between [tmob]'s legs.</span>")
 
 //Proc for scaling stamina damage on size difference
 /mob/living/proc/sizediffStamLoss(var/mob/living/tmob)
