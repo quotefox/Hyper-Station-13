@@ -106,7 +106,7 @@
 	icon_state = "maidapron"
 	body_parts_covered = CHEST|GROIN
 	icon = 'modular_citadel/icons/obj/clothing/vg_clothes.dmi'
-	alternate_worn_icon = 'modular_citadel/icons/mob/citadel/suit.dmi'
+	alternate_worn_icon = 'modular_citadel/icons/obj/clothing/vg_clothes.dmi'
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
 /obj/item/clothing/suit/clownpiece
