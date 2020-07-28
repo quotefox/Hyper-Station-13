@@ -228,7 +228,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//backgrounds
 	var/mutable_appearance/character_background
 	var/icon/bgstate = "steel"
-	var/list/bgstate_options = list("000", "midgrey", "FFF", "white", "steel", "techmaint", "dark", "plating", "reinforced")
+	var/list/bgstate_options = list("000", "midgrey", "hiro", "FFF", "white", "steel", "techmaint", "dark", "plating", "reinforced")
 
 	var/show_mismatched_markings = FALSE //determines whether or not the markings lists should show markings that don't match the currently selected species. Intentionally left unsaved.
 
