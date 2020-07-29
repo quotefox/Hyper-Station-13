@@ -17,7 +17,7 @@
 	if (wear_neck)
 		msg += "[t_He] [t_is] wearing [wear_neck.get_examine_string(user)] around [t_his] neck.\n"
 	if(can_be_held)
-		msg += "[t_He] looks small enough to be picked up with <b>Alt+Click</b>!\n"
+		msg += "[t_He] might be able to be picked up with <b>Alt+Click</b>!\n"
 
 
 
