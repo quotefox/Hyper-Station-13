@@ -9,8 +9,11 @@
 	layer = BELOW_OBJ_LAYER
 
 	var/hide_person_time = 30
+	var/hide_item_time = 15
 
 	var/list/used_players = list()
+
+	var/obj/hidden_obj
 
 /obj/structure/trash_pile/Initialize()
 	. = ..()
@@ -25,15 +28,47 @@
 
 /obj/structure/trash_pile/attack_hand(mob/user)
 	var/turf/T = get_turf(src)
-	if(user in used_players)
-		to_chat(user, "<span class='notice'>You already have looted [src].</span>")
+	if(contents.len) //There's something hidden
+		var/atom/A = contents[contents.len] //Get the most recent hidden thing
+		if(istype(A, /mob/living))
+			var/mob/living/M = A
+			to_chat(user,"<span class='notice'>You found someone in the trash!</span>")
+			eject_mob(M)
+		else if (istype(A, /obj/item))
+			var/obj/item/I = A
+			to_chat(user,"<span class='notice'>You found something!</span>")
+			I.forceMove(src.loc)
+	else
+		if(user in used_players)
+			to_chat(user, "<span class='notice'>You already have looted [src].</span>")
+			return
+		if(!do_after(user, rand(2 SECONDS, 4 SECONDS), FALSE, src))
+			return
+		for(var/i=0, i<rand(1,4), i++)
+			var/itemtype = pickweight(GLOB.maintenance_loot)
+			new itemtype(T)
+		used_players += user
+
+/obj/structure/trash_pile/proc/can_hide_item(obj/item/I)
+	if(contents.len > 10)
+		return FALSE
+	return TRUE
+
+/obj/structure/trash_pile/attackby(obj/item/I, mob/user, params)
+	if(user.a_intent == INTENT_HELP)
+		if(can_hide_item(I))
+			to_chat(user,"<span class='notice'>You begin to stealthily hide [I] in the [src].</span>")
+			if(do_mob(user, user, hide_item_time))
+				if(src.loc)
+					if(user.transferItemToLoc(I, src))
+						to_chat(user,"<span class='notice'>You hide [I] in the trash.</span>")
+					else
+						to_chat(user, "<span class='warning'>\The [I] is stuck to your hand, you cannot put it in the trash!</span>")
+		else
+			to_chat(user,"<span class='warning'>The [src] is way too full to fit [I].</span>")
 		return
-	if(!do_after(user, rand(2 SECONDS, 4 SECONDS), FALSE, src))
-		return
-	for(var/i=0, i<rand(1,4), i++)
-		var/itemtype = pickweight(GLOB.maintenance_loot)
-		new itemtype(T)
-	used_players += user
+
+	. = ..()
 
 /obj/structure/trash_pile/MouseDrop_T(atom/movable/O, mob/user)
 	if(user == O && iscarbon(O))
