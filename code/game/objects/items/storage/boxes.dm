@@ -1168,7 +1168,7 @@
 	illustration = null
 
 /obj/item/storage/box/mre //base MRE type.
-	name = "Nanotrasen MRE Ration Kit Menu 0"
+	name = "Kinaris MRE Ration Kit Menu 0"
 	desc = "A package containing food suspended in an outdated bluespace pocket which lasts for centuries. If you're lucky you may even be able to enjoy the meal without getting food poisoning."
 	icon_state = "mre"
 	illustration = null
@@ -1194,7 +1194,7 @@
 					ENABLE_BITFIELD(S.foodtype, TOXIC)
 
 /obj/item/storage/box/mre/menu1
-	name = "\improper Nanotrasen MRE Ration Kit Menu 1"
+	name = "\improper Kinaris MRE Ration Kit Menu 1"
 
 /obj/item/storage/box/mre/menu1/safe
 	desc = "A package containing food suspended in a bluespace pocket capable of lasting till the end of time."
@@ -1209,7 +1209,7 @@
 	new /obj/item/tank/internals/emergency_oxygen(src)
 
 /obj/item/storage/box/mre/menu2
-	name = "\improper Nanotrasen MRE Ration Kit Menu 2"
+	name = "\improper Kinaris MRE Ration Kit Menu 2"
 
 /obj/item/storage/box/mre/menu2/safe
 	spawner_chance = 0
@@ -1224,7 +1224,7 @@
 	new /obj/item/tank/internals/emergency_oxygen(src)
 
 /obj/item/storage/box/mre/menu3
-	name = "\improper Nanotrasen MRE Ration Kit Menu 3"
+	name = "\improper Kinaris MRE Ration Kit Menu 3"
 	desc = "The holy grail of MREs. This item contains the fabled MRE pizza, spicy nachos and a sample of coffee instant type 2. Any NT employee lucky enough to get their hands on one of these is truly blessed."
 	icon_state = "menu3"
 	can_expire = FALSE //always fresh, never expired.
@@ -1239,7 +1239,7 @@
 	new /obj/item/tank/internals/emergency_oxygen(src)
 
 /obj/item/storage/box/mre/menu4
-	name = "\improper Nanotrasen MRE Ration Kit Menu 4"
+	name = "\improper Kinaris MRE Ration Kit Menu 4"
 
 /obj/item/storage/box/mre/menu4/safe
 	spawner_chance = 0
