@@ -1894,6 +1894,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plasteel,
 /area/maintenance/starboard/fore)
 "ail" = (
@@ -7679,6 +7680,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "atb" = (
@@ -7991,6 +7993,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plasteel,
 /area/maintenance/starboard/fore)
 "att" = (
@@ -69128,6 +69131,7 @@
 "cly" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "clz" = (
@@ -69533,6 +69537,7 @@
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/port)
 "cmn" = (
@@ -76940,6 +76945,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plasteel,
 /area/maintenance/starboard)
 "cza" = (
@@ -107453,6 +107459,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plasteel,
 /area/maintenance/port)
 "dzp" = (
@@ -114411,6 +114418,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plasteel{
 	heat_capacity = 1e+006
 	},
@@ -114735,6 +114743,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plasteel,
 /area/maintenance/starboard/aft)
 "dLn" = (
@@ -115010,6 +115019,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plasteel{
 	heat_capacity = 1e+006
 	},
@@ -126444,6 +126454,18 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port)
+"fYd" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/trash_pile,
+/turf/open/floor/plasteel,
+/area/maintenance/starboard/aft)
 "gbV" = (
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 1
@@ -126803,6 +126825,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/medical/morgue)
+"jHi" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/port)
 "jOE" = (
 /obj/machinery/newscaster{
 	pixel_x = 32
@@ -126873,6 +126902,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/maintenance/port)
+"kJm" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/trash_pile,
+/turf/open/floor/plasteel,
+/area/maintenance/aft)
 "kLu" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
@@ -126988,6 +127029,11 @@
 	dir = 6
 	},
 /area/science/circuit)
+"lSG" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "lTo" = (
 /obj/docking_port/stationary{
 	area_type = /area/construction/mining/aux_base;
@@ -127037,6 +127083,12 @@
 	dir = 1
 	},
 /area/science/circuit)
+"mbQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "mkm" = (
 /obj/machinery/atmospherics/components/binary/valve,
 /obj/machinery/embedded_controller/radio/airlock_controller/incinerator_toxmix{
@@ -127251,6 +127303,13 @@
 	},
 /turf/open/floor/plating,
 /area/science/research/abandoned)
+"pOK" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/port)
 "pQm" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable/white{
@@ -127281,6 +127340,17 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/toxins_mixing_input,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing)
+"qoc" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/trash_pile,
+/turf/open/floor/plasteel,
+/area/maintenance/port/aft)
 "qpq" = (
 /turf/open/floor/plasteel/white/side{
 	dir = 5
@@ -127344,6 +127414,16 @@
 /obj/effect/decal/remains/xeno,
 /turf/open/floor/engine/vacuum,
 /area/science/mixing)
+"stD" = (
+/obj/structure/cable/white{
+	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden{
+	dir = 4
+	},
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "svv" = (
 /obj/machinery/door/poddoor/incinerator_toxmix,
 /turf/open/floor/engine/vacuum,
@@ -127369,6 +127449,17 @@
 	dir = 10
 	},
 /area/science/misc_lab)
+"tNy" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/trash_pile,
+/turf/open/floor/plasteel,
+/area/maintenance/port/aft)
 "tRT" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -127379,6 +127470,10 @@
 /obj/machinery/chem_heater,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
+"umr" = (
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "upk" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Holodeck Access"
@@ -127443,6 +127538,15 @@
 /obj/item/clothing/under/color/grey,
 /turf/open/floor/plating,
 /area/crew_quarters/abandoned_gambling_den)
+"vvQ" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/structure/trash_pile,
+/turf/open/floor/plasteel,
+/area/maintenance/port/fore)
 "vAb" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -127529,6 +127633,20 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/research/abandoned)
+"xzV" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/trash_pile,
+/turf/open/floor/plasteel,
+/area/maintenance/port)
 "xDZ" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 1
@@ -150385,7 +150503,7 @@ cdC
 cFJ
 car
 cJP
-cLs
+jHi
 cMO
 cOv
 cQm
@@ -153481,7 +153599,7 @@ cON
 cON
 dcb
 cMY
-deX
+xzV
 dgn
 dhR
 djr
@@ -156476,7 +156594,7 @@ apP
 aqN
 alU
 alg
-alg
+umr
 avm
 alg
 arB
@@ -156608,7 +156726,7 @@ dZH
 eam
 eaV
 ebK
-ebR
+tNy
 dLW
 ecQ
 edl
@@ -158349,7 +158467,7 @@ cBc
 cCI
 ehP
 caG
-cHA
+pOK
 ceb
 cKk
 cLI
@@ -158545,7 +158663,7 @@ aEE
 aFP
 aHn
 aIJ
-aKj
+vvQ
 aLz
 aMS
 aOr
@@ -160202,7 +160320,7 @@ dTw
 dTw
 dTw
 dTw
-dLX
+qoc
 dLW
 dLW
 dLW
@@ -161101,7 +161219,7 @@ aoZ
 alj
 aky
 alg
-asQ
+stD
 aug
 aug
 awz
@@ -161475,7 +161593,7 @@ dMa
 dMa
 dMa
 dOT
-dLX
+qoc
 dQG
 dRB
 dOk
@@ -171494,7 +171612,7 @@ dHQ
 dJg
 dCF
 dKY
-dMA
+kJm
 dNS
 aaa
 aaa
@@ -176114,7 +176232,7 @@ dma
 dBt
 dfV
 dEh
-ddt
+lSG
 dGB
 dHW
 dJp
@@ -179963,7 +180081,7 @@ drr
 diW
 due
 dbD
-dbD
+fYd
 dyT
 diW
 dBE
@@ -180208,7 +180326,7 @@ cYo
 cZY
 dbE
 cRr
-cRr
+mbQ
 dfW
 dhB
 cRr
