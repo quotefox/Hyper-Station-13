@@ -5,6 +5,7 @@
 
 	min_players = 20
 	max_occurrences = 1
+	earliest_start = 50 MINUTES
 
 /datum/round_event/ghost_role/alien_infestation
 	announceWhen	= 400
