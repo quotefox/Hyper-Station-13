@@ -13,7 +13,7 @@
 
 	var/list/used_players = list()
 
-	var/obj/hidden_obj
+	var/busy = FALSE
 
 /obj/structure/trash_pile/Initialize()
 	. = ..()
@@ -27,6 +27,9 @@
 	. = ..()
 
 /obj/structure/trash_pile/attack_hand(mob/user)
+	if(busy)
+		return
+	busy = TRUE
 	var/turf/T = get_turf(src)
 	if(contents.len) //There's something hidden
 		var/atom/A = contents[contents.len] //Get the most recent hidden thing
@@ -34,20 +37,25 @@
 			var/mob/living/M = A
 			to_chat(user,"<span class='notice'>You found someone in the trash!</span>")
 			eject_mob(M)
+			busy = FALSE
 		else if (istype(A, /obj/item))
 			var/obj/item/I = A
 			to_chat(user,"<span class='notice'>You found something!</span>")
 			I.forceMove(src.loc)
+			busy = FALSE
 	else
 		if(user in used_players)
 			to_chat(user, "<span class='notice'>You already have looted [src].</span>")
+			busy = FALSE
 			return
 		if(!do_after(user, rand(2 SECONDS, 4 SECONDS), FALSE, src))
+			busy = FALSE
 			return
 		for(var/i=0, i<rand(1,4), i++)
 			var/itemtype = pickweight(GLOB.maintenance_loot)
 			new itemtype(T)
 		used_players += user
+		busy = FALSE
 
 /obj/structure/trash_pile/proc/can_hide_item(obj/item/I)
 	if(contents.len > 10)
