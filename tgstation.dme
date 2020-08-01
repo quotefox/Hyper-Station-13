@@ -2903,6 +2903,7 @@
 #include "hyperstation\code\modules\resize\sizechems.dm"
 #include "hyperstation\code\modules\resize\sizegun.dm"
 #include "hyperstation\code\obj\bluespace sewing kit.dm"
+#include "hyperstation\code\obj\condom.dm"
 #include "hyperstation\code\obj\decal.dm"
 #include "hyperstation\code\obj\fluff.dm"
 #include "hyperstation\code\obj\kinkyclothes.dm"
