@@ -10944,6 +10944,7 @@
 /area/maintenance/port/fore)
 "auL" = (
 /obj/structure/disposalpipe/segment,
+/obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "auM" = (
@@ -13561,6 +13562,7 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/cobweb,
+/obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "azX" = (
@@ -23985,6 +23987,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "aUV" = (
@@ -55632,6 +55635,7 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/disposalpipe/segment,
+/obj/structure/trash_pile,
 /turf/open/floor/plating{
 	icon_state = "panelscorched"
 	},
@@ -56978,6 +56982,7 @@
 /area/maintenance/starboard/aft)
 "cgn" = (
 /obj/item/cigbutt,
+/obj/structure/trash_pile,
 /turf/open/floor/plating{
 	icon_state = "platingdmg3"
 	},
@@ -73484,6 +73489,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "cLe" = (
@@ -80760,6 +80766,7 @@
 /obj/structure/sign/poster/contraband/random{
 	pixel_x = -32
 	},
+/obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/starboard/fore)
 "dhu" = (
@@ -83224,6 +83231,10 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/space)
+"exK" = (
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/starboard/fore)
 "eEe" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 8
@@ -83457,6 +83468,10 @@
 /obj/structure/table,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"iLr" = (
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "jeV" = (
 /obj/machinery/conveyor/inverted{
 	dir = 10;
@@ -83607,6 +83622,10 @@
 /obj/item/integrated_circuit_printer,
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
+"lqm" = (
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/starboard)
 "lsv" = (
 /obj/machinery/power/apc{
 	areastring = "/area/science/circuit";
@@ -83710,6 +83729,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/cryopod)
+"mBU" = (
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/starboard/aft)
 "mWg" = (
 /obj/structure/girder,
 /obj/structure/grille,
@@ -84020,6 +84043,10 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/crew_quarters/cryopod)
+"qQQ" = (
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/port)
 "qRM" = (
 /obj/machinery/camera{
 	c_tag = "Research Division Circuitry Lab";
@@ -84165,6 +84192,10 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/cryopod)
+"toQ" = (
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "tsx" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -84180,6 +84211,12 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
+"tCU" = (
+/obj/structure/trash_pile,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/maintenance/port/aft)
 "tDM" = (
 /obj/machinery/door/airlock/engineering/glass/critical{
 	heat_proof = 1;
@@ -84344,6 +84381,11 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space)
+"vYP" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/port)
 "wdu" = (
 /obj/structure/grille,
 /obj/structure/lattice,
@@ -84397,6 +84439,7 @@
 /turf/closed/wall,
 /area/science/circuit)
 "wOE" = (
+/obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "wOY" = (
@@ -84472,6 +84515,13 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
+"xRk" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/trash_pile,
+/turf/open/floor/plating,
+/area/maintenance/port/fore)
 "xVl" = (
 /turf/closed/wall,
 /area/hallway/secondary/service)
@@ -84510,6 +84560,12 @@
 /obj/machinery/light,
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
+"ylO" = (
+/obj/structure/trash_pile,
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/maintenance/port/fore)
 
 (1,1,1) = {"
 aaa
@@ -98223,7 +98279,7 @@ arX
 dne
 dne
 dne
-aRG
+toQ
 aoc
 drQ
 dne
@@ -98235,7 +98291,7 @@ dhE
 aRG
 aRG
 cWA
-auG
+ylO
 dnd
 dhK
 dnk
@@ -98780,7 +98836,7 @@ ako
 alK
 bHJ
 bJs
-aLd
+vYP
 aLd
 aLd
 bPH
@@ -99303,7 +99359,7 @@ bSq
 bTr
 bUQ
 bVT
-aob
+qQQ
 alK
 aaa
 aaf
@@ -102074,7 +102130,7 @@ amP
 anX
 apt
 dnk
-doJ
+xRk
 atu
 aRG
 dnZ
@@ -102664,7 +102720,7 @@ cia
 cia
 ceu
 dyg
-dvt
+tCU
 bXE
 dvE
 dux
@@ -118257,7 +118313,7 @@ aaa
 agq
 ahd
 ahR
-aje
+iLr
 aje
 alc
 aje
@@ -122445,7 +122501,7 @@ dvY
 cky
 ciL
 dwX
-ciL
+mBU
 ciL
 cou
 csb
@@ -124438,7 +124494,7 @@ dCi
 dnS
 dnS
 axO
-dnS
+exK
 axY
 aBH
 aCQ
@@ -124999,7 +125055,7 @@ bLZ
 bPm
 apc
 bSf
-apc
+lqm
 bxc
 bxc
 bXe
@@ -128546,7 +128602,7 @@ apn
 aqy
 arT
 apm
-dnS
+exK
 avB
 axY
 axY
