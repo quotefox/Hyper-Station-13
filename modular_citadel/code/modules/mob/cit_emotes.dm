@@ -253,4 +253,5 @@
 	if(user.nextsoundemote >= world.time)
 		return
 	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_citadel/sound/voice/bark.ogg', 50, 1, -1)
+	var/path = pick(list('modular_citadel/sound/voice/bark.ogg', 'modular_citadel/sound/voice/bark1.ogg', 'modular_citadel/sound/voice/bark2.ogg'))
+	playsound(user, path, 50, 1, -1)
