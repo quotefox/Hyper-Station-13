@@ -125,6 +125,15 @@
 	icon_state = "centcom"
 	item_state = "dg_suit"
 	item_color = "centcom"
+/obj/item/clothing/under/rank/centcom_officer/skirt 
+	name = "\improper CentCom Officer's jumpskirt"
+	desc = "It's a jumpskirt worn by CentCom's officials, adorned with a golden K and a star, signifying work under Kinaris."
+	icon_state = "official_skirt"
+	item_state = "g_suit"
+	item_color = "official_skirt"
+	body_parts_covered = CHEST|GROIN|ARMS
+	fitted = FEMALE_UNIFORM_TOP
+	can_adjust = FALSE 
 /obj/item/clothing/under/space
 	name = "\improper NASA jumpsuit"
 	desc = "It has a NASA logo on it and is made of space-proofed materials."
