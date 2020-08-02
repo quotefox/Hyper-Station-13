@@ -44,9 +44,11 @@
 		if(!sent_full_message)
 			send_full_message()
 			sent_full_message = TRUE
+		/*
 		if(HAS_TRAIT(owner, TRAIT_FLUID_LEAK))
 			reagents.get_master_reagent().reaction_turf(get_turf(owner), 3)
 			reagents.remove_reagent(fluid_id, 3)
+			*/
 		return FALSE
 	sent_full_message = FALSE
 	reagents.isolate_reagent(fluid_id)
