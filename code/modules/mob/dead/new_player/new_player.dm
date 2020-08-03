@@ -580,7 +580,8 @@
 	H.name = real_name
 		//h13 assign your characters custom height.
 	if (H.custom_body_size) //Do they have it set?
-		H.size_multiplier =  (max(min( round((H.custom_body_size)), MAX_BODYSIZE),MIN_BODYSIZE)* 0.01)
+		//H.size_multiplier =  (max(min( round((H.custom_body_size)), MAX_BODYSIZE),MIN_BODYSIZE)* 0.01) //Old method
+		H.resize(H.custom_body_size * 0.01)
 	//h13 give your starting impregchance (30%)
 	if (H.breedable == TRUE)
 		H.impregchance = 30

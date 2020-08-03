@@ -109,7 +109,7 @@
 
 	//Can be picked up?
 	if(can_be_held)
-		msg += "[t_He] looks small enough to be picked up with <b>Alt+Click</b>!\n"
+		msg += "[t_He] might be able to be picked up with <b>Alt+Click</b>!\n"
 
 	//CIT CHANGES START HERE - adds genital details to examine text
 	if(LAZYLEN(internal_organs))

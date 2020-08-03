@@ -49,7 +49,7 @@
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/underwear/socks, GLOB.socks_list)
 	return pick(GLOB.socks_list)
 
-/proc/random_features()
+/proc/random_features(intendedspecies)
 	if(!GLOB.tails_list_human.len)
 		init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/human, GLOB.tails_list_human)
 	if(!GLOB.tails_list_lizard.len)
@@ -107,6 +107,8 @@
 		var/datum/sprite_accessory/mam_tails/instance = GLOB.mam_tails_list[mtpath]
 		if(istype(instance, /datum/sprite_accessory))
 			var/datum/sprite_accessory/S = instance
+			if(intendedspecies && S.recommended_species && !S.recommended_species.Find(intendedspecies))
+				continue
 			if(!S.ckeys_allowed)
 				snowflake_mam_tails_list[S.name] = mtpath
 	var/list/snowflake_markings_list = list()
@@ -114,6 +116,8 @@
 		var/datum/sprite_accessory/mam_body_markings/instance = GLOB.mam_body_markings_list[mmpath]
 		if(istype(instance, /datum/sprite_accessory))
 			var/datum/sprite_accessory/S = instance
+			if(intendedspecies && S.recommended_species && !S.recommended_species.Find(intendedspecies))
+				continue
 			if(!S.ckeys_allowed)
 				snowflake_markings_list[S.name] = mmpath
 	var/list/snowflake_ears_list = list()
@@ -121,6 +125,8 @@
 		var/datum/sprite_accessory/mam_ears/instance = GLOB.mam_ears_list[mepath]
 		if(istype(instance, /datum/sprite_accessory))
 			var/datum/sprite_accessory/S = instance
+			if(intendedspecies && S.recommended_species && !S.recommended_species.Find(intendedspecies))
+				continue
 			if(!S.ckeys_allowed)
 				snowflake_ears_list[S.name] = mepath
 	var/list/snowflake_mam_snouts_list = list()
@@ -130,6 +136,15 @@
 			var/datum/sprite_accessory/S = instance
 			if(!S.ckeys_allowed)
 				snowflake_mam_snouts_list[S.name] = mspath
+	var/list/snowflake_ipc_antenna_list = list()
+	for(var/mspath in GLOB.ipc_antennas_list)
+		var/datum/sprite_accessory/mam_snouts/instance = GLOB.ipc_antennas_list[mspath]
+		if(istype(instance, /datum/sprite_accessory))
+			var/datum/sprite_accessory/S = instance
+			if(intendedspecies && S.recommended_species && !S.recommended_species.Find(intendedspecies))
+				continue
+			if(!S.ckeys_allowed)
+				snowflake_ipc_antenna_list[S.name] = mspath
 	var/color1 = random_short_color()
 	var/color2 = random_short_color()
 	var/color3 = random_short_color()
@@ -154,10 +169,10 @@
 		"moth_markings" = pick(GLOB.moth_markings_list),
 		"insect_fluff"		= "None",
 		"taur" 				= "None",
-		"mam_body_markings" = pick(snowflake_markings_list),
-		"mam_ears" 			= pick(snowflake_ears_list),
-		"mam_snouts"		= pick(snowflake_mam_snouts_list),
-		"mam_tail"			= pick(snowflake_mam_tails_list),
+		"mam_body_markings" = snowflake_markings_list.len ? pick(snowflake_markings_list) : "None",
+		"mam_ears" 			= snowflake_ears_list ? pick(snowflake_ears_list) : "None",
+		"mam_snouts"		= snowflake_mam_snouts_list ? pick(snowflake_mam_snouts_list) : "None",
+		"mam_tail"			= snowflake_mam_tails_list ? pick(snowflake_mam_tails_list) : "None",
 		"mam_tail_animated" = "None",
 		"xenodorsal" 		= "Standard",
 		"xenohead" 			= "Standard",
@@ -210,7 +225,7 @@
 		"womb_cum_mult"		= CUM_RATE_MULT,
 		"womb_efficiency"	= CUM_EFFICIENCY,
 		"womb_fluid" 		= "femcum",
-		"ipc_screen" = "Sunburst",
+		"ipc_screen"		= snowflake_ipc_antenna_list ? pick(snowflake_ipc_antenna_list) : "None",
 		"ipc_antenna" = "None",
 		"flavor_text"		= ""))
 

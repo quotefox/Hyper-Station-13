@@ -311,7 +311,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	amount = 10
 
 //Durathread fuck slash-asterisk comments
-	GLOBAL_LIST_INIT(durathread_recipes, list ( \
+GLOBAL_LIST_INIT(durathread_recipes, list ( \
 	new/datum/stack_recipe("durathread jumpsuit", /obj/item/clothing/under/durathread, 4, time = 40),
 	new/datum/stack_recipe("durathread jumpskirt", /obj/item/clothing/under/durathread/skirt, 4, time = 40), \
 	new/datum/stack_recipe("durathread beret", /obj/item/clothing/head/beret/durathread, 2, time = 40), \

@@ -13,9 +13,11 @@ sound/music/gaytony.ogg
 sound/music/gi.ogg
 sound/music/moonbaseoddity.ogg
 sound/music/space_asshole.ogg
-sound/music/space_oddity.ogg
+sound/music/thunderdome.ogg
 sound/music/starman.ogg
 sound/music/torvus.ogg
+sound/music/title2.ogg
+sound/music/PhoronWillMakeUsRich.ogg
 sound/music/shootingstars.ogg
 sound/music/oceanman.ogg
 sound/music/indeep.ogg

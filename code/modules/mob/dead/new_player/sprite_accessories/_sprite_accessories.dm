@@ -61,6 +61,9 @@
 	var/dimension_y = 32
 	var/center = FALSE	//Should we center the sprite?
 
+	//For soft-restricting markings to species IDs
+	var/list/recommended_species
+
 /datum/sprite_accessory/underwear
 	icon = 'icons/mob/underwear.dmi'
 	var/has_color = FALSE

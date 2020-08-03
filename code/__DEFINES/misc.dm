@@ -66,9 +66,9 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define SHOES_LAYER				19
 #define GLOVES_LAYER			18
 #define EARS_LAYER				17
-#define GENITALS_FRONT_LAYER	17		//Draws some genitalia above clothes and the TAUR body if need be.
 #define BODY_TAUR_LAYER			16
-#define SUIT_LAYER				15
+#define GENITALS_FRONT_LAYER	15
+#define SUIT_LAYER				14
 #define GLASSES_LAYER			13
 #define BELT_LAYER				12		//Possible make this an overlay of somethign required to wear a belt?
 #define SUIT_STORE_LAYER		11

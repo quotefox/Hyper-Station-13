@@ -54,7 +54,8 @@
 	abandoned = TRUE
 
 /obj/machinery/door/airlock/research
-	icon = 'icons/obj/doors/airlocks/station/research.dmi'
+	icon = 'icons/obj/doors/airlocks/station/science.dmi'
+	//icon = 'icons/obj/doors/airlocks/station/research.dmi' this is the old version
 	assemblytype = /obj/structure/door_assembly/door_assembly_research
 
 /obj/machinery/door/airlock/freezer

@@ -1,6 +1,11 @@
 /mob/living/carbon/Life()
 	set invisibility = 0
 
+	//Hyper Change
+	if(size_multiplier != previous_size)
+		sleep(1)
+		resize(size_multiplier)
+
 	if(notransform)
 		return
 

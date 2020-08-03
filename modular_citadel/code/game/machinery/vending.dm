@@ -39,10 +39,10 @@
 	desc = "A vending machine for all your unmentionable desires."
 	icon = 'icons/obj/citvending.dmi'
 	icon_state = "kink"
-	circuit = /obj/item/circuitboard/machine/kinkmate
 	product_slogans = "Kinky!;Sexy!;Check me out, big boy!"
 	vend_reply = "Have fun, you shameless pervert!"
 	products = list(
+				/obj/item/condom = 10,
 				/obj/item/clothing/head/maidband = 5,
 				/obj/item/clothing/under/maid = 5,
 				/obj/item/clothing/under/stripper_pink = 5,
@@ -55,7 +55,8 @@
 				/obj/item/clothing/under/polychromic/stripper = 3,
 				/obj/item/clothing/under/polychromic/bikini = 3,
 				/obj/item/clothing/under/polychromic/shortpants/pantsu = 3,
-				/obj/item/clothing/under/polychromic/bulge = 3
+				/obj/item/clothing/under/polychromic/bulge = 3,
+				/obj/item/clothing/suit/maidapron = 3
 				)
 	contraband = list(/obj/item/restraints/handcuffs/fake/kinky = 5,
 				/obj/item/clothing/neck/petcollar = 5,

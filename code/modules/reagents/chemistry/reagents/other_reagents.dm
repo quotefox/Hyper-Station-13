@@ -1582,25 +1582,6 @@
 	taste_description = "rainbows"
 	var/no_mob_color = FALSE
 
-/datum/reagent/consumable/laughter/laughtervirusfood
-	name = "anomolous virus food"
-	color = "#ffa6ff" //rgb: 255,166,255
-	taste_description = "a bad idea"
-	id = "laughtervirusfood"
-
-/datum/reagent/consumable/virus_food/advvirusfood
-	name = "highly unstable virus food"
-	color = "#ffffff" //rgb: 255,255,255 ITS PURE WHITE CMON
-	taste_description = "an EXTREMELY bad idea"
-	id = "advvirusfood"
-
-/datum/reagent/consumable/virus_food/viralbase
-	name = "Experimental viral base"
-	description = "Recently discovered by Nanotrasen's top scientists after years of research, this substance can be used as the base for extremely rare and extremely dangerous viruses once exposed to uranium."
-	color = "#fff0da"
-	taste_description = "tears of scientists"
-	id = "viralbase"
-
 /datum/reagent/colorful_reagent/on_mob_life(mob/living/carbon/M)
 	if(!no_mob_color)
 		M.add_atom_colour(pick(random_color_list), WASHABLE_COLOUR_PRIORITY)
@@ -2244,3 +2225,11 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/ipc
 	mutationtext = "<span class='danger'>The pain subsides. You feel... metallic.</span>"
+
+/datum/reagent/mutationtoxin/synthliz
+	name = "Synthlizard Mutation Toxin"
+	id = "synthlizmutationtoxin"
+	description = "A synthetic toxin." //NANOMACHINES SON.
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/synthliz
+	mutationtext = "<span class='danger'>The pain subsides. You feel... artificial.</span>"
