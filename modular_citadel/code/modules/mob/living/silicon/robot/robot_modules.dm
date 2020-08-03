@@ -75,14 +75,12 @@
 
 /obj/item/robot_module/k9/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/static/list/k9_models
+	var/static/list/k9_models	
 	if(!k9_models)
-		k9_models = list()
-		var/list/L = list("Default" = "k9")
-		for(var/a in L)
-			var/image/wide = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = L[a])
-			wide.pixel_x = -16
-			k9_models[a] = wide
+		k9_models = list(
+			"k9" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "k9"),
+		 	"Drake" = image(icon = 'icons/mob/cyborg/drakemech.dmi', icon_state = "drakesecbox")
+		)
 		if(R.client?.ckey == "nezuli")
 			var/image/bad_snowflake = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "alina-sec")
 			bad_snowflake.pixel_x = -16
@@ -92,9 +90,13 @@
 	if(!k9_borg_icon)
 		return
 	switch(k9_borg_icon)
-		if("Default")
+		if("k9")
 			cyborg_base_icon = "k9"
 			moduleselect_icon = "k9"
+		if("Drake")
+			cyborg_base_icon = "drakesec"
+			cyborg_icon_override = 'icons/mob/cyborg/drakemech.dmi'
+			sleeper_overlay = "drakesecsleeper"
 		if("Alina")
 			cyborg_base_icon = "alina-sec"
 			special_light_key = "alina"
@@ -138,12 +140,11 @@
 	var/mob/living/silicon/robot/R = loc
 	var/static/list/medihound_models
 	if(!medihound_models)
-		medihound_models = list()
-		var/list/L = list("Default" = "medihound", "Dark" = "medihounddark")
-		for(var/a in L)
-			var/image/wide = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = L[a])
-			wide.pixel_x = -16
-			medihound_models[a] = wide
+		medihound_models = list(
+		"medihound" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "medihound"),
+		"Dark" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "medihounddark"),
+		"Drake" = image(icon = 'icons/mob/cyborg/drakemech.dmi', icon_state = "drakemedbox")
+		)
 		if(R.client?.ckey == "nezuli")
 			var/image/bad_snowflake = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "alina-med")
 			bad_snowflake.pixel_x = -16
@@ -158,6 +159,10 @@
 		if("Dark")
 			cyborg_base_icon = "medihounddark"
 			sleeper_overlay = "mdsleeper"
+		if("Drake")
+			cyborg_base_icon = "drakemed"
+			cyborg_icon_override = 'icons/mob/cyborg/drakemech.dmi'
+			sleeper_overlay = "drakemedsleeper"
 		if("Alina")
 			cyborg_base_icon = "alina-med"
 			special_light_key = "alina"
@@ -190,6 +195,26 @@
 	has_snowflake_deadsprite = TRUE
 	cyborg_pixel_offset = -16
 	dogborg = TRUE
+
+/obj/item/robot_module/scrubpup/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/R = loc
+	var/static/list/scrubpup_models
+	if(!scrubpup_models)
+		scrubpup_models = list(
+		"scrubpup" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "scrubpup"),
+		"Drake" = image(icon = 'icons/mob/cyborg/drakemech.dmi', icon_state = "drakejanitbox")
+		)
+	var/scrubpup_borg_icon = show_radial_menu(R, R , scrubpup_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
+	if(!scrubpup_borg_icon)
+		return
+	switch(scrubpup_borg_icon)
+		if("scrubpup")
+			cyborg_base_icon = "scrubpup"
+		if("Drake")
+			cyborg_base_icon = "drakejanit"
+			cyborg_icon_override = 'icons/mob/cyborg/drakemech.dmi'
+			sleeper_overlay = "drakejanitsleeper"
+	return ..()
 
 /obj/item/robot_module/scrubpup/respawn_consumable(mob/living/silicon/robot/R, coeff = 1)
 	..()
@@ -378,7 +403,8 @@
 			"Spider" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "whitespider"),
 			"BootyF" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootypeace"),
 			"BootyM" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootypeaceM"),
-			"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootypeaceS")
+			"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootypeaceS"),
+			"Drake" = image(icon = 'icons/mob/cyborg/drakemech.dmi', icon_state = "drakepeacebox")
 		)
 		peace_models = sortList(peace_models)
 	var/peace_borg_icon = show_radial_menu(R, R , peace_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
@@ -402,6 +428,15 @@
 			cyborg_base_icon = "bootypeaceS"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
+		if("Drake")
+			cyborg_base_icon = "drakepeace"
+			can_be_pushed = FALSE
+			hat_offset = INFINITY
+			cyborg_icon_override = 'icons/mob/cyborg/drakemech.dmi'
+			sleeper_overlay = "drakepeacesleeper"
+			has_snowflake_deadsprite = TRUE
+			dogborg = TRUE
+			cyborg_pixel_offset = -16
 	return ..()
 
 /obj/item/robot_module/security/be_transformed_to(obj/item/robot_module/old_module)
@@ -585,6 +620,15 @@
 			has_snowflake_deadsprite = TRUE
 			dogborg = TRUE
 			cyborg_pixel_offset = -16
+		if("Drake")
+			cyborg_base_icon = "drakeeng"
+			can_be_pushed = FALSE
+			hat_offset = INFINITY
+			cyborg_icon_override = 'icons/mob/cyborg/drakemech.dmi'
+			sleeper_overlay = "drakeengsleeper"
+			has_snowflake_deadsprite = TRUE
+			dogborg = TRUE
+			cyborg_pixel_offset = -16
 		if("Alina")
 			cyborg_base_icon = "alina-eng"
 			special_light_key = "alina"
@@ -623,7 +667,8 @@
 			"Heavy" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "heavymin"),
 			"BootyF" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyminer"),
 			"BootyM" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyminerM"),
-			"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyminerS")
+			"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyminerS"),
+			"Drake" = image(icon = 'icons/mob/cyborg/drakemech.dmi', icon_state = "drakeminebox")
 		)
 		miner_models = sortList(miner_models)
 	var/miner_borg_icon = show_radial_menu(R, R , miner_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
@@ -666,6 +711,15 @@
 			cyborg_base_icon = "bootyminerS"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
+		if("Drake")
+			cyborg_base_icon = "drakemine"
+			can_be_pushed = FALSE
+			hat_offset = INFINITY
+			cyborg_icon_override = 'icons/mob/cyborg/drakemech.dmi'
+			sleeper_overlay = "drakeminesleeper"
+			has_snowflake_deadsprite = TRUE
+			dogborg = TRUE
+			cyborg_pixel_offset = -16
 	return ..()
 
 /obj/item/robot_module/standard/be_transformed_to(obj/item/robot_module/old_module)
