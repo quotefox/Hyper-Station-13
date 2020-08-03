@@ -25,7 +25,6 @@ var/const/RESIZE_A_TINYMICRO = (RESIZE_TINY + RESIZE_MICRO) / 2
 	M.Scale(size_multiplier)
 	M.Translate(0, 16*(size_multiplier-1)) //translate by 16 * size_multiplier - 1 on Y axis
 	src.transform = M //the source of transform is M
-	src.update_mobsize() //Doesn't work yet
 
 /mob/proc/get_effective_size()
 	return 100000
@@ -38,6 +37,7 @@ mob/living/get_effective_size()
 	if(size_multiplier == previous_size)
 		return 1
 	src.update_transform() //WORK DAMN YOU
+	src.update_mobsize() //Doesn't work yet
 	//Going to change the health and speed values too
 	src.remove_movespeed_modifier(MOVESPEED_ID_SIZE)
 	src.add_movespeed_modifier(MOVESPEED_ID_SIZE, multiplicative_slowdown = (abs(size_multiplier - 1) * 0.8 ))
@@ -191,13 +191,15 @@ mob/living/get_effective_size()
 	tmob.adjustBruteLoss(B) //final result in brute loss
 
 //Proc for changing mob_size to be grabbed for item weight classes
-/mob/living/proc/update_mobsize()
+/mob/living/proc/update_mobsize(var/mob/living/tmob)
 	if(size_multiplier <= 0.50)
-		mob_size = MOB_SIZE_TINY
-	if(size_multiplier <= 1)
-		mob_size = MOB_SIZE_SMALL
-	if(size_multiplier >= 2)
-		mob_size = MOB_SIZE_LARGE
+		mob_size = 0
+	if(size_multiplier < 1)
+		mob_size = 1
+	if(size_multiplier == 1)
+		mob_size = 2 //the default human size
+	if(size_multiplier > 1)
+		mob_size = 3
 			
 //Proc for instantly grabbing valid size difference. Code optimizations soon(TM)
 /*

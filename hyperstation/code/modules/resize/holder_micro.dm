@@ -6,7 +6,7 @@
 	icon = null
 	icon_state = ""
 	slot_flags = ITEM_SLOT_FEET | ITEM_SLOT_HEAD | ITEM_SLOT_ID | ITEM_SLOT_BACK | ITEM_SLOT_NECK
-	w_class = WEIGHT_CLASS_NORMAL
+	w_class = null //handled by their size
 	can_head = TRUE
 
 /obj/item/clothing/head/mob_holder/micro/Initialize(mapload, mob/living/M, _worn_state, alt_worn, lh_icon, rh_icon, _can_head_override = FALSE)
@@ -39,6 +39,8 @@
 			w_class = WEIGHT_CLASS_TINY
 		if(MOB_SIZE_SMALL)
 			w_class = WEIGHT_CLASS_SMALL
+		if(MOB_SIZE_HUMAN)
+			w_class = WEIGHT_CLASS_BULKY
 		if(MOB_SIZE_LARGE)
 			w_class = WEIGHT_CLASS_HUGE
 
@@ -76,7 +78,6 @@
 	var/obj/item/clothing/head/mob_holder/micro/holder = generate_mob_holder()
 	if(!holder)
 		return
-	drop_all_held_items()
 	L.equip_to_slot(holder, SLOT_SHOES)
 	return
 
