@@ -132,10 +132,10 @@
 	tastes = list("meat" = 1, "salmon" = 1)
 	foodtype = MEAT | ALCOHOL
 
-/obj/item/reagent_containers/food/snacks/faggot
-	name = "faggot"
-	desc = "A great meal all round. Not a cord of wood."
-	icon_state = "faggot"
+/obj/item/reagent_containers/food/snacks/meatball
+	name = "meatball"
+	desc = "A ball of meat."
+	icon_state = "meatball"
 	list_reagents = list("nutriment" = 4, "vitamin" = 1)
 	filling_color = "#800000"
 	tastes = list("meat" = 1)
