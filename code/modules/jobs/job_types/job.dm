@@ -219,12 +219,13 @@
 			H.real_name = "[J.title] #[rand(10000, 99999)]"
 
 	var/obj/item/card/id/C = H.wear_id
+	var/client/preference_source = H.client
 	if(istype(C))
 		C.access = J.get_access()
 		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
 		C.registered_name = H.real_name
 		C.assignment = J.title
-		if(preferences_source && preference_source.prefs && preference_source.prefs.alt_titles_preferences[J.title])
+		if(preference_source && preference_source.prefs && preference_source.prefs.alt_titles_preferences[J.title])
 			C.update_label(C.registered_name, preference_source.prefs.alt_titles_preferences[J.title])
 		else
 			C.update_label()
