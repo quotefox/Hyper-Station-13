@@ -12,11 +12,14 @@
 /datum/job/cook
 	alt_titles = list("Cook", "Culinary Artist", "Butcher")
 
-/datum/job/botanist
+/datum/job/hydro
 	alt_titles = list("Gardener", "Herbalist", "Botanical Researcher", "Hydroponicist")
 
 /datum/job/curator
 	alt_titles = list("Journalist", "Librarian")
+
+/datum/job/chaplain
+	alt_titles = list("Priest", "Priestess", "Bishop", "Prior", "Monk", "Nun")
 
 /datum/job/janitor
 	alt_titles = list("Custodian", "Sanitation Technician")
@@ -37,6 +40,12 @@
 
 /datum/job/chemist
 	alt_titles = list("Pharmacist", "Pharmacologist")
+
+/datum/job/virologist
+	alt_titles = list("Microbiologist", "Biochemist")
+
+/datum/job/geneticist
+	alt_titles = list("Gene Therapist")
 
 //Security
 /datum/job/detective

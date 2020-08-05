@@ -1819,6 +1819,7 @@
 #include "code\modules\jobs\job_types\civilian_chaplain.dm"
 #include "code\modules\jobs\job_types\engineering.dm"
 #include "code\modules\jobs\job_types\job.dm"
+#include "code\modules\jobs\job_types\job_alt_titles.dm"
 #include "code\modules\jobs\job_types\medical.dm"
 #include "code\modules\jobs\job_types\science.dm"
 #include "code\modules\jobs\job_types\security.dm"
