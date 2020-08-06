@@ -44,7 +44,7 @@
 
 /obj/item/integrated_circuit/input/pregtest
 	name = "pregnancy tester"
-	desc = "A circuit used to determine whether someone is pregnant or not and if they possess the abbility to be imprengated."
+	desc = "A circuit used to determine whether someone is pregnant or not and if they possess the ability to be impregnated."
 	icon_state = "medscan"
 	complexity = 5
 	inputs = list("target" = IC_PINTYPE_REF)
