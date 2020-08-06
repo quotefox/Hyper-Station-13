@@ -57,6 +57,8 @@
 	var/list/mind_traits // Traits added to the mind of the mob assigned this job
 
 	var/list/blacklisted_quirks		//list of quirk typepaths blacklisted.
+	
+	var/list/alt_titles = list()
 
 //Only override this proc
 //H is usually a human unless an /equip override transformed it
@@ -217,18 +219,25 @@
 			H.real_name = "[J.title] #[rand(10000, 99999)]"
 
 	var/obj/item/card/id/C = H.wear_id
+	var/client/preference_source = H.client
 	if(istype(C))
 		C.access = J.get_access()
 		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
 		C.registered_name = H.real_name
 		C.assignment = J.title
-		C.update_label()
+		if(preference_source && preference_source.prefs && preference_source.prefs.alt_titles_preferences[J.title])
+			C.update_label(C.registered_name, preference_source.prefs.alt_titles_preferences[J.title])
+		else
+			C.update_label()
 		H.sec_hud_set_ID()
 
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))
 		PDA.owner = H.real_name
-		PDA.ownjob = J.title
+		if(preference_source && preference_source.prefs && preference_source.prefs.alt_titles_preferences[J.title])
+			PDA.ownjob = preference_source.prefs.alt_titles_preferences[J.title]
+		else
+			PDA.ownjob = J.title
 		PDA.update_label()
 
 /datum/outfit/job/get_chameleon_disguise_info()

@@ -13,7 +13,15 @@
 		features["mcolor3"] = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F")
 	features["mcolor2"]	= sanitize_hexcolor(features["mcolor2"], 3, 0)
 	features["mcolor3"]	= sanitize_hexcolor(features["mcolor3"], 3, 0)
-
+	
+	S["alt_titles_preferences"] 		>> alt_titles_preferences
+	alt_titles_preferences = SANITIZE_LIST(alt_titles_preferences)
+	if(SSjob)
+		for(var/datum/job/job in SSjob.occupations)
+			if(alt_titles_preferences[job.title])
+				if(!(alt_titles_preferences[job.title] in job.alt_titles))
+					alt_titles_preferences.Remove(job.title)
+					
 	//gear loadout
 	var/text_to_load
 	S["loadout"] >> text_to_load
@@ -76,6 +84,8 @@
 	WRITE_FILE(S["feature_can_get_preg"], features["can_get_preg"])
 	//flavor text
 	WRITE_FILE(S["feature_flavor_text"], features["flavor_text"])
+	//custom job titles
+	WRITE_FILE(S["alt_titles_preferences"], alt_titles_preferences)
 
 	//gear loadout
 	if(islist(chosen_gear))
