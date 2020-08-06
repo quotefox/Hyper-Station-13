@@ -760,16 +760,19 @@
 	name = "type-e electronic machine"
 	icon_state = "setup_large_tall"
 	desc = "It's a case, for building large electronics with. This one has a tall design."
+	density = 1
 
 /obj/item/electronic_assembly/large/industrial
 	name = "type-f electronic machine"
 	icon_state = "setup_large_industrial"
 	desc = "It's a case, for building large electronics with. This one resembles some kind of industrial machinery."
+	density = 1
 
 /obj/item/electronic_assembly/large/vendor
 	name = "type-g electronic machine"
 	icon_state = "setup_large_vendor"
 	desc = "It's a case, for building large electronics with. This one resembles a vending machine."
+	density = 1
 
 /obj/item/electronic_assembly/drone
 	name = "electronic drone"
