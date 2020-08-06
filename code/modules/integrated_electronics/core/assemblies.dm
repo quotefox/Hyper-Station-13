@@ -766,6 +766,11 @@
 	icon_state = "setup_large_industrial"
 	desc = "It's a case, for building large electronics with. This one resembles some kind of industrial machinery."
 
+/obj/item/electronic_assembly/large/vendor
+	name = "type-g electronic machine"
+	icon_state = "setup_large_vendor"
+	desc = "It's a case, for building large electronics with. This one resembles a vending machine."
+
 /obj/item/electronic_assembly/drone
 	name = "electronic drone"
 	icon_state = "setup_drone"
