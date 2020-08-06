@@ -65,7 +65,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/pda_style = MONO
 	var/pda_color = "#808000"
 	var/pda_skin = PDA_SKIN_ALT
-	
+
 	var/list/alt_titles_preferences = list()
 
 	var/uses_glasses_colour = 0
@@ -229,7 +229,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	//backgrounds
 	var/mutable_appearance/character_background
-	var/icon/bgstate = "steel"
+	var/icon/bgstate = "000"
 	var/list/bgstate_options = list("000", "midgrey", "hiro", "FFF", "white", "steel", "techmaint", "dark", "plating", "reinforced")
 
 	var/show_mismatched_markings = FALSE //determines whether or not the markings lists should show markings that don't match the currently selected species. Intentionally left unsaved.
@@ -301,7 +301,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						if(unspaced_slots > 4)
 							dat += "<br>"
 							unspaced_slots = 0
-						S.cd = "/character[i]"
+						S.cd = "/+"
 						S["real_name"] >> name
 						if(!name)
 							name = "Character[i]"
@@ -382,7 +382,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Custom Species Name:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=custom_species;task=input'>[custom_species ? custom_species : "None"]</a><BR>"
 			dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=all;task=random'>Random Body</A><BR>"
 			dat += "<b>Always Random Body:</b><a href='?_src_=prefs;preference=all'>[be_random_body ? "Yes" : "No"]</A><BR>"
-			dat += "<br><b>Cycle background:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=cycle_bg;task=input'>[bgstate]</a><BR>"
+			//dat += "<br><b>Cycle background:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=cycle_bg;task=input'>[bgstate]</a><BR>"
 
 			var/use_skintones = pref_species.use_skintones
 			if(use_skintones)
