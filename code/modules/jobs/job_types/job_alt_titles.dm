@@ -89,5 +89,8 @@
 	alt_titles = list("Exotic Ore Miner", "Fauna Hunter", "Explorer", "Digger")	//Just because you're a hunter does not excuse you from rock collecting!!!!!!!!!!!!
 
 //Command
+/datum/job/captain
+	alt_titles = list("Station Director", "Station Commander", "Station Overseer")
+
 /datum/job/hop
 	alt_titles = list("Personnel Manager", "Staff Administrator")
