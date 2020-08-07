@@ -1,3 +1,6 @@
+/* Doesnt fucking work, dont know why, everything I add in this game has some kinda of issue.
+
+
 /obj/item/integrated_circuit/input/gmeasurement
 	name = "body measurement"
 	desc = "Used to get a measurement of a refs genitals size and body size."
@@ -74,3 +77,4 @@
 	set_pin_data(IC_OUTPUT,	2, L.breedable)
 	push_data()
 	activate_pin(2)
+*/
