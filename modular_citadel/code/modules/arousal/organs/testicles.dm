@@ -20,6 +20,7 @@
 	can_climax				= TRUE
 	var/sent_full_message	= TRUE //defaults to 1 since they're full to start
 
+
 /obj/item/organ/genital/testicles/on_life()
 	if(QDELETED(src))
 		return
@@ -69,7 +70,6 @@
 
 /obj/item/organ/genital/testicles/update_appearance()
 	switch(size)
-		//if(0.1 to 1) //Hyper - Change the displayed ball sizes
 		if(0.1 to 3)
 			size_name = "average"
 		//if(1.1 to 2)
