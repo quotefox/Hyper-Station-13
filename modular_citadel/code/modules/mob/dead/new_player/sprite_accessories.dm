@@ -739,6 +739,18 @@
 	name = "Fox"
 	icon_state = "fox"
 
+/datum/sprite_accessory/mam_snouts/foxalt
+	name = "Fox Alt"
+	icon_state = "foxalt"
+
+/datum/sprite_accessory/mam_snouts/hshort
+	name = "Small"
+	icon_state = "short"
+
+/datum/sprite_accessory/mam_snouts/rabbit
+	name = "Rabbit"
+	icon_state = "rabbit"
+
 /datum/sprite_accessory/mam_snouts/hshark
 	name = "hShark"
 	icon_state = "hshark"
@@ -1748,7 +1760,7 @@ datum/sprite_accessory/mam_tails/insect
 /datum/sprite_accessory/taur/synthliz/wolf/inv
 	name = "Virgo - Synthetic Wolf (Inverted)"
 	icon_state = "synthwolfinv"
-	
+
 /******************************************
 *************** Ayyliums ******************
 *******************************************/
