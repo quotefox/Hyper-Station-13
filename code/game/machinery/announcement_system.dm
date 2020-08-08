@@ -17,9 +17,9 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	circuit = /obj/item/circuitboard/machine/announcement_system
 
 	var/obj/item/radio/headset/radio
-	var/arrival = "%PERSON has signed up as %RANK"
+	var/arrival = "%PERSON has signed up as %DISP_RANK (%RANK)"
 	var/arrivalToggle = 1
-	var/newhead = "%PERSON, %RANK, is the department head."
+	var/newhead = "%PERSON, %DISP_RANK (%RANK), is the department head."
 	var/newheadToggle = 1
 
 	var/greenlight = "Light_Green"
@@ -73,24 +73,25 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	else
 		return ..()
 
-/obj/machinery/announcement_system/proc/CompileText(str, user, rank) //replaces user-given variables with actual thingies.
+/obj/machinery/announcement_system/proc/CompileText(str, user, rank, displayed_rank) //replaces user-given variables with actual thingies.
 	str = replacetext(str, "%PERSON", "[user]")
 	str = replacetext(str, "%RANK", "[rank]")
+	str = replacetext(str, "%DISP_RANK", "[displayed_rank]")
 	return str
 
-/obj/machinery/announcement_system/proc/announce(message_type, user, rank, list/channels)
+/obj/machinery/announcement_system/proc/announce(message_type, user, rank, displayed_rank, list/channels)
 	if(!is_operational())
 		return
 
 	var/message
 
 	if(message_type == "ARRIVAL" && arrivalToggle)
-		message = CompileText(arrival, user, rank)
+		message = CompileText(arrival, user, rank, displayed_rank)
 	else if(message_type == "NEWHEAD" && newheadToggle)
-		message = CompileText(newhead, user, rank)
+		message = CompileText(newhead, user, rank, displayed_rank)
 	//CITADEL EDIT for cryopods
 	else if(message_type == "CRYOSTORAGE")
-		message = CompileText("%PERSON, %RANK has been moved to cryo storage.", user, rank)
+		message = CompileText("%PERSON, %DISP_RANK (%RANK) has been moved to cryo storage.", user, rank, displayed_rank)
 	//END EDIT
 	else if(message_type == "ARRIVALS_BROKEN")
 		message = "The arrivals shuttle has been damaged. Docking for repairs..."
