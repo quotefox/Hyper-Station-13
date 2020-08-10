@@ -73,6 +73,8 @@
 	clownmask_designs = list(
 		"True Form" = image(icon = src.icon, icon_state = "clown"),
 		"The Feminist" = image(icon = src.icon, icon_state = "sexyclown"),
+		"Clean True Form" = image(icon = src.icon, icon_state = "clown_clean"),
+		"The Feminist Clean" = image(icon = src.icon, icon_state = "sexyclown_clean"),
 		"The Madman" = image(icon = src.icon, icon_state = "joker"),
 		"The Rainbow Color" = image(icon = src.icon, icon_state = "rainbow")
 		)
@@ -81,8 +83,7 @@
 	if(!istype(user) || user.incapacitated())
 		return
 
-	var/static/list/options = list("True Form" = "clown", "The Feminist" = "sexyclown",
-								"The Rainbow Color" = "rainbow", "The Madman" = "joker")
+	var/static/list/options = list("True Form" = "clown", "The Feminist" = "sexyclown", "Clean True Form" = "clown_clean", "The Feminist Clean" = "sexyclown_clean", "The Rainbow Color" = "rainbow", "The Madman" = "joker")
 
 	var/choice = show_radial_menu(user,src, clownmask_designs, custom_check = FALSE, radius = 36, require_near = TRUE)
 

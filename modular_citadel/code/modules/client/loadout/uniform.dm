@@ -417,3 +417,9 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/bottomless
 	cost = 2
+
+/datum/gear/corset
+	name = "Corset"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/corset
+	cost = 1

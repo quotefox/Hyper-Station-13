@@ -149,3 +149,9 @@
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/storage/fancy/ringbox/diamond
 	cost = 5
+
+/datum/gear/condom
+	name = "Condom"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/condom
+	cost = 1
