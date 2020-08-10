@@ -151,31 +151,13 @@ GLOBAL_LIST_INIT(hyper_special_roles, list(
 	return 0
 
 /datum/antagonist/traitor/lewd/proc/forge_objectives()
-	//to_chat(world, "<span class='boldannounce'>TEST: lewd/forge_objectives() called</span>")
 	forge_single_objective()
 
-/*
-/datum/antagonist/traitor/lewd/proc/forge_objectives()
-	//to_chat(world, "<span class='boldannounce'>TEST: lewd/forge_objectives() called</span>")
-	var/datum/mind/target = forge_single_objective()
-	
-	var/datum/objective/protect/protect_objective = new /datum/objective/protect
-	protect_objective.owner = owner
-	protect_objective.target = target
-	protect_objective.explanation_text = "Protect [target.name]. Keep them safe."
-	owner.objectives += protect_objective
-
-	var/datum/objective/survive/survive_objective = new /datum/objective/survive
-	survive_objective.owner = owner
-	owner.objectives += survive_objective
-*/
 
 /datum/antagonist/traitor/lewd/forge_human_objectives()
-	//to_chat(world, "<span class='boldannounce'>TEST: lewd/forge_human_objectives() called</span>")
 	forge_single_objective()
 
 /datum/antagonist/traitor/lewd/forge_single_objective()
-	//to_chat(world, "<span class='boldannounce'>TEST: lewd/forge_single_objective() called</span>")
 	var/datum/objective/noncon/noncon_objective = new
 	noncon_objective.owner = owner
 	noncon_objective.target = noncon_objective.find_target()
@@ -189,7 +171,6 @@ GLOBAL_LIST_INIT(hyper_special_roles, list(
 		give_codewords()
 
 /datum/antagonist/traitor/lewd/on_gain()
-	//to_chat(world, "<span class='boldannounce'>TEST: lewd/on_gain() called</span>")
 	if(owner.current && isAI(owner.current))
 		traitor_kind = TRAITOR_AI
 
@@ -200,7 +181,6 @@ GLOBAL_LIST_INIT(hyper_special_roles, list(
 	finalize_traitor()
 
 /datum/antagonist/traitor/lewd/finalize_traitor()
-	//to_chat(world, "<span class='boldannounce'>TEST: lewd/finalize_traitor() called</span>")
 	switch(traitor_kind)
 		if(TRAITOR_AI)
 			add_law_zero()
@@ -222,28 +202,11 @@ GLOBAL_LIST_INIT(hyper_special_roles, list(
 
 /datum/objective/noncon
 	..()
-	//var/target_flag=0
-	//var/mob/living/targets = list()
-	
-	/* //This code can't go here, for the life of me I cannot tell you why
-	for(var/mob/living/carbon/human/potential_target in GLOB.player_list)
-		if(potential_target.client.prefs.noncon)
-			//if(!(potential_target.job in potential_target.restricted_jobs))
-			targets += potential_target
-	if(targets.len)
-		target = pick(targets)
-	else
-		target = null
-	*/
 
 /datum/objective/noncon/New(var/datum/mind/_owner)
 	GLOB.objectives += src // CITADEL EDIT FOR CRYOPODS
-	//to_chat(world, "<span class='boldannounce'>TEST: noncon/New() called</span>")
-	
 	if(_owner)
 		owner = _owner
-	//if(text)
-		//explanation_text = text
 
 
 
@@ -252,10 +215,6 @@ GLOBAL_LIST_INIT(hyper_special_roles, list(
 	//to_chat(world, "<span class='boldannounce'>TEST: noncon/find_target() called</span>")
 	var/list/datum/mind/targets = list()
 	var/list/datum/mind/owners = get_owners()
-	//var/mob/living/carbon/human/T = null
-	//for(var/mob/living/carbon/human/candidate in GLOB.player_list)
-	//for(var/datum/mind/possible_target in get_crewmember_minds())
-	//to_chat(world, "<span class='boldannounce'>[owner.name]</span>")
 	for(var/datum/mind/candidate in SSticker.minds)
 		if (!(candidate in owners) && ishuman(candidate.current))
 			if(candidate.current.client.prefs.noncon == 1)
