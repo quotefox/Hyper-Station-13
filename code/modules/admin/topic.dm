@@ -163,6 +163,14 @@
 				else
 					message_admins("[key_name_admin(usr)] tried to create a revenant. Unfortunately, there were no candidates available.")
 					log_admin("[key_name(usr)] failed to create a revenant.")
+			//Hyper
+			if("lewdtraitors")
+				if(src.makeLewdtraitors())
+					message_admins("[key_name(usr)] created a lewd traitor.")
+					log_admin("[key_name(usr)] created a lewd traitor.")
+				else
+					message_admins("[key_name_admin(usr)] tried to create a lewd traitor. Unfortunately, there were no candidates available.")
+					log_admin("[key_name(usr)] failed to create a lewd traitor.")
 
 	else if(href_list["forceevent"])
 		if(!check_rights(R_FUN))

@@ -23,6 +23,9 @@
 	var/hound_sleeper = TRUE
 	var/cit_toggles = TOGGLES_CITADEL
 
+	//Hyper prefs
+	var/noncon = FALSE  //Definitely want this off by default
+
 	// stuff that was in base
 	max_save_slots = 20
 
