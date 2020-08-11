@@ -14,7 +14,7 @@ Chief Engineer
 	selection_color = "#ffeeaa"
 	req_admin_notify = 1
 	minimal_player_age = 3
-	exp_requirements = 180
+	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_ENGINEERING
 
@@ -76,9 +76,10 @@ Station Engineer
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 5
+	minimal_player_age = 1
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
-	exp_requirements = 60
+	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/engineer
@@ -132,9 +133,10 @@ Atmospheric Technician
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
+	minimal_player_age = 2
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
-	exp_requirements = 60
+	exp_requirements = 180
 	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/atmos
