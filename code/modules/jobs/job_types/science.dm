@@ -14,9 +14,9 @@ Research Director
 	selection_color = "#ffddff"
 	req_admin_notify = 1
 	minimal_player_age = 3
-//	exp_type_department = EXP_TYPE_SCIENCE
-//	exp_requirements = 180
-//	exp_type = EXP_TYPE_CREW
+	exp_type_department = EXP_TYPE_SCIENCE
+	exp_requirements = 300
+	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/rd
 
@@ -72,9 +72,10 @@ Scientist
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 3
+	minimal_player_age = 1
 	supervisors = "the research director"
 	selection_color = "#ffeeff"
-	exp_requirements = 60
+	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW
 
 
@@ -107,9 +108,10 @@ Roboticist
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
+	minimal_player_age = 2
 	supervisors = "the research director"
 	selection_color = "#ffeeff"
-	exp_requirements = 60
+	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/roboticist
