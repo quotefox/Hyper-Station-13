@@ -14,9 +14,9 @@ Chief Medical Officer
 	selection_color = "#ffddf0"
 	req_admin_notify = 1
 	minimal_player_age = 3
-//	exp_requirements = 180
-//	exp_type = EXP_TYPE_CREW
-//	exp_type_department = EXP_TYPE_MEDICAL
+	exp_requirements = 300
+	exp_type = EXP_TYPE_CREW
+	exp_type_department = EXP_TYPE_MEDICAL
 
 	outfit = /datum/outfit/job/cmo
 
@@ -69,6 +69,7 @@ Medical Doctor
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 3
+	minimal_player_age = 1
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 
@@ -106,6 +107,7 @@ Chemist
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
+	minimal_player_age = 1
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
@@ -147,7 +149,7 @@ Geneticist
 	supervisors = "the chief medical officer and research director"
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
-	exp_requirements = 60
+	exp_requirements = 30
 
 	outfit = /datum/outfit/job/geneticist
 
@@ -181,10 +183,11 @@ Virologist
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
+	minimal_player_age = 2
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
 	exp_type = EXP_TYPE_CREW
-	exp_requirements = 60
+	exp_requirements = 120
 
 	outfit = /datum/outfit/job/virologist
 
