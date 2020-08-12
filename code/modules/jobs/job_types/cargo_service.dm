@@ -43,7 +43,7 @@ Cargo Technician
 /datum/job/cargo_tech
 	title = "Cargo Technician"
 	flag = CARGOTECH
-	department_head = list("Head of Personnel")
+	department_head = list("Quartermaster")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 3
@@ -72,7 +72,7 @@ Shaft Miner
 /datum/job/mining
 	title = "Shaft Miner"
 	flag = MINER
-	department_head = list("Head of Personnel")
+	department_head = list("Quartermaster")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 3
