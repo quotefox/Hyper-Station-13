@@ -365,8 +365,10 @@
 /mob/proc/toggle_move_intent(mob/user)
 	if(m_intent == MOVE_INTENT_RUN)
 		m_intent = MOVE_INTENT_WALK
+		glide_size = 4
 	else
 		m_intent = MOVE_INTENT_RUN
+		glide_size = 8
 	if(hud_used && hud_used.static_inventory)
 		for(var/obj/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_icon(src)

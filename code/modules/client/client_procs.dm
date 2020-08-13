@@ -228,7 +228,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
-	fps = 30
+	fps = 40
 
 	if(fexists(roundend_report_file()))
 		verbs += /client/proc/show_previous_roundend_report

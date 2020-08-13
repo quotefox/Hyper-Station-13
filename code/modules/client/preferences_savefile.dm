@@ -143,6 +143,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	default_slot	= sanitize_integer(default_slot, 1, max_save_slots, initial(default_slot))
 	toggles			= sanitize_integer(toggles, 0, 65535, initial(toggles))
 	clientfps		= sanitize_integer(clientfps, 0, 1000, 0)
+	if (clientfps == 0) clientfps = world.fps*2
 	body_size		= sanitize_integer(body_size, 90, 110, 0)
 	can_get_preg	= sanitize_integer(body_size, 0, 1, 0)
 	parallax		= sanitize_integer(parallax, PARALLAX_INSANE, PARALLAX_DISABLE, null)
