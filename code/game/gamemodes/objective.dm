@@ -286,7 +286,7 @@ GLOBAL_LIST_EMPTY(objectives)
 			if(H.dna.species.id != "human")
 				return FALSE
 	return TRUE
-
+/*
 /datum/objective/robot_army
 	explanation_text = "Have at least eight active cyborgs synced to you."
 	martyr_compatible = 0
@@ -302,7 +302,7 @@ GLOBAL_LIST_EMPTY(objectives)
 			if(R.stat != DEAD)
 				counter++
 	return counter >= 8
-
+*/
 /datum/objective/escape
 	explanation_text = "Escape on the shuttle or an escape pod alive and without being in custody."
 	team_explanation_text = "Have all members of your team escape on a shuttle or pod alive, without being in custody."
