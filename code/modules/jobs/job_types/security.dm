@@ -19,9 +19,9 @@ Head of Security
 	supervisors = "the captain"
 	selection_color = "#ffdddd"
 	req_admin_notify = 1
-	minimal_player_age = 5
+	minimal_player_age = 20
 	exp_requirements = 420
-	exp_type = EXP_TYPE_CREW
+	exp_type = EXP_TYPE_SECURITY
 	exp_type_department = EXP_TYPE_SECURITY
 
 	outfit = /datum/outfit/job/hos
