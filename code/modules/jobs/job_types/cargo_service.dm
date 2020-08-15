@@ -12,8 +12,8 @@ Quartermaster is a real head fuck you
 	spawn_positions = 1
 	supervisors = "the captain"
 	selection_color = "#d7b088"
-	minimal_player_age = 3
-	exp_type = EXP_TYPE_CREW
+	minimal_player_age = 10
+	exp_type = EXP_TYPE_SUPPLY
 	exp_type_department = EXP_TYPE_SUPPLY
 	exp_requirements = 300
 

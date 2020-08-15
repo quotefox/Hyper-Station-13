@@ -12,9 +12,9 @@ Captain
 	supervisors = "Kinaris officials and Space law"
 	selection_color = "#ccccff"
 	req_admin_notify = 1
-	minimal_player_age = 10
+	minimal_player_age = 20
 	exp_requirements = 480
-	exp_type = EXP_TYPE_CREW
+	exp_type = EXP_TYPE_COMMAND
 	exp_type_department = EXP_TYPE_COMMAND
 
 	outfit = /datum/outfit/job/captain
@@ -81,9 +81,9 @@ Head of Personnel
 	supervisors = "the captain"
 	selection_color = "#ddddff"
 	req_admin_notify = 1
-	minimal_player_age = 3
+	minimal_player_age = 20
 	exp_requirements = 180
-	exp_type = EXP_TYPE_CREW
+	exp_type = EXP_TYPE_SERVICE
 	exp_type_department = EXP_TYPE_SERVICE
 
 	outfit = /datum/outfit/job/hop
