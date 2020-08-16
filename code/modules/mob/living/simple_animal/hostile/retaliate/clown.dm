@@ -66,6 +66,23 @@
 		if(L.reagents)
 			L.reagents.add_reagent(attack_reagent, rand(1,5))
 
+/mob/living/simple_animal/hostile/retaliate/clown/lube
+	name = "Living Lube"
+	desc = "A puddle of lube brought to life by the honkmother."
+	icon_state = "lube"
+	icon_living = "lube"
+	turns_per_move = 1
+	response_help = "dips a finger into"
+	response_disarm = "gently scoops and pours aside"
+	emote_see = list("bubbles", "oozes")
+	loot = list(/obj/item/clothing/mask/gas/clown_hat, /obj/effect/particle_effect/foam)
+
+/mob/living/simple_animal/hostile/retaliate/clown/lube/Life()
+	. = ..()
+	var/turf/open/OT = get_turf(src)
+	if(isopenturf(OT))
+		OT.MakeSlippery(TURF_WET_LUBE, 100)
+
 /mob/living/simple_animal/hostile/retaliate/clown/banana
 	name = "Clownana"
 	desc = "A fusion of clown and banana DNA birthed from a botany experiment gone wrong."
