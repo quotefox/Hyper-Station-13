@@ -81,7 +81,28 @@
 	set_station_name(designation)
 	minor_announce("[ureal_name] has designated your station as [station_name()]", "Captain's Charter", 0)
 	log_game("[ukey] has renamed the station as [station_name()].")
-
+	if (designation == "Black Mesa")
+		SSresearch.science_tech.add_point_list(list(TECHWEB_POINT_TYPE_GENERIC = 3000))
+		var/list/bmeastereggmusic = list('sound/music/half-life07.ogg','sound/music/half-life13.ogg','sound/music/bms_inbounda.ogg')
+		var/selectedmusic = pick(bmeastereggmusic)
+		for(var/mob/M in GLOB.player_list)
+			SEND_SOUND(M, selectedmusic)
+			to_chat(M, "<span class='boldannounce'>You feel the fabric of reality distort for a moment... Prepare for unforeseen consequences...</span>")
+		var/datum/round_event_control/portal_storm_syndicate/psy = locate(/datum/round_event_control/portal_storm_syndicate) in SSevents.control
+		if(istype(psy))
+			psy.weight = 20
+			psy.min_players = 10
+		var/datum/round_event_control/anomaly/anomaly_bluespace/blu = locate(/datum/round_event_control/anomaly/anomaly_bluespace) in SSevents.control
+		if(istype(blu))
+			blu.weight = 20
+		var/datum/round_event_control/anomaly/anomaly_vortex/vort = locate(/datum/round_event_control/anomaly/anomaly_vortex) in SSevents.control
+		if(istype(vort))
+			vort.weight = 20
+		var/datum/round_event_control/anomaly/anomaly_grav/grav = locate(/datum/round_event_control/anomaly/anomaly_grav) in SSevents.control
+		if(istype(grav))
+			grav.weight = 30
+		message_admins("The station has been renamed to Black Mesa. Weight of Anomalies and Portal Storms has been drastically increased.")
+		log_game("The station has been renamed to Black Mesa. Weight of Anomalies and Portal Storms has been drastically increased.")
 	name = "station charter for [station_name()]"
 	desc = "An official document entrusting the governance of \
 		[station_name()] and surrounding space to Captain [uname]."
