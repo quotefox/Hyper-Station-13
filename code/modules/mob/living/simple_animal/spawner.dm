@@ -73,6 +73,20 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	faction = list("skeleton")
 
+/mob/living/simple_animal/hostile/spawner/clown
+	name = "Laughing Larry"
+	desc = "A laughing, jovial figure. Something seems stuck in his throat."
+	icon_state = "clownbeacon"
+	icon_living = "clownbeacon"
+	icon = 'icons/obj/device.dmi'
+	health = 200
+	maxHealth = 200
+	max_mobs = 15
+	spawn_time = 150
+	mob_types = list(/mob/living/simple_animal/hostile/retaliate/clown, /mob/living/simple_animal/hostile/retaliate/clown/fleshclown, /mob/living/simple_animal/hostile/retaliate/clown/clownhulk, /mob/living/simple_animal/hostile/retaliate/clown/longface, /mob/living/simple_animal/hostile/retaliate/clown/clownhulk/chlown, /mob/living/simple_animal/hostile/retaliate/clown/clownhulk/honcmunculus, /mob/living/simple_animal/hostile/retaliate/clown/mutant/blob, /mob/living/simple_animal/hostile/retaliate/clown/banana, /mob/living/simple_animal/hostile/retaliate/clown/honkling)
+	spawn_text = "climbs out of"
+	faction = list("clown")
+
 /mob/living/simple_animal/hostile/spawner/mining
 	name = "monster den"
 	desc = "A hole dug into the ground, harboring all kinds of monsters found within most caves or mining asteroids."
