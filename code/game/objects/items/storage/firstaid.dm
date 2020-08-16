@@ -352,7 +352,7 @@
 /////////////
 
 /obj/item/storage/belt/organbox
-	name = "Organ Storge"
+	name = "Organ Storage"
 	desc = "A compact box that helps hold massive amounts of implants, organs, and some tools. Has a belt clip for easy carrying"
 	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/obj/mysterybox.dmi'
