@@ -247,6 +247,12 @@
 	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
 	color_src = SKINTONE
 
+datum/sprite_accessory/ears/human/gret
+	name = "Gret"
+	icon_state = "gret"
+	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
+	color_src = SKINTONE
+
 /datum/sprite_accessory/ears/fennec
 	name = "Fennec"
 	icon_state = "fennec"
@@ -1064,6 +1070,11 @@
 /datum/sprite_accessory/mam_ears/elf
 	name = "Elf"
 	icon_state = "elf"
+	color_src = MUTCOLORS3
+
+/datum/sprite_accessory/mam_ears/gret
+	name = "Gret"
+	icon_state = "gret"
 	color_src = MUTCOLORS3
 
 
