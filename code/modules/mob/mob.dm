@@ -1,3 +1,5 @@
+/var/tickrefresh = 0
+
 /mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
 	GLOB.mob_list -= src
 	GLOB.dead_mob_list -= src
@@ -529,10 +531,40 @@
 /mob/proc/is_muzzled()
 	return 0
 
+/var/list/sList
 /mob/Stat()
 	..()
+	
+	//This is where I try and add a temporary solution to the issue of the status tab. This solution is bad and I should feel bad, but it should mitigate some of the client lag.
+	if(statpanel("Status") && tickrefresh == 0)
+		sList = list()
+		if (client)
+			sList+= "Ping: [round(client.lastping, 1)]ms (Average: [round(client.avgping, 1)]ms)"
+		sList+= "Map: [SSmapping.config?.map_name || "Loading..."]"
+		var/datum/map_config/cached = SSmapping.next_map_config
+		if(cached)
+			sList+= "Next Map: [cached.map_name]"
+		sList+= "Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]"
+		sList+= "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]"
+		sList+= "Round Time: [WORLDTIME2TEXT("hh:mm:ss")]"
+		sList+= "Station Time: [STATION_TIME_TIMESTAMP("hh:mm:ss")]"
+		sList+= "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)"
+		if(SSshuttle.emergency)
+			var/ETA = SSshuttle.emergency.getModeStr()
+			if(ETA)
+				sList+= "[ETA] [SSshuttle.emergency.getTimerStr()]"
+		tickrefresh++
+		stat(null, sList)
 
-	if(statpanel("Status"))
+	else if(statpanel("Status") && tickrefresh != 0)
+		if(tickrefresh == 5)
+			tickrefresh = 0
+		else
+			tickrefresh++
+		stat(null, sList)
+
+	/*
+	if(statpanel("Status") && tickrefresh == 0)
 		if (client)
 			stat(null, "Ping: [round(client.lastping, 1)]ms (Average: [round(client.avgping, 1)]ms)")
 		stat(null, "Map: [SSmapping.config?.map_name || "Loading..."]")
@@ -548,7 +580,14 @@
 			var/ETA = SSshuttle.emergency.getModeStr()
 			if(ETA)
 				stat(null, "[ETA] [SSshuttle.emergency.getTimerStr()]")
+		tickrefresh++
 
+	else if(statpanel("Status") && tickrefresh != 0)
+		if(tickrefresh == 5)
+			tickrefresh = 0
+		else
+			tickrefresh++
+	*/
 	if(client && client.holder)
 		if(statpanel("MC"))
 			var/turf/T = get_turf(client.eye)
