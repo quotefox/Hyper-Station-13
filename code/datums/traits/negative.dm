@@ -13,7 +13,7 @@
 	if(NOBLOOD in H.dna.species.species_traits) //can't lose blood if your species doesn't have any
 		return
 	else
-		quirk_holder.blood_volume -= 0.275
+		quirk_holder.blood_volume -= 0.22
 
 /datum/quirk/depression
 	name = "Depression"
@@ -119,7 +119,7 @@
 	medical_record_text = "Patient has a tumor in their brain that is slowly driving them to brain death."
 
 /datum/quirk/brainproblems/on_process()
-	quirk_holder.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.2)
+	quirk_holder.adjustOrganLoss(ORGAN_SLOT_BRAIN, 0.12)
 
 /datum/quirk/nearsighted //t. errorage
 	name = "Nearsighted"

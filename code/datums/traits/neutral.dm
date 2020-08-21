@@ -10,6 +10,18 @@
 	lose_text = "<span class='notice'>You can taste again!</span>"
 	medical_record_text = "Patient suffers from ageusia and is incapable of tasting food or reagents."
 
+/datum/quirk/apathetic
+	name = "Apathetic"
+	desc = "You just don't care as much as other people. That's nice to have in a place like this, I guess."
+	value = 0
+	mood_quirk = TRUE
+
+/datum/quirk/apathetic/remove()
+	if(quirk_holder)
+		GET_COMPONENT_FROM(mood, /datum/component/mood, quirk_holder)
+		if(mood)
+			mood.mood_modifier = 1 //Change this once/if species get their own mood modifiers.
+
 /datum/quirk/pineapple_liker
 	name = "Ananas Affinity"
 	desc = "You find yourself greatly enjoying fruits of the ananas genus. You can't seem to ever get enough of their sweet goodness!"

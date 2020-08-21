@@ -9,23 +9,6 @@
 	gain_text = "<span class='notice'>You feel like you could drink a whole keg!</span>"
 	lose_text = "<span class='danger'>You don't feel as resistant to alcohol anymore. Somehow.</span>"
 
-/datum/quirk/apathetic
-	name = "Apathetic"
-	desc = "You just don't care as much as other people. That's nice to have in a place like this, I guess."
-	value = 1
-	mood_quirk = TRUE
-
-/datum/quirk/apathetic/add()
-	GET_COMPONENT_FROM(mood, /datum/component/mood, quirk_holder)
-	if(mood)
-		mood.mood_modifier = 0.8
-
-/datum/quirk/apathetic/remove()
-	if(quirk_holder)
-		GET_COMPONENT_FROM(mood, /datum/component/mood, quirk_holder)
-		if(mood)
-			mood.mood_modifier = 1 //Change this once/if species get their own mood modifiers.
-
 /datum/quirk/drunkhealing
 	name = "Drunken Resilience"
 	desc = "Nothing like a good drink to make you feel on top of the world. Whenever you're drunk, you slowly recover from injuries."
