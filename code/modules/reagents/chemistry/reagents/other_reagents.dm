@@ -1582,25 +1582,6 @@
 	taste_description = "rainbows"
 	var/no_mob_color = FALSE
 
-/datum/reagent/consumable/laughter/laughtervirusfood
-	name = "anomolous virus food"
-	color = "#ffa6ff" //rgb: 255,166,255
-	taste_description = "a bad idea"
-	id = "laughtervirusfood"
-
-/datum/reagent/consumable/virus_food/advvirusfood
-	name = "highly unstable virus food"
-	color = "#ffffff" //rgb: 255,255,255 ITS PURE WHITE CMON
-	taste_description = "an EXTREMELY bad idea"
-	id = "advvirusfood"
-
-/datum/reagent/consumable/virus_food/viralbase
-	name = "Experimental viral base"
-	description = "Recently discovered by Nanotrasen's top scientists after years of research, this substance can be used as the base for extremely rare and extremely dangerous viruses once exposed to uranium."
-	color = "#fff0da"
-	taste_description = "tears of scientists"
-	id = "viralbase"
-
 /datum/reagent/colorful_reagent/on_mob_life(mob/living/carbon/M)
 	if(!no_mob_color)
 		M.add_atom_colour(pick(random_color_list), WASHABLE_COLOUR_PRIORITY)
@@ -2194,3 +2175,61 @@
 		to_chat(M, "<span class = 'notice'>[pick("Headpats feel nice.", "The feeling of a hairball...", "Backrubs would be nice.", "Whats behind those doors?")]</span>")
 	M.adjustArousalLoss(2)
 	..()
+
+// Adding new mutation toxin stuff from /code/modules/reagent/chemistry/recipes/slime_extracts.dm
+//Some other stuff like moth and felinid ( /datum/reagent/mutationtoxin/moth and /datum/reagent/mutationtoxin/felinid ) already exists. - Chemlight
+/datum/reagent/mutationtoxin/mammal
+	name = "Mammal Mutation Toxin"
+	id = "mammalmutationtoxin"
+	description = "A fuzzy toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/mammal
+	mutationtext = "<span class='danger'>The pain subsides. You feel... furry.</span>"
+
+/datum/reagent/mutationtoxin/avian
+	name = "Avian Mutation Toxin"
+	id = "avianmutationtoxin"
+	description = "A bird-like toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/avian
+	mutationtext = "<span class='danger'>The pain subsides. You feel... feathery.</span>"
+
+/datum/reagent/mutationtoxin/aquatic
+	name = "Aquatic Mutation Toxin"
+	id = "aquaticmutationtoxin"
+	description = "A aquatic toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/aquatic
+	mutationtext = "<span class='danger'>The pain subsides. You feel... parched and wet.</span>"
+
+/datum/reagent/mutationtoxin/xeno
+	name = "Xeno Mutation Toxin"
+	id = "xenomutationtoxin"
+	description = "A xenomorhpic toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/xeno
+	mutationtext = "<span class='danger'>The pain subsides. You feel... very alien compared to your previous self.</span>"
+
+/datum/reagent/mutationtoxin/insect
+	name = "Insect Mutation Toxin"
+	id = "insectmutationtoxin"
+	description = "A buggy toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/insect
+	mutationtext = "<span class='danger'>The pain subsides. You feel... oddly attracted to light.</span>"
+	
+/datum/reagent/mutationtoxin/ipc
+	name = "IPC Mutation Toxin"
+	id = "ipcmutationtoxin"
+	description = "A robotic toxin." //NANOMACHINES SON.
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/ipc
+	mutationtext = "<span class='danger'>The pain subsides. You feel... metallic.</span>"
+
+/datum/reagent/mutationtoxin/synthliz
+	name = "Synthlizard Mutation Toxin"
+	id = "synthlizmutationtoxin"
+	description = "A synthetic toxin." //NANOMACHINES SON.
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/synthliz
+	mutationtext = "<span class='danger'>The pain subsides. You feel... artificial.</span>"

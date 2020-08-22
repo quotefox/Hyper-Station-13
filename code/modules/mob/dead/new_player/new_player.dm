@@ -395,7 +395,7 @@
 		humanc = character	//Let's retypecast the var to be human,
 
 	if(humanc)	//These procs all expect humans
-		GLOB.data_core.manifest_inject(humanc)
+		GLOB.data_core.manifest_inject(humanc, humanc.client)
 		if(SSshuttle.arrivals)
 			SSshuttle.arrivals.QueueAnnounce(humanc, rank)
 		else
@@ -531,10 +531,14 @@
 				var/position_class = "otherPosition"
 				if(job.title in GLOB.command_positions)
 					position_class = "commandPosition"
+				var/jobline = ""
 				if(job in SSjob.prioritized_jobs)
-					dat += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'><font color='lime'><b>[job.title] ([job.current_positions])</b></font></a>"
+					jobline += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'><font color='lime'><b>[job.title] ([job.current_positions])</b></font></a>"
 				else
-					dat += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a>"
+					jobline += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a>"
+				if(client && client.prefs && client.prefs.alt_titles_preferences[job.title])
+					jobline += "<br><span style='color:#BBBBBB; font-style: italic;'>(as [client.prefs.alt_titles_preferences[job.title]])</span>"
+				dat += jobline
 				categorizedJobs[jobcat]["jobs"] -= job
 
 			for(var/spawner in categorizedJobs[jobcat]["jobs"])
@@ -578,12 +582,10 @@
 		mind.transfer_to(H)					//won't transfer key since the mind is not active
 
 	H.name = real_name
-
-
-	//h13 assign your characters custom height.
-	if (H.custom_body_size > 0)
-		H.resize = (H.custom_body_size * 0.01)
-
+		//h13 assign your characters custom height.
+	if (H.custom_body_size) //Do they have it set?
+		//H.size_multiplier =  (max(min( round((H.custom_body_size)), MAX_BODYSIZE),MIN_BODYSIZE)* 0.01) //Old method
+		H.resize(H.custom_body_size * 0.01)
 	//h13 give your starting impregchance (30%)
 	if (H.breedable == TRUE)
 		H.impregchance = 30

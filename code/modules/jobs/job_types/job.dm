@@ -57,6 +57,8 @@
 	var/list/mind_traits // Traits added to the mind of the mob assigned this job
 
 	var/list/blacklisted_quirks		//list of quirk typepaths blacklisted.
+	
+	var/list/alt_titles = list()
 
 //Only override this proc
 //H is usually a human unless an /equip override transformed it
@@ -120,7 +122,7 @@
 /datum/job/proc/announce_head(var/mob/living/carbon/human/H, var/channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(H && GLOB.announcement_systems.len)
 		//timer because these should come after the captain announcement
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, H.client.prefs.alt_titles_preferences[H.job], channels), 1))
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)
@@ -217,18 +219,25 @@
 			H.real_name = "[J.title] #[rand(10000, 99999)]"
 
 	var/obj/item/card/id/C = H.wear_id
+	var/client/preference_source = H.client
 	if(istype(C))
 		C.access = J.get_access()
 		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
 		C.registered_name = H.real_name
 		C.assignment = J.title
-		C.update_label()
+		if(preference_source && preference_source.prefs && preference_source.prefs.alt_titles_preferences[J.title])
+			C.update_label(C.registered_name, preference_source.prefs.alt_titles_preferences[J.title])
+		else
+			C.update_label()
 		H.sec_hud_set_ID()
 
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)
 	if(istype(PDA))
 		PDA.owner = H.real_name
-		PDA.ownjob = J.title
+		if(preference_source && preference_source.prefs && preference_source.prefs.alt_titles_preferences[J.title])
+			PDA.ownjob = preference_source.prefs.alt_titles_preferences[J.title]
+		else
+			PDA.ownjob = J.title
 		PDA.update_label()
 
 /datum/outfit/job/get_chameleon_disguise_info()

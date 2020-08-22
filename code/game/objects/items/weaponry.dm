@@ -663,3 +663,26 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		to_chat(user, "<span class='warning'>[M] is too close to use [src] on.</span>")
 		return
 	M.attack_hand(user)
+
+/obj/item/bdsm_whip
+	name = "bdsm whip"
+	desc = "A less lethal version of the whip the librarian has. Still hurts, but just the way you like it."
+	icon_state = "whip"
+	item_state = "chain"
+	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
+	slot_flags = ITEM_SLOT_BELT
+	damtype = "arousal"
+	throwforce = 0
+	force = 5
+	w_class = WEIGHT_CLASS_NORMAL
+	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
+
+/obj/item/bdsm_whip/suicide_act(mob/user)
+		user.visible_message("<span class='suicide'>[user] is getting just a little too kinky!</span>")
+		return (OXYLOSS)
+
+/obj/item/bdsm_whip/attack(mob/M, mob/user)
+	playsound(loc, 'sound/weapons/whip.ogg', 30)
+	if(user.a_intent != INTENT_HELP)
+		return ..(M, user)

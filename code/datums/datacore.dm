@@ -202,12 +202,17 @@
 	var/static/list/show_directions = list(SOUTH, WEST)
 	if(H.mind && (H.mind.assigned_role != H.mind.special_role))
 		var/assignment
+		var/displayed_rank
 		if(H.mind.assigned_role)
 			assignment = H.mind.assigned_role
 		else if(H.job)
 			assignment = H.job
 		else
 			assignment = "Unassigned"
+			if(C && C.prefs && C.prefs.alt_titles_preferences[assignment])
+				assignment = C.prefs.alt_titles_preferences[assignment]
+		if(assignment)
+			displayed_rank = C.prefs.alt_titles_preferences[assignment]
 
 		var/static/record_id_num = 1001
 		var/id = num2hex(record_id_num++,6)
@@ -231,6 +236,7 @@
 		G.fields["id"]			= id
 		G.fields["name"]		= H.real_name
 		G.fields["rank"]		= assignment
+		G.fields["job_title"]   = displayed_rank
 		G.fields["age"]			= H.age
 		G.fields["species"]	= H.dna.species.name
 		G.fields["fingerprint"]	= md5(H.dna.uni_identity)
@@ -273,6 +279,7 @@
 		L.fields["id"]			= md5("[H.real_name][H.mind.assigned_role]")	//surely this should just be id, like the others?
 		L.fields["name"]		= H.real_name
 		L.fields["rank"] 		= H.mind.assigned_role
+		L.fields["job_title"]   = displayed_rank
 		L.fields["age"]			= H.age
 		L.fields["sex"]			= H.gender
 		L.fields["blood_type"]	= H.dna.blood_type

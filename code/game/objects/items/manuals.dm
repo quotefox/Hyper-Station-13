@@ -169,7 +169,7 @@
 				It can cook multiple items at once.
 
 				<h2>Processor:</h2>
-				Use it to process certain ingredients (meat into faggot, doughslice into spaghetti, potato into fries,etc...)
+				Use it to process certain ingredients (meat into meatball, doughslice into spaghetti, potato into fries,etc...)
 
 				<h2>Gibber:</h2>
 				Stuff an animal in it to grind it into meat.
@@ -271,10 +271,10 @@
 			"}
 
 /obj/item/book/manual/wiki/chemistry
-	name = "Chemistry Textbook"
+	name = "Guide to chems"
 	icon_state ="chemistrybook"
-	author = "Nanotrasen"
-	title = "Chemistry Textbook"
+	author = "Kin-Chems"
+	title = "Guide to chems"
 	page_link = "Guide_to_chemistry"
 
 /obj/item/book/manual/wiki/engineering_construction
@@ -292,17 +292,17 @@
 	page_link = "Guide_to_engineering"
 
 /obj/item/book/manual/wiki/engineering_singulo_tesla
-	name = "Singularity and Tesla for Dummies"
+	name = "Singularity 101"
 	icon_state ="bookEngineeringSingularitySafety"
 	author = "Engineering Encyclopedia"
-	title = "Singularity and Tesla for Dummies"
+	title = "Singularity 101"
 	page_link = "Singularity_and_Tesla_engines"
 
 /obj/item/book/manual/wiki/security_space_law
 	name = "Space Law"
-	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
+	desc = "A set of Kin-Station guidelines for keeping law and order on their space stations."
 	icon_state = "bookSpaceLaw"
-	author = "Nanotrasen"
+	author = "Kin.Co PMC"
 	title = "Space Law"
 	page_link = "Space_Law"
 
@@ -311,10 +311,10 @@
 	return OXYLOSS
 
 /obj/item/book/manual/wiki/infections
-	name = "Infections - Making your own pandemic!"
+	name = "Space CDC: Infections and you!"
 	icon_state = "bookInfections"
 	author = "Infections Encyclopedia"
-	title = "Infections - Making your own pandemic!"
+	title = "Space CDC: Infections and you!"
 	page_link = "Infections"
 
 /obj/item/book/manual/wiki/telescience
@@ -325,16 +325,16 @@
 	page_link = "Guide_to_telescience"
 
 /obj/item/book/manual/wiki/engineering_hacking
-	name = "Hacking"
+	name = "Hacking: A greytider's manual"
 	icon_state ="bookHacking"
-	author = "Engineering Encyclopedia"
-	title = "Hacking"
+	author = "The Greytider"
+	title = "Hacking: A greytider's manual"
 	page_link = "Hacking"
 
 /obj/item/book/manual/wiki/detective
 	name = "The Film Noir: Proper Procedures for Investigations"
 	icon_state ="bookDetective"
-	author = "Nanotrasen"
+	author = "The Stranger"
 	title = "The Film Noir: Proper Procedures for Investigations"
 	page_link = "Detective"
 
@@ -346,17 +346,17 @@
 	page_link = "Guide_to_food_and_drinks"
 
 /obj/item/book/manual/wiki/robotics_cyborgs
-	name = "Robotics for Dummies"
+	name = "The offical Robotics manual"
 	icon_state = "borgbook"
 	author = "XISC"
-	title = "Robotics for Dummies"
+	title = "The offical Robotics manual"
 	page_link = "Guide_to_robotics"
 
 /obj/item/book/manual/wiki/research_and_development
-	name = "Research and Development 101"
+	name = "RnD: safe sciences"
 	icon_state = "rdbook"
 	author = "Dr. L. Ight"
-	title = "Research and Development 101"
+	title = "RnD: safe sciences"
 	page_link = "Guide_to_Research_and_Development"
 
 /obj/item/book/manual/wiki/experimentor
@@ -369,37 +369,37 @@
 /obj/item/book/manual/wiki/medical_cloning
 	name = "Cloning techniques of the 26th century"
 	icon_state ="bookCloning"
-	author = "Medical Journal, volume 3"
+	author = "Angel Paulson"
 	title = "Cloning techniques of the 26th century"
 	page_link = "Guide_to_genetics#Cloning"
 
 /obj/item/book/manual/wiki/cooking_to_serve_man
-	name = "To Serve Man"
-	desc = "It's a cookbook!"
+	name = "Cooking for kids!"
+	desc = "It's a cooking datapad!"
 	icon_state ="cooked_book"
-	author = "the Kanamitan Empire"
-	title = "To Serve Man"
+	author = "Gordon Ramsay"
+	title = "Cooking for kids!"
 	page_link = "Guide_to_food_and_drinks"
 
 /obj/item/book/manual/wiki/circuitry
-	name = "Circuitry for Dummies"
+	name = "Wiring and safety manual"
 	icon_state = "book1"
 	author = "Dr. Hans Asperger"
-	title = "Circuitry for Dummies"
+	title = "Wiring and safety manual"
 	page_link = "Guide_to_circuits"
 
 /obj/item/book/manual/wiki/tcomms
-	name = "Subspace Telecommunications And You"
+	name = "Keeping communications"
 	icon_state = "book3"
 	author = "Engineering Encyclopedia"
-	title = "Subspace Telecommunications And You"
+	title = "Keeping communications"
 	page_link = "Guide_to_Telecommunications"
 
 /obj/item/book/manual/wiki/atmospherics
-	name = "Lexica Atmosia"
+	name = "O2 & You"
 	icon_state = "book5"
-	author = "the City-state of Atmosia"
-	title = "Lexica Atmosia"
+	author = "the department of NT-Atmos"
+	title = "O2 & You"
 	page_link = "Guide_to_Atmospherics"
 
 /obj/item/book/manual/wiki/medicine
@@ -410,10 +410,10 @@
 	page_link = "Guide_to_medicine"
 
 /obj/item/book/manual/wiki/surgery
-	name = "Brain Surgery for Dummies"
+	name = "Surgery: step by step"
 	icon_state = "book4"
 	author = "Dr. F. Fran"
-	title = "Brain Surgery for Dummies"
+	title = "Surgery: step by step"
 	page_link = "Surgery"
 
 /obj/item/book/manual/wiki/grenades

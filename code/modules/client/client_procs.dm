@@ -228,7 +228,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 	prefs.last_ip = address				//these are gonna be used for banning
 	prefs.last_id = computer_id			//these are gonna be used for banning
-	fps = 30
+	fps = 40
 
 	if(fexists(roundend_report_file()))
 		verbs += /client/proc/show_previous_roundend_report
@@ -458,6 +458,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	if(movingmob != null)
 		movingmob.client_mobs_in_contents -= mob
 		UNSETEMPTY(movingmob.client_mobs_in_contents)
+	seen_messages = null
 	Master.UpdateTickRate()
 	return ..()
 
@@ -896,7 +897,22 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			screen |= O
 		O.appearance = MA
 		O.dir = D
-		O.screen_loc = "character_preview_map:0,[pos]"
+		O.screen_loc = "character_preview_map:[pos],0"
+
+/client/proc/show_character_previews_large(mutable_appearance/MA)
+	var/pos = 0
+	for(var/D in GLOB.cardinals)
+		pos++
+		pos++
+		var/obj/screen/O = LAZYACCESS(char_render_holders, "[D]")
+		if(!O)
+			O = new
+			LAZYSET(char_render_holders, "[D]", O)
+			screen |= O
+		O.appearance = MA
+		O.dir = D
+		O.screen_loc = "character_preview_map:[pos],-1"
+
 
 /client/proc/clear_character_previews()
 	for(var/index in char_render_holders)

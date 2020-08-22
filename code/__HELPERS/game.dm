@@ -541,24 +541,11 @@
 	if((character.mind.assigned_role == "Cyborg") || (character.mind.assigned_role == character.mind.special_role))
 		return
 
+	var/displayed_rank = rank
+	if(character.client && character.client.prefs && character.client.prefs.alt_titles_preferences[rank])
+		displayed_rank = character.client.prefs.alt_titles_preferences[rank]
 	var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
-	announcer.announce("ARRIVAL", character.real_name, rank, list()) //make the list empty to make it announce it in common
-
-/proc/GetHexColors(const/hexa)
-	return list(
-			GetRedPart(hexa)/ 255,
-			GetGreenPart(hexa)/ 255,
-			GetBluePart(hexa)/ 255
-		)
-
-/proc/GetRedPart(const/hexa)
-	return hex2num(copytext(hexa, 2, 4))
-
-/proc/GetGreenPart(const/hexa)
-	return hex2num(copytext(hexa, 4, 6))
-
-/proc/GetBluePart(const/hexa)
-	return hex2num(copytext(hexa, 6, 8))
+	announcer.announce("ARRIVAL", character.real_name, rank, displayed_rank, list()) //make the list empty to make it announce it in common
 
 /proc/lavaland_equipment_pressure_check(turf/T)
 	. = FALSE

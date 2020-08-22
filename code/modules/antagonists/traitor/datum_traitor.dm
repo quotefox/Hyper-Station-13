@@ -141,14 +141,14 @@
 
 /datum/antagonist/traitor/proc/forge_single_human_objective() //Returns how many objectives are added
 	.=1
-	if(prob(50))
+	if(prob(35))
 		var/list/active_ais = active_ais()
 		if(active_ais.len && prob(100/GLOB.joined_player_list.len))
 			var/datum/objective/destroy/destroy_objective = new
 			destroy_objective.owner = owner
 			destroy_objective.find_target()
 			add_objective(destroy_objective)
-		else if(prob(30))
+		else if(prob(65))
 			var/datum/objective/maroon/maroon_objective = new
 			maroon_objective.owner = owner
 			maroon_objective.find_target()
@@ -172,7 +172,7 @@
 
 /datum/antagonist/traitor/proc/forge_single_AI_objective()
 	.=1
-	var/special_pick = rand(1,4)
+	var/special_pick = rand(1,3)
 	switch(special_pick)
 		if(1)
 			var/datum/objective/block/block_objective = new
@@ -182,11 +182,7 @@
 			var/datum/objective/purge/purge_objective = new
 			purge_objective.owner = owner
 			add_objective(purge_objective)
-		if(3)
-			var/datum/objective/robot_army/robot_objective = new
-			robot_objective.owner = owner
-			add_objective(robot_objective)
-		if(4) //Protect and strand a target
+		if(3) //Protect and strand a target
 			var/datum/objective/protect/yandere_one = new
 			yandere_one.owner = owner
 			add_objective(yandere_one)

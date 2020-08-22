@@ -27,11 +27,14 @@
 	/turf/closed/wall/rust,
 	/turf/closed/wall/r_wall/rust,
 	/turf/closed/wall/clockwork,
+	/turf/closed/indestructible/riveted/,
+	/turf/closed/indestructible/riveted/uranium,
 	/obj/structure/window/fulltile,
 	/obj/structure/window/reinforced/fulltile,
 	/obj/structure/window/reinforced/tinted/fulltile,
 	/obj/structure/window/plasma/fulltile,
 	/obj/structure/window/plasma/reinforced/fulltile,
+	/obj/machinery/door,
 	/obj/machinery/door/airlock/,
 	/obj/machinery/door/airlock/mining,
 	/obj/machinery/door/airlock/mining/glass,
@@ -59,7 +62,10 @@
 	/obj/machinery/door/window/northright,
 	/obj/machinery/door/airlock/external,
 	/obj/machinery/door/airlock,
-	/obj/machinery/door)
+	/obj/machinery/door/airlock/hatch,
+	/obj/machinery/door/airlock/engineering/glass/critical,
+	/obj/machinery/door/airlock/atmos,
+	/obj/machinery/door/airlock/highsecurity)
 
 
 	smooth = SMOOTH_TRUE

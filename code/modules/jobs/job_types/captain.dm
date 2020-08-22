@@ -9,12 +9,13 @@ Captain
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Nanotrasen officials and Space law"
+	supervisors = "Kinaris officials and Space law"
 	selection_color = "#ccccff"
 	req_admin_notify = 1
-	minimal_player_age = 5
-//	exp_requirements = 180
-//	exp_type = EXP_TYPE_CREW
+	minimal_player_age = 20
+	exp_requirements = 480
+	exp_type = EXP_TYPE_COMMAND
+	exp_type_department = EXP_TYPE_COMMAND
 
 	outfit = /datum/outfit/job/captain
 
@@ -27,8 +28,12 @@ Captain
 	return get_all_accesses()
 
 /datum/job/captain/announce(mob/living/carbon/human/H)
-	..()
-	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Captain [H.nameless ? "" : "[H.real_name] "]on deck!"))
+    ..()
+    var/displayed_rank = H.client.prefs.alt_titles_preferences[title]
+    if(!displayed_rank)
+        displayed_rank = "Captain"
+    SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "[displayed_rank] [H.nameless ? "" : "[H.real_name] "]on deck!"))
+
 
 /datum/outfit/job/captain
 	name = "Captain"
@@ -76,10 +81,10 @@ Head of Personnel
 	supervisors = "the captain"
 	selection_color = "#ddddff"
 	req_admin_notify = 1
-	minimal_player_age = 3
-//	exp_requirements = 180
-//	exp_type = EXP_TYPE_CREW
-//	exp_type_department = EXP_TYPE_SUPPLY
+	minimal_player_age = 20
+	exp_requirements = 180
+	exp_type = EXP_TYPE_SERVICE
+	exp_type_department = EXP_TYPE_SERVICE
 
 	outfit = /datum/outfit/job/hop
 

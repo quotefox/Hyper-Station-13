@@ -164,7 +164,6 @@
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
 
 	H.hardset_dna(ui, mutation_index, H.real_name, null, mrace, features)
-
 	if(prob(50 - efficiency*10)) //Chance to give a bad mutation.
 		H.easy_randmut(NEGATIVE+MINOR_NEGATIVE) //100% bad mutation. Can be cured with mutadone.
 
@@ -206,6 +205,7 @@
 
 		H.suiciding = FALSE
 	attempting = FALSE
+
 	return TRUE
 
 //Grow clones to maturity then kick them out.  FREELOADERS
@@ -380,6 +380,10 @@
 		qdel(fl)
 	unattached_flesh.Cut()
 
+	//Do the resize on ejection. The clone pod seems to do a lot of matrix transforms the way size code does, so we will handle our resize after.
+	mob_occupant.previous_size = 1 //Set the previous size to default so the resize properly set health and speed.
+	mob_occupant.custom_body_size = mob_occupant.client.prefs.body_size
+	mob_occupant.resize(mob_occupant.custom_body_size * 0.01)
 	occupant = null
 
 /obj/machinery/clonepod/proc/malfunction()

@@ -163,4 +163,4 @@
 
 
 /obj/item/bodypart
-	var/should_draw_citadel = FALSE
+	var/icon_limbs = DEFAULT_BODYPART_ICON_CITADEL

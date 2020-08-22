@@ -23,7 +23,7 @@ Bonus
 	stealth = -2
 	resistance = 2
 	stage_speed = -2
-	transmittable = -1
+	transmittable = -2
 	level = 3
 	severity = 3
 	base_message_chance = 100
@@ -34,7 +34,7 @@ Bonus
 /datum/symptom/weight_loss/Start(datum/disease/advance/A)
 	if(!..())
 		return
-	if(A.properties["stealth"] >= 2) //warn less often
+	if(A.properties["stealth"] >= 4) //warn less often
 		base_message_chance = 25
 
 /datum/symptom/weight_loss/Activate(datum/disease/advance/A)

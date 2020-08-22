@@ -10,9 +10,10 @@
 	can_climax 				= TRUE
 	fluid_transfer_factor	= 0.5
 	size 					= 2 //arbitrary value derived from length and girth for sprites.
+	var/condom				= 0 //No condom, its better this way...
 	var/length 				= 6	//inches
 	var/cached_length			//used to detect a change in length
-	var/girth  				= 4.38
+	var/girth  				= 3.38
 	var/girth_ratio 		= COCK_GIRTH_RATIO_DEF //0.73; check citadel_defines.dm
 	var/knot_girth_ratio 	= KNOT_GIRTH_RATIO_DEF
 	var/list/dickflags 		= list()
@@ -47,12 +48,12 @@
 			size = 3
 			if(owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
 				o.remove_status_effect(/datum/status_effect/chem/penis_enlarger)
-		if(21 to 35) //If massive and due for large effects
+		if(21 to 28) //If massive and due for large effects
 			length = cached_length
 			size = 3
 			if(!owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
 				o.apply_status_effect(/datum/status_effect/chem/penis_enlarger)
-		if(36 to INFINITY) //If comical
+		if(28 to INFINITY) //If comical
 			length = cached_length
 			size = 4 //no new sprites for anything larger yet
 			if(!owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))

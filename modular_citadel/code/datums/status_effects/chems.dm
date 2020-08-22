@@ -44,12 +44,16 @@
 	var/items = o.get_contents()
 	for(var/obj/item/W in items)
 		if(W == o.w_uniform || W == o.wear_suit)
-			o.dropItemToGround(W, TRUE)
-			playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
-			to_chat(o, "<span class='warning'>Your clothes give, ripping into pieces under the strain of your swelling breasts! Unless you manage to reduce the size of your breasts, there's no way you're going to be able to put anything on over these melons..!</b></span>")
-			o.visible_message("<span class='boldnotice'>[o]'s chest suddenly bursts forth, ripping their clothes off!'</span>")
-		else
-			to_chat(o, "<span class='notice'>Your bountiful bosom is so rich with mass, you seriously doubt you'll be able to fit any clothes over it.</b></span>")
+		//Hyper change
+			var/obj/item/clothing/W2 = W
+			if(!W2.roomy == 1) //If the clothes are "roomy" then don't do this.
+			//Hyper change end
+				o.dropItemToGround(W, TRUE)
+				playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
+				to_chat(o, "<span class='warning'>Your clothes give, ripping into pieces under the strain of your swelling breasts! Unless you manage to reduce the size of your breasts, there's no way you're going to be able to put anything on over these melons..!</b></span>")
+				o.visible_message("<span class='boldnotice'>[o]'s chest suddenly bursts forth, ripping their clothes off!'</span>")
+			else
+				to_chat(o, "<span class='notice'>Your bountiful bosom is so rich with mass, you seriously doubt you'll be able to fit any clothes over it.</b></span>")
 		return ..()
 
 /datum/status_effect/chem/breast_enlarger/tick(mob/living/carbon/human/H)//If you try to wear clothes, you fail. Slows you down if you're comically huge
@@ -66,9 +70,13 @@
 	var/items = o.get_contents()
 	for(var/obj/item/W in items)
 		if(W == o.w_uniform || W == o.wear_suit)
-			o.dropItemToGround(W, TRUE)
-			playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
-			to_chat(owner, "<span class='warning'>Your enormous breasts are way too large to fit anything over them!</b></span>")
+			//Hyper change// Check for a flag before we remove clothes.
+			var/obj/item/clothing/W2 = W
+			if(!W2.roomy == 1) //If the clothes are "roomy" then don't do this.
+			//End Hyper Change//
+				o.dropItemToGround(W, TRUE)
+				playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
+				to_chat(owner, "<span class='warning'>Your enormous breasts are way too large to fit anything over them!</b></span>")
 	/*
 	if (B.size == "huge")
 		if(prob(1))
@@ -86,7 +94,7 @@
 		o.add_movespeed_modifier(BREAST_MOVEMENT_SPEED, TRUE, 100, NONE, override = TRUE, multiplicative_slowdown = moveCalc)
 		sizeMoveMod(moveCalc)
 	*/
-	if((B.cached_size) < 16)
+	if((B.cached_size) < 40)
 		switch(round(B.cached_size))
 			if(9)
 				if (B.breast_values[B.prev_size] != B.breast_values[B.size])
@@ -125,14 +133,23 @@
 	var/mob/living/carbon/human/o = owner
 	var/items = o.get_contents()
 	if(o.w_uniform || o.wear_suit)
-		to_chat(o, "<span class='warning'>Your clothes give, ripping into peices under the strain of your swelling pecker! Unless you manage to reduce the size of your emancipated trouser snake, there's no way you're going to be able to put anything on over this girth..!</b></span>")
-		owner.visible_message("<span class='boldnotice'>[o]'s schlong suddenly bursts forth, ripping their clothes off!'</span>")
+		//Hyper change// Check for a flag before we remove clothes.
+		var/obj/item/clothing/suit = o.get_item_by_slot(SLOT_W_UNIFORM)
+		var/obj/item/clothing/jacket = o.get_item_by_slot(SLOT_WEAR_SUIT)
+		if(!suit.roomy == 1 || !jacket.roomy == 1) //If the clothes are "roomy" then don't do this.
+			//End Hyper Change//
+			to_chat(o, "<span class='warning'>Your clothes give, ripping into peices under the strain of your swelling pecker! Unless you manage to reduce the size of your emancipated trouser snake, there's no way you're going to be able to put anything on over this girth..!</b></span>")
+			owner.visible_message("<span class='boldnotice'>[o]'s schlong suddenly bursts forth, ripping their clothes off!'</span>")
 	else
 		to_chat(o, "<span class='notice'>Your emancipated trouser snake is so ripe with girth, you seriously doubt you'll be able to fit any clothes over it.</b></span>")
 	for(var/obj/item/W in items)
 		if(W == o.w_uniform || W == o.wear_suit)
-			o.dropItemToGround(W, TRUE)
-			playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
+		//Hyper change// Check for a flag before we remove clothes.
+			var/obj/item/clothing/W2 = W
+			if(!W2.roomy == 1) //If the clothes are "roomy" then don't do this.
+			//End Hyper Change//
+				o.dropItemToGround(W, TRUE)
+				playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
 	return ..()
 
 
@@ -151,14 +168,19 @@
 
 	var/items = o.get_contents()
 	for(var/obj/item/W in items)
-		if (o.arousalloss > 32) // warning that your shaft is getting errect!
-			if(W == o.w_uniform || W == o.wear_suit )
-				to_chat(M, "<span class='warning'>Your swelling cock begins to strain against your clothes tightly!</b></span>")
-		if (o.arousalloss > 33)
-			if(W == o.w_uniform || W == o.wear_suit )
-				o.dropItemToGround(W, TRUE)
-				playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
-				to_chat(owner, "<span class='warning'>Your erect member is way to large to fit anything over! You will need to be flaccid again to wear clothes!</b></span>")
+		//Hyper change// Check for a flag before we remove clothes.
+		if(istype(W, /obj/item/clothing))
+			var/obj/item/clothing/W2 = W
+			if(!W2.roomy == 1) //If the clothes are "roomy" then don't do this.
+			//End Hyper Change//
+				if (o.arousalloss > 32) // warning that your shaft is getting errect!
+					if(W == o.w_uniform || W == o.wear_suit )
+						to_chat(M, "<span class='warning'>Your swelling cock begins to strain against your clothes tightly!</b></span>")
+				if (o.arousalloss > 33)
+					if(W == o.w_uniform || W == o.wear_suit )
+						o.dropItemToGround(W, TRUE)
+						playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
+						to_chat(owner, "<span class='warning'>Your erect member is way to large to fit anything over! You will need to be flaccid again to wear clothes!</b></span>")
 /*
 	switch(round(P.cached_length))
 		if(21)

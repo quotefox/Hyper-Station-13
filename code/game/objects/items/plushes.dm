@@ -558,6 +558,13 @@
 	item_state = "almaz"
 	squeak_override = list('modular_citadel/sound/voice/raptor_purr.ogg' = 1)
 
+/obj/item/toy/plush/lizardplushie/malric
+	desc = "An adorable stuffed toy that resembles a certain drake. He looks tired."
+	icon_state = "malric"
+	item_state = "malric"
+	attack_verb = list("depressed", "tailwhipped", "hissed on")
+	squeak_override = list('modular_citadel/sound/voice/weh.ogg' = 1)
+
 /obj/item/toy/plush/snakeplushie
 	name = "snake plushie"
 	desc = "An adorable stuffed toy that resembles a snake. Not to be mistaken for the real thing."
@@ -700,6 +707,18 @@
 /obj/item/toy/plush/borgplushie/scrubpuppy
 	icon_state = "scrubpuppy"
 	item_state = "scrubpuppy"
+
+/obj/item/toy/plush/borgplushie/meddrake
+	name = "MediDrake Plushie"
+	desc = "An adorable stuffed toy of a Medidrake."
+	icon_state = "meddrake"
+	item_state = "meddrake"
+
+/obj/item/toy/plush/borgplushie/secdrake
+	name = "SecDrake Plushie"
+	desc = "An adorable stuffed toy of a Secdrake."
+	icon_state = "secdrake"
+	item_state = "secdrake"
 
 /obj/item/toy/plush/borgplushie/seeking
 	icon_state = "seeking"

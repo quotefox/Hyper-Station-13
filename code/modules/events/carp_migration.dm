@@ -1,8 +1,8 @@
 /datum/round_event_control/carp_migration
 	name = "Carp Migration"
 	typepath = /datum/round_event/carp_migration
-	weight = 15
-	min_players = 2
+	weight = 10 //decreased weight from 15 to 10
+	min_players = 5 //increased min players from 2 to 5 to reduce chances of half the crew dying in a carp breach
 	earliest_start = 10 MINUTES
 	max_occurrences = 6
 

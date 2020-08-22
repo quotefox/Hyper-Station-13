@@ -54,7 +54,7 @@
 	var/mob_size = MOB_SIZE_HUMAN
 
 //H13 custom body size and impregnation
-	var/custom_body_size = 1
+	var/custom_body_size = 100
 	var/breedable = 0
 	var/impregchance = 0
 
@@ -108,7 +108,7 @@
 
 	var/list/obj/effect/proc_holder/abilities = list()
 
-	var/can_be_held = FALSE	//whether this can be picked up and held.
+	var/can_be_held = FALSE
 
 	var/radiation = 0 //If the mob is irradiated.
 	var/ventcrawl_layer = PIPING_LAYER_DEFAULT

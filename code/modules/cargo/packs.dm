@@ -2921,14 +2921,13 @@
 	crate_name = "security department supply crate"
 
 /datum/supply_pack/costumes_toys/kinkmate
-	name = "Kinkmate construction kit"
+	name = "Kinkmate kit"
 	cost = 2000
 	contraband = TRUE
 	contains = list(/obj/item/vending_refill/kink,
 					/obj/item/vending_refill/kink,
-					/obj/item/vending_refill/kink,
-					/obj/item/circuitboard/machine/kinkmate)
-	crate_name = "Kinkmate construction kit"
+					/obj/item/vending_refill/kink)
+	crate_name = "Kinkmate kit"
 
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////////// Miscellaneous ///////////////////////////////////
@@ -3193,7 +3192,6 @@
 	contraband = TRUE
 	contains = list(/obj/item/dildo/custom,
 					/obj/item/dildo/custom,
-					/obj/item/circuitboard/machine/kinkmate,
 					/obj/item/vending_refill/kink,
 					/obj/item/vending_refill/kink,
 					/obj/item/vending_refill/kink,
@@ -3283,3 +3281,20 @@
 					/obj/item/toner,
 					/obj/item/toner)
 	crate_name = "toner crate"
+
+/datum/supply_pack/misc/diamondring
+	name = "Diamond Ring"
+	desc = "Show them your love is like a diamond: unbreakable and forever lasting. Shipped straight from child slave cartels in the space african mines."
+	cost = 10000
+	contains = list(/obj/item/storage/fancy/ringbox/diamond)
+	crate_name = "diamond ring crate"
+
+/datum/supply_pack/misc/jewelry
+	name = "Jewelry Crate"
+	desc = "Bling out with this crate of jewelry. Includes gold necklace and a set of two rings."
+	cost = 5000
+	contains = list(/obj/item/clothing/neck/necklace/dope,
+					/obj/item/storage/fancy/ringbox,
+					/obj/item/storage/fancy/ringbox/silver
+					)
+	crate_name = "jewelry crate"

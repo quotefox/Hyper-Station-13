@@ -209,6 +209,11 @@
 	if(istype(MB))
 		MB.RunOver(src)
 
+	//Hyper Change - Step on people
+	var/mob/living/carbon/human/H = AM
+	if(istype(H) && lying && H.a_intent != INTENT_HELP)
+		H.handle_micro_bump_other(src)
+
 	spreadFire(AM)
 
 /mob/living/carbon/human/Topic(href, href_list)
@@ -1099,3 +1104,9 @@
 
 /mob/living/carbon/human/species/zombie/krokodil_addict
 	race = /datum/species/krokodil_addict
+
+//define holder_type on nerds we wanna commit scoop to
+/mob/living/carbon/human
+	var/holder_type = /obj/item/clothing/head/mob_holder/micro
+	can_be_held = "micro"
+

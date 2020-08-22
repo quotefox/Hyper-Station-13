@@ -354,12 +354,10 @@
 	else
 		RemoveSymptom(pick(symptoms))
 		symptoms += S
-		S.OnAdd(src)
 
 // Simply removes the symptom.
 /datum/disease/advance/proc/RemoveSymptom(datum/symptom/S)
 	symptoms -= S
-	S.OnRemove(src)
 
 // Neuter a symptom, so it will only affect stats
 /datum/disease/advance/proc/NeuterSymptom(datum/symptom/S)

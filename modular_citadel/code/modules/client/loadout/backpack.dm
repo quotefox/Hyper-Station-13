@@ -18,6 +18,16 @@
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/toy/plush/slimeplushie
 
+/datum/gear/toy/plush/borgplushie/secdrake
+	name = "SecDrake Plushie"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/toy/plush/borgplushie/secdrake
+
+/datum/gear/toy/plush/borgplushie/meddrake
+	name = "MediDrake Plushie"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/toy/plush/borgplushie/meddrake
+
 /datum/gear/plushlamp
 	name = "Lamp plushie"
 	category = SLOT_IN_BACKPACK
@@ -121,3 +131,27 @@
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/pen/fountain
 	cost = 2
+
+/datum/gear/ringbox_gold
+	name = "A gold ring box"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/storage/fancy/ringbox
+	cost = 3
+
+/datum/gear/ringbox_silver
+	name = "A silver ring box"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/storage/fancy/ringbox/silver
+	cost = 3
+
+/datum/gear/ringbox_diamond
+	name = "A diamond ring box"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/storage/fancy/ringbox/diamond
+	cost = 5
+
+/datum/gear/condom
+	name = "Condom"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/condom
+	cost = 1

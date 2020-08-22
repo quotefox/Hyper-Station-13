@@ -80,12 +80,12 @@
 	description = "<span class='nicegreen'>Heh...hehehe...hehe...</span>\n"
 	mood_change = 4
 
- /datum/mood_event/chemical_laughter
+/datum/mood_event/chemical_laughter
 	description = "<span class='nicegreen'>Laughter really is the best medicine! Or is it?</span>\n"
 	mood_change = 4
 	timeout = 3 MINUTES
 
- /datum/mood_event/chemical_superlaughter
+/datum/mood_event/chemical_superlaughter
 	description = "<span class='nicegreen'>*WHEEZE*</span>\n"
 	mood_change = 12
 	timeout = 3 MINUTES
@@ -113,3 +113,12 @@
 
 /datum/mood_event/happy_empath/add_effects(var/mob/happytarget)
 	description = "<span class='nicegreen'>[happytarget.name]'s happiness is infectious!</span>\n"
+	
+/datum/mood_event/lewd_headpat
+	description = "<span class='nicegreen'>I love headpats so much!</span>\n"
+	mood_change = 3
+	timeout = 2 MINUTES
+
+/datum/mood_event/radiant
+	description = "<span class='nicegreen'>I have seen the light of The Phoenix; I cannot be stopped.</span>\n" 
+	mood_change = 12
