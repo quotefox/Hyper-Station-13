@@ -534,7 +534,6 @@
 /var/list/sList
 /mob/Stat()
 	..()
-	
 	//This is where I try and add a temporary solution to the issue of the status tab. This solution is bad and I should feel bad, but it should mitigate some of the client lag.
 	if(statpanel("Status") && tickrefresh == 0)
 		sList = list()
@@ -548,7 +547,7 @@
 		sList+= "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]"
 		sList+= "Round Time: [WORLDTIME2TEXT("hh:mm:ss")]"
 		sList+= "Station Time: [STATION_TIME_TIMESTAMP("hh:mm:ss")]"
-		sList+= "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)"
+		//sList+= "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)"
 		if(SSshuttle.emergency)
 			var/ETA = SSshuttle.emergency.getModeStr()
 			if(ETA)
@@ -557,7 +556,7 @@
 		stat(null, sList)
 
 	else if(statpanel("Status") && tickrefresh != 0)
-		if(tickrefresh == 5)
+		if(tickrefresh == 10)
 			tickrefresh = 0
 		else
 			tickrefresh++
