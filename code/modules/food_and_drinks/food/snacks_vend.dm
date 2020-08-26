@@ -80,6 +80,17 @@
 	tastes = list("cheese" = 5, "crisps" = 2)
 	foodtype = JUNKFOOD | DAIRY | SUGAR
 
+/obj/item/reagent_containers/food/snacks/soyfood
+	name = "Soyfood"
+	desc = "fine print: seasoned with nanoscale mechanochemical generators. Not only does it taste good, But also self-heats when opened"
+	icon_state = "soyfood"
+	trash = /obj/item/trash/soy_food
+	list_reagents = list("nutriment" = 4, "sugar" = 2, "vitamin" = 3)
+	junkiness = 0
+	filling_color = "#FFD700"
+	tastes = list("nanomachines" = 2, "soybeans" = 5)
+	foodtype = DAIRY | GRAIN
+
 /obj/item/reagent_containers/food/snacks/syndicake
 	name = "syndi-cakes"
 	icon_state = "syndi_cakes"
