@@ -1,4 +1,4 @@
-/var/tickrefresh = 0
+
 
 /mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
 	GLOB.mob_list -= src
@@ -530,7 +530,9 @@
 
 /mob/proc/is_muzzled()
 	return 0
-
+	
+/var/tickrefreshThr = 20
+/var/tickrefresh = 0
 /var/list/sList
 /mob/Stat()
 	..()
@@ -538,29 +540,22 @@
 	if(statpanel("Status") && tickrefresh == 0)
 		sList = list()
 		if (client)
-			sList+= "Ping: [round(client.lastping, 1)]ms (Average: [round(client.avgping, 1)]ms)"
-		sList+= "Map: [SSmapping.config?.map_name || "Loading..."]"
-		var/datum/map_config/cached = SSmapping.next_map_config
-		if(cached)
-			sList+= "Next Map: [cached.map_name]"
-		sList+= "Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]"
-		sList+= "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]"
-		sList+= "Round Time: [WORLDTIME2TEXT("hh:mm:ss")]"
-		sList+= "Station Time: [STATION_TIME_TIMESTAMP("hh:mm:ss")]"
-		//sList+= "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)"
-		if(SSshuttle.emergency)
-			var/ETA = SSshuttle.emergency.getModeStr()
-			if(ETA)
-				sList+= "[ETA] [SSshuttle.emergency.getTimerStr()]"
+			sList += "Ping: [round(client.lastping, 1)]ms (Average: [round(client.avgping, 1)]ms)"
+		sList += "Map: [SSmapping.config?.map_name || "Loading..."]"
+		sList += "Round ID: [GLOB.round_id || "NULL"]"
+		sList += "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]"
+		sList += "Round Time: [DisplayTimeText(world.time - SSticker.round_start_time, 1)]"
+		sList += "Station Time: [STATION_TIME_TIMESTAMP("hh:mm:ss")]"
+		sList += SSshuttle.emergency_shuttle_stat_text
 		tickrefresh++
-		stat(null, sList)
+		stat(null, "[sList.Join("\n\n")]")
 
 	else if(statpanel("Status") && tickrefresh != 0)
-		if(tickrefresh == 10)
+		if(tickrefresh >= tickrefreshThr)
 			tickrefresh = 0
 		else
 			tickrefresh++
-		stat(null, sList)
+		stat(null, "[sList.Join("\n\n")]")
 
 	if(client && client.holder)
 		if(statpanel("MC"))
