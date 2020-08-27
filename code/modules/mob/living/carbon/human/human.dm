@@ -59,26 +59,38 @@
 	//...and display them.
 	add_to_all_human_data_huds()
 
+/var/tickrefreshThr2 = 20
+/var/tickrefresh2 = 0
+/var/list/sList2
+
 /mob/living/carbon/human/Stat()
 	..()
 
-	if(statpanel("Status"))
-		stat(null, "Intent: [a_intent]")
-		stat(null, "Move Mode: [m_intent]")
+	if(statpanel("Status") && tickrefresh2 == 0)
+		sList2 = list()
+		sList2 += "Intent: [a_intent]"
+		sList2 += "Move Mode: [m_intent]"
 		if (internal)
 			if (!internal.air_contents)
 				qdel(internal)
 			else
-				stat("Internal Atmosphere Info", internal.name)
-				stat("Tank Pressure", internal.air_contents.return_pressure())
-				stat("Distribution Pressure", internal.distribute_pressure)
-
+				sList2 += "Internal Atmosphere Info: "+ "[internal.name]"
+				sList2 += "Tank Pressure: "+ "[internal.air_contents.return_pressure()]"
+				sList2 += "Distribution Pressure: "+ "[internal.distribute_pressure]"
 		if(mind)
 			var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
 			if(changeling)
-				stat("Chemical Storage", "[changeling.chem_charges]/[changeling.chem_storage]")
-				stat("Absorbed DNA", changeling.absorbedcount)
+				sList2 += "Chemical Storage: " + "[changeling.chem_charges]/[changeling.chem_storage]"
+				sList2 += "Absorbed DNA: "+ "[changeling.absorbedcount]"
+		tickrefresh2++
+		stat(null, "[sList2.Join("\n\n")]")
 
+	else if(statpanel("Status") && tickrefresh2 != 0)
+		if(tickrefresh2 >= tickrefreshThr2)
+			tickrefresh2 = 0
+		else
+			tickrefresh2++
+		stat(null, "[sList2.Join("\n\n")]")
 
 	//NINJACODE
 	if(istype(wear_suit, /obj/item/clothing/suit/space/space_ninja)) //Only display if actually a ninja.
