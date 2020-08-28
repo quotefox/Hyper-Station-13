@@ -537,21 +537,19 @@
 /mob/Stat()
 	..()
 	//This is where I try and add a temporary solution to the issue of the status tab. This solution is bad and I should feel bad, but it should mitigate some of the client lag.
-	if(statpanel("Status") && tickrefresh == 0)
-		sList = list()
-		if (client)
-			sList += "Ping: [round(client.lastping, 1)]ms (Average: [round(client.avgping, 1)]ms)"
-		sList += "Map: [SSmapping.config?.map_name || "Loading..."]"
-		sList += "Round ID: [GLOB.round_id || "NULL"]"
-		sList += "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]"
-		sList += "Round Time: [DisplayTimeText(world.time - SSticker.round_start_time, 1)]"
-		sList += "Station Time: [STATION_TIME_TIMESTAMP("hh:mm:ss")]"
-		sList += SSshuttle.emergency_shuttle_stat_text
-		tickrefresh++
-		stat(null, "[sList.Join("\n\n")]")
-
-	else if(statpanel("Status") && tickrefresh != 0)
-		if(tickrefresh >= tickrefreshThr)
+	if(statpanel("Status"))
+		if(tickrefresh == 0)
+			sList = list()
+			if (client)
+				sList += "Ping: [round(client.lastping, 1)]ms (Average: [round(client.avgping, 1)]ms)"
+			sList += "Map: [SSmapping.config?.map_name || "Loading..."]"
+			sList += "Round ID: [GLOB.round_id || "NULL"]"
+			sList += "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]"
+			sList += "Round Time: [DisplayTimeText(world.time - SSticker.round_start_time, 1)]"
+			sList += "Station Time: [STATION_TIME_TIMESTAMP("hh:mm:ss")]"
+			sList += SSshuttle.emergency_shuttle_stat_text
+			tickrefresh++
+		else if(tickrefresh >= tickrefreshThr)
 			tickrefresh = 0
 		else
 			tickrefresh++
