@@ -89,7 +89,13 @@
 			SEND_SOUND(M, selectedmusic)
 			SEND_SOUND(M, 'sound/magic/charge.ogg')
 			to_chat(M, "<span class='boldannounce'>You feel reality distort for a moment... Prepare for unforeseen... Consequences...</span>")
-			M.hallucination += 120 //Little bit of hallucinations never hurt anyone, right? Right?
+		for(var/mob in GLOB.alive_mob_list)
+			var/mob/living/L = mob
+			if(istype(L))
+				if(ishuman(mob))
+					var/mob/living/carbon/human/H = mob
+					H.hallucination += 120 //Little bit of hallucinations never hurt anyone, right? Right?
+
 		message_admins("The station has been renamed to Black Mesa.")
 		log_game("The station has been renamed to Black Mesa.")
 	name = "station charter for [station_name()]"
