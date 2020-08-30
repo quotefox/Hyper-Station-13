@@ -82,12 +82,14 @@
 	minor_announce("[ureal_name] has designated your station as [station_name()]", "Captain's Charter", 0)
 	log_game("[ukey] has renamed the station as [station_name()].")
 	if (designation == "Black Mesa")
-		SSresearch.science_tech.add_point_list(list(TECHWEB_POINT_TYPE_GENERIC = 3000))
+		SSresearch.science_tech.add_point_list(list(TECHWEB_POINT_TYPE_GENERIC = 5000))
 		var/list/bmeastereggmusic = list('sound/music/half-life07.ogg','sound/music/half-life13.ogg','sound/music/bms_inbounda.ogg')
 		var/selectedmusic = pick(bmeastereggmusic)
 		for(var/mob/M in GLOB.player_list)
 			SEND_SOUND(M, selectedmusic)
-			to_chat(M, "<span class='boldannounce'>You feel the fabric of reality distort for a moment... Prepare for unforeseen... Consequences...</span>")
+			SEND_SOUND(M, 'sound/magic/charge.ogg')
+			to_chat(M, "<span class='boldannounce'>You feel reality distort for a moment... Prepare for unforeseen... Consequences...</span>")
+			M.hallucination += 120 //Little bit of hallucinations never hurt anyone, right? Right?
 		message_admins("The station has been renamed to Black Mesa.")
 		log_game("The station has been renamed to Black Mesa.")
 	name = "station charter for [station_name()]"
