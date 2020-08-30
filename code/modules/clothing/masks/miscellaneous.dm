@@ -17,6 +17,12 @@
 			return
 	..()
 
+/obj/item/clothing/mask/muzzle/ballgag
+	name = "ball gag"
+	desc = "To stop that awful noise, but lewder."
+	icon_state = "ballgag"
+	item_state = "ballgag"
+
 /obj/item/clothing/mask/surgical
 	name = "sterile mask"
 	desc = "A sterile mask designed to help prevent the spread of diseases."
