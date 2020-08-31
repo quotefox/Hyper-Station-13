@@ -2892,6 +2892,7 @@
 #include "code\modules\VR\vr_sleeper.dm"
 #include "code\modules\zombie\items.dm"
 #include "code\modules\zombie\organs.dm"
+#include "hyperstation\code\gamemode\traitor_lewd.dm"
 #include "hyperstation\code\gamemode\werewolf\werewolf.dm"
 #include "hyperstation\code\mobs\hugbot.dm"
 #include "hyperstation\code\mobs\mimic.dm"
