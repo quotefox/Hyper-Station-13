@@ -892,7 +892,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<b>Damage Screen Shake:</b> <a href='?_src_=prefs;preference=damagescreenshake'>[(damagescreenshake==1) ? "On" : ((damagescreenshake==0) ? "Off" : "Only when down")]</a><br>"
 			//Add the Hyper stuff below here
 			dat += "<h2>Hyper Preferences</h2>"
-			dat += "<b>NonCon:</b><a href='?_src_=prefs;preference=noncon'>[noncon == TRUE ? "Enabled" : "Disabled"]</a><BR>"
+			dat += "<b>NonCon - Bottom:</b><a href='?_src_=prefs;preference=noncon'>[noncon == TRUE ? "Enabled" : "Disabled"]</a><BR>"
 
 			dat += "<h2>Hyper Special Roles</h2>"
 
