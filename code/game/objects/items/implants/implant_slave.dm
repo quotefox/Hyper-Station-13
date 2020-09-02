@@ -19,10 +19,12 @@
 
 /obj/item/implant/slave/implant(mob/living/target, mob/user, silent = FALSE)
 	if(..())
+		/*
 		if(!target.mind)
 			ADD_TRAIT(target, TRAIT_MINDSHIELD, "implant")
 			target.sec_hud_set_implants()
 			return TRUE
+		Can't be a pet without having a mind! */
 
 		if(target.mind.has_antag_datum(/datum/antagonist/brainwashed))
 			target.mind.remove_antag_datum(/datum/antagonist/brainwashed)
