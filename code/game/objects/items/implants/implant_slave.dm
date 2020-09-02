@@ -8,10 +8,10 @@
 	var/dat = {"<b>Implant Specifications:</b><BR>
 				<b>Name:</b> Alternative Criminal Reassignment Implant<BR>
 				<b>Life:</b> Ten years.<BR>
-				<b>Important Notes:</b> Personnel injected with this device are forced to be fully subservient to security personell. Incompatible with mindshield-class implants.<BR>
+				<b>Important Notes:</b> Personnel injected with this device are forced to be fully subservient to security personnel. Incompatible with mindshield-class implants.<BR>
 				<HR>	
 				<b>Implant Details:</b><BR>
-				<b>Function:</b> Overrides the host's mental functions with an innate desire to serve security personell, obeying nearly any command.<BR>
+				<b>Function:</b> Overrides the host's mental functions with an innate desire to serve security personnel, obeying nearly any command.<BR>
 				<b>Special Features:</b> Will cure, but not block most other forms of brainwashing.<BR>
 				<b>Integrity:</b> Implant will last so long as the implant remains within the host."}
 	return dat
