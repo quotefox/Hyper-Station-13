@@ -50,8 +50,9 @@
 			if(target.mind in SSticker.mode.cult)
 				to_chat(target, "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
 			else
-				to_chat(target, "<span class='notice'>You feel a sense of peace and security. You are now enslaved to security.</span>")
-		brainwash(target, "[(target.client?.prefs.lewdchem?"Obey all of security's commands, and be the perfect pet.":"Obey all of security's commands.")]")
+				to_chat(target, "<span class='notice'>You feel a sense of peace and security. You are now enslaved!</span>")
+		var/slave_objective = "[(target.client?.prefs.lewdchem?"Obey all of security's commands, and be the perfect pet.":"Obey all of security's commands.")]"
+		brainwash(target, slave_objective)
 		target.sec_hud_set_implants()
 		return TRUE
 	return FALSE
@@ -63,7 +64,7 @@
 			target.mind.remove_antag_datum(/datum/antagonist/brainwashed)
 			L.sec_hud_set_implants()
 		if(target.stat != DEAD && !silent)
-			to_chat(target, "<span class='boldnotice'>Your mind suddenly feels free from burden. You are no longer enslaved to security.</span>")
+			to_chat(target, "<span class='boldnotice'>Your mind suddenly feels free from burden. You are no longer enslaved!</span>")
 		return 1
 	return 0
 
