@@ -51,7 +51,7 @@
 				to_chat(target, "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
 			else
 				to_chat(target, "<span class='notice'>You feel a sense of peace and security. You are now enslaved to security.</span>")
-		brainwash(target, "Obey all of security's commands, and be the perfect pet.")
+		brainwash(target, "[(target.client?.prefs.lewdchem?"Obey all of security's commands, and be the perfect pet.":"Obey all of security's commands.")]")
 		target.sec_hud_set_implants()
 		return TRUE
 	return FALSE
