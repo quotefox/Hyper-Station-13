@@ -531,9 +531,7 @@
 /mob/proc/is_muzzled()
 	return 0
 	
-/var/tickrefreshThr = 20
-/var/tickrefresh = 0
-/var/list/sList
+
 /mob/Stat()
 	..()
 	//This is where I try and add a temporary solution to the issue of the status tab. This solution is bad and I should feel bad, but it should mitigate some of the client lag.
@@ -553,7 +551,8 @@
 			tickrefresh = 0
 		else
 			tickrefresh++
-		stat(null, "[sList.Join("\n\n")]")
+		if (sList != null)
+			stat(null, "[sList.Join("\n\n")]")
 
 	if(client && client.holder)
 		if(statpanel("MC"))

@@ -59,7 +59,7 @@
 	//...and display them.
 	add_to_all_human_data_huds()
 
-/var/list/sList2
+
 /mob/living/carbon/human/Stat()
 	..()
 	//Same thing from mob
@@ -80,7 +80,8 @@
 				if(changeling)
 					sList2 += "Chemical Storage: " + "[changeling.chem_charges]/[changeling.chem_storage]"
 					sList2 += "Absorbed DNA: "+ "[changeling.absorbedcount]"
-		stat(null, "[sList2.Join("\n\n")]")
+		if (sList2 != null)
+			stat(null, "[sList2.Join("\n\n")]")
 
 	//NINJACODE
 	if(istype(wear_suit, /obj/item/clothing/suit/space/space_ninja)) //Only display if actually a ninja.
