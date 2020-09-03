@@ -29,9 +29,12 @@
 		if(target.mind.has_antag_datum(/datum/antagonist/brainwashed))
 			target.mind.remove_antag_datum(/datum/antagonist/brainwashed)
 
-		if(target.mind.has_antag_datum(/datum/antagonist/rev/head) || target.mind.unconvertable || target.mind.has_antag_datum(/datum/antagonist/gang/boss))
+		if(target.mind.has_antag_datum(/datum/antagonist/rev/head) || target.mind.unconvertable || target.mind.has_antag_datum(/datum/antagonist/gang/boss) || target.mind.assigned_role == "Security Officer" || target.mind.assigned_role == "Detective" || target.mind.assigned_role == "Warden" || target.mind.assigned_role == "Head of Security")
 			if(!silent)
-				target.visible_message("<span class='warning'>[target] seems to resist the implant!</span>", "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
+				if(target.mind.assigned_role == "Security Officer" || target.mind.assigned_role == "Detective" || target.mind.assigned_role == "Warden" || target.mind.assigned_role == "Head of Security")
+					target.visible_message("<span class='warning'>[target] seems to resist the implant! You can't enslave a member of security!</span>", "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
+				else
+					target.visible_message("<span class='warning'>[target] seems to resist the implant!</span>", "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
 			var/obj/item/implanter/I = loc
 			removed(target, 1)
 			qdel(src)
