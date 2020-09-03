@@ -59,15 +59,12 @@
 	//...and display them.
 	add_to_all_human_data_huds()
 
-/var/tickrefreshThr2 = 20
-/var/tickrefresh2 = 0
-/var/list/sList2
 
 /mob/living/carbon/human/Stat()
 	..()
 	//Same thing from mob
 	if(statpanel("Status"))
-		if(tickrefresh2 == 0)
+		if(tickrefresh == 1)
 			sList2 = list()
 			sList2 += "Intent: [a_intent]"
 			sList2 += "Move Mode: [m_intent]"
@@ -83,12 +80,8 @@
 				if(changeling)
 					sList2 += "Chemical Storage: " + "[changeling.chem_charges]/[changeling.chem_storage]"
 					sList2 += "Absorbed DNA: "+ "[changeling.absorbedcount]"
-			tickrefresh2++
-		else if(tickrefresh2 >= tickrefreshThr2)
-			tickrefresh2 = 0
-		else
-			tickrefresh2++
-		stat(null, "[sList2.Join("\n\n")]")
+		if (sList2 != null)
+			stat(null, "[sList2.Join("\n\n")]")
 
 	//NINJACODE
 	if(istype(wear_suit, /obj/item/clothing/suit/space/space_ninja)) //Only display if actually a ninja.
