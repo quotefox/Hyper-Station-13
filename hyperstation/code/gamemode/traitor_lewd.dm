@@ -216,7 +216,7 @@ GLOBAL_LIST_INIT(hyper_special_roles, list(
 	var/list/datum/mind/targets = list()
 	var/list/datum/mind/owners = get_owners()
 	for(var/datum/mind/candidate in SSticker.minds)
-		if (!(candidate in owners) && ishuman(candidate.current))
+		if (!(candidate in owners) && ishuman(candidate.current) && (candidate.current.client == TRUE))
 			if(candidate.current.client.prefs.noncon == 1)
 				targets += candidate
 	if(targets.len > 0)
