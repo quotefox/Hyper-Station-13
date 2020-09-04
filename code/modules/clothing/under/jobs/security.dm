@@ -38,13 +38,17 @@
 	desc = "A \"\"\"tactical\"\"\" security jumpsuit with the legs replaced by a skirt. No matter how you adjust it, it always feels a little too small."
 	icon_state = "secslutskirt"
 	item_state = "secslutskirt"
-	item_color = "secslutskirt"
+	item_color = null //i dont understand what item_color even is, apparently setting it to null means it won't change color in a washing machine?
+	mutantrace_variation = NO_MUTANTRACE_VARIATION //look at the first two comments in vg_under.dm
 /obj/item/clothing/under/rank/security/stripper
 	name = "security stripper outfit"
 	desc = "This can't be dress code compliant, can it?"
 	icon_state = "secstripper"
 	item_state = "secstripper"
-	item_color = "secstripper"
+	item_color = null
+	can_adjust = FALSE
+	body_parts_covered = CHEST|GROIN
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
 
 /obj/item/clothing/under/rank/warden
