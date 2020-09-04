@@ -249,6 +249,11 @@
 	desc = "A special beret with the security insignia emblazoned on it. For officers with class."
 	icon_state = "officerberet"
 
+/obj/item/clothing/head/beret/sec/bitch
+	name = "security's bitch beret"
+	desc = "A softer beret with the word 'BITCH' embroidered on it in pink thread."
+	icon_state = "bitchberet"
+
 //Curator
 /obj/item/clothing/head/fedora/curator
 	name = "treasure hunter's fedora"
