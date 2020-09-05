@@ -1,8 +1,8 @@
 /datum/round_event_control/vent_clog
 	name = "Clogged Vents: Normal"
 	typepath = /datum/round_event/vent_clog
-	weight = 10
-	max_occurrences = 3
+	weight = 8
+	max_occurrences = 1
 	min_players = 25
 
 /datum/round_event/vent_clog
@@ -44,10 +44,10 @@
 		"tiresolution",
 		"sodiumchloride",
 		"beer",
-		"hair_dye",
 		"sugar",
 		"white_glitter",
-		"growthserum",
+		"growthchem",
+		"shrinkchem",
 		"cornoil",
 		"uranium",
 		"carpet",

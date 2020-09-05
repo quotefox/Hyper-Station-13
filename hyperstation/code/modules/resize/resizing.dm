@@ -182,12 +182,12 @@ mob/living/get_effective_size()
 
 //Proc for scaling stuns on size difference (for grab intent)
 /mob/living/proc/sizediffStun(var/mob/living/tmob)
-	var/T = (get_effective_size()/tmob.get_effective_size()*15) //Macro divided by micro, times 15
+	var/T = (get_effective_size()/tmob.get_effective_size()*2) //Macro divided by micro, times 2
 	tmob.Stun(T)
 
 //Proc for scaling brute damage on size difference
 /mob/living/proc/sizediffBruteloss(var/mob/living/tmob)
-	var/B = (get_effective_size()/tmob.get_effective_size()*2) //macro divided by micro, times 2
+	var/B = (get_effective_size()/tmob.get_effective_size()*3) //macro divided by micro, times 3
 	tmob.adjustBruteLoss(B) //final result in brute loss
 
 //Proc for changing mob_size to be grabbed for item weight classes

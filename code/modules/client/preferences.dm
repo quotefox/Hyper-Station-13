@@ -890,6 +890,33 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Screen Shake:</b> <a href='?_src_=prefs;preference=screenshake'>[(screenshake==100) ? "Full" : ((screenshake==0) ? "None" : "[screenshake]")]</a><br>"
 			if (user && user.client && !user.client.prefs.screenshake==0)
 				dat += "<b>Damage Screen Shake:</b> <a href='?_src_=prefs;preference=damagescreenshake'>[(damagescreenshake==1) ? "On" : ((damagescreenshake==0) ? "Off" : "Only when down")]</a><br>"
+			//Add the Hyper stuff below here
+			dat += "<h2>Hyper Preferences</h2>"
+			dat += "<b>NonCon - Bottom:</b><a href='?_src_=prefs;preference=noncon'>[noncon == TRUE ? "Enabled" : "Disabled"]</a><BR>"
+
+			dat += "<h2>Hyper Special Roles</h2>"
+
+			if(jobban_isbanned(user, ROLE_SYNDICATE))
+				dat += "<font color=red><b>You are banned from antagonist roles.</b></font>"
+				src.be_special = list()
+
+
+			for (var/i in GLOB.hyper_special_roles)
+				if(jobban_isbanned(user, i))
+					dat += "<b>Be [capitalize(i)]:</b> <a href='?_src_=prefs;jobbancheck=[i]'>BANNED</a><br>"
+				else
+					var/days_remaining = null
+					if(ispath(GLOB.hyper_special_roles[i]) && CONFIG_GET(flag/use_age_restriction_for_jobs)) //If it's a game mode antag, check if the player meets the minimum age
+						var/mode_path = GLOB.hyper_special_roles[i]
+						var/datum/game_mode/temp_mode = new mode_path
+						days_remaining = temp_mode.get_remaining_days(user.client)
+
+					if(days_remaining)
+						dat += "<b>Be [capitalize(i)]:</b> <font color=red> \[IN [days_remaining] DAYS]</font><br>"
+					else
+						dat += "<b>Be [capitalize(i)]:</b> <a href='?_src_=prefs;preference=be_special;be_special_type=[i]'>[(i in be_special) ? "Enabled" : "Disabled"]</a><br>"
+			
+			
 			dat += "<br>"
 			dat += "</td>"
 			dat += "</tr></table>"
@@ -2243,6 +2270,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					arousable = !arousable
 				if("lewdchem")
 					lewdchem = !lewdchem
+				if("noncon")
+					noncon = !noncon
 				if("has_cock")
 					features["has_cock"] = !features["has_cock"]
 					if(features["has_cock"] == FALSE)
