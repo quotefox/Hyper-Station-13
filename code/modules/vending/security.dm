@@ -24,7 +24,7 @@
 					  /obj/item/storage/belt/slut = 5,
 					  /obj/item/clothing/mask/gas/sechailer/slut = 5,
 					  /obj/item/bdsm_whip/ridingcrop = 3,
-					  /obj/structure/bed/dogbed/sec = 3,
+					  /obj/structure/bed/secbed = 3,
 					  /obj/item/dildo/flared/gigantic = 1)
 	premium = list(/obj/item/coin/antagtoken = 1,
 					/obj/item/clothing/head/helmet/blueshirt = 1,

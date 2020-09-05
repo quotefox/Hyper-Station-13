@@ -196,16 +196,15 @@
 	name = "[M]'s bed"
 	desc = "[M]'s bed! Looks comfy."
 
-/obj/structure/bed/dogbed/sec
-	name = "security bed"
-	desc = "A comfy-looking pet bed, now in the classic security colors."
-
-/obj/structure/bed/dogbed/proc/update_owner()
-	return
-
 /obj/structure/bed/dogbed/buckle_mob(mob/living/M, force, check_loc)
 	. = ..()
 	update_owner(M)
+
+/obj/structure/bed/secbed
+	name = "security pet bed"
+	desc = "A comfy-looking pet bed, now in the classic security colors."
+	icon_state = "secbed"
+	anchored = FALSE
 
 /obj/structure/bed/alien
 	name = "resting contraption"
