@@ -423,3 +423,17 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/corset
 	cost = 1
+
+/datum/gear/pinksec
+	name = "Pink Security Jumpsuit"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/rank/security/pink
+	cost = 1
+	restricted_roles = list("Security Officer","Warden","Head of Security")
+
+/datum/gear/pinksecskirt
+	name = "Pink Security Jumpskirt"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/rank/security/skirt/slut/pink
+	cost = 1
+	restricted_roles = list("Security Officer","Warden","Head of Security")
