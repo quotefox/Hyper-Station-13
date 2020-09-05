@@ -59,10 +59,10 @@
 		return TRUE
 	switch(aggressiveness)
 		if(-1)
-			to_chat(user, "<span class='notice'>You set the restrictor to the on position.</span>")
+			to_chat(user, "<span class='notice'>You set the restrictor to the top position.</span>")
 			aggressiveness = 0
 		if(0)
-			to_chat(user, "<span class='notice'>You set the restrictor to the off position.</span>")
+			to_chat(user, "<span class='notice'>You set the restrictor to the bottom position.</span>")
 			aggressiveness = -1
 		if(1)
 			to_chat(user, "<span class='notice'>You set the restrictor to the middle position.</span>")
@@ -132,9 +132,9 @@
 
 		switch(aggressiveness)		// checks if the user has unlocked the restricted phrases
 			if(-1)
-				return	// the mask will not play anything
+				phrase = rand(25,29)	// the mask will only play submissive 'slut cop' phrases
 			if(0)
-				phrase = rand(19,24)	// the mask will only play 'slut cop' phrases
+				phrase = rand(19,24)	// the mask will only play dominant 'slut cop' phrases
 			if(1)
 				phrase = rand(1,5)	// set the upper limit as the phrase above the first 'bad cop' phrase, the mask will only play 'nice' phrases
 			if(2)
@@ -204,7 +204,7 @@
 				if(18)
 					phrase_text = "I am, the LAW!"
 					phrase_sound = "dredd"
-				if(19)				// slut cop
+				if(19)				// slut cop - dom
 					phrase_text = "Your ass is mine!"
 					phrase_sound = "ass"
 				if(20) //Thank you Yappy for 19 & 20
@@ -222,8 +222,23 @@
 				if(24) //Thank you Nata for 22-24
 					phrase_text = "Empty or not, I'm cumming for you!"
 					phrase_sound = "empty"
+				if(25)				// slut cop - sub
+					phrase_text = "Please, I need more!"
+					phrase_sound = "please"
+				if(26)
+					phrase_text = "My body is yours."
+					phrase_sound = "body"
+				if(27)
+					phrase_text = "Am I a good pet?"
+					phrase_sound = "goodpet"
+				if(28)
+					phrase_text = "I am yours..."
+					phrase_sound = "yours"
+				if(29) //Thank you Kraxie for 28 & 29
+					phrase_text = "Master..."
+					phrase_sound = "master"
 
-		if(aggressiveness == 0)
+		if(aggressiveness <= 0)
 			usr.audible_message("[usr]'s Compli-o-Nator: <font color=#D45592 size='2'><b>[phrase_text]</b></font>")
 		else
 			usr.audible_message("[usr]'s Compli-o-Nator: <font color='red' size='4'><b>[phrase_text]</b></font>")
