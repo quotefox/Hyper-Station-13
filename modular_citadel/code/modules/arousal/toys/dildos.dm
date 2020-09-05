@@ -168,13 +168,20 @@ obj/item/dildo/custom
 		user.adjust_eye_damage(15)
 	return MANUAL_SUICIDE
 
+<<<<<<< HEAD
 /obj/item/dildo/flared/gigantic/suicide_act(mob/living/user)
+=======
+/obj/item/dildo/flared/huge/suicide_act(mob/living/user)
+>>>>>>> slaveImplant
 	if(do_after(user,35,target=src))
 		user.visible_message("<span class='suicide'>[user] tears-up and gags as they try to deepthroat the [src]! WHY WOULD THEY DO THAT? It looks like [user.p_theyre()] trying to commit suicide!!</span>")
 		playsound(loc, 'sound/weapons/gagging.ogg', 50, 2, -1)
 		user.Stun(600)
 		user.adjust_blurriness(16)
 		user.adjust_eye_damage(30)
+<<<<<<< HEAD
 		user.adjustOxyLoss(15)
+=======
+>>>>>>> slaveImplant
 	return MANUAL_SUICIDE
 

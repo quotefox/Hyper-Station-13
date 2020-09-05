@@ -23,7 +23,10 @@
 					  /obj/item/electropack/shockcollar/security = 5,
 					  /obj/item/storage/belt/slut = 5,
 					  /obj/item/clothing/mask/gas/sechailer/slut = 5,
+<<<<<<< HEAD
 					  /obj/item/bdsm_whip/ridingcrop = 3,
+=======
+>>>>>>> slaveImplant
 					  /obj/item/dildo/flared/gigantic = 1)
 	premium = list(/obj/item/coin/antagtoken = 1,
 					/obj/item/clothing/head/helmet/blueshirt = 1,
