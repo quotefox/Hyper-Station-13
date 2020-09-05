@@ -172,9 +172,9 @@ obj/item/dildo/custom
 	if(do_after(user,35,target=src))
 		user.visible_message("<span class='suicide'>[user] tears-up and gags as they try to deepthroat the [src]! WHY WOULD THEY DO THAT? It looks like [user.p_theyre()] trying to commit suicide!!</span>")
 		playsound(loc, 'sound/weapons/gagging.ogg', 50, 2, -1)
-		user.Stun(600)
-		user.adjust_blurriness(16)
-		user.adjust_eye_damage(30)
+		user.Stun(400)
+		user.adjust_blurriness(24)
+		user.adjust_eye_damage(20)
 		user.adjustOxyLoss(15)
 	return MANUAL_SUICIDE
 
