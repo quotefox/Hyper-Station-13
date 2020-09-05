@@ -678,6 +678,11 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
 
+/obj/item/bdsm_whip/ridingcrop
+	name = "riding crop"
+	desc = "For teaching a lesson in a more compact fashion."
+	icon_state = "ridingcrop"
+
 /obj/item/bdsm_whip/suicide_act(mob/user)
 		user.visible_message("<span class='suicide'>[user] is getting just a little too kinky!</span>")
 		return (OXYLOSS)
