@@ -169,7 +169,7 @@ obj/item/dildo/custom
 	return MANUAL_SUICIDE
 
 /obj/item/dildo/flared/gigantic/suicide_act(mob/living/user)
-	if(do_after(user,35,target=src))
+	if(do_after(user,45,target=src))
 		user.visible_message("<span class='suicide'>[user] tears-up and gags as they try to deepthroat the [src]! WHY WOULD THEY DO THAT? It looks like [user.p_theyre()] trying to commit suicide!!</span>")
 		playsound(loc, 'sound/weapons/gagging.ogg', 50, 2, -1)
 		user.Stun(400)

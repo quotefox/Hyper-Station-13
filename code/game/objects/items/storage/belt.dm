@@ -243,6 +243,8 @@ obj/item/storage/belt/slut/ComponentInitialize()
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.can_hold = typecacheof(list(
 		/obj/item/melee/baton,
+		/obj/item/melee/classic_baton,
+		/obj/item/grenade,
 		/obj/item/reagent_containers/spray/pepper,
 		/obj/item/restraints/handcuffs,
 		/obj/item/assembly/flash/handheld,

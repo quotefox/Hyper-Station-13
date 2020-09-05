@@ -23,6 +23,7 @@
 					/obj/item/clothing/suit/security/officer = 5,
 					/obj/item/clothing/head/beret/sec/navyofficer = 5,
 					/obj/item/clothing/under/rank/security/pink = 5,
+					/obj/item/clothing/suit/hooded/wintercoat/security/pink = 5,
 					/obj/item/clothing/under/rank/security/skirt/slut = 5,
 					/obj/item/clothing/under/rank/security/skirt/slut/pink = 5,
 					/obj/item/clothing/under/rank/security/stripper = 5,
