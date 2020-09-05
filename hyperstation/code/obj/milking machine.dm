@@ -10,7 +10,7 @@
 	var/on = FALSE
 	var/obj/item/reagent_containers/glass/inserted_item = null
 
-	var/transfer_rate = 0.25 // How much we transfer every 2 seconds
+	var/transfer_rate = 0.50 // How much we transfer every 2 seconds
 	var/target_organ  = "breasts" // What organ we are transfering from
 
 /obj/item/milking_machine/examine(mob/user)
