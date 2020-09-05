@@ -225,6 +225,7 @@
 	exotic_bloodtype = "L"
 	damage_overlay_type = "xeno"
 	liked_food = MEAT
+	use_skintones = TRUE
 
 /datum/species/xeno/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
 	if(("legs" in C.dna.species.mutant_bodyparts) && C.dna.features["legs"] == "Digitigrade Legs")
