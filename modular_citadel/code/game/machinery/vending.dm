@@ -65,13 +65,15 @@
 				/obj/item/dildo/flared/huge = 1,
 				/obj/item/clothing/head/dominatrixcap = 1,
 				/obj/item/mesmetron = 1,
-				/obj/item/bdsm_whip = 1
+				/obj/item/bdsm_whip = 1,
+				/obj/item/clothing/mask/muzzle = 1
 				)
 	premium = list(
 				/obj/item/electropack/shockcollar = 3,
 				/obj/item/clothing/neck/petcollar/locked = 1,
 				/obj/item/restraints/handcuffs/rope = 1,
-				/obj/item/leash = 1
+				/obj/item/leash = 1,
+				/obj/item/clothing/mask/muzzle/ballgag = 3
 				)
 	refill_canister = /obj/item/vending_refill/kink
 /*

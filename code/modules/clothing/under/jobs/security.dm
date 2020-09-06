@@ -24,6 +24,12 @@
 	icon_state = "security"
 	item_state = "gy_suit"
 	item_color = "security"
+/obj/item/clothing/under/rank/security/pink
+	name = "pink security jumpsuit"
+	desc = "A tactical security jumpsuit for officers that screw up their laundry."
+	icon_state = "rsecuritypink"
+	item_state = "r_suit"
+	item_color = "rsecuritypink"
 /obj/item/clothing/under/rank/security/skirt
 	name = "security jumpskirt"
 	desc = "A \"tactical\" security jumpsuit with the legs replaced by a skirt."
@@ -33,6 +39,26 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE //you know now that i think of it if you adjust the skirt and the sprite disappears isn't that just like flashing everyone
 	fitted = FEMALE_UNIFORM_TOP
+/obj/item/clothing/under/rank/security/skirt/slut
+	name = "slutty security jumpskirt"
+	desc = "A \"\"\"tactical\"\"\" security jumpsuit with the legs replaced by a skirt. No matter how you adjust it, it always feels a little too small."
+	icon_state = "secslutskirt"
+	item_state = "secslutskirt"
+	item_color = null //i dont understand what item_color even is, apparently setting it to null means it won't change color in a washing machine?
+	mutantrace_variation = NO_MUTANTRACE_VARIATION //look at the first two comments in vg_under.dm
+/obj/item/clothing/under/rank/security/skirt/slut/pink
+	desc = "A \"\"\"tactical\"\"\" security jumpsuit with the legs replaced by a skirt. No matter how you adjust it, it always feels a little too small. This one seems to have an experimental color scheme."
+	icon_state = "secslutskirtpink"
+	item_state = "secslutskirtpink"
+/obj/item/clothing/under/rank/security/stripper
+	name = "security stripper outfit"
+	desc = "This can't be dress code compliant, can it?"
+	icon_state = "secstripper"
+	item_state = "secstripper"
+	item_color = null
+	can_adjust = FALSE
+	body_parts_covered = CHEST|GROIN
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
 
 /obj/item/clothing/under/rank/warden

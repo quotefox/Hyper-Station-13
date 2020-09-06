@@ -122,6 +122,12 @@
 	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
 
+/obj/item/clothing/shoes/jackboots/tall
+	name = "tall jackboots"
+	desc = "A pair of knee-high jackboots, complete with heels. All style, all the time."
+	icon_state = "jackboots-tall"
+	item_state = "jackboots-tall"
+
 /obj/item/clothing/shoes/jackboots/fast
 	slowdown = -1
 

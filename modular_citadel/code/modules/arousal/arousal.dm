@@ -359,6 +359,12 @@
 			if(G.can_climax)
 				setArousalLoss(min_arousal)
 
+	//Hyper - antag code
+	if(src.mind.special_role == ROLE_LEWD_TRAITOR)
+		for(var/datum/objective/obj in src.mind.objectives)
+			if (L.mind == obj.target)
+				L.mind.sexed = TRUE //sexed
+				to_chat(src, "<span class='userlove'>You feel deep satisfaction with yourself.</span>")
 
 	if(impreg)
 		//Role them odds, only people with the dicks can send the chance to the person with the settings enabled at the momment.

@@ -45,6 +45,7 @@
 	var/list/special_faces = list() //entries should match up to sides var if used
 	var/can_be_rigged = TRUE
 	var/rigged = FALSE
+	var/unique = FALSE
 
 /obj/item/dice/Initialize()
 	. = ..()
@@ -171,10 +172,17 @@
 			result = rigged
 	var/fake_result = roll(sides)//Daredevil isn't as good as he used to be
 	var/comment = ""
-	if(sides == 20 && result == 20)
+	if(sides == 20 && result == 20 && !unique)
 		comment = "NAT 20!"
-	else if(sides == 20 && result == 1)
+	else if(sides == 20 && result == 1 && !unique)
 		comment = "Ouch, bad luck."
+
+	//patreon reward code
+	if(sides == 20 && result == 20 && unique)
+		comment = "Lady Luck takes pity on you."
+	else if(sides == 20 && result == 1 && unique)
+		comment = "Yep. The dice hate you."
+
 	update_icon()
 	if(initial(icon_state) == "d00")
 		result = (result - 1)*10

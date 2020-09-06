@@ -81,3 +81,9 @@
 			user << browse(dat, "window=radio")
 			onclose(user, "radio")
 			return
+
+/obj/item/electropack/shockcollar/security
+	name = "security shock collar"
+	desc = "A reinforced security collar. It has two electrodes that press against the neck, for disobedient pets."
+	icon_state = "shockseccollar"
+	item_state = "shockseccollar"
