@@ -9,7 +9,15 @@
 	equip_delay_other = 20
 	mutantrace_variation = MUTANTRACE_VARIATION
 
-/obj/item/clothing/mask/muzzle/attack_paw(mob/user)
+/obj/item/clothing/mask/muzzle/attack_hand(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(src == C.wear_mask)
+			to_chat(user, "<span class='warning'>You need help taking this off!</span>")
+			return
+	..()
+
+/obj/item/clothing/mask/muzzle/attack_paw(mob/user) //apparently this is for monkies only
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
 		if(src == C.wear_mask)

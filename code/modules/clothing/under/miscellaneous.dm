@@ -784,3 +784,4 @@
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
+	mutantrace_variation = NO_MUTANTRACE_VARIATION

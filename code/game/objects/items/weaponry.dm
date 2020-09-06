@@ -672,17 +672,26 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
-	damtype = "arousal"
+	damtype = AROUSAL
 	throwforce = 0
 	force = 5
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
+	hitsound = 'sound/weapons/whip.ogg'
+
+/obj/item/bdsm_whip/ridingcrop
+	name = "riding crop"
+	desc = "For teaching a lesson in a more compact fashion."
+	icon_state = "ridingcrop"
+	force = 10
 
 /obj/item/bdsm_whip/suicide_act(mob/user)
 		user.visible_message("<span class='suicide'>[user] is getting just a little too kinky!</span>")
 		return (OXYLOSS)
 
 /obj/item/bdsm_whip/attack(mob/M, mob/user)
-	playsound(loc, 'sound/weapons/whip.ogg', 30)
-	if(user.a_intent != INTENT_HELP)
+	if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
+		playsound(loc, 'sound/weapons/whip.ogg', 30)
+		M.visible_message("<span class='userdanger'>[user] has [pick(attack_verb)] [M] on the ass!</span>")
+	else
 		return ..(M, user)
