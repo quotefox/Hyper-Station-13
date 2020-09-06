@@ -267,6 +267,16 @@
 	hasprimary = TRUE
 	primary_color = "#222222"
 
+/obj/item/clothing/neck/petcollar/locked/security
+	name = "security collar"
+	desc = "For when you need to show everyone who your pet belongs to."
+	icon_state = "seccollar"
+	item_state = "seccollar"
+	hasprimary = FALSE
+	hassecondary = FALSE
+	hastertiary = FALSE
+
+
 /obj/item/key/collar
 	name = "Collar Key"
 	desc = "A key for a tiny lock on a collar or bag."

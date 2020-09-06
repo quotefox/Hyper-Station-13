@@ -200,6 +200,12 @@
 	. = ..()
 	update_owner(M)
 
+/obj/structure/bed/secbed
+	name = "security pet bed"
+	desc = "A comfy-looking pet bed, now in the classic security colors."
+	icon_state = "secbed"
+	anchored = FALSE
+
 /obj/structure/bed/alien
 	name = "resting contraption"
 	desc = "This looks similar to contraptions from Earth. Could aliens be stealing our technology?"

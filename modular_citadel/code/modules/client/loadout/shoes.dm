@@ -23,6 +23,11 @@
 	category = SLOT_SHOES
 	path = /obj/item/clothing/shoes/jackboots/toeless
 
+/datum/gear/jackboots/tall
+	name = "tall jackboots"
+	category = SLOT_SHOES
+	path = /obj/item/clothing/shoes/jackboots/tall
+
 /datum/gear/winterboots
 	name = "Winter boots"
 	category = SLOT_SHOES
