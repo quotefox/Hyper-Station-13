@@ -38,10 +38,32 @@
 	aggressiveness = 1 //Borgs are nicecurity!
 	actions_types = list(/datum/action/item_action/halt)
 
+/obj/item/clothing/mask/gas/sechailer/slut
+	name = "slutcurity hailer"
+	desc = "A modified Security gas mask designed for softer apprehension, now with a hot pink paintjob!"
+	icon_state = "sluthailer"
+	item_state = "sluthailer"
+	aggressiveness = 0 //can't have your pets being mean!
+	actions_types = list(/datum/action/item_action/halt)
+
+/obj/item/clothing/mask/gas/sechailer/slut/attack_hand(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(src == C.wear_mask)
+			to_chat(user, "<span class='warning'>The mask is fastened tight! You'll need help taking this off!</span>")
+			return
+	..()
+
 /obj/item/clothing/mask/gas/sechailer/screwdriver_act(mob/living/user, obj/item/I)
 	if(..())
 		return TRUE
 	switch(aggressiveness)
+		if(-1)
+			to_chat(user, "<span class='notice'>You set the restrictor to the top position.</span>")
+			aggressiveness = 0
+		if(0)
+			to_chat(user, "<span class='notice'>You set the restrictor to the bottom position.</span>")
+			aggressiveness = -1
 		if(1)
 			to_chat(user, "<span class='notice'>You set the restrictor to the middle position.</span>")
 			aggressiveness = 2
@@ -109,6 +131,10 @@
 				return
 
 		switch(aggressiveness)		// checks if the user has unlocked the restricted phrases
+			if(-1)
+				phrase = rand(25,29)	// the mask will only play submissive 'slut cop' phrases
+			if(0)
+				phrase = rand(19,24)	// the mask will only play dominant 'slut cop' phrases
 			if(1)
 				phrase = rand(1,5)	// set the upper limit as the phrase above the first 'bad cop' phrase, the mask will only play 'nice' phrases
 			if(2)
@@ -178,8 +204,44 @@
 				if(18)
 					phrase_text = "I am, the LAW!"
 					phrase_sound = "dredd"
+				if(19)				// slut cop - dom
+					phrase_text = "Your ass is mine!"
+					phrase_sound = "ass"
+				if(20) //Thank you Yappy for 19 & 20
+					phrase_text = "Your consent is forfeit."
+					phrase_sound = "consent"
+				if(21)
+					phrase_text = "Fuck my brains out, I dare you."
+					phrase_sound = "brains"
+				if(22)
+					phrase_text = "Hands up, pants down."
+					phrase_sound = "pants"
+				if(23)
+					phrase_text = "On your knees, and say please."
+					phrase_sound = "knees"
+				if(24) //Thank you Nata for 22-24
+					phrase_text = "Empty or not, I'm cumming for you!"
+					phrase_sound = "empty"
+				if(25)				// slut cop - sub
+					phrase_text = "Please, I need more!"
+					phrase_sound = "please"
+				if(26)
+					phrase_text = "My body is yours."
+					phrase_sound = "body"
+				if(27)
+					phrase_text = "Am I a good pet?"
+					phrase_sound = "goodpet"
+				if(28)
+					phrase_text = "I am yours..."
+					phrase_sound = "yours"
+				if(29) //Thank you Kraxie for 28 & 29
+					phrase_text = "Master..."
+					phrase_sound = "master"
 
-		usr.audible_message("[usr]'s Compli-o-Nator: <font color='red' size='4'><b>[phrase_text]</b></font>")
+		if(aggressiveness <= 0)
+			usr.audible_message("[usr]'s Compli-o-Nator: <font color=#D45592 size='2'><b>[phrase_text]</b></font>")
+		else
+			usr.audible_message("[usr]'s Compli-o-Nator: <font color='red' size='4'><b>[phrase_text]</b></font>")
 		playsound(src.loc, "sound/voice/complionator/[phrase_sound].ogg", 100, 0, 4)
 		cooldown = world.time
 		cooldown_special = world.time
