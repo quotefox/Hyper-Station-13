@@ -499,7 +499,9 @@
 	upgrade_reagents = list(
 		"mushroomhallucinogen",
 		"nothing",
-		"cryoxadone"
+		"cryoxadone",
+		"vanilla",
+		"peachjuice"
 	)
 	upgrade_reagents2 = list(
 		"banana",
