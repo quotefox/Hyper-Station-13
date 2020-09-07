@@ -74,6 +74,31 @@
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
 
+/datum/sprite_accessory/tails/lizard/snaketail
+	name = "Snaketail"
+	icon_state = "snaketail"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails_animated/lizard/snaketail
+	name = "Snaketail"
+	icon_state = "snaketail"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails/lizard/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails_animated/lizard/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+
 /******************************************
 ************** Human Tails ****************
 *******************************************/
@@ -390,6 +415,18 @@
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
 
+/datum/sprite_accessory/tails/human/snaketail
+	name = "Snaketail"
+	icon_state = "snaketail"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails_animated/human/snaketail
+	name = "Snaketail"
+	icon_state = "snaketail"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
 /datum/sprite_accessory/tails/human/tentacle
 	name = "Tentacle"
 	icon_state = "tentacle"
@@ -411,6 +448,18 @@
 /datum/sprite_accessory/tails_animated/human/tiger
 	name = "Tiger"
 	icon_state = "tiger"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails/human/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails_animated/human/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
 
@@ -687,6 +736,14 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Squirrel"
 	icon_state = "squirrel"
 
+/datum/sprite_accessory/mam_tails/snaketail
+	name = "Snaketail"
+	icon_state = "snaketail"
+
+/datum/sprite_accessory/mam_tails_animated/snaketail
+	name = "Snaketail"
+	icon_state = "snaketail"
+
 /datum/sprite_accessory/mam_tails/tentacle
 	name = "Tentacle"
 	icon_state = "tentacle"
@@ -702,6 +759,14 @@ datum/sprite_accessory/mam_tails/insect
 /datum/sprite_accessory/mam_tails_animated/tiger
 	name = "Tiger"
 	icon_state = "tiger"
+
+/datum/sprite_accessory/mam_tails/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
+
+/datum/sprite_accessory/mam_tails_animated/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
 
 /datum/sprite_accessory/mam_tails/wolf
 	name = "Wolf"
