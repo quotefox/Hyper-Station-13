@@ -86,6 +86,7 @@
 	icon_state = "orange"
 	item_color = "orange"
 
+
 /obj/item/clothing/shoes/sneakers/orange/attack_self(mob/user)
 	if (src.chained)
 		src.chained = null
@@ -120,5 +121,4 @@
 			to_chat(c, "<span class='warning'>You need help taking these off!</span>")
 			return
 	return ..()
-	
-	
+
