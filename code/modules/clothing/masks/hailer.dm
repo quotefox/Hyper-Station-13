@@ -132,9 +132,9 @@
 
 		switch(aggressiveness)		// checks if the user has unlocked the restricted phrases
 			if(-1)
-				phrase = rand(25,29)	// the mask will only play submissive 'slut cop' phrases
+				phrase = rand(27,31)	// the mask will only play submissive 'slut cop' phrases
 			if(0)
-				phrase = rand(19,24)	// the mask will only play dominant 'slut cop' phrases
+				phrase = rand(19,26)	// the mask will only play dominant 'slut cop' phrases
 			if(1)
 				phrase = rand(1,5)	// set the upper limit as the phrase above the first 'bad cop' phrase, the mask will only play 'nice' phrases
 			if(2)
@@ -222,21 +222,33 @@
 				if(24) //Thank you Nata for 22-24
 					phrase_text = "Empty or not, I'm cumming for you!"
 					phrase_sound = "empty"
-				if(25)				// slut cop - sub
+				if(25)
+					phrase_text = "Please assume the position."
+					phrase_sound = "fisto"
+				if(26)
+					phrase_text = "You're coming with me, and you're going to love it."
+					phrase_sound = "love"
+				if(27)				// slut cop - sub
 					phrase_text = "Please, I need more!"
 					phrase_sound = "please"
-				if(26)
+				if(28)
 					phrase_text = "My body is yours."
 					phrase_sound = "body"
-				if(27)
+				if(29)
 					phrase_text = "Am I a good pet?"
 					phrase_sound = "goodpet"
-				if(28)
+				if(30)
 					phrase_text = "I am yours..."
 					phrase_sound = "yours"
-				if(29) //Thank you Kraxie for 28 & 29
+				if(31) //Thank you Kraxie for 30 & 31
 					phrase_text = "Master..."
 					phrase_sound = "master"
+				if(32)
+					phrase_text = "I'll do anything for you..."
+					phrase_sound = "anything"
+				if(33)
+					phrase_text = "I live to serve."
+					phrase_sound = "serve"
 
 		if(aggressiveness <= 0)
 			usr.audible_message("[usr]'s Compli-o-Nator: <font color=#D45592 size='2'><b>[phrase_text]</b></font>")
