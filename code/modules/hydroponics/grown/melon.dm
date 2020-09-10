@@ -72,7 +72,7 @@
 	plantname = "Milk Melon Vines"
 	product = /obj/item/reagent_containers/food/snacks/grown/milkmelon
 	mutatelist = list()
-	reagents_add = list("milk" = 0.2, "breast_enlarger" = 0.1, "vitamin" = 0.04, "nutriment" = 0.1)
+	reagents_add = list("milk" = 0.2, "breast_enlarger" = 0.08, "vitamin" = 0.04, "nutriment" = 0.1)
 	rarity = 20
 
 /obj/item/reagent_containers/food/snacks/grown/milkmelon
