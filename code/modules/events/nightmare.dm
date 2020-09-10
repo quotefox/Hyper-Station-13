@@ -3,6 +3,7 @@
 	typepath = /datum/round_event/ghost_role/nightmare
 	max_occurrences = 1
 	min_players = 20
+	earliest_start = 30 MINUTES
 
 /datum/round_event/ghost_role/nightmare
 	minimum_required = 1

@@ -153,6 +153,21 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/pants/track
 
+/datum/gear/redwshort
+	name = "Red workout short"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/shorts/redwshort
+
+/datum/gear/yellowwshort
+	name = "Yellow workout short"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/shorts/yellowwshort
+
+/datum/gear/pinkwshort
+	name = "Pink workout short"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/shorts/pinkwshort
+
 /datum/gear/comfortable
 	name = "Padded Uniform"
 	category =  SLOT_W_UNIFORM
