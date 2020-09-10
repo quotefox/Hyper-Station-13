@@ -15,6 +15,9 @@
 	volume = 50
 	//Possible_states has the reagent id as key and a list of, in order, the icon_state, the name and the desc as values. Used in the on_reagent_change(changetype) to change names, descs and sprites.
 	var/list/possible_states = list(
+	 "slimejelly" = list("slimejelly", "slime jelly jar", "Ooey, gooey, toxic goodness."),
+	 "cherryjelly" = list("cherryjelly", "cherry jelly jar", "A sugary spread made from cherries. Delicious!"),
+	 "bluecherryjelly" = list("bluecherryjelly", "blue cherry jelly jar", "A crazy sweet jelly made from blue cherries! It's blue da ba dee-licious!"),
 	 "ketchup" = list("ketchup", "ketchup bottle", "You feel more American already."),
 	 "capsaicin" = list("hotsauce", "hotsauce bottle", "You can almost TASTE the stomach ulcers now!"),
 	 "enzyme" = list("enzyme", "universal enzyme bottle", "Used in cooking various dishes"),
