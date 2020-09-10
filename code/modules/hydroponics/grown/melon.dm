@@ -80,7 +80,7 @@
 	name = "milkmelon"
 	desc = "A softer, rounder-looking watermelon that audibly sloshes with milk."
 	icon_state = "milkmelon"
-	filling_color = "#FFFFEE"
+	filling_color = "#FFAABB"
 	dried_type = null
 	wine_power = 30
 	wine_flavor = "creamy"
