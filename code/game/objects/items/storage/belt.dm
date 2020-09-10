@@ -251,12 +251,15 @@ obj/item/storage/belt/slut/ComponentInitialize()
 		/obj/item/clothing/glasses,
 		/obj/item/reagent_containers/food/snacks/donut,
 		/obj/item/flashlight/seclite,
+		/obj/item/melee/classic_baton/telescopic,
 		/obj/item/radio,
 		/obj/item/clothing/gloves,
 		/obj/item/restraints/legcuffs/bola,
 		/obj/item/dildo,
 		/obj/item/leash,
-		/obj/item/condom
+		/obj/item/condom,
+		/obj/item/bdsm_whip,
+		/obj/item/clothing/mask/gas/sechailer/slut
 	))
 
 /obj/item/storage/belt/mining
