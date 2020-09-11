@@ -59,10 +59,18 @@
 	return
 
 //TODO: add a timer to escape someone's grip dependant on size diff
-/obj/item/clothing/head/mob_holder/micro/container_resist()
-	if(isliving(loc))
-		var/mob/living/L = loc
-		visible_message("<span class='warning'>[src] escapes [L]!</span>")
+/obj/item/clothing/head/mob_holder/micro/container_resist(mob/living/user)
+	if(user.incapacitated())
+		to_chat(user, "<span class='warning'>You can't escape while you're restrained like this!</span>")
+		return
+	user.changeNext_move(CLICK_CD_BREAKOUT)
+	user.last_special = world.time + CLICK_CD_BREAKOUT
+	var/mob/living/L = loc
+	visible_message("<span class='warning'>[src] begins to squirm in [L]'s grasp!</span>")
+	if(!do_after(user, 100, target = src))
+		to_chat(loc, "<span class='warning'>[L] stops resisting.</span>")
+		return
+	visible_message("<span class='warning'>[src] escapes [L]!")
 	release()
 
 /mob/living/proc/mob_pickup_micro(mob/living/L)
@@ -151,8 +159,25 @@
 		O.show_inv(usr)
 
 /obj/item/clothing/head/mob_holder/micro/attack_self(var/mob/living/user)
-	for(var/mob/living/carbon/human/M in contents)
-		M.help_shake_act(user)
+	if(cooldown < world.time)
+		for(var/mob/living/carbon/human/M in contents)
+			cooldown = world.time + 15
+			if(user.a_intent == "harm") //TO:DO, rework all of these interactions to be a lot more in depth
+				visible_message("<span class='danger'> [user] slams their fist down on [M]!</span>")
+				playsound(loc, 'sound/weapons/punch1.ogg', 50, 1)
+				M.adjustBruteLoss(5)
+				return
+			if(user.a_intent == "disarm")
+				visible_message("<span class='danger'> [user] pins [M] down with a finger!</span>")
+				playsound(loc, 'sound/effects/bodyfall1.ogg', 50, 1)
+				M.adjustStaminaLoss(10)
+				return
+			if(user.a_intent == "grab")
+				visible_message("<span class='danger'> [user] squeezes their fist around [M]!</span>")
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1)
+				M.adjustOxyLoss(5)
+				return
+			M.help_shake_act(user)
 
 /obj/item/clothing/head/mob_holder/micro/attacked_by(obj/item/I, mob/living/user)
 	for(var/mob/living/carbon/human/M in contents)
