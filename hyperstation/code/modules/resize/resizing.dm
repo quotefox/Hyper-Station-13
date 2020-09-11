@@ -128,8 +128,9 @@ mob/living/get_effective_size()
 				H.forceMove(tmob.loc)
 				sizediffStamLoss(tmob)
 				sizediffBruteloss(tmob)
+				playsound(loc, 'sound/misc/splort.ogg', 50, 1)
 				H.add_movespeed_modifier(MOVESPEED_ID_STOMP, multiplicative_slowdown = 10)
-				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 10) //1 seconds
+				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 10) //1 second
 				//H.Stun(20)
 				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
 					if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
