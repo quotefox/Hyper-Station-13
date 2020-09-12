@@ -72,7 +72,9 @@
 /obj/item/organ/genital/penis/update_appearance()
 	var/string
 	var/lowershape = lowertext(shape)
-	desc = "You see [aroused_state ? "an erect" : "a flaccid"] [lowershape] penis. You estimate it's about [round(length, 0.25)] inch[round(length, 0.25) != 1 ? "es" : ""] long and [round(girth, 0.25)] inch[round(girth, 0.25) != 1 ? "es" : ""] in girth."
+	var/length_new = length*owner.size_multiplier
+	var/girth_new = girth*owner.size_multiplier
+	desc = "You see [aroused_state ? "an erect" : "a flaccid"] [lowershape] penis. You estimate it's about [round(length_new, 0.25)] inch[round(length_new, 0.25) != 1 ? "es" : ""] long and [round(girth_new, 0.25)] inch[round(girth_new, 0.25) != 1 ? "es" : ""] in girth."
 
 	if(owner)
 		if(owner.dna.species.use_skintones && owner.dna.features["genitals_use_skintone"])

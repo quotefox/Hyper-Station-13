@@ -46,6 +46,10 @@ mob/living/get_effective_size()
 	var/healthchange = healthmod_new - healthmod_old //Get ready to apply the new value, and subtract the old one. (Negative values become positive)
 	src.maxHealth += healthchange
 	src.health += healthchange
+	if(iscarbon(src))
+		var/mob/living/carbon/C = src
+		for(var/obj/item/organ/genital/G in C.internal_organs)
+			G.update_appearance()
 	previous_size = size_multiplier //And, change this now that we are finally done.
 
 //handle the big steppy, except nice
