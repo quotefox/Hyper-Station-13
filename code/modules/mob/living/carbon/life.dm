@@ -401,6 +401,8 @@
 			if(O)
 				O.on_life()
 	else
+		if(reagents.has_reagent("formaldehyde", 1)) // No organ decay if the body contains formaldehyde.
+			return
 		for(var/V in internal_organs)
 			var/obj/item/organ/O = V
 			if(O)
