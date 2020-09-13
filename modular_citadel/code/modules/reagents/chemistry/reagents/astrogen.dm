@@ -51,6 +51,11 @@ I'd like to point out from my calculations it'll take about 60-80 minutes to die
 		new /obj/item/bedsheet/cosmos(get_turf(O))
 		qdel(O)
 
+/datum/reagent/fermi/astral/reaction_obj(obj/O, reac_volume)
+	if(istype(O, /obj/item/clothing/suit/hooded/wintercoat))
+		new /obj/item/clothing/suit/hooded/wintercoat/cosmic(get_turf(O))
+		qdel(O)
+
 
 /datum/reagent/fermi/astral/on_mob_life(mob/living/carbon/M) // Gives you the ability to astral project for a moment!
 	M.alpha = 255
