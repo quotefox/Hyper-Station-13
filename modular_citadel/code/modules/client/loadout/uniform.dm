@@ -38,6 +38,18 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/suit_jacket/white
 
+/datum/gear/galaxy_b
+	name = "De Void of Soul"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/lawyer/galaxy_blue
+	cost = 3
+
+/datum/gear/galaxy_r
+	name = "Pulsar Gonne"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/lawyer/galaxy_red
+	cost = 3
+
 /datum/gear/assistantformal
 	name = "Assistant's formal uniform"
 	category = SLOT_W_UNIFORM
