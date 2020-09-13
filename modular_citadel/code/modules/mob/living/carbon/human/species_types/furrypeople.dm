@@ -227,6 +227,7 @@
 	liked_food = MEAT
 
 /datum/species/xeno/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
+	C.grant_language(/datum/language/xenocommon)
 	if(("legs" in C.dna.species.mutant_bodyparts) && C.dna.features["legs"] == "Digitigrade Legs")
 		species_traits += DIGITIGRADE
 	if(DIGITIGRADE in species_traits)
@@ -234,6 +235,7 @@
 	. = ..()
 
 /datum/species/xeno/on_species_loss(mob/living/carbon/human/C, datum/species/new_species)
+	C.remove_language(/datum/language/xenocommon)
 	if(("legs" in C.dna.species.mutant_bodyparts) && C.dna.features["legs"] == "Normal Legs")
 		species_traits -= DIGITIGRADE
 	if(DIGITIGRADE in species_traits)
