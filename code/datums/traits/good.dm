@@ -236,7 +236,7 @@
 
 /datum/quirk/narsianspeaker
 	name = "Nar-Sian speaker"
-	desc = "Obsessed with the inner workings of the blood cult, you've learned how to speak their ancient language."
+	desc = "Obsessed with forbidden knowledge regarding the blood cult, you've learned how to speak their ancient language."
 	value = 1
 	gain_text = "<span class='notice'>Your mind feels sensitive to the slurred, ancient language of Nar'Sian cultists.</span>"
 	lose_text = "<span class='notice'>You forget how to speak Nar'Sian!</span>"
@@ -251,7 +251,7 @@
 
 /datum/quirk/ratvarianspeaker
 	name = "Ratvarian speaker"
-	desc = "Obsessed with forbidden knowledge regarding the clock cult, you've learned how to speak their language."
+	desc = "Obsessed with the inner workings of the clock cult, you've learned how to speak their language."
 	value = 1
 	gain_text = "<span class='notice'>Your mind feels sensitive to the ancient language of Ratvarian cultists.</span>"
 	lose_text = "<span class='notice'>You forget how to speak Ratvarian!</span>"
