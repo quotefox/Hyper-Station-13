@@ -148,6 +148,7 @@
 /obj/item/dnainjector/giant
 	name = "\improper DNA injector (Giantism)"
 	desc = "Makes you bigger."
+	add_mutations = list(GIANTISM)
 
 /obj/item/dnainjector/clumsymut
 	name = "\improper DNA injector (Clumsy)"

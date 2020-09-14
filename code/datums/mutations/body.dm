@@ -71,7 +71,7 @@
 //Dwarfism shrinks your body.
 /datum/mutation/human/dwarfism
 	name = "Dwarfism"
-	desc = "A mutation believed to be the cause of dwarfism."
+	desc = "A mutation believed to be the cause of dwarfism. May not work on smaller things properly."
 	quality = POSITIVE
 	difficulty = 16
 	instability = 5
@@ -96,7 +96,7 @@
 //Giantism grows your body.
 /datum/mutation/human/giantism
 	name = "Giantism"
-	desc = "A mutation believed to be the cause of giantism."
+	desc = "A mutation believed to be the cause of giantism. May not work on larger things properly."
 	quality = POSITIVE
 	difficulty = 14
 	instability = 5
