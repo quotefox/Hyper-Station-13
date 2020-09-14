@@ -112,6 +112,18 @@
 							else
 								O.update_size()
 								O.update_appearance()
+							return
+			else //shrink them overall
+				playsound(get_turf(src), 'sound/weapons/flash.ogg', 50, 1)
+				victim.visible_message("<span class='warning'>[user] is preparing to shrink [victim] with their bluespace compression kit!</span>")
+				if(do_mob(user, victim, 40) && charges > 0 && victim.size_multiplier > RESIZE_A_TINYMICRO)
+					victim.visible_message("<span class='warning'>[user] has shrunk [victim]!")
+					playsound(get_turf(src), 'sound/weapons/emitter2.ogg', 50, 1)
+					sparks()
+					flash_lighting_fx(3, 3, LIGHT_COLOR_CYAN)
+					charges -= 1
+					victim.resize(victim.size_multiplier-0.2)
+					return
 
 
 
