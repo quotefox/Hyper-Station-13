@@ -296,6 +296,14 @@
 		mutant_bodyparts -= "mam_waggingtail"
 		mutant_bodyparts |= "mam_tail"
 	H.update_body()
+
+/datum/species/synthliz/on_species_gain(mob/living/carbon/human/H, datum/species/old_species)
+	..()
+	H.grant_language(/datum/language/machine)
+
+/datum/species/synthliz/on_species_loss(mob/living/carbon/human/H)
+	H.remove_language(/datum/language/machine)
+	..()
 //Praise the Omnissiah, A challange worthy of my skills - HS
 
 //EXOTIC//
