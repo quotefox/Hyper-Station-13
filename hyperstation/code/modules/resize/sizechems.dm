@@ -52,7 +52,7 @@
 	name = "Prospacillin"
 	id = "growthchem"
 	mix_message = "the reaction appears to grow!"
-	required_reagents = list("sizechem" = 0.15, "condensedcapsaicin" = 0.15, "aphro" = 0.2)
+	required_reagents = list("sizechem" = 0.15, "condensedcapsaicin" = 0.15, "aphro" = 0.30)
 	results = list("growthchem" = 0.25)
 	required_temp = 1
 	OptimalTempMin 		= 700 		// Lower area of bell curve for determining heat based rate reactions
@@ -102,7 +102,7 @@
 	name = "Diminicillin"
 	id = "shrinkchem"
 	mix_message = "the reaction appears to shrink!"
-	required_reagents = list("sizechem" = 0.15, "frostoil" = 0.15, "aphro" = 0.2)
+	required_reagents = list("sizechem" = 0.15, "frostoil" = 0.15, "aphro" = 0.30)
 	results = list("shrinkchem" = 0.25)
 	required_temp = 1
 	OptimalTempMin 		= 100 		// Lower area of bell curve for determining heat based rate reactions
