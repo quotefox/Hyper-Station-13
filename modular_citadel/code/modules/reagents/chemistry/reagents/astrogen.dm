@@ -50,8 +50,6 @@ I'd like to point out from my calculations it'll take about 60-80 minutes to die
 	if(istype(O, /obj/item/bedsheet))
 		new /obj/item/bedsheet/cosmos(get_turf(O))
 		qdel(O)
-
-/datum/reagent/fermi/astral/reaction_obj(obj/O, reac_volume)
 	if(istype(O, /obj/item/clothing/suit/hooded/wintercoat))
 		new /obj/item/clothing/suit/hooded/wintercoat/cosmic(get_turf(O))
 		qdel(O)
