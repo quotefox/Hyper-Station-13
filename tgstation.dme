@@ -611,6 +611,7 @@
 #include "code\game\machinery\newscaster.dm"
 #include "code\game\machinery\PDApainter.dm"
 #include "code\game\machinery\posi_alert.dm"
+#include "code\game\machinery\poweredfans.dm"
 #include "code\game\machinery\quantum_pad.dm"
 #include "code\game\machinery\recharger.dm"
 #include "code\game\machinery\rechargestation.dm"
