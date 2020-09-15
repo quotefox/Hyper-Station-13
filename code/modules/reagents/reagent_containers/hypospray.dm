@@ -80,17 +80,17 @@
 
 /obj/item/reagent_containers/hypospray/medipen
 	name = "epinephrine medipen"
-	desc = "A rapid and safe way to stabilize patients in critical condition for personnel without advanced medical knowledge."
+	desc = "A rapid and safe way to stabilize patients in critical condition for personnel without advanced medical knowledge. Also useful for preventing organ decay in the deceased."
 	icon_state = "medipen"
 	item_state = "medipen"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
-	amount_per_transfer_from_this = 10
-	volume = 10
+	amount_per_transfer_from_this = 11
+	volume = 11
 	ignore_flags = 1 //so you can medipen through hardsuits
 	reagent_flags = DRAWABLE
 	flags_1 = null
-	list_reagents = list("epinephrine" = 10)
+	list_reagents = list("epinephrine" = 10, "formaldehyde" = 1)
 
 /obj/item/reagent_containers/hypospray/medipen/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] begins to choke on \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")

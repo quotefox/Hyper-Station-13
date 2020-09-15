@@ -1,6 +1,6 @@
 /obj/item/implant/slave
 	name = "slave implant"
-	desc = "Turns you into security's new pet."
+	desc = "Turns criminals into security's new pet."
 	resistance_flags = INDESTRUCTIBLE
 	activated = 0
 
@@ -8,7 +8,7 @@
 	var/dat = {"<b>Implant Specifications:</b><BR>
 				<b>Name:</b> Alternative Criminal Reassignment Implant<BR>
 				<b>Life:</b> Ten years.<BR>
-				<b>Important Notes:</b> Personnel injected with this device are forced to be fully subservient to security personnel. Incompatible with mindshield-class implants.<BR>
+				<b>Important Notes:</b> Incompatible with mindshield-class implants. Implant should be reserved for criminal punishment only. Recreational use is heavily frowned upon.<BR>
 				<HR>	
 				<b>Implant Details:</b><BR>
 				<b>Function:</b> Overrides the host's mental functions with an innate desire to serve security personnel, obeying nearly any command.<BR>
@@ -19,17 +19,13 @@
 
 /obj/item/implant/slave/implant(mob/living/target, mob/user, silent = FALSE)
 	if(..())
-		/*
 		if(!target.mind)
-			ADD_TRAIT(target, TRAIT_MINDSHIELD, "implant")
-			target.sec_hud_set_implants()
-			return TRUE
-		Can't be a pet without having a mind! */
+			return FALSE //Can't be a pet without having a mind!
 
 		if(target.mind.has_antag_datum(/datum/antagonist/brainwashed))
 			target.mind.remove_antag_datum(/datum/antagonist/brainwashed)
 
-		if(target.mind.has_antag_datum(/datum/antagonist/rev/head) || target.mind.unconvertable || target.mind.has_antag_datum(/datum/antagonist/gang/boss) || target.mind.assigned_role == "Security Officer" || target.mind.assigned_role == "Detective" || target.mind.assigned_role == "Warden" || target.mind.assigned_role == "Head of Security")
+		if(target.mind.has_antag_datum(/datum/antagonist/rev/head) || target.mind.unconvertable || target.mind.has_antag_datum(/datum/antagonist/gang/boss) || target.mind.assigned_role == "Security Officer" || target.mind.assigned_role == "Detective" || target.mind.assigned_role == "Warden" || target.mind.assigned_role == "Head of Security" || HAS_TRAIT(target, TRAIT_MINDSHIELD))
 			if(!silent)
 				if(target.mind.assigned_role == "Security Officer" || target.mind.assigned_role == "Detective" || target.mind.assigned_role == "Warden" || target.mind.assigned_role == "Head of Security")
 					target.visible_message("<span class='warning'>[target] seems to resist the implant! You can't enslave a member of security!</span>", "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")

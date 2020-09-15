@@ -15,13 +15,13 @@
 	icon_icon = 'icons/mob/actions/actions_spells.dmi'
 
 /datum/action/item_action/ninjapulse
-	name = "EM Burst (25E)"
+	name = "EM Burst (40E)"
 	desc = "Disable any nearby technology with an electro-magnetic pulse."
 	button_icon_state = "emp"
 	icon_icon = 'icons/mob/actions/actions_spells.dmi'
 
 /datum/action/item_action/ninjastar
-	name = "Create Throwing Stars (1E)"
+	name = "Create Throwing Stars (10E)"
 	desc = "Creates some throwing stars"
 	button_icon_state = "throwingstar"
 	icon_icon = 'icons/obj/items_and_weapons.dmi'

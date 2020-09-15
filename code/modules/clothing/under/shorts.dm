@@ -36,3 +36,18 @@
 	name = "purple athletic shorts"
 	icon_state = "purpleshorts"
 	item_color = "purpleshorts"
+
+/obj/item/clothing/under/shorts/redwshort
+	name = "Red workout short"
+	icon_state = "redwshort"
+	item_color = "redwshort"
+
+/obj/item/clothing/under/shorts/yellowwshort
+	name = "Yellow workout short"
+	icon_state = "yellowwshort"
+	item_color = "yellowwshort"
+
+/obj/item/clothing/under/shorts/pinkwshort
+	name = "Pink workout short"
+	icon_state = "pinkwshort"
+	item_color = "pinkwshort"

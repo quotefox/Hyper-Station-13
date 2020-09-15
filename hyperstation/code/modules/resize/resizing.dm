@@ -46,6 +46,10 @@ mob/living/get_effective_size()
 	var/healthchange = healthmod_new - healthmod_old //Get ready to apply the new value, and subtract the old one. (Negative values become positive)
 	src.maxHealth += healthchange
 	src.health += healthchange
+	if(iscarbon(src))
+		var/mob/living/carbon/C = src
+		for(var/obj/item/organ/genital/G in C.internal_organs)
+			G.update_appearance()
 	previous_size = size_multiplier //And, change this now that we are finally done.
 
 //handle the big steppy, except nice
@@ -128,8 +132,9 @@ mob/living/get_effective_size()
 				H.forceMove(tmob.loc)
 				sizediffStamLoss(tmob)
 				sizediffBruteloss(tmob)
+				playsound(loc, 'sound/misc/splort.ogg', 50, 1)
 				H.add_movespeed_modifier(MOVESPEED_ID_STOMP, multiplicative_slowdown = 10)
-				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 10) //1 seconds
+				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 10) //1 second
 				//H.Stun(20)
 				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
 					if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")

@@ -2070,7 +2070,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
 
 				if("cock_length")
-					var/new_length = input(user, "Penis length in inches:\n([COCK_SIZE_MIN]-[COCK_SIZE_MAX])", "Character Preference") as num|null
+					var/new_length = input(user, "Penis length in inches:\n([COCK_SIZE_MIN]-[COCK_SIZE_MAX]) Your sprite size will affect your length examine text!\n(When 6in, 50%->3in, 200%->12in)", "Character Preference") as num|null
 					if(new_length)
 						features["cock_length"] = max(min( round(text2num(new_length)), COCK_SIZE_MAX),COCK_SIZE_MIN)
 
@@ -2232,7 +2232,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //Hyperstation Body Size
 
 				if("bodysize")
-					var/new_bodysize = input(user, "Choose your desired sprite size:\n([MIN_BODYSIZE]-[MAX_BODYSIZE]), Warning: May make your character look distorted!", "Character Preference") as num|null
+					var/new_bodysize = input(user, "Choose your desired sprite size:\n([MIN_BODYSIZE]-[MAX_BODYSIZE]), Warning: May make your character look distorted!\nWill change health pool and speed, while limiting some mechanics (ex: lockers).", "Character Preference") as num|null
 					if (new_bodysize)
 						body_size = max(min( round(text2num(new_bodysize)), MAX_BODYSIZE),MIN_BODYSIZE)
 

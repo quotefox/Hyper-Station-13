@@ -68,10 +68,10 @@
 			owner.throw_at(target, cough_range, GET_MUTATION_POWER(src))
 
 
-//Dwarfism shrinks your body and lets you pass tables.
+//Dwarfism shrinks your body.
 /datum/mutation/human/dwarfism
 	name = "Dwarfism"
-	desc = "A mutation believed to be the cause of dwarfism."
+	desc = "A mutation believed to be the cause of dwarfism. May not work on smaller things properly."
 	quality = POSITIVE
 	difficulty = 16
 	instability = 5
@@ -80,17 +80,43 @@
 /datum/mutation/human/dwarfism/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
-	owner.transform = owner.transform.Scale(1, 0.8)
-	owner.pass_flags |= PASSTABLE
+	if(owner.size_multiplier <= RESIZE_A_TINYMICRO) //Because what's optimization?
+		return
+	owner.resize(owner.size_multiplier-0.2)
 	owner.visible_message("<span class='danger'>[owner] suddenly shrinks!</span>", "<span class='notice'>Everything around you seems to grow..</span>")
 
 /datum/mutation/human/dwarfism/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
-	owner.transform = owner.transform.Scale(1, 1.25)
-	owner.pass_flags &= ~PASSTABLE
+	if(owner.size_multiplier >= RESIZE_A_MACROHUGE)
+		return
+	owner.resize(owner.size_multiplier+0.2)
 	owner.visible_message("<span class='danger'>[owner] suddenly grows!</span>", "<span class='notice'>Everything around you seems to shrink..</span>")
 
+//Giantism grows your body.
+/datum/mutation/human/giantism
+	name = "Giantism"
+	desc = "A mutation believed to be the cause of giantism. May not work on larger things properly."
+	quality = POSITIVE
+	difficulty = 14
+	instability = 5
+	locked = TRUE
+
+/datum/mutation/human/giantism/on_acquiring(mob/living/carbon/human/owner)
+	if(..())
+		return
+	if(owner.size_multiplier >= RESIZE_A_MACROHUGE)
+		return
+	owner.resize(owner.size_multiplier+0.2)
+	owner.visible_message("<span class='danger'[owner] expands in size!</span>", "<span class='notice'>Everything around you compresses smaller...</span>")
+
+/datum/mutation/human/giantism/on_losing(mob/living/carbon/human/owner)
+	if(..())
+		return
+	if(owner.size_multiplier <= RESIZE_A_TINYMICRO)
+		return
+	owner.resize(owner.size_multiplier-0.2)
+	owner.visible_message("<span class='danger'>[owner] suddenly shrinks back down!", "<span class='notice'>You shrink back down in size.</span>")
 
 //Clumsiness has a very large amount of small drawbacks depending on item.
 /datum/mutation/human/clumsy

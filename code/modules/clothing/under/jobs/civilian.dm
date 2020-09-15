@@ -357,14 +357,6 @@
 	alt_covers_chest = TRUE
 	fitted = FEMALE_UNIFORM_TOP
 
-/obj/item/clothing/under/rank/curator
-	name = "sensible suit"
-	desc = "It's very... sensible."
-	icon_state = "red_suit"
-	item_state = "red_suit"
-	item_color = "red_suit"
-	can_adjust = FALSE
-
 /obj/item/clothing/under/lawyer/really_black
 	name = "executive suit"
 	desc = "A formal black suit and red tie, intended for the station's finest."
@@ -381,6 +373,30 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
+
+/obj/item/clothing/under/lawyer/galaxy_blue
+	name = "\improper De Void of Soul"
+	desc = "A suit of stars and high-V gas. One that screams the cosmos and unfathomnable vastness. Earned by only the best of the best."
+	icon_state = "galaxy_blue"
+	item_state = "b_suit"
+	item_color = "galaxy_blue"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/lawyer/galaxy_red
+	name = "\improper Pulsar Gonne"
+	desc = "A suit of stars and high-V gas. One that screams stellar fusion and re-entry burn. Earned by only the best of the best."
+	icon_state = "galaxy_red"
+	item_state = "r_suit"
+	item_color = "galaxy_red"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/rank/curator
+	name = "sensible suit"
+	desc = "It's very... sensible."
+	icon_state = "red_suit"
+	item_state = "red_suit"
+	item_color = "red_suit"
+	can_adjust = FALSE
 
 /obj/item/clothing/under/rank/curator/skirt
 	name = "sensible suitskirt"
