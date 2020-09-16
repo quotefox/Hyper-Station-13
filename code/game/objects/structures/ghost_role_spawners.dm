@@ -210,6 +210,7 @@
 	conditions of your makeshift shelter, the hostile creatures, and the ash drakes swooping down from the cloudless skies, all you can wish for is the feel of soft grass between your toes and \
 	the fresh air of Earth. These thoughts are dispelled by yet another recollection of how you got here... "
 	assignedrole = "Hermit"
+	mirrorcanloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/hermit/Initialize(mapload)
 	. = ..()
@@ -258,6 +259,7 @@
 	everyone's gone. One of the cats scratched you just a few minutes ago. That's why you were in the pod - to heal the scratch. The scabs are still fresh; you see them right now. So where is \
 	everyone? Where did they go? What happened to the hospital? And is that <i>smoke</i> you smell? You need to find someone else. Maybe they can tell you what happened.</b>"
 	assignedrole = "Translocated Vet"
+	mirrorcanloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/doctor/alive/lavaland/Destroy()
 	var/obj/structure/fluff/empty_sleeper/S = new(drop_location())
@@ -318,6 +320,7 @@
 	flavour_text = "<span class='big bold'>You are a staff member of a top-of-the-line space hotel!</span><b> Cater to guests and <font size=6><b>DON'T</b></font> leave the hotel, lest the manager fire you for\
 		dereliction of duty!</b>"
 	assignedrole = "Hotel Staff"
+	mirrorcanloadappearance = TRUE
 
 /datum/outfit/hotelstaff
 	name = "Hotel Staff"
@@ -335,6 +338,7 @@
 	flavour_text = "<span class='big bold'>You are a peacekeeper</span><b> assigned to this hotel to protect the interests of the company while keeping the peace between \
 		guests and the staff. Do <font size=6>NOT</font> leave the hotel, as that is grounds for contract termination.</b>"
 	objectives = "Do not leave your assigned hotel. Try and keep the peace between staff and guests, non-lethal force heavily advised if possible."
+	mirrorcanloadappearance = TRUE
 
 /datum/outfit/hotelstaff/security
 	name = "Hotel Secuirty"
@@ -431,6 +435,7 @@
 	<br>\
 	<span class='danger'><b>The armory is not a candy store, and your role is not to assault the station directly, leave that work to the assault operatives.</b></span></font>"
 	outfit = /datum/outfit/syndicate_empty/SBC
+	mirrorcanloadappearance = TRUE
 
 /datum/outfit/syndicate_empty/SBC
 	name = "Syndicate Battlecruiser Ship Operative"
@@ -444,6 +449,7 @@
 	<br>\
 	<span class='danger'><b>Work as a team with your fellow operatives and work out a plan of attack. If you are overwhelmed, escape back to your ship!</b></span></span>"
 	outfit = /datum/outfit/syndicate_empty/SBC/assault
+	mirrorcanloadappearance = TRUE
 
 /datum/outfit/syndicate_empty/SBC/assault
 	name = "Syndicate Battlecruiser Assault Operative"
@@ -463,6 +469,7 @@
 	<span class='danger'><b>As the captain, this whole operation falls on your shoulders.</b></span> You do not need to nuke the station, causing sufficient damage and preventing your ship from being destroyed will be enough.</span>"
 	outfit = /datum/outfit/syndicate_empty/SBC/assault/captain
 	id_access_list = list(150,151)
+	mirrorcanloadappearance = TRUE
 
 /datum/outfit/syndicate_empty/SBC/assault/captain
 	name = "Syndicate Battlecruiser Captain"
@@ -497,6 +504,7 @@
 	l_pocket = /obj/item/assembly/flash/handheld
 	job_description = "Oldstation Crew"
 	assignedrole = "Ancient Crew"
+	mirrorcanloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/oldsec/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
@@ -523,6 +531,7 @@
 	gloves = /obj/item/clothing/gloves/color/fyellow/old
 	l_pocket = /obj/item/tank/internals/emergency_oxygen
 	assignedrole = "Ancient Crew"
+	mirrorcanloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/oldeng/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
@@ -548,6 +557,7 @@
 	l_pocket = /obj/item/stack/medical/bruise_pack
 	assignedrole = "Ancient Crew"
 	job_description = "Oldstation Crew"
+	mirrorcanloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/oldsci/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
