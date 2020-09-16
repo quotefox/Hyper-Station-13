@@ -1,8 +1,8 @@
 /datum/round_event_control/carpteam
 	name = "Carp Team"
 	typepath = /datum/round_event/ghost_role/carpteam
-	weight = 5
-	min_players = 8
+	weight = 3
+	min_players = 18
 	earliest_start = 45 MINUTES
 	max_occurrences = 2
 
