@@ -10,7 +10,7 @@
 	anchored = TRUE
 	density = FALSE
 	CanAtmosPass = ATMOS_PASS_NO
-	var/obj/structure/fan_assembly/assembly = null
+	var/obj/machinery/fan_assembly/assembly = null
 
 /obj/machinery/poweredfans/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
@@ -24,7 +24,6 @@
 			assembly = null
 			new /obj/item/stack/cable_coil(loc, 2)
 		else
-			new /obj/structure/fan_assembly (loc)
 			new /obj/item/stack/cable_coil(loc, 2)
 	qdel(src)
 
@@ -35,7 +34,7 @@
 		deconstruct()
 	return TRUE
 
-/obj/machinery/poweredfans/Initialize(mapload, obj/structure/fan_assembly/FA)
+/obj/machinery/poweredfans/Initialize(mapload, obj/machinery/fan_assembly/FA)
 	. = ..()
 	if(FA)
 		assembly = FA
