@@ -374,3 +374,47 @@
 	value = -2
 	mob_trait = TRAIT_NEVER_CLONE
 	medical_record_text = "Patient has a DNC (Do not clone) order on file, and cannot be cloned as a result."
+
+//Port from Citadel
+/datum/quirk/blindness
+	name = "Blind"
+	desc = "You are completely blind, nothing can counteract this."
+	value = -4
+	gain_text = "<span class='danger'>You can't see anything.</span>"
+	lose_text = "<span class='notice'>You miraculously gain back your vision.</span>"
+	medical_record_text = "Patient has permanent blindness."
+
+/datum/quirk/blindness/add()
+	quirk_holder.become_blind(ROUNDSTART_TRAIT)
+
+/datum/quirk/blindness/remove()
+	quirk_holder?.cure_blind(ROUNDSTART_TRAIT)
+
+//Port from Citadel
+/datum/quirk/coldblooded
+	name = "Cold-blooded"
+	desc = "Your body doesn't create its own internal heat, requiring external heat regulation."
+	value = -2
+	medical_record_text = "Patient is ectothermic."
+	mob_trait = TRAIT_COLDBLOODED
+	gain_text = "<span class='notice'>You feel cold-blooded.</span>"
+	lose_text = "<span class='notice'>You feel more warm-blooded.</span>"
+
+/datum/quirk/flimsy
+	name = "Flimsy"
+	desc = "Your body is a little more fragile then most, decreasing total health by 20%."
+	value = -2
+	medical_record_text = "Patient has abnormally low capacity for injury."
+	mob_trait = TRAIT_FLIMSY
+	gain_text = "<span class='notice'>You feel like you could break with a single hit."
+	lose_text = "<span class='notice'>You feel more durable."
+	var/healthchange = 0
+
+/datum/quirk/flimsy/add()
+	var/mob/living/carbon/human/H = quirk_holder
+	healthchange = H.maxHealth * 0.2
+	H.maxHealth = H.maxHealth * 0.8
+
+/datum/quirk/flimsy/remove() //how do admins even remove traits?
+	var/mob/living/carbon/human/H = quirk_holder
+	H.maxHealth += healthchange
