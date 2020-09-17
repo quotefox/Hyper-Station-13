@@ -100,7 +100,6 @@
 	quality = POSITIVE
 	difficulty = 14
 	instability = 5
-	locked = TRUE
 
 /datum/mutation/human/giantism/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
