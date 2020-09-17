@@ -23,7 +23,24 @@
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-
+		//Jay's mirror code suggestion
+		//This will be where the person gets to select their appearance instead of the random character
+		if (world.time <= (user.time_initialized + 900) && user.mirrorcanloadappearance == TRUE)
+			to_chat(user, "<span class='boldannounce'>You peer into the mirror. Make sure you have your ID in your ID slot, if you have one.</span>")
+			if(alert(user, "Would you like to load your currently loaded character's appearance?", "This can only be done up until 90s after you spawn.", "Yes", "No") == "Yes" && world.time <= (user.time_initialized + 900))
+				user.client.prefs.copy_to(user)
+				user.real_name = user.client.prefs.real_name
+				var/obj/item/card/id/idCard = user.get_idcard()
+				if (idCard != null)
+					idCard.update_label(user.real_name, idCard.assignment)
+					idCard.registered_name = user.real_name
+				user.mirrorcanloadappearance = FALSE
+				SEND_SOUND(user, 'sound/magic/charge.ogg')
+				to_chat(user, "<span class='boldannounce'>Your head aches for a second. You feel like this is how things should have been.</span>")
+				log_game("[key_name(user)] has loaded their default appearance for a ghost role.")
+				message_admins("[ADMIN_LOOKUPFLW(user)] has loaded their default appearance for a ghost role.")
+				return
+			else return
 		//see code/modules/mob/dead/new_player/preferences.dm at approx line 545 for comments!
 		//this is largely copypasted from there.
 
