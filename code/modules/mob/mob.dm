@@ -540,6 +540,7 @@
 			sList = list()
 			if (client)
 				sList += "Ping: [round(client.lastping, 1)]ms (Average: [round(client.avgping, 1)]ms)"
+				sList += "Time Dilation: [round(SStime_track.time_dilation_current,1)]%"
 			sList += "Map: [SSmapping.config?.map_name || "Loading..."]"
 			sList += "Round ID: [GLOB.round_id || "NULL"]"
 			sList += "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]"
