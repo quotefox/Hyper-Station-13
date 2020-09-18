@@ -1,7 +1,7 @@
 /obj/item/storage/box/syndicate
 
 /obj/item/storage/box/syndicate/PopulateContents()
-	switch (pickweight(list("bloodyspai" = 3, "stealth" = 2, "bond" = 2, "screwed" = 2, "sabotage" = 3, "guns" = 2, "murder" = 2, "implant" = 1, "hacker" = 3, "darklord" = 1, "sniper" = 1, "metaops" = 1, "ninja" = 1)))
+	switch (pickweight(list("bloodyspai" = 3, "stealth" = 2, "bond" = 2, "screwed" = 2, "sabotage" = 3, "guns" = 2, "murder" = 2, "implant" = 1, "hacker" = 3, "darklord" = 1, "sniper" = 1, "metaops" = 1, "ninja" = 1, "stando" = 1)))
 		if("bloodyspai") // 30 tc now this is more right
 			new /obj/item/clothing/under/chameleon(src) // 2 tc since it's not the full set
 			new /obj/item/clothing/mask/chameleon(src) // Goes with above
@@ -143,6 +143,18 @@
 			new /obj/item/storage/belt/chameleon(src) // Unique but worth at least 2 tc
 			new /obj/item/card/id/syndicate(src) // 2 tc
 			new /obj/item/chameleon(src) // 7 tc
+
+		if("stando") // 31~ tc worth
+			new /obj/item/clothing/head/delinquent(src) // Just like your favorite anime
+			new /obj/item/clothing/suit/chameleon(src) // part 2 of the outfit
+			new /obj/item/clothing/under/chameleon(src) // part 3 of the outfit
+			new /obj/item/clothing/mask/chameleon(src) // for sounding like your favorite anime protagonist
+			new /obj/item/encryptionkey/syndicate(src) // 2 tc
+			new /obj/item/card/id/syndicate(src) // 2 tc,
+			new /obj/item/clothing/gloves/rapid(src) // 8 tc
+			new /obj/item/storage/box/syndie_kit/guardian(src) // 15 tc
+
+
 
 /obj/item/storage/box/syndie_kit
 	name = "box"
