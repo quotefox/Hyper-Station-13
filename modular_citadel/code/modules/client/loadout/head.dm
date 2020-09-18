@@ -54,6 +54,12 @@
 	path = /obj/item/clothing/head/flakhelm
 	cost = 2
 
+/datum/gear/delinquent //Now you too can become like your favorite punchy ghost protagonist
+	name = "Delinquent Hat"
+	category = SLOT_HEAD
+	path = /obj/item/clothing/head/delinquent
+	cost = 3
+
 /datum/gear/bunnyears
 	name = "Bunny Ears"
 	category = SLOT_HEAD
