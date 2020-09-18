@@ -36,6 +36,7 @@
 	H.set_species(/datum/species/human) //Plasamen burn up otherwise, and lizards are vulnerable to asimov AIs
 
 	H.equipOutfit(nukeop_outfit)
+	H.mirrorcanloadappearance = TRUE //Also gives them the option to use a mirror to load their custom character. Good luck if they use a plasma.
 	return TRUE
 
 /datum/antagonist/nukeop/greet()
