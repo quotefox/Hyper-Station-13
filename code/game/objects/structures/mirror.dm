@@ -30,14 +30,15 @@
 			if(alert(user, "Would you like to load your currently loaded character's appearance?", "This can only be done up until 90s after you spawn.", "Yes", "No") == "Yes" && world.time <= (H.time_initialized + 900))
 				H.client.prefs.copy_to(user)
 				H.real_name = H.client.prefs.real_name
-				H.mind.name = H.real_name
-				H.dna.update_dna_identity()
-				var/obj/item/card/id/idCard = user.get_idcard()
+				H.mind.name = H.real_name //Makes sure to change their mind name to their real name.
+				H.dna.update_dna_identity() //This makes sure their DNA is updated.
+				SSquirks.AssignQuirks(H, H.client, TRUE, FALSE, H.job, FALSE)//This Assigns the selected character's quirks
+				var/obj/item/card/id/idCard = user.get_idcard() //Time to change their ID card as well if they have one.
 				if (idCard != null)
 					idCard.update_label(H.real_name, idCard.assignment)
 					idCard.registered_name = H.real_name
-				H.mirrorcanloadappearance = FALSE
-				SEND_SOUND(H, 'sound/magic/charge.ogg')
+				H.mirrorcanloadappearance = FALSE //Prevents them from using the mirror again.
+				SEND_SOUND(H, 'sound/magic/charge.ogg') //Fluff
 				to_chat(H, "<span class='boldannounce'>Your head aches for a second. You feel like this is how things should have been.</span>")
 				log_game("[key_name(user)] has loaded their default appearance for a ghost role.")
 				message_admins("[ADMIN_LOOKUPFLW(user)] has loaded their default appearance for a ghost role.")
