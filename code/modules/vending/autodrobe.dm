@@ -121,8 +121,9 @@
 		           /obj/item/clothing/under/roman = 1,
 		           /obj/item/clothing/shoes/roman = 1,
 		           /obj/item/shield/riot/roman/fake = 1,
+		           /obj/item/clothing/head/delinquent = 1, // One per vendor, please dear god don't mass produce these.
 		           /obj/item/skub = 1,
-		           /obj/item/clothing/under/lobster = 1,	 // CIT CHANGES	           
+		           /obj/item/clothing/under/lobster = 1,	 // CIT CHANGES
 		           /obj/item/clothing/head/lobsterhat = 1,
 		           /obj/item/clothing/head/drfreezehat = 1,
 		           /obj/item/clothing/suit/dracula = 1,

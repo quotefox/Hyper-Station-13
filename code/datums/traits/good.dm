@@ -204,6 +204,25 @@
 	var/mob/living/M = quirk_holder
 	M.blood_ratio = 1
 
+/datum/quirk/tough
+	name = "Tough"
+	desc = "Your body is abnormally enduring and can take 10% more damage."
+	value = 2
+	mob_trait = TRAIT_TOUGH
+	medical_record_text = "Patient has an abnormally high capacity for injury."
+	gain_text = "<span class='notice'>You feel very sturdy.</span>"
+	lose_text = "<span class='notice'>You feel less sturdy.</span>"
+	var/healthchange = 0
+
+/datum/quirk/tough/add()
+	var/mob/living/carbon/human/H = quirk_holder
+	healthchange = H.maxHealth * 0.1
+	H.maxHealth = H.maxHealth * 1.1
+
+/datum/quirk/tough/remove()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.maxHealth += healthchange
+
 /datum/quirk/draconicspeaker
 	name = "Draconic speaker"
 	desc = "Due to your time spent around lizards, you can speak Draconic!"

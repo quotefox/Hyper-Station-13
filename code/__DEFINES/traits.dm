@@ -162,7 +162,9 @@
 #define TRAIT_THERMAL_VISION    "thermal_vision"
 #define TRAIT_CUM_PLUS			"cum_plus"
 #define TRAIT_NEVER_CLONE       "donotclone"
-
+#define TRAIT_COLDBLOODED		"coldblooded"	// Your body is literal room temperature. Does not make you immune to the temp.
+#define TRAIT_FLIMSY		"flimsy" //you have 20% less maxhealth
+#define TRAIT_TOUGH		"tough" //you have 10% more maxhealth
 
 // common trait sources
 #define TRAIT_GENERIC "generic"
