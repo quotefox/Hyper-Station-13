@@ -35,6 +35,7 @@
 #define ROLE_LAVALAND               "lavaland"
 #define ROLE_INTERNAL_AFFAIRS		"internal affairs agent"
 #define ROLE_GANG					"gangster"
+#define ROLE_HOLOPARASITE		"Holoparasite" // Yogs
 
 //Missing assignment means it's not a gamemode specific role, IT'S NOT A BUG OR ERROR.
 //The gamemode specific ones are just so the gamemodes can query whether a player is old enough

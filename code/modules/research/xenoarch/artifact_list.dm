@@ -38,7 +38,7 @@ GLOBAL_LIST_INIT(adv_artifact,list(	/obj/item/shield/riot/roman=1,
 
 GLOBAL_LIST_INIT(ult_artifact,list(	/obj/item/nuke_core/supermatter_sliver=1,
 									/obj/item/storage/belt/sabre/rapier=1,
-									/obj/item/guardiancreator=1,
+									/obj/item/guardiancreator/random=1,
 									/obj/item/flashlight/emp=1,
 									/obj/item/encryptionkey/binary=1,
 									/obj/item/gun/medbeam=1,

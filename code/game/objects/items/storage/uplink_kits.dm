@@ -152,7 +152,7 @@
 			new /obj/item/encryptionkey/syndicate(src) // 2 tc
 			new /obj/item/card/id/syndicate(src) // 2 tc,
 			new /obj/item/clothing/gloves/rapid(src) // 8 tc
-			new /obj/item/storage/box/syndie_kit/guardian(src) // 15 tc
+			new /obj/item/guardiancreator/tech/random(src) // 15 tc, replace with choosable variant if fixed.
 
 
 
