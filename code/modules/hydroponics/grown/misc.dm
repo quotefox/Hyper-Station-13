@@ -15,8 +15,6 @@
 	growing_icon = 'icons/obj/hydroponics/growing_flowers.dmi'
 	genes = list(/datum/plant_gene/trait/plant_type/weed_hardy)
 	mutatelist = list()//add /obj/item/seeds/starthistle/corpse_flower when corpse flowers work.
-	T.assume_air(stank)
-	T.air_update_turf()
 
 /obj/item/seeds/starthistle/harvest(mob/user)
 	var/obj/machinery/hydroponics/parent = loc
@@ -61,6 +59,8 @@
 	ADD_GAS(/datum/gas/miasma, stank.gases)
 	stank.gases[/datum/gas/miasma][MOLES] = (yield + 6)*7*MIASMA_CORPSE_MOLES // this process is only being called about 2/7 as much as corpses so this is 12-32 times a corpses
 	stank.temperature = T20C // without this the room would eventually freeze and miasma mining would be easier
+	T.assume_air(stank)
+	T.air_update_turf()
 */
 //commented out until it can be fixed.
 //Galaxy Thistle
