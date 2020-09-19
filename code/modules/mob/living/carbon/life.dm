@@ -74,7 +74,13 @@
 	if((times_fired % next_breath) == 0 || failed_last_breath)
 		breathe() //Breathe per 4 ticks if healthy, down to 2 if our lungs or heart are damaged, unless suffocating
 		if(failed_last_breath)
-			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "suffocation", /datum/mood_event/suffocation)
+			var/mob/living/carbon/human/B = src
+			if(HAS_TRAIT(B, TRAIT_CHOKE_SLUT))
+				B.adjustArousalLoss(7)
+				if (B.getArousalLoss() >= 100 && ishuman(B) && B.has_dna())
+					B.mob_climax(forced_climax=TRUE)	
+			else
+				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "suffocation", /datum/mood_event/suffocation)
 		else
 			SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "suffocation")
 	else
