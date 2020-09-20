@@ -201,7 +201,6 @@ GLOBAL_LIST_INIT(hyper_special_roles, list(
 	greet()
 
 /datum/objective/noncon
-	..()
 
 /datum/objective/noncon/New(var/datum/mind/_owner)
 	GLOB.objectives += src // CITADEL EDIT FOR CRYOPODS
