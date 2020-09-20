@@ -23,7 +23,7 @@
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		checkloadappearance(H, user)
+		H.checkloadappearance()
 		//see code/modules/mob/dead/new_player/preferences.dm at approx line 545 for comments!
 		//this is largely copypasted from there.
 		//handle facial hair (if necessary)
@@ -44,31 +44,6 @@
 			H.hair_style = new_style
 
 		H.update_hair()
-
-/obj/structure/mirror/proc/checkloadappearance(mob/living/carbon/human/H, mob/user)
-	//Jay's mirror code suggestion
-	//This will be where the person gets to select their appearance instead of the random character
-	if (world.time <= (H.time_initialized + 900) && H.mirrorcanloadappearance == TRUE)
-		to_chat(H, "<span class='boldannounce'>You peer into the mirror. Make sure you have your ID in your ID slot, if you have one.</span>")
-		if(alert(user, "Would you like to load your currently loaded character's appearance?", "This can only be done up until 90s after you spawn.", "Yes", "No") == "Yes" && world.time <= (H.time_initialized + 900))
-			H.client.prefs.copy_to(H)
-			if (H.custom_body_size) //Do they have a custom size set?
-				H.resize(H.custom_body_size * 0.01)
-			H.real_name = H.client.prefs.real_name
-			H.mind.name = H.real_name //Makes sure to change their mind name to their real name.
-			SSquirks.AssignQuirks(H, H.client, TRUE, FALSE, H.job, FALSE)//This Assigns the selected character's quirks
-			H.dna.update_dna_identity() //This makes sure their DNA is updated.
-			var/obj/item/card/id/idCard = user.get_idcard() //Time to change their ID card as well if they have one.
-			if (idCard != null)
-				idCard.update_label(H.real_name, idCard.assignment)
-				idCard.registered_name = H.real_name
-			H.mirrorcanloadappearance = FALSE //Prevents them from using the mirror again.
-			SEND_SOUND(H, 'sound/magic/charge.ogg') //Fluff
-			to_chat(H, "<span class='boldannounce'>Your head aches for a second. You feel like this is how things should have been.</span>")
-			log_game("[key_name(user)] has loaded their default appearance for a ghost role.")
-			message_admins("[ADMIN_LOOKUPFLW(user)] has loaded their default appearance for a ghost role.")
-			return
-		else return
 
 /obj/structure/mirror/examine_status(mob/user)
 	if(broken)
