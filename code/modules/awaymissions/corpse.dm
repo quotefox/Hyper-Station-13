@@ -118,6 +118,7 @@
 			M.mind.assigned_role = assignedrole
 		special(M, name)
 		MM.name = M.real_name
+		M.checkloadappearance()
 	if(uses > 0)
 		uses--
 	if(!permanent && !uses)
