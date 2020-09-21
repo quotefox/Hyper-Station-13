@@ -68,7 +68,7 @@
 	var/mob/living/L = loc
 	visible_message("<span class='warning'>[src] begins to squirm in [L]'s grasp!</span>")
 	if(!do_after(user, 100, target = src))
-		to_chat(loc, "<span class='warning'>[L] stops resisting.</span>")
+		to_chat(loc, "<span class='warning'>[src] stops resisting.</span>")
 		return
 	visible_message("<span class='warning'>[src] escapes [L]!")
 	release()
@@ -106,7 +106,8 @@
 		return FALSE
 	visible_message("<span class='warning'>[user] starts picking up [src].</span>", \
 					"<span class='userdanger'>[user] starts picking you up!</span>")
-	if(!do_after(user, 20, target = src))
+	var/p = abs(src.get_effective_size()/user.get_effective_size() * 40) //Scale how fast the pickup will be depending on size difference
+	if(!do_after(user, p, target = src))
 		return FALSE
 
 	if(user.get_active_held_item()||buckled)

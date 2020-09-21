@@ -50,6 +50,7 @@ mob/living/get_effective_size()
 		var/mob/living/carbon/C = src
 		for(var/obj/item/organ/genital/G in C.internal_organs)
 			G.update_appearance()
+	//if(src.size_multiplier >= RESIZE_A_HUGEBIG || src.size_multiplier <= RESIZE_A_TINYMICRO) Will remove clothing when too big or small. Will do later.
 	previous_size = size_multiplier //And, change this now that we are finally done.
 
 //handle the big steppy, except nice
