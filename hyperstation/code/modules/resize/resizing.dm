@@ -37,12 +37,12 @@ mob/living/get_effective_size()
 	if(size_multiplier == previous_size)
 		return 1
 	src.update_transform() //WORK DAMN YOU
-	src.update_mobsize() //Doesn't work yet
+	src.update_mobsize() 
 	//Going to change the health and speed values too
 	src.remove_movespeed_modifier(MOVESPEED_ID_SIZE)
 	src.add_movespeed_modifier(MOVESPEED_ID_SIZE, multiplicative_slowdown = (abs(size_multiplier - 1) * 0.8 ))
-	var/healthmod_old = ((previous_size * 50) - 50) //Get the old value to see what we must change.
-	var/healthmod_new = ((size_multiplier * 50) - 50) //A size of one would be zero. Big boys get health, small ones lose health.
+	var/healthmod_old = ((previous_size * 75) - 75) //Get the old value to see what we must change.
+	var/healthmod_new = ((size_multiplier * 75) - 75) //A size of one would be zero. Big boys get health, small ones lose health.
 	var/healthchange = healthmod_new - healthmod_old //Get ready to apply the new value, and subtract the old one. (Negative values become positive)
 	src.maxHealth += healthchange
 	src.health += healthchange
@@ -50,6 +50,7 @@ mob/living/get_effective_size()
 		var/mob/living/carbon/C = src
 		for(var/obj/item/organ/genital/G in C.internal_organs)
 			G.update_appearance()
+	//if(src.size_multiplier >= RESIZE_A_HUGEBIG || src.size_multiplier <= RESIZE_A_TINYMICRO) Will remove clothing when too big or small. Will do later.
 	previous_size = size_multiplier //And, change this now that we are finally done.
 
 //handle the big steppy, except nice
@@ -80,9 +81,9 @@ mob/living/get_effective_size()
 			//Smaller person being stepped on
 			if(get_effective_size() > tmob.get_effective_size() && iscarbon(src))
 				if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-					H.visible_message("<span class='notice'>[H]'s huge tail slithers besides you.</span>", "<span class='notice'>[H] carefully slithers around [tmob].</span>")
+					tmob.visible_message("<span class='notice'>[src] carefully slithers around [tmob].</span>", "<span class='notice'>[src]'s huge tail slithers besides you.</span>")
 				else
-					H.visible_message("<span class='notice'>[H] steps over you carefully.</span>", "<span class='notice'>[H] carefully steps over [tmob].</span>")
+					tmob.visible_message("<span class='notice'>[src] carefully steps over [tmob].</span>", "<span class='notice'>[src] steps over you carefully.</span>")
 				return 1
 
 		//Smaller person stepping under a larger person
@@ -122,9 +123,9 @@ mob/living/get_effective_size()
 				addtimer(CALLBACK(H, /mob/.proc/remove_movespeed_modifier, MOVESPEED_ID_STOMP), 3) //0.3 seconds
 				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
 					if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-						H.visible_message("<span class='danger'>[H]'s huge tail rolls over you!</span>", "<span class='danger'>[H] carefully rolls their tail over [tmob]!</span>")
+						tmob.visible_message("<span class='danger'>[src] carefully rolls their tail over [tmob]!</span>", "<span class='danger'>[src]'s huge tail rolls over you!</span>")
 					else
-						H.visible_message("<span class='danger'>[H] steps onto you with force!</span>", "<span class='danger'>[H] carefully steps on [tmob]!</span>")
+						tmob.visible_message("<span class='danger'>[src] carefully steps on [tmob]!</span>", "<span class='danger'>[src] steps onto you with force!</span>")
 					return 1
 
 			if(H.a_intent == "harm" && H.canmove && !H.buckled)
@@ -138,9 +139,9 @@ mob/living/get_effective_size()
 				//H.Stun(20)
 				if(get_effective_size() > tmob.get_effective_size() && iscarbon(H))
 					if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-						H.visible_message("<span class='userdanger'>[H] plows their tail over you mercilessly!</span>", "<span class='danger'>[H] mows down [tmob] under their tail!</span>")
+						tmob.visible_message("<span class='danger'>[src] mows down [tmob] under their tail!</span>", "<span class='userdanger'>[src] plows their tail over you mercilessly!</span>")
 					else
-						H.visible_message("<span class='userdanger'>[H] crushes you under their foot!</span>", "<span class='danger'>[H] slams their foot down on [tmob]!</span>")
+						tmob.visible_message("<span class='danger'>[src] slams their foot down on [tmob], crushing them!</span>", "<span class='userdanger'>[src] crushes you under their foot!</span>")
 					return 1
 
 			if(H.a_intent == "grab" && H.canmove && !H.buckled)
@@ -154,16 +155,16 @@ mob/living/get_effective_size()
 					var/feetCover = (H.wear_suit && (H.wear_suit.body_parts_covered & FEET)) || (H.w_uniform && (H.w_uniform.body_parts_covered & FEET) || (H.shoes && (H.shoes.body_parts_covered & FEET)))
 					if(feetCover)
 						if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-							H.visible_message("<span class='danger'>[H] pins you beneath their tail!</span>", "<span class='danger'>[H] pins [tmob] under their tail!</span>")
+							tmob.visible_message("<span class='danger'>[src] pins [tmob] under their tail!</span>", "<span class='danger'>[src] pins you beneath their tail!</span>")
 						else
-							H.visible_message("<span class='danger'>[H] pins you underfoot!</span>", "<span class='danger'>[H] pins [tmob] helplessly underfoot!</span>")
+							tmob.visible_message("<span class='danger'>[src] pins [tmob] helplessly underfoot!</span>", "<span class='danger'>[src] pins you underfoot!</span>")
 						return 1
 					else
 						if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
-							H.visible_message("<span class='userdanger'>[H]'s tail winds around you and snatches you in its coils!</span>", "<span class='danger'>[H] snatches up [tmob] underneath their tail!</span>")
+							tmob.visible_message("<span class='danger'>[src] snatches up [tmob] underneath their tail!</span>", "<span class='userdanger'>[src]'s tail winds around you and snatches you in its coils!</span>")
 							tmob.mob_pickup_micro_feet(H)
 						else
-							H.visible_message("<span class='userdanger'>[H]'s toes pin you down and curl around you, picking you up!</span>", "<span class='danger'>[H] stomps down on [tmob], curling their toes and picking them up!</span>")
+							tmob.visible_message("<span class='danger'>[src] stomps down on [tmob], curling their toes and picking them up!</span>", "<span class='userdanger'>[src]'s toes pin you down and curl around you, picking you up!</span>")
 							tmob.mob_pickup_micro_feet(H)
 						return 1
 
