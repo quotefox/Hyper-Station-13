@@ -6,7 +6,7 @@
 /turf/closed/wall/mineral/cult,
 /area/shuttle/escape)
 "c" = (
-/obj/effect/forcefield/cult,
+/obj/structure/window/plastitanium,
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "d" = (
@@ -89,12 +89,12 @@
 /turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "q" = (
-/obj/item/stack/sheet/metal,
 /obj/effect/decal/remains/human,
+/obj/machinery/door/airlock/cult/unruned/glass/friendly,
 /turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "r" = (
-/obj/machinery/door/airlock/cult/unruned/glass/friendly,
+/obj/structure/destructible/cult/pylon,
 /turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "s" = (
@@ -125,6 +125,7 @@
 /area/shuttle/escape)
 "x" = (
 /obj/machinery/door/airlock/cult/friendly,
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "y" = (
@@ -161,6 +162,7 @@
 /obj/docking_port/mobile/emergency{
 	name = "shuttle 667"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "F" = (
@@ -186,21 +188,13 @@
 	effect_range = 5;
 	group_name = "horrible monsters on Shuttle 667"
 	},
+/obj/item/toy/toy_dagger,
 /turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "J" = (
-/mob/living/simple_animal/hostile/carp/eyeball{
-	faction = list("cult");
-	name = "left eyeball"
-	},
-/turf/open/floor/plasteel/cult,
-/area/shuttle/escape)
-"K" = (
-/mob/living/simple_animal/hostile/carp/eyeball{
-	faction = list("cult");
-	name = "right eyeball"
-	},
-/turf/open/floor/plasteel/cult,
+/obj/effect/forcefield/cult,
+/obj/structure/window/plastitanium,
+/turf/open/floor/plating,
 /area/shuttle/escape)
 "L" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -225,25 +219,16 @@
 /turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "Q" = (
-/obj/item/storage/firstaid/fire,
-/obj/item/storage/firstaid/regular{
-	pixel_x = 2;
-	pixel_y = 3
-	},
-/obj/item/crowbar,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 27
-	},
-/obj/item/stack/sheet/metal,
-/turf/open/floor/plasteel/cult,
+/obj/effect/decal/remains/human,
+/turf/closed/wall/mineral/cult,
 /area/shuttle/escape)
 "R" = (
-/obj/item/stack/sheet/metal,
+/obj/item/clothing/suit/hooded/wintercoat/narsie/fake,
 /turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "S" = (
-/obj/structure/table/wood,
 /obj/item/tome,
+/obj/structure/table/wood/fancy/blackred,
 /turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "T" = (
@@ -262,6 +247,27 @@
 /obj/structure/shuttle/engine/propulsion,
 /turf/open/floor/plating/airless,
 /area/shuttle/escape)
+"X" = (
+/obj/machinery/sleeper/syndie/fullupgrade{
+	dir = 4
+	},
+/turf/open/floor/plasteel/cult,
+/area/shuttle/escape)
+"Y" = (
+/obj/machinery/door/airlock/cult/unruned/glass/friendly,
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel/cult,
+/area/shuttle/escape)
+"Z" = (
+/obj/structure/table/wood/fancy/blackred,
+/obj/item/crowbar,
+/obj/item/storage/firstaid/fire,
+/obj/item/storage/firstaid/regular{
+	pixel_x = 2;
+	pixel_y = 3
+	},
+/turf/open/floor/plasteel/cult,
+/area/shuttle/escape)
 
 (1,1,1) = {"
 a
@@ -275,9 +281,9 @@ x
 b
 E
 b
-c
-c
-c
+J
+J
+J
 b
 x
 b
@@ -298,7 +304,7 @@ j
 j
 j
 j
-j
+r
 j
 j
 j
@@ -307,7 +313,7 @@ j
 b
 j
 j
-R
+j
 b
 b
 "}
@@ -328,7 +334,7 @@ A
 j
 j
 v
-q
+Q
 j
 j
 R
@@ -366,15 +372,15 @@ j
 o
 b
 j
+j
+j
+j
+j
+j
+j
 w
 j
 j
-j
-j
-j
-j
-j
-J
 L
 b
 O
@@ -390,15 +396,15 @@ j
 j
 q
 j
-j
+r
 z
 C
 j
 I
 j
-C
-z
 j
+z
+r
 j
 s
 b
@@ -412,22 +418,22 @@ c
 e
 j
 j
-r
+b
+j
+j
+j
+j
+j
+j
 j
 w
 j
 j
-j
-j
-j
-j
-j
-K
 L
-c
+J
 t
-j
 t
+X
 U
 V
 "}
@@ -448,7 +454,7 @@ D
 A
 v
 j
-r
+Y
 L
 j
 j
@@ -472,8 +478,8 @@ A
 j
 j
 j
-c
-j
+J
+Z
 j
 j
 U
@@ -490,15 +496,15 @@ j
 j
 j
 G
-j
+r
 j
 j
 j
 j
 M
-c
-P
-Q
+J
+r
+M
 P
 b
 b
@@ -509,21 +515,21 @@ a
 a
 a
 b
-c
+J
 b
-c
-b
-b
-b
-c
-c
-c
+J
 b
 b
 b
-c
+J
+J
+J
 b
-c
+b
+b
+J
+b
+J
 b
 a
 "}
