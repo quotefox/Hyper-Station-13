@@ -1775,7 +1775,8 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	restricted_roles = list("Chaplain")
 	surplus = 5 //Very low chance to get it in a surplus crate even without being the chaplain
 
-/datum/uplink_item/role_restricted/clockwork_slab
+///datum/uplink_item/role_restricted/clockwork_slab
+/datum/uplink_item/dangerous/clockwork_slab
 	name = "Clockwork Slab"
 	desc = "A reverse engineered clockwork slab. Is this really a good idea?"
 	item = /obj/item/clockwork/slab/traitor
@@ -1783,7 +1784,8 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	refundable = TRUE
 	//restricted_roles = list("Chaplain","Curator")
 
-/datum/uplink_item/role_restricted/arcane_tome
+///datum/uplink_item/role_restricted/arcane_tome
+/datum/uplink_item/dangerous/arcane_tome
 	name = "Arcane Tome"
 	desc = "A 'replica' of a Nar'sian tome. This is probably a bad idea..."
 	item = /obj/item/tome/traitor
