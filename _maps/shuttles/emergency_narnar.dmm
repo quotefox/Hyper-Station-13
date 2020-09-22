@@ -7,7 +7,8 @@
 /area/shuttle/escape)
 "c" = (
 /obj/structure/window/plastitanium,
-/turf/open/floor/plating,
+/obj/effect/forcefield/cult,
+/turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "d" = (
 /obj/structure/table,
@@ -89,8 +90,11 @@
 /turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "q" = (
+/obj/machinery/door/airlock/cult/unruned/glass/friendly{
+	req_access = null;
+	req_access_txt = "19"
+	},
 /obj/effect/decal/remains/human,
-/obj/machinery/door/airlock/cult/unruned/glass/friendly,
 /turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "r" = (
@@ -126,7 +130,7 @@
 "x" = (
 /obj/machinery/door/airlock/cult/friendly,
 /obj/structure/fans/tiny,
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "y" = (
 /obj/effect/decal/cleanable/blood/gibs/up,
@@ -163,7 +167,7 @@
 	name = "shuttle 667"
 	},
 /obj/structure/fans/tiny,
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "F" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
@@ -184,17 +188,18 @@
 /area/shuttle/escape)
 "I" = (
 /obj/effect/rune/narsie,
+/obj/item/candle/infinite,
 /obj/effect/fun_balloon/sentience/emergency_shuttle{
 	effect_range = 5;
 	group_name = "horrible monsters on Shuttle 667"
 	},
-/obj/item/toy/toy_dagger,
+/obj/item/melee/cultblade/dagger,
 /turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "J" = (
 /obj/effect/forcefield/cult,
 /obj/structure/window/plastitanium,
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/cult,
 /area/shuttle/escape)
 "L" = (
 /obj/effect/decal/cleanable/blood/drip,
@@ -394,7 +399,7 @@ c
 f
 j
 j
-q
+b
 j
 r
 z
@@ -418,7 +423,7 @@ c
 e
 j
 j
-b
+q
 j
 j
 j
