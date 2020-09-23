@@ -109,3 +109,13 @@
 	mob_trait = TRAIT_HEADPAT_SLUT
 	value = 0
 	medical_record_text = "Patient seems overly affectionate"
+
+//Skyrat port start
+/datum/quirk/alcohol_lightweight  
+	name = "Alcoholic Lightweight"
+	desc = "Alcohol really goes straight to your head, gotta be careful with what you drink."
+	value = 0
+	mob_trait = TRAIT_ALCOHOL_LIGHTWEIGHT
+	gain_text = "<span class='notice'>You feel woozy thinking of alcohol.</span>"
+	lose_text = "<span class='notice'>You regain your stomach for drinks.</span>"
+//Skyrat port stop
