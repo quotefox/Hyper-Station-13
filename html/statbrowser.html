@@ -87,7 +87,7 @@ li a:hover:not(.active) {
 	font-size: 12px;
 	margin: 2px 2px;
 	cursor: pointer;
-	border-radius: 0%;
+	border-radius: 5%;
 	transition-duration: 0.25s;
 	order: 3;
 }
@@ -146,12 +146,10 @@ li a:hover:not(.active) {
 .link:hover {
 	text-decoration: underline;
 }
-
 img {
 	-ms-interpolation-mode: nearest-neighbor;
 	image-rendering: pixelated;
 }
-
 </style>
 </head>
 <body>
@@ -250,7 +248,6 @@ if (window.location) {
 		if(e.which) {
 			anti_spam[e.which] = false;
 			var key = String.fromCharCode(e.which);
-
 			var x = event.x || event.clientX;
 			var y = event.y || event.clientY;
 			if( x || y ) // if either of these exist this is happening after a click
@@ -408,15 +405,6 @@ function findVerbindex(name, verblist) {
 			return i;
 	}
 }
-
-function findVerbindex(name, verblist) {
-	for(var i = 0; i < verblist.length; i++) {
-		var part = verblist[i];
-		if(part[1] == name)
-			return i;
-	}
-}
-
 function wipe_verbs() {
 	verbs = [["", ""]];
 	verb_tabs = [];
@@ -477,7 +465,7 @@ function init_verbs(c, v) {
 			draw_verbs(current_tab);
 		}
 	}
-	SendTabToByond();
+	SendTabsToByond();
 }
 
 function SendTabsToByond(){
@@ -605,7 +593,7 @@ function tab_change(tab) {
 	}else if(tab == turfname) {
 		draw_listedturf();
 	} else {
-		statcontentdiv[textContentKey] = "loading...";	
+		statcontentdiv[textContentKey] = "loading...";
 	}
 	window.location.href = "byond://winset?statbrowser.is-visible=true";
 }
@@ -717,7 +705,6 @@ function draw_mc() {
 	document.getElementById("statcontent").appendChild(table);
 }
 
-
 function update_examine(html,flavour,ooc) {
 	examine_tab_parts = html
 	}
@@ -796,7 +783,6 @@ function remove_mobexamine() {
 	if(current_tab == "Examine")
 		tab_change("Status");
 }
-
 
 //turf
 
@@ -994,14 +980,10 @@ function draw_verbs(cat){
 
 function set_theme(which) {
 	if (which == "light") {
-		document.body.style.backgroundColor = "white";
-		document.body.style.color = "black";
 		document.body.className = "";
 		set_style_sheet("browserOutput_white");
 		setCookie("theme", "white", 365);
-	} else if (which == "dark") {
-		document.body.style.backgroundColor = "#171717";
-		document.body.style.color = "#a4bad6";
+	} else if (which == "dark" || which == "default") {
 		document.body.className = "dark";
 		set_style_sheet("browserOutput");
 		setCookie("theme", "dark", 365);
@@ -1041,6 +1023,7 @@ if(!current_tab) {
 }
 
 window.onload = function() {
+	checkCookie();
 	NotifyByondOnload();
 	};
 
@@ -1085,6 +1068,5 @@ function getCookie(cname) {
 	return '';
 }
 </script>
-<body onload="checkCookie()"></body>
 </body>
 </html>
