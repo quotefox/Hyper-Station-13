@@ -1,7 +1,7 @@
 /client/proc/spawn_floor_cluwne()
 	set category = "Fun"
 	set name = "Unleash Floor Cluwne"
-	set desc = "Pick a specific target or just let it select randomly and spawn the floor cluwne mob on the station. Be warned: spawning more than one may cause issues!"
+	set desc = "Pick a specific target. Be warned: spawning more than one may cause issues!"
 	var/target
 
 	if(!check_rights(R_FUN))
@@ -15,6 +15,4 @@
 		FC.Acquire_Victim(H)
 		log_admin("[key_name(usr)] spawned floor cluwne.")
 		message_admins("[key_name(usr)] spawned floor cluwne.")
-	else
-		log_admin("[key_name(usr)] decided not to spawn a floor cluwne.")
-		message_admins("[key_name(usr)] decided not to spawn a floor cluwne.")
+		deadchat_broadcast("<span class='deadsay'><b>Floor Cluwne</b> has just been spawned!</span>")
