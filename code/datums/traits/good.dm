@@ -196,13 +196,12 @@
 	lose_text = "<span class='notice'>You feel like your blood pressure went down.</span>"
 
 /datum/quirk/bloodpressure/add()
-	var/mob/living/M = quirk_holder
-	M.blood_ratio = 1.2
-	M.blood_volume += 150
+	quirk_holder.blood_ratio = 1.2
+	quirk_holder.blood_volume += 150
 
 /datum/quirk/bloodpressure/remove()
-	var/mob/living/M = quirk_holder
-	M.blood_ratio = 1
+	if(quirk_holder)
+		quirk_holder.blood_ratio = 1
 
 /datum/quirk/tough
 	name = "Tough"
