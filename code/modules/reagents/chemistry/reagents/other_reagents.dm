@@ -248,7 +248,7 @@
 					"You can't save him. Nothing can save him now", "It seems that Nar'Sie will triumph after all")].</span>")
 				if("emote")
 					M.visible_message("<span class='warning'>[M] [pick("whimpers quietly", "shivers as though cold", "glances around in paranoia")].</span>")
-		else if(HAS_TRAIT(M, TRAIT_CURSED_BLOOD) && prob(20))
+		else if(HAS_TRAIT(M, TRAIT_CURSED_BLOOD) && prob(12))
 			M.say(pick("Somebody help me...","Unshackle me please...","Anybody... I've had enough of this dream...","The night blocks all sight...","Oh, somebody, please..."), forced = "holy water")
 			if(prob(10))
 				M.visible_message("<span class='danger'>[M] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
