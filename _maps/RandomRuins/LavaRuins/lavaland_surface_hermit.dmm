@@ -35,7 +35,6 @@
 "I" = (/obj/structure/chair{dir = 4},/turf/open/floor/mineral/titanium/blue,/area/ruin/powered)
 "J" = (/obj/effect/spawner/structure/window/shuttle,/turf/open/floor/plating{initial_gas_mix = "o2=14;n2=23;TEMP=300"},/area/ruin/powered)
 "K" = (/obj/structure/mirror{pixel_x = 28},/turf/open/floor/plating,/area/ruin/powered)
-"L" = (/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/space)
 
 (1,1,1) = {"
 aaaaaaaabbcbaaaa
@@ -52,6 +51,6 @@ sssatxyztAcaaaaa
 sssstByCtbbaaaaa
 ssssttDttaaaaaaa
 ssssssssssaEFFGa
-sLsssssssssHIIJa
+sssssssssssHIIJa
 sssssssssssEFFGa
 "}

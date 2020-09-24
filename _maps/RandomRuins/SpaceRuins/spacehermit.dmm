@@ -70,7 +70,6 @@
 "br" = (/obj/item/stack/ore/iron,/obj/item/stack/sheet/mineral/plasma,/obj/item/stack/sheet/mineral/plasma,/turf/open/floor/plating/asteroid,/area/ruin/unpowered)
 "bs" = (/obj/item/flashlight/lamp/bananalamp,/turf/open/floor/plating/asteroid,/area/ruin/unpowered)
 "bt" = (/obj/structure/fluff/empty_cryostasis_sleeper,/obj/structure/mirror{pixel_x = 28},/turf/open/floor/mineral/titanium,/area/ruin/powered)
-"bu" = (/turf/open/floor/plating/asteroid,/area/space)
 
 (1,1,1) = {"
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -109,7 +108,7 @@ aAababababababababababababababaRaRaTacabaUavbcacacacacacaPababababababaSaAaiaaaa
 aAababababababababababaeafalafaeagacacacbdbebfacacacacacacacacbgacaSaSaSaSaiaaaaaaaaaaaaaaaaaAaAaaaa
 aAababababababababaeafaeaYajbtaeagacacacacacacacacacacacacacacacacbiacaSaSaiaiaaaaaaaaaaaaaaaaaaaaaa
 aAababababababaeafaeanbhaoapaoanafacacacacacacacaRacacacaRacacacbjacacbkaSaiaiaaaaaaaaaaaaaaaaaaaaaa
-aAababababababafaqaoananaoanaoanaracacacblacacbuacacacacacacacacacacacbkbkaiaiaaaaaaaaaaaaaaaaaaaaaa
+aAababababababafaqaoananaoanaoanaracacacblacacacacacacacacacacacacacacbkbkaiaiaaaaaaaaaaaaaaaaaaaaaa
 aaaAabababababaeafaeananaoasaoanafacacacbmbnacacacacacacacaPacacacacacaSaSaiaaaaaaaaaaaaaaaaaaaaaMaa
 aaaAabababababababaeafaeakajbtaeatacacacacboacacacacbpacacacacacacaSaSaSaSaiaiaiaaaaaaaaaaaaaaaaaaaa
 aaaAabababababababababaZbaaEbaaZbbacacacacboacacacacacacacbgaSaSaSaSaSaSaSaiaaaaaaaaaaaaaaaaaaaaaaaa
