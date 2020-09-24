@@ -3204,6 +3204,7 @@
 					/obj/item/clothing/head/kitty/genuine, // Why its illegal
 					/obj/item/clothing/head/kitty/genuine,
 					/obj/item/storage/pill_bottle/penis_enlargement,
+					/obj/item/storage/pill_bottle/breast_enlargement,
 					/obj/structure/reagent_dispensers/keg/aphro)
 	crate_name = "lewd kit"
 	crate_type = /obj/structure/closet/crate
