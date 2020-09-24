@@ -253,8 +253,13 @@
 			if(prob(10))
 				M.visible_message("<span class='danger'>[M] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
 				M.Unconscious(120)
-				to_chat(M, "<span class='cultlarge'>[pick("The moon is close. It will be a long hunt tonight.", "Ludwig, why hath thou forsaken me?", \
+				to_chat(M, "<span class='cultlarge'>[pick("The moon is close. It will be a long hunt tonight.", "Ludwig, why have you forsaken me?", \
 				"The night is near its end...", "Fear the blood...")]</span>")
+				if(prob(25) //Prob of a prob.. Shouldn't happen too often but hey, that's what you get.
+					M.IgniteMob()
+				else
+					M.adjustToxLoss(1, 0)
+					M.adjustFireLoss(1, 0)	
 	if(data >= 60)	// 30 units, 135 seconds
 		if(iscultist(M, FALSE, TRUE) || is_servant_of_ratvar(M, FALSE, TRUE))
 			if(iscultist(M))
