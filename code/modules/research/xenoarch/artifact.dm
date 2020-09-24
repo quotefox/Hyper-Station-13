@@ -89,6 +89,7 @@
 								/obj/item/seeds/cherry/bomb,
 								/obj/item/seeds/gatfruit,
 								/obj/item/seeds/kudzu,
+								/obj/item/seeds/firelemon,
 								/obj/item/seeds/random
 								))
 
