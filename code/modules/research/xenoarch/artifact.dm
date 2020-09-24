@@ -86,6 +86,8 @@
 								/obj/item/seeds/vaporsac,
 								/obj/item/seeds/watermelon/milk,
 								/obj/item/seeds/chili/pink,
+								/obj/item/seeds/cherry/bomb,
+								/obj/item/seeds/gatfruit,
 								/obj/item/seeds/random
 								))
 
