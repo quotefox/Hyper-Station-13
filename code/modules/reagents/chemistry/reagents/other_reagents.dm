@@ -248,6 +248,13 @@
 					"You can't save him. Nothing can save him now", "It seems that Nar'Sie will triumph after all")].</span>")
 				if("emote")
 					M.visible_message("<span class='warning'>[M] [pick("whimpers quietly", "shivers as though cold", "glances around in paranoia")].</span>")
+		else if(HAS_TRAIT(M, TRAIT_CURSED_BLOOD) && prob(20))
+			M.say(pick("Somebody help me...","Unshackle me please...","Anybody... I've had enough of this dream...","The night blocks all sight...","Oh, somebody, please..."), forced = "holy water")
+			if(prob(10))
+				M.visible_message("<span class='danger'>[M] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
+				M.Unconscious(120)
+				to_chat(M, "<span class='cultlarge'>[pick("The moon is close. It will be a long hunt tonight.", "Ludwig, why hath thou forsaken me?", \
+				"The night is near its end...", "Fear the blood...")]</span>")
 	if(data >= 60)	// 30 units, 135 seconds
 		if(iscultist(M, FALSE, TRUE) || is_servant_of_ratvar(M, FALSE, TRUE))
 			if(iscultist(M))
@@ -304,20 +311,28 @@
 	holder.remove_reagent(id, 1)
 	return TRUE
 
-/datum/reagent/hellwater			//if someone has this in their system they've really pissed off an eldrich god
+/datum/reagent/hellwater			//if someone has this in their system they've really pissed off an eldritch god
 	name = "Hell Water"
 	id = "hell_water"
 	description = "YOUR FLESH! IT BURNS!"
 	taste_description = "burning"
 
 /datum/reagent/hellwater/on_mob_life(mob/living/carbon/M)
-	M.fire_stacks = min(5,M.fire_stacks + 3)
-	M.IgniteMob()			//Only problem with igniting people is currently the commonly availible fire suits make you immune to being on fire
-	M.adjustToxLoss(1, 0)
-	M.adjustFireLoss(1, 0)		//Hence the other damages... ain't I a bastard?
-	M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5, 150)
-	holder.remove_reagent(id, 1)
-	pH = 0.1
+	if(HAS_TRAIT(M, TRAIT_CURSED_BLOOD))
+		M.adjustToxLoss(-0.75*REM, 0)
+		M.adjustOxyLoss(-0.75*REM, 0)
+		M.adjustBruteLoss(-0.75*REM, 0)
+		M.adjustFireLoss(-0.75*REM, 0)
+		M.ExtinguishMob()
+		holder.remove_reagent(id, 1)
+	else
+		M.fire_stacks = min(5,M.fire_stacks + 3)
+		M.IgniteMob()			//Only problem with igniting people is currently the commonly availible fire suits make you immune to being on fire
+		M.adjustToxLoss(1, 0)
+		M.adjustFireLoss(1, 0)		//Hence the other damages... ain't I a bastard?
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, 5, 150)
+		holder.remove_reagent(id, 1)
+		pH = 0.1
 
 /datum/reagent/fuel/holyoil		//Its oil
 	name = "Zelus Oil"
