@@ -84,6 +84,8 @@
 								/obj/item/seeds/thaadra,
 								/obj/item/seeds/vale,
 								/obj/item/seeds/vaporsac,
+								/obj/item/seeds/watermelon/milk,
+								/obj/item/seeds/chili/pink,
 								/obj/item/seeds/random
 								))
 

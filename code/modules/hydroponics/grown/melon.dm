@@ -11,7 +11,7 @@
 	growing_icon = 'icons/obj/hydroponics/growing_fruits.dmi'
 	icon_dead = "watermelon-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	mutatelist = list(/obj/item/seeds/watermelon/holy, /obj/item/seeds/watermelon/milk)
+	mutatelist = list(/obj/item/seeds/watermelon/holy)
 	reagents_add = list("water" = 0.2, "vitamin" = 0.04, "nutriment" = 0.2)
 
 /obj/item/seeds/watermelon/suicide_act(mob/user)
