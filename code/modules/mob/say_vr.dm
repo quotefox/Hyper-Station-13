@@ -99,7 +99,7 @@ proc/get_top_level_mob(var/mob/S)
 		return FALSE
 
 	user.log_message(message, INDIVIDUAL_EMOTE_LOG)
-	message = "<b>[user]</b> " + "<i>[message]</i>"
+	message = "<b>[user]</b> " + "<i>[user.say_emphasis(message)]</i>"
 
 	for(var/mob/M in GLOB.dead_mob_list)
 		if(!M.client || isnewplayer(M))
@@ -170,7 +170,7 @@ proc/get_top_level_mob(var/mob/S)
 		return FALSE
 
 	user.log_message(message, INDIVIDUAL_EMOTE_LOG)
-	message = "<b>[user]</b> " + "<i>[message]</i>"
+	message = "<b>[user]</b> " + "<i>[user.say_emphasis(message)]</i>"
 
 	if(emote_type == EMOTE_AUDIBLE)
 		user.audible_message(message=message,hearing_distance=1, no_ghosts = TRUE)
