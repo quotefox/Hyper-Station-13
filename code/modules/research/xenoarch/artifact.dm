@@ -88,6 +88,7 @@
 								/obj/item/seeds/chili/pink,
 								/obj/item/seeds/cherry/bomb,
 								/obj/item/seeds/gatfruit,
+								/obj/item/seeds/kudzu,
 								/obj/item/seeds/random
 								))
 
