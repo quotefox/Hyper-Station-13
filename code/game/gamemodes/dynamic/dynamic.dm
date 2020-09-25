@@ -727,7 +727,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 			chance += 25-10*(max_pop_per_antag-current_pop_per_antag)
 	*/
 	//Hyper change - Base injection chance based on chaos. 
-	chance = (GLOB.dynamic_chaos_level * 20) //Base chance from 0 to 100
+	chance = (GLOB.dynamic_chaos_level * 7) //Base chance from 0 to 35
 	if (current_players[CURRENT_DEAD_PLAYERS].len > current_players[CURRENT_LIVING_PLAYERS].len)
 		chance -= 30 // More than half the crew died? ew, let's calm down on antags
 	if (threat > 70)
