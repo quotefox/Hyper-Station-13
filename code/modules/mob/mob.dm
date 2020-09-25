@@ -423,9 +423,15 @@
 		to_chat(usr, "<span class='boldnotice'>You must be dead to use this!</span>")
 		return
 
+	if(usr.client.lastrespawn <= world.time)
+		usr.client.lastrespawn = world.time + 1800 SECONDS
+	else
+		to_chat(usr, "<span class='warning'>You must wait [DisplayTimeText(usr.client.lastrespawn - world.time)] before respawning!</span>")
+		return
+
 	log_game("[key_name(usr)] used abandon mob.")
 
-	to_chat(usr, "<span class='boldnotice'>Please roleplay correctly!</span>")
+	to_chat(usr, "<span class='boldnotice'>Please roleplay correctly, do not meta-game, and use information from a different character or characters, to influence your actions!</span>")
 
 	if(!client)
 		log_game("[key_name(usr)] AM failed due to disconnect.")
@@ -442,6 +448,7 @@
 		qdel(M)
 		return
 
+	message_admins("[client.ckey] respawned.")
 	M.key = key
 //	M.Login()	//wat
 	return
@@ -530,7 +537,7 @@
 
 /mob/proc/is_muzzled()
 	return 0
-	
+
 
 /mob/Stat()
 	..()
