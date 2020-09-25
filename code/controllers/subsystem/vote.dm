@@ -330,6 +330,9 @@ SUBSYSTEM_DEF(vote)
 			. += "<h2>Vote: '[question]'</h2>"
 		else
 			. += "<h2>Vote: [capitalize(mode)]</h2>"
+			if(mode =="dynamic")
+				. += "<h2>\nSelect your chaos level.</h2>"
+				. += "<h2>\nHigher values mean more antags and chaos.\n</h2>"
 		. += "Time Left: [time_remaining] s<hr><ul>"
 		for(var/i=1,i<=choices.len,i++)
 			var/votes = choices[choices[i]]

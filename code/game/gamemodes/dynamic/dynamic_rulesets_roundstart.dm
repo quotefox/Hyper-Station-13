@@ -36,7 +36,7 @@
 	high_population_requirement = 10
 	//var/autotraitor_cooldown = 450 // 15 minutes (ticks once per 2 sec)
 	chaos_min = 2.0
-	chaos_max = 3.0 //To remove excess tator weight from the spicy rounds
+	chaos_max = 3.5 //To remove excess tator weight from the spicy rounds
 
 /datum/dynamic_ruleset/roundstart/traitor/pre_execute()
 	var/traitor_scaling_coeff = 10 - max(0,round(mode.threat_level/10)-5) // Above 50 threat level, coeff goes down by 1 for every 10 levels
@@ -75,7 +75,8 @@
 	required_candidates = 2
 	weight = 4
 	cost = 10
-	requirements = list(101,50,50,40,40,20,20,20,20,20)
+	//requirements = list(101,50,50,40,40,20,20,20,20,20)
+	requirements = list(101,101,101,101,101,101,101,101,101,101)  //Disabled
 	high_population_requirement = 15
 	var/list/datum/team/brother_team/pre_brother_teams = list()
 	var/const/team_amount = 2 // Hard limit on brother teams if scaling is turned off
@@ -128,7 +129,7 @@
 	required_candidates = 1
 	weight = 3
 	cost = 30
-	requirements = list(101,101,101,50,40,40,30,30,20,10)
+	requirements = list(101,101,80,60,40,40,30,30,20,10)
 	high_population_requirement = 10
 	var/team_mode_probability = 30
 	chaos_min = 3.0
@@ -178,7 +179,7 @@
 	required_candidates = 1
 	weight = 1
 	cost = 30
-	requirements = list(101,90,70,40,30,20,10,10,10,10)
+	requirements = list(101,101,101,80,60,50,40,30,30,20)
 	high_population_requirement = 10
 	var/list/roundstart_wizards = list()
 	chaos_min = 3.5
@@ -231,7 +232,8 @@
 	flags = HIGHLANDER_RULESET
 	var/cultist_cap = list(2,2,2,3,3,4,4,4,4,4)
 	var/datum/team/cult/main_cult
-	chaos_min = 4.5
+	chaos_min = 4.9
+	admin_required = TRUE
 
 /datum/dynamic_ruleset/roundstart/bloodcult/ready(forced = FALSE)
 	var/indice_pop = min(10,round(mode.roundstart_pop_ready/pop_per_requirement)+1)
@@ -286,7 +288,7 @@
 	required_candidates = 5
 	weight = 3
 	cost = 40
-	requirements = list(101,95,90,85,80,50,40,30,30,20)
+	requirements = list(101,101,100,90,85,70,50,30,30,20)
 	high_population_requirement = 10
 	pop_per_requirement = 5
 	flags = HIGHLANDER_RULESET
@@ -377,7 +379,7 @@
 	required_candidates = 3
 	weight = 2
 	cost = 35
-	requirements = list(101,101,101,40,30,20,20,20,20,20)
+	requirements = list(101,101,100,80,70,60,50,40,30,20)
 	high_population_requirement = 10
 	delay = 5 MINUTES
 	flags = HIGHLANDER_RULESET
@@ -385,7 +387,8 @@
 	minimum_players = 35
 	var/datum/team/revolution/revolution
 	var/finished = 0
-	chaos_min = 3.5
+	chaos_min = 4.9
+	admin_required = TRUE
 
 /datum/dynamic_ruleset/roundstart/delayed/revs/execute()
 	var/max_canditates = 4
@@ -488,11 +491,12 @@
 	required_candidates = 4
 	weight = 3
 	cost = 0
-	requirements = list(101,100,90,80,70,60,50,50,40,30)
+	requirements = list(101,101,101,95,90,80,60,50,40,30)
 	high_population_requirement = 101
 	flags = HIGHLANDER_RULESET
 	var/ark_time
-	chaos_min = 4.0
+	chaos_min = 4.9
+	admin_required = TRUE
 
 /datum/dynamic_ruleset/roundstart/clockcult/pre_execute()
 	var/list/errorList = list()

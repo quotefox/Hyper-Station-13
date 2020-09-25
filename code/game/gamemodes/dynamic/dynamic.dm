@@ -84,9 +84,9 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 	  */
 	var/pop_per_requirement = 6
 	/// The requirement used for checking if a second rule should be selected.
-	var/list/second_rule_req = list(100, 100, 80, 70, 60, 50, 30, 20, 10, 0)
+	var/list/second_rule_req = list(101, 101, 100, 90, 80, 70, 60, 50, 40, 30)
 	/// The requirement used for checking if a third rule should be selected.
-	var/list/third_rule_req = list(100, 100, 100, 90, 80, 70, 60, 50, 40, 30)
+	var/list/third_rule_req = list(101, 101, 101, 101, 100, 90, 80, 70, 60, 50)
 	/// Threat requirement for a second ruleset when high pop override is in effect.
 	var/high_pop_second_rule_req = 40
 	/// Threat requirement for a third ruleset when high pop override is in effect.
