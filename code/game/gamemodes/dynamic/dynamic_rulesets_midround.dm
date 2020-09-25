@@ -199,7 +199,7 @@
 	high_population_requirement = 10
 	flags = TRAITOR_RULESET
 	chaos_min = 2.0
-	chaos_max = 3.0
+	chaos_max = 3.5
 
 /datum/dynamic_ruleset/midround/autotraitor/acceptable(population = 0, threat = 0)
 	var/player_count = mode.current_players[CURRENT_LIVING_PLAYERS].len
@@ -337,7 +337,7 @@
 	required_candidates = 5
 	weight = 5
 	cost = 35
-	requirements = list(101,90,90,80,70,60,50,50,50,50)
+	requirements = list(101,101,101,90,80,70,60,50,50,50)
 	high_population_requirement = 10
 	var/operative_cap = list(2,2,3,3,4,5,5,5,5,5)
 	var/datum/team/nuclear/nuke_team
@@ -405,7 +405,7 @@
 	required_candidates = 1
 	weight = 3
 	cost = 10
-	requirements = list(101,101,101,80,70,70,60,50,40,30)
+	requirements = list(101,101,100,80,70,70,60,50,40,30)
 	high_population_requirement = 50
 	repeatable = TRUE
 	var/list/vents = list()

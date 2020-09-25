@@ -58,7 +58,7 @@
 	cost = 10
 	earliest_start = 50 MINUTES
 	blocking_rules = list(/datum/dynamic_ruleset/roundstart/nuclear,/datum/dynamic_ruleset/midround/from_ghosts/nuclear)
-	requirements = list(70,60,50,50,40,40,40,30,20,15)
+	requirements = list(40,35,30,25,20,20,15,10,10,10)
 	//property_weights = list("story_potential" = 1, "trust" = 1, "chaos" = 1)
 	high_population_requirement = 15
 	occurances_max = 1
@@ -82,8 +82,8 @@
 	enemy_roles = list("AI","Security Officer","Head of Security","Captain")
 	required_enemies = list(2,2,1,1,0,0,0,0,0,0)
 	weight = 5
-	cost = 10
-	requirements = list(70,60,50,50,40,40,40,30,20,15)
+	cost = 5
+	requirements = list(30,30,25,20,15,15,10,10,10,10)
 	high_population_requirement = 15
 	//property_weights = list("chaos" = 1, "valid" = 1)
 	earliest_start = 30 MINUTES //Skyrat change.
@@ -165,11 +165,11 @@
 	typepath = /datum/round_event/meteor_wave
 	enemy_roles = list("Chief Engineer","Station Engineer","Atmospheric Technician","Captain","Cyborg")
 	required_enemies = list(2,2,2,2,2,2,2,2,2,2)
-	cost = 15
+	cost = 0
 	weight = 3
 	earliest_start = 45 MINUTES
 	repeatable_weight_decrease = 2
-	requirements = list(60,50,40,30,30,30,30,30,30,30)
+	requirements = list(20,20,15,15,15,15,15,15,10,10)
 	high_population_requirement = 30
 	//property_weights = list("extended" = -2)
 	occurances_max = 2
@@ -178,16 +178,16 @@
 /datum/dynamic_ruleset/event/meteor_wave/ready()
 	if(world.time-SSticker.round_start_time > 35 MINUTES && mode.threat_level > 40 && mode.threat >= 25 && prob(30))
 		name = "Meteor Wave: Threatening"
-		cost = 25
+		cost = 10
 		typepath = /datum/round_event/meteor_wave/threatening
 	else if(world.time-SSticker.round_start_time > 45 MINUTES && mode.threat_level > 50 && mode.threat >= 40 && prob(30))
 		name = "Meteor Wave: Catastrophic"
-		cost = 40
+		cost = 15
 		typepath = /datum/round_event/meteor_wave/catastrophic
 		required_enemies = list(3,3,3,3,3,3,3,3,3,3)
 	else
 		name = "Meteor Wave: Normal"
-		cost = 15
+		cost = 0
 		typepath = /datum/round_event/meteor_wave
 	return ..()
 
@@ -314,7 +314,7 @@
 	cost = 10
 	enemy_roles = list("Chief Engineer","Station Engineer","Atmospheric Technician","Research Director","Scientist","Captain","Cyborg")
 	required_enemies = list(1,1,1,1,0,0,0,0,0,0)
-	requirements = list(50,40,30,25,20,15,10,10,10,10)
+	requirements = list(40,35,30,25,20,15,10,10,10,10)
 	high_population_requirement = 10
 	repeatable = TRUE
 	//property_weights = list("extended" = -1, "chaos" = 1)
@@ -328,7 +328,7 @@
 	weight = 7
 	repeatable_weight_decrease = 3
 	cost = 4
-	requirements = list(101,20,15,10,10,10,10,10,10,10)
+	requirements = list(101,15,10,10,5,5,5,0,0,0)
 	high_population_requirement = 10
 	earliest_start = 10 MINUTES
 	repeatable = TRUE
@@ -345,7 +345,7 @@
 	repeatable_weight_decrease = 2
 	enemy_roles = list("Chief Engineer","Station Engineer")
 	required_enemies = list(1,1,1,0,0,0,0,0,0,0)
-	requirements = list(5,5,5,10,10,10,10,15,15,15)
+	requirements = list(0,0,0,0,5,5,5,10,10,10)
 	high_population_requirement = 5
 	repeatable = TRUE
 	//property_weights = list("extended" = 1, "chaos" = 1)
@@ -360,7 +360,7 @@
 	repeatable_weight_decrease = 3
 	enemy_roles = list("Chief Engineer","Station Engineer")
 	required_enemies = list(1,1,1,1,1,1,1,1,1,1)
-	requirements = list(101,101,10,10,10,15,15,15,15,15)
+	requirements = list(101,101,5,5,5,10,10,10,15,15)
 	high_population_requirement = 5
 	repeatable = TRUE
 	//property_weights = list("extended" = 1, "chaos" = 1)
@@ -376,7 +376,7 @@
 	repeatable_weight_decrease = 2
 	enemy_roles = list("Chief Engineer","Station Engineer")
 	required_enemies = list(1,1,1,0,0,0,0,0,0,0)
-	requirements = list(5,5,5,5,5,5,5,5,5,5)
+	requirements = list(5,5,5,5,5,5,5,0,0,0)
 	high_population_requirement = 5
 	repeatable = TRUE
 	earliest_start = 0 MINUTES
@@ -393,7 +393,7 @@
 	repeatable_weight_decrease = 1
 	enemy_roles = list("Chief Engineer","Station Engineer")
 	required_enemies = list(2,2,2,2,2,2,2,2,2,2)
-	requirements = list(20,15,15,10,10,10,10,10,10,10)
+	requirements = list(15,10,9,8,7,6,5,4,3,2)
 	high_population_requirement = 10
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
@@ -407,7 +407,7 @@
 	repeatable_weight_decrease = 2
 	enemy_roles = list("Chief Engineer","Station Engineer")
 	required_enemies = list(1,1,1,0,0,0,0,0,0,0)
-	requirements = list(5,5,5,5,5,5,5,5,5,5)
+	requirements = list(5,5,4,3,2,1,1,0,0,0)
 	high_population_requirement = 5
 	repeatable = TRUE
 	occurances_max = 10
@@ -421,7 +421,7 @@
 	repeatable_weight_decrease = 1
 	enemy_roles = list("Medical Doctor","Chief Medical Officer")
 	required_enemies = list(2,2,2,2,2,2,2,2,2,2)
-	requirements = list(101,101,101,5,5,5,5,5,5,5)
+	requirements = list(101,101,101,10,5,5,5,5,5,5)
 	high_population_requirement = 5
 	repeatable = TRUE
 	occurances_max = 2
@@ -477,7 +477,7 @@
 	weight = 1
 	earliest_start = 40 MINUTES
 	enemy_roles = list("AI","Security Officer","Head of Security","Captain","Station Engineer","Atmos Technician","Chief Engineer")
-	required_enemies = list(4,4,4,4,3,3,3,3,3,3)
+	required_enemies = list(4,4,4,4,3,3,3,3,3,2)
 	requirements = list(101,101,101,101,50,45,40,35,30,30)
 	high_population_requirement =  5
 	//property_weights = list("extended" = -2)
@@ -489,7 +489,7 @@
 	//config_tag = "sentient_disease"
 	typepath = /datum/round_event/ghost_role/sentient_disease
 	enemy_roles = list("Virologist","Chief Medical Officer","Captain","Chemist")
-	required_enemies = list(2,1,1,1,0,0,0,0,0,0)
+	required_enemies = list(2,1,1,1,1,1,1,0,0,0)
 	required_candidates = 1
 	weight = 4
 	cost = 5
@@ -504,11 +504,11 @@
 	//config_tag = "revenant"
 	typepath = /datum/round_event/ghost_role/revenant
 	enemy_roles = list("Chief Engineer","Station Engineer","Captain","Chaplain","AI")
-	required_enemies = list(2,1,1,1,0,0,0,0,0,0)
+	required_enemies = list(2,1,1,1,1,1,1,1,0,0)
 	required_candidates = 1
 	weight = 3
 	cost = 5
-	requirements = list(101,40,35,30,20,15,15,15,15,15)
+	requirements = list(101,40,35,30,20,15,15,15,10,5)
 	high_population_requirement = 15
 	//property_weights = list("story_potential" = -2, "extended" = -1)
 	occurances_max = 1 //Skyrat change.
@@ -519,7 +519,7 @@
 	typepath = /datum/round_event/immovable_rod
 	enemy_roles = list("Research Director","Chief Engineer","Station Engineer","Captain","Chaplain","AI")
 	required_enemies = list(2,2,2,2,2,2,1,1,1,1)
-	requirements = list(101,101,40,30,30,20,15,15,15,15)
+	requirements = list(101,101,20,20,18,16,14,12,10,8)
 	high_population_requirement = 15
 	cost = 10
 	occurances_max = 2
@@ -576,7 +576,7 @@
 	enemy_roles = list("Virologist","Chief Medical Officer","Captain","Chemist")
 	required_enemies = list(2,1,1,1,0,0,0,0,0,0)
 	typepath = /datum/round_event/disease_outbreak
-	requirements = list(10,10,10,5,5,5,5,5,5,5)
+	requirements = list(5,5,4,3,3,2,2,1,1,0)
 	high_population_requirement = 5
 	weight = 5
 	cost = 5
@@ -597,6 +597,7 @@
 	typepath = /datum/round_event/grid_check
 	requirements = list(5,5,5,5,5,5,0,0,0,0) //Can actually cause problems
 	high_population_requirement = 0
+	cost = 4
 	weight = 5
 	repeatable = TRUE
 	occurances_max = 2
@@ -626,7 +627,7 @@
 	typepath = /datum/round_event/grey_tide
 	enemy_roles = list("Chief Engineer","Station Engineer","Captain","Atmospheric Technician","AI","Cyborg")
 	required_enemies = list(3,2,2,2,2,2,1,1,1,1)
-	requirements = list(101,20,15,15,10,10,5,5,5,5)
+	requirements = list(101,15,15,10,10,10,5,5,5,5)
 	high_population_requirement = 0
 	repeatable = TRUE
 	weight = 5
@@ -644,7 +645,7 @@
 	typepath = /datum/round_event/shuttle_loan
 	enemy_roles = list("Quartermaster","Cargo Technician")
 	required_enemies = list(1,1,1,1,1,1,1,1,1,1)
-	requirements = list(10,10,10,5,5,5,0,0,0,0)
+	requirements = list(5,5,5,5,5,5,0,0,0,0)
 	high_population_requirement = 0
 	weight = 10
 	repeatable = TRUE
@@ -655,7 +656,8 @@
 	typepath = /datum/round_event/spacevine
 	enemy_roles = list("Cook","Botanist","Security Officer","Captain","Station Engineer")
 	required_enemies = list(2,2,2,1,1,1,1,1,1,1)
-	requirements = list(101,30,25,20,15,15,10,10,10,10)
+	requirements = list(101,101,10,9,8,7,5,5,5,0)
+	cost = 5
 	high_population_requirement = 0
 	weight = 8
 	repeatable_weight_decrease = 5
