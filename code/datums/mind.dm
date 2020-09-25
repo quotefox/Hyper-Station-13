@@ -61,6 +61,7 @@
 	var/datum/language_holder/language_holder
 	var/unconvertable = FALSE
 	var/late_joiner = FALSE
+	var/lastrespawn = 0
 
 	var/force_escaped = FALSE  // Set by Into The Sunset command of the shuttle manipulator
 

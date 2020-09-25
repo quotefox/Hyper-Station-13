@@ -269,6 +269,7 @@ Works together with spawning an observer, noted above.
 			ghost.can_reenter_corpse = can_reenter_corpse
 			ghost.can_reenter_round = (can_reenter_corpse && !suiciding)
 			ghost.key = key
+			ghost.client.lastrespawn = world.time + 1800 SECONDS
 			return ghost
 
 /*
@@ -282,8 +283,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 // CITADEL EDIT
 	if(istype(loc, /obj/machinery/cryopod))
-		var/response = alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost whilst still alive you won't be able to re-enter this round! You can't change your mind so choose wisely!!)","Are you sure you want to ghost?","Ghost","Stay in body")
+		var/response = alert(src, "Are you -sure- you want to ghost?\n(If you ghost now, you will have to wait 30 minutes before you are able to respawn!)","Are you sure you want to ghost?","Ghost","Stay in body")
 		if(response != "Ghost")//darn copypaste
+			client.lastrespawn = world.time + 1800 SECONDS //set respawn time
 			return
 		var/obj/machinery/cryopod/C = loc
 		C.despawn_occupant()
@@ -295,11 +297,16 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	if(stat == DEAD)
 		ghostize(1)
 	else
+		//Low RP, removing.
+		/*
 		var/response = alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost whilst still alive you won't be able to re-enter this round! You can't change your mind so choose wisely!!)","Are you sure you want to ghost?","Ghost","Stay in body")
 		if(response != "Ghost")
 			return	//didn't want to ghost after-all
 		ghostize(0)						//0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		suicide_log(TRUE)
+		*/
+		to_chat(usr, "<span class='boldnotice'>You cannot ghost, if you wish to remove yourself from the round, please locate a cryogenic freezer.</span>")
+		message_admins("[usr] attempted to ghost.")
 
 /mob/camera/verb/ghost()
 	set category = "OOC"
