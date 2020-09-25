@@ -1,4 +1,3 @@
-
 ## HEALTH ###
 
 ##Damage multiplier, effects both weapons and healing on all mobs. For example, 1.25 would result in 25% higher damage.
@@ -220,10 +219,10 @@ BROTHER_OBJECTIVES_AMOUNT 2
 
 ## Uncomment to prohibit jobs that start with loyalty
 ## implants from being most antagonists.
-PROTECT_ROLES_FROM_ANTAGONIST
+#PROTECT_ROLES_FROM_ANTAGONIST
 
 ## Uncomment to prohibit assistants from becoming most antagonists.
-PROTECT_ASSISTANT_FROM_ANTAGONIST
+#PROTECT_ASSISTANT_FROM_ANTAGONIST
 
 ## If non-human species are barred from joining as a head of staff
 #ENFORCE_HUMAN_AUTHORITY
@@ -555,6 +554,3 @@ MONKEYCAP 64
 
 ## Uncomment to use TG-style combat
 #DISABLE_STAMBUFFER
-
-## Enable Dynamic mode
-DYNAMIC_MODE
