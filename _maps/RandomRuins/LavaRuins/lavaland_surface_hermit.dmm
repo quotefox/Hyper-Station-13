@@ -1,8 +1,8 @@
 "a" = (/turf/closed/mineral/volcanic/lava_land_surface,/area/lavaland/surface/outdoors)
 "b" = (/turf/closed/mineral/volcanic/lava_land_surface,/area/ruin/powered)
 "c" = (/turf/closed/wall/mineral/iron,/area/ruin/powered)
-"d" = (/obj/item/clothing/head/helmet/space/orange,/obj/item/clothing/mask/breath,/turf/open/floor/plating/asteroid/basalt,/area/ruin/powered)
-"e" = (/obj/item/clothing/suit/space/orange,/turf/open/floor/plating/asteroid/basalt,/area/ruin/powered)
+"d" = (/obj/item/clothing/head/helmet/space/orange,/obj/item/clothing/mask/breath,/turf/open/floor/plating/asteroid{name = "dirt"},/area/ruin/powered)
+"e" = (/obj/item/clothing/suit/space/orange,/turf/open/floor/plating/asteroid{name = "dirt"},/area/ruin/powered)
 "f" = (/turf/open/floor/plating/asteroid/basalt,/area/ruin/powered)
 "g" = (/turf/open/floor/plating/asteroid{name = "dirt"},/area/ruin/powered)
 "h" = (/obj/item/shovel,/turf/open/floor/plating/asteroid{name = "dirt"},/area/ruin/powered)
@@ -10,7 +10,7 @@
 "j" = (/obj/structure/sink/puddle,/turf/open/floor/plating/asteroid{name = "dirt"},/area/ruin/powered)
 "k" = (/obj/structure/glowshroom/single,/turf/open/floor/plating/asteroid{name = "dirt"},/area/ruin/powered)
 "l" = (/obj/item/storage/toolbox/emergency,/turf/open/floor/plating/asteroid{name = "dirt"},/area/ruin/powered)
-"m" = (/obj/structure/rack,/obj/item/seeds/reishi,/obj/item/seeds/plump,/obj/item/seeds/plump,/obj/item/reagent_containers/food/snacks/grown/mushroom/glowshroom,/turf/open/floor/plating/asteroid/basalt,/area/ruin/powered)
+"m" = (/obj/structure/rack,/obj/item/seeds/reishi,/obj/item/seeds/plump,/obj/item/seeds/plump,/obj/item/seeds/tower,/obj/item/reagent_containers/food/snacks/grown/mushroom/glowshroom,/turf/open/floor/plating/asteroid/basalt,/area/ruin/powered)
 "n" = (/obj/machinery/hydroponics/soil,/turf/open/floor/plating,/area/ruin/powered)
 "o" = (/turf/open/floor/plating,/area/ruin/powered)
 "p" = (/obj/structure/rack,/obj/item/storage/bag/plants/portaseeder,/obj/item/storage/bag/ore,/obj/item/storage/firstaid/regular,/turf/open/floor/plating/asteroid/basalt,/area/ruin/powered)
@@ -24,10 +24,10 @@
 "x" = (/obj/effect/mob_spawn/human/hermit,/turf/open/floor/pod/dark,/area/ruin/powered)
 "y" = (/turf/open/floor/pod/dark,/area/ruin/powered)
 "z" = (/obj/machinery/light/small{dir = 4},/obj/structure/tubes,/turf/open/floor/plating,/area/ruin/powered)
-"A" = (/obj/structure/table,/obj/item/kitchen/knife/combat/survival,/turf/open/floor/plating,/area/ruin/powered)
+"A" = (/obj/structure/table,/obj/item/hatchet,/obj/item/kitchen/knife/combat/survival,/turf/open/floor/plating,/area/ruin/powered)
 "B" = (/obj/structure/table/survival_pod,/turf/open/floor/pod/dark,/area/ruin/powered)
 "C" = (/obj/structure/tubes,/obj/item/crowbar,/obj/effect/decal/cleanable/blood/drip,/turf/open/floor/pod/dark,/area/ruin/powered)
-"D" = (/obj/effect/decal/cleanable/blood/footprints{icon_state = "blood1"; dir = 1},/obj/machinery/door/airlock/survival_pod/glass,/obj/structure/fans/tiny,/turf/open/floor/pod/dark,/area/ruin/powered)
+"D" = (/obj/effect/decal/cleanable/blood/footprints{dir = 1; icon_state = "blood1"},/obj/machinery/door/airlock/survival_pod/glass,/obj/structure/fans/tiny,/turf/open/floor/pod/dark,/area/ruin/powered)
 "E" = (/obj/structure/shuttle/engine/propulsion/burst{dir = 8},/turf/closed/wall/mineral/titanium/interior,/area/ruin/powered)
 "F" = (/turf/closed/wall/mineral/titanium,/area/ruin/powered)
 "G" = (/turf/closed/wall/mineral/titanium/interior,/area/ruin/powered)
@@ -38,17 +38,17 @@
 
 (1,1,1) = {"
 aaaaaaaabbcbaaaa
-aaaaaaabbdebbaaa
-aaaaaaabfghfbaaa
-aaaaaabbijgkbaaa
-aaaaabbcgglfbaaa
-aaaabbmffgcbbaaa
-aaaacnooffpbaaaa
-aaaabnoqofrbaaaa
+aaaaaaabcdebbaaa
+aaaaaaabgghgbaaa
+aaaaaabbijgkcaaa
+aaaaabccgglgbaaa
+aaaabcmffgcbbaaa
+aaaacnooffpcaaaa
+aaaacnoqofrcaaaa
 saaatttooucbaaaa
 saaatvwooKcaaaaa
 sssatxyztAcaaaaa
-sssstByCtbbaaaaa
+sssstByCtcbaaaaa
 ssssttDttaaaaaaa
 ssssssssssaEFFGa
 sssssssssssHIIJa
