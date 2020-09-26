@@ -215,7 +215,7 @@
 	desc = "A modified version of the semi automatic combat shotgun with a collapsible stock. For close encounters."
 	icon_state = "cshotgunc"
 	item_state = "combatshotgun"
-	mag_type = /obj/item/ammo_box/magazine/internal/shot/com
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/com/compact
 	w_class = WEIGHT_CLASS_NORMAL
 	var/stock = FALSE
 	recoil = 5

@@ -53,11 +53,23 @@ SUBSYSTEM_DEF(vote)
 	//get the highest number of votes
 	var/greatest_votes = 0
 	var/total_votes = 0
-	for(var/option in choices)
-		var/votes = choices[option]
-		total_votes += votes
-		if(votes > greatest_votes)
-			greatest_votes = votes
+	
+	//Catch for dynamic vote. We want to return all the votes.
+	if(mode == "dynamic")
+		return choices //Just return everything to handle
+	/*
+		. = list()
+		for(var/option in choices)
+			. += option
+			return .
+	*/
+	else
+		for (var/option in choices)
+			var/votes = choices[option]
+			total_votes += votes
+			if(votes > greatest_votes)
+				greatest_votes = votes
+	
 	//default-vote for everyone who didn't vote
 	if(!CONFIG_GET(flag/default_no_vote) && choices.len)
 		var/list/non_voters = GLOB.directory.Copy()
@@ -107,7 +119,43 @@ SUBSYSTEM_DEF(vote)
 			if(was_roundtype_vote)
 				stored_gamemode_votes[choices[i]] = votes
 			text += "\n<b>[choices[i]]:</b> [obfuscated ? "???" : votes]" //CIT CHANGE - adds obfuscated votes
-		if(mode != "custom")
+		
+		//Dynamic mode
+		if(mode == "dynamic")
+			text = "\n<b> Dynamic Chaos Vote: </b>"
+			var/numbers = list()
+			var/v = 0
+			for (var/option in winners) //Everyone is a winner in aggregate vote
+				//We returned choices, which is now winners. So syntax and variables gets a little weird here.
+				switch(option) //If there is a proc for string to digits, I couldn't find it. Might clean this later.
+					if("0")
+						v += winners[option] //Add the number votes to the pool
+						numbers += (winners[option]*0) //Add the value of the vote to numbers
+					if("1")
+						v += winners[option] //Add the number votes to the pool
+						numbers += (winners[option]*1) //Add the value of the vote to numbers
+					if("2")
+						v += winners[option] //Add the number votes to the pool
+						numbers += (winners[option]*2) //Add the value of the vote to numbers
+					if("3")
+						v += winners[option] //Add the number votes to the pool
+						numbers += (winners[option]*3) //Add the value of the vote to numbers
+					if("4")
+						v += winners[option] //Add the number votes to the pool
+						numbers += (winners[option]*4) //Add the value of the vote to numbers
+					if("5")
+						v += winners[option] //Add the number votes to the pool
+						numbers += (winners[option]*5) //Add the value of the vote to numbers
+			if (v == 0)
+				. = 2.5 //Default no vote value. Will change to define later
+			else
+				var/total = 0
+				for (var/i in numbers)
+					total += i
+				. = (total / v)
+			text += "\n<b>Chaos level [obfuscated ? "???" : .]</b>"
+			
+		if(mode != "custom" && mode != "dynamic")
 			if(winners.len > 1 && !obfuscated) //CIT CHANGE - adds obfuscated votes
 				text = "\n<b>Vote Tied Between:</b>"
 				for(var/option in winners)
@@ -141,6 +189,9 @@ SUBSYSTEM_DEF(vote)
 				SSticker.save_mode(.)
 				message_admins("The gamemode has been voted for, and has been changed to: [GLOB.master_mode]")
 				log_admin("Gamemode has been voted for and switched to: [GLOB.master_mode].")
+			if("dynamic")
+				GLOB.master_mode = "dynamic"
+				GLOB.dynamic_chaos_level = .
 			if("restart")
 				if(. == "Restart Round")
 					restart = 1
@@ -228,6 +279,8 @@ SUBSYSTEM_DEF(vote)
 				choices.Add("Initiate Crew Transfer","Continue Playing") // austation end
 			if("roundtype") //CIT CHANGE - adds the roundstart secret/extended vote
 				choices.Add("secret", "extended")
+			if("dynamic")
+				choices.Add("0","1","2","3","4","5")
 			if("custom")
 				question = stripped_input(usr,"What is the vote for?")
 				if(!question)
@@ -277,6 +330,9 @@ SUBSYSTEM_DEF(vote)
 			. += "<h2>Vote: '[question]'</h2>"
 		else
 			. += "<h2>Vote: [capitalize(mode)]</h2>"
+			if(mode =="dynamic")
+				. += "<h2>\nSelect your chaos level.</h2>"
+				. += "<h2>\nHigher values mean more antags and chaos.\n</h2>"
 		. += "Time Left: [time_remaining] s<hr><ul>"
 		for(var/i=1,i<=choices.len,i++)
 			var/votes = choices[choices[i]]

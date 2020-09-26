@@ -931,6 +931,8 @@
 	use_power = NO_POWER_USE
 	flags_1 = NODECONSTRUCT_1
 	unwrenchable = FALSE
+	var/buildstacktype = /obj/item/stack/sheet/mineral/sandstone
+	var/buildstackamount = 3
 
 /obj/machinery/hydroponics/soil/update_icon_hoses()
 	return // Has no hoses
@@ -941,6 +943,7 @@
 /obj/machinery/hydroponics/soil/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/shovel) && !istype(O, /obj/item/shovel/spade)) //Doesn't include spades because of uprooting plants
 		to_chat(user, "<span class='notice'>You clear up [src]!</span>")
+		new buildstacktype(loc,buildstackamount)
 		qdel(src)
 	else
 		return ..()

@@ -423,9 +423,17 @@
 		to_chat(usr, "<span class='boldnotice'>You must be dead to use this!</span>")
 		return
 
-	log_game("[key_name(usr)] used abandon mob.")
+	if(usr.client.lastrespawn >= world.time)
+		to_chat(usr, "<span class='warning'>You must wait [DisplayTimeText(usr.client.lastrespawn - world.time)] before respawning!</span>")
+		return
 
-	to_chat(usr, "<span class='boldnotice'>Please roleplay correctly!</span>")
+	//if they didnt join as a observer, add their name to the past character list so they cannot play them again.
+
+	if(!usr.client.respawn_observing)
+		var/responserespawn = alert(src,"If you respawn now, you cannot rejoin the game as your current character! Are you sure you want to respawn?","Warning","Yes","No")
+		if(responserespawn != "Yes")
+			return
+		usr.client.pastcharacters += usr.real_name
 
 	if(!client)
 		log_game("[key_name(usr)] AM failed due to disconnect.")
@@ -442,6 +450,11 @@
 		qdel(M)
 		return
 
+	to_chat(usr, "<span class='boldnotice'>Please roleplay correctly, do not meta-game, and use information from a different character or characters, to influence your actions!</span>")
+	usr.client.lastrespawn = world.time + 1800 SECONDS
+	usr.client.respawn_observing = 0
+
+	message_admins("[client.ckey] respawned.")
 	M.key = key
 //	M.Login()	//wat
 	return
@@ -530,7 +543,7 @@
 
 /mob/proc/is_muzzled()
 	return 0
-	
+
 
 /mob/Stat()
 	..()

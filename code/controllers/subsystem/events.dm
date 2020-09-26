@@ -52,6 +52,8 @@ SUBSYSTEM_DEF(events)
 //decides which world.time we should select another random event at.
 /datum/controller/subsystem/events/proc/reschedule()
 	scheduled = world.time + rand(frequency_lower, max(frequency_lower,frequency_upper))
+	if(GLOB.master_mode == "dynamic")
+		scheduled = INFINITY    //HYPER CHANGE - Easy way to bypass the basic event handler.
 
 //selects a random event based on whether it can occur and it's 'weight'(probability)
 /datum/controller/subsystem/events/proc/spawnEvent()

@@ -58,15 +58,16 @@
 	id = "lava-base"
 	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
 	suffix = "lavaland_surface_syndicate_base1.dmm"
-	cost = 20
+	cost = 15
 	allow_duplicates = FALSE
+	placement_weight = 5
 
 /datum/map_template/ruin/lavaland/free_golem
 	name = "Free Golem Ship"
 	id = "golem-ship"
 	description = "Lumbering humanoids, made out of precious metals, move inside this ship. They frequently leave to mine more minerals, which they somehow turn into more of them. \
 	Seem very intent on research and individual liberty, and also geology based naming?"
-	cost = 20
+	cost = 15
 	suffix = "lavaland_surface_golem_ship.dmm"
 	allow_duplicates = FALSE
 
