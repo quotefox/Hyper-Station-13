@@ -1,5 +1,5 @@
 "a" = (/turf/closed/mineral/volcanic/lava_land_surface,/area/lavaland/surface/outdoors)
-"b" = (/turf/closed/mineral/volcanic/lava_land_surface,/area/ruin/powered)
+"b" = (/obj/effect/decal/cleanable/blood/drip,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors)
 "c" = (/turf/closed/wall/mineral/iron,/area/ruin/powered)
 "d" = (/obj/item/clothing/head/helmet/space/orange,/obj/item/clothing/mask/breath,/turf/open/floor/plating/asteroid{name = "dirt"},/area/ruin/powered)
 "e" = (/obj/item/clothing/suit/space/orange,/turf/open/floor/plating/asteroid{name = "dirt"},/area/ruin/powered)
@@ -37,20 +37,20 @@
 "K" = (/obj/structure/mirror{pixel_x = 28},/turf/open/floor/plating,/area/ruin/powered)
 
 (1,1,1) = {"
-aaaaaaaabbcbaaaa
-aaaaaaabcdebbaaa
-aaaaaaabgghgbaaa
-aaaaaabbijgkcaaa
-aaaaabccgglgbaaa
-aaaabcmffgcbbaaa
+aaaaaaaaaccaaaaa
+aaaaaaaacdecaaaa
+aaaaaaacgghgcaaa
+aaaaaaacijgkcaaa
+aaaaaacfgglgcaaa
+aaaaacmffgfcaaaa
 aaaacnooffpcaaaa
 aaaacnoqofrcaaaa
-saaatttooucbaaaa
+saaatttooucaaaaa
 saaatvwooKcaaaaa
 sssatxyztAcaaaaa
-sssstByCtcbaaaaa
+sssstByCtcaaaaaa
 ssssttDttaaaaaaa
 ssssssssssaEFFGa
-sssssssssssHIIJa
-sssssssssssEFFGa
+ssssssbssssHIIJa
+sssssssssbsEFFGa
 "}
