@@ -1586,7 +1586,7 @@
 "aEz" = (/obj/structure/cable,/obj/effect/spawner/structure/window/reinforced,/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/open/floor/plating,/area/ai_monitored/storage/eva)
 "aEA" = (/obj/structure/sign/warning/securearea,/turf/closed/wall/r_wall,/area/ai_monitored/storage/eva)
 "aEB" = (/obj/machinery/light/small{dir = 8},/turf/open/floor/plasteel/dark,/area/ai_monitored/storage/eva)
-"aEC" = (/obj/machinery/firealarm{dir = 1; pixel_y = -24},/obj/structure/cable{icon_state = "4-8"},/obj/structure/disposalpipe/segment{dir = 4},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 8},/turf/open/floor/plasteel,/area/crew_quarters/fitness)
+"aEC" = (/obj/machinery/firealarm{dir = 1; pixel_y = -24},/obj/structure/cable{icon_state = "4-8"},/obj/structure/disposalpipe/segment{dir = 4},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 8},/obj/machinery/vending/kink,/turf/open/floor/plasteel,/area/crew_quarters/fitness)
 "aED" = (/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 8},/obj/machinery/atmospherics/pipe/manifold/supply/hidden{dir = 8},/turf/open/floor/plasteel,/area/crew_quarters/fitness)
 "aEE" = (/obj/effect/turf_decal/tile/blue{dir = 4},/obj/effect/turf_decal/loading_area{dir = 1; icon_state = "drain"; name = "drain"},/obj/structure/medkit_cabinet{pixel_y = 27},/turf/open/floor/plasteel,/area/hallway/primary/central)
 "aEF" = (/obj/machinery/door/airlock{dir = 4; id_tag = "null"; name = "Unit 1"},/turf/open/floor/plasteel/freezer,/area/crew_quarters/toilet/locker)
