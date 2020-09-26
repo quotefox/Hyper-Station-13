@@ -2905,6 +2905,7 @@
 #include "hyperstation\code\gamemode\traitor_lewd.dm"
 #include "hyperstation\code\gamemode\traitor_thief.dm"
 #include "hyperstation\code\gamemode\werewolf\werewolf.dm"
+#include "hyperstation\code\mobs\carrion.dm"
 #include "hyperstation\code\mobs\hugbot.dm"
 #include "hyperstation\code\mobs\mimic.dm"
 #include "hyperstation\code\mobs\werewolf.dm"
