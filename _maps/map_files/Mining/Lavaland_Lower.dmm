@@ -6312,9 +6312,9 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
 	},
-/obj/item/toy/plush/bird/Kenk{
+/obj/item/toy/plush/bird/kenk{
 	desc = "A dusty old charred plushie of a strange-looking Kenku in a yellow jumpsuit and a brown collar which you can almost make out something on. How long has this been here?";
-	name = "Charred Kenk plushie";
+	name = "charred Kenk plushie";
 	pixel_x = 6;
 	pixel_y = 5
 	},
