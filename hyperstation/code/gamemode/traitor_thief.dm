@@ -1,20 +1,6 @@
 //Jay Sparrow
 //A less murder traitor for low chaos dynamic rounds.
 
-///datum/game_mode
-//	var/list/datum/mind/traitor = list()
-
-
-
-///datum/mind/
-	//var/sexed = FALSE //General flag for completion check
-
-//TODO - Move this somewhere else
-//GLOBAL_LIST_INIT(hyper_special_roles, list(
-	//ROLE_LEWD_TRAITOR = /datum/game_mode/traitor/lewd
-//))
-
-
 /datum/game_mode/traitor/thief
 	name = "thief traitor"
 	config_tag = "thief traitor"
@@ -57,49 +43,6 @@
 	if(!(has_antag_datum(/datum/antagonist/traitor/thief)))
 		add_antag_datum(/datum/antagonist/traitor/thief)
 
-/*
-/datum/admins/proc/makeLewdtraitors()
-	to_chat(GLOB.admins, "makeLewd_traitors called")
-	var/datum/game_mode/traitor/lewd/temp = new
-
-	//if(CONFIG_GET(flag/protect_roles_from_antagonist))
-		//continue
-
-	//if(CONFIG_GET(flag/protect_assistant_from_antagonist))
-		//continue
-
-	var/list/mob/living/carbon/human/candidates = list()
-	var/mob/living/carbon/human/H = null
-	var/list/mob/living/carbon/human/targets = list()
-	//var/mob/living/carbon/human/T = null
-
-	for(var/mob/living/carbon/human/applicant in GLOB.player_list)
-		if(isReadytoRumble(applicant, ROLE_LEWD_TRAITOR))
-			if(temp.age_check(applicant.client))
-				if(!(applicant.job in temp.restricted_jobs))
-					candidates += applicant
-
-	for(var/mob/living/carbon/human/target in GLOB.player_list)
-		if(target.client.prefs.noncon)
-			if(!(target.job in temp.restricted_jobs))
-				targets += target
-
-	if(candidates.len)
-		var/numTraitors = min(candidates.len, targets.len, 1) //This number affects the maximum number of traitors. We want 1 for right now.
-		if(numTraitors == 0)
-			to_chat(GLOB.admins, "No lewd traitors created. Are there any valid targets?")
-			return 0
-		for(var/i = 0, i<numTraitors, i++)
-			H = pick(candidates)
-			H.mind.make_LewdTraitor()
-			candidates.Remove(H)
-
-
-		return 1
-
-
-	return 0
-*/
 
 /datum/antagonist/traitor/thief/proc/forge_objectives()
 	forge_single_objective()
