@@ -805,7 +805,7 @@
 "py" = (/obj/structure/trash_pile,/obj/structure/light_construct{dir = 4},/turf/open/floor/plating,/area/lavaland/surface/outdoors)
 "pz" = (/obj/effect/turf_decal/loading_area,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors)
 "pA" = (/obj/item/chair,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors)
-"pB" = (/obj/structure/table,/obj/structure/light_construct{dir = 8},/obj/effect/turf_decal/tile/brown{dir = 1},/obj/item/toy/plush/bird/Kenk{desc = "A dusty old charred plushie of a strange-looking Kenku in a yellow jumpsuit and with a brown collar which you can almost make out something on it, How long has this been here?"; name = "Chard Kenk plushie"; pixel_x = 6; pixel_y = 5},/obj/item/lighter{pixel_x = -4},/turf/open/floor/plasteel,/area/lavaland/surface/outdoors)
+"pB" = (/obj/structure/table,/obj/structure/light_construct{dir = 8},/obj/effect/turf_decal/tile/brown{dir = 1},/obj/item/lighter{pixel_x = -4},/turf/open/floor/plasteel,/area/lavaland/surface/outdoors)
 "pC" = (/obj/structure/table,/turf/open/floor/plasteel,/area/lavaland/surface/outdoors)
 "pD" = (/obj/effect/spawner/lootdrop/grille_or_trash,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors)
 "pE" = (/obj/effect/decal/cleanable/glass,/turf/open/floor/plasteel,/area/lavaland/surface/outdoors)
