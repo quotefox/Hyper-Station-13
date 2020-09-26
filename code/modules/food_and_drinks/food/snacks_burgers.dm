@@ -289,3 +289,11 @@
 	tastes = list("bun" = 4, "salt" = 5)
 	bonus_reagents = list("nutriment" = 3, "vitamin" = 10, "semen" = 10, "aphro" = 5)
 	foodtype = GRAIN
+
+/obj/item/reagent_containers/food/snacks/burger/crazy
+	name = "crazy hamburger"
+	desc = "This looks like the sort of food that a demented clown in a trenchcoat would make."
+	icon_state = "crazyburger"
+	tastes = list("bun" = 2, "beef patty" = 4, "cheese" = 2, "beef soaked in chili" = 3, "a smoking flare" = 2)
+	bonus_reagents = list("nutriment" = 4, "vitamin" = 6, "capsaicin" = 3, "condensedcapsaicin" = 3)
+	foodtype = GRAIN | MEAT | DAIRY

@@ -302,3 +302,19 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/burger/cumburger
 	subcategory = CAT_BURGER
+
+
+/datum/crafting_recipe/food/crazy //CRAZEE HAMBORGAR!!
+	name = "Crazy Hamburger"
+	reqs = list(
+			/obj/item/reagent_containers/food/snacks/meat/steak/plain = 2,
+			/obj/item/reagent_containers/food/snacks/bun = 1,
+			/obj/item/reagent_containers/food/snacks/cheesewedge = 2,
+			/obj/item/reagent_containers/food/snacks/grown/chili = 1,
+			/obj/item/reagent_containers/food/snacks/grown/cabbage = 1,
+			/obj/item/toy/crayon/green = 1, //Doesn't show as green on crafting menu.
+			/obj/item/flashlight/flare = 1,
+			/datum/reagent/consumable/cooking_oil = 15
+	)
+	result = /obj/item/reagent_containers/food/snacks/burger/crazy
+	subcategory = CAT_BURGER
