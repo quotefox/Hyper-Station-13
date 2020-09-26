@@ -32,7 +32,7 @@
 	//required_candidates = 1
 	//weight = 5
 	cost = 0
-	requirements = list(40,35,30,25,20,15,15,10,10,5)
+	requirements = list(40,30,30,25,20,15,15,10,10,5)
 	high_population_requirement = 10
 	//var/autotraitor_cooldown = 450 // 15 minutes (ticks once per 2 sec)
 	chaos_min = 2.0
@@ -58,6 +58,62 @@
 		message_admins("Checking if we can turn someone into a traitor.")
 		log_game("DYNAMIC: Checking if we can turn someone into a traitor.")
 		mode.picking_specific_rule(/datum/dynamic_ruleset/midround/autotraitor)
+*/
+
+/* //Not currently functional
+//////////////////////////////////////////
+//                                      //
+//                LEWD                  //
+//                                      //
+//////////////////////////////////////////
+
+/datum/dynamic_ruleset/roundstart/traitor/lewd
+	name = "Horny Traitor"
+	persistent = TRUE
+	antag_flag = ROLE_LEWD_TRAITOR
+	antag_datum = /datum/antagonist/traitor/lewd
+	minimum_required_age = 7
+	protected_roles = list("AI","Cyborg")
+	restricted_roles = list("Cyborg","AI")
+	required_candidates = 1
+	weight = 5
+	cost = 0
+	requirements = list(10,10,10,10,10,10,10,10,10,10)
+	high_population_requirement = 10
+	chaos_min = 0.1
+	chaos_max = 2.0
+	admin_required = TRUE
+	//vars for execution
+	var/list/mob/living/carbon/human/lewd_candidates = list()
+	var/numTraitors = 0
+
+
+/datum/dynamic_ruleset/roundstart/traitor/lewd/pre_execute()
+	var/list/mob/living/carbon/human/targets = list()
+
+	for(var/mob/living/carbon/human/target in GLOB.player_list)
+		if(target.client.prefs.noncon)
+			if(!(target.job in restricted_roles))
+				targets += target
+
+	if(candidates.len)
+		var/numTraitors = min(candidates.len, targets.len, 1) //This number affects the maximum number of traitors. We want 1 for right now.
+		if(numTraitors == 0)
+			to_chat(GLOB.admins, "No lewd traitors created. Are there any valid targets?")
+			return 0
+		return 1
+
+	return 0
+
+/datum/dynamic_ruleset/roundstart/traitor/lewd/execute()
+	var/mob/living/carbon/human/H = null
+	if(numTraitors)
+		for(var/i = 0, i<numTraitors, i++)
+			H = pick(candidates)
+			candidates.Remove(H)
+			H.mind.make_LewdTraitor()
+		return TRUE
+	return FALSE
 */
 
 //////////////////////////////////////////

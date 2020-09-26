@@ -179,7 +179,7 @@
 	required_candidates = 1
 	weight = 7
 	cost = 10
-	requirements = list(101,101,60,55,50,45,40,35,30,25)
+	requirements = list(101,101,40,30,30,30,25,20,20,15)
 	repeatable = TRUE
 	high_population_requirement = 10
 	flags = TRAITOR_RULESET
@@ -193,8 +193,8 @@
 	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
 	weight = 7
-	cost = 10
-	requirements = list(50,45,40,35,30,25,20,15,10,5)
+	cost = 5
+	requirements = list(30,30,30,25,20,15,10,10,5,5)
 	repeatable = TRUE
 	high_population_requirement = 10
 	flags = TRAITOR_RULESET
@@ -252,7 +252,7 @@
 	required_candidates = 1
 	weight = 3
 	cost = 35
-	requirements = list(101,101,80,70,60,50,40,30,20,20)
+	requirements = list(101,101,60,55,50,45,40,35,25,20)
 	high_population_requirement = 35
 	required_type = /mob/living/silicon/ai
 	var/ion_announce = 33
@@ -304,7 +304,7 @@
 	required_candidates = 1
 	weight = 1
 	cost = 20
-	requirements = list(101,90,80,70,60,50,40,30,30,30)
+	requirements = list(101,101,80,70,60,50,40,30,30,30)
 	high_population_requirement = 50
 	repeatable = FALSE //WE DON'T NEED MORE THAN ONE WIZARD
 	chaos_min = 3.5
@@ -380,8 +380,8 @@
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
 	weight = 4
-	cost = 10
-	requirements = list(101,100,90,80,70,60,50,40,30,20)
+	cost = 20
+	requirements = list(101,101,70,60,60,60,50,40,30,20)
 	high_population_requirement = 50
 	repeatable = TRUE
 	chaos_min = 3.5
@@ -405,7 +405,7 @@
 	required_candidates = 1
 	weight = 3
 	cost = 10
-	requirements = list(101,101,100,80,70,70,60,50,40,30)
+	requirements = list(101,101,100,80,70,60,50,40,30,20)
 	high_population_requirement = 50
 	repeatable = TRUE
 	var/list/vents = list()
@@ -453,7 +453,7 @@
 	required_candidates = 1
 	weight = 3
 	cost = 10
-	requirements = list(100,90,80,70,50,40,30,20,15,10)
+	requirements = list(101,50,40,30,20,20,20,20,15,10)
 	high_population_requirement = 50
 	repeatable = TRUE
 	var/list/spawn_locs = list()
@@ -542,7 +542,7 @@
 	required_candidates = 1
 	weight = 4
 	cost = 15
-	requirements = list(101,101,101,90,80,70,60,50,40,30)
+	requirements = list(101,101,101,40,35,30,25,20,20,20)
 	high_population_requirement = 30
 	//property_weights = list("story_potential" = 1, "extended" = -2, "valid" = 2)
 	var/list/spawn_locs = list()
