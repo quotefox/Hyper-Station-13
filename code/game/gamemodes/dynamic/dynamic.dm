@@ -802,7 +802,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 
 /// Refund threat, but no more than threat_level.
 /datum/game_mode/dynamic/proc/refund_threat(regain)
-	threat = min(threat_level,threat+regain)
+	threat = min(threat_level,threat+regain,100)
 
 /// Generate threat and increase the threat_level if it goes beyond, capped at 100
 /datum/game_mode/dynamic/proc/create_threat(gain)

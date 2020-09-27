@@ -199,7 +199,7 @@
 	high_population_requirement = 10
 	flags = TRAITOR_RULESET
 	chaos_min = 2.0
-	chaos_max = 3.5
+	chaos_max = 4.0
 
 /datum/dynamic_ruleset/midround/autotraitor/acceptable(population = 0, threat = 0)
 	var/player_count = mode.current_players[CURRENT_LIVING_PLAYERS].len
