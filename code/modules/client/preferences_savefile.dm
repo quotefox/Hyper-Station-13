@@ -348,6 +348,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["negative_quirks"]	>> negative_quirks
 	S["neutral_quirks"]		>> neutral_quirks
 
+	//Records
+	S["security_records"]			>>			security_records
+	S["medical_records"]			>>			medical_records
+
 	//Citadel code
 	S["feature_genitals_use_skintone"]	>> features["genitals_use_skintone"]
 	S["feature_exhibitionist"]			>> features["exhibitionist"]
@@ -479,7 +483,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	job_engsec_high = sanitize_integer(job_engsec_high, 0, 65535, initial(job_engsec_high))
 	job_engsec_med = sanitize_integer(job_engsec_med, 0, 65535, initial(job_engsec_med))
 	job_engsec_low = sanitize_integer(job_engsec_low, 0, 65535, initial(job_engsec_low))
-
+	security_records				= copytext(security_records, 1, MAX_FLAVOR_LEN)
+	medical_records					= copytext(medical_records, 1, MAX_FLAVOR_LEN)
 	all_quirks = SANITIZE_LIST(all_quirks)
 	positive_quirks = SANITIZE_LIST(positive_quirks)
 	negative_quirks = SANITIZE_LIST(negative_quirks)
@@ -566,7 +571,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["job_engsec_high"]	, job_engsec_high)
 	WRITE_FILE(S["job_engsec_med"]		, job_engsec_med)
 	WRITE_FILE(S["job_engsec_low"]		, job_engsec_low)
-
+	//Record Flavor Text
+	WRITE_FILE(S["security_records"]		, security_records)
+	WRITE_FILE(S["medical_records"]			, medical_records)
 	//Quirks
 	WRITE_FILE(S["all_quirks"]			, all_quirks)
 	WRITE_FILE(S["positive_quirks"]		, positive_quirks)
