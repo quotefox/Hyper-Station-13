@@ -22,21 +22,21 @@
 
 /datum/antagonist/nukeop/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/M = mob_override || owner.current
+	M.mirrorcanloadappearance = TRUE //Also gives them the option to use a mirror to load their custom character. Good luck if they use a plasma.
 	update_synd_icons_added(M)
 
 /datum/antagonist/nukeop/remove_innate_effects(mob/living/mob_override)
 	var/mob/living/M = mob_override || owner.current
+	M.mirrorcanloadappearance = FALSE
 	update_synd_icons_removed(M)
 
 /datum/antagonist/nukeop/proc/equip_op()
 	if(!ishuman(owner.current))
 		return
 	var/mob/living/carbon/human/H = owner.current
-
 	H.set_species(/datum/species/human) //Plasamen burn up otherwise, and lizards are vulnerable to asimov AIs
-
 	H.equipOutfit(nukeop_outfit)
-	H.mirrorcanloadappearance = TRUE //Also gives them the option to use a mirror to load their custom character. Good luck if they use a plasma.
+	H.checkloadappearance()
 	return TRUE
 
 /datum/antagonist/nukeop/greet()
