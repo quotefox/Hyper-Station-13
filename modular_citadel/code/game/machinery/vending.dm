@@ -73,6 +73,7 @@
 				/obj/item/clothing/neck/petcollar/locked = 1,
 				/obj/item/restraints/handcuffs/rope = 1,
 				/obj/item/leash = 1,
+				/obj/item/dildo/flared/gigantic/tacticool = 1,
 				/obj/item/clothing/mask/muzzle/ballgag = 3
 				)
 	refill_canister = /obj/item/vending_refill/kink

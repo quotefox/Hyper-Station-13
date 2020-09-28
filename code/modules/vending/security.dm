@@ -25,7 +25,8 @@
 					  /obj/item/clothing/mask/gas/sechailer/slut = 5,
 					  /obj/item/bdsm_whip/ridingcrop = 3,
 					  /obj/item/grenade/secbed = 3,
-					  /obj/item/dildo/flared/gigantic = 1)
+					  /obj/item/dildo/flared/gigantic = 1,
+					  /obj/item/dildo/flared/gigantic/tacticool = 1)
 	premium = list(/obj/item/coin/antagtoken = 1,
 					/obj/item/clothing/head/helmet/blueshirt = 1,
 					/obj/item/clothing/suit/armor/vest/blueshirt = 1,

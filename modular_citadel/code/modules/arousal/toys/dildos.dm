@@ -132,9 +132,19 @@ obj/item/dildo/flared/gigantic
 	name 				= "bitch breaker"
 	desc 				= "You can barely carry this thing! Meant for... \"advanced\" interrogation techniques."
 	dildo_size 			= 5
-	damtype 			= BRUTE
 	attack_verb 		= list("penetrated", "slapped", "gaped", "prolapsed", "inseminated", "destroyed", "broke", "demolished", "whacked")
-	force				= 10
+
+obj/item/dildo/flared/gigantic/tacticool
+	name 				= "tactical combat horsecock dildo"
+	desc 				= "This thing is hard as a rock and heavy like one. Why would you use this? What is wrong with you?"
+	damtype 			= BRUTE
+	dildo_size 			= 5
+	force				= 11
+	hitsound			= 'sound/weapons/punch4.ogg'
+	throwforce			= 5
+	alpha				= 255
+	random_color 		= FALSE
+	color 				= "Black"
 	
 obj/item/dildo/custom
 	name 				= "customizable dildo"
