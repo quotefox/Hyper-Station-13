@@ -127,12 +127,12 @@ obj/item/dildo/flared/huge
 	name 				= "literal horse cock"
 	desc 				= "THIS THING IS HUGE!"
 	dildo_size 			= 4
-	force				= 10
 
 obj/item/dildo/flared/gigantic
 	name 				= "bitch breaker"
 	desc 				= "You can barely carry this thing! Meant for... \"advanced\" interrogation techniques."
 	dildo_size 			= 5
+	damtype 			= BRUTE
 	attack_verb 		= list("penetrated", "slapped", "gaped", "prolapsed", "inseminated", "destroyed", "broke", "demolished", "whacked")
 	force				= 10
 	
