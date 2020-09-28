@@ -81,6 +81,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 					SM.real_name = M.real_name
 					M.dna.transfer_identity(SM)
 					SM.updateappearance(mutcolor_update=1)
+					SM.size_multiplier = M.size_multiplier
 				var/mob/dead/observer/C = pick(candies)
 				message_admins("Ghost candidate found! [C] key [C.key] is becoming a clone of [M] key: [M.key] (They agreed to respect the character they're becoming, and agreed to not ERP without express permission from the original.)")
 				SM.key = C.key
@@ -171,6 +172,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 								C.real_name = M.real_name
 								M.dna.transfer_identity(C, transfer_SE=1)
 								C.updateappearance(mutcolor_update=1)
+								C.size_multiplier = M.size_multiplier
 							C.apply_status_effect(/datum/status_effect/chem/SGDF)
 							var/datum/status_effect/chem/SGDF/S = C.has_status_effect(/datum/status_effect/chem/SGDF)
 							S.original = M
@@ -231,6 +233,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 			SM.real_name = M.real_name
 			M.dna.transfer_identity(SM)
 			SM.updateappearance(mutcolor_update=1)
+			SM.size_multiplier = M.size_multiplier
 		M.mind.transfer_to(SM)
 		M.visible_message("<span class='warning'>[M]'s body shudders, the growth factor rapidly splitting into a new clone of [M].</span>")
 

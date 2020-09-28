@@ -2,7 +2,7 @@
 /datum/game_mode
 	var/list/datum/mind/lewd = list()
 
-#define ROLE_LEWD_TRAITOR			"lewd traitor"
+
 
 /datum/mind/
 	var/sexed = FALSE //General flag for completion check
@@ -199,8 +199,6 @@ GLOBAL_LIST_INIT(hyper_special_roles, list(
 
 			owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/tatoralert.ogg', 100, FALSE, pressure_affected = FALSE)
 	greet()
-
-/datum/objective/noncon
 
 /datum/objective/noncon/New(var/datum/mind/_owner)
 	GLOB.objectives += src // CITADEL EDIT FOR CRYOPODS

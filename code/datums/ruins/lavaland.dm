@@ -200,7 +200,7 @@
 	description = "A place of shelter for a lone hermit, scraping by to live another day."
 	suffix = "lavaland_surface_hermit.dmm"
 	allow_duplicates = FALSE
-	cost = 10
+	cost = 5
 
 /datum/map_template/ruin/lavaland/swarmer_boss
 	name = "Crashed Shuttle"

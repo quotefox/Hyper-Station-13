@@ -82,11 +82,11 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 	  * If it is seven the range is:
 	  * 0-6, 7-13, 14-20, 21-27, 28-34, 35-41, 42-48, 49-55, 56-62, 63+
 	  */
-	var/pop_per_requirement = 6
+	var/pop_per_requirement = 5
 	/// The requirement used for checking if a second rule should be selected.
-	var/list/second_rule_req = list(101, 101, 100, 90, 80, 70, 60, 50, 40, 30)
+	var/list/second_rule_req = list(101, 100, 80, 60, 50, 40, 30, 30, 30, 30)
 	/// The requirement used for checking if a third rule should be selected.
-	var/list/third_rule_req = list(101, 101, 101, 101, 100, 90, 80, 70, 60, 50)
+	var/list/third_rule_req = list(101, 101, 101, 90, 80, 70, 60, 50, 50, 50)
 	/// Threat requirement for a second ruleset when high pop override is in effect.
 	var/high_pop_second_rule_req = 40
 	/// Threat requirement for a third ruleset when high pop override is in effect.
@@ -330,7 +330,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 	var/midround_injection_cooldown_middle = 0.5*(GLOB.dynamic_midround_delay_max + GLOB.dynamic_midround_delay_min)
 	midround_injection_cooldown = round(CLAMP(EXP_DISTRIBUTION(midround_injection_cooldown_middle), GLOB.dynamic_midround_delay_min, GLOB.dynamic_midround_delay_max)) + world.time
 
-	event_injection_cooldown = (rand(GLOB.dynamic_event_delay_min, GLOB.dynamic_event_delay_max) + world.time + (10 MINUTES)) //Add a delay to the first event so people get settled in
+	event_injection_cooldown = (rand(GLOB.dynamic_event_delay_min, GLOB.dynamic_event_delay_max) + world.time + (3 MINUTES)) //Add a delay to the first event so people get settled in
 
 	threat_injection_cooldown = (GLOB.dynamic_threat_delay + world.time)
 
@@ -727,7 +727,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 			chance += 25-10*(max_pop_per_antag-current_pop_per_antag)
 	*/
 	//Hyper change - Base injection chance based on chaos. 
-	chance = (GLOB.dynamic_chaos_level * 7) //Base chance from 0 to 35
+	chance = (GLOB.dynamic_chaos_level * 10) //Base chance from 0 to 50
 	if (current_players[CURRENT_DEAD_PLAYERS].len > current_players[CURRENT_LIVING_PLAYERS].len)
 		chance -= 30 // More than half the crew died? ew, let's calm down on antags
 	if (threat > 70)
@@ -802,7 +802,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 
 /// Refund threat, but no more than threat_level.
 /datum/game_mode/dynamic/proc/refund_threat(regain)
-	threat = min(threat_level,threat+regain)
+	threat = min(threat_level,threat+regain,100)
 
 /// Generate threat and increase the threat_level if it goes beyond, capped at 100
 /datum/game_mode/dynamic/proc/create_threat(gain)

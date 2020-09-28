@@ -724,6 +724,7 @@ datum/status_effect/stabilized/blue/on_remove()
 		C.real_name = O.real_name
 		O.dna.transfer_identity(C)
 		C.updateappearance(mutcolor_update=1)
+		C.size_multiplier = O.size_multiplier
 	return ..()
 
 /datum/status_effect/stabilized/cerulean/tick()
