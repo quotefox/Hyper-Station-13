@@ -1,4 +1,3 @@
-
 //the essential proc to call when an obj must receive damage of any kind.
 /obj/proc/take_damage(damage_amount, damage_type = BRUTE, damage_flag = 0, sound_effect = 1, attack_dir, armour_penetration = 0)
 	if(QDELETED(src))
@@ -126,10 +125,19 @@
 		if(. && !play_soundeffect)
 			playsound(src, 'sound/effects/meteorimpact.ogg', 100, 1)
 
+#define BLACKLISTED_OBJECTS list(/obj/machinery/power/apc, /obj/machinery/airalarm, /obj/machinery/power/smes, /obj/structure/cable)
+
 /obj/attack_slime(mob/living/simple_animal/slime/user)
 	if(!user.is_adult)
 		return
 	attack_generic(user, rand(10, 15), "melee", 1)
+	if(src.type in BLACKLISTED_OBJECTS)
+		return
+	if(istype(src, /obj/machinery/atmospherics))
+		return
+	attack_generic(user, rand(10, 15), BRUTE, "melee", 1)
+
+#undef BLACKLISTED_OBJECTS
 
 /obj/mech_melee_attack(obj/mecha/M)
 	M.do_attack_animation(src)
