@@ -127,6 +127,7 @@ obj/item/dildo/flared/huge
 	name 				= "literal horse cock"
 	desc 				= "THIS THING IS HUGE!"
 	dildo_size 			= 4
+	force				= 10
 
 obj/item/dildo/flared/gigantic
 	name 				= "bitch breaker"
