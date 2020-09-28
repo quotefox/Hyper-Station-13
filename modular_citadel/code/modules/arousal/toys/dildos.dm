@@ -134,7 +134,8 @@ obj/item/dildo/flared/gigantic
 	desc 				= "You can barely carry this thing! Meant for... \"advanced\" interrogation techniques."
 	dildo_size 			= 5
 	attack_verb 		= list("penetrated", "slapped", "gaped", "prolapsed", "inseminated", "destroyed", "broke", "demolished", "whacked")
-
+	force				= 10
+	
 obj/item/dildo/custom
 	name 				= "customizable dildo"
 	desc 				= "Thanks to significant advances in synthetic nanomaterials, this dildo is capable of taking on many different forms to fit the user's preferences! Pricy!"
