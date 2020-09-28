@@ -312,7 +312,7 @@
 	suffix = "narnar"
 	name = "Shuttle 667"
 	description = "Looks like this shuttle may have wandered into the darkness between the stars on route to the station. Let's not think too hard about where all the bodies came from."
-	admin_notes = "Contains real cult ruins, mob eyeballs, and inactive constructs. Cult mobs will automatically be sentienced by fun balloon. \
+	admin_notes = "Contains real cult ruins and inactive constructs. Cult mobs will automatically be sentienced by fun balloon. \
 	Cloning pods in 'medbay' area are showcases and nonfunctional."
 
 /datum/map_template/shuttle/emergency/pubby
@@ -329,6 +329,13 @@
 	an engine room stocked with various supplies, and a crew capacity of 80+ to top it all off. Live large, live Cere."
 	admin_notes = "Seriously big, even larger than the Delta shuttle."
 	credit_cost = 10000
+
+/datum/map_template/shuttle/emergency/brazil
+	suffix = "brazil"
+	name = "Brazil Station Emergency Shuttle"
+	description = "You're going to Brazil this time. Buying this shuttle is likely one of the fastest ways to get lynched as a captain."
+	admin_notes = "Big, full of gorillas, bananas, monkeys, monkey cubes and extinguishers. What could possibly go wrong?"
+	credit_cost = 9666
 
 /datum/map_template/shuttle/emergency/supermatter
 	suffix = "supermatter"

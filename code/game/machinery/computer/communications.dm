@@ -172,6 +172,9 @@
 						if(SSshuttle.points >= S.credit_cost)
 							var/obj/machinery/shuttle_manipulator/M = locate() in GLOB.machines
 							if(M)
+								if(S.name == "Brazil Station Emergency Shuttle")
+									for(var/mob/P in GLOB.player_list)
+										SEND_SOUND(P, 'sound/misc/ronaldinho.ogg') //fight me
 								SSshuttle.shuttle_purchased = TRUE
 								SSshuttle.points -= S.credit_cost
 								minor_announce("[usr.real_name] has purchased [S.name] for [S.credit_cost] credits." , "Shuttle Purchase")
