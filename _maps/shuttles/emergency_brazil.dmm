@@ -145,6 +145,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/item/reagent_containers/food/snacks/soup/macaco,
 /turf/open/floor/wood,
 /area/shuttle/escape)
 "ap" = (
@@ -369,6 +370,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/mob/living/carbon/monkey/angry,
 /turf/open/floor/wood,
 /area/shuttle/escape)
 "aJ" = (
@@ -499,6 +501,7 @@
 "aV" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/grown/banana/bluespace,
+/obj/item/reagent_containers/food/snacks/soup/macaco,
 /turf/open/floor/wood,
 /area/shuttle/escape)
 "bb" = (
@@ -902,6 +905,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/mob/living/carbon/monkey/angry,
 /turf/open/floor/plasteel/white,
 /area/shuttle/escape)
 "cw" = (
@@ -1194,6 +1198,7 @@
 	dir = 4
 	},
 /obj/item/reagent_containers/food/drinks/beer,
+/mob/living/carbon/monkey/angry,
 /turf/open/floor/wood,
 /area/shuttle/escape)
 "cT" = (
@@ -1283,13 +1288,13 @@
 /area/shuttle/escape)
 "dc" = (
 /obj/structure/table/wood,
-/obj/item/storage/box/metalfoam,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
+/obj/item/reagent_containers/food/snacks/soup/macaco,
 /turf/open/floor/plasteel,
 /area/shuttle/escape)
 "dd" = (
@@ -1506,6 +1511,10 @@
 /obj/item/grown/bananapeel,
 /turf/open/floor/grass,
 /area/shuttle/escape)
+"hX" = (
+/mob/living/carbon/monkey/angry,
+/turf/open/floor/plasteel,
+/area/shuttle/escape)
 "ig" = (
 /obj/structure/flora/junglebush/large,
 /turf/open/floor/grass,
@@ -1523,6 +1532,7 @@
 /turf/open/floor/grass,
 /area/shuttle/escape)
 "mt" = (
+/mob/living/carbon/monkey/angry,
 /turf/open/floor/mineral/uranium,
 /area/shuttle/escape)
 "mM" = (
@@ -1625,6 +1635,13 @@
 /obj/structure/reagent_dispensers/beerkeg,
 /turf/open/floor/grass,
 /area/shuttle/escape)
+"zJ" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/mob/living/carbon/monkey/angry,
+/turf/open/floor/wood,
+/area/shuttle/escape)
 "zT" = (
 /obj/machinery/power/terminal{
 	dir = 4
@@ -1690,6 +1707,10 @@
 /obj/structure/flora/grass/jungle,
 /turf/open/floor/grass,
 /area/shuttle/escape)
+"Gt" = (
+/obj/item/reagent_containers/food/snacks/soup/macaco,
+/turf/open/floor/grass,
+/area/shuttle/escape)
 "GS" = (
 /obj/effect/turf_decal/delivery,
 /mob/living/simple_animal/banana_spider,
@@ -1719,6 +1740,10 @@
 "Js" = (
 /obj/item/chair/wood/wings,
 /turf/open/floor/grass,
+/area/shuttle/escape)
+"Mh" = (
+/mob/living/carbon/monkey/angry,
+/turf/open/floor/wood,
 /area/shuttle/escape)
 "Nl" = (
 /obj/structure/mineral_door/woodrustic,
@@ -1831,7 +1856,7 @@ ad
 ad
 ad
 cO
-cO
+WU
 cO
 cO
 cO
@@ -1858,7 +1883,7 @@ ad
 aT
 cR
 Io
-cR
+Mh
 cR
 ad
 cO
@@ -1951,15 +1976,15 @@ ac
 ad
 cO
 WU
-cO
+uD
 cO
 cO
 uD
 cO
 cO
-bX
 cO
 cO
+uD
 cO
 cO
 cO
@@ -2005,7 +2030,7 @@ cO
 cO
 pm
 cO
-bX
+cO
 cO
 uw
 cO
@@ -2051,7 +2076,7 @@ bL
 cO
 cO
 cO
-cO
+WU
 cO
 uD
 cO
@@ -2059,7 +2084,7 @@ ma
 cP
 wF
 bc
-bc
+hX
 dm
 ad
 dy
@@ -2077,18 +2102,18 @@ cR
 ad
 aT
 cR
-cR
+Mh
 BC
 by
 ac
 cO
 cO
 YI
-cO
+uD
 cO
 cO
 uD
-cO
+Gt
 WU
 cO
 uD
@@ -2129,7 +2154,6 @@ cO
 cO
 bL
 cO
-bX
 cO
 cO
 cO
@@ -2137,6 +2161,7 @@ cO
 cO
 cO
 cO
+uD
 cO
 cO
 Fk
@@ -2204,7 +2229,7 @@ ac
 aj
 bw
 cR
-cR
+Mh
 aO
 ad
 ad
@@ -2218,7 +2243,7 @@ cO
 cO
 cO
 pJ
-cO
+WU
 cO
 cO
 cO
@@ -2259,7 +2284,7 @@ cO
 cO
 bL
 cO
-bX
+cO
 cO
 cO
 cO
@@ -2304,7 +2329,7 @@ cO
 cO
 cO
 cO
-cO
+uD
 Bf
 cO
 bL
@@ -2430,7 +2455,7 @@ ad
 cR
 cR
 cR
-bt
+zJ
 cR
 cR
 bN
@@ -2453,7 +2478,7 @@ co
 cK
 ad
 cR
-cR
+Mh
 df
 ad
 dt
@@ -2487,7 +2512,7 @@ Bu
 Bu
 cO
 Eb
-cO
+WU
 ac
 cl
 cs
@@ -2520,7 +2545,7 @@ cR
 cR
 bt
 cR
-cR
+Mh
 bN
 ad
 bV
@@ -2529,7 +2554,7 @@ cO
 cO
 cO
 cO
-cO
+WU
 cO
 cd
 ad
