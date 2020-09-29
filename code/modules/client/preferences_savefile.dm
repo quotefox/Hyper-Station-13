@@ -101,7 +101,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["uses_glasses_colour"]>> uses_glasses_colour
 	S["clientfps"]			>> clientfps
 	S["chat_on_map"]		>> chat_on_map
-	S["radiosounds"]		>> chat_on_map
+	S["radiosounds"]		>> radiosounds
 	S["max_chat_length"]	>> max_chat_length
 	S["see_chat_non_mob"] 	>> see_chat_non_mob
 
