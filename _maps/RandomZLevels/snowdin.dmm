@@ -182,8 +182,7 @@
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/post/research)
 "aP" = (
-/obj/structure/filingcabinet/chestdrawer,
-/obj/item/paper/fluff/awaymissions/snowdin/research_feed,
+/obj/machinery/computer/rdconsole/core,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/post/research)
 "aQ" = (
@@ -2199,7 +2198,6 @@
 /area/awaymission/snowdin/post)
 "eZ" = (
 /obj/structure/table,
-/obj/item/clothing/neck/stethoscope,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -2207,6 +2205,7 @@
 	dir = 2;
 	pixel_y = 24
 	},
+/obj/item/clothing/neck/stethoscope,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
@@ -6771,6 +6770,10 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
+/obj/item/stock_parts/matter_bin/adv,
+/obj/item/stock_parts/matter_bin/adv,
+/obj/item/stock_parts/matter_bin/adv,
+/obj/item/stock_parts/manipulator/pico,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "or" = (
@@ -7258,6 +7261,7 @@
 	pixel_x = 4;
 	pixel_y = 8
 	},
+/obj/item/clothing/gloves/color/yellow,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "pz" = (
@@ -7434,6 +7438,7 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/visible{
 	dir = 1
 	},
+/obj/item/circuitboard/machine/autolathe,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -15825,6 +15830,15 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_dock)
+"Wh" = (
+/obj/structure/table,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/item/circuitboard/machine/circuit_imprinter,
+/obj/item/paper/fluff/awaymissions/snowdin/research_feed,
+/turf/open/floor/plasteel/dark,
+/area/awaymission/snowdin/post/research)
 "Yn" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -27414,7 +27428,7 @@ af
 af
 af
 ar
-aw
+aP
 aE
 aE
 bc
@@ -27671,7 +27685,7 @@ af
 am
 ag
 ar
-ax
+Wh
 aI
 aE
 aE
@@ -27930,7 +27944,7 @@ af
 ar
 aD
 aG
-aP
+aO
 bc
 bo
 bK
