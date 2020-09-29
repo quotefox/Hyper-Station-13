@@ -50,7 +50,7 @@
 				to_chat(target, "<span class='warning'>You feel something interfering with your mental conditioning, but you resist it!</span>")
 			else
 				to_chat(target, "<span class='notice'>You feel a sense of peace and security. You are now enslaved!</span>")
-		var/slave_objective = "[(target.client?.prefs.lewdchem?"Obey all of security's commands, and be the perfect pet.":"Obey all of security's commands.")]"
+		var/slave_objective = "[(target.client?.prefs.lewdchem?"Security has enslaved you into being their pet! Obey their commands, but remember: a good pet is not violent.":"You've been neutralized by security! Follow their orders, but remember: neutralization also means nonviolence.")]"
 		brainwash(target, slave_objective)
 		target.sec_hud_set_implants()
 		return TRUE
