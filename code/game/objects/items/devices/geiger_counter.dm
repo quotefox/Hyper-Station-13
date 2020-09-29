@@ -18,6 +18,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	slot_flags = ITEM_SLOT_BELT
+	rad_flags = RAD_NO_CONTAMINATE
 	materials = list(MAT_METAL = 150, MAT_GLASS = 150)
 
 	var/grace = RAD_GRACE_PERIOD
@@ -38,6 +39,7 @@
 
 /obj/item/geiger_counter/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	QDEL_NULL(soundloop)
 	return ..()
 
 /obj/item/geiger_counter/process()
