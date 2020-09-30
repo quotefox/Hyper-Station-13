@@ -94,11 +94,19 @@
 /datum/quirk/musician/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/instrument/guitar/guitar = new(get_turf(H))
-	H.put_in_hands(guitar)
-	H.equip_to_slot(guitar, SLOT_IN_BACKPACK)
+	var/list/instrument_slots = list (
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS,
+	)
+	H.equip_in_one_of_slots(guitar, instrument_slots, qdel_on_fail = TRUE)
 	var/obj/item/musicaltuner/musicaltuner = new(get_turf(H))
-	H.put_in_hands(musicaltuner)
-	H.equip_to_slot(musicaltuner, SLOT_IN_BACKPACK)
+	var/list/tuner_slots = list (
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS,
+		"left pocket" = SLOT_L_STORE,
+		"right pocket" = SLOT_R_STORE
+	)
+	H.equip_in_one_of_slots(musicaltuner, tuner_slots, qdel_on_fail = TRUE)
 	H.regenerate_icons()
 
 /datum/quirk/night_vision
@@ -127,8 +135,14 @@
 /datum/quirk/photographer/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/camera/camera = new(get_turf(H))
-	H.put_in_hands(camera)
-	H.equip_to_slot(camera, SLOT_NECK)
+	var/list/camera_slots = list (
+		"neck" = ITEM_SLOT_NECK,
+		"left pocket" = SLOT_L_STORE,
+		"right pocket" = SLOT_R_STORE,
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS
+	)
+	H.equip_in_one_of_slots(camera, camera_slots, qdel_on_fail = TRUE)
 	H.regenerate_icons()
 
 /datum/quirk/selfaware
@@ -162,8 +176,13 @@
 /datum/quirk/tagger/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/toy/crayon/spraycan/spraycan = new(get_turf(H))
-	H.put_in_hands(spraycan)
-	H.equip_to_slot(spraycan, SLOT_IN_BACKPACK)
+	var/list/spray_slots = list (
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS,
+		"left pocket" = SLOT_L_STORE,
+		"right pocket" = SLOT_R_STORE
+	)
+	H.equip_in_one_of_slots(spraycan, spray_slots, qdel_on_fail = TRUE)
 	H.regenerate_icons()
 
 /datum/quirk/voracious
@@ -184,7 +203,13 @@
 /datum/quirk/trandening/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/autosurgeon/gloweyes/gloweyes = new(get_turf(H))
-	H.equip_to_slot(gloweyes, SLOT_IN_BACKPACK)
+	var/list/gloweye_slots = list (
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS,
+		"left pocket" = SLOT_L_STORE,
+		"right pocket" = SLOT_R_STORE
+	)
+	H.equip_in_one_of_slots(gloweyes, gloweye_slots, qdel_on_fail = TRUE)
 	H.regenerate_icons()
 
 /datum/quirk/bloodpressure
