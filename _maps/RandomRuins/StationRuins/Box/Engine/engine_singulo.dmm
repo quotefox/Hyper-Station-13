@@ -39,9 +39,8 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -300,9 +299,8 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "wt" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
 /turf/open/floor/plating,
 /area/engine/engineering)
@@ -310,9 +308,8 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -546,9 +543,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -589,9 +585,8 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
@@ -828,9 +823,8 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)

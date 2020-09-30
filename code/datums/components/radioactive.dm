@@ -34,13 +34,12 @@
 	var/atom/movable/master = parent
 	master.add_filter("rad_glow", 2, list("type" = "outline", "color" = "#39ff1430", "size" = 2))
 	addtimer(CALLBACK(src, .proc/glow_loop, master), rand(1,19))//Things should look uneven
-
 	START_PROCESSING(SSradiation, src)
 
 /datum/component/radioactive/Destroy()
-	STOP_PROCESSING(SSradiation, src)
 	var/atom/movable/master = parent
 	master.remove_filter("rad_glow")
+	STOP_PROCESSING(SSradiation, src)
 	return ..()
 
 /datum/component/radioactive/process()
