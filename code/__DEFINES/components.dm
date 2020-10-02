@@ -25,23 +25,17 @@
 //////////////////////////////////////////////////////////////////
 
 // /datum signals
-#define COMSIG_PARENT_QDELETED "parent_qdeleted"				//after a datum's Destroy() is called: (force, qdel_hint), at this point none of the other components chose to interrupt qdel and Destroy has been called
-
 // /atom signals
 	//Positions for overrides list
 	//End positions
 #define COMSIG_ATOM_RATVAR_ACT "atom_ratvar_act"				//from base of atom/ratvar_act(): ()
 /////////////////
 
-
-
 // /area signals
 
 // /turf signals
 
 // /atom/movable signals
-
-// /mob signals
 
 // /mob/living signals
 
@@ -96,3 +90,14 @@
 //Ouch my toes!
 #define CALTROP_BYPASS_SHOES 1
 #define CALTROP_IGNORE_WALKERS 2
+
+#define ELEMENT_INCOMPATIBLE 1 // Return value to cancel attaching
+
+// /datum/element flags
+/// Causes the detach proc to be called when the host object is being deleted
+#define ELEMENT_DETACH		(1 << 0)
+/**
+  * Only elements created with the same arguments given after `id_arg_index` share an element instance
+  * The arguments are the same when the text and number values are the same and all other values have the same ref
+  */
+#define ELEMENT_BESPOKE		(1 << 1)

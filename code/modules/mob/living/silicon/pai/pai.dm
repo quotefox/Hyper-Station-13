@@ -11,7 +11,7 @@
 	health = 500
 	maxHealth = 500
 	layer = BELOW_MOB_LAYER
-	can_be_held = TRUE
+	var/datum/element/mob_holder/current_mob_holder //because only a few of their chassis can be actually held.
 
 	var/network = "ss13"
 	var/obj/machinery/camera/current = null
@@ -58,10 +58,12 @@
 	var/canholo = TRUE
 	var/obj/item/card/id/access_card = null
 	var/chassis = "repairbot"
+	var/dynamic_chassis
+	var/dynamic_chassis_sit = FALSE			//whether we're sitting instead of resting spritewise
+	var/dynamic_chassis_bellyup = FALSE		//whether we're lying down bellyup
 	var/list/possible_chassis = list("cat" = TRUE, "mouse" = TRUE, "monkey" = TRUE, "corgi" = FALSE, "fox" = FALSE, "repairbot" = TRUE, "rabbit" = TRUE, "operator" = TRUE)		//assoc value is whether it can be picked up.
-	var/static/item_head_icon = 'icons/mob/pai_item_head.dmi'
-	var/static/item_lh_icon = 'icons/mob/pai_item_lh.dmi'
-	var/static/item_rh_icon = 'icons/mob/pai_item_rh.dmi'
+	var/list/dynamic_chassis_icons		//ditto.
+	var/list/chassis_pixel_offsets_x	//stupid dogborgs
 
 	var/emitterhealth = 20
 	var/emittermaxhealth = 20

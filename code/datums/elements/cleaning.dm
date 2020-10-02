@@ -1,19 +1,18 @@
-/datum/component/cleaning
-	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
+/datum/element/cleaning/Attach(datum/target)
+	. = ..()
+	if(!ismovableatom(target))
+		return ELEMENT_INCOMPATIBLE
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/Clean)
 
-/datum/component/cleaning/Initialize()
-	if(!ismovableatom(parent))
-		return COMPONENT_INCOMPATIBLE
-	RegisterSignal(parent, list(COMSIG_MOVABLE_MOVED), .proc/Clean)
+/datum/element/cleaning/Detach(datum/target)
+	. = ..()
+	UnregisterSignal(target, COMSIG_MOVABLE_MOVED)
 
-/datum/component/cleaning/proc/Clean()
-	var/atom/movable/AM = parent
-	var/turf/tile = AM.loc
-	if(!isturf(tile))
-		return
-
-	SEND_SIGNAL(tile, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
-	for(var/A in tile)
+/datum/element/cleaning/proc/Clean(datum/source)
+	var/atom/movable/AM = source
+	var/turf/T = AM.loc
+	SEND_SIGNAL(T, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
+	for(var/A in T)
 		if(is_cleanable(A))
 			qdel(A)
 		else if(istype(A, /obj/item))
@@ -36,4 +35,4 @@
 				SEND_SIGNAL(cleaned_human, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
 				cleaned_human.wash_cream()
 				cleaned_human.regenerate_icons()
-				to_chat(cleaned_human, "<span class='danger'>[AM] cleans your face!</span>")
+				to_chat(cleaned_human, "<span class='danger'>[src] cleans your face!</span>")

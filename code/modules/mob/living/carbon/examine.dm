@@ -16,10 +16,6 @@
 		msg += "[t_He] [t_is] wearing [wear_mask.get_examine_string(user)] on [t_his] face.\n"
 	if (wear_neck)
 		msg += "[t_He] [t_is] wearing [wear_neck.get_examine_string(user)] around [t_his] neck.\n"
-	if(can_be_held)
-		msg += "[t_He] might be able to be picked up with <b>Alt+Click</b>!\n"
-
-
 
 	for(var/obj/item/I in held_items)
 		if(!(I.item_flags & ABSTRACT))
@@ -111,7 +107,7 @@
 				msg += "[t_He] look[p_s()] very happy.\n"
 			if(MOOD_LEVEL_HAPPY4 to INFINITY)
 				msg += "[t_He] look[p_s()] ecstatic.\n"
+	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, msg)
 	msg += "*---------*</span>"
-
 	to_chat(user, msg)
 	return msg

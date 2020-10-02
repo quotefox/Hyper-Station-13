@@ -168,6 +168,10 @@
 #define TRAIT_COLDBLOODED		"coldblooded"	// Your body is literal room temperature. Does not make you immune to the temp.
 #define TRAIT_FLIMSY		"flimsy" //you have 20% less maxhealth
 #define TRAIT_TOUGH		"tough" //you have 10% more maxhealth
+#define TRAIT_AUTO_CATCH_ITEM	"auto_catch_item"
+#define TRAIT_CLOWN_MENTALITY	"clown_mentality" // The future is now, clownman.
+#define TRAIT_FREESPRINT		"free_sprinting"
+
 
 // common trait sources
 #define TRAIT_GENERIC "generic"
