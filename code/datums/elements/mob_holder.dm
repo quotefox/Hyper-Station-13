@@ -40,7 +40,7 @@
 		to_chat(user, "<span class='warning'>Your hands are full!</span>")
 		return FALSE
 	if(source.buckled)
-		to_chat(user, "<span class='warning'>[src] is buckled to something!</span>")
+		to_chat(user, "<span class='warning'>[source] is buckled to something!</span>")
 		return FALSE
 	if(source == user)
 		to_chat(user, "<span class='warning'>You can't pick yourself up.</span>")
@@ -52,7 +52,7 @@
 
 	source.visible_message("<span class='warning'>[user] picks up [source]!</span>", \
 					"<span class='userdanger'>[user] picks you up!</span>")
-	to_chat(user, "<span class='notice'>You pick [src] up.</span>")
+	to_chat(user, "<span class='notice'>You pick [source] up.</span>")
 	source.drop_all_held_items()
 	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(source), source, worn_state, alt_worn, right_hand, left_hand, inv_slots)
 	if(proctype)
