@@ -40,6 +40,7 @@
 	. = ..()
 	if(!CONFIG_GET(flag/disable_human_mood))
 		AddComponent(/datum/component/mood)
+	AddElement(/datum/element/mob_holder/micro, "micro")
 
 /mob/living/carbon/human/Destroy()
 	QDEL_NULL(physiology)

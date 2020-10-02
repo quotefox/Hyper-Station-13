@@ -1,5 +1,5 @@
 /datum/element/mob_holder
-	element_flags = ELEMENT_BESPOKE
+	element_flags = ELEMENT_BESPOKE|ELEMENT_DETACH
 	id_arg_index = 2
 	var/worn_state
 	var/alt_worn
@@ -54,9 +54,6 @@
 					"<span class='userdanger'>[user] picks you up!</span>")
 	to_chat(user, "<span class='notice'>You pick [source] up.</span>")
 	source.drop_all_held_items()
-	if(ishuman(source)) //Slightly hacky edit to at least not disable the micro holding system entirely
-		var/obj/item/clothing/head/mob_holder/micro/holder = new(get_turf(source), source, worn_state, alt_worn, right_hand, left_hand, inv_slots)
-		return holder
 	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(source), source, worn_state, alt_worn, right_hand, left_hand, inv_slots)
 	if(proctype)
 		INVOKE_ASYNC(src, proctype, source, holder, user)
