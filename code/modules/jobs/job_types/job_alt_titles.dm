@@ -73,7 +73,7 @@
 	alt_titles = list("Prison Chief", "Armory Manager", "Prison Administrator")
 	
 /datum/job/officer
-	alt_titles = list("Security Agent", "Probation OFficer", "Security Peacekeeper", "Security Cadet")
+	alt_titles = list("Security Agent", "Probation Officer", "Security Peacekeeper", "Security Cadet")
 
 /datum/job/detective
 	alt_titles = list("Forensics Technician", "Private Investigator", "Gumshoe")
