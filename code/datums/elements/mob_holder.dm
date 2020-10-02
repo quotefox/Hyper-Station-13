@@ -115,7 +115,7 @@
 			w_class = WEIGHT_CLASS_BULKY
 		if(MOB_SIZE_LARGE)
 			w_class = WEIGHT_CLASS_HUGE
-	RegisterSignal(src, COMSIG_CLICK_SHIFT, .proc/examine_held_mob)
+	RegisterSignal(src, COMSIG_CLICK_SHIFT, .proc/examine_held_mob, override = TRUE)
 
 /obj/item/clothing/head/mob_holder/Destroy()
 	if(held_mob)
