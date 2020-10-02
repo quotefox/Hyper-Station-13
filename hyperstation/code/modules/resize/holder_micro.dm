@@ -33,6 +33,7 @@
 	if(rh_icon)
 		righthand_file = rh_icon
 
+/* This has no need to exist as default assimilate already got it all covered
 /obj/item/clothing/head/mob_holder/micro/proc/assimilate(mob/living/M)
 	switch(M.mob_size)
 		if(MOB_SIZE_TINY)
@@ -43,6 +44,7 @@
 			w_class = WEIGHT_CLASS_BULKY
 		if(MOB_SIZE_LARGE)
 			w_class = WEIGHT_CLASS_HUGE
+*/
 
 
 /obj/item/clothing/head/mob_holder/micro/Destroy()
@@ -73,6 +75,8 @@
 	visible_message("<span class='warning'>[src] escapes [L]!")
 	release()
 
+//The following code has been disabled, hopefully temporarily. - HS13 elements update
+/*
 /mob/living/proc/mob_pickup_micro(mob/living/L)
 	var/obj/item/clothing/head/mob_holder/micro/holder = generate_mob_holder()
 	if(!holder)
@@ -123,6 +127,8 @@
 	. = ..()
 	if(mob_try_pickup_micro(user))
 		return TRUE
+
+*/
 
 /obj/item/clothing/head/mob_holder/micro/assume_air(datum/gas_mixture/env)
 	var/atom/location = loc

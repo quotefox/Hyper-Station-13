@@ -54,6 +54,9 @@
 					"<span class='userdanger'>[user] picks you up!</span>")
 	to_chat(user, "<span class='notice'>You pick [source] up.</span>")
 	source.drop_all_held_items()
+	if(ishuman(source)) //Slightly hacky edit to at least not disable the micro holding system entirely
+		var/obj/item/clothing/head/mob_holder/micro/holder = new(get_turf(source), source, worn_state, alt_worn, right_hand, left_hand, inv_slots)
+		return holder
 	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(source), source, worn_state, alt_worn, right_hand, left_hand, inv_slots)
 	if(proctype)
 		INVOKE_ASYNC(src, proctype, source, holder, user)
@@ -77,6 +80,7 @@
 	icon_state = ""
 	w_class = WEIGHT_CLASS_BULKY
 	var/mob/living/held_mob
+	var/can_head = FALSE
 
 /obj/item/clothing/head/mob_holder/Initialize(mapload, mob/living/target, worn_state, alt_worn, right_hand, left_hand, slots = NONE)
 	. = ..()
@@ -110,6 +114,8 @@
 			w_class = WEIGHT_CLASS_TINY
 		if(MOB_SIZE_SMALL)
 			w_class = WEIGHT_CLASS_NORMAL
+		if(MOB_SIZE_HUMAN)
+			w_class = WEIGHT_CLASS_BULKY
 		if(MOB_SIZE_LARGE)
 			w_class = WEIGHT_CLASS_HUGE
 	RegisterSignal(src, COMSIG_CLICK_SHIFT, .proc/examine_held_mob)

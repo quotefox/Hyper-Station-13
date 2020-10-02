@@ -2931,7 +2931,7 @@
 #include "hyperstation\code\modules\crafting\recipes.dm"
 #include "hyperstation\code\modules\integrated_electronics\input.dm"
 #include "hyperstation\code\modules\patreon\patreon.dm"
-// #include "hyperstation\code\modules\resize\holder_micro.dm"
+#include "hyperstation\code\modules\resize\holder_micro.dm"
 #include "hyperstation\code\modules\resize\resizing.dm"
 #include "hyperstation\code\modules\resize\sizechems.dm"
 #include "hyperstation\code\modules\resize\sizegun.dm"
