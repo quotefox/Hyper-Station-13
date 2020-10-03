@@ -791,6 +791,12 @@ datum/sprite_accessory/ears/human/gret
 	extra = TRUE
 	extra_color_src = MATRIXED
 
+/datum/sprite_accessory/mam_snouts/skullbird
+	name = "Skullbird"
+	icon_state = "skullbird"
+	extra = TRUE
+	extra_color_src = MATRIXED
+
 /datum/sprite_accessory/mam_snouts/lcanid
 	name = "Mammal, Long"
 	icon_state = "lcanid"
