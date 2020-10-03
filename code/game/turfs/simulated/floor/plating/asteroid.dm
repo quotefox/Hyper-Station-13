@@ -259,12 +259,17 @@
 	T.ChangeTurf(turf_type, null, CHANGETURF_IGNORE_AIR)
 
 /turf/open/floor/plating/asteroid/airless/cave/proc/SpawnMonster(turf/T)
+	if(!isarea(loc))
+		return
+	var/area/A = loc
 	if(prob(30))
-		if(istype(loc, /area/mine/explored) || !istype(loc, /area/lavaland/surface/outdoors/unexplored))
+		if(!A.mob_spawn_allowed)
 			return
 		var/randumb = pickweight(mob_spawn_list)
+		if(!randumb)
+			return
 		while(randumb == SPAWN_MEGAFAUNA)
-			if(istype(loc, /area/lavaland/surface/outdoors/unexplored/danger)) //this is danger. it's boss time.
+			if(A.megafauna_spawn_allowed && megafauna_spawn_list && megafauna_spawn_list.len) //this is danger. it's boss time.
 				var/maybe_boss = pickweight(megafauna_spawn_list)
 				if(megafauna_spawn_list[maybe_boss])
 					randumb = maybe_boss
@@ -282,7 +287,7 @@
 				return //prevents tendrils spawning in each other's collapse range
 
 		new randumb(T)
-	return
+	return TRUE
 
 #undef SPAWN_MEGAFAUNA
 #undef SPAWN_BUBBLEGUM
