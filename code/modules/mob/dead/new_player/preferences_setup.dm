@@ -24,7 +24,7 @@
 	features = random_features(pref_species?.id)
 	age = rand(AGE_MIN,AGE_MAX)
 
-/datum/preferences/proc/update_preview_icon()
+/datum/preferences/proc/update_preview_icon(equip_job = TRUE)
 	// Silicons only need a very basic preview since there is no customization for them.
 //	var/wide_icon = FALSE //CITDEL THINGS
 //	if(features["taur"] != "None")
@@ -40,7 +40,6 @@
 
 	// Set up the dummy for its photoshoot
 	var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
-	mannequin.cut_overlays()
 
 	mannequin.add_overlay(mutable_appearance('modular_citadel/icons/ui/backgrounds.dmi', bgstate, layer = SPACE_LAYER))
 	copy_to(mannequin)
@@ -67,7 +66,7 @@
 				previewJob = job
 				break
 
-	if(previewJob)
+	if(previewJob && equip_job)
 		if(current_tab != 2)
 			mannequin.job = previewJob.title
 			previewJob.equip(mannequin, TRUE)
