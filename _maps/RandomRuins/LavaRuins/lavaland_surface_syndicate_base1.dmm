@@ -30,7 +30,10 @@
 "aD" = (/obj/structure/closet/secure_closet/medical1{req_access = null; req_access_txt = "150"},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/item/defibrillator/compact/combat,/turf/open/floor/plasteel/white/side{dir = 9},/area/ruin/unpowered/syndicate_lava_base/medbay)
 "aE" = (/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 8},/obj/machinery/light/small{dir = 8},/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/telecomms)
 "aF" = (/turf/open/floor/mineral/plastitanium,/area/ruin/unpowered/syndicate_lava_base/testlab)
+"aG" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/light{dir = 1; pixel_y = 16},/turf/open/floor/mineral/plastitanium,/area/ruin/unpowered/syndicate_lava_base/testlab)
+"aH" = (/obj/structure/table/reinforced,/obj/machinery/light{dir = 1; pixel_y = 16},/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "aI" = (/obj/machinery/airalarm/syndicate{dir = 4; pixel_x = -24},/obj/structure/closet/crate/bin,/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/telecomms)
+"aJ" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/light{dir = 4; light_color = "#c1caff"},/turf/open/floor/mineral/plastitanium,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "aK" = (/obj/structure/disposalpipe/trunk{dir = 4},/obj/structure/disposaloutlet{dir = 8},/turf/open/floor/mineral/plastitanium,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "aL" = (/turf/closed/wall/mineral/plastitanium/explosive,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "aM" = (/obj/machinery/door/window/southleft{dir = 4; req_access_txt = "150"},/obj/machinery/door/window/southleft{dir = 8; req_access_txt = "150"},/obj/effect/turf_decal/stripes/line{dir = 8},/obj/effect/turf_decal/stripes/line{dir = 4},/turf/open/floor/plating,/area/ruin/unpowered/syndicate_lava_base/testlab)
@@ -45,6 +48,7 @@
 "aV" = (/obj/structure/cable/yellow{icon_state = "4-8"},/turf/open/floor/plasteel,/area/ruin/unpowered/syndicate_lava_base/medbay)
 "aW" = (/obj/structure/lattice/catwalk,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors)
 "aX" = (/obj/machinery/atmospherics/components/unary/vent_pump/on{dir = 1; external_pressure_bound = 140; name = "killroom vent"; pressure_checks = 0},/turf/open/floor/circuit/telecomms,/area/ruin/unpowered/syndicate_lava_base/testlab)
+"aY" = (/obj/machinery/disposal/bin,/obj/structure/disposalpipe/trunk{dir = 4},/obj/effect/turf_decal/stripes/red/box,/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "aZ" = (/obj/structure/disposalpipe/trunk,/obj/structure/disposaloutlet{dir = 8},/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors)
 "ba" = (/mob/living/simple_animal/slime,/turf/open/floor/mineral/plastitanium,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "bb" = (/obj/structure/table/glass,/obj/machinery/light/small{dir = 8},/obj/item/clothing/glasses/science,/obj/item/clothing/mask/gas,/obj/effect/turf_decal/tile/purple{dir = 8},/obj/effect/turf_decal/tile/purple{dir = 1},/turf/open/floor/plasteel,/area/ruin/unpowered/syndicate_lava_base/testlab)
@@ -53,10 +57,10 @@
 "be" = (/obj/effect/turf_decal/stripes/line{dir = 8},/obj/effect/decal/cleanable/dirt,/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "bf" = (/obj/machinery/atmospherics/components/unary/vent_pump/on,/turf/open/floor/plasteel,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "bg" = (/obj/machinery/smartfridge/extract/preloaded,/obj/effect/turf_decal/tile/purple{dir = 8},/obj/effect/turf_decal/tile/purple{dir = 1},/obj/effect/turf_decal/tile/purple,/turf/open/floor/plasteel,/area/ruin/unpowered/syndicate_lava_base/testlab)
-"bh" = (/obj/machinery/light/small{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/open/floor/mineral/plastitanium,/area/ruin/unpowered/syndicate_lava_base/testlab)
+"bh" = (/obj/machinery/light{light_color = "#cee5d2"},/turf/open/floor/mineral/plastitanium,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "bi" = (/obj/effect/decal/cleanable/dirt,/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
-"bj" = (/obj/structure/table/reinforced,/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
-"bk" = (/obj/machinery/light/small{dir = 8},/turf/open/floor/mineral/plastitanium,/area/ruin/unpowered/syndicate_lava_base/testlab)
+"bj" = (/obj/machinery/light{dir = 4; light_color = "#c1caff"},/turf/open/floor/mineral/plastitanium,/area/ruin/unpowered/syndicate_lava_base/testlab)
+"bk" = (/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on,/obj/structure/window/reinforced{dir = 1},/obj/machinery/camera{c_tag = "Xenobiology Inner South"; dir = 4; network = list("ss13","rd")},/obj/machinery/light{dir = 8},/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "bl" = (/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3,/turf/open/floor/plasteel,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "bm" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 5},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{dir = 4},/turf/open/floor/plasteel,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "bn" = (/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 8},/obj/effect/turf_decal/tile/neutral,/obj/effect/decal/cleanable/dirt,/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
@@ -86,7 +90,7 @@
 "bL" = (/obj/structure/sign/warning/biohazard,/turf/closed/wall/mineral/plastitanium/nodiagonal,/area/ruin/unpowered/syndicate_lava_base/virology)
 "bM" = (/obj/structure/disposalpipe/segment{dir = 4},/obj/structure/window/plasma/reinforced,/turf/open/floor/mineral/plastitanium,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "bN" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/effect/decal/cleanable/dirt,/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
-"bO" = (/obj/machinery/light/small{dir = 4},/turf/open/floor/mineral/plastitanium,/area/ruin/unpowered/syndicate_lava_base/testlab)
+"bO" = (/obj/machinery/atmospherics/pipe/simple/general/visible,/obj/effect/turf_decal/stripes/line{dir = 8},/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "bP" = (/obj/effect/turf_decal/stripes/line{dir = 8},/obj/effect/decal/cleanable/dirt,/obj/effect/decal/cleanable/dirt,/obj/machinery/chem_dispenser/fullupgrade,/obj/effect/turf_decal/tile/neutral{dir = 8},/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral,/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/chemistry)
 "bQ" = (/obj/effect/turf_decal/stripes/corner{dir = 4},/obj/effect/decal/cleanable/dirt,/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "bR" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,/obj/structure/cable/yellow{icon_state = "1-2"},/obj/effect/turf_decal/tile/red{dir = 8},/obj/effect/turf_decal/tile/green{dir = 1},/turf/open/floor/plasteel,/area/ruin/unpowered/syndicate_lava_base/main)
@@ -117,9 +121,6 @@
 "cr" = (/obj/effect/turf_decal/stripes/line{dir = 10},/obj/machinery/chem_heater,/obj/effect/decal/cleanable/dirt,/obj/effect/turf_decal/tile/neutral{dir = 8},/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral,/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/chemistry)
 "cs" = (/obj/structure/chair/office/light{dir = 1},/obj/effect/turf_decal/bot,/obj/effect/turf_decal/stripes/line,/obj/effect/turf_decal/tile/neutral{dir = 8},/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral,/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/chemistry)
 "ct" = (/obj/structure/grille,/obj/structure/window/plastitanium,/obj/machinery/door/poddoor/preopen{id = "lavalandsyndi_virology"},/turf/open/floor/plating,/area/ruin/unpowered/syndicate_lava_base/virology)
-"cu" = (/obj/machinery/disposal/bin,/obj/structure/disposalpipe/trunk{dir = 4},/obj/effect/turf_decal/stripes/red/box,/obj/machinery/light/small{dir = 4},/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
-"cv" = (/obj/machinery/atmospherics/components/unary/thermomachine/freezer/on,/obj/structure/window/reinforced{dir = 1},/obj/machinery/camera{c_tag = "Xenobiology Inner South"; dir = 4; network = list("ss13","rd")},/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
-"cw" = (/obj/machinery/atmospherics/pipe/simple/general/visible,/obj/effect/turf_decal/stripes/line{dir = 8},/obj/machinery/light/small{dir = 8},/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "cx" = (/obj/effect/decal/cleanable/dirt,/obj/effect/mapping_helpers/no_lava,/obj/effect/turf_decal/stripes/line{dir = 4},/turf/open/floor/plating{baseturfs = /turf/open/lava/smooth/lava_land_surface; initial_gas_mix = "o2=14;n2=23;TEMP=300"},/area/lavaland/surface/outdoors)
 "cy" = (/obj/effect/decal/cleanable/dirt,/turf/closed/wall/mineral/plastitanium/nodiagonal,/area/ruin/unpowered/syndicate_lava_base/circuits)
 "cz" = (/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 8},/obj/structure/chair{dir = 8},/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/bar)
@@ -722,14 +723,14 @@ aaaaaaaaaaaaaaaaaaabaaaaaaaaabaaabababaaaaaaaaaaaaababaaaaaaaaaaaaaaaaaaaaabaaaa
 aaaaaaaaaaaaaaaaabababababababababababababababababababababababaaaaaaaaaaabababababaaaaaaaaaaaaaa
 aaaaaaaaaaabaaababababababababababababababababababababababababababaaababababababababababaaaaaaaa
 aaaaaaabaaabababababadaeaeaeaeaeaeaeaeaeaeaeaeapabababababababababababababababababababababaaaaaa
-aaaaaaabababababababaeawaAaAaFaeaxbjboekaFaFaAaeababababababababababababababababababababaaaaaaaa
-aaaaababababababababaeaFaAaFaKcZbsbebiaMaFbabhaeababababababababababababababababababababababaaaa
-aaaaaaababababababacaebkaFaFaFaMcWcXcucZbMbMcGaegoabababababababababababababababababababababaaaa
+aaaaaaabababababababaeawaAaGaFaeaxaHboekaFaFaAaeababababababababababababababababababababaaaaaaaa
+aaaaababababababababaeaFaAaFaKcZbsbebiaMaFbaaJaeababababababababababababababababababababababaaaa
+aaaaaaababababababacaeaFaFaFaFaMcWcXaYcZbMbMcGaegoabababababababababababababababababababababaaaa
 aaaaabababababababavaeaFaFaAaFekbndcddekaFaFaFaehZasatatatasabababababababababababababababaaaaaa
-aaabababababababababaeaAaFaFaAaedecqbNaMaAaFbOaeasasbPbScaasapigababababababababababababababaaaa
-aaababababababababacaeaeaeaeaeaecvbQdicZbMbMcGaLdoducrcscAasasdydydydyihababababababababababaaaa
-abababababababababacihaeaNaOaNekcwazdlekaFaAaFaedAdBdCdCdEdIasdKdLdMdydydydydydyabababababababaa
-ababababababababababacaeaQaTaUcTdrbidfaMaFbabhaedTdUdVdXdYdZaseaebecdbdyeeefegdyapababababababaa
+aaabababababababababaeaAaFbhaAaedecqbNaMaAaFbjaeasasbPbScaasapigababababababababababababababaaaa
+aaababababababababacaeaeaeaeaeaebkbQdicZbMbMcGaLdoducrcscAasasdydydydyihababababababababababaaaa
+abababababababababacihaeaNaOaNekbOazdlekaFaAaFaedAdBdCdCdEdIasdKdLdMdydydydydydyabababababababaa
+ababababababababababacaeaQaTaUcTdrbidfaMaFbaaJaedTdUdVdXdYdZaseaebecdbdyeeefegdyapababababababaa
 abababababababababababaeaNaXaNekbeckdicZbDbDbJaeerdqdsdvevewasdwdxdHdxdOeBeCeDeEeFababababababaa
 abababababababababababaeaeaeaeaedDdacpaeaeaeaeaeeRedeneseVasaseteXdFeufafbfcfdfeeFababababababab
 ababababababababiiababacaZaecMdNcYdQdRdgaebpdWoPfmfnfofnfpasexeyfsftdydyfufvfwdydydyfxababababab

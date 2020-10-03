@@ -399,6 +399,7 @@
 			msg += "...?<br>"
 		else
 			msg += "[print_flavor_text()]\n"
+	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, msg)
 	msg += "*---------*</span>"
 
 	to_chat(user, msg)

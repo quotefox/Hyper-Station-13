@@ -40,14 +40,6 @@
 	QDEL_LIST(diseases)
 	return ..()
 
-
-/mob/living/proc/generate_mob_holder()
-	if(ishuman(src))
-		var/obj/item/clothing/head/mob_holder/micro/holder = new(get_turf(src), src, (istext(can_be_held) ? can_be_held : ""), 'icons/mob/animals_held.dmi', 'icons/mob/animals_held_lh.dmi', 'icons/mob/animals_held_rh.dmi')
-		return holder
-	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, (istext(can_be_held) ? can_be_held : ""), 'icons/mob/animals_held.dmi', 'icons/mob/animals_held_lh.dmi', 'icons/mob/animals_held_rh.dmi')
-	return holder
-
 /mob/living/onZImpact(turf/T, levels)
 	if(!isgroundlessturf(T))
 		ZImpactDamage(T, levels)
@@ -1153,8 +1145,6 @@
 		return
 	if(!over.Adjacent(src) || (user != src) || !canUseTopic(over))
 		return
-	if(can_be_held)
-		mob_try_pickup(over)
 
 
 /mob/living/proc/get_static_viruses() //used when creating blood and other infective objects

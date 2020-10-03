@@ -179,9 +179,8 @@
 /turf/open/floor/engine,
 /area/engine/engineering)
 "df" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
 /obj/effect/decal/cleanable/oil,
 /obj/effect/decal/cleanable/dirt,
@@ -601,9 +600,8 @@
 /turf/open/floor/engine,
 /area/engine/engineering)
 "nW" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
@@ -637,9 +635,8 @@
 /turf/open/floor/engine,
 /area/engine/engineering)
 "px" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
@@ -738,9 +735,8 @@
 /turf/open/floor/engine,
 /area/engine/supermatter)
 "re" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1092,9 +1088,8 @@
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
 "Cn" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -1572,9 +1567,8 @@
 /turf/open/floor/engine,
 /area/engine/engineering)
 "Nw" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{

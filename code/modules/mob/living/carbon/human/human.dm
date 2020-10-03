@@ -40,6 +40,7 @@
 	. = ..()
 	if(!CONFIG_GET(flag/disable_human_mood))
 		AddComponent(/datum/component/mood)
+	AddElement(/datum/element/mob_holder/micro, "micro")
 
 /mob/living/carbon/human/Destroy()
 	QDEL_NULL(physiology)
@@ -1110,7 +1111,8 @@
 	race = /datum/species/krokodil_addict
 
 //define holder_type on nerds we wanna commit scoop to
-/mob/living/carbon/human
+/* /mob/living/carbon/human
 	var/holder_type = /obj/item/clothing/head/mob_holder/micro
 	can_be_held = "micro"
+*/
 
