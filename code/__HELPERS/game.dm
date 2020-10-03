@@ -442,8 +442,7 @@
 			candidates -= M
 
 /proc/pollGhostCandidates(Question, jobbanType, datum/game_mode/gametypeCheck, be_special_flag = 0, poll_time = 300, ignore_category = null, flashwindow = TRUE)
-	var/datum/element/ghost_role_eligibility/eligibility = SSdcs.GetElement(/datum/element/ghost_role_eligibility)
-	var/list/candidates = eligibility.get_all_ghost_role_eligible()
+	var/list/candidates = get_all_ghost_role_eligible()
 	return pollCandidates(Question, jobbanType, gametypeCheck, be_special_flag, poll_time, ignore_category, flashwindow, candidates)
 
 /proc/pollCandidates(Question, jobbanType, datum/game_mode/gametypeCheck, be_special_flag = 0, poll_time = 300, ignore_category = null, flashwindow = TRUE, list/group = null)
@@ -453,7 +452,7 @@
 	var/list/result = list()
 	for(var/m in group)
 		var/mob/M = m
-		if(!M.key || !M.client || (ignore_category && GLOB.poll_ignore[ignore_category] && M.ckey in GLOB.poll_ignore[ignore_category]))
+		if(!M.key || !M.client || (ignore_category && GLOB.poll_ignore[ignore_category] && (M.ckey in GLOB.poll_ignore[ignore_category])))
 			continue
 		if(be_special_flag)
 			if(!(M.client.prefs) || !(be_special_flag in M.client.prefs.be_special))
