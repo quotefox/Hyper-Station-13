@@ -19,9 +19,9 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 	attacktext = "attacks"
 	attack_sound = 'sound/items/bikehorn.ogg'
 	del_on_death = TRUE
-	pass_flags = PASSTABLE | PASSGRILLE | PASSMOB | LETPASSTHROW | PASSGLASS | PASSBLOB | PASSMACHINES //it's practically a ghost when unmanifested (under the floor)
+	pass_flags = PASSDOOR | PASSTABLE | PASSGRILLE | PASSMOB | LETPASSTHROW | PASSGLASS | PASSBLOB | PASSMACHINES //it's practically a ghost when unmanifested (under the floor)
 	wander = FALSE
-	minimum_distance = 2
+	minimum_distance = 1
 	move_to_delay = 1
 	environment_smash = FALSE
 	lose_patience_timeout = FALSE
@@ -109,7 +109,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 		do_teleport(src, T)
 
 	interest++
-	if(interest >= switch_stage * 4)
+	if(interest >= switch_stage * 3)
 		stage = STAGE_ATTACK
 
 	else if(interest >= switch_stage * 2)
@@ -380,7 +380,10 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 
 /mob/living/simple_animal/hostile/floor_cluwne/proc/Kill(mob/living/carbon/human/H)
 	if(!istype(H) || !H.client)
-		Acquire_Victim()
+		//Acquire_Victim()
+		message_admins("Target is either not human and/or not a client. Deleting floor cluwne.")
+		H.invisibility = 0
+		Destroy()
 		return
 	playsound(H, 'yogstation/sound/effects/cluwne_feast.ogg', 100, 0, -4)
 	var/red_splash = list(1,0,0,0.8,0.2,0, 0.8,0,0.2,0.1,0,0)
@@ -400,6 +403,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 
 	interest = 0
 	stage = STAGE_HAUNT
+	message_admins("Target killed. Deleting floor cluwne.")
 	Destroy()
 
 //manifestation animation
