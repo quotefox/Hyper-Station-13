@@ -683,7 +683,7 @@
 /turf/open/floor/plating/airless,
 /area/engine/engineering)
 "LB" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/effect/spawner/structure/window/plasma/reinforced,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
@@ -763,10 +763,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
-"Og" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/engine/engineering)
 "Ox" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -1413,7 +1409,7 @@ Aw
 JC
 WI
 rj
-Og
+rj
 rm
 tl
 ht
@@ -1441,7 +1437,7 @@ wt
 tE
 rj
 rj
-Og
+rj
 rm
 ZS
 Xk
@@ -1469,7 +1465,7 @@ ZK
 zZ
 ZK
 fH
-Og
+rj
 rm
 ea
 hR
@@ -1497,7 +1493,7 @@ Ox
 nR
 Zb
 lY
-Og
+rj
 rm
 yq
 rm
@@ -1553,7 +1549,7 @@ nW
 Mn
 WQ
 lY
-Og
+rj
 rm
 ZS
 rm
@@ -1581,7 +1577,7 @@ No
 tT
 No
 LV
-Og
+rj
 rm
 DF
 hR
@@ -1609,7 +1605,7 @@ wt
 tE
 rj
 rj
-Og
+rj
 rm
 ZS
 Xk
@@ -1637,7 +1633,7 @@ Aw
 JC
 WI
 rj
-Og
+rj
 rm
 Ce
 ht
