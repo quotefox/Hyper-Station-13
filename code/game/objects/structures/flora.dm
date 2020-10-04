@@ -1,12 +1,13 @@
 /obj/structure/flora
 	resistance_flags = FLAMMABLE
-	max_integrity = 150
+	max_integrity = 25
 	anchored = TRUE
 
 //trees
 /obj/structure/flora/tree
 	name = "tree"
 	desc = "A large tree."
+	max_integrity = 80
 	density = TRUE
 	pixel_x = -16
 	layer = FLY_LAYER
