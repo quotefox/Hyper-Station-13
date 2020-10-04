@@ -289,32 +289,31 @@
 			add_overlay(new_overlays)
 
 /atom/proc/examine(mob/user)
-	to_chat(user, get_examine_string(user, TRUE))
+	. = list("[get_examine_string(user, TRUE)].")
 
 	if(desc)
-		to_chat(user, desc)
-
+		. += desc
 	if(reagents)
 		if(reagents.reagents_holder_flags & TRANSPARENT)
-			to_chat(user, "It contains:")
-			if(reagents.reagent_list.len)
+			. += "It contains:"
+			if(length(reagents.reagent_list))
 				if(user.can_see_reagents()) //Show each individual reagent
 					for(var/datum/reagent/R in reagents.reagent_list)
-						to_chat(user, "[R.volume] units of [R.name]")
+						. += "[R.volume] units of [R.name]"
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					for(var/datum/reagent/R in reagents.reagent_list)
 						total_volume += R.volume
-					to_chat(user, "[total_volume] units of various reagents")
+					. += "[total_volume] units of various reagents"
 			else
-				to_chat(user, "Nothing.")
+				. += "Nothing."
 		else if(reagents.reagents_holder_flags & AMOUNT_VISIBLE)
 			if(reagents.total_volume)
-				to_chat(user, "<span class='notice'>It has [reagents.total_volume] unit\s left.</span>")
+				. += "<span class='notice'>It has [reagents.total_volume] unit\s left.</span>"
 			else
-				to_chat(user, "<span class='danger'>It's empty.</span>")
+				. += "<span class='danger'>It's empty.</span>"
 
-	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user)
+	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
 /atom/proc/relaymove(mob/user)
 	if(buckle_message_cooldown <= world.time)
