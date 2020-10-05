@@ -101,3 +101,4 @@
   * The arguments are the same when the text and number values are the same and all other values have the same ref
   */
 #define ELEMENT_BESPOKE		(1 << 1)
+#define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"	//Called when the movable's glide size is updated: (new_glide_size)
