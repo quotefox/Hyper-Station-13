@@ -17,8 +17,8 @@
 	emote_taunt = list("gnashes")
 	taunt_chance = 30
 	speed = 0
-	maxHealth = 35
-	health = 35
+	maxHealth = 25
+	health = 25
 	spacewalk = TRUE
 	harm_intent_damage = 8
 	obj_damage = 50
@@ -37,7 +37,7 @@
 	gold_core_spawnable = HOSTILE_SPAWN
 	//some carps heal over time
 	var/regen_cooldown = 0 //Used for how long it takes before a healing will take place default in 60 seconds
-	var/regen_amount = 0 //How much is healed pre regen cooldown
+	var/regen_amount = 1 //How much is healed pre regen cooldown
 
 /mob/living/simple_animal/hostile/carp/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	. = ..()
