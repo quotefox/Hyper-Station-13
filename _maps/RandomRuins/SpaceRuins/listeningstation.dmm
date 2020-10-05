@@ -405,7 +405,6 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "aI" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
@@ -515,7 +514,6 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "aP" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/firealarm{
 	dir = 8;
 	pixel_x = -26
@@ -1132,7 +1130,6 @@
 /turf/closed/wall,
 /area/ruin/space/has_grav/listeningstation)
 "fs" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
 	},
@@ -1140,10 +1137,7 @@
 /area/ruin/space/has_grav/listeningstation)
 "fJ" = (
 /obj/structure/chair/stool,
-/turf/open/floor/plasteel,
-/area/ruin/space/has_grav/listeningstation)
-"gz" = (
-/obj/item/reagent_containers/glass/bucket,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "hJ" = (
@@ -1158,6 +1152,10 @@
 	},
 /obj/item/shovel/spade,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/item/storage/bag/plants/portaseeder,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "lZ" = (
@@ -1198,7 +1196,6 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "za" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4;
 	piping_layer = 3;
@@ -1220,34 +1217,20 @@
 	},
 /obj/item/reagent_containers/glass/bucket,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/reagent_containers/glass/bucket{
+	pixel_x = 9;
+	pixel_y = 11
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "Bd" = (
-/obj/item/seeds/apple,
-/obj/item/seeds/banana,
-/obj/item/seeds/cocoapod,
-/obj/item/seeds/grape,
-/obj/item/seeds/orange,
-/obj/item/seeds/sugarcane,
-/obj/item/seeds/wheat,
-/obj/item/seeds/watermelon,
-/obj/structure/table/glass,
-/obj/item/seeds/tower,
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
+/obj/machinery/vending/hydroseeds{
+	slogan_delay = 700
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/item/storage/bag/plants/portaseeder,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "Bs" = (
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "DC" = (
@@ -1288,9 +1271,14 @@
 /area/ruin/space/has_grav/listeningstation)
 "Gb" = (
 /obj/item/reagent_containers/glass/bottle/nutrient/rh{
-	pixel_x = 2;
-	pixel_y = 1
+	pixel_x = -4;
+	pixel_y = -3
 	},
+/obj/item/reagent_containers/glass/bottle/nutrient/rh{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "IH" = (
@@ -1328,6 +1316,7 @@
 /area/ruin/space/has_grav/listeningstation)
 "Ns" = (
 /obj/machinery/biogenerator,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "NQ" = (
@@ -1336,6 +1325,11 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/floor/plating,
+/area/ruin/space/has_grav/listeningstation)
+"Qp" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/seed_extractor,
+/turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "QM" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1353,6 +1347,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "XM" = (
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 
@@ -1970,7 +1965,7 @@ ac
 zq
 Gb
 XM
-Bs
+Qp
 Bs
 Mh
 ac
@@ -2008,7 +2003,7 @@ ab
 ab
 ac
 zq
-gz
+XM
 Bs
 fs
 za
