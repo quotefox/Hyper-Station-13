@@ -77,6 +77,8 @@
 	if(!is_ghost)
 		show_fluff_message(going_up, user)
 		ladder.add_fingerprint(user)
+		if (prob(2))
+			SEND_SOUND(user, 'hyperstation/sound/misc/what_a_thrill.ogg')
 
 	var/turf/T = get_turf(ladder)
 	var/atom/movable/AM
