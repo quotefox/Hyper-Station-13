@@ -15,6 +15,13 @@
 
 	RegisterSignal(target, COMSIG_CLICK_ALT, .proc/mob_try_pickup_micro, override = TRUE)
 	RegisterSignal(target, COMSIG_PARENT_EXAMINE, .proc/on_examine, override = TRUE)
+	RegisterSignal(target, COMSIG_MICRO_PICKUP_FEET, .proc/mob_pickup_micro_feet)
+
+/datum/element/mob_holder/micro/Detach(datum/source, force)
+	. = ..()
+	UnregisterSignal(source, COMSIG_CLICK_ALT)
+	UnregisterSignal(source, COMSIG_PARENT_EXAMINE)
+	UnregisterSignal(source, COMSIG_MICRO_PICKUP_FEET)
 
 /datum/element/mob_holder/micro/proc/mob_pickup_micro(mob/living/source, mob/user)
 	var/obj/item/clothing/head/mob_holder/micro/holder = new(get_turf(source), source, worn_state, alt_worn, right_hand, left_hand, inv_slots)
