@@ -123,3 +123,7 @@
 	var/time_initialized = null
 
 	var/mirrorcanloadappearance = FALSE
+
+
+	///Whether the mob is updating glide size when movespeed updates or not
+	var/updating_glide_size = TRUE

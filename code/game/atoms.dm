@@ -289,31 +289,32 @@
 			add_overlay(new_overlays)
 
 /atom/proc/examine(mob/user)
-	. = list("[get_examine_string(user, TRUE)].")
+	to_chat(user, get_examine_string(user, TRUE))
 
 	if(desc)
-		. += desc
+		to_chat(user, desc)
+
 	if(reagents)
 		if(reagents.reagents_holder_flags & TRANSPARENT)
-			. += "It contains:"
-			if(length(reagents.reagent_list))
+			to_chat(user, "It contains:")
+			if(reagents.reagent_list.len)
 				if(user.can_see_reagents()) //Show each individual reagent
 					for(var/datum/reagent/R in reagents.reagent_list)
-						. += "[R.volume] units of [R.name]"
+						to_chat(user, "[R.volume] units of [R.name]")
 				else //Otherwise, just show the total volume
 					var/total_volume = 0
 					for(var/datum/reagent/R in reagents.reagent_list)
 						total_volume += R.volume
-					. += "[total_volume] units of various reagents"
+					to_chat(user, "[total_volume] units of various reagents")
 			else
-				. += "Nothing."
+				to_chat(user, "Nothing.")
 		else if(reagents.reagents_holder_flags & AMOUNT_VISIBLE)
 			if(reagents.total_volume)
-				. += "<span class='notice'>It has [reagents.total_volume] unit\s left.</span>"
+				to_chat(user, "<span class='notice'>It has [reagents.total_volume] unit\s left.</span>")
 			else
-				. += "<span class='danger'>It's empty.</span>"
+				to_chat(user, "<span class='danger'>It's empty.</span>")
 
-	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
+	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user)
 
 /atom/proc/relaymove(mob/user)
 	if(buckle_message_cooldown <= world.time)
@@ -340,7 +341,7 @@
 	SEND_SIGNAL(src, COMSIG_ATOM_FIRE_ACT, exposed_temperature, exposed_volume)
 	return
 
-/atom/proc/hitby(atom/movable/AM, skipcatch, hitpush, blocked)
+/atom/proc/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(density && !has_gravity(AM)) //thrown stuff bounces off dense stuff in no grav, unless the thrown stuff ends up inside what it hit(embedding, bola, etc...).
 		addtimer(CALLBACK(src, .proc/hitby_react, AM), 2)
 
