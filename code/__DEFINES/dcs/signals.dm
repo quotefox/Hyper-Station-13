@@ -192,6 +192,8 @@
 	#define COMPONENT_NO_MOUSEDROP 1
 #define COMSIG_MOUSEDROPPED_ONTO "mousedropped_onto"		
 
+
+#define COMSIG_MICRO_PICKUP_FEET "micro_force_grabbed"			//From /datum/element/mob_holder/micro
 // /area signals
 
 ///from base of area/Entered(): (atom/movable/M)
