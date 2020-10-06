@@ -211,22 +211,18 @@
 /turf/closed/wall,
 /area/awaymission/snowdin/post/dorm)
 "aT" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6;
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/bedsheet/purple,
-/turf/open/floor/wood,
-/area/awaymission/snowdin/post/dorm)
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/box/firingpins,
+/turf/open/floor/plasteel/dark,
+/area/awaymission/snowdin/post/secpost)
 "aU" = (
-/obj/structure/bed,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	piping_layer = 3;
 	pixel_x = 5;
 	pixel_y = 5
 	},
+/obj/item/bedsheet/purple,
+/obj/effect/mob_spawn/human/exiled,
 /turf/open/floor/wood,
 /area/awaymission/snowdin/post/dorm)
 "aV" = (
@@ -250,6 +246,7 @@
 	pixel_y = 5
 	},
 /obj/effect/landmark/awaystart,
+/obj/item/bedsheet/red,
 /turf/open/floor/wood,
 /area/awaymission/snowdin/post/dorm)
 "aY" = (
@@ -262,13 +259,13 @@
 /turf/open/floor/wood,
 /area/awaymission/snowdin/post/dorm)
 "aZ" = (
-/obj/structure/bed,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	piping_layer = 3;
 	pixel_x = 5;
 	pixel_y = 5
 	},
 /obj/item/bedsheet/orange,
+/obj/effect/mob_spawn/human/exiled,
 /turf/open/floor/wood,
 /area/awaymission/snowdin/post/dorm)
 "ba" = (
@@ -1224,6 +1221,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/item/t_scanner/adv_mining_scanner/lesser,
 /turf/open/floor/plasteel/dark/snowdin,
 /area/awaymission/snowdin/cave)
 "cV" = (
@@ -1549,6 +1547,7 @@
 	icon_state = "crateopen";
 	name = "explosives ordinance"
 	},
+/obj/item/t_scanner/adv_mining_scanner/lesser,
 /turf/open/floor/plasteel/dark/snowdin,
 /area/awaymission/snowdin/cave)
 "dz" = (
@@ -3857,6 +3856,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/structure/closet/emcloset/anchored,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post)
 "iy" = (
@@ -3867,6 +3867,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/structure/closet/firecloset/full,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post)
 "iz" = (
@@ -4114,6 +4115,10 @@
 /obj/machinery/airalarm{
 	pixel_y = 23
 	},
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/garage)
 "iY" = (
@@ -6067,6 +6072,7 @@
 /obj/structure/table,
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/stack/cable_coil,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/garage)
 "mX" = (
@@ -6237,6 +6243,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
+/obj/machinery/pipedispenser,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "nn" = (
@@ -6774,6 +6781,7 @@
 /obj/item/stock_parts/matter_bin/adv,
 /obj/item/stock_parts/matter_bin/adv,
 /obj/item/stock_parts/manipulator/pico,
+/obj/item/circuitboard/machine/autolathe,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "or" = (
@@ -7262,6 +7270,7 @@
 	pixel_y = 8
 	},
 /obj/item/clothing/gloves/color/yellow,
+/obj/item/stack/cable_coil,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "pz" = (
@@ -7438,7 +7447,21 @@
 /obj/machinery/atmospherics/pipe/manifold/supply/visible{
 	dir = 1
 	},
-/obj/item/circuitboard/machine/autolathe,
+/obj/structure/closet/crate/engineering{
+	name = "materials crate"
+	},
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 30
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 40
+	},
+/obj/item/stack/sheet/mineral/gold{
+	amount = 30
+	},
+/obj/item/stack/sheet/mineral/silver{
+	amount = 30
+	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -7446,6 +7469,10 @@
 "pY" = (
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
 	dir = 8
+	},
+/obj/item/circuitboard/machine/protolathe{
+	pixel_x = -3;
+	pixel_y = 7
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
@@ -15817,10 +15844,26 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/cave)
+"SS" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating,
+/area/awaymission/snowdin/post/engineering)
 "SX" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
+	},
+/turf/open/floor/plating,
+/area/awaymission/snowdin/post/mining_main)
+"SZ" = (
+/obj/structure/closet/crate/engineering{
+	name = "materials crate"
+	},
+/obj/item/stack/sheet/mineral/diamond{
+	amount = 6
+	},
+/obj/item/stack/ore/bluespace_crystal/artificial{
+	amount = 6
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_main)
@@ -22291,7 +22334,7 @@ af
 ak
 af
 aK
-aT
+aY
 bi
 bx
 bR
@@ -24374,7 +24417,7 @@ oA
 oH
 pI
 qo
-qp
+aT
 pH
 am
 af
@@ -26633,7 +26676,7 @@ Ir
 Iq
 Go
 Ky
-Gq
+SZ
 GP
 ae
 ac
@@ -29513,7 +29556,7 @@ oq
 oQ
 py
 pV
-nS
+SS
 qV
 rp
 rp
