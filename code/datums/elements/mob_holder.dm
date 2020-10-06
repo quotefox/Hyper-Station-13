@@ -76,6 +76,7 @@
 	lefthand_file = 'icons/mob/animals_held_lh.dmi'
 	icon_state = ""
 	w_class = WEIGHT_CLASS_BULKY
+	dynamic_hair_suffix = ""
 	var/mob/living/held_mob
 	var/can_head = FALSE
 
@@ -94,7 +95,7 @@
 		lefthand_file = left_hand
 	if(right_hand)
 		righthand_file = right_hand
-		slot_flags = slots
+	slot_flags = slots
 
 /obj/item/clothing/head/mob_holder/proc/assimilate(mob/living/target)
 	target.setDir(SOUTH)
@@ -102,6 +103,8 @@
 	target.forceMove(src)
 	var/image/I = new //work around to retain the same appearance to the mob idependently from inhands/worn states.
 	I.appearance = target.appearance
+	I.layer = FLOAT_LAYER //So it doesn't get screwed up by layer overrides.
+	I.plane = FLOAT_PLANE //Same as above but for planes.
 	I.override = TRUE
 	add_overlay(I)
 	name = target.name
@@ -115,23 +118,21 @@
 			w_class = WEIGHT_CLASS_BULKY
 		if(MOB_SIZE_LARGE)
 			w_class = WEIGHT_CLASS_HUGE
-	RegisterSignal(src, COMSIG_CLICK_SHIFT, .proc/examine_held_mob, override = TRUE)
 
 /obj/item/clothing/head/mob_holder/Destroy()
 	if(held_mob)
 		release()
 	return ..()
 
-/obj/item/clothing/head/mob_holder/proc/examine_held_mob(datum/source, mob/user)
-	held_mob.ShiftClick(user)
-	return COMPONENT_DENY_EXAMINATE
+/obj/item/clothing/head/mob_holder/examine(mob/user)
+	return held_mob?.examine(user) || ..()
 
 /obj/item/clothing/head/mob_holder/Exited(atom/movable/AM, atom/newloc)
 	. = ..()
 	if(AM == held_mob)
 		held_mob.reset_perspective()
 		held_mob = null
-		qdel(src)
+		QDEL_IN(src, 1) //To avoid a qdel loop.
 
 /obj/item/clothing/head/mob_holder/Entered(atom/movable/AM, atom/newloc)
 	. = ..()
@@ -153,7 +154,8 @@
 		L.forceMove(get_turf(L))
 		L.reset_perspective()
 		L.setDir(SOUTH)
-	qdel(src)
+	if(!QDELETED(src))
+		qdel(src)
 
 /obj/item/clothing/head/mob_holder/relaymove(mob/user)
 	return
@@ -161,8 +163,13 @@
 /obj/item/clothing/head/mob_holder/container_resist()
 	if(isliving(loc))
 		var/mob/living/L = loc
-		L.visible_message("<span class='warning'>[src] escapes from [L]!</span>", "<span class='warning'>[src] escapes your grip!</span>")
+		L.visible_message("<span class='warning'>[held_mob] escapes from [L]!</span>", "<span class='warning'>[held_mob] escapes your grip!</span>")
 	release()
+
+/obj/item/clothing/head/mob_holder/mob_can_equip(mob/living/M, mob/living/equipper, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE)
+	if(!ishuman(M)) //monkeys holding monkeys holding monkeys...
+		return FALSE
+	return ..()
 
 /obj/item/clothing/head/mob_holder/assume_air(datum/gas_mixture/env)
 	var/atom/location = loc
@@ -173,7 +180,7 @@
 		location = location.loc
 		if(ismob(location))
 			return location.loc.assume_air(env)
-	return loc.assume_air(env)
+	return location.assume_air(env)
 
 /obj/item/clothing/head/mob_holder/remove_air(amount)
 	var/atom/location = loc
@@ -184,4 +191,4 @@
 		location = location.loc
 		if(ismob(location))
 			return location.loc.remove_air(amount)
-	return loc.remove_air(amount)
+	return location.remove_air(amount)

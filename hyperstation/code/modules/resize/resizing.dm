@@ -162,10 +162,12 @@ mob/living/get_effective_size()
 					else
 						if(istype(H) && H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle")
 							tmob.visible_message("<span class='danger'>[src] snatches up [tmob] underneath their tail!</span>", "<span class='userdanger'>[src]'s tail winds around you and snatches you in its coils!</span>")
-							//tmob.mob_pickup_micro_feet(H) //These two procs have been disabled. Hopefully temporarily.
+							//tmob.mob_pickup_micro_feet(H)
+							SEND_SIGNAL(tmob, COMSIG_MICRO_PICKUP_FEET, H)
 						else
 							tmob.visible_message("<span class='danger'>[src] stomps down on [tmob], curling their toes and picking them up!</span>", "<span class='userdanger'>[src]'s toes pin you down and curl around you, picking you up!</span>")
 							//tmob.mob_pickup_micro_feet(H)
+							SEND_SIGNAL(tmob, COMSIG_MICRO_PICKUP_FEET, H)
 						return 1
 
 		if(abs(tmob.get_effective_size()/get_effective_size()) >= 2)
