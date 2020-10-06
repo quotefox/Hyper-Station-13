@@ -421,6 +421,7 @@
 	dir = 8
 	},
 /obj/machinery/door/airlock{
+	dir = 4;
 	name = "Food Court"
 	},
 /turf/open/floor/plasteel/dark,
@@ -564,6 +565,7 @@
 	pixel_y = 5
 	},
 /obj/machinery/door/airlock{
+	dir = 4;
 	name = "Personal Quarters"
 	},
 /turf/open/floor/plasteel,
