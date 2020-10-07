@@ -42,8 +42,8 @@
 	update_icon()
 
 /obj/item/card/id/knight/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
+	. = ..()
+	. += "<span class='notice'>Alt-click to recolor it.</span>"
 
 //=================================================
 

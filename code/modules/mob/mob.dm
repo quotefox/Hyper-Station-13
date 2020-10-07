@@ -319,9 +319,8 @@
 
 	face_atom(A)
 	var/list/result = A.examine(src)
-	if(result != null)
-		to_chat(src, result.Join("\n"))
-		SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
+	to_chat(src, result.Join("\n"))
+	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
 
 //same as above
 //note: ghosts can point, this is intended
