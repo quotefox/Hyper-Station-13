@@ -315,9 +315,11 @@
 	Every day, you pause and recollect your memories from before it all happened... "
 	assignedrole = "Arctic Exile"
 	mirrorcanloadappearance = TRUE
+	ghost_usable = FALSE
 
 /obj/effect/mob_spawn/human/exiled/Initialize(mapload)
 	. = ..()
+	delayusability(900)
 	var/arrpee = rand(1,3)
 	switch(arrpee)
 		if(1)
