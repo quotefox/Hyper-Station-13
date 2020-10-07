@@ -301,7 +301,7 @@
 
 //Exiles: Stranded exiles that have been left in Snowdin. Can be easily adapted for other roles as well.
 /obj/effect/mob_spawn/human/exiled
-	name = "a used bed"
+	name = "used bed"
 	desc = "Still warm."
 	mob_name = "exiled"
 	job_description = "Exiles"
