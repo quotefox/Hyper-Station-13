@@ -122,6 +122,9 @@
 			user.visible_message("<span class='warning'>[src] fizzles and sparks. It seems like it's out of charges.</span>")
 			playsound(src, 'sound/effects/light_flicker.ogg', 100, 1)
 
+/obj/item/card/emag/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>It has <b>[uses ? uses : "no"]</b> charges left.</span>"
 
 /obj/item/card/emagfake
 	desc = "It's a card with a magnetic strip attached to some circuitry. Closer inspection shows that this card is a poorly made replica, with a \"DonkCo\" logo stamped on the back."
@@ -173,9 +176,9 @@
 		return
 
 /obj/item/card/id/examine(mob/user)
-	..()
+	. = ..()
 	if(mining_points)
-		to_chat(user, "There's [mining_points] mining equipment redemption point\s loaded onto this card.")
+		. += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
 
 /obj/item/card/id/GetAccess()
 	return access
