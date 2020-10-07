@@ -299,6 +299,62 @@
 	new/obj/structure/fluff/empty_cryostasis_sleeper(get_turf(src))
 	return ..()
 
+//Exiles: Stranded exiles that have been left in Snowdin. Can be easily adapted for other roles as well.
+/obj/effect/mob_spawn/human/exiled
+	name = "a used bed"
+	desc = "Still warm."
+	mob_name = "exiled"
+	job_description = "Exiles"
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "bed"
+	roundstart = FALSE
+	death = FALSE
+	random = TRUE
+	mob_species = /datum/species/human
+	flavour_text = "As the last escape shuttle left the sector, you were left for dead, stranded in a cold hell where you make do, until hopefully someone finds you. \
+	Every day, you pause and recollect your memories from before it all happened... "
+	assignedrole = "Arctic Exile"
+	mirrorcanloadappearance = TRUE
+
+/obj/effect/mob_spawn/human/exiled/Initialize(mapload)
+	. = ..()
+	var/arrpee = rand(1,3)
+	switch(arrpee)
+		if(1)
+			flavour_text += "You were a lowly engineer, hired by Kinaris to make sure the turbines from their mining operation remained functional. \
+			You remember the day the mining team descended for the very last time into the depths of the shafts, only to never return. \
+			The agonizing screams from whatever now haunts those mines still brings a shiver down your spine."
+			outfit.uniform = /obj/item/clothing/under/rank/engineer
+			outfit.suit = /obj/item/clothing/suit/hooded/wintercoat/engineering
+			outfit.shoes = /obj/item/clothing/shoes/sneakers/black
+			outfit.back = /obj/item/storage/backpack/industrial
+			outfit.id = /obj/item/card/id/away/snowdin/eng
+			outfit.implants = list(/obj/item/implant/exile) //Made it so they cannot simply exit through the gateway at will.
+		if(2)
+			flavour_text += "You were a plasma researcher, hired by Kinaris to oversee a small research division in a remote, isolated little icy planet, \
+			you remember the day the mining team descended for the very last time into the depths of the shafts, only to never return. \
+			While you haven't heard them yourself, reports say the sounds that were heard over radio were likely not of this world."
+			outfit.uniform = /obj/item/clothing/under/rank/scientist
+			outfit.suit = /obj/item/clothing/suit/hooded/wintercoat/science
+			outfit.shoes = /obj/item/clothing/shoes/sneakers/black
+			outfit.back = /obj/item/storage/backpack/science
+			outfit.id = /obj/item/card/id/away/snowdin/sci
+			outfit.implants = list(/obj/item/implant/exile) //Made it so they cannot simply exit through the gateway at will.
+		if(3)
+			flavour_text += "You were a junior doctor, hired by Kinaris to oversee the mental state of a plasma mining operation's miners. \
+			Over and over you reported that the miners were having constant, similar types of hallucinations and that perhaps the whole operation should pause \
+			until further investigation was concluded, but command shrugged it off as an episode of mass hallucination... Until the miners never came back."
+			outfit.uniform = /obj/item/clothing/under/rank/medical
+			outfit.suit = /obj/item/clothing/suit/hooded/wintercoat/medical
+			outfit.shoes = /obj/item/clothing/shoes/sneakers/black
+			outfit.back = /obj/item/storage/backpack/medic
+			outfit.id = /obj/item/card/id/away/snowdin/med
+			outfit.implants = list(/obj/item/implant/exile) //Made it so they cannot simply exit through the gateway at will.
+
+/obj/effect/mob_spawn/human/exiled/Destroy()
+	new/obj/structure/bed(get_turf(src))
+	return ..()
+
 //Broken rejuvenation pod: Spawns in animal hospitals in lavaland. Ghosts become disoriented interns and are advised to search for help.
 /obj/effect/mob_spawn/human/doctor/alive/lavaland
 	name = "broken rejuvenation pod"

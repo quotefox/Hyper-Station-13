@@ -434,3 +434,26 @@ update_label("John Doe", "Clowny")
 	name = "APC Access ID"
 	desc = "A special ID card that allows access to APC terminals."
 	access = list(ACCESS_ENGINE_EQUIP)
+
+/obj/item/card/id/away/snowdin
+	name = "a perfectly generic identification card"
+	desc = "A perfectly generic identification card. Looks like it could use some flavor."
+	icon_state = "centcom"
+
+/obj/item/card/id/away/snowdin/eng
+	name = "Arctic Station Engineer's ID card"
+	desc = "A faded Arctic Station ID card. You can make out the rank \"Station Engineer\"."
+	assignment = "Arctic Station Engineer"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_ENGINE, ACCESS_AWAY_MAINT)
+
+/obj/item/card/id/away/snowdin/sci
+	name = "Arctic Station Scientist's ID card"
+	desc = "A faded Arctic Station ID card. You can make out the rank \"Scientist\"."
+	assignment = "Arctic Station Scientist"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINT)
+
+/obj/item/card/id/away/snowdin/med
+	name = "Arctic Station Doctor's ID card"
+	desc = "A faded Arctic Station ID card. You can make out the rank \"Doctor\"."
+	assignment = "Arctic Station Doctor"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MED, ACCESS_AWAY_MAINT)
