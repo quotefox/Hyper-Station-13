@@ -797,11 +797,9 @@
 					else
 						to_chat(user, "<span class='cultitalic'>You need a free hand for this rite!</span>")
 						qdel(rite)
-			if("Blood Beam (500)")
+			if("Blood Beam (500)") //This spell is honestly a bit useless. Why would anyone limit it?
 				if(uses < 500)
 					to_chat(user, "<span class='cultitalic'>You need 500 charges to perform this rite.</span>")
-				else if(!iscultist(user, TRUE))
-					to_chat(user, "<span class='warning'>You are not strongly connected to Nar'sie enough to use something of this power.</span>")
 				else
 					var/obj/rite = new /obj/item/blood_beam()
 					uses -= 500
