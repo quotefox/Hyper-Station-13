@@ -22,8 +22,8 @@ GLOBAL_LIST_EMPTY(doppler_arrays)
 	return ..()
 
 /obj/machinery/doppler_array/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>Its dish is facing to the [dir2text(dir)].</span>")
+	. = ..()
+	. += "<span class='notice'>Its dish is facing to the [dir2text(dir)].</span>"
 
 /obj/machinery/doppler_array/process()
 	return PROCESS_KILL

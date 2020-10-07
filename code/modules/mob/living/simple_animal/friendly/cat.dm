@@ -104,22 +104,24 @@
 	var/list/family = list()//var restored from savefile, has count of each child type
 	var/list/children = list()//Actual mob instances of children
 	var/cats_deployed = 0
-	var/memory_saved = FALSE
+	//var/memory_saved = FALSE
 
 /mob/living/simple_animal/pet/cat/Runtime/Initialize()
 	if(prob(5))
 		icon_state = "original"
 		icon_living = "original"
 		icon_dead = "original_dead"
-	Read_Memory()
+	//Read_Memory()
 	. = ..()
 
 /mob/living/simple_animal/pet/cat/Runtime/Life()
+	/*
 	if(!cats_deployed && SSticker.current_state >= GAME_STATE_SETTING_UP)
 		Deploy_The_Cats()
 	if(!stat && SSticker.current_state == GAME_STATE_FINISHED && !memory_saved)
 		Write_Memory()
 		memory_saved = TRUE
+	*/
 	..()
 
 /mob/living/simple_animal/pet/cat/Runtime/make_babies()
@@ -129,9 +131,11 @@
 		return baby
 
 /mob/living/simple_animal/pet/cat/Runtime/death()
+/*
 	if(!memory_saved)
 		Write_Memory(TRUE)
 	..()
+*/
 
 /mob/living/simple_animal/pet/cat/Runtime/proc/Read_Memory()
 	if(fexists("data/npc_saves/Runtime.sav")) //legacy compatability to convert old format to new
@@ -146,7 +150,8 @@
 		family = json["family"]
 	if(isnull(family))
 		family = list()
-
+//All you people can't fucking control yourselves and keep letting runtime breed his own children, so it's time to at -LEAST- take the function that saves cats for the next round out the back and shoot it with a 12 gauge
+/*
 /mob/living/simple_animal/pet/cat/Runtime/proc/Write_Memory(dead)
 	var/json_file = file("data/npc_saves/Runtime.json")
 	var/list/file_data = list()
@@ -169,6 +174,7 @@
 		if(family[cat_type] > 0)
 			for(var/i in 1 to min(family[cat_type],100)) //Limits to about 500 cats, you wouldn't think this would be needed (BUT IT IS)
 				new cat_type(loc)
+*/
 
 /mob/living/simple_animal/pet/cat/Proc
 	name = "Proc"

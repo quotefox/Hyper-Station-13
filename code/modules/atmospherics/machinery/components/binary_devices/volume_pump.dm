@@ -31,8 +31,8 @@ Thus, the two variables affect pump operation are set in New():
 
 /obj/machinery/atmospherics/components/binary/volume_pump/examine(mob/user)
 	. = ..()
-	to_chat(user,"<span class='notice'>You can hold <b>Ctrl</b> and click on it to toggle it on and off.</span>")
-	to_chat(user,"<span class='notice'>You can hold <b>Alt</b> and click on it to maximize its pressure.</span>")
+	. += "<span class='notice'>You can hold <b>Ctrl</b> and click on it to toggle it on and off.</span>"
+	. += "<span class='notice'>You can hold <b>Alt</b> and click on it to maximize its pressure.</span>"
 	if(overclocked)
 		to_chat(user,"Its warning light is on" + (on ? " and it's spewing gas!" : "."))
 
