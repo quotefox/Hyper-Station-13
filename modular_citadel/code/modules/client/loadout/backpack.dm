@@ -155,3 +155,9 @@
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/condom
 	cost = 1
+
+/datum/gear/sounding
+	name = "Sounding rod"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/sounding
+	cost = 1

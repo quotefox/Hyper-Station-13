@@ -11,6 +11,7 @@
 	fluid_transfer_factor	= 0.5
 	size 					= 2 //arbitrary value derived from length and girth for sprites.
 	var/condom				= 0 //No condom, its better this way...
+	var/sounding			= 0
 	var/length 				= 6	//inches
 	var/cached_length			//used to detect a change in length
 	var/girth  				= 3.38
