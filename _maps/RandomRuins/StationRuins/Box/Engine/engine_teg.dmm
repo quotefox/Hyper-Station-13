@@ -471,6 +471,7 @@
 "oQ" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
 /mob/living/carbon/monkey,
+/obj/item/clothing/head/hardhat,
 /turf/open/floor/engine/vacuum,
 /area/engine/engineering)
 "oS" = (
@@ -1938,6 +1939,7 @@
 /area/engine/engineering)
 "ZC" = (
 /obj/machinery/atmospherics/pipe/simple/dark/visible,
+/obj/item/wrench,
 /turf/open/floor/engine/vacuum,
 /area/engine/engineering)
 "ZT" = (
