@@ -86,3 +86,8 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 	if(!wtime)
 		wtime = world.time
 	return time2text(wtime - GLOB.timezoneOffset, format) 
+
+//Approximate time in seconds, which it then calculates the ticks using the world's fps value and the master tick rate..
+//Warning, this will likely be innacurate if the server is having tickrate issues. It's fine for shorter things though.
+/proc/approximateSecondsToTicks(seconds)
+	return seconds*(world.fps/CONFIG_GET(number/mc_tick_rate/base_mc_tick_rate))/2

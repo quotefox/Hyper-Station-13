@@ -204,7 +204,7 @@
 	pixel_y = 5
 	},
 /obj/effect/landmark/awaystart,
-/obj/item/bedsheet/purple,
+/obj/item/bedsheet/cult,
 /turf/open/floor/wood,
 /area/awaymission/snowdin/post/dorm)
 "aS" = (
@@ -1483,6 +1483,7 @@
 /area/awaymission/snowdin/post/research)
 "dn" = (
 /obj/structure/closet/secure_closet/freezer/meat,
+/obj/item/storage/box/monkeycubes,
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/snowdin/post/kitchen)
 "do" = (
@@ -2238,6 +2239,11 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/item/slime_extract/grey,
+/obj/item/slime_extract/grey{
+	pixel_x = -7;
+	pixel_y = 8
+	},
 /turf/open/floor/plasteel/white,
 /area/awaymission/snowdin/post)
 "fc" = (
@@ -2692,10 +2698,7 @@
 /area/awaymission/snowdin/cave/cavern)
 "gd" = (
 /obj/effect/spawner/lootdrop/crate_spawner,
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "ge" = (
 /turf/closed/mineral/iron/ice,
@@ -2703,10 +2706,7 @@
 "gf" = (
 /obj/structure/closet/crate/wooden,
 /obj/effect/spawner/lootdrop/snowdin/dungeonheavy,
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "gg" = (
 /obj/structure/bed,
@@ -3388,10 +3388,7 @@
 /area/awaymission/snowdin/post/garage)
 "hF" = (
 /obj/structure/destructible/cult/pylon,
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "hG" = (
 /obj/structure/closet/cabinet,
@@ -3591,6 +3588,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/hydro)
+"hZ" = (
+/obj/item/clothing/suit/cultrobes,
+/obj/item/clothing/shoes/cult,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
 "ib" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	piping_layer = 3;
@@ -3649,30 +3651,22 @@
 "il" = (
 /obj/structure/closet/crate/wooden,
 /obj/effect/spawner/lootdrop/snowdin/dungeonmid,
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "im" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/spawner/nether{
 	max_mobs = 5
 	},
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/obj/effect/rune/apocalypse,
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "in" = (
 /mob/living/simple_animal/hostile/netherworld/blankbody{
 	desc = "It's Caleb Reed, but their flesh has an ashy texture, and their face is featureless save an eerie smile.";
 	name = "Caleb Reed"
 	},
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "io" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -4492,10 +4486,7 @@
 	desc = "It's Jacob Ullman, but their flesh has an ashy texture, and their face is featureless save an eerie smile.";
 	name = "Jacob Ullman"
 	},
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "jP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -4848,6 +4839,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
 	},
+/obj/item/storage/box/monkeycubes,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/post/custodials)
 "kE" = (
@@ -5619,10 +5611,7 @@
 "lT" = (
 /obj/structure/closet/crate/wooden,
 /obj/effect/spawner/lootdrop/snowdin/dungeonlite,
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "lU" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -15806,6 +15795,11 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_dock)
+"NP" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/twohanded/cult_spear,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
 "OF" = (
 /obj/machinery/door/airlock/external{
 	name = "Ready Room";
@@ -15844,6 +15838,21 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/cave)
+"RD" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/destructible/cult/pylon,
+/turf/open/floor/engine/cult,
+/area/awaymission/snowdin/post/cavern2)
+"RR" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/spawner/nether{
+	max_mobs = 5
+	},
+/obj/effect/rune/convert,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
 "SS" = (
 /obj/effect/decal/cleanable/ash,
 /turf/open/floor/plating,
@@ -15855,6 +15864,10 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_main)
+"SY" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
 "SZ" = (
 /obj/structure/closet/crate/engineering{
 	name = "materials crate"
@@ -15867,12 +15880,33 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_main)
+"TF" = (
+/obj/item/stack/sheet/mineral/sandstone/thirty,
+/turf/open/floor/plating/snowed,
+/area/awaymission/snowdin/cave)
+"Uo" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/melee/cultblade/dagger,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
+"Vy" = (
+/obj/item/storage/backpack/cultpack,
+/turf/open/floor/plating/ice/smooth,
+/area/awaymission/snowdin/cave)
+"Vz" = (
+/obj/effect/decal/remains/human,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
 "VW" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_dock)
+"Wa" = (
+/obj/item/melee/cultblade,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
 "Wh" = (
 /obj/structure/table,
 /obj/machinery/light/small{
@@ -15882,6 +15916,9 @@
 /obj/item/paper/fluff/awaymissions/snowdin/research_feed,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/post/research)
+"XX" = (
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
 "Yn" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -40330,7 +40367,7 @@ aj
 an
 cT
 an
-an
+TF
 eH
 an
 ap
@@ -48334,7 +48371,7 @@ ae
 ae
 ae
 aj
-tx
+Vy
 ty
 tx
 tx
@@ -53699,9 +53736,9 @@ eJ
 eJ
 eK
 eK
-gc
+XX
 il
-gc
+XX
 gd
 eK
 eJ
@@ -53954,12 +53991,12 @@ bh
 bh
 eJ
 eJ
-gc
-gc
-gV
-gV
-gc
-gc
+XX
+XX
+SY
+SY
+XX
+XX
 eK
 eK
 eJ
@@ -54212,12 +54249,12 @@ bh
 eJ
 eK
 eJ
-gU
+Vz
 hF
 im
-gc
-gc
-gc
+XX
+XX
+XX
 eK
 gc
 eK
@@ -54469,15 +54506,15 @@ bh
 eK
 eK
 gd
-gc
-gc
-gV
-gU
-gV
-gc
+XX
+XX
+SY
+Vz
+NP
+XX
 eJ
 eK
-gc
+XX
 eK
 eK
 eK
@@ -54725,17 +54762,17 @@ bh
 bh
 eK
 eK
-gc
-gc
-gV
-gc
-gc
+XX
+XX
+Uo
+XX
+XX
 jO
-gc
-gc
-gc
-gc
-gc
+XX
+XX
+XX
+XX
+XX
 eK
 eK
 gc
@@ -54983,16 +55020,16 @@ bh
 eJ
 eK
 eK
-gc
-gc
-gc
-gc
-gc
-gc
-gV
-gc
-gc
-gV
+XX
+XX
+XX
+XX
+XX
+XX
+SY
+XX
+XX
+SY
 gc
 gc
 gc
@@ -55240,17 +55277,17 @@ bh
 eJ
 eK
 eK
-gc
-gc
+XX
+XX
 gd
-gV
-gc
-gc
+SY
+XX
+XX
 eK
 ge
-gc
-gc
-gU
+XX
+XX
+Vz
 gV
 gV
 gc
@@ -55497,16 +55534,16 @@ bh
 eJ
 eK
 ge
-gc
-gc
+hZ
+XX
 in
-gc
-gc
+XX
+XX
 ge
 ge
 eK
-gc
-gc
+XX
+XX
 ge
 gc
 gc
@@ -55753,17 +55790,17 @@ bh
 bh
 eJ
 eJ
-gc
-gV
-gU
-gc
-gc
-gc
+XX
+SY
+Vz
+XX
+XX
+XX
 eK
 ge
-gc
-gc
-gV
+XX
+XX
+SY
 eK
 eK
 gc
@@ -56011,12 +56048,12 @@ bh
 eJ
 eJ
 gf
-gc
-gc
-gV
-gc
-gc
-gc
+XX
+XX
+SY
+Wa
+XX
+XX
 eK
 lT
 eK
@@ -56268,13 +56305,13 @@ bh
 eK
 eK
 eJ
-gc
+XX
 hF
-im
-gV
-gc
+RR
+SY
+XX
 eK
-gc
+XX
 eK
 eK
 eK
@@ -56526,10 +56563,10 @@ eJ
 eJ
 eK
 eJ
-gc
-gc
-gc
-gU
+XX
+XX
+XX
+Vz
 eK
 eK
 eK
@@ -56783,9 +56820,9 @@ eJ
 eK
 eK
 eK
-gc
-gc
-gc
+XX
+XX
+XX
 eK
 eK
 eK
@@ -57041,7 +57078,7 @@ eK
 eK
 eK
 eJ
-gc
+XX
 gd
 eK
 eK
@@ -69652,7 +69689,7 @@ qH
 qH
 qH
 qH
-ss
+RD
 pG
 sR
 pG
