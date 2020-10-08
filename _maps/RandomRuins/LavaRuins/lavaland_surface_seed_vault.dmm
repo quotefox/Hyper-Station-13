@@ -5,6 +5,10 @@
 "b" = (
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"c" = (
+/obj/structure/closet/emcloset/anchored,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/powered/seedvault)
 "d" = (
 /obj/structure/table/wood,
 /obj/item/lighter,
@@ -211,6 +215,9 @@
 /obj/structure/table/wood,
 /turf/open/floor/plasteel/freezer,
 /area/ruin/powered/seedvault)
+"K" = (
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "L" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -270,6 +277,14 @@
 "X" = (
 /obj/machinery/hydroponics/constructable,
 /obj/machinery/light,
+/turf/open/floor/plasteel/freezer,
+/area/ruin/powered/seedvault)
+"Y" = (
+/obj/structure/closet,
+/obj/item/shovel,
+/obj/item/pickaxe,
+/obj/item/mining_scanner,
+/obj/item/storage/bag/ore,
 /turf/open/floor/plasteel/freezer,
 /area/ruin/powered/seedvault)
 "Z" = (
@@ -451,7 +466,7 @@ F
 F
 V
 L
-a
+b
 a
 a
 a
@@ -473,8 +488,8 @@ h
 k
 Q
 M
-a
-a
+K
+b
 a
 a
 "}
@@ -494,10 +509,10 @@ D
 h
 p
 Q
+K
+K
+K
 b
-a
-a
-a
 a
 "}
 (11,1,1) = {"
@@ -517,8 +532,8 @@ h
 H
 Q
 a
-a
-a
+K
+b
 a
 a
 "}
@@ -539,7 +554,7 @@ h
 X
 Q
 a
-a
+b
 a
 a
 a
@@ -591,7 +606,7 @@ a
 (15,1,1) = {"
 a
 a
-b
+Q
 Q
 Q
 Q
@@ -614,18 +629,18 @@ a
 b
 a
 b
-j
 Q
-j
 Q
-j
 Q
+Q
+Q
+Y
 h
 h
+c
 Q
-j
 Q
-j
+Q
 a
 a
 a
@@ -636,18 +651,18 @@ a
 a
 a
 a
+j
 a
+j
 a
-a
-a
-a
+j
 Q
 m
 m
 Q
+j
 b
-b
-b
+j
 a
 a
 a
