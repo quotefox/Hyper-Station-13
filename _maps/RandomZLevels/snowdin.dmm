@@ -858,7 +858,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12"
+	req_access_txt = "201"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/dorm)
@@ -1646,7 +1646,7 @@
 	pixel_y = 5
 	},
 /obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12"
+	req_access_txt = "201"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post)
@@ -1666,7 +1666,7 @@
 "dQ" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Kitchen";
-	req_access_txt = "35"
+	req_access_txt = "204"
 	},
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/plasteel,
@@ -2301,7 +2301,7 @@
 	},
 /obj/machinery/door/airlock/public/glass{
 	name = "Kitchen";
-	req_access_txt = "35"
+	req_access_txt = "204"
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/barricade/wooden/crude,
@@ -3158,7 +3158,7 @@
 	},
 /obj/machinery/door/airlock/maintenance{
 	name = "Misc Storage";
-	req_access_txt = "12"
+	req_access_txt = "201"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/dorm)
@@ -3494,7 +3494,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/medical/glass{
 	name = "Medbay Storage";
-	req_access_txt = "45"
+	req_access_txt = "202"
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -3515,7 +3515,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12"
+	req_access_txt = "201"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post)
@@ -5430,7 +5430,7 @@
 	},
 /obj/machinery/door/airlock/public/glass{
 	name = "Hydroponics";
-	req_access_txt = "35"
+	req_access_txt = "204"
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/cafeteria,
@@ -5826,7 +5826,7 @@
 "mq" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Hydroponics";
-	req_access_txt = "35"
+	req_access_txt = "204"
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/cafeteria,
@@ -6009,7 +6009,7 @@
 	},
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Engineering";
-	req_access_txt = "32"
+	req_access_txt = "204"
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/cafeteria,
@@ -6402,8 +6402,7 @@
 	},
 /obj/machinery/door/airlock/security{
 	name = "Security Checkpoint";
-	req_access = null;
-	req_access_txt = "1"
+	req_access_txt = "203"
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -6545,7 +6544,7 @@
 	},
 /obj/machinery/door/airlock/public/glass{
 	name = "Hydroponics";
-	req_access_txt = "35"
+	req_access_txt = "204"
 	},
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/hydro)
@@ -7302,7 +7301,7 @@
 "pJ" = (
 /obj/machinery/door/airlock/vault{
 	name = "Armory";
-	req_access_txt = "3"
+	req_access_txt = "203"
 	},
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/post/secpost)
@@ -7682,7 +7681,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12"
+	req_access_txt = "201"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/engineering)
@@ -15004,7 +15003,7 @@
 "Jr" = (
 /obj/machinery/door/airlock/mining/glass{
 	name = "Mining Dock";
-	req_access_txt = "48"
+	req_access_txt = "200"
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -15612,7 +15611,7 @@
 "KK" = (
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Engineering";
-	req_access_txt = "32"
+	req_access_txt = "204"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_main)
