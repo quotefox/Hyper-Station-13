@@ -24,7 +24,7 @@
 "x" = (/obj/effect/mob_spawn/human/hermit,/turf/open/floor/pod/dark,/area/ruin/powered)
 "y" = (/turf/open/floor/pod/dark,/area/ruin/powered)
 "z" = (/obj/machinery/light/small{dir = 4},/obj/structure/tubes,/turf/open/floor/plating,/area/ruin/powered)
-"A" = (/obj/structure/table,/obj/item/hatchet,/obj/item/kitchen/knife/combat/survival,/turf/open/floor/plating,/area/ruin/powered)
+"A" = (/obj/structure/table,/obj/item/hatchet,/obj/item/kitchen/knife/combat/survival,/obj/item/bluespace_thread{pixel_x = -1; pixel_y = 1},/turf/open/floor/plating,/area/ruin/powered)
 "B" = (/obj/structure/table/survival_pod,/turf/open/floor/pod/dark,/area/ruin/powered)
 "C" = (/obj/structure/tubes,/obj/item/crowbar,/obj/effect/decal/cleanable/blood/drip,/turf/open/floor/pod/dark,/area/ruin/powered)
 "D" = (/obj/effect/decal/cleanable/blood/footprints{dir = 1; icon_state = "blood1"},/obj/machinery/door/airlock/survival_pod/glass,/obj/structure/fans/tiny,/turf/open/floor/pod/dark,/area/ruin/powered)
