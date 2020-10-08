@@ -1142,7 +1142,7 @@
 /obj/structure/cable{
 	icon_state = "0-4"
 	},
-/obj/machinery/power/rtg/advanced,
+/obj/machinery/power/rtg/advanced/fullupgrade,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "eA" = (
@@ -1178,6 +1178,14 @@
 /obj/item/storage/bag/plants/portaseeder,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
+"ki" = (
+/obj/item/storage/daki{
+	icon_state = "daki_Nar'Sie";
+	name = "Nar-nar"
+	},
+/obj/item/toy/plush/narplush,
+/turf/open/floor/plasteel/cult,
+/area/ruin/unpowered/no_grav)
 "lZ" = (
 /obj/structure/cable,
 /obj/structure/cable{
@@ -1186,7 +1194,7 @@
 /obj/structure/sign/warning/radiation{
 	pixel_y = -31
 	},
-/obj/machinery/power/rtg/advanced,
+/obj/machinery/power/rtg/advanced/fullupgrade,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "na" = (
@@ -2108,7 +2116,7 @@ ab
 ab
 ab
 ab
-ab
+ki
 ac
 aq
 ac
