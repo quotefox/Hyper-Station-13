@@ -51,6 +51,8 @@
 
 // Mousedrop hook to normal turfs to get out of pools.
 /turf/open/MouseDrop_T(atom/from, mob/user)
+	if(!istype(user))
+		return ..()
 	// I could make this /open/floor and not have the !istype but ehh - kev
 	if(isliving(from) && HAS_TRAIT(from, TRAIT_SWIMMING) && isliving(user) && ((user == from) || user.CanReach(from)) && !user.IsStun() && !user.IsKnockdown() && !user.incapacitated() && !istype(src, /turf/open/pool))
 		var/mob/living/L = from
@@ -171,7 +173,7 @@
 	if(istype(W, /obj/item/mop) && filled)
 		W.reagents.add_reagent("water", 5)
 		to_chat(user, "<span class='notice'>You wet [W] in [src].</span>")
-		playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
+		playsound(src, 'sound/effects/slosh.ogg', 25, TRUE)
 	else
 		return ..()
 
