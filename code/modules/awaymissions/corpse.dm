@@ -86,13 +86,14 @@
 /obj/effect/mob_spawn/proc/equip(mob/M)
 	return
 
-/obj/effect/mob_spawn/proc/delayusability(seconds)
-	addtimer(CALLBACK(src, .proc/enableghostrole), approximateSecondsToTicks(seconds))
+/obj/effect/mob_spawn/proc/delayusability(deciseconds, showOnMenu) //How many deciseconds until it is enabled, + should it show up on the menu?
+	addtimer(CALLBACK(src, .proc/enableghostrole, showOnMenu), deciseconds)
 	
-/obj/effect/mob_spawn/proc/enableghostrole()
+/obj/effect/mob_spawn/proc/enableghostrole(show)
 	ghost_usable = TRUE
-	GLOB.poi_list |= src
-	LAZYADD(GLOB.mob_spawners[job_description ? job_description : name], src)
+	if (show == TRUE)
+		GLOB.poi_list |= src
+		LAZYADD(GLOB.mob_spawners[job_description ? job_description : name], src)
 
 /obj/effect/mob_spawn/proc/create(ckey, name)
 	var/mob/living/M = new mob_type(get_turf(src)) //living mobs only
