@@ -948,7 +948,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	color = RUNE_COLOR_DARKRED
 	req_cultists = 3
 	scribe_delay = 100
-	requires_full_power = TRUE
+	requires_full_power = FALSE // Requires 3 blood cultists. 3 Neutered blood Ts acting together for a common goal should probably be able to have this sort of power.
 
 /obj/effect/rune/apocalypse/invoke(var/list/invokers)
 	if(rune_in_use)

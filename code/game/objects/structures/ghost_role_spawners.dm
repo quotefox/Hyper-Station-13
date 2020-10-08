@@ -301,7 +301,7 @@
 
 //Exiles: Stranded exiles that have been left in Snowdin. Can be easily adapted for other roles as well.
 /obj/effect/mob_spawn/human/exiled
-	name = "a used bed"
+	name = "used bed"
 	desc = "Still warm."
 	mob_name = "exiled"
 	job_description = "Exiles"
@@ -315,9 +315,11 @@
 	Every day, you pause and recollect your memories from before it all happened... "
 	assignedrole = "Arctic Exile"
 	mirrorcanloadappearance = TRUE
+	ghost_usable = FALSE
 
 /obj/effect/mob_spawn/human/exiled/Initialize(mapload)
 	. = ..()
+	delayusability(9000, FALSE) //Probably should not show up on the menu? It gives it away that snowdin is the away mission.
 	var/arrpee = rand(1,3)
 	switch(arrpee)
 		if(1)
