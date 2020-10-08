@@ -79,6 +79,7 @@
 	linked_filter = null
 	linked_turfs.Cut()
 	mobs_in_pool.Cut()
+	mist_off()
 	return ..()
 
 /obj/machinery/pool/controller/proc/scan_things()
@@ -207,7 +208,7 @@
 			for(var/datum/reagent/R in reagents.reagent_list)
 				if(R.reagent_state == SOLID)
 					R.reagent_state = LIQUID
-				if(!swimee.reagents.has_reagent(POOL_NO_OVERDOSE_MEDICINE_MAX))
+				if(!swimee.reagents.has_reagent(R.type,POOL_NO_OVERDOSE_MEDICINE_MAX))
 					swimee.reagents.add_reagent(R.type, 0.5) //osmosis
 			reagents.reaction(swimee, VAPOR, 0.03) //3 percent. Need to find a way to prevent this from stacking chems at some point like the above.
 		for(var/obj/objects in W)
@@ -409,6 +410,7 @@
 /obj/machinery/pool/controller/proc/mist_on() //Spawn /obj/effect/mist (from the shower) on all linked pool tiles
 	if(mist_state)
 		return
+	mist_off()			//make sure it cycles and deletes everything
 	mist_state = TRUE
 	for(var/X in linked_turfs)
 		var/turf/open/pool/W = X
@@ -417,6 +419,5 @@
 			linked_mist += M
 
 /obj/machinery/pool/controller/proc/mist_off() //Delete all /obj/effect/mist from all linked pool tiles.
-	for(var/M in linked_mist)
-		qdel(M)
+	QDEL_LIST(linked_mist)
 	mist_state = FALSE
