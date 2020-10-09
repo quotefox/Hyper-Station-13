@@ -320,6 +320,7 @@
 /area/ruin/space/has_grav/listeningstation)
 "az" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/autolathe/hacked,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "aA" = (
@@ -366,13 +367,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shovel,
 /turf/open/floor/plasteel/dark,
-/area/ruin/space/has_grav/listeningstation)
-"aD" = (
-/obj/machinery/light/small{
-	brightness = 3;
-	dir = 8
-	},
-/turf/closed/wall,
 /area/ruin/space/has_grav/listeningstation)
 "aE" = (
 /obj/effect/turf_decal/stripes/line{
@@ -868,7 +862,7 @@
 /area/ruin/space/has_grav/listeningstation)
 "bn" = (
 /obj/structure/sign/departments/medbay/alt,
-/turf/closed/wall,
+/turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/listeningstation)
 "bo" = (
 /obj/machinery/door/firedoor,
@@ -1158,6 +1152,10 @@
 "fJ" = (
 /obj/structure/chair/stool,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "hJ" = (
@@ -1180,11 +1178,12 @@
 /area/ruin/space/has_grav/listeningstation)
 "ki" = (
 /obj/item/storage/daki{
+	desc = "Make us whole.~";
 	icon_state = "daki_Nar'Sie";
 	name = "Nar-nar"
 	},
 /obj/item/toy/plush/narplush,
-/turf/open/floor/plasteel/cult,
+/turf/closed/mineral/random,
 /area/ruin/unpowered/no_grav)
 "lZ" = (
 /obj/structure/cable,
@@ -1226,11 +1225,6 @@
 "uB" = (
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
-"xe" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/autolathe/hacked,
-/turf/open/floor/plasteel/dark,
-/area/ruin/space/has_grav/listeningstation)
 "za" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4;
@@ -1256,6 +1250,10 @@
 /obj/item/reagent_containers/glass/bucket{
 	pixel_x = 9;
 	pixel_y = 11
+	},
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
@@ -1917,14 +1915,14 @@ ab
 ab
 ab
 ab
-ab
 ac
 ac
 ac
 ac
 ac
 ac
-ab
+ac
+ac
 ab
 ab
 ab
@@ -2123,7 +2121,7 @@ ac
 aH
 aN
 aZ
-aD
+ac
 ac
 ac
 ac
@@ -2239,7 +2237,7 @@ ac
 ac
 ah
 as
-xe
+ac
 ac
 aR
 ac
@@ -2249,7 +2247,7 @@ bx
 bD
 ag
 ag
-ab
+ag
 ab
 ab
 ab
@@ -2395,7 +2393,7 @@ ab
 ab
 ab
 ab
-ag
+ac
 ac
 ac
 ac
@@ -2449,7 +2447,7 @@ bA
 ag
 ag
 ag
-ab
+ag
 ab
 ab
 ab
@@ -2561,12 +2559,12 @@ ao
 ag
 aF
 ag
-ac
 ag
 ag
 ag
 ag
-ab
+ag
+ag
 ab
 ab
 ab

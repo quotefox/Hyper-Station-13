@@ -1806,9 +1806,8 @@
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
 "Vz" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
 /turf/open/floor/engine,
 /area/engine/supermatter)
