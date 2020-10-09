@@ -19,7 +19,7 @@
 "as" = (/obj/effect/spawner/structure/window/reinforced,/turf/open/floor/plating,/area/ruin/space/has_grav/hotel/guestroom/room_5)
 "at" = (/turf/closed/wall,/area/ruin/space/has_grav/hotel/guestroom/room_6)
 "au" = (/obj/effect/spawner/structure/window/reinforced,/turf/open/floor/plating,/area/ruin/space/has_grav/hotel/guestroom/room_6)
-"av" = (/obj/effect/decal/cleanable/cobweb,/obj/item/clothing/under/suit_jacket/charcoal{name = "Mr. Moseby's suit"},/obj/structure/closet/crate,/turf/open/floor/plating,/area/ruin/space/has_grav/hotel)
+"av" = (/obj/effect/decal/cleanable/cobweb,/obj/item/clothing/under/suit_jacket/charcoal{name = "Prndls Suit"},/obj/structure/closet/crate,/turf/open/floor/plating,/area/ruin/space/has_grav/hotel)
 "aw" = (/turf/open/floor/plating,/area/ruin/space/has_grav/hotel)
 "ax" = (/obj/machinery/door/airlock{dir = 4; name = "Bathroom"},/turf/open/floor/plasteel/showroomfloor,/area/ruin/space/has_grav/hotel/guestroom/room_3)
 "ay" = (/obj/structure/window{dir = 8; icon_state = "window"},/obj/structure/toilet,/turf/open/floor/plasteel/showroomfloor,/area/ruin/space/has_grav/hotel/guestroom/room_3)
