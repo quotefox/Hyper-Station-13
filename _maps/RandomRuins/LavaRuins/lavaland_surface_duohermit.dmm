@@ -38,7 +38,8 @@
 "M" = (/obj/structure/girder,/turf/open/floor/plating{initial_gas_mix = "o2=14;n2=23;TEMP=300"},/area/ruin/powered)
 "N" = (/obj/effect/spawner/structure/window/shuttle,/turf/open/floor/plating{initial_gas_mix = "o2=14;n2=23;TEMP=300"},/area/ruin/powered)
 "O" = (/obj/machinery/door/airlock/titanium{name = "Escape Pod Airlock"},/turf/open/floor/mineral/titanium/blue,/area/ruin/powered)
-"Q" = (/turf/open/floor/mineral/titanium/blue,/area/ruin/powered)
+"Q" = (/obj/item/weldingtool,/turf/open/floor/mineral/titanium/blue,/area/ruin/powered)
+"R" = (/obj/item/stack/cable_coil/red,/turf/open/floor/plating/asteroid/basalt,/area/ruin/powered)
 "T" = (/obj/item/stock_parts/matter_bin,/turf/open/floor/plating/asteroid/basalt,/area/ruin/powered)
 "U" = (/obj/item/stock_parts/matter_bin,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors)
 "V" = (/turf/closed/wall/mineral/titanium/interior,/area/ruin/powered)
@@ -53,7 +54,7 @@ aaacdffgeGhkcaaa
 aacffffgijmkcaaa
 aacJfYffLilkcaaa
 aaccfffffgncaaaa
-aaacffZfffpcaaaa
+aaacffZfRfpcaaaa
 aaacTfoqofrcaaaa
 saactttooucaaaaa
 saaatvwooKcaaaaa
