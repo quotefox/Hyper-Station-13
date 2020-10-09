@@ -191,6 +191,18 @@
 	name = "Corvid"
 	icon_state = "crow"
 
+/datum/sprite_accessory/tails/human/deer
+	name = "Deer"
+	icon_state = "deer"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails_animated/human/deer
+	name = "Deer"
+	icon_state = "deer"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
 /datum/sprite_accessory/tails/human/eevee
 	name = "Eevee"
 	icon_state = "eevee"
@@ -557,6 +569,14 @@
 /datum/sprite_accessory/mam_tails_animated/cow
 	name = "Cow"
 	icon_state = "cow"
+
+/datum/sprite_accessory/mam_tails/deer
+	name = "Deer"
+	icon_state = "deer"
+
+/datum/sprite_accessory/mam_tails_animated/deer
+	name = "Deer"
+	icon_state = "deer"
 
 /datum/sprite_accessory/mam_tails/eevee
 	name = "Eevee"
