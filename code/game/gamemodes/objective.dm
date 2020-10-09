@@ -416,8 +416,16 @@ GLOBAL_LIST_EMPTY(possible_items)
 			for(var/datum/mind/M in owners)
 				if(M.current.mind.assigned_role in possible_item.excludefromjob)
 					continue check_items
-			approved_targets += possible_item
+			if(extraSanityCheck(possible_item.targetitem))
+				approved_targets += possible_item
 	return set_target(safepick(approved_targets))
+
+/datum/objective/steal/proc/extraSanityCheck(objectiveitem)
+	if(objectiveitem == /obj/item/aicard) //Is the item an AI card? (Steal a functional AI)
+		var/list/ais = active_ais() //Check if we have active AIs.
+		if(!ais.len)
+			return FALSE //No AIs, returns false, disallowing the AI card objective from being added to the approved target list
+	return TRUE //All checks successful, add this item to the approved target list
 
 /datum/objective/steal/proc/set_target(datum/objective_item/item)
 	if(item)
@@ -875,6 +883,3 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/changeling_team_objective/impersonate_department/impersonate_heads
 	explanation_text = "Have X or more heads of staff escape on the shuttle disguised as heads, while the real heads are dead"
 	command_staff_only = TRUE
-
-
-
