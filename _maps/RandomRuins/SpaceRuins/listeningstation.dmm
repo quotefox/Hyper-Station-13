@@ -93,17 +93,17 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "ak" = (
-/obj/structure/filingcabinet,
-/obj/item/paper/fluff/ruins/listeningstation/reports/april,
-/obj/item/paper/fluff/ruins/listeningstation/reports/may,
-/obj/item/paper/fluff/ruins/listeningstation/reports/june,
-/obj/item/paper/fluff/ruins/listeningstation/reports/july,
-/obj/item/paper/fluff/ruins/listeningstation/reports/august,
-/obj/item/paper/fluff/ruins/listeningstation/reports/september,
-/obj/item/paper/fluff/ruins/listeningstation/reports/october,
-/obj/item/paper/fluff/ruins/listeningstation/receipt,
+/obj/structure/rack{
+	dir = 8
+	},
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/integrated_circuit_printer/upgraded,
+/obj/item/multitool,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/paper/fluff/ruins/listeningstation/odd_report,
+/obj/item/stock_parts/cell/high/plus{
+	pixel_x = 9;
+	pixel_y = -3
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "al" = (
@@ -113,6 +113,10 @@
 	pixel_y = -12
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/glasses/meson/night{
+	pixel_x = 1;
+	pixel_y = 11
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "am" = (
@@ -343,17 +347,17 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "aB" = (
-/obj/structure/rack{
-	dir = 8
-	},
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/integrated_circuit_printer/upgraded,
-/obj/item/multitool,
+/obj/structure/filingcabinet,
+/obj/item/paper/fluff/ruins/listeningstation/reports/april,
+/obj/item/paper/fluff/ruins/listeningstation/reports/may,
+/obj/item/paper/fluff/ruins/listeningstation/reports/june,
+/obj/item/paper/fluff/ruins/listeningstation/reports/july,
+/obj/item/paper/fluff/ruins/listeningstation/reports/august,
+/obj/item/paper/fluff/ruins/listeningstation/reports/september,
+/obj/item/paper/fluff/ruins/listeningstation/reports/october,
+/obj/item/paper/fluff/ruins/listeningstation/receipt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/stock_parts/cell/high/plus{
-	pixel_x = 9;
-	pixel_y = -3
-	},
+/obj/item/paper/fluff/ruins/listeningstation/odd_report,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "aC" = (
@@ -362,10 +366,10 @@
 	layer = 2.9
 	},
 /obj/item/storage/bag/ore,
-/obj/item/mining_scanner,
-/obj/item/pickaxe,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shovel,
+/obj/item/pickaxe/mini,
+/obj/item/t_scanner/adv_mining_scanner/lesser,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "aE" = (
@@ -2644,7 +2648,7 @@ aa
 aa
 aa
 aa
-aa
+ab
 ab
 ab
 ab
