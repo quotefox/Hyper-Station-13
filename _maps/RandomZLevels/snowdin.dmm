@@ -6072,6 +6072,7 @@
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/stack/cable_coil,
+/obj/item/storage/belt/utility,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/garage)
 "mX" = (
@@ -7269,6 +7270,7 @@
 	},
 /obj/item/clothing/gloves/color/yellow,
 /obj/item/stack/cable_coil,
+/obj/item/storage/belt/utility,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "pz" = (
