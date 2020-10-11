@@ -102,9 +102,9 @@
 	typepath = /datum/round_event/pirates
 	antag_flag = ROLE_TRAITOR
 	enemy_roles = list("AI","Security Officer","Head of Security","Captain")
-	required_enemies = list(2,2,1,1,0,0,0,0,0,0)
+	required_enemies = list(2,2,2,2,1,1,1,1,0,0)
 	weight = 3
-	cost = 10
+	cost = 0
 	earliest_start = 50 MINUTES
 	blocking_rules = list(/datum/dynamic_ruleset/roundstart/nuclear,/datum/dynamic_ruleset/midround/from_ghosts/nuclear)
 	requirements = list(101,30,25,20,20,20,15,10,10,10)
@@ -208,7 +208,7 @@
 	required_enemies = list(2,2,1,1,0,0,0,0,0,0)
 	weight = 3
 	cost = 5
-	requirements = list(30,30,25,20,15,15,10,10,10,10)
+	requirements = list(101,20,15,10,10,10,10,10,10,10)
 	high_population_requirement = 15
 	//property_weights = list("chaos" = 1, "valid" = 1)
 	earliest_start = 30 MINUTES //Skyrat change.
@@ -228,9 +228,9 @@
 	enemy_roles = list("Chemist","Medical Doctor","Chief Medical Officer")
 	required_enemies = list(1,1,1,1,1,1,0,0,0,0)
 	cost = 2
-	weight = 2
+	weight = 1
 	repeatable_weight_decrease = 1
-	requirements = list(101,10,5,5,5,5,5,5,5,5) // yes, can happen on fake-extended
+	requirements = list(101,101,10,10,5,5,5,5,5,5) // yes, can happen on fake-extended
 	high_population_requirement = 5
 	repeatable = TRUE
 	//property_weights = list("chaos" = 1, "extended" = 2)
@@ -241,12 +241,12 @@
 	if(mode.threat_level > 30 && mode.threat >= 5 && prob(20))
 		name = "Clogged Vents: Threatening"
 		cost = 8
-		required_enemies = list(3,3,3,2,2,2,1,1,1,1)
+		required_enemies = list(3,3,3,2,2,2,1,1,0,0)
 		typepath = /datum/round_event/vent_clog/threatening
 	else if(mode.threat_level > 15 && mode.threat > 15 && prob(30))
 		name = "Clogged Vents: Catastrophic"
 		cost = 15
-		required_enemies = list(2,2,1,1,1,1,0,0,0,0)
+		required_enemies = list(4,4,4,3,3,3,2,1,1,0)
 		typepath = /datum/round_event/vent_clog/catastrophic
 	else
 		cost = 0
@@ -305,6 +305,7 @@
 		name = "Meteor Wave: Threatening"
 		cost = 10
 		typepath = /datum/round_event/meteor_wave/threatening
+		chaos_min = 1.8
 	else if(world.time-SSticker.round_start_time > 45 MINUTES && mode.threat_level > 50 && mode.threat >= 40 && prob(30))
 		name = "Meteor Wave: Catastrophic"
 		cost = 0
@@ -315,6 +316,8 @@
 		name = "Meteor Wave: Normal"
 		cost = 5
 		typepath = /datum/round_event/meteor_wave
+		chaos_min = 1.0
+		required_enemies = list(2,2,2,2,1,1,1,1,1,1)
 	return ..()
 
 //////////////////////////////////////////////
@@ -333,7 +336,7 @@
 	earliest_start = 20 MINUTES
 	repeatable_weight_decrease = 2
 	cost = 3
-	requirements = list(5,5,5,5,5,5,5,5,5,5)
+	requirements = list(101,101,5,5,5,5,5,5,5,5)
 	high_population_requirement = 5
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
@@ -350,7 +353,7 @@
 	earliest_start = 20 MINUTES
 	repeatable_weight_decrease = 2
 	cost = 5
-	requirements = list(5,5,5,5,5,5,5,5,5,5)
+	requirements = list(101,5,5,5,5,5,5,5,5,5)
 	high_population_requirement = 10
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
@@ -380,8 +383,8 @@
 	repeatable_weight_decrease = 1
 	cost = 0
 	enemy_roles = list("Chief Engineer","Station Engineer","Atmospheric Technician","Research Director","Scientist","Captain","Cyborg")
-	required_enemies = list(1,1,1,1,1,1,1,1,1,1)
-	requirements = list(10,10,10,10,10,10,10,10,10,10)
+	required_enemies = list(2,2,2,2,2,1,1,1,1,1)
+	requirements = list(101,101,10,10,10,10,10,10,10,10)
 	high_population_requirement = 10
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
@@ -397,8 +400,8 @@
 	repeatable_weight_decrease = 1
 	cost = 5
 	enemy_roles = list("Chief Engineer","Station Engineer","Atmospheric Technician","Research Director","Scientist","Captain","Cyborg")
-	required_enemies = list(1,1,1,1,1,1,1,1,1,1)
-	requirements = list(10,10,10,10,10,10,10,10,10,10)
+	required_enemies = list(3,3,3,2,2,2,2,2,2,2)
+	requirements = list(101,101,10,10,10,10,10,10,10,10)
 	high_population_requirement = 10
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
@@ -437,10 +440,10 @@
 	weight = 1
 	earliest_start = 30 MINUTES
 	repeatable_weight_decrease = 1
-	cost = 10
+	cost = -10
 	enemy_roles = list("Chief Engineer","Station Engineer","Atmospheric Technician","Research Director","Scientist","Captain","Cyborg")
 	required_enemies = list(2,1,1,1,1,1,0,0,0,0)
-	requirements = list(101,20,20,15,15,10,10,10,10,10)
+	requirements = list(101,25,20,15,15,15,10,10,10,10)
 	high_population_requirement = 10
 	repeatable = TRUE
 	//property_weights = list("extended" = -1, "chaos" = 1)
@@ -485,8 +488,8 @@
 	weight = 2
 	repeatable_weight_decrease = 3
 	enemy_roles = list("Chief Engineer","Station Engineer")
-	required_enemies = list(1,1,1,1,1,1,1,1,1,1)
-	requirements = list(101,101,5,5,5,10,10,10,10,10)
+	required_enemies = list(2,2,2,2,1,1,1,1,1,1)
+	requirements = list(101,101,5,5,5,5,5,5,5,5)
 	high_population_requirement = 5
 	repeatable = TRUE
 	//property_weights = list("extended" = 1, "chaos" = 1)
@@ -518,7 +521,7 @@
 	weight = 2
 	repeatable_weight_decrease = 1
 	enemy_roles = list("Chief Engineer","Station Engineer")
-	required_enemies = list(2,2,2,2,2,2,2,2,2,2)
+	required_enemies = list(2,2,1,1,1,1,1,1,1,1)
 	requirements = list(15,10,9,8,7,6,5,4,3,2)
 	high_population_requirement = 10
 	repeatable = TRUE
@@ -570,11 +573,11 @@
 	name = "Portal Storm"
 	//config_tag = "portal_storm"
 	typepath = /datum/round_event/portal_storm/syndicate_shocktroop
-	cost = 10
+	cost = 0
 	weight = 1
 	enemy_roles = list("Head of Security","Security Officer","AI","Captain","Shaft Miner")
 	required_enemies = list(2,2,2,2,2,2,2,2,2,2)
-	requirements = list(101,101,40,30,30,30,30,30,30,30)
+	requirements = list(101,101,40,35,30,30,30,30,25,20)
 	high_population_requirement =  30
 	earliest_start = 40 MINUTES
 	//property_weights = list("teamwork" = 1,"chaos" = 1, "extended" = -1)
@@ -601,7 +604,7 @@
 	name = "Swarmers"
 	//config_tag = "swarmer"
 	typepath = /datum/round_event/spawn_swarmer
-	cost = 10
+	cost = 0
 	weight = 1
 	earliest_start = 40 MINUTES
 	enemy_roles = list("AI","Security Officer","Head of Security","Captain","Station Engineer","Atmos Technician","Chief Engineer")
@@ -620,7 +623,7 @@
 	required_enemies = list(2,1,1,1,1,1,1,0,0,0)
 	required_candidates = 1
 	weight = 4
-	cost = 5
+	cost = -5
 	requirements = list(30,30,20,20,15,10,10,10,10,5) // yes, it can even happen in "extended"!
 	//property_weights = list("story_potential" = 1, "extended" = 1, "valid" = -2)
 	high_population_requirement = 5
@@ -651,9 +654,18 @@
 	high_population_requirement = 15
 	cost = 0
 	occurances_max = 2
-	weight = 4
+	weight = 3
+	repeatable_weight_decrease = 2
 	earliest_start = 30 MINUTES
 	chaos_min = 1.5
+	var/atom/special_target
+
+
+/datum/dynamic_ruleset/event/immovable_rod/execute()  //I do not know why this is necessary
+	var/datum/round_event_control/E = locate(/datum/round_event_control/immovable_rod) in SSevents.control
+	var/datum/round_event/event = E.runEvent() //But it is.
+	event.announceWhen = -1 //So it isn't double announced.
+	return ..()
 
 
 //////////////////////////////////////////////
@@ -696,29 +708,47 @@
 	requirements = list(0,0,0,0,0,0,0,0,0,0)
 	high_population_requirement = 0
 	weight = 100
+	repeatable_weight_decrease = 1 //Slightly drop the weight each time it is called to keep the pool from getting too diluted as the round goes on.
 	repeatable = TRUE
-	occurances_max = 20
+	//occurances_max = 20 //Our rounds can go for a WHILE
 
 /datum/dynamic_ruleset/event/disease_outbreak
 	name = "Disease Outbreak"
 	enemy_roles = list("Virologist","Chief Medical Officer","Captain","Chemist")
-	required_enemies = list(2,1,1,1,0,0,0,0,0,0)
+	//required_enemies = list(2,1,1,1,1,1,1,1,0,0)
 	typepath = /datum/round_event/disease_outbreak
+	//requirements = list(5,5,5,5,5,5,5,5,5,5)
+	required_enemies = list(0,0,0,0,0,0,0,0,0,0)
 	requirements = list(5,5,5,5,5,5,5,5,5,5)
 	high_population_requirement = 5
-	weight = 5
+	weight = 999
 	cost = 0
 	repeatable = TRUE
 	occurances_max = 1
+	earliest_start = 0 MINUTES
+
+/datum/dynamic_ruleset/event/disease_outbreak/execute()  //I do not know why this is necessary
+	var/datum/round_event_control/E = locate(/datum/round_event_control/disease_outbreak) in SSevents.control
+	var/datum/round_event/event = E.runEvent() //But it is.
+	event.announceWhen = -1 //So it isn't double announced.
+	return ..()
 
 /datum/dynamic_ruleset/event/falsealarm
 	name = "False Alarm"
 	typepath = /datum/round_event/falsealarm
 	requirements = list(0,0,0,0,0,0,0,0,0,0)
 	high_population_requirement = 0
-	weight = 20
+	weight = 999
 	repeatable = TRUE
 	occurances_max = 5
+	earliest_start = 0 MINUTES
+
+/datum/dynamic_ruleset/event/falsealarm/execute()  //I do not know why this is necessary
+	var/datum/round_event_control/E = locate(/datum/round_event_control/falsealarm) in SSevents.control
+	//var/datum/round_event/event = E.runEvent() //But it is.
+	//event.announceWhen = -1 //So it isn't double announced.
+	E.runEvent()
+	return ..()
 
 /datum/dynamic_ruleset/event/grid_check
 	name = "Grid Check"
@@ -744,7 +774,7 @@
 	name = "Mice Migration"
 	typepath = /datum/round_event/mice_migration
 	enemy_roles = list("Chief Engineer","Station Engineer","Captain","Cook","Atmospheric Technician")
-	required_enemies = list(1,1,1,1,1,0,0,0,0,0)
+	required_enemies = list(1,1,1,1,1,1,0,0,0,0)
 	requirements = list(5,5,5,5,0,0,0,0,0,0)
 	high_population_requirement = 0
 	weight = 10
@@ -760,7 +790,7 @@
 	requirements = list(101,10,10,10,5,5,5,5,5,5)
 	high_population_requirement = 0
 	repeatable = TRUE
-	weight = 5
+	weight = 4
 	repeatable_weight_decrease = 3
 	occurances_max = 2
 
@@ -791,8 +821,8 @@
 	requirements = list(101,101,10,9,8,7,5,5,5,0)
 	cost = 2
 	high_population_requirement = 0
-	weight = 6
-	repeatable_weight_decrease = 5
+	weight = 4
+	repeatable_weight_decrease = 2
 	earliest_start = 20 MINUTES
 	repeatable = TRUE
 	occurances_max = 3

@@ -179,7 +179,7 @@
 	required_candidates = 1
 	weight = 7
 	cost = 10
-	requirements = list(101,101,40,30,30,30,25,20,20,15)
+	requirements = list(101,101,30,25,20,20,15,15,15,10)
 	repeatable = TRUE
 	high_population_requirement = 10
 	flags = TRAITOR_RULESET
@@ -194,7 +194,7 @@
 	required_candidates = 1
 	weight = 7
 	cost = 5
-	requirements = list(30,30,30,25,20,15,10,10,5,5)
+	requirements = list(101,30,25,20,15,10,10,5,5,5)
 	repeatable = TRUE
 	high_population_requirement = 10
 	flags = TRAITOR_RULESET
@@ -251,8 +251,8 @@
 	required_enemies = list(4,4,4,4,4,4,2,2,2,0)
 	required_candidates = 1
 	weight = 3
-	cost = 35
-	requirements = list(101,101,60,55,50,45,40,35,25,20)
+	cost = 20
+	requirements = list(101,101,55,50,45,40,35,30,25,20)
 	high_population_requirement = 35
 	required_type = /mob/living/silicon/ai
 	var/ion_announce = 33
@@ -300,14 +300,15 @@
 	antag_datum = /datum/antagonist/wizard
 	antag_flag = ROLE_WIZARD
 	enemy_roles = list("Security Officer","Detective","Head of Security", "Captain")
-	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
+	required_enemies = list(2,2,1,1,1,1,1,1,0,0)
 	required_candidates = 1
 	weight = 1
 	cost = 20
-	requirements = list(101,101,80,70,60,50,40,30,30,30)
+	requirements = list(101,101,60,55,50,40,30,30,20,20)
 	high_population_requirement = 50
 	repeatable = FALSE //WE DON'T NEED MORE THAN ONE WIZARD
-	chaos_min = 3.5
+	chaos_min = 4
+	admin_required = TRUE
 
 /datum/dynamic_ruleset/midround/from_ghosts/wizard/ready(forced = FALSE)
 	if (required_candidates > (dead_players.len + list_observers.len))
@@ -333,13 +334,13 @@
 	antag_flag = ROLE_OPERATIVE
 	antag_datum = /datum/antagonist/nukeop
 	enemy_roles = list("AI", "Cyborg", "Security Officer", "Warden","Detective","Head of Security", "Captain")
-	required_enemies = list(3,3,3,3,3,2,1,1,0,0)
+	required_enemies = list(3,3,3,3,3,2,2,1,1,0)
 	required_candidates = 5
 	weight = 5
 	cost = 35
-	requirements = list(101,101,101,90,80,70,60,50,50,50)
+	requirements = list(101,101,100,70,60,50,40,40,40,40)
 	high_population_requirement = 10
-	var/operative_cap = list(2,2,3,3,4,5,5,5,5,5)
+	var/operative_cap = list(2,2,2,2,3,3,4,4,5,5)
 	var/datum/team/nuclear/nuke_team
 	flags = HIGHLANDER_RULESET
 	chaos_min = 4.0
@@ -381,7 +382,7 @@
 	required_candidates = 1
 	weight = 4
 	cost = 20
-	requirements = list(101,101,70,60,60,60,50,40,30,20)
+	requirements = list(101,101,60,50,45,40,40,40,30,20)
 	high_population_requirement = 50
 	repeatable = TRUE
 	chaos_min = 3.5
@@ -404,8 +405,8 @@
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
 	weight = 3
-	cost = 10
-	requirements = list(101,101,100,80,70,60,50,40,30,20)
+	cost = 15
+	requirements = list(101,101,100,70,60,50,40,40,30,20)
 	high_population_requirement = 50
 	repeatable = TRUE
 	var/list/vents = list()
@@ -501,13 +502,14 @@
 	required_candidates = 2
 	weight = 4
 	cost = 10
-	requirements = list(101,101,70,50,40,30,30,30,30,30)
+	requirements = list(101,101,60,50,40,30,20,20,10,10)
 	blocking_rules = list(/datum/dynamic_ruleset/roundstart/nuclear,/datum/dynamic_ruleset/midround/from_ghosts/nuclear)
 	high_population_requirement = 15
 	var/datum/team/abductor_team/team
 	//property_weights = list("extended" = -2, "valid" = 1, "trust" = -1, "chaos" = 2)
 	repeatable_weight_decrease = 4
 	repeatable = TRUE
+	chaos_min = 2.0
 
 /datum/dynamic_ruleset/midround/from_ghosts/abductors/ready(forced = FALSE)
 	team = new /datum/team/abductor_team
@@ -547,6 +549,7 @@
 	//property_weights = list("story_potential" = 1, "extended" = -2, "valid" = 2)
 	var/list/spawn_locs = list()
 	var/spawn_loc
+	chaos_min = 3.0
 
 /datum/dynamic_ruleset/midround/from_ghosts/ninja/ready(forced = FALSE)
 	if(!spawn_loc)
