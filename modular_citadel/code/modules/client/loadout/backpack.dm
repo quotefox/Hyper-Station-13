@@ -150,58 +150,48 @@
 	name = "Jade Lipstick"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/lipstick/jade
-	cost = 1
 
 /datum/gear/lipstick_purple
 	name = "Purple Lipstick"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/lipstick/purple
-	cost = 1
 
 /datum/gear/lipstick_black
 	name = "Black Lipstick"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/lipstick/black
-	cost = 1
 
 /datum/gear/lipstick_yellow
 	name = "Yellow Lipstick"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/lipstick/yellow
-	cost = 1
 
 /datum/gear/lipstick_blue
 	name = "Blue Lipstick"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/lipstick/blue
-	cost = 1
 
 /datum/gear/lipstick_teal
 	name = "Teal Lipstick"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/lipstick/teal
-	cost = 1
 	
 /datum/gear/lipstick_fuchsia
 	name = "Fuchsia Lipstick"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/lipstick/fuchsia
-	cost = 1
 	
 /datum/gear/lipstick_navy
 	name = "Navy Blue Lipstick"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/lipstick/navy
-	cost = 1
 
 /datum/gear/lipstick_aqua
 	name = "Cyan Lipstick"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/lipstick/aqua
-	cost = 1
 
 /datum/gear/lipstick_white
 	name = "White Lipstick"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/lipstick/white
-	cost = 1
