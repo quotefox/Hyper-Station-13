@@ -150,6 +150,62 @@
 	path = /obj/item/storage/fancy/ringbox/diamond
 	cost = 5
 
+/datum/gear/lipstick
+	name = "Lipstick"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/lipstick
+	cost = 1
+
+/datum/gear/lipstick_jade
+	name = "Jade Lipstick"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/lipstick/jade
+
+/datum/gear/lipstick_purple
+	name = "Purple Lipstick"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/lipstick/purple
+
+/datum/gear/lipstick_black
+	name = "Black Lipstick"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/lipstick/black
+
+/datum/gear/lipstick_yellow
+	name = "Yellow Lipstick"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/lipstick/yellow
+
+/datum/gear/lipstick_blue
+	name = "Blue Lipstick"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/lipstick/blue
+
+/datum/gear/lipstick_teal
+	name = "Teal Lipstick"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/lipstick/teal
+	
+/datum/gear/lipstick_fuchsia
+	name = "Fuchsia Lipstick"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/lipstick/fuchsia
+	
+/datum/gear/lipstick_navy
+	name = "Navy Blue Lipstick"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/lipstick/navy
+
+/datum/gear/lipstick_aqua
+	name = "Cyan Lipstick"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/lipstick/aqua
+
+/datum/gear/lipstick_white
+	name = "White Lipstick"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/lipstick/white
+
 /datum/gear/condom
 	name = "Condom"
 	category = SLOT_IN_BACKPACK
