@@ -2961,6 +2961,7 @@
 #include "hyperstation\code\obj\pregnancytester.dm"
 #include "hyperstation\code\obj\rewards.dm"
 #include "hyperstation\code\obj\rope.dm"
+#include "hyperstation\code\obj\sounding.dm"
 #include "interface\interface.dm"
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
