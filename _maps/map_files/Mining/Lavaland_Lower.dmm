@@ -40,8 +40,7 @@
 "aj" = (
 /obj/structure/table,
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/xenoarch/gen)
@@ -90,15 +89,13 @@
 "at" = (
 /obj/machinery/vending/autodrobe,
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/xenoarch/gen)
 "au" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/xenoarch/gen)
@@ -126,8 +123,7 @@
 /area/xenoarch/arch)
 "aA" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /obj/structure/window/spawner/east,
 /obj/item/twohanded/required/kirbyplants/random,
@@ -161,8 +157,7 @@
 /area/xenoarch/arch)
 "aG" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/xenoarch/arch)
@@ -183,8 +178,7 @@
 /area/xenoarch/arch)
 "aJ" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /obj/machinery/airalarm{
 	name = "Xenoarch science hallway air alarm";
@@ -343,8 +337,7 @@
 "bg" = (
 /obj/structure/filingcabinet,
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /obj/machinery/airalarm{
 	name = "Xenoarch security office air alarm";
@@ -719,8 +712,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
 /area/xenoarch/gen)
@@ -833,8 +825,7 @@
 	dir = 4
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /obj/machinery/airalarm{
 	dir = 4;
@@ -864,8 +855,7 @@
 	dir = 1
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /turf/open/floor/plasteel/white,
 /area/xenoarch/arch)
@@ -944,8 +934,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/xenoarch/gen)
@@ -990,8 +979,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /obj/machinery/recharge_station,
 /obj/machinery/airalarm{
@@ -1042,7 +1030,9 @@
 /area/xenoarch/bot)
 "cK" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/on/layer1,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/xenoarch/gen)
 "cL" = (
 /obj/effect/turf_decal/tile/purple{
@@ -1788,8 +1778,7 @@
 "ew" = (
 /obj/machinery/computer/crew,
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /turf/open/floor/plasteel/white,
 /area/xenoarch/gen)
@@ -2156,8 +2145,7 @@
 /area/xenoarch/gen)
 "fn" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /obj/machinery/vending/dinnerware,
 /turf/open/floor/plasteel/freezer,
@@ -2597,20 +2585,10 @@
 /turf/closed/wall,
 /area/xenoarch/gen)
 "gr" = (
-/obj/effect/turf_decal/tile/purple{
-	dir = 8
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
 	},
-/obj/effect/turf_decal/tile/purple{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/plasteel/white,
-/area/xenoarch/arch)
+/area/lavaland/surface/outdoors)
 "gs" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -2667,8 +2645,7 @@
 /area/xenoarch/gen)
 "gz" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /obj/structure/table,
 /obj/structure/disposalpipe/segment,
@@ -2715,7 +2692,9 @@
 /obj/effect/turf_decal/stripes/asteroid{
 	dir = 8
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/xenoarch/gen)
 "gG" = (
 /obj/structure/rack,
@@ -2728,8 +2707,7 @@
 /area/xenoarch/gen)
 "gH" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /obj/structure/table,
 /obj/item/kitchen/knife,
@@ -2995,7 +2973,9 @@
 	dir = 10
 	},
 /obj/effect/turf_decal/delivery,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/xenoarch/gen)
 "hs" = (
 /turf/open/floor/carpet/purple,
@@ -3049,8 +3029,7 @@
 /area/xenoarch/gen)
 "hx" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -3101,16 +3080,14 @@
 "hD" = (
 /obj/structure/bookcase/manuals/research_and_development,
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /turf/open/floor/carpet,
 /area/xenoarch/gen)
 "hE" = (
 /obj/structure/table/wood,
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /turf/open/floor/carpet,
 /area/xenoarch/gen)
@@ -3260,8 +3237,7 @@
 /area/xenoarch/gen)
 "ib" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /obj/machinery/vending/snack,
 /obj/structure/disposalpipe/segment{
@@ -3276,7 +3252,6 @@
 /area/xenoarch/gen)
 "ic" = (
 /obj/machinery/door/airlock{
-	dir = 2;
 	id_tag = "Xenodorm1";
 	name = "Room 1"
 	},
@@ -3677,8 +3652,7 @@
 	dir = 7
 	},
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/xenoarch/gen)
@@ -3778,7 +3752,6 @@
 /obj/machinery/camera{
 	c_tag = "Xenoarchaeology Entrance West";
 	dir = 1;
-	name = "security camera";
 	network = list("ss13","rd","mine")
 	},
 /turf/open/floor/plasteel,
@@ -3814,7 +3787,6 @@
 /obj/item/radio/intercom{
 	dir = 8;
 	name = "Station Intercom (General)";
-	pixel_x = 0;
 	pixel_y = -24
 	},
 /turf/open/floor/plasteel,
@@ -3933,7 +3905,9 @@
 /obj/structure/ore_box,
 /obj/effect/turf_decal/stripes/asteroid,
 /obj/effect/turf_decal/delivery,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/xenoarch/gen)
 "jJ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -4045,8 +4019,7 @@
 /area/lavaland/surface/outdoors)
 "jW" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/xenoarch/gen)
@@ -4092,7 +4065,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/xenoarch/gen)
 "kd" = (
 /obj/effect/turf_decal/tile/brown{
@@ -4114,7 +4089,9 @@
 /obj/effect/turf_decal/stripes/asteroid{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/xenoarch/gen)
 "kg" = (
 /obj/structure/table,
@@ -4132,10 +4109,11 @@
 /area/xenoarch/gen)
 "kh" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/xenoarch/gen)
 "ki" = (
 /obj/structure/chair/office{
@@ -4156,7 +4134,9 @@
 /obj/effect/turf_decal/stripes/asteroid{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/xenoarch/gen)
 "kk" = (
 /obj/structure/flora/rock/pile,
@@ -4197,7 +4177,9 @@
 /obj/effect/turf_decal/stripes/asteroid{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "ko" = (
 /obj/item/twohanded/required/kirbyplants/random,
@@ -4243,7 +4225,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/xenoarch/gen)
 "kv" = (
 /obj/structure/ore_box,
@@ -4251,7 +4235,9 @@
 	dir = 6
 	},
 /obj/effect/turf_decal/delivery,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/xenoarch/gen)
 "kw" = (
 /obj/structure/barricade/wooden,
@@ -4897,18 +4883,21 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/xenoarch/gen)
 "lG" = (
 /obj/effect/turf_decal/stripes/asteroid{
 	dir = 1
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "lH" = (
 /obj/machinery/light{
-	dir = 1;
-	pixel_y = 0
+	dir = 1
 	},
 /obj/structure/table,
 /turf/open/floor/plasteel/freezer,
@@ -5754,16 +5743,14 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance{
-	dir = 1;
-	name = "maintenance access"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/xenoarch/gen)
 "ob" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /obj/machinery/door/airlock/maintenance{
-	dir = 1;
-	name = "maintenance access"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/xenoarch/gen)
@@ -5902,7 +5889,6 @@
 /area/xenoarch/arch)
 "or" = (
 /obj/machinery/door/airlock/glass{
-	dir = 2;
 	name = "Xenoarchaeology Facility Radio and Ore Silo"
 	},
 /obj/structure/fans/tiny,
@@ -6232,7 +6218,9 @@
 "pp" = (
 /obj/structure/ore_box,
 /obj/effect/turf_decal/delivery,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pq" = (
 /obj/structure/table,
@@ -6503,8 +6491,25 @@
 	},
 /turf/open/floor/plating,
 /area/lavaland/surface/outdoors)
+"uZ" = (
+/obj/structure/girder,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
+/area/lavaland/surface/outdoors)
+"CO" = (
+/obj/structure/closet/firecloset,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
+/area/xenoarch/gen)
 "Hx" = (
 /turf/open/floor/carpet,
+/area/xenoarch/gen)
+"JL" = (
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/xenoarch/gen)
 "Sy" = (
 /turf/closed/wall,
@@ -11369,7 +11374,7 @@ fe
 fy
 fT
 ge
-gr
+fe
 fy
 kK
 fT
@@ -11900,8 +11905,8 @@ Sy
 Sy
 lC
 Sy
-ks
-bk
+CO
+gr
 lQ
 ay
 ay
@@ -12158,7 +12163,7 @@ Sy
 lq
 gp
 lF
-bk
+gr
 lQ
 ay
 ay
@@ -12415,7 +12420,7 @@ jH
 lr
 Sy
 kh
-bk
+gr
 jA
 jV
 ay
@@ -18044,7 +18049,7 @@ lQ
 lQ
 lQ
 kf
-jN
+JL
 jI
 Sy
 lX
@@ -18448,13 +18453,13 @@ ab
 ab
 ab
 oS
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+gr
+gr
+gr
+gr
+gr
+gr
+gr
 oT
 lQ
 lQ
@@ -18705,13 +18710,13 @@ ab
 lQ
 lQ
 oS
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+gr
+gr
+gr
+gr
+gr
+gr
+gr
 oT
 lQ
 lQ
@@ -18962,13 +18967,13 @@ lQ
 lQ
 lQ
 oS
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+gr
+gr
+gr
+gr
+gr
+gr
+gr
 oT
 lQ
 lQ
@@ -28205,13 +28210,13 @@ ab
 ab
 lQ
 oS
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+gr
+gr
+gr
+gr
+gr
+gr
+gr
 oT
 lQ
 lQ
@@ -28462,13 +28467,13 @@ ab
 ab
 lQ
 oS
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+gr
+gr
+gr
+gr
+gr
+gr
+gr
 oT
 lQ
 lQ
@@ -28719,13 +28724,13 @@ ab
 lQ
 lQ
 oS
-bk
-bk
-bk
-bk
-bk
-bk
-bk
+gr
+gr
+gr
+gr
+gr
+gr
+gr
 oT
 lQ
 lQ
@@ -31554,9 +31559,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 ou
 lQ
 lQ
@@ -31792,9 +31797,9 @@ lQ
 lQ
 lQ
 ot
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -31811,9 +31816,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 lQ
 lQ
@@ -32049,9 +32054,9 @@ lQ
 lQ
 lQ
 ot
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -32068,9 +32073,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -32306,9 +32311,9 @@ lQ
 lQ
 lQ
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -32325,9 +32330,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -32563,9 +32568,9 @@ lQ
 lQ
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -32582,9 +32587,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -32820,9 +32825,9 @@ lQ
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -32839,9 +32844,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -33077,9 +33082,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -33096,9 +33101,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -33334,9 +33339,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -33353,9 +33358,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -33591,9 +33596,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 lQ
 lQ
@@ -33610,9 +33615,9 @@ lQ
 ab
 lQ
 ot
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -33848,9 +33853,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 ou
 lQ
 ab
@@ -34105,9 +34110,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 ou
 lQ
 lQ
@@ -42924,9 +42929,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -43181,9 +43186,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -43438,9 +43443,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -43695,9 +43700,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -43712,9 +43717,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 ou
 lQ
 lQ
@@ -43952,9 +43957,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -43969,9 +43974,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -44209,9 +44214,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -44226,9 +44231,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -44466,9 +44471,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -44483,9 +44488,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -44740,9 +44745,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -44997,9 +45002,9 @@ lQ
 lQ
 lQ
 ot
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -46016,12 +46021,12 @@ lQ
 lQ
 lQ
 oS
-bk
-bk
-bk
-bk
-bk
-bk
+gr
+gr
+gr
+gr
+gr
+gr
 oT
 lQ
 ab
@@ -46273,12 +46278,12 @@ lQ
 lQ
 lQ
 oS
-bk
-bk
-bk
-bk
-bk
-bk
+gr
+gr
+gr
+gr
+gr
+gr
 oT
 lQ
 ab
@@ -46530,12 +46535,12 @@ ab
 ab
 lQ
 oS
-bk
-bk
-bk
-bk
-bk
-bk
+gr
+gr
+gr
+gr
+gr
+gr
 oT
 lQ
 lQ
@@ -48899,9 +48904,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 ou
 lQ
 lQ
@@ -49156,9 +49161,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 ou
 lQ
 lQ
@@ -49413,9 +49418,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 lQ
 lQ
@@ -49670,9 +49675,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -49927,9 +49932,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -50184,9 +50189,9 @@ ay
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -50441,9 +50446,9 @@ lQ
 ay
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -50698,9 +50703,9 @@ lQ
 lQ
 ay
 fc
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -50955,9 +50960,9 @@ lQ
 lQ
 lQ
 ot
-bk
-bk
-bk
+gr
+gr
+gr
 nn
 ay
 ay
@@ -65556,7 +65561,7 @@ ab
 ab
 ab
 ab
-pi
+uZ
 po
 oV
 lQ
@@ -66847,10 +66852,10 @@ lQ
 lQ
 lQ
 oS
-bk
-bk
-bk
-bk
+gr
+gr
+gr
+gr
 oT
 jV
 pD
@@ -67104,10 +67109,10 @@ lQ
 lQ
 lQ
 oS
-bk
-bk
-bk
-bk
+gr
+gr
+gr
+gr
 oT
 lQ
 lQ
@@ -67361,10 +67366,10 @@ lQ
 lQ
 lQ
 oS
-bk
-bk
-bk
-bk
+gr
+gr
+gr
+gr
 oT
 lQ
 lQ
@@ -67869,7 +67874,7 @@ ab
 ab
 ab
 ab
-pi
+uZ
 jA
 pD
 lQ
@@ -68388,7 +68393,7 @@ oU
 oU
 qi
 oU
-pi
+uZ
 ay
 ay
 ay
