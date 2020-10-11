@@ -125,10 +125,10 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		qdel(src) //If this ever happens, it's because you lost an arm
 
 /obj/item/claymore/highlander/examine(mob/user)
-	..()
-	to_chat(user, "It has [!notches ? "nothing" : "[notches] notches"] scratched into the blade.")
+	. = ..()
+	. += "It has [!notches ? "nothing" : "[notches] notches"] scratched into the blade."
 	if(nuke_disk)
-		to_chat(user, "<span class='boldwarning'>It's holding the nuke disk!</span>")
+		. += "<span class='boldwarning'>It's holding the nuke disk!</span>"
 
 /obj/item/claymore/highlander/attack(mob/living/target, mob/living/user)
 	. = ..()
@@ -663,3 +663,35 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		to_chat(user, "<span class='warning'>[M] is too close to use [src] on.</span>")
 		return
 	M.attack_hand(user)
+
+/obj/item/bdsm_whip
+	name = "bdsm whip"
+	desc = "A less lethal version of the whip the librarian has. Still hurts, but just the way you like it."
+	icon_state = "whip"
+	item_state = "chain"
+	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
+	slot_flags = ITEM_SLOT_BELT
+	damtype = AROUSAL
+	throwforce = 0
+	force = 5
+	w_class = WEIGHT_CLASS_NORMAL
+	attack_verb = list("flogged", "whipped", "lashed", "disciplined")
+	hitsound = 'sound/weapons/whip.ogg'
+
+/obj/item/bdsm_whip/ridingcrop
+	name = "riding crop"
+	desc = "For teaching a lesson in a more compact fashion."
+	icon_state = "ridingcrop"
+	force = 10
+
+/obj/item/bdsm_whip/suicide_act(mob/user)
+		user.visible_message("<span class='suicide'>[user] is getting just a little too kinky!</span>")
+		return (OXYLOSS)
+
+/obj/item/bdsm_whip/attack(mob/M, mob/user)
+	if(user.zone_selected == BODY_ZONE_PRECISE_GROIN)
+		playsound(loc, 'sound/weapons/whip.ogg', 30)
+		M.visible_message("<span class='userdanger'>[user] has [pick(attack_verb)] [M] on the ass!</span>")
+	else
+		return ..(M, user)

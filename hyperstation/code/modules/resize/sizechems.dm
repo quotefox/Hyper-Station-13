@@ -1,5 +1,42 @@
 //Size Chemicals, now with better and less cringy names.
+//TO DO: USE BETTER FERMICHEM TO MAKE ALL OF THESE CHEMICALS MORE INTERACTIVE
 
+//Sizechem reagent
+/datum/reagent/sizechem
+	name = "Cell-Volume Altering Base"
+	id = "sizechem"
+	description = "A stabilized compound liquid, used as a basis for increasing or decreasing the size of living matter with more recipes."
+	color = "#C900CC"
+	taste_description = "regret"
+	can_synth = FALSE
+	metabolization_rate = 0.25
+
+//Sizechem reaction
+/datum/chemical_reaction/sizechem
+	name = "Cell-Volume Altering Base"
+	id = "sizechem"
+	mix_message = "the reaction rapidly alters in size!"
+	required_reagents = list("growthserum" = 0.15, "clonexadone" = 0.15, "gold" = 0.15, "acetone" = 0.15)
+	results = list("sizechem" = 0.3)
+	required_temp = 1
+	//Fermichem vars
+	OptimalTempMin 		= 600 		// Lower area of bell curve for determining heat based rate reactions
+	OptimalTempMax 		= 630 		// Upper end for above
+	ExplodeTemp 		= 635 		// Temperature at which reaction explodes
+	OptimalpHMin 		= 5 		// Lowest value of pH determining pH a 1 value for pH based rate reactions (Plateu phase)
+	OptimalpHMax 		= 5.5 		// Higest value for above
+	ReactpHLim 			= 2 		// How far out pH wil react, giving impurity place (Exponential phase)
+	CatalystFact 		= 0 		// How much the catalyst affects the reaction (0 = no catalyst)
+	CurveSharpT 		= 4 		// How sharp the temperature exponential curve is (to the power of value)
+	CurveSharppH 		= 4 		// How sharp the pH exponential curve is (to the power of value)
+	ThermicConstant		= -10 		// Temperature change per 1u produced
+	HIonRelease 		= 0.02 		// pH change per 1u reaction (inverse for some reason)
+	RateUpLim 			= 1 		// Optimal/max rate possible if all conditions are perfect
+	FermiChem 			= TRUE		// If the chemical uses the Fermichem reaction mechanics
+	FermiExplode 		= FALSE		// If the chemical explodes in a special way
+	PurityMin 			= 0.2
+
+//Growthchem reagent
 /datum/reagent/growthchem
 	name = "Prospacillin"
 	id = "growthchem"
@@ -10,6 +47,31 @@
 	metabolization_rate = 0.25
 	can_synth = FALSE //DO NOT MAKE THIS SNYTHESIZABLE, THESE CHEMS ARE SUPPOSED TO NOT BE USED COMMONLY
 
+//Growthchem reaction
+/datum/chemical_reaction/growthchem
+	name = "Prospacillin"
+	id = "growthchem"
+	mix_message = "the reaction appears to grow!"
+	required_reagents = list("sizechem" = 0.15, "condensedcapsaicin" = 0.15, "aphro" = 0.30)
+	results = list("growthchem" = 0.25)
+	required_temp = 1
+	OptimalTempMin 		= 700 		// Lower area of bell curve for determining heat based rate reactions
+	OptimalTempMax 		= 730 		// Upper end for above
+	ExplodeTemp 		= 735 		// Temperature at which reaction explodes
+	OptimalpHMin 		= 3 		// Lowest value of pH determining pH a 1 value for pH based rate reactions (Plateu phase)
+	OptimalpHMax 		= 3.5 		// Higest value for above
+	ReactpHLim 			= 2 		// How far out pH wil react, giving impurity place (Exponential phase)
+	CatalystFact 		= 0 		// How much the catalyst affects the reaction (0 = no catalyst)
+	CurveSharpT 		= 4 		// How sharp the temperature exponential curve is (to the power of value)
+	CurveSharppH 		= 4 		// How sharp the pH exponential curve is (to the power of value)
+	ThermicConstant		= -10 		// Temperature change per 1u produced
+	HIonRelease 		= 0.02 		// pH change per 1u reaction (inverse for some reason)
+	RateUpLim 			= 1 		// Optimal/max rate possible if all conditions are perfect
+	FermiChem 			= TRUE		// If the chemical uses the Fermichem reaction mechanics
+	FermiExplode 		= FALSE		// If the chemical explodes in a special way
+	PurityMin 			= 0.2
+
+//Growthchem effects
 /datum/reagent/growthchem/on_mob_add(mob/living/carbon/M)
 	. = ..()
 	if(ishuman(M))
@@ -24,6 +86,7 @@
 	..()
 	. = 1
 
+//Shrinkchem reagent
 /datum/reagent/shrinkchem
 	name = "Diminicillin"
 	id = "shrinkchem"
@@ -31,9 +94,34 @@
 	color = "#0C26E7"
 	taste_description = "a pungent, acidic and jittery flavour"
 	overdose_threshold = 10
-	metabolization_rate = 1
+	metabolization_rate = 0.50
 	can_synth = FALSE //SAME STORY AS ABOVE
 
+//Shrinchem reaction
+/datum/chemical_reaction/shrinkchem
+	name = "Diminicillin"
+	id = "shrinkchem"
+	mix_message = "the reaction appears to shrink!"
+	required_reagents = list("sizechem" = 0.15, "frostoil" = 0.15, "aphro" = 0.30)
+	results = list("shrinkchem" = 0.25)
+	required_temp = 1
+	OptimalTempMin 		= 100 		// Lower area of bell curve for determining heat based rate reactions
+	OptimalTempMax 		= 150 		// Upper end for above
+	ExplodeTemp 		= 350 		// Temperature at which reaction explodes
+	OptimalpHMin 		= 3 		// Lowest value of pH determining pH a 1 value for pH based rate reactions (Plateu phase)
+	OptimalpHMax 		= 4.5 		// Higest value for above
+	ReactpHLim 			= 2 		// How far out pH wil react, giving impurity place (Exponential phase)
+	CatalystFact 		= 0 		// How much the catalyst affects the reaction (0 = no catalyst)
+	CurveSharpT 		= 4 		// How sharp the temperature exponential curve is (to the power of value)
+	CurveSharppH 		= 4 		// How sharp the pH exponential curve is (to the power of value)
+	ThermicConstant		= -10 		// Temperature change per 1u produced
+	HIonRelease 		= 0.02 		// pH change per 1u reaction (inverse for some reason)
+	RateUpLim 			= 1 		// Optimal/max rate possible if all conditions are perfect
+	FermiChem 			= TRUE		// If the chemical uses the Fermichem reaction mechanics
+	FermiExplode 		= FALSE		// If the chemical explodes in a special way
+	PurityMin 			= 0.2
+
+//Shrinkchem effects
 /datum/reagent/shrinkchem/on_mob_add(mob/living/carbon/M)
 	. = ..()
 	if(ishuman(M))

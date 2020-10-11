@@ -573,12 +573,21 @@
 	armor = list("melee" = 25, "bullet" = 15, "laser" = 30, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 45)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security
 
+/obj/item/clothing/suit/hooded/wintercoat/security/pink
+	name = "pink security winter coat"
+	icon_state = "coatsecuritypink"
+	item_state = "coatsecuritypink"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/pink
+
 /obj/item/clothing/suit/hooded/wintercoat/security/Initialize()
 	. = ..()
 	allowed = GLOB.security_wintercoat_allowed
 
 /obj/item/clothing/head/hooded/winterhood/security
 	icon_state = "winterhood_security"
+
+/obj/item/clothing/head/hooded/winterhood/security/pink
+	icon_state = "winterhood_securitypink"
 
 /obj/item/clothing/suit/hooded/wintercoat/hos
 	name = "head of security's winter coat"

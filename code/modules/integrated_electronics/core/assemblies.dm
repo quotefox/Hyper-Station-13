@@ -70,16 +70,16 @@
 /obj/item/electronic_assembly/examine(mob/user)
 	. = ..()
 	if(can_anchor)
-		to_chat(user, "<span class='notice'>The anchoring bolts [anchored ? "are" : "can be"] <b>wrenched</b> in place and the maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>")
+		. += "<span class='notice'>The anchoring bolts [anchored ? "are" : "can be"] <b>wrenched</b> in place and the maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>"
 	else
-		to_chat(user, "<span class='notice'>The maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>")
+		. += "<span class='notice'>The maintenance panel [opened ? "can be" : "is"] <b>screwed</b> in place.</span>"
 
 	if((isobserver(user) && ckeys_allowed_to_scan[user.ckey]) || IsAdminGhost(user))
-		to_chat(user, "You can <a href='?src=[REF(src)];ghostscan=1'>scan</a> this circuit.")
+		. += "You can <a href='?src=[REF(src)];ghostscan=1'>scan</a> this circuit."
 
 	for(var/I in assembly_components)
 		var/obj/item/integrated_circuit/IC = I
-		IC.external_examine(user)
+		. += IC.external_examine(user)
 	if(opened)
 		interact(user)
 
@@ -760,11 +760,19 @@
 	name = "type-e electronic machine"
 	icon_state = "setup_large_tall"
 	desc = "It's a case, for building large electronics with. This one has a tall design."
+	density = 1
 
 /obj/item/electronic_assembly/large/industrial
 	name = "type-f electronic machine"
 	icon_state = "setup_large_industrial"
 	desc = "It's a case, for building large electronics with. This one resembles some kind of industrial machinery."
+	density = 1
+
+/obj/item/electronic_assembly/large/vendor
+	name = "type-g electronic machine"
+	icon_state = "setup_large_vendor"
+	desc = "It's a case, for building large electronics with. This one resembles a vending machine."
+	density = 1
 
 /obj/item/electronic_assembly/drone
 	name = "electronic drone"

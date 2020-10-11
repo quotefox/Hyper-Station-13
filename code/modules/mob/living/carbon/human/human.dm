@@ -3,12 +3,13 @@
 	real_name = "Unknown"
 	icon = 'icons/mob/human.dmi'
 	icon_state = "caucasian_m"
-	appearance_flags = KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE
+	appearance_flags = KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
 
 /mob/living/carbon/human/Initialize()
 	verbs += /mob/living/proc/mob_sleep
 	verbs += /mob/living/proc/lay_down
 	verbs += /mob/living/carbon/human/proc/underwear_toggle //fwee
+	time_initialized = world.time
 
 	//initialize limbs first
 	create_bodyparts()
@@ -39,6 +40,7 @@
 	. = ..()
 	if(!CONFIG_GET(flag/disable_human_mood))
 		AddComponent(/datum/component/mood)
+	AddElement(/datum/element/mob_holder/micro, "micro")
 
 /mob/living/carbon/human/Destroy()
 	QDEL_NULL(physiology)
@@ -59,26 +61,29 @@
 	//...and display them.
 	add_to_all_human_data_huds()
 
+
 /mob/living/carbon/human/Stat()
 	..()
-
+	//Same thing from mob
 	if(statpanel("Status"))
-		stat(null, "Intent: [a_intent]")
-		stat(null, "Move Mode: [m_intent]")
-		if (internal)
-			if (!internal.air_contents)
-				qdel(internal)
-			else
-				stat("Internal Atmosphere Info", internal.name)
-				stat("Tank Pressure", internal.air_contents.return_pressure())
-				stat("Distribution Pressure", internal.distribute_pressure)
-
-		if(mind)
-			var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
-			if(changeling)
-				stat("Chemical Storage", "[changeling.chem_charges]/[changeling.chem_storage]")
-				stat("Absorbed DNA", changeling.absorbedcount)
-
+		if(tickrefresh == 1)
+			sList2 = list()
+			sList2 += "Intent: [a_intent]"
+			sList2 += "Move Mode: [m_intent]"
+			if (internal)
+				if (!internal.air_contents)
+					qdel(internal)
+				else
+					sList2 += "Internal Atmosphere Info: "+ "[internal.name]"
+					sList2 += "Tank Pressure: "+ "[internal.air_contents.return_pressure()]"
+					sList2 += "Distribution Pressure: "+ "[internal.distribute_pressure]"
+			if(mind)
+				var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
+				if(changeling)
+					sList2 += "Chemical Storage: " + "[changeling.chem_charges]/[changeling.chem_storage]"
+					sList2 += "Absorbed DNA: "+ "[changeling.absorbedcount]"
+		if (sList2 != null)
+			stat(null, "[sList2.Join("\n\n")]")
 
 	//NINJACODE
 	if(istype(wear_suit, /obj/item/clothing/suit/space/space_ninja)) //Only display if actually a ninja.
@@ -1106,7 +1111,8 @@
 	race = /datum/species/krokodil_addict
 
 //define holder_type on nerds we wanna commit scoop to
-/mob/living/carbon/human
+/* /mob/living/carbon/human
 	var/holder_type = /obj/item/clothing/head/mob_holder/micro
 	can_be_held = "micro"
+*/
 

@@ -1169,6 +1169,13 @@
 	contains = list(/obj/machinery/the_singularitygen/tesla)
 	crate_name = "tesla generator crate"
 
+/datum/supply_pack/engine/teg
+	name = "Thermoelectric Generator"
+	desc = "Contains your very own Thermoelectric Generator. Time to turn cargo into a blazing hellfire, perhaps?"
+	cost = 4000
+	contains = list(/obj/machinery/power/generator)
+	crate_name = "thermoelectric generator crate"
+
 //////////////////////////////////////////////////////////////////////////////
 /////////////////////// Canisters & Materials ////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -3204,6 +3211,7 @@
 					/obj/item/clothing/head/kitty/genuine, // Why its illegal
 					/obj/item/clothing/head/kitty/genuine,
 					/obj/item/storage/pill_bottle/penis_enlargement,
+					/obj/item/storage/pill_bottle/breast_enlargement,
 					/obj/structure/reagent_dispensers/keg/aphro)
 	crate_name = "lewd kit"
 	crate_type = /obj/structure/closet/crate

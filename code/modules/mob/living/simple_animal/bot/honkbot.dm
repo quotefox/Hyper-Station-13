@@ -112,7 +112,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 		mode = BOT_HUNT
 
 /mob/living/simple_animal/bot/honkbot/attack_hand(mob/living/carbon/human/H)
-	if(H.a_intent == "harm")
+	if(H.a_intent == INTENT_HARM)
 		retaliate(H)
 		addtimer(CALLBACK(src, .proc/react_buzz), 5)
 	return ..()
@@ -156,7 +156,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 		bike_horn(A)
 
 
-/mob/living/simple_animal/bot/honkbot/hitby(atom/movable/AM, skipcatch = 0, hitpush = 1, blocked = 0)
+/mob/living/simple_animal/bot/honkbot/hitby(atom/movable/AM, skipcatch = FALSE, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
 	if(istype(AM, /obj/item))
 		playsound(src, honksound, 50, TRUE, -1)
 		var/obj/item/I = AM

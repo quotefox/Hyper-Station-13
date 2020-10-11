@@ -57,10 +57,20 @@
 	path = /obj/item/toy/plush/mammal/grug
 	ckeywhitelist = list("herrdoktah")
 
-
 /datum/gear/hshack
 	name = "Plastitanium Shackles"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/suit/shackles
 	ckeywhitelist = list("heliocintrini")
 
+/datum/gear/luwethring
+	name = "Wedding Band"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/gloves/ring/luweth
+	ckeywhitelist = list("luweth")
+
+/datum/gear/bluedice
+	name = "Blue D20"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/dice/d20/blue
+	ckeywhitelist = list("jackattack41498")

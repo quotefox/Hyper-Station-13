@@ -62,3 +62,25 @@
 /obj/item/reagent_containers/food/snacks/grown/holymelon/Initialize()
 	. = ..()
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE) //deliver us from evil o melon god
+
+//Milkmelon
+/obj/item/seeds/watermelon/milk
+	name = "pack of milkmelon seeds"
+	desc = "These seeds grow into Milkmelon plants."
+	icon_state = "seed-milkmelon"
+	species = "milkmelon"
+	plantname = "Milk Melon Vines"
+	product = /obj/item/reagent_containers/food/snacks/grown/milkmelon
+	mutatelist = list()
+	reagents_add = list("milk" = 0.2, "breast_enlarger" = 0.08, "vitamin" = 0.04, "nutriment" = 0.1)
+	rarity = 20
+
+/obj/item/reagent_containers/food/snacks/grown/milkmelon
+	seed = /obj/item/seeds/watermelon/milk
+	name = "milkmelon"
+	desc = "A softer, rounder-looking watermelon that audibly sloshes with milk."
+	icon_state = "milkmelon"
+	filling_color = "#FFAABB"
+	dried_type = null
+	wine_power = 30
+	wine_flavor = "creamy"

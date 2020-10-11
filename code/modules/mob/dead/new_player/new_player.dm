@@ -12,7 +12,6 @@
 	stat = DEAD
 	canmove = FALSE
 
-	anchored = TRUE	//  don't get pushed around
 	var/mob/living/new_character	//for instant transfer once the round is set up
 
 /mob/dead/new_player/Initialize()
@@ -121,6 +120,10 @@
 
 		if(href_list["late_join"] == "override")
 			LateChoices()
+			return
+
+		if(client.prefs.real_name in client.pastcharacters) //if character has been spawned before
+			to_chat(usr, "<span class='notice'>You have played that character before this round, please select a new one!</span>")
 			return
 
 		if(SSticker.queued_players.len || (relevant_cap && living_player_count() >= relevant_cap && !(ckey(key) in GLOB.admin_datums)))
@@ -272,7 +275,7 @@
 		ready = PLAYER_NOT_READY
 		return FALSE
 
-	var/this_is_like_playing_right = alert(src,"Are you sure you wish to observe? You will not be able to play this round!","Player Setup","Yes","No")
+	var/this_is_like_playing_right = alert(src,"Are you sure you wish to observe?","Player Setup","Yes","No")
 
 	if(QDELETED(src) || !src.client || this_is_like_playing_right != "Yes")
 		ready = PLAYER_NOT_READY
@@ -284,6 +287,8 @@
 	spawning = TRUE
 
 	observer.started_as_observer = TRUE
+	src.client.respawn_observing = 1
+	src.client.lastrespawn = world.time + 1800 SECONDS //reset respawn.
 	close_spawn_windows()
 	var/obj/effect/landmark/observer_start/O = locate(/obj/effect/landmark/observer_start) in GLOB.landmarks_list
 	to_chat(src, "<span class='notice'>Now teleporting.</span>")
@@ -395,7 +400,7 @@
 		humanc = character	//Let's retypecast the var to be human,
 
 	if(humanc)	//These procs all expect humans
-		GLOB.data_core.manifest_inject(humanc)
+		GLOB.data_core.manifest_inject(humanc, humanc.client, humanc.client.prefs)
 		if(SSshuttle.arrivals)
 			SSshuttle.arrivals.QueueAnnounce(humanc, rank)
 		else
@@ -531,10 +536,14 @@
 				var/position_class = "otherPosition"
 				if(job.title in GLOB.command_positions)
 					position_class = "commandPosition"
+				var/jobline = ""
 				if(job in SSjob.prioritized_jobs)
-					dat += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'><font color='lime'><b>[job.title] ([job.current_positions])</b></font></a>"
+					jobline += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'><font color='lime'><b>[job.title] ([job.current_positions])</b></font></a>"
 				else
-					dat += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a>"
+					jobline += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a>"
+				if(client && client.prefs && client.prefs.alt_titles_preferences[job.title])
+					jobline += "<br><span style='color:#BBBBBB; font-style: italic;'>(as [client.prefs.alt_titles_preferences[job.title]])</span>"
+				dat += jobline
 				categorizedJobs[jobcat]["jobs"] -= job
 
 			for(var/spawner in categorizedJobs[jobcat]["jobs"])

@@ -7,6 +7,12 @@
 	alternate_worn_icon = 'hyperstation/icons/mobs/gloves.dmi'
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
+/obj/item/clothing/gloves/latexsleeves/security
+	name = "security sleeves"
+	desc = "A pair of latex sleeves, with a band of red above the elbows denoting that the wearer is part of the security team."
+	icon_state = "latexsec"
+	item_state = "latexsec"
+
 /obj/item/clothing/head/dominatrixcap
 	name = "dominatrix cap"
 	desc = "A sign of authority, over the body."

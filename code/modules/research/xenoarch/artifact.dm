@@ -84,6 +84,12 @@
 								/obj/item/seeds/thaadra,
 								/obj/item/seeds/vale,
 								/obj/item/seeds/vaporsac,
+								/obj/item/seeds/watermelon/milk,
+								/obj/item/seeds/chili/pink,
+								/obj/item/seeds/cherry/bomb,
+								/obj/item/seeds/gatfruit,
+								/obj/item/seeds/kudzu,
+								/obj/item/seeds/firelemon,
 								/obj/item/seeds/random
 								))
 

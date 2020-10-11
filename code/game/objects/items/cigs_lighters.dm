@@ -265,13 +265,15 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/dromedary
 	desc = "A DromedaryCo brand cigarette."
-
+	list_reagents = list("nicotine" = 7.5, "silicon" = 7.5)
+	
 /obj/item/clothing/mask/cigarette/uplift
 	desc = "An Uplift Smooth brand cigarette."
 	list_reagents = list("nicotine" = 7.5, "menthol" = 7.5)
 
 /obj/item/clothing/mask/cigarette/robust
 	desc = "A Robust brand cigarette."
+	list_reagents = list("nicotine" = 7.5, "grenadine" = 7.5)
 
 /obj/item/clothing/mask/cigarette/robustgold
 	desc = "A Robust Gold brand cigarette."
@@ -279,7 +281,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/carp
 	desc = "A Carp Classic brand cigarette."
-
+	list_reagents = list("nicotine" = 7.5, "sodiumchloride" = 7.5)
+	
 /obj/item/clothing/mask/cigarette/syndicate
 	desc = "An unknown brand cigarette."
 	list_reagents = list("nicotine" = 15, "omnizine" = 15)
@@ -911,7 +914,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if (O.heat > 500)
 		if (reagents && reagents.total_volume) //if there's stuff in the bong
 			var/lighting_text = O.ignition_effect(src, user)
-			if(lighting_text) 
+			if(lighting_text)
 				//Logic regarding igniting it on
 				if (firecharges == 0)
 					user.show_message("<span class='notice'>You light the [src] with the [O]!</span>", 1)
@@ -948,18 +951,18 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		user.show_message("<span class='notice'>You quench the flame.</span>", 1)
 
 /obj/item/bong/examine(mob/user)
-	..()
+	. = ..()
 	if(!reagents.total_volume)
-		to_chat(user, "<span class='notice'>The bowl is empty.</span>")
+		. += "<span class='notice'>The bowl is empty.</span>"
 	else if (reagents.total_volume > 80)
-		to_chat(user, "<span class='notice'>The bowl is filled to the brim.</span>")
+		. += "<span class='notice'>The bowl is filled to the brim.</span>"
 	else if (reagents.total_volume > 40)
-		to_chat(user, "<span class='notice'>The bowl has plenty weed in it.</span>")
+		. += "<span class='notice'>The bowl has plenty weed in it.</span>"
 	else
-		to_chat(user, "<span class='notice'>The bowl has some weed in it.</span>")
+		. += "<span class='notice'>The bowl has some weed in it.</span>"
 
-	to_chat(user, "<span class='notice'>Ctrl+Shift-click to empty.</span>")
-	to_chat(user, "<span class='notice'>Alt-click to extinguish.</span>")
+	. += "<span class='notice'>Ctrl+Shift-click to empty.</span>"
+	. += "<span class='notice'>Alt-click to extinguish.</span>"
 
 /obj/item/bong/ignition_effect(atom/A, mob/user)
 	if(firecharges)
@@ -1020,7 +1023,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 				var/datum/effect_system/smoke_spread/chem/smoke_machine/s = new
 				s.set_up(reagents, hit_strength, 18, user.loc)
-				s.start()	
+				s.start()
 
 				reagents.reaction(user, INGEST, fraction)
 				if(!reagents.trans_to(user, fraction))

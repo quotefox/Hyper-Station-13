@@ -25,30 +25,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define NOT_IMPLEMENTED "NOT_IMPLEMENTED"
 
-#define MIDNIGHT_ROLLOVER		864000	//number of deciseconds in a day
-
-#define JANUARY		1
-#define FEBRUARY	2
-#define MARCH		3
-#define APRIL		4
-#define MAY			5
-#define JUNE		6
-#define JULY		7
-#define AUGUST		8
-#define SEPTEMBER	9
-#define OCTOBER		10
-#define NOVEMBER	11
-#define DECEMBER	12
-
-//Select holiday names -- If you test for a holiday in the code, make the holiday's name a define and test for that instead
-#define NEW_YEAR				"New Year"
-#define VALENTINES				"Valentine's Day"
-#define APRIL_FOOLS				"April Fool's Day"
-#define EASTER					"Easter"
-#define HALLOWEEN				"Halloween"
-#define CHRISTMAS				"Christmas"
-#define FESTIVE_SEASON			"Festive Season"
-
 //Human Overlays Indexes/////////
 //LOTS OF CIT CHANGES HERE. BE CAREFUL WHEN UPSTREAM ADDS MORE LAYERS
 #define MUTATIONS_LAYER			31		//mutations. Tk headglows, cold resistance glow, etc
@@ -497,5 +473,12 @@ GLOBAL_LIST_INIT(pda_reskins, list(PDA_SKIN_CLASSIC = 'icons/obj/pda.dmi', PDA_S
 #define VOMIT_TOXIC 1
 #define VOMIT_PURPLE 2
 
+// possible bitflag return values of intercept_zImpact(atom/movable/AM, levels = 1) calls
+#define FALL_INTERCEPTED		(1<<0) //Stops the movable from falling further and crashing on the ground
+#define FALL_NO_MESSAGE			(1<<1) //Used to suppress the "[A] falls through [old_turf]" messages where it'd make little sense at all, like going downstairs.
+#define FALL_STOP_INTERCEPTING	(1<<2) //Used in situations where halting the whole "intercept" loop would be better, like supermatter dusting (and thus deleting) the atom.
+
 //Misc text define. Does 4 spaces. Used as a makeshift tabulator.
 #define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"
+
+#define CANT_REENTER_ROUND -1

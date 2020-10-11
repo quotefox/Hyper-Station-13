@@ -14,6 +14,7 @@ Pipelines + Other Objects -> Pipe network
 
 /obj/machinery/atmospherics
 	anchored = TRUE
+	move_resist = INFINITY				//Moving a connected machine without actually doing the normal (dis)connection things will probably cause a LOT of issues.
 	idle_power_usage = 0
 	active_power_usage = 0
 	power_channel = ENVIRON
@@ -41,11 +42,11 @@ Pipelines + Other Objects -> Pipe network
 	var/on = FALSE
 
 /obj/machinery/atmospherics/examine(mob/user)
-	..()
+	. = ..()
 	if(is_type_in_list(src, GLOB.ventcrawl_machinery) && isliving(user))
 		var/mob/living/L = user
 		if(L.ventcrawler)
-			to_chat(L, "<span class='notice'>Alt-click to crawl through it.</span>")
+			. += "<span class='notice'>Alt-click to crawl through it.</span>"
 
 /obj/machinery/atmospherics/New(loc, process = TRUE, setdir)
 	if(!isnull(setdir))

@@ -187,14 +187,21 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	src.loc = T
 
 /obj/item/examine(mob/user) //This might be spammy. Remove?
-	..()
-	var/pronoun
-	if(src.gender == PLURAL)
-		pronoun = "They are"
+	. = ..()
+
+	. += "[gender == PLURAL ? "They are" : "It is"] a [weightclass2text(w_class)] item."
+
+	if(resistance_flags & INDESTRUCTIBLE)
+		. += "[src] seems extremely robust! It'll probably withstand anything that could happen to it!"
 	else
-		pronoun = "It is"
-	var/size = weightclass2text(src.w_class)
-	to_chat(user, "[pronoun] a [size] item." )
+		if(resistance_flags & LAVA_PROOF)
+			. += "[src] is made of an extremely heat-resistant material, it'd probably be able to withstand lava!"
+		if(resistance_flags & (ACID_PROOF | UNACIDABLE))
+			. += "[src] looks pretty robust! It'd probably be able to withstand acid!"
+		if(resistance_flags & FREEZE_PROOF)
+			. += "[src] is made of cold-resistant materials."
+		if(resistance_flags & FIRE_PROOF)
+			. += "[src] is made of fire-retardant materials."
 
 	if(!user.research_scanner)
 		return
@@ -229,7 +236,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	else
 		research_msg += "None"
 	research_msg += "."
-	to_chat(user, research_msg.Join())
+	. += research_msg.Join()
 
 /obj/item/interact(mob/user)
 	add_fingerprint(user)
@@ -543,21 +550,21 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	else
 		return
 
-/obj/item/throw_impact(atom/A, datum/thrownthing/throwingdatum)
-	if(A && !QDELETED(A))
-		SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, A, throwingdatum)
-		if(is_hot() && isliving(A))
-			var/mob/living/L = A
+/obj/item/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
+	if(hit_atom && !QDELETED(hit_atom))
+		SEND_SIGNAL(src, COMSIG_MOVABLE_IMPACT, hit_atom, throwingdatum)
+		if(get_temperature() && isliving(hit_atom))
+			var/mob/living/L = hit_atom
 			L.IgniteMob()
 		var/itempush = 1
 		if(w_class < 4)
 			itempush = 0 //too light to push anything
-		return A.hitby(src, 0, itempush)
+		return hit_atom.hitby(src, 0, itempush, throwingdatum=throwingdatum)
 
-/obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback)
+/obj/item/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, messy_throw = TRUE)
 	thrownby = thrower
-	callback = CALLBACK(src, .proc/after_throw, callback) //replace their callback with our own
-	. = ..(target, range, speed, thrower, spin, diagonals_first, callback)
+	callback = CALLBACK(src, .proc/after_throw, callback, (spin && messy_throw)) //replace their callback with our own
+	. = ..(target, range, speed, thrower, spin, diagonals_first, callback, force)
 
 /obj/item/proc/after_throw(datum/callback/callback)
 	if (callback) //call the original callback
@@ -619,6 +626,12 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 /obj/item/proc/is_sharp()
 	return sharpness
 
+/obj/item/proc/get_temperature()
+	return heat
+
+/obj/item/proc/get_sharpness()
+	return sharpness
+
 /obj/item/proc/get_dismemberment_chance(obj/item/bodypart/affecting)
 	if(affecting.can_dismember(src))
 		if((sharpness || damtype == BURN) && w_class >= WEIGHT_CLASS_NORMAL && force >= 10)
@@ -648,7 +661,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	else
 		. = ""
 
-/obj/item/hitby(atom/movable/AM)
+/obj/item/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	return
 
 /obj/item/attack_hulk(mob/living/carbon/human/user)

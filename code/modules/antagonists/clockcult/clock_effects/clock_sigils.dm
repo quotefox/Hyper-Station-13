@@ -191,15 +191,15 @@
 		..()
 
 /obj/effect/clockwork/sigil/transmission/examine(mob/user)
-	..()
+	. = ..()
 	if(is_servant_of_ratvar(user) || isobserver(user))
 		var/structure_number = 0
 		for(var/obj/structure/destructible/clockwork/powered/P in range(SIGIL_ACCESS_RANGE, src))
 			structure_number++
-		to_chat(user, "<span class='[get_clockwork_power() ? "brass":"alloy"]'>It is storing <b>[DisplayPower(get_clockwork_power())]</b> of shared power, \
-		and <b>[structure_number]</b> clockwork structure[structure_number == 1 ? " is":"s are"] in range.</span>")
+		. += "<span class='[get_clockwork_power() ? "brass":"alloy"]'>It is storing <b>[DisplayPower(get_clockwork_power())]</b> of shared power, \
+		and <b>[structure_number]</b> clockwork structure[structure_number == 1 ? " is":"s are"] in range.</span>"
 		if(iscyborg(user))
-			to_chat(user, "<span class='brass'>You can recharge from the [sigil_name] by crossing it.</span>")
+			. += "<span class='brass'>You can recharge from the [sigil_name] by crossing it.</span>"
 
 /obj/effect/clockwork/sigil/transmission/sigil_effects(mob/living/L)
 	if(is_servant_of_ratvar(L))
@@ -270,17 +270,23 @@
 	sigil_name = "Vitality Matrix"
 	var/revive_cost = 150
 	var/sigil_active = FALSE
+	var/min_drain_health = -INFINITY
+	var/can_dust = TRUE
 	var/animation_number = 3 //each cycle increments this by 1, at 4 it produces an animation and resets
 	var/static/list/damage_heal_order = list(CLONE, TOX, BURN, BRUTE, OXY) //we heal damage in this order
 
+/obj/effect/clockwork/sigil/vitality/neutered
+	min_drain_health = 20
+	can_dust = FALSE
+
 /obj/effect/clockwork/sigil/vitality/examine(mob/user)
-	..()
+	. = ..()
 	if(is_servant_of_ratvar(user) || isobserver(user))
-		to_chat(user, "<span class='[GLOB.clockwork_vitality ? "inathneq_small":"alloy"]'>It has access to <b>[GLOB.ratvar_awakens ? "INFINITE":GLOB.clockwork_vitality]</b> units of vitality.</span>")
+		. += "<span class='[GLOB.clockwork_vitality ? "inathneq_small":"alloy"]'>It has access to <b>[GLOB.ratvar_awakens ? "INFINITE":GLOB.clockwork_vitality]</b> units of vitality.</span>"
 		if(GLOB.ratvar_awakens)
-			to_chat(user, "<span class='inathneq_small'>It can revive Servants at no cost!</span>")
+			. += "<span class='inathneq_small'>It can revive Servants at no cost!</span>"
 		else
-			to_chat(user, "<span class='inathneq_small'>It can revive Servants at a cost of <b>[revive_cost]</b> vitality.</span>")
+			. += "<span class='inathneq_small'>It can revive Servants at a cost of <b>[revive_cost]</b> vitality.</span>"
 
 /obj/effect/clockwork/sigil/vitality/sigil_effects(mob/living/L)
 	if((is_servant_of_ratvar(L) && L.suiciding) || sigil_active)
@@ -297,7 +303,7 @@
 		animation_number++
 		if(!is_servant_of_ratvar(L))
 			var/vitality_drained = 0
-			if(L.stat == DEAD && !consumed_vitality)
+			if(L.stat == DEAD && !consumed_vitality && can_dust)
 				consumed_vitality = TRUE //Prevent the target from being consumed multiple times
 				vitality_drained = L.maxHealth
 				var/obj/effect/temp_visual/ratvar/sigil/vitality/V = new /obj/effect/temp_visual/ratvar/sigil/vitality(get_turf(src))
@@ -309,7 +315,7 @@
 					if(!L.dropItemToGround(W))
 						qdel(W)
 				L.dust()
-			else
+			else if(L.health > min_drain_health)
 				if(!GLOB.ratvar_awakens && L.stat == CONSCIOUS)
 					vitality_drained = L.adjustToxLoss(1)
 				else

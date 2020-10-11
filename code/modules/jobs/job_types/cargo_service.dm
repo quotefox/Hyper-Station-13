@@ -1,17 +1,21 @@
 /*
-Quartermaster
+Quartermaster is a real head fuck you
 */
 /datum/job/qm
 	title = "Quartermaster"
 	flag = QUARTERMASTER
-	department_head = list("Head of Personnel")
+	department_head = list("Captain")
 	department_flag = CIVILIAN
 	head_announce = list(RADIO_CHANNEL_SUPPLY)
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the head of personnel"
+	supervisors = "the captain"
 	selection_color = "#d7b088"
+	minimal_player_age = 10
+	exp_type = EXP_TYPE_SUPPLY
+	exp_type_department = EXP_TYPE_SUPPLY
+	exp_requirements = 300
 
 	outfit = /datum/outfit/job/quartermaster
 
@@ -39,13 +43,14 @@ Cargo Technician
 /datum/job/cargo_tech
 	title = "Cargo Technician"
 	flag = CARGOTECH
-	department_head = list("Head of Personnel")
+	department_head = list("Quartermaster")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 2
-	supervisors = "the quartermaster and the head of personnel"
+	supervisors = "the quartermaster"
 	selection_color = "#dcba97"
+
 
 	outfit = /datum/outfit/job/cargo_tech
 
@@ -67,14 +72,19 @@ Shaft Miner
 /datum/job/mining
 	title = "Shaft Miner"
 	flag = MINER
-	department_head = list("Head of Personnel")
+	department_head = list("Quartermaster")
 	department_flag = CIVILIAN
 	faction = "Station"
 	total_positions = 3
 	spawn_positions = 3
-	supervisors = "the quartermaster and the head of personnel"
+	supervisors = "the quartermaster"
 	selection_color = "#dcba97"
 	custom_spawn_text = "Remember, you are a miner, not a hunter. Hunting monsters is not a requirement of your job, the only requirement of your job is to provide materials for the station. Don't be afraid to run away if you're inexperienced with fighting the mining area's locals."
+	minimal_player_age = 1
+	exp_requirements = 120
+	exp_type = EXP_TYPE_CREW
+	exp_type_department = EXP_TYPE_SUPPLY
+
 
 	outfit = /datum/outfit/job/miner
 

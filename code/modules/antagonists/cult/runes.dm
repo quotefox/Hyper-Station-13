@@ -32,6 +32,7 @@ Runes can either be invoked by one's self or with many different cultists. Each 
 
 	var/scribe_delay = 40 //how long the rune takes to create
 	var/scribe_damage = 0.1 //how much damage you take doing it
+	var/requires_full_power = FALSE		//requires full power to draw or invoke
 	var/invoke_damage = 0 //how much damage invokers take when invoking it
 	var/construct_invoke = TRUE //if constructs can invoke it
 
@@ -47,13 +48,13 @@ Runes can either be invoked by one's self or with many different cultists. Each 
 	add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/silicons, "cult_runes", I)
 
 /obj/effect/rune/examine(mob/user)
-	..()
+	. = ..()
 	if(iscultist(user) || user.stat == DEAD) //If they're a cultist or a ghost, tell them the effects
-		to_chat(user, "<b>Name:</b> [cultist_name]")
-		to_chat(user, "<b>Effects:</b> [capitalize(cultist_desc)]")
-		to_chat(user, "<b>Required Acolytes:</b> [req_cultists_text ? "[req_cultists_text]":"[req_cultists]"]")
+		. += "<b>Name:</b> [cultist_name]"
+		. += "<b>Effects:</b> [capitalize(cultist_desc)]"
+		. += "<b>Required Acolytes:</b> [req_cultists_text ? "[req_cultists_text]":"[req_cultists]"]"
 		if(req_keyword && keyword)
-			to_chat(user, "<b>Keyword:</b> [keyword]")
+			. += "<b>Keyword:</b> [keyword]"
 
 /obj/effect/rune/attackby(obj/I, mob/user, params)
 	if(istype(I, /obj/item/melee/cultblade/dagger) && iscultist(user))
@@ -185,6 +186,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	color = RUNE_COLOR_OFFER
 	req_cultists = 1
 	rune_in_use = FALSE
+	requires_full_power = TRUE
 
 /obj/effect/rune/convert/do_invoke_glow()
 	return
@@ -457,6 +459,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	pixel_y = -32
 	scribe_delay = 500 //how long the rune takes to create
 	scribe_damage = 40.1 //how much damage you take doing it
+	requires_full_power = TRUE
 	var/used = FALSE
 
 /obj/effect/rune/narsie/Initialize(mapload, set_keyword)
@@ -481,6 +484,9 @@ structure_check() searches for nearby cultist structures required for the invoca
 		fail_invoke()
 		return
 	var/datum/antagonist/cult/user_antag = user.mind.has_antag_datum(/datum/antagonist/cult,TRUE)
+	if(!user_antag.cult_team)
+		to_chat(user, "<span class='cultlarge'>You can't seem to make the arcane links to your fellows that you'd need to use this.</span>")
+		return
 	var/datum/objective/eldergod/summon_objective = locate() in user_antag.cult_team.objectives
 	var/area/place = get_area(src)
 	if(!(place in summon_objective.summon_spots))
@@ -524,10 +530,10 @@ structure_check() searches for nearby cultist structures required for the invoca
 	var/static/revives_used = -SOULS_TO_REVIVE // Cultists get one "free" revive
 
 /obj/effect/rune/raise_dead/examine(mob/user)
-	..()
+	. = ..()
 	if(iscultist(user) || user.stat == DEAD)
 		var/revive_number = LAZYLEN(GLOB.sacrificed) - revives_used
-		to_chat(user, "<b>Revives Remaining:</b> [revive_number]")
+		. += "<b>Revives Remaining:</b> [revive_number]"
 
 /obj/effect/rune/raise_dead/invoke(var/list/invokers)
 	var/turf/T = get_turf(src)
@@ -621,11 +627,11 @@ structure_check() searches for nearby cultist structures required for the invoca
 	GLOB.wall_runes += src
 
 /obj/effect/rune/wall/examine(mob/user)
-	..()
+	. = ..()
 	if(density && iscultist(user))
 		var/datum/timedevent/TMR = active_timers[1]
 		if(TMR)
-			to_chat(user, "<span class='cultitalic'>The air above this rune has hardened into a barrier that will last [DisplayTimeText(TMR.timeToRun - world.time)].</span>")
+			. += "<span class='cultitalic'>The air above this rune has hardened into a barrier that will last [DisplayTimeText(TMR.timeToRun - world.time)].</span>"
 
 /obj/effect/rune/wall/Destroy()
 	GLOB.wall_runes -= src
@@ -811,6 +817,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	invoke_damage = 10
 	construct_invoke = FALSE
 	color = RUNE_COLOR_DARKRED
+	requires_full_power = TRUE
 	var/mob/living/affecting = null
 	var/ghost_limit = 3
 	var/ghosts = 0
@@ -941,6 +948,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	color = RUNE_COLOR_DARKRED
 	req_cultists = 3
 	scribe_delay = 100
+	requires_full_power = FALSE // Requires 3 blood cultists. 3 Neutered blood Ts acting together for a common goal should probably be able to have this sort of power.
 
 /obj/effect/rune/apocalypse/invoke(var/list/invokers)
 	if(rune_in_use)
@@ -949,6 +957,9 @@ structure_check() searches for nearby cultist structures required for the invoca
 	var/area/place = get_area(src)
 	var/mob/living/user = invokers[1]
 	var/datum/antagonist/cult/user_antag = user.mind.has_antag_datum(/datum/antagonist/cult,TRUE)
+	if(!user_antag.cult_team)
+		to_chat(user, "<span class='cultlarge'>You can't seem to make the arcane links to your fellows that you'd need to use this.</span>")
+		return
 	var/datum/objective/eldergod/summon_objective = locate() in user_antag.cult_team.objectives
 	if(summon_objective.summon_spots.len <= 1)
 		to_chat(user, "<span class='cultlarge'>Only one ritual site remains - it must be reserved for the final summoning!</span>")

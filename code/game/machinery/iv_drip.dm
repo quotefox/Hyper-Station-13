@@ -201,21 +201,19 @@
 	update_icon()
 
 /obj/machinery/iv_drip/examine(mob/user)
-	..()
+	. = ..()
 	if(get_dist(user, src) > 2)
 		return
-
-	to_chat(user, "The IV drip is [mode ? "injecting" : "taking blood"].")
-
+	. += "[src] is [mode ? "injecting" : "taking blood"].\n"
 	if(beaker)
 		if(beaker.reagents && beaker.reagents.reagent_list.len)
-			to_chat(user, "<span class='notice'>Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid.</span>")
+			. += "\t<span class='notice'>Attached is \a [beaker] with [beaker.reagents.total_volume] units of liquid.</span>\n"
 		else
-			to_chat(user, "<span class='notice'>Attached is an empty [beaker.name].</span>")
+			. += "\t<span class='notice'>Attached is an empty [beaker.name].</span>\n"
 	else
-		to_chat(user, "<span class='notice'>No chemicals are attached.</span>")
+		. += "\t<span class='notice'>No chemicals are attached.</span>\n"
 
-	to_chat(user, "<span class='notice'>[attached ? attached : "No one"] is attached.</span>")
+	. += "\t<span class='notice'>[attached ? attached : "No one"] is attached.</span>"
 
 #undef IV_TAKING
 #undef IV_INJECTING

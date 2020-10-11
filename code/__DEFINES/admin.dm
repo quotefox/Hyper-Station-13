@@ -68,6 +68,7 @@
 #define ADMIN_PUNISHMENT_GIB "Gib"
 #define ADMIN_PUNISHMENT_BSA "Bluespace Artillery Device"
 #define ADMIN_PUNISHMENT_FIREBALL "Fireball"
+#define ADMIN_PUNISHMENT_CLUWNE "Floor Cluwne"
 #define ADMIN_PUNISHMENT_ROD "Immovable Rod"
 #define ADMIN_PUNISHMENT_SUPPLYPOD "Supply Pod"
 #define ADMIN_PUNISHMENT_MAZING "Puzzle"

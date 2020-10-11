@@ -18,6 +18,16 @@
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/toy/plush/slimeplushie
 
+/datum/gear/toy/plush/borgplushie/secdrake
+	name = "SecDrake Plushie"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/toy/plush/borgplushie/secdrake
+
+/datum/gear/toy/plush/borgplushie/meddrake
+	name = "MediDrake Plushie"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/toy/plush/borgplushie/meddrake
+
 /datum/gear/plushlamp
 	name = "Lamp plushie"
 	category = SLOT_IN_BACKPACK
@@ -195,3 +205,15 @@
 	name = "White Lipstick"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/lipstick/white
+
+/datum/gear/condom
+	name = "Condom"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/condom
+	cost = 1
+
+/datum/gear/sounding
+	name = "Sounding rod"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/sounding
+	cost = 1

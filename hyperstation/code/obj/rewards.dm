@@ -25,3 +25,15 @@
 	alternate_worn_icon = 'hyperstation/icons/mobs/rewards.dmi'
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
+/obj/item/clothing/gloves/ring/luweth
+	name = "Luweth’s Wedding Band"
+	icon = 'hyperstation/icons/obj/clothing/rewards.dmi'
+	icon_state = "luweth"
+	desc = "A seemingly natural yet rather rough brass ring, which shows off a unique range of lustrous brass cracks through the deep blacks of it’s hammered finish. 'Till death does us part.'"
+
+/obj/item/dice/d20/blue
+	name = "blue d20"
+	desc = "Clearly the dice hate you."
+	icon_state = "d20_blue"
+	sides = 20
+	unique = TRUE

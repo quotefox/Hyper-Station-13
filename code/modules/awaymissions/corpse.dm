@@ -86,6 +86,15 @@
 /obj/effect/mob_spawn/proc/equip(mob/M)
 	return
 
+/obj/effect/mob_spawn/proc/delayusability(deciseconds, showOnMenu) //How many deciseconds until it is enabled, + should it show up on the menu?
+	addtimer(CALLBACK(src, .proc/enableghostrole, showOnMenu), deciseconds)
+	
+/obj/effect/mob_spawn/proc/enableghostrole(show)
+	ghost_usable = TRUE
+	if (show == TRUE)
+		GLOB.poi_list |= src
+		LAZYADD(GLOB.mob_spawners[job_description ? job_description : name], src)
+
 /obj/effect/mob_spawn/proc/create(ckey, name)
 	var/mob/living/M = new mob_type(get_turf(src)) //living mobs only
 	if(!random)
@@ -118,6 +127,7 @@
 			M.mind.assigned_role = assignedrole
 		special(M, name)
 		MM.name = M.real_name
+		M.checkloadappearance()
 	if(uses > 0)
 		uses--
 	if(!permanent && !uses)
@@ -162,6 +172,7 @@
 	var/hair_style
 	var/facial_hair_style
 	var/skin_tone
+	var/mirrorcanloadappearance = FALSE
 
 /obj/effect/mob_spawn/human/Initialize()
 	if(ispath(outfit))
@@ -228,6 +239,8 @@
 			W.assignment = id_job
 		W.registered_name = H.real_name
 		W.update_label()
+	if (mirrorcanloadappearance)
+		H.mirrorcanloadappearance = TRUE
 
 //Instant version - use when spawning corpses during runtime
 /obj/effect/mob_spawn/human/corpse
@@ -392,6 +405,7 @@
 	flavour_text = "<span class='big bold'>You are a space bartender!</span><b> Time to mix drinks and change lives. Smoking space drugs makes it easier to understand your patrons' odd dialect.</b>"
 	assignedrole = "Space Bartender"
 	id_job = "Bartender"
+	mirrorcanloadappearance = TRUE
 
 /datum/outfit/spacebartender
 	name = "Space Bartender"
@@ -404,6 +418,7 @@
 
 /obj/effect/mob_spawn/human/beach
 	outfit = /datum/outfit/beachbum
+	mirrorcanloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/beach/alive
 	death = FALSE

@@ -107,7 +107,7 @@
 	var/last_words	//used for database logging
 
 	var/list/obj/effect/proc_holder/abilities = list()
-
+	
 	var/can_be_held = FALSE
 
 	var/radiation = 0 //If the mob is irradiated.
@@ -117,3 +117,5 @@
 	//List of active diseases
 	var/list/diseases = list() // list of all diseases in a mob
 	var/list/disease_resistances = list()
+
+	var/drag_slowdown = TRUE //Whether the mob is slowed down when dragging another prone mob

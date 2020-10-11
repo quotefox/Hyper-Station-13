@@ -19,8 +19,8 @@
 	tiled_dirt = FALSE
 
 /turf/open/floor/wood/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>There's a few <b>screws</b> and a <b>small crack</b> visible.</span>")
+	. = ..()
+	. += "<span class='notice'>There's a few <b>screws</b> and a <b>small crack</b> visible.</span>"
 
 /turf/open/floor/wood/screwdriver_act(mob/living/user, obj/item/I)
 	if(..())
@@ -44,7 +44,7 @@
 	C.play_tool_sound(src, 80)
 	return remove_tile(user, silent, (C.tool_behaviour == TOOL_SCREWDRIVER))
 
-/turf/open/floor/wood/remove_tile(mob/user, silent = FALSE, make_tile = TRUE)
+/turf/open/floor/wood/remove_tile(mob/user, silent = FALSE, make_tile = TRUE, forced = FALSE)
 	if(broken || burnt)
 		broken = 0
 		burnt = 0
@@ -183,8 +183,8 @@
 	tiled_dirt = FALSE
 
 /turf/open/floor/carpet/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>There's a <b>small crack</b> on the edge of it.</span>")
+	. = ..()
+	. += "<span class='notice'>There's a <b>small crack</b> on the edge of it.</span>"
 
 /turf/open/floor/carpet/Initialize()
 	. = ..()

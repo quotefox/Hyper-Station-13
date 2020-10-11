@@ -56,7 +56,7 @@
 //If we hit the Ninja who owns this Katana, they catch it.
 //Works for if the Ninja throws it or it throws itself or someone tries
 //To throw it at the ninja
-/obj/item/energy_katana/throw_impact(atom/hit_atom)
+/obj/item/energy_katana/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(ishuman(hit_atom))
 		var/mob/living/carbon/human/H = hit_atom
 		if(istype(H.wear_suit, /obj/item/clothing/suit/space/space_ninja))
@@ -102,5 +102,5 @@
 /datum/action/innate/dash/ninja
 	current_charges = 3
 	max_charges = 3
-	charge_rate = 30
+	charge_rate = 100
 	recharge_sound = null

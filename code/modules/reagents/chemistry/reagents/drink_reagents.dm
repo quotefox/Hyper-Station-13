@@ -896,7 +896,7 @@
 	glass_name = "tall glass of strawberry milk"
 	glass_desc = "Delicious flavored strawberry syrup mixed with milk."
 
-/datum/reagent/consumable/tea/pinkmilk/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/pinkmilk/on_mob_life(mob/living/carbon/M)
 	if(prob(15))
 		to_chat(M, "<span class = 'notice'>[pick("You cant help to smile.","You feel nostalgia all of sudden.","You remember to relax.")]</span>")
 	..()

@@ -217,6 +217,27 @@
 	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
 	color_src = MATRIXED
 
+/datum/sprite_accessory/mam_ears/deerantlers
+	name = "Deer Antlers"
+	icon_state = "deerantlers"
+	hasinner = 1
+	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
+	color_src = MATRIXED
+
+/datum/sprite_accessory/ears/human/deerantlersears
+	name = "Deer Antlers with Ears"
+	icon_state = "deerantlersears"
+	hasinner = 1
+	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
+	color_src = MATRIXED
+
+/datum/sprite_accessory/mam_ears/deerears
+	name = "Deer Ears"
+	icon_state = "deerears"
+	hasinner = 1
+	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
+	color_src = MATRIXED
+
 /datum/sprite_accessory/ears/human/cow
 	name = "Cow"
 	icon_state = "cow"
@@ -244,6 +265,12 @@
 /datum/sprite_accessory/ears/human/elf
 	name = "Elf"
 	icon_state = "elf"
+	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
+	color_src = SKINTONE
+
+datum/sprite_accessory/ears/human/gret
+	name = "Gret"
+	icon_state = "gret"
 	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
 	color_src = SKINTONE
 
@@ -729,6 +756,10 @@
 	extra2 = TRUE
 	extra2_color_src = MUTCOLORS3
 
+/datum/sprite_accessory/mam_snouts/deer
+	name = "Deer"
+	icon_state = "deer"
+
 /datum/sprite_accessory/mam_snouts/elephant
 	name = "Elephant"
 	icon_state = "elephant"
@@ -738,6 +769,18 @@
 /datum/sprite_accessory/mam_snouts/fox
 	name = "Fox"
 	icon_state = "fox"
+
+/datum/sprite_accessory/mam_snouts/foxalt
+	name = "Fox Alt"
+	icon_state = "foxalt"
+
+/datum/sprite_accessory/mam_snouts/hshort
+	name = "Small"
+	icon_state = "short"
+
+/datum/sprite_accessory/mam_snouts/rabbit
+	name = "Rabbit"
+	icon_state = "rabbit"
 
 /datum/sprite_accessory/mam_snouts/hshark
 	name = "hShark"
@@ -770,6 +813,12 @@
 /datum/sprite_accessory/mam_snouts/skulldog
 	name = "Skulldog"
 	icon_state = "skulldog"
+	extra = TRUE
+	extra_color_src = MATRIXED
+
+/datum/sprite_accessory/mam_snouts/skullbird
+	name = "Skullbird"
+	icon_state = "skullbird"
 	extra = TRUE
 	extra_color_src = MATRIXED
 
@@ -1039,19 +1088,30 @@
 	icon_state = "horn1"
 	color_src = MUTCOLORS3
 
-/datum/sprite_accessory/mam_ears/deer
-	name = "Deer"
-	icon_state = "deer"
-	color_src = MUTCOLORS3
+/datum/sprite_accessory/mam_ears/deerantlers
+	name = "Deer Antlers"
+	icon_state = "deerantlers"
+
+/datum/sprite_accessory/mam_ears/deerantlersears
+	name = "Deer Antlers with Ears"
+	icon_state = "deerantlersears"
+
+/datum/sprite_accessory/mam_ears/deerears
+	name = "Deer Ears"
+	icon_state = "deerears"
 
 /datum/sprite_accessory/mam_ears/eevee
 	name = "Eevee"
 	icon_state = "eevee"
 
-
 /datum/sprite_accessory/mam_ears/elf
 	name = "Elf"
 	icon_state = "elf"
+	color_src = MUTCOLORS3
+
+/datum/sprite_accessory/mam_ears/gret
+	name = "Gret"
+	icon_state = "gret"
 	color_src = MUTCOLORS3
 
 
@@ -1748,7 +1808,7 @@ datum/sprite_accessory/mam_tails/insect
 /datum/sprite_accessory/taur/synthliz/wolf/inv
 	name = "Virgo - Synthetic Wolf (Inverted)"
 	icon_state = "synthwolfinv"
-	
+
 /******************************************
 *************** Ayyliums ******************
 *******************************************/

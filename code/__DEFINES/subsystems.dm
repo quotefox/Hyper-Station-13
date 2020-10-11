@@ -25,7 +25,6 @@
 #define TIMER_NO_INVOKE_WARNING 600 //number of byond ticks that are allowed to pass before the timer subsystem thinks it hung on something
 
 #define TIMER_ID_NULL -1
-
 //For servers that can't do with any additional lag, set this to none in flightpacks.dm in subsystem/processing.
 #define FLIGHTSUIT_PROCESSING_NONE 0
 #define FLIGHTSUIT_PROCESSING_FULL 1
@@ -115,6 +114,7 @@
 #define FIRE_PRIORITY_MOBS			100
 #define FIRE_PRIORITY_TGUI			110
 #define FIRE_PRIORITY_TICKER		200
+#define FIRE_PRIORITY_ATMOS_ADJACENCY	300
 #define FIRE_PRIORITY_CHAT			400
 #define FIRE_PRIORITY_OVERLAYS		500
 #define FIRE_PRIORITY_INPUT			1000 // This must always always be the max highest priority. Player input must never be lost.

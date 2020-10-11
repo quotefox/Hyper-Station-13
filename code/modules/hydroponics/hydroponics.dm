@@ -319,33 +319,31 @@
 
 
 /obj/machinery/hydroponics/examine(user)
-	..()
+	. = ..()
 	if(myseed)
-		to_chat(user, "<span class='info'>It has <span class='name'>[myseed.plantname]</span> planted.</span>")
+		. += "<span class='info'>It has <span class='name'>[myseed.plantname]</span> planted.</span>"
 		if (dead)
-			to_chat(user, "<span class='warning'>It's dead!</span>")
+			. += "<span class='warning'>It's dead!</span>"
 		else if (harvest)
-			to_chat(user, "<span class='info'>It's ready to harvest.</span>")
+			. += "<span class='info'>It's ready to harvest.</span>"
 		else if (plant_health <= (myseed.endurance / 2))
-			to_chat(user, "<span class='warning'>It looks unhealthy.</span>")
+			. += "<span class='warning'>It looks unhealthy.</span>"
 	else
-		to_chat(user, "<span class='info'>It's empty.</span>")
+		. += "<span class='info'>It's empty.</span>"
 
 	if(!self_sustaining)
-		to_chat(user, "<span class='info'>Water: [waterlevel]/[maxwater].</span>")
-		to_chat(user, "<span class='info'>Nutrient: [nutrilevel]/[maxnutri].</span>")
+		. += "<span class='info'>Water: [waterlevel]/[maxwater].</span>"
+		. += "<span class='info'>Nutrient: [nutrilevel]/[maxnutri].</span>"
 		if(self_sufficiency_progress > 0)
 			var/percent_progress = round(self_sufficiency_progress * 100 / self_sufficiency_req)
-			to_chat(user, "<span class='info'>Treatment for self-sustenance are [percent_progress]% complete.</span>")
+			. += "<span class='info'>Treatment for self-sustenance are [percent_progress]% complete.</span>"
 	else
-		to_chat(user, "<span class='info'>It doesn't require any water or nutrients.</span>")
+		. += "<span class='info'>It doesn't require any water or nutrients.</span>"
 
 	if(weedlevel >= 5)
-		to_chat(user, "<span class='warning'>It's filled with weeds!</span>")
+		. += "<span class='warning'>It's filled with weeds!</span>"
 	if(pestlevel >= 5)
-		to_chat(user, "<span class='warning'>It's filled with tiny worms!</span>")
-	to_chat(user, "" )
-
+		. += "<span class='warning'>It's filled with tiny worms!</span>"
 
 /obj/machinery/hydroponics/proc/weedinvasion() // If a weed growth is sufficient, this happens.
 	dead = 0
@@ -931,6 +929,8 @@
 	use_power = NO_POWER_USE
 	flags_1 = NODECONSTRUCT_1
 	unwrenchable = FALSE
+	var/buildstacktype = /obj/item/stack/sheet/mineral/sandstone
+	var/buildstackamount = 3
 
 /obj/machinery/hydroponics/soil/update_icon_hoses()
 	return // Has no hoses
@@ -941,6 +941,7 @@
 /obj/machinery/hydroponics/soil/attackby(obj/item/O, mob/user, params)
 	if(istype(O, /obj/item/shovel) && !istype(O, /obj/item/shovel/spade)) //Doesn't include spades because of uprooting plants
 		to_chat(user, "<span class='notice'>You clear up [src]!</span>")
+		new buildstacktype(loc,buildstackamount)
 		qdel(src)
 	else
 		return ..()

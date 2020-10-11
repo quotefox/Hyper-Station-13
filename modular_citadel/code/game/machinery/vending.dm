@@ -43,6 +43,7 @@
 	vend_reply = "Have fun, you shameless pervert!"
 	products = list(
 				/obj/item/condom = 10,
+				/obj/item/sounding = 5,
 				/obj/item/clothing/head/maidband = 5,
 				/obj/item/clothing/under/maid = 5,
 				/obj/item/clothing/under/stripper_pink = 5,
@@ -56,20 +57,24 @@
 				/obj/item/clothing/under/polychromic/bikini = 3,
 				/obj/item/clothing/under/polychromic/shortpants/pantsu = 3,
 				/obj/item/clothing/under/polychromic/bulge = 3,
-				/obj/item/clothing/suit/maidapron = 3
+				/obj/item/clothing/suit/maidapron = 3,
+				/obj/item/clothing/under/corset = 3
 				)
 	contraband = list(/obj/item/restraints/handcuffs/fake/kinky = 5,
 				/obj/item/clothing/neck/petcollar = 5,
 				/obj/item/clothing/under/mankini = 1,
 				/obj/item/dildo/flared/huge = 1,
 				/obj/item/clothing/head/dominatrixcap = 1,
-				/obj/item/mesmetron = 1
+				/obj/item/mesmetron = 1,
+				/obj/item/bdsm_whip = 1,
+				/obj/item/clothing/mask/muzzle = 1
 				)
 	premium = list(
 				/obj/item/electropack/shockcollar = 3,
 				/obj/item/clothing/neck/petcollar/locked = 1,
 				/obj/item/restraints/handcuffs/rope = 1,
-				/obj/item/leash = 1
+				/obj/item/leash = 1,
+				/obj/item/clothing/mask/muzzle/ballgag = 3
 				)
 	refill_canister = /obj/item/vending_refill/kink
 /*

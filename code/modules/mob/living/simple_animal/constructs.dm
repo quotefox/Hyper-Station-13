@@ -69,18 +69,13 @@
 /mob/living/simple_animal/hostile/construct/examine(mob/user)
 	var/t_He = p_they(TRUE)
 	var/t_s = p_s()
-	var/msg = "<span class='cult'>*---------*\nThis is [icon2html(src, user)] \a <b>[src]</b>!\n"
-	msg += "[desc]\n"
+	. = list("<span class='cult'>*---------*\nThis is [icon2html(src, user)] \a <b>[src]</b>!\n[desc]")
 	if(health < maxHealth)
-		msg += "<span class='warning'>"
 		if(health >= maxHealth/2)
-			msg += "[t_He] look[t_s] slightly dented.\n"
+			. += "<span class='warning'>[t_He] look[t_s] slightly dented.</span>"
 		else
-			msg += "<b>[t_He] look[t_s] severely dented!</b>\n"
-		msg += "</span>"
-	msg += "*---------*</span>"
-
-	to_chat(user, msg)
+			. += "<span class='warning'><b>[t_He] look[t_s] severely dented!</b></span>"
+	. += "*---------*</span>"
 
 /mob/living/simple_animal/hostile/construct/attack_animal(mob/living/simple_animal/M)
 	if(isconstruct(M)) //is it a construct?
@@ -338,7 +333,7 @@
 			stored_pulling.forceMove(loc)
 		forceMove(AM)
 		if(stored_pulling)
-			start_pulling(stored_pulling, TRUE) //drag anything we're pulling through the wall with us by magic
+			start_pulling(stored_pulling, supress_message = TRUE) //drag anything we're pulling through the wall with us by magic
 
 /mob/living/simple_animal/hostile/construct/harvester/AttackingTarget()
 	if(iscarbon(target))
@@ -392,6 +387,9 @@
 /datum/action/innate/seek_master/Activate()
 	var/datum/antagonist/cult/C = owner.mind.has_antag_datum(/datum/antagonist/cult)
 	if(!C)
+		return
+	if(!C.cult_team)
+		to_chat(the_construct, "<span class='cult italic'>You are alone, and have no team.</span>")
 		return
 	var/datum/objective/eldergod/summon_objective = locate() in C.cult_team.objectives
 

@@ -94,11 +94,19 @@
 /datum/quirk/musician/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/instrument/guitar/guitar = new(get_turf(H))
-	H.put_in_hands(guitar)
-	H.equip_to_slot(guitar, SLOT_IN_BACKPACK)
+	var/list/instrument_slots = list (
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS,
+	)
+	H.equip_in_one_of_slots(guitar, instrument_slots, qdel_on_fail = TRUE)
 	var/obj/item/musicaltuner/musicaltuner = new(get_turf(H))
-	H.put_in_hands(musicaltuner)
-	H.equip_to_slot(musicaltuner, SLOT_IN_BACKPACK)
+	var/list/tuner_slots = list (
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS,
+		"left pocket" = SLOT_L_STORE,
+		"right pocket" = SLOT_R_STORE
+	)
+	H.equip_in_one_of_slots(musicaltuner, tuner_slots, qdel_on_fail = TRUE)
 	H.regenerate_icons()
 
 /datum/quirk/night_vision
@@ -127,8 +135,14 @@
 /datum/quirk/photographer/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/camera/camera = new(get_turf(H))
-	H.put_in_hands(camera)
-	H.equip_to_slot(camera, SLOT_NECK)
+	var/list/camera_slots = list (
+		"neck" = ITEM_SLOT_NECK,
+		"left pocket" = SLOT_L_STORE,
+		"right pocket" = SLOT_R_STORE,
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS
+	)
+	H.equip_in_one_of_slots(camera, camera_slots, qdel_on_fail = TRUE)
 	H.regenerate_icons()
 
 /datum/quirk/selfaware
@@ -162,8 +176,13 @@
 /datum/quirk/tagger/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/toy/crayon/spraycan/spraycan = new(get_turf(H))
-	H.put_in_hands(spraycan)
-	H.equip_to_slot(spraycan, SLOT_IN_BACKPACK)
+	var/list/spray_slots = list (
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS,
+		"left pocket" = SLOT_L_STORE,
+		"right pocket" = SLOT_R_STORE
+	)
+	H.equip_in_one_of_slots(spraycan, spray_slots, qdel_on_fail = TRUE)
 	H.regenerate_icons()
 
 /datum/quirk/voracious
@@ -184,7 +203,13 @@
 /datum/quirk/trandening/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/autosurgeon/gloweyes/gloweyes = new(get_turf(H))
-	H.equip_to_slot(gloweyes, SLOT_IN_BACKPACK)
+	var/list/gloweye_slots = list (
+		"backpack" = SLOT_IN_BACKPACK,
+		"hands" = SLOT_HANDS,
+		"left pocket" = SLOT_L_STORE,
+		"right pocket" = SLOT_R_STORE
+	)
+	H.equip_in_one_of_slots(gloweyes, gloweye_slots, qdel_on_fail = TRUE)
 	H.regenerate_icons()
 
 /datum/quirk/bloodpressure
@@ -196,13 +221,31 @@
 	lose_text = "<span class='notice'>You feel like your blood pressure went down.</span>"
 
 /datum/quirk/bloodpressure/add()
-	var/mob/living/M = quirk_holder
-	M.blood_ratio = 1.2
-	M.blood_volume += 150
+	quirk_holder.blood_ratio = 1.2
+	quirk_holder.blood_volume += 150
 
 /datum/quirk/bloodpressure/remove()
-	var/mob/living/M = quirk_holder
-	M.blood_ratio = 1
+	if(quirk_holder)
+		quirk_holder.blood_ratio = 1
+
+/datum/quirk/tough
+	name = "Tough"
+	desc = "Your body is abnormally enduring and can take 10% more damage."
+	value = 2
+	mob_trait = TRAIT_TOUGH
+	medical_record_text = "Patient has an abnormally high capacity for injury."
+	gain_text = "<span class='notice'>You feel very sturdy.</span>"
+	lose_text = "<span class='notice'>You feel less sturdy.</span>"
+	var/healthchange = 0
+
+/datum/quirk/tough/add()
+	var/mob/living/carbon/human/H = quirk_holder
+	healthchange = H.maxHealth * 0.1
+	H.maxHealth = H.maxHealth * 1.1
+
+/datum/quirk/tough/remove()
+	var/mob/living/carbon/human/H = quirk_holder
+	H.maxHealth += healthchange
 
 /datum/quirk/draconicspeaker
 	name = "Draconic speaker"
@@ -233,3 +276,63 @@
 /datum/quirk/slimespeaker/remove()
 	var/mob/living/M = quirk_holder
 	M.remove_language(/datum/language/slime)
+
+/datum/quirk/narsianspeaker
+	name = "Nar-Sian speaker"
+	desc = "Obsessed with forbidden knowledge regarding the blood cult, you've learned how to speak their ancient language."
+	value = 1
+	gain_text = "<span class='notice'>Your mind feels sensitive to the slurred, ancient language of Nar'Sian cultists.</span>"
+	lose_text = "<span class='notice'>You forget how to speak Nar'Sian!</span>"
+
+/datum/quirk/narsianspeaker/add()
+	var/mob/living/M = quirk_holder
+	M.grant_language(/datum/language/narsie)
+
+/datum/quirk/narsianspeaker/remove()
+	var/mob/living/M = quirk_holder
+	M.remove_language(/datum/language/narsie)
+
+/datum/quirk/ratvarianspeaker
+	name = "Ratvarian speaker"
+	desc = "Obsessed with the inner workings of the clock cult, you've learned how to speak their language."
+	value = 1
+	gain_text = "<span class='notice'>Your mind feels sensitive to the ancient language of Ratvarian cultists.</span>"
+	lose_text = "<span class='notice'>You forget how to speak Ratvarian!</span>"
+
+/datum/quirk/ratvarianspeaker/add()
+	var/mob/living/M = quirk_holder
+	M.grant_language(/datum/language/ratvar)
+
+/datum/quirk/ratvarianspeaker/remove()
+	var/mob/living/M = quirk_holder
+	M.remove_language(/datum/language/ratvar)
+
+/datum/quirk/encodedspeaker
+	name = "Encoded Audio speaker"
+	desc = "You've been augmented with language encoders, allowing you to understand encoded audio."
+	value = 1
+	gain_text = "<span class='notice'>Your mouth feels a little weird for a moment as your language encoder kicks in.</span>"
+	lose_text = "<span class='notice'>You feel your encoded audio chip malfunction. You can no longer speak or understand the language of fax machines.</span>"
+
+/datum/quirk/encodedspeaker/add()
+	var/mob/living/M = quirk_holder
+	M.grant_language(/datum/language/machine)
+
+/datum/quirk/encodedspeaker/remove()
+	var/mob/living/M = quirk_holder
+	M.remove_language(/datum/language/machine)
+
+/datum/quirk/xenospeaker
+	name = "Xenocommon speaker"
+	desc = "Through time observing and interacting with xenos and xeno hybrids, you've learned the intricate hissing patterns of their language."
+	value = 1
+	gain_text = "<span class='notice'>You feel that you are now able to hiss in the same way xenomorphs do.</span>"
+	lose_text = "<span class='notice'>You seem to no longer know how to speak xenocommon.</span>"
+
+/datum/quirk/xenospeaker/add()
+	var/mob/living/M = quirk_holder
+	M.grant_language(/datum/language/xenocommon)
+
+/datum/quirk/xenospeaker/remove()
+	var/mob/living/M = quirk_holder
+	M.remove_language(/datum/language/xenocommon)

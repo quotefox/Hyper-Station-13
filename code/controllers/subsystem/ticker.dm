@@ -205,6 +205,7 @@ SUBSYSTEM_DEF(ticker)
 			mode.process(wait * 0.1)
 			check_queue()
 			check_maprotate()
+			scripture_states = scripture_unlock_alert(scripture_states)
 
 			if(!roundend_check_paused && mode.check_finished(force_ending) || force_ending)
 				current_state = GAME_STATE_FINISHED
@@ -477,7 +478,12 @@ SUBSYSTEM_DEF(ticker)
 		if(SSticker.timeLeft < 900)
 			SSticker.timeLeft = 900
 		SSticker.modevoted = TRUE
-		SSvote.initiate_vote("roundtype","server",TRUE)
+		var/dynamic = CONFIG_GET(flag/dynamic_mode) //WORK DAMN YOU
+		//var/dynamic = TRUE //FUCK IT
+		if(!dynamic)
+			SSvote.initiate_vote("roundtype","server",TRUE)
+		else
+			SSvote.initiate_vote("dynamic","server",TRUE)
 
 /datum/controller/subsystem/ticker/Recover()
 	current_state = SSticker.current_state
@@ -670,6 +676,10 @@ SUBSYSTEM_DEF(ticker)
 	update_everything_flag_in_db()
 	if(!round_end_sound)
 		round_end_sound = pick(\
+		'sound/roundend/iwishtherewassomethingmore.ogg',
+		'sound/roundend/likeisaid.ogg',	
+		'sound/roundend/whatarottenwaytodie.ogg',
+		'sound/roundend/whatashame.ogg',
 		'sound/roundend/newroundsexy.ogg',
 		'sound/roundend/apcdestroyed.ogg',
 		'sound/roundend/bangindonk.ogg',

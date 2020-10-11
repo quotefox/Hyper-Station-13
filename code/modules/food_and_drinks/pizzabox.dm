@@ -231,7 +231,7 @@
 	if(boxes.len >= 3 && prob(25 * boxes.len))
 		disperse_pizzas()
 
-/obj/item/pizzabox/throw_impact(atom/movable/AM)
+/obj/item/pizzabox/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(boxes.len >= 2 && prob(20 * boxes.len))
 		disperse_pizzas()
 
@@ -319,9 +319,9 @@
 		pizza_preferences = list()
 
 /obj/item/pizzabox/infinite/examine(mob/user)
-	..()
+	. = ..()
 	if(isobserver(user))
-		to_chat(user, "<span class='deadsay'>This pizza box is anomalous, and will produce infinite pizza.</span>")
+		. += "<span class='deadsay'>This pizza box is anomalous, and will produce infinite pizza.</span>"
 
 /obj/item/pizzabox/infinite/attack_self(mob/living/user)
 	QDEL_NULL(pizza)

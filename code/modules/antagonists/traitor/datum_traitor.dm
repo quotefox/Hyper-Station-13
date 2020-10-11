@@ -172,7 +172,7 @@
 
 /datum/antagonist/traitor/proc/forge_single_AI_objective()
 	.=1
-	var/special_pick = rand(1,4)
+	var/special_pick = rand(1,3)
 	switch(special_pick)
 		if(1)
 			var/datum/objective/block/block_objective = new
@@ -182,11 +182,7 @@
 			var/datum/objective/purge/purge_objective = new
 			purge_objective.owner = owner
 			add_objective(purge_objective)
-		if(3)
-			var/datum/objective/robot_army/robot_objective = new
-			robot_objective.owner = owner
-			add_objective(robot_objective)
-		if(4) //Protect and strand a target
+		if(3) //Protect and strand a target
 			var/datum/objective/protect/yandere_one = new
 			yandere_one.owner = owner
 			add_objective(yandere_one)

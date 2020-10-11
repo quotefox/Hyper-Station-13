@@ -37,11 +37,11 @@
 	icon_state = "grille50_[rand(0,3)]"
 
 /obj/structure/grille/examine(mob/user)
-	..()
+	. = ..()
 	if(anchored)
-		to_chat(user, "<span class='notice'>It's secured in place with <b>screws</b>. The rods look like they could be <b>cut</b> through.</span>")
-	if(!anchored)
-		to_chat(user, "<span class='notice'>The anchoring screws are <i>unscrewed</i>. The rods look like they could be <b>cut</b> through.</span>")
+		. += "<span class='notice'>It's secured in place with <b>screws</b>. The rods look like they could be <b>cut</b> through.</span>"
+	else
+		. += "<span class='notice'>The anchoring screws are <i>unscrewed</i>. The rods look like they could be <b>cut</b> through.</span>"
 
 /obj/structure/grille/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	switch(the_rcd.mode)
@@ -258,7 +258,7 @@
 			take_damage(1, BURN, 0, 0)
 	..()
 
-/obj/structure/grille/hitby(AM as mob|obj)
+/obj/structure/grille/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(isobj(AM))
 		if(prob(50) && anchored && !broken)
 			var/obj/O = AM

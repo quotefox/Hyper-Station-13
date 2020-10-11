@@ -68,6 +68,14 @@
 	resistance_flags = NONE
 	grind_results = list("aluminium" = 10)
 
+/obj/item/trash/soy_food
+	name = "soyfood"
+	icon_state = "soy_food"
+
+/obj/item/trash/carbonnanotube_noodles
+	name = "carbon nanotube noodles"
+	icon_state = "carbonnanotube_noodles"
+
 /obj/item/trash/attack(mob/M, mob/living/user)
 	return
 
