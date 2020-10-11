@@ -364,7 +364,9 @@
 /turf/open/floor/plasteel,
 /area/xenoarch/arch)
 "bk" = (
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "bl" = (
 /turf/open/floor/carpet,
@@ -2588,7 +2590,7 @@
 /turf/open/floor/plating{
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
 	},
-/area/lavaland/surface/outdoors)
+/area/xenoarch/gen)
 "gs" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -6114,14 +6116,18 @@
 /obj/structure/light_construct{
 	dir = 8
 	},
-/turf/open/floor/plasteel/showroomfloor,
+/turf/open/floor/plasteel/showroomfloor{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "oX" = (
 /obj/structure/sink{
 	pixel_y = 30
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel/showroomfloor,
+/turf/open/floor/plasteel/showroomfloor{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "oY" = (
 /obj/structure/trash_pile,
@@ -6129,7 +6135,9 @@
 	icon_state = "cobweb2"
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "oZ" = (
 /obj/structure/ore_box,
@@ -6140,19 +6148,25 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel/showroomfloor,
+/turf/open/floor/plasteel/showroomfloor{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/old,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/spawner/lootdrop/maintenance{
 	lootcount = 2
 	},
-/turf/open/floor/plasteel/showroomfloor,
+/turf/open/floor/plasteel/showroomfloor{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pd" = (
 /obj/structure/fence{
@@ -6181,23 +6195,31 @@
 /area/lavaland/surface/outdoors)
 "pi" = (
 /obj/structure/girder,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pj" = (
 /obj/structure/mopbucket,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pk" = (
 /obj/structure/closet/crate/trashcart,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pl" = (
 /obj/structure/rack,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/oil,
 /obj/effect/spawner/lootdrop/grille_or_trash,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pm" = (
 /obj/structure/rack,
@@ -6205,7 +6227,9 @@
 /obj/effect/decal/cleanable/cobweb{
 	icon_state = "cobweb2"
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pn" = (
 /obj/structure/fence,
@@ -6240,18 +6264,24 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/ash,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pt" = (
 /obj/structure/chair/office,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/oil{
 	icon_state = "floor6"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pv" = (
 /obj/structure/closet/crate{
@@ -6261,7 +6291,9 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pw" = (
 /obj/machinery/light{
@@ -6269,20 +6301,26 @@
 	light_color = "#e8eaff"
 	},
 /obj/item/caution,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "px" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/generic,
 /mob/living/simple_animal/cockroach,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "py" = (
 /obj/structure/trash_pile,
 /obj/structure/light_construct{
 	dir = 4
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pz" = (
 /obj/effect/turf_decal/loading_area,
@@ -6309,11 +6347,15 @@
 /obj/item/lighter{
 	pixel_x = -4
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pC" = (
 /obj/structure/table,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pD" = (
 /obj/effect/spawner/lootdrop/grille_or_trash,
@@ -6321,37 +6363,51 @@
 /area/lavaland/surface/outdoors)
 "pE" = (
 /obj/effect/decal/cleanable/glass,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pF" = (
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pG" = (
 /obj/machinery/door/airlock{
 	name = "Facility Restroom"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pH" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/ash,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pI" = (
 /obj/structure/trash_pile,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pJ" = (
 /obj/structure/rack,
 /obj/item/light/tube/broken,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pK" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/grille_or_trash,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pL" = (
 /obj/structure/flora/junglebush/large{
@@ -6382,7 +6438,9 @@
 /obj/effect/decal/cleanable/oil{
 	icon_state = "floor5"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pQ" = (
 /obj/machinery/light{
@@ -6391,7 +6449,9 @@
 	},
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pR" = (
 /obj/structure/sign/departments/cargo,
@@ -6404,7 +6464,9 @@
 "pT" = (
 /obj/structure/grille,
 /obj/effect/decal/cleanable/glass,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pU" = (
 /obj/structure/fence/cut/medium,
@@ -6416,28 +6478,38 @@
 	},
 /obj/effect/turf_decal/tile/brown,
 /obj/item/chair,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pW" = (
 /obj/item/caution,
 /obj/item/mop,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pX" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/robot_debris,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pY" = (
 /obj/effect/turf_decal/tile/brown,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "pZ" = (
 /obj/item/broken_bottle,
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/gibs,
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "qa" = (
 /obj/structure/flora/junglebush,
@@ -6446,12 +6518,16 @@
 "qb" = (
 /obj/structure/grille,
 /obj/effect/decal/cleanable/generic,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "qc" = (
 /obj/structure/grille/broken,
 /obj/effect/decal/cleanable/glass,
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "qd" = (
 /obj/structure/fence/cut/large,
@@ -6476,28 +6552,28 @@
 	dir = 4;
 	name = "Facility Storage"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "qi" = (
 /obj/structure/door_assembly/door_assembly_mhatch{
 	name = "Strange Facility Airlock"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plating{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
 /area/lavaland/surface/outdoors)
 "qj" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/maintenance{
 	lootcount = 2
 	},
-/turf/open/floor/plating,
-/area/lavaland/surface/outdoors)
-"uZ" = (
-/obj/structure/girder,
 /turf/open/floor/plating{
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
 	},
 /area/lavaland/surface/outdoors)
-"CO" = (
+"AF" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating{
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
@@ -6505,11 +6581,6 @@
 /area/xenoarch/gen)
 "Hx" = (
 /turf/open/floor/carpet,
-/area/xenoarch/gen)
-"JL" = (
-/turf/open/floor/plating{
-	initial_gas_mix = "o2=14;n2=23;TEMP=300"
-	},
 /area/xenoarch/gen)
 "Sy" = (
 /turf/closed/wall,
@@ -11905,8 +11976,8 @@ Sy
 Sy
 lC
 Sy
-CO
-gr
+AF
+bk
 lQ
 ay
 ay
@@ -12163,7 +12234,7 @@ Sy
 lq
 gp
 lF
-gr
+bk
 lQ
 ay
 ay
@@ -12420,7 +12491,7 @@ jH
 lr
 Sy
 kh
-gr
+bk
 jA
 jV
 ay
@@ -18049,7 +18120,7 @@ lQ
 lQ
 lQ
 kf
-JL
+gr
 jI
 Sy
 lX
@@ -18453,13 +18524,13 @@ ab
 ab
 ab
 oS
-gr
-gr
-gr
-gr
-gr
-gr
-gr
+bk
+bk
+bk
+bk
+bk
+bk
+bk
 oT
 lQ
 lQ
@@ -18710,13 +18781,13 @@ ab
 lQ
 lQ
 oS
-gr
-gr
-gr
-gr
-gr
-gr
-gr
+bk
+bk
+bk
+bk
+bk
+bk
+bk
 oT
 lQ
 lQ
@@ -18967,13 +19038,13 @@ lQ
 lQ
 lQ
 oS
-gr
-gr
-gr
-gr
-gr
-gr
-gr
+bk
+bk
+bk
+bk
+bk
+bk
+bk
 oT
 lQ
 lQ
@@ -28210,13 +28281,13 @@ ab
 ab
 lQ
 oS
-gr
-gr
-gr
-gr
-gr
-gr
-gr
+bk
+bk
+bk
+bk
+bk
+bk
+bk
 oT
 lQ
 lQ
@@ -28467,13 +28538,13 @@ ab
 ab
 lQ
 oS
-gr
-gr
-gr
-gr
-gr
-gr
-gr
+bk
+bk
+bk
+bk
+bk
+bk
+bk
 oT
 lQ
 lQ
@@ -28724,13 +28795,13 @@ ab
 lQ
 lQ
 oS
-gr
-gr
-gr
-gr
-gr
-gr
-gr
+bk
+bk
+bk
+bk
+bk
+bk
+bk
 oT
 lQ
 lQ
@@ -31559,9 +31630,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 ou
 lQ
 lQ
@@ -31797,9 +31868,9 @@ lQ
 lQ
 lQ
 ot
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -31816,9 +31887,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 lQ
 lQ
@@ -32054,9 +32125,9 @@ lQ
 lQ
 lQ
 ot
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -32073,9 +32144,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -32311,9 +32382,9 @@ lQ
 lQ
 lQ
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -32330,9 +32401,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -32568,9 +32639,9 @@ lQ
 lQ
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -32587,9 +32658,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -32825,9 +32896,9 @@ lQ
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -32844,9 +32915,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -33082,9 +33153,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -33101,9 +33172,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -33339,9 +33410,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -33358,9 +33429,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -33596,9 +33667,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 lQ
 lQ
@@ -33615,9 +33686,9 @@ lQ
 ab
 lQ
 ot
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -33853,9 +33924,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 ou
 lQ
 ab
@@ -34110,9 +34181,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 ou
 lQ
 lQ
@@ -42929,9 +43000,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -43186,9 +43257,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -43443,9 +43514,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -43700,9 +43771,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -43717,9 +43788,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 ou
 lQ
 lQ
@@ -43957,9 +44028,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -43974,9 +44045,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -44214,9 +44285,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -44231,9 +44302,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -44471,9 +44542,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -44488,9 +44559,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -44745,9 +44816,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -45002,9 +45073,9 @@ lQ
 lQ
 lQ
 ot
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -46021,12 +46092,12 @@ lQ
 lQ
 lQ
 oS
-gr
-gr
-gr
-gr
-gr
-gr
+bk
+bk
+bk
+bk
+bk
+bk
 oT
 lQ
 ab
@@ -46278,12 +46349,12 @@ lQ
 lQ
 lQ
 oS
-gr
-gr
-gr
-gr
-gr
-gr
+bk
+bk
+bk
+bk
+bk
+bk
 oT
 lQ
 ab
@@ -46535,12 +46606,12 @@ ab
 ab
 lQ
 oS
-gr
-gr
-gr
-gr
-gr
-gr
+bk
+bk
+bk
+bk
+bk
+bk
 oT
 lQ
 lQ
@@ -48904,9 +48975,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 ou
 lQ
 lQ
@@ -49161,9 +49232,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 ou
 lQ
 lQ
@@ -49418,9 +49489,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 lQ
 lQ
@@ -49675,9 +49746,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -49932,9 +50003,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -50189,9 +50260,9 @@ ay
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -50446,9 +50517,9 @@ lQ
 ay
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -50703,9 +50774,9 @@ lQ
 lQ
 ay
 fc
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -50960,9 +51031,9 @@ lQ
 lQ
 lQ
 ot
-gr
-gr
-gr
+bk
+bk
+bk
 nn
 ay
 ay
@@ -65561,7 +65632,7 @@ ab
 ab
 ab
 ab
-uZ
+pi
 po
 oV
 lQ
@@ -66852,10 +66923,10 @@ lQ
 lQ
 lQ
 oS
-gr
-gr
-gr
-gr
+bk
+bk
+bk
+bk
 oT
 jV
 pD
@@ -67109,10 +67180,10 @@ lQ
 lQ
 lQ
 oS
-gr
-gr
-gr
-gr
+bk
+bk
+bk
+bk
 oT
 lQ
 lQ
@@ -67366,10 +67437,10 @@ lQ
 lQ
 lQ
 oS
-gr
-gr
-gr
-gr
+bk
+bk
+bk
+bk
 oT
 lQ
 lQ
@@ -67874,7 +67945,7 @@ ab
 ab
 ab
 ab
-uZ
+pi
 jA
 pD
 lQ
@@ -68393,7 +68464,7 @@ oU
 oU
 qi
 oU
-uZ
+pi
 ay
 ay
 ay
