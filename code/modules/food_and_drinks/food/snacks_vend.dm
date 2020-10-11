@@ -100,3 +100,14 @@
 	filling_color = "#F5F5DC"
 	tastes = list("sweetness" = 3, "cake" = 1)
 	foodtype = GRAIN | FRUIT | VEGETABLES
+
+/obj/item/reagent_containers/food/snacks/carbonnanotube_noodles
+	name = "carbon nanotube noodles"
+	desc = "A self-heating bag of hollowed charcoal noodles with a spicy soy sauce glaze. Does contain small traces of charcoal."
+	icon_state = "carbonnanotube_noodles"
+	trash = /obj/item/trash/carbonnanotube_noodles
+	list_reagents = list("nutriment" = 5, "charcoal" = 1, "vitamin" = 4)
+	junkiness = 0
+	filling_color = "#FFD700"
+	tastes = list("charcoal" = 1, "spiciness" = 3, "soysauce" = 3)
+	foodtype = GRAIN | VEGETABLES
