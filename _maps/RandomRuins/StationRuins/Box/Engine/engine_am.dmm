@@ -118,20 +118,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
-"nR" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/box/red,
-/turf/open/floor/engine,
-/area/engine/engineering)
-"nW" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/box/red,
-/turf/open/floor/engine,
-/area/engine/engineering)
 "qH" = (
 /obj/structure/sign/warning/vacuum/external{
 	pixel_x = -32
@@ -179,13 +165,6 @@
 	name = "Radiation Chamber Shutters"
 	},
 /turf/open/floor/plating,
-/area/engine/engineering)
-"xg" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
-	},
-/turf/open/floor/plasteel,
 /area/engine/engineering)
 "xx" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -265,13 +244,6 @@
 	icon_state = "2-8"
 	},
 /turf/open/floor/plating,
-/area/engine/engineering)
-"Bh" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "engsm";
-	name = "Radiation Chamber Shutters"
-	},
-/turf/open/floor/plasteel,
 /area/engine/engineering)
 "BG" = (
 /obj/structure/closet/emcloset/anchored,
@@ -462,10 +434,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
-"Og" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/engine/engineering)
 "Ox" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -502,10 +470,6 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel,
-/area/engine/engineering)
-"SD" = (
-/obj/effect/turf_decal/box/red,
-/turf/open/floor/engine,
 /area/engine/engineering)
 "Tr" = (
 /obj/structure/sign/warning/radiation/rad_area,
@@ -1009,7 +973,7 @@ wt
 Ch
 rj
 rj
-Og
+rj
 MJ
 MJ
 MJ
@@ -1037,7 +1001,7 @@ ZK
 zZ
 ZK
 fH
-Og
+rj
 MJ
 MJ
 MJ
@@ -1065,7 +1029,7 @@ Ox
 Ox
 Zb
 lY
-Og
+rj
 MJ
 MJ
 MJ
@@ -1093,7 +1057,7 @@ ZF
 ZF
 Yd
 lY
-Og
+rj
 MJ
 MJ
 MJ
@@ -1121,7 +1085,7 @@ Mn
 Mn
 WQ
 lY
-Og
+rj
 MJ
 MJ
 MJ
@@ -1149,7 +1113,7 @@ No
 tT
 No
 LV
-Og
+rj
 MJ
 MJ
 MJ
@@ -1177,7 +1141,7 @@ wt
 Ch
 rj
 rj
-Og
+rj
 MJ
 MJ
 MJ
