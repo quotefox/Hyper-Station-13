@@ -173,3 +173,13 @@
 	name = "Red and Green Christmas Coat"
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/hooded/wintercoat/christmascoatrg
+
+/datum/gear/kromajacket
+	name = "Kromatose Military Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/polychromic/kromajacket
+
+/datum/gear/kromacrop
+	name = "Kromatose Short Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/polychromic/kromacrop
