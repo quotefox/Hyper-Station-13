@@ -46,7 +46,8 @@
 		if(W == o.w_uniform || W == o.wear_suit)
 		//Hyper change
 			var/obj/item/clothing/W2 = W
-			if(!W2.roomy == 1) //If the clothes are "roomy" then don't do this.
+			var/datum/antagonist/changeling/changeling = o.mind.has_antag_datum(/datum/antagonist/changeling)
+			if(!(W2.roomy == 1 || changeling)) //If the clothes are "roomy" then don't do this.  //Or if a changeling
 			//Hyper change end
 				o.dropItemToGround(W, TRUE)
 				playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
@@ -72,7 +73,8 @@
 		if(W == o.w_uniform || W == o.wear_suit)
 			//Hyper change// Check for a flag before we remove clothes.
 			var/obj/item/clothing/W2 = W
-			if(!W2.roomy == 1) //If the clothes are "roomy" then don't do this.
+			var/datum/antagonist/changeling/changeling = o.mind.has_antag_datum(/datum/antagonist/changeling)
+			if(!(W2.roomy == 1 || changeling)) //If the clothes are "roomy" then don't do this. // Or a ling
 			//End Hyper Change//
 				o.dropItemToGround(W, TRUE)
 				playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
@@ -136,17 +138,20 @@
 		//Hyper change// Check for a flag before we remove clothes.
 		var/obj/item/clothing/suit = o.get_item_by_slot(SLOT_W_UNIFORM)
 		var/obj/item/clothing/jacket = o.get_item_by_slot(SLOT_WEAR_SUIT)
-		if(!suit.roomy == 1 || !jacket.roomy == 1) //If the clothes are "roomy" then don't do this.
-			//End Hyper Change//
-			to_chat(o, "<span class='warning'>Your clothes give, ripping into peices under the strain of your swelling pecker! Unless you manage to reduce the size of your emancipated trouser snake, there's no way you're going to be able to put anything on over this girth..!</b></span>")
-			owner.visible_message("<span class='boldnotice'>[o]'s schlong suddenly bursts forth, ripping their clothes off!'</span>")
+		var/datum/antagonist/changeling/changeling = o.mind.has_antag_datum(/datum/antagonist/changeling)
+		if(!(suit.roomy == 1 && jacket.roomy == 1)) //If the clothes are "roomy" then don't do this.
+			if(!changeling) //Or a changeling
+				//End Hyper Change//
+				to_chat(o, "<span class='warning'>Your clothes give, ripping into peices under the strain of your swelling pecker! Unless you manage to reduce the size of your emancipated trouser snake, there's no way you're going to be able to put anything on over this girth..!</b></span>")
+				owner.visible_message("<span class='boldnotice'>[o]'s schlong suddenly bursts forth, ripping their clothes off!'</span>")
 	else
 		to_chat(o, "<span class='notice'>Your emancipated trouser snake is so ripe with girth, you seriously doubt you'll be able to fit any clothes over it.</b></span>")
 	for(var/obj/item/W in items)
 		if(W == o.w_uniform || W == o.wear_suit)
 		//Hyper change// Check for a flag before we remove clothes.
 			var/obj/item/clothing/W2 = W
-			if(!W2.roomy == 1) //If the clothes are "roomy" then don't do this.
+			var/datum/antagonist/changeling/changeling = o.mind.has_antag_datum(/datum/antagonist/changeling)
+			if(!(W2.roomy == 1 || changeling)) //If the clothes are "roomy" then don't do this.
 			//End Hyper Change//
 				o.dropItemToGround(W, TRUE)
 				playsound(o.loc, 'sound/items/poster_ripped.ogg', 50, 1)
@@ -171,7 +176,8 @@
 		//Hyper change// Check for a flag before we remove clothes.
 		if(istype(W, /obj/item/clothing))
 			var/obj/item/clothing/W2 = W
-			if(!W2.roomy == 1) //If the clothes are "roomy" then don't do this.
+			var/datum/antagonist/changeling/changeling = o.mind.has_antag_datum(/datum/antagonist/changeling)
+			if(!(W2.roomy == 1 || changeling)) //If the clothes are "roomy" then don't do this.
 			//End Hyper Change//
 				if (o.arousalloss > 32) // warning that your shaft is getting errect!
 					if(W == o.w_uniform || W == o.wear_suit )

@@ -91,11 +91,13 @@ GLOBAL_VAR(changeling_team_objective_type) //If this is not null, we hand our th
 	user.shirt_color =chosen_prof.shirt_color
 	user.socks = chosen_prof.socks
 	user.socks_color =chosen_prof.socks_color
+	user.size_multiplier = chosen_prof.size_multiplier
 
 	chosen_dna.transfer_identity(user, 1)
 	user.updateappearance(mutcolor_update=1)
 	user.update_body()
 	user.domutcheck()
+	user.previous_size = chosen_prof.size_multiplier
 
 	//vars hackery. not pretty, but better than the alternative.
 	for(var/slot in GLOB.slots)
