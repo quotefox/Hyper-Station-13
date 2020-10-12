@@ -951,18 +951,18 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		user.show_message("<span class='notice'>You quench the flame.</span>", 1)
 
 /obj/item/bong/examine(mob/user)
-	..()
+	. = ..()
 	if(!reagents.total_volume)
-		to_chat(user, "<span class='notice'>The bowl is empty.</span>")
+		. += "<span class='notice'>The bowl is empty.</span>"
 	else if (reagents.total_volume > 80)
-		to_chat(user, "<span class='notice'>The bowl is filled to the brim.</span>")
+		. += "<span class='notice'>The bowl is filled to the brim.</span>"
 	else if (reagents.total_volume > 40)
-		to_chat(user, "<span class='notice'>The bowl has plenty weed in it.</span>")
+		. += "<span class='notice'>The bowl has plenty weed in it.</span>"
 	else
-		to_chat(user, "<span class='notice'>The bowl has some weed in it.</span>")
+		. += "<span class='notice'>The bowl has some weed in it.</span>"
 
-	to_chat(user, "<span class='notice'>Ctrl+Shift-click to empty.</span>")
-	to_chat(user, "<span class='notice'>Alt-click to extinguish.</span>")
+	. += "<span class='notice'>Ctrl+Shift-click to empty.</span>"
+	. += "<span class='notice'>Alt-click to extinguish.</span>"
 
 /obj/item/bong/ignition_effect(atom/A, mob/user)
 	if(firecharges)

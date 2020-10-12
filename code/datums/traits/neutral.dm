@@ -127,4 +127,4 @@
 	mob_trait = TRAIT_CURSED_BLOOD
 	gain_text = "<span class='notice'>A curse from a land where men return as beasts runs deep in your blood. Best to stay away from holy water... Hell water, on the other hand...</span>"
 	lose_text = "<span class='notice'>You feel the weight of the curse in your blood finally gone.</span>"
-	medical_record_text = "Patient from an unknown type of aversion to holy reagents. Keep them away from a chaplain."
+	medical_record_text = "Patient suffers from an unknown type of aversion to holy reagents. Keep them away from a chaplain."

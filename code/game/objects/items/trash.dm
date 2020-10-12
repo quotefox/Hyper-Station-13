@@ -72,6 +72,10 @@
 	name = "soyfood"
 	icon_state = "soy_food"
 
+/obj/item/trash/carbonnanotube_noodles
+	name = "carbon nanotube noodles"
+	icon_state = "carbonnanotube_noodles"
+
 /obj/item/trash/attack(mob/M, mob/living/user)
 	return
 

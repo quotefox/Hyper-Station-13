@@ -114,9 +114,11 @@
 
 /area/lavaland/surface/outdoors/unexplored //monsters and ruins spawn here
 	icon_state = "unexplored"
+	mob_spawn_allowed = TRUE
 
 /area/lavaland/surface/outdoors/unexplored/danger //megafauna will also spawn here
 	icon_state = "danger"
+	megafauna_spawn_allowed = TRUE
 
 /area/lavaland/surface/outdoors/explored
 	name = "Lavaland Labor Camp"

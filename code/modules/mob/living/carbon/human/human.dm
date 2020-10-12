@@ -3,7 +3,7 @@
 	real_name = "Unknown"
 	icon = 'icons/mob/human.dmi'
 	icon_state = "caucasian_m"
-	appearance_flags = KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE
+	appearance_flags = KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
 
 /mob/living/carbon/human/Initialize()
 	verbs += /mob/living/proc/mob_sleep
@@ -40,6 +40,7 @@
 	. = ..()
 	if(!CONFIG_GET(flag/disable_human_mood))
 		AddComponent(/datum/component/mood)
+	AddElement(/datum/element/mob_holder/micro, "micro")
 
 /mob/living/carbon/human/Destroy()
 	QDEL_NULL(physiology)
@@ -1110,7 +1111,8 @@
 	race = /datum/species/krokodil_addict
 
 //define holder_type on nerds we wanna commit scoop to
-/mob/living/carbon/human
+/* /mob/living/carbon/human
 	var/holder_type = /obj/item/clothing/head/mob_holder/micro
 	can_be_held = "micro"
+*/
 

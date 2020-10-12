@@ -1169,6 +1169,13 @@
 	contains = list(/obj/machinery/the_singularitygen/tesla)
 	crate_name = "tesla generator crate"
 
+/datum/supply_pack/engine/teg
+	name = "Thermoelectric Generator"
+	desc = "Contains your very own Thermoelectric Generator. Time to turn cargo into a blazing hellfire, perhaps?"
+	cost = 4000
+	contains = list(/obj/machinery/power/generator)
+	crate_name = "thermoelectric generator crate"
+
 //////////////////////////////////////////////////////////////////////////////
 /////////////////////// Canisters & Materials ////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////

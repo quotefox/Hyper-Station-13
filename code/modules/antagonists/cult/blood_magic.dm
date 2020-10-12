@@ -651,7 +651,7 @@
 /obj/item/melee/blood_magic/manipulator/examine(mob/user)
 	. = ..()
 	if(iscultist(user))
-		to_chat(user, "<span class='cultitalic'>The [name] currently has <b>[uses]</b> blood charges left.</span>")
+		. += "<span class='cultitalic'>The [name] currently has <b>[uses]</b> blood charges left.</span>"
 
 /obj/item/melee/blood_magic/manipulator/afterattack(atom/target, mob/living/carbon/human/user, proximity)
 	if(proximity)
@@ -797,11 +797,9 @@
 					else
 						to_chat(user, "<span class='cultitalic'>You need a free hand for this rite!</span>")
 						qdel(rite)
-			if("Blood Beam (500)")
+			if("Blood Beam (500)") //This spell is honestly a bit useless. Why would anyone limit it?
 				if(uses < 500)
 					to_chat(user, "<span class='cultitalic'>You need 500 charges to perform this rite.</span>")
-				else if(!iscultist(user, TRUE))
-					to_chat(user, "<span class='warning'>You are not strongly connected to Nar'sie enough to use something of this power.</span>")
 				else
 					var/obj/rite = new /obj/item/blood_beam()
 					uses -= 500

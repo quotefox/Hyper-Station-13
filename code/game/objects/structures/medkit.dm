@@ -26,8 +26,8 @@
 		stored_medkit = new /obj/item/storage/firstaid/regular(src)
 
 /obj/structure/medkit_cabinet/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>Alt-click to [opened ? "close":"open"] it.</span>")
+	. = ..()
+	. += "<span class='notice'>Alt-click to [opened ? "close":"open"] it.</span>"
 
 /obj/structure/medkit_cabinet/Destroy()
 	if(stored_medkit)

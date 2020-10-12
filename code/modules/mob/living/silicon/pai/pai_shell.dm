@@ -86,6 +86,10 @@
 	if(resting)
 		icon_state = "[chassis]_rest"
 	to_chat(src, "<span class='boldnotice'>You switch your holochassis projection composite to [chassis]</span>")
+	current_mob_holder?.Detach(src)
+	current_mob_holder = null
+	if(possible_chassis[chassis])
+		current_mob_holder = AddElement(/datum/element/mob_holder, chassis, 'icons/mob/pai_item_head.dmi', 'icons/mob/pai_item_rh.dmi', 'icons/mob/pai_item_lh.dmi', SLOT_HEAD)
 
 /mob/living/silicon/pai/lay_down()
 	..()
@@ -99,7 +103,9 @@
 	if(loc != card)
 		visible_message("<span class='notice'>[src] [rest? "lays down for a moment..." : "perks up from the ground"]</span>")
 
-/mob/living/silicon/pai/start_pulling(atom/movable/AM)
+/mob/living/silicon/pai/start_pulling(atom/movable/AM, state, force = move_force, supress_message = FALSE)
+	if(ispAI(AM))
+		return ..()
 	return FALSE
 
 /mob/living/silicon/pai/proc/toggle_integrated_light()
@@ -109,16 +115,3 @@
 	else
 		set_light(0)
 		to_chat(src, "<span class='notice'>You disable your integrated light.</span>")
-
-/mob/living/silicon/pai/mob_pickup(mob/living/L)
-	var/obj/item/clothing/head/mob_holder/holder = new(get_turf(src), src, chassis, item_head_icon, item_lh_icon, item_rh_icon)
-	if(!L.put_in_hands(holder))
-		qdel(holder)
-	else
-		L.visible_message("<span class='warning'>[L] scoops up [src]!</span>")
-
-/mob/living/silicon/pai/mob_try_pickup(mob/living/user)
-	if(!possible_chassis[chassis])
-		to_chat(user, "<span class='warning'>[src]'s current form isn't able to be carried!</span>")
-		return FALSE
-	return ..()

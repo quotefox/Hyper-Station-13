@@ -1,4 +1,73 @@
-// Micro Holders - Extends /obj/item/holder... TO:DO, just use most of the already-set procs in inhand_holder.dm
+/datum/element/mob_holder/micro
+
+/datum/element/mob_holder/micro/Attach(datum/target, _worn_state, _alt_worn, _right_hand, _left_hand, _inv_slots = NONE, _proctype)
+	. = ..()
+
+	if(!isliving(target))
+		return ELEMENT_INCOMPATIBLE
+
+	worn_state = _worn_state
+	alt_worn = _alt_worn
+	right_hand = _right_hand
+	left_hand = _left_hand
+	inv_slots = _inv_slots
+	proctype = _proctype
+
+	RegisterSignal(target, COMSIG_CLICK_ALT, .proc/mob_try_pickup_micro, override = TRUE)
+	RegisterSignal(target, COMSIG_PARENT_EXAMINE, .proc/on_examine, override = TRUE)
+	RegisterSignal(target, COMSIG_MICRO_PICKUP_FEET, .proc/mob_pickup_micro_feet)
+
+/datum/element/mob_holder/micro/Detach(datum/source, force)
+	. = ..()
+	UnregisterSignal(source, COMSIG_CLICK_ALT)
+	UnregisterSignal(source, COMSIG_PARENT_EXAMINE)
+	UnregisterSignal(source, COMSIG_MICRO_PICKUP_FEET)
+
+/datum/element/mob_holder/micro/proc/mob_pickup_micro(mob/living/source, mob/user)
+	var/obj/item/clothing/head/mob_holder/micro/holder = new(get_turf(source), source, worn_state, alt_worn, right_hand, left_hand, inv_slots)
+	if(!holder)
+		return
+	user.put_in_hands(holder)
+	return
+
+//shoehorned (get it?) and lazy way to do instant foot pickups cause haha funny.
+/datum/element/mob_holder/micro/proc/mob_pickup_micro_feet(mob/living/source, mob/user)
+	var/obj/item/clothing/head/mob_holder/micro/holder = new(get_turf(source), source, worn_state, alt_worn, right_hand, left_hand, inv_slots)
+	if(!holder)
+		return
+	user.equip_to_slot(holder, SLOT_SHOES)
+	return
+
+/datum/element/mob_holder/micro/proc/mob_try_pickup_micro(mob/living/source, mob/user)
+	if(!ishuman(user) || !user.Adjacent(source) || user.incapacitated())
+		return FALSE
+	if(abs(user.get_effective_size()/source.get_effective_size()) < 2.0 )
+		to_chat(user, "<span class='warning'>They're too big to pick up!</span>")
+		return FALSE
+	if(user.get_active_held_item())
+		to_chat(user, "<span class='warning'>Your hands are full!</span>")
+		return FALSE
+	if(source.buckled)
+		to_chat(user, "<span class='warning'>[source] is buckled to something!</span>")
+		return FALSE
+	if(source == user)
+		to_chat(user, "<span class='warning'>You can't pick yourself up.</span>")
+		return FALSE
+	source.visible_message("<span class='warning'>[user] starts picking up [source].</span>", \
+					"<span class='userdanger'>[user] starts picking you up!</span>")
+	var/p = abs(source.get_effective_size()/user.get_effective_size() * 40) //Scale how fast the pickup will be depending on size difference
+	if(!do_after(user, p, target = source))
+		return FALSE
+
+	if(user.get_active_held_item()||source.buckled)
+		return FALSE
+
+	source.visible_message("<span class='warning'>[user] picks up [source]!</span>", \
+					"<span class='userdanger'>[user] picks you up!</span>")
+	to_chat(user, "<span class='notice'>You pick [source] up.</span>")
+	source.drop_all_held_items()
+	mob_pickup_micro(source, user)
+	return TRUE
 
 /obj/item/clothing/head/mob_holder/micro
 	name = "micro"
@@ -33,18 +102,6 @@
 	if(rh_icon)
 		righthand_file = rh_icon
 
-/obj/item/clothing/head/mob_holder/micro/proc/assimilate(mob/living/M)
-	switch(M.mob_size)
-		if(MOB_SIZE_TINY)
-			w_class = WEIGHT_CLASS_TINY
-		if(MOB_SIZE_SMALL)
-			w_class = WEIGHT_CLASS_SMALL
-		if(MOB_SIZE_HUMAN)
-			w_class = WEIGHT_CLASS_BULKY
-		if(MOB_SIZE_LARGE)
-			w_class = WEIGHT_CLASS_HUGE
-
-
 /obj/item/clothing/head/mob_holder/micro/Destroy()
 	if(held_mob)
 		release()
@@ -72,57 +129,6 @@
 		return
 	visible_message("<span class='warning'>[src] escapes [L]!")
 	release()
-
-/mob/living/proc/mob_pickup_micro(mob/living/L)
-	var/obj/item/clothing/head/mob_holder/micro/holder = generate_mob_holder()
-	if(!holder)
-		return
-	drop_all_held_items()
-	L.put_in_hands(holder)
-	return
-
-//shoehorned (get it?) and lazy way to do instant foot pickups cause haha funny.
-/mob/living/proc/mob_pickup_micro_feet(mob/living/L)
-	var/obj/item/clothing/head/mob_holder/micro/holder = generate_mob_holder()
-	if(!holder)
-		return
-	L.equip_to_slot(holder, SLOT_SHOES)
-	return
-
-/mob/living/proc/mob_try_pickup_micro(mob/living/user)
-	if(!ishuman(user) || !src.Adjacent(user) || user.incapacitated() || !can_be_held)
-		return FALSE
-	if(abs(user.get_effective_size()/src.get_effective_size()) < 2.0 )
-		to_chat(user, "<span class='warning'>They're too big to pick up!</span>")
-		return FALSE
-	if(user.get_active_held_item())
-		to_chat(user, "<span class='warning'>Your hands are full!</span>")
-		return FALSE
-	if(buckled)
-		to_chat(user, "<span class='warning'>[src] is buckled to something!</span>")
-		return FALSE
-	if(src == user)
-		to_chat(user, "<span class='warning'>You can't pick yourself up.</span>")
-		return FALSE
-	visible_message("<span class='warning'>[user] starts picking up [src].</span>", \
-					"<span class='userdanger'>[user] starts picking you up!</span>")
-	var/p = abs(src.get_effective_size()/user.get_effective_size() * 40) //Scale how fast the pickup will be depending on size difference
-	if(!do_after(user, p, target = src))
-		return FALSE
-
-	if(user.get_active_held_item()||buckled)
-		return FALSE
-
-	visible_message("<span class='warning'>[user] picks up [src]!</span>", \
-					"<span class='userdanger'>[user] picks you up!</span>")
-	to_chat(user, "<span class='notice'>You pick [src] up.</span>")
-	mob_pickup_micro(user)
-	return TRUE
-
-/mob/living/AltClick(mob/user)
-	. = ..()
-	if(mob_try_pickup_micro(user))
-		return TRUE
 
 /obj/item/clothing/head/mob_holder/micro/assume_air(datum/gas_mixture/env)
 	var/atom/location = loc
@@ -182,4 +188,4 @@
 
 /obj/item/clothing/head/mob_holder/micro/attacked_by(obj/item/I, mob/living/user)
 	for(var/mob/living/carbon/human/M in contents)
-		M.attacked_by(I, user) 
+		M.attacked_by(I, user)

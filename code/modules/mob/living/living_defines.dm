@@ -107,7 +107,7 @@
 	var/last_words	//used for database logging
 
 	var/list/obj/effect/proc_holder/abilities = list()
-
+	
 	var/can_be_held = FALSE
 
 	var/radiation = 0 //If the mob is irradiated.

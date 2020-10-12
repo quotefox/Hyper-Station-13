@@ -194,12 +194,21 @@
 	allow_duplicates = FALSE
 	cost = 10
 
+/datum/map_template/ruin/lavaland/duohermit
+	name = "Makeshift Big Shelter"
+	id = "duohermitcave"
+	description = "A place of shelter for a couple of stranded hermits, scraping by to live another day."
+	suffix = "lavaland_surface_duohermit.dmm"
+	allow_duplicates = FALSE
+	cost = 5
+
 /datum/map_template/ruin/lavaland/hermit
 	name = "Makeshift Shelter"
 	id = "hermitcave"
 	description = "A place of shelter for a lone hermit, scraping by to live another day."
 	suffix = "lavaland_surface_hermit.dmm"
 	allow_duplicates = FALSE
+	never_spawn_with = list(/datum/map_template/ruin/lavaland/duohermit)
 	cost = 5
 
 /datum/map_template/ruin/lavaland/swarmer_boss
