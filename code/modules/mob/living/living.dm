@@ -1252,7 +1252,3 @@
 	for(var/chem in healing_chems)
 		reagents.add_reagent(chem, healing_chems[chem])
 
-//retard edits below
-/mob/living
-	var/size_multiplier = 1 //multiplier for the mob's icon size atm
-	var/previous_size = 1
