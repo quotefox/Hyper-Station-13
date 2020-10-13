@@ -1,3 +1,6 @@
+#define DYNAMIC_DEFAULT_CHAOS       1.5 //The default chaos value for low pop low vote rounds
+#define DYNAMIC_VOTE_NORMALIZATION  5   //If there are fewer than this many votes, the average will be skewed towards the default
+
 SUBSYSTEM_DEF(vote)
 	name = "Vote"
 	wait = 10
@@ -146,13 +149,15 @@ SUBSYSTEM_DEF(vote)
 					if("5")
 						v += winners[option] //Add the number votes to the pool
 						numbers += (winners[option]*5) //Add the value of the vote to numbers
-			if (v == 0)
-				. = 2.5 //Default no vote value. Will change to define later
-			else
-				var/total = 0
-				for (var/i in numbers)
-					total += i
-				. = (total / v)
+			while (v < DYNAMIC_VOTE_NORMALIZATION) //For low low pop, low vote rounds.
+				numbers += DYNAMIC_DEFAULT_CHAOS //stops the one person voting from setting the chaos to five and flooding the station with anomalies
+				v += 1
+			var/total = 0
+			for (var/i in numbers)
+				total += i
+			. = (total / v)
+			if(total == 0)//If statements down the road break if total is allowed to be 0 and it defaults to normal extended.
+				. = 0.1 
 			text += "\n<b>Chaos level [obfuscated ? "???" : .]</b>"
 			
 		if(mode != "custom" && mode != "dynamic")

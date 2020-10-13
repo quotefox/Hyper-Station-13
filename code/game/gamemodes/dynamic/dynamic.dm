@@ -40,7 +40,7 @@ GLOBAL_VAR_INIT(dynamic_high_pop_limit, 55)
 GLOBAL_VAR_INIT(dynamic_forced_extended, FALSE)
 // How high threat is required for HIGHLANDER_RULESETs stacking.
 // This is independent of dynamic_no_stacking.
-GLOBAL_VAR_INIT(dynamic_stacking_limit, 90)
+GLOBAL_VAR_INIT(dynamic_stacking_limit, 101)
 // List of forced roundstart rulesets.
 GLOBAL_LIST_EMPTY(dynamic_forced_roundstart_ruleset)
 // Forced threat level, setting this to zero or higher forces the roundstart threat to the value.
@@ -130,7 +130,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 	dat += "Threat to Spend: <b>[threat]</b> <a href='?src=\ref[src];[HrefToken()];adjustthreat=1'>\[Adjust\]</A> <a href='?src=\ref[src];[HrefToken()];threatlog=1'>\[View Log\]</a><br/>"
 	dat += "<br/>"
 	dat += "Parameters: centre = [GLOB.dynamic_curve_centre] ; width = [GLOB.dynamic_curve_width].<br/>"
-	dat += "<i>On average, <b>[peaceful_percentage]</b>% of the rounds are more peaceful.</i><br/>"
+	//dat += "<i>On average, <b>[peaceful_percentage]</b>% of the rounds are more peaceful.</i><br/>"
 	dat += "Forced extended: <a href='?src=\ref[src];[HrefToken()];forced_extended=1'><b>[GLOB.dynamic_forced_extended ? "On" : "Off"]</b></a><br/>"
 	dat += "Classic secret (only autotraitor): <a href='?src=\ref[src];[HrefToken()];classic_secret=1'><b>[GLOB.dynamic_classic_secret ? "On" : "Off"]</b></a><br/>"
 	dat += "No stacking (only one round-ender): <a href='?src=\ref[src];[HrefToken()];no_stacking=1'><b>[GLOB.dynamic_no_stacking ? "On" : "Off"]</b></a><br/>"
@@ -214,31 +214,29 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 			update_playercounts()
 			if(!current_players[CURRENT_LIVING_ANTAGS].len)
 				. += "<b>Peaceful Waypoint</b></center><BR>"
-				. += "Your station orbits deep within controlled, core-sector systems and serves as a waypoint for routine traffic through Nanotrasen's trade empire. Due to the combination of high security, interstellar traffic, and low strategic value, it makes any direct threat of violence unlikely. Your primary enemies will be incompetence and bored crewmen: try to organize team-building events to keep staffers interested and productive."
+				. += "Your station orbits deep within controlled, core-sector systems and serves as a waypoint for routine traffic through friendly Kinaris space. Due to the combination of high security, interstellar traffic, and low strategic value, it makes any direct threat of violence unlikely. Your primary enemies will be incompetence and bored crewmen: try to organize team-building events to keep staffers interested and productive."
 			else
 				. += "<b>Core Territory</b></center><BR>"
-				. += "Your station orbits within reliably mundane, secure space. Although Nanotrasen has a firm grip on security in your region, the valuable resources and strategic position aboard your station make it a potential target for infiltrations. Monitor crew for non-loyal behavior, but expect a relatively tame shift free of large-scale destruction. We expect great things from your station."
+				. += "Your station orbits within reliably mundane, secure space. Although Kinaris has a firm grip on security in your region, the valuable resources and strategic position aboard your station make it a potential target for infiltrations. Monitor crew for non-loyal behavior, but expect a relatively tame shift free of large-scale destruction. We expect great things from your station."
 		if(20 to 39)
 			. += "<b>Anomalous Exogeology</b></center><BR>"
-			. += "Although your station lies within what is generally considered Nanotrasen-controlled space, the course of its orbit has caused it to cross unusually close to exogeological features with anomalous readings. Although these features offer opportunities for our research department, it is known that these little understood readings are often correlated with increased activity from competing interstellar organizations and individuals, among them the Wizard Federation and Cult of the Geometer of Blood - all known competitors for Anomaly Type B sites. Exercise elevated caution."
+			. += "Although your station lies within what is generally considered Kinaris-controlled space, the course of its orbit has caused it to cross unusually close to exogeological features with anomalous readings. Although these features offer opportunities for our research department, it is known that these little understood readings are often correlated with increased activity from competing interstellar organizations and individuals, among them the Wizard Federation and Cult of the Geometer of Blood - all known competitors for Anomaly Type B sites. Exercise elevated caution."
 		if(40 to 49)
 			. += "<b>Contested System</b></center><BR>"
-			. += "Your station's orbit passes along the edge of Nanotrasen's sphere of influence. While subversive elements remain the most likely threat against your station, hostile organizations are bolder here, where our grip is weaker. Exercise increased caution against elite Syndicate strike forces, or Executives forbid, some kind of ill-conceived unionizing attempt."
-			if(GLOB.security_level < SEC_LEVEL_BLUE)
-				set_security_level(SEC_LEVEL_BLUE)
-		if(50 to 59)
+			. += "Your station's orbit passes along the edge of Kinaris allied influence. While subversive elements remain the most likely threat against your station, Nanotrasen and hostile organizations are bolder here, where our grip is weaker. Exercise increased caution against potential Syndicate agents, and be on the lookout for any potentially anomalous activity."
+		if(50 to 64)
 			. += "<b>Uncharted Space</b></center><BR>"
-			. += "Congratulations and thank you for participating in the NT 'Frontier' space program! Your station is actively orbiting a high value system far from the nearest support stations. Little is known about your region of space, and the opportunity to encounter the unknown invites greater glory. You are encouraged to elevate security as necessary to protect Nanotrasen assets."
+			. += "Congratulations and thank you for participating in the Kinaris 'Frontier' space program! Your station is actively orbiting a high value system far from the nearest support stations. Little is known about your region of space, and the opportunity to encounter the unknown invites greater glory. You are encouraged to elevate security as necessary to protect your lives and station assets."
 			if(GLOB.security_level < SEC_LEVEL_BLUE)
 				set_security_level(SEC_LEVEL_BLUE)
-		if(60 to 79)
+		if(65 to 89)
 			. += "<b>Black Orbit</b></center><BR>"
-			. += "As part of a mandatory security protocol, we are required to inform you that as a result of your orbital pattern directly behind an astrological body (oriented from our nearest observatory), your station will be under decreased monitoring and support. It is anticipated that your extreme location and decreased surveillance could pose security risks. Avoid unnecessary risks and attempt to keep your station in one piece."
+			. += "As part of a mandatory security protocol, we are required to inform you that as a result of your orbital pattern directly behind an astrological body (oriented from our nearest observatory), your station will be under decreased monitoring and support. It is anticipated that your extreme location and decreased surveillance could pose security risks. Avoid unnecessary risks and attempt to keep yourselves in one piece."
 			if(GLOB.security_level < SEC_LEVEL_BLUE)
 				set_security_level(SEC_LEVEL_BLUE)
-		if(80 to 100)
+		if(90 to 100)
 			. += "<b>Impending Doom</b></center><BR>"
-			. += "Your station is somehow in the middle of hostile territory, in clear view of any enemy of the corporation. Your likelihood to survive is low, and station destruction is expected and almost inevitable. Secure any sensitive material and neutralize any enemy you will come across. It is important that you at least try to maintain the station.<BR>"
+			. += "Your station is somehow in the middle of hostile territory, in clear view of any enemy of the corporation. Your likelihood to survive is low, and station destruction is expected and almost inevitable. Secure any sensitive material and protect yourselves from any enemy you will come across. It is important that you at least try to maintain the station.<BR>"
 			. += "Good luck."
 			if(GLOB.security_level < SEC_LEVEL_AMBER)
 				set_security_level(SEC_LEVEL_AMBER)
@@ -427,18 +425,20 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 				extra_rulesets_amount++
 				if (threat_level >= third_rule_req[indice_pop])
 					extra_rulesets_amount++
-
-	if (drafted_rules.len > 0 && picking_roundstart_rule(drafted_rules))
-		if (extra_rulesets_amount > 0) // We've got enough population and threat for a second rulestart rule
-			for (var/datum/dynamic_ruleset/roundstart/rule in drafted_rules)
-				if (rule.cost > threat)
-					drafted_rules -= rule
-			if (drafted_rules.len > 0 && picking_roundstart_rule(drafted_rules))
-				if (extra_rulesets_amount > 1) // We've got enough population and threat for a third rulestart rule
-					for (var/datum/dynamic_ruleset/roundstart/rule in drafted_rules)
-						if (rule.cost > threat)
-							drafted_rules -= rule
-					picking_roundstart_rule(drafted_rules)
+	if(prob(GLOB.dynamic_chaos_level*20)) //Make round start traitors a percent chance instead of a constant. Chance is equal to Chaos * 20, from 0% to 100%
+		if (drafted_rules.len > 0 && picking_roundstart_rule(drafted_rules))
+			if (extra_rulesets_amount > 0) // We've got enough population and threat for a second rulestart rule
+				for (var/datum/dynamic_ruleset/roundstart/rule in drafted_rules)
+					if (rule.cost > threat)
+						drafted_rules -= rule
+				if(prob(GLOB.dynamic_chaos_level*20)) //Make round start traitors a percent chance instead of a constant.		
+					if (drafted_rules.len > 0 && picking_roundstart_rule(drafted_rules))
+						if (extra_rulesets_amount > 1) // We've got enough population and threat for a third rulestart rule
+							for (var/datum/dynamic_ruleset/roundstart/rule in drafted_rules)
+								if (rule.cost > threat)
+									drafted_rules -= rule
+							if(prob(GLOB.dynamic_chaos_level*20)) //Make round start traitors a percent chance instead of a constant.	
+								picking_roundstart_rule(drafted_rules)
 	else
 		return FALSE
 	return TRUE

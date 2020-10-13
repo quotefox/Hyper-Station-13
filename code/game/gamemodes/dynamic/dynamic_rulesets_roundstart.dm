@@ -11,15 +11,16 @@
 	antag_flag = ROLE_TRAITOR
 	antag_datum = /datum/antagonist/traitor/
 	minimum_required_age = 0
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Cyborg")
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Cyborg", "Quartermaster")
 	restricted_roles = list("Cyborg")
 	required_candidates = 1
 	weight = 5
 	cost = 10
-	requirements = list(101,50,45,40,35,30,25,20,20,20)
+	requirements = list(101,40,30,25,20,20,15,15,15,15)
 	high_population_requirement = 10
 	var/autotraitor_cooldown = 450 // 15 minutes (ticks once per 2 sec)
 	chaos_min = 2.5
+	chaos_max = 4.9
 
 /datum/dynamic_ruleset/roundstart/traitor/thief  //The steal only version
 	name = "Thief Traitors"
@@ -32,7 +33,7 @@
 	//required_candidates = 1
 	//weight = 5
 	cost = 0
-	requirements = list(40,30,30,25,20,15,15,10,10,5)
+	requirements = list(101,25,25,20,20,15,15,10,10,5)
 	high_population_requirement = 10
 	//var/autotraitor_cooldown = 450 // 15 minutes (ticks once per 2 sec)
 	chaos_min = 2.0
@@ -181,11 +182,11 @@
 	antag_flag = ROLE_CHANGELING
 	antag_datum = /datum/antagonist/changeling
 	restricted_roles = list("AI", "Cyborg")
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director")
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
 	weight = 3
-	cost = 30
-	requirements = list(101,101,80,60,40,40,30,30,20,10)
+	cost = 10
+	requirements = list(101,101,50,40,40,30,30,30,20,20)
 	high_population_requirement = 10
 	var/team_mode_probability = 30
 	chaos_min = 3.0
@@ -235,10 +236,11 @@
 	required_candidates = 1
 	weight = 1
 	cost = 30
-	requirements = list(101,101,101,80,60,50,40,30,30,20)
+	requirements = list(101,101,60,50,40,40,30,30,30,20)
 	high_population_requirement = 10
 	var/list/roundstart_wizards = list()
-	chaos_min = 3.5
+	chaos_min = 4
+	admin_required = TRUE
 
 /datum/dynamic_ruleset/roundstart/wizard/acceptable(population=0, threat=0)
 	if(GLOB.wizardstart.len == 0)
@@ -278,9 +280,9 @@
 	antag_datum = /datum/antagonist/cult
 	minimum_required_age = 14
 	restricted_roles = list("AI", "Cyborg")
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director")
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 2
-	weight = 3
+	weight = 1
 	cost = 30
 	requirements = list(101,101,101,95,70,60,60,60,50,50)
 	high_population_requirement = 10
@@ -343,12 +345,12 @@
 	restricted_roles = list("Head of Security", "Captain") // Just to be sure that a nukie getting picked won't ever imply a Captain or HoS not getting drafted
 	required_candidates = 5
 	weight = 3
-	cost = 40
-	requirements = list(101,101,100,90,85,70,50,30,30,20)
+	cost = 20
+	requirements = list(101,100,90,80,70,60,50,40,30,20)
 	high_population_requirement = 10
 	pop_per_requirement = 5
 	flags = HIGHLANDER_RULESET
-	var/operative_cap = list(2,2,2,3,3,3,4,4,5,5)
+	var/operative_cap = list(2,2,2,2,2,3,3,3,4,5)
 	var/datum/team/nuclear/nuke_team
 	chaos_min = 4.0
 
@@ -431,7 +433,7 @@
 	antag_flag_override = ROLE_REV
 	antag_datum = /datum/antagonist/rev/head
 	minimum_required_age = 14
-	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director")
+	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 3
 	weight = 2
 	cost = 35
@@ -543,11 +545,11 @@
 	name = "Clockcult"
 	antag_flag = ROLE_SERVANT_OF_RATVAR
 	antag_datum = /datum/antagonist/clockcult
-	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director")
+	restricted_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 4
-	weight = 3
+	weight = 4
 	cost = 0
-	requirements = list(101,101,101,95,90,80,60,50,40,30)
+	requirements = list(101,101,100,90,80,70,60,50,40,30)
 	high_population_requirement = 101
 	flags = HIGHLANDER_RULESET
 	var/ark_time
@@ -679,7 +681,7 @@
 	required_candidates = 1
 	weight = 3
 	cost = 0
-	requirements = list(101,101,101,101,101,101,101,101,101,101)
+	requirements = list(101,101,101,101,101,101,101,101,101,101) //Disabled due to being an RP heavy antag
 	high_population_requirement = 101
 	var/devil_limit = 4 // Hard limit on devils if scaling is turned off
 	admin_required = TRUE
