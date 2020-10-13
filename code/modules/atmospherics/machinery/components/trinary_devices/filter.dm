@@ -15,7 +15,7 @@
 /obj/machinery/atmospherics/components/trinary/filter/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>You can hold <b>Ctrl</b> and click on it to toggle it on and off.</span>"
-	. += "<span class='notice'>You can hold <b>Alt</b> and click on it to maximize its pressure.</span>"
+	. += "<span class='notice'>You can hold <b>Alt</b> and click on it to maximize its flow rate.</span>"
 
 /obj/machinery/atmospherics/components/trinary/filter/CtrlClick(mob/user)
 	var/area/A = get_area(src)
@@ -28,13 +28,15 @@
 		return ..()
 
 /obj/machinery/atmospherics/components/trinary/filter/AltClick(mob/user)
+	. = ..()
 	var/area/A = get_area(src)
 	var/turf/T = get_turf(src)
 	if(user.canUseTopic(src, BE_CLOSE, FALSE,))
 		transfer_rate = MAX_TRANSFER_RATE
-		to_chat(user,"<span class='notice'>You maximize the transfer rate on the [src].</span>")
+		to_chat(user,"<span class='notice'>You maximize the flow rate on the [src].</span>")
 		investigate_log("Filter, [src.name], was maximized by [key_name(usr)] at [x], [y], [z], [A]", INVESTIGATE_ATMOS)
 		message_admins("Filter, [src.name], was maximized by [ADMIN_LOOKUPFLW(usr)] at [ADMIN_COORDJMP(T)], [A]")
+		return TRUE
 
 /obj/machinery/atmospherics/components/trinary/filter/layer1
 	piping_layer = PIPING_LAYER_MIN
@@ -146,52 +148,50 @@
 	if(!on || !(nodes[1] && nodes[2] && nodes[3]) || !is_operational())
 		return
 
-	//Early return
 	var/datum/gas_mixture/air1 = airs[1]
-	if(!air1 || air1.temperature <= 0)
-		return
-
 	var/datum/gas_mixture/air2 = airs[2]
 	var/datum/gas_mixture/air3 = airs[3]
 
-	var/output_starting_pressure = air3.return_pressure()
+	var/input_starting_pressure = air1.return_pressure()
 
-	if(output_starting_pressure >= MAX_OUTPUT_PRESSURE)
-		//No need to transfer if target is already full!
+	if((input_starting_pressure < 0.01))
 		return
+
+	//Calculate necessary moles to transfer using PV=nRT
 
 	var/transfer_ratio = transfer_rate/air1.volume
 
 	//Actually transfer the gas
 
-	if(transfer_ratio <= 0)
-		return
+	if(transfer_ratio > 0)
+		var/datum/gas_mixture/removed = air1.remove_ratio(transfer_ratio)
 
-	var/datum/gas_mixture/removed = air1.remove_ratio(transfer_ratio)
+		if(!removed)
+			return
 
-	if(!removed)
-		return
+		var/filtering = TRUE
+		if(!ispath(filter_type))
+			if(filter_type)
+				filter_type = gas_id2path(filter_type) //support for mappers so they don't need to type out paths
+			else
+				filtering = FALSE
 
-	var/filtering = TRUE
-	if(!ispath(filter_type))
-		if(filter_type)
-			filter_type = gas_id2path(filter_type) //support for mappers so they don't need to type out paths
+		if(filtering && removed.gases[filter_type])
+			var/datum/gas_mixture/filtered_out = new
+
+			filtered_out.temperature = removed.temperature
+			filtered_out.gases[filter_type] = removed.gases[filter_type]
+
+			removed.gases[filter_type] = 0
+			GAS_GARBAGE_COLLECT(removed.gases)
+
+			var/datum/gas_mixture/target = (air2.return_pressure() < 9000 ? air2 : air1)
+			target.merge(filtered_out)
+
+		if(air3.return_pressure() <= 9000)
+			air3.merge(removed)
 		else
-			filtering = FALSE
-
-	if(filtering && removed.gases[filter_type])
-		var/datum/gas_mixture/filtered_out = new
-
-		filtered_out.temperature = removed.temperature
-		filtered_out.gases[filter_type] = removed.gases[filter_type]
-
-		removed.gases[filter_type] = 0
-		GAS_GARBAGE_COLLECT(removed.gases)
-
-		var/datum/gas_mixture/target = (air2.return_pressure() < MAX_OUTPUT_PRESSURE ? air2 : air1) //if there's no room for the filtered gas; just leave it in air1
-		target.merge(filtered_out)
-
-	air3.merge(removed)
+			air1.merge(removed) // essentially just leaving it in
 
 	update_parents()
 
