@@ -1,6 +1,7 @@
 /datum/dynamic_ruleset/event
 	ruletype = "Event"
 	var/typepath // typepath of the event
+	var/controller //round event controller for the event - Required for certain events dependendant on variables within their controllers
 	var/triggering
 	var/earliest_start = 20 MINUTES
 	var/occurances_current = 0 //Don't touch this. Skyrat Change.
@@ -13,10 +14,6 @@
 	var/list/list_observers = list()
 
 /datum/dynamic_ruleset/event/acceptable(population=0, threat=0)
-	if(GLOB.wizardstart.len == 0)
-		log_admin("Cannot accept Wizard ruleset. Couldn't find any wizard spawn points.")
-		message_admins("Cannot accept Wizard ruleset. Couldn't find any wizard spawn points.")
-		return FALSE
 	return ..()
 
 /datum/dynamic_ruleset/event/ready(forced = 0)
@@ -35,9 +32,13 @@
 	return ..()
 
 /datum/dynamic_ruleset/event/execute()
-	var/datum/round_event/E = new typepath()
-	E.current_players = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
-	//E.control = src
+	var/datum/round_event/E
+	if(controller)
+		var/datum/round_event_control/C = locate(controller) in SSevents.control
+		E = C.runEvent()
+	else
+		E = new typepath()
+		E.current_players = get_active_player_count(alive_check = 1, afk_check = 1, human_check = 1)
 	SSblackbox.record_feedback("tally", "event_ran", 1, "[E]")
 	occurances_current++
 
@@ -235,7 +236,7 @@
 	repeatable = TRUE
 	//property_weights = list("chaos" = 1, "extended" = 2)
 	occurances_max = 2
-	chaos_min = 1.5
+	chaos_min = 1.2
 
 /datum/dynamic_ruleset/event/ventclog/ready()
 	if(mode.threat_level > 30 && mode.threat >= 5 && prob(20))
@@ -243,15 +244,17 @@
 		cost = 8
 		required_enemies = list(3,3,3,2,2,2,1,1,0,0)
 		typepath = /datum/round_event/vent_clog/threatening
+		chaos_min = 1.5
 	else if(mode.threat_level > 15 && mode.threat > 15 && prob(30))
 		name = "Clogged Vents: Catastrophic"
 		cost = 15
-		required_enemies = list(4,4,4,3,3,3,2,1,1,0)
+		required_enemies = list(4,4,4,3,3,3,2,1,1,1)
 		typepath = /datum/round_event/vent_clog/catastrophic
+		chaos_min = 1.8
 	else
 		cost = 0
 		name = "Clogged Vents: Normal"
-		required_enemies = list(1,1,1,0,0,0,0,0,0,0)
+		required_enemies = list(2,2,2,1,1,1,1,0,0,0)
 		typepath = /datum/round_event/vent_clog
 	return ..()
 
@@ -289,7 +292,7 @@
 	//config_tag = "meteor_wave"
 	typepath = /datum/round_event/meteor_wave
 	enemy_roles = list("Chief Engineer","Station Engineer","Atmospheric Technician","Captain","Cyborg")
-	required_enemies = list(2,2,2,2,2,2,2,2,2,2)
+	required_enemies = list(2,2,2,2,2,1,1,1,0,0)
 	cost = 0
 	weight = 2
 	earliest_start = 45 MINUTES
@@ -312,12 +315,13 @@
 		typepath = /datum/round_event/meteor_wave/catastrophic
 		required_enemies = list(3,3,3,3,3,3,3,3,3,3)
 		requirements = list(101,101,40,30,30,30,30,30,30,30)
+		chaos_min = 2.0
 	else
 		name = "Meteor Wave: Normal"
 		cost = 5
 		typepath = /datum/round_event/meteor_wave
-		chaos_min = 1.0
-		required_enemies = list(2,2,2,2,1,1,1,1,1,1)
+		chaos_min = 1.2
+		required_enemies = list(2,2,2,2,1,1,1,1,0,0)
 	return ..()
 
 //////////////////////////////////////////////
@@ -341,7 +345,7 @@
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
 	occurances_max = 2
-	chaos_min = 1.5
+	chaos_min = 1.0
 
 /datum/dynamic_ruleset/event/anomaly_flux
 	name = "Anomaly: Hyper-Energetic Flux"
@@ -352,13 +356,13 @@
 	weight = 3
 	earliest_start = 20 MINUTES
 	repeatable_weight_decrease = 2
-	cost = 5
+	cost = 3
 	requirements = list(101,5,5,5,5,5,5,5,5,5)
 	high_population_requirement = 10
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
 	occurances_max = 2
-	chaos_min = 1.5
+	chaos_min = 1.0
 
 /datum/dynamic_ruleset/event/anomaly_gravitational
 	name = "Anomaly: Gravitational"
@@ -398,7 +402,7 @@
 	weight = 2
 	earliest_start = 30 MINUTES
 	repeatable_weight_decrease = 1
-	cost = 5
+	cost = 0
 	enemy_roles = list("Chief Engineer","Station Engineer","Atmospheric Technician","Research Director","Scientist","Captain","Cyborg")
 	required_enemies = list(3,3,3,2,2,2,2,2,2,2)
 	requirements = list(101,101,10,10,10,10,10,10,10,10)
@@ -406,7 +410,7 @@
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
 	occurances_max = 1
-	chaos_min = 2.0
+	chaos_min = 1.5
 
 //////////////////////////////////////////////
 //                                          //
@@ -448,7 +452,7 @@
 	repeatable = TRUE
 	//property_weights = list("extended" = -1, "chaos" = 1)
 	occurances_max = 1
-	chaos_min = 2.0
+	chaos_min = 1.5
 
 /datum/dynamic_ruleset/event/carp_migration
 	name = "Carp Migration"
@@ -554,6 +558,7 @@
 	high_population_requirement = 5
 	repeatable = TRUE
 	occurances_max = 2
+	chaos_min = 1.0
 
 /datum/dynamic_ruleset/event/radiation_storm
 	name = "Radiation Storm"
@@ -639,7 +644,7 @@
 	required_candidates = 1
 	weight = 4
 	cost = 5
-	requirements = list(101,40,35,30,20,15,15,15,10,5)
+	requirements = list(101,30,27,24,21,18,15,15,10,10)
 	high_population_requirement = 15
 	//property_weights = list("story_potential" = -2, "extended" = -1)
 	occurances_max = 1 //Skyrat change.
@@ -647,26 +652,26 @@
 
 /datum/dynamic_ruleset/event/immovable_rod
 	name = "Immovable Rod"
+	controller = /datum/round_event_control/immovable_rod
 	typepath = /datum/round_event/immovable_rod
 	enemy_roles = list("Research Director","Chief Engineer","Station Engineer","Captain","Chaplain","AI")
 	required_enemies = list(2,2,2,2,2,2,1,1,1,1)
-	requirements = list(101,101,20,18,16,14,12,10,8,8)
+	requirements = list(101,101,18,16,14,12,10,8,6,6)
 	high_population_requirement = 15
 	cost = 0
 	occurances_max = 2
 	weight = 3
 	repeatable_weight_decrease = 2
-	earliest_start = 30 MINUTES
 	chaos_min = 1.5
 	var/atom/special_target
 
-
+/*
 /datum/dynamic_ruleset/event/immovable_rod/execute()  //I do not know why this is necessary
 	var/datum/round_event_control/E = locate(/datum/round_event_control/immovable_rod) in SSevents.control
 	var/datum/round_event/event = E.runEvent() //But it is.
 	event.announceWhen = -1 //So it isn't double announced.
 	return ..()
-
+*/
 
 //////////////////////////////////////////////
 //                                          //
@@ -715,17 +720,15 @@
 /datum/dynamic_ruleset/event/disease_outbreak
 	name = "Disease Outbreak"
 	enemy_roles = list("Virologist","Chief Medical Officer","Captain","Chemist")
-	//required_enemies = list(2,1,1,1,1,1,1,1,0,0)
+	controller = /datum/round_event_control/disease_outbreak
 	typepath = /datum/round_event/disease_outbreak
-	//requirements = list(5,5,5,5,5,5,5,5,5,5)
-	required_enemies = list(0,0,0,0,0,0,0,0,0,0)
-	requirements = list(5,5,5,5,5,5,5,5,5,5)
+	required_enemies = list(2,1,1,1,1,1,1,1,0,0)
+	requirements = list(10,8,5,5,5,5,5,5,5,5)
 	high_population_requirement = 5
-	weight = 999
+	weight = 2
 	cost = 0
 	repeatable = TRUE
-	occurances_max = 1
-	earliest_start = 0 MINUTES
+	occurances_max = 2
 
 /datum/dynamic_ruleset/event/disease_outbreak/execute()  //I do not know why this is necessary
 	var/datum/round_event_control/E = locate(/datum/round_event_control/disease_outbreak) in SSevents.control
@@ -733,22 +736,22 @@
 	event.announceWhen = -1 //So it isn't double announced.
 	return ..()
 
-/datum/dynamic_ruleset/event/falsealarm
+/datum/dynamic_ruleset/event/falsealarm //I THINK IT WORKS
 	name = "False Alarm"
+	controller = /datum/round_event_control/falsealarm
 	typepath = /datum/round_event/falsealarm
 	requirements = list(0,0,0,0,0,0,0,0,0,0)
 	high_population_requirement = 0
-	weight = 999
+	weight = 5
 	repeatable = TRUE
 	occurances_max = 5
-	earliest_start = 0 MINUTES
 
-/datum/dynamic_ruleset/event/falsealarm/execute()  //I do not know why this is necessary
-	var/datum/round_event_control/E = locate(/datum/round_event_control/falsealarm) in SSevents.control
-	//var/datum/round_event/event = E.runEvent() //But it is.
+///datum/dynamic_ruleset/event/falsealarm/execute()  //I do not know why this is necessary
+	//var/datum/round_event_control/E = locate(/datum/round_event_control/falsealarm) in SSevents.control
+	//var/datum/round_event/event = E.runEvent()
 	//event.announceWhen = -1 //So it isn't double announced.
-	E.runEvent()
-	return ..()
+	//E.runEvent()
+	//return ..()
 
 /datum/dynamic_ruleset/event/grid_check
 	name = "Grid Check"
@@ -787,7 +790,7 @@
 	typepath = /datum/round_event/grey_tide
 	enemy_roles = list("Chief Engineer","Station Engineer","Captain","Atmospheric Technician","AI","Cyborg")
 	required_enemies = list(3,2,2,2,2,2,1,1,1,1)
-	requirements = list(101,10,10,10,5,5,5,5,5,5)
+	requirements = list(101,101,5,5,5,5,5,5,5,5)
 	high_population_requirement = 0
 	repeatable = TRUE
 	weight = 4
@@ -834,7 +837,7 @@
 	required_enemies = list(2,2,1,1,1,1,1,1,1,1)
 	requirements = list(5,5,5,5,5,5,5,5,0,0)
 	high_population_requirement = 5
-	weight = 10
+	weight = 8
 	repeatable = TRUE
 	repeatable_weight_decrease = 5
 	occurances_max = 3

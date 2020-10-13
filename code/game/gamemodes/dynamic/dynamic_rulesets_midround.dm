@@ -198,13 +198,14 @@
 	restricted_roles = list("AI", "Cyborg", "Positronic Brain")
 	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
-	weight = 7
+	weight = 4
 	cost = 10
 	requirements = list(101,101,30,25,20,20,15,15,15,10)
 	repeatable = TRUE
 	high_population_requirement = 10
 	flags = TRAITOR_RULESET
 	chaos_min = 3.0
+	chaos_max = 4.9
 
 /datum/dynamic_ruleset/midround/autotraitor/thief
 	name = "Syndicate Sleeper Agent"
@@ -213,7 +214,7 @@
 	restricted_roles = list("AI", "Cyborg", "Positronic Brain")
 	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
-	weight = 7
+	weight = 4
 	cost = 5
 	requirements = list(101,30,25,20,15,10,10,5,5,5)
 	repeatable = TRUE
@@ -523,7 +524,7 @@
 	required_candidates = 2
 	weight = 4
 	cost = 10
-	requirements = list(101,101,60,50,40,30,20,20,10,10)
+	requirements = list(101,101,50,45,40,30,20,20,10,10)
 	blocking_rules = list(/datum/dynamic_ruleset/roundstart/nuclear,/datum/dynamic_ruleset/midround/from_ghosts/nuclear)
 	high_population_requirement = 15
 	var/datum/team/abductor_team/team

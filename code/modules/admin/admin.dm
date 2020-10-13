@@ -879,6 +879,9 @@
 		<br/>Only one roundstart ruleset will be drafted. Only traitors and minor roles will latespawn. <br/>
 		<br/>
 		<br/>
+		<b>Chaos level:</b> Current value : <a href='?src=[REF(src)];[HrefToken()];f_dynamic_chaos_level=1'><b>[GLOB.dynamic_chaos_level]</b></a>.
+		<br/>The Chaos value for the round. Only set between 0 and 5!<br/>
+		<br/>
 		<b>Forced threat level:</b> Current value : <a href='?src=[REF(src)];[HrefToken()];f_dynamic_forced_threat=1'><b>[GLOB.dynamic_forced_threat_level]</b></a>.
 		<br/>The value threat is set to if it is higher than -1.<br/>
 		<br/>

@@ -1645,6 +1645,25 @@
 		log_admin("[key_name(usr)] set 'forced_threat_level' to [GLOB.dynamic_forced_threat_level].")
 		message_admins("[key_name(usr)] set 'forced_threat_level' to [GLOB.dynamic_forced_threat_level].")
 		dynamic_mode_options(usr)
+
+	else if(href_list["f_dynamic_chaos_level"])
+		if(!check_rights(R_ADMIN))
+			return
+
+		if(SSticker && SSticker.mode)
+			return alert(usr, "The game has already started.", null, null, null, null)
+
+		if(GLOB.master_mode != "dynamic")
+			return alert(usr, "The game mode has to be dynamic mode!", null, null, null, null)
+
+		var/new_value = input(usr, "Enter the chaos level for dynamic mode.", "Chaos level") as num
+		if (new_value > 5 || new_value < 0)
+			return alert(usr, "The value must be between 0 and 5.", null, null, null, null)
+		GLOB.dynamic_chaos_level = new_value
+
+		log_admin("[key_name(usr)] set 'dynamic_chaos_level' to [GLOB.dynamic_chaos_level].")
+		message_admins("[key_name(usr)] set 'dynamic_chaos_level' to [GLOB.dynamic_chaos_level].")
+		dynamic_mode_options(usr)
 //End Dynamic mode
 
 	else if(href_list["c_mode2"])
