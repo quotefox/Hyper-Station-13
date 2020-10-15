@@ -1077,8 +1077,18 @@
 /area/ruin/space/has_grav/listeningstation)
 "bD" = (
 /obj/structure/table/wood,
-/obj/item/ammo_box/magazine/m10mm,
-/obj/item/paper/fluff/ruins/listeningstation/briefing,
+/obj/item/ammo_box/magazine/m10mm{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/item/paper/fluff/ruins/listeningstation/briefing{
+	pixel_x = -7;
+	pixel_y = -3
+	},
+/obj/item/toy/cards/deck/syndicate{
+	pixel_x = -6;
+	pixel_y = 11
+	},
 /turf/open/floor/plasteel/grimy,
 /area/ruin/space/has_grav/listeningstation)
 "bF" = (
