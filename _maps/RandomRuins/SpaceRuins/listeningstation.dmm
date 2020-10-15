@@ -524,11 +524,11 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/storage/box/lights/bulbs,
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 30
 	},
-/obj/item/stock_parts/cell/high/plus,
+/obj/item/storage/box/lights/bulbs,
+/obj/item/storage/box/stockparts/deluxe,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "aP" = (
@@ -1157,6 +1157,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall,
 /area/ruin/space/has_grav/listeningstation)
+"fp" = (
+/obj/structure/sign/poster/contraband/random{
+	pixel_y = -32
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/machinery/microwave,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/listeningstation)
 "fs" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 4
@@ -1164,12 +1173,8 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "fJ" = (
-/obj/structure/chair/stool,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/light/small{
-	brightness = 3;
-	dir = 8
-	},
+/obj/machinery/biogenerator,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "hJ" = (
@@ -1216,17 +1221,14 @@
 	req_access = null;
 	req_access_txt = "150"
 	},
+/obj/item/storage/box/beakers/bluespace,
 /turf/open/floor/plasteel/white/side{
 	dir = 6
 	},
 /area/ruin/space/has_grav/listeningstation)
 "tU" = (
-/obj/structure/sign/poster/contraband/random{
-	pixel_y = -32
-	},
+/obj/machinery/seed_extractor,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/table,
-/obj/machinery/microwave,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "ux" = (
@@ -1272,44 +1274,28 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "Bd" = (
-/obj/machinery/vending/hydroseeds{
-	slogan_delay = 700
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/machinery/smartfridge/disks{
+	pixel_x = -4;
+	pixel_y = 11
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "Bs" = (
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "DC" = (
-/obj/machinery/airalarm/syndicate{
-	dir = 1;
-	pixel_y = -25
+/obj/structure/chair/stool,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 8
 	},
-/obj/structure/table,
-/obj/item/kitchen/rollingpin{
-	pixel_x = -6;
-	pixel_y = 8
-	},
-/obj/machinery/reagentgrinder/constructed,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "DL" = (
-/obj/structure/table,
-/obj/item/reagent_containers/food/drinks/beer{
-	pixel_x = -4;
-	pixel_y = 14
-	},
-/obj/item/storage/fancy/cigarettes/cigpack_syndicate{
-	pixel_x = -3
-	},
-/obj/item/reagent_containers/food/drinks/beer{
-	pixel_x = 3;
-	pixel_y = 11
-	},
-/obj/item/lighter/slime{
-	pixel_x = 6
-	},
+/obj/structure/chair/stool,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "Et" = (
@@ -1334,7 +1320,13 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/machinery/computer/arcade/orion_trail,
+/obj/machinery/vending/hydroseeds{
+	slogan_delay = 700
+	},
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "Lx" = (
@@ -1345,6 +1337,53 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "Mh" = (
+/obj/machinery/airalarm/syndicate{
+	dir = 1;
+	pixel_y = -25
+	},
+/obj/structure/table,
+/obj/item/kitchen/rollingpin{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/machinery/reagentgrinder/constructed,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/listeningstation)
+"Ns" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/machinery/plantgenes{
+	pixel_y = 6
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/listeningstation)
+"NQ" = (
+/obj/item/mop/advanced{
+	pixel_x = -11
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/listeningstation)
+"OI" = (
+/obj/structure/table,
+/obj/item/reagent_containers/food/drinks/beer{
+	pixel_x = -4;
+	pixel_y = 14
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_syndicate{
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/food/drinks/beer{
+	pixel_x = 3;
+	pixel_y = 11
+	},
+/obj/item/lighter/slime{
+	pixel_x = 6
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/listeningstation)
+"Qp" = (
 /obj/structure/table,
 /obj/item/storage/box/donkpockets{
 	pixel_x = -2;
@@ -1362,23 +1401,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
-"Ns" = (
-/obj/machinery/biogenerator,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel,
-/area/ruin/space/has_grav/listeningstation)
-"NQ" = (
-/obj/item/mop/advanced{
-	pixel_x = -11
-	},
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/listeningstation)
-"Qp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/seed_extractor,
-/turf/open/floor/plasteel,
-/area/ruin/space/has_grav/listeningstation)
 "QM" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -1387,9 +1409,12 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/structure/chair/stool,
+/obj/machinery/computer/arcade/orion_trail,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
+"Sk" = (
+/turf/closed/wall,
+/area/ruin/unpowered/no_grav)
 "TK" = (
 /obj/machinery/chem_master/condimaster,
 /turf/open/floor/plasteel,
@@ -1937,7 +1962,7 @@ ac
 ac
 ac
 ac
-ab
+Sk
 ab
 ab
 ab
@@ -1976,8 +2001,8 @@ Bd
 Ns
 fJ
 DC
+Mh
 ac
-ab
 ab
 ab
 ab
@@ -2013,11 +2038,11 @@ ac
 zq
 Gb
 XM
-Qp
 Bs
-Mh
+tU
+Bs
+Qp
 ac
-ab
 ab
 ab
 ab
@@ -2055,9 +2080,9 @@ XM
 Bs
 fs
 za
-tU
+Bs
+fp
 ac
-ab
 ab
 ab
 ab
@@ -2096,8 +2121,8 @@ Bs
 IH
 QM
 DL
+OI
 ac
-ab
 ab
 ab
 ab

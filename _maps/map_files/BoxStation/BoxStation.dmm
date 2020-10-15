@@ -4602,7 +4602,7 @@
 /turf/open/space,
 /area/solar/port/fore)
 "ajf" = (
-/obj/machinery/prisoner/gulag_teleporter,
+/obj/machinery/gulag_teleporter,
 /turf/open/floor/plasteel,
 /area/security/processing)
 "ajg" = (
