@@ -827,7 +827,7 @@
 /obj/structure/closet/firecloset/full{
 	anchored = 1
 	},
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "bk" = (
 /obj/effect/turf_decal/stripes/red/line{
@@ -1093,17 +1093,15 @@
 /area/ruin/space/has_grav/listeningstation)
 "bF" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/meter,
-/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "bH" = (
-/obj/machinery/atmospherics/components/unary/tank/air{
-	dir = 1
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
 	},
-/obj/effect/turf_decal/bot,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/meter,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "bI" = (
@@ -1156,15 +1154,6 @@
 "eA" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/closed/wall,
-/area/ruin/space/has_grav/listeningstation)
-"fp" = (
-/obj/structure/sign/poster/contraband/random{
-	pixel_y = -32
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/table,
-/obj/machinery/microwave,
-/turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "fs" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -1239,7 +1228,17 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "uB" = (
-/turf/open/floor/plating,
+/obj/machinery/airalarm/syndicate{
+	dir = 1;
+	pixel_y = -25
+	},
+/obj/structure/table,
+/obj/item/kitchen/rollingpin{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/machinery/reagentgrinder/constructed,
+/turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "za" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
@@ -1331,40 +1330,35 @@
 /area/ruin/space/has_grav/listeningstation)
 "Lx" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 8
+	dir = 5
 	},
 /obj/effect/decal/cleanable/blood/drip,
+/obj/machinery/atmospherics/components/unary/tank/air{
+	dir = 1
+	},
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "Mh" = (
-/obj/machinery/airalarm/syndicate{
-	dir = 1;
-	pixel_y = -25
-	},
 /obj/structure/table,
-/obj/item/kitchen/rollingpin{
-	pixel_x = -6;
-	pixel_y = 8
-	},
-/obj/machinery/reagentgrinder/constructed,
-/turf/open/floor/plasteel,
-/area/ruin/space/has_grav/listeningstation)
-"Ns" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/table,
-/obj/machinery/plantgenes{
+/obj/item/storage/box/donkpockets{
+	pixel_x = -2;
 	pixel_y = 6
 	},
+/obj/item/storage/box/donkpockets{
+	pixel_y = 3
+	},
+/obj/item/storage/box/donkpockets{
+	pixel_x = 2
+	},
+/obj/item/reagent_containers/food/snacks/chocolatebar,
+/obj/machinery/computer/security/telescreen/entertainment{
+	pixel_y = -30
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
-"NQ" = (
-/obj/item/mop/advanced{
-	pixel_x = -11
-	},
-/obj/effect/decal/cleanable/blood/drip,
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/listeningstation)
-"OI" = (
+"Nh" = (
 /obj/structure/table,
 /obj/item/reagent_containers/food/drinks/beer{
 	pixel_x = -4;
@@ -1383,22 +1377,28 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
-"Qp" = (
+"Ns" = (
+/obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
-/obj/item/storage/box/donkpockets{
-	pixel_x = -2;
+/obj/machinery/plantgenes{
 	pixel_y = 6
 	},
-/obj/item/storage/box/donkpockets{
-	pixel_y = 3
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/listeningstation)
+"NQ" = (
+/obj/item/mop/advanced{
+	pixel_x = -11
 	},
-/obj/item/storage/box/donkpockets{
-	pixel_x = 2
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/listeningstation)
+"Qp" = (
+/obj/structure/sign/poster/contraband/random{
+	pixel_y = -32
 	},
-/obj/item/reagent_containers/food/snacks/chocolatebar,
-/obj/machinery/computer/security/telescreen/entertainment{
-	pixel_y = -30
-	},
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/machinery/microwave,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "QM" = (
@@ -1412,9 +1412,6 @@
 /obj/machinery/computer/arcade/orion_trail,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
-"Sk" = (
-/turf/closed/wall,
-/area/ruin/unpowered/no_grav)
 "TK" = (
 /obj/machinery/chem_master/condimaster,
 /turf/open/floor/plasteel,
@@ -1962,7 +1959,7 @@ ac
 ac
 ac
 ac
-Sk
+ac
 ab
 ab
 ab
@@ -2001,7 +1998,7 @@ Bd
 Ns
 fJ
 DC
-Mh
+uB
 ac
 ab
 ab
@@ -2041,7 +2038,7 @@ XM
 Bs
 tU
 Bs
-Qp
+Mh
 ac
 ab
 ab
@@ -2081,7 +2078,7 @@ Bs
 fs
 za
 Bs
-fp
+Qp
 ac
 ab
 ab
@@ -2121,7 +2118,7 @@ Bs
 IH
 QM
 DL
-OI
+Nh
 ac
 ab
 ab
@@ -2443,7 +2440,7 @@ be
 ag
 ag
 ag
-uB
+ag
 Et
 NQ
 ag
