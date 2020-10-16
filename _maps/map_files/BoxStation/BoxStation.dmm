@@ -57606,6 +57606,9 @@
 	uses = 10
 	},
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/atmos)
 "cBN" = (
@@ -57837,6 +57840,9 @@
 	req_access_txt = "65"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat/hallway)
 "cCi" = (
@@ -57871,6 +57877,9 @@
 /area/ai_monitored/turret_protected/aisat/hallway)
 "cCm" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat/hallway)
 "cCn" = (
@@ -57961,6 +57970,13 @@
 "cCE" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 5
+	},
+/obj/structure/cable,
+/obj/machinery/power/apc{
+	areastring = "/area/ai_monitored/turret_protected/aisat/hallway";
+	dir = 4;
+	name = "MiniSat Chamber Hallway APC";
+	pixel_x = -27
 	},
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat/hallway)
@@ -62158,6 +62174,13 @@
 /obj/structure/table/wood,
 /turf/open/floor/carpet,
 /area/quartermaster/miningdock)
+"lHW" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/turf/open/floor/plasteel/dark,
+/area/ai_monitored/turret_protected/aisat/atmos)
 "lOR" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -100274,7 +100297,7 @@ cBk
 cBr
 cBA
 cBM
-cBz
+lHW
 cCh
 cCm
 cCm
