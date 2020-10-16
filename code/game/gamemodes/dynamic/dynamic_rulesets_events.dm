@@ -3,9 +3,10 @@
 	var/typepath // typepath of the event
 	var/controller //round event controller for the event - Required for certain events dependendant on variables within their controllers
 	var/triggering
-	var/earliest_start = 20 MINUTES
+	var/earliest_start = 20 MINUTES 
 	var/occurances_current = 0 //Don't touch this. Skyrat Change.
 	var/occurances_max = 0 //Maximum occurances for this event. Set to 0 to allow an infinite amount of this event. Skyrat change.
+	var/needs_players = FALSE //If an event needs players, living or ghosts, set to TRUE. Bypasses the trim_candidates otherwise
 	var/restrict_ghost_roles = TRUE
 	var/required_type = /mob/living/carbon/human
 	var/list/living_players = list()
@@ -26,7 +27,7 @@
 				if (M.mind && M.mind.assigned_role && (M.mind.assigned_role in enemy_roles) && (!(M in candidates) || (M.mind.assigned_role in restricted_roles)))
 					job_check++ // Checking for "enemies" (such as sec officers). To be counters, they must either not be candidates to that rule, or have a job that restricts them from it
 
-		var/threat = round(mode.threat_level/10)
+		var/threat = max(min(round(mode.threat_level/10),9),1) //min() to stop index errors at 100 threat  //Max to stop breaking at 0 threat.
 		if (job_check < required_enemies[threat])
 			return FALSE
 	return ..()
@@ -420,16 +421,22 @@
 
 /datum/dynamic_ruleset/event/operative
 	name = "Lone Operative"
+	controller = /datum/round_event_control/operative
 	typepath = /datum/round_event/ghost_role/operative
+	required_enemies = list(0,0,0,0,0,0,0,0,0,0)
 	weight = 0 //This is changed in nuclearbomb.dm
 	occurances_max = 1
 	requirements = list(10,5,0,0,0,0,0,0,0,0) //SECURE THAT DISK
 	cost = 50
 
-/datum/dynamic_ruleset/event/operative/ready()
+/datum/dynamic_ruleset/event/operative/get_weight()
 	var/datum/round_event_control/operative/loneop = locate(/datum/round_event_control/operative) in SSevents.control
 	if(istype(loneop))
 		weight = loneop.weight //Get the weight whenever it's called.
+		to_chat(GLOB.admins, "<span class='adminnotice'>Current LoneOP weight [weight]</span>")
+	else
+		to_chat(GLOB.admins, "<span class='adminnotice'>LoneOP is fucking broken.</span>")
+	return weight
 
 //////////////////////////////////////////////
 //                                          //
@@ -463,7 +470,7 @@
 	cost = 4
 	requirements = list(101,5,5,1,1,1,1,1,1,1)
 	high_population_requirement = 10
-	earliest_start = 10 MINUTES
+	earliest_start = 0 MINUTES
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
 	occurances_max = 3
@@ -565,7 +572,7 @@
 	//config_tag = "radiation_storm"
 	typepath = /datum/round_event/radiation_storm
 	cost = 3
-	weight = 3
+	weight = 2
 	repeatable_weight_decrease = 2
 	enemy_roles = list("Chemist","Chief Medical Officer","Geneticist","Medical Doctor","AI","Captain")
 	required_enemies = list(1,1,1,1,1,1,1,1,1,1)
@@ -715,7 +722,7 @@
 	weight = 100
 	repeatable_weight_decrease = 1 //Slightly drop the weight each time it is called to keep the pool from getting too diluted as the round goes on.
 	repeatable = TRUE
-	//occurances_max = 20 //Our rounds can go for a WHILE
+	occurances_max = 200 //Our rounds can go for a WHILE
 
 /datum/dynamic_ruleset/event/disease_outbreak
 	name = "Disease Outbreak"

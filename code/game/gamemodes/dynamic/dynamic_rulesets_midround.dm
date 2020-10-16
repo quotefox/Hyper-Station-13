@@ -100,7 +100,7 @@
 				if (M.mind && M.mind.assigned_role && (M.mind.assigned_role in enemy_roles) && (!(M in candidates) || (M.mind.assigned_role in restricted_roles)))
 					job_check++ // Checking for "enemies" (such as sec officers). To be counters, they must either not be candidates to that rule, or have a job that restricts them from it
 
-		var/threat = round(mode.threat_level/10)
+		var/threat = min(round(mode.threat_level/10),9)
 		if (job_check < required_enemies[threat])
 			return FALSE
 	return TRUE
@@ -258,6 +258,112 @@
 	return TRUE
 
 
+//////////////////////////////////////////
+//                                      //
+//                LEWD                  //
+//                                      //
+//////////////////////////////////////////
+
+/datum/dynamic_ruleset/midround/autotraitor/lewd
+	name = "Horny Traitor"
+	persistent = TRUE
+	antag_flag = ROLE_LEWD_TRAITOR
+	antag_datum = /datum/antagonist/traitor/lewd
+	//minimum_required_age = 7
+	protected_roles = list("AI","Cyborg")
+	restricted_roles = list("Cyborg","AI")
+	required_candidates = 1
+	weight = 2
+	cost = 0
+	requirements = list(10,10,10,10,10,10,10,10,10,10)
+	high_population_requirement = 10
+	chaos_min = 0.1
+	chaos_max = 2.5
+	admin_required = TRUE
+	//vars for execution
+	var/list/mob/living/carbon/human/lewd_candidates = list()
+	var/list/mob/living/carbon/human/targets = list()
+	var/numTraitors = 1
+
+/datum/dynamic_ruleset/midround/autotraitor/lewd/acceptable(population = 0, threat = 0) //copy paste to bypass parent
+	if(minimum_players > population)
+		return FALSE
+	if(maximum_players > 0 && population > maximum_players)
+		return FALSE
+	if(GLOB.dynamic_chaos_level < chaos_min || GLOB.dynamic_chaos_level > chaos_max)
+		return FALSE
+	if(admin_required && !GLOB.admins.len)
+		return FALSE
+	if (population >= GLOB.dynamic_high_pop_limit)
+		return (mode.threat_level >= high_population_requirement)
+	else
+		pop_per_requirement = pop_per_requirement > 0 ? pop_per_requirement : mode.pop_per_requirement
+		var/indice_pop = min(10,round(population/pop_per_requirement)+1)
+		return (mode.threat_level >= requirements[indice_pop])
+
+/datum/dynamic_ruleset/midround/autotraitor/lewd/trim_candidates()
+	..()
+	lewd_candidates = living_players
+	for(var/mob/living/player in lewd_candidates)
+		if(issilicon(player)) // Your assigned role doesn't change when you are turned into a silicon.
+			lewd_candidates -= player
+			continue
+		if(is_centcom_level(player.z))
+			lewd_candidates -= player // We don't autotator people in CentCom
+			continue
+		if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
+			lewd_candidates -= player // We don't autotator people with roles already
+
+/datum/dynamic_ruleset/midround/autotraitor/lewd/trim_list(list/L = list())
+	var/list/trimmed_list = L.Copy()
+	var/antag_name = initial(antag_flag)
+	for(var/mob/living/M in trimmed_list)
+		if (!istype(M, required_type))
+			trimmed_list.Remove(M)
+			continue
+		if (!M.client) // Are they connected?
+			trimmed_list.Remove(M)
+			continue
+		if(!mode.check_age(M.client, minimum_required_age))
+			trimmed_list.Remove(M)
+			continue
+		if (!(antag_name in M.client.prefs.be_special) || jobban_isbanned(M.ckey, list(antag_name, ROLE_SYNDICATE)))//are they willing and not antag-banned?
+			trimmed_list.Remove(M)
+			continue
+		if (M.mind)
+			if (restrict_ghost_roles && M.mind.assigned_role in GLOB.exp_specialmap[EXP_TYPE_SPECIAL]) // Are they playing a ghost role?
+				trimmed_list.Remove(M)
+				continue
+			if (M.mind.assigned_role in restricted_roles) // All this work to bypass mindshield restriction
+				trimmed_list.Remove(M)
+				continue
+			if ((exclusive_roles.len > 0) && !(M.mind.assigned_role in exclusive_roles)) // Is the rule exclusive to their job?
+				trimmed_list.Remove(M)
+				continue
+	return trimmed_list
+
+/datum/dynamic_ruleset/midround/autotraitor/lewd/ready()
+	for(var/mob/living/target in living_players)
+		if(target.client.prefs.noncon)
+			targets += target
+
+	if(lewd_candidates.len)
+		numTraitors = min(lewd_candidates.len, targets.len, numTraitors)
+		if(numTraitors == 0)
+			to_chat(GLOB.admins, "No lewd traitors created. Are there any valid targets?")
+			return 0
+		return 1
+
+	return 0
+	
+/datum/dynamic_ruleset/midround/autotraitor/lewd/execute()
+	var/mob/M = pick(lewd_candidates)
+	lewd_candidates -= M
+	assigned += M.mind
+	var/datum/antagonist/traitor/lewd/newTraitor = new
+	M.mind.add_antag_datum(newTraitor)
+	return TRUE
+
 //////////////////////////////////////////////
 //                                          //
 //         Malfunctioning AI                //
@@ -268,7 +374,7 @@
 	name = "Malfunctioning AI"
 	antag_datum = /datum/antagonist/traitor
 	antag_flag = ROLE_MALF
-	enemy_roles = list("Security Officer", "Warden","Detective","Head of Security", "Captain", "Scientist", "Research Director", "Chief Engineer")
+	enemy_roles = list("Security Officer", "Warden","Detective","Head of Security", "Captain", "Scientist", "Research Director", "Chief Engineer", "Engineer", "Shaft Miner")
 	exclusive_roles = list("AI")
 	required_enemies = list(4,4,4,4,4,4,2,2,2,0)
 	required_candidates = 1
