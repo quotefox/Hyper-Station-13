@@ -922,7 +922,7 @@ datum/sprite_accessory/ears/human/gret
 
 /datum/sprite_accessory/mam_snouts/synthliz/synthliz_over
 	color_src = MATRIXED
-	name = "Synthetic Lizard - Snout Tertiary Face plate"
+	name = "Synthetic Lizard - Snout Tertiary Face Plate"
 	icon_state = "synthliz_over"
 
 /datum/sprite_accessory/mam_snouts/synthliz/synthliz_tert
