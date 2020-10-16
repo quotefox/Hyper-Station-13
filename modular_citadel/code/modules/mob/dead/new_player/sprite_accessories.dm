@@ -920,11 +920,6 @@ datum/sprite_accessory/ears/human/gret
 	name = "Synthetic Lizard - Snout Under"
 	icon_state = "synthliz_under"
 
-/datum/sprite_accessory/mam_snouts/synthliz/synthliz_over
-	color_src = MATRIXED
-	name = "Synthetic Lizard - Snout Tertiary Face Plate"
-	icon_state = "synthliz_over"
-
 /datum/sprite_accessory/mam_snouts/synthliz/synthliz_tert
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Snout Tertiary"
@@ -935,6 +930,30 @@ datum/sprite_accessory/ears/human/gret
 	name = "Synthetic Lizard - Snout Tertiary Under"
 	icon_state = "synthliz_tertunder"
 
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_basic
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard Alt - Snout"
+	icon_state = "synthlizalt_basic"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_under
+	color_src = MATRIXED
+	name = "Synthetic Lizard Alt - Snout Under"
+	icon_state = "synthlizalt_under"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_over
+	color_src = MATRIXED
+	name = "Synthetic Lizard Alt - Snout Over"
+	icon_state = "synthlizalt_over"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_tert
+	color_src = MATRIXED
+	name = "Synthetic Lizard Alt - Snout Tertiary"
+	icon_state = "synthlizalt_tert"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_tertunder
+	color_src = MATRIXED
+	name = "Synthetic Lizard Alt - Snout Tertiary Under"
+	icon_state = "synthlizalt_tertunder"
 
 
 /******************************************
