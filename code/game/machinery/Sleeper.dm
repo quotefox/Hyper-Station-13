@@ -36,12 +36,11 @@
 	RefreshParts()
 	add_inital_chems()
 
-/obj/machinery/sleeper/Destroy()
-	var/obj/item/reagent_containers/sleeper_buffer/buffer = new /obj/item/reagent_containers/sleeper_buffer(loc)
+/obj/machinery/sleeper/on_deconstruction()
+	var/obj/item/reagent_containers/sleeper_buffer/buffer = new (loc)
 	buffer.volume = reagents.maximum_volume
 	buffer.reagents.maximum_volume = reagents.maximum_volume
 	reagents.trans_to(buffer.reagents, reagents.total_volume)
-	..()
 
 /obj/machinery/sleeper/proc/add_inital_chems()
 	for(var/i in available_chems)
@@ -372,7 +371,7 @@
 /obj/machinery/sleeper/syndie/Initialize()
 	. = ..()
 	component_parts = list()
-	component_parts += new /obj/item/circuitboard/machine/sleeper(null)
+	component_parts += new /obj/item/circuitboard/machine/sleeper/syndie(null)
 	component_parts += new /obj/item/stock_parts/matter_bin/super(null)
 	component_parts += new /obj/item/stock_parts/manipulator/pico(null)
 	component_parts += new /obj/item/stack/sheet/glass(null)
@@ -383,7 +382,7 @@
 /obj/machinery/sleeper/syndie/fullupgrade/Initialize()
 	. = ..()
 	component_parts = list()
-	component_parts += new /obj/item/circuitboard/machine/sleeper(null)
+	component_parts += new /obj/item/circuitboard/machine/sleeper/syndie(null)
 	component_parts += new /obj/item/stock_parts/matter_bin/bluespace(null)
 	component_parts += new /obj/item/stock_parts/manipulator/femto(null)
 	component_parts += new /obj/item/stack/sheet/glass(null)

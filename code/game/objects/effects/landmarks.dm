@@ -456,7 +456,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 			if(!SSmapping.station_room_templates[t])
 				log_world("Station room spawner placed at ([T.x], [T.y], [T.z]) has invalid ruin name of \"[t]\" in its list")
 				templates -= t
-		template_name = pickweight(templates)
+		template_name = pickweightAllowZero(templates) // did you know: pickweightAllowZero is the one that DISALLOWS zero? fun fact.
 	if(!template_name)
 		GLOB.stationroom_landmarks -= src
 		qdel(src)
