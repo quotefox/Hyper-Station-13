@@ -956,7 +956,6 @@ datum/sprite_accessory/ears/human/gret
 	icon_state = "synthlizalt_tertunder"
 
 
-
 /******************************************
 **************** Snouts *******************
 *************but higher up*****************/
@@ -2056,7 +2055,6 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Synthetic Lizard - Curled Plate"
 	icon_state = "synth_curledover"
 
-
 /datum/sprite_accessory/antenna/synthliz/synthliz_thick
 	color_src = MUTCOLORS
 	name = "Synthetic Lizard - Thick"
@@ -2072,7 +2070,6 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Synthetic Lizard - Thick Plate"
 	icon_state = "synth_thickover"
 
-
 /datum/sprite_accessory/antenna/synthliz/synth_short
 	color_src = MUTCOLORS
 	name = "Synthetic Lizard - Short"
@@ -2082,7 +2079,6 @@ datum/sprite_accessory/mam_tails/insect
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Short Plate"
 	icon_state = "synth_shortover"
-
 
 /datum/sprite_accessory/antenna/synthliz/synth_sharp
 	color_src = MUTCOLORS
@@ -2098,7 +2094,6 @@ datum/sprite_accessory/mam_tails/insect
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Sharp Plate"
 	icon_state = "synth_sharpover"
-
 
 /datum/sprite_accessory/antenna/synthliz/synth_horns
 	color_src = MUTCOLORS
@@ -2124,7 +2119,6 @@ datum/sprite_accessory/mam_tails/insect
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Antennae Plate"
 	icon_state = "synth_antennaeover"
-
 
 // *** Snooooow flaaaaake ***
 
