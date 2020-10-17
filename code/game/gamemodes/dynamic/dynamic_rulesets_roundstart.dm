@@ -360,7 +360,7 @@
 	high_population_requirement = 10
 	pop_per_requirement = 5
 	flags = HIGHLANDER_RULESET
-	var/operative_cap = list(1,1,2,2,2,3,3,3,4,5)
+	var/operative_cap = list(1,1,1,2,2,3,3,3,4,5)
 	var/datum/team/nuclear/nuke_team
 	chaos_min = 4.0
 
