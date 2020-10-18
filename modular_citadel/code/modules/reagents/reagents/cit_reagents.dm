@@ -120,7 +120,9 @@
 	add_blood_DNA(list("Non-human DNA" = "A+"))
 
 /obj/effect/decal/cleanable/milk/replace_decal(obj/effect/decal/cleanable/milk/S)
-	S.add_blood_DNA(return_blood_DNA())
+	if(S.blood_DNA)
+		blood_DNA |= S.blood_DNA
+	return ..()
 
 //aphrodisiac & anaphrodisiac
 

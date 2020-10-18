@@ -145,8 +145,6 @@
 		. += "<span class='deadsay'>It appears that [t_his] brain is missing...</span>"
 
 	var/temp = getBruteLoss() //no need to calculate each of these twice
-
-	msg += "<span class='warning'>" //Everything below gets this span
 	
 	var/list/msg = list()
 
