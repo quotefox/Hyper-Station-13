@@ -1171,8 +1171,6 @@
 /obj/structure/closet/secure_closet/hydroponics{
 	req_access = null
 	},
-/obj/item/cultivator,
-/obj/item/plant_analyzer,
 /obj/item/reagent_containers/spray/pestspray{
 	pixel_x = 3;
 	pixel_y = 4
@@ -1182,7 +1180,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/item/storage/bag/plants/portaseeder,
+/obj/item/storage/bag/plants,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "ki" = (
@@ -1194,6 +1192,19 @@
 /obj/item/toy/plush/narplush,
 /turf/closed/mineral/random,
 /area/ruin/unpowered/no_grav)
+"kT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/machinery/smartfridge/disks{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/reagent_containers/glass/bottle/nutrient/rh{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/listeningstation)
 "lZ" = (
 /obj/structure/cable,
 /obj/structure/cable{
@@ -1275,11 +1286,7 @@
 /area/ruin/space/has_grav/listeningstation)
 "Bd" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/table,
-/obj/machinery/smartfridge/disks{
-	pixel_x = -4;
-	pixel_y = 11
-	},
+/obj/structure/reagent_dispensers/watertank/high,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "Bs" = (
@@ -2035,7 +2042,7 @@ ab
 ac
 zq
 Gb
-XM
+kT
 Bs
 tU
 Bs
