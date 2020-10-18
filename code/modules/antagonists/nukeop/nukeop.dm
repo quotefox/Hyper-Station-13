@@ -36,7 +36,6 @@
 	var/mob/living/carbon/human/H = owner.current
 	H.set_species(/datum/species/human) //Plasamen burn up otherwise, and lizards are vulnerable to asimov AIs
 	H.equipOutfit(nukeop_outfit)
-	H.checkloadappearance()
 	return TRUE
 
 /datum/antagonist/nukeop/greet()
@@ -53,6 +52,8 @@
 	memorize_code()
 	if(send_to_spawnpoint)
 		move_to_spawnpoint()
+	var/mob/living/carbon/human/H = owner.current
+	H.checkloadappearance()
 
 /datum/antagonist/nukeop/get_team()
 	return nuke_team
