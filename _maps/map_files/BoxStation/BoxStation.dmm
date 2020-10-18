@@ -28566,6 +28566,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
+/obj/machinery/bloodbankgen,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "blu" = (
@@ -62813,6 +62814,10 @@
 /obj/structure/trash_pile,
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
+"xNJ" = (
+/obj/machinery/bloodbankgen,
+/turf/open/floor/plasteel/white,
+/area/medical/sleeper)
 "xYc" = (
 /obj/item/crowbar,
 /obj/item/wrench,
@@ -99725,7 +99730,7 @@ bCs
 bxa
 bER
 bFV
-byu
+xNJ
 byu
 bKn
 bLF
