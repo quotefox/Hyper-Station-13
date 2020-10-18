@@ -38,10 +38,10 @@
 	item_state = "labcoat_cmo"
 
 /obj/item/clothing/suit/toggle/labcoat/emt
-	name = "\improper EMT's jacket"
-	desc = "A dark blue jacket with reflective strips for emergency medical technicians."
+	name = "paramedic's jacket"
+	desc = "A dark blue jacket for paramedics with reflective stripes."
 	icon_state = "labcoat_emt"
-	item_state = "labcoat_cmo"
+	item_state = "labcoat_emt"
 
 /obj/item/clothing/suit/toggle/labcoat/mad
 	name = "\proper The Mad's labcoat"

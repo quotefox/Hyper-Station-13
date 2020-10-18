@@ -61,7 +61,6 @@
 		mode.picking_specific_rule(/datum/dynamic_ruleset/midround/autotraitor)
 */
 
-/* //Not currently functional
 //////////////////////////////////////////
 //                                      //
 //                LEWD                  //
@@ -77,25 +76,24 @@
 	protected_roles = list("AI","Cyborg")
 	restricted_roles = list("Cyborg","AI")
 	required_candidates = 1
-	weight = 5
+	weight = 3
 	cost = 0
-	requirements = list(10,10,10,10,10,10,10,10,10,10)
+	requirements = list(101,10,10,10,10,10,10,10,10,10)
 	high_population_requirement = 10
 	chaos_min = 0.1
-	chaos_max = 2.0
+	chaos_max = 2.5
 	admin_required = TRUE
 	//vars for execution
 	var/list/mob/living/carbon/human/lewd_candidates = list()
-	var/numTraitors = 0
+	var/numTraitors = 1
 
 
-/datum/dynamic_ruleset/roundstart/traitor/lewd/pre_execute()
+/datum/dynamic_ruleset/roundstart/traitor/lewd/ready()
 	var/list/mob/living/carbon/human/targets = list()
 
-	for(var/mob/living/carbon/human/target in GLOB.player_list)
+	for(var/mob/dead/new_player/target in GLOB.player_list)
 		if(target.client.prefs.noncon)
-			if(!(target.job in restricted_roles))
-				targets += target
+			targets += target
 
 	if(candidates.len)
 		var/numTraitors = min(candidates.len, targets.len, 1) //This number affects the maximum number of traitors. We want 1 for right now.
@@ -105,14 +103,26 @@
 		return 1
 
 	return 0
+	
+/datum/dynamic_ruleset/roundstart/traitor/lewd/pre_execute()
+	var/traitor_scaling_coeff = 10 - max(0,round(mode.threat_level/10)-5) // Above 50 threat level, coeff goes down by 1 for every 10 levels
+	var/num_traitors = min(round(mode.candidates.len / traitor_scaling_coeff) + 1, candidates.len)
+	for (var/i = 1 to num_traitors)
+		var/mob/M = pick(candidates)
+		candidates -= M
+		assigned += M.mind
+		M.mind.special_role = ROLE_LEWD_TRAITOR
+		M.mind.restricted_roles = restricted_roles
+	return TRUE
 
+/*
 /datum/dynamic_ruleset/roundstart/traitor/lewd/execute()
-	var/mob/living/carbon/human/H = null
+	var/datum/mind/M = null
 	if(numTraitors)
 		for(var/i = 0, i<numTraitors, i++)
-			H = pick(candidates)
-			candidates.Remove(H)
-			H.mind.make_LewdTraitor()
+			M = pick(assigned)
+			assigned.Remove(M)
+			M.make_LewdTraitor()
 		return TRUE
 	return FALSE
 */
@@ -350,7 +360,7 @@
 	high_population_requirement = 10
 	pop_per_requirement = 5
 	flags = HIGHLANDER_RULESET
-	var/operative_cap = list(2,2,2,2,2,3,3,3,4,5)
+	var/operative_cap = list(1,1,1,2,2,3,3,3,4,5)
 	var/datum/team/nuclear/nuke_team
 	chaos_min = 4.0
 

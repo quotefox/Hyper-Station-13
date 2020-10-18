@@ -1564,3 +1564,11 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	for(var/i in L)
 		if(condition.Invoke(i))
 			. |= i
+
+/proc/num2sign(numeric)
+	if(numeric > 0)
+		return 1
+	else if(numeric < 0)
+		return -1
+	else
+		return 0
