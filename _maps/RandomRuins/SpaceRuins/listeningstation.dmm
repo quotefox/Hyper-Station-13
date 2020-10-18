@@ -419,6 +419,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
 	dir = 4;
 	name = "Food Court"
@@ -959,11 +960,7 @@
 "bu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/iv_drip,
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = 11
-	},
+/obj/machinery/chem_dispenser/fullupgrade,
 /turf/open/floor/plasteel/white/side{
 	dir = 5
 	},
@@ -1059,7 +1056,12 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/chem_dispenser/fullupgrade,
+/obj/machinery/iv_drip,
+/obj/structure/sink{
+	dir = 1;
+	pixel_x = -9;
+	pixel_y = -1
+	},
 /turf/open/floor/plasteel/white/side,
 /area/ruin/space/has_grav/listeningstation)
 "bC" = (
@@ -1270,7 +1272,7 @@
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = -12;
-	pixel_y = 2
+	pixel_y = 12
 	},
 /obj/item/reagent_containers/glass/bucket,
 /obj/effect/decal/cleanable/dirt,
@@ -1303,6 +1305,10 @@
 /area/ruin/space/has_grav/listeningstation)
 "DL" = (
 /obj/structure/chair/stool,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 25
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "Et" = (
@@ -1421,7 +1427,7 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "TK" = (
-/obj/machinery/chem_master/condimaster,
+/obj/machinery/chem_master,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "XM" = (
