@@ -124,7 +124,7 @@
 	dog_fashion = null
 
 /obj/item/clothing/head/soft/emt
-	name = "EMT cap"
+	name = "paramedic cap"
 	desc = "It's a baseball hat with a dark turquoise color and a reflective cross on the top."
 	icon_state = "emtsoft"
 	item_color = "emt"
