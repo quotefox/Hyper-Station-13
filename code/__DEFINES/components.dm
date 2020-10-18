@@ -103,5 +103,3 @@
   */
 #define ELEMENT_BESPOKE		(1 << 1)
 #define COMSIG_MOVABLE_UPDATE_GLIDE_SIZE "movable_glide_size"	//Called when the movable's glide size is updated: (new_glide_size)
-//Blood color
-#define COMSIG_BLOOD_COLOR "blood_DNA_to_color"	//RGB blood stuff

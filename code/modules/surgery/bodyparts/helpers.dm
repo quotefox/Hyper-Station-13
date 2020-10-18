@@ -31,7 +31,7 @@
 	return FALSE
 
 /mob/living/carbon/alien/larva/has_left_hand()
-	return 1
+	return TRUE
 
 
 /mob/proc/has_right_hand(check_disabled = TRUE)
@@ -45,7 +45,7 @@
 	return FALSE
 
 /mob/living/carbon/alien/larva/has_right_hand()
-	return 1
+	return TRUE
 
 
 

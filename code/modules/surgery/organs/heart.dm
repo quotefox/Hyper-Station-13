@@ -227,13 +227,6 @@ obj/item/organ/heart/cybernetic/upgraded/on_life()
 	icon_state = "heart-c"
 	organ_flags = ORGAN_SYNTHETIC
 
-/obj/item/organ/heart/ipc/emp_act()
-	. = ..()
-	if(. & EMP_PROTECT_SELF)
-		return
-	Stop()
-	addtimer(CALLBACK(src, .proc/Restart), 10)
-
 /obj/item/organ/heart/freedom
 	name = "heart of freedom"
 	desc = "This heart pumps with the passion to give... something freedom."

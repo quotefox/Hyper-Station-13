@@ -390,10 +390,14 @@
 		. = ..()
 
 /obj/item/stack/proc/copy_evidences(obj/item/stack/from)
-	blood_DNA = from.blood_DNA
-	fingerprints  = from.fingerprints
-	fingerprintshidden  = from.fingerprintshidden
-	fingerprintslast  = from.fingerprintslast
+	if(from.blood_DNA)
+		blood_DNA = from.blood_DNA.Copy()
+	if(from.fingerprints)
+		fingerprints = from.fingerprints.Copy()
+	if(from.fingerprintshidden)
+		fingerprintshidden = from.fingerprintshidden.Copy()
+	if(from.fingerprintslast)
+		fingerprintslast = from.fingerprintslast
 	//TODO bloody overlay
 
 /obj/item/stack/microwave_act(obj/machinery/microwave/M)
