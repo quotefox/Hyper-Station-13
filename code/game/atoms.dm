@@ -294,6 +294,11 @@
 	if(SEND_SIGNAL(src, COMSIG_ATOM_GET_EXAMINE_NAME, user, override) & COMPONENT_EXNAME_CHANGED)
 		should_override = TRUE
 
+
+	if(blood_DNA && !istype(src, /obj/effect/decal))
+		override[EXAMINE_POSITION_BEFORE] = " blood-stained "
+		should_override = TRUE
+
 	if(should_override)
 		. = override.Join("")
 
@@ -303,19 +308,7 @@
 
 /atom/proc/examine(mob/user)
 	. = list("[get_examine_string(user, TRUE)].")
-
-
-	//This reformat names to get a/an properly working on item descriptions when they are bloody
-	var/f_name = "\a [src]."
-	if(src.blood_DNA && !istype(src, /obj/effect/decal))
-		if(gender == PLURAL)
-			f_name = "some "
-		else
-			f_name = "a "
-		f_name += "<span class='danger'>blood-stained</span> [name]!"
-
-	to_chat(user, "[icon2html(src, user)] That's [f_name]")
-
+	
 	if(desc)
 		. += desc
 
