@@ -17,8 +17,8 @@
 	emote_taunt = list("gnashes")
 	taunt_chance = 30
 	speed = 0
-	maxHealth = 25
-	health = 25
+	maxHealth = 35
+	health = 35
 	spacewalk = TRUE
 	harm_intent_damage = 8
 	obj_damage = 50
@@ -106,5 +106,17 @@
 	obj_damage = 70
 	melee_damage_lower = 15
 	melee_damage_upper = 18
+
+/mob/living/simple_animal/hostile/carp/cayenne/lia
+	name = "Lia"
+	real_name = "Lia"
+	desc = "A failed experiment of Nanotrasen to create weaponised carp technology, now acquired by Kinaris. This less than intimidating carp now serves as the Head of Security's pet."
+	faction = list("neutral", "carp")
+	health = 200
+	icon_dead = "magicarp_dead"
+	icon_gib = "magicarp_gib"
+	icon_living = "magicarp"
+	icon_state = "magicarp"
+	maxHealth = 200
 
 #undef REGENERATION_DELAY
