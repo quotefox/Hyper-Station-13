@@ -106,6 +106,12 @@
 	obj_damage = 70
 	melee_damage_lower = 15
 	melee_damage_upper = 18
+	var/held_icon = "carp"
+	
+/mob/living/simple_animal/hostile/carp/cayenne/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/wuv, "bloops happily!", EMOTE_AUDIBLE, /datum/mood_event/pet_animal, "gnashes!", EMOTE_AUDIBLE)
+	AddElement(/datum/element/mob_holder, held_icon)
 
 /mob/living/simple_animal/hostile/carp/cayenne/lia
 	name = "Lia"
@@ -118,5 +124,6 @@
 	icon_living = "magicarp"
 	icon_state = "magicarp"
 	maxHealth = 200
+	held_icon = "magicarp"
 
 #undef REGENERATION_DELAY
