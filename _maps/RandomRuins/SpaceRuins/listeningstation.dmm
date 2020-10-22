@@ -641,6 +641,9 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
+/obj/structure/sign/poster/contraband/random{
+	pixel_y = 30
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "aW" = (
@@ -788,11 +791,9 @@
 /turf/open/floor/plasteel/white/side,
 /area/ruin/space/has_grav/listeningstation)
 "bh" = (
-/obj/machinery/vending/cola/random{
-	extended_inventory = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/cola/shamblers,
 /turf/open/floor/plasteel/white/corner{
 	dir = 8
 	},
@@ -1072,10 +1073,10 @@
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/wrench,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/item/storage/toolbox/syndicate,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "bD" = (
@@ -1385,8 +1386,8 @@
 	pixel_x = 3;
 	pixel_y = 11
 	},
-/obj/item/lighter/slime{
-	pixel_x = 6
+/obj/item/lighter{
+	pixel_x = 9
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
@@ -2566,9 +2567,9 @@ ab
 ag
 ag
 an
-ac
+ag
 aE
-ac
+ag
 aY
 bh
 ag
