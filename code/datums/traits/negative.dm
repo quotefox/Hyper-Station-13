@@ -119,6 +119,17 @@
 	mood_quirk = TRUE //yogs
 	medical_record_text = "Patient demonstrates a high level of emotional volatility."
 
+/datum/quirk/hypersensitive/add()
+	var/datum/component/mood/mood = quirk_holder.GetComponent(/datum/component/mood)
+	if(mood)
+		mood.mood_modifier += 0.5
+
+/datum/quirk/hypersensitive/remove()
+	if(quirk_holder)
+		var/datum/component/mood/mood = quirk_holder.GetComponent(/datum/component/mood)
+		if(mood)
+			mood.mood_modifier -= 0.5
+
 /datum/quirk/brainproblems
 	name = "Brain Tumor"
 	desc = "You have a little friend in your brain that is slowly destroying it. Better bring some mannitol!"
