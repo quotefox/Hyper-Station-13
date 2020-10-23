@@ -1003,6 +1003,15 @@
 	contains = list(/obj/item/circuitboard/computer/sat_control)
 	crate_name= "shield control board crate"
 
+/datum/supply_pack/engine/energy_harvester
+	name = "Energy Harvesting Module"
+	desc = "A Device which upon connection to a node, will harvest the energy and send it to engineerless stations in return for credits, derived from a syndicate powersink model."
+	cost = 7500
+	access = ACCESS_CE
+	contains = list(/obj/item/energy_harvester)
+	crate_name = "energy harvesting module crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////// Engine Construction /////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
