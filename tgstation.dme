@@ -3215,4 +3215,5 @@
 #include "modular_citadel\code\modules\vore\eating\voreitems.dm"
 #include "modular_citadel\code\modules\vore\eating\vorepanel_vr.dm"
 #include "modular_citadel\interface\skin.dmf"
+#include "yogstation\code\modules\power\energyharvester.dm"
 // END_INCLUDE
