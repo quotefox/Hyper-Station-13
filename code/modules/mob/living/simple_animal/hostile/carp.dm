@@ -17,8 +17,8 @@
 	emote_taunt = list("gnashes")
 	taunt_chance = 30
 	speed = 0
-	maxHealth = 35
-	health = 35
+	maxHealth = 25
+	health = 25
 	spacewalk = TRUE
 	harm_intent_damage = 8
 	obj_damage = 50
