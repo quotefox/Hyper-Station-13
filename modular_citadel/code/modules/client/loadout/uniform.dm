@@ -450,15 +450,3 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/corset
 	cost = 1
-
-/datum/gear/corset
-	name = "Corset"
-	category = SLOT_W_UNIFORM
-	path = /obj/item/clothing/under/corset
-	cost = 1
-
-/datum/gear/shortsbra
-	name = "Kromatic Shorts and Top"
-	category = SLOT_W_UNIFORM
-	path = /obj/item/clothing/under/polychromic/shortsbra
-	cost = 1
