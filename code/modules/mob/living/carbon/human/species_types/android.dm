@@ -11,14 +11,16 @@
 	mutanttongue = /obj/item/organ/tongue/robot
 	limbs_id = "synth"
 
-/datum/species/android/on_species_gain(mob/living/carbon/C)
+/datum/species/android/on_species_gain(mob/living/carbon/human/C)
 	. = ..()
 	for(var/X in C.bodyparts)
 		var/obj/item/bodypart/O = X
 		O.change_bodypart_status(BODYPART_ROBOTIC, FALSE, TRUE)
+	C.grant_language(/datum/language/machine)
 
 /datum/species/android/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	for(var/X in C.bodyparts)
 		var/obj/item/bodypart/O = X
 		O.change_bodypart_status(BODYPART_ORGANIC,FALSE, TRUE)
+	C.remove_language(/datum/language/machine)
