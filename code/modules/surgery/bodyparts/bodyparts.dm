@@ -287,7 +287,7 @@
 		if(status == BODYPART_ORGANIC)
 			icon = base_bp_icon || DEFAULT_BODYPART_ICON_ORGANIC
 		else if(status == BODYPART_ROBOTIC)
-			icon = base_bp_icon || DEFAULT_BODYPART_ICON_ROBOTIC
+			icon = DEFAULT_BODYPART_ICON_ROBOTIC
 
 	if(owner)
 		owner.updatehealth()
