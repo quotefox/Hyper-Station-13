@@ -12,6 +12,11 @@
 	new /obj/item/clothing/under/shorts/blue(src)
 	new /obj/item/clothing/under/shorts/green(src)
 	new /obj/item/clothing/under/jabroni(src)
+	new /obj/item/clothing/under/shorts/redwshort(src)
+	new /obj/item/clothing/under/shorts/yellowwshort(src)
+	new /obj/item/clothing/under/shorts/pinkwshort(src)
+	new /obj/item/clothing/under/polychromic/bikini(src)
+	new /obj/item/clothing/under/polychromic/stripper(src)
 
 
 /obj/structure/closet/boxinggloves

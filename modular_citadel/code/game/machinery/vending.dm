@@ -58,7 +58,8 @@
 				/obj/item/clothing/under/polychromic/shortpants/pantsu = 3,
 				/obj/item/clothing/under/polychromic/bulge = 3,
 				/obj/item/clothing/suit/maidapron = 3,
-				/obj/item/clothing/under/corset = 3
+				/obj/item/clothing/under/corset = 3,
+				/obj/item/clothing/under/jabroni = 3
 				)
 	contraband = list(/obj/item/restraints/handcuffs/fake/kinky = 5,
 				/obj/item/clothing/neck/petcollar = 5,

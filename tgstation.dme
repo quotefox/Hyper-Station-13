@@ -3104,6 +3104,7 @@
 #include "modular_citadel\code\modules\clothing\spacesuits\cydonian_armor.dm"
 #include "modular_citadel\code\modules\clothing\spacesuits\flightsuit.dm"
 #include "modular_citadel\code\modules\clothing\suits\polychromic_cloaks.dm"
+#include "modular_citadel\code\modules\clothing\suits\polychromic_suit.dm"
 #include "modular_citadel\code\modules\clothing\suits\suits.dm"
 #include "modular_citadel\code\modules\clothing\under\polychromic_clothes.dm"
 #include "modular_citadel\code\modules\clothing\under\trek_under.dm"

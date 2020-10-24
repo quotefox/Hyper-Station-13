@@ -199,3 +199,14 @@
 	primary_color = "#808080" //RGB in hexcode
 	secondary_color = "#FF3535"
 	body_parts_covered = GROIN
+
+/obj/item/clothing/under/polychromic/shortsbra
+	name = "Kromatic Shorts and Top"
+	desc = "A pair of shorts and a bikini top! They even change color!"
+	icon_state = "shortsbra"
+	item_color = "shortsbra"
+	item_state = "rainbow"
+	primary_color = "#808080" //RGB in hexcode
+	secondary_color = "#FFFFFF"
+	hastertiary = FALSE
+	body_parts_covered= CHEST|GROIN
