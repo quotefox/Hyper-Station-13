@@ -75,10 +75,11 @@
 
 /obj/item/robot_module/k9/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
-	var/static/list/k9_models	
+	var/static/list/k9_models
 	if(!k9_models)
 		k9_models = list(
 			"k9" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "k9"),
+			"k9V2" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "valesec"),
 		 	"Drake" = image(icon = 'icons/mob/cyborg/drakemech.dmi', icon_state = "drakesecbox")
 		)
 		if(R.client?.ckey == "nezuli")
@@ -93,6 +94,10 @@
 		if("k9")
 			cyborg_base_icon = "k9"
 			moduleselect_icon = "k9"
+		if("k9V2")
+			cyborg_base_icon = "valesec"
+			sleeper_overlay = "v2secsleeper"
+			has_snowflake_deadsprite = TRUE
 		if("Drake")
 			cyborg_base_icon = "drakesec"
 			cyborg_icon_override = 'icons/mob/cyborg/drakemech.dmi'
@@ -142,6 +147,7 @@
 	if(!medihound_models)
 		medihound_models = list(
 		"medihound" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "medihound"),
+		"medihound V2" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "valemed"),
 		"Dark" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "medihounddark"),
 		"Drake" = image(icon = 'icons/mob/cyborg/drakemech.dmi', icon_state = "drakemedbox")
 		)
@@ -159,6 +165,10 @@
 		if("Dark")
 			cyborg_base_icon = "medihounddark"
 			sleeper_overlay = "mdsleeper"
+		if("medihound V2")
+			cyborg_base_icon = "valemed"
+			sleeper_overlay = "v2medsleeper"
+			has_snowflake_deadsprite = TRUE
 		if("Drake")
 			cyborg_base_icon = "drakemed"
 			cyborg_icon_override = 'icons/mob/cyborg/drakemech.dmi'
@@ -570,7 +580,7 @@
 			"BootyM" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyengineerM"),
 			"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootyengineerS")
 		)
-		var/list/L = list("Pupdozer" = "pupdozer")
+		var/list/L = list("Pupdozer" = "pupdozer", "Engihound" = "Engihound")
 		for(var/a in L)
 			var/image/wide = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = L[a])
 			wide.pixel_x = -16
@@ -618,6 +628,14 @@
 			hat_offset = INFINITY
 			cyborg_icon_override = 'modular_citadel/icons/mob/widerobot.dmi'
 			has_snowflake_deadsprite = TRUE
+			dogborg = TRUE
+			cyborg_pixel_offset = -16
+		if("Engihound")
+			cyborg_base_icon = "valeeng"
+			can_be_pushed = FALSE
+			cyborg_icon_override = 'modular_citadel/icons/mob/widerobot.dmi'
+			has_snowflake_deadsprite = TRUE
+			sleeper_overlay = "valeengsleeper"
 			dogborg = TRUE
 			cyborg_pixel_offset = -16
 		if("Drake")

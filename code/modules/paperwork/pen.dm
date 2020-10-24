@@ -158,7 +158,7 @@
 	if(..())
 		if(reagents.total_volume)
 			if(M.reagents)
-				reagents.trans_to(M, reagents.total_volume)
+				reagents.reaction(M, INJECT)
 
 
 /obj/item/pen/sleepy/Initialize()

@@ -930,7 +930,55 @@ datum/sprite_accessory/ears/human/gret
 	name = "Synthetic Lizard - Snout Tertiary Under"
 	icon_state = "synthliz_tertunder"
 
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_basic
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard Alt - Snout"
+	icon_state = "synthlizalt_basic"
 
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_under
+	color_src = MATRIXED
+	name = "Synthetic Lizard Alt - Snout Under"
+	icon_state = "synthlizalt_under"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_over
+	color_src = MATRIXED
+	name = "Synthetic Lizard Alt - Snout Over"
+	icon_state = "synthlizalt_over"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_tert
+	color_src = MATRIXED
+	name = "Synthetic Lizard Alt - Snout Tertiary"
+	icon_state = "synthlizalt_tert"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_tertunder
+	color_src = MATRIXED
+	name = "Synthetic Lizard Alt - Snout Tertiary Under"
+	icon_state = "synthlizalt_tertunder"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizbarlessalt_basic
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard Barless Alt - Snout"
+	icon_state = "synthlizbarlessalt_basic"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizbarlessalt_under
+	color_src = MATRIXED
+	name = "Synthetic Lizard Barless Alt - Snout Under"
+	icon_state = "synthlizbarlessalt_under"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizbarlessalt_over
+	color_src = MATRIXED
+	name = "Synthetic Lizard Barless Alt - Snout Over"
+	icon_state = "synthlizbarlessalt_over"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizbarlessalt_tert
+	color_src = MATRIXED
+	name = "Synthetic Lizard Barless Alt - Snout Tertiary"
+	icon_state = "synthlizbarlessalt_tert"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizbarlessalt_tertunder
+	color_src = MATRIXED
+	name = "Synthetic Lizard Barless Alt - Snout Tertiary Under"
+	icon_state = "synthlizbarlessalt_tertunder"
 
 /******************************************
 **************** Snouts *******************
@@ -2026,6 +2074,11 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Synthetic Lizard - Curled"
 	icon_state = "synth_curled"
 
+/datum/sprite_accessory/antenna/synthliz/synthliz_curledover
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Curled Plate"
+	icon_state = "synth_curledover"
+
 /datum/sprite_accessory/antenna/synthliz/synthliz_thick
 	color_src = MUTCOLORS
 	name = "Synthetic Lizard - Thick"
@@ -2036,10 +2089,20 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Synthetic Lizard - Thick Light"
 	icon_state = "synth_thicklight"
 
+/datum/sprite_accessory/antenna/synthliz/synthliz_thickover
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Thick Plate"
+	icon_state = "synth_thickover"
+
 /datum/sprite_accessory/antenna/synthliz/synth_short
 	color_src = MUTCOLORS
 	name = "Synthetic Lizard - Short"
 	icon_state = "synth_short"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_shortover
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Short Plate"
+	icon_state = "synth_shortover"
 
 /datum/sprite_accessory/antenna/synthliz/synth_sharp
 	color_src = MUTCOLORS
@@ -2051,6 +2114,11 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Synthetic Lizard - Sharp Light"
 	icon_state = "synth_sharplight"
 
+/datum/sprite_accessory/antenna/synthliz/synthliz_sharpover
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Sharp Plate"
+	icon_state = "synth_sharpover"
+
 /datum/sprite_accessory/antenna/synthliz/synth_horns
 	color_src = MUTCOLORS
 	name = "Synthetic Lizard - Horns"
@@ -2060,6 +2128,21 @@ datum/sprite_accessory/mam_tails/insect
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Horns Light"
 	icon_state = "synth_hornslight"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_hornsover
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Horns Plate"
+	icon_state = "synth_hornsover"
+
+/datum/sprite_accessory/antenna/synthliz/synth_antennaelight
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Antennae Light"
+	icon_state = "synth_antennaelight"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_antennaeover
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Antennae Plate"
+	icon_state = "synth_antennaeover"
 
 // *** Snooooow flaaaaake ***
 

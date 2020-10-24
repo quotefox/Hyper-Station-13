@@ -453,7 +453,7 @@
 		if(SEC_LEVEL_DELTA)
 			level = "delta"
 
-	var/dat = "<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]<br>Alert Level: [capitalize(level)]</div>"
+	var/dat = "<div class='notice'>Round Duration: [DisplayTimeText(world.time - SSticker.round_start_time)]<br>Alert Level: [capitalize(level)]<br>Chaos Level: [GLOB.dynamic_chaos_level]</div>"
 
 	if(SSshuttle.emergency)
 		switch(SSshuttle.emergency.mode)

@@ -20,6 +20,34 @@
 /obj/item/lipstick/black
 	name = "black lipstick"
 	colour = "black"
+	
+/obj/item/lipstick/yellow
+	name = "yellow lipstick"
+	colour = "yellow"
+	
+/obj/item/lipstick/blue
+	name = "blue lipstick"
+	colour = "blue"
+	
+/obj/item/lipstick/teal
+	name = "teal lipstick"
+	colour = "teal"
+	
+/obj/item/lipstick/fuchsia
+	name = "fuchsia lipstick"
+	colour = "fuchsia"
+	
+/obj/item/lipstick/navy
+	name = "navy blue lipstick"
+	colour = "navy"
+
+/obj/item/lipstick/aqua
+	name = "cyan lipstick"
+	colour = "aqua"
+	
+/obj/item/lipstick/white
+	name = "white lipstick"
+	colour = "white"
 
 /obj/item/lipstick/random
 	name = "lipstick"

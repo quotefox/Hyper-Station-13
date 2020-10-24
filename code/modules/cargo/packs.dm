@@ -1003,6 +1003,15 @@
 	contains = list(/obj/item/circuitboard/computer/sat_control)
 	crate_name= "shield control board crate"
 
+/datum/supply_pack/engine/energy_harvester
+	name = "Energy Harvesting Module"
+	desc = "A Device which upon connection to a node, will harvest the energy and send it to engineerless stations in return for credits, derived from a syndicate powersink model."
+	cost = 7500
+	access = ACCESS_CE
+	contains = list(/obj/item/energy_harvester)
+	crate_name = "energy harvesting module crate"
+	crate_type = /obj/structure/closet/crate/secure/engineering
+
 //////////////////////////////////////////////////////////////////////////////
 //////////////////////// Engine Construction /////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////
@@ -1381,17 +1390,31 @@
 
 /datum/supply_pack/medical/bloodpacks
 	name = "Blood Pack Variety Crate"
-	desc = "Contains eight different blood packs for reintroducing blood to patients."
+	desc = "Contains ten different blood packs for reintroducing blood to patients."
 	cost = 3000
-	contains = list(/obj/item/reagent_containers/blood,
-					/obj/item/reagent_containers/blood,
+	contains = list(/obj/item/reagent_containers/blood/random,
+					/obj/item/reagent_containers/blood/random,
 					/obj/item/reagent_containers/blood/APlus,
 					/obj/item/reagent_containers/blood/AMinus,
 					/obj/item/reagent_containers/blood/BPlus,
 					/obj/item/reagent_containers/blood/BMinus,
 					/obj/item/reagent_containers/blood/OPlus,
 					/obj/item/reagent_containers/blood/OMinus,
-					/obj/item/reagent_containers/blood/lizard)
+					/obj/item/reagent_containers/blood/lizard,
+					/obj/item/reagent_containers/blood/jellyblood,
+					/obj/item/reagent_containers/blood/insect)
+	crate_name = "blood freezer"
+	crate_type = /obj/structure/closet/crate/freezer
+
+/datum/supply_pack/medical/bloodpackssynth
+	name = "Synthetics Blood Pack Crate"
+	desc = "Contains five synthetics blood packs for reintroducing blood to patients."
+	cost = 3000
+	contains = list(/obj/item/reagent_containers/blood/synthetics,
+					/obj/item/reagent_containers/blood/synthetics,
+					/obj/item/reagent_containers/blood/synthetics,
+					/obj/item/reagent_containers/blood/synthetics,
+					/obj/item/reagent_containers/blood/synthetics)
 	crate_name = "blood freezer"
 	crate_type = /obj/structure/closet/crate/freezer
 

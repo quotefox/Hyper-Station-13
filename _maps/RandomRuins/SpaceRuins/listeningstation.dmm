@@ -93,17 +93,17 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "ak" = (
-/obj/structure/filingcabinet,
-/obj/item/paper/fluff/ruins/listeningstation/reports/april,
-/obj/item/paper/fluff/ruins/listeningstation/reports/may,
-/obj/item/paper/fluff/ruins/listeningstation/reports/june,
-/obj/item/paper/fluff/ruins/listeningstation/reports/july,
-/obj/item/paper/fluff/ruins/listeningstation/reports/august,
-/obj/item/paper/fluff/ruins/listeningstation/reports/september,
-/obj/item/paper/fluff/ruins/listeningstation/reports/october,
-/obj/item/paper/fluff/ruins/listeningstation/receipt,
+/obj/structure/rack{
+	dir = 8
+	},
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/integrated_circuit_printer/upgraded,
+/obj/item/multitool,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/paper/fluff/ruins/listeningstation/odd_report,
+/obj/item/stock_parts/cell/high/plus{
+	pixel_x = 9;
+	pixel_y = -3
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "al" = (
@@ -113,6 +113,10 @@
 	pixel_y = -12
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/glasses/meson/night{
+	pixel_x = 1;
+	pixel_y = 11
+	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "am" = (
@@ -155,6 +159,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/machinery/poweredfans,
 /obj/machinery/door/airlock/external{
 	id_tag = "syndie_listeningpost_external";
 	req_access_txt = "150"
@@ -320,6 +325,7 @@
 /area/ruin/space/has_grav/listeningstation)
 "az" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/autolathe/hacked,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "aA" = (
@@ -342,17 +348,17 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "aB" = (
-/obj/structure/rack{
-	dir = 8
-	},
-/obj/item/stack/sheet/metal/fifty,
-/obj/item/integrated_circuit_printer/upgraded,
-/obj/item/multitool,
+/obj/structure/filingcabinet,
+/obj/item/paper/fluff/ruins/listeningstation/reports/april,
+/obj/item/paper/fluff/ruins/listeningstation/reports/may,
+/obj/item/paper/fluff/ruins/listeningstation/reports/june,
+/obj/item/paper/fluff/ruins/listeningstation/reports/july,
+/obj/item/paper/fluff/ruins/listeningstation/reports/august,
+/obj/item/paper/fluff/ruins/listeningstation/reports/september,
+/obj/item/paper/fluff/ruins/listeningstation/reports/october,
+/obj/item/paper/fluff/ruins/listeningstation/receipt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/stock_parts/cell/high/plus{
-	pixel_x = 9;
-	pixel_y = -3
-	},
+/obj/item/paper/fluff/ruins/listeningstation/odd_report,
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "aC" = (
@@ -361,18 +367,11 @@
 	layer = 2.9
 	},
 /obj/item/storage/bag/ore,
-/obj/item/mining_scanner,
-/obj/item/pickaxe,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/shovel,
+/obj/item/pickaxe/mini,
+/obj/item/t_scanner/adv_mining_scanner/lesser,
 /turf/open/floor/plasteel/dark,
-/area/ruin/space/has_grav/listeningstation)
-"aD" = (
-/obj/machinery/light/small{
-	brightness = 3;
-	dir = 8
-	},
-/turf/closed/wall,
 /area/ruin/space/has_grav/listeningstation)
 "aE" = (
 /obj/effect/turf_decal/stripes/line{
@@ -420,6 +419,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock{
 	dir = 4;
 	name = "Food Court"
@@ -526,11 +526,11 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/storage/box/lights/bulbs,
 /obj/item/stack/sheet/mineral/plasma{
 	amount = 30
 	},
-/obj/item/stock_parts/cell/high/plus,
+/obj/item/storage/box/lights/bulbs,
+/obj/item/storage/box/stockparts/deluxe,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "aP" = (
@@ -640,6 +640,9 @@
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 4
+	},
+/obj/structure/sign/poster/contraband/random{
+	pixel_y = 30
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
@@ -788,11 +791,9 @@
 /turf/open/floor/plasteel/white/side,
 /area/ruin/space/has_grav/listeningstation)
 "bh" = (
-/obj/machinery/vending/cola/random{
-	extended_inventory = 1
-	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/vending/cola/shamblers,
 /turf/open/floor/plasteel/white/corner{
 	dir = 8
 	},
@@ -829,7 +830,7 @@
 /obj/structure/closet/firecloset/full{
 	anchored = 1
 	},
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "bk" = (
 /obj/effect/turf_decal/stripes/red/line{
@@ -868,7 +869,7 @@
 /area/ruin/space/has_grav/listeningstation)
 "bn" = (
 /obj/structure/sign/departments/medbay/alt,
-/turf/closed/wall,
+/turf/closed/wall/r_wall,
 /area/ruin/space/has_grav/listeningstation)
 "bo" = (
 /obj/machinery/door/firedoor,
@@ -960,11 +961,7 @@
 "bu" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/iv_drip,
-/obj/structure/sink{
-	dir = 4;
-	pixel_x = 11
-	},
+/obj/machinery/chem_dispenser/fullupgrade,
 /turf/open/floor/plasteel/white/side{
 	dir = 5
 	},
@@ -1060,7 +1057,12 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
 	},
-/obj/machinery/chem_dispenser/fullupgrade,
+/obj/machinery/iv_drip,
+/obj/structure/sink{
+	dir = 1;
+	pixel_x = -9;
+	pixel_y = -1
+	},
 /turf/open/floor/plasteel/white/side,
 /area/ruin/space/has_grav/listeningstation)
 "bC" = (
@@ -1071,31 +1073,39 @@
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
-/obj/item/wrench,
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/item/storage/toolbox/syndicate,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "bD" = (
 /obj/structure/table/wood,
-/obj/item/ammo_box/magazine/m10mm,
-/obj/item/paper/fluff/ruins/listeningstation/briefing,
+/obj/item/ammo_box/magazine/m10mm{
+	pixel_x = 8;
+	pixel_y = 5
+	},
+/obj/item/paper/fluff/ruins/listeningstation/briefing{
+	pixel_x = -7;
+	pixel_y = -3
+	},
+/obj/item/toy/cards/deck/syndicate{
+	pixel_x = -6;
+	pixel_y = 11
+	},
 /turf/open/floor/plasteel/grimy,
 /area/ruin/space/has_grav/listeningstation)
 "bF" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
-/obj/machinery/meter,
-/obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "bH" = (
-/obj/machinery/atmospherics/components/unary/tank/air{
-	dir = 1
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
 	},
-/obj/effect/turf_decal/bot,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
+/obj/machinery/meter,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "bI" = (
@@ -1156,16 +1166,14 @@
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "fJ" = (
-/obj/structure/chair/stool,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/biogenerator,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "hJ" = (
 /obj/structure/closet/secure_closet/hydroponics{
 	req_access = null
 	},
-/obj/item/cultivator,
-/obj/item/plant_analyzer,
 /obj/item/reagent_containers/spray/pestspray{
 	pixel_x = 3;
 	pixel_y = 4
@@ -1175,17 +1183,31 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
-/obj/item/storage/bag/plants/portaseeder,
+/obj/item/storage/bag/plants,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "ki" = (
 /obj/item/storage/daki{
+	desc = "Make us whole.~";
 	icon_state = "daki_Nar'Sie";
 	name = "Nar-nar"
 	},
 /obj/item/toy/plush/narplush,
-/turf/open/floor/plasteel/cult,
+/turf/closed/mineral/random,
 /area/ruin/unpowered/no_grav)
+"kT" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/machinery/smartfridge/disks{
+	pixel_x = -4;
+	pixel_y = 11
+	},
+/obj/item/reagent_containers/glass/bottle/nutrient/rh{
+	pixel_x = -6;
+	pixel_y = 5
+	},
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/listeningstation)
 "lZ" = (
 /obj/structure/cable,
 /obj/structure/cable{
@@ -1203,17 +1225,14 @@
 	req_access = null;
 	req_access_txt = "150"
 	},
+/obj/item/storage/box/beakers/bluespace,
 /turf/open/floor/plasteel/white/side{
 	dir = 6
 	},
 /area/ruin/space/has_grav/listeningstation)
 "tU" = (
-/obj/structure/sign/poster/contraband/random{
-	pixel_y = -32
-	},
+/obj/machinery/seed_extractor,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/table,
-/obj/machinery/microwave,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "ux" = (
@@ -1224,12 +1243,17 @@
 /turf/open/floor/plasteel/dark,
 /area/ruin/space/has_grav/listeningstation)
 "uB" = (
-/turf/open/floor/plating,
-/area/ruin/space/has_grav/listeningstation)
-"xe" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/autolathe/hacked,
-/turf/open/floor/plasteel/dark,
+/obj/machinery/airalarm/syndicate{
+	dir = 1;
+	pixel_y = -25
+	},
+/obj/structure/table,
+/obj/item/kitchen/rollingpin{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/machinery/reagentgrinder/constructed,
+/turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "za" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
@@ -1249,7 +1273,7 @@
 /obj/structure/sink{
 	dir = 8;
 	pixel_x = -12;
-	pixel_y = 2
+	pixel_y = 12
 	},
 /obj/item/reagent_containers/glass/bucket,
 /obj/effect/decal/cleanable/dirt,
@@ -1257,46 +1281,34 @@
 	pixel_x = 9;
 	pixel_y = 11
 	},
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 8
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "Bd" = (
-/obj/machinery/vending/hydroseeds{
-	slogan_delay = 700
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/watertank/high,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "Bs" = (
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "DC" = (
-/obj/machinery/airalarm/syndicate{
-	dir = 1;
-	pixel_y = -25
+/obj/structure/chair/stool,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 8
 	},
-/obj/structure/table,
-/obj/item/kitchen/rollingpin{
-	pixel_x = -6;
-	pixel_y = 8
-	},
-/obj/machinery/reagentgrinder/constructed,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "DL" = (
-/obj/structure/table,
-/obj/item/reagent_containers/food/drinks/beer{
-	pixel_x = -4;
-	pixel_y = 14
-	},
-/obj/item/storage/fancy/cigarettes/cigpack_syndicate{
-	pixel_x = -3
-	},
-/obj/item/reagent_containers/food/drinks/beer{
-	pixel_x = 3;
-	pixel_y = 11
-	},
-/obj/item/lighter/slime{
-	pixel_x = 6
+/obj/structure/chair/stool,
+/obj/machinery/firealarm{
+	dir = 4;
+	pixel_x = 25
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
@@ -1322,14 +1334,25 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
-/obj/machinery/computer/arcade/orion_trail,
+/obj/machinery/vending/hydroseeds{
+	slogan_delay = 700
+	},
+/obj/machinery/light/small{
+	brightness = 3;
+	dir = 4
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "Lx" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 8
+	dir = 5
 	},
 /obj/effect/decal/cleanable/blood/drip,
+/obj/machinery/atmospherics/components/unary/tank/air{
+	dir = 1
+	},
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "Mh" = (
@@ -1350,9 +1373,31 @@
 	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
-"Ns" = (
-/obj/machinery/biogenerator,
+"Nh" = (
+/obj/structure/table,
+/obj/item/reagent_containers/food/drinks/beer{
+	pixel_x = -4;
+	pixel_y = 14
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_syndicate{
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/food/drinks/beer{
+	pixel_x = 3;
+	pixel_y = 11
+	},
+/obj/item/lighter{
+	pixel_x = 9
+	},
 /obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel,
+/area/ruin/space/has_grav/listeningstation)
+"Ns" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
+/obj/machinery/plantgenes{
+	pixel_y = 6
+	},
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "NQ" = (
@@ -1363,8 +1408,12 @@
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/listeningstation)
 "Qp" = (
+/obj/structure/sign/poster/contraband/random{
+	pixel_y = -32
+	},
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/seed_extractor,
+/obj/structure/table,
+/obj/machinery/microwave,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "QM" = (
@@ -1375,11 +1424,11 @@
 	pixel_x = 5;
 	pixel_y = 5
 	},
-/obj/structure/chair/stool,
+/obj/machinery/computer/arcade/orion_trail,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "TK" = (
-/obj/machinery/chem_master/condimaster,
+/obj/machinery/chem_master,
 /turf/open/floor/plasteel,
 /area/ruin/space/has_grav/listeningstation)
 "XM" = (
@@ -1917,15 +1966,15 @@ ab
 ab
 ab
 ab
-ab
 ac
 ac
 ac
 ac
 ac
 ac
-ab
-ab
+ac
+ac
+ac
 ab
 ab
 ab
@@ -1964,8 +2013,8 @@ Bd
 Ns
 fJ
 DC
+uB
 ac
-ab
 ab
 ab
 ab
@@ -2000,12 +2049,12 @@ ab
 ac
 zq
 Gb
-XM
-Qp
+kT
+Bs
+tU
 Bs
 Mh
 ac
-ab
 ab
 ab
 ab
@@ -2043,9 +2092,9 @@ XM
 Bs
 fs
 za
-tU
+Bs
+Qp
 ac
-ab
 ab
 ab
 ab
@@ -2084,8 +2133,8 @@ Bs
 IH
 QM
 DL
+Nh
 ac
-ab
 ab
 ab
 ab
@@ -2123,7 +2172,7 @@ ac
 aH
 aN
 aZ
-aD
+ac
 ac
 ac
 ac
@@ -2239,7 +2288,7 @@ ac
 ac
 ah
 as
-xe
+ac
 ac
 aR
 ac
@@ -2249,7 +2298,7 @@ bx
 bD
 ag
 ag
-ab
+ag
 ab
 ab
 ab
@@ -2395,7 +2444,7 @@ ab
 ab
 ab
 ab
-ag
+ac
 ac
 ac
 ac
@@ -2406,7 +2455,7 @@ be
 ag
 ag
 ag
-uB
+ag
 Et
 NQ
 ag
@@ -2449,7 +2498,7 @@ bA
 ag
 ag
 ag
-ab
+ag
 ab
 ab
 ab
@@ -2518,9 +2567,9 @@ ab
 ag
 ag
 an
-ac
+ag
 aE
-ac
+ag
 aY
 bh
 ag
@@ -2561,12 +2610,12 @@ ao
 ag
 aF
 ag
-ac
 ag
 ag
 ag
 ag
-ab
+ag
+ag
 ab
 ab
 ab
@@ -2646,7 +2695,7 @@ aa
 aa
 aa
 aa
-aa
+ab
 ab
 ab
 ab

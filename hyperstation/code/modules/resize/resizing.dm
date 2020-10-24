@@ -7,6 +7,12 @@ var/const/RESIZE_SMALL = 0.75
 var/const/RESIZE_TINY = 0.50
 var/const/RESIZE_MICRO = 0.25
 
+//Moving these here - Jay
+/mob/living
+	var/size_multiplier = 1 //multiplier for the mob's icon size atm
+	var/previous_size = 1
+
+
 #define MOVESPEED_ID_SIZE      "SIZECODE"
 #define MOVESPEED_ID_STOMP     "STEPPY"
 

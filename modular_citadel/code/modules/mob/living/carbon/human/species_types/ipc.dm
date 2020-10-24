@@ -1,5 +1,5 @@
 /datum/species/ipc
-	name = "I.P.C"
+	name = "I.P.C."
 	id = "ipc"
 	say_mod = "beeps"
 	default_color = "00FF00"
@@ -10,16 +10,16 @@
 	inherent_biotypes = list(MOB_ROBOTIC, MOB_HUMANOID)
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna")
 	default_features = list("ipc_screen" = "Blank", "ipc_antenna" = "None")
-	meat = null //robots can't make meat silly!
-//Just robo looking parts.
+	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/ipc
+	gib_types = list(/obj/effect/gibspawner/ipc, /obj/effect/gibspawner/ipc/bodypartless)
+	mutanttongue = /obj/item/organ/tongue/robot/ipc
 	mutant_heart = /obj/item/organ/heart/ipc
 	mutantlungs = /obj/item/organ/lungs/ipc
 	mutantliver = /obj/item/organ/liver/ipc
 	mutantstomach = /obj/item/organ/stomach/ipc
 	mutanteyes = /obj/item/organ/eyes/ipc
-	mutanttongue = /obj/item/organ/tongue/robot
 
-	exotic_bloodtype = "oil"
+	exotic_bloodtype = "HF"
 
 	var/datum/action/innate/monitor_change/screen
 

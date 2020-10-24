@@ -55,7 +55,6 @@
 			continue
 		if(!E.canSpawnEvent(players_amt, gamemode))
 			continue
-
 		var/datum/round_event/event = E.typepath
 		if(!initial(event.fakeable))
 			continue
