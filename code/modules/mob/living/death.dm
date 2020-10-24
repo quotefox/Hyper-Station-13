@@ -21,7 +21,7 @@
 
 /mob/living/proc/spawn_gibs(with_bodyparts, atom/loc_override)
 	var/location = loc_override ? loc_override.drop_location() : drop_location()
-	if(mob_biotypes & MOB_ROBOTIC)
+	if(MOB_ROBOTIC in mob_biotypes)
 		new /obj/effect/gibspawner/robot(location, src, get_static_viruses())
 	else
 		new /obj/effect/gibspawner/generic(location, src, get_static_viruses())
