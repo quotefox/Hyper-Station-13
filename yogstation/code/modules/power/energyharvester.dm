@@ -42,6 +42,9 @@
 		else
 			I.play_tool_sound(src)
 			STOP_PROCESSING(SSobj, src)
+			soundloop.stop()
+			active = 0
+			set_light(0)
 			anchored = 0
 			density = 0
 			user.visible_message( \
@@ -52,15 +55,15 @@
 /obj/item/energy_harvester/process()
 	if(!attached || !anchored)
 		return PROCESS_KILL
-
 	var/datum/powernet/PN = attached.powernet
 	if(PN)
-		set_light(1,1,LIGHT_COLOR_ORANGE)
 		var/power_avaliable = PN.netexcess
 		if(power_avaliable <= 0)
+			set_light(1,1,LIGHT_COLOR_ORANGE)
 			soundloop.stop()
 			active = 0
 			return
+		set_light(1,1,LIGHT_COLOR_GREEN)
 		soundloop.start()
 		active = 1
 		power_avaliable = min(power_avaliable, drain_rate)
@@ -74,7 +77,10 @@
 	soundloop = new(list(src), FALSE)
 
 /obj/item/energy_harvester/Destroy()
+	soundloop.stop()
 	QDEL_NULL(soundloop)
+	active = 0
+	set_light(0)
 	return ..()
 
 /obj/item/energy_harvester/examine(mob/user)
