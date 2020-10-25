@@ -701,7 +701,7 @@
 "ny" = (/obj/structure/table,/obj/item/reagent_containers/rag/towel{pixel_x = 4; pixel_y = 4},/turf/open/floor/plasteel,/area/ruin/space/has_grav/hotel/pool)
 "nz" = (/obj/structure/table,/obj/item/reagent_containers/rag/towel,/obj/item/reagent_containers/rag/towel{pixel_y = 3},/turf/open/floor/plasteel,/area/ruin/space/has_grav/hotel/pool)
 "nA" = (/obj/machinery/light,/obj/structure/table,/obj/item/reagent_containers/rag/towel,/turf/open/floor/plasteel,/area/ruin/space/has_grav/hotel/pool)
-"nB" = (/turf/template_noop,/area/space)
+"nB" = (/obj/machinery/vending/clothing,/turf/open/floor/wood,/area/ruin/space/has_grav/hotel/dock)
 "nC" = (/obj/effect/turf_decal/tile/neutral{dir = 8},/obj/effect/turf_decal/tile/neutral{dir = 1},/turf/open/floor/plasteel/dark,/area/ruin/space/has_grav/hotel/dock)
 "nD" = (/obj/effect/turf_decal/tile/neutral,/turf/open/floor/plasteel/dark,/area/ruin/space/has_grav/hotel/dock)
 "nE" = (/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/red{dir = 8},/obj/effect/turf_decal/tile/red,/turf/open/floor/plasteel/dark,/area/ruin/space/has_grav/hotel/dock)
@@ -715,9 +715,12 @@
 "nM" = (/obj/machinery/door/airlock/maintenance{dir = 4; name = "Hotel Maintenance"; req_access_txt = "201"},/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/open/floor/plating,/area/ruin/space/has_grav/hotel/pool)
 "nN" = (/obj/structure/chair/stool/bar,/obj/effect/turf_decal/tile/bar,/obj/effect/turf_decal/tile/bar{dir = 1},/obj/machinery/light{dir = 8},/turf/open/floor/plasteel,/area/ruin/space/has_grav/hotel/bar)
 "nO" = (/obj/machinery/light/floor{name = "ceiling light"},/turf/open/pool,/area/ruin/space/has_grav/hotel/pool)
+"qs" = (/obj/machinery/vending/autodrobe/all_access,/turf/open/floor/wood,/area/ruin/space/has_grav/hotel/dock)
 "so" = (/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 8},/turf/open/floor/plasteel/yellowsiding/corner{dir = 1},/area/ruin/space/has_grav/hotel/pool)
 "sN" = (/obj/machinery/door/airlock/external/glass,/obj/structure/cable/yellow{icon_state = "1-2"},/obj/effect/mapping_helpers/airlock/cyclelink_helper{dir = 1},/turf/open/floor/plating,/area/ruin/space/has_grav/hotel/power)
+"ux" = (/obj/machinery/light/floor,/turf/open/pool,/area/ruin/space/has_grav/hotel/pool)
 "vL" = (/obj/structure/pool/ladder,/turf/open/pool,/area/ruin/space/has_grav/hotel/pool)
+"wW" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/machinery/vending/kink,/turf/open/floor/wood,/area/ruin/space/has_grav/hotel/dock)
 "Ao" = (/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 8},/turf/open/floor/plasteel/yellowsiding,/area/ruin/space/has_grav/hotel/pool)
 "AM" = (/obj/structure/pool/ladder{dir = 2; pixel_y = 24},/turf/open/pool,/area/ruin/space/has_grav/hotel/pool)
 "Ek" = (/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 8},/turf/open/floor/plasteel/yellowsiding/corner{dir = 4},/area/ruin/space/has_grav/hotel/pool)
@@ -729,9 +732,12 @@
 "Nn" = (/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 8},/obj/structure/pool/Rboard,/turf/open/floor/plasteel/yellowsiding{dir = 8},/area/ruin/space/has_grav/hotel/pool)
 "ON" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 8},/turf/open/floor/plasteel/yellowsiding/corner{dir = 8},/area/ruin/space/has_grav/hotel/pool)
 "Pn" = (/obj/structure/pool/Lboard,/turf/open/pool,/area/ruin/space/has_grav/hotel/pool)
+"QK" = (/obj/machinery/vending/kink,/turf/open/floor/wood,/area/ruin/space/has_grav/hotel/dock)
+"Tq" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/machinery/vending/autodrobe/all_access,/turf/open/floor/wood,/area/ruin/space/has_grav/hotel/dock)
 "Vl" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 8},/turf/open/floor/plasteel,/area/ruin/space/has_grav/hotel/pool)
 "Yx" = (/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 8},/turf/open/floor/plasteel/yellowsiding/corner,/area/ruin/space/has_grav/hotel/pool)
 "Zb" = (/obj/structure/pool/ladder{dir = 8},/turf/open/pool,/area/ruin/space/has_grav/hotel/pool)
+"Zx" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/machinery/vending/clothing,/turf/open/floor/wood,/area/ruin/space/has_grav/hotel/dock)
 "ZS" = (/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 8},/turf/open/floor/plasteel/yellowsiding{dir = 4},/area/ruin/space/has_grav/hotel/pool)
 
 (1,1,1) = {"
@@ -765,7 +771,7 @@ aaaaaaabaaafagalcHcQawcZcZcZcZcZcZcZcZcZcZcZdcdcdcdcdcdcdcdcdcdccTcGcUdhdidididi
 aaaaaaabaaajctcweHeIeJeJeJeJeJeKawawaweLawawawawawawawawawaweMebeTeTdSeOgxeQeQgHgIeTeUeGeVeWgKhsgyfcfagLgKhsgyeWeGgfaaaafLabfbaaaaaaaa
 aaaaaaabaaajcHfdcJfeawckfffgawfhfififjfifififififififififjfictcwfpfpgMflhBhEhEhGhHfpfqfrfsftfufufueWeWeWfufufueWfvgfaaaaaaaafLfbaaaaaa
 aaaaaaabaaajcHcQfififjfifififififihZfxfxfyfzfiilioiAfEfFfGfHfIfJfMfMiDfMfMfMfMfMfMfNameGiFeWeWeWeWeWeWeWeWeWeWeWfvgfaaaaaaaafLfbaaaaaa
-aaaaaaabacajcHcQfifPfQfRfRfSfQfQfTfxfxfxfxfxmYfGfGfGfGfGfGfUeTcFcFcFcFcFcFcFcFcFcFfVfKiGfXfufueWeWeWeWeWeWeWeWeWeGfvfvfvgfaafLfbaaaaaa
+aaaaaaabacajcHcQfifPfQfRfRfSfQfQfTfxfxfxfxfxmYfGfGfGfGfGfGfUeTcFcFcFcFcFcFcFcFcFcFfVfKiGfXfufueWeWnBQKqseWeWeWeWeGfvfvfvgfaafLfbaaaaaa
 aaaaaaabaaajcHcQfifYfQfQfQfQfQfZfigafxgbgcfxfifHfUfHfHgdfHfHeTcFcFcRcFcFgecFcFcFcFcFcFiXfufufueWgheGeGeGgheWeWeWjbfugieGjgacabfbaaaaaa
 aaaaaaabaaajcHgjfigkglgmgnfQfQgofigafxgpgqfxfinNfGgrfGgrfGgreTcFcFdidigsdidididididididigtgugveWeWegjsggeWeWeWeWjufugyfvgfaafLfbaaaaaa
 aaaaaaabaaajcHcQfigkgzgAgBfQfQgkfigCfxgDgEfxfAfGfGfGfGfGfGfGeTcFcFdigFgGjwgJjzjUjVjWjXdigNgOgPeWgQgSgRhrnueWeWeWjYfugyfvgfaafLfbaaaaaa
@@ -774,7 +780,7 @@ aaaaaaabacajhehfhghhhihjhkfQgAhlfihmhnfxfxfxhofGfGfGfGfGfGfGeTcFhpdihqgGgGgGgGgG
 aaaaaaabaaajcHcQfihtgzhuhvfQfQhwfigahnhxhyfxhzgrgXgYgZgXgYgZeTcFcFdihAmPhChDllhFlMlQlSdigNgOgPeWnJnGgwnInKeWeWeWjufugyfvgfaafLfbaaaaaa
 aaaaaaabaaajcHcQfifihIfifififififigahnhJhKfxhzfGfGfGfGfGfGfGeTcFcFdidimQdidididididididihLhMhNeWeWeghOggeWeWeWeWjYfugyfvgfaafLfbaaaaaa
 aaaaaaabaaajcHhPcJhQhRcJcJcJcJhSfihThngpgpfxhUhVhWhWhWhWhXhYeTcFcFcFcFmRmSmSmTcFcFmncFiXfufufueWgheGeGeGgheWeWeWmxfugieGjgacabfbaaaaaa
-aaaaaaabaaajiaibicidiciciciciecQfiifhnfxfxfxhUigihihihihihiieTcFcFcFcFcFcFcFmUcFijikcLmAimininmKmKmKmKmKmKmKmKmMeGfvfvfvgfaafLfbaaaaaa
+aaaaaaabaaajiaibicidiciciciciecQfiifhnfxfxfxhUigihihihihihiieTcFcFcFcFcFcFcFmUcFijikcLmAimininmKmKZxwWTqmKmKmKmMeGfvfvfvgfaafLfbaaaaaa
 aaaaaaabacipiqirisitiuiviwixircQfiiyhnfxizfxmVihihihiBihihiieTeTiCeTeTeTeTeTmWeTmXiEameGiPeWeWeWeWeWeWeWeWeWeWiQfvgfaaaaaaaafLfbaaaaaa
 aaaaaaaaabaaajiriHiIiJiJiKiLircQfifihIfififihUfififififififiamamamamamamamiMmWeTdSiNiOeGiPeWfufufueWeWeWfufufuiQfvgfaaaaaaaafLfbaaaaaa
 aaaaaaaaabaaajiriRiIiSiSiKiTirhPcJiUiVcJcJcJiWcJcJcJcJhQcJcJcJcJiYiZcJcJnLjamZjanajcjdeGjeeWgKhsgyeWeWjfgKhsgyjheGgfaaaafLabfbaaaaaaaa
@@ -785,11 +791,11 @@ aaaaaaaaabaaajirkqkrksktkukvkwjGkxkykzkAklkBknknkCjPawcQjQjRjRkDkDkEkEkEkDnhnhnh
 aaaaaaaaabaaajirkHkHkHkIkHkHkJjGkKkkkLkMkNkmkOkPknjPawcQjQkQjRkDYxAoAoAoAoAoAoFhkRkSkSkSkSkSONVlkTkUjQjQjQjQjQjQacacacabaaaaaaaaaaaaaa
 aaaaaaaaabaaajirkVkWkXkYkZkHlajGlbkklcldkljGlelflgjPawcQjQjRjRlhZSliljIFIFAMIFIFIFAMIFIFIFliKinjjRnkjQlmlnlnlojQaaaaaaabaaaaaaaaaaaaaa
 aaaaaaabaaaaajirlplplqlplpkHsNjGlrkklskkkljGjGjGjGjPedcQjQjRjRlhZSIFIFIFIFIFIFIFIFIFnlIFIFIFKikDjRltjQlmlululojQaaaaabaaaaaaaaaaaaaaaa
-aaaaabaalvaaajirkHkHkHkHkHkHajjGlwlxlxlylzjGjMjNlAjPawcQjQjRjRlhZSvLIFnOIFIFIFIFIFIFIFnOIFZbKinjjRnnjQlmlululojQaaaaabaaaaaaaaaaaaaaaa
+aaaaabaalvaaajirkHkHkHkHkHkHajjGlwlxlxlylzjGjMjNlAjPawcQjQjRjRlhZSvLIFnOIFIFuxIFIFuxIFIFuxZbKinjjRnnjQlmlululojQaaaaabaaaaaaaaaaaaaaaa
 aaabaaaalBlClDlEaaaaaaaaaaaaajjGjGlFjGkxklkmknknknjPawcQjQjRjRkDZSIFIFIFIFIFIFIFIFIFIFIFIFIFKikDjRjRjQlGlHlHlIjQaaaaabaaaaaaaaaaaaaaaa
 aaabacacacacaclJagagagagagagaljGlKlLjGkxklkBknknkCjPawcQjQjRjRkDZSIFIFIFIFIFIFKoIFIFIFIFIFPnNnnjjRjRnolHlHlHlHjQacacabaaaaaaaaaaaaaaaa
 aaabaaaaaaaaaaajaaaaaaaaaaaaaajGlNlOjGkxklkmkOkPknjPawcQjQkQjRkDZSIFIFIFIFlPIFIFIFIFIFIFIFIFKikDjRkUjQnplHlHlRjQaaaaabaaaaaaaaaaaaaaaa
-abaaaaaaaaaaaaajaaaaaaaaaaaaaajGnqlTjGlwlUjGlelflgjPcIfejQjRjRlhZSvLIFnOIFIFIFIFIFIFIFnOIFZbKinjjRjRjQjQjQjQjQjQaaaaabaaaaaaaaaaaaaaaa
+abaaaaaaaaaaaaajaaaaaaaaaaaaaajGnqlTjGlwlUjGlelflgjPcIfejQjRjRlhZSvLIFnOIFIFuxIFIFuxIFIFuxZbKinjjRjRjQjQjQjQjQjQaaaaabaaaaaaaaaaaaaaaa
 abaclVlWlWlWlWlXlYlYlYlYlZacacjGjGjGjGjGjGjGjGjGjGjPcQmajQjRjRlhZSIFIFIFIFIFIFIFIFIFIFnrIFIFKikDjRjRjQmbmcmclRjQaaaaabaaaaaaaaaaaaaaaa
 abaaaaaaaaaaaaajaaaaaaaaaaaaaaaamdmemfmgmhmimjmkmlmmcQckjQjRjRlhZSliIFIFIFnmIFIFIFnmIFIFIFliKinjjRjRnslHlHlHlHjQaaaaabaaaaaaaaaaaaaaaa
 abaaaaaaaaaaaaajaaaaaaaaaaaaaaaamdmlmlmlmlmompmpmpmqhfcvjtmrjRkDEkIQIQIQIQIQIQIQIQIQIQIQIQIQsokDjRjRjQmslHlHmtjQaaaaabaaaaaaaaaaaaaaaa
@@ -801,6 +807,6 @@ abaaaaaaaaaaaaajaaaaaaaaaaaaaaaaaaacaaaaaaaaacaaaaaaaaaaaaaaacaaaaaaaaaaacaaaaaa
 abaaaaaaaaaaaaajaaaaaaaaaaaaaaabababababababababaaaaaaaaaaaaacaaaaaaaaaaacaaaaaaaaaaacaaaaaaaaaaacaaaaaaaaaaaaacaaaaabaaaaaaaaaaaaaaaa
 abaclVlWlWlWlWajlYlYlYlYlZacabaaaaaaaaaaaaaaaaaaababababababababababababababababababababababababababababababababababaaaaaaaaaaaaaaaaaa
 abaaaaaaaaaaaamOaaaaaaaaaaaaabaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-aaabababababaaacaaabababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaanBnBnBaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+aaabababababaaacaaabababababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 aaaaaaaaaaaaabababaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 "}
