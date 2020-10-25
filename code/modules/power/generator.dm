@@ -32,7 +32,6 @@
 	var/list/sounds_engine = list(sound('sound/machines/tractor_running2.ogg'),sound('sound/machines/tractor_running3.ogg'))
 	var/list/sounds_enginegrump = list(sound('sound/machines/engine_grump1.ogg'),sound('sound/machines/engine_grump2.ogg'),sound('sound/machines/engine_grump3.ogg'),sound('sound/machines/engine_grump4.ogg'))
 
-
 /obj/machinery/power/generator/Initialize(mapload)
 	. = ..()
 	find_circs()
@@ -148,8 +147,8 @@
 			playsound(src.loc, sound_engine2, 60, 0)
 		if(101 to 500)
 			playsound(src.loc, sound_bellalert, 60, 0)
-			//if (prob(5))
-				//Sparks here!
+			if(prob(5))
+				do_sparks(5,FALSE,src)
 		if(501 to 1000)
 			playsound(src.loc, sound_warningbuzzer, 50, 0)
 			if (prob(5))
@@ -212,13 +211,13 @@
 					shake_camera(M, 3, 16)
 				grumping = 0
 				grump -= 30
-
 			if (prob(33)) // lowered because all the DEL procs related to zap are stacking up in the profiler
-				playsound(src.loc, 'sound/weapons/emitter2.ogg', 100, 1, extrarange = 10)
-				zapStuff(src, 5, min(genlev, 20000))
 				if(prob(5))
 					playsound(src.loc, sound_bigzap, 100, 1, extrarange = 10)
 					zapStuff(src, 5, min(genlev, 30000)) //BIG ZAP
+				else
+					playsound(src.loc, 'sound/weapons/emitter2.ogg', 100, 1, extrarange = 10)
+					zapStuff(src, 5, min(genlev, 20000))
 			if(prob(5))
 				src.visible_message("<span class='alert'>[src] [pick("rumbles", "groans", "shudders", "grustles", "hums", "thrums")] [pick("ominously", "oddly", "strangely", "oddly", "worringly", "softly", "loudly")]!</span>")
 			else if (prob(2))
@@ -354,7 +353,6 @@
 	if(cold_circ)
 		cold_circ.generator = null
 		cold_circ = null
-
 
 /obj/machinery/power/generator/proc/zapStuff(atom/zapstart, range = 3, power)
 	. = zapstart.dir
