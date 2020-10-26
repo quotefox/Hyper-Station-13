@@ -441,6 +441,46 @@
 	icon_state = "letterman_n"
 	item_state = "letterman_n"
 
+/obj/item/clothing/suit/toggle/jacket_yellow
+	name = "Yellow Jacket"
+	desc = "A yellow jacket with a fluffy collar."
+	icon_state = "jacket_yellow"
+	item_state = "jacket_yellow"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/suit/toggle/jacket_orange
+	name = "Orange Jacket"
+	desc = "A orange jacket with a fluffy collar."
+	icon_state = "jacket_orange"
+	item_state = "jacket_orange"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/suit/toggle/jacket_red
+	name = "Red Jacket"
+	desc = "A red jacket with a fluffy collar."
+	icon_state = "jacket_red"
+	item_state = "jacket_red"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/suit/toggle/jacket_purple
+	name = "Purple Jacket"
+	desc = "A purple jacket with a fluffy collar."
+	icon_state = "jacket_purple"
+	item_state = "jacket_purple"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/suit/toggle/jacket_white
+	name = "White Jacket"
+	desc = "A white jacket with a fluffy collar."
+	icon_state = "jacket_white"
+	item_state = "jacket_white"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
 /obj/item/clothing/suit/dracula
 	name = "dracula coat"
 	desc = "Looks like this belongs in a very old movie set."
