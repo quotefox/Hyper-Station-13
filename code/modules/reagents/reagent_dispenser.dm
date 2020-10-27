@@ -87,7 +87,7 @@
 			var/boom_message = "[ADMIN_LOOKUPFLW(P.firer)] triggered a fueltank explosion via projectile."
 			GLOB.bombers += boom_message
 			message_admins(boom_message)
-			P.firer.log_message("triggered a fueltank explosion via projectile.", LOG_ATTACK)
+			P.firer?.log_message("triggered a fueltank explosion via projectile.", LOG_ATTACK)
 			boom()
 
 /obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
