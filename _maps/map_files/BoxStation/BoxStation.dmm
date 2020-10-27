@@ -62818,6 +62818,10 @@
 /obj/machinery/bloodbankgen,
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
+"xSM" = (
+/mob/living/simple_animal/hostile/carp/cayenne/lia,
+/turf/open/floor/carpet/red,
+/area/crew_quarters/heads/hos)
 "xYc" = (
 /obj/item/crowbar,
 /obj/item/wrench,
@@ -97342,7 +97346,7 @@ aad
 abn
 abJ
 acb
-aca
+xSM
 aca
 adJ
 abm
