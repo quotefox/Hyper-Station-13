@@ -40,9 +40,11 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 	var/eating = FALSE
 	var/obj/effect/dummy/floorcluwne_orbit/poi
 	var/obj/effect/temp_visual/fcluwne_manifest/cluwnehole
-	//move_resist = INFINITY
+	move_resist = INFINITY
 	hud_type = /datum/hud/ghost
 	hud_possible = list(ANTAG_HUD)
+	var/forced = FALSE
+	var/smite = FALSE
 
 
 /mob/living/simple_animal/hostile/floor_cluwne/Initialize()
@@ -52,7 +54,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 	ADD_TRAIT(access_card, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT)
 	invalid_area_typecache = typecacheof(invalid_area_typecache)
 	Manifest()
-	if(!current_victim)
+	if(!current_victim && forced == FALSE)
 		Acquire_Victim()
 	poi = new(src)
 
@@ -86,9 +88,8 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 		var/area/tp = GLOB.teleportlocs[area]
 		forceMove(pick(get_area_turfs(tp.type)))
 
-	if(!current_victim)
+	if(!current_victim && forced == FALSE)
 		Acquire_Victim()
-
 	if(stage && !manifested)
 		On_Stage()
 
@@ -101,9 +102,15 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 	var/turf/T = get_turf(current_victim)
 	A = get_area(T) // Has to be separated from the below since is_type_in_typecache is also a funky macro
 	if(prob(5))//checks roughly every 20 ticks
-		if(current_victim.stat == DEAD || is_type_in_typecache(A, invalid_area_typecache) || !is_station_level(current_victim.z))
-			if(!Found_You())
+		if(current_victim?.stat == DEAD || is_type_in_typecache(A, invalid_area_typecache) || !is_station_level(current_victim?.z))
+			if(!Found_You() && forced == FALSE)
 				Acquire_Victim()
+			else if (!Found_You() && forced == TRUE)
+				message_admins("Floor Cluwne was deleted due to a lack of valid targets, if this was a manually targeted instance please re-evaluate your choice.")
+				qdel(src)
+		if(!current_victim || current_victim?.stat == DEAD)
+			message_admins("Floor Cluwne was deleted due to a lack of valid targets or an internal error when locating one.")
+			qdel(src)
 
 	if(get_dist(src, current_victim) > 9 && !manifested &&  !is_type_in_typecache(A, invalid_area_typecache))//if cluwne gets stuck he just teleports
 		do_teleport(src, T)
@@ -160,25 +167,25 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 	return FALSE
 
 /mob/living/simple_animal/hostile/floor_cluwne/proc/Acquire_Victim(specific)
-	for(var/I in GLOB.player_list)//better than a potential recursive loop
-		var/mob/living/carbon/human/H = pick(GLOB.player_list)//so the check is fair
-		var/area/A
-		if(specific)
-			H = specific
+	var/mob/living/carbon/human/H
+	var/area/A
+	if (!specific && forced == FALSE)
+		for(var/I in GLOB.player_list)//better than a potential recursive loop
+			H = pick(GLOB.player_list)//so the check is fair
 			A = get_area(H.loc)
-			if(H.stat != DEAD && H.has_dna() && !is_type_in_typecache(A, invalid_area_typecache) && is_station_level(H.z))
+			if(H && ishuman(H) && H.stat != DEAD && H != current_victim && H.has_dna() && !is_type_in_typecache(A, invalid_area_typecache) && is_station_level(H.z))
+				current_victim = H
+				interest = 0
+				stage = STAGE_HAUNT
 				return target = current_victim
-
+	else
+		H = specific
 		A = get_area(H.loc)
-		if(H && ishuman(H) && H.stat != DEAD && H != current_victim && H.has_dna() && !is_type_in_typecache(A, invalid_area_typecache) && is_station_level(H.z))
-			current_victim = H
-			interest = 0
-			stage = STAGE_HAUNT
+		if(H.stat != DEAD && H.has_dna() && !is_type_in_typecache(A, invalid_area_typecache) && is_station_level(H.z))
 			return target = current_victim
-
+	
 	message_admins("Floor Cluwne was deleted due to a lack of valid targets, if this was a manually targeted instance please re-evaluate your choice.")
 	qdel(src)
-
 
 /mob/living/simple_animal/hostile/floor_cluwne/proc/Manifest()//handles disappearing and appearance anim
 	if(manifested)
@@ -214,7 +221,6 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 		return
 	switch(stage)
 		if(STAGE_HAUNT)
-
 			if(prob(5))
 				H.playsound_local(src,'yogstation/sound/voice/cluwnelaugh2_reversed.ogg', 1)
 
@@ -333,14 +339,16 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 							forceMove(H.loc)
 				to_chat(H, "<span class='userdanger'>You feel the floor closing in on your feet!</span>")
 				H.Stun(300, ignore_canstun = TRUE)
-				//H.Paralyze(300)
 				H.emote("scream")
 				H.adjustBruteLoss(10)
 				manifested = TRUE
 				Manifest()
 				if(!eating)
 					empulse(src, 6, 6)
-					addtimer(CALLBACK(src, /mob/living/simple_animal/hostile/floor_cluwne/.proc/Grab, H), 50, TIMER_OVERRIDE|TIMER_UNIQUE)
+					if(!smite)
+						addtimer(CALLBACK(src, /mob/living/simple_animal/hostile/floor_cluwne/.proc/Grab, H), 50, TIMER_OVERRIDE|TIMER_UNIQUE)
+					else
+						addtimer(CALLBACK(src, /mob/living/simple_animal/hostile/floor_cluwne/.proc/Grab, H), 10, TIMER_OVERRIDE|TIMER_UNIQUE)
 					for(var/turf/open/O in range(src, 6))
 						O.MakeSlippery(TURF_WET_LUBE, 30)
 						playsound(src, 'sound/effects/meteorimpact.ogg', 30, 1)
@@ -383,8 +391,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 		//Acquire_Victim()
 		message_admins("Target is either not human and/or not a client. Deleting floor cluwne.")
 		H.invisibility = 0
-		Destroy()
-		return
+		qdel(src)
 	playsound(H, 'yogstation/sound/effects/cluwne_feast.ogg', 100, 0, -4)
 	var/red_splash = list(1,0,0,0.8,0.2,0, 0.8,0,0.2,0.1,0,0)
 	var/pure_red = list(0,0,0,0,0,0,0,0,0,1,0,0)
@@ -403,8 +410,12 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 
 	interest = 0
 	stage = STAGE_HAUNT
-	message_admins("Target killed. Deleting floor cluwne.")
-	Destroy()
+	if(forced)
+		message_admins("Target killed. Deleting floor cluwne.")
+		Destroy()
+	else
+		message_admins("[H] Killed. Acquiring new target.")
+		Acquire_Victim()
 
 //manifestation animation
 /obj/effect/temp_visual/fcluwne_manifest
