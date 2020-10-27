@@ -1273,8 +1273,9 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			new /obj/effect/temp_visual/target(get_turf(target))
 		if(ADMIN_PUNISHMENT_CLUWNE)
 			var/mob/living/simple_animal/hostile/floor_cluwne/FC = new /mob/living/simple_animal/hostile/floor_cluwne(get_turf(target))
+			FC.smite = TRUE
+			FC.forced = TRUE
 			FC.Acquire_Victim(target)
-			FC.current_victim = target
 			FC.interest = 5000;
 			FC.maxHealth = 5000
 			FC.health = 5000
