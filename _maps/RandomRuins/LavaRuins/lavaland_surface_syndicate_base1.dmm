@@ -715,6 +715,7 @@
 "EZ" = (/obj/machinery/door/airlock/external{req_access_txt = "150"},/obj/structure/fans/tiny,/obj/effect/mapping_helpers/airlock/cyclelink_helper,/turf/open/floor/plating,/area/ruin/unpowered/syndicate_lava_base/arrivals)
 "IJ" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{dir = 1},/turf/closed/wall/mineral/plastitanium/nodiagonal,/area/ruin/unpowered/syndicate_lava_base/engineering)
 "Pa" = (/turf/closed/wall/mineral/plastitanium/nodiagonal,/area/ruin/unpowered/syndicate_lava_base/circuits)
+"Rs" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{dir = 4},/obj/structure/cable/yellow{icon_state = "4-8"},/obj/effect/turf_decal/tile/red{dir = 1},/obj/effect/turf_decal/tile/red{dir = 4},/obj/machinery/vending/kink,/turf/open/floor/plasteel,/area/ruin/unpowered/syndicate_lava_base/arrivals)
 "RE" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 9},/turf/closed/wall/mineral/plastitanium/nodiagonal,/area/ruin/unpowered/syndicate_lava_base/engineering)
 "RV" = (/obj/structure/sign/warning/fire,/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/closed/wall/mineral/plastitanium/nodiagonal,/area/ruin/unpowered/syndicate_lava_base/engineering)
 
@@ -755,7 +756,7 @@ abababababababababababdGlvlwjylxjZjNlylzlAlBlCaklElFjyjpkQlGlHlIlJlKIJlLlMlNlOlt
 abababababababababababhalTlTjyjylUjZlVlWlXlYlZmambmcjyjpkQmdmelImfkQkUmgmhmimjmkmllbmmldjuababab
 ababababmnmnmnmpmpmpmpmnmqmrmsjymtknmumvmwlAmxjymyjyjymzkQmAmBmCmDmEIJmFmGmHmImJmKjujujujuababab
 abababadmnmMmnmPmPmQmRmnmSmSmTjymUjzmUjyahaijyjyjyjymXmYkTmZnalIlInbIJncndneRVngkDjuabababababab
-abababmnmMmMmNaEnknlnmmonnnnnonpnpamnrjyjyjPjynsntnufDnwhWnynzaVaVcDIJjunDnEtWnFnGjuabababababab
+abababmnmMmMmNaEnknlnmmonnnnnonpnpamnrjyjyjPjynsntRsfDnwhWnynzaVaVcDIJjunDnEtWnFnGjuabababababab
 abababmnnhninjninInJnKnLnOnPnQnNfPanaoarnunTnUnVnWnXfKauhXoaobfknBfBuBodoeofREldogjuabababababab
 abababmnmMmMmnohoiojokmnmTEZmTololcycCPacIopfXfXfXgVgWgXPaoralkQkQkQjujuotnEjujujuaqabababababab
 abababaymnmMmnaIouovmnmnmTaSPaPaPaPacJcKPamTgYgYgYgYcLmTmTmTmTmTgaiymTozoAoBoCababababababababab
