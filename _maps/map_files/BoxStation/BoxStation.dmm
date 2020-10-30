@@ -28566,7 +28566,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
-/obj/machinery/bloodbankgen,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "blu" = (
@@ -39058,20 +39057,10 @@
 /turf/closed/wall,
 /area/medical/sleeper)
 "bHB" = (
-/obj/structure/table,
-/obj/item/storage/belt/medical{
-	pixel_y = 2
-	},
-/obj/item/storage/belt/medical{
-	pixel_y = 2
-	},
-/obj/item/storage/belt/medical{
-	pixel_y = 2
-	},
-/obj/item/clothing/neck/stethoscope,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/machinery/bloodbankgen,
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
 "bHC" = (
@@ -40205,6 +40194,16 @@
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/glasses/hud/health,
 /obj/item/clothing/glasses/hud/health,
+/obj/item/clothing/neck/stethoscope,
+/obj/item/storage/belt/medical{
+	pixel_y = 2
+	},
+/obj/item/storage/belt/medical{
+	pixel_y = 2
+	},
+/obj/item/storage/belt/medical{
+	pixel_y = 2
+	},
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
 "bKm" = (
@@ -62815,9 +62814,9 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "xNJ" = (
-/obj/machinery/bloodbankgen,
-/turf/open/floor/plasteel/white,
-/area/medical/sleeper)
+/obj/effect/landmark/barthpot,
+/turf/open/floor/carpet,
+/area/library)
 "xSM" = (
 /mob/living/simple_animal/hostile/carp/cayenne/lia,
 /turf/open/floor/carpet/red,
@@ -99734,7 +99733,7 @@ bCs
 bxa
 bER
 bFV
-xNJ
+byu
 byu
 bKn
 bLF
@@ -106129,7 +106128,7 @@ aMp
 btJ
 aOM
 aOM
-aOM
+xNJ
 aOM
 aOM
 aOM

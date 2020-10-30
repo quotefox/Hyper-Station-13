@@ -127,6 +127,9 @@
 			screen_obj.icon_state = "mood[mood_level]"
 
 /datum/component/mood/process() //Called on SSmood process
+	if(QDELETED(parent)) // workaround to an obnoxious sneaky periodical runtime.
+		qdel(src)
+		return
 	var/mob/living/owner = parent
 
 	switch(mood_level)
@@ -284,7 +287,7 @@
 	RegisterSignal(screen_obj, COMSIG_CLICK, .proc/hud_click)
 
 /datum/component/mood/proc/unmodify_hud(datum/source)
-	if(!screen_obj)
+	if(!screen_obj || !parent)
 		return
 	var/mob/living/owner = parent
 	var/datum/hud/hud = owner.hud_used
