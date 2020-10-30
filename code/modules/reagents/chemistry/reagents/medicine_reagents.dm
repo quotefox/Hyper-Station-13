@@ -291,7 +291,7 @@
 	if(M.getFireLoss() > 30)
 		M.adjustFireLoss(-4*REM, 0) //Twice as effective as silver sulfadiazine for severe burns
 	else
-		M.adjustFireLoss(-2*REM, 0) //But only a quarter as effective for more minor ones
+		M.adjustFireLoss(-2*REM, 0) //Just as good as base for minor ones
 	..()
 	. = 1
 
@@ -595,7 +595,7 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 	if(M.getBruteLoss() > 30)
 		M.adjustBruteLoss(-4*REM, 0) //Twice as effective as styptic powder for severe bruising
 	else
-		M.adjustBruteLoss(-2*REM, 0) //But only a quarter as effective for more minor ones
+		M.adjustBruteLoss(-2*REM, 0) //Just as good as base for minor ones
 	..()
 	. = 1
 
