@@ -362,3 +362,38 @@ obj/item/reagent_containers/food/snacks/store/cake/pound_cake
 	filling_color = "#00FFFF"
 	tastes = list("cake" = 1, "sugar" = 1, "joy" = 10)
 	foodtype = GRAIN | SUGAR | DAIRY
+
+/obj/item/reagent_containers/food/snacks/store/cake/peach_cake
+	name = "peach cake"
+	desc = "A peach filled cake."
+	icon_state = "peachcake"
+	slice_path = /obj/item/reagent_containers/food/snacks/cakeslice/peach_slice
+	bonus_reagents = list("sugar" = 5, "peachjuice" = 15)
+	tastes = list("cake" = 1, "sugar" = 1, "peachjuice" = 10)
+	foodtype = GRAIN | SUGAR | DAIRY
+
+/obj/item/reagent_containers/food/snacks/cakeslice/peach_slice
+	name = "peach cake slice"
+	desc = "A slice of peach cake."
+	icon_state = "peach_slice"
+	filling_color = "#00FFFF"
+	tastes = list("cake" = 1, "sugar" = 1, "peachjuice" = 10)
+	foodtype = GRAIN | SUGAR | DAIRY
+
+/obj/item/reagent_containers/food/snacks/store/cake/trumpet
+	name = "spaceman's cake"
+	desc = "A spaceman's trumpet frosted cake."
+	icon_state = "trumpetcake"
+	slice_path = /obj/item/reagent_containers/food/snacks/cakeslice/trumpet
+	bonus_reagents = list("polypyr" = 15, "cream" = 5, "vitamin" = 5, "berryjuice" = 5)
+	filling_color = "#7A3D80"
+	tastes = list("cake" = 4, "violets" = 2, "jam" = 2)
+	foodtype = GRAIN | DAIRY | FRUIT | SUGAR
+
+/obj/item/reagent_containers/food/snacks/cakeslice/trumpet
+	name = "spaceman's cake"
+	desc = "A spaceman's trumpet frosted cake."
+	icon_state = "trumpetcakeslice"
+	filling_color = "#7A3D80"
+	tastes = list("cake" = 4, "violets" = 2, "jam" = 2)
+	foodtype = GRAIN | DAIRY | FRUIT | SUGAR
