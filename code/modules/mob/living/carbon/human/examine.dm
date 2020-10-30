@@ -7,6 +7,7 @@
 	var/t_has = p_have()
 	var/t_is = p_are()
 	var/obscure_name
+	var/dispSize = round(12*size_multiplier) // gets the character's sprite size percent and converts it to the nearest half foot
 
 	if(isliving(user))
 		var/mob/living/L = user
@@ -105,6 +106,15 @@
 	var/effects_exam = status_effect_examines()
 	if(!isnull(effects_exam))
 		. += effects_exam
+
+	//Approximate character height based on current sprite scale
+	if(dispSize % 2)
+		dispSize = dispSize - 1 //makes it even
+		dispSize = dispSize / 2 //turns it into it's approximation in feet
+		. += "[t_He] appears to be around [dispSize] and a half feet tall."
+	else
+		dispSize = dispSize / 2
+		. += "[t_He] appears to be around [dispSize] feet tall."
 
 	//Can be picked up?
 	if(can_be_held)
@@ -333,7 +343,7 @@
 
 	if (length(msg))
 		. += "<span class='warning'>[msg.Join("")]</span>"
-		
+
 	var/traitstring = get_trait_string()
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
