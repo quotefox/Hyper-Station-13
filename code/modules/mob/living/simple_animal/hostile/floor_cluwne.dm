@@ -45,6 +45,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 	hud_possible = list(ANTAG_HUD)
 	var/forced = FALSE
 	var/smite = FALSE
+	var/smiteactiondelay = 1
 
 
 /mob/living/simple_animal/hostile/floor_cluwne/Initialize()
@@ -217,8 +218,13 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 /mob/living/simple_animal/hostile/floor_cluwne/proc/On_Stage()
 	var/mob/living/carbon/human/H = current_victim
 	if(!H)
-		FindTarget()
-		return
+		if(forced == FALSE || smite == FALSE)
+			FindTarget()
+			return
+		else
+			message_admins("Target is... Gone? Deleting Cluwne.")
+			qdel(src)
+		
 	switch(stage)
 		if(STAGE_HAUNT)
 			if(prob(5))
@@ -348,7 +354,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 					if(!smite)
 						addtimer(CALLBACK(src, /mob/living/simple_animal/hostile/floor_cluwne/.proc/Grab, H), 50, TIMER_OVERRIDE|TIMER_UNIQUE)
 					else
-						addtimer(CALLBACK(src, /mob/living/simple_animal/hostile/floor_cluwne/.proc/Grab, H), 10, TIMER_OVERRIDE|TIMER_UNIQUE)
+						addtimer(CALLBACK(src, /mob/living/simple_animal/hostile/floor_cluwne/.proc/Grab, H), smiteactiondelay, TIMER_OVERRIDE|TIMER_UNIQUE)
 					for(var/turf/open/O in range(src, 6))
 						O.MakeSlippery(TURF_WET_LUBE, 30)
 						playsound(src, 'sound/effects/meteorimpact.ogg', 30, 1)
@@ -356,6 +362,8 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 
 
 /mob/living/simple_animal/hostile/floor_cluwne/proc/Grab(mob/living/carbon/human/H)
+	if (H != current_victim)
+		return
 	to_chat(H, "<span class='userdanger'>You feel a cold, gloved hand clamp down on your ankle!</span>")
 	for(var/I in 1 to get_dist(src, H))
 		if(do_after(src, 5, target = H))
@@ -410,9 +418,9 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 
 	interest = 0
 	stage = STAGE_HAUNT
-	if(forced)
+	if(forced == TRUE || smite == TRUE)
 		message_admins("Target killed. Deleting floor cluwne.")
-		Destroy()
+		qdel(src)
 	else
 		message_admins("[H] Killed. Acquiring new target.")
 		Acquire_Victim()
