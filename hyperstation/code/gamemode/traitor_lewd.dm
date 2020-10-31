@@ -190,7 +190,7 @@ GLOBAL_LIST_INIT(hyper_special_roles, list(
 			if(should_equip)
 				equip(silent)
 				for(var/obj/I in owner.current.GetAllContents())
-					GET_COMPONENT_FROM(hidden_uplink, /datum/component/uplink, I)
+					var/datum/component/uplink/hidden_uplink = I.GetComponent(/datum/component/uplink)
 					if(hidden_uplink)
 						lewd_uplink_list = get_custom_uplink_items(lewd_uplink_list_raw, /datum/game_mode/traitor/lewd, TRUE, FALSE)
 						hidden_uplink.uplink_items = lewd_uplink_list

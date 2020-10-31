@@ -365,3 +365,7 @@
 
 /datum/techweb/specialized/autounlocking/exofab
 	allowed_buildtypes = MECHFAB
+
+/datum/techweb/specialized/autounlocking/autobottler
+	design_autounlock_buildtypes = AUTOBOTTLER
+	allowed_buildtypes = AUTOBOTTLER 
