@@ -1276,7 +1276,9 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			FC.smite = TRUE
 			FC.forced = TRUE
 			FC.Acquire_Victim(target)
-			FC.interest = 5000;
+			FC.target = target
+			FC.current_victim = target
+			FC.interest = 5000
 			FC.maxHealth = 5000
 			FC.health = 5000
 		if(ADMIN_PUNISHMENT_ROD)
