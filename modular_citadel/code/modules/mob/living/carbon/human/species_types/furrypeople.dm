@@ -264,7 +264,7 @@
 	mutantstomach = /obj/item/organ/stomach/ipc
 	mutanteyes = /obj/item/organ/eyes/ipc
 
-	exotic_bloodtype = "S"
+	exotic_bloodtype = "SY"
 
 
 /datum/species/synthliz/qualifies_for_rank(rank, list/features)
