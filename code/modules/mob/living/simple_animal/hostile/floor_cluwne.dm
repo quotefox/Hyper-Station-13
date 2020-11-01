@@ -55,8 +55,9 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 	ADD_TRAIT(access_card, TRAIT_NODROP, ABSTRACT_ITEM_TRAIT)
 	invalid_area_typecache = typecacheof(invalid_area_typecache)
 	Manifest()
-	if(!current_victim && forced == FALSE)
-		Acquire_Victim()
+	if(!current_victim && forced == FALSE && smite == FALSE)
+		addtimer(CALLBACK(src, /mob/living/simple_animal/hostile/floor_cluwne/.proc/Acquire_Victim), 50, TIMER_OVERRIDE|TIMER_UNIQUE)
+		//Acquire_Victim()
 	poi = new(src)
 
 /mob/living/simple_animal/hostile/floor_cluwne/med_hud_set_health()
@@ -89,7 +90,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 		var/area/tp = GLOB.teleportlocs[area]
 		forceMove(pick(get_area_turfs(tp.type)))
 
-	if(!current_victim && forced == FALSE)
+	if(!current_victim && forced == FALSE && smite == FALSE)
 		Acquire_Victim()
 	if(stage && !manifested)
 		On_Stage()
@@ -104,7 +105,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 	A = get_area(T) // Has to be separated from the below since is_type_in_typecache is also a funky macro
 	if(prob(5))//checks roughly every 20 ticks
 		if(current_victim?.stat == DEAD || is_type_in_typecache(A, invalid_area_typecache) || !is_station_level(current_victim?.z))
-			if(!Found_You() && forced == FALSE)
+			if(!Found_You() && forced == FALSE && smite == FALSE)
 				Acquire_Victim()
 			else if (!Found_You() && forced == TRUE)
 				message_admins("Floor Cluwne was deleted due to a lack of valid targets, if this was a manually targeted instance please re-evaluate your choice.")
@@ -363,6 +364,7 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 
 /mob/living/simple_animal/hostile/floor_cluwne/proc/Grab(mob/living/carbon/human/H)
 	if (H != current_victim)
+		message_admins("Cluwne tried to grab someone who's not the target. Returning.")
 		return
 	to_chat(H, "<span class='userdanger'>You feel a cold, gloved hand clamp down on your ankle!</span>")
 	for(var/I in 1 to get_dist(src, H))
@@ -395,6 +397,9 @@ GLOBAL_VAR_INIT(floor_cluwnes, 0)
 
 
 /mob/living/simple_animal/hostile/floor_cluwne/proc/Kill(mob/living/carbon/human/H)
+	if (H != current_victim)
+		message_admins("Cluwne tried to kill someone who's not the target. Returning.")
+		return
 	if(!istype(H) || !H.client)
 		//Acquire_Victim()
 		message_admins("Target is either not human and/or not a client. Deleting floor cluwne.")
