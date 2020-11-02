@@ -7,6 +7,10 @@
 /*
  * Gifts
  */
+/var/static/blacklisted_items = typecacheof(list(
+	/obj/singularity,
+	/obj/structure/destructible/clockwork/massive,
+	/obj/machinery/power/supermatter_crystal))
 
 GLOBAL_LIST_EMPTY(possible_gifts)
 
@@ -95,7 +99,7 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 		var/list/gift_types_list = subtypesof(/obj/item)
 		for(var/V in gift_types_list)
 			var/obj/item/I = V
-			if((!initial(I.icon_state)) || (!initial(I.item_state)) || (initial(I.item_flags) & ABSTRACT))
+			if((!initial(I.icon_state)) || (!initial(I.item_state)) || (initial(I.item_flags) & ABSTRACT) || (is_type_in_typecache(I, blacklisted_items)))
 				gift_types_list -= V
 		GLOB.possible_gifts = gift_types_list
 	var/gift_type = pick(GLOB.possible_gifts)
