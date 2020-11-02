@@ -433,6 +433,8 @@
 	var/datum/round_event_control/operative/loneop = locate(/datum/round_event_control/operative) in SSevents.control
 	if(istype(loneop))
 		weight = loneop.weight //Get the weight whenever it's called.
+		if(weight < 5)
+			weight = 0
 		to_chat(GLOB.admins, "<span class='adminnotice'>Current LoneOP weight [weight]</span>")
 	else
 		to_chat(GLOB.admins, "<span class='adminnotice'>LoneOP is fucking broken.</span>")
