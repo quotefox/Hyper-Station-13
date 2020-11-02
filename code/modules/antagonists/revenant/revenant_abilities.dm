@@ -8,7 +8,7 @@
 		AltClickNoInteract(src, A)
 		return
 
-	if(ishuman(A))
+	if(iscarbon(A))
 		if(A in drained_mobs)
 			to_chat(src, "<span class='revenwarning'>[A]'s soul is dead and empty.</span>" )
 		else if(in_range(src, A))
@@ -16,7 +16,7 @@
 
 
 //Harvest; activated ly clicking the target, will try to drain their essence.
-/mob/living/simple_animal/revenant/proc/Harvest(mob/living/carbon/human/target)
+/mob/living/simple_animal/revenant/proc/Harvest(mob/living/carbon/target)
 	if(!castcheck(0))
 		return
 	if(draining)
@@ -206,7 +206,7 @@
 	if(!L.on) //wait, wait, don't shock me
 		return
 	flick("[L.base_state]2", L)
-	for(var/mob/living/carbon/human/M in view(shock_range, L))
+	for(var/mob/living/carbon/M in view(shock_range, L))
 		if(M == user)
 			continue
 		L.Beam(M,icon_state="purple_lightning",time=5)
