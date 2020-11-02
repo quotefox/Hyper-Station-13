@@ -99,7 +99,7 @@
 	if(istype(W, /obj/item/bluespace_thread))
 		var/obj/item/bluespace_thread/B = W
 		if ((istype(src, /obj/item/clothing/under) || istype(src, /obj/item/clothing/suit)) && roomy != 1) //Make sure the thread is used on an item that could be ripped off in the first place
-			roomy = 1 //True
+			roomy = TRUE //True
 			user.show_message("<span class='notice'>You add a few stiches to your clothing, and find them to fit a little looser.</span>", 1)
 			B.uses -= 1 //One use has been used
 			if(B.uses <= 0)
