@@ -9,8 +9,14 @@
  */
 /var/static/blacklisted_items = typecacheof(list(
 	/obj/singularity,
-	/obj/structure/destructible/clockwork/massive,
-	/obj/machinery/power/supermatter_crystal))
+	/obj/structure/destructible/clockwork/massive/ratvar,
+	/obj/item/projectile,
+	/obj/effect,
+	/obj/belly,
+	/obj/decal,
+	/obj/docking_port,
+	/obj/shapeshift_holder,
+	/obj/screen))
 
 GLOBAL_LIST_EMPTY(possible_gifts)
 
