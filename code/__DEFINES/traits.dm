@@ -125,6 +125,7 @@
 #define TRAIT_CURSED_BLOOD	"cursed_blood" //Yo dawg I heard you like bloodborne references so I put a
 
 #define TRAIT_SWIMMING			"swimming"			//only applied by /datum/element/swimming, for checking
+#define TRAIT_CAPTAIN_METABOLISM "captain-metabolism"
 
  //non-mob traits
 #define TRAIT_PARALYSIS			"paralysis" //Used for limb-based paralysis, where replacing the limb will fix it

@@ -48,6 +48,8 @@ would spawn and follow the beaker, even if it is carried or thrown.
 	holder = atom
 
 /datum/effect_system/proc/start()
+	if(QDELETED(src))
+		return
 	for(var/i in 1 to number)
 		if(total_effects > 20)
 			return
@@ -56,7 +58,7 @@ would spawn and follow the beaker, even if it is carried or thrown.
 /datum/effect_system/proc/generate_effect()
 	if(holder)
 		location = get_turf(holder)
-	if(location.contents.len > 200)		//Bandaid to prevent server crash exploit
+	if(location?.contents.len > 200)		//Bandaid to prevent server crash exploit
 		return
 	var/obj/effect/E = new effect_type(location)
 	total_effects++
@@ -70,6 +72,8 @@ would spawn and follow the beaker, even if it is carried or thrown.
 		sleep(5)
 		step(E,direction)
 	addtimer(CALLBACK(src, .proc/decrement_total_effect), 20)
+	if(!QDELETED(src))
+		addtimer(CALLBACK(src, .proc/decrement_total_effect), 20)
 
 /datum/effect_system/proc/decrement_total_effect()
 	total_effects--

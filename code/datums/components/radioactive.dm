@@ -34,12 +34,13 @@
 	var/atom/movable/master = parent
 	master.add_filter("rad_glow", 2, list("type" = "outline", "color" = "#39ff1430", "size" = 2))
 	addtimer(CALLBACK(src, .proc/glow_loop, master), rand(1,19))//Things should look uneven
+
 	START_PROCESSING(SSradiation, src)
 
 /datum/component/radioactive/Destroy()
+	STOP_PROCESSING(SSradiation, src)
 	var/atom/movable/master = parent
 	master.remove_filter("rad_glow")
-	STOP_PROCESSING(SSradiation, src)
 	return ..()
 
 /datum/component/radioactive/process()
@@ -60,7 +61,7 @@
 		animate(filter, alpha = 110, time = 15, loop = -1)
 		animate(alpha = 40, time = 25)
 
-/datum/component/radioactive/InheritComponent(datum/component/C, i_am_original, _strength, _source, _half_life, _can_contaminate)
+/datum/component/radioactive/InheritComponent(datum/component/C, i_am_original, list/arguments)
 	if(!i_am_original)
 		return
 	if(!hl3_release_date) // Permanently radioactive things don't get to grow stronger
@@ -69,7 +70,7 @@
 		var/datum/component/radioactive/other = C
 		strength = max(strength, other.strength)
 	else
-		strength = max(strength, _strength)
+		strength = max(strength, arguments[1])
 
 /datum/component/radioactive/proc/rad_examine(datum/source, mob/user, list/examine_list)
 	var/atom/master = parent

@@ -101,12 +101,14 @@
 			//Hyper change// Check for a flag before we remove clothes.
 			var/obj/item/clothing/suit = H.get_item_by_slot(SLOT_W_UNIFORM)
 			var/obj/item/clothing/jacket = H.get_item_by_slot(SLOT_WEAR_SUIT)
-			if(!suit.roomy == 1 || !jacket.roomy == 1) //If the clothes are "roomy" then don't do this.
-			//End Hyper Change//
-				var/target = M.get_bodypart(BODY_ZONE_CHEST)
-				to_chat(M, "<span class='warning'>Your breasts begin to strain against your clothes tightly!</b></span>")
-				M.adjustOxyLoss(5, 0)
-				M.apply_damage(1, BRUTE, target)
+			if(!(suit.roomy == 1 && jacket.roomy == 1)) //If the clothes are "roomy" then don't do this.
+				var/datum/antagonist/changeling/changeling = M.mind.has_antag_datum(/datum/antagonist/changeling) 
+				if(!changeling)//Changelings can in fact calm their tits
+				//End Hyper Change//
+					var/target = M.get_bodypart(BODY_ZONE_CHEST)
+					to_chat(M, "<span class='warning'>Your breasts begin to strain against your clothes tightly!</b></span>")
+					M.adjustOxyLoss(5, 0)
+					M.apply_damage(1, BRUTE, target)
 	B.update()
 	..()
 
@@ -306,11 +308,13 @@
 			//Hyper change// Check for a flag before we remove clothes.
 			var/obj/item/clothing/suit = H.get_item_by_slot(SLOT_W_UNIFORM)
 			var/obj/item/clothing/jacket = H.get_item_by_slot(SLOT_WEAR_SUIT)
-			if(!suit.roomy == 1 || !jacket.roomy == 1) //If the clothes are "roomy" then don't do this.
-			//End Hyper Change//
-				var/target = M.get_bodypart(BODY_ZONE_CHEST)
-				to_chat(M, "<span class='warning'>Your cock begins to strain against your clothes tightly!</b></span>")
-				M.apply_damage(1, BRUTE, target)
+			if((!suit.roomy == 1 || !jacket.roomy == 1)) //If the clothes are "roomy" then don't do this.
+				var/datum/antagonist/changeling/changeling = M.mind.has_antag_datum(/datum/antagonist/changeling) 
+				if(!changeling)//Changelings keep it in their pants
+				//End Hyper Change//
+					var/target = M.get_bodypart(BODY_ZONE_CHEST)
+					to_chat(M, "<span class='warning'>Your cock begins to strain against your clothes tightly!</b></span>")
+					M.apply_damage(1, BRUTE, target)
 
 	T.update() //Hyper change - Make the ball size update
 	P.update()

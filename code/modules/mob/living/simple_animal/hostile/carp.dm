@@ -106,5 +106,24 @@
 	obj_damage = 70
 	melee_damage_lower = 15
 	melee_damage_upper = 18
+	var/held_icon = "carp"
+	
+/mob/living/simple_animal/hostile/carp/cayenne/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/wuv, "bloops happily!", EMOTE_AUDIBLE, /datum/mood_event/pet_animal, "gnashes!", EMOTE_AUDIBLE)
+	AddElement(/datum/element/mob_holder, held_icon)
+
+/mob/living/simple_animal/hostile/carp/cayenne/lia
+	name = "Lia"
+	real_name = "Lia"
+	desc = "A failed experiment of Nanotrasen to create weaponised carp technology, now acquired by Kinaris. This less than intimidating carp now serves as the Head of Security's pet."
+	faction = list("neutral", "carp")
+	health = 200
+	icon_dead = "magicarp_dead"
+	icon_gib = "magicarp_gib"
+	icon_living = "magicarp"
+	icon_state = "magicarp"
+	maxHealth = 200
+	held_icon = "magicarp"
 
 #undef REGENERATION_DELAY

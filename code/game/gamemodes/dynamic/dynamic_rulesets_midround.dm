@@ -1,4 +1,4 @@
-#define REVENANT_SPAWN_THRESHOLD 20
+#define REVENANT_SPAWN_THRESHOLD 15
 #define ABDUCTOR_MAX_TEAMS 4 // blame TG for not using the defines files
 
 //////////////////////////////////////////////

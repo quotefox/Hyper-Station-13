@@ -1,4 +1,5 @@
 //I am not a coder. Please fucking tear apart my code, and insult me for how awful I am at coding. Please and thank you. -Dahlular
+//alright bet -BoxBoy
 var/const/RESIZE_MACRO = 6
 var/const/RESIZE_HUGE = 4
 var/const/RESIZE_BIG = 2
@@ -6,6 +7,12 @@ var/const/RESIZE_NORMAL = 1
 var/const/RESIZE_SMALL = 0.75
 var/const/RESIZE_TINY = 0.50
 var/const/RESIZE_MICRO = 0.25
+
+//Moving these here - Jay
+/mob/living
+	var/size_multiplier = 1 //multiplier for the mob's icon size atm
+	var/previous_size = 1
+
 
 #define MOVESPEED_ID_SIZE      "SIZECODE"
 #define MOVESPEED_ID_STOMP     "STEPPY"

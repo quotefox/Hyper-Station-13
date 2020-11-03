@@ -122,7 +122,7 @@
 /obj/singularity/wizard/attack_tk(mob/user)
 	if(iscarbon(user))
 		var/mob/living/carbon/C = user
-		GET_COMPONENT_FROM(insaneinthemembrane, /datum/component/mood, C)
+		var/datum/component/mood/insaneinthemembrane = C.GetComponent(/datum/component/mood)
 		if(insaneinthemembrane.sanity < 15)
 			return //they've already seen it and are about to die, or are just too insane to care
 		to_chat(C, "<span class='userdanger'>OH GOD! NONE OF IT IS REAL! NONE OF IT IS REEEEEEEEEEEEEEEEEEEEEEEEAL!</span>")
@@ -255,7 +255,7 @@
 	lefthand_file = 'icons/mob/inhands/misc/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/misc/devices_righthand.dmi'
 	var/mob/living/carbon/human/target = null
-	var/list/mob/living/carbon/human/possible = list()
+	var/list/mob/living/carbon/human/possible
 	var/obj/item/voodoo_link = null
 	var/cooldown_time = 30 //3s
 	var/cooldown = 0
@@ -293,7 +293,7 @@
 		user.unset_machine()
 
 /obj/item/voodoo/attack_self(mob/user)
-	if(!target && possible.len)
+	if(!target && length(possible))
 		target = input(user, "Select your victim!", "Voodoo") as null|anything in possible
 		return
 
@@ -333,15 +333,12 @@
 		cooldown = world.time + cooldown_time
 
 /obj/item/voodoo/proc/update_targets()
-	possible = list()
+	possible = null
 	if(!voodoo_link)
 		return
-	var/list/prints = voodoo_link.return_fingerprints()
-	if(!length(prints))
-		return FALSE
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
-		if(prints[md5(H.dna.uni_identity)])
-			possible |= H
+		if(md5(H.dna.uni_identity) in voodoo_link.fingerprints)
+			LAZYOR(possible, H)
 
 /obj/item/voodoo/proc/GiveHint(mob/victim,force=0)
 	if(prob(50) || force)

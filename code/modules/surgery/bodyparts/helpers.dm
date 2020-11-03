@@ -18,8 +18,6 @@
 	return FALSE
 
 
-
-
 /mob/proc/has_left_hand(check_disabled = TRUE)
 	return TRUE
 
@@ -31,7 +29,7 @@
 	return FALSE
 
 /mob/living/carbon/alien/larva/has_left_hand()
-	return 1
+	return TRUE
 
 
 /mob/proc/has_right_hand(check_disabled = TRUE)
@@ -45,8 +43,29 @@
 	return FALSE
 
 /mob/living/carbon/alien/larva/has_right_hand()
-	return 1
+	return TRUE
 
+
+
+/mob/proc/has_left_leg()
+	return TRUE
+
+/mob/living/carbon/has_left_leg()
+	var/obj/item/bodypart/l_leg = get_bodypart(BODY_ZONE_L_LEG)
+	if(l_leg)
+		return TRUE
+	else
+		return FALSE
+
+/mob/proc/has_right_leg()
+	return TRUE
+
+/mob/living/carbon/has_right_leg()
+	var/obj/item/bodypart/r_leg = get_bodypart(BODY_ZONE_R_LEG)
+	if(r_leg)
+		return TRUE
+	else
+		return FALSE
 
 
 //Limb numbers
@@ -314,3 +333,19 @@
 			else
 				S.adjusted = ALT_STYLE
 			H.update_inv_wear_suit()
+
+/mob/living/carbon/proc/get_body_parts_flags()
+	for(var/X in bodyparts)
+		var/obj/item/bodypart/L = X
+		switch(L.body_part)
+			if(CHEST)
+				. |= GROIN
+			if(LEG_LEFT)
+				. |= FOOT_LEFT
+			if(LEG_RIGHT)
+				. |= FOOT_RIGHT
+			if(ARM_LEFT)
+				. |= HAND_LEFT
+			if(ARM_RIGHT)
+				. |= HAND_RIGHT
+		. |= L.body_part

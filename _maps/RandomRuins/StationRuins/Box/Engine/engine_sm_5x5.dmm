@@ -569,11 +569,18 @@
 /turf/open/floor/engine,
 /area/engine/engineering)
 "nH" = (
-/obj/structure/cable{
-	icon_state = "1-8"
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm"
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/item/tank/internals/plasma,
 /turf/open/floor/plating,
-/area/engine/engineering)
+/area/engine/supermatter)
 "nR" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -1037,6 +1044,9 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
 /turf/open/floor/plating,
 /area/engine/engineering)
 "Bl" = (
@@ -1423,6 +1433,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
+"Kt" = (
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/turf/open/floor/plating,
+/area/engine/engineering)
 "Kv" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/effect/turf_decal/stripes/line{
@@ -1490,6 +1506,9 @@
 /area/engine/supermatter)
 "LJ" = (
 /obj/machinery/light,
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
 /turf/open/floor/plating,
 /area/engine/engineering)
 "LS" = (
@@ -1534,6 +1553,9 @@
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
 "MJ" = (
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
 /turf/open/floor/plating,
 /area/engine/engineering)
 "MK" = (
@@ -1648,6 +1670,13 @@
 	},
 /obj/machinery/meter,
 /turf/open/floor/plasteel,
+/area/engine/engineering)
+"OY" = (
+/obj/machinery/light,
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plating,
 /area/engine/engineering)
 "Ph" = (
 /obj/structure/cable{
@@ -1912,11 +1941,18 @@
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
 "XY" = (
-/obj/structure/cable{
-	icon_state = "1-4"
+/obj/machinery/power/rad_collector/anchored,
+/obj/structure/cable/yellow{
+	icon_state = "0-8"
 	},
-/turf/open/floor/plating,
-/area/engine/engineering)
+/obj/structure/window/plasma/reinforced{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/general/visible{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/engine/supermatter)
 "YB" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -2353,18 +2389,18 @@ VP
 EX
 Vg
 px
-px
 nW
-Cn
+nW
+nH
 Cn
 xB
 WI
 IE
 JV
-Bc
+JH
 JH
 Lv
-XY
+Lv
 LJ
 MP
 Rh
@@ -2383,7 +2419,7 @@ un
 CT
 na
 na
-KX
+XY
 KX
 Xy
 Ml
@@ -2551,17 +2587,17 @@ wz
 Dj
 tE
 tE
-NU
+tE
 NU
 Xy
 Np
 YD
 iD
-MJ
+Kt
 IF
 IF
 IF
-MJ
+Kt
 MP
 yf
 YZ
@@ -2588,8 +2624,8 @@ JV
 Bc
 Ph
 Ph
-nH
-LJ
+Ph
+OY
 MP
 Rh
 YZ

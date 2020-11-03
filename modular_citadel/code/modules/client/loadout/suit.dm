@@ -44,6 +44,31 @@
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/jacket/puffer/vest
 
+/datum/gear/jacketyellow
+	name = "Yellow Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/jacket_yellow
+
+/datum/gear/jacketorange
+	name = "Orange Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/jacket_orange
+
+/datum/gear/jacketred
+	name = "Red Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/jacket_red
+
+/datum/gear/jacketpurple
+	name = "Purple Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/jacket_purple
+
+/datum/gear/jacketwhite
+	name = "White Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/jacket_white
+
 /datum/gear/jacketlettermanbrown
 	name = "Brown letterman jacket"
 	category = SLOT_WEAR_SUIT
@@ -173,3 +198,13 @@
 	name = "Red and Green Christmas Coat"
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/hooded/wintercoat/christmascoatrg
+
+/datum/gear/kromajacket
+	name = "Kromatose Military Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/polychromic/kromajacket
+
+/datum/gear/kromacrop
+	name = "Kromatose Short Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/polychromic/kromacrop

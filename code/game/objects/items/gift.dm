@@ -7,6 +7,16 @@
 /*
  * Gifts
  */
+/var/static/blacklisted_items = typecacheof(list(
+	/obj/singularity,
+	/obj/structure/destructible/clockwork/massive/ratvar,
+	/obj/item/projectile,
+	/obj/effect,
+	/obj/belly,
+	/obj/decal,
+	/obj/docking_port,
+	/obj/shapeshift_holder,
+	/obj/screen))
 
 GLOBAL_LIST_EMPTY(possible_gifts)
 
@@ -76,7 +86,7 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 		/obj/item/clothing/suit/poncho/red,
 		/obj/item/clothing/suit/snowman,
 		/obj/item/clothing/head/snowman,
-		/obj/item/trash/coal)
+		/obj/item/stack/sheet/mineral/coal)
 
 	gift_type_list += subtypesof(/obj/item/clothing/head/collectable)
 	gift_type_list += subtypesof(/obj/item/toy) - (((typesof(/obj/item/toy/cards) - /obj/item/toy/cards/deck) + /obj/item/toy/figure + /obj/item/toy/ammo)) //All toys, except for abstract types and syndicate cards.
@@ -95,7 +105,7 @@ GLOBAL_LIST_EMPTY(possible_gifts)
 		var/list/gift_types_list = subtypesof(/obj/item)
 		for(var/V in gift_types_list)
 			var/obj/item/I = V
-			if((!initial(I.icon_state)) || (!initial(I.item_state)) || (initial(I.item_flags) & ABSTRACT))
+			if((!initial(I.icon_state)) || (!initial(I.item_state)) || (initial(I.item_flags) & ABSTRACT) || (is_type_in_typecache(I, blacklisted_items)))
 				gift_types_list -= V
 		GLOB.possible_gifts = gift_types_list
 	var/gift_type = pick(GLOB.possible_gifts)
