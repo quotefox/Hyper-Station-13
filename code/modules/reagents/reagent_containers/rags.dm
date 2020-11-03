@@ -116,7 +116,7 @@
 	var/folded_icon = "towel"
 	var/list/possible_colors
 	//Hyper Change
-	var/roomy = 1 //To cover XL bits
+	var/roomy = TRUE //To cover XL bits
 
 /obj/item/reagent_containers/rag/towel/Initialize()
 	. = ..()
