@@ -307,14 +307,15 @@
 /datum/dynamic_ruleset/event/meteor_wave/ready()
 	if(world.time-SSticker.round_start_time > 35 MINUTES && mode.threat_level > 40 && mode.threat >= 25 && prob(30))
 		name = "Meteor Wave: Threatening"
-		cost = 10
+		cost = 5
 		typepath = /datum/round_event/meteor_wave/threatening
+		requirements = list(101,101,30,25,20,20,20,20,20,15)
 		chaos_min = 1.8
 	else if(world.time-SSticker.round_start_time > 45 MINUTES && mode.threat_level > 50 && mode.threat >= 40 && prob(30))
 		name = "Meteor Wave: Catastrophic"
 		cost = 10
 		typepath = /datum/round_event/meteor_wave/catastrophic
-		required_enemies = list(3,3,3,3,3,3,3,3,3,0)
+		required_enemies = list(3,3,3,3,3,2,2,1,1,0)
 		requirements = list(101,101,40,30,30,30,30,30,30,30)
 		chaos_min = 2.0
 	else
