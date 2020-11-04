@@ -13,10 +13,10 @@ Research Director
 	supervisors = "the captain"
 	selection_color = "#ffddff"
 	req_admin_notify = 1
-	minimal_player_age = 10
-	exp_type_department = EXP_TYPE_SCIENCE
-	exp_requirements = 300
+	minimal_player_age = 14
+	exp_requirements = 1500
 	exp_type = EXP_TYPE_SCIENCE
+	exp_type_department = EXP_TYPE_SCIENCE
 
 	outfit = /datum/outfit/job/rd
 
@@ -71,12 +71,13 @@ Scientist
 	department_flag = MEDSCI
 	faction = "Station"
 	total_positions = 5
-	spawn_positions = 3
+	spawn_positions = 2
 	minimal_player_age = 1
 	supervisors = "the research director"
 	selection_color = "#ffeeff"
-	exp_requirements = 120
-	exp_type = EXP_TYPE_CREW
+	exp_requirements = 480
+	exp_type = EXP_TYPE_SCIENCE
+	exp_type_department = EXP_TYPE_SCIENCE
 
 
 	outfit = /datum/outfit/job/scientist
@@ -111,8 +112,10 @@ Roboticist
 	minimal_player_age = 2
 	supervisors = "the research director"
 	selection_color = "#ffeeff"
-	exp_requirements = 120
-	exp_type = EXP_TYPE_CREW
+	exp_requirements = 300
+	exp_type = EXP_TYPE_SCIENCE
+	exp_type_department = EXP_TYPE_SCIENCE
+
 
 	outfit = /datum/outfit/job/roboticist
 
@@ -133,3 +136,46 @@ Roboticist
 	satchel = /obj/item/storage/backpack/satchel/tox
 
 	pda_slot = SLOT_L_STORE
+
+
+/*
+Junior Scientist
+*/
+/datum/job/junior_scientist
+	title = "Research Student"
+	flag = JR_SCIENTIST
+	department_head = list("Research Director")
+	department_flag = MEDSCI
+	faction = "Station"
+	total_positions = 2
+	spawn_positions = 1
+	minimal_player_age = 0
+	supervisors = "the research director, and any other senior science staff"
+	selection_color = "#ffeeff"
+	exp_requirements = 120
+	exp_type = EXP_TYPE_CREW
+
+
+	outfit = /datum/outfit/job/scientist/junior
+
+	access = list(ACCESS_ROBOTICS, ACCESS_RESEARCH, ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE, ACCESS_GENETICS)
+	minimal_access = list(ACCESS_RESEARCH, ACCESS_MINERAL_STOREROOM)
+
+/datum/outfit/job/scientist/junior
+	name = "Scientist"
+	jobtype = /datum/job/scientist
+
+	belt = /obj/item/pda/toxins
+	ears = /obj/item/radio/headset/headset_sci
+	uniform = /obj/item/clothing/under/rank/scientist
+	shoes = /obj/item/clothing/shoes/sneakers/white
+	suit = /obj/item/clothing/suit/toggle/labcoat/science
+
+	backpack = /obj/item/storage/backpack/science
+	satchel = /obj/item/storage/backpack/satchel/tox
+
+/datum/job/junior_scientist/after_spawn(mob/living/carbon/human/H, mob/M) //Instead of going through the process of adding spawnpoints
+	var/turf/T
+	var/spawn_point = locate(/obj/effect/landmark/start/scientist) in GLOB.start_landmarks_list
+	T = get_turf(spawn_point)
+	H.Move(T)

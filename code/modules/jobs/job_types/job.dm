@@ -45,6 +45,7 @@
 
 	var/outfit = null
 
+	//Minutes required in specified job or department type.
 	var/exp_requirements = 0
 
 	var/exp_type = ""
