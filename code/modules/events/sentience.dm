@@ -41,7 +41,7 @@
 		var/turf/T = get_turf(L)
 		if(!T || !is_station_level(T.z))
 			continue
-		if(is_type_in_typecache(L, blacklisted_sentient_animals))
+		if(!is_type_in_typecache(L, blacklisted_sentient_animals))
 			continue
 		if(!(L in GLOB.player_list) && !L.mind)
 			potential += L
