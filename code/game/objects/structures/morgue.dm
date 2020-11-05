@@ -434,10 +434,10 @@ GLOBAL_LIST_EMPTY(crematoriums)
 		if(!mob_occupant.suiciding && !mob_occupant.hellbound)
 			if(mob_occupant.stat == DEAD && mob_occupant.mind.key == user.client.key)
 				inuse = TRUE
-				visible_message("One of the morgue coffins currently holds a soul that is eager to have its body revived.", runechat_popup = TRUE)
+				visible_message("One of the morgue coffins currently holds a soul that is eager to have its body revived.")
 				radio.talk_into(src, "One of the morgue coffins currently holds a soul that is eager to have its body revived.", medical_channel)
 				playsound(loc, 'sound/machines/ping.ogg', 50)
-				addtimer(CALLBACK(src, .proc/liftcooldown), 500)		
+				addtimer(CALLBACK(src, .proc/liftcooldown), 500)
 
 /obj/structure/bodycontainer/morgue/proc/liftcooldown()
 	inuse = FALSE
