@@ -23,13 +23,7 @@
 	name = "Full Tank of Tritium"
 	description = "Station 42 is looking to kickstart their research program. Ship them a tank full of Tritium."
 	gas_type = /datum/gas/tritium
-//Hyperstation edit
-/datum/bounty/item/engineering/gas/hypernoblium_tank
-	name = "Full Tank of Hyper-Noblium"
-	description = "The 7th Echelon is looking to research the effects of this rare gas in organics. They ask for a full tank of it. Are you up to the task?"
-	gas_type = /datum/gas/hypernoblium
-	reward = 75000 //Very, very difficult to make, requires a fuckton of structural re-design around engineering and can actually royally fuck up the entirety of the station if not done correctly.
-//Hypersation edit end
+
 /datum/bounty/item/engineering/pacman
 	name = "P.A.C.M.A.N.-type portable generator"
 	description = "A neighboring station had a problem with their SMES, and now need something to power their communications console. Can you send them a P.AC.M.A.N.?"
