@@ -300,7 +300,7 @@
 	flags = HIGHLANDER_RULESET
 	var/cultist_cap = list(2,2,2,3,3,4,4,4,4,4)
 	var/datum/team/cult/main_cult
-	chaos_min = 4.9
+	chaos_min = 4.5
 	admin_required = TRUE
 
 /datum/dynamic_ruleset/roundstart/bloodcult/ready(forced = FALSE)
@@ -356,7 +356,7 @@
 	required_candidates = 5
 	weight = 3
 	cost = 20
-	requirements = list(101,100,90,80,70,60,50,40,30,20)
+	requirements = list(101,100,95,85,70,60,50,40,30,20)
 	high_population_requirement = 10
 	pop_per_requirement = 5
 	flags = HIGHLANDER_RULESET
@@ -559,11 +559,13 @@
 	required_candidates = 4
 	weight = 4
 	cost = 0
-	requirements = list(101,101,100,90,80,70,60,50,40,30)
+	requirements = list(101,101,100,95,85,70,60,50,40,30)
+	//requirements = list(0,0,0,0,0,0,0,0,0,0)
 	high_population_requirement = 101
 	flags = HIGHLANDER_RULESET
 	var/ark_time
-	chaos_min = 4.9
+	var/servants = list(1,1,1,1,2,2,3,3,4,4)
+	chaos_min = 4.5
 	admin_required = TRUE
 
 /datum/dynamic_ruleset/roundstart/clockcult/pre_execute()
@@ -575,20 +577,23 @@
 		return FALSE
 	for(var/datum/parsed_map/PM in reebes)
 		PM.initTemplateBounds()
-
+	/*
 	var/starter_servants = 4
 	var/number_players = num_players()
 	if(number_players > 30)
 		number_players -= 30
 		starter_servants += round(number_players / 10)
 	starter_servants = min(starter_servants, 8)
+	*/
+	var/indice_pop = min(10,round(mode.roundstart_pop_ready/5)+1)
+	var/starter_servants = servants[indice_pop]
 	for (var/i in 1 to starter_servants)
 		var/mob/servant = pick(candidates)
 		candidates -= servant
 		assigned += servant.mind
 		servant.mind.assigned_role = ROLE_SERVANT_OF_RATVAR
 		servant.mind.special_role = ROLE_SERVANT_OF_RATVAR
-	ark_time = 30 + round((number_players / 5))
+	ark_time = 30 + round((mode.roundstart_pop_ready / 5))
 	ark_time = min(ark_time, 35)
 	return TRUE
 
