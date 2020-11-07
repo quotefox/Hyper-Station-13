@@ -238,7 +238,7 @@
 	text = get_pin_data(IC_INPUT, 1)
 	if(!isnull(text))
 		var/atom/movable/A = get_object()
-		var/sanitized_text = sanitize(text)
+		var/sanitized_text = html_decode(text)
 		A.say(sanitized_text)
 		if (assembly)
 			log_say("[assembly] [REF(assembly)] : [sanitized_text]")
