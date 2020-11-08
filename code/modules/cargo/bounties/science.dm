@@ -108,7 +108,7 @@
 	wanted_types = list(/obj/item/stock_parts/micro_laser/quadultra)
 
 /datum/bounty/item/science/fakecrystals
-	name = "synthetic bluespace crystals"
+	name = "Synthetic Bluespace Crystals"
 	description = "Don't, uh, tell anyone, but one of our BSA arrays might have had a little... accident. Send us some bluespace crystals so we can recalibrate it before anyone realizes. The whole set uses artificial bluespace crystals, so we need and not any other type of bluespace crystals..."
 	reward = 8000
 	required_count = 5
