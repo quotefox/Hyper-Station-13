@@ -61,7 +61,7 @@
 
 /datum/supply_pack/emergency/rcds
 	name = "Emergency RCDs"
-	desc = "Bombs going off on station? SME blown and now you need to fix the hole it left behind? Well this crate has a pare of Rcds to be able to easily fix up any problem you may have!"
+	desc = "Bombs going off on station? SMES blew up and now you need to fix the holes they left behind? This crate has a pair of RCDs to patch up any problem you have!"
 	cost = 1500
 	contains = list(/obj/item/construction/rcd,
 					/obj/item/construction/rcd)
@@ -69,8 +69,8 @@
 	crate_type = /obj/structure/closet/crate/internals
 
 /datum/supply_pack/emergency/soft_suit
-	name = "Emergency Space Suit "
-	desc = "Is there bombs going off left and right? Is there meteors shooting around the station? Well we have two fragile space suit for emergencys as well as air and masks."
+	name = "Emergency Space Suits"
+	desc = "Are there bombs going off left and right? Are there meteors hurtling towards the station? This crate comes with two fragile space suits for emergencies as well as air and masks!"
 	cost = 1200
 	contains = list(/obj/item/tank/internals/air,
 					/obj/item/tank/internals/air,

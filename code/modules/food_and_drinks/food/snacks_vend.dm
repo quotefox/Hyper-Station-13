@@ -82,7 +82,7 @@
 
 /obj/item/reagent_containers/food/snacks/soyfood
 	name = "Soyfood"
-	desc = "fine print: seasoned with nanoscale mechanochemical generators. Not only does it taste good, But also self-heats when opened"
+	desc = "Seasoned with nanoscale mechanochemical generators. Not only does it taste good, but it also self-heats when opened!"
 	icon_state = "soyfood"
 	trash = /obj/item/trash/soy_food
 	list_reagents = list("nutriment" = 4, "sugar" = 2, "vitamin" = 3)

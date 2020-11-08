@@ -149,7 +149,7 @@
 /obj/item/gun/energy/laser/redtag
 	name = "laser tag gun"
 	icon_state = "redtag"
-	desc = "A retro laser gun modified to fire harmless beams red of light. Sound effects included!"
+	desc = "A retro laser gun modified to fire harmless red beams of light. Sound effects included!"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/redtag)
 	item_flags = NONE
 	clumsy_check = FALSE

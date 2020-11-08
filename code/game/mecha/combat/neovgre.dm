@@ -53,7 +53,7 @@
 
 /obj/mecha/combat/neovgre/process()
 	..()
-	if(GLOB.ratvar_awakens) // At this point only timley intervention by lord singulo could hople to stop the superweapon
+	if(GLOB.ratvar_awakens) // At this point only timley intervention by lord singulo could hope to stop the superweapon
 		cell.charge = INFINITY
 		max_integrity = INFINITY
 		obj_integrity = max_integrity
@@ -79,7 +79,7 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy/neovgre
 	equip_cooldown = 8 //Rapid fire heavy laser cannon, simple yet elegant
 	energy_drain = 30
-	name = "Aribter Laser Cannon"
+	name = "Arbiter Laser Cannon"
 	desc = "Please re-attach this to neovgre and stop asking questions about why it looks like a normal Nanotrasen issue Solaris laser cannon - Nezbere"
 	fire_sound = "sound/weapons/neovgre_laser.ogg"
 

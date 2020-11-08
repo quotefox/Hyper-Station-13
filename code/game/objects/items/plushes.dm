@@ -673,7 +673,7 @@
 
 /obj/item/toy/plush/box
 	name = "cardboard plushie"
-	desc = "A toy box plushie, it holds cotten. Only a baddie would place a bomb through the postal system..."
+	desc = "A toy box plushie, it holds cotton. Only a baddie would place a bomb through the postal system..."
 	icon_state = "box"
 	item_state = "box"
 	attack_verb = list("open", "closed", "packed", "hidden", "rigged", "bombed", "sent", "gave")

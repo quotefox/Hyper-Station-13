@@ -95,7 +95,7 @@
 
 /obj/item/reagent_containers/food/snacks/snowcones/blue
 	name = "bluecherry snowcone"
-	desc = "Bluecherry syrup drizzled over a snowball in a paper cup, how rare!"
+	desc = "Blue cherry syrup drizzled over a snowball in a paper cup, how rare!"
 	icon_state = "blue_sc"
 	list_reagents = list("nutriment" = 1, "bluecherryjelly" = 5)
 	tastes = list("ice" = 1, "water" = 1, "blue" = 5, "cherries" = 5)
