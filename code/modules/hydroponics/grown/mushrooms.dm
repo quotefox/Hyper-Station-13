@@ -216,10 +216,11 @@
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list("nutriment" = 0.1)
 
-/obj/item/seeds/chanterelle/jupitercup/Initialize()
-	..()
-	unset_mutability(/datum/plant_gene/reagent/teslium, PLANT_GENE_EXTRACTABLE)
-	unset_mutability(/datum/plant_gene/trait/plant_type/carnivory, PLANT_GENE_REMOVABLE)
+/obj/item/seeds/chanterelle/jupitercup/Initialize(mapload, nogenes = FALSE)
+	. = ..()
+	if(!nogenes)
+		unset_mutability(/datum/plant_gene/reagent/teslium, PLANT_GENE_EXTRACTABLE)
+		unset_mutability(/datum/plant_gene/trait/plant_type/carnivory, PLANT_GENE_REMOVABLE)
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/jupitercup
 	seed = /obj/item/seeds/chanterelle/jupitercup
