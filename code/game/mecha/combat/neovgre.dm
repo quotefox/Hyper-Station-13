@@ -53,7 +53,7 @@
 
 /obj/mecha/combat/neovgre/process()
 	..()
-	if(GLOB.ratvar_awakens) // At this point only timley intervention by lord singulo could hope to stop the superweapon
+	if(GLOB.ratvar_awakens) // At this point only timely intervention by lord singulo could hope to stop the superweapon
 		cell.charge = INFINITY
 		max_integrity = INFINITY
 		obj_integrity = max_integrity

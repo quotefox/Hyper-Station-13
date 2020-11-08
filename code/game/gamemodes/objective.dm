@@ -247,8 +247,8 @@ GLOBAL_LIST_EMPTY(objectives)
 	human_check = FALSE
 
 /datum/objective/hijack
-	explanation_text = "Hijack the shuttle to ensure no loyalist Nanotrasen crew escape alive and out of custody."
-	team_explanation_text = "Hijack the shuttle to ensure no loyalist Nanotrasen crew escape alive and out of custody. Leave no team member behind."
+	explanation_text = "Hijack the shuttle to ensure no loyalist Kinaris crew escape alive and out of custody."
+	team_explanation_text = "Hijack the shuttle to ensure no loyalist Kinaris crew escape alive and out of custody. Leave no team member behind."
 	martyr_compatible = 0 //Technically you won't get both anyway.
 
 /datum/objective/hijack/check_completion() // Requires all owners to escape.
