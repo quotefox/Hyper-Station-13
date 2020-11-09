@@ -9,7 +9,7 @@
 	throw_alert("newlaw", /obj/screen/alert/newlaw)
 	if(announce && last_lawchange_announce != world.time)
 		to_chat(src, "<span class='danger'><b>Your laws have been changed.</b></span>")
-		SEND_SOUND(src, 'hyperstation/sound/misc/ai_laws_update.ogg',)
+		SEND_SOUND(src, 'hyperstation/sound/misc/ai_laws_update.ogg')
 		addtimer(CALLBACK(src, .proc/show_laws), 0)
 		last_lawchange_announce = world.time
 
