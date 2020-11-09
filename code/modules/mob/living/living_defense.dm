@@ -294,7 +294,12 @@
 	if(!SSticker.HasRoundStarted())
 		to_chat(M, "You cannot attack people before the game has started.")
 		return
-
+//Hyperstation Edit
+	if(istype(src, /mob/living/simple_animal/slime))
+		M.visible_message("<span class='notice'>[M] boops \the [src].</span>","<span class='notice'>You boop \the [src].</span>")
+		//This was made to prevent sentient slime players from exploting removing infinite nutrient from other slimes.
+		return
+//End of hyperstation edit
 	if(M.buckled)
 		if(M in buckled_mobs)
 			M.Feedstop()
