@@ -51,12 +51,12 @@
 				o.remove_status_effect(/datum/status_effect/chem/penis_enlarger)
 		if(21 to 28) //If massive and due for large effects
 			length = cached_length
-			size = 4
+			size = 3
 			if(!owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
 				o.apply_status_effect(/datum/status_effect/chem/penis_enlarger)
 		if(28 to INFINITY) //If comical
 			length = cached_length
-			size = 5
+			size = 4 //no new sprites for anything larger yet
 			if(!owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
 				o.apply_status_effect(/datum/status_effect/chem/penis_enlarger)
 
