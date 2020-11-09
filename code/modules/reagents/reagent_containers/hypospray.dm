@@ -56,16 +56,11 @@
 
 /obj/item/reagent_containers/hypospray/combat
 	name = "combat stimulant injector"
-	desc = "A modified air-needle autoinjector, used by support operatives to quickly heal injuries in combat and get people back in the fight."
+	desc = "A modified air-needle autoinjector, used by support operatives to quickly heal injuries in combat."
 	amount_per_transfer_from_this = 10
 	icon_state = "combat_hypo"
-	volume = 100
-	ignore_flags = 1 // So they can heal their comrades.
-	list_reagents = list("epinephrine" = 30, "lesser_syndicate_nanites" = 40, "leporazine" = 15, "atropine" = 15)
-
-/obj/item/reagent_containers/hypospray/combat/omnizine // owned idiot
-	desc = "A modified air-needle autoinjector, used by underfunded support operatives to slowly heal injuries in combat and limp away from a fight."
 	volume = 90
+	ignore_flags = 1 // So they can heal their comrades.
 	list_reagents = list("epinephrine" = 30, "omnizine" = 30, "leporazine" = 15, "atropine" = 15)
 
 /obj/item/reagent_containers/hypospray/combat/nanites
