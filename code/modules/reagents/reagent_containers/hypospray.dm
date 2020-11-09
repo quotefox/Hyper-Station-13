@@ -56,11 +56,16 @@
 
 /obj/item/reagent_containers/hypospray/combat
 	name = "combat stimulant injector"
-	desc = "A modified air-needle autoinjector, used by support operatives to quickly heal injuries in combat."
+	desc = "A modified air-needle autoinjector, used by support operatives to quickly heal injuries in combat and get people back in the fight."
 	amount_per_transfer_from_this = 10
 	icon_state = "combat_hypo"
-	volume = 90
+	volume = 100
 	ignore_flags = 1 // So they can heal their comrades.
+	list_reagents = list("epinephrine" = 30, "lesser_syndicate_nanites" = 40, "leporazine" = 15, "atropine" = 15)
+
+/obj/item/reagent_containers/hypospray/combat/omnizine // owned idiot
+	desc = "A modified air-needle autoinjector, used by underfunded support operatives to slowly heal injuries in combat and limp away from a fight."
+	volume = 90
 	list_reagents = list("epinephrine" = 30, "omnizine" = 30, "leporazine" = 15, "atropine" = 15)
 
 /obj/item/reagent_containers/hypospray/combat/nanites
@@ -219,6 +224,7 @@
 /obj/item/hypospray/mkii
 	name = "hypospray mk.II"
 	icon_state = "hypo2"
+	icon = 'icons/obj/syringe.dmi'
 	desc = "A new development from DeForest Medical, this hypospray takes 30-unit vials as the drug supply for easy swapping."
 	w_class = WEIGHT_CLASS_TINY
 	var/list/allowed_containers = list(/obj/item/reagent_containers/glass/bottle/vial/tiny, /obj/item/reagent_containers/glass/bottle/vial/small)
@@ -256,7 +262,6 @@
 /obj/item/hypospray/mkii/disposable
 	name = "disposable hypospray mk.II"
 	icon_state = "hypo2"
-	icon = 'icons/obj/syringe.dmi'
 	desc = "A cheaply made knock off verson of the MKII hypospray. You cannot remove a hypovial from it making it nonreusable."
 	w_class = WEIGHT_CLASS_TINY
 	spawnwithvial = FALSE
