@@ -94,7 +94,7 @@
 		if("Quick Select")
 			reagents.clear_reagents()
 			amount_per_transfer_from_this = 5
-				chosen_reagent = input(user, "What reagent do you want to dispense?") as null|anything in fun_ids
+			chosen_reagent = input(user, "What reagent do you want to dispense?") as null|anything in fun_ids
 			if(chosen_reagent)
 				reagents.add_reagent(chosen_reagent, 20, null)
 
