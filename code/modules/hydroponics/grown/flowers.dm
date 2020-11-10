@@ -53,7 +53,7 @@
 	desc = "A plant sculped by extensive genetic engineering. The spaceman's trumpet is said to bear no resemblance to its wild ancestors. Inside NT AgriSci circles it is better known as NTPW-0372."
 	icon_state = "seed-trumpet"
 	species = "spacemanstrumpet"
-	plantname = "Spaceman's Trumpet Plant"
+	plantname = "Spaceman Trumpet"
 	product = /obj/item/reagent_containers/food/snacks/grown/trumpet
 	lifespan = 80
 	production = 5
@@ -68,13 +68,14 @@
 	icon_grow = "spacemanstrumpet-grow"
 	icon_dead = "spacemanstrumpet-dead"
 	mutatelist = list()
-	genes = list( "Polypyrylium Oligomers")
+	genes = list(/datum/plant_gene/reagent/polypyr)
 	reagents_add = list("nutriment" = 0.05)
 	rarity = 30
 
-/obj/item/seeds/poppy/lily/trumpet/Initialize()
-	..()
-	unset_mutability(/datum/plant_gene/reagent/polypyr, PLANT_GENE_EXTRACTABLE)
+/obj/item/seeds/poppy/lily/trumpet/Initialize(mapload, nogenes = FALSE)
+	. = ..()
+	if(!nogenes)
+		unset_mutability(/datum/plant_gene/reagent/polypyr, PLANT_GENE_EXTRACTABLE)
 
 /obj/item/reagent_containers/food/snacks/grown/trumpet
 	seed = /obj/item/seeds/poppy/lily/trumpet

@@ -90,6 +90,11 @@
 	name = "Single"
 	alt_aroused = TRUE
 
+/datum/sprite_accessory/testicles/sheath
+	icon_state = "sheath"
+	name = "Sheath"
+	alt_aroused = TRUE
+
 //Vaginas
 /datum/sprite_accessory/vagina
 	icon = 'modular_citadel/icons/obj/genitals/vagina_onmob.dmi'

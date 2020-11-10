@@ -668,7 +668,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	name = "bdsm whip"
 	desc = "A less lethal version of the whip the librarian has. Still hurts, but just the way you like it."
 	icon_state = "whip"
-	item_state = "chain"
+	item_state = "crop"
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
