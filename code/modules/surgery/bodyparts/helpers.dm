@@ -111,7 +111,7 @@
 	return FALSE
 
 /mob/living/carbon/get_leg_ignore()
-	if(movement_type & (FLYING|FLOATING))
+	if(movement_type & (FLYING|floating))
 		return TRUE
 	return FALSE
 
