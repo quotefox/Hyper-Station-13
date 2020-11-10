@@ -960,3 +960,14 @@
 	build_path = /obj/item/hypospray/mkii/disposable
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+/datum/design/adv_hypo
+	name = "Hypospray MK.II"
+	desc = "A new development from DeForest Medical, this hypospray takes 30-unit vials as the drug supply for easy swapping."
+	id = "hypo2"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 500, MAT_GLASS = 500, MAT_SILVER = 500)
+	construction_time = 40
+	build_path = /obj/item/hypospray/mkii
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL

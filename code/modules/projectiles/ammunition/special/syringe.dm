@@ -76,3 +76,26 @@
 	if(S.emptrig == TRUE)
 		var/obj/item/projectile/bullet/dart/syringe/dart/D = BB
 		D.emptrig = TRUE
+
+//Chemlight was here, adding dumb bussing things
+
+/obj/item/ammo_casing/chemgun_debug
+	name = "dart synthesiser"
+	desc = "A high-power spring, linked to an energy-based dart synthesiser."
+	projectile_type = /obj/item/projectile/bullet/dart/syringe/debug
+	firing_effect_type = null
+
+/obj/item/ammo_casing/chemgun_debug/ready_proj(atom/target, mob/living/user, quiet, zone_override = "")
+	if(!BB)
+		return
+	if(istype(loc, /obj/item/gun/chem/debug))
+		var/obj/item/gun/chem/debug/CGD = loc
+		if(CGD.syringes_left <= 0)
+			return
+		if(!CGD.infinite)
+			CGD.reagents.trans_to(BB, 10)
+		else
+			CGD.reagents.copy_to(BB, 10)
+		BB.name = "chemical dart"
+		CGD.syringes_left--
+	..()
