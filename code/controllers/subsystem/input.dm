@@ -34,9 +34,10 @@ SUBSYSTEM_DEF(input)
 			"O" = "ooc",
 			"Ctrl+O" = "looc",
 			"T" = "say",
-			"Ctrl+T" = "whisper",
+			"Ctrl+T" = "say_indicator",
+			"Y" = "whisper",
 			"M" = "me",
-			"Ctrl+M" = "subtle",
+			"Ctrl+M" = "me_indicator",
 			"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"", // This makes it so backspace can remove default inputs
 			"Any" = "\"KeyDown \[\[*\]\]\"",
 			"Any+UP" = "\"KeyUp \[\[*\]\]\"",
@@ -50,7 +51,9 @@ SUBSYSTEM_DEF(input)
 			"Tab" = "\".winset \\\"mainwindow.macro=old_default input.focus=true input.background-color=[COLOR_INPUT_ENABLED]\\\"\"",
 			"O" = "ooc",
 			"T" = "say",
+			"Ctrl+T" = "say_indicator",
 			"M" = "me",
+			"Ctrl+M" = "me_indicator",
 			"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"", // This makes it so backspace can remove default inputs
 			"Any" = "\"KeyDown \[\[*\]\]\"",
 			"Any+UP" = "\"KeyUp \[\[*\]\]\"",
