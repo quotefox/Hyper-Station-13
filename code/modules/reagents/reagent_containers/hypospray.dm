@@ -181,3 +181,77 @@
 	volume = 250
 	list_reagents = list("holywater" = 150, "tiresolution" = 50, "dizzysolution" = 50)
 	amount_per_transfer_from_this = 50
+
+//Chemlight was here.
+
+/obj/item/reagent_containers/hypospray/debug
+	name = "retractable hypospray syringe"
+	desc = "An advanced chemical synthesizer and injection system, designed for heavy-duty medical equipment."
+	icon = 'icons/obj/syringe.dmi'
+	item_state = "hypo"
+	icon_state = "borghypo"
+	amount_per_transfer_from_this = 5
+	volume = 200
+	possible_transfer_amounts = list()
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+	reagent_flags = OPENCONTAINER | NO_REACT
+	slot_flags = ITEM_SLOT_BELT
+	infinite = TRUE
+	var/list/fun_ids = list("growthchem", "shrinkchem", "aphro", "aphro+", "penis_enlarger", "breast_enlarger", "space_drugs", "lithium")
+
+/obj/item/reagent_containers/hypospray/debug/attack_self(mob/user)
+	var/chosen_reagent
+	var/list/reagent_ids = sortList(GLOB.chemical_reagents_list)
+	var/quick_select = input(user, "Select an option", "Press start") in list("Quick menu", "Debug", "Cancel")
+	switch (quick_select)
+		if("Quick menu")
+			var/list_selection = input(user, "Choose an catagory", "List Choice") in list("Emergency Meds", "Fun Chemicals", "Self Defense", "Cancel")
+			switch(list_selection)
+				if("Emergency Meds")
+					reagents.clear_reagents()
+					amount_per_transfer_from_this = 10
+						reagents.add_reagent_list(list("atropine" = 10, "oxandrolone" = 20, "sal_acid" = 20, "salbutamol" = 10))
+
+				if("Self Defense")
+					reagents.clear_reagents()
+					amount_per_transfer_from_this = 10
+						reagents.add_reagent_list(list("tirizene" = 14, "tiresolution" = 21, "bonehurtingjuice" = 14,))	// OOF
+
+				if("Fun Chemicals")
+					reagents.clear_reagents()
+					amount_per_transfer_from_this = 5
+						chosen_reagent = input(user, "What reagent do you want to dispense?") as null|anything in fun_ids
+					if(chosen_reagent)
+						reagents.add_reagent(chosen_reagent, 20, null)
+
+		if("Debug")
+			var/operation_selection = input(user, "Select an option", "Reagent fabricator", "cancel") in list("Select reagent", "Clear reagents", "Select transfer amount", "Cancel")
+			switch (operation_selection)
+				if("Select reagent")
+					switch(alert(usr, "Choose a method.", "Add Reagents", "Enter ID", "Choose ID"))
+						if("Enter ID")
+							var/valid_id
+							while(!valid_id)
+								chosen_reagent = stripped_input(usr, "Enter the ID of the reagent you want to add.")
+								if(!chosen_reagent) //Get me out of here!
+									break
+								for(var/ID in reagent_ids)
+									if(ID == chosen_reagent)
+										valid_id = 1
+								if(!valid_id)
+									to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
+						if("Choose ID")
+							chosen_reagent = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in reagent_ids	
+					if(chosen_reagent)
+						reagents.add_reagent(chosen_reagent, 20, null)
+
+				if("Clear reagents")
+					reagents.clear_reagents()
+
+				if("Select transfer amount")
+					var/transfer_select = input(user, "Select the amount of reagents you'd like to inject.", "Transfer amount") as num|null
+					if(transfer_select)
+						amount_per_transfer_from_this = max(min(round(text2num(transfer_select)),20),1)
+
+		else
+			return
