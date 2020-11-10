@@ -1775,7 +1775,6 @@
 #include "code\modules\holiday\easter.dm"
 #include "code\modules\holiday\holidays.dm"
 #include "code\modules\holiday\halloween\bartholomew.dm"
-//#include "code\modules\holiday\halloween\halloween.dm" //Time to go ahead and disable this. See you next year.
 #include "code\modules\holiday\halloween\jacqueen.dm"
 #include "code\modules\holodeck\area_copy.dm"
 #include "code\modules\holodeck\computer.dm"
@@ -2614,6 +2613,7 @@
 #include "code\modules\reagents\reagent_containers\borghydro.dm"
 #include "code\modules\reagents\reagent_containers\bottle.dm"
 #include "code\modules\reagents\reagent_containers\chem_pack.dm"
+#include "code\modules\reagents\reagent_containers\Chemical_tongue.dm"
 #include "code\modules\reagents\reagent_containers\dropper.dm"
 #include "code\modules\reagents\reagent_containers\glass.dm"
 #include "code\modules\reagents\reagent_containers\hypospray.dm"
@@ -2788,6 +2788,7 @@
 #include "code\modules\shuttle\syndicate.dm"
 #include "code\modules\shuttle\white_ship.dm"
 #include "code\modules\spells\spell.dm"
+#include "code\modules\spells\spell_types\adminbussed.dm"
 #include "code\modules\spells\spell_types\aimed.dm"
 #include "code\modules\spells\spell_types\area_teleport.dm"
 #include "code\modules\spells\spell_types\barnyard.dm"
