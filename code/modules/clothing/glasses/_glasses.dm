@@ -226,13 +226,13 @@
 
 /obj/item/clothing/glasses/garb
 	name = "plain black gar glasses"
-	desc = "Go beyond impossible and kick reason to the curb! Doesn't seem to have flash protection."
+	desc = "Go beyond impossible and kick reason to the curb! Doesn't seem to have flash protection and doesn't seem sharp either."
 	icon_state = "garb"
 	item_state = "garb"
 
 /obj/item/clothing/glasses/garb/supergarb
 	name = "plain black giga gar glasses"
-	desc = "Believe in us humans. Also doesn't seem to have flash protection."
+	desc = "Believe in us humans. Also doesn't seem to have flash protection and doesn't seem sharp either."
 	icon_state = "supergarb"
 
 /obj/item/clothing/glasses/sunglasses/gar
