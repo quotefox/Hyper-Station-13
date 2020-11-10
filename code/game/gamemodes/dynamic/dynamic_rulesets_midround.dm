@@ -282,8 +282,8 @@
 	antag_flag = ROLE_LEWD_TRAITOR
 	antag_datum = /datum/antagonist/traitor/lewd
 	//minimum_required_age = 7
-	protected_roles = list("AI","Cyborg")
-	restricted_roles = list("Cyborg","AI")
+	protected_roles = list("AI","Cyborg", "Positronic Brain")
+	restricted_roles = list("Cyborg","AI", "Positronic Brain")
 	required_candidates = 1
 	weight = 2
 	cost = 0

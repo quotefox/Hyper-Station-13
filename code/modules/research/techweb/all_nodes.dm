@@ -12,7 +12,7 @@
 	"destructive_analyzer", "circuit_imprinter", "experimentor", "rdconsole", "design_disk", "tech_disk", "rdserver", "rdservercontrol", "mechfab",
 	"space_heater", "xlarge_beaker", "sec_rshot", "sec_bshot", "sec_slug", "sec_Islug", "sec_dart", "sec_38", "sec_38lethal",
 	"rglass","plasteel","plastitanium","plasmaglass","plasmareinforcedglass","titaniumglass","plastitaniumglass","chem_pack","medkit_cabinet",
-	"disposable_hypospray","plastic_knife","plastic_fork","plastic_spoon")
+	"disposable_hypospray","plastic_knife","plastic_fork","plastic_spoon","large_beaker")
 
 /datum/techweb_node/mmi
 	id = "mmi"
@@ -81,7 +81,7 @@
 	display_name = "Advanced Biotechnology"
 	description = "Advanced Biotechnology"
 	prereq_ids = list("biotech")
-	design_ids = list("piercesyringe", "crewpinpointer", "smoke_machine", "plasmarefiller", "limbgrower", "defibrillator", "meta_beaker", "healthanalyzer_advanced","harvester","holobarrier_med","smartdartgun","medicinalsmartdart", "pHmeter")
+	design_ids = list("piercesyringe", "crewpinpointer", "smoke_machine", "plasmarefiller", "limbgrower", "defibrillator", "meta_beaker", "healthanalyzer_advanced","harvester","holobarrier_med","smartdartgun","medicinalsmartdart", "pHmeter", "large_hypovial")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
 
@@ -673,7 +673,7 @@
 	display_name = "Medical Weaponry"
 	description = "Weapons using medical technology."
 	prereq_ids = list("adv_biotech", "adv_weaponry")
-	design_ids = list("rapidsyringe", "shotgundartcryostatis")
+	design_ids = list("rapidsyringe", "shotgundartcryostatis", "hypo2")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 	export_price = 5000
 

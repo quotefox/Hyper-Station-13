@@ -16,7 +16,7 @@
 	required_candidates = 1
 	weight = 5
 	cost = 10
-	requirements = list(101,40,30,25,20,20,15,15,15,15)
+	requirements = list(101,101,30,25,20,20,15,15,15,15)
 	high_population_requirement = 10
 	var/autotraitor_cooldown = 450 // 15 minutes (ticks once per 2 sec)
 	chaos_min = 2.5
@@ -31,9 +31,9 @@
 	//protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Cyborg")
 	restricted_roles = list("Cyborg")
 	//required_candidates = 1
-	//weight = 5
+	weight = 5
 	cost = 0
-	requirements = list(101,25,25,20,20,15,15,10,10,5)
+	requirements = list(101,25,25,20,20,15,15,10,10,10)
 	high_population_requirement = 10
 	//var/autotraitor_cooldown = 450 // 15 minutes (ticks once per 2 sec)
 	chaos_min = 2.0
@@ -76,9 +76,9 @@
 	protected_roles = list("AI","Cyborg")
 	restricted_roles = list("Cyborg","AI")
 	required_candidates = 1
-	weight = 3
+	weight = 2
 	cost = 0
-	requirements = list(101,10,10,10,10,10,10,10,10,10)
+	requirements = list(10,10,10,10,10,10,10,10,10,10)
 	high_population_requirement = 10
 	chaos_min = 0.1
 	chaos_max = 2.5
@@ -115,17 +115,6 @@
 		M.mind.restricted_roles = restricted_roles
 	return TRUE
 
-/*
-/datum/dynamic_ruleset/roundstart/traitor/lewd/execute()
-	var/datum/mind/M = null
-	if(numTraitors)
-		for(var/i = 0, i<numTraitors, i++)
-			M = pick(assigned)
-			assigned.Remove(M)
-			M.make_LewdTraitor()
-		return TRUE
-	return FALSE
-*/
 
 //////////////////////////////////////////
 //                                      //
