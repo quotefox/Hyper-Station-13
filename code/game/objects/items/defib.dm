@@ -142,6 +142,7 @@
 /obj/item/defibrillator/emag_act(mob/user)
 	. = ..()
 	safety = !safety
+	combat = !combat
 	to_chat(user, "<span class='warning'>You silently [safety ? "enable" : "disable"] [src]'s safety protocols with the cryptographic sequencer.</span>")
 	return TRUE
 
@@ -470,10 +471,13 @@
 		return
 	if(!req_defib && !combat)
 		return
+	var/actiontime = 10
+	if (defib?.combat)
+		actiontime = 0
 	M.visible_message("<span class='danger'>[user] hastily places [src] on [M]'s chest!</span>", \
 			"<span class='userdanger'>[user] hastily places [src] on [M]'s chest!</span>")
 	busy = TRUE
-	if(do_after(user, 10, target = M))
+	if(do_after(user, actiontime, target = M))
 		M.visible_message("<span class='danger'>[user] zaps [M] with [src]!</span>", \
 				"<span class='userdanger'>[user] zaps [M] with [src]!</span>")
 		M.adjustStaminaLoss(50)
@@ -498,11 +502,14 @@
 		return
 	if(!req_defib && !combat)
 		return
+	var/actiontime = 30
+	if (defib?.combat)
+		actiontime = 15
 	user.visible_message("<span class='warning'>[user] begins to place [src] on [H]'s chest.</span>",
 		"<span class='warning'>You overcharge the paddles and begin to place them onto [H]'s chest...</span>")
 	busy = TRUE
 	update_icon()
-	if(do_after(user, 30, target = H))
+	if(do_after(user, actiontime, target = H))
 		user.visible_message("<span class='notice'>[user] places [src] on [H]'s chest.</span>",
 			"<span class='warning'>You place [src] on [H]'s chest and begin to charge them.</span>")
 		var/turf/T = get_turf(defib)
@@ -511,7 +518,7 @@
 			T.audible_message("<span class='warning'>\The [defib] lets out an urgent beep and lets out a steadily rising hum...</span>")
 		else
 			user.audible_message("<span class='warning'>[src] let out an urgent beep.</span>")
-		if(do_after(user, 30, target = H)) //Takes longer due to overcharging
+		if(do_after(user, actiontime, target = H)) //Takes longer due to overcharging
 			if(!H)
 				busy = FALSE
 				update_icon()
@@ -564,7 +571,9 @@
 		primetimer = 30
 		primetimer2 = 20
 		deathtimer = DEFIB_TIME_LOSS * 10
-
+	if (defib?.combat)
+		primetimer = 0
+		primetimer2 = 0
 	if(do_after(user, primetimer, target = H)) //beginning to place the paddles on patient's chest to allow some time for people to move away to stop the process
 		user.visible_message("<span class='notice'>[user] places [src] on [H]'s chest.</span>", "<span class='warning'>You place [src] on [H]'s chest.</span>")
 		playsound(src, 'sound/machines/defib_charge.ogg', 75, 0)
