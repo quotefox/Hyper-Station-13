@@ -24,7 +24,7 @@
 			playsound(M.loc,'sound/effects/attackblob.ogg', rand(10,50), 1)
 			if(isliving(M))
 				var/mob/living/deepkiss = M
-				deepkiss.adjustOxyLoss(10)
+				deepkiss.adjustOxyLoss(5)
 			if(!reagents || !reagents.total_volume)
 				M.visible_message("<span class='warning'>[user] pulls away from the kiss as their tongue in [M]'s mouth soon follows, slurping back into [user]'s muzzle.</span>", \
 							"<span class='userwarning'>[user] thrusts their tongue down your throat! Pulling it back up as it slithers up then out from your mouth.</span>")
@@ -69,7 +69,7 @@
 							"<span class='userwarning'>[user] playfully licks over your lips, leaving some chemicals along it.</span>")
 			log_combat(user, M, "fed", reagents.log_list())
 			var/fraction = min(5/reagents.total_volume, 1)
-			reagents.reaction(M, INGEST, fraction)
+			reagents.reaction(M, TOUCH, fraction)
 			addtimer(CALLBACK(reagents, /datum/reagents.proc/copy_to, M, 1), 5)
 
 	if(user.a_intent == INTENT_HELP)
@@ -85,6 +85,20 @@
 				playsound(M.loc,'sound/effects/attackblob.ogg', rand(10,50), 1)
 	else
 		return
+
+obj/item/reagent_containers/chemical_tongue/afterattack(obj/target, mob/user, proximity)
+	. = ..()
+	if(target.is_refillable()) //Something like a glass. Player probably wants to transfer TO it.
+		if(!reagents.total_volume)
+			to_chat(user, "<span class='warning'>[src] is empty!</span>")
+			return
+
+		if(target.reagents.holder_full())
+			to_chat(user, "<span class='warning'>[target] is full.</span>")
+			return
+
+		var/trans = reagents.copy_to(target, amount_per_transfer_from_this)
+		to_chat(user, "<span class='notice'>You transfer [trans] unit\s of the solution to [target] by drooling into it.</span>")
 
 /obj/item/reagent_containers/chemical_tongue/attack_self(mob/user)
 	var/chosen_reagent
