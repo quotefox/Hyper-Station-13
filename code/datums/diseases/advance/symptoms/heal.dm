@@ -445,6 +445,7 @@
 		power = 2
 	if(A.properties["transmittable"] >= 6)
 		cellular_damage = TRUE
+	ADD_TRAIT(A.affected_mob, TRAIT_RADRESONANCE, DISEASE_TRAIT)
 
 /datum/symptom/heal/radiation/CanHeal(datum/disease/advance/A)
 	var/mob/living/M = A.affected_mob
@@ -482,3 +483,8 @@
 		if(L.heal_damage(heal_amt/parts.len, heal_amt/parts.len))
 			M.update_damage_overlays()
 	return 1
+
+/datum/symptom/heal/radiation/End(datum/disease/advance/A)
+	if(!..())
+		return
+	REMOVE_TRAIT(A.affected_mob, TRAIT_RADRESONANCE, DISEASE_TRAIT)
