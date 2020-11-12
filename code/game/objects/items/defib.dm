@@ -25,7 +25,7 @@
 	var/grab_ghost = FALSE // Do we pull the ghost back into their body?
 	var/healdisk = FALSE // Will we shock people dragging the body?
 	var/pullshocksafely = FALSE //Dose the unit have the healdisk upgrade?
-	var/primetime = 0 // is the defib faster
+	var/primetime = 10 // is the defib faster
 	var/timedeath = 10
 
 /obj/item/defibrillator/get_cell()
@@ -694,7 +694,7 @@
 			to_chat(user, "<span class='notice'>This unit is already upgraded with this disk!</span>")
 			return TRUE
 		to_chat(user, "<span class='notice'>You upgrade the unit with Speed upgrade disk!</span>")
-		primetime = 10
+		primetime = 20
 		return TRUE
 	if(istype(I, /obj/item/disk/medical/defib_decay))
 		if(!timedeath == initial(timedeath))
