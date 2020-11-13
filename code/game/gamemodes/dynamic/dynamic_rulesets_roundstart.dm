@@ -12,7 +12,7 @@
 	antag_datum = /datum/antagonist/traitor/
 	minimum_required_age = 0
 	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Cyborg", "Quartermaster")
-	restricted_roles = list("Cyborg")
+	restricted_roles = list("Cyborg", "AI") //Malf is it's own ruleset
 	required_candidates = 1
 	weight = 5
 	cost = 10
@@ -29,7 +29,7 @@
 	antag_datum = /datum/antagonist/traitor/thief
 	minimum_required_age = 0
 	//protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Cyborg")
-	restricted_roles = list("Cyborg")
+	restricted_roles = list("Cyborg", "AI") //Malf is it's own ruleset
 	//required_candidates = 1
 	//weight = 5
 	cost = 0
