@@ -2,7 +2,7 @@
 	name = "lunar altar"
 	desc = "Judging by the symbols, millenia ago, it seems that the creatures of this world used something precious to the icy moon that orbits this hellish planet. You... Wouldn't do that, would you?"
 	icon = 'icons/obj/hand_of_god_structures.dmi' //Placeholder.
-	icon_state = "sacrificealtar" //Placeholder.
+	icon_state = "convertaltar-blue" //Placeholder.
 	anchored = TRUE
 	density = FALSE
 	var/used = FALSE
@@ -44,6 +44,8 @@
 			new /obj/item/helfiretincture(src.loc) //Eventually a pick, with different items.
 			visible_message("<span class='warning'>As you blink, cracks appear on the altar and a flash of lunar light reaches its surface. A gift?</span>")
 			message_admins("[ADMIN_LOOKUPFLW(user)] has sacrificed their [bodypart] on the lunar altar at [AREACOORD(src)].")
+			icon_state = "sacrificealtar-blue"
+			update_icon()
 			used = TRUE
 
 /obj/item/helfiretincture
