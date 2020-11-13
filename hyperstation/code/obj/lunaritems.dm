@@ -12,6 +12,7 @@
 	if(.)
 		return
 	if(used)
+		to_chat(user, "<span class='notice'>The altar seems shattered.</span>")
 		return
 	if(istype(user, /mob/living/carbon/human/))
 		var/part = pick("1","2","3","4")
@@ -26,12 +27,12 @@
 				bodypart = H.get_bodypart(BODY_ZONE_L_ARM)
 			if("4")
 				bodypart = H.get_bodypart(BODY_ZONE_R_ARM)
-		if(!bodypart || used)
+		if(!bodypart)
 			to_chat(user, "<span class='notice'>The altar does nothing.</span>")
 			return
 		to_chat(user,"<span class='warning'>You begin placing your hand on the altar.</span>")
 		playsound(src, 'sound/weapons/slice.ogg', 50, 1, 5)
-		if(do_after(user, 50, target=src))
+		if(do_after(user, 100, target=src))
 			if(used)
 				return
 			visible_message("<span class='danger'>[user]'s [bodypart] is momentarily enveloped by shadows before they are gruesomely twisted and dismembered!</span>", \
@@ -66,6 +67,8 @@
 		icon_state = "helfire_tincture_used"
 		update_icon()
 		addtimer(CALLBACK(src, .proc/restore, user), cooldowntime)
+	else
+		to_chat(user, "<span class='warning'>It's too soon to use this again!</span>")
 
 /obj/item/helfiretincture/proc/restore(mob/user)
 	used = FALSE
