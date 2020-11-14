@@ -81,7 +81,7 @@
 	requirements = list(10,10,10,10,10,10,10,10,10,10)
 	high_population_requirement = 10
 	chaos_min = 0.1
-	chaos_max = 2.5
+	chaos_max = 2.0
 	admin_required = TRUE
 	//vars for execution
 	var/list/mob/living/carbon/human/lewd_candidates = list()

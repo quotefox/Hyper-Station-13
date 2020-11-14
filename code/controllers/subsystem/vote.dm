@@ -1,4 +1,4 @@
-#define DYNAMIC_DEFAULT_CHAOS       1.5 //The default chaos value for low pop low vote rounds
+#define DYNAMIC_DEFAULT_CHAOS       1.0 //The default chaos value for low pop low vote rounds
 #define DYNAMIC_VOTE_NORMALIZATION  5   //If there are fewer than this many votes, the average will be skewed towards the default
 
 SUBSYSTEM_DEF(vote)
@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(vote)
 			. = (total / v)
 			if(total == 0)//If statements down the road break if total is allowed to be 0 and it defaults to normal extended.
 				. = 0.1 
-			text += "\n<b>Chaos level [obfuscated ? "???" : .]</b>"
+			text += "\n<b>Chaos level [.]</b>"
 			
 		if(mode != "custom" && mode != "dynamic")
 			if(winners.len > 1 && !obfuscated) //CIT CHANGE - adds obfuscated votes
@@ -285,6 +285,7 @@ SUBSYSTEM_DEF(vote)
 			if("roundtype") //CIT CHANGE - adds the roundstart secret/extended vote
 				choices.Add("secret", "extended")
 			if("dynamic")
+				obfuscated = TRUE
 				choices.Add("0","1","2","3","4","5")
 			if("custom")
 				question = stripped_input(usr,"What is the vote for?")
