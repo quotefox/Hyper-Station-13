@@ -72,6 +72,9 @@ Medical Doctor
 	minimal_player_age = 1
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
+	exp_requirements = 240
+	exp_type = EXP_TYPE_MEDICAL
+	exp_type_department = EXP_TYPE_MEDICAL
 
 	outfit = /datum/outfit/job/doctor
 
