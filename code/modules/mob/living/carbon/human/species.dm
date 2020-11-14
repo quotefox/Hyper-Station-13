@@ -1305,6 +1305,10 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		radiation = 0
 		return TRUE
 
+	if(HAS_TRAIT(H, TRAIT_RADRESONANCE))
+		//Don't do anything.
+		return TRUE
+
 	if(radiation > RAD_MOB_KNOCKDOWN && prob(RAD_MOB_KNOCKDOWN_PROB))
 		if(!H.IsKnockdown())
 			H.emote("collapse")
