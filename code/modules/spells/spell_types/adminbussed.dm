@@ -20,7 +20,7 @@
 /obj/effect/proc_holder/spell/self/Alteration_Mechanical/cast(mob/living/carbon/human/user)
 	var/mob/living/carbon/human/H = user
 	var/list/reagent_options = sortList(GLOB.chemical_reagents_list)
-	H.visible_message("<span class='notice'> user] gains a look of \
+	H.visible_message("<span class='notice'> [user] gains a look of \
 	concentration while standing perfectly still.\
 	Their body seems to shift and starts reshaping itself.</span>",
 	"<span class='notice'>You focus intently on altering your body while \
@@ -109,54 +109,50 @@
 		H.give_breasts()
 
 	else if (select_alteration == "Penis Production")
-		if(H.getorganslot("testicles"))
-			var/obj/item/organ/genital/testicles/T = H.getorganslot("testicles")    
-			var/new_fluid_penis
-			switch(alert(usr, "Choose a method.", "Add Reagents", "Enter ID", "Choose ID"))
-				if("Enter ID")
-					var/valid_id
-					while(!valid_id)
-						new_fluid_penis = stripped_input(usr, "Enter the ID of the reagent you want to add to your testicles.")
-						if(!new_fluid_penis) //Get me out of here!
-							break
-						for(var/ID in reagent_options)
-							if(ID == new_fluid_penis)
-								valid_id = 1
-						if(!valid_id)
-							to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
-				if("Choose ID")
-					new_fluid_penis = input(usr, "Choose a reagent to add to your testicles.", "Choose a reagent.") as null|anything in reagent_options
-			if(new_fluid_penis)
-				T.fluid_id = new_fluid_penis
-			H.update_genitals()
-			H.apply_overlay()
-		else
-			to_chat(user, "You need balls for this to work.")
-
-	else if(select_alteration == "Breast Production")
-		if(H.getorganslot("breasts"))
-			var/obj/item/organ/genital/testicles/B = H.getorganslot("breasts")    
-			var/new_fluid_breasts
-			switch(alert(usr, "Choose a method.", "Add Reagents", "Enter ID", "Choose ID"))
-				if("Enter ID")
-					var/valid_id
-					while(!valid_id)
-						new_fluid_breasts = stripped_input(usr, "Enter the ID of the reagent you want to add to your breasts.")
-						if(!new_fluid_breasts) //Get me out of here!
-							break
-						for(var/ID in reagent_options)
-							if(ID == new_fluid_breasts)
-								valid_id = 1
-						if(!valid_id)
-							to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
-				if("Choose ID")
-					new_fluid_breasts = input(usr, "Choose a reagent to add to your breasts.", "Choose a reagent.") as null|anything in reagent_options
-			if(new_fluid_breasts)
-				B.fluid_id = new_fluid_breasts
-			H.update_genitals()
-			H.apply_overlay()
-		else
+		if(!H.getorganslot("testicles"))
 			to_chat(user, "You need functioning breasts for this to work.")
+		else
+			for(var/obj/item/organ/genital/testicles/X in H.internal_organs)
+				var/new_fluid_penis
+				switch(alert(usr, "Choose a method.", "Add Reagents", "Enter ID", "Choose ID"))
+					if("Enter ID")
+						var/valid_id
+						while(!valid_id)
+							new_fluid_penis = stripped_input(usr, "Enter the ID of the reagent you want to add to your testicles.")
+							if(!new_fluid_penis) //Get me out of here!
+								break
+							for(var/ID in reagent_options)
+								if(ID == new_fluid_penis)
+									valid_id = 1
+							if(!valid_id)
+								to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
+					if("Choose ID")
+						new_fluid_penis = input(usr, "Choose a reagent to add to your testicles.", "Choose a reagent.") as null|anything in reagent_options
+				if(new_fluid_penis)
+					X.fluid_id = new_fluid_penis
+
+	else if(select_alteration == "Breast Production")   
+		if(!H.getorganslot("breasts"))
+			to_chat(user, "You need functioning breasts for this to work.")
+		else
+			for(var/obj/item/organ/genital/breasts/X in H.internal_organs)
+				var/new_fluid_breasts
+				switch(alert(usr, "Choose a method.", "Add Reagents", "Enter ID", "Choose ID"))
+					if("Enter ID")
+						var/valid_id
+						while(!valid_id)
+							new_fluid_breasts = stripped_input(usr, "Enter the ID of the reagent you want to add to your breasts.")
+							if(!new_fluid_breasts) //Get me out of here!
+								break
+							for(var/ID in reagent_options)
+								if(ID == new_fluid_breasts)
+									valid_id = 1
+							if(!valid_id)
+								to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
+					if("Choose ID")
+						new_fluid_breasts = input(usr, "Choose a reagent to add to your breasts.", "Choose a reagent.") as null|anything in reagent_options
+				if(new_fluid_breasts)
+					X.fluid_id = new_fluid_breasts
 
 	else if (select_alteration == "Alter Height")
 		var/altered_height
