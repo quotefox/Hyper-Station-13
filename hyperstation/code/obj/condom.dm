@@ -20,12 +20,13 @@
 			to_chat(user, "<span class='notice'>You unwrap the condom.</span>")
 			playsound(user, 'sound/items/poster_ripped.ogg', 50, 1, -1)
 			return
-		if(unwrapped == 1)
-			new /obj/item/clothing/head/condom(usr.loc)
-			qdel(src)
-			to_chat(user, "<span class='notice'>You roll the condom out.</span>")
-			playsound(user, 'sound/lewd/latex.ogg', 50, 1, -1)
-			return
+//		if(unwrapped == 1)
+//			new /obj/item/clothing/head/condom(usr.loc)
+//			qdel(src)
+//			to_chat(user, "<span class='notice'>You roll the condom out.</span>")
+//			playsound(user, 'sound/lewd/latex.ogg', 50, 1, -1)
+//			return
+
 
 /obj/item/condom/attack(mob/living/carbon/C, mob/living/user) //apply the johnny on another person or yourself
 

@@ -150,6 +150,7 @@ Credit where due:
 	var/datum/team/clockcult/main_clockcult
 
 /datum/game_mode/clockwork_cult/pre_setup()
+	/* //Reebe should be preloaded
 	var/list/errorList = list()
 	var/list/reebes = SSmapping.LoadGroup(errorList, "Reebe", "map_files/generic", "City_of_Cogs.dmm", default_traits = ZTRAITS_REEBE, silent = TRUE)
 	if(errorList.len)	// reebe failed to load
@@ -158,6 +159,7 @@ Credit where due:
 		return FALSE
 	for(var/datum/parsed_map/PM in reebes)
 		PM.initTemplateBounds()
+	*/
 	if(CONFIG_GET(flag/protect_roles_from_antagonist))
 		restricted_jobs += protected_jobs
 	if(CONFIG_GET(flag/protect_assistant_from_antagonist))

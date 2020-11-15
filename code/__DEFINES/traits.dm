@@ -123,6 +123,7 @@
 #define	TRAIT_CALCIUM_HEALER	"calcium_healer"
 #define TRAIT_ALCOHOL_LIGHTWEIGHT	"alcohol_lightweight" //Skyrat port
 #define TRAIT_CURSED_BLOOD	"cursed_blood" //Yo dawg I heard you like bloodborne references so I put a
+#define TRAIT_RADRESONANCE "radioactive resonance" //Hyperstation edit
 
 #define TRAIT_SWIMMING			"swimming"			//only applied by /datum/element/swimming, for checking
 #define TRAIT_CAPTAIN_METABOLISM "captain-metabolism"
@@ -184,6 +185,7 @@
 #define OBESITY "obesity"
 #define MAGIC_TRAIT "magic"
 #define TRAUMA_TRAIT "trauma"
+#define DISEASE_TRAIT "disease"
 #define SPECIES_TRAIT "species"
 #define ORGAN_TRAIT "organ"
 #define JOB_TRAIT "job"

@@ -1,3 +1,11 @@
+/var/list/blacklisted_sentient_animals = typecacheof(list(
+	/mob/living/simple_animal/slime,
+	/mob/living/simple_animal/hostile/megafauna,
+	/mob/living/simple_animal/hostile/blob,
+	/mob/living/simple_animal/jacq,
+	/mob/living/simple_animal/holodeck_monkey,
+	/mob/living/simple_animal/astral))
+
 /datum/round_event_control/sentience
 	name = "Random Human-level Intelligence"
 	typepath = /datum/round_event/ghost_role/sentience
@@ -32,6 +40,8 @@
 	for(var/mob/living/simple_animal/L in GLOB.alive_mob_list)
 		var/turf/T = get_turf(L)
 		if(!T || !is_station_level(T.z))
+			continue
+		if(is_type_in_typecache(L, blacklisted_sentient_animals))
 			continue
 		if(!(L in GLOB.player_list) && !L.mind)
 			potential += L

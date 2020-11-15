@@ -17,10 +17,10 @@ GLOBAL_VAR_INIT(dynamic_latejoin_delay_max, (25 MINUTES))
 GLOBAL_VAR_INIT(dynamic_midround_delay_min, (15 MINUTES))
 GLOBAL_VAR_INIT(dynamic_midround_delay_max, (35 MINUTES))
 
-GLOBAL_VAR_INIT(dynamic_event_delay_min, (3 MINUTES))
-GLOBAL_VAR_INIT(dynamic_event_delay_max, (10 MINUTES))
+GLOBAL_VAR_INIT(dynamic_event_delay_min, (4 MINUTES))
+GLOBAL_VAR_INIT(dynamic_event_delay_max, (12 MINUTES))
 
-GLOBAL_VAR_INIT(dynamic_threat_delay, (5 MINUTES))
+GLOBAL_VAR_INIT(dynamic_threat_delay, (4 MINUTES))
 
 // Are HIGHLANDER_RULESETs allowed to stack?
 GLOBAL_VAR_INIT(dynamic_no_stacking, TRUE)
@@ -125,9 +125,10 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 /datum/game_mode/dynamic/admin_panel()
 	var/list/dat = list("<html><head><title>Game Mode Panel</title></head><body><h1><B>Game Mode Panel</B></h1>")
 	dat += "Dynamic Mode <a href='?_src_=vars;[HrefToken()];Vars=[REF(src)]'>\[VV\]</A><BR>"
-	dat += "Threat Level: <b>[threat_level]</b><br/>"
-
-	dat += "Threat to Spend: <b>[threat]</b> <a href='?src=\ref[src];[HrefToken()];adjustthreat=1'>\[Adjust\]</A> <a href='?src=\ref[src];[HrefToken()];threatlog=1'>\[View Log\]</a><br/>"
+	dat += "Chaos Level: <b>[GLOB.dynamic_chaos_level]</b><br/>"
+	//dat += "Threat Level: <b>[threat_level]</b><br/>"
+	//dat += "Threat to Spend: <b>[threat]</b> <a href='?src=\ref[src];[HrefToken()];adjustthreat=1'>\[Adjust\]</A> <a href='?src=\ref[src];[HrefToken()];threatlog=1'>\[View Log\]</a><br/>"
+	dat += "Threat Level: <b>[threat]</b> <a href='?src=\ref[src];[HrefToken()];adjustthreat=1'>\[Adjust\]</A> <a href='?src=\ref[src];[HrefToken()];threatlog=1'>\[View Log\]</a><br/>"
 	dat += "<br/>"
 	dat += "Parameters: centre = [GLOB.dynamic_curve_centre] ; width = [GLOB.dynamic_curve_width].<br/>"
 	//dat += "<i>On average, <b>[peaceful_percentage]</b>% of the rounds are more peaceful.</i><br/>"

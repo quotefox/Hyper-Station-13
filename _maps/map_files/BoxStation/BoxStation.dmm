@@ -37381,13 +37381,13 @@
 /obj/structure/table/glass,
 /obj/item/folder/white,
 /obj/item/stamp/cmo,
-/obj/item/clothing/glasses/hud/health,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/item/clothing/glasses/hud/health/gar,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/heads/cmo)
 "bDW" = (

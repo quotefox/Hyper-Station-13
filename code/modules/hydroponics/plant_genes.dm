@@ -18,7 +18,9 @@
 	return !istype(S, /obj/item/seeds/sample) // Samples can't accept new genes
 
 /datum/plant_gene/proc/Copy()
-	return new type
+	var/datum/plant_gene/G = new type
+	G.mutability_flags = mutability_flags
+	return G
 
 /datum/plant_gene/proc/apply_vars(obj/item/seeds/S) // currently used for fire resist, can prob. be further refactored
 	return
@@ -151,9 +153,9 @@
 			return FALSE
 	return TRUE
 
-	/datum/plant_gene/reagent/polypyr
+/datum/plant_gene/reagent/polypyr
 	name = "Polypyrylium Oligomers"
-	reagent_id = "polypyrylium_oligomers"
+	reagent_id = "polypyr"
 	rate = 0.15
 
 /datum/plant_gene/reagent/teslium

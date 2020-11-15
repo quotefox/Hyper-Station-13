@@ -30,7 +30,6 @@
 /obj/item/storage/firstaid/regular/PopulateContents()
 	if(empty)
 		return
-	new /obj/item/stack/medical/plaster_gauze(src)
 	new /obj/item/stack/medical/gauze(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/bruise_pack(src)

@@ -44,3 +44,62 @@
 	if(chambered && !chambered.BB)
 		chambered.newshot()
 	last_synth = world.time
+
+//Chemlight was here, adding dumb busing things
+
+/obj/item/gun/chem/debug
+	name = "experimental reagent gun"
+	desc =	"a reagent gun seemingly made to be a part of the user, suggesting the individual generates reagents in their body for it to work."
+	icon_state = "syringe_pistol"
+	item_state = "gun" //Smaller inhand
+	suppressed = TRUE //Softer fire sound
+	can_unsuppress = FALSE //Permanently silenced
+	time_per_syringe = 150		
+	syringes_left = 6
+	max_syringes = 6
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+	var/infinite = FALSE
+
+/obj/item/gun/chem/debug/Initialize()
+	. = ..()
+	chambered = new /obj/item/ammo_casing/chemgun_debug(src)
+	START_PROCESSING(SSobj, src)
+	create_reagents(100, OPENCONTAINER | NO_REACT)
+
+/obj/item/gun/chem/debug/Destroy()
+	. = ..()
+	STOP_PROCESSING(SSobj, src)
+
+/obj/item/gun/chem/debug/attack_self(mob/user)
+	var/list/reagent_ids = sortList(GLOB.chemical_reagents_list)
+	var/choose_operation = input(user, "Select an option", "Reagent fabricator", "cancel") in list("Select reagent", "Enable production", "Cancel")
+	if (choose_operation == "Select reagent")
+		reagents.clear_reagents()
+		var/chosen_reagent
+		switch(alert(usr, "Choose a method.", "Add Reagents", "Enter ID", "Choose ID"))
+			if("Enter ID")
+				var/valid_id
+				while(!valid_id)
+					chosen_reagent = stripped_input(usr, "Enter the ID of the reagent you want to add to your syringes.")
+					if(!chosen_reagent) //Get me out of here!
+						break
+					for(var/ID in reagent_ids)
+						if(ID == chosen_reagent)
+							valid_id = 1
+					if(!valid_id)
+						to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
+			if("Choose ID")
+				chosen_reagent = input(usr, "Choose a reagent to add to your syringes.", "Choose a reagent.") as null|anything in reagent_ids
+		if(chosen_reagent)
+			reagents.add_reagent(chosen_reagent, 100, null)
+
+	else if (choose_operation == "Enable production")
+		if(!infinite)
+			infinite = TRUE
+			to_chat(user, "Now constantly generating reagents.")
+		else
+			infinite = FALSE
+			to_chat(user, "Reagents generation now off.")
+
+	else
+		return
