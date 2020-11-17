@@ -1,6 +1,6 @@
 /obj/structure/lunaraltar
 	name = "lunar altar"
-	desc = "Judging by the symbols, millenia ago, it seems that the creatures of this world used something precious to the icy moon that orbits this hellish planet. You... Wouldn't do that, would you?"
+	desc = "Judging by the symbols, millenia ago, it seems that the creatures of this world used to offer something precious to the icy moon that orbits this hellish planet. You... Wouldn't do that, would you?"
 	icon = 'icons/obj/hand_of_god_structures.dmi' //Placeholder.
 	icon_state = "convertaltar-blue" //Placeholder.
 	anchored = TRUE
@@ -15,6 +15,9 @@
 		to_chat(user, "<span class='notice'>The altar seems shattered.</span>")
 		return
 	if(istype(user, /mob/living/carbon/human/))
+		if(isjellyperson(user))
+			to_chat(user, "You feel that there is nothing of value your species can sacrifice.") //NO SLIME CHEESE BRO
+			return
 		var/part = pick("1","2","3","4")
 		var/mob/living/carbon/human/H = user
 		var/obj/item/bodypart/bodypart
