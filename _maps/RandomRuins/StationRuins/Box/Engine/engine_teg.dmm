@@ -2,7 +2,7 @@
 "aq" = (
 /obj/structure/table/reinforced,
 /obj/item/paper{
-	desc = "Charlie, remember to reconnect the gas mix monitor if it's having issues, by the way, if the heat gets too high, don't be afraid to space this part of engineering and use a voidsuit or a hardsuit. There's one in the crates.";
+	info = "Charlie, remember to reconnect the gas mix monitor if it's having issues, by the way, if the heat gets too high, don't be afraid to space this part of engineering and use a voidsuit or a hardsuit. There's one in the crates... <br> And remember. When the candle is lit... The burn is good.;
 	name = "TEG Chamber Note"
 	},
 /turf/open/floor/plasteel,
@@ -15,12 +15,6 @@
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /turf/open/floor/plating,
 /area/engine/engineering)
-"aG" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	dir = 4
-	},
-/turf/open/space,
-/area/space/nearstation)
 "aR" = (
 /obj/machinery/atmospherics/pipe/simple/dark/visible{
 	dir = 4
@@ -825,13 +819,6 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "xD" = (
-/obj/machinery/atmospherics/pipe/simple/orange/visible{
-	dir = 4
-	},
-/obj/machinery/atmospherics/components/binary/pump{
-	dir = 8;
-	name = "Mix to Engine"
-	},
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 8;
 	name = "Atmos to Loop"
@@ -1368,6 +1355,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 9
 	},
+/obj/structure/lattice,
 /turf/open/space,
 /area/space/nearstation)
 "Lw" = (
@@ -1392,7 +1380,7 @@
 /area/engine/engineering)
 "LS" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
-/turf/open/floor/plating/airless,
+/turf/open/space/basic,
 /area/engine/engineering)
 "Mf" = (
 /obj/structure/closet/secure_closet/engineering_personal,
@@ -2140,7 +2128,7 @@ ZT
 ZT
 ZT
 Le
-aG
+Nz
 Qu
 Nz
 EW
@@ -2196,7 +2184,7 @@ EL
 Tk
 MP
 Le
-aG
+Nz
 Qu
 Nz
 EW
