@@ -62784,6 +62784,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
+/obj/machinery/bloodbankgen,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "cqw" = (
@@ -63364,7 +63365,6 @@
 	pixel_x = 4;
 	pixel_y = -3
 	},
-/obj/item/clothing/glasses/hud/health,
 /obj/structure/cable/yellow{
 	icon_state = "1-2"
 	},
@@ -63375,6 +63375,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/item/clothing/glasses/hud/health/gar,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/heads/cmo)
 "crC" = (
