@@ -60189,6 +60189,7 @@
 	dir = 8
 	},
 /obj/effect/mapping_helpers/airlock/unres,
+/obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "ckS" = (
@@ -82603,19 +82604,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/gateway)
-"nHS" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/closed/wall/r_wall,
-/area/ai_monitored/security/armory)
 "omF" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command{
@@ -111009,7 +110997,7 @@ afX
 agc
 ahE
 agc
-nHS
+aeq
 akd
 alp
 amK
