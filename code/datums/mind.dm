@@ -586,14 +586,12 @@
 					new_objective.owner = src
 					new_objective.target = null
 					new_objective.explanation_text = "Free lewd objective"
-					objectives += new_objective
 				else
 					new_objective = new objective_path
 					new_objective.owner = src
 					new_objective.target = new_target.mind
 					//Will display as special role if the target is set as MODE. Ninjas/commandos/nuke ops.
 					new_objective.update_explanation_text()
-					objectives += new_objective
 
 			if ("custom")
 				var/expl = stripped_input(usr, "Custom objective:", "Objective", objective ? objective.explanation_text : "")
@@ -610,6 +608,7 @@
 			if(target_antag)
 				target_antag.objectives -= objective
 			objectives -= objective
+			objectives += new_objective
 			target_antag.objectives.Insert(objective_pos, new_objective)
 			message_admins("[key_name_admin(usr)] edited [current]'s objective to [new_objective.explanation_text]")
 			log_admin("[key_name(usr)] edited [current]'s objective to [new_objective.explanation_text]")
