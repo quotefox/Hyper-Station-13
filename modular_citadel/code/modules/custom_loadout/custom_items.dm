@@ -287,8 +287,8 @@
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
 /obj/item/clothing/neck/tie/bloodred
-	name = "Blood Red Tie"
-	desc = "A neosilk clip-on tie. This one has a black S on the tipping and looks rather unique."
+	name = "blood-red tie"
+	desc = "A neosilk clip-on tie. This one has a black S on the tipping and looks rather suspicious."
 	icon = 'icons/obj/custom.dmi'
 	icon_state = "bloodredtie"
 	alternate_worn_icon = 'icons/mob/custom_w.dmi'
