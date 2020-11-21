@@ -285,9 +285,9 @@
 	protected_roles = list("AI","Cyborg", "Positronic Brain")
 	restricted_roles = list("Cyborg","AI", "Positronic Brain")
 	required_candidates = 1
-	weight = 2
+	weight = 0
 	cost = 0
-	requirements = list(10,10,10,10,10,10,10,10,10,10)
+	requirements = list(101,101,101,101,101,101,101,101,101,101)
 	high_population_requirement = 10
 	chaos_min = 0.1
 	chaos_max = 2.0
