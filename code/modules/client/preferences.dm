@@ -182,6 +182,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Medical record note section
 	var/medical_records
 
+	var/custom_speech_verb = "default" //if your say_mod is to be something other than your races
+	var/custom_tongue = "default" //if your tongue is to be something other than your races
+
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
 	var/prefered_security_department = SEC_DEPT_RANDOM
@@ -452,6 +455,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "</td>"
 			else if(use_skintones || mutant_colors)
 				dat += "</td>"
+
+			dat += APPEARANCE_CATEGORY_COLUMN
+			dat += "<h2>Speech preferences</h2>"
+			dat += "<b>Custom Speech Verb:</b><BR>"
+			dat += "</b><a style='display:block;width:100px' href='?_src_=prefs;preference=speech_verb;task=input'>[custom_speech_verb]</a><BR>"
+			dat += "<b>Custom Tongue:</b><BR>"
+			dat += "</b><a style='display:block;width:100px' href='?_src_=prefs;preference=tongue;task=input'>[custom_tongue]</a><BR>"
 
 			if(HAIR in pref_species.species_traits)
 
@@ -2300,7 +2310,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/desiredlength = input(user, "Choose the max character length of shown Runechat messages. Valid range is 1 to [CHAT_MESSAGE_MAX_LENGTH] (default: [initial(max_chat_length)]))", "Character Preference", max_chat_length)  as null|num
 					if (!isnull(desiredlength))
 						max_chat_length = clamp(desiredlength, 1, CHAT_MESSAGE_MAX_LENGTH)
-
+				if("tongue")
+					var/selected_custom_tongue = input(user, "Choose your desired tongue (none means your species tongue)", "Character Preference") as null|anything in GLOB.roundstart_tongues
+					if(selected_custom_tongue)
+						custom_tongue = selected_custom_tongue
+				if("speech_verb")
+					var/selected_custom_speech_verb = input(user, "Choose your desired speech verb (none means your species speech verb)", "Character Preference") as null|anything in GLOB.speech_verbs
+					if(selected_custom_speech_verb)
+						custom_speech_verb = selected_custom_speech_verb
 		else
 			switch(href_list["preference"])
 				//CITADEL PREFERENCES EDIT - I can't figure out how to modularize these, so they have to go here. :c -Pooj
@@ -2620,6 +2637,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		character.Digitigrade_Leg_Swap(FALSE)
 	else
 		character.Digitigrade_Leg_Swap(TRUE)
+
+	//speech stuff
+	if(custom_tongue != "default")
+		var/new_tongue = GLOB.roundstart_tongues[custom_tongue]
+		if(new_tongue)
+			var/obj/item/organ/tongue/T = character.getorganslot(ORGAN_SLOT_TONGUE)
+			if(T)
+				qdel(T)
+			var/obj/item/organ/tongue/new_custom_tongue = new new_tongue
+			new_custom_tongue.Insert(character)
+	if(custom_speech_verb != "default")
+		character.dna.species.say_mod = custom_speech_verb
 
 	//let's be sure the character updates
 	character.update_body()
