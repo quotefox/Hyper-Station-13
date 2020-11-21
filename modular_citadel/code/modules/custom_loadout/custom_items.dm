@@ -288,7 +288,7 @@
 
 /obj/item/clothing/neck/tie/bloodred
 	name = "blood-red tie"
-	desc = "A neosilk clip-on tie. This one has a black S on the tipping and looks rather suspicious."
+	desc = "A neosilk tie. This one has a black S on the tipping and looks rather suspicious."
 	icon = 'icons/obj/custom.dmi'
 	icon_state = "bloodredtie"
 	alternate_worn_icon = 'icons/mob/custom_w.dmi'
