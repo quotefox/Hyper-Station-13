@@ -118,6 +118,5 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/autosurgeon/vagina = 1,
 	/obj/item/autosurgeon/breasts = 1,
 	/obj/item/autosurgeon/womb = 1,
-	/obj/item/toy/plush/random = 1,
-	"" = 3
+	/obj/item/toy/plush/random = 1
 	))

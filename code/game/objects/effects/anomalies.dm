@@ -197,7 +197,7 @@
 		do_teleport(AM, locate(AM.x, AM.y, AM.z), 8, channel = TELEPORT_CHANNEL_BLUESPACE)
 
 /obj/effect/anomaly/bluespace/detonate()
-	var/turf/T = safepick(get_area_turfs(impact_area))
+	var/turf/T = pick(get_area_turfs(impact_area))
 	if(T)
 			// Calculate new position (searches through beacons in world)
 		var/obj/item/beacon/chosen
@@ -235,20 +235,20 @@
 					A.forceMove(newloc)
 
 				spawn()
-					if(ismob(A) && !(A in flashers)) // don't flash if we're already doing an effect
-						var/mob/M = A
-						if(M.client)
-							var/obj/blueeffect = new /obj(src)
-							blueeffect.screen_loc = "WEST,SOUTH to EAST,NORTH"
-							blueeffect.icon = 'icons/effects/effects.dmi'
-							blueeffect.icon_state = "shieldsparkles"
-							blueeffect.layer = FLASH_LAYER
-							blueeffect.plane = FULLSCREEN_PLANE
-							blueeffect.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-							M.client.screen += blueeffect
-							sleep(20)
-							M.client.screen -= blueeffect
-							qdel(blueeffect)
+				if(ismob(A) && !(A in flashers)) // don't flash if we're already doing an effect
+					var/mob/M = A
+					if(M.client)
+						var/obj/blueeffect = new /obj(src)
+						blueeffect.screen_loc = "WEST,SOUTH to EAST,NORTH"
+						blueeffect.icon = 'icons/effects/effects.dmi'
+						blueeffect.icon_state = "shieldsparkles"
+						blueeffect.layer = FLASH_LAYER
+						blueeffect.plane = FULLSCREEN_PLANE
+						blueeffect.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+						M.client.screen += blueeffect
+						sleep(20)
+						M.client.screen -= blueeffect
+						qdel(blueeffect)
 
 /////////////////////
 
