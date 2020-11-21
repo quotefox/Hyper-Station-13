@@ -266,7 +266,11 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/dromedary
 	desc = "A DromedaryCo brand cigarette."
 	list_reagents = list("nicotine" = 7.5, "silicon" = 7.5)
-	
+
+/obj/item/clothing/mask/cigarette/smokekins
+	desc = "A Kinaris Corp brand cigarette"
+	list_reagents = list("nicotine" = 7.5, "gold" = 1, "omnizine" = 5)
+
 /obj/item/clothing/mask/cigarette/uplift
 	desc = "An Uplift Smooth brand cigarette."
 	list_reagents = list("nicotine" = 7.5, "menthol" = 7.5)
@@ -282,7 +286,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/carp
 	desc = "A Carp Classic brand cigarette."
 	list_reagents = list("nicotine" = 7.5, "sodiumchloride" = 7.5)
-	
+
 /obj/item/clothing/mask/cigarette/syndicate
 	desc = "An unknown brand cigarette."
 	list_reagents = list("nicotine" = 15, "omnizine" = 15)

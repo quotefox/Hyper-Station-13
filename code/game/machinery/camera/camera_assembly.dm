@@ -1,6 +1,6 @@
 /obj/item/wallframe/camera
 	name = "camera assembly"
-	desc = "The basic construction for Nanotrasen-Always-Watching-You cameras."
+	desc = "The basic construction kit for a cam-corder setup."
 	icon = 'icons/obj/machines/camera.dmi'
 	icon_state = "cameracase"
 	materials = list(MAT_METAL=400, MAT_GLASS=250)
@@ -9,7 +9,7 @@
 
 /obj/structure/camera_assembly
 	name = "camera assembly"
-	desc = "The basic construction for Nanotrasen-Always-Watching-You cameras."
+	desc = "The basic construction kit for a cam-corder setup."
 	icon = 'icons/obj/machines/camera.dmi'
 	icon_state = "camera1"
 	max_integrity = 150

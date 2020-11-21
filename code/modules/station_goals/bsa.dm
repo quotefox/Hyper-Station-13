@@ -10,7 +10,7 @@
 	 We need you to construct BSA-[rand(1,99)] Artillery position aboard your station.
 
 	 Base parts are available for shipping via cargo.
-	 -Nanotrasen Naval Command"}
+	 -Val's personal Naval Command"}
 
 /datum/station_goal/bluespace_cannon/on_report()
 	//Unlock BSA parts
@@ -64,7 +64,7 @@
 
 /obj/machinery/bsa/middle
 	name = "Bluespace Artillery Fusor"
-	desc = "Contents classified by Nanotrasen Naval Command. Needs to be linked with the other BSA parts using multitool."
+	desc = "Contents classified by Naval Command. Needs to be linked with the other BSA parts using multitool."
 	icon_state = "fuel_chamber"
 	var/obj/machinery/bsa/back/back
 	var/obj/machinery/bsa/front/front

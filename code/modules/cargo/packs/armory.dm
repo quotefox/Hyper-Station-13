@@ -38,7 +38,7 @@
 
 /datum/supply_pack/security/armory/combatknives
 	name = "Combat Knives Crate"
-	desc = "Contains three sharpened combat knives. Each knife guaranteed to fit snugly inside any Nanotrasen-standard boot. Requires Armory access to open."
+	desc = "Contains three sharpened combat knives. Each knife guaranteed to fit snugly inside any of those stolen Nanotrasen-standard boot. Requires Armory access to open."
 	cost = 3200
 	contains = list(/obj/item/kitchen/knife/combat,
 					/obj/item/kitchen/knife/combat,
@@ -174,7 +174,7 @@
 
 /datum/supply_pack/security/armory/swat
 	name = "SWAT Crate"
-	desc = "Contains two fullbody sets of tough, fireproof, pressurized suits designed in a joint effort by IS-ERI and Nanotrasen. Each set contains a suit, helmet, mask, combat belt, and combat gloves. Requires Armory access to open."
+	desc = "Contains two fullbody sets of tough, fireproof, pressurized suits designed in a joint effort by Earth-Gov and Kinaris. Each set contains a suit, helmet, mask, combat belt, and combat gloves. Requires Armory access to open."
 	cost = 6000
 	contains = list(/obj/item/clothing/head/helmet/swat/nanotrasen,
 					/obj/item/clothing/head/helmet/swat/nanotrasen,

@@ -1,7 +1,7 @@
 // Radio Cartridge, essentially a remote signaler with limited spectrum.
 /obj/item/integrated_signaler
 	name = "\improper PDA radio module"
-	desc = "An electronic radio system of Nanotrasen origin."
+	desc = "An electronic radio system of stolen Nanotrasen design."
 	icon = 'icons/obj/module.dmi'
 	icon_state = "power_mod"
 

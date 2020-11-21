@@ -114,7 +114,7 @@
 	job_description = "Off-station Syndicate Scientist"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	flavour_text = "<span class='big bold'>You are a syndicate agent,</span><b> employed in a top secret research facility developing biological weapons. Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. <b>Continue your research as best you can, and try to keep a low profile. <font size=6>DON'T</font> abandon the base without good cause.</b> The base is rigged with explosives should the worst happen, do not let the base fall into enemy hands!</b>"
+	flavour_text = "<span class='big bold'>You are a Donk.Corp branch syndicate agent,</span><b> employed in a top secret research facility developing biological weapons plants and toys. Unfortunately, your hated enemy, Nanotrasen activity in this sector of space is minimal. <b>Continue your research as best you can, and try to keep a low profile. <font size=6>DON'T</font> abandon the base without good cause.</b> The base is rigged with explosives should the worst happen, do not let the base fall into enemy hands! If discovered by Kinaris Corp, consider trade negotiations</b>"
 	outfit = /datum/outfit/lavaland_syndicate
 	assignedrole = "Lavaland Syndicate"
 	mirrorcanloadappearance = TRUE
@@ -140,9 +140,9 @@
 	H.faction |= ROLE_SYNDICATE
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/comms
-	name = "Syndicate Comms Agent"
-	job_description = "Off-station Syndicate Comms Agent"
-	flavour_text = "<span class='big bold'>You are a syndicate agent,</span><b> employed in a top secret research facility developing biological weapons. Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. <b>Monitor enemy activity as best you can, and try to keep a low profile. <font size=6>DON'T</font> abandon the base without good cause.</b> Use the communication equipment to provide support to any field agents, and sow disinformation to throw Nanotrasen off your trail. Do not let the base fall into enemy hands!</b>"
+	name = "Syndicate Intel Agent"
+	job_description = "Off-station Syndicate Intel Agent"
+	flavour_text = "<span class='big bold'>You are a Donk.Corp branch syndicate agent,</span><b> employed in a top secret research facility developing biological weapons plants and toys. Unfortunately, your hated enemy, Nanotrasen activity in this sector of space is minimal. <b>Continue your research as best you can, and try to keep a low profile. <font size=6>DON'T</font> abandon the base without good cause.</b> The base is rigged with explosives should the worst happen, do not let the base fall into enemy hands! If discovered by Kinaris Corp, consider trade negotiations</b>"
 	outfit = /datum/outfit/lavaland_syndicate/comms
 	mirrorcanloadappearance = TRUE
 
@@ -153,7 +153,7 @@
 		return INITIALIZE_HINT_QDEL
 
 /datum/outfit/lavaland_syndicate/comms
-	name = "Lavaland Syndicate Comms Agent"
+	name = "Lavaland Syndicate Intel Agent"
 	r_hand = /obj/item/melee/transforming/energy/sword/saber
 	mask = /obj/item/clothing/mask/chameleon/gps
 	suit = /obj/item/clothing/suit/armor/vest
