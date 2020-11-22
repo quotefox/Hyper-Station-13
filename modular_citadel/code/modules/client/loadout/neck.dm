@@ -13,6 +13,11 @@
 	category = SLOT_NECK
 	path = /obj/item/clothing/neck/tie/black
 
+/datum/gear/bloodredtie
+	name = "Blood-red tie"
+	category = SLOT_NECK
+	path = /obj/item/clothing/neck/tie/bloodred
+
 /datum/gear/collar
 	name = "Collar"
 	category = SLOT_NECK

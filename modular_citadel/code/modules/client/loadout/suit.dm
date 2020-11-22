@@ -208,3 +208,8 @@
 	name = "Kromatose Short Jacket"
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/polychromic/kromacrop
+
+/datum/gear/blacksuitjacket
+	name = "Black Suit Jacket"
+	category = SLOT_WEAR_SUIT
+	path =	/obj/item/clothing/suit/toggle/lawyer/black
