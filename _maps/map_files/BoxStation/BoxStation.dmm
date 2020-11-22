@@ -62592,6 +62592,7 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
 	},
+/obj/machinery/computer/card/minor/qm,
 /turf/open/floor/plasteel/dark,
 /area/quartermaster/qm)
 "tDj" = (
