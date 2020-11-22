@@ -142,7 +142,7 @@
 /obj/effect/mob_spawn/human/lavaland_syndicate/comms
 	name = "Syndicate Comms Agent"
 	job_description = "Off-station Syndicate Comms Agent"
-	flavour_text = "<span class='big bold'>You are a Donk.Corp branch syndicate agent,</span><b> employed in a top secret research facility developing biological weapons plants and toys. Unfortunately, your hated enemy, Nanotrasen activity in this sector of space is minimal. <b>Continue your research as best you can, and try to keep a low profile. <font size=6>DON'T</font> abandon the base without good cause.</b> The base is rigged with explosives should the worst happen, do not let the base fall into enemy hands! If discovered by Kinaris Corp, consider trade negotiations</b>"
+	flavour_text = "<span class='big bold'>You are a Donk.Co branch syndicate agent,</span><b> employed in a top secret research facility developing biological weapons plants and toys. Unfortunately, your hated enemy, Nanotrasen activity in this sector of space is minimal. <b>Continue your research as best you can, and try to keep a low profile. <font size=6>DON'T</font> abandon the base without good cause.</b> The base is rigged with explosives should the worst happen, do not let the base fall into enemy hands! If discovered by Kinaris Corp, consider trade negotiations</b>"
 	outfit = /datum/outfit/lavaland_syndicate/comms
 	mirrorcanloadappearance = TRUE
 
