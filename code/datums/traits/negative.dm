@@ -468,5 +468,5 @@
 	H.maxHealth = H.maxHealth * 0.8
 
 /datum/quirk/flimsy/remove() //how do admins even remove traits?
-	var/mob/living/carbon/human/H = quirk_holder
-	H.maxHealth += healthchange
+	if(quirk_holder)
+		quirk_holder.maxHealth += healthchange
