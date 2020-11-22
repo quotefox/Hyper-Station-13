@@ -3,7 +3,7 @@
 //Modifications include removing the world-ending full supermatter variation, and leaving only the shard.
 
 #define PLASMA_HEAT_PENALTY 15     // Higher == Bigger heat and waste penalty from having the crystal surrounded by this gas. Negative numbers reduce penalty.
-#define OXYGEN_HEAT_PENALTY 1
+#define OXYGEN_HEAT_PENALTY 2
 #define CO2_HEAT_PENALTY 0.1
 #define PLUOXIUM_HEAT_PENALTY -1
 #define TRITIUM_HEAT_PENALTY 10
