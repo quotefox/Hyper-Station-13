@@ -53,7 +53,7 @@
 
 	var/alarms = list("Motion"=list(), "Fire"=list(), "Atmosphere"=list(), "Power"=list(), "Camera"=list(), "Burglar"=list())
 
-	var/speed = 0 // VTEC speed boost.
+	var/speed = list("enabled"=FALSE, "timer"=null, "ref"=null) // VTEC variables
 	var/magpulse = FALSE // Magboot-like effect.
 	var/ionpulse = FALSE // Jetpack-like effect.
 	var/ionpulse_on = FALSE // Jetpack-like effect.
@@ -1041,11 +1041,6 @@
 	shown_robot_modules = FALSE
 	if(hud_used)
 		hud_used.update_robot_modules_display()
-
-	if (hasExpanded)
-		resize = 0.5
-		hasExpanded = FALSE
-		update_transform()
 	module.transform_to(/obj/item/robot_module)
 
 	// Remove upgrades.
@@ -1055,7 +1050,7 @@
 
 	upgrades.Cut()
 
-	speed = 0
+	removeVTecStats()
 	ionpulse = FALSE
 	revert_shell()
 
@@ -1087,6 +1082,13 @@
 	magpulse = module.magpulsing
 	updatename()
 
+/mob/living/silicon/robot/update_transform()
+	. = ..()
+	var/matrix/ntransform = matriz(transform)
+	if (hasExpanded)
+		ntransform.Scale(2) //This seems a bit big
+		ntransform.Translate(0, 16)
+		transform = ntransform
 
 /mob/living/silicon/robot/proc/place_on_head(obj/item/new_hat)
 	if(hat)
@@ -1242,3 +1244,14 @@
 			connected_ai.aicamera.stored[i] = TRUE
 		for(var/i in connected_ai.aicamera.stored)
 			aicamera.stored[i] = TRUE
+
+/mob/living/silicon/robot/proc/removeVTecStats()
+	if (speed["enabled"])
+		speed["enabled"] = false
+		deltimer(speed["timer"])
+		RemoveAbility (speed["ref"])
+		speed["ref"] = null
+		remove_movespeed_modifier(MOVESPEED_ID_SILICON_VTEC)
+		update_transform()
+		return TRUE
+	return FALSE
