@@ -10,7 +10,7 @@
 	 We need you to construct BSA-[rand(1,99)] Artillery position aboard your station.
 
 	 Base parts are available for shipping via cargo.
-	 -Val's personal Naval Command"}
+	 Naval Command"}
 
 /datum/station_goal/bluespace_cannon/on_report()
 	//Unlock BSA parts
