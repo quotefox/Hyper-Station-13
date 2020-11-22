@@ -131,14 +131,17 @@
 	typepath = /datum/round_event/spider_infestation
 	enemy_roles = list("AI","Security Officer","Head of Security","Captain")
 	required_enemies = list(3,2,2,2,2,1,1,1,0,0)
-	weight = 2
+	//weight = 2
+	weight = 0
 	cost = 5
-	requirements = list(101,20,15,10,10,10,10,10,10,10)
+	//requirements = list(101,20,15,10,10,10,10,10,10,10)
+	requirements = list(101,101,101,101,101,101,101,101,101,101)
 	high_population_requirement = 15
 	//property_weights = list("chaos" = 1, "valid" = 1)
 	earliest_start = 30 MINUTES //Skyrat change.
 	occurances_max = 2
-	chaos_min = 1.5
+	//chaos_min = 1.5
+	chaos_min = 5
 
 //////////////////////////////////////////////
 //                                          //
