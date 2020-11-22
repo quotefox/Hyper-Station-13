@@ -269,7 +269,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /obj/item/clothing/mask/cigarette/smokekins
 	desc = "A Kinaris Corp brand cigarette"
-	list_reagents = list("nicotine" = 7.5, "gold" = 1, "omnizine" = 5)
+	list_reagents = list("nicotine" = 7.5, "gold" = 1)
 
 /obj/item/clothing/mask/cigarette/uplift
 	desc = "An Uplift Smooth brand cigarette."
