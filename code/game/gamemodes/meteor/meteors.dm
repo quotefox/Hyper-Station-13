@@ -265,7 +265,7 @@ GLOBAL_LIST_INIT(meteorsC, list(/obj/effect/meteor/dust)) //for space dust event
 /obj/effect/meteor/irradiated/meteor_effect()
 	..()
 	explosion(src.loc, 0, 0, 4, 3, 0)
-	new /obj/effect/decal/cleanable/greenglow(get_turf(src))
+	new /obj/effect/decal/cleanable/greenglow/radioactive(get_turf(src))
 	radiation_pulse(src, 500)
 
 //Meaty Ore
