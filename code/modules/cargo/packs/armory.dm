@@ -38,7 +38,7 @@
 
 /datum/supply_pack/security/armory/combatknives
 	name = "Combat Knives Crate"
-	desc = "Contains three sharpened combat knives. Each knife guaranteed to fit snugly inside any of those stolen Nanotrasen-standard boot. Requires Armory access to open."
+	desc = "Contains three sharpened combat knives. Each knife guaranteed to fit snugly inside any Nanotrasen-standard boot. Requires Armory access to open."
 	cost = 3200
 	contains = list(/obj/item/kitchen/knife/combat,
 					/obj/item/kitchen/knife/combat,
