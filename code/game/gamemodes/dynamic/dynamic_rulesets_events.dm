@@ -721,9 +721,11 @@
 /datum/dynamic_ruleset/event/sentience
 	name = "Random Human-level Intelligence"
 	typepath = /datum/round_event/ghost_role/sentience
-	requirements = list(101,101,0,0,0,0,0,0,0,0)
+	//requirements = list(101,101,0,0,0,0,0,0,0,0)
+	requirements = list(101,101,101,101,101,101,101,101,101,101)
 	high_population_requirement = 0
-	weight = 5
+	//weight = 5
+	weight = 0
 	repeatable_weight_decrease = 1
 
 /datum/dynamic_ruleset/event/shuttle_loan
