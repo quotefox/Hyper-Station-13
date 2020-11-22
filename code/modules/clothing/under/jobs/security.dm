@@ -20,7 +20,7 @@
 	random_sensor = FALSE
 /obj/item/clothing/under/rank/security/grey
 	name = "grey security jumpsuit"
-	desc = "A tactical relic of years past before Valorie decided it was cheaper to dye the suits red instead of washing out the blood."
+	desc = "A tactical relic of years past before it decided it was cheaper to dye the suits red instead of washing out the blood."
 	icon_state = "security"
 	item_state = "gy_suit"
 	item_color = "security"
