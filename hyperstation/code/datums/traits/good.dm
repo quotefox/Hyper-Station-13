@@ -11,7 +11,7 @@
 
 /datum/quirk/narsianspeaker/remove()
 	var/mob/living/M = quirk_holder
-	M.remove_language(/datum/language/narsie)
+	M?.remove_language(/datum/language/narsie)
 
 /datum/quirk/ratvarianspeaker
 	name = "Ratvarian speaker"
@@ -26,7 +26,7 @@
 
 /datum/quirk/ratvarianspeaker/remove()
 	var/mob/living/M = quirk_holder
-	M.remove_language(/datum/language/ratvar)
+	M?.remove_language(/datum/language/ratvar)
 
 /datum/quirk/encodedspeaker
 	name = "Encoded Audio speaker"
@@ -41,7 +41,7 @@
 
 /datum/quirk/encodedspeaker/remove()
 	var/mob/living/M = quirk_holder
-	M.remove_language(/datum/language/machine)
+	M?.remove_language(/datum/language/machine)
 
 /datum/quirk/xenospeaker
 	name = "Xenocommon speaker"
@@ -56,4 +56,4 @@
 
 /datum/quirk/xenospeaker/remove()
 	var/mob/living/M = quirk_holder
-	M.remove_language(/datum/language/xenocommon)
+	M?.remove_language(/datum/language/xenocommon)

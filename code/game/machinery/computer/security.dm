@@ -529,7 +529,7 @@ What a mess.*/
 				M.fields["alg_d"]		= "No allergies have been detected in this patient."
 				M.fields["cdi"]			= "None"
 				M.fields["cdi_d"]		= "No diseases have been diagnosed at the moment."
-				M.fields["notes"]		= "No notes."
+				M.fields["notes"]		= "No Notes."
 				GLOB.data_core.medical += M
 
 
