@@ -7,7 +7,6 @@
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	w_class = WEIGHT_CLASS_BULKY
 	req_access = list(ACCESS_ARMORY)
-	var/broken = FALSE
 	var/open = FALSE
 	var/icon_locked = "lockbox+l"
 	var/icon_closed = "lockbox"
@@ -24,7 +23,7 @@
 /obj/item/storage/lockbox/attackby(obj/item/W, mob/user, params)
 	var/locked = SEND_SIGNAL(src, COMSIG_IS_STORAGE_LOCKED)
 	if(W.GetID())
-		if(broken)
+		if(obj_flags & EMAGGED)
 			to_chat(user, "<span class='danger'>It appears to be broken.</span>")
 			return
 		if(allowed(user))
@@ -48,14 +47,15 @@
 		to_chat(user, "<span class='danger'>It's locked!</span>")
 
 /obj/item/storage/lockbox/emag_act(mob/user)
-	if(!broken)
-		broken = TRUE
-		SEND_SIGNAL(src, COMSIG_TRY_STORAGE_SET_LOCKSTATE, FALSE)
-		desc += "It appears to be broken."
-		icon_state = src.icon_broken
-		if(user)
-			visible_message("<span class='warning'>\The [src] has been broken by [user] with an electromagnetic card!</span>")
-			return
+	if(obj_flags & EMAGGED)	return
+	
+	obj_flags |= EMAGGED
+	SEND_SIGNAL(src, COMSIG_TRY_STORAGE_SET_LOCKSTATE, FALSE)
+	desc += "It appears to be broken."
+	icon_state = src.icon_broken
+	if(user)
+		user.visible_message("<span class='warning'>[user] breaks the [src]!</span>", "<span class='warning'>You break the [src] with the electromagnetic card!")
+	return TRUE
 
 /obj/item/storage/lockbox/Entered()
 	. = ..()
@@ -139,7 +139,7 @@
 		icon_state = "medalbox"
 		if(open)
 			icon_state += "open"
-		if(broken)
+		if(obj_flags & EMAGGED)
 			icon_state += "+b"
 		if(contents && open)
 			for (var/i in 1 to contents.len)
