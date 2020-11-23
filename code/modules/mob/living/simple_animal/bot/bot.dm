@@ -196,7 +196,7 @@
 		locked = FALSE
 		emagged = 1
 		to_chat(user, "<span class='notice'>You bypass [src]'s controls.</span>")
-		return
+		return TRUE
 	if(!locked && open) //Bot panel is unlocked by ID or emag, and the panel is screwed open. Ready for emagging.
 		emagged = 2
 		remote_disabled = 1 //Manually emagging the bot locks out the AI built in panel.
@@ -205,7 +205,7 @@
 		turn_on() //The bot automatically turns on when emagged, unless recently hit with EMP.
 		to_chat(src, "<span class='userdanger'>(#$*#$^^( OVERRIDE DETECTED</span>")
 		log_combat(user, src, "emagged")
-		return
+		return TRUE
 	else //Bot is unlocked, but the maint panel has not been opened with a screwdriver yet.
 		to_chat(user, "<span class='warning'>You need to open maintenance panel first!</span>")
 
