@@ -80,6 +80,7 @@
 	say("User DB corrupted \[Code 0x00FA\]. Truncating data structure...")
 	sleep(30)
 	say("User DB truncated. Please contact your Nanotrasen system operator for future assistance.")
+	return TRUE
 
 
 /obj/machinery/mecha_part_fabricator/proc/output_parts_list(set_name)
@@ -404,11 +405,11 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/mecha_part_fabricator/proc/do_process_queue()		
-	if(processing_queue || being_built)		
-		return FALSE		
+/obj/machinery/mecha_part_fabricator/proc/do_process_queue()
+	if(processing_queue || being_built)
+		return FALSE
 	processing_queue = 1
-	process_queue()		
+	process_queue()
 	processing_queue = 0
 
 /obj/machinery/mecha_part_fabricator/proc/eject_sheets(eject_sheet, eject_amt)

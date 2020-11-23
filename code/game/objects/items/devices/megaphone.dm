@@ -38,11 +38,12 @@
 			speech_args[SPEECH_SPANS] |= voicespan
 
 /obj/item/megaphone/emag_act(mob/user)
-	if(obj_flags & EMAGGED)
-		return
-	to_chat(user, "<span class='warning'>You overload \the [src]'s voice synthesizer.</span>")
+	if(obj_flags & EMAGGED)	return
+	
 	obj_flags |= EMAGGED
+	to_chat(user, "<span class='warning'>You overload \the [src]'s voice synthesizer!</span>")
 	voicespan = list(SPAN_REALLYBIG, "userdanger")
+	return TRUE
 
 /obj/item/megaphone/sec
 	name = "security megaphone"

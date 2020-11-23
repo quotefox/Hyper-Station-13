@@ -46,7 +46,7 @@ GLOBAL_LIST(labor_sheet_values)
 	data["emagged"] = (obj_flags & EMAGGED) ? 1 : 0
 	if(obj_flags & EMAGGED)
 		can_go_home = TRUE
-	
+
 	data["status_info"] = "No Prisoner ID detected."
 	var/obj/item/card/id/I = user.get_idcard(TRUE)
 	if(istype(I, /obj/item/card/id/prisoner))
@@ -105,9 +105,10 @@ GLOBAL_LIST(labor_sheet_values)
 		qdel(src)
 
 /obj/machinery/mineral/labor_claim_console/emag_act(mob/user)
-	if(!(obj_flags & EMAGGED))
+	if(!obj_flags & EMAGGED)
 		obj_flags |= EMAGGED
-		to_chat(user, "<span class='warning'>PZZTTPFFFT</span>")
+		to_chat(user, "<span class='warning'>BZZAAT!</span>")
+		return TRUE
 
 
 /**********************Prisoner Collection Unit**************************/

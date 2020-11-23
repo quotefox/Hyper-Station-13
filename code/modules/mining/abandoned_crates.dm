@@ -216,6 +216,7 @@
 /obj/structure/closet/crate/secure/loot/emag_act(mob/user)
 	if(locked)
 		boom(user)
+		return TRUE
 
 /obj/structure/closet/crate/secure/loot/togglelock(mob/user)
 	if(locked)

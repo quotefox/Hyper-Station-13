@@ -57,9 +57,11 @@
 	return
 
 /obj/machinery/vr_sleeper/emag_act(mob/user)
+	if (obj_flags & EMAGGED)	return
 	you_die_in_the_game_you_die_for_real = TRUE
 	sparks.start()
 	addtimer(CALLBACK(src, .proc/emagNotify), 150)
+	return TRUE
 
 /obj/machinery/vr_sleeper/update_icon()
 	icon_state = "[initial(icon_state)][state_open ? "-open" : ""]"

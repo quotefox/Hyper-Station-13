@@ -148,10 +148,15 @@
 
 		to_chat(user, "<span class='notice'>You fill \the [src] with lights from \the [S]. " + status_string() + "</span>")
 
-/obj/item/lightreplacer/emag_act()
-	if(obj_flags & EMAGGED)
-		return
-	Emag()
+/obj/item/lightreplacer/emag_act(mob/user)
+	if(obj_flags & EMAGGED)	return
+	
+	obj_flags |= EMAGGED
+	playsound(src.loc, "sparks", 100, 1)
+	name = "broken [initial(name)]"
+	update_icon()
+	to_chat(user, "<span class='warning'>You short out the [src]'s wires!</span>")
+	return TRUE
 
 /obj/item/lightreplacer/attack_self(mob/user)
 	to_chat(user, status_string())
@@ -222,14 +227,6 @@
 		to_chat(U, "<span class='warning'>There is a working [target.fitting] already inserted!</span>")
 		return
 
-/obj/item/lightreplacer/proc/Emag()
-	obj_flags ^= EMAGGED
-	playsound(src.loc, "sparks", 100, 1)
-	if(obj_flags & EMAGGED)
-		name = "shortcircuited [initial(name)]"
-	else
-		name = initial(name)
-	update_icon()
 
 /obj/item/lightreplacer/proc/CanUse(mob/living/user)
 	src.add_fingerprint(user)

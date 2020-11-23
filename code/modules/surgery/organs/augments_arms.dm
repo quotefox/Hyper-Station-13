@@ -189,8 +189,7 @@
 	if(!(locate(/obj/item/kitchen/knife/combat/cyborg) in items_list))
 		to_chat(usr, "<span class='notice'>You unlock [src]'s integrated knife!</span>")
 		items_list += new /obj/item/kitchen/knife/combat/cyborg(src)
-		return 1
-	return 0
+		return TRUE
 
 /obj/item/organ/cyberimp/arm/esword
 	name = "arm-mounted energy blade"

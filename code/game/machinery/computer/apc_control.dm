@@ -193,6 +193,7 @@
 		log_game("[key_name(user)] emagged [src] at [AREACOORD(src)], disabling operator tracking.")
 		obj_flags |= EMAGGED
 	playsound(src, "sparks", 50, 1)
+	return TRUE
 
 /obj/machinery/computer/apc_control/proc/log_activity(log_text)
 	var/op_string = operator && !(obj_flags & EMAGGED) ? operator : "\[NULL OPERATOR\]"

@@ -819,6 +819,7 @@
 			locked = FALSE
 			to_chat(user, "<span class='notice'>You emag the APC interface.</span>")
 			update_icon()
+			return TRUE
 
 
 // attack with hand - remove cell (if cover open) or interact with the APC

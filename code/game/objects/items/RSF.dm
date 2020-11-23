@@ -136,24 +136,18 @@ RSF
 /obj/item/cookiesynth/emag_act(mob/user)
 	obj_flags ^= EMAGGED
 	if(obj_flags & EMAGGED)
-		to_chat(user, "<span class='warning'>You short out [src]'s reagent safety checker!</span>")
+		to_chat(user, "<span class='warning'>You short out [src]'s reagent synthesizer!</span>")
+		toxin = 1
+		return TRUE
 	else
-		to_chat(user, "<span class='warning'>You reset [src]'s reagent safety checker!</span>")
+		to_chat(user, "<span class='info'>You reset [src]'s reagent synthesizer.</span>")
 		toxin = 0
+	return FALSE	//Don't want to waste 2 charges if we accidentally hit this somehow
 
 /obj/item/cookiesynth/attack_self(mob/user)
-	var/mob/living/silicon/robot/P = null
-	if(iscyborg(user))
-		P = user
-	if((obj_flags & EMAGGED)&&!toxin)
-		toxin = 1
-		to_chat(user, "Cookie Synthesizer Hacked")
-	else if(P.emagged&&!toxin)
-		toxin = 1
-		to_chat(user, "Cookie Synthesizer Hacked")
-	else
-		toxin = 0
-		to_chat(user, "Cookie Synthesizer Reset")
+	var/mob/living/silicon/robot/P
+	if(iscyborg(user)) P = user
+	if(P.emagged && !toxin) toxin = 1
 
 /obj/item/cookiesynth/process()
 	if(matter < 10)

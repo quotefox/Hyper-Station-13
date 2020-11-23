@@ -298,6 +298,7 @@
 		to_chat(user, "<span class='warning'>The machine buzzes and sparks... the game has been reset!</span>")
 		playsound(user, 'sound/machines/buzz-sigh.ogg', 100, 0, extrarange = 3, falloff = 10)	//Loud buzz
 		game_status = MINESWEEPER_GAME_MAIN_MENU
+	return TRUE
 
 /obj/machinery/computer/arcade/minesweeper/proc/custom_generation(mob/user)
 	playsound(loc, 'sound/arcade/minesweeper_menuselect.ogg', 50, 0, extrarange = -3, falloff = 10)	//Entered into the menu so ping sound

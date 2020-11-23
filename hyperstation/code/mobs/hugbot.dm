@@ -104,7 +104,7 @@
 		step_to(src, (get_step_away(src,user)))
 
 /mob/living/simple_animal/bot/hugbot/emag_act(mob/user)
-	..()
+	. = ..()
 	if(emagged == 2)
 		if(user)
 			to_chat(user, "<span class='notice'>You short out [src]'s manipulator pressure sensors.</span>")

@@ -302,6 +302,7 @@
 	update_icon()
 	sleep(60) //6 seconds for the traitor to gtfo of the area before the turret decides to ruin his shit
 	on = TRUE //turns it back on. The cover popUp() popDown() are automatically called in process(), no need to define it here
+	return TRUE
 
 
 /obj/machinery/porta_turret/emp_act(severity)
@@ -860,6 +861,7 @@
 	locked = FALSE
 	if(user && user.machine == src)
 		attack_hand(user)
+	return TRUE
 
 /obj/machinery/turretid/attack_ai(mob/user)
 	if(!ailock || IsAdminGhost(user))

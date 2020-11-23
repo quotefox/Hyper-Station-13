@@ -552,6 +552,7 @@
 			qdel(lockerelectronics)
 		lockerelectronics = null
 		update_icon()
+		return TRUE
 
 /obj/structure/closet/get_remote_view_fullscreens(mob/user)
 	if(user.stat == DEAD || !(user.sight & (SEEOBJS|SEEMOBS)))

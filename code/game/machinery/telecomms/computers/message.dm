@@ -55,6 +55,7 @@
 		var/time = 100 * length(linkedServer.decryptkey)
 		addtimer(CALLBACK(src, .proc/UnmagConsole), time)
 		message = rebootmsg
+		return TRUE
 	else
 		to_chat(user, "<span class='notice'>A no server error appears on the screen.</span>")
 

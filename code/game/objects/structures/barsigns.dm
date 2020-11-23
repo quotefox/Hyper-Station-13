@@ -112,14 +112,15 @@
 
 
 /obj/structure/sign/barsign/emag_act(mob/user)
-	if(broken || (obj_flags & EMAGGED))
-		to_chat(user, "<span class='warning'>Nothing interesting happens!</span>")
-		return
+	to_chat(user, "<span class='warning'>You emag the barsign!</span> <span class='notice'>...But nothing in particular happens.</span>")
+	if(broken || obj_flags & EMAGGED)	return
+	
 	obj_flags |= EMAGGED
-	to_chat(user, "<span class='notice'>You emag the barsign. Takeover in progress...</span>")
 	sleep(10 SECONDS)
 	set_sign(new /datum/barsign/hiddensigns/syndibarsign)
 	req_access = list(ACCESS_SYNDICATE)
+	visible_message("<span class='notice'>The barsign's appearance changes.</span>")
+	return TRUE
 
 
 /obj/structure/sign/barsign/proc/pick_sign(mob/user)

@@ -367,7 +367,7 @@
 		icon_state = "medalbox"
 		if(open)
 			icon_state += "open"
-		if(broken)
+		if(obj_flags & EMAGGED)
 			icon_state += "+b"
 
 /obj/item/storage/lockbox/dueling/PopulateContents()

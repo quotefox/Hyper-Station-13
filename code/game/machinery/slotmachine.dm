@@ -106,6 +106,7 @@
 	spark_system.set_up(4, 0, src.loc)
 	spark_system.start()
 	playsound(src, "sparks", 50, 1)
+	return TRUE
 
 /obj/machinery/computer/slot_machine/ui_interact(mob/living/user)
 	. = ..()

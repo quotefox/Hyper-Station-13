@@ -266,7 +266,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/dromedary
 	desc = "A DromedaryCo brand cigarette."
 	list_reagents = list("nicotine" = 7.5, "silicon" = 7.5)
-	
+
 /obj/item/clothing/mask/cigarette/uplift
 	desc = "An Uplift Smooth brand cigarette."
 	list_reagents = list("nicotine" = 7.5, "menthol" = 7.5)
@@ -282,7 +282,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/carp
 	desc = "A Carp Classic brand cigarette."
 	list_reagents = list("nicotine" = 7.5, "sodiumchloride" = 7.5)
-	
+
 /obj/item/clothing/mask/cigarette/syndicate
 	desc = "An unknown brand cigarette."
 	list_reagents = list("nicotine" = 15, "omnizine" = 15)
@@ -777,10 +777,12 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 			var/datum/effect_system/spark_spread/sp = new /datum/effect_system/spark_spread //for effect
 			sp.set_up(5, 1, src)
 			sp.start()
+			return TRUE
 		else
 			to_chat(user, "<span class='warning'>[src] is already emagged!</span>")
 	else
 		to_chat(user, "<span class='notice'>You need to open the cap to do that.</span>")
+	return FALSE
 
 /obj/item/clothing/mask/vape/attack_self(mob/user)
 	if(reagents.total_volume > 0)

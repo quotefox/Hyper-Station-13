@@ -204,3 +204,4 @@
 
 
 	updateUsrDialog()
+	return TRUE

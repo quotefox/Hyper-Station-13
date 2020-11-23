@@ -106,9 +106,10 @@
 		drainable = TRUE
 		log_game("[key_name(user)] emagged [src]")
 		message_admins("[key_name_admin(user)] emagged [src]")
+		return TRUE
 	else
 		to_chat(user, "<span class='warning'>The interface on [src] is already too damaged to short it again.</span>")
-		return
+		return FALSE
 
 /obj/machinery/pool/controller/AltClick(mob/user)
 	. = ..()

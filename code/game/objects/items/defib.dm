@@ -141,9 +141,14 @@
 
 /obj/item/defibrillator/emag_act(mob/user)
 	. = ..()
-	safety = !safety
-	to_chat(user, "<span class='warning'>You silently [safety ? "enable" : "disable"] [src]'s safety protocols with the cryptographic sequencer.</span>")
-	return TRUE
+	if (!obj_flags & EMAGGED)
+		safety = !safety
+		obj_flags |= EMAGGED
+		to_chat(user, "<span class='warning'>You silently disable [src]'s safety protocols with the cryptographic sequencer.</span>")
+		return TRUE
+
+	to_chat(user, "<span class='warning'>The [src]'s safteys are already disabled!</span>")
+	return FALSE
 
 /obj/item/defibrillator/emp_act(severity)
 	. = ..()

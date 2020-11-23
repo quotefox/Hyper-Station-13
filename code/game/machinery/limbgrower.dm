@@ -224,3 +224,4 @@
 			stored_research.add_design(D)
 	to_chat(user, "<span class='warning'>A warning flashes onto the screen, stating that safety overrides have been deactivated!</span>")
 	obj_flags |= EMAGGED
+	return TRUE

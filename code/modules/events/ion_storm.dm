@@ -80,8 +80,8 @@
 	//Chance to emag a Bot
 	if(botEmagChance)
 		for(var/mob/living/simple_animal/bot/bot in GLOB.alive_mob_list)
-			if(prob(botEmagChance))
-				bot.emag_act()
+			if (!isbot(bot) && !prob(botEmagChance)) continue
+			bot.emag_act()
 
 /proc/generate_ion_law()
 	//Threats are generally bad things, silly or otherwise. Plural.

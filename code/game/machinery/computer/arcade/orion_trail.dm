@@ -743,6 +743,7 @@
 	desc = "Learn how our ancestors got to Orion, and try not to die in the process!"
 	newgame()
 	obj_flags |= EMAGGED
+	return TRUE
 
 /mob/living/simple_animal/hostile/syndicate/ranged/smg/orion
 	name = "spaceport security"

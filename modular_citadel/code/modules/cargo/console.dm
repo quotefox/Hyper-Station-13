@@ -1,6 +1,6 @@
 /obj/machinery/computer/cargo
 	req_access = list(ACCESS_CARGO)
-	
+
 /obj/machinery/computer/cargo/request
 	req_access = list()
 
@@ -12,4 +12,4 @@
 	if(!allowed(usr))
 		to_chat(usr, "<span class='notice'>Access denied.</span>")
 		return
-	. = ..()
+	return ..()

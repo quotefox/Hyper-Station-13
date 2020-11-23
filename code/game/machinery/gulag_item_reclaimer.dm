@@ -24,6 +24,7 @@
 		return
 	req_access = list()
 	obj_flags |= EMAGGED
+	return TRUE
 
 /obj/machinery/gulag_item_reclaimer/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
 									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)

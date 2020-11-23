@@ -194,13 +194,13 @@
 	update_icon()
 
 /obj/item/geiger_counter/emag_act(mob/user)
-	if(obj_flags & EMAGGED)
-		return
 	if(scanning)
 		to_chat(user, "<span class='warning'>Turn off [src] before you perform this action!</span>")
-		return 0
-	to_chat(user, "<span class='warning'>You override [src]'s radiation storing protocols. It will now generate small doses of radiation, and stored rads are now projected into creatures you scan.</span>")
-	obj_flags |= EMAGGED
+		return FALSE
+	if(!obj_flags & EMAGGED)
+		obj_flags |= EMAGGED
+		to_chat(user, "<span class='warning'>You override [src]'s scanning protocols. It will now generate small doses of radiation, and stored rads are now projected into creatures you scan.</span>")
+		return TRUE
 
 /obj/item/geiger_counter/cyborg
 	var/datum/component/mobhook

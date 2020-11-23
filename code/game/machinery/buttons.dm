@@ -107,6 +107,7 @@
 	req_one_access = list()
 	playsound(src, "sparks", 100, 1)
 	obj_flags |= EMAGGED
+	return TRUE
 
 /obj/machinery/button/attack_ai(mob/user)
 	if(!panel_open)

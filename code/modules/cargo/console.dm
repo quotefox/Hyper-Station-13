@@ -36,10 +36,10 @@
 		. |= EXPORT_EMAG
 
 /obj/machinery/computer/cargo/emag_act(mob/user)
-	if(obj_flags & EMAGGED)
-		return
-	user.visible_message("<span class='warning'>[user] swipes a suspicious card through [src]!</span>",
-	"<span class='notice'>You adjust [src]'s routing and receiver spectrum, unlocking special supplies and contraband.</span>")
+	if(obj_flags & EMAGGED)	return
+
+	user.visible_message("<span class='notice'>[user] swipes a card through [src].</span>",
+	"<span class='warning'>You adjust [src]'s routing and receiver spectrum, unlocking special supplies and contraband!</span>")
 
 	obj_flags |= EMAGGED
 	contraband = TRUE
@@ -48,6 +48,7 @@
 	var/obj/item/circuitboard/computer/cargo/board = circuit
 	board.contraband = TRUE
 	board.obj_flags |= EMAGGED
+	return TRUE
 
 /obj/machinery/computer/cargo/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
 											datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)

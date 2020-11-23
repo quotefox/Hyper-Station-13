@@ -1298,6 +1298,7 @@
 		locked = TRUE
 		loseMainPower()
 		loseBackupPower()
+		return TRUE
 
 /obj/machinery/door/airlock/attack_alien(mob/living/carbon/alien/humanoid/user)
 	add_fingerprint(user)

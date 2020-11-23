@@ -93,3 +93,4 @@
 		parent_turret.on = 0
 		spawn(40)
 			parent_turret.on = 1
+		return TRUE

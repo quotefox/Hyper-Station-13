@@ -127,7 +127,7 @@ Maintenance panel panel is [open ? "opened" : "closed"]"},
 	..()
 
 /mob/living/simple_animal/bot/honkbot/emag_act(mob/user)
-	..()
+	. = ..()
 	if(emagged == 2)
 		if(user)
 			user << "<span class='danger'>You short out [src]'s sound control system. It gives out an evil laugh!!</span>"
