@@ -1084,7 +1084,7 @@
 
 /mob/living/silicon/robot/update_transform()
 	. = ..()
-	var/matrix/ntransform = matriz(transform)
+	var/matrix/ntransform = matrix(transform)
 	if (hasExpanded)
 		ntransform.Scale(2) //This seems a bit big
 		ntransform.Translate(0, 16)
