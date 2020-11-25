@@ -113,30 +113,26 @@
 		icon_dead = "original_dead"
 	//Read_Memory()
 	. = ..()
-
+/*
 /mob/living/simple_animal/pet/cat/Runtime/Life()
-	/*
 	if(!cats_deployed && SSticker.current_state >= GAME_STATE_SETTING_UP)
 		Deploy_The_Cats()
 	if(!stat && SSticker.current_state == GAME_STATE_FINISHED && !memory_saved)
 		Write_Memory()
 		memory_saved = TRUE
-	*/
 	..()
-
+*/
 /mob/living/simple_animal/pet/cat/Runtime/make_babies()
 	var/mob/baby = ..()
 	if(baby)
 		children += baby
 		return baby
-
-/mob/living/simple_animal/pet/cat/Runtime/death()
 /*
+/mob/living/simple_animal/pet/cat/Runtime/death()
 	if(!memory_saved)
 		Write_Memory(TRUE)
 	..()
 */
-
 /mob/living/simple_animal/pet/cat/Runtime/proc/Read_Memory()
 	if(fexists("data/npc_saves/Runtime.sav")) //legacy compatability to convert old format to new
 		var/savefile/S = new /savefile("data/npc_saves/Runtime.sav")
@@ -283,8 +279,8 @@
 	if(health < maxHealth)
 		adjustBruteLoss(-8) //Fast life regen
 	for(var/obj/item/reagent_containers/food/snacks/donut/D in range(1, src)) //Frosts nearby donuts!
-		if(!D.is_frosted)
-			D.frost_donut()
+		if(!D.is_decorated)
+			D.decorate_donut()
 
 /mob/living/simple_animal/pet/cat/cak/attack_hand(mob/living/L)
 	. = ..()

@@ -91,6 +91,17 @@ SUBSYSTEM_DEF(mapping)
 		seedRuins(space_ruins, CONFIG_GET(number/space_budget), /area/space, space_ruins_templates)
 	SSmapping.seedStation()
 	loading_ruins = FALSE
+	/*
+	//Hyper change - preload Reebe for midround purposes. I'll change this when I find a decent way to load maps midround.
+	var/list/errorList = list()
+	var/list/reebes = SSmapping.LoadGroup(errorList, "Reebe", "map_files/generic", "City_of_Cogs.dmm", default_traits = ZTRAITS_REEBE, silent = TRUE)
+	if(errorList.len)	// reebe failed to load
+		message_admins("Reebe failed to load!")
+		log_game("Reebe failed to load!")
+		return FALSE
+	for(var/datum/parsed_map/PM in reebes)
+		PM.initTemplateBounds()
+	*/
 #endif
 	repopulate_sorted_areas()
 	// Set up Z-level transitions.

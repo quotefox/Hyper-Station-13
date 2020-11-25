@@ -34,6 +34,8 @@ GLOBAL_LIST_EMPTY(rubber_toolbox_icons)
 /obj/item/storage/toolbox/update_icon()
 	..()
 	cut_overlays()
+	if(length(blood_DNA))
+		add_blood_overlay()
 	if(has_latches)
 		var/icon/I = icon('icons/obj/storage.dmi', latches)
 		add_overlay(I)
@@ -121,7 +123,7 @@ GLOBAL_LIST_EMPTY(rubber_toolbox_icons)
 
 /obj/item/storage/toolbox/syndicate/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.silent = TRUE
 
 /obj/item/storage/toolbox/syndicate/PopulateContents()
@@ -162,13 +164,14 @@ GLOBAL_LIST_EMPTY(rubber_toolbox_icons)
 
 /obj/item/storage/toolbox/brass/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.max_combined_w_class = 28
 	STR.max_items = 28
 
 /obj/item/storage/toolbox/brass/prefilled/PopulateContents()
-	new fabricator_type(src)
+	if(fabricator_type)
+		new fabricator_type(src)
 	new /obj/item/screwdriver/brass(src)
 	new /obj/item/wirecutters/brass(src)
 	new /obj/item/wrench/brass(src)
@@ -217,7 +220,7 @@ GLOBAL_LIST_EMPTY(rubber_toolbox_icons)
 
 /obj/item/storage/toolbox/artistic/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_combined_w_class = 20
 	STR.max_items = 10
 
@@ -255,7 +258,7 @@ GLOBAL_LIST_EMPTY(rubber_toolbox_icons)
 
 /obj/item/storage/toolbox/gold_real/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_combined_w_class = 40
 	STR.max_items = 12
 

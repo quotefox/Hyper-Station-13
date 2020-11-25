@@ -1,10 +1,10 @@
 /datum/bounty/item/slime
-	reward = 3000
+	reward = 1950
 
 /datum/bounty/item/slime/New()
 	..()
 	description = "Kinaris's head xenobiologist team is hunting for the rare and exotic [name]. A bounty has been offered for finding it."
-	reward += rand(0, 4) * 500
+	reward += rand(0, 4) * 250
 
 /datum/bounty/item/slime/green
 	name = "Green Slime Extract"

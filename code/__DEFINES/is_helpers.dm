@@ -73,10 +73,20 @@ GLOBAL_LIST_INIT(turfs_without_ground, typecacheof(list(
 #define isluminescent(A) (is_species(A, /datum/species/jelly/luminescent))
 #define iszombie(A) (is_species(A, /datum/species/zombie))
 #define ismoth(A) (is_species(A, /datum/species/moth))
-#define isinsect(A) (is_species(A, /datum/species/insect))
 #define ishumanbasic(A) (is_species(A, /datum/species/human))
 #define iscatperson(A) (ishumanbasic(A) && istype(A.dna.species, /datum/species/human/felinid) )
 #define isvampire(A) (is_species(A,/datum/species/vampire))
+#define isdwarf(A) (is_species(A, /datum/species/dwarf))
+#define isdullahan(A) (is_species(A, /datum/species/dullahan))
+
+// Citadel specific species
+#define isipcperson(A) (is_species(A, /datum/species/ipc))
+#define ismammal(A) (is_species(A, /datum/species/mammal))
+#define isavian(A) (is_species(A, /datum/species/avian))
+#define isaquatic(A) (is_species(A, /datum/species/aquatic))
+#define isinsect(A) (is_species(A, /datum/species/insect))
+#define isxenoperson(A) (is_species(A, /datum/species/xeno))
+#define isstartjelly(A) (is_species(A, /datum/species/jelly/roundstartslime))
 
 //more carbon mobs
 #define ismonkey(A) (istype(A, /mob/living/carbon/monkey))
@@ -193,6 +203,8 @@ GLOBAL_LIST_INIT(heavyfootmob, typecacheof(list(
 
 #define iscameramob(A) (istype(A, /mob/camera))
 
+#define isaicamera(A) (istype(A, /mob/camera/aiEye))
+
 #define iseminence(A) (istype(A, /mob/camera/eminence))
 
 //Footstep helpers
@@ -208,6 +220,8 @@ GLOBAL_LIST_INIT(heavyfootmob, typecacheof(list(
 #define isobj(A) istype(A, /obj) //override the byond proc because it returns true on children of /atom/movable that aren't objs
 
 #define isitem(A) (istype(A, /obj/item))
+
+#define isidcard(I) (istype(I, /obj/item/card/id))
 
 #define isstructure(A) (istype(A, /obj/structure))
 

@@ -38,6 +38,11 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/suit_jacket/white
 
+/datum/gear/suitblackreal
+	name = "Black suit shirt"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/lawyer/blacksuit
+
 /datum/gear/galaxy_b
 	name = "De Void of Soul"
 	category = SLOT_W_UNIFORM
@@ -449,4 +454,16 @@
 	name = "Corset"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/corset
+	cost = 1
+
+/datum/gear/corset
+	name = "Corset"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/corset
+	cost = 1
+
+/datum/gear/shortsbra
+	name = "Kromatic Shorts and Top"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/shortsbra
 	cost = 1

@@ -103,6 +103,7 @@
 	actions_types = list(/datum/action/item_action/toggle_helmet)
 	var/helmettype = /obj/item/clothing/head/helmet/space/hardsuit
 	var/obj/item/tank/jetpack/suit/jetpack = null
+	roomy = TRUE
 
 
 /obj/item/clothing/suit/space/hardsuit/Initialize()

@@ -372,6 +372,8 @@
 				break
 
 			if(!GLOB.ratvar_awakens)
+				if(GLOB.clockwork_vitality <= 0)
+					break
 				GLOB.clockwork_vitality -= vitality_used
 
 		sleep(2)

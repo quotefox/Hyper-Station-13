@@ -12,11 +12,11 @@
 	antag_datum = /datum/antagonist/traitor/
 	minimum_required_age = 0
 	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Cyborg", "Quartermaster")
-	restricted_roles = list("Cyborg")
+	restricted_roles = list("Cyborg", "AI") //Malf is it's own ruleset
 	required_candidates = 1
 	weight = 5
 	cost = 10
-	requirements = list(101,40,30,25,20,20,15,15,15,15)
+	requirements = list(101,101,30,25,20,20,15,15,15,15)
 	high_population_requirement = 10
 	var/autotraitor_cooldown = 450 // 15 minutes (ticks once per 2 sec)
 	chaos_min = 2.5
@@ -29,11 +29,11 @@
 	antag_datum = /datum/antagonist/traitor/thief
 	minimum_required_age = 0
 	//protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Cyborg")
-	restricted_roles = list("Cyborg")
+	restricted_roles = list("Cyborg", "AI") //Malf is it's own ruleset
 	//required_candidates = 1
-	//weight = 5
+	weight = 5
 	cost = 0
-	requirements = list(101,25,25,20,20,15,15,10,10,5)
+	requirements = list(101,25,25,20,20,15,15,10,10,10)
 	high_population_requirement = 10
 	//var/autotraitor_cooldown = 450 // 15 minutes (ticks once per 2 sec)
 	chaos_min = 2.0
@@ -61,7 +61,6 @@
 		mode.picking_specific_rule(/datum/dynamic_ruleset/midround/autotraitor)
 */
 
-/* //Not currently functional
 //////////////////////////////////////////
 //                                      //
 //                LEWD                  //
@@ -77,7 +76,7 @@
 	protected_roles = list("AI","Cyborg")
 	restricted_roles = list("Cyborg","AI")
 	required_candidates = 1
-	weight = 5
+	weight = 2
 	cost = 0
 	requirements = list(10,10,10,10,10,10,10,10,10,10)
 	high_population_requirement = 10
@@ -86,16 +85,15 @@
 	admin_required = TRUE
 	//vars for execution
 	var/list/mob/living/carbon/human/lewd_candidates = list()
-	var/numTraitors = 0
+	var/numTraitors = 1
 
 
-/datum/dynamic_ruleset/roundstart/traitor/lewd/pre_execute()
+/datum/dynamic_ruleset/roundstart/traitor/lewd/ready()
 	var/list/mob/living/carbon/human/targets = list()
 
-	for(var/mob/living/carbon/human/target in GLOB.player_list)
+	for(var/mob/dead/new_player/target in GLOB.player_list)
 		if(target.client.prefs.noncon)
-			if(!(target.job in restricted_roles))
-				targets += target
+			targets += target
 
 	if(candidates.len)
 		var/numTraitors = min(candidates.len, targets.len, 1) //This number affects the maximum number of traitors. We want 1 for right now.
@@ -105,17 +103,18 @@
 		return 1
 
 	return 0
+	
+/datum/dynamic_ruleset/roundstart/traitor/lewd/pre_execute()
+	var/traitor_scaling_coeff = 10 - max(0,round(mode.threat_level/10)-5) // Above 50 threat level, coeff goes down by 1 for every 10 levels
+	var/num_traitors = min(round(mode.candidates.len / traitor_scaling_coeff) + 1, candidates.len)
+	for (var/i = 1 to num_traitors)
+		var/mob/M = pick(candidates)
+		candidates -= M
+		assigned += M.mind
+		M.mind.special_role = ROLE_LEWD_TRAITOR
+		M.mind.restricted_roles = restricted_roles
+	return TRUE
 
-/datum/dynamic_ruleset/roundstart/traitor/lewd/execute()
-	var/mob/living/carbon/human/H = null
-	if(numTraitors)
-		for(var/i = 0, i<numTraitors, i++)
-			H = pick(candidates)
-			candidates.Remove(H)
-			H.mind.make_LewdTraitor()
-		return TRUE
-	return FALSE
-*/
 
 //////////////////////////////////////////
 //                                      //
@@ -290,7 +289,7 @@
 	flags = HIGHLANDER_RULESET
 	var/cultist_cap = list(2,2,2,3,3,4,4,4,4,4)
 	var/datum/team/cult/main_cult
-	chaos_min = 4.9
+	chaos_min = 4.5
 	admin_required = TRUE
 
 /datum/dynamic_ruleset/roundstart/bloodcult/ready(forced = FALSE)
@@ -346,11 +345,11 @@
 	required_candidates = 5
 	weight = 3
 	cost = 20
-	requirements = list(101,100,90,80,70,60,50,40,30,20)
+	requirements = list(101,100,95,85,70,60,50,40,30,20)
 	high_population_requirement = 10
 	pop_per_requirement = 5
 	flags = HIGHLANDER_RULESET
-	var/operative_cap = list(2,2,2,2,2,3,3,3,4,5)
+	var/operative_cap = list(1,1,1,2,2,3,3,3,4,5)
 	var/datum/team/nuclear/nuke_team
 	chaos_min = 4.0
 
@@ -549,11 +548,13 @@
 	required_candidates = 4
 	weight = 4
 	cost = 0
-	requirements = list(101,101,100,90,80,70,60,50,40,30)
+	requirements = list(101,101,100,95,85,70,60,50,40,30)
+	//requirements = list(0,0,0,0,0,0,0,0,0,0)
 	high_population_requirement = 101
 	flags = HIGHLANDER_RULESET
 	var/ark_time
-	chaos_min = 4.9
+	var/servants = list(1,1,1,1,2,2,3,3,4,4)
+	chaos_min = 4.5
 	admin_required = TRUE
 
 /datum/dynamic_ruleset/roundstart/clockcult/pre_execute()
@@ -565,20 +566,23 @@
 		return FALSE
 	for(var/datum/parsed_map/PM in reebes)
 		PM.initTemplateBounds()
-
+	/*
 	var/starter_servants = 4
 	var/number_players = num_players()
 	if(number_players > 30)
 		number_players -= 30
 		starter_servants += round(number_players / 10)
 	starter_servants = min(starter_servants, 8)
+	*/
+	var/indice_pop = min(10,round(mode.roundstart_pop_ready/5)+1)
+	var/starter_servants = servants[indice_pop]
 	for (var/i in 1 to starter_servants)
 		var/mob/servant = pick(candidates)
 		candidates -= servant
 		assigned += servant.mind
 		servant.mind.assigned_role = ROLE_SERVANT_OF_RATVAR
 		servant.mind.special_role = ROLE_SERVANT_OF_RATVAR
-	ark_time = 30 + round((number_players / 5))
+	ark_time = 30 + round((mode.roundstart_pop_ready / 5))
 	ark_time = min(ark_time, 35)
 	return TRUE
 

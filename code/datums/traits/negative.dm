@@ -110,6 +110,26 @@
 	lose_text = "<span class='notice'>You feel awake again.</span>"
 	medical_record_text = "Patient has abnormal sleep study results and is difficult to wake up."
 
+/datum/quirk/hypersensitive
+	name = "Hypersensitive"
+	desc = "For better or worse, everything seems to affect your mood more than it should."
+	value = -1
+	gain_text = "<span class='danger'>You seem to make a big deal out of everything.</span>"
+	lose_text = "<span class='notice'>You don't seem to make a big deal out of everything anymore.</span>"
+	mood_quirk = TRUE //yogs
+	medical_record_text = "Patient demonstrates a high level of emotional volatility."
+
+/datum/quirk/hypersensitive/add()
+	var/datum/component/mood/mood = quirk_holder.GetComponent(/datum/component/mood)
+	if(mood)
+		mood.mood_modifier += 0.5
+
+/datum/quirk/hypersensitive/remove()
+	if(quirk_holder)
+		var/datum/component/mood/mood = quirk_holder.GetComponent(/datum/component/mood)
+		if(mood)
+			mood.mood_modifier -= 0.5
+
 /datum/quirk/brainproblems
 	name = "Brain Tumor"
 	desc = "You have a little friend in your brain that is slowly destroying it. Better bring some mannitol!"
@@ -135,8 +155,8 @@
 /datum/quirk/nearsighted/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/clothing/glasses/regular/glasses = new(get_turf(H))
-	H.put_in_hands(glasses)
-	H.equip_to_slot(glasses, SLOT_GLASSES)
+	if(!H.equip_to_slot_if_possible(glasses, SLOT_GLASSES))
+		H.put_in_hands(glasses)
 	H.regenerate_icons() //this is to remove the inhand icon, which persists even if it's not in their hands
 
 /datum/quirk/nyctophobia
@@ -241,6 +261,8 @@
 	desc = "An accident caused you to lose one of your limbs. Because of this, you now have a random prosthetic!"
 	value = -1
 	var/slot_string = "limb"
+	var/specific = null
+	medical_record_text = "During physical examination, patient was found to have a prosthetic limb."
 
 /datum/quirk/prosthetic_limb/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
@@ -249,6 +271,9 @@
 		limb_slot = pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM)
 	else
 		limb_slot = pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
+		if(specific)
+			limb_slot = specific
+
 	var/obj/item/bodypart/old_part = H.get_bodypart(limb_slot)
 	var/obj/item/bodypart/prosthetic
 	switch(limb_slot)
@@ -296,6 +321,26 @@
 		return
 	to_chat(quirk_holder, "<span class='big bold info'>Please note that your dissociation syndrome does NOT give you the right to attack people or otherwise cause any interference to \
 	the round. You are not an antagonist, and the rules will treat you the same as other crewmembers.</span>")
+
+/datum/quirk/prosthetic_limb/left_arm
+	name = "Prosthetic Limb (Left Arm)"
+	desc = "An accident caused you to lose your left arm. Because of this, it's replaced with a prosthetic!"
+	specific = BODY_ZONE_L_ARM
+
+/datum/quirk/prosthetic_limb/right_arm
+	name = "Prosthetic Limb (Right Arm)"
+	desc = "An accident caused you to lose your right arm. Because of this, it's replaced with a prosthetic!"
+	specific = BODY_ZONE_R_ARM
+
+/datum/quirk/prosthetic_limb/left_leg
+	name = "Prosthetic Limb (Left Leg)"
+	desc = "An accident caused you to lose your left leg. Because of this, it's replaced with a prosthetic!"
+	specific = BODY_ZONE_L_LEG
+
+/datum/quirk/prosthetic_limb/right_leg
+	name = "Prosthetic Limb (Right Leg)"
+	desc = "An accident caused you to lose your right leg. Because of this, it's replaced with a prosthetic!"
+	specific = BODY_ZONE_R_LEG
 
 /datum/quirk/social_anxiety
 	name = "Social Anxiety"

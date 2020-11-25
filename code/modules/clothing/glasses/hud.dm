@@ -45,6 +45,20 @@
 	vision_correction = 1
 	glass_colour_type = /datum/client_colour/glass_colour/lightblue
 
+/obj/item/clothing/glasses/hud/health/gar
+	name = "gar health scanner HUD"
+	desc = "When you're scared, that's all the more reason to move forward!"
+	icon_state = "garh"
+	item_state = "garh"
+	hud_type = DATA_HUD_MEDICAL_ADVANCED
+	glass_colour_type = /datum/client_colour/glass_colour/lightblue
+	force = 10
+	throwforce = 10
+	throw_speed = 4
+	attack_verb = list("sliced")
+	hitsound = 'sound/weapons/bladeslice.ogg'
+	sharpness = IS_SHARP
+
 /obj/item/clothing/glasses/hud/health/night
 	name = "night vision health scanner HUD"
 	desc = "An advanced medical head-up display that allows doctors to find patients in complete darkness."

@@ -31,8 +31,7 @@
 					continue // Dead players cannot count as opponents
 				if (M.mind && M.mind.assigned_role && (M.mind.assigned_role in enemy_roles) && (!(M in candidates) || (M.mind.assigned_role in restricted_roles)))
 					job_check++ // Checking for "enemies" (such as sec officers). To be counters, they must either not be candidates to that rule, or have a job that restricts them from it
-
-		var/threat = round(mode.threat_level/10)
+		var/threat = min(round(mode.threat_level/10),9)
 		if (job_check < required_enemies[threat])
 			return FALSE
 	return ..()

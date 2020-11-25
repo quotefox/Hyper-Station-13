@@ -201,7 +201,7 @@
 			var/radiated_temperature = location.air.temperature*FIRE_SPREAD_RADIOSITY_SCALE
 			for(var/t in location.atmos_adjacent_turfs)
 				var/turf/open/T = t
-				if(T.active_hotspot)
+				if(!T.active_hotspot)
 					T.hotspot_expose(radiated_temperature, CELL_VOLUME/4, flags_1 & HOLOGRAM_1)
 
 	else

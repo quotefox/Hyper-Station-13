@@ -188,13 +188,15 @@
 				to_chat(usr, "<span class='warning'>ERROR: Cannot replicate virus strain.</span>")
 				return
 			A = A.Copy()
-			var/list/data = list("viruses" = list(A))
+			var/list/data = list("blood_DNA" = "UNKNOWN DNA", "blood_type" = "SY", "viruses" = list(A))
 			var/obj/item/reagent_containers/glass/bottle/B = new(drop_location())
 			B.name = "[A.name] culture bottle"
 			B.desc = "A small bottle. Contains [A.agent] culture in synthblood medium."
 			B.reagents.add_reagent("blood", 20, data)
 			wait = TRUE
 			update_icon()
+			var/turf/source_turf = get_turf(src)
+			log_virus("A culture bottle was printed for the virus [A.admin_details()] at [loc_name(source_turf)] by [key_name(usr)]")
 			addtimer(CALLBACK(src, .proc/reset_replicator_cooldown), 50)
 			. = TRUE
 		if("create_vaccine_bottle")

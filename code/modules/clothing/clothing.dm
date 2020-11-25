@@ -99,7 +99,7 @@
 	if(istype(W, /obj/item/bluespace_thread))
 		var/obj/item/bluespace_thread/B = W
 		if ((istype(src, /obj/item/clothing/under) || istype(src, /obj/item/clothing/suit)) && roomy != 1) //Make sure the thread is used on an item that could be ripped off in the first place
-			roomy = 1 //True
+			roomy = TRUE //True
 			user.show_message("<span class='notice'>You add a few stiches to your clothing, and find them to fit a little looser.</span>", 1)
 			B.uses -= 1 //One use has been used
 			if(B.uses <= 0)
@@ -139,7 +139,7 @@
 	. = ..()
 	if(damaged_clothes)
 		. += "<span class='warning'>It looks damaged!</span>"
-	GET_COMPONENT(pockets, /datum/component/storage)
+	var/datum/component/storage/pockets = GetComponent(/datum/component/storage)
 	if(pockets)
 		var/list/how_cool_are_your_threads = list("<span class='notice'>")
 		if(pockets.attack_hand_interact)

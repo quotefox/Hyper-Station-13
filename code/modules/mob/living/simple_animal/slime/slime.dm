@@ -260,7 +260,7 @@
 		visible_message("<span class='danger'>[M] pulls [src] off!</span>")
 		return
 	attacked += 5
-	if(nutrition >= 100) //steal some nutrition. negval handled in life()
+	if(nutrition >= 100 && !istype(src, /mob/living/simple_animal/slime)) //steal some nutrition. negval handled in life()
 		nutrition -= (50 + (40 * M.is_adult))
 		M.add_nutrition(50 + (40 * M.is_adult))
 	if(health > 0)

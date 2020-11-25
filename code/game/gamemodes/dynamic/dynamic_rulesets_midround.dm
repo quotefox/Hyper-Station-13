@@ -1,4 +1,4 @@
-#define REVENANT_SPAWN_THRESHOLD 20
+#define REVENANT_SPAWN_THRESHOLD 15
 #define ABDUCTOR_MAX_TEAMS 4 // blame TG for not using the defines files
 
 //////////////////////////////////////////////
@@ -18,6 +18,7 @@
 	var/list/dead_players = list()
 	var/list/list_observers = list()
 	var/list/ghost_eligible = list()
+	var/controller //round event controller for the event - Required for certain events dependendant on variables within their controllers
 
 /datum/dynamic_ruleset/midround/from_ghosts
 	weight = 0
@@ -99,9 +100,8 @@
 					continue // Dead players cannot count as opponents
 				if (M.mind && M.mind.assigned_role && (M.mind.assigned_role in enemy_roles) && (!(M in candidates) || (M.mind.assigned_role in restricted_roles)))
 					job_check++ // Checking for "enemies" (such as sec officers). To be counters, they must either not be candidates to that rule, or have a job that restricts them from it
-
-		var/threat = round(mode.threat_level/10)
-		if (job_check < required_enemies[threat])
+		var/chaos = min(max(round(GLOB.dynamic_chaos_level * 2), 0), 9)
+		if (job_check < required_enemies[chaos])
 			return FALSE
 	return TRUE
 
@@ -113,8 +113,20 @@
 
 
 /datum/dynamic_ruleset/midround/from_ghosts/execute()
-	var/application_successful = send_applications(ghost_eligible)
-	return assigned.len > 0 && application_successful
+	message_admins("<span class='deadsay'><b>[name]</b> has just been randomly triggered!</span>") //STOP ASSUMING IT'S BADMINS!
+	log_game("Midround triggering: [name]")
+	var/datum/round_event/E
+	//occurances_current++
+	if(controller)
+		var/datum/round_event_control/C = locate(controller) in SSevents.control
+		E = C.runEvent()
+	else
+		var/application_successful = send_applications(ghost_eligible)
+		return assigned.len > 0 && application_successful
+
+	testing("[time2text(world.time, "hh:mm:ss")] [E.type]")
+
+	return E
 
 /// This sends a poll to ghosts if they want to be a ghost spawn from a ruleset.
 /datum/dynamic_ruleset/midround/from_ghosts/proc/send_applications(list/possible_volunteers = list())
@@ -221,7 +233,7 @@
 	high_population_requirement = 10
 	flags = TRAITOR_RULESET
 	chaos_min = 2.0
-	chaos_max = 4.0
+	chaos_max = 3.5
 
 /datum/dynamic_ruleset/midround/autotraitor/acceptable(population = 0, threat = 0)
 	var/player_count = mode.current_players[CURRENT_LIVING_PLAYERS].len
@@ -258,6 +270,112 @@
 	return TRUE
 
 
+//////////////////////////////////////////
+//                                      //
+//                LEWD                  //
+//                                      //
+//////////////////////////////////////////
+
+/datum/dynamic_ruleset/midround/autotraitor/lewd
+	name = "Horny Traitor"
+	persistent = TRUE
+	antag_flag = ROLE_LEWD_TRAITOR
+	antag_datum = /datum/antagonist/traitor/lewd
+	//minimum_required_age = 7
+	protected_roles = list("AI","Cyborg", "Positronic Brain")
+	restricted_roles = list("Cyborg","AI", "Positronic Brain")
+	required_candidates = 1
+	weight = 2
+	cost = 0
+	requirements = list(10,10,10,10,10,10,10,10,10,10)
+	high_population_requirement = 10
+	chaos_min = 0.1
+	chaos_max = 2.0
+	admin_required = TRUE
+	//vars for execution
+	var/list/mob/living/carbon/human/lewd_candidates = list()
+	var/list/mob/living/carbon/human/targets = list()
+	var/numTraitors = 1
+
+/datum/dynamic_ruleset/midround/autotraitor/lewd/acceptable(population = 0, threat = 0) //copy paste to bypass parent
+	if(minimum_players > population)
+		return FALSE
+	if(maximum_players > 0 && population > maximum_players)
+		return FALSE
+	if(GLOB.dynamic_chaos_level < chaos_min || GLOB.dynamic_chaos_level > chaos_max)
+		return FALSE
+	if(admin_required && !GLOB.admins.len)
+		return FALSE
+	if (population >= GLOB.dynamic_high_pop_limit)
+		return (mode.threat_level >= high_population_requirement)
+	else
+		pop_per_requirement = pop_per_requirement > 0 ? pop_per_requirement : mode.pop_per_requirement
+		var/indice_pop = min(10,round(population/pop_per_requirement)+1)
+		return (mode.threat_level >= requirements[indice_pop])
+
+/datum/dynamic_ruleset/midround/autotraitor/lewd/trim_candidates()
+	..()
+	lewd_candidates = living_players
+	for(var/mob/living/player in lewd_candidates)
+		if(issilicon(player)) // Your assigned role doesn't change when you are turned into a silicon.
+			lewd_candidates -= player
+			continue
+		if(is_centcom_level(player.z))
+			lewd_candidates -= player // We don't autotator people in CentCom
+			continue
+		if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
+			lewd_candidates -= player // We don't autotator people with roles already
+
+/datum/dynamic_ruleset/midround/autotraitor/lewd/trim_list(list/L = list())
+	var/list/trimmed_list = L.Copy()
+	var/antag_name = initial(antag_flag)
+	for(var/mob/living/M in trimmed_list)
+		if (!istype(M, required_type))
+			trimmed_list.Remove(M)
+			continue
+		if (!M.client) // Are they connected?
+			trimmed_list.Remove(M)
+			continue
+		if(!mode.check_age(M.client, minimum_required_age))
+			trimmed_list.Remove(M)
+			continue
+		if (!(antag_name in M.client.prefs.be_special) || jobban_isbanned(M.ckey, list(antag_name, ROLE_SYNDICATE)))//are they willing and not antag-banned?
+			trimmed_list.Remove(M)
+			continue
+		if (M.mind)
+			if (restrict_ghost_roles && M.mind.assigned_role in GLOB.exp_specialmap[EXP_TYPE_SPECIAL]) // Are they playing a ghost role?
+				trimmed_list.Remove(M)
+				continue
+			if (M.mind.assigned_role in restricted_roles) // All this work to bypass mindshield restriction
+				trimmed_list.Remove(M)
+				continue
+			if ((exclusive_roles.len > 0) && !(M.mind.assigned_role in exclusive_roles)) // Is the rule exclusive to their job?
+				trimmed_list.Remove(M)
+				continue
+	return trimmed_list
+
+/datum/dynamic_ruleset/midround/autotraitor/lewd/ready()
+	for(var/mob/living/target in living_players)
+		if(target.client.prefs.noncon)
+			targets += target
+
+	if(lewd_candidates.len)
+		numTraitors = min(lewd_candidates.len, targets.len, numTraitors)
+		if(numTraitors == 0)
+			to_chat(GLOB.admins, "No lewd traitors created. Are there any valid targets?")
+			return 0
+		return 1
+
+	return 0
+	
+/datum/dynamic_ruleset/midround/autotraitor/lewd/execute()
+	var/mob/M = pick(lewd_candidates)
+	lewd_candidates -= M
+	assigned += M.mind
+	var/datum/antagonist/traitor/lewd/newTraitor = new
+	M.mind.add_antag_datum(newTraitor)
+	return TRUE
+
 //////////////////////////////////////////////
 //                                          //
 //         Malfunctioning AI                //
@@ -268,13 +386,13 @@
 	name = "Malfunctioning AI"
 	antag_datum = /datum/antagonist/traitor
 	antag_flag = ROLE_MALF
-	enemy_roles = list("Security Officer", "Warden","Detective","Head of Security", "Captain", "Scientist", "Research Director", "Chief Engineer")
+	enemy_roles = list("Security Officer", "Warden","Detective","Head of Security", "Captain", "Scientist", "Research Director", "Chief Engineer", "Engineer", "Shaft Miner")
 	exclusive_roles = list("AI")
 	required_enemies = list(4,4,4,4,4,4,2,2,2,0)
 	required_candidates = 1
 	weight = 3
 	cost = 20
-	requirements = list(101,101,55,50,45,40,35,30,25,20)
+	requirements = list(101,101,101,45,40,35,30,25,20,15)
 	high_population_requirement = 35
 	required_type = /mob/living/silicon/ai
 	var/ion_announce = 33
@@ -322,7 +440,7 @@
 	antag_datum = /datum/antagonist/wizard
 	antag_flag = ROLE_WIZARD
 	enemy_roles = list("Security Officer","Detective","Head of Security", "Captain")
-	required_enemies = list(2,2,1,1,1,1,1,1,0,0)
+	required_enemies = list(2,2,1,1,1,1,1,1,1,0)
 	required_candidates = 1
 	weight = 1
 	cost = 20
@@ -356,13 +474,13 @@
 	antag_flag = ROLE_OPERATIVE
 	antag_datum = /datum/antagonist/nukeop
 	enemy_roles = list("AI", "Cyborg", "Security Officer", "Warden","Detective","Head of Security", "Captain")
-	required_enemies = list(3,3,3,3,3,2,2,1,1,0)
+	required_enemies = list(3,3,3,3,3,2,2,2,2,1)
 	required_candidates = 5
 	weight = 5
-	cost = 35
-	requirements = list(101,101,100,70,60,50,40,40,40,40)
+	cost = 20
+	requirements = list(101,100,95,85,70,60,50,40,30,20)
 	high_population_requirement = 10
-	var/operative_cap = list(2,2,2,2,3,3,4,4,5,5)
+	var/operative_cap = list(1,1,1,2,2,3,3,4,4,5)
 	var/datum/team/nuclear/nuke_team
 	flags = HIGHLANDER_RULESET
 	chaos_min = 4.0
@@ -399,15 +517,17 @@
 	name = "Blob"
 	antag_datum = /datum/antagonist/blob
 	antag_flag = ROLE_BLOB
-	enemy_roles = list("Security Officer", "Detective", "Head of Security", "Captain")
+	enemy_roles = list("Security Officer", "Detective", "Head of Security", "Captain", "Station Engineer")
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
-	weight = 4
+	weight = 3
 	cost = 20
-	requirements = list(101,101,60,50,45,40,40,40,30,20)
+	requirements = list(101,101,101,60,50,40,40,40,30,20)
+	//requirements = list(0,0,0,0,0,0,0,0,0,0)
 	high_population_requirement = 50
 	repeatable = TRUE
-	chaos_min = 3.5
+	chaos_min = 4.0
+	controller = /datum/round_event_control/blob
 
 /datum/dynamic_ruleset/midround/from_ghosts/blob/generate_ruleset_body(mob/applicant)
 	var/body = applicant.become_overmind()
@@ -428,11 +548,13 @@
 	required_candidates = 1
 	weight = 3
 	cost = 15
-	requirements = list(101,101,100,70,60,50,40,40,30,20)
+	requirements = list(101,101,101,50,40,35,30,30,30,20)
+	//requirements = list(0,0,0,0,0,0,0,0,0,0)
 	high_population_requirement = 50
 	repeatable = TRUE
 	var/list/vents = list()
 	chaos_min = 3.5
+	controller = /datum/round_event_control/alien_infestation
 
 /datum/dynamic_ruleset/midround/from_ghosts/xenomorph/execute()
 	// 50% chance of being incremented by one
@@ -469,12 +591,13 @@
 /datum/dynamic_ruleset/midround/from_ghosts/nightmare
 	name = "Nightmare"
 	antag_datum = /datum/antagonist/nightmare
+	controller = /datum/round_event_control/nightmare
 	antag_flag = "Nightmare"
 	antag_flag_override = ROLE_ALIEN
 	enemy_roles = list("Security Officer", "Detective", "Head of Security", "Captain")
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
-	weight = 3
+	weight = 4
 	cost = 10
 	requirements = list(101,50,40,30,20,20,20,20,15,10)
 	high_population_requirement = 50
@@ -520,18 +643,18 @@
 	antag_flag = ROLE_ABDUCTOR
 	// Has two antagonist flags, in fact
 	enemy_roles = list("AI", "Cyborg", "Security Officer", "Warden","Detective","Head of Security", "Captain")
-	required_enemies = list(3,3,2,2,1,1,0,0,0,0)
+	required_enemies = list(3,3,2,2,2,2,2,2,2,0)
 	required_candidates = 2
-	weight = 4
+	weight = 3
 	cost = 10
-	requirements = list(101,101,50,45,40,30,20,20,10,10)
+	requirements = list(101,101,101,101,40,30,30,30,30,30)
 	blocking_rules = list(/datum/dynamic_ruleset/roundstart/nuclear,/datum/dynamic_ruleset/midround/from_ghosts/nuclear)
 	high_population_requirement = 15
 	var/datum/team/abductor_team/team
 	//property_weights = list("extended" = -2, "valid" = 1, "trust" = -1, "chaos" = 2)
 	repeatable_weight_decrease = 4
 	repeatable = TRUE
-	chaos_min = 2.0
+	chaos_min = 4.0
 
 /datum/dynamic_ruleset/midround/from_ghosts/abductors/ready(forced = FALSE)
 	team = new /datum/team/abductor_team
@@ -565,7 +688,7 @@
 	required_enemies = list(3,2,2,2,2,1,1,1,1,0)
 	required_candidates = 1
 	weight = 4
-	cost = 15
+	cost = 10
 	requirements = list(101,101,101,40,35,30,25,20,20,20)
 	high_population_requirement = 30
 	//property_weights = list("story_potential" = 1, "extended" = -2, "valid" = 2)

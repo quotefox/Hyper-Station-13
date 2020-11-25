@@ -30,7 +30,6 @@
 /obj/item/storage/firstaid/regular/PopulateContents()
 	if(empty)
 		return
-	new /obj/item/stack/medical/plaster_gauze(src)
 	new /obj/item/stack/medical/gauze(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/bruise_pack(src)
@@ -171,7 +170,7 @@
 
 /obj/item/storage/firstaid/tactical/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/firstaid/tactical/PopulateContents()
@@ -201,7 +200,7 @@
 
 /obj/item/storage/pill_bottle/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.allow_quick_gather = TRUE
 	STR.click_gather = TRUE
 	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/pill, /obj/item/dice))
@@ -364,7 +363,7 @@
 
 /obj/item/storage/belt/organbox/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 16
 	STR.max_w_class = WEIGHT_CLASS_BULKY
 	STR.max_combined_w_class = 20

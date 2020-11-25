@@ -22,12 +22,6 @@
 /obj/machinery/computer/med_data/syndie
 	icon_keyboard = "syndie_key"
 
-/obj/machinery/computer/med_data/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/card/id))
-		id_insert_scan(user)
-	else
-		return ..()
-
 /obj/machinery/computer/med_data/ui_interact(mob/user)
 	. = ..()
 	var/dat
@@ -573,7 +567,7 @@
 	if(user)
 		if(message)
 			if(authenticated)
-				if(user.canUseTopic(src, BE_CLOSE))
+				if(user.canUseTopic(src, !issilicon(user)))
 					if(!record1 || record1 == active1)
 						if(!record2 || record2 == active2)
 							return 1

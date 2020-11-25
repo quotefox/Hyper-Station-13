@@ -563,6 +563,12 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 		playsound(turf, 'sound/weapons/effects/batreflect2.ogg', 50, 1)
 	return 1
 
+/obj/item/melee/baseball_bat/ablative/syndi
+	name = "syndicate major league bat"
+	desc = "A metal bat made by the syndicate for the major league team."
+	force = 18 //Spear damage...
+	throwforce = 30
+
 /obj/item/melee/flyswatter
 	name = "flyswatter"
 	desc = "Useful for killing insects of all sizes."
@@ -668,7 +674,7 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	name = "bdsm whip"
 	desc = "A less lethal version of the whip the librarian has. Still hurts, but just the way you like it."
 	icon_state = "whip"
-	item_state = "chain"
+	item_state = "crop"
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT

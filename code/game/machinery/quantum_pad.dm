@@ -104,11 +104,11 @@
 		to_chat(user, "<span class='warning'>[src] is charging up. Please wait.</span>")
 		return
 
-	if(target_pad.teleporting)
+	if(target_pad?.teleporting)
 		to_chat(user, "<span class='warning'>Target pad is busy. Please wait.</span>")
 		return
 
-	if(target_pad.stat & NOPOWER)
+	if(target_pad?.stat & NOPOWER)
 		to_chat(user, "<span class='warning'>Target pad is not responding to ping.</span>")
 		return
 	add_fingerprint(user)

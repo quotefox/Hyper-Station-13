@@ -1,4 +1,5 @@
 //I am not a coder. Please fucking tear apart my code, and insult me for how awful I am at coding. Please and thank you. -Dahlular
+//alright bet -BoxBoy
 var/const/RESIZE_MACRO = 6
 var/const/RESIZE_HUGE = 4
 var/const/RESIZE_BIG = 2

@@ -221,8 +221,9 @@
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/xeno
+	gib_types = list(/obj/effect/gibspawner/xeno/xenoperson, /obj/effect/gibspawner/xeno/xenoperson/bodypartless)
 	skinned_type = /obj/item/stack/sheet/animalhide/xeno
-	exotic_bloodtype = "L"
+	exotic_bloodtype = "X*"
 	damage_overlay_type = "xeno"
 	liked_food = MEAT
 
@@ -263,7 +264,7 @@
 	mutantstomach = /obj/item/organ/stomach/ipc
 	mutanteyes = /obj/item/organ/eyes/ipc
 
-	exotic_bloodtype = "S"
+	exotic_bloodtype = "SY"
 
 
 /datum/species/synthliz/qualifies_for_rank(rank, list/features)

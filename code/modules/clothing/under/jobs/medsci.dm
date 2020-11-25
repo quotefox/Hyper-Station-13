@@ -204,4 +204,21 @@
 	item_color = "medical_skirt"
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
-	fitted = FEMALE_UNIFORM_TOP 
+	fitted = FEMALE_UNIFORM_TOP
+
+/obj/item/clothing/under/rank/medical/emt
+	desc = "It's made of a special fiber that provides minor protection against biohazards. It has a dark blue cross on the chest denoting that the wearer is a trained paramedic."
+	name = "paramedic jumpsuit"
+	icon_state = "emt"
+	item_state = "w_suit"
+	item_color = "emt"
+
+/obj/item/clothing/under/rank/medical/emt/skirt
+	name = "paramedic jumpskirt"
+	desc = "It's made of a special fiber that provides minor protection against biohazards. It has a dark blue cross on the chest denoting that the wearer is a trained paramedic."
+	icon_state = "emt_skirt"
+	item_state = "w_suit"
+	item_color = "emt_skirt"
+	body_parts_covered = CHEST|GROIN|ARMS
+	can_adjust = FALSE
+	fitted = FEMALE_UNIFORM_TOP

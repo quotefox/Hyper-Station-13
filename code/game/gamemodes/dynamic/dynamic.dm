@@ -17,10 +17,10 @@ GLOBAL_VAR_INIT(dynamic_latejoin_delay_max, (25 MINUTES))
 GLOBAL_VAR_INIT(dynamic_midround_delay_min, (15 MINUTES))
 GLOBAL_VAR_INIT(dynamic_midround_delay_max, (35 MINUTES))
 
-GLOBAL_VAR_INIT(dynamic_event_delay_min, (3 MINUTES))
-GLOBAL_VAR_INIT(dynamic_event_delay_max, (10 MINUTES))
+GLOBAL_VAR_INIT(dynamic_event_delay_min, (4 MINUTES))
+GLOBAL_VAR_INIT(dynamic_event_delay_max, (12 MINUTES))
 
-GLOBAL_VAR_INIT(dynamic_threat_delay, (5 MINUTES))
+GLOBAL_VAR_INIT(dynamic_threat_delay, (4 MINUTES))
 
 // Are HIGHLANDER_RULESETs allowed to stack?
 GLOBAL_VAR_INIT(dynamic_no_stacking, TRUE)
@@ -125,9 +125,10 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 /datum/game_mode/dynamic/admin_panel()
 	var/list/dat = list("<html><head><title>Game Mode Panel</title></head><body><h1><B>Game Mode Panel</B></h1>")
 	dat += "Dynamic Mode <a href='?_src_=vars;[HrefToken()];Vars=[REF(src)]'>\[VV\]</A><BR>"
-	dat += "Threat Level: <b>[threat_level]</b><br/>"
-
-	dat += "Threat to Spend: <b>[threat]</b> <a href='?src=\ref[src];[HrefToken()];adjustthreat=1'>\[Adjust\]</A> <a href='?src=\ref[src];[HrefToken()];threatlog=1'>\[View Log\]</a><br/>"
+	dat += "Chaos Level: <b>[GLOB.dynamic_chaos_level]</b><br/>"
+	//dat += "Threat Level: <b>[threat_level]</b><br/>"
+	//dat += "Threat to Spend: <b>[threat]</b> <a href='?src=\ref[src];[HrefToken()];adjustthreat=1'>\[Adjust\]</A> <a href='?src=\ref[src];[HrefToken()];threatlog=1'>\[View Log\]</a><br/>"
+	dat += "Threat Level: <b>[threat]</b> <a href='?src=\ref[src];[HrefToken()];adjustthreat=1'>\[Adjust\]</A> <a href='?src=\ref[src];[HrefToken()];threatlog=1'>\[View Log\]</a><br/>"
 	dat += "<br/>"
 	dat += "Parameters: centre = [GLOB.dynamic_curve_centre] ; width = [GLOB.dynamic_curve_width].<br/>"
 	//dat += "<i>On average, <b>[peaceful_percentage]</b>% of the rounds are more peaceful.</i><br/>"
@@ -351,8 +352,8 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 				if (ruleset.weight)
 					midround_rules += ruleset
 			if ("Event")
-				if(ruleset.weight)
-					event_rules += ruleset
+				//if(ruleset.weight)
+				event_rules += ruleset
 	for(var/mob/dead/new_player/player in GLOB.player_list)
 		if(player.ready == PLAYER_READY_TO_PLAY && player.mind)
 			roundstart_pop_ready++
@@ -445,7 +446,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 
 /// Picks a random roundstart rule from the list given as an argument and executes it.
 /datum/game_mode/dynamic/proc/picking_roundstart_rule(list/drafted_rules = list(), forced = FALSE)
-	var/datum/dynamic_ruleset/roundstart/starting_rule = pickweight(drafted_rules)
+	var/datum/dynamic_ruleset/roundstart/starting_rule = pickweightAllowZero(drafted_rules)
 	if(!starting_rule)
 		return FALSE
 
@@ -457,7 +458,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 			drafted_rules -= starting_rule
 			if(drafted_rules.len <= 0)
 				return FALSE
-			starting_rule = pickweight(drafted_rules)
+			starting_rule = pickweightAllowZero(drafted_rules)
 		// Check if the ruleset is highlander and if a highlander ruleset has been executed
 		else if(starting_rule.flags & HIGHLANDER_RULESET)
 			if(threat < GLOB.dynamic_stacking_limit && GLOB.dynamic_no_stacking)
@@ -465,7 +466,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 					drafted_rules -= starting_rule
 					if(drafted_rules.len <= 0)
 						return FALSE
-					starting_rule = pickweight(drafted_rules)
+					starting_rule = pickweightAllowZero(drafted_rules)
 
 	message_admins("Picking a [istype(starting_rule, /datum/dynamic_ruleset/roundstart/delayed/) ? " delayed " : ""] ruleset [starting_rule.name]")
 	log_game("DYNAMIC: Picking a [istype(starting_rule, /datum/dynamic_ruleset/roundstart/delayed/) ? " delayed " : ""] ruleset [starting_rule.name]")
@@ -516,7 +517,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 /// Picks a random midround OR latejoin rule from the list given as an argument and executes it.
 /// Also this could be named better.
 /datum/game_mode/dynamic/proc/picking_midround_latejoin_rule(list/drafted_rules = list(), forced = FALSE)
-	var/datum/dynamic_ruleset/rule = pickweight(drafted_rules)
+	var/datum/dynamic_ruleset/rule = pickweightAllowZero(drafted_rules)
 	if(!rule)
 		return FALSE
 
@@ -528,7 +529,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 			drafted_rules -= rule
 			if(drafted_rules.len <= 0)
 				return FALSE
-			rule = pickweight(drafted_rules)
+			rule = pickweightAllowZero(drafted_rules)
 		// Check if the ruleset is highlander and if a highlander ruleset has been executed
 		else if(rule.flags & HIGHLANDER_RULESET)
 			if(threat < GLOB.dynamic_stacking_limit && GLOB.dynamic_no_stacking)
@@ -536,7 +537,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 					drafted_rules -= rule
 					if(drafted_rules.len <= 0)
 						return FALSE
-					rule = pickweight(drafted_rules)
+					rule = pickweightAllowZero(drafted_rules)
 
 	if(!rule.repeatable)
 		if(rule.ruletype == "Latejoin")
@@ -644,7 +645,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 		if (prob(get_injection_chance()))
 			var/list/drafted_rules = list()
 			for (var/datum/dynamic_ruleset/midround/rule in midround_rules)
-				if (rule.acceptable(current_players[CURRENT_LIVING_PLAYERS].len, threat_level) && threat >= rule.cost)
+				if (rule.acceptable(current_players[CURRENT_LIVING_PLAYERS].len, threat_level))
 					// Classic secret : only autotraitor/minor roles
 					if (GLOB.dynamic_classic_secret && !((rule.flags & TRAITOR_RULESET) || (rule.flags & MINOR_RULESET)))
 						continue
@@ -665,10 +666,10 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 		update_playercounts()
 		var/list/drafted_rules = list()
 		for (var/datum/dynamic_ruleset/event/rule in event_rules)
-			if (rule.acceptable(current_players[CURRENT_LIVING_PLAYERS].len, threat_level) && threat >= rule.cost)
+			if (rule.acceptable(current_players[CURRENT_LIVING_PLAYERS].len, threat_level))
 				// Classic secret : only autotraitor/minor roles
-				if (!GLOB.master_mode == "dynamic")
-					continue
+				//if (!GLOB.master_mode == "dynamic")
+					//continue
 				if (world.time < rule.earliest_start)
 					continue
 				if(rule.occurances_current >= rule.occurances_max && rule.occurances_max)
@@ -676,8 +677,9 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 				rule.candidates = list()
 				rule.candidates = current_players.Copy()
 				rule.trim_candidates()
-				if (rule.ready() && rule.candidates.len > 0)
-					drafted_rules[rule] = rule.get_weight()
+				//if(rule.needs_players)
+					//if (rule.ready() && rule.candidates.len > 0)
+				drafted_rules[rule] = rule.get_weight()
 		if(drafted_rules.len > 0)
 			picking_midround_latejoin_rule(drafted_rules)
 
@@ -727,13 +729,14 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 			chance += 25-10*(max_pop_per_antag-current_pop_per_antag)
 	*/
 	//Hyper change - Base injection chance based on chaos. 
-	chance = (GLOB.dynamic_chaos_level * 10) //Base chance from 0 to 50
+	chance = (GLOB.dynamic_chaos_level * 12) //Base chance from 0 to 60
 	if (current_players[CURRENT_DEAD_PLAYERS].len > current_players[CURRENT_LIVING_PLAYERS].len)
 		chance -= 30 // More than half the crew died? ew, let's calm down on antags
-	if (threat > 70)
-		chance += 15
-	if (threat < 30)
-		chance -= 15
+	//if (threat > 70)
+	//	chance += 15
+	//if (threat < 30)
+	//	chance -= 15
+	chance += ((threat-40)*0.4) //threat influence injection chance more gradually
 	if (chance > 100) //I don't know what would happen if we returned a probability greater than 100%
 		return 100 //So I won't
 	return round(max(0,chance))

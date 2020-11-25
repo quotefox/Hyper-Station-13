@@ -12,15 +12,15 @@ Quartermaster is a real head fuck you
 	spawn_positions = 1
 	supervisors = "the captain"
 	selection_color = "#d7b088"
-	minimal_player_age = 10
+	minimal_player_age = 7
 	exp_type = EXP_TYPE_SUPPLY
 	exp_type_department = EXP_TYPE_SUPPLY
-	exp_requirements = 300
+	exp_requirements = 1200
 
 	outfit = /datum/outfit/job/quartermaster
 
-	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_QM, ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_VAULT)
-	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_QM, ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_VAULT)
+	access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_QM, ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_KEYCARD_AUTH, ACCESS_RC_ANNOUNCE, ACCESS_SEC_DOORS, ACCESS_HEADS, ACCESS_VAULT)
+	minimal_access = list(ACCESS_MAINT_TUNNELS, ACCESS_MAILSORTING, ACCESS_CARGO, ACCESS_CARGO_BOT, ACCESS_QM, ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MINERAL_STOREROOM, ACCESS_KEYCARD_AUTH, ACCESS_RC_ANNOUNCE, ACCESS_SEC_DOORS, ACCESS_HEADS, ACCESS_VAULT)
 
 	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/insanity)
 
@@ -34,6 +34,10 @@ Quartermaster is a real head fuck you
 	shoes = /obj/item/clothing/shoes/sneakers/brown
 	glasses = /obj/item/clothing/glasses/sunglasses
 	l_hand = /obj/item/clipboard
+
+	id = /obj/item/card/id/silver
+	ears = /obj/item/radio/headset/heads/qm
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced = 1)
 
 	chameleon_extras = /obj/item/stamp/qm
 
@@ -81,7 +85,7 @@ Shaft Miner
 	selection_color = "#dcba97"
 	custom_spawn_text = "Remember, you are a miner, not a hunter. Hunting monsters is not a requirement of your job, the only requirement of your job is to provide materials for the station. Don't be afraid to run away if you're inexperienced with fighting the mining area's locals."
 	minimal_player_age = 1
-	exp_requirements = 120
+	exp_requirements = 600
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SUPPLY
 

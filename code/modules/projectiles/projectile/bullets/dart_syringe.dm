@@ -79,3 +79,10 @@
 
 	target.visible_message("<span class='danger'>\The [src] fails to land on target!</span>")
 	return TRUE
+
+//Chemlight was here, adding dumb bussing things
+
+/obj/item/projectile/bullet/dart/syringe/debug
+	name = "syringe"
+	icon_state = "syringeproj"
+	damage = 0
