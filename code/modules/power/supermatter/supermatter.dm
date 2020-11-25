@@ -66,6 +66,9 @@
 
 #define SUPERMATTER_COUNTDOWN_TIME 30 SECONDS
 
+#define DEFAULT_ZAP_STATE "sm_arc"
+#define MESA_ZAP_STATE "sm_arc_mesa" //You know what this is
+
 GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 /obj/machinery/power/supermatter_crystal
@@ -284,12 +287,18 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			SEND_SOUND(M, 'sound/magic/charge.ogg')
 			to_chat(M, "<span class='boldannounce'>You feel reality distort for a moment...</span>")
 			SEND_SIGNAL(M, COMSIG_ADD_MOOD_EVENT, "delam", /datum/mood_event/delam)
-	if(combined_gas > MOLE_PENALTY_THRESHOLD)
+	if(QDELETED(src))//If something fucks up we just end it.
+		return
+	if(combined_gas > MOLE_PENALTY_THRESHOLD && power > CRITICAL_POWER_PENALTY_THRESHOLD)
+		investigate_log("has collapsed into a resonance cascade.", INVESTIGATE_SUPERMATTER)
+		var/datum/round_event_control/portal_storm_mesa/cascade = new()
+		cascade.runEvent()
+	else if(combined_gas > MOLE_PENALTY_THRESHOLD)
 		investigate_log("has collapsed into a singularity.", INVESTIGATE_SUPERMATTER)
-		if(T)
-			var/obj/singularity/S = new(T)
-			S.energy = 800
-			S.consume(src)
+		var/obj/singularity/S = new(T)
+		S.energy = 800
+		S.consume(src)
+		return //No boom for me sir
 	else
 		investigate_log("has exploded.", INVESTIGATE_SUPERMATTER)
 		explosion(get_turf(T), explosion_power * max(gasmix_power_ratio, 0.205) * 0.5 , explosion_power * max(gasmix_power_ratio, 0.205) + 2, explosion_power * max(gasmix_power_ratio, 0.205) + 4 , explosion_power * max(gasmix_power_ratio, 0.205) + 6, 1, 1)
@@ -460,7 +469,11 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			if(power > SEVERE_POWER_PENALTY_THRESHOLD)
 				supermatter_zap(src, 5, min(power*2, 20000))
 				if(power > CRITICAL_POWER_PENALTY_THRESHOLD)
-					supermatter_zap(src, 5, min(power*2, 20000))
+					if(combined_gas >= MOLE_PENALTY_THRESHOLD)
+						playsound(src.loc, 'hyperstation/sound/halflife/beamstart5.ogg', 100, 1, extrarange = 10)
+						supermatter_zap(src, 5, min(power*2, 20000), MESA_ZAP_STATE)
+					else
+						supermatter_zap(src, 5, min(power*2, 20000))
 		else if (damage > damage_penalty_point && prob(20))
 			playsound(src.loc, 'sound/weapons/emitter2.ogg', 100, 1, extrarange = 10)
 			supermatter_zap(src, 5, CLAMP(power*2, 4000, 20000))
@@ -500,6 +513,8 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 
 			if(combined_gas > MOLE_PENALTY_THRESHOLD)
 				radio.talk_into(src, "Warning: Critical coolant mass reached.", engineering_channel)
+				if(power > CRITICAL_POWER_PENALTY_THRESHOLD)
+					radio.talk_into(src, "Warning: Anti-mass spectrometer showing a five percent gain.", engineering_channel)
 
 		if(damage > explosion_point)
 			countdown()
@@ -775,7 +790,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 			if(PYRO_ANOMALY)
 				new /obj/effect/anomaly/pyro(L, 200)
 
-/obj/machinery/power/supermatter_crystal/proc/supermatter_zap(atom/zapstart, range = 3, power)
+/obj/machinery/power/supermatter_crystal/proc/supermatter_zap(atom/zapstart, range = 3, power, zap_state = DEFAULT_ZAP_STATE)
 	. = zapstart.dir
 	if(power < 1000)
 		return
@@ -816,7 +831,7 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 				target_atom = A
 
 	if(target_atom)
-		zapstart.Beam(target_atom, icon_state="nzcrentrs_power", time=5)
+		zapstart.Beam(target_atom, icon_state=zap_state, time=5)
 		var/zapdir = get_dir(zapstart, target_atom)
 		if(zapdir)
 			. = zapdir
