@@ -4,7 +4,6 @@
 	icon_state = "hev"
 	item_state = "hev"
 	item_color = "rd"
-	mutantrace_variation = NO_MUTANTRACE_VARIATION
 	resistance_flags = ACID_PROOF | FIRE_PROOF
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	armor = list("melee" = 30, "bullet" = 10, "laser" = 10, "energy" = 5, "bomb" = 80, "bio" = 100, "rad" = 100, "fire" = 60, "acid" = 60)
@@ -13,7 +12,7 @@
 
 /obj/item/clothing/suit/space/hardsuit/rd/hev
 	name = "HEV Suit"
-	desc = "A Hazardous Environment suit, often called the Hazard suit. It was designed to protect scientists from the blunt trauma, radiation, energy discharge that hazardous materials might produce or entail. Fits you like a glove. The automatic medical system seems broken... They're waiting for you, Gordon. In the test chamberrrrrr."
+	desc = "The hazard suit. It was designed to protect scientists from the blunt trauma, radiation, energy discharge that hazardous materials might produce or entail. Fits you like a glove. The automatic medical system seems broken... They're waiting for you, Gordon. In the test chamberrrrrr."
 	icon_state = "hev"
 	item_state = "hev"
 	resistance_flags = ACID_PROOF | FIRE_PROOF
