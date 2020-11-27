@@ -709,10 +709,10 @@ RLD
 	ammo_sections = 5
 	has_ammobar = TRUE
 
-	var/wallcost = 25
-	var/floorcost = 30
-	var/launchcost = 20
-	var/deconcost = 25
+	var/wallcost = 20
+	var/floorcost = 20
+	var/launchcost = 30
+	var/deconcost = 10
 
 	var/walldelay = 10
 	var/floordelay = 10
