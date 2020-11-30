@@ -199,9 +199,12 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		var/admin_number_present = send2irc_adminless_only(initiator_ckey, "Ticket #[id]: [name]")
 		log_admin_private("Ticket #[id]: [key_name(initiator)]: [name] - heard by [admin_number_present] non-AFK admins who have +BAN.")
 		if(admin_number_present <= 0)
-			to_chat(C, "<span class='notice'>No active admins are online, your adminhelp was sent to the admin irc.</span>")
+			to_chat(C, "<span class='notice'>No active admins are online, your adminhelp was sent to the Discord.</span>")
+			//hyper change, because we have our own bot, the notification has to be loaded into a file, for the bot to read.
+			fdel("Hyperbot/ahelp.txt")
+			var botmsg = "**[initiator_key_name]** *([GLOB.round_id])*```[msg]```"
+			text2file(botmsg,"Hyperbot/ahelp.txt")
 			heard_by_no_admins = TRUE
-
 	GLOB.ahelp_tickets.active_tickets += src
 
 /datum/admin_help/Destroy()
@@ -216,10 +219,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		send2irc(initiator_ckey, "Ticket #[id]: Answered by [key_name(usr)]")
 	_interactions += "[TIME_STAMP("hh:mm:ss", FALSE)]: [formatted_message]"
 
-//Removes the ahelp verb and returns it after 2 minutes
+//Removes the ahelp verb and returns it after 30 seconds
 /datum/admin_help/proc/TimeoutVerb()
 	initiator.verbs -= /client/verb/adminhelp
-	initiator.adminhelptimerid = addtimer(CALLBACK(initiator, /client/proc/giveadminhelpverb), 1200, TIMER_STOPPABLE) //2 minute cooldown of admin helps
+	initiator.adminhelptimerid = addtimer(CALLBACK(initiator, /client/proc/giveadminhelpverb), 300, TIMER_STOPPABLE) //30 seconds cooldown of admin helps
 
 //private
 /datum/admin_help/proc/FullMonty(ref_src)
@@ -353,9 +356,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 		SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
 
-		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>")
-		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b> The adminhelp verb has been returned to you so that you may try again.</font>")
-		to_chat(initiator, "Please try to be calm, clear, and descriptive in admin helps, do not assume the admin has seen any related events, and clearly state the names of anybody you are reporting.")
+		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp declined! -</b></font>")
+		to_chat(initiator, "<font color='red'><b>Your admin help was declined.</b> The adminhelp verb has been returned to you so that you may try again later.</font>")
+		to_chat(initiator, "For whatever reason your ahelp has been declined. Remember to try to be calm, clear, and descriptive in admin helps and use the MentorHelp verb if you require help with in-game mechanics.")
 
 	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "rejected")
 	var/msg = "Ticket [TicketHref("#[id]")] rejected by [key_name]"
