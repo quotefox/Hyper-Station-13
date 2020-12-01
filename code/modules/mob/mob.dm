@@ -1,3 +1,5 @@
+
+
 /mob/Destroy()//This makes sure that mobs with clients/keys are not just deleted from the game.
 	GLOB.mob_list -= src
 	GLOB.dead_mob_list -= src
@@ -312,11 +314,13 @@
 		return
 
 	if(is_blind(src))
-		to_chat(src, "<span class='notice'>Something is there but you can't see it.</span>")
+		to_chat(src, "<span class='warning'>Something is there but you can't see it!</span>")
 		return
 
 	face_atom(A)
-	A.examine(src)
+	var/list/result = A.examine(src)
+	to_chat(src, result.Join("\n"))
+	SEND_SIGNAL(src, COMSIG_MOB_EXAMINATE, A)
 
 //same as above
 //note: ghosts can point, this is intended
@@ -421,9 +425,17 @@
 		to_chat(usr, "<span class='boldnotice'>You must be dead to use this!</span>")
 		return
 
-	log_game("[key_name(usr)] used abandon mob.")
+	if(usr.client.lastrespawn >= world.time)
+		to_chat(usr, "<span class='warning'>You must wait [DisplayTimeText(usr.client.lastrespawn - world.time)] before respawning!</span>")
+		return
 
-	to_chat(usr, "<span class='boldnotice'>Please roleplay correctly!</span>")
+	//if they didnt join as a observer, add their name to the past character list so they cannot play them again.
+
+	if(!usr.client.respawn_observing)
+		var/responserespawn = alert(src,"If you respawn now, you cannot rejoin the game as your current character! Are you sure you want to respawn?","Warning","Yes","No")
+		if(responserespawn != "Yes")
+			return
+		usr.client.pastcharacters += usr.real_name
 
 	if(!client)
 		log_game("[key_name(usr)] AM failed due to disconnect.")
@@ -440,11 +452,30 @@
 		qdel(M)
 		return
 
+	to_chat(usr, "<span class='boldnotice'>Please roleplay correctly, do not meta-game, and use information from a different character or characters, to influence your actions!</span>")
+	usr.client.lastrespawn = world.time + 1800 SECONDS
+	usr.client.respawn_observing = 0
+
+	message_admins("[client.ckey] respawned.")
 	M.key = key
 //	M.Login()	//wat
 	return
 
-
+/mob/proc/transfer_ckey(mob/new_mob, send_signal = TRUE)
+	if(!new_mob || (!ckey && new_mob.ckey))
+		CRASH("transfer_ckey() called [new_mob ? "on ckey-less mob with a player mob as target" : "without a valid mob target"]!")
+	if(!ckey)
+		return
+	SEND_SIGNAL(new_mob, COMSIG_MOB_PRE_PLAYER_CHANGE, new_mob, src)
+	if (client && client.prefs && client.prefs.auto_ooc)
+		if (client.prefs.chat_toggles & CHAT_OOC && isliving(new_mob))
+			client.prefs.chat_toggles ^= CHAT_OOC
+		if (!(client.prefs.chat_toggles & CHAT_OOC) && isdead(new_mob))
+			client.prefs.chat_toggles ^= CHAT_OOC
+	new_mob.ckey = ckey
+	if(send_signal)
+		SEND_SIGNAL(src, COMSIG_MOB_KEY_CHANGE, new_mob, src)
+	return TRUE
 
 /mob/verb/cancel_camera()
 	set name = "Cancel Camera View"
@@ -529,25 +560,29 @@
 /mob/proc/is_muzzled()
 	return 0
 
+
 /mob/Stat()
 	..()
-
+	//This is where I try and add a temporary solution to the issue of the status tab. This solution is bad and I should feel bad, but it should mitigate some of the client lag.
 	if(statpanel("Status"))
-		if (client)
-			stat(null, "Ping: [round(client.lastping, 1)]ms (Average: [round(client.avgping, 1)]ms)")
-		stat(null, "Map: [SSmapping.config?.map_name || "Loading..."]")
-		var/datum/map_config/cached = SSmapping.next_map_config
-		if(cached)
-			stat(null, "Next Map: [cached.map_name]")
-		stat(null, "Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]")
-		stat(null, "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]")
-		stat(null, "Round Time: [WORLDTIME2TEXT("hh:mm:ss")]")
-		stat(null, "Station Time: [STATION_TIME_TIMESTAMP("hh:mm:ss")]")
-		stat(null, "Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)")
-		if(SSshuttle.emergency)
-			var/ETA = SSshuttle.emergency.getModeStr()
-			if(ETA)
-				stat(null, "[ETA] [SSshuttle.emergency.getTimerStr()]")
+		if(tickrefresh == 0)
+			sList = list()
+			if (client)
+				sList += "Ping: [round(client.lastping, 1)]ms (Average: [round(client.avgping, 1)]ms)"
+				sList += "Time Dilation: [round(SStime_track.time_dilation_current,1)]%"
+			sList += "Map: [SSmapping.config?.map_name || "Loading..."]"
+			sList += "Round ID: [GLOB.round_id || "NULL"]"
+			sList += "Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")]"
+			sList += "Round Time: [DisplayTimeText(world.time - SSticker.round_start_time, 1)]"
+			sList += "Station Time: [STATION_TIME_TIMESTAMP("hh:mm:ss")]"
+			sList += SSshuttle.emergency_shuttle_stat_text
+			tickrefresh++
+		else if(tickrefresh >= tickrefreshThr)
+			tickrefresh = 0
+		else
+			tickrefresh++
+		if (sList != null)
+			stat(null, "[sList.Join("\n\n")]")
 
 	if(client && client.holder)
 		if(statpanel("MC"))
@@ -795,6 +830,9 @@
 /mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dextery=FALSE, no_tk=FALSE)
 	return
 
+/mob/proc/canUseStorage()
+	return FALSE
+
 /mob/proc/faction_check_mob(mob/target, exact_match)
 	if(exact_match) //if we need an exact match, we need to do some bullfuckery.
 		var/list/faction_src = faction.Copy()
@@ -903,10 +941,6 @@
 
 /mob/proc/can_hold_items()
 	return FALSE
-
-/mob/proc/get_idcard()
-	return
-
 
 /mob/vv_get_dropdown()
 	. = ..()

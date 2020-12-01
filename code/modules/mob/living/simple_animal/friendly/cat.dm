@@ -31,14 +31,19 @@
 	var/mob/living/simple_animal/mouse/movement_target
 	gold_core_spawnable = FRIENDLY_SPAWN
 	collar_type = "cat"
-	can_be_held = "cat2"
 	size_multiplier = 0.5
 
+	var/held_icon = "cat2"
 	do_footstep = TRUE
 
 /mob/living/simple_animal/pet/cat/Initialize()
 	. = ..()
 	verbs += /mob/living/proc/lay_down
+
+/mob/living/simple_animal/pet/cat/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/wuv, "purrs!", EMOTE_AUDIBLE, /datum/mood_event/pet_animal, "hisses!", EMOTE_AUDIBLE)
+	AddElement(/datum/element/mob_holder, held_icon)
 
 /mob/living/simple_animal/pet/cat/update_canmove()
 	..()
@@ -58,6 +63,7 @@
 	icon_state = "spacecat"
 	icon_living = "spacecat"
 	icon_dead = "spacecat_dead"
+	held_icon = "spacecat"
 	unsuitable_atmos_damage = 0
 	minbodytemp = TCMB
 	maxbodytemp = T0C + 40
@@ -69,6 +75,7 @@
 	icon_state = "original"
 	icon_living = "original"
 	icon_dead = "original_dead"
+	held_icon = "original"
 	collar_type = null
 	unique_pet = TRUE
 
@@ -82,7 +89,7 @@
 	pass_flags = PASSMOB
 	mob_size = MOB_SIZE_SMALL
 	collar_type = "kitten"
-	can_be_held = "cat"
+	held_icon = "cat"
 
 //RUNTIME IS ALIVE! SQUEEEEEEEE~
 /mob/living/simple_animal/pet/cat/Runtime
@@ -97,16 +104,16 @@
 	var/list/family = list()//var restored from savefile, has count of each child type
 	var/list/children = list()//Actual mob instances of children
 	var/cats_deployed = 0
-	var/memory_saved = FALSE
+	//var/memory_saved = FALSE
 
 /mob/living/simple_animal/pet/cat/Runtime/Initialize()
 	if(prob(5))
 		icon_state = "original"
 		icon_living = "original"
 		icon_dead = "original_dead"
-	Read_Memory()
+	//Read_Memory()
 	. = ..()
-
+/*
 /mob/living/simple_animal/pet/cat/Runtime/Life()
 	if(!cats_deployed && SSticker.current_state >= GAME_STATE_SETTING_UP)
 		Deploy_The_Cats()
@@ -114,18 +121,18 @@
 		Write_Memory()
 		memory_saved = TRUE
 	..()
-
+*/
 /mob/living/simple_animal/pet/cat/Runtime/make_babies()
 	var/mob/baby = ..()
 	if(baby)
 		children += baby
 		return baby
-
+/*
 /mob/living/simple_animal/pet/cat/Runtime/death()
 	if(!memory_saved)
 		Write_Memory(TRUE)
 	..()
-
+*/
 /mob/living/simple_animal/pet/cat/Runtime/proc/Read_Memory()
 	if(fexists("data/npc_saves/Runtime.sav")) //legacy compatability to convert old format to new
 		var/savefile/S = new /savefile("data/npc_saves/Runtime.sav")
@@ -139,7 +146,8 @@
 		family = json["family"]
 	if(isnull(family))
 		family = list()
-
+//All you people can't fucking control yourselves and keep letting runtime breed his own children, so it's time to at -LEAST- take the function that saves cats for the next round out the back and shoot it with a 12 gauge
+/*
 /mob/living/simple_animal/pet/cat/Runtime/proc/Write_Memory(dead)
 	var/json_file = file("data/npc_saves/Runtime.json")
 	var/list/file_data = list()
@@ -162,6 +170,7 @@
 		if(family[cat_type] > 0)
 			for(var/i in 1 to min(family[cat_type],100)) //Limits to about 500 cats, you wouldn't think this would be needed (BUT IT IS)
 				new cat_type(loc)
+*/
 
 /mob/living/simple_animal/pet/cat/Proc
 	name = "Proc"
@@ -231,24 +240,6 @@
 				stop_automated_movement = 1
 				walk_to(src,movement_target,0,3)
 
-/mob/living/simple_animal/pet/cat/attack_hand(mob/living/carbon/human/M)
-	. = ..()
-	switch(M.a_intent)
-		if("help")
-			wuv(1, M)
-		if("harm")
-			wuv(-1, M)
-
-/mob/living/simple_animal/pet/cat/proc/wuv(change, mob/M)
-	if(change)
-		if(change > 0)
-			if(M && stat != DEAD)
-				new /obj/effect/temp_visual/heart(loc)
-				emote("me", 1, "purrs!")
-		else
-			if(M && stat != DEAD)
-				emote("me", 1, "hisses!")
-
 /mob/living/simple_animal/pet/cat/cak //I told you I'd do it, Remie
 	name = "Keeki"
 	desc = "It's a cat made out of cake."
@@ -265,7 +256,7 @@
 	attacked_sound = 'sound/items/eatfood.ogg'
 	deathmessage = "loses its false life and collapses!"
 	death_sound = "bodyfall"
-	can_be_held = "cak"
+	held_icon = "cak"
 
 /mob/living/simple_animal/pet/cat/cak/CheckParts(list/parts)
 	..()
@@ -288,11 +279,13 @@
 	if(health < maxHealth)
 		adjustBruteLoss(-8) //Fast life regen
 	for(var/obj/item/reagent_containers/food/snacks/donut/D in range(1, src)) //Frosts nearby donuts!
-		if(!D.is_frosted)
-			D.frost_donut()
+		if(!D.is_decorated)
+			D.decorate_donut()
 
 /mob/living/simple_animal/pet/cat/cak/attack_hand(mob/living/L)
-	..()
+	. = ..()
+	if(.) //the attack was blocked
+		return
 	if(L.a_intent == INTENT_HARM && L.reagents && !stat)
 		L.reagents.add_reagent("nutriment", 0.4)
 		L.reagents.add_reagent("vitamin", 0.4)

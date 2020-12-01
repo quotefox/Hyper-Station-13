@@ -422,7 +422,7 @@ GENE SCANNER
 					msg += "<span class='danger'>Subject is bleeding!</span>\n"
 			var/blood_percent =  round((C.blood_volume / (BLOOD_VOLUME_NORMAL * C.blood_ratio))*100)
 			var/blood_type = C.dna.blood_type
-			if(blood_id != "blood")//special blood substance
+			if(blood_id != ("blood" || "jellyblood"))//special blood substance
 				var/datum/reagent/R = GLOB.chemical_reagents_list[blood_id]
 				if(R)
 					blood_type = R.name
@@ -533,7 +533,7 @@ GENE SCANNER
 
 /obj/item/analyzer/examine(mob/user)
 	. = ..()
-	to_chat(user, "<span class='notice'>Alt-click [src] to activate the barometer function.</span>")
+	. += "<span class='notice'>Alt-click [src] to activate the barometer function.</span>"
 
 /obj/item/analyzer/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] begins to analyze [user.p_them()]self with [src]! The display shows that [user.p_theyre()] dead!</span>")

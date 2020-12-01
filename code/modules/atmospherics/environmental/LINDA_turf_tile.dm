@@ -42,8 +42,7 @@
 
 /turf/open/Destroy()
 	if(active_hotspot)
-		qdel(active_hotspot)
-		active_hotspot = null
+		QDEL_NULL(active_hotspot)
 	// Adds the adjacent turfs to the current atmos processing
 	for(var/T in atmos_adjacent_turfs)
 		SSair.add_to_active(T)
@@ -266,12 +265,13 @@
 /atom/movable/proc/experience_pressure_difference(pressure_difference, direction, pressure_resistance_prob_delta = 0)
 	var/const/PROBABILITY_OFFSET = 25
 	var/const/PROBABILITY_BASE_PRECENT = 75
+	var/max_force = sqrt(pressure_difference)*(MOVE_FORCE_DEFAULT / 5)
 	set waitfor = 0
 	var/move_prob = 100
 	if (pressure_resistance > 0)
 		move_prob = (pressure_difference/pressure_resistance*PROBABILITY_BASE_PRECENT)-PROBABILITY_OFFSET
 	move_prob += pressure_resistance_prob_delta
-	if (move_prob > PROBABILITY_OFFSET && prob(move_prob))
+	if (move_prob > PROBABILITY_OFFSET && prob(move_prob) && (move_resist != INFINITY) && (!anchored && (max_force >= (move_resist * MOVE_FORCE_PUSH_RATIO))) || (anchored && (max_force >= (move_resist * MOVE_FORCE_FORCEPUSH_RATIO))))
 		step(src, direction)
 		last_high_pressure_movement_air_cycle = SSair.times_fired
 
@@ -387,8 +387,6 @@
 	if(blocks_air)
 		..()
 		return
-
-	
 	for (var/atom/movable/G in src)
 		if (G.blocksTemperature())
 			return
@@ -410,10 +408,8 @@
 
 				if(!neighbor.thermal_conductivity)
 					continue
-
 				if(neighbor.archived_cycle < SSair.times_fired)
 					neighbor.archive()
-
 				neighbor.neighbor_conduct_with_src(src)
 
 				neighbor.consider_superconductivity()

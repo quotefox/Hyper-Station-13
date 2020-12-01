@@ -62,6 +62,16 @@
 	desc = "A pair of orange rubber boots, designed to prevent slipping on wet surfaces while also drying them."
 	icon_state = "galoshes_dry"
 
+/obj/item/clothing/shoes/sneakers/noslip
+	desc = "A pair of black shoes, they have the soles of galoshes making them unable to be slipped on a wet surface."
+	name = "black shoes"
+	icon_state = "black"
+	permeability_coefficient = 0.30
+	clothing_flags = NOSLIP
+	strip_delay = 50
+	equip_delay_other = 50
+	resistance_flags = NONE
+
 /obj/item/clothing/shoes/galoshes/dry/step_action()
 	var/turf/open/t_loc = get_turf(src)
 	SEND_SIGNAL(t_loc, COMSIG_TURF_MAKE_DRY, TURF_WET_WATER, TRUE, INFINITY)
@@ -108,6 +118,26 @@
 	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
 
+/obj/item/clothing/shoes/jackboots/toeless
+	name = "toe-less jackboots"
+	desc = "Modified pair of jackboots, particularly friendly to those species whose toes hold claws."
+	icon_state = "jackboots-toeless"
+	item_state = "jackboots-toeless"
+	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
+	item_color = "hosred"
+	strip_delay = 50
+	equip_delay_other = 50
+	resistance_flags = NONE
+	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
+
+/obj/item/clothing/shoes/jackboots/tall
+	name = "tall jackboots"
+	desc = "A pair of knee-high jackboots, complete with heels. All style, all the time."
+	icon_state = "jackboots-tall"
+	item_state = "jackboots-tall"
+
 /obj/item/clothing/shoes/jackboots/fast
 	slowdown = -1
 
@@ -127,7 +157,19 @@
 	name = "work boots"
 	desc = "Nanotrasen-issue Engineering lace-up work boots for the especially blue-collar."
 	icon_state = "workboots"
-	item_state = "jackboots"
+	item_state = "workboots"
+	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
+	permeability_coefficient = 0.15
+	strip_delay = 40
+	equip_delay_other = 40
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
+
+/obj/item/clothing/shoes/workboots/toeless
+	name = "toe-less workboots"
+	desc = "A pair of toeless work boots designed for use in industrial settings. Modified for species whose toes have claws."
+	icon_state = "workboots-toeless"
+	item_state = "workboots-toeless"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	permeability_coefficient = 0.15

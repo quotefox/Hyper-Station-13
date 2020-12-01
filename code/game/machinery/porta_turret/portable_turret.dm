@@ -369,7 +369,7 @@
 		if(check_anomalies)//if it's set to check for simple animals
 			if(isanimal(A))
 				var/mob/living/simple_animal/SA = A
-				if(SA.stat || in_faction(SA)) //don't target if dead or in faction
+				if(SA.stat || in_faction(SA) || istype(SA, /mob/living/simple_animal/hostile/megafauna)) //don't target if dead or in faction
 					continue
 				targets += SA
 			if(issilicon(A))
@@ -815,10 +815,10 @@
 		T.cp = src
 
 /obj/machinery/turretid/examine(mob/user)
-	..()
+	. = ..()
 	if(issilicon(user) && (!stat & BROKEN))
-		to_chat(user, "<span class='notice'>Ctrl-click [src] to [ enabled ? "disable" : "enable"] turrets.</span>")
-		to_chat(user, "<span class='notice'>Alt-click [src] to set turrets to [ lethal ? "stun" : "kill"].</span>")
+		. += "<span class='notice'>Ctrl-click [src] to [ enabled ? "disable" : "enable"] turrets.</span>"
+		. += "<span class='notice'>Alt-click [src] to set turrets to [ lethal ? "stun" : "kill"].</span>"
 
 /obj/machinery/turretid/attackby(obj/item/I, mob/user, params)
 	if(stat & BROKEN)

@@ -560,7 +560,9 @@
 		var/turf/T = get_turf(target)
 		if(istype(target, /obj/item/stack/sheet/metal))
 			var/obj/item/stack/sheet/candidate = target
-			if(candidate.use(50))
+			if(!iscultist(user, TRUE))
+				to_chat(user, "<span class='warning'>You are not strongly connected enough to Nar'sie to use make constructs...</span>")
+			else if(candidate.use(50))
 				uses--
 				to_chat(user, "<span class='warning'>A dark cloud emanates from your hand and swirls around the metal, twisting it into a construct shell!</span>")
 				new /obj/structure/constructshell(T)
@@ -577,7 +579,9 @@
 				SEND_SOUND(user, sound('sound/effects/magic.ogg',0,1,25))
 		else if(istype(target,/mob/living/silicon/robot))
 			var/mob/living/silicon/robot/candidate = target
-			if(candidate.mmi)
+			if(!iscultist(user, TRUE))
+				to_chat(user, "<span class='warning'>You are not strongly connected enough to Nar'sie to use make constructs...</span>")
+			else if(candidate.mmi)
 				user.visible_message("<span class='danger'>A dark cloud emanates from [user]'s hand and swirls around [candidate]!</span>")
 				playsound(T, 'sound/machines/airlock_alien_prying.ogg', 80, 1)
 				var/prev_color = candidate.color
@@ -647,7 +651,7 @@
 /obj/item/melee/blood_magic/manipulator/examine(mob/user)
 	. = ..()
 	if(iscultist(user))
-		to_chat(user, "<span class='cultitalic'>The [name] currently has <b>[uses]</b> blood charges left.</span>")
+		. += "<span class='cultitalic'>The [name] currently has <b>[uses]</b> blood charges left.</span>"
 
 /obj/item/melee/blood_magic/manipulator/afterattack(atom/target, mob/living/carbon/human/user, proximity)
 	if(proximity)
@@ -737,7 +741,7 @@
 	var/turf/T = get_turf(target)
 	if(T)
 		for(var/obj/effect/decal/cleanable/blood/B in view(T, 2))
-			if(B.blood_state == "blood")
+			if(B.blood_state == BLOOD_STATE_BLOOD)
 				if(B.bloodiness == 100) //Bonus for "pristine" bloodpools, also to prevent cheese with footprint spam
 					temp += 30
 				else
@@ -793,7 +797,7 @@
 					else
 						to_chat(user, "<span class='cultitalic'>You need a free hand for this rite!</span>")
 						qdel(rite)
-			if("Blood Beam (500)")
+			if("Blood Beam (500)") //This spell is honestly a bit useless. Why would anyone limit it?
 				if(uses < 500)
 					to_chat(user, "<span class='cultitalic'>You need 500 charges to perform this rite.</span>")
 				else

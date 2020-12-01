@@ -315,9 +315,10 @@
 /mob/proc/ShiftClickOn(atom/A)
 	A.ShiftClick(src)
 	return
+
 /atom/proc/ShiftClick(mob/user)
-	SEND_SIGNAL(src, COMSIG_CLICK_SHIFT, user)
-	if(user.client && user.client.eye == user || user.client.eye == user.loc)
+	var/flags = SEND_SIGNAL(src, COMSIG_CLICK_SHIFT, user)
+	if(!(flags & COMPONENT_DENY_EXAMINATE) && user.client && (user.client.eye == user || user.client.eye == user.loc || flags & COMPONENT_ALLOW_EXAMINATE))
 		user.examinate(src)
 	return
 
@@ -407,7 +408,7 @@
 /mob/living/LaserEyes(atom/A, params)
 	changeNext_move(CLICK_CD_RANGE)
 
-	var/obj/item/projectile/beam/LE = new /obj/item/projectile/beam( loc )
+	var/obj/item/projectile/beam/LE = new /obj/item/projectile/beam(loc)
 	LE.icon = 'icons/effects/genetics.dmi'
 	LE.icon_state = "eyelasers"
 	playsound(usr.loc, 'sound/weapons/taser2.ogg', 75, 1)

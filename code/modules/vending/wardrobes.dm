@@ -21,7 +21,15 @@
 					/obj/item/clothing/under/pants/khaki = 5)
 	premium = list(/obj/item/clothing/under/rank/security/navyblue = 5,
 					/obj/item/clothing/suit/security/officer = 5,
-					/obj/item/clothing/head/beret/sec/navyofficer = 5)
+					/obj/item/clothing/head/beret/sec/navyofficer = 5,
+					/obj/item/clothing/under/rank/security/pink = 5,
+					/obj/item/clothing/suit/hooded/wintercoat/security/pink = 5,
+					/obj/item/clothing/under/rank/security/skirt/slut = 5,
+					/obj/item/clothing/under/rank/security/skirt/slut/pink = 5,
+					/obj/item/clothing/under/rank/security/stripper = 5,
+					/obj/item/clothing/shoes/jackboots/tall = 5,
+					/obj/item/clothing/head/beret/sec/bitch = 5,
+					/obj/item/clothing/gloves/latexsleeves/security = 5)
 	refill_canister = /obj/item/vending_refill/wardrobe/sec_wardrobe
 
 /obj/item/vending_refill/wardrobe/sec_wardrobe
@@ -44,10 +52,13 @@
 					/obj/item/clothing/under/rank/medical/blue = 2,
 					/obj/item/clothing/under/rank/medical/green = 2,
 					/obj/item/clothing/under/rank/medical/purple = 2,
+					/obj/item/clothing/under/rank/medical/emt = 5,
+					/obj/item/clothing/under/rank/medical/emt/skirt = 5,
 					/obj/item/clothing/under/rank/medical = 5,
 					/obj/item/clothing/suit/toggle/labcoat = 5,
 					/obj/item/clothing/suit/toggle/labcoat/emt = 5,
 					/obj/item/clothing/shoes/sneakers/white = 5,
+					/obj/item/clothing/shoes/sneakers/blue = 5,
 					/obj/item/clothing/head/soft/emt = 5,
 					/obj/item/clothing/suit/apron/surgical = 3,
 					/obj/item/clothing/mask/surgical = 5)

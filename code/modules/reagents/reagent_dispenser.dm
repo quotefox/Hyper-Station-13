@@ -39,6 +39,10 @@
 	else
 		qdel(src)
 
+///////////////
+//Water Tanks//
+///////////////
+
 /obj/structure/reagent_dispensers/watertank
 	name = "water tank"
 	desc = "A water tank."
@@ -56,81 +60,6 @@
 	icon_state = "foam"
 	reagent_id = "firefighting_foam"
 	tank_volume = 500
-
-/obj/structure/reagent_dispensers/fueltank
-	name = "fuel tank"
-	desc = "A tank full of industrial welding fuel. Do not consume."
-	icon_state = "fuel"
-	reagent_id = "welding_fuel"
-
-/obj/structure/reagent_dispensers/fueltank/boom()
-	explosion(get_turf(src), 0, 1, 5, flame_range = 5)
-	qdel(src)
-
-/obj/structure/reagent_dispensers/fueltank/blob_act(obj/structure/blob/B)
-	boom()
-
-/obj/structure/reagent_dispensers/fueltank/ex_act()
-	boom()
-
-/obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
-	boom()
-
-/obj/structure/reagent_dispensers/fueltank/tesla_act()
-	..() //extend the zap
-	boom()
-
-/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/item/projectile/P)
-	..()
-	if(!QDELETED(src)) //wasn't deleted by the projectile's effects.
-		if(!P.nodamage && ((P.damage_type == BURN) || (P.damage_type == BRUTE)))
-			var/boom_message = "[ADMIN_LOOKUPFLW(P.firer)] triggered a fueltank explosion via projectile."
-			GLOB.bombers += boom_message
-			message_admins(boom_message)
-			P.firer.log_message("triggered a fueltank explosion via projectile.", LOG_ATTACK)
-			boom()
-
-/obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
-	if(istype(I, /obj/item/weldingtool))
-		if(!reagents.has_reagent("welding_fuel"))
-			to_chat(user, "<span class='warning'>[src] is out of fuel!</span>")
-			return
-		var/obj/item/weldingtool/W = I
-		if(!W.welding)
-			if(W.reagents.has_reagent("welding_fuel", W.max_fuel))
-				to_chat(user, "<span class='warning'>Your [W.name] is already full!</span>")
-				return
-			reagents.trans_to(W, W.max_fuel)
-			user.visible_message("<span class='notice'>[user] refills [user.p_their()] [W.name].</span>", "<span class='notice'>You refill [W].</span>")
-			playsound(src, 'sound/effects/refill.ogg', 50, 1)
-			W.update_icon()
-		else
-			var/turf/T = get_turf(src)
-			user.visible_message("<span class='warning'>[user] catastrophically fails at refilling [user.p_their()] [W.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
-
-			var/message_admins = "[ADMIN_LOOKUPFLW(user)] triggered a fueltank explosion via welding tool at [ADMIN_VERBOSEJMP(T)]."
-			GLOB.bombers += message_admins
-			message_admins(message_admins)
-
-			user.log_message("triggered a fueltank explosion via welding tool.", LOG_ATTACK)
-			boom()
-		return
-	return ..()
-
-
-/obj/structure/reagent_dispensers/peppertank
-	name = "pepper spray refiller"
-	desc = "Contains condensed capsaicin for use in law \"enforcement.\""
-	icon_state = "pepper"
-	anchored = TRUE
-	density = FALSE
-	reagent_id = "condensedcapsaicin"
-
-/obj/structure/reagent_dispensers/peppertank/Initialize()
-	. = ..()
-	if(prob(1))
-		desc = "IT'S PEPPER TIME, BITCH!"
-
 
 /obj/structure/reagent_dispensers/water_cooler
 	name = "liquid cooler"
@@ -162,6 +91,112 @@
 	user.put_in_hands(S)
 	paper_cups--
 
+//////////////
+//Fuel Tanks//
+//////////////
+
+/obj/structure/reagent_dispensers/fueltank
+	name = "fuel tank"
+	desc = "A tank full of industrial welding fuel. Do not consume."
+	icon_state = "fuel"
+	reagent_id = "welding_fuel"
+
+/obj/structure/reagent_dispensers/fueltank/high //Unused - Good for ghost roles
+	name = "high-capacity fuel tank"
+	desc = "A now illegal tank, full of highly pressurized industrial welding fuel. Do not consume or have a open flame close to this tank."
+	icon_state = "fuel_high"
+	tank_volume = 3000
+
+/obj/structure/reagent_dispensers/fueltank/boom()
+	explosion(get_turf(src), 0, 1, 5, flame_range = 5)
+	qdel(src)
+
+/obj/structure/reagent_dispensers/fueltank/blob_act(obj/structure/blob/B)
+	boom()
+
+/obj/structure/reagent_dispensers/fueltank/ex_act()
+	boom()
+
+/obj/structure/reagent_dispensers/fueltank/fire_act(exposed_temperature, exposed_volume)
+	boom()
+
+/obj/structure/reagent_dispensers/fueltank/tesla_act()
+	..() //extend the zap
+	boom()
+
+/obj/structure/reagent_dispensers/fueltank/bullet_act(obj/item/projectile/P)
+	..()
+	if(!QDELETED(src)) //wasn't deleted by the projectile's effects.
+		if(!P.nodamage && ((P.damage_type == BURN) || (P.damage_type == BRUTE)))
+			var/boom_message = "[ADMIN_LOOKUPFLW(P.firer)] triggered a fueltank explosion via projectile."
+			GLOB.bombers += boom_message
+			message_admins(boom_message)
+			P.firer?.log_message("triggered a fueltank explosion via projectile.", LOG_ATTACK)
+			boom()
+
+/obj/structure/reagent_dispensers/fueltank/attackby(obj/item/I, mob/living/user, params)
+	if(istype(I, /obj/item/weldingtool))
+		if(!reagents.has_reagent("welding_fuel"))
+			to_chat(user, "<span class='warning'>[src] is out of fuel!</span>")
+			return
+		var/obj/item/weldingtool/W = I
+		if(!W.welding)
+			if(W.reagents.has_reagent("welding_fuel", W.max_fuel))
+				to_chat(user, "<span class='warning'>Your [W.name] is already full!</span>")
+				return
+			reagents.trans_to(W, W.max_fuel)
+			user.visible_message("<span class='notice'>[user] refills [user.p_their()] [W.name].</span>", "<span class='notice'>You refill [W].</span>")
+			playsound(src, 'sound/effects/refill.ogg', 50, 1)
+			W.update_icon()
+		else
+			var/turf/T = get_turf(src)
+			user.visible_message("<span class='warning'>[user] catastrophically fails at refilling [user.p_their()] [W.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
+
+			var/message_admins = "[ADMIN_LOOKUPFLW(user)] triggered a fueltank explosion via welding tool at [ADMIN_VERBOSEJMP(T)]."
+			GLOB.bombers += message_admins
+			message_admins(message_admins)
+
+			user.log_message("triggered a fueltank explosion via welding tool.", LOG_ATTACK)
+			boom()
+		return
+	return ..()
+
+///////////////////
+//Misc Dispenders//
+///////////////////
+
+/obj/structure/reagent_dispensers/peppertank
+	name = "pepper spray refiller"
+	desc = "Contains condensed capsaicin for use in law \"enforcement.\""
+	icon_state = "pepper"
+	anchored = TRUE
+	density = FALSE
+	reagent_id = "condensedcapsaicin"
+
+/obj/structure/reagent_dispensers/peppertank/Initialize()
+	. = ..()
+	if(prob(1))
+		desc = "IT'S PEPPER TIME, BITCH!"
+
+/obj/structure/reagent_dispensers/virusfood
+	name = "virus food dispenser"
+	desc = "A dispenser of low-potency virus mutagenic."
+	icon_state = "virus_food"
+	anchored = TRUE
+	density = FALSE
+	reagent_id = "virusfood"
+
+/obj/structure/reagent_dispensers/cooking_oil
+	name = "vat of cooking oil"
+	desc = "A huge metal vat with a tap on the front. Filled with cooking oil for use in frying food."
+	icon_state = "vat"
+	anchored = TRUE
+	reagent_id = "cooking_oil"
+
+////////
+//Kegs//
+////////
+
 /obj/structure/reagent_dispensers/beerkeg
 	name = "beer keg"
 	desc = "Beer is liquid bread, it's good for you..."
@@ -173,19 +208,47 @@
 	if(!QDELETED(src))
 		qdel(src)
 
+/obj/structure/reagent_dispensers/keg
+	name = "keg"
+	desc = "A keg."
+	icon = 'modular_citadel/icons/obj/objects.dmi'
+	icon_state = "keg"
+	reagent_id = "water"
 
-/obj/structure/reagent_dispensers/virusfood
-	name = "virus food dispenser"
-	desc = "A dispenser of low-potency virus mutagenic."
-	icon_state = "virus_food"
-	anchored = TRUE
-	density = FALSE
-	reagent_id = "virusfood"
+/obj/structure/reagent_dispensers/keg/mead
+	name = "keg of mead"
+	desc = "A keg of mead."
+	icon_state = "orangekeg"
+	reagent_id = "mead"
 
+/obj/structure/reagent_dispensers/keg/aphro
+	name = "keg of aphrodisiac"
+	desc = "A keg of aphrodisiac."
+	icon_state = "pinkkeg"
+	reagent_id = "aphro"
+	tank_volume = 150
 
-/obj/structure/reagent_dispensers/cooking_oil
-	name = "vat of cooking oil"
-	desc = "A huge metal vat with a tap on the front. Filled with cooking oil for use in frying food."
-	icon_state = "vat"
-	anchored = TRUE
-	reagent_id = "cooking_oil"
+/obj/structure/reagent_dispensers/keg/aphro/strong
+	name = "keg of strong aphrodisiac"
+	desc = "A keg of strong and addictive aphrodisiac."
+	reagent_id = "aphro+"
+	tank_volume = 120
+
+/obj/structure/reagent_dispensers/keg/milk
+	name = "keg of milk"
+	desc = "It's not quite what you were hoping for."
+	icon_state = "whitekeg"
+	reagent_id = "milk"
+
+/obj/structure/reagent_dispensers/keg/semen
+	name = "keg of semen"
+	desc = "Dear lord, where did this even come from?"
+	icon_state = "whitekeg"
+	reagent_id = "semen"
+
+/obj/structure/reagent_dispensers/keg/gargle
+	name = "keg of pan galactic gargleblaster"
+	desc = "A keg of... wow that's a long name."
+	icon_state = "bluekeg"
+	reagent_id = "gargleblaster"
+	tank_volume = 100

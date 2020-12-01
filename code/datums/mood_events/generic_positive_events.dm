@@ -23,10 +23,13 @@
 	mood_change = 3
 	timeout = 3000
 
-/datum/mood_event/pet_corgi
-	description = "<span class='nicegreen'>Corgis are adorable! I can't stop petting them!</span>\n"
-	mood_change = 3
-	timeout = 3000
+/datum/mood_event/pet_animal
+	description = "<span class='nicegreen'>Animals are adorable! I can't stop petting them!</span>\n"
+	mood_change = 2
+	timeout = 5 MINUTES
+
+/datum/mood_event/pet_animal/add_effects(mob/animal)
+	description = "<span class='nicegreen'>\The [animal.name] is adorable! I can't stop petting [animal.p_them()]!</span>\n"
 
 /datum/mood_event/honk
 	description = "<span class='nicegreen'>Maybe clowns aren't so bad after all. Honk!</span>\n"
@@ -80,12 +83,12 @@
 	description = "<span class='nicegreen'>Heh...hehehe...hehe...</span>\n"
 	mood_change = 4
 
- /datum/mood_event/chemical_laughter
+/datum/mood_event/chemical_laughter
 	description = "<span class='nicegreen'>Laughter really is the best medicine! Or is it?</span>\n"
 	mood_change = 4
 	timeout = 3 MINUTES
 
- /datum/mood_event/chemical_superlaughter
+/datum/mood_event/chemical_superlaughter
 	description = "<span class='nicegreen'>*WHEEZE*</span>\n"
 	mood_change = 12
 	timeout = 3 MINUTES
@@ -118,3 +121,42 @@
 	description = "<span class='nicegreen'>I love headpats so much!</span>\n"
 	mood_change = 3
 	timeout = 2 MINUTES
+
+/datum/mood_event/breakfast
+	description = "<span class='nicegreen'>Nothing like a hearty breakfast to start the shift.</span>\n"
+	mood_change = 2
+	timeout = 15 MINUTES
+
+//Power gamer stuff below
+/datum/mood_event/drankblood
+	description = "<span class='nicegreen'>I have fed greedly from that which nourishes me.</span>\n"
+	mood_change = 10
+	timeout = 900
+
+/datum/mood_event/coffinsleep
+	description = "<span class='nicegreen'>I slept in a coffin during the day. I feel whole again.</span>\n"
+	mood_change = 8
+	timeout = 1200
+
+//Cursed stuff below.
+
+/datum/mood_event/orgasm
+	description = "<span class='userlove'>I came!</span>\n" //funny meme haha
+	mood_change = 3
+	timeout = 100 SECONDS
+
+/datum/mood_event/fedpred
+	description = "<span class='nicegreen'>I've devoured someone!</span>\n"
+	mood_change = 3
+
+/datum/mood_event/fedprey
+	description = "<span class='nicegreen'>It feels quite cozy in here.</span>\n"
+	mood_change = 3
+
+/datum/mood_event/hope_lavaland
+	description = "<span class='nicegreen'>What a peculiar emblem.  It makes me feel hopeful for my future.</span>\n"
+	mood_change = 5
+
+/datum/mood_event/radiant
+	description = "<span class='nicegreen'>I have seen the light of The Phoenix; I cannot be stopped.</span>\n" 
+	mood_change = 12

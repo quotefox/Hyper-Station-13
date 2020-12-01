@@ -7,7 +7,7 @@
 	name = "Meteor Wave: Normal"
 	typepath = /datum/round_event/meteor_wave
 	weight = 4
-	min_players = 15
+	min_players = 20
 	max_occurrences = 3
 	earliest_start = 25 MINUTES
 
@@ -32,8 +32,6 @@
 		determine_wave_type()
 
 /datum/round_event/meteor_wave/proc/determine_wave_type()
-	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
-		wave_name = "halloween"
 	if(!wave_name)
 		wave_name = pickweight(list(
 			"normal" = 50,
@@ -45,7 +43,10 @@
 		if("threatening")
 			wave_type = GLOB.meteors_threatening
 		if("catastrophic")
-			wave_type = GLOB.meteors_catastrophic
+			if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+				wave_type = GLOB.meteorsSPOOKY
+			else
+				wave_type = GLOB.meteors_catastrophic
 		if("meaty")
 			wave_type = GLOB.meteorsB
 		if("space dust")
@@ -66,9 +67,9 @@
 /datum/round_event_control/meteor_wave/threatening
 	name = "Meteor Wave: Threatening"
 	typepath = /datum/round_event/meteor_wave/threatening
-	weight = 5
+	weight = 4
 	min_players = 20
-	max_occurrences = 3
+	max_occurrences = 2
 	earliest_start = 35 MINUTES
 
 /datum/round_event/meteor_wave/threatening
@@ -77,9 +78,9 @@
 /datum/round_event_control/meteor_wave/catastrophic
 	name = "Meteor Wave: Catastrophic"
 	typepath = /datum/round_event/meteor_wave/catastrophic
-	weight = 7
+	weight = 4
 	min_players = 25
-	max_occurrences = 3
+	max_occurrences = 1
 	earliest_start = 45 MINUTES
 
 /datum/round_event/meteor_wave/catastrophic

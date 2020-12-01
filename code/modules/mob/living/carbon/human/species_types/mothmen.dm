@@ -14,6 +14,7 @@
 	liked_food = VEGETABLES | DAIRY| CLOTH
 	disliked_food = FRUIT | GROSS
 	toxic_food = MEAT | RAW
+	exotic_bloodtype = "BUG"
 
 /datum/species/moth/on_species_gain(mob/living/carbon/C)
 	. = ..()

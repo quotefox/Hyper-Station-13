@@ -101,8 +101,8 @@
 		update_light()
 
 /obj/item/melee/transforming/energy/sword/cx/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
+	. = ..()
+	. += "<span class='notice'>Alt-click to recolor it.</span>"
 
 /obj/item/melee/transforming/energy/sword/cx/worn_overlays(isinhands, icon_file)
 	. = ..()
@@ -231,8 +231,8 @@
 		return ..()
 
 /obj/item/toy/sword/cx/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
+	. = ..()
+	. += "<span class='notice'>Alt-click to recolor it.</span>"
 
 /////////////////////////////////////////////////////
 //	HYPEREUTACTIC Blades	/////////////////////////
@@ -307,7 +307,7 @@
 		var/mob/M = loc
 		M.update_inv_hands()
 
-	SEND_SIGNAL(src, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)//blood overlays get weird otherwise, because the sprite changes. (retained from original desword because I have no idea what this is)
+	clean_blood()
 
 /obj/item/twohanded/dualsaber/hypereutactic/AltClick(mob/living/user)
 	if(!user.canUseTopic(src, BE_CLOSE, FALSE) || hacked)
@@ -335,9 +335,9 @@
 			. += blade_inhand
 
 /obj/item/twohanded/dualsaber/hypereutactic/examine(mob/user)
-	..()
+	. = ..()
 	if(!hacked)
-		to_chat(user, "<span class='notice'>Alt-click to recolor it.</span>")
+		. += "<span class='notice'>Alt-click to recolor it.</span>"
 
 /obj/item/twohanded/dualsaber/hypereutactic/rainbow_process()
 	. = ..()

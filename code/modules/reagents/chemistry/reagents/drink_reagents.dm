@@ -90,6 +90,7 @@
 	description = "The sweet juice of an apple, fit for all ages."
 	color = "#ECFF56" // rgb: 236, 255, 86
 	taste_description = "apples"
+	pH = 3.2 // ~ 2.7 -> 3.7
 
 /datum/reagent/consumable/poisonberryjuice
 	name = "Poison Berry Juice"
@@ -896,7 +897,7 @@
 	glass_name = "tall glass of strawberry milk"
 	glass_desc = "Delicious flavored strawberry syrup mixed with milk."
 
-/datum/reagent/consumable/tea/pinkmilk/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/pinkmilk/on_mob_life(mob/living/carbon/M)
 	if(prob(15))
 		to_chat(M, "<span class = 'notice'>[pick("You cant help to smile.","You feel nostalgia all of sudden.","You remember to relax.")]</span>")
 	..()
@@ -918,3 +919,21 @@
 		to_chat(M, "<span class = 'notice'>[pick("Diamond skies where white deer fly.","Sipping strawberry tea.","Silver raindrops drift through timeless, Neverending June.","Crystal ... pearls free, with love!","Beaming love into me.")]</span>")
 	..()
 	. = 1
+
+/datum/reagent/consumable/monkey_energy
+	name = "Monkey Energy"
+	id = "monkey_energy"
+	description = "The only drink that will make you unleash the ape."
+	color = "#f39b03" // rgb: 243, 155, 3
+	taste_description = "barbecue and nostalgia"
+	glass_icon_state = "monkey_energy_glass"
+	glass_name = "glass of Monkey Energy"
+	glass_desc = "You can unleash the ape, but without the pop of the can?"
+
+/datum/reagent/consumable/monkey_energy/on_mob_life(mob/living/carbon/M)
+	M.Jitter(20)
+	M.dizziness +=1
+	M.drowsyness = 0
+	M.AdjustSleeping(-40, FALSE)
+	M.adjust_bodytemperature(-5 * TEMPERATURE_DAMAGE_COEFFICIENT, BODYTEMP_NORMAL)
+	..()

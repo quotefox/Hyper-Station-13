@@ -86,6 +86,7 @@
 		return FALSE
 	//We are now going to move
 	var/add_delay = mob.movement_delay()
+	mob.set_glide_size(DELAY_TO_GLIDE_SIZE(add_delay * (((direct & 3) && (direct & 12)) ? 2 : 1))) // set it now in case of pulled objects
 	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
 		move_delay = old_move_delay
 	else
@@ -108,8 +109,8 @@
 
 	if((direct & (direct - 1)) && mob.loc == n) //moved diagonally successfully
 		add_delay *= 2
-	if(mob.loc != oldloc)
-		move_delay += add_delay
+	move_delay += add_delay
+	mob.set_glide_size(DELAY_TO_GLIDE_SIZE(add_delay))
 	if(.) // If mob is null here, we deserve the runtime
 		if(mob.throwing)
 			mob.throwing.finalize(FALSE)
@@ -370,3 +371,35 @@
 	if(hud_used && hud_used.static_inventory)
 		for(var/obj/screen/mov_intent/selector in hud_used.static_inventory)
 			selector.update_icon(src)
+
+/mob/verb/up()
+	set name = "Move Upwards"
+	set category = "IC"
+
+	if(zMove(UP, TRUE))
+		to_chat(src, "<span class='notice'>You move upwards.</span>")
+
+/mob/verb/down()
+	set name = "Move Down"
+	set category = "IC"
+
+	if(zMove(DOWN, TRUE))
+		to_chat(src, "<span class='notice'>You move down.</span>")
+
+/mob/proc/zMove(dir, feedback = FALSE)
+	if(dir != UP && dir != DOWN)
+		return FALSE
+	var/turf/target = get_step_multiz(src, dir)
+	if(!target)
+		if(feedback)
+			to_chat(src, "<span class='warning'>There's nothing in that direction!</span>")
+		return FALSE
+	if(!canZMove(dir, target))
+		if(feedback)
+			to_chat(src, "<span class='warning'>You couldn't move there!</span>")
+		return FALSE
+	forceMove(target)
+	return TRUE
+
+/mob/proc/canZMove(direction, turf/target)
+	return FALSE

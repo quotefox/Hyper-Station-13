@@ -119,9 +119,9 @@
 
 
 /mob/living/simple_animal/parrot/examine(mob/user)
-	..()
+	. = ..()
 	if(stat)
-		to_chat(user, pick("This parrot is no more.", "This is a late parrot.", "This is an ex-parrot."))
+		. += pick("This parrot is no more.", "This is a late parrot.", "This is an ex-parrot.")
 
 /mob/living/simple_animal/parrot/death(gibbed)
 	if(held_item)
@@ -332,8 +332,8 @@
 		speak_chance *= 1.27 // 20 crackers to go from 1% to 100%
 		speech_shuffle_rate += 10
 		to_chat(user, "<span class='notice'>[src] eagerly devours the cracker.</span>")
-	..()
-	return
+		return // the cracker was deleted
+	return ..()
 
 //Bullets
 /mob/living/simple_animal/parrot/bullet_act(obj/item/projectile/Proj)

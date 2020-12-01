@@ -1,7 +1,6 @@
-#define TRAIT_CUM_PLUS			"cum_plus"
 
 
-//Jay - Coooooom
+//Jay Sparrow
 /datum/quirk/cum_plus
 	name = "Extra productive genitals"
 	desc = "Your lower bits produce more and hold more than normal."

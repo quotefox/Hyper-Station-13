@@ -38,8 +38,8 @@
 		transform = matrix(-1, 0, 0, 0, 1, 0)
 
 /obj/item/organ/cyberimp/arm/examine(mob/user)
-	..()
-	to_chat(user, "<span class='info'>[src] is assembled in the [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm configuration. You can use a screwdriver to reassemble it.</span>")
+	. = ..()
+	. += "<span class='info'>[src] is assembled in the [zone == BODY_ZONE_R_ARM ? "right" : "left"] arm configuration. You can use a screwdriver to reassemble it.</span>"
 
 /obj/item/organ/cyberimp/arm/screwdriver_act(mob/living/user, obj/item/I)
 	. = ..()
@@ -234,3 +234,10 @@
 	name = "surgical toolset implant"
 	desc = "A set of surgical tools hidden behind a concealed panel on the user's arm."
 	contents = newlist(/obj/item/retractor/augment, /obj/item/hemostat/augment, /obj/item/cautery/augment, /obj/item/surgicaldrill/augment, /obj/item/scalpel/augment, /obj/item/circular_saw/augment, /obj/item/surgical_drapes)
+
+//Ignore this one this is for a bus character.
+
+/obj/item/organ/cyberimp/arm/COMPound
+	name = "chemical cybernetics implant"
+	desc = "A powerful cybernetic implant that contains chemical fabrication modules built into the user's arm."
+	contents = newlist(/obj/item/reagent_containers/hypospray/debug, /obj/item/gun/chem/debug, /obj/item/reagent_containers/chemical_tongue, /obj/item/fermichem/pHmeter)

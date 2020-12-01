@@ -13,8 +13,8 @@
 	desc = "A Multiple Utility Load Effector bot."
 	icon_state = "mulebot0"
 	density = TRUE
-	anchored = TRUE
-	animate_movement=1
+	move_resist = MOVE_FORCE_STRONG
+	animate_movement = 1
 	health = 50
 	maxHealth = 50
 	damage_coeff = list(BRUTE = 0.5, BURN = 0.7, TOX = 0, CLONE = 0, STAMINA = 0, OXY = 0)
@@ -474,7 +474,8 @@
 				if(isturf(next))
 					if(bloodiness)
 						var/obj/effect/decal/cleanable/blood/tracks/B = new(loc)
-						B.add_blood_DNA(return_blood_DNA())
+						if(length(blood_DNA))
+							B.blood_DNA |= blood_DNA.Copy()
 						var/newdir = get_dir(next, loc)
 						if(newdir == dir)
 							B.setDir(newdir)
@@ -486,7 +487,6 @@
 								newdir = 4
 							B.setDir(newdir)
 						bloodiness--
-
 
 					var/oldloc = loc
 					var/moved = step_towards(src, next)	// attempt to move

@@ -25,30 +25,6 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 #define NOT_IMPLEMENTED "NOT_IMPLEMENTED"
 
-#define MIDNIGHT_ROLLOVER		864000	//number of deciseconds in a day
-
-#define JANUARY		1
-#define FEBRUARY	2
-#define MARCH		3
-#define APRIL		4
-#define MAY			5
-#define JUNE		6
-#define JULY		7
-#define AUGUST		8
-#define SEPTEMBER	9
-#define OCTOBER		10
-#define NOVEMBER	11
-#define DECEMBER	12
-
-//Select holiday names -- If you test for a holiday in the code, make the holiday's name a define and test for that instead
-#define NEW_YEAR				"New Year"
-#define VALENTINES				"Valentine's Day"
-#define APRIL_FOOLS				"April Fool's Day"
-#define EASTER					"Easter"
-#define HALLOWEEN				"Halloween"
-#define CHRISTMAS				"Christmas"
-#define FESTIVE_SEASON			"Festive Season"
-
 //Human Overlays Indexes/////////
 //LOTS OF CIT CHANGES HERE. BE CAREFUL WHEN UPSTREAM ADDS MORE LAYERS
 #define MUTATIONS_LAYER			31		//mutations. Tk headglows, cold resistance glow, etc
@@ -57,18 +33,18 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define BODYPARTS_LAYER			28		//Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
 #define MARKING_LAYER			27		//Matrixed body markings because clashing with snouts?
 #define BODY_ADJ_LAYER			26		//certain mutantrace features (snout, body markings) that must appear above the body parts
-#define GENITALS_FRONT_LAYER	25		//Draws some genitalia above clothes and the TAUR body if need be.
-#define BODY_LAYER				24		//underwear, undershirts, socks, eyes, lips(makeup)
-#define FRONT_MUTATIONS_LAYER	23		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define DAMAGE_LAYER			22		//damage indicators (cuts and burns)
-#define UNIFORM_LAYER			21
-#define ID_LAYER				20
+#define BODY_LAYER				25		//underwear, undershirts, socks, eyes, lips(makeup)
+#define FRONT_MUTATIONS_LAYER	24		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
+#define DAMAGE_LAYER			23		//damage indicators (cuts and burns)
+#define UNIFORM_LAYER			22
+#define ID_LAYER				21
 #define HANDS_PART_LAYER		20
 #define SHOES_LAYER				19
 #define GLOVES_LAYER			18
 #define EARS_LAYER				17
 #define BODY_TAUR_LAYER			16
-#define SUIT_LAYER				15
+#define GENITALS_FRONT_LAYER	15
+#define SUIT_LAYER				14
 #define GLASSES_LAYER			13
 #define BELT_LAYER				12		//Possible make this an overlay of somethign required to wear a belt?
 #define SUIT_STORE_LAYER		11
@@ -171,11 +147,21 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 #define BLOOD_LOSS_IN_SPREAD		20
 
 //Bloody shoe blood states
-#define BLOOD_STATE_HUMAN			"blood"
-#define BLOOD_STATE_XENO			"xeno"
+#define BLOOD_STATE_BLOOD			"blood"
 #define BLOOD_STATE_OIL				"oil"
 #define BLOOD_STATE_NOT_BLOODY		"no blood whatsoever"
 #define BLOOD_AMOUNT_PER_DECAL		20
+
+//Blood Decal Colors
+#define BLOOD_COLOR_HUMAN			"#dc0000"
+#define BLOOD_COLOR_XENO			"#94a83c"
+#define BLOOD_COLOR_OIL				"#301d02"
+#define BLOOD_COLOR_SYNTHETIC		"#3f48aa"
+#define BLOOD_COLOR_SLIME			"#00ff90"
+#define BLOOD_COLOR_LIZARD			"#db004D"
+#define BLOOD_COLOR_UNIVERSAL		"#db3300"
+#define BLOOD_COLOR_BUG				"#a37c0f"
+
 
 //suit sensors: sensor_mode defines
 
@@ -497,5 +483,12 @@ GLOBAL_LIST_INIT(pda_reskins, list(PDA_SKIN_CLASSIC = 'icons/obj/pda.dmi', PDA_S
 #define VOMIT_TOXIC 1
 #define VOMIT_PURPLE 2
 
+// possible bitflag return values of intercept_zImpact(atom/movable/AM, levels = 1) calls
+#define FALL_INTERCEPTED		(1<<0) //Stops the movable from falling further and crashing on the ground
+#define FALL_NO_MESSAGE			(1<<1) //Used to suppress the "[A] falls through [old_turf]" messages where it'd make little sense at all, like going downstairs.
+#define FALL_STOP_INTERCEPTING	(1<<2) //Used in situations where halting the whole "intercept" loop would be better, like supermatter dusting (and thus deleting) the atom.
+
 //Misc text define. Does 4 spaces. Used as a makeshift tabulator.
 #define FOURSPACES "&nbsp;&nbsp;&nbsp;&nbsp;"
+
+#define CANT_REENTER_ROUND -1

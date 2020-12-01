@@ -94,15 +94,13 @@
 					return 1
 	return ..()
 
-/mob/living/carbon/throw_impact(atom/hit_atom, throwingdatum)
+/mob/living/carbon/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
 	var/hurt = TRUE
-	if(istype(throwingdatum, /datum/thrownthing))
-		var/datum/thrownthing/D = throwingdatum
-		if(iscyborg(D.thrower))
-			var/mob/living/silicon/robot/R = D.thrower
-			if(!R.emagged)
-				hurt = FALSE
+	if(throwingdatum?.thrower && iscyborg(throwingdatum.thrower))
+		var/mob/living/silicon/robot/R = throwingdatum.thrower
+		if(!R.emagged)
+			hurt = FALSE
 	if(hit_atom.density && isturf(hit_atom))
 		if(hurt)
 			Knockdown(20)
@@ -157,9 +155,11 @@
 	if(getStaminaLoss() >= STAMINA_SOFTCRIT)
 		to_chat(src, "<span class='warning'>You're too exhausted.</span>")
 		return
+
+	var/random_turn = a_intent == INTENT_HARM
 	//END OF CIT CHANGES
 
-	var/obj/item/I = src.get_active_held_item()
+	var/obj/item/I = get_active_held_item()
 
 	var/atom/movable/thrown_thing
 	var/mob/living/throwable_mob
@@ -201,11 +201,11 @@
 
 	if(thrown_thing)
 		visible_message("<span class='danger'>[src] has thrown [thrown_thing].</span>")
-		src.log_message("has thrown [thrown_thing]", LOG_ATTACK)
+		log_message("has thrown [thrown_thing]", LOG_ATTACK)
 		do_attack_animation(target, no_effect = 1)
 		playsound(loc, 'sound/weapons/punchmiss.ogg', 50, 1, -1)
 		newtonian_move(get_dir(target, src))
-		thrown_thing.throw_at(target, thrown_thing.throw_range, thrown_thing.throw_speed, src)
+		thrown_thing.safe_throw_at(target, thrown_thing.throw_range, thrown_thing.throw_speed, src, null, null, null, move_force, random_turn)
 
 
 
@@ -274,7 +274,7 @@
     loc.handle_fall(src, forced)//it's loc so it doesn't call the mob's handle_fall which does nothing
 
 /mob/living/carbon/is_muzzled()
-	return(istype(src.wear_mask, /obj/item/clothing/mask/muzzle))
+	return(istype(src.wear_mask, /obj/item/clothing/mask/muzzle)||istype(src.wear_mask, /obj/item/clothing/mask/gas/sechailer/slut)) //i sure do love snowflake code
 
 /mob/living/carbon/hallucinating()
 	if(hallucination)
@@ -463,7 +463,7 @@
 			I.throw_at(target,I.throw_range,I.throw_speed,src)
 		if(61 to 90) //throw it down to the floor
 			var/turf/target = get_turf(loc)
-			I.throw_at(target,I.throw_range,I.throw_speed,src)
+			I.safe_throw_at(target,I.throw_range,I.throw_speed,src, force = move_force)
 
 /mob/living/carbon/Stat()
 	..()
@@ -928,7 +928,7 @@
 
 /mob/living/carbon/do_after_coefficent()
 	. = ..()
-	GET_COMPONENT_FROM(mood, /datum/component/mood, src) //Currently, only carbons or higher use mood, move this once that changes.
+	var/datum/component/mood/mood = src.GetComponent(/datum/component/mood) //Currently, only carbons or higher use mood, move this once that changes.
 	if(mood)
 		switch(mood.sanity) //Alters do_after delay based on how sane you are
 			if(SANITY_INSANE to SANITY_DISTURBED)
@@ -945,7 +945,7 @@
 /mob/living/carbon/proc/update_disabled_bodyparts()
 	for(var/B in bodyparts)
 		var/obj/item/bodypart/BP = B
-		BP.update_disabled()
+		BP.update_disabled(silent)
 
 /mob/living/carbon/vv_get_dropdown()
 	. = ..()
@@ -970,7 +970,7 @@
 		return TRUE
 	if(HAS_TRAIT(src, TRAIT_DUMB))
 		return TRUE
-	GET_COMPONENT_FROM(mood, /datum/component/mood, src)
+	var/datum/component/mood/mood = src.GetComponent(/datum/component/mood)
 	if(mood)
 		if(mood.sanity < SANITY_UNSTABLE)
 			return TRUE

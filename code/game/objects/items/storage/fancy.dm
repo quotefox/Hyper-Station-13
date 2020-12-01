@@ -12,6 +12,7 @@
  *		Cigarette Box
  *		Cigar Case
  *		Heart Shaped Box w/ Chocolates
+ *		Ring Box
  */
 
 /obj/item/storage/fancy
@@ -25,7 +26,7 @@
 	var/fancy_open = FALSE
 
 /obj/item/storage/fancy/PopulateContents()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	for(var/i = 1 to STR.max_items)
 		new spawn_type(src)
 
@@ -36,12 +37,12 @@
 		icon_state = "[icon_type]box"
 
 /obj/item/storage/fancy/examine(mob/user)
-	..()
+	. = ..()
 	if(fancy_open)
 		if(length(contents) == 1)
-			to_chat(user, "There is one [icon_type] left.")
+			. += "There is one [icon_type] left."
 		else
-			to_chat(user, "There are [contents.len <= 0 ? "no" : "[contents.len]"] [icon_type]s left.")
+			. += "There are [contents.len <= 0 ? "no" : "[contents.len]"] [icon_type]s left."
 
 /obj/item/storage/fancy/attack_self(mob/user)
 	fancy_open = !fancy_open
@@ -72,7 +73,7 @@
 
 /obj/item/storage/fancy/donut_box/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 6
 	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donut))
 
@@ -93,7 +94,7 @@
 
 /obj/item/storage/fancy/egg_box/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 12
 	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/egg))
 
@@ -115,7 +116,7 @@
 
 /obj/item/storage/fancy/candle_box/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 5
 
 /obj/item/storage/fancy/candle_box/attack_self(mob_user)
@@ -138,13 +139,13 @@
 
 /obj/item/storage/fancy/cigarettes/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 6
 	STR.can_hold = typecacheof(list(/obj/item/clothing/mask/cigarette, /obj/item/lighter))
 
 /obj/item/storage/fancy/cigarettes/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>Alt-click to extract contents.</span>")
+	. = ..()
+	. += "<span class='notice'>Alt-click to extract contents.</span>"
 
 /obj/item/storage/fancy/cigarettes/AltClick(mob/living/carbon/user)
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
@@ -204,6 +205,12 @@
 	desc = "A packet of six imported DromedaryCo cancer sticks. A label on the packaging reads, \"Wouldn't a slow death make a change?\""
 	icon_state = "dromedary"
 	spawn_type = /obj/item/clothing/mask/cigarette/dromedary
+
+/obj/item/storage/fancy/cigarettes/smokekins
+	name = "\improper smokekins packet"
+	desc = "Let the Radiance fill your lungs"
+	icon_state = "smokekins"
+	spawn_type = /obj/item/clothing/mask/cigarette/smokekins
 
 /obj/item/storage/fancy/cigarettes/cigpack_uplift
 	name = "\improper Uplift Smooth packet"
@@ -276,7 +283,7 @@
 
 /obj/item/storage/fancy/rollingpapers/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 10
 	STR.can_hold = typecacheof(list(/obj/item/rollingpaper))
 
@@ -300,7 +307,7 @@
 
 /obj/item/storage/fancy/cigarettes/cigars/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 5
 	STR.can_hold = typecacheof(list(/obj/item/clothing/mask/cigarette/cigar))
 
@@ -347,6 +354,36 @@
 
 /obj/item/storage/fancy/heart_box/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 8
 	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/tinychocolate))
+
+/*
+ * Ring Box
+ */
+
+/obj/item/storage/fancy/ringbox
+	name = "ring box"
+	desc = "A tiny box covered in soft red felt made for holding rings."
+	icon = 'icons/obj/ring.dmi'
+	icon_state = "gold ringbox"
+	icon_type = "gold ring"
+	w_class = WEIGHT_CLASS_TINY
+	spawn_type = /obj/item/clothing/gloves/ring
+
+/obj/item/storage/fancy/ringbox/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_items = 1
+	STR.can_hold = typecacheof(list(/obj/item/clothing/gloves/ring))
+
+/obj/item/storage/fancy/ringbox/diamond
+	icon_state = "diamond ringbox"
+	icon_type = "diamond ring"
+	spawn_type = /obj/item/clothing/gloves/ring/diamond
+
+/obj/item/storage/fancy/ringbox/silver
+	icon_state = "silver ringbox"
+	icon_type = "silver ring"
+	spawn_type = /obj/item/clothing/gloves/ring/silver
+

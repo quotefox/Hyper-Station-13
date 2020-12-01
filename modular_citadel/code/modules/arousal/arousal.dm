@@ -238,7 +238,15 @@
 /mob/living/carbon/human/proc/mob_masturbate(obj/item/organ/genital/G, mb_time = 30) //Masturbation, keep it gender-neutral
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = null
+	var/condomed = 0
+	var/sounded = 0
 
+	if(G.name == "penis")//if the select organ is a penis
+		var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
+		if(P.condom) //if the penis is condomed
+			condomed = 1
+		if(P.sounding)
+			sounded = 1
 	if(G.producing) //Can it produce its own fluids, such as breasts?
 		fluid_source = G.reagents
 	else
@@ -253,12 +261,24 @@
 							"<span class='userlove'>You start to [G.masturbation_verb] your [G.name].</span>")
 
 	if(do_after(src, mb_time, target = src))
-		if(total_fluids > 5)
+		if(total_fluids > 5 &&!condomed &&!sounded)
 			fluid_source.reaction(src.loc, TOUCH, 1, 0)
 			fluid_source.clear_reagents()
-		src.visible_message("<span class='love'>[src] orgasms, cumming[istype(src.loc, /turf/open/floor) ? " onto [src.loc]" : ""]!</span>", \
+		if(!condomed &&!sounded)
+			src.visible_message("<span class='love'>[src] orgasms, cumming[istype(src.loc, /turf/open/floor) ? " onto [src.loc]" : ""]!</span>", \
 							"<span class='userlove'>You cum[istype(src.loc, /turf/open/floor) ? " onto [src.loc]" : ""].</span>", \
 							"<span class='userlove'>You have relieved yourself.</span>")
+		if(condomed) //condomed
+			src.visible_message("<span class='love'>[src] orgasms, climaxing into [p_their()] condom </span>", \
+							"<span class='userlove'>You cum into your condom.</span>", \
+							"<span class='userlove'>You have relieved yourself.</span>")
+		if(sounded) //sounded
+			src.visible_message("<span class='love'>[src] orgasms, but the rod blocks anything from leaking out!</span>", \
+							"<span class='userlove'>You cum with the rod inside.</span>", \
+							"<span class='userlove'>You don't quite feel totally relieved.</span>")
+		if(total_fluids > 0 &&condomed &&!sounded)
+			src.condomclimax()
+
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 		if(G.can_climax)
 			setArousalLoss(min_arousal)
@@ -331,7 +351,6 @@
 			SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 
 			if(G.can_climax)
-
 				setArousalLoss(min_arousal)
 
 	else //knots and other non-spilling orgasms
@@ -347,13 +366,20 @@
 			if(G.can_climax)
 				setArousalLoss(min_arousal)
 
+	//Hyper - antag code
+	if(src.mind.special_role == ROLE_LEWD_TRAITOR)
+		for(var/datum/objective/obj in src.mind.objectives)
+			if (L.mind == obj.target)
+				L.mind.sexed = TRUE //sexed
+				to_chat(src, "<span class='userlove'>You feel deep satisfaction with yourself.</span>")
+
 	if(impreg)
 		//Role them odds, only people with the dicks can send the chance to the person with the settings enabled at the momment.
 		var/obj/item/organ/genital/womb/W = L.getorganslot("womb")
 		if (L.breedable == 1 && W.pregnant == 0) //Dont get pregnant again, if you are pregnant.
 			log_game("Debug: [L] has been impregnated by [src]")
 			to_chat(L, "<span class='userlove'>You feel your hormones change, and a motherly instinct take over.</span>") //leting them know magic has happened.
-			W.pregnant = 1 //self insert fetish
+			W.pregnant = 1
 
 			var/obj/item/organ/genital/breasts/B = L.getorganslot("womb")
 
@@ -366,6 +392,15 @@
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = null
 
+
+	if(G.name == "penis")//if the select organ is a penis
+		var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
+		if(P.condom) //if the penis is condomed
+			to_chat(src, "<span class='warning'>You cannot fill containers when there is a condom over your [G.name].</span>")
+			return
+		if(P.sounding) //if the penis is sounded
+			to_chat(src, "<span class='warning'>You cannot fill containers when there is a rod inside your [G.name].</span>")
+			return
 	if(G.producing) //Can it produce its own fluids, such as breasts?
 		fluid_source = G.reagents
 	else
@@ -515,9 +550,45 @@
 			return
 
 		//Ok, now we check what they want to do.
-		var/choice = input(src, "Select sexual activity", "Sexual activity:") in list("Masturbate", "Climax alone", "Climax with partner", "Fill container")
+		var/choice = input(src, "Select sexual activity", "Sexual activity:") in list("Masturbate", "Climax alone", "Climax with partner", "Fill container", "Remove condom", "Remove sounding rod")
 
 		switch(choice)
+			if("Remove sounding rod")
+				if(restrained(TRUE)) //TRUE ignores grabs
+					to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
+					return
+				var/free_hands = get_num_arms()
+				if(!free_hands)
+					to_chat(src, "<span class='warning'>You need at least one free arm.</span>")
+					return
+				var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
+				if(!P.sounding)
+					to_chat(src, "<span class='warning'>You don't have a rod inside!</span>")
+					return
+				if(P.sounding)
+					to_chat(src, "<span class='warning'>You pull the rod off from the tip of your penis!</span>")
+					src.removesounding()
+					return
+				return
+
+			if("Remove condom")
+				if(restrained(TRUE)) //TRUE ignores grabs
+					to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
+					return
+				var/free_hands = get_num_arms()
+				if(!free_hands)
+					to_chat(src, "<span class='warning'>You need at least one free arm.</span>")
+					return
+				var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
+				if(!P.condom)
+					to_chat(src, "<span class='warning'>You don't have a condom on!</span>")
+					return
+				if(P.condom)
+					to_chat(src, "<span class='warning'>You tug the condom off the end of your penis!</span>")
+					src.removecondom()
+					return
+				return
+
 			if("Masturbate")
 				if(restrained(TRUE)) //TRUE ignores grabs
 					to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
@@ -573,7 +644,8 @@
 				if(picked_organ)
 					var/mob/living/partner = pick_partner() //Get someone
 					if(partner)
-						if(partner.breedable == 1 && picked_organ.name == "penis")
+						var/obj/item/organ/genital/penis/P = picked_organ
+						if(partner.breedable == 1 && picked_organ.name == "penis"&&!P.condom == 1&&!P.sounding == 1)
 							var/impreg = input(src, "Would this action carry the risk of pregnancy?", "Choose a option", "Yes") as anything in list("Yes", "No")
 							if(impreg == "Yes") //If we are impregging
 								var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as anything in list("Yes", "No")

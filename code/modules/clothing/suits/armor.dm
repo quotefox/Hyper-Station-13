@@ -10,6 +10,7 @@
 	max_integrity = 250
 	resistance_flags = NONE
 	armor = list("melee" = 30, "bullet" = 30, "laser" = 30, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+	roomy = TRUE
 
 /obj/item/clothing/suit/armor/Initialize()
 	. = ..()
@@ -41,6 +42,20 @@
 	desc = "A large, yet comfortable piece of armor, protecting you from some threats."
 	icon_state = "blueshift"
 	item_state = "blueshift"
+
+/obj/item/clothing/suit/armor/vest/stripper
+	name = "stripper armor"
+	desc = "Talk about lightweight."
+	icon_state = "armorstripper"
+	item_state = "armorstripper"
+	armor = list("melee" = 15, "bullet" = 10, "laser" = 10, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	dog_fashion = null
+
+/obj/item/clothing/suit/armor/vest/stripper/bikini
+	name = "bikini armor"
+	desc = "How is this even supposed to work? It barely covers anything!"
+	icon_state = "armorstripperalt"
+	item_state = "armorstripperalt"
 
 /obj/item/clothing/suit/armor/hos
 	name = "armored greatcoat"

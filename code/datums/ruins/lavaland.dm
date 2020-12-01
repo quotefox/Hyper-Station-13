@@ -58,15 +58,16 @@
 	id = "lava-base"
 	description = "A secret base researching illegal bioweapons, it is closely guarded by an elite team of syndicate agents."
 	suffix = "lavaland_surface_syndicate_base1.dmm"
-	cost = 20
+	cost = 15
 	allow_duplicates = FALSE
+	placement_weight = 5
 
 /datum/map_template/ruin/lavaland/free_golem
 	name = "Free Golem Ship"
 	id = "golem-ship"
 	description = "Lumbering humanoids, made out of precious metals, move inside this ship. They frequently leave to mine more minerals, which they somehow turn into more of them. \
 	Seem very intent on research and individual liberty, and also geology based naming?"
-	cost = 20
+	cost = 15
 	suffix = "lavaland_surface_golem_ship.dmm"
 	allow_duplicates = FALSE
 
@@ -199,7 +200,8 @@
 	description = "A place of shelter for a lone hermit, scraping by to live another day."
 	suffix = "lavaland_surface_hermit.dmm"
 	allow_duplicates = FALSE
-	cost = 10
+	never_spawn_with = list(/datum/map_template/ruin/lavaland/duohermit)
+	cost = 5
 
 /datum/map_template/ruin/lavaland/swarmer_boss
 	name = "Crashed Shuttle"
@@ -223,3 +225,19 @@
 	description = "Mystery to be solved."
 	suffix = "lavaland_surface_puzzle.dmm"
 	cost = 5
+
+/datum/map_template/ruin/lavaland/oasis
+	name = "Oasis"
+	id = "oasis"
+	description = "A little paradise in the middle of hell."
+	suffix = "lavaland_surface_oasis.dmm"
+	allow_duplicates = FALSE
+	cost = 0
+
+/datum/map_template/ruin/lavaland/lunaraltar
+	name = "Lunar Altar"
+	id = "lunaraltar"
+	description = "Millenia ago, the humanoids of this strange land used to offer sacrifices here..."
+	suffix = "lavaland_surface_lunaraltar.dmm"
+	allow_duplicates = FALSE
+	cost = 10

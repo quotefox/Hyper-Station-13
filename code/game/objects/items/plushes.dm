@@ -558,6 +558,13 @@
 	item_state = "almaz"
 	squeak_override = list('modular_citadel/sound/voice/raptor_purr.ogg' = 1)
 
+/obj/item/toy/plush/lizardplushie/malric
+	desc = "An adorable stuffed toy that resembles a certain drake. He looks tired."
+	icon_state = "malric"
+	item_state = "malric"
+	attack_verb = list("depressed", "tailwhipped", "hissed on")
+	squeak_override = list('modular_citadel/sound/voice/weh.ogg' = 1)
+
 /obj/item/toy/plush/snakeplushie
 	name = "snake plushie"
 	desc = "An adorable stuffed toy that resembles a snake. Not to be mistaken for the real thing."
@@ -642,6 +649,13 @@
 	icon_state = "suru"
 	item_state = "suru"
 
+/obj/item/toy/plush/mothplushie/moffplush
+	name = "moth plushie"
+	desc = "A plushie depicting an adorable mothperson. It's a huggable bug!"
+	icon_state = "moffplush"
+	item_state = "moffplush"
+	squeak_override = list('modular_citadel/sound/voice/scream_moth.ogg' = 1)
+
 /obj/item/toy/plush/xeno
 	name = "xenohybrid plushie"
 	desc = "An adorable stuffed toy that resmembles a xenomorphic crewmember."
@@ -701,6 +715,18 @@
 	icon_state = "scrubpuppy"
 	item_state = "scrubpuppy"
 
+/obj/item/toy/plush/borgplushie/meddrake
+	name = "MediDrake Plushie"
+	desc = "An adorable stuffed toy of a Medidrake."
+	icon_state = "meddrake"
+	item_state = "meddrake"
+
+/obj/item/toy/plush/borgplushie/secdrake
+	name = "SecDrake Plushie"
+	desc = "An adorable stuffed toy of a Secdrake."
+	icon_state = "secdrake"
+	item_state = "secdrake"
+
 /obj/item/toy/plush/borgplushie/seeking
 	icon_state = "seeking"
 	item_state = "seeking"
@@ -742,6 +768,13 @@
 /obj/item/toy/plush/bird/jewel
 	icon_state = "jewel"
 	item_state = "jewel"
+
+/obj/item/toy/plush/bird/kenk
+	name = "kenku plushie"
+	desc = "An adorable stuffed plushie that resembles a kenku, perfect to sit on."
+	icon_state = "kenk"
+	item_state = "kenk"
+	squeak_override = list('modular_citadel/sound/voice/merp.ogg' = 1)
 
 /obj/item/toy/plush/sergal
 	name = "sergal plushie"

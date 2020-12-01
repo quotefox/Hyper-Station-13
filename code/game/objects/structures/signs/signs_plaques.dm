@@ -6,16 +6,16 @@
 	icon_state = "atmosplaque"
 
 /obj/structure/sign/plaques/atmos
-	name = "\improper FEA Atmospherics Division plaque"
-	desc = "This plaque commemorates the fall of the Atmos FEA division. For all the charred, dizzy, and brittle men who have died in its hands."
+	name = "\improper CEO of the Millennia."
+	desc = "The CEO of Kinaris, adorned with a lack of expression and the heart for extended space colonization at the forefront of advanced light technology, at odds with Nanotrasen."
 
 /obj/structure/sign/plaques/thunderdome
 	name = "Thunderdome Plaque"
 	desc = "This plaque commemorates those who have fallen in glorious combat.  For all the charred, dizzy, and beaten men who have died in its hands."
 
 /obj/structure/sign/plaques/golden
-	name = "The Most Robust Men Award for Robustness"
-	desc = "To be Robust is not an action or a way of life, but a mental state. Only those with the force of Will strong enough to act during a crisis, saving friend from foe, are truly Robust. Stay Robust my friends."
+	name = "CEO of the Millennia"
+	desc = "The CEO of Kinaris, adorned with a lack of expression and the heart for extended space colonization at the forefront of advanced light technology, at odds with Nanotrasen."
 	icon_state = "goldenplaque"
 
 /obj/structure/sign/plaques/golden/captain
@@ -46,4 +46,3 @@
 	name = "Mr. Deempisi portrait"
 	desc = "Under the painting a plaque reads: 'While the meat grinder may not have spared you, fear not. Not one part of you has gone to waste... You were delicious.'"
 	icon_state = "monkey_painting"
-	

@@ -8,10 +8,25 @@
 	category = SLOT_SHOES
 	path = /obj/item/clothing/shoes/workboots
 
+/datum/gear/workboots/toeless
+	name = "toe-less workboots"
+	category = SLOT_SHOES
+	path = /obj/item/clothing/shoes/workboots/toeless
+
 /datum/gear/jackboots
 	name = "Jackboots"
 	category = SLOT_SHOES
 	path = /obj/item/clothing/shoes/jackboots
+
+/datum/gear/jackboots/toeless
+	name = "toe-less jackboots"
+	category = SLOT_SHOES
+	path = /obj/item/clothing/shoes/jackboots/toeless
+
+/datum/gear/jackboots/tall
+	name = "tall jackboots"
+	category = SLOT_SHOES
+	path = /obj/item/clothing/shoes/jackboots/tall
 
 /datum/gear/winterboots
 	name = "Winter boots"
@@ -72,3 +87,8 @@
 	name = "Santa Boots"
 	category = SLOT_SHOES
 	path= /obj/item/clothing/shoes/winterboots/santaboots
+
+datum/gear/highheels
+	name = "High Heels"
+	category = SLOT_SHOES
+	path= /obj/item/clothing/shoes/highheels

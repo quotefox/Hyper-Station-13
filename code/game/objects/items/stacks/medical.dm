@@ -18,7 +18,6 @@
 	var/fix_bone= 0
 
 /obj/item/stack/medical/attack(mob/living/M, mob/user)
-
 	if(M.stat == DEAD && !stop_bleeding)
 		var/t_him = "it"
 		if(M.gender == MALE)

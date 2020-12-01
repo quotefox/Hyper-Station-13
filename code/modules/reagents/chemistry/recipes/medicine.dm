@@ -73,7 +73,7 @@
 	id = "synthtissue"
 	results = list("synthtissue" = 0.05)
 	required_reagents = list("synthflesh" = 0.01)
-	required_catalysts = list("nutriment" = 0.1)
+	required_catalysts = list("sugar" = 0.1)
 	//FermiChem vars:
 	OptimalTempMin 		= 305		// Lower area of bell curve for determining heat based rate reactions
 	OptimalTempMax 		= 315 		// Upper end for above
@@ -92,7 +92,7 @@
 
 /datum/chemical_reaction/synthtissue/FermiCreate(datum/reagents/holder, added_volume, added_purity)
 	var/datum/reagent/synthtissue/St = holder.has_reagent("synthtissue")
-	var/datum/reagent/N = holder.has_reagent("nutriment")
+	var/datum/reagent/N = holder.has_reagent("sugar")
 	if(!St)
 		return
 	if(holder.chem_temp > 320)
@@ -281,6 +281,12 @@
 	id = "regen_jelly"
 	results = list("regen_jelly" = 2)
 	required_reagents = list("tricordrazine" = 1, "slimejelly" = 1)
+
+/datum/chemical_reaction/jelly_convert
+	name = "Blood Jelly Conversion"
+	id = "blood_jelly"
+	results = list("slimejelly" = 1)
+	required_reagents = list("toxin" = 1, "jellyblood" = 1)
 
 /datum/chemical_reaction/corazone
 	name = "Corazone"

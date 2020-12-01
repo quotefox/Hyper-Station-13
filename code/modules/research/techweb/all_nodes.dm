@@ -12,7 +12,7 @@
 	"destructive_analyzer", "circuit_imprinter", "experimentor", "rdconsole", "design_disk", "tech_disk", "rdserver", "rdservercontrol", "mechfab",
 	"space_heater", "xlarge_beaker", "sec_rshot", "sec_bshot", "sec_slug", "sec_Islug", "sec_dart", "sec_38", "sec_38lethal",
 	"rglass","plasteel","plastitanium","plasmaglass","plasmareinforcedglass","titaniumglass","plastitaniumglass","chem_pack","medkit_cabinet",
-	"disposable_hypospray","plastic_knife","plastic_fork","plastic_spoon")
+	"disposable_hypospray","plastic_knife","plastic_fork","plastic_spoon","large_beaker")
 
 /datum/techweb_node/mmi
 	id = "mmi"
@@ -44,7 +44,6 @@
 	description = "Various tools fit for basic mech units"
 	design_ids = list("mech_drill", "mech_mscanner", "mech_extinguisher", "mech_cable_layer")
 
-
 /datum/techweb_node/surplus_lims
 	id = "surplus_lims"
 	display_name = "Basic Prosthetics"
@@ -52,8 +51,20 @@
 	starting_node = TRUE
 	prereq_ids = list("biotech")
 	design_ids = list("basic_l_arm", "basic_r_arm", "basic_r_leg", "basic_l_leg")
-	export_price = 5000
 
+/datum/techweb_node/blueprinted_bottles
+	id = "blueprinted_bottles"
+	display_name = "License Bottling"
+	description = "Some Branded bottles to print and export."
+	starting_node = TRUE
+	design_ids = list("gin", "wine", "whiskey", "vodka", "tequila", "patron", "rum", "kahlua", "vermouth", "goldschlager", "hcider", "cognac", "absinthe", "grappa", "sake", "fernet", "applejack", "champagne", "blazaam", "trappist", "grenadine", "autobottler")
+
+/datum/techweb_node/blueprinted_exports
+	id = "blueprinted_exports"
+	display_name = "License Exports"
+	description = "Some Branded bottles to print and export."
+	starting_node = TRUE
+	design_ids = list("gin_export", "wine_export", "whiskey_export", "vodka_export", "tequila_export", "patron_export", "rum_export", "kahlua_export", "vermouth_export", "goldschlager_export", "hcider_export", "cognac_export", "absinthe_export", "grappa_export", "sake_export", "fernet_export", "applejack_export", "champagne_export", "blazaam_export", "trappist_export", "grenadine_export")
 
 /////////////////////////Biotech/////////////////////////
 /datum/techweb_node/biotech
@@ -61,7 +72,7 @@
 	display_name = "Biological Technology"
 	description = "What makes us tick."	//the MC, silly!
 	prereq_ids = list("base")
-	design_ids = list("medicalkit", "chem_heater", "chem_master", "chem_dispenser", "sleeper", "vr_sleeper", "pandemic", "defibmount", "operating", "soda_dispenser", "beer_dispenser", "healthanalyzer", "blood_bag","genescanner")
+	design_ids = list("medicalkit", "chem_heater", "chem_master", "chem_dispenser", "sleeper", "vr_sleeper", "pandemic", "defibmount", "operating", "soda_dispenser", "beer_dispenser", "healthanalyzer", "blood_bag", "genescanner", "bloodbankgen")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
 
@@ -70,7 +81,7 @@
 	display_name = "Advanced Biotechnology"
 	description = "Advanced Biotechnology"
 	prereq_ids = list("biotech")
-	design_ids = list("piercesyringe", "crewpinpointer", "smoke_machine", "plasmarefiller", "limbgrower", "defibrillator", "meta_beaker", "healthanalyzer_advanced","harvester","holobarrier_med","smartdartgun","medicinalsmartdart", "pHmeter")
+	design_ids = list("piercesyringe", "crewpinpointer", "smoke_machine", "plasmarefiller", "limbgrower", "defibrillator", "meta_beaker", "healthanalyzer_advanced","harvester","holobarrier_med","smartdartgun","medicinalsmartdart", "pHmeter", "large_hypovial")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
 
@@ -82,6 +93,14 @@
 	design_ids = list("smartfridge", "gibber", "deepfryer", "monkey_recycler", "processor", "gibber", "microwave", "reagentgrinder", "dish_drive")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
+
+/datum/techweb_node/bottle_exports
+	id = "bottle_exports"
+	display_name = "Legal Bottling"
+	prereq_ids = list("blueprinted_bottles")
+	description = "New bottles for printing and selling."
+	design_ids = list("minikeg", "blooddrop", "slim_gold", "white_bloodmoon", "greenroad")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 250)
 
 /datum/techweb_node/advance_lims
 	id = "advance_lims"
@@ -394,7 +413,7 @@
 	display_name = "Electromagnetic Theory"
 	description = "Study into usage of frequencies in the electromagnetic spectrum."
 	prereq_ids = list("base")
-	design_ids = list("holosign", "holosignsec", "holosignengi", "holosignatmos", "inducer", "tray_goggles", "holopad")
+	design_ids = list("holosign", "holosignsec", "holosignengi", "holosignatmos", "holosignfirelock", "inducer", "tray_goggles", "holopad")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
 
@@ -518,7 +537,7 @@
 	display_name = "Subdermal Implants"
 	description = "Electronic implants buried beneath the skin."
 	prereq_ids = list("biotech", "datatheory")
-	design_ids = list("implanter", "implantcase", "implant_chem", "implant_tracking", "locator", "c38_trac")
+	design_ids = list("implanter", "implantcase", "implant_chem", "implant_tracking", "implant_slave", "locator", "c38_trac")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
 
@@ -654,7 +673,7 @@
 	display_name = "Medical Weaponry"
 	description = "Weapons using medical technology."
 	prereq_ids = list("adv_biotech", "adv_weaponry")
-	design_ids = list("rapidsyringe", "shotgundartcryostatis")
+	design_ids = list("rapidsyringe", "shotgundartcryostatis", "hypo2")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 	export_price = 5000
 
@@ -1053,7 +1072,7 @@
 	display_name = "Illegal Technology"
 	description = "Dangerous research used to create dangerous objects."
 	prereq_ids = list("adv_engi", "adv_weaponry", "explosive_weapons")
-	design_ids = list("decloner", "borg_syndicate_module", "suppressor", "largecrossbow", "donksofttoyvendor", "advanced_camera")
+	design_ids = list("decloner", "borg_syndicate_module", "suppressor", "largecrossbow", "donksofttoyvendor", "advanced_camera", "syndiesleeper")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	export_price = 5000
 	hidden = TRUE

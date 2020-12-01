@@ -68,6 +68,7 @@
 	buckled_mobs |= M
 	M.update_canmove()
 	M.throw_alert("buckled", /obj/screen/alert/restrained/buckled)
+	M.set_glide_size(glide_size)
 	post_buckle_mob(M)
 
 	SEND_SIGNAL(src, COMSIG_MOVABLE_BUCKLE, M, force)
@@ -87,6 +88,7 @@
 		buckled_mob.anchored = initial(buckled_mob.anchored)
 		buckled_mob.update_canmove()
 		buckled_mob.clear_alert("buckled")
+		buckled_mob.set_glide_size(DELAY_TO_GLIDE_SIZE(buckled_mob.total_multiplicative_slowdown()))
 		buckled_mobs -= buckled_mob
 		SEND_SIGNAL(src, COMSIG_MOVABLE_UNBUCKLE, buckled_mob, force)
 

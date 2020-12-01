@@ -346,7 +346,8 @@
 		icon_state = "dualsaber[item_color][wielded]"
 	else
 		icon_state = "dualsaber0"
-	SEND_SIGNAL(src, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
+
+	clean_blood()
 
 /obj/item/twohanded/dualsaber/attack(mob/target, mob/living/carbon/human/user)
 	if(user.has_dna())
@@ -521,9 +522,9 @@
 	AddComponent(/datum/component/jousting)
 
 /obj/item/twohanded/spear/examine(mob/user)
-	..()
+	. = ..()
 	if(explosive)
-		to_chat(user, "<span class='notice'>Use in your hands to activate the attached explosive.</span><br><span class='notice'>Alt-click to set your war cry.</span><br><span class='notice'>Right-click in combat mode to wield</span>")
+		. += "<span class='notice'>Use in your hands to activate the attached explosive.</span><br><span class='notice'>Alt-click to set your war cry.</span><br><span class='notice'>Right-click in combat mode to wield</span>"
 
 /obj/item/twohanded/spear/update_icon()
 	if(explosive)
@@ -614,7 +615,7 @@
 	force = on ? force_on : initial(force)
 	throwforce = on ? force_on : initial(force)
 	icon_state = "chainsaw_[on ? "on" : "off"]"
-	GET_COMPONENT_FROM(butchering, /datum/component/butchering, src)
+	var/datum/component/butchering/butchering = src.GetComponent(/datum/component/butchering)
 	butchering.butchering_enabled = on
 
 	if(on)

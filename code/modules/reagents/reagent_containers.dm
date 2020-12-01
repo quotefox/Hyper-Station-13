@@ -27,7 +27,7 @@
 	create_reagents(volume, reagent_flags)
 	if(spawned_disease)
 		var/datum/disease/F = new spawned_disease()
-		var/list/data = list("viruses"= list(F))
+		var/list/data = list("blood_DNA" = "UNKNOWN DNA", "blood_type" = "SY","viruses"= list(F))
 		reagents.add_reagent("blood", disease_amount, data)
 
 	add_initial_reagents()
@@ -79,16 +79,19 @@
 	reagents.expose_temperature(exposed_temperature)
 	..()
 
-/obj/item/reagent_containers/throw_impact(atom/target)
+/obj/item/reagent_containers/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
-	SplashReagents(target, TRUE)
+	SplashReagents(hit_atom, TRUE)
 
 /obj/item/reagent_containers/proc/bartender_check(atom/target)
-	if(target.CanPass(src, get_turf(src)) && thrownby && thrownby.actions)
-		for(var/datum/action/innate/drink_fling/D in thrownby.actions)
-			if(D.active)
-				return TRUE
-	return FALSE
+	. = FALSE
+	var/turf/T = get_turf(src)
+	if(!T || target.CanPass(src, T) || !thrownby || !thrownby.actions)
+		return
+	for(var/datum/action/innate/drink_fling/D in thrownby.actions)
+		if(D.active)
+			return TRUE
+
 
 /obj/item/reagent_containers/proc/ForceResetRotation()
 	transform = initial(transform)

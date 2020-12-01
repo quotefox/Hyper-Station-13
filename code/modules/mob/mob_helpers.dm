@@ -486,3 +486,37 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 
 /mob/proc/can_hear()
 	. = TRUE
+
+/proc/bloodtype_to_color(var/type)
+	. = BLOOD_COLOR_HUMAN
+	switch(type)
+		if("U")//Universal blood; a bit orange
+			. = BLOOD_COLOR_UNIVERSAL
+		if("SY")//Synthetics blood; blue
+			. = BLOOD_COLOR_SYNTHETIC
+		if("L")//lizard, a bit pink/purple
+			. = BLOOD_COLOR_LIZARD
+		if("X*")//xeno blood; greenish yellow
+			. = BLOOD_COLOR_XENO
+		if("HF")// Oil/Hydraulic blood. something something why not. reee
+			. = BLOOD_COLOR_OIL
+		if("GEL")// slimepeople blood, rgb 0, 255, 144
+			. = BLOOD_COLOR_SLIME
+		if("BUG")// yellowish, like, y'know bug guts I guess.
+			. = BLOOD_COLOR_BUG
+		//add more stuff to the switch if you have more blood colors for different types
+		// the defines are in _DEFINES/misc.dm
+
+//gets ID card object from special clothes slot or null.
+/mob/proc/get_idcard(hand_first = TRUE)
+	var/obj/item/held_item = get_active_held_item()
+	. = held_item?.GetID()
+	if(!.) //If so, then check the inactive hand
+		held_item = get_inactive_held_item()
+		. = held_item?.GetID()
+
+/mob/proc/get_id_in_hand()
+	var/obj/item/held_item = get_active_held_item()
+	if(!held_item)
+		return
+	return held_item.GetID()

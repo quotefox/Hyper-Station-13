@@ -15,6 +15,9 @@
 	volume = 50
 	//Possible_states has the reagent id as key and a list of, in order, the icon_state, the name and the desc as values. Used in the on_reagent_change(changetype) to change names, descs and sprites.
 	var/list/possible_states = list(
+	 "slimejelly" = list("slimejelly", "slime jelly jar", "Ooey, gooey, toxic goodness."),
+	 "cherryjelly" = list("cherryjelly", "cherry jelly jar", "A sugary spread made from cherries. Delicious!"),
+	 "bluecherryjelly" = list("bluecherryjelly", "blue cherry jelly jar", "A crazy sweet jelly made from blue cherries! It's blue da ba dee-licious!"),
 	 "ketchup" = list("ketchup", "ketchup bottle", "You feel more American already."),
 	 "capsaicin" = list("hotsauce", "hotsauce bottle", "You can almost TASTE the stomach ulcers now!"),
 	 "enzyme" = list("enzyme", "universal enzyme bottle", "Used in cooking various dishes"),
@@ -25,6 +28,7 @@
 	 "cornoil" = list("oliveoil", "corn oil bottle", "A delicious oil used in cooking. Made from corn"),
 	 "sugar" = list("emptycondiment", "sugar bottle", "Tasty spacey sugar!"),
 	 "mayonnaise" = list("mayonnaise", "mayonnaise jar", "An oily condiment made from egg yolks."),
+	 "bbqsauce" = list("condi_bbq", "BBQ sauce", "Hand wipes not included."),
 	 "peanut_butter" = list("peanutbutter", "peanut butter jar", "A deliciously and sticky spread made from peanuts."))
 	var/originalname = "condiment" //Can't use initial(name) for this. This stores the name set by condimasters.
 
@@ -292,3 +296,8 @@
 	name = "astrotame pack"
 	originalname = "astrotame"
 	list_reagents = list("astrotame" = 5)
+
+/obj/item/reagent_containers/food/condiment/pack/bbqsauce
+	name = "bbq sauce pack"
+	originalname = "bbq sauce"
+	list_reagents = list("bbqsauce" = 10)

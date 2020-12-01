@@ -1078,9 +1078,9 @@
 		status_flags &= ~CANPUSH
 
 	if(module.clean_on_move)
-		AddComponent(/datum/component/cleaning)
+		AddElement(/datum/element/cleaning)
 	else
-		qdel(GetComponent(/datum/component/cleaning))
+		RemoveElement(/datum/element/cleaning)
 
 	hat_offset = module.hat_offset
 
@@ -1220,7 +1220,7 @@
 
 /mob/living/silicon/robot/unbuckle_mob(mob/user, force=FALSE)
 	if(iscarbon(user))
-		GET_COMPONENT(riding_datum, /datum/component/riding)
+		var/datum/component/riding/riding_datum = GetComponent(/datum/component/riding)
 		if(istype(riding_datum))
 			riding_datum.unequip_buckle_inhands(user)
 			riding_datum.restore_position(user)

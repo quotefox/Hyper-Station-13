@@ -325,14 +325,20 @@
 
 /datum/mind/proc/enslave_mind_to_creator(mob/living/creator)
 	if(iscultist(creator))
-		SSticker.mode.add_cultist(src)
+		if(iscultist(creator, TRUE))
+			SSticker.mode.add_cultist(src)
+		else
+			src.add_antag_datum(/datum/antagonist/cult/neutered/traitor)
 
 	else if(is_revolutionary(creator))
 		var/datum/antagonist/rev/converter = creator.mind.has_antag_datum(/datum/antagonist/rev,TRUE)
 		converter.add_revolutionary(src,FALSE)
 
 	else if(is_servant_of_ratvar(creator))
-		add_servant_of_ratvar(current)
+		if(is_servant_of_ratvar(creator, TRUE))
+			add_servant_of_ratvar(current)
+		else
+			add_servant_of_ratvar(current, FALSE, FALSE, /datum/antagonist/clockcult/neutered/traitor)
 
 	else if(is_nuclear_operative(creator))
 		var/datum/antagonist/nukeop/converter = creator.mind.has_antag_datum(/datum/antagonist/nukeop,TRUE)
@@ -453,7 +459,7 @@
 						else
 							target_antag = target
 
-		var/new_obj_type = input("Select objective type:", "Objective type", def_value) as null|anything in list("assassinate", "maroon", "debrain", "protect", "destroy", "prevent", "hijack", "escape", "survive", "martyr", "steal", "download", "nuclear", "capture", "absorb", "custom")
+		var/new_obj_type = input("Select objective type:", "Objective type", def_value) as null|anything in list("assassinate", "maroon", "debrain", "protect", "destroy", "prevent", "hijack", "escape", "survive", "martyr", "steal", "download", "nuclear", "capture", "absorb", "noncon", "custom")
 		if (!new_obj_type)
 			return
 
@@ -555,6 +561,38 @@
 				new_objective.owner = src
 				new_objective.target_amount = target_number
 
+			//Hyper objective
+			if ("noncon")
+				//new_objective = new /datum/objective/noncon
+				//new_objective.owner = src
+
+				var/list/possible_targets = list("Free lewd objective")
+				for(var/datum/mind/possible_target in SSticker.minds)
+					if ((possible_target != src) && ishuman(possible_target.current))
+						possible_targets += possible_target.current
+
+				var/mob/def_target = null
+				var/list/objective_list = typecacheof(list(/datum/objective/assassinate, /datum/objective/protect, /datum/objective/debrain, /datum/objective/maroon))
+				if (is_type_in_typecache(objective, objective_list) && objective.target)
+					def_target = objective.target.current
+
+				var/mob/new_target = input("Select target:", "Objective target", def_target) as null|anything in possible_targets
+				if (!new_target)
+					return
+
+				var/objective_path = text2path("/datum/objective/[new_obj_type]")
+				if (new_target == "Free lewd objective")
+					new_objective = new objective_path
+					new_objective.owner = src
+					new_objective.target = null
+					new_objective.explanation_text = "Free lewd objective"
+				else
+					new_objective = new objective_path
+					new_objective.owner = src
+					new_objective.target = new_target.mind
+					//Will display as special role if the target is set as MODE. Ninjas/commandos/nuke ops.
+					new_objective.update_explanation_text()
+
 			if ("custom")
 				var/expl = stripped_input(usr, "Custom objective:", "Objective", objective ? objective.explanation_text : "")
 				if (!expl)
@@ -570,6 +608,7 @@
 			if(target_antag)
 				target_antag.objectives -= objective
 			objectives -= objective
+			objectives += new_objective
 			target_antag.objectives.Insert(objective_pos, new_objective)
 			message_admins("[key_name_admin(usr)] edited [current]'s objective to [new_objective.explanation_text]")
 			log_admin("[key_name(usr)] edited [current]'s objective to [new_objective.explanation_text]")

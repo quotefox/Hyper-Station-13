@@ -40,7 +40,7 @@
 		return TRUE
 	user.changeNext_move(CLICK_CD_MELEE)
 	if(user.a_intent == INTENT_HARM && stat == DEAD && (butcher_results || guaranteed_butcher_results)) //can we butcher it?
-		GET_COMPONENT_FROM(butchering, /datum/component/butchering, I)
+		var/datum/component/butchering/butchering = I.GetComponent(/datum/component/butchering)
 		if(butchering && butchering.butchering_enabled)
 			to_chat(user, "<span class='notice'>You begin to butcher [src]...</span>")
 			playsound(loc, butchering.butcher_sound, 50, TRUE, -1)
@@ -109,17 +109,18 @@
 	take_damage(I.force, I.damtype, "melee", 1)
 
 /mob/living/attacked_by(obj/item/I, mob/living/user)
+	var/totitemdamage = I.force
+	if(iscarbon(user))
+		var/mob/living/carbon/tempcarb = user
+		if(!tempcarb.combatmode)
+			totitemdamage *= 0.5
+	if(user.resting)
+		totitemdamage *= 0.5
+	//CIT CHANGES END HERE
+	if(user != src && check_shields(I, totitemdamage, "the [I.name]", MELEE_ATTACK, I.armour_penetration))
+		return FALSE
 	send_item_attack_message(I, user)
 	if(I.force)
-	//CIT CHANGES START HERE - combatmode and resting checks
-		var/totitemdamage = I.force
-		if(iscarbon(user))
-			var/mob/living/carbon/tempcarb = user
-			if(!tempcarb.combatmode)
-				totitemdamage *= 0.5
-		if(user.resting)
-			totitemdamage *= 0.5
-	//CIT CHANGES END HERE
 		apply_damage(totitemdamage, I.damtype) //CIT CHANGE - replaces I.force with totitemdamage
 		if(I.damtype == BRUTE)
 			if(prob(33))

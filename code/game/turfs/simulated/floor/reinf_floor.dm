@@ -13,8 +13,8 @@
 	tiled_dirt = FALSE
 
 /turf/open/floor/engine/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>The reinforcement rods are <b>wrenched</b> firmly in place.</span>")
+	. = ..()
+	. += "<span class='notice'>The reinforcement rods are <b>wrenched</b> firmly in place.</span>"
 
 /turf/open/floor/engine/airless
 	initial_gas_mix = "TEMP=2.7"
@@ -76,13 +76,15 @@
 
 /turf/open/floor/engine/singularity_pull(S, current_size)
 	..()
-	if(current_size >= STAGE_FIVE)
+	if(current_size >= STAGE_FIVE && prob(30))
 		if(floor_tile)
-			if(prob(30))
-				new floor_tile(src)
-				make_plating()
-		else if(prob(30))
+			remove_tile(forced = TRUE)
+		else
 			ReplaceWithLattice()
+
+/turf/open/floor/engine/remove_tile(mob/user, silent = FALSE, make_tile = TRUE, forced = FALSE)
+	if(forced)
+		return ..()
 
 /turf/open/floor/engine/attack_paw(mob/user)
 	return attack_hand(user)

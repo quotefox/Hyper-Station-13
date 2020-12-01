@@ -48,7 +48,7 @@ Difficulty: Medium
 	vision_range = 10
 	wander = FALSE
 	elimination = 1
-	appearance_flags = 0
+	appearance_flags = LONG_GLIDE
 	mouse_opacity = MOUSE_OPACITY_ICON
 
 /mob/living/simple_animal/hostile/megafauna/legion/Initialize()

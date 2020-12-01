@@ -65,7 +65,7 @@
 	var/buffed = 0 //In the event that you want to have a buffing effect on the mob, but don't want it to stack with other effects, any outside force that applies a buff to a simple mob should at least set this to 1, so we have something to check against
 	var/gold_core_spawnable = NO_SPAWN //If the mob can be spawned with a gold slime core. HOSTILE_SPAWN are spawned with plasma, FRIENDLY_SPAWN are spawned with blood
 
-	var/mob/living/simple_animal/hostile/spawner/nest
+	var/datum/component/spawner/nest
 
 	var/sentience_type = SENTIENCE_ORGANIC // Sentience type, for slime potions
 
@@ -368,7 +368,7 @@
 /mob/living/simple_animal/proc/make_babies() // <3 <3 <3
 	if(gender != FEMALE || stat || next_scan_time > world.time || !childtype || !animal_species || !SSticker.IsRoundInProgress())
 		return
-	next_scan_time = world.time + 400
+	next_scan_time = world.time + 2000 //Please stop making it so they multiply like rabbits
 	var/alone = 1
 	var/mob/living/simple_animal/partner
 	var/children = 0
@@ -462,8 +462,8 @@
 			return
 	sync_lighting_plane_alpha()
 
-/mob/living/simple_animal/get_idcard()
-	return access_card
+/mob/living/simple_animal/get_idcard(hand_first = TRUE)
+	return ..() || access_card
 
 /mob/living/simple_animal/OpenCraftingMenu()
 	if(dextrous)
@@ -536,7 +536,7 @@
 //ANIMAL RIDING
 
 /mob/living/simple_animal/user_buckle_mob(mob/living/M, mob/user)
-	GET_COMPONENT(riding_datum, /datum/component/riding)
+	var/datum/component/riding/riding_datum = GetComponent(/datum/component/riding)
 	if(riding_datum)
 		if(user.incapacitated())
 			return
@@ -547,7 +547,7 @@
 		return ..()
 
 /mob/living/simple_animal/relaymove(mob/user, direction)
-	GET_COMPONENT(riding_datum, /datum/component/riding)
+	var/datum/component/riding/riding_datum = GetComponent(/datum/component/riding)
 	if(tame && riding_datum)
 		riding_datum.handle_ride(user, direction)
 

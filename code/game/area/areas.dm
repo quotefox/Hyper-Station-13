@@ -18,6 +18,11 @@
 	var/clockwork_warp_allowed = TRUE // Can servants warp into this area from Reebe?
 	var/clockwork_warp_fail = "The structure there is too dense for warping to pierce. (This is normal in high-security areas.)"
 
+	/// if mobs can be spawned by natural random generation
+	var/mob_spawn_allowed = FALSE
+	/// If megafauna can be spawned by natural random generation
+	var/megafauna_spawn_allowed = FALSE
+
 	var/fire = null
 	var/atmos = TRUE
 	var/atmosalm = FALSE
@@ -81,8 +86,8 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		var/turf/picked = AR.contents[1]
 		if (picked && is_station_level(picked.z))
 			GLOB.teleportlocs[AR.name] = AR
-
-	sortTim(GLOB.teleportlocs, /proc/cmp_text_dsc)
+	if(GLOB.teleportlocs.len) //DON'T TRY TO TIMSORT THINGS THAT HAVE NOTHING. FUCK.
+		sortTim(GLOB.teleportlocs, /proc/cmp_text_dsc)
 
 // ===
 

@@ -121,7 +121,12 @@
 #define TRAIT_LAW_ENFORCEMENT_METABOLISM "law-enforcement-metabolism"
 #define	TRAIT_STRONG_GRABBER	"strong_grabber"
 #define	TRAIT_CALCIUM_HEALER	"calcium_healer"
-#define TRAIT_BEEFRIEND 		"beefriend"
+#define TRAIT_ALCOHOL_LIGHTWEIGHT	"alcohol_lightweight" //Skyrat port
+#define TRAIT_CURSED_BLOOD	"cursed_blood" //Yo dawg I heard you like bloodborne references so I put a
+#define TRAIT_RADRESONANCE "radioactive_resonance" //Hyperstation edit
+
+#define TRAIT_SWIMMING			"swimming"			//only applied by /datum/element/swimming, for checking
+#define TRAIT_CAPTAIN_METABOLISM "captain-metabolism"
 
  //non-mob traits
 #define TRAIT_PARALYSIS			"paralysis" //Used for limb-based paralysis, where replacing the limb will fix it
@@ -150,8 +155,9 @@
 #define	TRAIT_MUSICIAN			"musician"
 #define	TRAIT_CROCRIN_IMMUNE    "crocin_immune"
 #define TRAIT_NYMPHO			"nymphomania"
-#define TRAIT_FLUID_LEAK	"leaky_fluids"
+//#define TRAIT_FLUID_LEAK	"leaky_fluids" removed because milk snail trails are not okay
 #define TRAIT_MASO              "masochism"
+#define TRAIT_CHOKE_SLUT		"choke_slut"
 #define	TRAIT_HIGH_BLOOD        "high_blood"
 #define TRAIT_PHARMA            "hepatic_pharmacokinesis"
 #define TRAIT_PARA              "paraplegic"
@@ -161,17 +167,25 @@
 #define TRAIT_CULT_EYES 		"cult_eyes"
 #define TRAIT_XRAY_VISION       "xray_vision"
 #define TRAIT_THERMAL_VISION    "thermal_vision"
-//#define TRAIT_CUM_PLUS			"cum_plus"
-
+#define TRAIT_CUM_PLUS			"cum_plus"
+#define TRAIT_NEVER_CLONE       "donotclone"
+#define TRAIT_COLDBLOODED		"coldblooded"	// Your body is literal room temperature. Does not make you immune to the temp.
+#define TRAIT_FLIMSY		"flimsy" //you have 20% less maxhealth
+#define TRAIT_TOUGH		"tough" //you have 10% more maxhealth
+#define TRAIT_AUTO_CATCH_ITEM	"auto_catch_item"
+#define TRAIT_CLOWN_MENTALITY	"clown_mentality" // The future is now, clownman.
+#define TRAIT_FREESPRINT		"free_sprinting"
+#define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
+#define TRAIT_NO_ALCOHOL		"alcohol_intolerance"
 
 // common trait sources
 #define TRAIT_GENERIC "generic"
 #define EYE_DAMAGE "eye_damage"
-#define DISEASE_TRAIT "disease"
 #define GENETIC_MUTATION "genetic"
 #define OBESITY "obesity"
 #define MAGIC_TRAIT "magic"
 #define TRAUMA_TRAIT "trauma"
+#define DISEASE_TRAIT "disease"
 #define SPECIES_TRAIT "species"
 #define ORGAN_TRAIT "organ"
 #define JOB_TRAIT "job"
@@ -193,7 +207,6 @@
 #define STASIS_MUTE "stasis"
 #define GENETICS_SPELL "genetics_spell"
 #define EYES_COVERED "eyes_covered"
-#define CULT_TRAIT "cult"
 #define CLOWN_NUKE_TRAIT "clown-nuke"
 #define STICKY_MOUSTACHE_TRAIT "sticky-moustache"
 #define CHAINSAW_FRENZY_TRAIT "chainsaw-frenzy"
@@ -214,3 +227,11 @@
 #define LOCKED_HELMET_TRAIT "locked-helmet"
 #define NINJA_SUIT_TRAIT "ninja-suit"
 #define ANTI_DROP_IMPLANT_TRAIT "anti-drop-implant"
+#define SLEEPING_CARP_TRAIT "sleeping_carp"
+#define RISING_BASS_TRAIT "rising_bass"
+#define ABDUCTOR_ANTAGONIST "abductor-antagonist"
+#define NUKEOP_ANTAGONIST "nukeop-antagonist"
+#define MADE_UNCLONEABLE "made-uncloneable"
+#define NUKEOP_TRAIT "nuke-op"
+#define MEGAFAUNA_TRAIT "megafauna"
+#define DEATHSQUAD_TRAIT "deathsquad"

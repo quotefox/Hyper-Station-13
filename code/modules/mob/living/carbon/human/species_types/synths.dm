@@ -9,6 +9,7 @@
 	dangerous_existence = 1
 	blacklisted = 1
 	meat = null
+	gib_types = /obj/effect/gibspawner/robot
 	damage_overlay_type = "synth"
 	limbs_id = "synth"
 	var/list/initial_species_traits = list(NOTRANSSTING) //for getting these values back for assume_disguise()
@@ -29,10 +30,12 @@
 	..()
 	assume_disguise(old_species, H)
 	RegisterSignal(H, COMSIG_MOB_SAY, .proc/handle_speech)
+	H.grant_language(/datum/language/machine)
 
 /datum/species/synth/on_species_loss(mob/living/carbon/human/H)
 	. = ..()
 	UnregisterSignal(H, COMSIG_MOB_SAY)
+	H.remove_language(/datum/language/machine)
 
 /datum/species/synth/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
 	if(chem.id == "synthflesh")

@@ -67,8 +67,8 @@
 	rad_insulation = RAD_LIGHT_INSULATION
 
 /obj/structure/holosign/barrier/atmos
-	name = "holo firelock"
-	desc = "A holographic barrier resembling a firelock. Though it does not prevent solid objects from passing through, gas is kept out."
+	name = "holo fan"
+	desc = "A holographic barrier resembling a tiny fan. Though it does not prevent solid objects from passing through, gas is kept out. Somehow."
 	icon_state = "holo_fan"
 	density = FALSE
 	layer = ABOVE_MOB_LAYER
@@ -81,7 +81,16 @@
 	. = ..()
 	air_update_turf(TRUE)
 
-/obj/structure/holosign/barrier/atmos/blocksTemperature()
+/obj/structure/holosign/barrier/firelock
+	name = "holo firelock"
+	desc = "A holographic barrier resembling a firelock. Though it does not prevent solid objects or gas from passing through, temperature changes are kept out."
+	icon_state = "holo_firelock"
+	density = FALSE
+	anchored = TRUE
+	alpha = 150
+	resistance_flags = FIRE_PROOF
+
+/obj/structure/holosign/barrier/firelock/blocksTemperature()
 	return TRUE
 
 /obj/structure/holosign/barrier/cyborg
@@ -108,8 +117,8 @@
 	var/buzzcd = 0
 
 /obj/structure/holosign/barrier/medical/examine(mob/user)
-	..()
-	to_chat(user,"<span class='notice'>The biometric scanners are <b>[force_allaccess ? "off" : "on"]</b>.</span>")
+	. = ..()
+	. += "<span class='notice'>The biometric scanners are <b>[force_allaccess ? "off" : "on"]</b>.</span>"
 
 /obj/structure/holosign/barrier/medical/CanPass(atom/movable/mover, turf/target)
 	icon_state = "holo_medical"

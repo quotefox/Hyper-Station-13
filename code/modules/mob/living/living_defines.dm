@@ -5,6 +5,8 @@
 	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD,NANITE_HUD,DIAG_NANITE_FULL_HUD)
 	pressure_resistance = 10
 
+	typing_indicator_enabled = TRUE
+
 	var/resize = 1 //Badminnery resize
 	var/lastattacker = null
 	var/lastattackerckey = null
@@ -54,7 +56,7 @@
 	var/mob_size = MOB_SIZE_HUMAN
 
 //H13 custom body size and impregnation
-	var/custom_body_size = 1
+	var/custom_body_size = 100
 	var/breedable = 0
 	var/impregchance = 0
 
@@ -107,7 +109,7 @@
 	var/last_words	//used for database logging
 
 	var/list/obj/effect/proc_holder/abilities = list()
-
+	
 	var/can_be_held = FALSE
 
 	var/radiation = 0 //If the mob is irradiated.
@@ -117,3 +119,5 @@
 	//List of active diseases
 	var/list/diseases = list() // list of all diseases in a mob
 	var/list/disease_resistances = list()
+
+	var/drag_slowdown = TRUE //Whether the mob is slowed down when dragging another prone mob

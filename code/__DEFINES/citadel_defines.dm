@@ -69,11 +69,15 @@
 #define BREASTS_SIZE_HUGE		16
 #define BREASTS_SIZE_MASSIVE		17
 #define BREASTS_SIZE_GIGA		25
+#define BREASTS_SIZE_IMPOSSIBLE		30
 
+//Bodysize Limits
+#define MIN_BODYSIZE		50
+#define MAX_BODYSIZE		200
 
 #define BREASTS_SIZE_MIN 	BREASTS_SIZE_A
 #define BREASTS_SIZE_DEF	BREASTS_SIZE_D
-#define BREASTS_SIZE_MAX 	BREASTS_SIZE_GIGA
+#define BREASTS_SIZE_MAX 	BREASTS_SIZE_IMPOSSIBLE
 
 #define MILK_RATE			5
 #define MILK_RATE_MULT		1
@@ -107,12 +111,6 @@
 #define isgenital(A) (istype(A, /obj/item/organ/genital))
 
 #define isborer(A) (istype(A, /mob/living/simple_animal/borer))
-#define isipcperson(A) (is_species(A, /datum/species/ipc))
-#define ismammal(A) (is_species(A, /datum/species/mammal))
-#define isavian(A) (is_species(A, /datum/species/avian))
-#define isaquatic(A) (is_species(A, /datum/species/aquatic))
-#define isinsect(A) (is_species(A, /datum/species/insect))
-#define isxenoperson(A) (is_species(A, /datum/species/xeno))
 
 #define CITADEL_MENTOR_OOC_COLOUR "#224724"
 

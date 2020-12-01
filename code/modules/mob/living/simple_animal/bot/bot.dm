@@ -184,8 +184,9 @@
 	return TRUE
 
 /mob/living/simple_animal/bot/death(gibbed)
-	explode()
-	..()
+	. = ..()
+	if(!gibbed)
+		explode()
 
 /mob/living/simple_animal/bot/proc/explode()
 	qdel(src)
@@ -209,14 +210,14 @@
 		to_chat(user, "<span class='warning'>You need to open maintenance panel first!</span>")
 
 /mob/living/simple_animal/bot/examine(mob/user)
-	..()
+	. = ..()
 	if(health < maxHealth)
 		if(health > maxHealth/3)
-			to_chat(user, "[src]'s parts look loose.")
+			. += "[src]'s parts look loose."
 		else
-			to_chat(user, "[src]'s parts look very loose!")
+			. += "[src]'s parts look very loose!"
 	else
-		to_chat(user, "[src] is in pristine condition.")
+		. += "[src] is in pristine condition."
 
 /mob/living/simple_animal/bot/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	if(amount>0 && prob(10))

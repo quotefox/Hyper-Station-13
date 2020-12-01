@@ -230,19 +230,6 @@
 		if(D)
 			D.Evolve(level_min, level_max)
 			
-/datum/chemical_reaction/virus_food_laughter
-	name = "Anomolous virus food"
-	id = "virusfood_laughter"
-	results = list("laughtervirusfood" = 1)
-	required_reagents = list("laughter" = 5, "virusfood" = 1)
-
-/datum/chemical_reaction/virus_food_admin
-	name = "Highly unstable virus Food"
-	id = "virusfood_admin"
-	results = list("advvirusfood" = 1)
-	required_reagents = list("viralbase" = 1, "uranium" = 20)
-	mix_message = "The mixture turns every colour of the rainbow, soon settling on a bright white. There's no way this isn't a good idea."
-
 /datum/chemical_reaction/mix_virus/mix_virus_2
 
 	name = "Mix Virus 2"
@@ -330,23 +317,6 @@
 	required_reagents = list("uraniumplasmavirusfood_stable" = 1)
 	level_min = 8
 	level_max = 8
-	
-/datum/chemical_reaction/mix_virus/mix_virus_13
-	
-	name = "Mix Virus 13"
-	id = "mixvirus13"
-	required_reagents = list("laughtervirusfood" = 1)
-	level_min = 0
-	level_max = 0
-	
-/datum/chemical_reaction/mix_virus/mix_virus_14
-
-	name = "Mix Virus 14"
-	id = "mixvirus14"
-	required_reagents = list("advvirusfood" = 1)
-	level_min = 9
-	level_max = 9
-
 
 /datum/chemical_reaction/mix_virus/rem_virus
 
@@ -732,3 +702,11 @@
 	id = "royalbluecarpet"
 	results = list("royalbluecarpet" = 2)
 	required_reagents = list("carpet" = 1, "clonexadone" = 1)
+
+/datum/chemical_reaction/synth_blood
+	name = "Synthetic Blood"
+	id = "syntheticblood"
+	results = list("syntheticblood" = 3)
+	required_reagents = list("salglu_solution" = 1, "iron" = 1, "stable_plasma" = 1)
+	mix_message = "The mixture congeals and gives off a faint copper scent."
+	required_temp = 350

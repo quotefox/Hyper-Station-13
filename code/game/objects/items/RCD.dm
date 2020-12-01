@@ -47,11 +47,11 @@ RLD
 
 /obj/item/construction/examine(mob/user)
 	. = ..()
-	to_chat(user, "It currently holds [matter]/[max_matter] matter-units." )
+	. += "\A [src]. It currently holds [matter]/[max_matter] matter-units."
 	if(upgrade & RCD_UPGRADE_FRAMES)
-		to_chat(user, "It contains the design for machine frames, computer frames and deconstruction." )
+		. += "It contains the design for machine frames, computer frames and deconstruction." 
 	if(upgrade & RCD_UPGRADE_SIMPLE_CIRCUITS)
-		to_chat(user, "It contains the design for firelock, air alarm, fire alarm, apc circuits and crap power cells.")
+		. += "It contains the design for firelock, air alarm, fire alarm, apc circuits and crap power cells."
 
 /obj/item/construction/Destroy()
 	QDEL_NULL(spark_system)
@@ -701,17 +701,17 @@ RLD
 	icon_state = "rld"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
-	matter = 500
-	max_matter = 500
-	sheetmultiplier = 16
+	matter = 240
+	max_matter = 240
+	sheetmultiplier = 8
 	var/mode = LIGHT_MODE
 	actions_types = list(/datum/action/item_action/pick_color)
 	ammo_sections = 5
 	has_ammobar = TRUE
 
-	var/wallcost = 10
-	var/floorcost = 15
-	var/launchcost = 5
+	var/wallcost = 20
+	var/floorcost = 20
+	var/launchcost = 30
 	var/deconcost = 10
 
 	var/walldelay = 10

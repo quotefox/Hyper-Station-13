@@ -1,4 +1,3 @@
-
 //Yes, they can only be rectangular.
 //Yes, I'm sorry.
 /datum/turf_reservation

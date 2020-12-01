@@ -74,6 +74,31 @@
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
 
+/datum/sprite_accessory/tails/lizard/snaketail
+	name = "Snaketail"
+	icon_state = "snaketail"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails_animated/lizard/snaketail
+	name = "Snaketail"
+	icon_state = "snaketail"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails/lizard/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails_animated/lizard/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+
 /******************************************
 ************** Human Tails ****************
 *******************************************/
@@ -165,6 +190,18 @@
 /datum/sprite_accessory/tails_animated/human/corvid
 	name = "Corvid"
 	icon_state = "crow"
+
+/datum/sprite_accessory/tails/human/deer
+	name = "Deer"
+	icon_state = "deer"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails_animated/human/deer
+	name = "Deer"
+	icon_state = "deer"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
 
 /datum/sprite_accessory/tails/human/eevee
 	name = "Eevee"
@@ -390,6 +427,18 @@
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
 
+/datum/sprite_accessory/tails/human/snaketail
+	name = "Snaketail"
+	icon_state = "snaketail"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails_animated/human/snaketail
+	name = "Snaketail"
+	icon_state = "snaketail"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
 /datum/sprite_accessory/tails/human/tentacle
 	name = "Tentacle"
 	icon_state = "tentacle"
@@ -414,6 +463,18 @@
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
 
+/datum/sprite_accessory/tails/human/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails_animated/human/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
 /datum/sprite_accessory/tails/human/wolf
 	name = "Wolf"
 	icon_state = "wolf"
@@ -433,10 +494,12 @@
 /datum/sprite_accessory/mam_tails
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+	recommended_species = list("mammal", "slimeperson", "podweak", "felinid", "insect", "avian", "aquatic") //Despite not being mammals, avians and aquatic parts are in the mammal files here.
 
 /datum/sprite_accessory/mam_tails/none
 	name = "None"
 	icon_state = "none"
+	recommended_species = null
 
 /datum/sprite_accessory/mam_tails_animated
 	color_src = MATRIXED
@@ -506,6 +569,14 @@
 /datum/sprite_accessory/mam_tails_animated/cow
 	name = "Cow"
 	icon_state = "cow"
+
+/datum/sprite_accessory/mam_tails/deer
+	name = "Deer"
+	icon_state = "deer"
+
+/datum/sprite_accessory/mam_tails_animated/deer
+	name = "Deer"
+	icon_state = "deer"
 
 /datum/sprite_accessory/mam_tails/eevee
 	name = "Eevee"
@@ -685,6 +756,14 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Squirrel"
 	icon_state = "squirrel"
 
+/datum/sprite_accessory/mam_tails/snaketail
+	name = "Snaketail"
+	icon_state = "snaketail"
+
+/datum/sprite_accessory/mam_tails_animated/snaketail
+	name = "Snaketail"
+	icon_state = "snaketail"
+
 /datum/sprite_accessory/mam_tails/tentacle
 	name = "Tentacle"
 	icon_state = "tentacle"
@@ -700,6 +779,14 @@ datum/sprite_accessory/mam_tails/insect
 /datum/sprite_accessory/mam_tails_animated/tiger
 	name = "Tiger"
 	icon_state = "tiger"
+
+/datum/sprite_accessory/mam_tails/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
+
+/datum/sprite_accessory/mam_tails_animated/tailmaw
+	name = "Tailmaw"
+	icon_state = "tailmaw"
 
 /datum/sprite_accessory/mam_tails/wolf
 	name = "Wolf"

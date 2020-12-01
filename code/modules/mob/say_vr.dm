@@ -1,8 +1,6 @@
 //////////////////////////////////////////////////////
 ////////////////////SUBTLE COMMAND////////////////////
 //////////////////////////////////////////////////////
-/mob
-	var/flavor_text = "" //tired of fucking double checking this
 
 /mob/proc/update_flavor_text()
 	set src in usr
@@ -54,7 +52,6 @@ proc/get_top_level_mob(var/mob/S)
 	message = null
 	mob_type_blacklist_typecache = list(/mob/living/brain)
 
-
 /datum/emote/living/subtle/proc/check_invalid(mob/user, input)
 	. = TRUE
 	if(copytext(input,1,5) == "says")
@@ -99,7 +96,7 @@ proc/get_top_level_mob(var/mob/S)
 		return FALSE
 
 	user.log_message(message, INDIVIDUAL_EMOTE_LOG)
-	message = "<b>[user]</b> " + "<i>[message]</i>"
+	message = "<b>[user]</b> " + "<i>[user.say_emphasis(message)]</i>"
 
 	for(var/mob/M in GLOB.dead_mob_list)
 		if(!M.client || isnewplayer(M))
@@ -170,7 +167,7 @@ proc/get_top_level_mob(var/mob/S)
 		return FALSE
 
 	user.log_message(message, INDIVIDUAL_EMOTE_LOG)
-	message = "<b>[user]</b> " + "<i>[message]</i>"
+	message = "<b>[user]</b> " + "<i>[user.say_emphasis(message)]</i>"
 
 	if(emote_type == EMOTE_AUDIBLE)
 		user.audible_message(message=message,hearing_distance=1, no_ghosts = TRUE)

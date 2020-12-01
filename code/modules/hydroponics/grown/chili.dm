@@ -80,6 +80,31 @@
 	foodtype = FRUIT
 	wine_power = 50
 
+//Pink-peppers
+/obj/item/seeds/chili/pink
+	name = "pack of pink pepper seeds"
+	desc = "These seeds grow into pink pepper plants."
+	icon_state = "seed-chilipink"
+	species = "chilipink"
+	plantname = "Pink Pepper Plants"
+	product = /obj/item/reagent_containers/food/snacks/grown/pink_chili
+	maturation = 6
+	production = 4
+	yield = 3
+	rarity = 20
+	mutatelist = list()
+	reagents_add = list("aphro" = 0.2, "penis_enlarger" = 0.08, "vitamin" = 0.04, "nutriment" = 0.04)
+
+/obj/item/reagent_containers/food/snacks/grown/pink_chili
+	seed = /obj/item/seeds/chili/pink
+	name = "pink pepper"
+	desc = "It looks almost like a knotted phallus. Is it... throbbing?"
+	icon_state = "pinkchilipepper"
+	filling_color = "#FF1458"
+	bitesize_mod = 3
+	foodtype = FRUIT
+	wine_power = 40
+
 /obj/item/reagent_containers/food/snacks/grown/ghost_chili/attack_hand(mob/user)
 	. = ..()
 	if(.)

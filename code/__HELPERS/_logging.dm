@@ -4,7 +4,10 @@
 #define SEND_SOUND(target, sound) DIRECT_OUTPUT(target, sound)
 #define SEND_TEXT(target, text) DIRECT_OUTPUT(target, text)
 #define WRITE_FILE(file, text) DIRECT_OUTPUT(file, text)
-#define WRITE_LOG(log, text) rustg_log_write(log, text)
+//#define WRITE_LOG(log, text) rustg_log_write(log, text)
+//This is an external call, "true" and "false" are how rust parses out booleans
+#define WRITE_LOG(log, text) rustg_log_write(log, text, "true")
+#define WRITE_LOG_NO_FORMAT(log, text) rustg_log_write(log, text, "false")
 
 //print a warning message to world.log
 #define WARNING(MSG) warning("[MSG] in [__FILE__] at line [__LINE__] src: [src] usr: [usr].")
@@ -57,6 +60,10 @@
 /proc/log_game(text)
 	if (CONFIG_GET(flag/log_game))
 		WRITE_LOG(GLOB.world_game_log, "GAME: [text]")
+
+/proc/log_virus(text)
+	if (CONFIG_GET(flag/log_virus))
+		WRITE_LOG(GLOB.world_virus_log, "VIRUS: [text]")
 
 /proc/log_access(text)
 	if (CONFIG_GET(flag/log_access))

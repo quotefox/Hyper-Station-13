@@ -21,6 +21,7 @@
 	var/through_clothes			= FALSE
 	var/internal				= FALSE
 	var/hidden					= FALSE
+	var/colourtint				= ""
 
 /obj/item/organ/genital/Initialize()
 	. = ..()
@@ -355,6 +356,7 @@
 	var/list/standing = list()
 	var/size
 	var/aroused_state
+	var/colourtint
 
 	for(var/L in relevant_layers) //Less hardcode
 		H.remove_overlay(L)
@@ -374,6 +376,7 @@
 			var/datum/sprite_accessory/S
 			size = G.size
 			aroused_state = G.aroused_state
+			colourtint = G.colourtint
 			switch(G.type)
 				if(/obj/item/organ/genital/penis)
 					S = GLOB.cock_shapes_list[G.shape]
@@ -383,9 +386,6 @@
 					S = GLOB.vagina_shapes_list[G.shape]
 				if(/obj/item/organ/genital/breasts)
 					S = GLOB.breasts_shapes_list[G.shape]
-
-
-
 
 			if(!S || S.icon_state == "none")
 				continue
@@ -399,10 +399,14 @@
 			if(use_skintones && H.dna.features["genitals_use_skintone"])
 				genital_overlay.color = "#[skintone2hex(H.skin_tone)]"
 				genital_overlay.icon_state = "[G.slot]_[S.icon_state]_[size]-s_[aroused_state]_[layertext]"
+				if (colourtint)
+					genital_overlay.color = "#[colourtint]"
 			else
 				switch(S.color_src)
 					if("cock_color")
 						genital_overlay.color = "#[H.dna.features["cock_color"]]"
+						if (colourtint)
+							genital_overlay.color = "#[colourtint]"
 					if("balls_color")
 						genital_overlay.color = "#[H.dna.features["balls_color"]]"
 					if("breasts_color")

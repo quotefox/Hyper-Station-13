@@ -5,6 +5,7 @@
 	icon_state = "door1"
 	opacity = 1
 	density = TRUE
+	move_resist = MOVE_FORCE_VERY_STRONG
 	layer = OPEN_DOOR_LAYER
 	power_channel = ENVIRON
 	max_integrity = 350
@@ -37,14 +38,14 @@
 	var/unres_sides = 0 //Unrestricted sides. A bitflag for which direction (if any) can open the door with no access
 
 /obj/machinery/door/examine(mob/user)
-	..()
+	. = ..()
 	if(red_alert_access)
 		if(GLOB.security_level >= SEC_LEVEL_RED)
-			to_chat(user, "<span class='notice'>Due to a security threat, its access requirements have been lifted!</span>")
+			. += "<span class='notice'>Due to a security threat, its access requirements have been lifted!</span>"
 		else
-			to_chat(user, "<span class='notice'>In the event of a red alert, its access requirements will automatically lift.</span>")
+			. += "<span class='notice'>In the event of a red alert, its access requirements will automatically lift.</span>"
 	if(!poddoor)
-		to_chat(user, "<span class='notice'>Its maintenance panel is <b>screwed</b> in place.</span>")
+		. += "<span class='notice'>Its maintenance panel is <b>screwed</b> in place.</span>"
 
 /obj/machinery/door/check_access_list(list/access_list)
 	if(red_alert_access && GLOB.security_level >= SEC_LEVEL_RED)
@@ -120,6 +121,8 @@
 
 /obj/machinery/door/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGLASS))
+		return !opacity
+	if(istype(mover) && (mover.pass_flags & PASSDOOR))
 		return !opacity
 	return !density
 
@@ -326,7 +329,7 @@
 		else //for simple_animals & borgs
 			L.adjustBruteLoss(DOOR_CRUSH_DAMAGE)
 		var/turf/location = get_turf(src)
-		//add_blood doesn't work for borgs/xenos, but add_blood_floor does.
+		//add_blood_DNA doesn't work for borgs/xenos, but add_blood_floor does.
 		if(iscarbon(L))
 			var/mob/living/carbon/C = L
 			C.bleed(DOOR_CRUSH_DAMAGE)

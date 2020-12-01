@@ -223,6 +223,20 @@
 	fire_delay = 1
 //ENDS HERE
 
+//FAL
+/obj/item/gun/ballistic/automatic/fal
+	name = "\improper FAL"
+	desc = "An ancient, but reliable battle rifle. As long as you dont get any dirt in it."
+	icon_state = "fal-wood"
+	item_state = "fal-wood"
+	w_class = WEIGHT_CLASS_HUGE
+	slot_flags = 0
+	mag_type = /obj/item/ammo_box/magazine/falMag
+	fire_sound = 'sound/weapons/falshot.ogg'
+	can_suppress = FALSE
+	burst_size = 4
+	fire_delay = 1
+
 /obj/item/gun/ballistic/automatic/tommygun
 	name = "\improper Thompson SMG"
 	desc = "Based on the classic 'Chicago Typewriter'."
@@ -306,9 +320,9 @@
 	pin = /obj/item/firing_pin
 
 /obj/item/gun/ballistic/automatic/l6_saw/examine(mob/user)
-	..()
+	. = ..()
 	if(cover_open && magazine)
-		to_chat(user, "<span class='notice'>It seems like you could use an <b>empty hand</b> to remove the magazine.</span>")
+		. += "<span class='notice'>It seems like you could use an <b>empty hand</b> to remove the magazine.</span>"
 
 /obj/item/gun/ballistic/automatic/l6_saw/attack_self(mob/user)
 	cover_open = !cover_open

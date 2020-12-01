@@ -47,7 +47,7 @@
 							"<span class='userdanger'>[user] forces [M] to [apply_method] [src].</span>")
 
 	var/makes_me_think = pick(strings("redpill.json", "redpill_questions"))
-	if(icon_state == "pill4" && prob(5)) //you take the red pill - you stay in Wonderland, and I show you how deep the rabbit hole goes
+	if(icon_state == "pill4" && prob(10)) //you take the red pill - you stay in Wonderland, and I show you how deep the rabbit hole goes
 		addtimer(CALLBACK(GLOBAL_PROC, /proc/to_chat, M, "<span class='notice'>[makes_me_think]</span>"), 50)
 
 	log_combat(user, M, "fed", reagents.log_list())
@@ -186,7 +186,6 @@
 /obj/item/reagent_containers/pill/antirad_plus
 	name = "prussian blue pill"
 	desc = "Used to treat heavy radition poisoning."
-	icon = 'modular_citadel/icons/obj/modularpills.dmi'
 	icon_state = "prussian_blue"
 	list_reagents = list("prussian_blue" = 25, "water" = 10)
 	roundstart = 1
@@ -194,7 +193,6 @@
 /obj/item/reagent_containers/pill/mutarad
 	name = "radiation treatment deluxe pill"
 	desc = "Used to treat heavy radition poisoning and genetic defects."
-	icon = 'modular_citadel/icons/obj/modularpills.dmi'
 	icon_state = "anit_rad_fixgene"
 	list_reagents = list("prussian_blue" = 15, "potass_iodide" = 15, "mutadone" = 15, "water" = 5)
 	roundstart = 1

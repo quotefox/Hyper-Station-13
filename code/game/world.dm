@@ -7,6 +7,10 @@ GLOBAL_VAR(restart_counter)
 //This happens after the Master subsystem new(s) (it's a global datum)
 //So subsystems globals exist, but are not initialised
 /world/New()
+	var/extools = world.GetConfig("env", "EXTOOLS_DLL") || (world.system_type == MS_WINDOWS ? "./byond-extools.dll" : "./libbyond-extools.so")
+	if (fexists(extools))
+		call(extools, "maptick_initialize")()
+	enable_debugger()
 
 	log_world("World loaded at [TIME_STAMP("hh:mm:ss", FALSE)]!")
 
@@ -33,6 +37,7 @@ GLOBAL_VAR(restart_counter)
 #endif
 
 	load_admins()
+	load_patreons()
 	LoadVerbs(/datum/verbs/menu)
 	if(CONFIG_GET(flag/usewhitelist))
 		load_whitelist()
@@ -102,6 +107,7 @@ GLOBAL_VAR(restart_counter)
 		GLOB.picture_log_directory = "data/picture_logs/[override_dir]"
 
 	GLOB.world_game_log = "[GLOB.log_directory]/game.log"
+	GLOB.world_virus_log = "[GLOB.log_directory]/virus.log"
 	GLOB.world_attack_log = "[GLOB.log_directory]/attack.log"
 	GLOB.world_pda_log = "[GLOB.log_directory]/pda.log"
 	GLOB.world_telecomms_log = "[GLOB.log_directory]/telecomms.log"

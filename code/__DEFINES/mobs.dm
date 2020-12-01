@@ -58,8 +58,10 @@
 #define BODYPART_DISABLED_DAMAGE 1
 #define BODYPART_DISABLED_PARALYSIS 2
 
+#define DEFAULT_BODYPART_ICON 'icons/mob/human_parts.dmi'
 #define DEFAULT_BODYPART_ICON_ORGANIC 'icons/mob/human_parts_greyscale.dmi'
 #define DEFAULT_BODYPART_ICON_ROBOTIC 'icons/mob/augmentation/augments.dmi'
+#define DEFAULT_BODYPART_ICON_CITADEL 'modular_citadel/icons/mob/mutant_bodyparts.dmi'
 
 #define MONKEY_BODYPART "monkey"
 #define TERATOMA_BODYPART "teratoma"
@@ -270,3 +272,5 @@
 
 #define PULL_PRONE_SLOWDOWN 0.6
 #define HUMAN_CARRY_SLOWDOWN 0
+
+#define TYPING_INDICATOR_TIMEOUT 10 MINUTES

@@ -319,11 +319,11 @@
 
 
 /obj/item/radio/examine(mob/user)
-	..()
+	. = ..()
 	if (unscrewed)
-		to_chat(user, "<span class='notice'>It can be attached and modified.</span>")
+		. += "<span class='notice'>It can be attached and modified.</span>"
 	else
-		to_chat(user, "<span class='notice'>It cannot be modified or attached.</span>")
+		. += "<span class='notice'>It cannot be modified or attached.</span>"
 
 /obj/item/radio/attackby(obj/item/W, mob/user, params)
 	add_fingerprint(user)
@@ -413,3 +413,16 @@
 /obj/item/radio/off	// Station bounced radios, their only difference is spawning with the speakers off, this was made to help the lag.
 	listening = 0			// And it's nice to have a subtype too for future features.
 	dog_fashion = /datum/dog_fashion/back
+
+/obj/item/radio/internal
+	var/obj/item/implant/radio/implant
+
+/obj/item/radio/internal/Initialize(mapload, obj/item/implant/radio/_implant)
+	. = ..()
+	implant = _implant
+
+/obj/item/radio/internal/Destroy()
+	if(implant?.imp_in)
+		qdel(implant)
+	else
+		return ..()

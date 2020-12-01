@@ -32,6 +32,9 @@
 /area/ruin/powered/seedvault
 	icon_state = "dk_yellow"
 
+/area/ruin/powered/oasis
+	icon_state = "dk_yellow"
+
 /area/ruin/unpowered/syndicate_lava_base
 	name = "Secret Base"
 	icon_state = "dk_yellow"
@@ -73,6 +76,9 @@
 /area/ruin/unpowered/syndicate_lava_base/circuits
 	name = "Syndicate Lavaland Circuit Lab"
 
+/area/ruin/unpowered/syndicate_lava_base/outdoors //Putting this area down should prevent fauna from spawning nearby
+	name = "Syndicate Lavaland Approach"
+	icon_state = "red"
 
 //Xeno Nest
 

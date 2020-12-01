@@ -23,9 +23,9 @@
 	var/bolts = TRUE
 
 /obj/structure/bed/examine(mob/user)
-	..()
+	. = ..()
 	if(bolts)
-		to_chat(user, "<span class='notice'>It's held together by a couple of <b>bolts</b>.</span>")
+		. += "<span class='notice'>It's held together by a couple of <b>bolts</b>.</span>"
 
 /obj/structure/bed/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
@@ -148,8 +148,8 @@
 	..()
 
 /obj/item/roller/robo/examine(mob/user)
-	..()
-	to_chat(user, "The dock is [loaded ? "loaded" : "empty"].")
+	. = ..()
+	. += "The dock is [loaded ? "loaded" : "empty"]."
 
 /obj/item/roller/robo/deploy_roller(mob/user, atom/location)
 	if(loaded)
@@ -199,6 +199,12 @@
 /obj/structure/bed/dogbed/buckle_mob(mob/living/M, force, check_loc)
 	. = ..()
 	update_owner(M)
+
+/obj/structure/bed/secbed
+	name = "security pet bed"
+	desc = "A comfy-looking pet bed, now in the classic security colors."
+	icon_state = "secbed"
+	anchored = FALSE
 
 /obj/structure/bed/alien
 	name = "resting contraption"

@@ -22,6 +22,7 @@
 		/datum/language/ratvar,
 		/datum/language/aphasia,
 		/datum/language/slime,
+		/datum/language/xenocommon,
 	))
 	healing_factor = STANDARD_ORGAN_HEALING*5 //Fast!!
 	decay_factor = STANDARD_ORGAN_DECAY/2
@@ -251,6 +252,12 @@
 
 /obj/item/organ/tongue/robot/can_speak_in_language(datum/language/dt)
 	return ..() || electronics_magic
+
+/obj/item/organ/tongue/robot/Initialize(mapload)
+	. = ..()
+	var/static/list/languages_possible_robot = languages_possible_base + typecacheof(list(
+		/datum/language/machine))
+	languages_possible = languages_possible_robot
 
 /obj/item/organ/tongue/robot/handle_speech(datum/source, list/speech_args)
 	speech_args[SPEECH_SPANS] |= SPAN_ROBOT

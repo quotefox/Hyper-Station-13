@@ -277,6 +277,7 @@
 	// Delete them from datacore.
 
 	var/announce_rank = null
+	var/announce_job_title = null
 	for(var/datum/data/record/R in GLOB.data_core.medical)
 		if((R.fields["name"] == mob_occupant.real_name))
 			qdel(R)
@@ -286,6 +287,7 @@
 	for(var/datum/data/record/G in GLOB.data_core.general)
 		if((G.fields["name"] == mob_occupant.real_name))
 			announce_rank = G.fields["rank"]
+			announce_job_title = G.fields["job_title"]
 			qdel(G)
 
 	for(var/obj/machinery/computer/cloning/cloner in world)
@@ -299,7 +301,7 @@
 
 	if(GLOB.announcement_systems.len)
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
-		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, list())
+		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, announce_job_title, list())
 		visible_message("<span class='notice'>\The [src] hums and hisses as it moves [mob_occupant.real_name] into storage.</span>")
 
 

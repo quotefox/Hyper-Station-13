@@ -80,8 +80,8 @@
 	SEND_SIGNAL(src, COMSIG_OBJ_SETANCHORED, anchorvalue)
 	anchored = anchorvalue
 
-/obj/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback)
-	..()
+/obj/throw_at(atom/target, range, speed, mob/thrower, spin=1, diagonals_first = 0, datum/callback/callback, force, messy_throw = TRUE)
+	. = ..()
 	if(obj_flags & FROZEN)
 		visible_message("<span class='danger'>[src] shatters into a million pieces!</span>")
 		qdel(src)
@@ -224,11 +224,11 @@
 	.["Modify armor values"] = "?_src_=vars;[HrefToken()];modarmor=[REF(src)]"
 
 /obj/examine(mob/user)
-	..()
+	. = ..()
 	if(obj_flags & UNIQUE_RENAME)
-		to_chat(user, "<span class='notice'>Use a pen on it to rename it or change its description.</span>")
+		. += "<span class='notice'>Use a pen on it to rename it or change its description.</span>"
 	if(unique_reskin && (!current_skin || always_reskinnable))
-		to_chat(user, "<span class='notice'>Alt-click it to reskin it.</span>")
+		. += "<span class='notice'>Alt-click it to reskin it.</span>"
 
 /obj/AltClick(mob/user)
 	. = ..()

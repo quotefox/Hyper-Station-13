@@ -159,10 +159,11 @@
 /datum/design/large_beaker
 	name = "Large Beaker"
 	id = "large_beaker"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_GLASS = 2500)
 	build_path = /obj/item/reagent_containers/glass/beaker/large
 	category = list("initial", "Medical")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE
 
 /datum/design/healthanalyzer
 	name = "Health Analyzer"
@@ -208,7 +209,8 @@
 /datum/design/hypoviallarge
 	name = "Large Hypovial"
 	id = "large_hypovial"
-	build_type = AUTOLATHE
+	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_METAL = 2500)
 	build_path = /obj/item/reagent_containers/glass/bottle/vial/large
 	category = list("initial","Medical")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE

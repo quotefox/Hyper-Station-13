@@ -36,13 +36,15 @@
 	icon_state = "semen1"
 	random_icon_states = list("semen1", "semen2", "semen3", "semen4")
 
-/obj/effect/decal/cleanable/semen/New()
-	..()
-	dir = pick(1,2,4,8)
+/obj/effect/decal/cleanable/semen/Initialize(mapload)
+	. = ..()
+	dir = GLOB.cardinals
 	add_blood_DNA(list("Non-human DNA" = "A+"))
 
 /obj/effect/decal/cleanable/semen/replace_decal(obj/effect/decal/cleanable/semen/S)
-	S.add_blood_DNA(return_blood_DNA())
+	if(S.blood_DNA)
+		blood_DNA |= S.blood_DNA
+	return ..()
 
 /datum/reagent/consumable/femcum
 	name = "Female Ejaculate"
@@ -68,14 +70,15 @@
 	blood_state = null
 	bloodiness = null
 
-/obj/effect/decal/cleanable/femcum/New()
-	..()
-	dir = pick(1,2,4,8)
+/obj/effect/decal/cleanable/femcum/Initialize(mapload)
+	. = ..()
+	dir = GLOB.cardinals
 	add_blood_DNA(list("Non-human DNA" = "A+"))
 
 /obj/effect/decal/cleanable/femcum/replace_decal(obj/effect/decal/cleanable/femcum/F)
-	F.add_blood_DNA(return_blood_DNA())
-	..()
+	if(F.blood_DNA)
+		blood_DNA |= F.blood_DNA
+	return ..()
 
 /datum/reagent/consumable/femcum/reaction_turf(turf/T, reac_volume)
 	if(!istype(T))
@@ -117,7 +120,9 @@
 	add_blood_DNA(list("Non-human DNA" = "A+"))
 
 /obj/effect/decal/cleanable/milk/replace_decal(obj/effect/decal/cleanable/milk/S)
-	S.add_blood_DNA(return_blood_DNA())
+	if(S.blood_DNA)
+		blood_DNA |= S.blood_DNA
+	return ..()
 
 //aphrodisiac & anaphrodisiac
 

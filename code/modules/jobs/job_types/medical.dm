@@ -13,10 +13,10 @@ Chief Medical Officer
 	supervisors = "the captain"
 	selection_color = "#ffddf0"
 	req_admin_notify = 1
-	minimal_player_age = 3
-//	exp_requirements = 180
-//	exp_type = EXP_TYPE_CREW
-//	exp_type_department = EXP_TYPE_MEDICAL
+	minimal_player_age = 14
+	exp_requirements = 1500
+	exp_type = EXP_TYPE_MEDICAL
+	exp_type_department = EXP_TYPE_MEDICAL
 
 	outfit = /datum/outfit/job/cmo
 
@@ -69,8 +69,12 @@ Medical Doctor
 	faction = "Station"
 	total_positions = 5
 	spawn_positions = 3
+	minimal_player_age = 1
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
+	exp_requirements = 240
+	exp_type = EXP_TYPE_MEDICAL
+	exp_type_department = EXP_TYPE_MEDICAL
 
 	outfit = /datum/outfit/job/doctor
 
@@ -93,6 +97,8 @@ Medical Doctor
 	satchel = /obj/item/storage/backpack/satchel/med
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
 
+	backpack_contents = list(/obj/item/storage/hypospraykit/regular)
+
 	chameleon_extras = /obj/item/gun/syringe
 
 /*
@@ -106,10 +112,13 @@ Chemist
 	faction = "Station"
 	total_positions = 2
 	spawn_positions = 2
+	minimal_player_age = 1
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
-	exp_type = EXP_TYPE_CREW
-	exp_requirements = 60
+	exp_requirements = 480
+	exp_type = EXP_TYPE_MEDICAL
+	exp_type_department = EXP_TYPE_MEDICAL
+
 
 	outfit = /datum/outfit/job/chemist
 
@@ -131,6 +140,8 @@ Chemist
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
 	l_hand = /obj/item/fermichem/pHbooklet
 
+	backpack_contents = list(/obj/item/storage/hypospraykit/regular)
+
 	chameleon_extras = /obj/item/gun/syringe
 
 /*
@@ -146,8 +157,9 @@ Geneticist
 	spawn_positions = 2
 	supervisors = "the chief medical officer and research director"
 	selection_color = "#ffeef0"
-	exp_type = EXP_TYPE_CREW
-	exp_requirements = 60
+	exp_requirements = 480
+	exp_type = EXP_TYPE_MEDICAL
+	exp_type_department = EXP_TYPE_MEDICAL
 
 	outfit = /datum/outfit/job/geneticist
 
@@ -181,10 +193,12 @@ Virologist
 	faction = "Station"
 	total_positions = 1
 	spawn_positions = 1
+	minimal_player_age = 2
 	supervisors = "the chief medical officer"
 	selection_color = "#ffeef0"
-	exp_type = EXP_TYPE_CREW
-	exp_requirements = 60
+	exp_requirements = 600
+	exp_type = EXP_TYPE_MEDICAL
+	exp_type_department = EXP_TYPE_MEDICAL
 
 	outfit = /datum/outfit/job/virologist
 
@@ -206,3 +220,50 @@ Virologist
 	backpack = /obj/item/storage/backpack/virology
 	satchel = /obj/item/storage/backpack/satchel/vir
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
+
+
+/*
+Junior Doctor
+*/
+/datum/job/junior_doctor
+	title = "Medical Resident"
+	flag = JR_DOCTOR
+	department_head = list("Chief Medical Officer")
+	department_flag = MEDSCI
+	faction = "Station"
+	total_positions = 2
+	spawn_positions = 2
+	minimal_player_age = 0
+	supervisors = "the chief medical officer, and any other senior medical staff"
+	selection_color = "#ffeef0"
+	exp_requirements = 120
+	exp_type = EXP_TYPE_CREW
+
+	outfit = /datum/outfit/job/doctor/junior
+
+	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM)
+	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM)
+
+/datum/outfit/job/doctor/junior
+	name = "Medical Resident"
+	jobtype = /datum/job/junior_doctor
+
+	belt = /obj/item/pda/medical
+	ears = /obj/item/radio/headset/headset_med
+	uniform = /obj/item/clothing/under/rank/medical
+	shoes = /obj/item/clothing/shoes/sneakers/white
+	suit =  /obj/item/clothing/suit/toggle/labcoat
+	l_hand = /obj/item/storage/firstaid/regular
+	suit_store = /obj/item/flashlight/pen
+
+	backpack = /obj/item/storage/backpack/medic
+	satchel = /obj/item/storage/backpack/satchel/med
+	duffelbag = /obj/item/storage/backpack/duffelbag/med
+
+	chameleon_extras = /obj/item/gun/syringe
+
+/datum/job/junior_doctor/after_spawn(mob/living/carbon/human/H, mob/M) //Instead of going through the process of adding spawnpoints
+	var/turf/T
+	var/spawn_point = locate(/obj/effect/landmark/start/medical_doctor) in GLOB.start_landmarks_list
+	T = get_turf(spawn_point)
+	H.Move(T)

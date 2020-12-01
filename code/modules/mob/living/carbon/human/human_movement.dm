@@ -44,9 +44,9 @@
 /mob/living/carbon/human/Move(NewLoc, direct)
 	. = ..()
 	for(var/datum/mutation/human/HM in dna.mutations)
-		HM.on_move(src, NewLoc)
+		HM.on_move(NewLoc)
 
-	if(shoes)
+	if(shoes && shoes.type != /obj/item/clothing/head/mob_holder/micro)
 		if(!lying && !buckled)
 			if(loc == NewLoc)
 				if(!has_gravity(loc))
@@ -56,18 +56,17 @@
 				//Bloody footprints
 				var/turf/T = get_turf(src)
 				if(S.bloody_shoes && S.bloody_shoes[S.blood_state])
-					for(var/obj/effect/decal/cleanable/blood/footprints/oldFP in T)
-						if (oldFP.blood_state == S.blood_state)
-							return
-					//No oldFP or they're all a different kind of blood
+					var/obj/effect/decal/cleanable/blood/footprints/oldFP = locate(/obj/effect/decal/cleanable/blood/footprints) in T
+					if(oldFP && (oldFP.blood_state == S.blood_state && oldFP.color == bloodtype_to_color(S.last_bloodtype)))
+						return
 					S.bloody_shoes[S.blood_state] = max(0, S.bloody_shoes[S.blood_state] - BLOOD_LOSS_PER_STEP)
-					if (S.bloody_shoes[S.blood_state] > BLOOD_LOSS_IN_SPREAD)
-						var/obj/effect/decal/cleanable/blood/footprints/FP = new /obj/effect/decal/cleanable/blood/footprints(T)
-						FP.blood_state = S.blood_state
-						FP.entered_dirs |= dir
-						FP.bloodiness = S.bloody_shoes[S.blood_state] - BLOOD_LOSS_IN_SPREAD
-						FP.add_blood_DNA(S.return_blood_DNA())
-						FP.update_icon()
+					var/obj/effect/decal/cleanable/blood/footprints/FP = new /obj/effect/decal/cleanable/blood/footprints(T)
+					FP.blood_state = S.blood_state
+					FP.entered_dirs |= dir
+					FP.bloodiness = S.bloody_shoes[S.blood_state]
+					if(S.last_bloodtype)
+						FP.blood_DNA += list(S.last_blood_DNA = S.last_bloodtype)
+					FP.update_icon()
 					update_inv_shoes()
 				//End bloody footprints
 				S.step_action()

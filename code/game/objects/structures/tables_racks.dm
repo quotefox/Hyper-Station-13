@@ -21,6 +21,7 @@
 	anchored = TRUE
 	layer = TABLE_LAYER
 	climbable = TRUE
+	obj_flags = CAN_BE_HIT|SHOVABLE_ONTO
 	pass_flags = LETPASSTHROW //You can throw objects over this, despite it's density.")
 	var/frame = /obj/structure/table_frame
 	var/framestack = /obj/item/stack/rods
@@ -35,11 +36,11 @@
 	canSmoothWith = list(/obj/structure/table, /obj/structure/table/reinforced)
 
 /obj/structure/table/examine(mob/user)
-	..()
-	deconstruction_hints(user)
+	. = ..()
+	. += deconstruction_hints(user)
 
 /obj/structure/table/proc/deconstruction_hints(mob/user)
-	to_chat(user, "<span class='notice'>The top is <b>screwed</b> on, but the main <b>bolts</b> are also visible.</span>")
+	return "<span class='notice'>The top is <b>screwed</b> on, but the main <b>bolts</b> are also visible.</span>"
 
 /obj/structure/table/update_icon()
 	if(smooth)
@@ -135,6 +136,15 @@
 		return
 	var/mob/living/carbon/human/H = pushed_mob
 	SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "table", /datum/mood_event/table)
+
+/obj/structure/table/shove_act(mob/living/target, mob/living/user)
+	if(!target.resting)
+		target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
+	user.visible_message("<span class='danger'>[user.name] shoves [target.name] onto \the [src]!</span>",
+		"<span class='danger'>You shove [target.name] onto \the [src]!</span>", null, COMBAT_MESSAGE_RANGE)
+	target.forceMove(src.loc)
+	log_combat(user, target, "shoved", "onto [src] (table)")
+	return TRUE
 
 /obj/structure/table/attackby(obj/item/I, mob/user, params)
 	if(!(flags_1 & NODECONSTRUCT_1))
@@ -486,8 +496,8 @@
 	max_integrity = 20
 
 /obj/structure/rack/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>It's held together by a couple of <b>bolts</b>.</span>")
+	. = ..()
+	. += "<span class='notice'>It's held together by a couple of <b>bolts</b>.</span>"
 
 /obj/structure/rack/CanPass(atom/movable/mover, turf/target)
 	if(src.density == 0) //Because broken racks -Agouri |TODO: SPRITE!|

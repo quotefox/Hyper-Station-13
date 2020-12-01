@@ -95,20 +95,20 @@
 	to_chat(user, "<span class='notice'>You flip the write-protect tab to [read_only ? "protected" : "unprotected"].</span>")
 
 /obj/item/disk/data/examine(mob/user)
-	..()
-	to_chat(user, "The write-protect tab is set to [read_only ? "protected" : "unprotected"].")
+	. = ..()
+	. += "The write-protect tab is set to [read_only ? "protected" : "unprotected"]."
 
 
 //Clonepod
 
 /obj/machinery/clonepod/examine(mob/user)
-	..()
+	. = ..()
 	var/mob/living/mob_occupant = occupant
 	if(mess)
-		to_chat(user, "It's filled with blood and viscera. You swear you can see it moving...")
+		. += "It's filled with blood and viscera. You swear you can see it moving..."
 	if(is_operational() && mob_occupant)
 		if(mob_occupant.stat != DEAD)
-			to_chat(user, "Current clone cycle is [round(get_completion())]% complete.")
+			. += "Current clone cycle is [round(get_completion())]% complete."
 
 /obj/machinery/clonepod/return_air()
 	// We want to simulate the clone not being in contact with
@@ -164,7 +164,6 @@
 	var/mob/living/carbon/human/H = new /mob/living/carbon/human(src)
 
 	H.hardset_dna(ui, mutation_index, H.real_name, null, mrace, features)
-
 	if(prob(50 - efficiency*10)) //Chance to give a bad mutation.
 		H.easy_randmut(NEGATIVE+MINOR_NEGATIVE) //100% bad mutation. Can be cured with mutadone.
 
@@ -206,6 +205,7 @@
 
 		H.suiciding = FALSE
 	attempting = FALSE
+
 	return TRUE
 
 //Grow clones to maturity then kick them out.  FREELOADERS
@@ -354,7 +354,8 @@
 				O.organ_flags &= ~ORGAN_FROZEN
 		unattached_flesh.Cut()
 		mess = FALSE
-		new /obj/effect/gibspawner/generic(get_turf(src))
+		if(mob_occupant)
+			mob_occupant.spawn_gibs()
 		audible_message("<span class='italics'>You hear a splat.</span>")
 		update_icon()
 		return
@@ -380,6 +381,10 @@
 		qdel(fl)
 	unattached_flesh.Cut()
 
+	//Do the resize on ejection. The clone pod seems to do a lot of matrix transforms the way size code does, so we will handle our resize after.
+	mob_occupant.previous_size = 1 //Set the previous size to default so the resize properly set health and speed.
+	mob_occupant.custom_body_size = mob_occupant.client.prefs.body_size
+	mob_occupant.resize(mob_occupant.custom_body_size * 0.01)
 	occupant = null
 
 /obj/machinery/clonepod/proc/malfunction()

@@ -105,6 +105,8 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/polymorph_all,
 	/client/proc/show_tip,
 	/client/proc/smite,
+	/client/proc/spawn_floor_cluwne, // Yogs
+	/client/proc/spawn_random_floor_cluwne,
 	/client/proc/admin_away,
 	/client/proc/roll_dices					//CIT CHANGE - Adds dice verb
 	))

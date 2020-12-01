@@ -488,7 +488,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 		if(!record_found&&new_character.mind.assigned_role!=new_character.mind.special_role)//If there are no records for them. If they have a record, this info is already in there. MODE people are not announced anyway.
 			//Power to the user!
 			if(alert(new_character,"Warning: No data core entry detected. Would you like to announce the arrival of this character by adding them to various databases, such as medical records?",,"No","Yes")=="Yes")
-				GLOB.data_core.manifest_inject(new_character)
+				GLOB.data_core.manifest_inject(new_character, new_character.client)
 
 			if(alert(new_character,"Would you like an active AI to announce this character?",,"No","Yes")=="Yes")
 				AnnounceArrival(new_character, new_character.mind.assigned_role)
@@ -1249,7 +1249,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	if(!check_rights(R_ADMIN) || !check_rights(R_FUN))
 		return
 
-	var/list/punishment_list = list(ADMIN_PUNISHMENT_PIE, ADMIN_PUNISHMENT_FIREBALL, ADMIN_PUNISHMENT_LIGHTNING, ADMIN_PUNISHMENT_BRAINDAMAGE, ADMIN_PUNISHMENT_BSA, ADMIN_PUNISHMENT_GIB, ADMIN_PUNISHMENT_SUPPLYPOD, ADMIN_PUNISHMENT_MAZING, ADMIN_PUNISHMENT_ROD)
+	var/list/punishment_list = list(ADMIN_PUNISHMENT_PIE, ADMIN_PUNISHMENT_FIREBALL, ADMIN_PUNISHMENT_CLUWNE, ADMIN_PUNISHMENT_LIGHTNING, ADMIN_PUNISHMENT_BRAINDAMAGE, ADMIN_PUNISHMENT_BSA, ADMIN_PUNISHMENT_GIB, ADMIN_PUNISHMENT_SUPPLYPOD, ADMIN_PUNISHMENT_MAZING, ADMIN_PUNISHMENT_ROD)
 
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in punishment_list
 
@@ -1271,6 +1271,16 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			bluespace_artillery(target)
 		if(ADMIN_PUNISHMENT_FIREBALL)
 			new /obj/effect/temp_visual/target(get_turf(target))
+		if(ADMIN_PUNISHMENT_CLUWNE)
+			var/mob/living/simple_animal/hostile/floor_cluwne/FC = new /mob/living/simple_animal/hostile/floor_cluwne(get_turf(target))
+			FC.smite = TRUE
+			FC.forced = TRUE
+			FC.Acquire_Victim(target)
+			FC.target = target
+			FC.current_victim = target
+			FC.interest = 5000
+			FC.maxHealth = 5000
+			FC.health = 5000
 		if(ADMIN_PUNISHMENT_ROD)
 			var/turf/T = get_turf(target)
 			var/startside = pick(GLOB.cardinals)

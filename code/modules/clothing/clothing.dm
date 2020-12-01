@@ -78,7 +78,7 @@
 	foodtype = CLOTH
 
 /obj/item/clothing/attack(mob/M, mob/user, def_zone)
-	if(user.a_intent != INTENT_HARM && ismoth(M))
+	if(user.a_intent != INTENT_HARM && (ismoth(M) || isinsect(M)))
 		var/obj/item/reagent_containers/food/snacks/clothing/clothing_as_food = new
 		clothing_as_food.name = name
 		if(clothing_as_food.attack(M, user, def_zone))
@@ -99,7 +99,7 @@
 	if(istype(W, /obj/item/bluespace_thread))
 		var/obj/item/bluespace_thread/B = W
 		if ((istype(src, /obj/item/clothing/under) || istype(src, /obj/item/clothing/suit)) && roomy != 1) //Make sure the thread is used on an item that could be ripped off in the first place
-			roomy = 1 //True
+			roomy = TRUE //True
 			user.show_message("<span class='notice'>You add a few stiches to your clothing, and find them to fit a little looser.</span>", 1)
 			B.uses -= 1 //One use has been used
 			if(B.uses <= 0)
@@ -136,10 +136,10 @@
 					user.vv_edit_var(variable, user_vars_to_edit[variable])
 
 /obj/item/clothing/examine(mob/user)
-	..()
+	. = ..()
 	if(damaged_clothes)
-		to_chat(user,  "<span class='warning'>It looks damaged!</span>")
-	GET_COMPONENT(pockets, /datum/component/storage)
+		. += "<span class='warning'>It looks damaged!</span>"
+	var/datum/component/storage/pockets = GetComponent(/datum/component/storage)
 	if(pockets)
 		var/list/how_cool_are_your_threads = list("<span class='notice'>")
 		if(pockets.attack_hand_interact)
@@ -153,7 +153,7 @@
 		if(pockets.silent)
 			how_cool_are_your_threads += "Adding or removing items from [src] makes no noise.\n"
 		how_cool_are_your_threads += "</span>"
-		to_chat(user, how_cool_are_your_threads.Join())
+		. += how_cool_are_your_threads.Join()
 
 /obj/item/clothing/obj_break(damage_flag)
 	if(!damaged_clothes)

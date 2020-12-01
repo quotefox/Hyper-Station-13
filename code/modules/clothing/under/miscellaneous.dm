@@ -119,12 +119,24 @@
 	item_state = "g_suit"
 	item_color = "officer"
 	alt_covers_chest = TRUE
+	roomy = TRUE
 /obj/item/clothing/under/rank/centcom_commander
 	desc = "It's a jumpsuit worn by CentCom's highest-tier Commanders, adorned with a golden K and a star. signifying work under Kinaris."
 	name = "\improper CentCom Commander's jumpsuit"
 	icon_state = "centcom"
 	item_state = "dg_suit"
 	item_color = "centcom"
+	roomy = TRUE
+/obj/item/clothing/under/rank/centcom_officer/skirt
+	name = "\improper CentCom Officer's jumpskirt"
+	desc = "It's a jumpskirt worn by CentCom's officials, adorned with a golden K and a star, signifying work under Kinaris."
+	icon_state = "official_skirt"
+	item_state = "g_suit"
+	item_color = "official_skirt"
+	body_parts_covered = CHEST|GROIN|ARMS
+	fitted = FEMALE_UNIFORM_TOP
+	can_adjust = FALSE
+	roomy = TRUE
 /obj/item/clothing/under/space
 	name = "\improper NASA jumpsuit"
 	desc = "It has a NASA logo on it and is made of space-proofed materials."
@@ -157,6 +169,7 @@
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 	can_adjust = FALSE
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	roomy = TRUE
 /obj/item/clothing/under/owl
 	name = "owl uniform"
 	desc = "A soft brown jumpsuit made of synthetic feathers and strong conviction."
@@ -603,8 +616,9 @@
 	var/extinguish_cooldown = 100
 	var/extinguishes_left = 5
 /obj/item/clothing/under/plasmaman/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>There are [extinguishes_left] extinguisher charges left in this suit.</span>")
+	. = ..()
+	. += "<span class='notice'>There are [extinguishes_left] extinguisher charges left in this suit.</span>"
+
 /obj/item/clothing/under/plasmaman/proc/Extinguish(mob/living/carbon/human/H)
 	if(!istype(H))
 		return
@@ -756,7 +770,7 @@
 	item_state = "christmasfemaleg"
 	body_parts_covered = CHEST|GROIN
 	can_adjust = FALSE
-	
+
 /obj/item/clothing/under/zone/monolith
 	name = "Urban BDU"
 	desc = "A splinter urban camouflage Battle-Dress uniform."
@@ -766,3 +780,13 @@
 	fitted = NO_FEMALE_UNIFORM
 	can_adjust = FALSE
 	resistance_flags = NONE
+
+/obj/item/clothing/under/corset
+	name = "black corset"
+	desc = "We are not resposible for any organ damage."
+	icon_state = "corset"
+	item_state = "corset"
+	body_parts_covered = CHEST|GROIN
+	can_adjust = FALSE
+	fitted = FEMALE_UNIFORM_TOP
+	mutantrace_variation = NO_MUTANTRACE_VARIATION

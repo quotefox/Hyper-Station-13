@@ -40,6 +40,11 @@
 
 	if(M.client)
 		body += "<br>\[<b>First Seen:</b> [M.client.player_join_date]\]\[<b>Byond account registered on:</b> [M.client.account_join_date]\]"
+		body += "<br><br><b>CentCom Galactic Ban DB: </b> "
+		if(CONFIG_GET(string/centcom_ban_db))
+			body += "<a href='?_src_=holder;[HrefToken()];centcomlookup=[M.client.ckey]'>Search</a>"
+		else
+			body += "<i>Disabled</i>"
 		body += "<br><br><b>Show related accounts by:</b> "
 		body += "\[ <a href='?_src_=holder;[HrefToken()];showrelatedacc=cid;client=[REF(M.client)]'>CID</a> | "
 		body += "<a href='?_src_=holder;[HrefToken()];showrelatedacc=ip;client=[REF(M.client)]'>IP</a> \]"
@@ -185,7 +190,6 @@
 			body += "<A href='?_src_=holder;[HrefToken()];simplemake=shade;mob=[REF(M)]'>Shade</A>"
 			body += "<br>"
 
-	if (M.client)
 		body += "<br><br>"
 		body += "<b>Other actions:</b>"
 		body += "<br>"
@@ -194,9 +198,9 @@
 		body += "<A href='?_src_=holder;[HrefToken()];tdome2=[REF(M)]'>Thunderdome 2</A> | "
 		body += "<A href='?_src_=holder;[HrefToken()];tdomeadmin=[REF(M)]'>Thunderdome Admin</A> | "
 		body += "<A href='?_src_=holder;[HrefToken()];tdomeobserve=[REF(M)]'>Thunderdome Observer</A> | "
-
-	body += usr.client.citaPPoptions(M) // CITADEL
-
+		body += "<A href='?_src_=holder;[HrefToken()];makementor=[M.ckey]'>Make mentor</A> | "
+		body += "<A href='?_src_=holder;[HrefToken()];removementor=[M.ckey]'>Remove mentor</A>"
+		body += "<A href='?_src_=holder;[HrefToken()];makeeligible=[REF(M)]'>Allow reentering round</A>"
 	body += "<br>"
 	body += "</body></html>"
 
@@ -422,6 +426,25 @@
 		"}
 	if(GLOB.master_mode == "secret")
 		dat += "<A href='?src=[REF(src)];[HrefToken()];f_secret=1'>(Force Secret Mode)</A><br>"
+	
+	if(GLOB.master_mode == "dynamic")
+		if(SSticker.current_state <= GAME_STATE_PREGAME)
+			dat += "<A href='?src=[REF(src)];[HrefToken()];f_dynamic_roundstart=1'>(Force Roundstart Rulesets)</A><br>"
+			if (GLOB.dynamic_forced_roundstart_ruleset.len > 0)
+				for(var/datum/dynamic_ruleset/roundstart/rule in GLOB.dynamic_forced_roundstart_ruleset)
+					dat += {"<A href='?src=[REF(src)];[HrefToken()];f_dynamic_roundstart_remove=\ref[rule]'>-> [rule.name] <-</A><br>"}
+				dat += "<A href='?src=[REF(src)];[HrefToken()];f_dynamic_roundstart_clear=1'>(Clear Rulesets)</A><br>"
+			dat += "<A href='?src=[REF(src)];[HrefToken()];f_dynamic_options=1'>(Dynamic mode options)</A><br>"
+		else if (SSticker.IsRoundInProgress())
+			dat += "<A href='?src=[REF(src)];[HrefToken()];f_dynamic_latejoin=1'>(Force Next Latejoin Ruleset)</A><br>"
+			if (SSticker && SSticker.mode && istype(SSticker.mode,/datum/game_mode/dynamic))
+				var/datum/game_mode/dynamic/mode = SSticker.mode
+				if (mode.forced_latejoin_rule)
+					dat += {"<A href='?src=[REF(src)];[HrefToken()];f_dynamic_latejoin_clear=1'>-> [mode.forced_latejoin_rule.name] <-</A><br>"}
+			dat += "<A href='?src=[REF(src)];[HrefToken()];f_dynamic_midround=1'>(Execute Midround Ruleset!)</A><br>"
+		dat += "<hr/>"
+	if(SSticker.IsRoundInProgress())
+		dat += "<a href='?src=[REF(src)];[HrefToken()];gamemode_panel=1'>(Game Mode Panel)</a><BR>"
 
 	dat += {"
 		<BR>
@@ -839,6 +862,47 @@
 	browser.set_content(dat.Join())
 	browser.open()
 
+/datum/admins/proc/dynamic_mode_options(mob/user)
+	var/dat = {"
+		<center><B><h2>Dynamic Mode Options</h2></B></center><hr>
+		<br/>
+		<h3>Common options</h3>
+		<i>All these options can be changed midround.</i> <br/>
+		<br/>
+		<b>Force extended:</b> - Option is <a href='?src=[REF(src)];[HrefToken()];f_dynamic_force_extended=1'> <b>[GLOB.dynamic_forced_extended ? "ON" : "OFF"]</a></b>.
+		<br/>This will force the round to be extended. No rulesets will be drafted. <br/>
+		<br/>
+		<b>No stacking:</b> - Option is <a href='?src=[REF(src)];[HrefToken()];f_dynamic_no_stacking=1'> <b>[GLOB.dynamic_no_stacking ? "ON" : "OFF"]</b></a>.
+		<br/>Unless the threat goes above [GLOB.dynamic_stacking_limit], only one "round-ender" ruleset will be drafted. <br/>
+		<br/>
+		<b>Classic secret mode:</b> - Option is <a href='?src=[REF(src)];[HrefToken()];f_dynamic_classic_secret=1'> <b>[GLOB.dynamic_classic_secret ? "ON" : "OFF"]</b></a>.
+		<br/>Only one roundstart ruleset will be drafted. Only traitors and minor roles will latespawn. <br/>
+		<br/>
+		<br/>
+		<b>Chaos level:</b> Current value : <a href='?src=[REF(src)];[HrefToken()];f_dynamic_chaos_level=1'><b>[GLOB.dynamic_chaos_level]</b></a>.
+		<br/>The Chaos value for the round. Only set between 0 and 5!<br/>
+		<br/>
+		<b>Forced threat level:</b> Current value : <a href='?src=[REF(src)];[HrefToken()];f_dynamic_forced_threat=1'><b>[GLOB.dynamic_forced_threat_level]</b></a>.
+		<br/>The value threat is set to if it is higher than -1.<br/>
+		<br/>
+		<b>High population limit:</b> Current value : <a href='?src=[REF(src)];[HrefToken()];f_dynamic_high_pop_limit=1'><b>[GLOB.dynamic_high_pop_limit]</b></a>.
+		<br/>The threshold at which "high population override" will be in effect. <br/>
+		<br/>
+		<b>Stacking threeshold:</b> Current value : <a href='?src=[REF(src)];[HrefToken()];f_dynamic_stacking_limit=1'><b>[GLOB.dynamic_stacking_limit]</b></a>.
+		<br/>The threshold at which "round-ender" rulesets will stack. A value higher than 100 ensure this never happens. <br/>
+		<h3>Advanced parameters</h3>
+		Curve centre: <A href='?src=[REF(src)];[HrefToken()];f_dynamic_roundstart_centre=1'>-> [GLOB.dynamic_curve_centre] <-</A><br>
+		Curve width: <A href='?src=[REF(src)];[HrefToken()];f_dynamic_roundstart_width=1'>-> [GLOB.dynamic_curve_width] <-</A><br>
+		Latejoin injection delay:<br>
+		Minimum: <A href='?src=[REF(src)];[HrefToken()];f_dynamic_roundstart_latejoin_min=1'>-> [GLOB.dynamic_latejoin_delay_min / 60 / 10] <-</A> Minutes<br>
+		Maximum: <A href='?src=[REF(src)];[HrefToken()];f_dynamic_roundstart_latejoin_max=1'>-> [GLOB.dynamic_latejoin_delay_max / 60 / 10] <-</A> Minutes<br>
+		Midround injection delay:<br>
+		Minimum: <A href='?src=[REF(src)];[HrefToken()];f_dynamic_roundstart_midround_min=1'>-> [GLOB.dynamic_midround_delay_min / 60 / 10] <-</A> Minutes<br>
+		Maximum: <A href='?src=[REF(src)];[HrefToken()];f_dynamic_roundstart_midround_max=1'>-> [GLOB.dynamic_midround_delay_max / 60 / 10] <-</A> Minutes<br>
+		"}
+
+	user << browse(dat, "window=dyn_mode_options;size=900x650")
+
 /datum/admins/proc/create_or_modify_area()
 	set category = "Debug"
 	set name = "Create or modify area"
@@ -914,3 +978,36 @@
 				"Admin login: [key_name(src)]")
 		if(string)
 			message_admins("[string]")
+
+/client/proc/cmd_admin_man_up(mob/M in GLOB.mob_list)
+	set category = "Special Verbs"
+	set name = "Man Up"
+
+	if(!M)
+		return
+	if(!check_rights(R_ADMIN))
+		return
+
+	to_chat(M, "<span class='warning bold reallybig'>Man up, and deal with it.</span><br><span class='warning big'>Move on.</span>")
+	M.playsound_local(M, 'modular_citadel/sound/misc/manup.ogg', 50, FALSE, pressure_affected = FALSE)
+
+	log_admin("Man up: [key_name(usr)] told [key_name(M)] to man up")
+	var/message = "<span class='adminnotice'>[key_name_admin(usr)] told [key_name_admin(M)] to man up.</span>"
+	message_admins(message)
+	admin_ticket_log(M, message)
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Man Up")
+
+/client/proc/cmd_admin_man_up_global()
+	set category = "Special Verbs"
+	set name = "Man Up Global"
+
+	if(!check_rights(R_ADMIN))
+		return
+
+	to_chat(world, "<span class='warning bold reallybig'>Man up, and deal with it.</span><br><span class='warning big'>Move on.</span>")
+	for(var/mob/M in GLOB.player_list)
+		M.playsound_local(M, 'modular_citadel/sound/misc/manup.ogg', 50, FALSE, pressure_affected = FALSE)
+
+	log_admin("Man up global: [key_name(usr)] told everybody to man up")
+	message_admins("<span class='adminnotice'>[key_name_admin(usr)] told everybody to man up.</span>")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Man Up Global")

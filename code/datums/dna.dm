@@ -137,10 +137,11 @@
 	return .
 
 /datum/dna/proc/generate_dna_blocks()
-	var/bonus
+	var/list/mutations_temp = GLOB.good_mutations + GLOB.bad_mutations + GLOB.not_good_mutations
 	if(species && species.inert_mutation)
-		bonus = GET_INITIALIZED_MUTATION(species.inert_mutation)
-	var/list/mutations_temp = GLOB.good_mutations + GLOB.bad_mutations + GLOB.not_good_mutations + bonus
+		var/bonus = GET_INITIALIZED_MUTATION(species.inert_mutation)
+		if(bonus)
+			mutations_temp += bonus
 	if(!LAZYLEN(mutations_temp))
 		return
 	mutation_index.Cut()
@@ -285,7 +286,7 @@
 	unique_enzymes = generate_unique_enzymes()
 	uni_identity = generate_uni_identity()
 	generate_dna_blocks()
-	features = random_features()
+	features = random_features(species?.id)
 
 
 /datum/dna/stored //subtype used by brain mob's stored_dna

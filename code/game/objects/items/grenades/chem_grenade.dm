@@ -27,19 +27,19 @@
 
 /obj/item/grenade/chem_grenade/examine(mob/user)
 	display_timer = (stage == READY && !nadeassembly)	//show/hide the timer based on assembly state
-	..()
+	. = ..()
 	if(user.can_see_reagents())
 		var/count = 0
 		if(beakers.len)
-			to_chat(user, "<span class='notice'>You scan the grenade and detect the following reagents:</span>")
+			. += "<span class='notice'>You scan the grenade and detect the following reagents:</span>"
 			for(var/obj/item/reagent_containers/glass/G in beakers)
 				var/textcount = thtotext(++count)
 				for(var/datum/reagent/R in G.reagents.reagent_list)
-					to_chat(user, "<span class='notice'>[R.volume] units of [R.name] in the [textcount] beaker.</span>")
+					. += "<span class='notice'>[R.volume] units of [R.name] in the [textcount] beaker.</span>"
 			if(beakers.len == 1)
-				to_chat(user, "<span class='notice'>You detect no second beaker in the grenade.</span>")
+				. += "<span class='notice'>You detect no second beaker in the grenade.</span>"
 		else
-			to_chat(user, "<span class='notice'>You scan the grenade, but detect nothing.</span>")
+			. += "<span class='notice'>You scan the grenade, but detect nothing.</span>"
 
 
 /obj/item/grenade/chem_grenade/attack_self(mob/user)
@@ -117,7 +117,7 @@
 				if(!O.reagents)
 					continue
 				var/reagent_list = pretty_string_from_reagent_list(O.reagents)
-				user.log_message("removed [O] ([reagent_list]) from [src]")
+				user.log_message("removed [O] ([reagent_list]) from [src]", LOG_GAME)
 			beakers = list()
 			to_chat(user, "<span class='notice'>You open the [initial(name)] assembly and remove the payload.</span>")
 			return // First use of the wrench remove beakers, then use the wrench to remove the activation mechanism.
@@ -402,8 +402,8 @@
 
 /obj/item/grenade/chem_grenade/cleaner/Initialize()
 	. = ..()
-	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
-	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/plastic/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/plastic/B2 = new(src)
 
 	B1.reagents.add_reagent("fluorosurfactant", 40)
 	B2.reagents.add_reagent("water", 40)
@@ -420,8 +420,8 @@
 
 /obj/item/grenade/chem_grenade/ez_clean/Initialize()
 	. = ..()
-	var/obj/item/reagent_containers/glass/beaker/large/B1 = new(src)
-	var/obj/item/reagent_containers/glass/beaker/large/B2 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/plastic/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/plastic/B2 = new(src)
 
 	B1.reagents.add_reagent("fluorosurfactant", 40)
 	B2.reagents.add_reagent("water", 40)

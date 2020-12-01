@@ -7,14 +7,14 @@
 	breakouttime = 10 //Easy to break out. It's not for gaming.
 	icon = 'hyperstation/icons/obj/rope.dmi'
 	icon_state = "rope"
-	item_state = "rope_hands" //This sprite is in restraints.dmi until I figure out how to refrence somewhere else
+	item_state = "rope" //This sprite is in restraints.dmi until I figure out how to refrence somewhere else
 	cuffsound = 'sound/weapons/cablecuff.ogg'
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 
 /mob/living/proc/rope_add(source) //Check to see if the rope is on, and then add effects
 	var/mob/living/carbon/M = source
 	if(M.handcuffed)
-		var/rope_message = pick("The rope is tightly tied onto you")
+		var/rope_message = pick("The rope is tightly tied onto you!")
 		to_chat(M, "<span class='userlove'>[rope_message]</span>")
 		M.min_arousal = 33
 		M.arousal_rate += 2
@@ -23,7 +23,7 @@
 /mob/living/proc/rope_remove(list/sources, temp_min_arousal, temp_max_arousal, temp_arousal_rate) //Check to see it the rope is gone, and reset effects
 	var/mob/living/carbon/M = sources
 	if (!M.handcuffed)
-		var/rope_message = pick("The rope has been removed")
+		var/rope_message = pick("The rope has been removed!")
 		to_chat(M, "<span class='notice'>[rope_message]</span>")
 		M.min_arousal = temp_min_arousal
 		M.max_arousal = temp_max_arousal

@@ -11,8 +11,8 @@
 
 //gets assignment from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
-/mob/living/carbon/human/proc/get_assignment(if_no_id = "No id", if_no_job = "No job")
-	var/obj/item/card/id/id = get_idcard()
+/mob/living/carbon/human/proc/get_assignment(if_no_id = "No id", if_no_job = "No job", hand_first = TRUE)
+	var/obj/item/card/id/id = get_idcard(hand_first)
 	if(id)
 		. = id.assignment
 	else
@@ -27,7 +27,7 @@
 //gets name from ID or ID inside PDA or PDA itself
 //Useful when player do something with computers
 /mob/living/carbon/human/proc/get_authentification_name(if_no_id = "Unknown")
-	var/obj/item/card/id/id = get_idcard()
+	var/obj/item/card/id/id = get_idcard(FALSE)
 	if(id)
 		return id.registered_name
 	var/obj/item/pda/pda = wear_id
@@ -86,10 +86,15 @@
 	return
 
 //gets ID card object from special clothes slot or null.
-/mob/living/carbon/human/get_idcard()
-	if(wear_id)
-		return wear_id.GetID()
-
+/mob/living/carbon/human/get_idcard(hand_first = TRUE)
+	. = ..()
+	if(. && hand_first)
+		return
+	//Check inventory slots
+	var/obj/item/card/id/id_card = wear_id?.GetID()
+	if(!id_card)
+		id_card = belt?.GetID()
+	return id_card || .
 
 /mob/living/carbon/human/IsAdvancedToolUser()
 	if(HAS_TRAIT(src, TRAIT_MONKEYLIKE))
@@ -127,3 +132,10 @@
 			return FALSE
 
 	return .
+
+/*
+/mob/living/carbon/human/transfer_blood_dna(list/blood_dna)
+	..()
+	if(blood_dna.len)
+		last_bloodtype = blood_dna[blood_dna[blood_dna.len]]//trust me this works
+		last_blood_DNA = blood_dna[blood_dna.len]*/

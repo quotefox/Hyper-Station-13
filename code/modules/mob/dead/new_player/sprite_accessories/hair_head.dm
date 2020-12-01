@@ -225,6 +225,10 @@
 	name = "Hitop"
 	icon_state = "hair_hitop"
 
+/datum/sprite_accessory/hair/hyenamane
+	name = "Hyena Mane"
+	icon_state = "hair_hyenamane"
+
 /datum/sprite_accessory/hair/jensen
 	name = "Jensen Hair"
 	icon_state = "hair_jensen"

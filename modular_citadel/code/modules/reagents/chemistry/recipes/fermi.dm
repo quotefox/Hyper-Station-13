@@ -10,7 +10,7 @@
 	if(clear_conversion == REACTION_CLEAR_IMPURE | REACTION_CLEAR_INVERSE)
 		for(var/id in results)
 			var/datum/reagent/R = my_atom.reagents.has_reagent("[id]")
-			if(R.purity == 1)
+			if(!R || R.purity == 1)
 				continue
 
 			var/cached_volume = R.volume
@@ -25,7 +25,6 @@
 				my_atom.reagents.add_reagent(R.impure_chem, impureVol, FALSE, other_purity = 1)
 				R.cached_purity = R.purity
 				R.purity = 1
-	return
 
 //Called when temperature is above a certain threshold, or if purity is too low.
 /datum/chemical_reaction/proc/FermiExplode(datum/reagents, var/atom/my_atom, volume, temp, pH, Exploding = FALSE)
@@ -125,7 +124,7 @@
 	var/datum/reagent/fermi/eigenstate/E = locate(/datum/reagent/fermi/eigenstate) in my_atom.reagents.reagent_list
 	if(location)
 		E.location_created = location
-		E.data.["location_created"] = location
+		E.data["location_created"] = location
 
 
 //serum
@@ -304,39 +303,39 @@
 		for(var/mob/M in seen)
 			to_chat(M, "<span class='warning'>The reaction splutters and fails to react properly.</span>") //Just in case
 			E.purity = 0
-	if (B.data.["gender"] == "female")
-		E.data.["creatorGender"] = "Mistress"
+	if (B.data["gender"] == "female")
+		E.data["creatorGender"] = "Mistress"
 		E.creatorGender = "Mistress"
 	else
-		E.data.["creatorGender"] = "Master"
+		E.data["creatorGender"] = "Master"
 		E.creatorGender = "Master"
-	E.data["creatorName"] = B.data.["real_name"]
-	E.creatorName = B.data.["real_name"]
-	E.data.["creatorID"] = B.data.["ckey"]
-	E.creatorID = B.data.["ckey"]
+	E.data["creatorName"] = B.data["real_name"]
+	E.creatorName = B.data["real_name"]
+	E.data["creatorID"] = B.data["ckey"]
+	E.creatorID = B.data["ckey"]
 
 //So slimes can play too.
 /datum/chemical_reaction/fermi/enthrall/slime
-	required_catalysts = list("slimejelly" = 1)
+	required_catalysts = list("jellyblood" = 1)
 
 /datum/chemical_reaction/fermi/enthrall/slime/FermiFinish(datum/reagents/holder, var/atom/my_atom)
-	var/datum/reagent/toxin/slimejelly/B = locate(/datum/reagent/toxin/slimejelly) in my_atom.reagents.reagent_list//The one line change.
+	var/datum/reagent/blood/jellyblood/B = locate(/datum/reagent/blood/jellyblood) in my_atom.reagents.reagent_list//The one line change.
 	var/datum/reagent/fermi/enthrall/E = locate(/datum/reagent/fermi/enthrall) in my_atom.reagents.reagent_list
 	if(!B.data)
 		var/list/seen = viewers(5, get_turf(my_atom))
 		for(var/mob/M in seen)
 			to_chat(M, "<span class='warning'>The reaction splutters and fails to react.</span>") //Just in case
 			E.purity = 0
-	if (B.data.["gender"] == "female")
-		E.data.["creatorGender"] = "Mistress"
+	if (B.data["gender"] == "female")
+		E.data["creatorGender"] = "Mistress"
 		E.creatorGender = "Mistress"
 	else
-		E.data.["creatorGender"] = "Master"
+		E.data["creatorGender"] = "Master"
 		E.creatorGender = "Master"
-	E.data["creatorName"] = B.data.["real_name"]
-	E.creatorName = B.data.["real_name"]
-	E.data.["creatorID"] = B.data.["ckey"]
-	E.creatorID = B.data.["ckey"]
+	E.data["creatorName"] = B.data["real_name"]
+	E.creatorName = B.data["real_name"]
+	E.data["creatorID"] = B.data["ckey"]
+	E.creatorID = B.data["ckey"]
 
 /datum/chemical_reaction/fermi/enthrall/FermiExplode(datum/reagents, var/atom/my_atom, volume, temp, pH)
 	var/turf/T = get_turf(my_atom)

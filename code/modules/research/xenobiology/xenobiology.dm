@@ -18,9 +18,9 @@
 	var/recurring = FALSE
 
 /obj/item/slime_extract/examine(mob/user)
-	..()
+	. = ..()
 	if(Uses > 1)
-		to_chat(user,"It has [Uses] uses remaining.")
+		. += "It has [Uses] uses remaining."
 
 /obj/item/slime_extract/attackby(obj/item/O, mob/user)
 	if(istype(O, /obj/item/slimepotion/enhancer))
@@ -704,7 +704,7 @@
 	desc = "A miraculous chemical mix that grants human like intelligence to living beings. It has been modified with Syndicate technology to also grant an internal radio implant to the target and authenticate with identification systems."
 
 /obj/item/slimepotion/slime/sentience/nuclear/after_success(mob/living/user, mob/living/simple_animal/SM)
-	var/obj/item/implant/radio/syndicate/imp = new(src)
+	var/obj/item/implant/radio/syndicate/imp = new
 	imp.implant(SM, user)
 
 	SM.access_card = new /obj/item/card/id/syndicate(SM)
@@ -968,7 +968,7 @@
 
 	to_chat(user, "<span class='notice'>You feed the potion to [M].</span>")
 	to_chat(M, "<span class='notice'>Your mind tingles as you are fed the potion. You can hear radio waves now!</span>")
-	var/obj/item/implant/radio/slime/imp = new(src)
+	var/obj/item/implant/radio/slime/imp = new
 	imp.implant(M, user)
 	qdel(src)
 
@@ -999,7 +999,6 @@
 	throwforce = 10
 	throw_speed = 0.1
 	throw_range = 28
-	glide_size = 2
 	flags_1 = CONDUCT_1
 	max_amount = 60
 	turf_type = /turf/open/floor/sepia

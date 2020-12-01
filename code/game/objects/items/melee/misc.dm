@@ -212,11 +212,12 @@
 		if(!iscyborg(target))
 			return
 	else
-		if(cooldown <= world.time)
+		if(cooldown < world.time)
+			if(target.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
+				playsound(target, 'sound/weapons/genhit.ogg', 50, 1)
+				return
 			if(ishuman(target))
 				var/mob/living/carbon/human/H = target
-				if (H.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
-					return
 				if(check_martial_counter(H, user))
 					return
 			playsound(get_turf(src), 'sound/effects/woodhit.ogg', 75, 1, -1)
@@ -262,7 +263,7 @@
 		if (B && !QDELETED(B))
 			H.internal_organs -= B
 			qdel(B)
-		new /obj/effect/gibspawner/generic(get_turf(H), H.dna)
+		H.spawn_gibs()
 		return (BRUTELOSS)
 
 /obj/item/melee/classic_baton/telescopic/attack_self(mob/user)
@@ -329,13 +330,13 @@
 	if(proximity_flag)
 		consume_everything(target)
 
-/obj/item/melee/supermatter_sword/throw_impact(target)
+/obj/item/melee/supermatter_sword/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	..()
-	if(ismob(target))
-		var/mob/M
+	if(ismob(hit_atom))
+		var/mob/M = hit_atom
 		if(src.loc == M)
 			M.dropItemToGround(src)
-	consume_everything(target)
+	consume_everything(hit_atom)
 
 /obj/item/melee/supermatter_sword/pickup(user)
 	..()

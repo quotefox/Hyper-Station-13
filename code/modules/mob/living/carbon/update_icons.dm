@@ -69,7 +69,6 @@
 			if(previous_size > 1 && size_multiplier > 1) //macro stays a macro. We just scale the sprite with no offset changes
 				ntransform.Scale(size_multiplier/previous_size)		//scale the sprite accordingly
 
-		previous_size = size_multiplier
 
 	if(changed)
 		animate(src, transform = ntransform, time = 2, pixel_y = final_pixel_y, dir = final_dir, easing = EASE_IN|EASE_OUT)
@@ -146,8 +145,12 @@
 
 /mob/living/carbon/update_damage_overlays()
 	remove_overlay(DAMAGE_LAYER)
+	var/dam_colors = "#E62525"
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		dam_colors = bloodtype_to_color(H.dna.blood_type)
 
-	var/mutable_appearance/damage_overlay = mutable_appearance('icons/mob/dam_mob.dmi', "blank", -DAMAGE_LAYER)
+	var/mutable_appearance/damage_overlay = mutable_appearance('icons/mob/dam_mob.dmi', "blank", -DAMAGE_LAYER, color = dam_colors)
 	overlays_standing[DAMAGE_LAYER] = damage_overlay
 
 	for(var/X in bodyparts)

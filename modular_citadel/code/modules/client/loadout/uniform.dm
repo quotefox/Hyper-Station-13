@@ -38,6 +38,23 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/suit_jacket/white
 
+/datum/gear/suitblackreal
+	name = "Black suit shirt"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/lawyer/blacksuit
+
+/datum/gear/galaxy_b
+	name = "De Void of Soul"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/lawyer/galaxy_blue
+	cost = 3
+
+/datum/gear/galaxy_r
+	name = "Pulsar Gonne"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/lawyer/galaxy_red
+	cost = 3
+
 /datum/gear/assistantformal
 	name = "Assistant's formal uniform"
 	category = SLOT_W_UNIFORM
@@ -153,6 +170,21 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/pants/track
 
+/datum/gear/redwshort
+	name = "Red workout short"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/shorts/redwshort
+
+/datum/gear/yellowwshort
+	name = "Yellow workout short"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/shorts/yellowwshort
+
+/datum/gear/pinkwshort
+	name = "Pink workout short"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/shorts/pinkwshort
+
 /datum/gear/comfortable
 	name = "Padded Uniform"
 	category =  SLOT_W_UNIFORM
@@ -200,17 +232,41 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/keyholesweater
 
+/datum/gear/polyskirt
+	name = "Polychromic Skirt"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/skirt
+	cost = 2
+
+/datum/gear/polysuit
+	name = "Polychromic Button-up Shirt"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/shirt
+	cost = 2
+
+/datum/gear/polyjump
+	name = "Polychromic Tri-tone Jumpsuit"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/jumpsuit
+	cost = 2
+
+/datum/gear/polypleat
+	name = "Polychromic Pleated Skirt"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/pleat
+	cost = 2
+
 /datum/gear/polykilt
 	name = "Polychromic Kilt"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/kilt
-	cost = 3
+	cost = 2
 
 /datum/gear/polyshorts
 	name = "Polychromic Shorts"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/shorts
-	cost = 3
+	cost = 2
 
 /datum/gear/polyshortpants
 	name = "Polychromic Athletic Shorts"
@@ -360,10 +416,54 @@
 	name = "Pink stripper outfit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/stripper_pink
-	cost = 3
 
 /datum/gear/greenstripper
 	name = "Green stripper outfit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/stripper_green
-	cost = 3
+
+/datum/gear/polybikini
+	name = "Polychromic Bikini"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/bikini
+	cost = 2
+
+/datum/gear/polystripper
+	name = "Polychromic Stripper Outfit"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/stripper
+	cost = 2
+
+/datum/gear/polypantsu
+	name = "Polychromic Panties"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/shortpants/pantsu
+
+/datum/gear/polybulge
+	name = "Polychromic Voluminous Thong"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/bulge
+
+/datum/gear/polybottomless
+	name = "Polychromic Bottomless Shirt"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/bottomless
+	cost = 2
+
+/datum/gear/corset
+	name = "Corset"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/corset
+	cost = 1
+
+/datum/gear/corset
+	name = "Corset"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/corset
+	cost = 1
+
+/datum/gear/shortsbra
+	name = "Kromatic Shorts and Top"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/shortsbra
+	cost = 1

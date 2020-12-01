@@ -182,8 +182,7 @@
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/post/research)
 "aP" = (
-/obj/structure/filingcabinet/chestdrawer,
-/obj/item/paper/fluff/awaymissions/snowdin/research_feed,
+/obj/machinery/computer/rdconsole/core,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/post/research)
 "aQ" = (
@@ -205,29 +204,25 @@
 	pixel_y = 5
 	},
 /obj/effect/landmark/awaystart,
-/obj/item/bedsheet/purple,
+/obj/item/bedsheet/cult,
 /turf/open/floor/wood,
 /area/awaymission/snowdin/post/dorm)
 "aS" = (
 /turf/closed/wall,
 /area/awaymission/snowdin/post/dorm)
 "aT" = (
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
-	dir = 6;
-	piping_layer = 3;
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/obj/item/bedsheet/purple,
-/turf/open/floor/wood,
-/area/awaymission/snowdin/post/dorm)
+/obj/effect/decal/cleanable/dirt,
+/obj/item/storage/box/firingpins,
+/turf/open/floor/plasteel/dark,
+/area/awaymission/snowdin/post/secpost)
 "aU" = (
-/obj/structure/bed,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	piping_layer = 3;
 	pixel_x = 5;
 	pixel_y = 5
 	},
+/obj/item/bedsheet/purple,
+/obj/effect/mob_spawn/human/exiled,
 /turf/open/floor/wood,
 /area/awaymission/snowdin/post/dorm)
 "aV" = (
@@ -251,6 +246,7 @@
 	pixel_y = 5
 	},
 /obj/effect/landmark/awaystart,
+/obj/item/bedsheet/red,
 /turf/open/floor/wood,
 /area/awaymission/snowdin/post/dorm)
 "aY" = (
@@ -263,13 +259,13 @@
 /turf/open/floor/wood,
 /area/awaymission/snowdin/post/dorm)
 "aZ" = (
-/obj/structure/bed,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	piping_layer = 3;
 	pixel_x = 5;
 	pixel_y = 5
 	},
 /obj/item/bedsheet/orange,
+/obj/effect/mob_spawn/human/exiled,
 /turf/open/floor/wood,
 /area/awaymission/snowdin/post/dorm)
 "ba" = (
@@ -821,10 +817,18 @@
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/kitchen)
 "ci" = (
-/obj/structure/table,
-/obj/machinery/microwave,
-/turf/open/floor/plating,
-/area/awaymission/snowdin/post/kitchen)
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/simple/supplymain/visible{
+	dir = 8
+	},
+/turf/open/floor/plasteel,
+/area/awaymission/snowdin/post/engineering)
 "cj" = (
 /obj/structure/table,
 /obj/machinery/microwave,
@@ -862,7 +866,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12"
+	req_access_txt = "201"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/dorm)
@@ -1094,7 +1098,8 @@
 	pixel_y = 5
 	},
 /obj/machinery/door/airlock{
-	name = "Freezer"
+	name = "Freezer";
+	req_access_txt = "201"
 	},
 /obj/structure/barricade/wooden,
 /obj/structure/spider/stickyweb,
@@ -1225,6 +1230,7 @@
 /obj/machinery/light/small{
 	dir = 4
 	},
+/obj/item/t_scanner/adv_mining_scanner/lesser,
 /turf/open/floor/plasteel/dark/snowdin,
 /area/awaymission/snowdin/cave)
 "cV" = (
@@ -1486,6 +1492,7 @@
 /area/awaymission/snowdin/post/research)
 "dn" = (
 /obj/structure/closet/secure_closet/freezer/meat,
+/obj/item/storage/box/monkeycubes,
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/snowdin/post/kitchen)
 "do" = (
@@ -1550,6 +1557,7 @@
 	icon_state = "crateopen";
 	name = "explosives ordinance"
 	},
+/obj/item/t_scanner/adv_mining_scanner/lesser,
 /turf/open/floor/plasteel/dark/snowdin,
 /area/awaymission/snowdin/cave)
 "dz" = (
@@ -1647,7 +1655,7 @@
 	pixel_y = 5
 	},
 /obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12"
+	req_access_txt = "201"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post)
@@ -1667,7 +1675,7 @@
 "dQ" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Kitchen";
-	req_access_txt = "35"
+	req_access_txt = "201"
 	},
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/plasteel,
@@ -1948,6 +1956,7 @@
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
 	},
+/obj/machinery/microwave,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/messhall)
 "ev" = (
@@ -2199,7 +2208,6 @@
 /area/awaymission/snowdin/post)
 "eZ" = (
 /obj/structure/table,
-/obj/item/clothing/neck/stethoscope,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -2207,6 +2215,7 @@
 	dir = 2;
 	pixel_y = 24
 	},
+/obj/item/clothing/neck/stethoscope,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
@@ -2239,6 +2248,11 @@
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
+	},
+/obj/item/slime_extract/grey,
+/obj/item/slime_extract/grey{
+	pixel_x = -7;
+	pixel_y = 8
 	},
 /turf/open/floor/plasteel/white,
 /area/awaymission/snowdin/post)
@@ -2285,14 +2299,6 @@
 "fh" = (
 /turf/closed/wall/rust,
 /area/awaymission/snowdin/post/gateway)
-"fi" = (
-/obj/structure/barricade/wooden/crude,
-/obj/effect/turf_decal/tile/bar,
-/obj/effect/turf_decal/tile/bar{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/awaymission/snowdin/post/messhall)
 "fj" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -2305,7 +2311,7 @@
 	},
 /obj/machinery/door/airlock/public/glass{
 	name = "Kitchen";
-	req_access_txt = "35"
+	req_access_txt = "201"
 	},
 /obj/machinery/door/firedoor,
 /obj/structure/barricade/wooden/crude,
@@ -2405,8 +2411,8 @@
 /area/awaymission/snowdin/post/dorm)
 "fw" = (
 /obj/machinery/sleeper{
-	icon_state = "sleeper";
-	dir = 4
+	dir = 4;
+	icon_state = "sleeper"
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -2551,7 +2557,6 @@
 "fK" = (
 /obj/structure/table/reinforced,
 /obj/item/trash/raisins,
-/obj/structure/barricade/wooden/crude,
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
@@ -2587,6 +2592,9 @@
 "fP" = (
 /obj/structure/table,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/seeds/apple,
+/obj/item/seeds/glowshroom,
+/obj/item/seeds/plump,
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
 	},
@@ -2700,10 +2708,7 @@
 /area/awaymission/snowdin/cave/cavern)
 "gd" = (
 /obj/effect/spawner/lootdrop/crate_spawner,
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "ge" = (
 /turf/closed/mineral/iron/ice,
@@ -2711,10 +2716,7 @@
 "gf" = (
 /obj/structure/closet/crate/wooden,
 /obj/effect/spawner/lootdrop/snowdin/dungeonheavy,
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "gg" = (
 /obj/structure/bed,
@@ -3166,7 +3168,7 @@
 	},
 /obj/machinery/door/airlock/maintenance{
 	name = "Misc Storage";
-	req_access_txt = "12"
+	req_access_txt = "201"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/dorm)
@@ -3396,10 +3398,7 @@
 /area/awaymission/snowdin/post/garage)
 "hF" = (
 /obj/structure/destructible/cult/pylon,
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "hG" = (
 /obj/structure/closet/cabinet,
@@ -3505,7 +3504,7 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/medical/glass{
 	name = "Medbay Storage";
-	req_access_txt = "45"
+	req_access_txt = "202"
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -3526,7 +3525,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12"
+	req_access_txt = "201"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post)
@@ -3599,6 +3598,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/hydro)
+"hZ" = (
+/obj/item/clothing/suit/cultrobes,
+/obj/item/clothing/shoes/cult,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
 "ib" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	piping_layer = 3;
@@ -3621,7 +3625,7 @@
 /area/awaymission/snowdin/post/garage)
 "if" = (
 /obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12"
+	req_access_txt = "201"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/garage)
@@ -3657,30 +3661,22 @@
 "il" = (
 /obj/structure/closet/crate/wooden,
 /obj/effect/spawner/lootdrop/snowdin/dungeonmid,
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "im" = (
 /obj/effect/decal/cleanable/blood/old,
-/mob/living/simple_animal/hostile/spawner/nether{
+/obj/structure/spawner/nether{
 	max_mobs = 5
 	},
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/obj/effect/rune/apocalypse,
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "in" = (
 /mob/living/simple_animal/hostile/netherworld/blankbody{
 	desc = "It's Caleb Reed, but their flesh has an ashy texture, and their face is featureless save an eerie smile.";
 	name = "Caleb Reed"
 	},
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "io" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -3864,6 +3860,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/structure/closet/emcloset/anchored,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post)
 "iy" = (
@@ -3874,6 +3871,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/structure/closet/firecloset/full,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post)
 "iz" = (
@@ -4121,6 +4119,10 @@
 /obj/machinery/airalarm{
 	pixel_y = 23
 	},
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/metal/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/garage)
 "iY" = (
@@ -4382,6 +4384,7 @@
 /area/awaymission/snowdin/post/messhall)
 "jA" = (
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/table,
 /obj/machinery/plantgenes,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/hydro)
@@ -4494,10 +4497,7 @@
 	desc = "It's Jacob Ullman, but their flesh has an ashy texture, and their face is featureless save an eerie smile.";
 	name = "Jacob Ullman"
 	},
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "jP" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -4630,6 +4630,8 @@
 /obj/effect/turf_decal/tile/green{
 	dir = 8
 	},
+/obj/structure/table,
+/obj/machinery/smartfridge/disks,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/hydro)
 "kf" = (
@@ -4850,6 +4852,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-2"
 	},
+/obj/item/storage/box/monkeycubes,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/post/custodials)
 "kE" = (
@@ -4966,6 +4969,9 @@
 	},
 /obj/effect/turf_decal/tile/green{
 	dir = 8
+	},
+/obj/structure/closet/secure_closet/hydroponics{
+	req_access = null
 	},
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/hydro)
@@ -5440,7 +5446,7 @@
 	},
 /obj/machinery/door/airlock/public/glass{
 	name = "Hydroponics";
-	req_access_txt = "35"
+	req_access_txt = "201"
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/cafeteria,
@@ -5621,10 +5627,7 @@
 "lT" = (
 /obj/structure/closet/crate/wooden,
 /obj/effect/spawner/lootdrop/snowdin/dungeonlite,
-/turf/open/floor/engine/cult{
-	initial_gas_mix = "o2=0;n2=82;plasma=24;TEMP=120";
-	temperature = 120
-	},
+/turf/open/floor/plasteel/cult,
 /area/awaymission/snowdin/cave/cavern)
 "lU" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
@@ -5669,6 +5672,7 @@
 	icon_state = "1-4"
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/reagent_dispensers/watertank/high,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/post/custodials)
 "ma" = (
@@ -5839,7 +5843,7 @@
 "mq" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Hydroponics";
-	req_access_txt = "35"
+	req_access_txt = "201"
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/cafeteria,
@@ -6022,7 +6026,7 @@
 	},
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Engineering";
-	req_access_txt = "32"
+	req_access_txt = "204"
 	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/cafeteria,
@@ -6074,6 +6078,8 @@
 /obj/structure/table,
 /obj/machinery/light/small,
 /obj/effect/decal/cleanable/dirt,
+/obj/item/stack/cable_coil,
+/obj/item/storage/belt/utility,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/garage)
 "mX" = (
@@ -6244,6 +6250,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
+/obj/machinery/pipedispenser,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "nn" = (
@@ -6275,9 +6282,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
-/turf/open/floor/plasteel{
-	icon_state = "yellow"
-	},
+/turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "np" = (
 /obj/structure/cable/yellow{
@@ -6415,8 +6420,7 @@
 	},
 /obj/machinery/door/airlock/security{
 	name = "Security Checkpoint";
-	req_access = null;
-	req_access_txt = "1"
+	req_access_txt = "203"
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -6521,9 +6525,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
-/turf/open/floor/plasteel{
-	icon_state = "yellow"
-	},
+/turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "nR" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
@@ -6560,7 +6562,7 @@
 	},
 /obj/machinery/door/airlock/public/glass{
 	name = "Hydroponics";
-	req_access_txt = "35"
+	req_access_txt = "204"
 	},
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/hydro)
@@ -6749,9 +6751,9 @@
 "oo" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4;
+	piping_layer = 3;
 	pixel_x = 5;
-	pixel_y = 5;
-	piping_layer = 3
+	pixel_y = 5
 	},
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel,
@@ -6759,9 +6761,9 @@
 "op" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 4;
+	piping_layer = 3;
 	pixel_x = 5;
-	pixel_y = 5;
-	piping_layer = 3
+	pixel_y = 5
 	},
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
@@ -6781,6 +6783,11 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
+/obj/item/stock_parts/matter_bin/adv,
+/obj/item/stock_parts/matter_bin/adv,
+/obj/item/stock_parts/matter_bin/adv,
+/obj/item/stock_parts/manipulator/pico,
+/obj/item/circuitboard/machine/autolathe,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "or" = (
@@ -7039,7 +7046,9 @@
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/hydro)
 "oV" = (
-/obj/structure/closet/secure_closet/hydroponics,
+/obj/structure/closet/secure_closet/hydroponics{
+	req_access = null
+	},
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/hydro)
 "oW" = (
@@ -7151,9 +7160,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
-/turf/open/floor/plasteel{
-	icon_state = "redcorner"
-	},
+/turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/secpost)
 "pn" = (
 /turf/open/floor/plating,
@@ -7270,6 +7277,9 @@
 	pixel_x = 4;
 	pixel_y = 8
 	},
+/obj/item/clothing/gloves/color/yellow,
+/obj/item/stack/cable_coil,
+/obj/item/storage/belt/utility,
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "pz" = (
@@ -7312,7 +7322,7 @@
 "pJ" = (
 /obj/machinery/door/airlock/vault{
 	name = "Armory";
-	req_access_txt = "3"
+	req_access_txt = "203"
 	},
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/post/secpost)
@@ -7438,13 +7448,37 @@
 /area/awaymission/snowdin/post/engineering)
 "pW" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/visible{
-	dir = 1
+	color = "#822bff";
+	dir = 4;
+	pipe_color = "#822bff"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "pX" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/visible{
 	dir = 1
+	},
+/obj/structure/closet/crate/engineering{
+	name = "materials crate"
+	},
+/obj/item/stack/sheet/mineral/uranium{
+	amount = 30
+	},
+/obj/item/stack/sheet/mineral/plasma{
+	amount = 40
+	},
+/obj/item/stack/sheet/mineral/gold{
+	amount = 30
+	},
+/obj/item/stack/sheet/mineral/silver{
+	amount = 30
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
@@ -7453,6 +7487,10 @@
 "pY" = (
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
 	dir = 8
+	},
+/obj/item/circuitboard/machine/protolathe{
+	pixel_x = -3;
+	pixel_y = 7
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
@@ -7621,13 +7659,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
-"qv" = (
-/obj/machinery/atmospherics/components/binary/volume_pump{
-	name = "Air Mix To Turbine Mix"
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plasteel,
-/area/awaymission/snowdin/post/engineering)
 "qw" = (
 /obj/machinery/atmospherics/pipe/simple/supply/visible{
 	dir = 5
@@ -7673,7 +7704,7 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/airlock/maintenance{
-	req_access_txt = "12"
+	req_access_txt = "201"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/engineering)
@@ -7791,9 +7822,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
-/turf/open/floor/plasteel{
-	icon_state = "yellow"
-	},
+/turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "qS" = (
 /obj/machinery/button/door{
@@ -7839,8 +7868,7 @@
 	idSelf = "snowdin_turbine_access";
 	name = "Turbine Access Console";
 	pixel_x = -8;
-	pixel_y = -26;
-	req_access_txt = "32"
+	pixel_y = -26
 	},
 /obj/machinery/button/ignition{
 	id = "snowdin_turbine_ignitor";
@@ -7871,15 +7899,18 @@
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
 "qW" = (
-/obj/machinery/atmospherics/pipe/manifold/orange/visible{
-	dir = 4
-	},
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/tile/yellow,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
+	},
+/obj/machinery/atmospherics/components/trinary/mixer/airmix/flipped{
+	dir = 4;
+	name = "turbine mixer";
+	node1_concentration = 0.5;
+	node2_concentration = 0.5
 	},
 /turf/open/floor/plasteel,
 /area/awaymission/snowdin/post/engineering)
@@ -7893,6 +7924,9 @@
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supplymain/visible{
+	dir = 8
 	},
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
@@ -8053,8 +8087,7 @@
 	frequency = 1449;
 	heat_proof = 1;
 	id_tag = "snowdin_turbine_exterior";
-	name = "Turbine Exterior Airlock";
-	req_access_txt = "32"
+	name = "Turbine Exterior Airlock"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/engine,
@@ -8171,6 +8204,7 @@
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post)
 "rH" = (
+/obj/machinery/poweredfans,
 /obj/machinery/door/airlock/external/glass,
 /obj/structure/barricade/wooden/crude/snow,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -8179,11 +8213,8 @@
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post)
 "rI" = (
-/obj/machinery/atmospherics/components/unary/outlet_injector/atmos{
-	dir = 1;
-	id = "syndie_lavaland_inc_in";
-	pixel_x = 5;
-	pixel_y = 5
+/obj/machinery/atmospherics/components/unary/outlet_injector/on/layer3{
+	dir = 1
 	},
 /obj/effect/light_emitter{
 	name = "cave light";
@@ -8327,7 +8358,7 @@
 /turf/open/floor/engine/cult,
 /area/awaymission/snowdin/post/cavern2)
 "sb" = (
-/mob/living/simple_animal/hostile/spawner/nether{
+/obj/structure/spawner/nether{
 	max_mobs = 4;
 	name = "weak netherworld link"
 	},
@@ -8377,8 +8408,7 @@
 	frequency = 1449;
 	heat_proof = 1;
 	id_tag = "snowdin_turbine_interior";
-	name = "Turbine Interior Airlock";
-	req_access_txt = "32"
+	name = "Turbine Interior Airlock"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -9765,10 +9795,10 @@
 /area/awaymission/snowdin/post/broken_shuttle)
 "wc" = (
 /obj/machinery/computer{
-	name = "Shuttle Transist Console";
 	desc = "A console meant for calling and sending a transit ferry. It seems iced-over and non-functional.";
 	dir = 1;
-	icon_screen = null
+	icon_screen = null;
+	name = "Shuttle Transist Console"
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/awaymission/snowdin/post/broken_shuttle)
@@ -9857,9 +9887,9 @@
 "wm" = (
 /obj/machinery/porta_turret/centcom_shuttle/weak{
 	desc = "A turret built with substandard parts and run down further with age.";
-	icon_state = "syndie_off";
 	dir = 9;
-	faction = list("pirate")
+	faction = list("pirate");
+	icon_state = "syndie_off"
 	},
 /turf/open/floor/plating/snowed/smoothed,
 /area/awaymission/snowdin/cave)
@@ -9984,8 +10014,8 @@
 /area/awaymission/snowdin/outside)
 "wC" = (
 /obj/vehicle/ridden/atv{
-	icon_state = "atv";
-	dir = 4
+	dir = 4;
+	icon_state = "atv"
 	},
 /obj/effect/light_emitter{
 	name = "outdoor light";
@@ -10237,7 +10267,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-8"
 	},
-/mob/living/simple_animal/hostile/spawner/nether{
+/obj/structure/spawner/nether{
 	max_mobs = 4;
 	name = "weak netherworld link"
 	},
@@ -10722,10 +10752,10 @@
 /area/awaymission/snowdin/cave)
 "yu" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	name = "toxin out";
 	dir = 8;
+	frequency = 1442;
 	id_tag = "snowdin_toxins_mine_1";
-	frequency = 1442
+	name = "toxin out"
 	},
 /turf/open/floor/engine/vacuum,
 /area/awaymission/snowdin/cave)
@@ -11097,8 +11127,8 @@
 /area/awaymission/snowdin/post/minipost)
 "zq" = (
 /obj/vehicle/ridden/atv{
-	icon_state = "atv";
-	dir = 8
+	dir = 8;
+	icon_state = "atv"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/minipost)
@@ -12349,8 +12379,8 @@
 /area/awaymission/snowdin/cave)
 "CP" = (
 /obj/structure/shuttle/engine/heater{
-	icon_state = "heater";
-	dir = 4
+	dir = 4;
+	icon_state = "heater"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -12884,8 +12914,8 @@
 /area/awaymission/snowdin/cave)
 "DU" = (
 /obj/structure/shuttle/engine/heater{
-	icon_state = "heater";
-	dir = 4
+	dir = 4;
+	icon_state = "heater"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -13324,8 +13354,8 @@
 /area/awaymission/snowdin/cave)
 "EN" = (
 /obj/machinery/sleeper/syndie{
-	icon_state = "sleeper_s";
-	dir = 1
+	dir = 1;
+	icon_state = "sleeper_s"
 	},
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/plasteel/dark,
@@ -13337,8 +13367,8 @@
 "EP" = (
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/sleeper/syndie{
-	icon_state = "sleeper_s";
-	dir = 1
+	dir = 1;
+	icon_state = "sleeper_s"
 	},
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/cave)
@@ -14559,8 +14589,8 @@
 /area/awaymission/snowdin/post/mining_main/mechbay)
 "In" = (
 /obj/mecha/working/ripley/mining{
-	icon_state = "ripley";
-	dir = 1
+	dir = 1;
+	icon_state = "ripley"
 	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/mech_bay_recharge_floor,
@@ -14620,8 +14650,8 @@
 /area/awaymission/snowdin/post/mining_main)
 "Ix" = (
 /obj/vehicle/ridden/atv{
-	icon_state = "atv";
-	dir = 1
+	dir = 1;
+	icon_state = "atv"
 	},
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/plating,
@@ -14997,7 +15027,7 @@
 "Jr" = (
 /obj/machinery/door/airlock/mining/glass{
 	name = "Mining Dock";
-	req_access_txt = "48"
+	req_access_txt = "200"
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -15605,7 +15635,7 @@
 "KK" = (
 /obj/machinery/door/airlock/engineering/glass{
 	name = "Engineering";
-	req_access_txt = "32"
+	req_access_txt = "204"
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_main)
@@ -15788,6 +15818,11 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_dock)
+"NP" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/twohanded/cult_spear,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
 "OF" = (
 /obj/machinery/door/airlock/external{
 	name = "Ready Room";
@@ -15826,6 +15861,25 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/awaymission/snowdin/cave)
+"RD" = (
+/obj/structure/cable/yellow{
+	icon_state = "4-8"
+	},
+/obj/structure/destructible/cult/pylon,
+/turf/open/floor/engine/cult,
+/area/awaymission/snowdin/post/cavern2)
+"RR" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/spawner/nether{
+	max_mobs = 5
+	},
+/obj/effect/rune/convert,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
+"SS" = (
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plating,
+/area/awaymission/snowdin/post/engineering)
 "SX" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -15833,12 +15887,61 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_main)
+"SY" = (
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
+"SZ" = (
+/obj/structure/closet/crate/engineering{
+	name = "materials crate"
+	},
+/obj/item/stack/sheet/mineral/diamond{
+	amount = 6
+	},
+/obj/item/stack/ore/bluespace_crystal/artificial{
+	amount = 6
+	},
+/turf/open/floor/plating,
+/area/awaymission/snowdin/post/mining_main)
+"TF" = (
+/obj/item/stack/sheet/mineral/sandstone/thirty,
+/turf/open/floor/plating/snowed,
+/area/awaymission/snowdin/cave)
+"Uo" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/melee/cultblade/dagger,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
+"Vy" = (
+/obj/item/storage/backpack/cultpack,
+/turf/open/floor/plating/ice/smooth,
+/area/awaymission/snowdin/cave)
+"Vz" = (
+/obj/effect/decal/remains/human,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
 "VW" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/structure/fans/tiny,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
 /area/awaymission/snowdin/post/mining_dock)
+"Wa" = (
+/obj/item/melee/cultblade,
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
+"Wh" = (
+/obj/structure/table,
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/item/circuitboard/machine/circuit_imprinter,
+/obj/item/paper/fluff/awaymissions/snowdin/research_feed,
+/turf/open/floor/plasteel/dark,
+/area/awaymission/snowdin/post/research)
+"XX" = (
+/turf/open/floor/plasteel/cult,
+/area/awaymission/snowdin/cave/cavern)
 "Yn" = (
 /obj/machinery/door/airlock/external/glass,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -22291,7 +22394,7 @@ af
 ak
 af
 aK
-aT
+aY
 bi
 bx
 bR
@@ -24374,7 +24477,7 @@ oA
 oH
 pI
 qo
-qp
+aT
 pH
 am
 af
@@ -26633,7 +26736,7 @@ Ir
 Iq
 Go
 Ky
-Gq
+SZ
 GP
 ae
 ac
@@ -27428,7 +27531,7 @@ af
 af
 af
 ar
-aw
+aP
 aE
 aE
 bc
@@ -27685,7 +27788,7 @@ af
 am
 ag
 ar
-ax
+Wh
 aI
 aE
 aE
@@ -27944,7 +28047,7 @@ af
 ar
 aD
 aG
-aP
+aO
 bc
 bo
 bK
@@ -28210,7 +28313,7 @@ aC
 aC
 dP
 es
-fi
+ex
 fK
 gB
 hq
@@ -29513,7 +29616,7 @@ oq
 oQ
 py
 pV
-nS
+SS
 qV
 rp
 rp
@@ -29769,8 +29872,8 @@ nN
 nN
 nN
 nN
-pW
-qv
+pV
+oP
 qW
 rs
 rM
@@ -30285,7 +30388,7 @@ iJ
 nt
 pY
 pV
-qY
+ci
 nN
 nN
 nN
@@ -30518,7 +30621,7 @@ af
 af
 af
 bf
-ci
+ch
 cO
 du
 dT
@@ -30542,7 +30645,7 @@ oS
 nt
 pZ
 qx
-qZ
+pW
 ru
 rO
 sj
@@ -40287,7 +40390,7 @@ aj
 an
 cT
 an
-an
+TF
 eH
 an
 ap
@@ -48291,7 +48394,7 @@ ae
 ae
 ae
 aj
-tx
+Vy
 ty
 tx
 tx
@@ -53656,9 +53759,9 @@ eJ
 eJ
 eK
 eK
-gc
+XX
 il
-gc
+XX
 gd
 eK
 eJ
@@ -53911,12 +54014,12 @@ bh
 bh
 eJ
 eJ
-gc
-gc
-gV
-gV
-gc
-gc
+XX
+XX
+SY
+SY
+XX
+XX
 eK
 eK
 eJ
@@ -54169,12 +54272,12 @@ bh
 eJ
 eK
 eJ
-gU
+Vz
 hF
 im
-gc
-gc
-gc
+XX
+XX
+XX
 eK
 gc
 eK
@@ -54426,15 +54529,15 @@ bh
 eK
 eK
 gd
-gc
-gc
-gV
-gU
-gV
-gc
+XX
+XX
+SY
+Vz
+NP
+XX
 eJ
 eK
-gc
+XX
 eK
 eK
 eK
@@ -54682,17 +54785,17 @@ bh
 bh
 eK
 eK
-gc
-gc
-gV
-gc
-gc
+XX
+XX
+Uo
+XX
+XX
 jO
-gc
-gc
-gc
-gc
-gc
+XX
+XX
+XX
+XX
+XX
 eK
 eK
 gc
@@ -54940,16 +55043,16 @@ bh
 eJ
 eK
 eK
-gc
-gc
-gc
-gc
-gc
-gc
-gV
-gc
-gc
-gV
+XX
+XX
+XX
+XX
+XX
+XX
+SY
+XX
+XX
+SY
 gc
 gc
 gc
@@ -55197,17 +55300,17 @@ bh
 eJ
 eK
 eK
-gc
-gc
+XX
+XX
 gd
-gV
-gc
-gc
+SY
+XX
+XX
 eK
 ge
-gc
-gc
-gU
+XX
+XX
+Vz
 gV
 gV
 gc
@@ -55454,16 +55557,16 @@ bh
 eJ
 eK
 ge
-gc
-gc
+hZ
+XX
 in
-gc
-gc
+XX
+XX
 ge
 ge
 eK
-gc
-gc
+XX
+XX
 ge
 gc
 gc
@@ -55710,17 +55813,17 @@ bh
 bh
 eJ
 eJ
-gc
-gV
-gU
-gc
-gc
-gc
+XX
+SY
+Vz
+XX
+XX
+XX
 eK
 ge
-gc
-gc
-gV
+XX
+XX
+SY
 eK
 eK
 gc
@@ -55968,12 +56071,12 @@ bh
 eJ
 eJ
 gf
-gc
-gc
-gV
-gc
-gc
-gc
+XX
+XX
+SY
+Wa
+XX
+XX
 eK
 lT
 eK
@@ -56225,13 +56328,13 @@ bh
 eK
 eK
 eJ
-gc
+XX
 hF
-im
-gV
-gc
+RR
+SY
+XX
 eK
-gc
+XX
 eK
 eK
 eK
@@ -56483,10 +56586,10 @@ eJ
 eJ
 eK
 eJ
-gc
-gc
-gc
-gU
+XX
+XX
+XX
+Vz
 eK
 eK
 eK
@@ -56740,9 +56843,9 @@ eJ
 eK
 eK
 eK
-gc
-gc
-gc
+XX
+XX
+XX
 eK
 eK
 eK
@@ -56998,7 +57101,7 @@ eK
 eK
 eK
 eJ
-gc
+XX
 gd
 eK
 eK
@@ -69609,7 +69712,7 @@ qH
 qH
 qH
 qH
-ss
+RD
 pG
 sR
 pG

@@ -145,7 +145,9 @@
 #define ATMOS_PASS_NO 0
 #define ATMOS_PASS_PROC -1 //ask CanAtmosPass()
 #define ATMOS_PASS_DENSITY -2 //just check density
+
 #define CANATMOSPASS(A, O) ( A.CanAtmosPass == ATMOS_PASS_PROC ? A.CanAtmosPass(O) : ( A.CanAtmosPass == ATMOS_PASS_DENSITY ? !A.density : A.CanAtmosPass ) )
+#define CANVERTICALATMOSPASS(A, O) ( A.CanAtmosPassVertical == ATMOS_PASS_PROC ? A.CanAtmosPass(O, TRUE) : ( A.CanAtmosPassVertical == ATMOS_PASS_DENSITY ? !A.density : A.CanAtmosPassVertical ) )
 
 //LAVALAND
 #define LAVALAND_EQUIPMENT_EFFECT_PRESSURE 50 //what pressure you have to be under to increase the effect of equipment meant for lavaland
@@ -240,6 +242,18 @@
 #define PIPING_CARDINAL_AUTONORMALIZE	(1<<3)	//north/south east/west doesn't matter, auto normalize on build.
 
 //HELPERS
+#define PIPING_LAYER_SHIFT(T, PipingLayer) \
+	if(T.dir & NORTH || T.dir & SOUTH) {									\
+		T.pixel_x = (PipingLayer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_X;\
+	}																		\
+	if(T.dir & WEST || T.dir & EAST) {										\
+		T.pixel_y = (PipingLayer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_Y;\
+	}
+
+#define PIPING_LAYER_DOUBLE_SHIFT(T, PipingLayer) \
+	T.pixel_x = (PipingLayer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_X;\
+	T.pixel_y = (PipingLayer - PIPING_LAYER_DEFAULT) * PIPING_LAYER_P_Y;
+
 #define THERMAL_ENERGY(gas) (gas.temperature * gas.heat_capacity())
 #define QUANTIZE(variable)		(round(variable,0.0000001))/*I feel the need to document what happens here. Basically this is used to catch most rounding errors, however it's previous value made it so that
 															once gases got hot enough, most procedures wouldnt occur due to the fact that the mole counts would get rounded away. Thus, we lowered it a few orders of magnititude */
@@ -250,6 +264,13 @@
 	for(var/total_moles_id in cached_gases){\
 		out_var += cached_gases[total_moles_id];\
 	}
+
+#ifdef TESTING
+GLOBAL_LIST_INIT(atmos_adjacent_savings, list(0,0))
+#define CALCULATE_ADJACENT_TURFS(T) if (SSadjacent_air.queue[T]) { GLOB.atmos_adjacent_savings[1] += 1 } else { GLOB.atmos_adjacent_savings[2] += 1; SSadjacent_air.queue[T] = 1 }
+#else
+#define CALCULATE_ADJACENT_TURFS(T) SSadjacent_air.queue[T] = 1
+#endif
 
 //Unomos - So for whatever reason, garbage collection actually drastically decreases the cost of atmos later in the round. Turning this into a define yields massively improved performance.
 #define GAS_GARBAGE_COLLECT(GASGASGAS)\

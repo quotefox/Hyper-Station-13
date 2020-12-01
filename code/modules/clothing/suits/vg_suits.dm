@@ -55,16 +55,6 @@
 	alternate_worn_icon = 'modular_citadel/icons/mob/citadel/suit.dmi'
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
-
-/obj/item/clothing/suit/kaminacape
-	name = "Kamina's Cape"
-	desc = "Don't believe in yourself, dumbass. Believe in me. Believe in the Kamina who believes in you."
-	icon_state = "kaminacape"
-	body_parts_covered = 0
-	icon = 'modular_citadel/icons/obj/clothing/vg_clothes.dmi'
-	alternate_worn_icon = 'modular_citadel/icons/mob/citadel/suit.dmi'
-	mutantrace_variation = NO_MUTANTRACE_VARIATION
-
 /obj/item/clothing/suit/officercoat
 	name = "Officer's Coat"
 	desc = "Ein Mantel gemacht, um die Juden zu bestrafen."
@@ -75,7 +65,7 @@
 
 /obj/item/clothing/suit/soldiercoat
 	name = "Soldier's Coat"
-	desc = "Und das heißt: Erika."
+	desc = "Und das heiï¿½t: Erika."
 	icon_state = "soldiersuit"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|HANDS
 	icon = 'modular_citadel/icons/obj/clothing/vg_clothes.dmi'
@@ -106,7 +96,7 @@
 	icon_state = "maidapron"
 	body_parts_covered = CHEST|GROIN
 	icon = 'modular_citadel/icons/obj/clothing/vg_clothes.dmi'
-	alternate_worn_icon = 'modular_citadel/icons/mob/citadel/suit.dmi'
+	alternate_worn_icon = 'modular_citadel/icons/obj/clothing/vg_clothes.dmi'
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
 /obj/item/clothing/suit/clownpiece
