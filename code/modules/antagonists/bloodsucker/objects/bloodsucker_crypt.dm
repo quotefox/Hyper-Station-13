@@ -251,10 +251,11 @@
 
 /obj/structure/bloodsucker/vassalrack/proc/torture_victim(mob/living/user, mob/living/target)
 	// Check Bloodmob/living/M, force = FALSE, check_loc = TRUE
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind.has_antag_datum(ANTAG_DATUM_BLOODSUCKER)
 	if(user.blood_volume < convert_cost + 5)
 		to_chat(user, "<span class='notice'>You don't have enough blood to initiate the Dark Communion with [target].</span>")
 		return
-	if(count_vassals(user.mind)*5 > bloodsucker_level)
+	if(bloodsuckerdatum.count_vassals(user)*5 > bloodsuckerdatum.vamplevel)
 		to_chat(user, "<span class='notice'>Your power is yet too weak to bring more vassals under your control....</span>")
 		return
 	// Prep...
@@ -301,7 +302,6 @@
 		to_chat(user, "<span class='notice'>You don't have enough blood to initiate the Dark Communion with [target].</span>")
 		useLock = FALSE
 		return
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind.has_antag_datum(ANTAG_DATUM_BLOODSUCKER)
 	bloodsuckerdatum.AddBloodVolume(-convert_cost)
 	target.add_mob_blood(user)
 	user.visible_message("<span class='notice'>[user] marks a bloody smear on [target]'s forehead and puts a wrist up to [target.p_their()] mouth!</span>", \
