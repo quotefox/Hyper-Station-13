@@ -846,7 +846,7 @@
 	cost = 10
 	requirements = list(101,101,50,40,40,30,30,30,20,20)
 	high_population_requirement = 10
-	chaos_min = 2.9
+	chaos_min = 3.5
 	chaos_max = 4.9
 
 /datum/dynamic_ruleset/roundstart/bloodsucker/pre_execute()
