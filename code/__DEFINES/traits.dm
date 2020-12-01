@@ -126,7 +126,6 @@
 #define TRAIT_RADRESONANCE "radioactive_resonance" //Hyperstation edit
 #define TRAIT_SWIMMING			"swimming"			//only applied by /datum/element/swimming, for checking
 #define TRAIT_CAPTAIN_METABOLISM "captain-metabolism"
-#define TRAIT_COLDBLOODED		"coldblooded"	// Your body is literal room temperature. Does not make you immune to the temp.
 #define TRAIT_NONATURALHEAL		"nonaturalheal"	// Only Admins can heal you. NOTHING else does it unless it's given the god tag.
 #define TRAIT_NORUNNING			"norunning"		// You walk!
 #define TRAIT_NOMARROW			"nomarrow"		// You don't make blood, with chemicals or nanites.
