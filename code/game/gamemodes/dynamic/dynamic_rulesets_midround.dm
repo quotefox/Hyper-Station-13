@@ -753,7 +753,7 @@
 //                                          //
 //////////////////////////////////////////////
 
-/datum/dynamic_ruleset/latejoin/bloodsucker
+/datum/dynamic_ruleset/midround/bloodsucker
   name = "Bloodsucker Infiltrator"
   //config_tag = "latejoin_bloodsucker"
   antag_datum = ANTAG_DATUM_BLOODSUCKER
@@ -761,13 +761,16 @@
   restricted_roles = list("AI", "Cyborg")
   protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
   required_candidates = 1
+  enemy_roles = list("Security Officer","Head of Security","Captain","AI","Cyborg","Chaplain","Curator")
+  required_enemies = list(3,2,2,2,2,2,2,2,2,2)
   weight = 3
   cost = 10
-  requirements = list(90,80,70,60,55,50,45,40,35,30)
+  requirements = list(101,101,101,60,55,50,45,40,35,30)
   high_population_requirement = 30
-  repeatable = TRUE
+  repeatable = FALSE
+  chaos_min = 4.0
 
-/datum/dynamic_ruleset/latejoin/bloodsucker/execute()
+/datum/dynamic_ruleset/midround/bloodsucker/execute()
   var/mob/M = pick(candidates)
   assigned += M.mind
   M.mind.special_role = antag_flag
