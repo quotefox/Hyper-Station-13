@@ -452,12 +452,12 @@
 		qdel(M)
 		return
 
-	to_chat(usr, "<span class='boldnotice'>Please roleplay correctly, do not meta-game, and use information from a different character or characters, to influence your actions!</span>")
 	usr.client.lastrespawn = world.time + 1800 SECONDS
 	usr.client.respawn_observing = 0
-
 	message_admins("[client.ckey] respawned.")
-	M.key = key
+	M.ckey = ckey //shamelessly copied to
+	to_chat(M, "<span class='danger'>Please roleplay correctly, do not meta-game, and use information from a different character or characters, to influence your actions!</span>")
+	qdel(usr)
 //	M.Login()	//wat
 	return
 

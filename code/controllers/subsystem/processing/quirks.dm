@@ -17,8 +17,7 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 /datum/controller/subsystem/processing/quirks/Initialize(timeofday)
 	if(!quirks.len)
 		SetupQuirks()
-
-	quirk_blacklist = list(list("Blind","Nearsighted"),list("Jolly","Depression","Apathetic","Hypersensitive"),list("Ageusia","Vegetarian","Deviant Tastes"),list("Ananas Affinity","Ananas Aversion"),list("Alcohol Tolerance","Light Drinker"),list("Prosthetic Limb (Left Arm)","Prosthetic Limb (Right Arm)","Prosthetic Limb (Left Leg)","Prosthetic Limb (Right Leg)","Prosthetic Limb"),list("Social Anxiety","Mute"))
+		quirk_blacklist = list(list("Blind","Nearsighted"),list("Jolly","Depression","Hypersensitive"),list("Ageusia","Vegetarian","Deviant Tastes"),list("Ananas Affinity","Ananas Aversion"),list("Alcohol Tolerance","Light Drinker"),list("Prosthetic Limb (Left Arm)","Prosthetic Limb (Right Arm)","Prosthetic Limb (Left Leg)","Prosthetic Limb (Right Leg)","Prosthetic Limb"),list("Social Anxiety","Mute"))
 	return ..()
 
 /datum/controller/subsystem/processing/quirks/proc/SetupQuirks()
@@ -32,13 +31,21 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		quirk_names_by_path[T] = initial(T.name)
 
 /datum/controller/subsystem/processing/quirks/proc/AssignQuirks(mob/living/user, client/cli, spawn_effects, roundstart = FALSE, datum/job/job, silent = FALSE, mob/to_chat_target)
-	GenerateQuirks(cli)
-	var/list/quirks = cli.prefs.character_quirks.Copy()
+	var/badquirk = FALSE
+	var/list/my_quirks = cli.prefs.all_quirks.Copy()
 	var/list/cut
-	if(job && job.blacklisted_quirks)
+	if(job?.blacklisted_quirks)
 		cut = filter_quirks(quirks, job)
-	for(var/V in quirks)
-		user.add_quirk(V, spawn_effects)
+	for(var/V in my_quirks)
+		if(V in quirks)
+			var/datum/quirk/Q = quirks[V]
+			user.add_quirk(Q, spawn_effects)
+		else
+			log_admin("Invalid quirk \"[V]\" in client [cli.ckey] preferences")
+			cli.prefs.all_quirks -= V
+			badquirk = TRUE
+	if(badquirk)
+		cli.prefs.save_character()
 	if(!silent && LAZYLEN(cut))
 		to_chat(to_chat_target || user, "<span class='boldwarning'>All of your non-neutral character quirks have been cut due to these quirks conflicting with your job assignment: [english_list(cut)].</span>")
 
@@ -91,8 +98,3 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 				quirks -= i
 
 	return cut
-
-/datum/controller/subsystem/processing/quirks/proc/GenerateQuirks(client/user)
-	if(user.prefs.character_quirks.len)
-		return
-	user.prefs.character_quirks = user.prefs.all_quirks
