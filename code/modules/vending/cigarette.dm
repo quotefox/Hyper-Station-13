@@ -6,6 +6,7 @@
 	icon_state = "cigs"
 	products = list(/obj/item/storage/fancy/cigarettes = 5,
 					/obj/item/storage/fancy/cigarettes/cigpack_uplift = 3,
+					/obj/item/storage/fancy/cigarettes/smokekins = 3,
 					/obj/item/storage/fancy/cigarettes/cigpack_robust = 3,
 					/obj/item/storage/fancy/cigarettes/cigpack_carp = 3,
 					/obj/item/storage/fancy/cigarettes/cigpack_midori = 3,

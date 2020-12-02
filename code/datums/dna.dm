@@ -45,6 +45,7 @@
 	destination.dna.uni_identity = uni_identity
 	destination.dna.blood_type = blood_type
 	destination.set_species(species.type, icon_update=0)
+	destination.dna.species.say_mod = species.say_mod
 	destination.dna.features = features.Copy()
 	destination.dna.real_name = real_name
 	destination.dna.nameless = nameless
@@ -64,6 +65,7 @@
 	new_dna.blood_type = blood_type
 	new_dna.features = features.Copy()
 	new_dna.species = new species.type
+	new_dna.species.say_mod = species.say_mod
 	new_dna.real_name = real_name
 	new_dna.nameless = nameless
 	new_dna.custom_species = custom_species

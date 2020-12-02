@@ -138,8 +138,8 @@
 						H.Knockdown(80)
 						playsound(src, 'sound/effects/woodhit.ogg', 60, TRUE, 1)
 					else
-						H.visible_message("<span class='danger'>[H] falls in the drained pool, and cracks his skull!</span>",
-													"<span class='userdanger'>You fall in the drained pool, and crack your skull!</span>")
+						H.visible_message("<span class='danger'>[H] falls in the drained pool and cracks their skull!</span>",
+													"<span class='userdanger'>You fall in the drained pool and crack your skull!</span>")
 						H.apply_damage(15, BRUTE, "head")
 						H.Knockdown(200) // This should hurt. And it does.
 						playsound(src, 'sound/effects/woodhit.ogg', 60, TRUE, 1)

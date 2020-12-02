@@ -402,8 +402,8 @@
 
 /obj/item/grenade/chem_grenade/cleaner/Initialize()
 	. = ..()
-	var/obj/item/reagent_containers/glass/beaker/B1 = new(src)
-	var/obj/item/reagent_containers/glass/beaker/B2 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/plastic/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/plastic/B2 = new(src)
 
 	B1.reagents.add_reagent("fluorosurfactant", 40)
 	B2.reagents.add_reagent("water", 40)
@@ -420,8 +420,8 @@
 
 /obj/item/grenade/chem_grenade/ez_clean/Initialize()
 	. = ..()
-	var/obj/item/reagent_containers/glass/beaker/large/B1 = new(src)
-	var/obj/item/reagent_containers/glass/beaker/large/B2 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/plastic/B1 = new(src)
+	var/obj/item/reagent_containers/glass/beaker/plastic/B2 = new(src)
 
 	B1.reagents.add_reagent("fluorosurfactant", 40)
 	B2.reagents.add_reagent("water", 40)
