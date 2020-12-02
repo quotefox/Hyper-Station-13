@@ -847,7 +847,7 @@
 	requirements = list(101,101,101,70,60,60,50,50,50,40)
 	high_population_requirement = 10
 	chaos_min = 4.0
-	chaos_max = 4.9
+
 
 /datum/dynamic_ruleset/roundstart/bloodsucker/pre_execute()
 	var/num_bloodsuckers = min(round(mode.candidates.len / 10) +1, candidates.len)
@@ -858,9 +858,10 @@
 		M.mind.restricted_roles = restricted_roles
 	return TRUE
 
-/datum/dynamic_ruleset/roundstart/bloodsucker/execute()
-	mode.check_start_sunlight()
-	for(var/datum/mind/M in assigned)
-		if(mode.make_bloodsucker(M))
-			mode.bloodsuckers += M
+
+/datum/dynamic_ruleset/roundstart/bloodsucker/pre_execute()
+	var/mob/M = pick_n_take(candidates)
+	assigned += M.mind
+	M.mind.special_role = ROLE_BLOODSUCKER
+	M.mind.restricted_roles = restricted_roles
 	return TRUE
