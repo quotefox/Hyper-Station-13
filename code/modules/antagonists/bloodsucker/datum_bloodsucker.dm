@@ -321,8 +321,8 @@ datum/antagonist/bloodsucker/proc/SpendRank()
 		var/datum/species/S = H.dna.species
 		S.burnmod *= 0.025 			// Slightly more burn damage
 		S.stunmod *= 0.95			// Slightly less stun time.
-		S.punchdamagelow += 0.5
-		S.punchdamagehigh += 0.5    // NOTE: This affects the hitting power of Brawn.
+		S.punchdamagelow += 0.75
+		S.punchdamagehigh += 0.75    // NOTE: This affects the hitting power of Brawn.
 	// More Health
 	owner.current.setMaxHealth(owner.current.maxHealth + 5)
 	// Vamp Stats
