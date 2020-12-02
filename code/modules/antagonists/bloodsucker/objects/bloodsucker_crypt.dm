@@ -101,7 +101,7 @@
 	var/convert_progress = 3		// Resets on each new character to be added to the chair. Some effects should lower it...
 	var/disloyalty_confirm = FALSE	// Command & Antags need to CONFIRM they are willing to lose their role (and will only do it if the Vassal'ing succeeds)
 	var/disloyalty_offered = FALSE	// Has the popup been issued? Don't spam them.
-	var/convert_cost = 100
+	var/convert_cost = 375
 
 /obj/structure/bloodsucker/vassalrack/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/metal(src.loc, 4)
@@ -255,7 +255,7 @@
 	if(user.blood_volume < convert_cost + 5)
 		to_chat(user, "<span class='notice'>You don't have enough blood to initiate the Dark Communion with [target].</span>")
 		return
-	if(bloodsuckerdatum.count_vassals(user)*5 > bloodsuckerdatum.vamplevel)
+	if(!bloodsuckerdatum || bloodsuckerdatum.vassals.len * 10 > bloodsuckerdatum.vamplevel)
 		to_chat(user, "<span class='notice'>Your power is yet too weak to bring more vassals under your control....</span>")
 		return
 	// Prep...

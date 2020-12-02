@@ -1241,6 +1241,7 @@
 #include "code\modules\antagonists\bloodsucker\objects\bloodsucker_coffin.dm"
 #include "code\modules\antagonists\bloodsucker\objects\bloodsucker_crypt.dm"
 #include "code\modules\antagonists\bloodsucker\objects\bloodsucker_lair.dm"
+#include "code\modules\antagonists\bloodsucker\powers\bs_brawn.dm"
 #include "code\modules\antagonists\bloodsucker\powers\bs_cloak.dm"
 #include "code\modules\antagonists\bloodsucker\powers\bs_feed.dm"
 #include "code\modules\antagonists\bloodsucker\powers\bs_fortitude.dm"
