@@ -843,10 +843,10 @@
 	restricted_roles = list("Cyborg", "AI")
 	required_candidates = 1
 	weight = 3
-	cost = 10
-	requirements = list(101,101,50,40,40,30,30,30,20,20)
+	cost = 0
+	requirements = list(101,101,101,70,60,60,50,50,50,40)
 	high_population_requirement = 10
-	chaos_min = 3.5
+	chaos_min = 4.0
 	chaos_max = 4.9
 
 /datum/dynamic_ruleset/roundstart/bloodsucker/pre_execute()
