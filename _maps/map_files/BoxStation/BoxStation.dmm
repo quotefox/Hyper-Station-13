@@ -4606,7 +4606,7 @@
 /turf/open/floor/plasteel,
 /area/security/processing)
 "ajg" = (
-/obj/machinery/computer/gulag_teleporter_computer,
+/obj/machinery/computer/prisoner/gulag_teleporter_computer,
 /turf/open/floor/plasteel,
 /area/security/processing)
 "ajh" = (
