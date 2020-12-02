@@ -255,7 +255,7 @@
 	if(user.blood_volume < convert_cost + 5)
 		to_chat(user, "<span class='notice'>You don't have enough blood to initiate the Dark Communion with [target].</span>")
 		return
-	if(bloodsuckerdatum.count_vassals(user)*5 > bloodsuckerdatum.vamplevel)
+	if(!bloodsuckerdatum || bloodsuckerdatum.vassals.len * 10 > bloodsuckerdatum.vamplevel)
 		to_chat(user, "<span class='notice'>Your power is yet too weak to bring more vassals under your control....</span>")
 		return
 	// Prep...
