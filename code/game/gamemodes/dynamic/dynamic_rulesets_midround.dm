@@ -770,10 +770,27 @@
   repeatable = FALSE
   chaos_min = 4.0
 
+datum/dynamic_ruleset/midround/bloodsucker/trim_candidates()
+	..()
+	for(var/mob/living/player in living_players)
+		if(issilicon(player)) // Your assigned role doesn't change when you are turned into a silicon.
+			living_players -= player
+			continue
+		if(is_centcom_level(player.z))
+			living_players -= player // We don't autotator people in CentCom
+			continue
+		if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
+			living_players -= player // We don't autotator people with roles already
+
+/datum/dynamic_ruleset/midround/bloodsucker/ready(forced = FALSE)
+	if (required_candidates > living_players.len)
+		return FALSE
+	return ..()
+
 /datum/dynamic_ruleset/midround/bloodsucker/execute()
-  var/mob/M = pick(candidates)
-  assigned += M.mind
-  M.mind.special_role = antag_flag
-  if(mode.make_bloodsucker(M.mind))
-    mode.bloodsuckers += M
-  return TRUE
+	var/mob/M = pick(living_players)
+	assigned += M
+	living_players -= M
+	var/datum/antagonist/bloodsucker/newVamp = new
+	M.mind.add_antag_datum(newVamp)
+	return TRUE
