@@ -106,7 +106,7 @@
 
 /obj/item/clothing/shoes/jackboots
 	name = "jackboots"
-	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
+	desc = "Kinaris-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
 	icon_state = "jackboots"
 	item_state = "jackboots"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
@@ -289,6 +289,22 @@
 /obj/item/clothing/shoes/bronze/Initialize()
 	. = ..()
 	AddComponent(/datum/component/squeak, list('sound/machines/clockcult/integration_cog_install.ogg' = 1, 'sound/magic/clockwork/fellowship_armory.ogg' = 1), 50)
+
+/obj/item/clothing/shoes/stompers
+	name = "Stompers"
+	desc = "Brand-new, heavy-duty jackboots with a metal cover underneath the toecap. Nicknamed 'stompers' due to their signature sound when walking."
+	icon = 'icons/obj/clothing/shoes.dmi'
+	icon_state = "jackboots"
+	item_state = "crusader"
+	strip_delay = 50
+	equip_delay_other = 50
+	resistance_flags = NONE
+	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
+
+/obj/item/clothing/shoes/stompers/Initialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, list('sound/effects/footstep/stompers1.ogg' = 1,'sound/effects/footstep/stompers2.ogg' = 1), 100)
 
 /obj/item/clothing/shoes/wheelys
 	name = "Wheely-Heels"
