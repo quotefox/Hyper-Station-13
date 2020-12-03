@@ -46,6 +46,7 @@
 	var/pryLidTimer = 250
 	can_weld_shut = FALSE
 	breakout_time = 200
+	max_mob_size = MOB_SIZE_LARGE
 
 
 /obj/structure/closet/crate/coffin/blackcoffin
