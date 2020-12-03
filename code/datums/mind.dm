@@ -365,21 +365,21 @@
 
 
 	var/list/all_objectives = list()
-    for(var/datum/antagonist/A in antag_datums)
-    	output += A.antag_memory
-    	all_objectives |= A.objectives
+	for(var/datum/antagonist/A in antag_datums)
+		output += A.antag_memory
+		all_objectives |= A.objectives
 
-    if(all_objectives.len)
-        output += "<B>Objectives:</B>"
-        var/obj_count = 1
-        for(var/datum/objective/objective in all_objectives)
-            output += "<br><B>Objective #[obj_count++]</B>: [objective.explanation_text]"
-            var/list/datum/mind/other_owners = objective.get_owners() - src
-            if(other_owners.len)
-            	output += "<ul>"
-                for(var/datum/mind/M in other_owners)
-                	output += "<li>Conspirator: [M.name]</li>"
-                output += "</ul>"
+	if(all_objectives.len)
+		output += "<B>Objectives:</B>"
+		var/obj_count = 1
+		for(var/datum/objective/objective in all_objectives)
+			output += "<br><B>Objective #[obj_count++]</B>: [objective.explanation_text]"
+			var/list/datum/mind/other_owners = objective.get_owners() - src
+			if(other_owners.len)
+				output += "<ul>"
+				for(var/datum/mind/M in other_owners)
+					output += "<li>Conspirator: [M.name]</li>"
+				output += "</ul>"
 
 	if(window)
 		recipient << browse(output,"window=memory")
