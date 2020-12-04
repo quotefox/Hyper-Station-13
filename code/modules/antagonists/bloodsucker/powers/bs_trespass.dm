@@ -68,7 +68,7 @@
 	var/turf/my_turf = get_turf(owner)
 
 	user.visible_message("<span class='warning'>[user]'s form dissipates into a cloud of mist!</span>", \
-					 	 "<span class='notice'>You disspiate into formless mist.</span>")
+					 	 "<span class='notice'>You dissipate into formless mist.</span>")
 
 
 	// Effect Origin
@@ -81,20 +81,13 @@
 	var/mist_delay = max(5, 20 - level_current * 2.5) // Level up and do this faster.
 
 	// Freeze Me
-	user.next_move = world.time + mist_delay
 	user.Stun(mist_delay, ignore_canstun = TRUE)
-	user.notransform = TRUE
 	user.density = 0
 	var/invis_was = user.invisibility
 	user.invisibility = INVISIBILITY_MAXIMUM
 
 	// LOSE CUFFS
-	if(user.handcuffed)
-		var/obj/O = user.handcuffed
-		user.dropItemToGround(O)
-	if(user.legcuffed)
-		var/obj/O = user.legcuffed
-		user.dropItemToGround(O)
+	//lol don't
 
 	// Wait...
 	sleep(mist_delay / 2)
@@ -102,7 +95,6 @@
 	// Move & Freeze
 	if (isturf(target_turf))
 		do_teleport(owner, target_turf, no_effects=TRUE, channel = TELEPORT_CHANNEL_QUANTUM) // in teleport.dm?
-	user.next_move = world.time + mist_delay / 2
 	user.Stun(mist_delay / 2, ignore_canstun = TRUE)
 
 	// Wait...
@@ -110,9 +102,7 @@
 
 	// Un-Hide & Freeze
 	user.dir = get_dir(my_turf, target_turf)
-	user.next_move = world.time + mist_delay / 2
 	user.Stun(mist_delay / 2, ignore_canstun = TRUE)
-	user.notransform = FALSE
 	user.density = 1
 	user.invisibility = invis_was
 
