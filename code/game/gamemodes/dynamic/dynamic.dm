@@ -17,10 +17,10 @@ GLOBAL_VAR_INIT(dynamic_latejoin_delay_max, (25 MINUTES))
 GLOBAL_VAR_INIT(dynamic_midround_delay_min, (15 MINUTES))
 GLOBAL_VAR_INIT(dynamic_midround_delay_max, (35 MINUTES))
 
-GLOBAL_VAR_INIT(dynamic_event_delay_min, (3 MINUTES))
-GLOBAL_VAR_INIT(dynamic_event_delay_max, (10 MINUTES))
+GLOBAL_VAR_INIT(dynamic_event_delay_min, (4 MINUTES))
+GLOBAL_VAR_INIT(dynamic_event_delay_max, (12 MINUTES))
 
-GLOBAL_VAR_INIT(dynamic_threat_delay, (5 MINUTES))
+GLOBAL_VAR_INIT(dynamic_threat_delay, (4 MINUTES))
 
 // Are HIGHLANDER_RULESETs allowed to stack?
 GLOBAL_VAR_INIT(dynamic_no_stacking, TRUE)
@@ -125,9 +125,10 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 /datum/game_mode/dynamic/admin_panel()
 	var/list/dat = list("<html><head><title>Game Mode Panel</title></head><body><h1><B>Game Mode Panel</B></h1>")
 	dat += "Dynamic Mode <a href='?_src_=vars;[HrefToken()];Vars=[REF(src)]'>\[VV\]</A><BR>"
-	dat += "Threat Level: <b>[threat_level]</b><br/>"
-
-	dat += "Threat to Spend: <b>[threat]</b> <a href='?src=\ref[src];[HrefToken()];adjustthreat=1'>\[Adjust\]</A> <a href='?src=\ref[src];[HrefToken()];threatlog=1'>\[View Log\]</a><br/>"
+	dat += "Chaos Level: <b>[GLOB.dynamic_chaos_level]</b><br/>"
+	//dat += "Threat Level: <b>[threat_level]</b><br/>"
+	//dat += "Threat to Spend: <b>[threat]</b> <a href='?src=\ref[src];[HrefToken()];adjustthreat=1'>\[Adjust\]</A> <a href='?src=\ref[src];[HrefToken()];threatlog=1'>\[View Log\]</a><br/>"
+	dat += "Threat Level: <b>[threat]</b> <a href='?src=\ref[src];[HrefToken()];adjustthreat=1'>\[Adjust\]</A> <a href='?src=\ref[src];[HrefToken()];threatlog=1'>\[View Log\]</a><br/>"
 	dat += "<br/>"
 	dat += "Parameters: centre = [GLOB.dynamic_curve_centre] ; width = [GLOB.dynamic_curve_width].<br/>"
 	//dat += "<i>On average, <b>[peaceful_percentage]</b>% of the rounds are more peaceful.</i><br/>"
@@ -445,7 +446,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 
 /// Picks a random roundstart rule from the list given as an argument and executes it.
 /datum/game_mode/dynamic/proc/picking_roundstart_rule(list/drafted_rules = list(), forced = FALSE)
-	var/datum/dynamic_ruleset/roundstart/starting_rule = pickweight(drafted_rules)
+	var/datum/dynamic_ruleset/roundstart/starting_rule = pickweightAllowZero(drafted_rules)
 	if(!starting_rule)
 		return FALSE
 
@@ -457,7 +458,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 			drafted_rules -= starting_rule
 			if(drafted_rules.len <= 0)
 				return FALSE
-			starting_rule = pickweight(drafted_rules)
+			starting_rule = pickweightAllowZero(drafted_rules)
 		// Check if the ruleset is highlander and if a highlander ruleset has been executed
 		else if(starting_rule.flags & HIGHLANDER_RULESET)
 			if(threat < GLOB.dynamic_stacking_limit && GLOB.dynamic_no_stacking)
@@ -465,7 +466,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 					drafted_rules -= starting_rule
 					if(drafted_rules.len <= 0)
 						return FALSE
-					starting_rule = pickweight(drafted_rules)
+					starting_rule = pickweightAllowZero(drafted_rules)
 
 	message_admins("Picking a [istype(starting_rule, /datum/dynamic_ruleset/roundstart/delayed/) ? " delayed " : ""] ruleset [starting_rule.name]")
 	log_game("DYNAMIC: Picking a [istype(starting_rule, /datum/dynamic_ruleset/roundstart/delayed/) ? " delayed " : ""] ruleset [starting_rule.name]")
@@ -516,7 +517,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 /// Picks a random midround OR latejoin rule from the list given as an argument and executes it.
 /// Also this could be named better.
 /datum/game_mode/dynamic/proc/picking_midround_latejoin_rule(list/drafted_rules = list(), forced = FALSE)
-	var/datum/dynamic_ruleset/rule = pickweight(drafted_rules)
+	var/datum/dynamic_ruleset/rule = pickweightAllowZero(drafted_rules)
 	if(!rule)
 		return FALSE
 
@@ -528,7 +529,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 			drafted_rules -= rule
 			if(drafted_rules.len <= 0)
 				return FALSE
-			rule = pickweight(drafted_rules)
+			rule = pickweightAllowZero(drafted_rules)
 		// Check if the ruleset is highlander and if a highlander ruleset has been executed
 		else if(rule.flags & HIGHLANDER_RULESET)
 			if(threat < GLOB.dynamic_stacking_limit && GLOB.dynamic_no_stacking)
@@ -536,7 +537,7 @@ GLOBAL_VAR_INIT(dynamic_chaos_level, 1.5)
 					drafted_rules -= rule
 					if(drafted_rules.len <= 0)
 						return FALSE
-					rule = pickweight(drafted_rules)
+					rule = pickweightAllowZero(drafted_rules)
 
 	if(!rule.repeatable)
 		if(rule.ruletype == "Latejoin")

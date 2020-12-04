@@ -387,8 +387,6 @@
 	if(blocks_air)
 		..()
 		return
-
-	
 	for (var/atom/movable/G in src)
 		if (G.blocksTemperature())
 			return
@@ -410,10 +408,8 @@
 
 				if(!neighbor.thermal_conductivity)
 					continue
-
 				if(neighbor.archived_cycle < SSair.times_fired)
 					neighbor.archive()
-
 				neighbor.neighbor_conduct_with_src(src)
 
 				neighbor.consider_superconductivity()

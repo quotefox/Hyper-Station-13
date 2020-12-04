@@ -1,8 +1,6 @@
 //////////////////////////////////////////////////////
 ////////////////////SUBTLE COMMAND////////////////////
 //////////////////////////////////////////////////////
-/mob
-	var/flavor_text = "" //tired of fucking double checking this
 
 /mob/proc/update_flavor_text()
 	set src in usr
@@ -53,7 +51,6 @@ proc/get_top_level_mob(var/mob/S)
 	key_third_person = "subtle"
 	message = null
 	mob_type_blacklist_typecache = list(/mob/living/brain)
-
 
 /datum/emote/living/subtle/proc/check_invalid(mob/user, input)
 	. = TRUE

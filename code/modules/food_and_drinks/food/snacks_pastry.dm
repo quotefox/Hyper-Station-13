@@ -141,6 +141,17 @@
 	is_decorated = TRUE
 	filling_color = "#879630"
 
+/obj/item/reagent_containers/food/snacks/donut/semen
+	name = "\"cream\" donut"
+	desc = "That cream looks a little runny..."
+	icon_state = "donut_cum"
+	bitesize = 10
+	bonus_reagents = list("semen" = 1)
+	list_reagents = list("nutriment" = 3, "sugar" = 2, "semen" = 5)
+	filling_color = "#FFFFFF"
+	tastes = list("donut" = 1, "salt" = 3)
+	foodtype = JUNKFOOD | GRAIN | FRIED | SUGAR
+
 //////////////////////JELLY DONUTS/////////////////////////
 
 /obj/item/reagent_containers/food/snacks/donut/jelly
@@ -198,10 +209,10 @@
 /obj/item/reagent_containers/food/snacks/donut/jelly/choco
 	name = "chocolate jelly donut"
 	desc = "Goes great with a glass of warm milk."
-	icon_state = "jelly_choc"
+	icon_state = "jelly_choco"
 	bonus_reagents = list("hot_coco" = 3, "sprinkles" = 1, "vitamin" = 1) //the coco reagent is just bitter.
 	tastes = list("jelly" = 1, "donut" = 4, "bitterness" = 1)
-	decorated_icon = "jelly_choc_sprinkles"
+	decorated_icon = "jelly_choco_sprinkles"
 	filling_color = "#4F230D"
 
 /obj/item/reagent_containers/food/snacks/donut/jelly/blumpkin
@@ -231,16 +242,6 @@
 	is_decorated = TRUE
 	filling_color = "#879630"
 
-/obj/item/reagent_containers/food/snacks/donut/semen
-	name = "\"cream\" donut"
-	desc = "That cream looks a little runny..."
-	icon_state = "donut_cum"
-	bitesize = 10
-	bonus_reagents = list("semen" = 1)
-	list_reagents = list("nutriment" = 3, "sugar" = 2, "semen" = 5)
-	filling_color = "#FFFFFF"
-	tastes = list("donut" = 1, "salt" = 3)
-	foodtype = JUNKFOOD | GRAIN | FRIED | SUGAR
 //////////////////////////SLIME DONUTS/////////////////////////
 
 /obj/item/reagent_containers/food/snacks/donut/jelly/slimejelly
@@ -289,10 +290,10 @@
 /obj/item/reagent_containers/food/snacks/donut/jelly/slimejelly/choco
 	name = "chocolate jelly donut"
 	desc = "Goes great with a glass of warm milk."
-	icon_state = "jelly_choc"
+	icon_state = "jelly_choco"
 	bonus_reagents = list("hot_coco" = 3, "sprinkles" = 1, "vitamin" = 1) //the coco reagent is just bitter.
 	tastes = list("jelly" = 1, "donut" = 4, "bitterness" = 1)
-	decorated_icon = "jelly_choc_sprinkles"
+	decorated_icon = "jelly_choco_sprinkles"
 	filling_color = "#4F230D"
 
 /obj/item/reagent_containers/food/snacks/donut/jelly/slimejelly/blumpkin

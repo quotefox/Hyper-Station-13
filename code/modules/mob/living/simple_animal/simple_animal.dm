@@ -4,7 +4,8 @@
 	health = 20
 	maxHealth = 20
 	gender = PLURAL //placeholder
-
+	blood_volume = 550   //How much blud it has for bloodsucking
+	
 	status_flags = CANPUSH
 
 	var/icon_living = ""
@@ -462,8 +463,8 @@
 			return
 	sync_lighting_plane_alpha()
 
-/mob/living/simple_animal/get_idcard()
-	return access_card
+/mob/living/simple_animal/get_idcard(hand_first = TRUE)
+	return ..() || access_card
 
 /mob/living/simple_animal/OpenCraftingMenu()
 	if(dextrous)

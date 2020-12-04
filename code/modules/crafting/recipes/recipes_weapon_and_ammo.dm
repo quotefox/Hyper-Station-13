@@ -190,7 +190,6 @@
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
 
-/* We don't have this yet -- Archie
 /datum/crafting_recipe/rapiddartgun
 	name = "Rapid Smart dartgun"
 	result = /obj/item/gun/syringe/dart/rapiddart
@@ -204,7 +203,6 @@
 	time = 120 //Modifying your gun
 	category = CAT_WEAPONRY
 	subcategory = CAT_WEAPON
-*/
 
 /datum/crafting_recipe/improvised_pneumatic_cannon
 	name = "Pneumatic Cannon"

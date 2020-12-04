@@ -27,6 +27,8 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	dir = SOUTH
 	var/message_cooldown
 	var/breakout_time = 600
+	var/obj/item/radio/radio = null
+	var/hasradio = FALSE
 
 /obj/structure/bodycontainer/Initialize()
 	. = ..()
@@ -128,7 +130,8 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	var/turf/T = get_step(src, dir)
 	connected.setDir(dir)
 	for(var/atom/movable/AM in src)
-		AM.forceMove(T)
+		if(AM != radio)
+			AM.forceMove(T)
 	update_icon()
 
 /obj/structure/bodycontainer/proc/close()
@@ -154,7 +157,41 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	var/beeper = TRUE
 	var/beep_cooldown = 50
 	var/next_beep = 0
+	//Hyperstation edit
+	var/radio_key = /obj/item/encryptionkey/headset_med
+	var/medical_channel = "Medical"
+	var/inuse = FALSE
+	hasradio = TRUE
 
+/obj/structure/bodycontainer/morgue/Initialize()
+	. = ..()
+	radio = new(src)
+	radio.anchored = TRUE
+	radio.keyslot = new radio_key
+	radio.listening = 0
+	radio.recalculateChannels()
+
+/obj/structure/bodycontainer/morgue/Destroy()
+	QDEL_NULL(radio)
+	GLOB.bodycontainers -= src
+	open()
+	if(connected)
+		qdel(connected)
+		connected = null
+	return ..()
+/*
+/obj/structure/bodycontainer/morgue/proc/open2()
+	recursive_organ_check(src)
+	playsound(src.loc, 'sound/items/deconstruct.ogg', 50, 1)
+	playsound(src, 'sound/effects/roll.ogg', 5, 1)
+	var/turf/T = get_step(src, dir)
+	connected.setDir(dir)
+	for(var/atom/movable/AM in src)
+		if(AM != radio)
+			AM.forceMove(T)
+	update_icon()
+*/
+//end of edit
 /obj/structure/bodycontainer/morgue/New()
 	connected = new/obj/structure/tray/m_tray(src)
 	connected.connected = src
@@ -175,7 +212,7 @@ GLOBAL_LIST_EMPTY(bodycontainers) //Let them act as spawnpoints for revenants an
 	if (!connected || connected.loc != src) // Open or tray is gone.
 		icon_state = "morgue0"
 	else
-		if(contents.len == 1)  // Empty
+		if(contents.len == 2)  // Empty. Was length 1 because of the tray, is now length 2 because it includes a radio.
 			icon_state = "morgue1"
 		else
 			icon_state = "morgue2" // Dead, brainded mob.
@@ -381,3 +418,27 @@ GLOBAL_LIST_EMPTY(crematoriums)
 	if(ismovableatom(caller))
 		var/atom/movable/mover = caller
 		. = . || (mover.pass_flags & PASSTABLE)
+
+//Hyperstation edit starts here
+/obj/structure/bodycontainer/morgue/attack_ghost(mob/user)
+	. = ..()
+	if(!beeper || inuse)
+		return
+
+	var/list/compiled = recursive_mob_check(src, 0, 0) // Search for mobs in all contents.
+	if(!length(compiled)) // No mobs?
+		return
+
+	for(var/mob/living/M in compiled)
+		var/mob/living/mob_occupant = get_mob_or_brainmob(M)
+		if(!mob_occupant.suiciding && !mob_occupant.hellbound)
+			if(mob_occupant.stat == DEAD && mob_occupant.mind.key == user.client.key)
+				inuse = TRUE
+				visible_message("One of the morgue coffins currently holds a soul that is eager to have its body revived.")
+				radio.talk_into(src, "One of the morgue coffins currently holds a soul that is eager to have its body revived.", medical_channel)
+				playsound(loc, 'sound/machines/ping.ogg', 50)
+				addtimer(CALLBACK(src, .proc/liftcooldown), 500)
+
+/obj/structure/bodycontainer/morgue/proc/liftcooldown()
+	inuse = FALSE
+//Hyperstation edit ends here

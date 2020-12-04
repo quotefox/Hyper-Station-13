@@ -13,6 +13,8 @@
 		var/mob/living/simple_animal/hostile/floor_cluwne/FC = new /mob/living/simple_animal/hostile/floor_cluwne(H.loc)
 		FC.forced = TRUE
 		FC.Acquire_Victim(H)
+		FC.target = H
+		FC.current_victim = H
 		log_admin("[key_name(usr)] spawned floor cluwne.")
 		message_admins("[key_name(usr)] spawned floor cluwne.")
 		deadchat_broadcast("<span class='deadsay'><b>Floor Cluwne</b> has just been spawned!</span>")

@@ -202,6 +202,10 @@
 		var/obj/item/I = AM
 		if(I.light_range && I.light_power)
 			disintegrate(I)
+	else if(istype(AM, /obj/structure/marker_beacon))
+		var/obj/structure/marker_beacon/I = AM
+		disintegrate(I)
+		//why the fuck is the marker beacon a structure? who. what. why.
 
 /obj/item/light_eater/proc/disintegrate(obj/item/O)
 	if(istype(O, /obj/item/pda))

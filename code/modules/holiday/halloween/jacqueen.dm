@@ -46,6 +46,16 @@
 	var/progression = list() //Keep track of where people are in the story.
 	var/active = TRUE //Turn this to false to keep normal mob behavour
 	var/cached_z
+	var/static/blacklisted_items = typecacheof(list(
+	/obj/singularity,
+	/obj/structure/destructible/clockwork/massive/ratvar,
+	/obj/item/projectile,
+	/obj/effect,
+	/obj/belly,
+	/obj/decal,
+	/obj/docking_port,
+	/obj/shapeshift_holder,
+	/obj/screen))
 
 /mob/living/simple_animal/jacq/Initialize()
 	..()
@@ -203,10 +213,14 @@
 				return
 
 			var/new_obj = pick(subtypesof(/obj))
-			//for(var/item in blacklist)
-			//	if(new_obj == item)
-			//  	panic()
+			for(var/item in blacklisted_items)
+				if(is_type_in_typecache(new_obj, blacklisted_items))
+					new_obj = /obj/item/reagent_containers/food/snacks/special_candy
+					message_admins("Uh oh, someone got a blacklisted item from jacque. Giving them back their candies.")
 			var/reward = new new_obj(C.loc)
+			if(new_obj == /obj/item/reagent_containers/food/snacks/special_candy)
+				new new_obj(C.loc)
+				new new_obj(C.loc)//Giving them back their candies in case it's something from the blacklist or if the game literally rolled candies.
 			C.put_in_hands(reward)
 			visible_message("<b>[src]</b> waves her hands, magicking up a [reward] from thin air, <span class='spooky'>\"There ye are [gender], enjoy! \"</span>")
 			sleep(20)

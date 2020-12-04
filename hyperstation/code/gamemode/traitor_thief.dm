@@ -25,7 +25,7 @@
 	roundend_category = "traitors"
 	antagpanel_category = "Traitor"
 	job_rank = ROLE_TRAITOR
-	antag_moodlet = /datum/mood_event/focused //No special moodlet yet
+	antag_moodlet = /datum/mood_event/focused
 	special_role = ROLE_TRAITOR
 	employer = "The Syndicate"
 	give_objectives = TRUE
@@ -72,11 +72,6 @@
 		add_objective(steal_objective)
 	return
 
-/datum/antagonist/traitor/thief/greet()
-	to_chat(owner.current, "<span class='userlove'>You are the [owner.special_role].</span>")
-	owner.announce_objectives()
-	if(should_give_codewords)
-		give_codewords()
 
 /datum/antagonist/traitor/thief/on_gain()
 	if(owner.current && isAI(owner.current))

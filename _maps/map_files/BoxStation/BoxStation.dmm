@@ -4606,7 +4606,7 @@
 /turf/open/floor/plasteel,
 /area/security/processing)
 "ajg" = (
-/obj/machinery/computer/gulag_teleporter_computer,
+/obj/machinery/computer/prisoner/gulag_teleporter_computer,
 /turf/open/floor/plasteel,
 /area/security/processing)
 "ajh" = (
@@ -37381,13 +37381,13 @@
 /obj/structure/table/glass,
 /obj/item/folder/white,
 /obj/item/stamp/cmo,
-/obj/item/clothing/glasses/hud/health,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/item/clothing/glasses/hud/health/gar,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/heads/cmo)
 "bDW" = (
@@ -62592,6 +62592,7 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
 	},
+/obj/machinery/computer/card/minor/qm,
 /turf/open/floor/plasteel/dark,
 /area/quartermaster/qm)
 "tDj" = (

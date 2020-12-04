@@ -233,3 +233,11 @@
 	suffix = "lavaland_surface_oasis.dmm"
 	allow_duplicates = FALSE
 	cost = 0
+
+/datum/map_template/ruin/lavaland/lunaraltar
+	name = "Lunar Altar"
+	id = "lunaraltar"
+	description = "Millenia ago, the humanoids of this strange land used to offer sacrifices here..."
+	suffix = "lavaland_surface_lunaraltar.dmm"
+	allow_duplicates = FALSE
+	cost = 10

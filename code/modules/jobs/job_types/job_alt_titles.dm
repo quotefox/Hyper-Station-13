@@ -1,3 +1,5 @@
+//This file also determines the order for the choose your occupation chances screen. 
+
 //Engineering
 /datum/job/chief_engineer
 	alt_titles = list("Head Engineer", "Construction Coordinator", "Project Manager")
@@ -7,6 +9,8 @@
 
 /datum/job/atmos
 	alt_titles = list("Firefighter", "Life Support Specialist")
+
+/datum/job/junior_engineer
 
 //Service
 /datum/job/assistant
@@ -49,12 +53,14 @@
 /datum/job/roboticist
 	alt_titles = list("Biomechanical Engineer", "Mechatronic Engineer", "Mechanic")
 
+/datum/job/junior_scientist
+
 //Medical
 /datum/job/cmo
 	alt_titles = list("Medical Director")
 
 /datum/job/doctor
-	alt_titles = list("Nurse", "Surgeon", "Physician")
+	alt_titles = list("Nurse", "Surgeon", "Physician", "Paramedic")
 
 /datum/job/chemist
 	alt_titles = list("Pharmacist", "Pharmacologist")
@@ -64,6 +70,8 @@
 
 /datum/job/geneticist
 	alt_titles = list("Gene Therapist")
+
+/datum/job/junior_doctor
 
 //Security
 /datum/job/hos
@@ -77,6 +85,8 @@
 
 /datum/job/detective
 	alt_titles = list("Forensics Technician", "Private Investigator", "Gumshoe")
+
+/datum/job/junior_officer
 
 //Supply
 /datum/job/qm

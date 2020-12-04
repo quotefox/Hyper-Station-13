@@ -288,10 +288,10 @@
 	value = 4
 
 /datum/reagent/medicine/oxandrolone/on_mob_life(mob/living/carbon/M)
-	if(M.getFireLoss() > 25)
+	if(M.getFireLoss() > 30)
 		M.adjustFireLoss(-4*REM, 0) //Twice as effective as silver sulfadiazine for severe burns
 	else
-		M.adjustFireLoss(-0.5*REM, 0) //But only a quarter as effective for more minor ones
+		M.adjustFireLoss(-2*REM, 0) //Just as good as base for minor ones
 	..()
 	. = 1
 
@@ -356,6 +356,8 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 	value = 1
 
 /datum/reagent/medicine/salglu_solution/on_mob_life(mob/living/carbon/M)
+	if((HAS_TRAIT(M, TRAIT_NOMARROW)))
+		return
 	if(last_added)
 		M.blood_volume -= last_added
 		last_added = 0
@@ -592,10 +594,10 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 
 
 /datum/reagent/medicine/sal_acid/on_mob_life(mob/living/carbon/M)
-	if(M.getBruteLoss() > 25)
+	if(M.getBruteLoss() > 30)
 		M.adjustBruteLoss(-4*REM, 0) //Twice as effective as styptic powder for severe bruising
 	else
-		M.adjustBruteLoss(-0.5*REM, 0) //But only a quarter as effective for more minor ones
+		M.adjustBruteLoss(-2*REM, 0) //Just as good as base for minor ones
 	..()
 	. = 1
 
@@ -1481,8 +1483,8 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 
 /datum/reagent/medicine/polypyr  //This is intended to be an ingredient in advanced chems.
 	name = "Polypyrylium Oligomers"
-	id = "polypyrylium_oligomers"
-	description = "A?purple mixture of short polyelectrolyte chains not easily synthesized in the laboratory. It is valued as an intermediate in the synthesis of the cutting edge pharmaceuticals."
+	id = "polypyr"
+	description = "A purple mixture of short polyelectrolyte chains not easily synthesized in the laboratory. It is valued as an intermediate in the synthesis of the cutting edge pharmaceuticals."
 	reagent_state = SOLID
 	color = "#9423FF"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
