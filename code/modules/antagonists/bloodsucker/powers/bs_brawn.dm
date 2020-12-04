@@ -69,12 +69,12 @@
 		var/hitStrength = user_C.dna.species.punchdamagehigh * 2.0 + 5
 		// Knockdown!
 		var/powerlevel = min(5, 1 + level_current)
-		if(rand(5 + powerlevel) >= 5)
-			target.visible_message("<span class='danger'>[user] lands a vicious punch, sending [target] away!</span>", \
+		target.visible_message("<span class='danger'>[user] lands a vicious punch, sending [target] away!</span>", \
 							  "<span class='userdanger'>[user] has landed a horrifying punch on you, sending you flying!!</span>", null, COMBAT_MESSAGE_RANGE)
+		if(rand(0, 5 + powerlevel) >= 5)
 			target.Knockdown(min(5, rand(10, 10 * powerlevel)) )
 			// Chance of KO
-			if(rand(6 + powerlevel) >= 6  && target.stat <= UNCONSCIOUS)
+			if(rand(0, 6 + powerlevel) >= 6  && target.stat <= UNCONSCIOUS)
 				target.Unconscious(40)
 		// Attack!
 		playsound(get_turf(target), 'sound/weapons/punch4.ogg', 60, 1, -1)

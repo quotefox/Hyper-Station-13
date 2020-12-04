@@ -319,7 +319,7 @@ datum/antagonist/bloodsucker/proc/SpendRank()
 	if(ishuman(owner.current))
 		var/mob/living/carbon/human/H = owner.current
 		var/datum/species/S = H.dna.species
-		S.burnmod *= 0.025 			// Slightly more burn damage
+		S.burnmod *= 1.025 			// Slightly more burn damage
 		S.stunmod *= 0.95			// Slightly less stun time.
 		S.punchdamagelow += 0.75
 		S.punchdamagehigh += 0.75    // NOTE: This affects the hitting power of Brawn.
