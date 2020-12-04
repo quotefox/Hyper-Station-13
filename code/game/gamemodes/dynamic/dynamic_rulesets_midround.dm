@@ -367,7 +367,7 @@
 		return 1
 
 	return 0
-	
+
 /datum/dynamic_ruleset/midround/autotraitor/lewd/execute()
 	var/mob/M = pick(lewd_candidates)
 	lewd_candidates -= M
@@ -745,3 +745,52 @@
 
 #undef ABDUCTOR_MAX_TEAMS
 #undef REVENANT_SPAWN_THRESHOLD
+
+
+//////////////////////////////////////////////
+//                                          //
+//               BLOODSUCKERS               //
+//                                          //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/midround/bloodsucker
+  name = "Bloodsucker Infiltrator"
+  //config_tag = "latejoin_bloodsucker"
+  antag_datum = ANTAG_DATUM_BLOODSUCKER
+  antag_flag = ROLE_TRAITOR
+  restricted_roles = list("AI", "Cyborg")
+  protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+  required_candidates = 1
+  enemy_roles = list("Security Officer","Head of Security","Captain","AI","Cyborg","Chaplain","Curator")
+  required_enemies = list(3,2,2,2,2,2,2,2,2,2)
+  weight = 3
+  cost = 10
+  requirements = list(101,101,101,60,55,50,45,40,35,30)
+  high_population_requirement = 30
+  repeatable = FALSE
+  chaos_min = 4.0
+
+datum/dynamic_ruleset/midround/bloodsucker/trim_candidates()
+	..()
+	for(var/mob/living/player in living_players)
+		if(issilicon(player)) // Your assigned role doesn't change when you are turned into a silicon.
+			living_players -= player
+			continue
+		if(is_centcom_level(player.z))
+			living_players -= player // We don't autotator people in CentCom
+			continue
+		if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
+			living_players -= player // We don't autotator people with roles already
+
+/datum/dynamic_ruleset/midround/bloodsucker/ready(forced = FALSE)
+	if (required_candidates > living_players.len)
+		return FALSE
+	return ..()
+
+/datum/dynamic_ruleset/midround/bloodsucker/execute()
+	var/mob/M = pick(living_players)
+	assigned += M
+	living_players -= M
+	var/datum/antagonist/bloodsucker/newVamp = new
+	M.mind.add_antag_datum(newVamp)
+	return TRUE

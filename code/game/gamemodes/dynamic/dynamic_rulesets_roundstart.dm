@@ -103,7 +103,7 @@
 		return 1
 
 	return 0
-	
+
 /datum/dynamic_ruleset/roundstart/traitor/lewd/pre_execute()
 	var/traitor_scaling_coeff = 10 - max(0,round(mode.threat_level/10)-5) // Above 50 threat level, coeff goes down by 1 for every 10 levels
 	var/num_traitors = min(round(mode.candidates.len / traitor_scaling_coeff) + 1, candidates.len)
@@ -826,3 +826,42 @@
 	var/ramp_up_final = CLAMP(round(meteorminutes/rampupdelta), 1, 10)
 
 	spawn_meteors(ramp_up_final, wavetype)
+
+//////////////////////////////////////////////
+//                                          //
+//              BLOODSUCKERS                //
+//                                          //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/roundstart/bloodsucker
+	name = "Bloodsuckers"
+	persistent = TRUE
+	antag_flag = ROLE_BLOODSUCKER
+	antag_datum = ANTAG_DATUM_BLOODSUCKER
+	minimum_required_age = 0
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	restricted_roles = list("Cyborg", "AI")
+	required_candidates = 1
+	weight = 3
+	cost = 0
+	requirements = list(101,101,101,70,60,60,50,50,50,40)
+	high_population_requirement = 10
+	chaos_min = 4.0
+
+
+/datum/dynamic_ruleset/roundstart/bloodsucker/pre_execute()
+	var/num_bloodsuckers = min(round(mode.candidates.len / 10) +1, candidates.len)
+	for (var/i = 1 to num_bloodsuckers)
+		var/mob/M = pick_n_take(candidates)
+		assigned += M.mind
+		M.mind.special_role = ROLE_BLOODSUCKER
+		M.mind.restricted_roles = restricted_roles
+	return TRUE
+
+
+/datum/dynamic_ruleset/roundstart/bloodsucker/pre_execute()
+	var/mob/M = pick_n_take(candidates)
+	assigned += M.mind
+	M.mind.special_role = ROLE_BLOODSUCKER
+	M.mind.restricted_roles = restricted_roles
+	return TRUE

@@ -127,7 +127,7 @@
 	mood_change = 2
 	timeout = 15 MINUTES
 
-//Power gamer stuff below
+//Bloodsucker stuff below.
 /datum/mood_event/drankblood
 	description = "<span class='nicegreen'>I have fed greedly from that which nourishes me.</span>\n"
 	mood_change = 10
