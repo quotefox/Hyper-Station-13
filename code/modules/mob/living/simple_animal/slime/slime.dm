@@ -5,6 +5,7 @@
 	pass_flags = PASSTABLE
 	ventcrawler = VENTCRAWLER_ALWAYS
 	gender = NEUTER
+	blood_volume = 0 //until someone reworks for them to have slime jelly
 	var/is_adult = 0
 	var/docile = 0
 	faction = list("slime","neutral")

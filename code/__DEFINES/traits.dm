@@ -124,9 +124,12 @@
 #define TRAIT_ALCOHOL_LIGHTWEIGHT	"alcohol_lightweight" //Skyrat port
 #define TRAIT_CURSED_BLOOD	"cursed_blood" //Yo dawg I heard you like bloodborne references so I put a
 #define TRAIT_RADRESONANCE "radioactive_resonance" //Hyperstation edit
-
 #define TRAIT_SWIMMING			"swimming"			//only applied by /datum/element/swimming, for checking
 #define TRAIT_CAPTAIN_METABOLISM "captain-metabolism"
+#define TRAIT_NONATURALHEAL		"nonaturalheal"	// Only Admins can heal you. NOTHING else does it unless it's given the god tag.
+#define TRAIT_NORUNNING			"norunning"		// You walk!
+#define TRAIT_NOMARROW			"nomarrow"		// You don't make blood, with chemicals or nanites.
+#define TRAIT_NOPULSE			"nopulse"		// Your heart doesn't beat.
 
  //non-mob traits
 #define TRAIT_PARALYSIS			"paralysis" //Used for limb-based paralysis, where replacing the limb will fix it
