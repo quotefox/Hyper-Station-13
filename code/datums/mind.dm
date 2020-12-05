@@ -691,10 +691,16 @@
 		usr = current
 	traitor_panel()
 
+/datum/mind/proc/get_all_objectives()
+	var/list/all_objectives = list()
+	for(var/datum/antagonist/A in antag_datums)
+		all_objectives |= A.objectives
+	return all_objectives
+
 /datum/mind/proc/announce_objectives()
 	var/obj_count = 1
 	to_chat(current, "<span class='notice'>Your current objectives:</span>")
-	for(var/objective in objectives)
+	for(var/objective in get_all_objectives())
 		var/datum/objective/O = objective
 		to_chat(current, "<B>Objective #[obj_count]</B>: [O.explanation_text]")
 		obj_count++

@@ -41,6 +41,7 @@
 	// REMOVED: TRAIT_NODEATH
 	// TO ADD:
 	//var/static/list/defaultOrgans = list (/obj/item/organ/heart/vampheart,/obj/item/organ/heart/vampeyes)
+	var/traitorwin = TRUE
 
 /datum/antagonist/bloodsucker/on_gain()
 	SSticker.mode.bloodsuckers |= owner // Add if not already in here (and you might be, if you were picked at round start)
@@ -67,18 +68,18 @@
 
 /datum/antagonist/bloodsucker/greet()
 	var/fullname = ReturnFullName(TRUE)
-	to_chat(owner, "<span class='userdanger'>You are [fullname], a bloodsucking vampire!</span><br>")
+	to_chat(owner, "<span class='userdanger'>You are [fullname], a strain of vampire dubbed bloodsucker!</span><br>")
 	owner.announce_objectives()
 	to_chat(owner, "<span class='boldannounce'>* You regenerate your health slowly, you're weak to fire, and you depend on blood to survive. Allow your stolen blood to run too low, and you will find yourself at \
 	risk of being discovered!</span><br>")
 	//to_chat(owner, "<span class='boldannounce'>As an immortal, your power is linked to your age. The older you grow, the more abilities you will have access to.<span>")
-	var/vamp_greet
-	vamp_greet +=  "<span class='boldannounce'>* Other Bloodsuckers are not necessarily your friends, but your survival may depend on cooperation. Betray them at your own discretion and peril.</span><br>"
-	vamp_greet += "<span class='boldannounce'><i>* Use \",b\" to speak your ancient Bloodsucker language.</span><br>"
-	vamp_greet += "<span class='announce'>Bloodsucker Tip: Rest in a <i>Coffin</i> to claim it, and that area, as your lair.</span><br>"
-	vamp_greet += "<span class='announce'>Bloodsucker Tip: Fear the daylight! Solar flares will bombard the station periodically, and only your coffin can guarantee your safety.</span><br>"
-	vamp_greet += "<span class='announce'>Bloodsucker Tip: You wont loose blood if you are unconcious or sleeping. Use this to your advantage to conserve blood.</span><br>"
-	to_chat(owner, vamp_greet)
+	var/bloodsucker_greet
+	bloodsucker_greet +=  "<span class='boldannounce'>* Other Bloodsuckers are not necessarily your friends, but your survival may depend on cooperation. Betray them at your own discretion and peril.</span><br>"
+	bloodsucker_greet += "<span class='boldannounce'><i>* Use \",b\" to speak your ancient Bloodsucker language.</span><br>"
+	bloodsucker_greet += "<span class='announce'>Bloodsucker Tip: Rest in a <i>Coffin</i> to claim it, and that area, as your lair.</span><br>"
+	bloodsucker_greet += "<span class='announce'>Bloodsucker Tip: Fear the daylight! Solar flares will bombard the station periodically, and only your coffin can guarantee your safety.</span><br>"
+	bloodsucker_greet += "<span class='announce'>Bloodsucker Tip: You wont loose blood if you are unconcious or sleeping. Use this to your advantage to conserve blood.</span><br>"
+	to_chat(owner, bloodsucker_greet)
 
 	owner.current.playsound_local(null, 'sound/bloodsucker/BloodsuckerAlert.ogg', 100, FALSE, pressure_affected = FALSE)
 	antag_memory += "Although you were born a mortal, in un-death you earned the name <b>[fullname]</b>.<br>"
@@ -436,8 +437,20 @@ datum/antagonist/bloodsucker/proc/SpendRank()
 	report += "<br><span class='header'><b>\[[ReturnFullName(TRUE)]\]</b></span>"
 
 	// Default Report
-	report += ..()
+	//report += ..() //Hyperstation fix until https://github.com/Citadel-Station-13/Citadel-Station-13/pull/10623 is pulled
 
+	report += printplayer(owner)
+	var/objectives_text = ""
+	if(objectives.len)//If the traitor had no objectives, don't need to process this.
+		var/count = 1
+		for(var/datum/objective/objective in objectives)
+			if(objective.check_completion())
+				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='greentext'>Success!</span>"
+			else
+				objectives_text += "<br><B>Objective #[count]</B>: [objective.explanation_text] <span class='redtext'>Fail.</span>"
+				traitorwin = FALSE
+			count++
+	report += objectives_text
 	// Now list their vassals
 	if (vassals.len > 0)
 		report += "<span class='header'>Their Vassals were...</span>"
@@ -446,6 +459,13 @@ datum/antagonist/bloodsucker/proc/SpendRank()
 				var/jobname = V.owner.assigned_role ? "the [V.owner.assigned_role]" : ""
 				report += "<b>[V.owner.name]</b> [jobname]"
 
+	var/special_role_text = lowertext(name)
+	if(traitorwin)
+		report += "<span class='greentext'>The [special_role_text] was successful!</span>"
+	else
+		report += "<span class='redtext'>The [special_role_text] has failed!</span>"
+		SEND_SOUND(owner.current, 'sound/ambience/ambifailure.ogg')
+	
 	return report.Join("<br>")
 
 //Displayed at the start of roundend_category section, default to roundend_category header
