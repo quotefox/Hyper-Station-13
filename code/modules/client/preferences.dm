@@ -96,7 +96,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	//H13
 	var/body_size = 100					//Body Size in percent
-	var/can_get_preg = 0				//Body Size in percent
+	var/can_get_preg = 0				//preggers
 
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	var/list/features = list("mcolor" = "FFF",
@@ -433,10 +433,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			//HS13 body size
 			if (body_size > 0)
-				dat += "<b>Sprite Size:</b> <a href='?_src_=prefs;preference=bodysize;task=input'>[body_size]%</a><br>"
+				dat += "<b>Body Size:</b> <a href='?_src_=prefs;preference=bodysize;task=input'>[body_size]%</a><br>"
 			if (body_size == null)
-				dat += "<b>Sprite Size:</b> <a href='?_src_=prefs;preference=bodysize;task=input'>[body_size]%</a><br>"
+				dat += "<b>Body Size:</b> <a href='?_src_=prefs;preference=bodysize;task=input'>[body_size]%</a><br>"
 				mutant_colors = TRUE
+
 
 			if((EYECOLOR in pref_species.species_traits) && !(NOEYES in pref_species.species_traits))
 
