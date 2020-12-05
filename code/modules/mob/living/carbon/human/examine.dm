@@ -113,7 +113,6 @@
 	if(!isnull(effects_exam))
 		. += effects_exam
 
-/* Commented out for now, because people want customsizes.
 	//Approximate character height based on current sprite scale
 	if(dispSize % 2) // returns 1 or 0. 1 meaning the height is not exact and the code below will execute, 0 meaning the height is exact and the else will trigger.
 		dispSize = dispSize - 1 //makes it even
@@ -122,7 +121,6 @@
 	else
 		dispSize = dispSize / 2
 		. += "[t_He] appears to be around [dispSize] feet tall."
-*/
 
 	//Can be picked up?
 	if(can_be_held)
@@ -164,7 +162,7 @@
 		. += "<span class='deadsay'>It appears that [t_his] brain is missing...</span>"
 
 	var/temp = getBruteLoss() //no need to calculate each of these twice
-
+	
 	var/list/msg = list()
 
 	var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
