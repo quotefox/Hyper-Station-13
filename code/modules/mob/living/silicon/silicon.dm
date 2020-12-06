@@ -389,7 +389,7 @@
 /mob/living/silicon/proc/GetPhoto(mob/user)
 	if (aicamera)
 		return aicamera.selectpicture(user)
-
+/*
 /mob/living/silicon/update_transform()
 	var/matrix/ntransform = matrix(transform) //aka transform.Copy()
 	var/changed = 0
@@ -401,6 +401,7 @@
 	if(changed)
 		animate(src, transform = ntransform, time = 2,easing = EASE_IN|EASE_OUT)
 	return ..()
+*/
 
 /mob/living/silicon/is_literate()
 	return 1

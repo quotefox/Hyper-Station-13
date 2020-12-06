@@ -235,6 +235,7 @@
 	R.notify_ai(NEW_MODULE)
 	if(R.hud_used)
 		R.hud_used.update_robot_modules_display()
+	R.update_transform()
 	SSblackbox.record_feedback("tally", "cyborg_modules", 1, R.module)
 
 /* //Broken
