@@ -3,7 +3,7 @@
 	desc = "Slowly heal brute damage while active. This process is exhausting, and requires some of your tainted blood."
 	button_icon_state = "power_recup"
 	amToggle = TRUE
-	bloodcost = 5
+	bloodcost = 30
 	cooldown = 100
 
 /datum/action/bloodsucker/vassal/recuperate/CheckCanUse(display_error)
