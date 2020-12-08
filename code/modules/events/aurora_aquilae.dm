@@ -31,7 +31,7 @@
 	for(var/V in GLOB.player_list)
 		var/mob/M = V
 		if(is_station_level(M.z))
-			M.playsound_local(M, 'sound/ambience/aurora_aquilae.ogg', 20, FALSE, pressure_affected = FALSE)
+			M.playsound_local(M, 'sound/ambience/aurora_aquilae.ogg', 20, FALSE, pressure_affected = FALSE) //ogg is "In the presence of a King" by Heaven Pierce Her, used in the videogame ULTRAKILL. All respects and credits to the equivalent artists who worked on it.
 
 /datum/round_event/aurora_aquilae/tick()
 	if(activeFor % 10 == 0)
