@@ -16,21 +16,30 @@
 	endWhen = 100
 	var/list/aurora_colors = list("#ffc8bc", "#ed927f", "#d5745f", "#bf3a1d", "#c71414", "#FF3131", "#ee0808", "#ff0000")
 	var/aurora_progress = 0 //this cycles from 1 to 8, slowly grading towards a bright red
-	var/list/area/areasToFlicker = list(/area/hallway/primary/aft,
-										/area/hallway/primary/fore,
-										/area/hallway/primary/starboard/aft,
-										/area/hallway/primary/starboard/fore,
-										/area/hallway/primary/port/aft,
-										/area/hallway/primary/port/fore,
-										/area/hallway/primary/central,
-										/area/security,
-										/area/science)
+	var/list/area/areasToFlicker = list()
+
+/datum/round_event/aurora_aquilae/start()
+	var/list/areasToFlicker = list(/area/hallway/primary,
+								/area/security,
+								/area/science)
+	for(var/area in GLOB.sortedAreas)
+		var/area/A = area
+		if(initial(A.dynamic_lighting) == DYNAMIC_LIGHTING_IFSTARLIGHT)
+			for(var/turf/open/space/S in A)
+				S.set_light(S.light_range * 10, S.light_power * 1)
+	for(var/V in GLOB.player_list)
+		var/mob/M = V
+		if(is_station_level(M.z))	
+			M.playsound_local(M, 'sound/ambience/aurora_aquilae.ogg', 20, FALSE, pressure_affected = FALSE) //ogg is "In the presence of a King" by Heaven Pierce Her, used in the videogame ULTRAKILL. All respects and credits to the equivalent artists who worked on it.
+	message_admins("start aurora aquilae")
 
 /datum/round_event/aurora_aquilae/proc/flicker_lights()
 	message_admins("flicker lights aquilae")
-	for(var/area/A in areasToFlicker)
-		for(var/obj/machinery/light/L in A)
-			L.flicker(30)
+	for(var/area/A in world)
+		for(var/typecheck in areasToFlicker)
+			if(istype(A, typecheck))
+				for(var/obj/machinery/light/L in A)
+					L.flicker(30)
 
 /datum/round_event/aurora_aquilae/proc/break_lights()
 	message_admins("break lights aquilae")
@@ -47,19 +56,6 @@
 	message_admins("announce aurora aquilae")
 	addtimer(CALLBACK(src, .proc/break_lights), 35 SECONDS)
 
-/datum/round_event/aurora_aquilae/start()
-	for(var/area in GLOB.sortedAreas)
-		var/area/A = area
-		if(initial(A.dynamic_lighting) == DYNAMIC_LIGHTING_IFSTARLIGHT)
-			for(var/turf/open/space/S in A)
-				S.set_light(S.light_range * 10, S.light_power * 1)
-	for(var/V in GLOB.player_list)
-		var/mob/M = V
-		if(is_station_level(M.z))	
-			M.playsound_local(M, 'sound/ambience/aurora_aquilae.ogg', 20, FALSE, pressure_affected = FALSE) //ogg is "In the presence of a King" by Heaven Pierce Her, used in the videogame ULTRAKILL. All respects and credits to the equivalent artists who worked on it.
-	message_admins("start aurora aquilae")
-
-
 /datum/round_event/aurora_aquilae/tick()
 	if(activeFor % 7 == 0)
 		aurora_progress++
@@ -75,47 +71,10 @@
 			new /datum/hallucination/delusion(H)
 			new /datum/hallucination/battle(H)
 			sleep (100)
-			new /datum/hallucination/battle(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			sleep(2.5)
-			new /datum/hallucination/stray_pistol_bullet(H)
+			for(var/i in 1 to 25)
+				new /datum/hallucination/stray_pistol_bullet(H)
+				new /datum/hallucination/battle(H)
+				sleep(2.5)
 	if(activeFor == 60)
 		for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 			new /datum/hallucination/fire(H)
