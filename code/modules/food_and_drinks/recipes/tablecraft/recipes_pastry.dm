@@ -362,6 +362,17 @@ datum/crafting_recipe/food/donut/meat
 	tastes = list("meat" = 2, "dough" = 2)
 	foodtype = GRAIN | VEGETABLES
 
+/datum/crafting_recipe/food/donkpocket/spicy
+	time = 15
+	name = "Spicy-pocket"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/pastrybase = 1,
+		/obj/item/reagent_containers/food/snacks/meatball = 1,
+		/obj/item/reagent_containers/food/snacks/grown/chili
+	)
+	result = /obj/item/reagent_containers/food/snacks/donkpocket/spicy
+	subcategory = CAT_PASTRY
+
 /obj/item/reagent_containers/food/snacks/donkpocket/spicy
 	name = "\improper Spicy-pocket"
 	desc = "The classic snack food, now with a heat-activated spicy flair."
@@ -380,6 +391,17 @@ datum/crafting_recipe/food/donut/meat
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/medicine/omnizine = 1, /datum/reagent/consumable/capsaicin = 2)
 	tastes = list("meat" = 2, "dough" = 2, "weird spices" = 2)
 	foodtype = GRAIN
+
+/datum/crafting_recipe/food/donkpocket/teriyaki
+	time = 15
+	name = "Teriyaki-pocket"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/pastrybase = 1,
+		/obj/item/reagent_containers/food/snacks/meatball = 1,
+		/datum/reagent/consumable/soysauce = 3
+	)
+	result = /obj/item/reagent_containers/food/snacks/donkpocket/teriyaki
+	subcategory = CAT_PASTRY
 
 /obj/item/reagent_containers/food/snacks/donkpocket/teriyaki
 	name = "\improper Teriyaki-pocket"
@@ -400,6 +422,17 @@ datum/crafting_recipe/food/donut/meat
 	tastes = list("meat" = 2, "dough" = 2, "soy sauce" = 2)
 	foodtype = GRAIN
 
+/datum/crafting_recipe/food/donkpocket/pizza
+	time = 15
+	name = "Pizza-pocket"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/pastrybase = 1,
+		/obj/item/reagent_containers/food/snacks/meatball = 1,
+		/obj/item/reagent_containers/food/snacks/grown/tomato = 1
+	)
+	result = /obj/item/reagent_containers/food/snacks/donkpocket/pizza
+	subcategory = CAT_PASTRY
+
 /obj/item/reagent_containers/food/snacks/donkpocket/pizza
 	name = "\improper Pizza-pocket"
 	desc = "Delicious, cheesy and surprisingly filling."
@@ -419,6 +452,17 @@ datum/crafting_recipe/food/donut/meat
 	tastes = list("meat" = 2, "dough" = 2, "melty cheese"= 2)
 	foodtype = GRAIN
 
+/datum/crafting_recipe/food/donkpocket/honk
+	time = 15
+	name = "Honk-Pocket"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/pastrybase = 1,
+		/obj/item/reagent_containers/food/snacks/grown/banana = 1,
+		/datum/reagent/consumable/sugar = 3
+	)
+	result = /obj/item/reagent_containers/food/snacks/donkpocket/honk
+	subcategory = CAT_PASTRY
+
 /obj/item/reagent_containers/food/snacks/donkpocket/honk
 	name = "\improper Honk-pocket"
 	desc = "The award-winning donk-pocket that won the hearts of clowns and humans alike."
@@ -437,6 +481,16 @@ datum/crafting_recipe/food/donut/meat
 	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/medicine/omnizine = 1, /datum/reagent/consumable/banana = 4, /datum/reagent/consumable/laughter = 3)
 	tastes = list("dough" = 2, "children's antibiotics" = 1)
 	foodtype = GRAIN
+
+/datum/crafting_recipe/food/donkpocket/berry
+	time = 15
+	name = "Berry-pocket"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/pastrybase = 1,
+		/obj/item/reagent_containers/food/snacks/grown/berries = 1
+	)
+	result = /obj/item/reagent_containers/food/snacks/donkpocket/berry
+	subcategory = CAT_PASTRY
 
 /obj/item/reagent_containers/food/snacks/donkpocket/berry
 	name = "\improper Berry-pocket"
@@ -475,6 +529,17 @@ datum/crafting_recipe/food/donut/meat
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/medicine/omnizine = 1, /datum/reagent/tranquility = 5)
 	tastes = list("meat" = 2, "dough" = 2, "inner peace" = 1)
 	foodtype = GRAIN
+
+/datum/crafting_recipe/food/donkpocket/gondola
+	time = 15
+	name = "Gondola-pocket"
+	reqs = list(
+		/obj/item/reagent_containers/food/snacks/pastrybase = 1,
+		/obj/item/reagent_containers/food/snacks/meatball = 1,
+		/datum/reagent/tranquility = 5
+	)
+	result = /obj/item/reagent_containers/food/snacks/donkpocket/gondola
+	subcategory = CAT_PASTRY
 
 ////////////////////////////////////////////////MUFFINS////////////////////////////////////////////////
 
