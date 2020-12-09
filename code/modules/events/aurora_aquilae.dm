@@ -25,15 +25,13 @@
 		var/area/A = area
 		if(initial(A.dynamic_lighting) == DYNAMIC_LIGHTING_IFSTARLIGHT)
 			for(var/turf/open/space/S in A)
-				S.set_light(S.light_range * 10, S.light_power * 1)
+				S.set_light(S.light_range * 8, S.light_power * 1)
 	for(var/V in GLOB.player_list)
 		var/mob/M = V
 		if(is_station_level(M.z))
 			M.playsound_local(M, 'sound/ambience/aurora_aquilae.ogg', 20, FALSE, pressure_affected = FALSE) //ogg is "In the presence of a King" by Heaven Pierce Her, used in the videogame ULTRAKILL. All respects and credits to the equivalent artists who worked on it.
-	message_admins("start aurora aquilae")
 
 /datum/round_event/aurora_aquilae/proc/flicker_lights()
-	message_admins("flicker lights aquilae")
 	for(var/area/A in world)
 		for(var/typecheck in areasToFlicker)
 			if(istype(A, typecheck))
@@ -41,7 +39,6 @@
 					L.flicker(30)
 
 /datum/round_event/aurora_aquilae/proc/break_lights()
-	message_admins("break lights aquilae")
 	for(var/area/A in world)
 		for(var/typecheck in areasToFlicker)
 			if(istype(A, typecheck))
@@ -54,12 +51,10 @@
 		new /datum/hallucination/battle(H)
 
 /datum/round_event/aurora_aquilae/proc/battleflashbacksone()
-	message_admins("battleflashbacks1 aquilae")
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 		new /datum/hallucination/fire(H)
 
 /datum/round_event/aurora_aquilae/proc/battleflashbackstwo()
-	message_admins("battleflashbacks2 aquilae")
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 		new /datum/hallucination/delusion(H)
 		new /datum/hallucination/battle(H)
@@ -74,7 +69,6 @@
 	sender_override = "Kin]·|Aari$s Meteo%&rology DivD··isio#n")
 	addtimer(CALLBACK(src, .proc/flicker_lights), 5 SECONDS)
 	addtimer(CALLBACK(src, .proc/battleflashbacksone), 5 SECONDS)
-	message_admins("announce aurora aquilae")
 	addtimer(CALLBACK(src, .proc/break_lights), 35 SECONDS)
 	addtimer(CALLBACK(src, .proc/battleflashbackstwo), 45 SECONDS)
 
