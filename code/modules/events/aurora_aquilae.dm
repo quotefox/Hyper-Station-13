@@ -27,7 +27,7 @@
 		var/area/A = area
 		if(initial(A.dynamic_lighting) == DYNAMIC_LIGHTING_IFSTARLIGHT)
 			for(var/turf/open/space/S in A)
-				S.set_light(S.light_range * 14, S.light_power * 1)
+				S.set_light(S.light_range * 10, S.light_power * 1)
 	for(var/V in GLOB.player_list)
 		var/mob/M = V
 		if(is_station_level(M.z))
