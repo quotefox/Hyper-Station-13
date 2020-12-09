@@ -16,7 +16,7 @@
 	endWhen = 100
 	var/list/aurora_colors = list("#ffc8bc", "#ed927f", "#d5745f", "#bf3a1d", "#c71414", "#FF3131", "#ee0808", "#ff0000")
 	var/aurora_progress = 0 //this cycles from 1 to 8, slowly grading towards a bright red
-	var/list/areasToFlicker = list(/area/hallway/primary,
+	var/list/areasToFlicker = list(/area/hallway,
 									/area/security,
 									/area/science)
 
@@ -25,7 +25,7 @@
 		var/area/A = area
 		if(initial(A.dynamic_lighting) == DYNAMIC_LIGHTING_IFSTARLIGHT)
 			for(var/turf/open/space/S in A)
-				S.set_light(S.light_range * 8, S.light_power * 1)
+				S.set_light(S.light_range * 10, S.light_power * 1)
 	for(var/V in GLOB.player_list)
 		var/mob/M = V
 		if(is_station_level(M.z))	
@@ -45,10 +45,8 @@
 	for(var/area/A in world)
 		for(var/typecheck in areasToFlicker)
 			if(istype(A, typecheck))
-				for(var/obj/O in areasToFlicker)
-					if(istype(O, /obj/machinery/power/apc))
-						var/obj/machinery/power/apc/temp = O
-						temp.overload_lighting()
+				for(var/obj/machinery/power/apc/temp in A)
+					temp.overload_lighting()
 
 /datum/round_event/aurora_aquilae/announce()
 	priority_announce("[station_name()]: A ·#HARMLESS#· cloud of ·|$% GLORY AND GUTS¬€#· ions is approaching your ·|%$ station, and will exhaust their energy battering the hull. Kinaris Command has approved a short break for all employees to relax and observe this very rare event. During this time, starlight will be bright but %%%BRUTAL·$ª, shifting between %$$%!ªTHE COMPLETE AND UTTER DESTRUCTION OF THE SENSES$ and %%THE ASHES OF THE GREAT AL-SHAIN%. Any staff who would like to view the %%PRESENCE OF A KING%$ for themselves may proceed to the nearest area with viewing ports to open space.",
