@@ -16,12 +16,11 @@
 	endWhen = 100
 	var/list/aurora_colors = list("#ffc8bc", "#ed927f", "#d5745f", "#bf3a1d", "#c71414", "#FF3131", "#ee0808", "#ff0000")
 	var/aurora_progress = 0 //this cycles from 1 to 8, slowly grading towards a bright red
-	var/list/area/areasToFlicker = list()
+	var/list/areasToFlicker = list(/area/hallway/primary,
+									/area/security,
+									/area/science)
 
 /datum/round_event/aurora_aquilae/start()
-	var/list/areasToFlicker = list(/area/hallway/primary,
-								/area/security,
-								/area/science)
 	for(var/area in GLOB.sortedAreas)
 		var/area/A = area
 		if(initial(A.dynamic_lighting) == DYNAMIC_LIGHTING_IFSTARLIGHT)
@@ -34,12 +33,12 @@
 	message_admins("start aurora aquilae")
 
 /datum/round_event/aurora_aquilae/proc/flicker_lights()
-	message_admins("flicker lights aquilae")
-	for(var/area/A in world)
-		for(var/typecheck in areasToFlicker)
-			if(istype(A, typecheck))
-				for(var/obj/machinery/light/L in A)
-					L.flicker(30)
+    message_admins("flicker lights aquilae")
+    for(var/area/A in world)
+        for(var/typecheck in areasToFlicker)
+            if(istype(A, typecheck))
+            	for(var/obj/machinery/light/L in A)
+                    L.flicker(30)
 
 /datum/round_event/aurora_aquilae/proc/break_lights()
 	message_admins("break lights aquilae")
