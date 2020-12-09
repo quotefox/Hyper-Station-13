@@ -12,7 +12,7 @@
 
 /datum/round_event/aurora_aquilae
 	announceWhen = 30
-	startWhen = 1 
+	startWhen = 1
 	endWhen = 100
 	var/list/aurora_colors = list("#ffc8bc", "#ed927f", "#d5745f", "#bf3a1d", "#c71414", "#FF3131", "#ee0808", "#ff0000")
 	var/aurora_progress = 0 //this cycles from 1 to 8, slowly grading towards a bright red
@@ -28,7 +28,7 @@
 				S.set_light(S.light_range * 10, S.light_power * 1)
 	for(var/V in GLOB.player_list)
 		var/mob/M = V
-		if(is_station_level(M.z))	
+		if(is_station_level(M.z))
 			M.playsound_local(M, 'sound/ambience/aurora_aquilae.ogg', 20, FALSE, pressure_affected = FALSE) //ogg is "In the presence of a King" by Heaven Pierce Her, used in the videogame ULTRAKILL. All respects and credits to the equivalent artists who worked on it.
 	message_admins("start aurora aquilae")
 
@@ -48,6 +48,11 @@
 				for(var/obj/machinery/power/apc/temp in A)
 					temp.overload_lighting()
 
+/datum/round_event/aurora_aquilae/proc/battleflashbacksthree()
+	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
+		new /datum/hallucination/stray_pistol_bullet(H)
+		new /datum/hallucination/battle(H)
+
 /datum/round_event/aurora_aquilae/proc/battleflashbacksone()
 	message_admins("battleflashbacks1 aquilae")
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
@@ -58,10 +63,10 @@
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 		new /datum/hallucination/delusion(H)
 		new /datum/hallucination/battle(H)
+		var/delay = 0
 		for(var/i in 1 to 50)
-			new /datum/hallucination/stray_pistol_bullet(H)
-			new /datum/hallucination/battle(H)
-			sleep(2.5)
+			delay += 3
+			addtimer(CALLBACK(src, .proc/battleflashbacksthree), delay)
 
 /datum/round_event/aurora_aquilae/announce()
 	priority_announce("[station_name()]: A ·#HARMLESS#· cloud of ·|$% GLORY AND GUTS¬€#· ions is approaching your ·|%$ station, and will exhaust their energy battering the hull. Kinaris Command has approved a short break for all employees to relax and observe this very rare event. During this time, starlight will be bright but %%%BRUTAL·$ª, shifting between %$$%!ªTHE COMPLETE AND UTTER DESTRUCTION OF THE SENSES$ and %%THE ASHES OF THE GREAT AL-SHAIN%. Any staff who would like to view the %%PRESENCE OF A KING%$ for themselves may proceed to the nearest area with viewing ports to open space.",
