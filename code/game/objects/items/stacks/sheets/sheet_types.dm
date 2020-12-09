@@ -421,6 +421,15 @@ GLOBAL_LIST_INIT(cardboard_recipes, list ( \
 	new/datum/stack_recipe("large box", /obj/structure/closet/cardboard, 4), \
 	new/datum/stack_recipe("cardboard cutout", /obj/item/cardboard_cutout, 5), \
 	null, \
+	new /datum/stack_recipe("donut box", /obj/item/storage/fancy/donut_box),				\
+	new /datum/stack_recipe("donk-pockets box", /obj/item/storage/box/donkpockets),			\
+	new /datum/stack_recipe("donk-pockets spicy box", /obj/item/storage/box/donkpockets/donkpocketspicy),			\
+	new /datum/stack_recipe("donk-pockets teriyaki box", /obj/item/storage/box/donkpockets/donkpocketteriyaki),		\
+	new /datum/stack_recipe("donk-pockets pizza box", /obj/item/storage/box/donkpockets/donkpocketpizza),			\
+	new /datum/stack_recipe("donk-pockets berry box", /obj/item/storage/box/donkpockets/donkpocketberry),			\
+	new /datum/stack_recipe("donk-pockets honk box", /obj/item/storage/box/donkpockets/donkpockethonk),				\
+	new /datum/stack_recipe("monkey cube box", /obj/item/storage/box/monkeycubes),
+	null, \
 	new/datum/stack_recipe("colored brown", /obj/item/storage/box/brown), \
 	new/datum/stack_recipe("colored green", /obj/item/storage/box/green), \
 	new/datum/stack_recipe("colored red", /obj/item/storage/box/blue), \
