@@ -1308,8 +1308,14 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			var/obj/item/reagent_containers/food/snacks/pie/cream/nostun/creamy = new(get_turf(target))
 			creamy.splat(target)
 		if(ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE)
-			for(var/obj/structure/table/T in SSmapping.station_start)
-				T.tablepush(target, target)
+			var/list/areas = list()
+			for(var/area/A in world)
+				if(A.z == SSmapping.station_start)
+					areas += A
+			for(var/area/A in areas)
+				for(var/obj/structure/table/T in A)
+					T.tablepush(target, target)
+					sleep(1)
 
 	var/msg = "[key_name_admin(usr)] punished [key_name_admin(target)] with [punishment]."
 	message_admins(msg)
