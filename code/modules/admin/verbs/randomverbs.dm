@@ -1312,6 +1312,7 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			for(var/area/A in world)
 				if(A.z == SSmapping.station_start)
 					areas += A
+			SEND_SOUND(target, sound('hyperstation/sound/misc/hoopisundunkable.ogg',volume=50))
 			for(var/area/A in areas)
 				for(var/obj/structure/table/T in A)
 					T.tablepush(target, target)
