@@ -67,7 +67,7 @@
 	addtimer(CALLBACK(src, .proc/flicker_lights), 5 SECONDS)
 	addtimer(CALLBACK(src, .proc/battleflashbacksone), 5 SECONDS)
 	addtimer(CALLBACK(src, .proc/break_lights), 90 SECONDS)
-	addtimer(CALLBACK(src, .proc/battleflashbackstwo), 110 SECONDS)
+	addtimer(CALLBACK(src, .proc/battleflashbackstwo), 140 SECONDS)
 
 /datum/round_event/aurora_aquilae/tick()
 	if(activeFor % 5 == 0)
