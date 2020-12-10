@@ -13,7 +13,7 @@
 /datum/round_event/aurora_aquilae
 	announceWhen = 30
 	startWhen = 1
-	endWhen = 100
+	endWhen = 115
 	var/list/aurora_colors = list("#ffc8bc", "#ed927f", "#d5745f", "#bf3a1d", "#c71414", "#FF3131", "#ee0808", "#ff0000")
 	var/aurora_progress = 0 //this cycles from 1 to 8, slowly grading towards a bright red
 	var/list/areasToFlicker = list(/area/hallway,
@@ -26,17 +26,15 @@
 		if(initial(A.dynamic_lighting) == DYNAMIC_LIGHTING_IFSTARLIGHT)
 			for(var/turf/open/space/S in A)
 				S.set_light(S.light_range * 8, S.light_power * 1)
-	for(var/V in GLOB.player_list)
-		var/mob/M = V
-		if(is_station_level(M.z))
-			M.playsound_local(M, 'sound/ambience/aurora_aquilae.ogg', 20, FALSE, pressure_affected = FALSE) //ogg is "In the presence of a King" by Heaven Pierce Her, used in the videogame ULTRAKILL. All respects and credits to the equivalent artists who worked on it.
+	for(var/mob/M in GLOB.player_list)
+		SEND_SOUND(M, sound('sound/ambience/aurora_aquilae.ogg', volume=10)) //ogg is "In the presence of a King" by Heaven Pierce Her, used in the videogame ULTRAKILL. All respects and credits to the equivalent artists who worked on it.
 
 /datum/round_event/aurora_aquilae/proc/flicker_lights()
 	for(var/area/A in world)
 		for(var/typecheck in areasToFlicker)
 			if(istype(A, typecheck))
 				for(var/obj/machinery/light/L in A)
-					L.flicker(30)
+					L.flicker(10)
 
 /datum/round_event/aurora_aquilae/proc/break_lights()
 	for(var/area/A in world)
@@ -48,15 +46,14 @@
 /datum/round_event/aurora_aquilae/proc/battleflashbacksthree()
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 		new /datum/hallucination/stray_pistol_bullet(H)
-		new /datum/hallucination/battle(H)
 
 /datum/round_event/aurora_aquilae/proc/battleflashbacksone()
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 		new /datum/hallucination/fire(H)
+		new /datum/hallucination/battle(H)
 
 /datum/round_event/aurora_aquilae/proc/battleflashbackstwo()
 	for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
-		new /datum/hallucination/delusion(H)
 		new /datum/hallucination/battle(H)
 		var/delay = 0
 		for(var/i in 1 to 50)
@@ -69,8 +66,8 @@
 	sender_override = "Kin]·|Aari$s Meteo%&rology DivD··isio#n")
 	addtimer(CALLBACK(src, .proc/flicker_lights), 5 SECONDS)
 	addtimer(CALLBACK(src, .proc/battleflashbacksone), 5 SECONDS)
-	addtimer(CALLBACK(src, .proc/break_lights), 35 SECONDS)
-	addtimer(CALLBACK(src, .proc/battleflashbackstwo), 45 SECONDS)
+	addtimer(CALLBACK(src, .proc/break_lights), 90 SECONDS)
+	addtimer(CALLBACK(src, .proc/battleflashbackstwo), 110 SECONDS)
 
 /datum/round_event/aurora_aquilae/tick()
 	if(activeFor % 5 == 0)
