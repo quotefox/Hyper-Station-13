@@ -63,6 +63,12 @@
 	path = /obj/item/clothing/suit/shackles
 	ckeywhitelist = list("heliocintrini")
 
+/datum/gear/hshack
+	name = "Syndicate Commander's Coat"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/suit/luwethtrench
+	ckeywhitelist = list("luweth")
+
 /datum/gear/luwethring
 	name = "Wedding Band"
 	category = SLOT_IN_BACKPACK
