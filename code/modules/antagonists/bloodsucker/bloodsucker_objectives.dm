@@ -140,11 +140,10 @@
 	var/objcount = 0
 	var/list/counted_roles = list() // So you can't have more than one Captain count.
 	for(var/datum/antagonist/vassal/V in antagdatum.vassals)
-		if (!V || !V.owner)	// Must exist somewhere, and as a vassal.
+		if (!V || !V.owner || !V.owner.current)	// Must exist somewhere, as a vassal and have a living body.
 			continue
 
 		var/thisRole = "none"
-
 		// Mind Assigned
 		if ((V.owner.assigned_role in valid_jobs) && !(V.owner.assigned_role in counted_roles))
 			//to_chat(owner, "<span class='userdanger'>PROTEGE OBJECTIVE: (MIND ROLE)</span>")
@@ -250,15 +249,15 @@
 //						WIN CONDITIONS?
 /datum/objective/bloodsucker/heartthief/check_completion()
 	// -Must have a body.
-	if (!owner.current)
+	if(!owner.current)
 		return FALSE
 	// Taken from /steal in objective.dm
 	var/list/all_items = owner.current.GetAllContents() // Includes items inside other items.
 	var/itemcount = FALSE
 	for(var/obj/I in all_items) //Check for items
-		if(I == /obj/item/organ/heart)
-			itemcount ++
-			if (itemcount >= target_amount) // Got the right amount?
+		if(istype(I, /obj/item/organ/heart/))
+			itemcount++
+			if(itemcount >= target_amount) // Got the right amount?
 				return TRUE
 
 	return FALSE

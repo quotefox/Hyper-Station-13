@@ -601,9 +601,9 @@
 	cost = 10
 	requirements = list(101,50,40,30,20,20,20,20,15,10)
 	high_population_requirement = 50
-	repeatable = TRUE
+	repeatable = FALSE
 	var/list/spawn_locs = list()
-	chaos_min = 2.5
+	chaos_min = 3
 
 /datum/dynamic_ruleset/midround/from_ghosts/nightmare/execute()
 	for(var/X in GLOB.xeno_spawn)

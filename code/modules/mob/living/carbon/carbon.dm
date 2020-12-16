@@ -804,6 +804,8 @@
 /mob/living/carbon/update_stat()
 	if(status_flags & GODMODE)
 		return
+	if(stat != CONSCIOUS)
+		clear_typing_indicator()
 	if(stat != DEAD)
 		if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
 			death()
@@ -974,3 +976,14 @@
 	if(mood)
 		if(mood.sanity < SANITY_UNSTABLE)
 			return TRUE
+
+/mob/living/carbon/can_see_reagents()
+	. = ..()
+	if(.) //No need to run through all of this if it's already true.
+		return
+	if(isclothing(head))
+		var/obj/item/clothing/H = head
+		if(H.clothing_flags & SCAN_REAGENTS)
+			return TRUE
+	if(isclothing(wear_mask) && (wear_mask.clothing_flags & SCAN_REAGENTS))
+		return TRUE

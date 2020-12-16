@@ -25,7 +25,7 @@
 /obj/item/stake/
 	name = "wooden stake"
 	desc = "A simple wooden stake carved to a sharp point."
-	icon = 'icons/obj/items_and_weapons.dmi'
+	icon = 'icons/obj/stake.dmi'
 	icon_state = "wood" // Inventory Icon
 	item_state = "wood" // In-hand Icon
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi' // File for in-hand icon
