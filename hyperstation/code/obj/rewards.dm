@@ -25,6 +25,17 @@
 	alternate_worn_icon = 'hyperstation/icons/mobs/rewards.dmi'
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
+/obj/item/clothing/suit/luwethtrench
+	name = "Syndicate Commander's Coat"
+	desc = "A sinister looking black and red jacket. The gold collar and shoulders denote that this belongs to a high ranking syndicate officer. A rather strange brooch is pinned to the coat, displaying a unique range of lustrous brass cracks through the deep blacks of it’s hammered finish."
+	icon = 'hyperstation/icons/obj/clothing/rewards.dmi'
+	alternate_worn_icon = 'hyperstation/icons/mobs/rewards.dmi'
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	icon_state = "luwethtrench"
+	item_state = "luwethtrench"
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	roomy = TRUE
+
 /obj/item/clothing/gloves/ring/luweth
 	name = "Luweth’s Wedding Band"
 	icon = 'hyperstation/icons/obj/clothing/rewards.dmi'
