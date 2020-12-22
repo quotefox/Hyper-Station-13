@@ -844,9 +844,9 @@
 	required_candidates = 1
 	weight = 3
 	cost = 0
-	requirements = list(101,101,101,70,60,60,50,50,50,40)
+	requirements = list(101,101,50,40,40,30,30,30,20,20)
 	high_population_requirement = 10
-	chaos_min = 4.0
+	chaos_min = 3.0
 
 
 /datum/dynamic_ruleset/roundstart/bloodsucker/pre_execute()

@@ -765,10 +765,10 @@
   required_enemies = list(3,2,2,2,2,2,2,2,2,2)
   weight = 3
   cost = 10
-  requirements = list(101,101,101,60,55,50,45,40,35,30)
+  requirements = list(90,80,70,60,55,50,45,40,35,30)
   high_population_requirement = 30
   repeatable = FALSE
-  chaos_min = 4.0
+  chaos_min = 3.0
 
 datum/dynamic_ruleset/midround/bloodsucker/trim_candidates()
 	..()
