@@ -270,7 +270,7 @@
 		else
 			msg += "<B>[t_He] [t_is] bleeding!</B>\n"
 
-	if(reagents.has_reagent("teslium"))
+	if(reagents.has_reagent(/datum/reagent/teslium))
 		msg += "[t_He] [t_is] emitting a gentle blue glow!\n"
 
 	if(islist(stun_absorption))
@@ -293,8 +293,7 @@
 			if(91.01 to INFINITY)
 				msg += "[t_He] [t_is] a shitfaced, slobbering wreck.\n"
 
-	if(reagents.has_reagent("astral"))
-		msg += "[t_He] have wild, spacey eyes"
+	if(reagents.has_reagent(/datum/reagent/fermi/astral))
 		if(mind)
 			msg += " and have a strange, abnormal look to them.\n"
 		else

@@ -28,9 +28,9 @@
 /datum/species
 	var/arousal_gain_rate = AROUSAL_START_VALUE //Rate at which this species becomes aroused
 	var/arousal_lose_rate = AROUSAL_START_VALUE //Multiplier for how easily arousal can be relieved
-	var/list/cum_fluids = list("semen")
-	var/list/milk_fluids = list("milk")
-	var/list/femcum_fluids = list("femcum")
+	var/list/cum_fluids = list(/datum/reagent/consumable/semen)
+	var/list/milk_fluids = list(/datum/reagent/consumable/milk)
+	var/list/femcum_fluids = list(/datum/reagent/consumable/femcum)
 
 //Mob procs
 /mob/living/carbon/human/proc/underwear_toggle()

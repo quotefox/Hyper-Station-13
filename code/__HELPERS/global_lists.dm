@@ -55,7 +55,7 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/vagina, GLOB.vagina_shapes_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/breasts, GLOB.breasts_shapes_list)
 	GLOB.breasts_size_list = list ("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o") //We need the list to choose from initialized, but it's no longer a sprite_accessory thing.
-	GLOB.genital_fluids_list = list ("milk", "water", "semen", "femcum")
+	GLOB.genital_fluids_list = list (/datum/reagent/consumable/milk, /datum/reagent/water, /datum/reagent/consumable/semen, /datum/reagent/consumable/femcum)
 	GLOB.gentlemans_organ_names = list("phallus", "willy", "dick", "prick", "member", "tool", "gentleman's organ", "cock", "wang", "knob", "dong", "joystick", "pecker", "johnson", "weenie", "tadger", "schlong", "thirsty ferret", "baloney pony", "schlanger")
 	for(var/K in GLOB.breasts_shapes_list)
 		var/datum/sprite_accessory/breasts/value = GLOB.breasts_shapes_list[K]

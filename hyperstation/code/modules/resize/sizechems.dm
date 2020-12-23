@@ -4,7 +4,6 @@
 //Sizechem reagent
 /datum/reagent/sizechem
 	name = "Cell-Volume Altering Base"
-	id = "sizechem"
 	description = "A stabilized compound liquid, used as a basis for increasing or decreasing the size of living matter with more recipes."
 	color = "#C900CC"
 	taste_description = "regret"
@@ -39,7 +38,6 @@
 //Growthchem reagent
 /datum/reagent/growthchem
 	name = "Prospacillin"
-	id = "growthchem"
 	description = "A stabilized altercation of size-altering liquids, this one appears to increase cell volume."
 	color = "#E70C0C"
 	taste_description = "a sharp, fiery and intoxicating flavour"
@@ -89,7 +87,6 @@
 //Shrinkchem reagent
 /datum/reagent/shrinkchem
 	name = "Diminicillin"
-	id = "shrinkchem"
 	description = "A stabilized altercation of size-altering liquids, this one appears to decrease cell volume."
 	color = "#0C26E7"
 	taste_description = "a pungent, acidic and jittery flavour"
