@@ -49,7 +49,7 @@
 
 /obj/item/seeds/starthistle/corpse_flower/process()
 	var/obj/machinery/hydroponics/parent = loc
-	if(parent.age < maturation) // Start a little before it blooms
+	if(parent.age < maturation || parent.dead) // Start a little before it blooms
 		return
 
 	var/turf/open/T = get_turf(parent)
