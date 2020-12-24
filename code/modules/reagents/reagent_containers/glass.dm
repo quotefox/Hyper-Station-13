@@ -365,7 +365,7 @@
 	desc = "Finally, a bottle as proportionate as you. Incredible!"
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "wataur"
-	list_reagents = list("water" = 100) //robust ass wataur
+	list_reagents = list(/datum/reagent/water = 100) //robust ass wataur
 	volume = 100
 	amount_per_transfer_from_this = 20
 	container_HP = 1
