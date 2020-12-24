@@ -343,7 +343,7 @@
 		if(do_after(src, mb_time, target = src) && in_range(src, L))
 			fluid_source.trans_to(L, total_fluids*G.fluid_transfer_factor)
 			total_fluids -= total_fluids*G.fluid_transfer_factor
-			if(B.total_fluids > 80) // now thats a big cum!
+			if(total_fluids > 80) // now thats a big cum!
 				var/mutable_appearance/cumoverlaylarge = mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi')
 				cumoverlaylarge.icon_state = "cum_large"
 				L.add_overlay(cumoverlaylarge)
@@ -354,7 +354,6 @@
 								"<span class='userlove'>You orgasm over [L][cover ? ", drenching them":""], using your [G.name].</span>", \
 								"<span class='userlove'>You have climaxed over someone[cover ? ", coating them":""], using your [G.name].</span>")
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
-			var/mob/living/carbon/human/H = L
 			var/mutable_appearance/cumoverlay = mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi')
 			cumoverlay.icon_state = "cum_normal"
 			L.add_overlay(cumoverlay)
