@@ -12,6 +12,7 @@
 	growing_icon = 'code/modules/research/xenoarch/xenobotany/icons/growing.dmi'
 	icon_grow = "gelthi-stage"
 	growthstages = 3
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	reagents_add = list("gold" = 0.1)
 
