@@ -85,7 +85,7 @@
 	desc = "fine print: seasoned with nanoscale mechanochemical generators. Not only does it taste good, But also self-heats when opened"
 	icon_state = "soyfood"
 	trash = /obj/item/trash/soy_food
-	list_reagents = list("nutriment" = 4, "sugar" = 2, "vitamin" = 3)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/sugar = 2, /datum/reagent/consumable/nutriment/vitamin = 3)
 	junkiness = 0
 	filling_color = "#FFD700"
 	tastes = list("nanomachines" = 2, "soybeans" = 5)
@@ -106,7 +106,7 @@
 	desc = "A self-heating bag of hollowed charcoal noodles with a spicy soy sauce glaze. Does contain small traces of charcoal."
 	icon_state = "carbonnanotube_noodles"
 	trash = /obj/item/trash/carbonnanotube_noodles
-	list_reagents = list("nutriment" = 5, "charcoal" = 1, "vitamin" = 4)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/medicine/charcoal = 1, /datum/reagent/consumable/nutriment/vitamin = 4)
 	junkiness = 0
 	filling_color = "#FFD700"
 	tastes = list("charcoal" = 1, "spiciness" = 3, "soysauce" = 3)

@@ -305,13 +305,13 @@
 	name = "Painkiller"
 	id = "painkiller"
 	results = list("painkiller" = 10)
-	required_reagents = list("creme_de_coconut" = 5, "pineapplejuice" = 4, "orangejuice" = 1)
+	required_reagents = list(/datum/reagent/consumable/ethanol/creme_de_coconut = 5, /datum/reagent/consumable/pineapplejuice = 4, /datum/reagent/consumable/orangejuice = 1)
 
 /datum/chemical_reaction/pina_colada
 	name = "Pina Colada"
 	id = "pina_colada"
 	results = list("pina_colada" = 5)
-	required_reagents = list("creme_de_coconut" = 1, "pineapplejuice" = 2, "rum" = 1, "limejuice" = 1)
+	required_reagents = list(/datum/reagent/consumable/ethanol/creme_de_coconut = 1, /datum/reagent/consumable/pineapplejuice = 2, /datum/reagent/consumable/ethanol/rum = 1, /datum/reagent/consumable/limejuice = 1)
 
 
 ////DRINKS THAT REQUIRED IMPROVED SPRITES BELOW:: -Agouri/////
@@ -497,13 +497,13 @@
 	name = "Cherry Shake"
 	id = "cherryshake"
 	results = list("cherryshake" = 3)
-	required_reagents = list("cherryjelly" = 1, "ice" = 1, "cream" = 1)
+	required_reagents = list(/datum/reagent/consumable/cherryjelly = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/cream = 1)
 
 /datum/chemical_reaction/bluecherryshake
 	name = "Blue Cherry Shake"
 	id = "bluecherryshake"
 	results = list("bluecherryshake" = 3)
-	required_reagents = list("bluecherryjelly" = 1, "ice" = 1, "cream" = 1)
+	required_reagents = list(/datum/reagent/consumable/bluecherryjelly = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/cream = 1)
 
 /datum/chemical_reaction/drunkenblumpkin
 	name = "Drunken Blumpkin"
@@ -837,54 +837,54 @@
 
 /datum/chemical_reaction/gunfire
 	name = "Gunfire"
-	id = "gunfire"
-	results = list("gunfire" = 4)
-	required_reagents = list("rum" = 1, "tea" = 3)
+	id = /datum/reagent/consumable/ethanol/gunfire
+	results = list(/datum/reagent/consumable/ethanol/gunfire = 4)
+	required_reagents = list(/datum/reagent/consumable/ethanol/rum = 1, /datum/reagent/consumable/tea = 3)
 	mix_message = "A loud popping begins to fill the air as the drink is mixed."
 
 /datum/chemical_reaction/hellfire
 	name = "Hellfire"
-	id = "hellfire"
-	results = list("hellfire" = 4)
-	required_reagents = list("rum" = 2, "ice" = 1, "crevice_spike" = 1)
+	id = /datum/reagent/consumable/ethanol/hellfire
+	results = list(/datum/reagent/consumable/ethanol/hellfire = 4)
+	required_reagents = list(/datum/reagent/consumable/ethanol/rum = 2, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/ethanol/crevice_spike = 1)
 	mix_message = "The liquid begins to churn as it changes to an amber orange and catches on fire."
 
 /datum/chemical_reaction/sins_delight
 	name = "Sins Delight"
-	id = "sins_delight"
-	results = list("sins_delight" = 5)
-	required_reagents = list("demonsblood" = 2, "triple_sec" = 1, "martini" = 1, "changelingsting" = 1)
+	id = /datum/reagent/consumable/ethanol/sins_delight
+	results = list(/datum/reagent/consumable/ethanol/sins_delight = 5)
+	required_reagents = list(/datum/reagent/consumable/ethanol/demonsblood = 2, /datum/reagent/consumable/ethanol/triple_sec = 1, /datum/reagent/consumable/ethanol/martini = 1, /datum/reagent/consumable/ethanol/changelingsting = 1)
 	mix_message = "The liquid starts swirling, before forming a pink cloud that dissipates in the air."
 
 /datum/chemical_reaction/strawberry_daiquiri
 	name = "Strawberry Daiquiri"
-	id = "strawberry_daiquiri"
-	results = list("strawberry_daiquiri" = 7)
-	required_reagents = list("rum" = 2, "limejuice" = 1, "sugar" = 1, "strawberryjuice" = 2, "ice" = 1)
+	id = /datum/reagent/consumable/ethanol/strawberry_daiquiri
+	results = list(/datum/reagent/consumable/ethanol/strawberry_daiquiri = 7)
+	required_reagents = list(/datum/reagent/consumable/ethanol/rum = 2, /datum/reagent/consumable/limejuice = 1, /datum/reagent/consumable/sugar = 1, /datum/reagent/consumable/strawberryjuice = 2, /datum/reagent/consumable/ice = 1)
 
 /datum/chemical_reaction/miami_vice
 	name = "Miami Vice"
-	id = "miami_vice"
-	results = list("miami_vice" = 2)
-	required_reagents = list("pina_colada" = 1, "strawberry_daiquiri" = 1)
+	id = /datum/reagent/consumable/ethanol/miami_vice
+	results = list(/datum/reagent/consumable/ethanol/miami_vice = 2)
+	required_reagents = list(/datum/reagent/consumable/ethanol/pina_colada = 1, /datum/reagent/consumable/ethanol/strawberry_daiquiri = 1)
 
 /datum/chemical_reaction/malibu_sunset
 	name = "Malibu Sunset"
-	id = "malibu_sunset"
-	results = list("malibu_sunset" = 5)
-	required_reagents = list("creme_de_coconut" = 1, "pineapplejuice" = 1, "grenadine" = 1, "orangejuice" = 1, "ice" = 1)
+	id = /datum/reagent/consumable/ethanol/malibu_sunset
+	results = list(/datum/reagent/consumable/ethanol/malibu_sunset = 5)
+	required_reagents = list(/datum/reagent/consumable/ethanol/creme_de_coconut = 1, /datum/reagent/consumable/pineapplejuice = 1, /datum/reagent/consumable/grenadine = 1, /datum/reagent/consumable/orangejuice = 1, /datum/reagent/consumable/ice = 1)
 
 /datum/chemical_reaction/liz_fizz
 	name = "Liz Fizz"
-	id = "liz_fizz"
-	results = list("liz_fizz" = 5)
-	required_reagents = list("triple_citrus" = 3, "ice" = 1, "cream" = 1)
+	id = /datum/reagent/consumable/ethanol/liz_fizz
+	results = list(/datum/reagent/consumable/ethanol/liz_fizz = 5)
+	required_reagents = list(/datum/reagent/consumable/triple_citrus = 3, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/cream = 1)
 
 /datum/chemical_reaction/hotlime_miami
 	name = "Hotlime Miami"
-	id = "hotlime_miami"
-	results = list("hotlime_miami" = 2)
-	required_reagents = list("ephedrine" = 1, "pina_colada" = 1)
+	id = /datum/reagent/consumable/ethanol/hotlime_miami
+	results = list(/datum/reagent/consumable/ethanol/hotlime_miami = 2)
+	required_reagents = list(/datum/reagent/medicine/ephedrine = 1, /datum/reagent/consumable/ethanol/pina_colada = 1)
 	
 /datum/chemical_reaction/commander_and_chief
 	name = "Commander and Chief"
