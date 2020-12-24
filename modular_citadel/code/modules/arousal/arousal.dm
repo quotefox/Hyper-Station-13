@@ -357,6 +357,8 @@
 			var/mutable_appearance/cumoverlay = mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi')
 			cumoverlay.icon_state = "cum_normal"
 			L.add_overlay(cumoverlay)
+			var/mob/living/carbon/human/H = L
+			H.creamed = 1
 			if(G.can_climax)
 				setArousalLoss(min_arousal)
 
