@@ -321,7 +321,7 @@
 				setArousalLoss(min_arousal)
 
 
-/mob/living/carbon/human/proc/mob_climax_partner(obj/item/organ/genital/G, mob/living/L, spillage = TRUE, impreg = FALSE, mb_time = 30) //Used for climaxing with any living thing
+/mob/living/carbon/human/proc/mob_climax_partner(obj/item/organ/genital/G, mob/living/L, spillage = TRUE, impreg = FALSE,cover = FALSE, mb_time = 30) //Used for climaxing with any living thing
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = null
 
@@ -331,13 +331,36 @@
 		if(!G.linked_organ)
 			to_chat(src, "<span class='warning'>Your [G.name] is unable to produce it's own fluids, it's missing the organs for it.</span>")
 			return
-		fluid_source = G.linked_organ.reagents
+	fluid_source = G.linked_organ.reagents
 	total_fluids = fluid_source.total_volume
+
 	if(mb_time) //Skip warning if this is an instant climax.
 		src.visible_message("<span class='love'>[src] is about to climax with [L]!</span>", \
 							"<span class='userlove'>You're about to climax with [L]!</span>", \
 							"<span class='userlove'>You're preparing to climax with someone!</span>")
-	if(spillage)
+
+	if(cover)//covering the partner in cum, this overrides other options.
+		if(do_after(src, mb_time, target = src) && in_range(src, L))
+			fluid_source.trans_to(L, total_fluids*G.fluid_transfer_factor)
+			total_fluids -= total_fluids*G.fluid_transfer_factor
+			if(total_fluids > 80) // now thats a big cum!
+				var/mutable_appearance/cumoverlaylarge = mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi')
+				cumoverlaylarge.icon_state = "cum_large"
+				L.add_overlay(cumoverlaylarge)
+			if(total_fluids > 5)
+				fluid_source.reaction(L.loc, TOUCH, 1, 0)
+			fluid_source.clear_reagents()
+			src.visible_message("<span class='love'>[src] climaxes over [L][cover ? ", coating them":""], using [p_their()] [G.name]!</span>", \
+								"<span class='userlove'>You orgasm over [L][cover ? ", drenching them":""], using your [G.name].</span>", \
+								"<span class='userlove'>You have climaxed over someone[cover ? ", coating them":""], using your [G.name].</span>")
+			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
+			var/mutable_appearance/cumoverlay = mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi')
+			cumoverlay.icon_state = "cum_normal"
+			L.add_overlay(cumoverlay)
+			if(G.can_climax)
+				setArousalLoss(min_arousal)
+
+	if(spillage && !cover)
 		if(do_after(src, mb_time, target = src) && in_range(src, L))
 			fluid_source.trans_to(L, total_fluids*G.fluid_transfer_factor)
 			total_fluids -= total_fluids*G.fluid_transfer_factor
@@ -354,17 +377,18 @@
 				setArousalLoss(min_arousal)
 
 	else //knots and other non-spilling orgasms
-		if(do_after(src, mb_time, target = src) && in_range(src, L))
-			fluid_source.trans_to(L, total_fluids)
-			total_fluids = 0
-			src.visible_message("<span class='love'>[src] climaxes with [L], [p_their()] [G.name] spilling nothing!</span>", \
-								"<span class='userlove'>You ejaculate with [L], your [G.name] spilling nothing.</span>", \
-								"<span class='userlove'>You have climaxed inside someone, your [G.name] spilling nothing.</span>")
-			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
-			SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
+		if(!cover)
+			if(do_after(src, mb_time, target = src) && in_range(src, L))
+				fluid_source.trans_to(L, total_fluids)
+				total_fluids = 0
+				src.visible_message("<span class='love'>[src] climaxes with [L], [p_their()] [G.name] spilling nothing!</span>", \
+									"<span class='userlove'>You ejaculate with [L], your [G.name] spilling nothing.</span>", \
+									"<span class='userlove'>You have climaxed inside someone, your [G.name] spilling nothing.</span>")
+				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
+				SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 
-			if(G.can_climax)
-				setArousalLoss(min_arousal)
+				if(G.can_climax)
+					setArousalLoss(min_arousal)
 
 	//Hyper - antag code
 	if(src.mind.special_role == ROLE_LEWD_TRAITOR)
@@ -381,7 +405,7 @@
 			to_chat(L, "<span class='userlove'>You feel your hormones change, and a motherly instinct take over.</span>") //leting them know magic has happened.
 			W.pregnant = 1
 
-			var/obj/item/organ/genital/breasts/B = L.getorganslot("womb")
+			var/obj/item/organ/genital/breasts/B = L.getorganslot("breasts")
 
 			if (B.fluid_mult < 0.5 && B) //pregnancy causes mammals to produce milk faster. no point setting their fluid, lower if they are already higher.
 				B.fluid_mult = 0.5
@@ -550,7 +574,7 @@
 			return
 
 		//Ok, now we check what they want to do.
-		var/choice = input(src, "Select sexual activity", "Sexual activity:") in list("Masturbate", "Climax alone", "Climax with partner", "Fill container", "Remove condom", "Remove sounding rod")
+		var/choice = input(src, "Select sexual activity", "Sexual activity:") in list("Masturbate", "Climax alone", "Climax with partner","Climax over partner", "Fill container", "Remove condom", "Remove sounding rod")
 
 		switch(choice)
 			if("Remove sounding rod")
@@ -650,23 +674,23 @@
 							if(impreg == "Yes") //If we are impregging
 								var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as anything in list("Yes", "No")
 								if(spillage == "Yes")
-									mob_climax_partner(picked_organ, partner, TRUE, TRUE)
+									mob_climax_partner(picked_organ, partner, TRUE, TRUE, FALSE)
 								else
-									mob_climax_partner(picked_organ, partner, FALSE, TRUE)
+									mob_climax_partner(picked_organ, partner, FALSE, TRUE, FALSE)
 							else
 								var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as anything in list("Yes", "No")
 								if(spillage == "Yes")
-									mob_climax_partner(picked_organ, partner, TRUE, FALSE)
+									mob_climax_partner(picked_organ, partner, TRUE, FALSE, FALSE)
 								else
-									mob_climax_partner(picked_organ, partner, FALSE, FALSE) //Wow, im trash at coding, I need to find a better way of coding this, ill rewrite it later.-quote
+									mob_climax_partner(picked_organ, partner, FALSE, FALSE, FALSE) //Wow, im trash at coding, I need to find a better way of coding this, ill rewrite it later.-quote
 								return
 
 						else //If we arent impregging
 							var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as anything in list("Yes", "No")
 							if(spillage == "Yes")
-								mob_climax_partner(picked_organ, partner, TRUE, FALSE)
+								mob_climax_partner(picked_organ, partner, TRUE, FALSE, FALSE)
 							else
-								mob_climax_partner(picked_organ, partner, FALSE, FALSE)
+								mob_climax_partner(picked_organ, partner, FALSE, FALSE, FALSE)
 							return
 
 					else
@@ -675,6 +699,15 @@
 				else //They either lack organs that can masturbate, or they didn't pick one.
 					to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 					return
+			if("Climax over partner")
+				var/obj/item/organ/genital/picked_organ
+				picked_organ = pick_climax_genitals()
+				if(picked_organ)
+					var/mob/living/partner = pick_partner() //Get someone
+					if(partner)
+						mob_climax_partner(picked_organ, partner, FALSE, FALSE, TRUE)
+					else
+						to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
 
 			if("Fill container")
 				//We'll need hands and no restraints.
