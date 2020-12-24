@@ -44,7 +44,7 @@
 	plantname = "Parsnip"
 	product = /obj/item/reagent_containers/food/snacks/grown/parsnip
 	icon_dead = "carrot-dead"
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.05, /datum/reagent/consumable/nutriment = 0.05)
 
 /obj/item/reagent_containers/food/snacks/grown/parsnip
@@ -97,6 +97,7 @@
 	yield = 6
 	growing_icon = 'icons/obj/hydroponics/growing_vegetables.dmi'
 	icon_dead = "whitebeet-dead"
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	genes = list(/datum/plant_gene/trait/maxchem)
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.05, /datum/reagent/consumable/nutriment = 0.05)
 

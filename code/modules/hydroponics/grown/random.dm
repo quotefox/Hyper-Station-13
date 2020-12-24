@@ -11,6 +11,7 @@
 	icon_dead = "xpod-dead"
 	icon_harvest = "xpod-harvest"
 	growthstages = 4
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/seeds/random/Initialize()
 	. = ..()

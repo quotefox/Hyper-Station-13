@@ -69,7 +69,7 @@
 	plantname = "Mimana Tree"
 	product = /obj/item/reagent_containers/food/snacks/grown/banana/mime
 	growthstages = 4
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/consumable/nothing = 0.1, /datum/reagent/toxin/mutetoxin = 0.1, /datum/reagent/consumable/nutriment = 0.02)
 	rarity = 15
 
@@ -98,7 +98,7 @@
 	icon_grow = "banana-grow"
 	plantname = "Bluespace Banana Tree"
 	product = /obj/item/reagent_containers/food/snacks/grown/banana/bluespace
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	genes = list(/datum/plant_gene/trait/slip, /datum/plant_gene/trait/teleport, /datum/plant_gene/trait/repeated_harvest)
 	reagents_add = list(/datum/reagent/bluespace = 0.2, /datum/reagent/consumable/banana = 0.1, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.02)
 	rarity = 30

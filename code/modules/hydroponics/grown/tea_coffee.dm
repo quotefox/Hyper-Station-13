@@ -13,7 +13,7 @@
 	growthstages = 5
 	icon_dead = "tea-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	mutatelist = list(/obj/item/seeds/tea/astra)
+	mutatelist = list(/obj/item/seeds/tea/astra, /obj/item/seeds/tea/catnip)
 	reagents_add = list(/datum/reagent/toxin/teapowder = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/tea
@@ -33,7 +33,7 @@
 	species = "teaastra"
 	plantname = "Tea Astra Plant"
 	product = /obj/item/reagent_containers/food/snacks/grown/tea/astra
-	mutatelist = list(/obj/item/seeds/tea/catnip)
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/medicine/synaptizine = 0.1, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/toxin/teapowder = 0.1)
 	rarity = 20
 
@@ -52,6 +52,7 @@
 	desc = "Long stocks with flowering tips that has a chemical to make feline attracted to it."
 	species = "catnip"
 	plantname = "Catnip Plant"
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	product = /obj/item/reagent_containers/food/snacks/grown/tea/catnip
 	reagents_add = list(/datum/reagent/pax/catnip = 0.1, /datum/reagent/consumable/nutriment/vitamin = 0.06, /datum/reagent/toxin/teapowder = 0.3)
 	rarity = 50
@@ -101,7 +102,7 @@
 	species = "coffeer"
 	plantname = "Coffee Robusta Bush"
 	product = /obj/item/reagent_containers/food/snacks/grown/coffee/robusta
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/medicine/ephedrine = 0.1, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/toxin/coffeepowder = 0.1)
 	rarity = 20
 

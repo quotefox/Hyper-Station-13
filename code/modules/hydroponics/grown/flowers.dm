@@ -67,15 +67,10 @@
 	growing_icon = 'icons/obj/hydroponics/growing_flowers.dmi'
 	icon_grow = "spacemanstrumpet-grow"
 	icon_dead = "spacemanstrumpet-dead"
-	mutatelist = list()
-	genes = list(/datum/plant_gene/reagent/polypyr)
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
+	genes = list(/datum/plant_gene/reagent/unextractable/polypyr)
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.05)
 	rarity = 30
-
-/obj/item/seeds/poppy/lily/trumpet/Initialize(mapload, nogenes = FALSE)
-	. = ..()
-	if(!nogenes)
-		unset_mutability(/datum/plant_gene/reagent/polypyr, PLANT_GENE_EXTRACTABLE)
 
 /obj/item/reagent_containers/food/snacks/grown/trumpet
 	seed = /obj/item/seeds/poppy/lily/trumpet
@@ -94,7 +89,7 @@
 	species = "geranium"
 	plantname = "Geranium Plants"
 	product = /obj/item/reagent_containers/food/snacks/grown/poppy/geranium
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/reagent_containers/food/snacks/grown/poppy/geranium
 	seed = /obj/item/seeds/poppy/geranium
@@ -122,6 +117,7 @@
 	genes = list(/datum/plant_gene/trait/plant_type/weed_hardy)
 	growing_icon = 'icons/obj/hydroponics/growing_flowers.dmi'
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.04)
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/reagent_containers/food/snacks/grown/harebell
 	seed = /obj/item/seeds/harebell
@@ -185,7 +181,7 @@
 	icon_dead = "sunflower-dead"
 	product = /obj/item/reagent_containers/food/snacks/grown/moonflower
 	genes = list(/datum/plant_gene/trait/glow/purple)
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/consumable/ethanol/moonshine = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.02, /datum/reagent/consumable/nutriment = 0.02)
 	rarity = 15
 
@@ -210,7 +206,7 @@
 	icon_grow = "novaflower-grow"
 	icon_dead = "sunflower-dead"
 	product = /obj/item/grown/novaflower
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/consumable/condensedcapsaicin = 0.25, /datum/reagent/consumable/capsaicin = 0.3, /datum/reagent/consumable/nutriment = 0)
 	rarity = 20
 

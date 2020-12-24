@@ -9,6 +9,7 @@
 	growthstages = 4
 	growing_icon = 'icons/obj/hydroponics/growing_vegetables.dmi'
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.02, /datum/reagent/consumable/nutriment = 0.15, /datum/reagent/consumable/cooking_oil = 0.03)
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/reagent_containers/food/snacks/grown/peanut
 	seed = /obj/item/seeds/peanutseed

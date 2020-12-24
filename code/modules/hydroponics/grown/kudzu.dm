@@ -7,6 +7,7 @@
 	species = "kudzu"
 	plantname = "Kudzu"
 	product = /obj/item/reagent_containers/food/snacks/grown/kudzupod
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/plant_type/weed_hardy)
 	lifespan = 20
 	endurance = 10

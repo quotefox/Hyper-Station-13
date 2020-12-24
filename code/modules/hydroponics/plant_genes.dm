@@ -109,7 +109,7 @@
 // Reagent genes store reagent ID and reagent ratio. Amount of reagent in the plant = 1 + (potency * rate)
 /datum/plant_gene/reagent
 	name = "Nutriment"
-	var/reagent_id = "nutriment"
+	var/reagent_id = /datum/reagent/consumable/nutriment
 	var/rate = 0.04
 
 /datum/plant_gene/reagent/get_name()
@@ -125,12 +125,13 @@
 	return formatted_name
 
 /datum/plant_gene/reagent/proc/set_reagent(reag_id)
-	reagent_id = reag_id
 	name = "UNKNOWN"
-
 	var/datum/reagent/R = GLOB.chemical_reagents_list[reag_id]
-	if(R && R.type == reagent_id)
+
+	if (R && istype(R, /datum/reagent))	//sanity check
 		name = R.name
+		reagent_id = reag_id
+
 
 /datum/plant_gene/reagent/New(reag_id = null, reag_rate = 0)
 	..()
@@ -153,15 +154,38 @@
 			return FALSE
 	return TRUE
 
-/datum/plant_gene/reagent/polypyr
+/datum/plant_gene/reagent/unextractable
+	name = "Unextractable Gene"
+	reagent_id = /datum/reagent/consumable/nutriment/vitamin
+	rate = 0.01
+	mutability_flags = PLANT_GENE_REMOVABLE		//This gene can be removed, but it cannot be extracted into a disk
+
+/datum/plant_gene/reagent/unextractable/polypyr
 	name = "Polypyrylium Oligomers"
-	reagent_id = "polypyr"
+	reagent_id = /datum/reagent/medicine/polypyr
 	rate = 0.15
 
-/datum/plant_gene/reagent/teslium
+/datum/plant_gene/reagent/unextractable/teslium
 	name = "Teslium"
-	reagent_id = "teslium"
+	reagent_id = /datum/reagent/teslium
 	rate = 0.1
+
+
+//Lewd chems
+/datum/plant_gene/reagent/unextractable/incubus
+	name = "Incubus Draft"
+	reagent_id = /datum/reagent/fermi/penis_enlarger
+	rate = 0.04		//Changed from 8% to 4%, because the most growns you can get per harvest is 20, even 4% seems like a lot
+
+/datum/plant_gene/reagent/unextractable/succubus
+	name = "Succubus Milk"
+	reagent_id = /datum/reagent/fermi/breast_enlarger
+	rate = 0.04		//Same with this. Not making it 5% because 100 potency will equate this to 5 units of succubus, instead of 4
+
+/datum/plant_gene/reagent/unextractable/aphro
+	name = "Crocin"
+	reagent_id = /datum/reagent/drug/aphrodisiac
+	rate = 0.2
 
 // Various traits affecting the product.
 /datum/plant_gene/trait

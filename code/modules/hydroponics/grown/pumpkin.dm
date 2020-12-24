@@ -44,7 +44,7 @@
 	species = "blumpkin"
 	plantname = "Blumpkin Vines"
 	product = /obj/item/reagent_containers/food/snacks/grown/blumpkin
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/ammonia = 0.2, /datum/reagent/chlorine = 0.1, /datum/reagent/consumable/nutriment = 0.2)
 	rarity = 20
 

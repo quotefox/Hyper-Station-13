@@ -78,6 +78,7 @@
 	icon_dead = "lime-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.05, /datum/reagent/medicine/haloperidol = 0.15)
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/reagent_containers/food/snacks/grown/citrus/orange_3d
 	seed = /obj/item/seeds/orange
@@ -113,6 +114,7 @@
 	icon_dead = "lime-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.05)
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/reagent_containers/food/snacks/grown/citrus/lemon
 	seed = /obj/item/seeds/lemon
@@ -138,6 +140,7 @@
 	endurance = 45
 	yield = 4
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.05)
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/reagent_containers/food/snacks/grown/firelemon
 	seed = /obj/item/seeds/firelemon

@@ -13,6 +13,7 @@
 	production = 1
 	yield = 1 //seeds if there isn't a dna inside
 	potency = 30
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	var/volume = 5
 	var/ckey = null
 	var/realName = null

@@ -24,6 +24,7 @@
 	var/potency = 10				// The 'power' of a plant. Generally effects the amount of reagent in a plant, also used in other ways.
 	var/growthstages = 6			// Amount of growth sprites the plant has.
 	var/rarity = 0					// How rare the plant is. Used for giving points to cargo when shipping off to CentCom.
+	var/mutate_factor = PLANT_MUTATE_GENERIC	//How we handle getting mutated, in case we want to do extra stuff when mutating into a species
 	var/list/mutatelist = list()	// The type of plants that this plant can mutate into.
 	var/list/genes = list()			// Plant genes are stored here, see plant_genes.dm for more info.
 	var/list/forbiddengenes = list()			// Plant genes that the seed may be forbidden from having.
@@ -122,6 +123,9 @@ obj/item/seeds/proc/is_gene_forbidden(typepath)
 	adjust_weed_chance(rand(-wcmut, wcmut))
 	if(prob(traitmut))
 		add_random_traits(1, 1)
+
+/obj/item/seeds/proc/mutatespecie()		//This is to handle what the seed does just before mutating
+	return mutate_factor
 
 
 

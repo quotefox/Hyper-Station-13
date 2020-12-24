@@ -390,18 +390,43 @@
 	mutate(4, 10, 2, 4, 50, 4, 10, 3)
 
 
-/obj/machinery/hydroponics/proc/mutatespecie() // Mutagent produced a new plant!
+/obj/machinery/hydroponics/proc/mutatespecie() // Mutagen produced a new plant!
 	if(!myseed || dead)
 		return
 
+
 	var/oldPlantName = myseed.plantname
-	if(myseed.mutatelist.len > 0)
-		var/mutantseed = pick(myseed.mutatelist)
-		qdel(myseed)
-		myseed = null
-		myseed = new mutantseed
-	else
-		return
+
+	switch(myseed.mutatespecie())
+		if (PLANT_MUTATE_CANNOTMUTATE)
+			return
+
+		if (PLANT_MUTATE_GENERIC)
+			if(myseed.mutatelist.len > 0)
+				var/mutantseed = pick(myseed.mutatelist)
+				qdel(myseed)
+				myseed = null
+				myseed = new mutantseed
+				myseed.plantname = oldPlantName
+			else
+				return
+
+		if (PLANT_MUTATE_NOCONTINUE)
+			if(myseed.mutatelist.len > 0)
+				var/mutantseed = pick(myseed.mutatelist)
+				qdel(myseed)
+				myseed = null
+				myseed = new mutantseed
+				myseed.plantname = oldPlantName
+			return
+
+		if (PLANT_MUTATE_CUSTOM)
+			var/mutantseed = pick(myseed.mutatelist)
+			qdel(myseed)
+			myseed = null
+			myseed = new mutantseed
+			myseed.plantname = oldPlantName
+
 
 	hardmutate()
 	age = 0
@@ -410,8 +435,9 @@
 	harvest = 0
 	weedlevel = 0 // Reset
 
-	sleep(5) // Wait a while
+	sleep(5) // Wait a bit
 	update_icon()
+	myseed.plantname = initial(myseed.plantname)
 	visible_message("<span class='warning'>[oldPlantName] suddenly mutates into [myseed.plantname]!</span>")
 
 

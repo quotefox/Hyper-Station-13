@@ -4,6 +4,7 @@
 	potency = -1
 	yield = -1
 	var/sample_color = "#FFFFFF"
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/seeds/sample/Initialize()
 	. = ..()

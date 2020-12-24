@@ -35,7 +35,7 @@
 	product = /obj/item/reagent_containers/food/snacks/grown/shell/eggy
 	lifespan = 75
 	production = 12
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/shell/eggy

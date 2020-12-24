@@ -10,6 +10,7 @@
 	growthstages = 3
 	growing_icon = 'icons/obj/hydroponics/growing_vegetables.dmi'
 	reagents_add = list("garlic" = 0.15, "nutriment" = 0.1)
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/reagent_containers/food/snacks/grown/garlic
 	seed = /obj/item/seeds/garlic

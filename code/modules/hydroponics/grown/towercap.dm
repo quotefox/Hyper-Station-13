@@ -24,7 +24,7 @@
 	species = "steelcap"
 	plantname = "Steel Caps"
 	product = /obj/item/grown/log/steel
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	rarity = 20
 
 
@@ -115,6 +115,7 @@
 	growing_icon = 'icons/obj/hydroponics/growing.dmi'
 	icon_dead = "bamboo-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/grown/log/bamboo
 	seed = /obj/item/seeds/bamboo
@@ -163,7 +164,7 @@
 /obj/structure/bonfire/prelit/Initialize()
 	. = ..()
 	StartBurning()
-	
+
 /obj/structure/bonfire/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSTABLE))
 		return TRUE

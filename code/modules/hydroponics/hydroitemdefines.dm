@@ -1,3 +1,14 @@
+//These defines are for seed's mutatespecie() proc for custom stuff that happens when the seed mutates
+//Originally made for making milky melons a bit more rare to get, since holy melons could be more desired in high chaos rounds
+
+#define PLANT_MUTATE_CANNOTMUTATE	-1	//We cannot mutate into anything else, don't do anything
+#define PLANT_MUTATE_GENERIC		1	//We *can* mutate, take the default mutation list and set tray variables
+
+#define PLANT_MUTATE_NOCONTINUE		2	//We mutated, but don't do anything to the plant tray
+#define PLANT_MUTATE_CUSTOM			3	//We've mutated, but custom stuff has happened, and we continue with the default things
+//I also wanted to put these in a different file but byond just hated me doing that so I put these here
+
+
 // Plant analyzer
 /obj/item/plant_analyzer
 	name = "plant analyzer"

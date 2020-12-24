@@ -50,6 +50,7 @@
 	product = /obj/item/reagent_containers/food/snacks/grown/grass/fairy
 	icon_grow = "fairygrass-grow"
 	icon_dead = "fairygrass-dead"
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/glow/blue)
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.02, /datum/reagent/hydrogen = 0.05, /datum/reagent/drug/space_drugs = 0.15)
 
@@ -69,7 +70,7 @@
 	species = "carpet"
 	plantname = "Carpet"
 	product = /obj/item/reagent_containers/food/snacks/grown/grass/carpet
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	rarity = 10
 
 /obj/item/reagent_containers/food/snacks/grown/grass/carpet

@@ -64,7 +64,7 @@
 	product = /obj/item/reagent_containers/food/snacks/grown/berries/death
 	lifespan = 30
 	potency = 50
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/toxin/coniine = 0.08, /datum/reagent/toxin/staminatoxin = 0.1, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
 	rarity = 30
 
@@ -89,7 +89,7 @@
 	product = /obj/item/reagent_containers/food/snacks/grown/berries/glow
 	lifespan = 30
 	endurance = 25
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	genes = list(/datum/plant_gene/trait/glow/white, /datum/plant_gene/trait/noreact, /datum/plant_gene/trait/repeated_harvest)
 	reagents_add = list(/datum/reagent/uranium = 0.25, /datum/reagent/iodine = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
 	rarity = 20
@@ -147,7 +147,7 @@
 	species = "bluecherry"
 	plantname = "Blue Cherry Tree"
 	product = /obj/item/reagent_containers/food/snacks/grown/bluecherries
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.07, /datum/reagent/consumable/sugar = 0.07)
 	rarity = 10
 
@@ -172,7 +172,7 @@
 	plantname = "Cherry Bulb Tree"
 	product = /obj/item/reagent_containers/food/snacks/grown/cherrybulbs
 	genes = list(/datum/plant_gene/trait/repeated_harvest, /datum/plant_gene/trait/glow/pink)
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.07, /datum/reagent/consumable/sugar = 0.07)
 	rarity = 10
 
@@ -232,7 +232,7 @@
 	product = /obj/item/reagent_containers/food/snacks/grown/grapes/green
 	reagents_add = list(/datum/reagent/medicine/kelotane = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1, /datum/reagent/consumable/sugar = 0.1)
 	// No rarity: technically it's a beneficial mutant, but it's not exactly "new"...
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/reagent_containers/food/snacks/grown/grapes/green
 	seed = /obj/item/seeds/grape/green
@@ -255,7 +255,7 @@
 	icon_grow = "strawberry-grow"
 	icon_dead = "berry-dead"
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.07, /datum/reagent/consumable/nutriment = 0.1, /datum/reagent/consumable/sugar = 0.2)
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/reagent_containers/food/snacks/grown/strawberry
 	seed = /obj/item/seeds/strawberry

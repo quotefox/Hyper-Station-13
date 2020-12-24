@@ -1433,7 +1433,7 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 	overdose_threshold = 50
 	taste_description = "numbing bitterness"
 
-/datum/reagent/medicine/polypyr/on_mob_life(mob/living/carbon/M) //I w?nted a collection of small positive effects, this is as hard to obtain as coniine after all.
+/datum/reagent/medicine/polypyr/on_mob_life(mob/living/carbon/M) //I wanted a collection of small positive effects, this is as hard to obtain as coniine after all.
 	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, -0.25)
 	M.adjustBruteLoss(-0.35, 0)
 	if(prob(50))

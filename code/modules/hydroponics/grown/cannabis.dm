@@ -27,7 +27,7 @@
 	species = "megacannabis"
 	plantname = "Rainbow Weed"
 	product = /obj/item/reagent_containers/food/snacks/grown/cannabis/rainbow
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/toxin/mindbreaker = 0.15, /datum/reagent/toxin/lipolicide = 0.35)
 	rarity = 40
 
@@ -38,7 +38,7 @@
 	species = "blackcannabis"
 	plantname = "Deathweed"
 	product = /obj/item/reagent_containers/food/snacks/grown/cannabis/death
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/toxin/cyanide = 0.35, /datum/reagent/drug/space_drugs = 0.15, /datum/reagent/toxin/lipolicide = 0.15)
 	rarity = 40
 
@@ -49,7 +49,7 @@
 	species = "whitecannabis"
 	plantname = "Lifeweed"
 	product = /obj/item/reagent_containers/food/snacks/grown/cannabis/white
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/medicine/omnizine = 0.35, /datum/reagent/drug/space_drugs = 0.15, /datum/reagent/toxin/lipolicide = 0.15)
 	rarity = 40
 
@@ -61,7 +61,7 @@
 	species = "ocannabis"
 	plantname = "Omega Weed"
 	product = /obj/item/reagent_containers/food/snacks/grown/cannabis/ultimate
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/drug/space_drugs = 0.3,
 						/datum/reagent/toxin/mindbreaker = 0.3,
 						/datum/reagent/mercury = 0.15,

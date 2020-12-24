@@ -19,6 +19,7 @@
 	yield = 4
 	potency = 15
 	growthstages = 4
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list(/datum/reagent/medicine/morphine = 0.35, /datum/reagent/medicine/charcoal = 0.35, /datum/reagent/consumable/nutriment = 0)
@@ -71,6 +72,7 @@
 	yield = 2
 	potency = 35
 	growthstages = 3
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list(/datum/reagent/drug/mushroomhallucinogen = 0.04, /datum/reagent/toxin/amatoxin = 0.1, /datum/reagent/consumable/nutriment = 0, /datum/reagent/toxin/amanitin = 0.2)
@@ -97,6 +99,7 @@
 	yield = 5
 	potency = 15
 	growthstages = 3
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list(/datum/reagent/drug/mushroomhallucinogen = 0.25, /datum/reagent/consumable/nutriment = 0.02)
@@ -148,7 +151,7 @@
 	maturation = 5
 	yield = 1
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.05, /datum/reagent/consumable/nutriment = 0.15)
 	rarity = 30
 
@@ -212,14 +215,14 @@
 	endurance = 8
 	yield = 4
 	growthstages = 2
-	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/reagent/teslium, /datum/plant_gene/trait/plant_type/carnivory)
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
+	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/reagent/unextractable/teslium, /datum/plant_gene/trait/plant_type/carnivory)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
 
 /obj/item/seeds/chanterelle/jupitercup/Initialize(mapload, nogenes = FALSE)
 	. = ..()
 	if(!nogenes)
-		unset_mutability(/datum/plant_gene/reagent/teslium, PLANT_GENE_EXTRACTABLE)
 		unset_mutability(/datum/plant_gene/trait/plant_type/carnivory, PLANT_GENE_REMOVABLE)
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/jupitercup
@@ -292,7 +295,7 @@
 	plantname = "Glowcaps"
 	product = /obj/item/reagent_containers/food/snacks/grown/mushroom/glowshroom/glowcap
 	genes = list(/datum/plant_gene/trait/glow/red, /datum/plant_gene/trait/cell_charge, /datum/plant_gene/trait/plant_type/fungal_metabolism)
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/teslium = 0.1, /datum/reagent/consumable/nutriment = 0.04)
 	rarity = 30
 
@@ -317,7 +320,7 @@
 	plantname = "Shadowshrooms"
 	product = /obj/item/reagent_containers/food/snacks/grown/mushroom/glowshroom/shadowshroom
 	genes = list(/datum/plant_gene/trait/glow/shadow, /datum/plant_gene/trait/plant_type/fungal_metabolism)
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	reagents_add = list(/datum/reagent/radium = 0.2, /datum/reagent/consumable/nutriment = 0.04)
 	rarity = 30
 
@@ -352,6 +355,7 @@
 	rarity = 20
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
 	resistance_flags = FIRE_PROOF
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/seeds/lavaland/polypore
 	name = "pack of polypore mycelium"

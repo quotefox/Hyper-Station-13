@@ -34,7 +34,7 @@
 	species = "oat"
 	plantname = "Oat Stalks"
 	product = /obj/item/reagent_containers/food/snacks/grown/oat
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/reagent_containers/food/snacks/grown/oat
 	seed = /obj/item/seeds/wheat/oat
@@ -57,7 +57,7 @@
 	species = "rice"
 	plantname = "Rice Stalks"
 	product = /obj/item/reagent_containers/food/snacks/grown/rice
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 	growthstages = 3
 
 /obj/item/reagent_containers/food/snacks/grown/rice
@@ -81,7 +81,7 @@
 	species = "meatwheat"
 	plantname = "Meatwheat"
 	product = /obj/item/reagent_containers/food/snacks/grown/meatwheat
-	mutatelist = list()
+	mutate_factor = PLANT_MUTATE_CANNOTMUTATE
 
 /obj/item/reagent_containers/food/snacks/grown/meatwheat
 	name = "meatwheat"
