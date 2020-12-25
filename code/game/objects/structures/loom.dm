@@ -37,6 +37,7 @@
 				if(I.use_tool(src, user, 60))
 					playsound(src.loc, 'sound/items/deconstruct.ogg', 50, TRUE)
 					deconstruct(TRUE)
+				return
 			if (TOOL_WRENCH)
 				if (anchored)
 					to_chat(user, "<span class='notice'>You unsecure the [src].</span>")
@@ -46,6 +47,8 @@
 					to_chat(user, "<span class='notice'>You secure the [src].</span>")
 					I.play_tool_sound(src)
 					anchored = TRUE
+				return
+	return ..()
 
 /obj/structure/loom/deconstruct(disassembled = TRUE)
 	new /obj/item/stack/sheet/mineral/wood (get_turf(src), 10)
