@@ -11,7 +11,7 @@
 	growing_icon = 'icons/obj/hydroponics/growing_fruits.dmi'
 	icon_dead = "watermelon-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	mutate_factor = PLANT_MUTATE_CUSTOM	//Custom to make lewd melon more rare in case of more "serious" scenarios, see mutatespecie()
+	mutatelist = list(/obj/item/seeds/watermelon/holy)
 	reagents_add = list(/datum/reagent/water = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.2)
 
 /obj/item/seeds/watermelon/suicide_act(mob/user)
@@ -21,6 +21,7 @@
 	qdel(src)
 	return MANUAL_SUICIDE
 
+/*	//Add this when someone decides lewd plants are fit enough to add again
 /obj/item/seeds/watermelon/mutatespecie()
 	. = ..()
 	if (src != /obj/item/seeds/watermelon && . != PLANT_MUTATE_CUSTOM)
@@ -30,6 +31,7 @@
 		mutatelist = /obj/item/seeds/watermelon/holy
 	else
 		mutatelist = /obj/item/seeds/watermelon/milk
+*/
 
 /obj/item/reagent_containers/food/snacks/grown/watermelon
 	seed = /obj/item/seeds/watermelon
