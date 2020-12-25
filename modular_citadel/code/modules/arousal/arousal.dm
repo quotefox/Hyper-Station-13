@@ -481,6 +481,21 @@
 		return ret_organ
 	return null //error stuff
 
+/mob/living/carbon/human/proc/pick_partner_overide() //used for cumming on people without genitals exposed
+	var/list/partners = list()
+	if(src.pulling)
+		partners += src.pulling //Yes, even objects for now
+	if(src.pulledby)
+		partners += src.pulledby
+	//Now we got both of them, let's check if they're proper
+	for(var/I in partners)
+		if(isliving(I))
+		else
+			partners -= I //No fucking objects
+	//NOW the list should only contain correct partners
+	if(!partners.len)
+		return null //No one left.
+	return input(src, "With whom?", "Sexual partner", null) in partners //pick one, default to null
 
 /mob/living/carbon/human/proc/pick_partner()
 	var/list/partners = list()
@@ -705,7 +720,7 @@
 				var/obj/item/organ/genital/picked_organ
 				picked_organ = pick_climax_genitals()
 				if(picked_organ)
-					var/mob/living/partner = pick_partner() //Get someone
+					var/mob/living/partner = pick_partner_overide() //Get your partner, clothed or not.
 					if(partner)
 						mob_climax_partner(picked_organ, partner, FALSE, FALSE, TRUE)
 					else
