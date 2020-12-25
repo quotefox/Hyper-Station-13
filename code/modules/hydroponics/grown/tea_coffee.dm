@@ -48,7 +48,7 @@
 // Kitty drugs
 /obj/item/seeds/tea/catnip
 	name = "pack of catnip seeds"
-	icon_state = "seed-catnip"
+	//icon_state = "seed-catnip"	//Currently has no icon, so for now just use the default tea icons until it gets sprited, or until I can find a sprite
 	desc = "Long stocks with flowering tips that has a chemical to make feline attracted to it."
 	species = "catnip"
 	plantname = "Catnip Plant"
