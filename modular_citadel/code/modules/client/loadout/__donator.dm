@@ -80,3 +80,16 @@
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/dice/d20/blue
 	ckeywhitelist = list("jackattack41498")
+
+/datum/gear/demoncat
+	name = "Inconspicuous winter coat"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/suit/hooded/wintercoat/death
+	ckeywhitelist = list("demoncat")
+
+/datum/gear/natak
+	name = "Heat-B-Gone Pills"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/storage/pill_bottle/heat
+	ckeywhitelist = list("natak")
+
