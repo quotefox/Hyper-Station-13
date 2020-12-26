@@ -15,7 +15,7 @@
 	grind_results = list(/datum/reagent/mustardgrind = 1)
 	growing_icon = 'icons/obj/hydroponics/growing_flowers.dmi'
 	genes = list(/datum/plant_gene/trait/plant_type/weed_hardy)
-	mutatelist = list()//add /obj/item/seeds/starthistle/corpse_flower when corpse flowers work.
+	mutatelist = list(/obj/item/seeds/starthistle/corpse_flower, /obj/item/seeds/galaxythistle)
 
 /obj/item/seeds/starthistle/harvest(mob/user)
 	var/obj/machinery/hydroponics/parent = loc
@@ -28,7 +28,7 @@
 			harvestseeds.forceMove(output_loc)
 
 	parent.update_tray()
-/*
+
 // Corpse flower
 /obj/item/seeds/starthistle/corpse_flower
 	name = "pack of corpse flower seeds"
@@ -49,7 +49,7 @@
 
 /obj/item/seeds/starthistle/corpse_flower/process()
 	var/obj/machinery/hydroponics/parent = loc
-	if(parent.age < maturation) // Start a little before it blooms
+	if(parent.age < maturation || parent.dead) // Start a little before it blooms
 		return
 
 	var/turf/open/T = get_turf(parent)
@@ -57,13 +57,13 @@
 		return
 
 	var/datum/gas_mixture/stank = new
-	ADD_GAS(/datum/gas/miasma, stank.gases)
-	stank.gases[/datum/gas/miasma][MOLES] = (yield + 6)*7*MIASMA_CORPSE_MOLES // this process is only being called about 2/7 as much as corpses so this is 12-32 times a corpses
+	var/list/cached_gases = stank.gases
+
+	cached_gases[/datum/gas/miasma] += (yield + 5)*7*MIASMA_CORPSE_MOLES // this process is only being called about 2/7 as much as corpses so this is 12-32 times a corpses
 	stank.temperature = T20C // without this the room would eventually freeze and miasma mining would be easier
 	T.assume_air(stank)
 	T.air_update_turf()
-*/
-//commented out until it can be fixed.
+
 //Galaxy Thistle
 /obj/item/seeds/galaxythistle
 	name = "pack of galaxythistle seeds"
@@ -81,7 +81,7 @@
 	growthstages = 3
 	growing_icon = 'icons/obj/hydroponics/growing_flowers.dmi'
 	genes = list(/datum/plant_gene/trait/plant_type/weed_hardy, /datum/plant_gene/trait/invasive)
-	mutatelist = list()
+	mutatelist = list(/obj/item/seeds/starthistle)
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.05, /datum/reagent/medicine/silibinin = 0.1)
 
 /obj/item/seeds/galaxythistle/Initialize(mapload, nogenes = FALSE)
@@ -430,7 +430,7 @@
 
 	if(user.a_intent == INTENT_HARM && spillable)
 		var/R
-		M.visible_message("<span class='danger'>[user] splashes the contents of [src] onto [M]!</span>", \
+		M.visible_message("<span class='danger'>[user] splashes the contents of [src] onto [M]!</span>",
 						"<span class='userdanger'>[user] splashes the contents of [src] onto [M]!</span>")
 		if(reagents)
 			for(var/datum/reagent/A in reagents.reagent_list)
@@ -444,7 +444,7 @@
 		reagents.clear_reagents()
 	else
 		if(M != user)
-			M.visible_message("<span class='danger'>[user] attempts to feed something to [M].</span>", \
+			M.visible_message("<span class='danger'>[user] attempts to feed something to [M].</span>",
 						"<span class='userdanger'>[user] attempts to feed something to you.</span>")
 			if(!do_mob(user, M))
 				return
@@ -454,7 +454,7 @@
 			log_combat(user, M, "fed", reagents.log_list())
 		else
 			if(M != user)
-				M.visible_message("<span class='danger'>[user] attempts to feed something to [M].</span>", \
+				M.visible_message("<span class='danger'>[user] attempts to feed something to [M].</span>",
 							"<span class='userdanger'>[user] attempts to feed something to you.</span>")
 				if(!do_mob(user, M))
 					return
