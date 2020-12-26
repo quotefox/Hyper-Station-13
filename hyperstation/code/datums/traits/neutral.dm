@@ -22,8 +22,8 @@
 	desc = "You have a animalistic sense of detecting if someone is in heat, and can get pregnant."
 	value = 0
 	mob_trait = TRAIT_HEAT_DETECT
-	gain_text = "<span class='notice'>You feel your senses adjust, allowing a animalistic sense of other mammals fertility.</span>"
-	lose_text = "<span class='notice'>You feel your sense of other mammals fertility fade.</span>"
+	gain_text = "<span class='notice'>You feel your senses adjust, allowing a animalistic sense of other's fertility.</span>"
+	lose_text = "<span class='notice'>You feel your sense of other's fertility fade.</span>"
 
 
 /datum/quirk/inheat
