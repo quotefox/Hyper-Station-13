@@ -135,3 +135,11 @@
 	mob_trait = TRAIT_HEADPAT_SLUT
 	value = 0
 	medical_record_text = "Patient seems overly affectionate"
+
+//Port from Shadow
+/datum/quirk/donotclone
+	name = "DNC"
+	desc = "You have filed a Do Not Clone order, stating that you do not wish to be cloned. You can still be revived by other means."
+	value = 0
+	mob_trait = TRAIT_NEVER_CLONE
+	medical_record_text = "Patient has a DNC (Do not clone) order on file, and cannot be cloned as a result."
