@@ -1,7 +1,7 @@
 //body bluids
 /datum/reagent/consumable/semen
 	name = "Semen"
-	description = "Sperm from some animal. I bet you'll drink this out of a bucket someday."
+	description = "Sperm from some animal. Useless for anything but insemination, really."
 	taste_description = "something salty"
 	taste_mult = 2 //Not very overpowering flavor
 	data = list("donor"=null,"viruses"=null,"donor_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null)
