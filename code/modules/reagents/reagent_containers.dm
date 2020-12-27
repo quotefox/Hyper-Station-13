@@ -85,7 +85,7 @@
 /obj/item/reagent_containers/proc/bartender_check(atom/target)
 	. = FALSE
 	var/turf/T = get_turf(src)
-	if(!T || !thrownby || !thrownby.actions) //|| target.CanPass(src, T) || !thrownby || !thrownby.actions)
+	if(!T || !thrownby || !thrownby.actions)
 		return
 	for(var/datum/action/innate/D in thrownby.actions)
 		if(D.active && istype(D, /datum/action/innate/drink_fling))

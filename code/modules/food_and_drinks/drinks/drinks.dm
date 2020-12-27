@@ -109,6 +109,8 @@
 
 /obj/item/reagent_containers/food/drinks/after_throw(datum/callback/callback)
 	. = ..()
+	if (!isGlass)
+		return
 	if (!QDELETED(src) || !QDELING(src))	//If we didn't get qdeleted by smash(), assume we got flung by a bartender
 		transform = initial(transform)
 		to_chat(viewers(8, get_turf(src)), "<span class='notice'>\The [src] lands upright without spilling a drop!</span>")
