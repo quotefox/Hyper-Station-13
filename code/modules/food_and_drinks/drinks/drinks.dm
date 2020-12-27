@@ -132,6 +132,7 @@
 	B.icon = I
 	B.name = "broken [name]"
 	transfer_fingerprints_to(B)
+	playsound(src, "shatter", 70, 1)
 	qdel(src)
 	if (ranged)
 		var/matrix/M = matrix(B.transform)
@@ -143,7 +144,6 @@
 		thrower.put_in_hands(B)
 	if (prob(33))
 		new/obj/item/shard(get_turf(target))
-	playsound(src, "shatter", 70, 1)
 
 
 
