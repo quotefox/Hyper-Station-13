@@ -13,7 +13,7 @@
 	possible_transfer_amounts = list(5,10,15,20,25,30,50)
 	volume = 50
 	resistance_flags = NONE
-	var/isGlass = TRUE //Whether the 'bottle' is made of glass or not so that milk cartons dont shatter when someone gets hit by it
+	var/isGlass = TRUE //Whether the container is made of glass or not so that milk cartons dont shatter when someone gets hit by it
 	splashable = TRUE
 
 /obj/item/reagent_containers/food/drinks/on_reagent_change(changetype)
@@ -105,34 +105,43 @@
 /obj/item/reagent_containers/food/drinks/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()
 	if(!.) //if the bottle wasn't caught
-		smash(hit_atom, throwingdatum?.thrower, TRUE)
+		smash(hit_atom, throwingdatum.thrower, TRUE)
+
+/obj/item/reagent_containers/food/drinks/after_throw(datum/callback/callback)
+	. = ..()
+	if (!QDELETED(src) || !QDELING(src))	//If we didn't get qdeleted by smash(), assume we got flung by a bartender
+		transform = initial(transform)
+		to_chat(viewers(8, get_turf(src)), "<span class='notice'>\The [src] lands upright without spilling a drop!</span>")
 
 /obj/item/reagent_containers/food/drinks/proc/smash(atom/target, mob/thrower, ranged = FALSE)
-	if(!isGlass)
+	if (!isGlass)
 		return
-	if(QDELING(src) || !target)		//Invalid loc
+	if (QDELING(src) || !target)		//Invalid loc
 		return
-	if(bartender_check(target) && ranged)
+	if (bartender_check(thrower) && istype(target, /turf/open) && ranged) //Smash against windows and players, but not on floors or tables. The target is always an open turf if there is no density
 		return
+
 	SplashReagents(target)
 	var/obj/item/broken_bottle/B = new (loc)
 	B.icon_state = icon_state
-	var/icon/I = new('icons/obj/drinks.dmi', src.icon_state)
+	var/icon/I = new(icon, icon_state)
 	I.Blend(B.broken_outline, ICON_OVERLAY, rand(5), 1)
 	I.SwapColor(rgb(255, 0, 220, 255), rgb(0, 0, 0, 0))
 	B.icon = I
 	B.name = "broken [name]"
-	if(ranged)
+	transfer_fingerprints_to(B)
+	qdel(src)
+	if (ranged)
 		var/matrix/M = matrix(B.transform)
 		M.Turn(rand(-170, 170))
 		B.transform = M
 		B.pixel_x = rand(-12, 12)
 		B.pixel_y = rand(-12, 12)
-	if(prob(33))
-		new/obj/item/shard(drop_location())
+	else
+		thrower.put_in_hands(B)
+	if (prob(33))
+		new/obj/item/shard(get_turf(target))
 	playsound(src, "shatter", 70, 1)
-	transfer_fingerprints_to(B)
-	qdel(src)
 
 
 
@@ -304,28 +313,6 @@
 	desc = "A small carton, intended for holding drinks."
 	icon_state = "juicebox"
 	volume = 15 //I figure if you have to craft these it should at least be slightly better than something you can get for free from a watercooler
-
-/obj/item/reagent_containers/food/drinks/sillycup/smallcarton/smash(atom/target, mob/thrower, ranged = FALSE)
-	if(bartender_check(target) && ranged)
-		return
-	var/obj/item/broken_bottle/B = new (loc)
-	B.icon_state = icon_state
-	var/icon/I = new('icons/obj/drinks.dmi', src.icon_state)
-	I.Blend(B.broken_outline, ICON_OVERLAY, rand(5), 1)
-	I.SwapColor(rgb(255, 0, 220, 255), rgb(0, 0, 0, 0))
-	B.icon = I
-	B.name = "broken [name]"
-	B.force = 0
-	B.throwforce = 0
-	B.desc = "A carton with the bottom half burst open. Might give you a papercut."
-	if(ranged)
-		var/matrix/M = matrix(B.transform)
-		M.Turn(rand(-170, 170))
-		B.transform = M
-		B.pixel_x = rand(-12, 12)
-		B.pixel_y = rand(-12, 12)
-	transfer_fingerprints_to(B)
-	qdel(src)
 
 /obj/item/reagent_containers/food/drinks/sillycup/smallcarton/on_reagent_change(changetype)
 	if (reagents.reagent_list.len)

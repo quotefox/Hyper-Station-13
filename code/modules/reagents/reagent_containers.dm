@@ -85,10 +85,10 @@
 /obj/item/reagent_containers/proc/bartender_check(atom/target)
 	. = FALSE
 	var/turf/T = get_turf(src)
-	if(!T || target.CanPass(src, T) || !thrownby || !thrownby.actions)
+	if(!T || !thrownby || !thrownby.actions) //|| target.CanPass(src, T) || !thrownby || !thrownby.actions)
 		return
-	for(var/datum/action/innate/drink_fling/D in thrownby.actions)
-		if(D.active)
+	for(var/datum/action/innate/D in thrownby.actions)
+		if(D.active && istype(D, /datum/action/innate/drink_fling))
 			return TRUE
 
 
@@ -107,17 +107,16 @@
 		target.visible_message("<span class='danger'>[M] has been splashed with something!</span>", \
 						"<span class='userdanger'>[M] has been splashed with something!</span>")
 		for(var/datum/reagent/A in reagents.reagent_list)
-			R += A.type + " ("
-			R += num2text(A.volume) + "),"
+			R += "[A.type] ([num2text(A.volume)]), "
 
 		if(thrownby)
 			log_combat(thrownby, M, "splashed", R)
 		reagents.reaction(target, TOUCH)
 
 	else if(bartender_check(target) && thrown)
-		visible_message("<span class='notice'>[src] lands onto the [target.name] without spilling a single drop.</span>")
-		transform = initial(transform)
-		addtimer(CALLBACK(src, .proc/ForceResetRotation), 1)
+		if(!istype(src, /obj/item/reagent_containers/food/drinks))	//drinks smash against solid objects
+			visible_message("<span class='notice'>[src] lands upright without spilling a single drop!</span>")
+			transform = initial(transform)
 		return
 
 	else
