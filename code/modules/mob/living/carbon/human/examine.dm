@@ -352,6 +352,7 @@
 
 	if (length(msg))
 		. += "<span class='warning'>[msg.Join("")]</span>"
+	msg += common_trait_examine()
 
 	var/traitstring = get_trait_string()
 	if(ishuman(user))
