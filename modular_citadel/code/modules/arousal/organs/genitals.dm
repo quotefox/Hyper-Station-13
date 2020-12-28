@@ -9,7 +9,7 @@
 	var/can_climax				= FALSE
 	var/fluid_transfer_factor	= 0.0 //How much would a partner get in them if they climax using this?
 	var/size					= 2 //can vary between num or text, just used in icon_state strings
-	var/fluid_id				= null
+	var/datum/reagent/fluid_id  = null
 	var/fluid_max_volume		= 15
 	var/fluid_efficiency		= 1
 	var/fluid_rate				= 1

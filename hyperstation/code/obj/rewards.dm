@@ -48,3 +48,29 @@
 	icon_state = "d20_blue"
 	sides = 20
 	unique = TRUE
+
+/obj/item/clothing/suit/hooded/wintercoat/death
+	name = "inconspicuous winter coat"
+	icon_state = "rdeath"
+	item_state = "rdeath"
+	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/melee/classic_baton/telescopic, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/screwdriver, /obj/item/crowbar, /obj/item/wrench, /obj/item/stack/cable_coil, /obj/item/weldingtool, /obj/item/multitool)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/death
+
+/obj/item/clothing/head/hooded/winterhood/death
+	icon_state = "winterhood_death"
+
+/obj/item/storage/pill_bottle/heat
+	name = "heat-b-gone pill bottle"
+	desc = "a bottle of pills from a sketchy pharmaceutical corporation. at the bottom of the label is a small red S."
+
+/obj/item/reagent_containers/pill/heat
+	name = "heat-b-gone pill"
+	desc = "claims to be foolproof heat repression medication but it tastes extremely sweet."
+	icon_state = "pill8"
+	list_reagents = list(/datum/reagent/consumable/sugar = 10)
+	roundstart = 1
+
+/obj/item/storage/pill_bottle/heat/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_containers/pill/heat(src)

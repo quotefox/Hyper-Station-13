@@ -126,6 +126,10 @@
 	if(can_be_held)
 		. += "[t_He] might be able to be picked up with <b>Alt+Click</b>!\n"
 
+	//Heat Detection
+	if(breedable && HAS_TRAIT(src, TRAIT_HEAT_DETECT) && HAS_TRAIT(user, TRAIT_HEAT))
+		. += "<span class='love'>[t_He] [t_is] currently in heat.</span>"
+
 	//CIT CHANGES START HERE - adds genital details to examine text
 	if(LAZYLEN(internal_organs))
 		for(var/obj/item/organ/genital/dicc in internal_organs)
@@ -162,7 +166,7 @@
 		. += "<span class='deadsay'>It appears that [t_his] brain is missing...</span>"
 
 	var/temp = getBruteLoss() //no need to calculate each of these twice
-	
+
 	var/list/msg = list()
 
 	var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
@@ -270,7 +274,7 @@
 		else
 			msg += "<B>[t_He] [t_is] bleeding!</B>\n"
 
-	if(reagents.has_reagent("teslium"))
+	if(reagents.has_reagent(/datum/reagent/teslium))
 		msg += "[t_He] [t_is] emitting a gentle blue glow!\n"
 
 	if(islist(stun_absorption))
@@ -293,8 +297,7 @@
 			if(91.01 to INFINITY)
 				msg += "[t_He] [t_is] a shitfaced, slobbering wreck.\n"
 
-	if(reagents.has_reagent("astral"))
-		msg += "[t_He] have wild, spacey eyes"
+	if(reagents.has_reagent(/datum/reagent/fermi/astral))
 		if(mind)
 			msg += " and have a strange, abnormal look to them.\n"
 		else
@@ -349,6 +352,7 @@
 
 	if (length(msg))
 		. += "<span class='warning'>[msg.Join("")]</span>"
+	msg += common_trait_examine()
 
 	var/traitstring = get_trait_string()
 	if(ishuman(user))

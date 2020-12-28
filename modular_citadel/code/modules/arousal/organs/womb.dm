@@ -6,7 +6,7 @@
 	zone 			= "groin"
 	slot 			= "womb"
 	internal 		= TRUE
-	fluid_id 		= "femcum"
+	fluid_id 		= /datum/reagent/consumable/femcum
 	producing		= TRUE
 	var/pregnant	= FALSE //this is for pregnancy code
 
