@@ -63,7 +63,6 @@
 		log_game("[key_name(user)] fired Space lube from \a [src] at [AREACOORD(T)].")
 	return
 
-
 /obj/item/reagent_containers/spray/proc/spray(atom/A)
 	var/range = CLAMP(get_dist(src, A), 1, current_range)
 	var/obj/effect/decal/chempuff/D = new /obj/effect/decal/chempuff(get_turf(src))

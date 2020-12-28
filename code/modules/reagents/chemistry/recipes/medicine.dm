@@ -316,6 +316,6 @@
 
 /datum/chemical_reaction/prussian_blue
 	name = "Prussian Blue"
-	id = "prussian_blue"
-	results = list("prussian_blue" = 2)
-	required_reagents = list( "iron" = 1, "cyanide" = 6)
+	id = /datum/reagent/medicine/prussian_blue
+	results = list(/datum/reagent/medicine/prussian_blue = 2)
+	required_reagents = list( /datum/reagent/iron = 1, /datum/reagent/toxin/cyanide = 6)
