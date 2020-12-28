@@ -81,6 +81,7 @@
 #define TRAIT_PUSHIMMUNE		"push_immunity"
 #define TRAIT_SHOCKIMMUNE		"shock_immunity"
 #define TRAIT_STABLEHEART		"stable_heart"
+#define TRAIT_STABLELIVER		"stable_liver"
 #define TRAIT_RESISTHEAT		"resist_heat"
 #define TRAIT_RESISTHEATHANDS	"resist_heat_handsonly" //For when you want to be able to touch hot things, but still want fire to be an issue.
 #define TRAIT_RESISTCOLD		"resist_cold"
@@ -111,6 +112,7 @@
 #define TRAIT_NOHARDCRIT		"nohardcrit"
 #define TRAIT_NOSOFTCRIT		"nosoftcrit"
 #define TRAIT_MINDSHIELD		"mindshield"
+#define TRAIT_DISSECTED			"dissected"
 #define TRAIT_FEARLESS			"fearless"
 #define TRAIT_UNSTABLE			"unstable"
 #define TRAIT_PARALYSIS_L_ARM	"para-l-arm" //These are used for brain-based paralysis, where replacing the limb won't fix it
@@ -128,6 +130,9 @@
 #define TRAIT_RADRESONANCE "radioactive_resonance" //Hyperstation edit
 #define TRAIT_SWIMMING			"swimming"			//only applied by /datum/element/swimming, for checking
 #define TRAIT_CAPTAIN_METABOLISM "captain-metabolism"
+#define TRAIT_ABDUCTOR_TRAINING "abductor-training"
+#define TRAIT_ABDUCTOR_SCIENTIST_TRAINING "abductor-scientist-training"
+#define TRAIT_SURGEON           "surgeon"
 #define TRAIT_NONATURALHEAL		"nonaturalheal"	// Only Admins can heal you. NOTHING else does it unless it's given the god tag.
 #define TRAIT_NORUNNING			"norunning"		// You walk!
 #define TRAIT_NOMARROW			"nomarrow"		// You don't make blood, with chemicals or nanites.
@@ -204,6 +209,7 @@
 
 // unique trait sources, still defines
 #define STATUE_MUTE "statue"
+#define CLONING_POD_TRAIT "cloning-pod"
 #define CHANGELING_DRAIN "drain"
 #define CHANGELING_HIVEMIND_MUTE "ling_mute"
 #define ABYSSAL_GAZE_BLIND "abyssal_gaze"
@@ -232,9 +238,9 @@
 #define LOCKED_HELMET_TRAIT "locked-helmet"
 #define NINJA_SUIT_TRAIT "ninja-suit"
 #define ANTI_DROP_IMPLANT_TRAIT "anti-drop-implant"
+#define ABDUCTOR_ANTAGONIST "abductor-antagonist"
 #define SLEEPING_CARP_TRAIT "sleeping_carp"
 #define RISING_BASS_TRAIT "rising_bass"
-#define ABDUCTOR_ANTAGONIST "abductor-antagonist"
 #define NUKEOP_ANTAGONIST "nukeop-antagonist"
 #define MADE_UNCLONEABLE "made-uncloneable"
 #define NUKEOP_TRAIT "nuke-op"
