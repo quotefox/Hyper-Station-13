@@ -202,6 +202,8 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	var/radio_return = radio(message, message_mode, spans, language)
 	if(radio_return & ITALICS)
 		spans |= SPAN_ITALICS
+		if (client?.prefs.radiosounds)
+			playsound_local(src,'sound/voice/radioin.ogg', 30, 1)
 	if(radio_return & REDUCE_RANGE)
 		message_range = 1
 	if(radio_return & NOPASS)
