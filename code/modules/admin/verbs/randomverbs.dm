@@ -1243,13 +1243,30 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggled Hub Visibility", "[GLOB.hub_visibility ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+/client/proc/breadify(atom/movable/target)
+	var/obj/item/reagent_containers/food/snacks/store/bread/plain/funnyBread = new(get_turf(target))
+	target.forceMove(funnyBread)
+
 /client/proc/smite(mob/living/carbon/human/target as mob)
 	set name = "Smite"
 	set category = "Fun"
 	if(!check_rights(R_ADMIN) || !check_rights(R_FUN))
 		return
 
-	var/list/punishment_list = list(ADMIN_PUNISHMENT_PIE, ADMIN_PUNISHMENT_FIREBALL, ADMIN_PUNISHMENT_CLUWNE, ADMIN_PUNISHMENT_LIGHTNING, ADMIN_PUNISHMENT_BRAINDAMAGE, ADMIN_PUNISHMENT_BSA, ADMIN_PUNISHMENT_GIB, ADMIN_PUNISHMENT_SUPPLYPOD, ADMIN_PUNISHMENT_MAZING, ADMIN_PUNISHMENT_ROD, ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE)
+	var/list/punishment_list = list(ADMIN_PUNISHMENT_PIE, 
+	ADMIN_PUNISHMENT_FIREBALL, 
+	ADMIN_PUNISHMENT_CLUWNE, 
+	ADMIN_PUNISHMENT_LIGHTNING, 
+	ADMIN_PUNISHMENT_BRAINDAMAGE, 
+	ADMIN_PUNISHMENT_BSA, 
+	ADMIN_PUNISHMENT_GIB, 
+	ADMIN_PUNISHMENT_SUPPLYPOD, 
+	ADMIN_PUNISHMENT_MAZING, 
+	ADMIN_PUNISHMENT_ROD, 
+	ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE,
+	ADMIN_PUNISHMENT_FAKEBWOINK,
+	ADMIN_PUNISHMENT_NUGGET,
+	ADMIN_PUNISHMENT_BREADIFY)
 
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in punishment_list
 
@@ -1299,7 +1316,6 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			plaunch.temp_pod.explosionSize = list(0,0,0,2)
 			plaunch.temp_pod.effectStun = TRUE
 			plaunch.ui_interact(usr)
-
 		if(ADMIN_PUNISHMENT_MAZING)
 			if(!puzzle_imprison(target))
 				to_chat(usr,"<span class='warning'>Imprisonment failed!</span>")
@@ -1317,6 +1333,29 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 				for(var/obj/structure/table/T in A)
 					T.tablepush(target, target)
 					sleep(1)
+		if(ADMIN_PUNISHMENT_FAKEBWOINK)
+			SEND_SOUND(target, 'sound/effects/adminhelp.ogg')
+		if(ADMIN_PUNISHMENT_NUGGET)
+			if (!iscarbon(target))
+				return
+			var/mob/living/carbon/carbon_target = target
+			var/timer = 2 SECONDS
+			for (var/_limb in carbon_target.bodyparts)
+				var/obj/item/bodypart/limb = _limb
+				if (limb.body_part == HEAD || limb.body_part == CHEST)
+					continue
+				addtimer(CALLBACK(limb, /obj/item/bodypart/.proc/dismember), timer)
+				addtimer(CALLBACK(GLOBAL_PROC, .proc/playsound, carbon_target, 'sound/effects/cartoon_pop.ogg', 70), timer)
+				addtimer(CALLBACK(carbon_target, /mob/living/.proc/spin, 4, 1), timer - 0.4 SECONDS)
+				timer += 2 SECONDS
+		if(ADMIN_PUNISHMENT_BREADIFY)
+			#define BREADIFY_TIME (5 SECONDS)
+			var/mutable_appearance/bread_appearance = mutable_appearance('icons/obj/food/burgerbread.dmi', "bread")
+			var/mutable_appearance/transform_scanline = mutable_appearance('icons/effects/effects.dmi', "transform_effect")
+			target.transformation_animation(bread_appearance, time = BREADIFY_TIME, transform_overlay=transform_scanline, reset_after=TRUE)
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/breadify, target), BREADIFY_TIME)
+			#undef BREADIFY_TIME
+
 
 	var/msg = "[key_name_admin(usr)] punished [key_name_admin(target)] with [punishment]."
 	message_admins(msg)
