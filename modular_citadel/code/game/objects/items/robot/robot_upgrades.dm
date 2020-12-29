@@ -10,17 +10,18 @@
 
 
 /obj/effect/proc_holder/silicon/cyborg/vtecControl/Click(mob/living/silicon/robot/user = usr)
+	if(!user)
+		return
 
 	currentState = (currentState + 1) % 3
 
-	if(usr)
-		switch(currentState)
-			if (0)
-				user.remove_movespeed_modifier(MOVESPEED_ID_SILICON_VTEC)
-			if (1)
-				user.add_movespeed_modifier(MOVESPEED_ID_SILICON_VTEC, override=TRUE, multiplicative_slowdown = -0.15)
-			if (2)
-				user.add_movespeed_modifier(MOVESPEED_ID_SILICON_VTEC, override=TRUE, multiplicative_slowdown = -0.325)
+	switch(currentState)
+		if (0)
+			user.remove_movespeed_modifier(MOVESPEED_ID_SILICON_VTEC)
+		if (1)
+			user.add_movespeed_modifier(MOVESPEED_ID_SILICON_VTEC, override=TRUE, multiplicative_slowdown = -0.15)
+		if (2)
+			user.add_movespeed_modifier(MOVESPEED_ID_SILICON_VTEC, override=TRUE, multiplicative_slowdown = -0.325)
 
 	action.button_icon_state = "Chevron_State_[currentState]"
 	action.UpdateButtonIcon()
