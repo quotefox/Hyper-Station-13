@@ -12,9 +12,14 @@
 /obj/effect/proc_holder/silicon/cyborg/vtecControl/Click(mob/living/silicon/robot/user = usr)
 	if(!user)
 		return
+	if(!user.cell)
+		return
+
+	if(user.cell.charge <= 0)
+		to_chat(user, "<span class='warning'>You cannot cycle through your VTEC upgrade without power!</span>")
+		return
 
 	currentState = (currentState + 1) % 3
-
 	switch(currentState)
 		if (0)
 			user.remove_movespeed_modifier(MOVESPEED_ID_SILICON_VTEC)
