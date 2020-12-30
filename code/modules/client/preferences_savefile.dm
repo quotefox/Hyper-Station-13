@@ -5,7 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX	21
+#define SAVEFILE_VERSION_MAX	22
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -51,6 +51,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		pda_style = "mono"
 	if(current_version < 20)
 		pda_color = "#808000"
+	if(current_version < 22)
+		if(features["balls_fluid"])
+			features["balls_fluid"] = /datum/reagent/consumable/semen
+		if(features["breasts_fluid"])
+			features["breasts_fluid"] = /datum/reagent/consumable/milk
 
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)

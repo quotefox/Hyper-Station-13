@@ -398,7 +398,6 @@
 		fingerprintshidden = from.fingerprintshidden.Copy()
 	if(from.fingerprintslast)
 		fingerprintslast = from.fingerprintslast
-	//TODO bloody overlay
 
 /obj/item/stack/microwave_act(obj/machinery/microwave/M)
 	if(istype(M) && M.dirty < 100)

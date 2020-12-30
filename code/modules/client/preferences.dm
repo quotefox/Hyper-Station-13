@@ -144,7 +144,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"balls_cum_rate" = CUM_RATE,
 		"balls_cum_mult" = CUM_RATE_MULT,
 		"balls_efficiency" = CUM_EFFICIENCY,
-		"balls_fluid" = "semen",
+		"balls_fluid" = /datum/reagent/consumable/semen,
 		"has_ovi" = FALSE,
 		"ovi_shape" = "knotted",
 		"ovi_length" = 6,
@@ -159,7 +159,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"breasts_color" = "fff",
 		"breasts_size" = "C",
 		"breasts_shape" = "Pair",
-		"breasts_fluid" = "milk",
+		"breasts_fluid" = /datum/reagent/consumable/milk,
 		"breasts_producing" = FALSE,
 		"has_vag" = FALSE,
 		"vag_shape" = "Human",
@@ -171,7 +171,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"womb_cum_rate" = CUM_RATE,
 		"womb_cum_mult" = CUM_RATE_MULT,
 		"womb_efficiency" = CUM_EFFICIENCY,
-		"womb_fluid" = "femcum",
+		"womb_fluid" = /datum/reagent/consumable/femcum,
 		"ipc_screen" = "Sunburst",
 		"ipc_antenna" = "None",
 		"flavor_text" = ""
@@ -825,7 +825,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							dat += "<span style='border: 1px solid #161616; background-color: #[features["balls_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=balls_color;task=input'>Change</a><br>"
 						//dat += "<b>Ball Circumference:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=balls_size;task=input'>[features["balls_size"]] inch(es)</a>" // The menu works but doesn't do anything yet. Need to figure it out.
 						dat += "<b>Testicles showing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_shape;task=input'>[features["balls_shape"]]</a>"
-						dat += "<b>Produces:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>[features["balls_fluid"]]</a>"
+						dat += "<b>Produces:</b>"
+						switch(features["balls_fluid"])
+							if(/datum/reagent/consumable/milk)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Milk</a>"
+							if(/datum/reagent/water)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Water</a>"
+							if(/datum/reagent/consumable/semen)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Semen</a>"
+							if(/datum/reagent/consumable/femcum)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Femcum</a>"
+							else
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Nothing?</a>"
+							//This else is a safeguard for errors, and if it happened, they wouldn't be able to change this pref,
+							//DO NOT REMOVE IT UNLESS YOU HAVE A GOOD IDEA
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Vagina</h3>"
 				dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_vag'>[features["has_vag"] == TRUE ? "Yes" : "No"]</a>"
@@ -855,7 +868,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Breast Shape:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_shape;task=input'>[features["breasts_shape"]]</a>"
 					dat += "<b>Lactates:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_producing'>[features["breasts_producing"] == TRUE ? "Yes" : "No"]</a>"
 					if(features["breasts_producing"] == TRUE)
-						dat += "<b>Produces:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>[features["breasts_fluid"]]</a>"
+						dat += "<b>Produces:</b>"
+						switch(features["breasts_fluid"])
+							if(/datum/reagent/consumable/milk)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Milk</a>"
+							if(/datum/reagent/water)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Water</a>"
+							if(/datum/reagent/consumable/semen)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Semen</a>"
+							if(/datum/reagent/consumable/femcum)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Femcum</a>"
+							else
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Nothing?</a>"
+							//This else is a safeguard for errors, and if it happened, they wouldn't be able to change this pref,
+							//DO NOT REMOVE IT UNLESS YOU HAVE A GOOD IDEA
 
 				dat += "</td>"
 			dat += "</td>"
@@ -2137,8 +2163,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("balls_fluid")
 					var/new_shape
 					new_shape = input(user, "Balls Fluid", "Character Preference") as null|anything in GLOB.genital_fluids_list
-					if(new_shape)
-						features["balls_fluid"] = new_shape
+					switch(new_shape)
+						if("Milk")
+							features["balls_fluid"] = /datum/reagent/consumable/milk
+						if("Water")
+							features["balls_fluid"] = /datum/reagent/water
+						if("Semen")
+							features["balls_fluid"] = /datum/reagent/consumable/semen
+						if("Femcum")
+							features["balls_fluid"] = /datum/reagent/consumable/femcum
 
 				if("egg_size")
 					var/new_size
@@ -2171,8 +2204,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("breasts_fluid")
 					var/new_shape
 					new_shape = input(user, "Breast Fluid", "Character Preference") as null|anything in GLOB.genital_fluids_list
-					if(new_shape)
-						features["breasts_fluid"] = new_shape
+					switch(new_shape)
+						if("Milk")
+							features["balls_fluid"] = /datum/reagent/consumable/milk
+						if("Water")
+							features["balls_fluid"] = /datum/reagent/water
+						if("Semen")
+							features["balls_fluid"] = /datum/reagent/consumable/semen
+						if("Femcum")
+							features["balls_fluid"] = /datum/reagent/consumable/femcum
 
 				if("breasts_color")
 					var/new_breasts_color = input(user, "Breast Color:", "Character Preference") as color|null

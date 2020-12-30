@@ -313,7 +313,7 @@
 
 /atom/proc/examine(mob/user)
 	. = list("[get_examine_string(user, TRUE)].")
-	
+
 	if(desc)
 		. += desc
 
@@ -512,6 +512,9 @@
 	blood_DNA = null
 
 /atom/proc/wash_cream()
+	return TRUE
+
+/atom/proc/wash_cum()
 	return TRUE
 
 /atom/proc/isinspace()
@@ -866,4 +869,4 @@ Proc for attack log creation, because really why not
 		return TRUE
 
 /atom/proc/intercept_zImpact(atom/movable/AM, levels = 1)
-	. |= SEND_SIGNAL(src, COMSIG_ATOM_INTERCEPT_Z_FALL, AM, levels) 
+	. |= SEND_SIGNAL(src, COMSIG_ATOM_INTERCEPT_Z_FALL, AM, levels)
