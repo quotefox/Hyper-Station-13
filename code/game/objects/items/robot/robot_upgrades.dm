@@ -489,9 +489,7 @@
 		out procedures"
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
-	module_type = list(
-		/obj/item/robot_module/medical,
-		/obj/item/robot_module/medihound)
+	module_type = /obj/item/robot_module/medical
 
 /obj/item/borg/upgrade/processor/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
