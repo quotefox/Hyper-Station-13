@@ -186,7 +186,7 @@ GLOBAL_LIST_EMPTY(GPS_list)
 
 /obj/item/gps/internal/base
 	gpstag = "NT_AUX"
-	desc = "A homing signal from Nanotrasen's mining base."
+	desc = "A homing signal from Kinaris's mining base."
 
 /obj/item/gps/visible_debug
 	name = "visible GPS"

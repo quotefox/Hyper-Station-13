@@ -1034,7 +1034,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 /datum/reagent/consumable/ethanol/grog
 	name = "Grog"
-	description = "Watered down rum, Nanotrasen approves!"
+	description = "Watered down rum, Kinaris approves!"
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 1 //Basically nothing
 	taste_description = "a poor excuse for alcohol"
@@ -1088,12 +1088,12 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	taste_description = "stomach acid"
 	glass_icon_state = "acidspitglass"
 	glass_name = "Acid Spit"
-	glass_desc = "A drink from Nanotrasen. Made from live aliens."
+	glass_desc = "A drink from Kinaris. Made from live aliens."
 	value = 3
 
 /datum/reagent/consumable/ethanol/amasec
 	name = "Amasec"
-	description = "Official drink of the Nanotrasen Gun-Club!"
+	description = "Official drink of the Kinaris Gun-Club!"
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 35
 	quality = DRINK_GOOD
@@ -1315,7 +1315,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	taste_description = "da bomb"
 	glass_icon_state = "atomicbombglass"
 	glass_name = "Atomic Bomb"
-	glass_desc = "Nanotrasen cannot take legal responsibility for your actions after imbibing."
+	glass_desc = "Kinaris cannot take legal responsibility for your actions after imbibing."
 	value = 3.56
 
 /datum/reagent/consumable/ethanol/atomicbomb/on_mob_life(mob/living/carbon/M)
@@ -1806,7 +1806,7 @@ datum/reagent/consumable/ethanol/creme_de_coconut
 	taste_description = "seduction"
 	glass_icon_state = "between_the_sheets"
 	glass_name = "Between the Sheets"
-	glass_desc = "The only drink that comes with a label reminding you of Nanotrasen's zero-tolerance promiscuity policy."
+	glass_desc = "The only drink that comes with a label reminding you of Kinaris's high tolerance promiscuity policy."
 	value = 2
 
 /datum/reagent/consumable/ethanol/between_the_sheets/on_mob_life(mob/living/L)

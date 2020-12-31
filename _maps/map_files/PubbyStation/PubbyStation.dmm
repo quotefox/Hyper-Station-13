@@ -5101,7 +5101,7 @@
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk,
 /obj/structure/sign/plaques/kiddie{
-	desc = "An embossed piece of paper from the University of Nanotrasen at Portpoint.";
+	desc = "An embossed piece of paper from the University of Kinaris at Portpoint.";
 	name = "\improper 'Diploma' frame";
 	pixel_y = 32
 	},

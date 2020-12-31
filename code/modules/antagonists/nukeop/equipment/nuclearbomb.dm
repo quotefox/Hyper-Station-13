@@ -255,7 +255,7 @@
 			first_status = "Set"
 		else
 			first_status = "Auth S1."
-	var/second_status = exploded ? "Warhead triggered, thanks for flying Nanotrasen" : (safety ? "Safe" : "Engaged")
+	var/second_status = exploded ? "Warhead triggered, thanks for flying Kinaris" : (safety ? "Safe" : "Engaged")
 	data["status1"] = first_status
 	data["status2"] = second_status
 	data["anchored"] = anchored
@@ -459,8 +459,8 @@
 		return CINEMATIC_SELFDESTRUCT_MISS
 
 /obj/machinery/nuclearbomb/beer
-	name = "Nanotrasen-brand nuclear fission explosive"
-	desc = "One of the more successful achievements of the Nanotrasen Corporate Warfare Division, their nuclear fission explosives are renowned for being cheap to produce and devastatingly effective. Signs explain that though this particular device has been decommissioned, every Nanotrasen station is equipped with an equivalent one, just in case. All Captains carefully guard the disk needed to detonate them - at least, the sign says they do. There seems to be a tap on the back."
+	name = "Kinaris-brand nuclear fission explosive"
+	desc = "One of the more successful achievements of the Kinaris Corporate Warfare Division, their nuclear fission explosives are renowned for being cheap to produce and devastatingly effective. Signs explain that though this particular device has been decommissioned, every Kinaris station is equipped with an equivalent one, just in case. All Captains carefully guard the disk needed to detonate them - at least, the sign says they do. There seems to be a tap on the back."
 	proper_bomb = FALSE
 	var/obj/structure/reagent_dispensers/beerkeg/keg
 
