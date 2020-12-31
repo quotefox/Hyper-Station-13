@@ -389,7 +389,7 @@
 /datum/quirk/phobia/post_add()
 	var/mob/living/carbon/human/H = quirk_holder
 	phobia = new
-	H?.gain_trauma(phobia, TRAUMA_RESILIENCE_ABSOLUTE)
+	H.gain_trauma(phobia, TRAUMA_RESILIENCE_ABSOLUTE)
 
 /datum/quirk/phobia/remove()
 	var/mob/living/carbon/human/H = quirk_holder
