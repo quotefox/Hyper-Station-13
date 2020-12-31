@@ -868,7 +868,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Breast Shape:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_shape;task=input'>[features["breasts_shape"]]</a>"
 					dat += "<b>Lactates:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_producing'>[features["breasts_producing"] == TRUE ? "Yes" : "No"]</a>"
 					if(features["breasts_producing"] == TRUE)
-						dat += "<b>Produces:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>[features["breasts_fluid"]]</a>"
+						dat += "<b>Produces:</b>"
+						switch(features["breasts_fluid"])
+							if(/datum/reagent/consumable/milk)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Milk</a>"
+							if(/datum/reagent/water)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Water</a>"
+							if(/datum/reagent/consumable/semen)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Semen</a>"
+							if(/datum/reagent/consumable/femcum)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Femcum</a>"
+							else
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Nothing?</a>"
+							//This else is a safeguard for errors, and if it happened, they wouldn't be able to change this pref,
+							//DO NOT REMOVE IT UNLESS YOU HAVE A GOOD IDEA
 
 				dat += "</td>"
 			dat += "</td>"
