@@ -29,7 +29,9 @@ Chief Engineer
 			            ACCESS_HEADS, ACCESS_CONSTRUCTION, ACCESS_SEC_DOORS, ACCESS_MINISAT,
 			            ACCESS_CE, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)
 
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/paraplegic, /datum/quirk/insanity)
+	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/paraplegic, /datum/quirk/insanity,
+		/datum/quirk/phobia/selectible/conspiracy,
+		/datum/quirk/phobia/selectible) //Space phobia
 
 /datum/outfit/job/ce
 	name = "Chief Engineer"
@@ -84,6 +86,8 @@ Station Engineer
 	exp_type_department = EXP_TYPE_ENGINEERING
 
 	outfit = /datum/outfit/job/engineer
+
+	blacklisted_quirks = list(/datum/quirk/phobia/selectible)
 
 	access = list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS,
 									ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)
@@ -143,6 +147,9 @@ Atmospheric Technician
 
 	outfit = /datum/outfit/job/atmos
 
+	blacklisted_quirks = list(/datum/quirk/phobia/selectible)
+					//Atmos tech technically doesn't *need* a blacklist for the phobia of space
+
 	access = list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_TECH_STORAGE, ACCESS_MAINT_TUNNELS,
 									ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_ATMOSPHERICS, ACCESS_MAINT_TUNNELS,
@@ -191,6 +198,9 @@ Junior Engineer
 	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/engineer/junior
+
+	blacklisted_quirks = list(/datum/quirk/phobia/selectible,
+		/datum/quirk/phobia/selectible/conspiracy)		//Don't deny higher-ups of teaching us how to do things
 
 	access = list(ACCESS_TECH_STORAGE, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_MAINT_TUNNELS,
 									ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)

@@ -37,7 +37,12 @@ Head of Security
 
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/nonviolent, /datum/quirk/paraplegic, /datum/quirk/insanity)
+	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/nonviolent, /datum/quirk/paraplegic, /datum/quirk/insanity,
+		/datum/quirk/phobia/selectible/conspiracy,
+		/datum/quirk/phobia/selectible/security,
+		/datum/quirk/phobia/selectible/doctors,
+		/datum/quirk/phobia/selectible/aliens,
+		/datum/quirk/phobia/selectible/supernatural)
 
 /datum/outfit/job/hos
 	name = "Head of Security"
@@ -98,7 +103,11 @@ Warden
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP, ACCESS_MINERAL_STOREROOM) //SEE /DATUM/JOB/WARDEN/GET_ACCESS()
 
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/nonviolent, /datum/quirk/paraplegic)
+	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/nonviolent, /datum/quirk/paraplegic,
+		/datum/quirk/phobia/selectible/conspiracy,
+		/datum/quirk/phobia/selectible/security,
+		/datum/quirk/phobia/selectible/aliens,
+		/datum/quirk/phobia/selectible/supernatural)
 
 /datum/job/warden/get_access()
 	var/list/L = list()
@@ -157,7 +166,8 @@ Detective
 	minimal_access = list(ACCESS_SEC_DOORS, ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_COURT, ACCESS_BRIG, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM)
 
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/nonviolent, /datum/quirk/paraplegic)
+	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/nonviolent, /datum/quirk/paraplegic,
+		/datum/quirk/phobia/selectible/security)
 
 /datum/outfit/job/detective
 	name = "Detective"
@@ -214,7 +224,8 @@ Security Officer
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP, ACCESS_MINERAL_STOREROOM) //BUT SEE /DATUM/JOB/WARDEN/GET_ACCESS()
 
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/nonviolent, /datum/quirk/paraplegic)
+	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/nonviolent, /datum/quirk/paraplegic,
+		/datum/quirk/phobia/selectible/security)
 
 /datum/job/officer/get_access()
 	var/list/L = list()
@@ -374,7 +385,9 @@ Junior Security Officer
 	minimal_access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_COURT, ACCESS_MINERAL_STOREROOM) //BUT SEE /DATUM/JOB/WARDEN/GET_ACCESS()
 
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/nonviolent, /datum/quirk/paraplegic)
+	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/nonviolent, /datum/quirk/paraplegic,
+		/datum/quirk/phobia/selectible/security,
+		/datum/quirk/phobia/selectible/conspiracy)	//Don't deny higher-ups of teaching us how to do things
 
 
 /datum/job/junior_officer/get_access()

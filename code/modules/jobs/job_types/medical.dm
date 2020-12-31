@@ -27,7 +27,9 @@ Chief Medical Officer
 			ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_CMO, ACCESS_SURGERY, ACCESS_RC_ANNOUNCE,
 			ACCESS_KEYCARD_AUTH, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS)
 
-	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/insanity)
+	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/insanity,
+		/datum/quirk/phobia/selectible/conspiracy,
+		/datum/quirk/phobia/selectible/doctors)
 
 /datum/outfit/job/cmo
 	name = "Chief Medical Officer"
@@ -78,6 +80,8 @@ Medical Doctor
 
 	outfit = /datum/outfit/job/doctor
 
+	blacklisted_quirks = list(/datum/quirk/phobia/selectible/doctors)
+
 	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_CHEMISTRY, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM)
 
@@ -122,6 +126,8 @@ Chemist
 
 	outfit = /datum/outfit/job/chemist
 
+	blacklisted_quirks = list(/datum/quirk/phobia/selectible/doctors)
+
 	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_CHEMISTRY, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MEDICAL, ACCESS_CHEMISTRY, ACCESS_MINERAL_STOREROOM)
 
@@ -163,6 +169,8 @@ Geneticist
 
 	outfit = /datum/outfit/job/geneticist
 
+	blacklisted_quirks = list(/datum/quirk/phobia/selectible/doctors)
+
 	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_CHEMISTRY, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_RESEARCH, ACCESS_XENOBIOLOGY, ACCESS_ROBOTICS, ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE)
 	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_RESEARCH, ACCESS_MINERAL_STOREROOM)
 
@@ -202,6 +210,8 @@ Virologist
 
 	outfit = /datum/outfit/job/virologist
 
+	blacklisted_quirks = list(/datum/quirk/phobia/selectible/doctors)
+
 	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MEDICAL, ACCESS_VIROLOGY, ACCESS_MINERAL_STOREROOM)
 
@@ -240,6 +250,9 @@ Junior Doctor
 	exp_type = EXP_TYPE_CREW
 
 	outfit = /datum/outfit/job/doctor/junior
+
+	blacklisted_quirks = list(/datum/quirk/phobia/selectible/doctors,
+		/datum/quirk/phobia/selectible/conspiracy)	//Don't deny higher-ups of teaching us how to do things
 
 	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM)

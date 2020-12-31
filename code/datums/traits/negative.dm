@@ -375,19 +375,76 @@
 		if(prob(1))
 			new/obj/item/reagent_containers/food/snacks/pastatomato(get_turf(H)) //now that's what I call spaghetti code
 
+//
+// Phobias
 /datum/quirk/phobia
-	name = "Phobia"
+	name = "Phobia (Random)"
 	desc = "You've had a traumatic past, one that has scarred you for life, and cripples you when dealing with your greatest fears."
 	value = -2 // It can hardstun you. You can be a job that your phobia targets...
-	gain_text = "<span class='danger'>You begin to tremble as an immeasurable fear grips your mind.</span>"
+	gain_text = "<span class='danger'>You begin to tremble as an immeasurable fear grips your mind, so terrifying that you <b>can't remember it.</b></span>"
 	lose_text = "<span class='notice'>Your confidence wipes away the fear that had been plaguing you.</span>"
 	medical_record_text = "Patient has an extreme or irrational fear and aversion to an undefined stimuli."
 	var/datum/brain_trauma/mild/phobia/phobia
 
-/datum/quirk/phobia/add()
+/datum/quirk/phobia/post_add()
 	var/mob/living/carbon/human/H = quirk_holder
 	phobia = new
-	H.gain_trauma(phobia, TRAUMA_RESILIENCE_SURGERY)
+	H?.gain_trauma(phobia, TRAUMA_RESILIENCE_ABSOLUTE)
+
+/datum/quirk/phobia/remove()
+	var/mob/living/carbon/human/H = quirk_holder
+	H?.cure_trauma_type(phobia, TRAUMA_RESILIENCE_ABSOLUTE)
+
+/datum/quirk/phobia/selectible
+	name = "Phobia (Space)"
+	desc = "You've had a traumatic past, one that has scarred you for life. Whoever sent you all the way out here must really hate you."
+	value = -2	//Thinking of making selectible phobias give -1, testing how people decide to use these
+	gain_text = "<span class='danger'><b>You shouldn't see this. </b></span><span clas='warning'>If you did, something bad happened with phobia quirks.</span>"
+	lose_text = "<span class='warning'>You feel like someone's watching you...</span>"
+	var/given_phobia = "space"
+
+/datum/quirk/phobia/selectible/New()	//Because of given_phobia
+	gain_text = "<span class='danger'>Your hands begin to tremble, you dread the thought of <b>[given_phobia].</b></span>"
+	lose_text = "<span class='notice'>Your convidence wipes away your fears of <b>[given_phobia]</b> that had been plaguing you.</span>"
+	..()
+
+/datum/quirk/phobia/selectible/post_add()
+	var/mob/living/carbon/human/H = quirk_holder
+	phobia = new(given_phobia)
+	H?.gain_trauma(phobia, TRAUMA_RESILIENCE_ABSOLUTE)
+
+//datum/quirk/phobia/selectible/lizard	//Don't add this because it would probably hurt someone's feelings at some point
+
+/datum/quirk/phobia/selectible/security
+	name = "Phobia (Security)"
+	desc = "A traumatic experience has altered your view towards members of security, dreading the people in red."
+	given_phobia = "security"
+
+/datum/quirk/phobia/selectible/supernatural
+	name = "Phobia (The Supernatural)"
+	desc = "A traumatic past plagues you, hopefully the clown won't try to teach you a magic trick."
+	given_phobia = "the supernatural"
+
+/datum/quirk/phobia/selectible/conspiracy
+	name = "Phobia (Conspiracies)"
+	desc = "The stories you've heard of authorities are grueling. No way they would do such things... right?"
+	given_phobia = "conspiracies"
+
+/datum/quirk/phobia/selectible/robots
+	name = "Phobia (Robots)"
+	desc = "You've had a traumatic past, one that has scarred you for life. You can't stand anything robotic."
+	given_phobia = "robots"
+
+/datum/quirk/phobia/selectible/aliens
+	name = "Phobia (Aliens)"
+	desc = "You can't stand the thought of otherworldly entities. Anything ickly, stickly, goopy or sludgy that moves will make you freeze."
+	given_phobia = "aliens"
+
+/datum/quirk/phobia/selectible/doctors
+	name = "Phobia (Doctors)"
+	desc = "You've had a traumatic past, one that has scarred you for life. You stop dead in your tracks when looking at anything related to medical staff."
+	value = -2	//If other values get nerfed to -1, maybe keep this at -2? If too many people choose this phobia afterwards, put this to -1. Keep it -2 because you basically aren't able to heal yourself
+	given_phobia = "doctors"
 
 /datum/quirk/mute
 	name = "Mute"
