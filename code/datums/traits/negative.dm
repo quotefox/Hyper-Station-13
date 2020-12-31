@@ -411,7 +411,7 @@
 /datum/quirk/phobia/selectible/post_add()
 	var/mob/living/carbon/human/H = quirk_holder
 	phobia = new(given_phobia)
-	H?.gain_trauma(phobia, TRAUMA_RESILIENCE_ABSOLUTE)
+	H.gain_trauma(phobia, TRAUMA_RESILIENCE_ABSOLUTE)
 
 //datum/quirk/phobia/selectible/lizard	//Don't add this because it would probably hurt someone's feelings at some point
 
