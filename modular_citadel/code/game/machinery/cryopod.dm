@@ -428,6 +428,8 @@
 	return
 
 /obj/machinery/cryopod/syndicate/MouseDrop_T(mob/living/target, mob/user)
+	if(!isliving(target))
+		return
 	if(!target.faction.Find("Syndicate"))
 		to_chat(user, "<span class='warning'>The machine's internal checks prevent you from putting [target == user ? "yourself" : "[target]"] inside.</span>")
 		return
