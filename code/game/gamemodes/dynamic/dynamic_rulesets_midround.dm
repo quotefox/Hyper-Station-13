@@ -548,7 +548,7 @@
 	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
 	weight = 5
-	cost = 30
+	cost = 20
 	requirements = list(101,101,101,95,70,60,60,60,50,50)
 	high_population_requirement = 10
 	pop_per_requirement = 5
@@ -556,7 +556,6 @@
 	var/cultist_cap = list(2,2,2,3,3,4,4,4,4,4)
 	var/datum/team/cult/main_cult
 	chaos_min = 4.5
-	repeatable = FALSE
 
 /datum/dynamic_ruleset/midround/bloodcult/ready(forced = FALSE)
 	var/indice_pop = min(10,round(living_players.len/5)+1)
