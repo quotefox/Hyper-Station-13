@@ -127,10 +127,9 @@
 	mood_change = 2
 	timeout = 15 MINUTES
 
-/datum/mood_event/catnip
-	description = "<span class='nicegreen'>Whatever I ate was a-<i>nya</i>-zing!</span>\n"	//hate
-	mood_change = 4
-	//No timeout, handled by reagent
+/datum/mood_event/catnip	//Used by datum/reagent/catnip
+	description = "<span class='nicegreen'>Whatever I ate was a-<i>nya</i>-zing!</span>\n"
+	mood_change = 8		//Felinids become pacified from catnip, so give a bigger mood boost
 
 //Bloodsucker stuff below.
 /datum/mood_event/drankblood

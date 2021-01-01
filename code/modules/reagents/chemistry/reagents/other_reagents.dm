@@ -2197,7 +2197,6 @@
 	name = "catnip"
 	taste_description = "grass"
 	description = "A colorless liquid that makes people more peaceful and felines more happy."
-	metabolization_rate = 1.75 * REAGENTS_METABOLISM
 
 /datum/reagent/catnip/on_mob_metabolize(mob/living/carbon/L)
 	..()
@@ -2218,7 +2217,8 @@
 		to_chat(M, "<span class = 'notice'>[pick("Headpats feel nice.", "The feeling of a hairball...", "Backrubs would be nice.", "Whats behind those doors?")]</span>")
 		if(iscatperson(M))
 			M.emote("nya")
-			M.adjustArousalLoss(-2)
+			if(prob(80))
+				M.adjustArousalLoss(3)
 	..()
 
 // Adding new mutation toxin stuff from /code/modules/reagent/chemistry/recipes/slime_extracts.dm
