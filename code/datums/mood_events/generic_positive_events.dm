@@ -116,7 +116,7 @@
 
 /datum/mood_event/happy_empath/add_effects(var/mob/happytarget)
 	description = "<span class='nicegreen'>[happytarget.name]'s happiness is infectious!</span>\n"
-	
+
 /datum/mood_event/lewd_headpat
 	description = "<span class='nicegreen'>I love headpats so much!</span>\n"
 	mood_change = 3
@@ -126,6 +126,11 @@
 	description = "<span class='nicegreen'>Nothing like a hearty breakfast to start the shift.</span>\n"
 	mood_change = 2
 	timeout = 15 MINUTES
+
+/datum/mood_event/catnip
+	description = "<span class='nicegreen'>Whatever I ate was a-<i>nya</i>-zing!</span>\n"	//hate
+	mood_change = 4
+	//No timeout, handled by reagent
 
 //Bloodsucker stuff below.
 /datum/mood_event/drankblood
@@ -158,5 +163,5 @@
 	mood_change = 5
 
 /datum/mood_event/radiant
-	description = "<span class='nicegreen'>I have seen the light of The Phoenix; I cannot be stopped.</span>\n" 
+	description = "<span class='nicegreen'>I have seen the light of The Phoenix; I cannot be stopped.</span>\n"
 	mood_change = 12

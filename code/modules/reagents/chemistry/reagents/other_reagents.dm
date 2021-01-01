@@ -380,7 +380,7 @@
 					M.IgniteMob()
 				else
 					M.adjustToxLoss(1, 0)
-					M.adjustFireLoss(1, 0)	
+					M.adjustFireLoss(1, 0)
 	if(data >= 60)	// 30 units, 135 seconds
 		if(iscultist(M, FALSE, TRUE) || is_servant_of_ratvar(M, FALSE, TRUE))
 			if(iscultist(M))
@@ -2193,18 +2193,32 @@
 	color = "#BCC740" //RGB: 188, 199, 64
 	taste_description = "plant dust"
 
-/datum/reagent/pax/catnip
+/datum/reagent/catnip
 	name = "catnip"
 	taste_description = "grass"
 	description = "A colorless liquid that makes people more peaceful and felines more happy."
 	metabolization_rate = 1.75 * REAGENTS_METABOLISM
 
-/datum/reagent/pax/catnip/on_mob_life(mob/living/carbon/M)
-	if(prob(20))
-		M.emote("nya")
+/datum/reagent/catnip/on_mob_metabolize(mob/living/carbon/L)
+	..()
+	if(iscatperson(L))
+		SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "catnip", /datum/mood_event/catnip)
+		ADD_TRAIT(L, TRAIT_PACIFISM, type)	//Just like pax, except it only works for felinids
+	else
+		SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "catnip", /datum/mood_event/gross_food)
+
+/datum/reagent/catnip/on_mob_end_metabolize(mob/living/carbon/L)
+	..()
+	if(iscatperson(L))
+		SEND_SIGNAL(L, COMSIG_CLEAR_MOOD_EVENT, "catnip")
+		REMOVE_TRAIT(L, TRAIT_PACIFISM, type)
+
+/datum/reagent/catnip/on_mob_life(mob/living/carbon/M)
 	if(prob(20))
 		to_chat(M, "<span class = 'notice'>[pick("Headpats feel nice.", "The feeling of a hairball...", "Backrubs would be nice.", "Whats behind those doors?")]</span>")
-	M.adjustArousalLoss(2)
+		if(iscatperson(M))
+			M.emote("nya")
+			M.adjustArousalLoss(-2)
 	..()
 
 // Adding new mutation toxin stuff from /code/modules/reagent/chemistry/recipes/slime_extracts.dm
@@ -2243,7 +2257,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/insect
 	mutationtext = "<span class='danger'>The pain subsides. You feel... oddly attracted to light.</span>"
-	
+
 /datum/reagent/mutationtoxin/ipc
 	name = "IPC Mutation Toxin"
 	description = "A robotic toxin." //NANOMACHINES SON.
