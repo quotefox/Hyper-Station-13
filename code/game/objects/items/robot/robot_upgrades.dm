@@ -74,19 +74,24 @@
 /obj/item/borg/upgrade/vtec/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if(.)
-		if(R.speed < 0)
+		if(R.speed["enabled"])
 			to_chat(R, "<span class='notice'>A VTEC unit is already installed!</span>")
 			to_chat(user, "<span class='notice'>There's no room for another VTEC unit!</span>")
 			return FALSE
 
 		//R.speed = -2 // Gotta go fast.
-        //Citadel change - makes vtecs give an ability rather than reducing the borg's speed instantly
-		R.AddAbility(new/obj/effect/proc_holder/silicon/cyborg/vtecControl)
+		//Citadel change - makes vtecs give an ability rather than reducing the borg's speed instantly
+		//Hyper change - Also makes vtec take up charge
+		var/obj/effect/proc_holder/silicon/cyborg/vtecControl/vtec = new
+		R.speed["enabled"] = TRUE
+		R.speed["ref"] = vtec
+		R.speed["timer"] = addtimer(CALLBACK(vtec, /obj/effect/proc_holder/silicon/cyborg/vtecControl/proc/useCharge, R), 50, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_LOOP)
+		R.AddAbility (R.speed["ref"])
 
 /obj/item/borg/upgrade/vtec/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if (.)
-		R.speed = initial(R.speed)
+		R.removeVTecStats()
 
 /obj/item/borg/upgrade/disablercooler
 	name = "cyborg rapid disabler cooling module"
@@ -581,14 +586,12 @@
 			R.SetLockdown(0)
 		R.anchored = FALSE
 		R.notransform = FALSE
-		R.resize = 2
 		R.hasExpanded = TRUE
 		R.update_transform()
 
 /obj/item/borg/upgrade/expand/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if (.)
-		R.resize = 0.5
 		R.hasExpanded = FALSE
 		R.update_transform()
 

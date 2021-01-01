@@ -241,11 +241,13 @@
 	item_state = "coffee"
 	spillable = TRUE
 
+/* Doesn't exist lol
 /datum/chemical_reaction/catnip_tea
 	name = "Catnip Tea"
 	id = "catnip_tea"
 	results = list("catnip_tea" = 3)
-	required_reagents = list("tea" = 5, "catnip" = 2)
+	required_reagents = list(/datum/reagent/consumable/tea = 5, /datum/reagent/pax/catnip = 2)
+*/
 
 /obj/item/reagent_containers/food/drinks/mug/on_reagent_change(changetype)
 	if(reagents.total_volume)

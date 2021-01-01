@@ -5,19 +5,17 @@
 	unique = 1   // 0  Normal book, 1  Should not be treated as normal book, unable to be copied, unable to be modified
 	var/list/remarks = list() //things to read about while learning.
 	var/pages_to_mastery = 3 //Essentially controls how long a mob must keep the book in his hand to actually successfully learn
+	var/page_time = 50	//How long it takes to read a page
 	var/reading = FALSE //sanity
 	var/oneuse = TRUE //default this is true, but admins can var this to 0 if we wanna all have a pass around of the rod form book
 	var/used = FALSE //only really matters if oneuse but it might be nice to know if someone's used it for admin investigations perhaps
 
 /obj/item/book/granter/proc/turn_page(mob/user)
 	playsound(user, pick('sound/effects/pageturn1.ogg','sound/effects/pageturn2.ogg','sound/effects/pageturn3.ogg'), 30, 1)
-	if(do_after(user,50, user))
-		if(remarks.len)
-			to_chat(user, "<span class='notice'>[pick(remarks)]</span>")
-		else
-			to_chat(user, "<span class='notice'>You keep reading...</span>")
-		return TRUE
-	return FALSE
+	if(remarks.len)
+		to_chat(user, "<span class='notice'>[pick(remarks)]</span>")
+	else
+		to_chat(user, "<span class='notice'>You keep reading...</span>")
 
 /obj/item/book/granter/proc/recoil(mob/user) //nothing so some books can just return
 
@@ -25,7 +23,7 @@
 	return FALSE
 
 /obj/item/book/granter/proc/on_reading_start(mob/user)
-	to_chat(user, "<span class='notice'>You start reading [name]...</span>")
+	to_chat(user, "<span class='notice'>You start reading \"[name]\"...</span>")
 
 /obj/item/book/granter/proc/on_reading_stopped(mob/user)
 	to_chat(user, "<span class='notice'>You stop reading...</span>")
@@ -39,7 +37,6 @@
 
 /obj/item/book/granter/attack_self(mob/user)
 	if(reading)
-		to_chat(user, "<span class='warning'>You're already reading this!</span>")
 		return FALSE
 	if(already_known(user))
 		return FALSE
@@ -48,15 +45,48 @@
 	else
 		on_reading_start(user)
 		reading = TRUE
-		for(var/i=1, i<=pages_to_mastery, i++)
-			if(!turn_page(user))
-				on_reading_stopped()
-				reading = FALSE
-				return
-		if(do_after(user,50, user))
+		if(handle_progress(user))
 			on_reading_finished(user)
+		else
+			on_reading_stopped(user)
 		reading = FALSE
 	return TRUE
+
+/obj/item/book/granter/proc/handle_progress(mob/user)
+	if(!user || !page_time || !pages_to_mastery)	//Sanity check
+		return
+
+	var/time_to_complete = page_time*(pages_to_mastery+1)
+
+	var/datum/progressbar/Bar
+	Bar = new (user, time_to_complete, user)
+
+	var/time_start = world.time
+	var/time_end = world.time + time_to_complete
+
+	var/starting_loc = user.loc
+
+	var/iteration = 0
+	while(world.time < time_end)
+		if (isliving(user))
+			var/mob/living/L = user
+			if (L.stat || L.IsKnockdown() || L.IsStun())
+				qdel(Bar)
+				return FALSE
+		if (starting_loc != user.loc || QDELETED(user))
+			qdel(Bar)
+			return FALSE
+		stoplag(1)
+		var/time_elapsed = world.time - time_start
+		Bar.update(time_elapsed)
+
+		if (time_elapsed > page_time*(iteration+1) && iteration < pages_to_mastery)
+			iteration++
+			turn_page(user)
+
+	qdel(Bar)
+	return TRUE
+
 
 ///ACTION BUTTONS///
 
@@ -69,7 +99,7 @@
 		return TRUE
 	for(var/datum/action/A in user.actions)
 		if(A.type == granted_action)
-			to_chat(user, "<span class='notice'>You already know all about [actionname].</span>")
+			to_chat(user, "<span class='notice'>You know enough about [actionname].</span>")
 			return TRUE
 	return FALSE
 

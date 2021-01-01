@@ -74,8 +74,6 @@ GLOBAL_LIST_INIT(hyper_special_roles, list(
 		/datum/uplink_item/stealthy_tools/syndigaloshes,
 		/datum/uplink_item/stealthy_tools/jammer,
 		/datum/uplink_item/stealthy_tools/smugglersatchel,
-		/datum/uplink_item/device_tools/emag,
-		/datum/uplink_item/device_tools/emagrecharge,
 		/datum/uplink_item/device_tools/binary,
 		/datum/uplink_item/device_tools/compressionkit,
 		/datum/uplink_item/device_tools/briefcase_launchpad,

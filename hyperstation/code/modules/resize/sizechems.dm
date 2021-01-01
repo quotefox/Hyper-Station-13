@@ -15,8 +15,8 @@
 	name = "Cell-Volume Altering Base"
 	id = "sizechem"
 	mix_message = "the reaction rapidly alters in size!"
-	required_reagents = list("growthserum" = 0.15, "clonexadone" = 0.15, "gold" = 0.15, "acetone" = 0.15)
-	results = list("sizechem" = 0.3)
+	required_reagents = list(/datum/reagent/growthserum = 0.15, /datum/reagent/medicine/clonexadone = 0.15, /datum/reagent/gold = 0.15, /datum/reagent/acetone = 0.15)
+	results = list(/datum/reagent/sizechem = 0.3)
 	required_temp = 1
 	//Fermichem vars
 	OptimalTempMin 		= 600 		// Lower area of bell curve for determining heat based rate reactions
@@ -50,8 +50,8 @@
 	name = "Prospacillin"
 	id = "growthchem"
 	mix_message = "the reaction appears to grow!"
-	required_reagents = list("sizechem" = 0.15, "condensedcapsaicin" = 0.15, "aphro" = 0.30)
-	results = list("growthchem" = 0.25)
+	required_reagents = list(/datum/reagent/sizechem = 0.15, /datum/reagent/consumable/condensedcapsaicin = 0.15, /datum/reagent/drug/aphrodisiac = 0.30)
+	results = list(/datum/reagent/growthchem = 0.25)
 	required_temp = 1
 	OptimalTempMin 		= 700 		// Lower area of bell curve for determining heat based rate reactions
 	OptimalTempMax 		= 730 		// Upper end for above
@@ -99,8 +99,8 @@
 	name = "Diminicillin"
 	id = "shrinkchem"
 	mix_message = "the reaction appears to shrink!"
-	required_reagents = list("sizechem" = 0.15, "frostoil" = 0.15, "aphro" = 0.30)
-	results = list("shrinkchem" = 0.25)
+	required_reagents = list(/datum/reagent/sizechem = 0.15, /datum/reagent/consumable/frostoil = 0.15, /datum/reagent/drug = 0.30)
+	results = list(/datum/reagent/shrinkchem = 0.25)
 	required_temp = 1
 	OptimalTempMin 		= 100 		// Lower area of bell curve for determining heat based rate reactions
 	OptimalTempMax 		= 150 		// Upper end for above
