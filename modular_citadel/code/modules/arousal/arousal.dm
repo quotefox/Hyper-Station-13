@@ -124,6 +124,7 @@
 
 /mob/living/carbon/updatearousal()
 	. = ..()
+
 	for(var/obj/item/organ/genital/G in internal_organs)
 		if(istype(G))
 			var/datum/sprite_accessory/S
@@ -143,6 +144,8 @@
 			else
 				G.aroused_state = FALSE
 			G.update_appearance()
+
+
 
 /mob/living/proc/update_arousal_hud()
 	return FALSE
@@ -406,12 +409,14 @@
 			log_game("Debug: [L] has been impregnated by [src]")
 			to_chat(L, "<span class='userlove'>You feel your hormones change, and a motherly instinct take over.</span>") //leting them know magic has happened.
 			W.pregnant = 1
+			if (HAS_TRAIT(L, TRAIT_HEAT))
+				SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "heat", /datum/mood_event/heat) //well done you perv.
+				REMOVE_TRAIT(L, TRAIT_HEAT, type) //take the heat away, you satisfied it!
 
+	 		//Make breasts produce quicker.
 			var/obj/item/organ/genital/breasts/B = L.getorganslot("breasts")
-
-			if (B.fluid_mult < 0.5 && B) //pregnancy causes mammals to produce milk faster. no point setting their fluid, lower if they are already higher.
+			if (B.fluid_mult < 0.5 && B)
 				B.fluid_mult = 0.5
-
 
 
 /mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time = 30) //For beaker-filling, beware the bartender

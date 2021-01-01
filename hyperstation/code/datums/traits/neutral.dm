@@ -29,7 +29,7 @@
 
 /datum/quirk/inheat
 	name = "In Heat"
-	desc = "Your system burns with the desire to be bred, your body will betray you and alert others' to your desire when examining you. Ignoring your body may cause you to become sad and needy."
+	desc = "Your system burns with the desire to be bred, your body will betray you and alert others' to your desire when examining you. Satisfying your lust will make you happy, but ignoring it may cause you to become sad and needy."
 	value = 0
 	mob_trait = TRAIT_HEAT
 	gain_text = "<span class='notice'>You body burns with the desire to be bred.</span>"

@@ -3007,6 +3007,7 @@
 #include "code\modules\zombie\items.dm"
 #include "code\modules\zombie\organs.dm"
 #include "hyperstation\code\datums\elements\holder_micro.dm"
+#include "hyperstation\code\datums\mood_events\events.dm"
 #include "hyperstation\code\datums\ruins\lavaland.dm"
 #include "hyperstation\code\datums\traits\good.dm"
 #include "hyperstation\code\datums\traits\neutral.dm"
