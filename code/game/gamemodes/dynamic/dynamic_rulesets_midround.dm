@@ -535,6 +535,71 @@
 
 //////////////////////////////////////////////
 //                                          //
+//         BLOOD CULT (MIDROUND)            //
+//                                          //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/midround/bloodcult
+	name = "Blood Cult"
+	antag_flag = ROLE_CULTIST
+	antag_datum = /datum/antagonist/cult
+	minimum_required_age = 14
+	restricted_roles = list("AI", "Cyborg")
+	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	required_candidates = 1
+	weight = 5
+	cost = 30
+	requirements = list(101,101,101,95,70,60,60,60,50,50)
+	high_population_requirement = 10
+	pop_per_requirement = 5
+	flags = HIGHLANDER_RULESET
+	var/cultist_cap = list(2,2,2,3,3,4,4,4,4,4)
+	var/datum/team/cult/main_cult
+	chaos_min = 4.5
+	repeatable = FALSE
+
+/datum/dynamic_ruleset/midround/bloodcult/ready(forced = FALSE)
+	var/indice_pop = min(10,round(living_players.len/5)+1)
+	required_candidates = cultist_cap[indice_pop]
+	. = ..()
+
+datum/dynamic_ruleset/midround/bloodcult/trim_candidates()
+	..()
+	for(var/mob/living/player in living_players)
+		if(issilicon(player)) // Your assigned role doesn't change when you are turned into a silicon.
+			living_players -= player
+			continue
+		if(is_centcom_level(player.z))
+			living_players -= player // We don't autotator people in CentCom
+			continue
+		if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
+			living_players -= player // We don't autotator people with roles already
+
+/datum/dynamic_ruleset/midround/bloodcult/execute()
+	var/mob/H = pick(living_players)
+	assigned += H.mind
+	living_players -= H
+	main_cult = new
+	for(var/datum/mind/M in assigned)
+		var/datum/antagonist/cult/new_cultist = new antag_datum()
+		new_cultist.cult_team = main_cult
+		new_cultist.give_equipment = TRUE
+		M.add_antag_datum(new_cultist)
+	main_cult.setup_objectives()
+	return TRUE
+
+/datum/dynamic_ruleset/midround/bloodcult/round_result()
+	..()
+	if(main_cult.check_cult_victory())
+		SSticker.mode_result = "win - cult win"
+		SSticker.news_report = CULT_SUMMON
+	else
+		SSticker.mode_result = "loss - staff stopped the cult"
+		SSticker.news_report = CULT_FAILURE
+
+
+//////////////////////////////////////////////
+//                                          //
 //           XENOMORPH (GHOST)              //
 //                                          //
 //////////////////////////////////////////////
