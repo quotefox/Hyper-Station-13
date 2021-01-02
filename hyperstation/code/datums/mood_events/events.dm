@@ -7,3 +7,8 @@
 	description = "<span class='userlove'>I have satisfied my heat, and I'm filled with happiness!</span>\n"
 	mood_change = 3
 	timeout = 5 MINUTES
+
+/datum/mood_event/kiss
+	description = "<span class='nicegreen'>Someone kissed me, I feel happy!</span>\n"
+	mood_change = 2
+	timeout = 3 MINUTES

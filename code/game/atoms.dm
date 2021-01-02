@@ -44,6 +44,7 @@
 	var/rad_insulation = RAD_NO_INSULATION
 
 	var/icon/blood_splatter_icon
+	var/icon/cum_splatter_icon
 	var/list/fingerprints
 	var/list/fingerprintshidden
 	var/list/blood_DNA
@@ -512,9 +513,6 @@
 	blood_DNA = null
 
 /atom/proc/wash_cream()
-	return TRUE
-
-/atom/proc/wash_cum()
 	return TRUE
 
 /atom/proc/isinspace()
