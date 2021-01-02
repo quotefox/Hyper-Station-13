@@ -212,7 +212,7 @@
 		return
 	var/mob/living/M = usr
 	if(M.canbearoused)
-		src.ui_interact(usr)
+		ui_interact(usr)
 
 /mob/living/proc/mob_climax()//This is just so I can test this shit without being forced to add actual content to get rid of arousal. Will be a very basic proc for a while.
 	set name = "Masturbate"
