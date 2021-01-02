@@ -26,8 +26,9 @@
 				W.amount = (W.amount - 2)
 				if(W.amount < 1)
 					qdel(W)
-		else
+		else if(W.is_fabric)
 			to_chat("<span class='notice'>You need at least 2 [W.name] to loom into fabric!</span>")
+		return
 	else
 		switch (I.tool_behaviour)
 			if (TOOL_SCREWDRIVER)
