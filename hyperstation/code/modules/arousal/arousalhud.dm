@@ -5,7 +5,7 @@
 
 /obj/screen/arousal/ui_interact(mob/user)
 	. = ..()
-	var/dat	=	{"<B>Genitals</B><BR><HR>"} //for noncon toggling and erp toggling on the fly.
+	var/dat	=	{"<B>Genitals</B><BR><HR>"}
 
 	//List genitals
 	var/obj/item/organ/genital/penis/P = user.getorganslot("penis")
@@ -46,12 +46,12 @@
 
 		if(isliving(user.pulling))
 			if(iscarbon(user.pulling))
-				dat	+= "<a href='byond://?src=[REF(src)];climaxwith=1'>Climax with [user.pulling]</A>" //you can cum "with" living people.
+				dat	+= "<a href='byond://?src=[REF(src)];climaxwith=1'>Climax with [user.pulling]</A>"
 				dat	+=	{"(Orgasm with another person.)<BR>"}
 
 				var/mob/living/carbon/human/H = user.pulling
 				if(H.breedable && P && H)
-					dat	+= "<a href='byond://?src=[REF(src)];impreg=1'>Impregnate [user.pulling]</A>" //you can cum "with" living people.
+					dat	+= "<a href='byond://?src=[REF(src)];impreg=1'>Impregnate [user.pulling]</A>"
 					dat	+=	"(Climax inside another person, knocking them up.)<BR>"
 
 
