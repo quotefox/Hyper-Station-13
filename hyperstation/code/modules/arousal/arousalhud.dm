@@ -61,8 +61,11 @@
 	if(P.sounding == 1)
 		dat	+= "<a href='byond://?src=[REF(src)];removesound=1'>Remove Sounding Rod</A><BR>"
 
+	//bottom options
 	dat	+= "<a href='byond://?src=[REF(src)];refresh=1'>Refresh</A>"
-	dat	+= "<a href='byond://?src=[REF(src)];omenu=1'>Old Menu</A><BR>"
+	dat	+= "<a href='byond://?src=[REF(src)];omenu=1'>Old Menu</A>"
+	dat	+= "<a href='byond://?src=[REF(src)];underwear=1'>Toggle Undergarments </A>"
+	dat	+= "<BR>"
 
 	var/datum/browser/popup = new(user, "arousal", "Arousal Panel")
 	popup.set_content(dat)
@@ -170,8 +173,12 @@
 		H.menuremovesounding()
 
 	if(href_list["omenu"])
-		H.mob_climax()
 		usr << browse(null, "window=arousal") //closes the window
+		H.mob_climax()
+		return
+
+	if(href_list["underwear"])
+		H.underwear_toggle()
 		return
 
 	src.ui_interact(usr)
