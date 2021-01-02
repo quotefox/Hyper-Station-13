@@ -380,7 +380,7 @@
 					M.IgniteMob()
 				else
 					M.adjustToxLoss(1, 0)
-					M.adjustFireLoss(1, 0)	
+					M.adjustFireLoss(1, 0)
 	if(data >= 60)	// 30 units, 135 seconds
 		if(iscultist(M, FALSE, TRUE) || is_servant_of_ratvar(M, FALSE, TRUE))
 			if(iscultist(M))
@@ -1206,12 +1206,14 @@
 			O.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 			SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 			O.clean_blood()
+			O.wash_cum()
 
 /datum/reagent/space_cleaner/reaction_turf(turf/T, reac_volume)
 	if(reac_volume >= 1)
 		T.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 		SEND_SIGNAL(T, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 		T.clean_blood()
+		T.wash_cum()
 		for(var/obj/effect/decal/cleanable/C in T)
 			qdel(C)
 
@@ -1254,6 +1256,7 @@
 					if(H.shoes.clean_blood())
 						H.update_inv_shoes()
 				H.wash_cream()
+				H.wash_cum()
 			SEND_SIGNAL(M, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 			M.clean_blood()
 
@@ -2243,7 +2246,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/insect
 	mutationtext = "<span class='danger'>The pain subsides. You feel... oddly attracted to light.</span>"
-	
+
 /datum/reagent/mutationtoxin/ipc
 	name = "IPC Mutation Toxin"
 	description = "A robotic toxin." //NANOMACHINES SON.

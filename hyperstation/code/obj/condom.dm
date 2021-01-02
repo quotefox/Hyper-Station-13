@@ -98,7 +98,7 @@
 	var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
 	if(P.condom)
 		new /obj/item/condom/filled(usr.loc)
-		to_chat(src, "The condom bubbles outwards and fills with your cum.")
+		to_chat(src, "<span class='userlove'>The condom around your penis, bubbles outwards and fills with your cum.</span>")
 		P.condom = 0
 		P.colourtint = ""
 		src.update_genitals()

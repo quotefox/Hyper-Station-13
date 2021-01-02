@@ -22,6 +22,7 @@
 	var/internal				= FALSE
 	var/hidden					= FALSE
 	var/colourtint				= ""
+	var/mode					= "clothes"
 
 /obj/item/organ/genital/Initialize()
 	. = ..()
@@ -70,16 +71,19 @@
 		if("Always visible")
 			through_clothes = TRUE
 			hidden = FALSE
+			mode = "visible"
 			if(!(src in owner.exposed_genitals))
 				owner.exposed_genitals += src
 		if("Hidden by clothes")
 			through_clothes = FALSE
 			hidden = TRUE
+			mode = "clothes"
 			if(src in owner.exposed_genitals)
 				owner.exposed_genitals -= src
 		if("Always hidden")
 			through_clothes = FALSE
 			hidden = TRUE
+			mode = "hidden"
 			if(src in owner.exposed_genitals)
 				owner.exposed_genitals -= src
 
