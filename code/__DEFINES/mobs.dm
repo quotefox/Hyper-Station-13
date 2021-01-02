@@ -39,6 +39,7 @@
 #define MOB_ORGANIC 	"organic"
 #define MOB_INORGANIC 	"inorganic"
 #define MOB_ROBOTIC 	"robotic"
+#define MOB_SILICON     "silicon"
 #define MOB_UNDEAD		"undead"
 #define MOB_HUMANOID 	"humanoid"
 #define MOB_BUG 		"bug"

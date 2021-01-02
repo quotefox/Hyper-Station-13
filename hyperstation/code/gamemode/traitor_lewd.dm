@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(hyper_special_roles, list(
 
 /datum/game_mode/traitor/lewd/generate_report()
 	return "Although more specific threats are commonplace, you should always remain vigilant for Syndicate agents aboard your station. Syndicate communications have implied that many \
-		Nanotrasen employees are Syndicate agents with hidden memories that may be activated at a moment's notice, so it's possible that these agents might not even know their positions."
+		Kinaris employees are Syndicate agents with hidden memories that may be activated at a moment's notice, so it's possible that these agents might not even know their positions."
 
 /datum/mind/proc/make_LewdTraitor()
 	if(!(has_antag_datum(/datum/antagonist/traitor/lewd)))

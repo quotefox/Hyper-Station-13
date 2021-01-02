@@ -878,7 +878,7 @@
 	attack_verb = list("healed", "cured", "demoted")
 
 /obj/item/toy/plush/mammal/redwood
-	desc = "An adorable stuffed toy resembling a Nanotrasen Captain. That just happens to be a bunny."
+	desc = "An adorable stuffed toy resembling a Kinaris Captain. That just happens to be a bunny."
 	icon_state = "redwood"
 	item_state = "redwood"
 	attack_verb = list("ordered", "bapped", "reprimanded")
