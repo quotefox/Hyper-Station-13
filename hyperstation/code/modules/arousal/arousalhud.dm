@@ -55,12 +55,12 @@
 					dat	+=	"(Climax inside another person, knocking them up.)<BR>"
 
 
-	dat	+=	{"<HR>"}//Newline for the objects
+
 	if(P.condom == 1)
 		dat	+= "<a href='byond://?src=[REF(src)];removecondom=1'>Remove Condom</A><BR>"
 	if(P.sounding == 1)
 		dat	+= "<a href='byond://?src=[REF(src)];removesound=1'>Remove Sounding Rod</A><BR>"
-
+	dat	+=	{"<HR>"}//Newline for the objects
 	//bottom options
 	dat	+= "<a href='byond://?src=[REF(src)];refresh=1'>Refresh</A>"
 	dat	+= "<a href='byond://?src=[REF(src)];omenu=1'>Old Menu</A>"
