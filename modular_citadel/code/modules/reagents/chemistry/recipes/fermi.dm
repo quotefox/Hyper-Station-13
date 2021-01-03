@@ -555,3 +555,28 @@
 	HIonRelease 	= 0.1
 	RateUpLim 		= 2
 	FermiChem 		= TRUE
+
+//Tablesmitium, oh no
+
+/datum/chemical_reaction/fermi/tablesmitium
+	name = "Tablesmitium"
+	id = /datum/reagent/fermi/tablesmitium
+	results = list(/datum/reagent/fermi/tablesmitium = 1)
+	required_reagents = list(/datum/reagent/bluespace = 1, /datum/reagent/uranium = 1, /datum/reagent/consumable/coffee = 1)
+	mix_message = "the reaction... Smells like admin abuse?"
+	//FermiChem vars:
+	OptimalTempMin 		= 500 // Lower area of bell curve for determining heat based rate reactions
+	OptimalTempMax		= 600 // Upper end for above
+	ExplodeTemp			= 635 //Temperature at which reaction explodes
+	OptimalpHMin		= 7 // Lowest value of pH determining pH a 1 value for pH based rate reactions (Plateu phase)
+	OptimalpHMax		= 9 // Higest value for above
+	ReactpHLim			= 5 // How far out pH wil react, giving impurity place (Exponential phase)
+	CatalystFact		= 0 // How much the catalyst affects the reaction (0 = no catalyst)
+	CurveSharpT 		= 3 // How sharp the temperature exponential curve is (to the power of value)
+	CurveSharppH 		= 5 // How sharp the pH exponential curve is (to the power of value)
+	ThermicConstant		= 10 //Temperature change per 1u produced
+	HIonRelease 		= -0.02 //pH change per 1u reaction
+	RateUpLim 			= 3 //Optimal/max rate possible if all conditions are perfect
+	FermiChem 			= TRUE//If the chemical uses the Fermichem reaction mechanics
+	FermiExplode 		= FALSE //If the chemical explodes in a special way
+	PurityMin			= 0.4 //The minimum purity something has to be above, otherwise it explodes.

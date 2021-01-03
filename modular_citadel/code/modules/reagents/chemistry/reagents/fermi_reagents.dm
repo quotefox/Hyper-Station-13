@@ -401,3 +401,62 @@
 	to_chat(H, "<span class='notice'>[words]</span>")
 	qdel(catto)
 	log_game("FERMICHEM: [H] ckey: [H.key] has returned to normal")
+
+
+//Tablesmitium
+
+/datum/reagent/fermi/tablesmitium
+	name = "Tablesmitium"
+	description = "Why is this a thing? Why did CentCom even commission such a thing?"
+	color = "#7bbcd6"
+	overdose_threshold = 30
+	impure_chem 			= /datum/reagent/toxin/acid //AAAA
+	inverse_chem_val 		= 0.25
+	inverse_chem		= /datum/reagent/toxin/acid //OW. ACID.
+	taste_description = "what can only be described as licking every single table in the galaxy at the same time. Curious."
+	pH = 9
+	value = 90
+	can_synth = FALSE
+
+/datum/reagent/fermi/tablesmitium/on_mob_life(mob/living/carbon/C)
+	var/list/areas = list()
+	for(var/area/A in world)
+		if(A.z == SSmapping.station_start)
+			areas += A
+	var/area/B = pick(areas)
+	var/list/obj/structure/table/tables = list()
+	for(var/obj/structure/table/T in B)
+		tables += T
+	if(tables.len)
+		var/obj/structure/table/S = pick(tables)
+		do_sparks(5,FALSE,C)
+		S.tablepush(C, C)
+		do_sparks(5,FALSE,C)
+		playsound(C.loc, 'sound/effects/phasein.ogg', 50, 1)
+		playsound(C.loc, 'hyperstation/sound/misc/slam.ogg', 50, 1)
+	..()
+
+/datum/reagent/fermi/tablesmitium/overdose_start(mob/living/M)
+	. = ..()
+	to_chat(M, "<span class='userdanger'>You have stared into the abyss of tables... And it gazed back.</span>")
+	log_game("FERMICHEM: [M] ckey: [M.key] has overdosed on tablesmitium")
+	M.Jitter(20)
+	metabolization_rate += 0.5 //So you're not stuck forever tabling.
+
+/datum/reagent/fermi/tablesmitium/overdose_process(mob/living/carbon/C)
+	var/list/obj/structure/table/tables = list()
+	for(var/obj/structure/table/T in view_or_range(10, C, "range"))
+		tables += T
+	if(tables.len)
+		var/obj/structure/table/S = pick(tables)
+		C.throw_at(S, rand(8,10), 14, C)
+		if(prob(25))
+			radiation_pulse(C, 10)
+			playsound(C.loc, 'sound/effects/supermatter.ogg', 50, 1)
+			var/turf/B = get_turf(C.loc)
+			if(!isspaceturf(B))
+				var/obj/effect/decal/cleanable/greenglow/radioactive/GG = locate() in B.contents
+				if(!GG)
+					GG = new/obj/effect/decal/cleanable/greenglow/radioactive(B)
+				GG.reagents.add_reagent(/datum/reagent/uranium, 3)
+	..()
