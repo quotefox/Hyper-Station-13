@@ -307,12 +307,15 @@ datum/reagent/fermi/nanite_b_gone/reaction_obj(obj/O, reac_volume)
 		playsound(get_turf(M), 'modular_citadel/sound/voice/merowr.ogg', 50, 1)
 	holder.clear_reagents()
 
+//Hyperstation Thalpy Edit (Please do not change this)v
 /datum/reagent/fermi/acidic_buffer
 	name = "Acidic buffer"
 	description = "This reagent will consume itself and move the pH of a beaker towards acidity when added to another."
 	color = "#fbc314"
 	pH = 0
+	chemical_flags = REAGENT_FORCEONNEW
 	can_synth = TRUE
+//Hyperstation Thalpy Edit (Please do not change this)^
 
 //Consumes self on addition and shifts pH
 /datum/reagent/fermi/acidic_buffer/on_new(datapH)

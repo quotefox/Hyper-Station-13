@@ -101,7 +101,9 @@
 	if(St.purity < 1)
 		St.volume *= St.purity
 		St.purity = 1
-	var/amount = CLAMP(0.002, 0, N.volume)
+	if(!N)
+		return //fuck you, runtimeman
+	var/amount = clamp(0.002, 0, N.volume)
 	N.volume -= amount
 	St.data["grown_volume"] = St.data["grown_volume"] + added_volume
 	St.name = "[initial(St.name)] [round(St.data["grown_volume"], 0.1)]u colony"

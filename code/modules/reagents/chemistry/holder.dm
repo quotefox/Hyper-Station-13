@@ -593,6 +593,7 @@
 	handle_reactions()
 	update_total()
 	//Reaction sounds and words
+	playsound(get_turf(my_atom), C.mix_sound, 80, 1)
 	var/list/seen = viewers(5, get_turf(my_atom))
 	var/iconhtml = icon2html(my_atom, seen)
 	for(var/mob/M in seen)

@@ -186,13 +186,15 @@
 	var/beakerContents[0]
 	if(beaker)
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
-			beakerContents.Add(list(list("name" = R.name, "id" = ckey(R.name), "volume" = R.volume))) // list in a list because Byond merges the first list...
+			beakerContents.Add(list(list("name" = R.name, "id" = R.type, "volume" = R.volume))) // list in a list because Byond merges the first list...
+			//"id" was changed to R.Type as id is now obsolete. This will allow special reagents such as synthtissue to be extracted in a chem master.
 		data["beakerContents"] = beakerContents
 
 	var/bufferContents[0]
 	if(reagents.total_volume)
 		for(var/datum/reagent/N in reagents.reagent_list)
-			bufferContents.Add(list(list("name" = N.name, "id" = ckey(N.name), "volume" = N.volume))) // ^
+			bufferContents.Add(list(list("name" = N.name, "id" = N.type, "volume" = N.volume))) // ^
+			// ^
 		data["bufferContents"] = bufferContents
 
 	//Calculated at init time as it never changes
@@ -214,24 +216,21 @@
 
 		if("transferToBuffer")
 			if(beaker)
-				var/reagent = GLOB.name2reagent[params["id"]]
+				var/reagent = text2path(params["id"]) //This change was necessary due to some byond fuckery with reagents being translated back to their paths. Please do not modify this under any circumstance, otherwise you will break synthtissue.
 				var/amount = text2num(params["amount"])
-				message_admins("[amount] + [reagent]")
 				if (amount > 0)
 					end_fermi_reaction()
 					beaker.reagents.trans_id_to(src, reagent, amount)
-					message_admins("Passed Transfer Phase")
 					. = TRUE
 				else if (amount == -1) // -1 means custom amount
 					useramount = input("Enter the Amount you want to transfer:", name, useramount) as num|null
 					if (useramount > 0)
 						end_fermi_reaction()
 						beaker.reagents.trans_id_to(src, reagent, useramount)
-						message_admins("Passed Transfer Phase")
 						. = TRUE
 
 		if("transferFromBuffer")
-			var/reagent = GLOB.name2reagent[params["id"]]
+			var/reagent = text2path(params["id"]) //This change was necessary due to some byond fuckery with reagents being translated back to their paths. Please do not modify this under any circumstance, otherwise you will break synthtissue.
 			var/amount = text2num(params["amount"])
 			if (amount > 0)
 				if(mode)
@@ -426,7 +425,7 @@
 
 		//END CITADEL ADDITIONS
 		if("analyzeBeak")
-			var/datum/reagent/R = GLOB.name2reagent[params["id"]]
+			var/datum/reagent/R = text2path(params["id"])
 			if(R)
 				var/state = "Unknown"
 				if(initial(R.reagent_state) == 1)
@@ -453,7 +452,7 @@
 				return
 
 		if("analyzeBuff")
-			var/datum/reagent/R = GLOB.name2reagent[params["id"]]
+			var/datum/reagent/R = text2path(params["id"])
 			if(R)
 				var/state = "Unknown"
 				if(initial(R.reagent_state) == 1)
@@ -486,9 +485,7 @@
 
 
 /obj/machinery/chem_master/proc/end_fermi_reaction()//Ends any reactions upon moving.
-	message_admins("fermi reaction end called")
 	if(beaker && beaker.reagents.fermiIsReacting)
-		message_admins("fermi is reacting, calling end")
 		beaker.reagents.fermiEnd()
 
 /obj/machinery/chem_master/proc/isgoodnumber(num)
