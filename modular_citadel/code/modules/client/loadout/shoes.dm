@@ -92,3 +92,8 @@ datum/gear/highheels
 	name = "High Heels"
 	category = SLOT_SHOES
 	path= /obj/item/clothing/shoes/highheels
+
+datum/gear/romansandals
+	name = "Roman sandals"
+	category = SLOT_SHOES
+	path= /obj/item/clothing/shoes/roman
