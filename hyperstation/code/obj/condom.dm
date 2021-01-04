@@ -17,7 +17,7 @@ obj/item/condom/Initialize()
 obj/item/condom/update_icon()
 	switch(reagents.total_volume)
 		if(0 to 100)
-			icon_state = "b_cgitondom_inflated"
+			icon_state = "b_condom_inflated"
 		if(101 to 249)
 			icon_state = "b_condom_inflated_large"
 		if(250 to 300)
@@ -112,7 +112,7 @@ obj/item/condom/update_icon()
 		return
 	if(!P.condom)
 		return
-	
+
 	var/obj/item/condom/filled/C = new
 	P.linked_organ.reagents.trans_to(C, P.linked_organ.reagents.total_volume)
 	C.loc = loc
