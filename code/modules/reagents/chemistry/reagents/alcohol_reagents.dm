@@ -1034,7 +1034,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 
 /datum/reagent/consumable/ethanol/grog
 	name = "Grog"
-	description = "Watered down rum, Nanotrasen approves!"
+	description = "Watered down rum, Kinaris approves!"
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 1 //Basically nothing
 	taste_description = "a poor excuse for alcohol"
@@ -1088,12 +1088,12 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	taste_description = "stomach acid"
 	glass_icon_state = "acidspitglass"
 	glass_name = "Acid Spit"
-	glass_desc = "A drink from Nanotrasen. Made from live aliens."
+	glass_desc = "A drink from Kinaris. Made from live aliens."
 	value = 3
 
 /datum/reagent/consumable/ethanol/amasec
 	name = "Amasec"
-	description = "Official drink of the Nanotrasen Gun-Club!"
+	description = "Official drink of the Kinaris Gun-Club!"
 	color = "#664300" // rgb: 102, 67, 0
 	boozepwr = 35
 	quality = DRINK_GOOD
@@ -1315,7 +1315,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	taste_description = "da bomb"
 	glass_icon_state = "atomicbombglass"
 	glass_name = "Atomic Bomb"
-	glass_desc = "Nanotrasen cannot take legal responsibility for your actions after imbibing."
+	glass_desc = "Kinaris cannot take legal responsibility for your actions after imbibing."
 	value = 3.56
 
 /datum/reagent/consumable/ethanol/atomicbomb/on_mob_life(mob/living/carbon/M)
@@ -1374,7 +1374,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	glass_icon_state = "neurotoxinglass"
 	glass_name = "Neurotoxin"
 	glass_desc = "A drink that is guaranteed to knock you silly."
-	pH = 4.3
 	//SplitChem			= TRUE
 	impure_chem 			= /datum/reagent/consumable/ethanol/neuroweak
 	inverse_chem_val 		= 0.5 //Clear conversion
@@ -1419,11 +1418,6 @@ All effects don't start immediately, but rather get worse over time; the rate is
 	name = "Neuro-Smash"
 	description = "A mostly safe alcoholic drink for the true daredevils. Counteracts Neurotoxins."
 	boozepwr = 60
-	quality = DRINK_VERYGOOD
-	taste_description = "a numbing sensation"
-	glass_icon_state = "neurosmashglass"
-	glass_name = "Neurosmash"
-	glass_desc = "A mostly safe alcoholic drink for the true daredevils. Do not mix with Neurotoxin."
 	pH = 8
 	value = 3
 
@@ -1435,7 +1429,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1*REM, 150)
 		M.reagents.remove_reagent(/datum/reagent/toxin/fentanyl, 0.75 * REAGENTS_METABOLISM, FALSE)
 	else
-		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -1.0*REM, 150)
+		M.adjustOrganLoss(ORGAN_SLOT_BRAIN, -0.5*REM, 150)
 		M.dizziness +=2
 	..()
 
@@ -1806,7 +1800,7 @@ datum/reagent/consumable/ethanol/creme_de_coconut
 	taste_description = "seduction"
 	glass_icon_state = "between_the_sheets"
 	glass_name = "Between the Sheets"
-	glass_desc = "The only drink that comes with a label reminding you of Nanotrasen's zero-tolerance promiscuity policy."
+	glass_desc = "The only drink that comes with a label reminding you of Kinaris's high tolerance promiscuity policy."
 	value = 2
 
 /datum/reagent/consumable/ethanol/between_the_sheets/on_mob_life(mob/living/L)
@@ -2186,7 +2180,7 @@ datum/reagent/consumable/ethanol/creme_de_coconut
 	glass_icon_state = "commander_and_chief"
 	glass_name = "Commander and Chief"
 	glass_desc = "The gems of this majestic chalice represent the departments and their Heads."
-	
+
 /datum/reagent/consumable/ethanol/commander_and_chief/on_mob_life(mob/living/carbon/M)
 	if(M.mind && HAS_TRAIT(M.mind, TRAIT_CAPTAIN_METABOLISM))
 		M.heal_bodypart_damage(2,2,2)

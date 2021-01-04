@@ -74,3 +74,18 @@
 /obj/item/storage/pill_bottle/heat/PopulateContents()
 	for(var/i in 1 to 7)
 		new /obj/item/reagent_containers/pill/heat(src)
+
+/obj/item/storage/pill_bottle/betablock
+	name = "anaphrodisiacs pill bottle"
+	desc = "a bottle of anaphrodisiacs."
+
+/obj/item/reagent_containers/pill/betablock
+	name = "anaphrodisiac pill"
+	desc = "Prescribed to races that have trouble keeping their urges in check."
+	icon_state = "pill5"
+	list_reagents = list(/datum/reagent/drug/anaphrodisiac = 10)
+	roundstart = 1
+
+/obj/item/storage/pill_bottle/betablock/PopulateContents()
+	for(var/i in 1 to 7)
+		new /obj/item/reagent_containers/pill/betablock(src)

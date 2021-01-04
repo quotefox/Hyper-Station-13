@@ -23,7 +23,7 @@
 
 /datum/supply_pack/organic/hydroponics/beekeeping_fullkit
 	name = "Beekeeping Starter Crate"
-	desc = "BEES BEES BEES. Contains three honey frames, a beekeeper suit and helmet, flyswatter, bee house, and, of course, a pure-bred Nanotrasen-Standardized Queen Bee!"
+	desc = "BEES BEES BEES. Contains three honey frames, a beekeeper suit and helmet, flyswatter, bee house, and, of course, a pure-bred Kinaris-Standardized Queen Bee!"
 	cost = 1800
 	contains = list(/obj/structure/beebox/unwrenched,
 					/obj/item/honey_frame,
@@ -374,7 +374,7 @@
 
 /datum/supply_pack/organic/potted_plants
 	name = "Potted Plants Crate"
-	desc = "Spruce up the station with these lovely plants! Contains a random assortment of five potted plants from Nanotrasen's potted plant research division. Warranty void if thrown."
+	desc = "Spruce up the station with these lovely plants! Contains a random assortment of five potted plants from Kinaris's potted plant research division. Warranty void if thrown."
 	cost = 730
 	contains = list(/obj/item/twohanded/required/kirbyplants/random,
 					/obj/item/twohanded/required/kirbyplants/random,

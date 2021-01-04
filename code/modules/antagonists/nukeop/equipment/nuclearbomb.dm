@@ -255,7 +255,7 @@
 			first_status = "Set"
 		else
 			first_status = "Auth S1."
-	var/second_status = exploded ? "Warhead triggered, thanks for flying Nanotrasen" : (safety ? "Safe" : "Engaged")
+	var/second_status = exploded ? "Warhead triggered, thanks for flying Kinaris" : (safety ? "Safe" : "Engaged")
 	data["status1"] = first_status
 	data["status2"] = second_status
 	data["anchored"] = anchored
@@ -343,10 +343,10 @@
 
 
 /obj/machinery/nuclearbomb/proc/set_anchor()
-	if(!isinspace())
-		anchored = !anchored
-	else
+	if(isinspace() && !anchored)
 		to_chat(usr, "<span class='warning'>There is nothing to anchor to!</span>")
+	else
+		anchored = !anchored
 
 /obj/machinery/nuclearbomb/proc/set_safety()
 	safety = !safety
@@ -459,8 +459,8 @@
 		return CINEMATIC_SELFDESTRUCT_MISS
 
 /obj/machinery/nuclearbomb/beer
-	name = "Nanotrasen-brand nuclear fission explosive"
-	desc = "One of the more successful achievements of the Nanotrasen Corporate Warfare Division, their nuclear fission explosives are renowned for being cheap to produce and devastatingly effective. Signs explain that though this particular device has been decommissioned, every Nanotrasen station is equipped with an equivalent one, just in case. All Captains carefully guard the disk needed to detonate them - at least, the sign says they do. There seems to be a tap on the back."
+	name = "Kinaris-brand nuclear fission explosive"
+	desc = "One of the more successful achievements of the Kinaris Corporate Warfare Division, their nuclear fission explosives are renowned for being cheap to produce and devastatingly effective. Signs explain that though this particular device has been decommissioned, every Kinaris station is equipped with an equivalent one, just in case. All Captains carefully guard the disk needed to detonate them - at least, the sign says they do. There seems to be a tap on the back."
 	proper_bomb = FALSE
 	var/obj/structure/reagent_dispensers/beerkeg/keg
 
@@ -611,10 +611,7 @@ This is here to make the tiles around the station mininuke change when it's arme
 	if(!fake)
 		return
 
-	var/ghost = isobserver(user)
-	var/captain = user.mind && user.mind.assigned_role == "Captain"
-	var/nukie = user.mind && user.mind.has_antag_datum(/datum/antagonist/nukeop)
-	if(ghost || captain || nukie)
+	if(isobserver(user) || HAS_TRAIT(user, TRAIT_DISK_VERIFIER) || (user.mind && HAS_TRAIT(user.mind, TRAIT_DISK_VERIFIER)))
 		. += "<span class='warning'>The serial numbers on [src] are incorrect.</span>"
 
 /obj/item/disk/nuclear/attackby(obj/item/I, mob/living/user, params)
@@ -653,3 +650,7 @@ This is here to make the tiles around the station mininuke change when it's arme
 
 /obj/item/disk/nuclear/fake
 	fake = TRUE
+
+/obj/item/disk/nuclear/fake/obvious
+	name = "cheap plastic imitation of the nuclear authentication disk"
+	desc = "How anyone could mistake this for the real thing is beyond you."

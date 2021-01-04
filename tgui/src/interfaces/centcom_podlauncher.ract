@@ -88,7 +88,7 @@
 
     <ui-section label='Style?'>
         <ui-button style='{{data.styleChoice == 1 ? "selected" : null}}' action='styleStandard' tooltip-side='left'
-        tooltip='Changes the pods style from the default Centcom color scheme to your standard Nanotrasen black and orange. Same color scheme as the normal station-used supplypods.'>Standard</ui-button>
+        tooltip='Changes the pods style from the default Centcom color scheme to your standard Kinaris black and orange. Same color scheme as the normal station-used supplypods.'>Standard</ui-button>
         <ui-button style='{{data.styleChoice == 2 ? "selected" : null}}' action='styleBluespace' tooltip-side='left'
         tooltip='Changes the pods style from the default Centcom color scheme to the same as the stations upgraded blue-and-white Bluespace Supplypods.'>Advanced</ui-button>
         <ui-button style='{{data.styleChoice == 4 ? "selected" : null}}' action='styleSyndie' tooltip-side='left'

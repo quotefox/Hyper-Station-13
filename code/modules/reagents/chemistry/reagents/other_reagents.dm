@@ -380,7 +380,7 @@
 					M.IgniteMob()
 				else
 					M.adjustToxLoss(1, 0)
-					M.adjustFireLoss(1, 0)	
+					M.adjustFireLoss(1, 0)
 	if(data >= 60)	// 30 units, 135 seconds
 		if(iscultist(M, FALSE, TRUE) || is_servant_of_ratvar(M, FALSE, TRUE))
 			if(iscultist(M))
@@ -1206,12 +1206,14 @@
 			O.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 			SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 			O.clean_blood()
+			O.wash_cum()
 
 /datum/reagent/space_cleaner/reaction_turf(turf/T, reac_volume)
 	if(reac_volume >= 1)
 		T.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 		SEND_SIGNAL(T, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 		T.clean_blood()
+		T.wash_cum()
 		for(var/obj/effect/decal/cleanable/C in T)
 			qdel(C)
 
@@ -1254,6 +1256,7 @@
 					if(H.shoes.clean_blood())
 						H.update_inv_shoes()
 				H.wash_cream()
+				H.wash_cum()
 			SEND_SIGNAL(M, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 			M.clean_blood()
 
@@ -1347,7 +1350,7 @@
 	description = "A perfluoronated sulfonic acid that forms a foam when mixed with water."
 	color = "#9E6B38" // rgb: 158, 107, 56
 	taste_description = "metal"
-	pH = 13
+	pH = 11
 
 /datum/reagent/foaming_agent// Metal foaming agent. This is lithium hydride. Add other recipes (e.g. LiH + H2O -> LiOH + H2) eventually.
 	name = "Foaming agent"
@@ -1355,7 +1358,7 @@
 	reagent_state = SOLID
 	color = "#664B63" // rgb: 102, 75, 99
 	taste_description = "metal"
-	pH = 12.5
+	pH = 11.5
 
 /datum/reagent/smart_foaming_agent //Smart foaming agent. Functions similarly to metal foam, but conforms to walls.
 	name = "Smart foaming agent"
@@ -1759,7 +1762,7 @@
 	reagent_state = LIQUID
 	color = "#FFFFD6" // very very light yellow
 	taste_description = "alkali" //who put ACID for NaOH ????
-	pH = 13
+	pH = 11.9
 
 /datum/reagent/drying_agent
 	name = "Drying agent"
@@ -2193,18 +2196,32 @@
 	color = "#BCC740" //RGB: 188, 199, 64
 	taste_description = "plant dust"
 
-/datum/reagent/pax/catnip
+/datum/reagent/catnip
 	name = "catnip"
 	taste_description = "grass"
 	description = "A colorless liquid that makes people more peaceful and felines more happy."
-	metabolization_rate = 1.75 * REAGENTS_METABOLISM
 
-/datum/reagent/pax/catnip/on_mob_life(mob/living/carbon/M)
-	if(prob(20))
-		M.emote("nya")
+/datum/reagent/catnip/on_mob_metabolize(mob/living/carbon/L)
+	..()
+	if(iscatperson(L))
+		SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "catnip", /datum/mood_event/catnip)
+		ADD_TRAIT(L, TRAIT_PACIFISM, type)	//Just like pax, except it only works for felinids
+	else
+		SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "catnip", /datum/mood_event/gross_food)
+
+/datum/reagent/catnip/on_mob_end_metabolize(mob/living/carbon/L)
+	..()
+	if(iscatperson(L))
+		SEND_SIGNAL(L, COMSIG_CLEAR_MOOD_EVENT, "catnip")
+		REMOVE_TRAIT(L, TRAIT_PACIFISM, type)
+
+/datum/reagent/catnip/on_mob_life(mob/living/carbon/M)
 	if(prob(20))
 		to_chat(M, "<span class = 'notice'>[pick("Headpats feel nice.", "The feeling of a hairball...", "Backrubs would be nice.", "Whats behind those doors?")]</span>")
-	M.adjustArousalLoss(2)
+		if(iscatperson(M))
+			M.emote("nya")
+			if(prob(80))
+				M.adjustArousalLoss(3)
 	..()
 
 // Adding new mutation toxin stuff from /code/modules/reagent/chemistry/recipes/slime_extracts.dm
@@ -2243,7 +2260,7 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/insect
 	mutationtext = "<span class='danger'>The pain subsides. You feel... oddly attracted to light.</span>"
-	
+
 /datum/reagent/mutationtoxin/ipc
 	name = "IPC Mutation Toxin"
 	description = "A robotic toxin." //NANOMACHINES SON.

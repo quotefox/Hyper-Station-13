@@ -86,7 +86,7 @@
 	CurveSharppH 		= 2.5 		// How sharp the pH exponential curve is (to the power of value)
 	ThermicConstant		= 0.01 		// Temperature change per 1u produced
 	HIonRelease 		= 0.015 		// pH change per 1u reaction (inverse for some reason)
-	RateUpLim 			= 0.05 		// Optimal/max rate possible if all conditions are perfect
+	RateUpLim 			= 0.1 		// Optimal/max rate possible if all conditions are perfect
 	FermiChem 			= TRUE		// If the chemical uses the Fermichem reaction mechanics
 	PurityMin 			= 0
 
@@ -101,7 +101,10 @@
 	if(St.purity < 1)
 		St.volume *= St.purity
 		St.purity = 1
-	N.volume -= 0.002
+	if(!N)
+		return //fuck you, runtimeman
+	var/amount = clamp(0.002, 0, N.volume)
+	N.volume -= amount
 	St.data["grown_volume"] = St.data["grown_volume"] + added_volume
 	St.name = "[initial(St.name)] [round(St.data["grown_volume"], 0.1)]u colony"
 

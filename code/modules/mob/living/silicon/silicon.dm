@@ -10,7 +10,7 @@
 	bubble_icon = "machine"
 	weather_immunities = list("ash")
 	possible_a_intents = list(INTENT_HELP, INTENT_HARM)
-	mob_biotypes = list(MOB_ROBOTIC)
+	mob_biotypes = list(MOB_SILICON)
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
 	speech_span = SPAN_ROBOT
 
