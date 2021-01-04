@@ -168,7 +168,6 @@
 	armor = list(melee = 25, bullet = 10, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
 	cold_protection = CHEST|LEGS|ARMS
 	heat_protection = CHEST|LEGS|ARMS
-	mutantrace_variation = NO_MUTANTRACE_VARIATION //you don't need it
 
 //Surgeon
 /obj/item/clothing/suit/apron/surgical
