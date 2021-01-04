@@ -232,7 +232,7 @@ GENE SCANNER
 		msg += "\t<span class='info'>Subject has abnormal brain fuctions.</span>\n"
 
 	//Astrogen shenanigans
-	if(advanced && M.reagents.has_reagent("astral"))
+	if(M.reagents.has_reagent(/datum/reagent/fermi/astral))
 		if(M.mind)
 			msg += "\t<span class='danger'>Warning: subject may be possesed.</span>\n"
 		else
@@ -470,8 +470,6 @@ GENE SCANNER
 					msg += "<span class='danger'>[R.name]</span>\n"
 			else
 				msg += "<span class='notice'>Subject is not addicted to any reagents.</span>\n"
-			msg += "*---------*</span>"
-			to_chat(user, msg)
 
 			var/datum/reagent/impure/fermiTox/F = M.reagents.has_reagent(/datum/reagent/impure/fermiTox)
 			switch(F?.volume)
@@ -485,6 +483,9 @@ GENE SCANNER
 					msg += "<span class='danger'>Subject contains a high amount of toxic isomers.</span>\n"
 				if(95 to INFINITY)
 					msg += "<span class='danger'>Subject contains a extremely dangerous amount of toxic isomers.</span>\n"
+
+			msg += "*---------*</span>"
+			to_chat(user, msg)
 
 /obj/item/healthanalyzer/verb/toggle_mode()
 	set name = "Switch Verbosity"

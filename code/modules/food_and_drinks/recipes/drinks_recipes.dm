@@ -395,11 +395,11 @@
 	results = list(/datum/reagent/consumable/ethanol/neurotoxin = 2)
 	required_reagents = list(/datum/reagent/consumable/ethanol/gargle_blaster = 1, /datum/reagent/medicine/morphine = 1)
 	//FermiChem vars: Easy to make, but hard to make potent
-	OptimalTempMin 		= 200 // Lower area of bell curve for determining heat based rate reactions
+	OptimalTempMin 		= 100 // Lower area of bell curve for determining heat based rate reactions
 	OptimalTempMax		= 950 // Upper end for above
 	ExplodeTemp			= 999 //Temperature at which reaction explodes
-	OptimalpHMin		= 2 // Lowest value of pH determining pH a 1 value for pH based rate reactions (Plateu phase)
-	OptimalpHMax		= 3 // Higest value for above
+	OptimalpHMin		= 4.6 // Lowest value of pH determining pH a 1 value for pH based rate reactions (Plateu phase)
+	OptimalpHMax		= 5.2 // Higest value for above
 	ReactpHLim			= 5 // How far out pH wil react, giving impurity place (Exponential phase)
 	CatalystFact		= 0 // How much the catalyst affects the reaction (0 = no catalyst)
 	CurveSharpT 		= 2 // How sharp the temperature exponential curve is (to the power of value)

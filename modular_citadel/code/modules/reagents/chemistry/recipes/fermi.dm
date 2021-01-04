@@ -25,9 +25,10 @@
 				my_atom.reagents.add_reagent(R.impure_chem, impureVol, FALSE, other_purity = 1)
 				R.cached_purity = R.purity
 				R.purity = 1
+	return
 
 //Called when temperature is above a certain threshold, or if purity is too low.
-/datum/chemical_reaction/proc/FermiExplode(datum/reagents, var/atom/my_atom, volume, temp, pH, Exploding = FALSE)
+/datum/chemical_reaction/proc/FermiExplode(datum/reagents/R0, var/atom/my_atom, volume, temp, pH, Exploding = FALSE)
 	if (Exploding == TRUE)
 		return
 
@@ -41,26 +42,32 @@
 			if (500 to 750)
 				for(var/turf/turf in range(1,T))
 					new /obj/effect/hotspot(turf)
+				volume*=1.1
 
 			if (751 to 1100)
 				for(var/turf/turf in range(2,T))
 					new /obj/effect/hotspot(turf)
+				volume*=1.2
 
 			if (1101 to 1500) //If you're crafty
 				for(var/turf/turf in range(3,T))
 					new /obj/effect/hotspot(turf)
+				volume*=1.3
 
 			if (1501 to 2500) //requested
 				for(var/turf/turf in range(4,T))
 					new /obj/effect/hotspot(turf)
+				volume*=1.4
 
 			if (2501 to 5000)
 				for(var/turf/turf in range(5,T))
 					new /obj/effect/hotspot(turf)
+				volume*=1.5
 
 			if (5001 to INFINITY)
 				for(var/turf/turf in range(6,T))
 					new /obj/effect/hotspot(turf)
+				volume*=1.6
 
 
 	message_admins("Fermi explosion at [T], with a temperature of [temp], pH of [pH], Impurity tot of [ImpureTot].")
@@ -69,11 +76,12 @@
 	var/datum/effect_system/smoke_spread/chem/s = new()
 	R.my_atom = my_atom //Give the gas a fingerprint
 
-	for (var/datum/reagent/reagent in my_atom.reagents.reagent_list) //make gas for reagents, has to be done this way, otherwise it never stops Exploding
-		R.add_reagent(reagent.type, reagent.volume/3) //Seems fine? I think I fixed the infinite explosion bug.
+	for (var/A in R0.reagent_list) //make gas for reagents, has to be done this way, otherwise it never stops Exploding
+		var/datum/reagent/R2 = A
+		R.add_reagent(R2.type, R2.volume/3) //Seems fine? I think I fixed the infinite explosion bug.
 
-		if (reagent.purity < 0.6)
-			ImpureTot = (ImpureTot + (1-reagent.purity)) / 2
+		if (R2.purity < 0.6)
+			ImpureTot = (ImpureTot + (1-R2.purity)) / 2
 
 	if(pH < 4) //if acidic, make acid spray
 		R.add_reagent(/datum/reagent/impure/fermiTox, (volume/3))
@@ -83,7 +91,7 @@
 
 	if (pH > 10) //if alkaline, small explosion.
 		var/datum/effect_system/reagents_explosion/e = new()
-		e.set_up(round((volume/30)*(pH-9)), T, 0, 0)
+		e.set_up(round((volume/28)*(pH-9)), T, 0, 0)
 		e.start()
 
 	if(!ImpureTot == 0) //If impure, v.small emp (0.6 or less)
@@ -98,7 +106,7 @@
 	name = "Eigenstasium"
 	id = /datum/reagent/fermi/eigenstate
 	results = list(/datum/reagent/fermi/eigenstate = 1)
-	required_reagents = list(/datum/reagent/bluespace = 1, /datum/reagent/stable_plasma = 1, /datum/reagent/consumable/caramel = 1)
+	required_reagents = list(/datum/reagent/bluespace = 1, /datum/reagent/stable_plasma = 1, /datum/reagent/consumable/sugar = 1)
 	mix_message = "the reaction zaps suddenly!"
 	//FermiChem vars:
 	OptimalTempMin 		= 350 // Lower area of bell curve for determining heat based rate reactions
@@ -118,10 +126,10 @@
 	PurityMin			= 0.4 //The minimum purity something has to be above, otherwise it explodes.
 
 /datum/chemical_reaction/fermi/eigenstate/FermiFinish(datum/reagents/holder, var/atom/my_atom)//Strange how this doesn't work but the other does.
-	if(!locate(/datum/reagent/fermi/eigenstate) in my_atom.reagents.reagent_list)
+	var/datum/reagent/fermi/eigenstate/E = locate(/datum/reagent/fermi/eigenstate) in my_atom.reagents.reagent_list
+	if(!E)
 		return
 	var/turf/open/location = get_turf(my_atom)
-	var/datum/reagent/fermi/eigenstate/E = locate(/datum/reagent/fermi/eigenstate) in my_atom.reagents.reagent_list
 	if(location)
 		E.location_created = location
 		E.data["location_created"] = location
@@ -154,12 +162,16 @@
 
 /datum/chemical_reaction/fermi/SDGF/FermiExplode(datum/reagents, var/atom/my_atom, volume, temp, pH)//Spawns an angery teratoma!
 	var/turf/T = get_turf(my_atom)
-	var/mob/living/simple_animal/slime/S = new(T,"green")
-	S.damage_coeff = list(BRUTE = 0.9 , BURN = 2, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
-	S.name = "Living teratoma"
-	S.real_name = "Living teratoma"
-	S.rabid = 1//Make them an angery boi
-	S.color = "#810010"
+	var/amount_to_spawn = round((volume/100), 1)
+	if(amount_to_spawn <= 0)
+		amount_to_spawn = 1
+	for(var/i in 1 to amount_to_spawn)
+		var/mob/living/simple_animal/slime/S = new(T,"green")
+		S.damage_coeff = list(BRUTE = 0.9 , BURN = 2, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
+		S.name = "Living teratoma"
+		S.real_name = "Living teratoma"
+		S.rabid = 1//Make them an angery boi
+		S.color = "#810010"
 	my_atom.reagents.clear_reagents()
 	var/list/seen = viewers(8, get_turf(my_atom))
 	for(var/mob/M in seen)
@@ -369,11 +381,15 @@
 	PurityMin		= 0.5
 
 /datum/chemical_reaction/fermi/hatmium/FermiExplode(src, var/atom/my_atom, volume, temp, pH)
-	var/obj/item/clothing/head/hattip/hat = new /obj/item/clothing/head/hattip(get_turf(my_atom))
-	hat.animate_atom_living()
+	var/amount_to_spawn = round((volume/100), 1)
+	if(amount_to_spawn <= 0)
+		amount_to_spawn = 1
+	for(var/i in 1 to amount_to_spawn)
+		var/obj/item/clothing/head/hattip/hat = new /obj/item/clothing/head/hattip(get_turf(my_atom))
+		hat.animate_atom_living()
 	var/list/seen = viewers(8, get_turf(my_atom))
 	for(var/mob/M in seen)
-		to_chat(M, "<span class='warning'>The makes an off sounding pop, as a hat suddenly climbs out of the beaker!</b></span>")
+		to_chat(M, "<span class='warning'>The [my_atom] makes an off sounding pop, as a hat suddenly climbs out of it!</b></span>")
 	my_atom.reagents.clear_reagents()
 
 /datum/chemical_reaction/fermi/furranium
@@ -397,6 +413,10 @@
 	RateUpLim 		= 2
 	FermiChem 		= TRUE
 	PurityMin		= 0.3
+
+/datum/chemical_reaction/fermi/furranium/organic
+	id = "furranium_organic"
+	required_reagents = list(/datum/reagent/drug/aphrodisiac = 1, /datum/reagent/pax = 1, /datum/reagent/silver = 2, /datum/reagent/medicine/salglu_solution = 1)
 
 //FOR INSTANT REACTIONS - DO NOT MULTIPLY LIMIT BY 10.
 //There's a weird rounding error or something ugh.
@@ -487,7 +507,7 @@
 	name = "secretcatchem"
 	id = /datum/reagent/fermi/secretcatchem
 	results = list(/datum/reagent/fermi/secretcatchem = 5)
-	required_reagents = list(/datum/reagent/stable_plasma = 1, /datum/reagent/consumable/caramel = 1, /datum/reagent/consumable/cream = 1, /datum/reagent/medicine/clonexadone = 1)//Yes this will make a kitty if you don't lucky guess. It'll eat all your reagents too.
+	required_reagents = list(/datum/reagent/stable_plasma = 1, /datum/reagent/consumable/sugar = 1, /datum/reagent/consumable/cream = 1, /datum/reagent/medicine/clonexadone = 1)//Yes this will make a kitty if you don't lucky guess. It'll eat all your reagents too.
 	required_catalysts = list(/datum/reagent/fermi/SDGF = 1)
 	required_temp = 500
 	mix_message = "the reaction gives off a meow!"
