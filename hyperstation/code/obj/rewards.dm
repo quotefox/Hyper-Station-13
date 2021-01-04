@@ -76,8 +76,8 @@
 		new /obj/item/reagent_containers/pill/heat(src)
 
 /obj/item/storage/pill_bottle/betablock
-	name = "Anaphrodisiacs pill bottle"
-	desc = "a bottle of pills from a sketchy pharmaceutical corporation. at the bottom of the label is a small red S."
+	name = "anaphrodisiacs pill bottle"
+	desc = "a bottle of anaphrodisiacs."
 
 /obj/item/reagent_containers/pill/betablock
 	name = "Anaphrodisiac pill"
