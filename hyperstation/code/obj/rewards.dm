@@ -80,7 +80,7 @@
 	desc = "a bottle of anaphrodisiacs."
 
 /obj/item/reagent_containers/pill/betablock
-	name = "Anaphrodisiac pill"
+	name = "anaphrodisiac pill"
 	desc = "Prescribed to races that have trouble keeping their urges in check."
 	icon_state = "pill5"
 	list_reagents = list(/datum/reagent/drug/anaphrodisiac = 10)
