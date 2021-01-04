@@ -229,7 +229,7 @@
  */
 /obj/item/clothing/under/rank/security/blueshield
 	desc = "Blue trim on space-black cloth, this uniform displays the rank of \"Blueshield\" on the left shoulder. Wonder what that is."
-	name = "\improper Blueshield Uniform"
+	name = "blueshield uniform"
 	icon_state = "bs_uniform"
 	item_state = "bl_suit"
 	item_color = "bs_uniform"
