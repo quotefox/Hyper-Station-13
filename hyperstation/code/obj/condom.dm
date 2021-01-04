@@ -16,8 +16,10 @@ obj/item/condom/Initialize()
 
 obj/item/condom/update_icon()
 	switch(reagents.total_volume)
-		if(0 to 100)
+		if(0 to 49)
 			icon_state = "b_condom_inflated"
+		if(50 to 100)
+			icon_state = "b_condom_inflated_med"
 		if(101 to 249)
 			icon_state = "b_condom_inflated_large"
 		if(250 to 300)
