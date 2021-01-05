@@ -438,6 +438,13 @@
 	else
 		return INITIALIZE_HINT_QDEL
 
+/obj/effect/temp_visual/slugboom
+	icon = 'icons/effects/96x96.dmi'
+	icon_state = "slugboom"
+	randomdir = FALSE
+	duration = 30
+	pixel_x = -24
+
 /obj/effect/constructing_effect
 	icon = 'icons/effects/effects_rcd.dmi'
 	icon_state = ""
