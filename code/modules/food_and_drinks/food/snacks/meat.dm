@@ -84,6 +84,7 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/meat/steak/chicken
 	slice_path = /obj/item/reagent_containers/food/snacks/meat/rawcutlet/chicken
 	tastes = list("chicken" = 1)
+	icon_state = "bird"
 
 /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/slime
 	icon_state = "slimemeat"
@@ -165,8 +166,10 @@
 
 /obj/item/reagent_containers/food/snacks/meat/slab/synthmeat
 	name = "synthmeat"
-	desc = "A synthetic slab of meat."
+	desc = "A synthetic chunk of meat."
+	icon_state = "meatproduct" //growing meat will make it look like a lumpo
 	foodtype = RAW | MEAT //hurr durr chemicals we're harmed in the production of this meat thus its non-vegan.
+	cooked_type = /obj/item/reagent_containers/food/snacks/meat/steak/meatproduct
 
 /obj/item/reagent_containers/food/snacks/meat/slab/meatproduct
 	name = "meat product"
@@ -255,6 +258,7 @@
 	bitesize = 4
 	tastes = list("meat" = 1, "wheat" = 1)
 	foodtype = GRAIN
+	cooked_type = /obj/item/reagent_containers/food/snacks/meat/steak/meatproduct
 
 /obj/item/reagent_containers/food/snacks/meat/slab/gorilla
 	name = "gorilla meat"
@@ -309,9 +313,14 @@
 /obj/item/reagent_containers/food/snacks/meat/steak/chicken
 	name = "chicken steak" //Can you have chicken steaks? Maybe this should be renamed once it gets new sprites.
 	tastes = list("chicken" = 1)
+	icon_state = "bird_steak"
 
 /obj/item/reagent_containers/food/snacks/meat/steak/plain
     foodtype = MEAT
+
+/obj/item/reagent_containers/food/snacks/meat/steak/meatproduct
+    foodtype = MEAT
+    icon_state = "meatproduct_steak"
 
 /obj/item/reagent_containers/food/snacks/meat/steak/plain/human
 	tastes = list("tender meat" = 1)
@@ -391,6 +400,7 @@
 	name = "raw chicken cutlet"
 	cooked_type = /obj/item/reagent_containers/food/snacks/meat/cutlet/chicken
 	tastes = list("chicken" = 1)
+	icon_state = "bird_cutlet"
 
 /obj/item/reagent_containers/food/snacks/meat/rawcutlet/killertomato
 	name = "raw killer tomato cutlet"
@@ -465,3 +475,4 @@
 /obj/item/reagent_containers/food/snacks/meat/cutlet/chicken
 	name = "chicken cutlet"
 	tastes = list("chicken" = 1)
+	icon_state = "bird_cutlet_cooked"
