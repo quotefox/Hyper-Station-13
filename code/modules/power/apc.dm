@@ -748,11 +748,11 @@
 	return FALSE
 
 /obj/machinery/power/apc/AltClick(mob/user)
-	..()
+	. = ..()
 	if(!user.canUseTopic(src, !issilicon(user)) || !isturf(loc))
 		return
-	else
-		togglelock(user)
+	togglelock(user)
+	return TRUE
 
 /obj/machinery/power/apc/proc/togglelock(mob/living/user)
 	if(obj_flags & EMAGGED)
