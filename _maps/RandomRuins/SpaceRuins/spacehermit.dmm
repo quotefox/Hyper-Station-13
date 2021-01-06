@@ -352,6 +352,10 @@
 "dd" = (
 /turf/closed/mineral/random/high_chance,
 /area/ruin/unpowered)
+"Cd" = (
+/obj/machinery/portable_atmospherics/canister/air,
+/turf/open/floor/mineral/titanium,
+/area/ruin/powered)
 
 (1,1,1) = {"
 aa
@@ -911,7 +915,7 @@ ab
 af
 an
 an
-an
+Cd
 af
 ab
 ab
