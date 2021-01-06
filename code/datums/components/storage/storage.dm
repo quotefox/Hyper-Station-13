@@ -58,6 +58,10 @@
 	var/screen_start_y = 2
 	//End
 
+	var/limited_random_access = FALSE					//Quick if statement in accessible_items to determine if we care at all about what people can access at once.
+	var/limited_random_access_stack_position = 0					//If >0, can only access top <x> items
+	var/limited_random_access_stack_bottom_up = FALSE				//If TRUE, above becomes bottom <x> items
+
 /datum/component/storage/Initialize(datum/component/storage/concrete/master)
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
@@ -626,9 +630,9 @@
 		if(M == viewing)
 			to_chat(usr, "<span class='notice'>You put [I] [insert_preposition]to [parent].</span>")
 		else if(in_range(M, viewing)) //If someone is standing close enough, they can tell what it is...
-			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", 1)
+			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", MSG_VISUAL)
 		else if(I && I.w_class >= 3) //Otherwise they can only see large or normal items from a distance...
-			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", 1)
+			viewing.show_message("<span class='notice'>[M] puts [I] [insert_preposition]to [parent].</span>", MSG_VISUAL)
 
 /datum/component/storage/proc/update_icon()
 	if(isobj(parent))

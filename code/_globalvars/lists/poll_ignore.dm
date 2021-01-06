@@ -13,6 +13,8 @@
 #define POLL_IGNORE_GOLEM "golem"
 #define POLL_IGNORE_SWARMER "swarmer"
 #define POLL_IGNORE_DRONE "drone"
+#define POLL_IGNORE_IMAGINARYFRIEND "imaginary_friend"
+#define POLL_IGNORE_SPLITPERSONALITY "split_personality"
 #define POLL_IGNORE_DEMON "demon"
 #define POLL_IGNORE_WIZARD "wizard"
 
@@ -30,6 +32,8 @@ GLOBAL_LIST_INIT(poll_ignore_desc, list(
 	POLL_IGNORE_GOLEM = "Golems",
 	POLL_IGNORE_SWARMER = "Swarmer shells",
 	POLL_IGNORE_DRONE = "Drone shells",
+	POLL_IGNORE_IMAGINARYFRIEND = "Imaginary Friend",
+	POLL_IGNORE_SPLITPERSONALITY = "Split Personality",
 	POLL_IGNORE_DEMON = "Demons",
 	POLL_IGNORE_WIZARD = "Wizards",
 ))
