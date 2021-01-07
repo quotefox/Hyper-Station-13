@@ -10,6 +10,22 @@
 	var/unwrapped			= 0
 	w_class = WEIGHT_CLASS_TINY
 
+obj/item/condom/Initialize()
+	create_reagents(300, DRAWABLE|NO_REACT)
+	..()
+
+obj/item/condom/update_icon()
+	switch(reagents.total_volume)
+		if(0 to 49)
+			icon_state = "b_condom_inflated"
+		if(50 to 100)
+			icon_state = "b_condom_inflated_med"
+		if(101 to 249)
+			icon_state = "b_condom_inflated_large"
+		if(250 to 300)
+			icon_state = "b_condom_inflated_huge"
+	..()
+
 /obj/item/condom/attack_self(mob/user) //Unwrap The Condom in hands
 	if(!istype(user))
 		return
@@ -26,7 +42,6 @@
 //			to_chat(user, "<span class='notice'>You roll the condom out.</span>")
 //			playsound(user, 'sound/lewd/latex.ogg', 50, 1, -1)
 //			return
-
 
 /obj/item/condom/attack(mob/living/carbon/C, mob/living/user) //apply the johnny on another person or yourself
 
@@ -94,11 +109,19 @@
 	qdel(src)
 
 /mob/living/carbon/human/proc/condomclimax()
-
 	var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
-	if(P.condom)
-		new /obj/item/condom/filled(usr.loc)
-		to_chat(src, "The condom bubbles outwards and fills with your cum.")
-		P.condom = 0
-		P.colourtint = ""
-		src.update_genitals()
+	if(!istype(P))
+		return
+	if(!P.condom)
+		return
+
+	var/obj/item/condom/filled/C = new
+	P.linked_organ.reagents.trans_to(C, P.linked_organ.reagents.total_volume)
+	C.loc = loc
+	P.condom = FALSE
+	P.colourtint = ""
+	update_genitals()
+	C.update_icon()
+	to_chat(src, "<span class='love'>The condom bubbles outwards and fills with your cum.</span>")
+	SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
+	setArousalLoss(0)

@@ -59,7 +59,9 @@
 	var/custom_body_size = 100
 	var/breedable = 0
 	var/impregchance = 0
-
+//h13 noncon settings
+	var/Noncon = 0
+	var/ERP = 0
 
 	var/list/mob_biotypes = list(MOB_ORGANIC)
 	var/metabolism_efficiency = 1 //more or less efficiency to metabolize helpful/harmful reagents and regulate body temperature..
@@ -109,7 +111,7 @@
 	var/last_words	//used for database logging
 
 	var/list/obj/effect/proc_holder/abilities = list()
-	
+
 	var/can_be_held = FALSE
 
 	var/radiation = 0 //If the mob is irradiated.

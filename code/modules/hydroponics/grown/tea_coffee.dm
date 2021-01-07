@@ -52,8 +52,10 @@
 	desc = "Long stocks with flowering tips that has a chemical to make feline attracted to it."
 	species = "catnip"
 	plantname = "Catnip Plant"
+	icon_grow = "catnip-grow"
+	growthstages = 3
 	product = /obj/item/reagent_containers/food/snacks/grown/tea/catnip
-	reagents_add = list(/datum/reagent/pax/catnip = 0.1, /datum/reagent/consumable/nutriment/vitamin = 0.06, /datum/reagent/toxin/teapowder = 0.3)
+	reagents_add = list(/datum/reagent/catnip = 0.1, /datum/reagent/consumable/nutriment/vitamin = 0.06, /datum/reagent/toxin/teapowder = 0.3)
 	rarity = 50
 
 /obj/item/reagent_containers/food/snacks/grown/tea/catnip
@@ -61,7 +63,7 @@
 	name = "Catnip buds"
 	icon_state = "catnip"
 	filling_color = "#4582B4"
-	grind_results = list(/datum/reagent/pax/catnip = 2, /datum/reagent/water = 1)
+	grind_results = list(/datum/reagent/catnip = 2, /datum/reagent/water = 1)
 
 // Coffee
 /obj/item/seeds/coffee

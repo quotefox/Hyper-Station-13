@@ -44,6 +44,7 @@
 	var/rad_insulation = RAD_NO_INSULATION
 
 	var/icon/blood_splatter_icon
+	var/icon/cum_splatter_icon
 	var/list/fingerprints
 	var/list/fingerprintshidden
 	var/list/blood_DNA
@@ -52,7 +53,7 @@
 /atom/New(loc, ...)
 	//atom creation method that preloads variables at creation
 	if(GLOB.use_preloader && (src.type == GLOB._preloader.target_path))//in case the instanciated atom is creating other atoms in New()
-		GLOB._preloader.load(src)
+		world.preloader_load(src)
 
 	if(datum_flags & DF_USE_TAG)
 		GenerateTag()
@@ -377,13 +378,13 @@
 //returns the mob's dna info as a list, to be inserted in an object's blood_DNA list
 /mob/living/proc/get_blood_dna_list()
 	var/blood_id = get_blood_id()
-	if(!(blood_id =="blood" || blood_id == "jellyblood"))
+	if(!(blood_id in GLOB.blood_reagent_types))
 		return
 	return list("ANIMAL DNA" = "Y-")
 
 /mob/living/carbon/get_blood_dna_list()
 	var/blood_id = get_blood_id()
-	if(!(blood_id =="blood" || blood_id == "jellyblood"))
+	if(!(blood_id in GLOB.blood_reagent_types))
 		return
 	var/list/blood_dna = list()
 	if(dna)
@@ -512,9 +513,6 @@
 	blood_DNA = null
 
 /atom/proc/wash_cream()
-	return TRUE
-
-/atom/proc/wash_cum()
 	return TRUE
 
 /atom/proc/isinspace()
@@ -690,7 +688,7 @@
 	var/atom/L = loc
 	if(!L)
 		return null
-	return L.AllowDrop() ? L : get_turf(L)
+	return L.AllowDrop() ? L : L.drop_location()
 
 /atom/Entered(atom/movable/AM, atom/oldLoc)
 	SEND_SIGNAL(src, COMSIG_ATOM_ENTERED, AM, oldLoc)

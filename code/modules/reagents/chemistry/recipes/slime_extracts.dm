@@ -683,64 +683,64 @@
 /datum/chemical_reaction/slime/slimemammal //Mammal species, pet dog.
 	name = "Mammal Mutation Toxin"
 	id = "mammalmuttoxin"
-	results = list("mammalmutationtoxin" = 1)
-	required_reagents = list("sulfur" = 1) //Sulfur, furry, GET IT?!
+	results = list(/datum/reagent/mutationtoxin/mammal = 1)
+	required_reagents = list(/datum/reagent/sulfur = 1) //Sulfur, furry, GET IT?!
 	required_other = TRUE
 	required_container = /obj/item/slime_extract/green
 
 /datum/chemical_reaction/slime/slimeavian //BIRDUP Species
 	name = "Avian Mutation Toxin"
 	id = "avianmuttoxin"
-	results = list("avianmutationtoxin" = 1)
-	required_reagents = list("oxygen" = 1) //Oxygen gives you.. wait that's redbull.
+	results = list(/datum/reagent/mutationtoxin/avian = 1)
+	required_reagents = list(/datum/reagent/oxygen = 1) //Oxygen gives you.. wait that's redbull.
 	required_other = TRUE
 	required_container = /obj/item/slime_extract/green
 
 /datum/chemical_reaction/slime/slimeaquatic //Aquatic species, aquaman got now shit on you.
 	name = "Aquatic Mutation Toxin"
 	id = "aquaticmuttoxin"
-	results = list("aquaticmutationtoxin" = 1)
-	required_reagents = list("water" = 1) //Water, 60% found in a human body, you tipped the scales, you fucked up.
+	results = list(/datum/reagent/mutationtoxin/aquatic = 1)
+	required_reagents = list(/datum/reagent/water = 1) //Water, 60% found in a human body, you tipped the scales, you fucked up.
 	required_other = TRUE
 	required_container = /obj/item/slime_extract/green
 
 /datum/chemical_reaction/slime/slimexeno //HISS(Xeno hybrid) species, the other hiss not cats.
 	name = "Xeno Mutation Toxin"
 	id = "xenomuttoxin"
-	results = list("xenomutationtoxin" = 1)
-	required_reagents = list("sacid" = 1) //Sulphuric Acid, just like xeno spit, yuck.
+	results = list(/datum/reagent/mutationtoxin/xeno = 1)
+	required_reagents = list(/datum/reagent/toxin/acid = 1) //Sulphuric Acid, just like xeno spit, yuck.
 	required_other = TRUE
 	required_container = /obj/item/slime_extract/green
 
 /datum/chemical_reaction/slime/slimefelinid //Felinid species, like cats, but the degenerate kind.
 	name = "Felinid Mutation Toxin"
 	id = "felinidmuttoxin"
-	results = list("felinidmutationtoxin" = 1)
-	required_reagents = list("aphro" = 1) //Crocin, *points* HORNY, also the whole /datum/chemical_reaction/cat and /datum/reagent/mutationtoxin/felinid already exists in code, THIS ONE IS OPTIONAL.
+	results = list(/datum/reagent/mutationtoxin/felinid = 1)
+	required_reagents = list(/datum/reagent/drug/aphrodisiac = 1) //Crocin, *points* HORNY, also the whole /datum/chemical_reaction/cat and /datum/reagent/mutationtoxin/felinid already exists in code, THIS ONE IS OPTIONAL.
 	required_other = TRUE
 	required_container = /obj/item/slime_extract/green
 
 /datum/chemical_reaction/slime/slimeinsect //insect species, you have a strange attraction to... lamp..
 	name = "Insect Mutation Toxin"
 	id = "insectmuttoxin"
-	results = list("insectmutationtoxin" = 1)
-	required_reagents = list("ammonia" = 1) //Ammonia, used for the mothman chemical reaction so it's more of a reference.
+	results = list(/datum/reagent/mutationtoxin/insect = 1)
+	required_reagents = list(/datum/reagent/ammonia = 1) //Ammonia, used for the mothman chemical reaction so it's more of a reference.
 	required_other = TRUE
 	required_container = /obj/item/slime_extract/green
 
 /datum/chemical_reaction/slime/slimeipc //IPC species, BEEP.
 	name = "IPC Mutation Toxin"
 	id = "ipcmuttoxin"
-	results = list("ipcmutationtoxin" = 1)
-	required_reagents = list("oil" = 1) //Oil, makes sense for it being their blood, so..
+	results = list(/datum/reagent/mutationtoxin/ipc = 1)
+	required_reagents = list(/datum/reagent/oil = 1) //Oil, makes sense for it being their blood, so..
 	required_other = TRUE
 	required_container = /obj/item/slime_extract/green
 
 /datum/chemical_reaction/slime/slimesynthliz //They keep coming back for more
 	name = "Synthlizard Mutation Toxin"
 	id = "synthlizmuttoxin"
-	results = list("synthlizmutationtoxin" = 1)
-	required_reagents = list("silicon" = 1) //It'd be annoying to make it require synthflesh, so this will work
+	results = list(/datum/reagent/mutationtoxin/synthliz = 1)
+	required_reagents = list(/datum/reagent/silicon = 1) //It'd be annoying to make it require synthflesh, so this will work
 	required_other = TRUE
 	required_container = /obj/item/slime_extract/green
 

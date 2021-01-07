@@ -719,9 +719,6 @@
 		cut_overlay(mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi', "cum_large"))
 		creamed = FALSE
 
-/mob/living/carbon/human/wash_cum()
-	cut_overlay(mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi', "cum_normal"))
-	cut_overlay(mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi', "cum_large"))
 
 //Turns a mob black, flashes a skeleton overlay
 //Just like a cartoon!
@@ -1054,6 +1051,21 @@
 
 /mob/living/carbon/human/species/golem/plastic
 	race = /datum/species/golem/plastic
+
+/mob/living/carbon/human/species/golem/bronze
+	race = /datum/species/golem/bronze
+
+/mob/living/carbon/human/species/golem/cardboard
+	race = /datum/species/golem/cardboard
+
+/mob/living/carbon/human/species/golem/leather
+	race = /datum/species/golem/leather
+
+/mob/living/carbon/human/species/golem/bone
+	race = /datum/species/golem/bone
+
+/mob/living/carbon/human/species/golem/durathread
+	race = /datum/species/golem/durathread
 
 /mob/living/carbon/human/species/golem/clockwork
 	race = /datum/species/golem/clockwork

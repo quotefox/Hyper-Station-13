@@ -12,6 +12,7 @@
 	glass_icon_state = "glass_orange"
 	glass_name = "glass of orange juice"
 	glass_desc = "Vitamins! Yay!"
+	pH = 3.3
 
 /datum/reagent/consumable/orangejuice/on_mob_life(mob/living/carbon/M)
 	if(M.getOxyLoss() && prob(30))
@@ -42,6 +43,7 @@
 	glass_icon_state = "glass_green"
 	glass_name = "glass of lime juice"
 	glass_desc = "A glass of sweet-sour lime juice."
+	pH = 2.2
 
 /datum/reagent/consumable/limejuice/on_mob_life(mob/living/carbon/M)
 	if(M.getToxLoss() && prob(20))
@@ -117,6 +119,7 @@
 	glass_icon_state  = "lemonglass"
 	glass_name = "glass of lemon juice"
 	glass_desc = "Sour..."
+	pH = 2
 
 /datum/reagent/consumable/strawberryjuice
 	name = "Strawberry Juice"
@@ -206,6 +209,7 @@
 	glass_icon_state = "milkglass"
 	glass_name = "milk drum"
 	glass_desc = "White and nutritious goodness!"
+	pH = 6.5
 
 /datum/reagent/consumable/milk/on_mob_life(mob/living/carbon/M)
 	if(HAS_TRAIT(M, TRAIT_CALCIUM_HEALER))
@@ -755,6 +759,10 @@
 	glass_icon_state = "glass_green"
 	glass_name = "glass of menthol"
 	glass_desc = "Tastes naturally minty, and imparts a very mild numbing sensation."
+
+/datum/reagent/consumable/menthol/on_mob_life(mob/living/L)
+	L.apply_status_effect(/datum/status_effect/throat_soothed)
+	..()
 
 /datum/reagent/consumable/grenadine
 	name = "Grenadine"

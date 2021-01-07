@@ -191,7 +191,7 @@ Creating a chem with a low purity will make you permanently fall in love with so
 			Vc.Remove(M)
 		nVc.Insert(M)
 		qdel(Vc)
-		to_chat(M, "<span class='notice'><i>You feel your vocal chords tingle as your voice comes out in a more sultry tone.</span>")
+		to_chat(M, "<span class='notice'><i>You feel your vocal chords tingle you speak in a more charasmatic and sultry tone.)]</span>")
 	else
 		log_game("FERMICHEM: MKUltra: [creatorName], [creatorID], is enthralling [M.name], [M.ckey]")
 		M.apply_status_effect(/datum/status_effect/chem/enthrall)
@@ -251,22 +251,6 @@ Creating a chem with a low purity will make you permanently fall in love with so
 	if (M.ckey == creatorID && creatorName == M.real_name)//If the creator drinks 100u, then you get the status for someone random (They don't have the vocal chords though, so it's limited.)
 		if (!M.has_status_effect(/datum/status_effect/chem/enthrall))
 			to_chat(M, "<span class='love'><i>You are unable to resist your own charms anymore, and become a full blown narcissist.</i></span>")
-		/*Old way of handling, left in as an option B
-		var/list/seen = viewers(7, get_turf(M))//Sound and sight checkers
-		for(var/mob/living/carbon/victim in seen)
-			if(victim == M)//as much as I want you to fall for beepsky, he doesn't have a ckey
-				seen = seen - victim
-			if(!victim.ckey)
-				seen = seen - victim
-		var/mob/living/carbon/chosen = pick(seen)
-		creatorID = chosen.ckey
-		if (chosen.gender == "female")
-			creatorGender = "Mistress"
-		else
-			creatorGender = "Master"
-		creatorName = chosen.real_name
-		creator = get_mob_by_key(creatorID)
-		*/
 	ADD_TRAIT(M, TRAIT_PACIFISM, "MKUltra")
 	var/datum/status_effect/chem/enthrall/E
 	if (!M.has_status_effect(/datum/status_effect/chem/enthrall))

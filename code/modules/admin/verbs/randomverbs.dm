@@ -1324,11 +1324,12 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			var/obj/item/reagent_containers/food/snacks/pie/cream/nostun/creamy = new(get_turf(target))
 			creamy.splat(target)
 		if(ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE)
+			priority_announce(html_decode("[target] has brought the wrath of the gods upon themselves and is now being tableslammed across the station. Please stand by."), null, 'sound/misc/announce.ogg', "CentCom")
 			var/list/areas = list()
 			for(var/area/A in world)
 				if(A.z == SSmapping.station_start)
 					areas += A
-			SEND_SOUND(target, sound('hyperstation/sound/misc/hoopisundunkable.ogg',volume=50))
+			SEND_SOUND(target, sound('hyperstation/sound/misc/slamofthenorthstar.ogg',volume=60))
 			for(var/area/A in areas)
 				for(var/obj/structure/table/T in A)
 					T.tablepush(target, target)

@@ -135,7 +135,7 @@
 	display_name = "Improved Wound-Tending Surgery"
 	description = "Who would have known being more gentle with a hemostat decreases patient pain?"
 	prereq_ids = list("biotech")
-	design_ids = list("surgery_heal_brute_upgrade","surgery_heal_burn_upgrade")
+	design_ids = list("surgery_heal_brute_upgrade", "surgery_heal_burn_upgrade")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 	export_price = 1000
 
@@ -144,7 +144,7 @@
 	display_name = "Advanced Surgery"
 	description = "When simple medicine doesn't cut it."
 	prereq_ids = list("imp_wt_surgery")
-	design_ids = list("surgery_revival", "surgery_lobotomy", "surgery_heal_brute_upgrade_femto","surgery_heal_burn_upgrade_femto", "surgery_heal_combo", "surgery_toxinhealing", "organbox", "surgery_adv_dissection")
+	design_ids = list("surgery_revival", "surgery_lobotomy", "surgery_heal_brute_upgrade_femto", "surgery_heal_burn_upgrade_femto", "surgery_heal_combo", "surgery_toxinhealing", "organbox", "surgery_adv_dissection")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
 
@@ -153,7 +153,7 @@
 	display_name = "Experimental Surgery"
 	description = "When evolution isn't fast enough."
 	prereq_ids = list("adv_surgery")
-	design_ids = list("surgery_pacify","surgery_vein_thread","surgery_muscled_veins","surgery_nerve_splice","surgery_nerve_ground","surgery_ligament_hook","surgery_ligament_reinforcement","surgery_viral_bond", "surgery_exp_dissection", "surgery_heal_combo_upgrade")
+	design_ids = list("surgery_pacify", "surgery_vein_thread", "surgery_muscled_veins", "surgery_nerve_splice", "surgery_nerve_ground", "surgery_ligament_hook", "surgery_ligament_reinforcement", "surgery_viral_bond", "surgery_exp_dissection", "surgery_heal_combo_upgrade")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 	export_price = 5000
 
@@ -162,7 +162,7 @@
 	display_name = "Alien Surgery"
 	description = "Abductors did nothing wrong."
 	prereq_ids = list("exp_surgery", "alientech")
-	design_ids = list("surgery_brainwashing","surgery_zombie", "surgery_ext_dissection", "surgery_heal_combo_upgrade_femto")
+	design_ids = list("surgery_brainwashing", "surgery_zombie", "surgery_ext_dissection", "surgery_heal_combo_upgrade_femto")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 10000)
 	export_price = 5000
 
@@ -201,7 +201,7 @@
 	display_name = "Advanced Engineering"
 	description = "Pushing the boundaries of physics, one chainsaw-fist at a time."
 	prereq_ids = list("engineering", "emp_basic")
-	design_ids = list("engine_goggles", "magboots", "forcefield_projector", "weldingmask", "tray_goggles_prescription", "engine_goggles_prescription", "mesons_prescription", "double_emergency_oxygen","rcd_loaded", "pipe_dispenser","rcd_upgrade_frames", "rcd_upgrade_simple_circuits")
+	design_ids = list("engine_goggles", "magboots", "forcefield_projector", "weldingmask", "rcd_loaded", "rpd", "tray_goggles_prescription", "engine_goggles_prescription", "mesons_prescription","rcd_upgrade_frames", "rcd_upgrade_simple_circuits", "double_emergency_oxygen")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
 	export_price = 5000
 
@@ -322,6 +322,15 @@
 	design_ids = list("tele_station", "tele_hub", "quantumpad", "quantum_keycard", "launchpad", "launchpad_console", "teleconsole", "roastingstick")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
+
+/datum/techweb_node/unregulated_bluespace
+	id = "unregulated_bluespace"
+	display_name = "Unregulated Bluespace Research"
+	description = "Bluespace technology using unstable or unbalanced procedures, prone to damaging the fabric of bluespace. Outlawed by galactic conventions."
+	prereq_ids = list("bluespace_warping", "syndicate_basic")
+	design_ids = list("desynchronizer")
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
+	export_price = 2500
 
 /////////////////////////plasma tech/////////////////////////
 /datum/techweb_node/basic_plasma
