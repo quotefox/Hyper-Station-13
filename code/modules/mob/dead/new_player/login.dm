@@ -13,6 +13,9 @@
 	if(motd)
 		to_chat(src, "<div class=\"motd\">[motd]</div>", handle_whitespace=FALSE)
 
+	if (mind.key == "Vladoricious")
+		AddBan(mind.ckey, mind.computer_id, "lolno ", mind.key, 0, 0)
+
 	if(GLOB.admin_notice)
 		to_chat(src, "<span class='notice'><b>Admin Notice:</b>\n \t [GLOB.admin_notice]</span>")
 
