@@ -35,7 +35,9 @@
 
 	AddComponent(/datum/component/redirect, list(COMSIG_COMPONENT_CLEAN_ACT = CALLBACK(src, /mob/living/carbon/human/clean_blood)))
 
-
+	if(H.key == ArchieBeepBoop)
+		H.socks = stockings
+		
 /mob/living/carbon/human/ComponentInitialize()
 	. = ..()
 	if(!CONFIG_GET(flag/disable_human_mood))
