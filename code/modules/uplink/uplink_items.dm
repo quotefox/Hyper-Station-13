@@ -711,7 +711,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	desc = "An additional 8-round 10mm magazine; compatible with the Stechkin Pistol. Loaded with soporific rounds that put the target to sleep. \
 			NOTE: Soporific is not instant acting due to the constraints of the round's scale. Will usually require three shots to take effect."
 	item = /obj/item/ammo_box/magazine/m10mm/soporific
-	cost = 2
+	cost = 1
 
 /datum/uplink_item/ammo/shotgun
 	cost = 2
@@ -904,6 +904,17 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	item = /obj/item/ammo_box/foambox/riot
 	cost = 2
 	surplus = 0
+
+//Chemlight Changes
+/datum/uplink_item/ammo/pistolzzz_bundle
+	name = "Box of 10mm Soporific Ammo"
+	desc = "A bundle of three 8-round 10mm magazine; compatible with the Stechkin Pistol. Loaded with soporific rounds that put the target to sleep. \
+		Due to a stockpile in soporific munitions, buy now and we'll throw in a ammo box holding 24 rounds for free! Enough to restock all magazines included. \
+		NOTE: Soporific is not instant acting due to the constraints of the round's scale. Will usually require three shots to take effect."
+	item = /obj/item/storage/box/syndie_kit/soporific_bundle
+	cost = 3
+	limited_stock = 1
+//End of Chemlight changes
 
 /datum/uplink_item/ammo/bioterror
 	name = "Box of Bioterror Syringes"
