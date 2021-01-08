@@ -48,7 +48,7 @@
 /area/ruin/powered)
 "am" = (
 /obj/item/circuitboard/computer/rdconsole,
-/obj/item/circuitboard/machine/protolathe,
+/obj/item/circuitboard/machine/protolathe/department/science,
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered)
 "an" = (
