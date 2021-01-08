@@ -774,6 +774,10 @@ datum/sprite_accessory/ears/human/gret
 	name = "Fox Alt"
 	icon_state = "foxalt"
 
+/datum/sprite_accessory/mam_snouts/snub
+	name = "Snub"
+	icon_state = "snub"
+
 /datum/sprite_accessory/mam_snouts/hshort
 	name = "Small"
 	icon_state = "short"
