@@ -61,7 +61,7 @@
 	var/mob/living/carbon/C = usr
 	if(usr.stat || usr.restrained() || C.back == src)
 		return
-	
+
 	if(!usr.canUseTopic(src, BE_CLOSE))
 		usr << browse(null, "window=radio")
 		onclose(usr, "radio")
@@ -127,7 +127,7 @@
 /obj/item/electropack/ui_interact(mob/user)
 	if(!ishuman(user))
 		return
-	
+
 	user.set_machine(src)
 	var/dat = {"
 <TT>
