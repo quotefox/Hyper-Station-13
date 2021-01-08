@@ -16,7 +16,7 @@ GLOBAL_VAR_INIT(normal_looc_colour, "#6699CC")
 		to_chat(src, "Guests may not use OOC.")
 		return
 
-	msg = copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN)
+	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
 	if(!msg)
 		return
 

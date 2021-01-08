@@ -30,7 +30,7 @@ GENE SCANNER
 /obj/item/t_scanner/attack_self(mob/user)
 
 	on = !on
-	icon_state = copytext_char(icon_state, 1, -1) + "[on]"
+	icon_state = copytext(icon_state, 1, length(icon_state))+"[on]"
 
 	if(on)
 		START_PROCESSING(SSobj, src)

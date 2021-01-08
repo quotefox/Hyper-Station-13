@@ -135,7 +135,7 @@
 			L.update_arousal_hud() //Removes the old icon
 
 /datum/mind/proc/store_memory(new_text)
-	if((length_char(memory) + length_char(new_text)) <= MAX_MESSAGE_LEN)
+	if((length(memory) + length(new_text)) <= MAX_MESSAGE_LEN)
 		memory += "[new_text]<BR>"
 
 /datum/mind/proc/wipe_memory()
@@ -411,7 +411,7 @@
 		assigned_role = new_role
 
 	else if (href_list["memory_edit"])
-		var/new_memo = stripped_multiline_input(usr, "Write new memory", "Memory", memory, MAX_MESSAGE_LEN)
+		var/new_memo = copytext(sanitize(input("Write new memory", "Memory", memory) as null|message),1,MAX_MESSAGE_LEN)
 		if (isnull(new_memo))
 			return
 		memory = new_memo
