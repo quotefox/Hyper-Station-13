@@ -43,6 +43,7 @@
 /obj/item/robot_module/k9
 	name = "Security K-9 Unit"
 	basic_modules = list(
+		/obj/item/assembly/flash/cyborg,
 		/obj/item/restraints/handcuffs/cable/zipties,
 		/obj/item/storage/bag/borgdelivery,
 		/obj/item/dogborg/jaws/big,
@@ -106,6 +107,7 @@
 /obj/item/robot_module/medihound
 	name = "MediHound"
 	basic_modules = list(
+		/obj/item/assembly/flash/cyborg,
 		/obj/item/dogborg/jaws/small,
 		/obj/item/storage/bag/borgdelivery,
 		/obj/item/analyzer/nose,
@@ -116,6 +118,13 @@
 		/obj/item/roller/robo,
 		/obj/item/crowbar/cyborg,
 		/obj/item/borg/apparatus/beaker,
+		/obj/item/surgical_drapes,
+		/obj/item/retractor,
+		/obj/item/hemostat,
+		/obj/item/cautery,
+		/obj/item/surgicaldrill,
+		/obj/item/scalpel,
+		/obj/item/circular_saw,
 		/obj/item/reagent_containers/borghypo,
 		/obj/item/twohanded/shockpaddles/cyborg/hound,
 		/obj/item/stack/medical/gauze/cyborg,
@@ -172,6 +181,7 @@
 /obj/item/robot_module/scrubpup
 	name = "Scrub Pup"
 	basic_modules = list(
+		/obj/item/assembly/flash/cyborg,
 		/obj/item/dogborg/jaws/small,
 		/obj/item/analyzer/nose,
 		/obj/item/crowbar/cyborg,
@@ -225,6 +235,7 @@
 /obj/item/robot_module/borgi
 	name = "Borgi"
 	basic_modules = list(
+		/obj/item/assembly/flash/cyborg,
 		/obj/item/dogborg/jaws/small,
 		/obj/item/storage/bag/borgdelivery,
 		/obj/item/analyzer/nose,
