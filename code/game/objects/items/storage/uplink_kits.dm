@@ -393,3 +393,14 @@
 	new /obj/item/gun/ballistic/automatic/pistol/m1911/kitchengun(src)
 	new /obj/item/ammo_box/magazine/m45/kitchengun(src)
 	new /obj/item/ammo_box/magazine/m45/kitchengun(src)
+
+//Chemlight less than lethal addition
+/obj/item/storage/box/syndie_kit/soporific_bundle
+	name = "box"
+
+/obj/item/storage/box/syndie_kit/soporific_bundle/PopulateContents() // A total of 48 rounds, don't shoot it all in one place!
+	new	/obj/item/ammo_box/magazine/m10mm/soporific(src)
+	new	/obj/item/ammo_box/magazine/m10mm/soporific(src)
+	new	/obj/item/ammo_box/magazine/m10mm/soporific(src)
+	new	/obj/item/ammo_box/c10mm/soporific(src)
+//End of Chemlight changes
