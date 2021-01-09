@@ -34,7 +34,6 @@
 	icon_state = "luwethtrench"
 	item_state = "luwethtrench"
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
-	roomy = TRUE
 
 /obj/item/clothing/gloves/ring/luweth
 	name = "Luweth’s Wedding Band"
