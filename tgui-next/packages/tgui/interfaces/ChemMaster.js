@@ -396,7 +396,7 @@ const AnalysisResults = props => {
           </LabeledList.Item>
         </LabeledList>
       )}
-      {!! data.fermianalyze && (
+      {!!fermianalyze && (
         <LabeledList>
           <LabeledList.Item label="Name">
             {analyzeVars.name}
