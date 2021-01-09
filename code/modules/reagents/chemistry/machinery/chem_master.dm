@@ -188,14 +188,14 @@
 		for(var/datum/reagent/R in beaker.reagents.reagent_list)
 			beakerContents.Add(list(list("name" = R.name, "id" = R.type, "volume" = R.volume))) // list in a list because Byond merges the first list...
 			//"id" was changed to R.Type as id is now obsolete. This will allow special reagents such as synthtissue to be extracted in a chem master.
-		data["beakerContents"] = beakerContents
+	data["beakerContents"] = beakerContents
 
 	var/bufferContents[0]
 	if(reagents.total_volume)
 		for(var/datum/reagent/N in reagents.reagent_list)
 			bufferContents.Add(list(list("name" = N.name, "id" = N.type, "volume" = N.volume))) // ^
 			// ^
-		data["bufferContents"] = bufferContents
+	data["bufferContents"] = bufferContents
 
 	//Calculated at init time as it never changes
 	data["pillStyles"] = pillStyles
