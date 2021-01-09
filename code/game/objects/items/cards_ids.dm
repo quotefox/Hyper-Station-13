@@ -217,9 +217,11 @@ update_label("John Doe", "Clowny")
 /obj/item/card/id/proc/update_label(newname, newjob)
 	if(newname || newjob)
 		name = "[(!newname)	? "identification card"	: "[newname]'s ID Card"][(!newjob) ? "" : " ([newjob])"]"
+		update_icon()
 		return
 
 	name = "[(!registered_name)	? "identification card"	: "[registered_name]'s ID Card"][(!assignment) ? "" : " ([assignment])"]"
+	update_icon()
 
 /obj/item/card/id/silver
 	name = "silver identification card"
@@ -269,18 +271,21 @@ update_label("John Doe", "Clowny")
 	if(isliving(user) && user.mind)
 		if(user.mind.special_role || anyone)
 			if(alert(user, "Action", "Agent ID", "Show", "Forge") == "Forge")
-				var/t = copytext(sanitize(input(user, "What name would you like to put on this card?", "Agent card name", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name))as text | null),1,26)
-				if(!t || t == "Unknown" || t == "floor" || t == "wall" || t == "r-wall") //Same as mob/dead/new_player/prefrences.dm
-					if (t)
-						alert("Invalid name.")
+				var/input_name = stripped_input(user, "What name would you like to put on this card? Leave blank to randomise.", "Agent card name", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name), MAX_NAME_LEN)
+				input_name = reject_bad_name(input_name)
+				if(!input_name)
+				// Invalid/blank names give a randomly generated one.
+					if(user.gender == MALE)
+						input_name = "[pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
+					else if(user.gender == FEMALE)
+						input_name = "[pick(GLOB.first_names_female)] [pick(GLOB.last_names)]"
+					else
+						input_name = "[pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
+				var/target_occupation = stripped_input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", assignment ? assignment : "Assistant", MAX_MESSAGE_LEN)
+				if(!target_occupation)
 					return
-				registered_name = t
-
-				var/u = copytext(sanitize(input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", "Assistant")as text | null),1,MAX_MESSAGE_LEN)
-				if(!u)
-					registered_name = ""
-					return
-				assignment = u
+				registered_name = input_name
+				assignment = target_occupation
 				update_label()
 				to_chat(user, "<span class='notice'>You successfully forge the ID card.</span>")
 				return
