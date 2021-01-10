@@ -37,8 +37,10 @@
 	dat	+= "<a href='byond://?src=[REF(src)];container=1'>Fill container</A>"
 	dat	+=	"(Use a container in your hand to collect your seminal fluid.)<BR>"
 
-	dat += "<a href='byond://?src=[REF(src)];clothesplosion=1'>Explode out of clothes</A>"
-	dat	+=	"(Self-explanatory.)<BR>"
+	var/mob/living/carbon/human/C = usr
+	if(C && C.w_uniform || C.wear_suit) //if they are wearing cloths
+		dat += "<a href='byond://?src=[REF(src)];clothesplosion=1'>Explode out of clothes</A>"
+		dat	+=	"(Flex your body to cause your clothes to burst apart.)<BR>"
 
 	if(user.pulling)
 		dat	+= "<a href='byond://?src=[REF(src)];kiss=1'>Kiss [user.pulling]</A>"
@@ -75,6 +77,9 @@
 	popup.set_title_image(user.browse_rsc_icon(icon, icon_state), 500,600)
 
 	popup.open()
+
+
+
 
 
 /obj/screen/arousal/Topic(href, href_list)
@@ -349,6 +354,20 @@ obj/screen/arousal/proc/kiss()
 	else //They either lack organs that can masturbate, or they didn't pick one.
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
+
+/mob/living/carbon/human/proc/clothesplosion()
+	if(usr.restrained(TRUE))
+		to_chat(usr, "<span class='warning'>You can't do that while restrained!</span>")
+		return
+	var/mob/living/carbon/human/H = src
+	var/items = H.get_contents()
+	for(var/obj/item/W in items)
+		if(W == H.w_uniform || W == H.wear_suit)
+			H.dropItemToGround(W, TRUE)
+			playsound(H.loc, 'sound/items/poster_ripped.ogg', 50, 1)
+	H.visible_message("<span class='boldnotice'>[H] explodes out of their clothes!'</span>")
+
+
 
 /mob/living/carbon/human/proc/impregwith(mob/living/T)
 

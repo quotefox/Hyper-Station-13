@@ -464,15 +464,6 @@
 		if(G.can_climax)
 			setArousalLoss(min_arousal)
 
-/mob/living/carbon/human/proc/clothesplosion()
-	var/mob/living/carbon/human/that_guy = src
-	var/items = that_guy.get_contents()
-	for(var/obj/item/W in items)
-		if(W == that_guy.w_uniform || W == that_guy.wear_suit)
-			that_guy.dropItemToGround(W, TRUE)
-			playsound(that_guy.loc, 'sound/items/poster_ripped.ogg', 50, 1)
-			that_guy.visible_message("<span class='boldnotice'>[that_guy] explodes out of their clothes!'</span>")
-	
 
 /mob/living/carbon/human/proc/pick_masturbate_genitals()
 	var/obj/item/organ/genital/ret_organ
