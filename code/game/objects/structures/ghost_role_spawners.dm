@@ -48,6 +48,7 @@
 	anchored = FALSE
 	move_resist = MOVE_FORCE_NORMAL
 	density = FALSE
+	short_desc = "You are an ash walker. Your tribe worships the Necropolis."
 	flavour_text = "The wastes are sacred ground, its monsters a blessed bounty. You would never willingly leave your homeland behind. \
 	You have seen lights in the distance... they foreshadow the arrival of outsiders to your domain. However, their intentions have yet to be judged.\
 	Ensure your nest remains protected at all costs."
@@ -250,7 +251,7 @@
 			outfit.back = /obj/item/storage/backpack/medic
 			outfit.shoes = /obj/item/clothing/shoes/sneakers/black
 		if(4)
-			flavour_text += "you were always joked about by your friends for \"not playing with a full deck\", as they so <i>kindly</i> put it. It seems that they were right when you, on a tour \
+			flavour_text += "you were always joked about by your friends for \"not playing with a full deck\", as they so kindly put it. It seems that they were right when you, on a tour \
 			at one of Nanotrasen's state-of-the-art research facilities, were in one of the escape pods alone and saw the red button. It was big and shiny, and it caught your eye. You pressed \
 			it, and after a terrifying and fast ride for days, you landed here. You've had time to wisen up since then, and you think that your old friends wouldn't be laughing now."
 			outfit.uniform = /obj/item/clothing/under/color/grey/glorf
@@ -267,10 +268,10 @@
 	desc = "A small sleeper typically used to instantly restore minor wounds. This one seems broken, and its occupant is comatose."
 	job_description = "Lavaland Veterinarian"
 	mob_name = "a translocated vet"
-	short_desc = "You are a animal doctor who just woke up in lavaland"
+	short_desc = "You are an animal doctor who just woke up in lavaland"
 	flavour_text = "What...? Where are you? Where are the others? This is still the animal hospital - you should know, you've been an intern here for weeks - but \
 	you see them right now. So where is \
-	everyone? Where did they go? What happened to the hospital? And is that <i>smoke</i> you smell? You need to find someone else. Maybe they c	everyone's gone. One of the cats scratched you just a few minutes ago. That's why you were in the pod - to heal the scratch. The scabs are still fresh; an tell you what happened."
+	everyone? Where did they go? What happened to the hospital? And is that smoke you smell? You need to find someone else. Maybe everyone's gone. One of the cats scratched you just a few minutes ago. That's why you were in the pod - to heal the scratch. The scabs are still fresh; and tell you what happened."
 	assignedrole = "Translocated Vet"
 	mirrorcanloadappearance = TRUE
 

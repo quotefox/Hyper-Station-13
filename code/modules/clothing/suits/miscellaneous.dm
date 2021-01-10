@@ -590,7 +590,6 @@
 	item_state = "coatcentcom"
 	armor = list("melee" = 40, "bullet" = 45, "laser" = 45, "energy" = 35, "bomb" = 40, "bio" = 25, "rad" = 25, "fire" = 35, "acid" = 50)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/centcom
-	roomy = TRUE
 
 /obj/item/clothing/suit/hooded/wintercoat/centcom/Initialize()
 	. = ..()
@@ -599,7 +598,6 @@
 /obj/item/clothing/head/hooded/winterhood/centcom
 	icon_state = "winterhood_centcom"
 	armor = list("melee" = 40, "bullet" = 45, "laser" = 45, "energy" = 35, "bomb" = 40, "bio" = 25, "rad" = 25, "fire" = 35, "acid" = 50)
-	roomy = TRUE
 
 /obj/item/clothing/suit/hooded/wintercoat/captain
 	name = "captain's winter coat"

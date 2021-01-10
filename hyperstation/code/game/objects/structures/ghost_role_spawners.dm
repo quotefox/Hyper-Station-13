@@ -10,7 +10,8 @@
 	death = FALSE
 	random = TRUE
 	mob_species = /datum/species/human
-	flavour_text = "<span class='big bold'>You and another have been stranded in this planet for quite some time now.</span><b> Each day you barely scrape by, and between the terrible \
+	short_desc = "You are lost."
+	flavour_text = "You and another have been stranded in this planet for quite some time now. Each day you barely scrape by, and between the terrible \
 	conditions of your makeshift shelter, the hostile creatures, and the ash drakes swooping down from the cloudless skies, all you can wish for is the feel of soft grass between your toes and \
 	the fresh air of Earth. These thoughts are dispelled by yet another recollection of how you and your friend got here... "
 	assignedrole = "Hermit"
@@ -58,6 +59,7 @@
 	death = FALSE
 	random = TRUE
 	mob_species = /datum/species/human
+	short_desc = "You've been left behind."
 	flavour_text = "As the last escape shuttle left the sector, you were left for dead, stranded in a cold hell where you make do, until hopefully someone finds you. \
 	Every day, you pause and recollect your memories from before it all happened... "
 	assignedrole = "Arctic Exile"

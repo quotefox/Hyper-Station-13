@@ -37,6 +37,11 @@
 	dat	+= "<a href='byond://?src=[REF(src)];container=1'>Fill container</A>"
 	dat	+=	"(Use a container in your hand to collect your seminal fluid.)<BR>"
 
+	var/mob/living/carbon/human/C = usr
+	if(C && C.w_uniform || C.wear_suit) //if they are wearing cloths
+		dat += "<a href='byond://?src=[REF(src)];clothesplosion=1'>Explode out of clothes</A>"
+		dat	+=	"(Flex your body to cause your clothes to burst apart.)<BR>"
+
 	if(user.pulling)
 		dat	+= "<a href='byond://?src=[REF(src)];kiss=1'>Kiss [user.pulling]</A>"
 		dat	+=	"(Kiss a partner, or object.)<BR>"
@@ -72,6 +77,9 @@
 	popup.set_title_image(user.browse_rsc_icon(icon, icon_state), 500,600)
 
 	popup.open()
+
+
+
 
 
 /obj/screen/arousal/Topic(href, href_list)
@@ -122,6 +130,14 @@
 	if(href_list["container"])
 		if (H.arousalloss >= (H.max_arousal / 100) * 33) //requires 33% arousal.
 			H.cumcontainer()
+			return
+		else
+			to_chat(usr, "<span class='warning'>You aren't aroused enough for that! </span>")
+		return
+
+	if(href_list["clothesplosion"])
+		if (H.arousalloss >= (H.max_arousal / 100) * 33) //Requires 33% arousal.
+			H.clothesplosion()
 			return
 		else
 			to_chat(usr, "<span class='warning'>You aren't aroused enough for that! </span>")
@@ -313,6 +329,8 @@ obj/screen/arousal/proc/kiss()
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
 
+
+
 /mob/living/carbon/human/proc/climaxover(mob/living/T)
 
 	var/mob/living/carbon/human/L = T
@@ -336,6 +354,20 @@ obj/screen/arousal/proc/kiss()
 	else //They either lack organs that can masturbate, or they didn't pick one.
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
+
+/mob/living/carbon/human/proc/clothesplosion()
+	if(usr.restrained(TRUE))
+		to_chat(usr, "<span class='warning'>You can't do that while restrained!</span>")
+		return
+	var/mob/living/carbon/human/H = src
+	var/items = H.get_contents()
+	for(var/obj/item/W in items)
+		if(W == H.w_uniform || W == H.wear_suit)
+			H.dropItemToGround(W, TRUE)
+			playsound(H.loc, 'sound/items/poster_ripped.ogg', 50, 1)
+	H.visible_message("<span class='boldnotice'>[H] explodes out of their clothes!'</span>")
+
+
 
 /mob/living/carbon/human/proc/impregwith(mob/living/T)
 

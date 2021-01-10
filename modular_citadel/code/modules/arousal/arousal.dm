@@ -464,6 +464,7 @@
 		if(G.can_climax)
 			setArousalLoss(min_arousal)
 
+
 /mob/living/carbon/human/proc/pick_masturbate_genitals()
 	var/obj/item/organ/genital/ret_organ
 	var/list/genitals_list = list()
