@@ -68,7 +68,7 @@
 
 /obj/effect/mob_spawn/human/exiled/Initialize(mapload)
 	. = ..()
-	delayusability(1, FALSE) //Probably should not show up on the menu? It gives it away that snowdin is the away mission.
+	delayusability(9000, FALSE) //Probably should not show up on the menu? It gives it away that snowdin is the away mission.
 	var/arrpee = rand(1,3)
 	switch(arrpee)
 		if(1)
