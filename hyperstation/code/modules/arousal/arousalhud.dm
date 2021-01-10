@@ -37,6 +37,9 @@
 	dat	+= "<a href='byond://?src=[REF(src)];container=1'>Fill container</A>"
 	dat	+=	"(Use a container in your hand to collect your seminal fluid.)<BR>"
 
+	dat += "<a href='byond://?src=[REF(src)];clothesplosion=1'>Explode out of clothes</A>"
+	dat	+=	"(Self-explanatory.)<BR>"
+
 	if(user.pulling)
 		dat	+= "<a href='byond://?src=[REF(src)];kiss=1'>Kiss [user.pulling]</A>"
 		dat	+=	"(Kiss a partner, or object.)<BR>"
@@ -122,6 +125,14 @@
 	if(href_list["container"])
 		if (H.arousalloss >= (H.max_arousal / 100) * 33) //requires 33% arousal.
 			H.cumcontainer()
+			return
+		else
+			to_chat(usr, "<span class='warning'>You aren't aroused enough for that! </span>")
+		return
+
+	if(href_list["clothesplosion"])
+		if (H.arousalloss >= (H.max_arousal / 100) * 33) //Requires 33% arousal.
+			H.clothesplosion()
 			return
 		else
 			to_chat(usr, "<span class='warning'>You aren't aroused enough for that! </span>")
@@ -312,6 +323,8 @@ obj/screen/arousal/proc/kiss()
 	else //They either lack organs that can masturbate, or they didn't pick one.
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
+
+
 
 /mob/living/carbon/human/proc/climaxover(mob/living/T)
 
