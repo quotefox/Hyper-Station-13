@@ -93,9 +93,3 @@
 	path = /obj/item/storage/pill_bottle/heat
 	ckeywhitelist = list("natak")
 
-/datum/gear/natak
-	name = "Crystalline Shards"
-	category = SLOT_IN_BACKPACK
-	path = /obj/item/clothing/head/crystalline
-	ckeywhitelist = list("dragontrance")
-

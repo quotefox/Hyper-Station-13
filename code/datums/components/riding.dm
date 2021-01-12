@@ -130,7 +130,7 @@
 
 //KEYS
 /datum/component/riding/proc/keycheck(mob/user)
-	return !keytype || user?.is_holding_item_of_type(keytype)
+	return !keytype || user.is_holding_item_of_type(keytype)
 
 //BUCKLE HOOKS
 /datum/component/riding/proc/restore_position(mob/living/buckled_mob)
@@ -150,7 +150,7 @@
 
 /datum/component/riding/proc/handle_ride(mob/user, direction)
 	var/atom/movable/AM = parent
-	if(user && user.incapacitated())
+	if(user.incapacitated())
 		Unbuckle(user)
 		return
 
