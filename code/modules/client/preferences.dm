@@ -1662,7 +1662,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("name")
 					var/new_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
 					if(new_name)
-						new_name = reject_bad_name(new_name)
+						new_name = reject_bad_name(new_name, TRUE)
 						if(new_name)
 							real_name = new_name
 						else
