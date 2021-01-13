@@ -891,7 +891,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			SEND_SOUND(target, 'sound/ai/aimalf.ogg')
 		if("meteors") //Meteors inbound!
 			to_chat(target, "<h1 class='alert'>Meteor Alert</h1>")
-			to_chat(target, "<br><br><span class='alert'>Meteors have been detected on collision course with the station. Estimated time until impact: [round(rand(180,360)/60)] minutes.</span><br><br>")
+			to_chat(target, "<br><br><span class='alert'>Meteors have been detected on collision course with the station. Estimated time until impact: [round(rand(300,600)/60)] minutes.</span><br><br>")
 			SEND_SOUND(target, 'sound/ai/meteors.ogg')
 		if("supermatter")
 			SEND_SOUND(target, 'sound/magic/charge.ogg')
