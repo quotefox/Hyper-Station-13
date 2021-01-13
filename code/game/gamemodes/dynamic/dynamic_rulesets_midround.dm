@@ -208,7 +208,7 @@
 	antag_datum = /datum/antagonist/traitor
 	antag_flag = ROLE_TRAITOR
 	restricted_roles = list("AI", "Cyborg", "Positronic Brain")
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
 	weight = 4
 	cost = 10
@@ -224,7 +224,7 @@
 	antag_datum = /datum/antagonist/traitor/thief
 	antag_flag = ROLE_TRAITOR
 	restricted_roles = list("AI", "Cyborg", "Positronic Brain")
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
 	weight = 4
 	cost = 5
@@ -545,7 +545,7 @@
 	antag_datum = /datum/antagonist/cult
 	minimum_required_age = 14
 	restricted_roles = list("AI", "Cyborg")
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
 	weight = 5
 	cost = 20
@@ -823,7 +823,7 @@ datum/dynamic_ruleset/midround/bloodcult/trim_candidates()
   antag_datum = ANTAG_DATUM_BLOODSUCKER
   antag_flag = ROLE_TRAITOR
   restricted_roles = list("AI", "Cyborg")
-  protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+  protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
   required_candidates = 1
   enemy_roles = list("Security Officer","Head of Security","Captain","AI","Cyborg","Chaplain","Curator")
   required_enemies = list(3,2,2,2,2,2,2,2,2,2)

@@ -11,7 +11,7 @@
 	antag_flag = ROLE_TRAITOR
 	antag_datum = /datum/antagonist/traitor/
 	minimum_required_age = 0
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Cyborg", "Quartermaster")
+	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Cyborg", "Quartermaster")
 	restricted_roles = list("Cyborg", "AI") //Malf is it's own ruleset
 	required_candidates = 1
 	weight = 5
@@ -28,7 +28,7 @@
 	antag_flag = ROLE_TRAITOR
 	antag_datum = /datum/antagonist/traitor/thief
 	minimum_required_age = 0
-	//protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Cyborg")
+	//protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Cyborg")
 	restricted_roles = list("Cyborg", "AI") //Malf is it's own ruleset
 	//required_candidates = 1
 	weight = 5
@@ -127,7 +127,7 @@
 	antag_flag = ROLE_BROTHER
 	antag_datum = /datum/antagonist/brother/
 	restricted_roles = list("AI", "Cyborg")
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 2
 	weight = 4
 	cost = 10
@@ -181,7 +181,7 @@
 	antag_flag = ROLE_CHANGELING
 	antag_datum = /datum/antagonist/changeling
 	restricted_roles = list("AI", "Cyborg")
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
 	weight = 3
 	cost = 10
@@ -279,7 +279,7 @@
 	antag_datum = /datum/antagonist/cult
 	minimum_required_age = 14
 	restricted_roles = list("AI", "Cyborg")
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 2
 	weight = 1
 	cost = 30
@@ -839,7 +839,7 @@
 	antag_flag = ROLE_BLOODSUCKER
 	antag_datum = ANTAG_DATUM_BLOODSUCKER
 	minimum_required_age = 0
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	restricted_roles = list("Cyborg", "AI")
 	required_candidates = 1
 	weight = 3
