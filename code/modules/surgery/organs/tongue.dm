@@ -101,6 +101,24 @@
 		message = lizard_hiSS.Replace(message, "SSS")
 	speech_args[SPEECH_MESSAGE] = message
 
+/obj/item/organ/tongue/kitty
+	name = "barbed tongue"
+	desc = "A thin and prickled on top tongue, common among cats"
+	icon_state = "tonguenormal"
+	say_mod = "mrowls"
+	taste_sensitivity = 15 //Tastes like normal
+	maxHealth = 60 //And so has health like normal
+	modifies_speech = TRUE
+
+/obj/item/organ/tongue/kitty/handle_speech(datum/source, list/speech_args)
+	var/static/regex/taja_purr = new("r+", "g")
+	var/static/regex/taja_puRR = new("R+", "g")
+	var/message = speech_args[SPEECH_MESSAGE]
+	if(message[1] != "*")
+		message = taja_purr.Replace(message, "rrr")
+		message = taja_puRR.Replace(message, "RRR")
+	speech_args[SPEECH_MESSAGE] = message
+
 /obj/item/organ/tongue/fly
 	name = "proboscis"
 	desc = "A freakish looking meat tube that apparently can take in liquids."
