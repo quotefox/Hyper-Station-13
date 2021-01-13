@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 //All bundles and telecrystals
 /datum/uplink_item/bundles_TC
-	category = "Bundles and Telecrystals"
+	category = "Telecrystals and Bundles"
 	surplus = 0
 	cant_discount = TRUE
 
@@ -288,7 +288,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 // Dangerous Items
 /datum/uplink_item/dangerous
-	category = "Conspicuous and Dangerous Weapons"
+	category = "Conspicuous Weapons"
 
 /datum/uplink_item/dangerous/pistol
 	name = "Stechkin Pistol"
@@ -544,7 +544,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 // Stealthy Weapons
 /datum/uplink_item/stealthy_weapons
-	category = "Stealthy and Inconspicuous Weapons"
+	category = "Stealthy Weapons"
 
 /datum/uplink_item/stealthy_weapons/combatglovesplus
 	name = "Combat Gloves Plus"
@@ -711,7 +711,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	desc = "An additional 8-round 10mm magazine; compatible with the Stechkin Pistol. Loaded with soporific rounds that put the target to sleep. \
 			NOTE: Soporific is not instant acting due to the constraints of the round's scale. Will usually require three shots to take effect."
 	item = /obj/item/ammo_box/magazine/m10mm/soporific
-	cost = 2
+	cost = 1
 
 /datum/uplink_item/ammo/shotgun
 	cost = 2
@@ -905,6 +905,17 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	cost = 2
 	surplus = 0
 
+//Chemlight Changes
+/datum/uplink_item/ammo/pistolzzz_bundle
+	name = "Box of 10mm Soporific Ammo"
+	desc = "A bundle of three 8-round 10mm magazine; compatible with the Stechkin Pistol. Loaded with soporific rounds that put the target to sleep. \
+		Due to a stockpile in soporific munitions, buy now and we'll throw in a ammo box holding 24 rounds for free! Enough to restock all magazines included. \
+		NOTE: Soporific is not instant acting due to the constraints of the round's scale. Will usually require three shots to take effect."
+	item = /obj/item/storage/box/syndie_kit/soporific_bundle
+	cost = 3
+	limited_stock = 1
+//End of Chemlight changes
+
 /datum/uplink_item/ammo/bioterror
 	name = "Box of Bioterror Syringes"
 	desc = "A box full of preloaded syringes, containing various chemicals that seize up the victim's motor \
@@ -921,7 +932,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/explosives
-	category = "Grenades and Explosives"
+	category = "Explosives"
 
 /datum/uplink_item/explosives/bioterrorfoam
 	name = "Bioterror Foam Grenade"
@@ -1079,7 +1090,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 //Support and Mechs
 /datum/uplink_item/support
-	category = "Support and Mechanized Exosuits"
+	category = "Support and Exosuits"
 	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear)
 
@@ -1275,7 +1286,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 //Space Suits and Hardsuits
 /datum/uplink_item/suits
-	category = "Space Suits, Hardsuits and Clothing"
+	category = "Clothing"
 	surplus = 40
 
 /datum/uplink_item/suits/turtlenck
@@ -1352,7 +1363,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 // Devices and Tools
 /datum/uplink_item/device_tools
-	category = "Devices and Tools"
+	category = "Misc. Gadgets"
 
 /datum/uplink_item/device_tools/emag
 	name = "Cryptographic Sequencer"

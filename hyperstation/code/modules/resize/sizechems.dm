@@ -13,7 +13,7 @@
 //Sizechem reaction
 /datum/chemical_reaction/sizechem
 	name = "Cell-Volume Altering Base"
-	id = "sizechem"
+	id = /datum/reagent/sizechem
 	mix_message = "the reaction rapidly alters in size!"
 	required_reagents = list(/datum/reagent/growthserum = 0.15, /datum/reagent/medicine/clonexadone = 0.15, /datum/reagent/gold = 0.15, /datum/reagent/acetone = 0.15)
 	results = list(/datum/reagent/sizechem = 0.3)
@@ -48,7 +48,7 @@
 //Growthchem reaction
 /datum/chemical_reaction/growthchem
 	name = "Prospacillin"
-	id = "growthchem"
+	id = /datum/reagent/growthchem
 	mix_message = "the reaction appears to grow!"
 	required_reagents = list(/datum/reagent/sizechem = 0.15, /datum/reagent/consumable/condensedcapsaicin = 0.15, /datum/reagent/drug/aphrodisiac = 0.30)
 	results = list(/datum/reagent/growthchem = 0.25)
@@ -97,7 +97,7 @@
 //Shrinchem reaction
 /datum/chemical_reaction/shrinkchem
 	name = "Diminicillin"
-	id = "shrinkchem"
+	id = /datum/reagent/shrinkchem
 	mix_message = "the reaction appears to shrink!"
 	required_reagents = list(/datum/reagent/sizechem = 0.15, /datum/reagent/consumable/frostoil = 0.15, /datum/reagent/drug = 0.30)
 	results = list(/datum/reagent/shrinkchem = 0.25)

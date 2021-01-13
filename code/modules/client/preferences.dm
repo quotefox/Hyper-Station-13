@@ -225,7 +225,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/auto_fit_viewport = TRUE
 
 	var/uplink_spawn_loc = UPLINK_PDA
-	
+
 	var/sprint_spacebar = FALSE
 	var/sprint_toggle = FALSE
 
@@ -1662,7 +1662,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("name")
 					var/new_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
 					if(new_name)
-						new_name = reject_bad_name(new_name)
+						new_name = reject_bad_name(new_name, TRUE)
 						if(new_name)
 							real_name = new_name
 						else
@@ -1684,9 +1684,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						medical_records = rec
 
 				if("flavor_text")
-					var/msg = stripped_multiline_input(usr, "Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Flavor Text", html_decode(features["flavor_text"]), MAX_MESSAGE_LEN*2, TRUE)
-					if(!isnull(msg))
-						msg = copytext(msg, 1, MAX_MESSAGE_LEN*2)
+					var/msg = stripped_multiline_input(usr, "Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Flavor Text", html_decode(features["flavor_text"]), MAX_MESSAGE_LEN, TRUE)
+					if(msg)
+						msg = msg
 						features["flavor_text"] = msg
 
 				if("hair")

@@ -174,5 +174,6 @@ GLOBAL_LIST_INIT(cargo_shuttle_leave_behind_typecache, typecacheof(list(
 		msg += "[value] credits: received [amount]u of [R.name].\n"
 		SSshuttle.points += value
 
+	msg = copytext_char(msg, 1, MAX_MESSAGE_LEN)
 	SSshuttle.centcom_message = msg
 	investigate_log("Shuttle contents sold for [SSshuttle.points - presale_points] credits. Contents: [ex.exported_atoms || "none."] Message: [SSshuttle.centcom_message || "none."]", INVESTIGATE_CARGO)

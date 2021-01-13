@@ -154,7 +154,7 @@
 //liquid plasma!!!!!!//
 
 /turf/open/floor/plasteel/dark/snowdin
-	initial_gas_mix = "o2=22;n2=82;TEMP=180"
+	initial_gas_mix = FROZEN_ATMOS
 	planetary_atmos = 1
 	temperature = 180
 
@@ -596,8 +596,9 @@
 	job_description = "Syndicate Snow Operative"
 	faction = ROLE_SYNDICATE
 	outfit = /datum/outfit/snowsyndie
-	flavour_text = "<span class='big bold'>You are a syndicate operative recently awoken from cryostasis in an underground outpost. Monitor Nanotrasen communications and record information. All intruders should be \
-	disposed of swiftly to assure no gathered information is stolen or lost. Try not to wander too far from the outpost as the caves can be a deadly place even for a trained operative such as yourself.</span>"
+	short_desc = "You are a syndicate operative recently awoken from cryostasis in an underground outpost."
+	flavour_text = "You are a syndicate operative recently awoken from cryostasis in an underground outpost. Monitor Nanotrasen communications and record information. All intruders should be \
+	disposed of swiftly to assure no gathered information is stolen or lost. Try not to wander too far from the outpost as the caves can be a deadly place even for a trained operative such as yourself."
 
 /datum/outfit/snowsyndie
 	name = "Syndicate Snow Operative"

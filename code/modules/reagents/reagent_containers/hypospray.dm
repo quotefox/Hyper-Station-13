@@ -534,11 +534,10 @@
 	reagent_flags = OPENCONTAINER | NO_REACT
 	slot_flags = ITEM_SLOT_BELT
 	infinite = TRUE
-	var/list/fun_ids = list("growthchem", "shrinkchem", "aphro", "aphro+", "penis_enlarger", "breast_enlarger", "space_drugs", "lithium")
+	var/list/fun_ids = list(/datum/reagent/growthchem, /datum/reagent/shrinkchem, /datum/reagent/drug/aphrodisiac, /datum/reagent/drug/aphrodisiacplus, /datum/reagent/fermi/penis_enlarger, /datum/reagent/fermi/breast_enlarger, /datum/reagent/drug/space_drugs, /datum/reagent/lithium)
 
 /obj/item/reagent_containers/hypospray/debug/attack_self(mob/user)
 	var/chosen_reagent
-	var/list/reagent_ids = sortList(GLOB.chemical_reagents_list)
 	var/quick_select = input(user, "Select an option", "Press start") in list("Quick menu", "Debug", "Cancel")
 	switch (quick_select)
 		if("Quick menu")
@@ -547,12 +546,12 @@
 				if("Emergency Meds")
 					reagents.clear_reagents()
 					amount_per_transfer_from_this = 10
-					reagents.add_reagent_list(list("atropine" = 10, "oxandrolone" = 20, "sal_acid" = 20, "salbutamol" = 10))
+					reagents.add_reagent_list(list(/datum/reagent/medicine/atropine = 10, /datum/reagent/medicine/oxandrolone = 20, /datum/reagent/medicine/sal_acid = 20, /datum/reagent/medicine/salbutamol = 10))
 
 				if("Self Defense")
 					reagents.clear_reagents()
 					amount_per_transfer_from_this = 10
-					reagents.add_reagent_list(list("tirizene" = 14, "tiresolution" = 21, "bonehurtingjuice" = 14,))	// OOF
+					reagents.add_reagent_list(list(/datum/reagent/toxin/staminatoxin = 14, /datum/reagent/peaceborg_tire = 21, /datum/reagent/toxin/bonehurtingjuice = 14,))	// OOF
 
 				if("Fun Chemicals")
 					reagents.clear_reagents()
@@ -563,22 +562,27 @@
 
 		if("Debug")
 			var/operation_selection = input(user, "Select an option", "Reagent fabricator", "cancel") in list("Select reagent", "Clear reagents", "Select transfer amount", "Cancel")
-			switch (operation_selection)
+			switch(operation_selection)
 				if("Select reagent")
-					switch(alert(usr, "Choose a method.", "Add Reagents", "Enter ID", "Choose ID"))
-						if("Enter ID")
+					switch(alert(usr, "Choose a method.", "Add Reagents", "Search", "Choose from a list", "I'm feeling lucky"))
+						if("Search")
 							var/valid_id
 							while(!valid_id)
-								chosen_reagent = stripped_input(usr, "Enter the ID of the reagent you want to add.")
-								if(!chosen_reagent) //Get me out of here!
+								chosen_reagent = input(usr, "Enter the ID of the reagent you want to add.", "Search reagents") as null|text
+								if(isnull(chosen_reagent)) //Get me out of here!
 									break
-								for(var/ID in reagent_ids)
-									if(ID == chosen_reagent)
-										valid_id = 1
+								if(!ispath(text2path(chosen_reagent)))
+									chosen_reagent = pick_closest_path(chosen_reagent, make_types_fancy(subtypesof(/datum/reagent)))
+									if(ispath(chosen_reagent))
+										valid_id = TRUE
+								else
+									valid_id = TRUE
 								if(!valid_id)
 									to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
-						if("Choose ID")
-							chosen_reagent = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in reagent_ids	
+						if("Choose from a list")
+							chosen_reagent = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in subtypesof(/datum/reagent)
+						if("I'm feeling lucky")
+							chosen_reagent = pick(subtypesof(/datum/reagent))
 					if(chosen_reagent)
 						reagents.add_reagent(chosen_reagent, 20, null)
 

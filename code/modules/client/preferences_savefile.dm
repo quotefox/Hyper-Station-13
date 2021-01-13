@@ -60,7 +60,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)
 		return
-	path = "data/player_saves/[copytext(ckey,1,2)]/[ckey]/[filename]"
+	path = "data/player_saves/[ckey[1]]/[ckey]/[filename]"
 
 /datum/preferences/proc/load_preferences()
 	if(!path)
@@ -429,7 +429,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Sanitize
 
-	real_name = reject_bad_name(real_name)
+	real_name = reject_bad_name(real_name, TRUE)
 	gender = sanitize_gender(gender, TRUE, TRUE)
 	if(!real_name)
 		real_name = random_unique_name(gender)

@@ -107,6 +107,7 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/smite,
 	/client/proc/spawn_floor_cluwne, // Yogs
 	/client/proc/spawn_random_floor_cluwne,
+	/client/proc/spawn_twitch_plays_clowncar,
 	/client/proc/admin_away,
 	/client/proc/roll_dices					//CIT CHANGE - Adds dice verb
 	))
@@ -447,11 +448,9 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 				mob.name = initial(mob.name)
 				mob.mouse_opacity = initial(mob.mouse_opacity)
 		else
-			var/new_key = ckeyEx(input("Enter your desired display name.", "Fake Key", key) as text|null)
+			var/new_key = ckeyEx(stripped_input(usr, "Enter your desired display name.", "Fake Key", key, 26))
 			if(!new_key)
 				return
-			if(length(new_key) >= 26)
-				new_key = copytext(new_key, 1, 26)
 			holder.fakekey = new_key
 			createStealthKey()
 			if(isobserver(mob))
@@ -558,9 +557,9 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	set desc = "Gives a spell to a mob."
 
 	var/list/spell_list = list()
-	var/type_length = length("/obj/effect/proc_holder/spell") + 2
+	var/type_length = length_char("/obj/effect/proc_holder/spell") + 2
 	for(var/A in GLOB.spells)
-		spell_list[copytext("[A]", type_length)] = A
+		spell_list[copytext_char("[A]", type_length)] = A
 	var/obj/effect/proc_holder/spell/S = input("Choose the spell to give to that guy", "ABRAKADABRA") as null|anything in spell_list
 	if(!S)
 		return
