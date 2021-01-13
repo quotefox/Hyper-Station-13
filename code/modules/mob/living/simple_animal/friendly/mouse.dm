@@ -39,7 +39,6 @@
 	icon_dead = "mouse_[body_color]_dead"
 	if(name == "mouse") // Faster than checking for mobtypes, just checks if this mouse is a generic mouse.
 		if(prob(2)) //2% chance to turn a generic mouse into a boommouse
-			message_admins("One mouse turned into boom mouse!")
 			new /mob/living/simple_animal/mouse/boommouse(src.loc)
 			qdel(src)
 
@@ -127,7 +126,7 @@
 	reagents.clear_reagents()
 
 /mob/living/simple_animal/mouse/boommouse
-	name = "boommouse"
+	name = "boommouse" //obviously inspired on rimworld
 	desc = "A mutated rat with a pack of... Plasma on its back? I wouldn't really touch it if I were you."
 	icon = 'icons/mob/animal.dmi'
 	icon_state = "mouse_brown"
@@ -146,7 +145,7 @@
 	icon_dead = "mouse_plasma" //No need for a dead sprite since it qdels itself on death
 
 /mob/living/simple_animal/mouse/boommouse/death(gibbed, toast)
-	visible_message("<span class='danger'>The boomrat violently explodes!</span>")
+	visible_message("<span class='danger'>The boommouse violently explodes!</span>")
 	atmos_spawn_air("plasma=15;TEMP=500")
 	explosion(src.loc, 0, 1, 2, 0, 1, 0, 2, 0, 0)
 	qdel(src)
