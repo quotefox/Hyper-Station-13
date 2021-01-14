@@ -536,7 +536,6 @@
 /obj/machinery/computer/security/telescreen/entertainment{
 	pixel_y = 32
 	},
-/obj/machinery/vr_sleeper,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "abn" = (
@@ -3073,9 +3072,8 @@
 /turf/open/floor/plasteel,
 /area/security/prison)
 "afQ" = (
-/obj/machinery/vr_sleeper,
-/turf/open/floor/plasteel,
-/area/security/prison)
+/turf/closed/mineral/random/low_chance,
+/area/space)
 "afR" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
@@ -4492,12 +4490,16 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "aiE" = (
-/obj/machinery/vr_sleeper,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
+/obj/structure/closet/crate{
+	name = "Asshole Containment"
 	},
-/turf/open/floor/plasteel,
-/area/crew_quarters/fitness/recreation)
+/obj/item/banhammer,
+/obj/item/toy/plush/mammal/winfre{
+	item_state = "Winfre";
+	name = "Winfre, Destroyer of Fun"
+	},
+/turf/open/floor/plating/asteroid/airless,
+/area/space)
 "aiF" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
@@ -5602,9 +5604,16 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "akB" = (
-/obj/machinery/vr_sleeper,
-/turf/open/floor/plasteel,
-/area/crew_quarters/fitness/recreation)
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "engsm";
+	name = "radiation shutters"
+	},
+/obj/item/tank/internals/plasma/full,
+/turf/open/floor/plating,
+/area/engine/supermatter)
 "akC" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/holopad,
@@ -6384,7 +6393,6 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "alS" = (
-/obj/machinery/vr_sleeper,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -11113,7 +11121,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "auE" = (
-/obj/machinery/computer/gulag_teleporter_computer{
+/obj/machinery/computer/prisoner/gulag_teleporter_computer{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
@@ -62923,6 +62931,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
+/obj/machinery/bloodbankgen,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "cqw" = (
@@ -68690,6 +68699,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/chem_dispenser,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/aft)
 "cAR" = (
@@ -77051,11 +77061,10 @@
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
 "cQM" = (
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/turf/open/floor/plating,
+/turf/closed/wall/r_wall,
 /area/medical/virology)
 "cQN" = (
 /turf/closed/wall,
@@ -77850,7 +77859,6 @@
 /turf/open/floor/plating/airless,
 /area/medical/virology)
 "cSr" = (
-/obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
 	},
@@ -77860,7 +77868,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/turf/open/floor/plating,
+/turf/closed/wall/r_wall,
 /area/medical/virology)
 "cSs" = (
 /obj/machinery/atmospherics/components/unary/tank/air{
@@ -105073,7 +105081,7 @@ abl
 abE
 acd
 aax
-afQ
+aaR
 aaR
 aaR
 aaI
@@ -119734,9 +119742,9 @@ acP
 afz
 agz
 ahQ
-aiE
-aiE
-akB
+ahP
+ahP
+alO
 alS
 alS
 aou
@@ -125922,7 +125930,7 @@ aCF
 aDR
 aFi
 aGI
-aIv
+akB
 aJB
 aKP
 aLY
@@ -138453,9 +138461,9 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
+afQ
+afQ
+afQ
 aaa
 aaa
 aaa
@@ -138709,11 +138717,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+afQ
+afQ
+afQ
+afQ
+afQ
 aaa
 aaa
 aaa
@@ -138965,13 +138973,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+afQ
+afQ
+afQ
+aiE
+afQ
+afQ
+afQ
 aaa
 aaa
 aaa
@@ -139222,12 +139230,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+afQ
+afQ
+afQ
+afQ
+afQ
+afQ
 aaa
 aaa
 aaa
@@ -139480,10 +139488,10 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
+afQ
+afQ
+afQ
+afQ
 aaa
 aaa
 aaa
