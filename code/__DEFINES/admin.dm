@@ -94,3 +94,4 @@
 #define MAX_KEYPRESS_AUTOKICK 100
 ///Length of held key rolling buffer
 #define HELD_KEY_BUFFER_LENGTH 15
+

@@ -92,3 +92,4 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 // radiation
 #define RAD_PROTECT_CONTENTS (1<<0)
 #define RAD_NO_CONTAMINATE (1<<1)
+
