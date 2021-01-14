@@ -204,3 +204,4 @@
 							. = TRUE
 							update_icon()
 							CHECK_TICK
+

@@ -165,3 +165,4 @@ obj/effect/immovablerod/attack_hand(mob/living/user)
 				new /obj/structure/festivus/anchored(drop_location())
 				new /obj/effect/anomaly/flux(drop_location())
 				qdel(src)
+

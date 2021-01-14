@@ -409,3 +409,4 @@
 
 /mob/living/silicon/handle_high_gravity(gravity)
 	return
+

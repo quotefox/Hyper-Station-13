@@ -2990,3 +2990,4 @@
 	else
 		to_chat(usr, "<span class='danger'>Failed to establish database connection. The changes will last only for the current round.</span>")
 	to_chat(usr, "<span class='adminnotice'>Mentor removed.</span>")
+

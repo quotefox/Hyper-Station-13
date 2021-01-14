@@ -1035,3 +1035,4 @@
 	log_admin("Man up global: [key_name(usr)] told everybody to man up")
 	message_admins("<span class='adminnotice'>[key_name_admin(usr)] told everybody to man up.</span>")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Man Up Global")
+
