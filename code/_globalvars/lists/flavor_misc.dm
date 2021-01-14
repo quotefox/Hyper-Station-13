@@ -199,6 +199,6 @@ GLOBAL_LIST_INIT(station_numerals, greek_letters + phonetic_alphabet + numbers_a
 
 GLOBAL_LIST_INIT(admiral_messages, list("Do you know how expensive these stations are?","Stop wasting my time.","I was sleeping, thanks a lot.","Stand and fight you cowards!","You knew the risks coming in.","Stop being paranoid.","Whatever's broken just build a new one.","No.", "<i>null</i>","<i>Error: No comment given.</i>", "It's a good day to die!"))
 
-GLOBAL_LIST_INIT(speech_verbs, list("default", "says", "gibbers", "gekkers", "states", "chitters", "declares", "bellows", "buzzes" ,"beeps", "chirps" ,"hisses" ,"poofs" ,"rattles", "mewls", "barks", "blorbles", "squeaks", "squawks", "flutters"))
+GLOBAL_LIST_INIT(speech_verbs, list("default", "says", "gibbers", "gekkers", "states", "chitters", "declares", "bellows", "buzzes" ,"beeps", "chirps" ,"hisses" ,"poofs" ,"rattles", "mewls", "barks", "blorbles", "squeaks", "squawks", "flutters", "mrowls"))
 
-GLOBAL_LIST_INIT(roundstart_tongues, list("default","human tongue" = /obj/item/organ/tongue, "lizard tongue" = /obj/item/organ/tongue/lizard, "skeleton tongue" = /obj/item/organ/tongue/bone, "fly tongue" = /obj/item/organ/tongue/fly, "ipc tongue" = /obj/item/organ/tongue/robot/ipc))
+GLOBAL_LIST_INIT(roundstart_tongues, list("default","human tongue" = /obj/item/organ/tongue, "lizard tongue" = /obj/item/organ/tongue/lizard, "skeleton tongue" = /obj/item/organ/tongue/bone, "fly tongue" = /obj/item/organ/tongue/fly, "ipc tongue" = /obj/item/organ/tongue/robot/ipc, "kitty tongue" = /obj/item/organ/tongue/kitty))
