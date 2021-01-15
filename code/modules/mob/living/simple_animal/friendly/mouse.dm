@@ -128,13 +128,14 @@
 /mob/living/simple_animal/mouse/boommouse
 	name = "boommouse" //obviously inspired on rimworld
 	desc = "A mutated rat with a pack of... Plasma on its back? I wouldn't really touch it if I were you."
-	icon = 'icons/mob/animal.dmi'
+	icon = 'hyperstation/icons/mob/animal.dmi'
 	icon_state = "mouse_brown"
 	icon_living = "mouse_brown"
 	icon_dead = "mouse_brown_dead"
 	see_in_dark = 12
 	maxHealth = 7
 	health = 7
+	chew_probability = 0
 
 /mob/living/simple_animal/mouse/boommouse/Initialize()
 	. = ..()
