@@ -470,3 +470,7 @@
 /datum/sprite_accessory/hair/quotey
 	name = "Tail Hair"
 	icon_state = "hair_tailhair"
+
+/datum/sprite_accessory/hair/mommy
+	name = "Hairfre"
+	icon_state = "hair_hairfre"
