@@ -98,7 +98,7 @@
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
 		message = lizard_hiss.Replace(message, "sss")
-		message = lizard_hiSS.Replace(message, "SSS")
+		message = lizard_hiSS.Replace(message, "Sss")
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/kitty
@@ -116,7 +116,7 @@
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
 		message = taja_purr.Replace(message, "rrr")
-		message = taja_puRR.Replace(message, "RRR")
+		message = taja_puRR.Replace(message, "Rrr")
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/fly
