@@ -39,7 +39,7 @@
 	icon_living = "mouse_[body_color]"
 	icon_dead = "mouse_[body_color]_dead"
 	if(name == "mouse") // Faster than checking for mobtypes, just checks if this mouse is a generic mouse.
-		if(prob(1)) //2% chance to turn a generic mouse into a boommouse
+		if(prob(1)) //1% chance to turn a generic mouse into a boommouse
 			new /mob/living/simple_animal/mouse/boommouse(src.loc)
 			qdel(src)
 
@@ -172,9 +172,9 @@
 	name = "boommouse" //obviously inspired on rimworld
 	desc = "A mutated rat with a pack of... Plasma on its back? I wouldn't really touch it if I were you."
 	icon = 'hyperstation/icons/mob/animal.dmi'
-	icon_state = "mouse_brown"
-	icon_living = "mouse_brown"
-	icon_dead = "mouse_brown_dead"
+	icon_state = "mouse_plasma"
+	icon_living = "mouse_plasma"
+	icon_dead = "mouse_plasma"
 	see_in_dark = 12
 	maxHealth = 7
 	health = 7
