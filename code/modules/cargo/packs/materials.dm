@@ -84,7 +84,8 @@
 					/obj/item/stack/sheet/cotton/thirty,
 					/obj/item/stack/sheet/cotton/ten
 					)
-
+	crate_name = "bulk cotton crate"
+	crate_type = /obj/structure/closet/crate/hydroponics
 
 /datum/supply_pack/organic/rawlumber
 	name = "Raw Lumber Crate"
