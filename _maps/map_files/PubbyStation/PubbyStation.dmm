@@ -6560,10 +6560,10 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "amT" = (
-/obj/machinery/computer/prisoner,
 /obj/machinery/airalarm{
 	pixel_y = 22
 	},
+/obj/machinery/computer/prisoner/management,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "amU" = (
@@ -9054,7 +9054,6 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "arR" = (
-/obj/machinery/computer/prisoner,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
@@ -9062,6 +9061,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
+/obj/machinery/computer/prisoner/management,
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "arS" = (
