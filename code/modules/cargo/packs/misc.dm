@@ -37,7 +37,7 @@
 	contains = list(/obj/item/pen/fountain/captain)
 	crate_name = "captain pen"
 	crate_type = /obj/structure/closet/crate/secure/weapon //It is a combat pen
-	
+
 /datum/supply_pack/misc/dueling_stam
 	name = "Dueling Pistols"
 	desc = "Resolve all your quarrels with some nonlethal fun."
@@ -301,7 +301,7 @@
 /datum/supply_pack/misc/religious_supplies
 	name = "Religious Supplies Crate"
 	desc = "Keep your local chaplain happy and well-supplied, lest they call down judgement upon your cargo bay. Contains two bottles of holywater, bibles, chaplain robes, and burial garmets."
-	cost = 4000	// it costs so much because the Space Church is ran by Space Jews
+	cost = 4000	
 	contains = list(/obj/item/reagent_containers/food/drinks/bottle/holywater,
 					/obj/item/reagent_containers/food/drinks/bottle/holywater,
 					/obj/item/storage/book/bible/booze,
@@ -379,3 +379,41 @@
 					/obj/item/storage/fancy/ringbox/silver
 					)
 	crate_name = "jewelry crate"
+
+/datum/supply_pack/misc/carpet_exotic
+	name = "Exotic Carpet Crate"
+	desc = "Exotic carpets straight from Space Russia, for all your decorating needs. Contains 100 tiles each of 10 different flooring patterns."
+	cost = 7000
+	contains = list(/obj/item/stack/tile/carpet/blue/fifty,
+					/obj/item/stack/tile/carpet/blue/fifty,
+					/obj/item/stack/tile/carpet/cyan/fifty,
+					/obj/item/stack/tile/carpet/cyan/fifty,
+					/obj/item/stack/tile/carpet/green/fifty,
+					/obj/item/stack/tile/carpet/green/fifty,
+					/obj/item/stack/tile/carpet/orange/fifty,
+					/obj/item/stack/tile/carpet/orange/fifty,
+					/obj/item/stack/tile/carpet/purple/fifty,
+					/obj/item/stack/tile/carpet/purple/fifty,
+					/obj/item/stack/tile/carpet/red/fifty,
+					/obj/item/stack/tile/carpet/red/fifty,
+					/obj/item/stack/tile/carpet/royalblue/fifty,
+					/obj/item/stack/tile/carpet/royalblue/fifty,
+					/obj/item/stack/tile/carpet/royalblack/fifty,
+					/obj/item/stack/tile/carpet/royalblack/fifty,
+					/obj/item/stack/tile/carpet/blackred/fifty,
+					/obj/item/stack/tile/carpet/blackred/fifty,
+					/obj/item/stack/tile/carpet/monochrome/fifty,
+					/obj/item/stack/tile/carpet/monochrome/fifty)
+	crate_name = "exotic carpet crate"
+
+/datum/supply_pack/misc/prospacillin //size changing should be hard to achieve; so enjoy the price tag.
+	name = "Prospacillin Bottle"
+	desc = "An extremely expensive solution of growth serum known as Prospacillin. Effects are permanent upon consumption, and growth is slow."
+	cost = 100000
+	contains = list(/obj/item/reagent_containers/food/drinks/prospacillin)
+
+/datum/supply_pack/misc/diminicillin //size changing should be hard to achieve; so enjoy the price tag.
+	name = "Diminicillin Bottle"
+	desc = "An extremely expensive solution of shrinking serum known as Diminicillin. Effects are permanent upon consumption, and shrinking is slow."
+	cost = 100000
+	contains = list(/obj/item/reagent_containers/food/drinks/diminicillin)
