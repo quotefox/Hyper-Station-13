@@ -52,3 +52,10 @@
 	item_state = "grug"
 	attack_verb = list("thomped", "ook'd", "stoned")
 	squeak_override = list('sound/voice/gorillaplush.ogg' = 1)
+
+/obj/item/toy/plush/mammal/lyricalpaws
+	name = "Winter Dawn Plushie"
+	desc = "Winter Dawn in plushie form! Very cuddly."
+	icon = 'hyperstation/icons/obj/plushes.dmi'
+	icon_state = "lyricalpaws"
+	item_state = "lyricalpaws"
