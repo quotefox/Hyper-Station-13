@@ -3035,6 +3035,7 @@
 #include "hyperstation\code\modules\admin\verbs\hyperverbs.dm"
 #include "hyperstation\code\modules\antagonists\werewolf\werewolf.dm"
 #include "hyperstation\code\modules\arousal\arousalhud.dm"
+#include "hyperstation\code\modules\cargo\sweatshop.dm"
 #include "hyperstation\code\modules\client\loadout\glasses.dm"
 #include "hyperstation\code\modules\client\loadout\tablet.dm"
 #include "hyperstation\code\modules\clothing\head.dm"
