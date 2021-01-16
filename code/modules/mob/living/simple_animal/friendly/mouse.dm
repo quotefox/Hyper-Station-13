@@ -39,7 +39,7 @@
 	icon_living = "mouse_[body_color]"
 	icon_dead = "mouse_[body_color]_dead"
 	if(name == "mouse") // Faster than checking for mobtypes, just checks if this mouse is a generic mouse.
-		if(prob(2)) //2% chance to turn a generic mouse into a boommouse
+		if(prob(1)) //2% chance to turn a generic mouse into a boommouse
 			new /mob/living/simple_animal/mouse/boommouse(src.loc)
 			qdel(src)
 
@@ -190,6 +190,6 @@
 
 /mob/living/simple_animal/mouse/boommouse/death(gibbed, toast)
 	visible_message("<span class='danger'>The boommouse violently explodes!</span>")
-	atmos_spawn_air("plasma=15;TEMP=500")
-	explosion(src.loc, 0, 1, 2, 0, 1, 0, 2, 0, 0)
+	atmos_spawn_air("plasma=15;TEMP=750")
+	explosion(src.loc, 0, 0, 2, 0, 1, 0, 2, 0, 0)
 	qdel(src)
