@@ -23,7 +23,7 @@
 "aw" = (/obj/structure/flora/bush,/turf/open/floor/holofloor/snow,/area/holodeck/rec_center/winterwonderland)
 "ax" = (/obj/effect/holodeck_effect/mobspawner/penguin,/obj/effect/holodeck_effect/mobspawner/penguin,/obj/item/toy/snowball{pixel_y = 6},/obj/item/toy/snowball{pixel_x = 5},/obj/item/toy/snowball{pixel_x = -4},/turf/open/floor/holofloor/snow,/area/holodeck/rec_center/winterwonderland)
 "ay" = (/obj/structure/table,/obj/machinery/recharger,/turf/open/floor/holofloor/asteroid,/area/holodeck/rec_center/bunker)
-"az" = (/obj/structure/table/wood,/obj/item/storage/box/matches{pixel_x = -4; pixel_y = 8},/turf/open/floor/holofloor{icon_state = "wood"; dir = 9},/area/holodeck/rec_center/lounge)
+"az" = (/obj/structure/table/wood,/turf/open/floor/holofloor{icon_state = "wood"; dir = 9},/area/holodeck/rec_center/lounge)
 "aA" = (/obj/structure/chair/wood/normal,/turf/open/floor/holofloor{icon_state = "wood"; dir = 9},/area/holodeck/rec_center/lounge)
 "aB" = (/obj/effect/holodeck_effect/mobspawner,/turf/open/floor/holofloor/plating,/area/holodeck/rec_center/wildlife)
 "aC" = (/obj/effect/holodeck_effect/sparks,/turf/open/floor/holofloor/plating/burnmix,/area/holodeck/rec_center/burn)

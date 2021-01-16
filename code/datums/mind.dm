@@ -41,6 +41,8 @@
 	var/special_role
 	var/list/restricted_roles = list()
 
+	var/hide_ckey = FALSE
+
 	var/list/datum/objective/objectives = list()
 
 	var/list/spell_list = list() // Wizard mode & "Give Spell" badmin button.
@@ -133,6 +135,8 @@
 		if(L.client && L.client.prefs)
 			L.canbearoused = L.client.prefs.arousable //Technically this should make taking over a character mean the body gain the new minds setting...
 			L.update_arousal_hud() //Removes the old icon
+
+	hide_ckey = current.client?.prefs?.hide_ckey
 
 /datum/mind/proc/store_memory(new_text)
 	if((length_char(memory) + length_char(new_text)) <= MAX_MESSAGE_LEN)
@@ -853,6 +857,7 @@
 	if(!mind.name)
 		mind.name = real_name
 	mind.current = src
+	mind.hide_ckey = client?.prefs?.hide_ckey
 
 /mob/living/carbon/mind_initialize()
 	..()

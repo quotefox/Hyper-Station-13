@@ -337,7 +337,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_human_ears"]				>> features["ears"]
 	S["feature_deco_wings"]				>> features["deco_wings"]
 
-
+	S["hide_ckey"]						>> hide_ckey //saved per-character
 
 
 	//Custom names
@@ -591,6 +591,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Record Flavor Text
 	WRITE_FILE(S["security_records"]		, security_records)
 	WRITE_FILE(S["medical_records"]			, medical_records)
+	//hide c-key
+	WRITE_FILE(S["hide_ckey"]		, hide_ckey)
 	//Quirks
 	WRITE_FILE(S["all_quirks"]			, all_quirks)
 
