@@ -371,6 +371,11 @@
 		lightCycle = 0
 		active = FALSE
 
+/obj/item/clothing/shoes/footwraps
+	name = "cloth footwraps"
+	desc = "A roll of treated canvas used for wrapping claws or paws."
+	icon_state = "foot_wraps"
+
 /obj/item/clothing/shoes/wraps
 	name = "gilded leg wraps"
 	desc = "Ankle coverings. These ones have a golden design."
