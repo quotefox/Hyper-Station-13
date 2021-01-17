@@ -406,6 +406,18 @@
 					/obj/item/stack/tile/carpet/monochrome/fifty)
 	crate_name = "exotic carpet crate"
 
+/datum/supply_pack/misc/carpentry
+	name = "Carpentry Crate"
+	desc = "Make money at cargo by learning some carpentry and making custom furniture."
+	cost = 1000
+	contains = list(/obj/item/handsaw
+					/obj/item/hammer,
+					/obj/item/glue,
+					/obj/item/borer,
+					/obj/item/sandpaper)
+	crate_name = "carpentry crate"
+
+
 /datum/supply_pack/misc/prospacillin //size changing should be hard to achieve; so enjoy the price tag.
 	name = "Prospacillin Bottle"
 	desc = "An extremely expensive solution of growth serum known as Prospacillin. Effects are permanent upon consumption, and growth is slow."
