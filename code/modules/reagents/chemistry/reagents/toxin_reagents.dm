@@ -611,13 +611,9 @@
 
 /datum/reagent/toxin/lipolicide/overdose_process(mob/living/carbon/C)
 	. = ..()
-	if(current_cycle >=41 && prob(15))
-		C.spew_organ()
-		C.vomit(10, TRUE, TRUE, 4)
-		to_chat(C, "<span class='userdanger'>You feel something lumpy come up as you vomit.</span>")
-		if(prob(1))
-			to_chat(C, "<span class='userdanger'>You feel like your organs are on fire!</span>")
-			C.IgniteMob()
+	if(current_cycle >=41 && prob(10))
+		to_chat(C, "<span class='userdanger'>You feel like your organs are on fire!</span>")
+		C.IgniteMob()
 
 /datum/reagent/toxin/lipolicide/on_mob_life(mob/living/carbon/M)
 	if(M.nutrition <= NUTRITION_LEVEL_STARVING)
