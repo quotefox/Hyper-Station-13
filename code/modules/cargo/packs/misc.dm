@@ -301,7 +301,7 @@
 /datum/supply_pack/misc/religious_supplies
 	name = "Religious Supplies Crate"
 	desc = "Keep your local chaplain happy and well-supplied, lest they call down judgement upon your cargo bay. Contains two bottles of holywater, bibles, chaplain robes, and burial garmets."
-	cost = 4000	
+	cost = 4000
 	contains = list(/obj/item/reagent_containers/food/drinks/bottle/holywater,
 					/obj/item/reagent_containers/food/drinks/bottle/holywater,
 					/obj/item/storage/book/bible/booze,
@@ -410,7 +410,7 @@
 	name = "Carpentry Crate"
 	desc = "Make money at cargo by learning some carpentry and making custom furniture."
 	cost = 1000
-	contains = list(/obj/item/handsaw
+	contains = list(/obj/item/handsaw,
 					/obj/item/hammer,
 					/obj/item/glue,
 					/obj/item/borer,
