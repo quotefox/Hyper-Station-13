@@ -189,6 +189,8 @@
 	icon_dead = "mouse_plasma" //No need for a dead sprite since it qdels itself on death
 
 /mob/living/simple_animal/mouse/boommouse/death(gibbed, toast)
+	var/turf/T = get_turf(src)
+	message_admins("A boommouse explosion was triggered at [ADMIN_VERBOSEJMP(T)].")
 	visible_message("<span class='danger'>The boommouse violently explodes!</span>")
 	atmos_spawn_air("plasma=15;TEMP=750")
 	explosion(src.loc, 0, 0, 2, 0, 1, 0, 2, 0, 0)
@@ -201,7 +203,7 @@
 		var/obj/item/weldingtool/W = I
 		if(W.welding)
 			user.visible_message("<span class='warning'>[user] burns the boommouse with [user.p_their()] [W.name]!</span>", "<span class='userdanger'>That was stupid of you.</span>")
-			var/message_admins = "[ADMIN_LOOKUPFLW(params)] triggered a boommouse explosion at [ADMIN_VERBOSEJMP(T)]."
+			var/message_admins = "[ADMIN_LOOKUPFLW(user)] triggered a boommouse explosion at [ADMIN_VERBOSEJMP(T)]."
 			GLOB.bombers += message_admins
 			message_admins(message_admins)
 			user.log_message("triggered a boommouse explosion.", LOG_ATTACK)
