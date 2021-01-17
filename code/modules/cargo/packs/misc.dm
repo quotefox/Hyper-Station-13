@@ -311,19 +311,6 @@
 					)
 	crate_name = "religious supplies crate"
 
-/datum/supply_pack/misc/randomised/promiscuous
-	name = "Promiscuous Organs"
-	desc = "Do YOU want to have more genital? Well we have just the thing for you~. This crate has two autosurgeon, that will let you have a new sex, organ to impress that hot stud and or chick."
-	cost = 4000 //Only get 2!
-	contraband = TRUE
-	var/num_contained = 2
-	contains = list(/obj/item/autosurgeon/penis,
-					/obj/item/autosurgeon/testicles,
-					/obj/item/autosurgeon/vagina,
-					/obj/item/autosurgeon/breasts,
-					/obj/item/autosurgeon/womb)
-	crate_name = "promiscuous organs"
-
 /datum/supply_pack/misc/shower
 	name = "Shower Supplies"
 	desc = "Everyone needs a bit of R&R. Make sure you get can get yours by ordering this crate filled with towels, rubber duckies, and some soap!"
