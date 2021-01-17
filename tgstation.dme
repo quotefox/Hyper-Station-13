@@ -3046,6 +3046,7 @@
 #include "hyperstation\code\modules\integrated_electronics\input.dm"
 #include "hyperstation\code\modules\mob\mob_helpers.dm"
 #include "hyperstation\code\modules\patreon\patreon.dm"
+#include "hyperstation\code\modules\reagents\chemistry\reagents\food_reagents.dm"
 #include "hyperstation\code\modules\resize\resizing.dm"
 #include "hyperstation\code\modules\resize\sizechems.dm"
 #include "hyperstation\code\modules\resize\sizegun.dm"
