@@ -397,11 +397,11 @@
 	name = "Carpentry Crate"
 	desc = "Make money at cargo by learning some carpentry and making custom furniture."
 	cost = 1000
-	contains = list(/obj/item/handsaw,
-					/obj/item/hammer,
-					/obj/item/glue,
-					/obj/item/borer,
-					/obj/item/sandpaper)
+	contains = list(/obj/item/carpentry/handsaw,
+					/obj/item/carpentry/hammer,
+					/obj/item/carpentry/glue,
+					/obj/item/carpentry/borer,
+					/obj/item/carpentry/sandpaper)
 	crate_name = "carpentry crate"
 
 

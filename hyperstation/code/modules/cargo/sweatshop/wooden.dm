@@ -5,12 +5,19 @@
 	desc = "You shouldn't see this!"
 	icon = 'hyperstation/icons/obj/cargo/sweatshop/wooden.dmi'
 	sharpness = FALSE
+	attack_verb = list("slapped", "thunked")
+	var/sawobj = /obj/item/condom
+	var/glueobj = /obj/item/dildo
+	var/sandobj = /obj/item/carpentry/sandpaper
+	var/boreobj = /obj/item/carpentry/borer
 
 /obj/item/processed/wood/plank
 	name = "processable wooden plank"
 	desc = "A somewhat sturdy refined plank. This can be used in various applications."
 	icon_state = "plank"
-	sharpness = FALSE
+	force = 3
+	w_class = WEIGHT_CLASS_HUGE
+	sawobj = /obj/item/processed/wood/platform
 
 /obj/item/processed/wood/platform
 	name = "wood platform"
@@ -18,7 +25,8 @@
 	icon_state = "platform"
 	force = 3
 	w_class = WEIGHT_CLASS_NORMAL
-	attack_verb = list("slapped", "thunked")
+	sawobj = /obj/item/processed/wood/block
+	boreobj = /obj/item/processed/wood/seat
 
 /obj/item/processed/wood/block
 	name = "wood block"
@@ -26,7 +34,8 @@
 	icon_state = "block"
 	force = 2
 	w_class = WEIGHT_CLASS_SMALL
-	attack_verb = list("slapped", "thunked")
+	sandobj = /obj/item/processed/wood/peg
+	glueobj = /obj/item/processed/wood/glueblock
 
 /obj/item/processed/wood/peg
 	name = "wood peg"
@@ -35,6 +44,7 @@
 	force = 1
 	w_class = WEIGHT_CLASS_TINY
 	attack_verb = list("donked", "thunked")
+	glueobj = /obj/item/processed/wood/gluepeg
 
 //glue
 
@@ -98,5 +108,21 @@
 	name = "custom stool"
 	desc = "An intricite, custom stool."
 	icon_state = "stool"
-	force = 4
+	force = 10
+	w_class = WEIGHT_CLASS_BULKY
+
+//Let's make it soft and more expensive
+
+/obj/item/processed/wood/stoolcloth
+	name = "cloth-cushioned stool"
+	desc = "A custom stool with a cloth cushion."
+	icon_state = "stoolcloth"
+	force = 10
+	w_class = WEIGHT_CLASS_BULKY
+
+/obj/item/processed/wood/stoolsilk
+	name = "cloth-cushioned stool"
+	desc = "A custom stool with a silk cushion."
+	icon_state = "stoolsilk"
+	force = 11 //lol
 	w_class = WEIGHT_CLASS_BULKY

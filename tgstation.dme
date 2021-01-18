@@ -3036,6 +3036,7 @@
 #include "hyperstation\code\modules\antagonists\werewolf\werewolf.dm"
 #include "hyperstation\code\modules\arousal\arousalhud.dm"
 #include "hyperstation\code\modules\cargo\exports\sweatshop.dm"
+#include "hyperstation\code\modules\cargo\packs\misc.dm"
 #include "hyperstation\code\modules\cargo\sweatshop\metal.dm"
 #include "hyperstation\code\modules\cargo\sweatshop\sweatshop.dm"
 #include "hyperstation\code\modules\cargo\sweatshop\wooden.dm"
