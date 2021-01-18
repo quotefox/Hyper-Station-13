@@ -3045,6 +3045,7 @@
 #include "hyperstation\code\modules\clothing\glasses\polychromic_glasses.dm"
 #include "hyperstation\code\modules\clothing\spacesuits\hardsuit.dm"
 #include "hyperstation\code\modules\clothing\suits\misc.dm"
+#include "hyperstation\code\modules\clothing\under\under.dm"
 #include "hyperstation\code\modules\crafting\bounties.dm"
 #include "hyperstation\code\modules\crafting\recipes.dm"
 #include "hyperstation\code\modules\integrated_electronics\input.dm"
