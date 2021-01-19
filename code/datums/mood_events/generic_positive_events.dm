@@ -116,7 +116,7 @@
 
 /datum/mood_event/happy_empath/add_effects(var/mob/happytarget)
 	description = "<span class='nicegreen'>[happytarget.name]'s happiness is infectious!</span>\n"
-	
+
 /datum/mood_event/lewd_headpat
 	description = "<span class='nicegreen'>I love headpats so much!</span>\n"
 	mood_change = 3
@@ -127,7 +127,11 @@
 	mood_change = 2
 	timeout = 15 MINUTES
 
-//Power gamer stuff below
+/datum/mood_event/catnip	//Used by datum/reagent/catnip
+	description = "<span class='nicegreen'>Whatever I ate was a-<i>nya</i>-zing!</span>\n"
+	mood_change = 8		//Felinids become pacified from catnip, so give a bigger mood boost
+
+//Bloodsucker stuff below.
 /datum/mood_event/drankblood
 	description = "<span class='nicegreen'>I have fed greedly from that which nourishes me.</span>\n"
 	mood_change = 10
@@ -158,5 +162,5 @@
 	mood_change = 5
 
 /datum/mood_event/radiant
-	description = "<span class='nicegreen'>I have seen the light of The Phoenix; I cannot be stopped.</span>\n" 
+	description = "<span class='nicegreen'>I have seen the light of The Phoenix; I cannot be stopped.</span>\n"
 	mood_change = 12

@@ -35,7 +35,7 @@
 	rename_team = "Deathsquad"
 	code = "Delta"
 	mission = "Leave no witnesses."
-	polldesc = "an elite Nanotrasen Strike Team"
+	polldesc = "an elite Kinaris Strike Team"
 
 /datum/ert/centcom_official
 	code = "Green"

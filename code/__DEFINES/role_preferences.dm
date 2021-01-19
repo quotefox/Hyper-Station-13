@@ -35,6 +35,7 @@
 #define ROLE_LAVALAND               "lavaland"
 #define ROLE_INTERNAL_AFFAIRS		"internal affairs agent"
 #define ROLE_GANG					"gangster"
+#define ROLE_BLOODSUCKER 			"bloodsucker"
 //Hyper
 #define ROLE_LEWD_TRAITOR			"lewd traitor"
 
@@ -62,7 +63,9 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_OVERTHROW = /datum/game_mode/overthrow,
 	ROLE_INTERNAL_AFFAIRS = /datum/game_mode/traitor/internal_affairs,
 	ROLE_SENTIENCE,
-	ROLE_GANG = /datum/game_mode/gang
+	ROLE_GANG = /datum/game_mode/gang,
+	ROLE_BLOODSUCKER = /datum/game_mode/bloodsucker
+	//ROLE_MONSTERHUNTER Disabled for now
 ))
 
 //Job defines for what happens when you fail to qualify for any job during job selection

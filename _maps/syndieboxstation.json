@@ -1,0 +1,11 @@
+{
+    "map_name": "Syndicate Box Station",
+    "map_path": "map_files/SyndieBoxStation",
+    "map_file": "SyndieBoxStation.dmm",
+    "shuttles": {
+	    "cargo": "cargo_box",
+	    "ferry": "ferry_fancy",
+	    "whiteship": "whiteship_box",
+	    "emergency": "emergency_box"
+    }
+}

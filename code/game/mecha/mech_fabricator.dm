@@ -79,13 +79,13 @@
 	sleep(15)
 	say("User DB corrupted \[Code 0x00FA\]. Truncating data structure...")
 	sleep(30)
-	say("User DB truncated. Please contact your Nanotrasen system operator for future assistance.")
+	say("User DB truncated. Please contact your Kinaris system operator for future assistance.")
 
 
 /obj/machinery/mecha_part_fabricator/proc/output_parts_list(set_name)
 	var/output = ""
 	for(var/v in stored_research.researched_designs)
-		var/datum/design/D = stored_research.researched_designs[v]
+		var/datum/design/D = SSresearch.techweb_design_by_id(v)
 		if(D.build_type & MECHFAB)
 			if(!(set_name in D.category))
 				continue
@@ -183,7 +183,7 @@
 /obj/machinery/mecha_part_fabricator/proc/add_part_set_to_queue(set_name)
 	if(set_name in part_sets)
 		for(var/v in stored_research.researched_designs)
-			var/datum/design/D = stored_research.researched_designs[v]
+			var/datum/design/D = SSresearch.techweb_design_by_id(v)
 			if(D.build_type & MECHFAB)
 				if(set_name in D.category)
 					add_to_queue(D)
@@ -338,7 +338,7 @@
 	if(href_list["part"])
 		var/T = afilter.getStr("part")
 		for(var/v in stored_research.researched_designs)
-			var/datum/design/D = stored_research.researched_designs[v]
+			var/datum/design/D = SSresearch.techweb_design_by_id(v)
 			if(D.build_type & MECHFAB)
 				if(D.id == T)
 					if(!processing_queue)
@@ -349,7 +349,7 @@
 	if(href_list["add_to_queue"])
 		var/T = afilter.getStr("add_to_queue")
 		for(var/v in stored_research.researched_designs)
-			var/datum/design/D = stored_research.researched_designs[v]
+			var/datum/design/D = SSresearch.techweb_design_by_id(v)
 			if(D.build_type & MECHFAB)
 				if(D.id == T)
 					add_to_queue(D)
@@ -387,7 +387,7 @@
 	if(href_list["part_desc"])
 		var/T = afilter.getStr("part_desc")
 		for(var/v in stored_research.researched_designs)
-			var/datum/design/D = stored_research.researched_designs[v]
+			var/datum/design/D = SSresearch.techweb_design_by_id(v)
 			if(D.build_type & MECHFAB)
 				if(D.id == T)
 					var/obj/part = D.build_path
@@ -404,11 +404,11 @@
 	updateUsrDialog()
 	return
 
-/obj/machinery/mecha_part_fabricator/proc/do_process_queue()		
-	if(processing_queue || being_built)		
-		return FALSE		
+/obj/machinery/mecha_part_fabricator/proc/do_process_queue()
+	if(processing_queue || being_built)
+		return FALSE
 	processing_queue = 1
-	process_queue()		
+	process_queue()
 	processing_queue = 0
 
 /obj/machinery/mecha_part_fabricator/proc/eject_sheets(eject_sheet, eject_amt)
@@ -441,7 +441,7 @@
 	return ..()
 
 /obj/machinery/mecha_part_fabricator/proc/material2name(ID)
-	return copytext(ID,2)
+	return copytext_char(ID,2)
 
 /obj/machinery/mecha_part_fabricator/proc/is_insertion_ready(mob/user)
 	if(panel_open)

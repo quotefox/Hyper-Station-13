@@ -65,7 +65,7 @@
 			
 			{{#if data.hackedavailable}}
 				<ui-display title='UNKNOWN Software Repository'>
-					<i>Please note that Nanotrasen does not recommend download of software from non-official servers.</i>
+					<i>Please note that Kinaris does not recommend download of software from non-official servers.</i>
 					{{#each data.hacked_programs}}
 						<ui-subdisplay title='{{filedesc}}'>
 							<div style='display: table-caption; margin-left: 3px'>{{fileinfo}}</div>

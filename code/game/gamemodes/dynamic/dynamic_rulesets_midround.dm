@@ -208,7 +208,7 @@
 	antag_datum = /datum/antagonist/traitor
 	antag_flag = ROLE_TRAITOR
 	restricted_roles = list("AI", "Cyborg", "Positronic Brain")
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
 	weight = 4
 	cost = 10
@@ -224,7 +224,7 @@
 	antag_datum = /datum/antagonist/traitor/thief
 	antag_flag = ROLE_TRAITOR
 	restricted_roles = list("AI", "Cyborg", "Positronic Brain")
-	protected_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
 	weight = 4
 	cost = 5
@@ -287,7 +287,7 @@
 	required_candidates = 1
 	weight = 2
 	cost = 0
-	requirements = list(10,10,10,10,10,10,10,10,10,10)
+	requirements = list(101,101,101,101,101,101,101,101,101,101)
 	high_population_requirement = 10
 	chaos_min = 0.1
 	chaos_max = 2.0
@@ -367,7 +367,7 @@
 		return 1
 
 	return 0
-	
+
 /datum/dynamic_ruleset/midround/autotraitor/lewd/execute()
 	var/mob/M = pick(lewd_candidates)
 	lewd_candidates -= M
@@ -535,6 +535,70 @@
 
 //////////////////////////////////////////////
 //                                          //
+//         BLOOD CULT (MIDROUND)            //
+//                                          //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/midround/bloodcult
+	name = "Blood Cult"
+	antag_flag = ROLE_CULTIST
+	antag_datum = /datum/antagonist/cult
+	minimum_required_age = 14
+	restricted_roles = list("AI", "Cyborg")
+	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+	required_candidates = 1
+	weight = 5
+	cost = 20
+	requirements = list(101,101,101,95,70,60,60,60,50,50)
+	high_population_requirement = 10
+	pop_per_requirement = 5
+	flags = HIGHLANDER_RULESET
+	var/cultist_cap = list(2,2,2,3,3,4,4,4,4,4)
+	var/datum/team/cult/main_cult
+	chaos_min = 4.5
+
+/datum/dynamic_ruleset/midround/bloodcult/ready(forced = FALSE)
+	var/indice_pop = min(10,round(living_players.len/5)+1)
+	required_candidates = cultist_cap[indice_pop]
+	. = ..()
+
+datum/dynamic_ruleset/midround/bloodcult/trim_candidates()
+	..()
+	for(var/mob/living/player in living_players)
+		if(issilicon(player)) // Your assigned role doesn't change when you are turned into a silicon.
+			living_players -= player
+			continue
+		if(is_centcom_level(player.z))
+			living_players -= player // We don't autotator people in CentCom
+			continue
+		if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
+			living_players -= player // We don't autotator people with roles already
+
+/datum/dynamic_ruleset/midround/bloodcult/execute()
+	var/mob/H = pick(living_players)
+	assigned += H.mind
+	living_players -= H
+	main_cult = new
+	for(var/datum/mind/M in assigned)
+		var/datum/antagonist/cult/new_cultist = new antag_datum()
+		new_cultist.cult_team = main_cult
+		new_cultist.give_equipment = TRUE
+		M.add_antag_datum(new_cultist)
+	main_cult.setup_objectives()
+	return TRUE
+
+/datum/dynamic_ruleset/midround/bloodcult/round_result()
+	..()
+	if(main_cult.check_cult_victory())
+		SSticker.mode_result = "win - cult win"
+		SSticker.news_report = CULT_SUMMON
+	else
+		SSticker.mode_result = "loss - staff stopped the cult"
+		SSticker.news_report = CULT_FAILURE
+
+
+//////////////////////////////////////////////
+//                                          //
 //           XENOMORPH (GHOST)              //
 //                                          //
 //////////////////////////////////////////////
@@ -601,9 +665,9 @@
 	cost = 10
 	requirements = list(101,50,40,30,20,20,20,20,15,10)
 	high_population_requirement = 50
-	repeatable = TRUE
+	repeatable = FALSE
 	var/list/spawn_locs = list()
-	chaos_min = 2.5
+	chaos_min = 3
 
 /datum/dynamic_ruleset/midround/from_ghosts/nightmare/execute()
 	for(var/X in GLOB.xeno_spawn)
@@ -745,3 +809,52 @@
 
 #undef ABDUCTOR_MAX_TEAMS
 #undef REVENANT_SPAWN_THRESHOLD
+
+
+//////////////////////////////////////////////
+//                                          //
+//               BLOODSUCKERS               //
+//                                          //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/midround/bloodsucker
+  name = "Bloodsucker Infiltrator"
+  //config_tag = "latejoin_bloodsucker"
+  antag_datum = ANTAG_DATUM_BLOODSUCKER
+  antag_flag = ROLE_TRAITOR
+  restricted_roles = list("AI", "Cyborg")
+  protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+  required_candidates = 1
+  enemy_roles = list("Security Officer","Head of Security","Captain","AI","Cyborg","Chaplain","Curator")
+  required_enemies = list(3,2,2,2,2,2,2,2,2,2)
+  weight = 3
+  cost = 10
+  requirements = list(101,101,101,60,55,50,45,40,35,30)
+  high_population_requirement = 30
+  repeatable = FALSE
+  chaos_min = 4.0
+
+datum/dynamic_ruleset/midround/bloodsucker/trim_candidates()
+	..()
+	for(var/mob/living/player in living_players)
+		if(issilicon(player)) // Your assigned role doesn't change when you are turned into a silicon.
+			living_players -= player
+			continue
+		if(is_centcom_level(player.z))
+			living_players -= player // We don't autotator people in CentCom
+			continue
+		if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
+			living_players -= player // We don't autotator people with roles already
+
+/datum/dynamic_ruleset/midround/bloodsucker/ready(forced = FALSE)
+	if (required_candidates > living_players.len)
+		return FALSE
+	return ..()
+
+/datum/dynamic_ruleset/midround/bloodsucker/execute()
+	var/mob/M = pick(living_players)
+	assigned += M
+	living_players -= M
+	var/datum/antagonist/bloodsucker/newVamp = new
+	M.mind.add_antag_datum(newVamp)
+	return TRUE

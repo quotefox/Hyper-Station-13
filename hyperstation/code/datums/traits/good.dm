@@ -10,8 +10,8 @@
 	M.grant_language(/datum/language/narsie)
 
 /datum/quirk/narsianspeaker/remove()
-	var/mob/living/M = quirk_holder
-	M.remove_language(/datum/language/narsie)
+	if(quirk_holder)
+		quirk_holder.remove_language(/datum/language/ratvar)
 
 /datum/quirk/ratvarianspeaker
 	name = "Ratvarian speaker"
@@ -25,8 +25,8 @@
 	M.grant_language(/datum/language/ratvar)
 
 /datum/quirk/ratvarianspeaker/remove()
-	var/mob/living/M = quirk_holder
-	M.remove_language(/datum/language/ratvar)
+	if(quirk_holder)
+		quirk_holder.remove_language(/datum/language/ratvar)
 
 /datum/quirk/encodedspeaker
 	name = "Encoded Audio speaker"
@@ -40,8 +40,8 @@
 	M.grant_language(/datum/language/machine)
 
 /datum/quirk/encodedspeaker/remove()
-	var/mob/living/M = quirk_holder
-	M.remove_language(/datum/language/machine)
+	if(quirk_holder)
+		quirk_holder.remove_language(/datum/language/ratvar)
 
 /datum/quirk/xenospeaker
 	name = "Xenocommon speaker"
@@ -55,5 +55,5 @@
 	M.grant_language(/datum/language/xenocommon)
 
 /datum/quirk/xenospeaker/remove()
-	var/mob/living/M = quirk_holder
-	M.remove_language(/datum/language/xenocommon)
+	if(quirk_holder)
+		quirk_holder.remove_language(/datum/language/ratvar)

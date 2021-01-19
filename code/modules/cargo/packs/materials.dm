@@ -68,11 +68,23 @@
 /datum/supply_pack/organic/rawcotton
 	name = "Raw Cotton Crate"
 	desc = "Plushies have been on the down in the market, and now due to a flood of raw cotton the price of it is so cheap, its a steal! Contains 40 raw cotton sheets."
-	cost = 800 // 100 net cost, 20 x 20 = 400. 300 proffit if turned into cloth sheets or more if turned to silk then 10 x 200 = 2000
+	cost = 800 // 100 net cost, 20 x 20 = 400. 300 profit if turned into cloth sheets or more if turned to silk then 10 x 200 = 2000
 	contains = list(/obj/item/stack/sheet/cotton/thirty,
 					/obj/item/stack/sheet/cotton/ten
 					)
 	crate_name = "cotton crate"
+	crate_type = /obj/structure/closet/crate/hydroponics
+
+/datum/supply_pack/organic/rawcotton/bulk
+	name = "Bulk Raw Cotton Crate"
+	desc = "Plushies are more down in the market than ever before; bulk cotton now for use! Contains 100 raw cotton sheets."
+	cost = 1700 //Same math as before, but since it's bulk, you get a 100 credit discount to encourage bulk buys. Welcome to space Costco.
+	contains = list(/obj/item/stack/sheet/cotton/thirty, 
+					/obj/item/stack/sheet/cotton/thirty,
+					/obj/item/stack/sheet/cotton/thirty,
+					/obj/item/stack/sheet/cotton/ten
+					)
+	crate_name = "bulk cotton crate"
 	crate_type = /obj/structure/closet/crate/hydroponics
 
 /datum/supply_pack/organic/rawlumber
@@ -195,7 +207,7 @@
 	name = "Loom"
 	desc = "A large pre-made loom."
 	cost = 1000
-	contains = list(/obj/structure/loom)
+	contains = list(/obj/structure/loom/unanchored)
 	crate_name = "loom crate"
 	crate_type = /obj/structure/closet/crate/large
 

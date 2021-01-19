@@ -140,6 +140,8 @@
 	var/obj/machinery/computer/cryopod/control_computer
 	var/last_no_computer_message = 0
 
+	var/alert_comms = TRUE	//If we alert crew who cryo'd
+
 	// These items are preserved when the process() despawn proc occurs.
 	var/list/preserve_items = list(
 		/obj/item/hand_tele,
@@ -299,7 +301,7 @@
 	if(control_computer)
 		control_computer.frozen_crew += "[mob_occupant.real_name]"
 
-	if(GLOB.announcement_systems.len)
+	if(GLOB.announcement_systems.len && alert_comms)
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
 		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, announce_job_title, list())
 		visible_message("<span class='notice'>\The [src] hums and hisses as it moves [mob_occupant.real_name] into storage.</span>")
@@ -410,3 +412,33 @@
 //Attacks/effects.
 /obj/machinery/cryopod/blob_act()
 	return //Sorta gamey, but we don't really want these to be destroyed.
+
+
+// Syndie Cryo
+//DT: I wanted to make a new object instead of make a typepath of the cryopod, but there's something somewhere that
+//handles the occupant var. IDK where that is. This is good either way, but syndicates may show up on the cryopod consoles
+/obj/machinery/cryopod/syndicate
+	name = "subspace cryogenic sleeper"
+	desc = "A special mobility sleeper for storing agents in a disclosed location."
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper_s-open"
+	alert_comms = FALSE
+
+/obj/machinery/cryopod/syndicate/find_control_computer()	//We don't want to store anything
+	return
+
+/obj/machinery/cryopod/syndicate/MouseDrop_T(mob/living/target, mob/user)
+	if(!isliving(target))
+		return
+	if(!target.faction.Find("Syndicate"))
+		to_chat(user, "<span class='warning'>The machine's internal checks prevent you from putting [target == user ? "yourself" : "[target]"] inside.</span>")
+		return
+	..()
+
+/obj/machinery/cryopod/syndicate/open_machine()
+	..()
+	icon_state = "sleeper_s-open"
+
+/obj/machinery/cryopod/syndicate/close_machine(mob/user)
+	..()
+	icon_state = "sleeper_s"

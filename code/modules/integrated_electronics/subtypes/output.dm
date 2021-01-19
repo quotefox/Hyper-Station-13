@@ -228,7 +228,7 @@
 	icon_state = "speaker"
 	cooldown_per_use = 10
 	complexity = 12
-	inputs = list("text" = IC_PINTYPE_STRING)
+	inputs = list("text" = IC_PINTYPE_STRING, "speech verb" = IC_PINTYPE_STRING)
 	outputs = list()
 	activators = list("to speech" = IC_PINTYPE_PULSE_IN)
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
@@ -236,14 +236,18 @@
 
 /obj/item/integrated_circuit/output/text_to_speech/do_work()
 	text = get_pin_data(IC_INPUT, 1)
+	var/say_verb = get_pin_data(IC_INPUT, 2)
 	if(!isnull(text))
 		var/atom/movable/A = get_object()
 		var/sanitized_text = sanitize(text)
-		A.say(sanitized_text)
+		var/sanitized_verb = sanitize(say_verb)
 		if (assembly)
+			if(!isnull(sanitized_verb))
+				A.verb_say = sanitized_verb
 			log_say("[assembly] [REF(assembly)] : [sanitized_text]")
 		else
 			log_say("[name] ([type]) : [sanitized_text]")
+		A.say(sanitized_text)
 
 /obj/item/integrated_circuit/output/video_camera
 	name = "video camera circuit"

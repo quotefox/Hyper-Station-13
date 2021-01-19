@@ -37,7 +37,7 @@
 	contains = list(/obj/item/pen/fountain/captain)
 	crate_name = "captain pen"
 	crate_type = /obj/structure/closet/crate/secure/weapon //It is a combat pen
-	
+
 /datum/supply_pack/misc/dueling_stam
 	name = "Dueling Pistols"
 	desc = "Resolve all your quarrels with some nonlethal fun."
@@ -115,7 +115,7 @@
 
 /datum/supply_pack/misc/bicycle
 	name = "Bicycle"
-	desc = "Nanotrasen reminds all employees to never toy with powers outside their control."
+	desc = "Kinaris reminds all employees to never toy with powers outside their control."
 	cost = 1000000
 	contains = list(/obj/vehicle/ridden/bicycle)
 	crate_name = "Bicycle Crate"
@@ -139,7 +139,7 @@
 
 /datum/supply_pack/misc/book_crate
 	name = "Book Crate"
-	desc = "Surplus from the Nanotrasen Archives, these five books are sure to be good reads."
+	desc = "Surplus from the Kinaris Archives, these five books are sure to be good reads."
 	cost = 1500
 	contains = list(/obj/item/book/codex_gigas,
 					/obj/item/book/manual/random/,
@@ -301,7 +301,7 @@
 /datum/supply_pack/misc/religious_supplies
 	name = "Religious Supplies Crate"
 	desc = "Keep your local chaplain happy and well-supplied, lest they call down judgement upon your cargo bay. Contains two bottles of holywater, bibles, chaplain robes, and burial garmets."
-	cost = 4000	// it costs so much because the Space Church is ran by Space Jews
+	cost = 4000
 	contains = list(/obj/item/reagent_containers/food/drinks/bottle/holywater,
 					/obj/item/reagent_containers/food/drinks/bottle/holywater,
 					/obj/item/storage/book/bible/booze,
@@ -310,19 +310,6 @@
 					/obj/item/clothing/suit/hooded/chaplain_hoodie
 					)
 	crate_name = "religious supplies crate"
-
-/datum/supply_pack/misc/randomised/promiscuous
-	name = "Promiscuous Organs"
-	desc = "Do YOU want to have more genital? Well we have just the thing for you~. This crate has two autosurgeon, that will let you have a new sex, organ to impress that hot stud and or chick."
-	cost = 4000 //Only get 2!
-	contraband = TRUE
-	var/num_contained = 2
-	contains = list(/obj/item/autosurgeon/penis,
-					/obj/item/autosurgeon/testicles,
-					/obj/item/autosurgeon/vagina,
-					/obj/item/autosurgeon/breasts,
-					/obj/item/autosurgeon/womb)
-	crate_name = "promiscuous organs"
 
 /datum/supply_pack/misc/shower
 	name = "Shower Supplies"
@@ -379,3 +366,53 @@
 					/obj/item/storage/fancy/ringbox/silver
 					)
 	crate_name = "jewelry crate"
+
+/datum/supply_pack/misc/carpet_exotic
+	name = "Exotic Carpet Crate"
+	desc = "Exotic carpets straight from Space Russia, for all your decorating needs. Contains 100 tiles each of 10 different flooring patterns."
+	cost = 7000
+	contains = list(/obj/item/stack/tile/carpet/blue/fifty,
+					/obj/item/stack/tile/carpet/blue/fifty,
+					/obj/item/stack/tile/carpet/cyan/fifty,
+					/obj/item/stack/tile/carpet/cyan/fifty,
+					/obj/item/stack/tile/carpet/green/fifty,
+					/obj/item/stack/tile/carpet/green/fifty,
+					/obj/item/stack/tile/carpet/orange/fifty,
+					/obj/item/stack/tile/carpet/orange/fifty,
+					/obj/item/stack/tile/carpet/purple/fifty,
+					/obj/item/stack/tile/carpet/purple/fifty,
+					/obj/item/stack/tile/carpet/red/fifty,
+					/obj/item/stack/tile/carpet/red/fifty,
+					/obj/item/stack/tile/carpet/royalblue/fifty,
+					/obj/item/stack/tile/carpet/royalblue/fifty,
+					/obj/item/stack/tile/carpet/royalblack/fifty,
+					/obj/item/stack/tile/carpet/royalblack/fifty,
+					/obj/item/stack/tile/carpet/blackred/fifty,
+					/obj/item/stack/tile/carpet/blackred/fifty,
+					/obj/item/stack/tile/carpet/monochrome/fifty,
+					/obj/item/stack/tile/carpet/monochrome/fifty)
+	crate_name = "exotic carpet crate"
+
+/datum/supply_pack/misc/carpentry
+	name = "Carpentry Crate"
+	desc = "Make money at cargo by learning some carpentry and making custom furniture."
+	cost = 1000
+	contains = list(/obj/item/carpentry/handsaw,
+					/obj/item/carpentry/hammer,
+					/obj/item/carpentry/glue,
+					/obj/item/carpentry/borer,
+					/obj/item/carpentry/sandpaper)
+	crate_name = "carpentry crate"
+
+
+/datum/supply_pack/misc/prospacillin //size changing should be hard to achieve; so enjoy the price tag.
+	name = "Prospacillin Bottle"
+	desc = "An extremely expensive solution of growth serum known as Prospacillin. Effects are permanent upon consumption, and growth is slow."
+	cost = 100000
+	contains = list(/obj/item/reagent_containers/food/drinks/prospacillin)
+
+/datum/supply_pack/misc/diminicillin //size changing should be hard to achieve; so enjoy the price tag.
+	name = "Diminicillin Bottle"
+	desc = "An extremely expensive solution of shrinking serum known as Diminicillin. Effects are permanent upon consumption, and shrinking is slow."
+	cost = 100000
+	contains = list(/obj/item/reagent_containers/food/drinks/diminicillin)
