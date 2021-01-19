@@ -187,9 +187,3 @@
 	key_third_person = "chimes"
 	message = "chimes."
 	sound = 'sound/machines/chime.ogg'
-
-/datum/emote/sound/human/squeak
-	key = "squeak"
-	key_third_person = "squeaks"
-	message = "lets out a squeak."
-	sound = 'sound/effects/mousesqueek.ogg'

@@ -14,24 +14,24 @@
 	announceWhen = 1
 	startWhen = 9
 	endWhen = 50
-	var/list/aurora_colors = list("#ffd980", "#eaff80", "#eaff80", "#ffd980", "#eaff80", "#A2FFC7", "#9400D3", "#FFC0CB")
+	var/list/aurora_colors = list("#ffd980", "#eaff80", "#eaff80", "#ffd980", "#eaff80", "#A2FFC7", "#A2FFDE", "#ffd980")
 	var/aurora_progress = 0 //this cycles from 1 to 8, slowly changing colors from gentle green to gentle blue
 
 /datum/round_event/aurora_caelus/announce()
-	priority_announce("[station_name()]: A harmless cloud of ions is approaching your station, and will exhaust their energy battering the hull. Kinaris Command has approved a short break for all employees to relax and observe this very rare event. During this time, starlight will be bright but gentle, shifting between quiet green and blue colors. We will also play quiet music for you to enjoy and relax. Any staff who would like to view these lights for themselves may proceed to the area nearest to them with viewing ports to open space. We hope you enjoy the lights.",
+	priority_announce("[station_name()]: A harmless cloud of ions is approaching your station, and will exhaust their energy battering the hull. Kinaris Command has approved a short break for all employees to relax and observe this very rare event. During this time, starlight will be bright but gentle, shifting between quiet green and blue colors. Any staff who would like to view these lights for themselves may proceed to the area nearest to them with viewing ports to open space. We hope you enjoy the lights.",
 	sound = 'sound/misc/notice2.ogg',
 	sender_override = "Kinaris Meteorology Division")
 	for(var/V in GLOB.player_list)
 		var/mob/M = V
 		if((M.client.prefs.toggles & SOUND_MIDI) && is_station_level(M.z))
-			M.playsound_local(M, 'sound/ambience/aurora_caelus_new.ogg', 40, FALSE, pressure_affected = FALSE) //ogg is "The Fire is Gone" by Heaven Pierce Her, used in the videogame ULTRAKILL. All respects and credits to the equivalent artists who worked on it.
+			M.playsound_local(M, 'sound/ambience/aurora_caelus.ogg', 20, FALSE, pressure_affected = FALSE)
 
 /datum/round_event/aurora_caelus/start()
 	for(var/area in GLOB.sortedAreas)
 		var/area/A = area
 		if(initial(A.dynamic_lighting) == DYNAMIC_LIGHTING_IFSTARLIGHT)
 			for(var/turf/open/space/S in A)
-				S.set_light(S.light_range * 6, S.light_power * 1)
+				S.set_light(S.light_range * 3, S.light_power * 0.5)
 
 /datum/round_event/aurora_caelus/tick()
 	if(activeFor % 5 == 0)

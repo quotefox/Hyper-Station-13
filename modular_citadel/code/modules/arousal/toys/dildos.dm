@@ -37,11 +37,15 @@
 	name = "[sizeword][dildo_shape] [can_customize ? "custom " : ""][dildo_type]"
 
 /obj/item/dildo/AltClick(mob/living/user)
-	. = ..()
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+	if(QDELETED(src))
+		return
+	if(!isliving(user))
+		return
+	if(isAI(user))
+		return
+	if(user.stat > 0)//unconscious or dead
 		return
 	customize(user)
-	return TRUE
 
 /obj/item/dildo/proc/customize(mob/living/user)
 	if(!can_customize)

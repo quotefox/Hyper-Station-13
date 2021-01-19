@@ -1,7 +1,7 @@
 /datum/surgery/penis_augmentation
 	name = "Penis augmentation"
 	steps = list(/datum/surgery_step/incise, /datum/surgery_step/clamp_bleeders, /datum/surgery_step/retract_skin, /datum/surgery_step/augment_penis, /datum/surgery_step/close)
-	target_mobtypes = list(/mob/living/carbon/human)
+	species = list(/mob/living/carbon/human)
 	possible_locs = list(BODY_ZONE_PRECISE_GROIN)
 
 /datum/surgery_step/augment_penis

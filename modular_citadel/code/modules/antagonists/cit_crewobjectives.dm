@@ -25,7 +25,7 @@
 		return
 	newObjective.owner = crewMind
 	crewMind.objectives += newObjective
-	to_chat(crewMind, "<B>As a part of Kinaris's anti-tide efforts, you have been assigned an optional objective. It will be checked at the end of the shift. <font color=red>Performing traitorous acts in pursuit of your objective may result in termination of your employment.</font></B>")
+	to_chat(crewMind, "<B>As a part of Nanotrasen's anti-tide efforts, you have been assigned an optional objective. It will be checked at the end of the shift. <font color=red>Performing traitorous acts in pursuit of your objective may result in termination of your employment.</font></B>")
 	to_chat(crewMind, "<B>Your optional objective:</B> [newObjective.explanation_text]")
 
 /datum/objective/crew/

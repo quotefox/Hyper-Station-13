@@ -5,5 +5,5 @@
 	item_state = "kaminacape"
 	body_parts_covered = 0
 	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
-	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
+	alternate_worn_icon = 'hyperstation/icons/mob/suit.dmi'
 	mutantrace_variation = NO_MUTANTRACE_VARIATION

@@ -17,6 +17,7 @@
 			return L
 	return FALSE
 
+
 /mob/proc/has_left_hand(check_disabled = TRUE)
 	return TRUE
 
@@ -44,6 +45,8 @@
 /mob/living/carbon/alien/larva/has_right_hand()
 	return TRUE
 
+
+
 /mob/proc/has_left_leg()
 	return TRUE
 
@@ -63,6 +66,7 @@
 		return TRUE
 	else
 		return FALSE
+
 
 //Limb numbers
 /mob/proc/get_num_arms(check_disabled = TRUE)

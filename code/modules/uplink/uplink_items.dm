@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 //All bundles and telecrystals
 /datum/uplink_item/bundles_TC
-	category = "Telecrystals and Bundles"
+	category = "Bundles and Telecrystals"
 	surplus = 0
 	cant_discount = TRUE
 
@@ -288,7 +288,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 // Dangerous Items
 /datum/uplink_item/dangerous
-	category = "Conspicuous Weapons"
+	category = "Conspicuous and Dangerous Weapons"
 
 /datum/uplink_item/dangerous/pistol
 	name = "Stechkin Pistol"
@@ -544,7 +544,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 // Stealthy Weapons
 /datum/uplink_item/stealthy_weapons
-	category = "Stealthy Weapons"
+	category = "Stealthy and Inconspicuous Weapons"
 
 /datum/uplink_item/stealthy_weapons/combatglovesplus
 	name = "Combat Gloves Plus"
@@ -711,7 +711,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	desc = "An additional 8-round 10mm magazine; compatible with the Stechkin Pistol. Loaded with soporific rounds that put the target to sleep. \
 			NOTE: Soporific is not instant acting due to the constraints of the round's scale. Will usually require three shots to take effect."
 	item = /obj/item/ammo_box/magazine/m10mm/soporific
-	cost = 1
+	cost = 2
 
 /datum/uplink_item/ammo/shotgun
 	cost = 2
@@ -905,17 +905,6 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	cost = 2
 	surplus = 0
 
-//Chemlight Changes
-/datum/uplink_item/ammo/pistolzzz_bundle
-	name = "Box of 10mm Soporific Ammo"
-	desc = "A bundle of three 8-round 10mm magazine; compatible with the Stechkin Pistol. Loaded with soporific rounds that put the target to sleep. \
-		Due to a stockpile in soporific munitions, buy now and we'll throw in a ammo box holding 24 rounds for free! Enough to restock all magazines included. \
-		NOTE: Soporific is not instant acting due to the constraints of the round's scale. Will usually require three shots to take effect."
-	item = /obj/item/storage/box/syndie_kit/soporific_bundle
-	cost = 3
-	limited_stock = 1
-//End of Chemlight changes
-
 /datum/uplink_item/ammo/bioterror
 	name = "Box of Bioterror Syringes"
 	desc = "A box full of preloaded syringes, containing various chemicals that seize up the victim's motor \
@@ -932,7 +921,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/explosives
-	category = "Explosives"
+	category = "Grenades and Explosives"
 
 /datum/uplink_item/explosives/bioterrorfoam
 	name = "Bioterror Foam Grenade"
@@ -1090,7 +1079,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 //Support and Mechs
 /datum/uplink_item/support
-	category = "Support and Exosuits"
+	category = "Support and Mechanized Exosuits"
 	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear)
 
@@ -1286,7 +1275,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 //Space Suits and Hardsuits
 /datum/uplink_item/suits
-	category = "Clothing"
+	category = "Space Suits, Hardsuits and Clothing"
 	surplus = 40
 
 /datum/uplink_item/suits/turtlenck
@@ -1326,8 +1315,8 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 /datum/uplink_item/suits/space_suit
 	name = "Syndicate Space Suit"
-	desc = "This red and black Syndicate space suit is less encumbering than Kinaris variants, \
-			fits inside bags, and has a weapon slot. Kinaris crew members are trained to report red space suit \
+	desc = "This red and black Syndicate space suit is less encumbering than Nanotrasen variants, \
+			fits inside bags, and has a weapon slot. Nanotrasen crew members are trained to report red space suit \
 			sightings, however."
 	item = /obj/item/storage/box/syndie_kit/space
 	cost = 4
@@ -1338,7 +1327,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 			that runs off standard atmospheric tanks. Toggling the suit in and out of \
 			combat mode will allow you all the mobility of a loose fitting uniform without sacrificing armoring. \
 			Additionally the suit is collapsible, making it small enough to fit within a backpack. \
-			Kinaris crew who spot these suits are known to panic."
+			Nanotrasen crew who spot these suits are known to panic."
 	item = /obj/item/clothing/suit/space/hardsuit/syndi
 	cost = 8
 	exclude_modes = list(/datum/game_mode/nuclear) //you can't buy it in nuke, because the elite hardsuit costs the same while being better
@@ -1363,7 +1352,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 // Devices and Tools
 /datum/uplink_item/device_tools
-	category = "Misc. Gadgets"
+	category = "Devices and Tools"
 
 /datum/uplink_item/device_tools/emag
 	name = "Cryptographic Sequencer"
@@ -1408,7 +1397,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 /datum/uplink_item/device_tools/magboots
 	name = "Blood-Red Magboots"
 	desc = "A pair of magnetic boots with a Syndicate paintjob that assist with freer movement in space or on-station \
-			during gravitational generator failures. These reverse-engineered knockoffs of Kinaris's \
+			during gravitational generator failures. These reverse-engineered knockoffs of Nanotrasen's \
 			'Advanced Magboots' slow you down in simulated-gravity environments much like the standard issue variety."
 	item = /obj/item/clothing/shoes/magboots/syndie
 	cost = 2
@@ -1521,7 +1510,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 /datum/uplink_item/device_tools/rad_laser
 	name = "Radioactive Microlaser"
-	desc = "A radioactive microlaser disguised as a standard Kinaris health analyzer. When used, it emits a \
+	desc = "A radioactive microlaser disguised as a standard Nanotrasen health analyzer. When used, it emits a \
 			powerful burst of radiation, which, after a short delay, can incapacitate all but the most protected \
 			of humanoids. It has two settings: intensity, which controls the power of the radiation, \
 			and wavelength, which controls the delay before the effect kicks in."

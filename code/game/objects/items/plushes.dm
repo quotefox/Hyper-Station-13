@@ -158,7 +158,7 @@
 
 	//we are not catholic
 	if(young == TRUE || Kisser.young == TRUE)
-		user.show_message("<span class='notice'>[src] plays tag with [Kisser].</span>", MSG_VISUAL,
+		user.show_message("<span class='notice'>[src] plays tag with [Kisser].</span>", 1,
 			"<span class='notice'>They're happy.</span>", 0)
 		Kisser.cheer_up()
 		cheer_up()
@@ -166,10 +166,10 @@
 	//never again
 	else if(Kisser in scorned)
 		//message, visible, alternate message, neither visible nor audible
-		user.show_message("<span class='notice'>[src] rejects the advances of [Kisser]!</span>", MSG_VISUAL,
+		user.show_message("<span class='notice'>[src] rejects the advances of [Kisser]!</span>", 1,
 			"<span class='notice'>That didn't feel like it worked.</span>", 0)
 	else if(src in Kisser.scorned)
-		user.show_message("<span class='notice'>[Kisser] realises who [src] is and turns away.</span>", MSG_VISUAL,
+		user.show_message("<span class='notice'>[Kisser] realises who [src] is and turns away.</span>", 1,
 			"<span class='notice'>That didn't feel like it worked.</span>", 0)
 
 	//first comes love
@@ -190,7 +190,7 @@
 			new_lover(Kisser)
 			Kisser.new_lover(src)
 		else
-			user.show_message("<span class='notice'>[src] rejects the advances of [Kisser], maybe next time?</span>", MSG_VISUAL,
+			user.show_message("<span class='notice'>[src] rejects the advances of [Kisser], maybe next time?</span>", 1,
 								"<span class='notice'>That didn't feel like it worked, this time.</span>", 0)
 
 	//then comes marriage
@@ -715,6 +715,18 @@
 	icon_state = "scrubpuppy"
 	item_state = "scrubpuppy"
 
+/obj/item/toy/plush/borgplushie/meddrake
+	name = "MediDrake Plushie"
+	desc = "An adorable stuffed toy of a Medidrake."
+	icon_state = "meddrake"
+	item_state = "meddrake"
+
+/obj/item/toy/plush/borgplushie/secdrake
+	name = "SecDrake Plushie"
+	desc = "An adorable stuffed toy of a Secdrake."
+	icon_state = "secdrake"
+	item_state = "secdrake"
+
 /obj/item/toy/plush/borgplushie/seeking
 	icon_state = "seeking"
 	item_state = "seeking"
@@ -878,7 +890,7 @@
 	attack_verb = list("healed", "cured", "demoted")
 
 /obj/item/toy/plush/mammal/redwood
-	desc = "An adorable stuffed toy resembling a Kinaris Captain. That just happens to be a bunny."
+	desc = "An adorable stuffed toy resembling a Nanotrasen Captain. That just happens to be a bunny."
 	icon_state = "redwood"
 	item_state = "redwood"
 	attack_verb = list("ordered", "bapped", "reprimanded")

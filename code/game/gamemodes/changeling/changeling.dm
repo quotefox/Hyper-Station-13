@@ -11,7 +11,7 @@ GLOBAL_VAR(changeling_team_objective_type) //If this is not null, we hand our th
 	antag_flag = ROLE_CHANGELING
 	false_report_weight = 10
 	restricted_jobs = list("AI", "Cyborg")
-	protected_jobs = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")	//citadel change - adds HoP, CE, CMO, and RD to ling role blacklist
+	protected_jobs = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")	//citadel change - adds HoP, CE, CMO, and RD to ling role blacklist
 	required_players = 15
 	required_enemies = 1
 	recommended_enemies = 4
@@ -91,12 +91,13 @@ GLOBAL_VAR(changeling_team_objective_type) //If this is not null, we hand our th
 	user.shirt_color =chosen_prof.shirt_color
 	user.socks = chosen_prof.socks
 	user.socks_color =chosen_prof.socks_color
+	user.size_multiplier = chosen_prof.size_multiplier
 
 	chosen_dna.transfer_identity(user, 1)
 	user.updateappearance(mutcolor_update=1)
 	user.update_body()
 	user.domutcheck()
-	user.size_multiplier = chosen_prof.size_multiplier
+	user.previous_size = chosen_prof.size_multiplier
 
 	//vars hackery. not pretty, but better than the alternative.
 	for(var/slot in GLOB.slots)
@@ -124,3 +125,5 @@ GLOBAL_VAR(changeling_team_objective_type) //If this is not null, we hand our th
 		C.item_state = chosen_prof.item_state_list[slot]
 		if(equip)
 			user.equip_to_slot_or_del(C, GLOB.slot2slot[slot])
+
+	user.regenerate_icons()

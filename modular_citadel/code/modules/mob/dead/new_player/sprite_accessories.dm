@@ -774,10 +774,6 @@ datum/sprite_accessory/ears/human/gret
 	name = "Fox Alt"
 	icon_state = "foxalt"
 
-/datum/sprite_accessory/mam_snouts/snub
-	name = "Snub"
-	icon_state = "snub"
-
 /datum/sprite_accessory/mam_snouts/hshort
 	name = "Small"
 	icon_state = "short"
@@ -2195,48 +2191,6 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Sabresune"
 	icon_state = "sabresune"
 	ckeys_allowed = list("poojawa")
-
-//doged was here
-/datum/sprite_accessory/mam_body_markings/chemlight
-	name = "chemlight"
-	icon_state = "chemlight"
-	ckeys_allowed = list("chemlight")
-
-/datum/sprite_accessory/mam_tails/chemlight
-	name = "chemlight"
-	icon_state = "chemlight"
-	ckeys_allowed = list("chemlight")
-
-/datum/sprite_accessory/mam_tails_animated/chemlight
-	name = "chemlight"
-	icon_state = "chemlight"
-
-/datum/sprite_accessory/mam_ears/chemlight
-	name = "chemlight"
-	icon_state = "chemlight"
-	ckeys_allowed = list("chemlight")
-
-/datum/sprite_accessory/mam_snouts/fchemlight
-	name = "chemlight (Top)"
-	icon_state = "fchemlight"
-	ckeys_allowed = list("chemlight")
-
-/datum/sprite_accessory/mam_snouts/chemlight
-	name = "chemlight"
-	icon_state = "chemlight"
-	ckeys_allowed = list("chemlight")
-
-/datum/sprite_accessory/taur/chemnaga
-	name = "Naga Chemlight"
-	icon_state = "chemnaga"
-	taur_mode = SNEK_TAURIC
-	ckeys_allowed = list("chemlight")
-
-/datum/sprite_accessory/taur/chemlight
-	name = "Chem taur"
-	icon_state = "chemlight"
-	taur_mode = PAW_TAURIC
-	ckeys_allowed = list("chemlight")
 
 
 //Lunasune

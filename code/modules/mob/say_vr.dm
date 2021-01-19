@@ -6,10 +6,11 @@
 	set src in usr
 	if(usr != src)
 		to_chat(usr, "No.")
-	var/msg = stripped_multiline_input(usr, "Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Flavor Text", html_decode(flavor_text), MAX_MESSAGE_LEN, TRUE)
+	var/msg = stripped_multiline_input(usr, "Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Flavor Text", html_decode(flavor_text), MAX_MESSAGE_LEN*2, TRUE)
 
-	if(msg)
-		flavor_text = html_encode(msg)
+	if(!isnull(msg))
+		msg = copytext(msg, 1, MAX_MESSAGE_LEN)
+		msg = html_encode(msg)
 
 		flavor_text = msg
 
@@ -22,10 +23,10 @@
 	if(flavor_text && flavor_text != "")
 		// We are decoding and then encoding to not only get correct amount of characters, but also to prevent partial escaping characters being shown.
 		var/msg = html_decode(replacetext(flavor_text, "\n", " "))
-		if(length_char(msg) <= 40)
+		if(length(msg) <= 40)
 			return "<span class='notice'>[html_encode(msg)]</span>"
 		else
-			return "<span class='notice'>[html_encode(copytext_char(msg, 1, 37))]... <a href='?src=[REF(src)];flavor_more=1'>More...</span></a>"
+			return "<span class='notice'>[html_encode(copytext(msg, 1, 37))]... <a href='?src=[REF(src)];flavor_more=1'>More...</span></a>"
 
 /mob/proc/get_top_level_mob()
 	if(istype(src.loc,/mob)&&src.loc!=src)
@@ -52,10 +53,17 @@ proc/get_top_level_mob(var/mob/S)
 	mob_type_blacklist_typecache = list(/mob/living/brain)
 
 /datum/emote/living/subtle/proc/check_invalid(mob/user, input)
-	if(stop_bad_mime.Find(input, 1, 1))
+	. = TRUE
+	if(copytext(input,1,5) == "says")
 		to_chat(user, "<span class='danger'>Invalid emote.</span>")
-		return TRUE
-	return FALSE
+	else if(copytext(input,1,9) == "exclaims")
+		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+	else if(copytext(input,1,6) == "yells")
+		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+	else if(copytext(input,1,5) == "asks")
+		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+	else
+		. = FALSE
 
 /datum/emote/living/subtle/run_emote(mob/user, params, type_override = null)
 	if(jobban_isbanned(user, "emote"))
@@ -65,7 +73,7 @@ proc/get_top_level_mob(var/mob/S)
 		to_chat(user, "You cannot send IC messages (muted).")
 		return FALSE
 	else if(!params)
-		var/subtle_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtle" , null, MAX_MESSAGE_LEN)
+		var/subtle_emote = copytext(sanitize(input("Choose an emote to display.") as message|null), 1, MAX_MESSAGE_LEN)
 		if(subtle_emote && !check_invalid(user, subtle_emote))
 			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
 			switch(type)
@@ -116,10 +124,17 @@ proc/get_top_level_mob(var/mob/S)
 
 
 /datum/emote/living/subtler/proc/check_invalid(mob/user, input)
-	if(stop_bad_mime.Find(input, 1, 1))
+	. = TRUE
+	if(copytext(input,1,5) == "says")
 		to_chat(user, "<span class='danger'>Invalid emote.</span>")
-		return TRUE
-	return FALSE
+	else if(copytext(input,1,9) == "exclaims")
+		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+	else if(copytext(input,1,6) == "yells")
+		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+	else if(copytext(input,1,5) == "asks")
+		to_chat(user, "<span class='danger'>Invalid emote.</span>")
+	else
+		. = FALSE
 
 /datum/emote/living/subtler/run_emote(mob/user, params, type_override = null)
 	if(jobban_isbanned(user, "emote"))
@@ -129,7 +144,7 @@ proc/get_top_level_mob(var/mob/S)
 		to_chat(user, "You cannot send IC messages (muted).")
 		return FALSE
 	else if(!params)
-		var/subtle_emote = stripped_multiline_input(user, "Choose an emote to display.", "Subtler" , null, MAX_MESSAGE_LEN)
+		var/subtle_emote = copytext(sanitize(input("Choose an emote to display.") as message|null), 1, MAX_MESSAGE_LEN)
 		if(subtle_emote && !check_invalid(user, subtle_emote))
 			var/type = input("Is this a visible or hearable emote?") as null|anything in list("Visible", "Hearable")
 			switch(type)
@@ -155,9 +170,9 @@ proc/get_top_level_mob(var/mob/S)
 	message = "<b>[user]</b> " + "<i>[user.say_emphasis(message)]</i>"
 
 	if(emote_type == EMOTE_AUDIBLE)
-		user.audible_message(message=message,hearing_distance=1, ignored_mobs = GLOB.dead_mob_list)
+		user.audible_message(message=message,hearing_distance=1, no_ghosts = TRUE)
 	else
-		user.visible_message(message=message,self_message=message,vision_distance=1, ignored_mobs = GLOB.dead_mob_list)
+		user.visible_message(message=message,self_message=message,vision_distance=1, no_ghosts = TRUE)
 	log_emote("[key_name(user)] : (SUBTLER) [message]")
 
 	message = null

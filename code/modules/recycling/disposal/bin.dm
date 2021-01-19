@@ -21,8 +21,6 @@
 	var/flush_count = 0 //this var adds 1 once per tick. When it reaches flush_every_ticks it resets and tries to flush.
 	var/last_sound = 0
 	var/obj/structure/disposalconstruct/stored
-	ui_x = 300
-	ui_y = 180
 	// create a new disposal
 	// find the attached trunk (if present) and init gas resvr.
 
@@ -79,12 +77,12 @@
 /obj/machinery/disposal/attackby(obj/item/I, mob/user, params)
 	add_fingerprint(user)
 	if(!pressure_charging && !full_pressure && !flush)
-		if(I.tool_behaviour == TOOL_SCREWDRIVER)
+		if(istype(I, /obj/item/screwdriver))
 			panel_open = !panel_open
 			I.play_tool_sound(src)
 			to_chat(user, "<span class='notice'>You [panel_open ? "remove":"attach"] the screws around the power connection.</span>")
 			return
-		else if(I.tool_behaviour == TOOL_WELDER && panel_open)
+		else if(istype(I, /obj/item/weldingtool) && panel_open)
 			if(!I.tool_start_check(user, amount=0))
 				return
 
@@ -99,7 +97,7 @@
 			return
 		place_item_in_disposal(I, user)
 		update_icon()
-		return TRUE //no afterattack
+		return 1 //no afterattack
 	else
 		return ..()
 
@@ -283,6 +281,12 @@
 	var/datum/oracle_ui/themed/nano/ui
 	obj_flags = CAN_BE_HIT | USES_TGUI | SHOVABLE_ONTO
 
+/obj/machinery/disposal/bin/Initialize(mapload, obj/structure/disposalconstruct/make_from)
+	. = ..()
+	ui = new /datum/oracle_ui/themed/nano(src, 330, 190, "disposal_bin")
+	ui.auto_refresh = TRUE
+	ui.can_resize = FALSE
+
 // attack by item places it in to disposal
 /obj/machinery/disposal/bin/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/storage/bag/trash))	//Not doing component overrides because this is a specific type.
@@ -293,31 +297,43 @@
 			STR.remove_from_storage(O,src)
 		T.update_icon()
 		update_icon()
+		ui.soft_update_fields()
 	else
+		ui.soft_update_fields()
 		return ..()
 
 // handle machine interaction
 
-/obj/machinery/disposal/bin/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
-									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.notcontained_state)
+/obj/machinery/disposal/bin/ui_interact(mob/user, state)
 	if(stat & BROKEN)
 		return
-	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
-	if(!ui)
-		ui = new(user, src, ui_key, "disposal_unit", name, ui_x, ui_y, master_ui, state)
-		ui.open()
+	if(user.loc == src)
+		to_chat(user, "<span class='warning'>You cannot reach the controls from inside!</span>")
+		return
+	ui.render(user)
 
-/obj/machinery/disposal/bin/ui_data(mob/user)
+/obj/machinery/disposal/bin/oui_canview(mob/user)
+	if(user.loc == src)
+		return FALSE
+	if(stat & BROKEN)
+		return FALSE
+	if(Adjacent(user))
+		return TRUE
+	return ..()
+
+
+/obj/machinery/disposal/bin/oui_data(mob/user)
 	var/list/data = list()
-	data["flush"] = flush
-	data["full_pressure"] = full_pressure
-	data["pressure_charging"] = pressure_charging
-	data["panel_open"] = panel_open
-	data["per"] = CLAMP01(air_contents.return_pressure() / (SEND_PRESSURE))
+	data["flush"] = flush ? ui.act("Disengage", user, "handle-0", class="active") : ui.act("Engage", user, "handle-1")
+	data["full_pressure"] = full_pressure ? "Ready" : (pressure_charging ? "Pressurizing" : "Off")
+	data["pressure_charging"] = pressure_charging ? ui.act("Turn Off", user, "pump-0", class="active", disabled=full_pressure) : ui.act("Turn On", user, "pump-1", disabled=full_pressure)
+	var/per = full_pressure ? 100 : CLAMP(100* air_contents.return_pressure() / (SEND_PRESSURE), 0, 99)
+	data["per"] = "[round(per, 1)]%"
+	data["contents"] = ui.act("Eject Contents", user, "eject", disabled=contents.len < 1)
 	data["isai"] = isAI(user)
 	return data
 
-/obj/machinery/disposal/bin/ui_act(action, params)
+/obj/machinery/disposal/bin/oui_act(mob/user, action, list/params)
 	if(..())
 		return
 
@@ -344,6 +360,7 @@
 		if("eject")
 			eject()
 			. = TRUE
+	ui.soft_update_fields()
 
 
 /obj/machinery/disposal/bin/hitby(atom/movable/AM, skipcatch = FALSE, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
@@ -374,6 +391,7 @@
 	full_pressure = FALSE
 	pressure_charging = TRUE
 	update_icon()
+	ui.soft_update_fields()
 
 /obj/machinery/disposal/bin/update_icon()
 	cut_overlays()
@@ -416,6 +434,8 @@
 			if(full_pressure)
 				do_flush()
 		flush_count = 0
+
+	ui.soft_update_fields()
 
 	if(flush && air_contents.return_pressure() >= SEND_PRESSURE) // flush can happen even without power
 		do_flush()

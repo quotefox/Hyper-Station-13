@@ -37,9 +37,9 @@
 	wielded = 0
 	if(force_unwielded)
 		force = force_unwielded
-	var/sf = findtext(name, " (Wielded)", -10)//10 == length(" (Wielded)")
+	var/sf = findtext(name," (Wielded)")
 	if(sf)
-		name = copytext(name, 1, sf)
+		name = copytext(name,1,sf)
 	else //something wrong
 		name = "[initial(name)]"
 	update_icon()
@@ -346,6 +346,7 @@
 		icon_state = "dualsaber[item_color][wielded]"
 	else
 		icon_state = "dualsaber0"
+
 	clean_blood()
 
 /obj/item/twohanded/dualsaber/attack(mob/target, mob/living/carbon/human/user)
@@ -546,7 +547,6 @@
 	qdel(src)
 
 /obj/item/twohanded/spear/AltClick(mob/user)
-	. = ..()
 	if(user.canUseTopic(src, BE_CLOSE))
 		..()
 		if(!explosive)
@@ -555,7 +555,6 @@
 			var/input = stripped_input(user,"What do you want your war cry to be? You will shout it when you hit someone in melee.", ,"", 50)
 			if(input)
 				src.war_cry = input
-		return TRUE
 
 /obj/item/twohanded/spear/CheckParts(list/parts_list)
 	var/obj/item/twohanded/spear/S = locate() in parts_list
@@ -593,8 +592,6 @@
 	sharpness = IS_SHARP
 	actions_types = list(/datum/action/item_action/startchainsaw)
 	var/on = FALSE
-	tool_behaviour = TOOL_SAW
-	toolspeed = 0.5
 
 /obj/item/twohanded/required/chainsaw/Initialize()
 	. = ..()

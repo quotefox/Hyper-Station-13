@@ -518,7 +518,7 @@
 				add_splatter_floor(T)
 			if(stun)
 				adjustBruteLoss(3)
-			else if(src.reagents.has_reagent(/datum/reagent/consumable/ethanol/blazaam))
+			else if(src.reagents.has_reagent("blazaam"))
 				if(T)
 					T.add_vomit_floor(src, VOMIT_PURPLE)
 		else
@@ -561,7 +561,7 @@
 	health = round(maxHealth - getOxyLoss() - getToxLoss() - getCloneLoss() - total_burn - total_brute, DAMAGE_PRECISION)
 	staminaloss = round(total_stamina, DAMAGE_PRECISION)
 	update_stat()
-	if(((maxHealth - total_burn) < HEALTH_THRESHOLD_DEAD*2) && stat == DEAD )
+	if(((maxHealth - total_burn) < HEALTH_THRESHOLD_DEAD) && stat == DEAD )
 		become_husk("burn")
 	med_hud_set_health()
 	if(stat == SOFT_CRIT)
@@ -804,8 +804,6 @@
 /mob/living/carbon/update_stat()
 	if(status_flags & GODMODE)
 		return
-	if(stat != CONSCIOUS)
-		clear_typing_indicator()
 	if(stat != DEAD)
 		if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
 			death()
@@ -813,13 +811,9 @@
 		if(IsUnconscious() || IsSleeping() || getOxyLoss() > 50 || (HAS_TRAIT(src, TRAIT_DEATHCOMA)) || (health <= HEALTH_THRESHOLD_FULLCRIT && !HAS_TRAIT(src, TRAIT_NOHARDCRIT)))
 			stat = UNCONSCIOUS
 			blind_eyes(1)
-			if(combatmode)
-				toggle_combat_mode(TRUE, TRUE)
 		else
 			if(health <= crit_threshold && !HAS_TRAIT(src, TRAIT_NOSOFTCRIT))
 				stat = SOFT_CRIT
-				if(combatmode)
-					toggle_combat_mode(TRUE, TRUE)
 			else
 				stat = CONSCIOUS
 			adjust_blindness(-1)
@@ -980,19 +974,3 @@
 	if(mood)
 		if(mood.sanity < SANITY_UNSTABLE)
 			return TRUE
-
-/mob/living/carbon/can_see_reagents()
-	. = ..()
-	if(.) //No need to run through all of this if it's already true.
-		return
-	if(isclothing(head))
-		var/obj/item/clothing/H = head
-		if(H.clothing_flags & SCAN_REAGENTS)
-			return TRUE
-	if(isclothing(wear_mask) && (wear_mask.clothing_flags & SCAN_REAGENTS))
-		return TRUE
-
-/mob/living/carbon/transfer_ckey(mob/new_mob, send_signal = TRUE)
-	if(combatmode)
-		toggle_combat_mode(TRUE, TRUE)
-	return ..() 

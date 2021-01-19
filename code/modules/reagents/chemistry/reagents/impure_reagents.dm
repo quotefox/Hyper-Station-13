@@ -8,7 +8,8 @@
 
 /datum/reagent/impure/fermiTox
 	name = "Chemical Isomers"
-	description = "Toxic chemical isomers made from impure reactions. At low volumes will cause light toxin damage, but as the volume increases, it deals larger amounts, damages the liver, then eventually the heart. This is default impure chem for all chems, and changes only if stated."
+	id = "fermiTox"
+	description = "Toxic chemical isomers made from impure reactions. At low volumes will cause light toxin damage, but as the volume increases, it deals larger amounts, damages the liver, then eventually the heart."
 	data = "merge"
 	color = "FFFFFF"
 	can_synth = FALSE

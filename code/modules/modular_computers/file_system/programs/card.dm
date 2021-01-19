@@ -201,7 +201,7 @@
 		if("PRG_edit")
 			if(computer && authorized())
 				if(params["name"])
-					var/temp_name = reject_bad_name(input("Enter name.", "Name", id_card.registered_name), TRUE)
+					var/temp_name = reject_bad_name(input("Enter name.", "Name", id_card.registered_name))
 					if(temp_name)
 						id_card.registered_name = temp_name
 					else

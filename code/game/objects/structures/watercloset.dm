@@ -101,7 +101,7 @@
 		if (!open)
 			return
 		var/obj/item/reagent_containers/RG = I
-		RG.reagents.add_reagent(/datum/reagent/water, min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
+		RG.reagents.add_reagent("water", min(RG.volume - RG.reagents.total_volume, RG.amount_per_transfer_from_this))
 		to_chat(user, "<span class='notice'>You fill [RG] from [src]. Gross.</span>")
 	else
 		return ..()
@@ -199,7 +199,8 @@
 	icon = 'icons/obj/items_and_weapons.dmi'
 	icon_state = "urinalcake"
 	w_class = WEIGHT_CLASS_TINY
-	list_reagents = list(/datum/reagent/chlorine = 3, /datum/reagent/ammonia = 1)
+	list_reagents = list(chlorine = 3, ammonia = 1)
+	foodtype = TOXIC | GROSS
 
 /obj/item/reagent_containers/food/snacks/urinalcake/attack_self(mob/living/user)
 	user.visible_message("<span class='notice'>[user] squishes [src]!</span>", "<span class='notice'>You squish [src].</span>", "<i>You hear a squish.</i>")
@@ -208,7 +209,7 @@
 
 /obj/machinery/shower
 	name = "shower"
-	desc = "The HS-451. Installed in the 2550s by the Kinaris Hygiene Division."
+	desc = "The HS-451. Installed in the 2550s by the Nanotrasen Hygiene Division."
 	icon = 'icons/obj/watercloset.dmi'
 	icon_state = "shower"
 	density = FALSE
@@ -219,9 +220,6 @@
 	var/watertemp = "normal"	//freezing, normal, or boiling
 	var/datum/looping_sound/showering/soundloop
 
-/obj/machinery/shower/crafted	//When created from sheets of metal
-	anchored = FALSE
-
 /obj/machinery/shower/Initialize()
 	. = ..()
 	soundloop = new(list(src), FALSE)
@@ -229,29 +227,6 @@
 /obj/machinery/shower/Destroy()
 	QDEL_NULL(soundloop)
 	return ..()
-
-/obj/machinery/shower/deconstruct(disassembled = TRUE)
-	new /obj/item/stack/sheet/metal (get_turf(src), 2)
-	Destroy()
-
-//Copy from /obj/structure/chair
-/obj/machinery/shower/ComponentInitialize()
-	. = ..()
-	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE, CALLBACK(src, .proc/can_user_rotate),CALLBACK(src, .proc/can_be_rotated),null)
-
-/obj/machinery/shower/proc/can_be_rotated(mob/user)
-	return !anchored
-
-/obj/machinery/shower/proc/can_user_rotate(mob/user)
-	if(istype(user, /mob/living))
-		if(!user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
-			return FALSE
-		else
-			return TRUE
-	else if(isobserver(user) && CONFIG_GET(flag/ghost_interaction))
-		return TRUE
-	return FALSE
-////
 
 /obj/effect/mist
 	name = "mist"
@@ -262,8 +237,6 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 
 /obj/machinery/shower/interact(mob/M)
-	if (!anchored)
-		return to_chat(M, "<span class='warning'>You have to connect [src] to the floor first!</span>")
 	on = !on
 	update_icon()
 	add_fingerprint(M)
@@ -286,56 +259,25 @@
 
 /obj/machinery/shower/attackby(obj/item/I, mob/user, params)
 	if(I.type == /obj/item/analyzer)
-		to_chat(user, "<span class='notice'>The water temperature seems to be <span class='bold'>[watertemp]</span>.</span>")
-		return
-
-	if (user.a_intent != INTENT_HELP)
+		to_chat(user, "<span class='notice'>The water temperature seems to be [watertemp].</span>")
+	else
 		return ..()
 
-	switch (I.tool_behaviour)
-		if (TOOL_WRENCH)
-			if (!anchored)
-				user.visible_message("<span class='notice'>[user] starts to take apart [src]...</span>", "<span class='notice'>You start dismantling [src]...</span>")
-				I.play_tool_sound(src)
-				if(I.use_tool(src, user, 20))
-					deconstruct(TRUE)
-			else
-				to_chat(user, "<span class='notice'>You begin to adjust the temperature valve with \the [I]...</span>")
-				if(I.use_tool(src, user, 50))
-					switch(watertemp)
-						if("normal")
-							watertemp = "freezing"
-						if("freezing")
-							watertemp = "boiling"
-						if("boiling")
-							watertemp = "normal"
-					user.visible_message("<span class='notice'>[user] adjusts the shower with \the [I].</span>", "<span class='notice'>You adjust the shower with \the [I] to [watertemp] temperature.</span>")
-					log_game("[key_name(user)] has wrenched a shower to [watertemp] at ([x],[y],[z])")
-					add_hiddenprint(user)
+/obj/machinery/shower/wrench_act(mob/living/user, obj/item/I)
+	to_chat(user, "<span class='notice'>You begin to adjust the temperature valve with \the [I]...</span>")
+	if(I.use_tool(src, user, 50))
+		switch(watertemp)
+			if("normal")
+				watertemp = "freezing"
+			if("freezing")
+				watertemp = "boiling"
+			if("boiling")
+				watertemp = "normal"
+		user.visible_message("<span class='notice'>[user] adjusts the shower with \the [I].</span>", "<span class='notice'>You adjust the shower with \the [I] to [watertemp] temperature.</span>")
+		log_game("[key_name(user)] has wrenched a shower to [watertemp] at ([x],[y],[z])")
+		add_hiddenprint(user)
+	return TRUE
 
-		if (TOOL_SCREWDRIVER)
-			if (!anchored)
-				to_chat(user, "<span class='notice'>You begin screwing in [src] to the floor...</span>")
-				I.play_tool_sound(src)
-				if(I.use_tool(src, user, 30))
-					user.visible_message("<span class='notice'>[user] connects [src] to the floor.</span>", "<span class='notice'>You connect [src] to the floor.</span>")
-					anchored = TRUE
-			else
-				to_chat(user, "<span class='notice'>You start to take out [src]'s screws...</span>")
-				on = FALSE
-				soundloop.stop()
-				update_icon()
-				I.play_tool_sound(src)
-				if(I.use_tool(src, user, 20))
-					user.visible_message("<span class='notice'>[user] disconnects [src] from the floor.</span>", "<span class='notice'>You disconnect [src] from the floor.</span>")
-					anchored = FALSE
-
-/obj/machinery/shower/examine()
-	. += ..()
-	if (anchored)
-		. += "<span class='info'>It looks like it can be taken apart with a <span class='bold'>screwdriver</span>...</span>"
-	else
-		. += "<span class='info'>Its <span class='bold'>screws</span> are out of place, allowing it to be <span class='bold'>dismantled with a wrench</span>.</span>"
 
 /obj/machinery/shower/update_icon()	//this is terribly unreadable, but basically it makes the shower mist up
 	cut_overlays()					//once it's been on for a while, in addition to handling the water overlay.
@@ -378,7 +320,6 @@
 /obj/machinery/shower/proc/wash_obj(obj/O)
 	. = SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 	. = O.clean_blood()
-	. = O.wash_cum()
 	O.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 	if(isitem(O))
 		var/obj/item/I = O
@@ -400,7 +341,6 @@
 /obj/machinery/shower/proc/wash_mob(mob/living/L)
 	SEND_SIGNAL(L, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 	L.wash_cream()
-	L.wash_cum()
 	L.ExtinguishMob()
 	L.adjust_fire_stacks(-20) //Douse ourselves with water to avoid fire more easily
 	L.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
@@ -522,28 +462,7 @@
 	desc = "A sink used for washing one's hands and face."
 	anchored = TRUE
 	var/busy = FALSE 	//Something's being washed at the moment
-	var/dispensedreagent = /datum/reagent/water // for whenever plumbing happens
-	layer = WALL_OBJ_LAYER
-
-/*/obj/structure/sink/Initialize()	//This doesn't work in the slightest. It used to at some point through development, but that made it so you cant interact with the object whatsoever. I hate this.
-	. = ..()
-	switch (dir)	//Thinking about moving this into its own construction sequence so it can actually work, like using a screwdriver will set its pixel offset, but I feel like that's too much
-		if (NORTH)	//Or maybe putting it in lateinit... but that's sloppy and I feel like it wont work when spawning it in after the round starts
-			pixel_x = pixel_y = 0
-			layer = WALL_OBJ_LAYER
-		if (EAST)
-			pixel_x = 12
-			pixel_y = 3
-			layer = WALL_OBJ_LAYER
-		if (SOUTH)
-			pixel_y = 24
-			pixel_x = 0
-			layer = ABOVE_OBJ_LAYER
-		if (WEST)
-			pixel_x = -12
-			pixel_y = 3
-			layer = WALL_OBJ_LAYER
-*/
+	var/dispensedreagent = "water" // for whenever plumbing happens
 
 
 /obj/structure/sink/attack_hand(mob/living/user)
@@ -582,7 +501,6 @@
 			H.lip_style = null //Washes off lipstick
 			H.lip_color = initial(H.lip_color)
 			H.wash_cream()
-			H.wash_cum()
 			H.regenerate_icons()
 		user.drowsyness = max(user.drowsyness - rand(2,3), 0) //Washing your face wakes you up if you're falling asleep
 	else
@@ -591,16 +509,7 @@
 
 /obj/structure/sink/attackby(obj/item/O, mob/living/user, params)
 	if(busy)
-		to_chat(user, "<span class='warning'>Someone's already washing here.</span>")
-		return
-
-	if (istype(O, /obj/item/wrench) && user.a_intent == INTENT_HELP)
-		to_chat(user, "<span class='notice'>You start deconstructing [src]...</span>")
-		O.play_tool_sound(src)
-
-		if(O.use_tool(src, user, 20))
-			playsound(src.loc, 'sound/items/deconstruct.ogg', 50, TRUE)
-			deconstruct(TRUE)
+		to_chat(user, "<span class='warning'>Someone's already washing here!</span>")
 		return
 
 	if(istype(O, /obj/item/reagent_containers))
@@ -628,7 +537,7 @@
 				return
 
 	if(istype(O, /obj/item/mop))
-		O.reagents.add_reagent(dispensedreagent, 5)
+		O.reagents.add_reagent("[dispensedreagent]", 5)
 		to_chat(user, "<span class='notice'>You wet [O] in [src].</span>")
 		playsound(loc, 'sound/effects/slosh.ogg', 25, 1)
 		return
@@ -654,7 +563,6 @@
 		busy = FALSE
 		SEND_SIGNAL(O, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 		O.clean_blood()
-		O.wash_cum()
 		O.acid_level = 0
 		create_reagents(5)
 		reagents.add_reagent(dispensedreagent, 5)
@@ -666,12 +574,15 @@
 		return ..()
 
 /obj/structure/sink/deconstruct(disassembled = TRUE)
-	new /obj/item/stack/sheet/metal (loc, 2)
+	new /obj/item/stack/sheet/metal (loc, 3)
 	qdel(src)
+
+
 
 /obj/structure/sink/kitchen
 	name = "kitchen sink"
 	icon_state = "sink_alt"
+
 
 /obj/structure/sink/puddle	//splishy splashy ^_^
 	name = "puddle"

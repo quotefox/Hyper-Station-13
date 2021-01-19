@@ -22,6 +22,7 @@
 	var/cooldown = 0
 	var/obj/item/flashlight/F = null
 	var/can_flashlight = 0
+	var/scan_reagents = 0 //Can the wearer see reagents while it's equipped?
 
 	var/blocks_shove_knockdown = FALSE //Whether wearing the clothing item blocks the ability for shove to knock down.
 
@@ -47,6 +48,7 @@
 	//Add a "exclude" string to do the opposite, making it only only species listed that can't wear it.
 	//You append this to clothing objects.
 	//Hyper change// - Variables for HS13 checks
+	var/roomy = 0  //0 For false
 
 
 /obj/item/clothing/Initialize()
@@ -71,7 +73,7 @@
 /obj/item/reagent_containers/food/snacks/clothing
 	name = "oops"
 	desc = "If you're reading this it means I messed up. This is related to moths eating clothes and I didn't know a better way to do it than making a new food object."
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
+	list_reagents = list("nutriment" = 1)
 	tastes = list("dust" = 1, "lint" = 1)
 	foodtype = CLOTH
 
@@ -94,7 +96,6 @@
 		to_chat(user, "<span class='notice'>You fix the damage on [src] with [C].</span>")
 		return 1
 	//Hyper Change//
-	/*
 	if(istype(W, /obj/item/bluespace_thread))
 		var/obj/item/bluespace_thread/B = W
 		if ((istype(src, /obj/item/clothing/under) || istype(src, /obj/item/clothing/suit)) && roomy != 1) //Make sure the thread is used on an item that could be ripped off in the first place
@@ -106,7 +107,6 @@
 				qdel(B)
 		else
 			user.show_message("<span class='notice'>You probably don't need any more room in that.</span>", 1)
-	*/ //Long live roomy = TRUE
 	return ..()
 
 /obj/item/clothing/Destroy()
@@ -270,14 +270,16 @@ BLIND     // can't see anything
 			H.update_suit_sensors()
 
 /obj/item/clothing/under/AltClick(mob/user)
-	. = ..()
+	if(..())
+		return 1
+
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
-	if(attached_accessory)
-		remove_accessory(user)
 	else
-		rolldown()
-	return TRUE
+		if(attached_accessory)
+			remove_accessory(user)
+		else
+			rolldown()
 
 /obj/item/clothing/under/verb/jumpsuit_adjust()
 	set name = "Adjust Jumpsuit Style"

@@ -1,10 +1,9 @@
 //Jay Sparrow
 #define ROOMY = "ROOMY"
-//Sorry jay, I killed it.
 
 /obj/item/bluespace_thread
 	name = "Bluespace Sewing Kit"
-	desc = "Thread infused with bluespace dust to make your clothes a little more roomy. Current sewing technology already incorporates this, so thankfully, the days of needing these are long gone. Good souvenir though."
+	desc = "Thread infused with bluespace dust to make your clothes a little more roomy."
 	icon = 'hyperstation/icons/obj/bluespace_thread.dmi'
 	icon_state = "thread"
 	item_state = "thread"

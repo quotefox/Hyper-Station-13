@@ -17,7 +17,8 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 /datum/controller/subsystem/processing/quirks/Initialize(timeofday)
 	if(!quirks.len)
 		SetupQuirks()
-		quirk_blacklist = list(list("Blind","Nearsighted"),list("Jolly","Depression","Hypersensitive"),list("Ageusia","Vegetarian","Deviant Tastes"),list("Ananas Affinity","Ananas Aversion"),list("Alcohol Tolerance","Light Drinker"),list("Prosthetic Limb (Left Arm)","Prosthetic Limb (Right Arm)","Prosthetic Limb (Left Leg)","Prosthetic Limb (Right Leg)","Prosthetic Limb"),list("Social Anxiety","Mute"))
+
+	quirk_blacklist = list(list("Blind","Nearsighted"),list("Jolly","Depression","Apathetic","Hypersensitive"),list("Ageusia","Vegetarian","Deviant Tastes"),list("Ananas Affinity","Ananas Aversion"),list("Alcohol Tolerance","Light Drinker"),list("Prosthetic Limb (Left Arm)","Prosthetic Limb (Right Arm)","Prosthetic Limb (Left Leg)","Prosthetic Limb (Right Leg)","Prosthetic Limb"),list("Social Anxiety","Mute"))
 	return ..()
 
 /datum/controller/subsystem/processing/quirks/proc/SetupQuirks()
@@ -31,21 +32,13 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		quirk_names_by_path[T] = initial(T.name)
 
 /datum/controller/subsystem/processing/quirks/proc/AssignQuirks(mob/living/user, client/cli, spawn_effects, roundstart = FALSE, datum/job/job, silent = FALSE, mob/to_chat_target)
-	var/badquirk = FALSE
-	var/list/my_quirks = cli.prefs.all_quirks.Copy()
+	GenerateQuirks(cli)
+	var/list/quirks = cli.prefs.character_quirks.Copy()
 	var/list/cut
-	if(job?.blacklisted_quirks)
-		cut = filter_quirks(my_quirks, job)
-	for(var/V in my_quirks)
-		if(V in quirks)
-			var/datum/quirk/Q = quirks[V]
-			user.add_quirk(Q, spawn_effects)
-		else
-			log_admin("Invalid quirk \"[V]\" in client [cli.ckey] preferences")
-			cli.prefs.all_quirks -= V
-			badquirk = TRUE
-	if(badquirk)
-		cli.prefs.save_character()
+	if(job && job.blacklisted_quirks)
+		cut = filter_quirks(quirks, job)
+	for(var/V in quirks)
+		user.add_quirk(V, spawn_effects)
 	if(!silent && LAZYLEN(cut))
 		to_chat(to_chat_target || user, "<span class='boldwarning'>All of your non-neutral character quirks have been cut due to these quirks conflicting with your job assignment: [english_list(cut)].</span>")
 
@@ -63,28 +56,28 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 	for(var/i in quirk_names)
 		. += quirk_points_by_name(i)
 
-/datum/controller/subsystem/processing/quirks/proc/filter_quirks(list/our_quirks, datum/job/job)
+/datum/controller/subsystem/processing/quirks/proc/filter_quirks(list/quirks, datum/job/job)
 	var/list/cut = list()
 	var/list/banned_names = list()
 	for(var/i in job.blacklisted_quirks)
 		var/name = quirk_name_by_path(i)
 		if(name)
 			banned_names += name
-	var/list/blacklisted = our_quirks & banned_names
+	var/list/blacklisted = quirks & banned_names
 	if(length(blacklisted))
 		for(var/i in blacklisted)
-			our_quirks -= i
+			quirks -= i
 			cut += i
 
 	/*	//Code to automatically reduce positive quirks until balance is even.
-	var/points_used = total_points(our_quirks)
+	var/points_used = total_points(quirks)
 	if(points_used > 0)
 		//they owe us points, let's collect.
-		for(var/i in our_quirks)
+		for(var/i in quirks)
 			var/points = quirk_points_by_name(i)
 			if(points > 0)
 				cut += i
-				our_quirks -= i
+				quirks -= i
 				points_used -= points
 			if(points_used <= 0)
 				break
@@ -92,9 +85,14 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 	//Nah, let's null all non-neutrals out.
 	if(cut.len)
-		for(var/i in our_quirks)
+		for(var/i in quirks)
 			if(quirk_points_by_name(i) != 0)
 				//cut += i		-- Commented out: Only show the ones that triggered the quirk purge.
-				our_quirks -= i
+				quirks -= i
 
 	return cut
+
+/datum/controller/subsystem/processing/quirks/proc/GenerateQuirks(client/user)
+	if(user.prefs.character_quirks.len)
+		return
+	user.prefs.character_quirks = user.prefs.all_quirks

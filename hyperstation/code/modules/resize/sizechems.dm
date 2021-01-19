@@ -4,6 +4,7 @@
 //Sizechem reagent
 /datum/reagent/sizechem
 	name = "Cell-Volume Altering Base"
+	id = "sizechem"
 	description = "A stabilized compound liquid, used as a basis for increasing or decreasing the size of living matter with more recipes."
 	color = "#C900CC"
 	taste_description = "regret"
@@ -13,10 +14,10 @@
 //Sizechem reaction
 /datum/chemical_reaction/sizechem
 	name = "Cell-Volume Altering Base"
-	id = /datum/reagent/sizechem
+	id = "sizechem"
 	mix_message = "the reaction rapidly alters in size!"
-	required_reagents = list(/datum/reagent/growthserum = 0.15, /datum/reagent/medicine/clonexadone = 0.15, /datum/reagent/gold = 0.15, /datum/reagent/acetone = 0.15)
-	results = list(/datum/reagent/sizechem = 0.3)
+	required_reagents = list("growthserum" = 0.15, "clonexadone" = 0.15, "gold" = 0.15, "acetone" = 0.15)
+	results = list("sizechem" = 0.3)
 	required_temp = 1
 	//Fermichem vars
 	OptimalTempMin 		= 600 		// Lower area of bell curve for determining heat based rate reactions
@@ -38,6 +39,7 @@
 //Growthchem reagent
 /datum/reagent/growthchem
 	name = "Prospacillin"
+	id = "growthchem"
 	description = "A stabilized altercation of size-altering liquids, this one appears to increase cell volume."
 	color = "#E70C0C"
 	taste_description = "a sharp, fiery and intoxicating flavour"
@@ -48,10 +50,10 @@
 //Growthchem reaction
 /datum/chemical_reaction/growthchem
 	name = "Prospacillin"
-	id = /datum/reagent/growthchem
+	id = "growthchem"
 	mix_message = "the reaction appears to grow!"
-	required_reagents = list(/datum/reagent/sizechem = 0.15, /datum/reagent/consumable/condensedcapsaicin = 0.15, /datum/reagent/drug/aphrodisiac = 0.30)
-	results = list(/datum/reagent/growthchem = 0.25)
+	required_reagents = list("sizechem" = 0.15, "condensedcapsaicin" = 0.15, "aphro" = 0.30)
+	results = list("growthchem" = 0.25)
 	required_temp = 1
 	OptimalTempMin 		= 700 		// Lower area of bell curve for determining heat based rate reactions
 	OptimalTempMax 		= 730 		// Upper end for above
@@ -87,6 +89,7 @@
 //Shrinkchem reagent
 /datum/reagent/shrinkchem
 	name = "Diminicillin"
+	id = "shrinkchem"
 	description = "A stabilized altercation of size-altering liquids, this one appears to decrease cell volume."
 	color = "#0C26E7"
 	taste_description = "a pungent, acidic and jittery flavour"
@@ -97,10 +100,10 @@
 //Shrinchem reaction
 /datum/chemical_reaction/shrinkchem
 	name = "Diminicillin"
-	id = /datum/reagent/shrinkchem
+	id = "shrinkchem"
 	mix_message = "the reaction appears to shrink!"
-	required_reagents = list(/datum/reagent/sizechem = 0.15, /datum/reagent/consumable/frostoil = 0.15, /datum/reagent/drug = 0.30)
-	results = list(/datum/reagent/shrinkchem = 0.25)
+	required_reagents = list("sizechem" = 0.15, "frostoil" = 0.15, "aphro" = 0.30)
+	results = list("shrinkchem" = 0.25)
 	required_temp = 1
 	OptimalTempMin 		= 100 		// Lower area of bell curve for determining heat based rate reactions
 	OptimalTempMax 		= 150 		// Upper end for above

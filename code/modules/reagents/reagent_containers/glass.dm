@@ -227,32 +227,32 @@
 	container_HP = 4
 
 /obj/item/reagent_containers/glass/beaker/cryoxadone
-	list_reagents = list(/datum/reagent/medicine/cryoxadone = 30)
+	list_reagents = list("cryoxadone" = 30)
 
 /obj/item/reagent_containers/glass/beaker/sulphuric
-	list_reagents = list(/datum/reagent/toxin/acid = 50)
+	list_reagents = list("sacid" = 50)
 
 /obj/item/reagent_containers/glass/beaker/slime
-	list_reagents = list(/datum/reagent/toxin/slimejelly = 50)
+	list_reagents = list("slimejelly" = 50)
 
 /obj/item/reagent_containers/glass/beaker/large/styptic
 	name = "styptic reserve tank"
-	list_reagents = list(/datum/reagent/medicine/styptic_powder = 50)
+	list_reagents = list("styptic_powder" = 50)
 
 /obj/item/reagent_containers/glass/beaker/large/silver_sulfadiazine
 	name = "silver sulfadiazine reserve tank"
-	list_reagents = list(/datum/reagent/medicine/silver_sulfadiazine = 50)
+	list_reagents = list("silver_sulfadiazine" = 50)
 
 /obj/item/reagent_containers/glass/beaker/large/charcoal
 	name = "charcoal reserve tank"
-	list_reagents = list(/datum/reagent/medicine/charcoal = 50)
+	list_reagents = list("charcoal" = 50)
 
 /obj/item/reagent_containers/glass/beaker/large/epinephrine
 	name = "epinephrine reserve tank"
-	list_reagents = list(/datum/reagent/medicine/epinephrine = 50)
+	list_reagents = list("epinephrine" = 50)
 
 /obj/item/reagent_containers/glass/beaker/synthflesh
-	list_reagents = list(/datum/reagent/medicine/synthflesh = 50)
+	list_reagents = list("synthflesh" = 50)
 
 /obj/item/reagent_containers/glass/bucket
 	name = "bucket"
@@ -331,7 +331,7 @@
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "smallbottle"
 	item_state = "bottle"
-	list_reagents = list(/datum/reagent/water = 49.5, /datum/reagent/fluorine = 0.5)//see desc, don't think about it too hard
+	list_reagents = list("water" = 49.5, "fluorine" = 0.5)//see desc, don't think about it too hard
 	materials = list(MAT_GLASS=0)
 	volume = 50
 	amount_per_transfer_from_this = 10
@@ -348,7 +348,7 @@
 	desc = "A fresh commercial-sized bottle of water."
 	icon_state = "largebottle"
 	materials = list(MAT_GLASS=0)
-	list_reagents = list(/datum/reagent/water = 100)
+	list_reagents = list("water" = 100)
 	volume = 100
 	amount_per_transfer_from_this = 20
 	container_HP = 1
@@ -361,7 +361,7 @@
 	desc = "Finally, a bottle as proportionate as you. Incredible!"
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "wataur"
-	list_reagents = list(/datum/reagent/water = 100) //robust ass wataur
+	list_reagents = list("water" = 100) //robust ass wataur
 	volume = 100
 	amount_per_transfer_from_this = 20
 	container_HP = 1

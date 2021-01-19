@@ -176,7 +176,7 @@
 			matching_designs.Cut()
 
 			for(var/v in stored_research.researched_designs)
-				var/datum/design/D = SSresearch.techweb_design_by_id(v)
+				var/datum/design/D = stored_research.researched_designs[v]
 				if(findtext(D.name,href_list["to_search"]))
 					matching_designs.Add(D)
 			updateUsrDialog()
@@ -220,12 +220,6 @@
 		T -= M.rating*0.2
 	prod_coeff = min(1,max(0,T)) // Coeff going 1 -> 0,8 -> 0,6 -> 0,4
 
-/obj/machinery/autolathe/examine(mob/user)
-	. += ..()
-	var/datum/component/material_container/materials = GetComponent(/datum/component/material_container)
-	if(in_range(user, src) || isobserver(user))
-		. += "<span class='notice'>The status display reads: Storing up to <b>[materials.max_amount]</b> material units.<br>Material consumption at <b>[prod_coeff*100]%</b>.</span>"
-
 /obj/machinery/autolathe/proc/main_win(mob/user)
 	var/dat = "<div class='statusDisplay'><h3>Autolathe Menu:</h3><br>"
 	dat += materials_printout()
@@ -258,7 +252,7 @@
 	dat += materials_printout()
 
 	for(var/v in stored_research.researched_designs)
-		var/datum/design/D = SSresearch.techweb_design_by_id(v)
+		var/datum/design/D = stored_research.researched_designs[v]
 		if(!(selected_category in D.category))
 			continue
 
@@ -372,7 +366,7 @@
 /obj/machinery/autolathe/proc/adjust_hacked(state)
 	hacked = state
 	for(var/id in SSresearch.techweb_designs)
-		var/datum/design/D = SSresearch.techweb_design_by_id(id)
+		var/datum/design/D = SSresearch.techweb_designs[id]
 		if((D.build_type & AUTOLATHE) && ("hacked" in D.category))
 			if(hacked)
 				stored_research.add_design(D)

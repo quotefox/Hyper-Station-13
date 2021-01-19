@@ -45,7 +45,6 @@
 	destination.dna.uni_identity = uni_identity
 	destination.dna.blood_type = blood_type
 	destination.set_species(species.type, icon_update=0)
-	destination.dna.species.say_mod = species.say_mod
 	destination.dna.features = features.Copy()
 	destination.dna.real_name = real_name
 	destination.dna.nameless = nameless
@@ -65,7 +64,6 @@
 	new_dna.blood_type = blood_type
 	new_dna.features = features.Copy()
 	new_dna.species = new species.type
-	new_dna.species.say_mod = species.say_mod
 	new_dna.real_name = real_name
 	new_dna.nameless = nameless
 	new_dna.custom_species = custom_species
@@ -476,14 +474,14 @@
 
 /proc/getleftblocks(input,blocknumber,blocksize)
 	if(blocknumber > 1)
-		return copytext_char(input,1,((blocksize*blocknumber)-(blocksize-1)))
+		return copytext(input,1,((blocksize*blocknumber)-(blocksize-1)))
 
 /proc/getrightblocks(input,blocknumber,blocksize)
 	if(blocknumber < (length(input)/blocksize))
-		return copytext_char(input,blocksize*blocknumber+1,length(input)+1)
+		return copytext(input,blocksize*blocknumber+1,length(input)+1)
 
 /proc/getblock(input, blocknumber, blocksize=DNA_BLOCK_SIZE)
-	return copytext_char(input, blocksize*(blocknumber-1)+1, (blocksize*blocknumber)+1)
+	return copytext(input, blocksize*(blocknumber-1)+1, (blocksize*blocknumber)+1)
 
 /proc/setblock(istring, blocknumber, replacement, blocksize=DNA_BLOCK_SIZE)
 	if(!istring || !blocknumber || !replacement || !blocksize)

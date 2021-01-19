@@ -27,7 +27,7 @@
 
 /datum/bounty/item/security/sechuds
 	name = "Sec HUDs"
-	description = "Kinaris PMC has started to train officers how to use Sec HUDs to the fullest affect. Please send spare Sec HUDs so we can teach the men."
+	description = "Nanotrasen PMC has started to train officers how to use Sec HUDs to the fullest affect. Please send spare Sec HUDs so we can teach the men."
 	reward = 1250
 	required_count = 5
 	wanted_types = list(/obj/item/clothing/glasses/hud/security)

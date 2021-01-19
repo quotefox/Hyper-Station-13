@@ -51,7 +51,7 @@
 			log_combat(user, M, "injected", src, "([contained])")
 
 /obj/item/reagent_containers/hypospray/CMO
-	list_reagents = list(/datum/reagent/medicine/omnizine = 30)
+	list_reagents = list("omnizine" = 30)
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 
 /obj/item/reagent_containers/hypospray/combat
@@ -61,12 +61,12 @@
 	icon_state = "combat_hypo"
 	volume = 90
 	ignore_flags = 1 // So they can heal their comrades.
-	list_reagents = list(/datum/reagent/medicine/epinephrine = 30, /datum/reagent/medicine/omnizine = 30, /datum/reagent/medicine/leporazine = 15, /datum/reagent/medicine/atropine = 15)
+	list_reagents = list("epinephrine" = 30, "omnizine" = 30, "leporazine" = 15, "atropine" = 15)
 
 /obj/item/reagent_containers/hypospray/combat/nanites
 	desc = "A modified air-needle autoinjector for use in combat situations. Prefilled with experimental medical compounds for rapid healing."
 	volume = 100
-	list_reagents = list(/datum/reagent/medicine/adminordrazine/quantum_heal = 80, /datum/reagent/medicine/synaptizine = 20)
+	list_reagents = list("quantum_heal" = 80, "synaptizine" = 20)
 
 /obj/item/reagent_containers/hypospray/magillitis
 	name = "experimental autoinjector"
@@ -74,7 +74,7 @@
 	icon_state = "combat_hypo"
 	volume = 5
 	reagent_flags = NONE
-	list_reagents = list(/datum/reagent/magillitis = 5)
+	list_reagents = list("magillitis" = 5)
 
 //MediPens
 
@@ -90,7 +90,7 @@
 	ignore_flags = 1 //so you can medipen through hardsuits
 	reagent_flags = DRAWABLE
 	flags_1 = null
-	list_reagents = list(/datum/reagent/medicine/epinephrine = 10, /datum/reagent/toxin/formaldehyde = 1)
+	list_reagents = list("epinephrine" = 10, "formaldehyde" = 1)
 
 /obj/item/reagent_containers/hypospray/medipen/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] begins to choke on \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -132,7 +132,7 @@
 	desc = "A highly illegal medipen due to its load and small injections, allow for five uses before being drained"
 	volume = 50
 	amount_per_transfer_from_this = 10
-	list_reagents = list(/datum/reagent/medicine/stimulants = 50)
+	list_reagents = list("stimulants" = 50)
 
 /obj/item/reagent_containers/hypospray/medipen/stimulants/baseball
 	name = "the reason the syndicate major league team wins."
@@ -140,7 +140,7 @@
 	icon_state = "baseballstim"
 	volume = 50
 	amount_per_transfer_from_this = 50
-	list_reagents = list(/datum/reagent/medicine/stimulants = 50)
+	list_reagents = list("stimulants" = 50)
 
 /obj/item/reagent_containers/hypospray/medipen/stimpack //goliath kiting
 	name = "stimpack medipen"
@@ -148,16 +148,16 @@
 	icon_state = "stimpen"
 	volume = 20
 	amount_per_transfer_from_this = 20
-	list_reagents = list(/datum/reagent/medicine/ephedrine = 10, /datum/reagent/consumable/coffee = 10)
+	list_reagents = list("ephedrine" = 10, "coffee" = 10)
 
 /obj/item/reagent_containers/hypospray/medipen/stimpack/traitor
 	desc = "A modified stimulants autoinjector for use in combat situations. Has a mild healing effect."
-	list_reagents = list(/datum/reagent/medicine/stimulants = 10, /datum/reagent/medicine/omnizine = 10)
+	list_reagents = list("stimulants" = 10, "omnizine" = 10)
 
 /obj/item/reagent_containers/hypospray/medipen/morphine
 	name = "morphine medipen"
 	desc = "A rapid way to get you out of a tight situation and fast! You'll feel rather drowsy, though."
-	list_reagents = list(/datum/reagent/medicine/morphine = 10)
+	list_reagents = list("morphine" = 10)
 
 /obj/item/reagent_containers/hypospray/medipen/tuberculosiscure
 	name = "BVAK autoinjector"
@@ -165,7 +165,7 @@
 	icon_state = "stimpen"
 	volume = 60
 	amount_per_transfer_from_this = 30
-	list_reagents = list(/datum/reagent/medicine/atropine = 10, /datum/reagent/medicine/epinephrine = 10, /datum/reagent/medicine/salbutamol = 20, /datum/reagent/medicine/spaceacillin = 20)
+	list_reagents = list("atropine" = 10, "epinephrine" = 10, "salbutamol" = 20, "spaceacillin" = 20)
 
 /obj/item/reagent_containers/hypospray/medipen/survival
 	name = "survival medipen"
@@ -173,20 +173,28 @@
 	icon_state = "stimpen"
 	volume = 52
 	amount_per_transfer_from_this = 52
-	list_reagents = list(/datum/reagent/medicine/salbutamol = 10, /datum/reagent/medicine/leporazine = 15, /datum/reagent/medicine/neo_jelly = 15, /datum/reagent/medicine/epinephrine = 10, /datum/reagent/medicine/lavaland_extract = 2)
+	list_reagents = list("salbutamol" = 10, "leporazine" = 15, "neo_jelly" = 15, "epinephrine" = 10, "lavaland_extract" = 2)
+
+/obj/item/reagent_containers/hypospray/medipen/species_mutator
+	name = "species mutator medipen"
+	desc = "Embark on a whirlwind tour of racial insensitivity by \
+		literally appropriating other races."
+	volume = 1
+	amount_per_transfer_from_this = 1
+	list_reagents = list("unstablemutationtoxin" = 1)
 
 /obj/item/reagent_containers/hypospray/medipen/firelocker
 	name = "fire treatment medipen"
 	desc = "A medipen that has been fulled with burn healing chemicals for personnel without advanced medical knowledge."
 	volume = 15
 	amount_per_transfer_from_this = 15
-	list_reagents = list(/datum/reagent/medicine/oxandrolone = 5, /datum/reagent/medicine/kelotane = 10)
+	list_reagents = list("oxandrolone" = 5, "kelotane" = 10)
 
 /obj/item/reagent_containers/hypospray/combat/heresypurge
 	name = "holy water autoinjector"
 	desc = "A modified air-needle autoinjector for use in combat situations. Prefilled with 5 doses of a holy water mixture."
 	volume = 250
-	list_reagents = list(/datum/reagent/water/holywater = 150, /datum/reagent/peaceborg_tire = 50, /datum/reagent/peaceborg_confuse = 50)
+	list_reagents = list("holywater" = 150, "tiresolution" = 50, "dizzysolution" = 50)
 	amount_per_transfer_from_this = 50
 
 #define HYPO_SPRAY 0
@@ -228,19 +236,19 @@
 	var/reloadable = TRUE
 
 /obj/item/hypospray/mkii/brute
-	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/bicaridine
+	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/preloaded/bicaridine
 
 /obj/item/hypospray/mkii/toxin
-	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/antitoxin
+	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/preloaded/antitoxin
 
 /obj/item/hypospray/mkii/oxygen
-	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/dexalin
+	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/preloaded/dexalin
 
 /obj/item/hypospray/mkii/burn
-	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/kelotane
+	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/preloaded/kelotane
 
 /obj/item/hypospray/mkii/tricord
-	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/tricord
+	start_vial = /obj/item/reagent_containers/glass/bottle/vial/small/preloaded/tricord
 
 /obj/item/hypospray/mkii/enlarge
 	spawnwithvial = FALSE
@@ -260,7 +268,7 @@
 	icon_state = "cmo2"
 	desc = "The Deluxe Hypospray can take larger-size vials. It also acts faster and delivers more reagents per spray."
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-	start_vial = /obj/item/reagent_containers/glass/bottle/vial/large/CMO
+	start_vial = /obj/item/reagent_containers/glass/bottle/vial/large/preloaded/CMO
 	inject_wait = DELUXE_WAIT_INJECT
 	spray_wait = DELUXE_WAIT_SPRAY
 	spray_self = DELUXE_SELF_SPRAY
@@ -270,7 +278,7 @@
 	name = "combat hypospray mk.II"
 	desc = "A combat-ready deluxe hypospray that acts almost instantly. It can be tactically reloaded by using a vial on it."
 	icon_state = "combat2"
-	start_vial = /obj/item/reagent_containers/glass/bottle/vial/large/combat
+	start_vial = /obj/item/reagent_containers/glass/bottle/vial/large/preloaded/combat
 	inject_wait = COMBAT_WAIT_INJECT
 	spray_wait = COMBAT_WAIT_SPRAY
 	spray_self = COMBAT_SELF_SPRAY
@@ -344,10 +352,8 @@
 	return FALSE
 
 /obj/item/hypospray/mkii/AltClick(mob/user)
-	. = ..()
 	if(vial)
 		vial.attack_self(user)
-		return TRUE
 
 // Gunna allow this for now, still really don't approve - Pooj
 /obj/item/hypospray/mkii/emag_act(mob/user)
@@ -534,10 +540,11 @@
 	reagent_flags = OPENCONTAINER | NO_REACT
 	slot_flags = ITEM_SLOT_BELT
 	infinite = TRUE
-	var/list/fun_ids = list(/datum/reagent/growthchem, /datum/reagent/shrinkchem, /datum/reagent/drug/aphrodisiac, /datum/reagent/drug/aphrodisiacplus, /datum/reagent/fermi/penis_enlarger, /datum/reagent/fermi/breast_enlarger, /datum/reagent/drug/space_drugs, /datum/reagent/lithium)
+	var/list/fun_ids = list("growthchem", "shrinkchem", "aphro", "aphro+", "penis_enlarger", "breast_enlarger", "space_drugs", "lithium")
 
 /obj/item/reagent_containers/hypospray/debug/attack_self(mob/user)
 	var/chosen_reagent
+	var/list/reagent_ids = sortList(GLOB.chemical_reagents_list)
 	var/quick_select = input(user, "Select an option", "Press start") in list("Quick menu", "Debug", "Cancel")
 	switch (quick_select)
 		if("Quick menu")
@@ -546,12 +553,12 @@
 				if("Emergency Meds")
 					reagents.clear_reagents()
 					amount_per_transfer_from_this = 10
-					reagents.add_reagent_list(list(/datum/reagent/medicine/atropine = 10, /datum/reagent/medicine/oxandrolone = 20, /datum/reagent/medicine/sal_acid = 20, /datum/reagent/medicine/salbutamol = 10))
+					reagents.add_reagent_list(list("atropine" = 10, "oxandrolone" = 20, "sal_acid" = 20, "salbutamol" = 10))
 
 				if("Self Defense")
 					reagents.clear_reagents()
 					amount_per_transfer_from_this = 10
-					reagents.add_reagent_list(list(/datum/reagent/toxin/staminatoxin = 14, /datum/reagent/peaceborg_tire = 21, /datum/reagent/toxin/bonehurtingjuice = 14,))	// OOF
+					reagents.add_reagent_list(list("tirizene" = 14, "tiresolution" = 21, "bonehurtingjuice" = 14,))	// OOF
 
 				if("Fun Chemicals")
 					reagents.clear_reagents()
@@ -562,27 +569,22 @@
 
 		if("Debug")
 			var/operation_selection = input(user, "Select an option", "Reagent fabricator", "cancel") in list("Select reagent", "Clear reagents", "Select transfer amount", "Cancel")
-			switch(operation_selection)
+			switch (operation_selection)
 				if("Select reagent")
-					switch(alert(usr, "Choose a method.", "Add Reagents", "Search", "Choose from a list", "I'm feeling lucky"))
-						if("Search")
+					switch(alert(usr, "Choose a method.", "Add Reagents", "Enter ID", "Choose ID"))
+						if("Enter ID")
 							var/valid_id
 							while(!valid_id)
-								chosen_reagent = input(usr, "Enter the ID of the reagent you want to add.", "Search reagents") as null|text
-								if(isnull(chosen_reagent)) //Get me out of here!
+								chosen_reagent = stripped_input(usr, "Enter the ID of the reagent you want to add.")
+								if(!chosen_reagent) //Get me out of here!
 									break
-								if(!ispath(text2path(chosen_reagent)))
-									chosen_reagent = pick_closest_path(chosen_reagent, make_types_fancy(subtypesof(/datum/reagent)))
-									if(ispath(chosen_reagent))
-										valid_id = TRUE
-								else
-									valid_id = TRUE
+								for(var/ID in reagent_ids)
+									if(ID == chosen_reagent)
+										valid_id = 1
 								if(!valid_id)
 									to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
-						if("Choose from a list")
-							chosen_reagent = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in subtypesof(/datum/reagent)
-						if("I'm feeling lucky")
-							chosen_reagent = pick(subtypesof(/datum/reagent))
+						if("Choose ID")
+							chosen_reagent = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in reagent_ids	
 					if(chosen_reagent)
 						reagents.add_reagent(chosen_reagent, 20, null)
 

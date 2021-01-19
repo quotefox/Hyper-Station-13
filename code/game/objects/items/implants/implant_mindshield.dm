@@ -5,7 +5,7 @@
 
 /obj/item/implant/mindshield/get_data()
 	var/dat = {"<b>Implant Specifications:</b><BR>
-				<b>Name:</b> Kinaris Employee Management Implant<BR>
+				<b>Name:</b> Nanotrasen Employee Management Implant<BR>
 				<b>Life:</b> Ten years.<BR>
 				<b>Important Notes:</b> Personnel injected with this device are much more resistant to brainwashing.<BR>
 				<HR>
@@ -25,10 +25,6 @@
 
 		if(target.mind.has_antag_datum(/datum/antagonist/brainwashed))
 			target.mind.remove_antag_datum(/datum/antagonist/brainwashed)
-
-		if(target.mind.has_antag_datum(ANTAG_DATUM_VASSAL))
-			SSticker.mode.remove_vassal(target.mind)
-
 
 		if(target.mind.has_antag_datum(/datum/antagonist/rev/head) || target.mind.unconvertable || target.mind.has_antag_datum(/datum/antagonist/gang/boss))
 			if(!silent)

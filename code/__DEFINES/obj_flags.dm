@@ -34,14 +34,12 @@
 
 #define LAVAPROTECT (1<<0)
 #define STOPSPRESSUREDAMAGE		(1<<1)	//SUIT and HEAD items which stop pressure damage. To stop you taking all pressure damage you must have both a suit and head item with this flag.
-#define BLOCK_GAS_SMOKE_EFFECT	(1<<2)	//blocks the effect that chemical clouds would have on a mob --glasses, mask and helmets ONLY!
-#define ALLOWINTERNALS		  	(1<<3)	//mask allows internals
-#define NOSLIP                  (1<<4)	//prevents from slipping on wet floors, in space etc
-#define THICKMATERIAL			(1<<5)	//prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body.
-#define VOICEBOX_TOGGLABLE 		(1<<6)	//The voicebox in this clothing can be toggled.
-#define VOICEBOX_DISABLED 		(1<<7)	//The voicebox is currently turned off.
-#define IGNORE_HAT_TOSS			(1<<8)	//Hats with negative effects when worn (i.e the tinfoil hat).
-#define SCAN_REAGENTS			(1<<9)	// Allows helmets and glasses to scan reagents.
+#define BLOCK_GAS_SMOKE_EFFECT	(1<<2)	// blocks the effect that chemical clouds would have on a mob --glasses, mask and helmets ONLY!
+#define ALLOWINTERNALS				    (1<<3)		// mask allows internals
+#define NOSLIP                  (1<<4)   //prevents from slipping on wet floors, in space etc
+#define THICKMATERIAL				(1<<5)	//prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body.
+#define VOICEBOX_TOGGLABLE (1<<6) // The voicebox in this clothing can be toggled.
+#define VOICEBOX_DISABLED (1<<7) // The voicebox is currently turned off.
 
 // Flags for the organ_flags var on /obj/item/organ
 

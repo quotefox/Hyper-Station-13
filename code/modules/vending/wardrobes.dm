@@ -29,9 +29,7 @@
 					/obj/item/clothing/under/rank/security/stripper = 5,
 					/obj/item/clothing/shoes/jackboots/tall = 5,
 					/obj/item/clothing/head/beret/sec/bitch = 5,
-					/obj/item/clothing/gloves/latexsleeves/security = 5,
-					/obj/item/clothing/under/rank/security/blueshield = 1,
-					/obj/item/clothing/suit/storage/blueshield =1)
+					/obj/item/clothing/gloves/latexsleeves/security = 5)
 	refill_canister = /obj/item/vending_refill/wardrobe/sec_wardrobe
 
 /obj/item/vending_refill/wardrobe/sec_wardrobe

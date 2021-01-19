@@ -20,14 +20,15 @@
 
 /datum/reagent/fermi/breast_enlarger
 	name = "Succubus milk"
+	id = "breast_enlarger"
 	description = "A volatile collodial mixture derived from milk that encourages mammary production via a potent estrogen mix."
 	color = "#E60584" // rgb: 96, 0, 255
 	taste_description = "a milky ice cream like flavour."
 	overdose_threshold = 17
 	metabolization_rate = 0.25
-	impure_chem 			= /datum/reagent/fermi/BEsmaller //If you make an inpure chem, it stalls growth
+	impure_chem 			= "BEsmaller" //If you make an inpure chem, it stalls growth
 	inverse_chem_val 		= 0.35
-	inverse_chem		= /datum/reagent/fermi/BEsmaller //At really impure vols, it just becomes 100% inverse
+	inverse_chem		= "BEsmaller" //At really impure vols, it just becomes 100% inverse
 	can_synth = FALSE
 
 /datum/reagent/fermi/breast_enlarger/on_mob_add(mob/living/carbon/M)
@@ -45,7 +46,7 @@
 			M.Knockdown(50)
 			M.Stun(50)
 			B.throw_at(T2, 8, 1)
-		M.reagents.del_reagent(type)
+		M.reagents.remove_reagent(id, volume)
 		return
 	log_game("FERMICHEM: [M] ckey: [M.key] has ingested Sucubus milk")
 	var/mob/living/carbon/human/H = M
@@ -91,10 +92,23 @@
 			nB.cached_size = 0
 			nB.prev_size = 0
 			to_chat(M, "<span class='warning'>Your chest feels warm, tingling with newfound sensitivity.</b></span>")
-			M.reagents.remove_reagent(type, 5)
+			M.reagents.remove_reagent(id, 5)
 			B = nB
 	//If they have them, increase size. If size is comically big, limit movement and rip clothes.
 	B.cached_size = B.cached_size + 0.05
+	if (B.cached_size >= 8.5 && B.cached_size < 9)
+		if(H.w_uniform || H.wear_suit)
+			//Hyper change// Check for a flag before we remove clothes.
+			var/obj/item/clothing/suit = H.get_item_by_slot(SLOT_W_UNIFORM)
+			var/obj/item/clothing/jacket = H.get_item_by_slot(SLOT_WEAR_SUIT)
+			if(!(suit.roomy == 1 && jacket.roomy == 1)) //If the clothes are "roomy" then don't do this.
+				var/datum/antagonist/changeling/changeling = M.mind.has_antag_datum(/datum/antagonist/changeling) 
+				if(!changeling)//Changelings can in fact calm their tits
+				//End Hyper Change//
+					var/target = M.get_bodypart(BODY_ZONE_CHEST)
+					to_chat(M, "<span class='warning'>Your breasts begin to strain against your clothes tightly!</b></span>")
+					M.adjustOxyLoss(5, 0)
+					M.apply_damage(1, BRUTE, target)
 	B.update()
 	..()
 
@@ -132,6 +146,7 @@
 
 /datum/reagent/fermi/BEsmaller
 	name = "Modesty milk"
+	id = "BEsmaller"
 	description = "A volatile collodial mixture derived from milk that encourages mammary reduction via a potent estrogen mix. Produced by reacting impure Succubus milk."
 	color = "#E60584" // rgb: 96, 0, 255
 	taste_description = "a milky ice cream like flavour."
@@ -155,6 +170,7 @@
 
 /datum/reagent/fermi/BEsmaller_hypo
 	name = "Rectify milk" //Rectify
+	id = "BEsmaller_hypo"
 	color = "#E60584"
 	taste_description = "a milky ice cream like flavour."
 	metabolization_rate = 0.25
@@ -196,14 +212,15 @@
 //Since someone else made this in the time it took me to PR it, I merged them.
 /datum/reagent/fermi/penis_enlarger // Due to popular demand...!
 	name = "Incubus draft"
+	id = "penis_enlarger"
 	description = "A volatile collodial mixture derived from various masculine solutions that encourages a larger gentleman's package via a potent testosterone mix, formula derived from a collaboration from Fermichem  and Doctor Ronald Hyatt, who is well known for his phallus palace." //The toxic masculinity thing is a joke because I thought it would be funny to include it in the reagents, but I don't think many would find it funny? dumb
 	color = "#888888" // This is greyish..?
 	taste_description = "chinese dragon powder"
 	overdose_threshold = 17 //ODing makes you male and removes female genitals
 	metabolization_rate = 0.5
-	impure_chem 			= /datum/reagent/fermi/PEsmaller //If you make an inpure chem, it stalls growth
+	impure_chem 			= "PEsmaller" //If you make an inpure chem, it stalls growth
 	inverse_chem_val 		= 0.35
-	inverse_chem		= /datum/reagent/fermi/PEsmaller //At really impure vols, it just becomes 100% inverse and shrinks instead.
+	inverse_chem		= "PEsmaller" //At really impure vols, it just becomes 100% inverse and shrinks instead.
 	can_synth = FALSE
 
 /datum/reagent/fermi/penis_enlarger/on_mob_add(mob/living/carbon/M)
@@ -220,7 +237,7 @@
 			M.Knockdown(50)
 			M.Stun(50)
 			P.throw_at(T2, 8, 1)
-		M.reagents.del_reagent(type)
+		M.reagents.remove_reagent(id, volume)
 		return
 	var/mob/living/carbon/human/H = M
 	H.genital_override = TRUE
@@ -234,6 +251,7 @@
 /datum/reagent/fermi/penis_enlarger/on_mob_life(mob/living/carbon/M) //Increases penis size, 5u = +1 inch.
 	if(!ishuman(M))
 		return
+	var/mob/living/carbon/human/H = M
 	var/obj/item/organ/genital/penis/P = M.getorganslot("penis")
 	var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles") //Hyper Change
 	if(!P)//They do have a preponderance for escapism, or so I've heard.
@@ -256,7 +274,7 @@
 			to_chat(M, "<span class='warning'>Your groin feels warm, as you feel a newly forming bulge down below.</b></span>")
 			nP.cached_length = 1
 			nP.prev_length = 1
-			M.reagents.remove_reagent(type, 5)
+			M.reagents.remove_reagent(id, 5)
 			P = nP
 	
 	if(!T)//Hyper change// Adds testicles if there are none. 
@@ -284,6 +302,20 @@
 	P.cached_length = P.cached_length + 0.1
 	//Hyper change// Increase ball size too
 	T.size = T.size + 0.1
+
+	if (P.cached_length >= 20.5 && P.cached_length < 21)
+		if(H.w_uniform || H.wear_suit|| H.arousalloss > 33)
+			//Hyper change// Check for a flag before we remove clothes.
+			var/obj/item/clothing/suit = H.get_item_by_slot(SLOT_W_UNIFORM)
+			var/obj/item/clothing/jacket = H.get_item_by_slot(SLOT_WEAR_SUIT)
+			if((!suit.roomy == 1 || !jacket.roomy == 1)) //If the clothes are "roomy" then don't do this.
+				var/datum/antagonist/changeling/changeling = M.mind.has_antag_datum(/datum/antagonist/changeling) 
+				if(!changeling)//Changelings keep it in their pants
+				//End Hyper Change//
+					var/target = M.get_bodypart(BODY_ZONE_CHEST)
+					to_chat(M, "<span class='warning'>Your cock begins to strain against your clothes tightly!</b></span>")
+					M.apply_damage(1, BRUTE, target)
+
 	T.update() //Hyper change - Make the ball size update
 	P.update()
 	..()
@@ -319,6 +351,7 @@
 
 /datum/reagent/fermi/PEsmaller // Due to cozmo's request...!
 	name = "Chastity draft"
+	id = "PEsmaller"
 	description = "A volatile collodial mixture derived from various masculine solutions that encourages a smaller gentleman's package via a potent testosterone mix. Produced by reacting impure Incubus draft."
 	color = "#888888" // This is greyish..?
 	taste_description = "chinese dragon powder"
@@ -343,6 +376,7 @@
 
 /datum/reagent/fermi/PEsmaller_hypo
 	name = "Rectify draft"
+	id = "PEsmaller_hypo"
 	color = "#888888" // This is greyish..?
 	taste_description = "chinese dragon powder"
 	description = "A medicine used to treat organomegaly in a patient's penis."

@@ -276,15 +276,14 @@ GLOBAL_VAR_INIT(hhmysteryRoomNumber, 1337)
         promptExit(user)
 
 /turf/closed/indestructible/hoteldoor/AltClick(mob/user)
-	. = ..()
-	if(get_dist(get_turf(src), get_turf(user)) <= 1)
-		to_chat(user, "<span class='notice'>You peak through the door's bluespace peephole...</span>")
-		user.reset_perspective(parentSphere)
-		user.set_machine(src)
-		var/datum/action/peepholeCancel/PHC = new
-		user.overlay_fullscreen("remote_view", /obj/screen/fullscreen/impaired, 1)
-		PHC.Grant(user)
-		return TRUE
+    . = ..()
+    if(get_dist(get_turf(src), get_turf(user)) <= 1)
+        to_chat(user, "<span class='notice'>You peak through the door's bluespace peephole...</span>")
+        user.reset_perspective(parentSphere)
+        user.set_machine(src)
+        var/datum/action/peepholeCancel/PHC = new
+        user.overlay_fullscreen("remote_view", /obj/screen/fullscreen/impaired, 1)
+        PHC.Grant(user)
 
 /turf/closed/indestructible/hoteldoor/check_eye(mob/user)
     if(get_dist(get_turf(src), get_turf(user)) >= 2)

@@ -61,7 +61,7 @@
 	can_adjust = FALSE
 /obj/item/clothing/under/rank/prisoner
 	name = "prison jumpsuit"
-	desc = "It's standardised Kinaris prisoner-wear. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "It's standardised Nanotrasen prisoner-wear. Its suit sensors are stuck in the \"Fully On\" position."
 	icon_state = "prisoner"
 	item_state = "o_suit"
 	item_color = "prisoner"
@@ -71,7 +71,7 @@
 
 /obj/item/clothing/under/rank/prisoner/skirt
 	name = "prison jumpskirt"
-	desc = "It's standardised Kinaris prisoner-wear. Its suit sensors are stuck in the \"Fully On\" position."
+	desc = "It's standardised Nanotrasen prisoner-wear. Its suit sensors are stuck in the \"Fully On\" position."
 	icon_state = "prisoner_skirt"
 	item_state = "o_suit"
 	item_color = "prisoner_skirt"
@@ -119,12 +119,14 @@
 	item_state = "g_suit"
 	item_color = "officer"
 	alt_covers_chest = TRUE
+	roomy = TRUE
 /obj/item/clothing/under/rank/centcom_commander
 	desc = "It's a jumpsuit worn by CentCom's highest-tier Commanders, adorned with a golden K and a star. signifying work under Kinaris."
 	name = "\improper CentCom Commander's jumpsuit"
 	icon_state = "centcom"
 	item_state = "dg_suit"
 	item_color = "centcom"
+	roomy = TRUE
 /obj/item/clothing/under/rank/centcom_officer/skirt
 	name = "\improper CentCom Officer's jumpskirt"
 	desc = "It's a jumpskirt worn by CentCom's officials, adorned with a golden K and a star, signifying work under Kinaris."
@@ -134,6 +136,7 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = FALSE
+	roomy = TRUE
 /obj/item/clothing/under/space
 	name = "\improper NASA jumpsuit"
 	desc = "It has a NASA logo on it and is made of space-proofed materials."
@@ -166,6 +169,7 @@
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 	can_adjust = FALSE
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	roomy = TRUE
 /obj/item/clothing/under/owl
 	name = "owl uniform"
 	desc = "A soft brown jumpsuit made of synthetic feathers and strong conviction."

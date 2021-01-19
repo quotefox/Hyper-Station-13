@@ -13,7 +13,7 @@
 	//fluid_mult				= 0.133 // Set to a lower value due to production scaling with size (I.E. 6 inches the "normal" amount)
 	fluid_mult				= 1.0 //Defaults to 1 no matter what you do. It just does. Just gonna adapt I guess.
 	fluid_max_volume		= 3
-	fluid_id 				= /datum/reagent/consumable/semen
+	fluid_id 				= "semen"
 	producing				= TRUE
 	can_masturbate_with		= FALSE
 	masturbation_verb 		= "massage"

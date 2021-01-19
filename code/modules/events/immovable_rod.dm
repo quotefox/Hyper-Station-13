@@ -48,7 +48,6 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 	pull_force = INFINITY
 	density = TRUE
 	anchored = TRUE
-	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	var/mob/living/wizard
 	var/z_original = 0
 	var/destination
@@ -103,6 +102,9 @@ In my current plan for it, 'solid' will be defined as anything with density == 1
 
 /obj/effect/immovablerod/ex_act(severity, target)
 	return 0
+
+/obj/structure/closet/supplypod/prevent_content_explosion()
+	return TRUE
 
 /obj/effect/immovablerod/singularity_act()
 	return
@@ -165,4 +167,3 @@ obj/effect/immovablerod/attack_hand(mob/living/user)
 				new /obj/structure/festivus/anchored(drop_location())
 				new /obj/effect/anomaly/flux(drop_location())
 				qdel(src)
-

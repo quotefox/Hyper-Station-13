@@ -247,7 +247,7 @@
 	build_path = /obj/machinery/computer/cargo/request
 
 /obj/item/circuitboard/computer/bounty
-	name = "Kinaris Bounty Console (Computer Board)"
+	name = "Nanotrasen Bounty Console (Computer Board)"
 	build_path = /obj/machinery/computer/bounty
 
 /obj/item/circuitboard/computer/operating

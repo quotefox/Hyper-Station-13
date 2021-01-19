@@ -52,5 +52,4 @@
 				var/datum/callback/CB = foo
 				CB.Invoke()
 
-	mind?.hide_ckey = client?.prefs?.hide_ckey
 	log_message("Client [key_name(src)] has taken ownership of mob [src]([src.type])", LOG_OWNERSHIP)

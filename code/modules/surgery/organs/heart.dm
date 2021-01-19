@@ -55,11 +55,6 @@
 	update_icon()
 	return 1
 
-/obj/item/organ/heart/proc/HeartStrengthMessage()
-	if(beating)
-		return "a healthy"
-	return "<span class='danger'>an unstable</span>"
-
 /obj/item/organ/heart/prepare_eat()
 	var/obj/S = ..()
 	S.icon_state = "[icon_base]-off"
@@ -223,6 +218,11 @@ obj/item/organ/heart/cybernetic/upgraded/on_life()
 
 /obj/item/organ/heart/ipc
 	name = "IPC heart"
+	desc = "An electronic pump that regulates hydraulic functions, the electronics have EMP shielding."
+	icon_state = "heart-c"
+
+/obj/item/organ/heart/ipc
+	name = "IPC heart"
 	desc = "An electronic pump that regulates hydraulic functions, they have an auto-restart after EMPs."
 	icon_state = "heart-c"
 	organ_flags = ORGAN_SYNTHETIC
@@ -239,5 +239,5 @@ obj/item/organ/heart/cybernetic/upgraded/on_life()
 		min_next_adrenaline = world.time + rand(250, 600) //anywhere from 4.5 to 10 minutes
 		to_chat(owner, "<span class='userdanger'>You feel yourself dying, but you refuse to give up!</span>")
 		owner.heal_overall_damage(15, 15)
-		if(owner.reagents.get_reagent_amount(/datum/reagent/medicine/ephedrine) < 20)
-			owner.reagents.add_reagent(/datum/reagent/medicine/ephedrine, 10)
+		if(owner.reagents.get_reagent_amount("ephedrine") < 20)
+			owner.reagents.add_reagent("ephedrine", 10)

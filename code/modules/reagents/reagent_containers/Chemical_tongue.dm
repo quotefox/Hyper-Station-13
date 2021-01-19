@@ -12,7 +12,7 @@
 	spillable = FALSE
 	splashable = FALSE
 	reagent_flags = OPENCONTAINER | NO_REACT
-	var/list/fun_ids = list(/datum/reagent/growthchem, /datum/reagent/shrinkchem, /datum/reagent/drug/aphrodisiac, /datum/reagent/drug/aphrodisiacplus, /datum/reagent/fermi/penis_enlarger, /datum/reagent/fermi/breast_enlarger, /datum/reagent/drug/space_drugs, /datum/reagent/lithium)
+	var/list/fun_ids = list("growthchem", "shrinkchem", "aphro", "aphro+", "penis_enlarger", "breast_enlarger", "space_drugs", "lithium")
 
 /obj/item/reagent_containers/chemical_tongue/attack(mob/M, mob/user, obj/target)
 	if(user.a_intent == INTENT_HARM && user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
@@ -102,6 +102,7 @@ obj/item/reagent_containers/chemical_tongue/afterattack(obj/target, mob/user, pr
 
 /obj/item/reagent_containers/chemical_tongue/attack_self(mob/user)
 	var/chosen_reagent
+	var/list/reagent_ids = sortList(GLOB.chemical_reagents_list)
 	var/quick_select = input(user, "Select an option", "Press start") in list("Quick Select", "Debug", "Cancel")
 	switch (quick_select)
 		if("Quick Select")
@@ -113,27 +114,22 @@ obj/item/reagent_containers/chemical_tongue/afterattack(obj/target, mob/user, pr
 
 		if("Debug")
 			var/operation_selection = input(user, "Select an option", "Reagent fabricator", "cancel") in list("Select reagent", "Clear reagents", "Select transfer amount", "Cancel")
-			switch(operation_selection)
+			switch (operation_selection)
 				if("Select reagent")
-					switch(alert(usr, "Choose a method.", "Add Reagents", "Search", "Choose from a list", "I'm feeling lucky"))
-						if("Search")
+					switch(alert(usr, "Choose a method.", "Add Reagents", "Enter ID", "Choose ID"))
+						if("Enter ID")
 							var/valid_id
 							while(!valid_id)
-								chosen_reagent = input(usr, "Enter the ID of the reagent you want to add.", "Search reagents") as null|text
-								if(isnull(chosen_reagent)) //Get me out of here!
+								chosen_reagent = stripped_input(usr, "Enter the ID of the reagent you want to add.")
+								if(!chosen_reagent) //Get me out of here!
 									break
-								if(!ispath(text2path(chosen_reagent)))
-									chosen_reagent = pick_closest_path(chosen_reagent, make_types_fancy(subtypesof(/datum/reagent)))
-									if(ispath(chosen_reagent))
-										valid_id = TRUE
-								else
-									valid_id = TRUE
+								for(var/ID in reagent_ids)
+									if(ID == chosen_reagent)
+										valid_id = 1
 								if(!valid_id)
 									to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
-						if("Choose from a list")
-							chosen_reagent = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in subtypesof(/datum/reagent)
-						if("I'm feeling lucky")
-							chosen_reagent = pick(subtypesof(/datum/reagent))
+						if("Choose ID")
+							chosen_reagent = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in reagent_ids	
 					if(chosen_reagent)
 						reagents.add_reagent(chosen_reagent, 20, null)
 

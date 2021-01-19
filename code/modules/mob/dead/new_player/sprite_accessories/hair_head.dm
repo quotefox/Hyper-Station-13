@@ -185,7 +185,7 @@
 	name = "Flat Top (Big)"
 	icon_state = "hair_bigflattop"
 
-/datum/sprite_accessory/hair/flow
+/datum/sprite_accessory/hair/fag
 	name = "Flow Hair"
 	icon_state = "hair_f"
 
@@ -470,7 +470,3 @@
 /datum/sprite_accessory/hair/quotey
 	name = "Tail Hair"
 	icon_state = "hair_tailhair"
-
-/datum/sprite_accessory/hair/mommy
-	name = "Hairfre"
-	icon_state = "hair_hairfre"

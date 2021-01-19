@@ -18,10 +18,9 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 
 	var/obj/item/radio/headset/radio
 	var/arrival = "%PERSON has signed up as %DISP_RANK (%RANK)"
-	var/arrivalToggle = TRUE
+	var/arrivalToggle = 1
 	var/newhead = "%PERSON, %DISP_RANK (%RANK), is the department head."
-	var/newheadToggle = TRUE
-	var/cryostorage = "%PERSON, %RANK, has been moved into cryogenic storage." // this shouldnt be changed
+	var/newheadToggle = 1
 
 	var/greenlight = "Light_Green"
 	var/pinklight = "Light_Pink"
@@ -92,7 +91,7 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 		message = CompileText(newhead, user, rank, displayed_rank)
 	//CITADEL EDIT for cryopods
 	else if(message_type == "CRYOSTORAGE")
-		message = CompileText(cryostorage, user, rank, displayed_rank)
+		message = CompileText("%PERSON, %DISP_RANK (%RANK) has been moved to cryo storage.", user, rank, displayed_rank)
 	//END EDIT
 	else if(message_type == "ARRIVALS_BROKEN")
 		message = "The arrivals shuttle has been damaged. Docking for repairs..."

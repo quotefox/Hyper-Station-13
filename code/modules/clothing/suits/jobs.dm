@@ -158,18 +158,6 @@
 	item_state = "hosbluejacket"
 	body_parts_covered = CHEST|ARMS
 
-/obj/item/clothing/suit/storage/blueshield //Look man I don't know, this is the file it was in on Oracle. Don't shoot me. Please.
-	name = "blueshield coat"
-	desc = "An armored coat often worn by bodyguards. Tough because everyone knows deep down you're a softie."
-	icon_state = "blueshieldcoat"
-	item_state = "blueshieldcoat"
-	body_parts_covered = CHEST|LEGS|ARMS
-	allowed = list(/obj/item/gun/energy, /obj/item/reagent_containers/spray/pepper, /obj/item/ammo_box, /obj/item/ammo_casing,/obj/item/melee/baton, /obj/item/restraints/handcuffs, /obj/item/flashlight/seclite, /obj/item/melee/classic_baton)
-	armor = list(melee = 25, bullet = 10, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
-	cold_protection = CHEST|LEGS|ARMS
-	heat_protection = CHEST|LEGS|ARMS
-	mutantrace_variation = NO_MUTANTRACE_VARIATION //you don't need it
-
 //Surgeon
 /obj/item/clothing/suit/apron/surgical
 	name = "surgical apron"

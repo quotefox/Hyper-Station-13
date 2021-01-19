@@ -115,6 +115,13 @@
 	reward = 4000
 	wanted_types = list(/obj/item/reagent_containers/food/snacks/soylentgreen)
 
+/datum/bounty/item/chef/pancakes
+	name = "Pancakes"
+	description = "Here at Kinaris.Co we consider employees to be family. And you know what families love? Pancakes. Ship a baker's dozen."
+	reward = 4000
+	required_count = 13
+	wanted_types = list(/datum/crafting_recipe/food/pancakes)
+
 /datum/bounty/item/chef/nuggies
 	name = "Chicken Nuggets"
 	description = "The vice president's son won't shut up about chicken nuggies. Would you mind shipping some?"

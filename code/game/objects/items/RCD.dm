@@ -47,9 +47,9 @@ RLD
 
 /obj/item/construction/examine(mob/user)
 	. = ..()
-	. += "It currently holds [matter]/[max_matter] matter-units."
+	. += "\A [src]. It currently holds [matter]/[max_matter] matter-units."
 	if(upgrade & RCD_UPGRADE_FRAMES)
-		. += "It contains the design for machine frames, computer frames and deconstruction."
+		. += "It contains the design for machine frames, computer frames and deconstruction." 
 	if(upgrade & RCD_UPGRADE_SIMPLE_CIRCUITS)
 		. += "It contains the design for firelock, air alarm, fire alarm, apc circuits and crap power cells."
 

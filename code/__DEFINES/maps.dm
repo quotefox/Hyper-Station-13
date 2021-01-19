@@ -39,6 +39,8 @@ require only minor tweaks.
 #define ZTRAIT_LAVA_RUINS "Lava Ruins"
 #define ZTRAIT_LAVA_UNDERGROUND "Lava Underground"
 #define ZTRAIT_ISOLATED_RUINS "Isolated Ruins" //Placing ruins on z levels with this trait will use turf reservation instead of usual placement.
+// prevents certain turfs from being stripped by a singularity
+#define ZTRAIT_PLANET "Planet"
 
 // number - bombcap is multiplied by this before being applied to bombs
 #define ZTRAIT_BOMBCAP_MULTIPLIER "Bombcap Multiplier"
@@ -58,9 +60,6 @@ require only minor tweaks.
     #define SELFLOOPING "Self"
     // CROSSLINKED - mixed in with the cross-linked space pool
     #define CROSSLINKED "Cross"
-
-// string - type path of the z-level's baseturf (defaults to space)
-#define ZTRAIT_BASETURF "Baseturf"
 
 // default trait definitions, used by SSmapping
 #define ZTRAITS_CENTCOM list(ZTRAIT_CENTCOM = TRUE)

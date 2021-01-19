@@ -13,7 +13,6 @@
 	strip_delay = 10
 	equip_delay_other = 10
 	dynamic_hair_suffix = ""
-	pocket_storage_component_path = /datum/component/storage/concrete/pockets/chefhat
 	dog_fashion = /datum/dog_fashion/head/chef
 
 /obj/item/clothing/head/chefhat/suicide_act(mob/user)
@@ -24,12 +23,6 @@
 	user.say("BOOORK!", forced = "chef hat suicide")
 	playsound(user, 'sound/machines/ding.ogg', 50, 1)
 	return(FIRELOSS)
-
-/obj/item/clothing/head/chefhat/relaymove(mob/user, direction)
-	if(!istype(user, /mob/living/simple_animal/mouse) || !isliving(loc) || !prob(20))
-		return
-	var/mob/living/L = loc
-	step_towards(L, get_step(L, direction))
 
 //Captain
 /obj/item/clothing/head/caphat
@@ -101,16 +94,16 @@
 	. += "<span class='notice'>Alt-click to take a candy corn.</span>"
 
 /obj/item/clothing/head/fedora/det_hat/AltClick(mob/user)
-	. = ..()
-	if(loc == user && user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
-		if(candy_cooldown < world.time)
-			var/obj/item/reagent_containers/food/snacks/candy_corn/CC = new /obj/item/reagent_containers/food/snacks/candy_corn(src)
-			user.put_in_hands(CC)
-			to_chat(user, "You slip a candy corn from your hat.")
-			candy_cooldown = world.time+1200
-		else
-			to_chat(user, "You just took a candy corn! You should wait a couple minutes, lest you burn through your stash.")
-		return TRUE
+	if(user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
+		..()
+		if(loc == user)
+			if(candy_cooldown < world.time)
+				var/obj/item/reagent_containers/food/snacks/candy_corn/CC = new /obj/item/reagent_containers/food/snacks/candy_corn(src)
+				user.put_in_hands(CC)
+				to_chat(user, "You slip a candy corn from your hat.")
+				candy_cooldown = world.time+1200
+			else
+				to_chat(user, "You just took a candy corn! You should wait a couple minutes, lest you burn through your stash.")
 
 
 //Mime

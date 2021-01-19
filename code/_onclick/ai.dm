@@ -114,8 +114,7 @@
 /mob/living/silicon/ai/CtrlClickOn(var/atom/A)
 	A.AICtrlClick(src)
 /mob/living/silicon/ai/AltClickOn(var/atom/A)
-	if(!A.AIAltClick(src))
-		altclick_listed_turf(A)
+	A.AIAltClick(src)
 
 /*
 	The following criminally helpful code is just the previous code cleaned up;
@@ -126,10 +125,9 @@
 /* Atom Procs */
 /atom/proc/AICtrlClick()
 	return
-
 /atom/proc/AIAltClick(mob/living/silicon/ai/user)
-	return AltClick(user)
-
+	AltClick(user)
+	return
 /atom/proc/AIShiftClick()
 	return
 /atom/proc/AICtrlShiftClick()
@@ -140,7 +138,10 @@
 	if(obj_flags & EMAGGED)
 		return
 
-	toggle_bolt(usr)
+	if(locked)
+		bolt_raise(usr)
+	else
+		bolt_drop(usr)
 
 /obj/machinery/door/airlock/AIAltClick() // Eletrifies doors.
 	if(obj_flags & EMAGGED)
@@ -150,7 +151,6 @@
 		shock_perm(usr)
 	else
 		shock_restore(usr)
-	return TRUE
 
 /obj/machinery/door/airlock/AIShiftClick()  // Opens and closes doors!
 	if(obj_flags & EMAGGED)
@@ -162,7 +162,10 @@
 	if(obj_flags & EMAGGED)
 		return
 
-	toggle_emergency(usr)
+	if(!emergency)
+		emergency_on(usr)
+	else
+		emergency_off(usr)
 
 /* APC */
 /obj/machinery/power/apc/AICtrlClick() // turns off/on APCs.
@@ -182,12 +185,10 @@
 		return
 	toggle_on()
 	add_fingerprint(usr)
-	return TRUE
 
 /* Holopads */
 /obj/machinery/holopad/AIAltClick(mob/living/silicon/ai/user)
 	hangup_all_calls()
-	return TRUE
 
 //
 // Override TurfAdjacent for AltClicking

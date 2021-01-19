@@ -43,7 +43,6 @@
 					cleaned_human.update_inv_shoes()
 				SEND_SIGNAL(cleaned_human, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
 				cleaned_human.clean_blood()
-				cleaned_human.wash_cum()
 				cleaned_human.wash_cream()
 				cleaned_human.regenerate_icons()
 				to_chat(cleaned_human, "<span class='danger'>[src] cleans your face!</span>")

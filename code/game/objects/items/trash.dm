@@ -66,12 +66,12 @@
 	name = "crushed can"
 	icon_state = "cola"
 	resistance_flags = NONE
-	grind_results = list(/datum/reagent/aluminium = 10)
+	grind_results = list("aluminium" = 10)
 
 /obj/item/trash/boritos
 	name = "boritos bag"
 	icon_state = "boritos"
-	grind_results = list(/datum/reagent/aluminium = 1) //from the mylar bag
+	grind_results = list("aluminium" = 1) //from the mylar bag
 
 /obj/item/trash/soy_food
 	name = "soyfood"

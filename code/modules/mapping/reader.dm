@@ -241,8 +241,7 @@
 			var/variables_start = findtext(full_def, "{")
 			var/path_text = trim_text(copytext(full_def, 1, variables_start))
 			var/atom_def = text2path(path_text) //path definition, e.g /obj/foo/bar
-			if(dpos)
-				old_position = dpos + length(model[dpos])
+			old_position = dpos + 1
 
 			if(!ispath(atom_def, /atom)) // Skip the item if the path does not exist.  Fix your crap, mappers!
 				if(bad_paths)
@@ -254,7 +253,7 @@
 			var/list/fields = list()
 
 			if(variables_start)//if there's any variable
-				full_def = copytext(full_def, variables_start + length(full_def[variables_start]), -length(copytext_char(full_def, -1))) //removing the last '}'
+				full_def = copytext(full_def,variables_start+1,length(full_def))//removing the last '}'
 				fields = readlist(full_def, ";")
 				if(fields.len)
 					if(!trim(fields[fields.len]))
@@ -307,8 +306,8 @@
 	//first instance the /area and remove it from the members list
 	index = members.len
 	if(members[index] != /area/template_noop)
+		GLOB._preloader.setup(members_attributes[index])//preloader for assigning  set variables on atom creation
 		var/atype = members[index]
-		world.preloader_setup(members_attributes[index], atype)//preloader for assigning  set variables on atom creation
 		var/atom/instance = areaCache[atype]
 		if (!instance)
 			instance = GLOB.areas_by_type[atype]
@@ -319,7 +318,7 @@
 			instance.contents.Add(crds)
 
 		if(GLOB.use_preloader && instance)
-			world.preloader_load(instance)
+			GLOB._preloader.load(instance)
 
 	//then instance the /turf and, if multiple tiles are presents, simulates the DMM underlays piling effect
 
@@ -355,7 +354,7 @@
 
 //Instance an atom at (x,y,z) and gives it the variables in attributes
 /datum/parsed_map/proc/instance_atom(path,list/attributes, turf/crds, no_changeturf, placeOnTop)
-	world.preloader_setup(attributes, path)
+	GLOB._preloader.setup(attributes, path)
 
 	if(crds)
 		if(ispath(path, /turf))
@@ -369,7 +368,7 @@
 			. = create_atom(path, crds)//first preloader pass
 
 	if(GLOB.use_preloader && .)//second preloader pass, for those atoms that don't ..() in New()
-		world.preloader_load(.)
+		GLOB._preloader.load(.)
 
 	//custom CHECK_TICK here because we don't want things created while we're sleeping to not initialize
 	if(TICK_CHECK)
@@ -424,13 +423,12 @@
 
 		var/trim_left = trim_text(copytext(text,old_position,(equal_position ? equal_position : position)))
 		var/left_constant = delimiter == ";" ? trim_left : parse_constant(trim_left)
-		if(position)
-			old_position = position + length(text[position])
+		old_position = position + 1
 
 		if(equal_position && !isnum(left_constant))
 			// Associative var, so do the association.
 			// Note that numbers cannot be keys - the RHS is dropped if so.
-			var/trim_right = trim_text(copytext(text, equal_position + length(text[equal_position]), position))
+			var/trim_right = trim_text(copytext(text,equal_position+1,position))
 			var/right_constant = parse_constant(trim_right)
 			.[left_constant] = right_constant
 
@@ -444,12 +442,12 @@
 		return num
 
 	// string
-	if(text[1] == "\"")
-		return copytext(text, length(text[1]) + 1, findtext(text, "\"", length(text[1]) + 1))
+	if(findtext(text,"\"",1,2))
+		return copytext(text,2,findtext(text,"\"",3,0))
 
 	// list
-	if(copytext(text, 1, 6) == "list(")//6 == length("list(") + 1
-		return readlist(copytext(text, 6, -1))
+	if(copytext(text,1,6) == "list(")
+		return readlist(copytext(text,6,length(text)))
 
 	// typepath
 	var/path = text2path(text)
@@ -457,8 +455,8 @@
 		return path
 
 	// file
-	if(text[1] == "'")
-		return file(copytext_char(text, 2, -1))
+	if(copytext(text,1,2) == "'")
+		return file(copytext(text,2,length(text)))
 
 	// null
 	if(text == "null")

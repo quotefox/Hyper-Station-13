@@ -176,6 +176,10 @@
 					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir, bloodtype_to_color(H.dna.blood_type))
 				else
 					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir, bloodtype_to_color())
+			if(iscarbon(L))
+				var/mob/living/carbon/C = L
+				C.bleed(damage)
+			else
 				L.add_splatter_floor(target_loca)
 		else if(impact_effect_type && !hitscan)
 			new impact_effect_type(target_loca, hitx, hity)
@@ -198,8 +202,11 @@
 		L.on_hit(src)
 
 	var/reagent_note
-	if(reagents)
-		reagent_note = reagents.log_list()
+	if(reagents && reagents.reagent_list)
+		reagent_note = " REAGENTS:"
+		for(var/datum/reagent/R in reagents.reagent_list)
+			reagent_note += R.id + " ("
+			reagent_note += num2text(R.volume) + ") "
 
 	if(ismob(firer))
 		log_combat(firer, L, "shot", src, reagent_note)

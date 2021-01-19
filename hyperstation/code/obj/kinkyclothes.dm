@@ -24,14 +24,9 @@
 
 /obj/item/clothing/shoes/highheels
 	name = "high heels"
-	desc = "They make the wearer appear taller, and more noisey!"
+	desc = "They make the wearer appear taller, and noisey!"
 	icon_state = "highheels"
 	item_state = "highheels"
 	icon = 'hyperstation/icons/obj/clothing/shoes.dmi'
 	alternate_worn_icon = 'hyperstation/icons/mobs/feet.dmi'
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
-
-/obj/item/clothing/shoes/highheels/Initialize()
-	. = ..()
-	AddComponent(/datum/component/squeak, list('sound/effects/footstep/highheel1.ogg' = 1,'sound/effects/footstep/highheel2.ogg' = 1), 20)
-//the classic click clack

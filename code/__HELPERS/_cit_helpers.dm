@@ -68,8 +68,8 @@ GLOBAL_LIST_EMPTY(breasts_shapes_icons)
 GLOBAL_LIST_EMPTY(vagina_shapes_list)
 GLOBAL_LIST_INIT(cum_into_containers_list, list(/obj/item/reagent_containers/food/snacks/pie)) //Yer fuggin snowflake name list jfc
 GLOBAL_LIST_INIT(dick_nouns, list("dick","cock","member","shaft"))
-GLOBAL_LIST_INIT(cum_id_list, /datum/reagent/consumable/semen)
-GLOBAL_LIST_INIT(milk_id_list, /datum/reagent/consumable/milk)
+GLOBAL_LIST_INIT(cum_id_list,"semen")
+GLOBAL_LIST_INIT(milk_id_list,"milk")
 
 GLOBAL_LIST_INIT(dildo_shapes, list(
 		"Human"		= "human",

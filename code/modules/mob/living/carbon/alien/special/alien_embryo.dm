@@ -18,7 +18,7 @@
 
 /obj/item/organ/body_egg/alien_embryo/prepare_eat()
 	var/obj/S = ..()
-	S.reagents.add_reagent(/datum/reagent/toxin/acid, 10)
+	S.reagents.add_reagent("sacid", 10)
 	return S
 
 /obj/item/organ/body_egg/alien_embryo/on_life()
@@ -133,6 +133,5 @@ Des: Removes all images from the mob infected by this embryo
 	for(var/mob/living/carbon/alien/alien in GLOB.player_list)
 		if(alien.client)
 			for(var/image/I in alien.client.images)
-				var/searchfor = "infected"
-				if(I.loc == owner && findtext(I.icon_state, searchfor, 1, length(searchfor) + 1))
+				if(dd_hasprefix_case(I.icon_state, "infected") && I.loc == owner)
 					qdel(I)

@@ -71,6 +71,10 @@
 	},
 /turf/open/indestructible/hotelwood,
 /area/hilbertshotel)
+"n" = (
+/obj/effect/landmark/xmastree,
+/turf/open/indestructible/hotelwood,
+/area/hilbertshotel)
 "o" = (
 /obj/structure/chair/comfy/brown{
 	dir = 1
@@ -442,7 +446,7 @@ a
 b
 i
 d
-d
+n
 d
 J
 b

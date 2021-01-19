@@ -92,8 +92,7 @@
 			. += "[t_He] [t_is] moving [t_his] body in an unnatural and blatantly unsimian manner."
 
 	if(combatmode)
-		. += "[t_He] [t_is] visibly tense[resting ? "." : ", and [t_is] standing in combative stance."]\n"
-	. += common_trait_examine()
+		. += "[t_He] [t_is] visibly tense[resting ? "." : ", and [t_is] standing in combative stance."]"
 
 	var/datum/component/mood/mood = src.GetComponent(/datum/component/mood)
 	if(mood)

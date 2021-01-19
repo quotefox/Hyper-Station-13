@@ -73,13 +73,12 @@
 				if(M.fire_stacks)
 					var/minus_plus = M.fire_stacks < 0 ? 1 : -1
 					var/amount = min(abs(M.fire_stacks), soak_efficiency)
-					var/r_id = /datum/reagent/fuel
+					var/r_id = "fuel"
 					if(M.fire_stacks < 0)
-						r_id = /datum/reagent/water
+						r_id = "water"
 					reagents.add_reagent(r_id, amount * 0.3)
 					M.adjust_fire_stacks(minus_plus * amount)
 				M.wash_cream()
-				M.wash_cum()
 		return TRUE
 	return ..()
 
@@ -88,25 +87,13 @@
 	if(reagents.total_volume && user.canUseTopic(src, BE_CLOSE))
 		to_chat(user, "<span class='notice'>You start squeezing the liquids out of \the [src]...</span>")
 		if(do_after(user, action_speed, TRUE, src))
-			var/msg = "You squeeze \the [src]"
-			var/obj/item/target
-			if(Adjacent(user)) //Allows the user to drain the reagents into a beaker if adjacent (no telepathy).
-				for(var/obj/item/I in user.held_items)
-					if(I == src)
-						continue
-					if(I.is_open_container() && !I.reagents.holder_full())
-						target = I
-						break
-			if(!target)
-				msg += " dry"
-				reagents.reaction(get_turf(src), TOUCH)
-				reagents.clear_reagents()
-			else
-				msg += "'s liquids into \the [target]"
-				reagents.trans_to(target, reagents.total_volume)
-			to_chat(user, "<span class='notice'>[msg].</span>")
-		return TRUE
-
+			to_chat(user, "<span class='notice'>You squeeze \the [src] dry.</span>")
+			var/atom/react_loc = get_turf(src)
+			if(ismob(react_loc))
+				react_loc = react_loc.loc
+			if(react_loc)
+				reagents.reaction(react_loc, TOUCH)
+			reagents.clear_reagents()
 
 /obj/item/reagent_containers/rag/towel
 	name = "towel"
@@ -128,6 +115,8 @@
 	var/flat_icon = "towel_flat"
 	var/folded_icon = "towel"
 	var/list/possible_colors
+	//Hyper Change
+	var/roomy = TRUE //To cover XL bits
 
 /obj/item/reagent_containers/rag/towel/Initialize()
 	. = ..()

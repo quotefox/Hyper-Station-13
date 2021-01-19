@@ -21,8 +21,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	/datum/hallucination/delusion = 2,
 	/datum/hallucination/shock = 1,
 	/datum/hallucination/death = 1,
-	/datum/hallucination/oh_yeah = 1,
-	/datum/hallucination/sleeping_carp = 1
+	/datum/hallucination/oh_yeah = 1
 	))
 
 
@@ -891,7 +890,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			SEND_SOUND(target, 'sound/ai/aimalf.ogg')
 		if("meteors") //Meteors inbound!
 			to_chat(target, "<h1 class='alert'>Meteor Alert</h1>")
-			to_chat(target, "<br><br><span class='alert'>Meteors have been detected on collision course with the station. Estimated time until impact: [round(rand(300,600)/60)] minutes.</span><br><br>")
+			to_chat(target, "<br><br><span class='alert'>Meteors have been detected on collision course with the station.</span><br><br>")
 			SEND_SOUND(target, 'sound/ai/meteors.ogg')
 		if("supermatter")
 			SEND_SOUND(target, 'sound/magic/charge.ogg')
@@ -1290,48 +1289,4 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	H.hal_target = target
 	H.preparePixelProjectile(target, start)
 	H.fire()
-	qdel(src)
-
-/datum/hallucination/stray_pistol_bullet //specifically for aurora_aquilae.dm event
-
-/datum/hallucination/stray_pistol_bullet/New(mob/living/carbon/C, forced = TRUE)
-	set waitfor = FALSE
-	..()
-	var/list/turf/startlocs = list()
-	for(var/turf/open/T in view(world.view+1,target)-view(world.view,target))
-		startlocs += T
-	if(!startlocs.len)
-		qdel(src)
-		return
-	var/turf/start = pick(startlocs)
-	var/proj_type = /obj/item/projectile/hallucination/bullet
-	feedback_details += "Type: [proj_type]"
-	var/obj/item/projectile/hallucination/H = new proj_type(start)
-	target.playsound_local(start, H.hal_fire_sound, 60, 1)
-	H.hal_target = target
-	H.preparePixelProjectile(target, start)
-	H.fire()
-	qdel(src)
-
-/datum/hallucination/sleeping_carp
-
-/datum/hallucination/sleeping_carp/New(mob/living/carbon/C, forced = TRUE)
-	set waitfor = FALSE
-	..()
-	var/list/mobsyup
-	for (var/mob/living/carbon/A in orange(C,1))
-		if (get_dist(C,A) < 2)
-			LAZYADD(mobsyup,A)
-	if (!LAZYLEN(mobsyup))
-		qdel(src)
-		return
-	var/mob/living/carbon/G = pick(mobsyup)
-	if (prob(50))
-		C.visible_message("<span class='warning'>[C] falls to the ground screaming and clutching [C.p_their()] wrist!</span>", \
-						  "<span class='userdanger'>[G] grabs your wrist and violently wrenches it to the side!</span>")
-		C.emote("scream")
-		C.dropItemToGround(C.get_active_held_item())
-		C.Knockdown(60)
-	else
-		to_chat(C,"<span class='userdanger'>[G] violently grabs you!</span>")
 	qdel(src)

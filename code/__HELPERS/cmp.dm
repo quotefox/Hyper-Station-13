@@ -82,17 +82,11 @@ GLOBAL_VAR_INIT(cmp_field, "name")
 /proc/cmp_advdisease_resistance_asc(datum/disease/advance/A, datum/disease/advance/B)
 	return A.totalResistance() - B.totalResistance()
 
-/proc/cmp_numbered_displays_name_dsc(datum/numbered_display/A, datum/numbered_display/B)
-	return sorttext(B.sample_object.name, A.sample_object.name)
-
-/proc/cmp_reagents_asc(datum/reagent/a, datum/reagent/b)
-	return sorttext(initial(b.name),initial(a.name))
-
 /proc/cmp_quirk_asc(datum/quirk/A, datum/quirk/B)
 	var/a_sign = num2sign(initial(A.value) * -1)
 	var/b_sign = num2sign(initial(B.value) * -1)
 
-	// Neutral traits go last.
+	// Neutral traits go last
 	if(a_sign == 0)
 		a_sign = 2
 	if(b_sign == 0)

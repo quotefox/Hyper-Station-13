@@ -26,7 +26,6 @@
 	spacewalk = TRUE
 	sight = SEE_SELF
 	throwforce = 0
-	rad_flags = RAD_NO_CONTAMINATE | RAD_PROTECT_CONTENTS
 
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE

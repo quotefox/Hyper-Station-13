@@ -84,123 +84,109 @@
 	if(!client)
 		return
 
-	msg = copytext_char(msg, 1, MAX_MESSAGE_LEN)
+	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
 
 	if(type)
-		if(type & MSG_VISUAL && eye_blind )//Vision related
+		if(type & 1 && eye_blind )//Vision related
 			if(!alt_msg)
 				return
 			else
 				msg = alt_msg
 				type = alt_type
 
-		if(type & MSG_AUDIBLE && !can_hear())//Hearing related
+		if(type & 2 && !can_hear())//Hearing related
 			if(!alt_msg)
 				return
 			else
 				msg = alt_msg
 				type = alt_type
-				if(type & MSG_VISUAL && eye_blind)
+				if(type & 1 && eye_blind)
 					return
 	// voice muffling
 	if(stat == UNCONSCIOUS)
-		if(type & MSG_AUDIBLE) //audio
+		if(type & 2) //audio
 			to_chat(src, "<I>... You can almost hear something ...</I>")
-		return
-	to_chat(src, msg)
+	else
+		to_chat(src, msg)
 
-/**
-  * Generate a visible message from this atom
-  *
-  * Show a message to all player mobs who sees this atom
-  *
-  * Show a message to the src mob (if the src is a mob)
-  *
-  * Use for atoms performing visible actions
-  *
-  * message is output to anyone who can see, e.g. "The [src] does something!"
-  *
-  * Vars:
-  * * self_message (optional) is what the src mob sees e.g. "You do something!"
-  * * blind_message (optional) is what blind people will hear e.g. "You hear something!"
-  * * vision_distance (optional) define how many tiles away the message can be seen.
-  * * ignored_mobs (optional) doesn't show any message to any given mob in the list.
-  */
-/atom/proc/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs)
+// Show a message to all player mobs who sees this atom
+// Show a message to the src mob (if the src is a mob)
+// Use for atoms performing visible actions
+// message is output to anyone who can see, e.g. "The [src] does something!"
+// self_message (optional) is what the src mob sees e.g. "You do something!"
+// blind_message (optional) is what blind people will hear e.g. "You hear something!"
+// vision_distance (optional) define how many tiles away the message can be seen.
+// ignored_mob (optional) doesn't show any message to a given mob if TRUE.
+
+/atom/proc/visible_message(message, self_message, blind_message, vision_distance, list/ignored_mobs, no_ghosts = FALSE)
 	var/turf/T = get_turf(src)
 	if(!T)
 		return
-	var/list/hearers = get_hearers_in_view(vision_distance, src) //caches the hearers and then removes ignored mobs.
-	if(!length(hearers))
-		return
 	if(!islist(ignored_mobs))
 		ignored_mobs = list(ignored_mobs)
-	hearers -= ignored_mobs
-	if(self_message)
-		hearers -= src
-	for(var/mob/M in hearers)
+	var/range = 7
+	if(vision_distance)
+		range = vision_distance
+	for(var/mob/M in get_hearers_in_view(range, src))
 		if(!M.client)
 			continue
-		//This entire if/else chain could be in two lines but isn't for readibilties sake.
-		var/msg = message
-		//CITADEL EDIT, required for vore code to remove (T != loc && T != src)) as a check
-		if(M.see_invisible<invisibility) //if src is invisible to us,
-			msg = blind_message
-		else if(T.lighting_object && T.lighting_object.invisibility <= M.see_invisible && T.is_softly_lit()) //the light object is dark and not invisible to us
-			msg = blind_message
-
-		if(!msg)
+		if(M in ignored_mobs)
 			continue
-		M.show_message(msg, MSG_VISUAL,blind_message, MSG_AUDIBLE)
+		var/msg = message
+		if(isobserver(M) && no_ghosts)
+			continue
+		if(M == src) //the src always see the main message or self message
+			if(self_message)
+				msg = self_message
+		else //CITADEL EDIT, required for vore code to remove (T != loc && T != src)) as a check
+			if(M.see_invisible<invisibility) //if src is invisible to us,
+				if(blind_message) // then people see blind message if there is one, otherwise nothing.
+					msg = blind_message
+				else
+					continue
 
-///Adds the functionality to self_message.
-mob/visible_message(message, self_message, blind_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs)
-	. = ..()
-	if(self_message)
-		show_message(self_message, MSG_VISUAL, blind_message, MSG_AUDIBLE)
+			else if(T.lighting_object)
+				if(T.lighting_object.invisibility <= M.see_invisible && T.is_softly_lit()) //the light object is dark and not invisible to us
+					if(blind_message)
+						msg = blind_message
+					else
+						continue
 
-/**
-  * Show a message to all mobs in earshot of this atom
-  *
-  * Use for objects performing audible actions
-  *
-  * vars:
-  * * message is the message output to anyone who can hear.
-  * * deaf_message (optional) is what deaf people will see.
-  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
-  * * ignored_mobs (optional) doesn't show any message to any given mob in the list.
-  */
-/atom/proc/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, list/ignored_mobs)
-	var/turf/T = get_turf(src)
-	if(!T)
-		return
-	var/list/hearers = get_hearers_in_view(hearing_distance, src)
-	if(!length(hearers))
-		return
-	if(!islist(ignored_mobs))
-		ignored_mobs = list(ignored_mobs)
-	hearers -= ignored_mobs
-	if(self_message)
-		hearers -= src
-	for(var/mob/M in hearers)
-		M.show_message(message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
+		M.show_message(msg,1,blind_message,2)
 
-/**
-  * Show a message to all mobs in earshot of this one
-  *
-  * This would be for audible actions by the src mob
-  *
-  * vars:
-  * * message is the message output to anyone who can hear.
-  * * self_message (optional) is what the src mob hears.
-  * * deaf_message (optional) is what deaf people will see.
-  * * hearing_distance (optional) is the range, how many tiles away the message can be heard.
-  * * ignored_mobs (optional) doesn't show any message to any given mob in the list.
-  */
-/mob/audible_message(message, deaf_message, hearing_distance = DEFAULT_MESSAGE_RANGE, self_message, list/ignored_mobs)
-	. = ..()
-	if(self_message)
-		show_message(self_message, MSG_AUDIBLE, deaf_message, MSG_VISUAL)
+// Show a message to all mobs in earshot of this one
+// This would be for audible actions by the src mob
+// message is the message output to anyone who can hear.
+// self_message (optional) is what the src mob hears.
+// deaf_message (optional) is what deaf people will see.
+// hearing_distance (optional) is the range, how many tiles away the message can be heard.
+
+/mob/audible_message(message, deaf_message, hearing_distance, self_message, no_ghosts = FALSE)
+	var/range = 7
+	if(hearing_distance)
+		range = hearing_distance
+	for(var/mob/M in get_hearers_in_view(range, src))
+		var/msg = message
+		if(self_message && M==src)
+			msg = self_message
+		if(no_ghosts && isobserver(M))
+			continue
+		M.show_message( msg, 2, deaf_message, 1)
+
+// Show a message to all mobs in earshot of this atom
+// Use for objects performing audible actions
+// message is the message output to anyone who can hear.
+// deaf_message (optional) is what deaf people will see.
+// hearing_distance (optional) is the range, how many tiles away the message can be heard.
+
+/atom/proc/audible_message(message, deaf_message, hearing_distance, no_ghosts = FALSE)
+	var/range = 7
+	if(hearing_distance)
+		range = hearing_distance
+	for(var/mob/M in get_hearers_in_view(range, src))
+		if(no_ghosts && isobserver(M))
+			continue
+		M.show_message( message, 2, deaf_message, 1)
 
 /mob/proc/Life()
 	set waitfor = FALSE
@@ -404,6 +390,9 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 	if(I)
 		I.attack_self(src)
 		update_inv_hands()
+	if(!I)//CIT CHANGE - allows "using" empty hands
+		use_that_empty_hand() //CIT CHANGE - ditto
+		update_inv_hands() // CIT CHANGE - ditto.
 
 /mob/verb/memory()
 	set name = "Notes"
@@ -418,7 +407,7 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 	set name = "Add Note"
 	set category = "IC"
 
-	msg = copytext_char(msg, 1, MAX_MESSAGE_LEN)
+	msg = copytext(msg, 1, MAX_MESSAGE_LEN)
 	msg = sanitize(msg)
 
 	if(mind)
@@ -463,12 +452,12 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 		qdel(M)
 		return
 
+	to_chat(usr, "<span class='boldnotice'>Please roleplay correctly, do not meta-game, and use information from a different character or characters, to influence your actions!</span>")
 	usr.client.lastrespawn = world.time + 1800 SECONDS
 	usr.client.respawn_observing = 0
+
 	message_admins("[client.ckey] respawned.")
-	M.ckey = ckey //shamelessly copied to
-	to_chat(M, "<span class='danger'>Please roleplay correctly, do not meta-game, and use information from a different character or characters, to influence your actions!</span>")
-	qdel(usr)
+	M.key = key
 //	M.Login()	//wat
 	return
 
@@ -723,38 +712,6 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 	client.last_turn = world.time + MOB_FACE_DIRECTION_DELAY
 	return TRUE
 
-/mob/verb/eastshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_x <= 16)
-		pixel_x++
-		is_shifted = TRUE
-
-/mob/verb/westshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_x >= -16)
-		pixel_x--
-		is_shifted = TRUE
-
-/mob/verb/northshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_y <= 16)
-		pixel_y++
-		is_shifted = TRUE
-
-/mob/verb/southshift()
-	set hidden = TRUE
-	if(!canface())
-		return FALSE
-	if(pixel_y >= -16)
-		pixel_y--
-		is_shifted = TRUE
-
 /mob/proc/IsAdvancedToolUser()//This might need a rename but it should replace the can this mob use things check
 	return FALSE
 
@@ -848,6 +805,26 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 //Can the mob interact() with an atom?
 /mob/proc/can_interact_with(atom/A)
 	return IsAdminGhost(src) || Adjacent(A)
+
+//Can the mob see reagents inside of containers?
+/mob/proc/can_see_reagents()
+	if(stat == DEAD) //Ghosts and such can always see reagents
+		return 1
+	if(has_unlimited_silicon_privilege) //Silicons can automatically view reagents
+		return 1
+	if(ishuman(src))
+		var/mob/living/carbon/human/H = src
+		if(H.head && istype(H.head, /obj/item/clothing))
+			var/obj/item/clothing/CL = H.head
+			if(CL.scan_reagents)
+				return 1
+		if(H.wear_mask && H.wear_mask.scan_reagents)
+			return 1
+		if(H.glasses && istype(H.glasses, /obj/item/clothing))
+			var/obj/item/clothing/CL = H.glasses
+			if(CL.scan_reagents)
+				return 1
+	return 0
 
 //Can the mob use Topic to interact with machines
 /mob/proc/canUseTopic(atom/movable/M, be_close=FALSE, no_dextery=FALSE, no_tk=FALSE)

@@ -4069,6 +4069,10 @@
 	},
 /turf/open/floor/plating,
 /area/mine/laborcamp)
+"ut" = (
+/obj/effect/baseturf_helper/lava_land/surface,
+/turf/closed/wall,
+/area/mine/laborcamp)
 "uM" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -4290,6 +4294,10 @@
 /obj/structure/ore_box,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"Ay" = (
+/obj/effect/baseturf_helper/lava_land/surface,
+/turf/closed/wall,
+/area/mine/laborcamp/security)
 "AH" = (
 /obj/machinery/computer/secure_data{
 	dir = 1
@@ -4350,6 +4358,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/mine/production)
+"BU" = (
+/obj/effect/baseturf_helper/lava_land/surface,
+/turf/closed/wall,
+/area/mine/eva)
 "BW" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -4368,6 +4380,10 @@
 /obj/structure/sign/warning/electricshock,
 /turf/closed/wall,
 /area/mine/living_quarters)
+"Df" = (
+/obj/effect/baseturf_helper/lava_land/surface,
+/turf/closed/wall,
+/area/mine/production)
 "Di" = (
 /obj/structure/reagent_dispensers/fueltank,
 /turf/open/floor/plating,
@@ -4597,6 +4613,10 @@
 "PQ" = (
 /turf/closed/wall,
 /area/mine/living_quarters)
+"Qk" = (
+/obj/effect/baseturf_helper/lava_land/surface,
+/turf/closed/wall,
+/area/mine/living_quarters)
 "QZ" = (
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors/unexplored/danger)
@@ -4606,6 +4626,10 @@
 "Rg" = (
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors/unexplored)
+"Ro" = (
+/obj/effect/mapping_helpers/planet_z,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "Sd" = (
 /turf/open/floor/plasteel,
 /area/mine/living_quarters)
@@ -4624,6 +4648,10 @@
 "Wp" = (
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"WJ" = (
+/obj/effect/baseturf_helper/lava_land/surface,
+/turf/closed/wall/r_wall,
+/area/mine/maintenance)
 "Xs" = (
 /turf/closed/mineral/random/volcanic,
 /area/lavaland/surface/outdoors)
@@ -4895,7 +4923,7 @@ Wp
 Wp
 Wp
 Wp
-Wp
+Ro
 "}
 (2,1,1) = {"
 Zx
@@ -9740,7 +9768,7 @@ Py
 rN
 Py
 tz
-Py
+ut
 vd
 Py
 yu
@@ -10001,7 +10029,7 @@ nh
 nh
 Py
 yw
-yw
+Ay
 yw
 Wp
 Wp
@@ -13353,7 +13381,7 @@ cX
 cX
 PQ
 cQ
-PQ
+Qk
 cX
 cX
 bQ
@@ -18490,7 +18518,7 @@ Wp
 em
 XJ
 Fx
-em
+WJ
 dk
 er
 PQ
@@ -21816,7 +21844,7 @@ pa
 wh
 ak
 at
-ob
+BU
 aH
 pa
 wh
@@ -22337,7 +22365,7 @@ ob
 wv
 bj
 wv
-dN
+Df
 Gq
 GN
 GN
@@ -22590,7 +22618,7 @@ aI
 aV
 bc
 bi
-ob
+BU
 bu
 bE
 bZ

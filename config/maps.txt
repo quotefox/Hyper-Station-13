@@ -39,6 +39,3 @@ endmap
 
 map multiz_debug
 endmap
-
-map syndieboxstation
-endmap

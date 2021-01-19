@@ -2,7 +2,7 @@
 //this is meant to hold reagents/obj/item/gun/syringe
 /obj/item/gun/chem
 	name = "reagent gun"
-	desc = "A Kinaris syringe gun, modified to automatically synthesise chemical darts, and instead hold reagents."
+	desc = "A Nanotrasen syringe gun, modified to automatically synthesise chemical darts, and instead hold reagents."
 	icon_state = "chemgun"
 	item_state = "chemgun"
 	w_class = WEIGHT_CLASS_NORMAL
@@ -71,29 +71,25 @@
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/gun/chem/debug/attack_self(mob/user)
+	var/list/reagent_ids = sortList(GLOB.chemical_reagents_list)
 	var/choose_operation = input(user, "Select an option", "Reagent fabricator", "cancel") in list("Select reagent", "Enable production", "Cancel")
 	if (choose_operation == "Select reagent")
 		reagents.clear_reagents()
 		var/chosen_reagent
-		switch(alert(usr, "Choose a method.", "Add Reagents", "Search", "Choose from a list", "I'm feeling lucky"))
-			if("Search")
+		switch(alert(usr, "Choose a method.", "Add Reagents", "Enter ID", "Choose ID"))
+			if("Enter ID")
 				var/valid_id
 				while(!valid_id)
-					chosen_reagent = input(usr, "Enter the ID of the reagent you want to add.", "Search reagents") as null|text
-					if(isnull(chosen_reagent)) //Get me out of here!
+					chosen_reagent = stripped_input(usr, "Enter the ID of the reagent you want to add to your syringes.")
+					if(!chosen_reagent) //Get me out of here!
 						break
-					if(!ispath(text2path(chosen_reagent)))
-						chosen_reagent = pick_closest_path(chosen_reagent, make_types_fancy(subtypesof(/datum/reagent)))
-						if(ispath(chosen_reagent))
-							valid_id = TRUE
-					else
-						valid_id = TRUE
+					for(var/ID in reagent_ids)
+						if(ID == chosen_reagent)
+							valid_id = 1
 					if(!valid_id)
 						to_chat(usr, "<span class='warning'>A reagent with that ID doesn't exist!</span>")
-			if("Choose from a list")
-				chosen_reagent = input(usr, "Choose a reagent to add.", "Choose a reagent.") as null|anything in subtypesof(/datum/reagent)
-			if("I'm feeling lucky")
-				chosen_reagent = pick(subtypesof(/datum/reagent))
+			if("Choose ID")
+				chosen_reagent = input(usr, "Choose a reagent to add to your syringes.", "Choose a reagent.") as null|anything in reagent_ids
 		if(chosen_reagent)
 			reagents.add_reagent(chosen_reagent, 100, null)
 
