@@ -12,7 +12,7 @@
 	//var/breast_sizes 		= list ("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "huge", "massive", "giga", "impossible", "flat")
 	var/breast_values 		= list ("a" =  1, "b" = 2, "c" = 3, "d" = 4, "e" = 5, "f" = 6, "g" = 7, "h" = 8, "i" = 9, "j" = 10, "k" = 11, "l" = 12, "m" = 13, "n" = 14, "o" = 15, "huge" = 16, "massive" = 17, "giga" = 25, "impossible" = 30, "flat" = 0) // Note: Do not forget to define new sizes.
 	var/statuscheck			= FALSE
-	fluid_id				= "milk"
+	fluid_id				= /datum/reagent/consumable/milk
 	var/amount				= 2
 	fluid_mult				= 0.25 // Set to a lower value due to production scaling with size (I.E. D cups produce the "normal" amount)
 	fluid_max_volume		= 10
@@ -80,7 +80,7 @@
 			//string = "breasts_[lowertext(shape)]_[size]-s"
 
 	if(producing && sent_full_message)
-		desc += " They're leaking [fluid_id]."
+		desc += " They're leaking [initial(fluid_id.name)]."
 	var/string
 	if(owner)
 		if(owner.dna.species.use_skintones && owner.dna.features["genitals_use_skintone"])

@@ -39,6 +39,7 @@
 #define MOB_ORGANIC 	"organic"
 #define MOB_INORGANIC 	"inorganic"
 #define MOB_ROBOTIC 	"robotic"
+#define MOB_SILICON     "silicon"
 #define MOB_UNDEAD		"undead"
 #define MOB_HUMANOID 	"humanoid"
 #define MOB_BUG 		"bug"
@@ -120,7 +121,6 @@
 #define BIOWARE_NERVES "nerves"
 #define BIOWARE_CIRCULATION "circulation"
 #define BIOWARE_LIGAMENTS "ligaments"
-#define BIOWARE_DISSECTION "dissected"
 
 //Health hud screws for carbon mobs
 #define SCREWYHUD_NONE 0

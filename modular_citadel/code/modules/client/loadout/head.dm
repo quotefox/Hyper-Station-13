@@ -113,3 +113,19 @@
 	name = "Pharaoh Hat"
 	category = SLOT_HEAD
 	path = /obj/item/clothing/head/pharaoh
+
+/datum/gear/gladiatorhelmet
+	name = "Gladiator helmet"
+	category = SLOT_HEAD
+	path = /obj/item/clothing/head/helmet/gladiator
+
+/datum/gear/romanhelmet
+	name = "Improper Roman helmet"
+	category = SLOT_HEAD
+	path = /obj/item/clothing/head/helmet/roman/fake
+
+/datum/gear/legionnaire
+	name = "Improper Roman legionnaire helmet"
+	category = SLOT_HEAD
+	path = /obj/item/clothing/head/helmet/roman/legionnaire/fake
+	cost = 2

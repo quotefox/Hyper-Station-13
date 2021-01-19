@@ -41,6 +41,8 @@
 	var/special_role
 	var/list/restricted_roles = list()
 
+	var/hide_ckey = FALSE
+
 	var/list/datum/objective/objectives = list()
 
 	var/list/spell_list = list() // Wizard mode & "Give Spell" badmin button.
@@ -92,7 +94,10 @@
 	if(current)	// remove ourself from our old body's mind variable
 		current.mind = null
 		SStgui.on_transfer(current, new_character)
-
+		if(iscarbon(current))
+			var/mob/living/carbon/C = current
+			if(C.combatmode)
+				C.toggle_combat_mode(TRUE, TRUE)
 	if(!language_holder)
 		var/datum/language_holder/mob_holder = new_character.get_language_holder(shadow = FALSE)
 		language_holder = mob_holder.copy(src)
@@ -131,8 +136,10 @@
 			L.canbearoused = L.client.prefs.arousable //Technically this should make taking over a character mean the body gain the new minds setting...
 			L.update_arousal_hud() //Removes the old icon
 
+	hide_ckey = current.client?.prefs?.hide_ckey
+
 /datum/mind/proc/store_memory(new_text)
-	if((length(memory) + length(new_text)) <= MAX_MESSAGE_LEN)
+	if((length_char(memory) + length_char(new_text)) <= MAX_MESSAGE_LEN)
 		memory += "[new_text]<BR>"
 
 /datum/mind/proc/wipe_memory()
@@ -364,13 +371,15 @@
 	output += memory
 
 
+	var/list/all_objectives = list()
 	for(var/datum/antagonist/A in antag_datums)
 		output += A.antag_memory
+		all_objectives |= A.objectives
 
-	if(objectives.len)
+	if(all_objectives.len)
 		output += "<B>Objectives:</B>"
 		var/obj_count = 1
-		for(var/datum/objective/objective in objectives)
+		for(var/datum/objective/objective in all_objectives)
 			output += "<br><B>Objective #[obj_count++]</B>: [objective.explanation_text]"
 			var/list/datum/mind/other_owners = objective.get_owners() - src
 			if(other_owners.len)
@@ -406,7 +415,7 @@
 		assigned_role = new_role
 
 	else if (href_list["memory_edit"])
-		var/new_memo = copytext(sanitize(input("Write new memory", "Memory", memory) as null|message),1,MAX_MESSAGE_LEN)
+		var/new_memo = stripped_multiline_input(usr, "Write new memory", "Memory", memory, MAX_MESSAGE_LEN)
 		if (isnull(new_memo))
 			return
 		memory = new_memo
@@ -689,10 +698,16 @@
 		usr = current
 	traitor_panel()
 
+/datum/mind/proc/get_all_objectives()
+	var/list/all_objectives = list()
+	for(var/datum/antagonist/A in antag_datums)
+		all_objectives |= A.objectives
+	return all_objectives
+
 /datum/mind/proc/announce_objectives()
 	var/obj_count = 1
 	to_chat(current, "<span class='notice'>Your current objectives:</span>")
-	for(var/objective in objectives)
+	for(var/objective in get_all_objectives())
 		var/datum/objective/O = objective
 		to_chat(current, "<B>Objective #[obj_count]</B>: [O.explanation_text]")
 		obj_count++
@@ -842,6 +857,7 @@
 	if(!mind.name)
 		mind.name = real_name
 	mind.current = src
+	mind.hide_ckey = client?.prefs?.hide_ckey
 
 /mob/living/carbon/mind_initialize()
 	..()

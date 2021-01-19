@@ -65,8 +65,11 @@
 
 			var/obj/item/organ/heart/heart = M.getorganslot(ORGAN_SLOT_HEART)
 			var/obj/item/organ/lungs/lungs = M.getorganslot(ORGAN_SLOT_LUNGS)
+		
 
-			if(!(M.stat == DEAD || (HAS_TRAIT(M, TRAIT_FAKEDEATH))))
+			if (!do_mob(user,M,60))	// Stethoscope should take a moment to listen
+				return // FAIL
+			if(!(M.stat == DEAD || (HAS_TRAIT(M, TRAIT_FAKEDEATH)) || (HAS_TRAIT(M, TRAIT_NOPULSE))))
 				if(heart && istype(heart))
 					heart_strength = "<span class='danger'>an unstable</span>"
 					if(heart.beating)
@@ -187,7 +190,7 @@
 	var/tagname = null
 
 /obj/item/clothing/neck/petcollar/attack_self(mob/user)
-	tagname = copytext(sanitize(input(user, "Would you like to change the name on the tag?", "Name your new pet", "Spot") as null|text),1,MAX_NAME_LEN)
+	tagname = stripped_input(user, "Would you like to change the name on the tag?", "Name your new pet", "Spot", MAX_NAME_LEN)
 	name = "[initial(name)] - [tagname]"
 
 /obj/item/clothing/neck/petcollar/worn_overlays(isinhands, icon_file)

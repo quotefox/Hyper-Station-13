@@ -542,7 +542,7 @@
 	var/list/watching = hearers(3, owner)
 	for(var/mob/living/M in watching)
 		if(M.client && (M.client.prefs.cit_toggles & EATING_NOISES)) //Might as well censor the normies here too.
-			M.show_message(struggle_outer_message, 1) // visible
+			M.show_message(struggle_outer_message, MSG_VISUAL) // visible
 
 	to_chat(R,struggle_user_message)
 

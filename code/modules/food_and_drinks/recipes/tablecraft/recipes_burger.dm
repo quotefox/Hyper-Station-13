@@ -306,6 +306,7 @@
 			/obj/item/reagent_containers/food/snacks/bun = 1
 	)
 	result = /obj/item/reagent_containers/food/snacks/burger/cumburger
+	subcategory = CAT_BURGER
 
 /datum/crafting_recipe/food/cheeseburger
 	name = "Cheese Burger"

@@ -25,7 +25,7 @@
 
 /obj/machinery/computer/secure_data/laptop
 	name = "security laptop"
-	desc = "A cheap Nanotrasen security laptop, it functions as a security records console. It's bolted to the table."
+	desc = "A cheap Kinaris security laptop, it functions as a security records console. It's bolted to the table."
 	icon_state = "laptop"
 	icon_screen = "seclaptop"
 	icon_keyboard = "laptop_key"
@@ -405,7 +405,7 @@ What a mess.*/
 				if(!( printing ))
 					var/wanted_name = stripped_input(usr, "Please enter an alias for the criminal:", "Print Wanted Poster", active1.fields["name"])
 					if(wanted_name)
-						var/default_description = "A poster declaring [wanted_name] to be a dangerous individual, wanted by Nanotrasen. Report any sightings to security immediately."
+						var/default_description = "A poster declaring [wanted_name] to be a dangerous individual, wanted by Kinaris. Report any sightings to security immediately."
 						var/list/major_crimes = active2.fields["ma_crim"]
 						var/list/minor_crimes = active2.fields["mi_crim"]
 						if(major_crimes.len + minor_crimes.len)
@@ -530,7 +530,7 @@ What a mess.*/
 				M.fields["alg_d"]		= "No allergies have been detected in this patient."
 				M.fields["cdi"]			= "None"
 				M.fields["cdi_d"]		= "No diseases have been diagnosed at the moment."
-				M.fields["notes"]		= "No notes."
+				M.fields["notes"]		= "No Notes."
 				GLOB.data_core.medical += M
 
 
@@ -543,7 +543,7 @@ What a mess.*/
 				switch(href_list["field"])
 					if("name")
 						if(istype(active1, /datum/data/record) || istype(active2, /datum/data/record))
-							var/t1 = copytext(sanitize(input("Please input name:", "Secure. records", active1.fields["name"], null)  as text),1,MAX_MESSAGE_LEN)
+							var/t1 = stripped_input(usr, "Please input name:", "Secure. records", active1.fields["name"], MAX_MESSAGE_LEN)
 							if(!canUseSecurityRecordsConsole(usr, t1, a1))
 								return
 							if(istype(active1, /datum/data/record))

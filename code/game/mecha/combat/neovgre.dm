@@ -80,7 +80,7 @@
 	equip_cooldown = 8 //Rapid fire heavy laser cannon, simple yet elegant
 	energy_drain = 30
 	name = "Aribter Laser Cannon"
-	desc = "Please re-attach this to neovgre and stop asking questions about why it looks like a normal Nanotrasen issue Solaris laser cannon - Nezbere"
+	desc = "Please re-attach this to neovgre and stop asking questions about why it looks like a normal Kinaris issue Solaris laser cannon - Nezbere"
 	fire_sound = "sound/weapons/neovgre_laser.ogg"
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/laser/heavy/neovgre/can_attach(obj/mecha/combat/neovgre/M)

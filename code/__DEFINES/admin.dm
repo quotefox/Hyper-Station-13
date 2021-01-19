@@ -70,9 +70,14 @@
 #define ADMIN_PUNISHMENT_FIREBALL "Fireball"
 #define ADMIN_PUNISHMENT_CLUWNE "Floor Cluwne"
 #define ADMIN_PUNISHMENT_ROD "Immovable Rod"
+#define ADMIN_PUNISHMENT_SUPPLYPOD_QUICK "Supply Pod (Quick)"
 #define ADMIN_PUNISHMENT_SUPPLYPOD "Supply Pod"
 #define ADMIN_PUNISHMENT_MAZING "Puzzle"
 #define ADMIN_PUNISHMENT_PIE "Cream Pie"
+#define ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE "Tabletide Stationwide"
+#define ADMIN_PUNISHMENT_FAKEBWOINK "Fake Bwoink"
+#define ADMIN_PUNISHMENT_NUGGET "Nugget"
+#define ADMIN_PUNISHMENT_BREADIFY ":b:read"
 
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
@@ -89,3 +94,4 @@
 #define MAX_KEYPRESS_AUTOKICK 100
 ///Length of held key rolling buffer
 #define HELD_KEY_BUFFER_LENGTH 15
+

@@ -1009,7 +1009,7 @@
 /obj/effect/mob_spawn/human/lavaland_syndicate/comms/space{
 	assignedrole = "Space Syndicate";
 	dir = 8;
-	flavour_text = "<span class='big bold'>You are a syndicate agent,</span><b> assigned to a small listening post station situated near your hated enemy's top secret research facility: Space Station 13. <b>Monitor enemy activity as best you can, and try to keep a low profile. <font size=6>DON'T</font> abandon the base without good cause.</b> Use the communication equipment to provide support to any field agents, and sow disinformation to throw Nanotrasen off your trail. Do not let the base fall into enemy hands!</b>"
+	flavour_text = "You are a syndicate agent, assigned to a small listening post station situated near your hated enemy's top secret research facility: Space Station 13. Monitor enemy activity as best you can, and try to keep a low profile. DON'T abandon the base without good cause. Use the communication equipment to provide support to any field agents, and sow disinformation to throw Kinaris off your trail. Do not let the base fall into enemy hands!"
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8;
@@ -1093,6 +1093,7 @@
 	pixel_x = -6;
 	pixel_y = 11
 	},
+/obj/item/bluespace_thread,
 /turf/open/floor/plasteel/grimy,
 /area/ruin/space/has_grav/listeningstation)
 "bF" = (

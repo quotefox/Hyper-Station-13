@@ -212,6 +212,7 @@
 	icon_state = "emt"
 	item_state = "w_suit"
 	item_color = "emt"
+	mutantrace_variation = NO_MUTANTRACE_VARIATION //sorry guys im too lazy to make digitigrade sprites for these.
 
 /obj/item/clothing/under/rank/medical/emt/skirt
 	name = "paramedic jumpskirt"

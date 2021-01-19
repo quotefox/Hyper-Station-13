@@ -63,6 +63,12 @@
 	path = /obj/item/clothing/suit/shackles
 	ckeywhitelist = list("heliocintrini")
 
+/datum/gear/hshack
+	name = "Syndicate Commander's Coat"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/suit/luwethtrench
+	ckeywhitelist = list("luweth")
+
 /datum/gear/luwethring
 	name = "Wedding Band"
 	category = SLOT_IN_BACKPACK
@@ -74,3 +80,28 @@
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/dice/d20/blue
 	ckeywhitelist = list("jackattack41498")
+
+/datum/gear/demoncat
+	name = "Inconspicuous winter coat"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/suit/hooded/wintercoat/death
+	ckeywhitelist = list("demoncat")
+
+/datum/gear/natak
+	name = "Heat-B-Gone Pills"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/storage/pill_bottle/heat
+	ckeywhitelist = list("natak")
+
+/datum/gear/natak
+	name = "Crystalline Shards"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/head/crystalline
+	ckeywhitelist = list("dragontrance")
+
+/datum/gear/lyricalpawsplush
+	name = "Winter Dawn Plushie"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/toy/plush/mammal/lyricalpaws
+	ckeywhitelist = list("lyricalpaws")
+
