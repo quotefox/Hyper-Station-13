@@ -157,6 +157,50 @@
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
+////////////////////////////////
+//MWS 'Big Iron' Specific Ammo//
+////////////////////////////////
+
+/datum/design/xray_mws
+	name = "X-Ray MWS 'Big Iron' Microbattery"
+	desc = "An high-tech X-Ray Microbattery for the MWS 'Big Iron'."
+	id = "mws_xray"
+	build_type = PROTOLATHE
+	materials = list(MAT_GOLD = 2500, MAT_URANIUM = 2000, MAT_METAL = 2500, MAT_TITANIUM = 1000, MAT_BLUESPACE = 1000)
+	build_path = /obj/item/ammo_casing/mws_batt/xray
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/datum/design/ion_mws
+	name = "Ion MWS 'Big Iron' Microbattery"
+	desc = "An mid-tech Ion Microbattery for the MWS 'Big Iron'."
+	id = "mws_ion"
+	build_type = PROTOLATHE
+	materials = list(MAT_SILVER = 3000, MAT_METAL = 4000, MAT_URANIUM = 1000)
+	build_path = /obj/item/ammo_casing/mws_batt/ion
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/datum/design/disabler_mws
+	name = "Disabler MWS 'Big Iron' Microbattery"
+	desc = "An low-tech Disabler Microbattery for the MWS 'Big Iron'."
+	id = "mws_stun"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 7000, MAT_GLASS = 5000, MAT_GOLD = 1250, MAT_SILVER = 1250)
+	build_path = /obj/item/ammo_casing/mws_batt/stun
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/datum/design/lethal_mws
+	name = "Lethal MWS 'Big Iron' Microbattery"
+	desc = "An low-tech Lethal Microbattery for the MWS 'Big Iron'."
+	id = "mws_lethal"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 7000, MAT_GLASS = 5000, MAT_GOLD = 1250, MAT_SILVER = 1250)
+	build_path = /obj/item/ammo_casing/mws_batt/lethal
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
 //////////////
 //Firing Pins/
 //////////////
