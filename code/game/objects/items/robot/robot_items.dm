@@ -900,46 +900,90 @@
 	RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, /atom/.proc/update_iconb)
 	update_icon()
 
-////////////////////
-//engi part holder//
-////////////////////
+/**********************************************************************
+						Grippers oh god oh fuck
+***********************************************************************/
 
-/obj/item/borg/apparatus/circuit
-	name = "circuit manipulation apparatus"
-	desc = "A special apparatus for carrying and manipulating circuit boards. Alt-Z or right-click to drop the stored object."
-	icon_state = "borg_hardware_apparatus"
-	storable = list(/obj/item/circuitboard,
-				/obj/item/electronics)
+/obj/item/weapon/gripper
+	name = "engineering gripper"
+	desc = "A simple grasping tool for interacting with various engineering related items, such as circuits, gas tanks, conveyer belts and more. Alt click to drop instead of use."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "gripper"
 
-/obj/item/borg/apparatus/circuit/Initialize()
-	. = ..()
-	update_icon()
+	item_flags = NOBLUDGEON
 
-/obj/item/borg/apparatus/circuit/update_icon()
-	cut_overlays()
-	if(stored)
-		COMPILE_OVERLAYS(stored)
-		stored.pixel_x = -3
-		stored.pixel_y = 0
-		var/image/arm
-		if(istype(stored, /obj/item/circuitboard))
-			arm = image("icon"="borg_hardware_apparatus_arm1", "layer"=FLOAT_LAYER)
+	//Has a list of items that it can hold.
+	var/list/can_hold = list(
+		/obj/item/circuitboard,
+		/obj/item/light,
+		/obj/item/electronics,
+		/obj/item/tank,
+		/obj/item/wallframe,
+		/obj/item/vending_refill,
+		/obj/item/stack/sheet,
+		/obj/item/stack/tile,
+		/obj/item/stack/rods,
+		/obj/item/stock_parts
+		)
+	//Basically a blacklist for any subtypes above we dont want
+	var/list/cannot_hold = list(
+		/obj/item/stack/sheet/mineral/plasma,
+		/obj/item/stack/sheet/plasteel
+		)
+
+	var/obj/item/wrapped = null // Item currently being held.
+
+//Used to interact with UI's of held items, such as gas tanks and airlock electronics.
+/obj/item/weapon/gripper/AltClick(mob/user)
+	if(wrapped)
+		wrapped.forceMove(get_turf(wrapped))
+		to_chat(user, "<span class='notice'>You drop the [wrapped].</span>")
+		wrapped = null
+	return ..()
+
+/obj/item/weapon/gripper/pre_attack(var/atom/target, var/mob/living/silicon/robot/user, proximity, params)
+
+	if(!proximity)
+		return
+
+	if(!wrapped)
+		for(var/obj/item/thing in src.contents)
+			wrapped = thing
+			break
+
+	if(wrapped) //Already have an item.
+		//Temporary put wrapped into user so target's attackby() checks pass.
+		wrapped.loc = user
+
+		//Pass the attack on to the target. This might delete/relocate wrapped.
+		var/resolved = target.attackby(wrapped,user)
+		if(!resolved && wrapped && target)
+			wrapped.afterattack(target,user,1)
+		//If wrapped was neither deleted nor put into target, put it back into the gripper.
+		if(wrapped && user && (wrapped.loc == user))
+			wrapped.loc = src
 		else
-			arm = image("icon"="borg_hardware_apparatus_arm2", "layer"=FLOAT_LAYER)
-		var/image/img = image("icon"=stored, "layer"=FLOAT_LAYER)
-		img.plane = FLOAT_PLANE
-		add_overlay(arm)
-		add_overlay(img)
-	else
-		var/image/arm = image("icon"="borg_hardware_apparatus_arm1", "layer"=FLOAT_LAYER)
-		add_overlay(arm)
+			wrapped = null
+			return
 
-/obj/item/borg/apparatus/circuit/examine()
-	. = ..()
-	if(stored)
-		. += "The apparatus currently has [stored] secured."
+	else if(istype(target,/obj/item))
+		var/obj/item/I = target
+		var/grab = 0
 
-/obj/item/borg/apparatus/circuit/pre_attack(atom/A, mob/living/user, params)
-	. = ..()
-	if(istype(A, /obj/item/aiModule) && !stored) //If an admin wants a borg to upload laws, who am I to stop them? Otherwise, we can hint that it fails
-		to_chat(user, "<span class='warning'>This circuit board doesn't seem to have standard robot apparatus pin holes. You're unable to pick it up.</span>")
+		for(var/typepath in can_hold)
+			if(istype(I,typepath))
+				grab = 1
+				for(var/badpath in cannot_hold)
+					if(istype(I,badpath))
+						if(!user.emagged)
+							grab = 0
+							continue
+
+		//We can grab the item, finally.
+		if(grab)
+			to_chat(user, "<span class='notice'>You collect \the [I].</span>")
+			I.loc = src
+			wrapped = I
+			return
+		else
+			to_chat(user, "<span class='danger'>Your gripper cannot hold \the [target].</span>")

@@ -160,10 +160,17 @@
 	WRITE_LOG(GLOB.config_error_log, text)
 	SEND_TEXT(world.log, text)
 
+/proc/log_mapping(text)
+	WRITE_LOG(GLOB.world_map_error_log, text)
 
 /* For logging round startup. */
 /proc/start_log(log)
 	WRITE_LOG(log, "Starting up round ID [GLOB.round_id].\n-------------------------")
+
+/* ui logging */ 
+
+/proc/log_tgui(text)
+	WRITE_LOG(GLOB.tgui_log, text)
 
 /* Close open log handles. This should be called as late as possible, and no logging should hapen after. */
 /proc/shutdown_logging()

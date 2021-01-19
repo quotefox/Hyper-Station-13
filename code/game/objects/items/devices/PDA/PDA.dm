@@ -628,13 +628,13 @@ GLOBAL_LIST_EMPTY(PDAs)
 			if("Clear")//Clears messages
 				tnote = null
 			if("Ringtone")
-				var/t = input(U, "Please enter new ringtone", name, ttone) as text
+				var/t = stripped_input(U, "Please enter new ringtone", name, ttone, 20)
 				if(in_range(src, U) && loc == U && t)
 					if(SEND_SIGNAL(src, COMSIG_PDA_CHANGE_RINGTONE, U, t) & COMPONENT_STOP_RINGTONE_CHANGE)
 						U << browse(null, "window=pda")
 						return
 					else
-						ttone = copytext(sanitize(t), 1, 20)
+						ttone = t
 				else
 					U << browse(null, "window=pda")
 					return
@@ -826,14 +826,14 @@ GLOBAL_LIST_EMPTY(PDAs)
 	send_message(U,list(P))
 
 /obj/item/pda/AltClick()
-	..()
-
+	. = ..()
 	if(id)
 		remove_id()
 		playsound(src, 'sound/machines/terminal_eject_disc.ogg', 50, 1)
 	else
 		remove_pen()
 		playsound(src, 'sound/machines/button4.ogg', 50, 1)
+	return TRUE
 
 /obj/item/pda/CtrlClick()
 	..()
@@ -1042,7 +1042,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	if (ismob(loc))
 		var/mob/M = loc
-		M.show_message("<span class='userdanger'>Your [src] explodes!</span>", 1)
+		M.show_message("<span class='userdanger'>Your [src] explodes!</span>", MSG_VISUAL, "<span class='warning'>You hear a loud *pop*!</span>", MSG_AUDIBLE)
 	else
 		visible_message("<span class='danger'>[src] explodes!</span>", "<span class='warning'>You hear a loud *pop*!</span>")
 

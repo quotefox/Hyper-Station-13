@@ -23,6 +23,7 @@
 		/datum/language/aphasia,
 		/datum/language/slime,
 		/datum/language/xenocommon,
+		/datum/language/vampiric,
 	))
 	healing_factor = STANDARD_ORGAN_HEALING*5 //Fast!!
 	decay_factor = STANDARD_ORGAN_DECAY/2
@@ -97,7 +98,25 @@
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
 		message = lizard_hiss.Replace(message, "sss")
-		message = lizard_hiSS.Replace(message, "SSS")
+		message = lizard_hiSS.Replace(message, "Sss")
+	speech_args[SPEECH_MESSAGE] = message
+
+/obj/item/organ/tongue/kitty
+	name = "barbed tongue"
+	desc = "A thin and prickled on top tongue, common among cats"
+	icon_state = "tonguenormal"
+	say_mod = "mrowls"
+	taste_sensitivity = 15 //Tastes like normal
+	maxHealth = 60 //And so has health like normal
+	modifies_speech = TRUE
+
+/obj/item/organ/tongue/kitty/handle_speech(datum/source, list/speech_args)
+	var/static/regex/taja_purr = new("r+", "g")
+	var/static/regex/taja_puRR = new("R+", "g")
+	var/message = speech_args[SPEECH_MESSAGE]
+	if(message[1] != "*")
+		message = taja_purr.Replace(message, "rrr")
+		message = taja_puRR.Replace(message, "Rrr")
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/fly
@@ -164,7 +183,7 @@
 		var/insertpos = rand(1, message_list.len - 1)
 		var/inserttext = message_list[insertpos]
 
-		if(!(copytext(inserttext, length(inserttext) - 2) == "..."))
+		if(!(copytext(inserttext, -3) == "..."))//3 == length("...")
 			message_list[insertpos] = inserttext + "..."
 
 		if(prob(20) && message_list.len > 3)
@@ -272,7 +291,7 @@
 
 /obj/item/organ/tongue/fluffy/handle_speech(datum/source, list/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
-	if(copytext(message, 1, 2) != "*")
+	if(message[1] != "*")
 		message = replacetext(message, "ne", "nye")
 		message = replacetext(message, "nu", "nyu")
 		message = replacetext(message, "na", "nya")

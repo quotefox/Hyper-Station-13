@@ -126,7 +126,7 @@
 			portable_drive.verb_pickup()
 
 /obj/item/modular_computer/AltClick(mob/user)
-	..()
+	. = ..()
 	if(issilicon(user))
 		return
 
@@ -142,7 +142,7 @@
 				return
 			if(ai_slot)
 				ai_slot.try_eject(null, user)
-
+		return TRUE
 
 // Gets IDs/access levels from card slot. Would be useful when/if PDAs would become modular PCs.
 /obj/item/modular_computer/GetAccess()
@@ -316,7 +316,7 @@
 				data["PC_batteryicon"] = "batt_20.gif"
 			else
 				data["PC_batteryicon"] = "batt_5.gif"
-		data["PC_batterypercent"] = "[round(battery_module.battery.percent())] %"
+		data["PC_batterypercent"] = "[round(battery_module.battery.percent())]%"
 		data["PC_showbatteryicon"] = 1
 	else
 		data["PC_batteryicon"] = "batt_5.gif"

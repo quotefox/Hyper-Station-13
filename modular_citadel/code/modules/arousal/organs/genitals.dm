@@ -9,7 +9,7 @@
 	var/can_climax				= FALSE
 	var/fluid_transfer_factor	= 0.0 //How much would a partner get in them if they climax using this?
 	var/size					= 2 //can vary between num or text, just used in icon_state strings
-	var/fluid_id				= null
+	var/datum/reagent/fluid_id  = null
 	var/fluid_max_volume		= 15
 	var/fluid_efficiency		= 1
 	var/fluid_rate				= 1
@@ -22,6 +22,7 @@
 	var/internal				= FALSE
 	var/hidden					= FALSE
 	var/colourtint				= ""
+	var/mode					= "clothes"
 
 /obj/item/organ/genital/Initialize()
 	. = ..()
@@ -70,16 +71,19 @@
 		if("Always visible")
 			through_clothes = TRUE
 			hidden = FALSE
+			mode = "visible"
 			if(!(src in owner.exposed_genitals))
 				owner.exposed_genitals += src
 		if("Hidden by clothes")
 			through_clothes = FALSE
 			hidden = TRUE
+			mode = "clothes"
 			if(src in owner.exposed_genitals)
 				owner.exposed_genitals -= src
 		if("Always hidden")
 			through_clothes = FALSE
 			hidden = TRUE
+			mode = "hidden"
 			if(src in owner.exposed_genitals)
 				owner.exposed_genitals -= src
 

@@ -9,25 +9,26 @@
 /datum/chemical_reaction/proc/FermiFinish(datum/reagents/holder, var/atom/my_atom, reactVol)
 	if(clear_conversion == REACTION_CLEAR_IMPURE | REACTION_CLEAR_INVERSE)
 		for(var/id in results)
-			var/datum/reagent/R = my_atom.reagents.has_reagent("[id]")
-			if(!R || R.purity == 1)
+			var/datum/reagent/R = my_atom.reagents.has_reagent(id)
+			if(R.purity == 1)
 				continue
 
 			var/cached_volume = R.volume
 			if(clear_conversion == REACTION_CLEAR_INVERSE && R.inverse_chem)
 				if(R.inverse_chem_val > R.purity)
-					my_atom.reagents.remove_reagent(R.id, cached_volume, FALSE)
+					my_atom.reagents.remove_reagent(R.type, cached_volume, FALSE)
 					my_atom.reagents.add_reagent(R.inverse_chem, cached_volume, FALSE, other_purity = 1)
 
 			else if (clear_conversion == REACTION_CLEAR_IMPURE && R.impure_chem)
 				var/impureVol = cached_volume * (1 - R.purity)
-				my_atom.reagents.remove_reagent(R.id, (impureVol), FALSE)
+				my_atom.reagents.remove_reagent(R.type, (impureVol), FALSE)
 				my_atom.reagents.add_reagent(R.impure_chem, impureVol, FALSE, other_purity = 1)
 				R.cached_purity = R.purity
 				R.purity = 1
+	return
 
 //Called when temperature is above a certain threshold, or if purity is too low.
-/datum/chemical_reaction/proc/FermiExplode(datum/reagents, var/atom/my_atom, volume, temp, pH, Exploding = FALSE)
+/datum/chemical_reaction/proc/FermiExplode(datum/reagents/R0, var/atom/my_atom, volume, temp, pH, Exploding = FALSE)
 	if (Exploding == TRUE)
 		return
 
@@ -41,26 +42,32 @@
 			if (500 to 750)
 				for(var/turf/turf in range(1,T))
 					new /obj/effect/hotspot(turf)
+				volume*=1.1
 
 			if (751 to 1100)
 				for(var/turf/turf in range(2,T))
 					new /obj/effect/hotspot(turf)
+				volume*=1.2
 
 			if (1101 to 1500) //If you're crafty
 				for(var/turf/turf in range(3,T))
 					new /obj/effect/hotspot(turf)
+				volume*=1.3
 
 			if (1501 to 2500) //requested
 				for(var/turf/turf in range(4,T))
 					new /obj/effect/hotspot(turf)
+				volume*=1.4
 
 			if (2501 to 5000)
 				for(var/turf/turf in range(5,T))
 					new /obj/effect/hotspot(turf)
+				volume*=1.5
 
 			if (5001 to INFINITY)
 				for(var/turf/turf in range(6,T))
 					new /obj/effect/hotspot(turf)
+				volume*=1.6
 
 
 	message_admins("Fermi explosion at [T], with a temperature of [temp], pH of [pH], Impurity tot of [ImpureTot].")
@@ -69,21 +76,22 @@
 	var/datum/effect_system/smoke_spread/chem/s = new()
 	R.my_atom = my_atom //Give the gas a fingerprint
 
-	for (var/datum/reagent/reagent in my_atom.reagents.reagent_list) //make gas for reagents, has to be done this way, otherwise it never stops Exploding
-		R.add_reagent(reagent.id, reagent.volume/3) //Seems fine? I think I fixed the infinite explosion bug.
+	for (var/A in R0.reagent_list) //make gas for reagents, has to be done this way, otherwise it never stops Exploding
+		var/datum/reagent/R2 = A
+		R.add_reagent(R2.type, R2.volume/3) //Seems fine? I think I fixed the infinite explosion bug.
 
-		if (reagent.purity < 0.6)
-			ImpureTot = (ImpureTot + (1-reagent.purity)) / 2
+		if (R2.purity < 0.6)
+			ImpureTot = (ImpureTot + (1-R2.purity)) / 2
 
 	if(pH < 4) //if acidic, make acid spray
-		R.add_reagent("fermiAcid", (volume/3))
+		R.add_reagent(/datum/reagent/impure/fermiTox, (volume/3))
 	if(R.reagent_list)
 		s.set_up(R, (volume/5), my_atom)
 		s.start()
 
 	if (pH > 10) //if alkaline, small explosion.
 		var/datum/effect_system/reagents_explosion/e = new()
-		e.set_up(round((volume/30)*(pH-9)), T, 0, 0)
+		e.set_up(round((volume/28)*(pH-9)), T, 0, 0)
 		e.start()
 
 	if(!ImpureTot == 0) //If impure, v.small emp (0.6 or less)
@@ -96,9 +104,9 @@
 
 /datum/chemical_reaction/fermi/eigenstate
 	name = "Eigenstasium"
-	id = "eigenstate"
-	results = list("eigenstate" = 0.1)
-	required_reagents = list("bluespace" = 0.1, "stable_plasma" = 0.1, "sugar" = 0.1)
+	id = /datum/reagent/fermi/eigenstate
+	results = list(/datum/reagent/fermi/eigenstate = 1)
+	required_reagents = list(/datum/reagent/bluespace = 1, /datum/reagent/stable_plasma = 1, /datum/reagent/consumable/sugar = 1)
 	mix_message = "the reaction zaps suddenly!"
 	//FermiChem vars:
 	OptimalTempMin 		= 350 // Lower area of bell curve for determining heat based rate reactions
@@ -118,10 +126,10 @@
 	PurityMin			= 0.4 //The minimum purity something has to be above, otherwise it explodes.
 
 /datum/chemical_reaction/fermi/eigenstate/FermiFinish(datum/reagents/holder, var/atom/my_atom)//Strange how this doesn't work but the other does.
-	if(!locate(/datum/reagent/fermi/eigenstate) in my_atom.reagents.reagent_list)
+	var/datum/reagent/fermi/eigenstate/E = locate(/datum/reagent/fermi/eigenstate) in my_atom.reagents.reagent_list
+	if(!E)
 		return
 	var/turf/open/location = get_turf(my_atom)
-	var/datum/reagent/fermi/eigenstate/E = locate(/datum/reagent/fermi/eigenstate) in my_atom.reagents.reagent_list
 	if(location)
 		E.location_created = location
 		E.data["location_created"] = location
@@ -130,9 +138,9 @@
 //serum
 /datum/chemical_reaction/fermi/SDGF
 	name = "Synthetic-derived growth factor"
-	id = "SDGF"
-	results = list("SDGF" = 0.3)
-	required_reagents = list("stable_plasma" = 0.15, "clonexadone" = 0.15, "uranium" = 0.15, "synthflesh" = 0.15)
+	id = /datum/reagent/fermi/SDGF
+	results = list(/datum/reagent/fermi/SDGF = 3)
+	required_reagents = list(/datum/reagent/stable_plasma = 1.5, /datum/reagent/medicine/clonexadone = 1.5, /datum/reagent/uranium = 1.5, /datum/reagent/medicine/synthflesh = 1.5)
 	mix_message = "the reaction gives off a blorble!"
 	required_temp = 1
 	//FermiChem vars:
@@ -154,12 +162,16 @@
 
 /datum/chemical_reaction/fermi/SDGF/FermiExplode(datum/reagents, var/atom/my_atom, volume, temp, pH)//Spawns an angery teratoma!
 	var/turf/T = get_turf(my_atom)
-	var/mob/living/simple_animal/slime/S = new(T,"green")
-	S.damage_coeff = list(BRUTE = 0.9 , BURN = 2, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
-	S.name = "Living teratoma"
-	S.real_name = "Living teratoma"
-	S.rabid = 1//Make them an angery boi
-	S.color = "#810010"
+	var/amount_to_spawn = round((volume/100), 1)
+	if(amount_to_spawn <= 0)
+		amount_to_spawn = 1
+	for(var/i in 1 to amount_to_spawn)
+		var/mob/living/simple_animal/slime/S = new(T,"green")
+		S.damage_coeff = list(BRUTE = 0.9 , BURN = 2, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
+		S.name = "Living teratoma"
+		S.real_name = "Living teratoma"
+		S.rabid = 1//Make them an angery boi
+		S.color = "#810010"
 	my_atom.reagents.clear_reagents()
 	var/list/seen = viewers(8, get_turf(my_atom))
 	for(var/mob/M in seen)
@@ -167,9 +179,9 @@
 
 /datum/chemical_reaction/fermi/breast_enlarger
 	name = "Sucubus milk"
-	id = "breast_enlarger"
-	results = list("breast_enlarger" = 0.8)
-	required_reagents = list("salglu_solution" = 0.1, "milk" = 0.1, "synthflesh" = 0.2, "silicon" = 0.3, "aphro" = 0.3)
+	id = /datum/reagent/fermi/breast_enlarger
+	results = list(/datum/reagent/fermi/breast_enlarger = 8)
+	required_reagents = list(/datum/reagent/medicine/salglu_solution = 1, /datum/reagent/consumable/milk = 1, /datum/reagent/medicine/synthflesh = 2, /datum/reagent/silicon = 3, /datum/reagent/drug/aphrodisiac = 3)
 	mix_message = "the reaction gives off a mist of milk."
 	//FermiChem vars:
 	OptimalTempMin 			= 200
@@ -192,8 +204,8 @@
 	var/datum/reagent/fermi/breast_enlarger/BE = locate(/datum/reagent/fermi/breast_enlarger) in my_atom.reagents.reagent_list
 	var/cached_volume = BE.volume
 	if(BE.purity < 0.35)
-		holder.remove_reagent(src.id, cached_volume)
-		holder.add_reagent("BEsmaller", cached_volume)
+		holder.remove_reagent(type, cached_volume)
+		holder.add_reagent(/datum/reagent/fermi/BEsmaller, cached_volume)
 
 
 /datum/chemical_reaction/fermi/breast_enlarger/FermiExplode(datum/reagents, var/atom/my_atom, volume, temp, pH)
@@ -207,9 +219,9 @@
 
 /datum/chemical_reaction/fermi/penis_enlarger
 	name = "Incubus draft"
-	id = "penis_enlarger"
-	results = list("penis_enlarger" = 0.8)
-	required_reagents = list("blood" = 0.5, "synthflesh" = 0.2, "carbon" = 0.2, "aphro" = 0.2, "salglu_solution" = 0.1,)
+	id = /datum/reagent/fermi/penis_enlarger
+	results = list(/datum/reagent/fermi/penis_enlarger = 8)
+	required_reagents = list(/datum/reagent/blood = 5, /datum/reagent/medicine/synthflesh = 2, /datum/reagent/carbon = 2, /datum/reagent/drug/aphrodisiac = 2, /datum/reagent/medicine/salglu_solution = 1)
 	mix_message = "the reaction gives off a spicy mist."
 	//FermiChem vars:
 	OptimalTempMin 			= 200
@@ -241,14 +253,14 @@
 	var/datum/reagent/fermi/penis_enlarger/PE = locate(/datum/reagent/fermi/penis_enlarger) in my_atom.reagents.reagent_list
 	var/cached_volume = PE.volume
 	if(PE.purity < 0.35)
-		holder.remove_reagent(src.id, cached_volume)
-		holder.add_reagent("PEsmaller", cached_volume)
+		holder.remove_reagent(type, cached_volume)
+		holder.add_reagent(/datum/reagent/fermi/PEsmaller, cached_volume)
 
 /datum/chemical_reaction/fermi/astral
 	name = "Astrogen"
-	id = "astral"
-	results = list("astral" = 0.5)
-	required_reagents = list("eigenstate" = 0.1, "plasma" = 0.3, "synaptizine" = 0.1, "aluminium" = 0.5)
+	id = /datum/reagent/fermi/astral
+	results = list(/datum/reagent/fermi/astral = 5)
+	required_reagents = list(/datum/reagent/fermi/eigenstate = 1, /datum/reagent/toxin/plasma = 3, /datum/reagent/medicine/synaptizine = 1, /datum/reagent/aluminium = 5)
 	//FermiChem vars:
 	OptimalTempMin 			= 700
 	OptimalTempMax			= 800
@@ -267,14 +279,12 @@
 	PurityMin 				= 0.25
 
 
-/datum/chemical_reaction/fermi/enthrall/ //check this
+/datum/chemical_reaction/fermi/enthrall //check this
 	name = "MKUltra"
-	id = "enthrall"
-	results = list("enthrall" = 0.5)
-	//required_reagents = list("iron" = 1, "iodine" = 1) Test vars
-	//required_reagents = list("cocoa" = 0.1, "astral" = 0.1, "mindbreaker" = 0.1, "psicodine" = 0.1, "happiness" = 0.1)
-	required_reagents = list("cocoa" = 0.1, "bluespace" = 0.1, "mindbreaker" = 0.1, "psicodine" = 0.1, "happiness" = 0.1) //TEMPORARY UNTIL HEADMINS GIVE THE OKAY FOR MK USE.
-	required_catalysts = list("blood" = 1)
+	id = /datum/reagent/fermi/enthrall
+	results = list(/datum/reagent/fermi/enthrall = 5)
+	required_reagents = list(/datum/reagent/consumable/coco = 1, /datum/reagent/bluespace = 1, /datum/reagent/toxin/mindbreaker = 1, /datum/reagent/medicine/psicodine = 1, /datum/reagent/drug/happiness = 1)
+	required_catalysts = list(/datum/reagent/blood = 1)
 	mix_message = "the reaction gives off a burgundy plume of smoke!"
 	//FermiChem vars:
 	OptimalTempMin 			= 780
@@ -316,7 +326,8 @@
 
 //So slimes can play too.
 /datum/chemical_reaction/fermi/enthrall/slime
-	required_catalysts = list("jellyblood" = 1)
+	id = "enthrall2"
+	required_catalysts = list(/datum/reagent/blood/jellyblood = 1)
 
 /datum/chemical_reaction/fermi/enthrall/slime/FermiFinish(datum/reagents/holder, var/atom/my_atom)
 	var/datum/reagent/blood/jellyblood/B = locate(/datum/reagent/blood/jellyblood) in my_atom.reagents.reagent_list//The one line change.
@@ -341,16 +352,16 @@
 	var/turf/T = get_turf(my_atom)
 	var/datum/reagents/R = new/datum/reagents(1000)
 	var/datum/effect_system/smoke_spread/chem/s = new()
-	R.add_reagent("enthrallExplo", volume)
+	R.add_reagent(/datum/reagent/fermi/enthrallExplo, volume)
 	s.set_up(R, volume/2, T)
 	s.start()
 	my_atom.reagents.clear_reagents()
 
 /datum/chemical_reaction/fermi/hatmium // done
 	name = "Hat growth serum"
-	id = "hatmium"
-	results = list("hatmium" = 0.5)
-	required_reagents = list("ethanol" = 0.1, "nutriment" = 0.3, "cooking_oil" = 0.2, "iron" = 0.1, "gold" = 0.3)
+	id = /datum/reagent/fermi/hatmium
+	results = list(/datum/reagent/fermi/hatmium = 5)
+	required_reagents = list(/datum/reagent/consumable/ethanol = 1, /datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/cooking_oil = 2, /datum/reagent/iron = 1, /datum/reagent/gold = 3)
 	//mix_message = ""
 	//FermiChem vars:
 	OptimalTempMin 	= 500
@@ -370,18 +381,22 @@
 	PurityMin		= 0.5
 
 /datum/chemical_reaction/fermi/hatmium/FermiExplode(src, var/atom/my_atom, volume, temp, pH)
-	var/obj/item/clothing/head/hattip/hat = new /obj/item/clothing/head/hattip(get_turf(my_atom))
-	hat.animate_atom_living()
+	var/amount_to_spawn = round((volume/100), 1)
+	if(amount_to_spawn <= 0)
+		amount_to_spawn = 1
+	for(var/i in 1 to amount_to_spawn)
+		var/obj/item/clothing/head/hattip/hat = new /obj/item/clothing/head/hattip(get_turf(my_atom))
+		hat.animate_atom_living()
 	var/list/seen = viewers(8, get_turf(my_atom))
 	for(var/mob/M in seen)
-		to_chat(M, "<span class='warning'>The makes an off sounding pop, as a hat suddenly climbs out of the beaker!</b></span>")
+		to_chat(M, "<span class='warning'>The [my_atom] makes an off sounding pop, as a hat suddenly climbs out of it!</b></span>")
 	my_atom.reagents.clear_reagents()
 
 /datum/chemical_reaction/fermi/furranium
 	name = "Furranium"
-	id = "furranium"
-	results = list("furranium" = 0.5)
-	required_reagents = list("aphro" = 0.1, "moonsugar" = 0.1, "silver" = 0.2, "salglu_solution" = 0.1)
+	id = /datum/reagent/fermi/furranium
+	results = list(/datum/reagent/fermi/furranium = 5)
+	required_reagents = list(/datum/reagent/drug/aphrodisiac = 1, /datum/reagent/moonsugar = 1, /datum/reagent/silver = 2, /datum/reagent/medicine/salglu_solution = 1)
 	mix_message = "You think you can hear a howl come from the beaker."
 	//FermiChem vars:
 	OptimalTempMin 	= 350
@@ -399,15 +414,19 @@
 	FermiChem 		= TRUE
 	PurityMin		= 0.3
 
+/datum/chemical_reaction/fermi/furranium/organic
+	id = "furranium_organic"
+	required_reagents = list(/datum/reagent/drug/aphrodisiac = 1, /datum/reagent/pax = 1, /datum/reagent/silver = 2, /datum/reagent/medicine/salglu_solution = 1)
+
 //FOR INSTANT REACTIONS - DO NOT MULTIPLY LIMIT BY 10.
 //There's a weird rounding error or something ugh.
 
 //Nano-b-gone
 /datum/chemical_reaction/fermi/nanite_b_gone//done test
 	name = "Naninte bain"
-	id = "nanite_b_gone"
-	results = list("nanite_b_gone" = 4)
-	required_reagents = list("synthflesh" = 1, "uranium" = 1, "iron" = 1, "salglu_solution" = 1)
+	id = /datum/reagent/fermi/nanite_b_gone
+	results = list(/datum/reagent/fermi/nanite_b_gone = 4)
+	required_reagents = list(/datum/reagent/medicine/synthflesh = 1, /datum/reagent/uranium = 1, /datum/reagent/iron = 1, /datum/reagent/medicine/salglu_solution = 1)
 	mix_message = "the reaction gurgles, encapsulating the reagents in flesh before the emp can be set off."
 	required_temp = 450//To force fermireactions before EMP.
 	//FermiChem vars:
@@ -427,9 +446,9 @@
 
 /datum/chemical_reaction/fermi/acidic_buffer//done test
 	name = "Acetic acid buffer"
-	id = "acidic_buffer"
-	results = list("acidic_buffer" = 10) //acetic acid
-	required_reagents = list("salglu_solution" = 1, "ethanol" = 3, "oxygen" = 3, "water" = 3)
+	id = /datum/reagent/fermi/acidic_buffer
+	results = list(/datum/reagent/fermi/acidic_buffer = 10) //acetic acid
+	required_reagents = list(/datum/reagent/medicine/salglu_solution = 1, /datum/reagent/consumable/ethanol = 3, /datum/reagent/oxygen = 3, /datum/reagent/water = 3)
 	//FermiChem vars:
 	OptimalTempMin 	= 250
 	OptimalTempMax 	= 500
@@ -454,10 +473,10 @@
 
 /datum/chemical_reaction/fermi/basic_buffer//done test
 	name = "Ethyl Ethanoate buffer"
-	id = "basic_buffer"
-	results = list("basic_buffer" = 5)
-	required_reagents = list("lye" = 1, "ethanol" = 2, "water" = 2)
-	required_catalysts = list("sacid" = 1) //vagely acetic
+	id = /datum/reagent/fermi/basic_buffer
+	results = list(/datum/reagent/fermi/basic_buffer = 5)
+	required_reagents = list(/datum/reagent/lye = 1, /datum/reagent/consumable/ethanol = 2, /datum/reagent/water = 2)
+	required_catalysts = list(/datum/reagent/toxin/acid = 1) //vagely acetic
 	//FermiChem vars:
 	OptimalTempMin 	= 250
 	OptimalTempMax 	= 500
@@ -486,11 +505,11 @@
 //ChemReactionVars:
 /datum/chemical_reaction/fermi/secretcatchem //DONE
 	name = "secretcatchem"
-	id = "secretcatchem"
-	results = list("secretcatchem" = 0.5)
-	required_reagents = list("stable_plasma" = 0.1, "sugar" = 0.1, "cream" = 0.1, "clonexadone" = 0.1)//Yes this will make a plushie if you don't lucky guess. It'll eat all your reagents too.
-	required_catalysts = list("SDGF" = 1)
-	required_temp = 600
+	id = /datum/reagent/fermi/secretcatchem
+	results = list(/datum/reagent/fermi/secretcatchem = 5)
+	required_reagents = list(/datum/reagent/stable_plasma = 1, /datum/reagent/consumable/sugar = 1, /datum/reagent/consumable/cream = 1, /datum/reagent/medicine/clonexadone = 1)//Yes this will make a kitty if you don't lucky guess. It'll eat all your reagents too.
+	required_catalysts = list(/datum/reagent/fermi/SDGF = 1)
+	required_temp = 500
 	mix_message = "the reaction gives off a meow!"
 	mix_sound = "modular_citadel/sound/voice/merowr.ogg"
 	//FermiChem vars:
@@ -520,8 +539,8 @@
 	HIonRelease 		+= (rand(-25, 25)/100)
 	RateUpLim 			+= (rand(1, 1000)/100)
 	PurityMin 			+= (rand(-1, 1)/10)
-	var/additions = list("aluminium", "silver", "gold", "plasma", "silicon", "uranium", "milk")
-	required_reagents[pick(additions)] = rand(0.1, 0.5)//weird
+	var/picked = pick(/datum/reagent/aluminium, /datum/reagent/silver, /datum/reagent/gold, /datum/reagent/toxin/plasma, /datum/reagent/silicon, /datum/reagent/uranium, /datum/reagent/consumable/milk)
+	required_reagents[picked] = rand(1, 5)//weird
 
 /datum/chemical_reaction/fermi/secretcatchem/FermiFinish(datum/reagents/holder, var/atom/my_atom)
 	SSblackbox.record_feedback("tally", "catgirlium")//log
@@ -539,9 +558,9 @@
 
 /datum/chemical_reaction/fermi/yamerol//done test
 	name = "Yamerol"
-	id = "yamerol"
-	results = list("yamerol" = 1.5)
-	required_reagents = list("perfluorodecalin" = 0.5, "salbutamol" = 0.5, "water" = 0.5)
+	id = /datum/reagent/fermi/yamerol
+	results = list(/datum/reagent/fermi/yamerol = 3)
+	required_reagents = list(/datum/reagent/medicine/perfluorodecalin = 1, /datum/reagent/medicine/salbutamol = 1, /datum/reagent/water = 1)
 	//FermiChem vars:
 	OptimalTempMin 	= 300
 	OptimalTempMax 	= 500
@@ -556,3 +575,28 @@
 	HIonRelease 	= 0.1
 	RateUpLim 		= 2
 	FermiChem 		= TRUE
+
+//Tablesmitium, oh no
+
+/datum/chemical_reaction/fermi/tablesmitium
+	name = "Tablesmitium"
+	id = /datum/reagent/fermi/tablesmitium
+	results = list(/datum/reagent/fermi/tablesmitium = 1)
+	required_reagents = list(/datum/reagent/bluespace = 1, /datum/reagent/uranium = 1, /datum/reagent/consumable/coffee = 1)
+	mix_message = "the reaction... Smells like admin abuse?"
+	//FermiChem vars:
+	OptimalTempMin 		= 500 // Lower area of bell curve for determining heat based rate reactions
+	OptimalTempMax		= 600 // Upper end for above
+	ExplodeTemp			= 635 //Temperature at which reaction explodes
+	OptimalpHMin		= 7 // Lowest value of pH determining pH a 1 value for pH based rate reactions (Plateu phase)
+	OptimalpHMax		= 9 // Higest value for above
+	ReactpHLim			= 5 // How far out pH wil react, giving impurity place (Exponential phase)
+	CatalystFact		= 0 // How much the catalyst affects the reaction (0 = no catalyst)
+	CurveSharpT 		= 3 // How sharp the temperature exponential curve is (to the power of value)
+	CurveSharppH 		= 5 // How sharp the pH exponential curve is (to the power of value)
+	ThermicConstant		= 10 //Temperature change per 1u produced
+	HIonRelease 		= -0.02 //pH change per 1u reaction
+	RateUpLim 			= 3 //Optimal/max rate possible if all conditions are perfect
+	FermiChem 			= TRUE//If the chemical uses the Fermichem reaction mechanics
+	FermiExplode 		= FALSE //If the chemical explodes in a special way
+	PurityMin			= 0.4 //The minimum purity something has to be above, otherwise it explodes.

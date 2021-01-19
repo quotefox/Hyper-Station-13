@@ -425,6 +425,90 @@
 	for(var/i in 1 to 6)
 		new /obj/item/reagent_containers/food/snacks/donkpocket(src)
 
+/obj/item/storage/box/donkpockets/donkpocketspicy
+	name = "box of spicy-flavoured donk-pockets"
+	icon_state = "donkpocketboxspicy"
+	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket/spicy
+
+/obj/item/storage/box/donkpockets/donkpocketspicy/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket/spicy))
+
+/obj/item/storage/box/donkpockets/donkpocketspicy/PopulateContents()
+	for(var/i in 1 to 6)
+		new /obj/item/reagent_containers/food/snacks/donkpocket/spicy(src)
+
+/obj/item/storage/box/donkpockets/donkpocketteriyaki
+	name = "box of teriyaki-flavoured donk-pockets"
+	icon_state = "donkpocketboxteriyaki"
+	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket/teriyaki
+
+/obj/item/storage/box/donkpockets/donkpocketteriyaki/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket/teriyaki))
+
+/obj/item/storage/box/donkpockets/donkpocketteriyaki/PopulateContents()
+	for(var/i in 1 to 6)
+		new /obj/item/reagent_containers/food/snacks/donkpocket/teriyaki(src)
+
+/obj/item/storage/box/donkpockets/donkpocketpizza
+	name = "box of pizza-flavoured donk-pockets"
+	icon_state = "donkpocketboxpizza"
+	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket/pizza
+
+/obj/item/storage/box/donkpockets/donkpocketpizza/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket/pizza))
+
+/obj/item/storage/box/donkpockets/donkpocketpizza/PopulateContents()
+	for(var/i in 1 to 6)
+		new /obj/item/reagent_containers/food/snacks/donkpocket/pizza(src)
+
+/obj/item/storage/box/donkpockets/donkpocketgondola
+	name = "box of gondola-flavoured donk-pockets"
+	icon_state = "donkpocketboxgondola"
+	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket/gondola
+
+/obj/item/storage/box/donkpockets/donkpocketgondola/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket/gondola))
+
+/obj/item/storage/box/donkpockets/donkpocketgondola/PopulateContents()
+	for(var/i in 1 to 6)
+		new /obj/item/reagent_containers/food/snacks/donkpocket/gondola(src)
+
+/obj/item/storage/box/donkpockets/donkpocketberry
+	name = "box of berry-flavoured donk-pockets"
+	icon_state = "donkpocketboxberry"
+	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket/berry
+
+/obj/item/storage/box/donkpockets/donkpocketberry/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket/berry))
+
+/obj/item/storage/box/donkpockets/donkpocketberry/PopulateContents()
+	for(var/i in 1 to 6)
+		new /obj/item/reagent_containers/food/snacks/donkpocket/berry(src)
+
+/obj/item/storage/box/donkpockets/donkpockethonk
+	name = "box of banana-flavoured donk-pockets"
+	icon_state = "donkpocketboxbanana"
+	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket/honk
+
+/obj/item/storage/box/donkpockets/donkpockethonk/ComponentInitialize()
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket/honk))
+
+/obj/item/storage/box/donkpockets/donkpockethonk/PopulateContents()
+	for(var/i in 1 to 6)
+		new /obj/item/reagent_containers/food/snacks/donkpocket/honk(src)
+
 /obj/item/storage/box/monkeycubes
 	name = "monkey cube box"
 	desc = "Drymate brand monkey cubes. Just add water!"
@@ -867,7 +951,7 @@
 			if("None")
 				desc = "A sack neatly crafted out of paper."
 			if("NanotrasenStandard")
-				desc = "A standard Nanotrasen paper lunch sack for loyal employees on the go."
+				desc = "A standard Kinaris paper lunch sack for loyal employees on the go."
 			if("SyndiSnacks")
 				desc = "The design on this paper sack is a remnant of the notorious 'SyndieSnacks' program."
 			if("Heart")
@@ -883,12 +967,12 @@
 	else if(W.is_sharp())
 		if(!contents.len)
 			if(item_state == "paperbag_None")
-				user.show_message("<span class='notice'>You cut eyeholes into [src].</span>", 1)
+				user.show_message("<span class='notice'>You cut eyeholes into [src].</span>", MSG_VISUAL)
 				new /obj/item/clothing/head/papersack(user.loc)
 				qdel(src)
 				return FALSE
 			else if(item_state == "paperbag_SmileyFace")
-				user.show_message("<span class='notice'>You cut eyeholes into [src] and modify the design.</span>", 1)
+				user.show_message("<span class='notice'>You cut eyeholes into [src] and modify the design.</span>", MSG_VISUAL)
 				new /obj/item/clothing/head/papersack/smiley(user.loc)
 				qdel(src)
 				return FALSE

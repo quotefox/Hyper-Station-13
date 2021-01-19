@@ -61,7 +61,12 @@
 		/obj/item/clothing/gloves,
 		/obj/item/holosign_creator,
 		/obj/item/forcefield_projector,
-		/obj/item/assembly/signaler
+		/obj/item/assembly/signaler,
+		/obj/item/carpentry/handsaw,
+		/obj/item/carpentry/hammer,
+		/obj/item/carpentry/sandpaper,
+		/obj/item/carpentry/borer,
+		/obj/item/carpentry/glue
 		))
 	STR.can_hold = can_hold
 
@@ -183,12 +188,9 @@
 	content_overlays = FALSE
 
 /obj/item/storage/belt/medical/surgery_belt_adv/PopulateContents()
-	new /obj/item/hemostat/adv(src)
-	new /obj/item/circular_saw/adv(src)
-	new /obj/item/scalpel/adv(src)
-	new /obj/item/retractor/adv(src)
-	new /obj/item/cautery/adv(src)
-	new /obj/item/surgicaldrill/adv(src)
+	new /obj/item/scalpel/advanced(src)
+	new /obj/item/retractor/advanced(src)
+	new /obj/item/surgicaldrill/advanced(src)
 	new /obj/item/surgical_drapes(src)
 
 /obj/item/storage/belt/security
@@ -845,22 +847,12 @@ obj/item/storage/belt/slut/ComponentInitialize()
 	STR.rustle_sound = FALSE
 	STR.max_w_class = WEIGHT_CLASS_BULKY
 	STR.can_hold = typecacheof(fitting_swords)
+	STR.quickdraw = TRUE
 
 /obj/item/storage/belt/sabre/examine(mob/user)
 	. = ..()
 	if(length(contents))
 		. += "<span class='notice'>Alt-click it to quickly draw the blade.</span>"
-
-/obj/item/storage/belt/sabre/AltClick(mob/user)
-	if(!iscarbon(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
-		return
-	if(length(contents))
-		var/obj/item/I = contents[1]
-		user.visible_message("[user] takes [I] out of [src].", "<span class='notice'>You take [I] out of [src].</span>")
-		user.put_in_hands(I)
-		update_icon()
-	else
-		to_chat(user, "[src] is empty.")
 
 /obj/item/storage/belt/sabre/update_icon()
 	. = ..()

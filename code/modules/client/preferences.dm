@@ -144,7 +144,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"balls_cum_rate" = CUM_RATE,
 		"balls_cum_mult" = CUM_RATE_MULT,
 		"balls_efficiency" = CUM_EFFICIENCY,
-		"balls_fluid" = "semen",
+		"balls_fluid" = /datum/reagent/consumable/semen,
 		"has_ovi" = FALSE,
 		"ovi_shape" = "knotted",
 		"ovi_length" = 6,
@@ -159,7 +159,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"breasts_color" = "fff",
 		"breasts_size" = "C",
 		"breasts_shape" = "Pair",
-		"breasts_fluid" = "milk",
+		"breasts_fluid" = /datum/reagent/consumable/milk,
 		"breasts_producing" = FALSE,
 		"has_vag" = FALSE,
 		"vag_shape" = "Human",
@@ -171,7 +171,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"womb_cum_rate" = CUM_RATE,
 		"womb_cum_mult" = CUM_RATE_MULT,
 		"womb_efficiency" = CUM_EFFICIENCY,
-		"womb_fluid" = "femcum",
+		"womb_fluid" = /datum/reagent/consumable/femcum,
 		"ipc_screen" = "Sunburst",
 		"ipc_antenna" = "None",
 		"flavor_text" = ""
@@ -182,17 +182,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// Medical record note section
 	var/medical_records
 
+	var/custom_speech_verb = "default" //if your say_mod is to be something other than your races
+	var/custom_tongue = "default" //if your tongue is to be something other than your races
+
 	var/list/custom_names = list()
 	var/preferred_ai_core_display = "Blue"
 	var/prefered_security_department = SEC_DEPT_RANDOM
 	var/custom_species = null
 
-		//Quirk list
-	var/list/positive_quirks = list()
-	var/list/negative_quirks = list()
-	var/list/neutral_quirks = list()
 	var/list/all_quirks = list()
-	var/list/character_quirks = list()
 
 		//Jobs, uses bitflags
 	var/job_civilian_high = 0
@@ -228,6 +226,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/uplink_spawn_loc = UPLINK_PDA
 
+	var/sprint_spacebar = FALSE
+	var/sprint_toggle = FALSE
+
 	var/list/exp = list()
 	var/list/menuoptions
 
@@ -239,6 +240,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/list/bgstate_options = list("000", "midgrey", "hiro", "FFF", "white", "steel", "techmaint", "dark", "plating", "reinforced")
 
 	var/show_mismatched_markings = FALSE //determines whether or not the markings lists should show markings that don't match the currently selected species. Intentionally left unsaved.
+	var/hide_ckey = FALSE //pref for hiding if your ckey shows round-end or not
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -367,6 +369,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "[medical_records]"
 			else
 				dat += "[TextPreview(medical_records)]...<BR>"
+			dat += "<br><a href='?_src_=prefs;preference=hide_ckey;task=input'><b>Hide ckey: [hide_ckey ? "Enabled" : "Disabled"]</b></a><br>"
 			dat += "</tr></table>"
 
 		//Character Appearance
@@ -452,6 +455,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "</td>"
 			else if(use_skintones || mutant_colors)
 				dat += "</td>"
+
+			dat += APPEARANCE_CATEGORY_COLUMN
+			dat += "<h2>Speech preferences</h2>"
+			dat += "<b>Custom Speech Verb:</b><BR>"
+			dat += "</b><a style='display:block;width:100px' href='?_src_=prefs;preference=speech_verb;task=input'>[custom_speech_verb]</a><BR>"
+			dat += "<b>Custom Tongue:</b><BR>"
+			dat += "</b><a style='display:block;width:100px' href='?_src_=prefs;preference=tongue;task=input'>[custom_tongue]</a><BR>"
 
 			if(HAIR in pref_species.species_traits)
 
@@ -820,7 +830,22 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							dat += "<span style='border: 1px solid #161616; background-color: #[features["balls_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=balls_color;task=input'>Change</a><br>"
 						//dat += "<b>Ball Circumference:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=balls_size;task=input'>[features["balls_size"]] inch(es)</a>" // The menu works but doesn't do anything yet. Need to figure it out.
 						dat += "<b>Testicles showing:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_shape;task=input'>[features["balls_shape"]]</a>"
-						dat += "<b>Produces:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>[features["balls_fluid"]]</a>"
+						dat += "<b>Produces:</b>"
+						switch(features["balls_fluid"])
+							if(/datum/reagent/consumable/milk)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Milk</a>"
+							if(/datum/reagent/water)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Water</a>"
+							if(/datum/reagent/consumable/semen)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Semen</a>"
+							if(/datum/reagent/consumable/femcum)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Femcum</a>"
+							if(/datum/reagent/consumable/alienhoney)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Honey</a>"
+							else
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Nothing?</a>"
+							//This else is a safeguard for errors, and if it happened, they wouldn't be able to change this pref,
+							//DO NOT REMOVE IT UNLESS YOU HAVE A GOOD IDEA
 				dat += APPEARANCE_CATEGORY_COLUMN
 				dat += "<h3>Vagina</h3>"
 				dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_vag'>[features["has_vag"] == TRUE ? "Yes" : "No"]</a>"
@@ -850,7 +875,22 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Breast Shape:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_shape;task=input'>[features["breasts_shape"]]</a>"
 					dat += "<b>Lactates:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_producing'>[features["breasts_producing"] == TRUE ? "Yes" : "No"]</a>"
 					if(features["breasts_producing"] == TRUE)
-						dat += "<b>Produces:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>[features["breasts_fluid"]]</a>"
+						dat += "<b>Produces:</b>"
+						switch(features["breasts_fluid"])
+							if(/datum/reagent/consumable/milk)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Milk</a>"
+							if(/datum/reagent/water)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Water</a>"
+							if(/datum/reagent/consumable/semen)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Semen</a>"
+							if(/datum/reagent/consumable/femcum)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Femcum</a>"
+							if(/datum/reagent/consumable/alienhoney)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Honey</a>"
+							else
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Nothing?</a>"
+							//This else is a safeguard for errors, and if it happened, they wouldn't be able to change this pref,
+							//DO NOT REMOVE IT UNLESS YOU HAVE A GOOD IDEA
 
 				dat += "</td>"
 			dat += "</td>"
@@ -983,6 +1023,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "</a><br>"
 			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'>[ambientocclusion ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Fit Viewport:</b> <a href='?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
+			dat += "<b>Sprint Key:</b> <a href='?_src_=prefs;preference=sprint_key'>[sprint_spacebar ? "Space" : "Shift"]</a><br>"
+			dat += "<b>Toggle Sprint:</b> <a href='?_src_=prefs;preference=sprint_toggle'>[sprint_toggle ? "Enabled" : "Disabled"]</a><br>"
 
 			if (CONFIG_GET(flag/maprotation) && CONFIG_GET(flag/tgstyle_maprotation))
 				var/p_map = preferred_map
@@ -1385,7 +1427,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		dat += "<center><a href='?_src_=prefs;preference=trait;task=close'>Done</a></center>"
 		dat += "<hr>"
 		dat += "<center><b>Current quirks:</b> [all_quirks.len ? all_quirks.Join(", ") : "None"]</center>"
-		dat += "<center>[positive_quirks.len] / [MAX_QUIRKS] max positive quirks<br>\
+		dat += "<center>[GetPositiveQuirkCount()] / [MAX_QUIRKS] max positive quirks<br>\
 		<b>Quirk balance remaining:</b> [GetQuirkBalance()]</center><br>"
 		for(var/V in SSquirks.quirks)
 			var/datum/quirk/T = SSquirks.quirks[V]
@@ -1416,12 +1458,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				<font color='red'><b>LOCKED: [lock_reason]</b></font><br>"
 			else
 				if(has_quirk)
-					dat += "<b><font color='[font_color]'>[quirk_name]</font></b> - [initial(T.desc)] \
-					<a href='?_src_=prefs;preference=trait;task=update;trait=[quirk_name]'>[has_quirk ? "Lose" : "Take"] ([quirk_cost] pts.)</a><br>"
+					dat += "<a href='?_src_=prefs;preference=trait;task=update;trait=[quirk_name]'>[has_quirk ? "Remove" : "Take"] ([quirk_cost] pts.)</a> \
+					<b><font color='[font_color]'>[quirk_name]</font></b> - [initial(T.desc)]<br>"
 				else
-					dat += "<font color='[font_color]'>[quirk_name]</font> - [initial(T.desc)] \
-					<a href='?_src_=prefs;preference=trait;task=update;trait=[quirk_name]'>[has_quirk ? "Lose" : "Take"] ([quirk_cost] pts.)</a><br>"
-		dat += "<br><center><a href='?_src_=prefs;preference=trait;task=reset'>Reset Traits</a></center>"
+					dat += "<a href='?_src_=prefs;preference=trait;task=update;trait=[quirk_name]'>[has_quirk ? "Remove" : "Take"] ([quirk_cost] pts.)</a> \
+					<font color='[font_color]'>[quirk_name]</font> - [initial(T.desc)]<br>"
+		dat += "<br><center><a href='?_src_=prefs;preference=trait;task=reset'>Reset Quirks</a></center>"
 
 	var/datum/browser/popup = new(user, "mob_occupation", "<div align='center'>Quirk Preferences</div>", 900, 600) //no reason not to reuse the occupation window, as it's cleaner that way
 	popup.set_window_options("can_close=0")
@@ -1434,6 +1476,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		var/datum/quirk/T = SSquirks.quirks[V]
 		bal -= initial(T.value)
 	return bal
+
+/datum/preferences/proc/GetPositiveQuirkCount()
+	. = 0
+	for(var/q in all_quirks)
+		if(SSquirks.quirk_points[q] > 0)
+			.++
 
 /datum/preferences/Topic(href, href_list, hsrc)			//yeah, gotta do this I guess..
 	. = ..()
@@ -1522,42 +1570,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							to_chat(user, "<span class='danger'>[quirk] is incompatible with [Q].</span>")
 							return
 				var/value = SSquirks.quirk_points[quirk]
-				if(value == 0)
-					if(quirk in neutral_quirks)
-						neutral_quirks -= quirk
-						all_quirks -= quirk
-					else
-						neutral_quirks += quirk
-						all_quirks += quirk
+				var/balance = GetQuirkBalance()
+				if(quirk in all_quirks)
+					if(balance + value < 0)
+						to_chat(user, "<span class='warning'>Refunding this would cause you to go below your balance!</span>")
+						return
+					all_quirks -= quirk
 				else
-					var/balance = GetQuirkBalance()
-					if(quirk in positive_quirks)
-						positive_quirks -= quirk
-						all_quirks -= quirk
-					else if(quirk in negative_quirks)
-						if(balance + value < 0)
-							to_chat(user, "<span class='warning'>Refunding this would cause you to go below your balance!</span>")
-							return
-						negative_quirks -= quirk
-						all_quirks -= quirk
-					else if(value > 0)
-						if(positive_quirks.len >= MAX_QUIRKS)
-							to_chat(user, "<span class='warning'>You can't have more than [MAX_QUIRKS] positive quirks!</span>")
-							return
-						if(balance - value < 0)
-							to_chat(user, "<span class='warning'>You don't have enough balance to gain this quirk!</span>")
-							return
-						positive_quirks += quirk
-						all_quirks += quirk
-					else
-						negative_quirks += quirk
-						all_quirks += quirk
+					if(GetPositiveQuirkCount() >= MAX_QUIRKS)
+						to_chat(user, "<span class='warning'>You can't have more than [MAX_QUIRKS] positive quirks!</span>")
+						return
+					if(balance - value < 0)
+						to_chat(user, "<span class='warning'>You don't have enough balance to gain this quirk!</span>")
+						return
+					all_quirks += quirk
 				SetQuirks(user)
 			if("reset")
 				all_quirks = list()
-				positive_quirks = list()
-				negative_quirks = list()
-				neutral_quirks = list()
 				SetQuirks(user)
 			else
 				SetQuirks(user)
@@ -1639,7 +1668,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("name")
 					var/new_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
 					if(new_name)
-						new_name = reject_bad_name(new_name)
+						new_name = reject_bad_name(new_name, TRUE)
 						if(new_name)
 							real_name = new_name
 						else
@@ -1661,10 +1690,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						medical_records = rec
 
 				if("flavor_text")
-					var/msg = stripped_multiline_input(usr, "Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Flavor Text", html_decode(features["flavor_text"]), MAX_MESSAGE_LEN*2, TRUE)
-					if(!isnull(msg))
-						msg = copytext(msg, 1, MAX_MESSAGE_LEN*2)
+					var/msg = stripped_multiline_input(usr, "Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Flavor Text", html_decode(features["flavor_text"]), MAX_MESSAGE_LEN, TRUE)
+					if(msg)
+						msg = msg
 						features["flavor_text"] = msg
+
+				if("hide_ckey")
+					hide_ckey = !hide_ckey
+					if(user)
+						user.mind?.hide_ckey = hide_ckey
 
 				if("hair")
 					var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference","#"+hair_color) as color|null
@@ -2145,8 +2179,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("balls_fluid")
 					var/new_shape
 					new_shape = input(user, "Balls Fluid", "Character Preference") as null|anything in GLOB.genital_fluids_list
-					if(new_shape)
-						features["balls_fluid"] = new_shape
+					switch(new_shape)
+						if("Milk")
+							features["balls_fluid"] = /datum/reagent/consumable/milk
+						if("Water")
+							features["balls_fluid"] = /datum/reagent/water
+						if("Semen")
+							features["balls_fluid"] = /datum/reagent/consumable/semen
+						if("Femcum")
+							features["balls_fluid"] = /datum/reagent/consumable/femcum
+						if("Honey")
+							features["balls_fluid"] = /datum/reagent/consumable/alienhoney
 
 				if("egg_size")
 					var/new_size
@@ -2179,8 +2222,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("breasts_fluid")
 					var/new_shape
 					new_shape = input(user, "Breast Fluid", "Character Preference") as null|anything in GLOB.genital_fluids_list
-					if(new_shape)
-						features["breasts_fluid"] = new_shape
+					switch(new_shape)
+						if("Milk")
+							features["breasts_fluid"] = /datum/reagent/consumable/milk
+						if("Water")
+							features["breasts_fluid"] = /datum/reagent/water
+						if("Semen")
+							features["breasts_fluid"] = /datum/reagent/consumable/semen
+						if("Femcum")
+							features["breasts_fluid"] = /datum/reagent/consumable/femcum
+						if("Honey")
+							features["breasts_fluid"] = /datum/reagent/consumable/alienhoney
 
 				if("breasts_color")
 					var/new_breasts_color = input(user, "Breast Color:", "Character Preference") as color|null
@@ -2300,7 +2352,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/desiredlength = input(user, "Choose the max character length of shown Runechat messages. Valid range is 1 to [CHAT_MESSAGE_MAX_LENGTH] (default: [initial(max_chat_length)]))", "Character Preference", max_chat_length)  as null|num
 					if (!isnull(desiredlength))
 						max_chat_length = clamp(desiredlength, 1, CHAT_MESSAGE_MAX_LENGTH)
-
+				if("tongue")
+					var/selected_custom_tongue = input(user, "Choose your desired tongue (none means your species tongue)", "Character Preference") as null|anything in GLOB.roundstart_tongues
+					if(selected_custom_tongue)
+						custom_tongue = selected_custom_tongue
+				if("speech_verb")
+					var/selected_custom_speech_verb = input(user, "Choose your desired speech verb (none means your species speech verb)", "Character Preference") as null|anything in GLOB.speech_verbs
+					if(selected_custom_speech_verb)
+						custom_speech_verb = selected_custom_speech_verb
 		else
 			switch(href_list["preference"])
 				//CITADEL PREFERENCES EDIT - I can't figure out how to modularize these, so they have to go here. :c -Pooj
@@ -2482,6 +2541,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(auto_fit_viewport && parent)
 						parent.fit_viewport()
 
+				if("sprint_key")
+					sprint_spacebar = !sprint_spacebar
+
+				if("sprint_toggle")
+					sprint_toggle = !sprint_toggle
+
 				if("save")
 					save_preferences()
 					save_character()
@@ -2620,6 +2685,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		character.Digitigrade_Leg_Swap(FALSE)
 	else
 		character.Digitigrade_Leg_Swap(TRUE)
+
+	//speech stuff
+	if(custom_tongue != "default")
+		var/new_tongue = GLOB.roundstart_tongues[custom_tongue]
+		if(new_tongue)
+			var/obj/item/organ/tongue/T = character.getorganslot(ORGAN_SLOT_TONGUE)
+			if(T)
+				qdel(T)
+			var/obj/item/organ/tongue/new_custom_tongue = new new_tongue
+			new_custom_tongue.Insert(character)
+	if(custom_speech_verb != "default")
+		character.dna.species.say_mod = custom_speech_verb
 
 	//let's be sure the character updates
 	character.update_body()

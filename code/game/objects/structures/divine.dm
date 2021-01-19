@@ -39,7 +39,7 @@
 		return
 	last_process = world.time
 	to_chat(user, "<span class='notice'>The water feels warm and soothing as you touch it. The fountain immediately dries up shortly afterwards.</span>")
-	user.reagents.add_reagent("godblood",20)
+	user.reagents.add_reagent(/datum/reagent/medicine/omnizine/godblood,20)
 	update_icons()
 	addtimer(CALLBACK(src, .proc/update_icons), time_between_uses)
 

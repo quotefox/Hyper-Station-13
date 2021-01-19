@@ -92,6 +92,7 @@ PROBABILITY SECRET_EXTENDED 0
 PROBABILITY DEVIL 0
 PROBABILITY DEVIL_AGENTS 0
 PROBABILITY CLOWNOPS 0
+PROBABILITY BLOODSUCKER 3
 PROBABILITY WEREWOLF 1
 
 ## You probably want to keep sandbox off by default for secret and random.
@@ -116,6 +117,7 @@ CONTINUOUS CHANGELING
 CONTINUOUS WIZARD
 #CONTINUOUS MONKEY
 #CONTINUOUS WEREWOLF
+CONTINUOUS BLOODSUCKER
 
 ##Note: do not toggle continuous off for these modes, as they have no antagonists and would thus end immediately!
 
@@ -563,6 +565,9 @@ ROUNDSTART_TRAITS
 
 ## A cap on how many monkeys may be created via monkey cubes
 MONKEYCAP 64
+
+## A cap on how many mice can be bred via cheese wedges
+RATCAP 64
 
 ## Uncomment to use TG-style combat
 #DISABLE_STAMBUFFER

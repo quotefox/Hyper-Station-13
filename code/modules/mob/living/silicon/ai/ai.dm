@@ -829,11 +829,11 @@
 	else
 		jobpart = "Unknown"
 
-		var/rendered = "<i><span class='game say'>[start]<span class='name'>[hrefpart][namepart] ([jobpart])</a> </span><span class='message'>[treated_message]</span></span></i>"
-		if (client?.prefs.chat_on_map && (client.prefs.see_chat_non_mob || ismob(speaker)))
-			create_chat_message(speaker, message_language, raw_message, spans, message_mode)
+	var/rendered = "<i><span class='game say'>[start]<span class='name'>[hrefpart][namepart] ([jobpart])</a> </span><span class='message'>[treated_message]</span></span></i>"
+	if (client?.prefs.chat_on_map && (client.prefs.see_chat_non_mob || ismob(speaker)))
+		create_chat_message(speaker, message_language, raw_message, spans, message_mode)
 
-		show_message(rendered, 2)
+	show_message(rendered, MSG_AUDIBLE)
 
 /mob/living/silicon/ai/fully_replace_character_name(oldname,newname)
 	..()

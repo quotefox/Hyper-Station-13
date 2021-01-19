@@ -16,6 +16,13 @@
 
 	. = list("<span class='info'>*---------*\nThis is <EM>[!obscure_name ? name : "Unknown"]</EM>!")
 
+	var/vampDesc = ReturnVampExamine(user) // Vamps recognize the names of other vamps.
+	var/vassDesc = ReturnVassalExamine(user) // Vassals recognize each other's marks.
+	if (vampDesc != "") // If we don't do it this way, we add a blank space to the string...something to do with this -->  . += ""
+		. += vampDesc
+	if (vassDesc != "")
+		. += vassDesc
+
 	var/list/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 
@@ -119,6 +126,11 @@
 	if(can_be_held)
 		. += "[t_He] might be able to be picked up with <b>Alt+Click</b>!\n"
 
+	//Heat Detection
+	if(breedable)
+		if(HAS_TRAIT(src, TRAIT_HEAT))
+			. += "<span class='love'>[t_He] [t_is] currently in heat.</span>"
+
 	//CIT CHANGES START HERE - adds genital details to examine text
 	if(LAZYLEN(internal_organs))
 		for(var/obj/item/organ/genital/dicc in internal_organs)
@@ -155,7 +167,7 @@
 		. += "<span class='deadsay'>It appears that [t_his] brain is missing...</span>"
 
 	var/temp = getBruteLoss() //no need to calculate each of these twice
-	
+
 	var/list/msg = list()
 
 	var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
@@ -252,7 +264,7 @@
 		if(DISGUST_LEVEL_DISGUSTED to INFINITY)
 			msg += "[t_He] look[p_s()] extremely disgusted.\n"
 
-	if(blood_volume < (BLOOD_VOLUME_SAFE*blood_ratio))
+	if(ShowAsPaleExamine())
 		msg += "[t_He] [t_has] pale skin.\n"
 
 	if(bleedsuppress)
@@ -263,7 +275,7 @@
 		else
 			msg += "<B>[t_He] [t_is] bleeding!</B>\n"
 
-	if(reagents.has_reagent("teslium"))
+	if(reagents.has_reagent(/datum/reagent/teslium))
 		msg += "[t_He] [t_is] emitting a gentle blue glow!\n"
 
 	if(islist(stun_absorption))
@@ -286,12 +298,11 @@
 			if(91.01 to INFINITY)
 				msg += "[t_He] [t_is] a shitfaced, slobbering wreck.\n"
 
-	if(reagents.has_reagent("astral"))
-		msg += "[t_He] have wild, spacey eyes"
+	if(reagents.has_reagent(/datum/reagent/fermi/astral))
 		if(mind)
-			msg += " and have a strange, abnormal look to them.\n"
+			msg += " and they have a strange, abnormal look to them.\n"
 		else
-			msg += " and don't look like they're all there.\n"
+			msg += " and they don't look like they're all there.\n"
 
 	if(isliving(user))
 		var/mob/living/L = user
@@ -342,6 +353,7 @@
 
 	if (length(msg))
 		. += "<span class='warning'>[msg.Join("")]</span>"
+	msg += common_trait_examine()
 
 	var/traitstring = get_trait_string()
 	if(ishuman(user))

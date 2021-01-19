@@ -14,6 +14,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	maxbodytemp = INFINITY
 	minbodytemp = 0
+	blood_volume = 0
 	has_unlimited_silicon_privilege = 1
 	sentience_type = SENTIENCE_ARTIFICIAL
 	status_flags = NONE //no default canpush
@@ -302,7 +303,7 @@
 				to_chat(user, "<span class='warning'>Access denied.</span>")
 	else if(istype(W, /obj/item/paicard))
 		insertpai(user, W)
-	else if(istype(W, /obj/item/hemostat) && paicard)
+	else if(W.tool_behaviour == TOOL_HEMOSTAT && paicard)
 		if(open)
 			to_chat(user, "<span class='warning'>Close the access panel before manipulating the personality slot!</span>")
 		else

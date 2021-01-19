@@ -105,7 +105,7 @@
 			visible_message("<span class='danger'>[user] has pressed one of the colorful buttons on [src] and the clown car spews out a cloud of laughing gas.</span>")
 			var/datum/reagents/R = new/datum/reagents(300)
 			R.my_atom = src
-			R.add_reagent("superlaughter", 50)
+			R.add_reagent(/datum/reagent/consumable/superlaughter, 50)
 			var/datum/effect_system/smoke_spread/chem/smoke = new()
 			smoke.set_up(R, 4)
 			smoke.attach(src)
@@ -128,3 +128,24 @@
 
 /obj/vehicle/sealed/car/clowncar/proc/StopDroppingOil()
 	droppingoil = FALSE
+
+/obj/vehicle/sealed/car/clowncar/twitch_plays
+	key_type = null
+
+/obj/vehicle/sealed/car/clowncar/twitch_plays/Initialize()
+	. = ..()
+	AddComponent(/datum/component/twitch_plays/simple_movement)
+	START_PROCESSING(SSfastprocess, src)
+	GLOB.poi_list |= src
+	notify_ghosts("Twitch Plays: Clown Car")
+
+/obj/vehicle/sealed/car/clowncar/twitch_plays/Destroy()
+	STOP_PROCESSING(SSfastprocess, src)
+	GLOB.poi_list -= src
+	return ..()
+
+/obj/vehicle/sealed/car/clowncar/twitch_plays/process()
+	var/dir = SEND_SIGNAL(src, COMSIG_TWITCH_PLAYS_MOVEMENT_DATA, TRUE)
+	if(!dir)
+		return
+	driver_move(null, dir)

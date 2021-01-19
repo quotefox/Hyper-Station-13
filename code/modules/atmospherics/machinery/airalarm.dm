@@ -386,9 +386,10 @@
 			send_signal(device_id, list("checks" = text2num(params["val"])^2), usr)
 			. = TRUE
 		if("set_external_pressure", "set_internal_pressure")
-			var/area/A = get_area(src)
-			var/target = input("New target pressure:", name, A.air_vent_info[device_id][(action == "set_external_pressure" ? "external" : "internal")]) as num|null
-			if(!isnull(target) && !..())
+
+			var/target = params["value"]
+			if(!isnull(target))
+
 				send_signal(device_id, list("[action]" = target), usr)
 				. = TRUE
 		if("reset_external_pressure")
@@ -838,11 +839,11 @@
 	return FALSE
 
 /obj/machinery/airalarm/AltClick(mob/user)
-	..()
+	. = ..()
 	if(!user.canUseTopic(src, !issilicon(user)) || !isturf(loc))
 		return
-	else
-		togglelock(user)
+	togglelock(user)
+	return TRUE
 
 /obj/machinery/airalarm/proc/togglelock(mob/living/user)
 	if(stat & (NOPOWER|BROKEN))

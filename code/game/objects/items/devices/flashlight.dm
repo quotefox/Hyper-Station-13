@@ -255,7 +255,7 @@
 
 /obj/item/flashlight/flare
 	name = "flare"
-	desc = "A red Nanotrasen issued flare. There are instructions on the side, it reads 'pull cord, make light'."
+	desc = "A red Kinaris issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = WEIGHT_CLASS_SMALL
 	brightness_on = 7 // Pretty bright.
 	light_color = "#FA421A"
@@ -267,7 +267,7 @@
 	var/produce_heat = 1500
 	heat = 1000
 	light_color = LIGHT_COLOR_FLARE
-	grind_results = list("sulfur" = 15)
+	grind_results = list(/datum/reagent/sulfur = 15)
 
 /obj/item/flashlight/flare/New()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
@@ -430,7 +430,8 @@
 	color = LIGHT_COLOR_GREEN
 	icon_state = "glowstick"
 	item_state = "glowstick"
-	grind_results = list("phenol" = 15, "hydrogen" = 10, "oxygen" = 5) //Meth-in-a-stick
+	grind_results = list(/datum/reagent/phenol = 15, /datum/reagent/hydrogen = 10, /datum/reagent/oxygen = 5) //Meth-in-a-stick
+	rad_flags = RAD_NO_CONTAMINATE
 	var/fuel = 0
 
 /obj/item/flashlight/glowstick/Initialize()

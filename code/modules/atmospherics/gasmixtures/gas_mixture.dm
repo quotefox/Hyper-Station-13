@@ -15,6 +15,7 @@ GLOBAL_LIST_INIT(meta_gas_overlays, meta_gas_overlay_list())
 GLOBAL_LIST_INIT(meta_gas_dangers, meta_gas_danger_list())
 GLOBAL_LIST_INIT(meta_gas_ids, meta_gas_id_list())
 GLOBAL_LIST_INIT(meta_gas_fusions, meta_gas_fusion_list())
+
 /datum/gas_mixture
 	var/list/gases = list()
 	var/temperature = 0 //kelvins
@@ -337,8 +338,9 @@ GLOBAL_LIST_INIT(meta_gas_fusions, meta_gas_fusion_list())
 	if(!length(cached_gases))
 		return
 	var/list/reactions = list()
-	for(var/I in cached_gases)
-		reactions += SSair.gas_reactions[I]
+	for(var/datum/gas_reaction/G in SSair.gas_reactions)
+		if(cached_gases[G.major_gas])
+			reactions += G
 	if(!length(reactions))
 		return
 	reaction_results = new

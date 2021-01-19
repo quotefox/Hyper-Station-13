@@ -103,7 +103,7 @@
 
 /obj/structure/closet/wardrobe/chaplain_black
 	name = "chapel wardrobe"
-	desc = "It's a storage unit for Nanotrasen-approved religious attire."
+	desc = "It's a storage unit for Kinaris-approved religious attire."
 	icon_door = "black"
 
 /obj/structure/closet/wardrobe/chaplain_black/PopulateContents()

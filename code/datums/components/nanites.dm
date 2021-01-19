@@ -24,7 +24,7 @@
 	if(isliving(parent))
 		host_mob = parent
 
-		if(!(MOB_ORGANIC in host_mob.mob_biotypes) && !(MOB_UNDEAD in host_mob.mob_biotypes)) //Shouldn't happen, but this avoids HUD runtimes in case a silicon gets them somehow.
+		if(MOB_SILICON in host_mob.mob_biotypes) //Shouldn't happen, but this avoids HUD runtimes in case a silicon gets them somehow.
 			return COMPONENT_INCOMPATIBLE
 
 		host_mob.hud_set_nanite_indicator()
@@ -53,7 +53,6 @@
 		RegisterSignal(parent, COMSIG_MOB_ALLOWED, .proc/check_access)
 		RegisterSignal(parent, COMSIG_LIVING_ELECTROCUTE_ACT, .proc/on_shock)
 		RegisterSignal(parent, COMSIG_LIVING_MINOR_SHOCK, .proc/on_minor_shock)
-		RegisterSignal(parent, COMSIG_MOVABLE_HEAR, .proc/on_hear)
 		RegisterSignal(parent, COMSIG_SPECIES_GAIN, .proc/check_viable_biotype)
 		RegisterSignal(parent, COMSIG_NANITE_SIGNAL, .proc/receive_signal)
 
@@ -191,18 +190,13 @@
 		var/datum/nanite_program/NP = X
 		NP.on_death(gibbed)
 
-/datum/component/nanites/proc/on_hear(datum/source, message, atom/movable/speaker, message_language, raw_message, radio_freq, list/spans, message_mode)
-	for(var/X in programs)
-		var/datum/nanite_program/NP = X
-		NP.on_hear(message, speaker, message_language, raw_message, radio_freq, spans, message_mode)
-
 /datum/component/nanites/proc/receive_signal(datum/source, code, source = "an unidentified source")
 	for(var/X in programs)
 		var/datum/nanite_program/NP = X
 		NP.receive_signal(code, source)
 
 /datum/component/nanites/proc/check_viable_biotype()
-	if(!(MOB_ORGANIC in host_mob.mob_biotypes) && !(MOB_UNDEAD in host_mob.mob_biotypes))
+	if((MOB_SILICON in host_mob.mob_biotypes))
 		qdel(src) //bodytype no longer sustains nanites
 
 /datum/component/nanites/proc/check_access(datum/source, obj/O)

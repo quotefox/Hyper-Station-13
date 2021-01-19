@@ -60,7 +60,7 @@
 "aae" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
 /mob/living/simple_animal/hostile/retaliate/bat{
-	desc = "A fierce companion for any person of power, this spider has been carefully trained by Nanotrasen specialists. Its beady, staring eyes send shivers down your spine.";
+	desc = "A fierce companion for any person of power, this spider has been carefully trained by Kinaris specialists. Its beady, staring eyes send shivers down your spine.";
 	emote_hear = list("chitters");
 	faction = list("spiders");
 	harm_intent_damage = 3;
@@ -536,7 +536,6 @@
 /obj/machinery/computer/security/telescreen/entertainment{
 	pixel_y = 32
 	},
-/obj/machinery/vr_sleeper,
 /turf/open/floor/plasteel,
 /area/security/prison)
 "abn" = (
@@ -2360,7 +2359,7 @@
 	dir = 5
 	},
 /obj/structure/sign/warning/securearea{
-	desc = "A warning sign which reads 'WARNING: Do Not Enter When Red Light Shows', detailing the penalties that any Nanotrasen employee or silicon will suffer if violating this rule.";
+	desc = "A warning sign which reads 'WARNING: Do Not Enter When Red Light Shows', detailing the penalties that any Kinaris employee or silicon will suffer if violating this rule.";
 	name = "WARNING: Do Not Enter When Red Light Shows";
 	pixel_y = 32
 	},
@@ -3073,9 +3072,8 @@
 /turf/open/floor/plasteel,
 /area/security/prison)
 "afQ" = (
-/obj/machinery/vr_sleeper,
-/turf/open/floor/plasteel,
-/area/security/prison)
+/turf/closed/mineral/random/low_chance,
+/area/space)
 "afR" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden{
 	dir = 1
@@ -3270,7 +3268,7 @@
 /area/crew_quarters/heads/hos)
 "agj" = (
 /obj/item/phone{
-	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
+	desc = "Supposedly a direct line to Kinaris Central Command. It's not even plugged in.";
 	pixel_x = -3;
 	pixel_y = 3
 	},
@@ -4492,12 +4490,16 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "aiE" = (
-/obj/machinery/vr_sleeper,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
+/obj/structure/closet/crate{
+	name = "Asshole Containment"
 	},
-/turf/open/floor/plasteel,
-/area/crew_quarters/fitness/recreation)
+/obj/item/banhammer,
+/obj/item/toy/plush/mammal/winfre{
+	item_state = "Winfre";
+	name = "Winfre, Destroyer of Fun"
+	},
+/turf/open/floor/plating/asteroid/airless,
+/area/space)
 "aiF" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden{
 	dir = 8
@@ -5602,9 +5604,16 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "akB" = (
-/obj/machinery/vr_sleeper,
-/turf/open/floor/plasteel,
-/area/crew_quarters/fitness/recreation)
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "engsm";
+	name = "radiation shutters"
+	},
+/obj/item/tank/internals/plasma/full,
+/turf/open/floor/plating,
+/area/engine/supermatter)
 "akC" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/machinery/holopad,
@@ -6384,7 +6393,6 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness/recreation)
 "alS" = (
-/obj/machinery/vr_sleeper,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -9886,7 +9894,7 @@
 /area/security/main)
 "ass" = (
 /obj/item/phone{
-	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
+	desc = "Supposedly a direct line to Kinaris Central Command. It's not even plugged in.";
 	pixel_x = -3;
 	pixel_y = 3
 	},
@@ -11113,7 +11121,7 @@
 /turf/open/floor/plating,
 /area/maintenance/port/fore)
 "auE" = (
-/obj/machinery/computer/gulag_teleporter_computer{
+/obj/machinery/computer/prisoner/gulag_teleporter_computer{
 	dir = 1
 	},
 /turf/open/floor/plasteel/dark,
@@ -49340,7 +49348,7 @@
 "bQq" = (
 /obj/structure/table/wood,
 /obj/item/phone{
-	desc = "Supposedly a direct line to Nanotrasen Central Command. It's not even plugged in.";
+	desc = "Supposedly a direct line to Kinaris Central Command. It's not even plugged in.";
 	pixel_x = -3;
 	pixel_y = 3
 	},
@@ -50111,7 +50119,7 @@
 /obj/machinery/power/apc/highcap/five_k{
 	areastring = "/area/bridge/showroom/corporate";
 	dir = 4;
-	name = "Nanotrasen Corporate Showroom APC";
+	name = "Kinaris Corporate Showroom APC";
 	pixel_x = 28
 	},
 /obj/structure/cable/yellow{
@@ -50819,7 +50827,7 @@
 /obj/structure/table/wood,
 /obj/item/toy/plush/carpplushie{
 	color = "red";
-	name = "Nanotrasen wildlife department space carp plushie"
+	name = "Kinaris wildlife department space carp plushie"
 	},
 /turf/open/floor/carpet,
 /area/bridge/showroom/corporate)
@@ -50847,8 +50855,8 @@
 /obj/item/poster/random_official,
 /obj/item/poster/random_official,
 /obj/item/paicard{
-	desc = "A real Nanotrasen success, these personal AIs provide all of the companionship of an AI without any law related red-tape.";
-	name = "Nanotrasen-brand personal AI device exhibit"
+	desc = "A real Kinaris success, these personal AIs provide all of the companionship of an AI without any law related red-tape.";
+	name = "Kinaris-brand personal AI device exhibit"
 	},
 /turf/open/floor/carpet,
 /area/bridge/showroom/corporate)
@@ -51391,8 +51399,8 @@
 "bUK" = (
 /obj/structure/table/wood,
 /obj/item/storage/secure/briefcase{
-	desc = "A large briefcase with a digital locking system, and the Nanotrasen logo emblazoned on the sides.";
-	name = "Nanotrasen-brand secure briefcase exhibit";
+	desc = "A large briefcase with a digital locking system, and the Kinaris logo emblazoned on the sides.";
+	name = "Kinaris-brand secure briefcase exhibit";
 	pixel_y = 2
 	},
 /turf/open/floor/carpet,
@@ -51414,8 +51422,8 @@
 	icon_state = "2-4"
 	},
 /obj/item/toy/beach_ball{
-	desc = "The simple beach ball is one of Nanotrasen's most popular products. 'Why do we make beach balls? Because we can! (TM)' - Nanotrasen";
-	name = "Nanotrasen-brand beach ball";
+	desc = "The simple beach ball is one of Kinaris's most popular products. 'Why do we make beach balls? Because we can! (TM)' - Kinaris";
+	name = "Kinaris-brand beach ball";
 	pixel_y = 7
 	},
 /obj/structure/table/wood,
@@ -51499,7 +51507,7 @@
 	},
 /obj/structure/table/wood,
 /obj/item/toy/talking/AI{
-	name = "Nanotrasen-brand toy AI";
+	name = "Kinaris-brand toy AI";
 	pixel_y = 6
 	},
 /turf/open/floor/carpet,
@@ -58029,7 +58037,7 @@
 	},
 /mob/living/simple_animal/bot/medbot{
 	auto_patrol = 1;
-	desc = "A little medical robot, officially part of the Nanotrasen medical inspectorate. He looks somewhat underwhelmed.";
+	desc = "A little medical robot, officially part of the Kinaris medical inspectorate. He looks somewhat underwhelmed.";
 	name = "Inspector Johnson"
 	},
 /turf/open/floor/plasteel/white,
@@ -62923,6 +62931,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "1-8"
 	},
+/obj/machinery/bloodbankgen,
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
 "cqw" = (
@@ -68690,6 +68699,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/machinery/chem_dispenser,
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/aft)
 "cAR" = (
@@ -77051,11 +77061,10 @@
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
 "cQM" = (
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable/yellow{
 	icon_state = "0-8"
 	},
-/turf/open/floor/plating,
+/turf/closed/wall/r_wall,
 /area/medical/virology)
 "cQN" = (
 /turf/closed/wall,
@@ -77850,7 +77859,6 @@
 /turf/open/floor/plating/airless,
 /area/medical/virology)
 "cSr" = (
-/obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
 	},
@@ -77860,7 +77868,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "0-4"
 	},
-/turf/open/floor/plating,
+/turf/closed/wall/r_wall,
 /area/medical/virology)
 "cSs" = (
 /obj/machinery/atmospherics/components/unary/tank/air{
@@ -105073,7 +105081,7 @@ abl
 abE
 acd
 aax
-afQ
+aaR
 aaR
 aaR
 aaI
@@ -119734,9 +119742,9 @@ acP
 afz
 agz
 ahQ
-aiE
-aiE
-akB
+ahP
+ahP
+alO
 alS
 alS
 aou
@@ -125922,7 +125930,7 @@ aCF
 aDR
 aFi
 aGI
-aIv
+akB
 aJB
 aKP
 aLY
@@ -138453,9 +138461,9 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
+afQ
+afQ
+afQ
 aaa
 aaa
 aaa
@@ -138709,11 +138717,11 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+afQ
+afQ
+afQ
+afQ
+afQ
 aaa
 aaa
 aaa
@@ -138965,13 +138973,13 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+afQ
+afQ
+afQ
+aiE
+afQ
+afQ
+afQ
 aaa
 aaa
 aaa
@@ -139222,12 +139230,12 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
-aaa
-aaa
+afQ
+afQ
+afQ
+afQ
+afQ
+afQ
 aaa
 aaa
 aaa
@@ -139480,10 +139488,10 @@ aaa
 aaa
 aaa
 aaa
-aaa
-aaa
-aaa
-aaa
+afQ
+afQ
+afQ
+afQ
 aaa
 aaa
 aaa

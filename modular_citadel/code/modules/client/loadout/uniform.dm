@@ -467,3 +467,15 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/shortsbra
 	cost = 1
+
+/datum/gear/gladiator
+	name = "Gladiator uniform"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/gladiator
+	cost = 1
+
+/datum/gear/roman
+	name = "Improper Roman armor"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/roman
+	cost = 1

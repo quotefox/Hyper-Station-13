@@ -158,6 +158,7 @@
 		to_chat(user, "<span class='notice'>You take \a [W] out of the pack.</span>")
 	else
 		to_chat(user, "<span class='notice'>There are no [icon_type]s left in the pack.</span>")
+	return TRUE
 
 /obj/item/storage/fancy/cigarettes/update_icon()
 	if(fancy_open || !contents.len)
@@ -274,7 +275,7 @@
 
 /obj/item/storage/fancy/rollingpapers
 	name = "rolling paper pack"
-	desc = "A pack of Nanotrasen brand rolling papers."
+	desc = "A pack of Kinaris brand rolling papers."
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cig_paper_pack"
