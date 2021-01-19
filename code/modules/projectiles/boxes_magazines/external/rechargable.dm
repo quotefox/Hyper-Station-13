@@ -27,8 +27,8 @@
 
 	var/list/modes = list()
 
-/obj/item/ammo_box/magazine/mws_mag/update_overlays()
-	.=..()
+/obj/item/ammo_box/magazine/mws_mag/update_icon()
+	cut_overlays()
 	if(!stored_ammo.len)
 		return //Why bother
 
@@ -37,13 +37,14 @@
 	for(var/B in stored_ammo)
 		var/obj/item/ammo_casing/mws_batt/batt = B
 		var/mutable_appearance/cap = mutable_appearance(icon, "[initial(icon_state)]_cap", color = batt.type_color)
+		cap.color = batt.type_color
 		cap.pixel_x = current * x_offset //Caps don't need a pixel_y offset
-		. += cap
+		add_overlay(cap)
 		if(batt.cell.charge > 0)
 			var/ratio = CEILING(clamp(batt.cell.charge / batt.cell.maxcharge, 0, 1) * 4, 1) //4 is how many lights we have a sprite for
 			var/mutable_appearance/charge = mutable_appearance(icon, "[initial(icon_state)]_charge-[ratio]", color =  "#29EAF4") //Could use battery color but eh.
 			charge.pixel_x = current * x_offset
-			. += charge
+			add_overlay(charge)
 
 		current++ //Increment for offsets
 
@@ -74,11 +75,11 @@
 	cell.give(cell.maxcharge)
 	update_icon()
 
-/obj/item/ammo_casing/mws_batt/update_overlays()
-	.=..()
-
+/obj/item/ammo_casing/mws_batt/update_icon()
+	cut_overlays()
 	var/mutable_appearance/ends = mutable_appearance(icon, "[initial(icon_state)]_ends", color = type_color)
-	. += ends
+	ends.color = type_color
+	add_overlay(ends)
 
 /obj/item/ammo_casing/mws_batt/get_cell()
 	return cell

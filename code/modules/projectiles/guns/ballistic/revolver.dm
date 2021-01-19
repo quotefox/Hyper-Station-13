@@ -445,8 +445,8 @@
 			chambered = null
 		update_icon()
 
-/obj/item/gun/ballistic/revolver/mws/update_overlays()
-	.=..()
+/obj/item/gun/ballistic/revolver/mws/update_icon()
+	cut_overlays()
 	if(!chambered)
 		return
 
@@ -456,16 +456,17 @@
 	//Mode bar
 	var/image/mode_bar = image(icon, icon_state = "[initial(icon_state)]_type")
 	mode_bar.color = batt_color
-	. += mode_bar
+	add_overlay(mode_bar)
 
 	//Barrel color
 	var/mutable_appearance/barrel_color = mutable_appearance(icon, "[initial(icon_state)]_barrel", color = batt_color)
 	barrel_color.alpha = 150
-	. += barrel_color
+	add_overlay(barrel_color)
 
 	//Charge bar
 	var/ratio = can_shoot() ? CEILING(clamp(batt.cell.charge / batt.cell.maxcharge, 0, 1) * charge_sections, 1) : 0
 	for(var/i = 0, i < ratio, i++)
 		var/mutable_appearance/charge_bar = mutable_appearance(icon,  "[initial(icon_state)]_charge", color = batt_color)
 		charge_bar.pixel_x = i
-		. += charge_bar 
+		charge_bar.color = batt_color
+		add_overlay(charge_bar)

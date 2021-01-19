@@ -95,7 +95,7 @@
 		zoom(user, FALSE) //we can only stay zoomed in if it's in our hands	//yeah and we only unzoom if we're actually zoomed using the gun!!
 
 //called after the gun has successfully fired its chambered ammo.
-/obj/item/gun/proc/process_chamber(mob/living/user))
+/obj/item/gun/proc/process_chamber(mob/living/user)
 	return FALSE
 
 //check if there's enough ammo/energy/whatever to shoot one time

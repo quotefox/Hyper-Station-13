@@ -18,7 +18,7 @@
 		/obj/item/modular_computer,
 		/obj/item/gun/ballistic/automatic/magrifle_e,
 		/obj/item/gun/ballistic/automatic/pistol/mag_e,
-		/obj/item/ammo_casing/msw_batt,
+		/obj/item/ammo_casing/mws_batt,
 		/obj/item/ammo_box/magazine/mws_mag))
 
 /obj/machinery/recharger/RefreshParts()
