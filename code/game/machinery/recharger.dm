@@ -17,7 +17,9 @@
 		/obj/item/ammo_box/magazine/recharge,
 		/obj/item/modular_computer,
 		/obj/item/gun/ballistic/automatic/magrifle_e,
-		/obj/item/gun/ballistic/automatic/pistol/mag_e))
+		/obj/item/gun/ballistic/automatic/pistol/mag_e,
+		/obj/item/ammo_casing/msw_batt,
+		/obj/item/ammo_box/magazine/mws_mag))
 
 /obj/machinery/recharger/RefreshParts()
 	for(var/obj/item/stock_parts/capacitor/C in component_parts)
@@ -121,6 +123,29 @@
 				using_power = 1
 			update_icon(using_power)
 			return
+
+		if(istype(charging, /obj/item/ammo_casing/mws_batt))
+			var/obj/item/ammo_casing/mws_batt/R = charging
+			if(R.cell.charge < R.cell.maxcharge)
+				R.cell.give(R.cell.chargerate * recharge_coeff)
+				use_power(250 * recharge_coeff)
+				using_power = 1
+			if(R.BB == null)
+				R.chargeshot()
+			update_icon(using_power)
+
+		if(istype(charging, /obj/item/ammo_box/magazine/mws_mag))
+			var/obj/item/ammo_box/magazine/mws_mag/R = charging
+			for(var/B in R.stored_ammo)
+				var/obj/item/ammo_casing/mws_batt/batt = B
+				if(batt.cell.charge < batt.cell.maxcharge)
+					batt.cell.give(batt.cell.chargerate * recharge_coeff)
+					use_power(250 * recharge_coeff)
+					using_power = 1
+				if(batt.BB == null)
+					batt.chargeshot()
+			update_icon(using_power)
+		
 	else
 		return PROCESS_KILL
 
