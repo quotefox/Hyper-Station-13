@@ -319,7 +319,7 @@ GLOBAL_LIST_INIT(frying_bad_chems, list(
 
 /obj/item/reagent_containers/food/snacks/store/bread/tumor_bread
 	name = "dead tumor bread"
-	desc = "It's still within its expiration date, right?."
+	desc = "It's still within its expiration date, right?"
 	icon_state = "tumorbread"
 	slice_path = /obj/item/reagent_containers/food/snacks/breadslice/tumor_bread
 	list_reagents = list(/datum/reagent/consumable/nutriment = 10, /datum/reagent/toxin = 10)

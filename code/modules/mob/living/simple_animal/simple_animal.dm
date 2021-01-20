@@ -303,7 +303,7 @@
 /mob/living/simple_animal/proc/drop_loot()
 	if(loot.len)
 		for(var/i in loot)
-			new i(loc, dir = src.dir)
+			new i(loc)
 
 /mob/living/simple_animal/death(gibbed)
 	movement_type &= ~FLYING
