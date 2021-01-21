@@ -169,7 +169,7 @@
 	if (!megafauna_spawn_list)
 		megafauna_spawn_list = list(/mob/living/simple_animal/hostile/megafauna/dragon = 4, /mob/living/simple_animal/hostile/megafauna/colossus = 2, /mob/living/simple_animal/hostile/megafauna/bubblegum = SPAWN_BUBBLEGUM)
 	if (!flora_spawn_list)
-		flora_spawn_list = list(/obj/structure/flora/ash/leaf_shroom = 2 , /obj/structure/flora/ash/cap_shroom = 2 , /obj/structure/flora/ash/stem_shroom = 2 , /obj/structure/flora/ash/cacti = 1, /obj/structure/flora/ash/tall_shroom = 2)
+		flora_spawn_list = list(/obj/structure/flora/ash/leaf_shroom = 2 , /obj/structure/flora/ash/cap_shroom = 2 , /obj/structure/flora/ash/stem_shroom = 2 , /obj/structure/flora/ash/cacti = 1, /obj/structure/flora/ash/tall_shroom = 2, /obj/structure/flora/redgrass/redg = 1)
 
 	. = ..()
 
@@ -283,7 +283,7 @@
 				return //if the random is a standard mob, avoid spawning if there's another one within 12 tiles
 			if((ispath(randumb, /obj/structure/spawner/lavaland) || istype(H, /obj/structure/spawner/lavaland)) && get_dist(src, H) <= 2)
 				return //prevents tendrils spawning in each other's collapse range
-				
+
 		for (var/area/L in range(8, T))
 			if (istype(L, /area/lavaland/surface/outdoors/) && !istype(L, /area/lavaland/surface/outdoors/unexplored)\
 				&& istype(L, /area/ruin) && istype(randumb, /mob/living/simple_animal/hostile/megafauna))
