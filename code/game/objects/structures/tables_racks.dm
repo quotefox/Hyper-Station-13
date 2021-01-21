@@ -319,6 +319,56 @@
 		S.color = NARSIE_WINDOW_COLOUR
 
 /*
+ * Shadow wood tables
+ */
+
+/obj/structure/table/shadoww
+	name = "Shadow wood table"
+	desc = "Do not apply fire to this. Rumour says it burns easily."
+	icon = 'icons/obj/smooth_structures/shadoww_table.dmi'
+	icon_state = "wood_table"
+	frame = /obj/structure/table_frame/shadoww
+	framestack = /obj/item/stack/sheet/mineral/shadoww
+	buildstack = /obj/item/stack/sheet/mineral/shadoww
+	resistance_flags = FLAMMABLE
+	max_integrity = 70
+	canSmoothWith = null
+
+/*
+ * Plaswood tables
+ */
+
+/obj/structure/table/plaswood
+	name = "plaswood table"
+	desc = "An strong and grey wooden table."
+	icon = 'icons/obj/smooth_structures/plaswood_table.dmi'
+	icon_state = "wood_table"
+	frame = /obj/structure/table_frame/wood
+	framestack = /obj/item/stack/sheet/mineral/plaswood
+	buildstack = /obj/item/stack/sheet/mineral/plaswood
+	resistance_flags = FLAMMABLE
+	max_integrity = 200
+	integrity_failure = 50
+	armor = list("melee" = 10, "bullet" = 30, "laser" = 30, "energy" = 100, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 70)
+	canSmoothWith = null
+
+/*
+ * Mushroom tables
+ */
+
+/obj/structure/table/gmushroom
+	name = "Mushroom table"
+	desc = "A pinkish table. And is fireproof!"
+	icon = 'icons/obj/smooth_structures/gmushroom_table.dmi'
+	icon_state = "gmushroom_table"
+	frame = /obj/structure/table_frame/gmushroom
+	framestack = /obj/item/stack/sheet/mineral/gmushroom
+	buildstack = /obj/item/stack/sheet/mineral/gmushroom
+	resistance_flags = FIRE_PROOF
+	max_integrity = 70
+	canSmoothWith = null
+
+/*
  * Wooden tables
  */
 
