@@ -649,3 +649,4 @@
 		R.add_fingerprint(user)
 		qdel(src)
 	building = FALSE
+

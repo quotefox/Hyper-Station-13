@@ -343,3 +343,4 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	icon_state = "plasmalarge"
 	materials = list(MAT_PLASMA=MINERAL_MATERIAL_AMOUNT * 0.5, MAT_GLASS=MINERAL_MATERIAL_AMOUNT)
 	icon_prefix = "plasma"
+
