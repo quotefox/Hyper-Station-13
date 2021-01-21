@@ -46,7 +46,7 @@
 /obj/machinery/door/airlock/mining
 	name = "mining airlock"
 	assemblytype = /obj/structure/door_assembly/door_assembly_min
-	basecolor = rgb(150,112,50)
+	basecolor = "#e1b919"
 	stripcolor = rgb(95,53,11)
 
 /obj/machinery/door/airlock/atmos
