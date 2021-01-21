@@ -91,7 +91,7 @@
 
 	//colours! modular wow!
 	var/basecolor = ""
-	var/stripcolor = rgb(130,160,90)
+	var/stripcolor = ""
 
 	var/cyclelinkeddir = 0
 	var/obj/machinery/door/airlock/cyclelinkedairlock
@@ -128,7 +128,6 @@
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 		diag_hud.add_to_hud(src)
 	diag_hud_set_electrified()
-
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/door/airlock/LateInitialize()
@@ -157,6 +156,13 @@
 			if(24 to 30)
 				panel_open = TRUE
 	update_icon()
+
+
+/obj/machinery/door/airlock/proc/getrotation() //for auto rotating doors, because im sick of doing it
+	for(var/turf/O in get_step(src,SOUTH))
+		log_mapping("[src]: [O]")
+		if(O.density)
+			log_mapping("[src]: [O] is dense")
 
 /obj/machinery/door/airlock/ComponentInitialize()
 	. = ..()

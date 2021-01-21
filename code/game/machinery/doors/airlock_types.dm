@@ -34,6 +34,7 @@
 	name = "maintenance access"
 	assemblytype = /obj/structure/door_assembly/door_assembly_mai
 	normal_integrity = 250
+	stripcolor = rgb(130,160,90)
 
 /obj/machinery/door/airlock/maintenance/abandoned
 	abandoned = TRUE
