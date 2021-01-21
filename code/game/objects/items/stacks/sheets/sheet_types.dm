@@ -20,8 +20,11 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe_list("seats", \
 		list( \
 		new/datum/stack_recipe("stool", /obj/structure/chair/stool, one_per_turf = TRUE, on_floor = TRUE), \
-		new/datum/stack_recipe("bar stool", /obj/structure/chair/stool/bar, one_per_turf = TRUE, on_floor = TRUE), \
 		new/datum/stack_recipe("chair", /obj/structure/chair, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("dark chair", /obj/structure/chair/dark, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("folding chair", /obj/structure/chair/foldingchair, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("mounted chair", /obj/structure/chair/mountchair, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("bar stool", /obj/structure/chair/stool/bar, one_per_turf = TRUE, on_floor = TRUE), \
 		null, \
 		new/datum/stack_recipe("dark office chair", /obj/structure/chair/office/dark, 5, one_per_turf = TRUE, on_floor = TRUE), \
 		new/datum/stack_recipe("light office chair", /obj/structure/chair/office/light, 5, one_per_turf = TRUE, on_floor = TRUE), \
@@ -30,6 +33,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 		new/datum/stack_recipe("black comfy chair", /obj/structure/chair/comfy/black, 2, one_per_turf = TRUE, on_floor = TRUE), \
 		new/datum/stack_recipe("brown comfy chair", /obj/structure/chair/comfy/brown, 2, one_per_turf = TRUE, on_floor = TRUE), \
 		new/datum/stack_recipe("lime comfy chair", /obj/structure/chair/comfy/lime, 2, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("blue comfy chair", /obj/structure/chair/comfy/blue, 2, one_per_turf = TRUE, on_floor = TRUE), \
 		new/datum/stack_recipe("teal comfy chair", /obj/structure/chair/comfy/teal, 2, one_per_turf = TRUE, on_floor = TRUE) \
 		)), \
 	//CIT CHANGE - adds sofas to metal recipe list
