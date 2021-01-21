@@ -6560,10 +6560,10 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "amT" = (
-/obj/machinery/computer/prisoner,
 /obj/machinery/airalarm{
 	pixel_y = 22
 	},
+/obj/machinery/computer/prisoner/management,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "amU" = (
@@ -9054,7 +9054,6 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "arR" = (
-/obj/machinery/computer/prisoner,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
@@ -9062,6 +9061,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
+/obj/machinery/computer/prisoner/management,
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "arS" = (
@@ -14718,9 +14718,8 @@
 /turf/open/floor/plasteel/white/side,
 /area/crew_quarters/dorms)
 "aDk" = (
-/obj/machinery/vr_sleeper{
-	dir = 8;
-	icon_state = "sleeper"
+/obj/machinery/cryopod{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 8
@@ -56851,13 +56850,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/maintenance/disposal)
-"dbi" = (
-/obj/machinery/vr_sleeper{
-	dir = 8;
-	icon_state = "sleeper"
-	},
-/turf/open/floor/plasteel,
-/area/crew_quarters/dorms)
 "dci" = (
 /obj/structure/rack,
 /obj/item/gun/energy/laser/practice,
@@ -105609,8 +105601,8 @@ fIu
 rTZ
 aIh
 azA
-dbi
-dbi
+rTZ
+rTZ
 aDk
 aEd
 aFb

@@ -566,6 +566,9 @@ ROUNDSTART_TRAITS
 ## A cap on how many monkeys may be created via monkey cubes
 MONKEYCAP 64
 
+## A cap on how many mice can be bred via cheese wedges
+RATCAP 64
+
 ## Uncomment to use TG-style combat
 #DISABLE_STAMBUFFER
 
