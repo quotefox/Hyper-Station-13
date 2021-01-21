@@ -853,6 +853,7 @@
 	item_state = "gunther"
 
 /obj/item/toy/plush/mammal/fox
+	desc = "Wholey shit."
 	icon_state = "fox"
 	item_state = "fox"
 
