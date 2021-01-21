@@ -565,7 +565,7 @@ force_open = FALSE, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.adm
 	qdel(temp_pod) //Delete the temp_pod
 	qdel(selector) //Delete the selector effect
 	. = ..()
-
+  
 /datum/centcom_podlauncher/proc/supplypod_punish_log(var/list/whoDyin)
 	var/podString = effectBurst ? "5 pods" : "a pod"
 	var/whomString = ""

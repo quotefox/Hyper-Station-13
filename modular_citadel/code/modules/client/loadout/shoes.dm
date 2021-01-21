@@ -93,12 +93,22 @@
 	category = SLOT_SHOES
 	path= /obj/item/clothing/shoes/winterboots/santaboots
 
-datum/gear/highheels
+/datum/gear/highheels
 	name = "High Heels"
 	category = SLOT_SHOES
 	path= /obj/item/clothing/shoes/highheels
 
-datum/gear/romansandals
+/datum/gear/romansandals
 	name = "Roman sandals"
 	category = SLOT_SHOES
 	path= /obj/item/clothing/shoes/roman
+
+/datum/gear/cowboyboots
+	name = "Cowboy Boots, Brown"
+	category = SLOT_SHOES
+	path = /obj/item/clothing/shoes/cowboyboots
+
+/datum/gear/cowboyboots/black
+	name = "Cowboy Boots, Black"
+	category = SLOT_SHOES
+	path = /obj/item/clothing/shoes/cowboyboots/black 

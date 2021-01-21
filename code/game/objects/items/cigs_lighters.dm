@@ -562,8 +562,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(!lit)
 			set_lit(TRUE)
 			if(fancy)
-				user.visible_message("Without even breaking stride, [user] flips open and lights [src] in one smooth movement.", "<span class='notice'>Without even breaking stride, you flip open and light [src] in one smooth movement.</span>")
+				user.visible_message("[user] flips open and lights [src].", "<span class='notice'>You flip open and light [src] in one smooth movement.</span>")
+				playsound(user, 'sound/items/zippoopen.ogg', 50, 1, -1)
 			else
+				playsound(user, 'sound/items/lighter.ogg', 50, 1, -1)
 				var/prot = FALSE
 				var/mob/living/carbon/human/H = user
 
@@ -585,7 +587,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		else
 			set_lit(FALSE)
 			if(fancy)
-				user.visible_message("You hear a quiet click, as [user] shuts off [src] without even looking at what [user.p_theyre()] doing. Wow.", "<span class='notice'>You quietly shut off [src] without even looking at what you're doing. Wow.</span>")
+				user.visible_message("You hear a quiet click, as [user] shuts off [src].", "<span class='notice'>You quietly shut off [src].</span>")
+				playsound(user, 'sound/items/zippoclose.ogg', 50, 1, -1)
 			else
 				user.visible_message("[user] quietly shuts off [src].", "<span class='notice'>You quietly shut off [src].</span>")
 	else

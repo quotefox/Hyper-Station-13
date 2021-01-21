@@ -366,9 +366,11 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	if(prob(2 + nearby_people))
 		H.stuttering = max(3, H.stuttering)
-	else if(prob(min(3, nearby_people)) && !H.silent)
-		to_chat(H, "<span class='danger'>You retreat into yourself. You <i>really</i> don't feel up to talking.</span>")
-		H.silent = max(10, H.silent)
+	else if(prob(min(3, nearby_people)) && !H.jitteriness)
+		if (nearby_people > 3) //4 or more people around you is required for you to panic.
+			to_chat(H, "<span class='danger'>You start to panic internally. There are too many people around you!</span>")
+			H.jitteriness = max(5, H.jitteriness)
+			H.stuttering = max(3, H.stuttering)
 	else if(prob(0.5) && dumb_thing)
 		to_chat(H, "<span class='userdanger'>You think of a dumb thing you said a long time ago and scream internally.</span>")
 		dumb_thing = FALSE //only once per life

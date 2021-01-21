@@ -87,6 +87,7 @@
 #define CAT_ROBOT	"Robots"
 #define CAT_MISC	"Misc"
 #define CAT_PRIMAL  "Tribal"
+//#define CAT_CARPENTRY	"Carpentry" need to get this to work
 #define CAT_CLOTHING	"Clothing"
 #define CAT_FOOD	"Foods"
 #define CAT_BREAD	"Breads"

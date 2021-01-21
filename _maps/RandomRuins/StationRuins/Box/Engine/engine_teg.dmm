@@ -165,16 +165,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/engineering)
-"fO" = (
-/obj/machinery/computer/atmos_control/tank/mix_tank{
-	dir = 8;
-	input_tag = "teg_in";
-	name = "TEG Mix Tank Control";
-	output_tag = null;
-	sensors = list("teg_sensor" = "TEG Mix Tank")
-	},
-/turf/open/floor/plasteel,
-/area/engine/engineering)
 "go" = (
 /obj/machinery/portable_atmospherics/canister/toxins,
 /obj/effect/turf_decal/delivery,
@@ -402,9 +392,6 @@
 /area/engine/engineering)
 "nc" = (
 /obj/machinery/atmospherics/pipe/simple/dark/visible,
-/obj/machinery/air_sensor/atmos{
-	id_tag = "teg_sensor"
-	},
 /turf/open/floor/engine/vacuum,
 /area/engine/engineering)
 "nk" = (
@@ -1037,6 +1024,7 @@
 /obj/structure/sign/nanotrasen{
 	pixel_y = -32
 	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "Ei" = (
@@ -1695,11 +1683,11 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "TS" = (
-/obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
 	},
+/obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "Ue" = (
@@ -2553,7 +2541,7 @@ PK
 cK
 Ok
 OK
-fO
+Ok
 aq
 kK
 MP
