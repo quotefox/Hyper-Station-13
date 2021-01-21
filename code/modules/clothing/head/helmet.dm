@@ -13,7 +13,6 @@
 	resistance_flags = NONE
 	flags_cover = HEADCOVERSEYES
 	flags_inv = HIDEHAIR
-
 	dog_fashion = /datum/dog_fashion/head/helmet
 
 /obj/item/clothing/head/helmet/ComponentInitialize()
