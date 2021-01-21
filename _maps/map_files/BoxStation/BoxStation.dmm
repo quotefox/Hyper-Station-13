@@ -1888,7 +1888,7 @@
 "aKp" = (/obj/structure/table/wood,/obj/item/instrument/eguitar,/turf/open/floor/wood,/area/crew_quarters/theatre)
 "aKq" = (/obj/effect/turf_decal/tile/blue,/obj/effect/turf_decal/tile/blue{dir = 8},/obj/machinery/vending/cigarette,/turf/open/floor/plasteel/dark,/area/crew_quarters/bar)
 "aKr" = (/obj/structure/table/wood,/obj/item/instrument/violin,/turf/open/floor/wood,/area/crew_quarters/theatre)
-"aKs" = (/obj/item/twohanded/required/kirbyplants/random,/obj/effect/turf_decal/tile/blue,/obj/effect/turf_decal/tile/blue{dir = 8},/obj/machinery/vending/snack/random,/turf/open/floor/plasteel/dark,/area/crew_quarters/bar)
+"aKs" = (/obj/effect/turf_decal/tile/blue,/obj/effect/turf_decal/tile/blue{dir = 8},/obj/machinery/vending/snack/random,/turf/open/floor/plasteel/dark,/area/crew_quarters/bar)
 "aKt" = (/obj/effect/turf_decal/loading_area{dir = 9; icon_state = "steel_panel"; name = "steel pannel"},/obj/structure/extinguisher_cabinet{pixel_x = -5; pixel_y = 30},/obj/machinery/camera{c_tag = "Bar East"},/turf/open/floor/plasteel/dark,/area/crew_quarters/bar)
 "aKu" = (/obj/structure/disposalpipe/segment,/obj/machinery/atmospherics/pipe/simple/supply/hidden,/turf/open/floor/plasteel/showroomfloor,/area/crew_quarters/kitchen)
 "aKv" = (/obj/machinery/camera{c_tag = "Kitchen Cold Room"},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/obj/structure/reagent_dispensers/cooking_oil,/turf/open/floor/plasteel/showroomfloor,/area/crew_quarters/kitchen)
