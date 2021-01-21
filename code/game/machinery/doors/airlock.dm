@@ -43,7 +43,7 @@
 
 /obj/machinery/door/airlock
 	name = "airlock"
-	icon = 'icons/obj/doors/airlocks/station/public.dmi'
+	icon = 'icons/obj/doors/airlocks/station/base.dmi'
 	icon_state = "closed"
 	max_integrity = 300
 	var/normal_integrity = AIRLOCK_INTEGRITY_N
@@ -86,6 +86,12 @@
 	var/airlock_material //material of inner filling; if its an airlock with glass, this should be set to "glass"
 	var/overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
 	var/note_overlay_file = 'icons/obj/doors/airlocks/station/overlays.dmi' //Used for papers and photos pinned to the airlock
+	var/color_overlay_file = 'icons/obj/doors/airlocks/station/color.dmi'
+	var/strip_overlay_file = 'icons/obj/doors/airlocks/station/strip.dmi'
+
+	//colours! modular wow!
+	var/basecolor = ""
+	var/stripcolor = ""
 
 	var/cyclelinkeddir = 0
 	var/obj/machinery/door/airlock/cyclelinkedairlock
@@ -122,7 +128,6 @@
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 		diag_hud.add_to_hud(src)
 	diag_hud_set_electrified()
-
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/door/airlock/LateInitialize()
@@ -151,6 +156,13 @@
 			if(24 to 30)
 				panel_open = TRUE
 	update_icon()
+
+
+/obj/machinery/door/airlock/proc/getrotation() //for auto rotating doors, because im sick of doing it
+	for(var/turf/O in get_step(src,SOUTH))
+		log_mapping("[src]: [O]")
+		if(O.density)
+			log_mapping("[src]: [O] is dense")
 
 /obj/machinery/door/airlock/ComponentInitialize()
 	. = ..()
@@ -452,11 +464,17 @@
 	var/mutable_appearance/damag_overlay
 	var/mutable_appearance/sparks_overlay
 	var/mutable_appearance/note_overlay
+	var/mutable_appearance/strip_overlay
+	var/mutable_appearance/color_overlay
 	var/notetype = note_type()
 
 	switch(state)
 		if(AIRLOCK_CLOSED)
 			frame_overlay = get_airlock_overlay("closed", icon)
+			color_overlay = get_airlock_overlay("closed", color_overlay_file)
+			strip_overlay = get_airlock_overlay("closed", strip_overlay_file)
+			color_overlay.color = basecolor
+			strip_overlay.color = stripcolor
 			if(airlock_material)
 				filling_overlay = get_airlock_overlay("[airlock_material]_closed", overlays_file)
 			else
@@ -485,6 +503,10 @@
 			if(!hasPower())
 				return
 			frame_overlay = get_airlock_overlay("closed", icon)
+			color_overlay = get_airlock_overlay("closed", color_overlay_file)
+			strip_overlay = get_airlock_overlay("closed", strip_overlay_file)
+			color_overlay.color = basecolor
+			strip_overlay.color = stripcolor
 			if(airlock_material)
 				filling_overlay = get_airlock_overlay("[airlock_material]_closed", overlays_file)
 			else
@@ -527,6 +549,10 @@
 
 		if(AIRLOCK_CLOSING)
 			frame_overlay = get_airlock_overlay("closing", icon)
+			color_overlay = get_airlock_overlay("closing", color_overlay_file)
+			strip_overlay = get_airlock_overlay("closing", strip_overlay_file)
+			color_overlay.color = basecolor
+			strip_overlay.color = stripcolor
 			if(airlock_material)
 				filling_overlay = get_airlock_overlay("[airlock_material]_closing", overlays_file)
 			else
@@ -543,6 +569,10 @@
 
 		if(AIRLOCK_OPEN)
 			frame_overlay = get_airlock_overlay("open", icon)
+			color_overlay = get_airlock_overlay("open", color_overlay_file)
+			strip_overlay = get_airlock_overlay("open", strip_overlay_file)
+			color_overlay.color = basecolor
+			strip_overlay.color = stripcolor
 			if(airlock_material)
 				filling_overlay = get_airlock_overlay("[airlock_material]_open", overlays_file)
 			else
@@ -559,6 +589,10 @@
 
 		if(AIRLOCK_OPENING)
 			frame_overlay = get_airlock_overlay("opening", icon)
+			strip_overlay = get_airlock_overlay("opening", strip_overlay_file)
+			color_overlay = get_airlock_overlay("opening", color_overlay_file)
+			color_overlay.color = basecolor
+			strip_overlay.color = stripcolor
 			if(airlock_material)
 				filling_overlay = get_airlock_overlay("[airlock_material]_opening", overlays_file)
 			else
@@ -575,6 +609,10 @@
 
 	cut_overlays()
 	add_overlay(frame_overlay)
+	if (basecolor)
+		add_overlay(color_overlay)
+	if (stripcolor)
+		add_overlay(strip_overlay)
 	add_overlay(filling_overlay)
 	add_overlay(lights_overlay)
 	add_overlay(panel_overlay)
@@ -582,6 +620,7 @@
 	add_overlay(sparks_overlay)
 	add_overlay(damag_overlay)
 	add_overlay(note_overlay)
+
 	check_unres()
 
 /proc/get_airlock_overlay(icon_state, icon_file, targetlayer = FLOAT_LAYER, targetplane = FLOAT_PLANE)

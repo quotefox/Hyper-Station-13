@@ -92,6 +92,7 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/plasmaglass
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10)
+	tableVariant = /obj/structure/table/plasmaglass
 
 /obj/item/stack/sheet/plasmaglass/fifty
 	amount = 50
@@ -181,7 +182,7 @@ GLOBAL_LIST_INIT(prglass_recipes, list ( \
 	singular_name = "reinforced plasma glass sheet"
 	icon_state = "sheet-prglass"
 	item_state = "sheet-prglass"
-	materials = list(MAT_PLASMA=MINERAL_MATERIAL_AMOUNT * 0.5, MAT_GLASS=MINERAL_MATERIAL_AMOUNT, MAT_METAL = MINERAL_MATERIAL_AMOUNT * 0.5,)
+	materials = list(MAT_PLASMA=MINERAL_MATERIAL_AMOUNT * 0.5, MAT_GLASS=MINERAL_MATERIAL_AMOUNT, MAT_METAL=MINERAL_MATERIAL_AMOUNT * 0.5,)
 	armor = list("melee" = 20, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 100)
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/plasmarglass
@@ -247,8 +248,9 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	resistance_flags = ACID_PROOF
 	armor = list("melee" = 100, "bullet" = 0, "laser" = 0, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 100)
 	max_integrity = 40
-	var/cooldown = 0
 	sharpness = IS_SHARP
+	var/icon_prefix
+
 
 /obj/item/shard/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is slitting [user.p_their()] [pick("wrists", "throat")] with the shard of glass! It looks like [user.p_theyre()] trying to commit suicide.</span>")
@@ -270,9 +272,19 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 		if("large")
 			pixel_x = rand(-5, 5)
 			pixel_y = rand(-5, 5)
-	var/matrix/M = matrix(transform)
-	M.Turn(rand(-170, 170))
-	transform = M
+	if (icon_prefix)
+		icon_state = "[icon_prefix][icon_state]"
+
+	var/turf/T = get_turf(src)
+	if(T && is_station_level(T.z))
+		SSblackbox.record_feedback("tally", "station_mess_created", 1, name)
+
+/obj/item/shard/Destroy()
+	. = ..()
+
+	var/turf/T = get_turf(src)
+	if(T && is_station_level(T.z))
+		SSblackbox.record_feedback("tally", "station_mess_destroyed", 1, name)
 
 /obj/item/shard/afterattack(atom/A as mob|obj, mob/user, proximity)
 	. = ..()
@@ -302,6 +314,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 		return ..()
 
 /obj/item/shard/welder_act(mob/living/user, obj/item/I)
+	..()
 	if(I.use_tool(src, user, 0, volume=50))
 		var/obj/item/stack/sheet/glass/NG = new (user.loc)
 		for(var/obj/item/stack/sheet/glass/G in user.loc)
@@ -320,4 +333,14 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 			playsound(loc, 'sound/effects/glass_step.ogg', 30, 1)
 		else
 			playsound(loc, 'sound/effects/glass_step.ogg', 50, 1)
-	. = ..()
+	return ..()
+
+/obj/item/shard/plasma
+	name = "purple shard"
+	desc = "A nasty looking shard of plasma glass."
+	force = 6
+	throwforce = 11
+	icon_state = "plasmalarge"
+	materials = list(MAT_PLASMA=MINERAL_MATERIAL_AMOUNT * 0.5, MAT_GLASS=MINERAL_MATERIAL_AMOUNT)
+	icon_prefix = "plasma"
+
