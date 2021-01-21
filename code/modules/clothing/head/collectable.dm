@@ -143,8 +143,8 @@
 	desc = "Go Red! I mean Green! I mean Red! No Green!"
 	icon_state = "thunderdome"
 	item_state = "thunderdome"
-	flags_inv = HIDEHAIR
 	resistance_flags = NONE
+	flags_inv = HIDEHAIR
 
 /obj/item/clothing/head/collectable/swat
 	name = "collectable SWAT helmet"
