@@ -435,3 +435,18 @@
 /obj/structure/flora/rock/pile/largejungle/Initialize()
 	. = ..()
 	icon_state = "[initial(icon_state)][rand(1,3)]"
+
+
+//lavaland grass
+/obj/structure/flora/redgrass
+	name = "tall grass"
+	desc = "A patch of overgrown red grass."
+	icon = 'icons/obj/lavaland/redgrass.dmi'
+	gender = PLURAL	//"this is grass" not "this is a grass"
+
+/obj/structure/flora/redgrass/redg
+	icon_state = "tallgrass1bb"
+
+/obj/structure/flora/redgrass/redg/Initialize()
+	icon_state = "tallgrass[rand(1, 4)]bb"
+	. = ..()
