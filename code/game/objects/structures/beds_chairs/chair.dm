@@ -188,9 +188,9 @@
 /obj/structure/chair/comfy/Initialize()
 
 	padding = GetPadding()
-	padding.layer = BELOW_MOB_LAYER
 	padding.color = paddingcolor
-	add_overlay(padding)
+	if(paddingcolor)
+		add_overlay(padding)
 
 	armrest = GetArmrest()
 	armrest.layer = ABOVE_MOB_LAYER
@@ -253,6 +253,7 @@
 	name = "shuttle seat"
 	desc = "A comfortable, secure seat. It has a more sturdy looking buckling system, for smoother flights."
 	icon_state = "shuttle_chair"
+	paddingcolor = ""
 
 /obj/structure/chair/comfy/shuttle/GetArmrest()
 	return mutable_appearance('icons/obj/chairs.dmi', "shuttle_chair_armrest")
