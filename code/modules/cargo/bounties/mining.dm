@@ -63,3 +63,10 @@
 	reward = 1000
 	required_count = 1
 	wanted_types = list(/obj/item/seeds/lavaland/cactus)
+
+datum/bounty/item/mining/plaswood
+	name = "Plaswood Planks"
+	description = "Central Command's carpentry department needs more exotic wood, send us some plaswood planks!"
+	reward = 5500
+	required_count = 50
+	wanted_types = list(/obj/item/stack/sheet/mineral/plaswood)
