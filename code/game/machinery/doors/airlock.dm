@@ -88,6 +88,7 @@
 	var/note_overlay_file = 'icons/obj/doors/airlocks/station/overlays.dmi' //Used for papers and photos pinned to the airlock
 	var/color_overlay_file = 'icons/obj/doors/airlocks/station/color.dmi'
 	var/strip_overlay_file = 'icons/obj/doors/airlocks/station/strip.dmi'
+	var/divide_file = 'icons/obj/doors/airlocks/station/divide.dmi'
 
 	//colours! modular wow!
 	var/basecolor = ""
@@ -466,7 +467,10 @@
 	var/mutable_appearance/note_overlay
 	var/mutable_appearance/strip_overlay
 	var/mutable_appearance/color_overlay
+	var/mutable_appearance/divide_overlay
 	var/notetype = note_type()
+
+	divide_overlay = get_airlock_overlay("divide", divide_file)
 
 	switch(state)
 		if(AIRLOCK_CLOSED)
@@ -620,6 +624,7 @@
 	add_overlay(sparks_overlay)
 	add_overlay(damag_overlay)
 	add_overlay(note_overlay)
+	add_overlay(divide_overlay)
 
 	check_unres()
 
