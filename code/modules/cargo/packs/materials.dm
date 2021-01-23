@@ -30,6 +30,13 @@
 	contains = list(/obj/item/stack/sheet/metal/fifty)
 	crate_name = "metal sheets crate"
 
+/datum/supply_pack/materials/gmushroom50
+	name = "50 Mushroom Planks"
+	desc = "Looks like wood AND is fire proof? Of course you need fifty mushroom planks!"
+	cost = 1700
+	contains = list(/obj/item/stack/sheet/mineral/gmushroom/fifty)
+	crate_name = "mushroom planks crate"
+
 /datum/supply_pack/materials/plasteel20
 	name = "20 Plasteel Sheets"
 	desc = "Reinforce the station's integrity with twenty plasteel sheets!"
@@ -51,12 +58,26 @@
 	contains = list(/obj/item/stack/sheet/plastic/fifty)
 	crate_name = "plastic sheets crate"
 
+/datum/supply_pack/materials/plaswood50
+	name = "50 Plaswood Planks"
+	desc = "Who need metal when you can have fifty plaswood planks?"
+	cost = 9000
+	contains = list(/obj/item/stack/sheet/mineral/plaswood/fifty)
+	crate_name = "Plaswood crate"
+
 /datum/supply_pack/materials/sandstone30
 	name = "30 Sandstone Blocks"
 	desc = "Neither sandy nor stoney, these thirty blocks will still get the job done."
 	cost = 800
 	contains = list(/obj/item/stack/sheet/mineral/sandstone/thirty)
 	crate_name = "sandstone blocks crate"
+
+/datum/supply_pack/materials/shadoww50
+	name = "50 Shadow Wood Planks"
+	desc = "Time to bring the dark side with fifty shadow wooden planks!"
+	cost = 1450
+	contains = list(/obj/item/stack/sheet/mineral/shadoww/fifty)
+	crate_name = "Shadown wood planks crate"
 
 /datum/supply_pack/materials/wood50
 	name = "50 Wood Planks"
@@ -79,7 +100,7 @@
 	name = "Bulk Raw Cotton Crate"
 	desc = "Plushies are more down in the market than ever before; bulk cotton now for use! Contains 100 raw cotton sheets."
 	cost = 1700 //Same math as before, but since it's bulk, you get a 100 credit discount to encourage bulk buys. Welcome to space Costco.
-	contains = list(/obj/item/stack/sheet/cotton/thirty, 
+	contains = list(/obj/item/stack/sheet/cotton/thirty,
 					/obj/item/stack/sheet/cotton/thirty,
 					/obj/item/stack/sheet/cotton/thirty,
 					/obj/item/stack/sheet/cotton/ten
