@@ -26,6 +26,10 @@
 	if (B) //they have a boobiedoo
 		dat	+= "<a href='byond://?src=[REF(src)];hidebreasts=1'>[B.mode == "hidden" ? "Breasts <font color='red'>(Hidden)</font>" : (B.mode == "clothes" ? "Breasts <font color='yellow'>(Hidden by Clothes)</font>" : (B.mode == "visable" ? "Breasts <font color='green'>(Visable)</font>" : "Breasts <font color='green'>(Visable)</font>"))]</a><BR>"
 
+	var/obj/item/organ/genital/belly/E = user.getorganslot("belly")
+	if (E)
+		dat	+= "<a href='byond://?src=[REF(src)];hidebelly=1'>[E.mode == "hidden" ? "Belly <font color='red'>(Hidden)</font>" : (B.mode == "clothes" ? "Belly <font color='yellow'>(Hidden by Clothes)</font>" : (B.mode == "visable" ? "Belly <font color='green'>(Visable)</font>" : "Belly <font color='green'>(Visable)</font>"))]</a><BR>"
+
 	dat	+=	{"<BR><B>Contexual Options</B><BR><HR>"}
 	//Options
 	dat	+= "<a href='byond://?src=[REF(src)];masturbate=1'>Masturbate</A>"
@@ -113,6 +117,11 @@
 		var/obj/item/organ/genital/breasts/B = usr.getorganslot("breasts")
 		var/picked_visibility = input(usr, "Choose visibility", "Expose/Hide genitals", "Hidden by clothes") in list("Always visible", "Hidden by clothes", "Always hidden")
 		B.toggle_visibility(picked_visibility)
+
+	if(href_list["hidebelly"])
+		var/obj/item/organ/genital/belly/E = usr.getorganslot("belly")
+		var/picked_visibility = input(usr, "Choose visibility", "Expose/Hide genitals", "Hidden by clothes") in list("Always visible", "Hidden by clothes", "Always hidden")
+		E.toggle_visibility(picked_visibility)
 
 	if(href_list["hidetesticles"])
 		var/obj/item/organ/genital/testicles/T = usr.getorganslot("testicles")

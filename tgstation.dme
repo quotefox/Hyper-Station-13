@@ -3160,6 +3160,7 @@
 #include "modular_citadel\code\modules\admin\holder2.dm"
 #include "modular_citadel\code\modules\admin\secrets.dm"
 #include "modular_citadel\code\modules\arousal\arousal.dm"
+#include "modular_citadel\code\modules\arousal\organs\belly.dm"
 #include "modular_citadel\code\modules\arousal\organs\breasts.dm"
 #include "modular_citadel\code\modules\arousal\organs\eggsack.dm"
 #include "modular_citadel\code\modules\arousal\organs\genitals.dm"
