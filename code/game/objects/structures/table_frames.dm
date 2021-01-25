@@ -148,6 +148,8 @@
 		var/toConstruct // stores the table variant
 		if(istype(I, /obj/item/stack/sheet/mineral/plaswood))
 			toConstruct = /obj/structure/table/plaswood
+		else if(istype(I, /obj/item/stack/tile/carpet))
+			toConstruct = /obj/structure/table/plaswood/plaswoodpoker
 
 		if (toConstruct)
 			if(material.get_amount() < 1)
@@ -177,6 +179,8 @@
 		var/toConstruct // stores the table variant
 		if(istype(I, /obj/item/stack/sheet/mineral/gmushroom))
 			toConstruct = /obj/structure/table/gmushroom
+		else if(istype(I, /obj/item/stack/tile/carpet))
+			toConstruct = /obj/structure/table/gmushroom/gmushroompoker
 
 		if (toConstruct)
 			if(material.get_amount() < 1)
@@ -206,6 +210,8 @@
 		var/toConstruct // stores the table variant
 		if(istype(I, /obj/item/stack/sheet/mineral/shadoww))
 			toConstruct = /obj/structure/table/shadoww
+		else if(istype(I, /obj/item/stack/tile/carpet))
+			toConstruct = /obj/structure/table/shadoww/shadowwpoker
 
 		if (toConstruct)
 			if(material.get_amount() < 1)
