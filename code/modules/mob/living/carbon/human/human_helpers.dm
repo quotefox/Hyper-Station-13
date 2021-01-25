@@ -132,6 +132,7 @@
 			to_chat(src, "<span class='warning'>Use of ranged weaponry would bring dishonor to the clan.</span>")
 			return FALSE
 
+
 /mob/living/carbon/human/can_see_reagents()
 	. = ..()
 	if(.) //No need to run through all of this if it's already true.
