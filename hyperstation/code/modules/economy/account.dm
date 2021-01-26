@@ -1,8 +1,10 @@
 #define DUMPTIME 3000
 
 /datum/bank_account
-	var/account_holder = "Rusty Venture"
+	var/account_holder = "Some pleb"
 	var/account_balance = 0
+	var/account_pin = 0
+	var/account_dna = ""
 	var/datum/job/account_job
 	var/list/bank_cards = list()
 	var/add_to_accounts = TRUE

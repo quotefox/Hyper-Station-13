@@ -18,14 +18,14 @@
 	light_power = 0
 	light_range = 7
 	light_color = "#ff3232"
+	var/pin = 0
 
 /obj/machinery/atm/ui_interact(mob/user)
 	. = ..()
 	var/dat	=	{""}
-	dat += "<body style='background-color:green;'><center>"
 	dat += "<p>"
-	dat += "<span class = 'big'><p>ATM</span></span></h1>"
-	dat += "<b><p>Welcome to Hyper Station 13's Automated Bank Teller Service.</b>"
+	dat += "<center><span class = 'big'><p>ATM</span></span></h1>"
+	dat += "<b><p>Welcome to Hyper Station 13's Automated Teller Service.</b>"
 	dat += "<p>"
 	if(!held_card)
 		dat += "<p>Welcome, please insert your ID to continue."
@@ -34,15 +34,22 @@
 		var/obj/item/card/id/idcard = held_card
 		if(idcard.registered_account)
 			dat += "<p>Account ID: <b>([idcard.registered_account.account_id])</b>"
+		else
+			dat += "<p>Error, this account number does not exsist, please contact your local administration.</b>"
+
+		if(!idcard.registered_account.account_pin || pin == idcard.registered_account.account_pin)
 			dat += "<p>Balance: <b>$[idcard.registered_account.account_balance]</b>"
 			dat += "<p>"
 			dat	+= "<a href='byond://?src=[REF(src)];withdraw=1'>Withdraw</A>"
-			dat	+= "<a href='byond://?src=[REF(src)];pin=1'>Change Pin</A>"
+			dat	+= "<a href='byond://?src=[REF(src)];changepin=1'>Change Pin</A>"
 			dat	+= "<a href='byond://?src=[REF(src)];settings=1'>Account Settings</A>"
 			dat	+= "<a href='byond://?src=[REF(src)];card=1'>Eject</A>"
 		else
-			dat += "<p>Error, You don't seem to have a bank account with us.</b>"
-		dat += "<p>"
+			dat += "<p>Please enter your bank pin to continue!"
+			dat += "<p>"
+			dat	+= "<a href='byond://?src=[REF(src)];pin=1'>[pin ? pin : "----"]</a><br><br>"
+
+		dat += "<p></center>"
 
 	dat += "<p>"
 
@@ -61,7 +68,9 @@
 				return
 			held_card = idcard
 			user = idcard.registered_name
-			playsound(src, 'sound/machines/terminal_insert_disc.ogg', 50, FALSE)
+			pin = ""
+			playsound(src, 'sound/machines/button.ogg', 50, FALSE)
+			src.ui_interact(usr)
 
 /obj/machinery/atm/Topic(href, href_list)
 	. = ..()
@@ -71,23 +80,59 @@
 	if(href_list["card"])
 		if(held_card)
 			if(usr.CanReach(src))
+				playsound(src, 'sound/machines/button.ogg', 50, FALSE)
 				if(usr.put_in_hands(held_card))
 					to_chat(usr, "<span class='notice'>You take the ID out of the slot.</span>")
 					held_card = null
-					user = ""
 				else
 					to_chat(usr, "<span class='warning'>The machine drops the ID onto the floor!</span>")
 					held_card = null
-					user = ""
+				pin = ""
+				user = ""
+
+	if(href_list["pin"])
+		playsound(src, get_sfx("terminal_type"), 25, 1)
+		var/pininput = input(user, "Input pin", "Pin Number") as num|null
+		if(pininput)
+			if(pininput > 9999 || pininput < 1000)
+				to_chat(usr, "<span class='notice'>[src.name] buzzes, you must input a 4 digit number between 1000 and 9999.</span>")
+				return
+			pin = max(min( round(text2num(pininput)), 9999),1000) //4 numbers or less.
+			var/obj/item/card/id/idcard = held_card
+			if(pin == idcard.registered_account.account_pin)
+				to_chat(usr, "<span class='notice'>[src.name] beeps, accepting the pin.</span>")
+			else
+				to_chat(usr, "<span class='notice'>[src.name] buzzes, denying the pin.</span>")
+
+	if(href_list["changepin"])
+		playsound(src, get_sfx("terminal_type"), 25, 1)
+		var/pinchange = input(user, "Input pin", "Pin Number") as num|null
+		if(pinchange > 9999 || pinchange < 1000)
+			to_chat(usr, "<span class='warning'>[src.name], you must have a 4 digit number for a pin and be between 1000 and 9999.</span>")
+			return
+		if(pinchange)
+			var/pinchange2 = input(user, "Confirm pin", "Confirm pin") as num|null //time to confirm!
+			if(pinchange == pinchange2)
+				var/obj/item/card/id/idcard = held_card
+				idcard.registered_account.account_pin = pinchange
+				to_chat(usr, "<span class='notice'>[src.name] beeps, your pin has been changed.</span>")
+			else
+				to_chat(usr, "<span class='warning'>[src.name] buzzes, your pins did not match!</span>")
+		pin = ""
+
 	if(href_list["withdraw"])
+		playsound(src, get_sfx("terminal_type"), 25, 1)
 		if(held_card)
 			var/obj/item/card/id/idcard = held_card
 			if(idcard.registered_account)
-				var/ammount = input(user, "Choose ammount", "Withdraw") as num|null
-				if(ammount)
-					ammount = max(min( round(text2num(ammount)), idcard.registered_account.account_balance),0)
-
-
+				var/amount = input(user, "Choose amount", "Withdraw") as num|null
+				if(amount)
+					amount = max(min( round(text2num(amount)), idcard.registered_account.account_balance),0) //make sure they aint taking out more then what they have
+					to_chat(usr, "<span class='notice'>The machine prints out [amount] credits.</span>")
+					idcard.registered_account.account_balance = (idcard.registered_account.account_balance-amount) //subtract the amount they took out.
+					var/obj/item/stack/credits/C = new /obj/item/stack/credits/(loc)
+					C.amount = amount
+					C.update_desc()
 
 	src.ui_interact(usr)
 
@@ -110,6 +155,6 @@
 	resistance_flags = FLAMMABLE
 	var/value = 1
 
-/obj/item/stack/spacecash/proc/update_desc()
+/obj/item/stack/credits/proc/update_desc()
 	var/total_worth = amount*value
 	desc = "Legal tender, It's worth [total_worth] credit[( total_worth > 1 ) ? "s" : ""]"
