@@ -33,7 +33,11 @@
 	nextuse = world.time + 5 MINUTES
 	broadcasting_emergency--
 
-/obj/machinery/emergencybutton/proc/adminabuse() //used to be emag_act() but i'd rather not have hate mail about interrupted ERP
+/obj/machinery/emergencybutton/emag_act(mob/user)
+	if(obj_flags & EMAGGED)
+		return
+	req_access = list()
+	req_one_access = list()
 	playsound(src, "sparks", 100, 1)
 	for(var/mob/M in GLOB.player_list)
 		SEND_SOUND(M, sound('sound/effects/emergency.ogg'))
