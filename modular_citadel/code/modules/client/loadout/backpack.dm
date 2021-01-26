@@ -207,3 +207,11 @@
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/sounding
 	cost = 1
+
+//chemlight doged
+/datum/gear/lipstick_white
+	name = "Chemlight Plushie"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/toy/plush/mammal/chemlight
+	ckeywhitelist = list("chemlight")
+//Done with that.
