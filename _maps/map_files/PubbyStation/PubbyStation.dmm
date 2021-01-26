@@ -11358,9 +11358,7 @@
 /area/bridge)
 "avX" = (
 /obj/structure/table/glass,
-/obj/machinery/emergencybutton{
-	pixel_y = 8
-	},
+/obj/item/storage/toolbox/emergency,
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "avY" = (
@@ -11370,7 +11368,9 @@
 /area/bridge)
 "avZ" = (
 /obj/structure/table/glass,
-/obj/item/storage/toolbox/emergency,
+/obj/item/restraints/handcuffs,
+/obj/item/assembly/flash/handheld,
+/obj/item/laser_pointer/blue,
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "awa" = (

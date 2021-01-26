@@ -42749,9 +42749,8 @@
 /area/bridge)
 "bCH" = (
 /obj/structure/table/wood,
-/obj/machinery/emergencybutton{
-	pixel_y = 8
-	},
+/obj/item/folder/blue,
+/obj/item/lighter,
 /turf/open/floor/carpet,
 /area/bridge)
 "bCI" = (
