@@ -59,15 +59,3 @@
 	icon = 'hyperstation/icons/obj/plushes.dmi'
 	icon_state = "lyricalpaws"
 	item_state = "lyricalpaws"
-
-/obj/item/toy/plush/mammal/chemlight
-	desc = "An adorable stuffed toy of a mammal that seems to resemble a crew member! It looks to glow and sport four arms."
-	gender = MALE	//he's a boy, right?
-	icon = 'hyperstation/icons/obj/plushes.dmi'
-	icon_state = "chemlight"
-	item_state = "chemlight"
-	light_color = "#CCFF33"
-	light_power = 0.25
-	light_range = 1.4
-	attack_verb = list("bapped", "slapped", "bonked")
-	squeak_override = list('modular_citadel/sound/voice/bark.ogg' = 1)

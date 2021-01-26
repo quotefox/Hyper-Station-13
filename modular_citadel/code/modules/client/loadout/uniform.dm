@@ -479,10 +479,3 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/roman
 	cost = 1
-
-/datum/gear/greenplaidshirt
-	name = "plaid green shirt"
-	category = SLOT_W_UNIFORM
-	path = /obj/item/clothing/under/greenplaidshirt
-	cost = 1
-	ckeywhitelist = list("chemlight")
