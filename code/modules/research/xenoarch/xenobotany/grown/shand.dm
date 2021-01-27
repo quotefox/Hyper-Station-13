@@ -13,7 +13,7 @@
 	icon_grow = "shand-stage"
 	growthstages = 3
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list("pax" = 0.1)
+	reagents_add = list(/datum/reagent/pax = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/shand
 	seed = /obj/item/seeds/shand
@@ -24,5 +24,5 @@
 	filling_color = "#FF4500"
 	bitesize = 100
 	foodtype = FRUIT
-	juice_results = list("pax" = 0.1)
+	juice_results = list(/datum/reagent/pax = 0.1)
 	tastes = list("peace" = 1)

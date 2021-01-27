@@ -13,7 +13,7 @@
 	icon_grow = "jurlmah-stage"
 	growthstages = 5
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list("cryoxadone" = 0.1)
+	reagents_add = list(/datum/reagent/medicine/cryoxadone = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/jurlmah
 	seed = /obj/item/seeds/jurlmah
@@ -24,5 +24,5 @@
 	filling_color = "#FF4500"
 	bitesize = 100
 	foodtype = FRUIT
-	juice_results = list("cryoxadone" = 0.1)
+	juice_results = list(/datum/reagent/medicine/cryoxadone = 0.1)
 	tastes = list("cold" = 1)
