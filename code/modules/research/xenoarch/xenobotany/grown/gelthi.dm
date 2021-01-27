@@ -13,7 +13,7 @@
 	icon_grow = "gelthi-stage"
 	growthstages = 3
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list("gold" = 0.1)
+	reagents_add = list(/datum/reagent/gold = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/gelthi
 	seed = /obj/item/seeds/gelthi
@@ -24,5 +24,5 @@
 	filling_color = "#FF4500"
 	bitesize = 100
 	foodtype = FRUIT
-	juice_results = list("gold" = 0.1)
+	juice_results = list(/datum/reagent/gold = 0.1)
 	tastes = list("gold" = 1)
