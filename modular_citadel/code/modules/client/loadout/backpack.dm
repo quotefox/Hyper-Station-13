@@ -209,7 +209,7 @@
 	cost = 1
 
 //chemlight doged
-/datum/gear/lipstick_white
+/datum/gear/plushchemlight // This is not lipstick anymore.
 	name = "Chemlight Plushie"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/toy/plush/mammal/chemlight

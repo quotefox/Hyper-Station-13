@@ -70,4 +70,3 @@
 	light_power = 0.25
 	light_range = 1.4
 	attack_verb = list("bapped", "slapped", "bonked")
-	squeak_override = list('modular_citadel/sound/voice/bark.ogg' = 1)
