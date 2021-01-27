@@ -109,7 +109,7 @@
 // Reagent genes store reagent ID and reagent ratio. Amount of reagent in the plant = 1 + (potency * rate)
 /datum/plant_gene/reagent
 	name = "Nutriment"
-	var/reagent_id = "nutriment"
+	var/reagent_id = /datum/reagent/consumable/nutriment
 	var/rate = 0.04
 
 /datum/plant_gene/reagent/get_name()
@@ -153,15 +153,34 @@
 			return FALSE
 	return TRUE
 
-/datum/plant_gene/reagent/polypyr
+/datum/plant_gene/reagent/fragile
+	name = "Fragile Gene"
+	mutability_flags = PLANT_GENE_REMOVABLE	//Cannot be extracted
+
+/datum/plant_gene/reagent/fragile/polypyr
 	name = "Polypyrylium Oligomers"
-	reagent_id = "polypyr"
+	reagent_id = /datum/reagent/medicine/polypyr
 	rate = 0.15
 
-/datum/plant_gene/reagent/teslium
+/datum/plant_gene/reagent/fragile/teslium
 	name = "Teslium"
-	reagent_id = "teslium"
+	reagent_id = /datum/reagent/teslium
 	rate = 0.1
+
+/datum/plant_gene/reagent/fragile/breastchem
+	name = "Succubus Milk"
+	reagent_id = /datum/reagent/fermi/breast_enlarger
+	rate = 0.04	//5 units at 100 potency
+
+/datum/plant_gene/reagent/fragile/penischem
+	name = "Incubus Draft"
+	reagent_id = /datum/reagent/fermi/penis_enlarger
+	rate = 0.04
+
+/datum/plant_gene/reagent/fragile/crocin
+	name = "Crocin"
+	reagent_id = /datum/reagent/drug/aphrodisiac
+	rate = 0.2
 
 // Various traits affecting the product.
 /datum/plant_gene/trait
