@@ -72,13 +72,14 @@
 	plantname = "Milk Melon Vines"
 	product = /obj/item/reagent_containers/food/snacks/grown/milkmelon
 	mutatelist = list()
-	reagents_add = list(/datum/reagent/consumable/milk = 0.2, /datum/reagent/fermi/breast_enlarger = 0.08, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
+	genes = list(/datum/plant_gene/reagent/fragile/breastchem)
+	reagents_add = list(/datum/reagent/consumable/milk = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
 	rarity = 20
 
 /obj/item/reagent_containers/food/snacks/grown/milkmelon
 	seed = /obj/item/seeds/watermelon/milk
 	name = "milkmelon"
-	desc = "A softer, rounder-looking watermelon that audibly sloshes with milk."
+	desc = "A softer watermelon that audibly sloshes with milk."
 	icon_state = "milkmelon"
 	filling_color = "#FFAABB"
 	dried_type = null
