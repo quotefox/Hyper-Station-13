@@ -11,6 +11,7 @@
 "ak" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{dir = 4},/obj/structure/cable/yellow{icon_state = "4-8"},/turf/open/floor/wood,/area/ruin/unpowered/syndicate_lava_base/bar)
 "al" = (/obj/structure/disposalpipe/trunk{dir = 4},/obj/structure/disposaloutlet{dir = 8},/turf/open/floor/mineral/plastitanium,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "am" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3{dir = 4},/obj/structure/cable/yellow{icon_state = "4-8"},/obj/effect/decal/cleanable/dirt,/turf/open/floor/plasteel,/area/ruin/unpowered/syndicate_lava_base/arrivals)
+"an" = (/obj/machinery/door/window/southleft{dir = 4; req_access_txt = "0"},/obj/machinery/door/window/southleft{dir = 8; req_access_txt = "150"},/obj/effect/turf_decal/stripes/line{dir = 8},/obj/effect/turf_decal/stripes/line{dir = 4},/turf/open/floor/plating,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "ao" = (/obj/effect/decal/cleanable/dirt,/turf/closed/wall/mineral/plastitanium/nodiagonal,/area/ruin/unpowered/syndicate_lava_base/circuits)
 "aq" = (/obj/effect/decal/cleanable/dirt,/obj/machinery/light{dir = 4; light_color = "#c1caff"},/turf/open/floor/mineral/plastitanium,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "ar" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden,/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer3,/obj/structure/cable/yellow{icon_state = "1-2"},/obj/machinery/door/firedoor,/obj/machinery/door/airlock/research,/turf/open/floor/plasteel,/area/ruin/unpowered/syndicate_lava_base/circuits)
@@ -61,7 +62,6 @@
 "bp" = (/obj/effect/turf_decal/stripes/line{dir = 6},/obj/structure/closet/crate/bin,/obj/effect/decal/cleanable/dirt,/obj/effect/turf_decal/tile/neutral{dir = 8},/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/tile/neutral{dir = 4},/obj/effect/turf_decal/tile/neutral,/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/chemistry)
 "bq" = (/obj/structure/table/glass,/obj/effect/turf_decal/stripes/line{dir = 1},/obj/machinery/reagentgrinder{pixel_y = 5},/obj/machinery/power/apc/syndicate{dir = 2; name = "Experimentation Lab APC"; pixel_y = -24},/obj/structure/cable/yellow,/turf/open/floor/plasteel/dark,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "br" = (/obj/structure/flora/rock/pile,/obj/structure/flora/grass/jungle/b,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/ruin/unpowered/syndicate_lava_base/outdoors)
-"bs" = (/obj/machinery/door/window/southleft{dir = 4; req_access_txt = "150"},/obj/machinery/door/window/southleft{dir = 8; req_access_txt = "150"},/obj/effect/turf_decal/stripes/line{dir = 8},/obj/effect/turf_decal/stripes/line{dir = 4},/turf/open/floor/plating,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "bt" = (/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{external_pressure_bound = 120; name = "killroom vent"},/turf/open/floor/circuit/telecomms,/area/ruin/unpowered/syndicate_lava_base/testlab)
 "bu" = (/obj/effect/decal/cleanable/dirt,/obj/structure/cable/yellow{icon_state = "2-8"},/obj/structure/cable/yellow{icon_state = "2-4"},/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer3{dir = 1},/obj/machinery/atmospherics/pipe/manifold/supply/hidden{dir = 1},/obj/effect/turf_decal/tile/purple{dir = 8},/obj/effect/turf_decal/tile/purple{dir = 1},/turf/open/floor/plasteel,/area/ruin/unpowered/syndicate_lava_base/main)
 "bw" = (/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer3{dir = 4},/turf/open/floor/plasteel/white/side{dir = 10},/area/ruin/unpowered/syndicate_lava_base/virology)
@@ -729,13 +729,13 @@ aaaaaaaaaaaaaaaaaaabababababababababababababababababababababababaaaaaaaaaaababab
 aaaaaaaaaaaaabaaababababababababababababababababababababababababababaaababababababababababaaaaaaaaaa
 aaaaaaaaabaaabababababiiaeaeaeaeaeaeaeaeaeaeaeaeacabababababababababababababababababababababaaaaaaaa
 aaaaaaaaabababababababaeadcGagaFaeahaiajdraFaFcGaeababababababababababababababababababababaaaaaaaaaa
-aaaaaaababababababababaeaFcGaFalaxaHboekbsaFaAaqaeababababababababababababababababababababababaaaaaa
-aaaaaaaaababababababawaeaFaFaFaFbsbebiaMaxbjbjayaeaBabababababababababababababababababababababaaaaaa
+aaaaaaababababababababaeaFcGaFalaxaHboekanaFaAaqaeababababababababababababababababababababababaaaaaa
+aaaaaaaaababababababawaeaFaFaFaFanbebiaMaxbjbjayaeaBabababababababababababababababababababababaaaaaa
 aaaaaaabababababababaIaeaFaFcGaFdrcXaYcZdraFaFaFaeaKasaLaLaLasabababababababababababababababaaaaaaaa
-aaaaabababababababababaecGaFaQcGaedcddaWbscGaFaXaeasasataZbbasacbgababababababababababababababaaaaaa
+aaaaabababababababababaecGaFaQcGaedcddaWancGaFaXaeasasataZbbasacbgababababababababababababababaaaaaa
 aaaaababababababababawaeaeaeaeaeaecqbNbhaxbjbjayblbnbPbScabpasasdydydydybrababababababababababaaaaaa
 aaabababababababababawbraecTbtcTdrbQdibxdraFcGaFaeducrcAcAbAbBasbDbEbIdydydydydydyabababababababaaaa
-aaababababababababababawaeaOaNbJbOazekbKbsaFaAaqaedBdCbRdEdIbTasdLdMbXccdycdcfcgdyacababababababaaaa
+aaababababababababababawaeaOaNbJbOazekbKanaFaAaqaedBdCbRdEdIbTasdLdMbXccdycdcfcgdyacababababababaaaa
 aaabababababababababababaecTaUcTdrbodfbhaxchchcxaedUdVdXdYdZcyasebecdbeceeefegcCcEcFababababababaaaa
 aaabababababababababababaeaeaeaeaeckcHcMaeaeaeaeaedqdsdvevewasasdxdHcQdOfteCeDeEeFcFabababababababaa
 aaababababababababdeababawdkaedndDdacpdodpaedwdAeRedeVeseVdKaseteXdFeudydyfcfwfedydydydTabababababaa
