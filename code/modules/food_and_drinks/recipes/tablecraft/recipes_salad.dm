@@ -94,3 +94,16 @@
 	)
 	result = /obj/item/reagent_containers/food/snacks/salad/citrusdelight
 	subcategory = CAT_SALAD
+
+/datum/crafting_recipe/food/hellcobb
+	name = "Hell Cobb Salad"
+	reqs = list(
+		/obj/item/reagent_containers/glass/bowl/mushroom_bowl = 1,
+		/obj/item/reagent_containers/food/snacks/grown/ash_flora/mushroom_leaf = 3,
+		/obj/item/reagent_containers/food/snacks/grown/ash_flora/cactus_fruit = 2,
+		/obj/item/reagent_containers/food/snacks/meat/steak/goliath = 1,
+		/obj/item/reagent_containers/food/snacks/boiledegg = 1
+
+	)
+	result = /obj/item/reagent_containers/food/snacks/salad/hellcobb
+	subcategory = CAT_SALAD
