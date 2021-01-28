@@ -96,7 +96,6 @@
 
 /obj/item/clothing/suit/space/hardsuit/teslapa/Initialize()
 	jetpack = new /obj/item/tank/jetpack/suit(src)
-	AddComponent(/datum/component/squeak, list('sound/effects/footstep/powerarmor1.ogg' = 1,'sound/effects/footstep/powerarmor2.ogg' = 1, 'sound/effects/footstep/powerarmor3.ogg' = 1), 50)
 	. = ..()
 
 /obj/item/clothing/suit/space/hardsuit/teslapa/dropped(mob/user)
@@ -115,7 +114,7 @@
 			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 			sparks.set_up(1, 1, src)
 			sparks.start()
-			owner.visible_message("<span class='danger'>The tesla capacitors on [owner]'s reactive tesla armor are still recharging! The armor merely emits some sparks.</span>")
+			owner.visible_message("<span class='danger'>The tesla capacitors on [owner]'s Tesla Power Armor are still recharging! The armor merely emits some sparks.</span>")
 			return
 		owner.visible_message("<span class='danger'>[src] blocks [attack_text], sending out arcs of lightning!</span>")
 		if(!legacy)
@@ -158,7 +157,6 @@
 
 /obj/item/clothing/suit/space/hardsuit/advancedpa/Initialize()
 	jetpack = new /obj/item/tank/jetpack/suit(src)
-	AddComponent(/datum/component/squeak, list('sound/effects/footstep/powerarmor1.ogg' = 1,'sound/effects/footstep/powerarmor2.ogg' = 1, 'sound/effects/footstep/powerarmor3.ogg' = 1), 50)
 	. = ..()
 
 /obj/item/clothing/head/helmet/space/hardsuit/advancedpahelmet
