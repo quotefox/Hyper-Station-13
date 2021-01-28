@@ -8,10 +8,10 @@
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 
 /obj/item/projectile/sizelaser/shrinkray
-	icon_state = "bluelaser"
+	icon_state="bluelaser"
 
 /obj/item/projectile/sizelaser/growthray
-	icon_state = "laser"
+	icon_state="laser"
 
 /obj/item/projectile/sizelaser/shrinkray/on_hit(var/atom/target, var/blocked = 0)
 	if(istype(target, /mob/living/carbon/human))
@@ -71,16 +71,16 @@
 	item_state = null
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/shrinkray, /obj/item/ammo_casing/energy/laser/growthray)
 	selfcharge = EGUN_SELFCHARGE
-	charge_delay = 1 //it's a debug, make it go fast.
+	charge_delay = 5
 	ammo_x_offset = 2
 	clumsy_check = 1
 
-/obj/item/gun/energy/laser/sizeray/update_overlays()
-	. = ..()
-	var/current_index = current_firemode_index
-	if(current_index == 1)
-		icon_state = "redtag"
-	else
-		icon_state = "bluetag"
-
-//Attack self is not needed, if ammo_type is a list, the parent code will deal with it
+	attackby(obj/item/W, mob/user)
+		if(W==src)
+			if(icon_state=="bluetag")
+				icon_state="redtag"
+				ammo_type = list(/obj/item/ammo_casing/energy/laser/growthray)
+			else
+				icon_state="bluetag"
+				ammo_type = list(/obj/item/ammo_casing/energy/laser/shrinkray)
+		return ..()
