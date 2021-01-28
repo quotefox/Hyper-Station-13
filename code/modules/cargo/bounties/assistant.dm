@@ -215,3 +215,24 @@
 	description = "Commander Jackson is looking for a fine addition to her exotic weapons collection. She will reward you handsomely for either a Cat or Liz o' Nine Tails."
 	reward = 4000
 	wanted_types = list(/obj/item/melee/chainofcommand/tailwhip)
+
+/datum/bounty/item/assistant/shadow_wood_chair
+	name = "Shadow Wood Chairs"
+	description = "Commander Mat is unhappy with his chair. He claims it hurts his back. Ship some shadow wood chairs to humor him."
+	reward = 1000
+	required_count = 5
+	wanted_types = list(/obj/structure/chair/shadoww)
+
+/datum/bounty/item/assistant/mushroom_chair
+	name = "Mushroom Chairs"
+	description = "Commander Rat is unhappy with his chair. He claims it hurts his back. Ship some mushroom chairs to humor him."
+	reward = 1500
+	required_count = 5
+	wanted_types = list(/obj/structure/chair/gmushroom)
+
+/datum/bounty/item/assistant/plaswood_chair
+	name = "Plaswood Chairs"
+	description = "Commander Cat is unhappy with his chair. He claims it hurts his back. Ship some plaswood chairs to humor him."
+	reward = 2250
+	required_count = 5
+	wanted_types = list(/obj/structure/chair/plaswood)
