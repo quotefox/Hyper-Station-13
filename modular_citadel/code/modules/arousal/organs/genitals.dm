@@ -231,6 +231,11 @@
 				B.color = "#[dna.features["belly_color"]]"
 			B.update()
 
+		if(dna.features["hide_belly"]) //autohide bellies if they have the option ticked.
+			B.toggle_visibility("Always hidden")
+
+
+
 /mob/living/carbon/human/proc/give_breasts()
 	if(!dna)
 		return FALSE

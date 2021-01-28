@@ -159,7 +159,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	clientfps		= sanitize_integer(clientfps, 0, 1000, 0)
 	if (clientfps == 0) clientfps = world.fps*2
 	body_size		= sanitize_integer(body_size, 90, 110, 0)
-	can_get_preg	= sanitize_integer(body_size, 0, 1, 0)
+	can_get_preg	= sanitize_integer(can_get_preg, 0, 1, 0)
 	parallax		= sanitize_integer(parallax, PARALLAX_INSANE, PARALLAX_DISABLE, null)
 	ambientocclusion	= sanitize_integer(ambientocclusion, 0, 1, initial(ambientocclusion))
 	auto_fit_viewport	= sanitize_integer(auto_fit_viewport, 0, 1, initial(auto_fit_viewport))
@@ -414,6 +414,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		//balls features
 	S["feature_has_belly"]				>> features["has_belly"]
 	S["feature_belly_color"]			>> features["belly_color"]
+	S["feature_hide_belly"]				>> features["hide_belly"]
+
 	//flavor text
 	//Let's make our players NOT cry desperately as we wipe their savefiles of their special snowflake texts:
 	if((S["flavor_text"] != "") && (S["flavor_text"] != null) && S["flavor_text"]) //If old text isn't null and isn't "" but still exists.
