@@ -213,3 +213,8 @@
 	name = "Black Suit Jacket"
 	category = SLOT_WEAR_SUIT
 	path =	/obj/item/clothing/suit/toggle/lawyer/black
+
+/datum/gear/nemes
+	name = "Pharoah tunic"
+	category = SLOT_WEAR_SUIT
+	path =	/obj/item/clothing/suit/nemes
