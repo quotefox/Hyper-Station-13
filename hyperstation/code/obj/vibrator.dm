@@ -124,14 +124,14 @@ Code:
 
 			switch(mode)
 				if(1) //low
-					to_chat(U, "<span class='love'>You feel pleasure surgest through your [G.name]</span>")
+					to_chat(U, "<span class='love'>You feel pleasure surges through your [G.name]</span>")
 				if(2) //med, can make you cum
-					to_chat(U, "<span class='love'>You feel intense pleasure surgest through your [G.name]</span>")
+					to_chat(U, "<span class='love'>You feel intense pleasure surges through your [G.name]</span>")
 					U.Jitter(3)
 					if (U.getArousalLoss() >= 100 && ishuman(U) && U.has_dna())
 						U.mob_climax(forced_climax=TRUE)
 				if(3) //high, makes you stun
-					to_chat(U, "<span class='userdanger'>You feel overpowering pleasure surgest through your [G.name]</span>")
+					to_chat(U, "<span class='userdanger'>You feel overpowering pleasure surges through your [G.name]</span>")
 					U.Jitter(3)
 					U.Stun(30)
 					if (U.getArousalLoss() >= 100 && ishuman(U) && U.has_dna())
