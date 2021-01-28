@@ -15,6 +15,7 @@
 	can_climax				= TRUE
 	fluid_transfer_factor 	= 0.5
 	var/sent_full_message	= TRUE //defaults to 1 since they're full to start
+	dontlist = TRUE
 
 /obj/item/organ/genital/belly/on_life()
 	if(QDELETED(src))

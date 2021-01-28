@@ -59,7 +59,9 @@
 				/obj/item/clothing/under/polychromic/bulge = 3,
 				/obj/item/clothing/suit/maidapron = 3,
 				/obj/item/clothing/under/corset = 3,
-				/obj/item/clothing/under/jabroni = 3
+				/obj/item/clothing/under/jabroni = 3,
+				/obj/item/electropack/vibrator/small = 2,
+				/obj/item/electropack/vibrator = 2,
 				)
 	contraband = list(
 				/obj/item/restraints/handcuffs/fake/kinky = 5,

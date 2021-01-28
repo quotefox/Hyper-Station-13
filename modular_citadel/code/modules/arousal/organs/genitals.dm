@@ -23,6 +23,8 @@
 	var/hidden					= FALSE
 	var/colourtint				= ""
 	var/mode					= "clothes"
+	var/obj/item/equipment 		//for fun stuff that goes on the gentials/maybe rings down the line
+	var/dontlist				= FALSE
 
 /obj/item/organ/genital/Initialize()
 	. = ..()
