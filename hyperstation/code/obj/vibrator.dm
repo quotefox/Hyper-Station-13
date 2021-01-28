@@ -1,3 +1,6 @@
+//Hyperstation 13 vibrator
+//For all them subs/bottoms out there, that wanna give someone the power to make them cum remotely.
+
 /obj/item/electropack/vibrator
 	name = "remote vibrator"
 	desc = "A remote device that can deliver pleasure at a fair. It has three intensities that can be set by twisting the base."
@@ -118,20 +121,20 @@ Code:
 				if("vagina")
 					to_chat(U, "<span class='love'>[src] vibrates inside you!</span>")
 
-			var/intencity = 10*mode
+			var/intencity = 6*mode
 			U.adjustArousalLoss(intencity) //give pleasure
-			playsound(U.loc, 'sound/lewd/vibrate.ogg', intencity, 1, -1) //vibe
+			playsound(U.loc, 'sound/lewd/vibrate.ogg', (intencity+5), 1, -1) //vibe intencity scaled up abit for sound
 
 			switch(mode)
-				if(1) //low
-					to_chat(U, "<span class='love'>You feel pleasure surges through your [G.name]</span>")
+				if(1) //low, setting for RP, it wont force your character to do anything.
+					to_chat(U, "<span class='love'>You feel pleasure surge through your [G.name]</span>")
 				if(2) //med, can make you cum
-					to_chat(U, "<span class='love'>You feel intense pleasure surges through your [G.name]</span>")
+					to_chat(U, "<span class='love'>You feel intense pleasure surge through your [G.name]</span>")
 					U.Jitter(3)
 					if (U.getArousalLoss() >= 100 && ishuman(U) && U.has_dna())
 						U.mob_climax(forced_climax=TRUE)
 				if(3) //high, makes you stun
-					to_chat(U, "<span class='userdanger'>You feel overpowering pleasure surges through your [G.name]</span>")
+					to_chat(U, "<span class='userdanger'>You feel overpowering pleasure surge through your [G.name]</span>")
 					U.Jitter(3)
 					U.Stun(30)
 					if (U.getArousalLoss() >= 100 && ishuman(U) && U.has_dna())
