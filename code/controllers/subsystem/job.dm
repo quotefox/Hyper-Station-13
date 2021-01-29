@@ -444,7 +444,8 @@ SUBSYSTEM_DEF(job)
 
 	if(ishuman(H))
 		var/mob/living/carbon/human/wageslave = H
-		to_chat(M, "<b><span class = 'big'>Your account ID is [wageslave.account_id].</span></b>")
+		to_chat(M, "<b><span class = 'big'>Your account ID is [wageslave.account_id]</span></b>")
+		to_chat(M, "<b><span class = 'notice'>You do not have a pin, can set your pin at a ATM.</b>")
 		H.add_memory("Your account ID is [wageslave.account_id].")
 
 	if(job && H)

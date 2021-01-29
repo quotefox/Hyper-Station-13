@@ -94,7 +94,9 @@
 		var/datum/bank_account/bank_account = new(H.real_name, src)
 		bank_account.account_holder = H.real_name
 		bank_account.account_job = src
-		bank_account.account_id = rand(111111,999999)
+		bank_account.account_id = rand(111111,999999) //give account ID!
+		//bank_account.account_pin = rand(1000,9999) //give random pin!
+		bank_account.account_balance = 50
 		H.account_id = bank_account.account_id
 
 	if(CONFIG_GET(flag/enforce_human_authority) && (title in GLOB.command_positions))

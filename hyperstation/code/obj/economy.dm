@@ -37,17 +37,19 @@
 		else
 			dat += "<p>Error, this account number does not exsist, please contact your local administration.</b>"
 
-		if(!idcard.registered_account.account_pin || pin == idcard.registered_account.account_pin)
-			dat += "<p>Balance: <b>$[idcard.registered_account.account_balance]</b>"
-			dat += "<p>"
-			dat	+= "<a href='byond://?src=[REF(src)];withdraw=1'>Withdraw</A>"
-			dat	+= "<a href='byond://?src=[REF(src)];changepin=1'>Change Pin</A>"
-			dat	+= "<a href='byond://?src=[REF(src)];settings=1'>Account Settings</A>"
-			dat	+= "<a href='byond://?src=[REF(src)];card=1'>Eject</A>"
-		else
-			dat += "<p>Please enter your bank pin to continue!"
-			dat += "<p>"
-			dat	+= "<a href='byond://?src=[REF(src)];pin=1'>[pin ? pin : "----"]</a><br><br>"
+		if(idcard.registered_account)
+			if(!idcard.registered_account.account_pin || pin == idcard.registered_account.account_pin)
+				dat += "<p>Balance: <b>$[idcard.registered_account.account_balance]</b>"
+				//dat += "<p>Offstation Balance: <b()</b>"
+				dat += "<p>"
+				dat	+= "<a href='byond://?src=[REF(src)];withdraw=1'>Withdraw</A>"
+				dat	+= "<a href='byond://?src=[REF(src)];changepin=1'>Change Pin</A>"
+				//dat	+= "<a href='byond://?src=[REF(src)];settings=1'>Account Settings</A>"
+				dat	+= "<a href='byond://?src=[REF(src)];card=1'>Eject</A>"
+			else
+				dat += "<p>Please enter your bank pin to continue!"
+				dat += "<p>"
+				dat	+= "<a href='byond://?src=[REF(src)];pin=1'>[pin ? pin : "----"]</a><br><br>"
 
 		dat += "<p></center>"
 
@@ -61,7 +63,7 @@
 	popup.open()
 
 /obj/machinery/atm/attackby(obj/item/I, mob/living/user)
-	if(istype(I, /obj/item/card))
+	if(istype(I, /obj/item/card)) //input id!
 		if(!held_card)
 			var/obj/item/card/id/idcard = I
 			if(!user.transferItemToLoc(I, src)) //check if you can put it in
@@ -71,6 +73,15 @@
 			pin = ""
 			playsound(src, 'sound/machines/button.ogg', 50, FALSE)
 			src.ui_interact(usr)
+
+	if(istype(I, /obj/item/stack/credits)) //feed money back into the machine! dont need a pin to donate stuff.
+		if(held_card)
+			var/obj/item/stack/credits/cred = I
+			var/obj/item/card/id/idcard = held_card
+			idcard.registered_account.account_balance = (idcard.registered_account.account_balance+cred.amount)
+			to_chat(usr, "<span class='notice'>You insert [cred] into the ATM.</span>")
+			src.ui_interact(usr)
+			del(cred)
 
 /obj/machinery/atm/Topic(href, href_list)
 	. = ..()
@@ -126,13 +137,14 @@
 			var/obj/item/card/id/idcard = held_card
 			if(idcard.registered_account)
 				var/amount = input(user, "Choose amount", "Withdraw") as num|null
-				if(amount)
+				if(amount>0)
 					amount = max(min( round(text2num(amount)), idcard.registered_account.account_balance),0) //make sure they aint taking out more then what they have
 					to_chat(usr, "<span class='notice'>The machine prints out [amount] credits.</span>")
 					idcard.registered_account.account_balance = (idcard.registered_account.account_balance-amount) //subtract the amount they took out.
 					var/obj/item/stack/credits/C = new /obj/item/stack/credits/(loc)
 					C.amount = amount
-					C.update_desc()
+					if(usr.put_in_hands(C))
+						to_chat(usr, "<span class='notice'>You take [C] out of the ATM.</span>")
 
 	src.ui_interact(usr)
 
@@ -143,10 +155,11 @@
 /obj/item/stack/credits
 	name = "credits"
 	singular_name = "credit"
+	desc = "Legal tender, a bundle of shiny metalic looking notes."
 	icon = 'hyperstation/icons/obj/economy.dmi'
 	icon_state = "cash"
 	amount = 1
-	max_amount = 100
+	max_amount = 99999999
 	throwforce = 0
 	throw_speed = 2
 	throw_range = 2
@@ -154,7 +167,3 @@
 	full_w_class = WEIGHT_CLASS_TINY
 	resistance_flags = FLAMMABLE
 	var/value = 1
-
-/obj/item/stack/credits/proc/update_desc()
-	var/total_worth = amount*value
-	desc = "Legal tender, It's worth [total_worth] credit[( total_worth > 1 ) ? "s" : ""]"

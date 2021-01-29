@@ -3,6 +3,7 @@
 /datum/bank_account
 	var/account_holder = "Some pleb"
 	var/account_balance = 0
+	var/account_offstation_balance = 0
 	var/account_pin = 0
 	var/account_dna = ""
 	var/datum/job/account_job
