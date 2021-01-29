@@ -23,7 +23,7 @@
 	new /obj/item/clothing/under/rank/chief_medical_officer/turtleneck(src)
 
 /obj/item/clothing/under/syndicate/cosmetic
-	name = "tactitool turtleneck"
+	name = "tactifool turtleneck"
 	desc = "Just looking at it makes you want to buy an SKS, go into the woods, and -operate-."
 	icon_state = "tactifool"
 	item_state = "bl_suit"
@@ -31,9 +31,6 @@
 	has_sensor = TRUE
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
 	armor = list(melee = 0, bullet = 0, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0, fire = 0, acid = 0)
-
-/obj/item/clothing/under/syndicate/tacticool
-	has_sensor = TRUE
 
 // Sweaters are good enough for this category too.
 

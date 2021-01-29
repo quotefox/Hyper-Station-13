@@ -193,7 +193,7 @@
 // Pantsless Sweaters
 
 /datum/gear/turtleneck
-	name = "Tactitool Turtleneck"
+	name = "Tactifool Turtleneck"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/syndicate/cosmetic
 
