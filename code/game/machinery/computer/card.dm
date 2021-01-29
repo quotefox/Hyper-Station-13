@@ -19,6 +19,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	var/mode = 0
 	var/printing = null
 	var/target_dept = 0 //Which department this computer has access to. 0=all departments
+	var/datum/bank_account/account/selectedbank
 
 	//Cooldown for closing positions in seconds
 	//if set to -1: No cooldown... probably a bad idea
@@ -250,6 +251,16 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 
 			dat += "</td></tr>"
 		dat += "</table>"
+		// Bank management
+	else if(mode == 4)
+		dat += {"<a href='?src=[REF(src)];choice=return'>Return</a>
+		<table><tr><td style='width:25%'><b>Bank Accounts</b></td><td style='width:25%'></td></tr>"}
+		for(var/datum/bank_account/account in SSeconomy.bank_accounts)
+			dat += {"<td>[account.account_holder] - [account.account_id]"}
+			dat += "<a href='?src=[REF(src)];choice=bankassign;assign_bank=[REF(account)]'>Assign to ID</a></td>"
+			dat += "</td><tr>"
+
+		dat += "</table>"
 	else
 		var/list/header = list()
 		var/scan_name = inserted_scan_id ? html_encode(inserted_scan_id.name) : "--------"
@@ -266,6 +277,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 				Target: <a href='?src=[REF(src)];choice=inserted_modify_id'>Remove [target_name]</a> ||
 				Confirm Identity: <a href='?src=[REF(src)];choice=inserted_scan_id'>Remove [scan_name]</a><br>
 				<a href='?src=[REF(src)];choice=mode;mode_target=1'>Access Crew Manifest</a><br>
+				<a href='?src=[REF(src)];choice=mode;mode_target=4'>Access Bank Accounts</a><br>
 				[!target_dept ? "<a href='?src=[REF(src)];choice=mode;mode_target=2'>Job Management</a><br>" : ""]
 				<a href='?src=[REF(src)];choice=logout'>Log Out</a></div>"}
 
@@ -443,6 +455,17 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 						if(access_allowed == 1)
 							inserted_modify_id.access += access_type
 						playsound(src, "terminal_type", 50, FALSE)
+		if ("bankassign")
+			if (authenticated == 2)
+				var/datum/bank_account/account = locate(href_list["assign_bank"])
+				if (inserted_modify_id && account)
+					playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, FALSE)
+					to_chat(usr, "<span class='alert'>Bank account: [account.account_id], has been assigned to the ID.</span>")
+					inserted_modify_id.registered_account = account
+				else
+					to_chat(usr, "<span class='alert'>There is no id inserted to modify.</span>")
+
+
 		if ("assign")
 			if (authenticated == 2)
 				var/t1 = href_list["assign_target"]
