@@ -259,6 +259,7 @@
 	name = "cream of the wastes soup"
 	desc = "Locals say the bowl gives it a unique flavor each time. That might just be whatever killed the goliath getting in your bowl, though."
 	icon_state = "wastessoup"
+	trash = /obj/item/reagent_containers/glass/bowl/mushroom_bowl
 	var/snowflake_reagent = null
 	list_reagents = list(/datum/reagent/consumable/nutriment = 6)
 	tastes = list("a fresh kill" = 3, "creamy mushroom" = 5, "a warm sunset over the scorched landscape of hell" = 1)

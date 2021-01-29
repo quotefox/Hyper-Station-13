@@ -121,6 +121,7 @@
 	name = "hell cobb salad"
 	desc = "If you're being honest with yourself it's just a bowl of mushrooms with chunks of meat and an egg."
 	icon_state = "hellcobb"
+	trash = /obj/item/reagent_containers/glass/bowl/mushroom_bowl
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 4)
 	tastes = list("fruity cactus" = 5, "ash" = 1, "tough meat" = 3, "your eternal damnation" = 1)
 	foodtype = FRUIT | MEAT | VEGETABLES //MUSHROOM = VEGETABLE -VladinXXV 2021
