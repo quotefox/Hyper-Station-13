@@ -13,7 +13,7 @@
 	icon_grow = "amauri-stage"
 	growthstages = 3
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list("shadowmutationtoxin" = 0.1)
+	reagents_add = list(/datum/reagent/mutationtoxin/shadow = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/amauri
 	seed = /obj/item/seeds/amauri
@@ -24,5 +24,5 @@
 	filling_color = "#FF4500"
 	bitesize = 100
 	foodtype = FRUIT
-	juice_results = list("shadowmutationtoxin" = 0.1)
+	juice_results = list(/datum/reagent/mutationtoxin/shadow = 0.1)
 	tastes = list("shadow" = 1)

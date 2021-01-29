@@ -59,3 +59,27 @@
 	icon = 'hyperstation/icons/obj/plushes.dmi'
 	icon_state = "lyricalpaws"
 	item_state = "lyricalpaws"
+
+/obj/item/toy/plush/mammal/chemlight
+	desc = "An adorable stuffed toy of a mammal that seems to resemble a crew member! It looks to glow and sport four arms."
+	gender = MALE	//he's a boy, right?
+	icon = 'hyperstation/icons/obj/plushes.dmi'
+	icon_state = "chemlight"
+	item_state = "chemlight"
+	light_color = "#CCFF33"
+	light_power = 0.25
+	light_range = 1.4
+	attack_verb = list("bapped", "slapped", "bonked")
+
+//Vladplush containment starts here
+/obj/item/toy/plush/nukeplushie/vladin
+	name = "elite operative plushie"
+	desc = "A stuffed toy that resembles an elite syndicate nuclear operative. He has a little wedding band!"
+	gender = MALE //he's a boy, there is no doubt here
+	young = TRUE //he's not actually young, but i refuse to have a plush that is not loyal to his partner. this is the only way i could figure out.
+	icon = 'hyperstation/icons/obj/plushes.dmi'
+	icon_state = "vladin"
+	item_state = "vladin"
+	attack_verb = list("nuked", "detonated", "CQC'd", "robusted")
+	squeak_override = list('sound/effects/hit_punch.ogg' = 1, 'sound/effects/hit_kick.ogg' = 1, 'sound/weapons/cqchit1.ogg' = 1, 'sound/weapons/cqchit2.ogg' = 1)
+//I can't figure out how to make him loyal to a specific type of plush. If anyone figures that out, there will be more. Until then, this is the end of the vladplush.

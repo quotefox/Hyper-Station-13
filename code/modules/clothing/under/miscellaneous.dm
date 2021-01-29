@@ -786,3 +786,14 @@
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+//Chemlight the dumb dog was here
+/obj/item/clothing/under/greenplaidshirt
+	name = "plaid green shirt"
+	desc = "A pair of khaki pants and a green shirt with a plaid open button shirt, looks roomy on the inside..."
+	icon_state = "greenplaidshirt"
+	item_state = "greenplaidshirt"
+	item_color = "greenplaidshirt"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	can_adjust = FALSE
+//yes

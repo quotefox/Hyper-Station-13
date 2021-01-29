@@ -171,6 +171,36 @@
 	icon_state = "wooden_chair_wings"
 	item_chair = /obj/item/chair/wood/wings
 
+/obj/structure/chair/shadoww
+	icon_state = "shadoww_chair"
+	name = "shadow wood chair"
+	desc = "Fashionable dark."
+	resistance_flags = FLAMMABLE
+	max_integrity = 70
+	buildstacktype = /obj/item/stack/sheet/mineral/shadoww
+	buildstackamount = 3
+	item_chair = /obj/item/chair/shadoww
+
+/obj/structure/chair/plaswood
+	icon_state = "plaswood_chair"
+	name = "plaswood chair"
+	desc = "Hard but confortable to sit."
+	resistance_flags = FLAMMABLE | ACID_PROOF
+	max_integrity = 90
+	buildstacktype = /obj/item/stack/sheet/mineral/plaswood
+	buildstackamount = 3
+	item_chair = /obj/item/chair/plaswood
+
+/obj/structure/chair/gmushroom
+	icon_state = "gmushroom_chair"
+	name = "mushroom chair"
+	desc = "You don't need to worry about losing your seat in case of fire!"
+	resistance_flags = FIRE_PROOF
+	max_integrity = 70
+	buildstacktype = /obj/item/stack/sheet/mineral/gmushroom
+	buildstackamount = 3
+	item_chair = /obj/item/chair/gmushroom
+
 /obj/structure/chair/comfy
 	name = "comfy chair"
 	desc = "It looks comfy."
@@ -188,9 +218,9 @@
 /obj/structure/chair/comfy/Initialize()
 
 	padding = GetPadding()
-	padding.layer = BELOW_MOB_LAYER
 	padding.color = paddingcolor
-	add_overlay(padding)
+	if(paddingcolor)
+		add_overlay(padding)
 
 	armrest = GetArmrest()
 	armrest.layer = ABOVE_MOB_LAYER
@@ -253,6 +283,7 @@
 	name = "shuttle seat"
 	desc = "A comfortable, secure seat. It has a more sturdy looking buckling system, for smoother flights."
 	icon_state = "shuttle_chair"
+	paddingcolor = ""
 
 /obj/structure/chair/comfy/shuttle/GetArmrest()
 	return mutable_appearance('icons/obj/chairs.dmi', "shuttle_chair_armrest")
@@ -515,6 +546,39 @@
 /obj/item/chair/wood/wings
 	icon_state = "wooden_chair_wings_toppled"
 	origin_type = /obj/structure/chair/wood/wings
+
+/obj/item/chair/shadoww
+	name = "shadow wood chair"
+	icon_state = "shadoww_chair_toppled"
+	item_state = "shadowwchair"
+	resistance_flags = FLAMMABLE
+	max_integrity = 70
+	hitsound = 'sound/weapons/genhit1.ogg'
+	origin_type = /obj/structure/chair/shadoww
+	materials = null
+	break_chance = 50
+
+/obj/item/chair/plaswood
+	name = "plaswood chair"
+	icon_state = "plaswood_chair_toppled"
+	item_state = "plaswoodchair"
+	resistance_flags = FLAMMABLE | ACID_PROOF
+	max_integrity = 90
+	hitsound = 'sound/weapons/genhit1.ogg'
+	origin_type = /obj/structure/chair/plaswood
+	materials = null
+	break_chance = 70
+
+/obj/item/chair/gmushroom
+	name = "mushroom chair"
+	icon_state = "gmushroom_chair_toppled"
+	item_state = "gmushroomchair"
+	resistance_flags = FIRE_PROOF
+	max_integrity = 70
+	hitsound = 'sound/weapons/genhit1.ogg'
+	origin_type = /obj/structure/chair/gmushroom
+	materials = null
+	break_chance = 50
 
 /obj/structure/chair/old
 	name = "strange chair"

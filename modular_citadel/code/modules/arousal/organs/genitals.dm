@@ -23,6 +23,8 @@
 	var/hidden					= FALSE
 	var/colourtint				= ""
 	var/mode					= "clothes"
+	var/obj/item/equipment 		//for fun stuff that goes on the gentials/maybe rings down the line
+	var/dontlist				= FALSE
 
 /obj/item/organ/genital/Initialize()
 	. = ..()
@@ -60,6 +62,8 @@
 
 	switch(zone) //update as more genitals are added
 		if("chest")
+			return owner.is_chest_exposed()
+		if("belly")
 			return owner.is_chest_exposed()
 		if("groin")
 			return owner.is_groin_exposed()
@@ -154,14 +158,17 @@
 		make_breedable() //hyperstation set up the pregnancy stuff
 	if(dna.features["has_balls"])
 		give_balls()
-	if(dna.features["has_breasts"]) // since we have multi-boobs as a thing, we'll want to at least draw over these. but not over the pingas.
-		give_breasts()
 	if(dna.features["has_cock"])
 		give_penis()
+	if(dna.features["has_belly"])
+		give_belly()
+	if(dna.features["has_breasts"]) // since we have multi-boobs as a thing, we'll want to at least draw over these. but not over the pingas.
+		give_breasts()
 	if(dna.features["has_ovi"])
 		give_ovipositor()
 	if(dna.features["has_eggsack"])
 		give_eggsack()
+
 
 /mob/living/carbon/human/proc/give_penis()
 	if(!dna)
@@ -208,6 +215,26 @@
 			T.fluid_mult = dna.features["balls_cum_mult"]
 			T.fluid_efficiency = dna.features["balls_efficiency"]
 			T.update()
+
+/mob/living/carbon/human/proc/give_belly()
+	if(!dna)
+		return FALSE
+	if(NOGENITALS in dna.species.species_traits)
+		return FALSE
+	if(!getorganslot("belly"))
+		var/obj/item/organ/genital/belly/B = new
+		B.Insert(src)
+		if(B)
+			if(dna.species.use_skintones && dna.features["genitals_use_skintone"])
+				B.color = "#[skintone2hex(skin_tone)]"
+			else
+				B.color = "#[dna.features["belly_color"]]"
+			B.update()
+
+		if(dna.features["hide_belly"]) //autohide bellies if they have the option ticked.
+			B.toggle_visibility("Always hidden")
+
+
 
 /mob/living/carbon/human/proc/give_breasts()
 	if(!dna)
@@ -361,15 +388,17 @@
 	var/size
 	var/aroused_state
 	var/colourtint
+	var/colourcode
 
 	for(var/L in relevant_layers) //Less hardcode
 		H.remove_overlay(L)
+
 	//start scanning for genitals
 	for(var/obj/item/organ/O in H.internal_organs)
 		if(isgenital(O))
 			var/obj/item/organ/genital/G = O
 			if(G.hidden)
-				return	//we're gunna just hijack this for updates.
+				continue
 			if(G.is_exposed()) //Checks appropriate clothing slot and if it's through_clothes
 				genitals_to_add += H.getorganslot(G.slot)
 	//Now we added all genitals that aren't internal and should be rendered
@@ -390,23 +419,32 @@
 					S = GLOB.vagina_shapes_list[G.shape]
 				if(/obj/item/organ/genital/breasts)
 					S = GLOB.breasts_shapes_list[G.shape]
+				if(/obj/item/organ/genital/belly)
+					S = GLOB.breasts_shapes_list[G.shape]
 
 			if(!S || S.icon_state == "none")
 				continue
 
 			var/mutable_appearance/genital_overlay = mutable_appearance(S.icon, layer = -layer)
 			genital_overlay.icon_state = "[G.slot]_[S.icon_state]_[size]_[aroused_state]_[layertext]"
+			colourcode = S.color_src
+
+			if(G.slot == "belly")
+				genital_overlay.icon = 'hyperstation/icons/obj/genitals/belly.dmi'
+				genital_overlay.icon_state = "belly"
+				colourcode = "belly_color"
+
 
 			if(S.center)
 				genital_overlay = center_image(genital_overlay, S.dimension_x, S.dimension_y)
 
 			if(use_skintones && H.dna.features["genitals_use_skintone"])
 				genital_overlay.color = "#[skintone2hex(H.skin_tone)]"
-				genital_overlay.icon_state = "[G.slot]_[S.icon_state]_[size]-s_[aroused_state]_[layertext]"
+//				genital_overlay.icon_state = "[G.slot]_[S.icon_state]_[size]-s_[aroused_state]_[layertext]"
 				if (colourtint)
 					genital_overlay.color = "#[colourtint]"
 			else
-				switch(S.color_src)
+				switch(colourcode)
 					if("cock_color")
 						genital_overlay.color = "#[H.dna.features["cock_color"]]"
 						if (colourtint)
@@ -417,6 +455,8 @@
 						genital_overlay.color = "#[H.dna.features["breasts_color"]]"
 					if("vag_color")
 						genital_overlay.color = "#[H.dna.features["vag_color"]]"
+					if("belly_color")
+						genital_overlay.color = "#[H.dna.features["belly_color"]]"
 
 			standing += genital_overlay
 

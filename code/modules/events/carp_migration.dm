@@ -15,7 +15,7 @@
 
 /datum/round_event/carp_migration/announce(fake)
 	if(prob(50))
-		priority_announce("Unknown biological entities have been detected near [station_name()], please stand-by.", "Lifesign Alert")
+		priority_announce("Unknown biological entities have been detected near [station_name()], please stand-by.", "Lifesign Alert", 'sound/ai/carp.ogg')
 	else
 		priority_announce("A report has been downloaded and printed out at all communications consoles.", "Incoming Classified Message", 'sound/ai/commandreport.ogg') // CITADEL EDIT metabreak
 		for(var/obj/machinery/computer/communications/C in GLOB.machines)

@@ -13,7 +13,7 @@
 	icon_grow = "vaporsac-stage"
 	growthstages = 3
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list("nitrous_oxide" = 0.1)
+	reagents_add = list(/datum/reagent/nitrous_oxide = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/vaporsac
 	seed = /obj/item/seeds/vaporsac
@@ -24,5 +24,5 @@
 	filling_color = "#FF4500"
 	bitesize = 100
 	foodtype = FRUIT
-	juice_results = list("nitrous_oxide" = 0.1)
+	juice_results = list(/datum/reagent/nitrous_oxide = 0.1)
 	tastes = list("sleep" = 1)
