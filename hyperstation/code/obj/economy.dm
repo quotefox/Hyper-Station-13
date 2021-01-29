@@ -126,7 +126,7 @@
 			if(pinchange == pinchange2)
 				var/obj/item/card/id/idcard = held_card
 				idcard.registered_account.account_pin = pinchange
-				to_chat(usr, "<span class='notice'>[src.name] beeps, your pin has been changed.</span>")
+				to_chat(usr, "<span class='notice'>[src.name] beeps, your pin has been changed to [pinchange]!.</span>")
 			else
 				to_chat(usr, "<span class='warning'>[src.name] buzzes, your pins did not match!</span>")
 		pin = ""
