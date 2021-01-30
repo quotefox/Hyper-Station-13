@@ -53,6 +53,8 @@
 				/obj/item/reagent_containers/pill/breast_enlargement = 3,
 				/obj/item/clothing/gloves/latexsleeves = 3,
 				/obj/item/clothing/shoes/highheels = 3,
+				/obj/item/clothing/neck/stole = 2,
+				/obj/item/clothing/neck/stole/black = 2,
 				/obj/item/clothing/under/polychromic/stripper = 3,
 				/obj/item/clothing/under/polychromic/bikini = 3,
 				/obj/item/clothing/under/polychromic/shortpants/pantsu = 3,
