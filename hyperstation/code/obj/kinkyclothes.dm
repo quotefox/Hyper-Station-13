@@ -36,19 +36,19 @@
 	AddComponent(/datum/component/squeak, list('sound/effects/footstep/highheel1.ogg' = 1,'sound/effects/footstep/highheel2.ogg' = 1), 20)
 //the classic click clack
 
-obj/item/clothing/neck/shaw
-	name = "white shaw"
+obj/item/clothing/neck/stole
+	name = "white stole"
 	desc = "Fluffy neck wear to keep you warm, and attract others."
 	icon = 'hyperstation/icons/obj/clothing/neck.dmi'
 	w_class = WEIGHT_CLASS_SMALL
-	icon_state = "shaw"
+	icon_state = "stole"
 	item_state = ""	//no inhands
 
-obj/item/clothing/neck/shaw/black
-	name = "black shaw"
+obj/item/clothing/neck/stole/black
+	name = "black stole"
 	desc = "Fluffy neck wear to keep you warm, and attract others."
 	icon = 'hyperstation/icons/obj/clothing/neck.dmi'
 	w_class = WEIGHT_CLASS_SMALL
-	icon_state = "shaw"
+	icon_state = "stole"
 	item_state = ""	//no inhands
 	color = "#3d3d3d"
