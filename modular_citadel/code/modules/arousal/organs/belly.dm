@@ -27,7 +27,7 @@
 	var/string
 	if(owner)
 		if(owner.dna.species.use_skintones && owner.dna.features["genitals_use_skintone"])
-			if(ishuman(owner)) .
+			if(ishuman(owner))
 				var/mob/living/carbon/human/H = owner
 				color = "#[skintone2hex(H.skin_tone)]"
 		else

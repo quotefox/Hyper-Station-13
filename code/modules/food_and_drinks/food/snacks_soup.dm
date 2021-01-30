@@ -254,3 +254,20 @@
 	tastes = list("bungo" = 2, "hot curry" = 4, "tropical sweetness" = 1)
 	filling_color = "#E6A625"
 	foodtype = VEGETABLES | FRUIT | DAIRY
+
+/obj/item/reagent_containers/food/snacks/soup/creamofwastes
+	name = "cream of the wastes soup"
+	desc = "Locals say the bowl gives it a unique flavor each time. That might just be whatever killed the goliath getting in your bowl, though."
+	icon_state = "wastessoup"
+	trash = /obj/item/reagent_containers/glass/bowl/mushroom_bowl
+	var/snowflake_reagent = null
+	list_reagents = list(/datum/reagent/consumable/nutriment = 6)
+	tastes = list("a fresh kill" = 3, "creamy mushroom" = 5, "a warm sunset over the scorched landscape of hell" = 1)
+
+/obj/item/reagent_containers/food/snacks/soup/creamofwastes/Initialize()
+	. = ..()
+	snowflake_reagent = pick(/datum/reagent/consumable/capsaicin, /datum/reagent/consumable/frostoil,
+							 /datum/reagent/blood, /datum/reagent/oil, /datum/reagent/consumable/honey,
+							 /datum/reagent/carbon, /datum/reagent/drug/mushroomhallucinogen)
+	bonus_reagents = list(snowflake_reagent = 5, /datum/reagent/consumable/nutriment = 6)
+	reagents.add_reagent(snowflake_reagent, 5)

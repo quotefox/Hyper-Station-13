@@ -509,7 +509,7 @@ GLOBAL_LIST(cachedbooks) // List of our cached book datums
 	name = "scanner control interface"
 	icon = 'icons/obj/library.dmi'
 	icon_state = "bigscanner"
-	desc = "It servers the purpose of scanning stuff."
+	desc = "It serves the purpose of scanning stuff."
 	density = TRUE
 	var/obj/item/book/cache		// Last scanned book
 

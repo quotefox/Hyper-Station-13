@@ -324,7 +324,7 @@
 
 /obj/item/storage/pill_bottle/mutarad
 	name = "radiation treatment deluxe pill bottle"
-	desc = "The label says 'Med-Co branded pills' and below that 'Contains Mutadone in each pill!`."
+	desc = "The label says 'Med-Co branded pills' and below that 'Contains Mutadone in each pill!'."
 
 /obj/item/storage/pill_bottle/mutarad/PopulateContents()
 	for(var/i in 1 to 7)
@@ -340,7 +340,7 @@
 
 /obj/item/storage/pill_bottle/breast_enlargement
 	name = "breast enlargement pills"
-	desc = "Made by Fermichem - They have a woman with breasts larger than she is on them. The warming states not to take more than 10u at a time."
+	desc = "Made by Fermichem - They have a woman with breasts larger than she is on them. The warning states not to take more than 10u at a time."
 
 /obj/item/storage/pill_bottle/breast_enlargement/PopulateContents()
 	for(var/i in 1 to 7)
