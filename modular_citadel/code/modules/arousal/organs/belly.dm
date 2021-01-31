@@ -7,12 +7,10 @@
 	slot 					= "belly"
 	w_class 				= 3
 	size 					= 1
-	var/breast_values 		= list ("a" =  1, "b" = 2, "c" = 3, "d" = 4, "e" = 5, "f" = 6, "g" = 7, "h" = 8, "i" = 9, "j" = 10, "k" = 11, "l" = 12, "m" = 13, "n" = 14, "o" = 15, "huge" = 16, "massive" = 17, "giga" = 25, "impossible" = 30, "flat" = 0) // Note: Do not forget to define new sizes.
 	var/statuscheck			= FALSE
 	shape					= "Pair"
-	can_masturbate_with		= TRUE
 	masturbation_verb 		= "massage"
-	can_climax				= TRUE
+	can_climax				= FALSE
 	fluid_transfer_factor 	= 0.5
 	var/sent_full_message	= TRUE //defaults to 1 since they're full to start
 
