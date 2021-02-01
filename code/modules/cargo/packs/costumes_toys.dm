@@ -291,7 +291,7 @@
 
 /datum/supply_pack/costumes_toys/magicka
 	name = "Proper Wizard Costume Crate"
-	desc = "Up to four cremates take on a grand adventure to save their world from certain doom using the robes in this crate!"
+	desc = "Up to four crewmates take on a grand adventure to save their world from certain doom using the robes in this crate!"
 	cost = 7000
 	contraband = TRUE
 	contains = list(/obj/item/staff,
