@@ -510,3 +510,17 @@
 		to_chat(user, "<span class='notice'>You ready your slapping hand.</span>")
 	else
 		to_chat(user, "<span class='warning'>You're incapable of slapping in your current state.</span>")
+
+/datum/emote/living/hehheh
+	key = "hehheh"
+	key_third_person = "laughs suspiciously"
+	message = "laughs suspiciously."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/hehheh/run_emote(mob/living/user, params)
+	if(ishuman(user))
+		if(user.nextsoundemote >= world.time)
+			return
+		user.nextsoundemote = world.time + 7
+		playsound(user, 'sound/misc/hehheh.ogg', 50, 1, -1)
+	. = ..()
