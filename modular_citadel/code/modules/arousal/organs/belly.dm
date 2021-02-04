@@ -1,6 +1,6 @@
 /obj/item/organ/genital/belly //I know, I know a belly aint a genital. but it is in the sake of code.
 	name 					= "belly"
-	desc 					= "a belly."
+	desc 					= "You see a belly on their midsection."
 	icon_state 				= "belly"
 	icon 					= 'modular_citadel/icons/obj/genitals/breasts.dmi'
 	zone 					= "chest"
@@ -11,7 +11,6 @@
 	shape					= "Pair"
 	masturbation_verb 		= "massage"
 	can_climax				= FALSE
-	fluid_transfer_factor 	= 0.5
 	var/sent_full_message	= TRUE //defaults to 1 since they're full to start
 
 
