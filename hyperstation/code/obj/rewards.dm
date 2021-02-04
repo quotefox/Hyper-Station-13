@@ -95,3 +95,12 @@
 	desc = "A handful of blue crystals. They look like they came from some sort of cave."
 	alternate_worn_icon = 'hyperstation/icons/mobs/rewards.dmi'
 	icon_state = "crystalline"
+
+/obj/item/clothing/mask/keaton
+	name = "keaton mask"
+	desc = "A mask made to look like the mythical Keaton."
+	icon = 'hyperstation/icons/obj/rewards.dmi'
+	alternate_worn_icon = 'hyperstation/icons/mobs/rewards.dmi'
+	icon_state = "keaton"
+	flags_inv = HIDEFACE|HIDEFACIALHAIR
+	w_class = WEIGHT_CLASS_SMALL

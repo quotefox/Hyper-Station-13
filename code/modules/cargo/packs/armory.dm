@@ -189,7 +189,7 @@
 	crate_name = "swat crate"
 
 /datum/supply_pack/security/armory/swattasers //Lesser AEG tbh
-	name = "SWAT tatical tasers Crate"
+	name = "SWAT tactical tasers Crate"
 	desc = "Contains two tactical energy gun, these guns are able to tase, disable and lethal as well as hold a seclight. Requires Armory access to open."
 	cost = 7000
 	contains = list(/obj/item/gun/energy/e_gun/stun,

@@ -381,6 +381,7 @@
 	item_state = "b_suit"
 	item_color = "galaxy_blue"
 	can_adjust = FALSE
+	price = 10
 
 /obj/item/clothing/under/lawyer/galaxy_red
 	name = "\improper Pulsar Gonne"

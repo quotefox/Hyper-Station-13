@@ -13,6 +13,7 @@
 	var/style = "long"
 	var/inside = FALSE
 	var/last = 0
+	price = 3
 
 /obj/item/electropack/vibrator/Initialize() //give the device its own code
 	. = ..()
@@ -125,12 +126,14 @@ Code:
 			U.adjustArousalLoss(intencity) //give pleasure
 			playsound(U.loc, 'sound/lewd/vibrate.ogg', (intencity+5), 1, -1) //vibe intencity scaled up abit for sound
 
+
 			switch(mode)
 				if(1) //low, setting for RP, it wont force your character to do anything.
 					to_chat(U, "<span class='love'>You feel pleasure surge through your [G.name]</span>")
+					U.do_jitter_animation() //do animation without heartbeat
 				if(2) //med, can make you cum
 					to_chat(U, "<span class='love'>You feel intense pleasure surge through your [G.name]</span>")
-					U.Jitter(3)
+					U.do_jitter_animation()
 					if (U.getArousalLoss() >= 100 && ishuman(U) && U.has_dna())
 						U.mob_climax(forced_climax=TRUE)
 				if(3) //high, makes you stun

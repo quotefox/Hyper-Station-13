@@ -21,6 +21,8 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	var/product_path = null
 	var/amount = 0
 	var/max_amount = 0
+	var/price = 0
+
 
 /obj/machinery/vending
 	name = "\improper Vendomat"
@@ -65,12 +67,20 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	var/scan_id = 1
 	var/obj/item/coin/coin
 	var/obj/item/stack/spacecash/bill
-	
+
 	var/global/vending_cache = list() //used for storing the icons of items being vended
 
 	var/dish_quants = list()  //used by the snack machine's custom compartment to count dishes.
 
-	var/obj/item/vending_refill/refill_canister = null		//The type of refill canisters used by this machine.
+	var/obj/item/vending_refill/refill_canister = null		//The type of refill canisters used by this machine
+
+	//hyper economy stuff
+	var/credits = 0
+	var/baseprice = 0
+	var/menu = 1
+	var/datum/bank_account/bankid
+	var/datum/data/vending_product/buying
+	var/free = FALSE //everythings free!
 
 /obj/machinery/vending/Initialize()
 	var/build_inv = FALSE
@@ -153,9 +163,18 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 			amount = 0
 
 		var/atom/temp = typepath
+		var/obj/item/product = typepath
 		var/datum/data/vending_product/R = new /datum/data/vending_product()
 		R.name = initial(temp.name)
 		R.product_path = typepath
+		R.price = baseprice
+		if(product) //its a item!
+			if((initial(product.price)))
+				R.price = initial(product.price)
+			else
+				R.price = baseprice
+		if(free)
+			R.price = 0
 		if(!start_empty)
 			R.amount = amount
 		R.max_amount = amount
@@ -228,6 +247,16 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 	if(panel_open && is_wire_tool(I))
 		wires.interact(user)
 		return
+
+
+	else if(istype(I, /obj/item/stack/credits))
+		var/obj/item/stack/credits/cred = I
+		to_chat(usr, "<span class='notice'>You insert [cred] into [src].</span>")
+		credits = credits+cred.amount
+		src.ui_interact(usr)
+		del(cred)
+
+	/* we dont use this currency anymore!
 	else if(istype(I, /obj/item/coin))
 		if(coin)
 			to_chat(user, "<span class='warning'>[src] already has [coin] inserted</span>")
@@ -258,6 +287,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 		bill = new S.type(src, 1)
 		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
 		return
+	*/
 	else if(refill_canister && istype(I, refill_canister))
 		if (!panel_open)
 			to_chat(user, "<span class='notice'>You should probably unscrew the service panel first.</span>")
@@ -320,44 +350,56 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 /obj/machinery/vending/ui_interact(mob/user)
 	var/dat = ""
 
-	dat += "<h3>Select an item</h3>"
-	dat += "<div class='statusDisplay'>"
-	if(!product_records.len)
-		dat += "<font color = 'red'>No product loaded!</font>"
-	else
-		var/list/display_records = product_records
-		if(extended_inventory)
-			display_records = product_records + hidden_records
-		if(coin || bill)
-			display_records = product_records + coin_records
-		if((coin || bill) && extended_inventory)
-			display_records = product_records + hidden_records + coin_records
-		dat += "<table>"
-		for (var/datum/data/vending_product/R in display_records)
-			dat += "<tr><td><img src='data:image/jpeg;base64,[GetIconForProduct(R)]'/></td>"
-			dat += "<td style=\"width: 100%\"><b>[sanitize(R.name)]</b></td>"
-			if(R.amount > 0)
-				dat += "<td><b>[R.amount]&nbsp;</b></td><td><a href='byond://?src=[REF(src)];vend=[REF(R)]'>Vend</a></td>"
+	switch(menu)
+		if(1)
+			dat += "<h3>Select an item</h3><p>"
+			if(!credits)
+				dat += "<i>Inserted credits: $[credits] </i>&nbsp;&nbsp;<span class='linkOff'>remove</span>"
 			else
-				dat += "<td>0&nbsp;</td><td><span class='linkOff'>Vend</span></td>"
-			dat += "</tr>"
-		dat += "</table>"
-	dat += "</div>"
-	if(premium.len > 0)
-		dat += "<b>Change Return:</b> "
-		if (coin || bill)
-			dat += "[(coin ? coin : "")][(bill ? bill : "")]&nbsp;&nbsp;<a href='byond://?src=[REF(src)];remove_coin=1'>Remove</a>"
-		else
-			dat += "<i>No money</i>&nbsp;&nbsp;<span class='linkOff'>Remove</span>"
-	if(istype(src, /obj/machinery/vending/snack))
-		dat += "<h3>Chef's Food Selection</h3>"
-		dat += "<div class='statusDisplay'>"
-		for (var/O in dish_quants)
-			if(dish_quants[O] > 0)
-				var/N = dish_quants[O]
-				dat += "<a href='byond://?src=[REF(src)];dispense=[sanitize(O)]'>Dispense</A> "
-				dat += "<B>[capitalize(O)]: [N]</B><br>"
-		dat += "</div>"
+				dat	+= "<i>Inserted credits: $[credits] </i><a href='byond://?src=[REF(src)];removecredits=1'>remove</A>"
+
+			dat += "<div class='statusDisplay'>"
+			if(!product_records.len)
+				dat += "<font color = 'red'>No product loaded!</font>"
+			else
+				var/list/display_records = product_records
+				if(extended_inventory) //hacking shows all inventory now since coins arent worth anything.
+					display_records = product_records + hidden_records + coin_records
+				else
+					display_records = product_records + coin_records
+				dat += "<table>"
+				for (var/datum/data/vending_product/R in display_records)
+					dat += "<tr><td><img src='data:image/jpeg;base64,[GetIconForProduct(R)]'/></td>"
+					dat += "<td style=\"width: 10%\"><b>$[R.price]</b></td>"
+					dat += "<td style=\"width: 100%\">[sanitize(R.name)]</td>"
+					if(R.amount > 0)
+						dat += "<td><b>[R.amount]&nbsp;</b></td><td><a href='byond://?src=[REF(src)];vend=[REF(R)]'>[!R.price  ? "Vend" : "Buy"]</a></td>"
+					else
+						dat += "<td>0&nbsp;</td><td><span class='linkOff'>Vend</span></td>"
+					dat += "</tr>"
+				dat += "</table>"
+			dat += "</div>"
+
+			if(istype(src, /obj/machinery/vending/snack))
+				dat += "<h3>Chef's Food Selection</h3>"
+				dat += "<div class='statusDisplay'>"
+				for (var/O in dish_quants)
+					if(dish_quants[O] > 0)
+						var/N = dish_quants[O]
+						dat += "<a href='byond://?src=[REF(src)];dispense=[sanitize(O)]'>Dispense</A> "
+						dat += "<B>[capitalize(O)]: [N]</B><br>"
+				dat += "</div>"
+		if(2) //hyper economy purchase item menu
+			dat += "<center>"
+			if(buying)
+				dat += "<h3>Purchase [buying.name]</h3><p>"
+			else
+				dat += "<h3>Purchase Item</h3><p>"
+			dat += "<i>Inserted credits: $[credits]</i><p>"
+			dat += "Not enough credits to purchase, please insert credits or swipe your card to purchase!<p>"
+			dat += "<a href='byond://?src=[REF(src)];idpay=1;vend=[REF(buying)]'>Pay-By-Card</a>"
+			dat += "<a href='byond://?src=[REF(src)];return=1]'>Return</a>"
+			dat += "</center>"
 
 	var/datum/browser/popup = new(user, "vending", (name))
 	popup.set_content(dat)
@@ -389,6 +431,12 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 			to_chat(usr, "<span class='notice'>You remove [bill] from [src].</span>")
 			bill = null
 
+	if(href_list["removecredits"])
+		var/obj/item/stack/credits/C = new /obj/item/stack/credits/(loc)
+		C.amount = credits
+		credits = 0 //empty the machine
+		if(usr.put_in_hands(C))
+			to_chat(usr, "<span class='notice'>You take [C] out of the ATM.</span>")
 
 	usr.set_machine(src)
 
@@ -408,6 +456,22 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 		updateUsrDialog()
 		return
 
+	if(href_list["idpay"])
+		var/obj/item/card/id/I = usr.get_idcard(TRUE)
+		if(I)
+			if(I.registered_account)
+				bankid = I.registered_account
+			else
+				to_chat(usr, "<span class='notice'>The vending machine fails to read your bank account!</span>")
+		else
+			to_chat(usr, "<span class='notice'>The vending machine fails to read your card!</span>")
+
+	if(href_list["return"])
+		menu = 1
+		vend_ready = 1
+		updateUsrDialog()
+		return
+
 	if((href_list["vend"]) && (vend_ready))
 		if(panel_open)
 			to_chat(usr, "<span class='notice'>The vending machine cannot dispense products while its service panel is open!</span>")
@@ -421,6 +485,29 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 		vend_ready = 0 //One thing at a time!!
 
 		var/datum/data/vending_product/R = locate(href_list["vend"])
+		buying = R
+
+		//check if they can afford it, if not open the next menu
+		if(R.price > credits)
+			menu = 2 //second menu
+			updateUsrDialog()
+			vend_ready = 1
+			if(bankid && R == buying) //if we have a bank id, and we are trying to buy the same thing!
+				if(bankid.account_balance >= R.price)
+					bankid.account_balance -= R.price //take the money from the account.
+					menu = 1
+					to_chat(usr, "<span class='notice'>You [R.name] via the provided bank account!</span>")
+					bankid = null //so noone can buy from your account after youve purchased stuff
+				else
+					to_chat(usr, "<span class='notice'>You do not have enough money in the bank account to purchase [R.name]!</span>")
+					return
+			else
+				return
+
+		else
+			credits -= R.price
+			menu = 1
+
 		if(!R || !istype(R) || !R.product_path)
 			vend_ready = 1
 			return
@@ -470,9 +557,11 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 			last_reply = world.time
 
 		use_power(5)
+
 		if(icon_vend) //Show the vending animation if needed
 			flick(icon_vend,src)
 		var/vended = new R.product_path(get_turf(src))
+		playsound(src, 'sound/items/vending.ogg', 50, 1, -1)
 		if(usr.CanReach(src))
 			if(usr.put_in_hands(vended))
 				to_chat(usr, "<span class='notice'>You take [R.name] out of the slot.</span>")
@@ -507,8 +596,10 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 		speak(slogan)
 		last_slogan = world.time
 
+	/* no freebies
 	if(shoot_inventory && prob(shoot_inventory_chance))
 		throw_item()
+	*/
 
 /obj/machinery/vending/proc/speak(message)
 	if(stat & (BROKEN|NOPOWER))

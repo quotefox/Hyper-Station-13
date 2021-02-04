@@ -15,6 +15,7 @@
 
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
+#include "_maps\boxstation.dm"
 #include "code\_compile_options.dm"
 #include "code\world.dm"
 #include "code\__DEFINES\_globals.dm"
@@ -3072,6 +3073,7 @@
 #include "hyperstation\code\obj\lunaritems.dm"
 #include "hyperstation\code\obj\milking machine.dm"
 #include "hyperstation\code\obj\plushes.dm"
+#include "hyperstation\code\obj\pole.dm"
 #include "hyperstation\code\obj\pregnancytester.dm"
 #include "hyperstation\code\obj\rewards.dm"
 #include "hyperstation\code\obj\rope.dm"
