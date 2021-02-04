@@ -379,12 +379,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 					dat += "</tr>"
 				dat += "</table>"
 			dat += "</div>"
-			if(premium.len > 0)
-				dat += "<b>Change Return:</b> "
-				if (coin || bill)
-					dat += "[(coin ? coin : "")][(bill ? bill : "")]&nbsp;&nbsp;<a href='byond://?src=[REF(src)];remove_coin=1'>Remove</a>"
-				else
-					dat += "<i>No money</i>&nbsp;&nbsp;<span class='linkOff'>Remove</span>"
+
 			if(istype(src, /obj/machinery/vending/snack))
 				dat += "<h3>Chef's Food Selection</h3>"
 				dat += "<div class='statusDisplay'>"
