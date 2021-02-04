@@ -366,7 +366,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 				if(extended_inventory) //hacking shows all inventory now since coins arent worth anything.
 					display_records = product_records + hidden_records + coin_records
 				else
-					display_records = product_records
+					display_records = product_records + coin_records
 				dat += "<table>"
 				for (var/datum/data/vending_product/R in display_records)
 					dat += "<tr><td><img src='data:image/jpeg;base64,[GetIconForProduct(R)]'/></td>"

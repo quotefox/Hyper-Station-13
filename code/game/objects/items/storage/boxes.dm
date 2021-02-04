@@ -415,6 +415,7 @@
 	desc = "<B>Instructions:</B> <I>Heat in microwave. Product will cool if not eaten within seven minutes.</I>"
 	icon_state = "donkpocketbox"
 	illustration=null
+	price = 10
 
 /obj/item/storage/box/donkpockets/ComponentInitialize()
 	. = ..()
