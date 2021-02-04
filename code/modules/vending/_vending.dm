@@ -487,6 +487,10 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 		var/datum/data/vending_product/R = locate(href_list["vend"])
 		buying = R
 
+		if(!R || !istype(R) || !R.product_path)
+			vend_ready = 1
+			return
+
 		//check if they can afford it, if not open the next menu
 		if(R.price > credits)
 			menu = 2 //second menu
@@ -508,42 +512,10 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 			credits -= R.price
 			menu = 1
 
-		if(!R || !istype(R) || !R.product_path)
-			vend_ready = 1
-			return
-
 		if(R in hidden_records)
 			if(!extended_inventory)
 				vend_ready = 1
 				return
-		else if(R in coin_records)
-			if(!(coin || bill))
-				to_chat(usr, "<span class='warning'>You need to insert money to get this item!</span>")
-				vend_ready = 1
-				return
-			if(coin && coin.string_attached)
-				if(prob(50))
-					if(usr.CanReach(src))
-						if(usr.put_in_hands(coin))
-							to_chat(usr, "<span class='notice'>You successfully pull [coin] out before [src] could swallow it.</span>")
-							coin = null
-						else
-							to_chat(usr, "<span class='warning'>You couldn't pull [coin] out because your hands are full!</span>")
-							QDEL_NULL(coin)
-					else
-						to_chat(usr, "<span class='notice'>You successfully pull [coin] out of [src] to the floor.</span>")
-						coin = null
-				else
-					to_chat(usr, "<span class='warning'>You weren't able to pull [coin] out fast enough, the machine ate it, string and all!</span>")
-					QDEL_NULL(coin)
-			else
-				QDEL_NULL(coin)
-				QDEL_NULL(bill)
-
-		else if (!(R in product_records))
-			vend_ready = 1
-			message_admins("Vending machine exploit attempted by [ADMIN_LOOKUPFLW(usr)]!")
-			return
 
 		if (R.amount <= 0)
 			to_chat(usr, "<span class='warning'>Sold out.</span>")
