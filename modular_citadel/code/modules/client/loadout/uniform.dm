@@ -49,6 +49,7 @@
 	path = /obj/item/clothing/under/lawyer/galaxy_blue
 	cost = 3
 
+
 /datum/gear/galaxy_r
 	name = "Pulsar Gonne"
 	category = SLOT_W_UNIFORM

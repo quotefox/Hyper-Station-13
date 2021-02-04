@@ -8,6 +8,7 @@
 	item_color="yellow"
 	resistance_flags = NONE
 	var/can_be_cut = 1
+	price = 10
 
 /obj/item/clothing/gloves/color/fyellow                             //Cheap Chinese Crap
 	desc = "These gloves are cheap knockoffs of the coveted ones - no way this can end badly."
@@ -19,6 +20,7 @@
 	item_color="yellow"
 	resistance_flags = NONE
 	var/can_be_cut = 1
+	price = 5
 
 /obj/item/clothing/gloves/color/fyellow/New()
 	..()
@@ -113,6 +115,7 @@
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	resistance_flags = NONE
+	price = 12
 
 /obj/item/clothing/gloves/color/rainbow
 	name = "rainbow gloves"
