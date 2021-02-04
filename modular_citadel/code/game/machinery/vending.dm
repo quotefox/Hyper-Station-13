@@ -83,6 +83,8 @@
 				/obj/item/clothing/mask/muzzle/ballgag = 3
 				)
 	refill_canister = /obj/item/vending_refill/kink
+	baseprice = 2
+
 /*
 /obj/machinery/vending/nazivend
 	name = "Nazivend"

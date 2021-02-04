@@ -19,6 +19,8 @@
 
 	refill_canister = /obj/item/vending_refill/snack
 	var/chef_compartment_access = "28" //ACCESS_KITCHEN
+	baseprice = 3
+
 
 /obj/item/vending_refill/snack
 	machine_name = "Getmore Chocolate Corp"
@@ -103,11 +105,15 @@
 /obj/machinery/vending/snack/blue
 	icon_state = "snackblue"
 
+
 /obj/machinery/vending/snack/orange
 	icon_state = "snackorange"
+
 
 /obj/machinery/vending/snack/green
 	icon_state = "snackgreen"
 
+
 /obj/machinery/vending/snack/teal
 	icon_state = "snackteal"
+

@@ -146,6 +146,7 @@
 				   /obj/item/bluespace_thread = 3,
 				   /obj/item/clothing/under/lawyer/galaxy_blue = 3)
 	refill_canister = /obj/item/vending_refill/clothing
+	baseprice = 2
 
 /obj/item/vending_refill/clothing
 	machine_name = "ClothesMate"
