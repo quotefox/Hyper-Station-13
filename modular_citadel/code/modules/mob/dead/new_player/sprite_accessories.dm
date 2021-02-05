@@ -1537,6 +1537,10 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Redpanda"
 	icon_state = "redpanda"
 
+/datum/sprite_accessory/mam_body_markings/fox
+	name = "Abs"
+	icon_state = "abs"
+
 /datum/sprite_accessory/mam_body_markings/bee
 	name = "Bee"
 	icon_state = "bee"
