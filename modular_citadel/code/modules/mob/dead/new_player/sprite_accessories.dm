@@ -1537,7 +1537,7 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Redpanda"
 	icon_state = "redpanda"
 
-/datum/sprite_accessory/mam_body_markings/fox
+/datum/sprite_accessory/mam_body_markings/abs
 	name = "Abs"
 	icon_state = "abs"
 
