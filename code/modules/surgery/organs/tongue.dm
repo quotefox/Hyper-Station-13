@@ -24,8 +24,6 @@
 		/datum/language/slime,
 		/datum/language/xenocommon,
 		/datum/language/vampiric,
-		/datum/language/tajara,
-		/datum/language/spacerussian,
 	))
 	healing_factor = STANDARD_ORGAN_HEALING*5 //Fast!!
 	decay_factor = STANDARD_ORGAN_DECAY/2
