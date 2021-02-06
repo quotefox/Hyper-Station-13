@@ -1166,7 +1166,6 @@ datum/sprite_accessory/ears/human/gret
 	icon_state = "gret"
 	color_src = MUTCOLORS3
 
-
 /datum/sprite_accessory/mam_ears/elephant
 	name = "Elephant"
 	icon_state = "elephant"
@@ -1182,6 +1181,10 @@ datum/sprite_accessory/ears/human/gret
 /datum/sprite_accessory/mam_ears/fox
 	name = "Fox"
 	icon_state = "fox"
+
+/datum/sprite_accessory/mam_ears/goathorns
+	name = "Goat Horns"
+	icon_state = "goathorns"
 
 /datum/sprite_accessory/mam_ears/husky
 	name = "Husky"
