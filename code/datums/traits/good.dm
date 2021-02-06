@@ -297,7 +297,7 @@
 	M.remove_language(/datum/language/slime)
 
 /datum/quirk/tajaspeaker
-	name = "Siik Tajr speaker"
+	name = "Siik'Tajr speaker"
 	desc = "Due to your time spent around Tajaran, you can speak their native tongue!"
 	value = 1
 	gain_text = "<span class='notice'>You feel sensitive to mrowls and your tongue curls comfortably.</span>"
