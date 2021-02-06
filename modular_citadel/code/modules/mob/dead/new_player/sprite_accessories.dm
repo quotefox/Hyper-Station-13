@@ -1538,8 +1538,16 @@ datum/sprite_accessory/mam_tails/insect
 	icon_state = "redpanda"
 
 /datum/sprite_accessory/mam_body_markings/abs
-	name = "Abs"
+	name = "Abdominals"
 	icon_state = "abs"
+
+/datum/sprite_accessory/mam_body_markings/abstwo
+	name = "Abdominals Two-Tones"
+	icon_state = "absbelly"
+
+/datum/sprite_accessory/mam_body_markings/absthree
+	name = "Abdominals Three-Tones"
+	icon_state = "absarms"
 
 /datum/sprite_accessory/mam_body_markings/bee
 	name = "Bee"
