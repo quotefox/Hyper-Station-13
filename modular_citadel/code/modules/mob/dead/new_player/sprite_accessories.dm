@@ -876,6 +876,10 @@ datum/sprite_accessory/ears/human/gret
 	name = "Otie"
 	icon_state = "otie"
 
+/datum/sprite_accessory/mam_snouts/orca
+	name = "Orca"
+	icon_state = "orca"
+
 /datum/sprite_accessory/mam_snouts/pede
 	name = "Scolipede"
 	icon_state = "pede"
