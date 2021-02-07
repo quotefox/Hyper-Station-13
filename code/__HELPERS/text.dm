@@ -779,6 +779,46 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 	shuffle_inplace(rearranged)
 	return "[prefix][jointext(rearranged, " ")]"
 
+/proc/autocorrect(var/input as text) // syntax is "stringtoreplace"="stringtoreplacewith"
+	return input = replace_characters(input, list(
+											" i "=" I ",
+											"i'm"="I'm",
+											"s's"="s'",
+											"isnt"="isn't",
+											"dont"="don't",
+											"shouldnt"="shouldn't",
+											" ive "=" I've ",
+											"whos"="who's",
+											"whove"="who've",
+											"whod"="who’d",
+											"whats"="what’s",
+											"whatd"="what’d",
+											"thats"="that’s",
+											"thatll"="that’ll",
+											"thatd"="that’d",
+											" nows "=" now’s ",
+											"isnt"="isn’t",
+											"arent"="aren’t",
+											"wasnt"="wasn’t",
+											"werent"="weren’t",
+											"havent"="haven’t",
+											"hasnt"="hasn’t",
+											"hadnt"="hadn’t",
+											"doesnt"="doesn’t",
+											"didnt"="didn’t",
+											"couldnt"="couldn’t",
+											"wouldnt"="wouldn’t",
+											"mustnt"="mustn’t",
+											"shouldnt"="shouldn’t"
+											))
+
+/*
+ * Text modification
+ */
+/proc/replace_characters(var/t,var/list/repl_chars)
+	for(var/char in repl_chars)
+		t = replacetext(t, char, repl_chars[char])
+	return t
 
 #define is_alpha(X) ((text2ascii(X) <= 122) && (text2ascii(X) >= 97))
 #define is_digit(X) ((length(X) == 1) && (length(text2num(X)) == 1))
