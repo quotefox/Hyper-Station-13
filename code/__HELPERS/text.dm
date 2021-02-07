@@ -809,6 +809,8 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 											"couldnt"="couldn’t",
 											"wouldnt"="wouldn’t",
 											"mustnt"="mustn’t",
+											" alot "=" a lot ",
+											" allthough"=" although",
 											"shouldnt"="shouldn’t"
 											))
 

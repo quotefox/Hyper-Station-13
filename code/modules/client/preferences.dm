@@ -46,6 +46,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/buttons_locked = FALSE
 	var/hotkeys = FALSE
 	var/chat_on_map = TRUE
+	var/autocorrect = TRUE
 	var/radiosounds = TRUE
 	var/max_chat_length = CHAT_MESSAGE_MAX_LENGTH
 	var/see_chat_non_mob = TRUE
@@ -921,6 +922,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Chat Bubbles message char limit:</b> <a href='?_src_=prefs;preference=max_chat_length;task=input'>[max_chat_length]</a><br>"
 			dat += "<b>Chat Bubbles for non-mobs:</b> <a href='?_src_=prefs;preference=see_chat_non_mob'>[see_chat_non_mob ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<br>"
+			dat += "<b>Autocorrect:</b> <a href='?_src_=prefs;preference=autocorrect'>[(autocorrect) ? "On" : "Off"]</a><br>"
 			dat += "<b>Radio Sounds:</b> <a href='?_src_=prefs;preference=radiosounds'>[radiosounds ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<br>"
 			dat += "<b>Action Buttons:</b> <a href='?_src_=prefs;preference=action_buttons'>[(buttons_locked) ? "Locked In Place" : "Unlocked"]</a><br>"
@@ -2480,6 +2482,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					buttons_locked = !buttons_locked
 				if("chat_on_map")
 					chat_on_map = !chat_on_map
+				if("autocorrect")
+					autocorrect = !autocorrect
 				if("radiosounds")
 					radiosounds = !radiosounds
 				if("see_chat_non_mob")

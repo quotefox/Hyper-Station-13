@@ -108,6 +108,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["uses_glasses_colour"]>> uses_glasses_colour
 	S["clientfps"]			>> clientfps
 	S["chat_on_map"]		>> chat_on_map
+	S["autocorrect"]		>> autocorrect
 	S["radiosounds"]		>> radiosounds
 	S["max_chat_length"]	>> max_chat_length
 	S["see_chat_non_mob"] 	>> see_chat_non_mob
@@ -146,6 +147,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	lastchangelog	= sanitize_text(lastchangelog, initial(lastchangelog))
 	UI_style		= sanitize_inlist(UI_style, GLOB.available_ui_styles, GLOB.available_ui_styles[1])
 	hotkeys			= sanitize_integer(hotkeys, 0, 1, initial(hotkeys))
+	autocorrect		= sanitize_integer(autocorrect, 0, 1, initial(autocorrect))
 	chat_on_map		= sanitize_integer(chat_on_map, 0, 1, initial(chat_on_map))
 	radiosounds		= sanitize_integer(radiosounds, 0, 1, initial(radiosounds))
 	max_chat_length = sanitize_integer(max_chat_length, 1, CHAT_MESSAGE_MAX_LENGTH, initial(max_chat_length))
