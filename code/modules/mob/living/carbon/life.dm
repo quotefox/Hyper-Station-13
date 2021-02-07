@@ -78,7 +78,7 @@
 			if(HAS_TRAIT(B, TRAIT_CHOKE_SLUT))
 				B.adjustArousalLoss(7)
 				if (B.getArousalLoss() >= 100 && ishuman(B) && B.has_dna())
-					B.mob_climax(forced_climax=TRUE)	
+					B.mob_climax(forced_climax=TRUE)
 			else
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "suffocation", /datum/mood_event/suffocation)
 		else
@@ -284,6 +284,27 @@
 	if(breath_gases[/datum/gas/nitryl])
 		var/nitryl_partialpressure = (breath_gases[/datum/gas/nitryl]/breath.total_moles())*breath_pressure
 		adjustFireLoss(nitryl_partialpressure/4)
+
+	//PHEROMONE
+	if(breath_gases[/datum/gas/pheromone])
+		var/pheromone_partialpressure = (breath_gases[/datum/gas/pheromone]/breath.total_moles())*breath_pressure
+		if(pheromone_partialpressure > MINIMUM_MOLES_DELTA_TO_MOVE)
+
+			//pheromone side effects
+			switch(pheromone_partialpressure)
+				if(1 to 5)
+					// At lower pp, give out a little warning
+					SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "smell")
+					if(prob(5))
+						to_chat(src, "<span class='notice'>There is an entracing smell in the air.</span>")
+				if(5 to 20)
+					//At somewhat higher pp, warning becomes more obvious
+					if(prob(15))
+						to_chat(src, "<span class='warning'>You smell something enticing inside this room.</span>")
+				if(15 to INFINITY)
+					//Small chance to vomit. By now, people have internals on anyway
+					if(prob(5))
+						to_chat(src, "<span class='warning'>The enticing smell is unbearable!</span>")
 
 	//MIASMA
 	if(breath_gases[/datum/gas/miasma])

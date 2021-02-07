@@ -341,6 +341,28 @@
 			H.reagents.add_reagent(/datum/reagent/stimulum, max(0, 5 - existing))
 		breath_gases[/datum/gas/stimulum]-=gas_breathed
 
+	// Pheromone
+		if (breath_gases[/datum/gas/pheromone])
+			var/pheromone_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/pheromone])
+			if(pheromone_pp > MINIMUM_MOLES_DELTA_TO_MOVE)
+
+				// Miasma side effects
+				switch(pheromone_pp)
+					if(1 to 5)
+						if(prob(5))
+							to_chat(owner, "<span class='userlove'>There is an pleasant smell in the air.</span>")
+							owner.adjustArousalLoss(1) //its weak
+					if(5 to 15)
+						if(prob(10))
+							to_chat(owner, "<span class='userlove'>There is an arousing aroma in the air.</span>")
+							owner.adjustArousalLoss(3) //its getting stronger...
+					if(15 to INFINITY)
+						if(prob(15))
+							to_chat(owner, "<span class='userlove'>There is an overpowering arousing aroma in the air.</span>")
+							owner.adjustArousalLoss(6) //its getting stronger...
+
+				breath_gases[/datum/gas/pheromone]-=gas_breathed
+
 	// Miasma
 		if (breath_gases[/datum/gas/miasma])
 			var/miasma_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/miasma])

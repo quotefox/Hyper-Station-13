@@ -26,7 +26,8 @@
 //Research point amounts
 #define NOBLIUM_RESEARCH_AMOUNT				100
 #define BZ_RESEARCH_AMOUNT					15
-#define MIASMA_RESEARCH_AMOUNT				6		//lolno, fart gas 2 ez
+#define MIASMA_RESEARCH_AMOUNT				6
+#define PHEROMONE_RESEARCH_AMOUNT			6
 #define STIMULUM_RESEARCH_AMOUNT			50
 //Plasma fusion properties
 #define FUSION_ENERGY_THRESHOLD				3e9 	//Amount of energy it takes to start a fusion reaction
