@@ -134,4 +134,11 @@
 	desc = "You like headpats, alot, maybe even a little bit too much. Headpats give you a bigger mood boost and cause arousal"
 	mob_trait = TRAIT_HEADPAT_SLUT
 	value = 0
-	medical_record_text = "Patient seems overly affectionate"
+	medical_record_text = "Patient seems overly affectionate."
+
+/datum/quirk/headpat_hater
+	name = "Distant"
+	desc = "You don't seem to show much care for being touched. Whether it's because you're reserved or due to self control, you won't wag your tail outside of your own control should you possess one."
+	mob_trait = TRAIT_DISTANT
+	value = 0
+	medical_record_text = "Patient cares little with or dislikes being touched."
