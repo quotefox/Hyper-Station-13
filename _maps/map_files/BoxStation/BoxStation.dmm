@@ -2167,7 +2167,7 @@
 "aPI" = (/obj/structure/cable{icon_state = "0-8"},/obj/effect/spawner/structure/window/reinforced,/obj/machinery/door/poddoor/preopen{id = "bridge blast"; name = "bridge blast door"},/turf/open/floor/plating,/area/bridge)
 "aPJ" = (/obj/machinery/newscaster{pixel_y = 32},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 4},/obj/effect/turf_decal/tile/neutral{dir = 1},/obj/effect/turf_decal/loading_area{dir = 1; icon_state = "drain"; name = "drain"},/turf/open/floor/plasteel,/area/hallway/primary/central)
 "aPK" = (/obj/machinery/atmospherics/components/unary/vent_pump/on,/turf/open/floor/plasteel,/area/hallway/primary/port)
-"aPL" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/turf/open/floor/carpet/red,/area/crew_quarters/bar)
+"aPL" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/machinery/light{dir = 8},/turf/open/floor/carpet/red,/area/crew_quarters/bar)
 "aPM" = (/turf/open/floor/plasteel/stairs/left,/area/hallway/primary/central)
 "aPN" = (/obj/machinery/atmospherics/pipe/simple/supply/hidden{dir = 4},/obj/structure/window/reinforced{dir = 1; layer = 2.9},/obj/machinery/firealarm{dir = 4; pixel_x = 24},/obj/structure/table/reinforced,/obj/item/stack/wrapping_paper{pixel_x = 3; pixel_y = 4},/obj/item/stack/packageWrap{pixel_x = -1; pixel_y = -1},/obj/effect/turf_decal/tile/brown{dir = 1},/obj/effect/turf_decal/tile/brown{dir = 4},/turf/open/floor/plasteel,/area/quartermaster/sorting)
 "aPO" = (/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{dir = 6},/turf/open/floor/plasteel,/area/hallway/primary/port)
