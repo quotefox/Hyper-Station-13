@@ -43,13 +43,13 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define GLOVES_LAYER			18
 #define EARS_LAYER				17
 #define BODY_TAUR_LAYER			16
-#define GENITALS_FRONT_LAYER	15
-#define SUIT_LAYER				14
-#define GLASSES_LAYER			13
-#define BELT_LAYER				12		//Possible make this an overlay of somethign required to wear a belt?
-#define SUIT_STORE_LAYER		11
-#define NECK_LAYER				10
-#define BACK_LAYER				9
+#define SUIT_LAYER				15
+#define GLASSES_LAYER			14
+#define BELT_LAYER				13		//Possible make this an overlay of somethign required to wear a belt?
+#define SUIT_STORE_LAYER		12
+#define NECK_LAYER				11
+#define BACK_LAYER				10
+#define GENITALS_FRONT_LAYER	9
 #define HAIR_LAYER				8		//TODO: make part of head layer?
 #define FACEMASK_LAYER			7
 #define HEAD_LAYER				6
