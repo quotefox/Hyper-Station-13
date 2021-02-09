@@ -651,6 +651,18 @@
 			myseed.adjust_yield(round(S.get_reagent_amount(/datum/reagent/diethylamine) * 0.02))
 		adjustPests(-rand(1,2))
 
+	// Enduro Grow sacrifices potency + yield for endurance
+	if(S.has_reagent(/datum/reagent/plantnutriment/endurogrow, 1))
+		myseed.adjust_potency(-round(S.get_reagent_amount(/datum/reagent/plantnutriment/endurogrow) * 0.1))
+		myseed.adjust_yield(-round(S.get_reagent_amount(/datum/reagent/plantnutriment/endurogrow) * 0.075))
+		myseed.adjust_endurance(round(S.get_reagent_amount(/datum/reagent/plantnutriment/endurogrow) * 0.35))
+
+	// Liquid Earthquake increases production speed but increases weeds
+	if(S.has_reagent(/datum/reagent/plantnutriment/liquidearthquake, 1))
+		myseed.adjust_weed_rate(round(S.get_reagent_amount(/datum/reagent/plantnutriment/liquidearthquake) * 0.1))
+		myseed.adjust_weed_chance(round(S.get_reagent_amount(/datum/reagent/plantnutriment/liquidearthquake) * 0.3))
+		myseed.adjust_production(round(S.get_reagent_amount(/datum/reagent/plantnutriment/liquidearthquake) * 0.075))
+
 	// Nutriment Compost, effectively
 	if(S.has_reagent(/datum/reagent/consumable/nutriment, 1))
 		adjustHealth(round(S.get_reagent_amount(/datum/reagent/consumable/nutriment) * 0.5))
