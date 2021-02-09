@@ -3969,7 +3969,7 @@
 "byq" = (/obj/machinery/airalarm{dir = 1; pixel_y = -22},/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,/obj/effect/turf_decal/loading_area{dir = 4},/turf/open/floor/plasteel/white,/area/medical/medbay/central)
 "byr" = (/obj/structure/disposalpipe/segment{dir = 5},/turf/open/floor/plasteel/white,/area/medical/medbay/central)
 "bys" = (/obj/machinery/disposal/bin,/obj/structure/disposalpipe/trunk{dir = 8},/turf/open/floor/plasteel/white,/area/medical/medbay/central)
-"byt" = (/obj/structure/table,/obj/item/paper/fluff/holodeck/disclaimer,/obj/machinery/button/door{id = "Gymshutter"; name = "Shutters"; pixel_x = 0; pixel_y = 9},/turf/open/floor/plasteel,/area/crew_quarters/fitness)
+"byt" = (/obj/structure/table,/obj/item/paper/fluff/holodeck/disclaimer,/obj/machinery/button/door{id = "Holodeckshutter"; name = "Shutters"; pixel_x = 0; pixel_y = 9},/turf/open/floor/plasteel,/area/crew_quarters/fitness)
 "byu" = (/turf/open/floor/plasteel/white,/area/medical/sleeper)
 "byv" = (/turf/open/floor/plasteel/white/side{dir = 8},/area/medical/sleeper)
 "byw" = (/obj/machinery/sleeper{dir = 8},/turf/open/floor/plasteel,/area/medical/sleeper)
