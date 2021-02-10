@@ -10,6 +10,12 @@
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_BELT
 	materials = list(MAT_METAL=30, MAT_GLASS=20)
+	var/scan_mode = FALSE
+
+/obj/item/plant_analyzer/attack_self(mob/user)
+	. = ..()
+	scan_mode = !scan_mode
+	to_chat(user, "<span class='notice'>You switch [src] to [scan_mode ? "scan for chemical reagents and traits" : "scan for plant growth statistics"].</span>")
 
 // *************************************
 // Hydroponics Tools

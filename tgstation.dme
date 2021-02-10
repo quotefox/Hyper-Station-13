@@ -1822,6 +1822,7 @@
 #include "code\modules\hydroponics\gene_modder.dm"
 #include "code\modules\hydroponics\grown.dm"
 #include "code\modules\hydroponics\growninedible.dm"
+#include "code\modules\hydroponics\hydro_chemreact.dm"
 #include "code\modules\hydroponics\hydroitemdefines.dm"
 #include "code\modules\hydroponics\hydroponics.dm"
 #include "code\modules\hydroponics\plant_genes.dm"
