@@ -58,7 +58,7 @@
 		var/total_transferred = S.get_reagent_amount(/datum/reagent/plantnutriment/endurogrow)
 		if(total_transferred >= 20)
 			myseed.adjust_potency(-round(total_transferred / 10))
-			myseed.adjust_yield(round(total_transferred / 20))
+			myseed.adjust_yield(-round(total_transferred / 20))
 			myseed.adjust_endurance(round(total_transferred / 30))
 		else
 			to_chat(user, "<span class='notice'>The plants don't seem to react...</span>")
@@ -68,7 +68,7 @@
 		if(total_transferred >= 20)
 			myseed.adjust_weed_chance(round(total_transferred / 10))
 			myseed.adjust_weed_rate(round(total_transferred / 20))
-			myseed.adjust_production(round(total_transferred / 30))
+			myseed.adjust_production(-round(total_transferred / 30))
 		else
 			to_chat(user, "<span class='notice'>The plants don't seem to react...</span>")
 
@@ -252,11 +252,11 @@
 		adjustWeeds(-rand(1,5))
 	if(S.has_reagent(/datum/reagent/medicine/adminordrazine, 5))
 		switch(rand(100))
-			if(66  to 100)
+			if(66 to 100)
 				mutatespecie()
-			if(33	to 65)
+			if(33 to 65)
 				mutateweed()
-			if(1   to 32)
+			if(1 to 32)
 				mutatepest(user)
 			else
 				to_chat(user, "<span class='warning'>Nothing happens...</span>")

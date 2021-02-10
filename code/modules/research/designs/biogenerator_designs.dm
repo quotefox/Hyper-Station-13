@@ -77,22 +77,6 @@
 	make_reagents = list(/datum/reagent/plantnutriment/robustharvestnutriment = 10)
 	category = list("initial","Botany Chemicals")
 
-/datum/design/end_gro
-	name = "30u Enduro Grow"
-	id = "end_gro"
-	build_type = BIOGENERATOR
-	materials = list(MAT_BIOMASS = 30)
-	make_reagents = list(/datum/reagent/plantnutriment/endurogrow = 30)
-	category = list("initial","Botany Chemicals")
-
-/datum/design/liq_earth
-	name = "30u Liquid Earthquake"
-	id = "liq_earth"
-	build_type = BIOGENERATOR
-	materials = list(MAT_BIOMASS = 30)
-	make_reagents = list(/datum/reagent/plantnutriment/liquidearthquake = 30)
-	category = list("initial","Botany Chemicals")
-
 /datum/design/ammonia
 	name = "10u Ammonia"
 	id = "ammonia_biogen"
@@ -109,12 +93,28 @@
 	make_reagents = list(/datum/reagent/saltpetre = 10)
 	category = list("initial","Botany Chemicals")
 
-/datum/design/mutagen	//This is here because I'd like it if botany wouldn't rely on chemical dispensers to make fancy things
-	name = "5u Unstable Mutagen"
+/datum/design/end_gro
+	name = "30u Enduro Grow"
+	id = "end_gro"
+	build_type = BIOGENERATOR
+	materials = list(MAT_BIOMASS = 30)
+	make_reagents = list(/datum/reagent/plantnutriment/endurogrow = 30)
+	category = list("initial","Botany Chemicals")
+
+/datum/design/liq_earth
+	name = "30u Liquid Earthquake"
+	id = "liq_earth"
+	build_type = BIOGENERATOR
+	materials = list(MAT_BIOMASS = 30)
+	make_reagents = list(/datum/reagent/plantnutriment/liquidearthquake = 30)
+	category = list("initial","Botany Chemicals")
+
+/datum/design/mutagen	//This is here because I'd like it if botany wouldn't completely rely on chemical dispensers to make fancy things
+	name = "10u Unstable Mutagen"
 	id = "fabricated_mutagen"
 	build_type = BIOGENERATOR
-	materials = list(MAT_BIOMASS = 80)
-	make_reagents = list(/datum/reagent/toxin/mutagen = 5)	//suffer
+	materials = list(MAT_BIOMASS = 75)
+	make_reagents = list(/datum/reagent/toxin/mutagen = 10)	//suffer
 	category = list("initial","Botany Chemicals")
 
 /datum/design/weed_killer

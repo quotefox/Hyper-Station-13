@@ -51,7 +51,7 @@
 	for (var/obj/item/stock_parts/manipulator/M in component_parts)
 		rating = M.rating
 	maxwater = tmp_capacity * 50 // Up to 400
-	maxnutri = (tmp_capacity * 5) + 10 // Up to 50 Maximum
+	maxnutri = tmp_capacity * 5 // Up to 40 Maximum
 
 /obj/machinery/hydroponics/Destroy()
 	if(myseed)
@@ -223,7 +223,7 @@
 			if(prob(5))  // On each tick, there's a 5 percent chance the pest population will increase
 				adjustPests(1 / rating)
 		else
-			if(waterlevel > 10 && reagents.total_volume > 0 && prob(10))  // If there's no plant, the percentage chance is 10%
+			if(waterlevel > 10 && nutrilevel > 0 && prob(10))  // If there's no plant, the percentage chance is 10%
 				adjustWeeds(1 / rating)
 
 		// Weeeeeeeeeeeeeeedddssss
@@ -510,8 +510,6 @@
 			else if(transfer_amount) // Droppers, cans, beakers, what have you.
 				visi_msg="[user] uses [reagent_source] on [target]"
 				irrigate = 1
-			// Beakers, bottles, buckets, etc.
-			if(reagent_source.is_drainable())
 
 
 		if(irrigate && transfer_amount > 30 && reagent_source.reagents.total_volume >= 30 && using_irrigation)
@@ -534,6 +532,9 @@
 			if(istype(reagent_source, /obj/item/reagent_containers/food/snacks) || istype(reagent_source, /obj/item/reagent_containers/pill))
 				qdel(reagent_source)
 				lastuser = user
+
+			H.applyChemicals(S, user)
+
 			S.clear_reagents()
 			qdel(S)
 			H.update_icon()
