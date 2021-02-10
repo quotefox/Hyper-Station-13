@@ -219,8 +219,8 @@
 	var/watertemp = "normal"	//freezing, normal, or boiling
 	var/datum/looping_sound/showering/soundloop
 
-/obj/machinery/shower/crafted	//When created from sheets of metal
-	anchored = FALSE
+/*/obj/machinery/shower/crafted	//When created from sheets of metal
+	anchored = FALSE */	//Stop exploiting this ree
 
 /obj/machinery/shower/Initialize()
 	. = ..()
