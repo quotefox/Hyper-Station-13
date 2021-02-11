@@ -92,7 +92,7 @@
 /obj/item/paper/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>Alt-click to fold it.</span>"
-	if(oui_canview(user))
+	if((in_range(user, src)))
 		ui.render(user)
 	else
 		. += "<span class='warning'>You're too far away to read it!</span>"
