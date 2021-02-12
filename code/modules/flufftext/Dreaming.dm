@@ -20,7 +20,7 @@
 		if(findtext(fragment, "%A% "))
 			fragment = replacetext(fragment, "%ADJECTIVE% ", "")
 			fragment = "\a [replacetext(fragment, "%A% ", "")]"
-			to_chat(src, "<span class='warning'><b>You have a terrifying nightmare about [fragment]...</b></span>")
+			to_chat(src, "<span class='warning'><b>... You have a terrifying nightmare about [fragment] ...</b></span>")
 			src.visible_message("<span class='notice'>[src] shakes in their sleep.</span>")
 			src.do_jitter_animation() //shake in their sleep.
 			fragment = ""
