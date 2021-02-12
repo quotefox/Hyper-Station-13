@@ -988,6 +988,36 @@ datum/sprite_accessory/ears/human/gret
 	name = "Synthetic Lizard Barless Alt - Snout Tertiary Under"
 	icon_state = "synthlizbarlessalt_tertunder"
 
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizaxon
+	color_src = MATRIXED
+	name = "Synthetic Lizard - AXON"
+	icon_state = "synthlizaxon"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizaxon_alt
+	color_src = MATRIXED
+	name = "Synthetic Lizard - AXON Alt"
+	icon_state = "synthlizaxon_alt"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizaxon_tert
+	color_src = MATRIXED
+	name = "Synthetic Lizard - AXON Tertiary"
+	icon_state = "synthlizaxon_tert"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizproto1
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Prototype Visor 1"
+	icon_state = "synthlizproto1"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizproto2
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Prototype Visor 2"
+	icon_state = "synthlizproto2"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizspectre
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Spectre"
+	icon_state = "synthlizspectre"
+
 /******************************************
 **************** Snouts *******************
 *************but higher up*****************/
@@ -2166,6 +2196,21 @@ datum/sprite_accessory/mam_tails/insect
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Antennae Plate"
 	icon_state = "synth_antennaeover"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_integrator
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Integrator Horns"
+	icon_state = "synth_integrator"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_antennaquad
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Quad Antennae"
+	icon_state = "synth_antennaquad"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_cobrahood
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Cobra Hood"
+	icon_state = "synth_cobrahood"
 
 // *** Snooooow flaaaaake ***
 
