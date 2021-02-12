@@ -172,6 +172,14 @@
 	color = BLOOD_COLOR_BUG // Bug colored, I guess.
 	pH = 7.25
 
+/datum/reagent/blood/tomato
+	data = list("donor"=null,"viruses"=null,"blood_DNA"=null, "bloodcolor" = BLOOD_COLOR_HUMAN, "blood_type"="SY","resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null)
+	name = "Tomato Blood"
+	description = "This highly resembles blood, but it doesnt actually function like it, resembling more ketchup, with a more blood-like consistency."
+	taste_description = "sap" //Like tree sap?
+	pH = 7.45
+	value = 0
+
 
 /datum/reagent/blood/jellyblood/on_mob_life(mob/living/carbon/M)
 	if(prob(10))
@@ -2232,6 +2240,13 @@
 			if(prob(80))
 				M.adjustArousalLoss(3)
 	..()
+
+/datum/reagent/cellulose
+	name = "Cellulose Fibers"
+	description = "A crystaline polydextrose polymer, plants swear by this stuff."
+	reagent_state = SOLID
+	color = "#E6E6DA"
+	taste_mult = 0
 
 // Adding new mutation toxin stuff from /code/modules/reagent/chemistry/recipes/slime_extracts.dm
 //Some other stuff like moth and felinid ( /datum/reagent/mutationtoxin/moth and /datum/reagent/mutationtoxin/felinid ) already exists. - Chemlight

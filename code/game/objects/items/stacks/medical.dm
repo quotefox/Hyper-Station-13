@@ -190,3 +190,16 @@
 
 /obj/item/stack/medical/get_belt_overlay()
 	return mutable_appearance('icons/obj/clothing/belt_overlays.dmi', "pouch")
+
+/obj/item/stack/medical/aloe
+	name = "aloe cream"
+	desc = "A healing paste you can apply on wounds."
+
+	icon_state = "aloe_paste"
+	self_delay = 20
+	novariants = TRUE
+	amount = 20
+	max_amount = 20
+	heal_brute = 3
+	heal_burn = 3
+	grind_results = list(/datum/reagent/consumable/aloejuice = 1)

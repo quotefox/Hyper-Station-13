@@ -892,3 +892,37 @@
 	glass_icon_state = "glass_yellow"
 	glass_name = "glass of bungo juice"
 	glass_desc = "Exotic! You feel like you are on vacation already."
+
+/datum/reagent/consumable/aloejuice
+	name = "Aloe Juice"
+	color = "#A3C48B"
+	description = "A healthy and refreshing juice."
+	taste_description = "vegetable"
+	glass_icon_state = "glass_yellow"
+	glass_name = "glass of aloe juice"
+	glass_desc = "A healthy and refreshing juice."
+
+/datum/reagent/consumable/aloejuice/on_mob_life(mob/living/M)
+	if(M.getToxLoss() && prob(30))
+		M.adjustToxLoss(-1, 0)
+	..()
+	. = 1
+
+// i googled "natural coagulant" and a couple of results came up for banana peels, so after precisely 30 more seconds of research, i now dub grinding banana peels good for your blood
+/datum/reagent/consumable/banana_peel
+	name = "Pulped Banana Peel"
+	description = "Okay, so you put a banana peel in a grinder... Why, exactly?"
+	color = "#863333" // rgb: 175, 175, 0
+	reagent_state = SOLID
+	taste_description = "stringy, bitter pulp"
+	glass_name = "glass of banana peel pulp"
+	glass_desc = "Okay, so you put a banana peel in a grinder... Why, exactly?"
+
+/datum/reagent/consumable/baked_banana_peel
+	name = "Baked Banana Peel Powder"
+	description = "You took a banana peel... pulped it... baked it... Where are you going with this?"
+	color = "#863333" // rgb: 175, 175, 0
+	reagent_state = SOLID
+	taste_description = "bitter powder"
+	glass_name = "glass of banana peel powder"
+	description = "You took a banana peel... pulped it... baked it... Where are you going with this?"
