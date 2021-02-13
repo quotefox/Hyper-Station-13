@@ -797,3 +797,13 @@
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 	can_adjust = FALSE
 //yes
+
+//Enzo_Leon patron stuff
+/obj/item/clothing/under/enzoshirt
+	name = "Altevain Standard-Issue Uniform"
+	desc = "A soft, and light uniform with blue-space threading to help with Altevain proportions."
+	icon_state = "enzoshirt"
+	item_state = "enzoshirt"
+	item_color = "enzoshirt"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+//End
