@@ -250,6 +250,11 @@
 	glass_name = "glass of water"
 	glass_desc = "The father of all refreshments."
 	shot_glass_icon_state = "shotglassclear"
+	hydration = 5 * REAGENTS_METABOLISM
+
+//hydration
+/datum/reagent/water/on_mob_life(mob/living/carbon/M)
+	M.thirst += hydration
 
 /*
  *	Water reaction to turf

@@ -19,6 +19,14 @@
 	description = "<span class='boldwarning'>I'm starving!</span>\n"
 	mood_change = -15
 
+/datum/mood_event/thirsty
+	description = "<span class='warning'>I'm getting a bit thirsty.</span>\n"
+	mood_change = -8
+
+/datum/mood_event/dehydrated
+	description = "<span class='boldwarning'>I'm dehydrated!</span>\n"
+	mood_change = -15
+
 //Disgust
 /datum/mood_event/gross
 	description = "<span class='warning'>I saw something gross.</span>\n"
