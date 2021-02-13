@@ -111,3 +111,20 @@
 	path = /obj/item/clothing/mask/keaton
 	ckeywhitelist = list("cherostavik")
 
+/datum/gear/enzo_leonplushie
+	name = "Enzo Leon Plushie"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/toy/plush/mammal/enzo_leon
+	ckeywhitelist = list("Enzo_Leon")
+
+/datum/gear/enzo_leonshirt
+	name = "Altevain Standard-Issue Uniform"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/enzoshirt
+	ckeywhitelist = list("Enzo_Leon")
+
+/datum/gear/enzo_leonjacket
+	name = "Altevain Colony-Ship Command Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/enzojacket
+	ckeywhitelist = list("Enzo_Leon")
