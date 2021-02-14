@@ -163,7 +163,7 @@
 	icon_state = "hungry"
 
 /obj/screen/alert/thirsty
-	name = "Thristy"
+	name = "Thirsty"
 	desc = "Some water would be good right about now."
 	icon_state = "thirsty"
 
