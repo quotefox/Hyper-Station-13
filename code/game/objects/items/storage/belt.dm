@@ -371,6 +371,12 @@ obj/item/storage/belt/slut/ComponentInitialize()
 		/obj/item/clothing/mask/luchador
 		)
 
+/obj/item/storage/belt/cummerbund
+	name = "cummerbund" //I swear to god if you people aren't mature enough to handle this I'm just gonna call it a sash.
+	desc = "A pleated sash that pairs well with a suit jacket."
+	icon_state = "cummerbund"
+	item_state = "cummerbund"
+
 /obj/item/storage/belt/military
 	name = "chest rig"
 	desc = "A set of tactical webbing worn by Syndicate boarding parties."
