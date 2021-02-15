@@ -43,6 +43,24 @@
 				  /obj/item/stack/cable_coil = 5)
 	category = CAT_CLOTHING
 
+/datum/crafting_recipe/hudeyesec
+	name = "Security HUD eyepatch"
+	result = /obj/item/clothing/glasses/hud/security/eyepatch
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/hud/security = 1,
+				  /obj/item/clothing/glasses/eyepatch = 1,
+				  /obj/item/stack/cable_coil = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudeyesecremoval
+	name = "Security HUD removal (Eyepatch)"
+	result = /obj/item/clothing/glasses/eyepatch
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/hud/security/eyepatch = 1)
+	category = CAT_CLOTHING
+
 /datum/crafting_recipe/hudsunsecremoval
 	name = "Security HUD removal"
 	result = /obj/item/clothing/glasses/sunglasses
@@ -61,12 +79,102 @@
 				  /obj/item/stack/cable_coil = 5)
 	category = CAT_CLOTHING
 
+/datum/crafting_recipe/hudeyemed
+	name = "Medical HUD eyepatch"
+	result = /obj/item/clothing/glasses/hud/health/eyepatch
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/hud/health = 1,
+				  /obj/item/clothing/glasses/eyepatch = 1,
+				  /obj/item/stack/cable_coil = 5)
+	category = CAT_CLOTHING
+
 /datum/crafting_recipe/hudsunmedremoval
 	name = "Medical HUD removal"
 	result = /obj/item/clothing/glasses/sunglasses
 	time = 20
 	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
 	reqs = list(/obj/item/clothing/glasses/hud/health/sunglasses = 1)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudeyemedremoval
+	name = "Medical HUD removal (Eyepatch)"
+	result = /obj/item/clothing/glasses/eyepatch
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/hud/health/eyepatch = 1)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudeyedia
+	name = "Diagnostic HUD eyepatch"
+	result = /obj/item/clothing/glasses/hud/diagnostic/eyepatch
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/hud/diagnostic = 1,
+				  /obj/item/clothing/glasses/eyepatch = 1,
+				  /obj/item/stack/cable_coil = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudeyediaremoval
+	name = "Diagnostic HUD removal"
+	result = /obj/item/clothing/glasses/eyepatch
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/hud/diagnostic/eyepatch = 1)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudeyesci
+	name = "Science eyepatch"
+	result = /obj/item/clothing/glasses/science/eyepatch
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/science = 1,
+				  /obj/item/clothing/glasses/eyepatch = 1,
+				  /obj/item/stack/cable_coil = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudeyesciremoval
+	name = "Science eyepatch removal"
+	result = /obj/item/clothing/glasses/eyepatch
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/science/eyepatch = 1)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudeyemeson
+	name = "Meson eyepatch"
+	result = /obj/item/clothing/glasses/meson/eyepatch
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/meson = 1,
+				  /obj/item/clothing/glasses/eyepatch = 1,
+				  /obj/item/stack/cable_coil = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudeyemesonremoval
+	name = "Meson eyepatch removal"
+	result = /obj/item/clothing/glasses/eyepatch
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/meson/eyepatch = 1)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudeyenv
+	name = "Night Vision eyepatch"
+	result = /obj/item/clothing/glasses/night/eyepatch
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/night = 1,
+				  /obj/item/clothing/glasses/eyepatch = 1,
+				  /obj/item/stack/cable_coil = 5)
+	category = CAT_CLOTHING
+
+/datum/crafting_recipe/hudeyenvremoval
+	name = "Night Vision eyepatch removal"
+	result = /obj/item/clothing/glasses/eyepatch
+	time = 20
+	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+	reqs = list(/obj/item/clothing/glasses/night/eyepatch = 1)
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/beergoggles

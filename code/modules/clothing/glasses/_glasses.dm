@@ -72,6 +72,12 @@
 	desc = "Used by engineering and mining staff to see basic structural and terrain layouts through walls, regardless of lighting conditions. This one has prescription lens fitted in."
 	vision_correction = 1
 
+/obj/item/clothing/glasses/meson/eyepatch
+	name = "meson scanner eyepatch"
+	desc = "An eyepatch with built-in meson scanner."
+	icon_state = "mesonpatch"
+	item_state = "mesonpatch"
+
 /obj/item/clothing/glasses/meson/night
 	name = "night vision meson scanner"
 	desc = "An optical meson scanner fitted with an amplified visible light spectrum overlay, providing greater visual clarity in darkness."
@@ -108,6 +114,12 @@
 	if(slot == SLOT_GLASSES)
 		return 1
 
+/obj/item/clothing/glasses/science/eyepatch
+	name = "science eyepatch"
+	desc = "An eyepatch with an analyser for scanning items and reagents."
+	icon_state = "scipatch"
+	item_state = "scipatch"
+
 /obj/item/clothing/glasses/night
 	name = "night vision goggles"
 	desc = "You can totally see in the dark now!"
@@ -121,6 +133,12 @@
 	name = "prescription night vision goggles"
 	desc = "NVGs but for those with nearsightedness."
 	vision_correction = 1
+
+/obj/item/clothing/glasses/night/eyepatch
+	name = "night vision eyepatch"
+	desc = "An eyepatch with an night vision technology!"
+	icon_state = "nightpatch"
+	item_state = "nightpatch"
 
 /obj/item/clothing/glasses/science/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] is tightening \the [src]'s straps around [user.p_their()] neck! It looks like [user.p_theyre()] trying to commit suicide!</span>")
