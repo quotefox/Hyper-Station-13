@@ -83,3 +83,15 @@
 	attack_verb = list("nuked", "detonated", "CQC'd", "robusted")
 	squeak_override = list('sound/effects/hit_punch.ogg' = 1, 'sound/effects/hit_kick.ogg' = 1, 'sound/weapons/cqchit1.ogg' = 1, 'sound/weapons/cqchit2.ogg' = 1)
 //I can't figure out how to make him loyal to a specific type of plush. If anyone figures that out, there will be more. Until then, this is the end of the vladplush.
+
+//Enzo_Leon patron stuff
+/obj/item/toy/plush/mammal/enzo_leon
+	name = "rat plushie"
+	desc = "An stuffed toy of a mammal that seems to resemble a crew member! Iconically it has a squeaker as you'd expect."
+	gender = MALE	//It's a boy!
+	icon = 'hyperstation/icons/obj/plushes.dmi'
+	icon_state = "enzor"
+	item_state = "enzor"
+	attack_verb = list("tail bapped", "whomped", "squeaked")
+	squeak_override = list('sound/effects/mousesqueek.ogg'= 1)
+//End

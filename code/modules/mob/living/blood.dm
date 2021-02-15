@@ -35,7 +35,7 @@
 
 	if(bleed_rate < 0)
 		bleed_rate = 0
-	
+
 	if(HAS_TRAIT(src, TRAIT_NOMARROW)) //Bloodsuckers don't need to be here.
 		return
 
@@ -44,6 +44,7 @@
 		//Blood regeneration if there is some space
 		if(blood_volume < (BLOOD_VOLUME_NORMAL * blood_ratio) && !HAS_TRAIT(src, TRAIT_NOHUNGER))
 			var/nutrition_ratio = 0
+			var/thirst_ratio = 1
 			switch(nutrition)
 				if(0 to NUTRITION_LEVEL_STARVING)
 					nutrition_ratio = 0.2
@@ -60,6 +61,7 @@
 			if(satiety > 80)
 				nutrition_ratio *= 1.25
 			nutrition = max(0, nutrition - nutrition_ratio * HUNGER_FACTOR)
+			thirst = max(0, thirst - thirst_ratio * THIRST_FACTOR)
 			blood_volume = min((BLOOD_VOLUME_NORMAL * blood_ratio), blood_volume + 0.5 * nutrition_ratio)
 
 		//Effects of bloodloss

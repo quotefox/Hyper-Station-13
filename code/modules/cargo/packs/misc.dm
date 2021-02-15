@@ -350,6 +350,19 @@
 					/obj/item/toner)
 	crate_name = "toner crate"
 
+/datum/supply_pack/misc/wedding
+	name = "Wedding Crate"
+	desc = "Almost everything you need to host a wedding! Don't forget a ring!"
+	cost = 1500
+	contains = list(/obj/item/clothing/under/wedding_dress,
+					/obj/item/clothing/under/tuxedo,
+					/obj/item/storage/belt/cummerbund,
+					/obj/item/bouquet,
+					/obj/item/bouquet/sunflower,
+					/obj/item/bouquet/poppy,
+					/obj/item/reagent_containers/food/drinks/bottle/champagne)
+	crate_name = "wedding crate"
+
 /datum/supply_pack/misc/diamondring
 	name = "Diamond Ring"
 	desc = "Show them your love is like a diamond: unbreakable and forever lasting. Shipped straight from child slave cartels in the space african mines."

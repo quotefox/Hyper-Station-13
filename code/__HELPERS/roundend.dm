@@ -189,6 +189,12 @@
 
 	CHECK_TICK
 
+	// Stop eorg mech prepping.
+	for(var/obj/mecha/combat/Obj in world)
+		qdel(Obj)
+
+	CHECK_TICK
+
 	//Set news report and mode result
 	mode.set_round_result()
 

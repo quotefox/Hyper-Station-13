@@ -161,6 +161,7 @@
 	holdmyinsanityeffect = insanity_effect
 
 	HandleNutrition(owner)
+	HandleThirst(owner)
 
 /datum/component/mood/proc/setSanity(amount, minimum=SANITY_INSANE, maximum=SANITY_NEUTRAL)//I'm sure bunging this in here will have no negative repercussions.
 	var/mob/living/master = parent
@@ -289,7 +290,6 @@
 /datum/component/mood/proc/hud_click(datum/source, location, control, params, mob/user)
 	print_mood(user)
 
-
 /datum/component/mood/proc/HandleNutrition(mob/living/L)
 	switch(L.nutrition)
 		if(NUTRITION_LEVEL_FULL to INFINITY)
@@ -304,6 +304,15 @@
 			add_event(null, "nutrition", /datum/mood_event/hungry)
 		if(0 to NUTRITION_LEVEL_STARVING)
 			add_event(null, "nutrition", /datum/mood_event/starving)
+
+/datum/component/mood/proc/HandleThirst(mob/living/L)
+	switch(L.thirst)
+		if(NUTRITION_LEVEL_HUNGRY to INFINITY)
+			clear_event(null, "thirst")
+		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
+			add_event(null, "thirst", /datum/mood_event/thirsty)
+		if(0 to NUTRITION_LEVEL_STARVING)
+			add_event(null, "thirst", /datum/mood_event/dehydrated)
 
 #undef MINOR_INSANITY_PEN
 #undef MAJOR_INSANITY_PEN
