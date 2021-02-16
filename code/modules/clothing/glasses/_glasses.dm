@@ -74,7 +74,7 @@
 
 /obj/item/clothing/glasses/meson/eyepatch
 	name = "meson scanner eyepatch"
-	desc = "An eyepatch with built-in meson scanner."
+	desc = "An eyepatch with a built-in meson scanner."
 	icon_state = "mesonpatch"
 	item_state = "mesonpatch"
 
@@ -136,7 +136,7 @@
 
 /obj/item/clothing/glasses/night/eyepatch
 	name = "night vision eyepatch"
-	desc = "An eyepatch with an night vision technology!"
+	desc = "An eyepatch with night vision technology!"
 	icon_state = "nightpatch"
 	item_state = "nightpatch"
 
