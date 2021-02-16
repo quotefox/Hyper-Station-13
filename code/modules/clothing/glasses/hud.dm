@@ -120,12 +120,6 @@
 	hud_type = DATA_HUD_SECURITY_ADVANCED
 	glass_colour_type = /datum/client_colour/glass_colour/red
 
-/obj/item/clothing/glasses/hud/security/eyepatch
-	name = "security HUD eyepatch"
-	desc = "A heads-up display, in an eyepatch, that scans the humans in view and provides accurate data about their ID status and security records."
-	icon_state = "hudpatch"
-	item_state = "hudpatch"
-
 /obj/item/clothing/glasses/hud/security/prescription
 	name = "prescription security HUD"
 	desc = "A heads-up display that scans the humans in view and provides accurate data about their ID status and security records. This one has a prescription lens so you can see the banana peal that slipped you."
@@ -159,7 +153,7 @@
 
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
-	name = "eyepatch HUD"
+	name = "Security eyepatch HUD"
 	desc = "A heads-up display that connects directly to the optical nerve of the user, replacing the need for that useless eyeball."
 	icon_state = "hudpatch"
 

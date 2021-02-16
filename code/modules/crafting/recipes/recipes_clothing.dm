@@ -45,20 +45,20 @@
 
 /datum/crafting_recipe/hudeyesec
 	name = "Security HUD eyepatch"
-	result = /obj/item/clothing/glasses/hud/security/eyepatch
+	result = /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
 	time = 20
 	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
-	reqs = list(/obj/item/clothing/glasses/hud/security = 1,
+	reqs = list(/obj/item/clothing/glasses/hud/security/sunglasses = 1,
 				  /obj/item/clothing/glasses/eyepatch = 1,
 				  /obj/item/stack/cable_coil = 5)
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/hudeyesecremoval
 	name = "Security HUD removal (Eyepatch)"
-	result = /obj/item/clothing/glasses/eyepatch
+	result = /obj/item/clothing/glasses/hud/security/sunglasses
 	time = 20
 	tools = list(TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
-	reqs = list(/obj/item/clothing/glasses/hud/security/eyepatch = 1)
+	reqs = list(/obj/item/clothing/glasses/hud/security/sunglasses/eyepatch = 1)
 	category = CAT_CLOTHING
 
 /datum/crafting_recipe/hudsunsecremoval
