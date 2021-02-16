@@ -37,6 +37,12 @@
 	hud_type = DATA_HUD_MEDICAL_ADVANCED
 	glass_colour_type = /datum/client_colour/glass_colour/lightblue
 
+/obj/item/clothing/glasses/hud/health/eyepatch
+	name = "health scanner HUD eyepatch"
+	desc = "A heads-up display, in an eyepatch, that scans the humans in view and provides accurate data about their health status."
+	icon_state = "medpatch"
+	item_state = "medpatch"
+
 /obj/item/clothing/glasses/hud/health/prescription
 	name = "prescription health scanner HUD"
 	desc = "A heads-up display, made with a prescription lens, that scans the humans in view and provides accurate data about their health status."
@@ -83,6 +89,12 @@
 	icon_state = "diagnostichud"
 	hud_type = DATA_HUD_DIAGNOSTIC_BASIC
 	glass_colour_type = /datum/client_colour/glass_colour/lightorange
+
+/obj/item/clothing/glasses/hud/diagnostic/eyepatch
+	name = "diagnostic HUD eyepatch"
+	desc = "A heads-up display, in an eyepatch, capable of analyzing the integrity and status of robotics and exosuits."
+	icon_state = "diapatch"
+	item_state = "diapatch"
 
 /obj/item/clothing/glasses/hud/diagnostic/prescription
 	name = "prescription diagnostic HUD"
@@ -141,7 +153,7 @@
 
 
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
-	name = "eyepatch HUD"
+	name = "Security eyepatch HUD"
 	desc = "A heads-up display that connects directly to the optical nerve of the user, replacing the need for that useless eyeball."
 	icon_state = "hudpatch"
 
