@@ -522,25 +522,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		overlay_state = pick(overlay_list)
 	update_icon()
 
-/obj/item/lighter/AltClick(mob/living/user)
-	. = ..()
-	if(GLOB.lighter_reskins && user.canUseTopic(src, BE_CLOSE, NO_DEXTERY))
-		reskin_obj(user)
-
-/obj/item/lighter/reskin_obj(mob/M)
-	if(lit)
-		return to_chat(M, "You need to close the lighter before changing the engraving!")
-	if(!LAZYLEN(GLOB.lighter_reskins))
-		return
-
-	var/choice = input(M, "Choose the a reskin for [src]","Reskin Object") as null|anything in GLOB.lighter_reskins
-	var/new_icon = GLOB.lighter_reskins[choice]
-	if(QDELETED(src) || isnull(new_icon) || new_icon == icon || !M.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-		return
-	overlay_state = new_icon
-	update_icon()
-	to_chat(M, "[src] is now skinned as '[choice]'.")
-
 /obj/item/lighter/suicide_act(mob/living/carbon/user)
 	if (lit)
 		user.visible_message("<span class='suicide'>[user] begins holding \the [src]'s flame up to [user.p_their()] face! It looks like [user.p_theyre()] trying to commit suicide!</span>")
