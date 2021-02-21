@@ -261,7 +261,7 @@
 	production = 4
 	endurance = 5
 	yield = 0
-	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/plant_type/carnivory, /datum/plant_gene/trait/modified_color/opaque)
+	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/plant_type/carnivory, /datum/plant_gene/trait/modified_color/transparent)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
 	mutatelist = list(/obj/item/seeds/chanterelle/jupitercup, /obj/item/seeds/chanterelle/jupitercup/monochrome)

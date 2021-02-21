@@ -382,7 +382,7 @@ datum/plant_gene/trait/glow/white
 /datum/plant_gene/trait/modified_color/proc/calculate()
 	return
 
-/datum/plant_gene/trait/modified_color/opaque
+/datum/plant_gene/trait/modified_color/transparent
 	name = "Dilated Light (Flimsy)"
 	color =  list(1,0,0,0, 0,1,0,0, 0,0,1,0, -0.3,-0.3,-0.3,0.7, 0,0,0,0)
 
