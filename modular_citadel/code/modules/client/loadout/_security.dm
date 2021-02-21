@@ -1,41 +1,41 @@
 /datum/gear/navyblueuniformhos
- 	name = "Head of Security navyblue uniform"
+ 	name = "Head of Security's navyblue uniform"
  	category = SLOT_W_UNIFORM
  	path = /obj/item/clothing/under/rank/head_of_security/navyblue
  	restricted_roles = list("Head of Security")
 
 /datum/gear/navybluehosberet
-	name = "Head of security's Naviblue beret"
+	name = "Head of Security's navyblue beret"
 	category = SLOT_HEAD
 	path = /obj/item/clothing/head/beret/sec/navyhos
 	restricted_roles = list("Head of Security")
 
 /datum/gear/navybluejackethos
-	name = "head of security's navyblue jacket"
+	name = "Head of Security's navyblue jacket"
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/security/hos
 	restricted_roles = list("Head of Security")
 
 /datum/gear/navybluejacketofficer
-	name = "security officer's navyblue jacket"
+	name = "Security Officer's navyblue jacket"
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/security/officer
 	restricted_roles = list("Security Officer")
 
 /datum/gear/navyblueofficerberet
-	name = "Security officer's Navyblue beret"
+	name = "Security Officer's navyblue beret"
 	category = SLOT_HEAD
 	path = /obj/item/clothing/head/beret/sec/navyofficer
 	restricted_roles = list("Security Officer")
 
 /datum/gear/navyblueuniformofficer
- 	name = "Security officer navyblue uniform"
+ 	name = "Security Officer's navyblue uniform"
  	category = SLOT_W_UNIFORM
  	path = /obj/item/clothing/under/rank/security/navyblue
  	restricted_roles = list("Security Officer")
 
 /datum/gear/navybluejacketwarden
-	name = "warden navyblue jacket"
+	name = "Warden's navyblue jacket"
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/security/warden
 	restricted_roles = list("Warden")
@@ -47,7 +47,7 @@
 	restricted_roles = list("Warden")
 
 /datum/gear/navyblueuniformwarden
- 	name = "Warden navyblue uniform"
+ 	name = "Warden's navyblue uniform"
  	category = SLOT_W_UNIFORM
  	path = /obj/item/clothing/under/rank/warden/navyblue
  	restricted_roles = list("Warden")
@@ -59,13 +59,13 @@
 	restricted_roles = list("Security Officer", "Warden", "Head of Security")
 
 /datum/gear/hosskirt
-	name = "Head of security's skirt"
+	name = "Head of Security's skirt"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/rank/head_of_security/skirt
 	restricted_roles = list("Head of Security")
 
 /datum/gear/sechud
-	name = "Security Hud"
+	name = "Security HUD"
 	category = SLOT_GLASSES
 	path = /obj/item/clothing/glasses/hud/security
 	restricted_roles = list("Security Officer", "Warden", "Head of Security")

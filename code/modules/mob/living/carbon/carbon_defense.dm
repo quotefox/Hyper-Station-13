@@ -286,7 +286,19 @@
 			var/mob/living/carbon/human/H = src
 			var/datum/species/pref_species = H.dna.species
 			
-			if(HAS_TRAIT(H, TRAIT_HEADPAT_SLUT))
+			if(HAS_TRAIT(H, TRAIT_DISTANT)) //No mood buff since you're not really liking it.
+				M.visible_message("<span class='notice'>[M] gives [H] a pat on the head to make [p_them()] feel better! They seem annoyed...</span>", \
+					"<span class='warning'>You give [H] a pat on the head to make [p_them()] feel better! They seem annoyed as they're now glaring towards you...</span>")
+				H.adjustArousalLoss(-5) //Why are you touching me?
+				if(prob(5))
+					M.visible_message("<span class='warning'>[H] quickly twists [M]\'s arm!</span>", \
+						"<span class='boldwarning'>Your arm gets twisted in [H]\'s grasp. Maybe you should have taken the hint...</span>")
+					playsound(get_turf(H), 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+					M.emote("scream")
+					M.dropItemToGround(M.get_active_held_item())
+					M.apply_damage(50, STAMINA, pick(BODY_ZONE_L_ARM, BODY_ZONE_R_ARM))
+					M.Knockdown(60)//STOP TOUCHING ME! For those spam head pat individuals
+			else if(HAS_TRAIT(H, TRAIT_HEADPAT_SLUT))
 				M.visible_message("<span class='notice'>[M] gives [H] a pat on the head to make [p_them()] feel better! They seem incredibly pleased!</span>", \
 							"<span class='notice'>You give [H] a pat on the head to make [p_them()] feel better! They seem to like it way too much</span>")
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "lewd_headpat", /datum/mood_event/lewd_headpat)
@@ -302,7 +314,10 @@
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "friendly_hug", /datum/mood_event/besthug, M)
 				else if (mood.sanity >= SANITY_DISTURBED)
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "friendly_hug", /datum/mood_event/betterhug, M)
-			if(H.dna.species.can_wag_tail(H))
+			
+			if(HAS_TRAIT(H, TRAIT_DISTANT))
+				return
+			else if(H.dna.species.can_wag_tail(H))
 				if("tail_human" in pref_species.default_features)
 					if(H.dna.features["tail_human"] == "None")
 						return

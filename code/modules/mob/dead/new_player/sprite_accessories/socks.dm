@@ -85,6 +85,10 @@
 	icon_state = "socks_short"
 	has_color = TRUE
 
+/datum/sprite_accessory/underwear/socks/stockings_black
+	name = "Stockings - Black"
+	icon_state = "stockings_black"
+
 /datum/sprite_accessory/underwear/socks/stockings_blue
 	name = "Stockings - Blue"
 	icon_state = "stockings_blue"

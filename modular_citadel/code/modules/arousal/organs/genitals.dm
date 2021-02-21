@@ -23,6 +23,8 @@
 	var/hidden					= FALSE
 	var/colourtint				= ""
 	var/mode					= "clothes"
+	var/obj/item/equipment 		//for fun stuff that goes on the gentials/maybe rings down the line
+	var/dontlist				= FALSE
 
 /obj/item/organ/genital/Initialize()
 	. = ..()
@@ -229,6 +231,11 @@
 				B.color = "#[dna.features["belly_color"]]"
 			B.update()
 
+		if(dna.features["hide_belly"]) //autohide bellies if they have the option ticked.
+			B.toggle_visibility("Always hidden")
+
+
+
 /mob/living/carbon/human/proc/give_breasts()
 	if(!dna)
 		return FALSE
@@ -422,9 +429,9 @@
 			genital_overlay.icon_state = "[G.slot]_[S.icon_state]_[size]_[aroused_state]_[layertext]"
 			colourcode = S.color_src
 
-			if(G.slot == "belly")
+			if(G.slot == "belly") //we have a different size system to the rest of the genitals
 				genital_overlay.icon = 'hyperstation/icons/obj/genitals/belly.dmi'
-				genital_overlay.icon_state = "belly"
+				genital_overlay.icon_state = "belly_[size]"
 				colourcode = "belly_color"
 
 
@@ -433,7 +440,6 @@
 
 			if(use_skintones && H.dna.features["genitals_use_skintone"])
 				genital_overlay.color = "#[skintone2hex(H.skin_tone)]"
-//				genital_overlay.icon_state = "[G.slot]_[S.icon_state]_[size]-s_[aroused_state]_[layertext]"
 				if (colourtint)
 					genital_overlay.color = "#[colourtint]"
 			else

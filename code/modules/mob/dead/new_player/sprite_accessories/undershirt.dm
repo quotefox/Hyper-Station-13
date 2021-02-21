@@ -343,3 +343,10 @@
 /datum/sprite_accessory/underwear/top/cowboyshirt/red/s
 	name = "Cowboy Shirt Shortsleeved Red"
 	icon_state = "cowboyshirt_reds"
+
+
+/datum/sprite_accessory/underwear/top/arms
+	name = "Arm Warmers"
+	icon_state = "armwarmer"
+	has_color = TRUE
+	gender = FEMALE

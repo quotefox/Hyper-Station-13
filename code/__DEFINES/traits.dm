@@ -94,6 +94,7 @@
 #define TRAIT_NOFIRE			"nonflammable"
 #define TRAIT_NOGUNS			"no_guns"
 #define TRAIT_NOHUNGER			"no_hunger"
+#define TRAIT_NOTHIRST			"no_thirst"
 #define TRAIT_EASYDISMEMBER		"easy_dismember"
 #define TRAIT_LIMBATTACHMENT 	"limb_attach"
 #define TRAIT_NOLIMBDISABLE		"no_limb_disable"
@@ -169,6 +170,7 @@
 #define	TRAIT_MUSICIAN			"musician"
 #define	TRAIT_CROCRIN_IMMUNE    "crocin_immune"
 #define TRAIT_NYMPHO			"nymphomania"
+#define TRAIT_DISTANT			"headpat_hater"
 //#define TRAIT_FLUID_LEAK	"leaky_fluids" removed because milk snail trails are not okay
 #define TRAIT_MASO              "masochism"
 #define TRAIT_CHOKE_SLUT		"choke_slut"

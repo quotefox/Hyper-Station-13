@@ -251,7 +251,9 @@
 /obj/item/reagent_containers/pill/penis_enlargement
 	name = "penis enlargement pill"
 	list_reagents = list(/datum/reagent/fermi/penis_enlarger = 10)
+	price = 4
 
 /obj/item/reagent_containers/pill/breast_enlargement
 	name = "breast enlargement pill"
 	list_reagents = list(/datum/reagent/fermi/breast_enlarger = 10)
+	price = 4

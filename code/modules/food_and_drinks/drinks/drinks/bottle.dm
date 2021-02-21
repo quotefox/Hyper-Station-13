@@ -416,6 +416,7 @@
 	isGlass = FALSE
 	list_reagents = list(/datum/reagent/consumable/cream = 100)
 	foodtype = DAIRY
+	price = 3
 
 /obj/item/reagent_containers/food/drinks/bottle/tomatojuice
 	name = "tomato juice"

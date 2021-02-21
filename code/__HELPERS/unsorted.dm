@@ -1505,6 +1505,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	var/list/blocked = list(/obj/item/reagent_containers/food/drinks/soda_cans,
 		/obj/item/reagent_containers/food/drinks/bottle
 		)
+	blocked |= typesof(/obj/item/reagent_containers/food/drinks/prospacillin,
+		/obj/item/reagent_containers/food/drinks/diminicillin
+		)
+	
 	return pick(subtypesof(/obj/item/reagent_containers/food/drinks) - blocked)
 
 //For these two procs refs MUST be ref = TRUE format like typecaches!

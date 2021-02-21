@@ -53,13 +53,17 @@
 				/obj/item/reagent_containers/pill/breast_enlargement = 3,
 				/obj/item/clothing/gloves/latexsleeves = 3,
 				/obj/item/clothing/shoes/highheels = 3,
+				/obj/item/clothing/neck/stole = 2,
+				/obj/item/clothing/neck/stole/black = 2,
 				/obj/item/clothing/under/polychromic/stripper = 3,
 				/obj/item/clothing/under/polychromic/bikini = 3,
 				/obj/item/clothing/under/polychromic/shortpants/pantsu = 3,
 				/obj/item/clothing/under/polychromic/bulge = 3,
 				/obj/item/clothing/suit/maidapron = 3,
 				/obj/item/clothing/under/corset = 3,
-				/obj/item/clothing/under/jabroni = 3
+				/obj/item/clothing/under/jabroni = 3,
+				/obj/item/electropack/vibrator/small = 2,
+				/obj/item/electropack/vibrator = 2,
 				)
 	contraband = list(
 				/obj/item/restraints/handcuffs/fake/kinky = 5,
@@ -79,6 +83,8 @@
 				/obj/item/clothing/mask/muzzle/ballgag = 3
 				)
 	refill_canister = /obj/item/vending_refill/kink
+	baseprice = 2
+
 /*
 /obj/machinery/vending/nazivend
 	name = "Nazivend"

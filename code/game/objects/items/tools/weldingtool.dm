@@ -341,6 +341,7 @@
 	item_state = "upindwelder"
 	max_fuel = 80
 	materials = list(MAT_METAL=70, MAT_GLASS=120)
+	price = 10
 
 /obj/item/weldingtool/experimental
 	name = "experimental welding tool"

@@ -10,6 +10,7 @@
 	item_state = "rope" //This sprite is in restraints.dmi until I figure out how to refrence somewhere else
 	cuffsound = 'sound/weapons/cablecuff.ogg'
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	price = 2
 
 /mob/living/proc/rope_add(source) //Check to see if the rope is on, and then add effects
 	var/mob/living/carbon/M = source

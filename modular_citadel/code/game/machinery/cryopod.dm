@@ -384,7 +384,10 @@
 			else if(target.mind.has_antag_datum(/datum/antagonist/rev))
 				alert("<span class='userdanger'>You're a Revolutionary![generic_plsnoleave_message]</span>")
 				caught = TRUE
-
+		if(target.mind.special_role == ROLE_TRAITOR)
+			alert("<span class='userdanger'>You're a Traitor![generic_plsnoleave_message]</span>")
+			caught = TRUE
+	
 		if(caught)
 			target.client.cryo_warned = world.time
 			return

@@ -9,6 +9,7 @@
 	fluid_id 		= /datum/reagent/consumable/femcum
 	producing		= TRUE
 	var/pregnant	= FALSE //this is for pregnancy code
+	dontlist		= TRUE
 
 
 /obj/item/organ/genital/womb/on_life()

@@ -635,6 +635,7 @@
 	icon_state = "coatsecuritypink"
 	item_state = "coatsecuritypink"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/pink
+	price = 5
 
 /obj/item/clothing/suit/hooded/wintercoat/security/Initialize()
 	. = ..()
@@ -954,3 +955,12 @@
 
 /obj/item/clothing/head/hooded/winterhood/durathread
 	icon_state = "winterhood_durathread"
+
+//Enzo_Leon Patron stuff
+/obj/item/clothing/suit/toggle/enzojacket
+	name = "Altevain Colony-Ship Command Jacket"
+	desc = "A comfortable form fitting jacket that has a little cheese emblem on the chest."
+	icon_state = "enzojacket"
+	item_state = "enzojacket"
+	body_parts_covered = CHEST|ARMS
+//End
