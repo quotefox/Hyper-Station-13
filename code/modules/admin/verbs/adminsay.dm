@@ -14,7 +14,7 @@
 	msg = keywords_lookup(msg)
 	msg = "<span class='adminsay'><span class='prefix'>ADMIN:</span> <EM>[key_name(usr, 1)]</EM> [ADMIN_FLW(mob)]: <span class='message linkify'>[msg]</span></span>"
 	to_chat(GLOB.admins, msg)
-
+	SEND_SOUND(GLOB.admins, sound('sound/effects/asay.ogg'))
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Asay") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/get_admin_say()
