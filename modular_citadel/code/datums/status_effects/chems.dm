@@ -106,15 +106,6 @@
 		sizeMoveMod(moveCalc)
 	*/
 	if((B.cached_size) < 40)
-		switch(round(B.cached_size))
-			if(9)
-				if (B.breast_values[B.prev_size] != B.breast_values[B.size])
-					to_chat(o, "<span class='notice'>Your expansive chest has become a more managable size, liberating your movements.</b></span>")
-			if(10 to INFINITY)
-				if (B.breast_values[B.prev_size] != B.breast_values[B.size])
-					to_chat(H, "<span class='warning'>Your indulgent busom is so substantial, it's affecting your movements!</b></span>")
-		if(prob(1))
-			to_chat(owner, "<span class='notice'>Your back is feeling a little sore.</span>")
 		..()
 
 /*
