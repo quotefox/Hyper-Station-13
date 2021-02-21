@@ -243,7 +243,7 @@
 	endurance = 8
 	yield = 4
 	growthstages = 2
-	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/reagent/teslium, /datum/plant_gene/trait/plant_type/carnivory)
+	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/reagent/fragile/teslium, /datum/plant_gene/trait/plant_type/carnivory)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
 	mutatelist = list()
@@ -251,7 +251,6 @@
 /obj/item/seeds/chanterelle/jupitercup/Initialize(mapload, nogenes = FALSE)
 	. = ..()
 	if(!nogenes)
-		unset_mutability(/datum/plant_gene/reagent/teslium, PLANT_GENE_EXTRACTABLE)
 		unset_mutability(/datum/plant_gene/trait/plant_type/carnivory, PLANT_GENE_REMOVABLE)
 
 /obj/item/seeds/chanterelle/jupitercup/hollow

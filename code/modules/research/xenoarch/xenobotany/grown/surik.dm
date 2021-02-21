@@ -13,7 +13,7 @@
 	icon_grow = "surik-stage"
 	growthstages = 4
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
-	reagents_add = list("frostoil" = 0.1)
+	reagents_add = list(/datum/reagent/consumable/frostoil = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/surik
 	seed = /obj/item/seeds/surik
@@ -24,5 +24,5 @@
 	filling_color = "#FF4500"
 	bitesize = 100
 	foodtype = FRUIT
-	juice_results = list("frostoil" = 0.1)
+	juice_results = list(/datum/reagent/consumable/frostoil = 0.1)
 	tastes = list("snow" = 1)

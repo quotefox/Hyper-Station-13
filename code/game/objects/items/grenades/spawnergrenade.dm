@@ -41,3 +41,11 @@
 	icon_state = "holy_grenade"
 	spawner_type = /mob/living/simple_animal/hostile/poison/bees/toxin
 	deliveryamt = 10
+
+/obj/item/grenade/spawnergrenade/clustaur
+	desc = "A very strange grenade often found in maintanance. Use of this may constitute a war crime in your area, consult your local captain."
+	name = "clustaur grenade"
+	icon_state = "clustaur"
+	item_state = "clustaur"
+	deliveryamt = 10
+	spawner_type = /obj/item/reagent_containers/glass/beaker/waterbottle/wataur

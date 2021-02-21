@@ -501,6 +501,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	w_class = WEIGHT_CLASS_TINY
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
+	price = 1
 	var/lit = 0
 	var/fancy = TRUE
 	var/overlay_state
@@ -520,6 +521,25 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!overlay_state)
 		overlay_state = pick(overlay_list)
 	update_icon()
+
+/obj/item/lighter/AltClick(mob/living/user)
+	. = ..()
+	if(GLOB.lighter_reskins && user.canUseTopic(src, BE_CLOSE, NO_DEXTERY))
+		reskin_obj(user)
+
+/obj/item/lighter/reskin_obj(mob/M)
+	if(lit)
+		return to_chat(M, "You need to close the lighter before changing the engraving!")
+	if(!LAZYLEN(GLOB.lighter_reskins))
+		return
+
+	var/choice = input(M, "Choose the a reskin for [src]","Reskin Object") as null|anything in GLOB.lighter_reskins
+	var/new_icon = GLOB.lighter_reskins[choice]
+	if(QDELETED(src) || isnull(new_icon) || new_icon == icon || !M.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		return
+	overlay_state = new_icon
+	update_icon()
+	to_chat(M, "[src] is now skinned as '[choice]'.")
 
 /obj/item/lighter/suicide_act(mob/living/carbon/user)
 	if (lit)

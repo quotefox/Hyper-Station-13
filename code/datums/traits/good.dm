@@ -295,3 +295,33 @@
 /datum/quirk/slimespeaker/remove()
 	var/mob/living/M = quirk_holder
 	M.remove_language(/datum/language/slime)
+
+/datum/quirk/tajaspeaker
+	name = "Siik-Tajr speaker"
+	desc = "Due to your time spent around Tajaran, you can speak their native tongue!"
+	value = 1
+	gain_text = "<span class='notice'>You feel sensitive to mrowls and your tongue curls comfortably.</span>"
+	lose_text = "<span class='notice'>You forget how to speak Siik'Tajr!</span>"
+
+/datum/quirk/tajaspeaker/add()
+	var/mob/living/M = quirk_holder
+	M.grant_language(/datum/language/tajara)
+
+/datum/quirk/tajaspeaker/remove()
+	var/mob/living/M = quirk_holder
+	M.remove_language(/datum/language/tajara)
+
+/datum/quirk/russianspeaker
+	name = "Neo-Russkiya speaker"
+	desc = "Due to your time spent around space russians, you can speak Neo-Russkiya!"
+	value = 1
+	gain_text = "<span class='notice'>You feel sensitive to the motherland, blyat!</span>"
+	lose_text = "<span class='notice'>You forget how to speak Neo-Russkiya!</span>"
+
+/datum/quirk/russianspeaker/add()
+	var/mob/living/M = quirk_holder
+	M.grant_language(/datum/language/spacerussian)
+
+/datum/quirk/russianspeaker/remove()
+	var/mob/living/M = quirk_holder
+	M.remove_language(/datum/language/spacerussian)

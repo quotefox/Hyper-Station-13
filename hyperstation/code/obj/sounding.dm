@@ -6,6 +6,7 @@
 	icon_state 			= "sounding_wrapped"
 	var/unwrapped			= 0
 	w_class = WEIGHT_CLASS_TINY
+	price = 1
 
 /obj/item/sounding/attack_self(mob/user)
 	if(!istype(user))

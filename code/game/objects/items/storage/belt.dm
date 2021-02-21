@@ -237,6 +237,7 @@
 	desc = "Holds a variety of gear for \"alternative\" peacekeeping."
 	icon_state = "slutbelt"
 	item_state = "slut"
+	price = 5
 
 obj/item/storage/belt/slut/ComponentInitialize()
 	. = ..()
@@ -369,6 +370,12 @@ obj/item/storage/belt/slut/ComponentInitialize()
 	STR.can_hold = list(
 		/obj/item/clothing/mask/luchador
 		)
+
+/obj/item/storage/belt/cummerbund
+	name = "cummerbund" //I swear to god if you people aren't mature enough to handle this I'm just gonna call it a sash.
+	desc = "A pleated sash that pairs well with a suit jacket."
+	icon_state = "cummerbund"
+	item_state = "cummerbund"
 
 /obj/item/storage/belt/military
 	name = "chest rig"

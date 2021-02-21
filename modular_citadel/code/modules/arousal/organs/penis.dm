@@ -44,19 +44,24 @@
 			size = 2
 			if(owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
 				o.remove_status_effect(/datum/status_effect/chem/penis_enlarger)
-		if(11 to 20) //If massive
+		if(11 to 18) //If massive
 			length = cached_length
 			size = 3
 			if(owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
 				o.remove_status_effect(/datum/status_effect/chem/penis_enlarger)
-		if(21 to 28) //If massive and due for large effects
+		if(18 to 26) //If massive and due for large effects
 			length = cached_length
 			size = 3
 			if(!owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
 				o.apply_status_effect(/datum/status_effect/chem/penis_enlarger)
-		if(28 to INFINITY) //If comical
+		if(26 to 34) //If hyper
 			length = cached_length
 			size = 4 //no new sprites for anything larger yet
+			if(!owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
+				o.apply_status_effect(/datum/status_effect/chem/penis_enlarger)
+		if(34 to INFINITY) //If extreme-hyper
+			length = cached_length
+			size = 5 //no new sprites for anything larger yet
 			if(!owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
 				o.apply_status_effect(/datum/status_effect/chem/penis_enlarger)
 

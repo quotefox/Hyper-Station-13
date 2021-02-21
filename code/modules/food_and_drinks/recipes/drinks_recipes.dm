@@ -892,3 +892,10 @@
 	results = list(/datum/reagent/consumable/ethanol/commander_and_chief = 50)
 	required_reagents = list(/datum/reagent/consumable/ethanol/alliescocktail = 50, /datum/reagent/consumable/ethanol/champagne = 20, /datum/reagent/consumable/doctor_delight = 10, /datum/reagent/consumable/ethanol/quintuple_sec = 10, /datum/reagent/consumable/ethanol/screwdrivercocktail = 10)
 	mix_message = "When your powers combine, I am Captain Pl-..."
+
+/datum/chemical_reaction/wockyslush
+	name = "Wocky Slush"
+	id = /datum/reagent/consumable/wockyslush
+	results = list(/datum/reagent/consumable/wockyslush = 5)
+	required_reagents = list(/datum/reagent/toxin/fentanyl = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/lemon_lime = 1)
+	mix_message = "That thang bleedin’ P!"

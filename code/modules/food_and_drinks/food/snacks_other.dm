@@ -59,6 +59,8 @@
 	tastes = list("chocolate" = 1)
 	foodtype = JUNKFOOD | SUGAR
 	dunkable = TRUE
+	price = 2
+
 
 /obj/item/reagent_containers/food/snacks/hugemushroomslice
 	name = "huge mushroom slice"
@@ -559,9 +561,9 @@
 
 /obj/item/reagent_containers/food/snacks/tinychocolate
 	name = "chocolate"
-	desc = "A tiny and sweet chocolate. Has a 'strawberry' filling!"
+	desc = "A tiny and sweet chocolate. Has a strawberry filling!"
 	icon_state = "tiny_chocolate"
-	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/sugar = 1, /datum/reagent/consumable/coco = 1, /datum/reagent/drug/aphrodisiac = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/sugar = 1, /datum/reagent/consumable/coco = 1, /datum/reagent/consumable/pinkmilk = 1)
 	filling_color = "#A0522D"
 	tastes = list("chocolate" = 1)
 	foodtype = JUNKFOOD | SUGAR

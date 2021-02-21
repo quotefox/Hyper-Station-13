@@ -121,6 +121,7 @@
 	cost = 9
 	item_path = /obj/item/clothing/neck/necklace/dope
 
+
 /datum/gang_item/clothing/hands
 	name = "Decorative Brass Knuckles"
 	id = "hand"

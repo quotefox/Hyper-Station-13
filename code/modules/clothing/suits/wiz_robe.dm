@@ -226,3 +226,63 @@
 	W.current_charges += 8
 	to_chat(user, "<span class='notice'>You charge \the [W]. It can now absorb [W.current_charges] hits.</span>")
 	qdel(src)
+
+/obj/item/clothing/head/notwizard
+	name = "wizard hat"
+	desc = "Strange-looking hat-wear that most certainly belongs to an aspiring magic user."
+	icon_state = "wizard"
+	gas_transfer_coefficient = 1
+	permeability_coefficient = 1
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	strip_delay = 50
+	equip_delay_other = 50
+	resistance_flags = FLAMMABLE
+	dog_fashion = /datum/dog_fashion/head/blue_wizard
+
+/obj/item/clothing/head/notwizard/red
+	name = "red wizard hat"
+	desc = "Strange-looking red hat-wear that most certainly belongs to an aspiring magic user."
+	icon_state = "redwizard"
+	dog_fashion = /datum/dog_fashion/head/red_wizard
+
+/obj/item/clothing/head/notwizard/yellow
+	name = "yellow wizard hat"
+	desc = "Strange-looking yellow hat-wear that most certainly belongs to an aspiring magic user."
+	icon_state = "yellowwizard"
+	dog_fashion = null
+
+/obj/item/clothing/head/notwizard/black
+	name = "black wizard hat"
+	desc = "Strange-looking black hat-wear that most certainly belongs to an aspiring skeleton. Way cooler than magic." //skeleton gang 4lyfe
+	icon_state = "blackwizard"
+	dog_fashion = null
+
+/obj/item/clothing/suit/notwizrobe
+	name = "wizard robe"
+	desc = "A decent looking robe that seems to radiate imagination."
+	icon_state = "wizard"
+	item_state = "wizrobe"
+	gas_transfer_coefficient = 1
+	permeability_coefficient = 1
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	strip_delay = 50
+	equip_delay_other = 50
+	resistance_flags = FLAMMABLE
+
+/obj/item/clothing/suit/notwizrobe/red
+	name = "red wizard robe"
+	desc = "A decent looking red robe that seems to radiate imagination."
+	icon_state = "redwizard"
+	item_state = "redwizrobe"
+
+/obj/item/clothing/suit/notwizrobe/yellow
+	name = "yellow wizard robe"
+	desc = "A decent looking yellow robe that seems to radiate imagination."
+	icon_state = "yellowwizard"
+	item_state = "yellowwizrobe"
+
+/obj/item/clothing/suit/notwizrobe/black
+	name = "black wizard robe"
+	desc = "An unnerving black robe that radiates death and decay."
+	icon_state = "blackwizard"
+	item_state = "blackwizrobe"

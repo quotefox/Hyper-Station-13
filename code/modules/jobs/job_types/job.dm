@@ -58,7 +58,7 @@
 	var/list/mind_traits // Traits added to the mind of the mob assigned this job
 
 	var/list/blacklisted_quirks		//list of quirk typepaths blacklisted.
-	
+
 	var/list/alt_titles = list()
 
 //Only override this proc
@@ -89,6 +89,15 @@
 /datum/job/proc/equip(mob/living/carbon/human/H, visualsOnly = FALSE, announce = TRUE, latejoin = FALSE, datum/outfit/outfit_override = null)
 	if(!H)
 		return FALSE
+
+	if(!visualsOnly)
+		var/datum/bank_account/bank_account = new(H.real_name, src)
+		bank_account.account_holder = H.real_name
+		bank_account.account_job = src
+		bank_account.account_id = rand(111111,999999) //give account ID!
+		//bank_account.account_pin = rand(1000,9999) //give random pin!
+		bank_account.account_balance = 80
+		H.account_id = bank_account.account_id
 
 	if(CONFIG_GET(flag/enforce_human_authority) && (title in GLOB.command_positions))
 		if(H.dna.species.id != "human")
@@ -230,6 +239,13 @@
 			C.update_label(C.registered_name, preference_source.prefs.alt_titles_preferences[J.title])
 		else
 			C.update_label()
+
+		for(var/A in SSeconomy.bank_accounts)
+			var/datum/bank_account/B = A
+			if(B.account_id == H.account_id)
+				C.registered_account = B
+				B.bank_cards += C
+				break
 		H.sec_hud_set_ID()
 
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)

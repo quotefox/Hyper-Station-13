@@ -43,13 +43,13 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define GLOVES_LAYER			18
 #define EARS_LAYER				17
 #define BODY_TAUR_LAYER			16
-#define GENITALS_FRONT_LAYER	15
-#define SUIT_LAYER				14
-#define GLASSES_LAYER			13
-#define BELT_LAYER				12		//Possible make this an overlay of somethign required to wear a belt?
-#define SUIT_STORE_LAYER		11
-#define NECK_LAYER				10
-#define BACK_LAYER				9
+#define SUIT_LAYER				15
+#define GLASSES_LAYER			14
+#define BELT_LAYER				13		//Possible make this an overlay of somethign required to wear a belt?
+#define SUIT_STORE_LAYER		12
+#define NECK_LAYER				11
+#define BACK_LAYER				10
+#define GENITALS_FRONT_LAYER	9
 #define HAIR_LAYER				8		//TODO: make part of head layer?
 #define FACEMASK_LAYER			7
 #define HEAD_LAYER				6
@@ -259,6 +259,16 @@ GLOBAL_LIST_INIT(pda_styles, list(MONO, VT, ORBITRON, SHARE))
 
 GLOBAL_LIST_INIT(pda_reskins, list(PDA_SKIN_CLASSIC = 'icons/obj/pda.dmi', PDA_SKIN_ALT = 'icons/obj/pda_alt.dmi',
 								PDA_SKIN_RUGGED = 'icons/obj/pda_rugged.dmi', PDA_SKIN_MODERN = 'icons/obj/pda_modern.dmi'))
+
+//zippo icon reskins
+#define ZIPPO_SKIN_PLAIN "Plain"
+#define ZIPPO_SKIN_DAME "Dame"
+#define ZIPPO_SKIN_THIRTEEN "Thirteen"
+#define ZIPPO_SKIN_SNAKE "Snake"
+
+GLOBAL_LIST_INIT(lighter_reskins, list(ZIPPO_SKIN_PLAIN = "plain", ZIPPO_SKIN_DAME = "dame",
+								ZIPPO_SKIN_THIRTEEN = "thirteen", ZIPPO_SKIN_SNAKE = "snake"))
+
 
 /////////////////////////////////////
 // atom.appearence_flags shortcuts //
