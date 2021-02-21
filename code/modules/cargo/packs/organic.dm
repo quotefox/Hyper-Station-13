@@ -200,7 +200,7 @@
 //ALIEN-ESQUE SEEDS CRATE
 /datum/supply_pack/organic/rareseeds
 	name = "Galactic Seeds Crate"
-	desc = "Feel the need to explore the vastness of space, condensed into a single crate! Contains at least 4 seeds from random regions of space."
+	desc = "Explore the vastness of space, now condensed into a single crate! Contains at least 4 seeds from random regions of space."
 	cost = 9500		//See fill proc. I know this costs a lot
 	contains = list()
 	crate_name = "galactic seeds crate"
@@ -301,14 +301,10 @@
 				else
 					chosen_seed = pick(lavaland_seeds)
 
-
+		new chosen_seed(C)
 		cache = chosen_seed
-
-		if(istype(chosen_seed,/obj/item/seeds/starthistle)
-			new chosen_seed(C)
-			continue
 		//Make it actually seem like it's from another galaxy with all this stuff
-		if(prob(15) && !istype(chosen_seed, /obj/item/seeds/starthistle)
+		if(prob(23) && !istype(chosen_seed, /obj/item/seeds/starthistle))
 			chosen_seed.rarity += 1
 
 			var/mutated = FALSE
@@ -374,13 +370,11 @@
 							else
 								qdel(R)
 							chosen_seed.reagents_from_genes()
-
-		new chosen_seed(C)
 	//All in a while() loop! Very efficient I know
 
 /datum/supply_pack/organic/grill
 	name = "Grilling Starter Kit"
-	desc = "Hey dad I'm Hungry. Hi Hungry I'm THE NEW GRILLING STARTER KIT ONLY 5000 BUX GET NOW! Contains a cooking grill and five fuel coal sheets."
+	desc = "Hey dad, I'm Hungry. Hi Hungry I'm THE NEW GRILLING STARTER KIT ONLY 5000 BUX GET NOW! Contains a cooking grill and five fuel coal sheets."
 	cost = 3000
 	crate_type = /obj/structure/closet/crate
 	contains = list(/obj/item/stack/sheet/mineral/coal/five,

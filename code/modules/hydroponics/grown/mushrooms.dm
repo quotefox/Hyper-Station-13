@@ -221,7 +221,7 @@
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
-	mutatelist = list(/obj/item/seeds/chanterelle/jupitercup, /obj/item/seeds/chanterelle/jupitercup/hollow, /obj/item/seeds/chanterelle/jupitercup/monochrome)
+	mutatelist = list(/obj/item/seeds/chanterelle/jupitercup, /obj/item/seeds/chanterelle/jupitercup/monochrome)
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/chanterelle
 	seed = /obj/item/seeds/chanterelle
@@ -265,8 +265,8 @@
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/plant_type/carnivory, /datum/plant_gene/trait/modified_color/opaque)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
-	mutatelist = list(/obj/item/seeds/chanterelle/jupitercup)
-	color =  list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0.66,0.66,0.66,0.66, 0,0,0,0)
+	mutatelist = list(/obj/item/seeds/chanterelle/jupitercup, /obj/item/seeds/chanterelle/jupitercup/monochrome)
+	color =  list(1,0,0,0, 0,1,0,0, 0,0,1,0, -0.3,-0.3,-0.3,0.7, 0,0,0,0)
 	modified_colors = TRUE
 
 /obj/item/seeds/chanterelle/jupitercup/monochrome
@@ -280,7 +280,7 @@
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/plant_type/carnivory, /datum/plant_gene/trait/modified_color/monochrome)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1, /datum/reagent/consumable/nothing = 0.02)
-	mutatelist = list(/obj/item/seeds/chanterelle/jupitercup)
+	mutatelist = list(/obj/item/seeds/chanterelle/jupitercup, /obj/item/seeds/chanterelle/jupitercup/hollow)
 	color = list(0.5,0.5,0.5,0, 0.5,0.5,0.5,0, 0.5,0.5,0.5,0, 0,0,0,1, 0,0,0,0)
 	modified_colors = TRUE
 
@@ -453,18 +453,13 @@
 /obj/item/seeds/lavaland/inocybe/magenta
 	name = "pack of dilated inocybe mycelium"
 	desc = "This mycelium grows into a specially-colored inocybe mushroom, their shifted cells make them appear red."
-	plantname = "Magenta Inocybe Mushrooms"
+	plantname = "Red Inocybe Mushrooms"
 	lifespan = 4
 	endurance = 5
 	maturation = 3
-	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/modified_color/magenta)
+	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/modified_color/monochrome/red)
 	mutatelist = list()
-	color = list(
-				0.25, 0.5,  1,    0,
-				1,    0.25, 0.5,  0,
-				0.5,  1,    0.25, 0,
-				0,0,0,1,
-				0,0,0,0)
+	color = list(0.8,0,0,0, 0.8,0.5,0.5,0, 0.8,0.5,0.5,0, 0,0,0,1, 0,0,0,0)
 	modified_colors = TRUE
 
 // Embershroom (Mushroom stem)
@@ -483,18 +478,13 @@
 /obj/item/seeds/lavaland/ember/cyan
 	name = "pack of dilated embershroom mycelium"
 	desc = "This mycelium grows into a specially-colored embershroom mushroom, their shifted cells make them appear blue."
-	plantname = "Magenta Embershroom Mushrooms"
+	plantname = "Blue Embershroom Mushrooms"
 	lifespan = 6
 	endurance = 10
 	maturation = 4
 	yield = 2
 	potency = 25
-	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/glow/blue, /datum/plant_gene/trait/modified_color/cyan)
+	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/glow/blue, /datum/plant_gene/trait/modified_color/monochrome/blue)
 	mutatelist = list()
-	color = list(
-				0.25, 1,    0.5,  0,
-				0.5,  0.25, 1,    0,
-				1,    0.5,  0.25, 0,
-				0,0,0,1,
-				0,0,0,0)
+	color = list(0.5,0.5,0.8,0, 0.5,0.5,0.8,0, 0,0,0.8,0, 0,0,0,1, 0,0,0,0)
 	modified_colors = TRUE

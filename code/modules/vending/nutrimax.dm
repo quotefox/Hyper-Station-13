@@ -21,4 +21,5 @@
 	refill_canister = /obj/item/vending_refill/hydronutrients
 
 /obj/item/vending_refill/hydronutrients
+	machine_name = "NutriMax"
 	icon_state = "refill_hydro"

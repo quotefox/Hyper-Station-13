@@ -62,4 +62,5 @@
 	refill_canister = /obj/item/vending_refill/hydroseeds
 
 /obj/item/vending_refill/hydroseeds
+	machine_name = "MegaSeed"
 	icon_state = "refill_hydro"

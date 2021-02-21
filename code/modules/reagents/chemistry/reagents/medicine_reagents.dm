@@ -1464,3 +1464,58 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 	M.adjustOrganLoss(ORGAN_SLOT_LUNGS, 0.5)
 	..()
 	. = 1
+
+/datum/reagent/medicine/coagulant
+	name = "Sanguirite"
+	description = "A proprietary coagulant used to help bleeding wounds clot faster."
+	reagent_state = LIQUID
+	color = "#bb2424"
+	metabolization_rate = 0.25 * REAGENTS_METABOLISM
+	overdose_threshold = 20
+	/// How much base clotting we do per bleeding wound, multiplied by the below number for each bleeding wound
+	var/clot_rate = 0.25
+	/// If we have multiple bleeding wounds, we count the number of bleeding wounds, then multiply the clot rate by this^(n) before applying it to each cut, so more cuts = less clotting per cut (though still more total clotting)
+	var/clot_coeff_per_wound = 0.9
+
+/*	//Residue from porting citadel's botany things. We don't have wounds yet (i think); uncomment this when it becomes a thing
+/datum/reagent/medicine/coagulant/on_mob_life(mob/living/carbon/M)
+	. = ..()
+	if(!M.blood_volume || !M.all_wounds)
+		return
+
+	var/effective_clot_rate = clot_rate
+
+	for(var/i in M.all_wounds)
+		var/datum/wound/iter_wound = i
+		if(iter_wound.blood_flow)
+			effective_clot_rate *= clot_coeff_per_wound
+
+	for(var/i in M.all_wounds)
+		var/datum/wound/iter_wound = i
+		iter_wound.blood_flow = max(0, iter_wound.blood_flow - effective_clot_rate)
+*/
+
+/datum/reagent/medicine/coagulant/overdose_process(mob/living/M)
+	. = ..()
+	if(!M.blood_volume)
+		return
+
+	if(prob(15))
+		M.losebreath += rand(2,4)
+		M.adjustOxyLoss(rand(1,3))
+		if(prob(30))
+			to_chat(M, "<span class='danger'>You can feel your blood clotting up in your veins!</span>")
+		else if(prob(10))
+			to_chat(M, "<span class='userdanger'>You feel like your blood has stopped moving!</span>")
+		if(prob(50))
+			var/obj/item/organ/lungs/our_lungs = M.getorganslot(ORGAN_SLOT_LUNGS)
+			our_lungs.applyOrganDamage(1)
+		else
+			var/obj/item/organ/heart/our_heart = M.getorganslot(ORGAN_SLOT_HEART)
+			our_heart.applyOrganDamage(1)
+
+// can be synthesized on station rather than bought. made by grinding a banana peel, heating it up, then mixing the banana peel powder with salglu
+/datum/reagent/medicine/coagulant/weak
+	name = "Synthi-Sanguirite"
+	description = "A synthetic coagulant used to help bleeding wounds clot faster. Not quite as effective as name brand Sanguirite, especially on patients with lots of cuts."
+	clot_coeff_per_wound = 0.8

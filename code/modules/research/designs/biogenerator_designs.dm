@@ -113,12 +113,12 @@
 	name = "10u Unstable Mutagen"
 	id = "fabricated_mutagen"
 	build_type = BIOGENERATOR
-	materials = list(MAT_BIOMASS = 75)
+	materials = list(MAT_BIOMASS = 30)
 	make_reagents = list(/datum/reagent/toxin/mutagen = 10)	//suffer
 	category = list("initial","Botany Chemicals")
 
 /datum/design/weed_killer
-	name = "Weed Killer"
+	name = "10u Weed Killer"
 	id = "weed_killer"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 10)
@@ -126,7 +126,7 @@
 	category = list("initial","Botany Chemicals")
 
 /datum/design/pest_spray
-	name = "Pest Killer"
+	name = "10u Pest Killer"
 	id = "pest_spray"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 10)
