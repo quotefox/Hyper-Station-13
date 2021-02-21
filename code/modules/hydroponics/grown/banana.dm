@@ -27,6 +27,12 @@
 	juice_results = list(/datum/reagent/consumable/banana = 0)
 	distill_reagent = /datum/reagent/consumable/ethanol/bananahonk
 
+/obj/item/reagent_containers/food/snacks/grown/banana/generate_trash(atom/location)
+	. = ..()
+	var/obj/item/grown/bananapeel/peel = .
+	if(istype(peel))
+		peel.grind_results = list(/datum/reagent/consumable/banana_peel = seed.potency * 0.2)
+
 /obj/item/reagent_containers/food/snacks/grown/banana/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is aiming [src] at [user.p_them()]self! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	playsound(loc, 'sound/items/bikehorn.ogg', 50, 1, -1)
@@ -119,6 +125,41 @@
 	name = "bluespace banana peel"
 	desc = "A peel from a bluespace banana."
 	icon_state = "banana_peel_blue"
+
+//Banana Spider
+/obj/item/seeds/banana/exotic_banana
+	name = "pack of exotic banana seeds"
+	desc = "They're seeds that grow into banana trees. However, those bananas might be alive."
+	icon_state = "seed_exoticbanana"
+	species = "exoticbanana"
+	icon_grow = "banana-grow"
+	plantname = "Exotic Banana Tree"
+	product = /obj/item/reagent_containers/food/snacks/grown/banana/banana_spider_spawnable
+	mutatelist = list()
+	genes = list(/datum/plant_gene/trait/slip)
+
+/obj/item/reagent_containers/food/snacks/grown/banana/banana_spider_spawnable
+	seed = /obj/item/seeds/banana/exotic_banana
+	name = "banana spider"
+	desc = "You do not know what it is, but you can bet the clown would love it."
+	icon_state = "exoticbanana"
+	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)
+	foodtype = GROSS | MEAT | RAW | FRUIT
+	grind_results = list(/datum/reagent/blood = 20, /datum/reagent/liquidgibs = 5)
+	var/awakening = 0
+
+/obj/item/reagent_containers/food/snacks/grown/banana/banana_spider_spawnable/attack_self(mob/user)
+	if(awakening || isspaceturf(user.loc))
+		return
+	to_chat(user, "<span class='notice'>You decide to wake up the banana spider...</span>")
+	awakening = 1
+
+	spawn(30)
+		if(!QDELETED(src))
+			var/mob/living/simple_animal/banana_spider/S = new /mob/living/simple_animal/banana_spider(get_turf(src.loc))
+			S.speed += round(10 / max(seed.potency, 1), 1)
+			S.visible_message("<span class='notice'>The banana spider chitters as it stretches its legs.</span>")
+			qdel(src)
 
 // Other
 /obj/item/grown/bananapeel/specialpeel     //used by /obj/item/clothing/shoes/clown_shoes/banana_shoes

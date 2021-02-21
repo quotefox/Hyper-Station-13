@@ -106,8 +106,8 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/doctor_delight = 5)
 	filling_color = "#F5F5DC"
 	tastes = list("sweetness" = 3, "cake" = 1)
-	foodtype = GRAIN | FRUIT | VEGETABLES
-	price = 5
+	foodtype = GRAIN | FRUIT | VEGETABLES | ANTITOXIC
+  price = 5
 
 /obj/item/reagent_containers/food/snacks/carbonnanotube_noodles
 	name = "carbon nanotube noodles"

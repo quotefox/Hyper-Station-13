@@ -885,29 +885,41 @@ obj/item/storage/belt/slut/ComponentInitialize()
 
 /obj/item/storage/belt/sabre/rapier/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(attack_type == PROJECTILE_ATTACK)
-		final_block_chance = 0 //To thin to block bullets
+		final_block_chance = 0 //Too thin to block bullets
 	return ..()
 
 /obj/item/storage/belt/botany
-	name = "botany belt"
-	desc = "A belt used to hold most janitorial supplies."
-	icon_state = "grenadebeltold" //reusing the old grenade belt sprite, can't go wrong.
-	item_state = "grenadebeltold"
+	name = "botanical belt"
+	desc = "A belt made for holding hydroponics supplies."
+	icon_state = "botanybelt"
+	item_state = "botanybelt"
+	content_overlays = TRUE
+
+/obj/item/storage/belt/botany/New()
+	if(prob(1))
+		new/obj/item/storage/belt/botany/fancy(loc)
+		qdel(src)
+	. = ..()
 
 /obj/item/storage/belt/botany/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 8
+	STR.max_items = 6
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.can_hold = typecacheof(list(
-		/obj/item/reagent_containers/glass/beaker,
-		/obj/item/reagent_containers/glass/bottle,
-		/obj/item/reagent_containers/syringe,
-		/obj/item/reagent_containers/spray,
-		/obj/item/disk/plantgene,
+		/obj/item/reagent_containers/spray/plantbgone,
+		/obj/item/plant_analyzer,
 		/obj/item/seeds,
-		/obj/item/shovel/spade,
+		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/glass/beaker,
 		/obj/item/cultivator,
+		/obj/item/reagent_containers/spray/pestspray,
 		/obj/item/hatchet,
-		/obj/item/plant_analyzer
-		))
+		/obj/item/shovel/spade,
+		/obj/item/gun/energy/floragun
+	))
+
+/obj/item/storage/belt/botany/fancy	//I like citadel's botany belt but I also wanna keep the default
+	desc = "A belt made for holding hydroponics supplies. Oddly enough, it's not green."
+	icon_state = "botanybelt_extra"
+	item_state = "botanybelt_extra"
