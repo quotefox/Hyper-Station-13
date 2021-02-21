@@ -337,6 +337,164 @@ datum/plant_gene/trait/glow/white
 	name = "Pink Bioluminescence"
 	glow_color = "#FFB3DA"
 
+//Change grow, harvest, and crafted food's color
+//Made for mostly being fancy with stuff. Should be rare or hard to obtain, with the exception of strange seeds
+/datum/plant_gene/trait/modified_color
+	name = "Dilated Light (Negative)"
+	var/color = list(-1,0,0,0, 0,-1,0,0, 0,0,-1,0, 0,0,0,1, 1,1,1,0)		//Negative Colors
+	var/long_calculation = FALSE		//For advanced color matrices
+
+/datum/plant_gene/trait/modified_color/on_new(obj/item/reagent_containers/food/snacks/grown/G, newloc)
+	if(G.modified_colors)
+		return
+	for(var/datum/plant_gene/trait/I in G.seed.genes)	//Have ones first added give priority
+		if(istype(I, /datum/plant_gene/trait/modified_color) && I.type != type)
+			return
+	if(long_calculation)
+		calculate()
+	G.color = color
+	G.modified_colors = TRUE
+
+//same as above but for the gene modder
+/datum/plant_gene/trait/modified_color/apply_vars(obj/item/seeds/S)
+	S.color = color
+	S.modified_colors = TRUE
+
+/datum/plant_gene/trait/modified_color/proc/calculate()
+	return
+
+/datum/plant_gene/trait/modified_color/opaque
+	name = "Dilated Light (Flimsy)"
+	color =  list(1,0,0,0, 0,1,0,0, 0,0,1,0, -0.3,-0.3,-0.3,0.7, 0,0,0,0)
+
+/datum/plant_gene/trait/modified_color/monochrome
+	name = "Dilated Light (Monochrome)"
+	color = list(0.5,0.5,0.5,0, 0.5,0.5,0.5,0, 0.5,0.5,0.5,0, 0,0,0,1, 0,0,0,0)
+
+/datum/plant_gene/trait/modified_color/monochrome/red
+	name = "Dilated Light (Red)"
+	color = list(0.8,0,0,0, 0.8,0.5,0.5,0, 0.8,0.5,0.5,0, 0,0,0,1, 0,0,0,0)
+
+/datum/plant_gene/trait/modified_color/monochrome/green
+	name = "Dilated Light (Green)"
+	color = list(0.5,0.8,0.5,0, 0,0.8,0,0, 0.5,0.8,0.5,0, 0,0,0,1, 0,0,0,0)
+
+/datum/plant_gene/trait/modified_color/monochrome/blue
+	name = "Dilated Light (Blue)"
+	color = list(0.5,0.5,0.8,0, 0.5,0.5,0.8,0, 0,0,0.8,0, 0,0,0,1, 0,0,0,0)
+
+/*
+/datum/plant_gene/trait/modified_color/monochrome/yellow
+	name = "Dilated Light (Yellow)"
+	color = list(0.8,0,0,0, 0,0.4,0,0, 0.8,0.4,0.5,0, 0,0,0,1, 0,0,0,0)
+
+/datum/plant_gene/trait/modified_color/monochrome/green
+	name = "Dilated Light (Green)"
+	color = list(0.5,0.8,0.4,0, 0,0.8,0,0, 0,0,0.4,0, 0,0,0,1, 0,0,0,0)
+*/
+
+/datum/plant_gene/trait/modified_color/monochrome/dark/
+	name = "Dilated Light (Dark)"
+	color = list(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1, -0.3, -0.3, -0.3, 0)
+
+/*
+/datum/plant_gene/trait/modified_color/monochrome/dark/red		//for vyx
+	name = "Dilated Light (Dark Red)"
+	color = list(1,0,0,0, 0.5,0.5,0.5,0, 0.5,0.5,0.5,0, 0,0,0,1, 0,0,0,0)
+
+/datum/plant_gene/trait/modified_color/monochrome/dark/green
+	name = "Dilated Light (Dark Green)"
+	color = list(0.5,0.5,0.5,0, 0,1,0,0, 0.5,0.5,0.5,0, 0,0,0,1, 0,0,0,0)
+
+/datum/plant_gene/trait/modified_color/monochrome/dark/blue
+	name = "Dilated Light (Dark Blue)"
+	color = list(0.5,0.5,0.,0, 0.5,0.5,0.5,0, 0,0,1,0, 0,0,0,1, 0,0,0,0)
+*/
+
+/datum/plant_gene/trait/modified_color/vibrant
+	name = "Dilated Light (Strong)"
+	color = list(2,-1,-1,0, -1,2,-1,0, -1,-1,2,0, 0,0,0,1, 0,0,0,0)	//Any higher starts to look like clown vomit
+
+/datum/plant_gene/trait/modified_color/cyan
+	name = "Dilated Light (Shift R)"
+	color = list(
+				0.25, 1,    0.5,   0,
+				0.5,  0.25, 1,     0,
+				1,    0.5,  0.25,  0,
+				0,0,0,1,
+				0,0,0,0)
+
+/datum/plant_gene/trait/modified_color/magenta
+	name = "Dilated Light (Shift L)"
+	color = list(
+				0.25, 0.5,  1,     0,
+				1,    0.25, 0.5,   0,
+				0.5,  1,    0.25,  0,
+				0,0,0,1,
+				0,0,0,0)
+
+/datum/plant_gene/trait/modified_color/sunset
+	name = "Dilated Light (Shift S)"
+	color = list(
+				1,     0.25,  0,   0,
+				0.25,  1,     0,   0,
+				0.25,  0.125, 0.35,0,
+				0,0,0,1,
+				0,0,0,0)
+
+/datum/plant_gene/trait/modified_color/random
+	name = "Dilated Light (Shift C)"
+	color = list()
+	long_calculation = TRUE
+
+
+//Calculations
+/*
+/datum/plant_gene/trait/modified_color/shift_red/calculate()
+	var/list/M = color
+	M[5] += 0.5 * M[1]
+	M[6] += 0.5 * M[2]
+	M[7] += 0.5 * M[3]
+	color = M
+
+/datum/plant_gene/trait/modified_color/shift_green/calculate()
+	var/list/M = color
+	M[9] += 0.5 * M[5]
+	M[10] += 0.5 * M[6]
+	M[11] += 0.5 * M[7]
+	color = M
+
+/datum/plant_gene/trait/modified_color/shift_blue/calculate()
+	var/list/M = color
+	M[13] += 0.5 * M[9]
+	M[14] += 0.5 * M[10]
+	M[15] += 0.5 * M[11]
+	color = M
+*/
+
+/datum/plant_gene/trait/modified_color/random/calculate()
+	var/R = rand(0,255)  / 255
+	var/G = rand(0,255)  / 255
+	var/B = rand(0,255)  / 255
+	var/A = rand(200,255)/ 255
+
+	if(prob(50))
+		color = list(R,0,0,0,
+					 0,G,0,0,
+					 0,0,B,0,
+					 0,0,0,1,
+					 0,0,0,0)
+	else
+		color = list(R,0,0,0,
+					 0,G,0,0,
+					 0,0,B,0,
+					 0,0,0,A,
+					 0,0,0,0)
+	var/D = rand(1,20)
+	if(color[D] != 0)
+		color[D] *= 1.5
+	else
+		color[D] = rand(-100, 100) * 0.01
 
 /datum/plant_gene/trait/teleport
 	// Makes plant teleport people when squashed or slipped on.

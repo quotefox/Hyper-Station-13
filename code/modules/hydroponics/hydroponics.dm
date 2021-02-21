@@ -310,6 +310,8 @@
 	else
 		var/t_growthstate = clamp(round((age / myseed.maturation) * myseed.growthstages), 1, myseed.growthstages)
 		plant_overlay.icon_state = "[myseed.icon_grow][t_growthstate]"
+	if(myseed.modified_colors)	//In case we get a different color from other things
+		plant_overlay.color = myseed.color
 	add_overlay(plant_overlay)
 
 /obj/machinery/hydroponics/proc/update_icon_lights()
@@ -374,7 +376,7 @@
 		if(10 to 11)
 			myseed = new /obj/item/seeds/amanita(src)
 		if(8 to 9)
-			myseed = new /obj/item/seeds/chanter(src)
+			myseed = new /obj/item/seeds/chanterelle(src)
 		if(6 to 7)
 			myseed = new /obj/item/seeds/tower(src)
 		if(4 to 5)
@@ -554,6 +556,8 @@
 			age = 1
 			plant_health = myseed.endurance
 			lastcycle = world.time
+			for(var/datum/plant_gene/trait/G in myseed.genes)
+				G.apply_vars(myseed)
 			update_icon()
 			return
 		else

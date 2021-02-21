@@ -36,6 +36,7 @@
 
 	var/weed_rate = 1 //If the chance below passes, then this many weeds sprout during growth
 	var/weed_chance = 5 //Percentage chance per tray update to grow weeds
+	var/modified_colors = FALSE
 
 /obj/item/seeds/Initialize(mapload, nogenes = 0)
 	. = ..()
@@ -73,6 +74,8 @@
 
 /obj/item/seeds/examine(mob/user)
 	. = ..()
+	if(modified_colors)
+		. += "It looks a bit funky..."
 	. += "<span class='notice'>Use a pen on it to rename it or change its description.</span>"
 	if(reagents_add && user.can_see_reagents())
 		. += "<span class='notice'>- Plant Reagents -</span>"
@@ -99,6 +102,9 @@
 		var/datum/plant_gene/G = g
 		S.genes += G.Copy()
 	S.reagents_add = reagents_add.Copy() // Faster than grabbing the list from genes.
+	if(modified_colors)
+		S.modified_colors = TRUE
+		S.color = color
 	return S
 
 /obj/item/seeds/proc/get_gene(typepath)
@@ -191,6 +197,10 @@
 		result.Add(t_prod) // User gets a consumable
 		if(!t_prod)
 			return
+
+		if(modified_colors)
+			t_prod.color = color
+			t_prod.modified_colors = TRUE
 		t_amount++
 		product_name = parent.myseed.plantname
 	if(getYield() >= 1)
@@ -470,10 +480,16 @@
 /obj/item/seeds/proc/add_random_traits(lower = 0, upper = 2)
 	var/amount_random_traits = rand(lower, upper)
 	for(var/i in 1 to amount_random_traits)
-		var/random_trait = pick((subtypesof(/datum/plant_gene/trait)-typesof(/datum/plant_gene/trait/plant_type)))
+		var/random_trait
+		if(!istype(src, /obj/item/seeds/random) || prob(30))	//70% chance to not get modified_color when rolling traits as strange seeds
+			random_trait = pick((subtypesof(/datum/plant_gene/trait)-typesof(/datum/plant_gene/trait/plant_type)))
+		else
+			random_trait = pick((subtypesof(/datum/plant_gene/trait)-typesof(/datum/plant_gene/trait/plant_type)-typesof(/datum/plant_gene/trait/modified_color)))
+
 		var/datum/plant_gene/trait/T = new random_trait
 		if(T.can_add(src) && !is_gene_forbidden(random_trait))
 			genes += T
+			T.apply_vars(src)
 		else
 			qdel(T)
 

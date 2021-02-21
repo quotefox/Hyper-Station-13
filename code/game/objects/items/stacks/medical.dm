@@ -142,6 +142,7 @@
 	stop_bleeding = 1800
 	self_delay = 20
 	max_amount = 12
+	grind_results = list(/datum/reagent/cellulose = 3)
 
 
 /obj/item/stack/medical/gauze/attackby(obj/item/I, mob/user, params)
@@ -196,10 +197,10 @@
 	desc = "A healing paste you can apply on wounds."
 
 	icon_state = "aloe_paste"
-	self_delay = 20
+	self_delay = 25
 	novariants = TRUE
 	amount = 20
 	max_amount = 20
-	heal_brute = 3
-	heal_burn = 3
+	heal_brute = 25
+	heal_burn = 30
 	grind_results = list(/datum/reagent/consumable/aloejuice = 1)

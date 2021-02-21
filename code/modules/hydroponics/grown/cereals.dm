@@ -29,7 +29,7 @@
 // Oat
 /obj/item/seeds/wheat/oat
 	name = "pack of oat seeds"
-	desc = "These may, or may not, grow into oat."
+	desc = "Oat's just a matter of time..."
 	icon_state = "seed-oat"
 	species = "oat"
 	plantname = "Oat Stalks"
@@ -53,7 +53,7 @@
 // Rice
 /obj/item/seeds/wheat/rice
 	name = "pack of rice seeds"
-	desc = "These may, or may not, grow into rice."
+	desc = "Rice, rice, baby!"
 	icon_state = "seed-rice"
 	species = "rice"
 	plantname = "Rice Stalks"

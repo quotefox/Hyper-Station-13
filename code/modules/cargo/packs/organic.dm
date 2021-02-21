@@ -196,6 +196,188 @@
 					/obj/item/reagent_containers/food/snacks/grown/strawberry)
 	crate_name = "fruit crate"
 
+
+//ALIEN-ESQUE SEEDS CRATE
+/datum/supply_pack/organic/rareseeds
+	name = "Galactic Seeds Crate"
+	desc = "Feel the need to explore the vastness of space, condensed into a single crate! Contains at least 4 seeds from random regions of space."
+	cost = 9500		//See fill proc. I know this costs a lot
+	contains = list()
+	crate_name = "galactic seeds crate"
+	crate_desc = "A rectangular steel crate."
+	crate_type = /obj/structure/closet/crate/hydroponics
+
+/datum/supply_pack/organic/rareseeds/fill(obj/structure/closet/crate/C)
+	. = ..()
+	var/iteration = 0
+	var/common_seeds = list(
+				/obj/item/seeds/wheat,
+				/obj/item/seeds/wheat/oat,
+				/obj/item/seeds/peas,
+				/obj/item/seeds/tea,
+				/obj/item/seeds/coffee,
+				/obj/item/seeds/poppy,
+				/obj/item/seeds/sunflower,
+				/obj/item/seeds/grass,
+				/obj/item/seeds/glowshroom,
+				/obj/item/seeds/cotton,
+				/obj/item/seeds/reishi,
+				/obj/item/seeds/kudzu,	//For some sort of realism that kudzu generally grows everywhere, have it a common seed
+				/obj/item/seeds/starthistle)
+	var/uncommon_seeds = list(
+				/obj/item/seeds/chanterelle/jupitercup,
+				/obj/item/seeds/sunflower/moonflower,
+				/obj/item/seeds/bee_balm,
+				/obj/item/seeds/random,
+				/obj/item/seeds/tea/astra,
+				/obj/item/seeds/peas/laugh,
+				/obj/item/seeds/galaxythistle,
+				/obj/item/seeds/coconut,
+				/obj/item/seeds/ambrosia/deus,
+				/obj/item/seeds/aloe,
+				/obj/item/seeds/cannabis/rainbow,
+				/obj/item/seeds/cannabis/ultimate,
+				/obj/item/seeds/angel,
+				/obj/item/seeds/liberty,
+				/obj/item/seeds/plump/walkingmushroom,
+				/obj/item/seeds/chanterelle,
+				/obj/item/seeds/glowshroom/shadowshroom)
+	var/xenoarch_seeds = list(
+				/obj/item/seeds/amauri,
+				/obj/item/seeds/gelthi,
+				/obj/item/seeds/jurlmah,
+				/obj/item/seeds/nofruit,
+				/obj/item/seeds/shand,
+				/obj/item/seeds/surik,
+				/obj/item/seeds/telriis,
+				/obj/item/seeds/thaadra,
+				/obj/item/seeds/vale,
+				/obj/item/seeds/vaporsac)
+	var/lavaland_seeds = list(
+				/obj/item/seeds/lavaland/polypore,
+				/obj/item/seeds/lavaland/porcini,
+				/obj/item/seeds/lavaland/inocybe,
+				/obj/item/seeds/lavaland/ember,
+				/obj/item/seeds/lavaland/cactus)
+	while((prob(68) || iteration <= 4) && iteration <= 15)
+		iteration++
+		var/obj/item/seeds/chosen_seed = null
+		var/obj/item/seeds/cache = null
+		switch(iteration)
+			if(1 to 3)
+				chosen_seed = pick(common_seeds)
+			if(4)
+				if(prob(25))
+					chosen_seed = pick(lavaland_seeds)
+				else
+					chosen_seed = pick(common_seeds)
+			if(5)
+				if(prob(40))
+					chosen_seed = pick(lavaland_seeds)
+				else
+					chosen_seed = pick(common_seeds)
+			if(6)
+				if(prob(70))
+					chosen_seed = pick(common_seeds)
+				else
+					chosen_seed = pick(uncommon_seeds)
+			if(7)
+				if(prob(3))
+					chosen_seed = pick(xenoarch_seeds)
+				else if(prob(40))
+					chosen_seed = pick(common_seeds)
+				else
+					chosen_seed = pick(uncommon_seeds)
+			if(8 to 10)
+				if(prob(8))
+					chosen_seed = pick(xenoarch_seeds)
+				else
+					chosen_seed = pick(uncommon_seeds)
+			if(11 to INFINITY)
+				if(prob(15))
+					chosen_seed = pick(xenoarch_seeds)
+				else if (prob(50))
+					chosen_seed = pick(uncommon_seeds)
+				else
+					chosen_seed = pick(lavaland_seeds)
+
+
+		cache = chosen_seed
+
+		if(istype(chosen_seed,/obj/item/seeds/starthistle)
+			new chosen_seed(C)
+			continue
+		//Make it actually seem like it's from another galaxy with all this stuff
+		if(prob(15) && !istype(chosen_seed, /obj/item/seeds/starthistle)
+			chosen_seed.rarity += 1
+
+			var/mutated = FALSE
+			for(var/datum/plant_gene/G in cache.genes)
+				if(locate(G) in chosen_seed.genes && prob(60))
+					if(prob(50))
+						chosen_seed.unset_mutability(G, PLANT_GENE_EXTRACTABLE)
+						chosen_seed.rarity += 5
+					else if(prob(70))
+						chosen_seed.unset_mutability(G, PLANT_GENE_REMOVABLE)
+						chosen_seed.rarity += 5
+					else if(!istype(G, /datum/plant_gene/core))
+						chosen_seed.forbiddengenes += G.type		//Has the slim chance to make this plant unable to produce anything it started out with
+						chosen_seed.genes -= locate(G) in chosen_seed.genes	//Sanity check
+						chosen_seed.rarity += 10
+
+						if(prob(65))	//To make this seem even more otherworldly
+							//Our own version of add_random_reagents
+							var/random_amount = round(rand(0, 25), 5) * 0.01
+							if(random_amount <= 0) random_amount = 0.02
+							var/datum/plant_gene/reagent/R = new(get_random_reagent_id(), random_amount)
+
+							if(R.can_add(chosen_seed))
+								chosen_seed.genes += R
+								chosen_seed.rarity += 5
+							else
+								qdel(R)
+							chosen_seed.reagents_from_genes()
+
+							if(prob(3))	//This is insanely rare, but we will use different grow sprites. Probably will fuck something up
+								var/obj/item/seeds/S = pick(subtypesof(/obj/item/seeds))
+								if(prob(85))
+									chosen_seed.plantname = "[pick("Alien", "Supernatural", "Artificial", "Modified")] [S.plantname]"
+									chosen_seed.rarity += 20*(!mutated)
+								else
+									chosen_seed.plantname = S.plantname
+								chosen_seed.growing_icon = S.growing_icon
+								chosen_seed.species = S.species
+								chosen_seed.icon_grow = S.icon_grow
+								chosen_seed.icon_harvest = S.icon_harvest
+								chosen_seed.icon_dead = S.icon_dead
+								chosen_seed.rarity += 35*(!mutated)	//woah nelly
+								mutated = TRUE
+
+						else if(prob(70))	//Add basic reagents from grounded sheets, but only small amounts
+							var/A = rand(1, 5)
+							var/chosen_reagent
+							switch(A)
+								if(1)
+									chosen_reagent = /datum/reagent/toxin/plasma
+								if(2)
+									chosen_reagent = /datum/reagent/uranium
+								if(3)
+									chosen_reagent = /datum/reagent/iron
+								if(4)
+									chosen_reagent = /datum/reagent/gold
+								if(5)
+									chosen_reagent = /datum/reagent/cellulose
+							var/datum/plant_gene/reagent/R = new(chosen_reagent, A*0.02)
+							if(R.can_add(chosen_seed))
+								chosen_seed.genes += R
+								chosen_seed.rarity += 5
+							else
+								qdel(R)
+							chosen_seed.reagents_from_genes()
+
+		new chosen_seed(C)
+	//All in a while() loop! Very efficient I know
+
 /datum/supply_pack/organic/grill
 	name = "Grilling Starter Kit"
 	desc = "Hey dad I'm Hungry. Hi Hungry I'm THE NEW GRILLING STARTER KIT ONLY 5000 BUX GET NOW! Contains a cooking grill and five fuel coal sheets."
@@ -277,11 +459,9 @@
 
 /datum/supply_pack/organic/hydroponics
 	name = "Hydroponics Crate"
-	desc = "Supplies for growing a great garden! Contains two bottles of ammonia, two Plant-B-Gone spray bottles, a hatchet, cultivator, plant analyzer, as well as a pair of leather gloves and a botanist's apron."
+	desc = "Supplies for growing a great garden! Contains two bottles of ammonia, a hatchet, cultivator, plant analyzer, as well as a pair of leather gloves and a botanist's apron."
 	cost = 1750
-	contains = list(/obj/item/reagent_containers/spray/plantbgone,
-					/obj/item/reagent_containers/spray/plantbgone,
-					/obj/item/reagent_containers/glass/bottle/ammonia,
+	contains = list(/obj/item/reagent_containers/glass/bottle/ammonia,
 					/obj/item/reagent_containers/glass/bottle/ammonia,
 					/obj/item/hatchet,
 					/obj/item/cultivator,
@@ -325,6 +505,33 @@
 					/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass,
 					/obj/item/reagent_containers/food/drinks/drinkingglass/shotglass)
 	crate_name = "kitchen cutlery deluxe set"
+
+/datum/supply_pack/organic/hydroponics/maintgarden
+	name = "Maintenance Garden Crate"
+	desc = "Set up your own tiny paradise with do-it-yourself botany kit. Contains sandstone for dirt plots, pest spray, ammonia, a portable seed generator, basic botanical tools, and some seeds to start off with."
+	cost = 2700
+	contains = list(/obj/item/storage/bag/plants/portaseeder,
+					/obj/item/reagent_containers/spray/pestspray,
+					/obj/item/stack/sheet/mineral/sandstone/twelve,
+					/obj/item/reagent_containers/glass/bucket,
+					/obj/item/reagent_containers/glass/bottle/ammonia,
+					/obj/item/reagent_containers/glass/bottle/ammonia,
+					/obj/item/hatchet,
+					/obj/item/cultivator,
+					/obj/item/plant_analyzer,
+					/obj/item/clothing/gloves/botanic_leather,
+					/obj/item/clothing/suit/apron,
+					/obj/item/flashlight,
+					/obj/item/seeds/carrot,
+					/obj/item/seeds/carrot,
+					/obj/item/seeds/tower,
+					/obj/item/seeds/tower,
+					/obj/item/seeds/watermelon,
+					/obj/item/seeds/watermelon,
+					/obj/item/seeds/grass,
+					/obj/item/seeds/grass)
+	crate_name = "maint garden crate"
+	crate_type = /obj/structure/closet/crate/hydroponics
 
 /datum/supply_pack/organic/mre
 	name = "MRE supply kit (emergency rations)"
@@ -398,7 +605,7 @@
 					/obj/item/seeds/wheat/rice,
 					/obj/item/seeds/carrot,
 					/obj/item/seeds/sunflower,
-					/obj/item/seeds/chanter,
+					/obj/item/seeds/chanterelle,
 					/obj/item/seeds/potato,
 					/obj/item/seeds/sugarcane)
 	crate_name = "seeds crate"

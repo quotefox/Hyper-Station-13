@@ -8,6 +8,7 @@
 	var/access_any = FALSE //Do we care about access?
 	var/list/contains = null //What items are in the crate
 	var/crate_name = "crate" //The crate that comes with each order
+	var/crate_desc = ""	//Crate's description
 	var/desc = ""//no desc by default
 	var/crate_type = /obj/structure/closet/crate //what kind of crate - Locked crates needed for access locked crates
 	var/dangerous = FALSE // Should we message admins?
@@ -19,6 +20,8 @@
 /datum/supply_pack/proc/generate(atom/A)
 	var/obj/structure/closet/crate/C = new crate_type(A)
 	C.name = crate_name
+	if(crate_desc)
+		C.desc = crate_desc
 	if(access)
 		C.req_access = list(access)
 	if(access_any)

@@ -199,3 +199,55 @@
 	name = "bottle of pest spray"
 	desc = "Contains a pesticide."
 	list_reagents = list(/datum/reagent/toxin/pestkiller = 50)
+
+/*
+/obj/item/plant_debugger
+	name = "plant debugger"
+	desc = "You should never be able to see this."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "hydro"
+	flags_1 = ABSTRACT
+	var/mode = 0
+	var/list/traits_list = list(
+		/datum/plant_gene/trait/modified_color/monochrome/yellow,
+		/datum/plant_gene/trait/modified_color/monochrome/green,
+		/datum/plant_gene/trait/modified_color/vibrant,
+		/datum/plant_gene/trait/modified_color/random,
+		/datum/plant_gene/trait/modified_color/monochrome/dark/,
+		/datum/plant_gene/trait/modified_color/monochrome/dark/red,
+		/datum/plant_gene/trait/modified_color/monochrome/dark/green,
+		/datum/plant_gene/trait/modified_color/monochrome/dark/blue)
+	var/trait_to_add = null
+
+/obj/item/plant_debugger/attack_self(mob/user)
+	. = ..()
+	mode++
+	if(mode > traits_list.len)
+		mode = 1
+	trait_to_add = traits_list[mode]
+	to_chat(user, "Now injecting: [trait_to_add]")
+
+/obj/item/plant_debugger/pre_attack(atom/A, mob/living/user, params)
+	if(!istype(A, /obj/machinery/hydroponics))
+		return
+	var/obj/machinery/hydroponics/H = A
+	if(!H.myseed)
+		to_chat(user, "This tray does not have a seed in it!")
+		return
+	for(var/G in H.myseed.genes)
+		if(istype(G, /datum/plant_gene/trait/modified_color))
+			var/datum/plant_gene/trait/T = new trait_to_add
+			G = T
+			T.apply_vars(H.myseed)
+			H.update_icon()
+			to_chat(user, "Converted old modified_color to [trait_to_add]")
+			return
+	var/datum/plant_gene/trait/T = new trait_to_add
+	H.myseed.genes += T
+	T.apply_vars(H.myseed)
+	H.update_icon()
+	to_chat(user, "Added [trait_to_add]")
+
+/obj/item/plant_debugger/attack()
+	return
+*/

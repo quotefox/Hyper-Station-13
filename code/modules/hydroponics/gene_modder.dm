@@ -307,6 +307,17 @@
 						seed.genes -= G
 						if(istype(G, /datum/plant_gene/reagent))
 							seed.reagents_from_genes()
+						if(istype(G, /datum/plant_gene/trait/modified_color))
+							var/datum/plant_gene/trait/modified_color/found
+							for(var/datum/plant_gene/trait/modified_color/T in seed.genes)
+								if(istype(T, /datum/plant_gene/trait/modified_color) && T.type != G.type)
+									found = T
+									break
+							if(found)
+								seed.color = found.color
+							else
+								seed.color = null
+								seed.modified_colors = FALSE
 					repaint_seed()
 				if("extract")
 					if(disk && !disk.read_only)
@@ -343,6 +354,10 @@
 						seed.genes += disk.gene.Copy()
 						if(istype(disk.gene, /datum/plant_gene/reagent))
 							seed.reagents_from_genes()
+						if(istype(disk.gene, /datum/plant_gene/trait/modified_color) && !seed.modified_colors)
+							var/datum/plant_gene/trait/modified_color/M = disk.gene
+							seed.color = M.color
+							seed.modified_colors = TRUE
 						disk.gene.apply_vars(seed)
 						repaint_seed()
 

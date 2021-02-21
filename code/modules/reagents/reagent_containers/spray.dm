@@ -310,5 +310,5 @@
 	item_state = "plantbgone"
 	lefthand_file = 'icons/mob/inhands/equipment/hydroponics_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/hydroponics_righthand.dmi'
-	volume = 100
-	list_reagents = list(/datum/reagent/toxin/plantbgone = 100)
+	volume = 50
+	list_reagents = list(/datum/reagent/toxin/plantbgone = 50)

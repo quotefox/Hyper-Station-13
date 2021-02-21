@@ -889,10 +889,10 @@ obj/item/storage/belt/slut/ComponentInitialize()
 	content_overlays = TRUE
 
 /obj/item/storage/belt/botany/New()
-	. = ..()
 	if(prob(1))
 		new/obj/item/storage/belt/botany/fancy(loc)
 		qdel(src)
+	. = ..()
 
 /obj/item/storage/belt/botany/ComponentInitialize()
 	. = ..()
