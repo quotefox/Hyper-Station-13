@@ -216,6 +216,10 @@
 	icon = "honkednloaded"
 	desc = "Honk."
 
+/datum/barsign/cumzone
+	name = "The Cumzone"
+	icon = "thecumzone"
+	desc = "Welcome."
 
 /datum/barsign/thenest
 	name = "The Nest"
