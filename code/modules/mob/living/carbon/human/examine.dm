@@ -172,15 +172,16 @@
 
 	var/list/missing = list(BODY_ZONE_HEAD, BODY_ZONE_CHEST, BODY_ZONE_L_ARM, BODY_ZONE_R_ARM, BODY_ZONE_L_LEG, BODY_ZONE_R_LEG)
 	var/list/disabled = list()
+	var/list/writing = list()
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
 		if(BP.disabled)
 			disabled += BP
+		if(BP.writtentext)
+			writing += BP
 		missing -= BP.body_zone
 		for(var/obj/item/I in BP.embedded_objects)
 			msg += "<B>[t_He] [t_has] \a [icon2html(I, user)] [I] embedded in [t_his] [BP.name]!</B>\n"
-			if(BP.broken)
-				msg += "<B>[t_He] [t_has] \a [I] broken [BP.name]!</B>\n"
 
 	for(var/X in disabled)
 		var/obj/item/bodypart/BP = X
@@ -303,6 +304,11 @@
 			msg += " and they have a strange, abnormal look to them.\n"
 		else
 			msg += " and they don't look like they're all there.\n"
+
+	for(var/X in writing)
+		if(!w_uniform)
+			var/obj/item/bodypart/BP = X
+			msg += "<span class='notice'>[capitalize(t_He)] has \"[html_encode(BP.writtentext)]\" written on [t_his] [BP.name].</span>\n"
 
 	if(isliving(user))
 		var/mob/living/L = user

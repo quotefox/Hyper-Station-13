@@ -397,7 +397,8 @@
 			var/washmask = TRUE
 			var/washears = TRUE
 			var/washglasses = TRUE
-
+			for(var/obj/item/bodypart/BP in H.bodyparts)
+				BP.writtentext = ""
 			if(H.wear_suit)
 				washgloves = !(H.wear_suit.flags_inv & HIDEGLOVES)
 				washshoes = !(H.wear_suit.flags_inv & HIDESHOES)
