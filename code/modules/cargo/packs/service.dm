@@ -314,7 +314,7 @@
 	crate_name = "games supply crate"
 	crate_type = /obj/structure/closet/crate
 
-/datum/supply_pack/vending/hydro
+/datum/supply_pack/service/vending/hydro
 	name = "Hydroponics Supply Crate"
 	desc = "Arnt you glad you dont have to do it the natural way? Contains a megaseed and nutrimax vending machine refill."
 	cost = 5000
