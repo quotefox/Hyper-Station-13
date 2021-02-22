@@ -533,8 +533,9 @@
 			reagent_source.reagents.trans_to(S,split)
 			if(istype(reagent_source, /obj/item/reagent_containers/food/snacks) || istype(reagent_source, /obj/item/reagent_containers/pill))
 				qdel(reagent_source)
-				lastuser = user
+			lastuser = user
 
+			H.applyFertilizer(S, user)
 			H.applyChemicals(S, user)
 
 			S.clear_reagents()
@@ -631,6 +632,7 @@
 			user.visible_message("<span class='notice'>[user] digs out the plants in [src]!</span>", "<span class='notice'>You dig out all of [src]'s plants!</span>")
 			if(myseed) //Could be that they're just using it as a de-weeder
 				age = 0
+				lastproduce = 0
 				plant_health = 0
 				if(harvest)
 					harvest = FALSE //To make sure they can't just put in another seed and insta-harvest it

@@ -1,5 +1,4 @@
-/obj/machinery/hydroponics/proc/applyChemicals(datum/reagents/S, mob/user)
-
+/obj/machinery/hydroponics/proc/applyFertilizer(datum/reagents/S, mob/user)
 	// Ambrosia Gaia produces earthsblood.
 	if(S.has_reagent(/datum/reagent/medicine/earthsblood))
 		self_sufficiency_progress += S.get_reagent_amount(/datum/reagent/medicine/earthsblood)
@@ -7,10 +6,6 @@
 			become_self_sufficient()
 		else if(!self_sustaining)
 			to_chat(user, "<span class='notice'>[src] warms as it might on a spring day under a genuine Sun.</span>")
-
-	if(!myseed)
-		return
-	myseed.on_chem_reaction(S) //In case seeds have some special interactions with special chems, currently only used by vines
 
 	// Requires 5 mutagen to possibly change species.// Poor man's mutagen.
 	if(S.has_reagent(/datum/reagent/toxin/mutagen, 5) || S.has_reagent(/datum/reagent/radium, 10) || S.has_reagent(/datum/reagent/uranium, 10))
@@ -39,16 +34,6 @@
 	else if(S.has_reagent(/datum/reagent/toxin/mutagen, 1) || S.has_reagent(/datum/reagent/radium, 2) || S.has_reagent(/datum/reagent/uranium, 2))
 		mutate()
 
-
-	// After handling the mutating, we now handle the damage from adding crude radioactives...
-	if(S.has_reagent(/datum/reagent/uranium, 1))
-		adjustHealth(-round(S.get_reagent_amount(/datum/reagent/uranium) * 1))
-		adjustToxic(round(S.get_reagent_amount(/datum/reagent/uranium) * 2))
-	if(S.has_reagent(/datum/reagent/radium, 1))
-		adjustHealth(-round(S.get_reagent_amount(/datum/reagent/radium) * 1))
-		adjustToxic(round(S.get_reagent_amount(/datum/reagent/radium) * 3)) // Radium is harsher (OOC: also easier to produce)
-
-
 	// Nutriments
 	if(S.has_reagent(/datum/reagent/plantnutriment/eznutriment, 1))
 		yieldmod = 1
@@ -63,12 +48,28 @@
 		mutmod = 0
 		adjustNutri(round(S.get_reagent_amount(/datum/reagent/plantnutriment/robustharvestnutriment) * 1))
 
+
+
+
+/obj/machinery/hydroponics/proc/applyChemicals(datum/reagents/S, mob/user)
+	if(!myseed)
+		return
+	myseed.on_chem_reaction(S) //In case seeds have some special interactions with special chems, currently only used by vines
+
+	// After handling the mutating, we now handle the damage from adding crude radioactives...
+	if(S.has_reagent(/datum/reagent/uranium, 1))
+		adjustHealth(-round(S.get_reagent_amount(/datum/reagent/uranium) * 1))
+		adjustToxic(round(S.get_reagent_amount(/datum/reagent/uranium) * 2))
+	if(S.has_reagent(/datum/reagent/radium, 1))
+		adjustHealth(-round(S.get_reagent_amount(/datum/reagent/radium) * 1))
+		adjustToxic(round(S.get_reagent_amount(/datum/reagent/radium) * 3)) // Radium is harsher (OOC: also easier to produce)
+
 	if(S.has_reagent(/datum/reagent/plantnutriment/endurogrow, 1))
 		var/total_transferred = S.get_reagent_amount(/datum/reagent/plantnutriment/endurogrow)
 		if(total_transferred >= 20)
 			myseed.adjust_potency(-round(total_transferred / 10))
 			myseed.adjust_yield(-round(total_transferred / 20))
-			myseed.adjust_endurance(round(total_transferred / 30))
+			myseed.adjust_endurance(round(total_transferred / 60))
 		else
 			to_chat(user, "<span class='notice'>The plants don't seem to react...</span>")
 
@@ -76,8 +77,8 @@
 		var/total_transferred = S.get_reagent_amount(/datum/reagent/plantnutriment/liquidearthquake)
 		if(total_transferred >= 20)
 			myseed.adjust_weed_chance(round(total_transferred / 10))
-			myseed.adjust_weed_rate(round(total_transferred / 20))
-			myseed.adjust_production(-round(total_transferred / 30))
+			myseed.adjust_weed_rate(round(total_transferred / 60))
+			myseed.adjust_production(round(total_transferred / 60))
 		else
 			to_chat(user, "<span class='notice'>The plants don't seem to react...</span>")
 

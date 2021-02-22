@@ -314,9 +314,9 @@
 	crate_name = "games supply crate"
 	crate_type = /obj/structure/closet/crate
 
-/datum/supply_pack/vending/hydro
+/datum/supply_pack/service/vending/hydrovendors
 	name = "Hydroponics Supply Crate"
-	desc = "Arnt you glad you dont have to do it the natural way? Contains a megaseed and nutrimax vending machine refill."
+	desc = "Arn't you glad you dont have to do it the natural way? Contains a megaseed and nutrimax vending machine refill."
 	cost = 5000
 	contains = list(/obj/item/vending_refill/hydroseeds,
 					/obj/item/vending_refill/hydronutrients)
