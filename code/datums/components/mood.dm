@@ -307,7 +307,9 @@
 
 /datum/component/mood/proc/HandleThirst(mob/living/L)
 	switch(L.thirst)
-		if(NUTRITION_LEVEL_HUNGRY to INFINITY)
+		if(NUTRITION_LEVEL_WELL_FED to INFINITY)
+			add_event(null, "thirst", /datum/mood_event/quenched)
+		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_WELL_FED)
 			clear_event(null, "thirst")
 		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
 			add_event(null, "thirst", /datum/mood_event/thirsty)
