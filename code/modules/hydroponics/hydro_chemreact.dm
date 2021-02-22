@@ -1,4 +1,13 @@
 /obj/machinery/hydroponics/proc/applyChemicals(datum/reagents/S, mob/user)
+
+	// Ambrosia Gaia produces earthsblood.
+	if(S.has_reagent(/datum/reagent/medicine/earthsblood))
+		self_sufficiency_progress += S.get_reagent_amount(/datum/reagent/medicine/earthsblood)
+		if(self_sufficiency_progress >= self_sufficiency_req)
+			become_self_sufficient()
+		else if(!self_sustaining)
+			to_chat(user, "<span class='notice'>[src] warms as it might on a spring day under a genuine Sun.</span>")
+
 	if(!myseed)
 		return
 	myseed.on_chem_reaction(S) //In case seeds have some special interactions with special chems, currently only used by vines
@@ -71,14 +80,6 @@
 			myseed.adjust_production(-round(total_transferred / 30))
 		else
 			to_chat(user, "<span class='notice'>The plants don't seem to react...</span>")
-
-	// Ambrosia Gaia produces earthsblood.
-	if(S.has_reagent(/datum/reagent/medicine/earthsblood))
-		self_sufficiency_progress += S.get_reagent_amount(/datum/reagent/medicine/earthsblood)
-		if(self_sufficiency_progress >= self_sufficiency_req)
-			become_self_sufficient()
-		else if(!self_sustaining)
-			to_chat(user, "<span class='notice'>[src] warms as it might on a spring day under a genuine Sun.</span>")
 
 	// Antitoxin binds shit pretty well. So the tox goes significantly down
 	if(S.has_reagent(/datum/reagent/medicine/charcoal, 1))
