@@ -111,6 +111,10 @@
 					for(var/datum/reagent/A in RC.reagents.reagent_list)
 						.["other"][A.type] += A.volume
 			.["other"][I.type] += 1
+			if(istype(I, /obj/item/reagent_containers/food/snacks/grown) && !.["color"])	//First we find has priority
+				var/obj/item/reagent_containers/food/snacks/grown/G = I
+				if(G.modified_colors)
+					.["color"] = G.color
 
 /datum/personal_crafting/proc/check_tools(mob/user, datum/crafting_recipe/R, list/contents)
 	if(!R.tools.len)
@@ -146,6 +150,9 @@
 /datum/personal_crafting/proc/construct_item(mob/user, datum/crafting_recipe/R)
 	var/list/contents = get_surroundings(user)
 	var/send_feedback = 1
+	var/cached_color = null
+	if(contents["color"])	//From plants
+		cached_color = contents["color"]
 	if(check_contents(R, contents))
 		if(check_tools(user, R, contents))
 			if(do_after(user, R.time, target = user))
@@ -157,6 +164,7 @@
 				var/list/parts = del_reqs(R, user)
 				var/atom/movable/I = new R.result (get_turf(user.loc))
 				I.CheckParts(parts, R)
+				I.color = cached_color
 				if(send_feedback)
 					SSblackbox.record_feedback("tally", "object_crafted", 1, I.type)
 				return 0

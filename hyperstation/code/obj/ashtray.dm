@@ -12,3 +12,6 @@
 			to_chat(user, "You place [cig] in [src].")
 		qdel(cig) //drop it in.
 
+	if (istype(I,/obj/item/cigbutt))
+		to_chat(user, "You place [I] in [src].")
+		qdel(I) //drop it in.

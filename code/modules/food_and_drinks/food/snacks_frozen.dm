@@ -59,7 +59,7 @@
 	icon_state = "lime_sc"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/limejuice = 5)
 	tastes = list("ice" = 1, "water" = 1, "limes" = 5)
-	foodtype = FRUIT
+	foodtype = FRUIT | ANTITOXIC
 
 /obj/item/reagent_containers/food/snacks/snowcones/lemon
 	name = "lemon snowcone"
