@@ -34,3 +34,14 @@
 	mob_trait = TRAIT_HEAT
 	gain_text = "<span class='notice'>You body burns with the desire to be bred.</span>"
 	lose_text = "<span class='notice'>You feel more in control of your body and thoughts.</span>"
+
+/datum/quirk/overweight
+	name = "Overweight"
+	desc = "You're particularly fond of food, and join the round being overweight."
+	value = 0
+	gain_text = "<span class='notice'>You feel a bit chubby!</span>"
+	//no lose_text cause why would there be?
+
+/datum/quirk/overweight/on_spawn()
+	var/mob/living/M = quirk_holder
+	M.nutrition = rand(NUTRITION_LEVEL_FAT + NUTRITION_LEVEL_START_MIN, NUTRITION_LEVEL_FAT + NUTRITION_LEVEL_START_MAX)
