@@ -57,10 +57,3 @@
 /datum/quirk/xenospeaker/remove()
 	if(quirk_holder)
 		quirk_holder.remove_language(/datum/language/ratvar)
-
-/datum/quirk/fat_enjoyer
-	name = "Fat Enjoyer"
-	desc = "You don't particularly mind being fat compared to some people, and have grown used to feeling a bit plump."
-	value = 1
-	gain_text = "<span class='notice'>You enjoy fat more than some people.</span>"
-	lose_text = "<span class='notice'>Your views towards being overweight has changed.</span>"
