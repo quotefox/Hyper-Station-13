@@ -54,11 +54,21 @@
 	squeak_override = list('sound/voice/gorillaplush.ogg' = 1)
 
 /obj/item/toy/plush/mammal/lyricalpaws
-	name = "Winter Dawn Plushie"
-	desc = "Winter Dawn in plushie form! Very cuddly."
+	name = "hyena plushie"
+	desc = "An adorable stuffed toy of a mammal that seems to resemble a crew member! She's a little yeen in a big labcoat."
+	gender = FEMALE //probably a girl
 	icon = 'hyperstation/icons/obj/plushes.dmi'
 	icon_state = "lyricalpaws"
 	item_state = "lyricalpaws"
+	attack_verb = list("hugged", "cuddled", "embraced")
+	squeak_override = list(
+	'modular_citadel/sound/voice/bark1.ogg' = 1,
+	'modular_citadel/sound/voice/bark2.ogg' = 1
+	)
+
+/obj/item/toy/plush/mammal/lyricalpaws/attack_self(mob/user)
+	to_chat(user, "<span class='notice'>You pet [src]. You swear she looks up at you.</span>")
+
 
 /obj/item/toy/plush/mammal/chemlight
 	desc = "An adorable stuffed toy of a mammal that seems to resemble a crew member! It looks to glow and sport four arms."
