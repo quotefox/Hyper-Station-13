@@ -23,6 +23,7 @@
 		var/mob/living/carbon/human/H = owner
 		if(!(organ_flags & ORGAN_FAILING))
 			H.dna.species.handle_digestion(H)
+			H.dna.species.handle_thirst(H)
 		handle_disgust(H)
 		Nutri = locate(/datum/reagent/consumable/nutriment) in H.reagents.reagent_list
 
