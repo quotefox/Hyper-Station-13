@@ -104,3 +104,23 @@
 	icon_state = "keaton"
 	flags_inv = HIDEFACE|HIDEFACIALHAIR
 	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/clothing/suit/hooded/wintercoat/chloe
+	name = "Fleet Commander's Overcoat"
+	desc = "Custom tailored to warm the cold commanding hearts of the Syndicate's feared XIV'th battle group. Its armour plating has been removed, but its beret remains inside."
+	icon_state = "commissar_greatcoat"
+	item_state = "commissar_greatcoat"
+	allowed = list(/obj/item/analyzer, /obj/item/stack/medical, /obj/item/dnainjector, /obj/item/reagent_containers/dropper, /obj/item/reagent_containers/syringe, /obj/item/reagent_containers/hypospray, /obj/item/healthanalyzer, /obj/item/melee/classic_baton/telescopic, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/screwdriver, /obj/item/crowbar, /obj/item/wrench, /obj/item/stack/cable_coil, /obj/item/weldingtool, /obj/item/multitool)
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	mutantrace_variation = MUTANTRACE_VARIATION
+	tauric = TRUE
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/chloe
+
+/obj/item/clothing/head/hooded/winterhood/chloe
+	name = "Fleet Commander's Beret"
+	desc = "A beret bearing a worn golden symbol that stikes fear in the hearts of many. It smells faintly of plasma and gunpowder."
+	icon = 'hyperstation/icons/obj/clothing/rewards.dmi'
+	alternate_worn_icon = 'hyperstation/icons/mobs/rewards.dmi'
+	icon_state = "commissar_beret"
+	item_state = "commissar_beret"

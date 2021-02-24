@@ -105,6 +105,12 @@
 	path = /obj/item/toy/plush/mammal/lyricalpaws
 	ckeywhitelist = list("lyricalpaws")
 
+/datum/gear/lyricalpawssuit
+	name = "Fleet Commander's Overcoat"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/suit/hooded/wintercoat/chloe
+	ckeywhitelist = list("lyricalpaws")
+
 /datum/gear/cherostavikmask
 	name = "Keaton Mask"
 	category = SLOT_IN_BACKPACK
