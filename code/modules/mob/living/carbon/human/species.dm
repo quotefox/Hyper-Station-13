@@ -1305,11 +1305,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 
 	switch(H.thirst)
-		if(NUTRITION_LEVEL_HUNGRY to INFINITY)
+		if(THIRST_LEVEL_THIRSTY to INFINITY)
 			H.clear_alert("thirst")
-		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
+		if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)
 			H.throw_alert("thirst", /obj/screen/alert/thirsty)
-		if(0 to NUTRITION_LEVEL_STARVING)
+		if(0 to THIRST_LEVEL_PARCHED)
 			H.throw_alert("thirst", /obj/screen/alert/dehydrated)
 
 
