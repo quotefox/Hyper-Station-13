@@ -81,6 +81,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	current_cycle++
 	if(holder)
 		holder.remove_reagent(type, metabolization_rate * M.metabolism_efficiency) //By default it slowly disappears.
+	M.thirst += hydration
 	return
 
 //called when a mob processes chems when dead.

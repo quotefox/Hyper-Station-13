@@ -306,14 +306,16 @@
 			add_event(null, "nutrition", /datum/mood_event/starving)
 
 /datum/component/mood/proc/HandleThirst(mob/living/L)
+	if(THIRST_LEVEL_THRESHOLD)
+		L.thirst = clamp(L.thirst, 0, THIRST_LEVEL_THRESHOLD)
 	switch(L.thirst)
-		if(NUTRITION_LEVEL_WELL_FED to INFINITY)
+		if(THIRST_LEVEL_QUENCHED to INFINITY)
 			add_event(null, "thirst", /datum/mood_event/quenched)
-		if(NUTRITION_LEVEL_HUNGRY to NUTRITION_LEVEL_WELL_FED)
+		if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_QUENCHED)
 			clear_event(null, "thirst")
-		if(NUTRITION_LEVEL_STARVING to NUTRITION_LEVEL_HUNGRY)
+		if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)
 			add_event(null, "thirst", /datum/mood_event/thirsty)
-		if(0 to NUTRITION_LEVEL_STARVING)
+		if(0 to THIRST_LEVEL_PARCHED)
 			add_event(null, "thirst", /datum/mood_event/dehydrated)
 
 #undef MINOR_INSANITY_PEN

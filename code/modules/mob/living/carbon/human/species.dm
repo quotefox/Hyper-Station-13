@@ -1243,7 +1243,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if (H.nutrition > 0 && H.stat != DEAD && !HAS_TRAIT(H, TRAIT_NOHUNGER))
 		// THEY HUNGER
 		var/hunger_rate = HUNGER_FACTOR
-		var/thirst_rate = THIRST_FACTOR
 		var/datum/component/mood/mood = H.GetComponent(/datum/component/mood)
 		if(mood && mood.sanity > SANITY_DISTURBED)
 			hunger_rate *= max(0.5, 1 - 0.002 * mood.sanity) //0.85 to 0.75
@@ -1262,7 +1261,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			hunger_rate = 3 * HUNGER_FACTOR
 		hunger_rate *= H.physiology.hunger_mod
 		H.nutrition = max(0, H.nutrition - hunger_rate)
-		H.thirst = max(0, H.thirst - thirst_rate)
 
 
 	if (H.nutrition > NUTRITION_LEVEL_FULL)
@@ -1298,6 +1296,14 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if(0 to NUTRITION_LEVEL_STARVING)
 			H.throw_alert("nutrition", /obj/screen/alert/starving)
 
+/datum/species/proc/handle_thirst(mob/living/carbon/human/H)
+	if(HAS_TRAIT(src, TRAIT_NOTHIRST))
+		return
+
+	//Put more things here if you plan on adding more things. I know this proc is a bit empty at the moment
+	H.thirst -= THIRST_FACTOR
+
+
 	switch(H.thirst)
 		if(NUTRITION_LEVEL_HUNGRY to INFINITY)
 			H.clear_alert("thirst")
@@ -1305,6 +1311,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			H.throw_alert("thirst", /obj/screen/alert/thirsty)
 		if(0 to NUTRITION_LEVEL_STARVING)
 			H.throw_alert("thirst", /obj/screen/alert/dehydrated)
+
 
 /datum/species/proc/update_health_hud(mob/living/carbon/human/H)
 	return 0
