@@ -44,4 +44,4 @@
 			thirst -= THIRST_FACTOR/12
 			if(m_intent == MOVE_INTENT_RUN)
 				nutrition -= HUNGER_FACTOR/5
-				thirst -= THIRST_FACTOR/5  //running around depleats thirst more so.
+				thirst -= THIRST_FACTOR/5
