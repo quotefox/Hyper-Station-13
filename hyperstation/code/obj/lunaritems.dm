@@ -55,7 +55,7 @@
 			H.emote("scream")
 			var/obj/item/lunar = pick(/obj/item/helfiretincture,
 									/obj/item/instrument/guitar/biggerukulele)
-			new lunar(src)
+			new lunar(src.loc)
 			visible_message("<span class='warning'>As you blink, cracks appear on the altar and a flash of lunar light reaches its surface. A gift?</span>")
 			message_admins("[ADMIN_LOOKUPFLW(user)] has sacrificed their [bodypart] on the lunar altar at [AREACOORD(src)].")
 			icon_state = "sacrificealtar-blue"
@@ -110,8 +110,7 @@
 	var/tesla_flags = TESLA_MOB_DAMAGE | TESLA_OBJ_DAMAGE
 	var/legacy = FALSE
 	var/legacy_dmg = 30
-	var/active = 1
-	var/reactive_cooldown_duration = 5
+	var/reactive_cooldown_duration = 20
 	var/reactive_cooldown = 0
 	var/firstpickup = TRUE
 
@@ -129,8 +128,10 @@
 		firstpickup = FALSE
 
 /obj/item/instrument/guitar/biggerukulele/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
-	if(!active)
-		return FALSE
+	if(owner.flags_1 & TESLA_IGNORE_1)
+		//Do literally nothing. Checking for absence of flags doesn't work for whatever reason, so if !TESLA_IGNORE_1 is not an option.
+	else if (owner.flags_1)
+		owner.flags_1 |= TESLA_IGNORE_1 //Sometimes picking up the item doesn't grant the user the flag. This is a way to go around that. Thank you, DM Code.
 	if(prob(hit_reaction_chance))
 		if(world.time < reactive_cooldown)
 			var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
