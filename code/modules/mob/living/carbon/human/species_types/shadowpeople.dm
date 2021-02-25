@@ -183,9 +183,14 @@
 	. = ..()
 	if(!proximity)
 		return
-	if(isopenturf(AM)) //So you can actually melee with it
+	if(isopenturf(AM) && !istype(AM, /turf/open/space) && !istype(AM, /turf/open/lava))
+		var/turf/T = AM
+		if(T.light_power || T.light_range)
+			to_chat(user, "<span class='notice'>[src] consumes the lights in [AM].</span>")
+			T.set_light(0,0)
+	else if(isopenturf(AM))
 		return
-	if(isliving(AM))
+	else if(isliving(AM))
 		var/mob/living/L = AM
 		if(iscyborg(AM))
 			var/mob/living/silicon/robot/borg = AM
@@ -194,20 +199,40 @@
 				to_chat(borg, "<span class='danger'>Your headlamp is fried! You'll need a human to help replace it.</span>")
 		else
 			for(var/obj/item/O in AM)
-				if(O.light_range && O.light_power)
-					disintegrate(O)
-		if(L.pulling && L.pulling.light_range && isitem(L.pulling))
-			disintegrate(L.pulling)
+				if(O.light_range && O.light_power && !check_plasmaman(O, AM))
+					disintegrate(O, user)
+		if(L.pulling && L.pulling.light_range && isitem(L.pulling) && !check_plasmaman(L.pulling, L))
+			disintegrate(L.pulling, user)
 	else if(isitem(AM))
 		var/obj/item/I = AM
-		if(I.light_range && I.light_power)
-			disintegrate(I)
+		if(I.light_range && I.light_power && !check_plasmaman(AM))
+			disintegrate(I, user)
 	else if(istype(AM, /obj/structure/marker_beacon))
 		var/obj/structure/marker_beacon/I = AM
-		disintegrate(I)
+		disintegrate(I, user)
 		//why the fuck is the marker beacon a structure? who. what. why.
+	else if(istype(AM, /obj/machinery/light))
+		var/obj/machinery/light/L = AM
+		if(L.status == 2)	//Assume we just broke the light
+			handle_objectives(user)
+			L.status = 1	//No tube
+			L.update(FALSE)
 
-/obj/item/light_eater/proc/disintegrate(obj/item/O)
+/obj/item/light_eater/proc/handle_objectives(mob/living/carbon/human/H)
+	if(!H.mind)
+		return
+
+	if(!H.mind.objectives)
+		return
+
+	for(var/O in H.mind.objectives)
+		if(!istype(O, /datum/objective/break_lights))
+			continue
+		var/datum/objective/break_lights/BL = O
+		if(!BL.mode)
+			BL.lightsbroken++
+
+/obj/item/light_eater/proc/disintegrate(obj/item/O, user)
 	if(istype(O, /obj/item/pda))
 		var/obj/item/pda/PDA = O
 		PDA.set_light(0)
@@ -219,6 +244,22 @@
 		visible_message("<span class='danger'>[O] is disintegrated by [src]!</span>")
 		O.burn()
 	playsound(src, 'sound/items/welder.ogg', 50, 1)
+
+	if(is_species(user, /datum/species/shadow/nightmare))
+		handle_objectives(user)
+
+/obj/item/light_eater/proc/check_plasmaman(obj/item/O, mob/living/carbon/human/user)
+	if(!istype(O, /obj/item/clothing/head/helmet/space/plasmaman))
+		return FALSE
+	var/obj/item/clothing/head/helmet/space/plasmaman/H = O
+	if(H.on)
+		H.on = FALSE
+		H.icon_state = "[initial(H.icon_state)][H.on ? "-light":""]"
+		H.item_state = H.icon_state
+		if(user)
+			user.update_inv_head()
+			to_chat(user, "<span class='warning'>Your [H]'s torch extinguishes!</span>")
+	return TRUE
 
 #undef HEART_SPECIAL_SHADOWIFY
 #undef HEART_RESPAWN_THRESHHOLD

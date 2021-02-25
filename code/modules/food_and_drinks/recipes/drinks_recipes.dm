@@ -885,7 +885,7 @@
 	id = /datum/reagent/consumable/ethanol/hotlime_miami
 	results = list(/datum/reagent/consumable/ethanol/hotlime_miami = 2)
 	required_reagents = list(/datum/reagent/medicine/ephedrine = 1, /datum/reagent/consumable/ethanol/pina_colada = 1)
-	
+
 /datum/chemical_reaction/commander_and_chief
 	name = "Commander and Chief"
 	id = /datum/reagent/consumable/ethanol/commander_and_chief
@@ -899,3 +899,15 @@
 	results = list(/datum/reagent/consumable/wockyslush = 5)
 	required_reagents = list(/datum/reagent/toxin/fentanyl = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/lemon_lime = 1)
 	mix_message = "That thang bleedin’ P!"
+
+/datum/chemical_reaction/cum_in_a_hot_tub
+	name = "Cum in a Hot Tub"
+	id = /datum/reagent/consumable/ethanol/cum_in_a_hot_tub
+	results = list(/datum/reagent/consumable/ethanol/cum_in_a_hot_tub = 3)
+	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 2, /datum/reagent/consumable/ethanol/white_russian = 1, /datum/reagent/consumable/ethanol/irish_cream = 0.1)
+
+/datum/chemical_reaction/cum_in_a_hot_tub/semen
+	name = "Cum in a Hot Tub"
+	id = /datum/reagent/consumable/ethanol/cum_in_a_hot_tub/semen
+	results = list(/datum/reagent/consumable/ethanol/cum_in_a_hot_tub/semen = 3)
+	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 2, /datum/reagent/consumable/semen = 1, /datum/reagent/consumable/ethanol/irish_cream = 0.1)

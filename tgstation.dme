@@ -1375,6 +1375,7 @@
 #include "code\modules\antagonists\morph\morph.dm"
 #include "code\modules\antagonists\morph\morph_antag.dm"
 #include "code\modules\antagonists\nightmare\nightmare.dm"
+#include "code\modules\antagonists\nightmare\nightmare_objectives.dm"
 #include "code\modules\antagonists\ninja\ninja.dm"
 #include "code\modules\antagonists\nukeop\clownop.dm"
 #include "code\modules\antagonists\nukeop\nukeop.dm"

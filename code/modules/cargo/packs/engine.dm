@@ -169,11 +169,21 @@
 	crate_name = "tesla generator crate"
 
 /datum/supply_pack/engine/teg
-	name = "Thermoelectric Generator"
-	desc = "Contains your very own Thermoelectric Generator. Time to turn cargo into a blazing hellfire, perhaps?"
-	cost = 4000
-	contains = list(/obj/machinery/power/generator)
+	name = "Thermoelectric Generator Assembly"
+	desc = "Contains your very own Thermoelectric Generator Assembly. Time to turn cargo into a blazing hellfire, perhaps?"
+	cost = 3000
+	contains = list(/obj/item/paper/teg,
+					/obj/item/circuitboard/machine/generator,
+					/obj/item/circuitboard/machine/circulator,
+					/obj/item/circuitboard/machine/circulator,
+					/obj/item/stack/cable_coil,
+					/obj/item/stack/sheet/metal/twenty)
 	crate_name = "thermoelectric generator crate"
+
+/obj/item/paper/teg
+	info = "*The seemingly useful notes have been scribbled over with red and black crayon. Hmm.*"
+	name = "TEG Instructions"
+	color = "red"
 
 /datum/supply_pack/engine/energy_harvester
 	name = "Energy Harvesting Module"

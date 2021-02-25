@@ -89,6 +89,7 @@
 	if(!panel_open)
 		return
 	anchored = !anchored
+	move_resist = anchored? INFINITY : 100
 	I.play_tool_sound(src)
 	if(generator)
 		disconnectFromGenerator()
