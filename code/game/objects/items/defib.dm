@@ -628,6 +628,8 @@
 						H.adjustOxyLoss(H.health - HALFWAYCRITDEATH, 0)
 					else
 						var/overall_damage = total_brute + total_burn + H.getToxLoss() + H.getOxyLoss()
+						if(!overall_damage)	//Avoid divide-by runtime
+							overall_damage = 1
 						var/mobhealth = H.health
 						H.adjustOxyLoss((mobhealth - HALFWAYCRITDEATH) * (H.getOxyLoss() / overall_damage), 0)
 						H.adjustToxLoss((mobhealth - HALFWAYCRITDEATH) * (H.getToxLoss() / overall_damage), 0)
