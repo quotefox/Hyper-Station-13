@@ -186,7 +186,7 @@
 	if(isopenturf(AM) && !istype(AM, /turf/open/space) && !istype(AM, /turf/open/lava))
 		var/turf/T = AM
 		if(T.light_power || T.light_range)
-			to_chat(user, "<span class='notice'>Your [src] consumes the lights in [AM].</span>")
+			to_chat(user, "<span class='notice'>[src] consumes the lights in [AM].</span>")
 			T.set_light(0,0)
 	else if(isopenturf(AM))
 		return
