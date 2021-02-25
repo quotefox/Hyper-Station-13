@@ -82,6 +82,18 @@
 				if(changeling)
 					sList2 += "Chemical Storage: " + "[changeling.chem_charges]/[changeling.chem_storage]"
 					sList2 += "Absorbed DNA: "+ "[changeling.absorbedcount]"
+				var/datum/antagonist/nightmare/nightmare = mind.has_antag_datum(/datum/antagonist/nightmare)
+				if(nightmare)
+					for(var/datum/objective/O in mind.objectives)
+						if(istype(O, /datum/objective/break_lights))
+							var/datum/objective/break_lights/BL = O
+							if(BL.mode)	//Keeping lights out of areas
+								var/T = "Target Area(s): "
+								for(var/area/I in BL.area_targets)
+									T += "[initial(I.name)], "
+								sList2 += T
+							else	//Break number of lights
+								sList2 += "Lights Broken: " + "[BL.lightsbroken]/[BL.target_amount]"
 		if (sList2 != null)
 			stat(null, "[sList2.Join("\n\n")]")
 
