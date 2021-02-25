@@ -33,7 +33,7 @@
 				area_targets += area2add
 	else
 		target_amount = rand(LIGHTSTOBREAK_MINIMUM, LIGHTSTOBREAK_MAXIMUM)
-		if(prob(50))
+		if(prob(LIGHTSTOBREAK_MAX_CHANCE))
 			if(target_amount > LIGHTSTOBREAK_THRESHOLD)
 				target_amount = LIGHTSTOBREAK_MAXIMUM
 		else if(target_amount > LIGHTSTOBREAK_THRESHOLD)
@@ -73,19 +73,13 @@
 	else
 		var/list/valid_turfs = list()
 		for(var/area/target in area_targets)
-			var/I = 0
 			var/list/cached_area = get_area_turfs(target.type)
 			for(var/turf/A in cached_area)
 				if(!is_station_level(A.z))
 					continue
 				valid_turfs += A
-				I++
-		var/E = 0
-		var/D = 0
 		for(var/turf/T in valid_turfs)
-			D++
 			for(var/atom/C in T.contents)
-				E++
 				/*if(!C?.visibility)	//Doesn't compile, add this another time
 					continue*/
 				if(C.light_range > 0)
@@ -106,5 +100,6 @@
 #undef LIGHTSTOBREAK_MINIMUM
 #undef LIGHTSTOBREAK_MAXIMUM
 #undef LIGHTSTOBREAK_THRESHOLD
+#undef LIGHTSTOBREAK_MAX_CHANCE
 #undef LIGHTSTOBREAK_AREA_MIN
 #undef LIGHTSTOBREAK_AREA_MAX

@@ -186,6 +186,7 @@
 	if(isopenturf(AM) && !istype(AM, /turf/open/space) && !istype(AM, /turf/open/lava))
 		var/turf/T = AM
 		if(T.light_power || T.light_range)
+			to_chat(user, "<span class='notice'>Your [src] consumes the lights in [AM].</span>")
 			T.set_light(0,0)
 	else if(isopenturf(AM))
 		return
@@ -198,13 +199,13 @@
 				to_chat(borg, "<span class='danger'>Your headlamp is fried! You'll need a human to help replace it.</span>")
 		else
 			for(var/obj/item/O in AM)
-				if(O.light_range && O.light_power)
+				if(O.light_range && O.light_power && !check_plasmaman(O, AM))
 					disintegrate(O, user)
-		if(L.pulling && L.pulling.light_range && isitem(L.pulling))
+		if(L.pulling && L.pulling.light_range && isitem(L.pulling) && !check_plasmaman(L.pulling, L))
 			disintegrate(L.pulling, user)
 	else if(isitem(AM))
 		var/obj/item/I = AM
-		if(I.light_range && I.light_power)
+		if(I.light_range && I.light_power && !check_plasmaman(AM))
 			disintegrate(I, user)
 	else if(istype(AM, /obj/structure/marker_beacon))
 		var/obj/structure/marker_beacon/I = AM
@@ -246,6 +247,19 @@
 
 	if(is_species(user, /datum/species/shadow/nightmare))
 		handle_objectives(user)
+
+/obj/item/light_eater/proc/check_plasmaman(obj/item/O, mob/living/carbon/human/user)
+	if(!istype(O, /obj/item/clothing/head/helmet/space/plasmaman))
+		return FALSE
+	var/obj/item/clothing/head/helmet/space/plasmaman/H = O
+	if(H.on)
+		H.on = FALSE
+		H.icon_state = "[initial(H.icon_state)][H.on ? "-light":""]"
+		H.item_state = H.icon_state
+		if(user)
+			user.update_inv_head()
+			to_chat(user, "<span class='warning'>Your [H]'s torch extinguishes!</span>")
+	return TRUE
 
 #undef HEART_SPECIAL_SHADOWIFY
 #undef HEART_RESPAWN_THRESHHOLD
