@@ -50,6 +50,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		attack_verb = list("burnt","singed")
 		START_PROCESSING(SSobj, src)
 		update_icon()
+		playsound(src, 'sound/items/match.ogg', 50, 1, -1)
 
 /obj/item/match/proc/matchburnout()
 	if(lit)
