@@ -512,13 +512,14 @@
 			else if(transfer_amount) // Droppers, cans, beakers, what have you.
 				visi_msg="[user] uses [reagent_source] on [target]"
 				irrigate = 1
+				if(reagent_source.is_drainable())
+					playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
 
 
 		if(irrigate && transfer_amount > 30 && reagent_source.reagents.total_volume >= 30 && using_irrigation)
 			trays = FindConnected()
 			if (trays.len > 1)
 				visi_msg += ", setting off the irrigation system."
-			playsound(loc, 'sound/effects/slosh.ogg', 25, TRUE)
 
 		if(visi_msg)
 			visible_message("<span class='notice'>[visi_msg]</span>")
