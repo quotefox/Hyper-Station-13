@@ -14,9 +14,10 @@
 /obj/effect/particle_effect/water/Move(turf/newloc)
 	if (--src.life < 1)
 		qdel(src)
-		return 0
+		return FALSE
 	if(newloc.density)
-		return 0
+		if(istype(newloc, /turf))
+			return FALSE
 	.=..()
 
 /obj/effect/particle_effect/water/Bump(atom/A)
