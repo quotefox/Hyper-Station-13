@@ -297,6 +297,7 @@
 /obj/effect/energy_ball/Destroy()
 	if(parent)
 		parent.orbiting_balls -= src
+		parent.dissipate_strength = parent.orbiting_balls.len
 	..()
 
 /obj/effect/energy_ball/stop_orbit()
