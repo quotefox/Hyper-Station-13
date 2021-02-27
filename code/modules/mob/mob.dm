@@ -572,7 +572,7 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 /mob/proc/is_muzzled()
 	return 0
 
-
+/*
 /mob/Stat()
 	..()
 	//This is where I try and add a temporary solution to the issue of the status tab. This solution is bad and I should feel bad, but it should mitigate some of the client lag.
@@ -646,25 +646,31 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 				if(A.IsObscured())
 					continue
 				statpanel(listed_turf.name, null, A)
+*/
 
+/// Adds this list to the output to the stat browser
+/mob/proc/get_status_tab_items()
+	. = list()
 
+/// Gets all relevant proc holders for the browser statpenl
+/mob/proc/get_proc_holders()
+	. = list()
 	if(mind)
-		add_spells_to_statpanel(mind.spell_list)
-		var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
-		if(changeling)
-			add_stings_to_statpanel(changeling.purchasedpowers)
-	add_spells_to_statpanel(mob_spell_list)
+		. += get_spells_for_statpanel(mind.spell_list)
+	. += get_spells_for_statpanel(mob_spell_list)
 
-/mob/proc/add_spells_to_statpanel(list/spells)
+/mob/proc/get_spells_for_statpanel(list/spells)
+	var/list/L = list()
 	for(var/obj/effect/proc_holder/spell/S in spells)
 		if(S.can_be_cast_by(src))
 			switch(S.charge_type)
 				if("recharge")
-					statpanel("[S.panel]","[S.charge_counter/10.0]/[S.charge_max/10]",S)
+					L[++L.len] = list("[S.panel]", "[S.charge_counter/10.0]/[S.charge_max/10]", S.name, REF(S))
 				if("charges")
-					statpanel("[S.panel]","[S.charge_counter]/[S.charge_max]",S)
+					L[++L.len] = list("[S.panel]", "[S.charge_counter]/[S.charge_max]", S.name, REF(S))
 				if("holdervar")
-					statpanel("[S.panel]","[S.holder_var_type] [S.holder_var_amount]",S)
+					L[++L.len] = list("[S.panel]", "[S.holder_var_type] [S.holder_var_amount]", S.name, REF(S))
+	return L
 
 /mob/proc/add_stings_to_statpanel(list/stings)
 	for(var/obj/effect/proc_holder/changeling/S in stings)
@@ -794,6 +800,8 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 		if(istype(S, spell))
 			mob_spell_list -= S
 			qdel(S)
+	if(client)
+		client << output(null, "statbrowser:check_spells")
 
 /mob/proc/anti_magic_check(magic = TRUE, holy = FALSE)
 	if(!magic && !holy)
