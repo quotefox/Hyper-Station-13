@@ -303,7 +303,6 @@
 	if(observer.client && observer.client.prefs)
 		observer.real_name = observer.client.prefs.real_name
 		observer.name = observer.real_name
-		observer.client.init_verbs()
 	observer.update_icon()
 	observer.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 	QDEL_NULL(mind)
@@ -398,7 +397,6 @@
 		character.update_parallax_teleport()
 
 	SSticker.minds += character.mind
-	character.client.init_verbs() // init verbs for the late join
 
 	var/mob/living/carbon/human/humanc
 	if(ishuman(character))
@@ -592,7 +590,6 @@
 		mind.transfer_to(H)					//won't transfer key since the mind is not active
 
 	H.name = real_name
-	client.init_verbs()
 		//h13 assign your characters custom height.
 	if (H.custom_body_size) //Do they have it set?
 		H.resize(H.custom_body_size * 0.01)

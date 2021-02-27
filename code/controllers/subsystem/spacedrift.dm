@@ -8,9 +8,9 @@ SUBSYSTEM_DEF(spacedrift)
 	var/list/currentrun = list()
 	var/list/processing = list()
 
-/datum/controller/subsystem/spacedrift/stat_entry(msg)
-	msg = "P:[length(processing)]"
-	return ..()
+/datum/controller/subsystem/spacedrift/stat_entry()
+	..("P:[processing.len]")
+
 
 /datum/controller/subsystem/spacedrift/fire(resumed = 0)
 	if (!resumed)

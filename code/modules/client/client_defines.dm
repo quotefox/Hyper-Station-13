@@ -4,10 +4,6 @@
 		//BLACK MAGIC THINGS//
 		//////////////////////
 	parent_type = /datum
-
-
-	/// hides the byond verb panel as we use our own custom version
-	show_verb_panel = FALSE
 		////////////////
 		//ADMIN THINGS//
 		////////////////
@@ -28,12 +24,6 @@
 	var/move_delay = 0
 	var/area			= null
 
-
-
-	/// list of tabs containing spells and abilities
-	var/list/spell_tabs = list()
-	/// list of tabs containing verbs
-	var/list/verb_tabs = list()
 		///////////////
 		//SOUND STUFF//
 		///////////////

@@ -74,7 +74,6 @@ GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 	/client/proc/addbunkerbypass,
 	/client/proc/revokebunkerbypass,
 	/client/proc/stop_sounds,
-	/client/proc/debugstatpanel,
 	/client/proc/hide_verbs,			/*hides all our adminverbs*/
 	/client/proc/hide_most_verbs,		/*hides all our hideable adminverbs*/
 	/datum/admins/proc/open_borgopanel
@@ -257,36 +256,36 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 		control_freak = CONTROL_FREAK_SKIN | CONTROL_FREAK_MACROS
 
 		var/rights = holder.rank.rights
-		add_verb(src, GLOB.admin_verbs_default)
+		verbs += GLOB.admin_verbs_default
 		if(rights & R_BUILDMODE)
-			add_verb(src, /client/proc/togglebuildmodeself)
+			verbs += /client/proc/togglebuildmodeself
 		if(rights & R_ADMIN)
-			add_verb(src, GLOB.admin_verbs_admin)
+			verbs += GLOB.admin_verbs_admin
 		if(rights & R_BAN)
-			add_verb(src, GLOB.admin_verbs_ban)
+			verbs += GLOB.admin_verbs_ban
 		if(rights & R_FUN)
-			add_verb(src, GLOB.admin_verbs_fun)
+			verbs += GLOB.admin_verbs_fun
 		if(rights & R_SERVER)
-			add_verb(src, GLOB.admin_verbs_server)
+			verbs += GLOB.admin_verbs_server
 		if(rights & R_DEBUG)
-			add_verb(src, GLOB.admin_verbs_debug)
+			verbs += GLOB.admin_verbs_debug
 		if(rights & R_POSSESS)
-			add_verb(src, GLOB.admin_verbs_possess)
+			verbs += GLOB.admin_verbs_possess
 		if(rights & R_PERMISSIONS)
-			add_verb(src, GLOB.admin_verbs_permissions)
+			verbs += GLOB.admin_verbs_permissions
 		if(rights & R_STEALTH)
-			add_verb(src, /client/proc/stealth)
+			verbs += /client/proc/stealth
 		if(rights & R_ADMIN)
-			add_verb(src, GLOB.admin_verbs_poll)
+			verbs += GLOB.admin_verbs_poll
 		if(rights & R_SOUNDS)
-			add_verb(src, GLOB.admin_verbs_sounds)
+			verbs += GLOB.admin_verbs_sounds
 			if(CONFIG_GET(string/invoke_youtubedl))
-				add_verb(src, /client/proc/play_web_sound)
+				verbs += /client/proc/play_web_sound
 		if(rights & R_SPAWN)
-			add_verb(src, GLOB.admin_verbs_spawn)
+			verbs += GLOB.admin_verbs_spawn
 
 /client/proc/remove_admin_verbs()
-	remove_verb(src, list(
+	verbs.Remove(
 		GLOB.admin_verbs_default,
 		/client/proc/togglebuildmodeself,
 		GLOB.admin_verbs_admin,
@@ -305,14 +304,14 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 		GLOB.admin_verbs_debug_mapping,
 		/client/proc/disable_debug_verbs,
 		/client/proc/readmin
-		))
+		)
 
 /client/proc/hide_most_verbs()//Allows you to keep some functionality while hiding some verbs
 	set name = "Adminverbs - Hide Most"
 	set category = "Admin"
 
 	verbs.Remove(/client/proc/hide_most_verbs, GLOB.admin_verbs_hideable)
-	add_verb(src, /client/proc/show_verbs)
+	verbs += /client/proc/show_verbs
 
 	to_chat(src, "<span class='interface'>Most of your adminverbs have been hidden.</span>")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Hide Most Adminverbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -323,7 +322,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	set category = "Admin"
 
 	remove_admin_verbs()
-	add_verb(src, /client/proc/show_verbs)
+	verbs += /client/proc/show_verbs
 
 	to_chat(src, "<span class='interface'>Almost all of your adminverbs have been hidden.</span>")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Hide All Adminverbs") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -333,7 +332,7 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	set name = "Adminverbs - Show"
 	set category = "Admin"
 
-	remove_verb(src, /client/proc/show_verbs)
+	verbs -= /client/proc/show_verbs
 	add_admin_verbs()
 
 	to_chat(src, "<span class='interface'>All of your adminverbs are now visible.</span>")
@@ -366,7 +365,6 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 		message_admins("[key_name_admin(usr)] admin ghosted.")
 		var/mob/body = mob
 		body.ghostize(1)
-		init_verbs()
 		if(body && !body.key)
 			body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin Ghost") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
@@ -719,10 +717,3 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 
 	log_admin("[key_name(usr)] has [AI_Interact ? "activated" : "deactivated"] Admin AI Interact")
 	message_admins("[key_name_admin(usr)] has [AI_Interact ? "activated" : "deactivated"] their AI interaction")
-
-
-/client/proc/debugstatpanel()
-	set name = "Debug Stat Panel"
-	set category = "Debug"
-
-	src << output("", "statbrowser:create_debug")

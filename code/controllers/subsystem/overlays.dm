@@ -21,9 +21,10 @@ SUBSYSTEM_DEF(overlays)
 	fire(mc_check = FALSE)
 	return ..()
 
-/datum/controller/subsystem/overlays/stat_entry(msg)
-	msg = "Ov:[length(queue)]"
-	return ..()
+
+/datum/controller/subsystem/overlays/stat_entry()
+	..("Ov:[length(queue)]")
+
 
 /datum/controller/subsystem/overlays/Shutdown()
 	text2file(render_stats(stats), "[GLOB.log_directory]/overlay.log")
