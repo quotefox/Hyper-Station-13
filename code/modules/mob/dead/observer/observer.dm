@@ -270,7 +270,6 @@ Works together with spawning an observer, noted above.
 	var/mob/dead/observer/ghost = new(src)	// Transfer safety to observer spawning proc.
 	SStgui.on_transfer(src, ghost) // Transfer NanoUIs.
 	ghost.can_reenter_corpse = can_reenter_corpse
-	ghost.client.init_verbs()
 	if (client && client.prefs && client.prefs.auto_ooc)
 		if (!(client.prefs.chat_toggles & CHAT_OOC))
 			client.prefs.chat_toggles ^= CHAT_OOC

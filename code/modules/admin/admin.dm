@@ -426,7 +426,7 @@
 		"}
 	if(GLOB.master_mode == "secret")
 		dat += "<A href='?src=[REF(src)];[HrefToken()];f_secret=1'>(Force Secret Mode)</A><br>"
-	
+
 	if(GLOB.master_mode == "dynamic")
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
 			dat += "<A href='?src=[REF(src)];[HrefToken()];f_dynamic_roundstart=1'>(Force Roundstart Rulesets)</A><br>"
@@ -987,6 +987,7 @@
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Ghost Drag Control")
 
 	tomob.ckey = frommob.ckey
+	tomob.client?.init_verbs()
 	qdel(frommob)
 
 	return 1

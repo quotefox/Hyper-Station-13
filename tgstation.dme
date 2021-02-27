@@ -3091,7 +3091,6 @@
 #include "interface\interface.dm"
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
-#include "interface\skin.dmf"
 #include "modular_citadel\code\init.dm"
 #include "modular_citadel\code\__HELPERS\list2list.dm"
 #include "modular_citadel\code\__HELPERS\lists.dm"
