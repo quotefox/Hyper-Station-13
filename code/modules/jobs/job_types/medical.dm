@@ -243,6 +243,7 @@ Junior Doctor
 
 	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM)
+	override_roundstart_spawn = /obj/effect/landmark/start/medical_doctor
 
 /datum/outfit/job/doctor/junior
 	name = "Medical Resident"
@@ -261,9 +262,3 @@ Junior Doctor
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
 
 	chameleon_extras = /obj/item/gun/syringe
-
-/datum/job/junior_doctor/after_spawn(mob/living/carbon/human/H, mob/M) //Instead of going through the process of adding spawnpoints
-	var/turf/T
-	var/spawn_point = locate(/obj/effect/landmark/start/medical_doctor) in GLOB.start_landmarks_list
-	T = get_turf(spawn_point)
-	H.Move(T)

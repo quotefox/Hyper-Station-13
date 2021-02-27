@@ -196,6 +196,7 @@ Junior Engineer
 									ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_ATMOSPHERICS, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_TECH_STORAGE, ACCESS_ENGINE, ACCESS_ENGINE_EQUIP, ACCESS_MAINT_TUNNELS,
 									ACCESS_EXTERNAL_AIRLOCKS, ACCESS_CONSTRUCTION, ACCESS_TCOMSAT, ACCESS_MINERAL_STOREROOM)
+	override_roundstart_spawn = /obj/effect/landmark/start/station_engineer
 
 /datum/outfit/job/engineer/junior
 	name = "Engineering Intern"
@@ -228,9 +229,3 @@ Junior Engineer
 	suit_store = /obj/item/tank/internals/oxygen
 	head = null
 	internals_slot = SLOT_S_STORE
-
-/datum/job/junior_engineer/after_spawn(mob/living/carbon/human/H, mob/M) //Instead of going through the process of adding spawnpoints
-	var/turf/T
-	var/spawn_point = locate(/obj/effect/landmark/start/station_engineer) in GLOB.start_landmarks_list
-	T = get_turf(spawn_point)
-	H.Move(T)
