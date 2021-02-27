@@ -160,6 +160,7 @@ Junior Scientist
 
 	access = list(ACCESS_ROBOTICS, ACCESS_RESEARCH, ACCESS_MINERAL_STOREROOM, ACCESS_TECH_STORAGE, ACCESS_GENETICS)
 	minimal_access = list(ACCESS_RESEARCH, ACCESS_MINERAL_STOREROOM)
+	override_roundstart_spawn = /obj/effect/landmark/start/scientist
 
 /datum/outfit/job/scientist/junior
 	name = "Scientist"
@@ -173,9 +174,3 @@ Junior Scientist
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/tox
-
-/datum/job/junior_scientist/after_spawn(mob/living/carbon/human/H, mob/M) //Instead of going through the process of adding spawnpoints
-	var/turf/T
-	var/spawn_point = locate(/obj/effect/landmark/start/scientist) in GLOB.start_landmarks_list
-	T = get_turf(spawn_point)
-	H.Move(T)
