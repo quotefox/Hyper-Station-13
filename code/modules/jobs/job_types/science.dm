@@ -163,7 +163,7 @@ Junior Scientist
 	override_roundstart_spawn = /obj/effect/landmark/start/scientist
 
 /datum/outfit/job/scientist/junior
-	name = "Redesrch Student"
+	name = "Research Student"
 	jobtype = /datum/job/junior_scientist
 
 	belt = /obj/item/pda/toxins
