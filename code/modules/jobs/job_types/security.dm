@@ -462,8 +462,8 @@ Junior Security Officer
 
 
 /datum/outfit/job/security/junior
-	name = "Security Officer"
-	jobtype = /datum/job/officer
+	name = "Rookie"
+	jobtype = /datum/job/junior_officer
 
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
