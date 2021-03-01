@@ -529,21 +529,20 @@
 
 		for(var/obj/machinery/hydroponics/H in trays)
 		//cause I don't want to feel like im juggling 15 tamagotchis and I can get to my real work of ripping flooring apart in hopes of validating my life choices of becoming a space-gardener
-			var/datum/reagents/S = new /datum/reagents() //This is a strange way, but I don't know of a better one so I can't fix it at the moment...
-			S.my_atom = H
+			var/datum/reagents/S = new /datum/reagents //This is a strange way, but I don't know of a better one so I can't fix it at the moment...
 			reagent_source.reagents.trans_to(S,split)
 			if(istype(reagent_source, /obj/item/reagent_containers/food/snacks) || istype(reagent_source, /obj/item/reagent_containers/pill))
 				qdel(reagent_source)
-			lastuser = user
 
-			H.applyFertilizer(S, user)
-			H.applyChemicals(S, user)
+			if(S.on_tray(H, split, user) >= 1)
+				lastuser = user
 
 			S.clear_reagents()
 			qdel(S)
 			H.update_icon()
 		if(reagent_source) // If the source wasn't composted and destroyed
 			reagent_source.update_icon()
+
 
 	else if(istype(O, /obj/item/seeds) && !istype(O, /obj/item/seeds/sample))
 		if(!myseed)

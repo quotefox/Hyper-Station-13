@@ -77,6 +77,12 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 /datum/reagent/proc/reaction_turf(turf/T, volume)
 	return
 
+//Hyperstation Edit: Hydroponics trays reactions, idea stolen from citadel but not directly referenced
+/datum/reagent/proc/on_tray(/obj/machinery/hydroponics/T, volume, mob/user, override = FALSE)	//See hyperstation's reagent module
+	if(!tray.myseed)
+		return 0
+	return -1
+
 /datum/reagent/proc/on_mob_life(mob/living/carbon/M)
 	current_cycle++
 	if(holder)
