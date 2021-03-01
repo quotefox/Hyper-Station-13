@@ -534,8 +534,12 @@
 			if(istype(reagent_source, /obj/item/reagent_containers/food/snacks) || istype(reagent_source, /obj/item/reagent_containers/pill))
 				qdel(reagent_source)
 
-			if(S.on_tray(H, split, user) >= 1)
+			if(myseed)
+				myseed.on_chem_reaction(S)
 				lastuser = user
+			for(var/datum/reagent/R in S.reagent_list)
+				if(R.on_tray(H, R.volume, user) >= 1)
+					lastuser = user
 
 			S.clear_reagents()
 			qdel(S)

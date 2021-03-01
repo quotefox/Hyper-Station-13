@@ -78,8 +78,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	return
 
 //Hyperstation Edit: Hydroponics trays reactions, idea stolen from citadel but not directly referenced
-/datum/reagent/proc/on_tray(/obj/machinery/hydroponics/T, volume, mob/user, override = FALSE)	//See hyperstation's reagent module
-	if(!tray.myseed)
+/datum/reagent/proc/on_tray(obj/machinery/hydroponics/T, volume, mob/user)	//See hyperstation's reagent module
+	if(!T.myseed)
 		return 0
 	return -1
 
