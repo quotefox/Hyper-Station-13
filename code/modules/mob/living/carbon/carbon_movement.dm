@@ -45,3 +45,10 @@
 			if(m_intent == MOVE_INTENT_RUN)
 				nutrition -= HUNGER_FACTOR/5
 				thirst -= THIRST_FACTOR/5
+
+		if(HAS_TRAIT(src, TRAIT_NOTHIRST))
+			thirst = THIRST_LEVEL_QUENCHED - 1
+		else if(thirst && stat != DEAD)
+			thirst -= THIRST_FACTOR/12
+			if(m_intent == MOVE_INTENT_RUN)
+				thirst -= THIRST_FACTOR/5
