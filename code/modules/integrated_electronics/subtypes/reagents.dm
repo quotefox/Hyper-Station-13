@@ -36,10 +36,11 @@
 
 	for(var/obj/machinery/hydroponics/H in trays)
 		var/datum/reagents/temp_reagents = new /datum/reagents()
-		temp_reagents.my_atom = H
 
 		source.reagents.trans_to(temp_reagents, split)
-		H.applyChemicals(temp_reagents)
+		for(var/datum/reagent/R in temp_reagents.reagent_list)
+			if(R.on_tray(H, R.volume, src) >= 1)
+				tray.lastuser = src
 
 		temp_reagents.clear_reagents()
 		qdel(temp_reagents)
