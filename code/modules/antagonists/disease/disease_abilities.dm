@@ -76,7 +76,7 @@ GLOBAL_LIST_INIT(disease_ability_singletons, list(
 			resistance += initial(S.resistance)
 			stage_speed += initial(S.stage_speed)
 			transmittable += initial(S.transmittable)
-			threshold_block += initial(S.threshold_desc) 
+			threshold_block += initial(S.threshold_desc)
 			stat_block = "Resistance: [resistance]<br>Stealth: [stealth]<br>Stage Speed: [stage_speed]<br>Transmissibility: [transmittable]<br><br>"
 			if(symptoms.len == 1) //lazy boy's dream
 				name = initial(S.name)
@@ -194,8 +194,6 @@ GLOBAL_LIST_INIT(disease_ability_singletons, list(
 /datum/disease_ability/action/sneeze
 	name = "Voluntary Sneezing"
 	actions = list(/datum/action/cooldown/disease_sneeze)
-	cost = 2
-	required_total_points = 3
 	short_desc = "Force the host you are following to sneeze, spreading your infection to those in front of them."
 	long_desc = "Force the host you are following to sneeze with extra force, spreading your infection to any victims in a 4 meter cone in front of your host.<br>Cooldown: 20 seconds"
 
@@ -232,8 +230,6 @@ GLOBAL_LIST_INIT(disease_ability_singletons, list(
 /datum/disease_ability/action/infect
 	name = "Secrete Infection"
 	actions = list(/datum/action/cooldown/disease_infect)
-	cost = 2
-	required_total_points = 3
 	short_desc = "Cause all objects your host is touching to become infectious for a limited time, spreading your infection to anyone who touches them."
 	long_desc = "Cause the host you are following to excrete an infective substance from their pores, causing all objects touching their skin to transmit your infection to anyone who touches them for the next 30 seconds. This includes the floor, if they are not wearing shoes, and any items they are holding, if they are not wearing gloves.<br>Cooldown: 40 seconds"
 
@@ -274,22 +270,19 @@ GLOBAL_LIST_INIT(disease_ability_singletons, list(
 //healing costs more so you have to techswitch from naughty disease otherwise we'd have friendly disease for easy greentext (no fun!)
 
 /datum/disease_ability/symptom/mild
-	cost = 2
-	required_total_points = 4
 	category = "Symptom (Weak)"
 
 /datum/disease_ability/symptom/medium
-	cost = 4
-	required_total_points = 8
 	category = "Symptom"
 
 /datum/disease_ability/symptom/medium/heal
 	cost = 5
+	required_total_points = 5
 	category = "Symptom (+)"
 
 /datum/disease_ability/symptom/powerful
 	cost = 4
-	required_total_points = 16
+	required_total_points = 10
 	category = "Symptom (Strong)"
 
 /datum/disease_ability/symptom/powerful/heal
