@@ -44,7 +44,6 @@
 		//Blood regeneration if there is some space
 		if(blood_volume < (BLOOD_VOLUME_NORMAL * blood_ratio) && !HAS_TRAIT(src, TRAIT_NOHUNGER))
 			var/nutrition_ratio = 0
-			//thirst_ratio = 1	//Uncomment if something fancy gets added
 			switch(nutrition)
 				if(0 to NUTRITION_LEVEL_STARVING)
 					nutrition_ratio = 0.2
@@ -61,7 +60,8 @@
 			if(satiety > 80)
 				nutrition_ratio *= 1.25
 			nutrition = max(0, nutrition - nutrition_ratio * HUNGER_FACTOR)
-			thirst = max(0, thirst - 0.8 * THIRST_FACTOR)
+			if(!HAS_TRAIT(src, TRAIT_NOTHIRST))
+				thirst = max(0, thirst - THIRST_FACTOR)		//After 2 seconds of research, I learned that you get quite thirsty when at low blood levels
 			blood_volume = min((BLOOD_VOLUME_NORMAL * blood_ratio), blood_volume + 0.5 * nutrition_ratio)
 
 		//Effects of bloodloss
