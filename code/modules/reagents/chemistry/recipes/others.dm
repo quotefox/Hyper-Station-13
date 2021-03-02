@@ -727,5 +727,5 @@
 	id = /datum/reagent/hellwater
 	results = list(/datum/reagent/hellwater = 1)
 	required_reagents = list(/datum/reagent/water/holywater = 1)
-	required_temp = 700
+	required_temp = 666
 	mob_react = FALSE
