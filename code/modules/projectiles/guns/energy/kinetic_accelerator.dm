@@ -60,6 +60,11 @@
 	else
 		cut_overlays()
 
+/obj/item/gun/energy/kinetic_accelerator/bdmka
+	name = "blood infused kinetic accelerator"
+	desc = "A cursed kinetic accelerator, once wielded by the blood drunk miner. It still pulses with a dark energy"
+	max_mod_capacity = 200
+
 /obj/item/gun/energy/kinetic_accelerator/examine(mob/user)
 	. = ..()
 	if(max_mod_capacity)
