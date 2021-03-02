@@ -75,6 +75,9 @@
 	if(notransform)
 		return
 
+	if(SEND_SIGNAL(src, COMSIG_MOB_CLICKON, A, params) & COMSIG_MOB_CANCEL_CLICKON)
+		return
+
 	var/list/modifiers = params2list(params)
 	if(modifiers["shift"] && modifiers["middle"])
 		ShiftMiddleClickOn(A)
@@ -351,8 +354,10 @@
 	Unused except for AI
 */
 /mob/proc/AltClickOn(atom/A)
-	if(!A.AltClick(src))
-		altclick_listed_turf(A)
+	. = SEND_SIGNAL(src, COMSIG_MOB_ALTCLICKON, A)
+	if(. & COMSIG_MOB_CANCEL_CLICKON)
+		return
+	A.AltClick(src)
 
 /mob/proc/altclick_listed_turf(atom/A)
 	var/turf/T = get_turf(A)
@@ -361,7 +366,9 @@
 			listed_turf = null
 		else if(TurfAdjacent(T))
 			listed_turf = T
-			client.statpanel = T.name
+			client << output("[url_encode(json_encode(T.name))];", "statbrowser:create_listedturf")
+
+
 
 /mob/living/carbon/AltClickOn(atom/A)
 	if(!stat && mind && iscarbon(A) && A != src)
@@ -373,7 +380,18 @@
 	..()
 
 /atom/proc/AltClick(mob/user)
-	. = SEND_SIGNAL(src, COMSIG_CLICK_ALT, user)
+	SEND_SIGNAL(src, COMSIG_CLICK_ALT, user)
+	var/turf/T = get_turf(src)
+	if(T && (isturf(loc) || isturf(src)) && user.TurfAdjacent(T))
+		user.listed_turf = T
+		user.client << output("[url_encode(json_encode(T.name))];", "statbrowser:create_listedturf")
+
+/atom/proc/AltClickNoInteract(mob/user, atom/A)
+	var/turf/T = get_turf(A)
+	if(T && user.TurfAdjacent(T))
+		user.listed_turf = T
+		user.client << output("[url_encode(json_encode(T.name))];", "statbrowser:create_listedturf")
+
 
 /mob/proc/TurfAdjacent(turf/T)
 	return T.Adjacent(src)

@@ -129,6 +129,7 @@ Regenerative extracts:
 
 /obj/item/slimecross/regenerative/silver/core_effect(mob/living/target, mob/user)
 	target.nutrition = NUTRITION_LEVEL_FULL - 1
+	target.nutrition = THIRST_LEVEL_THRESHOLD
 	to_chat(target, "<span class='notice'>You feel satiated.</span>")
 
 /obj/item/slimecross/regenerative/bluespace

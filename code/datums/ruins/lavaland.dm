@@ -239,5 +239,5 @@
 	id = "lunaraltar"
 	description = "Millenia ago, the humanoids of this strange land used to offer sacrifices here..."
 	suffix = "lavaland_surface_lunaraltar.dmm"
-	allow_duplicates = FALSE
+	allow_duplicates = TRUE
 	cost = 10

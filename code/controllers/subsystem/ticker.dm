@@ -402,6 +402,7 @@ SUBSYSTEM_DEF(ticker)
 			if(living.client)
 				var/obj/screen/splash/S = new(living.client, TRUE)
 				S.Fade(TRUE)
+				living.client.init_verbs()
 			livings += living
 	if(livings.len)
 		addtimer(CALLBACK(src, .proc/release_characters, livings), 30, TIMER_CLIENT_TIME)
@@ -677,7 +678,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!round_end_sound)
 		round_end_sound = pick(\
 		'sound/roundend/iwishtherewassomethingmore.ogg',
-		'sound/roundend/likeisaid.ogg',	
+		'sound/roundend/likeisaid.ogg',
 		'sound/roundend/whatarottenwaytodie.ogg',
 		'sound/roundend/whatashame.ogg',
 		'sound/roundend/newroundsexy.ogg',

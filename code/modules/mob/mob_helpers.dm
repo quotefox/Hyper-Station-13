@@ -424,6 +424,7 @@ It's fairly easy to fix if dealing with single letters but not so much with comp
 		message_admins("[key_name_admin(C)] has taken control of ([key_name_admin(M)])")
 		M.ghostize(0)
 		M.key = C.key
+		M.client?.init_verbs()
 		return TRUE
 	else
 		to_chat(M, "There were no ghosts willing to take control.")

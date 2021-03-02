@@ -60,6 +60,8 @@
 
 	if(user.nutrition < NUTRITION_LEVEL_WELL_FED)
 		user.nutrition = min((user.nutrition + target.nutrition), NUTRITION_LEVEL_WELL_FED)
+	if(user.thirst < THIRST_LEVEL_QUENCHED)
+		user.thirst = min((user.thirst + target.thirst), THIRST_LEVEL_QUENCHED)
 
 	if(target.mind)//if the victim has got a mind
 		// Absorb a lizard, speak Draconic.

@@ -47,5 +47,5 @@
 	name = "clustaur grenade"
 	icon_state = "clustaur"
 	item_state = "clustaur"
-	deliveryamt = 10
+	deliveryamt = 5
 	spawner_type = /obj/item/reagent_containers/glass/beaker/waterbottle/wataur

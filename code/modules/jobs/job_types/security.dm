@@ -375,6 +375,7 @@ Junior Security Officer
 
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/nonviolent, /datum/quirk/paraplegic)
+	override_roundstart_spawn = /obj/effect/landmark/start/security_officer
 
 
 /datum/job/junior_officer/get_access()
@@ -461,8 +462,8 @@ Junior Security Officer
 
 
 /datum/outfit/job/security/junior
-	name = "Security Officer"
-	jobtype = /datum/job/officer
+	name = "Rookie"
+	jobtype = /datum/job/junior_officer
 
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt

@@ -61,6 +61,8 @@
 
 	var/list/alt_titles = list()
 
+	var/override_roundstart_spawn = null		//Where the player spawns at roundstart if defined
+
 //Only override this proc
 //H is usually a human unless an /equip override transformed it
 /datum/job/proc/after_spawn(mob/living/H, mob/M, latejoin = FALSE)

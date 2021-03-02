@@ -197,7 +197,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			debug_tools_allowed = TRUE
 		//END CITADEL EDIT
 	else if(GLOB.deadmins[ckey])
-		verbs += /client/proc/readmin
+		add_verb(src, /client/proc/readmin)
 		connecting_admin = TRUE
 	if(CONFIG_GET(flag/autoadmin))
 		if(!GLOB.admin_datums[ckey])
@@ -243,7 +243,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	fps = 40
 
 	if(fexists(roundend_report_file()))
-		verbs += /client/proc/show_previous_roundend_report
+		add_verb(src, /client/proc/show_previous_roundend_report)
 
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
@@ -304,6 +304,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		set_macros()
 
 	chatOutput.start() // Starts the chat
+	src << browse(file('html/statbrowser.html'), "window=statbrowser") //starts stats tab
 
 	if(alert_mob_dupe_login)
 		spawn()
@@ -798,9 +799,9 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 /client/proc/add_verbs_from_config()
 	if(CONFIG_GET(flag/see_own_notes))
-		verbs += /client/proc/self_notes
+		add_verb(src, /client/proc/self_notes)
 	if(CONFIG_GET(flag/use_exp_tracking))
-		verbs += /client/proc/self_playtime
+		add_verb(src, /client/proc/self_playtime)
 
 
 #undef UPLOAD_LIMIT
@@ -864,6 +865,31 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 	x = CLAMP(x+change, min, max)
 	y = CLAMP(y+change, min,max)
 	change_view("[x]x[y]")
+
+/// compiles a full list of verbs and sends it to the browser
+/client/proc/init_verbs()
+	if(IsAdminAdvancedProcCall())
+		return
+	var/list/verblist = list()
+
+	var/list/verbstoprocess = verbs.Copy()
+	if(mob)
+		verbstoprocess += mob.verbs
+		for(var/AM in mob.contents)
+			var/atom/movable/thing = AM
+			verbstoprocess += thing.verbs
+	verb_tabs.Cut()
+	for(var/thing in verbstoprocess)
+		var/procpath/verb_to_init = thing
+		if(!verb_to_init)
+			continue
+		if(verb_to_init.hidden)
+			continue
+		if(!istext(verb_to_init.category))
+			continue
+		verb_tabs |= verb_to_init.category
+		verblist[++verblist.len] = list(verb_to_init.category, verb_to_init.name)
+	src << output("[url_encode(json_encode(verb_tabs))];[url_encode(json_encode(verblist))]", "statbrowser:init_verbs")
 
 /client/proc/change_view(new_size)
 	if (isnull(new_size))

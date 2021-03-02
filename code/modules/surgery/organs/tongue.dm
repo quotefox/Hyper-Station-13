@@ -99,8 +99,9 @@
 	var/static/regex/lizard_hiSS = new("S+", "g")
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
-		message = lizard_hiss.Replace(message, "sss")
-		message = lizard_hiSS.Replace(message, "Sss")
+		var/asterisk_loc = findtext(message, "*")+1	//Don't calculate this every time
+		message = lizard_hiss.Replace(message, "sss", asterisk_loc)
+		message = lizard_hiSS.Replace(message, "Sss", asterisk_loc)
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/kitty
@@ -117,8 +118,9 @@
 	var/static/regex/taja_puRR = new("R+", "g")
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
-		message = taja_purr.Replace(message, "rrr")
-		message = taja_puRR.Replace(message, "Rrr")
+		var/asterisk_loc = findtext(message, "*")+1	//Don't calculate this every time
+		message = taja_purr.Replace(message, "rrr", asterisk_loc)
+		message = taja_puRR.Replace(message, "Rrr", asterisk_loc)
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/fly
@@ -135,8 +137,9 @@
 	var/static/regex/fly_buZZ = new("Z+", "g")
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
-		message = fly_buzz.Replace(message, "zzz")
-		message = fly_buZZ.Replace(message, "ZZZ")
+		var/asterisk_loc = findtext(message, "*")+1	//Don't calculate this every time
+		message = fly_buzz.Replace(message, "zzz", asterisk_loc)
+		message = fly_buZZ.Replace(message, "ZZZ", asterisk_loc)
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/abductor
@@ -294,13 +297,14 @@
 /obj/item/organ/tongue/fluffy/handle_speech(datum/source, list/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
-		message = replacetext(message, "ne", "nye")
-		message = replacetext(message, "nu", "nyu")
-		message = replacetext(message, "na", "nya")
-		message = replacetext(message, "no", "nyo")
-		message = replacetext(message, "ove", "uv")
-		message = replacetext(message, "l", "w")
-		message = replacetext(message, "r", "w")
+		var/asterisk_loc = findtext(message, "*")+1	//Don't calculate this every time
+		message = replacetext(message, "ne", "nye", asterisk_loc)
+		message = replacetext(message, "nu", "nyu", asterisk_loc)
+		message = replacetext(message, "na", "nya", asterisk_loc)
+		message = replacetext(message, "no", "nyo", asterisk_loc)
+		message = replacetext(message, "ove", "uv", asterisk_loc)
+		message = replacetext(message, "l", "w", asterisk_loc)
+		message = replacetext(message, "r", "w", asterisk_loc)
 	message = lowertext(message)
 	speech_args[SPEECH_MESSAGE] = message
 
