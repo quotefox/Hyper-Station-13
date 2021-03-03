@@ -47,7 +47,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(current_version < 23)
 		S["be_special"]	>> be_special
 		WRITE_FILE(S["be_special"], null)
-		WRITE_FILE(S["special_roles"], be_special)
 	return
 
 /datum/preferences/proc/update_character(current_version, savefile/S)
@@ -60,6 +59,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			features["balls_fluid"] = /datum/reagent/consumable/semen
 		if(features["breasts_fluid"])
 			features["breasts_fluid"] = /datum/reagent/consumable/milk
+	if(current_version < 23)
+		if(be_special)
+			WRITE_FILE(S["special_roles"], be_special)
 
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)

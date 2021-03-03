@@ -302,26 +302,26 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	dat += "<HR>"
 
-	switch(current_tab)
-		if (0) // Character Settings#
-			if(path)
-				var/savefile/S = new /savefile(path)
-				if(S)
-					dat += "<center>"
-					var/name
-					var/unspaced_slots = 0
-					for(var/i=1, i<=max_save_slots, i++)
-						unspaced_slots++
-						if(unspaced_slots > 4)
-							dat += "<br>"
-							unspaced_slots = 0
-						S.cd = "/character[i]"
-						S["real_name"] >> name
-						if(!name)
-							name = "+"
-						dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;num=[i];' [i == default_slot ? "class='linkOn'" : ""]>[name]</a> "
-					dat += "</center>"
+	if(path)
+		var/savefile/S = new /savefile(path)
+		if(S)
+			dat += "<center>"
+			var/name
+			var/unspaced_slots = 0
+			for(var/i=1, i<=max_save_slots, i++)
+				unspaced_slots++
+				if(unspaced_slots > 4)
+					dat += "<br>"
+					unspaced_slots = 0
+				S.cd = "/character[i]"
+				S["real_name"] >> name
+				if(!name)
+					name = "+"
+				dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;num=[i];' [i == default_slot ? "class='linkOn'" : ""]>[name]</a> "
+			dat += "</center>"
 
+	switch(current_tab)
+		if (0) // Character Settings
 			dat += "<center><h2>Occupation Choices</h2>"
 			dat += "<a href='?_src_=prefs;preference=job;task=menu'>Set Occupation Preferences</a><br></center>"
 			if(CONFIG_GET(flag/roundstart_traits))
@@ -380,24 +380,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 		//Character Appearance
 		if(2)
-			if(path)
-				var/savefile/S = new /savefile(path)
-				if(S)
-					dat += "<center>"
-					var/name
-					var/unspaced_slots = 0
-					for(var/i=1, i<=max_save_slots, i++)
-						unspaced_slots++
-						if(unspaced_slots > 4)
-							dat += "<br>"
-							unspaced_slots = 0
-						S.cd = "/character[i]"
-						S["real_name"] >> name
-						if(!name)
-							name = "+"
-						dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;num=[i];' [i == default_slot ? "class='linkOn'" : ""]>[name]</a> "
-					dat += "</center>"
-
 			update_preview_icon()
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
 			dat += "<h2>Flavor Text</h2>"
@@ -914,24 +896,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "</tr></table>"
 
 		if (1) // Game Preferences
-			if(path)
-				var/savefile/S = new /savefile(path)
-				if(S)
-					dat += "<center>"
-					var/name
-					var/unspaced_slots = 0
-					for(var/i=1, i<=max_save_slots, i++)
-						unspaced_slots++
-						if(unspaced_slots > 4)
-							dat += "<br>"
-							unspaced_slots = 0
-						S.cd = "/character[i]"
-						S["real_name"] >> name
-						if(!name)
-							name = "+"
-						dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;num=[i];' [i == default_slot ? "class='linkOn'" : ""]>[name]</a> "
-					dat += "</center>"
-
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
 			dat += "<h2>General Settings</h2>"
 			dat += "<b>UI Style:</b> <a href='?_src_=prefs;task=input;preference=ui'>[UI_style]</a><br>"
@@ -1082,24 +1046,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<br>"
 
 		if(3)	//Item Loadout
-			if(path)
-				var/savefile/S = new /savefile(path)
-				if(S)
-					dat += "<center>"
-					var/name
-					var/unspaced_slots = 0
-					for(var/i=1, i<=max_save_slots, i++)
-						unspaced_slots++
-						if(unspaced_slots > 4)
-							dat += "<br>"
-							unspaced_slots = 0
-						S.cd = "/character[i]"
-						S["real_name"] >> name
-						if(!name)
-							name = "+"
-						dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;num=[i];' [i == default_slot ? "class='linkOn'" : ""]>[name]</a> "
-					dat += "</center>"
-
 			if(!gear_tab)
 				gear_tab = GLOB.loadout_items[1]
 			dat += "<table align='center' width='100%'>"
@@ -1156,24 +1102,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "</table>"
 
 		if(4)		//Antag Preferences
-			if(path)
-				var/savefile/S = new /savefile(path)
-				if(S)
-					dat += "<center>"
-					var/name
-					var/unspaced_slots = 0
-					for(var/i=1, i<=max_save_slots, i++)
-						unspaced_slots++
-						if(unspaced_slots > 4)
-							dat += "<br>"
-							unspaced_slots = 0
-						S.cd = "/character[i]"
-						S["real_name"] >> name
-						if(!name)
-							name = "+"
-						dat += "<a style='white-space:nowrap;' href='?_src_=prefs;preference=changeslot;num=[i];' [i == default_slot ? "class='linkOn'" : ""]>[name]</a> "
-					dat += "</center>"
-			dat += "<table align='center' width='100%'>"
 			dat += "<h1>Special Role Settings</h1>"
 			if(jobban_isbanned(user, ROLE_SYNDICATE))
 				dat += "<font color=red><h3><b>You are banned from antagonist roles.</b></h3></font>"
