@@ -302,7 +302,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	dat += "<HR>"
 
-	if(path)
+	if(path)	//Show list of characters
 		var/savefile/S = new /savefile(path)
 		if(S)
 			dat += "<center>"

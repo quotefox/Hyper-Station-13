@@ -46,7 +46,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		clientfps = 60
 	if(current_version < 23)
 		S["be_special"]	>> be_special
-		WRITE_FILE(S["be_special"], null)
 	return
 
 /datum/preferences/proc/update_character(current_version, savefile/S)
