@@ -237,7 +237,7 @@
 	if(prob(10))
 		var/list/mob/living/target_hosts = list()
 		for(var/mob/living/L in oview(5, host_mob))
-			if((MOB_SILICON in L.mob_biotypes))
+			if((MOB_SILICON & L.mob_biotypes))
 				continue
 			target_hosts += L
 		if(!target_hosts.len)

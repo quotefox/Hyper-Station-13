@@ -89,7 +89,7 @@
 
 	var/mob/living/L = chamber.occupant
 
-	if((MOB_SILICON in L.mob_biotypes))
+	if((MOB_SILICON & L.mob_biotypes))
 		data["status_msg"] = "Occupant not compatible with nanites."
 		return data
 
