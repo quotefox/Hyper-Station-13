@@ -24,7 +24,7 @@
 	if(isliving(parent))
 		host_mob = parent
 
-		if(MOB_SILICON & host_mob.mob_biotypes) //Shouldn't happen, but this avoids HUD runtimes in case a silicon gets them somehow.
+		if((MOB_SILICON & host_mob.mob_biotypes)) //Shouldn't happen, but this avoids HUD runtimes in case a silicon gets them somehow.
 			return COMPONENT_INCOMPATIBLE
 
 		host_mob.hud_set_nanite_indicator()
