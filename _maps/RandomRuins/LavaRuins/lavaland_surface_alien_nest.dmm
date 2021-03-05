@@ -563,6 +563,9 @@
 /obj/item/clothing/gloves/color/black,
 /obj/item/radio/headset/headset_cargo/mining,
 /obj/item/clothing/mask/facehugger/impregnated,
+/obj/item/gps/mining{
+	gpstag = "Distress Signal"
+	},
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/xenonest)
 "VZ" = (
