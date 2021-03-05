@@ -307,7 +307,23 @@
 /obj/item/storage/bag/tray/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_items = 15		//I want my sushi god damn it
 	STR.insert_preposition = "on"
+	STR.can_hold = typecacheof(list(
+		/obj/item/reagent_containers/food,
+		/obj/item/kitchen,
+		/obj/item/storage/box/donkpockets))
+
+/obj/item/storage/bag/tray/pre_attack(atom/A, mob/living/user, params)
+	if(istype(A, /obj/structure/table) && user.a_intent == INTENT_HELP)	//I want my tray god damn it
+		if(user.transferItemToLoc(src, get_turf(A)))
+			var/list/click_params = params2list(params)
+			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
+				return
+			pixel_x = CLAMP(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
+			pixel_y = CLAMP(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
+		return
+	..()
 
 /obj/item/storage/bag/tray/attack(mob/living/M, mob/living/user)
 	. = ..()
@@ -336,7 +352,10 @@
 /obj/item/storage/bag/tray/update_icon()
 	cut_overlays()
 	for(var/obj/item/I in contents)
-		add_overlay(new /mutable_appearance(I))
+		var/mutable_appearance/MA = new (I)	//I want my icons god damn it
+		MA.pixel_x = rand(-6, 6)
+		MA.pixel_y = rand(-6, 6)
+		add_overlay(MA)
 
 /obj/item/storage/bag/tray/Entered()
 	. = ..()
