@@ -390,6 +390,7 @@ SUBSYSTEM_DEF(job)
 	var/datum/job/job = GetJob(rank)
 
 	H.job = rank
+	equip_loadout(N, H)		//Before job outfits are put in place
 
 	//If we joined at roundstart we should be positioned at our workstation
 	if(!joined_late)
@@ -416,8 +417,6 @@ SUBSYSTEM_DEF(job)
 		H.mind.assigned_role = rank
 
 	if(job)
-		if(!job.dresscodecompliant)// CIT CHANGE - dress code compliance
-			equip_loadout(N, H) // CIT CHANGE - allows players to spawn with loadout items
 		var/new_mob = job.equip(H, null, null, joined_late)
 		if(ismob(new_mob))
 			H = new_mob
@@ -449,10 +448,7 @@ SUBSYSTEM_DEF(job)
 		H.add_memory("Your account ID is [wageslave.account_id].")
 
 	if(job && H)
-		if(job.dresscodecompliant)// CIT CHANGE - dress code compliance
-			equip_loadout(N, H) // CIT CHANGE - allows players to spawn with loadout items
 		job.after_spawn(H, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
-		equip_loadout(N, H, TRUE)//CIT CHANGE - makes players spawn with in-backpack loadout items properly. A little hacky but it works
 
 	return H
 
