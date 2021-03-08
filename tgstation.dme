@@ -15,7 +15,7 @@
 
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
-#include "_maps\boxstation.dm"
+#include "_maps\layeniastation.dm"
 #include "code\_compile_options.dm"
 #include "code\world.dm"
 #include "code\__DEFINES\_globals.dm"
@@ -553,6 +553,7 @@
 #include "code\game\area\areas\away_content.dm"
 #include "code\game\area\areas\centcom.dm"
 #include "code\game\area\areas\holodeck.dm"
+#include "code\game\area\areas\layenia.dm"
 #include "code\game\area\areas\mining.dm"
 #include "code\game\area\areas\shuttles.dm"
 #include "code\game\area\areas\ruins\_ruins.dm"

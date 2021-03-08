@@ -383,3 +383,4 @@
 	bullet_sizzle = TRUE
 	bullet_bounce_sound = null
 	digResult = /obj/item/stack/ore/glass/basalt
+	floor_variance = 50
