@@ -51,6 +51,12 @@
 	var/datum/job/previewJob
 	var/highRankFlag = job_civilian_high | job_medsci_high | job_engsec_high
 
+	if(chosen_gear && current_tab != 2)
+		for(var/A in chosen_gear)
+			var/datum/gear/G = new A		//Shouldn't really be anything else, but byond fuckery
+			if(!mannequin.get_item_by_slot(G.category))
+				mannequin.equip_to_appropriate_slot(new G.path)
+
 	if(job_civilian_low & ASSISTANT)
 		previewJob = SSjob.GetJob("Assistant")
 	else if(highRankFlag)
