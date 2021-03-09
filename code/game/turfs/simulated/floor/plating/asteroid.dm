@@ -363,3 +363,37 @@
 /turf/open/floor/plating/asteroid/snow/atmosphere
 	initial_gas_mix = FROZEN_ATMOS
 	planetary_atmos = FALSE
+
+//Layenia stuff
+
+/turf/open/floor/plating/asteroid/layenia
+	gender = PLURAL //trans rights
+	name = "Crimson Rock"
+	desc = "A cold rock, rusted scarlet in color."
+	icon = 'icons/turf/floors.dmi'
+	baseturfs = /turf/open/floor/plating/asteroid/layenia
+	icon_state = "layenia"
+	icon_plating = "layenia"
+	initial_gas_mix = FROZEN_ATMOS
+	slowdown = 2
+	environment_type = "layenia"
+	flags_1 = NONE
+	planetary_atmos = TRUE
+	burnt_states = null
+	bullet_sizzle = TRUE
+	bullet_bounce_sound = null
+	digResult = /obj/item/stack/ore/glass/basalt
+	floor_variance = 50
+	light_range = 2
+	light_power = 0.15
+	light_color = LIGHT_COLOR_WHITE
+
+
+/turf/open/floor/plating/asteroid/layenia/Initialize()
+	. = ..()
+	set_layenia_light(src)
+
+/proc/set_layenia_light(turf/open/floor/B)
+	switch(B.icon_state)
+		if("layenia5", "layenia6")
+			B.set_light(2, 0.6, LIGHT_COLOR_BLUE) //more light
