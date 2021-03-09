@@ -16,11 +16,13 @@
 				continue
 			
 			var/obj/item/I = new G.path
-			if(backpackstuffs && G.category == SLOT_IN_BACKPACK && iscarbon(M))
+			if(iscarbon(M) && backpackstuffs && (G.category == SLOT_IN_BACKPACK || G.blacklist_join_equip))
 				var/mob/living/carbon/C = M
 				var/obj/item/storage/backpack/B = C.back
 				if(!B || !SEND_SIGNAL(B, COMSIG_TRY_STORAGE_INSERT, I, null, TRUE, TRUE))
 					I.forceMove(get_turf(C))
+				continue
+			else if(G.blacklist_join_equip)		//Assume we're gonna be put in a backpack and not equipped
 				continue
 			else if(backpackstuffs && G.category != SLOT_IN_BACKPACK)
 				continue

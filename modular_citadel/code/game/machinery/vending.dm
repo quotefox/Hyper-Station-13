@@ -35,7 +35,7 @@
 #define COIN_CHARGE 3
 
 /obj/machinery/vending/kink
-	name = "KinkMate"
+	name = "\improper KinkMate"
 	desc = "A vending machine for all your unmentionable desires."
 	icon = 'icons/obj/citvending.dmi'
 	icon_state = "kink"
@@ -66,6 +66,7 @@
 				/obj/item/electropack/vibrator = 2,
 				)
 	contraband = list(
+				/obj/item/clothing/under/gear_harness = 3,
 				/obj/item/restraints/handcuffs/fake/kinky = 5,
 				/obj/item/clothing/neck/petcollar = 5,
 				/obj/item/clothing/under/mankini = 1,
