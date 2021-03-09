@@ -5,17 +5,17 @@ area/layenia
 	blob_allowed = FALSE
 	requires_power = TRUE
 	outdoors = TRUE
-	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 	ambientsounds = MINING
 
 area/layenia/cloudlayer
 	name = "Laneya clouds"
 	icon_state = "space"
-	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
 
 area/layenia/powered
 	name = "Layenia Powered"
-	icon_state = "mining"
+	icon_state = "centcom"
 	requires_power = FALSE
 	has_gravity = STANDARD_GRAVITY
 	noteleport = FALSE

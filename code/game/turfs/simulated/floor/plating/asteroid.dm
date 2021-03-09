@@ -384,3 +384,16 @@
 	bullet_bounce_sound = null
 	digResult = /obj/item/stack/ore/glass/basalt
 	floor_variance = 50
+	light_range = 2
+	light_power = 0.15
+	light_color = LIGHT_COLOR_WHITE
+
+
+/turf/open/floor/plating/asteroid/layenia/Initialize()
+	. = ..()
+	set_layenia_light(src)
+
+/proc/set_layenia_light(turf/open/floor/B)
+	switch(B.icon_state)
+		if("layenia5", "layenia6")
+			B.set_light(2, 0.6, LIGHT_COLOR_BLUE) //more light

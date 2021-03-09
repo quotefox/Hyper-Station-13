@@ -122,5 +122,6 @@
 	desc = "Clouds as far as the eye can see... Or is it just fog? Best not fall into it."
 	icon = 'icons/turf/floors/cloud_chasm.dmi'
 	baseturfs = /turf/open/chasm/cloud
-	light_range = 1
-	light_power = 0.25
+	light_range = 5
+	light_power = 0.45
+	light_color = LIGHT_COLOR_WHITE

@@ -92,6 +92,22 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	tiled_dirt = FALSE
 
+/turf/open/indestructible/layenia/crystal
+	name = "Lattice Crystal"
+	desc = "A glowing azure crystal, with strange properties to make things float."
+	icon = 'icons/turf/floors/crystal_floor.dmi'
+	baseturfs = /turf/open/indestructible/layenia/crystal
+	slowdown = 1
+	light_range = 4
+	light_power = 0.5
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	light_color = LIGHT_COLOR_BLUE
+	initial_gas_mix = FROZEN_ATMOS
+	smooth = SMOOTH_TRUE | SMOOTH_BORDER | SMOOTH_MORE
+	canSmoothWith = list(/turf/open/indestructible/layenia/crystal)
+
 /turf/open/indestructible/necropolis
 	name = "necropolis floor"
 	desc = "It's regarding you suspiciously."
