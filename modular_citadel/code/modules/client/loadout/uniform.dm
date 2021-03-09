@@ -229,7 +229,7 @@
 	path = /obj/item/clothing/under/bb_sweater/blue
 
 /datum/gear/keyholesweater
-	name =  "Keyhole Sweater"
+	name =  "Keyhole Sweater"	//sus
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/keyholesweater
 
@@ -412,38 +412,45 @@
 	name = "Gear Harness"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/gear_harness
+	blacklist_join_equip = TRUE
 
 /datum/gear/pinkstripper
 	name = "Pink stripper outfit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/stripper_pink
+	blacklist_join_equip = TRUE
 
 /datum/gear/greenstripper
 	name = "Green stripper outfit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/stripper_green
+	blacklist_join_equip = TRUE
 
 /datum/gear/polybikini
 	name = "Polychromic Bikini"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/bikini
 	cost = 2
+	blacklist_join_equip = TRUE
 
 /datum/gear/polystripper
 	name = "Polychromic Stripper Outfit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/stripper
 	cost = 2
+	blacklist_join_equip = TRUE
 
 /datum/gear/polypantsu
 	name = "Polychromic Panties"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/shortpants/pantsu
+	blacklist_join_equip = TRUE
 
 /datum/gear/polybulge
 	name = "Polychromic Voluminous Thong"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/bulge
+	blacklist_join_equip = TRUE
 
 /datum/gear/polybottomless
 	name = "Polychromic Bottomless Shirt"
@@ -456,18 +463,14 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/corset
 	cost = 1
-
-/datum/gear/corset
-	name = "Corset"
-	category = SLOT_W_UNIFORM
-	path = /obj/item/clothing/under/corset
-	cost = 1
+	blacklist_join_equip = TRUE
 
 /datum/gear/shortsbra
 	name = "Kromatic Shorts and Top"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/shortsbra
 	cost = 1
+	blacklist_join_equip = TRUE
 
 /datum/gear/gladiator
 	name = "Gladiator uniform"

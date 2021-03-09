@@ -69,6 +69,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/pda_skin = PDA_SKIN_ALT
 
 	var/list/alt_titles_preferences = list()
+	var/static/preview_job_outfit = TRUE	//shouldn't be something that's saved, but this is a preference option
 
 	var/uses_glasses_colour = 0
 
@@ -1049,8 +1050,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if(!gear_tab)
 				gear_tab = GLOB.loadout_items[1]
 			dat += "<table align='center' width='100%'>"
-			dat += "<tr><td colspan=4><center><b><font color='[gear_points == 0 ? "#E62100" : "#CCDDFF"]'>[gear_points]</font> loadout points remaining.</b> \[<a href='?_src_=prefs;preference=gear;clear_loadout=1'>Clear Loadout</a>\]</center></td></tr>"
-			dat += "<tr><td colspan=4><center>You can only choose one item per category, unless it's an item that spawns in your backpack or hands.</center></td></tr>"
+			dat += "<tr><td colspan=4><center><b><font color='[gear_points == 0 ? "#E62100" : "#CCDDFF"]'>[gear_points]</font> loadout points remaining.</b> \[<a href='?_src_=prefs;preference=gear;clear_loadout=1'>Clear Loadout</a>\] \[<a href='?_src_=prefs;preference=gear;toggle_outfit_visibility=1'>[preview_job_outfit ? "Enable" : "Disable"] Job Outfit Preview</a>\]</center></td></tr>"
+			dat += "<tr><td colspan=4><center>You can only choose two items per category, unless it's an item that spawns in your backpack or hands.</center></td></tr>"
 			dat += "<tr><td colspan=4><center><b>"
 			var/firstcat = TRUE
 			for(var/i in GLOB.loadout_items)
@@ -2642,6 +2643,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(gear_points >= initial(G.cost))
 					LAZYADD(chosen_gear, G.type)
 					gear_points -= initial(G.cost)
+		if(href_list["toggle_outfit_visibility"])
+			preview_job_outfit = !preview_job_outfit
 
 	ShowChoices(user)
 	return 1

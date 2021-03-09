@@ -73,7 +73,7 @@
 				previewJob = job
 				break
 
-	if(previewJob)
+	if(previewJob && preview_job_outfit)
 		if(current_tab != 2)
 			mannequin.job = previewJob.title
 			previewJob.equip(mannequin, TRUE)
