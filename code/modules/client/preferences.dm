@@ -1102,6 +1102,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "</table>"
 
 		if(4)		//Antag Preferences
+			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
 			dat += "<h1>Special Role Settings</h1>"
 			if(jobban_isbanned(user, ROLE_SYNDICATE))
 				dat += "<font color=red><h3><b>You are banned from antagonist roles.</b></h3></font>"
@@ -1122,6 +1123,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					else
 						dat += "<b>Be [capitalize(i)]:</b> <a href='?_src_=prefs;preference=be_special;be_special_type=[i]'>[(i in be_special) ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Midround Antagonist:</b> <a href='?_src_=prefs;preference=allow_midround_antag'>[(toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</a><br>"
+			dat += "</td><td width='340px' height='300px' valign='top'>"
+			dat += "<h1>Sync Settings</h1>"
+			dat += "<b>Sync</b> antag prefs. with all characters: <a href='?_src_=prefs;preference=sync_antag_with_chars'>[(toggles & ANTAG_SYNC_WITH_CHARS) ? "Yes" : "No"]</a><br>"
+			dat += "<b>Copy</b> and save antag prefs. to all characters: <a href='?_src_=prefs;preference=copy_antag_to_chars'>Copy</a><br>"
+			dat += "<b>Reset</b> antag prefs. for this character: <a href='?_src_=prefs;preference=reset_antag'>Reset</a><br>"
+			dat += "</td></tr></table>"
+
 
 	dat += "<hr><center>"
 
@@ -2523,6 +2531,30 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("allow_midround_antag")
 					toggles ^= MIDROUND_ANTAG
+				
+				if("sync_antag_with_chars")
+					toggles ^= ANTAG_SYNC_WITH_CHARS
+					if(!(toggles & ANTAG_SYNC_WITH_CHARS) && path)
+						var/savefile/S = new /savefile(path)
+						if(S)			
+							S["special_roles"] >> be_special
+				
+				if("copy_antag_to_chars")
+					if(path)
+						var/savefile/S = new /savefile(path)
+						if(S)
+							var/initial_cd = S.cd
+							for(var/i=1, i<=max_save_slots, i++)
+								S.cd = "/character[i]"
+								if(S["real_name"])
+									WRITE_FILE(S["special_roles"], be_special)
+							S.cd = initial_cd
+							to_chat(parent, "<span class='notice'>Successfully copied antagonist preferences to all characters.</span>")
+						else
+							to_chat(parent, "<span class='notice'>Could not write to file.</span>")
+				
+				if("reset_antag")
+					be_special = list()
 
 				if("parallaxup")
 					parallax = WRAP(parallax + 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
