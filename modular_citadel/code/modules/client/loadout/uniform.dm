@@ -229,7 +229,7 @@
 	path = /obj/item/clothing/under/bb_sweater/blue
 
 /datum/gear/keyholesweater
-	name =  "Keyhole Sweater"	//sus
+	name =  "Keyhole Sweater"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/keyholesweater
 
