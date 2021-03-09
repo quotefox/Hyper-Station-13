@@ -1,4 +1,4 @@
-/datum/controller/subsystem/job/proc/equip_loadout(mob/dead/new_player/N, mob/living/M, equipbackpackstuff)
+/datum/controller/subsystem/job/proc/equip_loadout(mob/dead/new_player/N, mob/living/M, backpackstuffs)
 	var/mob/the_mob = N
 	if(!the_mob)
 		the_mob = M // cause this doesn't get assigned if player is a latejoiner
@@ -10,18 +10,20 @@
 			G = GLOB.loadout_items[slot_to_string(initial(G.category))][initial(G.name)]
 			if(!G)
 				continue
-			var/permitted = TRUE
 			if(G.restricted_roles && G.restricted_roles.len && !(M.mind.assigned_role in G.restricted_roles))
-				permitted = FALSE
-			if(G.ckeywhitelist && G.ckeywhitelist.len && !(the_mob.client.ckey in G.ckeywhitelist))
-				permitted = FALSE
-			if(!equipbackpackstuff && G.category == SLOT_IN_BACKPACK)//snowflake check since plopping stuff in the backpack doesnt work for pre-job equip loadout stuffs
-				permitted = FALSE
-			if(equipbackpackstuff && G.category != SLOT_IN_BACKPACK)//ditto
-				permitted = FALSE
-			if(!permitted)
 				continue
+			if(G.ckeywhitelist && G.ckeywhitelist.len && !(the_mob.client.ckey in G.ckeywhitelist))
+				continue
+			
 			var/obj/item/I = new G.path
+			if(backpackstuffs && G.category == SLOT_IN_BACKPACK && iscarbon(M))
+				var/mob/living/carbon/C = M
+				var/obj/item/storage/backpack/B = C.back
+				if(!B || !SEND_SIGNAL(B, COMSIG_TRY_STORAGE_INSERT, I, null, TRUE, TRUE))
+					I.forceMove(get_turf(C))
+				continue
+			else if(backpackstuffs && G.category != SLOT_IN_BACKPACK)
+				continue
 			if(!M.equip_to_slot_if_possible(I, G.category, disable_warning = TRUE, bypass_equip_delay_self = TRUE)) // If the job's dresscode compliant, try to put it in its slot, first
 				if(iscarbon(M))
 					var/mob/living/carbon/C = M
