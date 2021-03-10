@@ -667,6 +667,9 @@
 /obj/structure/flora/crystal/small
 	name = "small crystals"
 	icon = 'icons/obj/flora/layeniasmall.dmi'
+	light_range = 2
+	light_power = 0.25
+	light_color = LIGHT_COLOR_BLUE
 
 //Small crystal clusters
 /obj/structure/flora/crystal/small/pile
@@ -693,14 +696,20 @@
 /obj/structure/flora/crystal/medium
 	name = "small crystals"
 	icon = 'icons/obj/flora/layeniamedium.dmi'
+	pixel_x = -16
+	pixel_y = -3
+	layer = ABOVE_ALL_MOB_LAYER
+	light_range = 4
+	light_power = 0.75
+	light_color = LIGHT_COLOR_BLUE
 
 //Medium crystal growths
-/obj/structure/flora/crystal/small/growth
+/obj/structure/flora/crystal/medium/growth
 	name = "small crystals"
 	desc = "A growth of medium crystals"
 	icon_state = "crystalgrowth"
 
-/obj/structure/flora/crystal/small/growth/Initialize()
+/obj/structure/flora/crystal/medium/growth/Initialize()
 	if(icon_state == "crystalgrowth")
 		icon_state = "crystalgrowth[rand(1, 3)]"
 	. = ..()
