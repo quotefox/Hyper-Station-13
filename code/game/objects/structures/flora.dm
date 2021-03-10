@@ -672,10 +672,10 @@
 /obj/structure/flora/crystal/small/pile
 	name = "small crystals"
 	desc = "A pile of small crystals"
-	icon_state = "crystals1"
+	icon_state = "crystals"
 
 /obj/structure/flora/crystal/small/pile/Initialize()
-	if(icon_state == "crystals1")
+	if(icon_state == "crystals")
 		icon_state = "crystals[rand(1, 4)]"
 	. = ..()
 
@@ -683,9 +683,24 @@
 /obj/structure/flora/crystal/small/growth
 	name = "small crystals"
 	desc = "A growth of small crystals"
-	icon_state = "crystalgrowth1"
+	icon_state = "crystalgrowth"
 
 /obj/structure/flora/crystal/small/growth/Initialize()
-	if(icon_state == "crystalgrowth1")
+	if(icon_state == "crystalgrowth")
 		icon_state = "crystalgrowth[rand(1, 4)]"
+	. = ..()
+
+/obj/structure/flora/crystal/medium
+	name = "small crystals"
+	icon = 'icons/obj/flora/layeniamedium.dmi'
+
+//Medium crystal growths
+/obj/structure/flora/crystal/small/growth
+	name = "small crystals"
+	desc = "A growth of medium crystals"
+	icon_state = "crystalgrowth"
+
+/obj/structure/flora/crystal/small/growth/Initialize()
+	if(icon_state == "crystalgrowth")
+		icon_state = "crystalgrowth[rand(1, 3)]"
 	. = ..()
