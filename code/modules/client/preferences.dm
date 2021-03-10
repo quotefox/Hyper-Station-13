@@ -830,6 +830,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Femcum</a>"
 							if(/datum/reagent/consumable/alienhoney)
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Honey</a>"
+							if(/datum/reagent/consumable/xenofluid)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Xeno fluid</a>"
 							else
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=balls_fluid;task=input'>Nothing?</a>"
 							//This else is a safeguard for errors, and if it happened, they wouldn't be able to change this pref,
@@ -875,6 +877,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Femcum</a>"
 							if(/datum/reagent/consumable/alienhoney)
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Honey</a>"
+							if(/datum/reagent/consumable/xenofluid)
+								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Xeno fluid</a>"
 							else
 								dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=breasts_fluid;task=input'>Nothing?</a>"
 							//This else is a safeguard for errors, and if it happened, they wouldn't be able to change this pref,
@@ -2205,6 +2209,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							features["balls_fluid"] = /datum/reagent/consumable/femcum
 						if("Honey")
 							features["balls_fluid"] = /datum/reagent/consumable/alienhoney
+						if("Xeno fluid")
+							features["balls_fluid"] = /datum/reagent/consumable/xenofluid
 
 				if("egg_size")
 					var/new_size
@@ -2248,6 +2254,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							features["breasts_fluid"] = /datum/reagent/consumable/femcum
 						if("Honey")
 							features["breasts_fluid"] = /datum/reagent/consumable/alienhoney
+						if("Xeno fluid")
+							features["breasts_fluid"] = /datum/reagent/consumable/xenofluid
 
 				if("breasts_color")
 					var/new_breasts_color = input(user, "Breast Color:", "Character Preference") as color|null
@@ -2531,14 +2539,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("allow_midround_antag")
 					toggles ^= MIDROUND_ANTAG
-				
+
 				if("sync_antag_with_chars")
 					toggles ^= ANTAG_SYNC_WITH_CHARS
 					if(!(toggles & ANTAG_SYNC_WITH_CHARS) && path)
 						var/savefile/S = new /savefile(path)
-						if(S)			
+						if(S)
 							S["special_roles"] >> be_special
-				
+
 				if("copy_antag_to_chars")
 					if(path)
 						var/savefile/S = new /savefile(path)
@@ -2552,7 +2560,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							to_chat(parent, "<span class='notice'>Successfully copied antagonist preferences to all characters.</span>")
 						else
 							to_chat(parent, "<span class='notice'>Could not write to file.</span>")
-				
+
 				if("reset_antag")
 					be_special = list()
 

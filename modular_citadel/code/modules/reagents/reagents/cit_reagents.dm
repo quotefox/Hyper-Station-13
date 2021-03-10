@@ -124,6 +124,54 @@
 		blood_DNA |= S.blood_DNA
 	return ..()
 
+/datum/reagent/consumable/xenofluid
+	name = "Xeno fluid"
+	description = "A nutritious substance produced by xenomorphs. Do not confuse with its blood."
+	taste_description = "something sticky"
+	taste_mult = 2 //Not very overpowering flavor
+	data = list("donor"=null,"viruses"=null,"donor_DNA"=null,"blood_type"=null,"resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null)
+	reagent_state = LIQUID
+	color = "#A6CE32" // rgb: 166, 206, 50
+	can_synth = FALSE
+	nutriment_factor = 6 * REAGENTS_METABOLISM
+	glass_icon_state = "xenofluid"
+	glass_name = "glass of xeno fluid"
+	glass_desc = "Feed yourself like a xenomorph!"
+	hydration = 3 * REAGENTS_METABOLISM //thats one way to stay hydrated...
+
+/datum/reagent/consumable/xenofluid/reaction_turf(turf/T, reac_volume)
+	if(!istype(T))
+		return
+	if(reac_volume < 3)
+		return
+
+	var/obj/effect/decal/cleanable/xenofluid/S = locate() in T
+	if(!S)
+		S = new(T)
+	if(data["blood_DNA"])
+		S.add_blood_DNA(list(data["blood_DNA"] = data["blood_type"]))
+
+/obj/effect/decal/cleanable/xenofluid
+	name = "xeno fluid"
+	desc = null
+	gender = PLURAL
+	density = 0
+	layer = ABOVE_NORMAL_TURF_LAYER
+	icon = 'modular_citadel/icons/obj/genitals/effects.dmi'
+	icon_state = "xenofluid1"
+	random_icon_states = list("xenofluid1", "xenofluid2", "xenofluid3", "xenofluid4")
+
+/obj/effect/decal/cleanable/xenofluid/Initialize(mapload)
+	. = ..()
+	dir = GLOB.cardinals
+	add_blood_DNA(list("Non-human DNA" = "A+"))
+	set_light(8, 1, "#A6CE32")    //syntax: range, power, color
+
+/obj/effect/decal/cleanable/semen/replace_decal(obj/effect/decal/cleanable/xenofluid/S)
+	if(S.blood_DNA)
+		blood_DNA |= S.blood_DNA
+	return ..()
+
 //aphrodisiac & anaphrodisiac
 
 /datum/reagent/drug/aphrodisiac
