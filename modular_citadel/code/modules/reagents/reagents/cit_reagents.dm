@@ -165,7 +165,7 @@
 	. = ..()
 	dir = GLOB.cardinals
 	add_blood_DNA(list("Non-human DNA" = "A+"))
-	set_light(8, 1, "#A6CE32")    //syntax: range, power, color
+	set_light(1, 0.5, "#A6CE32")    //syntax: range, power, color
 
 /obj/effect/decal/cleanable/semen/replace_decal(obj/effect/decal/cleanable/xenofluid/S)
 	if(S.blood_DNA)
