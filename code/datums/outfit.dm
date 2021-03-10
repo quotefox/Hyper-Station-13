@@ -40,31 +40,44 @@
 
 	//Start with uniform,suit,backpack for additional slots
 	if(uniform)
-		H.equip_to_slot_or_del(new uniform(H),SLOT_W_UNIFORM)
+		H.equip_to_slot_or_store_and_del(new uniform(H),SLOT_W_UNIFORM)
 	if(suit)
-		H.equip_to_slot_or_del(new suit(H),SLOT_WEAR_SUIT)
+		H.equip_to_slot_or_store_and_del(new suit(H),SLOT_WEAR_SUIT)
 	if(back)
 		H.equip_to_slot_or_del(new back(H),SLOT_BACK)
+	
+	if(!visualsOnly) // Items in pockets or backpack don't show up on mob's icon.
+		if(l_pocket)
+			H.equip_to_slot_or_store_and_del(new l_pocket(H),SLOT_L_STORE)
+		if(r_pocket)
+			H.equip_to_slot_or_store_and_del(new r_pocket(H),SLOT_R_STORE)
+		if(backpack_contents)
+			for(var/path in backpack_contents)
+				var/number = backpack_contents[path]
+				if(!isnum(number))//Default to 1
+					number = 1
+				for(var/i in 1 to number)
+					H.equip_to_slot_or_del(new path(H),SLOT_IN_BACKPACK)
 	if(belt)
-		H.equip_to_slot_or_del(new belt(H),SLOT_BELT)
+		H.equip_to_slot_or_store_and_del(new belt(H),SLOT_BELT)
 	if(gloves)
-		H.equip_to_slot_or_del(new gloves(H),SLOT_GLOVES)
+		H.equip_to_slot_or_store_and_del(new gloves(H),SLOT_GLOVES)
 	if(shoes)
-		H.equip_to_slot_or_del(new shoes(H),SLOT_SHOES)
+		H.equip_to_slot_or_store_and_del(new shoes(H),SLOT_SHOES)
 	if(head)
-		H.equip_to_slot_or_del(new head(H),SLOT_HEAD)
+		H.equip_to_slot_or_store_and_del(new head(H),SLOT_HEAD)
 	if(mask)
-		H.equip_to_slot_or_del(new mask(H),SLOT_WEAR_MASK)
+		H.equip_to_slot_or_store_and_del(new mask(H),SLOT_WEAR_MASK)
 	if(neck)
-		H.equip_to_slot_or_del(new neck(H),SLOT_NECK)
+		H.equip_to_slot_or_store_and_del(new neck(H),SLOT_NECK)
 	if(ears)
-		H.equip_to_slot_or_del(new ears(H),SLOT_EARS)
+		H.equip_to_slot_or_store_and_del(new ears(H),SLOT_EARS)
 	if(glasses)
-		H.equip_to_slot_or_del(new glasses(H),SLOT_GLASSES)
+		H.equip_to_slot_or_store_and_del(new glasses(H),SLOT_GLASSES)
 	if(id)
-		H.equip_to_slot_or_del(new id(H),SLOT_WEAR_ID)
+		H.equip_to_slot_or_store_and_del(new id(H),SLOT_WEAR_ID)
 	if(suit_store)
-		H.equip_to_slot_or_del(new suit_store(H),SLOT_S_STORE)
+		H.equip_to_slot_or_store_and_del(new suit_store(H),SLOT_S_STORE)
 
 	if(accessory)
 		var/obj/item/clothing/under/U = H.w_uniform
@@ -77,19 +90,6 @@
 		H.put_in_l_hand(new l_hand(H))
 	if(r_hand)
 		H.put_in_r_hand(new r_hand(H))
-
-	if(!visualsOnly) // Items in pockets or backpack don't show up on mob's icon.
-		if(l_pocket)
-			H.equip_to_slot_or_del(new l_pocket(H),SLOT_L_STORE)
-		if(r_pocket)
-			H.equip_to_slot_or_del(new r_pocket(H),SLOT_R_STORE)
-		if(backpack_contents)
-			for(var/path in backpack_contents)
-				var/number = backpack_contents[path]
-				if(!isnum(number))//Default to 1
-					number = 1
-				for(var/i in 1 to number)
-					H.equip_to_slot_or_del(new path(H),SLOT_IN_BACKPACK)
 
 	if(!H.head && toggle_helmet && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
 		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit

@@ -27,6 +27,7 @@
 	name = "Rice hat"
 	category = SLOT_HEAD
 	path = /obj/item/clothing/head/rice_hat
+	blacklist_join_equip = TRUE
 
 /datum/gear/ushanka
 	name = "Ushanka"
@@ -53,12 +54,14 @@
 	category = SLOT_HEAD
 	path = /obj/item/clothing/head/flakhelm
 	cost = 2
+	blacklist_join_equip = TRUE
 
 /datum/gear/delinquent //Now you too can become like your favorite punchy ghost protagonist
 	name = "Delinquent Hat"
 	category = SLOT_HEAD
 	path = /obj/item/clothing/head/delinquent
 	cost = 3
+	blacklist_join_equip = TRUE
 
 /datum/gear/bunnyears
 	name = "Bunny Ears"
