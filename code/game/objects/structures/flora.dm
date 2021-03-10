@@ -656,3 +656,36 @@
 
 	if(islist(icon_states && icon_states.len))
 		icon_state = pick(icon_states)
+
+
+/obj/structure/flora/crystal
+	name = "crystal"
+	desc = "You shouldnt see this!"
+	gender = PLURAL //trans rights
+	max_integrity = 30
+
+/obj/structure/flora/crystal/small
+	name = "small crystals"
+	icon = 'icons/obj/flora/layeniasmall.dmi'
+
+//Small crystal clusters
+/obj/structure/flora/crystal/small/pile
+	name = "small crystals"
+	desc = "A pile of small crystals"
+	icon_state = "crystals1"
+
+/obj/structure/flora/crystal/small/pile/Initialize()
+	if(icon_state == "crystals1")
+		icon_state = "crystals[rand(1, 4)]"
+	. = ..()
+
+//Small crystal growths
+/obj/structure/flora/crystal/small/growth
+	name = "small crystals"
+	desc = "A growth of small crystals"
+	icon_state = "crystalgrowth1"
+
+/obj/structure/flora/crystal/small/growth/Initialize()
+	if(icon_state == "crystalgrowth1")
+		icon_state = "crystalgrowth[rand(1, 4)]"
+	. = ..()
