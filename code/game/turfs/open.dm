@@ -79,6 +79,9 @@
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "concrete"
 
+/turf/open/indestructible/concrete/smooth
+	icon_state = "concrete2"
+
 /turf/open/indestructible/cobble/side
 	icon_state = "cobble_side"
 

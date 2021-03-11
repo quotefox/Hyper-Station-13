@@ -368,7 +368,7 @@
 
 /turf/open/floor/plating/asteroid/layenia
 	gender = PLURAL //trans rights
-	name = "Crimson Rock"
+	name = "crimson Rock"
 	desc = "A cold rock, rusted scarlet in color."
 	icon = 'icons/turf/floors.dmi'
 	baseturfs = /turf/open/floor/plating/asteroid/layenia
