@@ -74,6 +74,11 @@
 	if(istype(AM))
 		playsound(src,sound,50,1)
 
+/turf/open/indestructible/concrete
+	name = "concrete"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "concrete"
+
 /turf/open/indestructible/cobble/side
 	icon_state = "cobble_side"
 
