@@ -429,7 +429,7 @@
 			//genitals bigger than 26 inches / g-cup will appear over clothing, if accepted
 			//otherwise, appear under clothing
 			if(G.slot == "penis" || G.slot == "testicles")
-				if(G.size < 4)		//actually 26 inches
+				if(G.size < 3)		//is actually "less than 11 inches"
 					genital_overlay.layer = -GENITALS_UNDER_LAYER			
 			if(G.slot == "breasts")
 				var/obj/item/organ/genital/breasts/B = G
