@@ -383,7 +383,7 @@
 	if(HAS_TRAIT(H, TRAIT_HUSK))
 		return
 	var/list/genitals_to_add = list()
-	var/list/relevant_layers = list(GENITALS_BEHIND_LAYER, GENITALS_FRONT_LAYER) //GENITALS_ADJ_LAYER removed
+	var/list/relevant_layers = list(GENITALS_BEHIND_LAYER, GENITALS_FRONT_LAYER, GENITALS_UNDER_LAYER) //GENITALS_ADJ_LAYER removed
 	var/list/standing = list()
 	var/size
 	var/aroused_state
@@ -426,14 +426,23 @@
 				continue
 
 			var/mutable_appearance/genital_overlay = mutable_appearance(S.icon, layer = -layer)
+			//genitals bigger than 26 inches / g-cup will appear over clothing, if accepted
+			//otherwise, appear under clothing
+			if(G.slot == "penis" || G.slot == "testicles")
+				if(G.size < 4)		//actually 26 inches
+					genital_overlay.layer = -GENITALS_UNDER_LAYER			
+			if(G.slot == "breasts")
+				var/obj/item/organ/genital/breasts/B = G
+				if(B.cached_size < 8)
+					genital_overlay.layer = -GENITALS_UNDER_LAYER
+			
+			//Get the icon
 			genital_overlay.icon_state = "[G.slot]_[S.icon_state]_[size]_[aroused_state]_[layertext]"
 			colourcode = S.color_src
-
-			if(G.slot == "belly") //we have a different size system to the rest of the genitals
+			if(G.slot == "belly") //we have a different size system
 				genital_overlay.icon = 'hyperstation/icons/obj/genitals/belly.dmi'
 				genital_overlay.icon_state = "belly_[size]"
 				colourcode = "belly_color"
-
 
 			if(S.center)
 				genital_overlay = center_image(genital_overlay, S.dimension_x, S.dimension_y)
