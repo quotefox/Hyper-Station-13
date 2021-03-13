@@ -384,9 +384,9 @@
 	bullet_bounce_sound = null
 	digResult = /obj/item/stack/ore/glass/basalt
 	floor_variance = 50
-	light_range = 2
-	light_power = 0.15
-	light_color = LIGHT_COLOR_WHITE
+	//light_range = 2
+	//light_power = 0.15
+	//light_color = LIGHT_COLOR_WHITE
 
 
 /turf/open/floor/plating/asteroid/layenia/Initialize()
