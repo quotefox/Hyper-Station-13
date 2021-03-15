@@ -1018,6 +1018,11 @@ datum/sprite_accessory/ears/human/gret
 	name = "Synthetic Lizard - Spectre"
 	icon_state = "synthlizspectre"
 
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizvenom
+	color_src = MATRIXED
+	name = "Synthetic Lizard - VE/NM"
+	icon_state = "synthlizvenom"
+
 /******************************************
 **************** Snouts *******************
 *************but higher up*****************/
@@ -2211,6 +2216,11 @@ datum/sprite_accessory/mam_tails/insect
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Cobra Hood"
 	icon_state = "synth_cobrahood"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_cobraslim
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Narrow Cobra Hood"
+	icon_state = "synth_cobraslim"
 
 // *** Snooooow flaaaaake ***
 
