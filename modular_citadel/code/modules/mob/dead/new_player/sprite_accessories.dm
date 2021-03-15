@@ -1038,7 +1038,7 @@ datum/sprite_accessory/ears/human/gret
 
 /datum/sprite_accessory/mam_snouts/synthliz/synthlizvenom
 	color_src = MATRIXED
-	name = "Synthetic Lizard - VE/NM"
+	name = "Synthetic Lizard - V3/NM"
 	icon_state = "synthlizvenom"
 
 /******************************************
