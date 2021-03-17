@@ -390,7 +390,6 @@ SUBSYSTEM_DEF(job)
 	var/datum/job/job = GetJob(rank)
 
 	H.job = rank
-	equip_loadout(N, H)
 
 	//If we joined at roundstart we should be positioned at our workstation
 	if(!joined_late)
@@ -411,27 +410,17 @@ SUBSYSTEM_DEF(job)
 		if(!S) //if there isn't a spawnpoint send them to latejoin, if there's no latejoin go yell at your mapper
 			log_world("Couldn't find a round start spawn point for [rank]")
 			SendToLateJoin(H)
-
-
+	
 	if(H.mind)
 		H.mind.assigned_role = rank
-
+	
 	if(job)
-		var/new_mob = job.equip(H, null, null, joined_late)
-		if(ismob(new_mob))
-			H = new_mob
-			if(!joined_late)
-				N.new_character = H
-			else
-				M = H
-
-		SSpersistence.antag_rep_change[M.client.ckey] += job.GetAntagRep()
-
-	var/display_rank = rank
-	if(M.client && M.client.prefs && M.client.prefs.alt_titles_preferences[rank])
-		display_rank = M.client.prefs.alt_titles_preferences[rank]
-	to_chat(M, "<b>You are the [display_rank].</b>")
-	if(job)
+		equip_loadout(N, H, job, joined_late)	//Handles loadout and job equipping
+		
+		var/display_rank = rank
+		if(M.client && M.client.prefs && M.client.prefs.alt_titles_preferences[rank])
+			display_rank = M.client.prefs.alt_titles_preferences[rank]
+		to_chat(M, "<b>You are the [display_rank].</b>")
 		to_chat(M, "<b>As the [display_rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
 		to_chat(M, "<b>To speak on your departments radio, use the :h button. To see others, look closely at your headset.</b>")
 		if(job.req_admin_notify)
@@ -441,15 +430,13 @@ SUBSYSTEM_DEF(job)
 		if(CONFIG_GET(number/minimal_access_threshold))
 			to_chat(M, "<span class='notice'><B>As this station was initially staffed with a [CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B></span>")
 
+		SSpersistence.antag_rep_change[M.client.ckey] += job.GetAntagRep()
+	
 	if(ishuman(H))
 		var/mob/living/carbon/human/wageslave = H
 		to_chat(M, "<b><span class = 'big'>Your account ID is [wageslave.account_id]</span></b>")
 		to_chat(M, "<b><span class = 'notice'>You do not have a pin, can set your pin at a ATM.</b>")
 		H.add_memory("Your account ID is [wageslave.account_id].")
-
-	if(job && H)
-		job.after_spawn(H, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
-		equip_loadout(N, H, TRUE)//CIT CHANGE - makes players spawn with in-backpack loadout items properly. A little hacky but it works
 
 	return H
 
