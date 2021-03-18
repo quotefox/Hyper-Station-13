@@ -31,11 +31,11 @@
 
 // Laughin' Peas
 /obj/item/seeds/peas/laugh
-	name = "pack of laughing peas"
-	desc = "These seeds give off a very soft purple glow.. they should grow into Laughing Peas."
+	name = "pack of laughin' peas"
+	desc = "These seeds give off a very soft purple glow.. they should grow into Laughin' Peas."
 	icon_state = "seed-laughpeas"
 	species = "laughpeas"
-	plantname = "Laughing Peas"
+	plantname = "Laughin' Peas"
 	product = /obj/item/reagent_containers/food/snacks/grown/laugh
 	maturation = 7
 	potency = 10
@@ -53,7 +53,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/laugh
 	seed = /obj/item/seeds/peas/laugh
-	name = "pod of laughing peas"
+	name = "pod of laughin' peas"
 	desc = "Ridens Cicer, guaranteed to improve your mood dramatically upon consumption!"
 	icon_state = "laughpeas"
 	filling_color = "#ee7bee"

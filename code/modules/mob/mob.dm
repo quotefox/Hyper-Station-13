@@ -260,7 +260,7 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 //This is just a commonly used configuration for the equip_to_slot_if_possible() proc, used to equip people when the round starts and when events happen and such.
 //Also bypasses equip delay checks, since the mob isn't actually putting it on.
 /mob/proc/equip_to_slot_or_del(obj/item/W, slot)
-	return equip_to_slot_if_possible(W, slot, TRUE, TRUE, FALSE, TRUE, FALSE)
+	return equip_to_slot_if_possible(W, slot, TRUE, TRUE, FALSE, TRUE)
 
 /mob/proc/equip_to_slot_or_store(obj/item/W, slot)
 	return equip_to_slot_if_possible(W, slot, FALSE, TRUE, FALSE, TRUE, TRUE)

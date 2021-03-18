@@ -36,7 +36,7 @@
 	var/buckle_message_cooldown = 0
 	var/fingerprintslast
 
-	var/list/filter_data = list() //For handling persistent filters
+	var/list/filter_data //For handling persistent filters
 
 	var/datum/component/orbiter/orbiters
 
@@ -861,15 +861,14 @@ Proc for attack log creation, because really why not
 		filters += filter(arglist(arguments))
 
 /atom/movable/proc/get_filter(name)
-	if(filter_data)
-		if(filter_data[name])	return filters[filter_data.Find(name)]
+	if(filter_data && filter_data[name])
+		return filters[filter_data.Find(name)]
 
 /atom/movable/proc/remove_filter(name)
-	if(filter_data)
-		if(filter_data[name])
-			filter_data -= name
-			update_filters()
-			return TRUE
+	if(filter_data[name])
+		filter_data -= name
+		update_filters()
+		return TRUE
 
 /atom/proc/intercept_zImpact(atom/movable/AM, levels = 1)
 	. |= SEND_SIGNAL(src, COMSIG_ATOM_INTERCEPT_Z_FALL, AM, levels)
