@@ -19923,9 +19923,6 @@
 /area/centcom/holding)
 "Vn" = (
 /obj/structure/table/wood/fancy,
-/obj/item/candle/infinite{
-	pixel_y = 6
-	},
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
 	icon_state = "drain";
@@ -19940,6 +19937,10 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/shotglass{
 	pixel_x = 7;
 	pixel_y = 5
+	},
+/obj/item/candle{
+	pixel_x = 1;
+	pixel_y = 6
 	},
 /turf/open/floor/wood,
 /area/centcom/control)
@@ -20694,9 +20695,9 @@
 /obj/item/reagent_containers/food/snacks/meatballspaghetti{
 	pixel_y = 14
 	},
-/obj/item/candle/infinite{
+/obj/item/candle{
 	pixel_x = 1;
-	pixel_y = 3
+	pixel_y = 6
 	},
 /turf/open/floor/wood,
 /area/centcom/control)
@@ -66005,7 +66006,7 @@ nM
 nM
 io
 mQ
-iu
+io
 rK
 iu
 tN
