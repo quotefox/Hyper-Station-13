@@ -213,7 +213,7 @@
 
 /obj/item/clothing/under/polychromic/vsweater
 	name = "virgin killer sweater"
-	desc = "What is this? A sweater that covers basically none of the back that's what."
+	desc = "A sweater designed to be as provocative as possible, with almost all of the back missing, bairly hiding anything from that angle. Warning: Doesn't actually kill virgins."
 	icon_state = "vkiller"
 	item_color = "vkiller"
 	item_state = "rainbow"
