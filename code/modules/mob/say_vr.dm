@@ -6,7 +6,7 @@
 	set src in usr
 	if(usr != src)
 		to_chat(usr, "No.")
-	var/msg = stripped_multiline_input(usr, "Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Flavor Text", html_decode(flavor_text), MAX_MESSAGE_LEN, TRUE)
+	var/msg = stripped_multiline_input(usr, "Set the flavor text in your 'examine' verb. IC only!", "Flavor Text", html_decode(flavor_text), MAX_MESSAGE_LEN, TRUE)
 
 	if(msg)
 		flavor_text = html_encode(msg)

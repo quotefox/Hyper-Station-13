@@ -1,3 +1,4 @@
+/*
 /datum/hud/var/obj/screen/staminas/staminas
 /datum/hud/var/obj/screen/staminabuffer/staminabuffer
 
@@ -76,3 +77,4 @@
 						return "stambuffer6"
 					else
 						return "stambuffer7"
+*/

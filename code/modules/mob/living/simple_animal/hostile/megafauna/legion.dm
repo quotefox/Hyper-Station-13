@@ -32,7 +32,7 @@ Difficulty: Medium
 	melee_damage_lower = 25
 	melee_damage_upper = 25
 	speed = 1
-	move_to_delay = 2
+	move_to_delay = 4
 	ranged = 1
 	del_on_death = 1
 	retreat_distance = 5
@@ -88,7 +88,7 @@ Difficulty: Medium
 			retreat_distance = 0
 			minimum_distance = 0
 			speed = 0
-			move_to_delay = 1
+			move_to_delay = 2
 			charging = 1
 			addtimer(CALLBACK(src, .proc/reset_charge), 50)
 
@@ -97,7 +97,7 @@ Difficulty: Medium
 	retreat_distance = 5
 	minimum_distance = 5
 	speed = 1
-	move_to_delay = 2
+	move_to_delay = 4
 	charging = 0
 
 /mob/living/simple_animal/hostile/megafauna/legion/death()

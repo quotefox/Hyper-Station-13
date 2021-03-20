@@ -130,6 +130,7 @@
 	var/updating_glide_size = TRUE
 
 	var/flavor_text = ""
+	var/ooc_text = ""
 	var/flavor_text_2 = "" //version of the above that only lasts for the current round.
 
 	///////TYPING INDICATORS///////

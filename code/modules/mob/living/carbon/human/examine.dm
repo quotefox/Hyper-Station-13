@@ -8,6 +8,7 @@
 	var/t_is = p_are()
 	var/obscure_name
 	var/dispSize = round(12*size_multiplier) // gets the character's sprite size percent and converts it to the nearest half foot
+	var/output = ""
 
 	if(isliving(user))
 		var/mob/living/L = user
@@ -23,11 +24,16 @@
 	if (vassDesc != "")
 		. += vassDesc
 
+	output = "<center>"
 	var/list/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
 
 	if(ishuman(src)) //user just returned, y'know, the user's own species. dumb.
 		var/mob/living/carbon/human/H = src
+		if(gender)
+			output += "[icon2html('hyperstation/icons/chat/gender.dmi', world, gender)]"
+
+		output += "<b>[src.name]</b>"
 		var/datum/species/pref_species = H.dna.species
 		if(get_visible_name() == "Unknown") // same as flavor text, but hey it works.
 			. += "You can't make out what species they are."
@@ -35,6 +41,8 @@
 			. += "You can't make out what species they are."
 		else
 			. += "[t_He] [t_is] a [H.dna.custom_species ? H.dna.custom_species : pref_species.name]!"
+			output += "([H.dna.custom_species ? H.dna.custom_species : pref_species.name])"
+	output += "</center>"
 
 	//uniform
 	if(w_uniform && !(SLOT_W_UNIFORM in obscured))
@@ -408,15 +416,29 @@
 	else if(isobserver(user) && traitstring)
 		. += "<span class='info'><b>Traits:</b> [traitstring]</span>"
 
+
 	if(print_flavor_text())
+		output += "<br><b>General</b>"
 		if(get_visible_name() == "Unknown")	//Are we sure we know who this is? Don't show flavor text unless we can recognize them. Prevents certain metagaming with impersonation.
 			. += "...?"
+			output += "<br>...?"
 		else if(skipface) //Sometimes we're not unknown, but impersonating someone in a hardsuit, let's not reveal our flavor text then either.
 			. += "...?"
+			output += "<br>...?"
 		else
 			. += "[print_flavor_text()]"
+			output += "<br>[replacetext(sanitize(html_decode(flavor_text)), "#", "<p>")]"
+			if(ooc_text)
+				output += "<br><br><i><b>OOC</b>"
+				output += "<br>[replacetext(sanitize(html_decode(ooc_text)), "#", "<p>")]"
+
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, msg)
 	. += "*---------*</span>"
+
+	//stat panel
+	if(ishuman(src))
+		user.client << output(output, "statbrowser:update_examine") //open the examine window
+		user.client << output(null, "statbrowser:create_mobexamine") //open the examine window
 
 /mob/living/proc/status_effect_examines(pronoun_replacement) //You can include this in any mob's examine() to show the examine texts of status effects!
 	var/list/dat = list()

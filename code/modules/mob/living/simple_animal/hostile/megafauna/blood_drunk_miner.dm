@@ -33,7 +33,7 @@ Difficulty: Medium
 	movement_type = GROUND
 	speak_emote = list("roars")
 	speed = 1
-	move_to_delay = 2
+	move_to_delay = 4
 	projectiletype = /obj/item/projectile/kinetic/miner
 	projectilesound = 'sound/weapons/kenetic_accel.ogg'
 	ranged = 1

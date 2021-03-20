@@ -40,7 +40,7 @@ Difficulty: Hard
 	melee_damage_lower = 40
 	melee_damage_upper = 40
 	speed = 1
-	move_to_delay = 10
+	move_to_delay = 15
 	ranged_cooldown_time = 10
 	ranged = 1
 	pixel_x = -32
