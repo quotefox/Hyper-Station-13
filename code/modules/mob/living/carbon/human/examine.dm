@@ -427,10 +427,10 @@
 			output += "<br>...?"
 		else
 			. += "[print_flavor_text()]"
-			output += "<br>[replacetext(sanitize(html_decode(flavor_text)), "#", "<p>")]"
+			output += "<br>[url_encode(json_encode(flavor_text))]"
 			if(ooc_text)
 				output += "<br><br><i><b>OOC</b>"
-				output += "<br>[replacetext(sanitize(html_decode(ooc_text)), "#", "<p>")]"
+				output += "<br>[url_encode(json_encode(ooc_text))]"
 
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, msg)
 	. += "*---------*</span>"
