@@ -19,7 +19,7 @@
 /mob/living/movement_delay(ignorewalk = 0)
 	. = ..()
 	if(resting)
-		. += 6
+		. += 3
 
 /atom
 	var/pseudo_z_axis

@@ -275,8 +275,6 @@ var status_tab_parts = ["loading..."];
 var current_tab = null;
 var mc_tab_parts = [["loading...", ""]];
 var examine_tab_parts = ["<b>Mob Examine Text</b>"];
-var examine_flavour = [];
-var examine_ooc = [];
 var href_token = null;
 var spells = [];
 var spell_tabs = [];
@@ -691,7 +689,7 @@ function draw_mc() {
 }
 
 
-function update_examine(html,flavour,ooc) {
+function update_examine(html) {
 	examine_tab_parts = html
 	}
 
