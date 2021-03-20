@@ -3,7 +3,6 @@ SUBSYSTEM_DEF(mobs)
 	priority = FIRE_PRIORITY_MOBS
 	flags = SS_KEEP_TIMING | SS_NO_INIT
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
-	wait = 5
 
 	var/list/currentrun = list()
 	var/static/list/clients_by_zlevel[][]
