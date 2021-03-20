@@ -210,3 +210,14 @@
 	secondary_color = "#FFFFFF"
 	hastertiary = FALSE
 	body_parts_covered= CHEST|GROIN
+
+/obj/item/clothing/under/polychromic/vsweater
+	name = "virgin killer sweater"
+	desc = "What is this? A sweater that covers basically none of the back that's what."
+	icon_state = "vkiller"
+	item_color = "vkiller"
+	item_state = "rainbow"
+	primary_color = "#E1D6C9" //RGB in hexcode
+	secondary_color = "#FFFFFF"
+	hastertiary = FALSE
+	body_parts_covered= CHEST|GROIN
