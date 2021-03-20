@@ -20,6 +20,7 @@
 		this["name"] = spawner
 		this["short_desc"] = ""
 		this["flavor_text"] = ""
+		this["ooc_text"] = ""
 		this["important_warning"] = ""
 		this["refs"] = list()
 		for(var/spawner_obj in GLOB.mob_spawners[spawner])

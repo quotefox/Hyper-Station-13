@@ -226,3 +226,5 @@
 #define FORCE_BOOLEAN(x) ((x)? TRUE : FALSE)
 
 #define TILES_TO_PIXELS(tiles)			(tiles * PIXELS)
+
+#define CLAMP(CLVALUE,CLMIN,CLMAX) clamp(CLVALUE, CLMIN, CLMAX)

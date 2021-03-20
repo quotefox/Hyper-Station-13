@@ -87,7 +87,7 @@
 	melee_damage_lower += rand(4, 10)
 	melee_damage_upper += rand(10,20)
 	maxHealth += rand(40,60)
-	move_to_delay = rand(3,7)
+	move_to_delay = rand(5,8)
 
 /mob/living/simple_animal/hostile/carp/cayenne
 	name = "Cayenne"

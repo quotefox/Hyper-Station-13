@@ -69,6 +69,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/pda_skin = PDA_SKIN_ALT
 
 	var/list/alt_titles_preferences = list()
+	var/static/preview_job_outfit = TRUE	//shouldn't be something that's saved, but this is a preference option
 
 	var/uses_glasses_colour = 0
 
@@ -179,7 +180,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"womb_fluid" = /datum/reagent/consumable/femcum,
 		"ipc_screen" = "Sunburst",
 		"ipc_antenna" = "None",
-		"flavor_text" = ""
+		"flavor_text" = "",
+		"ooc_text" = ""
 		)
 
 	/// Security record note section
@@ -382,7 +384,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if(2)
 			update_preview_icon()
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
-			dat += "<h2>Flavor Text</h2>"
+			dat += "<h2>General Examine Text</h2>"
 			dat += "<a href='?_src_=prefs;preference=flavor_text;task=input'><b>Set Examine Text</b></a><br>"
 			if(length(features["flavor_text"]) <= 40)
 				if(!length(features["flavor_text"]))
@@ -391,6 +393,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "[features["flavor_text"]]"
 			else
 				dat += "[TextPreview(features["flavor_text"])]...<BR>"
+			dat += "<h2>OOC Text</h2>"
+			dat += "<a href='?_src_=prefs;preference=ooc_text;task=input'><b>Set OOC Text</b></a><br>"
+			if(length(features["ooc_text"]) <= 40)
+				if(!length(features["ooc_text"]))
+					dat += "\[...\]"
+				else
+					dat += "[features["ooc_text"]]"
+			else
+				dat += "[TextPreview(features["ooc_text"])]...<BR>"
+
 			dat += "<h2>Body</h2>"
 			dat += "<b>Gender:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=gender'>[gender == MALE ? "Male" : (gender == FEMALE ? "Female" : (gender == PLURAL ? "Non-binary" : "Object"))]</a><BR>"
 			dat += "<b>Species:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=species;task=input'>[pref_species.id]</a><BR>"
@@ -1049,8 +1061,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if(!gear_tab)
 				gear_tab = GLOB.loadout_items[1]
 			dat += "<table align='center' width='100%'>"
-			dat += "<tr><td colspan=4><center><b><font color='[gear_points == 0 ? "#E62100" : "#CCDDFF"]'>[gear_points]</font> loadout points remaining.</b> \[<a href='?_src_=prefs;preference=gear;clear_loadout=1'>Clear Loadout</a>\]</center></td></tr>"
-			dat += "<tr><td colspan=4><center>You can only choose one item per category, unless it's an item that spawns in your backpack or hands.</center></td></tr>"
+			dat += "<tr><td colspan=4><center><b><font color='[gear_points == 0 ? "#E62100" : "#CCDDFF"]'>[gear_points]</font> loadout points remaining.</b> \[<a href='?_src_=prefs;preference=gear;clear_loadout=1'>Clear Loadout</a>\] \[<a href='?_src_=prefs;preference=gear;toggle_outfit_visibility=1'>[preview_job_outfit ? "Enable" : "Disable"] Job Outfit Preview</a>\]</center></td></tr>"
+			dat += "<tr><td colspan=4><center>You can only choose two items per category, unless it's an item that spawns in your backpack or hands.</center></td></tr>"
 			dat += "<tr><td colspan=4><center><b>"
 			var/firstcat = TRUE
 			for(var/i in GLOB.loadout_items)
@@ -1102,6 +1114,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "</table>"
 
 		if(4)		//Antag Preferences
+			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
 			dat += "<h1>Special Role Settings</h1>"
 			if(jobban_isbanned(user, ROLE_SYNDICATE))
 				dat += "<font color=red><h3><b>You are banned from antagonist roles.</b></h3></font>"
@@ -1122,6 +1135,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					else
 						dat += "<b>Be [capitalize(i)]:</b> <a href='?_src_=prefs;preference=be_special;be_special_type=[i]'>[(i in be_special) ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Midround Antagonist:</b> <a href='?_src_=prefs;preference=allow_midround_antag'>[(toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</a><br>"
+			dat += "</td><td width='340px' height='300px' valign='top'>"
+			dat += "<h1>Sync Settings</h1>"
+			dat += "<b>Sync</b> antag prefs. with all characters: <a href='?_src_=prefs;preference=sync_antag_with_chars'>[(toggles & ANTAG_SYNC_WITH_CHARS) ? "Yes" : "No"]</a><br>"
+			dat += "<b>Copy</b> and save antag prefs. to all characters: <a href='?_src_=prefs;preference=copy_antag_to_chars'>Copy</a><br>"
+			dat += "<b>Reset</b> antag prefs. for this character: <a href='?_src_=prefs;preference=reset_antag'>Reset</a><br>"
+			dat += "</td></tr></table>"
+
 
 	dat += "<hr><center>"
 
@@ -1686,10 +1706,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						medical_records = rec
 
 				if("flavor_text")
-					var/msg = stripped_multiline_input(usr, "Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Flavor Text", html_decode(features["flavor_text"]), MAX_MESSAGE_LEN, TRUE)
+					var/msg = stripped_multiline_input(usr, "Set the flavor text in your 'examine' verb. This should be IC, and description people can deduce at a quick glance.", "Flavor Text", html_decode(features["flavor_text"]), MAX_MESSAGE_LEN, TRUE)
 					if(msg)
 						msg = msg
 						features["flavor_text"] = msg
+
+				if("ooc_text")
+					var/msg = stripped_multiline_input(usr, "Set the OOC text in your 'examine' verb. This should be OOC only!", "OOC Text", html_decode(features["ooc_text"]), MAX_MESSAGE_LEN, TRUE)
+					if(msg)
+						msg = msg
+						features["ooc_text"] = msg
+
 
 				if("hide_ckey")
 					hide_ckey = !hide_ckey
@@ -2524,6 +2551,30 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("allow_midround_antag")
 					toggles ^= MIDROUND_ANTAG
 
+				if("sync_antag_with_chars")
+					toggles ^= ANTAG_SYNC_WITH_CHARS
+					if(!(toggles & ANTAG_SYNC_WITH_CHARS) && path)
+						var/savefile/S = new /savefile(path)
+						if(S)
+							S["special_roles"] >> be_special
+
+				if("copy_antag_to_chars")
+					if(path)
+						var/savefile/S = new /savefile(path)
+						if(S)
+							var/initial_cd = S.cd
+							for(var/i=1, i<=max_save_slots, i++)
+								S.cd = "/character[i]"
+								if(S["real_name"])
+									WRITE_FILE(S["special_roles"], be_special)
+							S.cd = initial_cd
+							to_chat(parent, "<span class='notice'>Successfully copied antagonist preferences to all characters.</span>")
+						else
+							to_chat(parent, "<span class='notice'>Could not write to file.</span>")
+
+				if("reset_antag")
+					be_special = list()
+
 				if("parallaxup")
 					parallax = WRAP(parallax + 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
 					if (parent && parent.mob && parent.mob.hud_used)
@@ -2610,6 +2661,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(gear_points >= initial(G.cost))
 					LAZYADD(chosen_gear, G.type)
 					gear_points -= initial(G.cost)
+		if(href_list["toggle_outfit_visibility"])
+			preview_job_outfit = !preview_job_outfit
 
 	ShowChoices(user)
 	return 1

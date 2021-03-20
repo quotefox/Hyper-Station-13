@@ -10,6 +10,9 @@
 	mutantears = /obj/item/organ/ears/cat
 	mutanttail = /obj/item/organ/tail/cat
 
+	liked_food = MEAT | RAW | DAIRY
+	disliked_food = FRIED | FRUIT
+
 /datum/species/human/felinid/qualifies_for_rank(rank, list/features)
 	return TRUE
 

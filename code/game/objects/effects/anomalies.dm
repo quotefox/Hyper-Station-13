@@ -11,7 +11,7 @@
 	var/obj/item/assembly/signaler/anomaly/aSignal
 	var/area/impact_area
 
-	var/lifespan = 1190
+	var/lifespan = 1690
 	var/death_time
 
 	var/countdown_colour

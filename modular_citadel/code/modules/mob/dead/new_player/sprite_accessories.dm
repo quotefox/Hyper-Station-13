@@ -42,6 +42,12 @@
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/markings_notmammals.dmi'
 
+/datum/sprite_accessory/body_markings/gecko
+	name = "Gecko"
+	icon_state = "gecko"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/markings_notmammals.dmi'
+
 /datum/sprite_accessory/tails/lizard/guilmon
 	name = "Guilmon"
 	icon_state = "guilmon"
@@ -51,6 +57,18 @@
 /datum/sprite_accessory/tails_animated/lizard/guilmon
 	name = "Guilmon"
 	icon_state = "guilmon"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails/lizard/gecko
+	name = "Gecko"
+	icon_state = "gecko"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails_animated/lizard/gecko
+	name = "Gecko"
+	icon_state = "gecko"
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
 
@@ -1017,6 +1035,11 @@ datum/sprite_accessory/ears/human/gret
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Spectre"
 	icon_state = "synthlizspectre"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizvenom
+	color_src = MATRIXED
+	name = "Synthetic Lizard - V3/NM"
+	icon_state = "synthlizvenom"
 
 /******************************************
 **************** Snouts *******************
@@ -2211,6 +2234,11 @@ datum/sprite_accessory/mam_tails/insect
 	color_src = MATRIXED
 	name = "Synthetic Lizard - Cobra Hood"
 	icon_state = "synth_cobrahood"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_cobraslim
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Narrow Cobra Hood"
+	icon_state = "synth_cobraslim"
 
 // *** Snooooow flaaaaake ***
 

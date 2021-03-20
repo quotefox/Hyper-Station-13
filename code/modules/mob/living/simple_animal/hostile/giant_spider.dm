@@ -40,7 +40,7 @@
 	faction = list("spiders")
 	var/busy = SPIDER_IDLE
 	pass_flags = PASSTABLE
-	move_to_delay = 6
+	move_to_delay = 7
 	ventcrawler = VENTCRAWLER_ALWAYS
 	attacktext = "bites"
 	attack_sound = 'sound/weapons/bite.ogg'
@@ -140,7 +140,7 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 20
 	poison_per_bite = 5
-	move_to_delay = 5
+	move_to_delay = 7
 
 //vipers are the rare variant of the hunter, no IMMEDIATE damage but so much poison medical care will be needed fast.
 /mob/living/simple_animal/hostile/poison/giant_spider/hunter/viper
@@ -154,7 +154,7 @@
 	melee_damage_lower = 1
 	melee_damage_upper = 1
 	poison_per_bite = 12
-	move_to_delay = 4
+	move_to_delay = 5
 	poison_type = /datum/reagent/toxin/venom //all in venom, glass cannon. you bite 5 times and they are DEFINITELY dead, but 40 health and you are extremely obvious. Ambush, maybe?
 	speed = 1
 	gold_core_spawnable = NO_SPAWN
@@ -171,7 +171,7 @@
 	melee_damage_lower = 35
 	melee_damage_upper = 40
 	poison_per_bite = 0
-	move_to_delay = 8
+	move_to_delay = 10
 	speed = 7
 	status_flags = NONE
 	mob_size = MOB_SIZE_LARGE

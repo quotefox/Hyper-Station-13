@@ -38,7 +38,7 @@ Difficulty: Very Hard
 	melee_damage_lower = 40
 	melee_damage_upper = 40
 	speed = 1
-	move_to_delay = 10
+	move_to_delay = 14
 	ranged = 1
 	pixel_x = -32
 	del_on_death = 1
@@ -64,7 +64,7 @@ Difficulty: Very Hard
 		ranged_cooldown = world.time + 30
 		telegraph()
 		dir_shots(GLOB.alldirs)
-		move_to_delay = 3
+		move_to_delay = 5
 		return
 	else
 		move_to_delay = initial(move_to_delay)
