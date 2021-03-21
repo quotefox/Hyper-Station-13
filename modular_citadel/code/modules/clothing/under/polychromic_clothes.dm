@@ -221,3 +221,14 @@
 	secondary_color = "#FFFFFF"
 	hastertiary = FALSE
 	body_parts_covered= CHEST|GROIN
+
+/obj/item/clothing/under/polychromic/onepeice
+	name = "polychromic swimsuit"
+	desc = "Perfect for summer, and those who want to have something with a bit more material."
+	icon_state = "onepeice"
+	item_color = "onepeice"
+	item_state = "rainbow"
+	primary_color = "#010052" //RGB in hexcode
+	secondary_color = "#eb7a7a"
+	tertiary_color = "#ffffff"
+	body_parts_covered = CHEST|GROIN
