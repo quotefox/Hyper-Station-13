@@ -57,6 +57,7 @@
 				/obj/item/clothing/neck/stole/black = 2,
 				/obj/item/clothing/under/polychromic/stripper = 3,
 				/obj/item/clothing/under/polychromic/bikini = 3,
+				/obj/item/clothing/under/polychromic/onepeice = 3,
 				/obj/item/clothing/under/polychromic/shortpants/pantsu = 3,
 				/obj/item/clothing/under/polychromic/bulge = 3,
 				/obj/item/clothing/suit/maidapron = 3,
