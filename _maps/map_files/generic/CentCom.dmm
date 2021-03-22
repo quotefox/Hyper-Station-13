@@ -17669,23 +17669,6 @@
 /obj/item/toy/tennis/green,
 /obj/item/radio/headset/headset_cent,
 /obj/item/clothing/under/rank/centcom_officer,
-/obj/item/clothing/suit/hooded/wintercoat/centcom,
-/obj/item/clothing/shoes/jackboots,
-/obj/item/pda/lieutenant{
-	hidden = 0
-	},
-/obj/item/melee/classic_baton/telescopic,
-/obj/item/storage/box/survival,
-/obj/item/crowbar/red,
-/obj/item/card/id/ert{
-	assignment = "Off-Duty Intelligence Officer";
-	desc = "An ID straight from Central Command.";
-	name = "Kenshin Midori's ID Card (Off-Duty Intelligence Officer)";
-	registered_name = "Kenshin Midori"
-	},
-/obj/item/encryptionkey/heads/captain,
-/obj/item/flashlight/seclite,
-/obj/item/gun/energy/e_gun/dragnet/snare,
 /turf/open/floor/wood,
 /area/centcom/ferry)
 "Ms" = (
@@ -17854,7 +17837,6 @@
 /area/centcom/ferry)
 "MY" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/plasteel/cafeteria,
 /area/centcom/ferry)
 "Nc" = (
@@ -20272,20 +20254,12 @@
 	},
 /area/centcom/control)
 "Wm" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
+/obj/machinery/door/airlock/centcom{
+	name = "CentCom";
+	opacity = 1
 	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/recharger,
-/obj/structure/table/reinforced,
-/turf/open/floor/plasteel/dark,
-/area/centcom/control)
+/turf/open/space/basic,
+/area/centcom/ferry)
 "Wn" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 6;
@@ -21262,8 +21236,6 @@
 	dir = 1
 	},
 /obj/structure/closet/crate/secure{
-	anchored = 1;
-	name = "secure gear crate";
 	req_access_txt = "101"
 	},
 /obj/item/clothing/suit/space/officer,
@@ -21272,6 +21244,7 @@
 /obj/item/clothing/gloves/combat,
 /obj/item/implanter/cqc,
 /obj/item/gun/energy/e_gun/stun,
+/obj/item/gun/energy/e_gun/dragnet/snare,
 /obj/item/radio/headset/headset_cent/commander,
 /obj/item/clothing/glasses/thermal,
 /obj/item/clothing/under/syndicate{
@@ -21279,17 +21252,8 @@
 	},
 /obj/item/card/id/ert{
 	assignment = "Intelligence Officer";
-	desc = "An ID straight from Central Command.";
 	name = "Kenshin Midori's ID Card (Intelligence Officer)";
 	registered_name = "Kenshin Midori"
-	},
-/obj/item/book{
-	damtype = "stamina";
-	desc = "An old and dusty book, the pages look faded from time while looking at the pages alone makes you tired.";
-	force = 80;
-	hitsound = punch;
-	name = "very heavy book";
-	throwforce = 160
 	},
 /turf/open/floor/wood,
 /area/centcom/ferry)
@@ -55021,7 +54985,7 @@ oe
 mD
 mD
 qR
-ZT
+Wm
 mD
 mD
 mD
@@ -63234,7 +63198,7 @@ iu
 io
 rN
 CX
-Wm
+iC
 DF
 DT
 io
