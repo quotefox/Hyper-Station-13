@@ -149,14 +149,9 @@ SUBSYSTEM_DEF(vote)
 					if("5")
 						v += winners[option] //Add the number votes to the pool
 						numbers += (winners[option]*5) //Add the value of the vote to numbers
-			if(v < DYNAMIC_VOTE_NORMALIZATION)
-				while (v < DYNAMIC_VOTE_NORMALIZATION) //For low low pop, low vote rounds.
-					numbers += DYNAMIC_DEFAULT_CHAOS //stops the one person voting from setting the chaos to five and flooding the station with anomalies
-					v += 1
-			else if (voted.len < GLOB.clients.len)	//Have non-voters "vote" 2, if we're not lowpop
-				for(var/I in 1 to (GLOB.clients.len - voted.len))
-					v += 1
-					numbers += 2
+			while (v < DYNAMIC_VOTE_NORMALIZATION) //For low low pop, low vote rounds.
+				numbers += DYNAMIC_DEFAULT_CHAOS //stops the one person voting from setting the chaos to five and flooding the station with anomalies
+				v += 1
 			var/total = 0
 			for (var/i in numbers)
 				total += i
