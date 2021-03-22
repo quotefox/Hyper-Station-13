@@ -65,7 +65,7 @@
 	icon_dead = "Hivelordbrood"
 	icon_gib = "syndicate_gib"
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
-	move_to_delay = 1
+	move_to_delay = 3
 	friendly = "buzzes near"
 	vision_range = 10
 	speed = 3

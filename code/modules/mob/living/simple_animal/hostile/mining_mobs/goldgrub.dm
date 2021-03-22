@@ -11,7 +11,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	vision_range = 2
 	aggro_vision_range = 9
-	move_to_delay = 5
+	move_to_delay = 7
 	friendly = "harmlessly rolls into"
 	maxHealth = 45
 	health = 45

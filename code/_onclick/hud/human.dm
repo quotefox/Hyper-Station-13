@@ -126,7 +126,7 @@
 	using.screen_loc = ui_movi
 	static_inventory += using
 
-	//CITADEL CHANGES - sprint button
+/*	//CITADEL CHANGES - sprint button
 	using = new /obj/screen/sprintbutton
 	using.icon = tg_ui_icon_to_cit_ui(ui_style)
 	using.icon_state = (owner.sprinting ? "act_sprint_on" : "act_sprint")
@@ -139,7 +139,7 @@
 	using.screen_loc = ui_sprintbufferloc
 	sprint_buffer = using
 	static_inventory += using
-
+*/
 
 	using = new /obj/screen/drop()
 	using.icon = ui_style
@@ -323,12 +323,12 @@
 	arousal.icon_state = (owner.canbearoused == 1 ? "arousal0" : "")
 	infodisplay += arousal
 
-	staminas = new /obj/screen/staminas()
-	infodisplay += staminas
+//	staminas = new /obj/screen/staminas()
+//	infodisplay += staminas
 
-	if(!CONFIG_GET(flag/disable_stambuffer))
-		staminabuffer = new /obj/screen/staminabuffer()
-		infodisplay += staminabuffer
+//	if(!CONFIG_GET(flag/disable_stambuffer))
+//		staminabuffer = new /obj/screen/staminabuffer()
+//		infodisplay += staminabuffer
 	//END OF CIT CHANGES
 
 	healthdoll = new /obj/screen/healthdoll()

@@ -20,6 +20,7 @@
 		. += 1
 	. += ..()
 
+/*
 /mob/living/carbon/human/proc/togglesprint() // If you call this proc outside of hotkeys or clicking the HUD button, I'll be disappointed in you.
 	sprinting = !sprinting
 	if(!resting && m_intent == MOVE_INTENT_RUN && canmove)
@@ -27,11 +28,12 @@
 			playsound_local(src, 'modular_citadel/sound/misc/sprintactivate.ogg', 50, FALSE, pressure_affected = FALSE)
 		else
 			playsound_local(src, 'modular_citadel/sound/misc/sprintdeactivate.ogg', 50, FALSE, pressure_affected = FALSE)
-	if(hud_used && hud_used.static_inventory)
-		for(var/obj/screen/sprintbutton/selector in hud_used.static_inventory)
-			selector.insert_witty_toggle_joke_here(src)
+//	if(hud_used && hud_used.static_inventory)
+//		for(var/obj/screen/sprintbutton/selector in hud_used.static_inventory)
+//			selector.insert_witty_toggle_joke_here(src)
 	return TRUE
 
 /mob/living/carbon/human/proc/sprint_hotkey(targetstatus)
 	if(targetstatus ? !sprinting : sprinting)
 		togglesprint()
+*/

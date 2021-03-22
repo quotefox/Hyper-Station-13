@@ -123,7 +123,8 @@
 					/obj/item/clothing/head/cowboyhat/white = 3,
 					/obj/item/clothing/head/cowboyhat/pink = 3,
 					/obj/item/clothing/shoes/cowboyboots = 3,
-					/obj/item/clothing/shoes/cowboyboots/black = 3)
+					/obj/item/clothing/shoes/cowboyboots/black = 3,
+					/obj/item/clothing/under/polychromic/vsweater = 3)
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool = 3,
 					  /obj/item/clothing/under/syndicate/tacticool/skirt = 3,
 		              /obj/item/clothing/mask/balaclava = 3,

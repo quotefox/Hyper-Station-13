@@ -218,3 +218,8 @@
 	name = "Pharoah tunic"
 	category = SLOT_WEAR_SUIT
 	path =	/obj/item/clothing/suit/nemes
+
+/datum/gear/fluffcoat
+	name = "Winter labcoat"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/labcoat/formallab
