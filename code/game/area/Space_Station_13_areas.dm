@@ -831,6 +831,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Chemistry"
 	icon_state = "chem"
 
+/area/medical/psych
+	name = "Psychology Office"
+	icon_state = "medbay"
+
 /area/medical/surgery
 	name = "Surgery"
 	icon_state = "surgery"
