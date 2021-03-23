@@ -29,9 +29,13 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	obj_flags = NONE
 	var/item_flags = NONE
 
-	var/hitsound = null
-	var/usesound = null
-	var/throwhitsound = null
+
+	var/hitsound
+	var/usesound
+	var/throwhitsound
+	///Sound used when equipping the item into a valid slot
+	var/equip_sound
+
 	var/w_class = WEIGHT_CLASS_NORMAL
 	var/total_mass //Total mass in arbitrary pound-like values. If there's no balance reasons for an item to have otherwise, this var should be the item's weight in pounds.
 	var/slot_flags = 0		//This is used to determine on which slots an item can fit.
@@ -422,6 +426,9 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 		if(item_action_slot_check(slot, user)) //some items only give their actions buttons when in a specific slot.
 			A.Grant(user)
 	item_flags |= IN_INVENTORY
+
+	if(equip_sound && (slot_flags & slotdefine2slotbit(slot)))
+		playsound(src, equip_sound, EQUIP_SOUND_VOLUME, TRUE, ignore_walls = FALSE)
 
 //sometimes we only want to grant the item's action if it's equipped in a specific slot.
 /obj/item/proc/item_action_slot_check(slot, mob/user)
