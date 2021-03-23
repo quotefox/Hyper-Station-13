@@ -141,7 +141,7 @@
 	if(!src.operating) //in case of emag
 		operating = TRUE
 	do_animate("opening")
-	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, 0)
+	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, 1)
 	src.icon_state ="[src.base_state]open"
 	sleep(10)
 
@@ -165,7 +165,7 @@
 			return 0
 	operating = TRUE
 	do_animate("closing")
-	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, 0)
+	playsound(src.loc, 'sound/machines/windowdoor.ogg', 100, 1)
 	src.icon_state = src.base_state
 
 	density = TRUE
