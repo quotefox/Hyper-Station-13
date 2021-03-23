@@ -8,6 +8,8 @@
 	armor = list("melee" = 20, "bullet" = 20, "laser" = 20, "energy" = 75, "bomb" = 25, "bio" = 100, "rad" = 100, "fire" = 100, "acid" = 70)
 	damage_deflection = 20
 	max_integrity = 100
+	openSound = 'hyperstation/sound/doors/shutter.ogg'
+	closeSound = 'hyperstation/sound/doors/shutter.ogg'
 
 /obj/machinery/door/poddoor/shutters/preopen
 	icon_state = "open"
