@@ -76,6 +76,8 @@
 					controller.onlyOpen(door)
 				else
 					controller.cycleClose(door)
+					playsound(src, 'sound/AI/airlock.ogg', 35, 0, -1)
+
 		else
 			controller.onlyClose(door)
 		sleep(20)
@@ -140,12 +142,15 @@
 			onlyClose(interiorAirlock)
 		if("cycle_exterior")
 			cycleClose(exteriorAirlock)
+			playsound(src, 'sound/AI/airlock.ogg', 35, 0, -1)
 		if("cycle_interior")
 			cycleClose(interiorAirlock)
+			playsound(src, 'sound/AI/airlock.ogg', 35, 0, -1)
 		if("open_exterior")
 			onlyOpen(exteriorAirlock)
 		if("open_interior")
 			onlyOpen(interiorAirlock)
+
 
 /obj/machinery/doorButtons/airlock_controller/proc/onlyOpen(obj/machinery/door/airlock/A)
 	if(A)
