@@ -17,7 +17,6 @@
 	outdoors = TRUE
 	flags_1 = NONE
 	ambientsounds = MINING
-	sound_environment = SOUND_AREA_STANDARD_STATION
 
 /area/mine/unexplored
 	name = "Mine"
@@ -32,7 +31,6 @@
 	outdoors = TRUE
 	flags_1 = NONE
 	ambientsounds = MINING
-	sound_environment = SOUND_AREA_LAVALAND
 
 /area/mine/lobby
 	name = "Mining Station"
