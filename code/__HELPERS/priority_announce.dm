@@ -34,8 +34,7 @@
 		if(!isnewplayer(M) && M.can_hear())
 			to_chat(M, announcement)
 			if(M.client.prefs.toggles & SOUND_ANNOUNCEMENTS)
-//				SEND_SOUND(M, s)
-				M.playsound_local(get_turf(M), s, 70, FALSE, pressure_affected = FALSE, use_reverb = TRUE)
+				SEND_SOUND(M, s)
 
 /proc/print_command_report(text = "", title = null, announce=TRUE)
 	if(!title)

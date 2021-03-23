@@ -385,11 +385,9 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if(imp?.radio.on)
 		if(message_mode == MODE_HEADSET)
 			imp.radio.talk_into(src, message, , spans, language)
-			playsound(src, 'sound/effects/radio_send.ogg', 35, 1, -1)
 			return ITALICS | REDUCE_RANGE
 		if(message_mode == MODE_DEPARTMENT || message_mode in GLOB.radiochannels)
 			imp.radio.talk_into(src, message, message_mode, spans, language)
-			playsound(src, 'sound/effects/radio_send.ogg', 35, 1, -1)
 			return ITALICS | REDUCE_RANGE
 
 	switch(message_mode)
