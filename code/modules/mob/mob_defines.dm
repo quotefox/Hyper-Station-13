@@ -129,6 +129,9 @@
 	///Whether the mob is updating glide size when movespeed updates or not
 	var/updating_glide_size = TRUE
 
+	///Override for sound_environments. If this is set the user will always hear a specific type of reverb (Instead of the area defined reverb)
+	var/sound_environment_override = SOUND_ENVIRONMENT_NONE
+
 	var/flavor_text = ""
 	var/ooc_text = ""
 	var/flavor_text_2 = "" //version of the above that only lasts for the current round.
