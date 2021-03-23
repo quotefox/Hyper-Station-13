@@ -71,6 +71,9 @@
 /datum/job/geneticist
 	alt_titles = list("Gene Therapist")
 
+/datum/job/psychologist
+	alt_titles = list("Therapist", "Psychiatrist")
+
 /datum/job/junior_doctor
 
 //Security

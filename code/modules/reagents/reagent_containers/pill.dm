@@ -204,7 +204,25 @@
 	icon_state = "pill9"
 	color = "#454545"
 	list_reagents = list(/datum/reagent/mutationtoxin/shadow = 1)
-//////////////////////////////////////// drugs
+//////////////////////////////////////// drugs#
+/obj/item/reagent_containers/pill/lsdpsych
+	name = "antipsychotic pill"
+	desc = "Talk to your healthcare provider immediately if hallucinations worsen or new hallucinations emerge."
+	icon_state = "pill14"
+	list_reagents = list(/datum/reagent/toxin/mindbreaker = 5)
+
+/obj/item/reagent_containers/pill/happinesspsych
+	name = "mood stabilizer pill"
+	desc = "Used to temporarily alleviate anxiety and depression, take only as prescribed."
+	icon_state = "pill_happy"
+	list_reagents = list(/datum/reagent/drug/happiness = 5)
+
+/obj/item/reagent_containers/pill/paxpsych
+	name = "pacification pill"
+	desc = "Used to temporarily suppress violent, homicidal, or suicidal behavior in patients."
+	list_reagents = list(/datum/reagent/pax = 5)
+	icon_state = "pill12"
+
 /obj/item/reagent_containers/pill/zoom
 	name = "zoom pill"
 	list_reagents = list(/datum/reagent/medicine/synaptizine = 10, /datum/reagent/drug/nicotine = 10, /datum/reagent/drug/methamphetamine = 1)
@@ -257,3 +275,4 @@
 	name = "breast enlargement pill"
 	list_reagents = list(/datum/reagent/fermi/breast_enlarger = 10)
 	price = 4
+
