@@ -964,3 +964,11 @@
 	item_state = "enzojacket"
 	body_parts_covered = CHEST|ARMS
 //End
+
+//Might get moved later since I have no clue where to put this stuff for now - Luke_vale
+/obj/item/clothing/suit/toggle/labcoat/formallab
+	name = "winter labcoat"
+	desc = "A stark white labcoat, thicker and kitted out with extra fluff to keep you warm even on the coldest of mad sceinctist nights."
+	icon_state = "labcoat_formal"
+	item_state = "labcoat_formal"
+	body_parts_covered = CHEST|ARMS
