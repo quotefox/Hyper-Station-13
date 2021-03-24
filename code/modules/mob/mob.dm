@@ -235,15 +235,19 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 //set qdel_on_fail to have it delete W if it fails to equip
 //set disable_warning to disable the 'you are unable to equip that' warning.
 //unset redraw_mob to prevent the mob from being redrawn at the end.
-/mob/proc/equip_to_slot_if_possible(obj/item/W, slot, qdel_on_fail = FALSE, disable_warning = FALSE, redraw_mob = TRUE, bypass_equip_delay_self = FALSE)
+/mob/proc/equip_to_slot_if_possible(obj/item/W, slot, qdel_on_fail = FALSE, disable_warning = FALSE, redraw_mob = TRUE, bypass_equip_delay_self = FALSE, store = FALSE)
 	if(!istype(W))
 		return FALSE
 	if(!W.mob_can_equip(src, null, slot, disable_warning, bypass_equip_delay_self))
+		if(store && istype(src, /mob/living/carbon/human))
+			var/mob/living/carbon/human/H = src
+			var/obj/item/storage/backpack/BP = H.back
+			if(BP)
+				return SEND_SIGNAL(BP, COMSIG_TRY_STORAGE_INSERT, W, null, TRUE, TRUE)
 		if(qdel_on_fail)
 			qdel(W)
-		else
-			if(!disable_warning)
-				to_chat(src, "<span class='warning'>You are unable to equip that!</span>")
+		else if(!disable_warning)
+			to_chat(src, "<span class='warning'>You are unable to equip that!</span>")
 		return FALSE
 	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
 	return TRUE
@@ -257,6 +261,12 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 //Also bypasses equip delay checks, since the mob isn't actually putting it on.
 /mob/proc/equip_to_slot_or_del(obj/item/W, slot)
 	return equip_to_slot_if_possible(W, slot, TRUE, TRUE, FALSE, TRUE)
+
+/mob/proc/equip_to_slot_or_store(obj/item/W, slot)
+	return equip_to_slot_if_possible(W, slot, FALSE, TRUE, FALSE, TRUE, TRUE)
+
+/mob/proc/equip_to_slot_or_store_and_del(obj/item/W, slot)
+	return equip_to_slot_if_possible(W, slot, TRUE, TRUE, FALSE, TRUE, TRUE)
 
 //puts the item "W" into an appropriate slot in a human's inventory
 //returns 0 if it cannot, 1 if successful

@@ -24,6 +24,8 @@
 
 	var/list/gamemode_blacklist = list() // Event won't happen in these gamemodes
 	var/list/gamemode_whitelist = list() // Event will happen ONLY in these gamemodes if not empty
+	var/list/map_blacklist = list() //Event won't run if this contains the current station map. Must be contain something like "BoxStation.dmm". Capitalization matters.
+	var/list/map_whitelist = list() //Same as above, except only for these maps
 
 	var/triggering	//admin cancellation
 
@@ -49,6 +51,10 @@
 	if(gamemode_blacklist.len && (gamemode in gamemode_blacklist))
 		return FALSE
 	if(gamemode_whitelist.len && !(gamemode in gamemode_whitelist))
+		return FALSE
+	if(map_blacklist.len && (SSmapping.config.map_file in map_blacklist))	//HYPER EDIT: certain maps will get special events
+		return FALSE
+	if(map_whitelist.len && !(SSmapping.config.map_file in map_whitelist))
 		return FALSE
 	if(holidayID && (!SSevents.holidays || !SSevents.holidays[holidayID]))
 		return FALSE

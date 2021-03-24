@@ -35,7 +35,7 @@
 #define COIN_CHARGE 3
 
 /obj/machinery/vending/kink
-	name = "KinkMate"
+	name = "\improper KinkMate"
 	desc = "A vending machine for all your unmentionable desires."
 	icon = 'icons/obj/citvending.dmi'
 	icon_state = "kink"
@@ -57,6 +57,7 @@
 				/obj/item/clothing/neck/stole/black = 2,
 				/obj/item/clothing/under/polychromic/stripper = 3,
 				/obj/item/clothing/under/polychromic/bikini = 3,
+				/obj/item/clothing/under/polychromic/onepeice = 3,
 				/obj/item/clothing/under/polychromic/shortpants/pantsu = 3,
 				/obj/item/clothing/under/polychromic/bulge = 3,
 				/obj/item/clothing/suit/maidapron = 3,
@@ -66,6 +67,7 @@
 				/obj/item/electropack/vibrator = 2,
 				)
 	contraband = list(
+				/obj/item/clothing/under/gear_harness = 3,
 				/obj/item/restraints/handcuffs/fake/kinky = 5,
 				/obj/item/clothing/neck/petcollar = 5,
 				/obj/item/clothing/under/mankini = 1,

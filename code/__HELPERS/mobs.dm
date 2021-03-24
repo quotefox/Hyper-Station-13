@@ -230,7 +230,8 @@
 		"womb_fluid" 		= "femcum",
 		"ipc_screen"		= snowflake_ipc_antenna_list ? pick(snowflake_ipc_antenna_list) : "None",
 		"ipc_antenna" = "None",
-		"flavor_text"		= ""))
+		"flavor_text"		= "",
+		"ooc_text"			= ""))
 
 /proc/random_hair_style(gender)
 	switch(gender)
@@ -549,6 +550,8 @@ GLOBAL_LIST_EMPTY(species_list)
 			override = TRUE
 		if(isnewplayer(M) && !override)
 			continue
+		if(SSticker.current_state == GAME_STATE_FINISHED)
+			override = TRUE
 		if(M.stat != DEAD && !override)
 			continue
 		if(speaker_key && speaker_key in prefs.ignoring)

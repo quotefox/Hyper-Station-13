@@ -315,6 +315,9 @@
 /atom/proc/examine(mob/user)
 	. = list("[get_examine_string(user, TRUE)].")
 
+	if(!isliving(src))
+		user.visible_message("<span class='notice'>[user] examines [src].</span>",\
+						"<span class='notice'>You examine [src].</span>")
 	if(desc)
 		. += desc
 

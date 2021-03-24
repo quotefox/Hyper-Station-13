@@ -210,3 +210,25 @@
 	secondary_color = "#FFFFFF"
 	hastertiary = FALSE
 	body_parts_covered= CHEST|GROIN
+
+/obj/item/clothing/under/polychromic/vsweater
+	name = "virgin killer sweater"
+	desc = "A sweater designed to be as provocative as possible, with almost all of the back missing, bairly hiding anything from that angle. Warning: Doesn't actually kill virgins."
+	icon_state = "vkiller"
+	item_color = "vkiller"
+	item_state = "rainbow"
+	primary_color = "#E1D6C9" //RGB in hexcode
+	secondary_color = "#FFFFFF"
+	hastertiary = FALSE
+	body_parts_covered= CHEST|GROIN
+
+/obj/item/clothing/under/polychromic/onepeice
+	name = "polychromic swimsuit"
+	desc = "Perfect for summer, and those who want to have something with a bit more material."
+	icon_state = "onepeice"
+	item_color = "onepeice"
+	item_state = "rainbow"
+	primary_color = "#010052" //RGB in hexcode
+	secondary_color = "#eb7a7a"
+	tertiary_color = "#ffffff"
+	body_parts_covered = CHEST|GROIN
