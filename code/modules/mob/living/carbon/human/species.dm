@@ -15,6 +15,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/hair_color	// this allows races to have specific hair colors... if null, it uses the H's hair/facial hair colors. if "mutcolor", it uses the H's mutant_color
 	var/hair_alpha = 255	// the alpha used by the hair. 255 is completely solid, 0 is transparent.
 	var/wing_color
+	var/grad_color
 
 	var/use_skintones = 0	// does it use skintones or not? (spoiler alert this is only used by humans)
 	var/exotic_blood = ""	// If your race wants to bleed something other than bog standard blood, change this to reagent id.
@@ -467,6 +468,16 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				if(OFFSET_FACE in H.dna.species.offset_features)
 					hair_overlay.pixel_x += H.dna.species.offset_features[OFFSET_FACE][1]
 					hair_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
+				if(H.grad_style)
+					var/icon/grad_s = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[H.grad_style])
+					var/grad_f_color = null
+					if(grad_color)
+						grad_f_color = "#" + grad_color
+					else
+						grad_f_color = "#" + H.grad_color
+					grad_s.Blend(grad_f_color, ICON_ADD)
+					hair_overlay.filters = filter(type="layer", icon = grad_s, blend_mode = BLEND_INSET_OVERLAY)
+
 		if(hair_overlay.icon)
 			standing += hair_overlay
 
