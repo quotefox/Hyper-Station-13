@@ -9239,7 +9239,9 @@
 	pixel_x = -17;
 	pixel_y = 3
 	},
-/obj/machinery/recharger,
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
 "tR" = (
@@ -9518,6 +9520,7 @@
 	id_tag = "CCDormChemlight";
 	name = "Kenshin Midori's Bunk"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/plasteel,
 /area/centcom/ferry)
 "uy" = (
@@ -11091,7 +11094,13 @@
 /area/centcom/evac)
 "yh" = (
 /obj/structure/table/wood,
-/obj/item/paper/monitorkey,
+/obj/item/paper/monitorkey{
+	pixel_x = 10;
+	pixel_y = -3
+	},
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
 "yi" = (
@@ -14324,12 +14333,22 @@
 /turf/open/floor/plasteel/white,
 /area/centcom/holding)
 "Fk" = (
-/obj/machinery/door/airlock/centcom{
-	name = "CentCom";
-	opacity = 1
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
-/turf/open/floor/carpet/black,
-/area/centcom/ferry)
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/recharger{
+	pixel_y = 4
+	},
+/obj/structure/table/reinforced,
+/turf/open/floor/plasteel/dark,
+/area/centcom/control)
 "Fm" = (
 /obj/machinery/shower{
 	dir = 4
@@ -17854,7 +17873,6 @@
 /area/centcom/ferry)
 "MY" = (
 /obj/structure/table/reinforced,
-/obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/plasteel/cafeteria,
 /area/centcom/ferry)
 "Nc" = (
@@ -20271,21 +20289,6 @@
 	name = "plating"
 	},
 /area/centcom/control)
-"Wm" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/recharger,
-/obj/structure/table/reinforced,
-/turf/open/floor/plasteel/dark,
-/area/centcom/control)
 "Wn" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 6;
@@ -21287,10 +21290,12 @@
 	damtype = "stamina";
 	desc = "An old and dusty book, the pages look faded from time while looking at the pages alone makes you tired.";
 	force = 80;
-	hitsound = punch;
+	hitsound = "punch";
 	name = "very heavy book";
 	throwforce = 160
 	},
+/obj/item/storage/box/zipties,
+/obj/item/clothing/mask/gas/sechailer,
 /turf/open/floor/wood,
 /area/centcom/ferry)
 "Zz" = (
@@ -55028,7 +55033,7 @@ mD
 oe
 mD
 mD
-Fk
+ZT
 mD
 mD
 mD
@@ -63234,7 +63239,7 @@ iu
 io
 rN
 CX
-Wm
+Fk
 DF
 DT
 io

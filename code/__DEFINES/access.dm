@@ -66,6 +66,7 @@
 #define ACCESS_CLONING 68 //Cloning room and clone pod ejection
 #define ACCESS_ENTER_GENPOP 69
 #define ACCESS_LEAVE_GENPOP 70
+#define ACCESS_PSYCH 71
 
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.

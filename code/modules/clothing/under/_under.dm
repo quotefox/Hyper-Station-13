@@ -16,6 +16,7 @@
 	var/obj/item/clothing/accessory/attached_accessory
 	var/mutable_appearance/accessory_overlay
 	mutantrace_variation = MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
+	equip_sound = 'sound/items/equip/jumpsuit_equip.ogg'
 
 /obj/item/clothing/under/worn_overlays(isinhands = FALSE)
 	. = list()
@@ -156,4 +157,4 @@
 			if(SENSOR_COORDS)
 				. += "Its vital tracker and tracking beacon appear to be enabled."
 	if(attached_accessory)
-		. += "\A [attached_accessory] is attached to it." 
+		. += "\A [attached_accessory] is attached to it."
