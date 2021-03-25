@@ -476,7 +476,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					else
 						grad_f_color = "#" + H.grad_color
 					grad_s.Blend(grad_f_color, ICON_ADD)
-					hair_overlay.filters = filter(type="layer", icon = grad_s, blend_mode = BLEND_INSET_OVERLAY)
+					hair_overlay.filters = filter(type="layer", icon = grad_s, blend_mode = BLEND_MULTIPLY)
 
 		if(hair_overlay.icon)
 			standing += hair_overlay
