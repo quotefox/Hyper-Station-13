@@ -482,7 +482,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	else
 		hair_style			= sanitize_inlist(hair_style, GLOB.hair_styles_female_list)
 		facial_hair_style			= sanitize_inlist(facial_hair_style, GLOB.facial_hair_styles_female_list)
-	grad_style      = sanitize_inlist(grad_style, GLOB.hair_gradients)
+	grad_style      = sanitize_inlist(grad_style, GLOB.hair_gradients, "None")
 	underwear		= sanitize_inlist(underwear, GLOB.underwear_list)
 	undie_color		= sanitize_hexcolor(undie_color, 3, 0, initial(undie_color))
 	undershirt		= sanitize_inlist(undershirt, GLOB.undershirt_list)
