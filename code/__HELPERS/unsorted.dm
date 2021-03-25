@@ -1112,7 +1112,7 @@ B --><-- A
 
 /proc/get_random_station_turf()
 	return safepick(get_area_turfs(pick(GLOB.the_station_areas)))
-	
+
 /proc/get_safe_random_station_turf()
 	for (var/i in 1 to 5)
 		var/list/L = get_area_turfs(pick(GLOB.the_station_areas))
@@ -1339,6 +1339,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 			var/obj/structure/window/W = O
 			if(W.ini_dir == dir_to_check || W.ini_dir == FULLTILE_WINDOW_DIR || dir_to_check == FULLTILE_WINDOW_DIR)
 				return FALSE
+		if(istype(O, /obj/structure/railing))
+			var/obj/structure/railing/rail = O
+			if(rail.ini_dir == dir_to_check || rail.ini_dir == FULLTILE_WINDOW_DIR || dir_to_check == FULLTILE_WINDOW_DIR)
+				return FALSE
 	return TRUE
 
 #define UNTIL(X) while(!(X)) stoplag()
@@ -1508,7 +1512,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	blocked |= typesof(/obj/item/reagent_containers/food/drinks/prospacillin,
 		/obj/item/reagent_containers/food/drinks/diminicillin
 		)
-	
+
 	return pick(subtypesof(/obj/item/reagent_containers/food/drinks) - blocked)
 
 //For these two procs refs MUST be ref = TRUE format like typecaches!
