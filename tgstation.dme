@@ -16,7 +16,10 @@
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
 #include "_maps\layeniastation.dm"
+#include "_maps\map_files\generic\CentCom.dmm"
 #include "_maps\map_files\LayeniaStation\LayeniaStation.dmm"
+#include "_maps\map_files\Mining\Lavaland.dmm"
+#include "_maps\map_files\Mining\Lavaland_Lower.dmm"
 #include "code\_compile_options.dm"
 #include "code\world.dm"
 #include "code\__DEFINES\_globals.dm"
