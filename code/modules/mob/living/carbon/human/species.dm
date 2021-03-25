@@ -468,7 +468,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 				if(OFFSET_FACE in H.dna.species.offset_features)
 					hair_overlay.pixel_x += H.dna.species.offset_features[OFFSET_FACE][1]
 					hair_overlay.pixel_y += H.dna.species.offset_features[OFFSET_FACE][2]
-				if(H.grad_style)
+				if(H.grad_style ~! "none")
 					var/icon/grad_s = new/icon("icon" = 'icons/mob/hair_gradients.dmi', "icon_state" = GLOB.hair_gradients[H.grad_style])
 					var/grad_f_color = null
 					if(grad_color)
@@ -477,6 +477,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 						grad_f_color = "#" + H.grad_color
 					grad_s.Blend(grad_f_color, ICON_ADD)
 					hair_overlay.filters = filter(type="layer", icon = grad_s, blend_mode = BLEND_MULTIPLY)
+					qdel(grad_s)
 
 		if(hair_overlay.icon)
 			standing += hair_overlay
