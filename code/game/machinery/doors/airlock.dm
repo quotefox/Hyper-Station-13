@@ -79,8 +79,8 @@
 	var/doorOpen = 'sound/machines/airlock.ogg'
 	var/doorClose = 'sound/machines/airlockclose.ogg'
 	var/doorDeni = 'sound/machines/deniedbeep.ogg' // i'm thinkin' Deni's
-	var/boltUp = 'sound/machines/boltsup.ogg'
-	var/boltDown = 'sound/machines/boltsdown.ogg'
+	var/boltUp = 'hyperstation/sound/machines/BoltsUp.ogg'
+	var/boltDown = 'hyperstation/sound/machines/BoltsDown.ogg'
 	var/noPower = 'sound/machines/doorclick.ogg'
 	var/previous_airlock = /obj/structure/door_assembly //what airlock assembly mineral plating was applied to
 	var/airlock_material //material of inner filling; if its an airlock with glass, this should be set to "glass"
@@ -1155,7 +1155,7 @@
 		if(obj_flags & EMAGGED)
 			return FALSE
 		use_power(50)
-		playsound(src, doorOpen, 30, 1)
+		playsound(src, doorOpen, 40, 0)
 		if(src.closeOther != null && istype(src.closeOther, /obj/machinery/door/airlock/) && !src.closeOther.density)
 			src.closeOther.close()
 	else
@@ -1202,7 +1202,7 @@
 		if(obj_flags & EMAGGED)
 			return
 		use_power(50)
-		playsound(src.loc, doorClose, 30, 1)
+		playsound(src.loc, doorClose, 40, 0)
 	else
 		playsound(src.loc, 'sound/machines/airlockforced.ogg', 30, 1)
 
