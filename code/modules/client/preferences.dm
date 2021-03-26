@@ -93,7 +93,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/facial_hair_style = "Shaved"	//Face hair type
 	var/facial_hair_color = "000"		//Facial hair color
 	var/grad_style = "None"             //Hair Gradient style
-	var/grad_color = "#000000"              //Hair Gradient color
+	var/grad_color = "000000"              //Hair Gradient color
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/wing_color = "fff"				//Wing color
@@ -1760,7 +1760,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("grad")
 					var/new_grad
-					new_grad = input(user, "Choose your character's gradiant color:", "Character Preference", new_grad) as color|null
+					new_grad = input(user, "Choose your character's gradiant color:", "Character Preference","#"+new_grad) as color|null
 					if(new_grad)
 						grad_color = sanitize_hexcolor(new_grad)
 
