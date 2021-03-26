@@ -219,7 +219,7 @@
 			apply_overlay(NECK_LAYER)
 
 //HANDS
-/mob/living/carbon/update_inv_hands()
+/mob/living/carbon/wendigo/update_inv_hands()
 	remove_overlay(HANDS_LAYER)
 	if (handcuffed)
 		drop_all_held_items()
