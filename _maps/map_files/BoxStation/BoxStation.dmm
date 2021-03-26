@@ -8906,6 +8906,7 @@
 /area/maintenance/starboard/fore)
 "asR" = (
 /obj/machinery/door/airlock/maintenance/abandoned{
+	dir = 8;
 	req_access_txt = "12"
 	},
 /turf/open/floor/plating,
@@ -28895,6 +28896,7 @@
 /obj/effect/turf_decal/bot,
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "cargoshut1";
 	name = "shutters"
 	},
@@ -30609,6 +30611,7 @@
 /area/library)
 "boG" = (
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "cargoshut2";
 	name = "shutters"
 	},
@@ -31147,8 +31150,13 @@
 /area/hallway/primary/central)
 "bpR" = (
 /obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plasteel/white,
-/area/medical/sleeper)
+/obj/machinery/door/poddoor/preopen{
+	dir = 8;
+	id = "scishut1";
+	name = "shutters"
+	},
+/turf/open/floor/plating,
+/area/crew_quarters/heads/hor)
 "bpS" = (
 /obj/item/grenade/chem_grenade,
 /obj/item/grenade/chem_grenade,
@@ -32183,6 +32191,7 @@
 	id = "QMLoad2"
 	},
 /obj/machinery/door/poddoor{
+	dir = 8;
 	id = "QMLoaddoor2";
 	name = "supply dock loading door"
 	},
@@ -34478,7 +34487,7 @@
 	id = "psych_med_window";
 	name = "Psychology Privacy Shutters"
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plating,
 /area/medical/psych)
 "bwY" = (
 /obj/structure/disposalpipe/segment,
@@ -34796,6 +34805,7 @@
 	id = "QMLoad"
 	},
 /obj/machinery/door/poddoor{
+	dir = 8;
 	id = "QMLoaddoor";
 	name = "supply dock loading door"
 	},
@@ -34842,6 +34852,7 @@
 "bxP" = (
 /obj/effect/spawner/structure/window,
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "cargoshut1";
 	name = "shutters"
 	},
@@ -36618,6 +36629,7 @@
 	dir = 4
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "scishut1";
 	name = "shutters"
 	},
@@ -37613,6 +37625,7 @@
 "bDx" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "cargoshut1";
 	name = "shutters"
 	},
@@ -42151,6 +42164,7 @@
 /area/science/mixing)
 "bNy" = (
 /obj/machinery/door/poddoor{
+	dir = 8;
 	id = "toxinsdriver";
 	name = "toxins launcher bay door"
 	},
@@ -42567,7 +42581,9 @@
 /turf/open/floor/plating,
 /area/science/research)
 "bOz" = (
-/obj/machinery/door/poddoor/incinerator_toxmix,
+/obj/machinery/door/poddoor/incinerator_toxmix{
+	dir = 8
+	},
 /turf/open/floor/engine/vacuum,
 /area/science/mixing)
 "bOA" = (
@@ -45100,6 +45116,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio8";
 	name = "containment blast door"
 	},
@@ -45610,6 +45627,7 @@
 	req_access_txt = "55"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio8";
 	name = "containment blast door"
 	},
@@ -46011,6 +46029,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio8";
 	name = "containment blast door"
 	},
@@ -46836,6 +46855,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio3";
 	name = "containment blast door"
 	},
@@ -46877,6 +46897,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio7";
 	name = "containment blast door"
 	},
@@ -47340,6 +47361,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio3";
 	name = "containment blast door"
 	},
@@ -47355,6 +47377,7 @@
 	req_access_txt = "55"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio7";
 	name = "containment blast door"
 	},
@@ -47846,6 +47869,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio3";
 	name = "containment blast door"
 	},
@@ -47877,6 +47901,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio7";
 	name = "containment blast door"
 	},
@@ -48783,6 +48808,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio2";
 	name = "containment blast door"
 	},
@@ -48814,6 +48840,7 @@
 	icon_state = "0-8"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio6";
 	name = "containment blast door"
 	},
@@ -49318,6 +49345,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio2";
 	name = "containment blast door"
 	},
@@ -49333,6 +49361,7 @@
 	req_access_txt = "55"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio6";
 	name = "containment blast door"
 	},
@@ -49750,6 +49779,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio2";
 	name = "containment blast door"
 	},
@@ -49800,6 +49830,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio6";
 	name = "containment blast door"
 	},
@@ -50747,6 +50778,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio1";
 	name = "containment blast door"
 	},
@@ -51213,6 +51245,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio1";
 	name = "containment blast door"
 	},
@@ -60458,7 +60491,7 @@
 	id = "psych_med_window";
 	name = "Psychology Privacy Shutters"
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plating,
 /area/medical/psych)
 "cGv" = (
 /obj/machinery/power/terminal{
@@ -62275,6 +62308,7 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "cargoshut1";
 	name = "shutters"
 	},
@@ -63007,7 +63041,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plasteel/white,
+/turf/open/floor/plasteel,
 /area/medical/psych)
 "nni" = (
 /obj/structure/table/plasmaglass,
@@ -63057,6 +63091,7 @@
 	},
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio61";
 	name = "containment blast door"
 	},
@@ -63193,10 +63228,11 @@
 "pis" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "psych_hall_window";
 	name = "Psychology Privacy Shutters"
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plating,
 /area/medical/psych)
 "pkR" = (
 /obj/structure/pool/ladder{
@@ -63503,6 +63539,7 @@
 /obj/structure/cable,
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio61";
 	name = "containment blast door"
 	},
@@ -63535,6 +63572,7 @@
 	icon_state = "0-4"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio1";
 	name = "containment blast door"
 	},
@@ -63568,6 +63606,15 @@
 /obj/structure/sign/warning/vacuum/external,
 /turf/closed/wall,
 /area/quartermaster/miningdock)
+"tHy" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/preopen{
+	dir = 8;
+	id = "cargoshut2";
+	name = "shutters"
+	},
+/turf/open/floor/plating,
+/area/quartermaster/qm)
 "tIS" = (
 /obj/item/twohanded/required/kirbyplants/random,
 /turf/open/floor/wood,
@@ -63688,6 +63735,7 @@
 	req_access_txt = "55"
 	},
 /obj/machinery/door/poddoor/preopen{
+	dir = 8;
 	id = "xenobio61";
 	name = "containment blast door"
 	},
@@ -63751,7 +63799,7 @@
 	dir = 4
 	},
 /obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plasteel/white,
+/turf/open/floor/plating,
 /area/medical/sleeper)
 "wmy" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
@@ -82820,7 +82868,7 @@ bzp
 bzp
 bzp
 bzp
-bDc
+tHy
 boG
 boG
 gge
@@ -85646,7 +85694,7 @@ bxR
 bhY
 wzy
 bzp
-bDc
+tHy
 nTc
 wmy
 bzp
@@ -99011,7 +99059,7 @@ byo
 byo
 byo
 byo
-bpR
+bEO
 who
 bHw
 bxa
@@ -110571,8 +110619,8 @@ bqt
 buQ
 bwg
 bxy
-bxy
-bxy
+bpR
+bpR
 bBE
 bCM
 bxz
