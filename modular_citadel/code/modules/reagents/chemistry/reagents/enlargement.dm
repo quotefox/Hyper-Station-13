@@ -32,6 +32,8 @@
 
 /datum/reagent/fermi/breast_enlarger/on_mob_add(mob/living/carbon/M)
 	. = ..()
+	if(iswendigo(M))
+		return
 	if(!ishuman(M)) //The monkey clause
 		if(volume >= 15) //To prevent monkey breast farms
 			var/turf/T = get_turf(M)
@@ -164,6 +166,8 @@
 
 /datum/reagent/fermi/BEsmaller_hypo/on_mob_add(mob/living/carbon/M)
 	. = ..()
+	if(iswendigo(M))
+		return
 	if(!M.getorganslot("vagina"))
 		if(M.dna.features["has_vag"])
 			var/obj/item/organ/genital/vagina/nV = new
@@ -208,6 +212,8 @@
 
 /datum/reagent/fermi/penis_enlarger/on_mob_add(mob/living/carbon/M)
 	. = ..()
+	if(iswendigo(M))
+		return
 	if(!ishuman(M)) //Just monkeying around.
 		if(volume >= 15) //to prevent monkey penis farms
 			var/turf/T = get_turf(M)
@@ -351,6 +357,8 @@
 
 /datum/reagent/fermi/PEsmaller_hypo/on_mob_add(mob/living/carbon/M)
 	. = ..()
+	if(iswendigo(M))
+		return
 	if(!M.getorganslot("testicles"))
 		if(M.dna.features["has_balls"])
 			var/obj/item/organ/genital/testicles/nT = new
