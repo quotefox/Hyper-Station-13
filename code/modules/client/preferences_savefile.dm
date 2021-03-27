@@ -311,12 +311,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["body_size"]			>> body_size
 	S["hair_color"]			>> hair_color
 	S["facial_hair_color"]	>> facial_hair_color
-	S["grad_color"]         >> grad_color
 	S["eye_color"]			>> eye_color
 	S["skin_tone"]			>> skin_tone
 	S["hair_style_name"]	>> hair_style
 	S["facial_style_name"]	>> facial_hair_style
-	S["grad_style_name"]    >> grad_style
 	S["underwear"]			>> underwear
 	S["undie_color"]		>> undie_color
 	S["undershirt"]			>> undershirt
@@ -482,7 +480,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	else
 		hair_style			= sanitize_inlist(hair_style, GLOB.hair_styles_female_list)
 		facial_hair_style			= sanitize_inlist(facial_hair_style, GLOB.facial_hair_styles_female_list)
-	grad_style      = sanitize_inlist(grad_style, GLOB.hair_gradients)
 	underwear		= sanitize_inlist(underwear, GLOB.underwear_list)
 	undie_color		= sanitize_hexcolor(undie_color, 3, 0, initial(undie_color))
 	undershirt		= sanitize_inlist(undershirt, GLOB.undershirt_list)
@@ -492,7 +489,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	age				= sanitize_integer(age, AGE_MIN, AGE_MAX, initial(age))
 	hair_color			= sanitize_hexcolor(hair_color, 3, 0)
 	facial_hair_color			= sanitize_hexcolor(facial_hair_color, 3, 0)
-	grad_color      = sanitize_hexcolor(grad_color, 6, 1)
 	eye_color		= sanitize_hexcolor(eye_color, 3, 0)
 	skin_tone		= sanitize_inlist(skin_tone, GLOB.skin_tones)
 	wing_color		= sanitize_hexcolor(wing_color, 3, FALSE, "#FFFFFF")
@@ -562,12 +558,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["age"]				, age)
 	WRITE_FILE(S["hair_color"]			, hair_color)
 	WRITE_FILE(S["facial_hair_color"]	, facial_hair_color)
-	WRITE_FILE(S["grad_color"]          , grad_color)
 	WRITE_FILE(S["eye_color"]			, eye_color)
 	WRITE_FILE(S["skin_tone"]			, skin_tone)
 	WRITE_FILE(S["hair_style_name"]	, hair_style)
 	WRITE_FILE(S["facial_style_name"]	, facial_hair_style)
-	WRITE_FILE(S["grad_style_name"]     , grad_style)
 	WRITE_FILE(S["underwear"]			, underwear)
 	WRITE_FILE(S["body_size"]			, body_size)
 	WRITE_FILE(S["undie_color"]			, undie_color)

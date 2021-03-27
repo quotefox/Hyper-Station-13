@@ -88,22 +88,6 @@
 
 	init_subtypes(/datum/crafting_recipe, GLOB.crafting_recipes)
 
-	//gradients
-GLOBAL_LIST_INIT(hair_gradients, list(
-	"None" = "none",
-	"Fade (Up)" = "fadeup",
-	"Fade (Down)" = "fadedown",
-	"Fade Low (Up)" = "fadeup_low",
-	"Bottom Flat" = "bottomflat",
-	"Fade Low (Down)" = "fadedown_low",
-	"Vertical Split" = "vsplit",
-	"Reflected" = "reflected",
-	"Reflected (Inverted)" = "reflected_inverse",
-	"Reflected High" = "reflected_high",
-	"Reflected High (Inverted)" = "reflected_inverse_high",
-	"Wavy" = "wavy"
-	))
-
 //creates every subtype of prototype (excluding prototype) and adds it to list L.
 //if no list/L is provided, one is created.
 /proc/init_subtypes(prototype, list/L)
@@ -121,7 +105,3 @@ GLOBAL_LIST_INIT(hair_gradients, list(
 		for(var/path in subtypesof(prototype))
 			L+= path
 		return L
-
-
-//hair gradient list. Since it shouldn't need to have a seperate datum list.sanitize_inlist
-

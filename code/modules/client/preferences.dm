@@ -92,8 +92,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/hair_color = "000"				//Hair color
 	var/facial_hair_style = "Shaved"	//Face hair type
 	var/facial_hair_color = "000"		//Facial hair color
-	var/grad_style = "None"             //Hair Gradient style
-	var/grad_color = "#000000"              //Hair Gradient color
 	var/skin_tone = "caucasian1"		//Skin color
 	var/eye_color = "000"				//Eye color
 	var/wing_color = "fff"				//Wing color
@@ -474,9 +472,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=hair_style;task=input'>[hair_style]</a>"
 				dat += "<a href='?_src_=prefs;preference=previous_hair_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_hair_style;task=input'>&gt;</a><BR>"
 				dat += "<span style='border:1px solid #161616; background-color: #[hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=hair;task=input'>Change</a><BR>"
-				dat += "<h3>Hair Gradiant</h3>"
-				dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=grad_style;task=input'>[grad_style]</a>"
-				dat += "<span style='border:1px solid #161616; background-color: #[grad_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=grad;task=input'>Change</a><BR>"
 
 				dat += "<h3>Facial Hair Style</h3>"
 
@@ -1752,18 +1747,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(hair_style == "Tail Hair" && clientckey <> "quotefox")
 						hair_style = "Bald"
 
-				if("grad_style")
-					var/new_grad_style
-					new_grad_style = input(user, "Choose your character's hair gradiant:", "Character Preference") as null|anything in GLOB.hair_gradients
-					if(new_grad_style)
-						grad_style = new_grad_style
-
-				if("grad")
-					var/new_grad
-					new_grad = input(user, "Choose your character's gradiant color:", "Character Preference", new_grad) as color|null
-					if(new_grad)
-						grad_color = sanitize_hexcolor(new_grad)
-
 				if("facial")
 					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference","#"+facial_hair_color) as color|null
 					if(new_facial)
@@ -2720,13 +2703,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		organ_eyes.old_eye_color = eye_color
 	character.hair_color = hair_color
 	character.facial_hair_color = facial_hair_color
-	character.grad_color = grad_color
 	character.wing_color = wing_color
 
 	character.skin_tone = skin_tone
 	character.hair_style = hair_style
 	character.facial_hair_style = facial_hair_style
-	character.grad_style = grad_style
 	character.underwear = underwear
 
 	character.saved_underwear = underwear
