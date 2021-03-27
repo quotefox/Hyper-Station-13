@@ -3,11 +3,6 @@
 	category = SLOT_GLOVES
 	path = /obj/item/clothing/gloves/fingerless
 
-/datum/gear/gcgloves
-	name = "Fingerless Leather Gloves"
-	category = SLOT_GLOVES
-	path = /obj/item/clothing/gloves/guncaster
-
 /datum/gear/goldring
 	name = "A gold ring"
 	category = SLOT_GLOVES
