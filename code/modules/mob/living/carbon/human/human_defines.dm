@@ -14,9 +14,6 @@
 	var/facial_hair_color = "000"
 	var/facial_hair_style = "Shaved"
 
-	var/grad_style = "none"
-	var/grad_color = "#000000"
-
 	//Eye colour
 	var/eye_color = "000"
 
