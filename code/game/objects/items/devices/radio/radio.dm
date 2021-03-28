@@ -200,7 +200,7 @@
 	if(!language)
 		language = M.get_default_language()
 	INVOKE_ASYNC(src, .proc/talk_into_impl, M, message, channel, spans.Copy(), language)
-	playsound(src, 'sound/voice/radioin.ogg', 50, 0)
+	playsound(src, 'sound/voice/radioin.ogg', 25, 0)
 	return ITALICS | REDUCE_RANGE
 
 /obj/item/radio/proc/talk_into_impl(atom/movable/M, message, channel, list/spans, datum/language/language)
