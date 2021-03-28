@@ -238,7 +238,6 @@
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	hitsound = 'sound/weapons/circsawhit.ogg'
-	throwhitsound =  'sound/weapons/pierce.ogg'
 	item_flags = SURGICAL_TOOL
 	flags_1 = CONDUCT_1
 	force = 15
@@ -251,6 +250,7 @@
 	sharpness = IS_SHARP
 	tool_behaviour = TOOL_SAW
 	toolspeed = 1
+	mob_throw_hit_sound =  'sound/weapons/pierce.ogg'
 
 /obj/item/circular_saw/Initialize()
 	. = ..()
@@ -263,7 +263,6 @@
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
-	throwhitsound =  'sound/weapons/pierce.ogg'
 	flags_1 = CONDUCT_1
 	force = 10
 	w_class = WEIGHT_CLASS_SMALL
