@@ -3066,6 +3066,7 @@
 #include "hyperstation\code\modules\cargo\sweatshop\wooden.dm"
 #include "hyperstation\code\modules\client\loadout\glasses.dm"
 #include "hyperstation\code\modules\client\loadout\tablet.dm"
+#include "hyperstation\code\modules\clothing\gloves.dm"
 #include "hyperstation\code\modules\clothing\head.dm"
 #include "hyperstation\code\modules\clothing\glasses\polychromic_glasses.dm"
 #include "hyperstation\code\modules\clothing\spacesuits\hardsuit.dm"
