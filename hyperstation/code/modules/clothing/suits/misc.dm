@@ -9,7 +9,7 @@
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
 /obj/item/clothing/suit/gcvest
-	name = "Guncaster's Vest"
+	name = "\improper Guncaster's Vest"
 	desc = "An open leather vest with battlescarred metal shoulderpads, perfect for hunting interdimensional wazards. Smells of gunpowder and plasma."
 	icon_state = "guncaster"
 	item_state = "guncaster"
@@ -18,7 +18,7 @@
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
 /obj/item/clothing/suit/gcvest/alt
-	name = "Hellraider's Vest"
+	name = "\improper Hellraider's Vest"
 	desc = "An open leather vest with battlescarred metal shoulderpads, discovered in a dimensional anomaly. Smells of gunpowder and plasma."
 	icon_state = "guncaster_alt"
 	item_state = "guncaster_alt"
