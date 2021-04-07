@@ -10,6 +10,8 @@
 	var/togglename = null
 	var/suittoggled = FALSE
 
+	drop_sound = 'sound/items/handling/cloth_drop.ogg'
+	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
 	var/adjusted = NORMAL_STYLE
 	mutantrace_variation = MUTANTRACE_VARIATION
 	var/tauric = FALSE		//Citadel Add for tauric hardsuits
