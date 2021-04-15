@@ -51,7 +51,7 @@
 	alt_titles = list("Circuitry Designer", "Xenobiologist", "Xenobotanist", "Xenoarcheologist", "Chemical Researcher", "Researcher", "Pyrotechnician")
 
 /datum/job/roboticist
-	alt_titles = list("Biomechanical Engineer", "Mechatronic Engineer", "Mechanic", "Techpriest")
+	alt_titles = list("Biomechanical Engineer", "Mechatronic Engineer", "Mechanic")
 
 /datum/job/junior_scientist
 
