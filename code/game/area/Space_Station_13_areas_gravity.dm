@@ -338,6 +338,10 @@
 /area/lawoffice/gravity
 	has_gravity = STANDARD_GRAVITY
 
+/area/arcade
+	icon_state = "xenogen"
+	has_gravity = STANDARD_GRAVITY
+
 
 //Engineering
 
