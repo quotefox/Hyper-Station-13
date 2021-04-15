@@ -891,6 +891,16 @@ obj/item/storage/belt/slut/ComponentInitialize()
 		final_block_chance = 0 //Too thin to block bullets
 	return ..()
 
+/obj/item/storage/belt/sabre/chloesabre
+	name = "Ornate Sheath"
+	desc = "An ornate and rather sinister looking sabre sheathe."
+	icon = 'icons/obj/custom.dmi'
+	alternate_worn_icon = 'icons/mob/custom_w.dmi'
+	icon_state = "darksheath"
+	item_state = "darksheath"
+	fitting_swords = list(/obj/item/toy/sword/chloesabre, /obj/item/melee/sabre, /obj/item/melee/baton/stunsword)
+	starting_sword = /obj/item/toy/sword/chloesabre
+
 /obj/item/storage/belt/botany
 	name = "botanical belt"
 	desc = "A belt made for holding hydroponics supplies."

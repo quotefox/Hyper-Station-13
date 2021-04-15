@@ -29,20 +29,7 @@
 	squeak_override = list('sound/weapons/plasma_cutter.ogg' = 1) // The sound the crusher uses is the same as the plasma cutter :P
 
 
-/obj/item/toy/plush/slimeplushie/tania
-	desc = "An adorable stuffed toy of a slimegirl. She seems oddly damp..." // Milky slime
-	icon = 'hyperstation/icons/obj/plushes.dmi'
-	icon_state = "tania"
-	item_state = "tania"
-	attack_verb = list("hugged", "cuddled", "embraced")
-	squeak_override = list('sound/weapons/thudswoosh.ogg' = 1)
-
-/obj/item/toy/plush/slimeplushie/tania/love(obj/item/toy/plush/Kisser, mob/living/user)
-	/* if (istype(Kisser, /obj/item/toy/plush/vladin) ) // Vladin plushie isn't real, Vladin plushie cannot hug you ;-;
-		..()
-	else */
-	user.show_message("<span class='notice'>[src] hugs [Kisser]!</span>", 1,
-					  "<span class='notice'>[src] hugs [Kisser]!</span>", 0)
+//society has progressed past the need for Tania
 
 /obj/item/toy/plush/mammal/grug
 	name = "Grug S. Cavemannington Plushie"
@@ -53,7 +40,7 @@
 	attack_verb = list("thomped", "ook'd", "stoned")
 	squeak_override = list('sound/voice/gorillaplush.ogg' = 1)
 
-/obj/item/toy/plush/mammal/lyricalpaws
+/obj/item/toy/plush/mammal/winterdawn
 	name = "hyena plushie"
 	desc = "An adorable stuffed toy of a mammal that seems to resemble a crew member! She's a little yeen in a big labcoat."
 	gender = FEMALE //probably a girl
@@ -65,10 +52,6 @@
 	'modular_citadel/sound/voice/bark1.ogg' = 1,
 	'modular_citadel/sound/voice/bark2.ogg' = 1
 	)
-
-/obj/item/toy/plush/mammal/lyricalpaws/attack_self(mob/user)
-	to_chat(user, "<span class='notice'>You pet [src]. You swear she looks up at you.</span>")
-
 
 /obj/item/toy/plush/mammal/chemlight
 	desc = "An adorable stuffed toy of a mammal that seems to resemble a crew member! It looks to glow and sport four arms."
