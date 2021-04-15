@@ -3089,6 +3089,7 @@
 #include "hyperstation\code\obj\condom.dm"
 #include "hyperstation\code\obj\decal.dm"
 #include "hyperstation\code\obj\economy.dm"
+#include "hyperstation\code\obj\fleshlight.dm"
 #include "hyperstation\code\obj\fluff.dm"
 #include "hyperstation\code\obj\kinkyclothes.dm"
 #include "hyperstation\code\obj\leash.dm"

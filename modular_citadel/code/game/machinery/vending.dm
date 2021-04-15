@@ -65,6 +65,7 @@
 				/obj/item/clothing/under/jabroni = 3,
 				/obj/item/electropack/vibrator/small = 2,
 				/obj/item/electropack/vibrator = 2,
+				/obj/item/fleshlight = 2,
 				)
 	contraband = list(
 				/obj/item/clothing/under/gear_harness = 3,
