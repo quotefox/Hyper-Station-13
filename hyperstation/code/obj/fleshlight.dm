@@ -9,7 +9,7 @@
 	item_state = "fleshlight"
 	w_class = WEIGHT_CLASS_SMALL
 	var/sleevecolor = "#ffcbd4" //pink
-	price = 12
+	price = 8
 	var/mutable_appearance/sleeve
 	var/inuse = 0
 
@@ -262,6 +262,7 @@
 	icon = 'hyperstation/icons/obj/fleshlight.dmi'
 	desc = "A small silver box with Silver Love Co embossed."
 	icon_state = "box"
+	price = 15
 
 // portal fleshlight box
 /obj/item/storage/box/portallight/PopulateContents()
