@@ -145,7 +145,7 @@
 
 		if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
 			var/mob/living/carbon/human/O = user
-			O.mob_climax_partner(P, M, TRUE, FALSE, FALSE, TRUE) //climax with your partner remotely!
+			C.mob_climax_partner(P, M, TRUE, FALSE, FALSE, TRUE) //climax with your partner remotely!
 		return
 
 	else
@@ -188,6 +188,7 @@
 	icon = 'hyperstation/icons/obj/fleshlight.dmi'
 	icon_state = "portalpanties"
 	item_state = "fleshlight"
+	w_class = WEIGHT_CLASS_SMALL
 	var/obj/item/portallight
 	var/attached = FALSE
 
