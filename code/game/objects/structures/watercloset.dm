@@ -453,6 +453,7 @@
 				H.update_inv_wear_mask()
 			else
 				H.lip_style = null
+				H.nail_style = null
 				H.update_body()
 			if(H.glasses && washglasses && wash_obj(H.glasses))
 				H.update_inv_glasses()

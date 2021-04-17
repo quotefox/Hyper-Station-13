@@ -1242,6 +1242,7 @@
 				var/mob/living/carbon/human/H = M
 				if(H.lip_style)
 					H.lip_style = null
+					H.nail_style = null
 					H.update_body()
 			for(var/obj/item/I in C.held_items)
 				SEND_SIGNAL(I, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
