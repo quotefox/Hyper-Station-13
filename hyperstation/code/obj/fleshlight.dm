@@ -144,8 +144,8 @@
 		C.adjustArousalLoss(20) //make the target more aroused.
 
 		if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
-			var/mob/living/carbon/human/O = user
-			C.mob_climax_partner(P, M, TRUE, FALSE, FALSE, TRUE) //climax with your partner remotely!
+			var/mob/living/carbon/human/O = C
+			O.mob_climax_partner(P, M, TRUE, FALSE, FALSE, TRUE) //climax with their partner remotely!
 		return
 
 	else
