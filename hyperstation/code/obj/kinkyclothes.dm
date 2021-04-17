@@ -39,7 +39,7 @@
 //the classic click clack
 
 obj/item/clothing/neck/stole
-	name = "white stole"
+	name = "white boa"
 	desc = "Fluffy neck wear to keep you warm, and attract others."
 	icon = 'hyperstation/icons/obj/clothing/neck.dmi'
 	w_class = WEIGHT_CLASS_SMALL
@@ -48,7 +48,7 @@ obj/item/clothing/neck/stole
 	price = 3
 
 obj/item/clothing/neck/stole/black
-	name = "black stole"
+	name = "black boa"
 	desc = "Fluffy neck wear to keep you warm, and attract others."
 	icon = 'hyperstation/icons/obj/clothing/neck.dmi'
 	w_class = WEIGHT_CLASS_SMALL
@@ -56,3 +56,14 @@ obj/item/clothing/neck/stole/black
 	item_state = ""	//no inhands
 	color = "#3d3d3d"
 	price = 3
+
+/obj/item/clothing/suit/fluffyhalfcrop
+	name = "fluffy half-crop jacket"
+	desc = "A fluffy synthetic fur half-cropped jacket, less about warmth, more about style!"
+	icon_state = "fluffy"
+	item_state = "fluffy"
+	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
+	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
+	body_parts_covered = CHEST|LEGS|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
