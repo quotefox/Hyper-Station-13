@@ -79,6 +79,7 @@
 #define ADMIN_PUNISHMENT_FAKEBWOINK "Fake Bwoink"
 #define ADMIN_PUNISHMENT_NUGGET "Nugget"
 #define ADMIN_PUNISHMENT_BREADIFY ":b:read"
+#define ADMIN_PUNISHMENT_BOOKIFY "Bookify"
 
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2

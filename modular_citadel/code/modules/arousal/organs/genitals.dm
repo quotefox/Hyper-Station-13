@@ -430,12 +430,12 @@
 			//otherwise, appear under clothing
 			if(G.slot == "penis" || G.slot == "testicles")
 				if(G.size < 3)		//is actually "less than 11 inches"
-					genital_overlay.layer = -GENITALS_UNDER_LAYER			
+					genital_overlay.layer = -GENITALS_UNDER_LAYER
 			if(G.slot == "breasts")
 				var/obj/item/organ/genital/breasts/B = G
 				if(B.cached_size < 8)	//anything smaller than a g-cup
 					genital_overlay.layer = -GENITALS_UNDER_LAYER
-			
+
 			//Get the icon
 			genital_overlay.icon_state = "[G.slot]_[S.icon_state]_[size]_[aroused_state]_[layertext]"
 			colourcode = S.color_src
