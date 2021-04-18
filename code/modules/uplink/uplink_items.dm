@@ -1792,6 +1792,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	item = /obj/item/clockwork/slab/traitor
 	cost = 20
 	refundable = TRUE
+	cant_discount = TRUE
 	//restricted_roles = list("Chaplain","Curator")
 
 ///datum/uplink_item/role_restricted/arcane_tome
@@ -1801,6 +1802,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	item = /obj/item/tome/traitor
 	cost = 20
 	refundable = TRUE
+	cant_discount = TRUE
 	//restricted_roles = list("Chaplain","Curator")
 
 /datum/uplink_item/role_restricted/explosive_hot_potato
