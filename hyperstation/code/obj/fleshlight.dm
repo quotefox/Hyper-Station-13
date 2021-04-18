@@ -182,11 +182,12 @@
 	var/mob/living/carbon/human/H = V.owner
 
 	if(H) //if the portal panties are on someone.
-
+		sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_normal")
 		if(H.dna.species.name == "Lizardperson") // lizard nerd
 			sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_lizard")
-		else
-			sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_normal")
+
+		if(H.dna.species.name == "Slimeperson") // slime nerd
+			sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_slime")
 
 		sleeve.color = "#" + H.dna.features["mcolor"]
 		add_overlay(sleeve)
