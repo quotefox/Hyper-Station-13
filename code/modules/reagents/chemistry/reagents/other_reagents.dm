@@ -2065,7 +2065,7 @@
 	color = "#AAAAAA55"
 	taste_description = "water"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
-	pH = 15
+	pH = 9.75
 
 /datum/reagent/pax/on_mob_metabolize(mob/living/L)
 	..()

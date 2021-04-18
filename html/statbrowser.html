@@ -87,7 +87,7 @@ li a:hover:not(.active) {
 	font-size: 12px;
 	margin: 2px 2px;
 	cursor: pointer;
-	border-radius: 10%;
+	border-radius: 0%;
 	transition-duration: 0.25s;
 	order: 3;
 }
@@ -954,26 +954,26 @@ function draw_verbs(cat){
 
 function set_theme(which) {
 	if (which == "light") {
+		document.body.style.backgroundColor = "white";
+		document.body.style.color = "black";
 		document.body.className = "";
 		set_style_sheet("browserOutput_white");
+		setCookie("theme", "white", 365);
 	} else if (which == "dark") {
+		document.body.style.backgroundColor = "#171717";
+		document.body.style.color = "#a4bad6";
 		document.body.className = "dark";
 		set_style_sheet("browserOutput");
+		setCookie("theme", "dark", 365);
 	}
 }
 
 function set_light_theme() {
-	document.body.style.backgroundColor = "white";
-	document.body.style.color = "black";
-	document.body.className = "";
-	set_style_sheet("browserOutput_white")
+	set_theme("light");
 }
 
 function set_dark_theme() {
-	document.body.style.backgroundColor = "#171717";
-	document.body.style.color = "#a4bad6";
-	document.body.className = "dark";
-	set_style_sheet("browserOutput")
+	set_theme("dark");
 }
 
 function set_style_sheet(sheet) {
@@ -1008,6 +1008,22 @@ function create_debug(){
 	}
 }
 
+function checkCookie() {
+  var stylecookie=getCookie("theme");
+  if (stylecookie == "dark") {
+    set_dark_theme();
+  } else {
+    set_light_theme();
+  }
+}
+
+function setCookie(cname,cvalue,exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires=" + d.toGMTString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
 function getCookie(cname) {
 	var name = cname + '=';
 	var ca = document.cookie.split(';');
@@ -1021,5 +1037,6 @@ function getCookie(cname) {
 	return '';
 }
 </script>
+<body onload="checkCookie()"></body>
 </body>
 </html>

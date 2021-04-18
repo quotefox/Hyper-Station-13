@@ -727,3 +727,9 @@
 		qdel(src)
 	building = FALSE
 
+
+/obj/structure/rack/shelf
+	name = "shelving"
+	desc = "Some nice metal shelves."
+	icon = 'hyperstation/icons/obj/objects.dmi'
+	icon_state = "shelf"

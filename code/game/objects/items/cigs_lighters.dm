@@ -232,7 +232,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(lit)
 		user.visible_message("<span class='notice'>[user] calmly drops and treads on \the [src], putting it out instantly.</span>")
 		new type_butt(user.loc)
-		new /obj/effect/decal/cleanable/ash(user.loc)
 		qdel(src)
 	. = ..()
 

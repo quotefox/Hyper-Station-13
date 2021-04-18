@@ -20,6 +20,7 @@ GLOBAL_LIST_INIT(medical_positions, list(
 	"Geneticist",
 	"Virologist",
 	"Chemist",
+	"Psychologist",
 	"Medical Resident"))
 
 
