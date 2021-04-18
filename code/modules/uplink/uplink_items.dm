@@ -1773,7 +1773,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	cost = 2
 	restricted_roles = list("Curator")
 	limited_stock = 1 //please don't spam deadchat
-
+/* Disabled because this is waaaay too chaotic for hyper
 /datum/uplink_item/role_restricted/his_grace
 	name = "His Grace"
 	desc = "An incredibly dangerous weapon recovered from a station overcome by the grey tide. Once activated, He will thirst for blood and must be used to kill to sate that thirst. \
@@ -1784,24 +1784,22 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	cost = 20
 	restricted_roles = list("Chaplain")
 	surplus = 5 //Very low chance to get it in a surplus crate even without being the chaplain
-
-///datum/uplink_item/role_restricted/clockwork_slab
-/datum/uplink_item/dangerous/clockwork_slab
+*/
+/datum/uplink_item/role_restricted/clockwork_slab
 	name = "Clockwork Slab"
 	desc = "A reverse engineered clockwork slab. Is this really a good idea?"
 	item = /obj/item/clockwork/slab/traitor
 	cost = 20
 	refundable = TRUE
-	//restricted_roles = list("Chaplain","Curator")
+	restricted_roles = list("Chaplain","Curator")
 
-///datum/uplink_item/role_restricted/arcane_tome
-/datum/uplink_item/dangerous/arcane_tome
+/datum/uplink_item/role_restricted/arcane_tome
 	name = "Arcane Tome"
 	desc = "A 'replica' of a Nar'sian tome. This is probably a bad idea..."
 	item = /obj/item/tome/traitor
 	cost = 20
 	refundable = TRUE
-	//restricted_roles = list("Chaplain","Curator")
+	restricted_roles = list("Chaplain","Curator")
 
 /datum/uplink_item/role_restricted/explosive_hot_potato
 	name = "Exploding Hot Potato"
