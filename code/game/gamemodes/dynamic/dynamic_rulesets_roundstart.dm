@@ -66,7 +66,7 @@
 //                LEWD                  //
 //                                      //
 //////////////////////////////////////////
-
+/* //Putting Lewd traitor on the backburner until we can buffer it a bit.
 /datum/dynamic_ruleset/roundstart/traitor/lewd
 	name = "Horny Traitor"
 	persistent = TRUE
@@ -115,7 +115,7 @@
 		M.mind.restricted_roles = restricted_roles
 	return TRUE
 
-
+*/
 //////////////////////////////////////////
 //                                      //
 //           BLOOD BROTHERS             //

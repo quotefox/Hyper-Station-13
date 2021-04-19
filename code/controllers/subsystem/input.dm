@@ -33,10 +33,10 @@ SUBSYSTEM_DEF(input)
 			"Tab" = "\".winset \\\"input.focus=true?map.focus=true input.background-color=[COLOR_INPUT_DISABLED]:input.focus=true input.background-color=[COLOR_INPUT_ENABLED]\\\"\"",
 			"O" = "ooc",
 			"Ctrl+O" = "looc",
-			"Ctrl+T" = "say",
+			"Ctrl+T" = "say_indicator",
 			"T" = "say_indicator",
 			"Y" = "whisper",
-			"Ctrl+M" = "me",
+			"Ctrl+M" = "me_indicato",
 			"M" = "me_indicator",
 			"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"", // This makes it so backspace can remove default inputs
 			"Any" = "\"KeyDown \[\[*\]\]\"",
@@ -50,9 +50,9 @@ SUBSYSTEM_DEF(input)
 		"old_hotkeys" = list(
 			"Tab" = "\".winset \\\"mainwindow.macro=old_default input.focus=true input.background-color=[COLOR_INPUT_ENABLED]\\\"\"",
 			"O" = "ooc",
-			"T" = "say",
+			"T" = "say_indicator",
 			"Ctrl+T" = "say_indicator",
-			"M" = "me",
+			"M" = "me_indicator",
 			"Ctrl+M" = "me_indicator",
 			"Back" = "\".winset \\\"input.text=\\\"\\\"\\\"\"", // This makes it so backspace can remove default inputs
 			"Any" = "\"KeyDown \[\[*\]\]\"",

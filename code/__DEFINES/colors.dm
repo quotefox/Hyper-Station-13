@@ -17,6 +17,7 @@
 
 #define COLOR_FLOORTILE_GRAY   "#8D8B8B"
 #define COLOR_ALMOST_BLACK	   "#333333"
+#define COLOR_SILVER	       "#C0C0C0"
 #define COLOR_BLACK            "#000000"
 #define COLOR_RED              "#FF0000"
 #define COLOR_RED_LIGHT        "#FF3333"

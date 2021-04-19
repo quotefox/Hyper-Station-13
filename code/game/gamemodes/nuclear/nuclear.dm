@@ -6,7 +6,7 @@
 	required_enemies = 2
 	recommended_enemies = 5
 	antag_flag = ROLE_OPERATIVE
-	enemy_minimum_age = 7
+	enemy_minimum_age = 21
 
 	announce_span = "danger"
 	announce_text = "Syndicate forces are approaching the station in an attempt to destroy it!\n\

@@ -18,6 +18,9 @@
 	mutantrace_variation = MUTANTRACE_VARIATION //Are there special sprites for specific situations? Don't use this unless you need to.
 	equip_sound = 'sound/items/equip/jumpsuit_equip.ogg'
 
+	drop_sound = 'sound/items/handling/cloth_drop.ogg'
+	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
+
 /obj/item/clothing/under/worn_overlays(isinhands = FALSE)
 	. = list()
 	if(!isinhands)

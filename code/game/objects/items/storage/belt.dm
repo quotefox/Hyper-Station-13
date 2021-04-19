@@ -12,6 +12,8 @@
 	var/content_overlays = FALSE //If this is true, the belt will gain overlays based on what it's holding
 	var/worn_overlays = FALSE //worn counterpart of the above.
 	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
+	drop_sound = 'sound/items/handling/toolbelt_drop.ogg'
+	pickup_sound =  'sound/items/handling/toolbelt_pickup.ogg'
 
 /obj/item/storage/belt/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] begins belting [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -888,6 +890,16 @@ obj/item/storage/belt/slut/ComponentInitialize()
 	if(attack_type == PROJECTILE_ATTACK)
 		final_block_chance = 0 //Too thin to block bullets
 	return ..()
+
+/obj/item/storage/belt/sabre/chloesabre
+	name = "Ornate Sheath"
+	desc = "An ornate and rather sinister looking sabre sheathe."
+	icon = 'icons/obj/custom.dmi'
+	alternate_worn_icon = 'icons/mob/custom_w.dmi'
+	icon_state = "darksheath"
+	item_state = "darksheath"
+	fitting_swords = list(/obj/item/toy/sword/chloesabre, /obj/item/melee/sabre, /obj/item/melee/baton/stunsword)
+	starting_sword = /obj/item/toy/sword/chloesabre
 
 /obj/item/storage/belt/botany
 	name = "botanical belt"

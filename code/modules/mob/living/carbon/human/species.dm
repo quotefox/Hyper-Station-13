@@ -81,7 +81,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/fixed_mut_color2 = ""
 	var/fixed_mut_color3 = ""
 	var/whitelisted = 0 		//Is this species restricted to certain players?
-	var/whitelist = list() 		//List the ckeys that can use this species, if it's whitelisted.: list("John Doe", "poopface666", "SeeALiggerPullTheTrigger") Spaces & capitalization can be included or ignored entirely for each key as it checks for both.
+	var/whitelist = list() 		//List the ckeys that can use this species, if it's whitelisted.: list("John Doe", "poopface666") Spaces & capitalization can be included or ignored entirely for each key as it checks for both.
 
 	var/icon_limbs //Overrides the icon used for the limbs of this species. Mainly for downstream, and also because hardcoded icons disgust me. Implemented and maintained as a favor in return for a downstream's implementation of synths.
 
@@ -549,6 +549,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					if(UNDIE_COLORABLE(S))
 						MA.color = "#[H.socks_color]"
 					standing += MA
+
+		// nail paint (hyper)
+		if(H.nail_style)
+			var/mutable_appearance/nail_overlay = mutable_appearance('hyperstation/icons/mobs/nails.dmi', "nails", -HANDS_PART_LAYER)
+			nail_overlay.color = H.nail_color
+			standing += nail_overlay
 
 	if(standing.len)
 		H.overlays_standing[BODY_LAYER] = standing

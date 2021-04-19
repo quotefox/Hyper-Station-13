@@ -32,6 +32,9 @@
 	var/datum/integrated_io/selected_io = null  //functional for integrated circuits.
 	var/mode = 0
 
+	drop_sound = 'sound/items/handling/multitool_drop.ogg'
+	pickup_sound =  'sound/items/handling/multitool_pickup.ogg'
+
 /obj/item/multitool/examine(mob/user)
 	. = ..()
 	if(selected_io)
