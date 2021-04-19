@@ -12900,6 +12900,23 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
+"Cl" = (
+/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/ausbushes/fernybush,
+/obj/item/storage/backpack/duffelbag/drone{
+	pixel_y = 2
+	},
+/obj/effect/decal/cleanable/ash{
+	name = "ashes of drone (760)"
+	},
+/obj/item/clothing/head/hardhat/weldhat,
+/turf/open/floor/plasteel{
+	dir = 6;
+	icon_state = "asteroid8";
+	name = "sand"
+	},
+/area/centcom/control)
 "Cn" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chem_dispenser/drinks/beer/fullupgrade,
@@ -18945,6 +18962,9 @@
 /obj/structure/table/wood,
 /obj/structure/window/reinforced/spawner/north,
 /obj/structure/window/reinforced/spawner/west,
+/obj/item/rupee{
+	desc = "A gift, right?"
+	},
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
 "RD" = (
@@ -62724,7 +62744,7 @@ io
 io
 io
 qw
-WI
+Cl
 Wk
 WI
 lN

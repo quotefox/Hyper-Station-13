@@ -53,9 +53,11 @@
 /obj/item/nailpolish/attack(mob/M, mob/user)
 	if(!ismob(M))
 		return
-
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+		if(H.nail_style) //to stop stacking bugs
+			to_chat(user, "<span class='warning'>Remove the old nail polish first!</span>")
+
 		if(H == user)
 			user.visible_message("<span class='notice'>[user] does [user.p_their()] nails with \the [src].</span>", \
 								 "<span class='notice'>You take a moment to apply \the [src]. Perfect!</span>")

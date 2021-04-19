@@ -1,5 +1,6 @@
 //Hyperstation 13 fleshlight
-//dont forget to credit us!
+//Humbley request this doesnt get ported to other code bases, we strive to make things unique on our server and we dont have alot of coders
+//but if you absolutely must. please give us some credit~ <3
 
 /obj/item/fleshlight
 	name = "fleshlight"
@@ -93,6 +94,7 @@
 	var/paired = 0
 	var/obj/item/portalunderwear
 	var/useable = FALSE
+	var/option = ""
 
 /obj/item/portallight/examine(mob/user)
 	. = ..()
@@ -109,11 +111,20 @@
 	if(!useable)
 		to_chat(user, "<span class='notice'>It seems the device has failed or your partner is not wearing their device.</span>")
 
+	if(C == user)//if your using it on yourself, more options! otherwise, just fuck.
+		option = input(usr, "Choose action", "Portal Fleshlight", "Fuck") in list("Fuck", "Lick", "Touch")
+	else
+		option = "Fuck"
+
 	var/obj/item/organ/genital/vagina/V = portalunderwear.loc
 	if(!V)
 		return
 	var/mob/living/carbon/human/M = V.owner
-	if(P&&P.is_exposed())
+
+	if(option == "Fuck"&&!P.is_exposed()) //we are trying to fuck with no penis!
+		to_chat(user, "<span class='notice'>You don't see anywhere to use this on.</span>")
+		return
+	else //other options dont need checks
 		inuse = 1
 		if(!(C == user)) //if we are targeting someone else.
 			C.visible_message("<span class='userlove'>[user] is trying to use [src] on [C]'s penis.</span>", "<span class='userlove'>[user] is trying to use [src] on your penis.</span>")
@@ -123,35 +134,44 @@
 			return
 
 		//checked if not used on yourself, if not, carry on.
-		playsound(src, 'sound/lewd/slaps.ogg', 30, 1, -1) //slapping sound
+		if(option == "Fuck")
+			playsound(src, 'sound/lewd/slaps.ogg', 30, 1, -1) //slapping sound for fuck.
+
 		inuse = 0
-		if(!(C == user)) //lewd flavour text
+		if(!(C == user))
 			C.visible_message("<span class='userlove'>[user] pumps [src] on [C]'s penis.</span>", "<span class='userlove'>[user] pumps [src] up and down on your penis.</span>")
 		else
-			user.visible_message("<span class='userlove'>[user] pumps [src] on their penis.</span>", "<span class='userlove'>You pump the fleshlight on your penis.</span>")
+			if(option == "Fuck")
+				user.visible_message("<span class='userlove'>[user] pumps [src] on their penis.</span>", "<span class='userlove'>You pump the fleshlight on your penis.</span>")
+			if(option == "Lick")
+				user.visible_message("<span class='userlove'>[user] licks into [src].</span>", "<span class='userlove'>You lick into [src].</span>")
+			if(option == "Touch")
+				user.visible_message("<span class='userlove'>[user] touches softly against [src].</span>", "<span class='userlove'>You touch softly on [src].</span>")
 
-		if(prob(30)) //30% chance to make them moan.
-			C.emote("moan")
+
 		if(prob(30)) //30% chance to make your partner moan.
 			M.emote("moan")
 
-		to_chat(M, "<span class='love'>You feel a [P.shape] shaped penis pumping through the portal into your vagina.</span>")//message your partner and kinky!
-		M.adjustArousalLoss(20)
-		M.do_jitter_animation() //make your partner shake too!
-
-		C.do_jitter_animation()
-
-		C.adjustArousalLoss(20) //make the target more aroused.
+		if(option == "Fuck")// normal fuck
+			to_chat(M, "<span class='love'>You feel a [P.shape] shaped penis pumping through the portal into your vagina.</span>")//message your partner and kinky!
+			if(prob(30)) //30% chance to make them moan.
+				C.emote("moan")
+			if(prob(30)) //30% chance to make your partner moan.
+				M.emote("moan")
+			C.adjustArousalLoss(20)
+			M.adjustArousalLoss(20)
+			M.do_jitter_animation() //make your partner shake too!
+		if(option == "Lick")
+			to_chat(M, "<span class='love'>You feel a tongue lick you through the portal against your vagina.</span>")
+			M.adjustArousalLoss(10)
+		if(option == "Touch")
+			to_chat(M, "<span class='love'>You feel someone touching your vagina through the portal.</span>")
+			M.adjustArousalLoss(5)
 
 		if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
 			var/mob/living/carbon/human/O = C
 			O.mob_climax_partner(P, M, TRUE, FALSE, FALSE, TRUE) //climax with their partner remotely!
 		return
-
-	else
-		to_chat(user, "<span class='notice'>You don't see anywhere to use this on.</span>")
-
-	inuse = 0
 	..()
 
 /obj/item/portallight/proc/updatesleeve()
@@ -162,11 +182,12 @@
 	var/mob/living/carbon/human/H = V.owner
 
 	if(H) //if the portal panties are on someone.
-
+		sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_normal")
 		if(H.dna.species.name == "Lizardperson") // lizard nerd
 			sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_lizard")
-		else
-			sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_normal")
+
+		if(H.dna.species.name == "Slimeperson") // slime nerd
+			sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_slime")
 
 		sleeve.color = "#" + H.dna.features["mcolor"]
 		add_overlay(sleeve)
