@@ -120,6 +120,17 @@
 	path = /obj/item/clothing/suit/flakjack
 	cost = 2
 
+/datum/gear/gcvest
+	name = "Guncaster's Vest"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/gcvest
+
+/datum/gear/gcvestalt
+	name = "Hellraider's Vest"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/gcvest/alt
+
+
 /datum/gear/trekds9_coat
 	name = "DS9 Overcoat (use uniform)"
 	category = SLOT_WEAR_SUIT
@@ -218,3 +229,8 @@
 	name = "Pharoah tunic"
 	category = SLOT_WEAR_SUIT
 	path =	/obj/item/clothing/suit/nemes
+
+/datum/gear/fluffcoat
+	name = "Winter labcoat"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/labcoat/formallab

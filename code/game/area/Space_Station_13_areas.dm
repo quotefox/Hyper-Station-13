@@ -792,6 +792,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Chemistry"
 	icon_state = "chem"
 
+/area/medical/psych
+	name = "Psychology Office"
+	icon_state = "medbay"
+
 /area/medical/surgery
 	name = "Surgery"
 	icon_state = "surgery"
@@ -1371,3 +1375,8 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/crew_quarters/fitness/pool
 	name = "Pool Area"
 	icon_state = "pool"
+
+/area/xenoarch/nothinghere
+	name = "Nothing Here"
+	icon_state = "yellow"
+	ambientsounds = SPOOKY

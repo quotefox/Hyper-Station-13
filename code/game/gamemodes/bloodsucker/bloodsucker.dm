@@ -22,7 +22,7 @@
 	required_enemies = 2
 	recommended_enemies = 4
 	reroll_friendly = FALSE
-	enemy_minimum_age = 7
+	enemy_minimum_age = 21
 	round_ends_with_antag_death = FALSE
 
 

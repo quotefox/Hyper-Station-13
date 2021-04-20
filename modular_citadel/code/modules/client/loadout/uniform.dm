@@ -458,6 +458,12 @@
 	path = /obj/item/clothing/under/polychromic/bottomless
 	cost = 2
 
+/datum/gear/polysweatervirgin
+	name = "Polychromic Virginkiller Sweater"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/polychromic/vsweater
+	cost = 2
+
 /datum/gear/corset
 	name = "Corset"
 	category = SLOT_W_UNIFORM

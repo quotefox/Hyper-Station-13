@@ -428,7 +428,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//flavor text
 	//Let's make our players NOT cry desperately as we wipe their savefiles of their special snowflake texts:
 	if((S["flavor_text"] != "") && (S["flavor_text"] != null) && S["flavor_text"]) //If old text isn't null and isn't "" but still exists.
-		S["flavor_text"]				>> features["flavor_text"] //Load old flavortext as current dna-based flavortext
+		S["flavor_text"]			>> features["flavor_text"] //Load old flavortext as current dna-based flavortext
 
 		WRITE_FILE(S["feature_flavor_text"], features["flavor_text"]) //Save it in our new type of flavor-text
 		WRITE_FILE(S["flavor_text"]	, "") //Remove old flavortext, completing the cut-and-paste into the new format.
@@ -436,6 +436,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	else //We have no old flavortext, default to new
 		S["feature_flavor_text"]		>> features["flavor_text"]
 
+	if((S["ooc_text"] != "") && (S["ooc_text"] != null) && S["ooc_text"])
+		S["ooc_text"]				>> features["ooc_text"]
+
+		WRITE_FILE(S["feature_ooc_text"], features["ooc_text"]) //Save it in our new type of flavor-text
+		WRITE_FILE(S["ooc_text"], "") //Remove old flavortext, completing the cut-and-paste into the new format.
+
+	else
+		S["feature_ooc_text"]		>> features["ooc_text"]
 
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)

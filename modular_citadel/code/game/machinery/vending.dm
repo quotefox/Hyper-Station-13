@@ -57,6 +57,7 @@
 				/obj/item/clothing/neck/stole/black = 2,
 				/obj/item/clothing/under/polychromic/stripper = 3,
 				/obj/item/clothing/under/polychromic/bikini = 3,
+				/obj/item/clothing/under/polychromic/onepeice = 3,
 				/obj/item/clothing/under/polychromic/shortpants/pantsu = 3,
 				/obj/item/clothing/under/polychromic/bulge = 3,
 				/obj/item/clothing/suit/maidapron = 3,
@@ -64,6 +65,8 @@
 				/obj/item/clothing/under/jabroni = 3,
 				/obj/item/electropack/vibrator/small = 2,
 				/obj/item/electropack/vibrator = 2,
+				/obj/item/fleshlight = 2,
+				/obj/item/storage/box/portallight = 1,
 				)
 	contraband = list(
 				/obj/item/clothing/under/gear_harness = 3,
@@ -86,32 +89,6 @@
 	refill_canister = /obj/item/vending_refill/kink
 	baseprice = 2
 
-/*
-/obj/machinery/vending/nazivend
-	name = "Nazivend"
-	desc = "A vending machine containing Nazi German supplies. A label reads: \"Remember the gorrilions lost.\""
-	icon = 'icons/obj/citvending.dmi'
-	icon_state = "nazi"
-	vend_reply = "SIEG HEIL!"
-	product_slogans = "Das Vierte Reich wird zuruckkehren!;ENTFERNEN JUDEN!;Billiger als die Juden jemals geben!;Rader auf dem adminbus geht rund und rund.;Warten Sie, warum wir wieder hassen Juden?- *BZZT*"
-	products = list(
-		/obj/item/clothing/head/stalhelm = 20,
-		/obj/item/clothing/head/panzer = 20,
-		/obj/item/clothing/suit/soldiercoat = 20,
-	//	/obj/item/clothing/under/soldieruniform = 20,
-		/obj/item/clothing/shoes/jackboots = 20
-		)
-	contraband = list(
-		/obj/item/clothing/head/naziofficer = 10,
-	//	/obj/item/clothing/suit/officercoat = 10,
-	//	/obj/item/clothing/under/officeruniform = 10,
-		/obj/item/clothing/suit/space/hardsuit/nazi = 3,
-		/obj/item/gun/energy/plasma/MP40k = 4
-		)
-	premium = list()
-
-	refill_canister = /obj/item/vending_refill/nazi
-*/
 /obj/machinery/vending/sovietvend
 	name = "KomradeVendtink"
 	desc = "Rodina-mat' zovyot!"
@@ -150,10 +127,6 @@
 	machine_name 	= "KinkMate"
 	icon			= 'modular_citadel/icons/vending_restock.dmi'
 	icon_state 		= "refill_kink"
-
-/obj/item/vending_refill/nazi
-	machine_name 	= "nazivend"
-	icon_state 		= "refill_nazi"
 
 /obj/item/vending_refill/soviet
 	machine_name 	= "sovietvend"

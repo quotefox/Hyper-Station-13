@@ -35,7 +35,7 @@
 			e -= 5
 	steps++
 
-	if(steps >= 3)
+	if(steps >= 2)
 		steps = 0
 
 	else

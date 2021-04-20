@@ -180,7 +180,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"womb_fluid" = /datum/reagent/consumable/femcum,
 		"ipc_screen" = "Sunburst",
 		"ipc_antenna" = "None",
-		"flavor_text" = ""
+		"flavor_text" = "",
+		"ooc_text" = ""
 		)
 
 	/// Security record note section
@@ -383,7 +384,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if(2)
 			update_preview_icon()
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
-			dat += "<h2>Flavor Text</h2>"
+			dat += "<h2>General Examine Text</h2>"
 			dat += "<a href='?_src_=prefs;preference=flavor_text;task=input'><b>Set Examine Text</b></a><br>"
 			if(length(features["flavor_text"]) <= 40)
 				if(!length(features["flavor_text"]))
@@ -392,6 +393,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "[features["flavor_text"]]"
 			else
 				dat += "[TextPreview(features["flavor_text"])]...<BR>"
+			dat += "<h2>OOC Text</h2>"
+			dat += "<a href='?_src_=prefs;preference=ooc_text;task=input'><b>Set OOC Text</b></a><br>"
+			if(length(features["ooc_text"]) <= 40)
+				if(!length(features["ooc_text"]))
+					dat += "\[...\]"
+				else
+					dat += "[features["ooc_text"]]"
+			else
+				dat += "[TextPreview(features["ooc_text"])]...<BR>"
+
 			dat += "<h2>Body</h2>"
 			dat += "<b>Gender:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=gender'>[gender == MALE ? "Male" : (gender == FEMALE ? "Female" : (gender == PLURAL ? "Non-binary" : "Object"))]</a><BR>"
 			dat += "<b>Species:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=species;task=input'>[pref_species.id]</a><BR>"
@@ -1695,10 +1706,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						medical_records = rec
 
 				if("flavor_text")
-					var/msg = stripped_multiline_input(usr, "Set the flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Flavor Text", html_decode(features["flavor_text"]), MAX_MESSAGE_LEN, TRUE)
+					var/msg = stripped_multiline_input(usr, "Set the flavor text in your 'examine' verb. This should be IC, and description people can deduce at a quick glance.", "Flavor Text", html_decode(features["flavor_text"]), MAX_MESSAGE_LEN, TRUE)
 					if(msg)
 						msg = msg
 						features["flavor_text"] = msg
+
+				if("ooc_text")
+					var/msg = stripped_multiline_input(usr, "Set the OOC text in your 'examine' verb. This should be OOC only!", "OOC Text", html_decode(features["ooc_text"]), MAX_MESSAGE_LEN, TRUE)
+					if(msg)
+						msg = msg
+						features["ooc_text"] = msg
+
 
 				if("hide_ckey")
 					hide_ckey = !hide_ckey
@@ -2532,14 +2550,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("allow_midround_antag")
 					toggles ^= MIDROUND_ANTAG
-				
+
 				if("sync_antag_with_chars")
 					toggles ^= ANTAG_SYNC_WITH_CHARS
 					if(!(toggles & ANTAG_SYNC_WITH_CHARS) && path)
 						var/savefile/S = new /savefile(path)
-						if(S)			
+						if(S)
 							S["special_roles"] >> be_special
-				
+
 				if("copy_antag_to_chars")
 					if(path)
 						var/savefile/S = new /savefile(path)
@@ -2553,7 +2571,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							to_chat(parent, "<span class='notice'>Successfully copied antagonist preferences to all characters.</span>")
 						else
 							to_chat(parent, "<span class='notice'>Could not write to file.</span>")
-				
+
 				if("reset_antag")
 					be_special = list()
 

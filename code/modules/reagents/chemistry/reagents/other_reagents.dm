@@ -258,7 +258,7 @@
 	glass_name = "glass of water"
 	glass_desc = "The father of all refreshments."
 	shot_glass_icon_state = "shotglassclear"
-	hydration = 10 * REAGENTS_METABOLISM
+	hydration = 5
 
 /*
  *	Water reaction to turf
@@ -1242,6 +1242,7 @@
 				var/mob/living/carbon/human/H = M
 				if(H.lip_style)
 					H.lip_style = null
+					H.nail_style = null
 					H.update_body()
 			for(var/obj/item/I in C.held_items)
 				SEND_SIGNAL(I, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
@@ -2065,7 +2066,7 @@
 	color = "#AAAAAA55"
 	taste_description = "water"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
-	pH = 15
+	pH = 9.75
 
 /datum/reagent/pax/on_mob_metabolize(mob/living/L)
 	..()

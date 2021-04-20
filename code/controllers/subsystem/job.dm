@@ -391,6 +391,7 @@ SUBSYSTEM_DEF(job)
 	var/datum/job/job = GetJob(rank)
 
 	H.job = rank
+	equip_loadout(N, H)
 
 	//If we joined at roundstart we should be positioned at our workstation
 	if(!joined_late)
@@ -462,6 +463,10 @@ SUBSYSTEM_DEF(job)
 		to_chat(M, "<b><span class='notice'>You do not have a pin, can set your pin at an ATM.</b>")
 		if(H.mind)
 			H.mind.memory += "Your account ID is [wageslave.account_id].<BR>"
+
+	if(job && H)
+		job.after_spawn(H, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
+		equip_loadout(N, H, TRUE)//CIT CHANGE - makes players spawn with in-backpack loadout items properly. A little hacky but it works
 
 	return H
 

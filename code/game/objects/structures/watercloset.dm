@@ -219,8 +219,8 @@
 	var/watertemp = "normal"	//freezing, normal, or boiling
 	var/datum/looping_sound/showering/soundloop
 
-/*/obj/machinery/shower/crafted	//When created from sheets of metal
-	anchored = FALSE */	//Stop exploiting this ree
+/obj/machinery/shower/crafted	//When created from sheets of metal
+	anchored = FALSE
 
 /obj/machinery/shower/Initialize()
 	. = ..()
@@ -292,19 +292,43 @@
 	if (user.a_intent != INTENT_HELP)
 		return ..()
 
-	if (I.tool_behaviour == TOOL_WRENCH)
-		to_chat(user, "<span class='notice'>You begin to adjust the temperature valve with \the [I]...</span>")
-		if(I.use_tool(src, user, 50))
-			switch(watertemp)
-				if("normal")
-					watertemp = "freezing"
-				if("freezing")
-					watertemp = "boiling"
-				if("boiling")
-					watertemp = "normal"
-			user.visible_message("<span class='notice'>[user] adjusts the shower with \the [I].</span>", "<span class='notice'>You adjust the shower with \the [I] to [watertemp] temperature.</span>")
-			log_game("[key_name(user)] has wrenched a shower to [watertemp] at ([x],[y],[z])")
-			add_hiddenprint(user)
+	switch (I.tool_behaviour)
+		if (TOOL_WRENCH)
+			if (!anchored)
+				user.visible_message("<span class='notice'>[user] starts to take apart [src]...</span>", "<span class='notice'>You start dismantling [src]...</span>")
+				I.play_tool_sound(src)
+				if(I.use_tool(src, user, 20))
+					deconstruct(TRUE)
+			else
+				to_chat(user, "<span class='notice'>You begin to adjust the temperature valve with \the [I]...</span>")
+				if(I.use_tool(src, user, 50))
+					switch(watertemp)
+						if("normal")
+							watertemp = "freezing"
+						if("freezing")
+							watertemp = "boiling"
+						if("boiling")
+							watertemp = "normal"
+					user.visible_message("<span class='notice'>[user] adjusts the shower with \the [I].</span>", "<span class='notice'>You adjust the shower with \the [I] to [watertemp] temperature.</span>")
+					log_game("[key_name(user)] has wrenched a shower to [watertemp] at ([x],[y],[z])")
+					add_hiddenprint(user)
+
+		if (TOOL_SCREWDRIVER)
+			if (!anchored)
+				to_chat(user, "<span class='notice'>You begin screwing in [src] to the floor...</span>")
+				I.play_tool_sound(src)
+				if(I.use_tool(src, user, 30))
+					user.visible_message("<span class='notice'>[user] connects [src] to the floor.</span>", "<span class='notice'>You connect [src] to the floor.</span>")
+					anchored = TRUE
+			else
+				to_chat(user, "<span class='notice'>You start to take out [src]'s screws...</span>")
+				on = FALSE
+				soundloop.stop()
+				update_icon()
+				I.play_tool_sound(src)
+				if(I.use_tool(src, user, 20))
+					user.visible_message("<span class='notice'>[user] disconnects [src] from the floor.</span>", "<span class='notice'>You disconnect [src] from the floor.</span>")
+					anchored = FALSE
 
 /obj/machinery/shower/examine()
 	. += ..()
@@ -429,6 +453,7 @@
 				H.update_inv_wear_mask()
 			else
 				H.lip_style = null
+				H.nail_style = null
 				H.update_body()
 			if(H.glasses && washglasses && wash_obj(H.glasses))
 				H.update_inv_glasses()
@@ -468,7 +493,7 @@
 		return PROCESS_KILL
 
 /obj/machinery/shower/deconstruct(disassembled = TRUE)
-	new /obj/item/stack/sheet/metal (loc, 3)
+	new /obj/item/stack/sheet/metal (loc, 2)
 	qdel(src)
 
 /obj/machinery/shower/proc/check_heat(mob/living/carbon/C)

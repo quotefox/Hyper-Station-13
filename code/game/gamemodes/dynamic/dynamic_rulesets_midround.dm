@@ -275,7 +275,7 @@
 //                LEWD                  //
 //                                      //
 //////////////////////////////////////////
-
+/* //Putting Lewd traitor on the backburner until we can buffer it a bit.
 /datum/dynamic_ruleset/midround/autotraitor/lewd
 	name = "Horny Traitor"
 	persistent = TRUE
@@ -375,7 +375,7 @@
 	var/datum/antagonist/traitor/lewd/newTraitor = new
 	M.mind.add_antag_datum(newTraitor)
 	return TRUE
-
+*/
 //////////////////////////////////////////////
 //                                          //
 //         Malfunctioning AI                //

@@ -48,7 +48,7 @@ Difficulty: Medium
 	melee_damage_lower = 40
 	melee_damage_upper = 40
 	speed = 1
-	move_to_delay = 5
+	move_to_delay = 8
 	ranged = 1
 	pixel_x = -16
 	crusher_loot = list(/obj/structure/closet/crate/necropolis/dragon/crusher)
@@ -138,7 +138,7 @@ Difficulty: Medium
 /mob/living/simple_animal/hostile/megafauna/dragon/proc/fire_wall(dir)
 	var/list/hit_things = list(src)
 	var/turf/E = get_edge_target_turf(src, dir)
-	var/range = 10
+	var/range = 8
 	var/turf/previousturf = get_turf(src)
 	for(var/turf/J in getline(src,E))
 		if(!range || (J != previousturf && (!previousturf.atmos_adjacent_turfs || !previousturf.atmos_adjacent_turfs[J])))
