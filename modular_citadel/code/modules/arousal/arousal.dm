@@ -461,9 +461,10 @@
 	if(do_after(src, mb_time, target = src) && in_range(src, container))
 		fluid_source.trans_to(container, total_fluids)
 		src.visible_message("<span class='love'>[src] uses [p_their()] [G.name] to fill [container]!</span>", \
-							"<span class='userlove'>You used your [G.name] to fill [container].</span>", \
+							"<span class='userlove'>You used your [G.name] and fill [container] with a total of [total_fluids]u's.</span>", \
 							"<span class='userlove'>You have relieved some pressure.</span>")
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
+		container.add_cum_overlay() //your aim is bad...
 		if(G.can_climax)
 			setArousalLoss(min_arousal)
 

@@ -308,8 +308,6 @@ obj/screen/arousal/proc/kiss()
 			src.visible_message("<span class='notice'>[src] is about to kiss [L]!</span>", \
 								"<span class='notice'>You're attempting to kiss [L]!</span>", \
 								"<span class='notice'>You're attempting to kiss with something!</span>")
-			if(!do_mob(src, L, 2 SECONDS))	//I think two seconds is enough time to pull away if its unwanted.
-				return
 			SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "kissed", /datum/mood_event/kiss) //how cute, affection is nice.
 	//Well done you kissed it/them!
 	src.visible_message("<span class='notice'>[src] kisses [L]!</span>", \
