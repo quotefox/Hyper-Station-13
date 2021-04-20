@@ -869,10 +869,11 @@ Proc for attack log creation, because really why not
 			return filters[filter_data.Find(name)]
 
 /atom/movable/proc/remove_filter(name)
-	if(filter_data[name])
-		filter_data -= name
-		update_filters()
-		return TRUE
+	if(filter_data)
+		if(filter_data[name])
+			filter_data -= name
+			update_filters()
+			return TRUE
 
 /atom/proc/intercept_zImpact(atom/movable/AM, levels = 1)
 	. |= SEND_SIGNAL(src, COMSIG_ATOM_INTERCEPT_Z_FALL, AM, levels)
