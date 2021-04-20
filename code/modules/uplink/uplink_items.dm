@@ -1791,7 +1791,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	item = /obj/item/clockwork/slab/traitor
 	cost = 20
 	refundable = TRUE
-	restricted_roles = list("Chaplain","Curator","Station Engineer", "Atmospheric Technician")
+	restricted_roles = list("Chaplain","Curator","Station Engineer","Atmospheric Technician")
 	cant_discount = TRUE
 
 /datum/uplink_item/role_restricted/arcane_tome
