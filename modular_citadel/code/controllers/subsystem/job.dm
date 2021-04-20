@@ -1,39 +1,32 @@
-/datum/controller/subsystem/job/proc/equip_loadout(mob/dead/new_player/N, mob/living/M, backpackstuffs)
+/datum/controller/subsystem/job/proc/equip_loadout(mob/dead/new_player/N, mob/living/M)
 	var/mob/the_mob = N
 	if(!the_mob)
 		the_mob = M // cause this doesn't get assigned if player is a latejoiner
-	if(the_mob.client && the_mob.client.prefs && (the_mob.client.prefs.chosen_gear && the_mob.client.prefs.chosen_gear.len))
+	if(the_mob.client.prefs)
 		if(!ishuman(M))//no silicons allowed
 			return
-		for(var/i in the_mob.client.prefs.chosen_gear)
+
+		var/list/queued_to_equip = list()		//Items that will equip onto the player
+		. = list()	//Items that will be stored into the player's backpack, handled by EquipRank()
+		for(var/i in the_mob.client.prefs.chosen_gear)	//Prepare the player's loadout gear
 			var/datum/gear/G = i
 			G = GLOB.loadout_items[slot_to_string(initial(G.category))][initial(G.name)]
 			if(!G)
 				continue
-			if(G.restricted_roles && G.restricted_roles.len && !(M.mind.assigned_role in G.restricted_roles))
-				continue
-			if(G.ckeywhitelist && G.ckeywhitelist.len && !(the_mob.client.ckey in G.ckeywhitelist))
-				continue
-			
+			if(G.restricted_roles.len && !(M.mind.assigned_role in G.restricted_roles))
+				continue	//If the player can't equip this because they lack the required job
+			if(G.ckeywhitelist.len && !(the_mob.client.ckey in G.ckeywhitelist))
+				continue	//And you may ask yourself, "Well... How did I get here?"
+
+			if(G.category == SLOT_IN_BACKPACK || G.blacklist_join_equip)
+				. += new G.path
+			else
+				queued_to_equip += G
+
+		for(var/datum/gear/G in queued_to_equip)
 			var/obj/item/I = new G.path
-			if(iscarbon(M) && backpackstuffs && (G.category == SLOT_IN_BACKPACK || G.blacklist_join_equip))
-				var/mob/living/carbon/C = M
-				var/obj/item/storage/backpack/B = C.back
-				if(!B || !SEND_SIGNAL(B, COMSIG_TRY_STORAGE_INSERT, I, null, TRUE, TRUE))
-					I.forceMove(get_turf(C))
-				continue
-			else if(G.blacklist_join_equip)		//Assume we're gonna be put in a backpack and not equipped
-				continue
-			else if(backpackstuffs && G.category != SLOT_IN_BACKPACK)
-				continue
-			if(!M.equip_to_slot_if_possible(I, G.category, disable_warning = TRUE, bypass_equip_delay_self = TRUE)) // If the job's dresscode compliant, try to put it in its slot, first
-				if(iscarbon(M))
-					var/mob/living/carbon/C = M
-					var/obj/item/storage/backpack/B = C.back
-					if(!B || !SEND_SIGNAL(B, COMSIG_TRY_STORAGE_INSERT, I, null, TRUE, TRUE)) // Otherwise, try to put it in the backpack, for carbons.
-						I.forceMove(get_turf(C))
-				else if(!M.equip_to_slot_if_possible(I, SLOT_IN_BACKPACK, disable_warning = TRUE, bypass_equip_delay_self = TRUE)) // Otherwise, try to put it in the backpack
-					I.forceMove(get_turf(M)) // If everything fails, just put it on the floor under the mob.
+			if(!M.equip_to_slot_if_possible(I, G.category, disable_warning = TRUE, bypass_equip_delay_self = TRUE))
+				. += I		//If the player's unable to equip the item, queue it for storage
 
 /datum/controller/subsystem/job/proc/FreeRole(rank)
 	if(!rank)
