@@ -354,18 +354,18 @@
 
 /obj/screen/parallax_layer/layenia/clouds1
 	icon_state = "layenia1"
-	speed = 1
+	speed = 0.6
 	layer = 6
 
 /obj/screen/parallax_layer/layenia/clouds2
 	icon_state = "layenia2"
 	speed = 1
-	layer = 1.4
+	layer = 7
 
 /obj/screen/parallax_layer/layenia/clouds3
 	icon_state = "layenia3"
-	speed = 1
-	layer = 3
+	speed = 1.4
+	layer = 8
 
 /obj/screen/parallax_layer/layenia/update_status(mob/M)
 	var/client/C = M.client
