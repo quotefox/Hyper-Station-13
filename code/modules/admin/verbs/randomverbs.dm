@@ -1247,6 +1247,11 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	var/obj/item/reagent_containers/food/snacks/store/bread/plain/funnyBread = new(get_turf(target))
 	target.forceMove(funnyBread)
 
+/client/proc/bookify(atom/movable/target)
+	var/obj/item/reagent_containers/food/snacks/store/book/funnyBook = new(get_turf(target))
+	target.forceMove(funnyBook)
+	funnyBook.name = "Book of " + target.name
+
 /client/proc/smite(mob/living/carbon/human/target as mob)
 	set name = "Smite"
 	set category = "Fun"
@@ -1268,7 +1273,8 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE,
 	ADMIN_PUNISHMENT_FAKEBWOINK,
 	ADMIN_PUNISHMENT_NUGGET,
-	ADMIN_PUNISHMENT_BREADIFY)
+	ADMIN_PUNISHMENT_BREADIFY,
+	ADMIN_PUNISHMENT_BOOKIFY)
 
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in punishment_list
 
@@ -1379,6 +1385,14 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			target.transformation_animation(bread_appearance, time = BREADIFY_TIME, transform_overlay=transform_scanline, reset_after=TRUE)
 			addtimer(CALLBACK(GLOBAL_PROC, .proc/breadify, target), BREADIFY_TIME)
 			#undef BREADIFY_TIME
+		if(ADMIN_PUNISHMENT_BOOKIFY)
+			#define BOOKIFY_TIME (2 SECONDS)
+			var/mutable_appearance/book_appearance = mutable_appearance('icons/obj/library.dmi', "book")
+			var/mutable_appearance/transform_scanline = mutable_appearance('icons/effects/effects.dmi', "transform_effect")
+			target.transformation_animation(book_appearance, time = BOOKIFY_TIME, transform_overlay=transform_scanline, reset_after=TRUE)
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/bookify, target), BOOKIFY_TIME)
+			playsound(target, 'hyperstation/sound/misc/bookify.ogg', 60, 1)
+			#undef BOOKIFY_TIME
 
 	punish_log(target, punishment)
 
