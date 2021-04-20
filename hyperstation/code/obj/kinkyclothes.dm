@@ -31,7 +31,7 @@
 	item_state = "highheels"
 	icon = 'hyperstation/icons/obj/clothing/shoes.dmi'
 	alternate_worn_icon = 'hyperstation/icons/mobs/feet.dmi'
-	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
 
 /obj/item/clothing/shoes/highheels/Initialize()
 	. = ..()
