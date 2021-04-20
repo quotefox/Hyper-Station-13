@@ -89,7 +89,7 @@
 				return FALSE
 
 	C.parallax_throttle = PARALLAX_DELAY_DEFAULT
-	C.parallax_layers_max = 4
+	C.parallax_layers_max = 6
 	return TRUE
 
 /datum/hud/proc/update_parallax_pref(mob/viewmob)
@@ -350,6 +350,7 @@
 /obj/screen/parallax_layer/layenia/horizon
 	icon_state = "layeniahorizon"
 	speed = 0.3
+	absolute = FALSE
 
 /obj/screen/parallax_layer/layenia/clouds1
 	icon_state = "layenia1"
