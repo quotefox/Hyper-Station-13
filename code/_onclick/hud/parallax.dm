@@ -349,6 +349,7 @@
 
 /obj/screen/parallax_layer/layenia/horizon
 	icon_state = "layeniahorizon"
+	speed = 0.3
 
 /obj/screen/parallax_layer/layenia/clouds1
 	icon_state = "layenia1"
