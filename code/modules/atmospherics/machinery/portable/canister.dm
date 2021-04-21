@@ -378,9 +378,15 @@
 	update_icon()
 
 /obj/machinery/portable_atmospherics/canister/attack_ghost(mob/user)
+	if(user.client)
+		if(IsAdminGhost(user))
+			attack_ai(user)
+			return FALSE
+		else if(user.client.prefs.inquisitive_ghost)
+			user.examinate(src)
+			return FALSE
 	atmosanalyzer_scan(air_contents, user, src, FALSE)
-	if(user.client.keys_held["Ctrl"])
-		. = ..()	//Look at the UI
+	return FALSE
 
 /obj/machinery/portable_atmospherics/canister/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
 															datum/tgui/master_ui = null, datum/ui_state/state = GLOB.physical_state)
