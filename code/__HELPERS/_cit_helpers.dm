@@ -112,7 +112,7 @@ GLOBAL_VAR_INIT(miscreants_allowed, FALSE)
 
 	var/new_flavor = input(src, "Enter your new flavor text:", "Flavor text", null) as message|null
 	if(!isnull(new_flavor))
-		flavor_text = sanitize(new_flavor)
+		flavor_text = html_encode(new_flavor)
 		to_chat(src, "Your flavor text has been updated.")
 
 //LOOC toggles
