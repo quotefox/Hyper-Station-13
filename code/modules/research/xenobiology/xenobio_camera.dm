@@ -164,7 +164,7 @@
 	to_chat(owner, "Shift-click a slime to pick it up, or the floor to drop all held slimes.")
 	to_chat(owner, "Ctrl-click a slime to scan it.")
 	to_chat(owner, "Alt-click a slime to feed it a potion.")
-	to_chat(owner, "Ctrl-click or a dead monkey to recycle it, or the floor to place a new monkey.")
+	to_chat(owner, "Ctrl-click on a dead monkey to recycle it, or the floor to place a new monkey.")
 
 //
 // Alternate clicks for slime, monkey and open turf if using a xenobio console
