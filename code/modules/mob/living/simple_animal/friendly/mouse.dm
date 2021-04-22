@@ -176,8 +176,8 @@
 	icon_living = "mouse_plasma"
 	icon_dead = "mouse_plasma"
 	see_in_dark = 12
-	maxHealth = 7
-	health = 7
+	maxHealth = 2
+	health = 2
 	chew_probability = 0
 
 /mob/living/simple_animal/mouse/boommouse/Initialize()
