@@ -31,9 +31,6 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 	always_show = _always_show
 	can_edit = _edit
 	save_key = _save_key
-	message_admins(target)
-	message_admins(text)
-	message_admins(save_key)
 	examine_no_preview = _examine_no_preview
 
 	RegisterSignal(target, COMSIG_PARENT_EXAMINE, .proc/show_flavor)
