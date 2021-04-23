@@ -161,18 +161,19 @@
 
 
 /obj/machinery/door/airlock/proc/autorotation() //for auto rotating doors, because im sick of doing it
-	var/turf/T = get_step(src, NORTH) //get the tile NORTH
-	if(istype(T, /turf/closed)) //its a wall
-		dir = 4
-	if(istype(T, /obj/structure/window)) //its a window
-		dir = 4
+	var/turf/N = get_step(src, NORTH)
+	var/turf/S = get_step(src, SOUTH)
 
-	var/turf/S = get_step(src, SOUTH) //get the tile NORTH
-	if(istype(S, /turf/closed)) //its a wall
+	if(istype(N, /turf/closed)) //Wall
 		dir = 4
-	if(istype(S, /obj/structure/window)) //its a window
+	if(istype(S, /turf/closed))
 		dir = 4
-
+	var/obj/structure/window/W = locate(/obj/structure/window, N) //Window
+	if(W)
+		dir = 4
+	var/obj/structure/window/R = locate(/obj/structure/window, S)
+	if(R)
+		dir = 4
 
 /obj/machinery/door/airlock/ComponentInitialize()
 	. = ..()
