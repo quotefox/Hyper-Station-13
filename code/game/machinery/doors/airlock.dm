@@ -164,9 +164,13 @@
 	var/turf/T = get_step(src, NORTH) //get the tile NORTH
 	if(istype(T, /turf/closed)) //its a wall
 		dir = 4
+	if(istype(T, /obj/structure/window)) //its a window
+		dir = 4
 
 	var/turf/S = get_step(src, SOUTH) //get the tile NORTH
 	if(istype(S, /turf/closed)) //its a wall
+		dir = 4
+	if(istype(S, /obj/structure/window)) //its a window
 		dir = 4
 
 
