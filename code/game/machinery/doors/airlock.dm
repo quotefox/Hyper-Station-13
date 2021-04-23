@@ -133,6 +133,7 @@
 
 /obj/machinery/door/airlock/LateInitialize()
 	. = ..()
+	autorotation() //auto rotate door
 	if (cyclelinkeddir)
 		cyclelinkairlock()
 	if(abandoned)
@@ -159,11 +160,15 @@
 	update_icon()
 
 
-/obj/machinery/door/airlock/proc/getrotation() //for auto rotating doors, because im sick of doing it
-	for(var/turf/O in get_step(src,SOUTH))
-		log_mapping("[src]: [O]")
-		if(O.density)
-			log_mapping("[src]: [O] is dense")
+/obj/machinery/door/airlock/proc/autorotation() //for auto rotating doors, because im sick of doing it
+	var/turf/T = get_step(src, NORTH) //get the tile NORTH
+	if(istype(T, /turf/closed)) //its a wall
+		dir = 4
+
+	var/turf/S = get_step(src, SOUTH) //get the tile NORTH
+	if(istype(S, /turf/closed)) //its a wall
+		dir = 4
+
 
 /obj/machinery/door/airlock/ComponentInitialize()
 	. = ..()
