@@ -216,6 +216,8 @@
 	insanity_effect = newval
 
 /datum/component/mood/proc/DecreaseSanity(datum/source, amount, minimum = SANITY_INSANE)
+	var/mob/living/owner = parent
+	to_chat(owner, "<span class='boldwarning'>Your mood decreases.<span>")
 	if(sanity < minimum) //This might make KevinZ stop fucking pinging me.
 		IncreaseSanity(src, 0.5)
 	else
@@ -229,6 +231,7 @@
 /datum/component/mood/proc/IncreaseSanity(datum/source, amount, maximum = SANITY_NEUTRAL)
 	// Disturbed stops you from getting any more sane - I'm just gonna bung this in here
 	var/mob/living/owner = parent
+	to_chat(owner, "<span class='nicegreen'>Your mood increases.<span>")
 	if(HAS_TRAIT(owner, TRAIT_UNSTABLE))
 		return
 	if(sanity > maximum)
