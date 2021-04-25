@@ -597,7 +597,7 @@
 	if (H.custom_body_size) //Do they have it set?
 		H.resize(H.custom_body_size * 0.01)
 	if (H.breedable == TRUE)
-		H.impregchance = 30
+		H.impregchance = 33
 	. = H
 	new_character = .
 	if(transfer_after)

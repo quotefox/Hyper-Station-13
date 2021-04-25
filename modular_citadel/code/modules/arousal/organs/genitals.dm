@@ -303,7 +303,7 @@
 /mob/living/carbon/human/proc/make_breedable()
 	//Hyperstation, This makes the character able to use the impreg features of the game
 	breedable = 1
-	impregchance = 30	//30% is a good base chance
+	impregchance = 33	//33% is a good base chance
 
 /datum/species/proc/genitals_layertext(layer)
 	switch(layer)
