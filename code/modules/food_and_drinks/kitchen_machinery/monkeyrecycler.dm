@@ -85,6 +85,7 @@ GLOBAL_LIST_EMPTY(monkey_recyclers)
 		playsound(src.loc, 'sound/machines/hiss.ogg', 50, 1)
 		for(var/i in 1 to max(stored_matter, 1))
 			new /obj/item/reagent_containers/food/snacks/monkeycube(loc)
+			stored_matter--
 		to_chat(user, "<span class='notice'>The machine's display flashes that it has [stored_matter] monkeys worth of material left.</span>")
 	else
 		to_chat(user, "<span class='danger'>The machine needs at least 1 monkey worth of material to produce a monkey cube. It currently has [stored_matter].</span>")
