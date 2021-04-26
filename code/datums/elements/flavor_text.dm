@@ -83,6 +83,7 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		var/mob/living/carbon/human/L = target
 		if(L.gender)
 			examineTabOutput += "[icon2html('hyperstation/icons/chat/gender.dmi', world, L.gender)]"
+		examineTabOutput += "[L.name] "
 		examineTabOutput += "([L.dna.custom_species ? L.dna.custom_species : L.dna.species.name])"
 	examineTabOutput += "</center>"
 	examineTabOutput += "<br>[url_encode(msg)]"
