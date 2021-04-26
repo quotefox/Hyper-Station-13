@@ -124,3 +124,11 @@
 	alternate_worn_icon = 'hyperstation/icons/mobs/rewards.dmi'
 	icon_state = "commissar_beret"
 	item_state = "commissar_beret"
+
+/obj/item/clothing/under/touchinfuzzy
+	name = "provocative jumpsuit"
+	desc = "A form fitting jumpsuit with a golden trim zipper! Smells faintly of succubus milk."
+	icon_state = "touchinfuzzyuni"
+	item_state = "touchinfuzzyuni"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	fitted = NO_FEMALE_UNIFORM
