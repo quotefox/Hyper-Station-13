@@ -184,14 +184,14 @@
 	CHECK_TICK
 
 	//Hyper bot list players
-	botmsg += "**The Crew!** ```"
+	botmsg += "\n**The Crew!** ```"
 	for(var/p in GLOB.player_list)
-		var/mob/P = p
-		botmsg += "[P.name]"
-		if(P.job)
-			botmsg += "([P.job])"
-		botmsg += "\n"
-
+		var/mob/living/P = p //the living crew members
+		if(P)
+			botmsg += "[P.real_name]"
+			if(P.job)
+				botmsg += " ([P.job])"
+			botmsg += "\n"
 	botmsg += "```"
 
 	CHECK_TICK
