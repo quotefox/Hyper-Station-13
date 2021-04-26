@@ -163,6 +163,7 @@
 	set waitfor = FALSE
 
 	to_chat(world, "<BR><BR><BR><span class='big bold'>The round has ended.</span>")
+	var/botmsg = "**The Round has ended!**```Round ID: [GLOB.round_id]\nRound Time: [DisplayTimeText(world.time - SSticker.round_start_time)]\nTotal Population: [GLOB.joined_player_list.len]```"
 	if(LAZYLEN(GLOB.round_end_notifiees))
 		send2irc("Notice", "[GLOB.round_end_notifiees.Join(", ")] the round has ended.")
 
@@ -178,6 +179,20 @@
 
 	var/popcount = gather_roundend_feedback()
 	display_report(popcount)
+
+
+	CHECK_TICK
+
+	//Hyper bot list players
+	botmsg += "**The Crew!** ```"
+	for(var/p in GLOB.player_list)
+		var/mob/P = p
+		botmsg += "[P.name]"
+		if(P.job)
+			botmsg += "([P.job])"
+		botmsg += "\n"
+
+	botmsg += "```"
 
 	CHECK_TICK
 
@@ -208,10 +223,6 @@
 	if(length(CONFIG_GET(keyed_list/cross_server)))
 		send_news_report()
 
-	//tell the nice people on discord what went on before the salt cannon happens.
-	world.TgsTargetedChatBroadcast("The current round has ended. Please standby for your shift interlude Kinaris News Network's report!", FALSE)
-	world.TgsTargetedChatBroadcast(send_news_report(),FALSE)
-
 	CHECK_TICK
 
 	//These need update to actually reflect the real antagonists
@@ -226,7 +237,6 @@
 		total_antagonists[A.name] += "[key_name(A.owner)]"
 
 	CHECK_TICK
-
 	//Now print them all into the log!
 	log_game("Antagonists at round end were...")
 	for(var/antag_name in total_antagonists)
@@ -243,6 +253,7 @@
 	SSblackbox.Seal()
 
 	sleep(50)
+	world.hypermessage(botmsg)
 	ready_for_reboot = TRUE
 	standard_reboot()
 
