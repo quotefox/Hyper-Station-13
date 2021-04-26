@@ -189,6 +189,9 @@
 		if(H.dna.species.name == "Slimeperson") // slime nerd
 			sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_slime")
 
+		if(H.dna.species.name == "Avian") // bird nerd
+			sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_avian")
+
 		sleeve.color = "#" + H.dna.features["mcolor"]
 		add_overlay(sleeve)
 
