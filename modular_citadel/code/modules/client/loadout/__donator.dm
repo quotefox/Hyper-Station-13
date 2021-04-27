@@ -143,3 +143,10 @@ datum/gear/darksabresheath
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/clothing/suit/toggle/enzojacket
 	ckeywhitelist = list("enzoleon")
+
+//TouchinFuzzy Patreon
+/datum/gear/touchinfuzzy_uniform
+	name = "Provocative jumpsuit"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/under/touchinfuzzy
+	ckeywhitelist = list("touchinfuzzy")
