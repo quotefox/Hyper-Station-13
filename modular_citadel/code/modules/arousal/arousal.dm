@@ -321,7 +321,7 @@
 				setArousalLoss(min_arousal)
 
 
-/mob/living/carbon/human/proc/mob_climax_partner(obj/item/organ/genital/G, mob/living/L, spillage = TRUE, impreg = FALSE,cover = FALSE, mb_time = 30) //Used for climaxing with any living thing
+/mob/living/carbon/human/proc/mob_climax_partner(obj/item/organ/genital/G, mob/living/L, spillage = TRUE, impreg = FALSE,cover = FALSE,remote = FALSE, mb_time = 30) //Used for climaxing with any living thing
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = null
 
@@ -334,9 +334,13 @@
 	fluid_source = G.linked_organ.reagents
 	total_fluids = fluid_source.total_volume
 
-	if(mb_time) //Skip warning if this is an instant climax.
+	if(mb_time && !remote) //Skip warning if this is an instant climax.
 		src.visible_message("<span class='love'>[src] is about to climax with [L]!</span>", \
 							"<span class='userlove'>You're about to climax with [L]!</span>", \
+							"<span class='userlove'>You're preparing to climax with something!</span>")
+	if(remote)
+		src.visible_message("<span class='love'>[src] is about to climax with someone!</span>", \
+							"<span class='userlove'>You're about to climax with someone!</span>", \
 							"<span class='userlove'>You're preparing to climax with something!</span>")
 
 	if(cover)//covering the partner in cum, this overrides other options.
@@ -369,7 +373,9 @@
 			setArousalLoss(min_arousal)
 
 	if(spillage && !cover)
-		if(do_after(src, mb_time, target = src) && in_range(src, L))
+		if(do_after(src, mb_time, target = src))
+			if(!in_range(src, L) && !remote)
+				return
 			fluid_source.trans_to(L, total_fluids*G.fluid_transfer_factor)
 			total_fluids -= total_fluids*G.fluid_transfer_factor
 			if(total_fluids > 5)
@@ -411,19 +417,21 @@
 
 	if(impreg)
 		//Role them odds, only people with the dicks can send the chance to the person with the settings enabled at the momment.
-		var/obj/item/organ/genital/womb/W = L.getorganslot("womb")
-		if (L.breedable == 1 && W.pregnant == 0) //Dont get pregnant again, if you are pregnant.
-			log_game("Debug: [L] has been impregnated by [src]")
-			to_chat(L, "<span class='userlove'>You feel your hormones change, and a motherly instinct take over.</span>") //leting them know magic has happened.
-			W.pregnant = 1
-			if (HAS_TRAIT(L, TRAIT_HEAT))
-				SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "heat", /datum/mood_event/heat) //well done you perv.
-				REMOVE_TRAIT(L, TRAIT_HEAT, type) //take the heat away, you satisfied it!
+		if(prob(L.impregchance))
+			var/obj/item/organ/genital/womb/W = L.getorganslot("womb")
+			if(W) //check if they have a womb.
+				if (L.breedable == 1 && W.pregnant == 0) //Dont get pregnant again, if you are pregnant.
+					log_game("Debug: [L] has been impregnated by [src]")
+					to_chat(L, "<span class='userlove'>You feel your hormones change, and a motherly instinct take over.</span>") //leting them know magic has happened.
+					W.pregnant = 1
+					if (HAS_TRAIT(L, TRAIT_HEAT))
+						SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "heat", /datum/mood_event/heat) //well done you perv.
+						REMOVE_TRAIT(L, TRAIT_HEAT, type) //take the heat away, you satisfied it!
 
-	 		//Make breasts produce quicker.
-			var/obj/item/organ/genital/breasts/B = L.getorganslot("breasts")
-			if (B.fluid_mult < 0.5 && B)
-				B.fluid_mult = 0.5
+			 		//Make breasts produce quicker.
+					var/obj/item/organ/genital/breasts/B = L.getorganslot("breasts")
+					if (B.fluid_mult < 0.5 && B)
+						B.fluid_mult = 0.5
 
 
 /mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time = 30) //For beaker-filling, beware the bartender
@@ -458,9 +466,10 @@
 	if(do_after(src, mb_time, target = src) && in_range(src, container))
 		fluid_source.trans_to(container, total_fluids)
 		src.visible_message("<span class='love'>[src] uses [p_their()] [G.name] to fill [container]!</span>", \
-							"<span class='userlove'>You used your [G.name] to fill [container].</span>", \
+							"<span class='userlove'>You used your [G.name] and fill [container] with a total of [total_fluids]u's.</span>", \
 							"<span class='userlove'>You have relieved some pressure.</span>")
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
+		container.add_cum_overlay() //your aim is bad...
 		if(G.can_climax)
 			setArousalLoss(min_arousal)
 
@@ -491,7 +500,7 @@
 				if(!G.dontlist)
 					genitals_list += G
 	if(genitals_list.len)
-		ret_organ = input(src, "", "Gentials", null)  as null|obj in genitals_list
+		ret_organ = input(src, "", "Genitals", null)  as null|obj in genitals_list
 		return ret_organ
 	return null //error stuff
 

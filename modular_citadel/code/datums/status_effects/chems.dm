@@ -105,7 +105,7 @@
 		o.add_movespeed_modifier(BREAST_MOVEMENT_SPEED, TRUE, 100, NONE, override = TRUE, multiplicative_slowdown = moveCalc)
 		sizeMoveMod(moveCalc)
 	*/
-	if((B.cached_size) < 40)
+	if((B?.cached_size) < 40)
 		..()
 
 /*

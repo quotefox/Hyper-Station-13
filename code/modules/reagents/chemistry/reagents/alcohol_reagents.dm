@@ -14,7 +14,7 @@
 	taste_description = "alcohol"
 	var/boozepwr = 65 //Higher numbers equal higher hardness, higher hardness equals more intense alcohol poisoning
 	pH = 7.33
-	hydration = 1 * REAGENTS_METABOLISM
+	hydration = 1
 
 /*
 Boozepwr Chart

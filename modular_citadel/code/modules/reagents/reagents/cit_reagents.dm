@@ -12,7 +12,6 @@
 	glass_icon_state = "semen"
 	glass_name = "chalice of semen"
 	glass_desc = "In the Sumerian mythology, Enki - the God of water, was believed to have created the Tigris and Euphrates rivers by masturbating and ejaculating into their empty riverbeds."
-	hydration = 2 * REAGENTS_METABOLISM //thats one way to stay hydrated...
 
 /datum/reagent/consumable/semen/reaction_turf(turf/T, reac_volume)
 	if(!istype(T))
@@ -56,7 +55,6 @@
 	color = "#AAAAAA77"
 	can_synth = FALSE
 	nutriment_factor = 0.5 * REAGENTS_METABOLISM
-	hydration = 1 * REAGENTS_METABOLISM //thats one way to stay hydrated...
 
 /obj/effect/decal/cleanable/femcum
 	name = "female ejaculate"

@@ -368,7 +368,7 @@
 			C.reagents.add_reagent(/datum/reagent/fermi/eigenstate, 30)
 		if(5)
 			visible_message("<b>[src]</b> waves their arms around, <span class='spooky'>\"A new familiar for me, and you'll see it's thee!\"</span>")
-			C.reagents.add_reagent("secretcatchem", 30)
+			C.reagents.add_reagent(/datum/reagent/fermi/secretcatchem, 30)
 		if(6)
 			visible_message("<b>[src]</b> waves their arms around, <span class='spooky'>\"While you may not be a ghost, for this sheet you'll always be it's host.\"</span>")
 			var/mob/living/carbon/human/H = C

@@ -5503,12 +5503,8 @@
 /turf/open/floor/plasteel,
 /area/xenoarch/gen)
 "nx" = (
-/obj/structure/chair/comfy/black{
-	dir = 8
-	},
-/obj/item/toy/plush/borgplushie/secdrake,
-/turf/open/floor/plasteel/dark,
-/area/xenoarch/gen)
+/turf/closed/wall/r_wall/syndicate/nodiagonal,
+/area/xenoarch/nothinghere)
 "ny" = (
 /obj/item/toy/plush/catgirl/fermis,
 /turf/open/floor/plasteel/white,
@@ -6204,10 +6200,12 @@
 /turf/closed/wall,
 /area/lavaland/surface/outdoors)
 "ph" = (
-/obj/structure/flora/rock/pile,
-/obj/effect/decal/remains/xeno,
-/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
-/area/lavaland/surface/outdoors)
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/grimy{
+	icon_state = "engine"
+	},
+/area/xenoarch/nothinghere)
 "pi" = (
 /obj/structure/girder,
 /turf/open/floor/plating{
@@ -6588,18 +6586,226 @@
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
 	},
 /area/lavaland/surface/outdoors)
+"qp" = (
+/obj/machinery/computer{
+	desc = "This screen is broken beyond repairs... What little you can make out of it reads as follows... '-The skin of employee 228, mimicking them after consuming them.'";
+	name = "chamber 27 monitoring console";
+	obj_integrity = 20;
+	pixel_y = 2
+	},
+/obj/structure/tubes{
+	pixel_y = 4
+	},
+/turf/open/floor/plasteel/grimy{
+	icon_state = "engine"
+	},
+/area/xenoarch/nothinghere)
+"qK" = (
+/obj/machinery/door/airlock/vault{
+	name = "secured door";
+	req_access = 207
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/turf_decal/stripes/full,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plasteel/grimy{
+	icon_state = "engine"
+	},
+/area/xenoarch/nothinghere)
+"qS" = (
+/obj/structure/filingcabinet,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plasteel/grimy,
+/area/xenoarch/nothinghere)
+"qZ" = (
+/obj/structure/table/reinforced,
+/obj/item/paper/crumpled/robertsworkjournal{
+	info = "<h4>Most boring job in the universe.</h4>Starting to reconsider things around here... Sure, it pays the bills at home but, is it really worth it? I'm supposed to make sure no one enters through that door without permission from CentCom but, what's even so important about it? Why not just put a robot or something...<br><h4>Weird.</h4>The outpost is kind of okay but... A little too warm for my taste... Not that I can do much about it given how we're right next to so much lava. I just wish the supplies were actual food instead of... Junk food and donk pockets. I know this stuff is tailored to make people survive even in the deepest reaches of space, but is it too much to ask for actual meat for once?<br><h4>Shrug?</h4>CC provided a small communications relay that I could use. It's not that strong but it helps me stay sane.<br>    Earlier I messaged them asking about this place and why is it so important, but to my surprise, the only answer I got was that there's 'Nothing there.' Can you believe that?<br>    I can't say I'm not curious... I have the keys and all but should I? I've one job and one job only, failing on something like that would probably not look good on my profile.<br>    But the weirdest part?<br>    Sometimes I hear an echo of myself when I talk to myself or laugh at something in here... And it comes from, you guessed it, behind that damned door. Might I'm just going crazy here by myself... Hallucinating because I don't really have anyone to talk to in real time other than myself...<br>    Might be time to quit or to just... Have a look, you know? Can't be that bad if there's nothing there after all... It would certainly put me at ease.";
+	name = "Journal"
+	},
+/turf/open/floor/plasteel/grimy,
+/area/xenoarch/nothinghere)
+"rf" = (
+/turf/open/floor/plasteel/grimy{
+	icon_state = "engine"
+	},
+/area/xenoarch/nothinghere)
+"so" = (
+/turf/closed/wall/r_wall,
+/area/xenoarch/nothinghere)
+"tG" = (
+/obj/structure/chair/office,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/grimy,
+/area/xenoarch/nothinghere)
+"wZ" = (
+/obj/machinery/door/airlock/highsecurity{
+	req_access = 207
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/turf/open/floor/plasteel/rockvault,
+/area/xenoarch/nothinghere)
+"xG" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/grimy{
+	icon_state = "engine"
+	},
+/area/xenoarch/nothinghere)
+"xJ" = (
+/obj/structure/disposalpipe/broken{
+	dir = 4
+	},
+/obj/effect/turf_decal/loading_area/red{
+	dir = 8
+	},
+/turf/open/floor/plasteel/grimy{
+	icon_state = "engine"
+	},
+/area/xenoarch/nothinghere)
 "AF" = (
 /obj/structure/closet/firecloset,
 /turf/open/floor/plating{
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
 	},
 /area/xenoarch/gen)
+"ED" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/rockvault,
+/area/xenoarch/nothinghere)
+"EP" = (
+/obj/decal/stencil/left/seven{
+	pixel_y = 36
+	},
+/obj/decal/stencil/left/two{
+	pixel_x = -15;
+	pixel_y = 36
+	},
+/obj/item/stack/cable_coil/cut/red{
+	pixel_y = -6
+	},
+/turf/open/floor/plasteel/grimy{
+	icon_state = "engine"
+	},
+/area/xenoarch/nothinghere)
+"FE" = (
+/turf/open/floor/plasteel/grimy,
+/area/xenoarch/nothinghere)
+"FT" = (
+/obj/machinery/light/broken{
+	dir = 4
+	},
+/turf/open/floor/plasteel/rockvault,
+/area/xenoarch/nothinghere)
+"GR" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/grimy,
+/area/xenoarch/nothinghere)
 "Hx" = (
 /turf/open/floor/carpet,
 /area/xenoarch/gen)
+"Ku" = (
+/turf/closed/wall/r_wall/rust,
+/area/xenoarch/nothinghere)
+"LP" = (
+/obj/machinery/porta_turret/aux_base{
+	dir = 5;
+	icon_state = "standard_broken";
+	obj_integrity = 20;
+	stat = 1
+	},
+/turf/open/floor/plasteel/grimy{
+	icon_state = "engine"
+	},
+/area/xenoarch/nothinghere)
+"Mb" = (
+/obj/machinery/light/small/broken{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/old,
+/obj/item/clockwork/alloy_shards,
+/turf/open/floor/plasteel/grimy{
+	icon_state = "engine"
+	},
+/area/xenoarch/nothinghere)
+"Ne" = (
+/obj/item/stack/cable_coil/cut/red{
+	pixel_x = 2;
+	pixel_y = 11
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/grimy{
+	icon_state = "engine"
+	},
+/area/xenoarch/nothinghere)
+"Nj" = (
+/obj/structure/table/reinforced,
+/obj/item/pen{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/storage/fancy/cigarettes/cigpack_syndicate{
+	pixel_x = 11
+	},
+/obj/item/lighter{
+	pixel_x = 3;
+	pixel_y = 5
+	},
+/turf/open/floor/plasteel/grimy,
+/area/xenoarch/nothinghere)
+"Od" = (
+/obj/effect/decal/cleanable/oil{
+	icon_state = "floor5"
+	},
+/turf/open/floor/plasteel/rockvault,
+/area/xenoarch/nothinghere)
+"RA" = (
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plasteel/grimy{
+	icon_state = "engine"
+	},
+/area/xenoarch/nothinghere)
+"Sa" = (
+/obj/item/shard{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plasteel/grimy{
+	icon_state = "engine"
+	},
+/area/xenoarch/nothinghere)
+"St" = (
+/obj/machinery/light/broken{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/ash,
+/turf/open/floor/plasteel/grimy,
+/area/xenoarch/nothinghere)
 "Sy" = (
 /turf/closed/wall,
 /area/xenoarch/gen)
+"Sz" = (
+/obj/item/twohanded/required/kirbyplants/random,
+/turf/open/floor/plasteel/rockvault,
+/area/xenoarch/nothinghere)
+"Us" = (
+/obj/effect/decal/cleanable/greenglow/radioactive,
+/turf/open/floor/plasteel/grimy{
+	icon_state = "engine"
+	},
+/area/xenoarch/nothinghere)
+"Ws" = (
+/obj/structure/flora/rock/pile,
+/obj/effect/decal/remains/xeno,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"ZK" = (
+/obj/machinery/door/window/eastleft{
+	dir = 2
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/grimy,
+/area/xenoarch/nothinghere)
 
 (1,1,1) = {"
 ms
@@ -12217,7 +12423,7 @@ aG
 aW
 Sy
 bf
-nx
+ax
 el
 fL
 co
@@ -66657,18 +66863,18 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+nx
+nx
+nx
+nx
+nx
+nx
+so
+so
+Ku
+Ku
+so
+Ku
 oU
 ab
 ab
@@ -66914,20 +67120,20 @@ ab
 ab
 ab
 ab
+nx
+ph
+Sa
+Mb
+LP
+nx
+St
+FE
+ZK
+ED
+Sz
+so
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+lQ
 ab
 ab
 jY
@@ -67171,21 +67377,21 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ph
+nx
+EP
+xG
+rf
+RA
+qK
+FE
+GR
+Nj
+ED
+ED
+wZ
+lQ
+lQ
+lQ
 lQ
 lQ
 lQ
@@ -67428,21 +67634,21 @@ ab
 ab
 ab
 ab
+nx
+qp
+xJ
+Ne
+Us
+nx
+qS
+tG
+qZ
+FT
+Od
+so
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+lQ
+lQ
 oV
 lQ
 jV
@@ -67685,20 +67891,20 @@ ab
 ab
 ab
 ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
-ab
+nx
+nx
+nx
+nx
+nx
+nx
+so
+so
+Ku
+so
+Ku
+Ku
 oU
-ab
+Ws
 ab
 oU
 ab

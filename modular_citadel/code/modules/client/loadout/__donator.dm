@@ -99,16 +99,23 @@
 	path = /obj/item/clothing/head/crystalline
 	ckeywhitelist = list("dragontrance")
 
-/datum/gear/lyricalpawsplush
-	name = "Winter Dawn Plushie"
-	category = SLOT_IN_BACKPACK
-	path = /obj/item/toy/plush/mammal/lyricalpaws
-	ckeywhitelist = list("lyricalpaws")
-
 /datum/gear/lyricalpawssuit
 	name = "Fleet Commander's Overcoat"
 	category = SLOT_IN_BACKPACK
-	path = /obj/item/clothing/suit/hooded/wintercoat/chloe
+	path = /obj/item/clothing/suit/chloe
+	ckeywhitelist = list("lyricalpaws")
+
+/datum/gear/lyricalpawshat
+	name = "Fleet Commander's Beret"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/head/chloe
+	cost = 0
+	ckeywhitelist = list("lyricalpaws")
+
+datum/gear/darksabresheath
+	name = "Dark Sabre Sheath"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/storage/belt/sabre/chloesabre
 	ckeywhitelist = list("lyricalpaws")
 
 /datum/gear/cherostavikmask

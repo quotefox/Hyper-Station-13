@@ -350,7 +350,10 @@
 	icon = 'icons/obj/doors/airlocks/external/external.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/external/overlays.dmi'
 	note_overlay_file = 'icons/obj/doors/airlocks/external/overlays.dmi'
+	color_overlay_file = 'icons/obj/doors/airlocks/external/color.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_ext
+	basecolor = "#ff0000" //red
+
 
 /obj/machinery/door/airlock/external/glass
 	opacity = 0
