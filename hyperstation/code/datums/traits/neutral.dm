@@ -51,7 +51,7 @@
 /datum/quirk/virile
 	name = "Virile"
 	desc = "Either through higher quality sperms, more of them, or just being more horny, your impregnation chance will increase by 20-30%."
-	value = 1
+	value = 0
 	medical_record_text = "Patient has a higher sperm count."
 	mob_trait = TRAIT_VIRILE
 	gain_text = "<span class='notice'>You feel more potent."
