@@ -48,7 +48,7 @@
 				var/mob/living/carbon/human/H = user.pulling
 				if(H.breedable && P && H)
 					dat	+= "<a href='byond://?src=[REF(src)];impreg=1'>Impregnate [U.pulling] ([clamp(U.impregchance,0,100)]%)</A>"
-					dat	+=	"(Climax inside another person, knocking them up.)<BR>"
+					dat	+=	"(Climax inside another person, and attempt to knock them up.)<BR>"
 	else
 		dat	+= "<span class='linkOff'>Climax over</span></A>"
 		dat	+=	"(Requires a partner)<BR>"
