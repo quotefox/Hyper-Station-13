@@ -170,7 +170,7 @@
 
 		if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
 			var/mob/living/carbon/human/O = C
-			O.mob_climax_partner(P, M, TRUE, FALSE, FALSE, TRUE) //climax with their partner remotely!
+			O.mob_climax_partner(P, M, FALSE, FALSE, FALSE, TRUE) //climax with their partner remotely!
 		return
 	..()
 

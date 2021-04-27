@@ -334,9 +334,13 @@
 	fluid_source = G.linked_organ.reagents
 	total_fluids = fluid_source.total_volume
 
-	if(mb_time) //Skip warning if this is an instant climax.
+	if(mb_time && !remote) //Skip warning if this is an instant climax.
 		src.visible_message("<span class='love'>[src] is about to climax with [L]!</span>", \
 							"<span class='userlove'>You're about to climax with [L]!</span>", \
+							"<span class='userlove'>You're preparing to climax with something!</span>")
+	if(remote)
+		src.visible_message("<span class='love'>[src] is about to climax with someone!</span>", \
+							"<span class='userlove'>You're about to climax with someone!</span>", \
 							"<span class='userlove'>You're preparing to climax with something!</span>")
 
 	if(cover)//covering the partner in cum, this overrides other options.
