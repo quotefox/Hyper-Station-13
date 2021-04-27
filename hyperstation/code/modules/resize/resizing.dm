@@ -92,18 +92,6 @@ mob/living/get_effective_size()
 				else
 					tmob.visible_message("<span class='notice'>[src] carefully steps over [tmob].</span>", "<span class='notice'>[src] steps over you carefully.</span>")
 
-				//horny traits
-
-				if(HAS_TRAIT(src, TRAIT_MICROPHILE))
-					src.adjustArousalLoss(8)
-					if (src.getArousalLoss() >= 100 && ishuman(tmob) && tmob.has_dna())
-						src.mob_climax(forced_climax=TRUE)
-
-				if(HAS_TRAIT(tmob, TRAIT_MACROPHILE))
-					tmob.adjustArousalLoss(10)
-					if (tmob.getArousalLoss() >= 100 && ishuman(tmob) && tmob.has_dna())
-						tmob.mob_climax(forced_climax=TRUE)
-
 				return 1
 
 		//Smaller person stepping under a larger person
@@ -146,7 +134,20 @@ mob/living/get_effective_size()
 						tmob.visible_message("<span class='danger'>[src] carefully rolls their tail over [tmob]!</span>", "<span class='danger'>[src]'s huge tail rolls over you!</span>")
 					else
 						tmob.visible_message("<span class='danger'>[src] carefully steps on [tmob]!</span>", "<span class='danger'>[src] steps onto you with force!</span>")
-					return 1
+
+					//horny traits
+
+					if(HAS_TRAIT(src, TRAIT_MICROPHILE))
+						src.adjustArousalLoss(8)
+						if (src.getArousalLoss() >= 100 && ishuman(tmob) && tmob.has_dna())
+							src.mob_climax(forced_climax=TRUE)
+
+					if(HAS_TRAIT(tmob, TRAIT_MACROPHILE))
+						tmob.adjustArousalLoss(10)
+						if (tmob.getArousalLoss() >= 100 && ishuman(tmob) && tmob.has_dna())
+							tmob.mob_climax(forced_climax=TRUE)
+
+						return 1
 
 			if(H.a_intent == "harm" && H.canmove && !H.buckled)
 				now_pushing = 0
