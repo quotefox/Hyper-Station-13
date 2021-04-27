@@ -7,15 +7,23 @@
 
 	if(!gibbed)
 		emote("deathgasp")
+
+		//watching someone die is trumatic...
+		for(var/mob/living/carbon/human/H in oview(5, src))
+			if(H.client && (src /= H))
+				SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "death", /datum/mood_event/deathsaw)
+				if(prob(10)) //10% chance to pump adrenaline into their body
+					H.jitteriness += 5
+
 	if(combatmode)
 		toggle_combat_mode(TRUE, TRUE)
 
 	. = ..()
-	
+
 	for(var/T in get_traumas())
 		var/datum/brain_trauma/BT = T
 		BT.on_death()
-	
+
 	if(SSticker.mode)
 		SSticker.mode.check_win() //Calls the rounds wincheck, mainly for wizard, malf, and changeling now
 
