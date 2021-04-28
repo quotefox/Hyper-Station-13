@@ -150,3 +150,16 @@ datum/gear/darksabresheath
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/clothing/under/touchinfuzzy
 	ckeywhitelist = list("touchinfuzzy")
+
+/datum/gear/mscale
+	name = "Miala's Scale"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/mialasscale
+	ckeywhitelist = list("python13579")
+
+/datum/gear/pipe
+	name = "Black Lacquered Kiseru"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/bong/kiseru
+	ckeywhitelist = list("madness_18")
+

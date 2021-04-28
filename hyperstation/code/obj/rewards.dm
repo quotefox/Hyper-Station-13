@@ -152,3 +152,22 @@
 
 /obj/item/toy/sword/chloesabre/get_worn_belt_overlay(icon_file)
 	return mutable_appearance(icon_file, "darksheath-darksabre")
+
+/obj/item/mialasscale
+	name = "Miala's Scale"
+	desc = "A bright, and familiar, cyan scale from an equally familiar snake being."
+	icon = 'hyperstation/icons/obj/rewards.dmi'
+	icon_state = "m_scale"
+	item_state = "m_scale"
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/bong/kiseru
+	name = "black lacquered kiseru"
+	desc = "it is a black lacquered kiseru with a ornate silver head and mouthpiece, you can feel it's old age as you hold it"
+	icon = 'hyperstation/icons/obj/rewards.dmi'
+	icon_state = null
+	item_state = null
+	w_class = WEIGHT_CLASS_NORMAL
+	light_color = "#FFCC66"
+	icon_off = "pipe"
+	icon_on = "pipe_lit"
