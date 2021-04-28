@@ -163,3 +163,8 @@ datum/gear/darksabresheath
 	path = /obj/item/bong/kiseru
 	ckeywhitelist = list("madness_18")
 
+/datum/gear/robes
+	name = "Occult Robes"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/suit/hooded/occultrobes
+	ckeywhitelist = list("relquen")
