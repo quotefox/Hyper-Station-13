@@ -54,10 +54,11 @@
 	if(ishuman(destination))
 		var/mob/living/carbon/human/H = destination
 		H.give_genitals(TRUE)//This gives the body the genitals of this DNA. Used for any transformations based on DNA
-	destination.flavor_text = destination.dna.features["flavor_text"] //Update the flavor_text to use new dna text
 	destination.ooc_text = destination.dna.features["ooc_text"] //Update the flavor_text to use new dna text
 	if(transfer_SE)
 		destination.dna.mutation_index = mutation_index
+
+	SEND_SIGNAL(destination, COMSIG_CARBON_IDENTITY_TRANSFERRED_TO, src, transfer_SE)
 
 /datum/dna/proc/copy_dna(datum/dna/new_dna)
 	new_dna.unique_enzymes = unique_enzymes
@@ -356,7 +357,6 @@
 
 	if(newfeatures)
 		dna.features = newfeatures
-		flavor_text = dna.features["flavor_text"] //Update the flavor_text to use new dna text
 		ooc_text = dna.features["ooc_text"] //Update the flavor_text to use new dna text
 
 	if(mrace)
@@ -378,6 +378,9 @@
 	if(LAZYLEN(mutation_index))
 		dna.mutation_index = mutation_index
 		domutcheck()
+
+	SEND_SIGNAL(src, COMSIG_HUMAN_HARDSET_DNA, ui, newreal_name, newblood_type, mrace, newfeatures)
+	// change to SEND_SIGNAL(src, COMSIG_HUMAN_HARDSET_DNA, ui, se, newreal_name, newblood_type, mrace, newfeatures) if we add structural enzymes.
 
 	if(mrace || newfeatures || ui)
 		update_body()

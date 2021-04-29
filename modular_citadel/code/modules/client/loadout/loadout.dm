@@ -50,8 +50,8 @@ GLOBAL_LIST_EMPTY(loadout_whitelist_ids)
 	var/path //item-to-spawn path
 	var/cost = 1 //normally, each loadout costs a single point.
 	var/geargroupID //defines the ID that the gear inherits from the config
-	var/list/restricted_roles
-	var/list/ckeywhitelist
+	var/list/restricted_roles = list()
+	var/list/ckeywhitelist = list()
 	var/restricted_desc
 	var/blacklist_join_equip = FALSE	//If we don't equip this when we join
 

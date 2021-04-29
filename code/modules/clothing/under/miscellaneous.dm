@@ -796,6 +796,7 @@
 	item_color = "greenplaidshirt"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
 	can_adjust = FALSE
+	fitted = NO_FEMALE_UNIFORM
 //yes
 
 //Enzo_Leon patron stuff
