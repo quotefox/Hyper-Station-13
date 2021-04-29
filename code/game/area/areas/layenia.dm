@@ -13,6 +13,7 @@ area/layenia/cloudlayer
 	name = "Laneya clouds"
 	icon_state = "space"
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
+	atmos = TRUE
 
 area/layenia/powered
 	name = "Layenia Powered"
@@ -24,3 +25,4 @@ area/layenia/powered
 	flags_1 = NONE
 	outdoors = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
+	atmos = TRUE
