@@ -388,6 +388,9 @@
 	//light_power = 0.15
 	//light_color = LIGHT_COLOR_WHITE
 
+/turf/open/floor/plating/asteroid/layenia/garden
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = FALSE
 
 /turf/open/floor/plating/asteroid/layenia/Initialize()
 	. = ..()

@@ -78,6 +78,7 @@
 	name = "concrete"
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "concrete"
+	baseturfs = /turf/open/floor/plating/asteroid/layenia
 	initial_gas_mix = FROZEN_ATMOS
 	planetary_atmos = TRUE
 
@@ -117,8 +118,13 @@
 	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 	light_color = LIGHT_COLOR_BLUE
 	initial_gas_mix = FROZEN_ATMOS
+	planetary_atmos = TRUE
 	smooth = SMOOTH_TRUE | SMOOTH_BORDER | SMOOTH_MORE
 	canSmoothWith = list(/turf/open/indestructible/layenia/crystal)
+
+/turf/open/indestructible/layenia/crystal/garden
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = FALSE 
 
 /turf/open/indestructible/necropolis
 	name = "necropolis floor"
