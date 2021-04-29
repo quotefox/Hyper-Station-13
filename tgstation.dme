@@ -3040,6 +3040,7 @@
 #include "hyperstation\code\datums\ruins\lavaland.dm"
 #include "hyperstation\code\datums\traits\good.dm"
 #include "hyperstation\code\datums\traits\neutral.dm"
+#include "hyperstation\code\game\objects\railings.dm"
 #include "hyperstation\code\game\objects\items\cosmetics.dm"
 #include "hyperstation\code\game\objects\structures\ghost_role_spawners.dm"
 #include "hyperstation\code\gamemode\traitor_lewd.dm"
