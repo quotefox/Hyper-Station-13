@@ -126,6 +126,7 @@
 	tiled_dirt = FALSE
 	baseturfs = /turf/open/chasm/cloud
 	smooth = SMOOTH_FALSE
+	initial_gas_mix = FROZEN_ATMOS
 
 /turf/open/chasm/cloud/Initialize()
 	. = ..()

@@ -7,6 +7,7 @@ area/layenia
 	outdoors = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	ambientsounds = MINING
+	atmos = TRUE
 
 area/layenia/cloudlayer
 	name = "Laneya clouds"
