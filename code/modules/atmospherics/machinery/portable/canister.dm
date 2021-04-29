@@ -377,6 +377,17 @@
 		air_update_turf() // Update the environment if needed.
 	update_icon()
 
+/obj/machinery/portable_atmospherics/canister/attack_ghost(mob/user)
+	if(user.client)
+		if(IsAdminGhost(user))
+			attack_ai(user)
+			return FALSE
+		else if(user.client.prefs.inquisitive_ghost)
+			user.examinate(src)
+			return FALSE
+	atmosanalyzer_scan(air_contents, user, src, FALSE)
+	return FALSE
+
 /obj/machinery/portable_atmospherics/canister/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
 															datum/tgui/master_ui = null, datum/ui_state/state = GLOB.physical_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
