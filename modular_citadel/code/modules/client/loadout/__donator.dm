@@ -157,11 +157,11 @@ datum/gear/darksabresheath
 	path = /obj/item/mialasscale
 	ckeywhitelist = list("python13579")
 
-/datum/gear/pipe
+/datum/gear/kiseru
 	name = "Black Lacquered Kiseru"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/bong/kiseru
-	ckeywhitelist = list("madness_18")
+	ckeywhitelist = list("madness18","madness 18","madness_18")
 
 /datum/gear/robes
 	name = "Occult Robes"
