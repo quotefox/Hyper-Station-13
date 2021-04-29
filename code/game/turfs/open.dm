@@ -124,7 +124,7 @@
 
 /turf/open/indestructible/layenia/crystal/garden
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	planetary_atmos = FALSE 
+	planetary_atmos = TRUE
 
 /turf/open/indestructible/necropolis
 	name = "necropolis floor"

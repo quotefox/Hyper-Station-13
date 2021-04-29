@@ -375,7 +375,7 @@
 	icon_state = "layenia"
 	icon_plating = "layenia"
 	initial_gas_mix = FROZEN_ATMOS
-	slowdown = 2
+	slowdown = 1
 	environment_type = "layenia"
 	flags_1 = NONE
 	planetary_atmos = TRUE
@@ -393,7 +393,7 @@
 
 /turf/open/floor/plating/asteroid/layenia/garden
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	planetary_atmos = FALSE
+	planetary_atmos = TRUE
 
 /turf/open/floor/plating/asteroid/layenia/Initialize()
 	. = ..()
@@ -401,5 +401,5 @@
 
 /proc/set_layenia_light(turf/open/floor/B)
 	switch(B.icon_state)
-		if("layenia5", "layenia6")
+		if("layenia3", "layenia4")
 			B.set_light(2, 0.6, LIGHT_COLOR_BLUE) //more light
