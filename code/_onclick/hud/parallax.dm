@@ -89,7 +89,7 @@
 				return FALSE
 
 	C.parallax_throttle = PARALLAX_DELAY_DEFAULT
-	C.parallax_layers_max = 6
+	C.parallax_layers_max = 10
 	return TRUE
 
 /datum/hud/proc/update_parallax_pref(mob/viewmob)

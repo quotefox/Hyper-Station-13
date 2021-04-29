@@ -383,10 +383,13 @@
 	bullet_sizzle = TRUE
 	bullet_bounce_sound = null
 	digResult = /obj/item/stack/ore/glass/basalt
-	floor_variance = 50
 	//light_range = 2
 	//light_power = 0.15
 	//light_color = LIGHT_COLOR_WHITE
+
+/turf/open/floor/plating/asteroid/layenia/Initialize()
+	if(prob(50))
+		icon_state = "layenia[rand(0,4)]"
 
 /turf/open/floor/plating/asteroid/layenia/garden
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
