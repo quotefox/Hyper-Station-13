@@ -187,6 +187,13 @@
 #define TRAIT_NEVER_CLONE       "donotclone"
 #define TRAIT_COLDBLOODED		"coldblooded"	// Your body is literal room temperature. Does not make you immune to the temp.
 #define TRAIT_FLIMSY		"flimsy" //you have 20% less maxhealth
+
+
+//Hyper
+#define TRAIT_VIRILE		"virile" //you have 20% more chance of impreg
+#define TRAIT_MACROPHILE		"macrophile" //likes the big
+#define TRAIT_MICROPHILE		"microphile" //likes the small
+
 #define TRAIT_TOUGH		"tough" //you have 10% more maxhealth
 #define TRAIT_AUTO_CATCH_ITEM	"auto_catch_item"
 #define TRAIT_CLOWN_MENTALITY	"clown_mentality" // The future is now, clownman.

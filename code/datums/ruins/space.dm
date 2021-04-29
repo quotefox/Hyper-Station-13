@@ -312,3 +312,9 @@
 	suffix = "advancedlab.dmm"
 	name = "Abductor Replication Lab"
 	description = "Some scientists tried and almost succeeded to recreate abductor tools. Somewhat slower and a bit less modern than their originals, these tools are the best you can get if you aren't an alien."
+
+/datum/map_template/ruin/space/wiz_home
+	id = "wizhome"
+	suffix = "wizardden.dmm"
+	name = "Wizards Cabin"
+	description = "The wooden cabin of a wizard in space, it smells like mana in there."

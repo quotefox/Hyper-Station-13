@@ -18,7 +18,7 @@ Clown
 	minimal_access = list(ACCESS_THEATRE)
 
 /datum/job/clown/after_spawn(mob/living/carbon/human/H, mob/M)
-	. = ..()
+	..()
 	H.apply_pref_name("clown", M.client)
 
 /datum/outfit/job/clown
@@ -83,6 +83,7 @@ Mime
 	minimal_access = list(ACCESS_THEATRE)
 
 /datum/job/mime/after_spawn(mob/living/carbon/human/H, mob/M)
+	..()
 	H.apply_pref_name("mime", M.client)
 
 /datum/outfit/job/mime

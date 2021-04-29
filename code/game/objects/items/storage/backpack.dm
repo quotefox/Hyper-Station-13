@@ -319,6 +319,9 @@
 			new R(src)
 		revealed = TRUE
 
+/obj/item/storage/backpack/satchel/flat/secret/chloe_ruin
+	reward_one_of_these = list(/obj/item/book/granter/spell/summonitem, /obj/item/book_of_babel)
+
 /obj/item/storage/backpack/duffelbag
 	name = "duffel bag"
 	desc = "A large duffel bag for holding extra things."

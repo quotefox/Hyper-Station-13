@@ -143,3 +143,28 @@ datum/gear/darksabresheath
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/clothing/suit/toggle/enzojacket
 	ckeywhitelist = list("enzoleon")
+
+//TouchinFuzzy Patreon
+/datum/gear/touchinfuzzy_uniform
+	name = "Provocative jumpsuit"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/under/touchinfuzzy
+	ckeywhitelist = list("touchinfuzzy")
+
+/datum/gear/mscale
+	name = "Miala's Scale"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/mialasscale
+	ckeywhitelist = list("python13579")
+
+/datum/gear/kiseru
+	name = "Black Lacquered Kiseru"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/bong/kiseru
+	ckeywhitelist = list("madness18","madness 18","madness_18")
+
+/datum/gear/robes
+	name = "Occult Robes"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/suit/hooded/occultrobes
+	ckeywhitelist = list("relquen")
