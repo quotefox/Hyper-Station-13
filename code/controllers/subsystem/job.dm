@@ -14,7 +14,6 @@ SUBSYSTEM_DEF(job)
 
 	var/overflow_role = "Assistant"
 
-
 /datum/controller/subsystem/job/Initialize(timeofday)
 	SSmapping.HACK_LoadMapConfig()
 	if(!occupations.len)
@@ -391,6 +390,7 @@ SUBSYSTEM_DEF(job)
 	var/datum/job/job = GetJob(rank)
 
 	H.job = rank
+	equip_loadout(N, H)
 
 	//If we joined at roundstart we should be positioned at our workstation
 	if(!joined_late)
@@ -416,36 +416,22 @@ SUBSYSTEM_DEF(job)
 	if(H.mind)
 		H.mind.assigned_role = rank
 
-	//Job loadout, equipping, and flavortext when spawning
 	if(job)
-		var/list/handle_storage = equip_loadout(N, H)	//Loadout gear
-		var/new_mob = job.equip(H, null, null, joined_late)	//Job gear
-
-		if(ismob(new_mob))	//The above doesnt return a value, but we check this anyways or else everything breaks!
+		var/new_mob = job.equip(H, null, null, joined_late)
+		if(ismob(new_mob))
 			H = new_mob
 			if(!joined_late)
 				N.new_character = H
 			else
 				M = H
 
-		if(LAZYLEN(handle_storage))	//equip_loadout returned a list. This list is backpack contents we should store, as by now we should have a backpack and a single reference mob
-			if(ishuman(H))
-				var/mob/living/carbon/human/_H = H
-				if(_H.back)
-					for(var/atom/movable/A in handle_storage)
-						if(!SEND_SIGNAL(_H.back, COMSIG_TRY_STORAGE_INSERT, A, null, TRUE, TRUE))
-							A.forceMove(get_turf(H))	//Try and store into the backpack. If the backpack is full, drop it to the ground
-				else //No backpack
-					for(var/atom/movable/A in handle_storage)
-						A.forceMove(get_turf(H))
+		SSpersistence.antag_rep_change[M.client.ckey] += job.GetAntagRep()
 
-		//Flavortext
-		var/display_rank = rank
-		if(M.client && M.client.prefs && M.client.prefs.alt_titles_preferences[rank])
-			display_rank = M.client.prefs.alt_titles_preferences[rank]
-
-		to_chat(M, "<b>You are the [display_rank].</b>")
-
+	var/display_rank = rank
+	if(M.client && M.client.prefs && M.client.prefs.alt_titles_preferences[rank])
+		display_rank = M.client.prefs.alt_titles_preferences[rank]
+	to_chat(M, "<b>You are the [display_rank].</b>")
+	if(job)
 		to_chat(M, "<b>As the [display_rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
 		to_chat(M, "<b>To speak on your departments radio, use the :h button. To see others, look closely at your headset.</b>")
 		if(job.req_admin_notify)
@@ -455,15 +441,15 @@ SUBSYSTEM_DEF(job)
 		if(CONFIG_GET(number/minimal_access_threshold))
 			to_chat(M, "<span class='notice'><B>As this station was initially staffed with a [CONFIG_GET(flag/jobs_have_minimal_access) ? "full crew, only your job's necessities" : "skeleton crew, additional access may"] have been added to your ID card.</B></span>")
 
-		job.after_spawn(H, M, joined_late)
-
-	//Account ID. ID is handled by human initialization
 	if(ishuman(H))
 		var/mob/living/carbon/human/wageslave = H
-		to_chat(M, "<b><span class='big'>Your account ID is [wageslave.account_id]</span></b>")
-		to_chat(M, "<b><span class='notice'>You do not have a pin, can set your pin at an ATM.</b>")
-		if(H.mind)
-			H.mind.memory += "Your account ID is [wageslave.account_id].<BR>"
+		to_chat(M, "<b><span class = 'big'>Your account ID is [wageslave.account_id]</span></b>")
+		to_chat(M, "<b><span class = 'notice'>You do not have a pin, can set your pin at a ATM.</b>")
+		H.add_memory("Your account ID is [wageslave.account_id].")
+
+	if(job && H)
+		job.after_spawn(H, M, joined_late) // note: this happens before the mob has a key! M will always have a client, H might not.
+		equip_loadout(N, H, TRUE)//CIT CHANGE - makes players spawn with in-backpack loadout items properly. A little hacky but it works
 
 	return H
 

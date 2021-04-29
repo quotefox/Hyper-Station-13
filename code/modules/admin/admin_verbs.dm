@@ -72,7 +72,6 @@ GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 	/client/proc/cmd_admin_pm_panel,		/*admin-pm list*/
 	/client/proc/panicbunker,
 	/client/proc/addbunkerbypass,
-	/client/proc/discordmessage,
 	/client/proc/revokebunkerbypass,
 	/client/proc/stop_sounds,
 	/client/proc/debugstatpanel,

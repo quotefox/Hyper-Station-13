@@ -7,5 +7,6 @@
 	metabolization_rate = 1 * REAGENTS_METABOLISM
 	taste_description = "sweetness"
 
-/datum/reagent/consumable/alienhoney/on_mob_life(mob/living/carbon/M)
+/datum/reagent/consumable/alienhoney/on_mob_life(mob/living/carbon/M) //can still be eaten/drank, but will provide no benefits like normal honey. Still good for a food sauce.
+	M.reagents.add_reagent(/datum/reagent/consumable/sugar,2) //metabolisms in the system as sugar.
 	..()

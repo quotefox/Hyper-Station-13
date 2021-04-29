@@ -181,7 +181,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"ipc_screen" = "Sunburst",
 		"ipc_antenna" = "None",
 		"flavor_text" = "",
-		"silicon_flavor_text" = "",
 		"ooc_text" = ""
 		)
 
@@ -394,15 +393,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "[features["flavor_text"]]"
 			else
 				dat += "[TextPreview(features["flavor_text"])]...<BR>"
-			dat += "<h2>Silicon Flavor Text</h2>"
-			dat += "<a href='?_src_=prefs;preference=silicon_flavor_text;task=input'><b>Set Silicon Examine Text</b></a><br>"
-			if(length(features["silicon_flavor_text"]) <= 40)
-				if(!length(features["silicon_flavor_text"]))
-					dat += "\[...\]"
-				else
-					dat += "[features["silicon_flavor_text"]]"
-			else
-				dat += "[TextPreview(features["silicon_flavor_text"])]...<BR>"
 			dat += "<h2>OOC Text</h2>"
 			dat += "<a href='?_src_=prefs;preference=ooc_text;task=input'><b>Set OOC Text</b></a><br>"
 			if(length(features["ooc_text"]) <= 40)
@@ -1721,12 +1711,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						msg = msg
 						features["flavor_text"] = msg
 
-				if("silicon_flavor_text")
-					var/msg = stripped_multiline_input(usr, "Set the silicon flavor text in your 'examine' verb. This can also be used for OOC notes and preferences!", "Silicon Flavor Text", features["silicon_flavor_text"], MAX_FLAVOR_LEN, TRUE)
-					if(msg)
-						msg = msg
-						features["silicon_flavor_text"] = msg
-
 				if("ooc_text")
 					var/msg = stripped_multiline_input(usr, "Set the OOC text in your 'examine' verb. This should be OOC only!", "OOC Text", html_decode(features["ooc_text"]), MAX_MESSAGE_LEN, TRUE)
 					if(msg)
@@ -2769,8 +2753,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		character.Digitigrade_Leg_Swap(FALSE)
 	else
 		character.Digitigrade_Leg_Swap(TRUE)
-
-	SEND_SIGNAL(character, COMSIG_HUMAN_PREFS_COPIED_TO, src, icon_updates, roundstart_checks)
 
 	//speech stuff
 	if(custom_tongue != "default")

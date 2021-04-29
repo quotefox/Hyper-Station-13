@@ -12,7 +12,6 @@
 	var/insanity_effect = 0 //is the owner being punished for low mood? If so, how much?
 	var/holdmyinsanityeffect = 0 //before we edit our sanity lets take a look
 	var/obj/screen/mood/screen_obj
-	var/lastupdate = 0
 
 /datum/component/mood/Initialize()
 	if(!isliving(parent))
@@ -92,7 +91,6 @@
 		mood += event.mood_change
 		if(!event.hidden)
 			shown_mood += event.mood_change
-
 	mood *= mood_modifier
 	shown_mood *= mood_modifier
 

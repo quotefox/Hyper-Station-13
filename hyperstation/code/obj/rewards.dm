@@ -124,14 +124,6 @@
 	icon_state = "commissar_beret"
 	item_state = "commissar_beret"
 
-/obj/item/clothing/under/touchinfuzzy
-	name = "provocative jumpsuit"
-	desc = "A form fitting jumpsuit with a golden trim zipper! Smells faintly of succubus milk."
-	icon_state = "touchinfuzzyuni"
-	item_state = "touchinfuzzyuni"
-	body_parts_covered = CHEST|GROIN|ARMS|LEGS
-	fitted = NO_FEMALE_UNIFORM
-
 /obj/item/toy/sword/chloesabre
 	name = "Fleet Commander's Sabre"
 	desc = "An elegant weapon, similar in design to the Captain's Sabre, but with a syndicate twist."
@@ -152,49 +144,3 @@
 
 /obj/item/toy/sword/chloesabre/get_worn_belt_overlay(icon_file)
 	return mutable_appearance(icon_file, "darksheath-darksabre")
-
-/obj/item/mialasscale
-	name = "Miala's Scale"
-	desc = "A bright, and familiar, cyan scale from an equally familiar snake being."
-	icon = 'hyperstation/icons/obj/rewards.dmi'
-	icon_state = "m_scale"
-	item_state = "m_scale"
-	w_class = WEIGHT_CLASS_SMALL
-
-/obj/item/bong/kiseru
-	name = "black lacquered kiseru"
-	desc = "it is a black lacquered kiseru with a ornate silver head and mouthpiece, you can feel it's old age as you hold it"
-	icon = 'hyperstation/icons/obj/rewards.dmi'
-	icon_state = null
-	item_state = null
-	w_class = WEIGHT_CLASS_NORMAL
-	light_color = "#FFCC66"
-	icon_off = "pipe"
-	icon_on = "pipe_lit"
-
-/obj/item/clothing/suit/hooded/occultrobes
-	name = "Occult Robes"
-	desc = "I didn't even know they made these in XXS..."
-	icon_state = "coatwinter"
-	item_state = "coatwinter"
-	body_parts_covered = CHEST|GROIN|ARMS
-	cold_protection = CHEST|GROIN|ARMS
-	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 10, "rad" = 0, "fire" = 0, "acid" = 0)
-	allowed = list(/obj/item/flashlight, /obj/item/tank/internals/emergency_oxygen, /obj/item/tank/internals/plasmaman, /obj/item/toy, /obj/item/storage/fancy/cigarettes, /obj/item/lighter)
-
-/obj/item/clothing/suit/hooded/occultrobes
-	name = "occult robes"
-	desc = "I didn't even know they made these in XXS..."
-	icon_state = "occultrobes"
-	hoodtype = /obj/item/clothing/head/hooded/occultrobeshood
-	mutantrace_variation = NO_MUTANTRACE_VARIATION
-
-/obj/item/clothing/head/hooded/occultrobeshood
-	name = "occult hood"
-	icon_state = "occultrobeshood"
-	body_parts_covered = HEAD
-	cold_protection = HEAD
-	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	flags_inv = HIDEHAIR
-	mutantrace_variation = NO_MUTANTRACE_VARIATION

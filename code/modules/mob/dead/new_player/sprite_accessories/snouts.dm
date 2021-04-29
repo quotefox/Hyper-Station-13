@@ -17,8 +17,3 @@
 	name = "Round + Light"
 	icon_state = "roundlight"
 
-/datum/sprite_accessory/snouts/gator
-	name = "Gator"
-	icon_state = "gator"
-	color_src = MATRIXED
-

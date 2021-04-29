@@ -29,22 +29,13 @@ Captain
 /datum/job/captain/get_access()
 	return get_all_accesses()
 
-/datum/job/captain/announce(mob/living/carbon/human/H, tried=FALSE)
-	if(!H)
-		return
-	if(!H.client && !tried)		//Roundstart mobs don't have clients when announce() gets called
-		SSticker.OnRoundstart(CALLBACK(src, .proc/announce, H, TRUE))	//So we try again...
-		return
-	if(tried && !H.client)	//We don't want to endlessly call ourselves when we don't have a client
-		throw EXCEPTION("[H.nameless ? "Captain" : "Captain [H.real_name]"] ([H.x],[H.y],[H.z]) has no client.")
-		return
+/datum/job/captain/announce(mob/living/carbon/human/H)
+    ..()
+    var/displayed_rank = H.client.prefs.alt_titles_preferences[title]
+    if(!displayed_rank)
+        displayed_rank = "Captain"
+    SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "[displayed_rank] [H.nameless ? "" : "[H.real_name] "]on deck!"))
 
-	var/displayed_rank = H.client.prefs.alt_titles_preferences[title]
-	if(!displayed_rank)	//Default to Captain
-		displayed_rank = "Captain"
-
-	minor_announce("[displayed_rank] [H.nameless ? "" : "[H.real_name] "]on deck!")
-	..()
 
 /datum/outfit/job/captain
 	name = "Captain"

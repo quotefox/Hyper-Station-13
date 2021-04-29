@@ -58,8 +58,8 @@
 /area/ruin/space/has_grav/powered/cat_man
 	name = "Kitty Den"
 
-/area/ruin/space/has_grav/powered/wiz_home
-	name = "Wizards Cabin"
+/area/ruin/space/has_grav/powered/wiz_home/area/ruin/space/has_grav/powered/wiz_home
+	name = "Wizard's Cabin"
 
 /area/ruin/space/has_grav/powered/authorship
 	name = "Authorship"

@@ -37,9 +37,6 @@
 	H.dna.features["moth_wings"] = pick(GLOB.moth_wings_list)
 	H.dna.features["moth_fluff"] = pick(GLOB.moth_fluffs_list)
 	H.dna.features["deco_wings"] = pick(GLOB.deco_wings_list)
-	H.dna.features["flavor_text"] = "" //Oh no.
-
-	SEND_SIGNAL(H, COMSIG_HUMAN_ON_RANDOMIZE)
 
 	H.update_body()
 	H.update_hair()

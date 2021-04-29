@@ -12,8 +12,3 @@
 	description = "<span class='nicegreen'>Someone kissed me, I feel happy!</span>\n"
 	mood_change = 2
 	timeout = 3 MINUTES
-
-/datum/mood_event/deathsaw
-	description = "<span class='boldwarning'>I saw someone die!</span>\n"
-	mood_change = -8
-	timeout = 20 MINUTES //takes a long time to get over

@@ -85,7 +85,6 @@
 	WRITE_FILE(S["feature_can_get_preg"], features["can_get_preg"])
 	//flavor text
 	WRITE_FILE(S["feature_flavor_text"], features["flavor_text"])
-	WRITE_FILE(S["feature_silicon_flavor_text"], features["silicon_flavor_text"])
 	WRITE_FILE(S["feature_ooc_text"], features["ooc_text"])
 	//custom job titles
 	WRITE_FILE(S["alt_titles_preferences"], alt_titles_preferences)

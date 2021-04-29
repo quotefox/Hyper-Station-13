@@ -32,14 +32,10 @@
 	if(user.pulling)
 		dat	+= "<a href='byond://?src=[REF(src)];kiss=1'>Kiss [user.pulling]</A>"
 		dat	+=	"(Kiss a partner, or object.)<BR>"
-	else
-		dat	+= "<span class='linkOff'>Kiss</span></A>"
-		dat	+=	"(Requires a partner)<BR>"
 
-
-	if(user.pulling)
 		dat	+= "<a href='byond://?src=[REF(src)];climaxover=1'>Climax over [user.pulling]</A>" //you can cum on objects if you really want...
 		dat	+=	"(Orgasm over a person or object.)<BR>"
+
 		if(isliving(user.pulling))
 			if(iscarbon(user.pulling))
 				dat	+= "<a href='byond://?src=[REF(src)];climaxwith=1'>Climax with [user.pulling]</A>"
@@ -47,13 +43,8 @@
 
 				var/mob/living/carbon/human/H = user.pulling
 				if(H.breedable && P && H)
-					dat	+= "<a href='byond://?src=[REF(src)];impreg=1'>Impregnate [U.pulling] ([clamp(U.impregchance,0,100)]%)</A>"
-					dat	+=	"(Climax inside another person, and attempt to knock them up.)<BR>"
-	else
-		dat	+= "<span class='linkOff'>Climax over</span></A>"
-		dat	+=	"(Requires a partner)<BR>"
-		dat	+= "<span class='linkOff'>Climax with</span></A>"
-		dat	+=	"(Requires a partner)<BR>"
+					dat	+= "<a href='byond://?src=[REF(src)];impreg=1'>Impregnate [user.pulling]</A>"
+					dat	+=	"(Climax inside another person, knocking them up.)<BR>"
 
 	//old code needs to be cleaned
 	if(P)
@@ -317,6 +308,8 @@ obj/screen/arousal/proc/kiss()
 			src.visible_message("<span class='notice'>[src] is about to kiss [L]!</span>", \
 								"<span class='notice'>You're attempting to kiss [L]!</span>", \
 								"<span class='notice'>You're attempting to kiss with something!</span>")
+			if(!do_mob(src, L, 2 SECONDS))	//I think two seconds is enough time to pull away if its unwanted.
+				return
 			SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "kissed", /datum/mood_event/kiss) //how cute, affection is nice.
 	//Well done you kissed it/them!
 	src.visible_message("<span class='notice'>[src] kisses [L]!</span>", \

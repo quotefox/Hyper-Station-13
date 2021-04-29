@@ -23,7 +23,7 @@
 /obj/machinery/gibber/RefreshParts()
 	var/gib_time = 40
 	for(var/obj/item/stock_parts/matter_bin/B in component_parts)
-		meat_produced += 1.6 * B.rating
+		meat_produced += B.rating
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
 		gib_time -= 5 * M.rating
 		gibtime = gib_time

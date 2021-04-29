@@ -21,7 +21,7 @@ AI
 	. = H.AIize(latejoin)
 
 /datum/job/ai/after_spawn(mob/H, mob/M, latejoin)
-	..()
+	. = ..()
 	if(latejoin)
 		var/obj/structure/AIcore/latejoin_inactive/lateJoinCore
 		for(var/obj/structure/AIcore/latejoin_inactive/P in GLOB.latejoin_ai_cores)
