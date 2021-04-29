@@ -7,13 +7,14 @@ area/layenia
 	outdoors = TRUE
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	ambientsounds = MINING
-	atmos = TRUE
+	atmos = FALSE
+	flags_1 = NONE
 
 area/layenia/cloudlayer
 	name = "Laneya clouds"
 	icon_state = "space"
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
-	atmos = TRUE
+	atmos = FALSE
 
 area/layenia/powered
 	name = "Layenia Powered"
@@ -25,4 +26,4 @@ area/layenia/powered
 	flags_1 = NONE
 	outdoors = FALSE
 	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
-	atmos = TRUE
+	atmos = FALSE

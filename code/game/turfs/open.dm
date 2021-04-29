@@ -78,9 +78,13 @@
 	name = "concrete"
 	icon = 'icons/turf/floors.dmi'
 	icon_state = "concrete"
+	initial_gas_mix = FROZEN_ATMOS
+	planetary_atmos = TRUE
 
 /turf/open/indestructible/concrete/smooth
 	icon_state = "concrete2"
+	initial_gas_mix = FROZEN_ATMOS
+	planetary_atmos = TRUE
 
 /turf/open/indestructible/cobble/side
 	icon_state = "cobble_side"

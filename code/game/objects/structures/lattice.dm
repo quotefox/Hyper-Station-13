@@ -17,6 +17,7 @@
 	smooth = SMOOTH_MORE
 	obj_flags = BLOCK_Z_FALL
 	//	flags = CONDUCT_1
+	//planetary_atmos = TRUE
 
 /obj/structure/lattice/examine(mob/user)
 	. = ..()
