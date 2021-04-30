@@ -386,36 +386,47 @@
 
 /area/solar/gravity
 	has_gravity = STANDARD_GRAVITY
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/solar/fore/gravity
 	has_gravity = STANDARD_GRAVITY
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/solar/aft/gravity
 	has_gravity = STANDARD_GRAVITY
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/solar/aux/port/gravity
 	has_gravity = STANDARD_GRAVITY
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/solar/aux/starboard/gravity
 	has_gravity = STANDARD_GRAVITY
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/solar/starboard/gravity
 	has_gravity = STANDARD_GRAVITY
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/solar/starboard/aft/gravity
 	has_gravity = STANDARD_GRAVITY
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/solar/starboard/fore/gravity
 	has_gravity = STANDARD_GRAVITY
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/solar/port/gravity
 	has_gravity = STANDARD_GRAVITY
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/solar/port/aft/gravity
 	has_gravity = STANDARD_GRAVITY
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 /area/solar/port/fore/gravity
 	has_gravity = STANDARD_GRAVITY
+	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 
 
 //Solar Maint
