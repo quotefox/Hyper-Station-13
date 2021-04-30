@@ -242,6 +242,13 @@
 			//testing("Active turf found. Return value of compare(): [is_active]")
 			excited = TRUE
 			SSair.active_turfs |= src
+		//Issues with air runtiming and you don't know where? Uncomment the following code.
+		/*
+		if(air == null)
+			log_game("Bad air from [src] at [src.loc]")
+		if(enemy_air == null)
+			log_game("Bad air from [enemy_tile] at [enemy_tile.loc]")
+		*/
 
 /turf/open/proc/GetHeatCapacity()
 	. = air.heat_capacity()
