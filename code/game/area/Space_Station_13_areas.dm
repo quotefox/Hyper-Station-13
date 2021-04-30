@@ -1380,3 +1380,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Nothing Here"
 	icon_state = "yellow"
 	ambientsounds = SPOOKY
+
+/area/arcade
+	name = "Arcade"
+	icon_state = "yellow"
