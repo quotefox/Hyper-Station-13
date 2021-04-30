@@ -90,7 +90,7 @@
 
 /obj/item/clothing/suit/armor/vest/warden/alt
 	name = "warden's armored jacket"
-	desc = "A red jacket with silver rank pips and body armor strapped on top."
+	desc = "A jacket with silver rank pips and body armor strapped on top."
 	icon_state = "warden_jacket"
 
 /obj/item/clothing/suit/armor/vest/leather
@@ -263,7 +263,7 @@
 	max_integrity = 200
 	resistance_flags = FLAMMABLE
 	armor = list("melee" = 20, "bullet" = 10, "laser" = 30, "energy" = 5, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 50)
-	
+
 /obj/item/clothing/suit/armor/monolith
 	name = "Monolith suit"
 	desc = "The producer is unknown. Its protective properties are slightly worse then those of the bulletproof vest. Its structure combines a bulletproof vest and radiation protection plates. It provides good protection from gunfire."

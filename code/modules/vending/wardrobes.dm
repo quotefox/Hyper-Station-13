@@ -15,7 +15,7 @@
 					/obj/item/clothing/shoes/jackboots = 5,
 					/obj/item/clothing/head/beret/sec =5,
 					/obj/item/clothing/head/soft/sec = 5,
-					/obj/item/clothing/mask/bandana/red = 5,
+					/obj/item/clothing/mask/bandana/blue = 5,
 					/obj/item/clothing/under/rank/security/skirt = 5,
 					/obj/item/clothing/under/rank/security/grey = 5,
 					/obj/item/clothing/under/pants/khaki = 5)
