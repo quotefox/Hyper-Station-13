@@ -694,7 +694,7 @@
 	. = ..()
 
 /obj/structure/flora/crystal/medium
-	name = "small crystals"
+	name = "medium crystals"
 	icon = 'icons/obj/flora/layeniamedium.dmi'
 	pixel_x = -16
 	pixel_y = -3
@@ -705,7 +705,7 @@
 
 //Medium crystal growths
 /obj/structure/flora/crystal/medium/growth
-	name = "small crystals"
+	name = "medium crystals"
 	desc = "A growth of medium crystals"
 	icon_state = "crystalgrowth"
 
