@@ -4,6 +4,7 @@
 	max_occurrences = 1
 	weight = 4
 	earliest_start = 5 MINUTES
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/round_event_control/aurora_caelus/canSpawnEvent(players, gamemode)
 	if(!CONFIG_GET(flag/starlight))
