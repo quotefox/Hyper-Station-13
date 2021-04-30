@@ -388,16 +388,14 @@
 	//light_color = LIGHT_COLOR_WHITE
 
 /turf/open/floor/plating/asteroid/layenia/Initialize()
+	. = ..()
 	if(prob(50))
 		icon_state = "layenia[rand(0,4)]"
+	set_layenia_light(src)
 
 /turf/open/floor/plating/asteroid/layenia/garden
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 	planetary_atmos = TRUE
-
-/turf/open/floor/plating/asteroid/layenia/Initialize()
-	. = ..()
-	set_layenia_light(src)
 
 /proc/set_layenia_light(turf/open/floor/B)
 	switch(B.icon_state)
