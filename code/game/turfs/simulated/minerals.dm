@@ -527,9 +527,9 @@
 /turf/closed/mineral/layenia
 	name = "Crimson rock"
 	icon = 'icons/turf/mining.dmi'
+	smooth_icon = 'icons/turf/layeniarocks.dmi'
 	icon_state = "layenia"
 	smooth = SMOOTH_MORE|SMOOTH_BORDER
-	smooth_icon = 'icons/turf/layeniarocks.dmi'
 	canSmoothWith = null
 	baseturfs = /turf/open/floor/plating/asteroid/layenia
 	initial_gas_mix = FROZEN_ATMOS
