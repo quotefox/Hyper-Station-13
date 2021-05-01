@@ -32,10 +32,14 @@
 	if(user.pulling)
 		dat	+= "<a href='byond://?src=[REF(src)];kiss=1'>Kiss [user.pulling]</A>"
 		dat	+=	"(Kiss a partner, or object.)<BR>"
+	else
+		dat	+= "<span class='linkOff'>Kiss</span></A>"
+		dat	+=	"(Requires a partner)<BR>"
 
+
+	if(user.pulling)
 		dat	+= "<a href='byond://?src=[REF(src)];climaxover=1'>Climax over [user.pulling]</A>" //you can cum on objects if you really want...
 		dat	+=	"(Orgasm over a person or object.)<BR>"
-
 		if(isliving(user.pulling))
 			if(iscarbon(user.pulling))
 				dat	+= "<a href='byond://?src=[REF(src)];climaxwith=1'>Climax with [user.pulling]</A>"
@@ -43,8 +47,13 @@
 
 				var/mob/living/carbon/human/H = user.pulling
 				if(H.breedable && P && H)
-					dat	+= "<a href='byond://?src=[REF(src)];impreg=1'>Impregnate [user.pulling]</A>"
-					dat	+=	"(Climax inside another person, knocking them up.)<BR>"
+					dat	+= "<a href='byond://?src=[REF(src)];impreg=1'>Impregnate [U.pulling] ([clamp(U.impregchance,0,100)]%)</A>"
+					dat	+=	"(Climax inside another person, and attempt to knock them up.)<BR>"
+	else
+		dat	+= "<span class='linkOff'>Climax over</span></A>"
+		dat	+=	"(Requires a partner)<BR>"
+		dat	+= "<span class='linkOff'>Climax with</span></A>"
+		dat	+=	"(Requires a partner)<BR>"
 
 	//old code needs to be cleaned
 	if(P)

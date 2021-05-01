@@ -55,6 +55,11 @@
 	diag_hud_set_status()
 	diag_hud_set_health()
 
+/mob/living/silicon/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/flavor_text, "", "Silicon Flavor Text", "", MAX_FLAVOR_LEN, FALSE, TRUE, "silicon_flavor_text")
+	AddElement(/datum/element/flavor_text, "", "Temporary Flavor Text", "This should be used only for things pertaining to the current round!")
+
 /mob/living/silicon/med_hud_set_health()
 	return //we use a different hud
 

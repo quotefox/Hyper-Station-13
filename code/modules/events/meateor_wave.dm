@@ -3,6 +3,7 @@
 	typepath = /datum/round_event/meteor_wave/meaty
 	weight = 2
 	max_occurrences = 1
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/round_event/meteor_wave/meaty
 	wave_name = "meaty"

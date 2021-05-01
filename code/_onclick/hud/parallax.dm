@@ -25,6 +25,12 @@
 		if(SSparallax.random_layer)
 			C.parallax_layers_cached += new SSparallax.random_layer
 		C.parallax_layers_cached += new /obj/screen/parallax_layer/layer_3(null, C.view)
+		if(SSmapping.config?.map_name == "Layenia Station")
+			C.parallax_layers_cached += new /obj/screen/parallax_layer/layenia/horizon(null, C.view)
+			C.parallax_layers_cached += new /obj/screen/parallax_layer/layenia/clouds1(null, C.view)
+			C.parallax_layers_cached += new /obj/screen/parallax_layer/layenia/clouds2(null, C.view)
+			C.parallax_layers_cached += new /obj/screen/parallax_layer/layenia/clouds3(null, C.view)
+
 
 	C.parallax_layers = C.parallax_layers_cached.Copy()
 
@@ -66,24 +72,24 @@
 		switch(C.prefs.parallax)
 			if (PARALLAX_INSANE)
 				C.parallax_throttle = FALSE
-				C.parallax_layers_max = 5
+				C.parallax_layers_max = 10
 				return TRUE
 
 			if (PARALLAX_MED)
 				C.parallax_throttle = PARALLAX_DELAY_MED
-				C.parallax_layers_max = 3
+				C.parallax_layers_max = 8
 				return TRUE
 
 			if (PARALLAX_LOW)
 				C.parallax_throttle = PARALLAX_DELAY_LOW
-				C.parallax_layers_max = 1
+				C.parallax_layers_max = 7
 				return TRUE
 
 			if (PARALLAX_DISABLE)
 				return FALSE
 
 	C.parallax_throttle = PARALLAX_DELAY_DEFAULT
-	C.parallax_layers_max = 4
+	C.parallax_layers_max = 10
 	return TRUE
 
 /datum/hud/proc/update_parallax_pref(mob/viewmob)
@@ -320,7 +326,7 @@
 	blend_mode = BLEND_OVERLAY
 	absolute = TRUE //Status of seperation
 	speed = 3
-	layer = 30
+	layer = 4
 
 /obj/screen/parallax_layer/planet/update_status(mob/M)
 	var/client/C = M.client
@@ -331,3 +337,44 @@
 
 /obj/screen/parallax_layer/planet/update_o()
 	return //Shit wont move
+
+//Layenia parallaxes
+
+/obj/screen/parallax_layer/layenia
+	icon_state = null 
+	blend_mode = BLEND_OVERLAY
+	absolute = TRUE
+	speed = 0.6
+	layer = 5
+
+/obj/screen/parallax_layer/layenia/horizon
+	icon_state = "layeniahorizon"
+	speed = 0.3
+	absolute = FALSE
+
+/obj/screen/parallax_layer/layenia/clouds1
+	icon_state = "layenia1"
+	speed = 0.6
+	layer = 6
+
+/obj/screen/parallax_layer/layenia/clouds2
+	icon_state = "layenia2"
+	speed = 1
+	layer = 7
+
+/obj/screen/parallax_layer/layenia/clouds3
+	icon_state = "layenia3"
+	speed = 1.4
+	layer = 8
+
+/obj/screen/parallax_layer/layenia/update_status(mob/M)
+	var/client/C = M.client
+	var/turf/posobj = get_turf(C.eye)
+	if(!posobj)
+		return
+	invisibility = is_station_level(posobj.z) ? 0 : INVISIBILITY_ABSTRACT
+
+/*
+/obj/screen/parallax_layer/tparallax1/update_status(mob/M)
+	if(SSmapping.config?.map_name != "Layenia Station")
+*/

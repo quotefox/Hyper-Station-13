@@ -115,3 +115,25 @@
 	var/turf/T = safepick(get_area_turfs(/area/fabric_of_reality))
 	if(T)
 		set_target(T)
+
+/turf/open/chasm/cloud
+	name = "clouds"
+	gender = PLURAL
+	desc = "Clouds as far as the eye can see... Watch your step."
+	icon = 'icons/turf/space.dmi'
+	icon_state = "0"
+	plane = PLANE_SPACE
+	tiled_dirt = FALSE
+	baseturfs = /turf/open/chasm/cloud
+	smooth = SMOOTH_FALSE
+	initial_gas_mix = FROZEN_ATMOS
+
+/turf/open/chasm/cloud/Initialize()
+	. = ..()
+	icon_state = SPACE_ICON_STATE
+
+/turf/open/chasm/cloud/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
+	underlay_appearance.icon = 'icons/turf/space.dmi'
+	underlay_appearance.icon_state = SPACE_ICON_STATE
+	underlay_appearance.plane = PLANE_SPACE
+	return TRUE

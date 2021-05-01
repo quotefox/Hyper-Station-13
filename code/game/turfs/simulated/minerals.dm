@@ -523,3 +523,15 @@
 	baseturfs = /turf/open/floor/plating/asteroid/basalt/lava_land_surface
 	initial_gas_mix = LAVALAND_DEFAULT_ATMOS
 	defer_change = 1
+
+/turf/closed/mineral/layenia
+	name = "Crimson rock"
+	icon = 'icons/turf/mining.dmi'
+	smooth_icon = 'icons/turf/layeniarocks.dmi'
+	icon_state = "layenia"
+	smooth = SMOOTH_MORE|SMOOTH_BORDER
+	canSmoothWith = null
+	baseturfs = /turf/open/floor/plating/asteroid/layenia
+	initial_gas_mix = FROZEN_ATMOS
+	environment_type = "layenia"
+	turf_type = /turf/open/floor/plating/asteroid/layenia

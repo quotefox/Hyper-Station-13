@@ -334,9 +334,13 @@
 	fluid_source = G.linked_organ.reagents
 	total_fluids = fluid_source.total_volume
 
-	if(mb_time) //Skip warning if this is an instant climax.
+	if(mb_time && !remote) //Skip warning if this is an instant climax.
 		src.visible_message("<span class='love'>[src] is about to climax with [L]!</span>", \
 							"<span class='userlove'>You're about to climax with [L]!</span>", \
+							"<span class='userlove'>You're preparing to climax with something!</span>")
+	if(remote)
+		src.visible_message("<span class='love'>[src] is about to climax with someone!</span>", \
+							"<span class='userlove'>You're about to climax with someone!</span>", \
 							"<span class='userlove'>You're preparing to climax with something!</span>")
 
 	if(cover)//covering the partner in cum, this overrides other options.
@@ -410,23 +414,24 @@
 			if (L.mind == obj.target)
 				L.mind.sexed = TRUE //sexed
 				to_chat(src, "<span class='userlove'>You feel deep satisfaction with yourself.</span>")
-	//Hyper - remote
 
 	if(impreg)
 		//Role them odds, only people with the dicks can send the chance to the person with the settings enabled at the momment.
-		var/obj/item/organ/genital/womb/W = L.getorganslot("womb")
-		if (L.breedable == 1 && W.pregnant == 0) //Dont get pregnant again, if you are pregnant.
-			log_game("Debug: [L] has been impregnated by [src]")
-			to_chat(L, "<span class='userlove'>You feel your hormones change, and a motherly instinct take over.</span>") //leting them know magic has happened.
-			W.pregnant = 1
-			if (HAS_TRAIT(L, TRAIT_HEAT))
-				SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "heat", /datum/mood_event/heat) //well done you perv.
-				REMOVE_TRAIT(L, TRAIT_HEAT, type) //take the heat away, you satisfied it!
+		if(prob(L.impregchance))
+			var/obj/item/organ/genital/womb/W = L.getorganslot("womb")
+			if(W) //check if they have a womb.
+				if (L.breedable == 1 && W.pregnant == 0) //Dont get pregnant again, if you are pregnant.
+					log_game("Debug: [L] has been impregnated by [src]")
+					to_chat(L, "<span class='userlove'>You feel your hormones change, and a motherly instinct take over.</span>") //leting them know magic has happened.
+					W.pregnant = 1
+					if (HAS_TRAIT(L, TRAIT_HEAT))
+						SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "heat", /datum/mood_event/heat) //well done you perv.
+						REMOVE_TRAIT(L, TRAIT_HEAT, type) //take the heat away, you satisfied it!
 
-	 		//Make breasts produce quicker.
-			var/obj/item/organ/genital/breasts/B = L.getorganslot("breasts")
-			if (B.fluid_mult < 0.5 && B)
-				B.fluid_mult = 0.5
+			 		//Make breasts produce quicker.
+					var/obj/item/organ/genital/breasts/B = L.getorganslot("breasts")
+					if (B.fluid_mult < 0.5 && B)
+						B.fluid_mult = 0.5
 
 
 /mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time = 30) //For beaker-filling, beware the bartender

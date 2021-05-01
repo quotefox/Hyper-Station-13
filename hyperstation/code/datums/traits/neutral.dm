@@ -56,10 +56,10 @@
 /datum/quirk/virile
 	name = "Virile"
 	desc = "Either through higher quality sperms, more of them, or just being more horny, your impregnation chance will increase by 20-30%."
-	value = 1
+	value = 0
 	category = CATEGORY_SEXUAL
 	medical_record_text = "Patient has a higher sperm count."
-	//mob_trait = TRAIT_VIRILE
+	mob_trait = TRAIT_VIRILE
 	gain_text = "<span class='notice'>You feel more potent."
 	lose_text = "<span class='notice'>You feel less potent."
 	var/ichange = 0
@@ -72,13 +72,12 @@
 	if(quirk_holder)
 		quirk_holder.impregchance -= ichange
 
-
 /datum/quirk/macrophile
 	name = "Macrophile"
 	desc = "You are attracted to larger people, and being stepped on by them."
 	value = 0
 	category = CATEGORY_SEXUAL
-	//mob_trait = TRAIT_MACROPHILE
+	mob_trait = TRAIT_MACROPHILE
 	gain_text = "<span class='notice'>You feel attracted to people larger than you."
 	lose_text = "<span class='notice'>You feel less attracted to people larger than you."
 
@@ -87,6 +86,6 @@
 	desc = "You are attracted to smaller people, and stepping on them."
 	value = 0
 	category = CATEGORY_SEXUAL
-	//mob_trait = TRAIT_MICROPHILE
+	mob_trait = TRAIT_MICROPHILE
 	gain_text = "<span class='notice'>You feel attracted to people smaller than you."
 	lose_text = "<span class='notice'>You feel less attracted to people smaller than you."

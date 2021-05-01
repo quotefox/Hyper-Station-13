@@ -10,6 +10,7 @@
 	min_players = 20
 	max_occurrences = 3
 	earliest_start = 25 MINUTES
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/round_event/meteor_wave
 	startWhen		= 6
