@@ -15,6 +15,12 @@
 	var/list/list_observers = list()
 
 /datum/dynamic_ruleset/event/acceptable(population=0, threat=0)
+	if(istype(controller, /datum/round_event_control))
+		var/datum/round_event_control/R = controller
+		if(R.map_blacklist.len && (SSmapping.config.map_file in R.map_blacklist))	//Apparently dynamic doesn't call a controller's canSpawnEvent :>
+			return FALSE
+		if(R.map_whitelist.len && !(SSmapping.config.map_file in R.map_whitelist))
+			return FALSE
 	return ..()
 
 /datum/dynamic_ruleset/event/ready(forced = 0)

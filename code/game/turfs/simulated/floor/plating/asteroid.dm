@@ -19,13 +19,14 @@
 	attachment_holes = FALSE
 	var/obj/item/stack/digResult = /obj/item/stack/ore/glass/basalt
 	var/dug
+	var/quantity_of_available_tiles = 12 //How many sprites do you have in the DMI? Note, consider tile 0. 12 here means = 13 titles. 13 tiles is the golden standard.
 
 /turf/open/floor/plating/asteroid/Initialize()
 	var/proper_name = name
 	. = ..()
 	name = proper_name
 	if(prob(floor_variance))
-		icon_state = "[environment_type][rand(0,12)]"
+		icon_state = "[environment_type][rand(0,quantity_of_available_tiles)]"
 
 /turf/open/floor/plating/asteroid/proc/getDug()
 	new digResult(src, 5)
@@ -383,14 +384,15 @@
 	bullet_sizzle = TRUE
 	bullet_bounce_sound = null
 	digResult = /obj/item/stack/ore/glass/basalt
+	floor_variance = 50 //This means 50% chance of variating from the default tile.
+	quantity_of_available_tiles = 4
 	//light_range = 2
 	//light_power = 0.15
 	//light_color = LIGHT_COLOR_WHITE
 
 /turf/open/floor/plating/asteroid/layenia/Initialize()
 	. = ..()
-	if(prob(50))
-		icon_state = "layenia[rand(0,4)]"
+	//We no longer randomize the icon state here. That is done by the supercall in our parent, asteroid.
 	set_layenia_light(src)
 
 /turf/open/floor/plating/asteroid/layenia/garden
