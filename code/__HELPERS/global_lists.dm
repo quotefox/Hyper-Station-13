@@ -61,6 +61,9 @@
 		var/datum/sprite_accessory/breasts/value = GLOB.breasts_shapes_list[K]
 		GLOB.breasts_shapes_icons[K] = value.icon_state
 
+	init_sprite_accessory_subtypes(/datum/sprite_accessory/belly)
+	GLOB.belly_size_list = list ("a", "b", "c", "d")
+
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/testicles, GLOB.balls_shapes_list)
 	for(var/K in GLOB.balls_shapes_list)
 		var/datum/sprite_accessory/testicles/value = GLOB.balls_shapes_list[K]
