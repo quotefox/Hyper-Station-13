@@ -912,6 +912,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "<b>Color:</b></a><BR>"
 						dat += "<span style='border: 1px solid #161616; background-color: #[features["belly_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=belly_color;task=input'>Change</a><br>"
 					dat += "<b>Hide on Round-Start:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=hide_belly'>[features["hide_belly"] == 1 ? "Yes" : "No"]</a>"
+					dat += "<b>Belly Size:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=belly_size;task=input'>[features["belly_size"]]</a>"
 
 				dat += "</td>"
 			dat += "</td>"
@@ -2262,6 +2263,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_size = input(user, "Breast Size", "Character Preference") as null|anything in GLOB.breasts_size_list
 					if(new_size)
 						features["breasts_size"] = new_size
+
+				if("belly_size")
+					var/new_size
+					new_size = input(user, "Belly Size", "Character Preference") as null|anything in GLOB.belly_size_list
+					if(new_size)
+						features["belly_size"] = new_size
 
 				if("breasts_shape")
 					var/new_shape

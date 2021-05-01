@@ -420,10 +420,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//womb features
 	S["feature_has_womb"]				>> features["has_womb"]
 	S["feature_can_get_preg"]			>> features["can_get_preg"] //hyperstation 13
-		//balls features
+	//belly features
 	S["feature_has_belly"]				>> features["has_belly"]
 	S["feature_belly_color"]			>> features["belly_color"]
 	S["feature_hide_belly"]				>> features["hide_belly"]
+	S["feature_belly_size"]				>> features["belly_size"]
 
 	//flavor text
 	//Let's make our players NOT cry desperately as we wipe their savefiles of their special snowflake texts:
@@ -446,7 +447,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	else
 		S["feature_ooc_text"]		>> features["ooc_text"]
 
-	//try to fix any outdated data if necessary
+	// try to fix any outdated data if necessary
 	if(needs_update >= 0)
 		update_character(needs_update, S)		//needs_update == savefile_version if we need an update (positive integer)
 

@@ -103,7 +103,7 @@
 	gender_specific = 0
 	color_src = "vag_color"
 	locked = 0
-	alt_aroused = FALSE //if this is TRUE, then the genitals will use an alternate sprite for aroused states
+	alt_aroused = FALSE // if this is TRUE, then the genitals will use an alternate sprite for aroused states
 
 /datum/sprite_accessory/vagina/human
 	icon_state = "human"
@@ -136,7 +136,7 @@
     icon_state = "gaping"
     name = "Gaping"
 
-//BREASTS BE HERE
+//BELLY BE HERE
 /datum/sprite_accessory/belly
 	icon = 'hyperstation/icons/obj/genitals/belly.dmi'
 	icon_state = "belly"

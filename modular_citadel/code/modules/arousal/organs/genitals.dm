@@ -229,9 +229,23 @@
 				B.color = "#[skintone2hex(skin_tone)]"
 			else
 				B.color = "#[dna.features["belly_color"]]"
+			B.size = dna.features["belly_size"]
+			if(!isnum(B.size))
+				if(B.size == "a")
+					B.cached_size = 0
+					B.prev_size = 0
+				else if (B.cached_size == "4")
+					B.prev_size = "d"
+				else
+					B.cached_size = B.belly_values[B.size]
+					B.prev_size = B.size
+			else
+				B.cached_size = B.size
+				B.prev_size = B.size
+
 			B.update()
 
-		if(dna.features["hide_belly"]) //autohide bellies if they have the option ticked.
+		if(dna.features["hide_belly"]) // autohide bellies if they have the option ticked.
 			B.toggle_visibility("Always hidden")
 
 
