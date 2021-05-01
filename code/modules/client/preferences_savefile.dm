@@ -436,6 +436,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	else //We have no old flavortext, default to new
 		S["feature_flavor_text"]		>> features["flavor_text"]
 
+	S["feature_silicon_flavor_text"]	>> features["silicon_flavor_text"]
 	if((S["ooc_text"] != "") && (S["ooc_text"] != null) && S["ooc_text"])
 		S["ooc_text"]				>> features["ooc_text"]
 
@@ -512,6 +513,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	custom_speech_verb				= sanitize_inlist(custom_speech_verb, GLOB.speech_verbs, "default")
 	custom_tongue					= sanitize_inlist(custom_tongue, GLOB.roundstart_tongues, "default")
+
+	features["flavor_text"]			= copytext(features["flavor_text"], 1, MAX_FLAVOR_LEN)
+	features["silicon_flavor_text"]	= copytext(features["silicon_flavor_text"], 1, MAX_FLAVOR_LEN)
 
 	joblessrole	= sanitize_integer(joblessrole, 1, 3, initial(joblessrole))
 	job_civilian_high = sanitize_integer(job_civilian_high, 0, 65535, initial(job_civilian_high))

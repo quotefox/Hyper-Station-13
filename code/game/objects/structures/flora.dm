@@ -656,3 +656,60 @@
 
 	if(islist(icon_states && icon_states.len))
 		icon_state = pick(icon_states)
+
+
+/obj/structure/flora/crystal
+	name = "crystal"
+	desc = "You shouldnt see this!"
+	gender = PLURAL //trans rights
+	max_integrity = 30
+
+/obj/structure/flora/crystal/small
+	name = "small crystals"
+	icon = 'icons/obj/flora/layeniasmall.dmi'
+	light_range = 2
+	light_power = 0.25
+	light_color = LIGHT_COLOR_BLUE
+
+//Small crystal clusters
+/obj/structure/flora/crystal/small/pile
+	name = "small crystals"
+	desc = "A pile of small crystals"
+	icon_state = "crystals"
+
+/obj/structure/flora/crystal/small/pile/Initialize()
+	if(icon_state == "crystals")
+		icon_state = "crystals[rand(1, 4)]"
+	. = ..()
+
+//Small crystal growths
+/obj/structure/flora/crystal/small/growth
+	name = "small crystals"
+	desc = "A growth of small crystals"
+	icon_state = "crystalgrowth"
+
+/obj/structure/flora/crystal/small/growth/Initialize()
+	if(icon_state == "crystalgrowth")
+		icon_state = "crystalgrowth[rand(1, 4)]"
+	. = ..()
+
+/obj/structure/flora/crystal/medium
+	name = "medium crystals"
+	icon = 'icons/obj/flora/layeniamedium.dmi'
+	pixel_x = -16
+	pixel_y = -3
+	layer = ABOVE_ALL_MOB_LAYER
+	light_range = 4
+	light_power = 0.75
+	light_color = LIGHT_COLOR_BLUE
+
+//Medium crystal growths
+/obj/structure/flora/crystal/medium/growth
+	name = "medium crystals"
+	desc = "A growth of medium crystals"
+	icon_state = "crystalgrowth"
+
+/obj/structure/flora/crystal/medium/growth/Initialize()
+	if(icon_state == "crystalgrowth")
+		icon_state = "crystalgrowth[rand(1, 3)]"
+	. = ..()

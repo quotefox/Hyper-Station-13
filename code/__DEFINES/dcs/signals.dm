@@ -294,6 +294,7 @@
 	#define SPEECH_LANGUAGE 5
 	#define SPEECH_IGNORE_SPAM 6
 	#define SPEECH_FORCED 7 */
+#define COMSIG_MOB_ANTAG_ON_GAIN "mob_antag_on_gain"			//from base of /datum/antagonist/on_gain(): (antag_datum)
 
 ///from base of /mob/Login(): ()
 #define COMSIG_MOB_LOGIN "mob_login"
@@ -378,6 +379,7 @@
 
 ///from base of mob/living/carbon/soundbang_act(): (list(intensity))
 #define COMSIG_CARBON_SOUNDBANG "carbon_soundbang"
+#define COMSIG_CARBON_IDENTITY_TRANSFERRED_TO "carbon_id_transferred_to" //from datum/dna/transfer_identity(): (datum/dna, transfer_SE)
 ///from /item/organ/proc/Insert() (/obj/item/organ/)
 #define COMSIG_CARBON_GAIN_ORGAN "carbon_gain_organ"
 ///from /item/organ/proc/Remove() (/obj/item/organ/)
@@ -566,6 +568,9 @@
 #define COMSIG_HUMAN_MELEE_UNARMED_ATTACKBY "human_melee_unarmed_attackby"
 ///Hit by successful disarm attack (mob/living/carbon/human/attacker,zone_targeted)
 #define COMSIG_HUMAN_DISARM_HIT	"human_disarm_hit"
+#define COMSIG_HUMAN_PREFS_COPIED_TO "human_prefs_copied_to"					//from datum/preferences/copy_to(): (datum/preferences, icon_updates, roundstart_checks)
+#define COMSIG_HUMAN_HARDSET_DNA "human_hardset_dna"							//from mob/living/carbon/human/hardset_dna(): (ui, se, newreal_name, newblood_type, datum/species, newfeatures)
+#define COMSIG_HUMAN_ON_RANDOMIZE "humman_on_randomize"							//from base of proc/randomize_human()
 ///Whenever EquipRanked is called, called after job is set
 #define COMSIG_JOB_RECEIVED "job_received"
 

@@ -11,13 +11,19 @@
 		toggle_combat_mode(TRUE, TRUE)
 
 	. = ..()
-	
+
 	for(var/T in get_traumas())
 		var/datum/brain_trauma/BT = T
 		BT.on_death()
-	
+
 	if(SSticker.mode)
 		SSticker.mode.check_win() //Calls the rounds wincheck, mainly for wizard, malf, and changeling now
+
+	//watching someone die is traumatic
+	for(var/mob/living/carbon/human/H in oview(5, src))
+		SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "death", /datum/mood_event/deathsaw)
+		if(prob(10)) //10% chance to pump adrenaline into their body
+			H.jitteriness += 5
 
 /mob/living/carbon/gib(no_brain, no_organs, no_bodyparts)
 	var/atom/Tsec = drop_location()

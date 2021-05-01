@@ -170,7 +170,7 @@
 
 		if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
 			var/mob/living/carbon/human/O = C
-			O.mob_climax_partner(P, M, TRUE, FALSE, FALSE, TRUE) //climax with their partner remotely!
+			O.mob_climax_partner(P, M, FALSE, FALSE, FALSE, TRUE) //climax with their partner remotely!
 		return
 	..()
 
@@ -188,6 +188,9 @@
 
 		if(H.dna.species.name == "Slimeperson") // slime nerd
 			sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_slime")
+
+		if(H.dna.species.name == "Avian") // bird nerd
+			sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_avian")
 
 		sleeve.color = "#" + H.dna.features["mcolor"]
 		add_overlay(sleeve)

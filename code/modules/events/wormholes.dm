@@ -4,6 +4,7 @@
 	max_occurrences = 3
 	weight = 2
 	min_players = 2
+	map_blacklist = list("LayeniaStation.dmm")
 
 
 /datum/round_event/wormholes

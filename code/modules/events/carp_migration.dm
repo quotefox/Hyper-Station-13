@@ -5,6 +5,7 @@
 	min_players = 5 //increased min players from 2 to 5 to reduce chances of half the crew dying in a carp breach
 	earliest_start = 10 MINUTES
 	max_occurrences = 6
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/round_event/carp_migration
 	announceWhen	= 3

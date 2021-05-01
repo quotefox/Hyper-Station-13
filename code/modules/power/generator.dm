@@ -18,8 +18,8 @@
 	var/grumping = 0 // is the engine currently doing grumpy things
 	var/list/grump_prefix = list("an upsetting", "an unsettling",
 	"a scary", "a loud", "a sassy", "a grouchy", "a grumpy",
-	"an awful", "a horrible", "a despicable", "a pretty rad", "a godawful")
-	var/list/grump_suffix = list("noise", "racket", "ruckus", "sound", "clatter", "fracas", "hubbub")
+	"an awful", "a horrible", "a despicable", "a pretty rad", "a godawful, a wocky")
+	var/list/grump_suffix = list("noise", "racket", "ruckus", "sound", "clatter", "fracas", "hubbub, slush")
 	var/sound_engine1 = 'sound/machines/tractor_running.ogg'
 	var/sound_engine2 = 'sound/machines/engine_highpower.ogg'
 	var/sound_tractorrev = 'sound/machines/tractorrev.ogg'
