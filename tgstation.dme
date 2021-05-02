@@ -3088,6 +3088,7 @@
 #include "hyperstation\code\modules\patreon\patreon.dm"
 #include "hyperstation\code\modules\reagents\chemistry\reagents\food_reagents.dm"
 #include "hyperstation\code\modules\reagents\chemistry\reagents\hydroponics_reactions.dm"
+#include "hyperstation\code\modules\resize\resize_action.dm"
 #include "hyperstation\code\modules\resize\resizing.dm"
 #include "hyperstation\code\modules\resize\sizechems.dm"
 #include "hyperstation\code\modules\resize\sizegun.dm"
