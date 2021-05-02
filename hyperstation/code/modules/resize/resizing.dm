@@ -13,6 +13,8 @@ var/const/RESIZE_MICRO = 0.25
 	var/size_multiplier = 1 //multiplier for the mob's icon size atm
 	var/previous_size = 1
 
+//Cyanosis - Action that resizes the sprite for the client but nobody else. Say goodbye to attacking yourself when someone's above you lmao
+	var/datum/action/sizecode_resize/small_sprite
 
 #define MOVESPEED_ID_SIZE      "SIZECODE"
 #define MOVESPEED_ID_STOMP     "STEPPY"
@@ -59,6 +61,13 @@ mob/living/get_effective_size()
 			G.update_appearance()
 	//if(src.size_multiplier >= RESIZE_A_HUGEBIG || src.size_multiplier <= RESIZE_A_TINYMICRO) Will remove clothing when too big or small. Will do later.
 	previous_size = size_multiplier //And, change this now that we are finally done.
+
+	//Now check if the mob can get the size action
+	if(!small_sprite)
+		small_sprite = new(src)
+	small_sprite.Remove(src)
+	if(size_multiplier >= 1.25)	//Anything bigger will start to block things
+		small_sprite.Grant(src)
 
 //handle the big steppy, except nice
 /mob/living/proc/handle_micro_bump_helping(var/mob/living/tmob)
