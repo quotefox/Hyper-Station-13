@@ -3,6 +3,7 @@
 	name = "Alcoholic Lightweight"
 	desc = "Alcohol really goes straight to your head, gotta be careful with what you drink."
 	value = 0
+	category = CATEGORY_ALCOHOL
 	mob_trait = TRAIT_ALCOHOL_LIGHTWEIGHT
 	gain_text = "<span class='notice'>You feel woozy thinking of alcohol.</span>"
 	lose_text = "<span class='notice'>You regain your stomach for drinks.</span>"
@@ -12,6 +13,7 @@
 	name = "Cursed Blood"
 	desc = "Your lineage is cursed with the paleblood curse. Best to stay away from holy water... Hell water, on the other hand..."
 	value = 0
+	category = CATEGORY_GAMEPLAY
 	mob_trait = TRAIT_CURSED_BLOOD
 	gain_text = "<span class='notice'>A curse from a land where men return as beasts runs deep in your blood. Best to stay away from holy water... Hell water, on the other hand...</span>"
 	lose_text = "<span class='notice'>You feel the weight of the curse in your blood finally gone.</span>"
@@ -22,6 +24,7 @@
 	name = "Estrus Detection"
 	desc = "You have a animalistic sense of detecting if someone is in heat, and can get pregnant."
 	value = 0
+	category = CATEGORY_SEXUAL
 	mob_trait = TRAIT_HEAT_DETECT
 	gain_text = "<span class='notice'>You feel your senses adjust, allowing a animalistic sense of others' fertility.</span>"
 	lose_text = "<span class='notice'>You feel your sense of others' fertility fade.</span>"
@@ -31,6 +34,7 @@
 	name = "In Heat"
 	desc = "Your system burns with the desire to be bred, your body will betray you and alert others' to your desire when examining you. Satisfying your lust will make you happy, but ignoring it may cause you to become sad and needy."
 	value = 0
+	category = CATEGORY_SEXUAL
 	mob_trait = TRAIT_HEAT
 	gain_text = "<span class='notice'>You body burns with the desire to be bred.</span>"
 	lose_text = "<span class='notice'>You feel more in control of your body and thoughts.</span>"
@@ -39,6 +43,7 @@
 	name = "Overweight"
 	desc = "You're particularly fond of food, and join the round being overweight."
 	value = 0
+	category = CATEGORY_FOOD
 	gain_text = "<span class='notice'>You feel a bit chubby!</span>"
 	//no lose_text cause why would there be?
 
@@ -52,6 +57,7 @@
 	name = "Virile"
 	desc = "Either through higher quality sperms, more of them, or just being more horny, your impregnation chance will increase by 20-30%."
 	value = 0
+	category = CATEGORY_SEXUAL
 	medical_record_text = "Patient has a higher sperm count."
 	mob_trait = TRAIT_VIRILE
 	gain_text = "<span class='notice'>You feel more potent."
@@ -66,11 +72,11 @@
 	if(quirk_holder)
 		quirk_holder.impregchance -= ichange
 
-
 /datum/quirk/macrophile
 	name = "Macrophile"
 	desc = "You are attracted to larger people, and being stepped on by them."
 	value = 0
+	category = CATEGORY_SEXUAL
 	mob_trait = TRAIT_MACROPHILE
 	gain_text = "<span class='notice'>You feel attracted to people larger than you."
 	lose_text = "<span class='notice'>You feel less attracted to people larger than you."
@@ -79,6 +85,7 @@
 	name = "Microphile"
 	desc = "You are attracted to smaller people, and stepping on them."
 	value = 0
+	category = CATEGORY_SEXUAL
 	mob_trait = TRAIT_MICROPHILE
 	gain_text = "<span class='notice'>You feel attracted to people smaller than you."
 	lose_text = "<span class='notice'>You feel less attracted to people smaller than you."

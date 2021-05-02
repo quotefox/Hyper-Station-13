@@ -127,6 +127,7 @@
 	baseturfs = /turf/open/chasm/cloud
 	smooth = SMOOTH_FALSE
 	initial_gas_mix = FROZEN_ATMOS
+	density = FALSE
 
 /turf/open/chasm/cloud/Initialize()
 	. = ..()

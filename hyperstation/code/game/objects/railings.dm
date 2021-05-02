@@ -8,7 +8,7 @@
 	var/icon_modifier = "grey_"
 	icon_state = "grey_railing0"
 	
-	density = TRUE
+	density = FALSE
 	layer = 4
 	anchored = TRUE
 	flags_1 = ON_BORDER_1
