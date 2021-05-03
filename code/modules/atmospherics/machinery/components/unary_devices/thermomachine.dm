@@ -116,7 +116,7 @@
 	if(node)
 		node.atmosinit()
 		node.addMember(src)
-	SSair.add_to_rebuild_queue(src)
+	build_network()
 	return TRUE
 
 /obj/machinery/atmospherics/components/unary/thermomachine/ui_status(mob/user)
