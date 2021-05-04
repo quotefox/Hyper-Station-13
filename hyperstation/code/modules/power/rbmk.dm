@@ -744,7 +744,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	transfer_access = ACCESS_CONSTRUCTION
 	network_destination = "rbmk monitoring system"
 	size = 2
-	tgui_id = "NtosRbmkStats"
+	tgui_id = "ntosrbmkstats"
 	ui_x = 350
 	ui_y = 550
 	var/active = TRUE //Easy process throttle
