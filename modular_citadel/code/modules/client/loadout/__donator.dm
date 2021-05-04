@@ -73,7 +73,7 @@
 	name = "Wedding Band"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/clothing/gloves/ring/luweth
-	ckeywhitelist = list("luweth")
+	ckeywhitelist = list("luweth", "archiebeepboop")
 
 /datum/gear/bluedice
 	name = "Blue D20"

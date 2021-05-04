@@ -10,6 +10,8 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 
 	var/list/quirks = list()		//Assoc. list of all roundstart quirk datum types; "name" = /path/
 	var/list/quirk_names_by_path = list()
+	var/list/quirk_categories = list()	//Hyper edit: Quirks are sorted by different categories
+	var/list/quirks_sorted = list()		//Hyper edit: Sort quirks by category then cost
 	var/list/quirk_points = list()	//Assoc. list of quirk names and their "point cost"; positive numbers are good traits, and negative ones are bad
 	var/list/quirk_objects = list()	//A list of all quirk objects in the game, since some may process
 	var/list/quirk_blacklist = list() //A list a list of quirks that can not be used with each other. Format: list(quirk1,quirk2),list(quirk3,quirk4)
@@ -17,7 +19,15 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 /datum/controller/subsystem/processing/quirks/Initialize(timeofday)
 	if(!quirks.len)
 		SetupQuirks()
-		quirk_blacklist = list(list("Blind","Nearsighted"),list("Jolly","Depression","Hypersensitive"),list("Ageusia","Vegetarian","Deviant Tastes"),list("Ananas Affinity","Ananas Aversion"),list("Alcohol Tolerance","Light Drinker"),list("Prosthetic Limb (Left Arm)","Prosthetic Limb (Right Arm)","Prosthetic Limb (Left Leg)","Prosthetic Limb (Right Leg)","Prosthetic Limb"),list("Social Anxiety","Mute"))
+		quirk_blacklist = list(
+			list("Blind","Nearsighted"),
+			list("Jolly","Depression","Hypersensitive"),
+			list("Ageusia","Vegetarian","Deviant Tastes"),
+			list("Ananas Affinity","Ananas Aversion"),
+			list("Alcohol Tolerance","Light Drinker"),
+			list("Social Anxiety","Mute"),
+			list("Prosthetic Limb (Left Arm)","Prosthetic Limb (Right Arm)","Prosthetic Limb (Left Leg)","Prosthetic Limb (Right Leg)","Prosthetic Limb")
+			)
 	return ..()
 
 /datum/controller/subsystem/processing/quirks/proc/SetupQuirks()
@@ -29,6 +39,24 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		quirks[initial(T.name)] = T
 		quirk_points[initial(T.name)] = initial(T.value)
 		quirk_names_by_path[T] = initial(T.name)
+		if(initial(T.category) != CATEGORY_UNCATEGORIZED)	//Hyperstation Edit: Categorized quirks
+			quirk_categories[initial(T.category)] = 1
+	SortQuirks()
+
+/datum/controller/subsystem/processing/quirks/proc/SortQuirks()	//Hyperstation edit: Categorized quirks
+	quirks_sorted = list()
+	quirk_categories = sortList(quirk_categories)
+	var/list/uncategorized = list()
+	for(var/C in quirk_categories)
+		quirks_sorted[C] = list()
+		for(var/V in quirks)	//These are already sorted by name and cost
+			var/datum/quirk/Q = quirks[V]
+			if(initial(Q.category) == C)
+				quirks_sorted[C] += initial(Q.name)
+			else if (initial(Q.category) == CATEGORY_UNCATEGORIZED)
+				uncategorized += initial(Q.name)
+	for(var/C in uncategorized)
+		quirks_sorted[CATEGORY_UNCATEGORIZED] += C
 
 /datum/controller/subsystem/processing/quirks/proc/AssignQuirks(mob/living/user, client/cli, spawn_effects, roundstart = FALSE, datum/job/job, silent = FALSE, mob/to_chat_target)
 	var/badquirk = FALSE
