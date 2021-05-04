@@ -4043,6 +4043,14 @@
 /obj/structure/gulag_beacon,
 /turf/open/floor/plasteel,
 /area/mine/laborcamp)
+"tB" = (
+/obj/effect/turf_decal/tile/bar,
+/obj/effect/turf_decal/tile/bar{
+	dir = 1
+	},
+/mob/living/simple_animal/babygoliath/Pebbles,
+/turf/open/floor/plasteel,
+/area/mine/production)
 "tC" = (
 /obj/machinery/status_display{
 	pixel_y = 32
@@ -19763,7 +19771,7 @@ dN
 dN
 aC
 ay
-ay
+tB
 ay
 GM
 bI
