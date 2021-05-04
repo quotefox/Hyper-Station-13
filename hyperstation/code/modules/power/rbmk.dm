@@ -229,7 +229,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		last_heat_delta = heat_delta
 		temperature += heat_delta
 		coolant_output.merge(coolant_input) //And now, shove the input into the output.
-		coolant_input.clear() //Clear out anything left in the input gate.
+		coolant_input.gases = list() //Clear out anything left in the input gate.
 		color = null
 	else
 		if(has_fuel())
@@ -238,7 +238,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			take_damage(10) //Just for the sound effect, to let you know you've fucked up.
 			color = "[COLOR_RED]"
 	//Now, heat up the output and set our pressure.
-	coolant_output.set_temperature(CELSIUS_TO_KELVIN(temperature)) //Heat the coolant output gas that we just had pass through us.
+	coolant_output.temperature = CELSIUS_TO_KELVIN(temperature) //Heat the coolant output gas that we just had pass through us.
 	last_output_temperature = KELVIN_TO_CELSIUS(coolant_output.return_temperature())
 	pressure = KPA_TO_PSI(coolant_output.return_pressure())
 	power = (temperature / RBMK_TEMPERATURE_CRITICAL) * 100
@@ -247,38 +247,38 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	gas_absorption_effectiveness = gas_absorption_constant
 	//Next up, handle moderators!
 	if(moderator_input.total_moles() >= minimum_coolant_level)
-		var/total_fuel_moles = moderator_input.get_moles(/datum/gas/plasma) + (moderator_input.get_moles(/datum/gas/tritium)*10) //Constricted plasma is 50% more efficient as fuel than plasma, but is harder to produce
-		var/power_modifier = max((moderator_input.get_moles(/datum/gas/oxygen) / moderator_input.total_moles() * 10), 1) //You can never have negative IPM. For now.
+		var/total_fuel_moles = moderator_input.gases[/datum/gas/plasma] + (moderator_input.gases[/datum/gas/tritium]*10) //Constricted plasma is 50% more efficient as fuel than plasma, but is harder to produce
+		var/power_modifier = max((moderator_input.gases[/datum/gas/oxygen] / moderator_input.total_moles() * 10), 1) //You can never have negative IPM. For now.
 		if(total_fuel_moles >= minimum_coolant_level) //You at least need SOME fuel.
 			var/power_produced = max((total_fuel_moles / moderator_input.total_moles() * 10), 1)
 			last_power_produced = max(0,((power_produced*power_modifier)*moderator_input.total_moles()))
 			last_power_produced *= (power/100) //Aaaand here comes the cap. Hotter reactor => more power.
 			last_power_produced *= base_power_modifier //Finally, we turn it into actual usable numbers.
-			radioactivity_spice_multiplier += moderator_input.get_moles(/datum/gas/tritium) / 5 //Chernobyl 2.
+			radioactivity_spice_multiplier += moderator_input.gases[/datum/gas/tritium] / 5 //Chernobyl 2.
 			var/turf/T = get_turf(src)
 			if(power >= 20)
-				coolant_output.adjust_moles(/datum/gas/nitryl, total_fuel_moles/50) //Shove out nitryl into the air when it's fuelled. You need to filter this off, or you're gonna have a bad time.
+				coolant_output.gases[/datum/gas/nitryl] += total_fuel_moles/50 //Shove out nitryl into the air when it's fuelled. You need to filter this off, or you're gonna have a bad time.
 			var/obj/structure/cable/C = T.get_cable_node()
 			if(!C || !C.powernet)
 				return
 			else
 				C.powernet.newavail += last_power_produced
-		var/total_control_moles = moderator_input.get_moles(/datum/gas/nitrogen) + (moderator_input.get_moles(/datum/gas/carbon_dioxide)*2) + (moderator_input.get_moles(/datum/gas/pluoxium)*3) //N2 helps you control the reaction at the cost of making it absolutely blast you with rads. Pluoxium has the same effect but without the rads!
+		var/total_control_moles = moderator_input.gases[/datum/gas/nitrogen] + (moderator_input.gases[/datum/gas/carbon_dioxide]*2) + (moderator_input.gases[/datum/gas/pluoxium]*3) //N2 helps you control the reaction at the cost of making it absolutely blast you with rads. Pluoxium has the same effect but without the rads!
 		if(total_control_moles >= minimum_coolant_level)
 			var/control_bonus = total_control_moles / 250 //1 mol of n2 -> 0.002 bonus control rod effectiveness, if you want a super controlled reaction, you'll have to sacrifice some power.
 			control_rod_effectiveness = initial(control_rod_effectiveness) + control_bonus
-			radioactivity_spice_multiplier += moderator_input.get_moles(/datum/gas/nitrogen) / 25 //An example setup of 50 moles of n2 (for dealing with spent fuel) leaves us with a radioactivity spice multiplier of 3.
-			radioactivity_spice_multiplier += moderator_input.get_moles(/datum/gas/carbon_dioxide) / 12.5
-		var/total_permeability_moles = moderator_input.get_moles(/datum/gas/bz) + (moderator_input.get_moles(/datum/gas/water_vapor)*2) + (moderator_input.get_moles(/datum/gas/hypernoblium)*10)
+			radioactivity_spice_multiplier += moderator_input.gases[/datum/gas/nitrogen] / 25 //An example setup of 50 moles of n2 (for dealing with spent fuel) leaves us with a radioactivity spice multiplier of 3.
+			radioactivity_spice_multiplier += moderator_input.gases[/datum/gas/carbon_dioxide] / 12.5
+		var/total_permeability_moles = moderator_input.gases[/datum/gas/bz] + (moderator_input.gases[/datum/gas/water_vapor]*2) + (moderator_input.gases[/datum/gas/hypernoblium]*10)
 		if(total_permeability_moles >= minimum_coolant_level)
 			var/permeability_bonus = total_permeability_moles / 500
 			gas_absorption_effectiveness = gas_absorption_constant + permeability_bonus
-		var/total_degradation_moles = moderator_input.get_moles(/datum/gas/nitryl) //Because it's quite hard to get.
+		var/total_degradation_moles = moderator_input.gases[/datum/gas/nitryl] //Because it's quite hard to get.
 		if(total_degradation_moles >= minimum_coolant_level*0.5) //I'll be nice.
 			depletion_modifier += total_degradation_moles / 15 //Oops! All depletion. This causes your fuel rods to get SPICY.
 			playsound(src, pick('hyperstation/sound/machines/sm/accent/normal/1.ogg','hyperstation/sound/machines/sm/accent/normal/2.ogg','hyperstation/sound/machines/sm/accent/normal/3.ogg','hyperstation/sound/machines/sm/accent/normal/4.ogg','hyperstation/sound/machines/sm/accent/normal/5.ogg'), 100, TRUE)
 		//From this point onwards, we clear out the remaining gasses.
-		moderator_input.clear() //Woosh. And the soul is gone.
+		moderator_input.gases = list() //Woosh. And the soul is gone.
 		K += total_fuel_moles / 1000
 	var/fuel_power = 0 //So that you can't magically generate K with your control rods.
 	if(!has_fuel())  //Reactor must be fuelled and ready to go before we can heat it up boys.
@@ -435,9 +435,9 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	var/datum/gas_mixture/moderator_input = MODERATOR_INPUT_GATE
 	var/datum/gas_mixture/coolant_output = COOLANT_OUTPUT_GATE
 	var/turf/T = get_turf(src)
-	coolant_input.set_temperature(CELSIUS_TO_KELVIN(temperature)*2)
-	moderator_input.set_temperature(CELSIUS_TO_KELVIN(temperature)*2)
-	coolant_output.set_temperature(CELSIUS_TO_KELVIN(temperature)*2)
+	coolant_input.temperature = CELSIUS_TO_KELVIN(temperature)*2
+	moderator_input.temperature = CELSIUS_TO_KELVIN(temperature)*2
+	coolant_output.temperature = CELSIUS_TO_KELVIN(temperature)*2
 	T.assume_air(coolant_input)
 	T.assume_air(moderator_input)
 	T.assume_air(coolant_output)
