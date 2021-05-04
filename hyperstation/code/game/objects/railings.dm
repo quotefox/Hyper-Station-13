@@ -24,16 +24,30 @@
 	rad_insulation = RAD_VERY_LIGHT_INSULATION
 	rad_flags = RAD_PROTECT_CONTENTS
 	var/check = 0
+	var/static/list/freepass = typecacheof(list(
+		/obj/singularity,
+		/obj/effect/projectile,
+		/obj/effect/portal,
+		/obj/effect/abstract,
+		/obj/effect/hotspot,
+		/obj/effect/landmark,
+		/obj/effect/temp_visual,
+		/obj/effect/light_emitter/tendril,
+		/obj/effect/collapse,
+		/obj/effect/particle_effect/ion_trails,
+		/obj/effect/dummy/phased_mob,
+		/obj/effect/immovablerod
+		)) //Gotta make sure certain things can phase through it otherwise the railings also block them.
 
 /obj/structure/railing/CanPass(atom/movable/mover, turf/target)
-	if(istype(mover) && (mover.pass_flags & PASSGLASS))
+	if(istype(mover) && (mover.pass_flags & PASSGLASS) || is_type_in_typecache(mover, freepass))
 		return 1
 	if(get_dir(loc, target) == dir)
 		return 0
 	return 1
 
 /obj/structure/railing/CheckExit(atom/movable/O, turf/target)
-	if(istype(O) && (O.pass_flags & PASSGLASS))
+	if(istype(O) && (O.pass_flags & PASSGLASS) || is_type_in_typecache(O, freepass))
 		return 1
 	if(get_dir(O.loc, target) == dir)
 		return 0
