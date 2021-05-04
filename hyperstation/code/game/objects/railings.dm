@@ -7,13 +7,16 @@
 	icon = 'hyperstation/icons/obj/railings.dmi'
 	var/icon_modifier = "grey_"
 	icon_state = "grey_railing0"
-	
+
 	density = FALSE
 	layer = 4
 	anchored = TRUE
 	flags_1 = ON_BORDER_1
 	max_integrity = 250
 	var/heat_resistance = 800
+	var/health = 70
+	var/maxhealth = 70
+
 
 	resistance_flags = ACID_PROOF
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 100)
@@ -119,3 +122,40 @@
 						overlays += image ('hyperstation/icons/obj/railings.dmi', src, "[icon_modifier]mcorneroverlay", pixel_y = -32)
 					if (WEST)
 						overlays += image ('hyperstation/icons/obj/railings.dmi', src, "[icon_modifier]mcorneroverlay", pixel_y = 32)
+
+/obj/structure/railing/examine(mob/user)
+	. = ..()
+	if(health < maxhealth)
+		switch(health / maxhealth)
+			if(0.0 to 0.5)
+				. += "<span class='warning'>It looks severely damaged!</span>"
+			if(0.25 to 0.5)
+				. += "<span class='warning'>It looks damaged!</span>"
+			if(0.5 to 1.0)
+				. += "<span class='notice'>It has a few scrapes and dents.</span>"
+
+/obj/structure/railing/take_damage(amount)
+	health -= amount
+	if(health <= 0)
+		visible_message("<span class='warning'>\The [src] breaks down!</span>")
+		playsound(src, 'sound/effects/grillehit.ogg', 50, 1)
+		new /obj/item/stack/rods(get_turf(src))
+		qdel(src)
+
+/obj/structure/railing/MouseDrop_T(mob/living/M, mob/living/user)
+	if(!istype(user))
+		return
+	if(!isliving(user))
+		return
+
+	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
+
+	if(!do_after(user, 20))
+		return
+
+	if(get_turf(user) == get_turf(src))
+		usr.forceMove(get_step(src, src.dir))
+	else
+		usr.forceMove(get_turf(src))
+
+	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
