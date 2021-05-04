@@ -11,6 +11,9 @@
 	max_integrity = 300
 	var/content_overlays = FALSE //If this is true, the belt will gain overlays based on what it's holding
 	var/worn_overlays = FALSE //worn counterpart of the above.
+	equip_sound = 'sound/items/equip/toolbelt_equip.ogg'
+	drop_sound = 'sound/items/handling/toolbelt_drop.ogg'
+	pickup_sound =  'sound/items/handling/toolbelt_pickup.ogg'
 
 /obj/item/storage/belt/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] begins belting [user.p_them()]self with \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -61,7 +64,12 @@
 		/obj/item/clothing/gloves,
 		/obj/item/holosign_creator,
 		/obj/item/forcefield_projector,
-		/obj/item/assembly/signaler
+		/obj/item/assembly/signaler,
+		/obj/item/carpentry/handsaw,
+		/obj/item/carpentry/hammer,
+		/obj/item/carpentry/sandpaper,
+		/obj/item/carpentry/borer,
+		/obj/item/carpentry/glue
 		))
 	STR.can_hold = can_hold
 
@@ -232,6 +240,7 @@
 	desc = "Holds a variety of gear for \"alternative\" peacekeeping."
 	icon_state = "slutbelt"
 	item_state = "slut"
+	price = 5
 
 obj/item/storage/belt/slut/ComponentInitialize()
 	. = ..()
@@ -364,6 +373,12 @@ obj/item/storage/belt/slut/ComponentInitialize()
 	STR.can_hold = list(
 		/obj/item/clothing/mask/luchador
 		)
+
+/obj/item/storage/belt/cummerbund
+	name = "cummerbund" //I swear to god if you people aren't mature enough to handle this I'm just gonna call it a sash.
+	desc = "A pleated sash that pairs well with a suit jacket."
+	icon_state = "cummerbund"
+	item_state = "cummerbund"
 
 /obj/item/storage/belt/military
 	name = "chest rig"
@@ -873,29 +888,51 @@ obj/item/storage/belt/slut/ComponentInitialize()
 
 /obj/item/storage/belt/sabre/rapier/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(attack_type == PROJECTILE_ATTACK)
-		final_block_chance = 0 //To thin to block bullets
+		final_block_chance = 0 //Too thin to block bullets
 	return ..()
 
+/obj/item/storage/belt/sabre/chloesabre
+	name = "Ornate Sheath"
+	desc = "An ornate and rather sinister looking sabre sheathe."
+	icon = 'icons/obj/custom.dmi'
+	alternate_worn_icon = 'icons/mob/custom_w.dmi'
+	icon_state = "darksheath"
+	item_state = "darksheath"
+	fitting_swords = list(/obj/item/toy/sword/chloesabre, /obj/item/melee/sabre, /obj/item/melee/baton/stunsword)
+	starting_sword = /obj/item/toy/sword/chloesabre
+
 /obj/item/storage/belt/botany
-	name = "botany belt"
-	desc = "A belt used to hold most janitorial supplies."
-	icon_state = "grenadebeltold" //reusing the old grenade belt sprite, can't go wrong.
-	item_state = "grenadebeltold"
+	name = "botanical belt"
+	desc = "A belt made for holding hydroponics supplies."
+	icon_state = "botanybelt"
+	item_state = "botanybelt"
+	content_overlays = TRUE
+
+/obj/item/storage/belt/botany/New()
+	if(prob(1))
+		new/obj/item/storage/belt/botany/fancy(loc)
+		qdel(src)
+	. = ..()
 
 /obj/item/storage/belt/botany/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 8
+	STR.max_items = 6
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.can_hold = typecacheof(list(
-		/obj/item/reagent_containers/glass/beaker,
-		/obj/item/reagent_containers/glass/bottle,
-		/obj/item/reagent_containers/syringe,
-		/obj/item/reagent_containers/spray,
-		/obj/item/disk/plantgene,
+		/obj/item/reagent_containers/spray/plantbgone,
+		/obj/item/plant_analyzer,
 		/obj/item/seeds,
-		/obj/item/shovel/spade,
+		/obj/item/reagent_containers/glass/bottle,
+		/obj/item/reagent_containers/glass/beaker,
 		/obj/item/cultivator,
+		/obj/item/reagent_containers/spray/pestspray,
 		/obj/item/hatchet,
-		/obj/item/plant_analyzer
-		))
+		/obj/item/shovel/spade,
+		/obj/item/gun/energy/floragun
+	))
+
+/obj/item/storage/belt/botany/fancy	//I like citadel's botany belt but I also wanna keep the default
+	desc = "A belt made for holding hydroponics supplies. Oddly enough, it's not green."
+	icon_state = "botanybelt_extra"
+	item_state = "botanybelt_extra"

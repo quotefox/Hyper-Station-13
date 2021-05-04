@@ -27,29 +27,30 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 
 //Human Overlays Indexes/////////
 //LOTS OF CIT CHANGES HERE. BE CAREFUL WHEN UPSTREAM ADDS MORE LAYERS
-#define MUTATIONS_LAYER			31		//mutations. Tk headglows, cold resistance glow, etc
-#define GENITALS_BEHIND_LAYER	30		//Some genitalia needs to be behind everything, such as with taurs (Taurs use body_behind_layer
-#define BODY_BEHIND_LAYER		29		//certain mutantrace features (tail when looking south) that must appear behind the body parts
-#define BODYPARTS_LAYER			28		//Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
-#define MARKING_LAYER			27		//Matrixed body markings because clashing with snouts?
-#define BODY_ADJ_LAYER			26		//certain mutantrace features (snout, body markings) that must appear above the body parts
-#define BODY_LAYER				25		//underwear, undershirts, socks, eyes, lips(makeup)
-#define FRONT_MUTATIONS_LAYER	24		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
-#define DAMAGE_LAYER			23		//damage indicators (cuts and burns)
-#define UNIFORM_LAYER			22
-#define ID_LAYER				21
-#define HANDS_PART_LAYER		20
-#define SHOES_LAYER				19
-#define GLOVES_LAYER			18
-#define EARS_LAYER				17
-#define BODY_TAUR_LAYER			16
-#define GENITALS_FRONT_LAYER	15
-#define SUIT_LAYER				14
-#define GLASSES_LAYER			13
-#define BELT_LAYER				12		//Possible make this an overlay of somethign required to wear a belt?
-#define SUIT_STORE_LAYER		11
-#define NECK_LAYER				10
-#define BACK_LAYER				9
+#define MUTATIONS_LAYER			32		//mutations. Tk headglows, cold resistance glow, etc
+#define GENITALS_BEHIND_LAYER	31		//Some genitalia needs to be behind everything, such as with taurs (Taurs use body_behind_layer
+#define BODY_BEHIND_LAYER		30		//certain mutantrace features (tail when looking south) that must appear behind the body parts
+#define BODYPARTS_LAYER			29		//Initially "AUGMENTS", this was repurposed to be a catch-all bodyparts flag
+#define MARKING_LAYER			28		//Matrixed body markings because clashing with snouts?
+#define BODY_ADJ_LAYER			27		//certain mutantrace features (snout, body markings) that must appear above the body parts
+#define BODY_LAYER				26		//underwear, undershirts, socks, eyes, lips(makeup)
+#define FRONT_MUTATIONS_LAYER	25		//mutations that should appear above body, body_adj and bodyparts layer (e.g. laser eyes)
+#define DAMAGE_LAYER			24		//damage indicators (cuts and burns)
+#define UNIFORM_LAYER			23
+#define ID_LAYER				22
+#define HANDS_PART_LAYER		21
+#define SHOES_LAYER				20
+#define GLOVES_LAYER			19
+#define EARS_LAYER				18
+#define BODY_TAUR_LAYER			17
+#define GENITALS_UNDER_LAYER	16
+#define SUIT_LAYER				15
+#define GLASSES_LAYER			14
+#define BELT_LAYER				13		//Possible make this an overlay of somethign required to wear a belt?
+#define SUIT_STORE_LAYER		12
+#define NECK_LAYER				11
+#define BACK_LAYER				10
+#define GENITALS_FRONT_LAYER	9
 #define HAIR_LAYER				8		//TODO: make part of head layer?
 #define FACEMASK_LAYER			7
 #define HEAD_LAYER				6
@@ -58,7 +59,7 @@ Will print: "/mob/living/carbon/human/death" (you can optionally embed it in a s
 #define HANDS_LAYER				3
 #define BODY_FRONT_LAYER		2
 #define FIRE_LAYER				1		//If you're on fire
-#define TOTAL_LAYERS			31		//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
+#define TOTAL_LAYERS			32		//KEEP THIS UP-TO-DATE OR SHIT WILL BREAK ;_;
 
 //Human Overlay Index Shortcuts for alternate_worn_layer, layers
 //Because I *KNOW* somebody will think layer+1 means "above"
@@ -259,6 +260,16 @@ GLOBAL_LIST_INIT(pda_styles, list(MONO, VT, ORBITRON, SHARE))
 
 GLOBAL_LIST_INIT(pda_reskins, list(PDA_SKIN_CLASSIC = 'icons/obj/pda.dmi', PDA_SKIN_ALT = 'icons/obj/pda_alt.dmi',
 								PDA_SKIN_RUGGED = 'icons/obj/pda_rugged.dmi', PDA_SKIN_MODERN = 'icons/obj/pda_modern.dmi'))
+
+//zippo icon reskins
+#define ZIPPO_SKIN_PLAIN "Plain"
+#define ZIPPO_SKIN_DAME "Dame"
+#define ZIPPO_SKIN_THIRTEEN "Thirteen"
+#define ZIPPO_SKIN_SNAKE "Snake"
+
+GLOBAL_LIST_INIT(lighter_reskins, list(ZIPPO_SKIN_PLAIN = "plain", ZIPPO_SKIN_DAME = "dame",
+								ZIPPO_SKIN_THIRTEEN = "thirteen", ZIPPO_SKIN_SNAKE = "snake"))
+
 
 /////////////////////////////////////
 // atom.appearence_flags shortcuts //
@@ -477,6 +488,11 @@ GLOBAL_LIST_INIT(pda_reskins, list(PDA_SKIN_CLASSIC = 'icons/obj/pda.dmi', PDA_S
 
 #define AREASELECT_CORNERA "corner A"
 #define AREASELECT_CORNERB "corner B"
+
+#define VARSET_FROM_LIST(L, V) if(L && L[#V]) V = L[#V]
+#define VARSET_FROM_LIST_IF(L, V, C...) if(L && L[#V] && (C)) V = L[#V]
+#define VARSET_TO_LIST(L, V) if(L) L[#V] = V
+#define VARSET_TO_LIST_IF(L, V, C...) if(L && (C)) L[#V] = V
 
 #define PREF_SAVELOAD_COOLDOWN 5
 

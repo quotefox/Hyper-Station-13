@@ -137,6 +137,15 @@
     name = "Gaping"
 
 //BREASTS BE HERE
+/datum/sprite_accessory/belly
+	icon = 'hyperstation/icons/obj/genitals/belly.dmi'
+	icon_state = "belly"
+	name = "belly"
+	gender_specific = 0
+	color_src = "belly_color"
+	locked = 0
+
+//BREASTS BE HERE
 /datum/sprite_accessory/breasts
 	icon = 'modular_citadel/icons/obj/genitals/breasts_onmob.dmi'
 	icon_state = null

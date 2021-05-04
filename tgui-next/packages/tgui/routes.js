@@ -19,7 +19,10 @@ import { CellularEmporium } from './interfaces/CellularEmporium';
 import { CentcomPodLauncher } from './interfaces/CentcomPodLauncher';
 import { ChemAcclimator } from './interfaces/ChemAcclimator';
 import { ChemDebugSynthesizer } from './interfaces/ChemDebugSynthesizer';
+import { ChemDispenser } from './interfaces/ChemDispenser';
 import { ChemFilter } from './interfaces/ChemFilter';
+import { ChemHeater } from './interfaces/ChemHeater';
+import { ChemMaster } from './interfaces/ChemMaster';
 import { ChemPress } from './interfaces/ChemPress';
 import { ChemReactionChamber } from './interfaces/ChemReactionChamber';
 import { ChemSplitter } from './interfaces/ChemSplitter';
@@ -86,8 +89,10 @@ import { TankDispenser } from './interfaces/TankDispenser';
 import { Teleporter } from './interfaces/Teleporter';
 import { ThermoMachine } from './interfaces/ThermoMachine';
 import { TurbineComputer } from './interfaces/TurbineComputer';
+import { Uplink } from './interfaces/Uplink';
 import { VaultController } from './interfaces/VaultController';
 import { Wires } from './interfaces/Wires';
+import { AtmosRelief } from './interfaces/AtmosRelief';
 
 const ROUTES = {
   achievements: {
@@ -128,6 +133,10 @@ const ROUTES = {
   },
   atmos_pump: {
     component: () => AtmosPump,
+    scrollable: false,
+  },
+  atmos_relief: {
+    component: () => AtmosRelief,
     scrollable: false,
   },
   bepis: {
@@ -174,8 +183,20 @@ const ROUTES = {
     component: () => ChemAcclimator,
     scrollable: false,
   },
+  chem_dispenser: {
+    component: () => ChemDispenser,
+    scrollable: true,
+  },
   chemical_filter: {
     component: () => ChemFilter,
+    scrollable: true,
+  },
+  chem_heater: {
+    component: () => ChemHeater,
+    scrollable: true,
+  },
+  chem_master: {
+    component: () => ChemMaster,
     scrollable: true,
   },
   chem_press: {
@@ -469,6 +490,11 @@ const ROUTES = {
   turbine_computer: {
     component: () => TurbineComputer,
     scrollable: false,
+  },
+  uplink: {
+    component: () => Uplink,
+    scrollable: true,
+    theme: 'syndicate',
   },
   vault_controller: {
     component: () => VaultController,

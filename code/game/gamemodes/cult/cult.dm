@@ -43,7 +43,7 @@
 	required_players = 30
 	required_enemies = 3
 	recommended_enemies = 5
-	enemy_minimum_age = 7
+	enemy_minimum_age = 28
 
 	announce_span = "cult"
 	announce_text = "Some crew members are trying to start a cult to Nar'Sie!\n\

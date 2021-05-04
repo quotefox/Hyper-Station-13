@@ -58,12 +58,12 @@
 //H13 custom body size and impregnation
 	var/custom_body_size = 100
 	var/breedable = 0
-	var/impregchance = 0
+	var/impregchance = 30
 //h13 noncon settings
 	var/Noncon = 0
 	var/ERP = 0
 
-	var/list/mob_biotypes = list(MOB_ORGANIC)
+	var/mob_biotypes = MOB_ORGANIC
 	var/metabolism_efficiency = 1 //more or less efficiency to metabolize helpful/harmful reagents and regulate body temperature..
 	var/has_limbs = 0 //does the mob have distinct limbs?(arms,legs, chest,head)
 

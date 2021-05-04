@@ -172,6 +172,14 @@
 	color = BLOOD_COLOR_BUG // Bug colored, I guess.
 	pH = 7.25
 
+/datum/reagent/blood/tomato
+	data = list("donor"=null,"viruses"=null,"blood_DNA"=null, "bloodcolor" = BLOOD_COLOR_HUMAN, "blood_type"="SY","resistances"=null,"trace_chem"=null,"mind"=null,"ckey"=null,"gender"=null,"real_name"=null,"cloneable"=null,"factions"=null)
+	name = "Tomato Blood"
+	description = "This highly resembles blood, but it doesnt actually function like it, resembling more ketchup, with a more blood-like consistency."
+	taste_description = "sap" //Like tree sap?
+	pH = 7.45
+	value = 0
+
 
 /datum/reagent/blood/jellyblood/on_mob_life(mob/living/carbon/M)
 	if(prob(10))
@@ -250,6 +258,7 @@
 	glass_name = "glass of water"
 	glass_desc = "The father of all refreshments."
 	shot_glass_icon_state = "shotglassclear"
+	hydration = 5
 
 /*
  *	Water reaction to turf
@@ -609,7 +618,7 @@
 			else
 				M.visible_message("<b>[M]</b> flexes [M.p_their()] arms.")
 	if(prob(10))
-		M.say(pick("Shit was SO cash.", "You are everything bad in the world.", "What sports do you play, other than 'jack off to naked drawn Japanese people?'", "Don’t be a stranger. Just hit me with your best shot.", "My name is John and I hate every single one of you."), forced = "spraytan")
+		M.say(pick("Shit was SO cash.", "You are everything bad in the world.", "What sports do you play, other than 'jack off to naked drawn Japanese people?'", "Don’t be a stranger. Just hit me with your best shot.", "My name is John and I hate every single one of you.", "I was captain of the football team, and starter on my basketball team.", "What the fuck did you just fucking say about me, you little bitch?", "I am trained in monkey warfare."), forced = "spraytan")
 	..()
 	return
 
@@ -783,7 +792,7 @@
 	..()
 	if(!istype(H))
 		return
-	if(!H.dna || !H.dna.species || !(MOB_ORGANIC in H.mob_biotypes))
+	if(!H.dna || !H.dna.species || !(MOB_ORGANIC & H.mob_biotypes))
 		return
 
 	if(isjellyperson(H))
@@ -1233,6 +1242,7 @@
 				var/mob/living/carbon/human/H = M
 				if(H.lip_style)
 					H.lip_style = null
+					H.nail_style = null
 					H.update_body()
 			for(var/obj/item/I in C.held_items)
 				SEND_SIGNAL(I, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
@@ -1606,15 +1616,20 @@
 	tox_prob = 15
 	pH = 1
 
+/datum/reagent/plantnutriment/endurogrow
+	name = "Enduro Grow"
+	description = "A specialized nutriment, which decreases product quantity and potency, but strengthens the plants endurance."
+	color = "#a06fa7" // RBG: 160, 111, 167
+	tox_prob = 15
 
-
-
-
+/datum/reagent/plantnutriment/liquidearthquake
+	name = "Liquid Earthquake"
+	description = "A specialized nutriment, which increases the plant's production speed, as well as its susceptibility to weeds."
+	color = "#912e00" // RBG: 145, 46, 0
+	tox_prob = 25
 
 
 // GOON OTHERS
-
-
 
 /datum/reagent/oil
 	name = "Oil"
@@ -2051,7 +2066,7 @@
 	color = "#AAAAAA55"
 	taste_description = "water"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
-	pH = 15
+	pH = 9.75
 
 /datum/reagent/pax/on_mob_metabolize(mob/living/L)
 	..()
@@ -2227,6 +2242,13 @@
 			if(prob(80))
 				M.adjustArousalLoss(3)
 	..()
+
+/datum/reagent/cellulose
+	name = "Cellulose Fibers"
+	description = "A crystaline polydextrose polymer, plants swear by this stuff."
+	reagent_state = SOLID
+	color = "#E6E6DA"
+	taste_mult = 0
 
 // Adding new mutation toxin stuff from /code/modules/reagent/chemistry/recipes/slime_extracts.dm
 //Some other stuff like moth and felinid ( /datum/reagent/mutationtoxin/moth and /datum/reagent/mutationtoxin/felinid ) already exists. - Chemlight

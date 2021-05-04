@@ -6560,10 +6560,10 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "amT" = (
-/obj/machinery/computer/prisoner,
 /obj/machinery/airalarm{
 	pixel_y = 22
 	},
+/obj/machinery/computer/prisoner/management,
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
 "amU" = (
@@ -9054,7 +9054,6 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "arR" = (
-/obj/machinery/computer/prisoner,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
@@ -9062,6 +9061,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
+/obj/machinery/computer/prisoner/management,
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "arS" = (
@@ -14718,9 +14718,8 @@
 /turf/open/floor/plasteel/white/side,
 /area/crew_quarters/dorms)
 "aDk" = (
-/obj/machinery/vr_sleeper{
-	dir = 8;
-	icon_state = "sleeper"
+/obj/machinery/cryopod{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 8
@@ -20166,7 +20165,6 @@
 	},
 /area/hallway/secondary/exit/departure_lounge)
 "aOh" = (
-/obj/structure/chair,
 /obj/machinery/light{
 	dir = 1
 	},
@@ -20176,6 +20174,9 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
+	},
+/obj/machinery/atm{
+	pixel_y = 30
 	},
 /turf/open/floor/plasteel{
 	heat_capacity = 1e+006
@@ -25502,9 +25503,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
-	pixel_y = 30
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -25514,6 +25512,9 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+	},
+/obj/machinery/atm{
+	pixel_y = 30
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/bar)
@@ -41965,6 +41966,9 @@
 /obj/effect/turf_decal/tile/purple{
 	dir = 4
 	},
+/obj/machinery/atm{
+	pixel_y = 30
+	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
 "bHn" = (
@@ -53372,9 +53376,7 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/dorms)
 "coo" = (
-/obj/machinery/atmospherics/pipe/simple/supply/hidden{
-	dir = 5
-	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden,
 /obj/machinery/airalarm{
 	dir = 1;
 	pixel_y = -22
@@ -56851,13 +56853,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/maintenance/disposal)
-"dbi" = (
-/obj/machinery/vr_sleeper{
-	dir = 8;
-	icon_state = "sleeper"
-	},
-/turf/open/floor/plasteel,
-/area/crew_quarters/dorms)
 "dci" = (
 /obj/structure/rack,
 /obj/item/gun/energy/laser/practice,
@@ -58574,6 +58569,13 @@
 /obj/structure/grille,
 /turf/open/space/basic,
 /area/space/nearstation)
+"gZw" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/atm{
+	pixel_y = 30
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "heC" = (
 /obj/machinery/power/apc/highcap/five_k{
 	dir = 8;
@@ -59576,6 +59578,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/department/crew_quarters/dorms)
+"jKu" = (
+/obj/machinery/atm{
+	pixel_y = 30
+	},
+/turf/open/floor/plasteel/dark,
+/area/chapel/main/monastery)
 "jLW" = (
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
 /turf/closed/wall/r_wall,
@@ -59773,6 +59781,20 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/department/crew_quarters/dorms)
+"kks" = (
+/obj/machinery/atmospherics/pipe/simple/cyan/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/machinery/atm{
+	pixel_y = 30
+	},
+/turf/open/floor/plasteel/white/corner{
+	dir = 1
+	},
+/area/hallway/secondary/entry)
 "kkQ" = (
 /obj/machinery/vending/cola/pwr_game,
 /turf/open/floor/plating{
@@ -61159,6 +61181,21 @@
 	},
 /turf/open/floor/plating,
 /area/science/xenobiology)
+"nFk" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/machinery/atm{
+	pixel_y = 30
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/central)
 "nGi" = (
 /obj/structure/chair{
 	dir = 4
@@ -63391,6 +63428,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
+"tcR" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atm{
+	pixel_y = 30
+	},
+/turf/open/floor/plasteel,
+/area/hallway/secondary/entry)
 "tcY" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -82038,7 +82084,7 @@ bOw
 bQg
 bQe
 bWV
-bXJ
+jKu
 bXJ
 bZm
 bYB
@@ -84805,7 +84851,7 @@ aIC
 pvK
 aKD
 gmO
-aQt
+aHz
 aOh
 aWK
 aRE
@@ -86359,7 +86405,7 @@ azW
 abG
 aHz
 aYG
-aZA
+kks
 aGp
 bbR
 bbR
@@ -86371,7 +86417,7 @@ aaa
 aaa
 aaa
 aYG
-bbR
+tcR
 bbR
 aJu
 baK
@@ -93538,7 +93584,7 @@ aEz
 aFx
 aGk
 awR
-aHQ
+nFk
 aIO
 aJO
 aKT
@@ -103812,7 +103858,7 @@ aym
 awr
 aAO
 aBP
-com
+coo
 apX
 aET
 aaH
@@ -104326,9 +104372,9 @@ ayn
 azv
 col
 aBR
-coo
+bns
 apX
-aGV
+gZw
 aDZ
 aGD
 aDZ
@@ -105609,8 +105655,8 @@ fIu
 rTZ
 aIh
 azA
-dbi
-dbi
+rTZ
+rTZ
 aDk
 aEd
 aFb

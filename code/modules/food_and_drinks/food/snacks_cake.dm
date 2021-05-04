@@ -119,7 +119,7 @@
 	slices_num = 5
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 10)
 	tastes = list("cake" = 5, "sweetness" = 2, "unbearable sourness" = 2)
-	foodtype = GRAIN | DAIRY | FRUIT | SUGAR
+	foodtype = GRAIN | DAIRY | FRUIT | SUGAR | ANTITOXIC
 
 /obj/item/reagent_containers/food/snacks/cakeslice/lime
 	name = "lime cake slice"
@@ -127,7 +127,7 @@
 	icon_state = "limecake_slice"
 	filling_color = "#00FF00"
 	tastes = list("cake" = 5, "sweetness" = 2, "unbearable sourness" = 2)
-	foodtype = GRAIN | DAIRY | FRUIT | SUGAR
+	foodtype = GRAIN | DAIRY | FRUIT | SUGAR | ANTITOXIC
 
 /obj/item/reagent_containers/food/snacks/store/cake/lemon
 	name = "lemon cake"

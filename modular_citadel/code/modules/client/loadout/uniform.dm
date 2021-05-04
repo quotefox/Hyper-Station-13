@@ -49,6 +49,7 @@
 	path = /obj/item/clothing/under/lawyer/galaxy_blue
 	cost = 3
 
+
 /datum/gear/galaxy_r
 	name = "Pulsar Gonne"
 	category = SLOT_W_UNIFORM
@@ -193,7 +194,7 @@
 // Pantsless Sweaters
 
 /datum/gear/turtleneck
-	name = "Tactitool Turtleneck"
+	name = "Tactifool Turtleneck"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/syndicate/cosmetic
 
@@ -411,38 +412,45 @@
 	name = "Gear Harness"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/gear_harness
+	blacklist_join_equip = TRUE
 
 /datum/gear/pinkstripper
 	name = "Pink stripper outfit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/stripper_pink
+	blacklist_join_equip = TRUE
 
 /datum/gear/greenstripper
 	name = "Green stripper outfit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/stripper_green
+	blacklist_join_equip = TRUE
 
 /datum/gear/polybikini
 	name = "Polychromic Bikini"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/bikini
 	cost = 2
+	blacklist_join_equip = TRUE
 
 /datum/gear/polystripper
 	name = "Polychromic Stripper Outfit"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/stripper
 	cost = 2
+	blacklist_join_equip = TRUE
 
 /datum/gear/polypantsu
 	name = "Polychromic Panties"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/shortpants/pantsu
+	blacklist_join_equip = TRUE
 
 /datum/gear/polybulge
 	name = "Polychromic Voluminous Thong"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/bulge
+	blacklist_join_equip = TRUE
 
 /datum/gear/polybottomless
 	name = "Polychromic Bottomless Shirt"
@@ -450,23 +458,25 @@
 	path = /obj/item/clothing/under/polychromic/bottomless
 	cost = 2
 
-/datum/gear/corset
-	name = "Corset"
+/datum/gear/polysweatervirgin
+	name = "Polychromic Virginkiller Sweater"
 	category = SLOT_W_UNIFORM
-	path = /obj/item/clothing/under/corset
-	cost = 1
+	path = /obj/item/clothing/under/polychromic/vsweater
+	cost = 2
 
 /datum/gear/corset
 	name = "Corset"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/corset
 	cost = 1
+	blacklist_join_equip = TRUE
 
 /datum/gear/shortsbra
 	name = "Kromatic Shorts and Top"
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/polychromic/shortsbra
 	cost = 1
+	blacklist_join_equip = TRUE
 
 /datum/gear/gladiator
 	name = "Gladiator uniform"
@@ -479,3 +489,10 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/roman
 	cost = 1
+
+/datum/gear/greenplaidshirt
+	name = "plaid green shirt"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/greenplaidshirt
+	cost = 1
+	ckeywhitelist = list("chemlight")

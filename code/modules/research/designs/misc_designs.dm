@@ -491,17 +491,17 @@
 	materials = list(MAT_METAL = MINERAL_MATERIAL_AMOUNT, MAT_GLASS = MINERAL_MATERIAL_AMOUNT)  // costs more than what it did in the autolathe, this one comes loaded.
 	build_path = /obj/item/construction/rcd/loaded
 	category = list("Equipment")
-	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
 
-/datum/design/rpd
+/datum/design/rpd_loaded
 	name = "Rapid Pipe Dispenser (RPD)"
 	desc = "A tool that can construct and deconstruct pipes on the fly."
-	id = "rpd"
+	id = "rpd_loaded"
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 75000, MAT_GLASS = 37500)
+	materials = list(MAT_METAL = 70000, MAT_GLASS = 37500)
 	build_path = /obj/item/pipe_dispenser
 	category = list("Equipment")
-	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
 
 /datum/design/alienwrench
 	name = "Alien Wrench"

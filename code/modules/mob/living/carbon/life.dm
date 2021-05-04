@@ -78,7 +78,7 @@
 			if(HAS_TRAIT(B, TRAIT_CHOKE_SLUT))
 				B.adjustArousalLoss(7)
 				if (B.getArousalLoss() >= 100 && ishuman(B) && B.has_dna())
-					B.mob_climax(forced_climax=TRUE)	
+					B.mob_climax(forced_climax=TRUE)
 			else
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "suffocation", /datum/mood_event/suffocation)
 		else
@@ -285,6 +285,27 @@
 		var/nitryl_partialpressure = (breath_gases[/datum/gas/nitryl]/breath.total_moles())*breath_pressure
 		adjustFireLoss(nitryl_partialpressure/4)
 
+	//PHEROMONE
+	if(breath_gases[/datum/gas/pheromone])
+		var/pheromone_partialpressure = (breath_gases[/datum/gas/pheromone]/breath.total_moles())*breath_pressure
+		if(pheromone_partialpressure > MINIMUM_MOLES_DELTA_TO_MOVE)
+
+			//pheromone side effects
+			switch(pheromone_partialpressure)
+				if(1 to 5)
+					// At lower pp, give out a little warning
+					SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "smell")
+					if(prob(5))
+						to_chat(src, "<span class='notice'>There is an entracing smell in the air.</span>")
+				if(5 to 20)
+					//At somewhat higher pp, warning becomes more obvious
+					if(prob(15))
+						to_chat(src, "<span class='warning'>You smell something enticing inside this room.</span>")
+				if(15 to INFINITY)
+					//Small chance to vomit. By now, people have internals on anyway
+					if(prob(5))
+						to_chat(src, "<span class='warning'>The enticing smell is unbearable!</span>")
+
 	//MIASMA
 	if(breath_gases[/datum/gas/miasma])
 		var/miasma_partialpressure = (breath_gases[/datum/gas/miasma]/breath.total_moles())*breath_pressure
@@ -372,7 +393,7 @@
 		return
 
 	// Also no decay if corpse chilled or not organic/undead
-	if(bodytemperature <= T0C-10 || (!(MOB_ORGANIC in mob_biotypes) && !(MOB_UNDEAD in mob_biotypes)))
+	if(bodytemperature <= T0C-10 || (!(MOB_ORGANIC & mob_biotypes) && !(MOB_UNDEAD & mob_biotypes)))
 		return
 
 	// Wait a bit before decaying
@@ -407,7 +428,7 @@
 			if(O)
 				O.on_life()
 	else
-		if(reagents.has_reagent("formaldehyde", 1)) // No organ decay if the body contains formaldehyde.
+		if(reagents.has_reagent(/datum/reagent/toxin/formaldehyde, 1)) // No organ decay if the body contains formaldehyde.
 			return
 		for(var/V in internal_organs)
 			var/obj/item/organ/O = V
@@ -520,7 +541,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 /mob/living/carbon/handle_status_effects()
 	..()
 	if(getStaminaLoss() && !combatmode)//CIT CHANGE - prevents stamina regen while combat mode is active
-		adjustStaminaLoss(resting ? (recoveringstam ? -7.5 : -3) : -1.5)//CIT CHANGE - decreases adjuststaminaloss to stop stamina damage from being such a joke
+		adjustStaminaLoss(resting ? (recoveringstam ? -7.5 : -3) : -1.5)
 
 	if(!recoveringstam && incomingstammult != 1)
 		incomingstammult = max(0.01, incomingstammult)

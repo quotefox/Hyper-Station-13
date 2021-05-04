@@ -169,6 +169,7 @@
 	cold_protection = CHEST|LEGS|ARMS
 	heat_protection = CHEST|LEGS|ARMS
 	mutantrace_variation = NO_MUTANTRACE_VARIATION //you don't need it
+	price = 5
 
 //Surgeon
 /obj/item/clothing/suit/apron/surgical

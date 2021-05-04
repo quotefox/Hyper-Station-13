@@ -4,6 +4,7 @@
 	var/name = "Test Quirk"
 	var/desc = "This is a test quirk."
 	var/value = 0
+	var/category = "Uncategorized"	//Hyper change: Sort quirks into categories
 	var/human_only = TRUE
 	var/gain_text
 	var/lose_text

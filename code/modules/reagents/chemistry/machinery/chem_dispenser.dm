@@ -270,7 +270,7 @@
 			if(!is_operational() || recording_recipe)
 				return
 			var/amount = text2num(params["amount"])
-			if(beaker && amount in beaker.possible_transfer_amounts)
+			if(beaker && (amount in beaker.possible_transfer_amounts))
 				beaker.reagents.remove_all(amount)
 				work_animation()
 				. = TRUE
@@ -408,7 +408,7 @@
 	if(beaker)
 		var/obj/item/reagent_containers/B = beaker
 		B.forceMove(drop_location())
-		if(user && Adjacent(user) && !issiliconoradminghost(user))
+		if(user && Adjacent(user) && user.can_hold_items())
 			user.put_in_hands(B)
 	if(new_beaker)
 		beaker = new_beaker
@@ -426,10 +426,9 @@
 
 /obj/machinery/chem_dispenser/AltClick(mob/living/user)
 	. = ..()
-	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
-		return
-	replace_beaker(user)
-	return TRUE
+	if(istype(user) && user.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		replace_beaker(user)
+		return TRUE
 
 /obj/machinery/chem_dispenser/drinks/Initialize()
 	. = ..()
@@ -466,7 +465,7 @@
 	has_panel_overlay = FALSE
 	amount = 10
 	pixel_y = 6
-	layer = WALL_OBJ_LAYER
+	layer = 4
 	circuit = /obj/item/circuitboard/machine/chem_dispenser/drinks
 	working_state = null
 	nopower_state = null
@@ -488,7 +487,6 @@
 		/datum/reagent/consumable/pwr_game,
 		/datum/reagent/consumable/shamblers,
 		/datum/reagent/consumable/sugar,
-		/datum/reagent/consumable/applejuice,
 		/datum/reagent/consumable/pineapplejuice,
 		/datum/reagent/consumable/orangejuice,
 		/datum/reagent/consumable/grenadine,
@@ -498,18 +496,23 @@
 		/datum/reagent/consumable/menthol
 	)
 	upgrade_reagents = list(
-		/datum/reagent/drug/mushroomhallucinogen,
-		/datum/reagent/consumable/nothing,
-		/datum/reagent/medicine/cryoxadone,
-		/datum/reagent/consumable/vanilla,
-		/datum/reagent/consumable/peachjuice
-	)
-	upgrade_reagents2 = list(
 		/datum/reagent/consumable/banana,
 		/datum/reagent/consumable/berryjuice,
 		/datum/reagent/consumable/strawberryjuice
 	)
-	upgrade_reagents3 = null
+	upgrade_reagents2 = list(
+		/datum/reagent/consumable/applejuice,
+		/datum/reagent/consumable/carrotjuice,
+		/datum/reagent/consumable/pumpkinjuice,
+		/datum/reagent/consumable/watermelonjuice
+	)
+	upgrade_reagents3 = list(
+		/datum/reagent/drug/mushroomhallucinogen,
+		/datum/reagent/consumable/nothing,
+		/datum/reagent/medicine/cryoxadone,
+		/datum/reagent/consumable/peachjuice,
+		/datum/reagent/consumable/vanilla
+	)
 	emagged_reagents = list(
 		/datum/reagent/consumable/ethanol/thirteenloko,
 		/datum/reagent/consumable/ethanol/changelingsting,
@@ -556,9 +559,9 @@
 		/datum/reagent/consumable/ethanol/ale,
 		/datum/reagent/consumable/ethanol/absinthe,
 		/datum/reagent/consumable/ethanol/hcider,
-		/datum/reagent/consumable/ethanol/creme_de_coconut,
 		/datum/reagent/consumable/ethanol/creme_de_menthe,
 		/datum/reagent/consumable/ethanol/creme_de_cacao,
+		/datum/reagent/consumable/ethanol/creme_de_coconut,
 		/datum/reagent/consumable/ethanol/triple_sec,
 		/datum/reagent/consumable/ethanol/sake,
 		/datum/reagent/consumable/ethanol/applejack
@@ -624,7 +627,7 @@
 		/datum/reagent/ammonia,
 		/datum/reagent/ash,
 		/datum/reagent/diethylamine)
-	//same as above.
+		//same as above.
 	upgrade_reagents = null
 	upgrade_reagents2 = null
 	upgrade_reagents3 = null

@@ -20,7 +20,7 @@
 	bonus_reagents = list(/datum/reagent/medicine/omnizine = 2, /datum/reagent/consumable/nutriment/vitamin = 6)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/medicine/omnizine = 8, /datum/reagent/consumable/nutriment/vitamin = 6)
 	tastes = list("leaves" = 1)
-	foodtype = VEGETABLES
+	foodtype = VEGETABLES | ANTITOXIC
 
 /obj/item/reagent_containers/food/snacks/salad/herbsalad
 	name = "herb salad"
@@ -38,7 +38,7 @@
 	bonus_reagents = list(/datum/reagent/consumable/doctor_delight = 5, /datum/reagent/consumable/nutriment/vitamin = 4)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 8, /datum/reagent/consumable/doctor_delight = 5, /datum/reagent/consumable/nutriment/vitamin = 2)
 	tastes = list("leaves" = 1, "potato" = 1, "meat" = 1, "valids" = 1)
-	foodtype = VEGETABLES | MEAT | FRIED | JUNKFOOD | FRUIT
+	foodtype = VEGETABLES | MEAT | FRIED | JUNKFOOD | FRUIT | ANTITOXIC
 
 /obj/item/reagent_containers/food/snacks/salad/oatmeal
 	name = "oatmeal"
@@ -116,3 +116,12 @@
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 4)
 	tastes = list("rice" = 1, "egg" = 1)
 	foodtype = GRAIN | MEAT //EGG = MEAT -NinjaNomNom 2017
+
+/obj/item/reagent_containers/food/snacks/salad/hellcobb
+	name = "hell cobb salad"
+	desc = "If you're being honest with yourself it's just a bowl of mushrooms with chunks of meat and an egg."
+	icon_state = "hellcobb"
+	trash = /obj/item/reagent_containers/glass/bowl/mushroom_bowl
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 4)
+	tastes = list("fruity cactus" = 5, "ash" = 1, "tough meat" = 3, "your eternal damnation" = 1)
+	foodtype = FRUIT | MEAT | VEGETABLES //MUSHROOM = VEGETABLE -VladinXXV 2021

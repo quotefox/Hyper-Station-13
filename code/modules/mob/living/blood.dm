@@ -35,7 +35,7 @@
 
 	if(bleed_rate < 0)
 		bleed_rate = 0
-	
+
 	if(HAS_TRAIT(src, TRAIT_NOMARROW)) //Bloodsuckers don't need to be here.
 		return
 
@@ -60,6 +60,8 @@
 			if(satiety > 80)
 				nutrition_ratio *= 1.25
 			nutrition = max(0, nutrition - nutrition_ratio * HUNGER_FACTOR)
+			if(!HAS_TRAIT(src, TRAIT_NOTHIRST))
+				thirst = max(0, thirst - THIRST_FACTOR)		//After 2 seconds of research, I learned that you get quite thirsty when at low blood levels
 			blood_volume = min((BLOOD_VOLUME_NORMAL * blood_ratio), blood_volume + 0.5 * nutrition_ratio)
 
 		//Effects of bloodloss

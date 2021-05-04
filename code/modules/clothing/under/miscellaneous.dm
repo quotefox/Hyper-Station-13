@@ -119,14 +119,12 @@
 	item_state = "g_suit"
 	item_color = "officer"
 	alt_covers_chest = TRUE
-	roomy = TRUE
 /obj/item/clothing/under/rank/centcom_commander
 	desc = "It's a jumpsuit worn by CentCom's highest-tier Commanders, adorned with a golden K and a star. signifying work under Kinaris."
 	name = "\improper CentCom Commander's jumpsuit"
 	icon_state = "centcom"
 	item_state = "dg_suit"
 	item_color = "centcom"
-	roomy = TRUE
 /obj/item/clothing/under/rank/centcom_officer/skirt
 	name = "\improper CentCom Officer's jumpskirt"
 	desc = "It's a jumpskirt worn by CentCom's officials, adorned with a golden K and a star, signifying work under Kinaris."
@@ -136,7 +134,6 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	fitted = FEMALE_UNIFORM_TOP
 	can_adjust = FALSE
-	roomy = TRUE
 /obj/item/clothing/under/space
 	name = "\improper NASA jumpsuit"
 	desc = "It has a NASA logo on it and is made of space-proofed materials."
@@ -169,7 +166,6 @@
 	max_heat_protection_temperature = SPACE_SUIT_MAX_TEMP_PROTECT
 	can_adjust = FALSE
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	roomy = TRUE
 /obj/item/clothing/under/owl
 	name = "owl uniform"
 	desc = "A soft brown jumpsuit made of synthetic feathers and strong conviction."
@@ -790,3 +786,43 @@
 	can_adjust = FALSE
 	fitted = FEMALE_UNIFORM_TOP
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+//Chemlight the dumb dog was here
+/obj/item/clothing/under/greenplaidshirt
+	name = "plaid green shirt"
+	desc = "A pair of khaki pants and a green shirt with a plaid open button shirt, looks roomy on the inside..."
+	icon_state = "greenplaidshirt"
+	item_state = "greenplaidshirt"
+	item_color = "greenplaidshirt"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	can_adjust = FALSE
+	fitted = NO_FEMALE_UNIFORM
+//yes
+
+//Enzo_Leon patron stuff
+/obj/item/clothing/under/enzoshirt
+	name = "Altevain Standard-Issue Uniform"
+	desc = "A soft, and light uniform with blue-space threading to help with Altevain proportions."
+	icon_state = "enzoshirt"
+	item_state = "enzoshirt"
+	item_color = "enzoshirt"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+//End
+
+/obj/item/clothing/under/wedding_dress
+	name = "wedding dress"
+	desc = "A luxurious gown for once-in-a-lifetime occasions."
+	icon_state = "wedding_dress"
+	item_state = "wedding_dress"
+	body_parts_covered = CHEST|GROIN|LEGS
+	flags_cover = HIDESHOES
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	can_adjust = FALSE
+
+/obj/item/clothing/under/tuxedo
+	name = "tuxedo"
+	desc = "A formal black tuxedo. It exudes classiness."
+	icon_state = "tuxedo"
+	item_state = "tuxedo"
+	mutantrace_variation = NO_MUTANTRACE_VARIATION //temporary
+	can_adjust = FALSE

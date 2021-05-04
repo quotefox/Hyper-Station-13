@@ -55,7 +55,7 @@ Head of Security
 	suit_store = /obj/item/gun/energy/e_gun
 	r_pocket = /obj/item/assembly/flash/handheld
 	l_pocket = /obj/item/restraints/handcuffs
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1)
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced = 1)
 
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
@@ -375,6 +375,7 @@ Junior Security Officer
 
 	mind_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM)
 	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/nonviolent, /datum/quirk/paraplegic)
+	override_roundstart_spawn = /obj/effect/landmark/start/security_officer
 
 
 /datum/job/junior_officer/get_access()
@@ -461,8 +462,8 @@ Junior Security Officer
 
 
 /datum/outfit/job/security/junior
-	name = "Security Officer"
-	jobtype = /datum/job/officer
+	name = "Rookie"
+	jobtype = /datum/job/junior_officer
 
 	belt = /obj/item/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt

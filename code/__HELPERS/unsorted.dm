@@ -444,11 +444,8 @@ Turf and target are separate in case you want to teleport some distance from a t
 	var/y = min(world.maxy, max(1, A.y + dy))
 	return locate(x,y,A.z)
 
-#if DM_VERSION > 513
-#warn if you're getting this warning it means 513 is stable
-#warn and you should remove this tidbit
-#endif
 #if DM_VERSION < 513
+#warn what the fuck are you doing? Compile on 513+ not below.
 /proc/arctan(x)
 	var/y=arcsin(x/sqrt(1+x*x))
 	return y
@@ -1505,6 +1502,10 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	var/list/blocked = list(/obj/item/reagent_containers/food/drinks/soda_cans,
 		/obj/item/reagent_containers/food/drinks/bottle
 		)
+	blocked |= typesof(/obj/item/reagent_containers/food/drinks/prospacillin,
+		/obj/item/reagent_containers/food/drinks/diminicillin
+		)
+	
 	return pick(subtypesof(/obj/item/reagent_containers/food/drinks) - blocked)
 
 //For these two procs refs MUST be ref = TRUE format like typecaches!

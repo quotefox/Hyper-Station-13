@@ -306,29 +306,30 @@
 		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, announce_job_title, list())
 		visible_message("<span class='notice'>\The [src] hums and hisses as it moves [mob_occupant.real_name] into storage.</span>")
 
-
-	for(var/obj/item/W in mob_occupant.GetAllContents())
-		if(W.loc.loc && (( W.loc.loc == loc ) || (W.loc.loc == control_computer)))
-			continue//means we already moved whatever this thing was in
-			//I'm a professional, okay
-		for(var/T in preserve_items)
-			if(istype(W, T))
-				if(control_computer && control_computer.allow_items)
-					control_computer.frozen_items += W
-					mob_occupant.transferItemToLoc(W, control_computer, TRUE)
-				else
-					mob_occupant.transferItemToLoc(W, loc, TRUE)
-
-	for(var/obj/item/W in mob_occupant.GetAllContents())
-		qdel(W)//because we moved all items to preserve away
-		//and yes, this totally deletes their bodyparts one by one, I just couldn't bother
-
 	if(iscyborg(mob_occupant))
 		var/mob/living/silicon/robot/R = occupant
 		if(!istype(R)) return ..()
 
 		R.contents -= R.mmi
 		qdel(R.mmi)
+
+		QDEL_NULL_LIST(R.contents)
+	else
+		for(var/obj/item/W in mob_occupant.GetAllContents())
+			if(W.loc.loc && (( W.loc.loc == loc ) || (W.loc.loc == control_computer)))
+				continue//means we already moved whatever this thing was in
+				//I'm a professional, okay
+			for(var/T in preserve_items)
+				if(istype(W, T))
+					if(control_computer && control_computer.allow_items)
+						control_computer.frozen_items += W
+						mob_occupant.transferItemToLoc(W, control_computer, TRUE)
+					else
+						mob_occupant.transferItemToLoc(W, loc, TRUE)
+
+	for(var/obj/item/W in mob_occupant.GetAllContents())
+		qdel(W)//because we moved all items to preserve away
+		//and yes, this totally deletes their bodyparts one by one, I just couldn't bother
 
 	// Ghost and delete the mob.
 	if(!mob_occupant.get_ghost(1))
@@ -384,6 +385,9 @@
 			else if(target.mind.has_antag_datum(/datum/antagonist/rev))
 				alert("<span class='userdanger'>You're a Revolutionary![generic_plsnoleave_message]</span>")
 				caught = TRUE
+		if(target.mind.special_role == ROLE_TRAITOR)
+			alert("<span class='userdanger'>You're a Traitor![generic_plsnoleave_message]</span>")
+			caught = TRUE
 
 		if(caught)
 			target.client.cryo_warned = world.time

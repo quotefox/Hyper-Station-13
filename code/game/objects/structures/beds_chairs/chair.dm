@@ -13,6 +13,37 @@
 	var/buildstackamount = 1
 	var/item_chair = /obj/item/chair // if null it can't be picked up
 	layer = OBJ_LAYER
+	color = "#cccccc"
+	var/paddingcolor = ""
+	var/mutable_appearance/lower
+
+/obj/structure/chair/Initialize() // for the part we sit ontop of
+	lower = GetLower() //if the chair has a lower part.
+	lower.layer = TABLE_LAYER
+	add_overlay(lower)
+	return ..()
+
+/obj/structure/chair/proc/GetLower()
+	return mutable_appearance('icons/obj/chairs.dmi', "[icon_state]_lower")
+
+/obj/structure/chair/dark
+	color = "#6b6b6b"
+
+/obj/structure/chair/foldingchair
+	name = "folding chair"
+	desc = "A collapsible folding chair."
+	icon = 'icons/obj/chairs.dmi'
+	icon_state = "chair_fold"
+	color = "#ffffff"
+	item_chair = ""
+
+/obj/structure/chair/mountchair
+	name = "mounted chair"
+	desc = "A chair mounted to the floor, this aint going anywhere!"
+	icon = 'icons/obj/chairs.dmi'
+	icon_state = "mounted_chair"
+	color = "#ffffff"
+	item_chair = ""
 
 /obj/structure/chair/examine(mob/user)
 	. = ..()
@@ -140,6 +171,36 @@
 	icon_state = "wooden_chair_wings"
 	item_chair = /obj/item/chair/wood/wings
 
+/obj/structure/chair/shadoww
+	icon_state = "shadoww_chair"
+	name = "shadow wood chair"
+	desc = "Fashionable dark."
+	resistance_flags = FLAMMABLE
+	max_integrity = 70
+	buildstacktype = /obj/item/stack/sheet/mineral/shadoww
+	buildstackamount = 3
+	item_chair = /obj/item/chair/shadoww
+
+/obj/structure/chair/plaswood
+	icon_state = "plaswood_chair"
+	name = "plaswood chair"
+	desc = "Hard but confortable to sit."
+	resistance_flags = FLAMMABLE | ACID_PROOF
+	max_integrity = 90
+	buildstacktype = /obj/item/stack/sheet/mineral/plaswood
+	buildstackamount = 3
+	item_chair = /obj/item/chair/plaswood
+
+/obj/structure/chair/gmushroom
+	icon_state = "gmushroom_chair"
+	name = "mushroom chair"
+	desc = "You don't need to worry about losing your seat in case of fire!"
+	resistance_flags = FIRE_PROOF
+	max_integrity = 70
+	buildstacktype = /obj/item/stack/sheet/mineral/gmushroom
+	buildstackamount = 3
+	item_chair = /obj/item/chair/gmushroom
+
 /obj/structure/chair/comfy
 	name = "comfy chair"
 	desc = "It looks comfy."
@@ -150,14 +211,26 @@
 	buildstackamount = 2
 	item_chair = null
 	var/mutable_appearance/armrest
+	var/mutable_appearance/padding
+	paddingcolor = "#e82d2d"
+
 
 /obj/structure/chair/comfy/Initialize()
+
+	padding = GetPadding()
+	padding.color = paddingcolor
+	if(paddingcolor)
+		add_overlay(padding)
+
 	armrest = GetArmrest()
 	armrest.layer = ABOVE_MOB_LAYER
 	return ..()
 
 /obj/structure/chair/comfy/proc/GetArmrest()
 	return mutable_appearance('icons/obj/chairs.dmi', "comfychair_armrest")
+
+/obj/structure/chair/comfy/proc/GetPadding()
+	return mutable_appearance('icons/obj/chairs.dmi', "comfychair_padding")
 
 /obj/structure/chair/comfy/Destroy()
 	QDEL_NULL(armrest)
@@ -178,19 +251,22 @@
 	update_armrest()
 
 /obj/structure/chair/comfy/brown
-	color = rgb(255,113,0)
+	paddingcolor = rgb(255,113,0)
 
 /obj/structure/chair/comfy/beige
-	color = rgb(255,253,195)
+	paddingcolor = rgb(255,253,195)
 
 /obj/structure/chair/comfy/teal
-	color = rgb(0,255,255)
+	paddingcolor = rgb(0,255,255)
 
 /obj/structure/chair/comfy/black
-	color = rgb(167,164,153)
+	paddingcolor = rgb(167,164,153)
 
 /obj/structure/chair/comfy/lime
-	color = rgb(255,251,0)
+	paddingcolor = rgb(255,251,0)
+
+/obj/structure/chair/comfy/blue
+	paddingcolor = rgb(125, 137, 218)
 
 /obj/structure/chair/comfy/plywood
 	name = "plywood chair"
@@ -207,6 +283,7 @@
 	name = "shuttle seat"
 	desc = "A comfortable, secure seat. It has a more sturdy looking buckling system, for smoother flights."
 	icon_state = "shuttle_chair"
+	paddingcolor = ""
 
 /obj/structure/chair/comfy/shuttle/GetArmrest()
 	return mutable_appearance('icons/obj/chairs.dmi', "shuttle_chair_armrest")
@@ -349,6 +426,43 @@
 	origin_type = /obj/structure/chair/stool/bar
 
 //////////////////////////
+//Alien(Disco) Stools!////
+//////////////////////////
+
+/obj/structure/chair/stool/alien
+	name = "alien stool"
+	desc = "A hard stool made of advanced alien alloy."
+	icon_state = "stoolalien"
+	icon = 'icons/obj/abductor.dmi'
+	item_chair = /obj/item/chair/stool/alien
+	buildstacktype = /obj/item/stack/sheet/mineral/abductor
+	buildstackamount = 1
+
+/obj/structure/chair/stool/bar/alien
+	name = "bronze bar stool"
+	desc = "A hard bar stool made of advanced alien alloy."
+	icon_state = "baralien"
+	icon = 'icons/obj/abductor.dmi'
+	item_chair = /obj/item/chair/stool/bar/alien
+	buildstacktype = /obj/item/stack/sheet/mineral/abductor
+	buildstackamount = 1
+
+/obj/item/chair/stool/alien
+	name = "stool"
+	icon_state = "stoolalien_toppled"
+	item_state = "stoolalien"
+	icon = 'icons/obj/abductor.dmi'
+	origin_type = /obj/structure/chair/stool/alien
+	break_chance = 0 //It's too sturdy.
+
+/obj/item/chair/stool/bar/alien
+	name = "bar stool"
+	icon_state = "baralien_toppled"
+	item_state = "baralien"
+	icon = 'icons/obj/abductor.dmi'
+	origin_type = /obj/structure/chair/stool/bar/alien
+
+//////////////////////////
 //Brass & Bronze stools!//
 //////////////////////////
 
@@ -432,6 +546,39 @@
 /obj/item/chair/wood/wings
 	icon_state = "wooden_chair_wings_toppled"
 	origin_type = /obj/structure/chair/wood/wings
+
+/obj/item/chair/shadoww
+	name = "shadow wood chair"
+	icon_state = "shadoww_chair_toppled"
+	item_state = "shadowwchair"
+	resistance_flags = FLAMMABLE
+	max_integrity = 70
+	hitsound = 'sound/weapons/genhit1.ogg'
+	origin_type = /obj/structure/chair/shadoww
+	materials = null
+	break_chance = 50
+
+/obj/item/chair/plaswood
+	name = "plaswood chair"
+	icon_state = "plaswood_chair_toppled"
+	item_state = "plaswoodchair"
+	resistance_flags = FLAMMABLE | ACID_PROOF
+	max_integrity = 90
+	hitsound = 'sound/weapons/genhit1.ogg'
+	origin_type = /obj/structure/chair/plaswood
+	materials = null
+	break_chance = 70
+
+/obj/item/chair/gmushroom
+	name = "mushroom chair"
+	icon_state = "gmushroom_chair_toppled"
+	item_state = "gmushroomchair"
+	resistance_flags = FIRE_PROOF
+	max_integrity = 70
+	hitsound = 'sound/weapons/genhit1.ogg'
+	origin_type = /obj/structure/chair/gmushroom
+	materials = null
+	break_chance = 50
 
 /obj/structure/chair/old
 	name = "strange chair"

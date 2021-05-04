@@ -36,6 +36,7 @@
 		var/datum/atom_hud/alternate_appearance/AA = v
 		AA.onNewMob(src)
 	nutrition = rand(NUTRITION_LEVEL_START_MIN, NUTRITION_LEVEL_START_MAX)
+	thirst = rand(NUTRITION_LEVEL_START_MIN, NUTRITION_LEVEL_START_MAX)
 	. = ..()
 	update_config_movespeed()
 	update_movespeed(TRUE)
@@ -234,15 +235,20 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 //set qdel_on_fail to have it delete W if it fails to equip
 //set disable_warning to disable the 'you are unable to equip that' warning.
 //unset redraw_mob to prevent the mob from being redrawn at the end.
-/mob/proc/equip_to_slot_if_possible(obj/item/W, slot, qdel_on_fail = FALSE, disable_warning = FALSE, redraw_mob = TRUE, bypass_equip_delay_self = FALSE)
+/mob/proc/equip_to_slot_if_possible(obj/item/W, slot, qdel_on_fail = FALSE, disable_warning = FALSE, redraw_mob = TRUE, bypass_equip_delay_self = FALSE, store = FALSE)
 	if(!istype(W))
 		return FALSE
 	if(!W.mob_can_equip(src, null, slot, disable_warning, bypass_equip_delay_self))
+		if(store && istype(src, /mob/living/carbon/human))
+			equip_to_slot(W, SLOT_IN_BACKPACK, FALSE)
+			return TRUE
+		else if(store && !qdel_on_fail)
+			W.forceMove(get_turf(src))
+
 		if(qdel_on_fail)
 			qdel(W)
-		else
-			if(!disable_warning)
-				to_chat(src, "<span class='warning'>You are unable to equip that!</span>")
+		else if(!disable_warning)
+			to_chat(src, "<span class='warning'>You are unable to equip that!</span>")
 		return FALSE
 	equip_to_slot(W, slot, redraw_mob) //This proc should not ever fail.
 	return TRUE
@@ -256,6 +262,12 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 //Also bypasses equip delay checks, since the mob isn't actually putting it on.
 /mob/proc/equip_to_slot_or_del(obj/item/W, slot)
 	return equip_to_slot_if_possible(W, slot, TRUE, TRUE, FALSE, TRUE)
+
+/mob/proc/equip_to_slot_or_store(obj/item/W, slot)
+	return equip_to_slot_if_possible(W, slot, FALSE, TRUE, FALSE, TRUE, TRUE)
+
+/mob/proc/equip_to_slot_or_store_and_del(obj/item/W, slot)
+	return equip_to_slot_if_possible(W, slot, TRUE, TRUE, FALSE, TRUE, TRUE)
 
 //puts the item "W" into an appropriate slot in a human's inventory
 //returns 0 if it cannot, 1 if successful
@@ -513,13 +525,6 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 		unset_machine()
 		src << browse(null, t1)
 
-	if(href_list["flavor_more"])
-		usr << browse(text("<HTML><HEAD><TITLE>[]</TITLE></HEAD><BODY><TT>[]</TT></BODY></HTML>", name, replacetext(flavor_text, "\n", "<BR>")), text("window=[];size=500x200", name))
-		onclose(usr, "[name]")
-
-	if(href_list["flavor_change"])
-		update_flavor_text()
-
 	if(href_list["refresh"])
 		if(machine && in_range(src, usr))
 			show_inv(machine)
@@ -571,7 +576,7 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 /mob/proc/is_muzzled()
 	return 0
 
-
+/*
 /mob/Stat()
 	..()
 	//This is where I try and add a temporary solution to the issue of the status tab. This solution is bad and I should feel bad, but it should mitigate some of the client lag.
@@ -645,25 +650,31 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 				if(A.IsObscured())
 					continue
 				statpanel(listed_turf.name, null, A)
+*/
 
+/// Adds this list to the output to the stat browser
+/mob/proc/get_status_tab_items()
+	. = list()
 
+/// Gets all relevant proc holders for the browser statpenl
+/mob/proc/get_proc_holders()
+	. = list()
 	if(mind)
-		add_spells_to_statpanel(mind.spell_list)
-		var/datum/antagonist/changeling/changeling = mind.has_antag_datum(/datum/antagonist/changeling)
-		if(changeling)
-			add_stings_to_statpanel(changeling.purchasedpowers)
-	add_spells_to_statpanel(mob_spell_list)
+		. += get_spells_for_statpanel(mind.spell_list)
+	. += get_spells_for_statpanel(mob_spell_list)
 
-/mob/proc/add_spells_to_statpanel(list/spells)
+/mob/proc/get_spells_for_statpanel(list/spells)
+	var/list/L = list()
 	for(var/obj/effect/proc_holder/spell/S in spells)
 		if(S.can_be_cast_by(src))
 			switch(S.charge_type)
 				if("recharge")
-					statpanel("[S.panel]","[S.charge_counter/10.0]/[S.charge_max/10]",S)
+					L[++L.len] = list("[S.panel]", "[S.charge_counter/10.0]/[S.charge_max/10]", S.name, REF(S))
 				if("charges")
-					statpanel("[S.panel]","[S.charge_counter]/[S.charge_max]",S)
+					L[++L.len] = list("[S.panel]", "[S.charge_counter]/[S.charge_max]", S.name, REF(S))
 				if("holdervar")
-					statpanel("[S.panel]","[S.holder_var_type] [S.holder_var_amount]",S)
+					L[++L.len] = list("[S.panel]", "[S.holder_var_type] [S.holder_var_amount]", S.name, REF(S))
+	return L
 
 /mob/proc/add_stings_to_statpanel(list/stings)
 	for(var/obj/effect/proc_holder/changeling/S in stings)
@@ -793,6 +804,8 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 		if(istype(S, spell))
 			mob_spell_list -= S
 			qdel(S)
+	if(client)
+		client << output(null, "statbrowser:check_spells")
 
 /mob/proc/anti_magic_check(magic = TRUE, holy = FALSE)
 	if(!magic && !holy)

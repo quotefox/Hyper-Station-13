@@ -73,6 +73,11 @@
 	category = SLOT_SHOES
 	path= /obj/item/clothing/shoes/wraps/blue
 
+/datum/gear/footwraps
+	name = "Cloth footwraps"
+	category = SLOT_SHOES
+	path= /obj/item/clothing/shoes/footwraps
+
 /datum/gear/christmasbootsr
 	name = "Red Christmas Boots"
 	category = SLOT_SHOES
@@ -88,12 +93,22 @@
 	category = SLOT_SHOES
 	path= /obj/item/clothing/shoes/winterboots/santaboots
 
-datum/gear/highheels
+/datum/gear/highheels
 	name = "High Heels"
 	category = SLOT_SHOES
 	path= /obj/item/clothing/shoes/highheels
 
-datum/gear/romansandals
+/datum/gear/romansandals
 	name = "Roman sandals"
 	category = SLOT_SHOES
 	path= /obj/item/clothing/shoes/roman
+
+/datum/gear/cowboyboots
+	name = "Cowboy Boots, Brown"
+	category = SLOT_SHOES
+	path = /obj/item/clothing/shoes/cowboyboots
+
+/datum/gear/cowboyboots/black
+	name = "Cowboy Boots, Black"
+	category = SLOT_SHOES
+	path = /obj/item/clothing/shoes/cowboyboots/black 

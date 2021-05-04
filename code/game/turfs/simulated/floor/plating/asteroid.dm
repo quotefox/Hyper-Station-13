@@ -19,13 +19,14 @@
 	attachment_holes = FALSE
 	var/obj/item/stack/digResult = /obj/item/stack/ore/glass/basalt
 	var/dug
+	var/quantity_of_available_tiles = 12 //How many sprites do you have in the DMI? Note, consider tile 0. 12 here means = 13 titles. 13 tiles is the golden standard.
 
 /turf/open/floor/plating/asteroid/Initialize()
 	var/proper_name = name
 	. = ..()
 	name = proper_name
 	if(prob(floor_variance))
-		icon_state = "[environment_type][rand(0,12)]"
+		icon_state = "[environment_type][rand(0,quantity_of_available_tiles)]"
 
 /turf/open/floor/plating/asteroid/proc/getDug()
 	new digResult(src, 5)
@@ -98,7 +99,7 @@
 
 /turf/open/floor/plating/asteroid/basalt/airless
 	baseturfs = /turf/open/floor/plating/asteroid/airless
-	initial_gas_mix = "TEMP=2.7"
+	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/plating/asteroid/basalt/Initialize()
 	. = ..()
@@ -169,7 +170,7 @@
 	if (!megafauna_spawn_list)
 		megafauna_spawn_list = list(/mob/living/simple_animal/hostile/megafauna/dragon = 4, /mob/living/simple_animal/hostile/megafauna/colossus = 2, /mob/living/simple_animal/hostile/megafauna/bubblegum = SPAWN_BUBBLEGUM)
 	if (!flora_spawn_list)
-		flora_spawn_list = list(/obj/structure/flora/ash/leaf_shroom = 2 , /obj/structure/flora/ash/cap_shroom = 2 , /obj/structure/flora/ash/stem_shroom = 2 , /obj/structure/flora/ash/cacti = 1, /obj/structure/flora/ash/tall_shroom = 2)
+		flora_spawn_list = list(/obj/structure/flora/ash/leaf_shroom = 2 , /obj/structure/flora/ash/cap_shroom = 2 , /obj/structure/flora/ash/stem_shroom = 2 , /obj/structure/flora/ash/cacti = 1, /obj/structure/flora/ash/tall_shroom = 2, /obj/structure/flora/redgrass/redg = 2, /obj/structure/flora/ashtree/ashtreee = 2, /obj/structure/flora/gmushroom/gggmushroom = 2, /obj/structure/flora/shadowtree/shadowtreee = 2, /obj/structure/flora/plasmatree/plasmatreee = 2)
 
 	. = ..()
 
@@ -283,7 +284,7 @@
 				return //if the random is a standard mob, avoid spawning if there's another one within 12 tiles
 			if((ispath(randumb, /obj/structure/spawner/lavaland) || istype(H, /obj/structure/spawner/lavaland)) && get_dist(src, H) <= 2)
 				return //prevents tendrils spawning in each other's collapse range
-				
+
 		for (var/area/L in range(8, T))
 			if (istype(L, /area/lavaland/surface/outdoors/) && !istype(L, /area/lavaland/surface/outdoors/unexplored)\
 				&& istype(L, /area/ruin) && istype(randumb, /mob/living/simple_animal/hostile/megafauna))
@@ -318,7 +319,7 @@
 	baseturfs = /turf/open/floor/plating/asteroid/snow
 	icon_state = "snow"
 	icon_plating = "snow"
-	initial_gas_mix = "o2=22;n2=82;TEMP=180"
+	initial_gas_mix = FROZEN_ATMOS
 	slowdown = 2
 	environment_type = "snow"
 	flags_1 = NONE
@@ -355,11 +356,50 @@
 	return FALSE
 
 /turf/open/floor/plating/asteroid/snow/airless
-	initial_gas_mix = "TEMP=2.7"
+	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/plating/asteroid/snow/temperatre
 	initial_gas_mix = "o2=22;n2=82;TEMP=255.37"
 
 /turf/open/floor/plating/asteroid/snow/atmosphere
-	initial_gas_mix = "o2=22;n2=82;TEMP=180"
+	initial_gas_mix = FROZEN_ATMOS
 	planetary_atmos = FALSE
+
+//Layenia stuff
+
+/turf/open/floor/plating/asteroid/layenia
+	gender = PLURAL //trans rights
+	name = "crimson Rock"
+	desc = "A cold rock, rusted scarlet in color."
+	icon = 'icons/turf/floors.dmi'
+	baseturfs = /turf/open/floor/plating/asteroid/layenia
+	icon_state = "layenia"
+	icon_plating = "layenia"
+	initial_gas_mix = FROZEN_ATMOS
+	slowdown = 1
+	environment_type = "layenia"
+	flags_1 = NONE
+	planetary_atmos = TRUE
+	burnt_states = null
+	bullet_sizzle = TRUE
+	bullet_bounce_sound = null
+	digResult = /obj/item/stack/ore/glass/basalt
+	floor_variance = 50 //This means 50% chance of variating from the default tile.
+	quantity_of_available_tiles = 4
+	//light_range = 2
+	//light_power = 0.15
+	//light_color = LIGHT_COLOR_WHITE
+
+/turf/open/floor/plating/asteroid/layenia/Initialize()
+	. = ..()
+	//We no longer randomize the icon state here. That is done by the supercall in our parent, asteroid.
+	set_layenia_light(src)
+
+/turf/open/floor/plating/asteroid/layenia/garden
+	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
+	planetary_atmos = TRUE
+
+/proc/set_layenia_light(turf/open/floor/B)
+	switch(B.icon_state)
+		if("layenia3", "layenia4")
+			B.set_light(2, 0.6, LIGHT_COLOR_BLUE) //more light

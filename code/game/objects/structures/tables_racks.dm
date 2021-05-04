@@ -272,6 +272,130 @@
 		S.color = NARSIE_WINDOW_COLOUR
 
 /*
+ * Plasmaglass tables
+ */
+/obj/structure/table/plasmaglass
+	name = "plasmaglass table"
+	desc = "A glasstable, but it's pink and more sturdy. What will Nanotrasen design next with plasma?"
+	icon = 'icons/obj/smooth_structures/plasmaglass_table.dmi'
+	icon_state = "plasmaglass_table"
+	climbable = TRUE
+	buildstack = /obj/item/stack/sheet/plasmaglass
+	canSmoothWith = null
+	max_integrity = 270
+	resistance_flags = ACID_PROOF
+	armor = list("melee" = 10, "bullet" = 5, "laser" = 0, "energy" = 0, "bomb" = 10, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 100)
+	var/list/debris = list()
+
+/obj/structure/table/plasmaglass/New()
+	. = ..()
+	debris += new frame
+	debris += new /obj/item/shard/plasma
+
+/obj/structure/table/plasmaglass/Destroy()
+	QDEL_LIST(debris)
+	. = ..()
+
+/obj/structure/table/plasmaglass/proc/check_break(mob/living/M)
+	return
+
+/obj/structure/table/plasmaglass/deconstruct(disassembled = TRUE, wrench_disassembly = 0)
+	if(!(flags_1 & NODECONSTRUCT_1))
+		if(disassembled)
+			..()
+			return
+		else
+			var/turf/T = get_turf(src)
+			playsound(T, "shatter", 50, 1)
+			for(var/X in debris)
+				var/atom/movable/AM = X
+				AM.forceMove(T)
+				debris -= AM
+	qdel(src)
+
+/obj/structure/table/plasmaglass/narsie_act()
+	color = NARSIE_WINDOW_COLOUR
+	for(var/obj/item/shard/S in debris)
+		S.color = NARSIE_WINDOW_COLOUR
+
+/*
+ * Shadow wood tables
+ */
+
+/obj/structure/table/shadoww
+	name = "Shadow wood table"
+	desc = "Do not apply fire to this. Rumour says it burns easily."
+	icon = 'icons/obj/smooth_structures/shadoww_table.dmi'
+	icon_state = "shadoww_table"
+	frame = /obj/structure/table_frame/shadoww
+	framestack = /obj/item/stack/sheet/mineral/shadoww
+	buildstack = /obj/item/stack/sheet/mineral/shadoww
+	resistance_flags = FLAMMABLE
+	max_integrity = 70
+	canSmoothWith = list(/obj/structure/table/shadoww,
+		/obj/structure/table/shadoww/shadowwpoker)
+
+/obj/structure/table/shadoww/shadowwpoker
+	name = "gambling table"
+	desc = "A seedy table for seedy dealings in seedy places."
+	icon = 'icons/obj/smooth_structures/shadowwpoker_table.dmi'
+	icon_state = "shadowwpoker_table"
+	frame = /obj/structure/table_frame/shadoww
+	buildstack = /obj/item/stack/tile/carpet
+
+/*
+ * Plaswood tables
+ */
+
+/obj/structure/table/plaswood
+	name = "plaswood table"
+	desc = "An strong and grey wooden table."
+	icon = 'icons/obj/smooth_structures/plaswood_table.dmi'
+	icon_state = "plaswood_table"
+	frame = /obj/structure/table_frame/plaswood
+	framestack = /obj/item/stack/sheet/mineral/plaswood
+	buildstack = /obj/item/stack/sheet/mineral/plaswood
+	resistance_flags = FLAMMABLE
+	max_integrity = 200
+	integrity_failure = 50
+	armor = list("melee" = 10, "bullet" = 30, "laser" = 30, "energy" = 100, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 70)
+	canSmoothWith = list(/obj/structure/table/plaswood,
+		/obj/structure/table/plaswood/plaswoodpoker)
+
+/obj/structure/table/plaswood/plaswoodpoker
+	name = "gambling table"
+	desc = "A seedy table for seedy dealings in seedy places."
+	icon = 'icons/obj/smooth_structures/plaswoodpoker_table.dmi'
+	icon_state = "plaswoodpoker_table"
+	frame = /obj/structure/table_frame/plaswood
+	buildstack = /obj/item/stack/tile/carpet
+
+/*
+ * Mushroom tables
+ */
+
+/obj/structure/table/gmushroom
+	name = "Mushroom table"
+	desc = "A pinkish table. And is fireproof!"
+	icon = 'icons/obj/smooth_structures/gmushroom_table.dmi'
+	icon_state = "gmushroom_table"
+	frame = /obj/structure/table_frame/gmushroom
+	framestack = /obj/item/stack/sheet/mineral/gmushroom
+	buildstack = /obj/item/stack/sheet/mineral/gmushroom
+	resistance_flags = FIRE_PROOF
+	max_integrity = 70
+	canSmoothWith = list(/obj/structure/table/gmushroom,
+		/obj/structure/table/gmushroom/gmushroompoker)
+
+/obj/structure/table/gmushroom/gmushroompoker
+	name = "gambling table"
+	desc = "A seedy table for seedy dealings in seedy places."
+	icon = 'icons/obj/smooth_structures/gmushroompoker_table.dmi'
+	icon_state = "gmushroompoker_table"
+	frame = /obj/structure/table_frame/gmushroom
+	buildstack = /obj/item/stack/tile/carpet
+
+/*
  * Wooden tables
  */
 
@@ -602,3 +726,10 @@
 		R.add_fingerprint(user)
 		qdel(src)
 	building = FALSE
+
+
+/obj/structure/rack/shelf
+	name = "shelving"
+	desc = "Some nice metal shelves."
+	icon = 'hyperstation/icons/obj/objects.dmi'
+	icon_state = "shelf"

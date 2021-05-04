@@ -35,8 +35,9 @@
 @include meta.load-css('./components/Tooltip.scss');
 
 // NT Theme
+// nope, now it's kinaris theme
 .Layout__content {
-  background-image: url('../assets/bg-nanotrasen.svg');
+  background-image: url('../assets/bg-kinaris.svg');
   background-size: 70%;
   background-position: center;
   background-repeat: no-repeat;

@@ -53,6 +53,7 @@
 */
 /area/holodeck/rec_center
 	name = "\improper Recreational Holodeck"
+	has_gravity = STANDARD_GRAVITY
 
 /area/holodeck/rec_center/offline
 	name = "Holodeck - Offline"

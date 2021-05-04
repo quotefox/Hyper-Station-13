@@ -5,7 +5,7 @@
 	pressure_resistance = 25
 	can_buckle = TRUE
 	buckle_lying = FALSE
-	mob_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
+	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	//Hair colour and style
 	var/hair_color = "000"
 	var/hair_style = "Bald"
@@ -23,6 +23,9 @@
 
 	var/lip_style = null	//no lipstick by default- arguably misleading, as it could be used for general makeup
 	var/lip_color = "white"
+
+	var/nail_style = null
+	var/nail_color = "white"
 
 	var/age = 30		//Player's age
 
@@ -68,5 +71,6 @@
 	var/static/list/can_ride_typecache = typecacheof(list(/mob/living/carbon/human, /mob/living/simple_animal/slime, /mob/living/simple_animal/parrot))
 	var/lastpuke = 0
 	var/last_fire_update
-
+	var/account_id
 	can_be_held = "micro"
+	appearance_flags = KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE|LONG_GLIDE

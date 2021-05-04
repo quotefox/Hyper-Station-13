@@ -5,7 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX	22
+#define SAVEFILE_VERSION_MAX	23
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -44,6 +44,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 /datum/preferences/proc/update_preferences(current_version, savefile/S)
 	if(current_version < 21)
 		clientfps = 60
+	if(current_version < 23)
+		S["be_special"]	>> be_special
 	return
 
 /datum/preferences/proc/update_character(current_version, savefile/S)
@@ -56,6 +58,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			features["balls_fluid"] = /datum/reagent/consumable/semen
 		if(features["breasts_fluid"])
 			features["breasts_fluid"] = /datum/reagent/consumable/milk
+	if(current_version < 23)
+		if(be_special)
+			WRITE_FILE(S["special_roles"], be_special)
 
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)
@@ -91,7 +96,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["tgui_lock"]			>> tgui_lock
 	S["buttons_locked"]		>> buttons_locked
 	S["windowflash"]		>> windowflashing
-	S["be_special"] 		>> be_special
 
 
 	S["default_slot"]		>> default_slot
@@ -108,6 +112,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["uses_glasses_colour"]>> uses_glasses_colour
 	S["clientfps"]			>> clientfps
 	S["chat_on_map"]		>> chat_on_map
+	S["autocorrect"]		>> autocorrect
 	S["radiosounds"]		>> radiosounds
 	S["max_chat_length"]	>> max_chat_length
 	S["see_chat_non_mob"] 	>> see_chat_non_mob
@@ -146,6 +151,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	lastchangelog	= sanitize_text(lastchangelog, initial(lastchangelog))
 	UI_style		= sanitize_inlist(UI_style, GLOB.available_ui_styles, GLOB.available_ui_styles[1])
 	hotkeys			= sanitize_integer(hotkeys, 0, 1, initial(hotkeys))
+	autocorrect		= sanitize_integer(autocorrect, 0, 1, initial(autocorrect))
 	chat_on_map		= sanitize_integer(chat_on_map, 0, 1, initial(chat_on_map))
 	radiosounds		= sanitize_integer(radiosounds, 0, 1, initial(radiosounds))
 	max_chat_length = sanitize_integer(max_chat_length, 1, CHAT_MESSAGE_MAX_LENGTH, initial(max_chat_length))
@@ -159,7 +165,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	clientfps		= sanitize_integer(clientfps, 0, 1000, 0)
 	if (clientfps == 0) clientfps = world.fps*2
 	body_size		= sanitize_integer(body_size, 90, 110, 0)
-	can_get_preg	= sanitize_integer(body_size, 0, 1, 0)
+	can_get_preg	= sanitize_integer(can_get_preg, 0, 1, 0)
 	parallax		= sanitize_integer(parallax, PARALLAX_INSANE, PARALLAX_DISABLE, null)
 	ambientocclusion	= sanitize_integer(ambientocclusion, 0, 1, initial(ambientocclusion))
 	auto_fit_viewport	= sanitize_integer(auto_fit_viewport, 0, 1, initial(auto_fit_viewport))
@@ -212,7 +218,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["tgui_lock"], tgui_lock)
 	WRITE_FILE(S["buttons_locked"], buttons_locked)
 	WRITE_FILE(S["windowflash"], windowflashing)
-	WRITE_FILE(S["be_special"], be_special)
 	WRITE_FILE(S["default_slot"], default_slot)
 	WRITE_FILE(S["toggles"], toggles)
 	WRITE_FILE(S["chat_toggles"], chat_toggles)
@@ -337,7 +342,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_human_ears"]				>> features["ears"]
 	S["feature_deco_wings"]				>> features["deco_wings"]
 
-
+	S["hide_ckey"]						>> hide_ckey //saved per-character
 
 
 	//Custom names
@@ -359,6 +364,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["job_engsec_high"]	>> job_engsec_high
 	S["job_engsec_med"]		>> job_engsec_med
 	S["job_engsec_low"]		>> job_engsec_low
+
+	//Antags
+	if(!(toggles & ANTAG_SYNC_WITH_CHARS))
+		S["special_roles"]		>> be_special
 
 	//Quirks
 	S["all_quirks"]			>> all_quirks
@@ -411,10 +420,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//womb features
 	S["feature_has_womb"]				>> features["has_womb"]
 	S["feature_can_get_preg"]			>> features["can_get_preg"] //hyperstation 13
+		//balls features
+	S["feature_has_belly"]				>> features["has_belly"]
+	S["feature_belly_color"]			>> features["belly_color"]
+	S["feature_hide_belly"]				>> features["hide_belly"]
+
 	//flavor text
 	//Let's make our players NOT cry desperately as we wipe their savefiles of their special snowflake texts:
 	if((S["flavor_text"] != "") && (S["flavor_text"] != null) && S["flavor_text"]) //If old text isn't null and isn't "" but still exists.
-		S["flavor_text"]				>> features["flavor_text"] //Load old flavortext as current dna-based flavortext
+		S["flavor_text"]			>> features["flavor_text"] //Load old flavortext as current dna-based flavortext
 
 		WRITE_FILE(S["feature_flavor_text"], features["flavor_text"]) //Save it in our new type of flavor-text
 		WRITE_FILE(S["flavor_text"]	, "") //Remove old flavortext, completing the cut-and-paste into the new format.
@@ -422,6 +436,15 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	else //We have no old flavortext, default to new
 		S["feature_flavor_text"]		>> features["flavor_text"]
 
+	S["feature_silicon_flavor_text"]	>> features["silicon_flavor_text"]
+	if((S["ooc_text"] != "") && (S["ooc_text"] != null) && S["ooc_text"])
+		S["ooc_text"]				>> features["ooc_text"]
+
+		WRITE_FILE(S["feature_ooc_text"], features["ooc_text"]) //Save it in our new type of flavor-text
+		WRITE_FILE(S["ooc_text"], "") //Remove old flavortext, completing the cut-and-paste into the new format.
+
+	else
+		S["feature_ooc_text"]		>> features["ooc_text"]
 
 	//try to fix any outdated data if necessary
 	if(needs_update >= 0)
@@ -429,7 +452,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Sanitize
 
-	real_name = reject_bad_name(real_name)
+	real_name = reject_bad_name(real_name, TRUE)
 	gender = sanitize_gender(gender, TRUE, TRUE)
 	if(!real_name)
 		real_name = random_unique_name(gender)
@@ -490,6 +513,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	custom_speech_verb				= sanitize_inlist(custom_speech_verb, GLOB.speech_verbs, "default")
 	custom_tongue					= sanitize_inlist(custom_tongue, GLOB.roundstart_tongues, "default")
+
+	features["flavor_text"]			= copytext(features["flavor_text"], 1, MAX_FLAVOR_LEN)
+	features["silicon_flavor_text"]	= copytext(features["silicon_flavor_text"], 1, MAX_FLAVOR_LEN)
 
 	joblessrole	= sanitize_integer(joblessrole, 1, 3, initial(joblessrole))
 	job_civilian_high = sanitize_integer(job_civilian_high, 0, 65535, initial(job_civilian_high))
@@ -578,20 +604,24 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["prefered_security_department"] , prefered_security_department)
 
 	//Jobs
-	WRITE_FILE(S["joblessrole"]		, joblessrole)
+	WRITE_FILE(S["joblessrole"]			, joblessrole)
 	WRITE_FILE(S["job_civilian_high"]	, job_civilian_high)
 	WRITE_FILE(S["job_civilian_med"]	, job_civilian_med)
 	WRITE_FILE(S["job_civilian_low"]	, job_civilian_low)
-	WRITE_FILE(S["job_medsci_high"]	, job_medsci_high)
+	WRITE_FILE(S["job_medsci_high"]		, job_medsci_high)
 	WRITE_FILE(S["job_medsci_med"]		, job_medsci_med)
 	WRITE_FILE(S["job_medsci_low"]		, job_medsci_low)
-	WRITE_FILE(S["job_engsec_high"]	, job_engsec_high)
+	WRITE_FILE(S["job_engsec_high"]		, job_engsec_high)
 	WRITE_FILE(S["job_engsec_med"]		, job_engsec_med)
 	WRITE_FILE(S["job_engsec_low"]		, job_engsec_low)
 	//Record Flavor Text
-	WRITE_FILE(S["security_records"]		, security_records)
-	WRITE_FILE(S["medical_records"]			, medical_records)
-	//Quirks
+	WRITE_FILE(S["security_records"]	, security_records)
+	WRITE_FILE(S["medical_records"]		, medical_records)
+
+	//Misc.
+	if(!(toggles & ANTAG_SYNC_WITH_CHARS))
+		WRITE_FILE(S["special_roles"]		, be_special)		//Preferences don't load every character change
+	WRITE_FILE(S["hide_ckey"]			, hide_ckey)
 	WRITE_FILE(S["all_quirks"]			, all_quirks)
 
 	cit_character_pref_save(S)

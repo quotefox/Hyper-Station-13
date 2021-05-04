@@ -7,26 +7,13 @@
 	. = ..()
 	var/dat	=	{"<B>Genitals</B><BR><HR>"}
 
-	//List genitals
-	var/obj/item/organ/genital/penis/P = user.getorganslot("penis")
-	if (P) //they have a pp
-		dat	+= "<a href='byond://?src=[REF(src)];hidepenis=1'>[P.mode == "hidden" ? "Penis <font color='red'>(Hidden)</font>" : (P.mode == "clothes" ? "Penis <font color='yellow'>(Hidden by Clothes)</font>" : (P.mode == "visable" ? "Penis <font color='green'>(Visable)</font>" : "Penis <font color='green'>(Visable)</font>"))]</a><BR>"
-
-	var/obj/item/organ/genital/testicles/T = user.getorganslot("testicles")
-	if (T) //they have teabags
-		if(!T.internal)
-			dat	+= "<a href='byond://?src=[REF(src)];hidetesticles=1'>[T.mode == "hidden" ? "Testicles <font color='red'>(Hidden)</font>" : (T.mode == "clothes" ? "Testicles <font color='yellow'>(Hidden by Clothes)</font>" : (T.mode == "visable" ? "Testicles <font color='green'>(Visable)</font>" : "Testicles <font color='green'>(Visable)</font>"))]</a><BR>"
-		else //internal balls
-			dat	+= "<a href='byond://?src=[REF(src)];na=1'>Internal Testicles</A><BR>"
-	var/obj/item/organ/genital/vagina/V = user.getorganslot("vagina")
-	if (V) //they have a vjay
-		dat	+= "<a href='byond://?src=[REF(src)];hidevagina=1'>[V.mode == "hidden" ? "Vagina <font color='red'>(Hidden)</font>" : (V.mode == "clothes" ? "Vagina <font color='yellow'>(Hidden by Clothes)</font>" : (V.mode == "visable" ? "Vagina <font color='green'>(Visable)</font>" : "Vagina <font color='green'>(Visable)</font>"))]</a><BR>"
-
-	var/obj/item/organ/genital/breasts/B = user.getorganslot("breasts")
-	if (B) //they have a boobiedoo
-		dat	+= "<a href='byond://?src=[REF(src)];hidebreasts=1'>[B.mode == "hidden" ? "Breasts <font color='red'>(Hidden)</font>" : (B.mode == "clothes" ? "Breasts <font color='yellow'>(Hidden by Clothes)</font>" : (B.mode == "visable" ? "Breasts <font color='green'>(Visable)</font>" : "Breasts <font color='green'>(Visable)</font>"))]</a><BR>"
+	var/mob/living/carbon/U = user
+	for(var/obj/item/organ/genital/G in U.internal_organs)
+		if(!G.dontlist)
+			dat	+= "<a href='byond://?src=[REF(src)];hide[G.name]=1'>[G.mode == "hidden" ? "[G.name] <font color='red'>(Hidden)</font>" : (G.mode == "clothes" ? "[G.name] <font color='yellow'>(Hidden by Clothes)</font>" : (G.mode == "visable" ? "[G.name] <font color='green'>(Visable)</font>" : "[G.name] <font color='green'>(Visable)</font>"))]</a><BR>"
 
 	dat	+=	{"<BR><B>Contexual Options</B><BR><HR>"}
+	var/obj/item/organ/genital/penis/P = user.getorganslot("penis")
 	//Options
 	dat	+= "<a href='byond://?src=[REF(src)];masturbate=1'>Masturbate</A>"
 	dat	+=	"(Stimulate a sexual organ with your hands.)<BR>"
@@ -37,13 +24,22 @@
 	dat	+= "<a href='byond://?src=[REF(src)];container=1'>Fill container</A>"
 	dat	+=	"(Use a container in your hand to collect your seminal fluid.)<BR>"
 
+	var/mob/living/carbon/human/C = usr
+	if(C && C.w_uniform || C.wear_suit) //if they are wearing cloths
+		dat += "<a href='byond://?src=[REF(src)];clothesplosion=1'>Explode out of clothes</A>"
+		dat	+=	"(Flex your body to cause your clothes to burst apart.)<BR>"
+
 	if(user.pulling)
 		dat	+= "<a href='byond://?src=[REF(src)];kiss=1'>Kiss [user.pulling]</A>"
 		dat	+=	"(Kiss a partner, or object.)<BR>"
+	else
+		dat	+= "<span class='linkOff'>Kiss</span></A>"
+		dat	+=	"(Requires a partner)<BR>"
 
+
+	if(user.pulling)
 		dat	+= "<a href='byond://?src=[REF(src)];climaxover=1'>Climax over [user.pulling]</A>" //you can cum on objects if you really want...
 		dat	+=	"(Orgasm over a person or object.)<BR>"
-
 		if(isliving(user.pulling))
 			if(iscarbon(user.pulling))
 				dat	+= "<a href='byond://?src=[REF(src)];climaxwith=1'>Climax with [user.pulling]</A>"
@@ -51,15 +47,24 @@
 
 				var/mob/living/carbon/human/H = user.pulling
 				if(H.breedable && P && H)
-					dat	+= "<a href='byond://?src=[REF(src)];impreg=1'>Impregnate [user.pulling]</A>"
-					dat	+=	"(Climax inside another person, knocking them up.)<BR>"
+					dat	+= "<a href='byond://?src=[REF(src)];impreg=1'>Impregnate [U.pulling] ([clamp(U.impregchance,0,100)]%)</A>"
+					dat	+=	"(Climax inside another person, and attempt to knock them up.)<BR>"
+	else
+		dat	+= "<span class='linkOff'>Climax over</span></A>"
+		dat	+=	"(Requires a partner)<BR>"
+		dat	+= "<span class='linkOff'>Climax with</span></A>"
+		dat	+=	"(Requires a partner)<BR>"
 
-
-	if(P) // They have a dick (make sure to check or this will break everything)
+	//old code needs to be cleaned
+	if(P)
 		if(P.condom == 1)
-			dat	+= "<a href='byond://?src=[REF(src)];removecondom=1'>Remove Condom</A><BR>"
+			dat	+= "<a href='byond://?src=[REF(src)];removecondom=1'>Remove condom (penis)</A><BR>"
 		if(P.sounding == 1)
-			dat	+= "<a href='byond://?src=[REF(src)];removesound=1'>Remove Sounding Rod</A><BR>"
+			dat	+= "<a href='byond://?src=[REF(src)];removesound=1'>Remove sounding rod (penis)</A><BR>"
+	for(var/obj/item/organ/genital/G in U.internal_organs)
+		if(G.equipment) //they have equipment
+			dat	+= "<a href='byond://?src=[REF(src)];removeequipment[G.name]=1;'>Remove [G.equipment.name] ([G.name])</A><BR>"
+
 	dat	+=	{"<HR>"}//Newline for the objects
 	//bottom options
 	dat	+= "<a href='byond://?src=[REF(src)];refresh=1'>Refresh</A>"
@@ -72,6 +77,9 @@
 	popup.set_title_image(user.browse_rsc_icon(icon, icon_state), 500,600)
 
 	popup.open()
+
+
+
 
 
 /obj/screen/arousal/Topic(href, href_list)
@@ -106,6 +114,11 @@
 		var/picked_visibility = input(usr, "Choose visibility", "Expose/Hide genitals", "Hidden by clothes") in list("Always visible", "Hidden by clothes", "Always hidden")
 		B.toggle_visibility(picked_visibility)
 
+	if(href_list["hidebelly"])
+		var/obj/item/organ/genital/belly/E = usr.getorganslot("belly")
+		var/picked_visibility = input(usr, "Choose visibility", "Expose/Hide genitals", "Hidden by clothes") in list("Always visible", "Hidden by clothes", "Always hidden")
+		E.toggle_visibility(picked_visibility)
+
 	if(href_list["hidetesticles"])
 		var/obj/item/organ/genital/testicles/T = usr.getorganslot("testicles")
 		var/picked_visibility = input(usr, "Choose visibility", "Expose/Hide genitals", "Hidden by clothes") in list("Always visible", "Hidden by clothes", "Always hidden")
@@ -122,6 +135,14 @@
 	if(href_list["container"])
 		if (H.arousalloss >= (H.max_arousal / 100) * 33) //requires 33% arousal.
 			H.cumcontainer()
+			return
+		else
+			to_chat(usr, "<span class='warning'>You aren't aroused enough for that! </span>")
+		return
+
+	if(href_list["clothesplosion"])
+		if (H.arousalloss >= (H.max_arousal / 100) * 33) //Requires 33% arousal.
+			H.clothesplosion()
 			return
 		else
 			to_chat(usr, "<span class='warning'>You aren't aroused enough for that! </span>")
@@ -171,6 +192,34 @@
 
 	if(href_list["removesound"])
 		H.menuremovesounding()
+
+	if(href_list["removeequipmentpenis"])
+		var/obj/item/organ/genital/penis/O = usr.getorganslot("penis")
+		var/obj/item/I = O.equipment
+		usr.put_in_hands(I)
+		O.equipment = null
+
+	if(href_list["removeequipmentbreasts"])
+		var/obj/item/organ/genital/breasts/O = usr.getorganslot("breasts")
+		var/obj/item/I = O.equipment
+		usr.put_in_hands(I)
+		O.equipment = null
+
+
+	if(href_list["removeequipmentvagina"])
+		var/obj/item/organ/genital/vagina/O = usr.getorganslot("vagina")
+		var/obj/item/I = O.equipment
+		usr.put_in_hands(I)
+		if(istype(I, /obj/item/portalpanties))
+			var/obj/item/portalpanties/P = I
+			P.remove()
+		O.equipment = null
+
+	if(href_list["removeequipmentbelly"])
+		var/obj/item/organ/genital/belly/O = usr.getorganslot("belly")
+		var/obj/item/I = O.equipment
+		usr.put_in_hands(I)
+		O.equipment = null
 
 	if(href_list["omenu"])
 		usr << browse(null, "window=arousal") //closes the window
@@ -268,8 +317,6 @@ obj/screen/arousal/proc/kiss()
 			src.visible_message("<span class='notice'>[src] is about to kiss [L]!</span>", \
 								"<span class='notice'>You're attempting to kiss [L]!</span>", \
 								"<span class='notice'>You're attempting to kiss with something!</span>")
-			if(!do_mob(src, L, 2 SECONDS))	//I think two seconds is enough time to pull away if its unwanted.
-				return
 			SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "kissed", /datum/mood_event/kiss) //how cute, affection is nice.
 	//Well done you kissed it/them!
 	src.visible_message("<span class='notice'>[src] kisses [L]!</span>", \
@@ -287,7 +334,6 @@ obj/screen/arousal/proc/kiss()
 	else //They either lack organs that can masturbate, or they didn't pick one.
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
-
 
 /mob/living/carbon/human/proc/climaxwith(mob/living/T)
 
@@ -313,6 +359,8 @@ obj/screen/arousal/proc/kiss()
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
 
+
+
 /mob/living/carbon/human/proc/climaxover(mob/living/T)
 
 	var/mob/living/carbon/human/L = T
@@ -336,6 +384,20 @@ obj/screen/arousal/proc/kiss()
 	else //They either lack organs that can masturbate, or they didn't pick one.
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
+
+/mob/living/carbon/human/proc/clothesplosion()
+	if(usr.restrained(TRUE))
+		to_chat(usr, "<span class='warning'>You can't do that while restrained!</span>")
+		return
+	var/mob/living/carbon/human/H = src
+	var/items = H.get_contents()
+	for(var/obj/item/W in items)
+		if(W == H.w_uniform || W == H.wear_suit)
+			H.dropItemToGround(W, TRUE)
+			playsound(H.loc, 'sound/items/poster_ripped.ogg', 50, 1)
+	H.visible_message("<span class='boldnotice'>[H] explodes out of their clothes!'</span>")
+
+
 
 /mob/living/carbon/human/proc/impregwith(mob/living/T)
 

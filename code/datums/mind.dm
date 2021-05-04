@@ -41,6 +41,8 @@
 	var/special_role
 	var/list/restricted_roles = list()
 
+	var/hide_ckey = FALSE
+
 	var/list/datum/objective/objectives = list()
 
 	var/list/spell_list = list() // Wizard mode & "Give Spell" badmin button.
@@ -126,6 +128,9 @@
 	transfer_martial_arts(new_character)
 	if(active || force_key_move)
 		new_character.key = key		//now transfer the key to link the client to our new body
+	if(new_character.client)
+		//LAZYCLEARLIST(new_character.client.recent_examines)
+		new_character.client.init_verbs() // re-initialize character specific verbs
 
 //CIT CHANGE - makes arousal update when transfering bodies
 	if(isliving(new_character)) //New humans and such are by default enabled arousal. Let's always use the new mind's prefs.
@@ -133,6 +138,8 @@
 		if(L.client && L.client.prefs)
 			L.canbearoused = L.client.prefs.arousable //Technically this should make taking over a character mean the body gain the new minds setting...
 			L.update_arousal_hud() //Removes the old icon
+
+	hide_ckey = current.client?.prefs?.hide_ckey
 
 /datum/mind/proc/store_memory(new_text)
 	if((length_char(memory) + length_char(new_text)) <= MAX_MESSAGE_LEN)
@@ -767,6 +774,7 @@
 		if(istype(S, spell))
 			spell_list -= S
 			qdel(S)
+	current?.client << output(null, "statbrowser:check_spells")
 
 /datum/mind/proc/RemoveAllSpells()
 	for(var/obj/effect/proc_holder/S in spell_list)
@@ -853,6 +861,7 @@
 	if(!mind.name)
 		mind.name = real_name
 	mind.current = src
+	mind.hide_ckey = client?.prefs?.hide_ckey
 
 /mob/living/carbon/mind_initialize()
 	..()

@@ -61,7 +61,19 @@
 
 /obj/item/reagent_containers/food/snacks/grown/holymelon/Initialize()
 	. = ..()
-	AddComponent(/datum/component/anti_magic, TRUE, TRUE) //deliver us from evil o melon god
+	var/uses = 1
+	if(seed)
+		uses = round(seed.potency / 20)
+		AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, uses, TRUE, CALLBACK(src, .proc/block_magic), CALLBACK(src, .proc/expire)) //deliver us from evil o melon god
+
+/obj/item/reagent_containers/food/snacks/grown/holymelon/proc/block_magic(mob/user, major)
+	if(major)
+		visible_message("<span class='warning'>[src] hums slightly, and seems to decay a bit.</span>")
+
+/obj/item/reagent_containers/food/snacks/grown/holymelon/proc/expire(mob/user)
+	visible_message("<span class='warning'>[src] rapidly turns into ash!</span>")
+	qdel(src)
+	new /obj/effect/decal/cleanable/ash(drop_location())
 
 //Milkmelon
 /obj/item/seeds/watermelon/milk
@@ -72,13 +84,14 @@
 	plantname = "Milk Melon Vines"
 	product = /obj/item/reagent_containers/food/snacks/grown/milkmelon
 	mutatelist = list()
-	reagents_add = list("milk" = 0.2, "breast_enlarger" = 0.08, "vitamin" = 0.04, "nutriment" = 0.1)
+	genes = list(/datum/plant_gene/reagent/fragile/breastchem)
+	reagents_add = list(/datum/reagent/consumable/milk = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
 	rarity = 20
 
 /obj/item/reagent_containers/food/snacks/grown/milkmelon
 	seed = /obj/item/seeds/watermelon/milk
 	name = "milkmelon"
-	desc = "A softer, rounder-looking watermelon that audibly sloshes with milk."
+	desc = "A softer watermelon that audibly sloshes with milk."
 	icon_state = "milkmelon"
 	filling_color = "#FFAABB"
 	dried_type = null

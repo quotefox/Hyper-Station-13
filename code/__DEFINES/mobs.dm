@@ -36,17 +36,17 @@
 #define BLOODCRAWL_EAT 2
 
 //Mob bio-types
-#define MOB_ORGANIC 	"organic"
-#define MOB_INORGANIC 	"inorganic"
-#define MOB_ROBOTIC 	"robotic"
-#define MOB_SILICON     "silicon"
-#define MOB_UNDEAD		"undead"
-#define MOB_HUMANOID 	"humanoid"
-#define MOB_BUG 		"bug"
-#define MOB_BEAST		"beast"
-#define MOB_EPIC		"epic" //megafauna
-#define MOB_REPTILE		"reptile"
-#define MOB_SPIRIT		"spirit"
+#define MOB_ORGANIC 	(1 << 0)
+#define MOB_INORGANIC 	(1 << 1)
+#define MOB_ROBOTIC 	(1 << 2)
+#define MOB_SILICON     (1 << 3)
+#define MOB_UNDEAD		(1 << 4)
+#define MOB_HUMANOID 	(1 << 5)
+#define MOB_BUG 		(1 << 6)
+#define MOB_BEAST		(1 << 7)
+#define MOB_EPIC		(1 << 8) //megafauna
+#define MOB_REPTILE		(1 << 9)
+#define MOB_SPIRIT		(1 << 10)
 
 //Organ defines for carbon mobs
 #define ORGAN_ORGANIC   1
@@ -69,6 +69,7 @@
 #define ALIEN_BODYPART "alien"
 #define LARVA_BODYPART "larva"
 #define DEVIL_BODYPART "devil"
+#define WENDIGO_BODYPART "wendigo"
 /*see __DEFINES/inventory.dm for bodypart bitflag defines*/
 
 // Health/damage defines for carbon mobs
@@ -157,6 +158,15 @@
 
 #define NUTRITION_LEVEL_START_MIN 250
 #define NUTRITION_LEVEL_START_MAX 400
+
+//Hyperstation Thirst
+#define THIRST_LEVEL_THRESHOLD	800		//Set to 0 to stop clamping
+#define THIRST_LEVEL_QUENCHED	450
+#define THIRST_LEVEL_THIRSTY	250
+#define THIRST_LEVEL_PARCHED	150
+
+#define THIRST_LEVEL_START_MIN	250
+#define THIRST_LEVEL_START_MAX	400
 
 //Disgust levels for humans
 #define DISGUST_LEVEL_MAXEDOUT 150
@@ -250,7 +260,8 @@
 #define POCKET_STRIP_DELAY			40	//time taken (in deciseconds) to search somebody's pockets
 #define DOOR_CRUSH_DAMAGE	15	//the amount of damage that airlocks deal when they crush you
 
-#define	HUNGER_FACTOR		0.1	//factor at which mob nutrition decreases
+#define	HUNGER_FACTOR		0.08	//factor at which mob nutrition decreases
+#define	THIRST_FACTOR		0.08	//factor at which mob thirst decreases
 #define	REAGENTS_METABOLISM 0.4	//How many units of reagent are consumed per tick, by default.
 #define REAGENTS_EFFECT_MULTIPLIER (REAGENTS_METABOLISM / 0.4)	// By defining the effect multiplier this way, it'll exactly adjust all effects according to how they originally were with the 0.4 metabolism
 

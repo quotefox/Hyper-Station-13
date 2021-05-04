@@ -95,6 +95,6 @@
 	name = "Machine Design (VR Sleeper Board)"
 	desc = "The circuit board for a VR sleeper."
 	id = "vr_sleeper"
-	build_path = /obj/item/circuitboard/machine/vr_sleeper
+	build_path = /obj/item/circuitboard/machine/cell_charger //Replaced with a cell charger until someone takes the job to fix VR sleepers.
 	departmental_flags = DEPARTMENTAL_FLAG_ALL
 	category = list ("Medical Machinery")

@@ -5,6 +5,7 @@
 	min_players = 5 //increased min players from 2 to 5 to reduce chances of half the crew dying in a carp breach
 	earliest_start = 10 MINUTES
 	max_occurrences = 6
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/round_event/carp_migration
 	announceWhen	= 3
@@ -15,7 +16,7 @@
 
 /datum/round_event/carp_migration/announce(fake)
 	if(prob(50))
-		priority_announce("Unknown biological entities have been detected near [station_name()], please stand-by.", "Lifesign Alert")
+		priority_announce("Unknown biological entities have been detected near [station_name()], please stand-by.", "Lifesign Alert", 'sound/ai/carp.ogg')
 	else
 		priority_announce("A report has been downloaded and printed out at all communications consoles.", "Incoming Classified Message", 'sound/ai/commandreport.ogg') // CITADEL EDIT metabreak
 		for(var/obj/machinery/computer/communications/C in GLOB.machines)

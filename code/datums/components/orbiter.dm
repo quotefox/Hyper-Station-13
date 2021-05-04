@@ -30,6 +30,7 @@
 
 	RegisterSignal(parent, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, .proc/orbiter_glide_size_update)
 
+
 /datum/component/orbiter/UnregisterFromParent()
 	var/atom/target = parent
 	while(ismovableatom(target))
@@ -60,6 +61,7 @@
 	move_react()
 
 /datum/component/orbiter/proc/begin_orbit(atom/movable/orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation)
+	SEND_SIGNAL(parent, COMSIG_ATOM_ORBIT_BEGIN, orbiter, radius, clockwise, rotation_speed, rotation_segments, pre_rotation)
 	if(orbiter.orbiting)
 		if(orbiter.orbiting == src)
 			orbiter.orbiting.end_orbit(orbiter, TRUE)
@@ -69,6 +71,7 @@
 	orbiter.orbiting = src
 	RegisterSignal(orbiter, COMSIG_MOVABLE_MOVED, orbiter_spy)
 	var/matrix/initial_transform = matrix(orbiter.transform)
+	orbiters[orbiter] = initial_transform
 
 	// Head first!
 	if(pre_rotation)
@@ -91,16 +94,17 @@
 		var/atom/movable/AM = parent
 		orbiter.glide_size = AM.glide_size
 
-	//we stack the orbits up client side, so we can assign this back to normal server side without it breaking the orbit
-	orbiter.transform = initial_transform
 	orbiter.forceMove(get_turf(parent))
 	to_chat(orbiter, "<span class='notice'>Now orbiting [parent].</span>")
 
 /datum/component/orbiter/proc/end_orbit(atom/movable/orbiter, refreshing=FALSE)
 	if(!orbiters[orbiter])
 		return
+	SEND_SIGNAL(parent, COMSIG_ATOM_ORBIT_END, orbiter, refreshing)
 	UnregisterSignal(orbiter, COMSIG_MOVABLE_MOVED)
 	orbiter.SpinAnimation(0, 0)
+	if(istype(orbiters[orbiter],/matrix)) //This is ugly.
+		orbiter.transform = orbiters[orbiter]
 	orbiters -= orbiter
 	orbiter.stop_orbit(src)
 	orbiter.orbiting = null

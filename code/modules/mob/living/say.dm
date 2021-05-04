@@ -174,6 +174,10 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 		src.log_talk(message, LOG_SAY, forced_by=forced)
 
 	message = treat_message(message) // unfortunately we still need this
+
+	if(client?.prefs.autocorrect)
+		message = autocorrect(message)
+
 	var/sigreturn = SEND_SIGNAL(src, COMSIG_MOB_SAY, args)
 	if (sigreturn & COMPONENT_UPPERCASE_SPEECH)
 		message = uppertext(message)
@@ -248,7 +252,7 @@ GLOBAL_LIST_INIT(department_radio_keys, list(
 	if (client?.prefs.chat_on_map && stat != UNCONSCIOUS && (client.prefs.see_chat_non_mob || ismob(speaker)) && can_hear())
 		create_chat_message(speaker, message_language, raw_message, spans, message_mode)
 	if (client?.prefs.radiosounds && stat != UNCONSCIOUS && can_hear() && radio_freq)
-		playsound_local(src,'sound/voice/radio.ogg', 30, 1)
+		playsound_local(src,'sound/voice/radio.ogg', 30, 0)
 
 	// Recompose message for AI hrefs, language incomprehension.
 	message = compose_message(speaker, message_language, raw_message, radio_freq, spans, message_mode, FALSE, source)

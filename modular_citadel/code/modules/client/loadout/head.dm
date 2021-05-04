@@ -27,6 +27,7 @@
 	name = "Rice hat"
 	category = SLOT_HEAD
 	path = /obj/item/clothing/head/rice_hat
+	blacklist_join_equip = TRUE
 
 /datum/gear/ushanka
 	name = "Ushanka"
@@ -53,12 +54,14 @@
 	category = SLOT_HEAD
 	path = /obj/item/clothing/head/flakhelm
 	cost = 2
+	blacklist_join_equip = TRUE
 
 /datum/gear/delinquent //Now you too can become like your favorite punchy ghost protagonist
 	name = "Delinquent Hat"
 	category = SLOT_HEAD
 	path = /obj/item/clothing/head/delinquent
 	cost = 3
+	blacklist_join_equip = TRUE
 
 /datum/gear/bunnyears
 	name = "Bunny Ears"
@@ -108,6 +111,33 @@
 	name = "Green Santa Hat"
 	category = SLOT_HEAD
 	path = /obj/item/clothing/head/christmashatg
+
+/datum/gear/cowboyhat
+	name = "Cowboy Hat, Brown"
+	category = SLOT_HEAD
+	path = /obj/item/clothing/head/cowboyhat
+
+/datum/gear/cowboyhat/black
+	name = "Cowboy Hat, Black"
+	category = SLOT_HEAD
+	path = /obj/item/clothing/head/cowboyhat/black
+
+/datum/gear/cowboyhat/white
+	name = "Cowboy Hat, White"
+	category = SLOT_HEAD
+	path = /obj/item/clothing/head/cowboyhat/white
+
+/datum/gear/cowboyhat/pink
+	name = "Cowboy Hat, Pink"
+	category = SLOT_HEAD
+	path = /obj/item/clothing/head/cowboyhat/pink
+
+/datum/gear/cowboyhat/sec
+	name = "Cowboy Hat, Security"
+	category = SLOT_HEAD
+	path = /obj/item/clothing/head/cowboyhat/sec
+	restricted_desc = "Security"
+	restricted_roles = list("Warden","Detective","Security Officer","Head of Security")
 
 /datum/gear/pharaohmhat
 	name = "Pharaoh Hat"

@@ -1,6 +1,6 @@
 /obj/screen/mov_intent
 	icon = 'modular_citadel/icons/ui/screen_midnight.dmi'
-
+/*
 /obj/screen/sprintbutton
 	name = "toggle sprint"
 	icon = 'modular_citadel/icons/ui/screen_midnight.dmi'
@@ -39,3 +39,4 @@
 	if(L.sprint_buffer_max > 0)
 		amount = round(CLAMP((L.sprint_buffer / L.sprint_buffer_max) * 100, 0, 100), 5)
 	icon_state = "prog_bar_[amount]"
+*/

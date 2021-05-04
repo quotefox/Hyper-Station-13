@@ -36,7 +36,9 @@
 		/obj/item/reagent_containers/syringe,
 		/obj/item/screwdriver,
 		/obj/item/valentine,
-		/obj/item/stamp))
+		/obj/item/stamp,
+		/obj/item/condom,
+		/obj/item/stack/credits))
 
 /obj/item/storage/wallet/Exited(atom/movable/AM)
 	. = ..()

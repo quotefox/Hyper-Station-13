@@ -2,6 +2,7 @@
 	name = "Nar-Sian speaker"
 	desc = "Obsessed with forbidden knowledge regarding the blood cult, you've learned how to speak their ancient language."
 	value = 1
+	category = CATEGORY_LANGUAGES
 	gain_text = "<span class='notice'>Your mind feels sensitive to the slurred, ancient language of Nar'Sian cultists.</span>"
 	lose_text = "<span class='notice'>You forget how to speak Nar'Sian!</span>"
 
@@ -17,6 +18,7 @@
 	name = "Ratvarian speaker"
 	desc = "Obsessed with the inner workings of the clock cult, you've learned how to speak their language."
 	value = 1
+	category = CATEGORY_LANGUAGES
 	gain_text = "<span class='notice'>Your mind feels sensitive to the ancient language of Ratvarian cultists.</span>"
 	lose_text = "<span class='notice'>You forget how to speak Ratvarian!</span>"
 
@@ -32,6 +34,7 @@
 	name = "Encoded Audio speaker"
 	desc = "You've been augmented with language encoders, allowing you to understand encoded audio."
 	value = 1
+	category = CATEGORY_LANGUAGES
 	gain_text = "<span class='notice'>Your mouth feels a little weird for a moment as your language encoder kicks in.</span>"
 	lose_text = "<span class='notice'>You feel your encoded audio chip malfunction. You can no longer speak or understand the language of fax machines.</span>"
 
@@ -47,6 +50,7 @@
 	name = "Xenocommon speaker"
 	desc = "Through time observing and interacting with xenos and xeno hybrids, you've learned the intricate hissing patterns of their language."
 	value = 1
+	category = CATEGORY_LANGUAGES
 	gain_text = "<span class='notice'>You feel that you are now able to hiss in the same way xenomorphs do.</span>"
 	lose_text = "<span class='notice'>You seem to no longer know how to speak xenocommon.</span>"
 

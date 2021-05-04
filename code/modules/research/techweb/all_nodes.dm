@@ -201,7 +201,7 @@
 	display_name = "Advanced Engineering"
 	description = "Pushing the boundaries of physics, one chainsaw-fist at a time."
 	prereq_ids = list("engineering", "emp_basic")
-	design_ids = list("engine_goggles", "magboots", "forcefield_projector", "weldingmask", "rcd_loaded", "rpd", "tray_goggles_prescription", "engine_goggles_prescription", "mesons_prescription","rcd_upgrade_frames", "rcd_upgrade_simple_circuits", "double_emergency_oxygen")
+	design_ids = list("engine_goggles", "magboots", "forcefield_projector", "weldingmask", "rcd_loaded", "rpd_loaded", "tray_goggles_prescription", "engine_goggles_prescription", "mesons_prescription","rcd_upgrade_frames", "rcd_upgrade_simple_circuits", "double_emergency_oxygen")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
 	export_price = 5000
 
@@ -255,9 +255,20 @@
 	display_name = "Games and Toys"
 	description = "For the slackers on the station."
 	prereq_ids = list("comptech")
-	design_ids = list("arcade_battle", "arcade_orion", "slotmachine", "autoylathe")
+	design_ids = list("arcade_battle", "arcade_orion", "arcade_minesweeper", "slotmachine", "autoylathe")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1000)
 	export_price = 5000
+
+
+///datum/techweb_node/computer_board_gaming
+//	id = "computer_board_gaming"
+//	display_name = "Arcade Games"
+//	description = "For the slackers on the station."
+//	prereq_ids = list("comptech")
+//	design_ids = list("arcade_battle", "arcade_orion", "slotmachine") // Magic money
+//	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
+//	export_price = 2000
+
 
 /////////////////////////Bluespace tech/////////////////////////
 /datum/techweb_node/bluespace_basic //Bluespace-memery
@@ -453,16 +464,6 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3000)
 	export_price = 5000
 
-/////////////////////////Clown tech/////////////////////////
-/datum/techweb_node/clown
-	id = "clown"
-	display_name = "Clown Technology"
-	description = "Honk?!"
-	prereq_ids = list("base")
-	design_ids = list("air_horn", "honker_main", "honker_peri", "honker_targ", "honk_chassis", "honk_head", "honk_torso", "honk_left_arm", "honk_right_arm",
-	"honk_left_leg", "honk_right_leg", "mech_banana_mortar", "mech_mousetrap_mortar", "mech_honker", "mech_punching_face", "implant_trombone", "borg_transform_clown")
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-	export_price = 5000
 
 ////////////////////////Computer tech////////////////////////
 /datum/techweb_node/comptech
@@ -484,15 +485,6 @@
 	design_ids = list("hdd_basic", "hdd_advanced", "hdd_super", "hdd_cluster", "ssd_small", "ssd_micro", "netcard_basic", "netcard_advanced", "netcard_wired",
 	"portadrive_basic", "portadrive_advanced", "portadrive_super", "cardslot", "aislot", "miniprinter", "APClink", "bat_control", "bat_normal", "bat_advanced",
 	"bat_super", "bat_micro", "bat_nano", "cpu_normal", "pcpu_normal", "cpu_small", "pcpu_small")
-
-/datum/techweb_node/computer_board_gaming
-	id = "computer_board_gaming"
-	display_name = "Arcade Games"
-	description = "For the slackers on the station."
-	prereq_ids = list("comptech")
-	design_ids = list("arcade_battle", "arcade_orion", "slotmachine") // Magic money
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 1500)
-	export_price = 2000
 
 /datum/techweb_node/comp_recordkeeping
 	id = "comp_recordkeeping"
@@ -655,7 +647,7 @@
 	display_name = "Weapon Development Technology"
 	description = "Our researchers have found new to weaponize just about everything now."
 	prereq_ids = list("engineering")
-	design_ids = list("pin_testing", "tele_shield", "lasercarbine")
+	design_ids = list("pin_testing", "tele_shield", "lasercarbine", "mws_stun", "mws_lethal")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
 	export_price = 5000
 
@@ -673,7 +665,7 @@
 	display_name = "Electric Weapons"
 	description = "Weapons using electric technology"
 	prereq_ids = list("weaponry", "adv_power"  , "emp_basic")
-	design_ids = list("stunrevolver", "stunshell",  "ioncarbine")
+	design_ids = list("stunrevolver", "stunshell",  "ioncarbine", "mws_ion")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 3500)
 	export_price = 5000
 
@@ -700,7 +692,7 @@
 	display_name = "Beam Weaponry"
 	description = "Various basic beam weapons"
 	prereq_ids = list("adv_weaponry")
-	design_ids = list("temp_gun", "xray_laser")
+	design_ids = list("temp_gun", "xray_laser", "mws_xray")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	export_price = 5000
 

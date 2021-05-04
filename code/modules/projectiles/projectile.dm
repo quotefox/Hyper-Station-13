@@ -176,10 +176,6 @@
 					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir, bloodtype_to_color(H.dna.blood_type))
 				else
 					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir, bloodtype_to_color())
-			if(iscarbon(L) && !HAS_TRAIT(L, TRAIT_NOMARROW))
-				var/mob/living/carbon/C = L
-				C.bleed(damage)
-			else
 				L.add_splatter_floor(target_loca)
 		else if(impact_effect_type && !hitscan)
 			new impact_effect_type(target_loca, hitx, hity)
@@ -227,8 +223,8 @@
 	beam_segments[beam_index] = null
 
 /obj/item/projectile/Bump(atom/A)
-	var/datum/point/pcache = trajectory.copy_to()
-	if(check_ricochet(A) && check_ricochet_flag(A) && ricochets < ricochets_max)
+	if(trajectory && check_ricochet(A) && check_ricochet_flag(A) && ricochets < ricochets_max)
+		var/datum/point/pcache = trajectory.copy_to()
 		ricochets++
 		if(A.handle_ricochet(src))
 			on_ricochet(A)

@@ -10,9 +10,10 @@
 	bubble_icon = "machine"
 	weather_immunities = list("ash")
 	possible_a_intents = list(INTENT_HELP, INTENT_HARM)
-	mob_biotypes = list(MOB_SILICON)
+	mob_biotypes = MOB_SILICON
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
 	speech_span = SPAN_ROBOT
+	flags_1 = PREVENT_CONTENTS_EXPLOSION_1 | HEAR_1
 
 	var/datum/ai_laws/laws = null//Now... THEY ALL CAN ALL HAVE LAWS
 	var/last_lawchange_announce = 0
@@ -54,6 +55,11 @@
 	diag_hud_set_status()
 	diag_hud_set_health()
 
+/mob/living/silicon/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/flavor_text, "", "Silicon Flavor Text", "", MAX_FLAVOR_LEN, FALSE, TRUE, "silicon_flavor_text")
+	AddElement(/datum/element/flavor_text, "", "Temporary Flavor Text", "This should be used only for things pertaining to the current round!")
+
 /mob/living/silicon/med_hud_set_health()
 	return //we use a different hud
 
@@ -69,9 +75,6 @@
 
 /mob/living/silicon/contents_explosion(severity, target)
 	return
-
-/mob/living/silicon/prevent_content_explosion()
-	return TRUE
 
 /mob/living/silicon/proc/cancelAlarm()
 	return
@@ -411,3 +414,4 @@
 
 /mob/living/silicon/handle_high_gravity(gravity)
 	return
+

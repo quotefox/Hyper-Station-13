@@ -30,7 +30,7 @@
 	ventcrawler = 1
 	death_sound = 'sound/voice/ed209_20sec.ogg'
 	deathmessage = "lets out scream and its tentacles shrivel away..."
-	move_to_delay = 2
+	move_to_delay = 4
 	loot = list(/obj/effect/gibspawner/human)
 
 	atmos_requirements = list("min_oxy" = 5, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)

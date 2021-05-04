@@ -590,7 +590,6 @@
 	item_state = "coatcentcom"
 	armor = list("melee" = 40, "bullet" = 45, "laser" = 45, "energy" = 35, "bomb" = 40, "bio" = 25, "rad" = 25, "fire" = 35, "acid" = 50)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/centcom
-	roomy = TRUE
 
 /obj/item/clothing/suit/hooded/wintercoat/centcom/Initialize()
 	. = ..()
@@ -599,7 +598,6 @@
 /obj/item/clothing/head/hooded/winterhood/centcom
 	icon_state = "winterhood_centcom"
 	armor = list("melee" = 40, "bullet" = 45, "laser" = 45, "energy" = 35, "bomb" = 40, "bio" = 25, "rad" = 25, "fire" = 35, "acid" = 50)
-	roomy = TRUE
 
 /obj/item/clothing/suit/hooded/wintercoat/captain
 	name = "captain's winter coat"
@@ -637,6 +635,7 @@
 	icon_state = "coatsecuritypink"
 	item_state = "coatsecuritypink"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/pink
+	price = 5
 
 /obj/item/clothing/suit/hooded/wintercoat/security/Initialize()
 	. = ..()
@@ -956,3 +955,20 @@
 
 /obj/item/clothing/head/hooded/winterhood/durathread
 	icon_state = "winterhood_durathread"
+
+//Enzo_Leon Patron stuff
+/obj/item/clothing/suit/toggle/enzojacket
+	name = "Altevain Colony-Ship Command Jacket"
+	desc = "A comfortable form fitting jacket that has a little cheese emblem on the chest."
+	icon_state = "enzojacket"
+	item_state = "enzojacket"
+	body_parts_covered = CHEST|ARMS
+//End
+
+//Might get moved later since I have no clue where to put this stuff for now - Luke_vale
+/obj/item/clothing/suit/toggle/labcoat/formallab
+	name = "winter labcoat"
+	desc = "A stark white labcoat, thicker and kitted out with extra fluff to keep you warm even on the coldest of mad sceinctist nights."
+	icon_state = "labcoat_formal"
+	item_state = "labcoat_formal"
+	body_parts_covered = CHEST|ARMS

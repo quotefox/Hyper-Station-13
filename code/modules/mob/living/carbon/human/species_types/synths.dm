@@ -4,8 +4,8 @@
 	say_mod = "beep boops" //inherited from a user's real species
 	sexes = 0
 	species_traits = list(NOTRANSSTING,NOGENITALS,NOAROUSAL) //all of these + whatever we inherit from the real species
-	inherent_traits = list(TRAIT_VIRUSIMMUNE,TRAIT_NODISMEMBER,TRAIT_NOHUNGER,TRAIT_NOBREATH)
-	inherent_biotypes = list(MOB_ROBOTIC, MOB_HUMANOID)
+	inherent_traits = list(TRAIT_VIRUSIMMUNE,TRAIT_NODISMEMBER,TRAIT_NOHUNGER,TRAIT_NOTHIRST,TRAIT_NOBREATH)
+	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	dangerous_existence = 1
 	blacklisted = 1
 	meat = null
@@ -13,7 +13,7 @@
 	damage_overlay_type = "synth"
 	limbs_id = "synth"
 	var/list/initial_species_traits = list(NOTRANSSTING) //for getting these values back for assume_disguise()
-	var/list/initial_inherent_traits = list(TRAIT_VIRUSIMMUNE,TRAIT_NODISMEMBER,TRAIT_NOHUNGER,TRAIT_NOLIMBDISABLE,TRAIT_NOBREATH)
+	var/list/initial_inherent_traits = list(TRAIT_VIRUSIMMUNE,TRAIT_NODISMEMBER,TRAIT_NOHUNGER,TRAIT_NOTHIRST,TRAIT_NOLIMBDISABLE,TRAIT_NOBREATH)
 	var/disguise_fail_health = 75 //When their health gets to this level their synthflesh partially falls off
 	var/datum/species/fake_species = null //a species to do most of our work for us, unless we're damaged
 

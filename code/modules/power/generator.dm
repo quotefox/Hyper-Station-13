@@ -18,8 +18,8 @@
 	var/grumping = 0 // is the engine currently doing grumpy things
 	var/list/grump_prefix = list("an upsetting", "an unsettling",
 	"a scary", "a loud", "a sassy", "a grouchy", "a grumpy",
-	"an awful", "a horrible", "a despicable", "a pretty rad", "a godawful")
-	var/list/grump_suffix = list("noise", "racket", "ruckus", "sound", "clatter", "fracas", "hubbub")
+	"an awful", "a horrible", "a despicable", "a pretty rad", "a godawful, a wocky")
+	var/list/grump_suffix = list("noise", "racket", "ruckus", "sound", "clatter", "fracas", "hubbub, slush")
 	var/sound_engine1 = 'sound/machines/tractor_running.ogg'
 	var/sound_engine2 = 'sound/machines/engine_highpower.ogg'
 	var/sound_tractorrev = 'sound/machines/tractorrev.ogg'
@@ -89,7 +89,7 @@
 				var/energy_transfer = delta_temperature*hot_air_heat_capacity*cold_air_heat_capacity/(hot_air_heat_capacity+cold_air_heat_capacity)
 
 				var/heat = energy_transfer*(1-efficiency)
-				lastgen += energy_transfer*efficiency
+				lastgen += LOGISTIC_FUNCTION(500000,0.0009,delta_temperature,10000)
 
 				hot_air.temperature = hot_air.temperature - energy_transfer/hot_air_heat_capacity
 				cold_air.temperature = cold_air.temperature + heat/cold_air_heat_capacity

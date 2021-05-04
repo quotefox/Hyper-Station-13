@@ -69,6 +69,11 @@
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/stack/sheet/mineral/gold(location)
 
+/datum/chemical_reaction/cellulose_carbonization
+	results = list(/datum/reagent/carbon = 1)
+	required_reagents = list(/datum/reagent/cellulose = 1)
+	required_temp = 512
+
 /datum/chemical_reaction/capsaicincondensation
 	name = "Capsaicincondensation"
 	id = /datum/reagent/consumable/condensedcapsaicin
@@ -235,7 +240,7 @@
 		var/datum/disease/advance/D = locate(/datum/disease/advance) in B.data["viruses"]
 		if(D)
 			D.Evolve(level_min, level_max)
-			
+
 /datum/chemical_reaction/mix_virus/mix_virus_2
 
 	name = "Mix Virus 2"
@@ -716,3 +721,11 @@
 	required_reagents = list(/datum/reagent/medicine/salglu_solution = 1, /datum/reagent/iron = 1, /datum/reagent/stable_plasma = 1)
 	mix_message = "The mixture congeals and gives off a faint copper scent."
 	required_temp = 350
+
+/datum/chemical_reaction/hellwater
+	name = "Hell Water"
+	id = /datum/reagent/hellwater
+	results = list(/datum/reagent/hellwater = 1)
+	required_reagents = list(/datum/reagent/water/holywater = 1)
+	required_temp = 666
+	mob_react = FALSE

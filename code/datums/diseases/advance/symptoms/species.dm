@@ -14,7 +14,7 @@
 
 /datum/symptom/undead_adaptation/OnRemove(datum/disease/advance/A)
 	A.process_dead = FALSE
-	A.infectable_biotypes -= MOB_UNDEAD
+	A.infectable_biotypes &= ~MOB_UNDEAD
 
 /datum/symptom/inorganic_adaptation
 	name = "Inorganic Biology"
@@ -30,4 +30,4 @@
 	A.infectable_biotypes |= MOB_INORGANIC
 
 /datum/symptom/inorganic_adaptation/OnRemove(datum/disease/advance/A)
-	A.infectable_biotypes -= MOB_INORGANIC
+	A.infectable_biotypes &= ~MOB_INORGANIC

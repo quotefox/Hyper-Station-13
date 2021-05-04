@@ -421,7 +421,8 @@
 			var/washmask = TRUE
 			var/washears = TRUE
 			var/washglasses = TRUE
-
+			for(var/obj/item/bodypart/BP in H.bodyparts)
+				BP.writtentext = ""
 			if(H.wear_suit)
 				washgloves = !(H.wear_suit.flags_inv & HIDEGLOVES)
 				washshoes = !(H.wear_suit.flags_inv & HIDESHOES)
@@ -452,6 +453,7 @@
 				H.update_inv_wear_mask()
 			else
 				H.lip_style = null
+				H.nail_style = null
 				H.update_body()
 			if(H.glasses && washglasses && wash_obj(H.glasses))
 				H.update_inv_glasses()
@@ -491,7 +493,7 @@
 		return PROCESS_KILL
 
 /obj/machinery/shower/deconstruct(disassembled = TRUE)
-	new /obj/item/stack/sheet/metal (loc, 3)
+	new /obj/item/stack/sheet/metal (loc, 2)
 	qdel(src)
 
 /obj/machinery/shower/proc/check_heat(mob/living/carbon/C)

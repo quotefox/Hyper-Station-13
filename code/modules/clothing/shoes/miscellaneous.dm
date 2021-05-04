@@ -137,6 +137,7 @@
 	desc = "A pair of knee-high jackboots, complete with heels. All style, all the time."
 	icon_state = "jackboots-tall"
 	item_state = "jackboots-tall"
+	price = 5
 
 /obj/item/clothing/shoes/jackboots/fast
 	slowdown = -1
@@ -371,6 +372,11 @@
 		lightCycle = 0
 		active = FALSE
 
+/obj/item/clothing/shoes/footwraps
+	name = "cloth footwraps"
+	desc = "A roll of treated canvas used for wrapping claws or paws."
+	icon_state = "foot_wraps"
+
 /obj/item/clothing/shoes/wraps
 	name = "gilded leg wraps"
 	desc = "Ankle coverings. These ones have a golden design."
@@ -391,6 +397,16 @@
 	name = "blue leg wraps"
 	desc = "Ankle coverings. Hang ten, brother."
 	icon_state = "bluecuffs"
+
+/obj/item/clothing/shoes/cowboyboots
+	name = "cowboy boots"
+	desc = "A standard pair of brown cowboy boots."
+	icon_state = "cowboyboots"
+
+/obj/item/clothing/shoes/cowboyboots/black
+	name = "black cowboy boots"
+	desc = "A pair of black cowboy boots, pretty easy to scuff up."
+	icon_state = "cowboyboots_black"
 
 /obj/item/clothing/shoes/winterboots/christmasbootsr
 	name = "red christmas boots"

@@ -13,6 +13,8 @@ var/const/RESIZE_MICRO = 0.25
 	var/size_multiplier = 1 //multiplier for the mob's icon size atm
 	var/previous_size = 1
 
+//Cyanosis - Action that resizes the sprite for the client but nobody else. Say goodbye to attacking yourself when someone's above you lmao
+	var/datum/action/sizecode_resize/small_sprite
 
 #define MOVESPEED_ID_SIZE      "SIZECODE"
 #define MOVESPEED_ID_STOMP     "STEPPY"
@@ -44,7 +46,7 @@ mob/living/get_effective_size()
 	if(size_multiplier == previous_size)
 		return 1
 	src.update_transform() //WORK DAMN YOU
-	src.update_mobsize() 
+	src.update_mobsize()
 	//Going to change the health and speed values too
 	src.remove_movespeed_modifier(MOVESPEED_ID_SIZE)
 	src.add_movespeed_modifier(MOVESPEED_ID_SIZE, multiplicative_slowdown = (abs(size_multiplier - 1) * 0.8 ))
@@ -60,6 +62,13 @@ mob/living/get_effective_size()
 	//if(src.size_multiplier >= RESIZE_A_HUGEBIG || src.size_multiplier <= RESIZE_A_TINYMICRO) Will remove clothing when too big or small. Will do later.
 	previous_size = size_multiplier //And, change this now that we are finally done.
 
+	//Now check if the mob can get the size action
+	if(!small_sprite)
+		small_sprite = new(src)
+	small_sprite.Remove(src)
+	if(size_multiplier >= 1.25)	//Anything bigger will start to block things
+		small_sprite.Grant(src)
+
 //handle the big steppy, except nice
 /mob/living/proc/handle_micro_bump_helping(var/mob/living/tmob)
 	if(ishuman(src))
@@ -67,7 +76,7 @@ mob/living/get_effective_size()
 
 		if(tmob.pulledby == H)
 			return 0
-		
+
 		//Micro is on a table.
 		var/turf/steppyspot = tmob.loc
 		for(var/thing in steppyspot.contents)
@@ -91,6 +100,7 @@ mob/living/get_effective_size()
 					tmob.visible_message("<span class='notice'>[src] carefully slithers around [tmob].</span>", "<span class='notice'>[src]'s huge tail slithers besides you.</span>")
 				else
 					tmob.visible_message("<span class='notice'>[src] carefully steps over [tmob].</span>", "<span class='notice'>[src] steps over you carefully.</span>")
+
 				return 1
 
 		//Smaller person stepping under a larger person
@@ -133,7 +143,20 @@ mob/living/get_effective_size()
 						tmob.visible_message("<span class='danger'>[src] carefully rolls their tail over [tmob]!</span>", "<span class='danger'>[src]'s huge tail rolls over you!</span>")
 					else
 						tmob.visible_message("<span class='danger'>[src] carefully steps on [tmob]!</span>", "<span class='danger'>[src] steps onto you with force!</span>")
-					return 1
+
+					//horny traits
+
+					if(HAS_TRAIT(src, TRAIT_MICROPHILE))
+						src.adjustArousalLoss(8)
+						if (src.getArousalLoss() >= 100 && ishuman(tmob) && tmob.has_dna())
+							src.mob_climax(forced_climax=TRUE)
+
+					if(HAS_TRAIT(tmob, TRAIT_MACROPHILE))
+						tmob.adjustArousalLoss(10)
+						if (tmob.getArousalLoss() >= 100 && ishuman(tmob) && tmob.has_dna())
+							tmob.mob_climax(forced_climax=TRUE)
+
+						return 1
 
 			if(H.a_intent == "harm" && H.canmove && !H.buckled)
 				now_pushing = 0
@@ -149,6 +172,19 @@ mob/living/get_effective_size()
 						tmob.visible_message("<span class='danger'>[src] mows down [tmob] under their tail!</span>", "<span class='userdanger'>[src] plows their tail over you mercilessly!</span>")
 					else
 						tmob.visible_message("<span class='danger'>[src] slams their foot down on [tmob], crushing them!</span>", "<span class='userdanger'>[src] crushes you under their foot!</span>")
+
+					//horny traits
+
+					if(HAS_TRAIT(src, TRAIT_MICROPHILE))
+						src.adjustArousalLoss((get_effective_size()/tmob.get_effective_size()*3))
+						if (src.getArousalLoss() >= 100 && ishuman(tmob) && tmob.has_dna())
+							src.mob_climax(forced_climax=TRUE)
+
+					if(HAS_TRAIT(tmob, TRAIT_MACROPHILE))
+						tmob.adjustArousalLoss((get_effective_size()/tmob.get_effective_size()*3))
+						if (tmob.getArousalLoss() >= 100 && ishuman(tmob) && tmob.has_dna())
+							tmob.mob_climax(forced_climax=TRUE)
+
 					return 1
 
 			if(H.a_intent == "grab" && H.canmove && !H.buckled)
@@ -215,7 +251,7 @@ mob/living/get_effective_size()
 		mob_size = 2 //the default human size
 	if(size_multiplier > 1)
 		mob_size = 3
-			
+
 //Proc for instantly grabbing valid size difference. Code optimizations soon(TM)
 /*
 /mob/living/proc/sizeinteractioncheck(var/mob/living/tmob)

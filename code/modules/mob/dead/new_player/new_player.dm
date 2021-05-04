@@ -303,6 +303,7 @@
 	if(observer.client && observer.client.prefs)
 		observer.real_name = observer.client.prefs.real_name
 		observer.name = observer.real_name
+		observer.client.init_verbs()
 	observer.update_icon()
 	observer.stop_sound_channel(CHANNEL_LOBBYMUSIC)
 	QDEL_NULL(mind)
@@ -389,11 +390,15 @@
 		if(!arrivals_docked)
 			var/obj/screen/splash/Spl = new(character.client, TRUE)
 			Spl.Fade(TRUE)
-			character.playsound_local(get_turf(character), 'sound/voice/ApproachingTG.ogg', 25)
+			if(!prob(1))
+				character.playsound_local(get_turf(character), 'sound/voice/Approaching.ogg', 25)
+			else
+				character.playsound_local(get_turf(character), 'sound/voice/boat.ogg', 35) //boatbomber easter egg. (love your videos man, thanks for visiting!)
 
 		character.update_parallax_teleport()
 
 	SSticker.minds += character.mind
+	character.client.init_verbs() // init verbs for the late join
 
 	var/mob/living/carbon/human/humanc
 	if(ishuman(character))
@@ -587,14 +592,12 @@
 		mind.transfer_to(H)					//won't transfer key since the mind is not active
 
 	H.name = real_name
+	client.init_verbs()
 		//h13 assign your characters custom height.
 	if (H.custom_body_size) //Do they have it set?
-		//H.size_multiplier =  (max(min( round((H.custom_body_size)), MAX_BODYSIZE),MIN_BODYSIZE)* 0.01) //Old method
 		H.resize(H.custom_body_size * 0.01)
-	//h13 give your starting impregchance (30%)
 	if (H.breedable == TRUE)
-		H.impregchance = 30
-
+		H.impregchance = 25
 	. = H
 	new_character = .
 	if(transfer_after)

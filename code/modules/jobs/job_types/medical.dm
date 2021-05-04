@@ -22,10 +22,10 @@ Chief Medical Officer
 
 	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_HEADS, ACCESS_MINERAL_STOREROOM,
 			ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_CMO, ACCESS_SURGERY, ACCESS_RC_ANNOUNCE,
-			ACCESS_KEYCARD_AUTH, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS)
+			ACCESS_KEYCARD_AUTH, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_PSYCH)
 	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_HEADS, ACCESS_MINERAL_STOREROOM,
 			ACCESS_CHEMISTRY, ACCESS_VIROLOGY, ACCESS_CMO, ACCESS_SURGERY, ACCESS_RC_ANNOUNCE,
-			ACCESS_KEYCARD_AUTH, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS)
+			ACCESS_KEYCARD_AUTH, ACCESS_SEC_DOORS, ACCESS_MAINT_TUNNELS, ACCESS_PSYCH)
 
 	blacklisted_quirks = list(/datum/quirk/mute, /datum/quirk/brainproblems, /datum/quirk/insanity)
 
@@ -42,7 +42,7 @@ Chief Medical Officer
 	suit = /obj/item/clothing/suit/toggle/labcoat/cmo
 	l_hand = /obj/item/storage/firstaid/regular
 	suit_store = /obj/item/flashlight/pen
-	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1)
+	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced = 1)
 
 	backpack = /obj/item/storage/backpack/medic
 	satchel = /obj/item/storage/backpack/satchel/med
@@ -221,7 +221,6 @@ Virologist
 	satchel = /obj/item/storage/backpack/satchel/vir
 	duffelbag = /obj/item/storage/backpack/duffelbag/med
 
-
 /*
 Junior Doctor
 */
@@ -243,6 +242,7 @@ Junior Doctor
 
 	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_GENETICS, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_SURGERY, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM)
+	override_roundstart_spawn = /obj/effect/landmark/start/medical_doctor
 
 /datum/outfit/job/doctor/junior
 	name = "Medical Resident"
@@ -262,8 +262,40 @@ Junior Doctor
 
 	chameleon_extras = /obj/item/gun/syringe
 
-/datum/job/junior_doctor/after_spawn(mob/living/carbon/human/H, mob/M) //Instead of going through the process of adding spawnpoints
-	var/turf/T
-	var/spawn_point = locate(/obj/effect/landmark/start/medical_doctor) in GLOB.start_landmarks_list
-	T = get_turf(spawn_point)
-	H.Move(T)
+/*
+Psychologist
+*/
+/datum/job/psychologist
+	title = "Psychologist"
+	flag = MED_PSYCH
+	department_head = list("Chief Medical Officer", "Head of Personnel")
+	department_flag = MEDSCI
+	faction = "Station"
+	total_positions = 1
+	spawn_positions = 1
+	minimal_player_age = 1
+	supervisors = "the chief medical officer, and head of personnel"
+	selection_color = "#ffeef0"
+	exp_requirements = 240
+	exp_type = EXP_TYPE_CREW
+
+	outfit = /datum/outfit/job/doctor/psychologist
+
+	access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM, ACCESS_PSYCH)
+	minimal_access = list(ACCESS_MEDICAL, ACCESS_MORGUE, ACCESS_CLONING, ACCESS_MINERAL_STOREROOM, ACCESS_PSYCH)
+
+/datum/outfit/job/doctor/psychologist
+	name = "Psychologist"
+	jobtype = /datum/job/psychologist
+
+	belt = /obj/item/pda/medical
+	ears = /obj/item/radio/headset/headset_med
+	uniform = /obj/item/clothing/under/lawyer/blacksuit
+	shoes = /obj/item/clothing/shoes/laceup
+	l_hand = /obj/item/clipboard
+
+	backpack_contents = list(/obj/item/storage/pill_bottle/mannitol, /obj/item/storage/pill_bottle/psicodine, /obj/item/storage/pill_bottle/paxpsych, /obj/item/storage/pill_bottle/happinesspsych, /obj/item/storage/pill_bottle/lsdpsych)
+
+	backpack = /obj/item/storage/backpack/medic
+	satchel = /obj/item/storage/backpack/satchel/med
+	duffelbag = /obj/item/storage/backpack/duffelbag/med

@@ -21,6 +21,10 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 50
 	dog_fashion = /datum/dog_fashion/head
+	grind_results = list(/datum/reagent/cellulose = 2)
+
+	drop_sound = 'sound/items/handling/paper_drop.ogg'
+	pickup_sound =  'sound/items/handling/paper_pickup.ogg'
 
 	var/info		//What's actually written on the paper.
 	var/info_links	//A different version of the paper which includes html links at fields and EOF
@@ -92,7 +96,7 @@
 /obj/item/paper/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>Alt-click to fold it.</span>"
-	if(oui_canview(user))
+	if((in_range(user, src)))
 		ui.render(user)
 	else
 		. += "<span class='warning'>You're too far away to read it!</span>"
@@ -142,6 +146,7 @@
 	var/locid = 0
 	var/laststart = 1
 	var/textindex = 1
+	playsound(src, 'sound/items/handling/writing.ogg', 50, 1, -1)
 	while(locid < 15)	//hey whoever decided a while(1) was a good idea here, i hate you
 		var/istart = 0
 		if(links)

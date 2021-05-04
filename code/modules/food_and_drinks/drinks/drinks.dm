@@ -217,6 +217,7 @@
 	resistance_flags = FREEZE_PROOF
 	isGlass = FALSE
 	foodtype = BREAKFAST
+	price = 2
 
 //Used by MREs
 /obj/item/reagent_containers/food/drinks/coffee/type2
@@ -240,6 +241,7 @@
 	icon_state = "tea"
 	item_state = "coffee"
 	spillable = TRUE
+	price = 2
 
 /* Doesn't exist lol
 /datum/chemical_reaction/catnip_tea
@@ -259,6 +261,7 @@
 	name = "Duke Purple tea"
 	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
 	list_reagents = list(/datum/reagent/consumable/tea = 30)
+	price = 2
 
 /obj/item/reagent_containers/food/drinks/mug/coco
 	name = "Dutch hot coco"
@@ -276,6 +279,7 @@
 	list_reagents = list(/datum/reagent/consumable/dry_ramen = 30)
 	foodtype = GRAIN
 	isGlass = FALSE
+	price = 3
 
 /obj/item/reagent_containers/food/drinks/beer
 	name = "space beer"
@@ -414,6 +418,7 @@
 	reagent_flags = NONE
 	spillable = FALSE
 	isGlass = FALSE
+	price = 2
 
 /obj/item/reagent_containers/food/drinks/soda_cans/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] is trying to eat \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -535,6 +540,7 @@
 /obj/item/reagent_containers/food/drinks/soda_cans/monkey_energy
 	name = "Monkey Energy"
 	desc = "Unleash the ape!"
-	icon_state = "monkey_energy"
+	icon_state = "menergy"
 	list_reagents = list(/datum/reagent/consumable/monkey_energy = 50)
 	foodtype = SUGAR | JUNKFOOD
+	price = 3

@@ -10,7 +10,7 @@
 	icon_state = "leaper"
 	icon_living = "leaper"
 	icon_dead = "leaper_dead"
-	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	maxHealth = 300
 	health = 300
 	ranged = TRUE
@@ -128,7 +128,7 @@
 
 /mob/living/simple_animal/hostile/jungle/leaper/Initialize()
 	. = ..()
-	verbs -= /mob/living/verb/pulled
+	remove_verb(src, /mob/living/verb/pulled)
 
 /mob/living/simple_animal/hostile/jungle/leaper/CtrlClickOn(atom/A)
 	face_atom(A)

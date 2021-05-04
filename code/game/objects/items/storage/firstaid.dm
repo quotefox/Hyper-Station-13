@@ -324,7 +324,7 @@
 
 /obj/item/storage/pill_bottle/mutarad
 	name = "radiation treatment deluxe pill bottle"
-	desc = "The label says 'Med-Co branded pills' and below that 'Contains Mutadone in each pill!`."
+	desc = "The label says 'Med-Co branded pills' and below that 'Contains Mutadone in each pill!'."
 
 /obj/item/storage/pill_bottle/mutarad/PopulateContents()
 	for(var/i in 1 to 7)
@@ -340,7 +340,7 @@
 
 /obj/item/storage/pill_bottle/breast_enlargement
 	name = "breast enlargement pills"
-	desc = "Made by Fermichem - They have a woman with breasts larger than she is on them. The warming states not to take more than 10u at a time."
+	desc = "Made by Fermichem - They have a woman with breasts larger than she is on them. The warning states not to take more than 10u at a time."
 
 /obj/item/storage/pill_bottle/breast_enlargement/PopulateContents()
 	for(var/i in 1 to 7)
@@ -389,3 +389,28 @@
 	/obj/item/organ_storage
 	))
 
+//Psych Pillbottles
+
+/obj/item/storage/pill_bottle/happinesspsych
+	name = "happiness pill bottle"
+	desc = "Contains pills used as a last resort means to temporarily stabilize depression and anxiety. WARNING: side effects may include slurred speech, drooling, and severe addiction."
+
+/obj/item/storage/pill_bottle/happinesspsych/PopulateContents()
+	for(var/i in 1 to 5)
+		new /obj/item/reagent_containers/pill/happinesspsych(src)
+
+/obj/item/storage/pill_bottle/lsdpsych
+	name = "mindbreaker toxin pill bottle"
+	desc = "!FOR THERAPEUTIC USE ONLY! Contains pills used to alleviate the symptoms of Reality Dissociation Syndrome."
+
+/obj/item/storage/pill_bottle/lsdpsych/PopulateContents()
+	for(var/i in 1 to 5)
+		new /obj/item/reagent_containers/pill/lsdpsych(src)
+
+/obj/item/storage/pill_bottle/paxpsych
+	name = "pacification pill"
+	desc = "Contains pills used to temporarily pacify patients that are deemed a harm to themselves or others."
+
+/obj/item/storage/pill_bottle/paxpsych/PopulateContents()
+	for(var/i in 1 to 5)
+		new /obj/item/reagent_containers/pill/paxpsych(src)

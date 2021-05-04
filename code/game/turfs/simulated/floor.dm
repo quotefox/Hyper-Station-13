@@ -250,8 +250,10 @@
 			to_chat(user, "<span class='notice'>You build an airlock.</span>")
 			var/obj/machinery/door/airlock/A = new the_rcd.airlock_type(src)
 			A.setDir(the_rcd.airlock_dir)
+			A.basecolor = the_rcd.airlock_color_base
+			A.stripcolor = the_rcd.airlock_color_strip
 			A.electronics = new/obj/item/electronics/airlock(A)
-
+			A.set_airlock_overlays(1) //need to update the overlays to update the colors
 			if(the_rcd.conf_access)
 				A.electronics.accesses = the_rcd.conf_access.Copy()
 			A.electronics.one_access = the_rcd.use_one_access

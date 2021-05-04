@@ -9,7 +9,7 @@
 	throw_speed = 3
 	var/mob/living/carbon/subject = null
 	var/closed = FALSE
-
+	price = 10
 
 
 //Hypnotize someone
@@ -36,7 +36,7 @@
 		H.drowsyness = max(H.drowsyness, 40)
 		subject = H
 		return
-	
+
 	//No
 	H.visible_message("<span class='warning'>[H]'s attention breaks, despite your attempts to hypnotize them! They clearly don't want this</span>", "<span class ='warning'>Your concentration breaks as you realise you have no interest in following [user]'s words!</span>")
 
@@ -58,7 +58,7 @@
 		if(get_dist(user, subject) > 1)
 			to_chat(user, "You must stand in whisper range of [subject].")
 			return
-		
+
 		text = input("What would you like to suggest?", "Hypnotic suggestion", null, null)
 		text = sanitize(text)
 		if(!text)
@@ -88,4 +88,4 @@
 	item_state = "pocketwatch"
 	desc = "An elaborate pocketwatch, with a captivating gold etching and an enchanting face..."
 	closed = FALSE
-	
+

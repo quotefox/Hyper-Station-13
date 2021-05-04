@@ -11,6 +11,9 @@
  * Brass (clockwork cult)
  * Bronze (bake brass)
  * Cotton/Duracotton
+ * Shwadon
+ *
+ *
  */
 
 /*
@@ -20,8 +23,11 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe_list("seats", \
 		list( \
 		new/datum/stack_recipe("stool", /obj/structure/chair/stool, one_per_turf = TRUE, on_floor = TRUE), \
-		new/datum/stack_recipe("bar stool", /obj/structure/chair/stool/bar, one_per_turf = TRUE, on_floor = TRUE), \
 		new/datum/stack_recipe("chair", /obj/structure/chair, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("dark chair", /obj/structure/chair/dark, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("folding chair", /obj/structure/chair/foldingchair, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("mounted chair", /obj/structure/chair/mountchair, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("bar stool", /obj/structure/chair/stool/bar, one_per_turf = TRUE, on_floor = TRUE), \
 		null, \
 		new/datum/stack_recipe("dark office chair", /obj/structure/chair/office/dark, 5, one_per_turf = TRUE, on_floor = TRUE), \
 		new/datum/stack_recipe("light office chair", /obj/structure/chair/office/light, 5, one_per_turf = TRUE, on_floor = TRUE), \
@@ -30,6 +36,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 		new/datum/stack_recipe("black comfy chair", /obj/structure/chair/comfy/black, 2, one_per_turf = TRUE, on_floor = TRUE), \
 		new/datum/stack_recipe("brown comfy chair", /obj/structure/chair/comfy/brown, 2, one_per_turf = TRUE, on_floor = TRUE), \
 		new/datum/stack_recipe("lime comfy chair", /obj/structure/chair/comfy/lime, 2, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("blue comfy chair", /obj/structure/chair/comfy/blue, 2, one_per_turf = TRUE, on_floor = TRUE), \
 		new/datum/stack_recipe("teal comfy chair", /obj/structure/chair/comfy/teal, 2, one_per_turf = TRUE, on_floor = TRUE) \
 		)), \
 	//CIT CHANGE - adds sofas to metal recipe list
@@ -240,7 +247,7 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	resistance_flags = FLAMMABLE
 	merge_type = /obj/item/stack/sheet/mineral/wood
 	novariants = TRUE
-	grind_results = list(/datum/reagent/carbon = 20)
+	grind_results = list(/datum/reagent/cellulose = 10)
 
 /obj/item/stack/sheet/mineral/wood/Initialize(mapload, new_amount, merge = TRUE)
 	recipes = GLOB.wood_recipes
@@ -270,7 +277,7 @@ GLOBAL_LIST_INIT(bamboo_recipes, list ( \
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
 	resistance_flags = FLAMMABLE
 	merge_type = /obj/item/stack/sheet/mineral/bamboo
-	grind_results = list(/datum/reagent/carbon = 5)
+	grind_results = list(/datum/reagent/cellulose = 10)
 
 /obj/item/stack/sheet/mineral/wood/attackby(obj/item/W, mob/user, params) // NOTE: sheet_types.dm is where the WOOD stack lives. Maybe move this over there.
 	// Taken from /obj/item/stack/rods/attackby in [rods.dm]
@@ -311,6 +318,7 @@ GLOBAL_LIST_INIT(bamboo_recipes, list ( \
 GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("grey jumpsuit", /obj/item/clothing/under/color/grey, 3), \
 	new/datum/stack_recipe("black shoes", /obj/item/clothing/shoes/sneakers/black, 2), \
+	new/datum/stack_recipe("cloth footwraps", /obj/item/clothing/shoes/footwraps, 2), \
 	null, \
 	new/datum/stack_recipe("backpack", /obj/item/storage/backpack, 4), \
 	new/datum/stack_recipe("duffel bag", /obj/item/storage/backpack/duffelbag, 6), \
@@ -332,6 +340,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("black gloves", /obj/item/clothing/gloves/color/black, 3), \
 	null, \
 	new/datum/stack_recipe("blindfold", /obj/item/clothing/glasses/sunglasses/blindfold, 2), \
+	new/datum/stack_recipe("eyepatch", /obj/item/clothing/glasses/eyepatch, 2), \
 	))
 
 /obj/item/stack/sheet/cloth
@@ -347,6 +356,10 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	is_fabric = TRUE
 	loom_result = /obj/item/stack/sheet/silk
 	merge_type = /obj/item/stack/sheet/cloth
+	grind_results = list(/datum/reagent/cellulose = 4)
+
+	drop_sound = 'sound/items/handling/cloth_drop.ogg'
+	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
 
 /obj/item/stack/sheet/cloth/Initialize(mapload, new_amount, merge = TRUE)
 	recipes = GLOB.cloth_recipes
@@ -366,6 +379,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	item_state = "sheet-cloth"
 	novariants = TRUE
 	merge_type = /obj/item/stack/sheet/silk
+	grind_results = list(/datum/reagent/cellulose = 2)
 
 //obj/item/stack/sheet/silk/Initialize(mapload, new_amount, merge = TRUE)
 //	recipes = GLOB.silk_recipes
@@ -390,6 +404,12 @@ GLOBAL_LIST_INIT(durathread_recipes, list ( \
 	force = 0
 	throwforce = 0
 	merge_type = /obj/item/stack/sheet/durathread
+	grind_results = list(/datum/reagent/cellulose = 10)
+
+	drop_sound = 'sound/items/handling/cloth_drop.ogg'
+	pickup_sound =  'sound/items/handling/cloth_pickup.ogg'
+
+
 
 /obj/item/stack/sheet/durathread/Initialize(mapload, new_amount, merge = TRUE)
 	recipes = GLOB.durathread_recipes
@@ -688,6 +708,7 @@ GLOBAL_LIST_INIT(plastic_recipes, list(
 	new /datum/stack_recipe("plastic flaps", /obj/structure/plasticflaps, 5, one_per_turf = TRUE, on_floor = TRUE, time = 40), \
 	new /datum/stack_recipe("water bottle", /obj/item/reagent_containers/glass/beaker/waterbottle/empty), \
 	new /datum/stack_recipe("large water bottle", /obj/item/reagent_containers/glass/beaker/waterbottle/large/empty,3), \
+	new /datum/stack_recipe("large trash cart", /obj/structure/closet/crate/bin,50),\
 	new /datum/stack_recipe("wet floor sign", /obj/item/caution, 2)))
 
 /obj/item/stack/sheet/plastic
@@ -763,3 +784,119 @@ new /datum/stack_recipe("paper frame door", /obj/structure/mineral_door/paperfra
 	merge_type = /obj/item/stack/sheet/cotton/durathread
 	pull_effort = 70
 	loom_result = /obj/item/stack/sheet/durathread
+
+/*
+ * Shadow Wood
+ */
+GLOBAL_LIST_INIT(shadoww_recipes, list ( \
+	new/datum/stack_recipe("Shadow wood floor tile", /obj/item/stack/tile/shadoww, 1, 4, 20), \
+	new/datum/stack_recipe("Shadow wood table frame", /obj/structure/table_frame/shadoww, 2, time = 10), \
+	null, \
+	new/datum/stack_recipe("Shadow wood chair", /obj/structure/chair/shadoww, 3, time = 10, one_per_turf = TRUE, on_floor = TRUE), \
+	null, \
+	new/datum/stack_recipe("Shadow wood barricade", /obj/structure/barricade/shadoww, 5, time = 50, one_per_turf = TRUE, on_floor = TRUE), \
+	null, \
+	new/datum/stack_recipe("Dog bed", /obj/structure/bed/shadowwdogbed, 10, time = 10, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("Dresser", /obj/structure/shadowwdresser, 10, time = 15, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("shadow wood crate", /obj/structure/closet/crate/shadoww, 6, time = 50, one_per_turf = TRUE, on_floor = TRUE),\
+	null, \
+	))
+
+/obj/item/stack/sheet/mineral/shadoww
+	name = "shadow wood"
+	desc = "An purplish wood, it has nothing of special besides its color."
+	singular_name = "shadow wood plank"
+	icon_state = "sheet-shadoww"
+	item_state = "sheet-shadoww"
+	icon = 'icons/obj/stack_objects.dmi'
+	sheettype = "shadoww"
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 0)
+	resistance_flags = FLAMMABLE
+	merge_type = /obj/item/stack/sheet/mineral/shadoww
+	novariants = TRUE
+	grind_results = list(/datum/reagent/carbon = 20)
+
+/obj/item/stack/sheet/mineral/shadoww/Initialize(mapload, new_amount, merge = TRUE)
+	recipes = GLOB.shadoww_recipes
+	return ..()
+
+/obj/item/stack/sheet/mineral/shadoww/fifty
+	amount = 50
+
+/*
+ * Giant mushroom
+ */
+GLOBAL_LIST_INIT(gmushroom_recipes, list ( \
+	new/datum/stack_recipe("Mushroom floor tile", /obj/item/stack/tile/gmushroom, 1, 4, 20), \
+	new/datum/stack_recipe("Mushroom table frame", /obj/structure/table_frame/gmushroom, 2, time = 10), \
+	null, \
+	new/datum/stack_recipe("Mushroom chair", /obj/structure/chair/gmushroom, 3, time = 10, one_per_turf = TRUE, on_floor = TRUE), \
+	null, \
+	new/datum/stack_recipe("Mushroom barricade", /obj/structure/barricade/gmushroom, 5, time = 50, one_per_turf = TRUE, on_floor = TRUE), \
+	null, \
+	new/datum/stack_recipe("Dog bed", /obj/structure/bed/gmushroomdogbed, 10, time = 10, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("Dresser", /obj/structure/gmushroomdresser, 10, time = 15, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("Mushroom crate", /obj/structure/closet/crate/gmushroom, 6, time = 50, one_per_turf = TRUE, on_floor = TRUE),\
+	null, \
+	))
+
+/obj/item/stack/sheet/mineral/gmushroom
+	name = "mushroom 'wood'"
+	desc = "A material similar to wood, except for being fireproof."
+	singular_name = "mushroom plank"
+	icon_state = "sheet-gmushroom"
+	item_state = "sheet-gmushroom"
+	icon = 'icons/obj/stack_objects.dmi'
+	sheettype = "gmushroom"
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 0)
+	resistance_flags = FIRE_PROOF
+	merge_type = /obj/item/stack/sheet/mineral/gmushroom
+	novariants = TRUE
+	grind_results = list(/datum/reagent/carbon = 20)
+
+/obj/item/stack/sheet/mineral/gmushroom/Initialize(mapload, new_amount, merge = TRUE)
+	recipes = GLOB.gmushroom_recipes
+	return ..()
+
+/obj/item/stack/sheet/mineral/gmushroom/fifty
+	amount = 50
+
+/*
+ * Plaswood
+ */
+GLOBAL_LIST_INIT(plaswood_recipes, list ( \
+	new/datum/stack_recipe("Plaswood floor tile", /obj/item/stack/tile/plaswood, 1, 4, 20), \
+	new/datum/stack_recipe("Plaswood table frame", /obj/structure/table_frame/plaswood, 2, time = 10), \
+	null, \
+	new/datum/stack_recipe("Plaswood chair", /obj/structure/chair/plaswood, 3, time = 10, one_per_turf = TRUE, on_floor = TRUE), \
+	null, \
+	new/datum/stack_recipe("Plaswood barricade", /obj/structure/barricade/plaswood, 5, time = 50, one_per_turf = TRUE, on_floor = TRUE), \
+	null, \
+	new/datum/stack_recipe("Dog bed", /obj/structure/bed/plaswooddogbed, 10, time = 10, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("Dresser", /obj/structure/plaswooddresser, 10, time = 15, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("Plaswood crate", /obj/structure/closet/crate/plaswood, 6, time = 50, one_per_turf = TRUE, on_floor = TRUE),\
+	null, \
+	))
+
+/obj/item/stack/sheet/mineral/plaswood
+	name = "plaswood"
+	desc = "A type of resistant wood acquired from Plasma Trees. It amost looks like metal!"
+	singular_name = "plaswood plank"
+	icon_state = "sheet-plaswood"
+	item_state = "sheet-plaswood"
+	icon = 'icons/obj/stack_objects.dmi'
+	sheettype = "plaswood"
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 80)
+	resistance_flags = FLAMMABLE | ACID_PROOF
+	throwforce = 10
+	merge_type = /obj/item/stack/sheet/mineral/plaswood
+	novariants = TRUE
+	grind_results = list(/datum/reagent/carbon = 20, /datum/reagent/toxin/plasma = 20)
+	point_value = 23
+
+/obj/item/stack/sheet/mineral/plaswood/Initialize(mapload, new_amount, merge = TRUE)
+	recipes = GLOB.plaswood_recipes
+	return ..()
+
+/obj/item/stack/sheet/mineral/plaswood/fifty
+	amount = 50

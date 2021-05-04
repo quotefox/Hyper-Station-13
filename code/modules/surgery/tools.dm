@@ -29,7 +29,8 @@
 		icon_state = "retractor_a"
 
 /obj/item/retractor/advanced/examine(mob/living/user)
-	to_chat(user, "<span class = 'notice> It resembles a retractor[tool_behaviour == TOOL_RETRACTOR ? "retractor" : "hemostat"]. </span>")
+	. = ..()
+	. += "<span class = 'notice> It resembles a [tool_behaviour == TOOL_RETRACTOR ? "retractor" : "hemostat"]. </span>"
 
 /obj/item/retractor/augment
 	name = "retractor"
@@ -131,7 +132,8 @@
 		icon_state = "surgicaldrill_a"
 
 /obj/item/surgicaldrill/advanced/examine(mob/living/user)
-	to_chat(user, "<span class = 'notice> It's set to [tool_behaviour == TOOL_DRILL ? "drilling" : "mending"] mode.</span>")
+	. = ..()
+	. += "<span class = 'notice> It's set to [tool_behaviour == TOOL_DRILL ? "drilling" : "mending"] mode.</span>"
 
 /obj/item/surgicaldrill/augment
 	name = "surgical drill"
@@ -203,7 +205,8 @@
 		icon_state = "scalpel_a"
 
 /obj/item/scalpel/advanced/examine(mob/living/user)
-	to_chat(user, "<span class = 'notice> It's set to [tool_behaviour == TOOL_SCALPEL ? "scalpel" : "saw"] mode. </span>")
+	. = ..()
+	. += "<span class = 'notice> It's set to [tool_behaviour == TOOL_SCALPEL ? "scalpel" : "saw"] mode. </span>"
 
 /obj/item/scalpel/augment
 	name = "scalpel"
@@ -235,7 +238,6 @@
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	hitsound = 'sound/weapons/circsawhit.ogg'
-	throwhitsound =  'sound/weapons/pierce.ogg'
 	item_flags = SURGICAL_TOOL
 	flags_1 = CONDUCT_1
 	force = 15
@@ -248,6 +250,7 @@
 	sharpness = IS_SHARP
 	tool_behaviour = TOOL_SAW
 	toolspeed = 1
+	mob_throw_hit_sound =  'sound/weapons/pierce.ogg'
 
 /obj/item/circular_saw/Initialize()
 	. = ..()
@@ -260,7 +263,6 @@
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "saw"
 	hitsound = 'sound/weapons/circsawhit.ogg'
-	throwhitsound =  'sound/weapons/pierce.ogg'
 	flags_1 = CONDUCT_1
 	force = 10
 	w_class = WEIGHT_CLASS_SMALL

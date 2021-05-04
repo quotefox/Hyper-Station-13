@@ -170,7 +170,7 @@
 	var/registered_name = null // The name registered_name on the card
 	var/assignment = null
 	var/access_txt // mapping aid
-
+	var/datum/bank_account/registered_account
 
 
 /obj/item/card/id/Initialize(mapload)
@@ -272,7 +272,7 @@ update_label("John Doe", "Clowny")
 		if(user.mind.special_role || anyone)
 			if(alert(user, "Action", "Agent ID", "Show", "Forge") == "Forge")
 				var/input_name = stripped_input(user, "What name would you like to put on this card? Leave blank to randomise.", "Agent card name", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name), MAX_NAME_LEN)
-				input_name = reject_bad_name(input_name)
+				input_name = reject_bad_name(input_name, TRUE)
 				if(!input_name)
 				// Invalid/blank names give a randomly generated one.
 					if(user.gender == MALE)

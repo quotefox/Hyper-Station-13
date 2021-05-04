@@ -7,7 +7,7 @@
 	icon_living = "carp"
 	icon_dead = "carp_dead"
 	icon_gib = "carp_gib"
-	mob_biotypes = list(MOB_ORGANIC, MOB_BEAST)
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	speak_chance = 0
 	turns_per_move = 5
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/carpmeat = 2)
@@ -87,7 +87,7 @@
 	melee_damage_lower += rand(4, 10)
 	melee_damage_upper += rand(10,20)
 	maxHealth += rand(40,60)
-	move_to_delay = rand(3,7)
+	move_to_delay = rand(5,8)
 
 /mob/living/simple_animal/hostile/carp/cayenne
 	name = "Cayenne"
@@ -107,7 +107,7 @@
 	melee_damage_lower = 15
 	melee_damage_upper = 18
 	var/held_icon = "carp"
-	
+
 /mob/living/simple_animal/hostile/carp/cayenne/ComponentInitialize()
 	. = ..()
 	AddElement(/datum/element/wuv, "bloops happily!", EMOTE_AUDIBLE, /datum/mood_event/pet_animal, "gnashes!", EMOTE_AUDIBLE)

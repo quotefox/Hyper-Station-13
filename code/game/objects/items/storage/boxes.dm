@@ -35,6 +35,9 @@
 	var/illustration = "writing"
 	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE //exploits ahoy
 
+	drop_sound = 'sound/items/handling/cardboardbox_drop.ogg'
+	pickup_sound =  'sound/items/handling/cardboardbox_pickup.ogg'
+
 /obj/item/storage/box/Initialize(mapload)
 	. = ..()
 	update_icon()
@@ -415,99 +418,54 @@
 	desc = "<B>Instructions:</B> <I>Heat in microwave. Product will cool if not eaten within seven minutes.</I>"
 	icon_state = "donkpocketbox"
 	illustration=null
+	price = 10
+	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket
+	var/warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm
 
 /obj/item/storage/box/donkpockets/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket))
+	STR.can_hold = typecacheof(list(donktype, warmtype), TRUE)
 
 /obj/item/storage/box/donkpockets/PopulateContents()
 	for(var/i in 1 to 6)
-		new /obj/item/reagent_containers/food/snacks/donkpocket(src)
+		new donktype(src)
 
 /obj/item/storage/box/donkpockets/donkpocketspicy
 	name = "box of spicy-flavoured donk-pockets"
 	icon_state = "donkpocketboxspicy"
-	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket/spicy
-
-/obj/item/storage/box/donkpockets/donkpocketspicy/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket/spicy))
-
-/obj/item/storage/box/donkpockets/donkpocketspicy/PopulateContents()
-	for(var/i in 1 to 6)
-		new /obj/item/reagent_containers/food/snacks/donkpocket/spicy(src)
+	donktype = /obj/item/reagent_containers/food/snacks/donkpocket/spicy
+	warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm/spicy
 
 /obj/item/storage/box/donkpockets/donkpocketteriyaki
 	name = "box of teriyaki-flavoured donk-pockets"
 	icon_state = "donkpocketboxteriyaki"
-	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket/teriyaki
-
-/obj/item/storage/box/donkpockets/donkpocketteriyaki/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket/teriyaki))
-
-/obj/item/storage/box/donkpockets/donkpocketteriyaki/PopulateContents()
-	for(var/i in 1 to 6)
-		new /obj/item/reagent_containers/food/snacks/donkpocket/teriyaki(src)
+	donktype = /obj/item/reagent_containers/food/snacks/donkpocket/teriyaki
+	warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm/teriyaki
 
 /obj/item/storage/box/donkpockets/donkpocketpizza
 	name = "box of pizza-flavoured donk-pockets"
 	icon_state = "donkpocketboxpizza"
-	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket/pizza
-
-/obj/item/storage/box/donkpockets/donkpocketpizza/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket/pizza))
-
-/obj/item/storage/box/donkpockets/donkpocketpizza/PopulateContents()
-	for(var/i in 1 to 6)
-		new /obj/item/reagent_containers/food/snacks/donkpocket/pizza(src)
+	donktype = /obj/item/reagent_containers/food/snacks/donkpocket/pizza
+	warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm/pizza
 
 /obj/item/storage/box/donkpockets/donkpocketgondola
 	name = "box of gondola-flavoured donk-pockets"
 	icon_state = "donkpocketboxgondola"
-	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket/gondola
-
-/obj/item/storage/box/donkpockets/donkpocketgondola/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket/gondola))
-
-/obj/item/storage/box/donkpockets/donkpocketgondola/PopulateContents()
-	for(var/i in 1 to 6)
-		new /obj/item/reagent_containers/food/snacks/donkpocket/gondola(src)
+	donktype = /obj/item/reagent_containers/food/snacks/donkpocket/gondola
+	warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm/gondola
 
 /obj/item/storage/box/donkpockets/donkpocketberry
 	name = "box of berry-flavoured donk-pockets"
 	icon_state = "donkpocketboxberry"
-	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket/berry
-
-/obj/item/storage/box/donkpockets/donkpocketberry/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket/berry))
-
-/obj/item/storage/box/donkpockets/donkpocketberry/PopulateContents()
-	for(var/i in 1 to 6)
-		new /obj/item/reagent_containers/food/snacks/donkpocket/berry(src)
+	donktype = /obj/item/reagent_containers/food/snacks/donkpocket/berry
+	warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm/berry
 
 /obj/item/storage/box/donkpockets/donkpockethonk
 	name = "box of banana-flavoured donk-pockets"
 	icon_state = "donkpocketboxbanana"
-	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket/honk
-
-/obj/item/storage/box/donkpockets/donkpockethonk/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket/honk))
-
-/obj/item/storage/box/donkpockets/donkpockethonk/PopulateContents()
-	for(var/i in 1 to 6)
-		new /obj/item/reagent_containers/food/snacks/donkpocket/honk(src)
+	donktype = /obj/item/reagent_containers/food/snacks/donkpocket/honk
+	warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm/honk
 
 /obj/item/storage/box/monkeycubes
 	name = "monkey cube box"
@@ -687,6 +645,9 @@
 	item_state = "zippo"
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_BELT
+	price = 2
+	drop_sound = 'sound/items/handling/matchbox_drop.ogg'
+	pickup_sound =  'sound/items/handling/matchbox_pickup.ogg'
 
 /obj/item/storage/box/matches/ComponentInitialize()
 	. = ..()

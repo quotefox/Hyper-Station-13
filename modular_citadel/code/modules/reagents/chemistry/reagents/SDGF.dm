@@ -286,6 +286,7 @@ IMPORTANT FACTORS TO CONSIDER WHILE BALANCING
 	M.adjustCloneLoss(-2, 0)
 	M.setOrganLoss(ORGAN_SLOT_BRAIN, -1)
 	M.nutrition += 10
+	M.thirst += 10
 	..()
 
 //Unobtainable, used if SDGF is impure but not too impure

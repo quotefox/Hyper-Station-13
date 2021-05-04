@@ -760,6 +760,7 @@
 /obj/item/toy/plush/bird/kenk
 	name = "kenku plushie"
 	desc = "An adorable stuffed plushie that resembles a kenku, perfect to sit on."
+	young = TRUE
 	icon_state = "kenk"
 	item_state = "kenk"
 	squeak_override = list('modular_citadel/sound/voice/merp.ogg' = 1)

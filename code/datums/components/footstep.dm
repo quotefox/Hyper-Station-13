@@ -35,7 +35,7 @@
 			e -= 5
 	steps++
 
-	if(steps >= 3)
+	if(steps >= 2)
 		steps = 0
 
 	else
@@ -45,6 +45,12 @@
 		return
 
 	//begin playsound shenanigans//
+
+	//for big characters, add alittle boom
+	if(LM.size_multiplier > 1.5)
+		var/stompsound = pick( 'sound/effects/footstep/giant1.ogg','sound/effects/footstep/giant2.ogg')
+		var/giantvolume = LM.size_multiplier * 9
+		playsound(T, stompsound, giantvolume)
 
 	//for barefooted non-clawed mobs like monkeys
 	if(isbarefoot(LM))

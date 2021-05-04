@@ -13,7 +13,7 @@ AI
 	req_admin_notify = TRUE
 	minimal_player_age = 14
 	exp_requirements = 1800
-	//exp_type = EXP_TYPE_CREW
+	exp_type = EXP_TYPE_SILICON
 	exp_type_department = EXP_TYPE_SILICON
 	var/do_special_check = TRUE
 
@@ -21,7 +21,7 @@ AI
 	. = H.AIize(latejoin)
 
 /datum/job/ai/after_spawn(mob/H, mob/M, latejoin)
-	. = ..()
+	..()
 	if(latejoin)
 		var/obj/structure/AIcore/latejoin_inactive/lateJoinCore
 		for(var/obj/structure/AIcore/latejoin_inactive/P in GLOB.latejoin_ai_cores)

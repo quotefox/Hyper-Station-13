@@ -522,10 +522,8 @@
 		used_key_list[input_key] = 1
 	return input_key
 
-#if DM_VERSION > 513
-#error Remie said that lummox was adding a way to get a lists
-#error contents via list.values, if that is true remove this
-#error otherwise, update the version and bug lummox
+#if DM_VERSION < 513
+#error For the love of god do not compile the server below 513
 #endif
 //Flattens a keyed list into a list of it's contents
 /proc/flatten_list(list/key_list)
@@ -573,3 +571,9 @@
 			L1[key] += other_value
 		else
 			L1[key] = other_value
+
+/proc/assoc_list_strip_value(list/input)
+	var/list/ret = list()
+	for(var/key in input)
+		ret += key
+	return ret

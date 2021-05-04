@@ -206,7 +206,7 @@
 	item_state = "combatshotgun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/com
 	w_class = WEIGHT_CLASS_HUGE
-	unique_reskin = list("Tatical" = "cshotgun",
+	unique_reskin = list("Tactical" = "cshotgun",
 						"Slick" = "cshotgun_slick"
 						)
 

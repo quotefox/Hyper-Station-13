@@ -12,6 +12,7 @@
 	filling_color = "#D2691E"
 	tastes = list("candy" = 1)
 	foodtype = JUNKFOOD | SUGAR
+	price = 2
 
 /obj/item/reagent_containers/food/snacks/sosjerky
 	name = "\improper Scaredy's Private Reserve Beef Jerky"
@@ -23,6 +24,7 @@
 	filling_color = "#8B0000"
 	tastes = list("dried meat" = 1)
 	foodtype = JUNKFOOD | MEAT | SUGAR
+	price = 3
 
 /obj/item/reagent_containers/food/snacks/sosjerky/healthy
 	name = "homemade beef jerky"
@@ -41,6 +43,7 @@
 	filling_color = "#FFD700"
 	tastes = list("salt" = 1, "crisps" = 1)
 	foodtype = JUNKFOOD | FRIED
+	price = 2
 
 /obj/item/reagent_containers/food/snacks/no_raisin
 	name = "4no raisins"
@@ -52,6 +55,7 @@
 	filling_color = "#8B0000"
 	tastes = list("dried raisins" = 1)
 	foodtype = JUNKFOOD | FRUIT | SUGAR
+	price = 2
 
 /obj/item/reagent_containers/food/snacks/no_raisin/healthy
 	name = "homemade raisins"
@@ -68,6 +72,7 @@
 	junkiness = 25
 	filling_color = "#FFD700"
 	foodtype = JUNKFOOD | GRAIN | SUGAR
+	price = 4
 
 /obj/item/reagent_containers/food/snacks/cheesiehonkers
 	name = "cheesie honkers"
@@ -79,6 +84,7 @@
 	filling_color = "#FFD700"
 	tastes = list("cheese" = 5, "crisps" = 2)
 	foodtype = JUNKFOOD | DAIRY | SUGAR
+	price = 4
 
 /obj/item/reagent_containers/food/snacks/soyfood
 	name = "Soyfood"
@@ -90,6 +96,7 @@
 	filling_color = "#FFD700"
 	tastes = list("nanomachines" = 2, "soybeans" = 5)
 	foodtype = JUNKFOOD | DAIRY | GRAIN
+	price = 3
 
 /obj/item/reagent_containers/food/snacks/syndicake
 	name = "syndi-cakes"
@@ -99,7 +106,8 @@
 	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/doctor_delight = 5)
 	filling_color = "#F5F5DC"
 	tastes = list("sweetness" = 3, "cake" = 1)
-	foodtype = GRAIN | FRUIT | VEGETABLES
+	foodtype = GRAIN | FRUIT | VEGETABLES | ANTITOXIC
+	price = 5
 
 /obj/item/reagent_containers/food/snacks/carbonnanotube_noodles
 	name = "carbon nanotube noodles"
@@ -111,3 +119,4 @@
 	filling_color = "#FFD700"
 	tastes = list("charcoal" = 1, "spiciness" = 3, "soysauce" = 3)
 	foodtype = GRAIN | VEGETABLES
+	price = 3

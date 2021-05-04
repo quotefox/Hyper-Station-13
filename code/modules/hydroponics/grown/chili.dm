@@ -93,7 +93,8 @@
 	yield = 3
 	rarity = 20
 	mutatelist = list()
-	reagents_add = list("aphro" = 0.2, "penis_enlarger" = 0.08, "vitamin" = 0.04, "nutriment" = 0.04)
+	genes = list(/datum/plant_gene/reagent/fragile/penischem, /datum/plant_gene/reagent/fragile/crocin)
+	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.04)
 
 /obj/item/reagent_containers/food/snacks/grown/pink_chili
 	seed = /obj/item/seeds/chili/pink

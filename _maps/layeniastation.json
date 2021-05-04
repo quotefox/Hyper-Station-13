@@ -1,0 +1,16 @@
+{
+    "map_name": "Layenia Station",
+    "map_path": "map_files/LayeniaStation",
+    "map_file": "LayeniaStation.dmm",
+    "shuttles": {
+	    "cargo": "cargo_box",
+	    "ferry": "ferry_fancy",
+	    "whiteship": "whiteship_box",
+	    "emergency": "emergency_box"
+    },
+	"traits":[
+		{
+		   "Gravity":true
+		}
+	]
+}

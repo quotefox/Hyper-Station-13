@@ -21,19 +21,19 @@
 
 /obj/item/clothing/under/syndicate/tacticool
 	name = "tacticool turtleneck"
-	desc = "Just looking at it makes you want to buy an SKS, go into the woods, and -operate-."
-	icon_state = "tactifool"
+	desc = "A robust looking turtleneck designed to fit tightly against the body while still being comfortable."
+	icon_state = "syndicate"
 	item_state = "bl_suit"
-	item_color = "tactifool"
+	item_color = "syndicate"
 	has_sensor = HAS_SENSORS
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 40)
 
 /obj/item/clothing/under/syndicate/tacticool/skirt
 	name = "tacticool skirtleneck"
-	desc = "Just looking at it makes you want to buy an SKS, go into the woods, and -operate-."
-	icon_state = "tactifool_skirt"
+	desc = "A robust looking skirtleneck designed to fit tightly against the body while still being comfortable."
+	icon_state = "syndicate_skirt"
 	item_state = "bl_suit"
-	item_color = "tactifool_skirt"
+	item_color = "syndicate_skirt"
 	has_sensor = HAS_SENSORS
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 40)
 	fitted = FEMALE_UNIFORM_TOP

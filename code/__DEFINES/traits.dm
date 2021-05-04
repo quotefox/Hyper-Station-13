@@ -94,6 +94,7 @@
 #define TRAIT_NOFIRE			"nonflammable"
 #define TRAIT_NOGUNS			"no_guns"
 #define TRAIT_NOHUNGER			"no_hunger"
+#define TRAIT_NOTHIRST			"no_thirst"
 #define TRAIT_EASYDISMEMBER		"easy_dismember"
 #define TRAIT_LIMBATTACHMENT 	"limb_attach"
 #define TRAIT_NOLIMBDISABLE		"no_limb_disable"
@@ -169,6 +170,7 @@
 #define	TRAIT_MUSICIAN			"musician"
 #define	TRAIT_CROCRIN_IMMUNE    "crocin_immune"
 #define TRAIT_NYMPHO			"nymphomania"
+#define TRAIT_DISTANT			"headpat_hater"
 //#define TRAIT_FLUID_LEAK	"leaky_fluids" removed because milk snail trails are not okay
 #define TRAIT_MASO              "masochism"
 #define TRAIT_CHOKE_SLUT		"choke_slut"
@@ -185,6 +187,13 @@
 #define TRAIT_NEVER_CLONE       "donotclone"
 #define TRAIT_COLDBLOODED		"coldblooded"	// Your body is literal room temperature. Does not make you immune to the temp.
 #define TRAIT_FLIMSY		"flimsy" //you have 20% less maxhealth
+
+
+//Hyper
+#define TRAIT_VIRILE		"virile" //you have 20% more chance of impreg
+#define TRAIT_MACROPHILE		"macrophile" //likes the big
+#define TRAIT_MICROPHILE		"microphile" //likes the small
+
 #define TRAIT_TOUGH		"tough" //you have 10% more maxhealth
 #define TRAIT_AUTO_CATCH_ITEM	"auto_catch_item"
 #define TRAIT_CLOWN_MENTALITY	"clown_mentality" // The future is now, clownman.

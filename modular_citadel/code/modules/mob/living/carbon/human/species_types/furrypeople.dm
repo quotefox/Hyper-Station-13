@@ -4,7 +4,7 @@
 	default_color = "4B4B4B"
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,WINGCOLOR)
-	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
+	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list("mam_tail", "mam_ears", "mam_body_markings", "mam_snouts", "taur", "legs", "deco_wings")
 	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_snouts" = "Husky", "mam_tail" = "Husky", "mam_ears" = "Husky", "mam_body_markings" = "Husky", "taur" = "None", "legs" = "Normal Legs", "deco_wings" = "None")
 	attack_verb = "claw"
@@ -55,7 +55,7 @@
 	default_color = "BCAC9B"
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,WINGCOLOR)
-	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
+	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list("mam_snouts", "wings", "taur", "mam_tail", "mam_body_markings", "taur", "deco_wings")
 	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_snouts" = "Beak", "mam_body_markings" = "Hawk", "wings" = "None", "taur" = "None", "mam_tail" = "Hawk", "deco_wings" = "None")
 	attack_verb = "peck"
@@ -101,7 +101,7 @@
 	default_color = "BCAC9B"
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,WINGCOLOR)
-	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
+	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list("mam_tail", "mam_ears","mam_body_markings", "taur", "mam_snouts", "deco_wings")
 	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_tail" = "Shark", "mam_ears" = "None", "mam_body_markings" = "Shark", "mam_snouts" = "Round", "taur" = "None", "legs" = "Normal Legs", "deco_wings" = "None")
 	attack_verb = "bite"
@@ -148,7 +148,7 @@
 	default_color = "BCAC9B"
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR)
-	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID, MOB_BUG)
+	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	mutant_bodyparts = list("mam_ears", "mam_body_markings", "mam_tail", "taur", "moth_wings","moth_markings", "mam_snouts", "moth_fluff")
 	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_tail" = "None", "mam_ears" = "None", "moth_wings" = "Plain","moth_markings" = "None", "mam_snouts" = "Bug", "mam_body_markings" = "Moth", "taur" = "None", "moth_fluff" = "Plain")
 	attack_verb = "flutter" //wat?
@@ -214,7 +214,7 @@
 	default_color = "00FF00"
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,WINGCOLOR)
-	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
+	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	mutant_bodyparts = list("xenotail", "xenohead", "xenodorsal", "mam_body_markings", "taur", "legs", "deco_wings")
 	default_features = list("xenotail"="Xenomorph Tail","xenohead"="Standard","xenodorsal"="Standard", "mam_body_markings" = "Xeno","mcolor" = "0F0","mcolor2" = "0F0","mcolor3" = "0F0","taur" = "None", "legs" = "Digitigrade Legs", "deco_wings" = "None")
 	attack_verb = "slash"
@@ -251,7 +251,7 @@
 	say_mod = "beeps"
 	default_color = "00FF00"
 	species_traits = list(MUTCOLORS,NOTRANSSTING,EYECOLOR,LIPS,HAIR)
-	inherent_biotypes = list(MOB_ROBOTIC, MOB_HUMANOID)
+	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	mutant_bodyparts = list("ipc_antenna", "mam_tail", "mam_snouts", "legs", "mam_body_markings", "taur")
 	default_features = list("ipc_antenna" = "Synthetic Lizard - Antennae","mam_tail" = "Synthetic Lizard", "mam_snouts" = "Synthetic Lizard - Snout", "legs" = "Digitigrade Legs", "mam_body_markings" = "Synthetic Lizard - Plates", "taur" = "None")
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/ipc

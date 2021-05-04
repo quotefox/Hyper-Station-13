@@ -244,7 +244,7 @@
 
 /datum/reagent/toxin/pestkiller/reaction_mob(mob/living/M, method=TOUCH, reac_volume)
 	..()
-	if(MOB_BUG in M.mob_biotypes)
+	if((MOB_BUG & M.mob_biotypes))
 		var/damage = min(round(0.4*reac_volume, 0.1),10)
 		M.adjustToxLoss(damage)
 
@@ -607,6 +607,13 @@
 	color = "#F0FFF0"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	toxpwr = 0
+	overdose_threshold = 40
+
+/datum/reagent/toxin/lipolicide/overdose_process(mob/living/carbon/C)
+	. = ..()
+	if(current_cycle >=41 && prob(10))
+		to_chat(C, "<span class='userdanger'>You feel like your organs are on fire!</span>")
+		C.IgniteMob()
 
 /datum/reagent/toxin/lipolicide/on_mob_life(mob/living/carbon/M)
 	if(M.nutrition <= NUTRITION_LEVEL_STARVING)

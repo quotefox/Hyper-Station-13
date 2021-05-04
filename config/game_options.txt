@@ -566,8 +566,11 @@ ROUNDSTART_TRAITS
 ## A cap on how many monkeys may be created via monkey cubes
 MONKEYCAP 64
 
+## A cap on how many mice can be bred via cheese wedges
+RATCAP 64
+
 ## Uncomment to use TG-style combat
-#DISABLE_STAMBUFFER
+DISABLE_STAMBUFFER
 
 ## Choose which Engine to start the round with. Weight is after the comma. Setting the weight to 0 removes the engine from rotation.
 BOX_RANDOM_ENGINE Box SM,3

@@ -12,6 +12,7 @@
 	var/insanity_effect = 0 //is the owner being punished for low mood? If so, how much?
 	var/holdmyinsanityeffect = 0 //before we edit our sanity lets take a look
 	var/obj/screen/mood/screen_obj
+	var/lastupdate = 0
 
 /datum/component/mood/Initialize()
 	if(!isliving(parent))
@@ -91,6 +92,7 @@
 		mood += event.mood_change
 		if(!event.hidden)
 			shown_mood += event.mood_change
+
 	mood *= mood_modifier
 	shown_mood *= mood_modifier
 
@@ -161,6 +163,7 @@
 	holdmyinsanityeffect = insanity_effect
 
 	HandleNutrition(owner)
+	HandleThirst(owner)
 
 /datum/component/mood/proc/setSanity(amount, minimum=SANITY_INSANE, maximum=SANITY_NEUTRAL)//I'm sure bunging this in here will have no negative repercussions.
 	var/mob/living/master = parent
@@ -183,15 +186,15 @@
 	switch(sanity)
 		if(SANITY_INSANE to SANITY_CRAZY)
 			setInsanityEffect(MAJOR_INSANITY_PEN)
-			master.add_movespeed_modifier(MOVESPEED_ID_SANITY, TRUE, 100, override=TRUE, multiplicative_slowdown=1.5) //Did we change something ? movetypes is runtiming, movetypes=(~FLYING))
+			master.add_movespeed_modifier(MOVESPEED_ID_SANITY, TRUE, 100, override=TRUE, multiplicative_slowdown=1) //Did we change something ? movetypes is runtiming, movetypes=(~FLYING))
 			sanity_level = 6
 		if(SANITY_CRAZY to SANITY_UNSTABLE)
 			setInsanityEffect(MINOR_INSANITY_PEN)
-			master.add_movespeed_modifier(MOVESPEED_ID_SANITY, TRUE, 100, override=TRUE, multiplicative_slowdown=1)//, movetypes=(~FLYING))
+			master.add_movespeed_modifier(MOVESPEED_ID_SANITY, TRUE, 100, override=TRUE, multiplicative_slowdown=0.5)//, movetypes=(~FLYING))
 			sanity_level = 5
 		if(SANITY_UNSTABLE to SANITY_DISTURBED)
 			setInsanityEffect(0)
-			master.add_movespeed_modifier(MOVESPEED_ID_SANITY, TRUE, 100, override=TRUE, multiplicative_slowdown=0.5)//, movetypes=(~FLYING))
+			master.add_movespeed_modifier(MOVESPEED_ID_SANITY, TRUE, 100, override=TRUE, multiplicative_slowdown=0.25)//, movetypes=(~FLYING))
 			sanity_level = 4
 		if(SANITY_DISTURBED to SANITY_NEUTRAL)
 			setInsanityEffect(0)
@@ -289,7 +292,6 @@
 /datum/component/mood/proc/hud_click(datum/source, location, control, params, mob/user)
 	print_mood(user)
 
-
 /datum/component/mood/proc/HandleNutrition(mob/living/L)
 	switch(L.nutrition)
 		if(NUTRITION_LEVEL_FULL to INFINITY)
@@ -304,6 +306,19 @@
 			add_event(null, "nutrition", /datum/mood_event/hungry)
 		if(0 to NUTRITION_LEVEL_STARVING)
 			add_event(null, "nutrition", /datum/mood_event/starving)
+
+/datum/component/mood/proc/HandleThirst(mob/living/L)
+	if(THIRST_LEVEL_THRESHOLD)
+		L.thirst = clamp(L.thirst, 0, THIRST_LEVEL_THRESHOLD)
+	switch(L.thirst)
+		if(THIRST_LEVEL_QUENCHED to INFINITY)
+			add_event(null, "thirst", /datum/mood_event/quenched)
+		if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_QUENCHED)
+			clear_event(null, "thirst")
+		if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)
+			add_event(null, "thirst", /datum/mood_event/thirsty)
+		if(0 to THIRST_LEVEL_PARCHED)
+			add_event(null, "thirst", /datum/mood_event/dehydrated)
 
 #undef MINOR_INSANITY_PEN
 #undef MAJOR_INSANITY_PEN

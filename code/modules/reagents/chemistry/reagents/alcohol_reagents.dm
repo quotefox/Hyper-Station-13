@@ -14,6 +14,7 @@
 	taste_description = "alcohol"
 	var/boozepwr = 65 //Higher numbers equal higher hardness, higher hardness equals more intense alcohol poisoning
 	pH = 7.33
+	hydration = 1
 
 /*
 Boozepwr Chart
@@ -2421,3 +2422,19 @@ datum/reagent/consumable/ethanol/creme_de_coconut
 	M.set_drugginess(50)
 	M.adjustStaminaLoss(-2)
 	return ..()
+
+/datum/reagent/consumable/ethanol/cum_in_a_hot_tub
+	name = "Cum in the Hot Tub"
+	boozepwr = 80
+	color = "#D2D7D9"
+	quality = DRINK_VERYGOOD
+	taste_description = "smooth cream"
+	glass_icon_state = "cum_glass"
+	shot_glass_icon_state = "cum_shot"	//I'm funny, I know
+	glass_name = "Cum in the Hot Tub"
+	glass_desc = "Doesn't really leave it to the imagination, eh?"
+
+/datum/reagent/consumable/ethanol/cum_in_a_hot_tub/semen
+	boozepwr = 65
+	taste_description = "viscous cream"
+	glass_desc = "The name is probably exactly what it is."

@@ -1247,26 +1247,34 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	var/obj/item/reagent_containers/food/snacks/store/bread/plain/funnyBread = new(get_turf(target))
 	target.forceMove(funnyBread)
 
+/client/proc/bookify(atom/movable/target)
+	var/obj/item/reagent_containers/food/snacks/store/book/funnyBook = new(get_turf(target))
+	target.forceMove(funnyBook)
+	funnyBook.name = "Book of " + target.name
+
 /client/proc/smite(mob/living/carbon/human/target as mob)
 	set name = "Smite"
 	set category = "Fun"
 	if(!check_rights(R_ADMIN) || !check_rights(R_FUN))
 		return
 
-	var/list/punishment_list = list(ADMIN_PUNISHMENT_PIE, 
-	ADMIN_PUNISHMENT_FIREBALL, 
-	ADMIN_PUNISHMENT_CLUWNE, 
-	ADMIN_PUNISHMENT_LIGHTNING, 
-	ADMIN_PUNISHMENT_BRAINDAMAGE, 
-	ADMIN_PUNISHMENT_BSA, 
-	ADMIN_PUNISHMENT_GIB, 
-	ADMIN_PUNISHMENT_SUPPLYPOD, 
-	ADMIN_PUNISHMENT_MAZING, 
-	ADMIN_PUNISHMENT_ROD, 
+	var/list/punishment_list = list(ADMIN_PUNISHMENT_PIE,
+	ADMIN_PUNISHMENT_FIREBALL,
+	ADMIN_PUNISHMENT_ROLEPLAY,
+	ADMIN_PUNISHMENT_CLUWNE,
+	ADMIN_PUNISHMENT_LIGHTNING,
+	ADMIN_PUNISHMENT_BRAINDAMAGE,
+	ADMIN_PUNISHMENT_BSA,
+	ADMIN_PUNISHMENT_GIB,
+	ADMIN_PUNISHMENT_SUPPLYPOD_QUICK,
+	ADMIN_PUNISHMENT_SUPPLYPOD,
+	ADMIN_PUNISHMENT_MAZING,
+	ADMIN_PUNISHMENT_ROD,
 	ADMIN_PUNISHMENT_TABLETIDESTATIONWIDE,
 	ADMIN_PUNISHMENT_FAKEBWOINK,
 	ADMIN_PUNISHMENT_NUGGET,
-	ADMIN_PUNISHMENT_BREADIFY)
+	ADMIN_PUNISHMENT_BREADIFY,
+	ADMIN_PUNISHMENT_BOOKIFY)
 
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in punishment_list
 
@@ -1304,6 +1312,22 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			var/turf/startT = spaceDebrisStartLoc(startside, T.z)
 			var/turf/endT = spaceDebrisFinishLoc(startside, T.z)
 			new /obj/effect/immovablerod(startT, endT,target)
+		if(ADMIN_PUNISHMENT_SUPPLYPOD_QUICK)
+			var/target_path = input(usr,"Enter typepath of an atom you'd like to send with the pod (type \"empty\" to send an empty pod):" ,"Typepath","/obj/item/reagent_containers/food/snacks/grown/harebell") as null|text
+			var/obj/structure/closet/supplypod/centcompod/pod = new()
+			pod.damage = 40
+			pod.explosionSize = list(0,0,0,2)
+			pod.effectStun = TRUE
+			if (isnull(target_path)) //The user pressed "Cancel"
+				return
+			if (target_path != "empty")//if you didn't type empty, we want to load the pod with a delivery
+				var/delivery = text2path(target_path)
+				if(!ispath(delivery))
+					delivery = pick_closest_path(target_path)
+					if(!delivery)
+						alert("ERROR: Incorrect / improper path given.")
+				new delivery(pod)
+			new /obj/effect/abstract/DPtarget(get_turf(target), pod)
 		if(ADMIN_PUNISHMENT_SUPPLYPOD)
 			var/datum/centcom_podlauncher/plaunch  = new(usr)
 			if(!holder)
@@ -1316,6 +1340,8 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			plaunch.temp_pod.explosionSize = list(0,0,0,2)
 			plaunch.temp_pod.effectStun = TRUE
 			plaunch.ui_interact(usr)
+			return //We return here because punish_log() is handled by the centcom_podlauncher datum
+
 		if(ADMIN_PUNISHMENT_MAZING)
 			if(!puzzle_imprison(target))
 				to_chat(usr,"<span class='warning'>Imprisonment failed!</span>")
@@ -1336,6 +1362,9 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 					sleep(1)
 		if(ADMIN_PUNISHMENT_FAKEBWOINK)
 			SEND_SOUND(target, 'sound/effects/adminhelp.ogg')
+		if(ADMIN_PUNISHMENT_ROLEPLAY)
+			SEND_SOUND(target, 'sound/effects/roleplay.ogg')
+			to_chat(target, "<span class='warning big'>Please roleplay appropriately.</span>")
 		if(ADMIN_PUNISHMENT_NUGGET)
 			if (!iscarbon(target))
 				return
@@ -1356,13 +1385,22 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			target.transformation_animation(bread_appearance, time = BREADIFY_TIME, transform_overlay=transform_scanline, reset_after=TRUE)
 			addtimer(CALLBACK(GLOBAL_PROC, .proc/breadify, target), BREADIFY_TIME)
 			#undef BREADIFY_TIME
+		if(ADMIN_PUNISHMENT_BOOKIFY)
+			#define BOOKIFY_TIME (2 SECONDS)
+			var/mutable_appearance/book_appearance = mutable_appearance('icons/obj/library.dmi', "book")
+			var/mutable_appearance/transform_scanline = mutable_appearance('icons/effects/effects.dmi', "transform_effect")
+			target.transformation_animation(book_appearance, time = BOOKIFY_TIME, transform_overlay=transform_scanline, reset_after=TRUE)
+			addtimer(CALLBACK(GLOBAL_PROC, .proc/bookify, target), BOOKIFY_TIME)
+			playsound(target, 'hyperstation/sound/misc/bookify.ogg', 60, 1)
+			#undef BOOKIFY_TIME
 
+	punish_log(target, punishment)
 
-	var/msg = "[key_name_admin(usr)] punished [key_name_admin(target)] with [punishment]."
+/client/proc/punish_log(var/whom, var/punishment)
+	var/msg = "[key_name_admin(usr)] punished [key_name_admin(whom)] with [punishment]."
 	message_admins(msg)
-	admin_ticket_log(target, msg)
-	log_admin("[key_name(usr)] punished [key_name(target)] with [punishment].")
-
+	admin_ticket_log(whom, msg)
+	log_admin("[key_name(usr)] punished [key_name(whom)] with [punishment].")
 
 /client/proc/trigger_centcom_recall()
 	if(!check_rights(R_ADMIN))
@@ -1432,3 +1470,4 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	else
 		message_admins("[key_name_admin(usr)] has [newstate ? "activated" : "deactivated"] job exp exempt status on [key_name_admin(C)]")
 		log_admin("[key_name(usr)] has [newstate ? "activated" : "deactivated"] job exp exempt status on [key_name(C)]")
+

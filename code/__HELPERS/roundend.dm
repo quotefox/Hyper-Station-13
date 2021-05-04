@@ -163,6 +163,7 @@
 	set waitfor = FALSE
 
 	to_chat(world, "<BR><BR><BR><span class='big bold'>The round has ended.</span>")
+	var/botmsg = "**The Round has ended!**```Round ID: [GLOB.round_id]\nRound Time: [DisplayTimeText(world.time - SSticker.round_start_time)]\nTotal Population: [GLOB.joined_player_list.len]```"
 	if(LAZYLEN(GLOB.round_end_notifiees))
 		send2irc("Notice", "[GLOB.round_end_notifiees.Join(", ")] the round has ended.")
 
@@ -179,6 +180,20 @@
 	var/popcount = gather_roundend_feedback()
 	display_report(popcount)
 
+
+	CHECK_TICK
+
+	//Hyper bot list players
+	botmsg += "\n**The Crew!** ```"
+	for(var/p in GLOB.player_list)
+		var/mob/living/P = p //the living crew members
+		if(P)
+			botmsg += "[P.real_name]"
+			if(P.job)
+				botmsg += " ([P.job])"
+			botmsg += "\n"
+	botmsg += "```"
+
 	CHECK_TICK
 
 	// Add AntagHUD to everyone, see who was really evil the whole time!
@@ -186,6 +201,15 @@
 		for(var/m in GLOB.player_list)
 			var/mob/M = m
 			H.add_hud_to(M)
+
+	CHECK_TICK
+
+	set_observer_default_invisibility(0, "<span class='warning'>The round is over! You are now visible to the living.</span>")
+
+	CHECK_TICK
+	// Stop eorg mech prepping.
+	for(var/obj/mecha/combat/Obj in world)
+		qdel(Obj)
 
 	CHECK_TICK
 
@@ -198,10 +222,6 @@
 
 	if(length(CONFIG_GET(keyed_list/cross_server)))
 		send_news_report()
-
-	//tell the nice people on discord what went on before the salt cannon happens.
-	world.TgsTargetedChatBroadcast("The current round has ended. Please standby for your shift interlude Kinaris News Network's report!", FALSE)
-	world.TgsTargetedChatBroadcast(send_news_report(),FALSE)
 
 	CHECK_TICK
 
@@ -217,7 +237,6 @@
 		total_antagonists[A.name] += "[key_name(A.owner)]"
 
 	CHECK_TICK
-
 	//Now print them all into the log!
 	log_game("Antagonists at round end were...")
 	for(var/antag_name in total_antagonists)
@@ -234,6 +253,7 @@
 	SSblackbox.Seal()
 
 	sleep(50)
+	world.hypermessage(botmsg)
 	ready_for_reboot = TRUE
 	standard_reboot()
 
@@ -331,7 +351,7 @@
 	if(!previous)
 		var/list/report_parts = list(personal_report(C), GLOB.common_report)
 		content = report_parts.Join()
-		C.verbs -= /client/proc/show_previous_roundend_report
+		remove_verb(C, /client/proc/show_previous_roundend_report)
 		fdel(filename)
 		text2file(content, filename)
 	else
@@ -510,7 +530,7 @@
 	var/jobtext = ""
 	if(ply.assigned_role)
 		jobtext = " the <b>[ply.assigned_role]</b>"
-	var/text = "<b>[ply.key]</b> was <b>[ply.name]</b>[jobtext] and"
+	var/text = "<b>[ply.hide_ckey ? "<b>[ply.name]</b>[jobtext] " : "[ply.key]</b> was <b>[ply.name]</b>[jobtext] and "]"
 	if(ply.current)
 		if(ply.current.stat == DEAD)
 			text += " <span class='redtext'>died</span>"

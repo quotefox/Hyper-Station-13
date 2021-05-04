@@ -50,6 +50,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		attack_verb = list("burnt","singed")
 		START_PROCESSING(SSobj, src)
 		update_icon()
+		playsound(src, 'sound/items/match.ogg', 50, 1, -1)
 
 /obj/item/match/proc/matchburnout()
 	if(lit)
@@ -231,7 +232,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(lit)
 		user.visible_message("<span class='notice'>[user] calmly drops and treads on \the [src], putting it out instantly.</span>")
 		new type_butt(user.loc)
-		new /obj/effect/decal/cleanable/ash(user.loc)
 		qdel(src)
 	. = ..()
 
@@ -501,6 +501,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	w_class = WEIGHT_CLASS_TINY
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
+	price = 1
 	var/lit = 0
 	var/fancy = TRUE
 	var/overlay_state
@@ -520,6 +521,25 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	if(!overlay_state)
 		overlay_state = pick(overlay_list)
 	update_icon()
+
+/obj/item/lighter/AltClick(mob/living/user)
+	. = ..()
+	if(GLOB.lighter_reskins && user.canUseTopic(src, BE_CLOSE, NO_DEXTERY))
+		reskin_obj(user)
+
+/obj/item/lighter/reskin_obj(mob/M)
+	if(lit)
+		return to_chat(M, "You need to close the lighter before changing the engraving!")
+	if(!LAZYLEN(GLOB.lighter_reskins))
+		return
+
+	var/choice = input(M, "Choose the a reskin for [src]","Reskin Object") as null|anything in GLOB.lighter_reskins
+	var/new_icon = GLOB.lighter_reskins[choice]
+	if(QDELETED(src) || isnull(new_icon) || new_icon == icon || !M.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
+		return
+	overlay_state = new_icon
+	update_icon()
+	to_chat(M, "[src] is now skinned as '[choice]'.")
 
 /obj/item/lighter/suicide_act(mob/living/carbon/user)
 	if (lit)
@@ -562,8 +582,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		if(!lit)
 			set_lit(TRUE)
 			if(fancy)
-				user.visible_message("Without even breaking stride, [user] flips open and lights [src] in one smooth movement.", "<span class='notice'>Without even breaking stride, you flip open and light [src] in one smooth movement.</span>")
+				user.visible_message("[user] flips open and lights [src].", "<span class='notice'>You flip open and light [src] in one smooth movement.</span>")
+				playsound(user, 'sound/items/zippoopen.ogg', 50, 1, -1)
 			else
+				playsound(user, 'sound/items/lighter.ogg', 50, 1, -1)
 				var/prot = FALSE
 				var/mob/living/carbon/human/H = user
 
@@ -585,7 +607,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		else
 			set_lit(FALSE)
 			if(fancy)
-				user.visible_message("You hear a quiet click, as [user] shuts off [src] without even looking at what [user.p_theyre()] doing. Wow.", "<span class='notice'>You quietly shut off [src] without even looking at what you're doing. Wow.</span>")
+				user.visible_message("You hear a quiet click, as [user] shuts off [src].", "<span class='notice'>You quietly shut off [src].</span>")
+				playsound(user, 'sound/items/zippoclose.ogg', 50, 1, -1)
 			else
 				user.visible_message("[user] quietly shuts off [src].", "<span class='notice'>You quietly shut off [src].</span>")
 	else
