@@ -5,7 +5,7 @@
 #define COOLANT_OUTPUT_GATE airs[3]
 
 #define RBMK_TEMPERATURE_OPERATING 640 //Celsius
-#define RBMK_TEMPERATURE_CRITICAL 800 //At this point the entire ship is alerted to a meltdown. This may need altering
+#define RBMK_TEMPERATURE_CRITICAL 800 //At this point the entire ship/station is alerted to a meltdown. This may need altering
 #define RBMK_TEMPERATURE_MELTDOWN 900
 
 #define RBMK_PRESSURE_OPERATING 1000 //PSI
@@ -13,7 +13,8 @@
 
 #define RBMK_MAX_CRITICALITY 3 //No more criticality than N for now.
 
-#define RBMK_POWER_FLAVOURISER 1000 //To turn those KWs into something usable
+//#define RBMK_POWER_FLAVOURISER 1000 //To turn those KWs into something usable
+#define RBMK_POWER_FLAVOURISER 2000 //Let's use double for now.
 
 //Math. Lame.
 #define KPA_TO_PSI(A) (A/6.895)
