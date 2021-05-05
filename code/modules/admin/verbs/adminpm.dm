@@ -217,7 +217,7 @@
 
 
 
-#define IRC_AHELP_USAGE "Usage: ticket <close|resolve|icissue|reject|reopen \[ticket #\]|list>"
+#define IRC_AHELP_USAGE "Usage: ticket <close|resolve|icissue|reject|mentor|reopen \[ticket #\]|list>"
 /proc/IrcPm(target,msg,sender)
 	target = ckey(target)
 	var/client/C = GLOB.directory[target]
@@ -245,6 +245,10 @@
 			if("reject")
 				if(ticket)
 					ticket.Reject(irc_tagged)
+					return "Ticket #[ticket.id] successfully rejected"
+			if("mentor")
+				if(ticket)
+					ticket.Mentor(irc_tagged)
 					return "Ticket #[ticket.id] successfully rejected"
 			if("reopen")
 				if(ticket)
