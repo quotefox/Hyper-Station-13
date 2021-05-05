@@ -399,9 +399,15 @@
 				else
 					fluid_source.trans_to(L, total_fluids)
 				total_fluids = 0
-				src.visible_message("<span class='love'>[src] climaxes with [L], [p_their()] [G.name] spilling nothing!</span>", \
+				if(!remote)
+					src.visible_message("<span class='love'>[src] climaxes with [L], [p_their()] [G.name] spilling nothing!</span>", \
 									"<span class='userlove'>You ejaculate with [L], your [G.name] spilling nothing.</span>", \
 									"<span class='userlove'>You have climaxed inside someone, your [G.name] spilling nothing.</span>")
+				else
+					src.visible_message("<span class='love'>[src] climaxes with someone, using [p_their()] [G.name]!</span>", \
+									"<span class='userlove'>You ejaculate with someone, using your [G.name].</span>", \
+									"<span class='userlove'>You have climaxed inside someone, using your [G.name].</span>")
+
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 				SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 
