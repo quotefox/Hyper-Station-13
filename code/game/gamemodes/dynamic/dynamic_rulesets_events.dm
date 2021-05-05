@@ -13,16 +13,16 @@
 	var/list/living_antags = list()
 	var/list/dead_players = list()
 	var/list/list_observers = list()
+	var/list/map_blacklist = list()		//Determines if a map, "BoxStation.dmm" for example, will spawn. Has to be case-sensitive
+	var/list/map_whitelist = list()		//Blacklist/Whitelist does not check round event controllers, they are separate vars
 
 /datum/dynamic_ruleset/event/ready(forced = 0)
 	if (!forced)
 		var/job_check = 0
-		if (istype(controller, /datum/round_event_control))
-			var/datum/round_event_control/R = controller
-			if (R.map_blacklist.len && (SSmapping.config.map_file in R.map_blacklist))
-				return FALSE
-			if (R.map_whitelist.len && !(SSmapping.config.map_file in R.map_whitelist))
-				return FALSE
+		if (map_blacklist.len && (SSmapping.config.map_file in map_blacklist))
+			return FALSE
+		if (map_whitelist.len && !(SSmapping.config.map_file in map_whitelist))
+			return FALSE
 		if (enemy_roles.len > 0)
 			for (var/mob/M in mode.current_players[CURRENT_LIVING_PLAYERS])
 				if (M.stat == DEAD)
@@ -229,6 +229,7 @@
 	//property_weights = list("extended" = -2)
 	occurances_max = 2
 	chaos_min = 1.5
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/meteor_wave/ready()
 	if(world.time-SSticker.round_start_time > 35 MINUTES && mode.threat_level > 40 && mode.threat >= 25 && prob(30))
@@ -405,6 +406,7 @@
 	//property_weights = list("extended" = 1)
 	occurances_max = 3
 	chaos_min = 0.5
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/communications_blackout
 	name = "Communications Blackout"
@@ -468,6 +470,7 @@
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
 	occurances_max = 3
+	
 
 /datum/dynamic_ruleset/event/electrical_storm
 	name = "Electrical Storm"
@@ -541,6 +544,7 @@
 	//property_weights = list("extended" = 1)
 	occurances_max = 2
 	chaos_min = 1.0
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/swarmers
 	name = "Swarmers"
@@ -626,6 +630,7 @@
 	cost = 10
 	repeatable = TRUE
 	occurances_max = 2
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/high_priority_bounty
 	name = "High Priority Bounty"
@@ -720,6 +725,7 @@
 	weight = 4
 	repeatable_weight_decrease = 3
 	occurances_max = 2
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/sentience
 	name = "Random Human-level Intelligence"
