@@ -390,9 +390,11 @@
 			if(G.can_climax)
 				setArousalLoss(min_arousal)
 
-	else //knots and other non-spilling orgasms
+	else //knots, portal fleshlights, and other non-spilling orgasms
 		if(!cover)
-			if(do_after(src, mb_time, target = src) && in_range(src, L))
+			if(!remote && !in_range(src, L))
+				return
+			if(do_after(src, mb_time, target = src))
 				var/obj/item/organ/genital/penis/P = G
 				if (P.condom)//condomed.
 					src.condomclimax()
