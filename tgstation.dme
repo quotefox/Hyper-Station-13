@@ -1554,6 +1554,7 @@
 #include "code\modules\cargo\exports\food_wine.dm"
 #include "code\modules\cargo\exports\gear.dm"
 #include "code\modules\cargo\exports\large_objects.dm"
+#include "code\modules\cargo\exports\lewd.dm"
 #include "code\modules\cargo\exports\manifest.dm"
 #include "code\modules\cargo\exports\materials.dm"
 #include "code\modules\cargo\exports\organs_robotics.dm"
