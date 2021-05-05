@@ -162,6 +162,9 @@
 			C.adjustArousalLoss(20)
 			M.adjustArousalLoss(20)
 			M.do_jitter_animation() //make your partner shake too!
+			if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
+				var/mob/living/carbon/human/O = C
+				O.mob_climax_partner(P, M, FALSE, TRUE, FALSE, TRUE) //climax with their partner remotely, and impreg because people keep asking!
 		if(option == "Lick")
 			to_chat(M, "<span class='love'>You feel a tongue lick you through the portal against your vagina.</span>")
 			M.adjustArousalLoss(10)
@@ -169,9 +172,6 @@
 			to_chat(M, "<span class='love'>You feel someone touching your vagina through the portal.</span>")
 			M.adjustArousalLoss(5)
 
-		if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
-			var/mob/living/carbon/human/O = C
-			O.mob_climax_partner(P, M, FALSE, TRUE, FALSE, TRUE) //climax with their partner remotely, and impreg because people keep asking!
 		return
 	..()
 
