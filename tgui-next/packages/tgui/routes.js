@@ -381,11 +381,15 @@ const ROUTES = {
   },
   rbmkcontrolrods: {
     component: () => RbmkControlRods,
+    wrapper: () => NtosWrapper,
     scrollable: true,
+    theme: 'ntos',
   },
   rbmkstats: {
     component: () => RbmkStats,
+    wrapper: () => NtosWrapper,
     scrollable: true,
+    theme: 'ntos',
   },
   nuclear_bomb: {
     component: () => NuclearBomb,
