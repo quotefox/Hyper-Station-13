@@ -605,6 +605,7 @@
 	repeatable_weight_decrease = 2
 	chaos_min = 1.5
 	var/atom/special_target
+	map_blacklist = list("LayeniaStation.dmm")
 
 /*
 /datum/dynamic_ruleset/event/immovable_rod/execute()  //I do not know why this is necessary
