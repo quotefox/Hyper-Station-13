@@ -1,6 +1,7 @@
 //Hyperstation 13 fleshlight
 //Humbley request this doesnt get ported to other code bases, we strive to make things unique on our server and we dont have alot of coders
 //but if you absolutely must. please give us some credit~ <3
+//made by quotefox
 
 /obj/item/fleshlight
 	name = "fleshlight"
@@ -170,7 +171,7 @@
 
 		if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
 			var/mob/living/carbon/human/O = C
-			O.mob_climax_partner(P, M, FALSE, FALSE, FALSE, TRUE) //climax with their partner remotely!
+			O.mob_climax_partner(P, M, FALSE, TRUE, FALSE, TRUE) //climax with their partner remotely, and impreg because people keep asking!
 		return
 	..()
 
