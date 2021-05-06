@@ -372,9 +372,9 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 			if(!isinspace(M))
 				if(sound)
 					if(channel) //Doing this forbids overlapping of sounds
-						SEND_SOUND(M, sound(sound, repeat = loop, wait = 0, volume = 100, channel = channel))
+						SEND_SOUND(M, sound(sound, repeat = loop, wait = 0, volume = 70, channel = channel))
 					else
-						SEND_SOUND(M, sound(sound, repeat = loop, wait = 0, volume = 100))
+						SEND_SOUND(M, sound(sound, repeat = loop, wait = 0, volume = 70))
 				if(message)
 					to_chat(M, message)
 
