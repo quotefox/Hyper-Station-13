@@ -48,9 +48,9 @@
 		return FALSE
 	if(players_amt < min_players)
 		return FALSE
-	if(gamemode_blacklist.len && (gamemode in gamemode_blacklist))
+	if(gamemode_blacklist.len && (gamemode_blacklist.Find(gamemode)))
 		return FALSE
-	if(gamemode_whitelist.len && !(gamemode in gamemode_whitelist))
+	if(gamemode_whitelist.len && !(gamemode_whitelist.Find(gamemode)))
 		return FALSE
 	if(map_blacklist.len && (SSmapping.config.map_file in map_blacklist))	//HYPER EDIT: certain maps will get special events
 		return FALSE
