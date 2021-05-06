@@ -60,6 +60,9 @@ import { NtosNetChat } from './interfaces/NtosNetChat';
 import { NtosNetDownloader } from './interfaces/NtosNetDownloader';
 import { NtosSupermatterMonitor } from './interfaces/NtosSupermatterMonitor';
 import { NtosWrapper } from './interfaces/NtosWrapper';
+import { NtosRbmkStats } from './interfaces/NtosRbmkStats';
+import { RbmkControlRods } from './interfaces/RbmkControlRods';
+import { RbmkStats } from './interfaces/RbmkStats';
 import { NuclearBomb } from './interfaces/NuclearBomb';
 import { OperatingComputer } from './interfaces/OperatingComputer';
 import { OreBox } from './interfaces/OreBox';
@@ -366,6 +369,24 @@ const ROUTES = {
   },
   ntos_supermatter_monitor: {
     component: () => NtosSupermatterMonitor,
+    wrapper: () => NtosWrapper,
+    scrollable: true,
+    theme: 'ntos',
+  },
+  ntosrbmkstats: {
+    component: () => NtosRbmkStats,
+    wrapper: () => NtosWrapper,
+    scrollable: true,
+    theme: 'ntos',
+  },
+  rbmkcontrolrods: {
+    component: () => RbmkControlRods,
+    wrapper: () => NtosWrapper,
+    scrollable: true,
+    theme: 'ntos',
+  },
+  rbmkstats: {
+    component: () => RbmkStats,
     wrapper: () => NtosWrapper,
     scrollable: true,
     theme: 'ntos',
