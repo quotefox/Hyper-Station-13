@@ -68,6 +68,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 */
 
 //Remember kids. If the reactor itself is not physically powered by an APC, it cannot shove coolant in!
+/var/datum/looping_sound/rbmk_reactor/soundloop
 
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor
 	name = "Advanced Gas-Cooled Nuclear Reactor"
@@ -468,6 +469,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	T.assume_air(coolant_output)
 	explosion(get_turf(src), 0, 5, 10, 20, TRUE, TRUE)
 	empulse(get_turf(src), 25, 15)
+	QDEL_NULL(soundloop)
 
 //Failure condition 2: Blowout. Achieved by reactor going over-pressured. This is a round-ender because it requires more fuckery to achieve.
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/proc/blowout()
@@ -507,6 +509,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	set_light(10)
 	var/startup_sound = pick('hyperstation/sound/effects/ship/reactor/startup.ogg', 'hyperstation/sound/effects/ship/reactor/startup2.ogg')
 	playsound(loc, startup_sound, 100)
+	soundloop = new(list(src), TRUE)
 	if(!powernet)
 		message_admins("No powernet for the Nuclear Reactor! Trying to add.")
 		connect_to_network()
@@ -521,6 +524,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	desired_k = 0
 	temperature = 0
 	update_icon()
+	QDEL_NULL(soundloop)
 
 /obj/item/twohanded/required/fuel_rod
 	name = "Uranium-235 Fuel Rod"
