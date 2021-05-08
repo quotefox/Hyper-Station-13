@@ -24,6 +24,26 @@
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/jacket
 
+/datum/gear/jacketflannelblack // all of these are reskins of bomber jackets but with the vibe to make you look like a true lumberjack
+	name = "Black flannel jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/jacket/flannel
+
+/datum/gear/jacketflannelred
+	name = "Red flannel jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/jacket/flannel/red
+
+/datum/gear/jacketflannelaqua
+	name = "Aqua flannel jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/jacket/flannel/aqua
+
+/datum/gear/jacketflannelbrown
+	name = "Brown flannel jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/jacket/flannel/brown
+
 /datum/gear/jacketleather
 	name = "Leather jacket"
 	category = SLOT_WEAR_SUIT
