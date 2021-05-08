@@ -5,6 +5,7 @@
 	max_occurrences = 1 //Only once okay fam
 	earliest_start = 30 MINUTES
 	min_players = 15
+	map_blacklist = list("LayeniaStation.dmm")
 
 
 /datum/round_event/spawn_swarmer
