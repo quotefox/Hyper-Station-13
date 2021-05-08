@@ -16,13 +16,16 @@
 	var/list/map_blacklist = list()		//Determines if a map, "BoxStation.dmm" for example, will spawn. Has to be case-sensitive
 	var/list/map_whitelist = list()		//Blacklist/Whitelist does not check round event controllers, they are separate vars
 
+/datum/dynamic_ruleset/event/acceptable(population=0, threat_level=0)
+	if (map_blacklist.len && (map_blacklist.Find(SSmapping.config.map_file)))
+		return FALSE
+	if (map_whitelist.len && !(map_whitelist.Find(SSmapping.config.map_file)))
+		return FALSE
+	return ..()
+
 /datum/dynamic_ruleset/event/ready(forced = 0)
 	if (!forced)
 		var/job_check = 0
-		if (map_blacklist.len && (SSmapping.config.map_file in map_blacklist))
-			return FALSE
-		if (map_whitelist.len && !(SSmapping.config.map_file in map_whitelist))
-			return FALSE
 		if (enemy_roles.len > 0)
 			for (var/mob/M in mode.current_players[CURRENT_LIVING_PLAYERS])
 				if (M.stat == DEAD)
