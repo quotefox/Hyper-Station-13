@@ -434,7 +434,7 @@
 					W.pregnant = 1
 					if (HAS_TRAIT(L, TRAIT_HEAT))
 						SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "heat", /datum/mood_event/heat) //well done you perv.
-						REMOVE_TRAIT(L, TRAIT_HEAT, type) //take the heat away, you satisfied it!
+						REMOVE_TRAIT(L, TRAIT_HEAT, ROUNDSTART_TRAIT) //take the heat away, you satisfied it!
 
 			 		//Make breasts produce quicker.
 					var/obj/item/organ/genital/breasts/B = L.getorganslot("breasts")
