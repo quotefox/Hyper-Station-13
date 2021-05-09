@@ -188,13 +188,17 @@
 /obj/item/robot_module/proc/transform_to(new_module_type)
 	var/mob/living/silicon/robot/R = loc
 	var/obj/item/robot_module/RM = new new_module_type(R)
+	testing("Module Picked: \"[RM.name]\"")
 	if(!RM.be_transformed_to(src))
+		testing("\"[RM.name]\" [RM.type].be_transformed_to(src) returned false.")
 		qdel(RM)
 		return
+	RM.handle_sprite_action(R, R.hasExpanded)	//hyperstation edit
 	R.module = RM
 	R.update_module_innate()
 	RM.rebuild_modules()
 	INVOKE_ASYNC(RM, .proc/do_transform_animation)
+	SEND_SIGNAL(R, COMSIG_CYBORG_MODULE_CHANGE)	//hyperstation edit
 	qdel(src)
 	return RM
 
