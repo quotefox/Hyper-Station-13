@@ -14,7 +14,7 @@
 	var/list/dead_players = list()
 	var/list/list_observers = list()
 	var/list/map_blacklist = list()		//Determines if a map, "BoxStation.dmm" for example, will spawn. Has to be case-sensitive
-	var/list/map_whitelist = list()		//Blacklist/Whitelist does not check round event controllers, they are separate vars
+	var/list/map_whitelist = list()		//Blacklist/Whitelist does not check round event controllers, they are separate vars and are handled outside of dynamic mode
 
 /datum/dynamic_ruleset/event/acceptable(population=0, threat_level=0)
 	if (map_blacklist.len && (map_blacklist.Find(SSmapping.config.map_file)))
@@ -119,6 +119,7 @@
 	high_population_requirement = 15
 	occurances_max = 1
 	chaos_min = 2.0
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/pirates/ready(forced = FALSE)
 	if (!SSmapping.empty_space)
@@ -563,6 +564,7 @@
 	//property_weights = list("extended" = -2)
 	occurances_max = 1
 	chaos_min = 1.5
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/sentient_disease
 	name = "Sentient Disease"

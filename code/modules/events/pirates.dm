@@ -6,6 +6,7 @@
 	min_players = 15
 	earliest_start = 50 MINUTES
 	gamemode_blacklist = list("nuclear")
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/round_event_control/pirates/preRunEvent()
 	if (!SSmapping.empty_space)
