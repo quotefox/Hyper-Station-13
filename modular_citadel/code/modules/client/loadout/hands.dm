@@ -71,3 +71,9 @@
 	category = SLOT_HANDS
 	path = /obj/item/shield/riot/roman/fake
 	cost = 2
+
+/datum/gear/romanshield
+	name = "cheeseburger backpack"
+	category = SLOT_HANDS
+	path = /obj/item/storage/backpack/cheeseburgerbackpack
+	cost = 1
