@@ -30,11 +30,11 @@
 	var/pickupsound = TRUE
 
 /obj/item/clothing/suit/space/hardsuit/rd/hev/no_sound
-	pickup_sound = FALSE
+	pickupsound = FALSE
 
 /obj/item/clothing/suit/space/hardsuit/rd/hev/equipped(mob/user, slot)
 	. = ..()
-	if(!pickup_sound)
+	if(!pickupsound)
 		return
 	if(!ishuman(user))
 		return
