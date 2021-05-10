@@ -249,6 +249,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(!ref_src)
 		ref_src = "[REF(src)]"
 	. = " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
+	. = " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=mentor'>MENTOR</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
@@ -379,6 +380,27 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	AddInteraction("Rejected by [key_name].")
 	Close(silent = TRUE)
 
+//Resolve ticket with mentor
+/datum/admin_help/proc/Mentor(key_name = key_name_admin(usr))
+	if(state != AHELP_ACTIVE)
+		return
+
+	if(initiator)
+		initiator.giveadminhelpverb()
+
+		SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
+
+		to_chat(initiator, "<font color='yellow' size='4'><b>- AdminHelp Declined -</b></font>")
+		to_chat(initiator, "<font color='yellow'><b>Your admin help was declined.</b> The adminhelp verb has been returned to you so that you may try again later.</font>")
+		to_chat(initiator, "The question/request is considered a mentor issue, please direct questions on how to play to the in-games mentor help, or asking in the discord without revealing infomation of the round.")
+
+	SSblackbox.record_feedback("tally", "ahelp_stats", 1, "rejected")
+	var/msg = "Ticket [TicketHref("#[id]")] rejected (Mentor) by [key_name]"
+	message_admins(msg)
+	log_admin_private(msg)
+	AddInteraction("Rejected by [key_name].")
+	Close(silent = TRUE)
+
 //Resolve ticket with IC Issue message
 /datum/admin_help/proc/ICIssue(key_name = key_name_admin(usr))
 	if(state != AHELP_ACTIVE)
@@ -465,6 +487,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			Retitle()
 		if("reject")
 			Reject()
+		if("mentor")
+			Mentor()
 		if("reply")
 			usr.client.cmd_ahelp_reply(initiator)
 		if("icissue")

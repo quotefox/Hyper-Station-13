@@ -1,5 +1,3 @@
-//Archie was here
-
 /obj/item/clothing/glasses/polychromic
 	name = "polychromic glasses template"
 	desc = "You shouldn't be seeing this. Report it if you do."

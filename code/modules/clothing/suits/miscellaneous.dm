@@ -356,6 +356,30 @@
  * Misc
  */
 
+/obj/item/clothing/suit/jacket/flannel
+	name = "black flannel jacket"
+	desc = "Comfy and supposedly flammable."
+	icon_state = "flannel"
+	item_state = "flannel"
+
+/obj/item/clothing/suit/jacket/flannel/red
+	name = "red flannel jacket"
+	desc = "Comfy and supposedly flammable."
+	icon_state = "flannel_red"
+	item_state = "flannel_red"
+
+/obj/item/clothing/suit/jacket/flannel/aqua
+	name = "aqua flannel jacket"
+	desc = "Comfy and supposedly flammable."
+	icon_state = "flannel_aqua"
+	item_state = "flannel_aqua"
+
+/obj/item/clothing/suit/jacket/flannel/brown
+	name = "brown flannel jacket"
+	desc = "Comfy and supposedly flammable."
+	icon_state = "flannel_brown"
+	item_state = "flannel_brown"
+
 /obj/item/clothing/suit/straight_jacket
 	name = "straight jacket"
 	desc = "A suit that completely restrains the wearer. Manufactured by Antyphun Corp." //Straight jacket is antifun

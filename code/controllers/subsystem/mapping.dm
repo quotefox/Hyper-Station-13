@@ -250,10 +250,13 @@ SUBSYSTEM_DEF(mapping)
 		++space_levels_so_far
 		add_new_zlevel("Empty Area [space_levels_so_far]", ZTRAITS_SPACE)
 
+
 	// load mining
 	if(config.minetype == "lavaland")
+		INIT_ANNOUNCE("Loading Mining...")
 		LoadGroup(FailedZs, "Lavaland_Lower", "map_files/Mining", "Lavaland_Lower.dmm", default_traits = ZTRAITS_LAVALAND_UNDERRGOUND)
 		LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
+		LoadGroup(FailedZs, "Diner", "map_files/hyper", "Diner.dmm", default_traits = ZTRAITS_DINER)
 	else if (!isnull(config.minetype))
 		INIT_ANNOUNCE("WARNING: An unknown minetype '[config.minetype]' was set! This is being ignored! Update the maploader code!")
 #endif

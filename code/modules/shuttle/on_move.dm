@@ -249,7 +249,7 @@ All ShuttleMove procs go here
 			A.atmosinit()
 			if(A.returnPipenet())
 				A.addMember(src)
-		SSair.add_to_rebuild_queue(src)
+		build_network()
 	else
 		// atmosinit() calls update_icon(), so we don't need to call it
 		update_icon()

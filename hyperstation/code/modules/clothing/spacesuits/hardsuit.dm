@@ -9,6 +9,9 @@
 	armor = list("melee" = 30, "bullet" = 10, "laser" = 10, "energy" = 5, "bomb" = 80, "bio" = 100, "rad" = 100, "fire" = 60, "acid" = 60)
 	actions_types = list(/datum/action/item_action/toggle_research_scanner)
 
+/obj/item/clothing/head/helmet/space/hardsuit/rd/hev/no_scanner
+	actions_types = list()
+
 /obj/item/clothing/suit/space/hardsuit/rd/hev
 	name = "HEV Suit"
 	desc = "The hazard suit. It was designed to protect scientists from the blunt trauma, radiation, energy discharge that hazardous materials might produce or entail. Fits you like a glove. The automatic medical system seems broken... They're waiting for you, Gordon. In the test chamberrrrrr."
@@ -24,9 +27,15 @@
 	tauric = FALSE		//Citadel Add for tauric hardsuits
 	taurmode = NOT_TAURIC
 	var/firstpickup = TRUE
+	var/pickupsound = TRUE
+
+/obj/item/clothing/suit/space/hardsuit/rd/hev/no_sound
+	pickupsound = FALSE
 
 /obj/item/clothing/suit/space/hardsuit/rd/hev/equipped(mob/user, slot)
 	. = ..()
+	if(!pickupsound)
+		return
 	if(!ishuman(user))
 		return
 	if(slot == SLOT_WEAR_SUIT)

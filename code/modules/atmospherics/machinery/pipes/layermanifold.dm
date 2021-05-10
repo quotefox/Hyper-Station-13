@@ -31,7 +31,7 @@
 	nodes = list()
 	for(var/obj/machinery/atmospherics/A in needs_nullifying)
 		A.disconnect(src)
-		SSair.add_to_rebuild_queue(A)
+		A.build_network()
 
 /obj/machinery/atmospherics/pipe/layer_manifold/proc/get_all_connected_nodes()
 	return front_nodes + back_nodes + nodes

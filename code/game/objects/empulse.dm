@@ -8,6 +8,8 @@
 	if(log)
 		message_admins("EMP with size ([heavy_range], [light_range]) in area [epicenter.loc.name] ")
 		log_game("EMP with size ([heavy_range], [light_range]) in area [epicenter.loc.name] ")
+	
+	deadchat_broadcast("<span class='deadsay bold'>EMP with size ([heavy_range], [light_range]) has occured at [epicenter.loc.name]</span>", turf_target = get_turf(epicenter))
 
 	if(heavy_range >= 1)
 		new /obj/effect/temp_visual/emp/pulse(epicenter)

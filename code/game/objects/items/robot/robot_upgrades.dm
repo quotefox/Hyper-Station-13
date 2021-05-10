@@ -587,11 +587,13 @@
 		R.anchored = FALSE
 		R.notransform = FALSE
 		R.hasExpanded = TRUE
+		R.module.handle_sprite_action(R, TRUE)	//Hyperstation edit
 		R.update_transform()
 
 /obj/item/borg/upgrade/expand/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if (.)
+		R.module.handle_sprite_action(R)
 		R.hasExpanded = FALSE
 		R.update_transform()
 

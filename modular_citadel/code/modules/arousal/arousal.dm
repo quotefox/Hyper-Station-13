@@ -390,18 +390,26 @@
 			if(G.can_climax)
 				setArousalLoss(min_arousal)
 
-	else //knots and other non-spilling orgasms
+	else //knots, portal fleshlights, and other non-spilling orgasms
 		if(!cover)
-			if(do_after(src, mb_time, target = src) && in_range(src, L))
+			if(!remote && !in_range(src, L))
+				return
+			if(do_after(src, mb_time, target = src))
 				var/obj/item/organ/genital/penis/P = G
 				if (P.condom)//condomed.
 					src.condomclimax()
 				else
 					fluid_source.trans_to(L, total_fluids)
 				total_fluids = 0
-				src.visible_message("<span class='love'>[src] climaxes with [L], [p_their()] [G.name] spilling nothing!</span>", \
+				if(!remote)
+					src.visible_message("<span class='love'>[src] climaxes with [L], [p_their()] [G.name] spilling nothing!</span>", \
 									"<span class='userlove'>You ejaculate with [L], your [G.name] spilling nothing.</span>", \
 									"<span class='userlove'>You have climaxed inside someone, your [G.name] spilling nothing.</span>")
+				else
+					src.visible_message("<span class='love'>[src] climaxes with someone, using [p_their()] [G.name]!</span>", \
+									"<span class='userlove'>You ejaculate with someone, using your [G.name].</span>", \
+									"<span class='userlove'>You have climaxed inside someone, using your [G.name].</span>")
+
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 				SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 
@@ -426,7 +434,7 @@
 					W.pregnant = 1
 					if (HAS_TRAIT(L, TRAIT_HEAT))
 						SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "heat", /datum/mood_event/heat) //well done you perv.
-						REMOVE_TRAIT(L, TRAIT_HEAT, type) //take the heat away, you satisfied it!
+						REMOVE_TRAIT(L, TRAIT_HEAT, ROUNDSTART_TRAIT) //take the heat away, you satisfied it!
 
 			 		//Make breasts produce quicker.
 					var/obj/item/organ/genital/breasts/B = L.getorganslot("breasts")

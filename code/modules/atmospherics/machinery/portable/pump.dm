@@ -20,7 +20,7 @@
 	pump = new(src, FALSE)
 	pump.on = TRUE
 	pump.stat = 0
-	SSair.add_to_rebuild_queue(pump)
+	pump.build_network()
 
 /obj/machinery/portable_atmospherics/pump/Destroy()
 	var/turf/T = get_turf(src)

@@ -13,14 +13,14 @@
 	var/list/living_antags = list()
 	var/list/dead_players = list()
 	var/list/list_observers = list()
+	var/list/map_blacklist = list()		//Determines if a map, "BoxStation.dmm" for example, will spawn. Has to be case-sensitive
+	var/list/map_whitelist = list()		//Blacklist/Whitelist does not check round event controllers, they are separate vars and are handled outside of dynamic mode
 
-/datum/dynamic_ruleset/event/acceptable(population=0, threat=0)
-	if(istype(controller, /datum/round_event_control))
-		var/datum/round_event_control/R = controller
-		if(R.map_blacklist.len && (SSmapping.config.map_file in R.map_blacklist))	//Apparently dynamic doesn't call a controller's canSpawnEvent :>
-			return FALSE
-		if(R.map_whitelist.len && !(SSmapping.config.map_file in R.map_whitelist))
-			return FALSE
+/datum/dynamic_ruleset/event/acceptable(population=0, threat_level=0)
+	if (map_blacklist.len && (map_blacklist.Find(SSmapping.config.map_file)))
+		return FALSE
+	if (map_whitelist.len && !(map_whitelist.Find(SSmapping.config.map_file)))
+		return FALSE
 	return ..()
 
 /datum/dynamic_ruleset/event/ready(forced = 0)
@@ -119,6 +119,7 @@
 	high_population_requirement = 15
 	occurances_max = 1
 	chaos_min = 2.0
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/pirates/ready(forced = FALSE)
 	if (!SSmapping.empty_space)
@@ -232,6 +233,7 @@
 	//property_weights = list("extended" = -2)
 	occurances_max = 2
 	chaos_min = 1.5
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/meteor_wave/ready()
 	if(world.time-SSticker.round_start_time > 35 MINUTES && mode.threat_level > 40 && mode.threat >= 25 && prob(30))
@@ -408,6 +410,7 @@
 	//property_weights = list("extended" = 1)
 	occurances_max = 3
 	chaos_min = 0.5
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/communications_blackout
 	name = "Communications Blackout"
@@ -471,6 +474,7 @@
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
 	occurances_max = 3
+	
 
 /datum/dynamic_ruleset/event/electrical_storm
 	name = "Electrical Storm"
@@ -544,6 +548,7 @@
 	//property_weights = list("extended" = 1)
 	occurances_max = 2
 	chaos_min = 1.0
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/swarmers
 	name = "Swarmers"
@@ -559,6 +564,7 @@
 	//property_weights = list("extended" = -2)
 	occurances_max = 1
 	chaos_min = 1.5
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/sentient_disease
 	name = "Sentient Disease"
@@ -604,6 +610,7 @@
 	repeatable_weight_decrease = 2
 	chaos_min = 1.5
 	var/atom/special_target
+	map_blacklist = list("LayeniaStation.dmm")
 
 /*
 /datum/dynamic_ruleset/event/immovable_rod/execute()  //I do not know why this is necessary
@@ -629,6 +636,7 @@
 	cost = 10
 	repeatable = TRUE
 	occurances_max = 2
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/high_priority_bounty
 	name = "High Priority Bounty"
@@ -723,6 +731,7 @@
 	weight = 4
 	repeatable_weight_decrease = 3
 	occurances_max = 2
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/sentience
 	name = "Random Human-level Intelligence"

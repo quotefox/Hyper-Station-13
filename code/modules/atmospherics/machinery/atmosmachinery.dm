@@ -64,7 +64,6 @@
 		nullifyNode(i)
 
 	SSair.atmos_machinery -= src
-	SSair.pipenets_needing_rebuilt -= src
 
 	dropContents()
 	if(pipe_vision_img)

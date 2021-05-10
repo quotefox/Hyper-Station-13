@@ -177,6 +177,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	xenobiology_compatible = TRUE
 
 
+
 //Maintenance - Generic
 
 /area/maintenance/arrivals/north
@@ -1365,11 +1366,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/xenoarch/sec
 	name = "Xenoarchaeology Security"
-	icon_state = "xenosec" 
+	icon_state = "xenosec"
 
 /area/xenoarch/med
 	name = "Xenoarchaeology Medical"
-	icon_state = "xenomed" 
+	icon_state = "xenomed"
 
 //Pool
 /area/crew_quarters/fitness/pool
@@ -1384,3 +1385,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/arcade
 	name = "Arcade"
 	icon_state = "yellow"
+
+//Diner
+/area/diner
+	name = "Space Diner"
+	icon_state = "bar"
+	requires_power = FALSE
+	has_gravity = STANDARD_GRAVITY
+	dynamic_lighting = DYNAMIC_LIGHTING_FORCED
