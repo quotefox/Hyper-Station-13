@@ -724,3 +724,8 @@
 // twitch plays
 /// Returns direction: (wipe_votes)
 #define COMSIG_TWITCH_PLAYS_MOVEMENT_DATA "twitch_plays_movement_data"
+
+//Hyperstation Signals
+//
+///from datum/action/cyborg_small_sprite and sends when a cyborg changes modules
+#define COMSIG_CYBORG_MODULE_CHANGE "cyborg_module_change"
