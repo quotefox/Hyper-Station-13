@@ -3040,6 +3040,7 @@
 #include "hyperstation\code\__DEFINES\economy.dm"
 #include "hyperstation\code\__DEFINES\wendigo.dm"
 #include "hyperstation\code\controllers\subsystem\economy.dm"
+#include "hyperstation\code\datums\ert_hazard_cleanup.dm"
 #include "hyperstation\code\datums\elements\holder_micro.dm"
 #include "hyperstation\code\datums\mood_events\events.dm"
 #include "hyperstation\code\datums\ruins\lavaland.dm"
