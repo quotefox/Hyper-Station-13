@@ -92,6 +92,7 @@
 "cD" = (/obj/structure/chair/sofa/right{dir = 4},/turf/open/floor/carpet/black,/area/diner)
 "dF" = (/obj/machinery/vending/kink,/turf/open/floor/plasteel/dark,/area/diner)
 "eq" = (/obj/structure/chair/comfy/beige{dir = 1},/turf/open/floor/carpet/black,/area/diner)
+"hM" = (/obj/machinery/light{dir = 1; pixel_y = 16},/obj/machinery/telecomms/relay/preset/station{name = "station relay"},/turf/open/floor/plasteel,/area/diner)
 "ie" = (/turf/open/floor/plasteel{icon_state = "floor_plate"},/area/diner)
 "iq" = (/turf/open/floor/plasteel{dir = 8; icon_state = "floor_trim"},/area/diner)
 "jJ" = (/obj/machinery/newscaster{pixel_y = 32},/turf/open/floor/plasteel,/area/diner)
@@ -165,7 +166,7 @@ DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiDhDhDhamananabapab
 DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiDhamanarararabapabarararanaqaiDhDhDhDhaiaiaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
 DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhamanararaaababaaOYaaababaaararanaqDhDhDhaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
 DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhamanararabaaaaataFavapatnQavaaaaabararanaqDhaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
-DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhamararabababVtayazRxaAvbazScaAaypZabababararaqaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhamararabababVthMazRxaAvbazScaAaypZabababararaqaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
 DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarababRtasasaskSkSkSkSkSkSkSasasasRtababaraCaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
 DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhamarababIrapasasapapapapapapapapapasasapIrababaraqDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
 DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabaElmapasasapapapapapapapapapasasapaFaGabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
