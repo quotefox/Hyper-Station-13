@@ -669,11 +669,12 @@
 		icon_state = "[module.cyborg_base_icon]-wreck"
 
 	if(module.cyborg_pixel_offset)
-		pixel_x = module.cyborg_pixel_offset
+		pixel_w = module.cyborg_pixel_offset
 	//End of citadel changes
 
 	if(module.cyborg_base_icon == "robot")
 		icon = 'icons/mob/robots.dmi'
+		pixel_w = initial(pixel_w)
 		pixel_x = initial(pixel_x)
 	if(stat != DEAD && !(IsUnconscious() || IsStun() || IsKnockdown() || low_power_mode)) //Not dead, not stunned.
 		if(!eye_lights)
@@ -1084,11 +1085,11 @@
 
 /mob/living/silicon/robot/update_transform()
 	. = ..()
-	if (hasExpanded)
-		var/matrix/ntransform = matrix(transform)
-		ntransform.Scale(2)	//This seems a bit big
-		ntransform.Translate(0, 16)
-		transform = ntransform
+	if(hasExpanded)
+		var/matrix/ntransform = matrix()
+		ntransform.Scale(2)
+		ntransform.Translate(0, 16)	//plop onto the tile you nerd
+		transform = ntransform		//this will overwrite VV stuff probably
 
 /mob/living/silicon/robot/proc/place_on_head(obj/item/new_hat)
 	if(hat)
