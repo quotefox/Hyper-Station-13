@@ -223,6 +223,8 @@
 		return FALSE
 	if(!getorganslot("belly"))
 		var/obj/item/organ/genital/belly/B = new
+		if(dna.features["belly_size"])
+			B.size = dna.features["belly_size"]-1
 		B.Insert(src)
 		if(B)
 			if(dna.species.use_skintones && dna.features["genitals_use_skintone"])
@@ -233,6 +235,9 @@
 
 		if(dna.features["hide_belly"]) //autohide bellies if they have the option ticked.
 			B.toggle_visibility("Always hidden")
+
+		if(dna.features["inflatable_belly"]) //autohide bellies if they have the option ticked.
+			B.inflatable = TRUE
 
 
 

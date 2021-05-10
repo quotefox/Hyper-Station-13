@@ -61,6 +61,8 @@
 	WRITE_FILE(S["feature_cock_length"], features["cock_length"])
 	WRITE_FILE(S["feature_cock_girth"], features["cock_girth"])
 	WRITE_FILE(S["feature_has_sheath"], features["sheath_color"])
+	//belly feature
+	WRITE_FILE(S["feature_belly_size"], features["belly_size"])
 	//balls features
 	WRITE_FILE(S["feature_has_balls"], features["has_balls"])
 	WRITE_FILE(S["feature_balls_color"], features["balls_color"])
@@ -93,6 +95,7 @@
 	WRITE_FILE(S["feature_has_belly"], features["has_belly"])
 	WRITE_FILE(S["feature_belly_color"], features["belly_color"])
 	WRITE_FILE(S["feature_hide_belly"], features["hide_belly"])
+	WRITE_FILE(S["feature_inflatable_belly"], features["inflatable_belly"])
 
 	//gear loadout
 	if(islist(chosen_gear))

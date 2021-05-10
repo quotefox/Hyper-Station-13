@@ -72,7 +72,7 @@
 	path = /obj/item/shield/riot/roman/fake
 	cost = 2
 
-/datum/gear/romanshield
+/datum/gear/cheeseburger
 	name = "cheeseburger backpack"
 	category = SLOT_HANDS
 	path = /obj/item/storage/backpack/cheeseburgerbackpack

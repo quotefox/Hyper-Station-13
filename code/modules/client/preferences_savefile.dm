@@ -400,6 +400,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_cock_length"]			>> features["cock_length"]
 	S["feature_cock_girth"]				>> features["cock_girth"]
 	S["feature_has_sheath"]				>> features["sheath_color"]
+	//belly size
+	S["feature_belly_size"]				>> features["belly_size"]
 	//balls features
 	S["feature_has_balls"]				>> features["has_balls"]
 	S["feature_balls_color"]			>> features["balls_color"]
@@ -425,6 +427,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_has_belly"]				>> features["has_belly"]
 	S["feature_belly_color"]			>> features["belly_color"]
 	S["feature_hide_belly"]				>> features["hide_belly"]
+	S["feature_inflatable_belly"]		>> features["inflatable_belly"]
 
 	//flavor text
 	//Let's make our players NOT cry desperately as we wipe their savefiles of their special snowflake texts:
