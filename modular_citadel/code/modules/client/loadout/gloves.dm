@@ -25,3 +25,9 @@
 	category = SLOT_GLOVES
 	path = /obj/item/clothing/gloves/ring/diamond
 	cost = 4
+
+/datum/gear/latexsleeves
+	name = "Latex sleeves"
+	category = SLOT_GLOVES
+	path = /obj/item/clothing/gloves/latexsleeves
+	cost = 1
