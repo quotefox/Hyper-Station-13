@@ -150,6 +150,12 @@ There are several things that need to be remembered:
 			uniform_overlay.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
 		overlays_standing[UNIFORM_LAYER] = uniform_overlay
 
+		if(src.getorganslot("penis")) //they have a penis
+			uniform_overlay.add_overlay(mutable_appearance('hyperstation/icons/mob/clothes/extra.dmi', "[U.icon_state]_penis"))
+		if(src.getorganslot("breasts")) //they have breasts
+			uniform_overlay.add_overlay(mutable_appearance('hyperstation/icons/mob/clothes/extra.dmi', "[U.icon_state]_breasts"))
+
+
 	apply_overlay(UNIFORM_LAYER)
 	update_mutant_bodyparts()
 

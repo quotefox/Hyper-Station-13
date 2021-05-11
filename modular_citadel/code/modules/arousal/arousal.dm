@@ -395,6 +395,17 @@
 			if(!remote && !in_range(src, L))
 				return
 			if(do_after(src, mb_time, target = src))
+
+				if(!spillage) //hyper inflation
+					var/obj/item/organ/genital/belly/B = L.getorganslot("belly")
+					if(B)
+						if(B.inflatable && total_fluids > 80) //requires a big cumshot to expand.
+							if(B.size < 3)
+								B.size += 1
+								to_chat(src, "<span class='userlove'>You feel your belly expand.</span>")
+							else
+								to_chat(src, "<span class='userlove'>You feel your belly strain.</span>")
+
 				var/obj/item/organ/genital/penis/P = G
 				if (P.condom)//condomed.
 					src.condomclimax()
@@ -409,6 +420,7 @@
 					src.visible_message("<span class='love'>[src] climaxes with someone, using [p_their()] [G.name]!</span>", \
 									"<span class='userlove'>You ejaculate with someone, using your [G.name].</span>", \
 									"<span class='userlove'>You have climaxed inside someone, using your [G.name].</span>")
+					to_chat(L, "<span class='userlove'>You feel someone ejeculate inside you.</span>")
 
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 				SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
@@ -423,6 +435,7 @@
 				L.mind.sexed = TRUE //sexed
 				to_chat(src, "<span class='userlove'>You feel deep satisfaction with yourself.</span>")
 
+	//Hyper - impreg
 	if(impreg)
 		//Role them odds, only people with the dicks can send the chance to the person with the settings enabled at the momment.
 		if(prob(L.impregchance))

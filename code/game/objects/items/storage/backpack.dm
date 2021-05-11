@@ -171,6 +171,12 @@
 	icon_state = "viropack"
 	item_state = "viropack"
 
+/obj/item/storage/backpack/cheeseburgerbackpack
+	name = "cheeseburger backpack"
+	desc = "A backpack designed to look like a cheeseburger. You feel like you can save the world with it."
+	icon_state = "cheeseburgerbackpack"
+	item_state = "cheeseburgerbackpack"
+
 /*
  * Satchel Types
  */

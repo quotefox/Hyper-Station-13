@@ -6,12 +6,13 @@
 	zone 					= "chest"
 	slot 					= "belly"
 	w_class 				= 3
-	size 					= 1
+	size 					= 0
 	var/statuscheck			= FALSE
 	shape					= "Pair"
 	masturbation_verb 		= "massage"
 	can_climax				= FALSE
 	var/sent_full_message	= TRUE //defaults to 1 since they're full to start
+	var/inflatable			= FALSE //For inflation connoisseurs
 
 
 /obj/item/organ/genital/belly/on_life()
