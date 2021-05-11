@@ -496,3 +496,15 @@
 	path = /obj/item/clothing/under/greenplaidshirt
 	cost = 1
 	ckeywhitelist = list("chemlight")
+
+/datum/gear/latexfull
+	name = "Full latex jumpsuit"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/latexfull
+	cost = 1
+
+/datum/gear/latexhalf
+	name = "Latex bodysuit"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/latexhalf
+	cost = 1
