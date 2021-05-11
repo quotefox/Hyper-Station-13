@@ -126,6 +126,7 @@
 	tiled_dirt = FALSE
 	baseturfs = /turf/open/chasm/cloud
 	smooth = SMOOTH_FALSE
+	planetary_atmos = TRUE
 	initial_gas_mix = FROZEN_ATMOS
 	density = FALSE
 
