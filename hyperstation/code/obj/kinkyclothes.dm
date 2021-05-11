@@ -76,7 +76,6 @@ obj/item/clothing/neck/stole/black
 	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
 	item_state = "r_suit"
 	can_adjust = FALSE
-	force_alternate_icon = TRUE
 
 /obj/item/clothing/under/latexhalf
 	name = "latex bodysuit"
