@@ -67,3 +67,23 @@ obj/item/clothing/neck/stole/black
 	body_parts_covered = CHEST|LEGS|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/under/latexfull
+	name = "full latex jumpsuit"
+	desc = "A tight fitting jumpsuit made of latex."
+	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
+	icon_state = "latex"
+	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
+	item_state = "r_suit"
+	can_adjust = FALSE
+	force_alternate_icon = TRUE
+
+/obj/item/clothing/under/latexhalf
+	name = "latex bodysuit"
+	desc = "A tight fitting outfit made of latex, that covers the wearers torso."
+	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
+	icon_state = "latexhalf"
+	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
+	item_state = "r_suit"
+	can_adjust = FALSE
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
