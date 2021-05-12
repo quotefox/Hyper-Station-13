@@ -57,6 +57,7 @@
 					/obj/item/clothing/under/rank/medical/emt = 5,
 					/obj/item/clothing/under/rank/medical/emt/skirt = 5,
 					/obj/item/clothing/under/rank/medical = 5,
+					/obj/item/clothing/under/sexynursesuit = 5,
 					/obj/item/clothing/suit/toggle/labcoat = 5,
 					/obj/item/clothing/suit/toggle/labcoat/emt = 5,
 					/obj/item/clothing/shoes/sneakers/white = 5,
