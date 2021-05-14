@@ -149,8 +149,6 @@ SUBSYSTEM_DEF(vote)
 					if("5")
 						v += winners[option] //Add the number votes to the pool
 						numbers += (winners[option]*5) //Add the value of the vote to numbers
-					if("No Preference")
-						v += winners[option] // Do not add a number += here, We don't want this option to count for anything.
 			if(v < DYNAMIC_VOTE_NORMALIZATION)
 				while (v < DYNAMIC_VOTE_NORMALIZATION) //For low low pop, low vote rounds.
 					numbers += DYNAMIC_DEFAULT_CHAOS //stops the one person voting from setting the chaos to five and flooding the station with anomalies
