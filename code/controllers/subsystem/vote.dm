@@ -56,7 +56,7 @@ SUBSYSTEM_DEF(vote)
 	//get the highest number of votes
 	var/greatest_votes = 0
 	var/total_votes = 0
-	
+
 	//Catch for dynamic vote. We want to return all the votes.
 	if(mode == "dynamic")
 		return choices //Just return everything to handle
@@ -72,7 +72,7 @@ SUBSYSTEM_DEF(vote)
 			total_votes += votes
 			if(votes > greatest_votes)
 				greatest_votes = votes
-	
+
 	//default-vote for everyone who didn't vote
 	if(!CONFIG_GET(flag/default_no_vote) && choices.len)
 		var/list/non_voters = GLOB.directory.Copy()
@@ -122,7 +122,7 @@ SUBSYSTEM_DEF(vote)
 			if(was_roundtype_vote)
 				stored_gamemode_votes[choices[i]] = votes
 			text += "\n<b>[choices[i]]:</b> [obfuscated ? "???" : votes]" //CIT CHANGE - adds obfuscated votes
-		
+
 		//Dynamic mode
 		if(mode == "dynamic")
 			text = "\n<b> Dynamic Chaos Vote: </b>"
@@ -153,18 +153,18 @@ SUBSYSTEM_DEF(vote)
 				while (v < DYNAMIC_VOTE_NORMALIZATION) //For low low pop, low vote rounds.
 					numbers += DYNAMIC_DEFAULT_CHAOS //stops the one person voting from setting the chaos to five and flooding the station with anomalies
 					v += 1
-			else if (voted.len < GLOB.clients.len)	//Have non-voters "vote" 2, if we're not lowpop
+			/*else if (voted.len < GLOB.clients.len)	//Have non-voters "vote" 2, if we're not lowpop
 				for(var/I in 1 to (GLOB.clients.len - voted.len))
 					v += 1
-					numbers += 2
+					numbers += 2 */
 			var/total = 0
 			for (var/i in numbers)
 				total += i
 			. = (total / v)
 			if(total == 0)//If statements down the road break if total is allowed to be 0 and it defaults to normal extended.
-				. = 0.1 
+				. = 0.1
 			text += "\n<b>Chaos level [.]</b>"
-			
+
 		if(mode != "custom" && mode != "dynamic")
 			if(winners.len > 1 && !obfuscated) //CIT CHANGE - adds obfuscated votes
 				text = "\n<b>Vote Tied Between:</b>"
