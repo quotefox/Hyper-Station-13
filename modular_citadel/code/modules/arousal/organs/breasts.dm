@@ -70,7 +70,7 @@
 			desc = "You see three sets of breasts, running from their chest to their belly."
 		else
 			desc = "You see some breasts, they seem to be quite exotic."
-	if(cached_size > 18) // && cached_size != 25 && cached_size != 30)
+	if(cached_size > 18 && cached_size != 25 && cached_size != 30)
 		desc = "You see [pick("some serious honkers", "a real set of badonkers", "some dobonhonkeros", "massive dohoonkabhankoloos", "two big old tonhongerekoogers", "a couple of giant bonkhonagahoogs", "a pair of humongous hungolomghnonoloughongous")]. Their volume is way beyond cupsize now, measuring in about [round(cached_size)]cm in diameter."
 	else if (!isnum(size))
 		if (size == "flat")
@@ -140,7 +140,7 @@
 				statuscheck = TRUE
 
 
-	if(round(cached_size) < 19)// && round(cached_size) == 25 && round(cached_size) == 30)//Because byond doesn't count from 0, I have to do this.
+	if(round(cached_size) < 19 && round(cached_size) == 25 && round(cached_size) == 30)//Because byond doesn't count from 0, I have to do this.
 		if (prev_size == 0)
 			prev_size = "flat"
 		if(size == 0)//Bloody byond with it's counting from 1
@@ -156,9 +156,9 @@
 			var/mob/living/carbon/human/H = owner
 			H.Force_update_genitals()
 		prev_size = size
-		if (cached_size >= 18 && cached_size < 25)
-			size = "massive"
-		if (cached_size >= 25 && cached_size < 30)
-			size = "giga"
-		if (cached_size >= 30)
-			size = "impossible"
+	else if (cached_size >= 18 && cached_size < 25)
+		size = "massive"
+	else if (cached_size >= 25 && cached_size < 30)
+		size = "giga"
+	else if (cached_size >= 30)
+		size = "impossible"
