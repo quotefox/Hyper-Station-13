@@ -89,7 +89,10 @@
 				var/energy_transfer = delta_temperature*hot_air_heat_capacity*cold_air_heat_capacity/(hot_air_heat_capacity+cold_air_heat_capacity)
 
 				var/heat = energy_transfer*(1-efficiency)
-				lastgen += LOGISTIC_FUNCTION(500000,0.0009,delta_temperature,10000)
+				if(delta_temperature < 16800) // second point where derivative of below function = 1
+					lastgen += LOGISTIC_FUNCTION(500000,0.0009,delta_temperature,10000)
+				else
+					lastgen += delta_temperature + 482102 // value of above function at 16800, or very nearly so
 
 				hot_air.temperature = hot_air.temperature - energy_transfer/hot_air_heat_capacity
 				cold_air.temperature = cold_air.temperature + heat/cold_air_heat_capacity
