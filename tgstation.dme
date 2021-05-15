@@ -468,6 +468,7 @@
 #include "code\datums\elements\flavor_text.dm"
 #include "code\datums\elements\ghost_role_eligibility.dm"
 #include "code\datums\elements\mob_holder.dm"
+#include "code\datums\elements\squish.dm"
 #include "code\datums\elements\swimming.dm"
 #include "code\datums\elements\wuv.dm"
 #include "code\datums\helper_datums\events.dm"
