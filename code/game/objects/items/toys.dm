@@ -602,6 +602,17 @@
 	chattering = TRUE
 	phomeme = "griffin"
 
+/obj/item/toy/talking/drone
+	name = "drone action figure"
+	desc = "An action figure modeled after what seems to be a regular station drone."
+	icon_state = "drone"
+	messages = list("Beep boop.", "You might not understand a drone, but that's fine, what's important is that you understand yourself.", "Remember, not everything needs high pressure or high volume to work efficiently.", "01011001 01101111 01110101 00100000 01100001 01110010 01100101 00100000 01101100 01101111 01110110 01100101 01100100 00101110", "Pause, breathe. Rememeber to treat yourself to something nice, you deserve it.", "Don't aim to be perfect. Nobody is perfect. Instead, try to be whole.", "You yourself, as much as anybody in the entire universe, deserve your love and affection.", "Enjoy every happy moment of your life as if it were the last.", "If you do not respect your own wishes, no one else will.", "Be faithful to that which exists within yourself.", "Yes, you can do it.", "Embrace your values, talents and strengths.")
+	phomeme = "drone"
+
+/obj/item/toy/talking/drone/Initialize()
+	if(prob(5))
+		name = "drone (760) action figure"
+		desc = "An action figure modeled after 'drone (760)', it seems to be a bit dusty."
 /*
 || A Deck of Cards for playing various games of chance ||
 */
