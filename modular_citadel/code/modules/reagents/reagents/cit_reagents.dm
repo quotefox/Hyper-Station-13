@@ -8,7 +8,6 @@
 	reagent_state = LIQUID
 	color = "#FFFFFF" // rgb: 255, 255, 255
 	can_synth = FALSE
-	nutriment_factor = 0.5 * REAGENTS_METABOLISM
 	glass_icon_state = "semen"
 	glass_name = "chalice of semen"
 	glass_desc = "In the Sumerian mythology, Enki - the God of water, was believed to have created the Tigris and Euphrates rivers by masturbating and ejaculating into their empty riverbeds."
