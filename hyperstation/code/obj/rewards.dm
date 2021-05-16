@@ -196,5 +196,5 @@
 	body_parts_covered = HEAD
 	cold_protection = HEAD
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	flags_inv = HIDEHAIR
+	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
