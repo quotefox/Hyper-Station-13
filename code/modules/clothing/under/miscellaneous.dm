@@ -826,3 +826,23 @@
 	item_state = "tuxedo"
 	mutantrace_variation = NO_MUTANTRACE_VARIATION //temporary
 	can_adjust = FALSE
+
+//Cyberpunk PI Costume - Sprites from Eris, slightly modified
+/obj/item/clothing/under/cyberpunksleek
+	name = "modern sweater"
+	desc = "A modern-styled sweater typically worn on more urban planets, made with a neo-laminated fiber lining."
+	icon_state = "cyberpunksleek"
+	item_state = "cyberpunksleek"
+	item_color = "cyberpunksleek"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	can_adjust = FALSE
+
+/obj/item/clothing/under/costume/cyberpunksleek/long
+	name = "long modern sweater"
+	desc = "A long modern-styled sweater typically worn on more urban planets, made with a neo-laminated fiber lining."
+	icon_state = "cyberpunksleek_long"
+	item_state = "cyberpunksleek_long"
+	item_color = "cyberpunksleek_long"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	can_adjust = FALSE
+//End Cyberpunk PI port
