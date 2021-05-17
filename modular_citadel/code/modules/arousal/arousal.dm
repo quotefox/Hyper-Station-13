@@ -402,9 +402,9 @@
 						if(B.inflatable && total_fluids > 80) //requires a big cumshot to expand.
 							if(B.size < 3)
 								B.size += 1
-								to_chat(src, "<span class='userlove'>You feel your belly expand.</span>")
+								to_chat(L, "<span class='userlove'>You feel your belly expand.</span>")
 							else
-								to_chat(src, "<span class='userlove'>You feel your belly strain.</span>")
+								to_chat(L, "<span class='userlove'>You feel your belly strain.</span>")
 
 				var/obj/item/organ/genital/penis/P = G
 				if (P.condom)//condomed.

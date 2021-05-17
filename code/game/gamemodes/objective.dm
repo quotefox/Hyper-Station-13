@@ -883,3 +883,40 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/changeling_team_objective/impersonate_department/impersonate_heads
 	explanation_text = "Have X or more heads of staff escape on the shuttle disguised as heads, while the real heads are dead"
 	command_staff_only = TRUE
+
+/datum/objective/hoard
+	explanation_text = "Hoard items!"
+	var/obj/item/hoarded_item = null
+
+/datum/objective/hoard/get_target()
+	return hoarded_item
+
+/datum/objective/hoard/proc/set_target(obj/item/I)
+	if(I)
+		hoarded_item = I
+		explanation_text = "Keep [I] on your person at all times."
+		return hoarded_item
+	else
+		explanation_text = "Free objective"
+		return
+
+/datum/objective/hoard/check_completion()
+	var/list/datum/mind/owners = get_owners()
+	if(!hoarded_item)
+		return TRUE
+	for(var/datum/mind/M in owners)
+		if(!isliving(M.current))
+			continue
+
+		var/list/all_items = M.current.GetAllContents()	//this should get things in cheesewheels, books, etc.
+
+		for(var/obj/I in all_items) //Check for items
+			if(I == hoarded_item)
+				return TRUE
+	return FALSE
+
+/datum/objective/hoard/heirloom
+	explanation_text = "Steal target heirloom!"
+
+/datum/objective/hoard/heirloom/find_target()
+	set_target(pick(GLOB.family_heirlooms))

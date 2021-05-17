@@ -76,13 +76,22 @@ obj/item/clothing/neck/stole/black
 	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
 	item_state = "r_suit"
 	can_adjust = FALSE
-	force_alternate_icon = TRUE
 
 /obj/item/clothing/under/latexhalf
 	name = "latex bodysuit"
 	desc = "A tight fitting outfit made of latex, that covers the wearers torso."
 	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
 	icon_state = "latexhalf"
+	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
+	item_state = "r_suit"
+	can_adjust = FALSE
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/under/sexynursesuit
+	name = "Sexy nurse outfit"
+	desc = "A very revealing nurse's outfit. Not very sanitary. Does it even count as clothing?"
+	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
+	icon_state = "sexynursesuit"
 	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
 	item_state = "r_suit"
 	can_adjust = FALSE

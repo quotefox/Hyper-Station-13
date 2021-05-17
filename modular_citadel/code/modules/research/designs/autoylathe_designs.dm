@@ -179,6 +179,12 @@
 	materials = list(MAT_PLASTIC = 250, MAT_METAL = 50)
 	build_path = /obj/item/toy/talking/griffin
 
+/datum/design/autoylathe/talking/drone
+	name = "Drone Action Figure"
+	id = "droneactionfig"
+	materials = list(MAT_PLASTIC = 250, MAT_METAL = 50)
+	build_path = /obj/item/toy/talking/drone
+
 /datum/design/autoylathe/cards
 	name = "Deck of Cards"
 	id = "carddeck"
