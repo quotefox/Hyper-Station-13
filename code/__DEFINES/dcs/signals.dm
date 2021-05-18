@@ -195,6 +195,8 @@
 
 
 #define COMSIG_MICRO_PICKUP_FEET "micro_force_grabbed"			//From /datum/element/mob_holder/micro
+
+#define COMSIG_MOBSIZE_CHANGED "mobsize_changed"				//Adding this in so items and whatnot can check when someone changes size. -Cap'n
 // /area signals
 
 ///from base of area/Entered(): (atom/movable/M)
