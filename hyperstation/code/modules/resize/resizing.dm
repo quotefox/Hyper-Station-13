@@ -62,6 +62,8 @@ mob/living/get_effective_size()
 	//if(src.size_multiplier >= RESIZE_A_HUGEBIG || src.size_multiplier <= RESIZE_A_TINYMICRO) Will remove clothing when too big or small. Will do later.
 	previous_size = size_multiplier //And, change this now that we are finally done.
 
+	SEND_SIGNAL(src, COMSIG_MOBSIZE_CHANGED, src) //This SHOULD allow other shit to check when a mob changes size -Capn
+
 	//Now check if the mob can get the size action
 	if(!small_sprite)
 		small_sprite = new(src)
