@@ -1,5 +1,6 @@
 /obj/item/reagent_containers/food/snacks/grown/mushroom
 	name = "mushroom"
+	desc = "We're rich."
 	bitesize_mod = 2
 	foodtype = VEGETABLES
 	wine_power = 40
