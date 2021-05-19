@@ -14,6 +14,7 @@
 	layer = LYING_MOB_LAYER
 	var/overlay_state = "cover_blue"
 	var/mutable_appearance/overlay
+	size_sensitive = FALSE
 
 /obj/vehicle/ridden/space/speedbike/Initialize()
 	. = ..()
@@ -46,6 +47,7 @@
 	layer = LYING_MOB_LAYER
 	var/static/mutable_appearance/overlay = mutable_appearance(icon, "speedwagon_cover", ABOVE_MOB_LAYER)
 	max_buckled_mobs = 4
+	size_sensitive = FALSE
 	var/crash_all = FALSE //CHAOS
 	pixel_y = -48
 	pixel_x = -48

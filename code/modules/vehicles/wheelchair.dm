@@ -11,11 +11,12 @@
 	density = FALSE		//Thought I couldn't fix this one easily, phew
 	// Run speed delay is multiplied with this for vehicle move delay.
 	var/delay_multiplier = 6.7
+	size_sensitive = FALSE
 
 /obj/vehicle/ridden/wheelchair/Initialize()
 	. = ..()
 	var/datum/component/riding/D = LoadComponent(/datum/component/riding)
-	D.vehicle_move_delay = 1
+	D.vehicle_move_delay = 3
 	D.set_vehicle_dir_layer(SOUTH, OBJ_LAYER)
 	D.set_vehicle_dir_layer(NORTH, ABOVE_MOB_LAYER)
 	D.set_vehicle_dir_layer(EAST, OBJ_LAYER)

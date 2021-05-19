@@ -97,11 +97,11 @@
 	. = ..()
 	var/datum/component/riding/R = src.GetComponent(/datum/component/riding)
 	if (!adjusted_speed)
-		R.vehicle_move_delay = 1.5
+		R.vehicle_move_delay = 2
 		to_chat(user, "<span class='notice'>You adjust the wheels on [src] to make it go faster.</span>")
 		adjusted_speed = TRUE
 	else
-		R.vehicle_move_delay = 2
+		R.vehicle_move_delay = 2.5
 		to_chat(user, "<span class='notice'>You adjust the wheels on [src] to make it go slower.</span>")
 		adjusted_speed = FALSE
 	return TRUE
@@ -172,11 +172,12 @@
 	desc = "Uses patented retractable wheel technology. Never sacrifice speed for style - not that this provides much of either."
 	icon = null
 	density = FALSE
+	size_sensitive = FALSE
 
 /obj/vehicle/ridden/scooter/wheelys/Initialize()
 	. = ..()
 	var/datum/component/riding/D = LoadComponent(/datum/component/riding)
-	D.vehicle_move_delay = 2
+	D.vehicle_move_delay = 2.5
 	D.set_vehicle_dir_layer(SOUTH, ABOVE_MOB_LAYER)
 	D.set_vehicle_dir_layer(NORTH, OBJ_LAYER)
 	D.set_vehicle_dir_layer(EAST, OBJ_LAYER)
