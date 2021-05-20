@@ -507,6 +507,7 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 	name = "Monophobia"
 	desc = "You will become increasingly stressed when not in company of others, triggering panic reactions ranging from sickness to heart attacks."
 	value = -3 // Might change it to 4.
+	category = CATEGORY_MOODS	//This can really be categorized into 3 different things, but this seems like the best
 	gain_text = "<span class='danger'>You feel really lonely...</span>"
 	lose_text = "<span class='notice'>You feel like you could be safe on your own.</span>"
 	medical_record_text = "Patient feels sick and distressed when not around other people, leading to potentially lethal levels of stress."
