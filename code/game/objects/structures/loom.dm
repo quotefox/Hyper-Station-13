@@ -32,7 +32,7 @@
 		return FALSE
 	user.show_message("<span class='notice'>You start weaving \the [S.name] through the loom..</span>", 1)
 	if(S.use_tool(src, user, S.pull_effort))
-		if(S.amount >= FABRIC_PER_SHEET)
+		while(S.amount >= FABRIC_PER_SHEET)
 			new S.loom_result(drop_location())
 			S.use(FABRIC_PER_SHEET)
 			user.show_message("<span class='notice'>You weave \the [S.name] into a workable fabric.</span>", 1)
