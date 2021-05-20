@@ -58,7 +58,7 @@
 	if(inert)
 		to_chat(owner, "<span class='notice'>[src] breaks down as it tries to activate.</span>")
 	else
-		owner.revive(full_heal = 1)
+		owner.legion_heal()
 	qdel(src)
 
 /obj/item/organ/regenerative_core/on_life()
@@ -78,12 +78,13 @@
 				to_chat(user, "<span class='notice'>[src] are useless on the dead.</span>")
 				return
 			if(H != user)
-				H.visible_message("[user] forces [H] to apply [src]... they quickly regenerate all injuries!")
+				H.visible_message("<span class='warning'>[user] forces [H] to apply [src]... Black tendrils entangle and reinforce [H.p_them()].</span>")
 				SSblackbox.record_feedback("nested tally", "hivelord_core", 1, list("[type]", "used", "other"))
 			else
-				to_chat(user, "<span class='notice'>You start to smear [src] on yourself. It feels and smells disgusting, but you feel amazingly refreshed in mere moments.</span>")
+				to_chat(user, "<span class='notice'>You start to smear [src] on yourself. Disgusting tendrils hold you together and allow you to keep moving, but for how long?</span>")
 				SSblackbox.record_feedback("nested tally", "hivelord_core", 1, list("[type]", "used", "self"))
-			H.revive(full_heal = 1)
+			H.legion_heal()
+			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "legion", /datum/mood_event/healsbadman)
 			qdel(src)
 
 /obj/item/organ/regenerative_core/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)

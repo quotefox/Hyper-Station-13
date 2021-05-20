@@ -17,3 +17,8 @@
 	description = "<span class='boldwarning'>I saw someone die!</span>\n"
 	mood_change = -8
 	timeout = 20 MINUTES //takes a long time to get over
+
+/datum/mood_event/healsbadman
+	description = "<span class='warning'>I feel like I'm held together by flimsy string, and could fall apart at any moment!</span>\n"
+	mood_change = -4
+	timeout = 2 MINUTES
