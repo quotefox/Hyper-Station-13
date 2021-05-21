@@ -1,6 +1,6 @@
 //Synthetic Lizard
 /datum/species/synthliz
-	name = "Synthetic Lizardperson"
+	name = "Synthetic Lizard"
 	id = "synthliz"
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	say_mod = "beeps"
