@@ -61,3 +61,30 @@
 		var/datum/gas_mixture/current = H.loc.return_air()
 		if(current && (current.return_pressure() >= ONE_ATMOSPHERE*0.85)) //as long as there's reasonable pressure and no gravity, flight is possible
 			return TRUE
+
+/datum/species/insect/spec_death(gibbed, mob/living/carbon/human/H)
+	if(H)
+		stop_wagging_tail(H)
+
+/datum/species/insect/spec_stun(mob/living/carbon/human/H,amount)
+	if(H)
+		stop_wagging_tail(H)
+	. = ..()
+
+/datum/species/insect/can_wag_tail(mob/living/carbon/human/H)
+	return ("mam_tail" in mutant_bodyparts) || ("mam_waggingtail" in mutant_bodyparts)
+
+/datum/species/insect/is_wagging_tail(mob/living/carbon/human/H)
+	return ("mam_waggingtail" in mutant_bodyparts)
+
+/datum/species/insect/start_wagging_tail(mob/living/carbon/human/H)
+	if("mam_tail" in mutant_bodyparts)
+		mutant_bodyparts -= "mam_tail"
+		mutant_bodyparts |= "mam_waggingtail"
+	H.update_body()
+
+/datum/species/insect/stop_wagging_tail(mob/living/carbon/human/H)
+	if("mam_waggingtail" in mutant_bodyparts)
+		mutant_bodyparts -= "mam_waggingtail"
+		mutant_bodyparts |= "mam_tail"
+	H.update_body()
