@@ -368,8 +368,11 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		winset(src, "mainwindow.split", "splitter=[pct]")
 
 
+/client/var/last_stat_panel_refresh = 0
 /client/verb/fix_stat_panel()
 	set name = "Fix Stat Panel"
 	set hidden = TRUE
 
-	init_verbs()
+	if(last_stat_panel_refresh > world.time + 2 SECONDS)
+		init_verbs()
+		last_stat_panel_refresh = world.time
