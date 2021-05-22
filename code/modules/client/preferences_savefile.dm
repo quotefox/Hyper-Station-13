@@ -633,8 +633,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	return 1
 
 
-#undef SAVEFILE_VERSION_MAX
-#undef SAVEFILE_VERSION_MIN
+//#undef SAVEFILE_VERSION_MAX
+//#undef SAVEFILE_VERSION_MIN
 
 #ifdef TESTING
 //DEBUG

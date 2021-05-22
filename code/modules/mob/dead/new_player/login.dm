@@ -32,3 +32,14 @@
 		else
 			postfix = "soon"
 		to_chat(src, "Please set up your character and select \"Ready\". The game will start [postfix].")
+
+	if(client.prefs.path)	//Hyper edit: notify of a newer preference version
+		var/savefile/S = new /savefile(client.prefs.path)
+		if(S)
+			S.cd = "/"
+			var/slot
+			S["default_slot"] >> slot
+			if(slot)
+				S.cd = "/character[slot]"
+				if(S["version"] < SAVEFILE_VERSION_MAX)
+					to_chat(src, "<span class='redtext'>Your characters are outdated from recent updates. Please make sure if everything is within reasonable levels.</span>")
