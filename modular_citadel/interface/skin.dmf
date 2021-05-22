@@ -45,6 +45,16 @@ menu "menu"
 		command = "hotkeys-help"
 		category = "&Help"
 		saved-params = "is-checked"
+	elem 
+		name = ""
+		command = ""
+		category = "&Help"
+		saved-params = "is-checked"
+	elem 
+		name = "&Refresh Stat Panel"
+		command = "fix-stat-panel"
+		category = "&Help"
+		saved-params = "is-checked"
 
 
 window "mainwindow"
