@@ -136,7 +136,7 @@
 			running = 1
 	else
 		running = 0
-	var/genlev = (lastgenlev/1000000)
+	var/genlev = (lastgenlev/100000)
 	switch(genlev)
 		if(0)
 			return
