@@ -373,6 +373,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	set name = "Fix Stat Panel"
 	set hidden = TRUE
 
-	if(last_stat_panel_refresh > world.time + 2 SECONDS)
+	if(world.time > last_stat_panel_refresh + 2 SECONDS)
 		init_verbs()
 		last_stat_panel_refresh = world.time
