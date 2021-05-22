@@ -129,6 +129,7 @@
 		/obj/item/twohanded/shockpaddles/cyborg/hound,
 		/obj/item/stack/medical/gauze/cyborg,
 		/obj/item/reagent_containers/syringe,
+		/obj/item/organ_storage,
 		/obj/item/pinpointer/crew,
 		/obj/item/sensor_device)
 	emag_modules = list(/obj/item/dogborg/pounce)

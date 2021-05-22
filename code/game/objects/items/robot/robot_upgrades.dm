@@ -18,7 +18,11 @@
 	if(R.stat == DEAD)
 		to_chat(user, "<span class='notice'>[src] will not function on a deceased cyborg.</span>")
 		return FALSE
-	if(module_type && !istype(R.module, module_type))
+	if(module_type && !istype(R.module, module_type) && !islist(module_type))
+		to_chat(R, "Upgrade mounting error!  No suitable hardpoint detected!")
+		to_chat(user, "There's no mounting point for the module!")
+		return FALSE
+	if(module_type && islist(module_type) && !(locate(R.module) in module_type))
 		to_chat(R, "Upgrade mounting error!  No suitable hardpoint detected!")
 		to_chat(user, "There's no mounting point for the module!")
 		return FALSE
@@ -410,7 +414,10 @@
 		to produce more advanced and complex medical reagents."
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
-	module_type = /obj/item/robot_module/medical
+	module_type = list(
+		/obj/item/robot_module/medical,
+		/obj/item/robot_module/medihound)
+	
 	var/list/additional_reagents = list()
 
 /obj/item/borg/upgrade/hypospray/action(mob/living/silicon/robot/R, user = usr)
@@ -494,7 +501,9 @@
 		out procedures"
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
-	module_type = /obj/item/robot_module/medical
+	module_type = list(
+		/obj/item/robot_module/medical,
+		/obj/item/robot_module/medihound)
 
 /obj/item/borg/upgrade/processor/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
@@ -517,9 +526,8 @@
 	require_module = 1
 	module_type = list(
 		/obj/item/robot_module/medical,
-		/obj/item/robot_module/syndicate_medical,
-		/obj/item/robot_module/medihound,
-		/obj/item/robot_module/borgi)
+		/obj/item/robot_module/medihound)
+
 
 /obj/item/borg/upgrade/advhealth/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
