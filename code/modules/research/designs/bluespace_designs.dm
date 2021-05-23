@@ -85,7 +85,6 @@
 	category = list("Bluespace Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_CARGO
 
-
 /datum/design/bluespace_pipe
 	name = "Bluespace Pipe"
 	desc = "A pipe that teleports gases."
