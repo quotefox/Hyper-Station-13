@@ -17713,7 +17713,7 @@
 /obj/item/melee/classic_baton/telescopic,
 /obj/item/storage/box/survival,
 /obj/item/crowbar/red,
-/obj/item/card/id/ert{
+/obj/item/card/id/centcom{
 	assignment = "Off-Duty Intelligence Officer";
 	desc = "An ID straight from Central Command.";
 	name = "Kenshin Midori's ID Card (Off-Duty Intelligence Officer)";
@@ -21300,7 +21300,7 @@
 /obj/item/clothing/under/syndicate{
 	has_sensor = 1
 	},
-/obj/item/card/id/ert{
+/obj/item/card/id/centcom{
 	assignment = "Intelligence Officer";
 	desc = "An ID straight from Central Command.";
 	name = "Kenshin Midori's ID Card (Intelligence Officer)";
