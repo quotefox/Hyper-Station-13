@@ -240,6 +240,12 @@ Buildable meters
 	icon_state = "bluespace"
 	disposable = FALSE
 
+/obj/item/pipe/bluespace/Initialize(mapload, _pipe_type, _dir, obj/machinery/atmospherics/make_from)
+	. = ..()
+	pipe_type = /obj/machinery/atmospherics/pipe/bluespace
+	icon_state = "bluespace"
+	disposable = FALSE
+
 /obj/item/pipe/bluespace/attack_self(mob/user)
 	var/new_name = input(user, "Enter identifier for bluespace pipe network", "bluespace pipe", bluespace_network_name) as text|null
 	if(!isnull(new_name))
