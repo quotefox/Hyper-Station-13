@@ -34,6 +34,9 @@ SUBSYSTEM_DEF(title)
 	if(!file_path)
 		file_path = "icons/default_title.dmi"
 
+	if(prob(2))
+		file_path = "icons/disky_title.dmi"
+
 	ASSERT(fexists(file_path))
 
 	icon = new(fcopy_rsc(file_path))
