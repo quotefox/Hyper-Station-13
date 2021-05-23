@@ -142,3 +142,19 @@ Slimecrossing Armor
 		return TRUE
 	else
 		return FALSE
+
+/obj/structure/light_prism/spectral
+	name = "spectral light prism"
+	desc = "You could barely see this, huh!"
+	icon = 'icons/obj/slimecrossing.dmi'
+	icon_state = ""
+	density = FALSE
+	anchored = TRUE
+	max_integrity = 10
+	var/newcolor = "#ff66ff"
+
+/obj/structure/light_prism/Initialize(mapload, var/newcolor)
+	. = ..()
+	color = newcolor
+	light_color = newcolor
+	set_light(5)

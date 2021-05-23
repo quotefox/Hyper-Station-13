@@ -18,7 +18,7 @@
 		if(2)
 			new /obj/item/clothing/suit/space/hardsuit/cult(src)
 		if(3)
-			new /obj/item/soulstone/anybody(src)
+			new /obj/item/nullrod(src)
 		if(4)
 			new /obj/item/katana/cursed(src)
 		if(5)
@@ -39,7 +39,7 @@
 		if(11)
 			new /obj/item/ship_in_a_bottle(src)
 		if(12)
-			new /obj/item/clothing/suit/space/hardsuit/ert/paranormal/beserker(src)
+			new /obj/item/clothing/suit/space/hardsuit/ert/paranormal/beserker/miner(src)
 		if(13)
 			new /obj/item/jacobs_ladder(src)
 		if(14)
@@ -60,14 +60,14 @@
 		if(20)
 			new /obj/item/immortality_talisman(src)
 		if(21)
-			new /obj/item/gun/magic/hook(src)
+			new /obj/item/gun/medbeam(src)
 		if(22)
-			new /obj/item/voodoo(src)
+			new /obj/item/circuitboard/machine/plantgenes/vault
 		if(23)
-			new /obj/item/grenade/clusterbuster/inferno(src)
+			new /obj/item/grenade/clusterbuster/soap(src)
 		if(24)
 			new /obj/item/reagent_containers/food/drinks/bottle/holywater/hell(src)
-			new /obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor(src)
+			new /obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor/miner(src)
 		if(25)
 			new /obj/item/book/granter/spell/summonitem(src)
 		if(26)
@@ -77,6 +77,8 @@
 			new /obj/item/bedsheet/cult(src)
 		if(28)
 			new /obj/item/clothing/neck/necklace/memento_mori(src)
+//		if(29)
+//			new /obj/item/clothing/gloves/gauntlets(src)
 
 //KA modkit design discs
 /obj/item/disk/design_disk/modkit_disc
@@ -1423,3 +1425,43 @@
 		attack_self(user)
 		return
 	..()
+
+//Concussive Gauntlets
+/obj/item/clothing/gloves/gauntlets
+	name = "concussive gauntlets"
+	desc = "Pickaxes... for your hands!"
+	icon_state = "concussive_gauntlets"
+	item_state = "concussive_gauntlets"
+	toolspeed = 0.1
+	strip_delay = 40
+	equip_delay_other = 20
+	cold_protection = HANDS
+	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
+	heat_protection = HANDS
+	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
+	resistance_flags = LAVA_PROOF | FIRE_PROOF //they are from lavaland after all
+	armor = list("melee" = 15, "bullet" = 25, "laser" = 15, "energy" = 15, "bomb" = 100, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 30) //mostly bone bracer armor
+
+/obj/item/clothing/gloves/gauntlets/equipped(mob/user, slot)
+	. = ..()
+	if(slot == ITEM_SLOT_GLOVES)
+		tool_behaviour = TOOL_MINING
+		RegisterSignal(user, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, .proc/rocksmash)
+		RegisterSignal(user, COMSIG_MOVABLE_BUMP, .proc/rocksmash)
+	else
+		stopmining(user)
+
+/obj/item/clothing/gloves/gauntlets/dropped(mob/user)
+	. = ..()
+	stopmining(user)
+
+/obj/item/clothing/gloves/gauntlets/proc/stopmining(mob/user)
+	tool_behaviour = initial(tool_behaviour)
+	UnregisterSignal(user, COMSIG_HUMAN_EARLY_UNARMED_ATTACK)
+	UnregisterSignal(user, COMSIG_MOVABLE_BUMP)
+
+/obj/item/clothing/gloves/gauntlets/proc/rocksmash(mob/living/carbon/human/H, atom/A, proximity)
+	if(!istype(A, /turf/closed/mineral))
+		return
+	A.attackby(src, H)
+	return COMPONENT_CANCEL_ATTACK_CHAIN

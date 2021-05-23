@@ -89,6 +89,12 @@
 	description = "When you get what they have, then you'll finally be happy."
 	suffix = "lavaland_surface_envy.dmm"
 
+/datum/map_template/ruin/lavaland/sin/lust
+	name = "Ruin of Lust"
+	id = "lust"
+	description = "Get your rocks off, even if it costs your soul."
+	suffix = "lavaland_surface_lust.dmm"
+
 /datum/map_template/ruin/lavaland/sin/gluttony
 	name = "Ruin of Gluttony"
 	id = "gluttony"

@@ -406,6 +406,36 @@ Contains:
 	icon_state = "hardsuit0-beserker"
 	item_state = "hardsuit0-beserker"
 
+/obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor/miner
+	name = "inquisitor's hardsuit"
+	icon_state = "hardsuit-inq"
+	item_state = "hardsuit-inq"
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/paranormal/inquisitor/miner
+	armor = list("melee" = 70, "bullet" = 20, "laser" = 20, "energy" = 20, "bomb" = 60, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 80)
+	slowdown = 1
+
+/obj/item/clothing/head/helmet/space/hardsuit/ert/paranormal/inquisitor/miner
+	name = "inquisitor's helmet"
+	icon_state = "hardsuit0-inq"
+	item_state = "hardsuit0-inq"
+	armor = list("melee" = 70, "bullet" = 20, "laser" = 20, "energy" = 20, "bomb" = 60, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 80)
+
+/obj/item/clothing/suit/space/hardsuit/ert/paranormal/beserker/miner
+	name = "champion's hardsuit"
+	desc = "Voices echo from the hardsuit, driving the user insane."
+	icon_state = "hardsuit-beserker"
+	item_state = "hardsuit-beserker"
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/paranormal/beserker/miner
+	armor = list("melee" = 70, "bullet" = 20, "laser" = 20, "energy" = 20, "bomb" = 60, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 80)
+	slowdown = 1
+
+/obj/item/clothing/head/helmet/space/hardsuit/ert/paranormal/beserker/miner
+	name = "champion's helmet"
+	desc = "Peering into the eyes of the helmet is enough to seal damnation."
+	icon_state = "hardsuit0-beserker"
+	item_state = "hardsuit0-beserker"
+	armor = list("melee" = 70, "bullet" = 20, "laser" = 20, "energy" = 20, "bomb" = 60, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 80)
+
 /obj/item/clothing/head/helmet/space/fragile
 	name = "emergency space helmet"
 	desc = "A bulky, air-tight helmet meant to protect the user during emergency situations. It doesn't look very durable."
