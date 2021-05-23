@@ -1925,6 +1925,10 @@
 /obj/structure/flora/rock/jungle,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
+"MX" = (
+/obj/machinery/gateway/centeraway,
+/turf/open/floor/plating/dirt/dark/jungle,
+/area/awaymission/jungleresort)
 "MY" = (
 /obj/structure/barricade/wooden,
 /turf/open/water/jungle,
@@ -12550,7 +12554,7 @@ YQ
 du
 io
 as
-du
+MX
 cD
 io
 io

@@ -5,6 +5,7 @@
 /area/awaymission/jungleresort
 	name = "Jungle Resort"
 	icon_state = "awaycontent30"
+	requires_power = FALSE
 
 //objects
 
