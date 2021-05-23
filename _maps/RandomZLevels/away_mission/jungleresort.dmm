@@ -1,10 +1,9 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "ab" = (
-/obj/structure/flora/ausbushes/stalkybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
+/obj/machinery/gateway{
+	dir = 9
 	},
-/turf/open/floor/grass,
+/turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
 "af" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
@@ -41,11 +40,10 @@
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "as" = (
-/obj/structure/flora/junglebush/b,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
+/obj/machinery/gateway{
+	dir = 1
 	},
-/turf/open/floor/grass,
+/turf/open/floor/plating/dirt/dark/jungle,
 /area/awaymission/jungleresort)
 "at" = (
 /obj/machinery/jukebox,
@@ -72,11 +70,10 @@
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "aI" = (
-/obj/structure/flora/tree/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
+/obj/machinery/gateway{
+	dir = 5
 	},
-/turf/open/floor/grass,
+/turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
 "aL" = (
 /obj/structure/stone_tile/slab/cracked,
@@ -95,11 +92,10 @@
 /turf/closed/wall/mineral/wood,
 /area/awaymission/jungleresort)
 "bg" = (
-/obj/structure/flora/ausbushes/grassybush,
-/obj/effect/turf_decal/weather/dirt{
+/obj/machinery/gateway{
 	dir = 8
 	},
-/turf/open/floor/grass,
+/turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
 "bn" = (
 /obj/structure/flora/tree/jungle/small,
@@ -130,18 +126,16 @@
 /turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
 "bw" = (
-/obj/structure/flora/ausbushes/grassybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
+/obj/machinery/gateway{
+	dir = 4
 	},
-/turf/open/floor/grass,
+/turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
 "by" = (
-/obj/item/kirbyplants/random,
-/obj/machinery/light/small{
-	dir = 8
+/obj/machinery/gateway{
+	dir = 10
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/dirt/dark/jungle,
 /area/awaymission/jungleresort)
 "bG" = (
 /turf/closed/indestructible/riveted,
@@ -184,27 +178,23 @@
 /turf/open/floor/plating/dirt/dark/jungle,
 /area/awaymission/jungleresort)
 "cD" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
+/obj/machinery/gateway,
+/turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
 "cH" = (
 /obj/structure/flora/grass/jungle,
 /turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
 "cJ" = (
-/obj/structure/flora/junglebush/c,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
+/obj/machinery/gateway{
+	dir = 6
 	},
-/turf/open/floor/grass,
+/turf/open/floor/plating/dirt/dark/jungle,
 /area/awaymission/jungleresort)
 "cK" = (
 /obj/structure/closet/crate,
 /obj/item/clothing/head/collectable/petehat/gang,
-/turf/open/floor/plating/rust,
+/turf/open/floor/plating,
 /area/awaymission/jungleresort)
 "cT" = (
 /obj/machinery/light/small{
@@ -249,12 +239,6 @@
 /obj/item/stack/sheet/mineral/wood,
 /turf/open/floor/plating/dirt/dark/jungle,
 /area/awaymission/jungleresort)
-"dF" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/open/water/jungle,
-/area/awaymission/jungleresort)
 "dW" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/cakeslice/vanilla_slice,
@@ -289,13 +273,6 @@
 /obj/structure/chair/comfy/black,
 /turf/open/floor/carpet/blue,
 /area/awaymission/jungleresort)
-"eC" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "eD" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green,
@@ -318,9 +295,6 @@
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "eK" = (
@@ -328,7 +302,6 @@
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
 "eN" = (
-/obj/item/clothing/suit/hooded/wintercoat/bar,
 /obj/structure/table/wood,
 /obj/item/clothing/head/that,
 /turf/open/floor/wood,
@@ -390,13 +363,6 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"fX" = (
-/obj/structure/flora/grass/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "gj" = (
 /obj/structure/chair/wood{
 	dir = 8
@@ -448,10 +414,8 @@
 /area/awaymission/jungleresort)
 "gZ" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/clothing/under/color/jumpskirt/random,
 /obj/item/clothing/under/color/random,
 /obj/item/clothing/under/color/random,
-/obj/item/clothing/under/color/jumpskirt/random,
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
 "hj" = (
@@ -461,33 +425,10 @@
 /obj/structure/stone_tile/surrounding_tile/cracked,
 /turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
-"hk" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"hl" = (
-/obj/effect/turf_decal/weather/dirt,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "hp" = (
 /obj/structure/flora/tree/jungle/small,
 /obj/machinery/light{
 	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"ht" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
 	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
@@ -496,34 +437,14 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"hw" = (
-/obj/structure/flora/junglebush,
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "hy" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"hC" = (
-/obj/structure/flora/rock,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"hH" = (
-/obj/structure/flora/rock/jungle,
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "hN" = (
 /obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
 /turf/open/water/jungle,
 /area/awaymission/jungleresort)
 "hU" = (
@@ -537,23 +458,6 @@
 	},
 /obj/structure/stone_tile/burnt,
 /turf/open/floor/plating/dirt/jungle,
-/area/awaymission/jungleresort)
-"ia" = (
-/obj/structure/flora/grass/jungle/b,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"ie" = (
-/obj/structure/flora/junglebush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "ih" = (
 /obj/structure/stone_tile/surrounding/cracked,
@@ -596,9 +500,7 @@
 "iE" = (
 /obj/structure/closet/secure_closet/bar,
 /obj/item/clothing/glasses/sunglasses/reagent,
-/obj/item/clothing/under/rank/civilian/bartender/skirt,
 /obj/item/clothing/accessory/waistcoat,
-/obj/item/clothing/under/rank/civilian/bartender,
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
 "iG" = (
@@ -624,13 +526,6 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"iU" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "iZ" = (
 /obj/item/storage/toolbox/artistic,
 /obj/structure/table/wood/fancy,
@@ -640,48 +535,10 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/carpet,
 /area/awaymission/jungleresort)
-"jb" = (
-/obj/structure/flora/rock/pile,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"jh" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"jj" = (
-/obj/structure/flora/junglebush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"js" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "jw" = (
 /obj/structure/stone_tile/surrounding/cracked,
 /obj/structure/stone_tile/center/burnt,
 /turf/open/floor/plating/dirt/jungle,
-/area/awaymission/jungleresort)
-"jy" = (
-/obj/structure/flora/grass/jungle/b,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "jB" = (
 /obj/structure/flora/junglebush/large,
@@ -703,18 +560,6 @@
 "jF" = (
 /obj/structure/flora/tree/jungle,
 /obj/machinery/light,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"jH" = (
-/obj/structure/flora/junglebush/b,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"jJ" = (
-/obj/structure/flora/grass/jungle,
-/obj/effect/turf_decal/weather/dirt,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "jL" = (
@@ -753,16 +598,6 @@
 /obj/structure/flora/junglebush/large,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"kw" = (
-/obj/structure/flora/junglebush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "kz" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/shaker,
@@ -772,13 +607,6 @@
 /obj/structure/table/wood,
 /obj/machinery/chem_dispenser/drinks/fullupgrade,
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"kI" = (
-/obj/structure/flora/junglebush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "kJ" = (
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -798,25 +626,11 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"lf" = (
-/obj/structure/flora/rock/pile,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "ll" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
 	},
 /turf/open/floor/plating/dirt/jungle,
-/area/awaymission/jungleresort)
-"lr" = (
-/obj/structure/flora/junglebush/b,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "lB" = (
 /obj/structure/chair/sofa/right{
@@ -837,7 +651,7 @@
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "lS" = (
-/obj/structure/toilet/secret/low_loot{
+/obj/structure/toilet/secret{
 	dir = 1
 	},
 /turf/open/floor/wood,
@@ -904,31 +718,8 @@
 /obj/item/storage/belt/utility,
 /turf/open/floor/plating,
 /area/awaymission/jungleresort)
-"mE" = (
-/obj/structure/flora/grass/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "mY" = (
 /obj/structure/flora/rock,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"mZ" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"ne" = (
-/obj/structure/flora/ausbushes/stalkybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "nm" = (
@@ -954,29 +745,6 @@
 /obj/structure/flora/rock/jungle,
 /obj/structure/flora/grass/jungle/b,
 /obj/structure/flora/junglebush/c,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"nv" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"nw" = (
-/obj/structure/flora/grass/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"nD" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "nJ" = (
@@ -1023,40 +791,16 @@
 /obj/item/clothing/glasses/meson,
 /turf/open/floor/plating/asteroid,
 /area/awaymission/jungleresort)
-"ow" = (
-/obj/structure/flora/tree/jungle,
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "oW" = (
 /obj/effect/decal/remains/human,
 /obj/item/clothing/head/collectable/tophat,
 /turf/open/floor/plating,
 /area/awaymission/jungleresort)
-"oX" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "oZ" = (
 /turf/closed/indestructible/riveted/boss,
 /area/awaymission/jungleresort)
-"pm" = (
-/obj/structure/flora/grass/jungle/b,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "pn" = (
-/obj/structure/toilet/secret/low_loot,
+/obj/structure/toilet/secret,
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
 "po" = (
@@ -1096,16 +840,6 @@
 /obj/structure/table,
 /turf/open/floor/mineral/titanium/white,
 /area/awaymission/jungleresort)
-"pU" = (
-/obj/structure/flora/junglebush/b,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"qa" = (
-/turf/open/floor/plating/rust,
-/area/awaymission/jungleresort)
 "qg" = (
 /turf/closed/wall/mineral/titanium,
 /area/awaymission/jungleresort)
@@ -1115,13 +849,6 @@
 /obj/item/clothing/head/rice_hat/cursed,
 /turf/open/floor/plating,
 /area/awaymission/jungleresort)
-"qr" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "qs" = (
 /obj/item/storage/toolbox/syndicate,
 /obj/structure/table/wood/fancy,
@@ -1130,13 +857,6 @@
 	},
 /obj/structure/window/reinforced,
 /turf/open/floor/carpet,
-/area/awaymission/jungleresort)
-"qz" = (
-/obj/structure/flora/ausbushes/grassybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "qC" = (
 /obj/structure/flora/ausbushes/fullgrass,
@@ -1190,52 +910,10 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"rH" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"rP" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/effect/turf_decal/weather/dirt,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"rQ" = (
-/obj/structure/flora/tree/jungle/small,
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "rS" = (
 /obj/structure/table/wood,
 /obj/item/toy/plush/beeplushie,
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"rT" = (
-/obj/structure/flora/ausbushes/grassybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"se" = (
-/obj/structure/flora/junglebush/b,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"sh" = (
-/obj/structure/flora/ausbushes/grassybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "sn" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
@@ -1258,12 +936,6 @@
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/baguette,
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"sQ" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "sR" = (
 /obj/structure/table/wood,
@@ -1300,16 +972,6 @@
 	dir = 1
 	},
 /turf/open/floor/plating/dirt/jungle,
-/area/awaymission/jungleresort)
-"tn" = (
-/obj/structure/flora/rock/pile,
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "tu" = (
 /obj/structure/flora/grass/jungle,
@@ -1355,33 +1017,6 @@
 /obj/structure/stone_tile/slab,
 /turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
-"tZ" = (
-/obj/structure/flora/rock/pile,
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"uc" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"ue" = (
-/obj/machinery/light,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"uh" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/water/jungle,
-/area/awaymission/jungleresort)
 "uj" = (
 /obj/machinery/door/airlock/wood{
 	id_tag = "ResortCabin3";
@@ -1396,27 +1031,6 @@
 	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"us" = (
-/obj/structure/flora/rock,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"uu" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"uv" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "ux" = (
 /obj/item/stack/sheet/animalhide/monkey,
 /turf/open/floor/wood,
@@ -1425,52 +1039,10 @@
 /obj/structure/chair/stool,
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"uC" = (
-/obj/structure/flora/ausbushes/stalkybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"uG" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/open/water/jungle,
-/area/awaymission/jungleresort)
-"uO" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"uS" = (
-/obj/structure/flora/rock/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "uT" = (
 /obj/structure/table/wood,
 /obj/item/folder/blue,
 /turf/open/floor/carpet/blue,
-/area/awaymission/jungleresort)
-"uW" = (
-/obj/structure/flora/grass/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"uX" = (
-/obj/structure/flora/junglebush/large,
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "uZ" = (
 /obj/machinery/vending/boozeomat,
@@ -1486,13 +1058,6 @@
 "vl" = (
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/grass/jungle/b,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"vq" = (
-/obj/structure/barricade/wooden,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "vs" = (
@@ -1518,11 +1083,6 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"vy" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "vz" = (
 /obj/structure/stone_tile/surrounding_tile/cracked{
@@ -1562,13 +1122,6 @@
 	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"wm" = (
-/obj/structure/flora/junglebush/c,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "wo" = (
 /obj/structure/table/wood/fancy,
 /obj/item/storage/toolbox/gold_fake,
@@ -1580,13 +1133,6 @@
 /obj/item/pen/fountain,
 /turf/open/floor/carpet/blue,
 /area/awaymission/jungleresort)
-"ws" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "wv" = (
 /obj/structure/bed,
 /obj/effect/spawner/lootdrop/bedsheet,
@@ -1596,15 +1142,6 @@
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/clothing/suit/hooded/wintercoat/captain/jungle,
 /turf/open/floor/carpet/blue,
-/area/awaymission/jungleresort)
-"wF" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "wG" = (
 /obj/structure/flora/rock/jungle,
@@ -1647,7 +1184,6 @@
 /area/awaymission/jungleresort)
 "xr" = (
 /obj/structure/table/wood,
-/obj/structure/bedsheetbin/color,
 /obj/item/toy/figure/assistant,
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
@@ -1658,18 +1194,6 @@
 	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"xH" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"xL" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/plating/dirt/jungle,
-/area/awaymission/jungleresort)
 "xQ" = (
 /obj/machinery/door/airlock/wood,
 /turf/open/floor/carpet/red,
@@ -1677,21 +1201,6 @@
 "xS" = (
 /obj/structure/chair/wood,
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"xU" = (
-/obj/structure/flora/junglebush/b,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"xV" = (
-/obj/structure/flora/junglebush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "yb" = (
 /obj/structure/cable{
@@ -1708,29 +1217,9 @@
 /obj/structure/statue/sandstone/venus,
 /turf/open/floor/plasteel/dark,
 /area/awaymission/jungleresort)
-"yu" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "yw" = (
 /obj/item/pickaxe/mini,
 /turf/open/floor/plating/asteroid,
-/area/awaymission/jungleresort)
-"yx" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"yy" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "yz" = (
 /obj/machinery/door/airlock/wood{
@@ -1769,13 +1258,8 @@
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
 "yM" = (
-/obj/item/kirbyplants/random,
 /obj/machinery/light,
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"yQ" = (
-/obj/effect/spawner/lootdrop/cig_packs,
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "yS" = (
 /obj/machinery/door/window,
@@ -1804,30 +1288,9 @@
 	},
 /turf/open/floor/plating,
 /area/awaymission/jungleresort)
-"zr" = (
-/obj/structure/flora/ausbushes/stalkybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "zx" = (
 /obj/structure/flora/junglebush/b,
 /obj/structure/flora/rock,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"zA" = (
-/obj/structure/flora/grass/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"zC" = (
-/obj/structure/flora/grass/jungle/b,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "zH" = (
@@ -1845,31 +1308,13 @@
 /obj/machinery/light{
 	dir = 1
 	},
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"zP" = (
-/obj/structure/flora/tree/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "zV" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
 /turf/open/water/jungle,
-/area/awaymission/jungleresort)
-"zY" = (
-/obj/structure/flora/junglebush/c,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Aa" = (
 /obj/structure/flora/junglebush/c,
@@ -1906,13 +1351,6 @@
 /obj/structure/bed,
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"Ar" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "Az" = (
 /obj/structure/flora/junglebush/b,
 /turf/open/floor/plating/dirt/jungle,
@@ -1931,32 +1369,10 @@
 "AR" = (
 /turf/closed/mineral/random/labormineral/jungle,
 /area/awaymission/jungleresort)
-"AS" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/water/jungle,
-/area/awaymission/jungleresort)
-"AT" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/water/jungle,
-/area/awaymission/jungleresort)
 "AU" = (
 /obj/structure/flora/ausbushes/grassybush,
 /obj/structure/flora/rock,
 /turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"AV" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/water/jungle,
 /area/awaymission/jungleresort)
 "Bh" = (
 /obj/machinery/light/floor,
@@ -2009,13 +1425,6 @@
 /obj/machinery/chem_dispenser/drinks/beer/fullupgrade,
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"BZ" = (
-/obj/structure/flora/junglebush/c,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "Cc" = (
 /obj/item/mop,
 /obj/structure/mopbucket,
@@ -2024,17 +1433,6 @@
 "Co" = (
 /obj/structure/chair/wood/wings,
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"Ct" = (
-/obj/item/kirbyplants/random,
-/turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"Cu" = (
-/obj/structure/flora/junglebush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Cv" = (
 /obj/structure/cable{
@@ -2047,41 +1445,17 @@
 /obj/structure/reagent_dispensers/watertank/high,
 /turf/open/floor/plating,
 /area/awaymission/jungleresort)
-"CC" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "CH" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"CK" = (
-/obj/structure/flora/rock/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "CN" = (
 /obj/structure/flora/tree/jungle,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"CR" = (
-/obj/structure/flora/ausbushes/grassybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "CT" = (
-/obj/item/storage/toolbox/greyscale,
 /obj/structure/table/wood/fancy,
 /obj/structure/window/reinforced{
 	dir = 4
@@ -2092,12 +1466,6 @@
 "CV" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"CY" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
 "Db" = (
 /obj/structure/stone_tile/surrounding/cracked{
@@ -2146,22 +1514,9 @@
 /obj/structure/stone_tile/center/cracked,
 /turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
-"DL" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "DO" = (
 /obj/structure/flora/tree/jungle/small,
 /obj/machinery/light,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"DS" = (
-/obj/structure/flora/junglebush/large,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "DU" = (
@@ -2188,12 +1543,6 @@
 /obj/item/shard,
 /turf/open/floor/mineral/titanium/yellow,
 /area/awaymission/jungleresort)
-"Et" = (
-/obj/structure/toilet/secret/low_loot{
-	dir = 8
-	},
-/turf/open/floor/wood,
-/area/awaymission/jungleresort)
 "Eu" = (
 /obj/structure/table/wood,
 /obj/machinery/light/small{
@@ -2206,19 +1555,6 @@
 /obj/structure/table/wood/fancy,
 /obj/item/candle/infinite,
 /turf/open/floor/plasteel/dark,
-/area/awaymission/jungleresort)
-"Ey" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"EA" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/water/jungle,
 /area/awaymission/jungleresort)
 "EL" = (
 /obj/structure/table/wood,
@@ -2241,23 +1577,9 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"EQ" = (
-/obj/structure/flora/tree/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "EV" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/junglebush,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"Fd" = (
-/obj/structure/flora/grass/jungle/b,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Fl" = (
@@ -2266,20 +1588,6 @@
 	},
 /obj/structure/stone_tile/center,
 /turf/open/floor/plating/dirt/jungle,
-/area/awaymission/jungleresort)
-"Fq" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"Fr" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Fz" = (
 /obj/structure/flora/tree/jungle,
@@ -2298,49 +1606,15 @@
 /obj/machinery/door/airlock/wood,
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"FP" = (
-/obj/structure/flora/grass/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "FQ" = (
 /obj/structure/flora/ausbushes/reedbush,
 /turf/open/floor/plating/dirt/dark/jungle,
-/area/awaymission/jungleresort)
-"FR" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/water/jungle,
-/area/awaymission/jungleresort)
-"FT" = (
-/obj/structure/flora/ausbushes/stalkybush,
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "FV" = (
 /obj/machinery/door/airlock/freezer{
 	name = "Freezer"
 	},
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"FX" = (
-/obj/structure/flora/ausbushes/grassybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"Gd" = (
-/obj/structure/chair/pew{
-	dir = 1
-	},
-/turf/open/floor/carpet,
 /area/awaymission/jungleresort)
 "Gk" = (
 /obj/structure/stone_tile/surrounding/cracked{
@@ -2376,23 +1650,6 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"Gz" = (
-/obj/structure/flora/junglebush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"GA" = (
-/obj/structure/flora/tree/jungle/small,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "GD" = (
 /obj/structure/stone_tile/surrounding_tile/cracked{
 	dir = 5
@@ -2405,15 +1662,6 @@
 	},
 /turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
-"GN" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/water/jungle,
-/area/awaymission/jungleresort)
 "GU" = (
 /obj/item/reagent_containers/food/snacks/sausage,
 /obj/item/reagent_containers/food/snacks/sausage,
@@ -2421,24 +1669,12 @@
 /area/awaymission/jungleresort)
 "Ha" = (
 /obj/structure/table/wood,
-/obj/item/dualsaber/toy,
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"Hg" = (
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/water/jungle,
 /area/awaymission/jungleresort)
 "Hk" = (
 /obj/structure/flora/grass/jungle,
 /obj/machinery/light{
 	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"Hm" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
 	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
@@ -2466,13 +1702,6 @@
 /obj/structure/bonfire/dense,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"HD" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "HI" = (
 /obj/machinery/door/airlock/wood{
 	id_tag = "ResortCabin2";
@@ -2480,13 +1709,6 @@
 	},
 /obj/structure/barricade/wooden,
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"HQ" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "HT" = (
 /mob/living/simple_animal/hostile/gorilla/jungle,
@@ -2500,39 +1722,16 @@
 /obj/structure/flora/ausbushes/sparsegrass,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"Ij" = (
-/obj/structure/chair/pew/left{
-	dir = 1
-	},
-/turf/open/floor/carpet,
-/area/awaymission/jungleresort)
 "Ir" = (
 /obj/effect/decal/cleanable/blood/gibs/human/down,
 /turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
 "Iw" = (
 /obj/structure/table/wood,
-/obj/effect/spawner/lootdrop/space_cash,
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"IC" = (
-/obj/structure/flora/rock/pile,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"IF" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "IK" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -2547,59 +1746,17 @@
 	},
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"IR" = (
-/obj/structure/flora/junglebush/large,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "IW" = (
 /obj/structure/flora/ausbushes/grassybush,
 /obj/machinery/light,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"Jb" = (
-/obj/structure/flora/tree/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"Jc" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "Jd" = (
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"Jf" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"Jh" = (
-/obj/structure/flora/ausbushes/grassybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Jj" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"Jo" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Jq" = (
 /obj/structure/table/wood,
@@ -2632,58 +1789,20 @@
 /obj/effect/decal/cleanable/blood/gibs/human/up,
 /turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
-"JK" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/water/jungle,
-/area/awaymission/jungleresort)
 "JQ" = (
 /obj/item/toy/plush/carpplushie,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/obj/effect/turf_decal/weather/dirt,
 /turf/open/water/jungle,
 /area/awaymission/jungleresort)
 "JU" = (
 /obj/structure/stone_tile/slab/burnt,
 /turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
-"JZ" = (
-/obj/structure/flora/tree/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"Ka" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "Kk" = (
 /obj/machinery/light/floor,
 /turf/open/floor/plating/dirt/dark/jungle,
 /area/awaymission/jungleresort)
-"Kl" = (
-/obj/item/kirbyplants/random,
-/obj/machinery/light{
-	dir = 8
-	},
-/turf/open/floor/wood,
-/area/awaymission/jungleresort)
 "Ko" = (
 /turf/closed/wall/r_wall,
-/area/awaymission/jungleresort)
-"Kr" = (
-/obj/structure/flora/junglebush/b,
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Kw" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
@@ -2705,32 +1824,10 @@
 /mob/living/carbon/monkey,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"KO" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"KR" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"KX" = (
-/obj/structure/flora/rock,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "KY" = (
 /obj/machinery/light{
 	dir = 4
 	},
-/obj/item/kirbyplants/random,
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
 "KZ" = (
@@ -2740,13 +1837,6 @@
 "La" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/plating/dirt/jungle,
-/area/awaymission/jungleresort)
-"Ll" = (
-/obj/structure/flora/ausbushes/stalkybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Lp" = (
 /obj/structure/barricade/wooden,
@@ -2773,22 +1863,6 @@
 /obj/structure/stone_tile/center/burnt,
 /turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
-"Lu" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"Lv" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/water/jungle,
-/area/awaymission/jungleresort)
 "Ly" = (
 /obj/effect/decal/cleanable/blood/splatter,
 /obj/structure/stone_tile/surrounding/cracked{
@@ -2800,12 +1874,6 @@
 "LE" = (
 /obj/structure/reagent_dispensers/keg/gargle,
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"LK" = (
-/obj/structure/chair/pew/right{
-	dir = 1
-	},
-/turf/open/floor/carpet,
 /area/awaymission/jungleresort)
 "LL" = (
 /obj/structure/cable{
@@ -2827,23 +1895,9 @@
 /obj/item/stack/sheet/mineral/wood,
 /turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
-"LW" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "Mc" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /turf/open/floor/plating/dirt/dark/jungle,
-/area/awaymission/jungleresort)
-"Mf" = (
-/obj/structure/flora/junglebush/large,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Mh" = (
 /obj/structure/table/wood,
@@ -2858,19 +1912,6 @@
 /obj/structure/chair/sofa/right,
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"MD" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"MF" = (
-/obj/structure/flora/junglebush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "MJ" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -2880,37 +1921,13 @@
 "MP" = (
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/jungleresort)
-"MS" = (
-/obj/structure/flora/rock/pile,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "MW" = (
 /obj/structure/flora/rock/jungle,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"MX" = (
-/obj/structure/flora/ausbushes/stalkybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "MY" = (
 /obj/structure/barricade/wooden,
 /turf/open/water/jungle,
-/area/awaymission/jungleresort)
-"Nd" = (
-/obj/structure/flora/junglebush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Nf" = (
 /obj/structure/stone_tile/cracked,
@@ -2921,13 +1938,6 @@
 	dir = 5
 	},
 /turf/open/floor/plating/dirt/jungle,
-/area/awaymission/jungleresort)
-"Ni" = (
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Nn" = (
 /obj/machinery/power/apc/auto_name/west,
@@ -2950,11 +1960,6 @@
 /area/awaymission/jungleresort)
 "Oe" = (
 /obj/machinery/light,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"Ol" = (
-/obj/structure/flora/ausbushes/grassybush,
-/obj/effect/turf_decal/weather/dirt,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Or" = (
@@ -2987,17 +1992,6 @@
 	dir = 1
 	},
 /turf/open/floor/plating/dirt/jungle,
-/area/awaymission/jungleresort)
-"OU" = (
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"Pb" = (
-/obj/structure/flora/rock/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Pc" = (
 /obj/machinery/power/terminal{
@@ -3042,56 +2036,14 @@
 /obj/machinery/light,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"PL" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"PM" = (
-/obj/structure/flora/grass/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "PN" = (
 /turf/open/floor/mineral/titanium,
-/area/awaymission/jungleresort)
-"PP" = (
-/obj/structure/flora/rock,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"PS" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"PT" = (
-/obj/structure/flora/rock/pile,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "PW" = (
 /obj/structure/chair/sofa/left{
 	dir = 1
 	},
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"PY" = (
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Qa" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
@@ -3124,42 +2076,12 @@
 /obj/structure/stone_tile/center/burnt,
 /turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
-"QA" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/water/jungle,
-/area/awaymission/jungleresort)
-"QB" = (
-/obj/effect/turf_decal/weather/dirt,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"QC" = (
-/obj/structure/flora/ausbushes/grassybush,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "QE" = (
 /turf/open/floor/carpet/blue,
 /area/awaymission/jungleresort)
 "QI" = (
 /obj/machinery/nuclearbomb/beer,
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"QO" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "QX" = (
 /obj/structure/flora/junglebush,
@@ -3185,13 +2107,6 @@
 /obj/item/storage/belt/utility,
 /turf/open/floor/plating,
 /area/awaymission/jungleresort)
-"Rm" = (
-/obj/structure/flora/tree/jungle/small,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "Rn" = (
 /obj/structure/table/wood,
 /obj/structure/window/reinforced{
@@ -3201,23 +2116,9 @@
 /obj/item/folder,
 /turf/open/floor/carpet/blue,
 /area/awaymission/jungleresort)
-"Ro" = (
-/obj/machinery/light{
-	dir = 1
-	},
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "Rp" = (
 /obj/structure/flora/ausbushes/reedbush,
 /turf/open/floor/plating/dirt/jungle,
-/area/awaymission/jungleresort)
-"RD" = (
-/obj/structure/flora/junglebush/c,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "RI" = (
 /obj/structure/table/wood,
@@ -3231,7 +2132,6 @@
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood/gibs/torso,
 /obj/item/clothing/suit/curator,
-/obj/item/clothing/under/rank/civilian/curator/treasure_hunter,
 /obj/item/clothing/head/fedora/curator,
 /obj/item/clothing/shoes/workboots/mining,
 /obj/item/melee/chainofcommand/jungle,
@@ -3247,11 +2147,6 @@
 "RX" = (
 /obj/structure/flora/junglebush/c,
 /obj/structure/flora/rock/pile,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"Sc" = (
-/obj/structure/flora/rock,
-/obj/effect/turf_decal/weather/dirt,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Se" = (
@@ -3279,31 +2174,6 @@
 "Ss" = (
 /obj/structure/flora/rock/pile,
 /turf/open/floor/plating/dirt/dark/jungle,
-/area/awaymission/jungleresort)
-"St" = (
-/obj/machinery/light{
-	dir = 8
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"SD" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"SF" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "SL" = (
 /obj/effect/decal/cleanable/blood/splatter,
@@ -3345,7 +2215,6 @@
 /area/awaymission/jungleresort)
 "Tm" = (
 /obj/structure/table/wood/poker,
-/obj/effect/spawner/lootdrop/space_cash,
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
 "Tv" = (
@@ -3356,20 +2225,6 @@
 "Tw" = (
 /obj/structure/flora/tree/jungle,
 /obj/structure/flora/grass/jungle,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"Tx" = (
-/obj/machinery/light{
-	dir = 4
-	},
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"Ty" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/obj/effect/turf_decal/weather/dirt,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "TC" = (
@@ -3383,18 +2238,8 @@
 /obj/structure/stone_tile/center,
 /turf/open/floor/plating/dirt/jungle,
 /area/awaymission/jungleresort)
-"TG" = (
-/obj/structure/flora/rock/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "TI" = (
 /obj/structure/barricade/wooden,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "TM" = (
@@ -3427,13 +2272,6 @@
 /obj/item/poster/random_contraband,
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"Uc" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "Ud" = (
 /obj/machinery/light/floor,
 /turf/open/floor/plating/dirt/jungle,
@@ -3449,7 +2287,6 @@
 /obj/effect/decal/remains/human,
 /obj/effect/decal/cleanable/blood/innards,
 /obj/structure/stone_tile/surrounding/cracked,
-/obj/item/fireaxe,
 /obj/item/clothing/head/hardhat/red,
 /obj/item/clothing/shoes/workboots,
 /turf/open/floor/plating/dirt/jungle,
@@ -3458,23 +2295,9 @@
 /obj/machinery/vending/clothing,
 /turf/open/floor/wood,
 /area/awaymission/jungleresort)
-"Uv" = (
-/obj/structure/flora/grass/jungle/b,
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "UB" = (
 /obj/structure/flora/junglebush,
 /turf/open/floor/plating/dirt/dark/jungle,
-/area/awaymission/jungleresort)
-"UH" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Vb" = (
 /obj/structure/chair/stool,
@@ -3488,15 +2311,6 @@
 /obj/item/paper_bin,
 /obj/item/pen,
 /turf/open/floor/carpet/blue,
-/area/awaymission/jungleresort)
-"Vg" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Vh" = (
 /obj/item/storage/toolbox/electrical,
@@ -3521,12 +2335,6 @@
 	name = "Abandoned Cabin Dorm"
 	},
 /turf/open/floor/carpet/red,
-/area/awaymission/jungleresort)
-"VJ" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/open/water/jungle,
 /area/awaymission/jungleresort)
 "VK" = (
 /obj/structure/table/wood,
@@ -3558,26 +2366,9 @@
 /obj/structure/flora/rock/pile/largejungle,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"Wa" = (
-/obj/structure/flora/junglebush/c,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 10
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "Wd" = (
 /obj/structure/shuttle/engine/propulsion,
 /turf/open/floor/plating,
-/area/awaymission/jungleresort)
-"Wh" = (
-/obj/structure/flora/junglebush/large,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Wi" = (
 /obj/structure/chair/stool/bar,
@@ -3600,16 +2391,7 @@
 "WD" = (
 /obj/effect/decal/remains/human,
 /obj/item/clothing/head/collectable/beret,
-/turf/open/floor/plating/rust,
-/area/awaymission/jungleresort)
-"WE" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/obj/effect/turf_decal/weather/dirt{
-	dir = 1
-	},
-/turf/open/floor/grass,
+/turf/open/floor/plating,
 /area/awaymission/jungleresort)
 "WQ" = (
 /obj/effect/decal/remains/human,
@@ -3672,12 +2454,6 @@
 "Xz" = (
 /turf/open/floor/carpet/red,
 /area/awaymission/jungleresort)
-"XB" = (
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "XC" = (
 /obj/item/grown/log/tree,
 /turf/open/floor/grass,
@@ -3691,13 +2467,6 @@
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/snacks/salad/jungle,
 /turf/open/floor/wood,
-/area/awaymission/jungleresort)
-"XR" = (
-/obj/structure/flora/tree/jungle/small,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 8
-	},
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "XV" = (
 /obj/machinery/shower{
@@ -3728,20 +2497,11 @@
 /obj/item/melee/roastingstick,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"Yd" = (
-/obj/item/storage/box/marshmallow,
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "Ye" = (
 /obj/structure/closet/secure_closet/personal/cabinet,
 /obj/item/toy/figure/syndie,
 /obj/item/gun/ballistic/automatic/toy/pistol/unrestricted,
 /turf/open/floor/carpet/red,
-/area/awaymission/jungleresort)
-"Yf" = (
-/obj/structure/flora/junglebush/c,
-/obj/effect/turf_decal/weather/dirt,
-/turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "Yg" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
@@ -3782,24 +2542,6 @@
 /obj/structure/kitchenspike,
 /turf/open/floor/plasteel/freezer,
 /area/awaymission/jungleresort)
-"YE" = (
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 9
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"YF" = (
-/obj/machinery/gateway/away,
-/turf/open/floor/plating/dirt/dark/jungle,
-/area/awaymission/jungleresort)
-"YJ" = (
-/obj/structure/flora/rock/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "YK" = (
 /obj/machinery/light/floor,
 /turf/open/water/jungle,
@@ -3808,21 +2550,7 @@
 /obj/structure/flora/tree/jungle/small,
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
-"YP" = (
-/obj/structure/flora/rock/jungle,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 5
-	},
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
 "YQ" = (
-/turf/open/floor/grass,
-/area/awaymission/jungleresort)
-"YU" = (
-/obj/structure/flora/grass/jungle/b,
-/obj/effect/turf_decal/weather/dirt{
-	dir = 6
-	},
 /turf/open/floor/grass,
 /area/awaymission/jungleresort)
 "YW" = (
@@ -5705,8 +4433,8 @@ AR
 tT
 Si
 rg
-uG
-dF
+pQ
+pQ
 an
 hX
 ih
@@ -5857,9 +4585,9 @@ AR
 aL
 tT
 po
-VJ
+pQ
 LR
-FR
+pQ
 Lt
 tT
 tT
@@ -6010,7 +4738,7 @@ Lr
 JU
 Yg
 jO
-Lv
+pQ
 hj
 tT
 Nf
@@ -8287,7 +7015,7 @@ AR
 AR
 io
 io
-AT
+pQ
 io
 JG
 io
@@ -8439,8 +7167,8 @@ AR
 AR
 io
 io
-VJ
-FR
+pQ
+pQ
 io
 io
 AR
@@ -8683,7 +7411,7 @@ rd
 rd
 YQ
 Wl
-Ka
+YQ
 kr
 YQ
 YQ
@@ -8834,9 +7562,9 @@ YQ
 YQ
 YQ
 CN
-Ey
+oj
 du
-uO
+Pu
 YQ
 mY
 YQ
@@ -8859,9 +7587,9 @@ CN
 YQ
 YQ
 YQ
-pU
-PT
-Fd
+wH
+ZV
+rd
 AR
 AR
 AR
@@ -8985,11 +7713,11 @@ CN
 MW
 YQ
 YQ
-Lu
+jL
 io
 du
 io
-jy
+rd
 YQ
 MW
 YQ
@@ -9009,8 +7737,8 @@ YQ
 YQ
 YQ
 rd
-IR
-FX
+kr
+Pg
 du
 Ou
 cA
@@ -9136,13 +7864,13 @@ YQ
 YQ
 YQ
 YQ
-hw
+AF
 du
 io
 JQ
 du
 du
-DL
+YQ
 YQ
 YQ
 YQ
@@ -9160,12 +7888,12 @@ YQ
 cn
 rd
 YQ
-mE
+Wl
 du
 Xa
 La
-uG
-QA
+pQ
+pQ
 AR
 AR
 AR
@@ -9289,11 +8017,11 @@ Xj
 Xj
 YQ
 CN
-js
+oj
 du
-Lv
+pQ
 io
-KO
+jL
 cn
 wH
 YQ
@@ -9310,12 +8038,12 @@ aP
 CN
 vK
 MW
-Ka
-XB
+YQ
+YQ
 io
 FN
-uG
-QA
+pQ
+pQ
 pQ
 pQ
 AR
@@ -9391,10 +8119,10 @@ Mp
 Jd
 Jd
 Mp
-cJ
-Ka
+cn
 YQ
-Ka
+YQ
+YQ
 CN
 Wl
 YQ
@@ -9440,12 +8168,12 @@ Ih
 CA
 Xj
 YQ
-FT
+vK
 du
 io
 du
 io
-se
+wH
 YQ
 YQ
 YQ
@@ -9461,14 +8189,14 @@ YQ
 YQ
 Pg
 wH
-XB
+YQ
 du
 io
 du
-uG
 pQ
 pQ
-AV
+pQ
+pQ
 AR
 AR
 AR
@@ -9503,7 +8231,7 @@ AR
 AR
 io
 io
-AT
+pQ
 io
 io
 AR
@@ -9545,10 +8273,10 @@ ux
 vw
 io
 io
-Fr
+YQ
 io
-DL
-Ka
+YQ
+YQ
 AF
 YQ
 aP
@@ -9593,10 +8321,10 @@ Xq
 Xj
 YQ
 YQ
-uS
+MW
 du
 io
-jh
+CV
 YQ
 YQ
 YQ
@@ -9611,15 +8339,15 @@ YQ
 YQ
 YM
 AF
-Ka
-XB
+YQ
+YQ
 io
 bp
-uG
-QA
 pQ
 pQ
-EA
+pQ
+pQ
+pQ
 bp
 AR
 AR
@@ -9654,9 +8382,9 @@ AR
 AR
 io
 io
-uG
 pQ
-dF
+pQ
+pQ
 io
 io
 AR
@@ -9688,20 +8416,20 @@ YQ
 YQ
 Pg
 Mp
-Et
+Jd
 Mp
 Jq
 CH
 Jd
 Jd
 Mp
-zC
-sQ
+rd
 YQ
-LW
-Uv
+YQ
+aP
+rd
 io
-DL
+YQ
 YM
 Pg
 YQ
@@ -9746,8 +8474,8 @@ Xj
 YQ
 YQ
 CN
-eC
-Uc
+CV
+Pu
 rd
 YQ
 YQ
@@ -9762,15 +8490,15 @@ YQ
 CN
 YQ
 Pg
-mE
+Wl
 du
 io
 Pp
-uG
 pQ
 pQ
-AV
-EA
+pQ
+pQ
+pQ
 kJ
 io
 AR
@@ -9805,11 +8533,11 @@ AR
 AR
 io
 io
-uG
 pQ
 pQ
 pQ
-dF
+pQ
+pQ
 io
 AR
 AR
@@ -9852,7 +8580,7 @@ YQ
 YQ
 CN
 Pg
-wm
+cn
 ZV
 YQ
 YQ
@@ -9912,19 +8640,19 @@ YQ
 YQ
 YQ
 YQ
-Fd
-TG
+rd
+MW
 io
 cX
-uG
-QA
 pQ
 pQ
-EA
+pQ
+pQ
+pQ
 FQ
 go
 NF
-jH
+wH
 AR
 AR
 AR
@@ -9957,11 +8685,11 @@ AR
 AR
 io
 io
-uh
 pQ
 pQ
 pQ
-Hg
+pQ
+pQ
 ll
 io
 AR
@@ -9992,7 +8720,7 @@ CN
 MW
 rd
 Mp
-Ct
+Jd
 Jd
 Jd
 Dj
@@ -10062,20 +8790,20 @@ CN
 cn
 wH
 Wl
-PT
-zY
+ZV
+cn
 Xa
 Ou
 SW
-uG
 pQ
 pQ
-AV
-EA
+pQ
+pQ
+pQ
 io
 io
-zP
-fX
+CN
+Wl
 ZV
 AR
 AR
@@ -10108,12 +8836,12 @@ AR
 AR
 AR
 io
-uG
 pQ
 pQ
 pQ
 pQ
-Hg
+pQ
+pQ
 WQ
 io
 AR
@@ -10212,20 +8940,20 @@ YQ
 YQ
 YQ
 YQ
-Ka
-FX
+YQ
+Pg
 iG
 du
 Rp
-uG
-QA
 pQ
 pQ
-EA
+pQ
+pQ
+pQ
 kJ
 du
 io
-Jh
+Pg
 YQ
 YQ
 AR
@@ -10260,13 +8988,13 @@ AR
 AR
 AR
 io
-uh
 pQ
 pQ
 pQ
 pQ
 pQ
-dF
+pQ
+pQ
 ak
 AR
 AR
@@ -10346,9 +9074,9 @@ YQ
 Wl
 rF
 YQ
-Kr
+wH
 du
-bw
+Pg
 YQ
 YQ
 YQ
@@ -10363,20 +9091,20 @@ AF
 vK
 kr
 YQ
-Ka
+YQ
 io
 bp
 NU
-uG
-QA
 pQ
 pQ
-AV
-EA
+pQ
+pQ
+pQ
+pQ
 io
 io
-zP
-Gz
+CN
+AF
 YQ
 kr
 rd
@@ -10412,13 +9140,13 @@ AR
 AR
 AR
 io
-uh
 pQ
 pQ
 pQ
 pQ
 pQ
-Hg
+pQ
+pQ
 io
 io
 AR
@@ -10448,7 +9176,7 @@ YQ
 YQ
 YM
 Mp
-Ct
+Jd
 Jd
 Jd
 Jd
@@ -10498,9 +9226,9 @@ YQ
 CN
 YQ
 YQ
-rQ
+YM
 du
-DL
+YQ
 YQ
 YQ
 YQ
@@ -10513,20 +9241,20 @@ rF
 MW
 YQ
 Wl
-rT
-XB
+Pg
+YQ
 io
 du
-uG
-QA
 pQ
 pQ
-AV
-EA
+pQ
+pQ
+pQ
+pQ
 bp
 du
 io
-RD
+cn
 YQ
 YQ
 wH
@@ -10564,14 +9292,14 @@ AR
 AR
 AR
 io
-VJ
 pQ
 pQ
 pQ
 pQ
 pQ
 pQ
-dF
+pQ
+pQ
 io
 AR
 AR
@@ -10650,9 +9378,9 @@ YQ
 YQ
 YQ
 YQ
-OU
+YQ
 du
-DL
+YQ
 YQ
 CN
 wH
@@ -10663,21 +9391,21 @@ Pg
 Wl
 YQ
 YQ
-Ka
-EQ
+YQ
+CN
 du
 cw
 Rp
-uG
 pQ
 pQ
-AV
-EA
+pQ
+pQ
+pQ
 io
 du
 NF
-ie
-Pb
+AF
+MW
 vK
 rd
 YQ
@@ -10717,15 +9445,15 @@ AR
 AR
 io
 io
-VJ
 pQ
 pQ
 pQ
 pQ
-AV
-AV
-AS
-dF
+pQ
+pQ
+pQ
+pQ
+pQ
 io
 AR
 AR
@@ -10780,12 +9508,12 @@ YQ
 YQ
 Pg
 YQ
-Ka
-Ka
-Ka
-cJ
-Ka
-Ka
+YQ
+YQ
+YQ
+cn
+YQ
+YQ
 YQ
 CN
 wH
@@ -10802,9 +9530,9 @@ YQ
 YQ
 YQ
 CN
-Uv
+rd
 io
-DL
+YQ
 YQ
 MW
 YQ
@@ -10813,21 +9541,21 @@ rF
 YQ
 YQ
 YQ
-Ka
-XB
+YQ
+YQ
 du
 du
 Az
-uG
-QA
 pQ
-AV
-EA
+pQ
+pQ
+pQ
+pQ
 du
 mh
 cH
-RD
-LW
+cn
+aP
 YQ
 YQ
 wH
@@ -10870,15 +9598,15 @@ AR
 AR
 io
 io
-uh
 pQ
 pQ
-EA
+pQ
+pQ
 io
 io
 io
-VJ
-dF
+pQ
+pQ
 io
 AR
 AR
@@ -10931,16 +9659,16 @@ kr
 YQ
 YQ
 YM
-zY
+cn
 iG
 io
 du
 io
 bp
 io
-xH
-Ka
-Rm
+YQ
+YQ
+YM
 Wl
 YQ
 YQ
@@ -10954,30 +9682,30 @@ rd
 YQ
 YQ
 og
-OU
+YQ
 du
-zA
+Wl
 Pg
 YQ
 YQ
 YQ
 CN
 YQ
-Ka
-XB
+YQ
+YQ
 FN
 du
 mh
-uG
-QA
 pQ
-AV
-EA
+pQ
+pQ
+pQ
+pQ
 rm
 io
 io
-yu
-JZ
+YQ
+CN
 YQ
 kr
 YQ
@@ -11022,16 +9750,16 @@ AR
 AR
 io
 io
-VJ
-AV
-EA
+pQ
+pQ
+pQ
 io
 io
 AR
 AR
 io
-VJ
-dF
+pQ
+pQ
 od
 io
 AR
@@ -11081,22 +9809,22 @@ YQ
 CN
 YQ
 YQ
-Ka
-XB
+YQ
+YQ
 Ss
 cH
-uG
-QA
-QA
-dF
+pQ
+pQ
+pQ
+pQ
 Rp
 du
 io
 kJ
-lf
-YJ
-Ka
-Ka
+ZV
+MW
+YQ
+YQ
 YM
 YQ
 YQ
@@ -11109,25 +9837,25 @@ Ko
 zK
 io
 io
-Mf
+kr
 YQ
 YQ
 YQ
-Ka
-XB
+YQ
+YQ
 io
 du
 go
-uG
-QA
 pQ
 pQ
-EA
+pQ
+pQ
+pQ
 kJ
 io
 Xa
-jH
-sQ
+wH
+YQ
 YQ
 wH
 YQ
@@ -11183,10 +9911,10 @@ AR
 AR
 AR
 io
-JK
-GN
-QA
-dF
+pQ
+pQ
+pQ
+pQ
 io
 AR
 AR
@@ -11232,52 +9960,52 @@ YQ
 wH
 mY
 YQ
-XB
+YQ
 io
 FN
 so
-uG
 pQ
 pQ
 pQ
 pQ
-QA
-QA
-dF
+pQ
+pQ
+pQ
+pQ
 bp
 so
 mh
 io
 io
-xH
-Ka
-Ka
-Ka
+YQ
+YQ
+YQ
+YQ
 YQ
 YQ
 YQ
 CN
 WU
-zY
+cn
 io
 io
-DL
+YQ
 CN
-Ka
-XB
+YQ
+YQ
 Br
 io
 SW
-uG
-QA
 pQ
 pQ
-AV
-EA
+pQ
+pQ
+pQ
+pQ
 io
 io
-zP
-fX
+CN
+Wl
 YQ
 YQ
 YQ
@@ -11337,10 +10065,10 @@ AR
 AR
 AR
 io
-VJ
 pQ
-QA
-dF
+pQ
+pQ
+pQ
 io
 AR
 AR
@@ -11380,54 +10108,54 @@ YQ
 YQ
 CN
 ZV
-cJ
-Ka
-rT
-XB
+cn
+YQ
+Pg
+YQ
 io
 FQ
-uG
-QA
-pQ
-pQ
-AV
-AV
-AV
 pQ
 pQ
 pQ
-QA
-QA
-QA
-dF
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
 io
 FN
 cA
 go
 ro
-Jc
-Ka
-Ka
-Ka
-OU
+rF
+YQ
+YQ
+YQ
+YQ
 du
 io
 io
-DL
-mE
+YQ
+Wl
 Xo
 du
 Rp
-uG
-QA
 pQ
 pQ
-AV
-EA
+pQ
+pQ
+pQ
+pQ
 FQ
 du
 io
-yu
+YQ
 kr
 rF
 YQ
@@ -11490,19 +10218,19 @@ AR
 AR
 AR
 io
-VJ
-AV
-AV
-QA
-dF
+pQ
+pQ
+pQ
+pQ
+pQ
 io
 io
 AR
 AR
 YQ
-PT
-Fd
-Ka
+ZV
+rd
+YQ
 YQ
 YQ
 AF
@@ -11530,55 +10258,55 @@ ZV
 YQ
 cn
 YQ
-Jf
-mE
+rF
+Wl
 io
 io
 du
 FN
 du
-uG
 pQ
 pQ
 pQ
-EA
+pQ
+pQ
 ro
 Ou
 Az
-VJ
-AV
-AV
-AV
-AV
 pQ
 pQ
-QA
-QA
-QA
-dF
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
 FQ
 TT
 io
 io
 io
-Jb
+CN
 du
 du
 io
-GA
+YM
 cH
 TT
-uG
-QA
 pQ
 pQ
 pQ
-EA
+pQ
+pQ
+pQ
 cw
 kJ
 cH
-Jh
-zC
+Pg
+rd
 YQ
 YQ
 YQ
@@ -11645,18 +10373,18 @@ AR
 AR
 AR
 io
-VJ
-AV
-QA
-QA
+pQ
+pQ
+pQ
+pQ
 AR
 AR
 pP
 KZ
 io
 io
-xH
-aI
+YQ
+CN
 YQ
 YQ
 Wo
@@ -11678,40 +10406,40 @@ YQ
 YQ
 Tw
 kr
-rT
-Ka
-Ka
-YU
+Pg
+YQ
+YQ
+rd
 Xa
 UB
 du
-uG
-QA
-QA
-QA
 pQ
 pQ
-EA
+pQ
+pQ
+pQ
+pQ
+pQ
 io
 bp
 Pp
-sh
+Pg
 ro
 io
 du
 FN
 TT
 Rp
-VJ
-AV
 pQ
 pQ
 pQ
 pQ
-QA
-QA
-QA
-dF
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
 du
 NF
 Jd
@@ -11719,16 +10447,16 @@ Jd
 Jd
 Az
 NU
-uG
 pQ
 pQ
 pQ
-AV
-EA
+pQ
+pQ
+pQ
 io
 io
-yu
-JZ
+YQ
+CN
 MW
 YQ
 YQ
@@ -11799,19 +10527,19 @@ AR
 AR
 AR
 io
-VJ
-AV
+pQ
+pQ
 pQ
 pQ
 MY
-QA
-dF
+pQ
+pQ
 du
 Rp
 Xa
-xH
-Ka
-rT
+YQ
+YQ
+Pg
 YQ
 YQ
 YQ
@@ -11827,58 +10555,58 @@ wH
 YQ
 YQ
 YQ
-Ka
-Ka
-XB
+YQ
+YQ
+YQ
 du
 io
 du
 bp
 mh
-uG
-QA
 pQ
 pQ
-AV
-AV
-AV
-EA
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
 io
 io
-yu
-sQ
+YQ
+YQ
 CN
-sQ
-wm
-sQ
-sQ
-Jo
+YQ
+cn
+YQ
+YQ
+YQ
 io
 Br
 du
-VJ
-AV
-AV
-AV
 pQ
 pQ
 pQ
 pQ
-QA
-QA
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
 Jd
 Jd
 Jd
-QA
-QA
 pQ
 pQ
-AV
-EA
+pQ
+pQ
+pQ
+pQ
 io
 Br
 du
-yu
+YQ
 YQ
 rF
 YQ
@@ -11953,20 +10681,20 @@ AR
 AR
 io
 io
-uh
+pQ
 MY
 pQ
 pQ
 pQ
-QA
-dF
+pQ
+pQ
 io
 du
 io
 FN
-YP
-uW
-Ka
+MW
+Wl
+YQ
 YQ
 cn
 YQ
@@ -11978,25 +10706,25 @@ rd
 MW
 YQ
 YM
-XB
+YQ
 io
 du
 bp
 Rp
-uG
-QA
-QA
-QA
 pQ
-AV
-AV
-EA
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
 Rp
 Pp
 du
 Xo
 Az
-yu
+YQ
 YQ
 YQ
 YQ
@@ -12005,17 +10733,17 @@ AF
 YQ
 YQ
 YQ
-JZ
-nw
+CN
+Wl
 io
 io
 du
 bp
 io
-VJ
-AV
-AV
-AV
+pQ
+pQ
+pQ
+pQ
 pQ
 pQ
 Jd
@@ -12024,12 +10752,12 @@ Jd
 pQ
 pQ
 pQ
-EA
+pQ
 io
 io
 FN
-Jh
-Pb
+Pg
+MW
 ZV
 cn
 YQ
@@ -12109,45 +10837,45 @@ AR
 AR
 pP
 pQ
-AV
-AV
 pQ
-QA
+pQ
+pQ
+pQ
 hN
-dF
+pQ
 du
 kJ
 KZ
 io
-xH
-Ka
-aI
-Ka
-Ka
+YQ
 YQ
 CN
 YQ
-ab
-Ka
-mE
+YQ
+YQ
+CN
+YQ
+vK
+YQ
+Wl
 du
 io
-uG
-QA
-QA
 pQ
 pQ
 pQ
 pQ
-EA
+pQ
+pQ
+pQ
+pQ
 KZ
 kJ
 Ou
 NU
-yu
-sQ
-sQ
-JZ
+YQ
+YQ
+YQ
+CN
 Wl
 cn
 MW
@@ -12159,27 +10887,27 @@ YQ
 YQ
 AF
 wH
-sQ
-sQ
-sQ
-uS
+YQ
+YQ
+YQ
+MW
 io
 io
 io
 FN
 FQ
 zV
-AV
+pQ
 Jd
 Jd
 Jd
-AV
-AV
-EA
+pQ
+pQ
+pQ
 kJ
 du
-yu
-fX
+YQ
+Wl
 YQ
 YQ
 YQ
@@ -12263,39 +10991,39 @@ AR
 AR
 mh
 aB
-VJ
 pQ
 pQ
 pQ
-QA
-QA
-dF
+pQ
+pQ
+pQ
+pQ
 io
 du
 du
 Ss
 mh
 io
-xH
-Ka
-Cu
+YQ
+YQ
+AF
 io
 FN
 aB
 Az
-uG
 pQ
 pQ
 pQ
-AV
-AV
-EA
+pQ
+pQ
+pQ
+pQ
 du
 Br
 io
-yu
 YQ
-JZ
+YQ
+CN
 YQ
 YQ
 Pg
@@ -12315,10 +11043,10 @@ YQ
 YQ
 CN
 ZV
-sQ
-sQ
-sQ
-DS
+YQ
+YQ
+YQ
+kr
 px
 Ko
 yC
@@ -12329,7 +11057,7 @@ nU
 FQ
 cH
 Az
-PP
+mY
 cn
 rF
 YQ
@@ -12416,35 +11144,35 @@ AR
 AR
 io
 cw
-VJ
-AV
 pQ
 pQ
 pQ
 pQ
-QA
-QA
-QA
-QA
-dF
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
 NF
 Mc
 du
 io
 FQ
-uG
-QA
-QA
 pQ
 pQ
 pQ
-EA
+pQ
+pQ
+pQ
+pQ
 mh
 Ou
 io
 io
-PY
-wm
+rF
+cn
 RX
 YQ
 wH
@@ -12471,16 +11199,16 @@ YM
 cn
 Wl
 YQ
-Pb
-tn
-PS
+MW
+xD
+rF
 du
 io
-xH
-sQ
-JZ
-sQ
-sQ
+YQ
+YQ
+CN
+YQ
+YQ
 YQ
 CN
 YQ
@@ -12549,7 +11277,7 @@ Xj
 qG
 Di
 JF
-Ij
+Dj
 JF
 Ex
 JF
@@ -12566,35 +11294,35 @@ AR
 AR
 AR
 AR
-Jo
+YQ
 io
 bp
 mh
-VJ
-AV
-AV
-AV
-AV
 pQ
 pQ
 pQ
 pQ
-QA
-QA
-QA
-QA
-QA
 pQ
 pQ
 pQ
-AV
-EA
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
 io
 io
 FN
-yu
-sQ
-sQ
+YQ
+YQ
+YQ
 CN
 YQ
 wJ
@@ -12625,11 +11353,11 @@ YQ
 YQ
 YQ
 CN
-OU
+YQ
 io
 io
 du
-BZ
+cn
 rF
 Wl
 YQ
@@ -12701,9 +11429,9 @@ CT
 JF
 JF
 JF
-Gd
 Dj
-Ij
+Dj
+Dj
 JF
 Ex
 Xj
@@ -12719,16 +11447,14 @@ AR
 AR
 AR
 AR
-sQ
-nw
+YQ
+Wl
 ro
 UB
 Pp
 TT
 FQ
 io
-VJ
-AV
 pQ
 pQ
 pQ
@@ -12737,13 +11463,15 @@ pQ
 pQ
 pQ
 pQ
-AV
-EA
+pQ
+pQ
+pQ
+pQ
 FQ
 Ss
 io
-PM
-sQ
+Wl
+YQ
 YQ
 YQ
 rF
@@ -12778,10 +11506,10 @@ rF
 YQ
 YQ
 Pg
-Jo
+YQ
 du
 io
-kI
+AF
 rd
 YQ
 kr
@@ -12853,11 +11581,11 @@ JF
 JF
 Dj
 Dj
-LK
 Dj
-LK
 Dj
-Ij
+Dj
+Dj
+Dj
 JF
 Xj
 AR
@@ -12873,27 +11601,27 @@ AR
 AR
 rd
 wH
-sQ
-sQ
-Wh
-fX
-Ni
+YQ
+YQ
+kr
+Wl
+aP
 io
 Br
 du
-VJ
-AV
-AV
-AV
-AV
-AV
-AV
-EA
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
 io
 io
 io
-zP
-lr
+CN
+wH
 MW
 YQ
 YQ
@@ -12930,9 +11658,9 @@ CN
 YQ
 Wl
 YQ
-XB
+YQ
 du
-yu
+YQ
 YQ
 YQ
 YQ
@@ -13009,7 +11737,7 @@ TM
 Dj
 TM
 Dj
-LK
+Dj
 JF
 op
 AR
@@ -13025,13 +11753,13 @@ Lp
 AR
 AR
 AR
-vq
-Ka
-Ka
-aI
-PT
-Gz
-Jo
+TI
+YQ
+YQ
+CN
+ZV
+AF
+YQ
 NF
 Pp
 du
@@ -13042,8 +11770,8 @@ io
 FN
 Ss
 cH
-yu
-us
+YQ
+mY
 Pg
 kf
 vK
@@ -13081,10 +11809,10 @@ YQ
 YQ
 YQ
 YQ
-OU
+YQ
 du
 io
-DL
+YQ
 CN
 YQ
 wH
@@ -13182,20 +11910,20 @@ io
 io
 du
 io
-qz
-Ka
-CC
-CC
-fX
-Wh
-CC
-CC
-CC
-CC
-Wh
-sQ
+Pg
 YQ
-Rm
+YQ
+YQ
+Wl
+kr
+YQ
+YQ
+YQ
+YQ
+kr
+YQ
+YQ
+YM
 YQ
 YQ
 YQ
@@ -13213,9 +11941,9 @@ YQ
 rd
 YQ
 Wl
-Jf
+rF
 YQ
-Ka
+YQ
 YQ
 YQ
 YQ
@@ -13233,10 +11961,10 @@ Wl
 YQ
 rF
 wH
-OU
+YQ
 du
 io
-DL
+YQ
 YQ
 Wl
 rd
@@ -13336,21 +12064,21 @@ io
 du
 du
 io
-CY
 io
-xH
-ow
 io
-du
-xL
-io
-xH
-CN
-XB
-du
-DL
 YQ
-Ka
+CN
+io
+du
+io
+io
+YQ
+CN
+YQ
+du
+YQ
+YQ
+YQ
 ZV
 AF
 YQ
@@ -13364,11 +12092,11 @@ Hk
 Pg
 YQ
 YQ
-XB
+YQ
 du
-WE
+YQ
 du
-lf
+ZV
 YQ
 YQ
 YQ
@@ -13383,12 +12111,12 @@ MW
 YQ
 YQ
 YQ
-Ka
-Ka
-Ka
-Jo
+YQ
+YQ
+YQ
+YQ
 du
-SD
+Vm
 YQ
 YQ
 CN
@@ -13465,7 +12193,7 @@ TM
 Dj
 TM
 Dj
-Ij
+Dj
 JF
 EO
 Xj
@@ -13482,28 +12210,28 @@ AR
 AR
 AR
 TI
-Gz
-zC
-sQ
-sQ
-sQ
-JZ
-hl
+AF
+rd
+YQ
+YQ
+YQ
+CN
+YQ
 du
 io
-MF
+AF
 du
-xV
+AF
 du
 du
 io
-rP
+rF
 du
-yu
+YQ
 Wl
-rH
+rF
 io
-DL
+YQ
 YM
 wJ
 YQ
@@ -13515,31 +12243,31 @@ Hs
 Ko
 wj
 YQ
-XB
+YQ
 du
 io
 io
 io
 io
-Jc
-Ka
-Ka
-Ka
-Ka
+rF
+YQ
+YQ
+YQ
+YQ
 YQ
 Pg
-Ka
-Ka
+YQ
+YQ
 AF
-Ka
-Ka
-Ka
-Ll
+YQ
+YQ
+YQ
+vK
 io
 du
 du
-DL
-ue
+YQ
+Oe
 Ko
 wj
 YQ
@@ -13613,11 +12341,11 @@ JF
 JF
 Dj
 Dj
-Ij
 Dj
-Ij
 Dj
-LK
+Dj
+Dj
+Dj
 JF
 Xj
 AR
@@ -13641,20 +12369,20 @@ YQ
 YQ
 KM
 rd
-bg
-sQ
-YQ
-sQ
-CN
-sQ
-sQ
-XR
 Pg
-sQ
+YQ
+YQ
+YQ
+CN
+YQ
+YQ
+YM
+Pg
+YQ
 wH
 rd
 AF
-sQ
+YQ
 kr
 YQ
 rF
@@ -13666,31 +12394,31 @@ YQ
 CN
 nJ
 rF
-OU
+YQ
 io
 du
-io
-io
-du
-du
-io
-du
-io
-io
-io
-xH
-XB
-du
-io
-WE
-du
-io
-io
-io
+ab
+bg
+by
 du
 io
 du
-DL
+io
+io
+io
+YQ
+YQ
+du
+io
+YQ
+du
+io
+io
+io
+du
+io
+du
+YQ
 YQ
 ur
 rF
@@ -13765,9 +12493,9 @@ iZ
 JF
 JF
 JF
-Gd
 Dj
-LK
+Dj
+Dj
 JF
 Ex
 AR
@@ -13818,30 +12546,30 @@ YQ
 YQ
 cn
 YQ
-OU
+YQ
 du
 io
+as
 du
-YF
+cD
 io
 io
 io
-io
-ia
-du
-du
-io
-io
-io
-io
-du
-Ty
-io
+rd
 du
 du
 io
-ie
-sQ
+io
+io
+io
+du
+YQ
+io
+du
+du
+io
+AF
+YQ
 YQ
 YQ
 YQ
@@ -13867,7 +12595,7 @@ mY
 YQ
 vK
 YQ
-Yd
+YQ
 XC
 YQ
 wH
@@ -13917,7 +12645,7 @@ Xj
 Vh
 qs
 JF
-LK
+Dj
 JF
 Ex
 JF
@@ -13971,27 +12699,27 @@ YQ
 YQ
 CN
 YQ
-IC
+ZV
 du
-io
+aI
+bw
+cJ
 io
 du
-io
-du
-yu
 YQ
-sQ
-Jo
-du
-yu
-nD
-sQ
-sQ
 YQ
-sQ
-sQ
-sQ
-sQ
+YQ
+YQ
+du
+YQ
+rF
+YQ
+YQ
+YQ
+YQ
+YQ
+YQ
+YQ
 YQ
 Wl
 rF
@@ -14124,17 +12852,17 @@ YQ
 mY
 YQ
 YQ
-Jo
+YQ
 io
 io
 io
 io
-yu
+YQ
 YQ
 rF
 Wl
 YQ
-IF
+YQ
 YQ
 cn
 Vm
@@ -14276,18 +13004,18 @@ rd
 YQ
 Pg
 rF
-OU
+YQ
 du
 io
 du
-yu
+YQ
 Pg
 YQ
 YQ
 YQ
-OU
+YQ
 io
-xH
+YQ
 Oe
 Ko
 wj
@@ -14428,19 +13156,19 @@ vK
 YQ
 YQ
 Wl
-OU
+YQ
 io
 io
 io
-DL
+YQ
 YQ
 YQ
 CN
 YQ
-Kr
+wH
 io
 du
-bw
+Pg
 nJ
 wH
 YQ
@@ -14581,18 +13309,18 @@ Jj
 Mp
 Mp
 YQ
-PS
+rF
 du
 io
-DL
+YQ
 YQ
 YQ
 rd
 YQ
 YQ
-Jo
+YQ
 io
-KX
+mY
 YQ
 AF
 YQ
@@ -14733,9 +13461,9 @@ Jd
 tC
 Mp
 wj
-XB
+YQ
 du
-nv
+YQ
 YQ
 rF
 YQ
@@ -14884,11 +13612,11 @@ Jd
 Jd
 xr
 Mp
-XB
+YQ
 io
-Ty
+YQ
 io
-DL
+YQ
 YM
 YQ
 qg
@@ -15038,8 +13766,8 @@ Jd
 Hw
 io
 du
-xH
-sQ
+YQ
+YQ
 YQ
 YQ
 vK
@@ -15188,10 +13916,10 @@ Jd
 Jd
 aY
 Mp
-ne
+vK
 du
 io
-DL
+YQ
 YQ
 YQ
 YQ
@@ -15206,7 +13934,7 @@ Wd
 YQ
 kr
 Mp
-Kl
+CH
 Mp
 gv
 Jd
@@ -15340,10 +14068,10 @@ hy
 Jd
 Us
 Mp
-Ka
-wF
+YQ
+YQ
 du
-DL
+YQ
 MW
 YQ
 kr
@@ -15495,16 +14223,16 @@ Hw
 io
 du
 io
-xH
 YQ
 YQ
 YQ
 YQ
 YQ
-hw
+YQ
+AF
 du
 io
-zr
+vK
 AF
 YQ
 YQ
@@ -15644,19 +14372,19 @@ Jd
 Jd
 EL
 Mp
-Jo
+YQ
 io
 du
-xH
+YQ
 YM
 rF
 YQ
 YQ
 YQ
-ow
+CN
 io
 du
-DL
+YQ
 YQ
 rd
 YQ
@@ -15797,18 +14525,18 @@ Jd
 Jq
 Mp
 QX
-Jo
+YQ
 io
 du
-DL
+YQ
 YQ
 YQ
 YQ
 kr
 YQ
-uc
+YQ
 io
-FP
+Wl
 YQ
 YQ
 YQ
@@ -15950,16 +14678,16 @@ Mp
 Mp
 YQ
 rF
-Jo
+YQ
 io
-DL
+YQ
 YQ
 Wl
 YQ
 Vm
-tZ
+ZV
 io
-yu
+YQ
 YQ
 YQ
 YQ
@@ -16102,16 +14830,16 @@ ZV
 YQ
 YQ
 wH
-XB
+YQ
 du
-DL
+YQ
 Pg
 YQ
 gU
 Ko
-Ro
+wj
 du
-xH
+YQ
 YQ
 aP
 Pg
@@ -16253,18 +14981,18 @@ YQ
 YQ
 aP
 YQ
-OU
+YQ
 io
-UH
-jj
-Ka
-Ka
-Ka
+YQ
+AF
+YQ
+YQ
+YQ
 nJ
-YU
+rd
 du
 io
-xH
+YQ
 ZV
 YQ
 YQ
@@ -16274,7 +15002,7 @@ yX
 wZ
 Jd
 Jd
-Ct
+Jd
 Xm
 Mx
 dW
@@ -16405,19 +15133,19 @@ YQ
 YQ
 YQ
 rd
-Sc
+mY
 io
 du
 io
 io
 du
 io
-QB
+YQ
 io
 io
 du
 du
-xH
+YQ
 Wl
 YQ
 DO
@@ -16557,27 +15285,27 @@ cn
 YQ
 YQ
 vK
-OU
+YQ
 du
 io
 du
 du
-hk
+YQ
 io
-DL
-Jo
+YQ
+YQ
 du
 io
 du
 du
-xH
-Ka
-Ka
-Ka
+YQ
+YQ
+YQ
+YQ
 ZV
-XB
+YQ
 io
-St
+nJ
 YQ
 Mp
 Mp
@@ -16709,30 +15437,30 @@ wj
 YQ
 kr
 YQ
-Fd
-uc
-io
-yu
-jb
+rd
 YQ
-sQ
+io
+YQ
+ZV
+YQ
+YQ
 wH
 vK
-sQ
-Jo
+YQ
+YQ
 io
 io
 du
 du
 io
 io
-WE
+YQ
 du
 io
-xH
-uW
-Ka
-Ka
+YQ
+Wl
+YQ
+YQ
 YQ
 kr
 YQ
@@ -16860,11 +15588,11 @@ nJ
 MW
 YQ
 YQ
-OU
+YQ
 du
 io
 du
-DL
+YQ
 YQ
 YQ
 Wl
@@ -16872,23 +15600,23 @@ YQ
 YQ
 rF
 rd
-CR
+Pg
 du
 du
-mZ
-Wa
-du
-io
-io
+YQ
+cn
 du
 io
+io
+du
+io
 du
 du
 io
-Nd
-YJ
-Ka
-uW
+AF
+MW
+YQ
+Wl
 YQ
 YQ
 lJ
@@ -17012,10 +15740,10 @@ YQ
 YQ
 YQ
 aP
-OU
+YQ
 du
 io
-yu
+YQ
 Vm
 aP
 YQ
@@ -17025,23 +15753,23 @@ MW
 YQ
 YQ
 YQ
-sQ
-sQ
 YQ
 YQ
-sQ
-sQ
-Jo
+YQ
+YQ
+YQ
+YQ
+YQ
 io
 du
-hk
+YQ
 io
 du
 io
 du
 du
 io
-lf
+ZV
 YQ
 YQ
 YQ
@@ -17164,9 +15892,9 @@ YQ
 YM
 YQ
 YQ
-OU
+YQ
 io
-UH
+YQ
 Oe
 Ko
 wj
@@ -17184,17 +15912,17 @@ YQ
 YQ
 YQ
 YQ
-sQ
-LW
+YQ
+aP
 wH
-Jo
+YQ
 io
 io
 io
 du
 io
 io
-DL
+YQ
 YM
 rd
 Mp
@@ -17317,19 +16045,19 @@ vK
 Wl
 YQ
 YQ
-kw
+AF
 du
-DL
+YQ
 hp
 YQ
 YQ
 YQ
 YQ
 YQ
-Ka
-SF
-Ka
-Ar
+YQ
+jL
+YQ
+Pu
 YQ
 vK
 YQ
@@ -17340,17 +16068,17 @@ YQ
 YQ
 YQ
 YQ
-sQ
-sQ
-sQ
-Jo
+YQ
+YQ
+YQ
+YQ
 du
-QC
-Ka
-Ka
-Ka
+Pg
+YQ
+YQ
+YQ
 Mp
-Ct
+Jd
 MJ
 zI
 Mp
@@ -17468,21 +16196,21 @@ bf
 YQ
 YQ
 YQ
-xU
+wH
 io
 du
-DL
+YQ
 ZV
 AF
 cn
-Ka
-Ka
-EQ
+YQ
+YQ
+CN
 du
 du
 Ud
 io
-as
+wH
 YQ
 Oe
 Ko
@@ -17496,7 +16224,7 @@ YQ
 YQ
 YQ
 YM
-Jo
+YQ
 du
 du
 io
@@ -17619,23 +16347,23 @@ yM
 Mp
 AF
 YQ
-Ol
+Pg
 io
 du
 io
-DL
 YQ
-cD
-ws
+YQ
+oj
+Pu
 io
 Kk
 io
 du
-uG
-dF
+pQ
+pQ
 du
 io
-yy
+oj
 rd
 nJ
 YQ
@@ -17648,11 +16376,11 @@ ZV
 YQ
 YQ
 YQ
-OU
+YQ
 io
 io
-yu
-JZ
+YQ
+CN
 Mp
 fh
 Jd
@@ -17771,24 +16499,24 @@ Jd
 Jj
 YQ
 YQ
-OU
+YQ
 du
 io
-yu
+YQ
 rd
-OU
+YQ
 du
 io
 du
-uG
-QA
-QA
 pQ
 pQ
-dF
+pQ
+pQ
+pQ
+pQ
 io
 du
-xH
+YQ
 AF
 YQ
 YQ
@@ -17801,9 +16529,9 @@ cn
 YQ
 wH
 YQ
-pm
+rd
 io
-DL
+YQ
 Oe
 Mp
 Mp
@@ -17921,27 +16649,27 @@ Jt
 Jd
 Jd
 Gl
-Ka
-Ka
-mE
-io
-io
-DL
 YQ
-hH
+YQ
+Wl
+io
+io
+YQ
+YQ
+MW
 du
 Ud
-uG
 pQ
 pQ
 pQ
 pQ
 pQ
 pQ
-dF
+pQ
+pQ
 io
 io
-DL
+YQ
 YQ
 YQ
 YQ
@@ -17952,10 +16680,10 @@ Mp
 Mp
 Mp
 rd
-OU
+YQ
 io
 du
-DL
+YQ
 YQ
 Mp
 pn
@@ -17981,7 +16709,7 @@ AR
 AR
 AR
 Xj
-qa
+Ih
 Ih
 ti
 qi
@@ -18078,11 +16806,10 @@ io
 du
 du
 io
-Mf
+kr
 YQ
-KR
+CV
 io
-uG
 pQ
 pQ
 pQ
@@ -18090,10 +16817,11 @@ pQ
 pQ
 pQ
 pQ
-Hg
+pQ
+pQ
 Kk
 io
-xH
+YQ
 YQ
 YM
 YQ
@@ -18101,13 +16829,13 @@ YQ
 Mp
 zI
 MJ
-Ct
+Jd
 Mp
-Ka
-OU
+YQ
+YQ
 io
 io
-DL
+YQ
 AF
 Mp
 Mp
@@ -18136,7 +16864,7 @@ AR
 ti
 Ih
 oW
-qa
+Ih
 Xj
 AR
 AR
@@ -18216,7 +16944,7 @@ YQ
 YQ
 Oe
 Mp
-Ct
+Jd
 Jd
 Mh
 Wi
@@ -18225,16 +16953,15 @@ Jd
 Jd
 Jd
 Gl
-oX
-sQ
-CR
+wj
+YQ
+Pg
 du
 io
-DL
-Kr
+YQ
+wH
 du
 io
-uh
 pQ
 pQ
 pQ
@@ -18243,10 +16970,11 @@ pQ
 pQ
 pQ
 pQ
-dF
+pQ
+pQ
 io
 du
-qr
+oj
 YQ
 rd
 vK
@@ -18256,9 +16984,9 @@ Jd
 Jd
 tS
 io
-QB
+YQ
 du
-UH
+YQ
 YQ
 YQ
 YQ
@@ -18285,8 +17013,8 @@ AR
 AR
 AR
 Xj
-qa
-qa
+Ih
+Ih
 Ih
 Ih
 kW
@@ -18379,13 +17107,13 @@ Jd
 IK
 wH
 YQ
-OU
+YQ
 io
 io
-DL
-OU
+YQ
+YQ
 io
-uG
+pQ
 pQ
 pQ
 pQ
@@ -18396,9 +17124,9 @@ pQ
 pQ
 pQ
 pQ
-dF
+pQ
 du
-xH
+YQ
 CV
 YQ
 jQ
@@ -18407,8 +17135,8 @@ af
 Jd
 gV
 Mp
-sQ
-OU
+YQ
+YQ
 du
 du
 YQ
@@ -18439,7 +17167,7 @@ AR
 Xj
 ti
 ai
-qa
+Ih
 ti
 kW
 AR
@@ -18532,12 +17260,11 @@ Jj
 YQ
 MW
 YQ
-uC
+vK
 du
-DL
-jJ
+YQ
+Wl
 du
-VJ
 pQ
 pQ
 pQ
@@ -18548,10 +17275,11 @@ pQ
 pQ
 pQ
 pQ
-Hg
+pQ
+pQ
 ot
 io
-DL
+YQ
 YQ
 ZV
 Mp
@@ -18560,9 +17288,9 @@ FO
 Mp
 Mp
 wj
-OU
+YQ
 du
-UH
+YQ
 YQ
 YQ
 cn
@@ -18683,14 +17411,13 @@ Gn
 Mp
 YQ
 YQ
-OU
+YQ
 du
 io
-MS
-Sc
+ZV
+mY
 io
 Kk
-uh
 pQ
 pQ
 pQ
@@ -18700,10 +17427,11 @@ pQ
 pQ
 pQ
 pQ
-Hg
+pQ
+pQ
 Bh
 Vb
-DL
+YQ
 kr
 YQ
 Mp
@@ -18713,9 +17441,9 @@ lS
 Mp
 vK
 YQ
-uc
+YQ
 du
-zr
+vK
 YQ
 Mp
 Mp
@@ -18835,14 +17563,13 @@ Gl
 Mp
 wj
 aP
-OU
+YQ
 du
 io
-DL
-MD
+YQ
+Pu
 io
 io
-uh
 pQ
 pQ
 pQ
@@ -18853,9 +17580,10 @@ pQ
 pQ
 pQ
 pQ
-dF
+pQ
+pQ
 du
-HD
+jL
 YQ
 YQ
 Mp
@@ -18864,13 +17592,13 @@ Mp
 Mp
 Mp
 Wl
-OU
+YQ
 io
 io
-xH
-rT
+YQ
+Pg
 Mp
-Ct
+Jd
 MJ
 zI
 Mp
@@ -18980,34 +17708,34 @@ Jd
 Jd
 eN
 Mp
-by
+MJ
 Jd
 Jd
-by
+MJ
 Mp
 AF
 YQ
-OU
-io
-UH
 YQ
-ow
-du
-uG
-pQ
-pQ
-pQ
-pQ
-pQ
-pQ
-pQ
-pQ
-pQ
-pQ
-pQ
-EA
 io
-DL
+YQ
+YQ
+CN
+du
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+pQ
+io
+YQ
 YQ
 YQ
 YQ
@@ -19016,7 +17744,7 @@ aP
 YQ
 rd
 wH
-OU
+YQ
 du
 io
 io
@@ -19139,13 +17867,13 @@ Jd
 Jj
 YQ
 cn
-OU
+YQ
 io
 du
-DL
-OU
+YQ
+YQ
 du
-VJ
+pQ
 pQ
 pQ
 pQ
@@ -19156,10 +17884,10 @@ pQ
 pQ
 pQ
 pQ
-Hg
+pQ
 du
 io
-bw
+Pg
 YQ
 YQ
 YQ
@@ -19168,11 +17896,11 @@ YQ
 MW
 YQ
 YQ
-OU
+YQ
 io
 io
-yu
-sQ
+YQ
+YQ
 Mp
 vs
 Jd
@@ -19265,7 +17993,7 @@ YQ
 AF
 Pg
 YQ
-yQ
+YQ
 XC
 YQ
 YQ
@@ -19291,14 +18019,13 @@ tK
 IK
 ZV
 YQ
-OU
+YQ
 du
 io
-DL
-hw
+YQ
+AF
 io
 Ud
-VJ
 pQ
 pQ
 pQ
@@ -19308,9 +18035,10 @@ pQ
 pQ
 pQ
 pQ
-EA
+pQ
+pQ
 io
-Hm
+Pu
 YQ
 YQ
 YQ
@@ -19320,9 +18048,9 @@ Pg
 YQ
 YQ
 kr
-OU
+YQ
 io
-sQ
+YQ
 CN
 Oe
 Mp
@@ -19417,9 +18145,9 @@ CN
 YQ
 YQ
 CV
-Ka
-Ka
-Ka
+YQ
+YQ
+YQ
 YQ
 kr
 YQ
@@ -19443,15 +18171,14 @@ vN
 Mp
 YQ
 YQ
-Kr
+wH
 io
 io
-DL
 YQ
-QO
+YQ
+jL
 du
 io
-uh
 pQ
 pQ
 pQ
@@ -19459,10 +18186,11 @@ pQ
 pQ
 pQ
 pQ
-Hg
+pQ
+pQ
 Kk
 io
-DL
+YQ
 rd
 YQ
 vK
@@ -19472,9 +18200,9 @@ Mp
 Mp
 Mp
 YQ
-OU
+YQ
 io
-zA
+Wl
 YQ
 YQ
 Mp
@@ -19568,11 +18296,11 @@ YQ
 YQ
 YQ
 YQ
-mE
+Wl
 io
 du
 io
-PL
+jL
 YQ
 Pg
 YQ
@@ -19596,14 +18324,13 @@ Mp
 YQ
 YM
 YQ
-uc
+YQ
 du
-DL
+YQ
 VU
-OU
+YQ
 io
 du
-VJ
 pQ
 pQ
 pQ
@@ -19611,23 +18338,24 @@ pQ
 pQ
 pQ
 pQ
-Hg
+pQ
+pQ
 du
 io
-DL
+YQ
 mY
 Wl
 YQ
 Mp
 zI
 MJ
-Ct
+Jd
 Mp
-Ka
-XB
+YQ
+YQ
 io
 du
-DL
+YQ
 MW
 Mp
 Mp
@@ -19719,13 +18447,13 @@ kr
 rd
 oj
 YQ
-ws
+Pu
 du
 du
-AT
+pQ
 du
 du
-yy
+oj
 YQ
 Wl
 YQ
@@ -19747,25 +18475,25 @@ YQ
 nJ
 YQ
 YQ
-OU
+YQ
 io
-Vg
 YQ
 YQ
 YQ
-iU
+YQ
+CV
 du
 Kk
-uh
 pQ
-EA
+pQ
+pQ
 no
-VJ
 pQ
 pQ
-EA
+pQ
+pQ
 io
-YE
+oj
 AF
 YQ
 YQ
@@ -19779,7 +18507,7 @@ du
 io
 du
 io
-DL
+YQ
 YQ
 YQ
 YQ
@@ -19870,15 +18598,15 @@ vK
 YQ
 YQ
 YQ
-OU
+YQ
 io
 io
-uG
 pQ
-dF
+pQ
+pQ
 io
 io
-HQ
+Pu
 YQ
 kr
 YQ
@@ -19899,25 +18627,25 @@ kr
 YQ
 YQ
 YQ
-OU
+YQ
 io
 du
-DL
+YQ
 Pg
 vK
-MD
+Pu
 io
 io
-VJ
-EA
+pQ
+pQ
 du
 io
 du
-VJ
-EA
+pQ
+pQ
 Ud
 du
-DL
+YQ
 YQ
 YQ
 YQ
@@ -19927,11 +18655,11 @@ af
 Jd
 bW
 Mp
-sQ
-Jo
+YQ
+YQ
 io
 du
-DL
+YQ
 YQ
 aP
 YQ
@@ -20022,15 +18750,15 @@ CN
 YQ
 YQ
 YM
-vy
+jL
 du
-uG
 pQ
 pQ
-Hg
+pQ
+pQ
 du
 io
-DL
+YQ
 rF
 wH
 YQ
@@ -20051,14 +18779,14 @@ YQ
 YQ
 YQ
 aP
-OU
+YQ
 du
 io
-xH
+YQ
 YQ
 YQ
 jB
-Fq
+oj
 io
 du
 io
@@ -20068,7 +18796,7 @@ io
 du
 du
 io
-Hm
+Pu
 CV
 YQ
 YQ
@@ -20081,9 +18809,9 @@ Mp
 Mp
 wj
 Pg
-uc
+YQ
 io
-MS
+ZV
 YQ
 YQ
 YQ
@@ -20174,15 +18902,15 @@ YQ
 AF
 YQ
 YQ
-OU
+YQ
 io
-uh
 pQ
 pQ
 pQ
-dF
+pQ
+pQ
 du
-uv
+CV
 YQ
 YQ
 YQ
@@ -20203,23 +18931,23 @@ AF
 YQ
 ZV
 YQ
-OU
+YQ
 du
 io
 du
-DL
+YQ
 gU
 Ko
 wj
-lr
-sQ
-nw
+wH
+YQ
+Wl
 du
 io
 io
-KO
-sQ
-sQ
+jL
+YQ
+YQ
 YQ
 CN
 YQ
@@ -20232,9 +18960,9 @@ Jd
 lS
 Mp
 YQ
-Yf
+cn
 du
-UH
+YQ
 YQ
 rd
 Mp
@@ -20326,15 +19054,15 @@ Wl
 YQ
 cn
 aP
-OU
+YQ
 du
-VJ
 pQ
 pQ
 pQ
-EA
+pQ
+pQ
 io
-DL
+YQ
 YQ
 YQ
 YQ
@@ -20356,19 +19084,19 @@ Pg
 YQ
 Wl
 YQ
-Jo
+YQ
 io
-yu
-Ka
-Ka
+YQ
+YQ
+YQ
 nJ
 cn
 YQ
 CV
 YQ
-IC
+ZV
 io
-yu
+YQ
 YQ
 Wl
 YQ
@@ -20384,13 +19112,13 @@ Mp
 Mp
 Mp
 YQ
-OU
+YQ
 io
 io
-xH
+YQ
 wH
 Mp
-Ct
+Jd
 MJ
 zI
 Mp
@@ -20478,15 +19206,15 @@ YQ
 Dz
 YQ
 YQ
-OU
+YQ
 du
 io
-VJ
 pQ
-Hg
+pQ
+pQ
 io
 du
-DL
+YQ
 YQ
 YQ
 YQ
@@ -20509,18 +19237,18 @@ YQ
 YQ
 YQ
 YQ
-sQ
-hw
+YQ
+AF
 io
 du
-xH
+YQ
 YQ
 CN
 YQ
 MW
-XB
+YQ
 io
-yx
+aP
 YQ
 vK
 YQ
@@ -20536,11 +19264,11 @@ nJ
 rd
 ZV
 YQ
-OU
+YQ
 du
 io
 du
-DL
+YQ
 IO
 Jd
 Jd
@@ -20631,14 +19359,14 @@ YQ
 CN
 YQ
 Wl
-iU
+CV
 du
 io
-VJ
-EA
+pQ
+pQ
 du
 io
-CK
+MW
 YQ
 YQ
 YQ
@@ -20662,18 +19390,18 @@ YQ
 kr
 YQ
 YQ
-OU
+YQ
 du
 io
 du
-DL
-Ka
-Ka
-XB
+YQ
+YQ
+YQ
+YQ
 du
 io
 io
-xH
+YQ
 YQ
 YQ
 YQ
@@ -20688,10 +19416,10 @@ CN
 YQ
 YQ
 YQ
-rQ
+YM
 du
 io
-yu
+YQ
 YQ
 Mp
 TX
@@ -20784,12 +19512,12 @@ YQ
 YQ
 YQ
 YQ
-QO
+jL
 du
 du
 io
 io
-Hm
+Pu
 YQ
 YQ
 YQ
@@ -20815,10 +19543,10 @@ YQ
 Pg
 rd
 wH
-Jo
+YQ
 io
 du
-WE
+YQ
 du
 du
 io
@@ -20826,7 +19554,7 @@ io
 du
 io
 du
-Nd
+AF
 rd
 wH
 YQ
@@ -20836,14 +19564,14 @@ MW
 YQ
 aP
 YQ
-Ka
-Ka
-Ka
 YQ
-XB
+YQ
+YQ
+YQ
+YQ
 io
 io
-DL
+YQ
 mt
 Mp
 Mp
@@ -20937,10 +19665,10 @@ YQ
 YM
 wH
 YQ
-sQ
-sQ
-uu
-sQ
+YQ
+YQ
+oj
+YQ
 YQ
 YQ
 YQ
@@ -20968,33 +19696,33 @@ YQ
 YQ
 MW
 YQ
-Jo
-io
-io
-hk
-io
-du
-io
-yu
-CR
-io
-io
-xH
-Ka
-cn
-Ka
-Ka
-Ka
 YQ
-Ka
-hC
+io
+io
+YQ
+io
+du
+io
+YQ
+Pg
+io
+io
+YQ
+YQ
+cn
+YQ
+YQ
+YQ
+YQ
+YQ
+mY
 du
 io
 io
-MX
+vK
 du
 io
-yu
+YQ
 YQ
 YQ
 Mp
@@ -21121,32 +19849,32 @@ Mp
 Mp
 YQ
 Wl
-Jo
-du
-ht
-Jo
-io
-yu
 YQ
-OU
+du
+aP
+YQ
+io
+YQ
+YQ
+YQ
 du
 du
 io
 du
-WE
+YQ
 io
 io
 du
-WE
+YQ
 io
 io
 io
 du
 io
 du
-hk
+YQ
 io
-DL
+YQ
 YQ
 Wl
 Mp
@@ -21273,31 +20001,31 @@ ww
 Mp
 ZV
 YQ
-Tx
+Vm
 io
-DL
-uX
+YQ
+kr
 du
 eJ
 Wl
 YQ
-Jo
-io
-io
-io
-du
-hk
-du
-io
-io
-du
-du
-io
-yu
-sQ
-sQ
 YQ
-sQ
+io
+io
+io
+du
+YQ
+du
+io
+io
+du
+du
+io
+YQ
+YQ
+YQ
+YQ
+YQ
 YQ
 YQ
 YQ
@@ -21434,17 +20162,17 @@ Gl
 IK
 Mp
 wj
-sQ
-sQ
-JZ
-sQ
 YQ
-sQ
-sQ
-sQ
-sQ
-sQ
-sQ
+YQ
+CN
+YQ
+YQ
+YQ
+YQ
+YQ
+YQ
+YQ
+YQ
 wH
 YQ
 rd
@@ -21726,7 +20454,7 @@ Mp
 Jd
 QE
 OA
-Ct
+Jd
 Mp
 Jd
 Jd
