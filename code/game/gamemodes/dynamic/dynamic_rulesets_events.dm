@@ -357,7 +357,7 @@
 	typepath = /datum/round_event/ghost_role/operative
 	required_enemies = list(0,0,0,0,0,0,0,0,0,0)
 	weight = 0 //This is changed in nuclearbomb.dm
-	occurances_max = 1
+	occurances_max = 0
 	requirements = list(10,10,10,10,10,10,10,10,10,10) //SECURE THAT DISK
 	cost = 50
 	chaos_min = 0.5
