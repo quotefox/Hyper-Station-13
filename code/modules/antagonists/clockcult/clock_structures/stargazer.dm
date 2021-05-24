@@ -47,7 +47,7 @@
 		has_starlight = FALSE
 	else
 		for(var/turf/T in view(3, src))
-			if(isspaceturf(T))
+			if(isspaceturf(T) || iscloudturf(T))
 				has_starlight = TRUE
 				break
 	if(has_starlight && anchored)
