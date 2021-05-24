@@ -224,8 +224,7 @@
 
 	var/obj/item/card/id/W = H.wear_id
 	W.icon_state = "centcom"
-	W.access = get_all_accesses()
-	W.access += get_centcom_access("CentCom Commander")
+	W.access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
 	W.assignment = "CentCom Commander"
 	W.registered_name = H.real_name
 	W.update_label()
@@ -406,7 +405,7 @@
 
 
 	var/obj/item/card/id/W = H.wear_id
-	W.icon_state = "centcom"
+	W.icon_state = "deathsquad"
 	W.access = get_all_accesses()//They get full station access.
 	W.access += get_centcom_access("Death Commando")//Let's add their alloted CentCom access.
 	W.assignment = "Death Commando"
@@ -435,8 +434,14 @@
 	mask = /obj/item/clothing/mask/gas/welding
 	belt = /obj/item/storage/belt/utility/chief/full
 	gloves = /obj/item/clothing/gloves/combat
-	id = /obj/item/card/id/ert
+	id = /obj/item/card/id/debug
 	glasses = /obj/item/clothing/glasses/meson/night
 	ears = /obj/item/radio/headset/headset_cent/commander
 	back = /obj/item/storage/backpack/holding
 	backpack_contents = list(/obj/item/card/emag=1,	/obj/item/flashlight/emp/debug=1, /obj/item/construction/rcd/combat=1, /obj/item/gun/magic/wand/resurrection/debug=1, /obj/item/melee/transforming/energy/axe=1)
+
+/datum/outfit/debug/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	var/obj/item/card/id/W = H.wear_id
+	W.assignment = "Jannie"
+	W.registered_name = H.real_name
+	W.update_label(W.registered_name, W.assignment)

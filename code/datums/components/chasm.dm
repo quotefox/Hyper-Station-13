@@ -113,6 +113,8 @@
 			L.notransform = TRUE
 			L.Stun(200)
 			L.resting = TRUE
+			if(prob(5))
+				playsound(AM, 'hyperstation/sound/misc/fallingthroughclouds.ogg', 100, 0)
 
 		var/oldtransform = AM.transform
 		var/oldcolor = AM.color
