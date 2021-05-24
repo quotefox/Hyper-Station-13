@@ -236,7 +236,7 @@
 /obj/item/card/mining_point_card
 	name = "mining points card"
 	desc = "A small card preloaded with mining points. Swipe your ID card over it to transfer the points, then discard. This one only holds a small 50 points on it."
-	icon_state = "data_1"
+	icon_state = "retro"
 	var/points = 50
 
 /obj/item/card/mining_point_card/mp500
@@ -274,7 +274,7 @@
 /obj/item/card/mining_access_card
 	name = "mining access card"
 	desc = "A small card, that when used on any ID, will add mining access."
-	icon_state = "data_1"
+	icon_state = "retrosup"
 
 /obj/item/card/mining_access_card/afterattack(atom/movable/AM, mob/user, proximity)
 	. = ..()

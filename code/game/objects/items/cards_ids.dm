@@ -26,7 +26,7 @@
 /obj/item/card/data
 	name = "data card"
 	desc = "A plastic magstripe card for simple and speedy data storage and transfer. This one has a stripe running down the middle."
-	icon_state = "data_1"
+	icon_state = "retro"
 	obj_flags = UNIQUE_RENAME
 	var/function = "storage"
 	var/data = "null"
