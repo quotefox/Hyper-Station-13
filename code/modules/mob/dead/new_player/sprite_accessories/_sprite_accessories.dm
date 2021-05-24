@@ -64,6 +64,17 @@
 	//For soft-restricting markings to species IDs
 	var/list/recommended_species
 
+	//Special / holdover traits for Citadel specific sprites.
+	var/extra = FALSE
+	var/extra_color_src = MUTCOLORS2						//The color source for the extra overlay.
+	var/extra_icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+	var/extra2 = FALSE
+	var/extra2_color_src = MUTCOLORS3
+	var/extra2_icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+	//for snowflake/donor specific sprites
+	var/list/ckeys_allowed
+
 /datum/sprite_accessory/underwear
 	icon = 'icons/mob/underwear.dmi'
 	var/has_color = FALSE

@@ -688,22 +688,6 @@
 	required_other = TRUE
 	required_container = /obj/item/slime_extract/green
 
-/datum/chemical_reaction/slime/slimeavian //BIRDUP Species
-	name = "Avian Mutation Toxin"
-	id = "avianmuttoxin"
-	results = list(/datum/reagent/mutationtoxin/avian = 1)
-	required_reagents = list(/datum/reagent/oxygen = 1) //Oxygen gives you.. wait that's redbull.
-	required_other = TRUE
-	required_container = /obj/item/slime_extract/green
-
-/datum/chemical_reaction/slime/slimeaquatic //Aquatic species, aquaman got now shit on you.
-	name = "Aquatic Mutation Toxin"
-	id = "aquaticmuttoxin"
-	results = list(/datum/reagent/mutationtoxin/aquatic = 1)
-	required_reagents = list(/datum/reagent/water = 1) //Water, 60% found in a human body, you tipped the scales, you fucked up.
-	required_other = TRUE
-	required_container = /obj/item/slime_extract/green
-
 /datum/chemical_reaction/slime/slimexeno //HISS(Xeno hybrid) species, the other hiss not cats.
 	name = "Xeno Mutation Toxin"
 	id = "xenomuttoxin"
@@ -743,4 +727,3 @@
 	required_reagents = list(/datum/reagent/silicon = 1) //It'd be annoying to make it require synthflesh, so this will work
 	required_other = TRUE
 	required_container = /obj/item/slime_extract/green
-

@@ -1,4 +1,4 @@
-datum/sprite_accessory/caps
+/datum/sprite_accessory/caps	//fuck you, mushroom people
 	icon = 'icons/mob/mutant_bodyparts.dmi'
 	color_src = HAIR
 
