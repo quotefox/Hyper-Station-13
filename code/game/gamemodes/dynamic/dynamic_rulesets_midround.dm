@@ -250,6 +250,9 @@
 		if(issilicon(player)) // Your assigned role doesn't change when you are turned into a silicon.
 			living_players -= player
 			continue
+		if(player.client && player.client.prefs.allow_midround_antag)
+			living_players -= player
+			continue
 		if(is_centcom_level(player.z))
 			living_players -= player // We don't autotator people in CentCom
 			continue
