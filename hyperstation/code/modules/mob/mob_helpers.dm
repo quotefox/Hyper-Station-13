@@ -18,7 +18,7 @@ mob/proc/checkloadappearance()
 					idCard.update_label(H.real_name, idCard.assignment)
 					idCard.registered_name = H.real_name
 				H.mirrorcanloadappearance = FALSE //Prevents them from using the mirror again.
-				ADD_TRAIT(H,TRAIT_EXEMPT_HEALTH_EVENTS,GHOSTROLE_TRAIT) //Makes them exempt from health events and adds gives them the ghostrole trait. This is a special tool we'll use later.
+				ADD_TRAIT(H,TRAIT_EXEMPT_HEALTH_EVENTS,GHOSTROLE_TRAIT) //Makes sure they are exempt from health events.
 				SEND_SOUND(H, 'sound/magic/charge.ogg') //Fluff
 				to_chat(H, "<span class='boldannounce'>Your head aches for a second. You feel like this is how things should have been.</span>")
 				log_game("[key_name(H)] has loaded their default appearance for a ghost role.")
