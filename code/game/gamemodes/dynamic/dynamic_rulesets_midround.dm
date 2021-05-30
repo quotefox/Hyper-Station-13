@@ -264,8 +264,8 @@
 			continue
 		if(ishuman(player))
 			var/mob/living/carbon/human/H = player
-			if(HAS_TRAIT(H,GHOSTROLE_TRAIT))
-				living_players -= player //We also don't fucking give ghost roles traitor
+			if(HAS_TRAIT(H,TRAIT_EXEMPT_HEALTH_EVENTS))
+				living_players -= player //We also don't fucking give ghost roles traitor. Yes I'm using the exempt health events trait given to ghost roles to do this, because piggyback ftw.
 
 /datum/dynamic_ruleset/midround/autotraitor/ready(forced = FALSE)
 	if (required_candidates > living_players.len)
