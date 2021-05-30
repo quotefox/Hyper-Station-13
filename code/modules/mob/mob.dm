@@ -496,6 +496,7 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 		if (!(client.prefs.chat_toggles & CHAT_OOC) && isdead(new_mob))
 			client.prefs.chat_toggles ^= CHAT_OOC
 	new_mob.ckey = ckey
+	new_mob.client.init_verbs()
 	if(send_signal)
 		SEND_SIGNAL(src, COMSIG_MOB_KEY_CHANGE, new_mob, src)
 	return TRUE
