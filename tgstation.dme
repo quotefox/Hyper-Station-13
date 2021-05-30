@@ -463,6 +463,7 @@
 #include "code\datums\diseases\advance\symptoms\weight.dm"
 #include "code\datums\diseases\advance\symptoms\youth.dm"
 #include "code\datums\elements\_element.dm"
+#include "code\datums\elements\bed_tucking.dm"
 #include "code\datums\elements\cleaning.dm"
 #include "code\datums\elements\earhealing.dm"
 #include "code\datums\elements\flavor_text.dm"
