@@ -259,11 +259,13 @@
 		if(is_centcom_level(player.z))
 			living_players -= player // We don't autotator people in CentCom
 			continue
-		if(is_away_level(player.z))
-			living_players -= player //We also don't autotator people in exiled roles / VR
-			continue
 		if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
 			living_players -= player // We don't autotator people with roles already
+			continue
+		if(ishuman(player))
+			var/mob/living/carbon/human/H = player
+			if(HAS_TRAIT(H,GHOSTROLE_TRAIT))
+				living_players -= player //We also don't fucking give ghost roles traitor
 
 /datum/dynamic_ruleset/midround/autotraitor/ready(forced = FALSE)
 	if (required_candidates > living_players.len)
