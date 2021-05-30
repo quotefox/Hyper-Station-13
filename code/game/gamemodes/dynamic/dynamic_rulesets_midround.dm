@@ -247,11 +247,20 @@
 /datum/dynamic_ruleset/midround/autotraitor/trim_candidates()
 	..()
 	for(var/mob/living/player in living_players)
+		if(player.client == null) //Make sure the player has an attached client, otherwise, trim.
+			living_players -= player
+			continue
 		if(issilicon(player)) // Your assigned role doesn't change when you are turned into a silicon.
+			living_players -= player
+			continue
+		if(player.client.prefs.allow_midround_antag == 0) //Do they have midround traitor prefs enabled? If not, trim.
 			living_players -= player
 			continue
 		if(is_centcom_level(player.z))
 			living_players -= player // We don't autotator people in CentCom
+			continue
+		if(is_away_level(player.z))
+			living_players -= player //We also don't autotator people in exiled roles / VR
 			continue
 		if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
 			living_players -= player // We don't autotator people with roles already
