@@ -258,7 +258,6 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 		wires.interact(user)
 		return
 
-
 	else if(istype(I, /obj/item/stack/credits))
 		var/obj/item/stack/credits/cred = I
 		to_chat(usr, "<span class='notice'>You insert [cred] into [src].</span>")
@@ -266,38 +265,13 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 		src.ui_interact(usr)
 		del(cred)
 
-	/* we dont use this currency anymore!
 	else if(istype(I, /obj/item/coin))
-		if(coin)
-			to_chat(user, "<span class='warning'>[src] already has [coin] inserted</span>")
-			return
-		if(bill)
-			to_chat(user, "<span class='warning'>[src] already has [bill] inserted</span>")
-			return
-		if(!premium.len)
-			to_chat(user, "<span class='warning'>[src] doesn't have a coin slot.</span>")
-			return
-		if(!user.transferItemToLoc(I, src))
-			return
-		coin = I
-		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+		to_chat(user, "<span class='notice'>[src] doesn't seem to accept this kind of currency anymore.</span>")
 		return
 	else if(istype(I, /obj/item/stack/spacecash))
-		if(coin)
-			to_chat(user, "<span class='warning'>[src] already has [coin] inserted</span>")
-			return
-		if(bill)
-			to_chat(user, "<span class='warning'>[src] already has [bill] inserted</span>")
-			return
-		var/obj/item/stack/S = I
-		if(!premium.len)
-			to_chat(user, "<span class='warning'>[src] doesn't have a bill slot.</span>")
-			return
-		S.use(1)
-		bill = new S.type(src, 1)
-		to_chat(user, "<span class='notice'>You insert [I] into [src].</span>")
+		to_chat(user, "<span class='notice'>[src] doesn't seem to accept this kind of currency anymore.</span>")
 		return
-	*/
+
 	else if(refill_canister && istype(I, refill_canister))
 		if (!panel_open)
 			to_chat(user, "<span class='notice'>You should probably unscrew the service panel first.</span>")
@@ -318,7 +292,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 			return
 	else
 		. = ..()
-		if(tiltable && !tilted && I.force)
+		if(tiltable && !tilted && I.force && user.a_intent != INTENT_HELP) //Now we roll the dice. Thrown items do not trigger this, btw.
 			switch(rand(1, 100))
 				if(1 to 5)
 					freebie(user, 3)
