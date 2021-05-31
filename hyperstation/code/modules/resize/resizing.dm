@@ -186,7 +186,10 @@ mob/living/get_effective_size()
 						tmob.adjustArousalLoss((get_effective_size()/tmob.get_effective_size()*3))
 						if (tmob.getArousalLoss() >= 100 && ishuman(tmob) && tmob.has_dna())
 							tmob.mob_climax(forced_climax=TRUE)
-
+					
+					//squish element time
+					if(prob(75))
+						tmob.AddElement(/datum/element/squish, 4 SECONDS)
 					return 1
 
 			if(H.a_intent == "grab" && H.canmove && !H.buckled)
