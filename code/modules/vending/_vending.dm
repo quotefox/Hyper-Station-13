@@ -381,7 +381,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 								"<span class='userdanger'>Oh f-</span>")
 							O.dismember()
 							O.drop_organs()
-							qdel(O)
+							//qdel(O) Deleting people's heads makes them angy
 							new /obj/effect/gibspawner/human/bodypartless(get_turf(C))
 				C.apply_damage(max(0, squish_damage - crit_rebate), BRUTE)
 				C.AddElement(/datum/element/squish, 60 SECONDS)
