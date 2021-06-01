@@ -13,6 +13,7 @@ _maps/RandomZLevels/blackmarketpackers.dmm
 #_maps/RandomZLevels/Academy.dmm
 #_maps/RandomZLevels/wildwest.dmm
 #_maps/RandomZLevels/challenge.dmm
+_maps/RandomZLevels/away_mission/jungleresort.dmm
 #_maps/RandomZLevels/centcomAway.dmm
 _maps/RandomZLevels/moonoutpost19.dmm
 _maps/RandomZLevels/undergroundoutpost45.dmm
