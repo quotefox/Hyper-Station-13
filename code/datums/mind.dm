@@ -471,7 +471,7 @@
 						else
 							target_antag = target
 
-		var/new_obj_type = input("Select objective type:", "Objective type", def_value) as null|anything in list("assassinate", "maroon", "debrain", "protect", "destroy", "prevent", "hijack", "escape", "survive", "martyr", "steal", "download", "nuclear", "capture", "absorb", "noncon", "custom")
+		var/new_obj_type = input("Select objective type:", "Objective type", def_value) as null|anything in list("assassinate", "maroon", "debrain", "protect", "destroy", "prevent", "hijack", "escape", "survive", "martyr", "heirloom", "steal", "download", "nuclear", "capture", "absorb", "noncon", "custom")
 		if (!new_obj_type)
 			return
 
@@ -540,6 +540,12 @@
 			if ("nuclear")
 				new_objective = new /datum/objective/nuclear
 				new_objective.owner = src
+
+			if ("heirloom")
+				new_objective = new /datum/objective/hoard/heirloom
+				new_objective.owner = src
+				var/datum/objective/hoard/heirloom/heirloom = new_objective
+				heirloom.find_target()
 
 			if ("steal")
 				if (!istype(objective, /datum/objective/steal))
