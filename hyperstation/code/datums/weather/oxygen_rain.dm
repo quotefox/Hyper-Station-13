@@ -1,6 +1,6 @@
 /datum/weather/oxygen_rain
 	name = "oxygen rain"
-	desc = "The weather of Layenia can be quite unpredictable... Given the low temperature outside the station, oxygen condenses into liquid droplets."
+	desc = "The weather of Layenia can be quite unpredictable. Given the natural low temperature of Layenia, the formation of natural croxygenic liquid gases is possible."
 
 	telegraph_duration = 300
 	telegraph_message = "<span class='boldwarning'>Oxygen clouds condense above and around the station...</span>"
@@ -27,7 +27,7 @@
 
 /datum/weather/oxygen_rain/telegraph()
 	. = ..()
-	priority_announce("[station_name()]: A large quantity of condensed oxygen clouds has been detected around and above the station. A liquid oxygen downpour is expected.",
+	priority_announce("[station_name()]: A large quantity of condensed low temperature oxygen clouds has been detected around and above the station. A liquid oxygen downpour is expected.",
 	sound = 'sound/misc/notice2.ogg',
 	sender_override = "Kinaris Meteorology Division")
 	for(var/V in GLOB.player_list)
@@ -58,19 +58,13 @@
 	sound_wo.start()
 	sound_wi.start()
 
-/datum/weather/oxygen_rain/start()
-	. = ..()
-
-/datum/weather/oxygen_rain/wind_down()
-	. = ..()
-
 /datum/weather/oxygen_rain/end()
 	. = ..()
 	sound_wo.stop()
 	sound_wi.stop()
 
 /datum/weather/oxygen_rain/weather_act(mob/living/L)
-	//This is liquid oxygen after all. (-90C)
+	//This is liquid oxygen after all. (-180C give or take)
 	L.adjust_bodytemperature(-rand(5,10))
 
 /datum/looping_sound/weak_outside_oxygenrain
@@ -94,26 +88,3 @@
 	start_length = 130
 	end_sound = 'sound/weather/oxygenrain/inside/weak_end.ogg'
 	volume = 30
-
-/* Unused code for testing purposes.
-
-/datum/round_event_control/oxygen_rain
-	name = "Oxygen Rain"
-	typepath = /datum/round_event/oxygen_rain
-	max_occurrences = 1
-
-/datum/round_event/oxygen_rain
-
-/datum/round_event/oxygen_rain/setup()
-	startWhen = 3
-	endWhen = startWhen + 1
-	announceWhen	= 1
-
-/datum/round_event/oxygen_rain/start()
-	SSweather.run_weather(/datum/weather/oxygen_rain)
-
-/datum/round_event/oxygen_rain/announce()
-	priority_announce("[station_name()]: A large quantity of condensed oxygen clouds has been detected around and above the station. A liquid oxygen downpour is expected.",
-	sound = 'sound/misc/notice2.ogg',
-	sender_override = "Kinaris Meteorology Division")
-*/
