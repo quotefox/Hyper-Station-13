@@ -882,6 +882,9 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 
 /obj/effect/decal/nuclear_waste/Initialize()
 	. = ..()
+	for(var/obj/A in get_turf(src))
+		if(istype(A, /obj/structure))
+			qdel(src) //It is more processing efficient to do this here rather than when searching for available turfs.
 	set_light(3)
 	AddComponent(/datum/component/radioactive, 250, src, 0)
 
