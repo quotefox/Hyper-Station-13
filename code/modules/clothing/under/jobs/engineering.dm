@@ -80,4 +80,15 @@
 	item_color = "robotics_skirt"
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE
-	fitted = FEMALE_UNIFORM_TOP 
+	fitted = FEMALE_UNIFORM_TOP
+
+/obj/item/clothing/under/radkini
+	name = "radkini"
+	desc = "A bikini that protects against radiation. It's surprisingly effective thanks to bluespace fabric, however is still recommended to wear it with a radiation suit."
+	icon_state = "radkini"
+	item_state = "radkini"
+	item_color = "radkini"
+	can_adjust = FALSE
+	body_parts_covered = CHEST|GROIN
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 50, "fire" = 10, "acid" = 10)
+	fitted = FEMALE_UNIFORM_TOP
