@@ -8,8 +8,8 @@
 
 	weather_message = "<span class='userdanger'><i>Liquid oxygen pours down around you! It's freezing!</i></span>"
 	weather_overlay = "rain_high"
-	weather_duration_lower = 600
-	weather_duration_upper = 1200
+	weather_duration_lower = 1200
+	weather_duration_upper = 4000
 
 	end_duration = 300
 	end_message = "<span class='boldannounce'>The downpour gradually slows to a light shower before fading away...</span>"
