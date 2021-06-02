@@ -778,3 +778,15 @@
 	repeatable = TRUE
 	repeatable_weight_decrease = 3
 	occurances_max = 3
+
+/* Unused, testing purposes only.
+/datum/dynamic_ruleset/event/oxygen_rain
+	name = "Oxygen Rain"
+	typepath = /datum/round_event/oxygen_rain
+	requirements = list(0,0,0,0,0,0,0,0,0,0)
+	high_population_requirement = 0
+	weight = 1 //This is a rare occurence.
+	repeatable = FALSE
+	occurances_max = 1
+	map_whitelist = list("LayeniaStation.dmm")
+*/
