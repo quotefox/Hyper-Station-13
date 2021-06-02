@@ -124,7 +124,7 @@ GLOBAL_LIST_EMPTY(energy_harvesters)
 				if(prob(7))
 					tesla_zap(src, 5, 1000, TESLA_MOB_DAMAGE | TESLA_OBJ_DAMAGE)
 					playsound(src.loc, 'sound/weapons/emitter2.ogg', 100, 1, extrarange = 10)
-					take_damage(1)
+					take_damage(1) //Just for the sound effect
 			if(99 to INFINITY) //Should've read the instructions buddy.
 				tesla_zap(src, 20, 25000, TESLA_MOB_DAMAGE | TESLA_OBJ_DAMAGE)
 				playsound(src.loc, 'sound/weapons/emitter2.ogg', 100, 1, extrarange = 10)
