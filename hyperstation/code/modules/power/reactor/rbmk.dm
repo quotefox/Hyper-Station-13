@@ -883,7 +883,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 /obj/effect/decal/nuclear_waste/Initialize()
 	. = ..()
 	set_light(3)
-	AddComponent(/datum/component/radioactive, 1500, src, 0)
+	AddComponent(/datum/component/radioactive, 250, src, 0)
 
 /obj/effect/decal/nuclear_waste/epicenter //The one that actually does the irradiating. This is to avoid every bit of sludge PROCESSING
 	name = "Dense nuclear sludge"
