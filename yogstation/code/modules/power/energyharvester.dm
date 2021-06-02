@@ -1,5 +1,7 @@
+GLOBAL_LIST_EMPTY(energy_harvesters)
+
 /obj/item/energy_harvester
-	desc = "A Device which upon connection to a node, will harvest the energy and send it to engineerless stations in return for credits, derived from a syndicate powersink model."
+	desc = "A Device which upon connection to a node, will harvest the energy and send it to engineerless stations in return for credits, derived from a syndicate powersink model. The instructions say to never use more than 4 harvesters at a time."
 	name = "Energy Harvesting Module"
 	icon_state = "powersink0"
 	icon = 'icons/obj/device.dmi'
@@ -18,7 +20,8 @@
 	var/datum/looping_sound/generator/soundloop
 	var/active = 0
 	var/lastprocessed = 0
-
+	var/overloadprog = 0
+	var/alerted = FALSE
 
 /obj/item/energy_harvester/attackby(obj/item/I, mob/user, params)
 	if(I.tool_behaviour == TOOL_SCREWDRIVER)
@@ -31,6 +34,7 @@
 				else
 					I.play_tool_sound(src)
 					START_PROCESSING(SSobj, src)
+					GLOB.energy_harvesters += src
 					anchored = 1
 					density = 1
 					user.visible_message( \
@@ -42,6 +46,7 @@
 		else
 			I.play_tool_sound(src)
 			STOP_PROCESSING(SSobj, src)
+			GLOB.energy_harvesters -= src
 			soundloop.stop()
 			active = 0
 			set_light(0)
@@ -70,6 +75,7 @@
 		attached.add_delayedload(power_avaliable)
 		lastprocessed = (power_avaliable * 0.00001)
 		SSshuttle.points += lastprocessed
+		overloadCheck()
 
 /obj/item/energy_harvester/Initialize()
 	. = ..()
@@ -81,6 +87,7 @@
 	QDEL_NULL(soundloop)
 	active = 0
 	set_light(0)
+	GLOB.energy_harvesters -= src
 	return ..()
 
 /obj/item/energy_harvester/examine(mob/user)
@@ -92,3 +99,39 @@
 
 /obj/item/gps/internal/energy_harvester
 	gpstag = "Energy Harvester"
+
+/obj/item/energy_harvester/proc/overloadCheck()
+	if(LAZYLEN(GLOB.energy_harvesters) > 4)
+		switch(overloadprog)
+			if(0 to 25)
+				if(prob(7))
+					do_sparks(7,FALSE,src)
+			if(26 to 51)
+				if(prob(7))
+					src.visible_message("<span class='alert'>[src] starts smoking!</span>")
+					shake_animation(0.5)
+					do_sparks(7,FALSE,src)
+			if(52 to 98)
+				if(!alerted)
+					src.visible_message("<span class='alert'>[src] is overloading!")
+					playsound(src, 'sound/machines/engine_alert2.ogg', 100)
+					alerted = TRUE
+				if(prob(25))
+					shake_animation(0.5)
+					playsound(loc, 'sound/machines/clockcult/steam_whoosh.ogg', 75, TRUE)
+					var/turf/T = get_turf(src)
+					T.atmos_spawn_air("co2=10;TEMP=100]")
+				if(prob(7))
+					tesla_zap(src, 5, 1000, TESLA_MOB_DAMAGE | TESLA_OBJ_DAMAGE)
+					take_damage(1)
+			if(99 to INFINITY) //Should've read the instructions buddy.
+				tesla_zap(src, 20, 25000, TESLA_MOB_DAMAGE | TESLA_OBJ_DAMAGE)
+				playsound(src.loc, 'sound/weapons/emitter2.ogg', 100, 1, extrarange = 10)
+				atmos_spawn_air("plasma=50;TEMP=1000")
+				visible_message("<span class='danger'>[src] violently explodes!</span>")
+				explosion(src.loc, 2, 3, 5, 5, 1, 0, 5, 0, 0)
+				Destroy()
+		overloadprog++
+	else
+		overloadprog = 0
+		alerted = FALSE
