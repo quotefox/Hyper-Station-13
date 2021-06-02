@@ -886,7 +886,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		if(istype(A, /obj/structure))
 			qdel(src) //It is more processing efficient to do this here rather than when searching for available turfs.
 	set_light(3)
-	AddComponent(/datum/component/radioactive, 250, src, 0)
+	AddComponent(/datum/component/radioactive, 1000, src, 0)
 
 /obj/effect/decal/nuclear_waste/epicenter //The one that actually does the irradiating. This is to avoid every bit of sludge PROCESSING
 	name = "Dense nuclear sludge"
