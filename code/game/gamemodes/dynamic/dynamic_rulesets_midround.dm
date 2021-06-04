@@ -280,6 +280,13 @@
 	M.mind.add_antag_datum(newTraitor)
 	return TRUE
 
+/datum/dynamic_ruleset/midround/autotraitor/thief/execute()
+    var/mob/M = pick(living_players)
+    assigned += M
+    living_players -= M
+    var/datum/antagonist/traitor/thief/newTraitor = new
+    M.mind.add_antag_datum(newTraitor)
+    return TRUE
 
 //////////////////////////////////////////
 //                                      //
