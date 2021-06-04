@@ -595,6 +595,21 @@
 	category = list("Medical Designs")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
+/datum/design/cybernetic_stomach
+	name = "Cybernetic Stomach"
+	desc = "A cybernetic stomach."
+	id = "cybernetic_stomach"
+	materials = list(MAT_METAL = 500, MAT_GLASS = 500)
+	build_path = /obj/item/organ/stomach/cybernetic
+
+/datum/design/cybernetic_stomach_u
+	name = "Upgraded Cybernetic Stomach"
+	desc = "An upgraded cybernetic stomach."
+	id = "cybernetic_stomach_u"
+	construction_time = 50
+	materials = list(MAT_METAL = 500, MAT_GLASS = 500, MAT_SILVER = 500)
+	build_path = /obj/item/organ/stomach/cybernetic/upgraded
+
 /datum/design/cybernetic_tongue
 	name = "Cybernetic tongue"
 	desc = "A fancy cybernetic tongue."
