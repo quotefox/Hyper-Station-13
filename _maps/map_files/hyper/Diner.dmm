@@ -44,7 +44,7 @@
 "aR" = (/obj/structure/chair/comfy/beige{dir = 1},/obj/structure/disposalpipe/segment{dir = 4},/turf/open/floor/plasteel,/area/diner)
 "aS" = (/obj/structure/disposalpipe/junction/flip{dir = 8},/turf/closed/wall,/area/diner)
 "aT" = (/obj/machinery/disposal/bin,/obj/structure/disposalpipe/trunk{dir = 8},/turf/open/floor/plasteel/dark,/area/diner)
-"aU" = (/obj/effect/turf_decal/loading_area{dir = 5; icon_state = "steel_panel"; name = "steel pannel"},/obj/effect/turf_decal/loading_area{dir = 9; icon_state = "steel_panel"; name = "steel pannel"},/turf/open/floor/plasteel/cafeteria,/area/diner)
+"aU" = (/obj/effect/turf_decal/loading_area{dir = 5; icon_state = "steel_panel"; name = "steel pannel"},/obj/effect/turf_decal/loading_area{dir = 9; icon_state = "steel_panel"; name = "steel pannel"},/obj/structure/sink{pixel_y = 23},/turf/open/floor/plasteel/cafeteria,/area/diner)
 "aV" = (/obj/effect/turf_decal/loading_area{dir = 5; icon_state = "steel_panel"; name = "steel pannel"},/turf/open/floor/plasteel/cafeteria,/area/diner)
 "aW" = (/obj/structure/extinguisher_cabinet{pixel_y = 32},/obj/effect/turf_decal/loading_area{dir = 5; icon_state = "steel_panel"; name = "steel pannel"},/obj/effect/turf_decal/loading_area{dir = 6; icon_state = "steel_panel"; name = "steel pannel"},/obj/machinery/vending/dinnerware,/turf/open/floor/plasteel/cafeteria,/area/diner)
 "aX" = (/obj/structure/chair/comfy/beige{dir = 1},/turf/open/floor/plasteel,/area/diner)
@@ -144,11 +144,12 @@
 "Ir" = (/obj/structure/chair/comfy/beige,/turf/open/floor/carpet/black,/area/diner)
 "Ji" = (/obj/effect/mapping_helpers/airlock/cyclelink_helper{dir = 4},/obj/machinery/door/airlock/external{name = "External Access"; req_access_txt = "13"},/turf/open/floor/plating,/area/diner)
 "JA" = (/obj/machinery/light{dir = 8; pixel_x = -7; pixel_y = 0},/obj/item/twohanded/required/kirbyplants/random,/turf/open/floor/plasteel,/area/diner)
+"LB" = (/obj/structure/table,/obj/item/reagent_containers/food/condiment/enzyme{layer = 5; pixel_x = -5; pixel_y = 6},/obj/item/reagent_containers/food/condiment/saltshaker{pixel_x = -3},/obj/item/reagent_containers/food/condiment/peppermill{pixel_x = 3},/turf/open/floor/plasteel/cafeteria,/area/diner)
 "MD" = (/obj/structure/chair/sofa/left{dir = 4},/obj/effect/turf_decal/loading_area{dir = 1; icon_state = "drain"; name = "drain"},/turf/open/floor/carpet/black,/area/diner)
 "OE" = (/turf/open/floor/plasteel{icon_state = "floor_trim"},/area/diner)
 "OY" = (/obj/machinery/door/airlock{name = "Bathroom Hallway"},/turf/open/floor/plasteel,/area/diner)
 "PN" = (/obj/machinery/quantumpad{map_pad_id = "diner"; map_pad_link_id = "station_diner"; mapped_quantum_pads = list("station_diner","diner")},/turf/open/floor/carpet/black,/area/diner)
-"QD" = (/obj/effect/turf_decal/loading_area{dir = 10; icon_state = "steel_panel"; name = "steel pannel"},/obj/machinery/button/door{id = "kitchen"; name = "Diner Shutters Control"; pixel_x = 5; pixel_y = -23; req_access_txt = "28"; tag = dshutters},/turf/open/floor/plasteel/cafeteria,/area/diner)
+"QD" = (/obj/effect/turf_decal/loading_area{dir = 10; icon_state = "steel_panel"; name = "steel pannel"},/obj/machinery/button/door{id = "kitchen"; name = "Diner Shutters Control"; pixel_x = 5; pixel_y = -23; req_access_txt = "28"; tag = dshutters},/obj/machinery/processor,/turf/open/floor/plasteel/cafeteria,/area/diner)
 "QM" = (/obj/structure/mopbucket,/obj/item/mop,/obj/item/reagent_containers/glass/bucket,/turf/open/floor/plasteel{icon_state = "floor_trim"},/area/diner)
 "QP" = (/obj/structure/chair/stool,/obj/effect/decal/cleanable/cobweb{icon_state = "cobweb2"},/turf/open/floor/plasteel/dark,/area/diner)
 "Rt" = (/obj/item/twohanded/required/kirbyplants/random,/turf/open/floor/plasteel,/area/diner)
@@ -200,7 +201,7 @@ DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBaraaJAasasasasauaIaaaaaaaaaJ
 DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaMaNaOaNaPaPaQaQaQaQaQaRaPaSaPaTaUaVaWaaaaaXasasasasaYaaaaaraqDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
 DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabaZbaiqmVasasaaaabbaabcbdbebfbgaaaaasmVaspXaZbaabaraCaiaibGDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
 DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhbGaiaiaiaBarabnQaFiqmVasbhbiawbjmnbkbdbebebfblaaaHmVaspXnQlmabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
-DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabbmbniqmVasbhboaebpaabqbdUzUzbebrbsasUYaspXbmbnabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabbmbniqmVasbhboaebpaabqbdLBUzbebrbsasUYaspXbmbnabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
 DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabapapiqmVasbhbtaebuaabvbdbebebebrbsasmVaspXapapabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
 DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabaZbaiqieasbhbwaebxaabybzbAQDbAbBaaasmVaspXaZbaabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
 DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabbCBTiqUYasbhbtaeaeaaaabDGfaapWaaaaaHmVaspXlmnQabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
