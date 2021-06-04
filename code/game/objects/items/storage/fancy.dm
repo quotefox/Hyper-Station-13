@@ -281,7 +281,6 @@
 	w_class = WEIGHT_CLASS_TINY
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "cig_paper_pack"
-	///The value in here has NOTHING to do with icons. It needs to be this for the proper examine.
 	icon_type = "rolling paper"
 	spawn_type = /obj/item/rollingpaper
 	price = 2
@@ -292,14 +291,10 @@
 	STR.max_items = 10
 	STR.can_hold = typecacheof(list(/obj/item/rollingpaper))
 
-///Overrides to do nothing because fancy boxes are fucking insane.
-/obj/item/storage/fancy/rollingpapers/update_icon_state()
-	return
-
-/obj/item/storage/fancy/rollingpapers/update_overlays()
-	. = ..()
+/obj/item/storage/fancy/rollingpapers/update_icon()
+	cut_overlays()
 	if(!contents.len)
-		. += "[icon_state]_empty"
+		add_overlay("[icon_state]_empty")
 
 /////////////
 //CIGAR BOX//
