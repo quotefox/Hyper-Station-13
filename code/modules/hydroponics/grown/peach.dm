@@ -29,11 +29,11 @@
 
 // Boob Peach
 /obj/item/seeds/peach/boob
-	name = "pack of boob peach seeds"
+	name = "pack of boob-peach seeds"
 	desc = "These seeds grow into boob peach trees. Beloved by members of the itty bitty titty commitee"
 	icon_state = "seed-boobpeach"
 	species = "boobpeach"
-	plantname = "Boob Peach Tree"
+	plantname = "Boob-Peach Tree"
 	product = /obj/item/reagent_containers/food/snacks/grown/peach/boob
 	maturation = 10
 	production = 10
@@ -43,7 +43,7 @@
 
 /obj/item/reagent_containers/food/snacks/grown/peach/boob
 	seed = /obj/item/seeds/peach/boob
-	name = "boob peach"
+	name = "boob-peach"
 	desc = "It has a soft oily skin, and it seems to be secreting a thick white goo"
 	icon_state = "boobpeach"
 	filling_color = "#F3A463"
