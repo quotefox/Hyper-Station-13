@@ -194,6 +194,7 @@
 #define TRAIT_VIRILE		"virile" //you have 20% more chance of impreg
 #define TRAIT_MACROPHILE		"macrophile" //likes the big
 #define TRAIT_MICROPHILE		"microphile" //likes the small
+#define TRAIT_APATHETIC			"apathetic" //doesn't care
 
 #define TRAIT_TOUGH		"tough" //you have 10% more maxhealth
 #define TRAIT_AUTO_CATCH_ITEM	"auto_catch_item"

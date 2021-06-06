@@ -52,6 +52,13 @@
 	if(is_devil(src))
 		INVOKE_ASYNC(is_devil(src), /datum/antagonist/devil.proc/beginResurrectionCheck, src)
 
+	//watching someone die is traumatic
+	for(var/mob/living/carbon/human/H in oview(5, src))
+		if(!HAS_TRAIT(H, TRAIT_APATHETIC))
+			SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "death", /datum/mood_event/deathsaw)
+			if(prob(10)) //10% chance to pump adrenaline into their body
+				H.jitteriness += 5
+
 /mob/living/carbon/human/proc/makeSkeleton()
 	ADD_TRAIT(src, TRAIT_DISFIGURED, TRAIT_GENERIC)
 	set_species(/datum/species/skeleton)
