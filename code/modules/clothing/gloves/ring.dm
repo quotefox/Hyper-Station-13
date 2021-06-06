@@ -30,3 +30,9 @@
 	item_state = "sring"
 	icon_state = "ringsilver"
 	desc = "A tiny silver ring, sized to wrap around a finger."
+
+/obj/item/clothing/gloves/ring/lyricalpaws
+	name = "Ornate Wedding Ring"
+	item_state = "dring"
+	icon_state = "ringpaws"
+	desc = "A worn golden ring emblazoned with a finely cut Emerald and Ruby alongside each other. The inside of the ring has the phrase 'Per aspera ad astra.' engraved in to it."
