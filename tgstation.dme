@@ -206,7 +206,6 @@
 #include "code\_onclick\hud\ghost.dm"
 #include "code\_onclick\hud\guardian.dm"
 #include "code\_onclick\hud\hud.dm"
-#include "code\_onclick\hud\hud_cit.dm"
 #include "code\_onclick\hud\human.dm"
 #include "code\_onclick\hud\monkey.dm"
 #include "code\_onclick\hud\movable_screen_objects.dm"
