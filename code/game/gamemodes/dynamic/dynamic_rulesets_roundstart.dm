@@ -17,6 +17,7 @@
 	weight = 5
 	cost = 10
 	requirements = list(101,101,30,25,20,20,15,15,15,15)
+	minimum_players = 15
 	high_population_requirement = 10
 	var/autotraitor_cooldown = 450 // 15 minutes (ticks once per 2 sec)
 	chaos_min = 2.5
@@ -34,6 +35,7 @@
 	weight = 5
 	cost = 0
 	requirements = list(101,25,25,20,20,15,15,10,10,10)
+	minimum_players = 10
 	high_population_requirement = 10
 	//var/autotraitor_cooldown = 450 // 15 minutes (ticks once per 2 sec)
 	chaos_min = 2.0
@@ -186,6 +188,7 @@
 	weight = 3
 	cost = 10
 	requirements = list(101,101,50,40,40,30,30,30,20,20)
+	minimum_players = 15
 	high_population_requirement = 10
 	var/team_mode_probability = 30
 	chaos_min = 3.0

@@ -213,6 +213,7 @@
 	weight = 4
 	cost = 10
 	requirements = list(101,101,30,25,20,20,15,15,15,10)
+	minimum_players = 15
 	repeatable = TRUE
 	high_population_requirement = 10
 	flags = TRAITOR_RULESET
@@ -229,6 +230,7 @@
 	weight = 4
 	cost = 5
 	requirements = list(101,30,25,20,15,10,10,5,5,5)
+	minimum_players = 10
 	repeatable = TRUE
 	high_population_requirement = 10
 	flags = TRAITOR_RULESET
