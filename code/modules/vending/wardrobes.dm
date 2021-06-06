@@ -86,7 +86,9 @@
 					/obj/item/clothing/suit/hazardvest = 5,
 					/obj/item/clothing/shoes/workboots = 5,
 					/obj/item/clothing/head/hardhat = 5,
-					/obj/item/clothing/head/hardhat/weldhat = 3)
+					/obj/item/clothing/head/hardhat/weldhat = 3,
+					/obj/item/clothing/under/radkini = 2,
+					/obj/item/clothing/mask/gas/radmask = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/engi_wardrobe
 
 /obj/item/vending_refill/wardrobe/engi_wardrobe

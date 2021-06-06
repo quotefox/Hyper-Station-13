@@ -26,6 +26,8 @@
 					/obj/item/stock_parts/scanning_module = 5,
 					/obj/item/stock_parts/micro_laser = 5,
 					/obj/item/stock_parts/matter_bin = 5,
-					/obj/item/stock_parts/manipulator = 5)
+					/obj/item/stock_parts/manipulator = 5,
+					/obj/item/clothing/under/radkini = 2,
+					/obj/item/clothing/mask/gas/radmask = 2)
 	armor = list("melee" = 100, "bullet" = 100, "laser" = 100, "energy" = 100, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 50)
 	resistance_flags = FIRE_PROOF
