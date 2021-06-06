@@ -1,5 +1,6 @@
 #define DYNAMIC_DEFAULT_CHAOS       1.0 //The default chaos value for low pop low vote rounds
 #define DYNAMIC_VOTE_NORMALIZATION  5   //If there are fewer than this many votes, the average will be skewed towards the default
+#define DYNAMIC_NONVOTER_FACTOR 0.75 // 1 means they count for a full vote
 
 SUBSYSTEM_DEF(vote)
 	name = "Vote"
@@ -155,8 +156,9 @@ SUBSYSTEM_DEF(vote)
 					v += 1
 			else if (voted.len < GLOB.clients.len)	//Have non-voters "vote" 2, if we're not lowpop
 				for(var/I in 1 to (GLOB.clients.len - voted.len))
-					v += 1
+					v += DYNAMIC_NONVOTER_FACTOR //Instead of a fixed value, this will now factor how much non-voter votes are 'worth' in the system.
 					numbers += 2
+				v = round(v) //This rounds the value to the nearest multiple, to make sure no calculations go fucky wucky.
 			var/total = 0
 			for (var/i in numbers)
 				total += i
