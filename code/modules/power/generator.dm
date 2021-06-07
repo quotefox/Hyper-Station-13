@@ -166,7 +166,7 @@
 				playsound(src.loc, sound_engine_alert1, 55, 0)
 			if (prob(5)) 
 				playsound(src.loc, 'sound/weapons/emitter2.ogg', 100, 1, extrarange = 10)
-				zapStuff(src, 5, min(genlev, 20000))
+				zapStuff(src, 10, genlev)
 			if (!grumping && grump >= 100 && prob(5))
 				grumping = 1
 				playsound(src.loc, "sound/machines/engine_grump1.ogg", 50, 0)
@@ -178,7 +178,7 @@
 				playsound(src.loc, sound_engine_alert2, 55, 0)
 			if (prob(10)) // lowering a bit more
 				playsound(src.loc, 'sound/weapons/emitter2.ogg', 100, 1, extrarange = 10)
-				zapStuff(src, 5, min(genlev, 20000))
+				zapStuff(src, 10, genlev)
 			if (prob(5))
 				src.visible_message("<span class='alert'>[src] starts smoking!</span>")
 			if (!grumping && grump >= 100 && prob(10)) // probably not good if this happens several times in a row
@@ -210,21 +210,31 @@
 					if (prob(get_dist(W,src.loc)*6))
 						continue
 					W.deconstruct(FALSE)
-				for (var/mob/living/M in range(6, src.loc))
+				for (var/mob/living/M in range(9, src.loc))
 					shake_camera(M, 3, 16)
 				grumping = 0
 				grump -= 30
 			if (prob(33)) // lowered because all the DEL procs related to zap are stacking up in the profiler
 				if(prob(5))
 					playsound(src.loc, sound_bigzap, 100, 1, extrarange = 10)
-					zapStuff(src, 5, min(genlev, 30000)) //BIG ZAP
+					zapStuff(src, 10, genlev*2) //BIG ZAP
 				else
 					playsound(src.loc, 'sound/weapons/emitter2.ogg', 100, 1, extrarange = 10)
-					zapStuff(src, 5, min(genlev, 20000))
+					zapStuff(src, 10, genlev)
 			if(prob(5))
 				src.visible_message("<span class='alert'>[src] [pick("rumbles", "groans", "shudders", "grustles", "hums", "thrums")] [pick("ominously", "oddly", "strangely", "oddly", "worringly", "softly", "loudly")]!</span>")
 			else if (prob(2))
 				src.visible_message("<span class='alert'><b>[src] hungers!</b></span>")
+				shake_animation(1)
+				playsound(loc, 'sound/machines/clockcult/steam_whoosh.ogg', 75, TRUE)
+				var/turf/T = get_turf(src)
+				switch(rand(1,3))
+					if(1)
+						T.atmos_spawn_air("co2=25;TEMP=300]")
+					if(2)
+						T.atmos_spawn_air("tritium=5;TEMP=500]")
+					if(3)
+						T.atmos_spawn_air("miasma=10;TEMP=500]") //brapgenerator
 	..()
 
 /obj/machinery/power/generator/proc/get_menu(include_link = TRUE)
@@ -357,8 +367,13 @@
 		cold_circ.generator = null
 		cold_circ = null
 
-/obj/machinery/power/generator/proc/zapStuff(atom/zapstart, range = 3, power)
-	. = zapstart.dir
+/obj/machinery/power/generator/proc/zapStuff(atom/zapstart, range = 5, power, icon_state)
+	playsound(zapstart, 'sound/magic/lightningshock.ogg', 100, 1, extrarange = range)
+	tesla_zap(zapstart, range, power, TESLA_MOB_DAMAGE | TESLA_MOB_STUN)
+	if(prob(10))
+		//REDO THE ZAP. YES, THIS MEANS FUCK YOU.
+		zapStuff(zapstart, range*2, power)
+	/*. = zapstart.dir
 	if(power < 1000)
 		return
 
@@ -424,3 +439,4 @@
 			zapStuff(target_structure, 5, power / 2)
 		else
 			zapStuff(target_structure, 5, power / 1.5)
+	*/

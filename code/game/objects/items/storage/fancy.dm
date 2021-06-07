@@ -392,3 +392,9 @@
 	icon_type = "silver ring"
 	spawn_type = /obj/item/clothing/gloves/ring/silver
 
+/obj/item/storage/fancy/ringbox/lyricalpaws
+	name = "Ornate Ring Box"
+	desc = "A rich royal blue felted box, the inside lined with a beautiful black silk. It was clearly designed to hold a ring of sorts."
+	icon_state = "paws ringbox"
+	icon_type = "ornate ring"
+	spawn_type = /obj/item/clothing/gloves/ring/lyricalpaws

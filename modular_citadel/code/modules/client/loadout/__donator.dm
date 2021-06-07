@@ -112,10 +112,10 @@
 	cost = 0
 	ckeywhitelist = list("lyricalpaws")
 
-datum/gear/darksabresheath
-	name = "Dark Sabre Sheath"
+datum/gear/lyricalpawsring
+	name = "Ornate Ring Box"
 	category = SLOT_IN_BACKPACK
-	path = /obj/item/storage/belt/sabre/chloesabre
+	path = /obj/item/storage/fancy/ringbox/lyricalpaws
 	ckeywhitelist = list("lyricalpaws")
 
 /datum/gear/cherostavikmask

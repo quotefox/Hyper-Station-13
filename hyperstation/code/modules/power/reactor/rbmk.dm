@@ -14,7 +14,7 @@
 #define RBMK_MAX_CRITICALITY 3 //No more criticality than N for now.
 
 //#define RBMK_POWER_FLAVOURISER 1000 //To turn those KWs into something usable
-#define RBMK_POWER_FLAVOURISER 2000 //Let's use double for now.
+#define RBMK_POWER_FLAVOURISER 5000 //Five times stronger. Previous numbers were baby numbers.
 
 //Math. Lame.
 #define KPA_TO_PSI(A) (A/6.895)
@@ -97,7 +97,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	var/next_slowprocess = 0
 	var/gas_absorption_effectiveness = 0.5
 	var/gas_absorption_constant = 0.5 //We refer to this one as it's set on init, randomized.
-	var/minimum_coolant_level = 4
+	var/minimum_coolant_level = 2
 	var/warning = FALSE //Have we begun warning the crew of their impending death?
 	var/next_warning = 0 //To avoid spam.
 	var/last_power_produced = 0 //For logging purposes
