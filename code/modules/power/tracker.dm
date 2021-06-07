@@ -74,7 +74,7 @@
 		stat |= BROKEN
 		unset_control()
 
-/obj/machinery/power/solar/deconstruct(disassembled = TRUE)
+/obj/machinery/power/tracker/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
 		if(disassembled)
 			if(assembly)
