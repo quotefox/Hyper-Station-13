@@ -20,6 +20,8 @@
 	var/max_n_of_items = 10
 	var/efficiency = 0
 	var/datum/looping_sound/microwave/soundloop
+	var/datum/looping_sound/microwave_easteregg/eastereggloop
+	var/easteregg = FALSE
 	var/list/ingredients = list() // may only contain /atom/movables
 
 	var/static/radial_examine = image(icon = 'icons/mob/radial.dmi', icon_state = "radial_examine")
@@ -35,6 +37,7 @@
 	wires = new /datum/wires/microwave(src)
 	create_reagents(100)
 	soundloop = new(list(src), FALSE)
+	eastereggloop = new(list(src), FALSE)
 
 /obj/machinery/microwave/Destroy()
 	eject()
@@ -257,7 +260,12 @@
 	operating = TRUE
 
 	set_light(1.5)
-	soundloop.start()
+	switch(rand(1,500))
+		if(1)
+			eastereggloop.start()
+			easteregg = TRUE
+		if(2 to 500)
+			soundloop.start()
 	update_icon()
 
 /obj/machinery/microwave/proc/spark()
@@ -348,7 +356,11 @@
 
 /obj/machinery/microwave/proc/after_finish_loop()
 	set_light(0)
-	soundloop.stop()
+	if(easteregg)
+		eastereggloop.stop()
+		easteregg = FALSE
+	else
+		soundloop.stop()
 	update_icon()
 
 #undef MICROWAVE_NORMAL
