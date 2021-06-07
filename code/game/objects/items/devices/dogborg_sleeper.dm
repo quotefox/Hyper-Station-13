@@ -135,7 +135,7 @@
 	var/voracious = hound ? TRUE : FALSE
 	var/list/targets = target && hound ? list(target) : contents
 	if(hound)
-		hound.setClickCooldown(50)
+		//hound.setClickCooldown(50) Not needed?
 		if(!hound.client || !(hound.client.prefs.cit_toggles & MEDIHOUND_SLEEPER))
 			voracious = FALSE
 		else
@@ -445,10 +445,10 @@
 	var/mob/living/silicon/robot/hound = get_host()
 	if(!hound || !istype(target) || !proximity || target.anchored)
 		return
-	if (!target.devourable)
-		to_chat(user, "The target registers an error code. Unable to insert into [src].")
+	if(!target.devourable)
+		to_chat(user, "The target registers an error code. Unable to insert into [src]. ((This means the target has devourable prefs disabled.))")
 		return
-	if(target)
+	if(patient)
 		to_chat(user,"<span class='warning'>Your [src] is already occupied.</span>")
 		return
 	if(target.buckled)
