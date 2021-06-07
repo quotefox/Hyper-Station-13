@@ -16,7 +16,7 @@
 /datum/mood_event/deathsaw
 	description = "<span class='boldwarning'>I saw someone die!</span>\n"
 	mood_change = -5
-	timeout = 3 MINUTES //20 minutes is too much, medical is moving around sluggishly because of this constantly.
+	timeout = 10 MINUTES //20 minutes is too much, medical is moving around sluggishly because of this constantly.
 
 /datum/mood_event/healsbadman
 	description = "<span class='warning'>I feel like I'm held together by flimsy string, and could fall apart at any moment!</span>\n"
