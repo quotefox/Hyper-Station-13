@@ -6211,8 +6211,8 @@
 /area/centcom/ferry)
 "oJ" = (
 /obj/machinery/door/airlock/centcom{
+	id_tag = null;
 	name = "Administrative Office";
-	opacity = 1;
 	req_access_txt = "109"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
@@ -9260,6 +9260,26 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/evac)
+"tT" = (
+/obj/structure/table,
+/obj/item/razor{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/storage/pill_bottle/happinesspsych{
+	desc = "Contains pills used for staving off depression. Only works half the time. Be wary of addiction.";
+	name = "Antidepressants";
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/obj/item/storage/pill_bottle/paxpsych{
+	desc = "Contains pills for aiding with hormone regulator implants. Usually used on the mentally unstable.";
+	name = "Hormonal Regulator Supplements";
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/turf/open/floor/plasteel/white,
+/area/centcom/ferry)
 "tU" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -10313,6 +10333,14 @@
 	},
 /turf/open/floor/carpet,
 /area/wizard_station)
+"wg" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/table/wood,
+/obj/item/flashlight/lamp,
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "wh" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
@@ -11137,6 +11165,11 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/ferry)
+"ym" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/item/banner/command/mundane,
+/turf/open/floor/plasteel,
+/area/centcom/control)
 "yn" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/sign/warning/vacuum,
@@ -12171,6 +12204,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/syndicate_mothership)
+"AF" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/item/banner/command/mundane,
+/turf/open/floor/plasteel,
+/area/centcom/evac)
 "AG" = (
 /obj/structure/ladder/unbreakable/binary/space,
 /turf/open/indestructible/airblock,
@@ -13520,6 +13560,12 @@
 /area/syndicate_mothership)
 "Dp" = (
 /obj/structure/chair/sofa/right,
+/obj/machinery/button/door{
+	id = CCStationMonitor;
+	normaldoorcontrol = 1;
+	pixel_y = 30;
+	specialfunctions = 4
+	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
 "Dq" = (
@@ -14517,7 +14563,8 @@
 /area/centcom/ferry)
 "FC" = (
 /obj/machinery/door/airlock/centcom{
-	name = "Intelligence Lead Office";
+	id_tag = CCStationMonitor;
+	name = "Station Monitoring Office";
 	req_access_txt = "101"
 	},
 /turf/open/floor/plasteel/dark,
@@ -15333,6 +15380,17 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/tdome/tdomeobserve)
+"Hi" = (
+/obj/structure/flora/crystal/medium/growth{
+	icon_state = "crystalgrowth3";
+	pixel_x = -24;
+	pixel_y = -1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/indestructible/layenia/crystal/garden,
+/area/centcom/ferry)
 "Hj" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -17373,6 +17431,19 @@
 /obj/item/pen,
 /turf/open/floor/plasteel,
 /area/centcom/control)
+"Lm" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin,
+/obj/item/pen/fountain/captain,
+/obj/item/reagent_containers/food/drinks/prospacillin{
+	pixel_x = -13;
+	pixel_y = 14
+	},
+/obj/item/reagent_containers/glass/beaker/jar{
+	pixel_x = 11
+	},
+/turf/open/floor/plasteel/grimy,
+/area/centcom/ferry)
 "Lo" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/med_data/laptop,
@@ -18455,6 +18526,12 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/centcom/holding)
+"Pm" = (
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-10"
+	},
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "Pn" = (
 /turf/closed/indestructible/fakedoor{
 	name = "Equipment Storage"
@@ -18549,9 +18626,36 @@
 	smooth = 1
 	},
 /area/centcom/holding)
+"PB" = (
+/obj/structure/chair/sofa/left,
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "PD" = (
 /turf/open/floor/plasteel/cafeteria,
 /area/syndicate_mothership)
+"PE" = (
+/obj/structure/closet/cabinet,
+/obj/item/card/id/centcom{
+	assignment = "Off-Duty Centcom Commander";
+	name = "Winfre Ryyn-Kinar's ID Card (Off-Duty Centcom Commander)";
+	registered_name = "Winfre Ryyn-Kinar"
+	},
+/obj/item/clothing/under/pants/blackjeans,
+/obj/item/clothing/suit/jacket/flannel/aqua,
+/obj/item/clothing/shoes/combat/swat,
+/obj/item/clothing/shoes/jackboots/tall,
+/obj/item/clothing/gloves/combat,
+/obj/item/clothing/neck/stripedbluescarf,
+/obj/item/clothing/glasses/regular,
+/obj/item/clothing/glasses/sunglasses/big,
+/obj/item/clothing/glasses/thermal/eyepatch,
+/obj/item/storage/backpack/satchel/leather,
+/obj/item/radio/headset/headset_cent/alt,
+/obj/item/pda/lieutenant{
+	hidden = 0
+	},
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "PF" = (
 /obj/machinery/chem_dispenser/drinks,
 /turf/closed/indestructible{
@@ -18657,6 +18761,45 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/centcom/evac)
+"Qd" = (
+/obj/structure/closet/crate/secure{
+	anchored = 1;
+	name = "secure gear crate";
+	req_access_txt = "101"
+	},
+/obj/item/radio/headset/headset_cent/alt,
+/obj/item/clothing/glasses/thermal/eyepatch,
+/obj/item/implanter{
+	imp_type = "/obj/item/organ/cyberimp/arm/mblade/l;
+	name = "Scytheblade activator (left-side)
+	},
+/obj/item/implanter{
+	imp_type = "/obj/item/organ/cyberimp/arm/mblade;
+	name = "Scytheblade activator (right-side)
+	},
+/obj/item/clothing/under/rank/centcom_commander,
+/obj/item/clothing/suit/hooded/wintercoat/centcom,
+/obj/item/clothing/shoes/combat/swat,
+/obj/item/clothing/gloves/combat,
+/obj/item/melee/classic_baton/telescopic,
+/obj/item/pda/lieutenant{
+	hidden = 0
+	},
+/obj/item/clothing/neck/cloak/centcom,
+/obj/item/storage/backpack/satchel/leather,
+/obj/item/card/id/centcom{
+	assignment = "Centcom Commander";
+	name = "Winfre Ryyn-Kinar's ID Card (Centcom Commander)";
+	registered_name = "Winfre Ryyn-Kinar"
+	},
+/obj/item/clothing/neck/stripedbluescarf,
+/obj/item/clothing/glasses/hud/security/sunglasses{
+	vision_correction = 1
+	},
+/obj/item/flashlight/seclite,
+/obj/item/gun/energy/e_gun/dragnet/snare,
+/turf/open/floor/plasteel/grimy,
+/area/centcom/ferry)
 "Qe" = (
 /turf/open/ai_visible,
 /area/ai_multicam_room)
@@ -18977,6 +19120,11 @@
 	},
 /turf/open/floor/holofloor,
 /area/holodeck/rec_center/basketball)
+"RF" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/item/banner/command/mundane,
+/turf/open/floor/plasteel,
+/area/centcom/evac)
 "RI" = (
 /obj/structure/medkit_cabinet{
 	pixel_x = -27
@@ -19204,6 +19352,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/four)
+"SA" = (
+/obj/machinery/newscaster{
+	pixel_y = 32
+	},
+/obj/structure/dresser,
+/obj/item/toy/plush/mammal/winfre{
+	item_state = "Winfre";
+	name = "Winfre, Destroyer of Fun";
+	pixel_y = 17
+	},
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "SB" = (
 /obj/structure/flora/ausbushes/fernybush,
 /obj/structure/flora/ausbushes/fullgrass,
@@ -19345,6 +19505,16 @@
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/grass,
 /area/centcom/holding)
+"Td" = (
+/obj/structure/table/wood,
+/obj/item/trash/candy,
+/obj/item/trash/syndi_cakes{
+	pixel_x = -8;
+	pixel_y = 8
+	},
+/obj/item/flashlight/lamp/green,
+/turf/open/floor/plasteel/grimy,
+/area/centcom/ferry)
 "Th" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -19496,6 +19666,13 @@
 	},
 /turf/open/floor/holofloor,
 /area/holodeck/rec_center/basketball)
+"TG" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/structure/chair/sofa/right,
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "TI" = (
 /obj/structure/table/reinforced,
 /obj/item/kitchen/knife,
@@ -20273,6 +20450,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/control)
+"Wg" = (
+/obj/item/banner/command/mundane,
+/turf/open/floor/plasteel,
+/area/centcom/ferry)
 "Wh" = (
 /obj/machinery/button/door{
 	id = "CCDormChemlight";
@@ -20372,6 +20553,17 @@
 	},
 /obj/structure/window,
 /turf/open/floor/carpet/royalblack,
+/area/centcom/ferry)
+"WB" = (
+/obj/structure/flora/crystal/medium/growth{
+	icon_state = "crystalgrowth2";
+	pixel_x = -23;
+	pixel_y = -1
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/indestructible/layenia/crystal/garden,
 /area/centcom/ferry)
 "WC" = (
 /obj/structure/table/reinforced,
@@ -20689,8 +20881,9 @@
 /obj/machinery/door/airlock{
 	dir = 4;
 	id_tag = "CCDorm2";
-	name = "Dorm Room 2"
+	name = "Winfre Ryyn-Kinar's Bunk"
 	},
+/obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/plasteel,
 /area/centcom/ferry)
 "Xx" = (
@@ -21008,6 +21201,15 @@
 /obj/structure/closet/crate/freezer/blood,
 /turf/open/floor/wood,
 /area/centcom/holding)
+"Yv" = (
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/medkit_cabinet{
+	pixel_x = -27
+	},
+/turf/open/floor/plasteel/white,
+/area/centcom/ferry)
 "Yw" = (
 /turf/closed/indestructible/fakedoor{
 	name = "External Access"
@@ -21175,6 +21377,15 @@
 "Zc" = (
 /turf/open/indestructible/binary,
 /area/space)
+"Zd" = (
+/obj/structure/table/wood,
+/obj/item/screwdriver{
+	pixel_x = 15;
+	pixel_y = 4
+	},
+/obj/item/gun/energy/laser/sizeray,
+/turf/open/floor/plasteel/grimy,
+/area/centcom/ferry)
 "Zf" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /turf/open/floor/plasteel,
@@ -51186,11 +51397,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+mD
+mD
+mD
 aa
 aa
 aa
@@ -51444,9 +51655,9 @@ mD
 mD
 mD
 mD
+WB
 mD
-mD
-mD
+Hi
 mD
 mD
 mD
@@ -51700,10 +51911,10 @@ RI
 Uz
 TQ
 mD
-Oi
-RI
+Yv
+TS
 Uz
-RO
+tT
 mD
 Oi
 RI
@@ -52471,10 +52682,10 @@ Xi
 oB
 qd
 mD
-NH
+Ue
 oB
 oB
-qd
+Pm
 mD
 NH
 oB
@@ -52728,9 +52939,9 @@ UU
 pg
 TY
 mD
-Ss
+wg
 pg
-TD
+Td
 TY
 mD
 Ss
@@ -52985,9 +53196,9 @@ tQ
 pg
 Ue
 mD
-XI
+SA
 pg
-NX
+Zd
 XZ
 mD
 XI
@@ -53242,9 +53453,9 @@ pg
 pg
 oB
 mD
-UP
+PE
 pg
-VS
+Lm
 oB
 mD
 UP
@@ -53499,9 +53710,9 @@ pg
 pg
 vx
 mD
-XR
+TG
 pg
-pg
+Qd
 TY
 mD
 XR
@@ -53756,10 +53967,10 @@ Wh
 oB
 qd
 mD
-Ue
+PB
 Tp
 oB
-qd
+Pm
 mD
 Ue
 yk
@@ -56827,7 +57038,7 @@ xe
 wr
 wx
 nU
-ZW
+Wg
 ZW
 ZW
 ZW
@@ -73260,12 +73471,12 @@ nq
 nq
 nq
 pt
-jG
+ym
 in
 qz
 qy
 qx
-sO
+AF
 pF
 uB
 uB
@@ -73277,7 +73488,7 @@ uB
 uB
 uB
 rT
-AW
+RF
 qx
 qy
 qx
