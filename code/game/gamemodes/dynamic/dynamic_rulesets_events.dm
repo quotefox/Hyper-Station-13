@@ -612,6 +612,22 @@
 	var/atom/special_target
 	map_blacklist = list("LayeniaStation.dmm")
 
+/datum/dynamic_ruleset/event/crystalline_reentry
+	name = "Crystalline Asteroid"
+	controller = /datum/round_event_control/crystalline_reentry
+	typepath = /datum/round_event/crystalline_reentry
+	enemy_roles = list("Research Director","Chief Engineer","Station Engineer","Captain","Chaplain","AI")
+	required_enemies = list(2,2,2,2,2,2,1,1,1,0)
+	requirements = list(101,101,20,18,16,14,12,10,8,6)
+	high_population_requirement = 15
+	cost = 0
+	occurances_max = 2
+	weight = 3
+	repeatable_weight_decrease = 2
+	chaos_min = 1.5
+	var/atom/special_target
+	map_whitelist = list("LayeniaStation.dmm")
+
 /*
 /datum/dynamic_ruleset/event/immovable_rod/execute()  //I do not know why this is necessary
 	var/datum/round_event_control/E = locate(/datum/round_event_control/immovable_rod) in SSevents.control
