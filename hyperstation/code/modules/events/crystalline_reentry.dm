@@ -135,7 +135,7 @@
 	if(asteroidhealth <= 0)
 		atmos_spawn_air("water_vapor=1000;TEMP=0") //brr
 		make_debris()
-		explosion(src.loc, 1, 2, 3, 3, 1, 0, 3, 0, 0)
+		explosion(src.loc, 1, 2, 3, 3, 1, 0, 0, 0, 0)
 		qdel(src)
 	else
 		atmos_spawn_air("water_vapor=100;TEMP=0") //brr
