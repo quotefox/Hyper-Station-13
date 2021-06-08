@@ -113,13 +113,12 @@
 
 	if(materials)
 		for(var/mat_id in materials.materials)
-			var/datum/material/M = mat_id
-			var/amount = materials.materials[mat_id]
+			var/datum/material/M = materials.materials[mat_id]
 			var/ref = REF(M)
-			output += "<span class=\"res_name\">[M.name]: </span>[amount] cm&sup3;"
-			if(amount >= MINERAL_MATERIAL_AMOUNT)
+			output += "<span class=\"res_name\">[M.name]: </span>[M.amount] cm&sup3;"
+			if(M.amount >= MINERAL_MATERIAL_AMOUNT)
 				output += "<span style='font-size:80%;'>- Remove \[<a href='?src=[REF(src)];remove_mat=1;material=[ref]'>1</a>\]"
-				if(amount >= (MINERAL_MATERIAL_AMOUNT * 10))
+				if(M.amount >= (MINERAL_MATERIAL_AMOUNT * 10))
 					output += " | \[<a href='?src=[REF(src)];remove_mat=10;material=[ref]'>10</a>\]"
 				output += " | \[<a href='?src=[REF(src)];remove_mat=50;material=[ref]'>50</a>\]</span>"
 			output += "<br>"
