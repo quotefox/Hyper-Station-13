@@ -21,7 +21,8 @@
 		/obj/effect/collapse,
 		/obj/effect/particle_effect/ion_trails,
 		/obj/effect/dummy/phased_mob,
-		/obj/effect/immovablerod
+		/obj/effect/immovablerod,
+		/obj/effect/crystalline_reentry
 		))
 
 /datum/component/chasm/Initialize(turf/target)
