@@ -429,8 +429,11 @@ GLOBAL_LIST_EMPTY(family_heirlooms)
 /datum/quirk/mute/add()
 	var/mob/living/carbon/human/H = quirk_holder
 	mute = new
-	H.gain_trauma(mute, TRAUMA_RESILIENCE_SURGERY)
-	H.gain_trauma(TRAIT_MUTE, TRAUMA_RESILIENCE_SURGERY)
+	H.gain_trauma(mute, TRAUMA_RESILIENCE_ABSOLUTE)
+
+/datum/quirk/mute/remove()
+	var/mob/living/carbon/human/H = quirk_holder
+	H?.cure_trauma_type(mute, TRAUMA_RESILIENCE_ABSOLUTE)
 
 /datum/quirk/mute/on_process()
 	if(quirk_holder.mind && LAZYLEN(quirk_holder.mind.antag_datums))
