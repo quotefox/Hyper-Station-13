@@ -117,8 +117,10 @@
 	else
 		option = "Fuck"
 
-	var/obj/item/organ/genital/vagina/V = portalunderwear.loc
-	if(!V || !iscarbon(portalunderwear.loc))
+	var/obj/item/organ/genital/vagina/V
+	if(istype(portalunderwear.loc, /obj/item/organ/genital/vagina)) //Sanity check. Without this it will runtime.
+		V = portalunderwear.loc
+	if(!V)
 		return
 	var/mob/living/carbon/human/M = V.owner
 
@@ -179,8 +181,10 @@
 	//get their looks and vagina colour!
 	cut_overlays()//remove current overlays
 
-	var/obj/item/organ/genital/vagina/V = portalunderwear.loc
-	if(!V || !iscarbon(portalunderwear.loc))
+	var/obj/item/organ/genital/vagina/V
+	if(istype(portalunderwear.loc, /obj/item/organ/genital/vagina)) //Sanity check. Without this it will runtime.
+		V = portalunderwear.loc
+	if(!V)
 		useable = FALSE
 		return
 	var/mob/living/carbon/human/H = V.owner
