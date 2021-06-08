@@ -116,7 +116,7 @@
 			var/datum/material/M = mat_id
 			var/amount = materials.materials[mat_id]
 			var/ref = REF(M)
-			output += "<span class=\"res_name\">[M]: </span>[amount] cm&sup3;"
+			output += "<span class=\"res_name\">[M.name]: </span>[amount] cm&sup3;"
 			if(amount >= MINERAL_MATERIAL_AMOUNT)
 				output += "<span style='font-size:80%;'>- Remove \[<a href='?src=[REF(src)];remove_mat=1;material=[ref]'>1</a>\]"
 				if(amount >= (MINERAL_MATERIAL_AMOUNT * 10))
@@ -290,8 +290,9 @@
 				left_part += output_parts_list(part_set)
 				left_part += "<hr><a href='?src=[REF(src)];screen=main'>Return</a>"
 	dat = {"<html>
-			  <head>
-			  <title>[name]</title>
+			<head>
+			<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
+			<title>[name]</title>
 				<style>
 				.res_name {font-weight: bold; text-transform: capitalize;}
 				.red {color: #f00;}
