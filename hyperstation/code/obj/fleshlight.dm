@@ -118,7 +118,7 @@
 		option = "Fuck"
 
 	var/obj/item/organ/genital/vagina/V = portalunderwear.loc
-	if(!V || !iscarbon(V))
+	if(!V || !ishuman(V))
 		return
 	var/mob/living/carbon/human/M = V.owner
 
@@ -180,6 +180,9 @@
 	cut_overlays()//remove current overlays
 
 	var/obj/item/organ/genital/vagina/V = portalunderwear.loc
+	if(!V || !ishuman(V))
+		useable = FALSE
+		return
 	var/mob/living/carbon/human/H = V.owner
 
 	if(H) //if the portal panties are on someone.
