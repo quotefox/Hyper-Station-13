@@ -15,7 +15,7 @@
 		special_target = get_turf(usr)
 
 /datum/round_event/crystalline_reentry
-	announceWhen = 5
+	announceWhen = 0
 
 /datum/round_event/crystalline_reentry/announce(fake)
 	priority_announce("A crystalline asteroid has suffered a violent atmospheric entry. Brace for possible impact.", "General Alert")
@@ -45,8 +45,9 @@
 	var/destination
 	var/notify = TRUE
 	var/atom/special_target
-	var/dropamt = 3
+	var/dropamt = 5
 	var/droptype = list(/obj/item/stack/ore/bluespace_crystal)
+	var/meteorsound = 'sound/effects/meteorimpact.ogg'
 
 /obj/effect/crystalline_reentry/New(atom/start, atom/end, aimed_at)
 	..()
@@ -106,6 +107,7 @@
 
 /obj/effect/crystalline_reentry/Bump(atom/clong)
 	asteroidhealth = asteroidhealth - rand(7,14)
+	
 	if(prob(10))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		audible_message("<span class='danger'>You hear a BONK!</span>")
@@ -133,15 +135,26 @@
 		qdel(src)
 		qdel(other)
 	if(asteroidhealth <= 0)
+		collision_effect()
 		atmos_spawn_air("water_vapor=1000;TEMP=0") //brr
 		make_debris()
-		explosion(src.loc, 1, 2, 3, 3, 1, 0, 0, 0, 0)
+		switch(rand(1,100))
+			if(1 to 20)
+				var/obj/structure/spawner/crystalline/M = new(src.loc)
+				visible_message("<span class='danger'>A [M] emerges from the asteroid's rubble!</span>")
+				if(prob(50))
+					priority_announce("Unknown organic entities have been detected in the vincinity of [station_name()]. General caution is advised.", "General Alert")
+			if(21 to 99)
+				visible_message("The asteroid collapses into nothing...")
+			if(100)
+				var/mob/living/simple_animal/bot/hugbot/M = new(src.loc)
+				visible_message("<span class='danger'>A [M] emerges from the asteroid's rubble! Wait... What?</span>")
 		qdel(src)
 	else
-		atmos_spawn_air("water_vapor=100;TEMP=0") //brr
+		atmos_spawn_air("water_vapor=75;TEMP=0") //brr
 
 /obj/effect/crystalline_reentry/proc/penetrate(mob/living/L)
-	L.visible_message("<span class='danger'>[L] is smashed by an crystalline asteroid!</span>" , "<span class='userdanger'>The crystalline asteroid smashes you!</span>" , "<span class ='danger'>You hear a BONK!</span>")
+	L.visible_message("<span class='danger'>[L] is smashed by a crystalline asteroid!</span>" , "<span class='userdanger'>The crystalline asteroid smashes you!</span>" , "<span class ='danger'>You hear a BONK!</span>")
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		H.adjustBruteLoss(160)
@@ -150,3 +163,97 @@
 	for(var/throws = dropamt, throws > 0, throws--)
 		var/thing_to_spawn = pick(droptype)
 		new thing_to_spawn(get_turf(src))
+
+/obj/effect/crystalline_reentry/proc/collision_effect()
+	var/sound/meteor_sound = sound(meteorsound)
+	var/random_frequency = get_rand_frequency()
+	explosion(src.loc, 0, 0, 5, 3, 1, 0, 0, 0, 0)
+	for(var/mob/living/M in range(9, src.loc))
+		shake_camera(M, 3, 7)
+		M.playsound_local(src.loc, null, 50, 1, random_frequency, 10, S = meteor_sound)
+
+
+/mob/living/simple_animal/hostile/asteroid/basilisk/tendril
+	fromtendril = TRUE
+
+//Crystalline Tendrils, which spawn crystalline monsters
+/obj/structure/spawner/crystalline
+	name = "crystalline tendril"
+	desc = "A vile tendril of corruption, originating from gods know where. Terrible monsters are pouring out of it."
+	icon = 'icons/mob/nest.dmi'
+	icon_state = "tendril"
+	faction = list("mining")
+	max_mobs = 3
+	max_integrity = 250
+	mob_types = list(/mob/living/simple_animal/hostile/asteroid/basilisk/tendril)
+	move_resist=INFINITY // just killing it tears a massive hole in the ground, let's not move it
+	anchored = TRUE
+	resistance_flags = FIRE_PROOF | LAVA_PROOF | INDESTRUCTIBLE
+	var/gps = null
+	var/obj/effect/light_emitter/tendril/emitted_light
+
+/obj/structure/spawner/crystalline/Initialize()
+	. = ..()
+	emitted_light = new(loc)
+	for(var/F in RANGE_TURFS(1, src))
+		if(iswallturf(F))
+			var/turf/closed/M = F
+			M.ScrapeAway(null, CHANGETURF_IGNORE_AIR)
+		if(iscloudturf(F))
+			var/turf/open/chasm/cloud/M = F
+			M.TerraformTurf(/turf/open/floor/plating/asteroid/layenia, /turf/open/floor/plating/asteroid/layenia)
+	gps = new /obj/item/gps/internal(src)
+	addtimer(CALLBACK(src, .proc/delayedInitialize), 2 SECONDS) 
+
+/obj/structure/spawner/crystalline/deconstruct(disassembled)
+	new /obj/effect/cloud_collapse(loc)
+	new /obj/structure/closet/crate/necropolis/tendril(loc)
+	return ..()
+
+/obj/structure/spawner/crystalline/Destroy()
+	QDEL_NULL(emitted_light)
+	QDEL_NULL(gps)
+	return ..()
+
+/obj/structure/spawner/crystalline/proc/delayedInitialize()
+	//Why is this needed? Simple, because apparently explosion is so slow that it triggers after the spawner spawns and kills it on the spot. This just makes it killable.
+	resistance_flags = FIRE_PROOF | LAVA_PROOF
+	max_integrity = 250
+	obj_integrity = max_integrity
+
+/obj/effect/light_emitter/crystalline
+	set_luminosity = 4
+	set_cap = 2.5
+	light_color = LIGHT_COLOR_LIGHT_CYAN
+
+/obj/effect/cloud_collapse
+	name = "collapsing crystalline tendril"
+	desc = "Get clear!"
+	layer = TABLE_LAYER
+	icon = 'icons/mob/nest.dmi'
+	icon_state = "tendril"
+	anchored = TRUE
+	density = TRUE
+	var/obj/effect/light_emitter/crystalline/emitted_light
+
+/obj/effect/cloud_collapse/Initialize()
+	. = ..()
+	emitted_light = new(loc)
+	visible_message("<span class='boldannounce'>The tendril writhes in fury as the earth around it begins to crack and break apart! Get back!</span>")
+	visible_message("<span class='warning'>Something falls free of the tendril!</span>")
+	playsound(loc,'sound/effects/tendril_destroyed.ogg', 200, 0, 50, 1, 1)
+	addtimer(CALLBACK(src, .proc/collapse), 50)
+
+/obj/effect/cloud_collapse/Destroy()
+	QDEL_NULL(emitted_light)
+	return ..()
+
+/obj/effect/cloud_collapse/proc/collapse()
+	for(var/mob/M in range(7,src))
+		shake_camera(M, 15, 1)
+	playsound(get_turf(src),'sound/effects/explosionfar.ogg', 200, 1)
+	visible_message("<span class='boldannounce'>The tendril falls into the clouds below!</span>")
+	for(var/turf/T in range(1,src))
+		if(!T.density)
+			T.TerraformTurf(/turf/open/chasm/cloud, /turf/open/chasm/cloud)
+	qdel(src)
