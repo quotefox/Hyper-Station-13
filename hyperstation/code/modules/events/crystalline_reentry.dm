@@ -14,6 +14,7 @@
 
 /datum/round_event/crystalline_reentry
 	announceWhen = 0
+	fakeable = FALSE
 
 /datum/round_event/crystalline_reentry/announce(fake)
 	priority_announce("A crystalline asteroid has suffered a violent atmospheric entry. Brace for possible impact.", "General Alert")
@@ -36,21 +37,30 @@
 /datum/round_event_control/crystalline_wave/admin_setup()
 	if(!check_rights(R_FUN))
 		return
+	/* No special target for you
 	var/aimed = alert("Aimed at current location?","Snipe", "Yes", "No")
 	if(aimed == "Yes")
 		special_target = get_turf(usr)
+	*/
+	var/randselect = pick("https://youtu.be/S0HTqqwZq-o","https://youtu.be/Liv4CvpMdRA","https://youtu.be/9XZyQ12qt7w")
+	message_admins("A crystalline asteroid wave has been triggered. Maybe you should add some music for the players? Consider this random selection: [randselect]")
 
 /datum/round_event/crystalline_wave
 	announceWhen = 0
-	startWhen = 100
+	startWhen = 15
+	endWhen = 60 //45 seconds of pain
+	fakeable = FALSE
 
 /datum/round_event/crystalline_wave/announce(fake)
-	priority_announce("Several crystalline asteroids have been detected en route with the station. All hands, brace for impact. Organic signals have been detected contained in some of the asteroids.", title = "Priority Alert", sound = 'sound/misc/deltakalaxon.ogg')
+	priority_announce("Several crystalline asteroids have been detected en route with the station. All hands, brace for impact. Organic signals have been detected contained within some of the asteroids.", title = "Priority Alert", sound = 'sound/misc/voyalert.ogg')
 
-/datum/round_event/crystalline_wave/start()
+/datum/round_event/crystalline_wave/tick()
+	if(ISMULTIPLE(activeFor, 3))
+		spawn_asteroids(rand(4,5)) // A looooot of asteroids...
+
+/datum/round_event/crystalline_wave/proc/spawn_asteroids(number = 5)
 	var/datum/round_event_control/crystalline_reentry/C = control
-	var/numberofasteroids = rand(16,24)
-	for(var/i = 0; i < numberofasteroids; i++)
+	for(var/i = 0; i < number; i++)
 		var/startside = pick(GLOB.cardinals)
 		var/z = pick(SSmapping.levels_by_trait(ZTRAIT_STATION))
 		var/turf/startT = spaceDebrisStartLoc(startside, z)
@@ -85,7 +95,7 @@
 	z_original = z
 	destination = end
 	special_target = aimed_at
-	asteroidhealth = rand(120,240)
+	asteroidhealth = rand(150,300)
 	if(notify)
 		notify_ghosts("\A [src] is inbound!",
 			enter_link="<a href=?src=[REF(src)];orbit=1>(Click to orbit)</a>",
@@ -195,11 +205,17 @@
 		new thing_to_spawn(get_turf(src))
 
 /obj/effect/crystalline_reentry/proc/collision_effect()
+	explosion(src.loc, 0, 0, 5, 3, 1, 0, 0, 0, 0)
 	var/sound/meteor_sound = sound(meteorsound)
 	var/random_frequency = get_rand_frequency()
-	explosion(src.loc, 0, 0, 5, 3, 1, 0, 0, 0, 0)
-	for(var/mob/living/M in range(9, src.loc))
-		shake_camera(M, 3, 7)
+	for(var/mob/M in GLOB.player_list)
+		if((M.orbiting) && (SSaugury.watchers[M]))
+			continue
+		var/turf/T = get_turf(M)
+		if(!T || T.z != src.z)
+			continue
+		var/dist = get_dist(M.loc, src.loc)
+		shake_camera(M, dist > 20 ? 2 : 4, dist > 20 ? 1 : 3)
 		M.playsound_local(src.loc, null, 50, 1, random_frequency, 10, S = meteor_sound)
 
 /obj/effect/crystalline_reentry/notendrilalert
@@ -216,11 +232,12 @@
 	icon_state = "tendril"
 	faction = list("mining")
 	max_mobs = 3
-	max_integrity = 250
+	max_integrity = 9000 // Don't worry, the value is normalized within Initialize
+	obj_integrity = 9000 // Same as above
 	mob_types = list(/mob/living/simple_animal/hostile/asteroid/basilisk/tendril)
-	move_resist=INFINITY // just killing it tears a massive hole in the ground, let's not move it
+	move_resist = INFINITY // just killing it tears a massive hole in the ground, let's not move it
 	anchored = TRUE
-	resistance_flags = FIRE_PROOF | LAVA_PROOF | INDESTRUCTIBLE
+	resistance_flags = INDESTRUCTIBLE | FIRE_PROOF | LAVA_PROOF
 	var/gps = null
 	var/obj/effect/light_emitter/tendril/emitted_light
 
@@ -235,7 +252,7 @@
 			var/turf/open/chasm/cloud/M = F
 			M.TerraformTurf(/turf/open/floor/plating/asteroid/layenia, /turf/open/floor/plating/asteroid/layenia)
 	gps = new /obj/item/gps/internal(src)
-	addtimer(CALLBACK(src, .proc/delayedInitialize), 2 SECONDS) 
+	addtimer(CALLBACK(src, .proc/delayedInitialize), 4 SECONDS) 
 
 /obj/structure/spawner/crystalline/deconstruct(disassembled)
 	new /obj/effect/cloud_collapse(loc)
@@ -251,7 +268,7 @@
 	//Why is this needed? Simple, because apparently explosion is so slow that it triggers after the spawner spawns and kills it on the spot. This just makes it killable.
 	resistance_flags = FIRE_PROOF | LAVA_PROOF
 	max_integrity = 250
-	obj_integrity = max_integrity
+	obj_integrity = 250
 
 /obj/effect/light_emitter/crystalline
 	set_luminosity = 4
