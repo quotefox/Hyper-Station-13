@@ -37,9 +37,11 @@
 /datum/round_event_control/crystalline_wave/admin_setup()
 	if(!check_rights(R_FUN))
 		return
+	/* No special target for you
 	var/aimed = alert("Aimed at current location?","Snipe", "Yes", "No")
 	if(aimed == "Yes")
 		special_target = get_turf(usr)
+	*/
 	var/randselect = pick("https://youtu.be/S0HTqqwZq-o","https://youtu.be/Liv4CvpMdRA","https://youtu.be/9XZyQ12qt7w")
 	message_admins("A crystalline asteroid wave has been triggered. Maybe you should add some music for the players? Consider this random selection: [randselect]")
 
