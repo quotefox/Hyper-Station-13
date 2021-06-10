@@ -5,11 +5,9 @@
 	max_occurrences = 5
 	var/atom/special_target
 
-
 /datum/round_event_control/crystalline_reentry/admin_setup()
 	if(!check_rights(R_FUN))
 		return
-
 	var/aimed = alert("Aimed at current location?","Snipe", "Yes", "No")
 	if(aimed == "Yes")
 		special_target = get_turf(usr)
@@ -28,6 +26,36 @@
 	var/turf/endT = spaceDebrisFinishLoc(startside, z)
 	new /obj/effect/crystalline_reentry(startT, endT, C.special_target)
 
+/datum/round_event_control/crystalline_wave
+	name = "Catastrophic Crystalline Asteroid Wave"
+	typepath = /datum/round_event/crystalline_wave
+	min_players = 35
+	max_occurrences = 0 //This is only an admin spawn. Ergo, wrath of the gods.
+	var/atom/special_target
+
+/datum/round_event_control/crystalline_wave/admin_setup()
+	if(!check_rights(R_FUN))
+		return
+	var/aimed = alert("Aimed at current location?","Snipe", "Yes", "No")
+	if(aimed == "Yes")
+		special_target = get_turf(usr)
+
+/datum/round_event/crystalline_wave
+	announceWhen = 0
+
+/datum/round_event/crystalline_wave/announce(fake)
+	priority_announce("Several crystalline asteroids have been detected en route with the station. All hands, brace for impact. Organic signals have been detected contained in some of the asteroids.", title = "Priority Alert", sound = 'sound/misc/deltakalaxon.ogg')
+
+/datum/round_event/crystalline_wave/start()
+	var/datum/round_event_control/crystalline_reentry/C = control
+	var/numberofasteroids = rand(12,24)
+	for(var/i = 0; i < numberofasteroids; i++)
+		var/startside = pick(GLOB.cardinals)
+		var/z = pick(SSmapping.levels_by_trait(ZTRAIT_STATION))
+		var/turf/startT = spaceDebrisStartLoc(startside, z)
+		var/turf/endT = spaceDebrisFinishLoc(startside, z)
+		new /obj/effect/crystalline_reentry/notendrilalert(startT, endT, C.special_target)
+
 /obj/effect/crystalline_reentry
 	name = "dense ice asteroid"
 	desc = "Oh shit."
@@ -44,6 +72,7 @@
 	var/z_original = 0
 	var/destination
 	var/notify = TRUE
+	var/tendrilnotify = TRUE
 	var/atom/special_target
 	var/dropamt = 5
 	var/droptype = list(/obj/item/stack/ore/bluespace_crystal)
@@ -142,7 +171,7 @@
 			if(1 to 20)
 				var/obj/structure/spawner/crystalline/M = new(src.loc)
 				visible_message("<span class='danger'>A [M] emerges from the asteroid's rubble!</span>")
-				if(prob(50))
+				if(prob(50) && tendrilnotify)
 					priority_announce("Unknown organic entities have been detected in the vincinity of [station_name()]. General caution is advised.", "General Alert")
 			if(21 to 99)
 				visible_message("The asteroid collapses into nothing...")
@@ -172,6 +201,8 @@
 		shake_camera(M, 3, 7)
 		M.playsound_local(src.loc, null, 50, 1, random_frequency, 10, S = meteor_sound)
 
+/obj/effect/crystalline_reentry/notendrilalert
+	tendrilnotify = FALSE
 
 /mob/living/simple_animal/hostile/asteroid/basilisk/tendril
 	fromtendril = TRUE
