@@ -14,6 +14,7 @@
 
 /datum/round_event/crystalline_reentry
 	announceWhen = 0
+	fakeable = FALSE
 
 /datum/round_event/crystalline_reentry/announce(fake)
 	priority_announce("A crystalline asteroid has suffered a violent atmospheric entry. Brace for possible impact.", "General Alert")
@@ -46,6 +47,7 @@
 	announceWhen = 0
 	startWhen = 15
 	endWhen = 65
+	fakeable = FALSE
 
 /datum/round_event/crystalline_wave/announce(fake)
 	priority_announce("Several crystalline asteroids have been detected en route with the station. All hands, brace for impact. Organic signals have been detected contained within some of the asteroids.", title = "Priority Alert", sound = 'sound/misc/voyalert.ogg')
