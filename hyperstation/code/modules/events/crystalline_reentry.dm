@@ -46,7 +46,7 @@
 /datum/round_event/crystalline_wave
 	announceWhen = 0
 	startWhen = 15
-	endWhen = 65
+	endWhen = 60 //45 seconds of pain
 	fakeable = FALSE
 
 /datum/round_event/crystalline_wave/announce(fake)
