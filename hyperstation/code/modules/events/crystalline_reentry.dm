@@ -42,13 +42,14 @@
 
 /datum/round_event/crystalline_wave
 	announceWhen = 0
+	startwhen = 100
 
 /datum/round_event/crystalline_wave/announce(fake)
 	priority_announce("Several crystalline asteroids have been detected en route with the station. All hands, brace for impact. Organic signals have been detected contained in some of the asteroids.", title = "Priority Alert", sound = 'sound/misc/deltakalaxon.ogg')
 
 /datum/round_event/crystalline_wave/start()
 	var/datum/round_event_control/crystalline_reentry/C = control
-	var/numberofasteroids = rand(12,24)
+	var/numberofasteroids = rand(16,24)
 	for(var/i = 0; i < numberofasteroids; i++)
 		var/startside = pick(GLOB.cardinals)
 		var/z = pick(SSmapping.levels_by_trait(ZTRAIT_STATION))
