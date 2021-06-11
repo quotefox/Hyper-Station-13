@@ -43,11 +43,16 @@
 		wander = FALSE
 		vision_range = initial(vision_range)
 		switch(transformitem)
-			if(1 to 20)
+			if(1 to 10)
 				name = "drinking glass"
 				icon = 'icons/obj/drinks.dmi'
 				icon_state = "glass_empty"
 				desc = "Your standard drinking glass."
+			if(11 to 20)
+				name = "insulated gloves"
+				icon = 'icons/obj/clothing/gloves.dmi'
+				icon_state = "yellow"
+				desc = "These gloves will protect the wearer from electric shock."
 			if(21 to 30)
 				name = "Private Security Officer"
 				desc = "A cardboard cutout of a private security officer."
