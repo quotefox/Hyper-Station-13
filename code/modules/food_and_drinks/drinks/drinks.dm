@@ -470,7 +470,7 @@
 	desc = "You wanted ORANGE. It gave you Lemon Lime."
 	icon_state = "lemon-lime"
 	list_reagents = list(/datum/reagent/consumable/lemon_lime = 30)
-	foodtype = FRUIT
+	foodtype = SUGAR | FRUIT
 
 /obj/item/reagent_containers/food/drinks/soda_cans/lemon_lime/Initialize()
 	. = ..()
@@ -481,35 +481,35 @@
 	desc = "Tastes like a hull breach in your mouth."
 	icon_state = "space-up"
 	list_reagents = list(/datum/reagent/consumable/space_up = 30)
-	foodtype = SUGAR | JUNKFOOD
+	foodtype = SUGAR
 
 /obj/item/reagent_containers/food/drinks/soda_cans/starkist
 	name = "Star-kist"
 	desc = "The taste of a star in liquid form. And, a bit of tuna...?"
 	icon_state = "starkist"
 	list_reagents = list(/datum/reagent/consumable/space_cola = 15, /datum/reagent/consumable/orangejuice = 15)
-	foodtype = SUGAR | FRUIT | JUNKFOOD
+	foodtype = SUGAR | FRUIT
 
 /obj/item/reagent_containers/food/drinks/soda_cans/space_mountain_wind
 	name = "Space Mountain Wind"
 	desc = "Blows right through you like a space wind."
 	icon_state = "space_mountain_wind"
 	list_reagents = list(/datum/reagent/consumable/spacemountainwind = 30)
-	foodtype = SUGAR | JUNKFOOD
+	foodtype = SUGAR
 
 /obj/item/reagent_containers/food/drinks/soda_cans/thirteenloko
 	name = "Thirteen Loko"
 	desc = "The CMO has advised crew members that consumption of Thirteen Loko may result in seizures, blindness, drunkenness, or even death. Please Drink Responsibly."
 	icon_state = "thirteen_loko"
 	list_reagents = list(/datum/reagent/consumable/ethanol/thirteenloko = 30)
-	foodtype = SUGAR | JUNKFOOD
+	foodtype = SUGAR
 
 /obj/item/reagent_containers/food/drinks/soda_cans/dr_gibb
 	name = "Dr. Gibb"
 	desc = "A delicious mixture of 42 different flavors."
 	icon_state = "dr_gibb"
 	list_reagents = list(/datum/reagent/consumable/dr_gibb = 30)
-	foodtype = SUGAR | JUNKFOOD
+	foodtype = SUGAR
 
 /obj/item/reagent_containers/food/drinks/soda_cans/pwr_game
 	name = "Pwr Game"
@@ -522,14 +522,14 @@
 	desc = "~Shake me up some of that Shambler's Juice!~"
 	icon_state = "shamblers"
 	list_reagents = list(/datum/reagent/consumable/shamblers = 30)
-	foodtype = SUGAR | JUNKFOOD
+	foodtype = SUGAR
 
 /obj/item/reagent_containers/food/drinks/soda_cans/grey_bull
 	name = "Grey Bull"
 	desc = "Grey Bull, it gives you gloves!"
 	icon_state = "energy_drink"
-	list_reagents = list(/datum/reagent/consumable/grey_bull = 20)
-	foodtype = SUGAR | JUNKFOOD
+	list_reagents = list(/datum/reagent/consumable/grey_bull = 30)
+	foodtype = SUGAR
 
 /obj/item/reagent_containers/food/drinks/soda_cans/air
 	name = "canned air"
@@ -542,5 +542,5 @@
 	desc = "Unleash the ape!"
 	icon_state = "menergy"
 	list_reagents = list(/datum/reagent/consumable/monkey_energy = 50)
-	foodtype = SUGAR | JUNKFOOD
+	foodtype = SUGAR
 	price = 3
