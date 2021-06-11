@@ -123,6 +123,14 @@
 	else if(!target && unstealth)
 		trytftorandomobject()
 
+/mob/living/simple_animal/hostile/hs13mimic/adjust_bodytemperature()
+	. = ..()
+	var/mod = 0
+	else if(bodytemperature < 183.222)
+		mod = (283.222 - bodytemperature) / 10 * 1.75
+	if(mod)
+		add_movespeed_modifier(MOVESPEED_ID_SLIME_TEMPMOD, TRUE, 100, override = TRUE, multiplicative_slowdown = mod)
+
 /mob/living/simple_animal/hostile/hs13mimic/proc/restore()
 	//back to normal
 	name = initial(name)
