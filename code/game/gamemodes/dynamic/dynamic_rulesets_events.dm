@@ -459,6 +459,7 @@
 	//property_weights = list("extended" = 1)
 	//always_max_weight = TRUE
 	occurances_max = 0
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/major_dust
 	name = "Major Space Dust"
@@ -474,6 +475,7 @@
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
 	occurances_max = 3
+	map_blacklist = list("LayeniaStation.dmm")
 	
 
 /datum/dynamic_ruleset/event/electrical_storm
