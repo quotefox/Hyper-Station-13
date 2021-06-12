@@ -14,6 +14,7 @@
 
 /datum/round_event/crystalline_reentry
 	announceWhen = 0
+	startWhen = 10
 	fakeable = FALSE
 
 /datum/round_event/crystalline_reentry/announce(fake)
@@ -177,7 +178,6 @@
 	if(asteroidhealth <= 0)
 		collision_effect()
 		atmos_spawn_air("water_vapor=1000;TEMP=0") //brr
-		make_debris()
 		switch(rand(1,100))
 			if(1 to 20)
 				var/obj/structure/spawner/crystalline/M = new(src.loc)
@@ -205,6 +205,7 @@
 		new thing_to_spawn(get_turf(src))
 
 /obj/effect/crystalline_reentry/proc/collision_effect()
+	make_debris()
 	explosion(src.loc, 0, 0, 5, 3, 1, 0, 0, 0, 0)
 	var/sound/meteor_sound = sound(meteorsound)
 	var/random_frequency = get_rand_frequency()
@@ -267,8 +268,8 @@
 /obj/structure/spawner/crystalline/proc/delayedInitialize()
 	//Why is this needed? Simple, because apparently explosion is so slow that it triggers after the spawner spawns and kills it on the spot. This just makes it killable.
 	resistance_flags = FIRE_PROOF | LAVA_PROOF
-	max_integrity = 250
-	obj_integrity = 250
+	max_integrity = 200
+	obj_integrity = 200
 
 /obj/effect/light_emitter/crystalline
 	set_luminosity = 4
