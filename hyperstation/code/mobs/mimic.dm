@@ -277,7 +277,7 @@
 		message_admins("No eligible areas for spawning mimics.")
 		return FALSE
 
-	notify_ghosts("A mimic has spawned in [pickedArea]!", enter_link="<a href=?src=[REF(src)];orbit=1>(Click to orbit)</a>", source=pickedArea, action=NOTIFY_ORBIT)
+	notify_ghosts("A group of mimics has spawned in [pickedArea]!", source=pickedArea, action=NOTIFY_ATTACK, flashwindow = FALSE)
 	while(spawncount >= 1 && validTurfs.len)
 		var/turf/pickedTurf = pick_n_take(validTurfs)
 		var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic
