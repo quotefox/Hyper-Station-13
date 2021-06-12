@@ -52,6 +52,14 @@
 	if(is_devil(src))
 		INVOKE_ASYNC(is_devil(src), /datum/antagonist/devil.proc/beginResurrectionCheck, src)
 
+	//watching someone die is traumatic
+	for(var/mob/living/carbon/human/C in oview(5, src))
+		if(C.mind) //We don't need to give this to anything that doesn't have a mind. That's wasted processing.
+			if(!HAS_TRAIT(C, TRAIT_APATHETIC) || !C.mind.assigned_role == "Medical Doctor") //Shamelessly stolen from the Doctor's Delight
+				SEND_SIGNAL(C, COMSIG_ADD_MOOD_EVENT, "death", /datum/mood_event/deathsaw)
+				if(prob(10)) //10% chance to pump adrenaline into their body
+					C.jitteriness += 5
+
 /mob/living/carbon/human/proc/makeSkeleton()
 	ADD_TRAIT(src, TRAIT_DISFIGURED, TRAIT_GENERIC)
 	set_species(/datum/species/skeleton)

@@ -7,12 +7,13 @@
 	icon_dead = "mimic_dead"
 	gender = NEUTER
 	speak_chance = 0
+	maxHealth = 38
+	health = 38
 	turns_per_move = 5
-	maxHealth = 50
-	health = 50
-	//move_to_delay = 4
+	move_to_delay = 3
 	speed = 0
-	see_in_dark = 3
+	see_in_dark = 6
+	pass_flags = PASSTABLE
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/xeno = 2)
 	response_help  = "prods"
 	response_disarm = "pushes aside"
@@ -21,12 +22,17 @@
 	melee_damage_upper = 12
 	attacktext = "slams"
 	attack_sound = 'sound/weapons/punch1.ogg'
+	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	ventcrawler = VENTCRAWLER_ALWAYS
+	blood_volume = 0
 	faction = list("mimic")
 	gold_core_spawnable = NO_SPAWN
 	vision_range = 2
 	aggro_vision_range = 9
 	wander = TRUE
+	minbodytemp = 250 //VERY weak to cold
+	maxbodytemp = 1500
+	pressure_resistance = 600
 	var/unstealth = FALSE
 	var/knockdown_people = 1
 
@@ -36,18 +42,27 @@
 	unstealth = FALSE
 	Mimictransform()
 
-/mob/living/simple_animal/hostile/hs13mimic/proc/Mimictransform() //The list of default things to transform needs to be bigger, consider this in the future.
+/mob/living/simple_animal/hostile/hs13mimic/attack_hand(mob/living/carbon/human/M)
+	. = ..()
+	trigger()
 
+/mob/living/simple_animal/hostile/hs13mimic/proc/Mimictransform() //The list of default things to transform needs to be bigger, consider this in the future.
 	var/transformitem = rand(1,100)
+	medhudupdate()
 	if(unstealth == FALSE)
 		wander = FALSE
 		vision_range = initial(vision_range)
 		switch(transformitem)
-			if(1 to 20)
+			if(1 to 10)
 				name = "drinking glass"
 				icon = 'icons/obj/drinks.dmi'
 				icon_state = "glass_empty"
 				desc = "Your standard drinking glass."
+			if(11 to 20)
+				name = "insulated gloves"
+				icon = 'icons/obj/clothing/gloves.dmi'
+				icon_state = "yellow"
+				desc = "These gloves will protect the wearer from electric shock."
 			if(21 to 30)
 				name = "Private Security Officer"
 				desc = "A cardboard cutout of a private security officer."
@@ -118,8 +133,31 @@
 	else if(!target && unstealth)
 		trytftorandomobject()
 
+/mob/living/simple_animal/hostile/hs13mimic/death(gibbed)
+	restore()
+	. = ..()
+
+/mob/living/simple_animal/hostile/hs13mimic/med_hud_set_health()
+	if(!unstealth)
+		var/image/holder = hud_list[HEALTH_HUD]
+		holder.icon_state = null
+		return //we hide medical hud while morphed
+	..()
+
+/mob/living/simple_animal/hostile/hs13mimic/med_hud_set_status()
+	if(!unstealth)
+		var/image/holder = hud_list[STATUS_HUD]
+		holder.icon_state = null
+		return //we hide medical hud while morphed
+	..()
+
+/mob/living/simple_animal/hostile/hs13mimic/proc/medhudupdate()
+	med_hud_set_health()
+	med_hud_set_status()
+
 /mob/living/simple_animal/hostile/hs13mimic/proc/restore()
-	//back to normal
+	//back to normal mimic sprite
+	medhudupdate()
 	name = initial(name)
 	icon = 'hyperstation/icons/mobs/mimic.dmi'
 	icon_state = "mimic"
@@ -142,12 +180,13 @@
 		C.trigger()
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/trytftorandomobject()
+	unstealth = FALSE
+	medhudupdate()
 	var/list/obj/item/listItems = list()
 	for(var/obj/item/I in oview(9,src.loc))
 		listItems += I
 	if(LAZYLEN(listItems))
 		var/obj/item/changedReference = pick(listItems)
-		unstealth = FALSE
 		wander = FALSE
 		vision_range = initial(vision_range)
 		name = changedReference.name
@@ -155,7 +194,6 @@
 		icon_state = changedReference.icon_state
 		desc = changedReference.desc
 	else
-		unstealth = FALSE
 		Mimictransform()
 
 /datum/round_event_control/mimic_infestation

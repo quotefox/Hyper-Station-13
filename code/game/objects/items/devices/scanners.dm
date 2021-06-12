@@ -232,7 +232,7 @@ GENE SCANNER
 		msg += "\t<span class='info'>Subject has abnormal brain fuctions.</span>\n"
 
 	//Astrogen shenanigans
-	if(M.reagents.has_reagent(/datum/reagent/fermi/astral))
+	if(M.reagents?.has_reagent(/datum/reagent/fermi/astral))
 		if(M.mind)
 			msg += "\t<span class='danger'>Warning: subject may be possesed.</span>\n"
 		else
