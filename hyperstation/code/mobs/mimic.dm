@@ -10,7 +10,7 @@
 	maxHealth = 38
 	health = 38
 	turns_per_move = 5
-	move_to_delay = 3
+	move_to_delay = 2
 	speed = 0
 	see_in_dark = 6
 	pass_flags = PASSTABLE
@@ -30,7 +30,7 @@
 	vision_range = 2
 	aggro_vision_range = 9
 	wander = TRUE
-	minbodytemp = 250 //VERY weak to cold
+	minbodytemp = 250 //weak to cold
 	maxbodytemp = 1500
 	pressure_resistance = 600
 	var/unstealth = FALSE
@@ -40,7 +40,7 @@
 	. = ..()
 	// When initialized, make sure they take the form of something.
 	unstealth = FALSE
-	Mimictransform()
+	trytftorandomobject()
 
 /mob/living/simple_animal/hostile/hs13mimic/attack_hand(mob/living/carbon/human/M)
 	. = ..()
@@ -196,6 +196,10 @@
 	else
 		Mimictransform()
 
+
+//Event control
+
+
 /datum/round_event_control/mimic_infestation
 	name = "Mimic Infestation"
 	typepath = /datum/round_event/mimic_infestation
@@ -208,23 +212,23 @@
 	var/static/list/station_areas_blacklist = typecacheof(/area/space, 
 	/area/mine, 
 	/area/ruin, 
+	/area/hallway, 
 	/area/engine/supermatter, 
 	/area/engine/atmospherics_engine, 
 	/area/engine/engineering/reactor_core, 
 	/area/engine/engineering/reactor_control, 
 	/area/ai_monitored/turret_protected/ai, 
 	/area/layenia/cloudlayer, 
-	/area/asteroid/nearstation,
-	/area/science/server,
-	/area/science/explab
-	/area/security/labor,
+	/area/asteroid/nearstation, 
+	/area/science/server, 
+	/area/science/explab, 
 	/area/security/processing)
 	var/spawncount = 1
 	fakeable = FALSE
 
 /datum/round_event/mimic_infestation/setup()
 	announceWhen = rand(announceWhen, announceWhen + 50)
-	spawncount = rand(5, 8)
+	spawncount = rand(4, 7)
 
 /datum/round_event/mimic_infestation/announce(fake)
 	priority_announce("Unidentified lifesigns detected aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", 'sound/ai/aliens.ogg')
@@ -247,22 +251,35 @@
 		var/numOfPeople
 		for(var/mob/living/carbon/H in place)
 			numOfPeople++
-			message_admins("Found [H] in [place]!")
+			break
 		if(numOfPeople > 0)
-			message_admins("Area [place] is ineligible as there are [numOfPeople] there.")
 			eligible_areas -= place
 
-	var/area/pickedArea = pick(eligible_areas)
-	message_admins("The area that has been picked is [pickedArea]")
-	var/list/turf/t = get_area_turfs(pickedArea, SSmapping.station_start)
-	for(var/turf/thisTurf in t) // now we check if it's a closed turf and yeet it from the list
-		if(isclosedturf(thisTurf))
-			t -= thisTurf
-	
-	while(spawncount >= 1 && t.len)
-		var/turf/pickedTurf = pick(t)
+	var/validFound = FALSE
+	var/list/turf/validTurfs = list()
+	var/area/pickedArea
+	while(!validFound || !eligible_areas.len)
+		pickedArea = pick_n_take(eligible_areas)
+		var/list/turf/t = get_area_turfs(pickedArea, SSmapping.station_start)
+		for(var/turf/thisTurf in t) // now we check if it's a closed turf, cold turf or occupied turf and yeet it
+			if(isclosedturf(thisTurf) || thisTurf.temperature <= T0C)
+				t -= thisTurf
+			else
+				for(var/obj/O in thisTurf)
+					if(O.density && !(istype(O, /obj/structure/table)))
+						t -= thisTurf
+						break
+		if(t.len >= spawncount) //Is the number of available turfs equal or bigger than spawncount?
+			validFound = TRUE
+			validTurfs = t
+
+	if(!eligible_areas.len)
+		message_admins("No eligible areas for spawning mimics.")
+		return FALSE
+
+	notify_ghosts("A mimic has spawned in [pickedArea]!", enter_link="<a href=?src=[REF(src)];orbit=1>(Click to orbit)</a>", source=pickedArea, action=NOTIFY_ORBIT)
+	while(spawncount >= 1 && validTurfs.len)
+		var/turf/pickedTurf = pick_n_take(validTurfs)
 		var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic
 		spawn_atom_to_turf(spawn_type, pickedTurf, 1, FALSE)
-		t -= pickedTurf //So we don't spawn them on top of eachother
 		spawncount--
-		notify_ghosts("A mimic has spawned in [pickedTurf]!", enter_link="<a href=?src=[REF(src)];orbit=1>(Click to orbit)</a>", source=pickedTurf, action=NOTIFY_ORBIT)
