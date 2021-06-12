@@ -11,7 +11,7 @@
 	health = 38
 	turns_per_move = 5
 	move_to_delay = 3
-	speed = 1
+	speed = 0
 	see_in_dark = 6
 	pass_flags = PASSTABLE
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/xeno = 2)
