@@ -10,7 +10,7 @@
 	maxHealth = 38
 	health = 38
 	turns_per_move = 5
-	move_to_delay = 2
+	move_to_delay = 1
 	speed = 0
 	see_in_dark = 6
 	pass_flags = PASSTABLE
@@ -35,6 +35,10 @@
 	pressure_resistance = 600
 	var/unstealth = FALSE
 	var/knockdown_people = 1
+	var/static/mimic_blacklisted_transform_items = typecacheof(list(
+	/obj/item/projectile,
+	/obj/item/radio/intercom))
+	var/turns_since_notarget
 
 /mob/living/simple_animal/hostile/hs13mimic/Initialize()
 	. = ..()
@@ -45,6 +49,52 @@
 /mob/living/simple_animal/hostile/hs13mimic/attack_hand(mob/living/carbon/human/M)
 	. = ..()
 	trigger()
+
+/mob/living/simple_animal/hostile/hs13mimic/Life()
+	. = ..()
+	turns_since_notarget++
+	if(turns_since_notarget >= 5)
+		turns_since_notarget = 0
+		if(unstealth && (!target || isdead(target)))
+			target = null
+			trytftorandomobject()
+
+/mob/living/simple_animal/hostile/hs13mimic/AttackingTarget()
+	. = ..()
+	if(knockdown_people && . && prob(15) && iscarbon(target))
+		var/mob/living/carbon/C = target
+		C.Knockdown(40)
+		C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
+				"<span class='userdanger'>\The [src] knocks you down!</span>")
+
+/mob/living/simple_animal/hostile/hs13mimic/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
+	trigger()
+	. = ..()
+
+/mob/living/simple_animal/hostile/hs13mimic/FindTarget()
+	. = ..()
+	if(.)
+		trigger()
+	else if(!target && unstealth)
+		trytftorandomobject()
+
+/mob/living/simple_animal/hostile/hs13mimic/death(gibbed)
+	restore()
+	. = ..()
+
+/mob/living/simple_animal/hostile/hs13mimic/med_hud_set_health()
+	if(!unstealth)
+		var/image/holder = hud_list[HEALTH_HUD]
+		holder.icon_state = null
+		return //we hide medical hud while morphed
+	..()
+
+/mob/living/simple_animal/hostile/hs13mimic/med_hud_set_status()
+	if(!unstealth)
+		var/image/holder = hud_list[STATUS_HUD]
+		holder.icon_state = null
+		return //we hide medical hud while morphed
+	..()
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/Mimictransform() //The list of default things to transform needs to be bigger, consider this in the future.
 	var/transformitem = rand(1,100)
@@ -114,43 +164,6 @@
 	else
 		restore()
 
-/mob/living/simple_animal/hostile/hs13mimic/AttackingTarget()
-	. = ..()
-	if(knockdown_people && . && prob(15) && iscarbon(target))
-		var/mob/living/carbon/C = target
-		C.Knockdown(40)
-		C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
-				"<span class='userdanger'>\The [src] knocks you down!</span>")
-
-/mob/living/simple_animal/hostile/hs13mimic/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
-	trigger()
-	. = ..()
-
-/mob/living/simple_animal/hostile/hs13mimic/FindTarget()
-	. = ..()
-	if(.)
-		trigger()
-	else if(!target && unstealth)
-		trytftorandomobject()
-
-/mob/living/simple_animal/hostile/hs13mimic/death(gibbed)
-	restore()
-	. = ..()
-
-/mob/living/simple_animal/hostile/hs13mimic/med_hud_set_health()
-	if(!unstealth)
-		var/image/holder = hud_list[HEALTH_HUD]
-		holder.icon_state = null
-		return //we hide medical hud while morphed
-	..()
-
-/mob/living/simple_animal/hostile/hs13mimic/med_hud_set_status()
-	if(!unstealth)
-		var/image/holder = hud_list[STATUS_HUD]
-		holder.icon_state = null
-		return //we hide medical hud while morphed
-	..()
-
 /mob/living/simple_animal/hostile/hs13mimic/proc/medhudupdate()
 	med_hud_set_health()
 	med_hud_set_status()
@@ -175,8 +188,8 @@
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/triggerOthers(passtarget) //
 	for(var/mob/living/simple_animal/hostile/hs13mimic/C in oview(5, src.loc))
-		if(passtarget && C.target == null)
-			C.target = passtarget
+		if(passtarget && C.target == null && !(isdead(target)))
+			C.target = target
 		C.trigger()
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/trytftorandomobject()
@@ -184,7 +197,8 @@
 	medhudupdate()
 	var/list/obj/item/listItems = list()
 	for(var/obj/item/I in oview(9,src.loc))
-		listItems += I
+		if(!(is_type_in_typecache(I, mimic_blacklisted_transform_items)))
+			listItems += I
 	if(LAZYLEN(listItems))
 		var/obj/item/changedReference = pick(listItems)
 		wander = FALSE
@@ -209,10 +223,15 @@
 
 /datum/round_event/mimic_infestation
 	announceWhen = 200
-	var/static/list/station_areas_blacklist = typecacheof(/area/space, 
+	var/static/list/mimic_station_areas_blacklist = typecacheof(/area/space, 
+	/area/shuttle,
 	/area/mine, 
+	/area/holodeck, 
 	/area/ruin, 
 	/area/hallway, 
+	/area/hallway/primary, 
+	/area/hallway/secondary, 
+	/area/hallway/secondary/entry,
 	/area/engine/supermatter, 
 	/area/engine/atmospherics_engine, 
 	/area/engine/engineering/reactor_core, 
@@ -244,7 +263,7 @@
 			continue
 		if(place.areasize < 16)
 			continue
-		if(is_type_in_typecache(place, station_areas_blacklist))
+		if(is_type_in_typecache(place, mimic_station_areas_blacklist))
 			continue
 		eligible_areas += place
 	for(var/area/place in eligible_areas) // now we check if there are people in that area
@@ -262,7 +281,12 @@
 		pickedArea = pick_n_take(eligible_areas)
 		var/list/turf/t = get_area_turfs(pickedArea, SSmapping.station_start)
 		for(var/turf/thisTurf in t) // now we check if it's a closed turf, cold turf or occupied turf and yeet it
-			if(isclosedturf(thisTurf) || thisTurf.temperature <= T0C)
+			if(isopenturf(thisTurf))
+				var/turf/open/tempGet = thisTurf
+				if(tempGet.air.temperature <= T0C)
+					t -= thisTurf
+					continue
+			if(isclosedturf(thisTurf))
 				t -= thisTurf
 			else
 				for(var/obj/O in thisTurf)

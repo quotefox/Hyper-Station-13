@@ -149,6 +149,25 @@
 
 //////////////////////////////////////////////
 //                                          //
+//                MIMICS                    //
+//                                          //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/event/mimics
+	name = "Mimic Infestation"
+	typepath = /datum/round_event/mimic_infestation
+	enemy_roles = list("AI","Security Officer","Head of Security","Captain")
+	required_enemies = list(3,2,2,2,2,1,1,1,0,0)
+	weight = 2
+	cost = 5
+	requirements = list(101,20,15,10,10,10,10,10,10,10)
+	high_population_requirement = 15
+	earliest_start = 30 MINUTES
+	occurances_max = 2
+	chaos_min = 1.5
+
+//////////////////////////////////////////////
+//                                          //
 //              CLOGGED VENTS               //
 //                                          //
 //////////////////////////////////////////////
