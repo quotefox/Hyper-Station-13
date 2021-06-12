@@ -268,8 +268,8 @@
 /obj/structure/spawner/crystalline/proc/delayedInitialize()
 	//Why is this needed? Simple, because apparently explosion is so slow that it triggers after the spawner spawns and kills it on the spot. This just makes it killable.
 	resistance_flags = FIRE_PROOF | LAVA_PROOF
-	max_integrity = 200
-	obj_integrity = 200
+	max_integrity = 225
+	obj_integrity = 225
 
 /obj/effect/light_emitter/crystalline
 	set_luminosity = 4
