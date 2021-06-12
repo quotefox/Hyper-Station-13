@@ -189,7 +189,7 @@
 /mob/living/simple_animal/hostile/hs13mimic/proc/triggerOthers(passtarget) //
 	for(var/mob/living/simple_animal/hostile/hs13mimic/C in oview(5, src.loc))
 		if(passtarget && C.target == null && !(isdead(target)))
-			C.target = target
+			C.target = passtarget
 		C.trigger()
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/trytftorandomobject()
