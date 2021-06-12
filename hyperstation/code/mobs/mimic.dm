@@ -157,3 +157,74 @@
 	else
 		unstealth = FALSE
 		Mimictransform()
+
+/datum/round_event_control/mimic_infestation
+	name = "Mimic Infestation"
+	typepath = /datum/round_event/mimic_infestation
+	weight = 5
+	max_occurrences = 1
+	min_players = 15
+
+/datum/round_event/mimic_infestation
+	announceWhen = 200
+	var/static/list/station_areas_blacklist = typecacheof(/area/space, 
+	/area/mine, 
+	/area/ruin, 
+	/area/engine/supermatter, 
+	/area/engine/atmospherics_engine, 
+	/area/engine/engineering/reactor_core, 
+	/area/engine/engineering/reactor_control, 
+	/area/ai_monitored/turret_protected/ai, 
+	/area/layenia/cloudlayer, 
+	/area/asteroid/nearstation,
+	/area/science/server,
+	/area/science/explab
+	/area/security/labor,
+	/area/security/processing)
+	var/spawncount = 1
+	fakeable = FALSE
+
+/datum/round_event/mimic_infestation/setup()
+	announceWhen = rand(announceWhen, announceWhen + 50)
+	spawncount = rand(5, 8)
+
+/datum/round_event/mimic_infestation/announce(fake)
+	priority_announce("Unidentified lifesigns detected aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", 'sound/ai/aliens.ogg')
+
+/datum/round_event/mimic_infestation/start()
+	var/list/area/stationAreas = list()
+	var/list/area/eligible_areas = list()
+	for(var/area/A in world) // Get the areas in the Z level
+		if(A.z == SSmapping.station_start)
+			stationAreas += A
+	for(var/area/place in stationAreas) // first we check if it's a valid area
+		if(place.outdoors)
+			continue
+		if(place.areasize < 16)
+			continue
+		if(is_type_in_typecache(place, station_areas_blacklist))
+			continue
+		eligible_areas += place
+	for(var/area/place in eligible_areas) // now we check if there are people in that area
+		var/numOfPeople
+		for(var/mob/living/carbon/H in place)
+			numOfPeople++
+			message_admins("Found [H] in [place]!")
+		if(numOfPeople > 0)
+			message_admins("Area [place] is ineligible as there are [numOfPeople] there.")
+			eligible_areas -= place
+
+	var/area/pickedArea = pick(eligible_areas)
+	message_admins("The area that has been picked is [pickedArea]")
+	var/list/turf/t = get_area_turfs(pickedArea, SSmapping.station_start)
+	for(var/turf/thisTurf in t) // now we check if it's a closed turf and yeet it from the list
+		if(isclosedturf(thisTurf))
+			t -= thisTurf
+	
+	while(spawncount >= 1 && t.len)
+		var/turf/pickedTurf = pick(t)
+		var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic
+		spawn_atom_to_turf(spawn_type, pickedTurf, 1, FALSE)
+		t -= pickedTurf //So we don't spawn them on top of eachother
+		spawncount--
+		notify_ghosts("A mimic has spawned in [pickedTurf]!", enter_link="<a href=?src=[REF(src)];orbit=1>(Click to orbit)</a>", source=pickedTurf, action=NOTIFY_ORBIT)
