@@ -164,7 +164,7 @@
 	high_population_requirement = 15
 	earliest_start = 30 MINUTES
 	occurances_max = 2
-	chaos_min = 1.5
+	chaos_min = 2
 
 //////////////////////////////////////////////
 //                                          //
