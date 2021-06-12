@@ -28,15 +28,15 @@
 			to_chat(target, "You feel as if you are being watched.")
 		return
 	draining = TRUE
-	essence_drained += rand(15, 20)
+	essence_drained += rand(30, 40)
 	to_chat(src, "<span class='revennotice'>You search for the soul of [target].</span>")
 	if(do_after(src, rand(10, 20), 0, target)) //did they get deleted in that second?
 		if(target.ckey)
 			to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] soul burns with intelligence.</span>")
-			essence_drained += rand(20, 30)
+			essence_drained += rand(40, 60)
 		if(target.stat != DEAD)
 			to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] soul blazes with life!</span>")
-			essence_drained += rand(40, 50)
+			essence_drained += rand(80, 100)
 		else
 			to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] soul is weak and faltering.</span>")
 		if(do_after(src, rand(15, 20), 0, target)) //did they get deleted NOW?
