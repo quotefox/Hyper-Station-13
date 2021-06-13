@@ -16,6 +16,7 @@
 	desc = "You just don't care as much as other people. That's nice to have in a place like this, I guess."
 	value = 1
 	category = CATEGORY_MOODS
+	mob_trait = TRAIT_APATHETIC
 	mood_quirk = TRUE
 	medical_record_text = "Patient was administered the Apathy Evaluation Scale but did not bother to complete it."
 
@@ -300,7 +301,7 @@
 
 /datum/quirk/draconicspeaker/remove()
 	var/mob/living/M = quirk_holder
-	M.remove_language(/datum/language/draconic)
+	M?.remove_language(/datum/language/draconic)
 
 /datum/quirk/slimespeaker
 	name = "Slime speaker"
@@ -316,7 +317,7 @@
 
 /datum/quirk/slimespeaker/remove()
 	var/mob/living/M = quirk_holder
-	M.remove_language(/datum/language/slime)
+	M?.remove_language(/datum/language/slime)
 
 /datum/quirk/tajaspeaker
 	name = "Siik-Tajr speaker"
@@ -332,7 +333,7 @@
 
 /datum/quirk/tajaspeaker/remove()
 	var/mob/living/M = quirk_holder
-	M.remove_language(/datum/language/tajara)
+	M?.remove_language(/datum/language/tajara)
 
 /datum/quirk/russianspeaker
 	name = "Neo-Russkiya speaker"
@@ -348,4 +349,4 @@
 
 /datum/quirk/russianspeaker/remove()
 	var/mob/living/M = quirk_holder
-	M.remove_language(/datum/language/spacerussian)
+	M?.remove_language(/datum/language/spacerussian)

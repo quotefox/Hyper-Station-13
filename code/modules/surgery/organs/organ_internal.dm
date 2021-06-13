@@ -25,6 +25,7 @@
 	var/now_fixed
 	var/high_threshold_cleared
 	var/low_threshold_cleared
+	rad_flags = RAD_NO_CONTAMINATE
 
 /obj/item/organ/proc/Insert(mob/living/carbon/M, special = 0, drop_if_replaced = TRUE)
 	if(!iscarbon(M) || owner == M)
@@ -134,7 +135,8 @@
 	///Damage decrements by a percent of its maxhealth
 	var/healing_amount = -(maxHealth * healing_factor)
 	///Damage decrements again by a percent of its maxhealth, up to a total of 4 extra times depending on the owner's health
-	healing_amount -= owner.satiety > 0 ? 4 * healing_factor * owner.satiety / MAX_SATIETY : 0
+	if(owner)
+		healing_amount -= owner.satiety > 0 ? 4 * healing_factor * owner.satiety / MAX_SATIETY : 0
 	applyOrganDamage(healing_amount) //to FERMI_TWEAK
 	//Make it so each threshold is stuck.
 

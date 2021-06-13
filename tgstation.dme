@@ -3100,6 +3100,7 @@
 #include "hyperstation\code\modules\clothing\suits\misc.dm"
 #include "hyperstation\code\modules\clothing\under\under.dm"
 #include "hyperstation\code\modules\economy\account.dm"
+#include "hyperstation\code\modules\events\crystalline_reentry.dm"
 #include "hyperstation\code\modules\integrated_electronics\input.dm"
 #include "hyperstation\code\modules\mining\shelters.dm"
 #include "hyperstation\code\modules\mining\equipment\survival_pod.dm"

@@ -210,6 +210,8 @@
 	restricted_roles = list("AI", "Cyborg", "Positronic Brain")
 	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
+	enemy_roles = list("Security Officer", "Detective", "Head of Security", "Captain")
+	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	weight = 4
 	cost = 10
 	requirements = list(101,101,30,25,20,20,15,15,15,10)
