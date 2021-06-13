@@ -12,7 +12,8 @@
 	turns_per_move = 5
 	move_to_delay = 1
 	speed = 0
-	see_in_dark = 6
+	see_in_dark = 8
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	pass_flags = PASSTABLE
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/xeno = 2)
 	response_help  = "prods"
@@ -35,10 +36,15 @@
 	pressure_resistance = 600
 	var/unstealth = FALSE
 	var/knockdown_people = 1
+	var/playerTransformCD = 50
+	var/playerTfTime
 	var/static/mimic_blacklisted_transform_items = typecacheof(list(
 	/obj/item/projectile,
 	/obj/item/radio/intercom))
-	var/turns_since_notarget
+	var/warned
+	var/playstyle_string = "<span class='big bold'>You are a mimic,</span></b> a tricky creature that can take the form of \
+							almost any items nearby by shift-clicking it. While morphed, you move slowly and do less damage. \
+							Finally, you can restore yourself to your original form while morphed by shift-clicking yourself.</b>"
 
 /mob/living/simple_animal/hostile/hs13mimic/Initialize()
 	. = ..()
@@ -52,16 +58,20 @@
 
 /mob/living/simple_animal/hostile/hs13mimic/Life()
 	. = ..()
-	turns_since_notarget++
-	if(turns_since_notarget >= 5)
-		turns_since_notarget = 0
-		if(unstealth && (!target || isdead(target)))
-			target = null
-			trytftorandomobject()
+	if(src.mind && !warned)
+		to_chat(src, src.playstyle_string)
+		warned = TRUE
 
 /mob/living/simple_animal/hostile/hs13mimic/AttackingTarget()
 	. = ..()
-	if(knockdown_people && . && prob(15) && iscarbon(target))
+	if(unstealth == FALSE && knockdown_people && . && iscarbon(target))//Guaranteed knockdown if we get the first hit while in stealth. Typically, only players can do this since NPC mimics transform first before attacking.
+		unstealth = TRUE
+		restore()
+		var/mob/living/carbon/C = target
+		C.Knockdown(40)
+		C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
+				"<span class='userdanger'>\The [src] knocks you down!</span>")
+	else if(knockdown_people && . && prob(15) && iscarbon(target))
 		var/mob/living/carbon/C = target
 		C.Knockdown(40)
 		C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
@@ -175,11 +185,12 @@
 	icon = 'hyperstation/icons/mobs/mimic.dmi'
 	icon_state = "mimic"
 	desc = initial(desc)
+	speed = initial(speed)
 	wander = TRUE
 	vision_range = 9
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/trigger()
-	if(unstealth == FALSE)
+	if(unstealth == FALSE && !stat)
 		unstealth = TRUE
 		visible_message("<span class='danger'>The [src] Reveals itself to be a Mimic!</span>")
 		Mimictransform()
@@ -197,7 +208,7 @@
 	medhudupdate()
 	var/list/obj/item/listItems = list()
 	for(var/obj/item/I in oview(9,src.loc))
-		if(!(is_type_in_typecache(I, mimic_blacklisted_transform_items)))
+		if(allowed(I))
 			listItems += I
 	if(LAZYLEN(listItems))
 		var/obj/item/changedReference = pick(listItems)
@@ -210,6 +221,26 @@
 	else
 		Mimictransform()
 
+/mob/living/simple_animal/hostile/hs13mimic/proc/allowed(atom/movable/A)
+	return !is_type_in_typecache(A, mimic_blacklisted_transform_items) && (isitem(A))
+
+/mob/living/simple_animal/hostile/hs13mimic/ShiftClickOn(atom/movable/A) //if by any chance a player takes control of them
+	if(playerTfTime <= world.time && !stat)
+		if(A == src)
+			restore()
+			playerTfTime = world.time + playerTransformCD
+			return
+		if(istype(A) && allowed(A))
+			unstealth = FALSE
+			name = A.name
+			icon = A.icon
+			icon_state = A.icon_state
+			desc = A.desc
+			speed = 5
+			playerTfTime = world.time + playerTransformCD
+	else
+		to_chat(src, "<span class='warning'>You need to wait a little longer before you can shift into something else!</span>")
+		..()
 
 //Event control
 
