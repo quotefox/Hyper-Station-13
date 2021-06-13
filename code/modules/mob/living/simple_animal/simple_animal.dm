@@ -369,7 +369,7 @@
 /mob/living/simple_animal/proc/make_babies() // <3 <3 <3
 	if(gender != FEMALE || stat || next_scan_time > world.time || !childtype || !animal_species || !SSticker.IsRoundInProgress())
 		return
-	next_scan_time = world.time + 2000 //Please stop making it so they multiply like rabbits
+	next_scan_time = world.time + 6000 //Please stop making it so they multiply like rabbits
 	var/alone = 1
 	var/mob/living/simple_animal/partner
 	var/children = 0
