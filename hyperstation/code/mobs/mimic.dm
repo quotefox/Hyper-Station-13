@@ -299,7 +299,7 @@
 
 	if(!eligible_areas.len)
 		message_admins("No eligible areas for spawning mimics.")
-		return FALSE
+		return WAITING_FOR_SOMETHING
 
 	notify_ghosts("A group of mimics has spawned in [pickedArea]!", source=pickedArea, action=NOTIFY_ATTACK, flashwindow = FALSE)
 	while(spawncount >= 1 && validTurfs.len)
@@ -307,3 +307,4 @@
 		var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic
 		spawn_atom_to_turf(spawn_type, pickedTurf, 1, FALSE)
 		spawncount--
+	return SUCCESSFUL_SPAWN
