@@ -42,9 +42,8 @@
 	var/static/mimic_blacklisted_transform_items = typecacheof(list(
 	/obj/item/projectile,
 	/obj/item/radio/intercom))
-	var/warned
-	var/playstyle_string = "<span class='boldannounce'>You are a mimic,</span></b> a tricky creature that can take the form of \
-							almost any items nearby by shift-clicking it. While morphed, you move slowly and do less damage. \
+	var/playstyle_string = "<span class='boldannounce'>You are a mimic</span></b>, a tricky creature that can take the form of \
+							almost any item nearby by shift-clicking it. While morphed, you move slowly and do less damage. \
 							Finally, you can restore yourself to your original form while morphed by shift-clicking yourself. \
 							Attacking carbon lifeforms will heal you at the cost of destructuring their DNA.</b>"
 
@@ -54,16 +53,14 @@
 	unstealth = FALSE
 	trytftorandomobject()
 
+/mob/living/simple_animal/hostile/hs13mimic/Login()
+	. = ..()
+	SEND_SOUND(src, sound('sound/ambience/antag/ling_aler.ogg'))
+	to_chat(src, src.playstyle_string)
+
 /mob/living/simple_animal/hostile/hs13mimic/attack_hand(mob/living/carbon/human/M)
 	. = ..()
 	trigger()
-
-/mob/living/simple_animal/hostile/hs13mimic/Life()
-	. = ..()
-	if(src.mind && !warned)
-		SEND_SOUND(src, sound('sound/ambience/antag/ling_aler.ogg'))
-		to_chat(src, src.playstyle_string)
-		warned = TRUE
 
 /mob/living/simple_animal/hostile/hs13mimic/AttackingTarget()
 	. = ..()
@@ -337,7 +334,7 @@
 
 	if(!eligible_areas.len)
 		message_admins("No eligible areas for spawning mimics.")
-		return FALSE
+		return WAITING_FOR_SOMETHING
 
 	notify_ghosts("A group of mimics has spawned in [pickedArea]!", source=pickedArea, action=NOTIFY_ATTACK, flashwindow = FALSE)
 	while(spawncount >= 1 && validTurfs.len)
@@ -345,3 +342,4 @@
 		var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic
 		spawn_atom_to_turf(spawn_type, pickedTurf, 1, FALSE)
 		spawncount--
+	return SUCCESSFUL_SPAWN
