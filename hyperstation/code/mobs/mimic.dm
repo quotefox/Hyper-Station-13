@@ -21,8 +21,8 @@
 	response_harm   = "smacks"
 	melee_damage_lower = 8
 	melee_damage_upper = 12
-	attacktext = "slams"
-	attack_sound = 'sound/weapons/punch1.ogg'
+	attacktext = "glomps"
+	attack_sound = 'sound/effects/blobattack.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	ventcrawler = VENTCRAWLER_ALWAYS
 	blood_volume = 0
@@ -34,6 +34,7 @@
 	minbodytemp = 250 //weak to cold
 	maxbodytemp = 1500
 	pressure_resistance = 600
+	sight = SEE_MOBS
 	var/unstealth = FALSE
 	var/knockdown_people = 1
 	var/playerTransformCD = 50
@@ -42,9 +43,10 @@
 	/obj/item/projectile,
 	/obj/item/radio/intercom))
 	var/warned
-	var/playstyle_string = "<span class='big bold'>You are a mimic,</span></b> a tricky creature that can take the form of \
+	var/playstyle_string = "<span class='boldannounce'>You are a mimic,</span></b> a tricky creature that can take the form of \
 							almost any items nearby by shift-clicking it. While morphed, you move slowly and do less damage. \
-							Finally, you can restore yourself to your original form while morphed by shift-clicking yourself.</b>"
+							Finally, you can restore yourself to your original form while morphed by shift-clicking yourself. \
+							Attacking carbon lifeforms will heal you at the cost of destructuring their DNA.</b>"
 
 /mob/living/simple_animal/hostile/hs13mimic/Initialize()
 	. = ..()
@@ -59,23 +61,28 @@
 /mob/living/simple_animal/hostile/hs13mimic/Life()
 	. = ..()
 	if(src.mind && !warned)
+		SEND_SOUND(src, sound('sound/ambience/antag/ling_aler.ogg'))
 		to_chat(src, src.playstyle_string)
 		warned = TRUE
 
 /mob/living/simple_animal/hostile/hs13mimic/AttackingTarget()
 	. = ..()
-	if(unstealth == FALSE && knockdown_people && . && iscarbon(target))//Guaranteed knockdown if we get the first hit while in stealth. Typically, only players can do this since NPC mimics transform first before attacking.
-		unstealth = TRUE
-		restore()
+	if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		C.Knockdown(40)
-		C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
+		if(unstealth == FALSE && knockdown_people && .) //Guaranteed knockdown if we get the first hit while disguised. Typically, only players can do this since NPC mimics transform first before attacking.
+			unstealth = TRUE
+			restore()
+			C.Knockdown(40)
+			C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
 				"<span class='userdanger'>\The [src] knocks you down!</span>")
-	else if(knockdown_people && . && prob(15) && iscarbon(target))
-		var/mob/living/carbon/C = target
-		C.Knockdown(40)
-		C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
-				"<span class='userdanger'>\The [src] knocks you down!</span>")
+		else if(knockdown_people && . && prob(15))
+			C.Knockdown(40)
+			C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
+					"<span class='userdanger'>\The [src] knocks you down!</span>")
+		if(C.nutrition >= 15)
+			C.nutrition -= (rand(7,15)) //They lose 7-15 nutrition
+			adjustBruteLoss(-3) //We heal 3 damage
+		C.adjustCloneLoss(rand(2,4)) //They also take a bit of cellular damage.
 
 /mob/living/simple_animal/hostile/hs13mimic/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	trigger()
