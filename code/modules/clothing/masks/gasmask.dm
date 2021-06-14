@@ -216,3 +216,14 @@
 			A.UpdateButtonIcon()
 		to_chat(M, "The Tiki Mask has now changed into the [choice] Mask!")
 		return 1
+
+//lewd(?) masks
+
+/obj/item/clothing/mask/gas/radmask
+	name = "radiation mask"
+	desc = "An mask that somewhat protects the user from ratiation. Not as effective like a radiation hood, but is better than nothing."
+	icon_state = "radmask"
+	item_state = "radmask"
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 30, "fire" = 10, "acid" = 10)
+
+

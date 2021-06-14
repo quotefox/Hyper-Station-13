@@ -195,6 +195,8 @@
 
 
 #define COMSIG_MICRO_PICKUP_FEET "micro_force_grabbed"			//From /datum/element/mob_holder/micro
+
+#define COMSIG_MOBSIZE_CHANGED "mobsize_changed"				//Adding this in so items and whatnot can check when someone changes size. -Cap'n
 // /area signals
 
 ///from base of area/Entered(): (atom/movable/M)
@@ -729,3 +731,11 @@
 //
 ///from datum/action/cyborg_small_sprite and sends when a cyborg changes modules
 #define COMSIG_CYBORG_MODULE_CHANGE "cyborg_module_change"
+
+
+/* Attack signals. They should share the returned flags, to standardize the attack chain. */
+/// tool_act -> pre_attack -> target.attackby (item.attack) -> afterattack
+	///Ends the attack chain. If sent early might cause posterior attacks not to happen.
+	#define COMPONENT_CANCEL_ATTACK_CHAIN (1<<0)
+	///Skips the specific attack step, continuing for the next one to happen.
+	#define COMPONENT_SKIP_ATTACK (1<<1)

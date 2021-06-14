@@ -28,3 +28,9 @@
 	icon_state = "cobraslim"
 	color_src = MATRIXED
 	icon = 'hyperstation/icons/mob/snek.dmi'
+
+/datum/sprite_accessory/frills/cobrahood_alt
+	name = "Cobra Hood - Alt"
+	icon_state = "cobrahood_alt"
+	color_src = MATRIXED
+	icon = 'hyperstation/icons/mob/snek.dmi'

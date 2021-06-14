@@ -210,9 +210,12 @@
 	restricted_roles = list("AI", "Cyborg", "Positronic Brain")
 	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
+	enemy_roles = list("Security Officer", "Detective", "Head of Security", "Captain")
+	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	weight = 4
 	cost = 10
 	requirements = list(101,101,30,25,20,20,15,15,15,10)
+	minimum_players = 15
 	repeatable = TRUE
 	high_population_requirement = 10
 	flags = TRAITOR_RULESET
@@ -229,6 +232,7 @@
 	weight = 4
 	cost = 5
 	requirements = list(101,30,25,20,15,10,10,5,5,5)
+	minimum_players = 10
 	repeatable = TRUE
 	high_population_requirement = 10
 	flags = TRAITOR_RULESET
@@ -247,7 +251,13 @@
 /datum/dynamic_ruleset/midround/autotraitor/trim_candidates()
 	..()
 	for(var/mob/living/player in living_players)
+		if(player.client == null) //Make sure the player has an attached client, otherwise, trim.
+			living_players -= player
+			continue
 		if(issilicon(player)) // Your assigned role doesn't change when you are turned into a silicon.
+			living_players -= player
+			continue
+		if(player.client.prefs.allow_midround_antag == 0) //Do they have midround traitor prefs enabled? If not, trim.
 			living_players -= player
 			continue
 		if(is_centcom_level(player.z))
@@ -255,6 +265,11 @@
 			continue
 		if(player.mind && (player.mind.special_role || player.mind.antag_datums?.len > 0))
 			living_players -= player // We don't autotator people with roles already
+			continue
+		if(ishuman(player))
+			var/mob/living/carbon/human/H = player
+			if(HAS_TRAIT(H,TRAIT_EXEMPT_HEALTH_EVENTS))
+				living_players -= player //We also don't fucking give ghost roles traitor. Yes I'm using the exempt health events trait given to ghost roles to do this, because piggyback ftw.
 
 /datum/dynamic_ruleset/midround/autotraitor/ready(forced = FALSE)
 	if (required_candidates > living_players.len)
@@ -269,6 +284,13 @@
 	M.mind.add_antag_datum(newTraitor)
 	return TRUE
 
+/datum/dynamic_ruleset/midround/autotraitor/thief/execute()
+    var/mob/M = pick(living_players)
+    assigned += M
+    living_players -= M
+    var/datum/antagonist/traitor/thief/newTraitor = new
+    M.mind.add_antag_datum(newTraitor)
+    return TRUE
 
 //////////////////////////////////////////
 //                                      //

@@ -117,7 +117,9 @@
 	else
 		option = "Fuck"
 
-	var/obj/item/organ/genital/vagina/V = portalunderwear.loc
+	var/obj/item/organ/genital/vagina/V
+	if(istype(portalunderwear.loc, /obj/item/organ/genital/vagina)) //Sanity check. Without this it will runtime.
+		V = portalunderwear.loc
 	if(!V)
 		return
 	var/mob/living/carbon/human/M = V.owner
@@ -164,7 +166,12 @@
 			M.do_jitter_animation() //make your partner shake too!
 			if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
 				var/mob/living/carbon/human/O = C
-				O.mob_climax_partner(P, M, FALSE, TRUE, FALSE, TRUE) //climax with their partner remotely, and impreg because people keep asking!
+
+				if( (P.condom == 1) || (P.sounding == 1))  //If coundomed and/or sounded, do not fire impreg chance
+					O.mob_climax_partner(P, M, FALSE, FALSE, FALSE, TRUE)
+				else                                       //Else, fire impreg chance
+					O.mob_climax_partner(P, M, FALSE, TRUE, FALSE, TRUE) //climax with their partner remotely, and impreg because people keep asking!
+
 		if(option == "Lick")
 			to_chat(M, "<span class='love'>You feel a tongue lick you through the portal against your vagina.</span>")
 			M.adjustArousalLoss(10)
@@ -179,7 +186,12 @@
 	//get their looks and vagina colour!
 	cut_overlays()//remove current overlays
 
-	var/obj/item/organ/genital/vagina/V = portalunderwear.loc
+	var/obj/item/organ/genital/vagina/V
+	if(istype(portalunderwear.loc, /obj/item/organ/genital/vagina)) //Sanity check. Without this it will runtime.
+		V = portalunderwear.loc
+	if(!V)
+		useable = FALSE
+		return
 	var/mob/living/carbon/human/H = V.owner
 
 	if(H) //if the portal panties are on someone.

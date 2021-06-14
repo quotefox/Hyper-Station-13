@@ -19,7 +19,7 @@
 	area_type = /area/layenia
 	target_trait = ZTRAIT_STATION
 
-	probability = 100
+	probability = 98
 
 	barometer_predictable = TRUE
 

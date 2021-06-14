@@ -35,7 +35,7 @@
 		return
 	inuse = TRUE
 	flick("posialertflash",src)
-	visible_message("There are positronic personalities available!", runechat_popup = TRUE)
+	visible_message("There are positronic personalities available!")
 	radio.talk_into(src, "There are positronic personalities available!", science_channel)
 	playsound(loc, 'sound/machines/ping.ogg', 50)
 	addtimer(CALLBACK(src, .proc/liftcooldown), 300)

@@ -894,7 +894,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/hoard/proc/set_target(obj/item/I)
 	if(I)
 		hoarded_item = I
-		explanation_text = "Keep [I] on your person at all times."
+		explanation_text = "Steal and keep [I] heirloom on your person at all times."
 		return hoarded_item
 	else
 		explanation_text = "Free objective"

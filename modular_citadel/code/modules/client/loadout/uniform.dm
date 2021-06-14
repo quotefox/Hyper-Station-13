@@ -198,6 +198,16 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/syndicate/cosmetic
 
+/datum/gear/cyberpunksleek
+	name = "modern sweater"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/cyberpunksleek
+
+/datum/gear/cyberpunksleek/long
+	name = "long modern sweater"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/costume/cyberpunksleek/long
+
 /datum/gear/creamsweater
 	name = "Cream Commando Sweater"
 	category = SLOT_W_UNIFORM

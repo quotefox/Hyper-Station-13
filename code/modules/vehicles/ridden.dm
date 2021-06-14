@@ -6,6 +6,9 @@
 	default_driver_move = FALSE
 	var/legs_required = 1
 	var/arms_required = 0	//why not?
+	var/max_size = 1.50
+	var/min_size = 0.75
+	var/size_sensitive = TRUE
 
 /obj/vehicle/ridden/Initialize()
 	. = ..()
@@ -34,6 +37,13 @@
 	if(M.get_num_legs() < legs_required)
 		to_chat(M, "<span class='warning'>You don't have enough legs to operate the pedals!</span>")
 		unbuckle_mob(M)
+	else if (size_sensitive)
+		if(M.size_multiplier < min_size)
+			to_chat(M, "<span class='warning'>You are too small to operate something like this!</span>")
+			unbuckle_mob(M)
+		else if(M.size_multiplier > max_size)
+			to_chat(M, "<span class='warning'>You are too big to operate something like this!</span>")
+			unbuckle_mob(M)
 	return ..()
 
 /obj/vehicle/ridden/attackby(obj/item/I, mob/user, params)

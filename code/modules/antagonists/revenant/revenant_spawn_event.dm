@@ -1,4 +1,4 @@
-#define REVENANT_SPAWN_THRESHOLD 15
+#define REVENANT_SPAWN_THRESHOLD 10
 
 /datum/round_event_control/revenant
 	name = "Spawn Revenant" // Did you mean 'griefghost'?
@@ -20,8 +20,10 @@
 	if(!ignore_mobcheck)
 		var/deadMobs = 0
 		for(var/mob/living/carbon/M in GLOB.dead_mob_list)
-			deadMobs++
+			if(is_station_level(M.z))
+				deadMobs++
 		if(deadMobs < REVENANT_SPAWN_THRESHOLD)
+			deadchat_broadcast("<span class='deadsay'>Event attempted to spawn a revenant, but there were not enough dead people.</span>") //So people stop assuming admins cancelled it
 			message_admins("Event attempted to spawn a revenant, but there were only [deadMobs]/[REVENANT_SPAWN_THRESHOLD] dead mobs.")
 			return WAITING_FOR_SOMETHING
 

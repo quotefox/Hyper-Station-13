@@ -392,14 +392,10 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 		spintime -= speed
 
 /mob/proc/update_pull_hud_icon()
-	if(hud_used)
-		if(hud_used.pull_icon)
-			hud_used.pull_icon.update_icon(src)
+	hud_used?.pull_icon?.update_icon()
 
 /mob/proc/update_rest_hud_icon()
-	if(hud_used)
-		if(hud_used.rest_icon)
-			hud_used.rest_icon.update_icon(src)
+	hud_used?.rest_icon?.update_icon()
 
 /mob/verb/mode()
 	set name = "Activate Held Object"
@@ -496,6 +492,7 @@ mob/visible_message(message, self_message, blind_message, vision_distance = DEFA
 		if (!(client.prefs.chat_toggles & CHAT_OOC) && isdead(new_mob))
 			client.prefs.chat_toggles ^= CHAT_OOC
 	new_mob.ckey = ckey
+	new_mob.client.init_verbs()
 	if(send_signal)
 		SEND_SIGNAL(src, COMSIG_MOB_KEY_CHANGE, new_mob, src)
 	return TRUE

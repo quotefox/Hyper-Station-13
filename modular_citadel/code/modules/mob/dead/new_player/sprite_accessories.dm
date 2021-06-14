@@ -2248,6 +2248,11 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Synthetic Lizard - Narrow Cobra Hood"
 	icon_state = "synth_cobraslim"
 
+/datum/sprite_accessory/antenna/synthliz/synthliz_cobrahood_alt
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Cobra Hood Inner"
+	icon_state = "synth_cobrahood_alt"
+
 // *** Snooooow flaaaaake ***
 
 /datum/sprite_accessory/horns/guilmon

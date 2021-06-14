@@ -46,6 +46,16 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+/datum/looping_sound/microwave_easteregg
+	start_sound = 'sound/machines/microwave/microwave-start.ogg'
+	start_length = 10
+	mid_sounds = list('sound/machines/microwave/microwave-eastereggmid1.ogg'=10, 'sound/machines/microwave/microwave-eastereggmid2.ogg'=1)
+	mid_length = 10
+	end_sound = 'sound/machines/microwave/microwave-eastereggend.ogg'
+	volume = 100
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 /datum/looping_sound/grill
 	mid_length = 2
 	mid_sounds = list('sound/machines/fryer/deep_fryer_1.ogg' = 1, 'sound/machines/fryer/deep_fryer_2.ogg' = 1)

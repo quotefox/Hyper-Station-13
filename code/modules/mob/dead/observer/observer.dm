@@ -56,7 +56,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 	var/deadchat_name
 	var/datum/spawners_menu/spawners_menu
 
-/mob/dead/observer/Initialize()
+/mob/dead/observer/Initialize(mapload, mob/body)
 	set_invisibility(GLOB.observer_default_invisibility)
 
 	add_verb(src, list(
@@ -77,11 +77,7 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 	updateallghostimages()
 
-	var/turf/T
-	var/mob/body = loc
-	if(ismob(body))
-		T = get_turf(body)				//Where is the body located?
-
+	if(body)
 		gender = body.gender
 		if(body.mind && body.mind.name)
 			name = body.mind.name
@@ -106,14 +102,15 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
 
 	update_icon()
 
-	if(!T)
+	if(!isturf(loc))
+		var/turf/T
 		var/list/turfs = get_area_turfs(/area/shuttle/arrival)
 		if(turfs.len)
 			T = pick(turfs)
 		else
 			T = SSmapping.get_station_center()
 
-	forceMove(T)
+		forceMove(T)
 
 	if(!name)							//To prevent nameless ghosts
 		name = random_unique_name(gender)
@@ -175,7 +172,8 @@ GLOBAL_VAR_INIT(observer_default_invisibility, INVISIBILITY_OBSERVER)
  * Hair will always update its dir, so if your sprite has no dirs the haircut will go all over the place.
  * |- Ricotez
  */
-/mob/dead/observer/proc/update_icon(new_form)
+/mob/dead/observer/update_icon(new_form)
+	. = ..()
 	if(client) //We update our preferences in case they changed right before update_icon was called.
 		ghost_accs = client.prefs.ghost_accs
 		ghost_others = client.prefs.ghost_others
@@ -267,7 +265,7 @@ Works together with spawning an observer, noted above.
 	if(!key || key[1] == "@" || (SEND_SIGNAL(src, COMSIG_MOB_GHOSTIZE, can_reenter_corpse, special, penalize) & COMPONENT_BLOCK_GHOSTING))
 		return //mob has no key, is an aghost or some component hijacked.
 	stop_sound_channel(CHANNEL_HEARTBEAT) //Stop heartbeat sounds because You Are A Ghost Now
-	var/mob/dead/observer/ghost = new(src)	// Transfer safety to observer spawning proc.
+	var/mob/dead/observer/ghost = new(get_turf(src), src)	// Transfer safety to observer spawning proc.
 	SStgui.on_transfer(src, ghost) // Transfer NanoUIs.
 	ghost.can_reenter_corpse = can_reenter_corpse
 	if (client && client.prefs && client.prefs.auto_ooc)
@@ -302,17 +300,15 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		succumb()
 	if(stat == DEAD)
 		ghostize(1)
-	else
-		//Low RP, removing.
-		/*
+	else if(!(ishuman(src)) && !(issilicon(src)))
 		var/response = alert(src, "Are you -sure- you want to ghost?\n(You are alive. If you ghost whilst still alive you won't be able to re-enter this round! You can't change your mind so choose wisely!!)","Are you sure you want to ghost?","Ghost","Stay in body")
 		if(response != "Ghost")
 			return	//didn't want to ghost after-all
 		ghostize(0)						//0 parameter is so we can never re-enter our body, "Charlie, you can never come baaaack~" :3
 		suicide_log(TRUE)
-		*/
+	else
 		to_chat(usr, "<span class='boldnotice'>You cannot ghost, if you wish to remove yourself from the round, please locate a cryogenic freezer.</span>")
-		message_admins("[usr] attempted to ghost.")
+		message_admins("[src] attempted to ghost.")
 
 /mob/camera/verb/ghost()
 	set category = "OOC"

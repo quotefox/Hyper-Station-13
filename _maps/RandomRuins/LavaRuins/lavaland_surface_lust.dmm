@@ -1,0 +1,748 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"b" = (
+/obj/structure/table/gmushroom/gmushroompoker{
+	desc = "You have a feeling this was used for more than dining.";
+	name = "dining table"
+	},
+/obj/item/trash/plate{
+	pixel_x = 10;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/food/snacks/grown/mushroom/plumphelmet{
+	pixel_x = 16;
+	pixel_y = 8
+	},
+/obj/structure/light_prism/spectral,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"c" = (
+/obj/structure/gmushroomdresser,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"d" = (
+/turf/closed/wall/mineral/gmushroom,
+/area/ruin/unpowered)
+"e" = (
+/obj/structure/lewdfountain/lust,
+/turf/open/floor/grass/fairy/red,
+/area/ruin/unpowered)
+"f" = (
+/obj/structure/chair/gmushroom{
+	dir = 8
+	},
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"g" = (
+/obj/effect/decal/cleanable/femcum,
+/obj/effect/decal/cleanable/milk,
+/obj/structure/chair/gmushroom{
+	dir = 8
+	},
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"h" = (
+/obj/effect/decal/cleanable/semen,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"i" = (
+/turf/closed/mineral/volcanic/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"j" = (
+/obj/effect/decal/cleanable/semen,
+/obj/item/dildo/custom,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"k" = (
+/obj/item/grown/log/gmushroom,
+/turf/open/floor/grass/fairy/purple{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300";
+	planetary_atmos = 1
+	},
+/area/lavaland/surface/outdoors)
+"l" = (
+/obj/machinery/door/airlock/cult/friendly,
+/obj/structure/fans/tiny/invisible,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"m" = (
+/obj/structure/chair/gmushroom{
+	dir = 4
+	},
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"o" = (
+/turf/open/floor/grass/fairy/green{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300";
+	planetary_atmos = 1
+	},
+/area/lavaland/surface/outdoors)
+"p" = (
+/obj/effect/decal/cleanable/femcum,
+/obj/structure/chair/gmushroom{
+	dir = 4
+	},
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"q" = (
+/obj/effect/decal/cleanable/femcum,
+/obj/structure/bed/gmushroomdogbed,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"s" = (
+/obj/structure/light_prism/spectral,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"t" = (
+/obj/effect/decal/cleanable/semen,
+/obj/item/fleshlight,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"u" = (
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"v" = (
+/obj/structure/flora/redgrass/redg,
+/turf/open/floor/grass/fairy/purple{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300";
+	planetary_atmos = 1
+	},
+/area/lavaland/surface/outdoors)
+"w" = (
+/obj/effect/decal/cleanable/semen,
+/obj/structure/table/gmushroom/gmushroompoker{
+	desc = "You have a feeling this was used for more than dining.";
+	name = "dining table"
+	},
+/obj/item/trash/plate{
+	pixel_x = 10;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/food/snacks/pizzaslice/mushroom{
+	pixel_x = 9;
+	pixel_y = 4
+	},
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"x" = (
+/obj/effect/decal/cleanable/femcum,
+/obj/structure/table/gmushroom/gmushroompoker{
+	desc = "You have a feeling this was used for more than dining.";
+	name = "dining table"
+	},
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"y" = (
+/obj/structure/flora/gmushroom/gggmushroom{
+	desc = "Mushroom! We're rich!"
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/floor/plating/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"z" = (
+/obj/effect/decal/cleanable/femcum,
+/obj/structure/chair/gmushroom{
+	dir = 8
+	},
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"A" = (
+/obj/effect/decal/cleanable/femcum,
+/obj/item/portallight,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"B" = (
+/obj/structure/gmushroom/gmushroomstump,
+/turf/open/floor/grass/fairy/green{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300";
+	planetary_atmos = 1
+	},
+/area/lavaland/surface/outdoors)
+"C" = (
+/obj/structure/reagent_dispensers/keg/aphro,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"D" = (
+/obj/structure/bonfire/prelit,
+/turf/open/floor/grass/fairy/purple{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300";
+	planetary_atmos = 1
+	},
+/area/lavaland/surface/outdoors)
+"E" = (
+/obj/structure/table/gmushroom/gmushroompoker{
+	desc = "You have a feeling this was used for more than dining.";
+	name = "dining table"
+	},
+/obj/item/trash/plate{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"F" = (
+/obj/structure/reagent_dispensers/keg/aphro/strong,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"G" = (
+/obj/structure/table/gmushroom/gmushroompoker{
+	desc = "You have a feeling this was used for more than dining.";
+	name = "dining table"
+	},
+/obj/item/trash/plate{
+	pixel_x = -10;
+	pixel_y = 2
+	},
+/obj/item/reagent_containers/food/snacks/grown/mushroom/amanita{
+	pixel_x = -10;
+	pixel_y = 7
+	},
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"I" = (
+/obj/item/reagent_containers/food/snacks/grown/mushroom/jupitercup,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"J" = (
+/obj/structure/flora/gmushroom/gggmushroom{
+	desc = "Mushroom! We're rich!"
+	},
+/obj/effect/decal/remains/human{
+	desc = "He ate the popeyes biscuit with no drink...";
+	name = "Dusty Remains"
+	},
+/turf/open/floor/grass/fairy/blue{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300";
+	planetary_atmos = 1
+	},
+/area/lavaland/surface/outdoors)
+"K" = (
+/obj/item/dildo/custom,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"L" = (
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"M" = (
+/obj/effect/decal/cleanable/femcum,
+/obj/item/portalpanties,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"N" = (
+/obj/effect/decal/cleanable/milk,
+/obj/structure/light_prism/spectral,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"O" = (
+/obj/effect/decal/cleanable/femcum,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"P" = (
+/obj/structure/flora/gmushroom/gggmushroom{
+	desc = "Mushroom! We're rich!"
+	},
+/turf/open/floor/grass/fairy/purple{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300";
+	planetary_atmos = 1
+	},
+/area/lavaland/surface/outdoors)
+"Q" = (
+/obj/structure/flora/redgrass/redg,
+/turf/open/floor/grass/fairy/green{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300";
+	planetary_atmos = 1
+	},
+/area/lavaland/surface/outdoors)
+"S" = (
+/obj/structure/flora/gmushroom/gggmushroom{
+	desc = "Mushroom! We're rich!"
+	},
+/turf/open/floor/grass/fairy/blue{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300";
+	planetary_atmos = 1
+	},
+/area/lavaland/surface/outdoors)
+"T" = (
+/turf/open/floor/grass/fairy/blue{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300";
+	planetary_atmos = 1
+	},
+/area/lavaland/surface/outdoors)
+"U" = (
+/obj/item/fleshlight,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"V" = (
+/turf/open/floor/grass/fairy/purple{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300";
+	planetary_atmos = 1
+	},
+/area/lavaland/surface/outdoors)
+"W" = (
+/obj/item/grown/log/gmushroom,
+/turf/open/floor/grass/fairy/green{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300";
+	planetary_atmos = 1
+	},
+/area/lavaland/surface/outdoors)
+"X" = (
+/obj/effect/decal/cleanable/semen,
+/obj/structure/chair/gmushroom{
+	dir = 4
+	},
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+"Y" = (
+/obj/structure/flora/gmushroom/gggmushroom{
+	desc = "Mushroom! We're rich!"
+	},
+/turf/open/floor/grass/fairy/green{
+	initial_gas_mix = "o2=14;n2=23;TEMP=300";
+	planetary_atmos = 1
+	},
+/area/lavaland/surface/outdoors)
+"Z" = (
+/obj/item/dildo/flared/gigantic,
+/turf/open/floor/gmushroom,
+/area/ruin/unpowered)
+
+(1,1,1) = {"
+i
+i
+i
+i
+u
+u
+T
+i
+i
+i
+u
+u
+u
+i
+i
+i
+u
+i
+i
+i
+"}
+(2,1,1) = {"
+i
+i
+i
+u
+S
+T
+V
+P
+V
+T
+P
+V
+u
+V
+i
+o
+Q
+u
+i
+i
+"}
+(3,1,1) = {"
+i
+S
+i
+V
+V
+o
+v
+T
+T
+V
+V
+T
+V
+V
+T
+Y
+o
+o
+S
+u
+"}
+(4,1,1) = {"
+i
+V
+T
+V
+V
+o
+o
+o
+T
+P
+V
+V
+V
+P
+V
+V
+o
+o
+V
+u
+"}
+(5,1,1) = {"
+u
+V
+T
+P
+V
+o
+P
+V
+V
+V
+V
+Q
+o
+o
+V
+o
+o
+Y
+V
+V
+"}
+(6,1,1) = {"
+V
+v
+T
+V
+o
+V
+V
+V
+Q
+o
+V
+Y
+o
+o
+P
+Q
+o
+T
+T
+v
+"}
+(7,1,1) = {"
+V
+S
+T
+o
+o
+Q
+o
+o
+V
+V
+o
+o
+o
+o
+V
+o
+o
+o
+V
+V
+"}
+(8,1,1) = {"
+i
+i
+i
+d
+d
+d
+d
+d
+d
+d
+d
+d
+d
+d
+d
+d
+d
+d
+V
+S
+"}
+(9,1,1) = {"
+i
+i
+d
+d
+d
+C
+N
+L
+L
+j
+L
+U
+L
+L
+N
+L
+q
+d
+V
+V
+"}
+(10,1,1) = {"
+i
+d
+d
+d
+F
+L
+K
+A
+m
+m
+X
+m
+p
+m
+L
+U
+Z
+d
+u
+V
+"}
+(11,1,1) = {"
+i
+d
+d
+e
+L
+h
+I
+K
+G
+x
+b
+E
+G
+w
+O
+L
+h
+l
+o
+u
+"}
+(12,1,1) = {"
+i
+d
+d
+d
+F
+L
+K
+M
+f
+f
+g
+f
+f
+z
+h
+U
+Z
+d
+o
+u
+"}
+(13,1,1) = {"
+i
+i
+d
+d
+d
+C
+s
+h
+L
+L
+t
+L
+j
+L
+s
+L
+c
+d
+o
+V
+"}
+(14,1,1) = {"
+i
+T
+o
+d
+d
+d
+d
+d
+d
+d
+d
+d
+d
+d
+d
+d
+d
+d
+Y
+v
+"}
+(15,1,1) = {"
+T
+J
+T
+Q
+o
+o
+o
+o
+Y
+o
+o
+o
+o
+W
+o
+o
+o
+Q
+V
+V
+"}
+(16,1,1) = {"
+i
+V
+T
+T
+T
+o
+S
+V
+V
+V
+V
+B
+V
+D
+V
+V
+o
+o
+o
+u
+"}
+(17,1,1) = {"
+i
+o
+o
+P
+o
+T
+T
+v
+V
+T
+v
+T
+o
+k
+V
+V
+o
+P
+V
+u
+"}
+(18,1,1) = {"
+i
+V
+V
+u
+T
+V
+u
+V
+T
+T
+S
+V
+v
+V
+V
+u
+V
+V
+i
+S
+"}
+(19,1,1) = {"
+V
+P
+T
+T
+u
+S
+V
+u
+i
+T
+u
+i
+i
+u
+u
+u
+u
+i
+i
+i
+"}
+(20,1,1) = {"
+V
+u
+T
+u
+u
+T
+T
+u
+i
+i
+i
+i
+i
+i
+y
+i
+u
+i
+i
+i
+"}

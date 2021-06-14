@@ -123,6 +123,8 @@
 	signal_enabled = TRUE
 
 /datum/proc/UnregisterSignal(datum/target, sig_type_or_types)
+	if(!target)
+		CRASH("[src] tried to unregister a signal without having a target.")
 	var/list/lookup = target.comp_lookup
 	if(!signal_procs || !signal_procs[target] || !lookup)
 		return

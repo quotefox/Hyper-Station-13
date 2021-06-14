@@ -149,6 +149,25 @@
 
 //////////////////////////////////////////////
 //                                          //
+//                MIMICS                    //
+//                                          //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/event/mimics
+	name = "Mimic Infestation"
+	typepath = /datum/round_event/mimic_infestation
+	enemy_roles = list("AI","Security Officer","Head of Security","Captain")
+	required_enemies = list(3,2,2,2,2,1,1,1,0,0)
+	weight = 2
+	cost = 5
+	requirements = list(101,20,15,10,10,10,10,10,10,10)
+	high_population_requirement = 15
+	earliest_start = 30 MINUTES
+	occurances_max = 2
+	chaos_min = 2
+
+//////////////////////////////////////////////
+//                                          //
 //              CLOGGED VENTS               //
 //                                          //
 //////////////////////////////////////////////
@@ -459,6 +478,7 @@
 	//property_weights = list("extended" = 1)
 	//always_max_weight = TRUE
 	occurances_max = 0
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/dynamic_ruleset/event/major_dust
 	name = "Major Space Dust"
@@ -474,6 +494,7 @@
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
 	occurances_max = 3
+	map_blacklist = list("LayeniaStation.dmm")
 	
 
 /datum/dynamic_ruleset/event/electrical_storm
@@ -611,6 +632,22 @@
 	chaos_min = 1.5
 	var/atom/special_target
 	map_blacklist = list("LayeniaStation.dmm")
+
+/datum/dynamic_ruleset/event/crystalline_reentry
+	name = "Crystalline Asteroid"
+	controller = /datum/round_event_control/crystalline_reentry
+	typepath = /datum/round_event/crystalline_reentry
+	enemy_roles = list("Research Director","Chief Engineer","Station Engineer","Captain","Chaplain","AI")
+	required_enemies = list(2,2,2,2,2,2,1,1,1,0)
+	requirements = list(101,101,20,18,16,14,12,10,8,6)
+	high_population_requirement = 15
+	cost = 0
+	occurances_max = 2
+	weight = 3
+	repeatable_weight_decrease = 2
+	chaos_min = 1.5
+	var/atom/special_target
+	map_whitelist = list("LayeniaStation.dmm")
 
 /*
 /datum/dynamic_ruleset/event/immovable_rod/execute()  //I do not know why this is necessary

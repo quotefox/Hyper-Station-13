@@ -85,7 +85,7 @@
 /obj/item/card/emag/bluespace
 	name = "bluespace cryptographic sequencer"
 	desc = "It's a blue card with a magnetic strip attached to some circuitry. It appears to have some sort of transmitter attached to it."
-	color = rgb(40, 130, 255)
+	icon_state = "emag_bs"
 	prox_check = FALSE
 
 /obj/item/card/emag/attack()
@@ -165,13 +165,16 @@
 	slot_flags = ITEM_SLOT_ID
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
+	var/id_type_name = "identification card"
 	var/mining_points = 0 //For redeeming at mining equipment vendors
 	var/list/access = list()
 	var/registered_name = null // The name registered_name on the card
 	var/assignment = null
 	var/access_txt // mapping aid
 	var/datum/bank_account/registered_account
-
+	var/uses_overlays = TRUE
+	var/uses_assignment = TRUE
+	var/icon/cached_flat_icon
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
@@ -206,14 +209,29 @@
 /obj/item/card/id/RemoveID()
 	return src
 
-/*
-Usage:
-update_label()
-	Sets the id name to whatever registered_name and assignment is
+/obj/item/card/id/update_icon()
+	. = ..()
+	if(!uses_overlays)
+		return
+	cached_flat_icon = null
+	var/job = assignment ? ckey(GetJobName()) : null
+	if(registered_name == "Captain")
+		job = "captain"
+	if(registered_name && registered_name != "Captain" && uses_assignment == TRUE)
+		overlays += mutable_appearance(icon, "assigned")
+	if(job)
+		overlays += mutable_appearance(icon, "id[job]")
 
-update_label("John Doe", "Clowny")
-	Properly formats the name and occupation and sets the id name to the arguments
-*/
+/obj/item/card/id/proc/get_cached_flat_icon()
+	if(!cached_flat_icon)
+		cached_flat_icon = getFlatIcon(src)
+	return cached_flat_icon
+
+/obj/item/card/id/get_examine_string(mob/user, thats = FALSE)
+	if(uses_overlays)
+		return "[icon2html(get_cached_flat_icon(), user)] [thats? "That's ":""][get_examine_name(user)]" //displays all overlays in chat
+	return ..()
+
 /obj/item/card/id/proc/update_label(newname, newjob)
 	if(newname || newjob)
 		name = "[(!newname)	? "identification card"	: "[newname]'s ID Card"][(!newjob) ? "" : " ([newjob])"]"
@@ -231,12 +249,6 @@ update_label("John Doe", "Clowny")
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 
-/obj/item/card/id/silver/reaper
-	name = "Thirteen's ID Card (Reaper)"
-	access = list(ACCESS_MAINT_TUNNELS)
-	assignment = "Reaper"
-	registered_name = "Thirteen"
-
 /obj/item/card/id/gold
 	name = "gold identification card"
 	desc = "A golden card which shows power and might."
@@ -249,6 +261,7 @@ update_label("John Doe", "Clowny")
 	name = "agent card"
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_SYNDICATE)
 	var/anyone = FALSE //Can anyone forge the ID or just syndicate?
+	var/forged = FALSE //have we set a custom name and job assignment, or will we use what we're given when we chameleon change?
 
 /obj/item/card/id/syndicate/Initialize()
 	. = ..()
@@ -264,45 +277,52 @@ update_label("John Doe", "Clowny")
 		var/obj/item/card/id/I = O
 		src.access |= I.access
 		if(isliving(user) && user.mind)
-			if(user.mind.special_role)
+			if(user.mind.special_role || anyone)
 				to_chat(usr, "<span class='notice'>The card's microscanners activate as you pass it over the ID, copying its access.</span>")
 
 /obj/item/card/id/syndicate/attack_self(mob/user)
 	if(isliving(user) && user.mind)
-		if(user.mind.special_role || anyone)
-			if(alert(user, "Action", "Agent ID", "Show", "Forge") == "Forge")
-				var/input_name = stripped_input(user, "What name would you like to put on this card? Leave blank to randomise.", "Agent card name", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name), MAX_NAME_LEN)
-				input_name = reject_bad_name(input_name, TRUE)
-				if(!input_name)
-				// Invalid/blank names give a randomly generated one.
-					if(user.gender == MALE)
-						input_name = "[pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
-					else if(user.gender == FEMALE)
-						input_name = "[pick(GLOB.first_names_female)] [pick(GLOB.last_names)]"
-					else
-						input_name = "[pick(GLOB.first_names_male)] [pick(GLOB.last_names)]"
-				var/target_occupation = stripped_input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", assignment ? assignment : "Assistant", MAX_MESSAGE_LEN)
-				if(!target_occupation)
-					return
-				registered_name = input_name
-				assignment = target_occupation
-				update_label()
-				to_chat(user, "<span class='notice'>You successfully forge the ID card.</span>")
-				return
-	..()
+		var/first_use = registered_name ? FALSE : TRUE
+		if(!(user.mind.special_role || anyone)) //Unless anyone is allowed, only syndies can use the card, to stop metagaming.
+			if(first_use) //If a non-syndie is the first to forge an unassigned agent ID, then anyone can forge it.
+				anyone = TRUE
+			else
+				return ..()
+
+	var/popup_input
+	popup_input = alert(user, "Choose Action", "Agent ID", "Show", "Forge")
+	if(!user.canUseTopic(src, BE_CLOSE, FALSE))
+		return
+	if(popup_input == "Forge")
+		var/input_name = stripped_input(user, "What name would you like to put on this card?", "Agent card name", registered_name ? registered_name : (ishuman(user) ? user.real_name : user.name), MAX_NAME_LEN)
+		input_name = reject_bad_name(input_name)
+		var/target_occupation = stripped_input(user, "What occupation would you like to put on this card?\nNote: This will not grant any access levels other than Maintenance.", "Agent card job assignment", assignment ? assignment : "Assistant", MAX_MESSAGE_LEN)
+		if(!target_occupation)
+			return
+		registered_name = input_name
+		assignment = target_occupation
+		update_label()
+		to_chat(user, "<span class='notice'>You successfully forge the ID card.</span>")
+		log_game("[key_name(user)] has forged \the [initial(name)] with name \"[registered_name]\" and occupation \"[assignment]\".")
+	return ..()
 
 /obj/item/card/id/syndicate/anyone
 	anyone = TRUE
 
 /obj/item/card/id/syndicate/nuke_leader
 	name = "lead agent card"
+	icon_state = "syndie"
+	assignment = "Nuclear Operative"
+	uses_assignment = FALSE
 	access = list(ACCESS_MAINT_TUNNELS, ACCESS_SYNDICATE, ACCESS_SYNDICATE_LEADER)
 
 /obj/item/card/id/syndicate_command
 	name = "syndicate ID card"
 	desc = "An ID straight from the Syndicate."
+	icon_state = "syndie"
 	registered_name = "Syndicate"
 	assignment = "Syndicate Overlord"
+	uses_assignment = FALSE
 	access = list(ACCESS_SYNDICATE)
 
 /obj/item/card/id/captains_spare
@@ -326,49 +346,65 @@ update_label("John Doe", "Clowny")
 	icon_state = "centcom"
 	registered_name = "Central Command"
 	assignment = "General"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/centcom/Initialize()
-	access = get_all_centcom_access()
+	access = get_all_accesses()+get_all_centcom_access()
 	. = ..()
 
 /obj/item/card/id/ert
 	name = "\improper CentCom ID"
 	desc = "An ERT ID card."
-	icon_state = "centcom"
+	icon_state = "ert_commander"
 	registered_name = "Emergency Response Team Commander"
 	assignment = "Emergency Response Team Commander"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/ert/Initialize()
 	access = get_all_accesses()+get_ert_access("commander")-ACCESS_CHANGE_IDS
 	. = ..()
 
 /obj/item/card/id/ert/Security
+	icon_state = "ert_security"
 	registered_name = "Security Response Officer"
 	assignment = "Security Response Officer"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/ert/Security/Initialize()
 	access = get_all_accesses()+get_ert_access("sec")-ACCESS_CHANGE_IDS
 	. = ..()
 
 /obj/item/card/id/ert/Engineer
+	icon_state = "ert_engineer"
 	registered_name = "Engineer Response Officer"
 	assignment = "Engineer Response Officer"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/ert/Engineer/Initialize()
 	access = get_all_accesses()+get_ert_access("eng")-ACCESS_CHANGE_IDS
 	. = ..()
 
 /obj/item/card/id/ert/Medical
+	icon_state = "ert_medical"
 	registered_name = "Medical Response Officer"
 	assignment = "Medical Response Officer"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/ert/Medical/Initialize()
 	access = get_all_accesses()+get_ert_access("med")-ACCESS_CHANGE_IDS
 	. = ..()
 
 /obj/item/card/id/ert/chaplain
+	icon_state = "ert_chaplain"
 	registered_name = "Religious Response Officer"
 	assignment = "Religious Response Officer"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/ert/chaplain/Initialize()
 	access = get_all_accesses()+get_ert_access("sec")-ACCESS_CHANGE_IDS
@@ -383,6 +419,8 @@ update_label("John Doe", "Clowny")
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
 	assignment = "Prisoner"
 	access = list(ACCESS_ENTER_GENPOP)
+	uses_assignment = FALSE
+	uses_overlays = FALSE
 
 	//Lavaland labor camp
 	var/goal = 0 //How far from freedom?
@@ -419,78 +457,116 @@ update_label("John Doe", "Clowny")
 		. += "<span class='notice'>Your sentence is up! You're free!</span>"
 
 /obj/item/card/id/prisoner/one
+	icon_state = "prisoner_001"
 	name = "Prisoner #13-001"
 	registered_name = "Prisoner #13-001"
+	uses_overlays = FALSE
 
 /obj/item/card/id/prisoner/two
+	icon_state = "prisoner_002"
 	name = "Prisoner #13-002"
 	registered_name = "Prisoner #13-002"
+	uses_overlays = FALSE
 
 /obj/item/card/id/prisoner/three
+	icon_state = "prisoner_003"
 	name = "Prisoner #13-003"
 	registered_name = "Prisoner #13-003"
+	uses_overlays = FALSE
 
 /obj/item/card/id/prisoner/four
+	icon_state = "prisoner_004"
 	name = "Prisoner #13-004"
 	registered_name = "Prisoner #13-004"
+	uses_overlays = FALSE
 
 /obj/item/card/id/prisoner/five
+	icon_state = "prisoner_005"
 	name = "Prisoner #13-005"
 	registered_name = "Prisoner #13-005"
+	uses_overlays = FALSE
 
 /obj/item/card/id/prisoner/six
+	icon_state = "prisoner_006"
 	name = "Prisoner #13-006"
 	registered_name = "Prisoner #13-006"
+	uses_overlays = FALSE
 
 /obj/item/card/id/prisoner/seven
+	icon_state = "prisoner_007"
 	name = "Prisoner #13-007"
 	registered_name = "Prisoner #13-007"
+	uses_overlays = FALSE
 
 /obj/item/card/id/mining
 	name = "mining ID"
+	icon_state = "retro"
 	access = list(ACCESS_MINING, ACCESS_MINING_STATION, ACCESS_MAILSORTING, ACCESS_MINERAL_STOREROOM)
+	uses_overlays = FALSE
 
 /obj/item/card/id/away
 	name = "a perfectly generic identification card"
 	desc = "A perfectly generic identification card. Looks like it could use some flavor."
+	icon_state = "retro"
 	access = list(ACCESS_AWAY_GENERAL)
+	uses_overlays = FALSE
 
 /obj/item/card/id/away/hotel
 	name = "Staff ID"
 	desc = "A staff ID used to access the hotel's doors."
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINT)
+	icon_state = "retrosrv"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/away/hotel/securty
 	name = "Officer ID"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINT, ACCESS_AWAY_SEC)
+	icon_state = "retrosec"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/away/old
 	name = "a perfectly generic identification card"
 	desc = "A perfectly generic identification card. Looks like it could use some flavor."
 	icon_state = "centcom"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/away/old/sec
 	name = "Charlie Station Security Officer's ID card"
 	desc = "A faded Charlie Station ID card. You can make out the rank \"Security Officer\"."
 	assignment = "Charlie Station Security Officer"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_SEC)
+	icon_state = "retrosec"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/away/old/sci
 	name = "Charlie Station Scientist's ID card"
 	desc = "A faded Charlie Station ID card. You can make out the rank \"Scientist\"."
 	assignment = "Charlie Station Scientist"
 	access = list(ACCESS_AWAY_GENERAL)
+	icon_state = "retrosci"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/away/old/eng
 	name = "Charlie Station Engineer's ID card"
 	desc = "A faded Charlie Station ID card. You can make out the rank \"Station Engineer\"."
 	assignment = "Charlie Station Engineer"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_ENGINE)
+	icon_state = "retroeng"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/away/old/apc
 	name = "APC Access ID"
 	desc = "A special ID card that allows access to APC terminals."
 	access = list(ACCESS_ENGINE_EQUIP)
+	icon_state = "retrosup"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 //Polychromatic Knight Badge
 
@@ -499,6 +575,8 @@ update_label("John Doe", "Clowny")
 	name = "knight badge"
 	icon_state = "knight"
 	desc = "A badge denoting the owner as a knight! It has a strip for swiping like an ID"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/knight/update_label(newname, newjob)
 	if(newname || newjob)
@@ -553,15 +631,35 @@ update_label("John Doe", "Clowny")
 	desc = "A faded Arctic Station ID card. You can make out the rank \"Station Engineer\"."
 	assignment = "Arctic Station Engineer"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_ENGINE, ACCESS_AWAY_MAINT)
+	icon_state = "retroeng"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
 
 /obj/item/card/id/away/snowdin/sci
 	name = "Arctic Station Scientist's ID card"
 	desc = "A faded Arctic Station ID card. You can make out the rank \"Scientist\"."
 	assignment = "Arctic Station Scientist"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MAINT)
-
+	icon_state = "retrosci"
+	uses_overlays = FALSE
+	uses_assignment = FALSE
+	
 /obj/item/card/id/away/snowdin/med
 	name = "Arctic Station Doctor's ID card"
 	desc = "A faded Arctic Station ID card. You can make out the rank \"Doctor\"."
 	assignment = "Arctic Station Doctor"
 	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MED, ACCESS_AWAY_MAINT)
+	icon_state = "retromed"
+	uses_overlays = FALSE
+
+/obj/item/card/id/debug
+	name = "\improper Debug ID"
+	desc = "A debug ID card. Has ALL the all access, you really shouldn't have this."
+	icon_state = "ert_janitor"
+	assignment = "Jannie"
+	uses_assignment = FALSE
+	uses_overlays = FALSE
+
+/obj/item/card/id/debug/Initialize()
+	access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
+	. = ..()
