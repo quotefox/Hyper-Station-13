@@ -43,9 +43,10 @@
 	/obj/item/projectile,
 	/obj/item/radio/intercom))
 	var/warned
-	var/playstyle_string = "<span class='big bold'>You are a mimic,</span></b> a tricky creature that can take the form of \
+	var/playstyle_string = "<span class='boldannounce'>You are a mimic,</span></b> a tricky creature that can take the form of \
 							almost any items nearby by shift-clicking it. While morphed, you move slowly and do less damage. \
-							Finally, you can restore yourself to your original form while morphed by shift-clicking yourself.</b>"
+							Finally, you can restore yourself to your original form while morphed by shift-clicking yourself. \
+							Attacking carbon lifeforms will heal you at the cost of destructuring their DNA.</b>"
 
 /mob/living/simple_animal/hostile/hs13mimic/Initialize()
 	. = ..()
@@ -60,7 +61,7 @@
 /mob/living/simple_animal/hostile/hs13mimic/Life()
 	. = ..()
 	if(src.mind && !warned)
-		SEND_SOUND(src, sound('sound/magic/mutate.ogg'))
+		SEND_SOUND(src, sound('sound/ambience/antag/ling_aler.ogg'))
 		to_chat(src, src.playstyle_string)
 		warned = TRUE
 
