@@ -23,7 +23,7 @@
 			if(is_station_level(M.z))
 				deadMobs++
 		if(deadMobs < REVENANT_SPAWN_THRESHOLD)
-			deadchat_broadcast("<span class='deadsay'>Event attempted to spawn a revenant, but there were only [deadMobs]/[REVENANT_SPAWN_THRESHOLD] dead mobs.</span>") //STOP ASSUMING IT'S BADMINS!
+			deadchat_broadcast("<span class='deadsay'>Event attempted to spawn a revenant, but there were not enough dead mobs.</span>") //STOP ASSUMING IT'S BADMINS!
 			message_admins("Event attempted to spawn a revenant, but there were only [deadMobs]/[REVENANT_SPAWN_THRESHOLD] dead mobs.")
 			return WAITING_FOR_SOMETHING
 
