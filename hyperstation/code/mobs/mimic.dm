@@ -34,6 +34,7 @@
 	minbodytemp = 250 //weak to cold
 	maxbodytemp = 1500
 	pressure_resistance = 600
+	sight = SEE_MOBS
 	var/unstealth = FALSE
 	var/knockdown_people = 1
 	var/playerTransformCD = 50
