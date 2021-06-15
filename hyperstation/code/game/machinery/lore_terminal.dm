@@ -200,13 +200,13 @@ SPECIAL KEYS RESPOND AS FOLLOWS:
 /datum/lore_entry/station
 	name = "new_employees_memo.mail"
 	title = "Intercepted message"
-	path = "nsv13/lore_entries/welcome.txt"
+	path = "lore_entries/welcome.txt"
 	access_tag = "ntcommon"
 
 /datum/lore_entry/station/meltdown_proceedures
 	name = "meltdown_proceedures.mail"
 	title = "Emergency proceedures regarding nuclear meltdowns:"
-	path = "nsv13/lore_entries/meltdowns.txt"
+	path = "lore_entries/meltdowns.txt"
 
 /datum/lore_entry/command
 	name = "command_memo.mail"
