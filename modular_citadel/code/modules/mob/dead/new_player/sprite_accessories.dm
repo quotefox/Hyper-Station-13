@@ -1795,6 +1795,11 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Synthetic Lizard - Pecs Light"
 	icon_state = "synthlizpecslight"
 
+/datum/sprite_accessory/mam_body_markings/protogenlight
+	name = "Protogen-light"
+	icon_state = "protogenlight"
+	icon = 'modular_citadel/icons/mob/markings_notmammals.dmi'
+
 /******************************************
 ************ Taur Bodies ******************
 *******************************************/
