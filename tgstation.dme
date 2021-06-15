@@ -3053,6 +3053,7 @@
 #include "hyperstation\code\datums\traits\good.dm"
 #include "hyperstation\code\datums\traits\neutral.dm"
 #include "hyperstation\code\datums\weather\oxygen_rain.dm"
+#include "hyperstation\code\game\machinery\lore_terminal.dm"
 #include "hyperstation\code\game\objects\railings.dm"
 #include "hyperstation\code\game\objects\items\cosmetics.dm"
 #include "hyperstation\code\game\objects\items\storage\big_bag.dm"
