@@ -35,7 +35,7 @@ GLOBAL_DATUM_INIT(lore_terminal_controller, /datum/lore_controller, new)
 /obj/machinery/computer/lore_terminal/proc/get_entries()
 	for(var/X in GLOB.lore_terminal_controller.entries)
 		var/datum/lore_entry/instance = X
-		if(instance.access_tag == access_tag)
+		if(instance.access_tag == access_tag || instance.access_tag == "all")
 			entries += instance
 
 /obj/machinery/computer/lore_terminal/attack_hand(mob/user)
@@ -193,7 +193,7 @@ SPECIAL KEYS RESPOND AS FOLLOWS:
 
 ` = newline (br) (AKA when you press enter)
 ~ = horizontal line (hr)
-� = bullet point
+� = bullet point //Bullet points are not working? - archie
 
 */
 
@@ -203,7 +203,13 @@ SPECIAL KEYS RESPOND AS FOLLOWS:
 	path = "lore_entries/welcome.txt"
 	access_tag = "ntcommon"
 
-/datum/lore_entry/station/meltdown_proceedures
+/datum/lore_entry/all
+	name = "nuclear_authdisk_instructions.mail"
+	title = "Handling the Nuclear Authentication Disk and You!"
+	content = "SYSADMIN -> allcrew@seegnet.kin. RE: The Nuclear Authentication Disk. ` Greetings staff members! We're aware of the questions you have in regards to the Nuclear Authentication disk. The disk itself contains the codes needed to unlock nuclear devices used in a Nuclear Emergency and trigger a station self-destruction sequence. ` It is the duty of every member of this crew to take responsibility for the disk in the off chance that station command is currently absent. ` Don't leave it lying in the Captain's office. ` Keep it in movement to prevent Syndicate triangulation devices from functioning. ` If the disk location is unknown, look for a red pinpointer, the Head of Security and the Captain should always have one in their offices or lockers. These will help you locate the disk. ` If the disk is in enemy hands, call all hands on deck immediately and order a red alert. ` ` Protect the disk with your life, for the lives of the station's crew depend on it. Stay safe through vigilance."
+	access_tag = "all"
+
+/datum/lore_entry/all/meltdown_proceedures
 	name = "meltdown_proceedures.mail"
 	title = "Emergency proceedures regarding nuclear meltdowns:"
 	path = "lore_entries/meltdowns.txt"
