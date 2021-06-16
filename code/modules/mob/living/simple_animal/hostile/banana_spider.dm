@@ -1,9 +1,8 @@
 /mob/living/simple_animal/banana_spider
-	icon = 'modular_citadel/icons/mob/BananaSpider.dmi'
 	name = "banana spider"
 	desc = "What the fuck is this abomination?"
-	icon_state = "banana"
-	icon_dead = "banana_peel"
+	icon_state = "bananaspider"
+	icon_dead = "bananaspider_peel"
 	health = 1
 	maxHealth = 1
 	turns_per_move = 5			//this isn't player speed =|
@@ -87,8 +86,7 @@
 /obj/item/reagent_containers/food/snacks/deadbanana_spider
 	name = "dead banana spider"
 	desc = "Thank god it's gone...but it does look slippery."
-	icon = 'modular_citadel/icons/mob/BananaSpider.dmi'
-	icon_state = "banana_peel"
+	icon_state = "bananaspider"
 	bitesize = 3
 	eatverb = "devours"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)

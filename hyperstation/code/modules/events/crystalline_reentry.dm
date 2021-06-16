@@ -14,6 +14,7 @@
 
 /datum/round_event/crystalline_reentry
 	announceWhen = 0
+	startWhen = 10
 	fakeable = FALSE
 
 /datum/round_event/crystalline_reentry/announce(fake)
@@ -130,11 +131,8 @@
 	return ..()
 
 /obj/effect/crystalline_reentry/proc/complete_trajectory()
-	//We hit what we wanted to hit, time to go
-	special_target = null
-	destination = get_edge_target_turf(src, dir)
-	walk(src,0)
-	walk_towards(src, destination, 1)
+	//We hit what we wanted to hit, time to go boom!
+	collision_effect()
 
 /obj/effect/crystalline_reentry/ex_act(severity, target)
 	return 0
@@ -146,8 +144,9 @@
 	return
 
 /obj/effect/crystalline_reentry/Bump(atom/clong)
-	asteroidhealth = asteroidhealth - rand(7,14)
-	
+	if(!special_target)//If it has a special target, THERE ARE NO BRAKES ON THE ADMINBUS, BABY
+		asteroidhealth = asteroidhealth - rand(7,14)
+
 	if(prob(10))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		audible_message("<span class='danger'>You hear a BONK!</span>")
@@ -176,20 +175,6 @@
 		qdel(other)
 	if(asteroidhealth <= 0)
 		collision_effect()
-		atmos_spawn_air("water_vapor=1000;TEMP=0") //brr
-		make_debris()
-		switch(rand(1,100))
-			if(1 to 20)
-				var/obj/structure/spawner/crystalline/M = new(src.loc)
-				visible_message("<span class='danger'>A [M] emerges from the asteroid's rubble!</span>")
-				if(prob(50) && tendrilnotify)
-					priority_announce("Unknown organic entities have been detected in the vincinity of [station_name()]. General caution is advised.", "General Alert")
-			if(21 to 99)
-				visible_message("The asteroid collapses into nothing...")
-			if(100)
-				var/mob/living/simple_animal/bot/hugbot/M = new(src.loc)
-				visible_message("<span class='danger'>A [M] emerges from the asteroid's rubble! Wait... What?</span>")
-		qdel(src)
 	else
 		atmos_spawn_air("water_vapor=75;TEMP=0") //brr
 
@@ -198,6 +183,8 @@
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		H.adjustBruteLoss(160)
+	if(special_target && loc == get_turf(special_target)) // just in case. Otherwise the asteroid can stop if it penetrates someone that is standing exactly on that spot and that is bad
+		complete_trajectory()
 
 /obj/effect/crystalline_reentry/proc/make_debris()
 	for(var/throws = dropamt, throws > 0, throws--)
@@ -205,6 +192,7 @@
 		new thing_to_spawn(get_turf(src))
 
 /obj/effect/crystalline_reentry/proc/collision_effect()
+	make_debris()
 	explosion(src.loc, 0, 0, 5, 3, 1, 0, 0, 0, 0)
 	var/sound/meteor_sound = sound(meteorsound)
 	var/random_frequency = get_rand_frequency()
@@ -217,6 +205,19 @@
 		var/dist = get_dist(M.loc, src.loc)
 		shake_camera(M, dist > 20 ? 2 : 4, dist > 20 ? 1 : 3)
 		M.playsound_local(src.loc, null, 50, 1, random_frequency, 10, S = meteor_sound)
+	atmos_spawn_air("water_vapor=1250;TEMP=0") //brr
+	switch(rand(1,100))
+		if(1 to 30)
+			var/obj/structure/spawner/crystalline/M = new(src.loc)
+			visible_message("<span class='danger'>A [M] emerges from the asteroid's rubble!</span>")
+			if(prob(50) && tendrilnotify)
+				priority_announce("Unknown organic entities have been detected in the vincinity of [station_name()]. General caution is advised.", "General Alert")
+		if(31 to 99)
+			visible_message("The asteroid collapses into nothing...")
+		if(100)
+			var/mob/living/simple_animal/bot/hugbot/M = new(src.loc)
+			visible_message("<span class='danger'>A [M] emerges from the asteroid's rubble! Wait... What?</span>")
+	qdel(src)
 
 /obj/effect/crystalline_reentry/notendrilalert
 	tendrilnotify = FALSE
@@ -267,8 +268,8 @@
 /obj/structure/spawner/crystalline/proc/delayedInitialize()
 	//Why is this needed? Simple, because apparently explosion is so slow that it triggers after the spawner spawns and kills it on the spot. This just makes it killable.
 	resistance_flags = FIRE_PROOF | LAVA_PROOF
-	max_integrity = 250
-	obj_integrity = 250
+	max_integrity = 225
+	obj_integrity = 225
 
 /obj/effect/light_emitter/crystalline
 	set_luminosity = 4

@@ -2,10 +2,10 @@
 
 //Engineering
 /datum/job/chief_engineer
-	alt_titles = list("Head Engineer", "Construction Coordinator", "Project Manager")
+	alt_titles = list("Head Engineer", "Construction Coordinator", "Project Manager", "Power Plant Director")
 
 /datum/job/engineer
-	alt_titles = list("Maintenance Technician", "Engine Technician", "Electrician", "Structural Engineer", "Mechanic",  "Station Architect")
+	alt_titles = list("Maintenance Technician", "Engine Technician", "Electrician", "Structural Engineer", "Mechanic",  "Station Architect", "Nuclear Plant Operator")
 
 /datum/job/atmos
 	alt_titles = list("Firefighter", "Life Support Specialist", "Disposals Technician")

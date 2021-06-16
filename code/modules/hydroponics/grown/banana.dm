@@ -126,7 +126,7 @@
 	desc = "A peel from a bluespace banana."
 	icon_state = "banana_peel_blue"
 
-//Banana Spider
+//Banana Spider.
 /obj/item/seeds/banana/exotic_banana
 	name = "pack of exotic banana seeds"
 	desc = "They're seeds that grow into banana trees. However, those bananas might be alive."
@@ -157,7 +157,7 @@
 	spawn(30)
 		if(!QDELETED(src))
 			var/mob/living/simple_animal/banana_spider/S = new /mob/living/simple_animal/banana_spider(get_turf(src.loc))
-			S.speed += round(10 / max(seed.potency, 1), 1)
+			S.speed += round(10 - 10 * (seed.potency/100), 1)
 			S.visible_message("<span class='notice'>The banana spider chitters as it stretches its legs.</span>")
 			qdel(src)
 

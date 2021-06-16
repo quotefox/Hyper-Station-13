@@ -12,7 +12,8 @@
 	turns_per_move = 5
 	move_to_delay = 1
 	speed = 0
-	see_in_dark = 6
+	see_in_dark = 8
+	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	pass_flags = PASSTABLE
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/xeno = 2)
 	response_help  = "prods"
@@ -20,8 +21,8 @@
 	response_harm   = "smacks"
 	melee_damage_lower = 8
 	melee_damage_upper = 12
-	attacktext = "slams"
-	attack_sound = 'sound/weapons/punch1.ogg'
+	attacktext = "glomps"
+	attack_sound = 'sound/effects/blobattack.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	ventcrawler = VENTCRAWLER_ALWAYS
 	blood_volume = 0
@@ -33,12 +34,18 @@
 	minbodytemp = 250 //weak to cold
 	maxbodytemp = 1500
 	pressure_resistance = 600
+	sight = SEE_MOBS
 	var/unstealth = FALSE
 	var/knockdown_people = 1
+	var/playerTransformCD = 50
+	var/playerTfTime
 	var/static/mimic_blacklisted_transform_items = typecacheof(list(
 	/obj/item/projectile,
 	/obj/item/radio/intercom))
-	var/turns_since_notarget
+	var/playstyle_string = "<span class='boldannounce'>You are a mimic</span></b>, a tricky creature that can take the form of \
+							almost any item nearby by shift-clicking it. While morphed, you move slowly and do less damage. \
+							Finally, you can restore yourself to your original form while morphed by shift-clicking yourself. \
+							Attacking carbon lifeforms will heal you at the cost of destructuring their DNA.</b>"
 
 /mob/living/simple_animal/hostile/hs13mimic/Initialize()
 	. = ..()
@@ -46,26 +53,33 @@
 	unstealth = FALSE
 	trytftorandomobject()
 
+/mob/living/simple_animal/hostile/hs13mimic/Login()
+	. = ..()
+	SEND_SOUND(src, sound('sound/ambience/antag/ling_aler.ogg'))
+	to_chat(src, src.playstyle_string)
+
 /mob/living/simple_animal/hostile/hs13mimic/attack_hand(mob/living/carbon/human/M)
 	. = ..()
 	trigger()
 
-/mob/living/simple_animal/hostile/hs13mimic/Life()
-	. = ..()
-	turns_since_notarget++
-	if(turns_since_notarget >= 5)
-		turns_since_notarget = 0
-		if(unstealth && (!target || isdead(target)))
-			target = null
-			trytftorandomobject()
-
 /mob/living/simple_animal/hostile/hs13mimic/AttackingTarget()
 	. = ..()
-	if(knockdown_people && . && prob(15) && iscarbon(target))
+	if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		C.Knockdown(40)
-		C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
+		if(unstealth == FALSE && knockdown_people && .) //Guaranteed knockdown if we get the first hit while disguised. Typically, only players can do this since NPC mimics transform first before attacking.
+			unstealth = TRUE
+			restore()
+			C.Knockdown(40)
+			C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
 				"<span class='userdanger'>\The [src] knocks you down!</span>")
+		else if(knockdown_people && . && prob(15))
+			C.Knockdown(40)
+			C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
+					"<span class='userdanger'>\The [src] knocks you down!</span>")
+		if(C.nutrition >= 15)
+			C.nutrition -= (rand(7,15)) //They lose 7-15 nutrition
+			adjustBruteLoss(-3) //We heal 3 damage
+		C.adjustCloneLoss(rand(2,4)) //They also take a bit of cellular damage.
 
 /mob/living/simple_animal/hostile/hs13mimic/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	trigger()
@@ -175,11 +189,12 @@
 	icon = 'hyperstation/icons/mobs/mimic.dmi'
 	icon_state = "mimic"
 	desc = initial(desc)
+	speed = initial(speed)
 	wander = TRUE
 	vision_range = 9
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/trigger()
-	if(unstealth == FALSE)
+	if(unstealth == FALSE && !stat)
 		unstealth = TRUE
 		visible_message("<span class='danger'>The [src] Reveals itself to be a Mimic!</span>")
 		Mimictransform()
@@ -197,7 +212,7 @@
 	medhudupdate()
 	var/list/obj/item/listItems = list()
 	for(var/obj/item/I in oview(9,src.loc))
-		if(!(is_type_in_typecache(I, mimic_blacklisted_transform_items)))
+		if(allowed(I))
 			listItems += I
 	if(LAZYLEN(listItems))
 		var/obj/item/changedReference = pick(listItems)
@@ -210,6 +225,26 @@
 	else
 		Mimictransform()
 
+/mob/living/simple_animal/hostile/hs13mimic/proc/allowed(atom/movable/A)
+	return !is_type_in_typecache(A, mimic_blacklisted_transform_items) && (isitem(A))
+
+/mob/living/simple_animal/hostile/hs13mimic/ShiftClickOn(atom/movable/A) //if by any chance a player takes control of them
+	if(playerTfTime <= world.time && !stat)
+		if(A == src)
+			restore()
+			playerTfTime = world.time + playerTransformCD
+			return
+		if(istype(A) && allowed(A))
+			unstealth = FALSE
+			name = A.name
+			icon = A.icon
+			icon_state = A.icon_state
+			desc = A.desc
+			speed = 5
+			playerTfTime = world.time + playerTransformCD
+	else
+		to_chat(src, "<span class='warning'>You need to wait a little longer before you can shift into something else!</span>")
+		..()
 
 //Event control
 
@@ -299,11 +334,12 @@
 
 	if(!eligible_areas.len)
 		message_admins("No eligible areas for spawning mimics.")
-		return FALSE
+		return WAITING_FOR_SOMETHING
 
 	notify_ghosts("A group of mimics has spawned in [pickedArea]!", source=pickedArea, action=NOTIFY_ATTACK, flashwindow = FALSE)
-	while(spawncount >= 1 && validTurfs.len)
+	while(spawncount > 0 && validTurfs.len)
 		var/turf/pickedTurf = pick_n_take(validTurfs)
 		var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic
 		spawn_atom_to_turf(spawn_type, pickedTurf, 1, FALSE)
 		spawncount--
+	return SUCCESSFUL_SPAWN
