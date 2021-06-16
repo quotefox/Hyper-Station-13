@@ -5,7 +5,7 @@
 #define COOLANT_OUTPUT_GATE airs[3]
 
 #define RBMK_TEMPERATURE_OPERATING 640 //Celsius
-#define RBMK_TEMPERATURE_CRITICAL 800 //At this point the entire ship/station is alerted to a meltdown. This may need altering
+#define RBMK_TEMPERATURE_CRITICAL 810 //At this point the entire ship/station is alerted to a meltdown. This may need altering
 #define RBMK_TEMPERATURE_MELTDOWN 900
 
 #define RBMK_NO_COOLANT_TOLERANCE 5 //How many process()ing ticks the reactor can sustain without coolant before slowly taking damage
@@ -338,8 +338,8 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	handle_alerts() //Let's check if they're about to die, and let them know.
 	update_icon()
 	radiation_pulse(src, temperature*radioactivity_spice_multiplier)
-	if(power >= 90 && world.time >= next_flicker) //You're overloading the reactor. Give a more subtle warning that power is getting out of control.
-		next_flicker = world.time + 1.5 MINUTES
+	if(power >= 93 && world.time >= next_flicker) //You're overloading the reactor. Give a more subtle warning that power is getting out of control.
+		next_flicker = world.time + 2 MINUTES
 		for(var/obj/machinery/light/L in GLOB.machines)
 			if(prob(25) && L.z == z) //If youre running the reactor cold though, no need to flicker the lights.
 				L.flicker()
