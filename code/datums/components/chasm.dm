@@ -6,6 +6,7 @@
 
 	var/static/list/falling_atoms = list() // Atoms currently falling into chasms
 	var/static/list/forbidden_types = typecacheof(list(
+		/mob/camera,
 		/obj/singularity,
 		/obj/docking_port,
 		/obj/structure/lattice,
@@ -115,7 +116,13 @@
 			L.notransform = TRUE
 			L.Stun(200)
 			L.resting = TRUE
-			if(prob(5))
+			if(L.client && check_rights_for(L.client, R_FUN))
+				if(prob(50))
+					playsound(AM, 'hyperstation/sound/misc/yodadeath.ogg', 100, 0)
+				else
+					playsound(AM, 'hyperstation/sound/misc/fallingthroughclouds.ogg', 100, 0)
+
+			else if(prob(5))
 				playsound(AM, 'hyperstation/sound/misc/fallingthroughclouds.ogg', 100, 0)
 
 		var/oldtransform = AM.transform

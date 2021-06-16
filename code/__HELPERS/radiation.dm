@@ -27,6 +27,8 @@
 /proc/radiation_pulse(atom/source, intensity, range_modifier, log=FALSE, can_contaminate=TRUE)
 	if(!SSradiation.can_fire)
 		return
+	if(!source)
+		return // make sure we have a source. If we don't, just return.
 	if(istype(get_turf(source), /turf/open/pool))
 		var/turf/open/pool/PL = get_turf(source)
 		if(PL.filled == TRUE)
