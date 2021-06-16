@@ -342,5 +342,4 @@
 		var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic
 		spawn_atom_to_turf(spawn_type, pickedTurf, 1, FALSE)
 		spawncount--
-		message_admins("Spawned a mimic!")
 	return SUCCESSFUL_SPAWN
