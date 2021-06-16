@@ -146,7 +146,7 @@
 /obj/effect/crystalline_reentry/Bump(atom/clong)
 	if(!special_target)//If it has a special target, THERE ARE NO BRAKES ON THE ADMINBUS, BABY
 		asteroidhealth = asteroidhealth - rand(7,14)
-	if(clong = istype())
+
 	if(prob(10))
 		playsound(src, 'sound/effects/bang.ogg', 50, 1)
 		audible_message("<span class='danger'>You hear a BONK!</span>")
@@ -183,7 +183,7 @@
 	if(ishuman(L))
 		var/mob/living/carbon/human/H = L
 		H.adjustBruteLoss(160)
-	if(special_target && loc == get_turf(special_target))
+	if(special_target && loc == get_turf(special_target)) // just in case. Otherwise the asteroid can stop if it penetrates someone that is standing exactly on that spot and that is bad
 		complete_trajectory()
 
 /obj/effect/crystalline_reentry/proc/make_debris()
