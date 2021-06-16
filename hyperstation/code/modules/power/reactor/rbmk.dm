@@ -5,7 +5,7 @@
 #define COOLANT_OUTPUT_GATE airs[3]
 
 #define RBMK_TEMPERATURE_OPERATING 640 //Celsius
-#define RBMK_TEMPERATURE_CRITICAL 800 //At this point the entire ship/station is alerted to a meltdown. This may need altering
+#define RBMK_TEMPERATURE_CRITICAL 810 //At this point the entire ship/station is alerted to a meltdown. This may need altering
 #define RBMK_TEMPERATURE_MELTDOWN 900
 
 #define RBMK_NO_COOLANT_TOLERANCE 5 //How many process()ing ticks the reactor can sustain without coolant before slowly taking damage
