@@ -115,7 +115,7 @@
 			L.notransform = TRUE
 			L.Stun(200)
 			L.resting = TRUE
-			if(L.client?.rights & R_FUN)
+			if(L.client && check_rights_for(L.client, R_FUN))
 				if(prob(50))
 					playsound(AM, 'hyperstation/sound/misc/yodadeath.ogg', 100, 0)
 				else
