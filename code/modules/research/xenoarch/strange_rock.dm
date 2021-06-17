@@ -96,6 +96,8 @@
 			to_chat(user,"You must stand still to scan.")
 			return
 		playsound(loc, HM.usesound, 50, 1, -1)
+		to_chat(user,"Base Depth: [itembasedepth] centimeters.")
+		to_chat(user,"Safe Depth: [itemsafedepth] centimeters.")
 		to_chat(user,"Item Depth: [itemactualdepth] centimeters.")
 	if(istype(W,/obj/item/xenoarch/help/measuring))
 		var/obj/item/xenoarch/help/measuring/HM = W
