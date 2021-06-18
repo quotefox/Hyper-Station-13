@@ -52,6 +52,7 @@
 	icon_state = "sofachair"
 	color = "#ffffff"
 	item_chair = ""
+	var/mutable_appearance/armrest
 
 /obj/structure/chair/sofachair/proc/GetArmrest()
 	return mutable_appearance('icons/obj/chairs.dmi', "sofachair_armrest")
