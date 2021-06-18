@@ -53,7 +53,7 @@
 	color = "#ffffff"
 	item_chair = ""
 
-/obj/structure/chair/sofachair/GetArmrest()
+/obj/structure/chair/sofachair/proc/GetArmrest()
 	return mutable_appearance('icons/obj/chairs.dmi', "sofachair_armrest")
 
 /obj/structure/chair/examine(mob/user)
