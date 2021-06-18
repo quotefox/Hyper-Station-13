@@ -860,11 +860,11 @@
 /obj/item/toy/cards/cardhand/proc/update_sprite()
 	cut_overlays()
 	var/overlay_cards = currenthand.len
-
-	var/k = overlay_cards == 2 ? 1 : overlay_cards - 2
-	for(var/i = k; i <= overlay_cards; i++)
-		var/card_overlay = image(icon=src.icon,icon_state="sc_[currenthand[i]]_[deckstyle]",pixel_x=(1-i+k)*3,pixel_y=(1-i+k)*3)
-		add_overlay(card_overlay)
+	if(overlay_cards)
+		var/k = overlay_cards == 2 ? 1 : overlay_cards - 2
+		for(var/i = k; i <= overlay_cards; i++)
+			var/card_overlay = image(icon=src.icon,icon_state="sc_[currenthand[i]]_[deckstyle]",pixel_x=(1-i+k)*3,pixel_y=(1-i+k)*3)
+			add_overlay(card_overlay)
 
 /obj/item/toy/cards/singlecard
 	name = "card"
