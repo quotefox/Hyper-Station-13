@@ -13,12 +13,12 @@
 		expire_time = world.time + expire_in
 		QDEL_IN(src, expire_in)
 
-	if(!ismovableatom(parent))
+	if(!ismovable(parent) && !isfloorturf(parent))
 		return COMPONENT_INCOMPATIBLE
 	RegisterSignal(parent, COMSIG_COMPONENT_CLEAN_ACT, .proc/clean)
 	RegisterSignal(parent, COMSIG_MOVABLE_BUCKLE, .proc/try_infect_buckle)
 	RegisterSignal(parent, COMSIG_MOVABLE_BUMP, .proc/try_infect_collide)
-	RegisterSignal(parent, COMSIG_MOVABLE_CROSSED, .proc/try_infect_crossed)
+	RegisterSignal(parent, COMSIG_ATOM_ENTERED, .proc/try_infect_crossed)
 	RegisterSignal(parent, COMSIG_MOVABLE_IMPACT_ZONE, .proc/try_infect_impact_zone)
 	if(isitem(parent))
 		RegisterSignal(parent, COMSIG_ITEM_ATTACK_ZONE, .proc/try_infect_attack_zone)
@@ -77,12 +77,16 @@
 		I.permeability_coefficient = old_permeability
 
 /datum/component/infective/proc/try_infect_crossed(datum/source, atom/movable/M)
+	message_admins("Trying to infect from [source] to [M]")
 	if(isliving(M))
+		message_admins("[M] is living. Trying to infect.")
 		try_infect(M, BODY_ZONE_PRECISE_L_FOOT)
 
 /datum/component/infective/proc/try_infect_streak(datum/source, list/directions, list/output_diseases)
 	output_diseases |= diseases
 
 /datum/component/infective/proc/try_infect(mob/living/L, target_zone)
+	message_admins("Trying to infect [L] through [target_zone]")
 	for(var/V in diseases)
 		L.ContactContractDisease(V, target_zone)
+		message_admins("Disease found, trying to infect [L] with [V]")

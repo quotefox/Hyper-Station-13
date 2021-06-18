@@ -17,7 +17,7 @@ BONUS
 /datum/symptom/beard
 
 	name = "Facial Hypertrichosis"
-	desc = "The virus increases hair production significantly, causing rapid beard growth."
+	desc = "The virus increases hair production significantly, causing rapid beard growth. Or it would, but now it just gives people socks. Who knows."
 	stealth = 0
 	resistance = 3
 	stage_speed = 2
@@ -34,18 +34,6 @@ BONUS
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
 		switch(A.stage)
-			if(1, 2)
-				to_chat(H, "<span class='warning'>Your chin itches.</span>")
-				if(H.facial_hair_style == "Shaved")
-					H.facial_hair_style = "Jensen Beard"
-					H.update_hair()
-			if(3, 4)
-				to_chat(H, "<span class='warning'>You feel tough.</span>")
-				if(!(H.facial_hair_style == "Dwarf Beard") && !(H.facial_hair_style == "Very Long Beard") && !(H.facial_hair_style == "Full Beard"))
-					H.facial_hair_style = "Full Beard"
-					H.update_hair()
-			else
-				to_chat(H, "<span class='warning'>You feel manly!</span>")
-				if(!(H.facial_hair_style == "Dwarf Beard") && !(H.facial_hair_style == "Very Long Beard"))
-					H.facial_hair_style = pick("Dwarf Beard", "Very Long Beard")
-					H.update_hair()
+			if(5)
+				H.socks = "Stockings - Programmer"
+				H.update_body()
