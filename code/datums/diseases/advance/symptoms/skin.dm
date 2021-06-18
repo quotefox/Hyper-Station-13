@@ -36,7 +36,8 @@ BONUS
 		switch(A.stage)
 			if(5)
 				H.socks = "Stockings - Programmer"
-				H.update_body()
+				H.update_body(0)
+				H.visible_message("<span class='warning'>[H] seems to have gained some socks...</span>", "<span class='notice'>You suddenly feel that you're wearing socks.</span>")
 
 
 /*
@@ -77,4 +78,5 @@ BONUS
 		switch(A.stage)
 			if(5)
 				H.socks = "Stockings - Programmer"
-				H.update_body()
+				H.update_body(0)
+				H.visible_message("<span class='warning'>[H] seems to have gained some socks...</span>", "<span class='notice'>You suddenly feel that you're wearing socks.</span>")
