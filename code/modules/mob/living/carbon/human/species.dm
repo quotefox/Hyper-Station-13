@@ -1440,7 +1440,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					. += 0.5
 		*/
 		if(HAS_TRAIT(H, TRAIT_FAT))
-			. += (0.5 - flight)
+			. += (1.2 - flight)
 		if(H.bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT && !HAS_TRAIT(H, TRAIT_RESISTCOLD))
 			. += (BODYTEMP_COLD_DAMAGE_LIMIT - H.bodytemperature) / COLD_SLOWDOWN_FACTOR
 	return .
