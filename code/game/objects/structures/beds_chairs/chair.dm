@@ -45,6 +45,17 @@
 	color = "#ffffff"
 	item_chair = ""
 
+/obj/structure/chair/sofachair
+	name = "sofa chair"
+	desc = "A leather sofa chair."
+	icon = 'icons/obj/chairs.dmi'
+	icon_state = "sofachair"
+	color = "#ffffff"
+	item_chair = ""
+
+/obj/structure/chair/sofachair/GetArmrest()
+	return mutable_appearance('icons/obj/chairs.dmi', "sofachair_armrest")
+
 /obj/structure/chair/examine(mob/user)
 	. = ..()
 	. += "<span class='notice'>It's held together by a couple of <b>bolts</b>.</span>"
