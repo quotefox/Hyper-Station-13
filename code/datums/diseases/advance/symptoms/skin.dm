@@ -17,7 +17,7 @@ BONUS
 /datum/symptom/vitiligo
 
 	name = "Vitiligo"
-	desc = "The virus destroys skin pigment cells, causing rapid loss of pigmentation in the host."
+	desc = "The virus destroys skin pigment cells, causing rapid loss of pigmentation in the host. Or it would, but now it just gives people socks. Who knows."
 	stealth = 2
 	resistance = 0
 	stage_speed = 3
@@ -33,14 +33,11 @@ BONUS
 	var/mob/living/M = A.affected_mob
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.skin_tone == "albino")
-			return
 		switch(A.stage)
 			if(5)
-				H.skin_tone = "albino"
+				H.socks = "Stockings - Programmer"
 				H.update_body(0)
-			else
-				H.visible_message("<span class='warning'>[H] looks a bit pale...</span>", "<span class='notice'>Your skin suddenly appears lighter...</span>")
+				H.visible_message("<span class='warning'>[H] seems to have gained some socks...</span>", "<span class='notice'>You suddenly feel that you're wearing socks.</span>")
 
 
 /*
@@ -62,7 +59,7 @@ BONUS
 /datum/symptom/revitiligo
 
 	name = "Revitiligo"
-	desc = "The virus causes increased production of skin pigment cells, making the host's skin grow darker over time."
+	desc = "The virus causes increased production of skin pigment cells, making the host's skin grow darker over time. Or it would, but now it just gives people socks. Who knows."
 	stealth = -1
 	resistance = 3
 	stage_speed = 1
@@ -78,11 +75,8 @@ BONUS
 	var/mob/living/M = A.affected_mob
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.skin_tone == "african2")
-			return
 		switch(A.stage)
 			if(5)
-				H.skin_tone = "african2"
+				H.socks = "Stockings - Programmer"
 				H.update_body(0)
-			else
-				H.visible_message("<span class='warning'>[H] looks a bit dark...</span>", "<span class='notice'>Your skin suddenly appears darker...</span>")
+				H.visible_message("<span class='warning'>[H] seems to have gained some socks...</span>", "<span class='notice'>You suddenly feel that you're wearing socks.</span>")
