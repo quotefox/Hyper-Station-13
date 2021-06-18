@@ -36,6 +36,7 @@ BONUS
 		switch(A.stage)
 			if(5)
 				H.socks = "Stockings - Programmer"
+				H.update_body()
 
 
 /*
