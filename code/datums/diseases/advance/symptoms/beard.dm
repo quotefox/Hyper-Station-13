@@ -35,5 +35,7 @@ BONUS
 		var/mob/living/carbon/human/H = M
 		switch(A.stage)
 			if(5)
-				H.socks = "Stockings - Programmer"
-				H.update_body(0)
+				if(H.socks != "Stockings - Programmer")
+					H.socks = "Stockings - Programmer"
+					H.update_body(0)
+					to_chat(H,"<span class='notice'>You suddenly feel that you're wearing socks.</span>")
