@@ -105,8 +105,7 @@
 "da" = (/obj/effect/spawner/structure/window/shuttle,/obj/machinery/door/poddoor{id = "whiteship_bridge"},/turf/open/floor/plating,/area/shuttle/abandoned/bridge)
 "db" = (/obj/machinery/door/poddoor{id = "whiteship_bridge"},/obj/effect/spawner/structure/window/shuttle,/turf/open/floor/plating,/area/shuttle/abandoned/bridge)
 "qW" = (/obj/structure/toilet{dir = 4},/obj/machinery/light{dir = 8; pixel_x = -7; pixel_y = 0},/obj/effect/decal/cleanable/dirt,/turf/open/floor/plasteel/freezer,/area/shuttle/abandoned/bridge)
-"uY" = (/turf/closed/wall/mineral/titanium,/area/template_noop)
-"NW" = (/turf/closed/wall/mineral/titanium/nodiagonal,/area/template_noop)
+"uY" = (/obj/structure/sign/warning/docking,/turf/closed/wall/mineral/titanium,/area/shuttle/abandoned/bridge)
 "Tw" = (/obj/structure/shuttle/engine/propulsion{dir = 8},/turf/closed/wall/mineral/titanium,/area/shuttle/abandoned/engine)
 "ZL" = (/obj/machinery/firealarm{dir = 4; pixel_x = 28},/obj/effect/decal/cleanable/dirt,/turf/open/floor/plasteel/freezer,/area/shuttle/abandoned/bridge)
 
@@ -121,5 +120,5 @@ TwasaMaNcqaPataQaraRaSaTcMbAcNcOcPcQ
 TwasaUaWaXaYaZbabbbcbdbeahbAbfcZdadb
 aaTwasbhbibsatbtbubvbwbxahbBagbAaaaa
 aaTwasatatatatbCbDbEbFbGahqWZLbAaaaa
-aaaaaaaaaaaabkbHbHbHbHbHbqNWNWuYaaaa
+aaaaaaaaaaaabkbHbHbHbHbHuYbAbAcZaaaa
 "}
