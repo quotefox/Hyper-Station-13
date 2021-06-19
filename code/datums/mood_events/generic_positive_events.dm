@@ -131,6 +131,17 @@
 	description = "<span class='nicegreen'>Whatever I ate was a-<i>nya</i>-zing!</span>\n"
 	mood_change = 8		//Felinids become pacified from catnip, so give a bigger mood boost
 
+/datum/mood_event/nanite_happiness
+	description = "<span class='nicegreen robot'>+++++++HAPPINESS ENHANCEMENT+++++++</span>\n"
+	mood_change = 7
+
+/datum/mood_event/nanite_happiness/add_effects(message)
+	description = "<span class='nicegreen robot'>+++++++[message]+++++++</span>\n"
+
+/datum/mood_event/area
+	description = "" //Fill this out in the area
+	mood_change = 0
+
 //Bloodsucker stuff below.
 /datum/mood_event/drankblood
 	description = "<span class='nicegreen'>I have fed greedly from that which nourishes me.</span>\n"
