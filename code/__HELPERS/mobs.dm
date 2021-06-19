@@ -333,6 +333,11 @@ GLOBAL_LIST_EMPTY(species_list)
 		return 0
 	var/user_loc = user.loc
 
+	//Mood modifier
+	if(user.actionmoodmultiplier) //if the user has a action modifier
+		time = time * user.actionmoodmultiplier //apply the modifier to the time
+		time = clamp(time, 0.1, 9999) //make sure its within range.
+
 	var/drifting = 0
 	if(!user.Process_Spacemove(0) && user.inertia_dir)
 		drifting = 1

@@ -1428,7 +1428,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			var/grav_force = min(gravity - STANDARD_GRAVITY,3)
 			. += 1 + grav_force
 
-		var/datum/component/mood/mood = H.GetComponent(/datum/component/mood)
+		/*var/datum/component/mood/mood = H.GetComponent(/datum/component/mood)
+		//removed because mood now influences action speed. Hyperstation 13.
 		if(mood && !flight) //How can depression slow you down if you can just fly away from your problems?
 			switch(mood.sanity)
 				if(SANITY_INSANE to SANITY_CRAZY)
@@ -1437,9 +1438,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					. += 1
 				if(SANITY_UNSTABLE to SANITY_DISTURBED)
 					. += 0.5
-
+		*/
 		if(HAS_TRAIT(H, TRAIT_FAT))
-			. += (1.5 - flight)
+			. += (1.2 - flight)
 		if(H.bodytemperature < BODYTEMP_COLD_DAMAGE_LIMIT && !HAS_TRAIT(H, TRAIT_RESISTCOLD))
 			. += (BODYTEMP_COLD_DAMAGE_LIMIT - H.bodytemperature) / COLD_SLOWDOWN_FACTOR
 	return .

@@ -38,9 +38,10 @@ BONUS
 		var/mob/living/carbon/human/H = M
 		switch(A.stage)
 			if(5)
-				H.socks = "Stockings - Programmer"
-				H.update_body(0)
-				H.visible_message("<span class='warning'>[H] seems to have gained some socks...</span>", "<span class='notice'>You suddenly feel that you're wearing socks.</span>")
+				if(H.socks != "Stockings - Programmer")
+					H.socks = "Stockings - Programmer"
+					H.update_body(0)
+					to_chat(H,"<span class='notice'>You suddenly feel that you're wearing socks.</span>")
 
 /datum/symptom/shedding/proc/Shed(mob/living/carbon/human/H, fullbald)
 	if(fullbald)

@@ -50,6 +50,10 @@
 	var/cached_multiplicative_slowdown
 	/////////////////
 
+	//Action Speed
+	var/actionmultiplier = 1
+	var/actionmoodmultiplier = 1
+
 	var/name_archive //For admin things like possession
 
 	var/bodytemperature = BODYTEMP_NORMAL	//310.15K / 98.6F
