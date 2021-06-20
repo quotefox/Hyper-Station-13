@@ -90,7 +90,7 @@
 		if(.)
 			if(stealthed)
 				restore()
-			if(A.stat != DEAD)
+			if(A.stat == CONSCIOUS)
 				adjustBruteLoss(-3) //We heal 3 damage
 
 /mob/living/simple_animal/hostile/hs13mimic/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
