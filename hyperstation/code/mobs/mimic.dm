@@ -41,7 +41,8 @@
 	var/playerTfTime
 	var/static/mimic_blacklisted_transform_items = typecacheof(list(
 	/obj/item/projectile,
-	/obj/item/radio/intercom))
+	/obj/item/radio/intercom,
+	/mob/living/simple_animal/bot))
 	var/playstyle_string = "<span class='boldannounce'>You are a mimic</span></b>, a tricky creature that can take the form of \
 							almost any item nearby by shift-clicking it. While morphed, you move slowly and do less damage. \
 							Finally, you can restore yourself to your original form while morphed by shift-clicking yourself. \
