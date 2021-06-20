@@ -198,8 +198,8 @@
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/restore()
 	//back to normal mimic sprite
-	medhudupdate()
 	stealthed = FALSE
+	medhudupdate()
 	name = initial(name)
 	icon = 'hyperstation/icons/mobs/mimic.dmi'
 	icon_state = "mimic"
