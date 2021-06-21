@@ -10,8 +10,8 @@
 	maxHealth = 38
 	health = 38
 	turns_per_move = 5
-	move_to_delay = 1
-	speed = 0
+	move_to_delay = 2
+	speed = 1
 	see_in_dark = 8
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	pass_flags = PASSTABLE
