@@ -452,6 +452,7 @@
 	typepath = /datum/round_event/processor_overload
 	cost = 4
 	weight = 2
+	earliest_start = 30 MINUTES
 	repeatable_weight_decrease = 3
 	enemy_roles = list("Chief Engineer","Station Engineer")
 	required_enemies = list(2,2,2,2,1,1,1,1,1,1)
@@ -552,7 +553,7 @@
 	earliest_start = 40 MINUTES
 	//property_weights = list("teamwork" = 1,"chaos" = 1, "extended" = -1)
 	occurances_max = 1
-	chaos_min = 1.3
+	chaos_min = 1.5
 
 
 /datum/dynamic_ruleset/event/wormholes
@@ -594,13 +595,14 @@
 	enemy_roles = list("Virologist","Chief Medical Officer","Captain","Chemist")
 	required_enemies = list(2,1,1,1,1,1,1,0,0,0)
 	required_candidates = 1
-	weight = 4
-	cost = -5
+	weight = 2
+	cost = 4
+	earliest_start = 30 MINUTES
 	requirements = list(101,101,20,20,15,10,10,10,10,5) // yes, it can even happen in "extended"!
 	//property_weights = list("story_potential" = 1, "extended" = 1, "valid" = -2)
 	high_population_requirement = 5
 	occurances_max = 1
-	chaos_min = 1.5
+	chaos_min = 1.75
 
 /datum/dynamic_ruleset/event/revenant
 	name = "Revenant"

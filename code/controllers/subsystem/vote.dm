@@ -1,6 +1,6 @@
 #define DYNAMIC_DEFAULT_CHAOS       1.0 //The default chaos value for low pop low vote rounds
-#define DYNAMIC_VOTE_NORMALIZATION  5   //If there are fewer than this many votes, the average will be skewed towards the default
-#define DYNAMIC_NONVOTER_FACTOR 0.75 // 1 means they count for a full vote
+#define DYNAMIC_VOTE_NORMALIZATION  7   //If there are fewer than this many votes, the average will be skewed towards the default
+#define DYNAMIC_NONVOTER_FACTOR 0.5 // 1 means they count for a full vote
 
 SUBSYSTEM_DEF(vote)
 	name = "Vote"

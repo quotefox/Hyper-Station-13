@@ -292,7 +292,7 @@
 	/area/engine/atmospherics_engine, 
 	/area/engine/engineering/reactor_core, 
 	/area/engine/engineering/reactor_control, 
-	/area/ai_monitored/turret_protected/ai, 
+	/area/ai_monitored/turret_protected,
 	/area/layenia/cloudlayer, 
 	/area/asteroid/nearstation, 
 	/area/science/server, 
