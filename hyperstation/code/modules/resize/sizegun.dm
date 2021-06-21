@@ -67,6 +67,7 @@
 //Gun
 /obj/item/gun/energy/laser/sizeray
 	name = "size ray"
+	icon = 'icons/obj/guns/energy.dmi'
 	icon_state = "sizeshrink"
 	desc = "An extremely-dangerous, almost-illegal size-altering device. You've either stolen this, or have the permits for it."
 	item_state = null
