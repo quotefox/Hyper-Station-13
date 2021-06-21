@@ -111,3 +111,59 @@
 
 /obj/effect/mob_spawn/human/exiled/special(mob/living/carbon/human/new_spawn)
 	ADD_TRAIT(new_spawn,TRAIT_EXEMPT_HEALTH_EVENTS,GHOSTROLE_TRAIT)
+
+//Villagers: Once a group of servants that worshiped their 'Gods-Kings', but now finally free after their overlords have abandoned the planet.
+
+/obj/effect/mob_spawn/human/villager
+	name = "used bed"
+	desc = "Still warm."
+	mob_name = "villager"
+	job_description = "Villagers"
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "bed"
+	roundstart = FALSE
+	death = FALSE
+	mob_species = /datum/species/human
+	short_desc = "You're finally free."
+	flavour_text = "After the God-Kings have abandoned the land, your people are finally free from their oppression. \
+	Still, the reasons for their departure are a mystery, and now your people need to work together to survive in this world."
+	assignedrole = "Free villager"
+	mirrorcanloadappearance = TRUE
+
+/obj/effect/mob_spawn/human/villager/Initialize(mapload)
+	. = ..()
+	var/arrpee = rand(1,3)
+	switch(arrpee)
+		if(1)
+			flavour_text += "You were a guard, serving your gods to keep control of you own people. \
+			Now that they left, you work to defend the village."
+			outfit.head = /obj/item/clothing/head/pharaoh
+			outfit.uniform = /obj/item/clothing/under/mummy
+			outfit.suit = /obj/item/clothing/suit/nemes
+			outfit.shoes = /obj/item/clothing/shoes/sandal
+			outfit.back = /obj/item/storage/backpack/satchel/leather
+			outfit.implants = list(/obj/item/implant/exile) //Made it so they cannot simply exit through the gateway at will.
+		if(2)
+			flavour_text += "You were a farmer, working extensively for years in the field to feed your people. \
+			The work hasn't changed much since the departure of the gods..."
+			outfit.head = /obj/item/clothing/head/rice_hat
+			outfit.uniform = /obj/item/clothing/under/mummy
+			outfit.suit = /obj/item/clothing/suit/nemes
+			outfit.shoes = /obj/item/clothing/shoes/sandal
+			outfit.back = /obj/item/storage/backpack/satchel/leather
+			outfit.implants = list(/obj/item/implant/exile) //Made it so they cannot simply exit through the gateway at will.
+		if(3)
+			flavour_text += "You were a servant, doing any necessary work that was thrown at you. \
+			At least it gave you experience in a bit of everything, which can be useful in these new times."
+			outfit.uniform = /obj/item/clothing/under/mummy
+			outfit.suit = /obj/item/clothing/suit/nemes
+			outfit.shoes = /obj/item/clothing/shoes/sandal
+			outfit.back = /obj/item/storage/backpack/satchel/leather
+			outfit.implants = list(/obj/item/implant/exile) //Made it so they cannot simply exit through the gateway at will.
+
+/obj/effect/mob_spawn/human/villager/Destroy()
+	new/obj/structure/bed(get_turf(src))
+	return ..()
+
+/obj/effect/mob_spawn/human/villager/special(mob/living/carbon/human/new_spawn)
+	ADD_TRAIT(new_spawn,TRAIT_EXEMPT_HEALTH_EVENTS,GHOSTROLE_TRAIT)
