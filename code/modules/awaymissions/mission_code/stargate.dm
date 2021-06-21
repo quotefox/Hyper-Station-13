@@ -11,7 +11,6 @@
 	name = "Ancient buildings"
 	icon_state = "awaycontent32"
 	requires_power = FALSE
-	dynamic_lighting = DYNAMIC_LIGHTING_ENABLED
 
 /area/awaymission/stargate/building/mountain
 	name = "Montain desert"
