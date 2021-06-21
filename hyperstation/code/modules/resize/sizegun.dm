@@ -7,6 +7,7 @@
 	flag = "laser"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 
+//TO DO: make the size ray have a selection of a minimum size and maximum size, rather than two modes.
 /obj/item/projectile/sizelaser/shrinkray
 	icon_state="bluelaser"
 
@@ -66,8 +67,8 @@
 //Gun
 /obj/item/gun/energy/laser/sizeray
 	name = "size ray"
-	icon_state = "bluetag"
-	desc = "Debug size manipulator. You probably shouldn't have this!"
+	icon_state = "sizeshrink"
+	desc = "An extremely-dangerous, almost-illegal size-altering device. You've either stolen this, or have the permits for it."
 	item_state = null
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/shrinkray, /obj/item/ammo_casing/energy/laser/growthray)
 	selfcharge = EGUN_SELFCHARGE
@@ -77,10 +78,10 @@
 
 	attackby(obj/item/W, mob/user)
 		if(W==src)
-			if(icon_state=="bluetag")
-				icon_state="redtag"
+			if(icon_state=="sizeshrink")
+				icon_state="sizegrow"
 				ammo_type = list(/obj/item/ammo_casing/energy/laser/growthray)
 			else
-				icon_state="bluetag"
+				icon_state="sizeshrink"
 				ammo_type = list(/obj/item/ammo_casing/energy/laser/shrinkray)
 		return ..()
