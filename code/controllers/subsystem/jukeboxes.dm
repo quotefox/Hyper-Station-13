@@ -65,14 +65,25 @@ SUBSYSTEM_DEF(jukeboxes)
 
 /datum/controller/subsystem/jukeboxes/Initialize()
 	var/list/tracks = flist("config/jukebox_music/sounds/")
+	var/list/fallbacktracks = flist("config/jukebox_music/fallback/")
 	var/songID = 1
-	for(var/S in tracks)
+	for(var/S in tracks) // Tracks that will not be in the repo, aka, localhost tracks.
 		var/datum/track/T = new()
 		T.song_path = file("config/jukebox_music/sounds/[S]")
 		var/list/L = splittext(S,"+")
 		T.song_name = L[1]
-		T.song_length = text2num(L[2])
-		T.song_beat = text2num(L[3])
+		T.song_length = text2num(L[2])*10 //We multiply it by ten because the system requires it in deciseconds
+		T.song_beat = (text2num(L[3])/6) //We divide it by six because it requires the Beats per seconds value, but in deciseconds. (Result/60) * 10)
+		T.song_associated_id = songID
+		songs |= T
+		songID++
+	for(var/S in fallbacktracks) // Tracks that will always be in the repo.
+		var/datum/track/T = new()
+		T.song_path = file("config/jukebox_music/fallback/[S]")
+		var/list/L = splittext(S,"+")
+		T.song_name = L[1]
+		T.song_length = text2num(L[2])*10 //We multiply it by ten because the system requires it in deciseconds
+		T.song_beat = (text2num(L[3])/6) //We divide it by six because it requires the Beats per seconds value, but in deciseconds. (Result/60) * 10)
 		T.song_associated_id = songID
 		songs |= T
 		songID++
