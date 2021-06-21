@@ -182,3 +182,33 @@
 
 	if(charges <= 0)
 		qdel(src)
+
+/obj/item/melee/touch_attack/stunshrink
+	name = "\improper stunshrink"
+	desc = "Remove someone's size, and leave them shocked!"
+	catchphrase = "Z'UUN SH'AOT!"
+	on_use_sound = 'sound/magic/MM_Hit.ogg'
+	icon_state = "fleshtostone"
+	item_state = "fleshtostone"
+
+/obj/item/melee/touch_attack/stunshrink/afterattack(atom/target, mob/living/carbon/user, proximity)
+	if(!proximity || target == user || !isliving(target) || !iscarbon(user) || user.lying || user.handcuffed) //getting hard after touching yourself would also be bad
+		return
+	if(user.lying || user.handcuffed)
+		to_chat(user, "<span class='warning'>You can't reach out!</span>")
+		return
+	if(!user.can_speak_vocal())
+		to_chat(user, "<span class='notice'>You can't get the words out!</span>")
+		return
+	var/mob/living/M = target
+	if(M.anti_magic_check())
+		to_chat(user, "<span class='warning'>The spell can't seem to affect [M]!</span>")
+		to_chat(M, "<span class='warning'>You feel a compressing feeling, but it suddenly reverts back!</span>")
+		..()
+		return
+	flash_lighting_fx(3, 3, LIGHT_COLOR_CYAN)
+	M.Stun(40)
+	M.Knockdown(40)
+	M.resize(RESIZE_MICRO)
+	to_chat(M, "<span class='warning'>Vertigo pulls you to the floor, and you shrink down!</span>")
+	return ..()
