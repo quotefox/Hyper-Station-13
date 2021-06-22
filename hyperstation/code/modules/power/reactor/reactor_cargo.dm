@@ -15,9 +15,10 @@
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/cargo // easier on the brain
 
 /obj/machinery/atmospherics/components/trinary/nuclear_reactor/cargo/New()
-	id = rand(1, 9999999) // cmon, what are the chances?
+	. = ..()
+	id = rand(1, 9999999) // cmon, what are the chances? The chances are... Very low friend... But maybe we can make this a bit better.
 
-// Cargo varients can be wrenched down and don't start linked to the default RMBK reactor
+// Cargo variants can be wrenched down and don't start linked to the default RMBK reactor
 
 /obj/machinery/computer/reactor/control_rods/cargo
 	anchored = FALSE
