@@ -225,7 +225,8 @@
 	contains = list(/obj/item/survivalcapsule/reactor,
 					/obj/machinery/computer/reactor/control_rods/cargo,
 					/obj/machinery/computer/reactor/stats/cargo,
-					/obj/machinery/computer/reactor/fuel_rods/cargo)
+					/obj/machinery/computer/reactor/fuel_rods/cargo,
+					/obj/item/paper/fluff/rbmkcargo)
 	crate_name = "Build Your Own Reactor Kit"
 	crate_type = /obj/structure/closet/crate/secure/engineering
 	dangerous = TRUE
