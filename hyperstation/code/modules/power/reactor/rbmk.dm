@@ -586,6 +586,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	if(I.use_tool(src, user, 40, volume=75))
 		to_chat(user, "<span class='notice'>You [anchored ? "un" : ""]secure [name].</span>")
 		setAnchored(!anchored)
+	return TRUE
 
 /obj/machinery/computer/reactor/proc/link_to_reactor()
 	for(var/obj/machinery/atmospherics/components/trinary/nuclear_reactor/asdf in GLOB.machines)
