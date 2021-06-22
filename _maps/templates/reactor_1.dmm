@@ -1,7 +1,7 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
 /obj/effect/turf_decal/stripes/red/corner{
-	dir = 4
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/space)
@@ -29,7 +29,7 @@
 /area/space)
 "e" = (
 /obj/effect/turf_decal/stripes/red/corner{
-	dir = 1
+	dir = 4
 	},
 /turf/open/floor/engine,
 /area/space)
@@ -66,7 +66,7 @@
 /area/space)
 "B" = (
 /obj/effect/turf_decal/stripes/red/corner{
-	dir = 8
+	dir = 1
 	},
 /turf/open/floor/engine,
 /area/space)
