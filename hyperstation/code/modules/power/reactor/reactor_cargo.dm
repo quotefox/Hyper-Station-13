@@ -33,4 +33,4 @@
 
 /obj/item/paper/fluff/rbmkcargo
 	name = "Nuclear Reactor Instructions"
-	info = "Make sure a 5x5 area is completely clear of pipes, cables and machinery when using the beacon. Those will be provided automatically with the beacon's bluespace decompression. Use a multitool on the reactor then on the computers provided to link them together. Good luck!"
+	info = "Make sure a 5x5 area is completely clear of pipes, cables and machinery when using the beacon. Those will be provided automatically with the beacon's bluespace decompression. Use a multitool on the reactor then on the computers provided to link them together. Also make sure the reactor has a proper pipeline filled with cooling gas before inserting fuel rods. Good luck!"
