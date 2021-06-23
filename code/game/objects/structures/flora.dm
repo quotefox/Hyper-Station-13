@@ -86,6 +86,18 @@
 	desc = "A dead tree. How it died, you know not."
 	icon_state = "tree_1"
 
+/obj/structure/flora/tree/desertdead
+	icon = 'icons/obj/flora/desertdead.dmi'
+	desc = "A dead tree in the middle of the desert."
+	icon_state = "desertdead_1"
+	var/list/icon_states = list ("desertdead_1", "desertdead_2", "desertdead_3")
+
+/obj/structure/flora/tree/desertdead/Initialize()
+	. = ..()
+
+	if(islist(icon_states && icon_states.len))
+		icon_state = pick(icon_states)
+
 /obj/structure/flora/tree/palm
 	icon = 'icons/misc/beach2.dmi'
 	desc = "A tree straight from the tropics."

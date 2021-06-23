@@ -523,7 +523,7 @@
 /area/ruin/unpowered/xenonest)
 "kp" = (
 /obj/structure/alien/weeds,
-/obj/item/reagent_containers/syringe/alien,
+/obj/item/dnainjector/giant,
 /turf/open/floor/plating/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/xenonest)
 "lG" = (
