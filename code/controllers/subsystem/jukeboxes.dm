@@ -72,7 +72,7 @@ SUBSYSTEM_DEF(jukeboxes)
 		var/list/L = splittext(S,"+")
 		T.song_name = L[1]
 		T.song_length = text2num(L[2])*10 //We multiply it by ten because the system requires it in deciseconds
-		T.song_beat = (text2num(L[3])/6) //We divide it by six because it requires the Beats per seconds value, but in deciseconds. (Result/60) * 10)
+		T.song_beat = round(text2num(L[3])/6) //We divide it by six because it requires the Beats per seconds value, but in deciseconds. (Result/60) * 10)
 		T.song_associated_id = songID
 		songs |= T
 		songID++
