@@ -847,7 +847,7 @@ datum/dynamic_ruleset/midround/bloodcult/trim_candidates()
   restricted_roles = list("AI", "Cyborg")
   protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
   required_candidates = 1
-  enemy_roles = list("Security Officer", "Head of Security", "Captain", "AI", "Cyborg", "Chaplain", "Curator", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
+  enemy_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Chaplain", "Curator")
   required_enemies = list(3,2,2,2,2,2,2,2,2,2)
   weight = 3
   cost = 10
