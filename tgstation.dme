@@ -1517,6 +1517,7 @@
 #include "code\modules\awaymissions\mission_code\research.dm"
 #include "code\modules\awaymissions\mission_code\snowdin.dm"
 #include "code\modules\awaymissions\mission_code\spacebattle.dm"
+#include "code\modules\awaymissions\mission_code\stargate.dm"
 #include "code\modules\awaymissions\mission_code\stationCollision.dm"
 #include "code\modules\awaymissions\mission_code\undergroundoutpost45.dm"
 #include "code\modules\awaymissions\mission_code\wildwest.dm"
