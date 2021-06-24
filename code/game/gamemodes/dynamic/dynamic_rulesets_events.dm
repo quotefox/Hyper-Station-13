@@ -593,16 +593,16 @@
 	//config_tag = "sentient_disease"
 	typepath = /datum/round_event/ghost_role/sentient_disease
 	enemy_roles = list("Virologist","Chief Medical Officer","Captain","Chemist")
-	required_enemies = list(2,1,1,1,1,1,1,0,0,0)
+	required_enemies = list(2,2,2,1,1,1,1,0,0,0)
 	required_candidates = 1
 	weight = 2
-	cost = 4
+	cost = 5
 	earliest_start = 30 MINUTES
 	requirements = list(101,101,20,20,15,10,10,10,10,5) // yes, it can even happen in "extended"!
 	//property_weights = list("story_potential" = 1, "extended" = 1, "valid" = -2)
 	high_population_requirement = 5
 	occurances_max = 1
-	chaos_min = 1.75
+	chaos_min = 1.95
 
 /datum/dynamic_ruleset/event/revenant
 	name = "Revenant"
