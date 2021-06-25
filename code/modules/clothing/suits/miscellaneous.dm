@@ -488,7 +488,9 @@
 	icon_state = "jacket_yellow"
 	item_state = "jacket_yellow"
 	body_parts_covered = CHEST|ARMS
+	cold_protection = CHEST|ARMS
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/toggle/jacket_orange
 	name = "Orange Jacket"
@@ -496,7 +498,9 @@
 	icon_state = "jacket_orange"
 	item_state = "jacket_orange"
 	body_parts_covered = CHEST|ARMS
+	cold_protection = CHEST|ARMS
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/toggle/jacket_red
 	name = "Red Jacket"
@@ -504,7 +508,9 @@
 	icon_state = "jacket_red"
 	item_state = "jacket_red"
 	body_parts_covered = CHEST|ARMS
+	cold_protection = CHEST|ARMS
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/toggle/jacket_purple
 	name = "Purple Jacket"
@@ -512,7 +518,9 @@
 	icon_state = "jacket_purple"
 	item_state = "jacket_purple"
 	body_parts_covered = CHEST|ARMS
+	cold_protection = CHEST|ARMS
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/toggle/jacket_white
 	name = "White Jacket"
@@ -520,7 +528,9 @@
 	icon_state = "jacket_white"
 	item_state = "jacket_white"
 	body_parts_covered = CHEST|ARMS
+	cold_protection = CHEST|ARMS
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/dracula
 	name = "dracula coat"
