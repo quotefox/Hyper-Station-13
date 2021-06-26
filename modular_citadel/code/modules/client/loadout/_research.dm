@@ -12,7 +12,7 @@
 	restricted_roles = list("Research Director", "Roboticist")
 
 /datum/gear/coat_rd
-	name = "Robotics winter coat"
+	name = "Research Director's winter coat"
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/hooded/wintercoat/rd
 	restricted_roles = list("Research Director")
