@@ -256,7 +256,7 @@
 				user.visible_message("[user] unfastens the scanner module.", "<span class='notice'>You unfasten the scanner module.</span>")
 		if(12)
 			if(diff==FORWARD)
-				user.visible_message(("[user] secures the capacitor.", "<span class='notice'>You secure the capacitor.</span>")
+				user.visible_message("[user] secures [I].", "<span class='notice'>You secure [I].</span>")
 			else
 				user.visible_message("[user] removes the capacitor from [parent].", "<span class='notice'>You remove the capacitor from [parent].</span>")
 		if(13)
