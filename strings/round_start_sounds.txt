@@ -28,3 +28,4 @@ sound/music/rocketridersprayer.ogg
 sound/music/thewizard.ogg
 sound/music/thesettler.ogg
 sound/music/thelessImichael.ogg
+sound/music/sacredgeometry.ogg
