@@ -70,6 +70,9 @@
 	var/xenobiology_compatible = FALSE //Can the Xenobio management console transverse this area by default?
 	var/list/canSmoothWithAreas //typecache to limit the areas that atoms in this area can smooth with
 
+	/// Color on minimaps, if it's null (which is default) it makes one at random.
+	var/minimap_color
+
 /*Adding a wizard area teleport list because motherfucking lag -- Urist*/
 /*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
 GLOBAL_LIST_EMPTY(teleportlocs)
@@ -92,7 +95,14 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 // ===
 
 /area/New()
-	// This interacts with the map loader, so it needs to be set immediately
+	if(!minimap_color) // goes in New() because otherwise it doesn't fucking work
+		// generate one using the icon_state
+		if(icon_state && icon_state != "unknown")
+			var/icon/I = new(icon, icon_state, dir)
+			I.Scale(1,1)
+			minimap_color = I.GetPixel(1,1)
+		else // no icon state? use random.
+			minimap_color = rgb(rand(50,70),rand(50,70),rand(50,70))	// This interacts with the map loader, so it needs to be set immediately
 	// rather than waiting for atoms to initialize.
 	if (unique)
 		GLOB.areas_by_type[type] = src
