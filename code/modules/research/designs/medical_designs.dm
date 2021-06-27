@@ -599,16 +599,22 @@
 	name = "Cybernetic Stomach"
 	desc = "A cybernetic stomach."
 	id = "cybernetic_stomach"
+	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 500, MAT_GLASS = 500)
 	build_path = /obj/item/organ/stomach/cybernetic
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
 /datum/design/cybernetic_stomach_u
 	name = "Upgraded Cybernetic Stomach"
 	desc = "An upgraded cybernetic stomach."
 	id = "cybernetic_stomach_u"
+	build_type = PROTOLATHE
 	construction_time = 50
 	materials = list(MAT_METAL = 500, MAT_GLASS = 500, MAT_SILVER = 500)
 	build_path = /obj/item/organ/stomach/cybernetic/upgraded
+	category = list("Medical Designs")
+	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
 
 /datum/design/cybernetic_tongue
 	name = "Cybernetic tongue"
