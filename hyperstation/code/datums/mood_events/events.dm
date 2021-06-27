@@ -25,5 +25,5 @@
 
 /datum/mood_event/copium
 	description = "<span class='nicegreen'>Things are going to be okay, right?</span>\n"
-	mood_change = 2
+	mood_change = 3
 	timeout = 3 MINUTES

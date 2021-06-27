@@ -3,7 +3,7 @@
 	description = "A heavy scented substance meant to help one deal with loss."
 	reagent_state = LIQUID
 	color = "#a8707e"
-	overdose_threshold = 25
+	overdose_threshold = 21
 	metabolization_rate = 0.75 * REAGENTS_METABOLISM
 	pH = 4
 
