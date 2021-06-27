@@ -252,7 +252,7 @@
 #define OFFSET_NECK "neck"
 
 //MINOR TWEAKS/MISC
-#define AGE_MIN				18	//youngest a character can be //CITADEL EDIT - 17 --> 18
+#define AGE_MIN				21	//youngest a character can be //Hyper edit - 21
 #define AGE_MAX				85	//oldest a character can be
 #define WIZARD_AGE_MIN		30	//youngest a wizard can be
 #define APPRENTICE_AGE_MIN	29	//youngest an apprentice can be
