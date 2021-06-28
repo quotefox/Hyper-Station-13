@@ -21,6 +21,9 @@
 
 	locked = FALSE //unlock cover
 
+	if(connected_ai)
+		deployed = FALSE
+
 	update_canmove()
 	if(!QDELETED(builtInCamera) && builtInCamera.status)
 		builtInCamera.toggle_cam(src,0)

@@ -873,6 +873,8 @@
 		return 0
 	if(digitalcamo || digitalinvis)
 		return 0
+	if(ismimic(src)) // Are we a mimic? Mimics should not be tracked to prevent AI camera cheese.
+		return 0
 
 	// Now, are they viewable by a camera? (This is last because it's the most intensive check)
 	if(!near_camera(src))
