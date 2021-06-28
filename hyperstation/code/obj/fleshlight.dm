@@ -164,6 +164,13 @@
 			C.adjustArousalLoss(20)
 			M.adjustArousalLoss(20)
 			M.do_jitter_animation() //make your partner shake too!
+
+			if (M.getArousalLoss() >= 100 && ishuman(M) && prob(5))//Why not have a probability to cum when someone's getting nailed with max arousal?~
+				if(V.is_exposed())	//Oh yea, if vagina is not exposed, the climax will not cause a spill
+					M.mob_climax_outside(V, spillage = TRUE) 
+				else
+					M.mob_climax_outside(V, spillage = FALSE)
+
 			if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
 				var/mob/living/carbon/human/O = C
 
