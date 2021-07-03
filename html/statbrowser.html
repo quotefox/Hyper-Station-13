@@ -292,6 +292,8 @@ var imageRetryDelay = 50;
 var imageRetryLimit = 50;
 var menu = document.querySelector('#menu');
 var under_menu = document.querySelector('#under_menu');
+var statcontentdiv = document.getElementById('statcontent');
+var storedimages = [];
 
 function createStatusTab(name) {
 	if(document.getElementById(name) || name.trim() == "")
@@ -796,15 +798,26 @@ function iconError(E) {
 }
 
 function draw_listedturf() {
-	var statcontentdiv = document.getElementById("statcontent");
 	statcontentdiv[textContentKey] = "";
 	var table = document.createElement("table");
 	for(var i = 0; i < turfcontents.length; i++) {
 		var part = turfcontents[i];
-		if(part[2]) {
+		if(storedimages[part[1]] == null && part[2]) {
 			var img = document.createElement("img");
 			img.src = part[2];
-			img[addEventListenerKey]("onerror", iconError());
+			img.id = part[1];
+			storedimages[part[1]] = part[2];
+			img.onerror = function() {
+				iconError();
+			};
+			table.appendChild(img);
+		} else {
+			var img = document.createElement("img");
+			img.onerror = function() {
+				iconError();
+			};
+			img.src = storedimages[part[1]];
+			img.id = part[1];
 			table.appendChild(img);
 		}
 		var b = document.createElement("div");
