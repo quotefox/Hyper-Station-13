@@ -110,7 +110,7 @@
 	if(!user.mind.has_antag_datum(/datum/antagonist/nukeop,TRUE))
 		to_chat(user, "<span class='danger'>AUTHENTICATION FAILURE. ACCESS DENIED.</span>")
 		return FALSE
-	if(!user.onSyndieBase())
+	if(!user.onSyndieBase() && !user.mind.has_antag_datum(/datum/antagonist/nukeop/lone,TRUE))
 		to_chat(user, "<span class='warning'>[src] is out of range! It can only be used at your base!</span>")
 		return FALSE
 	return TRUE
