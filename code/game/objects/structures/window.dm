@@ -516,7 +516,9 @@
 	/obj/machinery/door/airlock/hatch,
 	/obj/machinery/door/airlock/engineering/glass/critical,
 	/obj/machinery/door/airlock/atmos,
-	/obj/machinery/door/airlock/highsecurity,)
+	/obj/machinery/door/airlock/highsecurity,
+	/turf/closed/wall/mineral/sandstone,
+	/obj/structure/falsewall/sandstone,)
 //	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
 	glass_amount = 2
 
