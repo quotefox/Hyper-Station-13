@@ -434,3 +434,5 @@
 
 /datum/config_entry/flag/picture_logging_camera
 
+/datum/config_entry/flag/minimaps_enabled
+	config_entry_value = TRUE

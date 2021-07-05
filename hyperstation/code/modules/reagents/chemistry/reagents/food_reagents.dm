@@ -6,6 +6,3 @@
 	nutriment_factor = 5 * REAGENTS_METABOLISM
 	metabolization_rate = 1 * REAGENTS_METABOLISM
 	taste_description = "sweetness"
-
-/datum/reagent/consumable/alienhoney/on_mob_life(mob/living/carbon/M)
-	..()

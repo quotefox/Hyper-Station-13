@@ -53,8 +53,8 @@
 		/datum/reagent/carpet,
 		/datum/reagent/firefighting_foam,
 		/datum/reagent/consumable/tearjuice,
-		/datum/reagent/medicine/strange_reagent
-
+		/datum/reagent/medicine/strange_reagent,
+		/datum/reagent/medicine/copium
 	)
 	//needs to be chemid unit checked at some point
 

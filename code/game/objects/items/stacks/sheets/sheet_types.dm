@@ -27,6 +27,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 		new/datum/stack_recipe("dark chair", /obj/structure/chair/dark, one_per_turf = TRUE, on_floor = TRUE), \
 		new/datum/stack_recipe("folding chair", /obj/structure/chair/foldingchair, one_per_turf = TRUE, on_floor = TRUE), \
 		new/datum/stack_recipe("mounted chair", /obj/structure/chair/mountchair, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("sofa chair", /obj/structure/chair/sofachair, one_per_turf = TRUE, on_floor = TRUE), \
 		new/datum/stack_recipe("bar stool", /obj/structure/chair/stool/bar, one_per_turf = TRUE, on_floor = TRUE), \
 		null, \
 		new/datum/stack_recipe("dark office chair", /obj/structure/chair/office/dark, 5, one_per_turf = TRUE, on_floor = TRUE), \
