@@ -1,7 +1,7 @@
 GLOBAL_DATUM_INIT(lore_terminal_controller, /datum/lore_controller, new)
 
 /obj/machinery/computer/lore_terminal
-	name = "Staff Seegson info-link terminal"
+	name = "Staff info-link terminal"
 	desc = "A small CRT display with an inbuilt microcomputer which is loaded with an extensive database. These terminals contain eveyrthing from information about historical events to instruction manuals for common ship appliances."
 	icon = 'nsv13/icons/obj/computers.dmi'
 	icon_state = "terminal"
@@ -9,15 +9,20 @@ GLOBAL_DATUM_INIT(lore_terminal_controller, /datum/lore_controller, new)
 	density = FALSE
 	anchored = TRUE
 	idle_power_usage = 15
-	var/access_tag = "ntcommon"  //Every subtype of this type will be readable by this console. Use this for away terms as seen here \/
+	var/access_tag = "kncommon"  //Every subtype of this type will be readable by this console. Use this for away terms as seen here \/
 	var/list/entries = list() //Every entry that we've got.
 	var/in_use = FALSE //Stops sound spam
 	var/datum/looping_sound/computer_click/soundloop
 
 /obj/machinery/computer/lore_terminal/command //Put sensitive information on this one
-	name = "Command Seegson info-link terminal"
-	access_tag = "ntcommand"
+	name = "Command info-link terminal"
+	access_tag = "kncommand"
 	req_access = list(ACCESS_HEADS)
+
+/obj/machinery/computer/lore_terminal/security
+	name = "Security info-link terminal"
+	access_tag = "knsecurity"
+	req_access = list(ACCESS_SECURITY)
 
 /obj/machinery/computer/lore_terminal/awaymission //Example for having a terminal preloaded with only a set list of files.
 	access_tag = "awaymission_default"
@@ -201,7 +206,7 @@ SPECIAL KEYS RESPOND AS FOLLOWS:
 	name = "new_employees_memo.mail"
 	title = "Intercepted message"
 	path = "lore_entries/welcome.txt"
-	access_tag = "ntcommon"
+	access_tag = "kncommon"
 
 /datum/lore_entry/all
 	name = "nuclear_authdisk_instructions.mail"
@@ -217,7 +222,7 @@ SPECIAL KEYS RESPOND AS FOLLOWS:
 /datum/lore_entry/command
 	name = "command_memo.mail"
 	title = "Intercepted Message"
-	access_tag = "ntcommand"
+	access_tag = "kncommand"
 	classified = "Restricted"
 	content = "SYSADMIN -> command@seegnet.kin. RE: Orientation. ` Greetings station command staff, congratulations on your placement! It is now company policy to attend all briefings as issued by centcom staff. Please speak to your centcom officer for clarification on the new procedures."
 
@@ -238,3 +243,54 @@ SPECIAL KEYS RESPOND AS FOLLOWS:
 /datum/lore_entry/away_example/weapons_log
 	name = "weapon_systems_dump2259/11/25.txt"
 	content = "Life support systems terminated. Railgun system status: A6E3. Torpedo system status: ~@##6#6#^^6 -=File Access Terminated=-"
+
+/datum/lore_entry/security
+	name = "usage_and_terms.memo"
+	title = "Usage and Terms"
+	access_tag = "knsecurity"
+	path = "lore_entries/security/usageandterms.txt"
+
+/datum/lore_entry/security/introduction
+	name = "introduction.memo"
+	title = "Security Introduction"
+	path = "lore_entries/security/introduction.txt"
+
+/datum/lore_entry/security/basicgearandyou
+	name = "gearbasics.memo"
+	title = "Basic Gear and You"
+	path = "lore_entries/security/basicgearandyou.txt"
+
+/datum/lore_entry/security/advancedgearandyou
+	name = "gearadvanced.memo"
+	title = "Advanced Gear and You"
+	path = "lore_entries/security/advancedgearandyou.txt"
+
+/datum/lore_entry/security/defensivegearandyou
+	name = "geardefensive.memo"
+	title = "Defensive Gear and You"
+	path = "lore_entries/security/defensivegearandyou.txt"
+
+/datum/lore_entry/security/sop
+	name = "standard_operating_procedure.txt"
+	title = "Standard Operating Procedure"
+	path = "lore_entries/security/wip.txt"
+
+/datum/lore_entry/security/lowcrime
+	name = "low_infractions.txt"
+	title = "Minor Infractions"
+	path = "lore_entries/security/wip.txt"
+
+/datum/lore_entry/security/mediumcrime
+	name = "medium_infractions.txt"
+	title = "Medium-risk Infractions"
+	path = "lore_entries/security/wip.txt"
+
+/datum/lore_entry/security/highcrime
+	name = "high_infractions.txt"
+	title = "Dangerous Infractions"
+	path = "lore_entries/security/wip.txt"
+
+/datum/lore_entry/security/deltacrime
+	name = "delta_infractions.txt"
+	title = "Zealot-class Notice and Warning"
+	path = "lore_entries/security/wip.txt"
