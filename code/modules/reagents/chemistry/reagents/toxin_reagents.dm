@@ -200,7 +200,8 @@
 	pH = 11
 
 /datum/reagent/toxin/mindbreaker/on_mob_life(mob/living/carbon/M)
-	M.hallucination += 5
+	if(!M.has_quirk(/datum/quirk/insanity))
+		M.hallucination += 5
 	return ..()
 
 /datum/reagent/toxin/plantbgone

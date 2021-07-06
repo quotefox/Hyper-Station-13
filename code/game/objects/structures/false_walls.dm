@@ -271,7 +271,7 @@
 	icon_state = "sandstone"
 	mineral = /obj/item/stack/sheet/mineral/sandstone
 	walltype = /turf/closed/wall/mineral/sandstone
-	canSmoothWith = list(/obj/structure/falsewall/sandstone, /turf/closed/wall/mineral/sandstone)
+	canSmoothWith = list(/obj/structure/falsewall/sandstone, /turf/closed/wall/mineral/sandstone, /obj/structure/window/fulltile)
 
 /obj/structure/falsewall/wood
 	name = "wooden wall"

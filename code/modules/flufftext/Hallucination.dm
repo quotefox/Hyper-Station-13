@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	Show()
 
 /obj/effect/hallucination/simple/Destroy()
-	if(target.client)
+	if(target && target.client)
 		target.client.images.Remove(current_image)
 	active = FALSE
 	return ..()

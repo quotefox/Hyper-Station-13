@@ -79,6 +79,10 @@
 	name = "Witch Wing"
 	icon_state = "witchwing"
 
+/datum/sprite_accessory/moth_wings/bee
+	name = "Bee Wing"
+	icon_state = "bee"
+
 /datum/sprite_accessory/moth_markings // the markings that moths can have. finally something other than the boring tan
 	icon = 'icons/mob/moth_markings.dmi'
 	color_src = null

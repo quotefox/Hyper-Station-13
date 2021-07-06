@@ -26,3 +26,10 @@
 	cost = 35000
 	contains = list(/obj/machinery/jukebox)
 	crate_name = "Jukebox"
+
+/datum/supply_pack/misc/discojukebox
+	name = "Disco Jukebox"
+	desc = "For the party within you. Needs engineering access or above."
+	cost = 60000
+	contains = list(/obj/machinery/jukebox/disco)
+	crate_name = "disco jukebox"

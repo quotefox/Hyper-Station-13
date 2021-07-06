@@ -33,25 +33,26 @@
 	wander = TRUE
 	minbodytemp = 250 //weak to cold
 	maxbodytemp = 1500
-	pressure_resistance = 600
+	pressure_resistance = 1200
 	sight = SEE_MOBS
-	var/unstealth = FALSE
+	var/stealthed = TRUE
 	var/knockdown_people = 1
 	var/playerTransformCD = 50
 	var/playerTfTime
 	var/static/mimic_blacklisted_transform_items = typecacheof(list(
 	/obj/item/projectile,
-	/obj/item/radio/intercom))
+	/obj/item/radio/intercom,
+	/mob/living/simple_animal/bot))
 	var/playstyle_string = "<span class='boldannounce'>You are a mimic</span></b>, a tricky creature that can take the form of \
 							almost any item nearby by shift-clicking it. While morphed, you move slowly and do less damage. \
 							Finally, you can restore yourself to your original form while morphed by shift-clicking yourself. \
-							Attacking carbon lifeforms will heal you at the cost of destructuring their DNA.</b>"
+							Attacking carbon lifeforms will heal you at the cost of destructuring their DNA. \
+							You can also change your form to that of simple animals, but be wary that anyone examining you can \
+							find out.</b>"
 
 /mob/living/simple_animal/hostile/hs13mimic/Initialize()
 	. = ..()
-	// When initialized, make sure they take the form of something.
-	unstealth = FALSE
-	trytftorandomobject()
+	trytftorandomobject() // When initialized, make sure they take the form of something.
 
 /mob/living/simple_animal/hostile/hs13mimic/Login()
 	. = ..()
@@ -60,26 +61,37 @@
 
 /mob/living/simple_animal/hostile/hs13mimic/attack_hand(mob/living/carbon/human/M)
 	. = ..()
-	trigger()
+	if(stealthed && stat == CONSCIOUS)
+		if(M.a_intent == INTENT_HELP)//They're trying to pick us up! We tricked them boys! *plays runescape sea shanty*
+			target = M
+			guaranteedknockdown(M)
+		trigger() // Bring our friends if any!
 
 /mob/living/simple_animal/hostile/hs13mimic/AttackingTarget()
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/C = target
-		if(unstealth == FALSE && knockdown_people && .) //Guaranteed knockdown if we get the first hit while disguised. Typically, only players can do this since NPC mimics transform first before attacking.
-			unstealth = TRUE
-			restore()
-			C.Knockdown(40)
-			C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
-				"<span class='userdanger'>\The [src] knocks you down!</span>")
-		else if(knockdown_people && . && prob(15))
-			C.Knockdown(40)
-			C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
+		if(.)
+			if(stealthed && knockdown_people) //Guaranteed knockdown if we get the first hit while disguised. Typically, only players can do this since NPC mimics transform first before attacking.
+				restore()
+				C.Knockdown(40)
+				C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
 					"<span class='userdanger'>\The [src] knocks you down!</span>")
-		if(C.nutrition >= 15)
-			C.nutrition -= (rand(7,15)) //They lose 7-15 nutrition
-			adjustBruteLoss(-3) //We heal 3 damage
-		C.adjustCloneLoss(rand(2,4)) //They also take a bit of cellular damage.
+			else if(knockdown_people && prob(15))
+				C.Knockdown(40)
+				C.visible_message("<span class='danger'>\The [src] knocks down \the [C]!</span>", \
+						"<span class='userdanger'>\The [src] knocks you down!</span>")
+			if(C.nutrition >= 15)
+				C.nutrition -= (rand(7,15)) //They lose 7-15 nutrition
+				adjustBruteLoss(-3) //We heal 3 damage
+			C.adjustCloneLoss(rand(2,4)) //They also take a bit of cellular damage.
+	if(isanimal(target))
+		var/mob/living/simple_animal/A = target
+		if(.)
+			if(stealthed)
+				restore()
+			if(A.stat == CONSCIOUS)
+				adjustBruteLoss(-3) //We heal 3 damage
 
 /mob/living/simple_animal/hostile/hs13mimic/adjustHealth(amount, updating_health = TRUE, forced = FALSE)
 	trigger()
@@ -88,95 +100,97 @@
 /mob/living/simple_animal/hostile/hs13mimic/FindTarget()
 	. = ..()
 	if(.)
-		trigger()
-	else if(!target && unstealth)
+		trigger() //We have a target! Trigger!
+	else if(!target && !stealthed) //Has no target, isn't stealthed, let's search for an object to transform
 		trytftorandomobject()
 
 /mob/living/simple_animal/hostile/hs13mimic/death(gibbed)
-	restore()
+	restore() //We died. Restore form.
 	. = ..()
 
 /mob/living/simple_animal/hostile/hs13mimic/med_hud_set_health()
-	if(!unstealth)
+	if(stealthed)
 		var/image/holder = hud_list[HEALTH_HUD]
 		holder.icon_state = null
 		return //we hide medical hud while morphed
 	..()
 
 /mob/living/simple_animal/hostile/hs13mimic/med_hud_set_status()
-	if(!unstealth)
+	if(stealthed)
 		var/image/holder = hud_list[STATUS_HUD]
 		holder.icon_state = null
 		return //we hide medical hud while morphed
 	..()
 
-/mob/living/simple_animal/hostile/hs13mimic/proc/Mimictransform() //The list of default things to transform needs to be bigger, consider this in the future.
+/mob/living/simple_animal/hostile/hs13mimic/proc/mimicTransformList() //The list of default things to transform needs to be bigger, consider this in the future.
 	var/transformitem = rand(1,100)
 	medhudupdate()
-	if(unstealth == FALSE)
-		wander = FALSE
-		vision_range = initial(vision_range)
-		switch(transformitem)
-			if(1 to 10)
-				name = "drinking glass"
-				icon = 'icons/obj/drinks.dmi'
-				icon_state = "glass_empty"
-				desc = "Your standard drinking glass."
-			if(11 to 20)
-				name = "insulated gloves"
-				icon = 'icons/obj/clothing/gloves.dmi'
-				icon_state = "yellow"
-				desc = "These gloves will protect the wearer from electric shock."
-			if(21 to 30)
-				name = "Private Security Officer"
-				desc = "A cardboard cutout of a private security officer."
-				icon = 'icons/obj/cardboard_cutout.dmi'
-				icon_state = "cutout_ntsec"
-			if(31 to 40)
-				name = "pen"
-				icon = 'icons/obj/bureaucracy.dmi'
-				icon_state = "pen"
-				desc = "It's a black ink pen, modified for use with both paper and Nanotransen-brand Digital-Readpads™!"
-			if(41 to 50)
-				name = "newspaper"
-				desc = "An issue of The Griffon, the newspaper circulating aboard Kin.Co Space Stations."
-				icon = 'icons/obj/bureaucracy.dmi'
-				icon_state = "newspaper"
-			if(51 to 60)
-				name = "toolbox"
-				desc = "Danger. Very robust."
-				icon = 'icons/obj/storage.dmi'
-				icon_state = "red"
-			if(61 to 70)
-				name = "emergency oxygen tank"
-				desc = "Used for emergencies. Contains very little oxygen, so try to conserve it until you actually need it."
-				icon = 'icons/obj/tank.dmi'
-				icon_state = "emergency"
-			if(71 to 80)
-				name = "drinking glass"
-				icon = 'icons/obj/drinks.dmi'
-				icon_state = "glass_empty"
-				desc = "Your standard drinking glass."
-			if(81 to 90)
-				name = "fleshlight"
-				icon = 'hyperstation/icons/obj/fleshlight.dmi'
-				icon_state = "fleshlight_totallynotamimic"
-				desc = "A sex toy disguised as a flashlight, used to stimulate someones penis, complete with colour changing sleeve."
-			if(91 to 100)
-				icon = 'modular_citadel/icons/obj/genitals/dildo.dmi'
-				switch(rand(1,3)) //switch within a switch hmmmmmmmmmm
-					if(1)
-						icon_state = "dildo_knotted_2"
-						name = "small knotted dildo"
-					if(2)
-						icon_state = "dildo_flared_4"
-						name = "huge flared dildo"
-					if(3)
-						icon_state = "dildo_knotted_3"
-						name = "big knotted dildo"
-				desc = "Floppy!"
-	else
-		restore()
+	wander = FALSE
+	vision_range = initial(vision_range)
+	switch(transformitem)
+		if(1 to 10)
+			name = "drinking glass"
+			icon = 'icons/obj/drinks.dmi'
+			icon_state = "glass_empty"
+			desc = "Your standard drinking glass."
+		if(11 to 20)
+			name = "insulated gloves"
+			icon = 'icons/obj/clothing/gloves.dmi'
+			icon_state = "yellow"
+			desc = "These gloves will protect the wearer from electric shock."
+		if(21 to 30)
+			name = "Private Security Officer"
+			desc = "A cardboard cutout of a private security officer."
+			icon = 'icons/obj/cardboard_cutout.dmi'
+			icon_state = "cutout_ntsec"
+		if(31 to 40)
+			name = "pen"
+			icon = 'icons/obj/bureaucracy.dmi'
+			icon_state = "pen"
+			desc = "It's a black ink pen, modified for use with both paper and Nanotransen-brand Digital-Readpads™!"
+		if(41 to 50)
+			name = "newspaper"
+			desc = "An issue of The Griffon, the newspaper circulating aboard Kin.Co Space Stations."
+			icon = 'icons/obj/bureaucracy.dmi'
+			icon_state = "newspaper"
+		if(51 to 60)
+			name = "toolbox"
+			desc = "Danger. Very robust."
+			icon = 'icons/obj/storage.dmi'
+			icon_state = "red"
+		if(61 to 70)
+			name = "emergency oxygen tank"
+			desc = "Used for emergencies. Contains very little oxygen, so try to conserve it until you actually need it."
+			icon = 'icons/obj/tank.dmi'
+			icon_state = "emergency"
+		if(71 to 80)
+			name = "drinking glass"
+			icon = 'icons/obj/drinks.dmi'
+			icon_state = "glass_empty"
+			desc = "Your standard drinking glass."
+		if(81 to 90)
+			name = "fleshlight"
+			icon = 'hyperstation/icons/obj/fleshlight.dmi'
+			icon_state = "fleshlight_totallynotamimic"
+			desc = "A sex toy disguised as a flashlight, used to stimulate someones penis, complete with colour changing sleeve."
+		if(91 to 100)
+			icon = 'modular_citadel/icons/obj/genitals/dildo.dmi'
+			switch(rand(1,3)) //switch within a switch hmmmmmmmmmm
+				if(1)
+					icon_state = "dildo_knotted_2"
+					name = "small knotted dildo"
+				if(2)
+					icon_state = "dildo_flared_4"
+					name = "huge flared dildo"
+				if(3)
+					icon_state = "dildo_knotted_3"
+					name = "big knotted dildo"
+			desc = "Floppy!"
+
+/mob/living/simple_animal/hostile/hs13mimic/proc/guaranteedknockdown(mob/living/carbon/human/M)
+	M.Knockdown(40)
+	M.visible_message("<span class='danger'>\The [src] knocks down \the [M]!</span>", \
+	"<span class='userdanger'>\The [src] tricks you, knocking you down!</span>")
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/medhudupdate()
 	med_hud_set_health()
@@ -184,6 +198,7 @@
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/restore()
 	//back to normal mimic sprite
+	stealthed = FALSE
 	medhudupdate()
 	name = initial(name)
 	icon = 'hyperstation/icons/mobs/mimic.dmi'
@@ -194,10 +209,9 @@
 	vision_range = 9
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/trigger()
-	if(unstealth == FALSE && !stat)
-		unstealth = TRUE
+	if(stealthed && stat == CONSCIOUS)
 		visible_message("<span class='danger'>The [src] Reveals itself to be a Mimic!</span>")
-		Mimictransform()
+		restore()
 		playsound(loc, 'hyperstation/sound/creatures/mimictransform.ogg', 75, TRUE)
 		triggerOthers(target) // Friends too!
 
@@ -208,7 +222,7 @@
 		C.trigger()
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/trytftorandomobject()
-	unstealth = FALSE
+	stealthed = TRUE
 	medhudupdate()
 	var/list/obj/item/listItems = list()
 	for(var/obj/item/I in oview(9,src.loc))
@@ -223,31 +237,38 @@
 		icon_state = changedReference.icon_state
 		desc = changedReference.desc
 	else
-		Mimictransform()
+		mimicTransformList() //Couldn't find any valid items, let's go for the default list then.
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/allowed(atom/movable/A)
-	return !is_type_in_typecache(A, mimic_blacklisted_transform_items) && (isitem(A))
+	return !is_type_in_typecache(A, mimic_blacklisted_transform_items) && (isitem(A) || isanimal(A))
 
-/mob/living/simple_animal/hostile/hs13mimic/ShiftClickOn(atom/movable/A) //if by any chance a player takes control of them
-	if(playerTfTime <= world.time && !stat)
+//Player control code
+
+/mob/living/simple_animal/hostile/hs13mimic/ShiftClickOn(atom/movable/A)
+	if(playerTfTime <= world.time && stat == CONSCIOUS)
 		if(A == src)
 			restore()
 			playerTfTime = world.time + playerTransformCD
 			return
 		if(istype(A) && allowed(A))
-			unstealth = FALSE
+			stealthed = TRUE
+			SEND_SOUND(src, sound('hyperstation/sound/creatures/mimictransform.ogg',volume=50))
 			name = A.name
 			icon = A.icon
 			icon_state = A.icon_state
 			desc = A.desc
 			speed = 5
 			playerTfTime = world.time + playerTransformCD
+			if(isanimal(A))
+				var/mob/living/simple_animal/animal = A
+				icon_state = animal.icon_living
+				desc += "<span class='warning'> But something about it seems wrong...</span>"
+
 	else
 		to_chat(src, "<span class='warning'>You need to wait a little longer before you can shift into something else!</span>")
 		..()
 
 //Event control
-
 
 /datum/round_event_control/mimic_infestation
 	name = "Mimic Infestation"
@@ -271,7 +292,7 @@
 	/area/engine/atmospherics_engine, 
 	/area/engine/engineering/reactor_core, 
 	/area/engine/engineering/reactor_control, 
-	/area/ai_monitored/turret_protected/ai, 
+	/area/ai_monitored/turret_protected,
 	/area/layenia/cloudlayer, 
 	/area/asteroid/nearstation, 
 	/area/science/server, 
@@ -337,7 +358,7 @@
 		return WAITING_FOR_SOMETHING
 
 	notify_ghosts("A group of mimics has spawned in [pickedArea]!", source=pickedArea, action=NOTIFY_ATTACK, flashwindow = FALSE)
-	while(spawncount >= 1 && validTurfs.len)
+	while(spawncount > 0 && validTurfs.len)
 		var/turf/pickedTurf = pick_n_take(validTurfs)
 		var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic
 		spawn_atom_to_turf(spawn_type, pickedTurf, 1, FALSE)

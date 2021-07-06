@@ -75,3 +75,4 @@
 		user.nextsoundemote = world.time + 7
 		playsound(user, 'modular_citadel/sound/voice/speen.ogg', 50, 1, -1)
 	. = ..()
+

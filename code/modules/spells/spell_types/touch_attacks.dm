@@ -73,3 +73,16 @@
 
 	action_icon_state = "statue"
 	sound = 'sound/magic/fleshtostone.ogg'
+
+/obj/effect/proc_holder/spell/targeted/touch/stunshrink
+	name = "Accelerated Shrinkage"
+	desc = "This spell instantly shrinks the victim to a small size, leaving them dazed and confused."
+	hand_path = /obj/item/melee/touch_attack/stunshrink
+
+	school = "transmutation"
+	charge_max = 300
+	clothes_req = 0
+	cooldown_min = 100 //100 deciseconds reduction per rank
+
+	action_icon_state = "statue"
+	sound = 'sound/magic/MM_Hit.ogg'

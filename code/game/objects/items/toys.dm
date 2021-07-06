@@ -650,6 +650,7 @@
 	var/cooldown = 0
 	var/obj/machinery/computer/holodeck/holo = null // Holodeck cards should not be infinite
 	var/list/cards = list()
+	var/original_size = 52
 
 /obj/item/toy/cards/deck/Initialize()
 	. = ..()
@@ -699,16 +700,16 @@
 	H.parentdeck = src
 	var/O = src
 	H.apply_card_vars(H,O)
-	src.cards -= choice
+	src.cards.Cut(1,2) //Removes the top card from the list
 	H.pickup(user)
 	user.put_in_hands(H)
 	user.visible_message("[user] draws a card from the deck.", "<span class='notice'>You draw a card from the deck.</span>")
 	update_icon()
 
 /obj/item/toy/cards/deck/update_icon()
-	if(cards.len > 26)
+	if(cards.len > original_size/2)
 		icon_state = "deck_[deckstyle]_full"
-	else if(cards.len > 10)
+	else if(cards.len > original_size/4)
 		icon_state = "deck_[deckstyle]_half"
 	else if(cards.len > 0)
 		icon_state = "deck_[deckstyle]_low"
@@ -859,11 +860,11 @@
 /obj/item/toy/cards/cardhand/proc/update_sprite()
 	cut_overlays()
 	var/overlay_cards = currenthand.len
-
-	var/k = overlay_cards == 2 ? 1 : overlay_cards - 2
-	for(var/i = k; i <= overlay_cards; i++)
-		var/card_overlay = image(icon=src.icon,icon_state="sc_[currenthand[i]]_[deckstyle]",pixel_x=(1-i+k)*3,pixel_y=(1-i+k)*3)
-		add_overlay(card_overlay)
+	if(overlay_cards)
+		var/k = overlay_cards == 2 ? 1 : overlay_cards - 2
+		for(var/i = k; i <= overlay_cards; i++)
+			var/card_overlay = image(icon=src.icon,icon_state="sc_[currenthand[i]]_[deckstyle]",pixel_x=(1-i+k)*3,pixel_y=(1-i+k)*3)
+			add_overlay(card_overlay)
 
 /obj/item/toy/cards/singlecard
 	name = "card"

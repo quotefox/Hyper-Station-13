@@ -210,7 +210,7 @@
 	restricted_roles = list("AI", "Cyborg", "Positronic Brain")
 	protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
 	required_candidates = 1
-	enemy_roles = list("Security Officer", "Detective", "Head of Security", "Captain")
+	enemy_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	weight = 4
 	cost = 10
@@ -408,7 +408,7 @@
 	name = "Malfunctioning AI"
 	antag_datum = /datum/antagonist/traitor
 	antag_flag = ROLE_MALF
-	enemy_roles = list("Security Officer", "Warden","Detective","Head of Security", "Captain", "Scientist", "Research Director", "Chief Engineer", "Engineer", "Shaft Miner")
+	enemy_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	exclusive_roles = list("AI")
 	required_enemies = list(4,4,4,4,4,4,2,2,2,0)
 	required_candidates = 1
@@ -461,7 +461,7 @@
 	name = "Wizard"
 	antag_datum = /datum/antagonist/wizard
 	antag_flag = ROLE_WIZARD
-	enemy_roles = list("Security Officer","Detective","Head of Security", "Captain")
+	enemy_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	required_enemies = list(2,2,1,1,1,1,1,1,1,0)
 	required_candidates = 1
 	weight = 1
@@ -495,7 +495,7 @@
 	name = "Nuclear Assault"
 	antag_flag = ROLE_OPERATIVE
 	antag_datum = /datum/antagonist/nukeop
-	enemy_roles = list("AI", "Cyborg", "Security Officer", "Warden","Detective","Head of Security", "Captain")
+	enemy_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective","Head of Security", "Captain")
 	required_enemies = list(3,3,3,3,3,2,2,2,2,1)
 	required_candidates = 5
 	weight = 5
@@ -539,7 +539,7 @@
 	name = "Blob"
 	antag_datum = /datum/antagonist/blob
 	antag_flag = ROLE_BLOB
-	enemy_roles = list("Security Officer", "Detective", "Head of Security", "Captain", "Station Engineer")
+	enemy_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Station Engineer")
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
 	weight = 3
@@ -629,7 +629,7 @@ datum/dynamic_ruleset/midround/bloodcult/trim_candidates()
 	name = "Alien Infestation"
 	antag_datum = /datum/antagonist/xeno
 	antag_flag = ROLE_ALIEN
-	enemy_roles = list("Security Officer", "Detective", "Head of Security", "Captain")
+	enemy_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
 	weight = 3
@@ -680,7 +680,7 @@ datum/dynamic_ruleset/midround/bloodcult/trim_candidates()
 	controller = /datum/round_event_control/nightmare
 	antag_flag = "Nightmare"
 	antag_flag_override = ROLE_ALIEN
-	enemy_roles = list("Security Officer", "Detective", "Head of Security", "Captain")
+	enemy_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
 	weight = 4
@@ -728,7 +728,7 @@ datum/dynamic_ruleset/midround/bloodcult/trim_candidates()
 	//config_tag = "abductors"
 	antag_flag = ROLE_ABDUCTOR
 	// Has two antagonist flags, in fact
-	enemy_roles = list("AI", "Cyborg", "Security Officer", "Warden","Detective","Head of Security", "Captain")
+	enemy_roles = list("AI", "Cyborg", "Security Officer", "Warden", "Detective", "Head of Security", "Captain")
 	required_enemies = list(3,3,2,2,2,2,2,2,2,0)
 	required_candidates = 2
 	weight = 3
@@ -770,8 +770,8 @@ datum/dynamic_ruleset/midround/bloodcult/trim_candidates()
 	name = "Space Ninja"
 	//config_tag = "ninja"
 	antag_flag = ROLE_NINJA
-	enemy_roles = list("Security Officer","Head of Security","Captain","AI","Cyborg")
-	required_enemies = list(3,2,2,2,2,1,1,1,1,0)
+	enemy_roles = list("Security Officer", "Warden", "Head of Security", "Captain")
+	required_enemies = list(3,3,2,2,2,2,1,1,1,0)
 	required_candidates = 1
 	weight = 4
 	cost = 10
@@ -847,7 +847,7 @@ datum/dynamic_ruleset/midround/bloodcult/trim_candidates()
   restricted_roles = list("AI", "Cyborg")
   protected_roles = list("Rookie", "Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Head of Personnel", "Chief Engineer", "Chief Medical Officer", "Research Director", "Quartermaster")
   required_candidates = 1
-  enemy_roles = list("Security Officer","Head of Security","Captain","AI","Cyborg","Chaplain","Curator")
+  enemy_roles = list("Security Officer", "Warden", "Detective", "Head of Security", "Captain", "Chaplain")
   required_enemies = list(3,2,2,2,2,2,2,2,2,2)
   weight = 3
   cost = 10
