@@ -188,7 +188,7 @@
 "jD" = (/turf/open/floor/carpet,/area/awaymission/stargate/building)
 "jF" = (/obj/structure/table/wood/fancy/black,/obj/item/clothing/head/nemes,/turf/open/floor/mineral/basaltstone_floor,/area/awaymission/stargate/building)
 "jH" = (/obj/structure/flora/ausbushes/reedbush,/turf/open/floor/plating/dirt/jungle,/area/awaymission/stargate)
-"jR" = (/obj/machinery/rnd/production/protolathe,/turf/open/floor/mineral/bananium,/area/awaymission/stargate/building)
+"jR" = (/obj/machinery/rnd/production/protolathe/department/science,/turf/open/floor/mineral/bananium,/area/awaymission/stargate/building)
 "jX" = (/obj/structure/closet/crate/wooden,/obj/item/stack/sheet/glass/fifty,/obj/item/stack/sheet/glass/fifty,/turf/open/floor/wood,/area/awaymission/stargate/building)
 "jZ" = (/obj/structure/flora/grass/jungle,/turf/open/floor/plating/dirt/dark/jungle,/area/awaymission/stargate)
 "ke" = (/obj/structure/flora/tree/desertdead,/turf/open/floor/plating/asteroid,/area/awaymission/stargate)
