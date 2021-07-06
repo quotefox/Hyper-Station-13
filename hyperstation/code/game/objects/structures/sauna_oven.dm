@@ -56,6 +56,7 @@
 			to_chat(user, "<span class='notice'>You successfully deconstructed [src].</span>")
 			new /obj/item/stack/sheet/mineral/wood(get_turf(src), 30)
 			qdel(src)
+			return TRUE
 
 	else if(istype(T, /obj/item/reagent_containers))
 		var/obj/item/reagent_containers/reagent_container = T
@@ -67,8 +68,10 @@
 			water into [src].</span>", "<span class='notice'>You pour \
 			some water to [src].</span>")
 			water_amount += 5 * SAUNA_WATER_PER_WATER_UNIT
+			return TRUE
 		else
 			to_chat(user, "<span class='warning'>There's no water in [reagent_container]</span>")
+			return FALSE
 
 	else if(istype(T, /obj/item/stack/sheet/mineral/wood))
 		var/obj/item/stack/sheet/mineral/wood/wood = T
