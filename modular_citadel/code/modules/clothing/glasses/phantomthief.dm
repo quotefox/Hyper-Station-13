@@ -6,19 +6,18 @@
 	icon_state = "s-ninja"
 	item_state = "s-ninja"
 
-/obj/item/clothing/glasses/phantomthief/Initialize()
+/obj/item/clothing/glasses/phantomthief/ComponentInitialize()
 	. = ..()
-	AddComponent(/datum/component/phantomthief)
+	AddComponent(/datum/component/wearertargeting/phantomthief)
 
 /obj/item/clothing/glasses/phantomthief/syndicate
 	name = "suspicious plastic mask"
 	desc = "A cheap, bulky, Syndicate-branded plastic face mask. You have to break in to break out."
 	var/nextadrenalinepop
-	var/datum/component/redirect/combattoggle_redir
 
-/obj/item/clothing/glasses/phantomthief/syndicate/examine(user)
+/obj/item/clothing/glasses/phantomthief/syndicate/examine(mob/user)
 	. = ..()
-	if(combattoggle_redir)
+	if(user.get_item_by_slot(SLOT_GLASSES) == src)
 		if(world.time >= nextadrenalinepop)
 			. += "<span class='notice'>The built-in adrenaline injector is ready for use.</span>"
 		else
@@ -34,12 +33,12 @@
 	. = ..()
 	if(!istype(user))
 		return
-	if(!combattoggle_redir)
-		combattoggle_redir = user.AddComponent(/datum/component/redirect, list(COMSIG_COMBAT_TOGGLED = CALLBACK(src, .proc/injectadrenaline)))
+	if(slot != SLOT_GLASSES)
+		return
+	RegisterSignal(user, COMSIG_COMBAT_TOGGLED, .proc/injectadrenaline)
 
 /obj/item/clothing/glasses/phantomthief/syndicate/dropped(mob/user)
 	. = ..()
 	if(!istype(user))
 		return
-	if(combattoggle_redir)
-		QDEL_NULL(combattoggle_redir)
+	UnregisterSignal(user, COMSIG_COMBAT_TOGGLED)
