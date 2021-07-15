@@ -107,7 +107,7 @@
 			if(text2num(duration) > 0)
 				expires = " The ban is for [duration] minutes and expires on [expiration] (server time)."
 			else
-				expires = " The is a permanent ban."
+				expires = " This is a permanent ban."
 
 			var/desc = "\nReason: You, or another user of this computer or connection ([pkey]) is banned from playing here. The ban reason is:\n[reason]\nThis ban (BanID #[banid]) was applied by [akey] on [bantime] during round ID [ban_round_id], [expires]"
 

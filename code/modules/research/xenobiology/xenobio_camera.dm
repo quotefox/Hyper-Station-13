@@ -24,8 +24,6 @@
 	circuit = /obj/item/circuitboard/computer/xenobiology
 	var/datum/action/innate/hotkey_help/hotkey_help
 
-	var/datum/component/redirect/listener
-
 	var/obj/machinery/monkey_recycler/connected_recycler
 	var/list/stored_slimes
 	var/obj/item/slimepotion/slime/current_potion
@@ -41,7 +39,7 @@
 	. = ..()
 	hotkey_help = new
 	stored_slimes = list()
-	listener = AddComponent(/datum/component/redirect, list(COMSIG_ATOM_CONTENTS_DEL = CALLBACK(src, .proc/on_contents_del)))
+	RegisterSignal(src, COMSIG_ATOM_CONTENTS_DEL, .proc/on_contents_del)
 	for(var/obj/machinery/monkey_recycler/recycler in GLOB.monkey_recyclers)
 		if(get_area(src) == get_area(recycler))
 			connected_recycler = recycler
