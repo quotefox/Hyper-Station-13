@@ -14,7 +14,7 @@
 
 /obj/item/clothing/gloves/ComponentInitialize()
 	. = ..()
-	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT, /obj/item/clothing/gloves/clean_blood)
+	AddComponent(/datum/component/redirect, list(COMSIG_COMPONENT_CLEAN_ACT = CALLBACK(src, /obj/item/clothing/gloves/clean_blood)))
 
 /obj/item/clothing/gloves/clean_blood(datum/source, strength)
 	. = ..()

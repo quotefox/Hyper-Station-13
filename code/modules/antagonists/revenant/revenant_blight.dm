@@ -12,8 +12,8 @@
 	disease_flags = CURABLE
 	permeability_mod = 1
 	severity = DISEASE_SEVERITY_DANGEROUS
-	var/finalstage = FALSE //Because we're spawning off the cure in the final stage, we need to check if we've done the final stage's effects.
-	var/depression = FALSE
+	var/finalstage = 0 //Because we're spawning off the cure in the final stage, we need to check if we've done the final stage's effects.
+	var/datum/mood_event/revenant_blight/depression
 
 /datum/disease/revblight/cure()
 	if(affected_mob)
@@ -44,8 +44,7 @@
 				affected_mob.emote("pale")
 		if(3)
 			if(!depression)
-				SEND_SIGNAL(affected_mob, COMSIG_ADD_MOOD_EVENT, "rev_blight", /datum/mood_event/revenant_blight)
-				depression = TRUE
+				depression = SEND_SIGNAL(affected_mob, COMSIG_ADD_MOOD_EVENT, "rev_blight", /datum/mood_event/revenant_blight)
 			SEND_SIGNAL(affected_mob, COMSIG_DECREASE_SANITY, 0.12, SANITY_CRAZY)
 			if(prob(10))
 				affected_mob.emote(pick("pale","shiver"))

@@ -49,9 +49,3 @@
 	item_state = "clustaur"
 	deliveryamt = 5
 	spawner_type = /obj/item/reagent_containers/glass/beaker/waterbottle/wataur
-
-/obj/item/grenade/spawnergrenade/mimics
-	desc = "Months after their first arrival, compression tests were already successful and thus Kinaris created the first mimic bioweapon, a simple payload to quickly release a cluster of them."
-	name = "mimic delivery grenade"
-	spawner_type = /mob/living/simple_animal/hostile/hs13mimic
-	deliveryamt = 10

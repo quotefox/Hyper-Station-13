@@ -29,7 +29,7 @@
 
 	. = ..()
 
-	RegisterSignal(src, COMSIG_COMPONENT_CLEAN_ACT, /mob/living/carbon/human/clean_blood)
+	AddComponent(/datum/component/redirect, list(COMSIG_COMPONENT_CLEAN_ACT = CALLBACK(src, /mob/living/carbon/human/clean_blood)))
 
 
 /mob/living/carbon/human/ComponentInitialize()

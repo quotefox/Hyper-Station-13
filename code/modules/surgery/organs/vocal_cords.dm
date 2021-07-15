@@ -254,8 +254,7 @@
 	var/static/regex/clap_words = regex("clap|applaud")
 	var/static/regex/honk_words = regex("ho+nk") //hooooooonk
 	var/static/regex/multispin_words = regex("like a record baby|right round")
-	var/static/regex/family_friendly_words = regex("family") //Hyper change
-	//var/static/regex/orgasm_words = regex("cum|orgasm|climax|squirt|heyo") //CITADEL CHANGE
+	var/static/regex/orgasm_words = regex("cum|orgasm|climax|squirt|heyo") //CITADEL CHANGE
 	var/static/regex/dab_words = regex("dab|mood") //CITADEL CHANGE
 	var/static/regex/snap_words = regex("snap") //CITADEL CHANGE
 	var/static/regex/bwoink_words = regex("what the fuck are you doing|bwoink|hey you got a moment?") //CITADEL CHANGE
@@ -573,7 +572,6 @@
 			var/mob/living/L = V
 			L.SpinAnimation(speed = 10, loops = 5)
 
-	/* Yeah nah fam.
 	//CITADEL CHANGES
 	//ORGASM
 	else if((findtext(message, orgasm_words)))
@@ -582,13 +580,6 @@
 			var/mob/living/carbon/human/H = V
 			if(H.canbearoused && H.has_dna() && HAS_TRAIT(H, TRAIT_NYMPHO)) // probably a redundant check but for good measure
 				H.mob_climax(forced_climax=TRUE)
-	*/
-	else if((findtext(message, family_friendly_words)))
-		cooldown = COOLDOWN_MEME
-		for(var/V in listeners)
-			var/mob/living/M = V
-			M.say(pick("You don't turn your back on family.","...Even when they do."))
-			SEND_SOUND(M, sound('hyperstation/sound/misc/family.ogg',volume=75))
 
 	//DAB
 	else if((findtext(message, dab_words)))

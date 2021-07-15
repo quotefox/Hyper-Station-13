@@ -104,8 +104,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	component_type = /datum/component/storage/concrete/stack
 	var/spam_protection = FALSE //If this is TRUE, the holder won't receive any messages when they fail to pick up ore through crossing it
-	var/mob/listeningTo
-	rad_flags = RAD_PROTECT_CONTENTS | RAD_NO_CONTAMINATE
+	var/datum/component/mobhook
 
 /obj/item/storage/bag/ore/ComponentInitialize()
 	. = ..()
@@ -117,17 +116,15 @@
 
 /obj/item/storage/bag/ore/equipped(mob/user)
 	. = ..()
-	if(listeningTo == user)
-		return
-	if(listeningTo)
-		UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
-	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/Pickup_ores)
-	listeningTo = user
+	if (mobhook && mobhook.parent != user)
+		QDEL_NULL(mobhook)
+	if (!mobhook)
+		mobhook = user.AddComponent(/datum/component/redirect, list(COMSIG_MOVABLE_MOVED = CALLBACK(src, .proc/Pickup_ores)))
 
 /obj/item/storage/bag/ore/dropped()
 	. = ..()
-	UnregisterSignal(listeningTo, COMSIG_MOVABLE_MOVED)
-	listeningTo = null
+	if (mobhook)
+		QDEL_NULL(mobhook)
 
 /obj/item/storage/bag/ore/proc/Pickup_ores(mob/living/user)
 	var/show_message = FALSE
