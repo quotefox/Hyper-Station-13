@@ -140,10 +140,10 @@
 			icon_state = "yellow"
 			desc = "These gloves will protect the wearer from electric shock."
 		if(21 to 30)
-			name = "Private Security Officer"
-			desc = "A cardboard cutout of a private security officer."
-			icon = 'icons/obj/cardboard_cutout.dmi'
-			icon_state = "cutout_ntsec"
+			name = "stunbaton"
+			desc = "A stun baton for incapacitating people with."
+			icon = 'icons/obj/items_and_weapons.dmi'
+			icon_state = "stunbaton"
 		if(31 to 40)
 			name = "pen"
 			icon = 'icons/obj/bureaucracy.dmi'
@@ -155,10 +155,10 @@
 			icon = 'icons/obj/bureaucracy.dmi'
 			icon_state = "newspaper"
 		if(51 to 60)
-			name = "toolbox"
-			desc = "Danger. Very robust."
-			icon = 'icons/obj/storage.dmi'
-			icon_state = "red"
+			name = "stechkin pistol" //greytider bait
+			desc = "A small, easily concealable 10mm handgun. Has a threaded barrel for suppressors."
+			icon = 'icons/obj/guns/projectile.dmi'
+			icon_state = "pistol"
 		if(61 to 70)
 			name = "emergency oxygen tank"
 			desc = "Used for emergencies. Contains very little oxygen, so try to conserve it until you actually need it."
