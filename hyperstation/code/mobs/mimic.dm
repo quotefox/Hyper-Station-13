@@ -7,8 +7,8 @@
 	icon_dead = "mimic_dead"
 	gender = NEUTER
 	speak_chance = 0
-	maxHealth = 33
-	health = 33
+	maxHealth = 35
+	health = 35
 	turns_per_move = 5
 	move_to_delay = 1
 	speed = 0
