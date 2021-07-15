@@ -295,7 +295,7 @@
  * Trays - Agouri
  */
 /obj/item/storage/bag/tray
-	name = "tray"
+	name = "serving tray"
 	icon = 'icons/obj/food/containers.dmi'
 	icon_state = "tray"
 	desc = "A metal tray to lay food on."
@@ -310,55 +310,54 @@
 /obj/item/storage/bag/tray/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 15		//I want my sushi god damn it
-	STR.insert_preposition = "on"
+	STR.max_w_class = WEIGHT_CLASS_NORMAL //Allows stuff such as Bowls, and normal sized foods, to fit.
 	STR.can_hold = typecacheof(list(
 		/obj/item/reagent_containers/food,
+		/obj/item/reagent_containers/glass,
+		/obj/item/clothing/mask/cigarette,
+		/obj/item/storage/fancy,
+		/obj/item/storage/box/matches,
+		/obj/item/trash,
+		/obj/item/lighter,
+		/obj/item/rollingpaper,
 		/obj/item/kitchen,
-		/obj/item/storage/box/donkpockets))
-
-/obj/item/storage/bag/tray/pre_attack(atom/A, mob/living/user, params)
-	if(istype(A, /obj/structure/table) && user.a_intent == INTENT_HELP)	//I want my tray god damn it
-		if(user.transferItemToLoc(src, get_turf(A)))
-			var/list/click_params = params2list(params)
-			if(!click_params || !click_params["icon-x"] || !click_params["icon-y"])
-				return
-			pixel_x = CLAMP(text2num(click_params["icon-x"]) - 16, -(world.icon_size/2), world.icon_size/2)
-			pixel_y = CLAMP(text2num(click_params["icon-y"]) - 16, -(world.icon_size/2), world.icon_size/2)
-		return
-	..()
+		/obj/item/organ,
+		)) //Should cover: Bottles, Beakers, Bowls, Booze, Glasses, Food, Food Containers, Food Trash, Organs, Tobacco Products, Lighters, and Kitchen Tools.
+	STR.insert_preposition = "on"
+	STR.max_items = 10
 
 /obj/item/storage/bag/tray/attack(mob/living/M, mob/living/user)
 	. = ..()
 	// Drop all the things. All of them.
 	var/list/obj/item/oldContents = contents.Copy()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.quick_empty()
+	SEND_SIGNAL(src, COMSIG_TRY_STORAGE_QUICK_EMPTY)
 	// Make each item scatter a bit
 	for(var/obj/item/I in oldContents)
-		spawn()
-			for(var/i = 1, i <= rand(1,2), i++)
-				if(I)
-					step(I, pick(NORTH,SOUTH,EAST,WEST))
-					sleep(rand(2,4))
+		INVOKE_ASYNC(src, .proc/do_scatter, I)
 
 	if(prob(50))
-		playsound(M, 'sound/items/trayhit1.ogg', 50, 1)
+		playsound(M, 'sound/items/trayhit1.ogg', 50, TRUE)
 	else
-		playsound(M, 'sound/items/trayhit2.ogg', 50, 1)
+		playsound(M, 'sound/items/trayhit2.ogg', 50, TRUE)
 
-	if(ishuman(M) || ismonkey(M))
+	if(ishuman(M))
 		if(prob(10))
 			M.Knockdown(40)
 	update_icon()
 
-/obj/item/storage/bag/tray/update_icon()
-	cut_overlays()
+/obj/item/storage/bag/tray/proc/do_scatter(obj/item/I)
+	for(var/i in 1 to rand(1,2))
+		if(I)
+			step(I, pick(NORTH,SOUTH,EAST,WEST))
+			sleep(rand(2,4))
+
+/obj/item/storage/bag/tray/update_overlays()
+	. = ..()
 	for(var/obj/item/I in contents)
-		var/mutable_appearance/MA = new (I)	//I want my icons god damn it
-		MA.pixel_x = rand(-6, 6)
-		MA.pixel_y = rand(-6, 6)
-		add_overlay(MA)
+		var/mutable_appearance/I_copy = new(I)
+		I_copy.plane = FLOAT_PLANE
+		I_copy.layer = FLOAT_LAYER
+		. += I_copy
 
 /obj/item/storage/bag/tray/Entered()
 	. = ..()
