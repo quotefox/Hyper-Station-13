@@ -59,12 +59,11 @@
 	wine_power = 70 //Water to wine, baby.
 	wine_flavor = "divinity"
 
-/*
 /obj/item/reagent_containers/food/snacks/grown/holymelon/Initialize()
 	. = ..()
 	var/uses = 1
 	if(seed)
-		uses = round(seed.potency / 20)
+		uses = round(seed.potency / 25)
 	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, ITEM_SLOT_HANDS, uses, TRUE, CALLBACK(src, .proc/block_magic), CALLBACK(src, .proc/expire)) //deliver us from evil o melon god
 
 /obj/item/reagent_containers/food/snacks/grown/holymelon/proc/block_magic(mob/user, major)
@@ -75,7 +74,7 @@
 	to_chat(user, "<span class='warning'>[src] rapidly turns into ash!</span>")
 	qdel(src)
 	new /obj/effect/decal/cleanable/ash(drop_location())
-*/
+
 //Milkmelon
 /obj/item/seeds/watermelon/milk
 	name = "pack of milkmelon seeds"
