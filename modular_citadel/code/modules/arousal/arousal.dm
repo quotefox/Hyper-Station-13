@@ -349,6 +349,14 @@
 							"<span class='userlove'>You're about to climax with someone!</span>", \
 							"<span class='userlove'>You're preparing to climax with something!</span>")
 
+	if(G.size >= 3) //TOO BIG!!
+		sleep(3 SECONDS)
+		src.visible_message("<span class='warning'>[src] barely fits into [L]!</span>", \
+							"<span class='userdanger'>[L] is way too tight! You doubt you'll fit!</span>", \
+							"<span class='userdanger'>You can barely fit your [G.name] inside something!</span>")
+		sleep(5 SECONDS)
+		L.gib() //kaboom
+
 	if(cover)//covering the partner in cum, this overrides other options.
 		if(do_after(src, mb_time, target = src) && in_range(src, L))
 			fluid_source.trans_to(L, total_fluids*G.fluid_transfer_factor)
