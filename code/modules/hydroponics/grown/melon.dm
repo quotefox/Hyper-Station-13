@@ -59,13 +59,13 @@
 	wine_power = 70 //Water to wine, baby.
 	wine_flavor = "divinity"
 
-/obj/item/reagent_containers/food/snacks/grown/holymelon/Initialize()
+/*/obj/item/reagent_containers/food/snacks/grown/holymelon/Initialize()
 	. = ..()
 	var/uses = 1
 	if(seed)
 		uses = round(seed.potency / 20)
 		AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, uses, TRUE, CALLBACK(src, .proc/block_magic), CALLBACK(src, .proc/expire)) //deliver us from evil o melon god
-
+*/
 /obj/item/reagent_containers/food/snacks/grown/holymelon/proc/block_magic(mob/user, major)
 	if(major)
 		visible_message("<span class='warning'>[src] hums slightly, and seems to decay a bit.</span>")
