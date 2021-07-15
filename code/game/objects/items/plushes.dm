@@ -34,6 +34,7 @@
 /obj/item/toy/plush/Initialize()
 	. = ..()
 	AddComponent(/datum/component/squeak, squeak_override)
+	AddElement(/datum/element/bed_tuckable, 6, -5, 90)
 
 	//have we decided if Pinocchio goes in the blue or pink aisle yet?
 	if(gender == NEUTER)
@@ -158,7 +159,7 @@
 
 	//we are not catholic
 	if(young == TRUE || Kisser.young == TRUE)
-		user.show_message("<span class='notice'>[src] plays tag with [Kisser].</span>", 1,
+		user.show_message("<span class='notice'>[src] plays tag with [Kisser].</span>", MSG_VISUAL,
 			"<span class='notice'>They're happy.</span>", 0)
 		Kisser.cheer_up()
 		cheer_up()
@@ -166,10 +167,10 @@
 	//never again
 	else if(Kisser in scorned)
 		//message, visible, alternate message, neither visible nor audible
-		user.show_message("<span class='notice'>[src] rejects the advances of [Kisser]!</span>", 1,
+		user.show_message("<span class='notice'>[src] rejects the advances of [Kisser]!</span>", MSG_VISUAL,
 			"<span class='notice'>That didn't feel like it worked.</span>", 0)
 	else if(src in Kisser.scorned)
-		user.show_message("<span class='notice'>[Kisser] realises who [src] is and turns away.</span>", 1,
+		user.show_message("<span class='notice'>[Kisser] realises who [src] is and turns away.</span>", MSG_VISUAL,
 			"<span class='notice'>That didn't feel like it worked.</span>", 0)
 
 	//first comes love
@@ -190,7 +191,7 @@
 			new_lover(Kisser)
 			Kisser.new_lover(src)
 		else
-			user.show_message("<span class='notice'>[src] rejects the advances of [Kisser], maybe next time?</span>", 1,
+			user.show_message("<span class='notice'>[src] rejects the advances of [Kisser], maybe next time?</span>", MSG_VISUAL,
 								"<span class='notice'>That didn't feel like it worked, this time.</span>", 0)
 
 	//then comes marriage
@@ -558,6 +559,13 @@
 	item_state = "almaz"
 	squeak_override = list('modular_citadel/sound/voice/raptor_purr.ogg' = 1)
 
+/obj/item/toy/plush/lizardplushie/malric
+	desc = "An adorable stuffed toy that resembles a certain drake. He looks tired."
+	icon_state = "malric"
+	item_state = "malric"
+	attack_verb = list("depressed", "tailwhipped", "hissed on")
+	squeak_override = list('modular_citadel/sound/voice/weh.ogg' = 1)
+
 /obj/item/toy/plush/snakeplushie
 	name = "snake plushie"
 	desc = "An adorable stuffed toy that resembles a snake. Not to be mistaken for the real thing."
@@ -641,6 +649,13 @@
 /obj/item/toy/plush/mothplushie/suru
 	icon_state = "suru"
 	item_state = "suru"
+
+/obj/item/toy/plush/mothplushie/moffplush
+	name = "moth plushie"
+	desc = "A plushie depicting an adorable mothperson. It's a huggable bug!"
+	icon_state = "moffplush"
+	item_state = "moffplush"
+	squeak_override = list('modular_citadel/sound/voice/scream_moth.ogg' = 1)
 
 /obj/item/toy/plush/xeno
 	name = "xenohybrid plushie"
@@ -743,6 +758,14 @@
 	icon_state = "jewel"
 	item_state = "jewel"
 
+/obj/item/toy/plush/bird/kenk
+	name = "kenku plushie"
+	desc = "An adorable stuffed plushie that resembles a kenku, perfect to sit on."
+	young = TRUE
+	icon_state = "kenk"
+	item_state = "kenk"
+	squeak_override = list('modular_citadel/sound/voice/merp.ogg' = 1)
+
 /obj/item/toy/plush/sergal
 	name = "sergal plushie"
 	desc = "An adorable stuffed plushie that resembles a sagaru."
@@ -840,12 +863,6 @@
 	icon_state = "rae"
 	item_state = "rae"
 
-/obj/item/toy/plush/mammal/winfre
-	desc = "An adorable stuffed toy of a pissed hyena. She looks unamused."
-	icon_state = "winfre"
-	item_state = "winfre"
-	attack_verb = list("cackled", "swirlie'd", "stepped on")
-
 /obj/item/toy/plush/mammal/zed
 	desc = "A masked stuffed toy that resembles a fierce miner. He even comes with his own little crusher!"
 	icon_state = "zed"
@@ -863,7 +880,7 @@
 	attack_verb = list("healed", "cured", "demoted")
 
 /obj/item/toy/plush/mammal/redwood
-	desc = "An adorable stuffed toy resembling a Nanotrasen Captain. That just happens to be a bunny."
+	desc = "An adorable stuffed toy resembling a Kinaris Captain. That just happens to be a bunny."
 	icon_state = "redwood"
 	item_state = "redwood"
 	attack_verb = list("ordered", "bapped", "reprimanded")
@@ -930,11 +947,6 @@
 	desc = "An adorable stuffed toy resembling a demi-wolf security officer. That a baton, or is she happy to see you..?"
 	icon_state = "marisol"
 	item_state = "marisol"
-
-/obj/item/toy/plush/mammal/marilyn
-	desc = "A cute stuffed fox toy. Now, about that sponge bath..."
-	icon_state = "marilyn"
-	item_state = "marilyn"
 
 /obj/item/toy/plush/catgirl
 	name = "feline plushie"

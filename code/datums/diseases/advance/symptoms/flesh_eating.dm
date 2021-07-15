@@ -30,8 +30,10 @@ Bonus
 	symptom_delay_max = 60
 	var/bleed = FALSE
 	var/pain = FALSE
-	threshold_desc = "<b>Resistance 7:</b> Host will bleed profusely during necrosis.<br>\
-					  <b>Transmission 8:</b> Causes extreme pain to the host, weakening it."
+	threshold_desc = list(
+		"Resistance 7" = "Erodes the host's skin, causing them to bleed profusely.",
+		"Transmission 8" = "Eat's away at the host's musclemass, causing increased fatigue."
+	)
 
 /datum/symptom/flesh_eating/Start(datum/disease/advance/A)
 	if(!..())
@@ -55,9 +57,9 @@ Bonus
 
 /datum/symptom/flesh_eating/proc/Flesheat(mob/living/M, datum/disease/advance/A)
 	var/get_damage = rand(15,25) * power
-	M.take_overall_damage(brute = get_damage, required_status = BODYPART_ORGANIC)
+	M.adjustBruteLoss(get_damage)
 	if(pain)
-		M.adjustStaminaLoss(get_damage * 2)
+		M.adjustStaminaLoss(get_damage)
 	if(bleed)
 		if(ishuman(M))
 			var/mob/living/carbon/human/H = M
@@ -84,20 +86,23 @@ Bonus
 /datum/symptom/flesh_death
 
 	name = "Autophagocytosis Necrosis"
-	desc = "The virus rapidly consumes infected cells, leading to heavy and widespread damage. Contains dormant prions- expert virologists believe it to be the precursor to Romerol, though the mechanism through which they are activated is largely unknown"
+	desc = "The virus rapidly consumes infected cells, leading to heavy and widespread damage."
 	stealth = -2
 	resistance = -2
 	stage_speed = 1
 	transmittable = -2
-	level = 9
+	level = 7
 	severity = 6
 	base_message_chance = 50
 	symptom_delay_min = 3
 	symptom_delay_max = 6
 	var/chems = FALSE
 	var/zombie = FALSE
-	threshold_desc = "<b>Stage Speed 7:</b> Synthesizes Heparin and Lipolicide inside the host, causing increased bleeding and hunger.<br>\
-					  <b>Stealth 5:</b> The symptom remains hidden until active."
+	threshold_desc = list(
+		"Stage Speed 7" = "Synthesizes Heparin and Lipolicide inside the host, causing increased bleeding and hunger.",
+		"Stealth 5" = "The symptom remains hidden until active.",
+	)
+
 
 /datum/symptom/flesh_death/Start(datum/disease/advance/A)
 	if(!..())
@@ -106,8 +111,6 @@ Bonus
 		suppress_warning = TRUE
 	if(A.properties["stage_rate"] >= 7) //bleeding and hunger
 		chems = TRUE
-	if((A.properties["stealth"] >= 2) && (A.properties["stage_rate"] >= 12))
-		zombie = TRUE
 
 /datum/symptom/flesh_death/Activate(datum/disease/advance/A)
 	if(!..())
@@ -124,12 +127,9 @@ Bonus
 
 /datum/symptom/flesh_death/proc/Flesh_death(mob/living/M, datum/disease/advance/A)
 	var/get_damage = rand(6,10)
-	M.take_overall_damage(brute = get_damage, required_status = BODYPART_ORGANIC)
+	M.adjustBruteLoss(get_damage)
 	if(chems)
 		M.reagents.add_reagent_list(list(/datum/reagent/toxin/heparin = 2, /datum/reagent/toxin/lipolicide = 2))
 	if(zombie)
-		if(ishuman(A.affected_mob))
-			if(!A.affected_mob.getorganslot(ORGAN_SLOT_ZOMBIE))
-				var/obj/item/organ/zombie_infection/ZI = new()
-				ZI.Insert(M)
+		M.reagents.add_reagent(/datum/reagent/romerol, 1)
 	return 1

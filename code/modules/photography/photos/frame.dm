@@ -40,8 +40,8 @@
 /obj/item/wallframe/picture/examine(mob/user)
 	if(user.is_holding(src) && displayed)
 		displayed.show(user)
-	else
-		..()
+		return list()
+	return ..()
 
 /obj/item/wallframe/picture/update_icon()
 	cut_overlays()

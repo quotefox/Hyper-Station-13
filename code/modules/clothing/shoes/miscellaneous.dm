@@ -62,6 +62,16 @@
 	desc = "A pair of orange rubber boots, designed to prevent slipping on wet surfaces while also drying them."
 	icon_state = "galoshes_dry"
 
+/obj/item/clothing/shoes/sneakers/noslip
+	desc = "A pair of black shoes, they have the soles of galoshes making them unable to be slipped on a wet surface."
+	name = "black shoes"
+	icon_state = "black"
+	permeability_coefficient = 0.30
+	clothing_flags = NOSLIP
+	strip_delay = 50
+	equip_delay_other = 50
+	resistance_flags = NONE
+
 /obj/item/clothing/shoes/galoshes/dry/step_action()
 	var/turf/open/t_loc = get_turf(src)
 	SEND_SIGNAL(t_loc, COMSIG_TURF_MAKE_DRY, TURF_WET_WATER, TRUE, INFINITY)
@@ -96,7 +106,7 @@
 
 /obj/item/clothing/shoes/jackboots
 	name = "jackboots"
-	desc = "Nanotrasen-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
+	desc = "Kinaris-issue Security combat boots for combat scenarios or combat situations. All combat, all the time."
 	icon_state = "jackboots"
 	item_state = "jackboots"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
@@ -107,6 +117,27 @@
 	resistance_flags = NONE
 	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
 	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
+
+/obj/item/clothing/shoes/jackboots/toeless
+	name = "toe-less jackboots"
+	desc = "Modified pair of jackboots, particularly friendly to those species whose toes hold claws."
+	icon_state = "jackboots-toeless"
+	item_state = "jackboots-toeless"
+	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
+	item_color = "hosred"
+	strip_delay = 50
+	equip_delay_other = 50
+	resistance_flags = NONE
+	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
+
+/obj/item/clothing/shoes/jackboots/tall
+	name = "tall jackboots"
+	desc = "A pair of knee-high jackboots, complete with heels. All style, all the time."
+	icon_state = "jackboots-tall"
+	item_state = "jackboots-tall"
+	price = 5
 
 /obj/item/clothing/shoes/jackboots/fast
 	slowdown = -1
@@ -125,9 +156,21 @@
 
 /obj/item/clothing/shoes/workboots
 	name = "work boots"
-	desc = "Nanotrasen-issue Engineering lace-up work boots for the especially blue-collar."
+	desc = "Kinaris-issue Engineering lace-up work boots for the especially blue-collar."
 	icon_state = "workboots"
-	item_state = "jackboots"
+	item_state = "workboots"
+	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
+	permeability_coefficient = 0.15
+	strip_delay = 40
+	equip_delay_other = 40
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
+
+/obj/item/clothing/shoes/workboots/toeless
+	name = "toe-less workboots"
+	desc = "A pair of toeless work boots designed for use in industrial settings. Modified for species whose toes have claws."
+	icon_state = "workboots-toeless"
+	item_state = "workboots-toeless"
 	lefthand_file = 'icons/mob/inhands/equipment/security_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/security_righthand.dmi'
 	permeability_coefficient = 0.15
@@ -248,6 +291,22 @@
 	. = ..()
 	AddComponent(/datum/component/squeak, list('sound/machines/clockcult/integration_cog_install.ogg' = 1, 'sound/magic/clockwork/fellowship_armory.ogg' = 1), 50)
 
+/obj/item/clothing/shoes/stompers
+	name = "Stompers"
+	desc = "Brand-new, heavy-duty jackboots with a metal cover underneath the toecap. Nicknamed 'stompers' due to their signature sound when walking."
+	icon = 'icons/obj/clothing/shoes.dmi'
+	icon_state = "jackboots"
+	item_state = "crusader"
+	strip_delay = 50
+	equip_delay_other = 50
+	resistance_flags = NONE
+	permeability_coefficient = 0.05 //Thick soles, and covers the ankle
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
+
+/obj/item/clothing/shoes/stompers/Initialize()
+	. = ..()
+	AddComponent(/datum/component/squeak, list('sound/effects/footstep/stompers1.ogg' = 1,'sound/effects/footstep/stompers2.ogg' = 1), 100)
+
 /obj/item/clothing/shoes/wheelys
 	name = "Wheely-Heels"
 	desc = "Uses patented retractable wheel technology. Never sacrifice speed for style - not that this provides much of either." //Thanks Fel
@@ -313,6 +372,11 @@
 		lightCycle = 0
 		active = FALSE
 
+/obj/item/clothing/shoes/footwraps
+	name = "cloth footwraps"
+	desc = "A roll of treated canvas used for wrapping claws or paws."
+	icon_state = "foot_wraps"
+
 /obj/item/clothing/shoes/wraps
 	name = "gilded leg wraps"
 	desc = "Ankle coverings. These ones have a golden design."
@@ -333,6 +397,16 @@
 	name = "blue leg wraps"
 	desc = "Ankle coverings. Hang ten, brother."
 	icon_state = "bluecuffs"
+
+/obj/item/clothing/shoes/cowboyboots
+	name = "cowboy boots"
+	desc = "A standard pair of brown cowboy boots."
+	icon_state = "cowboyboots"
+
+/obj/item/clothing/shoes/cowboyboots/black
+	name = "black cowboy boots"
+	desc = "A pair of black cowboy boots, pretty easy to scuff up."
+	icon_state = "cowboyboots_black"
 
 /obj/item/clothing/shoes/winterboots/christmasbootsr
 	name = "red christmas boots"

@@ -29,9 +29,8 @@
 
 
 /obj/item/taperecorder/examine(mob/user)
-	..()
-	to_chat(user, "The wire panel is [open_panel ? "opened" : "closed"].")
-
+	. = ..()
+	. += "The wire panel is [open_panel ? "opened" : "closed"]."
 
 /obj/item/taperecorder/attackby(obj/item/I, mob/user, params)
 	if(!mytape && istype(I, /obj/item/tape))
@@ -56,13 +55,9 @@
 
 //ATTACK HAND IGNORING PARENT RETURN VALUE
 /obj/item/taperecorder/attack_hand(mob/user)
-	if(loc == user)
-		if(mytape)
-			if(!user.is_holding(src))
-				return ..()
-			eject(user)
-	else
+	if(loc != user || !mytape || !user.is_holding(src))
 		return ..()
+	eject(user)
 
 /obj/item/taperecorder/proc/can_use(mob/user)
 	if(user && ismob(user))
@@ -94,7 +89,7 @@
 		icon_state = "taperecorder_idle"
 
 
-/obj/item/taperecorder/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, spans, message_mode)
+/obj/item/taperecorder/Hear(message, atom/movable/speaker, message_langs, raw_message, radio_freq, spans, message_mode, atom/movable/source)
 	. = ..()
 	if(mytape && recording)
 		mytape.timestamp += mytape.used_capacity

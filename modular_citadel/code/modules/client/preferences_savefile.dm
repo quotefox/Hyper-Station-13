@@ -7,12 +7,21 @@
 	features["ipc_antenna"] 	= sanitize_inlist(features["ipc_antenna"], GLOB.ipc_antennas_list)
 	//Citadel
 	features["flavor_text"]		= sanitize_text(features["flavor_text"], initial(features["flavor_text"]))
+	features["ooc_text"]		= sanitize_text(features["ooc_text"], initial(features["ooc_text"]))
 	if(!features["mcolor2"] || features["mcolor"] == "#000")
 		features["mcolor2"] = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F")
 	if(!features["mcolor3"] || features["mcolor"] == "#000")
 		features["mcolor3"] = pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F")
 	features["mcolor2"]	= sanitize_hexcolor(features["mcolor2"], 3, 0)
 	features["mcolor3"]	= sanitize_hexcolor(features["mcolor3"], 3, 0)
+
+	S["alt_titles_preferences"] 		>> alt_titles_preferences
+	alt_titles_preferences = SANITIZE_LIST(alt_titles_preferences)
+	if(SSjob)
+		for(var/datum/job/job in SSjob.occupations)
+			if(alt_titles_preferences[job.title])
+				if(!(alt_titles_preferences[job.title] in job.alt_titles))
+					alt_titles_preferences.Remove(job.title)
 
 	//gear loadout
 	var/text_to_load
@@ -52,6 +61,8 @@
 	WRITE_FILE(S["feature_cock_length"], features["cock_length"])
 	WRITE_FILE(S["feature_cock_girth"], features["cock_girth"])
 	WRITE_FILE(S["feature_has_sheath"], features["sheath_color"])
+	//belly feature
+	WRITE_FILE(S["feature_belly_size"], features["belly_size"])
 	//balls features
 	WRITE_FILE(S["feature_has_balls"], features["has_balls"])
 	WRITE_FILE(S["feature_balls_color"], features["balls_color"])
@@ -76,6 +87,15 @@
 	WRITE_FILE(S["feature_can_get_preg"], features["can_get_preg"])
 	//flavor text
 	WRITE_FILE(S["feature_flavor_text"], features["flavor_text"])
+	WRITE_FILE(S["feature_silicon_flavor_text"], features["silicon_flavor_text"])
+	WRITE_FILE(S["feature_ooc_text"], features["ooc_text"])
+	//custom job titles
+	WRITE_FILE(S["alt_titles_preferences"], alt_titles_preferences)
+	//belly
+	WRITE_FILE(S["feature_has_belly"], features["has_belly"])
+	WRITE_FILE(S["feature_belly_color"], features["belly_color"])
+	WRITE_FILE(S["feature_hide_belly"], features["hide_belly"])
+	WRITE_FILE(S["feature_inflatable_belly"], features["inflatable_belly"])
 
 	//gear loadout
 	if(islist(chosen_gear))

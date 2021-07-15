@@ -22,7 +22,6 @@
 	var/cooldown = 0
 	var/obj/item/flashlight/F = null
 	var/can_flashlight = 0
-	var/scan_reagents = 0 //Can the wearer see reagents while it's equipped?
 
 	var/blocks_shove_knockdown = FALSE //Whether wearing the clothing item blocks the ability for shove to knock down.
 
@@ -47,8 +46,7 @@
 	//Basically syntax is species_restricted = list("Species Name","Species Name")
 	//Add a "exclude" string to do the opposite, making it only only species listed that can't wear it.
 	//You append this to clothing objects.
-
-
+	//Hyper change// - Variables for HS13 checks
 
 
 /obj/item/clothing/Initialize()
@@ -73,12 +71,12 @@
 /obj/item/reagent_containers/food/snacks/clothing
 	name = "oops"
 	desc = "If you're reading this it means I messed up. This is related to moths eating clothes and I didn't know a better way to do it than making a new food object."
-	list_reagents = list("nutriment" = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 1)
 	tastes = list("dust" = 1, "lint" = 1)
 	foodtype = CLOTH
 
 /obj/item/clothing/attack(mob/M, mob/user, def_zone)
-	if(user.a_intent != INTENT_HARM && ismoth(M))
+	if(user.a_intent != INTENT_HARM && (ismoth(M) || isinsect(M)))
 		var/obj/item/reagent_containers/food/snacks/clothing/clothing_as_food = new
 		clothing_as_food.name = name
 		if(clothing_as_food.attack(M, user, def_zone))
@@ -95,6 +93,20 @@
 		obj_integrity = max_integrity
 		to_chat(user, "<span class='notice'>You fix the damage on [src] with [C].</span>")
 		return 1
+	//Hyper Change//
+	/*
+	if(istype(W, /obj/item/bluespace_thread))
+		var/obj/item/bluespace_thread/B = W
+		if ((istype(src, /obj/item/clothing/under) || istype(src, /obj/item/clothing/suit)) && roomy != 1) //Make sure the thread is used on an item that could be ripped off in the first place
+			roomy = TRUE //True
+			user.show_message("<span class='notice'>You add a few stiches to your clothing, and find them to fit a little looser.</span>", 1)
+			B.uses -= 1 //One use has been used
+			if(B.uses <= 0)
+				user.show_message("<span class='notice'>The thread has been used up!</span>", 1)
+				qdel(B)
+		else
+			user.show_message("<span class='notice'>You probably don't need any more room in that.</span>", 1)
+	*/ //Long live roomy = TRUE
 	return ..()
 
 /obj/item/clothing/Destroy()
@@ -124,10 +136,10 @@
 					user.vv_edit_var(variable, user_vars_to_edit[variable])
 
 /obj/item/clothing/examine(mob/user)
-	..()
+	. = ..()
 	if(damaged_clothes)
-		to_chat(user,  "<span class='warning'>It looks damaged!</span>")
-	GET_COMPONENT(pockets, /datum/component/storage)
+		. += "<span class='warning'>It looks damaged!</span>"
+	var/datum/component/storage/pockets = GetComponent(/datum/component/storage)
 	if(pockets)
 		var/list/how_cool_are_your_threads = list("<span class='notice'>")
 		if(pockets.attack_hand_interact)
@@ -141,7 +153,7 @@
 		if(pockets.silent)
 			how_cool_are_your_threads += "Adding or removing items from [src] makes no noise.\n"
 		how_cool_are_your_threads += "</span>"
-		to_chat(user, how_cool_are_your_threads.Join())
+		. += how_cool_are_your_threads.Join()
 
 /obj/item/clothing/obj_break(damage_flag)
 	if(!damaged_clothes)
@@ -258,16 +270,14 @@ BLIND     // can't see anything
 			H.update_suit_sensors()
 
 /obj/item/clothing/under/AltClick(mob/user)
-	if(..())
-		return 1
-
+	. = ..()
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
+	if(attached_accessory)
+		remove_accessory(user)
 	else
-		if(attached_accessory)
-			remove_accessory(user)
-		else
-			rolldown()
+		rolldown()
+	return TRUE
 
 /obj/item/clothing/under/verb/jumpsuit_adjust()
 	set name = "Adjust Jumpsuit Style"

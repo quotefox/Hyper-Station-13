@@ -68,8 +68,8 @@ GLOBAL_LIST_EMPTY(breasts_shapes_icons)
 GLOBAL_LIST_EMPTY(vagina_shapes_list)
 GLOBAL_LIST_INIT(cum_into_containers_list, list(/obj/item/reagent_containers/food/snacks/pie)) //Yer fuggin snowflake name list jfc
 GLOBAL_LIST_INIT(dick_nouns, list("dick","cock","member","shaft"))
-GLOBAL_LIST_INIT(cum_id_list,"semen")
-GLOBAL_LIST_INIT(milk_id_list,"milk")
+GLOBAL_LIST_INIT(cum_id_list, /datum/reagent/consumable/semen)
+GLOBAL_LIST_INIT(milk_id_list, /datum/reagent/consumable/milk)
 
 GLOBAL_LIST_INIT(dildo_shapes, list(
 		"Human"		= "human",
@@ -103,17 +103,6 @@ GLOBAL_VAR_INIT(miscreants_allowed, FALSE)
 		set category = "Admin"
 		if(!src.holder)	return
 		message_admins("[key_name_admin(usr)] manually reloaded mentors")
-
-//Flavor Text
-/mob/living/carbon/human/verb/set_flavor()
-	set name = "Set Flavor Text"
-	set desc = "Sets an extended description of your character's features."
-	set category = "IC"
-
-	var/new_flavor = input(src, "Enter your new flavor text:", "Flavor text", null) as message|null
-	if(!isnull(new_flavor))
-		flavor_text = sanitize(new_flavor)
-		to_chat(src, "Your flavor text has been updated.")
 
 //LOOC toggles
 /client/verb/listen_looc()

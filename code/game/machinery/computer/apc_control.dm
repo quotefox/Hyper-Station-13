@@ -11,7 +11,6 @@
 	var/list/result_filters //For sorting the results
 	var/checking_logs = 0
 	var/list/logs
-	var/authenticated = 0
 	var/auth_id = "\[NULL\]"
 
 /obj/machinery/computer/apc_control/Initialize()
@@ -93,9 +92,7 @@
 	if(!usr || !usr.canUseTopic(src) || stat || QDELETED(src))
 		return
 	if(href_list["authenticate"])
-		var/obj/item/card/id/ID = usr.get_active_held_item()
-		if(!istype(ID))
-			ID = usr.get_idcard()
+		var/obj/item/card/id/ID = usr.get_idcard(TRUE)
 		if(ID && istype(ID))
 			if(check_access(ID))
 				authenticated = TRUE

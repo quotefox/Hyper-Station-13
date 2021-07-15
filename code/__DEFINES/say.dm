@@ -23,6 +23,8 @@
 #define MODE_WHISPER "whisper"
 #define MODE_WHISPER_CRIT "whispercrit"
 
+#define MODE_CUSTOM_SAY "custom_say"
+
 #define MODE_DEPARTMENT "department"
 #define MODE_KEY_DEPARTMENT "h"
 #define MODE_TOKEN_DEPARTMENT ":h"
@@ -44,6 +46,7 @@
 #define MODE_KEY_VOCALCORDS "x"
 
 #define MODE_MONKEY "monkeyhive"
+#define MODE_SING "%"
 
 //Spans. Robot speech, italics, etc. Applied in compose_message().
 #define SPAN_ROBOT "robot"
@@ -54,6 +57,7 @@
 #define SPAN_REALLYBIG "reallybig"
 #define SPAN_COMMAND "command_headset"
 #define SPAN_CLOWN "clown"
+#define SPAN_SINGING "singing"
 
 //bitflag #defines for return value of the radio() proc.
 #define ITALICS 1
@@ -75,6 +79,11 @@
 
 //Don't set this very much higher then 1024 unless you like inviting people in to dos your server with message spam
 #define MAX_MESSAGE_LEN			2048		//Citadel edit: What's the WORST that could happen?
+#define MAX_FLAVOR_LEN			4096		//double the maximum message length.
 #define MAX_NAME_LEN			42
 #define MAX_BROADCAST_LEN		512
 #define MAX_CHARTER_LEN			80
+
+// Audio/Visual Flags. Used to determine what sense are required to notice a message.
+#define MSG_VISUAL (1<<0)
+#define MSG_AUDIBLE (1<<1)

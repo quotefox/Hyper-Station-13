@@ -6,69 +6,78 @@
 	abandoned = TRUE
 
 /obj/machinery/door/airlock/command
-	icon = 'icons/obj/doors/airlocks/station/command.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_com
 	normal_integrity = 450
+	basecolor = rgb(0,110,200)
+	stripcolor = rgb(115,200,255)
 
 /obj/machinery/door/airlock/security
-	icon = 'icons/obj/doors/airlocks/station/security.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_sec
 	normal_integrity = 450
+	basecolor = rgb(235,50,50)
+	stripcolor = ""
 
 /obj/machinery/door/airlock/engineering
-	icon = 'icons/obj/doors/airlocks/station/engineering.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_eng
+	basecolor = rgb(235,190,0)
+	stripcolor = rgb(50,50,50)
 
 /obj/machinery/door/airlock/engineering/abandoned
 	abandoned = TRUE
 
 /obj/machinery/door/airlock/medical
-	icon = 'icons/obj/doors/airlocks/station/medical.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_med
+	basecolor = rgb(250,250,250)
+	stripcolor = rgb(0,255,255)
 
 /obj/machinery/door/airlock/maintenance
 	name = "maintenance access"
-	icon = 'icons/obj/doors/airlocks/station/maintenance.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_mai
 	normal_integrity = 250
+	stripcolor = rgb(130,160,90)
 
 /obj/machinery/door/airlock/maintenance/abandoned
 	abandoned = TRUE
 
 /obj/machinery/door/airlock/maintenance/external
 	name = "external airlock access"
-	icon = 'icons/obj/doors/airlocks/station/maintenanceexternal.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_extmai
 
 /obj/machinery/door/airlock/mining
 	name = "mining airlock"
-	icon = 'icons/obj/doors/airlocks/station/mining.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_min
+	basecolor = "#e1b919"
+	stripcolor = rgb(95,53,11)
 
 /obj/machinery/door/airlock/atmos
 	name = "atmospherics airlock"
-	icon = 'icons/obj/doors/airlocks/station/atmos.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_atmo
+	basecolor = rgb(131,163,93)
+	stripcolor = ""
 
 /obj/machinery/door/airlock/atmos/abandoned
 	abandoned = TRUE
 
 /obj/machinery/door/airlock/research
-	icon = 'icons/obj/doors/airlocks/station/research.dmi'
+	//icon = 'icons/obj/doors/airlocks/station/research.dmi' this is the old version
 	assemblytype = /obj/structure/door_assembly/door_assembly_research
+	basecolor = rgb(250,250,250)
+	stripcolor = rgb(150,30,255)
 
 /obj/machinery/door/airlock/freezer
 	name = "freezer airlock"
-	icon = 'icons/obj/doors/airlocks/station/freezer.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_fre
 
 /obj/machinery/door/airlock/science
-	icon = 'icons/obj/doors/airlocks/station/science.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_science
+	basecolor = rgb(250,250,250)
+	stripcolor = rgb(150,30,255)
 
 /obj/machinery/door/airlock/virology
-	icon = 'icons/obj/doors/airlocks/station/virology.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_viro
+	basecolor = rgb(250,250,250)
+	stripcolor = rgb(0,255,255)
+
 
 //////////////////////////////////
 /*
@@ -78,6 +87,8 @@
 /obj/machinery/door/airlock/glass
 	opacity = 0
 	glass = TRUE
+	basecolor = ""
+	stripcolor = ""
 
 /obj/machinery/door/airlock/glass/incinerator
 	autoclose = FALSE
@@ -307,9 +318,9 @@
 */
 
 /obj/machinery/door/airlock/public
-	icon = 'icons/obj/doors/airlocks/station2/glass.dmi'
-	overlays_file = 'icons/obj/doors/airlocks/station2/overlays.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_public
+	basecolor = rgb(255,255,255)
+	stripcolor = 0
 
 /obj/machinery/door/airlock/public/glass
 	opacity = 0
@@ -339,7 +350,10 @@
 	icon = 'icons/obj/doors/airlocks/external/external.dmi'
 	overlays_file = 'icons/obj/doors/airlocks/external/overlays.dmi'
 	note_overlay_file = 'icons/obj/doors/airlocks/external/overlays.dmi'
+	color_overlay_file = 'icons/obj/doors/airlocks/external/color.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_ext
+	basecolor = "#ff0000" //red
+
 
 /obj/machinery/door/airlock/external/glass
 	opacity = 0
@@ -499,7 +513,7 @@
 			SEND_SOUND(L, sound(pick('sound/hallucinations/turn_around1.ogg','sound/hallucinations/turn_around2.ogg'),0,1,50))
 			flash_color(L, flash_color="#960000", flash_time=20)
 			L.Knockdown(40)
-			L.throw_at(throwtarget, 5, 1,src)
+			L.throw_at(throwtarget, 5, 1)
 		return 0
 
 /obj/machinery/door/airlock/cult/proc/conceal()
@@ -583,14 +597,12 @@
 	return ..()
 
 /obj/machinery/door/airlock/clockwork/examine(mob/user)
-	..()
-	var/gear_text = "The cogwheel is flickering and twisting wildly. Report this to a coder."
+	. = ..()
 	switch(construction_state)
 		if(GEAR_SECURE)
-			gear_text = "<span class='brass'>The cogwheel is solidly <b>wrenched</b> to the brass around it.</span>"
+			. += "<span class='brass'>The cogwheel is solidly <b>wrenched</b> to the brass around it.</span>"
 		if(GEAR_LOOSE)
-			gear_text = "<span class='alloy'>The cogwheel has been <i>loosened</i>, but remains <b>connected loosely</b> to the door!</span>"
-	to_chat(user, gear_text)
+			. += "<span class='alloy'>The cogwheel has been <i>loosened</i>, but remains <b>connected loosely</b> to the door!</span>"
 
 /obj/machinery/door/airlock/clockwork/emp_act(severity)
 	if(prob(80/severity))

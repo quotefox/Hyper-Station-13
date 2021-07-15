@@ -4,7 +4,7 @@
 	say_mod = "flutters"
 	default_color = "00FF00"
 	species_traits = list(LIPS, NOEYES)
-	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID, MOB_BUG)
+	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	mutant_bodyparts = list("moth_wings", "moth_fluff")
 	default_features = list("moth_wings" = "Plain", "moth_fluff" = "Plain")
 	attack_verb = "slash"
@@ -14,6 +14,7 @@
 	liked_food = VEGETABLES | DAIRY| CLOTH
 	disliked_food = FRUIT | GROSS
 	toxic_food = MEAT | RAW
+	exotic_bloodtype = "BUG"
 
 /datum/species/moth/on_species_gain(mob/living/carbon/C)
 	. = ..()

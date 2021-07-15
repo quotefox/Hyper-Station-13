@@ -8,12 +8,12 @@
 	max_integrity = 200
 	var/obj/item/bodypart/storedpart
 	var/initial_icon_state
-	var/static/list/style_list_icons = list("standard" = 'icons/mob/augmentation/augments.dmi', "engineer" = 'icons/mob/augmentation/augments_engineer.dmi', "security" = 'icons/mob/augmentation/augments_security.dmi', "mining" = 'icons/mob/augmentation/augments_mining.dmi')
+	var/static/list/style_list_icons = list("standard" = 'icons/mob/augmentation/augments.dmi', "engineer" = 'icons/mob/augmentation/augments_engineer.dmi', "security" = 'icons/mob/augmentation/augments_security.dmi', "mining" = 'icons/mob/augmentation/augments_mining.dmi', "bootypeace female" = 'icons/mob/augmentation/augments_lewdf.dmi', "bootypeace male" = 'icons/mob/augmentation/augments_lewdm.dmi', "bootypeace intersex" = 'icons/mob/augmentation/augments_lewds.dmi', "bootypeace bob hair (HEAD ONLY)" = 'icons/mob/augmentation/augments_lewdbobhair.dmi', "bootybimbo ponytail (HEAD ONLY)" = 'icons/mob/augmentation/augments_bimbohair.dmi', "bootybimbo female" = 'icons/mob/augmentation/augments_lewdbimbof.dmi', "bootybimbo male" = 'icons/mob/augmentation/augments_lewdbimbom.dmi', "bootybimbo intersex" = 'icons/mob/augmentation/augments_lewdbimbos.dmi')
 
 /obj/machinery/aug_manipulator/examine(mob/user)
-	..()
+	. = ..()
 	if(storedpart)
-		to_chat(user, "<span class='notice'>Alt-click to eject the limb.</span>")
+		. += "<span class='notice'>Alt-click to eject the limb.</span>"
 
 /obj/machinery/aug_manipulator/Initialize()
     initial_icon_state = initial(icon_state)
@@ -132,8 +132,8 @@
 	..()
 	if(!user.canUseTopic(src))
 		return
-	else
-		eject_part(user)
+	eject_part(user)
+	return TRUE
 
 /obj/machinery/aug_manipulator/power_change()
 	..()

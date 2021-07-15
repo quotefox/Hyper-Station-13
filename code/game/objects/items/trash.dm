@@ -66,19 +66,20 @@
 	name = "crushed can"
 	icon_state = "cola"
 	resistance_flags = NONE
-	grind_results = list("aluminium" = 10)
+	grind_results = list(/datum/reagent/aluminium = 10)
+
+/obj/item/trash/boritos
+	name = "boritos bag"
+	icon_state = "boritos"
+	grind_results = list(/datum/reagent/aluminium = 1) //from the mylar bag
+
+/obj/item/trash/soy_food
+	name = "soyfood"
+	icon_state = "soy_food"
+
+/obj/item/trash/carbonnanotube_noodles
+	name = "carbon nanotube noodles"
+	icon_state = "carbonnanotube_noodles"
 
 /obj/item/trash/attack(mob/M, mob/living/user)
 	return
-
-/obj/item/trash/coal
-	name = "lump of coal"
-	icon = 'icons/obj/mining.dmi'
-	icon_state = "slag"
-	desc = "Someone's gotten on the naughty list."
-	grind_results = list("carbon" = 20)
-
-/obj/item/trash/coal/burn()
-	visible_message("[src] fuses into a diamond! Someone wasn't so naughty after all...")
-	new /obj/item/stack/ore/diamond(loc)
-	qdel(src)

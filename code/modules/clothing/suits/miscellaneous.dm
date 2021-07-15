@@ -335,9 +335,50 @@
 	item_state = "officertanjacket"
 	body_parts_covered = CHEST|ARMS
 
+/obj/item/clothing/suit/ran
+	name = "Shikigami costume"
+	desc = "A costume that looks like a certain shikigami, is super fluffy."
+	icon_state = "ran_suit"
+	item_state = "ran_suit"
+	body_parts_covered = CHEST|GROIN|LEGS
+	flags_inv = HIDEJUMPSUIT|HIDETAUR
+	heat_protection = CHEST|GROIN|LEGS //fluffy tails!
+//2061
+
+/obj/item/clothing/head/ran
+	name = "Shikigami hat"
+	desc = "A hat that looks like it keeps any fluffy ears contained super warm, has little charms over it."
+	icon_state = "ran_hat"
+	item_state = "ran_hat"
+	flags_inv = HIDEEARS
+
 /*
  * Misc
  */
+
+/obj/item/clothing/suit/jacket/flannel
+	name = "black flannel jacket"
+	desc = "Comfy and supposedly flammable."
+	icon_state = "flannel"
+	item_state = "flannel"
+
+/obj/item/clothing/suit/jacket/flannel/red
+	name = "red flannel jacket"
+	desc = "Comfy and supposedly flammable."
+	icon_state = "flannel_red"
+	item_state = "flannel_red"
+
+/obj/item/clothing/suit/jacket/flannel/aqua
+	name = "aqua flannel jacket"
+	desc = "Comfy and supposedly flammable."
+	icon_state = "flannel_aqua"
+	item_state = "flannel_aqua"
+
+/obj/item/clothing/suit/jacket/flannel/brown
+	name = "brown flannel jacket"
+	desc = "Comfy and supposedly flammable."
+	icon_state = "flannel_brown"
+	item_state = "flannel_brown"
 
 /obj/item/clothing/suit/straight_jacket
 	name = "straight jacket"
@@ -440,6 +481,46 @@
 	desc = "A blue letterman jacket with a proud Nanotrasen N on the back. The tag says that it was made in Space China."
 	icon_state = "letterman_n"
 	item_state = "letterman_n"
+
+/obj/item/clothing/suit/toggle/jacket_yellow
+	name = "Yellow Jacket"
+	desc = "A yellow jacket with a fluffy collar."
+	icon_state = "jacket_yellow"
+	item_state = "jacket_yellow"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/suit/toggle/jacket_orange
+	name = "Orange Jacket"
+	desc = "A orange jacket with a fluffy collar."
+	icon_state = "jacket_orange"
+	item_state = "jacket_orange"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/suit/toggle/jacket_red
+	name = "Red Jacket"
+	desc = "A red jacket with a fluffy collar."
+	icon_state = "jacket_red"
+	item_state = "jacket_red"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/suit/toggle/jacket_purple
+	name = "Purple Jacket"
+	desc = "A purple jacket with a fluffy collar."
+	icon_state = "jacket_purple"
+	item_state = "jacket_purple"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/suit/toggle/jacket_white
+	name = "White Jacket"
+	desc = "A white jacket with a fluffy collar."
+	icon_state = "jacket_white"
+	item_state = "jacket_white"
+	body_parts_covered = CHEST|ARMS
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
 /obj/item/clothing/suit/dracula
 	name = "dracula coat"
@@ -573,12 +654,22 @@
 	armor = list("melee" = 25, "bullet" = 15, "laser" = 30, "energy" = 10, "bomb" = 25, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 45)
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security
 
+/obj/item/clothing/suit/hooded/wintercoat/security/pink
+	name = "pink security winter coat"
+	icon_state = "coatsecuritypink"
+	item_state = "coatsecuritypink"
+	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/pink
+	price = 5
+
 /obj/item/clothing/suit/hooded/wintercoat/security/Initialize()
 	. = ..()
 	allowed = GLOB.security_wintercoat_allowed
 
 /obj/item/clothing/head/hooded/winterhood/security
 	icon_state = "winterhood_security"
+
+/obj/item/clothing/head/hooded/winterhood/security/pink
+	icon_state = "winterhood_securitypink"
 
 /obj/item/clothing/suit/hooded/wintercoat/hos
 	name = "head of security's winter coat"
@@ -888,3 +979,20 @@
 
 /obj/item/clothing/head/hooded/winterhood/durathread
 	icon_state = "winterhood_durathread"
+
+//Enzo_Leon Patron stuff
+/obj/item/clothing/suit/toggle/enzojacket
+	name = "Altevain Colony-Ship Command Jacket"
+	desc = "A comfortable form fitting jacket that has a little cheese emblem on the chest."
+	icon_state = "enzojacket"
+	item_state = "enzojacket"
+	body_parts_covered = CHEST|ARMS
+//End
+
+//Might get moved later since I have no clue where to put this stuff for now - Luke_vale
+/obj/item/clothing/suit/toggle/labcoat/formallab
+	name = "winter labcoat"
+	desc = "A stark white labcoat, thicker and kitted out with extra fluff to keep you warm even on the coldest of mad sceinctist nights."
+	icon_state = "labcoat_formal"
+	item_state = "labcoat_formal"
+	body_parts_covered = CHEST|ARMS

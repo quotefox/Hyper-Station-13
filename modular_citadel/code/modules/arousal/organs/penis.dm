@@ -10,9 +10,11 @@
 	can_climax 				= TRUE
 	fluid_transfer_factor	= 0.5
 	size 					= 2 //arbitrary value derived from length and girth for sprites.
+	var/condom				= 0 //No condom, its better this way...
+	var/sounding			= 0
 	var/length 				= 6	//inches
 	var/cached_length			//used to detect a change in length
-	var/girth  				= 4.38
+	var/girth  				= 3.38
 	var/girth_ratio 		= COCK_GIRTH_RATIO_DEF //0.73; check citadel_defines.dm
 	var/knot_girth_ratio 	= KNOT_GIRTH_RATIO_DEF
 	var/list/dickflags 		= list()
@@ -42,19 +44,24 @@
 			size = 2
 			if(owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
 				o.remove_status_effect(/datum/status_effect/chem/penis_enlarger)
-		if(11 to 20) //If massive
+		if(11 to 18) //If massive
 			length = cached_length
 			size = 3
 			if(owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
 				o.remove_status_effect(/datum/status_effect/chem/penis_enlarger)
-		if(21 to 35) //If massive and due for large effects
+		if(18 to 26) //If massive and due for large effects
 			length = cached_length
 			size = 3
 			if(!owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
 				o.apply_status_effect(/datum/status_effect/chem/penis_enlarger)
-		if(36 to INFINITY) //If comical
+		if(26 to 34) //If hyper
 			length = cached_length
 			size = 4 //no new sprites for anything larger yet
+			if(!owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
+				o.apply_status_effect(/datum/status_effect/chem/penis_enlarger)
+		if(34 to INFINITY) //If extreme-hyper
+			length = cached_length
+			size = 5 //no new sprites for anything larger yet
 			if(!owner.has_status_effect(/datum/status_effect/chem/penis_enlarger))
 				o.apply_status_effect(/datum/status_effect/chem/penis_enlarger)
 
@@ -74,6 +81,9 @@
 	desc = "You see [aroused_state ? "an erect" : "a flaccid"] [lowershape] penis. You estimate it's about [round(length, 0.25)] inch[round(length, 0.25) != 1 ? "es" : ""] long and [round(girth, 0.25)] inch[round(girth, 0.25) != 1 ? "es" : ""] in girth."
 
 	if(owner)
+		var/length_new = length*owner.size_multiplier
+		var/girth_new = girth*owner.size_multiplier
+		desc = "You see [aroused_state ? "an erect" : "a flaccid"] [lowershape] penis. You estimate it's about [round(length_new, 0.25)] inch[round(length_new, 0.25) != 1 ? "es" : ""] long and [round(girth_new, 0.25)] inch[round(girth_new, 0.25) != 1 ? "es" : ""] in girth."
 		if(owner.dna.species.use_skintones && owner.dna.features["genitals_use_skintone"])
 			if(ishuman(owner)) // Check before recasting type, although someone fucked up if you're not human AND have use_skintones somehow...
 				var/mob/living/carbon/human/H = owner // only human mobs have skin_tone, which we need.

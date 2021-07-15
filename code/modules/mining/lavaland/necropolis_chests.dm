@@ -18,7 +18,7 @@
 		if(2)
 			new /obj/item/clothing/suit/space/hardsuit/cult(src)
 		if(3)
-			new /obj/item/soulstone/anybody(src)
+			new /obj/item/nullrod(src)
 		if(4)
 			new /obj/item/katana/cursed(src)
 		if(5)
@@ -39,7 +39,7 @@
 		if(11)
 			new /obj/item/ship_in_a_bottle(src)
 		if(12)
-			new /obj/item/clothing/suit/space/hardsuit/ert/paranormal/beserker(src)
+			new /obj/item/clothing/suit/space/hardsuit/ert/paranormal/beserker/miner(src)
 		if(13)
 			new /obj/item/jacobs_ladder(src)
 		if(14)
@@ -60,14 +60,14 @@
 		if(20)
 			new /obj/item/immortality_talisman(src)
 		if(21)
-			new /obj/item/gun/magic/hook(src)
+			new /obj/item/gun/medbeam(src)
 		if(22)
-			new /obj/item/voodoo(src)
+			new /obj/item/circuitboard/machine/plantgenes/vault
 		if(23)
-			new /obj/item/grenade/clusterbuster/inferno(src)
+			new /obj/item/grenade/clusterbuster/soap(src)
 		if(24)
 			new /obj/item/reagent_containers/food/drinks/bottle/holywater/hell(src)
-			new /obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor(src)
+			new /obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor/miner(src)
 		if(25)
 			new /obj/item/book/granter/spell/summonitem(src)
 		if(26)
@@ -77,6 +77,8 @@
 			new /obj/item/bedsheet/cult(src)
 		if(28)
 			new /obj/item/clothing/neck/necklace/memento_mori(src)
+//		if(29)
+//			new /obj/item/clothing/gloves/gauntlets(src)
 
 //KA modkit design discs
 /obj/item/disk/design_disk/modkit_disc
@@ -136,7 +138,7 @@
 	desc = "A device which causes kinetic accelerators to permanently gain damage against creature types killed with it."
 	id = "bountymod"
 	materials = list(MAT_METAL = 4000, MAT_SILVER = 4000, MAT_GOLD = 4000, MAT_BLUESPACE = 4000)
-	reagents_list = list("blood" = 40)
+	reagents_list = list(/datum/reagent/blood)
 	build_path = /obj/item/borg/upgrade/modkit/bounty
 
 //Spooky special loot
@@ -577,7 +579,7 @@
 /obj/item/reagent_containers/glass/bottle/potion/flight
 	name = "strange elixir"
 	desc = "A flask with an almost-holy aura emitting from it. The label on the bottle says: 'erqo'hyy tvi'rf lbh jv'atf'."
-	list_reagents = list("flightpotion" = 5)
+	list_reagents = list(/datum/reagent/flightpotion = 5)
 
 /obj/item/reagent_containers/glass/bottle/potion/update_icon()
 	if(reagents.total_volume)
@@ -587,7 +589,6 @@
 
 /datum/reagent/flightpotion
 	name = "Flight Potion"
-	id = "flightpotion"
 	description = "Strange mutagenic compound of unknown origins."
 	reagent_state = LIQUID
 	color = "#FFEBEB"
@@ -664,10 +665,10 @@
 	total_mass_on = 5
 
 /obj/item/melee/transforming/cleaving_saw/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>It is [active ? "open, and will cleave enemies in a wide arc":"closed, and can be used for rapid consecutive attacks that cause beastly enemies to bleed"].<br>\
+	. = ..()
+	. += "<span class='notice'>It is [active ? "open, and will cleave enemies in a wide arc":"closed, and can be used for rapid consecutive attacks that cause beastly enemies to bleed"].<br>\
 	Both modes will build up existing bleed effects, doing a burst of high damage if the bleed is built up high enough.<br>\
-	Transforming it immediately after an attack causes the next attack to come out faster.</span>")
+	Transforming it immediately after an attack causes the next attack to come out faster.</span>"
 
 /obj/item/melee/transforming/cleaving_saw/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is [active ? "closing [src] on [user.p_their()] neck" : "opening [src] into [user.p_their()] chest"]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -739,11 +740,10 @@
 		if(1)
 			new /obj/item/melee/ghost_sword(src)
 		if(2)
-			new /obj/item/lava_staff(src)
-		if(3)
 			new /obj/item/book/granter/spell/sacredflame(src)
 			new /obj/item/gun/magic/wand/fireball(src)
-		if(4)
+			new /obj/item/lava_staff(src)
+		if(3 to 4)
 			new /obj/item/dragons_blood(src)
 
 /obj/structure/closet/crate/necropolis/dragon/crusher
@@ -853,32 +853,18 @@
 	icon_state = "vial"
 
 /obj/item/dragons_blood/attack_self(mob/living/carbon/human/user)
-	if(!istype(user))
-		return
-
-	var/mob/living/carbon/human/H = user
-	var/random = rand(1,4)
-
-	switch(random)
-		if(1)
-			to_chat(user, "<span class='danger'>Your appearance morphs to that of a very small humanoid ash dragon! You get to look like a freak without the cool abilities.</span>")
-			H.dna.features = list("mcolor" = "A02720", "tail_lizard" = "Dark Tiger", "tail_human" = "None", "snout" = "Sharp", "horns" = "Curled", "ears" = "None", "wings" = "None", "frills" = "None", "spines" = "Long", "body_markings" = "Dark Tiger Body", "legs" = "Digitigrade Legs")
-			H.eye_color = "fee5a3"
-			H.set_species(/datum/species/lizard)
-		if(2)
-			to_chat(user, "<span class='danger'>Your flesh begins to melt! Miraculously, you seem fine otherwise.</span>")
-			H.set_species(/datum/species/skeleton)
-		if(3)
-			to_chat(user, "<span class='danger'>Power courses through you! You can now shift your form at will.</span>")
-			if(user.mind)
-				var/obj/effect/proc_holder/spell/targeted/shapeshift/dragon/D = new
-				user.mind.AddSpell(D)
-		if(4)
-			to_chat(user, "<span class='danger'>You feel like you could walk straight through lava now.</span>")
-			H.weather_immunities |= "lava"
+	if(prob(50))
+		to_chat(user, "<span class='danger'>You feel like you could walk straight through lava now.</span>")
+		user.weather_immunities |= "lava"
+	else
+		to_chat(user, "<span class='danger'>Power courses through you! You can now shift your form at will.</span>")
+		if(user.mind)
+			var/obj/effect/proc_holder/spell/targeted/shapeshift/dragon/D = new
+			user.mind.AddSpell(D)
 
 	playsound(user.loc,'sound/items/drink.ogg', rand(10,50), 1)
 	qdel(src)
+
 
 /datum/disease/transformation/dragon
 	name = "dragon transformation"
@@ -975,9 +961,7 @@
 	switch(loot)
 		if(1)
 			new /obj/item/mayhem(src)
-		if(2)
-			new /obj/item/gun/magic/staff/spellblade(src)
-		if(3)
+		if(2 to 3)
 			new /obj/item/gun/magic/staff/spellblade(src)
 
 /obj/structure/closet/crate/necropolis/bubblegum/crusher
@@ -1067,6 +1051,7 @@
 	var/random_crystal = pick(choices)
 	new random_crystal(src)
 	new /obj/item/organ/vocal_cords/colossus(src)
+	new /obj/item/skin_dissolver(src)
 
 /obj/structure/closet/crate/necropolis/colossus/crusher
 	name = "angelic colossus chest"
@@ -1103,8 +1088,8 @@
 	var/friendly_fire_check = FALSE //if the blasts we make will consider our faction against the faction of hit targets
 
 /obj/item/hierophant_club/examine(mob/user)
-	..()
-	to_chat(user, "<span class='hierophant_warning'>The[beacon ? " beacon is not currently":"re is a beacon"] attached.</span>")
+	. = ..()
+	. += "<span class='hierophant_warning'>The[beacon ? " beacon is not currently":"re is a beacon"] attached.</span>"
 
 /obj/item/hierophant_club/suicide_act(mob/living/user)
 	say("Xverwpsgexmrk...", forced = "hierophant club suicide")
@@ -1355,3 +1340,128 @@
 			new /obj/item/wisp_lantern(src)
 		if(3)
 			new /obj/item/prisoncube(src)
+
+//THE legion
+/obj/structure/closet/crate/necropolis/legion
+	name = "\improper Guardian of the Necropolis crate"
+
+/obj/structure/closet/crate/necropolis/legion/PopulateContents()
+	new /obj/item/staff/storm(src)
+	new /obj/item/skin_dissolver(src)
+
+/obj/item/staff/storm
+	name = "staff of storms"
+	desc = "An ancient staff retrieved from the remains of Legion. The wind stirs as you move it."
+	icon_state = "staffofstorms"
+	item_state = "staffofstorms"
+	icon = 'icons/obj/guns/magic.dmi'
+	slot_flags = ITEM_SLOT_BACK
+	w_class = WEIGHT_CLASS_BULKY
+	force = 25
+	damtype = BURN
+	hitsound = 'sound/weapons/sear.ogg'
+	var/storm_type = /datum/weather/ash_storm
+	var/storm_cooldown = 0
+	var/static/list/excluded_areas = list(/area/reebe/city_of_cogs)
+
+/obj/item/staff/storm/attack_self(mob/user)
+	if(storm_cooldown > world.time)
+		to_chat(user, "<span class='warning'>The staff is still recharging!</span>")
+		return
+
+	var/area/user_area = get_area(user)
+	var/turf/user_turf = get_turf(user)
+	if(!user_area || !user_turf || (user_area.type in excluded_areas))
+		to_chat(user, "<span class='warning'>Something is preventing you from using the staff here.</span>")
+		return
+	var/datum/weather/A
+	for(var/V in SSweather.processing)
+		var/datum/weather/W = V
+		if((user_turf.z in W.impacted_z_levels) && W.area_type == user_area.type)
+			A = W
+			break
+
+	if(A)
+		if(A.stage != END_STAGE)
+			if(A.stage == WIND_DOWN_STAGE)
+				to_chat(user, "<span class='warning'>The storm is already ending! It would be a waste to use the staff now.</span>")
+				return
+			user.visible_message("<span class='warning'>[user] holds [src] skywards as an orange beam travels into the sky!</span>", \
+			"<span class='notice'>You hold [src] skyward, dispelling the storm!</span>")
+			playsound(user, 'sound/magic/staff_change.ogg', 200, 0)
+			A.wind_down()
+			log_game("[user] ([key_name(user)]) has dispelled a storm at [AREACOORD(user_turf)]")
+			return
+	else
+		A = new storm_type(list(user_turf.z))
+		A.name = "staff storm"
+		log_game("[user] ([key_name(user)]) has summoned [A] at [AREACOORD(user_turf)]")
+		if (is_special_character(user))
+			message_admins("[A] has been summoned in [ADMIN_VERBOSEJMP(user_turf)] by [user] ([key_name_admin(user)], a non-antagonist")
+		A.area_type = user_area.type
+		A.telegraph_duration = 100
+		A.end_duration = 100
+
+	user.visible_message("<span class='warning'>[user] holds [src] skywards as red lightning crackles into the sky!</span>", \
+	"<span class='notice'>You hold [src] skyward, calling down a terrible storm!</span>")
+	playsound(user, 'sound/magic/staff_change.ogg', 200, 0)
+	A.telegraph()
+	storm_cooldown = world.time + 200
+
+/obj/item/skin_dissolver
+	name = "bottle of acid"
+	desc = "Of course, you're only planning on keeping this in a safe place..."
+	icon = 'icons/obj/wizard.dmi'
+	icon_state = "vial"
+
+/obj/item/skin_dissolver/attack_self(mob/living/carbon/human/user)
+	to_chat(user, "<span class='danger'>Your flesh begins to melt! Miraculously, you seem fine otherwise.</span>")
+	user.set_species(/datum/species/skeleton)
+	playsound(user.loc,'sound/items/drink.ogg', rand(10,50), 1)
+	qdel(src)
+
+/obj/item/skin_dissolver/attack(mob/M, mob/user)
+	if(M == user)
+		attack_self(user)
+		return
+	..()
+
+//Concussive Gauntlets
+/obj/item/clothing/gloves/gauntlets
+	name = "concussive gauntlets"
+	desc = "Pickaxes... for your hands!"
+	icon_state = "concussive_gauntlets"
+	item_state = "concussive_gauntlets"
+	toolspeed = 0.1
+	strip_delay = 40
+	equip_delay_other = 20
+	cold_protection = HANDS
+	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
+	heat_protection = HANDS
+	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
+	resistance_flags = LAVA_PROOF | FIRE_PROOF //they are from lavaland after all
+	armor = list("melee" = 15, "bullet" = 25, "laser" = 15, "energy" = 15, "bomb" = 100, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 30) //mostly bone bracer armor
+
+/obj/item/clothing/gloves/gauntlets/equipped(mob/user, slot)
+	. = ..()
+	if(slot == ITEM_SLOT_GLOVES)
+		tool_behaviour = TOOL_MINING
+		RegisterSignal(user, COMSIG_HUMAN_EARLY_UNARMED_ATTACK, .proc/rocksmash)
+		RegisterSignal(user, COMSIG_MOVABLE_BUMP, .proc/rocksmash)
+	else
+		stopmining(user)
+
+/obj/item/clothing/gloves/gauntlets/dropped(mob/user)
+	. = ..()
+	stopmining(user)
+
+/obj/item/clothing/gloves/gauntlets/proc/stopmining(mob/user)
+	tool_behaviour = initial(tool_behaviour)
+	UnregisterSignal(user, COMSIG_HUMAN_EARLY_UNARMED_ATTACK)
+	UnregisterSignal(user, COMSIG_MOVABLE_BUMP)
+
+/obj/item/clothing/gloves/gauntlets/proc/rocksmash(mob/living/carbon/human/H, atom/A, proximity)
+	if(!istype(A, /turf/closed/mineral))
+		return
+	A.attackby(src, H)
+	return COMPONENT_CANCEL_ATTACK_CHAIN

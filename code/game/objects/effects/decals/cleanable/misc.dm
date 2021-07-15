@@ -13,7 +13,7 @@
 
 /obj/effect/decal/cleanable/ash/Initialize()
 	. = ..()
-	reagents.add_reagent("ash", 30)
+	reagents.add_reagent(/datum/reagent/ash, 30)
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
 
@@ -27,7 +27,7 @@
 
 /obj/effect/decal/cleanable/ash/large/Initialize()
 	. = ..()
-	reagents.add_reagent("ash", 30) //double the amount of ash.
+	reagents.add_reagent(/datum/reagent/ash, 30) //double the amount of ash.
 
 /obj/effect/decal/cleanable/glass
 	name = "tiny shards"
@@ -41,6 +41,9 @@
 
 /obj/effect/decal/cleanable/glass/ex_act()
 	qdel(src)
+
+/obj/effect/decal/cleanable/glass/plasma
+	icon_state = "plasmatiny"
 
 /obj/effect/decal/cleanable/dirt
 	name = "dirt"
@@ -69,6 +72,11 @@
 	desc = "It's still good. Four second rule!"
 	icon_state = "flour"
 
+/obj/effect/decal/cleanable/greenglow/ecto
+	name = "ectoplasmic puddle"
+	desc = "You know who to call."
+	light_power = 2
+
 /obj/effect/decal/cleanable/greenglow
 	name = "glowing goo"
 	desc = "Jeez. I hope that's not for lunch."
@@ -78,6 +86,29 @@
 /obj/effect/decal/cleanable/greenglow/Initialize(mapload)
 	. = ..()
 	set_light(2, 0.8, "#22FFAA")
+
+/obj/effect/decal/cleanable/greenglow/radioactive
+	name = "radioactive hazard"
+	desc = "You should really clean this up..."
+	var/rad_pulse_strength = 5
+	var/last_event = 0
+	var/active = null
+
+/obj/effect/decal/cleanable/greenglow/radioactive/Crossed(atom/movable/O)
+	. = ..()
+	if(ismob(O))
+		radiate()
+
+/obj/effect/decal/cleanable/greenglow/radioactive/proc/radiate()
+	if(!active)
+		if(world.time > last_event+15)
+			active = 1
+			radiation_pulse(src, rad_pulse_strength)
+			for(var/obj/effect/decal/cleanable/greenglow/radioactive/T in orange(1,src))
+				T.radiate()
+			last_event = world.time
+			active = 0
+			return
 
 /obj/effect/decal/cleanable/greenglow/ex_act()
 	return
@@ -123,12 +154,10 @@
 			playsound(get_turf(src), 'sound/items/drink.ogg', 50, 1) //slurp
 			H.visible_message("<span class='alert'>[H] extends a small proboscis into the vomit pool, sucking it with a slurping sound.</span>")
 			if(reagents)
-				for(var/datum/reagent/R in reagents.reagent_list)
-					if (istype(R, /datum/reagent/consumable))
-						var/datum/reagent/consumable/nutri_check = R
-						if(nutri_check.nutriment_factor >0)
-							H.nutrition += nutri_check.nutriment_factor * nutri_check.volume
-							reagents.remove_reagent(nutri_check.id,nutri_check.volume)
+				for(var/datum/reagent/consumable/R in reagents.reagent_list)
+					if(R.nutriment_factor > 0)
+						H.nutrition += R.nutriment_factor * R.volume
+						reagents.del_reagent(R.type)
 			reagents.trans_to(H, reagents.total_volume)
 			qdel(src)
 
@@ -201,19 +230,19 @@
 	name = "generic glitter pile"
 	desc = "The herpes of arts and crafts."
 	icon = 'icons/effects/atmospherics.dmi'
+	icon_state = "glitter"
 	gender = NEUTER
 
 /obj/effect/decal/cleanable/glitter/pink
 	name = "pink glitter"
-	icon_state = "plasma_old"
+	color = "#9e0089"
 
 /obj/effect/decal/cleanable/glitter/white
 	name = "white glitter"
-	icon_state = "nitrous_oxide_old"
 
 /obj/effect/decal/cleanable/glitter/blue
 	name = "blue glitter"
-	icon_state = "freon_old"
+	color = "#2dd6ff"
 
 /obj/effect/decal/cleanable/plasma
 	name = "stabilized plasma"

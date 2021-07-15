@@ -18,7 +18,7 @@
 	light_power = 0.25
 	dynamic_lighting = DYNAMIC_LIGHTING_DISABLED
 	bullet_bounce_sound = null
-
+	vis_flags = VIS_INHERIT_ID	//when this be added to vis_contents of something it be associated with something on clicking, important for visualisation of turf in openspace and interraction with openspace that show you turf.
 
 /turf/open/space/basic/New()	//Do not convert to Initialize
 	//This is used to optimize the map loader
@@ -27,6 +27,8 @@
 /turf/open/space/Initialize()
 	icon_state = SPACE_ICON_STATE
 	air = space_gas
+	vis_contents.Cut() //removes inherited overlays
+	visibilityChanged()
 
 	if(flags_1 & INITIALIZED_1)
 		stack_trace("Warning: [src]([type]) initialized multiple times!")
@@ -69,6 +71,9 @@
 
 /turf/open/space/Assimilate_Air()
 	return
+
+/turf/open/space/remove_air(amount)
+	return null
 
 /turf/open/space/proc/update_starlight()
 	if(CONFIG_GET(flag/starlight))

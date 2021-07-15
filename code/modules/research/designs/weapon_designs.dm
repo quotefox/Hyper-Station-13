@@ -17,6 +17,36 @@
 	id = "sec_38lethal"
 	build_path = /obj/item/ammo_box/c38/lethal
 
+/datum/design/c38_trac
+	name = "Speed Loader (.38 TRAC)"
+	desc = "Designed to quickly reload revolvers. TRAC bullets embed a tracking implant within the target's body."
+	id = "c38_trac"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 20000, MAT_SILVER = 5000, MAT_GOLD = 1000)
+	build_path = /obj/item/ammo_box/c38/trac
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/datum/design/c38_hotshot
+	name = "Speed Loader (.38 Hot Shot)"
+	desc = "Designed to quickly reload revolvers. Hot Shot bullets contain an incendiary payload."
+	id = "c38_hotshot"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 20000, MAT_PLASMA = 5000)
+	build_path = /obj/item/ammo_box/c38/hotshot
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/datum/design/c38_iceblox
+	name = "Speed Loader (.38 Iceblox)"
+	desc = "Designed to quickly reload revolvers. Iceblox bullets contain a cryogenic payload."
+	id = "c38_iceblox"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 20000, MAT_PLASMA = 5000)
+	build_path = /obj/item/ammo_box/c38/iceblox
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
 //////////////
 //WT550 Mags//
 //////////////
@@ -45,6 +75,22 @@
 	id = "mag_oldsmg_ic"
 	materials = list(MAT_METAL = 6000, MAT_SILVER = 600, MAT_GLASS = 1000)
 	build_path = /obj/item/ammo_box/magazine/wt550m9/wtic
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/datum/design/mag_oldsmg/tx_mag
+	name = "WT-550 Semi-Auto SMG Uranium Magazine (4.6x30mm TX)"
+	desc = "A 20 round uranium tipped magazine for the out of date security WT-550 Semi-Auto SMG."
+	id = "mag_oldsmg_tx"
+	materials = list(MAT_METAL = 6000, MAT_SILVER = 600, MAT_URANIUM = 2000)
+	build_path = /obj/item/ammo_box/magazine/wt550m9/wttx
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/datum/design/mag_oldsmg/rubber_mag
+	name = "WT-550 Semi-Auto SMG rubberbullets Magazine (4.6x30mm rubber)"
+	desc = "A 20 round rubber shots magazine for the out of date security WT-550 Semi-Auto SMG"
+	id = "mag_oldsmg_rubber"
+	materials = list(MAT_METAL = 6000)
+	build_path = /obj/item/ammo_box/magazine/wt550m9/wtrubber
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 //////////////
@@ -110,6 +156,50 @@
 	build_path = /obj/item/ammo_casing/shotgun/dart/noreact
 	category = list("Ammo")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL
+
+////////////////////////////////
+//MWS 'Big Iron' Specific Ammo//
+////////////////////////////////
+
+/datum/design/xray_mws
+	name = "X-Ray MWS 'Big Iron' Microbattery"
+	desc = "An high-tech X-Ray Microbattery for the MWS 'Big Iron'."
+	id = "mws_xray"
+	build_type = PROTOLATHE
+	materials = list(MAT_GOLD = 2500, MAT_URANIUM = 2000, MAT_METAL = 2500, MAT_TITANIUM = 1000, MAT_BLUESPACE = 1000)
+	build_path = /obj/item/ammo_casing/mws_batt/xray
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/datum/design/ion_mws
+	name = "Ion MWS 'Big Iron' Microbattery"
+	desc = "An mid-tech Ion Microbattery for the MWS 'Big Iron'."
+	id = "mws_ion"
+	build_type = PROTOLATHE
+	materials = list(MAT_SILVER = 3000, MAT_METAL = 4000, MAT_URANIUM = 1000)
+	build_path = /obj/item/ammo_casing/mws_batt/ion
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/datum/design/disabler_mws
+	name = "Disabler MWS 'Big Iron' Microbattery"
+	desc = "An low-tech Disabler Microbattery for the MWS 'Big Iron'."
+	id = "mws_stun"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 7000, MAT_GLASS = 5000, MAT_GOLD = 1250, MAT_SILVER = 1250)
+	build_path = /obj/item/ammo_casing/mws_batt/stun
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
+
+/datum/design/lethal_mws
+	name = "Lethal MWS 'Big Iron' Microbattery"
+	desc = "An low-tech Lethal Microbattery for the MWS 'Big Iron'."
+	id = "mws_lethal"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 7000, MAT_GLASS = 5000, MAT_GOLD = 1250, MAT_SILVER = 1250)
+	build_path = /obj/item/ammo_casing/mws_batt/lethal
+	category = list("Ammo")
+	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
 
 //////////////
 //Firing Pins/
@@ -185,7 +275,7 @@
 	id = "decloner"
 	build_type = PROTOLATHE
 	materials = list(MAT_GOLD = 5000,MAT_URANIUM = 10000)
-	reagents_list = list("mutagen" = 40)
+	reagents_list = list(/datum/reagent/toxin/mutagen = 40)
 	build_path = /obj/item/gun/energy/decloner
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SECURITY
@@ -216,7 +306,7 @@
 	id = "flora_gun"
 	build_type = PROTOLATHE
 	materials = list(MAT_METAL = 2000, MAT_GLASS = 500)
-	reagents_list = list("radium" = 20)
+	reagents_list = list(/datum/reagent/radium = 20)
 	build_path = /obj/item/gun/energy/floragun
 	category = list("Weapons")
 	departmental_flags = DEPARTMENTAL_FLAG_SERVICE

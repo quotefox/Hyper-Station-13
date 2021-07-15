@@ -1,4 +1,5 @@
 /mob/living
+	var/sprinting = FALSE
 	var/recoveringstam = FALSE
 	var/incomingstammult = 1
 	var/bufferedstam = 0
@@ -127,6 +128,8 @@
 		update_canmove()
 	update_health_hud()
 
+/*
 /mob/living/proc/update_hud_sprint_bar()
 	if(hud_used && hud_used.sprint_buffer)
 		hud_used.sprint_buffer.update_to_mob(src)
+*/

@@ -5,6 +5,9 @@
  * Carpet floor
  * Fake pits
  * Fake space
+ * Plaswood floor
+ * Shadow wood floor
+ * Giant mushroom floor
  */
 
 /turf/open/floor/wood
@@ -19,8 +22,8 @@
 	tiled_dirt = FALSE
 
 /turf/open/floor/wood/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>There's a few <b>screws</b> and a <b>small crack</b> visible.</span>")
+	. = ..()
+	. += "<span class='notice'>There's a few <b>screws</b> and a <b>small crack</b> visible.</span>"
 
 /turf/open/floor/wood/screwdriver_act(mob/living/user, obj/item/I)
 	if(..())
@@ -44,7 +47,7 @@
 	C.play_tool_sound(src, 80)
 	return remove_tile(user, silent, (C.tool_behaviour == TOOL_SCREWDRIVER))
 
-/turf/open/floor/wood/remove_tile(mob/user, silent = FALSE, make_tile = TRUE)
+/turf/open/floor/wood/remove_tile(mob/user, silent = FALSE, make_tile = TRUE, forced = FALSE)
 	if(broken || burnt)
 		broken = 0
 		burnt = 0
@@ -65,7 +68,7 @@
 	temperature = 255.37
 
 /turf/open/floor/wood/airless
-	initial_gas_mix = "TEMP=2.7"
+	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/grass
 	name = "grass patch"
@@ -102,8 +105,49 @@
 	icon_state = "fairygrass"
 	floor_tile = /obj/item/stack/tile/fairygrass
 	light_range = 2
-	light_power = 0.50
+	light_power = 0.80
 	light_color = "#33CCFF"
+	color = "#33CCFF"
+
+/turf/open/floor/grass/fairy/white
+	name = "white fairygrass patch"
+	light_color = "#FFFFFF"
+	color = "#FFFFFF"
+	floor_tile = /obj/item/stack/tile/fairygrass/white
+
+/turf/open/floor/grass/fairy/red
+	name = "red fairygrass patch"
+	light_color = "#FF3333"
+	color = "#FF3333"
+	floor_tile = /obj/item/stack/tile/fairygrass/red
+
+/turf/open/floor/grass/fairy/yellow
+	name = "yellow fairygrass patch"
+	light_color = "#FFFF66"
+	color = "#FFFF66"
+	floor_tile = /obj/item/stack/tile/fairygrass/yellow
+
+/turf/open/floor/grass/fairy/green
+	name = "green fairygrass patch"
+	light_color = "#99FF99"
+	color = "#99FF99"
+	floor_tile = /obj/item/stack/tile/fairygrass/green
+
+/turf/open/floor/grass/fairy/blue
+	name = "blue fairygrass patch"
+	floor_tile = /obj/item/stack/tile/fairygrass/blue
+
+/turf/open/floor/grass/fairy/purple
+	name = "purple fairygrass patch"
+	light_color = "#D966FF"
+	color = "#D966FF"
+	floor_tile = /obj/item/stack/tile/fairygrass/purple
+
+/turf/open/floor/grass/fairy/pink
+	name = "pink fairygrass patch"
+	light_color = "#FFB3DA"
+	color = "#FFB3DA"
+	floor_tile = /obj/item/stack/tile/fairygrass/pink
 
 /turf/open/floor/grass/snow
 	gender = PLURAL
@@ -114,7 +158,7 @@
 	ore_type = /obj/item/stack/sheet/mineral/snow
 	planetary_atmos = TRUE
 	floor_tile = null
-	initial_gas_mix = "o2=22;n2=82;TEMP=180"
+	initial_gas_mix = FROZEN_ATMOS
 	slowdown = 2
 	bullet_sizzle = TRUE
 	footstep = FOOTSTEP_SAND
@@ -183,8 +227,8 @@
 	tiled_dirt = FALSE
 
 /turf/open/floor/carpet/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>There's a <b>small crack</b> on the edge of it.</span>")
+	. = ..()
+	. += "<span class='notice'>There's a <b>small crack</b> on the edge of it.</span>"
 
 /turf/open/floor/carpet/Initialize()
 	. = ..()
@@ -309,3 +353,166 @@
 	underlay_appearance.icon_state = SPACE_ICON_STATE
 	underlay_appearance.plane = PLANE_SPACE
 	return TRUE
+
+
+/turf/open/floor/shadoww
+	desc = "Stylish shadown wood."
+	icon_state = "shadoww"
+	floor_tile = /obj/item/stack/tile/shadoww
+	broken_states = list("shadoww-broken", "shadoww-broken2", "shadoww-broken3", "shadoww-broken4", "shadoww-broken5", "shadoww-broken6", "shadoww-broken7")
+	footstep = FOOTSTEP_WOOD
+	barefootstep = FOOTSTEP_WOOD_BAREFOOT
+	clawfootstep = FOOTSTEP_WOOD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+
+/turf/open/floor/shadoww/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>There's a few <b>screws</b> and a <b>small crack</b> visible.</span>"
+
+/turf/open/floor/shadoww/screwdriver_act(mob/living/user, obj/item/I)
+	if(..())
+		return TRUE
+	return pry_tile(I, user)
+
+/turf/open/floor/shadoww/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
+	if(T.turf_type == type)
+		return
+	var/obj/item/tool = user.is_holding_item_of_type(/obj/item/screwdriver)
+	if(!tool)
+		tool = user.is_holding_item_of_type(/obj/item/crowbar)
+	if(!tool)
+		return
+	var/turf/open/floor/plating/P = pry_tile(tool, user, TRUE)
+	if(!istype(P))
+		return
+	P.attackby(T, user, params)
+
+/turf/open/floor/shadoww/pry_tile(obj/item/C, mob/user, silent = FALSE)
+	C.play_tool_sound(src, 80)
+	return remove_tile(user, silent, (C.tool_behaviour == TOOL_SCREWDRIVER))
+
+/turf/open/floor/shadoww/remove_tile(mob/user, silent = FALSE, make_tile = TRUE, forced = FALSE)
+	if(broken || burnt)
+		broken = 0
+		burnt = 0
+		if(user && !silent)
+			to_chat(user, "<span class='notice'>You remove the broken planks.</span>")
+	else
+		if(make_tile)
+			if(user && !silent)
+				to_chat(user, "<span class='notice'>You unscrew the planks.</span>")
+			if(floor_tile)
+				new floor_tile(src)
+		else
+			if(user && !silent)
+				to_chat(user, "<span class='notice'>You forcefully pry off the planks, destroying them in the process.</span>")
+	return make_plating()
+
+/turf/open/floor/gmushroom
+	desc = "Stylish mushroom 'wood'."
+	icon_state = "gmushroom"
+	floor_tile = /obj/item/stack/tile/gmushroom
+	broken_states = list("gmushroom-broken", "gmushroom-broken2", "gmushroom-broken3", "gmushroom-broken4", "gmushroom-broken5", "gmushroom-broken6", "gmushroom-broken7")
+	footstep = FOOTSTEP_WOOD
+	barefootstep = FOOTSTEP_WOOD_BAREFOOT
+	clawfootstep = FOOTSTEP_WOOD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+
+/turf/open/floor/gmushroom/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>There's a few <b>screws</b> and a <b>small crack</b> visible.</span>"
+
+/turf/open/floor/gmushroom/screwdriver_act(mob/living/user, obj/item/I)
+	if(..())
+		return TRUE
+	return pry_tile(I, user)
+
+/turf/open/floor/gmushroom/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
+	if(T.turf_type == type)
+		return
+	var/obj/item/tool = user.is_holding_item_of_type(/obj/item/screwdriver)
+	if(!tool)
+		tool = user.is_holding_item_of_type(/obj/item/crowbar)
+	if(!tool)
+		return
+	var/turf/open/floor/plating/P = pry_tile(tool, user, TRUE)
+	if(!istype(P))
+		return
+	P.attackby(T, user, params)
+
+/turf/open/floor/gmushroom/pry_tile(obj/item/C, mob/user, silent = FALSE)
+	C.play_tool_sound(src, 80)
+	return remove_tile(user, silent, (C.tool_behaviour == TOOL_SCREWDRIVER))
+
+/turf/open/floor/gmushroom/remove_tile(mob/user, silent = FALSE, make_tile = TRUE, forced = FALSE)
+	if(broken || burnt)
+		broken = 0
+		burnt = 0
+		if(user && !silent)
+			to_chat(user, "<span class='notice'>You remove the broken planks.</span>")
+	else
+		if(make_tile)
+			if(user && !silent)
+				to_chat(user, "<span class='notice'>You unscrew the planks.</span>")
+			if(floor_tile)
+				new floor_tile(src)
+		else
+			if(user && !silent)
+				to_chat(user, "<span class='notice'>You forcefully pry off the planks, destroying them in the process.</span>")
+	return make_plating()
+
+/turf/open/floor/plaswood
+	desc = "Stylish plaswood."
+	icon_state = "plaswood"
+	floor_tile = /obj/item/stack/tile/plaswood
+	broken_states = list("plaswood-broken", "plaswood-broken2", "plaswood-broken3", "plaswood-broken4", "plaswood-broken5", "plaswood-broken6", "plaswood-broken7")
+	footstep = FOOTSTEP_WOOD
+	barefootstep = FOOTSTEP_WOOD_BAREFOOT
+	clawfootstep = FOOTSTEP_WOOD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	tiled_dirt = FALSE
+
+/turf/open/floor/plaswood/examine(mob/user)
+	. = ..()
+	. += "<span class='notice'>There's a few <b>screws</b> and a <b>small crack</b> visible.</span>"
+
+/turf/open/floor/plaswood/screwdriver_act(mob/living/user, obj/item/I)
+	if(..())
+		return TRUE
+	return pry_tile(I, user)
+
+/turf/open/floor/plaswood/try_replace_tile(obj/item/stack/tile/T, mob/user, params)
+	if(T.turf_type == type)
+		return
+	var/obj/item/tool = user.is_holding_item_of_type(/obj/item/screwdriver)
+	if(!tool)
+		tool = user.is_holding_item_of_type(/obj/item/crowbar)
+	if(!tool)
+		return
+	var/turf/open/floor/plating/P = pry_tile(tool, user, TRUE)
+	if(!istype(P))
+		return
+	P.attackby(T, user, params)
+
+/turf/open/floor/plaswood/pry_tile(obj/item/C, mob/user, silent = FALSE)
+	C.play_tool_sound(src, 80)
+	return remove_tile(user, silent, (C.tool_behaviour == TOOL_SCREWDRIVER))
+
+/turf/open/floor/plaswood/remove_tile(mob/user, silent = FALSE, make_tile = TRUE, forced = FALSE)
+	if(broken || burnt)
+		broken = 0
+		burnt = 0
+		if(user && !silent)
+			to_chat(user, "<span class='notice'>You remove the broken planks.</span>")
+	else
+		if(make_tile)
+			if(user && !silent)
+				to_chat(user, "<span class='notice'>You unscrew the planks.</span>")
+			if(floor_tile)
+				new floor_tile(src)
+		else
+			if(user && !silent)
+				to_chat(user, "<span class='notice'>You forcefully pry off the planks, destroying them in the process.</span>")
+	return make_plating()

@@ -24,6 +24,26 @@
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/jacket
 
+/datum/gear/jacketflannelblack // all of these are reskins of bomber jackets but with the vibe to make you look like a true lumberjack
+	name = "Black flannel jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/jacket/flannel
+
+/datum/gear/jacketflannelred
+	name = "Red flannel jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/jacket/flannel/red
+
+/datum/gear/jacketflannelaqua
+	name = "Aqua flannel jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/jacket/flannel/aqua
+
+/datum/gear/jacketflannelbrown
+	name = "Brown flannel jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/jacket/flannel/brown
+
 /datum/gear/jacketleather
 	name = "Leather jacket"
 	category = SLOT_WEAR_SUIT
@@ -43,6 +63,31 @@
 	name = "Puffer vest"
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/jacket/puffer/vest
+
+/datum/gear/jacketyellow
+	name = "Yellow Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/jacket_yellow
+
+/datum/gear/jacketorange
+	name = "Orange Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/jacket_orange
+
+/datum/gear/jacketred
+	name = "Red Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/jacket_red
+
+/datum/gear/jacketpurple
+	name = "Purple Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/jacket_purple
+
+/datum/gear/jacketwhite
+	name = "White Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/jacket_white
 
 /datum/gear/jacketlettermanbrown
 	name = "Brown letterman jacket"
@@ -94,6 +139,17 @@
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/flakjack
 	cost = 2
+
+/datum/gear/gcvest
+	name = "Guncaster's Vest"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/gcvest
+
+/datum/gear/gcvestalt
+	name = "Hellraider's Vest"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/gcvest/alt
+
 
 /datum/gear/trekds9_coat
 	name = "DS9 Overcoat (use uniform)"
@@ -173,3 +229,28 @@
 	name = "Red and Green Christmas Coat"
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/hooded/wintercoat/christmascoatrg
+
+/datum/gear/kromajacket
+	name = "Kromatose Military Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/polychromic/kromajacket
+
+/datum/gear/kromacrop
+	name = "Kromatose Short Jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/polychromic/kromacrop
+
+/datum/gear/blacksuitjacket
+	name = "Black Suit Jacket"
+	category = SLOT_WEAR_SUIT
+	path =	/obj/item/clothing/suit/toggle/lawyer/black
+
+/datum/gear/nemes
+	name = "Pharoah tunic"
+	category = SLOT_WEAR_SUIT
+	path =	/obj/item/clothing/suit/nemes
+
+/datum/gear/fluffcoat
+	name = "Winter labcoat"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/labcoat/formallab

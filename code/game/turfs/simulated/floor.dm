@@ -103,9 +103,9 @@
 /turf/open/floor/blob_act(obj/structure/blob/B)
 	return
 
-/turf/open/floor/proc/update_icon()
+/turf/open/floor/update_icon()
+	. = ..()
 	update_visuals()
-	return 1
 
 /turf/open/floor/attack_paw(mob/user)
 	return attack_hand(user)
@@ -177,7 +177,7 @@
 	I.play_tool_sound(src, 80)
 	return remove_tile(user, silent)
 
-/turf/open/floor/proc/remove_tile(mob/user, silent = FALSE, make_tile = TRUE)
+/turf/open/floor/proc/remove_tile(mob/user, silent = FALSE, make_tile = TRUE, forced = FALSE)
 	if(broken || burnt)
 		broken = 0
 		burnt = 0
@@ -191,24 +191,20 @@
 	return make_plating()
 
 /turf/open/floor/singularity_pull(S, current_size)
-	..()
-	if(current_size == STAGE_THREE)
-		if(prob(30))
+	. = ..()
+	switch(current_size)
+		if(STAGE_THREE)
+			if(floor_tile && prob(30))
+				remove_tile()
+		if(STAGE_FOUR)
+			if(floor_tile && prob(50))
+				remove_tile()
+		if(STAGE_FIVE to INFINITY)
 			if(floor_tile)
-				new floor_tile(src)
-				make_plating()
-	else if(current_size == STAGE_FOUR)
-		if(prob(50))
-			if(floor_tile)
-				new floor_tile(src)
-				make_plating()
-	else if(current_size >= STAGE_FIVE)
-		if(floor_tile)
-			if(prob(70))
-				new floor_tile(src)
-				make_plating()
-		else if(prob(50))
-			ReplaceWithLattice()
+				if(prob(70))
+					remove_tile()
+			else if(prob(50))
+				ReplaceWithLattice()
 
 /turf/open/floor/narsie_act(force, ignore_mobs, probability = 20)
 	. = ..()
@@ -253,9 +249,11 @@
 				return FALSE
 			to_chat(user, "<span class='notice'>You build an airlock.</span>")
 			var/obj/machinery/door/airlock/A = new the_rcd.airlock_type(src)
-
+			A.setDir(the_rcd.airlock_dir)
+			A.basecolor = the_rcd.airlock_color_base
+			A.stripcolor = the_rcd.airlock_color_strip
 			A.electronics = new/obj/item/electronics/airlock(A)
-
+			A.set_airlock_overlays(1) //need to update the overlays to update the colors
 			if(the_rcd.conf_access)
 				A.electronics.accesses = the_rcd.conf_access.Copy()
 			A.electronics.one_access = the_rcd.use_one_access

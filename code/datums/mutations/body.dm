@@ -9,7 +9,7 @@
 	synchronizer_coeff = 1
 	power_coeff = 1
 
-/datum/mutation/human/epilepsy/on_life(mob/living/carbon/human/owner)
+/datum/mutation/human/epilepsy/on_life()
 	if(prob(1 * GET_MUTATION_SYNCHRONIZER(src)) && owner.stat == CONSCIOUS)
 		owner.visible_message("<span class='danger'>[owner] starts having a seizure!</span>", "<span class='userdanger'>You have a seizure!</span>")
 		owner.Unconscious(200 * GET_MUTATION_POWER(src))
@@ -57,7 +57,7 @@
 	synchronizer_coeff = 1
 	power_coeff = 1
 
-/datum/mutation/human/cough/on_life(mob/living/carbon/human/owner)
+/datum/mutation/human/cough/on_life()
 	if(prob(5 * GET_MUTATION_SYNCHRONIZER(src)) && owner.stat == CONSCIOUS)
 		owner.drop_all_held_items()
 		owner.emote("cough")
@@ -68,10 +68,10 @@
 			owner.throw_at(target, cough_range, GET_MUTATION_POWER(src))
 
 
-//Dwarfism shrinks your body and lets you pass tables.
+//Dwarfism shrinks your body.
 /datum/mutation/human/dwarfism
 	name = "Dwarfism"
-	desc = "A mutation believed to be the cause of dwarfism."
+	desc = "A mutation believed to be the cause of dwarfism. May not work on smaller things properly."
 	quality = POSITIVE
 	difficulty = 16
 	instability = 5
@@ -80,17 +80,42 @@
 /datum/mutation/human/dwarfism/on_acquiring(mob/living/carbon/human/owner)
 	if(..())
 		return
-	owner.transform = owner.transform.Scale(1, 0.8)
-	owner.pass_flags |= PASSTABLE
+	if(owner.size_multiplier <= RESIZE_A_TINYMICRO) //Because what's optimization?
+		return
+	owner.resize(owner.size_multiplier-0.2)
 	owner.visible_message("<span class='danger'>[owner] suddenly shrinks!</span>", "<span class='notice'>Everything around you seems to grow..</span>")
 
 /datum/mutation/human/dwarfism/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
-	owner.transform = owner.transform.Scale(1, 1.25)
-	owner.pass_flags &= ~PASSTABLE
+	if(owner.size_multiplier >= RESIZE_A_MACROHUGE)
+		return
+	owner.resize(owner.size_multiplier+0.2)
 	owner.visible_message("<span class='danger'>[owner] suddenly grows!</span>", "<span class='notice'>Everything around you seems to shrink..</span>")
 
+//Giantism grows your body.
+/datum/mutation/human/giantism
+	name = "Giantism"
+	desc = "A mutation believed to be the cause of giantism. May not work on larger things properly."
+	quality = POSITIVE
+	difficulty = 14
+	instability = 5
+
+/datum/mutation/human/giantism/on_acquiring(mob/living/carbon/human/owner)
+	if(..())
+		return
+	if(owner.size_multiplier >= RESIZE_A_MACROHUGE)
+		return
+	owner.resize(owner.size_multiplier+0.2)
+	owner.visible_message("<span class='danger'[owner] expands in size!</span>", "<span class='notice'>Everything around you compresses smaller...</span>")
+
+/datum/mutation/human/giantism/on_losing(mob/living/carbon/human/owner)
+	if(..())
+		return
+	if(owner.size_multiplier <= RESIZE_A_TINYMICRO)
+		return
+	owner.resize(owner.size_multiplier-0.2)
+	owner.visible_message("<span class='danger'>[owner] suddenly shrinks back down!", "<span class='notice'>You shrink back down in size.</span>")
 
 //Clumsiness has a very large amount of small drawbacks depending on item.
 /datum/mutation/human/clumsy
@@ -118,7 +143,7 @@
 	text_gain_indication = "<span class='danger'>You twitch.</span>"
 	synchronizer_coeff = 1
 
-/datum/mutation/human/tourettes/on_life(mob/living/carbon/human/owner)
+/datum/mutation/human/tourettes/on_life()
 	if(prob(10 * GET_MUTATION_SYNCHRONIZER(src)) && owner.stat == CONSCIOUS && !owner.IsStun())
 		owner.Stun(200)
 		switch(rand(1, 3))
@@ -212,7 +237,7 @@
 	synchronizer_coeff = 1
 	power_coeff = 1
 
-/datum/mutation/human/fire/on_life(mob/living/carbon/human/owner)
+/datum/mutation/human/fire/on_life()
 	if(prob((1+(100-dna.stability)/10)) * GET_MUTATION_SYNCHRONIZER(src))
 		owner.adjust_fire_stacks(2 * GET_MUTATION_POWER(src))
 		owner.IgniteMob()
@@ -253,7 +278,7 @@
 	text_gain_indication = "<span class='danger'>You feel screams echo through your mind...</span>"
 	text_lose_indication = "<span class'notice'>The screaming in your mind fades.</span>"
 
-/datum/mutation/human/paranoia/on_life(mob/living/carbon/human/owner)
+/datum/mutation/human/paranoia/on_life()
 	if(prob(5) && owner.stat == CONSCIOUS)
 		owner.emote("scream")
 		owner.jitteriness = min(max(0, owner.jitteriness + 5), 30)

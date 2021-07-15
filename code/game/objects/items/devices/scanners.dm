@@ -30,7 +30,7 @@ GENE SCANNER
 /obj/item/t_scanner/attack_self(mob/user)
 
 	on = !on
-	icon_state = copytext(icon_state, 1, length(icon_state))+"[on]"
+	icon_state = copytext_char(icon_state, 1, -1) + "[on]"
 
 	if(on)
 		START_PROCESSING(SSobj, src)
@@ -232,7 +232,7 @@ GENE SCANNER
 		msg += "\t<span class='info'>Subject has abnormal brain fuctions.</span>\n"
 
 	//Astrogen shenanigans
-	if(advanced && M.reagents.has_reagent("astral"))
+	if(M.reagents?.has_reagent(/datum/reagent/fermi/astral))
 		if(M.mind)
 			msg += "\t<span class='danger'>Warning: subject may be possesed.</span>\n"
 		else
@@ -414,26 +414,24 @@ GENE SCANNER
 	// Blood Level
 	if(M.has_dna())
 		var/mob/living/carbon/C = M
-		var/blood_id = C.get_blood_id()
-		if(blood_id)
+		var/blood_typepath = C.get_blood_id()
+		if(blood_typepath)
 			if(ishuman(C))
 				var/mob/living/carbon/human/H = C
 				if(H.bleed_rate)
 					msg += "<span class='danger'>Subject is bleeding!</span>\n"
-			var/blood_percent =  round((C.blood_volume / (BLOOD_VOLUME_NORMAL * C.blood_ratio))*100)
+			var/blood_percent =  round((C.scan_blood_volume() / (BLOOD_VOLUME_NORMAL * C.blood_ratio))*100)
 			var/blood_type = C.dna.blood_type
-			if(blood_id != "blood")//special blood substance
-				var/datum/reagent/R = GLOB.chemical_reagents_list[blood_id]
+			if(!(blood_typepath in GLOB.blood_reagent_types))
+				var/datum/reagent/R = GLOB.chemical_reagents_list[blood_typepath]
 				if(R)
 					blood_type = R.name
-				else
-					blood_type = blood_id
-			if(C.blood_volume <= (BLOOD_VOLUME_SAFE*C.blood_ratio) && C.blood_volume > (BLOOD_VOLUME_OKAY*C.blood_ratio))
-				msg += "<span class='danger'>LOW blood level [blood_percent] %, [C.blood_volume] cl,</span> <span class='info'>type: [blood_type]</span>\n"
-			else if(C.blood_volume <= (BLOOD_VOLUME_OKAY*C.blood_ratio))
-				msg += "<span class='danger'>CRITICAL blood level [blood_percent] %, [C.blood_volume] cl,</span> <span class='info'>type: [blood_type]</span>\n"
+			if(C.scan_blood_volume() <= (BLOOD_VOLUME_SAFE*C.blood_ratio) && C.scan_blood_volume() > (BLOOD_VOLUME_OKAY*C.blood_ratio))
+				msg += "<span class='danger'>LOW blood level [blood_percent] %, [C.scan_blood_volume()] cl,</span> <span class='info'>type: [blood_type]</span>\n"
+			else if(C.scan_blood_volume() <= (BLOOD_VOLUME_OKAY*C.blood_ratio))
+				msg += "<span class='danger'>CRITICAL blood level [blood_percent] %, [C.scan_blood_volume()] cl,</span> <span class='info'>type: [blood_type]</span>\n"
 			else
-				msg += "<span class='info'>Blood level [blood_percent] %, [C.blood_volume] cl, type: [blood_type]</span>\n"
+				msg += "<span class='info'>Blood level [blood_percent] %, [C.scan_blood_volume()] cl, type: [blood_type]</span>\n"
 
 		var/cyberimp_detect
 		for(var/obj/item/organ/cyberimp/CI in C.internal_organs)
@@ -453,7 +451,7 @@ GENE SCANNER
 			if(M.reagents.reagent_list.len)
 				var/list/datum/reagent/reagents = list()
 				for(var/datum/reagent/R in M.reagents.reagent_list)
-					if(R.invisible)
+					if(R.chemical_flags & REAGENT_INVISIBLE)
 						continue
 					reagents += R
 
@@ -472,6 +470,21 @@ GENE SCANNER
 					msg += "<span class='danger'>[R.name]</span>\n"
 			else
 				msg += "<span class='notice'>Subject is not addicted to any reagents.</span>\n"
+
+			var/datum/reagent/impure/fermiTox/F = M.reagents.has_reagent(/datum/reagent/impure/fermiTox)
+			if(istype(F,/datum/reagent/impure/fermiTox))
+				switch(F.volume)
+					if(5 to 10)
+						msg += "<span class='notice'>Subject contains a low amount of toxic isomers.</span>\n"
+					if(10 to 25)
+						msg += "<span class='danger'>Subject contains toxic isomers.</span>\n"
+					if(25 to 50)
+						msg += "<span class='danger'>Subject contains a substantial amount of toxic isomers.</span>\n"
+					if(50 to 95)
+						msg += "<span class='danger'>Subject contains a high amount of toxic isomers.</span>\n"
+					if(95 to INFINITY)
+						msg += "<span class='danger'>Subject contains a extremely dangerous amount of toxic isomers.</span>\n"
+
 			msg += "*---------*</span>"
 			to_chat(user, msg)
 
@@ -512,14 +525,14 @@ GENE SCANNER
 	throw_range = 7
 	tool_behaviour = TOOL_ANALYZER
 	materials = list(MAT_METAL=30, MAT_GLASS=20)
-	grind_results = list("mercury" = 5, "iron" = 5, "silicon" = 5)
+	grind_results = list(/datum/reagent/mercury = 5, /datum/reagent/iron = 5, /datum/reagent/silicon = 5)
 	var/cooldown = FALSE
 	var/cooldown_time = 250
 	var/accuracy // 0 is the best accuracy.
 
 /obj/item/analyzer/examine(mob/user)
 	. = ..()
-	to_chat(user, "<span class='notice'>Alt-click [src] to activate the barometer function.</span>")
+	. += "<span class='notice'>Alt-click [src] to activate the barometer function.</span>"
 
 /obj/item/analyzer/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] begins to analyze [user.p_them()]self with [src]! The display shows that [user.p_theyre()] dead!</span>")
@@ -599,10 +612,10 @@ GENE SCANNER
 	scan_turf(user, location)
 
 /obj/item/analyzer/AltClick(mob/user) //Barometer output for measuring when the next storm happens
-	..()
+	. = ..()
 
 	if(user.canUseTopic(src))
-
+		. = TRUE
 		if(cooldown)
 			to_chat(user, "<span class='warning'>[src]'s barometer function is preparing itself.</span>")
 			return

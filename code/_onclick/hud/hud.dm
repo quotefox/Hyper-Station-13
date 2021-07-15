@@ -11,7 +11,8 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	"Plasmafire" = 'icons/mob/screen_plasmafire.dmi',
 	"Slimecore" = 'icons/mob/screen_slimecore.dmi',
 	"Operative" = 'icons/mob/screen_operative.dmi',
-	"Clockwork" = 'icons/mob/screen_clockwork.dmi'
+	"Clockwork" = 'icons/mob/screen_clockwork.dmi',
+	"Kinaris" = 'icons/mob/screen_kinaris.dmi',
 ))
 
 /proc/ui_style2icon(ui_style)
@@ -60,6 +61,9 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 
 	// subtypes can override this to force a specific UI style
 	var/ui_style
+
+	//Citadel stuff
+	var/obj/screen/arousal
 
 /datum/hud/New(mob/owner)
 	mymob = owner

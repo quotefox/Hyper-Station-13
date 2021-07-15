@@ -21,6 +21,8 @@
 	var/flush_count = 0 //this var adds 1 once per tick. When it reaches flush_every_ticks it resets and tries to flush.
 	var/last_sound = 0
 	var/obj/structure/disposalconstruct/stored
+	ui_x = 300
+	ui_y = 180
 	// create a new disposal
 	// find the attached trunk (if present) and init gas resvr.
 
@@ -77,12 +79,12 @@
 /obj/machinery/disposal/attackby(obj/item/I, mob/user, params)
 	add_fingerprint(user)
 	if(!pressure_charging && !full_pressure && !flush)
-		if(istype(I, /obj/item/screwdriver))
+		if(I.tool_behaviour == TOOL_SCREWDRIVER)
 			panel_open = !panel_open
 			I.play_tool_sound(src)
 			to_chat(user, "<span class='notice'>You [panel_open ? "remove":"attach"] the screws around the power connection.</span>")
 			return
-		else if(istype(I, /obj/item/weldingtool) && panel_open)
+		else if(I.tool_behaviour == TOOL_WELDER && panel_open)
 			if(!I.tool_start_check(user, amount=0))
 				return
 
@@ -97,28 +99,29 @@
 			return
 		place_item_in_disposal(I, user)
 		update_icon()
-		return 1 //no afterattack
+		return TRUE //no afterattack
 	else
 		return ..()
 
 /obj/machinery/disposal/proc/place_item_in_disposal(obj/item/I, mob/user)
-	I.forceMove(src)
-	user.visible_message("[user.name] places \the [I] into \the [src].", "<span class='notice'>You place \the [I] into \the [src].</span>")
-
+	if(istype(I, /obj/item/clothing/head/mob_holder))
+		var/obj/item/clothing/head/mob_holder/H = I
+		var/mob/living/m = H.held_mob
+		H.release()
+		if(m)
+			user.start_pulling(m, 1)
+			stuff_mob_in(m,user)
+		return//you don't want this going into disposals ever
+	if(user.temporarilyRemoveItemFromInventory(I)) //double-checks never hurt
+		I.forceMove(src)
+		user.visible_message("[user.name] places \the [I] into \the [src].", "<span class='notice'>You place \the [I] into \the [src].</span>")
 //mouse drop another mob or self
 /obj/machinery/disposal/MouseDrop_T(mob/living/target, mob/living/user)
 	if(istype(target))
 		stuff_mob_in(target, user)
 
 /obj/machinery/disposal/proc/stuff_mob_in(mob/living/target, mob/living/user)
-	if(!iscarbon(user) && !user.ventcrawler) //only carbon and ventcrawlers can climb into disposal by themselves.
-		return
-	if(!isturf(user.loc)) //No magically doing it from inside closets
-		return
-	if(target.buckled || target.has_buckled_mobs())
-		return
-	if(target.mob_size > MOB_SIZE_HUMAN)
-		to_chat(user, "<span class='warning'>[target] doesn't fit inside [src]!</span>")
+	if(!can_stuff_mob_in(target, user))
 		return
 	add_fingerprint(user)
 	if(user == target)
@@ -136,6 +139,19 @@
 			log_combat(user, target, "stuffed", addition="into [src]")
 			target.LAssailant = user
 		update_icon()
+
+/obj/machinery/disposal/proc/can_stuff_mob_in(mob/living/target, mob/living/user, pushing = FALSE)
+	if(!pushing && !iscarbon(user) && !user.ventcrawler) //only carbon and ventcrawlers can climb into disposal by themselves.
+		return FALSE
+	if(!isturf(user.loc)) //No magically doing it from inside closets
+		return FALSE
+	if(target.buckled || target.has_buckled_mobs())
+		return FALSE
+	if(target.mob_size > MOB_SIZE_HUMAN)
+		if(!pushing)
+			to_chat(user, "<span class='warning'>[target] doesn't fit inside [src]!</span>")
+		return FALSE
+	return TRUE
 
 /obj/machinery/disposal/relaymove(mob/user)
 	attempt_escape(user)
@@ -264,12 +280,14 @@
 	name = "disposal unit"
 	desc = "A pneumatic waste disposal unit."
 	icon_state = "disposal"
+	var/datum/oracle_ui/themed/nano/ui
+	obj_flags = CAN_BE_HIT | USES_TGUI | SHOVABLE_ONTO
 
 // attack by item places it in to disposal
 /obj/machinery/disposal/bin/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/storage/bag/trash))	//Not doing component overrides because this is a specific type.
 		var/obj/item/storage/bag/trash/T = I
-		GET_COMPONENT_FROM(STR, /datum/component/storage, T)
+		var/datum/component/storage/STR = T.GetComponent(/datum/component/storage)
 		to_chat(user, "<span class='warning'>You empty the bag.</span>")
 		for(var/obj/item/O in T.contents)
 			STR.remove_from_storage(O,src)
@@ -286,7 +304,7 @@
 		return
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "disposal_unit", name, 300, 200, master_ui, state)
+		ui = new(user, src, ui_key, "disposal_unit", name, ui_x, ui_y, master_ui, state)
 		ui.open()
 
 /obj/machinery/disposal/bin/ui_data(mob/user)
@@ -295,8 +313,7 @@
 	data["full_pressure"] = full_pressure
 	data["pressure_charging"] = pressure_charging
 	data["panel_open"] = panel_open
-	var/per = CLAMP(100* air_contents.return_pressure() / (SEND_PRESSURE), 0, 100)
-	data["per"] = round(per, 1)
+	data["per"] = CLAMP01(air_contents.return_pressure() / (SEND_PRESSURE))
 	data["isai"] = isAI(user)
 	return data
 
@@ -329,7 +346,7 @@
 			. = TRUE
 
 
-/obj/machinery/disposal/bin/hitby(atom/movable/AM)
+/obj/machinery/disposal/bin/hitby(atom/movable/AM, skipcatch = FALSE, hitpush = TRUE, blocked = FALSE, datum/thrownthing/throwingdatum)
 	if(isitem(AM) && AM.CanEnterDisposals())
 		if(prob(75))
 			AM.forceMove(src)
@@ -340,6 +357,17 @@
 			return ..()
 	else
 		return ..()
+
+/obj/machinery/disposal/bin/shove_act(mob/living/target, mob/living/user)
+	if(can_stuff_mob_in(target, user, TRUE))
+		target.Knockdown(SHOVE_KNOCKDOWN_SOLID)
+		target.forceMove(src)
+		user.visible_message("<span class='danger'>[user.name] shoves [target.name] into \the [src]!</span>",
+			"<span class='danger'>You shove [target.name] into \the [src]!</span>", null, COMBAT_MESSAGE_RANGE)
+		log_combat(user, target, "shoved", "into [src] (disposal bin)")
+		return TRUE
+	return FALSE
+
 
 /obj/machinery/disposal/bin/flush()
 	..()
@@ -388,8 +416,6 @@
 			if(full_pressure)
 				do_flush()
 		flush_count = 0
-
-	updateDialog()
 
 	if(flush && air_contents.return_pressure() >= SEND_PRESSURE) // flush can happen even without power
 		do_flush()

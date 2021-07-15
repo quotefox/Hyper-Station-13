@@ -18,62 +18,43 @@
 	dissipate_delay = 5
 	dissipate_strength = 1
 	var/list/orbiting_balls = list()
-	var/miniball = FALSE
 	var/produced_power
 	var/energy_to_raise = 32
 	var/energy_to_lower = -20
 
-/obj/singularity/energy_ball/Initialize(mapload, starting_energy = 50, is_miniball = FALSE)
-	miniball = is_miniball
+/obj/singularity/energy_ball/Initialize(mapload)
 	. = ..()
-	if(!is_miniball)
-		set_light(10, 7, "#EEEEFF")
+	set_light(10, 7, "#EEEEFF")
 
 /obj/singularity/energy_ball/ex_act(severity, target)
 	return
 
 /obj/singularity/energy_ball/Destroy()
-	if(orbiting && istype(orbiting.parent, /obj/singularity/energy_ball))
-		var/obj/singularity/energy_ball/EB = orbiting.parent
-		EB.orbiting_balls -= src
-
 	for(var/ball in orbiting_balls)
-		var/obj/singularity/energy_ball/EB = ball
+		var/obj/effect/energy_ball/EB = ball
 		qdel(EB)
 
 	. = ..()
 
-/obj/singularity/energy_ball/admin_investigate_setup()
-	if(miniball)
-		return //don't annnounce miniballs
-	..()
-
-
 /obj/singularity/energy_ball/process()
-	if(!orbiting)
-		handle_energy()
+	handle_energy()
+	move_the_basket_ball(4 + orbiting_balls.len * 1.5)
+	playsound(src.loc, 'sound/magic/lightningbolt.ogg', 100, 1, extrarange = 30)
 
-		move_the_basket_ball(4 + orbiting_balls.len * 1.5)
+	pixel_x = 0
+	pixel_y = 0
+	tesla_zap(src, 7, TESLA_DEFAULT_POWER, TRUE)
+	pixel_x = -32
+	pixel_y = -32
 
-		playsound(src.loc, 'sound/magic/lightningbolt.ogg', 100, 1, extrarange = 30)
-
-		pixel_x = 0
-		pixel_y = 0
-
-		tesla_zap(src, 7, TESLA_DEFAULT_POWER, TRUE)
-
-		pixel_x = -32
-		pixel_y = -32
-		for (var/ball in orbiting_balls)
-			var/range = rand(1, CLAMP(orbiting_balls.len, 3, 7))
-			tesla_zap(ball, range, TESLA_MINI_POWER/7*range)
-	else
-		energy = 0 // ensure we dont have miniballs of miniballs
+	for (var/ball in orbiting_balls)
+		var/range = rand(1, CLAMP(orbiting_balls.len, 3, 7))
+		tesla_zap(ball, range, TESLA_MINI_POWER/7*range)
 
 /obj/singularity/energy_ball/examine(mob/user)
-	..()
+	. = ..()
 	if(orbiting_balls.len)
-		to_chat(user, "The amount of orbiting mini-balls is [orbiting_balls.len].")
+		. += "There are [orbiting_balls.len] orbiting energy balls around it."
 
 
 /obj/singularity/energy_ball/proc/move_the_basket_ball(var/move_amount)
@@ -110,11 +91,9 @@
 		dissipate() //sing code has a much better system.
 
 /obj/singularity/energy_ball/proc/new_mini_ball()
-	if(!loc)
-		return
-	var/obj/singularity/energy_ball/EB = new(loc, 0, TRUE)
+	var/obj/effect/energy_ball/EB = new(loc, src)
 
-	EB.transform *= pick(0.3, 0.4, 0.5, 0.6, 0.7)
+	EB.transform *= pick(0.45, 0.5, 0.6, 0.7, 0.75)
 	var/icon/I = icon(icon,icon_state,dir)
 
 	var/orbitsize = (I.Width() + I.Height()) * pick(0.4, 0.5, 0.6, 0.7, 0.8)
@@ -137,23 +116,6 @@
 		C.ghostize(0)
 		qdel(rip_u)
 		C.death()
-
-/obj/singularity/energy_ball/orbit(obj/singularity/energy_ball/target)
-	if (istype(target))
-		target.orbiting_balls += src
-		GLOB.poi_list -= src
-		target.dissipate_strength = target.orbiting_balls.len
-
-	. = ..()
-/obj/singularity/energy_ball/stop_orbit()
-	if (orbiting && istype(orbiting.parent, /obj/singularity/energy_ball))
-		var/obj/singularity/energy_ball/orbitingball = orbiting.parent
-		orbitingball.orbiting_balls -= src
-		orbitingball.dissipate_strength = orbitingball.orbiting_balls.len
-	. = ..()
-	if (!QDELETED(src))
-		qdel(src)
-
 
 /obj/singularity/energy_ball/proc/dust_mobs(atom/A)
 	if(isliving(A))
@@ -311,3 +273,37 @@
 
 	else if(closest_structure)
 		closest_structure.tesla_act(power, tesla_flags, shocked_targets)
+
+/obj/effect/energy_ball
+	name = "energy ball"
+	icon = 'icons/obj/tesla_engine/energy_ball.dmi'
+	icon_state = "energy_ball"
+	pixel_x = -32
+	pixel_y = -32
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	var/obj/singularity/energy_ball/parent
+
+/obj/effect/energy_ball/New(loc, atom/A)
+	if(istype(A, /obj/singularity/energy_ball))
+		parent = A
+	..()
+
+/obj/effect/energy_ball/orbit(atom/A, radius = 10, clockwise = FALSE, rotation_speed = 20, rotation_segments = 36, pre_rotation = TRUE)
+	if(parent)
+		parent.orbiting_balls += src
+		parent.dissipate_strength = parent.orbiting_balls.len
+	return A == src ? null : A.AddComponent(/datum/component/orbiter, src, radius, clockwise, rotation_speed, rotation_segments, pre_rotation)
+
+/obj/effect/energy_ball/Destroy()
+	if(parent)
+		parent.orbiting_balls -= src
+		parent.dissipate_strength = parent.orbiting_balls.len
+	..()
+
+/obj/effect/energy_ball/stop_orbit()
+	if (parent)
+		parent.orbiting_balls -= src
+		parent.dissipate_strength = parent.orbiting_balls.len
+	. = ..()
+	if (!QDELETED(src))
+		QDEL_NULL(src)

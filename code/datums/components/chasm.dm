@@ -6,6 +6,7 @@
 
 	var/static/list/falling_atoms = list() // Atoms currently falling into chasms
 	var/static/list/forbidden_types = typecacheof(list(
+		/mob/camera,
 		/obj/singularity,
 		/obj/docking_port,
 		/obj/structure/lattice,
@@ -17,10 +18,13 @@
 		/obj/effect/hotspot,
 		/obj/effect/landmark,
 		/obj/effect/temp_visual,
+		/obj/effect/particle_effect,
 		/obj/effect/light_emitter/tendril,
 		/obj/effect/collapse,
 		/obj/effect/particle_effect/ion_trails,
-		/obj/effect/dummy/phased_mob
+		/obj/effect/dummy/phased_mob,
+		/obj/effect/immovablerod,
+		/obj/effect/crystalline_reentry
 		))
 
 /datum/component/chasm/Initialize(turf/target)
@@ -38,7 +42,7 @@
 
 /datum/component/chasm/proc/is_safe()
 	//if anything matching this typecache is found in the chasm, we don't drop things
-	var/static/list/chasm_safeties_typecache = typecacheof(list(/obj/structure/lattice/catwalk, /obj/structure/stone_tile))
+	var/static/list/chasm_safeties_typecache = typecacheof(list(/obj/structure/lattice/catwalk, /obj/structure/lattice, /obj/structure/stone_tile))
 
 	var/atom/parent = src.parent
 	var/list/found_safeties = typecache_filter_list(parent.contents, chasm_safeties_typecache)
@@ -112,6 +116,11 @@
 			L.notransform = TRUE
 			L.Stun(200)
 			L.resting = TRUE
+			if(L.client && check_rights_for(L.client, R_FUN))
+				playsound(AM, pick('hyperstation/sound/misc/yodadeath.ogg', 'hyperstation/sound/misc/fallingthroughclouds.ogg', 'hyperstation/sound/misc/goofy.ogg', 'hyperstation/sound/misc/wilhelm.ogg'), 100, 0)
+
+			else if(prob(5))
+				playsound(AM, pick('hyperstation/sound/misc/yodadeath.ogg', 'hyperstation/sound/misc/fallingthroughclouds.ogg', 'hyperstation/sound/misc/goofy.ogg', 'hyperstation/sound/misc/wilhelm.ogg'), 100, 0)
 
 		var/oldtransform = AM.transform
 		var/oldcolor = AM.color

@@ -1,3 +1,4 @@
+
 GLOBAL_VAR_INIT(LOOC_COLOR, null)//If this is null, use the CSS for OOC. Otherwise, use a custom colour.
 GLOBAL_VAR_INIT(normal_looc_colour, "#6699CC")
 
@@ -15,7 +16,7 @@ GLOBAL_VAR_INIT(normal_looc_colour, "#6699CC")
 		to_chat(src, "Guests may not use OOC.")
 		return
 
-	msg = copytext(sanitize(msg), 1, MAX_MESSAGE_LEN)
+	msg = copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN)
 	if(!msg)
 		return
 

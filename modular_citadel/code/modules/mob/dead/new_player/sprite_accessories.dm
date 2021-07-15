@@ -42,6 +42,12 @@
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/markings_notmammals.dmi'
 
+/datum/sprite_accessory/body_markings/gecko
+	name = "Gecko"
+	icon_state = "gecko"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/markings_notmammals.dmi'
+
 /datum/sprite_accessory/tails/lizard/guilmon
 	name = "Guilmon"
 	icon_state = "guilmon"
@@ -51,6 +57,18 @@
 /datum/sprite_accessory/tails_animated/lizard/guilmon
 	name = "Guilmon"
 	icon_state = "guilmon"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails/lizard/gecko
+	name = "Gecko"
+	icon_state = "gecko"
+	color_src = MATRIXED
+	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
+
+/datum/sprite_accessory/tails_animated/lizard/gecko
+	name = "Gecko"
+	icon_state = "gecko"
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_tails.dmi'
 
@@ -217,6 +235,27 @@
 	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
 	color_src = MATRIXED
 
+/datum/sprite_accessory/mam_ears/deerantlers
+	name = "Deer Antlers"
+	icon_state = "deerantlers"
+	hasinner = 1
+	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
+	color_src = MATRIXED
+
+/datum/sprite_accessory/ears/human/deerantlersears
+	name = "Deer Antlers with Ears"
+	icon_state = "deerantlersears"
+	hasinner = 1
+	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
+	color_src = MATRIXED
+
+/datum/sprite_accessory/mam_ears/deerears
+	name = "Deer Ears"
+	icon_state = "deerears"
+	hasinner = 1
+	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
+	color_src = MATRIXED
+
 /datum/sprite_accessory/ears/human/cow
 	name = "Cow"
 	icon_state = "cow"
@@ -244,6 +283,12 @@
 /datum/sprite_accessory/ears/human/elf
 	name = "Elf"
 	icon_state = "elf"
+	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
+	color_src = SKINTONE
+
+datum/sprite_accessory/ears/human/gret
+	name = "Gret"
+	icon_state = "gret"
 	icon = 'modular_citadel/icons/mob/mam_ears.dmi'
 	color_src = SKINTONE
 
@@ -702,10 +747,12 @@
 /datum/sprite_accessory/mam_snouts
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_snouts.dmi'
+	recommended_species = list("mammal", "slimeperson", "insect", "podweak", "avian", "aquatic")
 
 /datum/sprite_accessory/mam_snouts/none
 	name = "None"
 	icon_state = "none"
+	recommended_species = null
 
 
 /******************************************
@@ -727,6 +774,10 @@
 	extra2 = TRUE
 	extra2_color_src = MUTCOLORS3
 
+/datum/sprite_accessory/mam_snouts/deer
+	name = "Deer"
+	icon_state = "deer"
+
 /datum/sprite_accessory/mam_snouts/elephant
 	name = "Elephant"
 	icon_state = "elephant"
@@ -736,6 +787,22 @@
 /datum/sprite_accessory/mam_snouts/fox
 	name = "Fox"
 	icon_state = "fox"
+
+/datum/sprite_accessory/mam_snouts/foxalt
+	name = "Fox Alt"
+	icon_state = "foxalt"
+
+/datum/sprite_accessory/mam_snouts/snub
+	name = "Snub"
+	icon_state = "snub"
+
+/datum/sprite_accessory/mam_snouts/hshort
+	name = "Small"
+	icon_state = "short"
+
+/datum/sprite_accessory/mam_snouts/rabbit
+	name = "Rabbit"
+	icon_state = "rabbit"
 
 /datum/sprite_accessory/mam_snouts/hshark
 	name = "hShark"
@@ -768,6 +835,12 @@
 /datum/sprite_accessory/mam_snouts/skulldog
 	name = "Skulldog"
 	icon_state = "skulldog"
+	extra = TRUE
+	extra_color_src = MATRIXED
+
+/datum/sprite_accessory/mam_snouts/skullbird
+	name = "Skullbird"
+	icon_state = "skullbird"
 	extra = TRUE
 	extra_color_src = MATRIXED
 
@@ -821,6 +894,10 @@
 	name = "Otie"
 	icon_state = "otie"
 
+/datum/sprite_accessory/mam_snouts/orca
+	name = "Orca"
+	icon_state = "orca"
+
 /datum/sprite_accessory/mam_snouts/pede
 	name = "Scolipede"
 	icon_state = "pede"
@@ -857,6 +934,112 @@
 	icon_state = "roundlight"
 	color_src = MUTCOLORS
 
+//Synth snouts (This is the most important part)
+/datum/sprite_accessory/mam_snouts/synthliz
+	recommended_species = list("synthliz")
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard - Snout"
+	icon_state = "synthliz_basic"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthliz_under
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Snout Under"
+	icon_state = "synthliz_under"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthliz_tert
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Snout Tertiary"
+	icon_state = "synthliz_tert"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthliz_tertunder
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Snout Tertiary Under"
+	icon_state = "synthliz_tertunder"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_basic
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard Alt - Snout"
+	icon_state = "synthlizalt_basic"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_under
+	color_src = MATRIXED
+	name = "Synthetic Lizard Alt - Snout Under"
+	icon_state = "synthlizalt_under"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_over
+	color_src = MATRIXED
+	name = "Synthetic Lizard Alt - Snout Over"
+	icon_state = "synthlizalt_over"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_tert
+	color_src = MATRIXED
+	name = "Synthetic Lizard Alt - Snout Tertiary"
+	icon_state = "synthlizalt_tert"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizalt_tertunder
+	color_src = MATRIXED
+	name = "Synthetic Lizard Alt - Snout Tertiary Under"
+	icon_state = "synthlizalt_tertunder"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizbarlessalt_basic
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard Barless Alt - Snout"
+	icon_state = "synthlizbarlessalt_basic"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizbarlessalt_under
+	color_src = MATRIXED
+	name = "Synthetic Lizard Barless Alt - Snout Under"
+	icon_state = "synthlizbarlessalt_under"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizbarlessalt_over
+	color_src = MATRIXED
+	name = "Synthetic Lizard Barless Alt - Snout Over"
+	icon_state = "synthlizbarlessalt_over"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizbarlessalt_tert
+	color_src = MATRIXED
+	name = "Synthetic Lizard Barless Alt - Snout Tertiary"
+	icon_state = "synthlizbarlessalt_tert"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizbarlessalt_tertunder
+	color_src = MATRIXED
+	name = "Synthetic Lizard Barless Alt - Snout Tertiary Under"
+	icon_state = "synthlizbarlessalt_tertunder"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizaxon
+	color_src = MATRIXED
+	name = "Synthetic Lizard - AXON"
+	icon_state = "synthlizaxon"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizaxon_alt
+	color_src = MATRIXED
+	name = "Synthetic Lizard - AXON Alt"
+	icon_state = "synthlizaxon_alt"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizaxon_tert
+	color_src = MATRIXED
+	name = "Synthetic Lizard - AXON Tertiary"
+	icon_state = "synthlizaxon_tert"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizproto1
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Prototype Visor 1"
+	icon_state = "synthlizproto1"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizproto2
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Prototype Visor 2"
+	icon_state = "synthlizproto2"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizspectre
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Spectre"
+	icon_state = "synthlizspectre"
+
+/datum/sprite_accessory/mam_snouts/synthliz/synthlizvenom
+	color_src = MATRIXED
+	name = "Synthetic Lizard - V3/NM"
+	icon_state = "synthlizvenom"
 
 /******************************************
 **************** Snouts *******************
@@ -1014,21 +1197,31 @@
 	icon_state = "horn1"
 	color_src = MUTCOLORS3
 
-/datum/sprite_accessory/mam_ears/deer
-	name = "Deer"
-	icon_state = "deer"
-	color_src = MUTCOLORS3
+/datum/sprite_accessory/mam_ears/deerantlers
+	name = "Deer Antlers"
+	icon_state = "deerantlers"
+
+/datum/sprite_accessory/mam_ears/deerantlersears
+	name = "Deer Antlers with Ears"
+	icon_state = "deerantlersears"
+
+/datum/sprite_accessory/mam_ears/deerears
+	name = "Deer Ears"
+	icon_state = "deerears"
 
 /datum/sprite_accessory/mam_ears/eevee
 	name = "Eevee"
 	icon_state = "eevee"
-
 
 /datum/sprite_accessory/mam_ears/elf
 	name = "Elf"
 	icon_state = "elf"
 	color_src = MUTCOLORS3
 
+/datum/sprite_accessory/mam_ears/gret
+	name = "Gret"
+	icon_state = "gret"
+	color_src = MUTCOLORS3
 
 /datum/sprite_accessory/mam_ears/elephant
 	name = "Elephant"
@@ -1045,6 +1238,10 @@
 /datum/sprite_accessory/mam_ears/fox
 	name = "Fox"
 	icon_state = "fox"
+
+/datum/sprite_accessory/mam_ears/goathorns
+	name = "Goat Horns"
+	icon_state = "goathorns"
 
 /datum/sprite_accessory/mam_ears/husky
 	name = "Husky"
@@ -1361,6 +1558,26 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Wolf"
 	icon_state = "wolf"
 
+/datum/sprite_accessory/mam_tails/spade
+	name = "Demon Spade"
+	icon_state = "spade"
+
+/datum/sprite_accessory/mam_tails_animated/spade
+	name = "Demon Spade"
+	icon_state = "spade"
+
+/datum/sprite_accessory/mam_tails/synthliz
+	recommended_species = list("synthliz")
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard"
+	icon_state = "synthliz"
+
+/datum/sprite_accessory/mam_tails_animated/synthliz
+	recommended_species = list("synthliz")
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard"
+	icon_state = "synthliz"
+
 /******************************************
 ************ Body Markings ****************
 *******************************************/
@@ -1371,6 +1588,7 @@ datum/sprite_accessory/mam_tails/insect
 	color_src = MATRIXED
 	gender_specific = 0
 	icon = 'modular_citadel/icons/mob/mam_markings.dmi'
+	recommended_species = list("mammal", "xeno", "slimeperson", "podweak", "avian", "aquatic")
 
 /datum/sprite_accessory/mam_body_markings/none
 	name = "None"
@@ -1386,6 +1604,18 @@ datum/sprite_accessory/mam_tails/insect
 /datum/sprite_accessory/mam_body_markings/redpanda
 	name = "Redpanda"
 	icon_state = "redpanda"
+
+/datum/sprite_accessory/mam_body_markings/abs
+	name = "Abdominals"
+	icon_state = "abs"
+
+/datum/sprite_accessory/mam_body_markings/abstwo
+	name = "Abdominals Two-Tones"
+	icon_state = "absbelly"
+
+/datum/sprite_accessory/mam_body_markings/absthree
+	name = "Abdominals Three-Tones"
+	icon_state = "absarms"
 
 /datum/sprite_accessory/mam_body_markings/bee
 	name = "Bee"
@@ -1544,6 +1774,31 @@ datum/sprite_accessory/mam_tails/insect
 	icon_state = "xeno"
 	icon = 'modular_citadel/icons/mob/markings_notmammals.dmi'
 
+/datum/sprite_accessory/mam_body_markings/synthliz
+	recommended_species = list("synthliz")
+	name = "Synthetic Lizard - Plates"
+	icon_state = "synthlizscutes"
+
+/datum/sprite_accessory/mam_body_markings/synthliz/synthliz_noplates
+	name = "Synthetic Lizard - No plates"
+	icon_state = "synthliznoplates"
+
+/datum/sprite_accessory/mam_body_markings/synthliz/synthliz_pecs
+	name = "Synthetic Lizard - Pecs"
+	icon_state = "synthlizpecs"
+
+/datum/sprite_accessory/mam_body_markings/synthliz/synthliz_lights
+	name = "Synthetic Lizard - Lights"
+	icon_state = "synthlizlights"
+
+/datum/sprite_accessory/mam_body_markings/synthliz/synthliz_pecslight
+	name = "Synthetic Lizard - Pecs Light"
+	icon_state = "synthlizpecslight"
+
+/datum/sprite_accessory/mam_body_markings/protogenlight
+	name = "Protogen-light"
+	icon_state = "protogenlight"
+	icon = 'modular_citadel/icons/mob/markings_notmammals.dmi'
 
 /******************************************
 ************ Taur Bodies ******************
@@ -1558,10 +1813,12 @@ datum/sprite_accessory/mam_tails/insect
 	dimension_x = 64
 	var/taur_mode = NOT_TAURIC
 	color_src = MATRIXED
+	recommended_species = list("human", "lizard", "insect", "mammal", "xeno", "jelly", "slimeperson", "podweak", "avian", "aquatic")
 
 /datum/sprite_accessory/taur/none
 	name = "None"
 	icon_state = "None"
+	recommended_species = null
 
 /datum/sprite_accessory/taur/cow
 	name = "Cow"
@@ -1651,6 +1908,43 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Wolf"
 	icon_state = "wolf"
 	taur_mode = PAW_TAURIC
+
+//Synth Taurs (Ported from Virgo)
+/datum/sprite_accessory/taur/synthliz
+	name = "Virgo - Synthetic Lizard"
+	icon_state = "synthlizard"
+	taur_mode = PAW_TAURIC
+	recommended_species = list("synthliz")
+
+/datum/sprite_accessory/taur/synthliz/inv
+	name = "Virgo - Synthetic Lizard (Inverted)"
+	icon_state = "synthlizardinv"
+
+/datum/sprite_accessory/taur/synthliz/feline
+	name = "Virgo - Synthetic Feline"
+	icon_state = "synthfeline"
+
+/datum/sprite_accessory/taur/synthliz/feline/inv
+	name = "Virgo - Synthetic Feline (Inverted)"
+	icon_state = "synthfelineinv"
+
+/datum/sprite_accessory/taur/synthliz/horse
+	name = "Virgo - Synthetic Horse"
+	icon_state = "synthhorse"
+	taur_mode = HOOF_TAURIC
+	//alt_taur_mode = PAW_TAURIC
+
+/datum/sprite_accessory/taur/synthliz/horse/inv
+	name = "Virgo - Synthetic Horse (Inverted)"
+	icon_state = "synthhorseinv"
+
+/datum/sprite_accessory/taur/synthliz/wolf
+	name = "Virgo - Synthetic Wolf"
+	icon_state = "synthwolf"
+
+/datum/sprite_accessory/taur/synthliz/wolf/inv
+	name = "Virgo - Synthetic Wolf (Inverted)"
+	icon_state = "synthwolfinv"
 
 /******************************************
 *************** Ayyliums ******************
@@ -1831,10 +2125,12 @@ datum/sprite_accessory/mam_tails/insect
 /datum/sprite_accessory/antenna
 	icon = 'modular_citadel/icons/mob/ipc_antennas.dmi'
 	color_src = MUTCOLORS2
+	recommended_species = list("ipc")
 
 /datum/sprite_accessory/antenna/none
 	name = "None"
 	icon_state = "None"
+	recommended_species = null
 
 /datum/sprite_accessory/antenna/antennae
 	name = "Angled Antennae"
@@ -1855,6 +2151,112 @@ datum/sprite_accessory/mam_tails/insect
 /datum/sprite_accessory/antenna/crowned
 	name = "Crowned"
 	icon_state = "crowned"
+
+/datum/sprite_accessory/antenna/synthliz
+	recommended_species = list("synthliz")
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard - Antennae"
+	icon_state = "synth_antennae"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_curled
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard - Curled"
+	icon_state = "synth_curled"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_curledover
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Curled Plate"
+	icon_state = "synth_curledover"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_thick
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard - Thick"
+	icon_state = "synth_thick"
+
+/datum/sprite_accessory/antenna/synthliz/synth_thicklight
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Thick Light"
+	icon_state = "synth_thicklight"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_thickover
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Thick Plate"
+	icon_state = "synth_thickover"
+
+/datum/sprite_accessory/antenna/synthliz/synth_short
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard - Short"
+	icon_state = "synth_short"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_shortover
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Short Plate"
+	icon_state = "synth_shortover"
+
+/datum/sprite_accessory/antenna/synthliz/synth_sharp
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard - Sharp"
+	icon_state = "synth_sharp"
+
+/datum/sprite_accessory/antenna/synthliz/synth_sharplight
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Sharp Light"
+	icon_state = "synth_sharplight"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_sharpover
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Sharp Plate"
+	icon_state = "synth_sharpover"
+
+/datum/sprite_accessory/antenna/synthliz/synth_horns
+	color_src = MUTCOLORS
+	name = "Synthetic Lizard - Horns"
+	icon_state = "synth_horns"
+
+/datum/sprite_accessory/antenna/synthliz/synth_hornslight
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Horns Light"
+	icon_state = "synth_hornslight"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_hornsover
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Horns Plate"
+	icon_state = "synth_hornsover"
+
+/datum/sprite_accessory/antenna/synthliz/synth_antennaelight
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Antennae Light"
+	icon_state = "synth_antennaelight"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_antennaeover
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Antennae Plate"
+	icon_state = "synth_antennaeover"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_integrator
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Integrator Horns"
+	icon_state = "synth_integrator"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_antennaquad
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Quad Antennae"
+	icon_state = "synth_antennaquad"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_cobrahood
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Cobra Hood"
+	icon_state = "synth_cobrahood"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_cobraslim
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Narrow Cobra Hood"
+	icon_state = "synth_cobraslim"
+
+/datum/sprite_accessory/antenna/synthliz/synthliz_cobrahood_alt
+	color_src = MATRIXED
+	name = "Synthetic Lizard - Cobra Hood Inner"
+	icon_state = "synth_cobrahood_alt"
 
 // *** Snooooow flaaaaake ***
 
@@ -1903,6 +2305,48 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Sabresune"
 	icon_state = "sabresune"
 	ckeys_allowed = list("poojawa")
+
+//doged was here
+/datum/sprite_accessory/mam_body_markings/chemlight
+	name = "chemlight"
+	icon_state = "chemlight"
+	ckeys_allowed = list("chemlight")
+
+/datum/sprite_accessory/mam_tails/chemlight
+	name = "chemlight"
+	icon_state = "chemlight"
+	ckeys_allowed = list("chemlight")
+
+/datum/sprite_accessory/mam_tails_animated/chemlight
+	name = "chemlight"
+	icon_state = "chemlight"
+
+/datum/sprite_accessory/mam_ears/chemlight
+	name = "chemlight"
+	icon_state = "chemlight"
+	ckeys_allowed = list("chemlight")
+
+/datum/sprite_accessory/mam_snouts/fchemlight
+	name = "chemlight (Top)"
+	icon_state = "fchemlight"
+	ckeys_allowed = list("chemlight")
+
+/datum/sprite_accessory/mam_snouts/chemlight
+	name = "chemlight"
+	icon_state = "chemlight"
+	ckeys_allowed = list("chemlight")
+
+/datum/sprite_accessory/taur/chemnaga
+	name = "Naga Chemlight"
+	icon_state = "chemnaga"
+	taur_mode = SNEK_TAURIC
+	ckeys_allowed = list("chemlight")
+
+/datum/sprite_accessory/taur/chemlight
+	name = "Chem taur"
+	icon_state = "chemlight"
+	taur_mode = PAW_TAURIC
+	ckeys_allowed = list("chemlight")
 
 
 //Lunasune

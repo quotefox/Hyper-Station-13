@@ -19,3 +19,20 @@
 	caliber = "a556"
 	max_ammo = 30
 	multiple_sprites = 2
+
+//braton
+/obj/item/ammo_box/magazine/bratonmag
+	name = "toploader magazine (braton)"
+	icon_state = "bratonmag"
+	ammo_type = /obj/item/ammo_casing/bratonmag
+	caliber = "bratonb"
+	max_ammo = 60
+
+//FAL
+/obj/item/ammo_box/magazine/falMag
+	name = "FAL Magazine (20rnd.)"
+	icon_state = "fal-mag"
+	ammo_type = /obj/item/ammo_casing/fal762
+	caliber = "762fal"
+	max_ammo = 20
+	multiple_sprites = 2

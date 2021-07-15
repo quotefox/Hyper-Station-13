@@ -15,11 +15,11 @@
 	AddComponent(/datum/component/chasm, SSmapping.get_turf_below(src))
 
 /turf/open/chasm/proc/set_target(turf/target)
-	GET_COMPONENT(chasm_component, /datum/component/chasm)
+	var/datum/component/chasm/chasm_component = GetComponent(/datum/component/chasm)
 	chasm_component.target_turf = target
 
 /turf/open/chasm/proc/drop(atom/movable/AM)
-	GET_COMPONENT(chasm_component, /datum/component/chasm)
+	var/datum/component/chasm/chasm_component = GetComponent(/datum/component/chasm)
 	chasm_component.drop(AM)
 
 /turf/open/chasm/MakeSlippery(wet_setting, min_wet_time, wet_time_to_add, max_wet_time, permanent)
@@ -38,7 +38,7 @@
 	switch(passed_mode)
 		if(RCD_FLOORWALL)
 			to_chat(user, "<span class='notice'>You build a floor.</span>")
-			PlaceOnTop(/turf/open/floor/plating)
+			PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 			return TRUE
 	return FALSE
 
@@ -70,7 +70,7 @@
 				playsound(src, 'sound/weapons/genhit.ogg', 50, 1)
 				to_chat(user, "<span class='notice'>You build a floor.</span>")
 				// Create a floor, which has this chasm underneath it
-				PlaceOnTop(/turf/open/floor/plating)
+				PlaceOnTop(/turf/open/floor/plating, flags = CHANGETURF_INHERIT_AIR)
 			else
 				to_chat(user, "<span class='warning'>You need one floor tile to build a floor!</span>")
 		else
@@ -87,7 +87,6 @@
 	light_range = 1.9 //slightly less range than lava
 	light_power = 0.65 //less bright, too
 	light_color = LIGHT_COLOR_LAVA //let's just say you're falling into lava, that makes sense right
-
 
 // Chasms for the jungle, with planetary atmos and a different icon
 /turf/open/chasm/jungle
@@ -116,3 +115,27 @@
 	var/turf/T = safepick(get_area_turfs(/area/fabric_of_reality))
 	if(T)
 		set_target(T)
+
+/turf/open/chasm/cloud
+	name = "clouds"
+	gender = PLURAL
+	desc = "Clouds as far as the eye can see... Watch your step."
+	icon = 'icons/turf/space.dmi'
+	icon_state = "0"
+	plane = PLANE_SPACE
+	tiled_dirt = FALSE
+	baseturfs = /turf/open/chasm/cloud
+	smooth = SMOOTH_FALSE
+	planetary_atmos = TRUE
+	initial_gas_mix = FROZEN_ATMOS
+	density = FALSE
+
+/turf/open/chasm/cloud/Initialize()
+	. = ..()
+	icon_state = SPACE_ICON_STATE
+
+/turf/open/chasm/cloud/get_smooth_underlay_icon(mutable_appearance/underlay_appearance, turf/asking_turf, adjacency_dir)
+	underlay_appearance.icon = 'icons/turf/space.dmi'
+	underlay_appearance.icon_state = SPACE_ICON_STATE
+	underlay_appearance.plane = PLANE_SPACE
+	return TRUE

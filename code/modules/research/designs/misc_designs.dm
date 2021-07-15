@@ -408,6 +408,16 @@
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
 
+/datum/design/holosignfirelock
+	name = "ATMOS Holofirelock Projector"
+	desc = "A holographic projector that creates holographic barriers that prevent changes in temperature conditions."
+	id = "holosignfirelock"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 5000, MAT_GLASS = 1000, MAT_GOLD = 1000, MAT_SILVER = 1000)
+	build_path = /obj/item/holosign_creator/firelock
+	category = list("Equipment")
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
+
 /datum/design/forcefield_projector
 	name = "Forcefield Projector"
 	desc = "A device which can project temporary forcefields to seal off an area."
@@ -488,20 +498,20 @@
 	desc = "A tool that can construct and deconstruct walls, airlocks and floors on the fly."
 	id = "rcd_loaded"
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL=48000, MAT_GLASS=32000)  // costs more than what it did in the autolathe, this one comes loaded.
+	materials = list(MAT_METAL = MINERAL_MATERIAL_AMOUNT, MAT_GLASS = MINERAL_MATERIAL_AMOUNT)  // costs more than what it did in the autolathe, this one comes loaded.
 	build_path = /obj/item/construction/rcd/loaded
 	category = list("Equipment")
-	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
 
-/datum/design/pipe_dispenser
+/datum/design/rpd_loaded
 	name = "Rapid Pipe Dispenser (RPD)"
 	desc = "A tool that can construct and deconstruct pipes on the fly."
-	id = "pipe_dispenser"
+	id = "rpd_loaded"
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 75000, MAT_GLASS = 37500)
+	materials = list(MAT_METAL = 70000, MAT_GLASS = 37500)
 	build_path = /obj/item/pipe_dispenser
 	category = list("Equipment")
-	departmental_flags =  DEPARTMENTAL_FLAG_ENGINEERING
+	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
 
 /datum/design/alienwrench
 	name = "Alien Wrench"
@@ -588,7 +598,7 @@
 	desc = "A a electrode attached to a small circuit box that will tell you the pH of a solution."
 	id   = "pHmeter"
 	build_type = PROTOLATHE
-	materials = list(MAT_METAL = 1000, MAT_SILVER = 100, MAT_DIAMOND = 100)
+	materials = list(MAT_METAL = 1000, MAT_SILVER = 100, MAT_PLASTIC = 100)
 	build_path = /obj/item/fermichem/pHmeter
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_MEDICAL | DEPARTMENTAL_FLAG_SCIENCE

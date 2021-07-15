@@ -28,19 +28,19 @@ Difficulty: Medium
 	icon_state = "miner"
 	icon_living = "miner"
 	icon = 'icons/mob/broadMobs.dmi'
-	mob_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
+	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	light_color = "#E4C7C5"
 	movement_type = GROUND
 	speak_emote = list("roars")
 	speed = 1
-	move_to_delay = 2
+	move_to_delay = 4
 	projectiletype = /obj/item/projectile/kinetic/miner
 	projectilesound = 'sound/weapons/kenetic_accel.ogg'
 	ranged = 1
 	ranged_cooldown_time = 16
 	pixel_x = -16
-	crusher_loot = list(/obj/item/melee/transforming/cleaving_saw, /obj/item/gun/energy/kinetic_accelerator, /obj/item/crusher_trophy/miner_eye)
-	loot = list(/obj/item/melee/transforming/cleaving_saw, /obj/item/gun/energy/kinetic_accelerator)
+	crusher_loot = list(/obj/item/melee/transforming/cleaving_saw, /obj/item/gun/energy/kinetic_accelerator/bdmka, /obj/item/crusher_trophy/miner_eye)
+	loot = list(/obj/item/melee/transforming/cleaving_saw, /obj/item/gun/energy/kinetic_accelerator/bdmka)
 	wander = FALSE
 	del_on_death = TRUE
 	blood_volume = BLOOD_VOLUME_NORMAL
@@ -144,6 +144,8 @@ Difficulty: Medium
 		wander = TRUE
 		transform_weapon()
 		INVOKE_ASYNC(src, .proc/quick_attack_loop)
+		if(HAS_TRAIT(target, TRAIT_CURSED_BLOOD))
+			say(pick("Hunter, you must accept your death, be freed from the night.","The night, and the dream, were long...","Beasts all over the shop... You'll be one of them, sooner or later...","The night blocks all sight..."))
 
 /mob/living/simple_animal/hostile/megafauna/blood_drunk_miner/OpenFire()
 	Goto(target, move_to_delay, minimum_distance)

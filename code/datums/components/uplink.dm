@@ -24,8 +24,11 @@ GLOBAL_LIST_EMPTY(uplinks)
 	var/unlock_note
 	var/unlock_code
 	var/failsafe_code
+	var/datum/ui_state/checkstate
+	var/compact_mode = FALSE
+	var/debug = FALSE
 
-/datum/component/uplink/Initialize(_owner, _lockable = TRUE, _enabled = FALSE, datum/game_mode/_gamemode, starting_tc = 20)
+/datum/component/uplink/Initialize(_owner, _lockable = TRUE, _enabled = FALSE, datum/game_mode/_gamemode, starting_tc = 20, datum/ui_state/_checkstate)
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -57,6 +60,7 @@ GLOBAL_LIST_EMPTY(uplinks)
 	active = _enabled
 	gamemode = _gamemode
 	telecrystals = starting_tc
+	checkstate = _checkstate
 	if(!lockable)
 		active = TRUE
 		locked = FALSE
@@ -115,13 +119,20 @@ GLOBAL_LIST_EMPTY(uplinks)
 
 /datum/component/uplink/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
 									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.inventory_state)
+	state = checkstate ? checkstate : state
 	active = TRUE
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "uplink", name, 450, 750, master_ui, state)
+		ui = new(user, src, ui_key, "uplink", name, 620, 580, master_ui, state)
 		ui.set_autoupdate(FALSE) // This UI is only ever opened by one person, and never is updated outside of user input.
 		ui.set_style("syndicate")
 		ui.open()
+
+/datum/component/uplink/ui_host(mob/user)
+	if(istype(parent, /obj/item/implant)) //implants are like organs, not really located inside mobs codewise.
+		var/obj/item/implant/I = parent
+		return I.imp_in
+	return ..()
 
 /datum/component/uplink/ui_data(mob/user)
 	if(!user.mind)
@@ -129,29 +140,35 @@ GLOBAL_LIST_EMPTY(uplinks)
 	var/list/data = list()
 	data["telecrystals"] = telecrystals
 	data["lockable"] = lockable
+	data["compact_mode"] = compact_mode
 
+	return data
+
+/datum/component/uplink/ui_static_data(mob/user)
+	var/list/data = list()
 	data["categories"] = list()
 	for(var/category in uplink_items)
 		var/list/cat = list(
 			"name" = category,
 			"items" = (category == selected_cat ? list() : null))
-		if(category == selected_cat)
-			for(var/item in uplink_items[category])
-				var/datum/uplink_item/I = uplink_items[category][item]
-				if(I.limited_stock == 0)
+		for(var/item in uplink_items[category])
+			var/datum/uplink_item/I = uplink_items[category][item]
+			if(I.limited_stock == 0)
+				continue
+			if(I.restricted_roles.len)
+				var/is_inaccessible = TRUE
+				for(var/R in I.restricted_roles)
+					if(R == user.mind.assigned_role || debug)
+						is_inaccessible = FALSE
+				if(is_inaccessible)
 					continue
-				if(I.restricted_roles.len)
-					var/is_inaccessible = 1
-					for(var/R in I.restricted_roles)
-						if(R == user.mind.assigned_role)
-							is_inaccessible = 0
 					if(is_inaccessible)
 						continue
-				cat["items"] += list(list(
-					"name" = I.name,
-					"cost" = I.cost,
-					"desc" = I.desc,
-				))
+			cat["items"] += list(list(
+				"name" = I.name,
+				"cost" = I.cost,
+				"desc" = I.desc,
+			))
 		data["categories"] += list(cat)
 	return data
 
@@ -179,6 +196,8 @@ GLOBAL_LIST_EMPTY(uplinks)
 			SStgui.close_uis(src)
 		if("select")
 			selected_cat = params["category"]
+		if("compact_toggle")
+			compact_mode = !compact_mode
 	return TRUE
 
 /datum/component/uplink/proc/MakePurchase(mob/user, datum/uplink_item/U)

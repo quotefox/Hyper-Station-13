@@ -5,10 +5,10 @@
 		ShiftClickOn(A)
 		return
 	if(modifiers["alt"])
-		AltClickNoInteract(src, A)
+		altclick_listed_turf(A)
 		return
 
-	if(ishuman(A))
+	if(iscarbon(A))
 		if(A in drained_mobs)
 			to_chat(src, "<span class='revenwarning'>[A]'s soul is dead and empty.</span>" )
 		else if(in_range(src, A))
@@ -16,7 +16,7 @@
 
 
 //Harvest; activated ly clicking the target, will try to drain their essence.
-/mob/living/simple_animal/revenant/proc/Harvest(mob/living/carbon/human/target)
+/mob/living/simple_animal/revenant/proc/Harvest(mob/living/carbon/target)
 	if(!castcheck(0))
 		return
 	if(draining)
@@ -28,15 +28,15 @@
 			to_chat(target, "You feel as if you are being watched.")
 		return
 	draining = TRUE
-	essence_drained += rand(15, 20)
+	essence_drained += rand(30, 40)
 	to_chat(src, "<span class='revennotice'>You search for the soul of [target].</span>")
 	if(do_after(src, rand(10, 20), 0, target)) //did they get deleted in that second?
 		if(target.ckey)
 			to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] soul burns with intelligence.</span>")
-			essence_drained += rand(20, 30)
+			essence_drained += rand(40, 60)
 		if(target.stat != DEAD)
 			to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] soul blazes with life!</span>")
-			essence_drained += rand(40, 50)
+			essence_drained += rand(80, 100)
 		else
 			to_chat(src, "<span class='revennotice'>[target.p_their(TRUE)] soul is weak and faltering.</span>")
 		if(do_after(src, rand(15, 20), 0, target)) //did they get deleted NOW?
@@ -206,7 +206,7 @@
 	if(!L.on) //wait, wait, don't shock me
 		return
 	flick("[L.base_state]2", L)
-	for(var/mob/living/carbon/human/M in view(shock_range, L))
+	for(var/mob/living/carbon/M in view(shock_range, L))
 		if(M == user)
 			continue
 		L.Beam(M,icon_state="purple_lightning",time=5)
@@ -351,7 +351,7 @@
 					to_chat(H, "<span class='revenminor'>You feel [pick("suddenly sick", "a surge of nausea", "like your skin is <i>wrong</i>")].</span>")
 			else
 				if(mob.reagents)
-					mob.reagents.add_reagent("plasma", 5)
+					mob.reagents.add_reagent(/datum/reagent/toxin/plasma, 5)
 		else
 			mob.adjustToxLoss(5)
 	for(var/obj/structure/spacevine/vine in T) //Fucking with botanists, the ability.

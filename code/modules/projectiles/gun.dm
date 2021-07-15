@@ -83,11 +83,11 @@
 		qdel(src)
 
 /obj/item/gun/examine(mob/user)
-	..()
+	. = ..()
 	if(pin)
-		to_chat(user, "It has \a [pin] installed.")
+		. += "It has \a [pin] installed."
 	else
-		to_chat(user, "It doesn't have a firing pin installed, and won't fire.")
+		. += "It doesn't have a firing pin installed, and won't fire."
 
 /obj/item/gun/equipped(mob/living/user, slot)
 	. = ..()
@@ -95,7 +95,7 @@
 		zoom(user, FALSE) //we can only stay zoomed in if it's in our hands	//yeah and we only unzoom if we're actually zoomed using the gun!!
 
 //called after the gun has successfully fired its chambered ammo.
-/obj/item/gun/proc/process_chamber()
+/obj/item/gun/proc/process_chamber(mob/living/user)
 	return FALSE
 
 //check if there's enough ammo/energy/whatever to shoot one time
@@ -251,7 +251,7 @@
 		shoot_with_empty_chamber(user)
 		firing_burst = FALSE
 		return FALSE
-	process_chamber()
+	process_chamber(user)
 	update_icon()
 	return TRUE
 
@@ -293,7 +293,7 @@
 		else
 			shoot_with_empty_chamber(user)
 			return
-		process_chamber()
+		process_chamber(user)
 		update_icon()
 		semicd = TRUE
 		addtimer(CALLBACK(src, .proc/reset_semicd), fire_delay)
@@ -464,7 +464,7 @@
 	if(chambered && chambered.BB)
 		chambered.BB.damage *= 5
 
-	process_fire(target, user, TRUE, params)
+	process_fire(target, user, TRUE, params, BODY_ZONE_HEAD)
 
 /obj/item/gun/proc/unlock() //used in summon guns and as a convience for admins
 	if(pin)

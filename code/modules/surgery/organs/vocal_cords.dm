@@ -189,19 +189,19 @@
 			listeners = list(L) //Devil names are unique.
 			power_multiplier *= 5 //if you're a devil and god himself addressed you, you fucked up
 			//Cut out the name so it doesn't trigger commands
-			message = copytext(message, 0, start)+copytext(message, start + length(devilinfo.truename), length(message) + 1)
+			message = copytext(message, 1, start) + copytext(message, start + length(devilinfo.truename))
 			break
-		else if(dd_hasprefix(message, L.real_name))
+		else if(findtext(message, L.real_name, 1, length(L.real_name) + 1))
 			specific_listeners += L //focus on those with the specified name
 			//Cut out the name so it doesn't trigger commands
 			found_string = L.real_name
 
-		else if(dd_hasprefix(message, L.first_name()))
+		else if(findtext(message, L.first_name(), 1, length(L.first_name()) + 1))
 			specific_listeners += L //focus on those with the specified name
 			//Cut out the name so it doesn't trigger commands
 			found_string = L.first_name()
 
-		else if(L.mind && L.mind.assigned_role && dd_hasprefix(message, L.mind.assigned_role))
+		else if(L.mind && L.mind.assigned_role && findtext(message, L.mind.assigned_role, 1, length(L.mind.assigned_role) + 1))
 			specific_listeners += L //focus on those with the specified job
 			//Cut out the job so it doesn't trigger commands
 			found_string = L.mind.assigned_role
@@ -209,7 +209,7 @@
 	if(specific_listeners.len)
 		listeners = specific_listeners
 		power_multiplier *= (1 + (1/specific_listeners.len)) //2x on a single guy, 1.5x on two and so on
-		message = copytext(message, 0, 1)+copytext(message, 1 + length(found_string), length(message) + 1)
+		message = copytext(message, length(found_string) + 1)
 
 	var/static/regex/stun_words = regex("stop|wait|stand still|hold on|halt")
 	var/static/regex/knockdown_words = regex("drop|fall|trip|knockdown")
@@ -254,7 +254,8 @@
 	var/static/regex/clap_words = regex("clap|applaud")
 	var/static/regex/honk_words = regex("ho+nk") //hooooooonk
 	var/static/regex/multispin_words = regex("like a record baby|right round")
-	var/static/regex/orgasm_words = regex("cum|orgasm|climax|squirt|heyo") //CITADEL CHANGE
+	var/static/regex/family_friendly_words = regex("family") //Hyper change
+	//var/static/regex/orgasm_words = regex("cum|orgasm|climax|squirt|heyo") //CITADEL CHANGE
 	var/static/regex/dab_words = regex("dab|mood") //CITADEL CHANGE
 	var/static/regex/snap_words = regex("snap") //CITADEL CHANGE
 	var/static/regex/bwoink_words = regex("what the fuck are you doing|bwoink|hey you got a moment?") //CITADEL CHANGE
@@ -572,6 +573,7 @@
 			var/mob/living/L = V
 			L.SpinAnimation(speed = 10, loops = 5)
 
+	/* Yeah nah fam.
 	//CITADEL CHANGES
 	//ORGASM
 	else if((findtext(message, orgasm_words)))
@@ -580,6 +582,13 @@
 			var/mob/living/carbon/human/H = V
 			if(H.canbearoused && H.has_dna() && HAS_TRAIT(H, TRAIT_NYMPHO)) // probably a redundant check but for good measure
 				H.mob_climax(forced_climax=TRUE)
+	*/
+	else if((findtext(message, family_friendly_words)))
+		cooldown = COOLDOWN_MEME
+		for(var/V in listeners)
+			var/mob/living/M = V
+			M.say(pick("You don't turn your back on family.","...Even when they do."))
+			SEND_SOUND(M, sound('hyperstation/sound/misc/family.ogg',volume=75))
 
 	//DAB
 	else if((findtext(message, dab_words)))
@@ -718,19 +727,19 @@
 
 	for(var/V in listeners)
 		var/mob/living/L = V
-		if(dd_hasprefix(message, L.real_name))
+		if(findtext(message, L.real_name, 1, length(L.real_name) + 1))
 			specific_listeners += L //focus on those with the specified name
 			//Cut out the name so it doesn't trigger commands
 			found_string = L.real_name
 			power_multiplier += 0.5
 
-		else if(dd_hasprefix(message, L.first_name()))
+		else if(findtext(message, L.first_name(), 1, length(L.first_name()) + 1))
 			specific_listeners += L //focus on those with the specified name
 			//Cut out the name so it doesn't trigger commands
 			found_string = L.first_name()
 			power_multiplier += 0.5
 
-		else if(L.mind && L.mind.assigned_role && dd_hasprefix(message, L.mind.assigned_role))
+		else if(L.mind && L.mind.assigned_role && findtext(message, L.mind.assigned_role, 1, length(L.mind.assigned_role) + 1))
 			specific_listeners += L //focus on those with the specified job
 			//Cut out the job so it doesn't trigger commands
 			found_string = L.mind.assigned_role
@@ -739,7 +748,7 @@
 	if(specific_listeners.len)
 		listeners = specific_listeners
 		//power_multiplier *= (1 + (1/specific_listeners.len)) //Put this is if it becomes OP, power is judged internally on a thrall, so shouldn't be nessicary.
-		message = copytext(message, 0, 1)+copytext(message, 1 + length(found_string), length(message) + 1)//I have no idea what this does
+		message = copytext(message, length(found_string) + 1)//I have no idea what this does
 
 	var/obj/item/organ/tongue/T = user.getorganslot(ORGAN_SLOT_TONGUE)
 	if (T.name == "fluffy tongue") //If you sound hillarious, it's hard to take you seriously. This is a way for other players to combat/reduce their effectiveness.
@@ -749,17 +758,17 @@
 		to_chat(world, "[user]'s power is [power_multiplier].")
 
 	//Mixables
-	var/static/regex/enthral_words = regex("relax|obey|love|serve|docile|so easy|ara ara")
-	var/static/regex/reward_words = regex("good boy|good girl|good pet|good job")
-	var/static/regex/punish_words = regex("bad boy|bad girl|bad pet|bad job")
+	var/static/regex/enthral_words = regex("relax|obey|love|serve|so easy|ara ara")
+	var/static/regex/reward_words = regex("good boy|good girl|good pet|good job|splendid|jolly good|bloody brilliant")
+	var/static/regex/punish_words = regex("bad boy|bad girl|bad pet|bad job|spot of bother|gone and done it now|blast it|buggered it up")
 	//phase 0
 	var/static/regex/saymyname_words = regex("say my name|who am i|whoami")
-	var/static/regex/wakeup_words = regex("revert|awaken|snap") //works
+	var/static/regex/wakeup_words = regex("revert|awaken|snap|attention") 
 	//phase1
 	var/static/regex/petstatus_words = regex("how are you|what is your status|are you okay")
 	var/static/regex/silence_words = regex("shut up|silence|be silent|ssh|quiet|hush")
 	var/static/regex/speak_words = regex("talk to me|speak")
-	var/static/regex/antiresist_words = regex("unable to resist|give in")//useful if you think your target is resisting a lot
+	var/static/regex/antiresist_words = regex("unable to resist|give in|stop being difficult")//useful if you think your target is resisting a lot
 	var/static/regex/resist_words = regex("resist|snap out of it|fight")//useful if two enthrallers are fighting
 	var/static/regex/forget_words = regex("forget|muddled|awake and forget")
 	var/static/regex/attract_words = regex("come here|come to me|get over here|attract")
@@ -768,11 +777,11 @@
 	var/static/regex/awoo_words = regex("howl|awoo|bark")
 	var/static/regex/nya_words = regex("nya|meow|mewl")
 	var/static/regex/sleep_words = regex("sleep|slumber|rest")
-	var/static/regex/strip_words = regex("strip|derobe|nude")
+	var/static/regex/strip_words = regex("strip|derobe|nude|at ease|suit off")
 	var/static/regex/walk_words = regex("slow down|walk")
 	var/static/regex/run_words = regex("run|speed up")
-	var/static/regex/liedown_words = regex("lie down") //TO ADD
-	var/static/regex/knockdown_words = regex("drop|fall|trip|knockdown|kneel")
+	var/static/regex/liedown_words = regex("lie down")
+	var/static/regex/knockdown_words = regex("drop|fall|trip|knockdown|kneel|army crawl")
 	//phase 3
 	var/static/regex/statecustom_words = regex("state triggers|state your triggers")
 	var/static/regex/custom_words = regex("new trigger|listen to me")
@@ -780,14 +789,14 @@
 	var/static/regex/custom_echo = regex("obsess|fills your mind|loop")
 	var/static/regex/instill_words = regex("feel|entice|overwhel")
 	var/static/regex/recognise_words = regex("recognise me|did you miss me?")
-	var/static/regex/objective_words = regex("new objective|obey this command|unable to resist|compulsed")
-	var/static/regex/heal_words = regex("live|heal|survive|mend|life|pets never die")
+	var/static/regex/objective_words = regex("new objective|obey this command|unable to resist|compulsed|word from hq")
+	var/static/regex/heal_words = regex("live|heal|survive|mend|life|pets never die|heroes never die")
 	var/static/regex/stun_words = regex("stop|wait|stand still|hold on|halt")
-	var/static/regex/hallucinate_words = regex("get high|hallucinate")
+	var/static/regex/hallucinate_words = regex("get high|hallucinate|trip balls")
 	var/static/regex/hot_words = regex("heat|hot|hell")
 	var/static/regex/cold_words = regex("cold|cool down|chill|freeze")
-	var/static/regex/getup_words = regex("get up")
-	var/static/regex/pacify_words = regex("more and more docile|complaisant|friendly|pacifist")
+	var/static/regex/getup_words = regex("get up|hop to it")
+	var/static/regex/pacify_words = regex("docile|complaisant|friendly|pacifist")
 	var/static/regex/charge_words = regex("charge|oorah|attack")
 
 	var/distancelist = list(2,2,1.5,1.3,1.15,1,0.8,0.6,0.5,0.25)
@@ -917,7 +926,7 @@
 					speaktrigger += "[(H.client?.prefs.lewdchem?"You are my whole world and all of my being belongs to you, ":"I cannot think of anything else but aiding your cause, ")] "//Redflags!!
 
 			//mood
-			GET_COMPONENT_FROM(mood, /datum/component/mood, H)
+			var/datum/component/mood/mood = H.GetComponent(/datum/component/mood)
 			switch(mood.sanity)
 				if(SANITY_GREAT to INFINITY)
 					speaktrigger += "I'm beyond elated!! " //did you mean byond elated? hohoho
@@ -1013,7 +1022,7 @@
 						speaktrigger += "I'm really, really horny, "
 
 			//collar
-			if(istype(H.wear_neck, /obj/item/clothing/neck/petcollar))
+			if(istype(H.wear_neck, /obj/item/clothing/neck/petcollar) && H.client?.prefs.lewdchem)
 				speaktrigger += "I love the collar you gave me, "
 			//End
 			if(H.client?.prefs.lewdchem)
@@ -1105,7 +1114,8 @@
 
 	//teir 2
 
-	/* removed for now
+	 //removed for now
+	 //Hyper change - Unremoved for now
 	//ORGASM
 	else if((findtext(message, orgasm_words)))
 		for(var/V in listeners)
@@ -1122,7 +1132,7 @@
 					E.cooldown += 6
 				else
 					H.throw_at(get_step_towards(user,H), 3 * power_multiplier, 1 * power_multiplier)
-	*/
+	
 
 
 	//awoo
@@ -1249,6 +1259,9 @@
 				if (get_dist(user, H) > 1)//Requires user to be next to their pet.
 					to_chat(user, "<span class='warning'>You need to be next to your pet to give them a new trigger!</b></span>")
 					continue
+				if(!H.client?.prefs.lewdchem)
+					to_chat(user, "<span class='warning'>[H] seems incapable of being implanted with triggers.</b></span>")
+					continue
 				else
 					user.emote("me", 1, "puts their hands upon [H.name]'s head and looks deep into their eyes, whispering something to them.")
 					user.SetStun(1000)//Hands are handy, so you have to stay still
@@ -1286,6 +1299,9 @@
 			if(E.phase == 3)
 				if (get_dist(user, H) > 1)//Requires user to be next to their pet.
 					to_chat(user, "<span class='warning'>You need to be next to your pet to give them a new echophrase!</b></span>")
+					continue
+				if(!H.client?.prefs.lewdchem)
+					to_chat(user, "<span class='warning'>[H] seems incapable of being implanted with an echoing phrase.</b></span>")
 					continue
 				else
 					user.emote("me", 1, "puts their hands upon [H.name]'s head and looks deep into their eyes, whispering something to them.")
@@ -1342,8 +1358,8 @@
 		for(var/V in listeners)
 			var/mob/living/carbon/human/H = V
 			var/datum/status_effect/chem/enthrall/E = H.has_status_effect(/datum/status_effect/chem/enthrall)
-			if(E.phase == 3 && H.client?.prefs.lewdchem)
-				var/instill = stripped_input(user, "Instill an emotion in your [(user.client?.prefs.lewdchem?"Your pet":"listener")].", MAX_MESSAGE_LEN)
+			if(E.phase >= 3 && H.client?.prefs.lewdchem)
+				var/instill = stripped_input(user, "Instill an emotion in [H].", MAX_MESSAGE_LEN)
 				to_chat(H, "<i>[instill]</i>")
 				to_chat(user, "<span class='notice'><i>You sucessfully instill a feeling in [H]</i></span>")
 				log_game("FERMICHEM: [H] has been instilled by [user] with [instill] via MKUltra.")

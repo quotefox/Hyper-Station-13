@@ -23,6 +23,7 @@
 		var/mob/living/carbon/human/H = owner
 		if(!(organ_flags & ORGAN_FAILING))
 			H.dna.species.handle_digestion(H)
+			H.dna.species.handle_thirst(H)
 		handle_disgust(H)
 		Nutri = locate(/datum/reagent/consumable/nutriment) in H.reagents.reagent_list
 
@@ -96,3 +97,29 @@
 	name = "digestive crystal"
 	icon_state = "stomach-p"
 	desc = "A strange crystal that is responsible for metabolizing the unseen energy force that feeds plasmamen."
+
+/obj/item/organ/stomach/cybernetic
+	name = "cybernetic stomach"
+	icon_state = "stomach-c"
+	desc = "An electronic device designed to mimic the functions of a human stomach. Handles disgusting food a bit better."
+	maxHealth = 1.5 * STANDARD_ORGAN_THRESHOLD
+	disgust_metabolism = 2
+	organ_flags = ORGAN_SYNTHETIC
+
+/obj/item/organ/stomach/cybernetic/upgraded
+	name = "upgraded cybernetic stomach"
+	icon_state = "stomach-c-u"
+	desc = "An upgraded version of the cybernetic stomach, designed to improve further upon organic stomachs. Handles disgusting food very well."
+	maxHealth = 2 * STANDARD_ORGAN_THRESHOLD
+	disgust_metabolism = 3
+	organ_flags = ORGAN_SYNTHETIC
+
+/obj/item/organ/stomach/cybernetic/emp_act(severity)
+	. = ..()
+	if(. & EMP_PROTECT_SELF)
+		return
+	owner.vomit(stun = FALSE)
+
+/obj/item/organ/stomach/ipc
+	name = "ipc stomach"
+	icon_state = "stomach-ipc"

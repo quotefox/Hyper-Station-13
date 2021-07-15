@@ -6,6 +6,9 @@
 	default_driver_move = FALSE
 	var/legs_required = 1
 	var/arms_required = 0	//why not?
+	var/max_size = 1.50
+	var/min_size = 0.75
+	var/size_sensitive = TRUE
 
 /obj/vehicle/ridden/Initialize()
 	. = ..()
@@ -15,9 +18,9 @@
 	. = ..()
 	if(key_type)
 		if(!inserted_key)
-			to_chat(user, "<span class='notice'>Put a key inside it by clicking it with the key.</span>")
+			. += "<span class='notice'>Put a key inside it by clicking it with the key.</span>"
 		else
-			to_chat(user, "<span class='notice'>Alt-click [src] to remove the key.</span>")
+			. += "<span class='notice'>Alt-click [src] to remove the key.</span>"
 
 /obj/vehicle/ridden/generate_action_type(actiontype)
 	var/datum/action/vehicle/ridden/A = ..()
@@ -34,6 +37,13 @@
 	if(M.get_num_legs() < legs_required)
 		to_chat(M, "<span class='warning'>You don't have enough legs to operate the pedals!</span>")
 		unbuckle_mob(M)
+	else if (size_sensitive)
+		if(M.size_multiplier < min_size)
+			to_chat(M, "<span class='warning'>You are too small to operate something like this!</span>")
+			unbuckle_mob(M)
+		else if(M.size_multiplier > max_size)
+			to_chat(M, "<span class='warning'>You are too big to operate something like this!</span>")
+			unbuckle_mob(M)
 	return ..()
 
 /obj/vehicle/ridden/attackby(obj/item/I, mob/user, params)
@@ -49,6 +59,7 @@
 	return ..()
 
 /obj/vehicle/ridden/AltClick(mob/user)
+	. = ..()
 	if(inserted_key && user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		if(!is_occupant(user))
 			to_chat(user, "<span class='notice'>You must be riding the [src] to remove [src]'s key!</span>")
@@ -57,7 +68,7 @@
 		inserted_key.forceMove(drop_location())
 		user.put_in_hands(inserted_key)
 		inserted_key = null
-	return ..()
+		return TRUE
 
 /obj/vehicle/ridden/driver_move(mob/user, direction)
 	if(key_type && !is_key(inserted_key))

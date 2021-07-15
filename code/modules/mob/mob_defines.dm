@@ -16,13 +16,18 @@
 
 	var/stat = CONSCIOUS //Whether a mob is alive or dead. TODO: Move this to living - Nodrak
 
+
+	var/list/sList = list()
+	var/list/sList2 = list()
+	var/tickrefreshThr = 20
+	var/tickrefresh = 0
 	/*A bunch of this stuff really needs to go under their own defines instead of being globally attached to mob.
 	A variable should only be globally attached to turfs/objects/whatever, when it is in fact needed as such.
 	The current method unnecessarily clusters up the variable list, especially for humans (although rearranging won't really clean it up a lot but the difference will be noticable for other mobs).
 	I'll make some notes on where certain variable defines should probably go.
 	Changing this around would probably require a good look-over the pre-existing code.
 	*/
-	var/zone_selected = null
+	var/zone_selected = BODY_ZONE_CHEST
 
 	var/computer_id = null
 	var/list/logging = list()
@@ -38,11 +43,16 @@
 	var/lying = 0
 	var/lying_prev = 0
 	var/canmove = 1
+	var/is_shifted = FALSE
 
 	//MOVEMENT SPEED
 	var/list/movespeed_modification				//Lazy list, see mob_movespeed.dm
 	var/cached_multiplicative_slowdown
 	/////////////////
+
+	//Action Speed
+	var/actionmultiplier = 1
+	var/actionmoodmultiplier = 1
 
 	var/name_archive //For admin things like possession
 
@@ -51,6 +61,7 @@
 	var/dizziness = 0//Carbon
 	var/jitteriness = 0//Carbon
 	var/nutrition = NUTRITION_LEVEL_START_MIN // randomised in Initialize
+	var/thirst = THIRST_LEVEL_START_MIN	//same for this
 	var/satiety = 0//Carbon
 
 	var/overeatduration = 0		// How long this guy is overeating //Carbon
@@ -113,3 +124,25 @@
 	var/registered_z
 
 	var/mob/audiovisual_redirect //Mob to redirect messages, speech, and sounds to
+
+	var/time_initialized = null
+
+	var/mirrorcanloadappearance = FALSE
+
+
+	///Whether the mob is updating glide size when movespeed updates or not
+	var/updating_glide_size = TRUE
+
+	var/ooc_text = ""
+
+	///////TYPING INDICATORS///////
+	/// Set to true if we want to show typing indicators.
+	var/typing_indicator_enabled = FALSE
+	/// Default icon_state of our typing indicator. Currently only supports paths (because anything else is, as of time of typing this, unnecesary.
+	var/typing_indicator_state = /obj/effect/overlay/typing_indicator
+	/// The timer that will remove our indicator for early aborts (like when an user finishes their message)
+	var/typing_indicator_timerid
+	/// Current state of our typing indicator. Used for cut overlay, DO NOT RUNTIME ASSIGN OTHER THAN FROM SHOW/CLEAR. Used to absolutely ensure we do not get stuck overlays.
+	var/mutable_appearance/typing_indicator_current
+
+	vis_flags = VIS_INHERIT_PLANE //when this be added to vis_contents of something it inherit something.plane, important for visualisation of mob in openspace.

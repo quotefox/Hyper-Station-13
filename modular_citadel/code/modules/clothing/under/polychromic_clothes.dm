@@ -166,3 +166,69 @@
 	secondary_color = "#FFFFFF"
 	tertiary_color = "#8CC6FF"
 	body_parts_covered = CHEST|GROIN
+
+/obj/item/clothing/under/polychromic/bikini
+	name = "polychromic bikini"
+	desc = "Perfect for summer."
+	icon_state = "polybikini"
+	item_color = "polybikini"
+	item_state = "rainbow"
+	hastertiary = FALSE
+	primary_color = "#808080" //RGB in hexcode
+	secondary_color = "#FFFFFF"
+	body_parts_covered = CHEST|GROIN
+
+/obj/item/clothing/under/polychromic/stripper
+	name = "polychromic stripper outfit"
+	desc = "Sexy with style."
+	icon_state = "polystripper"
+	item_color = "polystripper"
+	item_state = "rainbow"
+	hastertiary = FALSE
+	primary_color = "#808080" //RGB in hexcode
+	secondary_color = "#FFFFFF"
+	body_parts_covered = CHEST|GROIN
+
+/obj/item/clothing/under/polychromic/bulge
+	name = "polychromic voluminous thong"
+	desc = "What is this? Is there something hidden inside or is just to compensate the lack of?"
+	icon_state = "polybulge"
+	item_color = "polybulge"
+	item_state = "rainbow"
+	hastertiary = FALSE
+	primary_color = "#808080" //RGB in hexcode
+	secondary_color = "#FF3535"
+	body_parts_covered = GROIN
+
+/obj/item/clothing/under/polychromic/shortsbra
+	name = "Kromatic Shorts and Top"
+	desc = "A pair of shorts and a bikini top! They even change color!"
+	icon_state = "shortsbra"
+	item_color = "shortsbra"
+	item_state = "rainbow"
+	primary_color = "#808080" //RGB in hexcode
+	secondary_color = "#FFFFFF"
+	hastertiary = FALSE
+	body_parts_covered= CHEST|GROIN
+
+/obj/item/clothing/under/polychromic/vsweater
+	name = "virgin killer sweater"
+	desc = "A sweater designed to be as provocative as possible, with almost all of the back missing, bairly hiding anything from that angle. Warning: Doesn't actually kill virgins."
+	icon_state = "vkiller"
+	item_color = "vkiller"
+	item_state = "rainbow"
+	primary_color = "#E1D6C9" //RGB in hexcode
+	secondary_color = "#FFFFFF"
+	hastertiary = FALSE
+	body_parts_covered= CHEST|GROIN
+
+/obj/item/clothing/under/polychromic/onepeice
+	name = "polychromic swimsuit"
+	desc = "Perfect for summer, and those who want to have something with a bit more material."
+	icon_state = "onepeice"
+	item_color = "onepeice"
+	item_state = "rainbow"
+	primary_color = "#010052" //RGB in hexcode
+	secondary_color = "#eb7a7a"
+	tertiary_color = "#ffffff"
+	body_parts_covered = CHEST|GROIN

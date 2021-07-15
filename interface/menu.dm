@@ -69,59 +69,11 @@ GLOBAL_LIST_EMPTY(menulist)
 	if (!verbpath || !(verbpath in typesof("[type]/verb")))
 		return
 
-	if (copytext(verbpath.name,1,2) == "@")
-		winset(C, null, list2params(list("command" = copytext(verbpath.name,2))))
+	if (verbpath.name[1] == "@")
+		winset(C, null, list2params(list("command" = copytext(verbpath.name, length(verbpath.name[1]) + 1))))
 	else
 		winset(C, null, list2params(list("command" = replacetext(verbpath.name, " ", "-"))))
 
-//Hypestation 13 changes
-
-/datum/verbs/menu/Settings/FPS
-	checkbox = CHECKBOX_GROUP
-	default = /datum/verbs/menu/Settings/FPS/verb/twentyfiveframes
-
-/datum/verbs/menu/Settings/FPS/verb/twentyframes()
-	set name = "Low-End (20) FPS"
-	set desc = "&20 fps"
-	set category = "Preferences"
-	set hidden = 1
-	usr.client.prefs.clientfps = 20
-	usr.client.prefs.parent.fps = 20
-
-
-/datum/verbs/menu/Settings/FPS/verb/twentyfiveframes()
-	set name = "High-End (25) FPS"
-	set desc = "&25 fps"
-	set category = "Preferences"
-	set hidden = 1
-	usr.client.prefs.clientfps = 25
-	usr.client.prefs.parent.fps = 25
-
-
-/datum/verbs/menu/Settings/FPS/verb/thirtyframes()
-	set name = "Higher-End (30) FPS"
-	set desc = "&30 fps"
-	set category = "Preferences"
-	set hidden = 1
-	usr.client.prefs.clientfps = 30
-	usr.client.prefs.parent.fps = 30
-
-/datum/verbs/menu/Settings/FPS/verb/fortyframes()
-	set name = "Very Higher-End (40) FPS"
-	set desc = "&40 fps"
-	set category = "Preferences"
-	set hidden = 1
-	usr.client.prefs.clientfps = 40
-	usr.client.prefs.parent.fps = 40
-
-
-/datum/verbs/menu/Settings/FPS/verb/sixtyframes()
-	set name = "Very Very Higher-End (60) FPS"
-	set desc = "&60 fps"
-	set category = "Preferences"
-	set hidden = 1
-	usr.client.prefs.clientfps = 60
-	usr.client.prefs.parent.fps = 60
 
 /datum/verbs/menu/Settings/ChatOutput
 	checkbox = CHECKBOX_GROUP

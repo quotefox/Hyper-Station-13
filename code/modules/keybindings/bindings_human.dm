@@ -57,3 +57,6 @@
 				stored.attack_hand(src) // take out thing from backpack
 				return
 	return ..()
+
+/mob/living/carbon/human/key_up(_key, client/user)
+	return ..()

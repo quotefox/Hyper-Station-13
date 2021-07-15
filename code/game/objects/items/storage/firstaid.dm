@@ -30,7 +30,6 @@
 /obj/item/storage/firstaid/regular/PopulateContents()
 	if(empty)
 		return
-	new /obj/item/stack/medical/plaster_gauze(src)
 	new /obj/item/stack/medical/gauze(src)
 	new /obj/item/stack/medical/bruise_pack(src)
 	new /obj/item/stack/medical/bruise_pack(src)
@@ -171,7 +170,7 @@
 
 /obj/item/storage/firstaid/tactical/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/firstaid/tactical/PopulateContents()
@@ -201,7 +200,7 @@
 
 /obj/item/storage/pill_bottle/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.allow_quick_gather = TRUE
 	STR.click_gather = TRUE
 	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/pill, /obj/item/dice))
@@ -325,7 +324,7 @@
 
 /obj/item/storage/pill_bottle/mutarad
 	name = "radiation treatment deluxe pill bottle"
-	desc = "The label says 'Med-Co branded pills' and below that 'Contains Mutadone in each pill!`."
+	desc = "The label says 'Med-Co branded pills' and below that 'Contains Mutadone in each pill!'."
 
 /obj/item/storage/pill_bottle/mutarad/PopulateContents()
 	for(var/i in 1 to 7)
@@ -341,7 +340,7 @@
 
 /obj/item/storage/pill_bottle/breast_enlargement
 	name = "breast enlargement pills"
-	desc = "Made by Fermichem - They have a woman with breasts larger than she is on them. The warming states not to take more than 10u at a time."
+	desc = "Made by Fermichem - They have a woman with breasts larger than she is on them. The warning states not to take more than 10u at a time."
 
 /obj/item/storage/pill_bottle/breast_enlargement/PopulateContents()
 	for(var/i in 1 to 7)
@@ -352,7 +351,7 @@
 /////////////
 
 /obj/item/storage/belt/organbox
-	name = "Organ Storge"
+	name = "Organ Storage"
 	desc = "A compact box that helps hold massive amounts of implants, organs, and some tools. Has a belt clip for easy carrying"
 	w_class = WEIGHT_CLASS_BULKY
 	icon = 'icons/obj/mysterybox.dmi'
@@ -364,7 +363,7 @@
 
 /obj/item/storage/belt/organbox/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_items = 16
 	STR.max_w_class = WEIGHT_CLASS_BULKY
 	STR.max_combined_w_class = 20
@@ -390,3 +389,28 @@
 	/obj/item/organ_storage
 	))
 
+//Psych Pillbottles
+
+/obj/item/storage/pill_bottle/happinesspsych
+	name = "happiness pill bottle"
+	desc = "Contains pills used as a last resort means to temporarily stabilize depression and anxiety. WARNING: side effects may include slurred speech, drooling, and severe addiction."
+
+/obj/item/storage/pill_bottle/happinesspsych/PopulateContents()
+	for(var/i in 1 to 5)
+		new /obj/item/reagent_containers/pill/happinesspsych(src)
+
+/obj/item/storage/pill_bottle/lsdpsych
+	name = "mindbreaker toxin pill bottle"
+	desc = "!FOR THERAPEUTIC USE ONLY! Contains pills used to alleviate the symptoms of Reality Dissociation Syndrome."
+
+/obj/item/storage/pill_bottle/lsdpsych/PopulateContents()
+	for(var/i in 1 to 5)
+		new /obj/item/reagent_containers/pill/lsdpsych(src)
+
+/obj/item/storage/pill_bottle/paxpsych
+	name = "pacification pill"
+	desc = "Contains pills used to temporarily pacify patients that are deemed a harm to themselves or others."
+
+/obj/item/storage/pill_bottle/paxpsych/PopulateContents()
+	for(var/i in 1 to 5)
+		new /obj/item/reagent_containers/pill/paxpsych(src)

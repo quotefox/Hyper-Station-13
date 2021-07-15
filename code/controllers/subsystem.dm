@@ -165,10 +165,9 @@
 	log_world(msg)
 	return time
 
-//hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.
+
 /datum/controller/subsystem/stat_entry(msg)
-	if(!statclick)
-		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
+
 
 
 
@@ -177,11 +176,7 @@
 	else
 		msg = "OFFLINE\t[msg]"
 
-	var/title = name
-	if (can_fire)
-		title = "\[[state_letter()]][title]"
-
-	stat(title, statclick.update(msg))
+	return msg
 
 /datum/controller/subsystem/proc/state_letter()
 	switch (state)

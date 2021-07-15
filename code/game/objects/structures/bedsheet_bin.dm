@@ -22,6 +22,10 @@ LINEN BINS
 	dog_fashion = /datum/dog_fashion/head/ghost
 	var/list/dream_messages = list("white")
 
+/obj/item/bedsheet/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/bed_tuckable, 0, 0, 0)
+
 /obj/item/bedsheet/attack(mob/living/M, mob/user)
 	if(!attempt_initiate_surgery(src, M, user))
 		..()
@@ -115,7 +119,7 @@ LINEN BINS
 
 /obj/item/bedsheet/captain
 	name = "captain's bedsheet"
-	desc = "It has a Nanotrasen symbol on it, and was woven with a revolutionary new kind of thread guaranteed to have 0.01% permeability for most non-chemical substances, popular among most modern captains."
+	desc = "It has a Kinaris symbol on it, and was woven with a revolutionary new kind of thread guaranteed to have 0.01% permeability for most non-chemical substances, popular among most modern captains."
 	icon_state = "sheetcaptain"
 	item_color = "captain"
 	dream_messages = list("authority", "a golden ID", "sunglasses", "a green disc", "an antique gun", "the captain")
@@ -214,8 +218,8 @@ LINEN BINS
 	dream_messages = list("a book", "an explosion", "lightning", "a staff", "a skeleton", "a robe", "magic")
 
 /obj/item/bedsheet/nanotrasen
-	name = "nanotrasen bedsheet"
-	desc = "It has the Nanotrasen logo on it and has an aura of duty."
+	name = "Kinaris bedsheet"
+	desc = "It has the Kinaris.Co logo on it and has an aura of duty."
 	icon_state = "sheetNT"
 	item_color = "nanotrasen"
 	dream_messages = list("authority", "an ending")
@@ -292,13 +296,13 @@ LINEN BINS
 	var/obj/item/hidden = null
 
 /obj/structure/bedsheetbin/examine(mob/user)
-	..()
+	. = ..()
 	if(amount < 1)
-		to_chat(user, "There are no bed sheets in the bin.")
+		. += "There are no sheets in the bin."
 	else if(amount == 1)
-		to_chat(user, "There is one bed sheet in the bin.")
+		. += "There is one sheet in the bin."
 	else
-		to_chat(user, "There are [amount] bed sheets in the bin.")
+		. += "There are [amount] sheets in the bin."
 
 
 /obj/structure/bedsheetbin/update_icon()

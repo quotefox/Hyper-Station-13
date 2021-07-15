@@ -6,6 +6,7 @@
 /obj/item/stack/medical/ointment,
 /obj/structure/table,
 /obj/item/stack/medical/bruise_pack,
+/obj/item/circular_saw,
 /turf/open/floor/plating,
 /area/ruin/powered/snow_biodome)
 "ad" = (
@@ -176,8 +177,8 @@
 	},
 /area/ruin/powered/snow_biodome)
 "aL" = (
-/obj/structure/displaycase/captain,
-/turf/open/floor/wood,
+/obj/structure/closet/crate/secure/loot,
+/turf/open/floor/plating,
 /area/ruin/powered/snow_biodome)
 "aM" = (
 /turf/open/floor/carpet,
@@ -278,6 +279,11 @@
 /obj/machinery/light/small,
 /turf/open/floor/pod/dark,
 /area/ruin/powered/snow_biodome)
+"ea" = (
+/obj/structure/table/wood,
+/obj/item/key,
+/turf/open/floor/wood,
+/area/ruin/powered/snow_biodome)
 "eb" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -287,6 +293,10 @@
 "eg" = (
 /obj/machinery/vending/coffee,
 /turf/open/floor/pod/dark,
+/area/ruin/powered/snow_biodome)
+"fY" = (
+/obj/item/storage/box/lethalshot,
+/turf/open/floor/plating,
 /area/ruin/powered/snow_biodome)
 "gh" = (
 /obj/machinery/light/small{
@@ -306,6 +316,12 @@
 /obj/effect/mapping_helpers/no_lava,
 /turf/open/floor/pod/dark{
 	initial_gas_mix = "o2=14;n2=23;TEMP=300"
+	},
+/area/ruin/powered/snow_biodome)
+"hY" = (
+/mob/living/simple_animal/hostile/skeleton/eskimo,
+/turf/open/floor/plating/asteroid/snow{
+	initial_gas_mix = "o2=22;n2=82;TEMP=180"
 	},
 /area/ruin/powered/snow_biodome)
 "qt" = (
@@ -354,12 +370,29 @@
 /obj/machinery/door/airlock/glass_large,
 /turf/open/floor/pod/dark,
 /area/ruin/powered/snow_biodome)
+"Fj" = (
+/obj/machinery/light,
+/mob/living/simple_animal/hostile/skeleton/eskimo,
+/turf/open/floor/wood,
+/area/ruin/powered/snow_biodome)
 "HP" = (
 /turf/open/floor/pod/dark,
 /area/ruin/powered/snow_biodome)
 "HR" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/pod/dark,
+/area/ruin/powered/snow_biodome)
+"Im" = (
+/obj/structure/statue/snow/snowman,
+/turf/open/floor/plating/asteroid/snow{
+	initial_gas_mix = "o2=22;n2=82;TEMP=180"
+	},
+/area/ruin/powered/snow_biodome)
+"IK" = (
+/obj/structure/bed,
+/obj/item/bedsheet/blue,
+/obj/item/gun/ballistic/revolver/doublebarrel,
+/turf/open/floor/wood,
 /area/ruin/powered/snow_biodome)
 "JZ" = (
 /obj/structure/table,
@@ -792,7 +825,7 @@ bw
 at
 aD
 at
-aL
+at
 aq
 ak
 az
@@ -820,11 +853,11 @@ Wg
 ae
 af
 aq
-au
+IK
 au
 aq
 at
-bz
+Fj
 aq
 ak
 ak
@@ -849,7 +882,7 @@ tb
 "}
 (14,1,1) = {"
 Wg
-af
+aL
 al
 aq
 aq
@@ -890,9 +923,9 @@ at
 aH
 aM
 aO
-ap
 ak
 ak
+hY
 ak
 ak
 ak
@@ -922,7 +955,7 @@ aA
 at
 aM
 aP
-ak
+hY
 ak
 aQ
 ak
@@ -949,7 +982,7 @@ ah
 af
 aq
 ax
-aw
+ea
 aF
 at
 at
@@ -1042,7 +1075,7 @@ tb
 (20,1,1) = {"
 Wg
 aj
-af
+fY
 aq
 aq
 aq
@@ -1083,7 +1116,7 @@ ak
 ak
 ak
 ak
-ak
+Im
 ak
 ak
 aC

@@ -30,12 +30,12 @@
 	return ..()
 
 /obj/machinery/quantumpad/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>It is [ linked_pad ? "currently" : "not"] linked to another pad.</span>")
+	. = ..()
+	. += "<span class='notice'>It is [ linked_pad ? "currently" : "not"] linked to another pad.</span>"
 	if(!panel_open)
-		to_chat(user, "<span class='notice'>The panel is <i>screwed</i> in, obstructing the linking device.</span>")
+		. += "<span class='notice'>The panel is <i>screwed</i> in, obstructing the linking device.</span>"
 	else
-		to_chat(user, "<span class='notice'>The <i>linking</i> device is now able to be <i>scanned<i> with a multitool.</span>")
+		. += "<span class='notice'>The <i>linking</i> device is now able to be <i>scanned<i> with a multitool.</span>"
 
 /obj/machinery/quantumpad/RefreshParts()
 	var/E = 0
@@ -104,11 +104,11 @@
 		to_chat(user, "<span class='warning'>[src] is charging up. Please wait.</span>")
 		return
 
-	if(target_pad.teleporting)
+	if(target_pad?.teleporting)
 		to_chat(user, "<span class='warning'>Target pad is busy. Please wait.</span>")
 		return
 
-	if(target_pad.stat & NOPOWER)
+	if(target_pad?.stat & NOPOWER)
 		to_chat(user, "<span class='warning'>Target pad is not responding to ping.</span>")
 		return
 	add_fingerprint(user)

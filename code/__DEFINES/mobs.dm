@@ -36,16 +36,17 @@
 #define BLOODCRAWL_EAT 2
 
 //Mob bio-types
-#define MOB_ORGANIC 	"organic"
-#define MOB_INORGANIC 	"inorganic"
-#define MOB_ROBOTIC 	"robotic"
-#define MOB_UNDEAD		"undead"
-#define MOB_HUMANOID 	"humanoid"
-#define MOB_BUG 		"bug"
-#define MOB_BEAST		"beast"
-#define MOB_EPIC		"epic" //megafauna
-#define MOB_REPTILE		"reptile"
-#define MOB_SPIRIT		"spirit"
+#define MOB_ORGANIC 	(1 << 0)
+#define MOB_INORGANIC 	(1 << 1)
+#define MOB_ROBOTIC 	(1 << 2)
+#define MOB_SILICON     (1 << 3)
+#define MOB_UNDEAD		(1 << 4)
+#define MOB_HUMANOID 	(1 << 5)
+#define MOB_BUG 		(1 << 6)
+#define MOB_BEAST		(1 << 7)
+#define MOB_EPIC		(1 << 8) //megafauna
+#define MOB_REPTILE		(1 << 9)
+#define MOB_SPIRIT		(1 << 10)
 
 //Organ defines for carbon mobs
 #define ORGAN_ORGANIC   1
@@ -58,13 +59,17 @@
 #define BODYPART_DISABLED_DAMAGE 1
 #define BODYPART_DISABLED_PARALYSIS 2
 
+#define DEFAULT_BODYPART_ICON 'icons/mob/human_parts.dmi'
 #define DEFAULT_BODYPART_ICON_ORGANIC 'icons/mob/human_parts_greyscale.dmi'
 #define DEFAULT_BODYPART_ICON_ROBOTIC 'icons/mob/augmentation/augments.dmi'
+#define DEFAULT_BODYPART_ICON_CITADEL 'modular_citadel/icons/mob/mutant_bodyparts.dmi'
 
 #define MONKEY_BODYPART "monkey"
+#define TERATOMA_BODYPART "teratoma"
 #define ALIEN_BODYPART "alien"
 #define LARVA_BODYPART "larva"
 #define DEVIL_BODYPART "devil"
+#define WENDIGO_BODYPART "wendigo"
 /*see __DEFINES/inventory.dm for bodypart bitflag defines*/
 
 // Health/damage defines for carbon mobs
@@ -116,6 +121,7 @@
 #define BIOWARE_GENERIC "generic"
 #define BIOWARE_NERVES "nerves"
 #define BIOWARE_CIRCULATION "circulation"
+#define BIOWARE_LIGAMENTS "ligaments"
 
 //Health hud screws for carbon mobs
 #define SCREWYHUD_NONE 0
@@ -152,6 +158,15 @@
 
 #define NUTRITION_LEVEL_START_MIN 250
 #define NUTRITION_LEVEL_START_MAX 400
+
+//Hyperstation Thirst
+#define THIRST_LEVEL_THRESHOLD	800		//Set to 0 to stop clamping
+#define THIRST_LEVEL_QUENCHED	450
+#define THIRST_LEVEL_THIRSTY	250
+#define THIRST_LEVEL_PARCHED	150
+
+#define THIRST_LEVEL_START_MIN	250
+#define THIRST_LEVEL_START_MAX	400
 
 //Disgust levels for humans
 #define DISGUST_LEVEL_MAXEDOUT 150
@@ -237,7 +252,7 @@
 #define OFFSET_NECK "neck"
 
 //MINOR TWEAKS/MISC
-#define AGE_MIN				18	//youngest a character can be //CITADEL EDIT - 17 --> 18
+#define AGE_MIN				21	//youngest a character can be //Hyper edit - 21
 #define AGE_MAX				85	//oldest a character can be
 #define WIZARD_AGE_MIN		30	//youngest a wizard can be
 #define APPRENTICE_AGE_MIN	29	//youngest an apprentice can be
@@ -245,7 +260,8 @@
 #define POCKET_STRIP_DELAY			40	//time taken (in deciseconds) to search somebody's pockets
 #define DOOR_CRUSH_DAMAGE	15	//the amount of damage that airlocks deal when they crush you
 
-#define	HUNGER_FACTOR		0.1	//factor at which mob nutrition decreases
+#define	HUNGER_FACTOR		0.08	//factor at which mob nutrition decreases
+#define	THIRST_FACTOR		0.08	//factor at which mob thirst decreases
 #define	REAGENTS_METABOLISM 0.4	//How many units of reagent are consumed per tick, by default.
 #define REAGENTS_EFFECT_MULTIPLIER (REAGENTS_METABOLISM / 0.4)	// By defining the effect multiplier this way, it'll exactly adjust all effects according to how they originally were with the 0.4 metabolism
 
@@ -264,3 +280,8 @@
 #define BODYPART_LIFE_UPDATE_HEALTH (1<<0)
 
 #define HUMAN_FIRE_STACK_ICON_NUM	3
+
+#define PULL_PRONE_SLOWDOWN 0.6
+#define HUMAN_CARRY_SLOWDOWN 0
+
+#define TYPING_INDICATOR_TIMEOUT 10 MINUTES

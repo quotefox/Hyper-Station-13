@@ -15,15 +15,15 @@
 #define ui_boxvore	"EAST-5:22,SOUTH+1:6"
 
 //Filters
-#define CIT_FILTER_STAMINACRIT filter(type="drop_shadow", x=0, y=0, size=-3, border=0, color="#04080F")
+#define CIT_FILTER_STAMINACRIT filter(type="drop_shadow", x=0, y=0, size=-3, color="#04080F")
 
 //organ defines
 #define COCK_SIZE_MIN		1
-#define COCK_SIZE_MAX		20
+#define COCK_SIZE_MAX		36
 
-#define COCK_GIRTH_RATIO_MAX		1.25
-#define COCK_GIRTH_RATIO_DEF		0.75
-#define COCK_GIRTH_RATIO_MIN		0.5
+#define COCK_GIRTH_RATIO_MAX		0.42
+#define COCK_GIRTH_RATIO_DEF		0.25
+#define COCK_GIRTH_RATIO_MIN		0.15
 
 #define KNOT_GIRTH_RATIO_MAX		3
 #define KNOT_GIRTH_RATIO_DEF		2.1
@@ -32,19 +32,19 @@
 #define BALLS_VOLUME_BASE	25
 #define BALLS_VOLUME_MULT	1
 
-#define BALLS_SIZE_MIN		1
-#define BALLS_SIZE_DEF		2
-#define BALLS_SIZE_MAX		3
+#define BALLS_SIZE_MIN		1 //Hyper - Unchanged
+#define BALLS_SIZE_DEF		8 //Changed from 2
+#define BALLS_SIZE_MAX		40 //Changed from 3
 
 #define BALLS_SACK_SIZE_MIN 1
 #define BALLS_SACK_SIZE_DEF	8
 #define BALLS_SACK_SIZE_MAX 40
 
-#define CUM_RATE			0.035
+#define CUM_RATE			5
 #define CUM_RATE_MULT		1
-#define CUM_EFFICIENCY		1//amount of nutrition required per life()
+#define CUM_EFFICIENCY		1 //amount of nutrition required per life()
 
-#define EGG_GIRTH_MIN		1//inches
+#define EGG_GIRTH_MIN		1 //inches
 #define EGG_GIRTH_DEF		6
 #define EGG_GIRTH_MAX		16
 
@@ -52,25 +52,32 @@
 #define BREASTS_VOLUME_MULT	1	//global multiplier for breast volume.
 #define BREASTS_SIZE_FLAT	0
 #define BREASTS_SIZE_A		1
-#define BREASTS_SIZE_AA		1.5
 #define BREASTS_SIZE_B		2
-#define BREASTS_SIZE_BB		2.5
 #define BREASTS_SIZE_C		3
-#define BREASTS_SIZE_CC		3.5
 #define BREASTS_SIZE_D		4
-#define BREASTS_SIZE_DD		4.5
 #define BREASTS_SIZE_E		5
-#define BREASTS_SIZE_EE		5.5
 #define BREASTS_SIZE_F		6
-#define BREASTS_SIZE_FF		6.5
 #define BREASTS_SIZE_G		7
-#define BREASTS_SIZE_GG		7.5//Are these even real sizes? The world may never know because cup sizes make no fucking sense.
 #define BREASTS_SIZE_H		8
-#define BREASTS_SIZE_HH		8.5//Largest size, ever. For now.
+#define BREASTS_SIZE_I		9
+#define BREASTS_SIZE_J		10
+#define BREASTS_SIZE_K		11
+#define BREASTS_SIZE_L		12
+#define BREASTS_SIZE_M		13
+#define BREASTS_SIZE_N		14
+#define BREASTS_SIZE_O		15
+#define BREASTS_SIZE_HUGE		16
+#define BREASTS_SIZE_MASSIVE		17
+#define BREASTS_SIZE_GIGA		25
+#define BREASTS_SIZE_IMPOSSIBLE		30
+
+//Bodysize Limits
+#define MIN_BODYSIZE		50
+#define MAX_BODYSIZE		200
 
 #define BREASTS_SIZE_MIN 	BREASTS_SIZE_A
-#define BREASTS_SIZE_DEF	BREASTS_SIZE_C
-#define BREASTS_SIZE_MAX 	BREASTS_SIZE_HH
+#define BREASTS_SIZE_DEF	BREASTS_SIZE_D
+#define BREASTS_SIZE_MAX 	BREASTS_SIZE_IMPOSSIBLE
 
 #define MILK_RATE			5
 #define MILK_RATE_MULT		1
@@ -104,12 +111,6 @@
 #define isgenital(A) (istype(A, /obj/item/organ/genital))
 
 #define isborer(A) (istype(A, /mob/living/simple_animal/borer))
-#define isipcperson(A) (is_species(A, /datum/species/ipc))
-#define ismammal(A) (is_species(A, /datum/species/mammal))
-#define isavian(A) (is_species(A, /datum/species/avian))
-#define isaquatic(A) (is_species(A, /datum/species/aquatic))
-#define isinsect(A) (is_species(A, /datum/species/insect))
-#define isxenoperson(A) (is_species(A, /datum/species/xeno))
 
 #define CITADEL_MENTOR_OOC_COLOUR "#224724"
 

@@ -1,0 +1,9 @@
+{
+	"eslint.workingDirectories": [
+		"./tgui"
+	],
+
+	"workbench.editorAssociations": {
+		"*.dmi": "imagePreview.previewEditor"
+	}
+}

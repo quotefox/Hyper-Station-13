@@ -1,5 +1,5 @@
 /datum/bounty/virus
-	reward = 5000
+	reward = 3000
 	var/shipped = FALSE
 	var/stat_value = 0
 	var/stat_name = ""
@@ -10,8 +10,8 @@
 	if(rand(3) == 1)
 		stat_value *= -1
 	name = "Virus ([stat_name] of [stat_value])"
-	description = "Nanotrasen is interested in a virus with a [stat_name] stat of exactly [stat_value]. Central Command will pay handsomely for such a virus."
-	reward += rand(0, 4) * 500
+	description = "Kinaris.Co is interested in a virus with a [stat_name] stat of exactly [stat_value]. Central Command will pay handsomely for such a virus."
+	reward += rand(0, 4) * 400
 
 /datum/bounty/virus/completion_string()
 	return shipped ? "Shipped" : "Not Shipped"

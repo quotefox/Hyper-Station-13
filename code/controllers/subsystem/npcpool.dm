@@ -1,14 +1,15 @@
 SUBSYSTEM_DEF(npcpool)
 	name = "NPC Pool"
-	flags = SS_POST_FIRE_TIMING|SS_NO_INIT|SS_BACKGROUND
+	flags = SS_KEEP_TIMING | SS_NO_INIT
 	priority = FIRE_PRIORITY_NPC
 	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	var/list/currentrun = list()
 
-/datum/controller/subsystem/npcpool/stat_entry()
+/datum/controller/subsystem/npcpool/stat_entry(msg)
 	var/list/activelist = GLOB.simple_animals[AI_ON]
-	..("NPCS:[activelist.len]")
+	msg = "NPCS:[length(activelist)]"
+	return ..()
 
 /datum/controller/subsystem/npcpool/fire(resumed = FALSE)
 

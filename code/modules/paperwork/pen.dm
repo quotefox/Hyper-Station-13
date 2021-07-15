@@ -11,7 +11,7 @@
  * Pens
  */
 /obj/item/pen
-	desc = "It's a normal black ink pen."
+	desc = "It's a black ink pen, modified for use with both paper and Nanotransen-brand Digital-Readpads™!"
 	name = "pen"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pen"
@@ -23,7 +23,7 @@
 	throw_range = 7
 	materials = list(MAT_METAL=10)
 	pressure_resistance = 2
-	grind_results = list("iron" = 2, "iodine" = 1)
+	grind_results = list(/datum/reagent/iron = 2, /datum/reagent/iodine = 1)
 	var/colour = "black"	//what colour the ink is!
 	var/degrees = 0
 	var/font = PEN_FONT
@@ -33,12 +33,12 @@
 	return(BRUTELOSS)
 
 /obj/item/pen/blue
-	desc = "It's a normal blue ink pen."
+	desc = "It's a blue ink pen, modified for use with both paper and Nanotransen-brand Digital-Readpads™!"
 	icon_state = "pen_blue"
 	colour = "blue"
 
 /obj/item/pen/red
-	desc = "It's a normal red ink pen."
+	desc = "It's a red ink pen, modified for use with both paper and Nanotransen-brand Digital-Readpads™!"
 	icon_state = "pen_red"
 	colour = "red"
 
@@ -48,7 +48,7 @@
 	colour = "white"
 
 /obj/item/pen/fourcolor
-	desc = "It's a fancy four-color ink pen, set to black."
+	desc = "It's a fancy four-color ink pen, set to black. Modified to be compatible with Nanotransen-brand Digital-Readpads™"
 	name = "four-color pen"
 	colour = "black"
 
@@ -105,21 +105,6 @@
 		to_chat(user, "<span class='notice'>You rotate the top of the pen to [degrees] degrees.</span>")
 		SEND_SIGNAL(src, COMSIG_PEN_ROTATED, deg, user)
 
-/obj/item/pen/attack(mob/living/M, mob/user,stealth)
-	if(!istype(M))
-		return
-
-	if(!force)
-		if(M.can_inject(user, 1))
-			to_chat(user, "<span class='warning'>You stab [M] with the pen.</span>")
-			if(!stealth)
-				to_chat(M, "<span class='danger'>You feel a tiny prick!</span>")
-			. = 1
-
-		log_combat(user, M, "stabbed", src)
-
-	else
-		. = ..()
 
 /obj/item/pen/afterattack(obj/O, mob/living/user, proximity)
 	. = ..()
@@ -158,15 +143,16 @@
 	if(..())
 		if(reagents.total_volume)
 			if(M.reagents)
+				reagents.reaction(M, INJECT)
 				reagents.trans_to(M, reagents.total_volume)
 
 
 /obj/item/pen/sleepy/Initialize()
 	. = ..()
 	create_reagents(45, OPENCONTAINER)
-	reagents.add_reagent("chloralhydratedelayed", 20)
-	reagents.add_reagent("mutetoxin", 15)
-	reagents.add_reagent("tirizene", 10)
+	reagents.add_reagent(/datum/reagent/toxin/chloralhydrate, 20)
+	reagents.add_reagent(/datum/reagent/toxin/mutetoxin, 15)
+	reagents.add_reagent(/datum/reagent/toxin/staminatoxin, 10)
 
 /*
  * (Alan) Edaggers
@@ -200,7 +186,7 @@
 		throwforce = 35
 		playsound(user, 'sound/weapons/saberon.ogg', 5, 1)
 		to_chat(user, "<span class='warning'>[src] is now active.</span>")
-	GET_COMPONENT_FROM(butchering, /datum/component/butchering, src)
+	var/datum/component/butchering/butchering = src.GetComponent(/datum/component/butchering)
 	butchering.butchering_enabled = on
 	update_icon()
 

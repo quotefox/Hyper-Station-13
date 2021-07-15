@@ -65,15 +65,17 @@ SUBSYSTEM_DEF(jukeboxes)
 
 /datum/controller/subsystem/jukeboxes/Initialize()
 	var/list/tracks = flist("config/jukebox_music/sounds/")
-	for(var/S in tracks)
+	var/songID = 1
+	for(var/S in tracks) // Tracks that will not be in the repo, aka, localhost tracks.
 		var/datum/track/T = new()
 		T.song_path = file("config/jukebox_music/sounds/[S]")
 		var/list/L = splittext(S,"+")
 		T.song_name = L[1]
-		T.song_length = text2num(L[2])
-		T.song_beat = text2num(L[3])
-		T.song_associated_id = L[4]
+		T.song_length = text2num(L[2])*10 //We multiply it by ten because the system requires it in deciseconds
+		T.song_beat = round(text2num(L[3])/6) //We divide it by six because it requires the Beats per seconds value, but in deciseconds. (Result/60) * 10)
+		T.song_associated_id = songID
 		songs |= T
+		songID++
 	for(var/i in CHANNEL_JUKEBOX_START to CHANNEL_JUKEBOX)
 		freejukeboxchannels |= i
 	return ..()
@@ -83,15 +85,15 @@ SUBSYSTEM_DEF(jukeboxes)
 		return
 	for(var/list/jukeinfo in activejukeboxes)
 		if(!jukeinfo.len)
-			EXCEPTION("Active jukebox without any associated metadata.")
+			stack_trace("Active jukebox without any associated metadata.")
 			continue
 		var/datum/track/juketrack = jukeinfo[1]
 		if(!istype(juketrack))
-			EXCEPTION("Invalid jukebox track datum.")
+			stack_trace("Invalid jukebox track datum.")
 			continue
 		var/obj/jukebox = jukeinfo[3]
 		if(!istype(jukebox))
-			EXCEPTION("Nonexistant or invalid object associated with jukebox.")
+			stack_trace("Nonexistant or invalid object associated with jukebox.")
 			continue
 		var/sound/song_played = sound(juketrack.song_path)
 		var/area/currentarea = get_area(jukebox)
@@ -103,7 +105,7 @@ SUBSYSTEM_DEF(jukeboxes)
 		for(var/mob/M in GLOB.player_list)
 			if(!M.client)
 				continue
-			if(!(M.client.prefs.toggles & SOUND_INSTRUMENTS))
+			if(!(M.client.prefs.toggles & SOUND_INSTRUMENTS) || !M.can_hear())
 				M.stop_sound_channel(jukeinfo[2])
 				continue
 

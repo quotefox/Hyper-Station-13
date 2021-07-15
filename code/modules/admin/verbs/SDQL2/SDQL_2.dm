@@ -393,11 +393,14 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 		delete_click = new(null, "INITIALIZING", src)
 	if(!action_click)
 		action_click = new(null, "INITIALIZNG", src)
-	stat("[id]		", delete_click.update("DELETE QUERY | STATE : [text_state()] | ALL/ELIG/FIN \
+
+	var/list/L = list()
+	L[++L.len] = list("[id]		", "[delete_click.update("DELETE QUERY | STATE : [text_state()] | ALL/ELIG/FIN \
 	[islist(obj_count_all)? length(obj_count_all) : (isnull(obj_count_all)? "0" : obj_count_all)]/\
 	[islist(obj_count_eligible)? length(obj_count_eligible) : (isnull(obj_count_eligible)? "0" : obj_count_eligible)]/\
-	[islist(obj_count_finished)? length(obj_count_finished) : (isnull(obj_count_finished)? "0" : obj_count_finished)] - [get_query_text()]"))
-	stat("			", action_click.update("[SDQL2_IS_RUNNING? "HALT" : "RUN"]"))
+	[islist(obj_count_finished)? length(obj_count_finished) : (isnull(obj_count_finished)? "0" : obj_count_finished)] - [get_query_text()]")]", REF(delete_click))
+	L[++L.len] = list("			", "[action_click.update("[SDQL2_IS_RUNNING? "HALT" : "RUN"]")]", REF(action_click))
+	return L
 
 /datum/SDQL2_query/proc/delete_click()
 	admin_del(usr)
@@ -862,8 +865,8 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	else if(ispath(expression[i]))
 		val = expression[i]
 
-	else if(copytext(expression[i], 1, 2) in list("'", "\""))
-		val = copytext(expression[i], 2, length(expression[i]))
+	else if(expression[i][1] in list("'", "\""))
+		val = copytext_char(expression[i], 2, -1)
 
 	else if(expression[i] == "\[")
 		var/list/expressions_list = expression[++i]
@@ -954,11 +957,11 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	if(is_proper_datum(object))
 		D = object
 
-	if (object == world && (!long || expression[start + 1] == ".") && !(expression[start] in exclude))
+	if (object == world && (!long || expression[start + 1] == ".") && !(expression[start] in exclude)) //3 == length("SS") + 1
 		to_chat(usr, "<span class='danger'>World variables are not allowed to be accessed. Use global.</span>")
 		return null
 
-	else if(expression [start] == "{" && long)
+	else if(expression [start] == "{" && long) //3 == length("0x") + 1
 		if(lowertext(copytext(expression[start + 1], 1, 3)) != "0x")
 			to_chat(usr, "<span class='danger'>Invalid pointer syntax: [expression[start + 1]]</span>")
 			return null
@@ -1063,9 +1066,10 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	var/word = ""
 	var/list/query_list = list()
 	var/len = length(query_text)
+	var/char = ""
 
-	for(var/i = 1, i <= len, i++)
-		var/char = copytext(query_text, i, i + 1)
+	for(var/i = 1, i <= len, i += length(char))
+		char = query_text[i]
 
 		if(char in whitespace)
 			if(word != "")
@@ -1084,7 +1088,7 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 				query_list += word
 				word = ""
 
-			var/char2 = copytext(query_text, i + 1, i + 2)
+			var/char2 = query_text[i + length(char)]
 
 			if(char2 in multi[char])
 				query_list += "[char][char2]"
@@ -1100,13 +1104,13 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 
 			word = "'"
 
-			for(i++, i <= len, i++)
-				char = copytext(query_text, i, i + 1)
+			for(i += length(char), i <= len, i += length(char))
+				char = query_text[i]
 
 				if(char == "'")
-					if(copytext(query_text, i + 1, i + 2) == "'")
+					if(query_text[i + length(char)] == "'")
 						word += "'"
-						i++
+						i += length(query_text[i + length(char)])
 
 					else
 						break
@@ -1128,13 +1132,13 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 
 			word = "\""
 
-			for(i++, i <= len, i++)
-				char = copytext(query_text, i, i + 1)
+			for(i += length(char), i <= len, i += length(char))
+				char = query_text[i]
 
 				if(char == "\"")
-					if(copytext(query_text, i + 1, i + 2) == "'")
+					if(query_text[i + length(char)] == "'")
 						word += "\""
-						i++
+						i += length(query_text[i + length(char)])
 
 					else
 						break
@@ -1160,10 +1164,18 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	return istype(thing, /datum) || istype(thing, /client)
 
 /obj/effect/statclick/SDQL2_delete/Click()
+	if(!usr.client?.holder)
+		message_admins("[key_name_admin(usr)] non-holder clicked on a statclick! ([src])")
+		log_game("[key_name(usr)] non-holder clicked on a statclick! ([src])")
+		return
 	var/datum/SDQL2_query/Q = target
 	Q.delete_click()
 
 /obj/effect/statclick/SDQL2_action/Click()
+	if(!usr.client?.holder)
+		message_admins("[key_name_admin(usr)] non-holder clicked on a statclick! ([src])")
+		log_game("[key_name(usr)] non-holder clicked on a statclick! ([src])")
+		return
 	var/datum/SDQL2_query/Q = target
 	Q.action_click()
 
@@ -1171,4 +1183,13 @@ GLOBAL_DATUM_INIT(sdql2_vv_statobj, /obj/effect/statclick/SDQL2_VV_all, new(null
 	name = "VIEW VARIABLES"
 
 /obj/effect/statclick/SDQL2_VV_all/Click()
+	if(!usr.client?.holder)
+		message_admins("[key_name_admin(usr)] non-holder clicked on a statclick! ([src])")
+		log_game("[key_name(usr)] non-holder clicked on a statclick! ([src])")
+		return
 	usr.client.debug_variables(GLOB.sdql2_queries)
+
+	if(!usr.client?.holder)
+		message_admins("[key_name_admin(usr)] non-holder clicked on a statclick! ([src])")
+		log_game("[key_name(usr)] non-holder clicked on a statclick! ([src])")
+		return

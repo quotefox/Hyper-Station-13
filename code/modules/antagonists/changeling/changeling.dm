@@ -274,6 +274,7 @@
 	prof.shirt_color = H.shirt_color
 	prof.socks = H.socks
 	prof.socks_color = H.socks_color
+	prof.size_multiplier = H.size_multiplier
 
 	var/list/slots = list("head", "wear_mask", "back", "wear_suit", "w_uniform", "shoes", "belt", "gloves", "glasses", "ears", "wear_id", "s_store")
 	for(var/slot in slots)
@@ -511,6 +512,7 @@
 	var/shirt_color
 	var/socks
 	var/socks_color
+	var/size_multiplier
 
 /datum/changelingprofile/Destroy()
 	qdel(dna)
@@ -530,6 +532,7 @@
 	newprofile.underwear = underwear
 	newprofile.undershirt = undershirt
 	newprofile.socks = socks
+	newprofile.size_multiplier = size_multiplier
 
 
 /datum/antagonist/changeling/xenobio

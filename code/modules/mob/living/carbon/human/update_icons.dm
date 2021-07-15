@@ -123,15 +123,16 @@ There are several things that need to be remembered:
 			if(U.adjusted == ALT_STYLE)
 				t_color = "[t_color]_d"
 
-		if(U.mutantrace_variation)
-			if(U.suit_style == DIGITIGRADE_SUIT_STYLE)
-				U.alternate_worn_icon = 'modular_citadel/icons/mob/uniform_digi.dmi'
-				if(U.adjusted == ALT_STYLE)
-					t_color = "[t_color]_d_l"
-				else if(U.adjusted == NORMAL_STYLE)
-					t_color = "[t_color]_l"
-			else
-				U.alternate_worn_icon = null
+		if(!U.force_alternate_icon)
+			if(U.mutantrace_variation)
+				if(U.suit_style == DIGITIGRADE_SUIT_STYLE)
+					U.alternate_worn_icon = 'modular_citadel/icons/mob/uniform_digi.dmi'
+					if(U.adjusted == ALT_STYLE)
+						t_color = "[t_color]_d_l"
+					else if(U.adjusted == NORMAL_STYLE)
+						t_color = "[t_color]_l"
+				else
+					U.alternate_worn_icon = null
 
 		var/mutable_appearance/uniform_overlay
 
@@ -148,6 +149,12 @@ There are several things that need to be remembered:
 			uniform_overlay.pixel_x += dna.species.offset_features[OFFSET_UNIFORM][1]
 			uniform_overlay.pixel_y += dna.species.offset_features[OFFSET_UNIFORM][2]
 		overlays_standing[UNIFORM_LAYER] = uniform_overlay
+
+		if(src.getorganslot("penis")) //they have a penis
+			uniform_overlay.add_overlay(mutable_appearance('hyperstation/icons/mob/clothes/extra.dmi', "[U.icon_state]_penis"))
+		if(src.getorganslot("breasts")) //they have breasts
+			uniform_overlay.add_overlay(mutable_appearance('hyperstation/icons/mob/clothes/extra.dmi', "[U.icon_state]_breasts"))
+
 
 	apply_overlay(UNIFORM_LAYER)
 	update_mutant_bodyparts()
@@ -185,7 +192,7 @@ There are several things that need to be remembered:
 		inv.update_icon()
 
 	if(!gloves && bloody_hands)
-		var/mutable_appearance/bloody_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyhands", -GLOVES_LAYER)
+		var/mutable_appearance/bloody_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyhands", -GLOVES_LAYER, color = blood_DNA_to_color())
 		if(get_num_arms() < 2)
 			if(has_left_hand())
 				bloody_overlay.icon_state = "bloodyhands_left"
@@ -275,6 +282,32 @@ There are several things that need to be remembered:
 	if(client && hud_used)
 		var/obj/screen/inventory/inv = hud_used.inv_slots[SLOT_SHOES]
 		inv.update_icon()
+/*
+	if(!shoes && bloody_feet)
+		var/mutable_appearance/bloody_overlay = mutable_appearance('icons/effects/blood.dmi', "bloodyfeet", -SHOES_LAYER, color = blood_DNA_to_color())
+		if(dna.features["taur"] != "None")
+			if(dna.features["taur"] in GLOB.noodle_taurs)
+				bloody_overlay = mutable_appearance('modular_citadel/icons/mob/64x32_effects.dmi', "snekbloodyfeet", -SHOES_LAYER, color = blood_DNA_to_color())
+				if(get_num_legs() < 2)
+					if(has_left_leg())
+						bloody_overlay.icon_state = "snekbloodyfeet_left"
+					else if(has_right_leg())
+						bloody_overlay.icon_state = "snekbloodyfeet_right"
+			else if(dna.features["taur"] in GLOB.paw_taurs)
+				bloody_overlay = mutable_appearance('modular_citadel/icons/mob/64x32_effects.dmi', "pawbloodyfeet", -SHOES_LAYER, color = blood_DNA_to_color())
+				if(get_num_legs() < 2)
+					if(has_left_leg())
+						bloody_overlay.icon_state = "pawbloodyfeet_left"
+					else if(has_right_leg())
+						bloody_overlay.icon_state = "pawbloodyfeet_right"
+		else
+			if(get_num_legs() < 2)
+				if(has_left_leg())
+					bloody_overlay.icon_state = "bloodyfeet_left"
+				else if(has_right_leg())
+					bloody_overlay.icon_state = "bloodyfeet_right"
+
+		overlays_standing[GLOVES_LAYER] = bloody_overlay*/
 
 	if(shoes)
 		var/obj/item/clothing/shoes/S = shoes
@@ -653,6 +686,8 @@ generate/load female uniform sprites matching all previously decided variables
 			. += "-robotic"
 		if(BP.use_digitigrade)
 			. += "-digitigrade[BP.use_digitigrade]"
+			if(BP.digitigrade_type)
+				. += "-[BP.digitigrade_type]"
 		if(BP.dmg_overlay_type)
 			. += "-[BP.dmg_overlay_type]"
 		if(BP.body_markings)

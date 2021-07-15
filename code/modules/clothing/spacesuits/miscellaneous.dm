@@ -46,7 +46,7 @@ Contains:
 	//NEW SWAT suit
 /obj/item/clothing/suit/space/swat
 	name = "MK.I SWAT Suit"
-	desc = "A tactical space suit first developed in a joint effort by the defunct IS-ERI and Nanotrasen in 20XX for military space operations. A tried and true workhorse, it is very difficult to move in but offers robust protection against all threats!"
+	desc = "A tactical space suit first developed in a joint effort by the defunct IS-ERI and Kinaris in 20XX for military space operations. A tried and true workhorse, it is very difficult to move in but offers robust protection against all threats!"
 	icon_state = "heavy"
 	item_state = "swat_suit"
 	allowed = list(/obj/item/gun, /obj/item/ammo_box, /obj/item/ammo_casing, /obj/item/melee/baton, /obj/item/restraints/handcuffs, /obj/item/tank/internals, /obj/item/kitchen/knife/combat)
@@ -405,6 +405,32 @@ Contains:
 	desc = "Peering into the eyes of the helmet is enough to seal damnation."
 	icon_state = "hardsuit0-beserker"
 	item_state = "hardsuit0-beserker"
+
+/obj/item/clothing/suit/space/hardsuit/ert/paranormal/inquisitor/miner
+	name = "inquisitor's hardsuit"
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/paranormal/inquisitor/miner
+	armor = list("melee" = 70, "bullet" = 20, "laser" = 20, "energy" = 20, "bomb" = 60, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 80)
+	slowdown = 1
+
+/obj/item/clothing/head/helmet/space/hardsuit/ert/paranormal/inquisitor/miner
+	name = "inquisitor's helmet"
+	armor = list("melee" = 70, "bullet" = 20, "laser" = 20, "energy" = 20, "bomb" = 60, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 80)
+
+/obj/item/clothing/suit/space/hardsuit/ert/paranormal/beserker/miner
+	name = "champion's hardsuit"
+	desc = "Voices echo from the hardsuit, driving the user insane."
+	icon_state = "hardsuit-beserker"
+	item_state = "hardsuit-beserker"
+	helmettype = /obj/item/clothing/head/helmet/space/hardsuit/ert/paranormal/beserker/miner
+	armor = list("melee" = 70, "bullet" = 20, "laser" = 20, "energy" = 20, "bomb" = 60, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 80)
+	slowdown = 1
+
+/obj/item/clothing/head/helmet/space/hardsuit/ert/paranormal/beserker/miner
+	name = "champion's helmet"
+	desc = "Peering into the eyes of the helmet is enough to seal damnation."
+	icon_state = "hardsuit0-beserker"
+	item_state = "hardsuit0-beserker"
+	armor = list("melee" = 70, "bullet" = 20, "laser" = 20, "energy" = 20, "bomb" = 60, "bio" = 100, "rad" = 100, "fire" = 80, "acid" = 80)
 
 /obj/item/clothing/head/helmet/space/fragile
 	name = "emergency space helmet"

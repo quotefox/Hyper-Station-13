@@ -47,11 +47,11 @@ RLD
 
 /obj/item/construction/examine(mob/user)
 	. = ..()
-	to_chat(user, "It currently holds [matter]/[max_matter] matter-units." )
+	. += "It currently holds [matter]/[max_matter] matter-units."
 	if(upgrade & RCD_UPGRADE_FRAMES)
-		to_chat(user, "It contains the design for machine frames, computer frames and deconstruction." )
+		. += "It contains the design for machine frames, computer frames and deconstruction."
 	if(upgrade & RCD_UPGRADE_SIMPLE_CIRCUITS)
-		to_chat(user, "It contains the design for firelock, air alarm, fire alarm, apc circuits and crap power cells.")
+		. += "It contains the design for firelock, air alarm, fire alarm, apc circuits and crap power cells."
 
 /obj/item/construction/Destroy()
 	QDEL_NULL(spark_system)
@@ -160,6 +160,7 @@ RLD
 	var/mode = 1
 	var/ranged = FALSE
 	var/computer_dir = 1
+	var/airlock_dir = 1
 	var/airlock_type = /obj/machinery/door/airlock
 	var/airlock_glass = FALSE // So the floor's rcd_act knows how much ammo to use
 	var/window_type = /obj/structure/window/fulltile
@@ -167,7 +168,9 @@ RLD
 	var/list/conf_access = null
 	var/use_one_access = 0 //If the airlock should require ALL or only ONE of the listed accesses.
 	var/delay_mod = 1
-	var/canRturf = FALSE //Variable for R walls to deconstruct them
+	var/canRturf = FALSE //Variable for R walls to deconstruct the
+	var/airlock_color_base = ""
+	var/airlock_color_strip = ""
 
 /obj/item/construction/rcd/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] sets the RCD to 'Wall' and points it down [user.p_their()] throat! It looks like [user.p_theyre()] trying to commit suicide..</span>")
@@ -281,6 +284,22 @@ RLD
 		return FALSE
 	return TRUE
 
+/obj/item/construction/rcd/proc/change_airlock_direction(mob/user)
+	if(!user)
+		return
+	var/list/airlock_dirs = list(
+		"North/South" = image(icon = 'icons/mob/radial.dmi', icon_state = "airlocknorthsouth"),
+		"East/West" = image(icon = 'icons/mob/radial.dmi', icon_state = "airlockeastwest")
+		)
+	var/airlockdirs = show_radial_menu(user, src, airlock_dirs, custom_check = CALLBACK(src, .proc/check_menu, user), require_near = TRUE, tooltips = TRUE)
+	if(!check_menu(user))
+		return
+	switch(airlockdirs)
+		if("North/South")
+			airlock_dir = 1
+		if("East/West")
+			airlock_dir = 4
+
 /obj/item/construction/rcd/proc/change_computer_dir(mob/user)
 	if(!user)
 		return
@@ -314,36 +333,13 @@ RLD
 
 	var/list/solid_choices = list(
 		"Standard" = get_airlock_image(/obj/machinery/door/airlock),
-		"Public" = get_airlock_image(/obj/machinery/door/airlock/public),
-		"Engineering" = get_airlock_image(/obj/machinery/door/airlock/engineering),
-		"Atmospherics" = get_airlock_image(/obj/machinery/door/airlock/atmos),
-		"Security" = get_airlock_image(/obj/machinery/door/airlock/security),
-		"Command" = get_airlock_image(/obj/machinery/door/airlock/command),
-		"Medical" = get_airlock_image(/obj/machinery/door/airlock/medical),
-		"Research" = get_airlock_image(/obj/machinery/door/airlock/research),
-		"Freezer" = get_airlock_image(/obj/machinery/door/airlock/freezer),
-		"Science" = get_airlock_image(/obj/machinery/door/airlock/science),
-		"Virology" = get_airlock_image(/obj/machinery/door/airlock/virology),
-		"Mining" = get_airlock_image(/obj/machinery/door/airlock/mining),
-		"Maintenance" = get_airlock_image(/obj/machinery/door/airlock/maintenance),
 		"External" = get_airlock_image(/obj/machinery/door/airlock/external),
-		"External Maintenance" = get_airlock_image(/obj/machinery/door/airlock/maintenance/external),
 		"Airtight Hatch" = get_airlock_image(/obj/machinery/door/airlock/hatch),
 		"Maintenance Hatch" = get_airlock_image(/obj/machinery/door/airlock/maintenance_hatch)
 	)
 
 	var/list/glass_choices = list(
 		"Standard" = get_airlock_image(/obj/machinery/door/airlock/glass),
-		"Public" = get_airlock_image(/obj/machinery/door/airlock/public/glass),
-		"Engineering" = get_airlock_image(/obj/machinery/door/airlock/engineering/glass),
-		"Atmospherics" = get_airlock_image(/obj/machinery/door/airlock/atmos/glass),
-		"Security" = get_airlock_image(/obj/machinery/door/airlock/security/glass),
-		"Command" = get_airlock_image(/obj/machinery/door/airlock/command/glass),
-		"Medical" = get_airlock_image(/obj/machinery/door/airlock/medical/glass),
-		"Research" = get_airlock_image(/obj/machinery/door/airlock/research/glass),
-		"Science" = get_airlock_image(/obj/machinery/door/airlock/science/glass),
-		"Virology" = get_airlock_image(/obj/machinery/door/airlock/virology/glass),
-		"Mining" = get_airlock_image(/obj/machinery/door/airlock/mining/glass),
 		"Maintenance" = get_airlock_image(/obj/machinery/door/airlock/maintenance/glass),
 		"External" = get_airlock_image(/obj/machinery/door/airlock/external/glass),
 		"External Maintenance" = get_airlock_image(/obj/machinery/door/airlock/maintenance/external/glass)
@@ -358,33 +354,13 @@ RLD
 				var/airlockpaint = show_radial_menu(user, src, solid_choices, radius = 42, custom_check = CALLBACK(src, .proc/check_menu, user), require_near = TRUE)
 				if(!check_menu(user))
 					return
+				airlock_color_base = ""
+				airlock_color_strip = ""
 				switch(airlockpaint)
-					if("Standard")
+					if("Standard") // we only need one now, because you can customize the colours yourself
+						airlock_color_base = input(user, "Choose the airlocks base colour. Leave blank for none!", "Airlock Color", airlock_color_base) as color|null
+						airlock_color_strip = input(user, "Choose the airlocks strip colour. Leave blank for none!", "Airlock Color", airlock_color_base) as color|null
 						airlock_type = /obj/machinery/door/airlock
-					if("Public")
-						airlock_type = /obj/machinery/door/airlock/public
-					if("Engineering")
-						airlock_type = /obj/machinery/door/airlock/engineering
-					if("Atmospherics")
-						airlock_type = /obj/machinery/door/airlock/atmos
-					if("Security")
-						airlock_type = /obj/machinery/door/airlock/security
-					if("Command")
-						airlock_type = /obj/machinery/door/airlock/command
-					if("Medical")
-						airlock_type = /obj/machinery/door/airlock/medical
-					if("Research")
-						airlock_type = /obj/machinery/door/airlock/research
-					if("Freezer")
-						airlock_type = /obj/machinery/door/airlock/freezer
-					if("Science")
-						airlock_type = /obj/machinery/door/airlock/science
-					if("Virology")
-						airlock_type = /obj/machinery/door/airlock/virology
-					if("Mining")
-						airlock_type = /obj/machinery/door/airlock/mining
-					if("Maintenance")
-						airlock_type = /obj/machinery/door/airlock/maintenance
 					if("External")
 						airlock_type = /obj/machinery/door/airlock/external
 					if("External Maintenance")
@@ -403,29 +379,13 @@ RLD
 				var/airlockpaint = show_radial_menu(user, src , glass_choices, radius = 42, custom_check = CALLBACK(src, .proc/check_menu, user), require_near = TRUE)
 				if(!check_menu(user))
 					return
+				airlock_color_base = ""
+				airlock_color_strip = ""
 				switch(airlockpaint)
 					if("Standard")
+						airlock_color_base = input(user, "Choose the airlocks base colour. Leave blank for none!", "Airlock Color", airlock_color_base) as color|null
+						airlock_color_strip = input(user, "Choose the airlocks strip colour. Leave blank for none!", "Airlock Color", airlock_color_base) as color|null
 						airlock_type = /obj/machinery/door/airlock/glass
-					if("Public")
-						airlock_type = /obj/machinery/door/airlock/public/glass
-					if("Engineering")
-						airlock_type = /obj/machinery/door/airlock/engineering/glass
-					if("Atmospherics")
-						airlock_type = /obj/machinery/door/airlock/atmos/glass
-					if("Security")
-						airlock_type = /obj/machinery/door/airlock/security/glass
-					if("Command")
-						airlock_type = /obj/machinery/door/airlock/command/glass
-					if("Medical")
-						airlock_type = /obj/machinery/door/airlock/medical/glass
-					if("Research")
-						airlock_type = /obj/machinery/door/airlock/research/glass
-					if("Science")
-						airlock_type = /obj/machinery/door/airlock/science/glass
-					if("Virology")
-						airlock_type = /obj/machinery/door/airlock/virology/glass
-					if("Mining")
-						airlock_type = /obj/machinery/door/airlock/mining/glass
 					if("Maintenance")
 						airlock_type = /obj/machinery/door/airlock/maintenance/glass
 					if("External")
@@ -486,6 +446,7 @@ RLD
 	if(mode == RCD_AIRLOCK)
 		choices += list(
 		"Change Access" = image(icon = 'icons/mob/radial.dmi', icon_state = "access"),
+		"Change Direction" = image(icon = 'icons/mob/radial.dmi', icon_state = "airlockrotation"),
 		"Change Airlock Type" = image(icon = 'icons/mob/radial.dmi', icon_state = "airlocktype")
 		)
 	else if(mode == RCD_WINDOWGRILLE)
@@ -512,6 +473,9 @@ RLD
 			return
 		if("Change Access")
 			change_airlock_access(user)
+			return
+		if("Change Direction")
+			change_airlock_direction(user)
 			return
 		if("Change Airlock Type")
 			change_airlock_setting(user)
@@ -680,17 +644,17 @@ RLD
 	icon_state = "rld"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
-	matter = 500
-	max_matter = 500
-	sheetmultiplier = 16
+	matter = 240
+	max_matter = 240
+	sheetmultiplier = 8
 	var/mode = LIGHT_MODE
 	actions_types = list(/datum/action/item_action/pick_color)
 	ammo_sections = 5
 	has_ammobar = TRUE
 
-	var/wallcost = 10
-	var/floorcost = 15
-	var/launchcost = 5
+	var/wallcost = 20
+	var/floorcost = 20
+	var/launchcost = 30
 	var/deconcost = 10
 
 	var/walldelay = 10

@@ -9,7 +9,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	name = "Blob Overmind"
 	real_name = "Blob Overmind"
 	desc = "The overmind. It controls the blob."
-	icon = 'icons/mob/blob.dmi'
+	icon = 'icons/mob/cameramob.dmi'
 	icon_state = "marker"
 	mouse_opacity = MOUSE_OPACITY_ICON
 	move_on_shuttle = 1
@@ -170,9 +170,9 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	add_points(0)
 
 /mob/camera/blob/examine(mob/user)
-	..()
+	. = ..()
 	if(blob_reagent_datum)
-		to_chat(user, "Its chemical is <font color=\"[blob_reagent_datum.color]\">[blob_reagent_datum.name]</font>.")
+		. += "Its chemical is <font color=\"[blob_reagent_datum.color]\">[blob_reagent_datum.name]</font>."
 
 /mob/camera/blob/update_health_hud()
 	if(blob_core)
@@ -203,7 +203,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 /mob/camera/blob/proc/blob_talk(message)
 
-	message = trim(copytext(sanitize(message), 1, MAX_MESSAGE_LEN))
+	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
 
 	if (!message)
 		return
@@ -223,19 +223,16 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 /mob/camera/blob/blob_act(obj/structure/blob/B)
 	return
 
-/mob/camera/blob/Stat()
-	..()
-	if(statpanel("Status"))
-		if(blob_core)
-			stat(null, "Core Health: [blob_core.obj_integrity]")
-			stat(null, "Power Stored: [blob_points]/[max_blob_points]")
-			stat(null, "Blobs to Win: [blobs_legit.len]/[blobwincount]")
-		if(free_chem_rerolls)
-			stat(null, "You have [free_chem_rerolls] Free Chemical Reroll\s Remaining")
-		if(!placed)
-			if(manualplace_min_time)
-				stat(null, "Time Before Manual Placement: [max(round((manualplace_min_time - world.time)*0.1, 0.1), 0)]")
-			stat(null, "Time Before Automatic Placement: [max(round((autoplace_max_time - world.time)*0.1, 0.1), 0)]")
+/mob/camera/blob/get_status_tab_items()
+	. = ..()
+	if(blob_core)
+		. += "Core Health: [blob_core.obj_integrity]"
+		. += "Power Stored: [blob_points]/[max_blob_points]"
+		. += "Blobs to Win: [blobs_legit.len]/[blobwincount]"
+	if(!placed)
+		if(manualplace_min_time)
+			. +=  "Time Before Manual Placement: [max(round((manualplace_min_time - world.time)*0.1, 0.1), 0)]"
+		. += "Time Before Automatic Placement: [max(round((autoplace_max_time - world.time)*0.1, 0.1), 0)]"
 
 /mob/camera/blob/Move(NewLoc, Dir = 0)
 	if(placed)

@@ -18,7 +18,11 @@
 	if(R.stat == DEAD)
 		to_chat(user, "<span class='notice'>[src] will not function on a deceased cyborg.</span>")
 		return FALSE
-	if(module_type && !istype(R.module, module_type))
+	if(module_type && !istype(R.module, module_type) && !islist(module_type))
+		to_chat(R, "Upgrade mounting error!  No suitable hardpoint detected!")
+		to_chat(user, "There's no mounting point for the module!")
+		return FALSE
+	if(module_type && islist(module_type) && !(locate(R.module) in module_type))
 		to_chat(R, "Upgrade mounting error!  No suitable hardpoint detected!")
 		to_chat(user, "There's no mounting point for the module!")
 		return FALSE
@@ -74,19 +78,24 @@
 /obj/item/borg/upgrade/vtec/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if(.)
-		if(R.speed < 0)
+		if(R.speed["enabled"])
 			to_chat(R, "<span class='notice'>A VTEC unit is already installed!</span>")
 			to_chat(user, "<span class='notice'>There's no room for another VTEC unit!</span>")
 			return FALSE
 
 		//R.speed = -2 // Gotta go fast.
-        //Citadel change - makes vtecs give an ability rather than reducing the borg's speed instantly
-		R.AddAbility(new/obj/effect/proc_holder/silicon/cyborg/vtecControl)
+		//Citadel change - makes vtecs give an ability rather than reducing the borg's speed instantly
+		//Hyper change - Also makes vtec take up charge
+		var/obj/effect/proc_holder/silicon/cyborg/vtecControl/vtec = new
+		R.speed["enabled"] = TRUE
+		R.speed["ref"] = vtec
+		R.speed["timer"] = addtimer(CALLBACK(vtec, /obj/effect/proc_holder/silicon/cyborg/vtecControl/proc/useCharge, R), 50, TIMER_UNIQUE|TIMER_STOPPABLE|TIMER_LOOP)
+		R.AddAbility (R.speed["ref"])
 
 /obj/item/borg/upgrade/vtec/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if (.)
-		R.speed = initial(R.speed)
+		R.removeVTecStats()
 
 /obj/item/borg/upgrade/disablercooler
 	name = "cyborg rapid disabler cooling module"
@@ -405,7 +414,10 @@
 		to produce more advanced and complex medical reagents."
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
-	module_type = /obj/item/robot_module/medical
+	module_type = list(
+		/obj/item/robot_module/medical,
+		/obj/item/robot_module/medihound)
+	
 	var/list/additional_reagents = list()
 
 /obj/item/borg/upgrade/hypospray/action(mob/living/silicon/robot/R, user = usr)
@@ -428,15 +440,15 @@
 	name = "medical cyborg expanded hypospray"
 	desc = "An upgrade to the Medical module's hypospray, allowing it \
 		to treat a wider range of conditions and problems."
-	additional_reagents = list("mannitol", "oculine", "inacusiate",
-		"mutadone", "haloperidol")
+	additional_reagents = list(/datum/reagent/medicine/mannitol, /datum/reagent/medicine/oculine, /datum/reagent/medicine/inacusiate,
+		/datum/reagent/medicine/mutadone, /datum/reagent/medicine/haloperidol)
 
 /obj/item/borg/upgrade/hypospray/high_strength
 	name = "medical cyborg high-strength hypospray"
 	desc = "An upgrade to the Medical module's hypospray, containing \
 		stronger versions of existing chemicals."
-	additional_reagents = list("oxandrolone", "sal_acid", "rezadone",
-		"pen_acid")
+	additional_reagents = list(/datum/reagent/medicine/oxandrolone, /datum/reagent/medicine/sal_acid,
+								/datum/reagent/medicine/rezadone, /datum/reagent/medicine/pen_acid)
 
 /obj/item/borg/upgrade/piercing_hypospray
 	name = "cyborg piercing hypospray"
@@ -489,7 +501,9 @@
 		out procedures"
 	icon_state = "cyborg_upgrade3"
 	require_module = 1
-	module_type = /obj/item/robot_module/medical
+	module_type = list(
+		/obj/item/robot_module/medical,
+		/obj/item/robot_module/medihound)
 
 /obj/item/borg/upgrade/processor/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
@@ -512,9 +526,8 @@
 	require_module = 1
 	module_type = list(
 		/obj/item/robot_module/medical,
-		/obj/item/robot_module/syndicate_medical,
-		/obj/item/robot_module/medihound,
-		/obj/item/robot_module/borgi)
+		/obj/item/robot_module/medihound)
+
 
 /obj/item/borg/upgrade/advhealth/action(mob/living/silicon/robot/R, user = usr)
 	. = ..()
@@ -581,14 +594,14 @@
 			R.SetLockdown(0)
 		R.anchored = FALSE
 		R.notransform = FALSE
-		R.resize = 2
 		R.hasExpanded = TRUE
+		R.module.handle_sprite_action(R, TRUE)	//Hyperstation edit
 		R.update_transform()
 
 /obj/item/borg/upgrade/expand/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if (.)
-		R.resize = 0.5
+		R.module.handle_sprite_action(R)
 		R.hasExpanded = FALSE
 		R.update_transform()
 
@@ -620,31 +633,6 @@
 		if (RPED)
 			R.module.remove_module(RPED, TRUE)
 
-/obj/item/borg/upgrade/circuit_app
-	name = "circuit manipulation apparatus"
-	desc = "An engineering cyborg upgrade allowing for manipulation of circuit boards."
-	icon_state = "cyborg_upgrade3"
-	require_module = TRUE
-	module_type = list(/obj/item/robot_module/engineering)
-
-/obj/item/borg/upgrade/circuit_app/action(mob/living/silicon/robot/R, user = usr)
-	. = ..()
-	if(.)
-		var/obj/item/borg/apparatus/circuit/C = locate() in R.module.modules
-		if(C)
-			to_chat(user, "<span class='warning'>This unit is already equipped with a circuit apparatus!</span>")
-			return FALSE
-
-		C = new(R.module)
-		R.module.basic_modules += C
-		R.module.add_module(C, FALSE, TRUE)
-
-/obj/item/borg/upgrade/circuit_app/deactivate(mob/living/silicon/robot/R, user = usr)
-	. = ..()
-	if (.)
-		var/obj/item/borg/apparatus/circuit/C = locate() in R.module.modules
-		if (C)
-			R.module.remove_module(C, TRUE)
 
 /obj/item/borg/upgrade/pinpointer
 	name = "medical cyborg crew pinpointer"

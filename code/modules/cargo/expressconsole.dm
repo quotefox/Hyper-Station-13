@@ -9,7 +9,7 @@
 /obj/machinery/computer/cargo/express
 	name = "express supply console"
 	desc = "This console allows the user to purchase a package \
-		with 1/40th of the delivery time: made possible by NanoTrasen's new \"1500mm Orbital Railgun\".\
+		with 1/40th of the delivery time: made possible by Kinaris's new \"1500mm Orbital Railgun\".\
 		All sales are near instantaneous - please choose carefully"
 	icon_screen = "supply_express"
 	circuit = /obj/item/circuitboard/computer/cargo/express
@@ -54,6 +54,7 @@
 	..()
 
 /obj/machinery/computer/cargo/express/emag_act(mob/living/user)
+	. = SEND_SIGNAL(src, COMSIG_ATOM_EMAG_ACT)
 	if(obj_flags & EMAGGED)
 		return
 	user.visible_message("<span class='warning'>[user] swipes a suspicious card through [src]!</span>",
@@ -63,6 +64,8 @@
 	var/obj/item/circuitboard/computer/cargo/board = circuit
 	board.obj_flags |= EMAGGED
 	packin_up()
+	req_access = list()
+	return TRUE
 
 /obj/machinery/computer/cargo/express/proc/packin_up() // oh shit, I'm sorry
 	meme_pack_data = list() // sorry for what?
@@ -87,7 +90,7 @@
 /obj/machinery/computer/cargo/express/ui_interact(mob/living/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state) // Remember to use the appropriate state.
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "cargo_express", name, 1000, 800, master_ui, state)
+		ui = new(user, src, ui_key, "cargo_express", name, 600, 700, master_ui, state)
 		ui.open()
 
 /obj/machinery/computer/cargo/express/ui_data(mob/user)
@@ -153,7 +156,7 @@
 			if(ishuman(usr))
 				var/mob/living/carbon/human/H = usr
 				name = H.get_authentification_name()
-				rank = H.get_assignment()
+				rank = H.get_assignment(hand_first = TRUE)
 			else if(issilicon(usr))
 				name = usr.real_name
 				rank = "Silicon"
@@ -180,7 +183,7 @@
 							LZ = pick(empty_turfs)
 					if (SO.pack.cost <= SSshuttle.points && LZ)//we need to call the cost check again because of the CHECK_TICK call
 						SSshuttle.points -= SO.pack.cost
-						new /obj/effect/DPtarget(LZ, podType, SO)
+						new /obj/effect/abstract/DPtarget(LZ, podType, SO)
 						. = TRUE
 						update_icon()
 			else
@@ -197,7 +200,8 @@
 						for(var/i in 1 to MAX_EMAG_ROCKETS)
 							var/LZ = pick(empty_turfs)
 							LAZYREMOVE(empty_turfs, LZ)
-							new /obj/effect/DPtarget(LZ, podType, SO)
+							new /obj/effect/abstract/DPtarget(LZ, podType, SO)
 							. = TRUE
 							update_icon()
 							CHECK_TICK
+

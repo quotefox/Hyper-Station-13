@@ -11,9 +11,9 @@ SUBSYSTEM_DEF(throwing)
 	var/list/currentrun
 	var/list/processing = list()
 
-/datum/controller/subsystem/throwing/stat_entry()
-	..("P:[processing.len]")
-
+/datum/controller/subsystem/throwing/stat_entry(msg)
+	msg = "P:[length(processing)]"
+	return ..()
 
 /datum/controller/subsystem/throwing/fire(resumed = 0)
 	if (!resumed)
@@ -43,6 +43,7 @@ SUBSYSTEM_DEF(throwing)
 	var/atom/movable/thrownthing
 	var/atom/target
 	var/turf/target_turf
+	var/target_zone
 	var/init_dir
 	var/maxrange
 	var/speed
@@ -54,6 +55,7 @@ SUBSYSTEM_DEF(throwing)
 	var/dist_y
 	var/dx
 	var/dy
+	var/force = MOVE_FORCE_DEFAULT
 	var/pure_diagonal
 	var/diagonal_error
 	var/datum/callback/callback
@@ -109,7 +111,7 @@ SUBSYSTEM_DEF(throwing)
 			finalize()
 			return
 
-		AM.Move(step, get_dir(AM, step))
+		AM.Move(step, get_dir(AM, step), DELAY_TO_GLIDE_SIZE(1 / speed))
 
 		if (!AM.throwing) // we hit something during our move
 			finalize(hit = TRUE)
@@ -145,6 +147,11 @@ SUBSYSTEM_DEF(throwing)
 
 	if (callback)
 		callback.Invoke()
+
+	if(!thrownthing.zfalling) // I don't think you can zfall while thrown but hey, just in case.
+		var/turf/T = get_turf(thrownthing)
+		if(T && thrownthing.has_gravity(T))
+			T.zFall(thrownthing)
 
 	qdel(src)
 

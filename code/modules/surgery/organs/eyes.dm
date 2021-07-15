@@ -202,7 +202,7 @@
 /obj/item/organ/eyes/robotic/shield/emp_act(severity)
 	return
 
-#define RGB2EYECOLORSTRING(definitionvar) ("[copytext(definitionvar,2,3)][copytext(definitionvar,4,5)][copytext(definitionvar,6,7)]")
+#define RGB2EYECOLORSTRING(definitionvar) ("[copytext_char(definitionvar, 2, 3)][copytext_char(definitionvar, 4, 5)][copytext_char(definitionvar, 6, 7)]")
 
 /obj/item/organ/eyes/robotic/glow
 	name = "High Luminosity Eyes"
@@ -227,7 +227,7 @@
 	terminate_effects()
 	. = ..()
 
-/obj/item/organ/eyes/robotic/glow/Remove()
+/obj/item/organ/eyes/robotic/glow/Remove(mob/living/carbon/M, special = FALSE)
 	terminate_effects()
 	. = ..()
 
@@ -338,7 +338,7 @@
 /obj/item/organ/eyes/robotic/glow/proc/start_visuals()
 	if(!islist(eye_lighting))
 		regenerate_light_effects()
-	if((eye_lighting.len < light_beam_distance) || !on_mob)
+	if((LAZYLEN(eye_lighting) < light_beam_distance) || !on_mob)
 		regenerate_light_effects()
 	sync_light_effects()
 	update_visuals()
@@ -362,6 +362,7 @@
 		on_mob.set_light(1, 1, current_color_string)
 
 /obj/effect/abstract/eye_lighting
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	var/obj/item/organ/eyes/robotic/glow/parent
 
 /obj/effect/abstract/eye_lighting/Initialize()
@@ -374,3 +375,7 @@
 	name = "insect eyes"
 	desc = "These eyes seem to have increased sensitivity to bright light, with no improvement to low light vision."
 	flash_protect = -1
+
+/obj/item/organ/eyes/ipc
+	name = "ipc eyes"
+	icon_state = "cybernetic_eyeballs"

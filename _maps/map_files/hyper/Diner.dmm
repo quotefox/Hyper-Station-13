@@ -1,0 +1,248 @@
+"aa" = (/turf/closed/wall,/area/diner)
+"ab" = (/obj/effect/spawner/structure/window/reinforced,/turf/open/floor/plating,/area/diner)
+"ac" = (/obj/structure/toilet,/obj/machinery/light{dir = 1; pixel_y = 16},/obj/effect/turf_decal/loading_area{dir = 8; icon_state = "drain"; name = "drain"},/turf/open/floor/plasteel/dark,/area/diner)
+"ad" = (/obj/structure/sink{dir = 8; pixel_x = -12},/obj/effect/turf_decal/loading_area{dir = 8; icon_state = "drain"; name = "drain"},/obj/structure/mirror{pixel_x = -28},/turf/open/floor/plasteel/dark,/area/diner)
+"ae" = (/turf/open/floor/plasteel/dark,/area/diner)
+"af" = (/obj/structure/lattice,/turf/closed/wall,/area/diner)
+"ag" = (/obj/machinery/door/airlock{name = "Toilet 1"},/turf/open/floor/plasteel/dark,/area/diner)
+"ah" = (/obj/machinery/door/airlock{name = "Toilet 2"},/turf/open/floor/plasteel/dark,/area/diner)
+"ai" = (/obj/structure/lattice,/turf/open/space/basic,/area/space/nearstation)
+"aj" = (/obj/machinery/light{dir = 1; pixel_y = 16},/turf/open/floor/plasteel/dark,/area/diner)
+"ak" = (/obj/item/twohanded/required/kirbyplants/random,/turf/open/floor/plasteel/dark,/area/diner)
+"al" = (/obj/machinery/door/airlock{name = "Unisex Bathroom"},/turf/open/floor/plasteel/dark,/area/diner)
+"am" = (/obj/structure/lattice/catwalk,/obj/structure/railing{dir = 1},/obj/structure/railing{dir = 8},/turf/open/space/basic,/area/space/nearstation)
+"an" = (/obj/structure/lattice/catwalk,/obj/structure/railing{dir = 1},/turf/open/space/basic,/area/space/nearstation)
+"ao" = (/obj/structure/lattice/catwalk,/obj/structure/railing{dir = 4},/obj/structure/railing,/turf/open/space/basic,/area/space/nearstation)
+"ap" = (/turf/open/floor/carpet/black,/area/diner)
+"aq" = (/obj/structure/lattice/catwalk,/obj/structure/railing{dir = 1},/obj/structure/railing{dir = 4},/turf/open/space/basic,/area/space/nearstation)
+"ar" = (/obj/structure/lattice/catwalk,/turf/open/space/basic,/area/space/nearstation)
+"as" = (/turf/open/floor/plasteel,/area/diner)
+"at" = (/obj/structure/chair/sofa/left{dir = 4},/turf/open/floor/carpet/black,/area/diner)
+"au" = (/obj/structure/table/plasmaglass,/turf/open/floor/plasteel,/area/diner)
+"av" = (/obj/structure/chair/sofa/right{dir = 8},/turf/open/floor/carpet/black,/area/diner)
+"aw" = (/obj/machinery/light{brightness = 4; dir = 1; pixel_y = 16},/turf/open/floor/plasteel/dark,/area/diner)
+"ax" = (/obj/machinery/vending/snack/random,/turf/open/floor/plasteel,/area/diner)
+"ay" = (/obj/machinery/light{dir = 1; pixel_y = 16},/turf/open/floor/plasteel,/area/diner)
+"az" = (/obj/structure/chair/sofa/right{dir = 4},/obj/effect/turf_decal/loading_area{icon_state = "drain"; name = "drain"},/turf/open/floor/carpet/black,/area/diner)
+"aA" = (/obj/structure/chair/sofa/left{dir = 8},/obj/effect/turf_decal/loading_area{icon_state = "drain"; name = "drain"},/turf/open/floor/carpet/black,/area/diner)
+"aB" = (/obj/structure/lattice/catwalk,/obj/structure/railing{dir = 8},/turf/open/space/basic,/area/space/nearstation)
+"aC" = (/obj/structure/lattice/catwalk,/obj/structure/railing{dir = 4},/turf/open/space/basic,/area/space/nearstation)
+"aD" = (/obj/structure/chair/comfy/beige,/turf/open/floor/plasteel,/area/diner)
+"aE" = (/obj/structure/chair/comfy/beige{dir = 4},/turf/open/floor/carpet/black,/area/diner)
+"aF" = (/obj/structure/table/plasmaglass,/obj/item/trash/plate,/turf/open/floor/carpet/black,/area/diner)
+"aG" = (/obj/structure/chair/comfy/beige{dir = 8},/turf/open/floor/carpet/black,/area/diner)
+"aH" = (/obj/machinery/light{dir = 8; pixel_x = -7; pixel_y = 0},/turf/open/floor/plasteel,/area/diner)
+"aI" = (/obj/machinery/light{pixel_y = -1},/obj/structure/chair/comfy/beige{dir = 8},/turf/open/floor/plasteel,/area/diner)
+"aJ" = (/obj/machinery/door/airlock{name = "Diner Kitchine"},/turf/open/floor/plasteel,/area/diner)
+"aK" = (/obj/machinery/light{pixel_y = -1},/obj/structure/chair/comfy/beige{dir = 4},/turf/open/floor/plasteel,/area/diner)
+"aL" = (/obj/machinery/vending/cola/random,/turf/open/floor/plasteel,/area/diner)
+"aM" = (/obj/structure/disposaloutlet{dir = 8},/obj/structure/disposalpipe/trunk{dir = 4},/turf/open/floor/plating/airless,/area/space/nearstation)
+"aN" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/open/floor/plating/airless,/area/space/nearstation)
+"aO" = (/obj/structure/railing{dir = 1},/obj/structure/railing{dir = 8},/obj/structure/disposalpipe/segment{dir = 4},/obj/structure/disposalpipe/segment{dir = 4},/turf/open/floor/plating/airless,/area/space/nearstation)
+"aP" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/closed/wall,/area/diner)
+"aQ" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/open/floor/plasteel,/area/diner)
+"aR" = (/obj/structure/chair/comfy/beige{dir = 1},/obj/structure/disposalpipe/segment{dir = 4},/turf/open/floor/plasteel,/area/diner)
+"aS" = (/obj/structure/disposalpipe/junction/flip{dir = 8},/turf/closed/wall,/area/diner)
+"aT" = (/obj/machinery/disposal/bin,/obj/structure/disposalpipe/trunk{dir = 8},/turf/open/floor/plasteel/dark,/area/diner)
+"aU" = (/obj/effect/turf_decal/loading_area{dir = 5; icon_state = "steel_panel"; name = "steel pannel"},/obj/effect/turf_decal/loading_area{dir = 9; icon_state = "steel_panel"; name = "steel pannel"},/obj/structure/sink{pixel_y = 23},/turf/open/floor/plasteel/cafeteria,/area/diner)
+"aV" = (/obj/effect/turf_decal/loading_area{dir = 5; icon_state = "steel_panel"; name = "steel pannel"},/turf/open/floor/plasteel/cafeteria,/area/diner)
+"aW" = (/obj/structure/extinguisher_cabinet{pixel_y = 32},/obj/effect/turf_decal/loading_area{dir = 5; icon_state = "steel_panel"; name = "steel pannel"},/obj/effect/turf_decal/loading_area{dir = 6; icon_state = "steel_panel"; name = "steel pannel"},/obj/machinery/vending/dinnerware,/turf/open/floor/plasteel/cafeteria,/area/diner)
+"aX" = (/obj/structure/chair/comfy/beige{dir = 1},/turf/open/floor/plasteel,/area/diner)
+"aY" = (/obj/machinery/light{dir = 4; pixel_x = 7; pixel_y = 0},/turf/open/floor/plasteel,/area/diner)
+"aZ" = (/obj/structure/chair/sofa/right,/turf/open/floor/carpet/black,/area/diner)
+"ba" = (/obj/structure/chair/sofa/left,/turf/open/floor/carpet/black,/area/diner)
+"bb" = (/obj/structure/table/plasmaglass,/obj/item/reagent_containers/food/drinks/shaker,/obj/item/reagent_containers/food/drinks/drinkingglass{pixel_x = -9},/obj/item/reagent_containers/food/drinks/drinkingglass{pixel_x = -8; pixel_y = 7},/obj/item/reagent_containers/food/drinks/drinkingglass,/obj/item/reagent_containers/food/drinks/drinkingglass{pixel_x = 8},/obj/structure/disposalpipe/segment,/turf/open/floor/plasteel/dark,/area/diner)
+"bc" = (/obj/structure/table,/obj/machinery/microwave{pixel_y = 6},/turf/open/floor/plasteel/dark,/area/diner)
+"bd" = (/obj/effect/turf_decal/loading_area{dir = 9; icon_state = "steel_panel"; name = "steel pannel"},/turf/open/floor/plasteel/cafeteria,/area/diner)
+"be" = (/turf/open/floor/plasteel/cafeteria,/area/diner)
+"bf" = (/obj/effect/turf_decal/loading_area{dir = 4; icon_state = "steel_panel"; name = "steel pannel"},/turf/open/floor/plasteel/cafeteria,/area/diner)
+"bg" = (/obj/machinery/deepfryer,/obj/machinery/light{brightness = 4; dir = 1; pixel_y = 16},/obj/effect/turf_decal/loading_area{dir = 5; icon_state = "steel_panel"; name = "steel pannel"},/obj/effect/turf_decal/loading_area{dir = 6; icon_state = "steel_panel"; name = "steel pannel"},/turf/open/floor/plasteel/cafeteria,/area/diner)
+"bh" = (/obj/structure/chair/stool/bar,/turf/open/floor/plasteel,/area/diner)
+"bi" = (/obj/structure/table/plasmaglass,/obj/effect/turf_decal/loading_area{dir = 8; icon_state = "drain"; name = "drain"},/obj/item/flashlight/lamp,/turf/open/floor/plasteel/dark,/area/diner)
+"bj" = (/obj/structure/disposalpipe/segment,/turf/open/floor/plasteel/dark,/area/diner)
+"bk" = (/obj/structure/table,/obj/item/reagent_containers/food/snacks/pizza/margherita/robo,/obj/machinery/light{dir = 8; pixel_x = -7; pixel_y = 0},/turf/open/floor/plasteel/dark,/area/diner)
+"bl" = (/obj/machinery/deepfryer,/obj/effect/turf_decal/loading_area{dir = 6; icon_state = "steel_panel"; name = "steel pannel"},/obj/effect/turf_decal/loading_area{dir = 5; icon_state = "steel_panel"; name = "steel pannel"},/turf/open/floor/plasteel/cafeteria,/area/diner)
+"bm" = (/obj/structure/chair/sofa/right{dir = 1},/turf/open/floor/carpet/black,/area/diner)
+"bn" = (/obj/structure/chair/sofa/left{dir = 1},/turf/open/floor/carpet/black,/area/diner)
+"bo" = (/obj/structure/table/plasmaglass,/obj/item/trash/plate,/obj/effect/turf_decal/loading_area{dir = 8; icon_state = "drain"; name = "drain"},/turf/open/floor/plasteel/dark,/area/diner)
+"bp" = (/obj/structure/table/plasmaglass,/obj/machinery/chem_dispenser/drinks/beer{dir = 8},/obj/structure/disposalpipe/segment,/turf/open/floor/plasteel/dark,/area/diner)
+"bq" = (/obj/structure/table,/obj/item/trash/plate,/turf/open/floor/plasteel/dark,/area/diner)
+"br" = (/obj/effect/turf_decal/loading_area{dir = 6; icon_state = "steel_panel"; name = "steel pannel"},/turf/open/floor/plasteel/cafeteria,/area/diner)
+"bs" = (/obj/effect/spawner/structure/window/reinforced,/obj/machinery/door/poddoor/shutters/preopen{id = "kitchen"; name = "diner shutters"; tag = dshutters},/turf/open/floor/plating,/area/diner)
+"bt" = (/obj/structure/table/plasmaglass,/obj/effect/turf_decal/loading_area{dir = 8; icon_state = "drain"; name = "drain"},/obj/item/reagent_containers/food/drinks/drinkingglass,/turf/open/floor/plasteel/dark,/area/diner)
+"bu" = (/obj/structure/table/plasmaglass,/obj/machinery/chem_dispenser/drinks{dir = 8},/obj/machinery/light{dir = 4; pixel_x = 7; pixel_y = 0},/obj/structure/disposalpipe/segment,/turf/open/floor/plasteel/dark,/area/diner)
+"bv" = (/obj/structure/closet/secure_closet/freezer/fridge,/obj/item/reagent_containers/food/condiment/flour,/obj/item/reagent_containers/food/condiment/flour,/obj/item/reagent_containers/food/condiment/flour,/turf/open/floor/plasteel/dark,/area/diner)
+"bw" = (/obj/structure/table/plasmaglass,/obj/effect/turf_decal/loading_area{dir = 8; icon_state = "drain"; name = "drain"},/turf/open/floor/plasteel/dark,/area/diner)
+"bx" = (/obj/machinery/disposal/bin,/obj/structure/disposalpipe/trunk{dir = 1},/turf/open/floor/plasteel/dark,/area/diner)
+"by" = (/obj/structure/closet/secure_closet/freezer/meat,/turf/open/floor/plasteel/dark,/area/diner)
+"bz" = (/obj/effect/turf_decal/loading_area{dir = 9; icon_state = "steel_panel"; name = "steel pannel"},/obj/effect/turf_decal/loading_area{dir = 10; icon_state = "steel_panel"; name = "steel pannel"},/turf/open/floor/plasteel/cafeteria,/area/diner)
+"bA" = (/obj/effect/turf_decal/loading_area{dir = 10; icon_state = "steel_panel"; name = "steel pannel"},/turf/open/floor/plasteel/cafeteria,/area/diner)
+"bB" = (/obj/structure/table/reinforced,/obj/machinery/reagentgrinder{pixel_y = 9},/obj/effect/turf_decal/loading_area{dir = 6; icon_state = "steel_panel"; name = "steel pannel"},/turf/open/floor/plasteel/cafeteria,/area/diner)
+"bC" = (/obj/structure/table/plasmaglass,/obj/item/reagent_containers/food/snacks/friedegg,/turf/open/floor/carpet/black,/area/diner)
+"bD" = (/obj/structure/table/reinforced,/obj/machinery/door/poddoor/shutters/preopen{id = "kitchen"; name = "diner shutters"; tag = dshutters},/turf/open/floor/plating,/area/diner)
+"bF" = (/obj/structure/lattice/catwalk,/obj/structure/railing,/obj/structure/railing{dir = 8},/turf/open/space/basic,/area/space/nearstation)
+"bG" = (/obj/effect/turf_decal/stripes/box,/turf/open/floor/plating/airless,/area/space/nearstation)
+"bH" = (/obj/machinery/light{brightness = 4; dir = 1; pixel_y = 16},/obj/structure/chair/comfy/beige{dir = 8},/turf/open/floor/plasteel,/area/diner)
+"bI" = (/obj/structure/table/plasmaglass,/obj/effect/turf_decal/loading_area{icon_state = "drain"; name = "drain"},/turf/open/floor/plasteel/dark,/area/diner)
+"bJ" = (/obj/machinery/light{brightness = 4; dir = 1; pixel_y = 16},/obj/structure/chair/comfy/beige{dir = 4},/turf/open/floor/plasteel,/area/diner)
+"bK" = (/obj/structure/lattice/catwalk,/obj/structure/railing,/obj/structure/railing{dir = 4},/turf/open/space/basic,/area/space/nearstation)
+"bL" = (/obj/structure/lattice,/turf/open/space,/area/space/nearstation)
+"bM" = (/obj/machinery/light,/turf/open/floor/plasteel,/area/diner)
+"bN" = (/obj/structure/lattice/catwalk,/obj/structure/railing,/turf/open/space/basic,/area/space/nearstation)
+"cD" = (/obj/structure/chair/sofa/right{dir = 4},/turf/open/floor/carpet/black,/area/diner)
+"dF" = (/obj/machinery/vending/kink,/turf/open/floor/plasteel/dark,/area/diner)
+"ef" = (/turf/open/floor/plasteel{dir = 1; icon_state = "floor_plate"},/area/diner)
+"eq" = (/obj/structure/chair/comfy/beige{dir = 1},/turf/open/floor/carpet/black,/area/diner)
+"eM" = (/obj/item/twohanded/required/kirbyplants/random,/turf/open/floor/plasteel{icon_state = "floor_trim"},/area/diner)
+"fD" = (/obj/structure/table,/obj/item/ashtray,/obj/item/cigbutt,/turf/open/floor/plasteel{icon_state = "floor_trim"},/area/diner)
+"hM" = (/obj/effect/decal/cleanable/cobweb,/turf/open/floor/circuit,/area/diner)
+"ie" = (/turf/open/floor/plasteel{icon_state = "floor_plate"},/area/diner)
+"iq" = (/turf/open/floor/plasteel{dir = 8; icon_state = "floor_trim"},/area/diner)
+"jh" = (/obj/structure/table,/turf/open/floor/plasteel{icon_state = "floor_trim"},/area/diner)
+"jJ" = (/obj/machinery/newscaster{pixel_y = 32},/turf/open/floor/plasteel,/area/diner)
+"kB" = (/obj/structure/chair/sofa/left{dir = 8},/turf/open/floor/carpet/black,/area/diner)
+"kS" = (/turf/open/floor/plasteel{dir = 1; icon_state = "floor_trim"},/area/diner)
+"lm" = (/obj/structure/table/plasmaglass,/turf/open/floor/carpet/black,/area/diner)
+"mb" = (/obj/structure/lattice/catwalk,/obj/structure/railing{dir = 4},/obj/structure/railing{dir = 1},/turf/open/space/basic,/area/space/nearstation)
+"mn" = (/obj/machinery/vending/boozeomat{req_access = null},/turf/closed/wall,/area/diner)
+"mV" = (/turf/open/floor/plasteel{dir = 4; icon_state = "floor_plate"},/area/diner)
+"nQ" = (/obj/structure/table/plasmaglass,/obj/item/reagent_containers/food/condiment/saltshaker{pixel_y = 10},/obj/item/reagent_containers/food/condiment/peppermill{pixel_x = 5; pixel_y = 4},/turf/open/floor/carpet/black,/area/diner)
+"op" = (/obj/structure/table/plasmaglass,/obj/item/ashtray,/turf/open/floor/carpet/black,/area/diner)
+"pk" = (/obj/structure/table/plasmaglass,/obj/item/ashtray,/turf/open/floor/plasteel,/area/diner)
+"px" = (/obj/structure/table/plasmaglass,/obj/effect/turf_decal/loading_area{dir = 1; icon_state = "drain"; name = "drain"},/turf/open/floor/carpet/black,/area/diner)
+"pW" = (/obj/machinery/door/airlock{name = "Diner Kitchine"},/turf/open/floor/plasteel/dark,/area/diner)
+"pX" = (/turf/open/floor/plasteel{dir = 4; icon_state = "floor_trim"},/area/diner)
+"pZ" = (/obj/machinery/atm{pixel_y = 30},/turf/open/floor/plasteel,/area/diner)
+"qj" = (/obj/structure/railing{dir = 8},/obj/structure/lattice/catwalk,/turf/open/space/basic,/area/space/nearstation)
+"rT" = (/obj/machinery/newscaster{pixel_y = 32},/turf/open/floor/plasteel/dark,/area/diner)
+"tZ" = (/turf/open/floor/circuit,/area/diner)
+"vb" = (/obj/structure/window/reinforced{dir = 8},/obj/structure/table,/obj/item/multitool,/obj/item/screwdriver{pixel_y = 20},/turf/open/floor/plasteel/dark,/area/diner)
+"vq" = (/obj/machinery/light{dir = 1; pixel_y = 16},/obj/item/cigbutt/cigarbutt,/turf/open/floor/plasteel{dir = 1; icon_state = "floor_trim"},/area/diner)
+"wt" = (/obj/structure/chair/sofa/right{dir = 8},/obj/effect/turf_decal/loading_area{dir = 1; icon_state = "drain"; name = "drain"},/turf/open/floor/carpet/black,/area/diner)
+"wR" = (/turf/open/floor/plating,/area/diner)
+"wX" = (/obj/effect/spawner/lootdrop/maintenance{lootcount = 4; name = "4maintenance loot spawner"},/obj/structure/lattice/catwalk,/obj/structure/railing{dir = 1},/turf/open/space/basic,/area/space/nearstation)
+"xA" = (/obj/structure/chair/sofa/right{dir = 8},/obj/effect/turf_decal/loading_area{dir = 1; icon_state = "drain"; name = "drain"},/obj/effect/turf_decal/loading_area{dir = 1; icon_state = "drain"; name = "drain"},/turf/open/floor/carpet/black,/area/diner)
+"yw" = (/obj/structure/extinguisher_cabinet{pixel_y = 32},/turf/open/floor/plasteel/dark,/area/diner)
+"yK" = (/obj/structure/closet/crate,/obj/effect/spawner/lootdrop/maintenance{lootcount = 4; name = "4maintenance loot spawner"},/turf/open/floor/plating/airless,/area/space/nearstation)
+"yM" = (/obj/structure/closet/emcloset,/obj/machinery/light{dir = 1; pixel_y = 16},/obj/effect/decal/cleanable/cobweb{icon_state = "cobweb2"},/turf/open/floor/plating,/area/diner)
+"zh" = (/turf/open/floor/plasteel{dir = 4; icon_plating = "floor"; icon_state = "floor_whole"},/area/diner)
+"At" = (/obj/machinery/light{dir = 1; pixel_y = 16},/turf/open/floor/plasteel{dir = 1; icon_state = "floor_trim"},/area/diner)
+"Bc" = (/obj/structure/table/plasmaglass,/obj/item/reagent_containers/food/condiment/saltshaker{pixel_y = 10},/obj/item/reagent_containers/food/condiment/peppermill{pixel_x = 5; pixel_y = 4},/obj/effect/turf_decal/loading_area{dir = 1; icon_state = "drain"; name = "drain"},/turf/open/floor/carpet/black,/area/diner)
+"BT" = (/obj/structure/table/plasmaglass,/obj/item/reagent_containers/food/condiment/saltshaker{pixel_y = 10},/turf/open/floor/carpet/black,/area/diner)
+"Cg" = (/obj/machinery/vending/cigarette,/obj/machinery/light{dir = 1; pixel_y = 16},/turf/open/floor/plasteel{dir = 1; icon_plating = "floor"; icon_state = "floor_whole"},/area/diner)
+"Dh" = (/turf/open/space/basic,/area/space)
+"Dk" = (/obj/machinery/telecomms/relay/preset/station{name = "station relay"},/obj/machinery/light{dir = 8; pixel_x = -7; pixel_y = 0},/turf/open/floor/plasteel/dark,/area/diner)
+"DE" = (/obj/machinery/door/airlock/glass{name = "Diner Facility Radio"},/turf/open/floor/plasteel/dark,/area/diner)
+"DV" = (/obj/structure/table/plasmaglass,/obj/effect/turf_decal/loading_area{icon_state = "drain"; name = "drain"},/obj/item/ashtray,/turf/open/floor/plasteel/dark,/area/diner)
+"Ec" = (/obj/machinery/light,/turf/open/floor/plasteel/dark,/area/diner)
+"EN" = (/obj/structure/chair/office{dir = 8},/turf/open/floor/plating/airless,/area/space/nearstation)
+"Ft" = (/obj/structure/table,/obj/machinery/light{dir = 1; pixel_y = 16},/obj/effect/spawner/lootdrop/maintenance{lootcount = 3; name = "3maintenance loot spawner"},/turf/open/floor/plasteel/dark,/area/diner)
+"FM" = (/obj/structure/table/plasmaglass,/obj/effect/turf_decal/loading_area{icon_state = "drain"; name = "drain"},/obj/item/trash/plate,/turf/open/floor/plasteel/dark,/area/diner)
+"Gf" = (/obj/machinery/door/poddoor/shutters/preopen{id = "kitchen"; name = "diner shutters"; tag = dshutters},/obj/structure/table/reinforced,/turf/open/floor/plating,/area/diner)
+"Hr" = (/obj/item/caution,/turf/open/floor/plasteel{icon_state = "floor_trim"},/area/diner)
+"HH" = (/obj/effect/turf_decal/loading_area{dir = 1; icon_state = "drain"; name = "drain"},/turf/open/floor/carpet/black,/area/diner)
+"Ir" = (/obj/structure/chair/comfy/beige,/turf/open/floor/carpet/black,/area/diner)
+"Ji" = (/obj/effect/mapping_helpers/airlock/cyclelink_helper{dir = 4},/obj/machinery/door/airlock/external{name = "External Access"; req_access_txt = "13"},/turf/open/floor/plating,/area/diner)
+"JA" = (/obj/machinery/light{dir = 8; pixel_x = -7; pixel_y = 0},/obj/item/twohanded/required/kirbyplants/random,/turf/open/floor/plasteel,/area/diner)
+"LB" = (/obj/structure/table,/obj/item/reagent_containers/food/condiment/enzyme{layer = 5; pixel_x = -5; pixel_y = 6},/obj/item/reagent_containers/food/condiment/saltshaker{pixel_x = -3},/obj/item/reagent_containers/food/condiment/peppermill{pixel_x = 3},/turf/open/floor/plasteel/cafeteria,/area/diner)
+"MD" = (/obj/structure/chair/sofa/left{dir = 4},/obj/effect/turf_decal/loading_area{dir = 1; icon_state = "drain"; name = "drain"},/turf/open/floor/carpet/black,/area/diner)
+"OE" = (/turf/open/floor/plasteel{icon_state = "floor_trim"},/area/diner)
+"OY" = (/obj/machinery/door/airlock{name = "Bathroom Hallway"},/turf/open/floor/plasteel,/area/diner)
+"PN" = (/obj/machinery/quantumpad{map_pad_id = "diner"; map_pad_link_id = "station_diner"; mapped_quantum_pads = list("station_diner","diner")},/turf/open/floor/carpet/black,/area/diner)
+"QD" = (/obj/effect/turf_decal/loading_area{dir = 10; icon_state = "steel_panel"; name = "steel pannel"},/obj/machinery/button/door{id = "kitchen"; name = "Diner Shutters Control"; pixel_x = 5; pixel_y = -23; req_access_txt = "28"; tag = dshutters},/obj/machinery/processor,/turf/open/floor/plasteel/cafeteria,/area/diner)
+"QM" = (/obj/structure/mopbucket,/obj/item/mop,/obj/item/reagent_containers/glass/bucket,/turf/open/floor/plasteel{icon_state = "floor_trim"},/area/diner)
+"QP" = (/obj/structure/chair/stool,/obj/effect/decal/cleanable/cobweb{icon_state = "cobweb2"},/turf/open/floor/plasteel/dark,/area/diner)
+"Rt" = (/obj/item/twohanded/required/kirbyplants/random,/turf/open/floor/plasteel,/area/diner)
+"Rx" = (/obj/structure/table/plasmaglass,/obj/item/reagent_containers/food/condiment/saltshaker{pixel_y = 10},/obj/item/reagent_containers/food/condiment/peppermill{pixel_x = 5; pixel_y = 4},/obj/effect/turf_decal/loading_area{icon_state = "drain"; name = "drain"},/turf/open/floor/carpet/black,/area/diner)
+"Sc" = (/obj/structure/table/plasmaglass,/obj/effect/turf_decal/loading_area{icon_state = "drain"; name = "drain"},/turf/open/floor/carpet/black,/area/diner)
+"Tm" = (/obj/machinery/door/window/southright{base_state = "left"; dir = 8; icon_state = "left"; name = "Interior Door"; req_access_txt = "12"},/turf/open/floor/plasteel/dark,/area/diner)
+"TF" = (/obj/machinery/recharge_station,/obj/structure/extinguisher_cabinet{pixel_y = 32},/turf/open/floor/plasteel/dark,/area/diner)
+"Uq" = (/obj/effect/mapping_helpers/airlock/cyclelink_helper{dir = 8},/obj/machinery/door/airlock/external{name = "External Access"; req_access_txt = "13"},/obj/structure/fans/tiny,/turf/open/floor/plating,/area/diner)
+"Ux" = (/turf/open/floor/plating/airless,/area/space/nearstation)
+"Uz" = (/obj/structure/table,/turf/open/floor/plasteel/cafeteria,/area/diner)
+"UY" = (/turf/open/floor/plasteel{icon_plating = "floor"; icon_state = "floor_whole"},/area/diner)
+"Vt" = (/obj/machinery/vending/snack/random,/obj/structure/extinguisher_cabinet{pixel_y = 32},/turf/open/floor/plasteel,/area/diner)
+"Xn" = (/turf/open/floor/plasteel{dir = 8; icon_state = "floor_plate"},/area/diner)
+
+(1,1,1) = {"
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhbGDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhbGDhDhDhaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiDhDhDhaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiaiaianwXanaiaiaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiaiDhaiDhDhDhaiDhaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiDhaaaaaaaaaaaiDhaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaaababaaacaaacaaaiDhaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaaaaaaaaaaaaaaadakafagaaahaaaaDhaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhbGaiaiaahMtZvbFtQPaaadaeajaerTaeTFafaiaiaiaiaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaaDktZTmaeaeaaadaeaeaeaeaedFaaaaaaaaaaaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhbGaiaiaiaatZtZaaDEaaaaaaaaalaaaaafaaaaCgaayMaambDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaaaaaaaazhXnkSvqkSefkSAtkSmVUYXnJiwRUqaCaiaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiqjaraaaaaaeMjhfDieOEHrQMaaaaaaaaaaaaaCDhaiaiaibGDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiaBarUxENaaaaaaaaOYaaaaaaaayKUxarararaCDhaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhamanararabaaaaataFavefatnQavaaaaabarararaCDhaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhamararabababVtayazRxaAasazScaAaypZabababararaqaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarababRtasasaskSkSkSaskSkSkSasasasRtababaraCaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhamarababIrapasasapapapapapapapapapasasapIrababaraqDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabaElmapasasapapapapapapapapapasasapaFaGabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhamarababapapasasasasasasasbMasasasasasasasapapababaraqDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBaraaJAasasasasauaIaaaaaaaaaJaaaaaKauasasasasaLaaaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaMaNaOaNaPaPaQaQaQaQaQaRaPaSaPaTaUaVaWaaaaaXasasasasaYaaaaaraqDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabaZbaiqmVasasaaaabbaabcbdbebfbgaaaaasmVaspXaZbaabaraCaiaibGDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhbGaiaiaiaBarabnQaFiqmVasbhbiawbjmnbkbdbebebfblaaaHmVaspXnQlmabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabbmbniqmVasbhboaebpaabqbdLBUzbebrbsasUYaspXbmbnabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabapapiqmVasbhbtaebuaabvbdbebebebrbsasmVaspXapapabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabaZbaiqieasbhbwaebxaabybzbAQDbAbBaaasmVaspXaZbaabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabbCBTiqUYasbhbtaeaeaaaabDGfaapWaaaaaHmVaspXlmnQabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaBarabbmbniqasasaYaaaaEcywawaeaeawEcaaaaasasaspXbmbnabaraCaiaibGDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhbFaraaaaaHasasieasaDaaaaaeaeaeaeaeaaaaaDasasasasaYaaaaaraoDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiaiaiaBaraaRtasasieaspkbHaaDVbIbIFMbIaabJauasasasasRtaaaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiDhDhbFarababapapasieasasasasasasasasjJasasasasapapababarbKDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiDhDhDhaBarabaEopapasasapapapapapapapapapasasaplmaGabaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiDhDhDhbFarababeqapasasapapapapPNapapapapasasapeqababarbKDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiDhDhDhDhaBarababRtasasasOEOEOEOEOEOEOEasasasRtababaraCDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiaiaiaibLbFararabababaxbMMDBcxAHHMDpxwtbMaLabababararbKDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhbFbNararabaaaacDaFkBapcDnQkBaaaaabararbNbKDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhbFbNararaaaaabababababaaaaararbNbKDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhbFbNarararararararararbNbKDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiDhbFbNbNbNbNbNbNbNbKDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiDhDhDhDhDhDhDhaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhaiaiaiaiaiaiaiaiaiDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+DhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDhDh
+"}

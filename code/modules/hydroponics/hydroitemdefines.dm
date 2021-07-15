@@ -10,6 +10,12 @@
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_BELT
 	materials = list(MAT_METAL=30, MAT_GLASS=20)
+	var/scan_mode = FALSE
+
+/obj/item/plant_analyzer/attack_self(mob/user)
+	. = ..()
+	scan_mode = !scan_mode
+	to_chat(user, "<span class='notice'>You switch [src] to [scan_mode ? "scan for chemical reagents and traits" : "scan for plant growth statistics"].</span>")
 
 // *************************************
 // Hydroponics Tools
@@ -24,7 +30,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/hydroponics_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/hydroponics_righthand.dmi'
 	volume = 100
-	list_reagents = list("weedkiller" = 100)
+	list_reagents = list(/datum/reagent/toxin/plantbgone/weedkiller = 100)
 
 /obj/item/reagent_containers/spray/weedspray/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is huffing [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -39,7 +45,7 @@
 	lefthand_file = 'icons/mob/inhands/equipment/hydroponics_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/hydroponics_righthand.dmi'
 	volume = 100
-	list_reagents = list("pestkiller" = 100)
+	list_reagents = list(/datum/reagent/toxin/pestkiller = 100)
 
 /obj/item/reagent_containers/spray/pestspray/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is huffing [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -164,17 +170,17 @@
 /obj/item/reagent_containers/glass/bottle/nutrient/ez
 	name = "bottle of E-Z-Nutrient"
 	desc = "Contains a fertilizer that causes mild mutations with each harvest."
-	list_reagents = list("eznutriment" = 50)
+	list_reagents = list(/datum/reagent/plantnutriment/eznutriment = 50)
 
 /obj/item/reagent_containers/glass/bottle/nutrient/l4z
 	name = "bottle of Left 4 Zed"
 	desc = "Contains a fertilizer that limits plant yields to no more than one and causes significant mutations in plants."
-	list_reagents = list("left4zednutriment" = 50)
+	list_reagents = list(/datum/reagent/plantnutriment/left4zednutriment = 50)
 
 /obj/item/reagent_containers/glass/bottle/nutrient/rh
 	name = "bottle of Robust Harvest"
 	desc = "Contains a fertilizer that increases the yield of a plant by 30% while causing no mutations."
-	list_reagents = list("robustharvestnutriment" = 50)
+	list_reagents = list(/datum/reagent/plantnutriment/robustharvestnutriment = 50)
 
 /obj/item/reagent_containers/glass/bottle/nutrient/empty
 	name = "bottle"
@@ -187,9 +193,61 @@
 /obj/item/reagent_containers/glass/bottle/killer/weedkiller
 	name = "bottle of weed killer"
 	desc = "Contains a herbicide."
-	list_reagents = list("weedkiller" = 50)
+	list_reagents = list(/datum/reagent/toxin/plantbgone/weedkiller = 50)
 
 /obj/item/reagent_containers/glass/bottle/killer/pestkiller
 	name = "bottle of pest spray"
 	desc = "Contains a pesticide."
-	list_reagents = list("pestkiller" = 50)
+	list_reagents = list(/datum/reagent/toxin/pestkiller = 50)
+
+/*
+/obj/item/plant_debugger
+	name = "plant debugger"
+	desc = "You should never be able to see this."
+	icon = 'icons/obj/device.dmi'
+	icon_state = "hydro"
+	flags_1 = ABSTRACT
+	var/mode = 0
+	var/list/traits_list = list(
+		/datum/plant_gene/trait/modified_color/monochrome/yellow,
+		/datum/plant_gene/trait/modified_color/monochrome/green,
+		/datum/plant_gene/trait/modified_color/vibrant,
+		/datum/plant_gene/trait/modified_color/random,
+		/datum/plant_gene/trait/modified_color/monochrome/dark/,
+		/datum/plant_gene/trait/modified_color/monochrome/dark/red,
+		/datum/plant_gene/trait/modified_color/monochrome/dark/green,
+		/datum/plant_gene/trait/modified_color/monochrome/dark/blue)
+	var/trait_to_add = null
+
+/obj/item/plant_debugger/attack_self(mob/user)
+	. = ..()
+	mode++
+	if(mode > traits_list.len)
+		mode = 1
+	trait_to_add = traits_list[mode]
+	to_chat(user, "Now injecting: [trait_to_add]")
+
+/obj/item/plant_debugger/pre_attack(atom/A, mob/living/user, params)
+	if(!istype(A, /obj/machinery/hydroponics))
+		return
+	var/obj/machinery/hydroponics/H = A
+	if(!H.myseed)
+		to_chat(user, "This tray does not have a seed in it!")
+		return
+	for(var/G in H.myseed.genes)
+		if(istype(G, /datum/plant_gene/trait/modified_color))
+			var/datum/plant_gene/trait/T = new trait_to_add
+			G = T
+			T.apply_vars(H.myseed)
+			H.update_icon()
+			to_chat(user, "Converted old modified_color to [trait_to_add]")
+			return
+	var/datum/plant_gene/trait/T = new trait_to_add
+	H.myseed.genes += T
+	T.apply_vars(H.myseed)
+	H.update_icon()
+	to_chat(user, "Added [trait_to_add]")
+
+/obj/item/plant_debugger/attack()
+	return
+*/

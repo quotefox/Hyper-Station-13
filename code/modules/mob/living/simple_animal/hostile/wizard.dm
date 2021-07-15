@@ -5,7 +5,7 @@
 	icon_state = "wizard"
 	icon_living = "wizard"
 	icon_dead = "wizard_dead"
-	mob_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
+	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	speak_chance = 0
 	turns_per_move = 3
 	response_help = "pokes"
@@ -46,7 +46,8 @@
 	fireball.human_req = 0
 	fireball.player_lock = 0
 	AddSpell(fireball)
-	implants += new /obj/item/implant/exile(src)
+	var/obj/item/implant/exile/I = new
+	I.implant(src, null, TRUE)
 
 	mm = new /obj/effect/proc_holder/spell/targeted/projectile/magic_missile
 	mm.clothes_req = 0

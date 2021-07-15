@@ -10,6 +10,8 @@
 #define UNIQUE_RENAME			(1<<6) // can you customize the description/name of the thing?
 #define USES_TGUI				(1<<7)	//put on things that use tgui on ui_interact instead of custom/old UI.
 #define FROZEN					(1<<8)
+#define SHOVABLE_ONTO			(1<<9)	//called on turf.shove_act() to consider whether an object should have a niche effect (defined in their own shove_act()) when someone is pushed onto it, or do a sanity CanPass() check.
+#define BLOCK_Z_FALL			(1<<10)
 
 // If you add new ones, be sure to add them to /obj/Initialize as well for complete mapping support
 
@@ -32,12 +34,14 @@
 
 #define LAVAPROTECT (1<<0)
 #define STOPSPRESSUREDAMAGE		(1<<1)	//SUIT and HEAD items which stop pressure damage. To stop you taking all pressure damage you must have both a suit and head item with this flag.
-#define BLOCK_GAS_SMOKE_EFFECT	(1<<2)	// blocks the effect that chemical clouds would have on a mob --glasses, mask and helmets ONLY!
-#define ALLOWINTERNALS				    (1<<3)		// mask allows internals
-#define NOSLIP                  (1<<4)   //prevents from slipping on wet floors, in space etc
-#define THICKMATERIAL				(1<<5)	//prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body.
-#define VOICEBOX_TOGGLABLE (1<<6) // The voicebox in this clothing can be toggled.
-#define VOICEBOX_DISABLED (1<<7) // The voicebox is currently turned off.
+#define BLOCK_GAS_SMOKE_EFFECT	(1<<2)	//blocks the effect that chemical clouds would have on a mob --glasses, mask and helmets ONLY!
+#define ALLOWINTERNALS		  	(1<<3)	//mask allows internals
+#define NOSLIP                  (1<<4)	//prevents from slipping on wet floors, in space etc
+#define THICKMATERIAL			(1<<5)	//prevents syringes, parapens and hypos if the external suit or helmet (if targeting head) has this flag. Example: space suits, biosuit, bombsuits, thick suits that cover your body.
+#define VOICEBOX_TOGGLABLE 		(1<<6)	//The voicebox in this clothing can be toggled.
+#define VOICEBOX_DISABLED 		(1<<7)	//The voicebox is currently turned off.
+#define IGNORE_HAT_TOSS			(1<<8)	//Hats with negative effects when worn (i.e the tinfoil hat).
+#define SCAN_REAGENTS			(1<<9)	// Allows helmets and glasses to scan reagents.
 
 // Flags for the organ_flags var on /obj/item/organ
 

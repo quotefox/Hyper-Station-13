@@ -39,6 +39,8 @@
 
 /datum/config_entry/flag/log_game	// log game events
 
+/datum/config_entry/flag/log_virus	// log virology data
+
 /datum/config_entry/flag/log_vote	// log voting
 
 /datum/config_entry/flag/log_whisper	// log client whisper
@@ -95,7 +97,7 @@
 /datum/config_entry/flag/popup_admin_pm	// adminPMs to non-admins show in a pop-up 'reply' window when set
 
 /datum/config_entry/number/fps
-	config_entry_value = 20
+	config_entry_value = 40
 	min_val = 1
 	max_val = 100   //byond will start crapping out at 50, so this is just ridic
 	var/sync_validate = FALSE
@@ -426,7 +428,11 @@
 /datum/config_entry/string/default_view
 	config_entry_value = "15x15"
 
+/datum/config_entry/string/centcom_ban_db	// URL for the CentCom Galactic Ban DB API
+
 /datum/config_entry/flag/log_pictures
 
 /datum/config_entry/flag/picture_logging_camera
 
+/datum/config_entry/flag/minimaps_enabled
+	config_entry_value = TRUE

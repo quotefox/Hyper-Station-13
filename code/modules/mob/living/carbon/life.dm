@@ -1,6 +1,11 @@
 /mob/living/carbon/Life()
 	set invisibility = 0
 
+	//Hyper Change
+	if(size_multiplier != previous_size)
+		sleep(1)
+		resize(size_multiplier)
+
 	if(notransform)
 		return
 
@@ -35,6 +40,7 @@
 */
 	if(stat == DEAD)
 		stop_sound_channel(CHANNEL_HEARTBEAT)
+		handle_death()
 		rot()
 
 	//Updates the number of stored chemicals for powers
@@ -42,6 +48,12 @@
 
 	if(stat != DEAD)
 		return 1
+
+//Procs called while dead
+/mob/living/carbon/proc/handle_death()
+	for(var/datum/reagent/R in reagents.reagent_list)
+		if(R.chemical_flags & REAGENT_DEAD_PROCESS)
+			R.on_mob_dead(src)
 
 ///////////////
 // BREATHING //
@@ -62,7 +74,13 @@
 	if((times_fired % next_breath) == 0 || failed_last_breath)
 		breathe() //Breathe per 4 ticks if healthy, down to 2 if our lungs or heart are damaged, unless suffocating
 		if(failed_last_breath)
-			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "suffocation", /datum/mood_event/suffocation)
+			var/mob/living/carbon/human/B = src
+			if(HAS_TRAIT(B, TRAIT_CHOKE_SLUT))
+				B.adjustArousalLoss(7)
+				if (B.getArousalLoss() >= 100 && ishuman(B) && B.has_dna())
+					B.mob_climax(forced_climax=TRUE)
+			else
+				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "suffocation", /datum/mood_event/suffocation)
 		else
 			SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "suffocation")
 	else
@@ -73,7 +91,7 @@
 //Second link in a breath chain, calls check_breath()
 /mob/living/carbon/proc/breathe()
 	var/obj/item/organ/lungs = getorganslot(ORGAN_SLOT_LUNGS)
-	if(reagents.has_reagent("lexorin"))
+	if(reagents.has_reagent(/datum/reagent/toxin/lexorin))
 		return
 	if(istype(loc, /obj/machinery/atmospherics/components/unary/cryo_cell))
 		return
@@ -91,7 +109,7 @@
 	var/datum/gas_mixture/breath
 
 	if(!getorganslot(ORGAN_SLOT_BREATHING_TUBE))
-		if(health <= HEALTH_THRESHOLD_FULLCRIT || (pulledby && pulledby.grab_state >= GRAB_KILL) || lungs.organ_flags & ORGAN_FAILING)
+		if(health <= HEALTH_THRESHOLD_FULLCRIT || (pulledby && pulledby.grab_state >= GRAB_KILL) || HAS_TRAIT(src, TRAIT_MAGIC_CHOKE) || (lungs && lungs.organ_flags & ORGAN_FAILING))
 			losebreath++  //You can't breath at all when in critical or when being choked, so you're going to miss a breath
 
 		else if(health <= crit_threshold)
@@ -149,7 +167,7 @@
 
 	//CRIT
 	if(!breath || (breath.total_moles() == 0) || !lungs)
-		if(reagents.has_reagent("epinephrine") && lungs)
+		if(reagents.has_reagent(/datum/reagent/medicine/epinephrine) && lungs)
 			return
 		adjustOxyLoss(1)
 
@@ -267,13 +285,34 @@
 		var/nitryl_partialpressure = (breath_gases[/datum/gas/nitryl]/breath.total_moles())*breath_pressure
 		adjustFireLoss(nitryl_partialpressure/4)
 
+	//PHEROMONE
+	if(breath_gases[/datum/gas/pheromone])
+		var/pheromone_partialpressure = (breath_gases[/datum/gas/pheromone]/breath.total_moles())*breath_pressure
+		if(pheromone_partialpressure > MINIMUM_MOLES_DELTA_TO_MOVE)
+
+			//pheromone side effects
+			switch(pheromone_partialpressure)
+				if(1 to 5)
+					// At lower pp, give out a little warning
+					SEND_SIGNAL(src, COMSIG_CLEAR_MOOD_EVENT, "smell")
+					if(prob(5))
+						to_chat(src, "<span class='notice'>There is an entracing smell in the air.</span>")
+				if(5 to 20)
+					//At somewhat higher pp, warning becomes more obvious
+					if(prob(15))
+						to_chat(src, "<span class='warning'>You smell something enticing inside this room.</span>")
+				if(15 to INFINITY)
+					//Small chance to vomit. By now, people have internals on anyway
+					if(prob(5))
+						to_chat(src, "<span class='warning'>The enticing smell is unbearable!</span>")
+
 	//MIASMA
 	if(breath_gases[/datum/gas/miasma])
 		var/miasma_partialpressure = (breath_gases[/datum/gas/miasma]/breath.total_moles())*breath_pressure
 		if(miasma_partialpressure > MINIMUM_MOLES_DELTA_TO_MOVE)
 
 			if(prob(0.05 * miasma_partialpressure))
-				var/datum/disease/advance/miasma_disease = new /datum/disease/advance/random(2,3)
+				var/datum/disease/advance/miasma_disease = new /datum/disease/advance/random(TRUE, 2,3)
 				miasma_disease.name = "Unknown"
 				ForceContractDisease(miasma_disease, TRUE, TRUE)
 
@@ -350,11 +389,11 @@
 		return
 
 	// No decay if formaldehyde in corpse or when the corpse is charred
-	if(reagents.has_reagent("formaldehyde", 15) || HAS_TRAIT(src, TRAIT_HUSK))
+	if(reagents.has_reagent(/datum/reagent/toxin/formaldehyde, 15) || HAS_TRAIT(src, TRAIT_HUSK))
 		return
 
 	// Also no decay if corpse chilled or not organic/undead
-	if(bodytemperature <= T0C-10 || (!(MOB_ORGANIC in mob_biotypes) && !(MOB_UNDEAD in mob_biotypes)))
+	if(bodytemperature <= T0C-10 || (!(MOB_ORGANIC & mob_biotypes) && !(MOB_UNDEAD & mob_biotypes)))
 		return
 
 	// Wait a bit before decaying
@@ -389,6 +428,8 @@
 			if(O)
 				O.on_life()
 	else
+		if(reagents.has_reagent(/datum/reagent/toxin/formaldehyde, 1)) // No organ decay if the body contains formaldehyde.
+			return
 		for(var/V in internal_organs)
 			var/obj/item/organ/O = V
 			if(O)
@@ -500,7 +541,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 /mob/living/carbon/handle_status_effects()
 	..()
 	if(getStaminaLoss() && !combatmode)//CIT CHANGE - prevents stamina regen while combat mode is active
-		adjustStaminaLoss(resting ? (recoveringstam ? -7.5 : -3) : -1.5)//CIT CHANGE - decreases adjuststaminaloss to stop stamina damage from being such a joke
+		adjustStaminaLoss(resting ? (recoveringstam ? -7.5 : -3) : -1.5)
 
 	if(!recoveringstam && incomingstammult != 1)
 		incomingstammult = max(0.01, incomingstammult)
@@ -514,6 +555,15 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 	//END OF CIT CHANGES
 
 	var/restingpwr = 1 + 4 * resting
+
+	if(ckey)
+		if(!client && !(stat == DEAD))
+			add_status_indicator("ssd")
+			SSD = TRUE
+		else
+			if(SSD)
+				remove_status_indicator("ssd")
+				SSD = FALSE
 
 	//Dizziness
 	if(dizziness)
@@ -653,6 +703,9 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 
 //used in human and monkey handle_environment()
 /mob/living/carbon/proc/natural_bodytemperature_stabilization()
+	if (HAS_TRAIT(src, TRAIT_COLDBLOODED))
+		return 0 //Return 0 as your natural temperature. Species proc handle_environment() will adjust your temperature based on this.
+
 	var/body_temperature_difference = BODYTEMP_NORMAL - bodytemperature
 	switch(bodytemperature)
 		if(-INFINITY to BODYTEMP_COLD_DAMAGE_LIMIT) //Cold damage limit is 50 below the default, the temperature where you start to feel effects.
@@ -696,7 +749,7 @@ GLOBAL_LIST_INIT(ballmer_windows_me_msg, list("Yo man, what if, we like, uh, put
 /mob/living/carbon/proc/liver_failure()
 	reagents.end_metabolization(src, keep_liverless = TRUE) //Stops trait-based effects on reagents, to prevent permanent buffs
 	reagents.metabolize(src, can_overdose=FALSE, liverless = TRUE)
-	if(HAS_TRAIT(src, TRAIT_STABLEHEART))
+	if(HAS_TRAIT(src, TRAIT_STABLELIVER))
 		return
 	adjustToxLoss(4, TRUE,  TRUE)
 	if(prob(30))

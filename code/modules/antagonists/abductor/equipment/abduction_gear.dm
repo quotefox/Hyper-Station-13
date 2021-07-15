@@ -132,22 +132,24 @@
 /obj/item/abductor
 	icon = 'icons/obj/abductor.dmi'
 
-/obj/item/abductor/proc/AbductorCheck(user)
-	if(isabductor(user))
+/obj/item/abductor/proc/AbductorCheck(mob/user)
+	if(HAS_TRAIT(user, TRAIT_ABDUCTOR_TRAINING))
 		return TRUE
 	to_chat(user, "<span class='warning'>You can't figure how this works!</span>")
 	return FALSE
 
-/obj/item/abductor/proc/ScientistCheck(user)
-	if(!AbductorCheck(user))
-		return FALSE
+/obj/item/abductor/proc/ScientistCheck(mob/user)
+	var/training = HAS_TRAIT(user, TRAIT_ABDUCTOR_TRAINING)
+	var/sci_training = HAS_TRAIT(user, TRAIT_ABDUCTOR_SCIENTIST_TRAINING)
 
-	var/mob/living/carbon/human/H = user
-	var/datum/species/abductor/S = H.dna.species
-	if(S.scientist)
-		return TRUE
-	to_chat(user, "<span class='warning'>You're not trained to use this!</span>")
-	return FALSE
+	if(training && !sci_training)
+		to_chat(user, "<span class='warning'>You're not trained to use this!</span>")
+		. = FALSE
+	else if(!training && !sci_training)
+		to_chat(user, "<span class='warning'>You can't figure how this works!</span>")
+		. = FALSE
+	else
+		. = TRUE
 
 /obj/item/abductor/gizmo
 	name = "science tool"
@@ -479,11 +481,9 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 
 	user.do_attack_animation(L)
 
-	if(ishuman(L))
-		var/mob/living/carbon/human/H = L
-		if(H.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
-			playsound(L, 'sound/weapons/genhit.ogg', 50, 1)
-			return 0
+	if(L.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK))
+		playsound(L, 'sound/weapons/genhit.ogg', 50, TRUE)
+		return FALSE
 
 	switch (mode)
 		if(BATON_STUN)
@@ -608,16 +608,16 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	. = ..()
 
 /obj/item/abductor_baton/examine(mob/user)
-	..()
+	. = ..()
 	switch(mode)
 		if(BATON_STUN)
-			to_chat(user, "<span class='warning'>The baton is in stun mode.</span>")
+			. += "<span class='warning'>The baton is in stun mode.</span>"
 		if(BATON_SLEEP)
-			to_chat(user, "<span class='warning'>The baton is in sleep inducement mode.</span>")
+			. += "<span class='warning'>The baton is in sleep inducement mode.</span>"
 		if(BATON_CUFF)
-			to_chat(user, "<span class='warning'>The baton is in restraining mode.</span>")
+			. += "<span class='warning'>The baton is in restraining mode.</span>"
 		if(BATON_PROBE)
-			to_chat(user, "<span class='warning'>The baton is in probing mode.</span>")
+			. += "<span class='warning'>The baton is in probing mode.</span>"
 
 /obj/item/radio/headset/abductor
 	name = "alien headset"
@@ -683,7 +683,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	desc = "Abduct with style - spiky style. Prevents digital tracking."
 	icon_state = "alienhelmet"
 	item_state = "alienhelmet"
-	blockTracking = 1
+	blockTracking = TRUE
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDEFACIALHAIR
 
 // Operating Table / Beds / Lockers
@@ -759,7 +759,7 @@ Congratulations! You are now trained for invasive xenobiology research!"}
 	can_buckle = 1
 	buckle_lying = 1
 
-	var/static/list/injected_reagents = list("corazone")
+	var/static/list/injected_reagents = list(/datum/reagent/medicine/corazone)
 
 /obj/structure/table/optable/abductor/Crossed(atom/movable/AM)
 	. = ..()

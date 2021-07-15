@@ -117,7 +117,7 @@
 	else
 		if(ishuman(user))
 			var/mob/living/carbon/human/h = user
-			user_id_card = h.get_idcard()
+			user_id_card = h.get_idcard(TRUE)
 
 	switch(action)
 		if("PRG_switchm")
@@ -201,7 +201,7 @@
 		if("PRG_edit")
 			if(computer && authorized())
 				if(params["name"])
-					var/temp_name = reject_bad_name(input("Enter name.", "Name", id_card.registered_name))
+					var/temp_name = reject_bad_name(input("Enter name.", "Name", id_card.registered_name), TRUE)
 					if(temp_name)
 						id_card.registered_name = temp_name
 					else

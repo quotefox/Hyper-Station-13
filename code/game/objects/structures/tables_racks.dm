@@ -21,6 +21,7 @@
 	anchored = TRUE
 	layer = TABLE_LAYER
 	climbable = TRUE
+	obj_flags = CAN_BE_HIT|SHOVABLE_ONTO
 	pass_flags = LETPASSTHROW //You can throw objects over this, despite it's density.")
 	var/frame = /obj/structure/table_frame
 	var/framestack = /obj/item/stack/rods
@@ -35,11 +36,11 @@
 	canSmoothWith = list(/obj/structure/table, /obj/structure/table/reinforced)
 
 /obj/structure/table/examine(mob/user)
-	..()
-	deconstruction_hints(user)
+	. = ..()
+	. += deconstruction_hints(user)
 
 /obj/structure/table/proc/deconstruction_hints(mob/user)
-	to_chat(user, "<span class='notice'>The top is <b>screwed</b> on, but the main <b>bolts</b> are also visible.</span>")
+	return "<span class='notice'>The top is <b>screwed</b> on, but the main <b>bolts</b> are also visible.</span>"
 
 /obj/structure/table/update_icon()
 	if(smooth)
@@ -136,7 +137,6 @@
 	var/mob/living/carbon/human/H = pushed_mob
 	SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "table", /datum/mood_event/table)
 
-/* You don't shove people onto a table frame.
 /obj/structure/table/shove_act(mob/living/target, mob/living/user)
 	if(!target.resting)
 		target.Knockdown(SHOVE_KNOCKDOWN_TABLE)
@@ -145,7 +145,6 @@
 	target.forceMove(src.loc)
 	log_combat(user, target, "shoved", "onto [src] (table)")
 	return TRUE
-*/
 
 /obj/structure/table/attackby(obj/item/I, mob/user, params)
 	if(!(flags_1 & NODECONSTRUCT_1))
@@ -291,6 +290,7 @@
 /obj/structure/table/plasmaglass/New()
 	. = ..()
 	debris += new frame
+	debris += new /obj/item/shard/plasma
 
 /obj/structure/table/plasmaglass/Destroy()
 	QDEL_LIST(debris)
@@ -317,6 +317,83 @@
 	color = NARSIE_WINDOW_COLOUR
 	for(var/obj/item/shard/S in debris)
 		S.color = NARSIE_WINDOW_COLOUR
+
+/*
+ * Shadow wood tables
+ */
+
+/obj/structure/table/shadoww
+	name = "Shadow wood table"
+	desc = "Do not apply fire to this. Rumour says it burns easily."
+	icon = 'icons/obj/smooth_structures/shadoww_table.dmi'
+	icon_state = "shadoww_table"
+	frame = /obj/structure/table_frame/shadoww
+	framestack = /obj/item/stack/sheet/mineral/shadoww
+	buildstack = /obj/item/stack/sheet/mineral/shadoww
+	resistance_flags = FLAMMABLE
+	max_integrity = 70
+	canSmoothWith = list(/obj/structure/table/shadoww,
+		/obj/structure/table/shadoww/shadowwpoker)
+
+/obj/structure/table/shadoww/shadowwpoker
+	name = "gambling table"
+	desc = "A seedy table for seedy dealings in seedy places."
+	icon = 'icons/obj/smooth_structures/shadowwpoker_table.dmi'
+	icon_state = "shadowwpoker_table"
+	frame = /obj/structure/table_frame/shadoww
+	buildstack = /obj/item/stack/tile/carpet
+
+/*
+ * Plaswood tables
+ */
+
+/obj/structure/table/plaswood
+	name = "plaswood table"
+	desc = "An strong and grey wooden table."
+	icon = 'icons/obj/smooth_structures/plaswood_table.dmi'
+	icon_state = "plaswood_table"
+	frame = /obj/structure/table_frame/plaswood
+	framestack = /obj/item/stack/sheet/mineral/plaswood
+	buildstack = /obj/item/stack/sheet/mineral/plaswood
+	resistance_flags = FLAMMABLE
+	max_integrity = 200
+	integrity_failure = 50
+	armor = list("melee" = 10, "bullet" = 30, "laser" = 30, "energy" = 100, "bomb" = 20, "bio" = 0, "rad" = 0, "fire" = 80, "acid" = 70)
+	canSmoothWith = list(/obj/structure/table/plaswood,
+		/obj/structure/table/plaswood/plaswoodpoker)
+
+/obj/structure/table/plaswood/plaswoodpoker
+	name = "gambling table"
+	desc = "A seedy table for seedy dealings in seedy places."
+	icon = 'icons/obj/smooth_structures/plaswoodpoker_table.dmi'
+	icon_state = "plaswoodpoker_table"
+	frame = /obj/structure/table_frame/plaswood
+	buildstack = /obj/item/stack/tile/carpet
+
+/*
+ * Mushroom tables
+ */
+
+/obj/structure/table/gmushroom
+	name = "Mushroom table"
+	desc = "A pinkish table. And is fireproof!"
+	icon = 'icons/obj/smooth_structures/gmushroom_table.dmi'
+	icon_state = "gmushroom_table"
+	frame = /obj/structure/table_frame/gmushroom
+	framestack = /obj/item/stack/sheet/mineral/gmushroom
+	buildstack = /obj/item/stack/sheet/mineral/gmushroom
+	resistance_flags = FIRE_PROOF
+	max_integrity = 70
+	canSmoothWith = list(/obj/structure/table/gmushroom,
+		/obj/structure/table/gmushroom/gmushroompoker)
+
+/obj/structure/table/gmushroom/gmushroompoker
+	name = "gambling table"
+	desc = "A seedy table for seedy dealings in seedy places."
+	icon = 'icons/obj/smooth_structures/gmushroompoker_table.dmi'
+	icon_state = "gmushroompoker_table"
+	frame = /obj/structure/table_frame/gmushroom
+	buildstack = /obj/item/stack/tile/carpet
 
 /*
  * Wooden tables
@@ -358,83 +435,44 @@
 	frame = /obj/structure/table_frame
 	framestack = /obj/item/stack/rods
 	buildstack = /obj/item/stack/tile/carpet
-	canSmoothWith = list(/obj/structure/table/wood/fancy,
-		/obj/structure/table/wood/fancy/black,
-		/obj/structure/table/wood/fancy/blackred,
-		/obj/structure/table/wood/fancy/monochrome,
-		/obj/structure/table/wood/fancy/blue,
-		/obj/structure/table/wood/fancy/cyan,
-		/obj/structure/table/wood/fancy/green,
-		/obj/structure/table/wood/fancy/orange,
-		/obj/structure/table/wood/fancy/purple,
-		/obj/structure/table/wood/fancy/red,
-		/obj/structure/table/wood/fancy/royalblack,
-		/obj/structure/table/wood/fancy/royalblue)
-	var/smooth_icon = 'icons/obj/smooth_structures/fancy_table.dmi' // see Initialize()
+	canSmoothWith = list(/obj/structure/table/wood/fancy, /obj/structure/table/wood/fancy/black,	/obj/structure/table/wood/fancy/blackred,	/obj/structure/table/wood/fancy/monochrome)
 
-/obj/structure/table/wood/fancy/Initialize()
+/obj/structure/table/wood/fancy/New()
+	// New() is used so that the /black subtype can override `icon` easily and
+	// the correct value will be used by the smoothing subsystem.
 	. = ..()
 	// Needs to be set dynamically because table smooth sprites are 32x34,
 	// which the editor treats as a two-tile-tall object. The sprites are that
 	// size so that the north/south corners look nice - examine the detail on
 	// the sprites in the editor to see why.
-	icon = smooth_icon
+	icon = 'icons/obj/smooth_structures/fancy_table.dmi'
 
 /obj/structure/table/wood/fancy/black
 	icon_state = "fancy_table_black"
 	buildstack = /obj/item/stack/tile/carpet/black
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_black.dmi'
 
 /obj/structure/table/wood/fancy/blackred
-	icon_state = "fancy_table_blackred"
-	buildstack = /obj/item/stack/tile/carpet/blackred
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_blackred.dmi'
+	icon =	'icons/obj/structures.dmi'
+	icon_state =	"fancy_table_blackred"
+	buildstack =	/obj/item/stack/tile/carpet/blackred
+
+/obj/structure/table/wood/fancy/blackred/New()
+	. = ..()
+	icon	=	'icons/obj/smooth_structures/fancy_table_blackred.dmi'
 
 /obj/structure/table/wood/fancy/monochrome
-	icon_state = "fancy_table_monochrome"
-	buildstack = /obj/item/stack/tile/carpet/monochrome
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_monochrome.dmi'
+	icon =	'icons/obj/structures.dmi'
+	icon_state	=	"fancy_table_monochrome"
+	buildstack	=	/obj/item/stack/tile/carpet/monochrome
 
-/obj/structure/table/wood/fancy/blue
-	icon_state = "fancy_table_blue"
-	buildstack = /obj/item/stack/tile/carpet/blue
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_blue.dmi'
+/obj/structure/table/wood/fancy/monochrome/New()
+	. = ..()
+	icon	=	'icons/obj/smooth_structures/fancy_table_monochrome.dmi'
 
-/obj/structure/table/wood/fancy/cyan
-	icon_state = "fancy_table_cyan"
-	buildstack = /obj/item/stack/tile/carpet/cyan
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_cyan.dmi'
-
-/obj/structure/table/wood/fancy/green
-	icon_state = "fancy_table_green"
-	buildstack = /obj/item/stack/tile/carpet/green
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_green.dmi'
-
-/obj/structure/table/wood/fancy/orange
-	icon_state = "fancy_table_orange"
-	buildstack = /obj/item/stack/tile/carpet/orange
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_orange.dmi'
-
-/obj/structure/table/wood/fancy/purple
-	icon_state = "fancy_table_purple"
-	buildstack = /obj/item/stack/tile/carpet/purple
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_purple.dmi'
-
-/obj/structure/table/wood/fancy/red
-	icon_state = "fancy_table_red"
-	buildstack = /obj/item/stack/tile/carpet/red
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_red.dmi'
-
-/obj/structure/table/wood/fancy/royalblack
-	icon_state = "fancy_table_royalblack"
-	buildstack = /obj/item/stack/tile/carpet/royalblack
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_royalblack.dmi'
-
-/obj/structure/table/wood/fancy/royalblue
-	icon_state = "fancy_table_royalblue"
-	buildstack = /obj/item/stack/tile/carpet/royalblue
-	smooth_icon = 'icons/obj/smooth_structures/fancy_table_royalblue.dmi'
-
+/obj/structure/table/wood/fancy/black/New()
+	. = ..()
+	// Ditto above.
+	icon = 'icons/obj/smooth_structures/fancy_table_black.dmi'
 /*
  * Reinforced tables
  */
@@ -582,8 +620,8 @@
 	max_integrity = 20
 
 /obj/structure/rack/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>It's held together by a couple of <b>bolts</b>.</span>")
+	. = ..()
+	. += "<span class='notice'>It's held together by a couple of <b>bolts</b>.</span>"
 
 /obj/structure/rack/CanPass(atom/movable/mover, turf/target)
 	if(src.density == 0) //Because broken racks -Agouri |TODO: SPRITE!|
@@ -688,3 +726,10 @@
 		R.add_fingerprint(user)
 		qdel(src)
 	building = FALSE
+
+
+/obj/structure/rack/shelf
+	name = "shelving"
+	desc = "Some nice metal shelves."
+	icon = 'hyperstation/icons/obj/objects.dmi'
+	icon_state = "shelf"

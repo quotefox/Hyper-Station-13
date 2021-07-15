@@ -42,6 +42,20 @@
 	icon_state = "blueshift"
 	item_state = "blueshift"
 
+/obj/item/clothing/suit/armor/vest/stripper
+	name = "stripper armor"
+	desc = "Talk about lightweight."
+	icon_state = "armorstripper"
+	item_state = "armorstripper"
+	armor = list("melee" = 15, "bullet" = 10, "laser" = 10, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
+	dog_fashion = null
+
+/obj/item/clothing/suit/armor/vest/stripper/bikini
+	name = "bikini armor"
+	desc = "How is this even supposed to work? It barely covers anything!"
+	icon_state = "armorstripperalt"
+	item_state = "armorstripperalt"
+
 /obj/item/clothing/suit/armor/hos
 	name = "armored greatcoat"
 	desc = "A greatcoat enhanced with a special alloy for some extra protection and style for those with a commanding presence."
@@ -81,7 +95,7 @@
 
 /obj/item/clothing/suit/armor/vest/leather
 	name = "security overcoat"
-	desc = "Lightly armored leather overcoat meant as casual wear for high-ranking officers. Bears the crest of Nanotrasen Security."
+	desc = "Lightly armored leather overcoat meant as casual wear for high-ranking officers. Bears the crest of Kinaris Security."
 	icon_state = "leathercoat-sec"
 	item_state = "hostrench"
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS
@@ -249,3 +263,13 @@
 	max_integrity = 200
 	resistance_flags = FLAMMABLE
 	armor = list("melee" = 20, "bullet" = 10, "laser" = 30, "energy" = 5, "bomb" = 15, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 50)
+	
+/obj/item/clothing/suit/armor/monolith
+	name = "Monolith suit"
+	desc = "The producer is unknown. Its protective properties are slightly worse then those of the bulletproof vest. Its structure combines a bulletproof vest and radiation protection plates. It provides good protection from gunfire."
+	icon_state = "monolit"
+	item_state = "monolit"
+	blood_overlay_type = "armor"
+	armor = list("melee" = 15, "bullet" = 55, "laser" = 5, "energy" = 5, "bomb" = 40, "bio" = 30, "rad" = 30, "fire" = 50, "acid" = 50)
+	strip_delay = 70
+	equip_delay_other = 50

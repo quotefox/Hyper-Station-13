@@ -25,18 +25,18 @@
 	var/list/allowed_books = list(/obj/item/book, /obj/item/spellbook, /obj/item/storage/book) //Things allowed in the bookcase
 
 /obj/structure/bookcase/examine(mob/user)
-	..()
+	. = ..()
 	if(!anchored)
-		to_chat(user, "<span class='notice'>The <i>bolts</i> on the bottom are unsecured.</span>")
+		. += "<span class='notice'>The <i>bolts</i> on the bottom are unsecured.</span>"
 	if(anchored)
-		to_chat(user, "<span class='notice'>It's secured in place with <b>bolts</b>.</span>")
+		. += "<span class='notice'>It's secured in place with <b>bolts</b>.</span>"
 	switch(state)
 		if(0)
-			to_chat(user, "<span class='notice'>There's a <b>small crack</b> visible on the back panel.</span>")
+			. += "<span class='notice'>There's a <b>small crack</b> visible on the back panel.</span>"
 		if(1)
-			to_chat(user, "<span class='notice'>There's space inside for a <i>wooden</i> shelf.</span>")
+			. += "<span class='notice'>There's space inside for a <i>wooden</i> shelf.</span>"
 		if(2)
-			to_chat(user, "<span class='notice'>There's a <b>small crack</b> visible on the shelf.</span>")
+			. += "<span class='notice'>There's a <b>small crack</b> visible on the shelf.</span>"
 
 /obj/structure/bookcase/Initialize(mapload)
 	. = ..()
@@ -78,7 +78,7 @@
 				state = 0
 
 		if(2)
-			GET_COMPONENT_FROM(STR, /datum/component/storage, I)
+			var/datum/component/storage/STR = I.GetComponent(/datum/component/storage)
 			if(is_type_in_list(I, allowed_books))
 				if(!user.transferItemToLoc(I, src))
 					return
@@ -179,49 +179,50 @@
  * Book
  */
 /obj/item/book
-	name = "book"
+	name = "Datapad"
 	icon = 'icons/obj/library.dmi'
 	icon_state ="book"
-	desc = "Crack it open, inhale the musk of its pages, and learn something new."
+	desc = "A fancy new state of the art Digital-Readpad(tm) provided by Kinaris.Co, No more 20th century paper!"
 	throw_speed = 1
 	throw_range = 5
 	w_class = WEIGHT_CLASS_NORMAL		 //upped to three because books are, y'know, pretty big. (and you could hide them inside eachother recursively forever)
 	attack_verb = list("bashed", "whacked", "educated")
-	resistance_flags = FLAMMABLE
 	var/dat				//Actual page content
 	var/due_date = 0	//Game time in 1/10th seconds
 	var/author			//Who wrote the thing, can be changed by pen or PC. It is not automatically assigned
 	var/unique = 0		//0 - Normal book, 1 - Should not be treated as normal book, unable to be copied, unable to be modified
 	var/title			//The real name of the book.
 	var/window_size = null // Specific window size for the book, i.e: "1920x1080", Size x Width
+	drop_sound = 'sound/items/handling/book_drop.ogg'
+	pickup_sound =  'sound/items/handling/book_pickup.ogg'
 
 /obj/item/book/attack_self(mob/user)
 	if(is_blind(user))
 		to_chat(user, "<span class='warning'>As you are trying to read, you suddenly feel very stupid!</span>")
 		return
 	if(ismonkey(user))
-		to_chat(user, "<span class='notice'>You skim through the book but can't comprehend any of it.</span>")
+		to_chat(user, "<span class='notice'>You skim through the datapad but can't comprehend any of it.</span>")
 		return
 	if(dat)
-		user << browse("<TT><I>Penned by [author].</I></TT> <BR>" + "[dat]", "window=book[window_size != null ? ";size=[window_size]" : ""]")
-		user.visible_message("[user] opens a book titled \"[title]\" and begins reading intently.")
+		user << browse("<TT><I>Created by [author].</I></TT> <BR>" + "[dat]", "window=book[window_size != null ? ";size=[window_size]" : ""]")
+		user.visible_message("[user] begins reading a datapad titled \"[title]\" intently.")
 		SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "book_nerd", /datum/mood_event/book_nerd)
 		onclose(user, "book")
 	else
-		to_chat(user, "<span class='notice'>This book is completely blank!</span>")
+		to_chat(user, "<span class='notice'>This datapad is completely blank!</span>")
 
 
 /obj/item/book/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/pen))
 		if(is_blind(user))
-			to_chat(user, "<span class='warning'> As you are trying to write on the book, you suddenly feel very stupid!</span>")
+			to_chat(user, "<span class='warning'> As you are trying to edit the datapad, you suddenly feel very stupid!</span>")
 			return
 		if(unique)
-			to_chat(user, "<span class='warning'>These pages don't seem to take the ink well! Looks like you can't modify it.</span>")
+			to_chat(user, "<span class='warning'>These entries don't seem to be editable! Looks like you can't modify it.</span>")
 			return
 		var/literate = user.is_literate()
 		if(!literate)
-			to_chat(user, "<span class='notice'>You scribble illegibly on the cover of [src]!</span>")
+			to_chat(user, "<span class='notice'>You enter illegible text on the cover page of [src]!</span>")
 			return
 		var/choice = input("What would you like to change?") in list("Title", "Contents", "Author", "Cancel")
 		if(!user.canUseTopic(src, BE_CLOSE, literate))
@@ -232,7 +233,7 @@
 				if(!user.canUseTopic(src, BE_CLOSE, literate))
 					return
 				if (length(newtitle) > 20)
-					to_chat(user, "That title won't fit on the cover!")
+					to_chat(user, "That title is too large for the datapad's memory!")
 					return
 				if(!newtitle)
 					to_chat(user, "That title is invalid.")
@@ -241,7 +242,7 @@
 					name = newtitle
 					title = newtitle
 			if("Contents")
-				var/content = stripped_input(user, "Write your book's contents (HTML NOT allowed):","","",8192)
+				var/content = stripped_input(user, "Write your datapad's contents (HTML NOT allowed):","","",8192)
 				if(!user.canUseTopic(src, BE_CLOSE, literate))
 					return
 				if(!content)
@@ -250,7 +251,7 @@
 				else
 					dat += content
 			if("Author")
-				var/newauthor = stripped_input(user, "Write the author's name:")
+				var/newauthor = stripped_input(user, "Enter the author's name:")
 				if(!user.canUseTopic(src, BE_CLOSE, literate))
 					return
 				if(!newauthor)
@@ -291,10 +292,10 @@
 					scanner.computer.inventory.Add(src)
 					to_chat(user, "[I]'s screen flashes: 'Book stored in buffer. Title added to general inventory.'")
 
-	else if(istype(I, /obj/item/kitchen/knife) || istype(I, /obj/item/wirecutters))
-		to_chat(user, "<span class='notice'>You begin to carve out [title]...</span>")
+	else if(istype(I, /obj/item/multitool))
+		to_chat(user, "<span class='notice'>You begin to erase the data from [title] with your PDA!...</span>")
 		if(do_after(user, 30, target = src))
-			to_chat(user, "<span class='notice'>You carve out the pages from [title]! You didn't want to read it anyway.</span>")
+			to_chat(user, "<span class='notice'>You erase all the page data from [title] with your PDA! You didn't want to read it anyway.</span>")
 			var/obj/item/storage/book/B = new
 			B.name = src.name
 			B.title = src.title

@@ -26,13 +26,13 @@
 
 /obj/item/storage/secure/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_w_class = WEIGHT_CLASS_SMALL
 	STR.max_combined_w_class = 14
 
 /obj/item/storage/secure/examine(mob/user)
-	..()
-	to_chat(user, text("The service panel is currently <b>[open ? "unscrewed" : "screwed shut"]</b>."))
+	. = ..()
+	. += "The service panel is currently <b>[open ? "unscrewed" : "screwed shut"]</b>."
 
 /obj/item/storage/secure/attackby(obj/item/W, mob/user, params)
 	if(SEND_SIGNAL(src, COMSIG_IS_STORAGE_LOCKED))
@@ -136,7 +136,7 @@
 
 /obj/item/storage/secure/briefcase/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_combined_w_class = 21
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 
@@ -146,9 +146,39 @@
 
 /obj/item/storage/secure/briefcase/syndie/PopulateContents()
 	..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	for(var/i = 0, i < STR.max_items - 2, i++)
 		new /obj/item/stack/spacecash/c1000(src)
+
+/obj/item/storage/secure/briefcase/mws_pack
+	name = "\improper \'MWS\' gun kit"
+	desc = "A storage case for a multi-purpose handgun. Variety hour!"
+
+/obj/item/storage/secure/briefcase/mws_pack/PopulateContents()
+	new /obj/item/gun/ballistic/revolver/mws(src)
+	new /obj/item/ammo_box/magazine/mws_mag(src)
+	for(var/path in subtypesof(/obj/item/ammo_casing/mws_batt))
+		new path(src)
+
+/obj/item/storage/secure/briefcase/hos/mws_pack_hos
+	name = "\improper \'MWS\' gun kit"
+	desc = "A storage case for a multi-purpose handgun. Variety hour!"
+
+/obj/item/storage/secure/briefcase/hos/mws_pack_hos/PopulateContents()
+	new /obj/item/gun/ballistic/revolver/mws(src)
+	new /obj/item/ammo_box/magazine/mws_mag(src)
+	new /obj/item/ammo_casing/mws_batt/lethal(src)
+	new /obj/item/ammo_casing/mws_batt/lethal(src)
+	new /obj/item/ammo_casing/mws_batt/stun(src)
+	new /obj/item/ammo_casing/mws_batt/stun(src)
+	new /obj/item/ammo_casing/mws_batt/ion(src)
+
+/obj/item/storage/secure/briefcase/hos/multiphase_box
+	name = "\improper X-01 Multiphase energy gun box"
+	desc = "A storage case for a high-tech energy firearm."
+
+/obj/item/storage/secure/briefcase/hos/multiphase_box/PopulateContents()
+	new /obj/item/gun/energy/e_gun/hos(src)
 
 
 // -----------------------------
@@ -170,7 +200,7 @@
 
 /obj/item/storage/secure/safe/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.cant_hold = typecacheof(list(/obj/item/storage/secure/briefcase))
 	STR.max_w_class = 8						//??
 

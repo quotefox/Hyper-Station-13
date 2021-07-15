@@ -65,3 +65,15 @@
 	category = SLOT_HANDS
 	path = /obj/item/clothing/mask/cigarette/cigar
 	cost = 4 //smoking is bad mkay
+
+/datum/gear/romanshield
+	name = "Improper Roman shield"
+	category = SLOT_HANDS
+	path = /obj/item/shield/riot/roman/fake
+	cost = 2
+
+/datum/gear/cheeseburger
+	name = "cheeseburger backpack"
+	category = SLOT_HANDS
+	path = /obj/item/storage/backpack/cheeseburgerbackpack
+	cost = 1

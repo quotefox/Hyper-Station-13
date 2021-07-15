@@ -6,7 +6,7 @@
 	reagent_flags = OPENCONTAINER
 	spillable = TRUE
 	resistance_flags = ACID_PROOF
-	container_HP = 3
+	container_HP = 2
 
 
 /obj/item/reagent_containers/glass/attack(mob/M, mob/user, obj/target)
@@ -22,13 +22,9 @@
 
 	if(istype(M))
 		if(user.a_intent == INTENT_HARM)
-			var/R
 			M.visible_message("<span class='danger'>[user] splashes the contents of [src] onto [M]!</span>", \
 							"<span class='userdanger'>[user] splashes the contents of [src] onto [M]!</span>")
-			if(reagents)
-				for(var/datum/reagent/A in reagents.reagent_list)
-					R += A.id + " ("
-					R += num2text(A.volume) + "),"
+			var/R = reagents?.log_list()
 			if(isturf(target) && reagents.reagent_list.len && thrownby)
 				log_combat(thrownby, target, "splashed (thrown) [english_list(reagents.reagent_list)]")
 				message_admins("[ADMIN_LOOKUPFLW(thrownby)] splashed (thrown) [english_list(reagents.reagent_list)] on [target] at [ADMIN_VERBOSEJMP(target)].")
@@ -115,7 +111,6 @@
 	item_state = "beaker"
 	materials = list(MAT_GLASS=500)
 	beaker_weakness_bitflag = PH_WEAK
-	container_HP = 5
 
 /obj/item/reagent_containers/glass/beaker/Initialize()
 	. = ..()
@@ -126,34 +121,31 @@
 
 /obj/item/reagent_containers/glass/beaker/on_reagent_change(changetype)
 	update_icon()
-	
-/obj/item/reagent_containers/glass/bottle/viralbase
-	name = "Highly potent Viral Base Bottle"
-	desc = "A small bottle. Contains a trace amount of a substance found by scientists that can be used to create extremely advanced diseases once exposed to uranium."
-	list_reagents = list("viralbase" = 1)
 
 /obj/item/reagent_containers/glass/beaker/update_icon()
+	if(!cached_icon)
+		cached_icon = icon_state
 	cut_overlays()
 
 	if(reagents.total_volume)
-		var/mutable_appearance/filling = mutable_appearance('icons/obj/reagentfillings.dmi', "[icon_state]10")
+		var/mutable_appearance/filling = mutable_appearance('icons/obj/reagentfillings.dmi', "[cached_icon]10")
 
 		var/percent = round((reagents.total_volume / volume) * 100)
 		switch(percent)
 			if(0 to 9)
-				filling.icon_state = "[icon_state]-10"
+				filling.icon_state = "[cached_icon]-10"
 			if(10 to 24)
-				filling.icon_state = "[icon_state]10"
+				filling.icon_state = "[cached_icon]10"
 			if(25 to 49)
-				filling.icon_state = "[icon_state]25"
+				filling.icon_state = "[cached_icon]25"
 			if(50 to 74)
-				filling.icon_state = "[icon_state]50"
+				filling.icon_state = "[cached_icon]50"
 			if(75 to 79)
-				filling.icon_state = "[icon_state]75"
+				filling.icon_state = "[cached_icon]75"
 			if(80 to 90)
-				filling.icon_state = "[icon_state]80"
+				filling.icon_state = "[cached_icon]80"
 			if(91 to INFINITY)
-				filling.icon_state = "[icon_state]100"
+				filling.icon_state = "[cached_icon]100"
 
 		filling.color = mix_color_from_reagents(reagents.reagent_list)
 		add_overlay(filling)
@@ -172,7 +164,7 @@
 	volume = 100
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,20,25,30,50,100)
-	container_HP = 6
+	container_HP = 3
 
 /obj/item/reagent_containers/glass/beaker/plastic
 	name = "x-large beaker"
@@ -232,35 +224,35 @@
 	volume = 300
 	amount_per_transfer_from_this = 10
 	possible_transfer_amounts = list(5,10,15,20,25,30,50,100,300)
-	container_HP = 8
+	container_HP = 4
 
 /obj/item/reagent_containers/glass/beaker/cryoxadone
-	list_reagents = list("cryoxadone" = 30)
+	list_reagents = list(/datum/reagent/medicine/cryoxadone = 30)
 
 /obj/item/reagent_containers/glass/beaker/sulphuric
-	list_reagents = list("sacid" = 50)
+	list_reagents = list(/datum/reagent/toxin/acid = 50)
 
 /obj/item/reagent_containers/glass/beaker/slime
-	list_reagents = list("slimejelly" = 50)
+	list_reagents = list(/datum/reagent/toxin/slimejelly = 50)
 
 /obj/item/reagent_containers/glass/beaker/large/styptic
 	name = "styptic reserve tank"
-	list_reagents = list("styptic_powder" = 50)
+	list_reagents = list(/datum/reagent/medicine/styptic_powder = 50)
 
 /obj/item/reagent_containers/glass/beaker/large/silver_sulfadiazine
 	name = "silver sulfadiazine reserve tank"
-	list_reagents = list("silver_sulfadiazine" = 50)
+	list_reagents = list(/datum/reagent/medicine/silver_sulfadiazine = 50)
 
 /obj/item/reagent_containers/glass/beaker/large/charcoal
 	name = "charcoal reserve tank"
-	list_reagents = list("charcoal" = 50)
+	list_reagents = list(/datum/reagent/medicine/charcoal = 50)
 
 /obj/item/reagent_containers/glass/beaker/large/epinephrine
 	name = "epinephrine reserve tank"
-	list_reagents = list("epinephrine" = 50)
+	list_reagents = list(/datum/reagent/medicine/epinephrine = 50)
 
 /obj/item/reagent_containers/glass/beaker/synthflesh
-	list_reagents = list("synthflesh" = 50)
+	list_reagents = list(/datum/reagent/medicine/synthflesh = 50)
 
 /obj/item/reagent_containers/glass/bucket
 	name = "bucket"
@@ -289,7 +281,7 @@
 		SLOT_L_STORE, SLOT_R_STORE,\
 		SLOT_GENERC_DEXTROUS_STORAGE
 	)
-	container_HP = 2
+	container_HP = 1
 
 /obj/item/reagent_containers/glass/bucket/Initialize()
 	beaker_weakness_bitflag |= TEMP_WEAK
@@ -335,15 +327,16 @@
 
 /obj/item/reagent_containers/glass/beaker/waterbottle
 	name = "bottle of water"
-	desc = "A bottle of water filled at an old Earth bottling facility."
+	desc = "A bottle of water filled at some factory in space."
 	icon = 'icons/obj/drinks.dmi'
 	icon_state = "smallbottle"
 	item_state = "bottle"
-	list_reagents = list("water" = 49.5, "fluorine" = 0.5)//see desc, don't think about it too hard
+	list_reagents = list(/datum/reagent/water = 50)//see desc, don't think about it too hard
 	materials = list(MAT_GLASS=0)
 	volume = 50
 	amount_per_transfer_from_this = 10
-	container_HP = 2
+	container_HP = 1
+	price = 1
 
 /obj/item/reagent_containers/glass/beaker/waterbottle/Initialize()
 	beaker_weakness_bitflag |= TEMP_WEAK
@@ -356,13 +349,23 @@
 	desc = "A fresh commercial-sized bottle of water."
 	icon_state = "largebottle"
 	materials = list(MAT_GLASS=0)
-	list_reagents = list("water" = 100)
+	list_reagents = list(/datum/reagent/water = 100)
 	volume = 100
 	amount_per_transfer_from_this = 20
-	container_HP = 2
+	container_HP = 1
 
 /obj/item/reagent_containers/glass/beaker/waterbottle/large/empty
 	list_reagents = list()
+
+/obj/item/reagent_containers/glass/beaker/waterbottle/wataur
+	name = "Bottled Wataur"
+	desc = "Finally, a bottle as proportionate as you. Incredible!"
+	icon = 'icons/obj/drinks.dmi'
+	icon_state = "wataur"
+	list_reagents = list(/datum/reagent/water = 100) //robust ass wataur
+	volume = 100
+	amount_per_transfer_from_this = 20
+	container_HP = 1
 
 /obj/item/reagent_containers/glass/get_belt_overlay()
 	return mutable_appearance('icons/obj/clothing/belt_overlays.dmi', "bottle")

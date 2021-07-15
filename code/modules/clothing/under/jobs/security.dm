@@ -9,21 +9,28 @@
  */
 /obj/item/clothing/under/rank/security
 	name = "security jumpsuit"
-	desc = "A tactical security jumpsuit for officers complete with Nanotrasen belt buckle."
+	desc = "A tactical security jumpsuit for officers complete with Kinaris PMC belt buckle."
 	icon_state = "rsecurity"
 	item_state = "r_suit"
 	item_color = "rsecurity"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30)
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	strip_delay = 50
 	alt_covers_chest = TRUE
 	sensor_mode = SENSOR_COORDS
 	random_sensor = FALSE
 /obj/item/clothing/under/rank/security/grey
 	name = "grey security jumpsuit"
-	desc = "A tactical relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood."
+	desc = "A tactical relic of years past before it was agreed upon that it was cheaper to just dye the suits red instead of washing out the blood."
 	icon_state = "security"
 	item_state = "gy_suit"
 	item_color = "security"
+/obj/item/clothing/under/rank/security/pink
+	name = "pink security jumpsuit"
+	desc = "A tactical security jumpsuit for officers that screw up their laundry."
+	icon_state = "rsecuritypink"
+	item_state = "r_suit"
+	item_color = "rsecuritypink"
+	price = 3
 /obj/item/clothing/under/rank/security/skirt
 	name = "security jumpskirt"
 	desc = "A \"tactical\" security jumpsuit with the legs replaced by a skirt."
@@ -33,29 +40,51 @@
 	body_parts_covered = CHEST|GROIN|ARMS
 	can_adjust = FALSE //you know now that i think of it if you adjust the skirt and the sprite disappears isn't that just like flashing everyone
 	fitted = FEMALE_UNIFORM_TOP
+/obj/item/clothing/under/rank/security/skirt/slut
+	name = "slutty security jumpskirt"
+	desc = "A \"\"\"tactical\"\"\" security jumpsuit with the legs replaced by a skirt. No matter how you adjust it, it always feels a little too small."
+	icon_state = "secslutskirt"
+	item_state = "secslutskirt"
+	item_color = null //i dont understand what item_color even is, apparently setting it to null means it won't change color in a washing machine?
+	mutantrace_variation = NO_MUTANTRACE_VARIATION //look at the first two comments in vg_under.dm
+	price = 3
+/obj/item/clothing/under/rank/security/skirt/slut/pink
+	desc = "A \"\"\"tactical\"\"\" security jumpsuit with the legs replaced by a skirt. No matter how you adjust it, it always feels a little too small. This one seems to have an experimental color scheme."
+	icon_state = "secslutskirtpink"
+	item_state = "secslutskirtpink"
+/obj/item/clothing/under/rank/security/stripper
+	name = "security stripper outfit"
+	desc = "This can't be dress code compliant, can it?"
+	icon_state = "secstripper"
+	item_state = "secstripper"
+	item_color = null
+	can_adjust = FALSE
+	body_parts_covered = CHEST|GROIN
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	price = 5
 
 
 /obj/item/clothing/under/rank/warden
 	name = "security suit"
-	desc = "A formal security suit for officers complete with Nanotrasen belt buckle."
+	desc = "A formal security suit for officers complete with Kinaris PMC belt buckle."
 	icon_state = "rwarden"
 	item_state = "r_suit"
 	item_color = "rwarden"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30)
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	strip_delay = 50
 	alt_covers_chest = TRUE
 	sensor_mode = 3
 	random_sensor = FALSE
 /obj/item/clothing/under/rank/warden/grey
 	name = "grey security suit"
-	desc = "A formal relic of years past before Nanotrasen decided it was cheaper to dye the suits red instead of washing out the blood."
+	desc = "A formal relic of years past before it was decided it was cheaper to dye the suits red instead of washing out the blood."
 	icon_state = "warden"
 	item_state = "gy_suit"
 	item_color = "warden"
 
 /obj/item/clothing/under/rank/warden/skirt
 	name = "warden's suitskirt"
-	desc = "A formal security suitskirt for officers complete with Nanotrasen belt buckle."
+	desc = "A formal security suitskirt for officers complete with Kinaris PMC belt buckle."
 	icon_state = "rwarden_skirt"
 	item_state = "r_suit"
 	item_color = "rwarden_skirt"
@@ -72,7 +101,7 @@
 	icon_state = "detective"
 	item_state = "det"
 	item_color = "detective"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 30, "acid" = 30)
+	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	strip_delay = 50
 	alt_covers_chest = TRUE
 	sensor_mode = 3
@@ -115,7 +144,7 @@
 	icon_state = "rhos"
 	item_state = "r_suit"
 	item_color = "rhos"
-	armor = list("melee" = 10, "bullet" = 0, "laser" = 0,"energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 50, "acid" = 50)
+	armor = list("melee" = 10, "bullet" = 5, "laser" = 5,"energy" = 5, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 0, "acid" = 0)
 	strip_delay = 60
 	alt_covers_chest = TRUE
 	sensor_mode = 3
@@ -198,3 +227,13 @@
 	item_state = "spacepol"
 	item_color = "spacepol"
 	can_adjust = FALSE
+/*
+ *Blueshield
+ */
+/obj/item/clothing/under/rank/security/blueshield
+	desc = "Blue trim on space-black cloth, this uniform displays the rank of \"Blueshield\" on the left shoulder. Wonder what that is."
+	name = "blueshield uniform"
+	icon_state = "bs_uniform"
+	item_state = "bl_suit"
+	item_color = "bs_uniform"
+	alt_covers_chest = FALSE

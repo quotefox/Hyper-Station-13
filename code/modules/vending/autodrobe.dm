@@ -107,7 +107,9 @@
 					/obj/item/clothing/under/scratch = 1,
 					/obj/item/clothing/under/sailor = 1,
         			/obj/item/clothing/ears/headphones = 2,
-        			/obj/item/clothing/head/wig/random = 3)
+        			/obj/item/clothing/head/wig/random = 3,
+					/obj/item/clothing/suit/ran = 2,
+					/obj/item/clothing/head/ran = 2)
 	contraband = list(/obj/item/clothing/suit/judgerobe = 1,
 		              /obj/item/clothing/head/powdered_wig = 1,
 		              /obj/item/gun/magic/wand = 2,
@@ -121,15 +123,19 @@
 		           /obj/item/clothing/under/roman = 1,
 		           /obj/item/clothing/shoes/roman = 1,
 		           /obj/item/shield/riot/roman/fake = 1,
+		           /obj/item/clothing/head/delinquent = 1, // One per vendor, please dear god don't mass produce these.
 		           /obj/item/skub = 1,
-		           /obj/item/clothing/under/lobster = 1,	 // CIT CHANGES	           
+		           /obj/item/clothing/under/lobster = 1,	 // CIT CHANGES
 		           /obj/item/clothing/head/lobsterhat = 1,
 		           /obj/item/clothing/head/drfreezehat = 1,
 		           /obj/item/clothing/suit/dracula = 1,
 		           /obj/item/clothing/suit/drfreeze_coat = 1,
 		           /obj/item/clothing/suit/gothcoat = 2,
 		           /obj/item/clothing/under/draculass = 1,
-                   /obj/item/clothing/under/drfreeze = 1)    //End of Cit Changes
+                   /obj/item/clothing/under/drfreeze = 1,    //End of Cit Changes
+					/obj/item/clothing/under/wedding_dress = 1,
+				   /obj/item/clothing/under/tuxedo = 1,
+				   /obj/item/storage/belt/cummerbund = 1)
 	refill_canister = /obj/item/vending_refill/autodrobe
 
 /obj/machinery/vending/autodrobe/all_access

@@ -15,7 +15,8 @@
 	var/decon_speed = 30
 	var/wtype = "glass"
 	var/fulltile = FALSE
-	var/glass_type = /obj/item/stack/sheet/glass
+	var/obj/item/stack/sheet/glass_type = /obj/item/stack/sheet/glass
+	var/cleanable_type = /obj/effect/decal/cleanable/glass
 	var/glass_amount = 1
 	var/mutable_appearance/crack_overlay
 	can_be_unanchored = TRUE
@@ -28,22 +29,24 @@
 	rad_insulation = RAD_VERY_LIGHT_INSULATION
 	rad_flags = RAD_PROTECT_CONTENTS
 
+
+
 /obj/structure/window/examine(mob/user)
-	..()
+	. = ..()
 	if(reinf)
 		if(anchored && state == WINDOW_SCREWED_TO_FRAME)
-			to_chat(user, "<span class='notice'>The window is <b>screwed</b> to the frame.</span>")
+			. += "<span class='notice'>The window is <b>screwed</b> to the frame.</span>"
 		else if(anchored && state == WINDOW_IN_FRAME)
-			to_chat(user, "<span class='notice'>The window is <i>unscrewed</i> but <b>pried</b> into the frame.</span>")
+			. += "<span class='notice'>The window is <i>unscrewed</i> but <b>pried</b> into the frame.</span>"
 		else if(anchored && state == WINDOW_OUT_OF_FRAME)
-			to_chat(user, "<span class='notice'>The window is out of the frame, but could be <i>pried</i> in. It is <b>screwed</b> to the floor.</span>")
+			. += "<span class='notice'>The window is out of the frame, but could be <i>pried</i> in. It is <b>screwed</b> to the floor.</span>"
 		else if(!anchored)
-			to_chat(user, "<span class='notice'>The window is <i>unscrewed</i> from the floor, and could be deconstructed by <b>wrenching</b>.</span>")
+			. += "<span class='notice'>The window is <i>unscrewed</i> from the floor, and could be deconstructed by <b>wrenching</b>.</span>"
 	else
 		if(anchored)
-			to_chat(user, "<span class='notice'>The window is <b>screwed</b> to the floor.</span>")
+			. += "<span class='notice'>The window is <b>screwed</b> to the floor.</span>"
 		else
-			to_chat(user, "<span class='notice'>The window is <i>unscrewed</i> from the floor, and could be deconstructed by <b>wrenching</b>.</span>")
+			. += "<span class='notice'>The window is <i>unscrewed</i> from the floor, and could be deconstructed by <b>wrenching</b>.</span>"
 
 /obj/structure/window/Initialize(mapload, direct)
 	. = ..()
@@ -277,8 +280,13 @@
 
 /obj/structure/window/proc/spawnDebris(location)
 	. = list()
-	. += new /obj/item/shard(location)
-	. += new /obj/effect/decal/cleanable/glass(location)
+	var/shard = initial(glass_type.shard_type)
+	if(shard)
+		. += new shard(location)
+		if (fulltile)
+			. += new shard(location)
+	if(cleanable_type)
+		. += new cleanable_type(location)
 	if (reinf)
 		. += new /obj/item/stack/rods(location, (fulltile ? 2 : 1))
 
@@ -407,6 +415,7 @@
 	max_integrity = 150
 	explosion_block = 1
 	glass_type = /obj/item/stack/sheet/plasmaglass
+	cleanable_type = /obj/effect/decal/cleanable/glass/plasma
 	rad_insulation = RAD_NO_INSULATION
 
 /obj/structure/window/plasma/spawner/east
@@ -471,11 +480,12 @@
 	/turf/closed/wall/rust,
 	/turf/closed/wall/r_wall/rust,
 	/turf/closed/wall/clockwork,
+	/turf/closed/indestructible/riveted/,
+	/turf/closed/indestructible/riveted/uranium,
 	/obj/structure/window/fulltile,
 	/obj/structure/window/reinforced/fulltile,
 	/obj/structure/window/reinforced/tinted/fulltile,
-	/obj/structure/window/plasma/fulltile,
-	/obj/structure/window/plasma/reinforced/fulltile,
+	/obj/machinery/door,
 	/obj/machinery/door/airlock/,
 	/obj/machinery/door/airlock/mining,
 	/obj/machinery/door/airlock/mining/glass,
@@ -503,7 +513,12 @@
 	/obj/machinery/door/window/northright,
 	/obj/machinery/door/airlock/external,
 	/obj/machinery/door/airlock,
-	/obj/machinery/door)
+	/obj/machinery/door/airlock/hatch,
+	/obj/machinery/door/airlock/engineering/glass/critical,
+	/obj/machinery/door/airlock/atmos,
+	/obj/machinery/door/airlock/highsecurity,
+	/turf/closed/wall/mineral/sandstone,
+	/obj/structure/falsewall/sandstone,)
 //	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
 	glass_amount = 2
 
@@ -529,11 +544,9 @@
 	/turf/closed/wall/rust,
 	/turf/closed/wall/r_wall/rust,
 	/turf/closed/wall/clockwork,
-	/obj/structure/window/fulltile,
-	/obj/structure/window/reinforced/fulltile,
-	/obj/structure/window/reinforced/tinted/fulltile,
 	/obj/structure/window/plasma/fulltile,
 	/obj/structure/window/plasma/reinforced/fulltile,
+	/obj/machinery/door,
 	/obj/machinery/door/airlock/,
 	/obj/machinery/door/airlock/mining,
 	/obj/machinery/door/airlock/mining/glass,
@@ -561,7 +574,13 @@
 	/obj/machinery/door/window/northright,
 	/obj/machinery/door/airlock/external,
 	/obj/machinery/door/airlock,
-	/obj/machinery/door)
+	/obj/machinery/door/airlock/hatch,
+	/obj/machinery/door/airlock/engineering/glass/critical,
+	/obj/machinery/door/airlock/atmos,
+	/obj/machinery/door/airlock/highsecurity,
+	/turf/closed/indestructible/,
+	/turf/closed/indestructible/riveted,
+	/turf/closed/indestructible/fakeglass)
 	glass_amount = 2
 
 /obj/structure/window/plasma/fulltile/unanchored
@@ -577,31 +596,12 @@
 	smooth = SMOOTH_TRUE
 	glass_amount = 2
 
-/obj/structure/window/plasma/reinforced/fulltile/unanchored
-	anchored = FALSE
-
-/obj/structure/window/reinforced/fulltile
-	icon = 'icons/obj/smooth_structures/reinforced_window.dmi'
-	icon_state = "r_window"
-	dir = FULLTILE_WINDOW_DIR
-	max_integrity = 100
-	fulltile = TRUE
-	flags_1 = PREVENT_CLICK_UNDER_1
-	smooth = SMOOTH_TRUE
 	canSmoothWith = list(
 	/turf/closed/wall,
 	/turf/closed/wall/r_wall,
-	/obj/structure/falsewall,
-	/obj/structure/falsewall/brass,
-	/obj/structure/falsewall/reinforced,
-	/turf/closed/wall/rust,
-	/turf/closed/wall/r_wall/rust,
-	/turf/closed/wall/clockwork,
-	/obj/structure/window/fulltile,
-	/obj/structure/window/reinforced/fulltile,
-	/obj/structure/window/reinforced/tinted/fulltile,
 	/obj/structure/window/plasma/fulltile,
 	/obj/structure/window/plasma/reinforced/fulltile,
+	/obj/machinery/door,
 	/obj/machinery/door/airlock/,
 	/obj/machinery/door/airlock/mining,
 	/obj/machinery/door/airlock/mining/glass,
@@ -629,7 +629,70 @@
 	/obj/machinery/door/window/northright,
 	/obj/machinery/door/airlock/external,
 	/obj/machinery/door/airlock,
-	/obj/machinery/door)
+	/obj/machinery/door/airlock/hatch,
+	/obj/machinery/door/airlock/engineering/glass/critical,
+	/obj/machinery/door/airlock/atmos,
+	/obj/machinery/door/airlock/highsecurity
+	)
+
+/obj/structure/window/plasma/reinforced/fulltile/unanchored
+	anchored = FALSE
+
+/obj/structure/window/reinforced/fulltile
+	icon = 'icons/obj/smooth_structures/reinforced_window.dmi'
+	icon_state = "r_window"
+	dir = FULLTILE_WINDOW_DIR
+	max_integrity = 100
+	fulltile = TRUE
+	flags_1 = PREVENT_CLICK_UNDER_1
+	smooth = SMOOTH_TRUE
+
+	canSmoothWith = list(
+	/turf/closed/wall,
+	/turf/closed/wall/r_wall,
+	/obj/structure/falsewall,
+	/obj/structure/falsewall/brass,
+	/obj/structure/falsewall/reinforced,
+	/turf/closed/wall/rust,
+	/turf/closed/wall/r_wall/rust,
+	/turf/closed/wall/clockwork,
+	/turf/closed/indestructible/riveted/,
+	/turf/closed/indestructible/riveted/uranium,
+	/obj/structure/window/fulltile,
+	/obj/structure/window/reinforced/fulltile,
+	/obj/structure/window/reinforced/tinted/fulltile,
+	/obj/machinery/door,
+	/obj/machinery/door/airlock/,
+	/obj/machinery/door/airlock/mining,
+	/obj/machinery/door/airlock/mining/glass,
+	/obj/machinery/door/airlock/medical,
+	/obj/machinery/door/airlock/medical/glass,
+	/obj/machinery/door/airlock/public,
+	/obj/machinery/door/airlock/public/glass,
+	/obj/machinery/door/airlock/research,
+	/obj/machinery/door/airlock/research/glass,
+	/obj/machinery/door/airlock/maintenance,
+	/obj/machinery/door/airlock/maintenance/glass,
+	/obj/machinery/door/airlock/command/,
+	/obj/machinery/door/airlock/command/glass,
+	/obj/machinery/door/airlock/engineering,
+	/obj/machinery/door/airlock/engineering/glass,
+	/obj/machinery/door/airlock/engineering/abandoned,
+	/obj/machinery/door/airlock/security,
+	/obj/machinery/door/airlock/security/glass,
+	/obj/machinery/door/airlock/maintenance/abandoned,
+	/obj/machinery/door/poddoor/shutters/preopen,
+	/obj/machinery/door/poddoor/shutters,
+	/obj/machinery/door/window/eastright,
+	/obj/machinery/door/window/eastleft,
+	/obj/machinery/door/window/northleft,
+	/obj/machinery/door/window/northright,
+	/obj/machinery/door/airlock/external,
+	/obj/machinery/door/airlock,
+	/obj/machinery/door/airlock/hatch,
+	/obj/machinery/door/airlock/engineering/glass/critical,
+	/obj/machinery/door/airlock/atmos,
+	/obj/machinery/door/airlock/highsecurity,)
 
 	level = 3
 	glass_amount = 2
@@ -654,11 +717,12 @@
 	/turf/closed/wall/rust,
 	/turf/closed/wall/r_wall/rust,
 	/turf/closed/wall/clockwork,
+	/turf/closed/indestructible/riveted/,
+	/turf/closed/indestructible/riveted/uranium,
 	/obj/structure/window/fulltile,
 	/obj/structure/window/reinforced/fulltile,
 	/obj/structure/window/reinforced/tinted/fulltile,
-	/obj/structure/window/plasma/fulltile,
-	/obj/structure/window/plasma/reinforced/fulltile,
+	/obj/machinery/door,
 	/obj/machinery/door/airlock/,
 	/obj/machinery/door/airlock/mining,
 	/obj/machinery/door/airlock/mining/glass,
@@ -686,8 +750,10 @@
 	/obj/machinery/door/window/northright,
 	/obj/machinery/door/airlock/external,
 	/obj/machinery/door/airlock,
-	/obj/machinery/door)
-
+	/obj/machinery/door/airlock/hatch,
+	/obj/machinery/door/airlock/engineering/glass/critical,
+	/obj/machinery/door/airlock/atmos,
+	/obj/machinery/door/airlock/highsecurity,)
 	//Old code left of reference
 	//canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
 	level = 3
@@ -815,11 +881,6 @@
 	max_integrity = 120
 	level = 3
 	glass_amount = 2
-
-/obj/structure/window/reinforced/clockwork/spawnDebris(location)
-	. = list()
-	for(var/i in 1 to 4)
-		. += new /obj/item/clockwork/alloy_shards/medium/gear_bit(location)
 
 /obj/structure/window/reinforced/clockwork/Initialize(mapload, direct)
 	made_glow = TRUE

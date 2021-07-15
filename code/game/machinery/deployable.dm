@@ -97,6 +97,90 @@
 	new /obj/item/stack/sheet/mineral/wood(get_turf(src), drop_amount)
 
 
+/obj/structure/barricade/shadoww
+	name = "Shadow barricade"
+	desc = "This space is blocked off by a shadow wood barricade."
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "shadowwbarricade"
+	max_integrity = 50
+	material = WOOD
+	var/drop_amount = 3
+
+/obj/structure/barricade/shadoww/attackby(obj/item/I, mob/user)
+	if(istype(I,/obj/item/stack/sheet/mineral/shadoww))
+		var/obj/item/stack/sheet/mineral/shadoww/W = I
+		if(W.amount < 5)
+			to_chat(user, "<span class='warning'>You need at least five shadown planks to make a wall!</span>")
+			return
+		else
+			to_chat(user, "<span class='notice'>You start adding [I] to [src]...</span>")
+			if(do_after(user, 50, target=src))
+				W.use(5)
+				new /turf/closed/wall/mineral/shadoww/nonmetal(get_turf(src))
+				qdel(src)
+				return
+	return ..()
+
+/obj/structure/barricade/shadoww/make_debris()
+	new /obj/item/stack/sheet/mineral/shadoww(get_turf(src), drop_amount)
+
+
+/obj/structure/barricade/plaswood
+	name = "Plaswood barricade"
+	desc = "This space is blocked off by a plaswood barricade."
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "plaswoodwbarricade"
+	max_integrity = 180
+	material = WOOD
+	var/drop_amount = 3
+
+/obj/structure/barricade/plaswood/attackby(obj/item/I, mob/user)
+	if(istype(I,/obj/item/stack/sheet/mineral/plaswood))
+		var/obj/item/stack/sheet/mineral/plaswood/W = I
+		if(W.amount < 5)
+			to_chat(user, "<span class='warning'>You need at least five plaswood planks to make a wall!</span>")
+			return
+		else
+			to_chat(user, "<span class='notice'>You start adding [I] to [src]...</span>")
+			if(do_after(user, 50, target=src))
+				W.use(5)
+				new /turf/closed/wall/mineral/plaswood/nonmetal(get_turf(src))
+				qdel(src)
+				return
+	return ..()
+
+/obj/structure/barricade/plaswood/make_debris()
+	new /obj/item/stack/sheet/mineral/plaswood(get_turf(src), drop_amount)
+
+
+/obj/structure/barricade/gmushroom
+	name = "Mushroom barricade"
+	desc = "This space is blocked off by a mushroom barricade."
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "gmushroombarricade"
+	max_integrity = 50
+	material = WOOD
+	var/drop_amount = 3
+
+/obj/structure/barricade/gmushroom/attackby(obj/item/I, mob/user)
+	if(istype(I,/obj/item/stack/sheet/mineral/gmushroom))
+		var/obj/item/stack/sheet/mineral/gmushroom/W = I
+		if(W.amount < 5)
+			to_chat(user, "<span class='warning'>You need at least five mushroom planks to make a wall!</span>")
+			return
+		else
+			to_chat(user, "<span class='notice'>You start adding [I] to [src]...</span>")
+			if(do_after(user, 50, target=src))
+				W.use(5)
+				new /turf/closed/wall/mineral/gmushroom/nonmetal(get_turf(src))
+				qdel(src)
+				return
+	return ..()
+
+/obj/structure/barricade/gmushroom/make_debris()
+	new /obj/item/stack/sheet/mineral/gmushroom(get_turf(src), drop_amount)
+
+
 /obj/structure/barricade/sandbags
 	name = "sandbags"
 	desc = "Bags of sand. Self explanatory."
@@ -148,13 +232,15 @@
 	var/mode = SINGLE
 
 /obj/item/grenade/barrier/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>Alt-click to toggle modes.</span>")
+	. = ..()
+	. += "<span class='notice'>Alt-click to toggle modes.</span>"
 
 /obj/item/grenade/barrier/AltClick(mob/living/carbon/user)
+	. = ..()
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE))
 		return
 	toggle_mode(user)
+	return TRUE
 
 /obj/item/grenade/barrier/proc/toggle_mode(mob/user)
 	switch(mode)
@@ -190,6 +276,17 @@
 
 /obj/item/grenade/barrier/ui_action_click(mob/user)
 	toggle_mode(user)
+
+/obj/item/grenade/secbed
+	name = "security bed grenade"
+	desc = "A nice red and black pet bed, now in a compact, throwable package! No more wrestling entire beds out of vending machines!"
+	icon = 'icons/obj/grenade.dmi'
+	icon_state = "flashbang"
+	item_state = "flashbang"
+
+/obj/item/grenade/secbed/prime()
+	new /obj/structure/bed/secbed(get_turf(src.loc))
+	qdel(src)
 
 
 #undef SINGLE

@@ -14,19 +14,20 @@
 	icon_state = "DS-magboots0"
 	magboot_state = "DS-magboots"
 	icon = 'modular_citadel/icons/obj/clothing/vg_clothes.dmi'
-	alternate_worn_icon = 'modular_citadel/icons/mob/citadel/head.dmi'
+	alternate_worn_icon = 'icons/mob/feet.dmi'
+	slowdown_active = SHOES_SLOWDOWN
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
-	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	mutantrace_variation = MUTANTRACE_VARIATION
 
 /obj/item/clothing/shoes/magboots/atmos
 	desc = "Magnetic boots, often used during extravehicular activity to ensure the user remains safely attached to the vehicle. These are painted in the colors of an atmospheric technician."
 	name = "atmospherics magboots"
 	icon_state = "atmosmagboots0"
 	icon = 'modular_citadel/icons/obj/clothing/vg_clothes.dmi'
-	alternate_worn_icon = 'modular_citadel/icons/mob/citadel/head.dmi'
+	alternate_worn_icon = 'icons/mob/feet.dmi'
 	magboot_state = "atmosmagboots"
 	resistance_flags = FIRE_PROOF
-	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	mutantrace_variation = MUTANTRACE_VARIATION
 
 /obj/item/clothing/shoes/simonshoes
 	name = "Simon's Shoes"

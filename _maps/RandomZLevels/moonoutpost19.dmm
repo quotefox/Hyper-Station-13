@@ -5597,8 +5597,8 @@
 	},
 /area/awaymission/moonoutpost19/arrivals)
 "kK" = (
-/obj/effect/decal/cleanable/xenoblood,
-/obj/effect/decal/cleanable/xenoblood/xgibs,
+/obj/effect/decal/cleanable/blood/xeno,
+/obj/effect/decal/cleanable/blood/gibs/xeno,
 /obj/effect/turf_decal/tile/bar,
 /obj/effect/turf_decal/tile/bar{
 	dir = 1
@@ -5608,7 +5608,7 @@
 	},
 /area/awaymission/moonoutpost19/arrivals)
 "kL" = (
-/obj/effect/decal/cleanable/xenoblood,
+/obj/effect/decal/cleanable/blood/xeno,
 /obj/effect/decal/remains/xeno{
 	desc = "They look like the remains of something... alien. The front of skull appears to have been completely obliterated."
 	},
@@ -7212,10 +7212,6 @@
 	heat_capacity = 1e+006
 	},
 /area/awaymission/moonoutpost19/research)
-"oV" = (
-/obj/effect/mapping_helpers/planet_z,
-/turf/open/space,
-/area/space)
 "vV" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
@@ -7509,7 +7505,7 @@ aa
 aa
 aa
 aa
-oV
+aa
 "}
 (2,1,1) = {"
 aa

@@ -63,7 +63,7 @@
 	name = "Department Management Console (Computer Board)"
 	build_path = /obj/machinery/computer/card/minor
 	var/target_dept = 1
-	var/list/dept_list = list("General","Security","Medical","Science","Engineering")
+	var/list/dept_list = list("Civilian","Security","Medical","Science","Engineering","Cargo")
 
 /obj/item/circuitboard/computer/card/minor/attackby(obj/item/I, mob/user, params)
 	if(istype(I, /obj/item/screwdriver))
@@ -73,8 +73,8 @@
 		return ..()
 
 /obj/item/circuitboard/computer/card/minor/examine(user)
-	..()
-	to_chat(user, "Currently set to \"[dept_list[target_dept]]\".")
+	. = ..()
+	. += "Currently set to \"[dept_list[target_dept]]\"."
 
 //obj/item/circuitboard/computer/shield
 //	name = "Shield Control (Computer Board)"
@@ -166,10 +166,11 @@
 
 /obj/item/circuitboard/computer/prisoner
 	name = "Prisoner Management Console (Computer Board)"
-	build_path = /obj/machinery/computer/prisoner
+	build_path = /obj/machinery/computer/prisoner/management
+
 /obj/item/circuitboard/computer/gulag_teleporter_console
 	name = "Labor Camp teleporter console (Computer Board)"
-	build_path = /obj/machinery/computer/gulag_teleporter_computer
+	build_path = /obj/machinery/computer/prisoner/gulag_teleporter_computer
 
 /obj/item/circuitboard/computer/rdconsole/production
 	name = "R&D Console Production Only (Computer Board)"
@@ -246,7 +247,7 @@
 	build_path = /obj/machinery/computer/cargo/request
 
 /obj/item/circuitboard/computer/bounty
-	name = "Nanotrasen Bounty Console (Computer Board)"
+	name = "Kinaris Bounty Console (Computer Board)"
 	build_path = /obj/machinery/computer/bounty
 
 /obj/item/circuitboard/computer/operating

@@ -32,7 +32,7 @@ Difficulty: Medium
 	melee_damage_lower = 25
 	melee_damage_upper = 25
 	speed = 1
-	move_to_delay = 2
+	move_to_delay = 4
 	ranged = 1
 	del_on_death = 1
 	retreat_distance = 5
@@ -48,7 +48,7 @@ Difficulty: Medium
 	vision_range = 10
 	wander = FALSE
 	elimination = 1
-	appearance_flags = 0
+	appearance_flags = LONG_GLIDE
 	mouse_opacity = MOUSE_OPACITY_ICON
 
 /mob/living/simple_animal/hostile/megafauna/legion/Initialize()
@@ -88,7 +88,7 @@ Difficulty: Medium
 			retreat_distance = 0
 			minimum_distance = 0
 			speed = 0
-			move_to_delay = 1
+			move_to_delay = 2
 			charging = 1
 			addtimer(CALLBACK(src, .proc/reset_charge), 50)
 
@@ -97,7 +97,7 @@ Difficulty: Medium
 	retreat_distance = 5
 	minimum_distance = 5
 	speed = 1
-	move_to_delay = 2
+	move_to_delay = 4
 	charging = 0
 
 /mob/living/simple_animal/hostile/megafauna/legion/death()
@@ -135,7 +135,7 @@ Difficulty: Medium
 				last_legion = FALSE
 				break
 		if(last_legion)
-			loot = list(/obj/item/staff/storm)
+			loot = list(/obj/structure/closet/crate/necropolis/legion)
 			elimination = 0
 		else if(prob(5))
 			loot = list(/obj/structure/closet/crate/necropolis/tendril)
@@ -147,64 +147,3 @@ Difficulty: Medium
 	desc = "The message repeats."
 	invisibility = 100
 
-
-//Loot
-
-/obj/item/staff/storm
-	name = "staff of storms"
-	desc = "An ancient staff retrieved from the remains of Legion. The wind stirs as you move it."
-	icon_state = "staffofstorms"
-	item_state = "staffofstorms"
-	icon = 'icons/obj/guns/magic.dmi'
-	slot_flags = ITEM_SLOT_BACK
-	w_class = WEIGHT_CLASS_BULKY
-	force = 25
-	damtype = BURN
-	hitsound = 'sound/weapons/sear.ogg'
-	var/storm_type = /datum/weather/ash_storm
-	var/storm_cooldown = 0
-	var/static/list/excluded_areas = list(/area/reebe/city_of_cogs)
-
-/obj/item/staff/storm/attack_self(mob/user)
-	if(storm_cooldown > world.time)
-		to_chat(user, "<span class='warning'>The staff is still recharging!</span>")
-		return
-
-	var/area/user_area = get_area(user)
-	var/turf/user_turf = get_turf(user)
-	if(!user_area || !user_turf || (user_area.type in excluded_areas))
-		to_chat(user, "<span class='warning'>Something is preventing you from using the staff here.</span>")
-		return
-	var/datum/weather/A
-	for(var/V in SSweather.processing)
-		var/datum/weather/W = V
-		if((user_turf.z in W.impacted_z_levels) && W.area_type == user_area.type)
-			A = W
-			break
-
-	if(A)
-		if(A.stage != END_STAGE)
-			if(A.stage == WIND_DOWN_STAGE)
-				to_chat(user, "<span class='warning'>The storm is already ending! It would be a waste to use the staff now.</span>")
-				return
-			user.visible_message("<span class='warning'>[user] holds [src] skywards as an orange beam travels into the sky!</span>", \
-			"<span class='notice'>You hold [src] skyward, dispelling the storm!</span>")
-			playsound(user, 'sound/magic/staff_change.ogg', 200, 0)
-			A.wind_down()
-			log_game("[user] ([key_name(user)]) has dispelled a storm at [AREACOORD(user_turf)]")
-			return
-	else
-		A = new storm_type(list(user_turf.z))
-		A.name = "staff storm"
-		log_game("[user] ([key_name(user)]) has summoned [A] at [AREACOORD(user_turf)]")
-		if (is_special_character(user))
-			message_admins("[A] has been summoned in [ADMIN_VERBOSEJMP(user_turf)] by [user] ([key_name_admin(user)], a non-antagonist")
-		A.area_type = user_area.type
-		A.telegraph_duration = 100
-		A.end_duration = 100
-
-	user.visible_message("<span class='warning'>[user] holds [src] skywards as red lightning crackles into the sky!</span>", \
-	"<span class='notice'>You hold [src] skyward, calling down a terrible storm!</span>")
-	playsound(user, 'sound/magic/staff_change.ogg', 200, 0)
-	A.telegraph()
-	storm_cooldown = world.time + 200

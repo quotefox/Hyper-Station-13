@@ -72,9 +72,9 @@
 	chambered = AC
 
 /obj/item/gun/ballistic/shotgun/examine(mob/user)
-	..()
+	. = ..()
 	if (chambered)
-		to_chat(user, "A [chambered.BB ? "live" : "spent"] one is in the chamber.")
+		. += "A [chambered.BB ? "live" : "spent"] one is in the chamber."
 
 /obj/item/gun/ballistic/shotgun/lethal
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/lethal
@@ -85,15 +85,13 @@
 	name = "riot shotgun"
 	desc = "A sturdy shotgun with a longer magazine and a fixed tactical stock designed for non-lethal riot control."
 	icon_state = "riotshotgun"
+	item_state = "riotshotgun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/riot
 	sawn_desc = "Come with me if you want to live."
-	unique_reskin = list("Tatical" = "riotshotgun",
-						"Wood Stock" = "wood_riotshotgun"
-						)
 
 /obj/item/gun/ballistic/shotgun/riot/attackby(obj/item/A, mob/user, params)
 	..()
-	if(istype(A, /obj/item/circular_saw) || istype(A, /obj/item/gun/energy/plasmacutter))
+	if(A.tool_behaviour == TOOL_SAW || istype(A, /obj/item/gun/energy/plasmacutter))
 		sawoff(user)
 	if(istype(A, /obj/item/melee/transforming/energy))
 		var/obj/item/melee/transforming/energy/W = A
@@ -141,8 +139,8 @@
 	. = ..()
 
 /obj/item/gun/ballistic/shotgun/boltaction/examine(mob/user)
-	..()
-	to_chat(user, "The bolt is [bolt_open ? "open" : "closed"].")
+	. = ..()
+	. += "The bolt is [bolt_open ? "open" : "closed"]."
 
 /obj/item/gun/ballistic/shotgun/boltaction/enchanted
 	name = "enchanted bolt action rifle"
@@ -205,9 +203,10 @@
 	name = "combat shotgun"
 	desc = "A semi automatic shotgun with tactical furniture and a six-shell capacity underneath."
 	icon_state = "cshotgun"
+	item_state = "combatshotgun"
 	mag_type = /obj/item/ammo_box/magazine/internal/shot/com
 	w_class = WEIGHT_CLASS_HUGE
-	unique_reskin = list("Tatical" = "cshotgun",
+	unique_reskin = list("Tactical" = "cshotgun",
 						"Slick" = "cshotgun_slick"
 						)
 
@@ -215,21 +214,23 @@
 	name = "warden's combat shotgun"
 	desc = "A modified version of the semi automatic combat shotgun with a collapsible stock. For close encounters."
 	icon_state = "cshotgunc"
-	mag_type = /obj/item/ammo_box/magazine/internal/shot/com
+	item_state = "combatshotgun"
+	mag_type = /obj/item/ammo_box/magazine/internal/shot/com/compact
 	w_class = WEIGHT_CLASS_NORMAL
 	var/stock = FALSE
 	recoil = 5
 	spread = 2
 
 /obj/item/gun/ballistic/shotgun/automatic/combat/compact/AltClick(mob/living/user)
+	. = ..()
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
 	toggle_stock(user)
-	. = ..()
+	return TRUE
 
 /obj/item/gun/ballistic/shotgun/automatic/combat/compact/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>Alt-click to toggle the stock.</span>")
+	. = ..()
+	. += "<span class='notice'>Alt-click to toggle the stock.</span>"
 
 /obj/item/gun/ballistic/shotgun/automatic/combat/compact/proc/toggle_stock(mob/living/user)
 	stock = !stock
@@ -260,9 +261,8 @@
 	var/obj/item/ammo_box/magazine/internal/shot/alternate_magazine
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/examine(mob/user)
-	..()
-	to_chat(user, "<span class='notice'>Alt-click to pump it.</span>")
 	. = ..()
+	. += "<span class='notice'>Alt-click to pump it.</span>"
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/Initialize()
 	. = ..()
@@ -287,8 +287,10 @@
 		to_chat(user, "You switch to tube A.")
 
 /obj/item/gun/ballistic/shotgun/automatic/dual_tube/AltClick(mob/living/user)
+	. = ..()
 	if(!istype(user) || !user.canUseTopic(src, BE_CLOSE, ismonkey(user)))
 		return
 	pump()
+	return TRUE
 
 // DOUBLE BARRELED SHOTGUN and IMPROVISED SHOTGUN are in revolver.dm

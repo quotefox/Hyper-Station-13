@@ -39,15 +39,13 @@
 
 /obj/item/defibrillator/loaded/Initialize() //starts with hicap
 	. = ..()
-	paddles = make_paddles()
 	cell = new(src)
 	update_icon()
 	return
 
 /obj/item/defibrillator/update_icon()
 	update_power()
-	update_overlays()
-	update_charge()
+	return ..()
 
 /obj/item/defibrillator/proc/update_power()
 	if(!QDELETED(cell))
@@ -58,23 +56,20 @@
 	else
 		powered = FALSE
 
-/obj/item/defibrillator/proc/update_overlays()
-	cut_overlays()
+/obj/item/defibrillator/update_overlays()
+	. = ..()
 	if(!on)
-		add_overlay("[initial(icon_state)]-paddles")
+		. += "[initial(icon_state)]-paddles"
 	if(powered)
-		add_overlay("[initial(icon_state)]-powered")
-	if(!cell)
-		add_overlay("[initial(icon_state)]-nocell")
-	if(!safety)
-		add_overlay("[initial(icon_state)]-emagged")
-
-/obj/item/defibrillator/proc/update_charge()
-	if(powered) //so it doesn't show charge if it's unpowered
+		. += "[initial(icon_state)]-powered"
 		if(!QDELETED(cell))
 			var/ratio = cell.charge / cell.maxcharge
 			ratio = CEILING(ratio*4, 1) * 25
 			add_overlay("[initial(icon_state)]-charge[ratio]")
+	if(!cell)
+		. += "[initial(icon_state)]-nocell"
+	if(!safety)
+		. += "[initial(icon_state)]-emagged"
 
 /obj/item/defibrillator/CheckParts(list/parts_list)
 	..()
@@ -208,8 +203,8 @@
 		var/M = get(paddles, /mob)
 		remove_paddles(M)
 	QDEL_NULL(paddles)
-	. = ..()
-	update_icon()
+	QDEL_NULL(cell)
+	return ..()
 
 /obj/item/defibrillator/proc/deductcharge(chrgdeductamt)
 	if(cell)
@@ -250,7 +245,6 @@
 
 /obj/item/defibrillator/compact/loaded/Initialize()
 	. = ..()
-	paddles = make_paddles()
 	cell = new(src)
 	update_icon()
 
@@ -262,7 +256,6 @@
 
 /obj/item/defibrillator/compact/combat/loaded/Initialize()
 	. = ..()
-	paddles = make_paddles()
 	cell = new /obj/item/stock_parts/cell/infinite(src)
 	update_icon()
 
@@ -297,31 +290,28 @@
 	var/grab_ghost = FALSE
 	var/tlimit = DEFIB_TIME_LIMIT * 10
 
-	var/datum/component/mobhook
+	var/mob/listeningTo
 
 /obj/item/twohanded/shockpaddles/equipped(mob/user, slot)
 	. = ..()
-	if(req_defib)
-		if (mobhook && mobhook.parent != user)
-			QDEL_NULL(mobhook)
-		if (!mobhook)
-			mobhook = user.AddComponent(/datum/component/redirect, list(COMSIG_MOVABLE_MOVED = CALLBACK(src, .proc/check_range)))
+	if(!req_defib)
+		return
+	RegisterSignal(user, COMSIG_MOVABLE_MOVED, .proc/check_range)
 
 /obj/item/twohanded/shockpaddles/Moved()
 	. = ..()
 	check_range()
 
 /obj/item/twohanded/shockpaddles/proc/check_range()
-	if(!req_defib)
+	if(!req_defib || !defib)
 		return
 	if(!in_range(src,defib))
 		var/mob/living/L = loc
 		if(istype(L))
 			to_chat(L, "<span class='warning'>[defib]'s paddles overextend and come out of your hands!</span>")
-			L.temporarilyRemoveItemFromInventory(src,TRUE)
 		else
 			visible_message("<span class='notice'>[src] snap back into [defib].</span>")
-			snap_back()
+		snap_back()
 
 /obj/item/twohanded/shockpaddles/proc/recharge(var/time)
 	if(req_defib || !time)
@@ -362,14 +352,14 @@
 /obj/item/twohanded/shockpaddles/dropped(mob/user)
 	if(!req_defib)
 		return ..()
-	if (mobhook)
-		QDEL_NULL(mobhook)
 	if(user)
+		UnregisterSignal(user, COMSIG_MOVABLE_MOVED)
 		var/obj/item/twohanded/offhand/O = user.get_inactive_held_item()
 		if(istype(O))
 			O.unwield()
-		to_chat(user, "<span class='notice'>The paddles snap back into the main unit.</span>")
-		snap_back()
+		if(user != loc)
+			to_chat(user, "<span class='notice'>The paddles snap back into the main unit.</span>")
+			snap_back()
 	return unwield(user)
 
 /obj/item/twohanded/shockpaddles/proc/snap_back()
@@ -435,25 +425,10 @@
 	if((!req_defib && grab_ghost) || (req_defib && defib.grab_ghost))
 		H.notify_ghost_cloning("Your heart is being defibrillated!")
 		H.grab_ghost() // Shove them back in their body.
-	else if(can_defib(H))
+	else if(H.can_defib())
 		H.notify_ghost_cloning("Your heart is being defibrillated. Re-enter your corpse if you want to be revived!", source = src)
 
 	do_help(H, user)
-
-/obj/item/twohanded/shockpaddles/proc/can_defib(mob/living/carbon/H) //Our code here is different than tg, if it breaks in testing; BUG_PROBABLE_CAUSE
-	var/obj/item/organ/heart = H.getorgan(/obj/item/organ/heart)
-	if(H.suiciding || H.hellbound || HAS_TRAIT(H, TRAIT_HUSK))
-		return
-	if((world.time - H.timeofdeath) > tlimit)
-		return
-	if((H.getBruteLoss() >= MAX_REVIVE_BRUTE_DAMAGE) || (H.getFireLoss() >= MAX_REVIVE_FIRE_DAMAGE))
-		return
-	if(!heart || (heart.organ_flags & ORGAN_FAILING))
-		return
-	var/obj/item/organ/brain/BR = H.getorgan(/obj/item/organ/brain)
-	if(QDELETED(BR) || BR.brain_death || (BR.organ_flags & ORGAN_FAILING) || H.suiciding)
-		return
-	return TRUE
 
 /obj/item/twohanded/shockpaddles/proc/shock_touching(dmg, mob/H)
 	if(req_defib)
@@ -628,11 +603,12 @@
 						H.adjustOxyLoss(H.health - HALFWAYCRITDEATH, 0)
 					else
 						var/overall_damage = total_brute + total_burn + H.getToxLoss() + H.getOxyLoss()
-						var/mobhealth = H.health
-						H.adjustOxyLoss((mobhealth - HALFWAYCRITDEATH) * (H.getOxyLoss() / overall_damage), 0)
-						H.adjustToxLoss((mobhealth - HALFWAYCRITDEATH) * (H.getToxLoss() / overall_damage), 0)
-						H.adjustFireLoss((mobhealth - HALFWAYCRITDEATH) * (total_burn / overall_damage), 0)
-						H.adjustBruteLoss((mobhealth - HALFWAYCRITDEATH) * (total_brute / overall_damage), 0)
+						if(overall_damage)
+							var/mobhealth = H.health
+							H.adjustOxyLoss((mobhealth - HALFWAYCRITDEATH) * (H.getOxyLoss() / overall_damage), 0)
+							H.adjustToxLoss((mobhealth - HALFWAYCRITDEATH) * (H.getToxLoss() / overall_damage), 0)
+							H.adjustFireLoss((mobhealth - HALFWAYCRITDEATH) * (total_burn / overall_damage), 0)
+							H.adjustBruteLoss((mobhealth - HALFWAYCRITDEATH) * (total_brute / overall_damage), 0)
 					H.updatehealth() // Previous "adjust" procs don't update health, so we do it manually.
 					user.visible_message("<span class='notice'>[req_defib ? "[defib]" : "[src]"] pings: Resuscitation successful.</span>")
 					playsound(src, 'sound/machines/defib_success.ogg', 50, 0)

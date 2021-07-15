@@ -85,7 +85,8 @@
 		/obj/item/stack/tile/bronze					= /datum/species/golem/bronze,
 		/obj/item/stack/sheet/cardboard				= /datum/species/golem/cardboard,
 		/obj/item/stack/sheet/leather				= /datum/species/golem/leather,
-		/obj/item/stack/sheet/bone					= /datum/species/golem/bone)
+		/obj/item/stack/sheet/bone					= /datum/species/golem/bone,
+		/obj/item/stack/sheet/cotton/durathread		= /datum/species/golem/durathread)
 
 	if(istype(I, /obj/item/stack))
 		var/obj/item/stack/O = I
@@ -114,9 +115,12 @@
 	job_description = "Off-station Syndicate Scientist"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper_s"
-	flavour_text = "<span class='big bold'>You are a syndicate agent,</span><b> employed in a top secret research facility developing biological weapons. Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. <b>Continue your research as best you can, and try to keep a low profile. <font size=6>DON'T</font> abandon the base without good cause.</b> The base is rigged with explosives should the worst happen, do not let the base fall into enemy hands!</b>"
+	short_desc = "You are a syndicate agent, employed in a top secret research facility developing biological weapons plants and toys."
+	flavour_text = "Fortunately, Nanotrasen's activity in this sector of space is minimal. Continue your research as best you can, and try to keep a low profile from both Nanotrasen and Kinaris." //Making it more clear it's Nanotrasne AND Kinaris.
+	important_info = "The base is rigged with explosives, DO NOT leave the base or let it fall into enemy hands!" //Changed 'abandon it' to 'leave the base', no more loopholes please, you know who you are.
 	outfit = /datum/outfit/lavaland_syndicate
 	assignedrole = "Lavaland Syndicate"
+	mirrorcanloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/special(mob/living/new_spawn)
 	new_spawn.grant_language(/datum/language/codespeak)
@@ -141,19 +145,22 @@
 /obj/effect/mob_spawn/human/lavaland_syndicate/comms
 	name = "Syndicate Comms Agent"
 	job_description = "Off-station Syndicate Comms Agent"
-	flavour_text = "<span class='big bold'>You are a syndicate agent,</span><b> employed in a top secret research facility developing biological weapons. Unfortunately, your hated enemy, Nanotrasen, has begun mining in this sector. <b>Monitor enemy activity as best you can, and try to keep a low profile. <font size=6>DON'T</font> abandon the base without good cause.</b> Use the communication equipment to provide support to any field agents, and sow disinformation to throw Nanotrasen off your trail. Do not let the base fall into enemy hands!</b>"
+	short_desc = "You are a syndicate comms agent, employed in a top secret research facility developing biological weapons."
+	flavour_text = "Fortunately, Nanotrasen's activity in this sector of space is minimal. Monitor enemy activity as best you can, and try to keep a low profile. Use the communication equipment to provide support to any field agents, and sow disinformation to throw Nanotrasen or Kinaris off your trail. Do not let the base fall into enemy hands!"
+	important_info = "The base is rigged with explosives, DO NOT leave the base or let it fall into enemy hands!" //Changed 'abandon it' to 'leave the base', no more loopholes please, you know who you are.
 	outfit = /datum/outfit/lavaland_syndicate/comms
+	mirrorcanloadappearance = TRUE
 
 /obj/effect/mob_spawn/human/lavaland_syndicate/comms/space/Initialize()
 	. = ..()
-	if(prob(90)) //only has a 10% chance of existing, otherwise it'll just be a NPC syndie.
+	if(prob(50)) //only has a 10% chance of existing, otherwise it'll just be a NPC syndie.
 		new /mob/living/simple_animal/hostile/syndicate/ranged(get_turf(src))
 		return INITIALIZE_HINT_QDEL
 
 /datum/outfit/lavaland_syndicate/comms
 	name = "Lavaland Syndicate Comms Agent"
 	r_hand = /obj/item/melee/transforming/energy/sword/saber
-	mask = /obj/item/clothing/mask/chameleon/gps
+	mask = /obj/item/clothing/mask/chameleon/ //Replaced from /obj/item/clothing/mask/chameleon/gps because shouldn't it be stealthy?
 	suit = /obj/item/clothing/suit/armor/vest
 
 /obj/item/clothing/mask/chameleon/gps/Initialize()

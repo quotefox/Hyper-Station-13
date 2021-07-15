@@ -1,5 +1,6 @@
 /obj/item/reagent_containers/food/snacks/grown/mushroom
 	name = "mushroom"
+	desc = "We're rich."
 	bitesize_mod = 2
 	foodtype = VEGETABLES
 	wine_power = 40
@@ -21,7 +22,38 @@
 	growthstages = 4
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
-	reagents_add = list("morphine" = 0.35, "charcoal" = 0.35, "nutriment" = 0)
+	reagents_add = list(/datum/reagent/medicine/morphine = 0.35, /datum/reagent/medicine/charcoal = 0.35, /datum/reagent/consumable/nutriment = 0)
+	mutatelist = list(/obj/item/seeds/reishi/negative)
+
+/*
+/obj/item/seeds/reishi/dark
+	name = "pack of dark reishi mycelium"
+	desc = "This mycelium grows into something that'll put you into a trance."
+	plantname = "Dark Reishi"
+	lifespan = 2
+	endurance = 8
+	maturation = 6
+	production = 1
+	yield = 0
+	potency = 0
+	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/modified_color/bw)
+	reagents_add = list(/datum/reagent/medicine/morphine = 0.2, /datum/reagent/consumable/nutriment = 0.1, /datum/reagent/consumable/nutriment/vitamin = 0.02)
+	mutatelist = list(/obj/item/seeds/reishi/negative)
+*/
+
+/obj/item/seeds/reishi/negative
+	name = "pack of light-abosrbing reishi mycelium"
+	desc = "This mycelium grows into something so tranquil, you'll never want to wake up from its trance."
+	plantname = "Light-Absorbing Reishi"
+	lifespan = 1
+	endurance = 2	//Better use that enduro grow
+	maturation = 10
+	production = 6
+	yield = 0
+	potency = 0
+	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/modified_color)
+	reagents_add = list(/datum/reagent/medicine/morphine = 0.2, /datum/reagent/toxin/amanitin = 0.05, /datum/reagent/consumable/nutriment = 0.04, /datum/reagent/consumable/nutriment/vitamin = 0.02)
+	mutatelist = list(/obj/item/seeds/reishi)
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/reishi
 	seed = /obj/item/seeds/reishi
@@ -47,7 +79,7 @@
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	mutatelist = list(/obj/item/seeds/angel)
-	reagents_add = list("mushroomhallucinogen" = 0.04, "amatoxin" = 0.35, "nutriment" = 0, "growthserum" = 0.1)
+	reagents_add = list(/datum/reagent/drug/mushroomhallucinogen = 0.04, /datum/reagent/toxin/amatoxin = 0.35, /datum/reagent/consumable/nutriment = 0, /datum/reagent/growthserum = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/amanita
 	seed = /obj/item/seeds/amanita
@@ -73,7 +105,7 @@
 	growthstages = 3
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
-	reagents_add = list("mushroomhallucinogen" = 0.04, "amatoxin" = 0.1, "nutriment" = 0, "amanitin" = 0.2)
+	reagents_add = list(/datum/reagent/drug/mushroomhallucinogen = 0.04, /datum/reagent/toxin/amatoxin = 0.1, /datum/reagent/consumable/nutriment = 0, /datum/reagent/toxin/amanitin = 0.2)
 	rarity = 30
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/angel
@@ -99,7 +131,7 @@
 	growthstages = 3
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
-	reagents_add = list("mushroomhallucinogen" = 0.25, "nutriment" = 0.02)
+	reagents_add = list(/datum/reagent/drug/mushroomhallucinogen = 0.25, /datum/reagent/consumable/nutriment = 0.02)
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/libertycap
 	seed = /obj/item/seeds/liberty
@@ -125,7 +157,7 @@
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	mutatelist = list(/obj/item/seeds/plump/walkingmushroom)
-	reagents_add = list("vitamin" = 0.04, "nutriment" = 0.1)
+	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.1)
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/plumphelmet
 	seed = /obj/item/seeds/plump
@@ -133,7 +165,7 @@
 	desc = "<I>Plumus Hellmus</I>: Plump, soft and s-so inviting~"
 	icon_state = "plumphelmet"
 	filling_color = "#9370DB"
-	distill_reagent = "manlydorf"
+	distill_reagent = /datum/reagent/consumable/ethanol/manly_dorf
 
 // Walking Mushroom
 /obj/item/seeds/plump/walkingmushroom
@@ -149,7 +181,7 @@
 	yield = 1
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	mutatelist = list()
-	reagents_add = list("vitamin" = 0.05, "nutriment" = 0.15)
+	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.05, /datum/reagent/consumable/nutriment = 0.15)
 	rarity = 30
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/walkingmushroom
@@ -173,7 +205,7 @@
 	to_chat(user, "<span class='notice'>You plant the walking mushroom.</span>")
 
 // Chanterelle
-/obj/item/seeds/chanter
+/obj/item/seeds/chanterelle
 	name = "pack of chanterelle mycelium"
 	desc = "This mycelium grows into chanterelle mushrooms."
 	icon_state = "mycelium-chanter"
@@ -189,11 +221,11 @@
 	growthstages = 3
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
-	reagents_add = list("nutriment" = 0.1)
-	mutatelist = list(/obj/item/seeds/chanterelle/jupitercup)
+	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
+	mutatelist = list(/obj/item/seeds/chanterelle/jupitercup, /obj/item/seeds/chanterelle/jupitercup/monochrome)
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/chanterelle
-	seed = /obj/item/seeds/chanter
+	seed = /obj/item/seeds/chanterelle
 	name = "chanterelle cluster"
 	desc = "<I>Cantharellus Cibarius</I>: These jolly yellow little shrooms sure look tasty!"
 	icon_state = "chanterelle"
@@ -212,14 +244,45 @@
 	endurance = 8
 	yield = 4
 	growthstages = 2
-	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/reagent/teslium, /datum/plant_gene/trait/plant_type/carnivory)
+	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/reagent/fragile/teslium, /datum/plant_gene/trait/plant_type/carnivory)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
-	reagents_add = list("nutriment" = 0.1)
+	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
+	mutatelist = list()
 
-/obj/item/seeds/chanterelle/jupitercup/Initialize()
-	..()
-	unset_mutability(/datum/plant_gene/reagent/teslium, PLANT_GENE_EXTRACTABLE)
-	unset_mutability(/datum/plant_gene/trait/plant_type/carnivory, PLANT_GENE_REMOVABLE)
+/obj/item/seeds/chanterelle/jupitercup/Initialize(mapload, nogenes = FALSE)
+	. = ..()
+	if(!nogenes)
+		unset_mutability(/datum/plant_gene/trait/plant_type/carnivory, PLANT_GENE_REMOVABLE)
+
+/obj/item/seeds/chanterelle/jupitercup/hollow
+	name = "pack of hollow-cup mycelium"
+	desc = "This mycelium grows into hollow-cup mushrooms. These mushrooms require only the upmost attention."
+	plantname = "Hollow-cup Mushrooms"
+	lifespan = 1	//starts decaying before it can even be harvested once
+	production = 4
+	endurance = 5
+	yield = 0
+	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/plant_type/carnivory, /datum/plant_gene/trait/modified_color/transparent)
+	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
+	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
+	mutatelist = list(/obj/item/seeds/chanterelle/jupitercup, /obj/item/seeds/chanterelle/jupitercup/monochrome)
+	color =  list(1,0,0,0, 0,1,0,0, 0,0,1,0, -0.3,-0.3,-0.3,0.7, 0,0,0,0)
+	modified_colors = TRUE
+
+/obj/item/seeds/chanterelle/jupitercup/monochrome
+	name = "pack of silver-cup mycelium"
+	desc = "This mycelium grows into silver-cup mushrooms. These mushrooms require only the upmost attention."
+	plantname = "Silver-cup Mushrooms"
+	lifespan = 1
+	production = 5
+	endurance = 7
+	yield = 0
+	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/plant_type/carnivory, /datum/plant_gene/trait/modified_color/monochrome)
+	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
+	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1, /datum/reagent/consumable/nothing = 0.02)
+	mutatelist = list(/obj/item/seeds/chanterelle/jupitercup, /obj/item/seeds/chanterelle/jupitercup/hollow)
+	color = list(0.5,0.5,0.5,0, 0.5,0.5,0.5,0, 0.5,0.5,0.5,0, 0,0,0,1, 0,0,0,0)
+	modified_colors = TRUE
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/jupitercup
 	seed = /obj/item/seeds/chanterelle/jupitercup
@@ -247,7 +310,7 @@
 	genes = list(/datum/plant_gene/trait/glow, /datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
 	mutatelist = list(/obj/item/seeds/glowshroom/glowcap, /obj/item/seeds/glowshroom/shadowshroom)
-	reagents_add = list("radium" = 0.1, "phosphorus" = 0.1, "nutriment" = 0.04)
+	reagents_add = list(/datum/reagent/radium = 0.1, /datum/reagent/phosphorus = 0.1, /datum/reagent/consumable/nutriment = 0.04)
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/glowshroom
 	seed = /obj/item/seeds/glowshroom
@@ -292,7 +355,7 @@
 	product = /obj/item/reagent_containers/food/snacks/grown/mushroom/glowshroom/glowcap
 	genes = list(/datum/plant_gene/trait/glow/red, /datum/plant_gene/trait/cell_charge, /datum/plant_gene/trait/plant_type/fungal_metabolism)
 	mutatelist = list()
-	reagents_add = list("teslium" = 0.1, "nutriment" = 0.04)
+	reagents_add = list(/datum/reagent/teslium = 0.1, /datum/reagent/consumable/nutriment = 0.04)
 	rarity = 30
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/glowshroom/glowcap
@@ -317,7 +380,7 @@
 	product = /obj/item/reagent_containers/food/snacks/grown/mushroom/glowshroom/shadowshroom
 	genes = list(/datum/plant_gene/trait/glow/shadow, /datum/plant_gene/trait/plant_type/fungal_metabolism)
 	mutatelist = list()
-	reagents_add = list("radium" = 0.2, "nutriment" = 0.04)
+	reagents_add = list(/datum/reagent/radium = 0.2, /datum/reagent/consumable/nutriment = 0.04)
 	rarity = 30
 
 /obj/item/reagent_containers/food/snacks/grown/mushroom/glowshroom/shadowshroom
@@ -349,7 +412,7 @@
 	potency = 15
 	growthstages = 3
 	rarity = 20
-	reagents_add = list("nutriment" = 0.1)
+	reagents_add = list(/datum/reagent/consumable/nutriment = 0.1)
 	resistance_flags = FIRE_PROOF
 
 /obj/item/seeds/lavaland/polypore
@@ -385,6 +448,19 @@
 	product = /obj/item/reagent_containers/food/snacks/grown/ash_flora/mushroom_cap
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
+	mutatelist = list(/obj/item/seeds/lavaland/inocybe/magenta)
+
+/obj/item/seeds/lavaland/inocybe/magenta
+	name = "pack of dilated inocybe mycelium"
+	desc = "This mycelium grows into a specially-colored inocybe mushroom, their shifted cells make them appear red."
+	plantname = "Red Inocybe Mushrooms"
+	lifespan = 4
+	endurance = 5
+	maturation = 3
+	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/modified_color/monochrome/red)
+	mutatelist = list()
+	color = list(0.8,0,0,0, 0.8,0.5,0.5,0, 0.8,0.5,0.5,0, 0,0,0,1, 0,0,0,0)
+	modified_colors = TRUE
 
 // Embershroom (Mushroom stem)
 
@@ -397,3 +473,18 @@
 	product = /obj/item/reagent_containers/food/snacks/grown/ash_flora/mushroom_stem
 	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/glow)
 	growing_icon = 'icons/obj/hydroponics/growing_mushrooms.dmi'
+	mutatelist = list(/obj/item/seeds/lavaland/ember/cyan)
+
+/obj/item/seeds/lavaland/ember/cyan
+	name = "pack of dilated embershroom mycelium"
+	desc = "This mycelium grows into a specially-colored embershroom mushroom, their shifted cells make them appear blue."
+	plantname = "Blue Embershroom Mushrooms"
+	lifespan = 6
+	endurance = 10
+	maturation = 4
+	yield = 2
+	potency = 25
+	genes = list(/datum/plant_gene/trait/plant_type/fungal_metabolism, /datum/plant_gene/trait/glow/blue, /datum/plant_gene/trait/modified_color/monochrome/blue)
+	mutatelist = list()
+	color = list(0.5,0.5,0.8,0, 0.5,0.5,0.8,0, 0,0,0.8,0, 0,0,0,1, 0,0,0,0)
+	modified_colors = TRUE

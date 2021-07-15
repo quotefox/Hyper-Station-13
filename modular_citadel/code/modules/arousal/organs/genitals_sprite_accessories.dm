@@ -90,6 +90,11 @@
 	name = "Single"
 	alt_aroused = TRUE
 
+/datum/sprite_accessory/testicles/sheath
+	icon_state = "sheath"
+	name = "Sheath"
+	alt_aroused = TRUE
+
 //Vaginas
 /datum/sprite_accessory/vagina
 	icon = 'modular_citadel/icons/obj/genitals/vagina_onmob.dmi'
@@ -130,6 +135,15 @@
 /datum/sprite_accessory/vagina/gaping
     icon_state = "gaping"
     name = "Gaping"
+
+//BREASTS BE HERE
+/datum/sprite_accessory/belly
+	icon = 'hyperstation/icons/obj/genitals/belly.dmi'
+	icon_state = "belly"
+	name = "belly"
+	gender_specific = 0
+	color_src = "belly_color"
+	locked = 0
 
 //BREASTS BE HERE
 /datum/sprite_accessory/breasts

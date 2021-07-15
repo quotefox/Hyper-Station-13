@@ -27,7 +27,7 @@
 /datum/antagonist/ninja/proc/addMemories()
 	antag_memory += "I am an elite mercenary assassin of the mighty Spider Clan. A <font color='red'><B>SPACE NINJA</B></font>!<br>"
 	antag_memory += "Surprise is my weapon. Shadows are my armor. Without them, I am nothing. (//initialize your suit by clicking the initialize UI button, to use abilities like stealth)!<br>"
-	antag_memory += "Officially, [helping_station?"Nanotrasen":"The Syndicate"] are my employer.<br>"
+	antag_memory += "Officially, [helping_station?"Kinaris":"The Syndicate"] are my employer.<br>"
 
 /datum/antagonist/ninja/proc/addObjectives(quantity = 6)
 	var/list/possible_targets = list()
@@ -39,7 +39,7 @@
 				else if(M.assigned_role in GLOB.command_positions)
 					possible_targets[M] = 1						//good-guy
 
-	var/list/possible_objectives = list(1,2,3,4)
+	var/list/possible_objectives = list(1,2,3)
 
 	while(objectives.len < quantity)
 		switch(pick_n_take(possible_objectives))
@@ -52,6 +52,7 @@
 			if(2)	//steal
 				var/datum/objective/steal/special/O = new /datum/objective/steal/special()
 				O.owner = owner
+				O.find_target()
 				objectives += O
 
 			if(3)	//protect/kill
@@ -73,6 +74,7 @@
 					O.target = M
 					O.explanation_text = "Protect \the [M.current.real_name], the [M.assigned_role], from harm."
 					objectives += O
+			/*
 			if(4)	//debrain/capture
 				if(!possible_targets.len)	continue
 				var/selected = rand(1,possible_targets.len)
@@ -91,6 +93,7 @@
 					O.owner = owner
 					O.gen_amount_goal()
 					objectives += O
+			*/
 			else
 				break
 	var/datum/objective/O = new /datum/objective/survive()

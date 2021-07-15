@@ -247,8 +247,8 @@ GLOBAL_LIST_EMPTY(objectives)
 	human_check = FALSE
 
 /datum/objective/hijack
-	explanation_text = "Hijack the shuttle to ensure no loyalist Nanotrasen crew escape alive and out of custody."
-	team_explanation_text = "Hijack the shuttle to ensure no loyalist Nanotrasen crew escape alive and out of custody. Leave no team member behind."
+	explanation_text = "Hijack the shuttle to ensure no loyalist Kinaris crew escape alive and out of custody."
+	team_explanation_text = "Hijack the shuttle to ensure no loyalist Kinaris crew escape alive and out of custody. Leave no team member behind."
 	martyr_compatible = 0 //Technically you won't get both anyway.
 
 /datum/objective/hijack/check_completion() // Requires all owners to escape.
@@ -286,7 +286,7 @@ GLOBAL_LIST_EMPTY(objectives)
 			if(H.dna.species.id != "human")
 				return FALSE
 	return TRUE
-
+/*
 /datum/objective/robot_army
 	explanation_text = "Have at least eight active cyborgs synced to you."
 	martyr_compatible = 0
@@ -302,7 +302,7 @@ GLOBAL_LIST_EMPTY(objectives)
 			if(R.stat != DEAD)
 				counter++
 	return counter >= 8
-
+*/
 /datum/objective/escape
 	explanation_text = "Escape on the shuttle or an escape pod alive and without being in custody."
 	team_explanation_text = "Have all members of your team escape on a shuttle or pod alive, without being in custody."
@@ -416,8 +416,16 @@ GLOBAL_LIST_EMPTY(possible_items)
 			for(var/datum/mind/M in owners)
 				if(M.current.mind.assigned_role in possible_item.excludefromjob)
 					continue check_items
-			approved_targets += possible_item
+			if(extraSanityCheck(possible_item.targetitem))
+				approved_targets += possible_item
 	return set_target(safepick(approved_targets))
+
+/datum/objective/steal/proc/extraSanityCheck(objectiveitem)
+	if(objectiveitem == /obj/item/aicard) //Is the item an AI card? (Steal a functional AI)
+		var/list/ais = active_ais() //Check if we have active AIs.
+		if(!ais.len)
+			return FALSE //No AIs, returns false, disallowing the AI card objective from being added to the approved target list
+	return TRUE //All checks successful, add this item to the approved target list
 
 /datum/objective/steal/proc/set_target(datum/objective_item/item)
 	if(item)
@@ -876,5 +884,39 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 	explanation_text = "Have X or more heads of staff escape on the shuttle disguised as heads, while the real heads are dead"
 	command_staff_only = TRUE
 
+/datum/objective/hoard
+	explanation_text = "Hoard items!"
+	var/obj/item/hoarded_item = null
 
+/datum/objective/hoard/get_target()
+	return hoarded_item
 
+/datum/objective/hoard/proc/set_target(obj/item/I)
+	if(I)
+		hoarded_item = I
+		explanation_text = "Steal and keep [I] heirloom on your person at all times."
+		return hoarded_item
+	else
+		explanation_text = "Free objective"
+		return
+
+/datum/objective/hoard/check_completion()
+	var/list/datum/mind/owners = get_owners()
+	if(!hoarded_item)
+		return TRUE
+	for(var/datum/mind/M in owners)
+		if(!isliving(M.current))
+			continue
+
+		var/list/all_items = M.current.GetAllContents()	//this should get things in cheesewheels, books, etc.
+
+		for(var/obj/I in all_items) //Check for items
+			if(I == hoarded_item)
+				return TRUE
+	return FALSE
+
+/datum/objective/hoard/heirloom
+	explanation_text = "Steal target heirloom!"
+
+/datum/objective/hoard/heirloom/find_target()
+	set_target(pick(GLOB.family_heirlooms))

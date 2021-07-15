@@ -216,6 +216,10 @@
 	icon = "honkednloaded"
 	desc = "Honk."
 
+/datum/barsign/cumzone
+	name = "The Cumzone"
+	icon = "thecumzone"
+	desc = "Welcome."
 
 /datum/barsign/thenest
 	name = "The Nest"
@@ -301,8 +305,23 @@
 
 /datum/barsign/meow_mix
 	name = "Meow Mix"
-	icon = "meow_mix"
+	icon = "meow mix"
 	desc = "No, we don't serve catnip, officer!"
+
+/datum/barsign/goose
+	name = "The Loose Goose"
+	icon = "goose"
+	desc = "Drink till you puke and/or break the laws of reality!"
+
+/datum/barsign/the_hive
+	name = "The Hive"
+	icon = "thehive"
+	desc = "Comb in for some sweet drinks! Not known for serving any sappy drink."
+
+/datum/barsign/kinariscorp
+	name = "Kinaris.Co"
+	icon = "kinariscorp"
+	desc = "Provided in saturated olive, Much like the drinks."
 
 /datum/barsign/hiddensigns
 	hidden = TRUE

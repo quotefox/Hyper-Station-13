@@ -41,7 +41,7 @@
 		return
 	var/client/C
 	if(istext(whom))
-		if(cmptext(copytext(whom,1,2),"@"))
+		if(whom[1] == "@")
 			whom = findStealthKey(whom)
 		C = GLOB.directory[whom]
 	else if(istype(whom, /client))
@@ -76,7 +76,7 @@
 	var/client/recipient
 	var/irc = 0
 	if(istext(whom))
-		if(cmptext(copytext(whom,1,2),"@"))
+		if(whom[1] == "@")
 			whom = findStealthKey(whom)
 		if(whom == "IRCKEY")
 			irc = 1
@@ -133,7 +133,7 @@
 
 	//clean the message if it's not sent by a high-rank admin
 	if(!check_rights(R_SERVER|R_DEBUG,0)||irc)//no sending html to the poor bots
-		msg = trim(sanitize(copytext(msg,1,MAX_MESSAGE_LEN)))
+		msg = trim(sanitize(msg), MAX_MESSAGE_LEN)
 		if(!msg)
 			return
 
@@ -217,7 +217,7 @@
 
 
 
-#define IRC_AHELP_USAGE "Usage: ticket <close|resolve|icissue|reject|reopen \[ticket #\]|list>"
+#define IRC_AHELP_USAGE "Usage: ticket <close|resolve|icissue|reject|mentor|reopen \[ticket #\]|list>"
 /proc/IrcPm(target,msg,sender)
 	target = ckey(target)
 	var/client/C = GLOB.directory[target]
@@ -245,6 +245,10 @@
 			if("reject")
 				if(ticket)
 					ticket.Reject(irc_tagged)
+					return "Ticket #[ticket.id] successfully rejected"
+			if("mentor")
+				if(ticket)
+					ticket.Mentor(irc_tagged)
 					return "Ticket #[ticket.id] successfully rejected"
 			if("reopen")
 				if(ticket)
@@ -287,7 +291,7 @@
 	if(!stealthkey)
 		stealthkey = GenIrcStealthKey()
 
-	msg = sanitize(copytext(msg,1,MAX_MESSAGE_LEN))
+	msg = sanitize(copytext_char(msg, 1, MAX_MESSAGE_LEN))
 	if(!msg)
 		return "Error: No message"
 

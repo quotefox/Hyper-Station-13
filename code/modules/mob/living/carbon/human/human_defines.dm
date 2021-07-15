@@ -5,7 +5,7 @@
 	pressure_resistance = 25
 	can_buckle = TRUE
 	buckle_lying = FALSE
-	mob_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
+	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	//Hair colour and style
 	var/hair_color = "000"
 	var/hair_style = "Bald"
@@ -23,6 +23,9 @@
 
 	var/lip_style = null	//no lipstick by default- arguably misleading, as it could be used for general makeup
 	var/lip_color = "white"
+
+	var/nail_style = null
+	var/nail_color = "white"
 
 	var/age = 30		//Player's age
 
@@ -49,6 +52,9 @@
 	var/bleed_rate = 0 //how much are we bleeding
 	var/bleedsuppress = 0 //for stopping bloodloss, eventually this will be limb-based like bleeding
 
+	var/blood_state = BLOOD_STATE_NOT_BLOODY
+	var/list/blood_smear = list(BLOOD_STATE_BLOOD = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
+
 	var/name_override //For temporary visible name changes
 	var/genital_override = FALSE //Force genitals on things incase of chems
 
@@ -56,7 +62,6 @@
 
 	var/custom_species = null
 
-	var/datum/personal_crafting/handcrafting
 	var/datum/physiology/physiology
 
 	var/list/datum/bioware = list()
@@ -65,3 +70,6 @@
 	var/static/list/can_ride_typecache = typecacheof(list(/mob/living/carbon/human, /mob/living/simple_animal/slime, /mob/living/simple_animal/parrot))
 	var/lastpuke = 0
 	var/last_fire_update
+	var/account_id
+	can_be_held = "micro"
+	appearance_flags = KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE|LONG_GLIDE

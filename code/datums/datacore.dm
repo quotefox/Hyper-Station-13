@@ -81,7 +81,7 @@
 		if(N.new_character)
 			log_manifest(N.ckey,N.new_character.mind,N.new_character)
 		if(ishuman(N.new_character))
-			manifest_inject(N.new_character, N.client)
+			manifest_inject(N.new_character, N.client, N.client.prefs)
 		CHECK_TICK
 
 /datum/datacore/proc/manifest_modify(name, assignment)
@@ -197,17 +197,22 @@
 	return dat
 
 
-/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H, client/C)
+/datum/datacore/proc/manifest_inject(mob/living/carbon/human/H, client/C, datum/preferences/prefs)
 	set waitfor = FALSE
 	var/static/list/show_directions = list(SOUTH, WEST)
 	if(H.mind && (H.mind.assigned_role != H.mind.special_role))
 		var/assignment
+		var/displayed_rank
 		if(H.mind.assigned_role)
 			assignment = H.mind.assigned_role
 		else if(H.job)
 			assignment = H.job
 		else
 			assignment = "Unassigned"
+			if(C && C.prefs && C.prefs.alt_titles_preferences[assignment])
+				assignment = C.prefs.alt_titles_preferences[assignment]
+		if(assignment)
+			displayed_rank = C.prefs.alt_titles_preferences[assignment]
 
 		var/static/record_id_num = 1001
 		var/id = num2hex(record_id_num++,6)
@@ -231,6 +236,7 @@
 		G.fields["id"]			= id
 		G.fields["name"]		= H.real_name
 		G.fields["rank"]		= assignment
+		G.fields["job_title"]   = displayed_rank
 		G.fields["age"]			= H.age
 		G.fields["species"]	= H.dna.species.name
 		G.fields["fingerprint"]	= md5(H.dna.uni_identity)
@@ -255,7 +261,7 @@
 		M.fields["alg_d"]		= "No allergies have been detected in this patient."
 		M.fields["cdi"]			= "None"
 		M.fields["cdi_d"]		= "No diseases have been diagnosed at the moment."
-		M.fields["notes"]		= "No notes."
+		M.fields["notes"]		= "Trait information as of shift start: [H.get_trait_string(medical)]<br>[prefs.medical_records]"
 		medical += M
 
 		//Security Record
@@ -265,7 +271,7 @@
 		S.fields["criminal"]	= "None"
 		S.fields["mi_crim"]		= list()
 		S.fields["ma_crim"]		= list()
-		S.fields["notes"]		= "No notes."
+		S.fields["notes"]		= prefs.security_records || "No notes."
 		security += S
 
 		//Locked Record
@@ -273,6 +279,7 @@
 		L.fields["id"]			= md5("[H.real_name][H.mind.assigned_role]")	//surely this should just be id, like the others?
 		L.fields["name"]		= H.real_name
 		L.fields["rank"] 		= H.mind.assigned_role
+		L.fields["job_title"]   = displayed_rank
 		L.fields["age"]			= H.age
 		L.fields["sex"]			= H.gender
 		L.fields["blood_type"]	= H.dna.blood_type

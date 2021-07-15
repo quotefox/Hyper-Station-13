@@ -95,7 +95,7 @@
 /datum/crafting_recipe/food/sausage
 	name = "Sausage"
 	reqs = list(
-		/obj/item/reagent_containers/food/snacks/faggot = 1,
+		/obj/item/reagent_containers/food/snacks/meatball = 1,
 		/obj/item/reagent_containers/food/snacks/meat/cutlet = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/sausage
@@ -114,7 +114,7 @@
 	reqs = list(
 		/obj/item/reagent_containers/food/snacks/doughslice = 1,
 		/obj/item/reagent_containers/food/snacks/grown/garlic = 1,
-		/obj/item/reagent_containers/food/snacks/faggot = 1
+		/obj/item/reagent_containers/food/snacks/meatball = 1
 	)
 	result =  /obj/item/reagent_containers/food/snacks/rawkhinkali
 	subcategory = CAT_MEAT
@@ -154,4 +154,26 @@
 		/obj/item/reagent_containers/food/snacks/meat/cutlet = 2
 	)
 	result = /obj/item/reagent_containers/food/snacks/salad/ricepork
+	subcategory = CAT_MEAT
+
+/datum/crafting_recipe/food/fiestaskewer
+	name = "Fiesta Skewer"
+	reqs = list(
+		/obj/item/stack/rods = 1,
+		/obj/item/reagent_containers/food/snacks/grown/chili = 1,
+		/obj/item/reagent_containers/food/snacks/meat/cutlet = 1,
+		/obj/item/reagent_containers/food/snacks/grown/corn = 1,
+		/obj/item/reagent_containers/food/snacks/grown/tomato = 1
+	)
+	result = /obj/item/reagent_containers/food/snacks/kebab/fiesta
+	subcategory = CAT_MEAT
+
+/datum/crafting_recipe/food/ribs
+	name = "BBQ Ribs"
+	reqs = list(
+		/datum/reagent/consumable/bbqsauce = 5,
+		/obj/item/reagent_containers/food/snacks/meat/steak/plain = 2,
+		/obj/item/stack/rods = 2
+	)
+	result = /obj/item/reagent_containers/food/snacks/bbqribs
 	subcategory = CAT_MEAT

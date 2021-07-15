@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 //All bundles and telecrystals
 /datum/uplink_item/bundles_TC
-	category = "Bundles and Telecrystals"
+	category = "Telecrystals and Bundles"
 	surplus = 0
 	cant_discount = TRUE
 
@@ -288,7 +288,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 // Dangerous Items
 /datum/uplink_item/dangerous
-	category = "Conspicuous and Dangerous Weapons"
+	category = "Conspicuous Weapons"
 
 /datum/uplink_item/dangerous/pistol
 	name = "Stechkin Pistol"
@@ -544,7 +544,7 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 
 // Stealthy Weapons
 /datum/uplink_item/stealthy_weapons
-	category = "Stealthy and Inconspicuous Weapons"
+	category = "Stealthy Weapons"
 
 /datum/uplink_item/stealthy_weapons/combatglovesplus
 	name = "Combat Gloves Plus"
@@ -711,7 +711,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	desc = "An additional 8-round 10mm magazine; compatible with the Stechkin Pistol. Loaded with soporific rounds that put the target to sleep. \
 			NOTE: Soporific is not instant acting due to the constraints of the round's scale. Will usually require three shots to take effect."
 	item = /obj/item/ammo_box/magazine/m10mm/soporific
-	cost = 2
+	cost = 1
 
 /datum/uplink_item/ammo/shotgun
 	cost = 2
@@ -767,8 +767,14 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	desc = "A speed loader that contains seven additional .357 Magnum rounds; usable with the Syndicate revolver. \
 			For when you really need a lot of things dead."
 	item = /obj/item/ammo_box/a357
-	cost = 4
+	cost = 3
 	exclude_modes = list(/datum/game_mode/nuclear/clown_ops)
+
+/datum/uplink_item/ammo/revolver/ap
+	name = ".357 Armor Piercing Speed Loader"
+	desc = "A speed loader that contains seven additional .357 AP Magnum rounds; usable with the Syndicate revolver. \
+			Cuts through like a hot knife through butter."
+	item = /obj/item/ammo_box/a357/ap
 
 /datum/uplink_item/ammo/a40mm
 	name = "40mm Grenade"
@@ -899,6 +905,17 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	cost = 2
 	surplus = 0
 
+//Chemlight Changes
+/datum/uplink_item/ammo/pistolzzz_bundle
+	name = "Box of 10mm Soporific Ammo"
+	desc = "A bundle of three 8-round 10mm magazine; compatible with the Stechkin Pistol. Loaded with soporific rounds that put the target to sleep. \
+		Due to a stockpile in soporific munitions, buy now and we'll throw in a ammo box holding 24 rounds for free! Enough to restock all magazines included. \
+		NOTE: Soporific is not instant acting due to the constraints of the round's scale. Will usually require three shots to take effect."
+	item = /obj/item/storage/box/syndie_kit/soporific_bundle
+	cost = 3
+	limited_stock = 1
+//End of Chemlight changes
+
 /datum/uplink_item/ammo/bioterror
 	name = "Box of Bioterror Syringes"
 	desc = "A box full of preloaded syringes, containing various chemicals that seize up the victim's motor \
@@ -915,7 +932,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	include_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/explosives
-	category = "Grenades and Explosives"
+	category = "Explosives"
 
 /datum/uplink_item/explosives/bioterrorfoam
 	name = "Bioterror Foam Grenade"
@@ -1073,7 +1090,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 //Support and Mechs
 /datum/uplink_item/support
-	category = "Support and Mechanized Exosuits"
+	category = "Support and Exosuits"
 	surplus = 0
 	include_modes = list(/datum/game_mode/nuclear)
 
@@ -1164,7 +1181,6 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 			Due to budget cuts, the shoes don't provide protection against slipping."
 	item = /obj/item/storage/box/syndie_kit/chameleon
 	cost = 2
-	exclude_modes = list(/datum/game_mode/nuclear)
 
 /datum/uplink_item/stealthy_tools/chameleon_proj
 	name = "Chameleon Projector"
@@ -1269,7 +1285,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 //Space Suits and Hardsuits
 /datum/uplink_item/suits
-	category = "Space Suits, Hardsuits and Clothing"
+	category = "Clothing"
 	surplus = 40
 
 /datum/uplink_item/suits/turtlenck
@@ -1309,8 +1325,8 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 /datum/uplink_item/suits/space_suit
 	name = "Syndicate Space Suit"
-	desc = "This red and black Syndicate space suit is less encumbering than Nanotrasen variants, \
-			fits inside bags, and has a weapon slot. Nanotrasen crew members are trained to report red space suit \
+	desc = "This red and black Syndicate space suit is less encumbering than Kinaris variants, \
+			fits inside bags, and has a weapon slot. Kinaris crew members are trained to report red space suit \
 			sightings, however."
 	item = /obj/item/storage/box/syndie_kit/space
 	cost = 4
@@ -1321,7 +1337,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 			that runs off standard atmospheric tanks. Toggling the suit in and out of \
 			combat mode will allow you all the mobility of a loose fitting uniform without sacrificing armoring. \
 			Additionally the suit is collapsible, making it small enough to fit within a backpack. \
-			Nanotrasen crew who spot these suits are known to panic."
+			Kinaris crew who spot these suits are known to panic."
 	item = /obj/item/clothing/suit/space/hardsuit/syndi
 	cost = 8
 	exclude_modes = list(/datum/game_mode/nuclear) //you can't buy it in nuke, because the elite hardsuit costs the same while being better
@@ -1346,7 +1362,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 // Devices and Tools
 /datum/uplink_item/device_tools
-	category = "Devices and Tools"
+	category = "Misc. Gadgets"
 
 /datum/uplink_item/device_tools/emag
 	name = "Cryptographic Sequencer"
@@ -1391,7 +1407,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 /datum/uplink_item/device_tools/magboots
 	name = "Blood-Red Magboots"
 	desc = "A pair of magnetic boots with a Syndicate paintjob that assist with freer movement in space or on-station \
-			during gravitational generator failures. These reverse-engineered knockoffs of Nanotrasen's \
+			during gravitational generator failures. These reverse-engineered knockoffs of Kinaris's \
 			'Advanced Magboots' slow you down in simulated-gravity environments much like the standard issue variety."
 	item = /obj/item/clothing/shoes/magboots/syndie
 	cost = 2
@@ -1487,9 +1503,10 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 /datum/uplink_item/device_tools/singularity_beacon
 	name = "Power Beacon"
 	desc = "When screwed to wiring attached to an electric grid and activated, this large device pulls any \
-			active gravitational singularities or tesla balls towards it. This will not work when the engine is still \
-			in containment. Because of its size, it cannot be carried. Ordering this \
-			sends you a small beacon that will teleport the larger beacon to your location upon activation."
+			active gravitational singularities or tesla balls towards it (provided they are not safely \
+			contained), as well as increasing the odds of incoming meteor waves. \
+			Because of its size, it cannot be carried. Ordering this sends you a small beacon \
+			that will teleport the larger beacon to your location upon activation."
 	item = /obj/item/sbeacondrop
 	cost = 14
 
@@ -1503,7 +1520,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 
 /datum/uplink_item/device_tools/rad_laser
 	name = "Radioactive Microlaser"
-	desc = "A radioactive microlaser disguised as a standard Nanotrasen health analyzer. When used, it emits a \
+	desc = "A radioactive microlaser disguised as a standard Kinaris health analyzer. When used, it emits a \
 			powerful burst of radiation, which, after a short delay, can incapacitate all but the most protected \
 			of humanoids. It has two settings: intensity, which controls the power of the radiation, \
 			and wavelength, which controls the delay before the effect kicks in."
@@ -1756,7 +1773,7 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	cost = 2
 	restricted_roles = list("Curator")
 	limited_stock = 1 //please don't spam deadchat
-
+/* Disabled because this is waaaay too chaotic for hyper
 /datum/uplink_item/role_restricted/his_grace
 	name = "His Grace"
 	desc = "An incredibly dangerous weapon recovered from a station overcome by the grey tide. Once activated, He will thirst for blood and must be used to kill to sate that thirst. \
@@ -1767,6 +1784,24 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	cost = 20
 	restricted_roles = list("Chaplain")
 	surplus = 5 //Very low chance to get it in a surplus crate even without being the chaplain
+*/
+/datum/uplink_item/role_restricted/clockwork_slab
+	name = "Clockwork Slab"
+	desc = "A reverse engineered clockwork slab. Is this really a good idea?"
+	item = /obj/item/clockwork/slab/traitor
+	cost = 20
+	refundable = TRUE
+	restricted_roles = list("Chaplain","Curator")
+	cant_discount = TRUE
+
+/datum/uplink_item/role_restricted/arcane_tome
+	name = "Arcane Tome"
+	desc = "A 'replica' of a Nar'sian tome. This is probably a bad idea..."
+	item = /obj/item/tome/traitor
+	cost = 20
+	refundable = TRUE
+	restricted_roles = list("Chaplain","Curator")
+	cant_discount = TRUE
 
 /datum/uplink_item/role_restricted/explosive_hot_potato
 	name = "Exploding Hot Potato"

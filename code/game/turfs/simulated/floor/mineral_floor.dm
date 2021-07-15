@@ -7,6 +7,7 @@
  * Diamond floor
  * Uranium floor
  * Shuttle floor (Titanium)
+ * Sand floors
  */
 
 /turf/open/floor/mineral
@@ -84,29 +85,59 @@
 	broken_states = list("titanium_dam1","titanium_dam2","titanium_dam3","titanium_dam4","titanium_dam5")
 
 /turf/open/floor/mineral/titanium/airless
-	initial_gas_mix = "TEMP=2.7"
+	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/mineral/titanium/yellow
 	icon_state = "titanium_yellow"
 
 /turf/open/floor/mineral/titanium/yellow/airless
-	initial_gas_mix = "TEMP=2.7"
+	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/mineral/titanium/blue
 	icon_state = "titanium_blue"
 
 /turf/open/floor/mineral/titanium/blue/airless
-	initial_gas_mix = "TEMP=2.7"
+	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/mineral/titanium/white
 	icon_state = "titanium_white"
 
 /turf/open/floor/mineral/titanium/white/airless
-	initial_gas_mix = "TEMP=2.7"
+	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/mineral/titanium/purple
 	icon_state = "titanium_purple"
 
+/turf/open/floor/mineral/titanium/purple/airless
+	initial_gas_mix = AIRLESS_ATMOS
+
+// Old Titanium Floor
+
+/turf/open/floor/mineral/titanium/old
+	name = "tiled floor"
+	icon_state = "titanium_old"
+	floor_tile = /obj/item/stack/tile/mineral/titanium
+	broken_states = list("titanium_dam1_old","titanium_dam2_old","titanium_dam3_old","titanium_dam4_old","titanium_dam5_old")
+/turf/open/floor/mineral/titanium/old/airless
+	initial_gas_mix = "TEMP=2.7"
+
+/turf/open/floor/mineral/titanium/old/yellow
+	icon_state = "titanium_yellow_old"
+/turf/open/floor/mineral/titanium/old/yellow/airless
+	initial_gas_mix = "TEMP=2.7"
+
+/turf/open/floor/mineral/titanium/old/blue
+	icon_state = "titanium_blue_old"
+/turf/open/floor/mineral/titanium/old/blue/airless
+	initial_gas_mix = "TEMP=2.7"
+
+/turf/open/floor/mineral/titanium/old/white
+	icon_state = "titanium_white_old"
+/turf/open/floor/mineral/titanium/old/white/airless
+	initial_gas_mix = "TEMP=2.7"
+
+/turf/open/floor/mineral/titanium/old/purple
+	icon_state = "titanium_purple_old"
 /turf/open/floor/mineral/titanium/purple/airless
 	initial_gas_mix = "TEMP=2.7"
 
@@ -118,13 +149,13 @@
 	broken_states = list("plastitanium_dam1","plastitanium_dam2","plastitanium_dam3","plastitanium_dam4","plastitanium_dam5")
 
 /turf/open/floor/mineral/plastitanium/airless
-	initial_gas_mix = "TEMP=2.7"
+	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/mineral/plastitanium/red
 	icon_state = "plastitanium_red"
 
 /turf/open/floor/mineral/plastitanium/red/airless
-	initial_gas_mix = "TEMP=2.7"
+	initial_gas_mix = AIRLESS_ATMOS
 
 /turf/open/floor/mineral/plastitanium/red/brig
 	name = "brig floor"
@@ -170,7 +201,7 @@
 		spam_flag = world.time + 10
 
 /turf/open/floor/mineral/bananium/airless
-	initial_gas_mix = "TEMP=2.7"
+	initial_gas_mix = AIRLESS_ATMOS
 
 //DIAMOND
 
@@ -240,3 +271,23 @@
 
 /turf/open/floor/mineral/abductor/burn_tile()
 	return //unburnable
+
+//SAND
+
+/turf/open/floor/mineral/sandstone_floor
+	name = "sandstone floor"
+	icon_state = "sandstonef"
+	floor_tile = /obj/item/stack/tile/mineral/sandstone
+	icons = list("sandstonef","sandstonef_dam")
+
+/turf/open/floor/mineral/crimsonstone_floor
+	name = "crimson floor"
+	icon_state = "crimsonstone"
+	floor_tile = /obj/item/stack/tile/mineral/crimsonstone
+	icons = list("crimsonstone","crimsonstone_dam")
+
+/turf/open/floor/mineral/basaltstone_floor
+	name = "basalt floor"
+	icon_state = "basaltstone"
+	floor_tile = /obj/item/stack/tile/mineral/basaltstone
+	icons = list("basaltstone","basaltstone_dam")

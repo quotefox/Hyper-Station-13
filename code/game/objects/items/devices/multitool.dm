@@ -32,12 +32,15 @@
 	var/datum/integrated_io/selected_io = null  //functional for integrated circuits.
 	var/mode = 0
 
+	drop_sound = 'sound/items/handling/multitool_drop.ogg'
+	pickup_sound =  'sound/items/handling/multitool_pickup.ogg'
+
 /obj/item/multitool/examine(mob/user)
-	..()
+	. = ..()
 	if(selected_io)
-		to_chat(user, "<span class='notice'>Activate [src] to detach the data wire.</span>")
+		. += "<span class='notice'>Activate [src] to detach the data wire.</span>"
 	if(buffer)
-		to_chat(user, "<span class='notice'>Its buffer contains [buffer].</span>")
+		. += "<span class='notice'>Its buffer contains [buffer].</span>"
 
 /obj/item/multitool/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] puts the [src] to [user.p_their()] chest. It looks like [user.p_theyre()] trying to pulse [user.p_their()] heart off!</span>")

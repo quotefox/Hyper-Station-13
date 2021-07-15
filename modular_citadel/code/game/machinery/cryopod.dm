@@ -140,6 +140,8 @@
 	var/obj/machinery/computer/cryopod/control_computer
 	var/last_no_computer_message = 0
 
+	var/alert_comms = TRUE	//If we alert crew who cryo'd
+
 	// These items are preserved when the process() despawn proc occurs.
 	var/list/preserve_items = list(
 		/obj/item/hand_tele,
@@ -277,6 +279,7 @@
 	// Delete them from datacore.
 
 	var/announce_rank = null
+	var/announce_job_title = null
 	for(var/datum/data/record/R in GLOB.data_core.medical)
 		if((R.fields["name"] == mob_occupant.real_name))
 			qdel(R)
@@ -286,6 +289,7 @@
 	for(var/datum/data/record/G in GLOB.data_core.general)
 		if((G.fields["name"] == mob_occupant.real_name))
 			announce_rank = G.fields["rank"]
+			announce_job_title = G.fields["job_title"]
 			qdel(G)
 
 	for(var/obj/machinery/computer/cloning/cloner in world)
@@ -297,27 +301,10 @@
 	if(control_computer)
 		control_computer.frozen_crew += "[mob_occupant.real_name]"
 
-	if(GLOB.announcement_systems.len)
+	if(GLOB.announcement_systems.len && alert_comms)
 		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
-		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, list())
+		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, announce_job_title, list())
 		visible_message("<span class='notice'>\The [src] hums and hisses as it moves [mob_occupant.real_name] into storage.</span>")
-
-
-	for(var/obj/item/W in mob_occupant.GetAllContents())
-		if(W.loc.loc && (( W.loc.loc == loc ) || (W.loc.loc == control_computer)))
-			continue//means we already moved whatever this thing was in
-			//I'm a professional, okay
-		for(var/T in preserve_items)
-			if(istype(W, T))
-				if(control_computer && control_computer.allow_items)
-					control_computer.frozen_items += W
-					mob_occupant.transferItemToLoc(W, control_computer, TRUE)
-				else
-					mob_occupant.transferItemToLoc(W, loc, TRUE)
-
-	for(var/obj/item/W in mob_occupant.GetAllContents())
-		qdel(W)//because we moved all items to preserve away
-		//and yes, this totally deletes their bodyparts one by one, I just couldn't bother
 
 	if(iscyborg(mob_occupant))
 		var/mob/living/silicon/robot/R = occupant
@@ -325,6 +312,24 @@
 
 		R.contents -= R.mmi
 		qdel(R.mmi)
+
+		QDEL_NULL_LIST(R.contents)
+	else
+		for(var/obj/item/W in mob_occupant.GetAllContents())
+			if(W.loc.loc && (( W.loc.loc == loc ) || (W.loc.loc == control_computer)))
+				continue//means we already moved whatever this thing was in
+				//I'm a professional, okay
+			for(var/T in preserve_items)
+				if(istype(W, T))
+					if(control_computer && control_computer.allow_items)
+						control_computer.frozen_items += W
+						mob_occupant.transferItemToLoc(W, control_computer, TRUE)
+					else
+						mob_occupant.transferItemToLoc(W, loc, TRUE)
+
+	for(var/obj/item/W in mob_occupant.GetAllContents())
+		qdel(W)//because we moved all items to preserve away
+		//and yes, this totally deletes their bodyparts one by one, I just couldn't bother
 
 	// Ghost and delete the mob.
 	if(!mob_occupant.get_ghost(1))
@@ -380,6 +385,9 @@
 			else if(target.mind.has_antag_datum(/datum/antagonist/rev))
 				alert("<span class='userdanger'>You're a Revolutionary![generic_plsnoleave_message]</span>")
 				caught = TRUE
+		if(target.mind.special_role == ROLE_TRAITOR)
+			alert("<span class='userdanger'>You're a Traitor![generic_plsnoleave_message]</span>")
+			caught = TRUE
 
 		if(caught)
 			target.client.cryo_warned = world.time
@@ -408,3 +416,33 @@
 //Attacks/effects.
 /obj/machinery/cryopod/blob_act()
 	return //Sorta gamey, but we don't really want these to be destroyed.
+
+
+// Syndie Cryo
+//DT: I wanted to make a new object instead of make a typepath of the cryopod, but there's something somewhere that
+//handles the occupant var. IDK where that is. This is good either way, but syndicates may show up on the cryopod consoles
+/obj/machinery/cryopod/syndicate
+	name = "subspace cryogenic sleeper"
+	desc = "A special mobility sleeper for storing agents in a disclosed location."
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper_s-open"
+	alert_comms = FALSE
+
+/obj/machinery/cryopod/syndicate/find_control_computer()	//We don't want to store anything
+	return
+
+/obj/machinery/cryopod/syndicate/MouseDrop_T(mob/living/target, mob/user)
+	if(!isliving(target))
+		return
+	if(!target.faction.Find("Syndicate"))
+		to_chat(user, "<span class='warning'>The machine's internal checks prevent you from putting [target == user ? "yourself" : "[target]"] inside.</span>")
+		return
+	..()
+
+/obj/machinery/cryopod/syndicate/open_machine()
+	..()
+	icon_state = "sleeper_s-open"
+
+/obj/machinery/cryopod/syndicate/close_machine(mob/user)
+	..()
+	icon_state = "sleeper_s"

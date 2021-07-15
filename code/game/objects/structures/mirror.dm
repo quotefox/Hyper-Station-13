@@ -23,10 +23,9 @@
 
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-
+		H.checkloadappearance()
 		//see code/modules/mob/dead/new_player/preferences.dm at approx line 545 for comments!
 		//this is largely copypasted from there.
-
 		//handle facial hair (if necessary)
 		if(H.gender == MALE)
 			var/new_style = input(user, "Select a facial hair style", "Grooming")  as null|anything in GLOB.facial_hair_styles_list
@@ -134,7 +133,7 @@
 
 	switch(choice)
 		if("name")
-			var/newname = copytext(sanitize(input(H, "Who are we again?", "Name change", H.name) as null|text),1,MAX_NAME_LEN)
+			var/newname = reject_bad_name(stripped_input(H, "Who are we again?", "Name change", H.name, MAX_NAME_LEN), TRUE)
 
 			if(!newname)
 				return

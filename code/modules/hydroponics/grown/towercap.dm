@@ -51,7 +51,7 @@
 
 /obj/item/grown/log/attackby(obj/item/W, mob/user, params)
 	if(W.sharpness)
-		user.show_message("<span class='notice'>You make [plank_name] out of \the [src]!</span>", 1)
+		user.show_message("<span class='notice'>You make [plank_name] out of \the [src]!</span>", MSG_VISUAL)
 		var/seed_modifier = 0
 		if(seed)
 			seed_modifier = round(seed.potency / 25)
@@ -96,6 +96,45 @@
 	plank_name = "rods"
 
 /obj/item/grown/log/steel/CheckAccepted(obj/item/I)
+	return FALSE
+
+/obj/item/grown/log/ashtree
+	seed = null
+	name = "ashtree log"
+	desc = "A piece of log."
+	icon_state = "ashtree_log"
+
+/obj/item/grown/log/gmushroom
+	seed = null
+	name = "mushroom log"
+	desc = "Looks like candy! Do not eat it."
+	icon_state = "mushroom_log"
+	plank_type = /obj/item/stack/sheet/mineral/gmushroom
+	plank_name = "mushroom planks"
+
+/obj/item/grown/log/gmushroom/CheckAccepted(obj/item/I)
+	return FALSE
+
+/obj/item/grown/log/shadowtree
+	seed = null
+	name = "shadow log"
+	desc = "A piece of dark log."
+	icon_state = "shadow_log"
+	plank_type = /obj/item/stack/sheet/mineral/shadoww
+	plank_name = "shadow planks"
+
+/obj/item/grown/log/gmushroom/CheckAccepted(obj/item/I)
+	return FALSE
+
+/obj/item/grown/log/plasmatree
+	seed = null
+	name = "plasma tree log"
+	desc = "A heavy piece log."
+	icon_state = "plasmatree_log"
+	plank_type = /obj/item/stack/sheet/mineral/plaswood
+	plank_name = "plaswood planks"
+
+/obj/item/grown/log/plasmatree/CheckAccepted(obj/item/I)
 	return FALSE
 
 /obj/item/seeds/bamboo
@@ -163,7 +202,7 @@
 /obj/structure/bonfire/prelit/Initialize()
 	. = ..()
 	StartBurning()
-	
+
 /obj/structure/bonfire/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSTABLE))
 		return TRUE
@@ -275,6 +314,9 @@
 		else if(istype(A, /obj/item) && prob(20))
 			var/obj/item/O = A
 			O.microwave_act()
+		else if(istype(A, /obj/item/grown/log))
+			qdel(A)
+			new /obj/item/stack/sheet/mineral/coal(loc, 1)
 
 /obj/structure/bonfire/process()
 	if(!CheckOxygen())

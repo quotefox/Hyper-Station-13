@@ -231,7 +231,7 @@
 				dat += "<h4>[src.active_record.fields["name"]]</h4>"
 				dat += "Scan ID [src.active_record.fields["id"]] <a href='byond://?src=[REF(src)];clone=[active_record.fields["id"]]'>Clone</a><br>"
 
-				var/obj/item/implant/health/H = locate(src.active_record.fields["imp"])
+				var/obj/item/implant/health/H = locate(active_record.fields["imp"])
 
 				if ((H) && (istype(H)))
 					dat += "<b>Health Implant Data:</b><br />[H.sensehealth()]<br><br />"
@@ -449,6 +449,10 @@
 		var/mob/living/brain/B = mob_occupant
 		dna = B.stored_dna
 
+	if(HAS_TRAIT(mob_occupant, TRAIT_NEVER_CLONE))
+		scantemp = "<font class='bad'>Subject has an active DNC record on file. Unable to clone.</font>"
+		playsound(src, 'sound/machines/terminal_alert.ogg', 50, 0)
+		return
 	if(!istype(dna))
 		scantemp = "<font class='bad'>Unable to locate valid genetic data.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
@@ -483,7 +487,7 @@
 
 	R.fields["ckey"] = mob_occupant.ckey
 	R.fields["name"] = mob_occupant.real_name
-	R.fields["id"] = copytext(md5(mob_occupant.real_name), 2, 6)
+	R.fields["id"] = copytext_char(md5(mob_occupant.real_name), 2, 6)
 	R.fields["UE"] = dna.unique_enzymes
 	R.fields["UI"] = dna.uni_identity
 	R.fields["SE"] = dna.mutation_index

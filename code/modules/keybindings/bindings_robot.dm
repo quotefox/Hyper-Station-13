@@ -10,3 +10,6 @@
 			uneq_active()
 			return
 	return ..()
+
+/mob/living/silicon/robot/key_up(_key, client/user)
+	return ..()

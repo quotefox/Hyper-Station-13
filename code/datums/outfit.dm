@@ -39,57 +39,54 @@
 	pre_equip(H, visualsOnly)
 
 	//Start with uniform,suit,backpack for additional slots
-	if(uniform)
-		H.equip_to_slot_or_del(new uniform(H),SLOT_W_UNIFORM)
-	if(suit)
-		H.equip_to_slot_or_del(new suit(H),SLOT_WEAR_SUIT)
 	if(back)
 		H.equip_to_slot_or_del(new back(H),SLOT_BACK)
-	if(belt)
-		H.equip_to_slot_or_del(new belt(H),SLOT_BELT)
-	if(gloves)
-		H.equip_to_slot_or_del(new gloves(H),SLOT_GLOVES)
-	if(shoes)
-		H.equip_to_slot_or_del(new shoes(H),SLOT_SHOES)
-	if(head)
-		H.equip_to_slot_or_del(new head(H),SLOT_HEAD)
-	if(mask)
-		H.equip_to_slot_or_del(new mask(H),SLOT_WEAR_MASK)
-	if(neck)
-		H.equip_to_slot_or_del(new neck(H),SLOT_NECK)
-	if(ears)
-		H.equip_to_slot_or_del(new ears(H),SLOT_EARS)
-	if(glasses)
-		H.equip_to_slot_or_del(new glasses(H),SLOT_GLASSES)
-	if(id)
-		H.equip_to_slot_or_del(new id(H),SLOT_WEAR_ID)
-	if(suit_store)
-		H.equip_to_slot_or_del(new suit_store(H),SLOT_S_STORE)
-
-	if(accessory)
-		var/obj/item/clothing/under/U = H.w_uniform
-		if(U)
-			U.attach_accessory(new accessory(H))
-		else
-			WARNING("Unable to equip accessory [accessory] in outfit [name]. No uniform present!")
-
-	if(l_hand)
-		H.put_in_l_hand(new l_hand(H))
-	if(r_hand)
-		H.put_in_r_hand(new r_hand(H))
-
-	if(!visualsOnly) // Items in pockets or backpack don't show up on mob's icon.
-		if(l_pocket)
-			H.equip_to_slot_or_del(new l_pocket(H),SLOT_L_STORE)
-		if(r_pocket)
-			H.equip_to_slot_or_del(new r_pocket(H),SLOT_R_STORE)
-		if(backpack_contents)
+		if(!visualsOnly && backpack_contents)	//Keep things organized when we can't equip other stuff by having this first
 			for(var/path in backpack_contents)
 				var/number = backpack_contents[path]
 				if(!isnum(number))//Default to 1
 					number = 1
 				for(var/i in 1 to number)
 					H.equip_to_slot_or_del(new path(H),SLOT_IN_BACKPACK)
+	
+	if(uniform)
+		var/obj/item/clothing/under/U = new uniform(H)
+		H.equip_to_slot_or_store(U,SLOT_W_UNIFORM)
+		if(accessory)
+			U.attach_accessory(new accessory(H))
+	if(suit)
+		H.equip_to_slot_or_store(new suit(H),SLOT_WEAR_SUIT)
+	
+	if(!visualsOnly)
+		if(l_pocket)
+			H.equip_to_slot_or_store(new l_pocket(H),SLOT_L_STORE)
+		if(r_pocket)
+			H.equip_to_slot_or_store(new r_pocket(H),SLOT_R_STORE)
+	if(belt)
+		H.equip_to_slot_or_store(new belt(H),SLOT_BELT)
+	if(gloves)
+		H.equip_to_slot_or_store(new gloves(H),SLOT_GLOVES)
+	if(shoes)
+		H.equip_to_slot_or_store(new shoes(H),SLOT_SHOES)
+	if(head)
+		H.equip_to_slot_or_store(new head(H),SLOT_HEAD)
+	if(mask)
+		H.equip_to_slot_or_store(new mask(H),SLOT_WEAR_MASK)
+	if(neck)
+		H.equip_to_slot_or_store(new neck(H),SLOT_NECK)
+	if(ears)
+		H.equip_to_slot_or_store(new ears(H),SLOT_EARS)
+	if(glasses)
+		H.equip_to_slot_or_store(new glasses(H),SLOT_GLASSES)
+	if(id)
+		H.equip_to_slot_or_store(new id(H),SLOT_WEAR_ID)
+	if(suit_store)
+		H.equip_to_slot_or_store(new suit_store(H),SLOT_S_STORE)
+
+	if(l_hand)
+		H.put_in_l_hand(new l_hand(H))
+	if(r_hand)
+		H.put_in_r_hand(new r_hand(H))
 
 	if(!H.head && toggle_helmet && istype(H.wear_suit, /obj/item/clothing/suit/space/hardsuit))
 		var/obj/item/clothing/suit/space/hardsuit/HS = H.wear_suit
@@ -104,7 +101,7 @@
 			H.update_action_buttons_icon()
 		if(implants)
 			for(var/implant_type in implants)
-				var/obj/item/implant/I = new implant_type(H)
+				var/obj/item/implant/I = new implant_type
 				I.implant(H, null, TRUE)
 
 	H.update_body()

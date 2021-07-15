@@ -85,7 +85,7 @@
 	ranged = 1
 	retreat_distance = 5
 	minimum_distance = 5
-	move_to_delay = 4
+	move_to_delay = 7
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/xeno = 4,
 							/obj/item/stack/sheet/animalhide/xeno = 1)
 	projectiletype = /obj/item/projectile/neurotox
@@ -133,7 +133,7 @@
 	icon_living = "alienq"
 	icon_dead = "alienq_dead"
 	bubble_icon = "alienroyal"
-	move_to_delay = 4
+	move_to_delay = 7
 	maxHealth = 400
 	health = 400
 	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab/xeno = 10,
@@ -168,7 +168,7 @@
 
 /mob/living/simple_animal/hostile/alien/maid/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/cleaning)
+	AddElement(/datum/element/cleaning)
 
 /mob/living/simple_animal/hostile/alien/maid/AttackingTarget()
 	if(ismovableatom(target))
@@ -177,6 +177,7 @@
 			qdel(target)
 			return TRUE
 		var/atom/movable/M = target
-		SEND_SIGNAL(M, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_STRENGTH_BLOOD)
+		SEND_SIGNAL(M, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_WEAK)
+		M.clean_blood()
 		visible_message("[src] polishes \the [target].")
 		return TRUE

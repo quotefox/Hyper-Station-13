@@ -41,6 +41,8 @@
 	var/special_role
 	var/list/restricted_roles = list()
 
+	var/hide_ckey = FALSE
+
 	var/list/datum/objective/objectives = list()
 
 	var/list/spell_list = list() // Wizard mode & "Give Spell" badmin button.
@@ -92,7 +94,10 @@
 	if(current)	// remove ourself from our old body's mind variable
 		current.mind = null
 		SStgui.on_transfer(current, new_character)
-
+		if(iscarbon(current))
+			var/mob/living/carbon/C = current
+			if(C.combatmode)
+				C.toggle_combat_mode(TRUE, TRUE)
 	if(!language_holder)
 		var/datum/language_holder/mob_holder = new_character.get_language_holder(shadow = FALSE)
 		language_holder = mob_holder.copy(src)
@@ -123,6 +128,9 @@
 	transfer_martial_arts(new_character)
 	if(active || force_key_move)
 		new_character.key = key		//now transfer the key to link the client to our new body
+	if(new_character.client)
+		//LAZYCLEARLIST(new_character.client.recent_examines)
+		new_character.client.init_verbs() // re-initialize character specific verbs
 
 //CIT CHANGE - makes arousal update when transfering bodies
 	if(isliving(new_character)) //New humans and such are by default enabled arousal. Let's always use the new mind's prefs.
@@ -131,8 +139,10 @@
 			L.canbearoused = L.client.prefs.arousable //Technically this should make taking over a character mean the body gain the new minds setting...
 			L.update_arousal_hud() //Removes the old icon
 
+	hide_ckey = current.client?.prefs?.hide_ckey
+
 /datum/mind/proc/store_memory(new_text)
-	if((length(memory) + length(new_text)) <= MAX_MESSAGE_LEN)
+	if((length_char(memory) + length_char(new_text)) <= MAX_MESSAGE_LEN)
 		memory += "[new_text]<BR>"
 
 /datum/mind/proc/wipe_memory()
@@ -325,14 +335,20 @@
 
 /datum/mind/proc/enslave_mind_to_creator(mob/living/creator)
 	if(iscultist(creator))
-		SSticker.mode.add_cultist(src)
+		if(iscultist(creator, TRUE))
+			SSticker.mode.add_cultist(src)
+		else
+			src.add_antag_datum(/datum/antagonist/cult/neutered/traitor)
 
 	else if(is_revolutionary(creator))
 		var/datum/antagonist/rev/converter = creator.mind.has_antag_datum(/datum/antagonist/rev,TRUE)
 		converter.add_revolutionary(src,FALSE)
 
 	else if(is_servant_of_ratvar(creator))
-		add_servant_of_ratvar(current)
+		if(is_servant_of_ratvar(creator, TRUE))
+			add_servant_of_ratvar(current)
+		else
+			add_servant_of_ratvar(current, FALSE, FALSE, /datum/antagonist/clockcult/neutered/traitor)
 
 	else if(is_nuclear_operative(creator))
 		var/datum/antagonist/nukeop/converter = creator.mind.has_antag_datum(/datum/antagonist/nukeop,TRUE)
@@ -358,13 +374,15 @@
 	output += memory
 
 
+	var/list/all_objectives = list()
 	for(var/datum/antagonist/A in antag_datums)
 		output += A.antag_memory
+		all_objectives |= A.objectives
 
-	if(objectives.len)
+	if(all_objectives.len)
 		output += "<B>Objectives:</B>"
 		var/obj_count = 1
-		for(var/datum/objective/objective in objectives)
+		for(var/datum/objective/objective in all_objectives)
 			output += "<br><B>Objective #[obj_count++]</B>: [objective.explanation_text]"
 			var/list/datum/mind/other_owners = objective.get_owners() - src
 			if(other_owners.len)
@@ -400,7 +418,7 @@
 		assigned_role = new_role
 
 	else if (href_list["memory_edit"])
-		var/new_memo = copytext(sanitize(input("Write new memory", "Memory", memory) as null|message),1,MAX_MESSAGE_LEN)
+		var/new_memo = stripped_multiline_input(usr, "Write new memory", "Memory", memory, MAX_MESSAGE_LEN)
 		if (isnull(new_memo))
 			return
 		memory = new_memo
@@ -453,7 +471,7 @@
 						else
 							target_antag = target
 
-		var/new_obj_type = input("Select objective type:", "Objective type", def_value) as null|anything in list("assassinate", "maroon", "debrain", "protect", "destroy", "prevent", "hijack", "escape", "survive", "martyr", "steal", "download", "nuclear", "capture", "absorb", "custom")
+		var/new_obj_type = input("Select objective type:", "Objective type", def_value) as null|anything in list("assassinate", "maroon", "debrain", "protect", "destroy", "prevent", "hijack", "escape", "survive", "martyr", "heirloom", "steal", "download", "nuclear", "capture", "absorb", "noncon", "custom")
 		if (!new_obj_type)
 			return
 
@@ -523,6 +541,12 @@
 				new_objective = new /datum/objective/nuclear
 				new_objective.owner = src
 
+			if ("heirloom")
+				new_objective = new /datum/objective/hoard/heirloom
+				new_objective.owner = src
+				var/datum/objective/hoard/heirloom/heirloom = new_objective
+				heirloom.find_target()
+
 			if ("steal")
 				if (!istype(objective, /datum/objective/steal))
 					new_objective = new /datum/objective/steal
@@ -555,6 +579,38 @@
 				new_objective.owner = src
 				new_objective.target_amount = target_number
 
+			//Hyper objective
+			if ("noncon")
+				//new_objective = new /datum/objective/noncon
+				//new_objective.owner = src
+
+				var/list/possible_targets = list("Free lewd objective")
+				for(var/datum/mind/possible_target in SSticker.minds)
+					if ((possible_target != src) && ishuman(possible_target.current))
+						possible_targets += possible_target.current
+
+				var/mob/def_target = null
+				var/list/objective_list = typecacheof(list(/datum/objective/assassinate, /datum/objective/protect, /datum/objective/debrain, /datum/objective/maroon))
+				if (is_type_in_typecache(objective, objective_list) && objective.target)
+					def_target = objective.target.current
+
+				var/mob/new_target = input("Select target:", "Objective target", def_target) as null|anything in possible_targets
+				if (!new_target)
+					return
+
+				var/objective_path = text2path("/datum/objective/[new_obj_type]")
+				if (new_target == "Free lewd objective")
+					new_objective = new objective_path
+					new_objective.owner = src
+					new_objective.target = null
+					new_objective.explanation_text = "Free lewd objective"
+				else
+					new_objective = new objective_path
+					new_objective.owner = src
+					new_objective.target = new_target.mind
+					//Will display as special role if the target is set as MODE. Ninjas/commandos/nuke ops.
+					new_objective.update_explanation_text()
+
 			if ("custom")
 				var/expl = stripped_input(usr, "Custom objective:", "Objective", objective ? objective.explanation_text : "")
 				if (!expl)
@@ -570,6 +626,7 @@
 			if(target_antag)
 				target_antag.objectives -= objective
 			objectives -= objective
+			objectives += new_objective
 			target_antag.objectives.Insert(objective_pos, new_objective)
 			message_admins("[key_name_admin(usr)] edited [current]'s objective to [new_objective.explanation_text]")
 			log_admin("[key_name(usr)] edited [current]'s objective to [new_objective.explanation_text]")
@@ -650,10 +707,16 @@
 		usr = current
 	traitor_panel()
 
+/datum/mind/proc/get_all_objectives()
+	var/list/all_objectives = list()
+	for(var/datum/antagonist/A in antag_datums)
+		all_objectives |= A.objectives
+	return all_objectives
+
 /datum/mind/proc/announce_objectives()
 	var/obj_count = 1
 	to_chat(current, "<span class='notice'>Your current objectives:</span>")
-	for(var/objective in objectives)
+	for(var/objective in get_all_objectives())
 		var/datum/objective/O = objective
 		to_chat(current, "<B>Objective #[obj_count]</B>: [O.explanation_text]")
 		obj_count++
@@ -717,6 +780,7 @@
 		if(istype(S, spell))
 			spell_list -= S
 			qdel(S)
+	current?.client << output(null, "statbrowser:check_spells")
 
 /datum/mind/proc/RemoveAllSpells()
 	for(var/obj/effect/proc_holder/S in spell_list)
@@ -803,6 +867,7 @@
 	if(!mind.name)
 		mind.name = real_name
 	mind.current = src
+	mind.hide_ckey = client?.prefs?.hide_ckey
 
 /mob/living/carbon/mind_initialize()
 	..()

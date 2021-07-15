@@ -23,8 +23,8 @@
 // Returns special prefixes for the station name on certain days. You wind up with names like "Christmas Object Epsilon". See new_station_name()
 /datum/holiday/proc/getStationPrefix()
 	//get the first word of the Holiday and use that
-	var/i = findtext(name," ",1,0)
-	return copytext(name,1,i)
+	var/i = findtext(name," ")
+	return copytext(name, 1, i)
 
 // Return 1 if this holidy should be celebrated today
 /datum/holiday/proc/shouldCelebrate(dd, mm, yy, ww, ddd)
@@ -333,6 +333,16 @@
 /datum/holiday/halloween/getStationPrefix()
 	return pick("Bone-Rattling","Mr. Bones' Own","2SPOOKY","Spooky","Scary","Skeletons")
 
+/datum/holiday/jacqueen //Subset of halloween
+	name = "jacqueen"
+	begin_day = 27
+	begin_month = OCTOBER
+	end_day = 2
+	end_month = NOVEMBER
+
+/datum/holiday/jacqueen/greet()
+	return "Jacqueline the great Pumpqueen has come to visit!"
+
 /datum/holiday/vegan
 	name = "Vegan Day"
 	begin_day = 1
@@ -402,6 +412,15 @@
 	begin_month = JUNE
 	begin_weekday = SUNDAY
 
+/datum/holiday/pride
+	name = PRIDE_MONTH
+	begin_day = 1
+	begin_month = JUNE
+	end_day = 30
+
+/datum/holiday/pride/getStationPrefix()
+	return pick("Pride", "Gay", "Bi", "Trans", "Lesbian", "Ace", "Aro", "Agender", pick("Enby", "Enbie"), "Pan", "Intersex", "Demi", "Poly", "Closeted", "Genderfluid")
+
 /datum/holiday/moth
 	name = "Moth Week"
 
@@ -450,7 +469,7 @@ Since Ramadan is an entire month that lasts 29.5 days on average, the start and 
 
 /datum/holiday/xmas
 	name = CHRISTMAS
-	begin_day = 22
+	begin_day = 10
 	begin_month = DECEMBER
 	end_day = 27
 	drone_hat = /obj/item/clothing/head/santa

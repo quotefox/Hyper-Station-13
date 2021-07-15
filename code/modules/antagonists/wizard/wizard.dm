@@ -21,6 +21,9 @@
 		create_objectives()
 	if(move_to_lair)
 		send_to_lair()
+	var/mob/living/carbon/human/H = owner.current
+	H.mirrorcanloadappearance = TRUE
+	H.checkloadappearance()
 	. = ..()
 	if(allow_rename)
 		rename_wizard()
@@ -58,6 +61,7 @@
 		SSjob.SendToLateJoin(owner.current)
 		to_chat(owner, "HOT INSERTION, GO GO GO")
 	owner.current.forceMove(pick(GLOB.wizardstart))
+
 
 /datum/antagonist/wizard/proc/create_objectives()
 	var/datum/objective/new_objective = new("Cause as much creative mayhem as you can aboard the station! The more outlandish your methods of achieving this, the better! Make sure there's a decent amount of crew alive to tell of your tale.")
@@ -109,7 +113,7 @@
 	var/wizard_name_second = pick(GLOB.wizard_second)
 	var/randomname = "[wizard_name_first] [wizard_name_second]"
 	var/mob/living/wiz_mob = owner.current
-	var/newname = copytext(sanitize(input(wiz_mob, "You are the [name]. Would you like to change your name to something else?", "Name change", randomname) as null|text),1,MAX_NAME_LEN)
+	var/newname = reject_bad_name(stripped_input(wiz_mob, "You are the [name]. Would you like to change your name to something else?", "Name change", randomname, MAX_NAME_LEN), TRUE)
 
 	if (!newname)
 		newname = randomname
@@ -245,7 +249,7 @@
 	if(!istype(M))
 		return
 
-	var/obj/item/implant/exile/Implant = new/obj/item/implant/exile(M)
+	var/obj/item/implant/exile/Implant = new
 	Implant.implant(M)
 
 /datum/antagonist/wizard/academy/create_objectives()

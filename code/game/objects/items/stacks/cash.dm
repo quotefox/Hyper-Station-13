@@ -11,6 +11,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	full_w_class = WEIGHT_CLASS_TINY
 	resistance_flags = FLAMMABLE
+	grind_results = list(/datum/reagent/cellulose = 10)
 	var/value = 0
 
 /obj/item/stack/spacecash/Initialize()
@@ -19,7 +20,7 @@
 
 /obj/item/stack/spacecash/proc/update_desc()
 	var/total_worth = amount*value
-	desc = "It's worth [total_worth] credit[( total_worth > 1 ) ? "s" : ""]"
+	desc = "A outdated form of currency, It's worth [total_worth] credit[( total_worth > 1 ) ? "s" : ""]"
 
 
 /obj/item/stack/spacecash/merge(obj/item/stack/S)

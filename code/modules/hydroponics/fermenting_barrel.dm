@@ -16,7 +16,7 @@
 
 /obj/structure/fermenting_barrel/examine(mob/user)
 	. = ..()
-	to_chat(user, "<span class='notice'>It is currently [open?"open, letting you pour liquids in.":"closed, letting you draw liquids from the tap."]</span>")
+	. += "<span class='notice'>It is currently [open?"open, letting you pour liquids in.":"closed, letting you draw liquids from the tap."]</span>"
 
 /obj/structure/fermenting_barrel/proc/makeWine(obj/item/reagent_containers/food/snacks/grown/fruit)
 	if(fruit.reagents)
@@ -33,13 +33,15 @@
 			data["tastes"] = list(fruit.wine_flavor = 1)
 		else
 			data["tastes"] = list(fruit.tastes[1] = 1)
-		reagents.add_reagent("fruit_wine", amount, data)
+		reagents.add_reagent(/datum/reagent/consumable/ethanol/fruit_wine, amount, data)
 	qdel(fruit)
 	playsound(src, 'sound/effects/bubbles.ogg', 50, TRUE)
 
 /obj/structure/fermenting_barrel/attackby(obj/item/I, mob/user, params)
-	var/obj/item/reagent_containers/food/snacks/grown/fruit = I
-	if(istype(fruit))
+	if (user.a_intent != INTENT_HELP)
+		return ..()
+	if (istype(I, /obj/item/reagent_containers/food/snacks/grown))
+		var/obj/item/reagent_containers/food/snacks/grown/fruit = I
 		if(!fruit.can_distill)
 			to_chat(user, "<span class='warning'>You can't distill this into anything...</span>")
 			return TRUE
@@ -50,7 +52,32 @@
 		addtimer(CALLBACK(src, .proc/makeWine, fruit), rand(80, 120) * speed_multiplier)
 		return TRUE
 	else
-		return ..()
+		switch (I.tool_behaviour)
+			if (TOOL_SCREWDRIVER)
+				user.visible_message("<span class='info'>[user] starts disassembling [src]...</span>",
+									"<span class='info'>You start disassembling [src]...</span>")
+				var/reagent_calculation = 1
+				if (reagents.total_volume)
+					user.visible_message("<span class='warning'>Liquid starts pouring out [src] as [user] starts disassembling it!</span>",
+									"<span class='warning'>Liquid starts pouring out [src], maybe you should think about this...</span>")
+					reagent_calculation += 2+round(reagents.total_volume/100)/2
+				I.play_tool_sound(src)
+				if(I.use_tool(src, user, 30*reagent_calculation))
+					playsound(src.loc, 'sound/items/deconstruct.ogg', 50, TRUE)
+					if (reagents.total_volume)
+						chem_splash(loc, round(reagent_calculation*0.75), list(reagents))
+					deconstruct(TRUE)
+				else if (reagents.total_volume)
+					visible_message("<span class='info'>[user] stops disassembling [src].</span>")
+			if (TOOL_WRENCH)
+				if (anchored)	//Imaginary bolts on the ground, just like anything else that can get wrenched
+					to_chat(user, "<span class='notice'>You unsecure [src].</span>")
+					I.play_tool_sound(src)
+					anchored = FALSE
+				else
+					to_chat(user, "<span class='notice'>You secure [src].</span>")
+					I.play_tool_sound(src)
+					anchored = TRUE
 
 /obj/structure/fermenting_barrel/attack_hand(mob/user)
 	open = !open
@@ -70,9 +97,6 @@
 	else
 		icon_state = "barrel"
 
-/datum/crafting_recipe/fermenting_barrel
-	name = "Wooden Barrel"
-	result = /obj/structure/fermenting_barrel
-	reqs = list(/obj/item/stack/sheet/mineral/wood = 30)
-	time = 50
-	category = CAT_PRIMAL
+/obj/structure/fermenting_barrel/deconstruct(disassembled = TRUE)
+	new /obj/item/stack/sheet/mineral/wood (get_turf(src), 10)
+	qdel(src)

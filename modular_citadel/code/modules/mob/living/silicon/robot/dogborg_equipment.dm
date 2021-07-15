@@ -18,7 +18,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	name = "combat jaws"
 	desc = "The jaws of the law. Very sharp."
 	icon_state = "jaws"
-	force = 12
+	force = 10 //Lowered to match secborg. No reason it should be more than a secborg's baton.
 	attack_verb = list("chomped", "bit", "ripped", "mauled", "enforced")
 
 /obj/item/dogborg/jaws/small
@@ -32,10 +32,9 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 /obj/item/dogborg/jaws/attack(atom/A, mob/living/silicon/robot/user)
 	..()
 	user.do_attack_animation(A, ATTACK_EFFECT_BITE)
-	log_combat(user, A, "bit")
 
 /obj/item/dogborg/jaws/small/attack_self(mob/user)
-	var/mob/living/silicon/robot.R = user
+	var/mob/living/silicon/robot/R = user
 	if(R.cell && R.cell.charge > 100)
 		if(R.emagged && status == 0)
 			name = "combat jaws"
@@ -123,9 +122,6 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 			to_chat(user, "<span class='alert'>[GLOB.meta_gas_names[id]]: [round(gas_concentration*100, 0.01)] %</span>")
 		to_chat(user, "<span class='info'>Temperature: [round(environment.temperature-T0C)] &deg;C</span>")
 
-/obj/item/analyzer/nose/AltClick(mob/user) //Barometer output for measuring when the next storm happens
-	. = ..()
-
 /obj/item/analyzer/nose/afterattack(atom/target, mob/user, proximity)
 	. = ..()
 	if(!proximity)
@@ -143,7 +139,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 
 /obj/item/storage/bag/borgdelivery/ComponentInitialize()
 	. = ..()
-	GET_COMPONENT(STR, /datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_w_class = WEIGHT_CLASS_BULKY
 	STR.max_combined_w_class = 5
 	STR.max_items = 1
@@ -167,7 +163,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	item_flags |= NOBLUDGEON //No more attack messages
 
 /obj/item/soap/tongue/attack_self(mob/user)
-	var/mob/living/silicon/robot.R = user
+	var/mob/living/silicon/robot/R = user
 	if(R.cell && R.cell.charge > 100)
 		if(R.emagged && status == 0)
 			status = !status
@@ -187,7 +183,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 	update_icon()
 
 /obj/item/soap/tongue/afterattack(atom/target, mob/user, proximity)
-	var/mob/living/silicon/robot.R = user
+	var/mob/living/silicon/robot/R = user
 	if(!proximity || !check_allowed_items(target))
 		return
 	if(R.client && (target in R.client.screen))
@@ -214,7 +210,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 			if(!do_after(R, 50, target = target))
 				return //If they moved away, you can't eat them.
 			to_chat(R, "<span class='notice'>You finish off \the [target.name].</span>")
-			var/obj/item/stock_parts/cell.C = target
+			var/obj/item/stock_parts/cell/C = target
 			R.cell.charge = R.cell.charge + (C.charge / 3) //Instant full cell upgrades op idgaf
 			qdel(target)
 			return
@@ -271,6 +267,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 			target.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
 			SEND_SIGNAL(target, COMSIG_COMPONENT_CLEAN_ACT, CLEAN_MEDIUM)
 			target.wash_cream()
+			target.wash_cum()
 	return
 
 //Dogfood
@@ -307,8 +304,8 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 /mob/living/silicon/robot
 	var/leaping = 0
 	var/pounce_cooldown = 0
-	var/pounce_cooldown_time = 50 //Nearly doubled, u happy?
-	var/pounce_spoolup = 3
+	var/pounce_cooldown_time = 20 //Buffed to counter balance changes
+	var/pounce_spoolup = 1
 	var/leap_at
 	var/disabler
 	var/laser
@@ -338,7 +335,7 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 		//It's also extremely buggy visually, so it's balance+bugfix
 		return
 
-	if(cell.charge <= 500)
+	if(cell.charge <= 750)
 		to_chat(src,"<span class='danger'>Insufficent reserves for jump actuators!</span>")
 		return
 
@@ -348,39 +345,34 @@ SLEEPER CODE IS IN game/objects/items/devices/dogborg_sleeper.dm !
 		pixel_y = 10
 		update_icons()
 		throw_at(A, MAX_K9_LEAP_DIST, 1, spin=0, diagonals_first = 1)
-		cell.use(500) //Doubled the energy consumption
+		cell.use(750) //Less than a stunbaton since stunbatons hit everytime.
 		weather_immunities -= "lava"
 
-/mob/living/silicon/robot/throw_impact(atom/A)
+/mob/living/silicon/robot/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 
 	if(!leaping)
 		return ..()
 
-	if(A)
-		if(isliving(A))
-			var/mob/living/L = A
-			var/blocked = 0
-			if(ishuman(A))
-				var/mob/living/carbon/human/H = A
-				if(H.check_shields(0, "the [name]", src, attack_type = LEAP_ATTACK))
-					blocked = 1
-			if(!blocked)
+	if(hit_atom)
+		if(isliving(hit_atom))
+			var/mob/living/L = hit_atom
+			if(!L.check_shields(0, "the [name]", src, attack_type = LEAP_ATTACK))
 				L.visible_message("<span class ='danger'>[src] pounces on [L]!</span>", "<span class ='userdanger'>[src] pounces on you!</span>")
-				L.Knockdown(iscarbon(L) ? 450 : 45) // Temporary. If someone could rework how dogborg pounces work to accomodate for combat changes, that'd be nice.
+				L.Knockdown(iscarbon(L) ? 225 : 45) // Temporary. If someone could rework how dogborg pounces work to accomodate for combat changes, that'd be nice.
 				playsound(src, 'sound/weapons/Egloves.ogg', 50, 1)
 				sleep(2)//Runtime prevention (infinite bump() calls on hulks)
 				step_towards(src,L)
 				log_combat(src, L, "borg pounced")
 			else
-				Knockdown(45, 1, 1)
+				Knockdown(15, 1, 1)
 
 			pounce_cooldown = !pounce_cooldown
 			spawn(pounce_cooldown_time) //3s by default
 				pounce_cooldown = !pounce_cooldown
-		else if(A.density && !A.CanPass(src))
-			visible_message("<span class ='danger'>[src] smashes into [A]!</span>", "<span class ='userdanger'>You smash into [A]!</span>")
+		else if(hit_atom.density && !hit_atom.CanPass(src))
+			visible_message("<span class ='danger'>[src] smashes into [hit_atom]!</span>", "<span class ='userdanger'>You smash into [hit_atom]!</span>")
 			playsound(src, 'sound/items/trayhit1.ogg', 50, 1)
-			Knockdown(45, 1, 1)
+			Knockdown(15, 1, 1)
 
 		if(leaping)
 			leaping = 0

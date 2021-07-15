@@ -66,7 +66,7 @@
 
 	var/area/A = get_area(curturf)
 	var/area/B = get_area(destturf)
-	if(!forced && (A.noteleport || B.noteleport))
+	if(!forced && (HAS_TRAIT(teleatom, TRAIT_NO_TELEPORT) || A.noteleport || B.noteleport))
 		return FALSE
 
 	if(SEND_SIGNAL(destturf, COMSIG_ATOM_INTERCEPT_TELEPORT, channel, curturf, destturf))
@@ -79,10 +79,20 @@
 		tele_play_specials(teleatom, destturf, effectout, asoundout)
 		if(ismegafauna(teleatom))
 			message_admins("[teleatom] [ADMIN_FLW(teleatom)] has teleported from [ADMIN_VERBOSEJMP(curturf)] to [ADMIN_VERBOSEJMP(destturf)].")
+		SEND_SIGNAL(teleatom, COMSIG_MOVABLE_TELEPORTED, channel, curturf, destturf)
 
 	if(ismob(teleatom))
 		var/mob/M = teleatom
 		M.cancel_camera()
+
+	var/static/list/bread_cache = typecacheof(/obj/item/reagent_containers/food/snacks/store/bread)
+	var/list/breadlist = typecache_filter_list(teleatom.GetAllContents(), bread_cache)
+	if(breadlist.len && (channel == TELEPORT_CHANNEL_BLUESPACE || channel == TELEPORT_CHANNEL_QUANTUM))
+		for(var/obj/item/reagent_containers/food/snacks/store/bread/bread in breadlist)
+			bread.bread_teleport()
+	else if(istype(teleatom, /obj/item/reagent_containers/food/snacks/store/bread))
+		var/obj/item/reagent_containers/food/snacks/store/bread/bread = teleatom
+		bread.bread_teleport()
 
 	return TRUE
 

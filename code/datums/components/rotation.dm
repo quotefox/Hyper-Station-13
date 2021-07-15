@@ -12,6 +12,48 @@
 
 	var/rotation_flags = NONE
 	var/default_rotation_direction = ROTATION_CLOCKWISE
+/*
+/proc/add_verb(client/target, verb_or_list_to_add)
+	if(!target)
+		CRASH("add_verb called without a target")
+	if(IsAdminAdvancedProcCall())
+		return
+	var/mob/mob_target = null
+
+	if(ismob(target))
+		mob_target = target
+		target = mob_target.client
+	else if(!istype(target, /client))
+		CRASH("add_verb called on a non-mob and non-client")
+	var/list/verbs_list = list()
+	if(!islist(verb_or_list_to_add))
+		verbs_list += verb_or_list_to_add
+	else
+		var/list/verb_listref = verb_or_list_to_add
+		var/list/elements_to_process = verb_listref.Copy()
+		while(length(elements_to_process))
+			var/element_or_list = elements_to_process[length(elements_to_process)] //Last element
+			elements_to_process.len--
+			if(islist(element_or_list))
+				elements_to_process += element_or_list //list/a += list/b adds the contents of b into a, not the reference to the list itself
+			else
+				verbs_list += element_or_list
+
+	if(mob_target)
+		mob_target.verbs += verbs_list
+		if(!target)
+			return //Our work is done.
+	else
+		target.verbs += verbs_list
+
+	var/list/output_list = list()
+	for(var/thing in verbs_list)
+		var/procpath/verb_to_add = thing
+		//output_list[++output_list.len] = list(verb_to_add.category, verb_to_add.name)
+	output_list = url_encode(json_encode(output_list))
+
+	target << output("[output_list];", "statbrowser:add_verb_list")
+*/
 
 /datum/component/simple_rotation/Initialize(rotation_flags = NONE ,can_user_rotate,can_be_rotated,after_rotation)
 	if(!ismovableatom(parent))
@@ -44,19 +86,21 @@
 	if(src.rotation_flags & ROTATION_CLOCKWISE)
 		default_rotation_direction = ROTATION_CLOCKWISE
 
-	if(src.rotation_flags & ROTATION_ALTCLICK)
+/datum/component/simple_rotation/proc/add_signals()
+	if(rotation_flags & ROTATION_ALTCLICK)
 		RegisterSignal(parent, COMSIG_CLICK_ALT, .proc/HandRot)
 		RegisterSignal(parent, COMSIG_PARENT_EXAMINE, .proc/ExamineMessage)
-	if(src.rotation_flags & ROTATION_WRENCH)
+	if(rotation_flags & ROTATION_WRENCH)
 		RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, .proc/WrenchRot)
 
-	if(src.rotation_flags & ROTATION_VERBS)
+/datum/component/simple_rotation/proc/add_verbs()
+	if(rotation_flags & ROTATION_VERBS)
 		var/atom/movable/AM = parent
-		if(src.rotation_flags & ROTATION_FLIP)
+		if(rotation_flags & ROTATION_FLIP)
 			AM.verbs += /atom/movable/proc/simple_rotate_flip
-		if(src.rotation_flags & ROTATION_CLOCKWISE)
+		if(rotation_flags & ROTATION_CLOCKWISE)
 			AM.verbs += /atom/movable/proc/simple_rotate_clockwise
-		if(src.rotation_flags & ROTATION_COUNTERCLOCKWISE)
+		if(rotation_flags & ROTATION_COUNTERCLOCKWISE)
 			AM.verbs += /atom/movable/proc/simple_rotate_counterclockwise
 
 /datum/component/simple_rotation/proc/remove_verbs()
@@ -66,25 +110,45 @@
 		AM.verbs -= /atom/movable/proc/simple_rotate_clockwise
 		AM.verbs -= /atom/movable/proc/simple_rotate_counterclockwise
 
-/datum/component/simple_rotation/Destroy()
+/datum/component/simple_rotation/proc/remove_signals()
+	UnregisterSignal(parent, list(COMSIG_CLICK_ALT, COMSIG_PARENT_EXAMINE, COMSIG_PARENT_ATTACKBY))
+
+/datum/component/simple_rotation/RegisterWithParent()
+	add_verbs()
+	add_signals()
+	. = ..()
+
+/datum/component/simple_rotation/PostTransfer()
+	//Because of the callbacks which we don't track cleanly we can't transfer this
+	//item cleanly, better to let the new of the new item create a new rotation datum
+	//instead (there's no real state worth transferring)
+	return COMPONENT_NOTRANSFER
+
+/datum/component/simple_rotation/UnregisterFromParent()
 	remove_verbs()
+	remove_signals()
+	. = ..()
+
+/datum/component/simple_rotation/Destroy()
 	QDEL_NULL(can_user_rotate)
 	QDEL_NULL(can_be_rotated)
 	QDEL_NULL(after_rotation)
+	//Signals + verbs removed via UnRegister
 	. = ..()
 
 /datum/component/simple_rotation/RemoveComponent()
 	remove_verbs()
 	. = ..()
 
-/datum/component/simple_rotation/proc/ExamineMessage(datum/source, mob/user)
+/datum/component/simple_rotation/proc/ExamineMessage(datum/source, mob/user, list/examine_list)
 	if(rotation_flags & ROTATION_ALTCLICK)
-		to_chat(user, "<span class='notice'>Alt-click to rotate it clockwise.</span>")
+		examine_list += "<span class='notice'>Alt-click to rotate it clockwise.</span>"
 
 /datum/component/simple_rotation/proc/HandRot(datum/source, mob/user, rotation = default_rotation_direction)
 	if(!can_be_rotated.Invoke(user, rotation) || !can_user_rotate.Invoke(user, rotation))
 		return
 	BaseRot(user, rotation)
+	return TRUE
 
 /datum/component/simple_rotation/proc/WrenchRot(datum/source, obj/item/I, mob/living/user)
 	if(!can_be_rotated.Invoke(user,default_rotation_direction) || !can_user_rotate.Invoke(user,default_rotation_direction))
@@ -122,7 +186,7 @@
 	set name = "Rotate Clockwise"
 	set category = "Object"
 	set src in oview(1)
-	GET_COMPONENT(rotcomp,/datum/component/simple_rotation)
+	var/datum/component/simple_rotation/rotcomp = GetComponent(/datum/component/simple_rotation)
 	if(rotcomp)
 		rotcomp.HandRot(usr,ROTATION_CLOCKWISE)
 
@@ -130,7 +194,7 @@
 	set name = "Rotate Counter-Clockwise"
 	set category = "Object"
 	set src in oview(1)
-	GET_COMPONENT(rotcomp,/datum/component/simple_rotation)
+	var/datum/component/simple_rotation/rotcomp = GetComponent(/datum/component/simple_rotation)
 	if(rotcomp)
 		rotcomp.HandRot(usr,ROTATION_COUNTERCLOCKWISE)
 
@@ -138,6 +202,6 @@
 	set name = "Flip"
 	set category = "Object"
 	set src in oview(1)
-	GET_COMPONENT(rotcomp,/datum/component/simple_rotation)
+	var/datum/component/simple_rotation/rotcomp = GetComponent(/datum/component/simple_rotation)
 	if(rotcomp)
 		rotcomp.HandRot(usr,ROTATION_FLIP)

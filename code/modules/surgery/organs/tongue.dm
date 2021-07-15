@@ -22,6 +22,10 @@
 		/datum/language/ratvar,
 		/datum/language/aphasia,
 		/datum/language/slime,
+		/datum/language/xenocommon,
+		/datum/language/vampiric,
+		/datum/language/tajara,
+		/datum/language/spacerussian,
 	))
 	healing_factor = STANDARD_ORGAN_HEALING*5 //Fast!!
 	decay_factor = STANDARD_ORGAN_DECAY/2
@@ -95,8 +99,28 @@
 	var/static/regex/lizard_hiSS = new("S+", "g")
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
-		message = lizard_hiss.Replace(message, "sss")
-		message = lizard_hiSS.Replace(message, "SSS")
+		var/asterisk_loc = findtext(message, "*")+1	//Don't calculate this every time
+		message = lizard_hiss.Replace(message, "sss", asterisk_loc)
+		message = lizard_hiSS.Replace(message, "Sss", asterisk_loc)
+	speech_args[SPEECH_MESSAGE] = message
+
+/obj/item/organ/tongue/kitty
+	name = "barbed tongue"
+	desc = "A thin and prickled on top tongue, common among cats"
+	icon_state = "tonguenormal"
+	say_mod = "mrowls"
+	taste_sensitivity = 15 //Tastes like normal
+	maxHealth = 60 //And so has health like normal
+	modifies_speech = TRUE
+
+/obj/item/organ/tongue/kitty/handle_speech(datum/source, list/speech_args)
+	var/static/regex/taja_purr = new("r+", "g")
+	var/static/regex/taja_puRR = new("R+", "g")
+	var/message = speech_args[SPEECH_MESSAGE]
+	if(message[1] != "*")
+		var/asterisk_loc = findtext(message, "*")+1	//Don't calculate this every time
+		message = taja_purr.Replace(message, "rrr", asterisk_loc)
+		message = taja_puRR.Replace(message, "Rrr", asterisk_loc)
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/fly
@@ -113,8 +137,9 @@
 	var/static/regex/fly_buZZ = new("Z+", "g")
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
-		message = fly_buzz.Replace(message, "zzz")
-		message = fly_buZZ.Replace(message, "ZZZ")
+		var/asterisk_loc = findtext(message, "*")+1	//Don't calculate this every time
+		message = fly_buzz.Replace(message, "zzz", asterisk_loc)
+		message = fly_buZZ.Replace(message, "ZZZ", asterisk_loc)
 	speech_args[SPEECH_MESSAGE] = message
 
 /obj/item/organ/tongue/abductor
@@ -163,7 +188,7 @@
 		var/insertpos = rand(1, message_list.len - 1)
 		var/inserttext = message_list[insertpos]
 
-		if(!(copytext(inserttext, length(inserttext) - 2) == "..."))
+		if(!(copytext(inserttext, -3) == "..."))//3 == length("...")
 			message_list[insertpos] = inserttext + "..."
 
 		if(prob(20) && message_list.len > 3)
@@ -212,6 +237,8 @@
 	phomeme_type = pick(phomeme_types)
 
 /obj/item/organ/tongue/bone/applyOrganDamage(var/d, var/maximum = maxHealth)
+	if(d < 0)
+		return
 	if(!owner)
 		return
 	var/target = owner.get_bodypart(BODY_ZONE_HEAD)
@@ -250,6 +277,12 @@
 /obj/item/organ/tongue/robot/can_speak_in_language(datum/language/dt)
 	return ..() || electronics_magic
 
+/obj/item/organ/tongue/robot/Initialize(mapload)
+	. = ..()
+	var/static/list/languages_possible_robot = languages_possible_base + typecacheof(list(
+		/datum/language/machine))
+	languages_possible = languages_possible_robot
+
 /obj/item/organ/tongue/robot/handle_speech(datum/source, list/speech_args)
 	speech_args[SPEECH_SPANS] |= SPAN_ROBOT
 
@@ -263,14 +296,15 @@
 
 /obj/item/organ/tongue/fluffy/handle_speech(datum/source, list/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
-	if(copytext(message, 1, 2) != "*")
-		message = replacetext(message, "ne", "nye")
-		message = replacetext(message, "nu", "nyu")
-		message = replacetext(message, "na", "nya")
-		message = replacetext(message, "no", "nyo")
-		message = replacetext(message, "ove", "uv")
-		message = replacetext(message, "l", "w")
-		message = replacetext(message, "r", "w")
+	if(message[1] != "*")
+		var/asterisk_loc = findtext(message, "*")+1	//Don't calculate this every time
+		message = replacetext(message, "ne", "nye", asterisk_loc)
+		message = replacetext(message, "nu", "nyu", asterisk_loc)
+		message = replacetext(message, "na", "nya", asterisk_loc)
+		message = replacetext(message, "no", "nyo", asterisk_loc)
+		message = replacetext(message, "ove", "uv", asterisk_loc)
+		message = replacetext(message, "l", "w", asterisk_loc)
+		message = replacetext(message, "r", "w", asterisk_loc)
 	message = lowertext(message)
 	speech_args[SPEECH_MESSAGE] = message
 

@@ -10,6 +10,10 @@
 		            /obj/item/clothing/head/fedora = 3,
 		            /obj/item/clothing/glasses/monocle = 3,
 		            /obj/item/clothing/suit/jacket = 4,
+					/obj/item/clothing/suit/jacket/flannel = 4,
+					/obj/item/clothing/suit/jacket/flannel/red = 4,
+					/obj/item/clothing/suit/jacket/flannel/aqua = 4,
+					/obj/item/clothing/suit/jacket/flannel/brown = 4,
 		            /obj/item/clothing/suit/jacket/puffer/vest = 4,
 		            /obj/item/clothing/suit/jacket/puffer = 4,
 		            /obj/item/clothing/under/suit_jacket/navy = 3,
@@ -96,7 +100,13 @@
 		            /obj/item/clothing/head/beanie/stripedred = 3,
 		            /obj/item/clothing/head/beanie/stripedblue = 3,
 		            /obj/item/clothing/head/beanie/stripedgreen = 3,
+		            /obj/item/clothing/suit/toggle/jacket_yellow = 3,
+		            /obj/item/clothing/suit/toggle/jacket_orange = 3,
+		            /obj/item/clothing/suit/toggle/jacket_red = 3,
+		            /obj/item/clothing/suit/toggle/jacket_purple = 3,
+		            /obj/item/clothing/suit/toggle/jacket_white = 3,
 		            /obj/item/clothing/suit/jacket/letterman_red = 3,
+		            /obj/item/clothing/suit/fluffyhalfcrop = 3,
 		            /obj/item/clothing/ears/headphones = 10,
 		            /obj/item/clothing/suit/apron/purple_bartender = 4,
 		            /obj/item/clothing/under/rank/bartender/purple = 4,
@@ -112,17 +122,28 @@
 					/obj/item/clothing/head/christmashatg = 3,
 					/obj/item/clothing/shoes/winterboots/christmasbootsr = 3,
 					/obj/item/clothing/shoes/winterboots/christmasbootsg = 3,
-					/obj/item/clothing/shoes/winterboots/santaboots = 3)
+					/obj/item/clothing/shoes/winterboots/santaboots = 3,
+					/obj/item/clothing/head/cowboyhat = 3,
+					/obj/item/clothing/head/cowboyhat/black = 3,
+					/obj/item/clothing/head/cowboyhat/white = 3,
+					/obj/item/clothing/head/cowboyhat/pink = 3,
+					/obj/item/clothing/shoes/cowboyboots = 3,
+					/obj/item/clothing/shoes/cowboyboots/black = 3,
+					/obj/item/clothing/under/polychromic/vsweater = 3)
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool = 3,
 					  /obj/item/clothing/under/syndicate/tacticool/skirt = 3,
 		              /obj/item/clothing/mask/balaclava = 3,
 		              /obj/item/clothing/head/ushanka = 3,
+					  /obj/item/clothing/suit/gcvest = 2,
+					  /obj/item/clothing/suit/gcvest/alt = 2,
+					  /obj/item/clothing/gloves/guncaster = 4,
 		              /obj/item/clothing/under/soviet = 3,
 		              /obj/item/storage/belt/fannypack/black = 3,
 		              /obj/item/clothing/suit/jacket/letterman_syndie = 5,
 		              /obj/item/clothing/under/jabroni = 2,
 		              /obj/item/clothing/suit/vapeshirt = 2,
-		              /obj/item/clothing/under/geisha = 4)
+		              /obj/item/clothing/under/geisha = 4,
+		              /obj/item/clothing/under/lawyer/galaxy_red = 3)
 	premium = list(/obj/item/clothing/under/suit_jacket/checkered = 4,
 		           /obj/item/clothing/head/mailman = 2,
 		           /obj/item/clothing/under/rank/mailman = 2,
@@ -130,8 +151,11 @@
 		           /obj/item/clothing/suit/jacket/leather/overcoat = 4,
 		           /obj/item/clothing/under/pants/mustangjeans = 3,
 		           /obj/item/clothing/neck/necklace/dope = 5,
-		           /obj/item/clothing/suit/jacket/letterman_nanotrasen = 5)
+		           /obj/item/clothing/suit/jacket/letterman_nanotrasen = 5,
+				   /obj/item/bluespace_thread = 3,
+				   /obj/item/clothing/under/lawyer/galaxy_blue = 3)
 	refill_canister = /obj/item/vending_refill/clothing
+	baseprice = 2
 
 /obj/item/vending_refill/clothing
 	machine_name = "ClothesMate"

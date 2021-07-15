@@ -6,7 +6,7 @@
 	icon_state = "fox"
 	icon_living = "fox"
 	icon_dead = "fox_dead"
-	speak = list("Ack-Ack","Ack-Ack-Ack-Ackawoooo","Geckers","Awoo","Tchoff")
+	speak = list("Ack-Ack","Ack-Ack-Ack-Ackawoooo","Gekkers","Awoo","Tchoff")
 	speak_emote = list("geckers", "barks")
 	emote_hear = list("howls.","barks.")
 	emote_see = list("shakes its head.", "shivers.")
@@ -18,8 +18,11 @@
 	response_disarm = "gently pushes aside"
 	response_harm = "kicks"
 	gold_core_spawnable = FRIENDLY_SPAWN
-
 	do_footstep = TRUE
+
+/mob/living/simple_animal/pet/fox/ComponentInitialize()
+	. = ..()
+	AddElement(/datum/element/mob_holder, "fox")
 
 //Captain fox
 /mob/living/simple_animal/pet/fox/Renault

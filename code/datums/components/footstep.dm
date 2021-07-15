@@ -3,7 +3,7 @@
 	var/volume
 	var/e_range
 
-/datum/component/footstep/Initialize(volume_ = 0.4, e_range_ = -1)
+/datum/component/footstep/Initialize(volume_ = 0.5, e_range_ = -1)
 	if(!isliving(parent))
 		return COMPONENT_INCOMPATIBLE
 	volume = volume_
@@ -32,10 +32,10 @@
 			return
 		if(ishuman(C) && C.m_intent == MOVE_INTENT_WALK)
 			v /= 2
-			e -= 4
+			e -= 5
 	steps++
 
-	if(steps >= 3)
+	if(steps >= 2)
 		steps = 0
 
 	else
@@ -45,6 +45,12 @@
 		return
 
 	//begin playsound shenanigans//
+
+	//for big characters, add alittle boom
+	if(LM.size_multiplier > 1.5)
+		var/stompsound = pick( 'sound/effects/footstep/giant1.ogg','sound/effects/footstep/giant2.ogg')
+		var/giantvolume = LM.size_multiplier * 9
+		playsound(T, stompsound, giantvolume)
 
 	//for barefooted non-clawed mobs like monkeys
 	if(isbarefoot(LM))
@@ -58,7 +64,7 @@
 	if(isclawfoot(LM))
 		if(isalienadult(LM)) //xenos are stealthy and get quieter footsteps
 			v /= 3
-			e -= 4
+			e -= 5
 
 		playsound(T, pick(GLOB.clawfootstep[T.clawfootstep][1]),
 				GLOB.clawfootstep[T.clawfootstep][2] * v,
@@ -89,19 +95,19 @@
 			return
 		if(ishuman(LM)) //for proper humans, they're special
 			var/mob/living/carbon/human/H = LM
-			var/feetCover = (H.wear_suit && (H.wear_suit.body_parts_covered & FEET)) || (H.w_uniform && (H.w_uniform.body_parts_covered & FEET) || (H.shoes && (H.shoes.body_parts_covered & FEET)))
+			var/feetCover = (H.wear_suit && (H.wear_suit.body_parts_covered & FEET)) || (H.w_uniform && (H.w_uniform.body_parts_covered & FEET))
 
 			if (H.dna.features["taur"] == "Naga" || H.dna.features["taur"] == "Tentacle") //are we a naga or tentacle taur creature
 				playsound(T, 'sound/effects/footstep/crawl1.ogg', 15 * v)
 				return
 
-			if(feetCover) //are we wearing shoes
+			if(H.shoes || feetCover) //are we wearing shoes
 				playsound(T, pick(GLOB.footstep[T.footstep][1]),
 					GLOB.footstep[T.footstep][2] * v,
 					TRUE,
 					GLOB.footstep[T.footstep][3] + e)
 
-			if(!feetCover) //are we NOT wearing shoes
+			if((!H.shoes && !feetCover)) //are we NOT wearing shoes
 				playsound(T, pick(GLOB.barefootstep[T.barefootstep][1]),
 					GLOB.barefootstep[T.barefootstep][2] * v,
 					TRUE,

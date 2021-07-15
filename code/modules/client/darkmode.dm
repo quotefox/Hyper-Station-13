@@ -16,7 +16,7 @@ Thanks to spacemaniac and mcdonald for help with the JS side of this.
 	//Main windows
 	winset(src, "infowindow", "background-color = [COLOR_WHITEMODE_DARKBACKGROUND];text-color = [COLOR_WHITEMODE_TEXT]")
 	winset(src, "info", "background-color = [COLOR_WHITEMODE_BACKGROUND];text-color = [COLOR_WHITEMODE_TEXT]")
-	winset(src, "browseroutput", "background-color = [COLOR_DARKMODE_INFO_BUTTONS_BG];text-color = [COLOR_WHITEMODE_TEXT]")
+	winset(src, "browseroutput", "background-color = [COLOR_WHITEMODE_DARKBACKGROUND];text-color = [COLOR_WHITEMODE_TEXT]")
 	winset(src, "outputwindow", "background-color = [COLOR_WHITEMODE_DARKBACKGROUND];text-color = [COLOR_WHITEMODE_TEXT]")
 	winset(src, "mainwindow", "background-color = [COLOR_WHITEMODE_DARKBACKGROUND]")
 	winset(src, "split", "background-color = [COLOR_WHITEMODE_BACKGROUND]")
@@ -30,11 +30,14 @@ Thanks to spacemaniac and mcdonald for help with the JS side of this.
 	//Status and verb tabs
 	winset(src, "output", "background-color = [COLOR_WHITEMODE_BACKGROUND];text-color = [COLOR_WHITEMODE_TEXT]")
 	winset(src, "statwindow", "background-color = [COLOR_WHITEMODE_DARKBACKGROUND];text-color = [COLOR_WHITEMODE_TEXT]")
-	winset(src, "stat", "background-color = [COLOR_WHITEMODE_BACKGROUND];tab-background-color = [COLOR_WHITEMODE_DARKBACKGROUND];text-color = [COLOR_WHITEMODE_TEXT];tab-text-color = [COLOR_WHITEMODE_TEXT];prefix-color = [COLOR_WHITEMODE_TEXT];suffix-color = [COLOR_WHITEMODE_TEXT]")
+	winset(src, "stat", "background-color = [COLOR_WHITEMODE_BACKGROUND];tab-background-color = [COLOR_WHITEMODE_DARKBACKGROUND];\
+				text-color = [COLOR_WHITEMODE_TEXT];tab-text-color = [COLOR_WHITEMODE_TEXT];\
+				prefix-color = [COLOR_WHITEMODE_TEXT];suffix-color = [COLOR_WHITEMODE_TEXT]")
 	//Etc.
 	winset(src, "say", "background-color = [COLOR_WHITEMODE_DARKBACKGROUND];text-color = [COLOR_WHITEMODE_TEXT]")
 	winset(src, "asset_cache_browser", "background-color = [COLOR_WHITEMODE_DARKBACKGROUND];text-color = [COLOR_WHITEMODE_TEXT]")
 	winset(src, "tooltip", "background-color = [COLOR_WHITEMODE_BACKGROUND];text-color = [COLOR_WHITEMODE_TEXT]")
+	src << output(null, "statbrowser:set_light_theme")
 
 /client/proc/force_dark_theme() //Inversely, if theyre using white theme and want to swap to the superior dark theme, let's get WINSET() ing
 	//Main windows
@@ -54,24 +57,11 @@ Thanks to spacemaniac and mcdonald for help with the JS side of this.
 	//Status and verb tabs
 	winset(src, "output", "background-color = [COLOR_DARKMODE_BACKGROUND];text-color = [COLOR_DARKMODE_TEXT]")
 	winset(src, "statwindow", "background-color = [COLOR_DARKMODE_DARKBACKGROUND];text-color = [COLOR_DARKMODE_TEXT]")
-	winset(src, "stat", "background-color = [COLOR_DARKMODE_DARKBACKGROUND];tab-background-color = [COLOR_DARKMODE_BACKGROUND];text-color = [COLOR_DARKMODE_TEXT];tab-text-color = [COLOR_DARKMODE_TEXT];prefix-color = [COLOR_DARKMODE_TEXT];suffix-color = [COLOR_DARKMODE_TEXT]")
+	winset(src, "stat", "background-color = [COLOR_DARKMODE_DARKBACKGROUND];tab-background-color = [COLOR_DARKMODE_BACKGROUND];\
+				text-color = [COLOR_DARKMODE_TEXT];tab-text-color = [COLOR_DARKMODE_TEXT];\
+				prefix-color = [COLOR_DARKMODE_TEXT];suffix-color = [COLOR_DARKMODE_TEXT]")
 	//Etc.
 	winset(src, "say", "background-color = [COLOR_DARKMODE_BACKGROUND];text-color = [COLOR_DARKMODE_TEXT]")
 	winset(src, "asset_cache_browser", "background-color = [COLOR_DARKMODE_BACKGROUND];text-color = [COLOR_DARKMODE_TEXT]")
 	winset(src, "tooltip", "background-color = [COLOR_DARKMODE_BACKGROUND];text-color = [COLOR_DARKMODE_TEXT]")
-
-
-/datum/asset/simple/goonchat
-	verify = FALSE
-	assets = list(
-		"json2.min.js"             = 'code/modules/goonchat/browserassets/js/json2.min.js',
-		"errorHandler.js"          = 'code/modules/goonchat/browserassets/js/errorHandler.js',
-		"browserOutput.js"         = 'code/modules/goonchat/browserassets/js/browserOutput.js',
-		"fontawesome-webfont.eot"  = 'tgui/assets/fonts/fontawesome-webfont.eot',
-		"fontawesome-webfont.svg"  = 'tgui/assets/fonts/fontawesome-webfont.svg',
-		"fontawesome-webfont.ttf"  = 'tgui/assets/fonts/fontawesome-webfont.ttf',
-		"fontawesome-webfont.woff" = 'tgui/assets/fonts/fontawesome-webfont.woff',
-		"font-awesome.css"	       = 'code/modules/goonchat/browserassets/css/font-awesome.css',
-		"browserOutput.css"	       = 'code/modules/goonchat/browserassets/css/browserOutput.css',
-		"browserOutput_white.css"  = 'code/modules/goonchat/browserassets/css/browserOutput_white.css',
-	)
+	src << output(null, "statbrowser:set_dark_theme")

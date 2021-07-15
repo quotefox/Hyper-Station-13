@@ -1,11 +1,12 @@
 /datum/round_event_control/pirates
 	name = "Space Pirates"
 	typepath = /datum/round_event/pirates
-	weight = 8
+	weight = 4
 	max_occurrences = 1
-	min_players = 10
-	earliest_start = 30 MINUTES
+	min_players = 15
+	earliest_start = 50 MINUTES
 	gamemode_blacklist = list("nuclear")
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/round_event_control/pirates/preRunEvent()
 	if (!SSmapping.empty_space)
@@ -14,7 +15,7 @@
 	return ..()
 
 /datum/round_event/pirates
-	startWhen = 60 //2 minutes to answer
+	startWhen = 300 //5 minutes to answer
 	var/datum/comm_message/threat
 	var/payoff = 0
 	var/paid_off = FALSE

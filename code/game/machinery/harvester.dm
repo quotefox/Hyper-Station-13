@@ -51,10 +51,12 @@
 		open_machine()
 
 /obj/machinery/harvester/AltClick(mob/user)
+	. = ..()
 	if(harvesting || !user || !isliving(user) || state_open)
 		return
 	if(can_harvest())
 		start_harvest()
+	return TRUE
 
 /obj/machinery/harvester/proc/can_harvest()
 	if(!powered(EQUIP) || state_open || !occupant || !iscarbon(occupant))
@@ -69,7 +71,7 @@
 				say("Subject may not have abiotic items on.")
 				playsound(src, 'sound/machines/buzz-sigh.ogg', 30, 1)
 				return
-	if(!(MOB_ORGANIC in C.mob_biotypes))
+	if(!(MOB_ORGANIC & C.mob_biotypes))
 		say("Subject is not organic.")
 		playsound(src, 'sound/machines/buzz-sigh.ogg', 30, 1)
 		return
@@ -181,10 +183,10 @@
 		container_resist(user)
 
 /obj/machinery/harvester/examine(mob/user)
-	..()
+	. = ..()
 	if(stat & BROKEN)
 		return
 	if(state_open)
-		to_chat(user, "<span class='notice'>[src] must be closed before harvesting.</span>")
+		. += "<span class='notice'>[src] must be closed before harvesting.</span>"
 	else if(!harvesting)
-		to_chat(user, "<span class='notice'>Alt-click [src] to start harvesting.</span>")
+		. += "<span class='notice'>Alt-click [src] to start harvesting.</span>"

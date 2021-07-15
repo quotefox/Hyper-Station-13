@@ -105,12 +105,6 @@
 	name = "Empty Shell"
 	description = "Cosy, rural property availible for young professional couple. Only twelve parsecs from the nearest hyperspace lane!"
 
-/datum/map_template/ruin/space/gas_the_lizards
-	id = "gas-the-lizards"
-	suffix = "gasthelizards.dmm"
-	name = "Disposal Facility 17"
-	description = "Gas efficiency at 95.6%, fluid elimination at 96.2%. Will require renewed supplies of 'carpet' before the end of the quarter."
-
 /datum/map_template/ruin/space/intact_empty_ship
 	id = "intact-empty-ship"
 	suffix = "intactemptyship.dmm"
@@ -243,6 +237,7 @@
 	name = "Ancient Space Station"
 	description = "The crew of a space station awaken one hundred years after a crisis. Awaking to a derelict space station on the verge of collapse, and a hostile force of invading \
 	hivebots. Can the surviving crew overcome the odds and survive and rebuild, or will the cold embrace of the stars become their new home?"
+	placement_weight = 5
 
 /datum/map_template/ruin/space/miracle
 	id = "miracle"
@@ -317,3 +312,9 @@
 	suffix = "advancedlab.dmm"
 	name = "Abductor Replication Lab"
 	description = "Some scientists tried and almost succeeded to recreate abductor tools. Somewhat slower and a bit less modern than their originals, these tools are the best you can get if you aren't an alien."
+
+/datum/map_template/ruin/space/wiz_home
+	id = "wizhome"
+	suffix = "wizardden.dmm"
+	name = "Wizards Cabin"
+	description = "The wooden cabin of a wizard in space, it smells like mana in there."

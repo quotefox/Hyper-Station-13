@@ -16,7 +16,7 @@
 	icon_dead = "chili-dead" // Same for the dead icon
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
 	mutatelist = list(/obj/item/seeds/chili/ice, /obj/item/seeds/chili/ghost)
-	reagents_add = list("capsaicin" = 0.25, "vitamin" = 0.04, "nutriment" = 0.04)
+	reagents_add = list(/datum/reagent/consumable/capsaicin = 0.25, /datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.04)
 
 /obj/item/reagent_containers/food/snacks/grown/chili
 	seed = /obj/item/seeds/chili
@@ -41,7 +41,7 @@
 	production = 4
 	rarity = 20
 	mutatelist = list()
-	reagents_add = list("frostoil" = 0.25, "vitamin" = 0.02, "nutriment" = 0.02)
+	reagents_add = list(/datum/reagent/consumable/frostoil = 0.25, /datum/reagent/consumable/nutriment/vitamin = 0.02, /datum/reagent/consumable/nutriment = 0.02)
 
 /obj/item/reagent_containers/food/snacks/grown/icepepper
 	seed = /obj/item/seeds/chili/ice
@@ -67,7 +67,7 @@
 	yield = 3
 	rarity = 20
 	mutatelist = list()
-	reagents_add = list("condensedcapsaicin" = 0.3, "capsaicin" = 0.55, "nutriment" = 0.04)
+	reagents_add = list(/datum/reagent/consumable/condensedcapsaicin = 0.3, /datum/reagent/consumable/capsaicin = 0.55, /datum/reagent/consumable/nutriment = 0.04)
 
 /obj/item/reagent_containers/food/snacks/grown/ghost_chili
 	seed = /obj/item/seeds/chili/ghost
@@ -79,6 +79,32 @@
 	bitesize_mod = 4
 	foodtype = FRUIT
 	wine_power = 50
+
+//Pink-peppers
+/obj/item/seeds/chili/pink
+	name = "pack of pink pepper seeds"
+	desc = "These seeds grow into pink pepper plants."
+	icon_state = "seed-chilipink"
+	species = "chilipink"
+	plantname = "Pink Pepper Plants"
+	product = /obj/item/reagent_containers/food/snacks/grown/pink_chili
+	maturation = 6
+	production = 4
+	yield = 3
+	rarity = 20
+	mutatelist = list()
+	genes = list(/datum/plant_gene/reagent/fragile/penischem, /datum/plant_gene/reagent/fragile/crocin)
+	reagents_add = list(/datum/reagent/consumable/nutriment/vitamin = 0.04, /datum/reagent/consumable/nutriment = 0.04)
+
+/obj/item/reagent_containers/food/snacks/grown/pink_chili
+	seed = /obj/item/seeds/chili/pink
+	name = "pink pepper"
+	desc = "It looks almost like a knotted phallus. Is it... throbbing?"
+	icon_state = "pinkchilipepper"
+	filling_color = "#FF1458"
+	bitesize_mod = 3
+	foodtype = FRUIT
+	wine_power = 40
 
 /obj/item/reagent_containers/food/snacks/grown/ghost_chili/attack_hand(mob/user)
 	. = ..()

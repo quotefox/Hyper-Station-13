@@ -4,6 +4,7 @@
 // /mob/living/Move() in /modules/mob/living/living.dm - hiding storage boxes on mob movement
 
 /datum/component/storage/concrete
+	can_transfer = TRUE
 	var/drop_all_on_deconstruct = TRUE
 	var/drop_all_on_destroy = FALSE
 	var/drop_all_on_break = FALSE
@@ -65,7 +66,7 @@
 /datum/component/storage/concrete/_insert_physical_item(obj/item/I, override = FALSE)
 	. = TRUE
 	var/atom/real_location = real_location()
-	if(I.loc != real_location)
+	if(I.loc != real_location && real_location)
 		I.forceMove(real_location)
 	refresh_mob_views()
 
@@ -133,7 +134,7 @@
 	if(ismob(parent.loc) && isitem(AM))
 		var/obj/item/I = AM
 		var/mob/M = parent.loc
-		I.dropped(M)
+		I.dropped(M, TRUE)
 	if(new_location)
 		//Reset the items values
 		_removal_reset(AM)

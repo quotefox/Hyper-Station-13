@@ -12,6 +12,7 @@
 	var/insanity_effect = 0 //is the owner being punished for low mood? If so, how much?
 	var/holdmyinsanityeffect = 0 //before we edit our sanity lets take a look
 	var/obj/screen/mood/screen_obj
+	var/lastupdate = 0
 
 /datum/component/mood/Initialize()
 	if(!isliving(parent))
@@ -21,6 +22,8 @@
 
 	RegisterSignal(parent, COMSIG_ADD_MOOD_EVENT, .proc/add_event)
 	RegisterSignal(parent, COMSIG_CLEAR_MOOD_EVENT, .proc/clear_event)
+	RegisterSignal(parent, COMSIG_INCREASE_SANITY, .proc/IncreaseSanity)
+	RegisterSignal(parent, COMSIG_DECREASE_SANITY, .proc/DecreaseSanity)
 
 	RegisterSignal(parent, COMSIG_MOB_HUD_CREATED, .proc/modify_hud)
 	var/mob/living/owner = parent
@@ -89,8 +92,9 @@
 		mood += event.mood_change
 		if(!event.hidden)
 			shown_mood += event.mood_change
-		mood *= mood_modifier
-		shown_mood *= mood_modifier
+
+	mood *= mood_modifier
+	shown_mood *= mood_modifier
 
 	switch(mood)
 		if(-INFINITY to MOOD_LEVEL_SAD4)
@@ -125,27 +129,30 @@
 			screen_obj.icon_state = "mood[mood_level]"
 
 /datum/component/mood/process() //Called on SSmood process
+	if(QDELETED(parent)) // workaround to an obnoxious sneaky periodical runtime.
+		qdel(src)
+		return
 	var/mob/living/owner = parent
 
 	switch(mood_level)
 		if(1)
-			DecreaseSanity(0.2)
+			DecreaseSanity(src, 0.2)
 		if(2)
-			DecreaseSanity(0.125, SANITY_CRAZY)
+			DecreaseSanity(src, 0.125, SANITY_CRAZY)
 		if(3)
-			DecreaseSanity(0.075, SANITY_UNSTABLE)
+			DecreaseSanity(src, 0.075, SANITY_UNSTABLE)
 		if(4)
-			DecreaseSanity(0.025, SANITY_DISTURBED)
+			DecreaseSanity(src, 0.025, SANITY_DISTURBED)
 		if(5)
-			IncreaseSanity(0.1)
+			IncreaseSanity(src, 0.1)
 		if(6)
-			IncreaseSanity(0.15)
+			IncreaseSanity(src, 0.15)
 		if(7)
-			IncreaseSanity(0.20)
+			IncreaseSanity(src, 0.20)
 		if(8)
-			IncreaseSanity(0.25, SANITY_GREAT)
+			IncreaseSanity(src, 0.25, SANITY_GREAT)
 		if(9)
-			IncreaseSanity(0.4, SANITY_GREAT)
+			IncreaseSanity(src, 0.4, SANITY_GREAT)
 
 	if(insanity_effect != holdmyinsanityeffect)
 		if(insanity_effect > holdmyinsanityeffect)
@@ -153,18 +160,10 @@
 		else
 			owner.crit_threshold -= (holdmyinsanityeffect - insanity_effect)
 
-	if(HAS_TRAIT(owner, TRAIT_DEPRESSION))
-		if(prob(0.05))
-			add_event(null, "depression", /datum/mood_event/depression)
-			clear_event(null, "jolly")
-	if(HAS_TRAIT(owner, TRAIT_JOLLY))
-		if(prob(0.05))
-			add_event(null, "jolly", /datum/mood_event/jolly)
-			clear_event(null, "depression")
-
 	holdmyinsanityeffect = insanity_effect
 
 	HandleNutrition(owner)
+	HandleThirst(owner)
 
 /datum/component/mood/proc/setSanity(amount, minimum=SANITY_INSANE, maximum=SANITY_NEUTRAL)//I'm sure bunging this in here will have no negative repercussions.
 	var/mob/living/master = parent
@@ -187,27 +186,27 @@
 	switch(sanity)
 		if(SANITY_INSANE to SANITY_CRAZY)
 			setInsanityEffect(MAJOR_INSANITY_PEN)
-			master.add_movespeed_modifier(MOVESPEED_ID_SANITY, TRUE, 100, override=TRUE, multiplicative_slowdown=1.5) //Did we change something ? movetypes is runtiming, movetypes=(~FLYING))
+			master.actionmoodmultiplier = 1.6
 			sanity_level = 6
 		if(SANITY_CRAZY to SANITY_UNSTABLE)
 			setInsanityEffect(MINOR_INSANITY_PEN)
-			master.add_movespeed_modifier(MOVESPEED_ID_SANITY, TRUE, 100, override=TRUE, multiplicative_slowdown=1)//, movetypes=(~FLYING))
+			master.actionmoodmultiplier = 1.4
 			sanity_level = 5
 		if(SANITY_UNSTABLE to SANITY_DISTURBED)
 			setInsanityEffect(0)
-			master.add_movespeed_modifier(MOVESPEED_ID_SANITY, TRUE, 100, override=TRUE, multiplicative_slowdown=0.5)//, movetypes=(~FLYING))
+			master.actionmoodmultiplier = 1.2
 			sanity_level = 4
 		if(SANITY_DISTURBED to SANITY_NEUTRAL)
 			setInsanityEffect(0)
-			master.remove_movespeed_modifier(MOVESPEED_ID_SANITY, TRUE)
+			master.actionmoodmultiplier = 1
 			sanity_level = 3
 		if(SANITY_NEUTRAL+1 to SANITY_GREAT+1) //shitty hack but +1 to prevent it from responding to super small differences
 			setInsanityEffect(0)
-			master.remove_movespeed_modifier(MOVESPEED_ID_SANITY, TRUE)
+			master.actionmoodmultiplier = 1
 			sanity_level = 2
 		if(SANITY_GREAT+1 to INFINITY)
 			setInsanityEffect(0)
-			master.remove_movespeed_modifier(MOVESPEED_ID_SANITY, TRUE)
+			master.actionmoodmultiplier = 1
 			sanity_level = 1
 	//update_mood_icon()
 
@@ -218,9 +217,9 @@
 	master.crit_threshold = (master.crit_threshold - insanity_effect) + newval
 	insanity_effect = newval
 
-/datum/component/mood/proc/DecreaseSanity(amount, minimum = SANITY_INSANE)
+/datum/component/mood/proc/DecreaseSanity(datum/source, amount, minimum = SANITY_INSANE)
 	if(sanity < minimum) //This might make KevinZ stop fucking pinging me.
-		IncreaseSanity(0.5)
+		IncreaseSanity(src, 0.5)
 	else
 		sanity = max(minimum, sanity - amount)
 		if(sanity < SANITY_UNSTABLE)
@@ -229,13 +228,13 @@
 			else
 				insanity_effect = (MINOR_INSANITY_PEN)
 
-/datum/component/mood/proc/IncreaseSanity(amount, maximum = SANITY_NEUTRAL)
+/datum/component/mood/proc/IncreaseSanity(datum/source, amount, maximum = SANITY_NEUTRAL)
 	// Disturbed stops you from getting any more sane - I'm just gonna bung this in here
 	var/mob/living/owner = parent
 	if(HAS_TRAIT(owner, TRAIT_UNSTABLE))
 		return
 	if(sanity > maximum)
-		DecreaseSanity(0.5) //Removes some sanity to go back to our current limit.
+		DecreaseSanity(src, 0.5) //Removes some sanity to go back to our current limit.
 	else
 		sanity = min(maximum, sanity + amount)
 		if(sanity > SANITY_CRAZY)
@@ -276,11 +275,11 @@
 	var/datum/hud/hud = owner.hud_used
 	screen_obj = new
 	hud.infodisplay += screen_obj
-	RegisterSignal(hud, COMSIG_PARENT_QDELETED, .proc/unmodify_hud)
+	RegisterSignal(hud, COMSIG_PARENT_QDELETING, .proc/unmodify_hud)
 	RegisterSignal(screen_obj, COMSIG_CLICK, .proc/hud_click)
 
 /datum/component/mood/proc/unmodify_hud(datum/source)
-	if(!screen_obj)
+	if(!screen_obj || !parent)
 		return
 	var/mob/living/owner = parent
 	var/datum/hud/hud = owner.hud_used
@@ -290,7 +289,6 @@
 
 /datum/component/mood/proc/hud_click(datum/source, location, control, params, mob/user)
 	print_mood(user)
-
 
 /datum/component/mood/proc/HandleNutrition(mob/living/L)
 	switch(L.nutrition)
@@ -306,6 +304,19 @@
 			add_event(null, "nutrition", /datum/mood_event/hungry)
 		if(0 to NUTRITION_LEVEL_STARVING)
 			add_event(null, "nutrition", /datum/mood_event/starving)
+
+/datum/component/mood/proc/HandleThirst(mob/living/L)
+	if(THIRST_LEVEL_THRESHOLD)
+		L.thirst = clamp(L.thirst, 0, THIRST_LEVEL_THRESHOLD)
+	switch(L.thirst)
+		if(THIRST_LEVEL_QUENCHED to INFINITY)
+			add_event(null, "thirst", /datum/mood_event/quenched)
+		if(THIRST_LEVEL_THIRSTY to THIRST_LEVEL_QUENCHED)
+			clear_event(null, "thirst")
+		if(THIRST_LEVEL_PARCHED to THIRST_LEVEL_THIRSTY)
+			add_event(null, "thirst", /datum/mood_event/thirsty)
+		if(0 to THIRST_LEVEL_PARCHED)
+			add_event(null, "thirst", /datum/mood_event/dehydrated)
 
 #undef MINOR_INSANITY_PEN
 #undef MAJOR_INSANITY_PEN

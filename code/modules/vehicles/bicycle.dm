@@ -2,6 +2,7 @@
 	name = "bicycle"
 	desc = "Keep away from electricity."
 	icon_state = "bicycle"
+	size_sensitive = FALSE
 	var/easter_egg_chance = 1
 
 	var/static/list/bike_music = list('sound/misc/bike1.mid',
@@ -12,7 +13,7 @@
 	. = ..()
 	var/datum/component/riding/D = LoadComponent(/datum/component/riding)
 	D.set_riding_offsets(RIDING_OFFSET_ALL, list(TEXT_NORTH = list(0, 4), TEXT_SOUTH = list(0, 4), TEXT_EAST = list(0, 4), TEXT_WEST = list( 0, 4)))
-	D.vehicle_move_delay = 0
+	D.vehicle_move_delay = 2
 
 /obj/vehicle/ridden/bicycle/buckle_mob(mob/living/M, force = 0, check_loc = 1)
 	if(prob(easter_egg_chance) || (SSevents.holidays && SSevents.holidays[APRIL_FOOLS]))

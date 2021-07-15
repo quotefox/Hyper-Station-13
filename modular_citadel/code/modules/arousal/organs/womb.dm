@@ -6,9 +6,10 @@
 	zone 			= "groin"
 	slot 			= "womb"
 	internal 		= TRUE
-	fluid_id 		= "femcum"
+	fluid_id 		= /datum/reagent/consumable/femcum
 	producing		= TRUE
 	var/pregnant	= FALSE //this is for pregnancy code
+	dontlist		= TRUE
 
 
 /obj/item/organ/genital/womb/on_life()
@@ -20,7 +21,7 @@
 		else
 			fluid_rate = CUM_RATE
 		if(reagents.total_volume >= 5)
-			fluid_mult = 0.5
+			fluid_mult = 0.8
 		else
 			fluid_mult = 1
 		generate_femcum()

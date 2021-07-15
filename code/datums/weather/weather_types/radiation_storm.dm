@@ -18,7 +18,7 @@
 
 	area_type = /area
 	protected_areas = list(/area/maintenance, /area/ai_monitored/turret_protected/ai_upload, /area/ai_monitored/turret_protected/ai_upload_foyer,
-	/area/ai_monitored/turret_protected/ai, /area/storage/emergency/starboard, /area/storage/emergency/port, /area/shuttle, /area/survivalpod)
+	/area/ai_monitored/turret_protected/ai, /area/storage/emergency/starboard, /area/storage/emergency/port, /area/shuttle, /area/survivalpod, /area/crew_quarters/dorms, /area/security/prison, /area/ruin, /area/space/nearstation)
 	target_trait = ZTRAIT_STATION
 
 	immunity_type = "rad"
@@ -26,7 +26,6 @@
 /datum/weather/rad_storm/telegraph()
 	..()
 	status_alarm(TRUE)
-
 
 /datum/weather/rad_storm/weather_act(mob/living/L)
 	var/resist = L.getarmor(null, "rad")

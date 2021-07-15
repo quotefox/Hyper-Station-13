@@ -163,14 +163,19 @@
 			var/splatter_dir = dir
 			if(starting)
 				splatter_dir = get_dir(starting, target_loca)
-			if(isalien(L))
+			var/obj/item/bodypart/B = L.get_bodypart(def_zone)
+			if(B && B.status == BODYPART_ROBOTIC) // So if you hit a robotic, it sparks instead of bloodspatters
+				do_sparks(2, FALSE, target.loc)
+				if(prob(25))
+					new /obj/effect/decal/cleanable/oil(target_loca)
+			else if(isalien(L))
 				new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target_loca, splatter_dir)
 			else
-				new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir)
-			if(iscarbon(L))
-				var/mob/living/carbon/C = L
-				C.bleed(damage)
-			else
+				if(ishuman(target))
+					var/mob/living/carbon/human/H = target
+					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir, bloodtype_to_color(H.dna.blood_type))
+				else
+					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_loca, splatter_dir, bloodtype_to_color())
 				L.add_splatter_floor(target_loca)
 		else if(impact_effect_type && !hitscan)
 			new impact_effect_type(target_loca, hitx, hity)
@@ -193,11 +198,8 @@
 		L.on_hit(src)
 
 	var/reagent_note
-	if(reagents && reagents.reagent_list)
-		reagent_note = " REAGENTS:"
-		for(var/datum/reagent/R in reagents.reagent_list)
-			reagent_note += R.id + " ("
-			reagent_note += num2text(R.volume) + ") "
+	if(reagents)
+		reagent_note = reagents.log_list()
 
 	if(ismob(firer))
 		log_combat(firer, L, "shot", src, reagent_note)
@@ -221,8 +223,8 @@
 	beam_segments[beam_index] = null
 
 /obj/item/projectile/Bump(atom/A)
-	var/datum/point/pcache = trajectory.copy_to()
-	if(check_ricochet(A) && check_ricochet_flag(A) && ricochets < ricochets_max)
+	if(trajectory && check_ricochet(A) && check_ricochet_flag(A) && ricochets < ricochets_max)
+		var/datum/point/pcache = trajectory.copy_to()
 		ricochets++
 		if(A.handle_ricochet(src))
 			on_ricochet(A)

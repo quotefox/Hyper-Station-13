@@ -6,11 +6,13 @@ SUBSYSTEM_DEF(lighting)
 	name = "Lighting"
 	wait = 2
 	init_order = INIT_ORDER_LIGHTING
-	flags = SS_TICKER
+	var/static/list/sources_queue = list() // List of lighting sources queued for update.
+	var/static/list/corners_queue = list() // List of lighting corners queued for update.
+	var/static/list/objects_queue = list() // List of lighting objects queued for update.
 
-/datum/controller/subsystem/lighting/stat_entry()
-	..("L:[GLOB.lighting_update_lights.len]|C:[GLOB.lighting_update_corners.len]|O:[GLOB.lighting_update_objects.len]")
-
+/datum/controller/subsystem/lighting/stat_entry(msg)
+	msg = "L:[length(sources_queue)]|C:[length(corners_queue)]|O:[length(objects_queue)]"
+	return ..()
 
 /datum/controller/subsystem/lighting/Initialize(timeofday)
 	if(!initialized)

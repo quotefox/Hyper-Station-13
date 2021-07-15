@@ -21,7 +21,17 @@
 					/obj/item/clothing/under/pants/khaki = 5)
 	premium = list(/obj/item/clothing/under/rank/security/navyblue = 5,
 					/obj/item/clothing/suit/security/officer = 5,
-					/obj/item/clothing/head/beret/sec/navyofficer = 5)
+					/obj/item/clothing/head/beret/sec/navyofficer = 5,
+					/obj/item/clothing/under/rank/security/pink = 5,
+					/obj/item/clothing/suit/hooded/wintercoat/security/pink = 5,
+					/obj/item/clothing/under/rank/security/skirt/slut = 5,
+					/obj/item/clothing/under/rank/security/skirt/slut/pink = 5,
+					/obj/item/clothing/under/rank/security/stripper = 5,
+					/obj/item/clothing/shoes/jackboots/tall = 5,
+					/obj/item/clothing/head/beret/sec/bitch = 5,
+					/obj/item/clothing/gloves/latexsleeves/security = 5,
+					/obj/item/clothing/under/rank/security/blueshield = 1,
+					/obj/item/clothing/suit/storage/blueshield =1)
 	refill_canister = /obj/item/vending_refill/wardrobe/sec_wardrobe
 
 /obj/item/vending_refill/wardrobe/sec_wardrobe
@@ -44,10 +54,14 @@
 					/obj/item/clothing/under/rank/medical/blue = 2,
 					/obj/item/clothing/under/rank/medical/green = 2,
 					/obj/item/clothing/under/rank/medical/purple = 2,
+					/obj/item/clothing/under/rank/medical/emt = 5,
+					/obj/item/clothing/under/rank/medical/emt/skirt = 5,
 					/obj/item/clothing/under/rank/medical = 5,
+					/obj/item/clothing/under/sexynursesuit = 5,
 					/obj/item/clothing/suit/toggle/labcoat = 5,
 					/obj/item/clothing/suit/toggle/labcoat/emt = 5,
 					/obj/item/clothing/shoes/sneakers/white = 5,
+					/obj/item/clothing/shoes/sneakers/blue = 5,
 					/obj/item/clothing/head/soft/emt = 5,
 					/obj/item/clothing/suit/apron/surgical = 3,
 					/obj/item/clothing/mask/surgical = 5)
@@ -63,7 +77,7 @@
 	product_ads = "Guaranteed to protect your feet from industrial accidents!;Afraid of radiation? Then wear yellow!"
 	vend_reply = "Thank you for using the EngiDrobe!"
 	products = list(/obj/item/clothing/accessory/pocketprotector = 5,
-					/obj/item/storage/backpack/duffelbag/engineering = 2,
+					/obj/item/storage/backpack/duffelbag/engineering = 3,
 					/obj/item/storage/backpack/industrial = 3,
 					/obj/item/storage/backpack/satchel/eng = 3,
 					/obj/item/clothing/suit/hooded/wintercoat/engineering = 3,
@@ -71,7 +85,10 @@
 					/obj/item/clothing/under/rank/engineer/skirt = 5,
 					/obj/item/clothing/suit/hazardvest = 5,
 					/obj/item/clothing/shoes/workboots = 5,
-					/obj/item/clothing/head/hardhat = 5)
+					/obj/item/clothing/head/hardhat = 5,
+					/obj/item/clothing/head/hardhat/weldhat = 3,
+					/obj/item/clothing/under/radkini = 2,
+					/obj/item/clothing/mask/gas/radmask = 2)
 	refill_canister = /obj/item/vending_refill/wardrobe/engi_wardrobe
 
 /obj/item/vending_refill/wardrobe/engi_wardrobe
@@ -87,7 +104,8 @@
 					/obj/item/storage/backpack/duffelbag/engineering = 3,
 					/obj/item/storage/backpack/satchel/eng = 3,
 					/obj/item/storage/backpack/industrial = 3,
-					/obj/item/clothing/suit/hooded/wintercoat/engineering/atmos = 5,
+					/obj/item/clothing/head/hardhat/weldhat/dblue = 3,
+					/obj/item/clothing/suit/hooded/wintercoat/engineering/atmos = 3,
 					/obj/item/clothing/under/rank/atmospheric_technician = 5,
 					/obj/item/clothing/under/rank/atmospheric_technician/skirt = 5,
 					/obj/item/clothing/shoes/sneakers/black = 5)

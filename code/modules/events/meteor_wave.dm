@@ -1,12 +1,16 @@
 // Normal strength
 
+#define SINGULO_BEACON_DISTURBANCE 0.2 //singularity beacon also improve the odds of meteor waves and speed them up a little.
+#define SINGULO_BEACON_MAX_DISTURBANCE 0.6 //maximum cap due to how meteor waves can be potentially round ending.
+
 /datum/round_event_control/meteor_wave
 	name = "Meteor Wave: Normal"
 	typepath = /datum/round_event/meteor_wave
 	weight = 4
-	min_players = 15
+	min_players = 20
 	max_occurrences = 3
 	earliest_start = 25 MINUTES
+	map_blacklist = list("LayeniaStation.dmm")
 
 /datum/round_event/meteor_wave
 	startWhen		= 6
@@ -18,6 +22,8 @@
 /datum/round_event/meteor_wave/setup()
 	announceWhen = 1
 	startWhen = rand(300, 600) //Yeah for SOME REASON this is measured in seconds and not deciseconds???
+	if(GLOB.singularity_counter)
+		startWhen *= 1 - min(GLOB.singularity_counter * SINGULO_BEACON_DISTURBANCE, SINGULO_BEACON_MAX_DISTURBANCE)
 	endWhen = startWhen + 60
 
 
@@ -27,8 +33,6 @@
 		determine_wave_type()
 
 /datum/round_event/meteor_wave/proc/determine_wave_type()
-	if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
-		wave_name = "halloween"
 	if(!wave_name)
 		wave_name = pickweight(list(
 			"normal" = 50,
@@ -40,7 +44,10 @@
 		if("threatening")
 			wave_type = GLOB.meteors_threatening
 		if("catastrophic")
-			wave_type = GLOB.meteors_catastrophic
+			if(SSevents.holidays && SSevents.holidays[HALLOWEEN])
+				wave_type = GLOB.meteorsSPOOKY
+			else
+				wave_type = GLOB.meteors_catastrophic
 		if("meaty")
 			wave_type = GLOB.meteorsB
 		if("space dust")
@@ -52,7 +59,7 @@
 			kill()
 
 /datum/round_event/meteor_wave/announce(fake)
-	priority_announce("Meteors have been detected on collision course with the station. Estimated time until impact: [round(startWhen/60)] minutes.", "Meteor Alert", 'sound/ai/meteors.ogg')
+	priority_announce("Meteors have been detected on collision course with the station. Estimated time until impact: [round(startWhen/60)] minutes.[GLOB.singularity_counter ? " Warning: Anomalous gravity pulse detected, Syndicate technology interference likely." : ""]", "Meteor Alert", 'sound/ai/meteors.ogg')
 
 /datum/round_event/meteor_wave/tick()
 	if(ISMULTIPLE(activeFor, 3))
@@ -61,9 +68,9 @@
 /datum/round_event_control/meteor_wave/threatening
 	name = "Meteor Wave: Threatening"
 	typepath = /datum/round_event/meteor_wave/threatening
-	weight = 5
+	weight = 4
 	min_players = 20
-	max_occurrences = 3
+	max_occurrences = 2
 	earliest_start = 35 MINUTES
 
 /datum/round_event/meteor_wave/threatening
@@ -72,10 +79,13 @@
 /datum/round_event_control/meteor_wave/catastrophic
 	name = "Meteor Wave: Catastrophic"
 	typepath = /datum/round_event/meteor_wave/catastrophic
-	weight = 7
+	weight = 4
 	min_players = 25
-	max_occurrences = 3
+	max_occurrences = 1
 	earliest_start = 45 MINUTES
 
 /datum/round_event/meteor_wave/catastrophic
 	wave_name = "catastrophic"
+
+#undef SINGULO_BEACON_DISTURBANCE
+#undef SINGULO_BEACON_MAX_DISTURBANCE

@@ -24,7 +24,7 @@
 
 /obj/item/robot_suit/New()
 	..()
-	updateicon()
+	update_icon()
 
 /obj/item/robot_suit/prebuilt/New()
 	l_arm = new(src)
@@ -39,7 +39,7 @@
 	chest.cell = new /obj/item/stock_parts/cell/high/plus(chest)
 	..()
 
-/obj/item/robot_suit/proc/updateicon()
+/obj/item/robot_suit/update_icon()
 	cut_overlays()
 	if(l_arm)
 		add_overlay("[l_arm.icon_state]+o")
@@ -96,7 +96,7 @@
 			to_chat(user, "<span class='notice'>You disassemble the cyborg shell.</span>")
 	else
 		to_chat(user, "<span class='notice'>There is nothing to remove from the endoskeleton.</span>")
-	updateicon()
+	update_icon()
 
 /obj/item/robot_suit/proc/put_in_hand_or_drop(mob/living/user, obj/item/I) //normal put_in_hands() drops the item ontop of the player, this drops it at the suit's loc
 	if(!user.put_in_hands(I))
@@ -160,7 +160,7 @@
 		W.icon_state = initial(W.icon_state)
 		W.cut_overlays()
 		src.l_leg = W
-		src.updateicon()
+		update_icon()
 
 	else if(istype(W, /obj/item/bodypart/r_leg/robot))
 		if(src.r_leg)
@@ -170,7 +170,7 @@
 		W.icon_state = initial(W.icon_state)
 		W.cut_overlays()
 		src.r_leg = W
-		src.updateicon()
+		update_icon()
 
 	else if(istype(W, /obj/item/bodypart/l_arm/robot))
 		if(src.l_arm)
@@ -180,7 +180,7 @@
 		W.icon_state = initial(W.icon_state)
 		W.cut_overlays()
 		src.l_arm = W
-		src.updateicon()
+		update_icon()
 
 	else if(istype(W, /obj/item/bodypart/r_arm/robot))
 		if(src.r_arm)
@@ -190,7 +190,7 @@
 		W.icon_state = initial(W.icon_state)//in case it is a dismembered robotic limb
 		W.cut_overlays()
 		src.r_arm = W
-		src.updateicon()
+		update_icon()
 
 	else if(istype(W, /obj/item/bodypart/chest/robot))
 		var/obj/item/bodypart/chest/robot/CH = W
@@ -202,7 +202,7 @@
 			CH.icon_state = initial(CH.icon_state) //in case it is a dismembered robotic limb
 			CH.cut_overlays()
 			src.chest = CH
-			src.updateicon()
+			update_icon()
 		else if(!CH.wired)
 			to_chat(user, "<span class='warning'>You need to attach wires to it first!</span>")
 		else
@@ -222,7 +222,7 @@
 			HD.icon_state = initial(HD.icon_state)//in case it is a dismembered robotic limb
 			HD.cut_overlays()
 			src.head = HD
-			src.updateicon()
+			update_icon()
 		else
 			to_chat(user, "<span class='warning'>You need to attach a flash to it first!</span>")
 
@@ -282,11 +282,11 @@
 			O.locked = panel_locked
 			if(!aisync)
 				lawsync = 0
-				O.connected_ai = null
+				O.set_connected_ai(null)
 			else
 				O.notify_ai(NEW_BORG)
 				if(forced_ai)
-					O.connected_ai = forced_ai
+					O.set_connected_ai(forced_ai)
 			if(!lawsync)
 				O.lawupdate = 0
 				if(M.laws.id == DEFAULT_AI_LAWID)
@@ -338,10 +338,10 @@
 
 			if(!aisync)
 				lawsync = FALSE
-				O.connected_ai = null
+				O.set_connected_ai(null)
 			else
 				if(forced_ai)
-					O.connected_ai = forced_ai
+					O.set_connected_ai(forced_ai)
 				O.notify_ai(AI_SHELL)
 			if(!lawsync)
 				O.lawupdate = FALSE
@@ -387,7 +387,7 @@
 		return
 
 	if(href_list["Name"])
-		var/new_name = reject_bad_name(input(usr, "Enter new designation. Set to blank to reset to default.", "Cyborg Debug", src.created_name),1)
+		var/new_name = reject_bad_name(input(usr, "Enter new designation. Set to blank to reset to default.", "Cyborg Debug", src.created_name), TRUE)
 		if(!in_range(src, usr) && src.loc != usr)
 			return
 		if(new_name)

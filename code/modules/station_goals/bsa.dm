@@ -10,7 +10,7 @@
 	 We need you to construct BSA-[rand(1,99)] Artillery position aboard your station.
 
 	 Base parts are available for shipping via cargo.
-	 -Nanotrasen Naval Command"}
+	 Naval Command"}
 
 /datum/station_goal/bluespace_cannon/on_report()
 	//Unlock BSA parts
@@ -64,7 +64,7 @@
 
 /obj/machinery/bsa/middle
 	name = "Bluespace Artillery Fusor"
-	desc = "Contents classified by Nanotrasen Naval Command. Needs to be linked with the other BSA parts using multitool."
+	desc = "Contents classified by Naval Command. Needs to be linked with the other BSA parts using multitool."
 	icon_state = "fuel_chamber"
 	var/obj/machinery/bsa/back/back
 	var/obj/machinery/bsa/front/front
@@ -223,7 +223,7 @@
 										datum/tgui/master_ui = null, datum/ui_state/state = GLOB.physical_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "bsa", name, 400, 305, master_ui, state)
+		ui = new(user, src, ui_key, "bsa", name, 400, 220, master_ui, state)
 		ui.open()
 
 /obj/machinery/computer/bsa_control/ui_data()
@@ -252,6 +252,8 @@
 	update_icon()
 
 /obj/machinery/computer/bsa_control/proc/calibrate(mob/user)
+	if(!GLOB.bsa_unlock)
+		return
 	var/list/gps_locators = list()
 	for(var/obj/item/gps/G in GLOB.GPS_list) //nulls on the list somehow
 		if(G.tracking)

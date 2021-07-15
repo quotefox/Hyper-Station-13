@@ -2,6 +2,7 @@
 
 /obj/item/organ/lungs
 	name = "lungs"
+	desc = "Looking at them makes you start manual breathing."
 	icon_state = "lungs"
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_LUNGS
@@ -67,7 +68,7 @@
 	var/heat_level_3_damage = HEAT_GAS_DAMAGE_LEVEL_3
 	var/heat_damage_type = BURN
 
-	var/crit_stabilizing_reagent = "epinephrine"
+	var/crit_stabilizing_reagent = /datum/reagent/medicine/epinephrine
 
 
 
@@ -299,13 +300,13 @@
 		var/bz_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/bz])
 		if(bz_pp > BZ_trip_balls_min)
 			H.hallucination += 10
-			H.reagents.add_reagent("bz_metabolites",5)
+			H.reagents.add_reagent(/datum/reagent/bz_metabolites,5)
 			if(prob(33))
 				H.adjustOrganLoss(ORGAN_SLOT_BRAIN, 3, 150)
 
 		else if(bz_pp > 0.01)
 			H.hallucination += 5
-			H.reagents.add_reagent("bz_metabolites",1)
+			H.reagents.add_reagent(/datum/reagent/bz_metabolites,1)
 
 
 	// Tritium
@@ -329,17 +330,38 @@
 			H.adjustFireLoss(nitryl_pp/4)
 		gas_breathed = breath_gases[/datum/gas/nitryl]
 		if (gas_breathed > gas_stimulation_min)
-			var/existing = H.reagents.get_reagent_amount("no2")
-			H.reagents.add_reagent("no2", max(0, 5 - existing))
+			H.reagents.add_reagent(/datum/reagent/nitryl,1)
 
 		breath_gases[/datum/gas/nitryl]-=gas_breathed
 
 	// Stimulum
 		gas_breathed = breath_gases[/datum/gas/stimulum]
 		if (gas_breathed > gas_stimulation_min)
-			var/existing = H.reagents.get_reagent_amount("stimulum")
-			H.reagents.add_reagent("stimulum", max(0, 5 - existing))
+			var/existing = H.reagents.get_reagent_amount(/datum/reagent/stimulum)
+			H.reagents.add_reagent(/datum/reagent/stimulum, max(0, 5 - existing))
 		breath_gases[/datum/gas/stimulum]-=gas_breathed
+
+	// Pheromone
+		if (breath_gases[/datum/gas/pheromone])
+			var/pheromone_pp = breath.get_breath_partial_pressure(breath_gases[/datum/gas/pheromone])
+			if(pheromone_pp > MINIMUM_MOLES_DELTA_TO_MOVE)
+
+				// Miasma side effects
+				switch(pheromone_pp)
+					if(1 to 5)
+						if(prob(5))
+							to_chat(owner, "<span class='userlove'>There is an pleasant smell in the air.</span>")
+							owner.adjustArousalLoss(1) //its weak
+					if(5 to 15)
+						if(prob(10))
+							to_chat(owner, "<span class='userlove'>There is an arousing aroma in the air.</span>")
+							owner.adjustArousalLoss(3) //its getting stronger...
+					if(15 to INFINITY)
+						if(prob(15))
+							to_chat(owner, "<span class='userlove'>There is an overpowering arousing aroma in the air.</span>")
+							owner.adjustArousalLoss(6) //its getting stronger...
+
+				breath_gases[/datum/gas/pheromone]-=gas_breathed
 
 	// Miasma
 		if (breath_gases[/datum/gas/miasma])
@@ -348,7 +370,7 @@
 
 				//Miasma sickness
 				if(prob(0.05 * miasma_pp))
-					var/datum/disease/advance/miasma_disease = new /datum/disease/advance/random(2,3)
+					var/datum/disease/advance/miasma_disease = new /datum/disease/advance/random(TRUE, 2,3)
 					miasma_disease.name = "Unknown"
 					miasma_disease.try_infect(owner)
 
@@ -458,8 +480,12 @@
 
 /obj/item/organ/lungs/prepare_eat()
 	var/obj/S = ..()
-	S.reagents.add_reagent("salbutamol", 5)
+	S.reagents.add_reagent(/datum/reagent/medicine/salbutamol, 5)
 	return S
+
+/obj/item/organ/lungs/ipc
+	name = "ipc lungs"
+	icon_state = "lungs-c"
 
 /obj/item/organ/lungs/plasmaman
 	name = "plasma filter"

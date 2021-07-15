@@ -18,6 +18,11 @@
 	var/clockwork_warp_allowed = TRUE // Can servants warp into this area from Reebe?
 	var/clockwork_warp_fail = "The structure there is too dense for warping to pierce. (This is normal in high-security areas.)"
 
+	/// if mobs can be spawned by natural random generation
+	var/mob_spawn_allowed = FALSE
+	/// If megafauna can be spawned by natural random generation
+	var/megafauna_spawn_allowed = FALSE
+
 	var/fire = null
 	var/atmos = TRUE
 	var/atmosalm = FALSE
@@ -65,6 +70,9 @@
 	var/xenobiology_compatible = FALSE //Can the Xenobio management console transverse this area by default?
 	var/list/canSmoothWithAreas //typecache to limit the areas that atoms in this area can smooth with
 
+	/// Color on minimaps, if it's null (which is default) it makes one at random.
+	var/minimap_color
+
 /*Adding a wizard area teleport list because motherfucking lag -- Urist*/
 /*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
 GLOBAL_LIST_EMPTY(teleportlocs)
@@ -81,13 +89,20 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		var/turf/picked = AR.contents[1]
 		if (picked && is_station_level(picked.z))
 			GLOB.teleportlocs[AR.name] = AR
-
-	sortTim(GLOB.teleportlocs, /proc/cmp_text_dsc)
+	if(GLOB.teleportlocs.len) //DON'T TRY TO TIMSORT THINGS THAT HAVE NOTHING. FUCK.
+		sortTim(GLOB.teleportlocs, /proc/cmp_text_dsc)
 
 // ===
 
 /area/New()
-	// This interacts with the map loader, so it needs to be set immediately
+	if(!minimap_color) // goes in New() because otherwise it doesn't fucking work
+		// generate one using the icon_state
+		if(icon_state && icon_state != "unknown")
+			var/icon/I = new(icon, icon_state, dir)
+			I.Scale(1,1)
+			minimap_color = I.GetPixel(1,1)
+		else // no icon state? use random.
+			minimap_color = rgb(rand(50,70),rand(50,70),rand(50,70))	// This interacts with the map loader, so it needs to be set immediately
 	// rather than waiting for atoms to initialize.
 	if (unique)
 		GLOB.areas_by_type[type] = src
@@ -329,8 +344,13 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		F.update_fire_light(fire)
 	for(var/obj/machinery/light/L in src)
 		L.update()
-
-/area/proc/updateicon()
+/**
+  * Update the icon state of the area
+  *
+  * Im not sure what the heck this does, somethign to do with weather being able to set icon
+  * states on areas?? where the heck would that even display?
+  */
+/area/update_icon_state()
 	var/weather_icon
 	for(var/V in SSweather.processing)
 		var/datum/weather/W = V
@@ -340,7 +360,10 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	if(!weather_icon)
 		icon_state = null
 
-/area/space/updateicon()
+/**
+  * Update the icon of the area (overridden to always be null for space
+  */
+/area/space/update_icon_state()
 	icon_state = null
 
 /*
@@ -373,7 +396,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 /area/proc/power_change()
 	for(var/obj/machinery/M in src)	// for each machine in the area
 		M.power_change()				// reverify power status (to update icons etc.)
-	updateicon()
+	update_icon()
 
 /area/proc/usage(chan)
 	var/used = 0

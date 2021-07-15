@@ -7,17 +7,29 @@
 	description = "<span class='nicegreen'>I'm stuffed!</span>\n"
 	mood_change = 6
 
+/datum/mood_event/quenched
+	description = "<span class='nicegreen'>I'm quenched!</span>\n"
+	mood_change = 6
+
 /datum/mood_event/fed
 	description = "<span class='nicegreen'>I have recently had some food.</span>\n"
 	mood_change = 3
 
 /datum/mood_event/hungry
 	description = "<span class='warning'>I'm getting a bit hungry.</span>\n"
-	mood_change = -8
+	mood_change = -5
 
 /datum/mood_event/starving
 	description = "<span class='boldwarning'>I'm starving!</span>\n"
-	mood_change = -15
+	mood_change = -10
+
+/datum/mood_event/thirsty
+	description = "<span class='warning'>I'm getting a bit thirsty.</span>\n"
+	mood_change = -5
+
+/datum/mood_event/dehydrated
+	description = "<span class='boldwarning'>I'm dehydrated!</span>\n"
+	mood_change = -10
 
 //Disgust
 /datum/mood_event/gross

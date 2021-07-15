@@ -53,7 +53,7 @@
 		return
 
 	var/obj/item/reagent_containers/glass/bucket/bucket = H.get_item_for_held_index(1)
-	bucket.reagents.add_reagent("water",70)
+	bucket.reagents.add_reagent(/datum/reagent/water,70)
 
 /datum/outfit/laser_tag
 	name = "Laser Tag Red"
@@ -203,16 +203,18 @@
 	name = "CentCom Commander"
 
 	uniform = /obj/item/clothing/under/rank/centcom_commander
-	suit = /obj/item/clothing/suit/armor/bulletproof
+	suit = /obj/item/clothing/suit/hooded/wintercoat/centcom
 	shoes = /obj/item/clothing/shoes/combat/swat
 	gloves = /obj/item/clothing/gloves/combat
 	ears = /obj/item/radio/headset/headset_cent/commander
-	glasses = /obj/item/clothing/glasses/eyepatch
+	glasses = /obj/item/clothing/glasses/thermal/eyepatch
 	mask = /obj/item/clothing/mask/cigarette/cigar/cohiba
 	head = /obj/item/clothing/head/centhat
-	belt = /obj/item/gun/ballistic/revolver/mateba
+	neck = /obj/item/clothing/neck/cloak/centcom
+	belt = /obj/item/gun/ballistic/automatic/pistol/lato
 	r_pocket = /obj/item/lighter
-	l_pocket = /obj/item/ammo_box/a357
+	l_pocket = /obj/item/ammo_box/magazine/latomag
+	l_hand = /obj/item/ammo_box/magazine/latomag
 	back = /obj/item/storage/backpack/satchel/leather
 	id = /obj/item/card/id
 
@@ -222,8 +224,7 @@
 
 	var/obj/item/card/id/W = H.wear_id
 	W.icon_state = "centcom"
-	W.access = get_all_accesses()
-	W.access += get_centcom_access("CentCom Commander")
+	W.access = get_all_accesses()+get_all_centcom_access()+get_all_syndicate_access()
 	W.assignment = "CentCom Commander"
 	W.registered_name = H.real_name
 	W.update_label()
@@ -399,12 +400,12 @@
 	R.set_frequency(FREQ_CENTCOM)
 	R.freqlock = TRUE
 
-	var/obj/item/implant/mindshield/L = new/obj/item/implant/mindshield(H)//Here you go Deuryn
+	var/obj/item/implant/mindshield/L = new //Here you go Deuryn
 	L.implant(H, null, 1)
 
 
 	var/obj/item/card/id/W = H.wear_id
-	W.icon_state = "centcom"
+	W.icon_state = "deathsquad"
 	W.access = get_all_accesses()//They get full station access.
 	W.access += get_centcom_access("Death Commando")//Let's add their alloted CentCom access.
 	W.assignment = "Death Commando"
@@ -426,15 +427,21 @@
 
 /datum/outfit/debug //Debug objs plus hardsuit
 	name = "Debug outfit"
-	uniform = /obj/item/clothing/under/patriotsuit 
+	uniform = /obj/item/clothing/under/patriotsuit
 	suit = /obj/item/clothing/suit/space/hardsuit/syndi/elite
 	shoes = /obj/item/clothing/shoes/magboots/advance
 	suit_store = /obj/item/tank/internals/oxygen
 	mask = /obj/item/clothing/mask/gas/welding
 	belt = /obj/item/storage/belt/utility/chief/full
 	gloves = /obj/item/clothing/gloves/combat
-	id = /obj/item/card/id/ert
+	id = /obj/item/card/id/debug
 	glasses = /obj/item/clothing/glasses/meson/night
 	ears = /obj/item/radio/headset/headset_cent/commander
 	back = /obj/item/storage/backpack/holding
 	backpack_contents = list(/obj/item/card/emag=1,	/obj/item/flashlight/emp/debug=1, /obj/item/construction/rcd/combat=1, /obj/item/gun/magic/wand/resurrection/debug=1, /obj/item/melee/transforming/energy/axe=1)
+
+/datum/outfit/debug/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	var/obj/item/card/id/W = H.wear_id
+	W.assignment = "Jannie"
+	W.registered_name = H.real_name
+	W.update_label(W.registered_name, W.assignment)

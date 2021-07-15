@@ -2,16 +2,13 @@
 //////////////////////////////////////
 
 Choking
-
 	Very very noticable.
 	Lowers resistance.
 	Decreases stage speed.
 	Decreases transmittablity tremendously.
 	Moderate Level.
-
 Bonus
 	Inflicts spikes of oxyloss
-
 //////////////////////////////////////
 */
 
@@ -28,8 +25,10 @@ Bonus
 	base_message_chance = 15
 	symptom_delay_min = 10
 	symptom_delay_max = 30
-	threshold_desc = "<b>Stage Speed 8:</b> Causes choking more frequently.<br>\
-					  <b>Stealth 4:</b> The symptom remains hidden until active."
+	threshold_desc = list(
+		"Stage Speed 8" = "Causes choking more frequently.",
+		"Stealth 4" = "The symptom remains hidden until active."
+	)
 
 /datum/symptom/choking/Start(datum/disease/advance/A)
 	if(!..())
@@ -93,14 +92,16 @@ Bonus
 	resistance = -0
 	stage_speed = -1
 	transmittable = -2
-	level = 9
+	level = 7
 	severity = 6
 	base_message_chance = 15
 	symptom_delay_min = 14
 	symptom_delay_max = 30
 	var/paralysis = FALSE
-	threshold_desc = "<b>Stage Speed 8:</b> Additionally synthesizes pancuronium and sodium thiopental inside the host.<br>\
-					  <b>Transmission 8:</b> Doubles the damage caused by the symptom."
+	threshold_desc = list(
+		"Stage Speed 8" = "Additionally synthesizes pancuronium and sodium thiopental inside the host.",
+		"Transmission 8" = "Doubles the damage caused by the symptom."
+	)
 
 
 /datum/symptom/asphyxiation/Start(datum/disease/advance/A)
@@ -138,7 +139,7 @@ Bonus
 	var/get_damage = rand(15,21) * power
 	M.adjustOxyLoss(get_damage)
 	if(paralysis)
-		M.reagents.add_reagent_list(list("pancuronium" = 3, "sodium_thiopental" = 3))
+		M.reagents.add_reagent_list(list(/datum/reagent/toxin/pancuronium = 3, /datum/reagent/toxin/sodium_thiopental = 3))
 	return 1
 
 /datum/symptom/asphyxiation/proc/Asphyxiate_death(mob/living/M, datum/disease/advance/A)

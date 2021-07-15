@@ -12,6 +12,7 @@
 #define MUTATE		/datum/mutation/human/bad_dna
 #define COUGH		/datum/mutation/human/cough
 #define DWARFISM	/datum/mutation/human/dwarfism
+#define GIANTISM	/datum/mutation/human/giantism
 #define CLOWNMUT	/datum/mutation/human/clumsy
 #define TOURETTES	/datum/mutation/human/tourettes
 #define DEAFMUT		/datum/mutation/human/deaf

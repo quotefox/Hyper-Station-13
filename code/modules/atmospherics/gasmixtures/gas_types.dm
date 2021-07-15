@@ -184,7 +184,18 @@ GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/g
 	name = "Miasma"
 	gas_overlay = "miasma"
 	moles_visible = MOLES_GAS_VISIBLE * 60
-	rarity = 250
+	rarity = 150
+
+
+/datum/gas/pheromone
+	id = "pheromone"
+	specific_heat = 0.00001
+	fusion_power = 30
+	name = "Pheromones"
+	gas_overlay = "pheromone"
+	moles_visible = MOLES_GAS_VISIBLE * 10
+	rarity = 30
+
 
 /obj/effect/overlay/gas
 	icon = 'icons/effects/atmospherics.dmi'
@@ -192,6 +203,7 @@ GLOBAL_LIST_INIT(nonreactive_gases, typecacheof(list(/datum/gas/oxygen, /datum/g
 	anchored = TRUE  // should only appear in vis_contents, but to be safe
 	layer = FLY_LAYER
 	appearance_flags = TILE_BOUND
+	vis_flags = NONE
 
 /obj/effect/overlay/gas/New(state, alph)
 	. = ..()

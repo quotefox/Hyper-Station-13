@@ -8,6 +8,21 @@
 	item_color="yellow"
 	resistance_flags = NONE
 	var/can_be_cut = 1
+	price = 10
+
+/obj/item/clothing/gloves/color/yellow/ce //funky looking, basically combat gloves
+	desc = "Special Insulated gloves with pricy thermal shielding normally only found in combat gloves."
+	name = "Chief Engineer Insulated Gloves"
+	icon_state = "ce_insuls"
+	item_state = "combat"
+	siemens_coefficient = 0
+	permeability_coefficient = 0.05
+	strip_delay = 80
+	cold_protection = HANDS
+	min_cold_protection_temperature = GLOVES_MIN_TEMP_PROTECT
+	heat_protection = HANDS
+	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
+	resistance_flags = NONE
 
 /obj/item/clothing/gloves/color/fyellow                             //Cheap Chinese Crap
 	desc = "These gloves are cheap knockoffs of the coveted ones - no way this can end badly."
@@ -19,6 +34,7 @@
 	item_color="yellow"
 	resistance_flags = NONE
 	var/can_be_cut = 1
+	price = 5
 
 /obj/item/clothing/gloves/color/fyellow/New()
 	..()
@@ -113,6 +129,7 @@
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	resistance_flags = NONE
+	price = 12
 
 /obj/item/clothing/gloves/color/rainbow
 	name = "rainbow gloves"

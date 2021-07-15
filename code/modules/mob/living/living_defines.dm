@@ -5,6 +5,8 @@
 	hud_possible = list(HEALTH_HUD,STATUS_HUD,ANTAG_HUD,NANITE_HUD,DIAG_NANITE_FULL_HUD)
 	pressure_resistance = 10
 
+	typing_indicator_enabled = TRUE
+
 	var/resize = 1 //Badminnery resize
 	var/lastattacker = null
 	var/lastattackerckey = null
@@ -54,12 +56,15 @@
 	var/mob_size = MOB_SIZE_HUMAN
 
 //H13 custom body size and impregnation
-	var/custom_body_size = 1
+	var/custom_body_size = 100
 	var/breedable = 0
-	var/impregchance = 0
+	var/impregchance = 30
+//h13 settings
+	var/Noncon = 0
+	var/ERP = 0
+	var/SSD = FALSE
 
-
-	var/list/mob_biotypes = list(MOB_ORGANIC)
+	var/mob_biotypes = MOB_ORGANIC
 	var/metabolism_efficiency = 1 //more or less efficiency to metabolize helpful/harmful reagents and regulate body temperature..
 	var/has_limbs = 0 //does the mob have distinct limbs?(arms,legs, chest,head)
 
@@ -108,7 +113,7 @@
 
 	var/list/obj/effect/proc_holder/abilities = list()
 
-	var/can_be_held = FALSE	//whether this can be picked up and held.
+	var/can_be_held = FALSE
 
 	var/radiation = 0 //If the mob is irradiated.
 	var/ventcrawl_layer = PIPING_LAYER_DEFAULT
@@ -117,3 +122,5 @@
 	//List of active diseases
 	var/list/diseases = list() // list of all diseases in a mob
 	var/list/disease_resistances = list()
+
+	var/drag_slowdown = TRUE //Whether the mob is slowed down when dragging another prone mob

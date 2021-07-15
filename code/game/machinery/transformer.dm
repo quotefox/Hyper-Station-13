@@ -28,7 +28,7 @@
 /obj/machinery/transformer/examine(mob/user)
 	. = ..()
 	if(cooldown && (issilicon(user) || isobserver(user)))
-		to_chat(user, "It will be ready in [DisplayTimeText(cooldown_timer - world.time)].")
+		. += "It will be ready in [DisplayTimeText(cooldown_timer - world.time)]."
 
 /obj/machinery/transformer/Destroy()
 	QDEL_NULL(countdown)
@@ -101,7 +101,7 @@
  	// So he can't jump out the gate right away.
 	R.SetLockdown()
 	if(masterAI)
-		R.connected_ai = masterAI
+		R.set_connected_ai(masterAI)
 		R.lawsync()
 		R.lawupdate = 1
 	addtimer(CALLBACK(src, .proc/unlock_new_robot, R), 50)

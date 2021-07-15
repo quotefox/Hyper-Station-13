@@ -13,7 +13,7 @@
 
 /datum/ert/New()
 	if (!polldesc)
-		polldesc = "a Code [code] Nanotrasen Emergency Response Team"
+		polldesc = "a Code [code] Kinaris Emergency Response Team"
 
 /datum/ert/blue
 	opendoors = FALSE
@@ -35,7 +35,7 @@
 	rename_team = "Deathsquad"
 	code = "Delta"
 	mission = "Leave no witnesses."
-	polldesc = "an elite Nanotrasen Strike Team"
+	polldesc = "an elite Kinaris Strike Team"
 
 /datum/ert/centcom_official
 	code = "Green"
@@ -54,14 +54,14 @@
 	leader_role = /datum/antagonist/ert/commander/inquisitor
 	rename_team = "Inquisition"
 	mission = "Destroy any traces of paranormal activity aboard the station."
-	polldesc = "a Nanotrasen paranormal response team"
+	polldesc = "a Kinaris paranormal response team"
 
 /datum/ert/greybois
 	code = "Green"
 	teamsize = 1
 	opendoors = FALSE
 	enforce_human = FALSE
-	roles = /datum/antagonist/greybois
+	roles = list(/datum/antagonist/greybois)
 	leader_role = /datum/antagonist/greybois/greygod
 	rename_team = "Emergency Assistants"
 	polldesc = "an Emergency Assistant"

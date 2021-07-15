@@ -1,6 +1,6 @@
 /obj/screen/mov_intent
 	icon = 'modular_citadel/icons/ui/screen_midnight.dmi'
-
+/*
 /obj/screen/sprintbutton
 	name = "toggle sprint"
 	icon = 'modular_citadel/icons/ui/screen_midnight.dmi'
@@ -12,10 +12,11 @@
 		var/mob/living/carbon/human/H = usr
 		H.togglesprint()
 
-/obj/screen/sprintbutton/proc/insert_witty_toggle_joke_here(mob/living/carbon/human/H)
-	if(!H)
+/obj/screen/sprintbutton/update_icon_state()
+	var/mob/living/user = hud?.mymob
+	if(istype(user))
 		return
-	if(H.sprinting)
+	if(user.sprinting)
 		icon_state = "act_sprint_on"
 	else
 		icon_state = "act_sprint"
@@ -39,3 +40,4 @@
 	if(L.sprint_buffer_max > 0)
 		amount = round(CLAMP((L.sprint_buffer / L.sprint_buffer_max) * 100, 0, 100), 5)
 	icon_state = "prog_bar_[amount]"
+*/

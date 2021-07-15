@@ -50,8 +50,9 @@ Difficulty: Normal
 	armour_penetration = 75
 	melee_damage_lower = 15
 	melee_damage_upper = 20
+	blood_volume = 0
 	speed = 1
-	move_to_delay = 11
+	move_to_delay = 15
 	ranged = 1
 	ranged_cooldown_time = 40
 	aggro_vision_range = 21 //so it can see to one side of the arena to the other
@@ -65,9 +66,9 @@ Difficulty: Normal
 
 	var/burst_range = 3 //range on burst aoe
 	var/beam_range = 5 //range on cross blast beams
-	var/chaser_speed = 2 //how fast chasers are currently
+	var/chaser_speed = 1 //how fast chasers are currently
 	var/chaser_cooldown = 50 //base cooldown/cooldown var between spawning chasers
-	var/major_attack_cooldown = 40 //base cooldown for major attacks
+	var/major_attack_cooldown = 60 //base cooldown for major attacks
 	var/arena_cooldown = 200 //base cooldown/cooldown var for creating an arena
 	var/blinking = FALSE //if we're doing something that requires us to stand still and not attack
 	var/obj/effect/hierophant/spawned_beacon //the beacon we teleport back to
@@ -441,7 +442,7 @@ Difficulty: Normal
 
 /mob/living/simple_animal/hostile/megafauna/hierophant/AltClickOn(atom/A) //player control handler(don't give this to a player holy fuck)
 	if(!istype(A) || get_dist(A, src) <= 2)
-		return
+		return altclick_listed_turf(A)
 	blink(A)
 
 //Hierophant overlays

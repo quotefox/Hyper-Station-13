@@ -35,9 +35,7 @@
 	if(isturf(H.loc)) //else, there's considered to be no light
 		var/turf/T = H.loc
 		light_amount = min(1,T.get_lumcount()) - 0.5
-		H.nutrition += light_amount * light_nutrition_gain_factor
-		if(H.nutrition > NUTRITION_LEVEL_FULL)
-			H.nutrition = NUTRITION_LEVEL_FULL
+		H.nutrition = min(H.nutrition + light_amount * light_nutrition_gain_factor, NUTRITION_LEVEL_FULL)
 		if(light_amount > 0.2) //if there's enough light, heal
 			H.heal_overall_damage(light_bruteheal, light_burnheal)
 			H.adjustToxLoss(-light_toxheal)
@@ -47,9 +45,9 @@
 		H.take_overall_damage(2,0)
 
 /datum/species/pod/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H)
-	if(chem.id == "plantbgone")
+	if(chem.type == /datum/reagent/toxin/plantbgone)
 		H.adjustToxLoss(3)
-		H.reagents.remove_reagent(chem.id, REAGENTS_METABOLISM)
+		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM)
 		return 1
 
 /datum/species/pod/on_hit(obj/item/projectile/P, mob/living/carbon/human/H)

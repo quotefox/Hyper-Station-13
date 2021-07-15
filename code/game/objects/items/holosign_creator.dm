@@ -65,7 +65,7 @@
 	desc = "A holographic projector that creates holographic security barriers."
 	icon_state = "signmaker_sec"
 	holosign_type = /obj/structure/holosign/barrier
-	creation_time = 30
+	creation_time = 0
 	max_signs = 6
 
 /obj/item/holosign_creator/engineering
@@ -73,14 +73,22 @@
 	desc = "A holographic projector that creates holographic engineering barriers."
 	icon_state = "signmaker_engi"
 	holosign_type = /obj/structure/holosign/barrier/engineering
-	creation_time = 30
+	creation_time = 0
 	max_signs = 6
 
 /obj/item/holosign_creator/atmos
 	name = "ATMOS holofan projector"
-	desc = "A holographic projector that creates holographic barriers that prevent changes in atmosphere conditions."
-	icon_state = "signmaker_engi"
+	desc = "A holographic projector that creates holographic fans that prevent changes in atmosphere conditions. Somehow."
+	icon_state = "signmaker_atmos"
 	holosign_type = /obj/structure/holosign/barrier/atmos
+	creation_time = 0
+	max_signs = 3
+
+/obj/item/holosign_creator/firelock
+	name = "ATMOS holofirelock projector"
+	desc = "A holographic projector that creates holographic barriers that prevent changes in temperature conditions."
+	icon_state = "signmaker_engi"
+	holosign_type = /obj/structure/holosign/barrier/firelock
 	creation_time = 0
 	max_signs = 3
 
@@ -89,7 +97,7 @@
 	desc = "A holographic projector that creates PENLITE holobarriers. Useful during quarantines since they halt those with malicious diseases."
 	icon_state = "signmaker_med"
 	holosign_type = /obj/structure/holosign/barrier/medical
-	creation_time = 30
+	creation_time = 10
 	max_signs = 3
 
 /obj/item/holosign_creator/cyborg

@@ -21,7 +21,8 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	/datum/hallucination/delusion = 2,
 	/datum/hallucination/shock = 1,
 	/datum/hallucination/death = 1,
-	/datum/hallucination/oh_yeah = 1
+	/datum/hallucination/oh_yeah = 1,
+	/datum/hallucination/sleeping_carp = 1
 	))
 
 
@@ -137,7 +138,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	Show()
 
 /obj/effect/hallucination/simple/Destroy()
-	if(target.client)
+	if(target && target.client)
 		target.client.images.Remove(current_image)
 	active = FALSE
 	return ..()
@@ -213,9 +214,9 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	. = ..()
 	name = "alien hunter ([rand(1, 1000)])"
 
-/obj/effect/hallucination/simple/xeno/throw_impact(A)
+/obj/effect/hallucination/simple/xeno/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	update_icon("alienh_pounce")
-	if(A == target && target.stat!=DEAD)
+	if(hit_atom == target && target.stat!=DEAD)
 		target.Knockdown(100)
 		target.visible_message("<span class='danger'>[target] flails around wildly.</span>","<span class ='userdanger'>[name] pounces on you!</span>")
 
@@ -236,10 +237,10 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		xeno = new(pump.loc,target)
 		sleep(10)
 		xeno.update_icon("alienh_leap",'icons/mob/alienleap.dmi',-32,-32)
-		xeno.throw_at(target,7,1, xeno, FALSE, TRUE)
+		xeno.throw_at(target,7,1, null, FALSE, TRUE)
 		sleep(10)
 		xeno.update_icon("alienh_leap",'icons/mob/alienleap.dmi',-32,-32)
-		xeno.throw_at(pump,7,1, xeno, FALSE, TRUE)
+		xeno.throw_at(pump,7,1, null, FALSE, TRUE)
 		sleep(10)
 		var/xeno_name = xeno.name
 		to_chat(target, "<span class='notice'>[xeno_name] begins climbing into the ventilation system...</span>")
@@ -683,31 +684,27 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			if(get_dist(target,H)<get_dist(target,person))
 				person = H
 		people += H
-	if(person && !force_radio) //Basic talk
-		var/chosen = specific_message
-		if(!chosen)
-			chosen = capitalize(pick(speak_messages))
-		chosen = replacetext(chosen, "%TARGETNAME%", target_name)
-		var/image/speech_overlay = image('icons/mob/talk.dmi', person, "default0", layer = ABOVE_MOB_LAYER)
-		var/message = target.compose_message(person,understood_language,chosen,null,list(person.speech_span),face_name = TRUE)
-		feedback_details += "Type: Talk, Source: [person.real_name], Message: [message]"
-		to_chat(target, message)
-		if(target.client)
-			target.client.images |= speech_overlay
-			sleep(30)
-			target.client.images.Remove(speech_overlay)
-	else // Radio talk
-		var/chosen = specific_message
-		if(!chosen)
-			chosen = capitalize(pick(radio_messages))
-		chosen = replacetext(chosen, "%TARGETNAME%", target_name)
+// Get person to affect if radio hallucination
+	var/is_radio = !person || force_radio
+	if (is_radio)
 		var/list/humans = list()
 		for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 			humans += H
 		person = pick(humans)
-		var/message = target.compose_message(person,understood_language,chosen,"[FREQ_COMMON]",list(person.speech_span),face_name = TRUE)
-		feedback_details += "Type: Radio, Source: [person.real_name], Message: [message]"
-		to_chat(target, message)
+		// Generate message
+	var/spans = list(person.speech_span)
+	var/chosen = !specific_message ? capitalize(pick(is_radio ? speak_messages : radio_messages)) : specific_message
+	chosen = replacetext(chosen, "%TARGETNAME%", target_name)
+	var/message = target.compose_message(person, understood_language, chosen, is_radio ? "[FREQ_COMMON]" : null, spans, face_name = TRUE)
+	feedback_details += "Type: [is_radio ? "Radio" : "Talk"], Source: [person.real_name], Message: [message]"
+
+	// Display message
+	if (!is_radio && !target.client?.prefs.chat_on_map)
+		var/image/speech_overlay = image('icons/mob/talk.dmi', person, "default0", layer = ABOVE_MOB_LAYER)
+		INVOKE_ASYNC(GLOBAL_PROC, /proc/flick_overlay, speech_overlay, list(target.client), 30)
+	if (target.client?.prefs.chat_on_map)
+		target.create_chat_message(person, understood_language, chosen, spans, 0)
+	to_chat(target, message)
 	qdel(src)
 
 /datum/hallucination/message
@@ -771,7 +768,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	..()
 	var/turf/source = random_far_turf()
 	if(!sound_type)
-		sound_type = pick("airlock","airlock pry","console","explosion","far explosion","mech","glass","alarm","beepsky","mech","wall decon","door hack")
+		sound_type = pick("airlock","airlock pry","console","flash","explosion","far explosion","mech","glass","alarm","beepsky","mech","wall decon","door hack")
 	feedback_details += "Type: [sound_type]"
 	//Strange audio
 	switch(sound_type)
@@ -788,6 +785,8 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 				target.playsound_local(source,'sound/effects/explosion1.ogg', 50, 1)
 			else
 				target.playsound_local(source, 'sound/effects/explosion2.ogg', 50, 1)
+		if("flash")
+			target.playsound_local(source, 'sound/weapons/flash.ogg', 50, 1)
 		if("far explosion")
 			target.playsound_local(source, 'sound/effects/explosionfar.ogg', 50, 1)
 		if("glass")
@@ -892,7 +891,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			SEND_SOUND(target, 'sound/ai/aimalf.ogg')
 		if("meteors") //Meteors inbound!
 			to_chat(target, "<h1 class='alert'>Meteor Alert</h1>")
-			to_chat(target, "<br><br><span class='alert'>Meteors have been detected on collision course with the station.</span><br><br>")
+			to_chat(target, "<br><br><span class='alert'>Meteors have been detected on collision course with the station. Estimated time until impact: [round(rand(300,600)/60)] minutes.</span><br><br>")
 			SEND_SOUND(target, 'sound/ai/meteors.ogg')
 		if("supermatter")
 			SEND_SOUND(target, 'sound/magic/charge.ogg')
@@ -1291,4 +1290,48 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	H.hal_target = target
 	H.preparePixelProjectile(target, start)
 	H.fire()
+	qdel(src)
+
+/datum/hallucination/stray_pistol_bullet //specifically for aurora_aquilae.dm event
+
+/datum/hallucination/stray_pistol_bullet/New(mob/living/carbon/C, forced = TRUE)
+	set waitfor = FALSE
+	..()
+	var/list/turf/startlocs = list()
+	for(var/turf/open/T in view(world.view+1,target)-view(world.view,target))
+		startlocs += T
+	if(!startlocs.len)
+		qdel(src)
+		return
+	var/turf/start = pick(startlocs)
+	var/proj_type = /obj/item/projectile/hallucination/bullet
+	feedback_details += "Type: [proj_type]"
+	var/obj/item/projectile/hallucination/H = new proj_type(start)
+	target.playsound_local(start, H.hal_fire_sound, 60, 1)
+	H.hal_target = target
+	H.preparePixelProjectile(target, start)
+	H.fire()
+	qdel(src)
+
+/datum/hallucination/sleeping_carp
+
+/datum/hallucination/sleeping_carp/New(mob/living/carbon/C, forced = TRUE)
+	set waitfor = FALSE
+	..()
+	var/list/mobsyup
+	for (var/mob/living/carbon/A in orange(C,1))
+		if (get_dist(C,A) < 2)
+			LAZYADD(mobsyup,A)
+	if (!LAZYLEN(mobsyup))
+		qdel(src)
+		return
+	var/mob/living/carbon/G = pick(mobsyup)
+	if (prob(50))
+		C.visible_message("<span class='warning'>[C] falls to the ground screaming and clutching [C.p_their()] wrist!</span>", \
+						  "<span class='userdanger'>[G] grabs your wrist and violently wrenches it to the side!</span>")
+		C.emote("scream")
+		C.dropItemToGround(C.get_active_held_item())
+		C.Knockdown(60)
+	else
+		to_chat(C,"<span class='userdanger'>[G] violently grabs you!</span>")
 	qdel(src)

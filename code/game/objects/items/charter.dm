@@ -81,7 +81,15 @@
 	set_station_name(designation)
 	minor_announce("[ureal_name] has designated your station as [station_name()]", "Captain's Charter", 0)
 	log_game("[ukey] has renamed the station as [station_name()].")
-
+	if (designation == "Black Mesa")
+		SSresearch.science_tech.add_point_list(list(TECHWEB_POINT_TYPE_GENERIC = 3000))
+		var/list/bmeastereggmusic = list('sound/music/half-life07.ogg','sound/music/half-life13.ogg','sound/music/bms_inbounda.ogg')
+		var/selectedmusic = pick(bmeastereggmusic)
+		for(var/mob/M in GLOB.player_list)
+			SEND_SOUND(M, selectedmusic)
+			to_chat(M, "<span class='boldannounce'>You feel the fabric of reality distort for a moment... Prepare for unforeseen... Consequences...</span>")
+		message_admins("The station has been renamed to Black Mesa.")
+		log_game("The station has been renamed to Black Mesa.")
 	name = "station charter for [station_name()]"
 	desc = "An official document entrusting the governance of \
 		[station_name()] and surrounding space to Captain [uname]."
@@ -111,7 +119,7 @@
 	minor_announce("[ureal_name] has designated the planet as [station_name()]", "Captain's Banner", 0)
 	log_game("[ukey] has renamed the planet as [station_name()].")
 	name = "banner of [station_name()]"
-	desc = "The banner bears the official coat of arms of Nanotrasen, signifying that [station_name()] has been claimed by Captain [uname] in the name of the company."
+	desc = "The banner bears the official coat of arms of Kinaris, signifying that [station_name()] has been claimed by Captain [uname] in the name of the company."
 	SSblackbox.record_feedback("text", "station_renames", 1, "[station_name()]")
 	if(!unlimited_uses)
 		used = TRUE

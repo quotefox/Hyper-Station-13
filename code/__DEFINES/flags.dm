@@ -32,6 +32,7 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define TESLA_IGNORE_1				(1<<13) // TESLA_IGNORE grants immunity from being targeted by tesla-style electricity
 #define INITIALIZED_1				(1<<14)  //Whether /atom/Initialize() has already run for the object
 #define ADMIN_SPAWNED_1			(1<<15) 	//was this spawned by an admin? used for stat tracking stuff.
+#define PREVENT_CONTENTS_EXPLOSION_1 (1<<16) /// should not get harmed if this gets caught by an explosion?
 
 //turf-only flags
 #define NOJAUNT_1					(1<<0)
@@ -52,7 +53,9 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define PASSMOB			(1<<4)
 #define PASSCLOSEDTURF	(1<<5)
 #define LETPASSTHROW	(1<<6)
-
+#define PASSMACHINES	(1<<7)
+#define PASSCOMPUTER	(1<<8)
+#define PASSDOOR		(1<<13)
 
 //Movement Types
 #define GROUND (1<<0)
@@ -89,3 +92,4 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 // radiation
 #define RAD_PROTECT_CONTENTS (1<<0)
 #define RAD_NO_CONTAMINATE (1<<1)
+

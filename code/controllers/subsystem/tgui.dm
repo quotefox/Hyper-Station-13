@@ -11,13 +11,14 @@ SUBSYSTEM_DEF(tgui)
 	var/basehtml // The HTML base used for all UIs.
 
 /datum/controller/subsystem/tgui/PreInit()
-	basehtml = file2text('tgui/tgui.html')
+	basehtml = file2text('tgui-next/packages/tgui/public/tgui-main.html')
 
 /datum/controller/subsystem/tgui/Shutdown()
 	close_all_uis()
 
-/datum/controller/subsystem/tgui/stat_entry()
-	..("P:[processing_uis.len]")
+/datum/controller/subsystem/tgui/stat_entry(msg)
+	msg = "P:[length(open_uis)]"
+	return ..()
 
 /datum/controller/subsystem/tgui/fire(resumed = 0)
 	if (!resumed)

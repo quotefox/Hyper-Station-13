@@ -102,6 +102,10 @@
 	info = "</b><br><br>So this is it, I guess.. Always thought I'd go out doing something stupid, but.. not like this.<br>Should anyone find this note, tell Jeremy Clarke he can kiss my ass. Launching the pod unprepared like that..<br>Well. Now that I'm keeling over here, I guess I should write how I came to be the last one standing here.<br>Four of us took this pod.. only three of us woke up though.. fourth pod is locked from the inside, we couldn't figure out how to get it open.<br>Me and the clown set up a farm s'we can survive at least a while.. though, he didn't seem to understand that man cannot live on banana alone.<br>Had a bunch of circuits on him for some reason when he eventually passed, whispered to me something about a chem dispenser.. I.. don't know what he meant by that. I was never good with machinary. Maybe he wanted space lube?<br>The assistant that we gave the space suit to go out and find help never came back.. I'm betting he found salvation and left us behind.. never can trust those grubby greytiders."
 	},
 /obj/item/pen,
+/obj/item/bluespace_thread{
+	pixel_x = -1;
+	pixel_y = 1
+	},
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered)
 "aw" = (
@@ -232,7 +236,7 @@
 /area/template_noop)
 "aY" = (
 /obj/effect/mob_spawn/human/hermit{
-	flavour_text = "<span class='big bold'>You've been late to awaken from your cryo slumber. Blasted machine, you set it to 10 days not 10 weeks!</span><b> Where have the others gone while we were out? Did they manage to survive? These thoughts are dispelled by yet another recollection of how you got here... ";
+	flavour_text = "You've been late to awaken from your cryo slumber. Blasted machine, you set it to 10 days not 10 weeks! Where have the others gone while we were out? Did they manage to survive? These thoughts are dispelled by yet another recollection of how you got here... ";
 	job_description = "Space Hermit"
 	},
 /turf/open/floor/mineral/titanium,
@@ -338,6 +342,13 @@
 /obj/item/flashlight/lamp/bananalamp,
 /turf/open/floor/plating/asteroid,
 /area/ruin/unpowered)
+"bt" = (
+/obj/structure/fluff/empty_cryostasis_sleeper,
+/obj/structure/mirror{
+	pixel_x = 28
+	},
+/turf/open/floor/mineral/titanium,
+/area/ruin/powered)
 
 (1,1,1) = {"
 aa
@@ -370,7 +381,7 @@ aa
 aa
 aa
 aa
-ac
+aA
 aO
 aA
 aA
@@ -1102,11 +1113,11 @@ ab
 ab
 ab
 af
-ak
+bt
 ao
 ao
 ao
-ak
+bt
 ba
 ac
 ab
@@ -2622,7 +2633,7 @@ aa
 aa
 aa
 aa
-ac
+aA
 aa
 aa
 aa
@@ -2673,9 +2684,9 @@ aa
 aa
 aa
 aa
-ac
+aA
 ab
-ac
+aA
 aa
 aa
 "}
@@ -2829,9 +2840,9 @@ aa
 aa
 aa
 aa
-ac
+aA
 ab
-ac
+aA
 aa
 aa
 "}
@@ -2881,7 +2892,7 @@ aa
 aa
 aa
 aa
-ac
+aA
 aa
 aa
 aa

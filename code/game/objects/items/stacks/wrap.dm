@@ -13,6 +13,7 @@
 	amount = 25
 	max_amount = 25
 	resistance_flags = FLAMMABLE
+	grind_results = list(/datum/reagent/cellulose = 3)
 
 /obj/item/stack/wrapping_paper/use(used, transfer)
 	var/turf/T = get_turf(src)
@@ -66,7 +67,7 @@
 		return
 	if(!istype(target))
 		return
-	if(target.anchored)
+	if(target.anchored || (user in target))
 		return
 
 	if(isitem(target))

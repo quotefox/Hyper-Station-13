@@ -52,9 +52,14 @@
 
 /obj/machinery/seed_extractor/RefreshParts()
 	for(var/obj/item/stock_parts/matter_bin/B in component_parts)
-		max_seeds = 1000 * B.rating
+		max_seeds = initial(max_seeds) * B.rating
 	for(var/obj/item/stock_parts/manipulator/M in component_parts)
-		seed_multiplier = M.rating
+		seed_multiplier = initial(seed_multiplier) * M.rating
+
+/obj/machinery/seed_extractor/examine(mob/user)
+	. = ..()
+	if(in_range(user, src) || isobserver(user))
+		. += "<span class='notice'>The status display reads: Extracting <b>[seed_multiplier]</b> seed(s) per piece of produce.<br>Machine can store up to <b>[max_seeds]</b> seeds.</span>"
 
 /obj/machinery/seed_extractor/attackby(obj/item/O, mob/user, params)
 
@@ -174,7 +179,7 @@
 		to_chat(usr, "<span class='notice'>\The [src] is full.</span>")
 		return FALSE
 
-	GET_COMPONENT_FROM(STR, /datum/component/storage, O.loc)
+	var/datum/component/storage/STR = O.loc.GetComponent(/datum/component/storage)
 	if(STR)
 		if(!STR.remove_from_storage(O,src))
 			return FALSE

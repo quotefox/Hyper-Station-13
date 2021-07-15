@@ -4,6 +4,10 @@
 		//BLACK MAGIC THINGS//
 		//////////////////////
 	parent_type = /datum
+
+
+	/// hides the byond verb panel as we use our own custom version
+	show_verb_panel = FALSE
 		////////////////
 		//ADMIN THINGS//
 		////////////////
@@ -24,6 +28,12 @@
 	var/move_delay = 0
 	var/area			= null
 
+
+
+	/// list of tabs containing spells and abilities
+	var/list/spell_tabs = list()
+	/// list of tabs containing verbs
+	var/list/verb_tabs = list()
 		///////////////
 		//SOUND STUFF//
 		///////////////
@@ -81,3 +91,14 @@
 	var/next_keysend_reset = 0
 	var/next_keysend_trip_reset = 0
 	var/keysend_tripped = FALSE
+
+	/// Messages currently seen by this client
+	var/list/seen_messages
+
+	// List of all asset filenames sent to this client by the asset cache, along with their assoicated md5s
+	var/list/sent_assets = list()
+	/// List of all completed blocking send jobs awaiting acknowledgement by send_asset
+	var/list/completed_asset_jobs = list()
+	/// Last asset send job id.
+	var/last_asset_job = 0
+	var/last_completed_asset_job = 0

@@ -16,7 +16,7 @@
 	required_enemies = 1
 	recommended_enemies = 4
 	reroll_friendly = 1
-	enemy_minimum_age = 0
+	enemy_minimum_age = 21
 
 	announce_span = "danger"
 	announce_text = "There are Syndicate agents on the station!\n\
@@ -96,4 +96,4 @@
 
 /datum/game_mode/traitor/generate_report()
 	return "Although more specific threats are commonplace, you should always remain vigilant for Syndicate agents aboard your station. Syndicate communications have implied that many \
-		Nanotrasen employees are Syndicate agents with hidden memories that may be activated at a moment's notice, so it's possible that these agents might not even know their positions."
+		Kinaris employees are Syndicate agents with hidden memories that may be activated at a moment's notice, so it's possible that these agents might not even know their positions."

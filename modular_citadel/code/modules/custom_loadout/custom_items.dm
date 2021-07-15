@@ -287,8 +287,8 @@
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
 /obj/item/clothing/neck/tie/bloodred
-	name = "Blood Red Tie"
-	desc = "A neosilk clip-on tie. This one has a black S on the tipping and looks rather unique."
+	name = "blood-red tie"
+	desc = "A neosilk tie. This one has a black S on the tipping and looks rather suspicious."
 	icon = 'icons/obj/custom.dmi'
 	icon_state = "bloodredtie"
 	alternate_worn_icon = 'icons/mob/custom_w.dmi'
@@ -410,7 +410,7 @@
 
 /obj/item/clothing/suit/hooded/cloak/zuliecloak
 	name = "Project: Zul-E"
-	desc = "A standard version of a prototype cloak given out by Nanotrasen higher ups. It's surprisingly thick and heavy for a cloak despite having most of it's tech stripped. It also comes with a bluespace trinket which calls it's accompanying hat onto the user. A worn inscription on the inside of the cloak reads 'Fleuret' ...the rest is faded away."
+	desc = "A standard version of a prototype cloak given out by Kinaris higher ups. It's surprisingly thick and heavy for a cloak despite having most of it's tech stripped. It also comes with a bluespace trinket which calls it's accompanying hat onto the user. A worn inscription on the inside of the cloak reads 'Fleuret' ...the rest is faded away."
 	icon_state = "zuliecloak"
 	item_state = "zuliecloak"
 	icon = 'icons/obj/custom.dmi'

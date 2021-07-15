@@ -58,6 +58,9 @@
 /area/ruin/space/has_grav/powered/cat_man
 	name = "Kitty Den"
 
+/area/ruin/space/has_grav/powered/wiz_home
+	name = "Wizards Cabin"
+
 /area/ruin/space/has_grav/powered/authorship
 	name = "Authorship"
 
@@ -177,13 +180,6 @@
 /area/ruin/space/has_grav/powered/mechtransport
 	name = "Mech Transport"
 	icon_state = "green"
-
-
-//Ruin of gas the lizard
-
-/area/ruin/space/has_grav/gasthelizard
-	name = "Gas the lizard"
-
 
 //Ruin of Deep Storage
 

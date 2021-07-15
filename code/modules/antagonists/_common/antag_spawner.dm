@@ -56,7 +56,7 @@
 			if(used)
 				to_chat(H, "You already used this contract!")
 				return
-			var/list/candidates = pollCandidatesForMob("Do you want to play as a wizard's [href_list["school"]] apprentice?", ROLE_WIZARD, null, ROLE_WIZARD, 150, src)
+			var/list/candidates = pollCandidatesForMob("Do you want to play as a wizard's [href_list["school"]] apprentice?", ROLE_WIZARD, null, ROLE_WIZARD, 150, src, ignore_category = POLL_IGNORE_WIZARD)
 			if(LAZYLEN(candidates))
 				if(QDELETED(src))
 					return
@@ -110,7 +110,7 @@
 	if(!user.mind.has_antag_datum(/datum/antagonist/nukeop,TRUE))
 		to_chat(user, "<span class='danger'>AUTHENTICATION FAILURE. ACCESS DENIED.</span>")
 		return FALSE
-	if(!user.onSyndieBase())
+	if(!user.onSyndieBase() && !user.mind.has_antag_datum(/datum/antagonist/nukeop/lone,TRUE))
 		to_chat(user, "<span class='warning'>[src] is out of range! It can only be used at your base!</span>")
 		return FALSE
 	return TRUE
@@ -235,7 +235,7 @@
 		return
 	if(used)
 		return
-	var/list/candidates = pollCandidatesForMob("Do you want to play as a [initial(demon_type.name)]?", ROLE_ALIEN, null, ROLE_ALIEN, 50, src)
+	var/list/candidates = pollCandidatesForMob("Do you want to play as a [initial(demon_type.name)]?", ROLE_ALIEN, null, ROLE_ALIEN, 50, src, ignore_category = POLL_IGNORE_DEMON)
 	if(LAZYLEN(candidates))
 		if(used || QDELETED(src))
 			return

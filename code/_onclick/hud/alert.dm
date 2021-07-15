@@ -162,10 +162,20 @@
 	desc = "Some food would be good right about now."
 	icon_state = "hungry"
 
+/obj/screen/alert/thirsty
+	name = "Thirsty"
+	desc = "Some water would be good right about now."
+	icon_state = "thirsty"
+
 /obj/screen/alert/starving
 	name = "Starving"
 	desc = "You're severely malnourished. The hunger pains make moving around a chore."
 	icon_state = "starving"
+
+/obj/screen/alert/dehydrated
+	name = "Dehydrated"
+	desc = "You're severely dehydrated."
+	icon_state = "dehydrated"
 
 /obj/screen/alert/gross
 	name = "Grossed out."
@@ -212,6 +222,12 @@ or something covering your eyes."
 	name = "High"
 	desc = "Whoa man, you're tripping balls! Careful you don't get addicted... if you aren't already."
 	icon_state = "high"
+
+/obj/screen/alert/hypnosis
+	name = "Hypnosis"
+	desc = "Something's hypnotizing you, but you're not really sure about what."
+	icon_state = "hypnosis"
+	var/phrase
 
 /obj/screen/alert/drunk //Not implemented
 	name = "Drunk"
@@ -318,7 +334,7 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 		return
 
 	var/datum/antagonist/cult/antag = mob_viewer.mind.has_antag_datum(/datum/antagonist/cult,TRUE)
-	if(!antag)
+	if(!antag?.cult_team)
 		return
 	var/datum/objective/sacrifice/sac_objective = locate() in antag.cult_team.objectives
 
