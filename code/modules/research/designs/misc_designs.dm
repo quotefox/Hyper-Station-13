@@ -473,6 +473,16 @@
 	category = list("Equipment")
 	departmental_flags = DEPARTMENTAL_FLAG_ENGINEERING
 
+/datum/design/ranged_analyzer
+	name = "Long-range Analyzer"
+	desc = "A new advanced atmospheric analyzer design, capable of performing scans at long range."
+	id = "ranged_analyzer"
+	build_type = PROTOLATHE
+	materials = list(MAT_METAL = 400, MAT_GLASS = 1000, MAT_URANIUM = 800, MAT_GOLD = 200, MAT_PLASTIC = 200)
+	build_path = /obj/item/analyzer/ranged
+	category = list("Equipment")
+	departmental_flags =  DEPARTMENTAL_FLAG_SCIENCE | DEPARTMENTAL_FLAG_ENGINEERING
+
 /datum/design/rcd_loaded
 	name = "Rapid Construction Device (RCD)"
 	desc = "A tool that can construct and deconstruct walls, airlocks and floors on the fly."
