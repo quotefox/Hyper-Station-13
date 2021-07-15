@@ -1,14 +1,14 @@
 /mob/living/simple_animal/hostile/hs13mimic
 	name = "Mimic"
 	icon = 'hyperstation/icons/mobs/mimic.dmi'
-	desc = "What the fuck is that?"
+	desc = "A writhing mass of black flesh, unlikely to be happy to see you."
 	icon_state = "mimic"
 	icon_living = "mimic"
 	icon_dead = "mimic_dead"
 	gender = NEUTER
 	speak_chance = 0
-	maxHealth = 38
-	health = 38
+	maxHealth = 33
+	health = 33
 	turns_per_move = 5
 	move_to_delay = 1
 	speed = 0
@@ -21,14 +21,14 @@
 	response_harm   = "smacks"
 	melee_damage_lower = 8
 	melee_damage_upper = 12
-	attacktext = "glomps"
-	attack_sound = 'sound/effects/blobattack.ogg'
+	attacktext = "stings"
+	attack_sound = 'hyperstation/sound/creatures/mimic/mimic_attack.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	ventcrawler = VENTCRAWLER_ALWAYS
 	blood_volume = 0
 	faction = list("mimic")
 	gold_core_spawnable = NO_SPAWN
-	vision_range = 2
+	vision_range = 1
 	aggro_vision_range = 9
 	wander = TRUE
 	minbodytemp = 250 //weak to cold
@@ -43,6 +43,7 @@
 	/obj/item/projectile,
 	/obj/item/radio/intercom,
 	/mob/living/simple_animal/bot))
+	var/transformsound = 'hyperstation/sound/creatures/mimic/mimic_transform.ogg'
 	var/playstyle_string = "<span class='boldannounce'>You are a mimic</span></b>, a tricky creature that can take the form of \
 							almost any item nearby by shift-clicking it. While morphed, you move slowly and do less damage. \
 							Finally, you can restore yourself to your original form while morphed by shift-clicking yourself. \
@@ -212,7 +213,7 @@
 	if(stealthed && stat == CONSCIOUS)
 		visible_message("<span class='danger'>The [src] Reveals itself to be a Mimic!</span>")
 		restore()
-		playsound(loc, 'hyperstation/sound/creatures/mimictransform.ogg', 75, TRUE)
+		playsound(loc, transformsound, 75, TRUE)
 		triggerOthers(target) // Friends too!
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/triggerOthers(passtarget) //
@@ -252,7 +253,7 @@
 			return
 		if(istype(A) && allowed(A))
 			stealthed = TRUE
-			SEND_SOUND(src, sound('hyperstation/sound/creatures/mimictransform.ogg',volume=50))
+			SEND_SOUND(src, sound(transformsound,volume=50))
 			name = A.name
 			icon = A.icon
 			icon_state = A.icon_state
