@@ -96,6 +96,8 @@
 	WRITE_FILE(S["feature_belly_color"], features["belly_color"])
 	WRITE_FILE(S["feature_hide_belly"], features["hide_belly"])
 	WRITE_FILE(S["feature_inflatable_belly"], features["inflatable_belly"])
+	//anus
+	WRITE_FILE(S["feature_has_anus"], features["has_anus"])
 
 	//gear loadout
 	if(islist(chosen_gear))

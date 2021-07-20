@@ -25,6 +25,7 @@
 	var/mode					= "clothes"
 	var/obj/item/equipment 		//for fun stuff that goes on the gentials/maybe rings down the line
 	var/dontlist				= FALSE
+	var/nochange				= FALSE //stops people changing visablity.
 
 /obj/item/organ/genital/Initialize()
 	. = ..()
@@ -66,6 +67,8 @@
 		if("belly")
 			return owner.is_chest_exposed()
 		if("groin")
+			return owner.is_groin_exposed()
+		if("anus")
 			return owner.is_groin_exposed()
 
 	return FALSE
@@ -150,6 +153,8 @@
 	if (NOGENITALS in dna.species.species_traits)
 		return
 	//Order should be very important. FIRST vagina, THEN testicles, THEN penis, as this affects the order they are rendered in.
+	if(dna.features["has_anus"])
+		give_anus()
 	if(dna.features["has_vag"])
 		give_vagina()
 	if(dna.features["has_womb"])
@@ -238,6 +243,18 @@
 
 		if(dna.features["inflatable_belly"]) //autohide bellies if they have the option ticked.
 			B.inflatable = TRUE
+
+/mob/living/carbon/human/proc/give_anus()
+	if(!dna)
+		return FALSE
+	if(NOGENITALS in dna.species.species_traits)
+		return FALSE
+	if(!getorganslot("anus"))
+		var/obj/item/organ/genital/anus/A = new
+		A.Insert(src)
+		if(A)
+			A.color = "#[skintone2hex(skin_tone)]"
+			A.update()
 
 
 

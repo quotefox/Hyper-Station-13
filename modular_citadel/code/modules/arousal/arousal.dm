@@ -321,7 +321,7 @@
 				src.visible_message("<span class='love'>[src] orgasms with [p_their()] [G.name]!</span>", \
 									"<span class='userlove'>You climax with your [G.name].</span>", \
 									"<span class='userlove'>You climax using your [G.name].</span>")
-								
+
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 			if(G.can_climax)
 				setArousalLoss(min_arousal)
@@ -522,10 +522,9 @@
 	var/list/worn_stuff = get_equipped_items()
 
 	for(var/obj/item/organ/genital/G in T.internal_organs)
-		if(G.can_climax) //filter out what you can't masturbate with
-			if(G.is_exposed(worn_stuff)) //Nude or through_clothing
-				if(!G.dontlist)
-					genitals_list += G
+		if(G.is_exposed(worn_stuff)) //Nude or through_clothing
+			if(!G.dontlist)
+				genitals_list += G
 	if(genitals_list.len)
 		ret_organ = input(src, "", "Genitals", null)  as null|obj in genitals_list
 		return ret_organ

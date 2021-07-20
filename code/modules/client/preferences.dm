@@ -142,6 +142,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"hide_belly" = FALSE,
 		"inflatable_belly" = FALSE,
 		"belly_color" = "fff",
+		"has_anus" = FALSE,
 		"has_balls" = FALSE,
 		"balls_internal" = FALSE,
 		"balls_color" = "fff",
@@ -920,6 +921,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Inflation (Climax With):</b><a style='display:block;width:50px' href='?_src_=prefs;preference=inflatable_belly'>[features["inflatable_belly"] == 1 ? "Yes" : "No"]</a>"
 
 				dat += "</td>"
+
+				dat += APPEARANCE_CATEGORY_COLUMN
+				dat += "<h3>Anus</h3>"
+				dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_anus'>[features["has_anus"] == TRUE ? "Yes" : "No"]</a>"
+				dat += "</td>"
+
 			dat += "</td>"
 			dat += "</tr></table>"
 
@@ -2502,6 +2509,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(features["has_vag"] == FALSE)
 						features["has_womb"] = FALSE
 						features["can_get_preg"] = FALSE
+				if("has_anus")
+					features["has_anus"] = !features["has_anus"]
 				if("has_womb")
 					features["has_womb"] = !features["has_womb"]
 				if("can_get_preg")

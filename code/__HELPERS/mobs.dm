@@ -192,6 +192,7 @@
 		"inflatable_belly" 		= FALSE,
 		"belly_color" 		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
 		"has_balls" 		= FALSE,
+		"has_anus" 			= FALSE,
 		"balls_internal" 	= FALSE,
 		"balls_color" 		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
 		"balls_amount"		= 2,
