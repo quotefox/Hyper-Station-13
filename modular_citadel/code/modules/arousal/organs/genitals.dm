@@ -69,7 +69,7 @@
 		if("groin")
 			return owner.is_groin_exposed()
 		if("anus")
-			return owner.is_groin_exposed()
+			return owner.is_butt_exposed()
 
 	return FALSE
 
