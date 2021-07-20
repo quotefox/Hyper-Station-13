@@ -3,7 +3,7 @@
 	desc 					= "You see a butt."
 	icon_state 				= "butt"
 	icon 					= 'modular_citadel/icons/obj/genitals/breasts.dmi'
-	zone 					= "groin"
+	zone 					= "anus"
 	slot 					= "anus"
 	w_class 				= 3
 	size 					= 0
