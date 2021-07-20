@@ -86,6 +86,7 @@ obj/item/clothing/neck/stole/black
 	item_state = "r_suit"
 	can_adjust = FALSE
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	do_not_cover_butt = true
 
 /obj/item/clothing/under/sexynursesuit
 	name = "Sexy nurse outfit"
