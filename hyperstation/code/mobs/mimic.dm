@@ -1,14 +1,14 @@
 /mob/living/simple_animal/hostile/hs13mimic
 	name = "Mimic"
 	icon = 'hyperstation/icons/mobs/mimic.dmi'
-	desc = "What the fuck is that?"
+	desc = "A writhing mass of black flesh, unlikely to be happy to see you."
 	icon_state = "mimic"
 	icon_living = "mimic"
 	icon_dead = "mimic_dead"
 	gender = NEUTER
 	speak_chance = 0
-	maxHealth = 38
-	health = 38
+	maxHealth = 35
+	health = 35
 	turns_per_move = 5
 	move_to_delay = 1
 	speed = 0
@@ -21,14 +21,14 @@
 	response_harm   = "smacks"
 	melee_damage_lower = 8
 	melee_damage_upper = 12
-	attacktext = "glomps"
-	attack_sound = 'sound/effects/blobattack.ogg'
+	attacktext = "stings"
+	attack_sound = 'hyperstation/sound/creatures/mimic/mimic_attack.ogg'
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	ventcrawler = VENTCRAWLER_ALWAYS
 	blood_volume = 0
 	faction = list("mimic")
 	gold_core_spawnable = NO_SPAWN
-	vision_range = 2
+	vision_range = 1
 	aggro_vision_range = 9
 	wander = TRUE
 	minbodytemp = 250 //weak to cold
@@ -43,6 +43,7 @@
 	/obj/item/projectile,
 	/obj/item/radio/intercom,
 	/mob/living/simple_animal/bot))
+	var/transformsound = 'hyperstation/sound/creatures/mimic/mimic_transform.ogg'
 	var/playstyle_string = "<span class='boldannounce'>You are a mimic</span></b>, a tricky creature that can take the form of \
 							almost any item nearby by shift-clicking it. While morphed, you move slowly and do less damage. \
 							Finally, you can restore yourself to your original form while morphed by shift-clicking yourself. \
@@ -139,10 +140,10 @@
 			icon_state = "yellow"
 			desc = "These gloves will protect the wearer from electric shock."
 		if(21 to 30)
-			name = "Private Security Officer"
-			desc = "A cardboard cutout of a private security officer."
-			icon = 'icons/obj/cardboard_cutout.dmi'
-			icon_state = "cutout_ntsec"
+			name = "stunbaton"
+			desc = "A stun baton for incapacitating people with."
+			icon = 'icons/obj/items_and_weapons.dmi'
+			icon_state = "stunbaton"
 		if(31 to 40)
 			name = "pen"
 			icon = 'icons/obj/bureaucracy.dmi'
@@ -154,10 +155,10 @@
 			icon = 'icons/obj/bureaucracy.dmi'
 			icon_state = "newspaper"
 		if(51 to 60)
-			name = "toolbox"
-			desc = "Danger. Very robust."
-			icon = 'icons/obj/storage.dmi'
-			icon_state = "red"
+			name = "stechkin pistol" //greytider bait
+			desc = "A small, easily concealable 10mm handgun. Has a threaded barrel for suppressors."
+			icon = 'icons/obj/guns/projectile.dmi'
+			icon_state = "pistol"
 		if(61 to 70)
 			name = "emergency oxygen tank"
 			desc = "Used for emergencies. Contains very little oxygen, so try to conserve it until you actually need it."
@@ -212,7 +213,7 @@
 	if(stealthed && stat == CONSCIOUS)
 		visible_message("<span class='danger'>The [src] Reveals itself to be a Mimic!</span>")
 		restore()
-		playsound(loc, 'hyperstation/sound/creatures/mimictransform.ogg', 75, TRUE)
+		playsound(loc, transformsound, 75, TRUE)
 		triggerOthers(target) // Friends too!
 
 /mob/living/simple_animal/hostile/hs13mimic/proc/triggerOthers(passtarget) //
@@ -242,6 +243,48 @@
 /mob/living/simple_animal/hostile/hs13mimic/proc/allowed(atom/movable/A)
 	return !is_type_in_typecache(A, mimic_blacklisted_transform_items) && (isitem(A) || isanimal(A))
 
+//One leader mimic spawns per mimic event spawn, they are able to consume and transform themselves into the station's dead pets. Buckle up.
+/mob/living/simple_animal/hostile/hs13mimic/leader
+	var/mob/living/consumptionTarget = null
+	var/consuming = FALSE
+	health = 38 //They have a teeeny tiny more health.
+	maxHealth = 38
+	
+/mob/living/simple_animal/hostile/hs13mimic/leader/Life()
+	. = ..()
+	if(!consuming)
+		if(!consumptionTarget)
+			for(var/mob/living/simple_animal/pet/A in oview(5, src))
+				if(A.stat == DEAD)
+					consumptionTarget = A
+					break
+		if(!target && consumptionTarget) //Don't try to consume anything if we're currently attacking something.
+			var/target_distance = get_dist(targets_from, consumptionTarget)
+			if(target_distance > minimum_distance)
+				Goto(consumptionTarget,move_to_delay,minimum_distance)
+			else
+				tryConsume(consumptionTarget)
+
+/mob/living/simple_animal/hostile/hs13mimic/leader/proc/tryConsume(var/mob/living/simple_animal/pet/A)
+	src.visible_message("<span class='warning'>[A] is being consumed...</span>",
+		"<span class='notice'>You start to consume the dead [A]...</span>", "You hear strange fleshy sounds.")
+	consuming = TRUE
+	if(do_after(src, 100, target = A))
+		stealthed = TRUE
+		speed = 5
+		wander = TRUE
+		name = A.name
+		desc = A.desc
+		icon = A.icon
+		icon_state = A.icon_living
+		desc += "<span class='warning'> But something about it seems wrong...</span>"
+		qdel(A)
+		consuming = FALSE
+		consumptionTarget = FALSE
+		return TRUE
+	consuming = FALSE
+	return FALSE
+
 //Player control code
 
 /mob/living/simple_animal/hostile/hs13mimic/ShiftClickOn(atom/movable/A)
@@ -252,7 +295,7 @@
 			return
 		if(istype(A) && allowed(A))
 			stealthed = TRUE
-			SEND_SOUND(src, sound('hyperstation/sound/creatures/mimictransform.ogg',volume=50))
+			SEND_SOUND(src, sound(transformsound,volume=50))
 			name = A.name
 			icon = A.icon
 			icon_state = A.icon_state
@@ -297,6 +340,7 @@
 	/area/asteroid/nearstation, 
 	/area/science/server, 
 	/area/science/explab, 
+	/area/science/xenobiology,
 	/area/security/processing)
 	var/spawncount = 1
 	fakeable = FALSE
@@ -359,8 +403,12 @@
 
 	notify_ghosts("A group of mimics has spawned in [pickedArea]!", source=pickedArea, action=NOTIFY_ATTACK, flashwindow = FALSE)
 	while(spawncount > 0 && validTurfs.len)
-		var/turf/pickedTurf = pick_n_take(validTurfs)
-		var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic
-		spawn_atom_to_turf(spawn_type, pickedTurf, 1, FALSE)
 		spawncount--
+		var/turf/pickedTurf = pick_n_take(validTurfs)
+		if(spawncount != 0)
+			var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic
+			spawn_atom_to_turf(spawn_type, pickedTurf, 1, FALSE)
+		else
+			var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic/leader
+			spawn_atom_to_turf(spawn_type, pickedTurf, 1, FALSE)
 	return SUCCESSFUL_SPAWN

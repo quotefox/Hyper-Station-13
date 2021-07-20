@@ -5,7 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX	23
+#define SAVEFILE_VERSION_MAX	24
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -402,6 +402,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_has_sheath"]				>> features["sheath_color"]
 	//belly size
 	S["feature_belly_size"]				>> features["belly_size"]
+	//belly size
+	S["feature_butt_size"]				>> features["butt_size"]
 	//balls features
 	S["feature_has_balls"]				>> features["has_balls"]
 	S["feature_balls_color"]			>> features["balls_color"]
@@ -423,11 +425,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//womb features
 	S["feature_has_womb"]				>> features["has_womb"]
 	S["feature_can_get_preg"]			>> features["can_get_preg"] //hyperstation 13
-		//balls features
+		//belly features
 	S["feature_has_belly"]				>> features["has_belly"]
 	S["feature_belly_color"]			>> features["belly_color"]
 	S["feature_hide_belly"]				>> features["hide_belly"]
 	S["feature_inflatable_belly"]		>> features["inflatable_belly"]
+	//anus features
+	S["feature_has_anus"]				>> features["has_anus"]
 
 	//flavor text
 	//Let's make our players NOT cry desperately as we wipe their savefiles of their special snowflake texts:

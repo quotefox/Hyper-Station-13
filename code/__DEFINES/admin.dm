@@ -80,6 +80,7 @@
 #define ADMIN_PUNISHMENT_NUGGET "Nugget"
 #define ADMIN_PUNISHMENT_BREADIFY ":b:read"
 #define ADMIN_PUNISHMENT_BOOKIFY "Bookify"
+#define ADMIN_PUNISHMENT_BONK "Bonk"
 
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
