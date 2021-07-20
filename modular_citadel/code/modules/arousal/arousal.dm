@@ -78,6 +78,9 @@
 						amt_nude++
 					if(getorganslot("vagina"))
 						amt_nude++
+				if(is_butt_exposed())
+					if(getorganslot("anus"))
+						amt_nude++
 				if(amt_nude)
 					var/watchers = 0
 					for(var/mob/_M in view(world.view, src))
