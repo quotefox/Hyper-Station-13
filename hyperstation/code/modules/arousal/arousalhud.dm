@@ -238,6 +238,13 @@
 		usr.put_in_hands(I)
 		O.equipment = null
 
+	if(href_list["removeequipmentanus"])
+		var/obj/item/organ/genital/anus/O = usr.getorganslot("anus")
+		var/obj/item/I = O.equipment
+		usr.put_in_hands(I)
+		O.equipment = null
+
+
 	if(href_list["omenu"])
 		usr << browse(null, "window=arousal") //closes the window
 		H.mob_climax()
