@@ -63,6 +63,8 @@
 	WRITE_FILE(S["feature_has_sheath"], features["sheath_color"])
 	//belly feature
 	WRITE_FILE(S["feature_belly_size"], features["belly_size"])
+	//butt feature
+	WRITE_FILE(S["feature_butt_size"], features["butt_size"])
 	//balls features
 	WRITE_FILE(S["feature_has_balls"], features["has_balls"])
 	WRITE_FILE(S["feature_balls_color"], features["balls_color"])
