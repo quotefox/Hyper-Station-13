@@ -125,7 +125,7 @@ GLOBAL_VAR_INIT(rpg_loot_items, FALSE)
 	var/price = 0
 
 	//Hyper, for clothes that reveal your behind! butt stuff, you know how it is.
-	var/do_not_cover_butt = false
+	var/do_not_cover_butt = FALSE
 
 /obj/item/Initialize()
 
