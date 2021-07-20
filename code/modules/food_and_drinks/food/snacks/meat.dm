@@ -191,7 +191,7 @@
 	desc = "A synthetic chunk of meat."
 	icon_state = "meatproduct" //growing meat will make it look like a lumpo
 	foodtype = RAW | MEAT //hurr durr chemicals we're harmed in the production of this meat thus its non-vegan.
-	cooked_type = /obj/item/reagent_containers/food/snacks/meat/steak/meatproduct
+	cooked_type = /obj/item/reagent_containers/food/snacks/meat/steak/plain/meatproduct
 
 /obj/item/reagent_containers/food/snacks/meat/slab/meatproduct
 	name = "meat product"
@@ -280,7 +280,7 @@
 	bitesize = 4
 	tastes = list("meat" = 1, "wheat" = 1)
 	foodtype = GRAIN
-	cooked_type = /obj/item/reagent_containers/food/snacks/meat/steak/meatproduct
+	cooked_type = /obj/item/reagent_containers/food/snacks/meat/steak/plain/meatproduct
 
 /obj/item/reagent_containers/food/snacks/meat/slab/gorilla
 	name = "gorilla meat"
@@ -340,7 +340,7 @@
 /obj/item/reagent_containers/food/snacks/meat/steak/plain
     foodtype = MEAT
 
-/obj/item/reagent_containers/food/snacks/meat/steak/meatproduct
+/obj/item/reagent_containers/food/snacks/meat/steak/plain/meatproduct
     foodtype = MEAT
     icon_state = "meatproduct_steak"
 

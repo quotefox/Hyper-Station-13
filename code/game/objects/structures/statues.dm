@@ -290,6 +290,14 @@
 	icon = 'icons/obj/statuelarge.dmi'
 	icon_state = "venus"
 
+/obj/structure/statue/sandstone/abs
+	max_integrity = 300
+	anchored = TRUE
+	name = "ancient statue"
+	desc = "An ancient statue, representing one of the gods. It almost seems like it's alive."
+	icon = 'icons/obj/statue_egypty.dmi'
+	icon_state = "abs"
+
 /////////////////////snow/////////////////////////////////////////
 
 /obj/structure/statue/snow

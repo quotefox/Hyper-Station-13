@@ -93,7 +93,7 @@
 
 
 /datum/design/medkit
-	name = "Medkit Cabinent"
+	name = "Medkit Cabinet"
 	id = "medkit_cabinet"
 	build_type = AUTOLATHE | PROTOLATHE
 	materials = list(MAT_METAL = 4000)

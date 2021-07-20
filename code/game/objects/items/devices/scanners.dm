@@ -547,7 +547,9 @@ GENE SCANNER
 	var/turf/location = user.loc
 	if(!istype(location))
 		return
+	scan_turf(user, location)
 
+/obj/item/analyzer/proc/scan_turf(mob/user, turf/location)
 	var/datum/gas_mixture/environment = location.return_air()
 
 	var/pressure = environment.return_pressure()
@@ -657,6 +659,20 @@ GENE SCANNER
 		if(prob(50))
 			amount += inaccurate
 	return DisplayTimeText(max(1,amount))
+
+/obj/item/analyzer/ranged
+	desc = "A hand-held scanner which uses advanced spectroscopy and infrared readings to analyze gases as a distance. Alt-Click to use the built in barometer function."
+	name = "long-range analyzer"
+	icon = 'icons/obj/device.dmi'
+	icon_state = "ranged_analyzer"
+
+/obj/item/analyzer/ranged/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	if(target.tool_act(user, src, tool_behaviour))
+		return
+	// Tool act didn't scan it, so let's get it's turf.
+	var/turf/location = get_turf(target)
+	scan_turf(user, location)
 
 /proc/atmosanalyzer_scan(mixture, mob/living/user, atom/target = src)
 	var/icon = target

@@ -94,3 +94,11 @@
 
 	/// Messages currently seen by this client
 	var/list/seen_messages
+
+	// List of all asset filenames sent to this client by the asset cache, along with their assoicated md5s
+	var/list/sent_assets = list()
+	/// List of all completed blocking send jobs awaiting acknowledgement by send_asset
+	var/list/completed_asset_jobs = list()
+	/// Last asset send job id.
+	var/last_asset_job = 0
+	var/last_completed_asset_job = 0

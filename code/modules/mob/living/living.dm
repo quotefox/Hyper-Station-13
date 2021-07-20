@@ -873,6 +873,8 @@
 		return 0
 	if(digitalcamo || digitalinvis)
 		return 0
+	if(ismimic(src)) // Are we a mimic? Mimics should not be tracked to prevent AI camera cheese.
+		return 0
 
 	// Now, are they viewable by a camera? (This is last because it's the most intensive check)
 	if(!near_camera(src))
@@ -974,7 +976,7 @@
 
 	apply_effect((amount*RAD_MOB_COEFFICIENT)/max(1, (radiation**2)*RAD_OVERDOSE_REDUCTION), EFFECT_IRRADIATE, blocked)
 
-/mob/living/anti_magic_check(magic = TRUE, holy = FALSE)
+/mob/living/anti_magic_check(magic = TRUE, holy = FALSE, chargecost = 1, self = FALSE)
 	. = ..()
 	if(.)
 		return

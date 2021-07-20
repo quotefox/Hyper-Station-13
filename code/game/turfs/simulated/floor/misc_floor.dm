@@ -260,3 +260,29 @@
 	icon = 'icons/obj/clockwork_objects.dmi'
 	icon_state = "clockwork_floor"
 	floor_tile = /obj/item/stack/tile/bronze
+
+/turf/open/floor/concrete/
+	name = "concrete"
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "concrete"
+	baseturfs = /turf/open/floor/plating/asteroid
+
+/turf/open/floor/concrete/smooth
+	icon_state = "concrete2"
+
+/turf/open/floor/cobble/side
+	icon_state = "cobble_side"
+
+/turf/open/floor/cobble/corner
+	icon_state = "cobble_corner"
+
+/turf/open/floor/cobble
+	name = "cobblestone path"
+	desc = "A simple but beautiful path made of various sized stones."
+	icon = 'icons/turf/floors.dmi'
+	icon_state = "cobble"
+	baseturfs = /turf/open/floor/plating/asteroid
+	footstep = FOOTSTEP_FLOOR
+	barefootstep = FOOTSTEP_HARD_BAREFOOT
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
