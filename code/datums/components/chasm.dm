@@ -21,10 +21,13 @@
 		/obj/effect/particle_effect,
 		/obj/effect/light_emitter/tendril,
 		/obj/effect/collapse,
+		/obj/effect/cloud_collapse,
 		/obj/effect/particle_effect/ion_trails,
 		/obj/effect/dummy/phased_mob,
 		/obj/effect/immovablerod,
-		/obj/effect/crystalline_reentry
+		/obj/effect/crystalline_reentry,
+		/obj/effect/mapping_helpers,
+		/obj/effect/baseturf_helper
 		))
 
 /datum/component/chasm/Initialize(turf/target)
