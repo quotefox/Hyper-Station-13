@@ -289,7 +289,7 @@
 	enemy_roles = list("Chief Engineer","Station Engineer","Atmospheric Technician","Research Director","Scientist","Captain")
 	required_enemies = list(2,2,2,1,1,1,1,1,1,0)
 	weight = 2
-	earliest_start = 20 MINUTES
+	earliest_start = 40 MINUTES
 	repeatable_weight_decrease = 2
 	cost = 0
 	requirements = list(101,101,10,5,5,5,5,5,5,5)
@@ -297,7 +297,7 @@
 	repeatable = TRUE
 	//property_weights = list("extended" = 1)
 	occurances_max = 2
-	chaos_min = 1.0
+	chaos_min = 3.0
 
 /datum/dynamic_ruleset/event/anomaly_flux
 	name = "Anomaly: Hyper-Energetic Flux"
