@@ -594,31 +594,6 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	admin_delete(A)
 
-/client/proc/admin_delete(datum/D)
-	var/atom/A = D
-	var/coords = ""
-	var/jmp_coords = ""
-	if(istype(A))
-		var/turf/T = get_turf(A)
-		if(T)
-			coords = "at [COORD(T)]"
-			jmp_coords = "at [ADMIN_COORDJMP(T)]"
-		else
-			jmp_coords = coords = "in nullspace"
-
-	if (alert(src, "Are you sure you want to delete:\n[D]\n[coords]?", "Confirmation", "Yes", "No") == "Yes")
-		log_admin("[key_name(usr)] deleted [D] [coords]")
-		message_admins("[key_name_admin(usr)] deleted [D] [jmp_coords]")
-		SSblackbox.record_feedback("tally", "admin_verb", 1, "Delete") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-		if(isturf(D))
-			var/turf/T = D
-			T.ScrapeAway()
-		else
-			vv_update_display(D, "deleted", VV_MSG_DELETED)
-			qdel(D)
-			if(!QDELETED(D))
-				vv_update_display(D, "deleted", "")
-
 /client/proc/cmd_admin_list_open_jobs()
 	set category = "Admin"
 	set name = "Manage Job Slots"
@@ -1274,7 +1249,8 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 	ADMIN_PUNISHMENT_FAKEBWOINK,
 	ADMIN_PUNISHMENT_NUGGET,
 	ADMIN_PUNISHMENT_BREADIFY,
-	ADMIN_PUNISHMENT_BOOKIFY)
+	ADMIN_PUNISHMENT_BOOKIFY,
+	ADMIN_PUNISHMENT_BONK)
 
 	var/punishment = input("Choose a punishment", "DIVINE SMITING") as null|anything in punishment_list
 
@@ -1393,6 +1369,10 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 			addtimer(CALLBACK(GLOBAL_PROC, .proc/bookify, target), BOOKIFY_TIME)
 			playsound(target, 'hyperstation/sound/misc/bookify.ogg', 60, 1)
 			#undef BOOKIFY_TIME
+		if(ADMIN_PUNISHMENT_BONK)
+			playsound(target, 'hyperstation/sound/misc/bonk.ogg', 100, 1)
+			target.AddElement(/datum/element/squish, 60 SECONDS)
+			to_chat(target, "<span class='warning big'>Bonk.</span>")
 
 	punish_log(target, punishment)
 

@@ -134,6 +134,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"cock_shape" = "Human",
 		"cock_length" = 6,
 		"belly_size" = 1,
+		"butt_size" = 1,
 		"cock_girth_ratio" = COCK_GIRTH_RATIO_DEF,
 		"cock_color" = "fff",
 		"has_sheath" = FALSE,
@@ -142,6 +143,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"hide_belly" = FALSE,
 		"inflatable_belly" = FALSE,
 		"belly_color" = "fff",
+		"has_anus" = FALSE,
 		"has_balls" = FALSE,
 		"balls_internal" = FALSE,
 		"balls_color" = "fff",
@@ -920,6 +922,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Inflation (Climax With):</b><a style='display:block;width:50px' href='?_src_=prefs;preference=inflatable_belly'>[features["inflatable_belly"] == 1 ? "Yes" : "No"]</a>"
 
 				dat += "</td>"
+
+				dat += APPEARANCE_CATEGORY_COLUMN
+				dat += "<h3>Butt</h3>"
+				dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_anus'>[features["has_anus"] == TRUE ? "Yes" : "No"]</a>"
+				if(features["has_anus"])
+					dat += "<b>Butt Size:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=butt_size;task=input'>[features["butt_size"]]</a>"
+				dat += "</td>"
+
 			dat += "</td>"
 			dat += "</tr></table>"
 
@@ -2340,6 +2350,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_bellysize)
 						features["belly_size"] = clamp(new_bellysize, 1, 3)
 
+				if("butt_size")
+					var/new_buttsize = input(user, "Butt size :\n(0-4)", "Character Preference") as num|null
+					features["butt_size"] = clamp(new_buttsize, 0, 4)
+
 				if("vag_shape")
 					var/new_shape
 					new_shape = input(user, "Vagina Type", "Character Preference") as null|anything in GLOB.vagina_shapes_list
@@ -2502,6 +2516,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(features["has_vag"] == FALSE)
 						features["has_womb"] = FALSE
 						features["can_get_preg"] = FALSE
+				if("has_anus")
+					features["has_anus"] = !features["has_anus"]
+					if(features["has_anus"] == FALSE)
+						features["butt_size"] = 0
 				if("has_womb")
 					features["has_womb"] = !features["has_womb"]
 				if("can_get_preg")

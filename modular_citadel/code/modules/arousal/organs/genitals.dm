@@ -25,6 +25,7 @@
 	var/mode					= "clothes"
 	var/obj/item/equipment 		//for fun stuff that goes on the gentials/maybe rings down the line
 	var/dontlist				= FALSE
+	var/nochange				= FALSE //stops people changing visablity.
 
 /obj/item/organ/genital/Initialize()
 	. = ..()
@@ -67,6 +68,8 @@
 			return owner.is_chest_exposed()
 		if("groin")
 			return owner.is_groin_exposed()
+		if("anus")
+			return owner.is_butt_exposed()
 
 	return FALSE
 
@@ -150,6 +153,8 @@
 	if (NOGENITALS in dna.species.species_traits)
 		return
 	//Order should be very important. FIRST vagina, THEN testicles, THEN penis, as this affects the order they are rendered in.
+	if(dna.features["has_anus"])
+		give_anus()
 	if(dna.features["has_vag"])
 		give_vagina()
 	if(dna.features["has_womb"])
@@ -238,6 +243,20 @@
 
 		if(dna.features["inflatable_belly"]) //autohide bellies if they have the option ticked.
 			B.inflatable = TRUE
+
+/mob/living/carbon/human/proc/give_anus()
+	if(!dna)
+		return FALSE
+	if(NOGENITALS in dna.species.species_traits)
+		return FALSE
+	if(!getorganslot("anus"))
+		var/obj/item/organ/genital/anus/A = new
+		if(dna.features["butt_size"])
+			A.size = dna.features["butt_size"]
+		A.Insert(src)
+		if(A)
+			A.color = "#[skintone2hex(skin_tone)]"
+			A.update()
 
 
 
@@ -426,6 +445,8 @@
 					S = GLOB.breasts_shapes_list[G.shape]
 				if(/obj/item/organ/genital/belly)
 					S = GLOB.breasts_shapes_list[G.shape]
+				if(/obj/item/organ/genital/anus)
+					S = GLOB.breasts_shapes_list[G.shape]
 
 			if(!S || S.icon_state == "none")
 				continue
@@ -444,10 +465,23 @@
 			//Get the icon
 			genital_overlay.icon_state = "[G.slot]_[S.icon_state]_[size]_[aroused_state]_[layertext]"
 			colourcode = S.color_src
+
 			if(G.slot == "belly") //we have a different size system
 				genital_overlay.icon = 'hyperstation/icons/obj/genitals/belly.dmi'
 				genital_overlay.icon_state = "belly_[size]"
 				colourcode = "belly_color"
+
+			if(G.slot == "anus") //we have a different size system
+				genital_overlay.icon = 'hyperstation/icons/obj/genitals/butt.dmi'
+				genital_overlay.icon_state = "butt_[size]"
+				genital_overlay.layer = -FRONT_MUTATIONS_LAYER
+				colourcode = "butt_color"
+				if(use_skintones) //butts are forced a colour, either skin tones, or main colour. how ever, mutants use a darker version, because of their body tone.
+					genital_overlay.color = "#[skintone2hex(H.skin_tone)]"
+					genital_overlay.icon_state = "butt_[size]"
+				else
+					genital_overlay.color = "#[H.dna.features["mcolor"]]"
+					genital_overlay.icon_state = "butt_[size]_m"
 
 			if(S.center)
 				genital_overlay = center_image(genital_overlay, S.dimension_x, S.dimension_y)
@@ -470,6 +504,7 @@
 						genital_overlay.color = "#[H.dna.features["vag_color"]]"
 					if("belly_color")
 						genital_overlay.color = "#[H.dna.features["belly_color"]]"
+
 
 			standing += genital_overlay
 

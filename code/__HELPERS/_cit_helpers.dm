@@ -158,6 +158,17 @@ GLOBAL_VAR_INIT(miscreants_allowed, FALSE)
 			return FALSE
 	return TRUE
 
+/mob/living/carbon/proc/is_butt_exposed(var/list/L)
+	if(!L)
+		L = get_equipped_items()
+	for(var/obj/item/I in L)
+		if(I.body_parts_covered & GROIN)
+			if(!I.do_not_cover_butt)
+				return FALSE
+			else
+				return TRUE
+	return TRUE
+
 /mob/living/carbon/proc/is_chest_exposed(var/list/L)
 	if(!L)
 		L = get_equipped_items()

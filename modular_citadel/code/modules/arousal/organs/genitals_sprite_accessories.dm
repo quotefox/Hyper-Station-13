@@ -136,13 +136,22 @@
     icon_state = "gaping"
     name = "Gaping"
 
-//BREASTS BE HERE
+//BELLY BE HERE
 /datum/sprite_accessory/belly
 	icon = 'hyperstation/icons/obj/genitals/belly.dmi'
 	icon_state = "belly"
 	name = "belly"
 	gender_specific = 0
 	color_src = "belly_color"
+	locked = 0
+
+//BUTT BE HERE
+/datum/sprite_accessory/anus
+	icon = 'hyperstation/icons/obj/genitals/butt.dmi'
+	icon_state = "butt"
+	name = "butt"
+	gender_specific = 0
+	color_src = "butt_color"
 	locked = 0
 
 //BREASTS BE HERE

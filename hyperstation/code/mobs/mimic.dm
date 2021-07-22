@@ -243,6 +243,48 @@
 /mob/living/simple_animal/hostile/hs13mimic/proc/allowed(atom/movable/A)
 	return !is_type_in_typecache(A, mimic_blacklisted_transform_items) && (isitem(A) || isanimal(A))
 
+//One leader mimic spawns per mimic event spawn, they are able to consume and transform themselves into the station's dead pets. Buckle up.
+/mob/living/simple_animal/hostile/hs13mimic/leader
+	var/mob/living/consumptionTarget = null
+	var/consuming = FALSE
+	health = 38 //They have a teeeny tiny more health.
+	maxHealth = 38
+	
+/mob/living/simple_animal/hostile/hs13mimic/leader/Life()
+	. = ..()
+	if(!consuming)
+		if(!consumptionTarget)
+			for(var/mob/living/simple_animal/pet/A in oview(5, src))
+				if(A.stat == DEAD)
+					consumptionTarget = A
+					break
+		if(!target && consumptionTarget) //Don't try to consume anything if we're currently attacking something.
+			var/target_distance = get_dist(targets_from, consumptionTarget)
+			if(target_distance > minimum_distance)
+				Goto(consumptionTarget,move_to_delay,minimum_distance)
+			else
+				tryConsume(consumptionTarget)
+
+/mob/living/simple_animal/hostile/hs13mimic/leader/proc/tryConsume(var/mob/living/simple_animal/pet/A)
+	src.visible_message("<span class='warning'>[A] is being consumed...</span>",
+		"<span class='notice'>You start to consume the dead [A]...</span>", "You hear strange fleshy sounds.")
+	consuming = TRUE
+	if(do_after(src, 100, target = A))
+		stealthed = TRUE
+		speed = 5
+		wander = TRUE
+		name = A.name
+		desc = A.desc
+		icon = A.icon
+		icon_state = A.icon_living
+		desc += "<span class='warning'> But something about it seems wrong...</span>"
+		qdel(A)
+		consuming = FALSE
+		consumptionTarget = FALSE
+		return TRUE
+	consuming = FALSE
+	return FALSE
+
 //Player control code
 
 /mob/living/simple_animal/hostile/hs13mimic/ShiftClickOn(atom/movable/A)
@@ -298,6 +340,7 @@
 	/area/asteroid/nearstation, 
 	/area/science/server, 
 	/area/science/explab, 
+	/area/science/xenobiology,
 	/area/security/processing)
 	var/spawncount = 1
 	fakeable = FALSE
@@ -360,8 +403,12 @@
 
 	notify_ghosts("A group of mimics has spawned in [pickedArea]!", source=pickedArea, action=NOTIFY_ATTACK, flashwindow = FALSE)
 	while(spawncount > 0 && validTurfs.len)
-		var/turf/pickedTurf = pick_n_take(validTurfs)
-		var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic
-		spawn_atom_to_turf(spawn_type, pickedTurf, 1, FALSE)
 		spawncount--
+		var/turf/pickedTurf = pick_n_take(validTurfs)
+		if(spawncount != 0)
+			var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic
+			spawn_atom_to_turf(spawn_type, pickedTurf, 1, FALSE)
+		else
+			var/spawn_type = /mob/living/simple_animal/hostile/hs13mimic/leader
+			spawn_atom_to_turf(spawn_type, pickedTurf, 1, FALSE)
 	return SUCCESSFUL_SPAWN
