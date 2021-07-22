@@ -190,11 +190,11 @@
 /obj/effect/anomaly/bluespace/anomalyEffect()
 	..()
 	for(var/mob/living/M in range(1,src))
-		do_teleport(M, locate(M.x, M.y, M.z), 4, channel = TELEPORT_CHANNEL_BLUESPACE)
+		do_teleport(M, locate(M.x, M.y, M.z), 2, channel = TELEPORT_CHANNEL_BLUESPACE) // distance lowered from 4 to 2
 
 /obj/effect/anomaly/bluespace/Bumped(atom/movable/AM)
 	if(isliving(AM))
-		do_teleport(AM, locate(AM.x, AM.y, AM.z), 8, channel = TELEPORT_CHANNEL_BLUESPACE)
+		do_teleport(AM, locate(AM.x, AM.y, AM.z), 2, channel = TELEPORT_CHANNEL_BLUESPACE) // distance lowered from 8 to 2
 
 /obj/effect/anomaly/bluespace/detonate()
 	var/turf/T = pick(get_area_turfs(impact_area))
@@ -227,6 +227,9 @@
 			for (var/atom/movable/A in urange(12, FROM )) // iterate thru list of mobs in the area
 				if(istype(A, /obj/item/beacon))
 					continue // don't teleport beacons because that's just insanely stupid
+				if(isliving(A))
+					do_teleport(A, locate(A.x, A.y, A.z), 2, channel = TELEPORT_CHANNEL_BLUESPACE)
+					continue // layenia is too dangerous for teleports but having absolutely nothing happen is anticlimactic
 				if(A.anchored)
 					continue
 
