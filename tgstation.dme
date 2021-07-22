@@ -3126,6 +3126,7 @@
 #include "hyperstation\code\modules\economy\account.dm"
 #include "hyperstation\code\modules\events\crystalline_reentry.dm"
 #include "hyperstation\code\modules\integrated_electronics\input.dm"
+#include "hyperstation\code\modules\jobs\job_types\roleplay.dm"
 #include "hyperstation\code\modules\mining\shelters.dm"
 #include "hyperstation\code\modules\mining\equipment\survival_pod.dm"
 #include "hyperstation\code\modules\mob\mob_helpers.dm"

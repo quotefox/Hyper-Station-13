@@ -96,10 +96,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/eye_color = "000"				//Eye color
 	var/wing_color = "fff"				//Wing color
 
-	//H13
+	//HS13
 	var/body_size = 100					//Body Size in percent
 	var/can_get_preg = 0				//if they can get preggers
 
+	//HS13 jobs
+	var/sillyroles = FALSE //for clown and mime
+	var/roleplayroles = FALSE //for the roleplay roles
+	var/importantroles = FALSE //for things that define as important.
 
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	var/list/features = list("mcolor" = "FFF",

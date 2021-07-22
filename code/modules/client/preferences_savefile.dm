@@ -141,6 +141,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Hyper code
 	S["noncon"]             >> noncon
+	S["sillyroles"]			>> sillyroles
+	S["roleplayroles"]		>> roleplayroles
+	S["importantroles"]		>> importantroles
 
 	//try to fix any outdated data if necessfary
 	if(needs_update >= 0)
@@ -152,6 +155,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	UI_style		= sanitize_inlist(UI_style, GLOB.available_ui_styles, GLOB.available_ui_styles[1])
 	hotkeys			= sanitize_integer(hotkeys, 0, 1, initial(hotkeys))
 	autocorrect		= sanitize_integer(autocorrect, 0, 1, initial(autocorrect))
+	sillyroles		= sanitize_integer(sillyroles, 0, 1, initial(sillyroles))
+	roleplayroles	= sanitize_integer(roleplayroles, 0, 1, initial(roleplayroles))
+	importantroles	= sanitize_integer(importantroles, 0, 1, initial(importantroles))
 	chat_on_map		= sanitize_integer(chat_on_map, 0, 1, initial(chat_on_map))
 	radiosounds		= sanitize_integer(radiosounds, 0, 1, initial(radiosounds))
 	max_chat_length = sanitize_integer(max_chat_length, 1, CHAT_MESSAGE_MAX_LENGTH, initial(max_chat_length))
@@ -212,6 +218,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["hotkeys"], hotkeys)
 	WRITE_FILE(S["chat_on_map"], chat_on_map)
 	WRITE_FILE(S["autocorrect"], autocorrect)
+	WRITE_FILE(S["sillyroles"], sillyroles)
+	WRITE_FILE(S["roleplayroles"], roleplayroles)
+	WRITE_FILE(S["importantroles"], importantroles)
 	WRITE_FILE(S["radiosounds"], radiosounds)
 	WRITE_FILE(S["max_chat_length"], max_chat_length)
 	WRITE_FILE(S["see_chat_non_mob"], see_chat_non_mob)

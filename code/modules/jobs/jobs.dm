@@ -55,7 +55,6 @@ GLOBAL_LIST_INIT(security_positions, list(
 	"Security Officer",
 	"Rookie"))
 
-
 GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"AI",
 	"Cyborg",

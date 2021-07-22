@@ -318,6 +318,8 @@
 			return "[jobtitle] is unavailable."
 		if(JOB_UNAVAILABLE_BANNED)
 			return "You are currently banned from [jobtitle]."
+		if(JOB_UNAVAILABLE_WHITELIST)
+			return "You are not whitelisted for [jobtitle]."
 		if(JOB_UNAVAILABLE_PLAYTIME)
 			return "You do not have enough relevant playtime for [jobtitle]."
 		if(JOB_UNAVAILABLE_ACCOUNTAGE)
@@ -341,6 +343,13 @@
 			return JOB_UNAVAILABLE_SLOTFULL
 	if(jobban_isbanned(src,rank))
 		return JOB_UNAVAILABLE_BANNED
+	if(job.whitelist_type) //whitelisting
+		if(job.whitelist_type == "roleplay" && !client.prefs.roleplayroles)
+			return JOB_UNAVAILABLE_WHITELIST
+		if(job.whitelist_type == "important" && !client.prefs.importantroles)
+			return JOB_UNAVAILABLE_WHITELIST
+		if(job.whitelist_type == "silly" && !client.prefs.sillyroles)
+			return JOB_UNAVAILABLE_WHITELIST
 	if(QDELETED(src))
 		return JOB_UNAVAILABLE_GENERIC
 	if(!job.player_old_enough(client))
