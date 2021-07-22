@@ -31,6 +31,7 @@ SUBSYSTEM_DEF(persistence)
 	if(CONFIG_GET(flag/use_antag_rep))
 		LoadAntagReputation()
 	LoadRandomizedRecipes()
+	LoadPaintings()
 	return ..()
 
 /datum/controller/subsystem/persistence/proc/LoadSatchels()
@@ -419,9 +420,10 @@ SUBSYSTEM_DEF(persistence)
 
 /datum/controller/subsystem/persistence/proc/LoadPaintings()
 	var/json_file = file("data/paintings.json")
+	log_world("Trying to find persistent painting data.")
 	if(fexists(json_file))
+		log_world("Persistent painting data found, loading.")
 		paintings = json_decode(file2text(json_file))
-
 	for(var/obj/structure/sign/painting/P in painting_frames)
 		P.load_persistent()
 
