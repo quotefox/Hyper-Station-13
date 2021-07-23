@@ -227,6 +227,10 @@
 			for (var/atom/movable/A in urange(12, FROM )) // iterate thru list of mobs in the area
 				if(istype(A, /obj/item/beacon))
 					continue // don't teleport beacons because that's just insanely stupid
+				if(isliving(A))
+					var/turf/L = get_safe_random_station_turf_nochasm() //Safe and cuddly.
+					do_teleport(A, L, forceMove = TRUE, channel = TELEPORT_CHANNEL_BLUESPACE)
+					continue
 				if(A.anchored)
 					continue
 
