@@ -222,17 +222,6 @@
 	framed_offset_x = 5
 	framed_offset_y = 6
 
-/obj/item/canvas/twentyfour_twentyfour
-	name = "ai universal standard canvas"
-	desc = "Besides being very large, the AI can accept these as a display from their internal database after you've hung it up."
-	icon_state = "24x24"
-	width = 24
-	height = 24
-	pixel_x = 2
-	pixel_y = 1
-	framed_offset_x = 4
-	framed_offset_y = 5
-
 /obj/item/wallframe/painting
 	name = "painting frame"
 	desc = "The perfect showcase for your favorite deathtrap memories."
@@ -284,8 +273,25 @@
 	if(persistence_id)
 		. += "<span class='notice'>Any painting placed here will be archived at the end of the shift.</span>"
 	if(current_canvas)
-		current_canvas.ui_interact(user)
+		ui_interact(user, state = GLOB.physical_obscured_state)
 		. += "<span class='notice'>Use wirecutters to remove the painting.</span>"
+
+//Hyperstation UI hotwire code ahead. No, I'm not particularly proud of this but if it works, it works.
+/obj/structure/sign/painting/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
+										datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
+
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+	if(!ui)
+		ui = new(user, src, ui_key, "canvas", name, current_canvas.ui_x, current_canvas.ui_y, master_ui, state)
+		ui.set_autoupdate(FALSE)
+		ui.open()
+
+/obj/structure/sign/painting/ui_data(mob/user)
+	. = ..()
+	.["grid"] = current_canvas.grid
+	.["name"] = current_canvas.painting_name
+	.["finalized"] = current_canvas.finalized
+//End of hotwire code
 
 /obj/structure/sign/painting/wirecutter_act(mob/living/user, obj/item/I)
 	. = ..()
@@ -319,9 +325,9 @@
 /obj/structure/sign/painting/update_icon_state()
 	// icon_state = "[base_icon_state]-[current_canvas?.generated_icon ? "overlay" : "empty"]"
 	if(current_canvas?.generated_icon)
+		icon_state = "frame-null"
+	else
 		icon_state = "frame-empty"
-	//else
-	//	icon_state = null // or "frame-empty"
 	return ..()
 
 /obj/structure/sign/painting/update_overlays()
