@@ -466,6 +466,20 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	throw_range = 2
 	attack_verb = list("busted")
 
+/obj/item/statuebust/attack_self(mob/living/user)
+	add_fingerprint(user)
+	user.examinate(src)
+
+/obj/item/statuebust/examine(mob/living/user)
+	. = ..()
+	if(.)
+		return
+	if (!isliving(user))
+		return
+	user.visible_message("[user] stops to admire [src].", \
+						 "<span class='notice'>You take in [src], admiring its fine craftsmanship.</span>")
+	SEND_SIGNAL(user, COMSIG_ADD_MOOD_EVENT, "artgood", /datum/mood_event/artgood)
+
 /obj/item/tailclub
 	name = "tail club"
 	desc = "For the beating to death of lizards with their own tails."
@@ -516,6 +530,19 @@ for further reading, please see: https://github.com/tgstation/tgstation/pull/301
 	var/homerun_ready = 0
 	var/homerun_able = 0
 	total_mass = 2.7 //a regular wooden major league baseball bat weighs somewhere between 2 to 3.4 pounds, according to google
+
+/obj/item/melee/baseball_bat/chaplain
+	name = "blessed baseball bat"
+	desc = "There ain't a cult in the league that can withstand a swatter."
+	force = 14
+	throwforce = 14
+	obj_flags = UNIQUE_RENAME
+	var/chaplain_spawnable = TRUE
+	total_mass = TOTAL_MASS_MEDIEVAL_WEAPON
+
+/obj/item/melee/baseball_bat/chaplain/Initialize()
+	. = ..()
+	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
 /obj/item/melee/baseball_bat/homerun
 	name = "home run bat"
