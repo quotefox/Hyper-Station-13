@@ -292,8 +292,8 @@
 			S.burnmod *= 0.5
 			S.coldmod *= 0.5
 		if(20)
-			//Free wizard!
-			user.mind.make_Wizard()
+			//Gives the roller a healing staff!
+			new /obj/item/gun/magic/staff/healing(drop_location())
 
 
 /datum/outfit/butler
