@@ -3165,6 +3165,7 @@
 #include "hyperstation\code\obj\rope.dm"
 #include "hyperstation\code\obj\sizeitems.dm"
 #include "hyperstation\code\obj\sounding.dm"
+#include "hyperstation\code\obj\stargate_clothing.dm"
 #include "hyperstation\code\obj\vibrator.dm"
 #include "interface\interface.dm"
 #include "interface\menu.dm"
