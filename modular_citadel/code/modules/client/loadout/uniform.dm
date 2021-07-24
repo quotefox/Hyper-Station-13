@@ -518,3 +518,9 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/latexhalf
 	cost = 1
+
+/datum/gear/tunic
+	name = "Tunic"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/tunic
+	cost = 1

@@ -55,6 +55,28 @@
 				/obj/item/clothing/shoes/winterboots,
 				/obj/item/clothing/suit/hooded/wintercoat)
 
+/mob/living/simple_animal/hostile/skeleton/villager
+	name = "undead villager"
+	desc = "The reanimated remains of some poor villager."
+	icon_state = "villager"
+	icon_living = "villager"
+	icon_dead = "villager"
+	deathmessage = "collapses into a pile of bones!"
+	loot = list(/obj/effect/decal/remains/human)
+
+/mob/living/simple_animal/hostile/skeleton/bone_warrior
+	name = "bone warrior"
+	desc = "An armed undead, wearing armor made of fallen skeletons."
+	icon_state = "bone_warrior"
+	icon_living = "bone_warrior"
+	icon_dead = "bone_warrior"
+	maxHealth = 100
+	health = 100
+	melee_damage_lower = 20
+	melee_damage_upper = 25
+	deathmessage = "collapses into a pile of bones, its armor turning into ashes!"
+	loot = list(/obj/effect/decal/remains/human)
+
 
 /mob/living/simple_animal/hostile/skeleton/templar
 	name = "undead templar"
