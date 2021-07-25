@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(energy_harvesters)
 	throw_speed = 1
 	throw_range = 1
 	materials = list(MAT_METAL=750)
-	var/drain_rate = 100000000
+	var/drain_rate = 10000000
 	var/power_drained = 0
 	var/obj/structure/cable/attached
 	var/datum/looping_sound/generator/soundloop
