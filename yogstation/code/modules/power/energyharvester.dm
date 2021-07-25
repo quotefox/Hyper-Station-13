@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(energy_harvesters)
 
 /obj/item/energy_harvester
-	desc = "A Device which upon connection to a node, will harvest the energy and send it to engineerless stations in return for credits, derived from a syndicate powersink model. The instructions say to never use more than 4 harvesters at a time."
+	desc = "A Device which upon connection to a node, will harvest the energy and send it to engineerless stations in return for credits, derived from a syndicate powersink model. The instructions say to never use more than 2 harvesters at a time."
 	name = "Energy Harvesting Module"
 	icon_state = "powersink0"
 	icon = 'icons/obj/device.dmi'
@@ -101,7 +101,7 @@ GLOBAL_LIST_EMPTY(energy_harvesters)
 	gpstag = "Energy Harvester"
 
 /obj/item/energy_harvester/proc/overloadCheck()
-	if(LAZYLEN(GLOB.energy_harvesters) > 4)
+	if(LAZYLEN(GLOB.energy_harvesters) > 2)
 		switch(overloadprog)
 			if(0 to 25)
 				if(prob(7))
