@@ -1,7 +1,7 @@
 GLOBAL_LIST_EMPTY(energy_harvesters)
 
 /obj/item/energy_harvester
-	desc = "A Device which upon connection to a node, will harvest the energy and send it to engineerless stations in return for credits, derived from a syndicate powersink model. The instructions say to never use more than 4 harvesters at a time."
+	desc = "A Device which upon connection to a node, will harvest the energy and send it to engineerless stations in return for credits, derived from a syndicate powersink model. The instructions say to never use more than 2 harvesters at a time."
 	name = "Energy Harvesting Module"
 	icon_state = "powersink0"
 	icon = 'icons/obj/device.dmi'
@@ -14,7 +14,7 @@ GLOBAL_LIST_EMPTY(energy_harvesters)
 	throw_speed = 1
 	throw_range = 1
 	materials = list(MAT_METAL=750)
-	var/drain_rate = 100000000
+	var/drain_rate = 5000000
 	var/power_drained = 0
 	var/obj/structure/cable/attached
 	var/datum/looping_sound/generator/soundloop
@@ -101,7 +101,7 @@ GLOBAL_LIST_EMPTY(energy_harvesters)
 	gpstag = "Energy Harvester"
 
 /obj/item/energy_harvester/proc/overloadCheck()
-	if(LAZYLEN(GLOB.energy_harvesters) > 4)
+	if(LAZYLEN(GLOB.energy_harvesters) > 2)
 		switch(overloadprog)
 			if(0 to 25)
 				if(prob(7))
