@@ -1386,6 +1386,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Arcade"
 	icon_state = "yellow"
 
+/area/artatrium
+	name = "Art Atrium"
+	icon_state = "library"
+
 //Diner
 /area/diner
 	name = "Space Diner"
