@@ -991,3 +991,13 @@
 	M.set_drugginess(75)
 	M.apply_status_effect(/datum/status_effect/throat_soothed)
 	..()
+
+/datum/reagent/consumable/orange_creamsicle
+	name = "Orange Creamsicle"
+	description = "A Summer time drink that can be frozen and eaten or Drinked from a glass!"
+	color = "#ffb46e" // rgb(255, 180, 110)
+	taste_description = "ice cream and orange soda"
+	glass_icon_state = "orangecreamsicle"
+	glass_desc = "A Summer time drink that can be frozen and eaten or Drinked from a glass!"
+	glass_name = "Orange Creamsicle"
+	hydration = 4
