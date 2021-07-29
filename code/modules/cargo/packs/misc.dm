@@ -429,3 +429,10 @@
 	desc = "An extremely expensive solution of shrinking serum known as Diminicillin. Effects are permanent upon consumption, and shrinking is slow."
 	cost = 100000
 	contains = list(/obj/item/reagent_containers/food/drinks/diminicillin)
+
+/datum/supply_pack/misc/microbricks
+	name = "Microbricks Crate"
+	desc = "Extremely bored? Recreate a downscale city and get upset when it all comes crumbling down!"
+	cost = 1500
+	contains = list(/obj/item/stack/sheet/micro_bricks/fifty)
+	crate_name = "microbricks crate"

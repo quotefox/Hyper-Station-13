@@ -919,7 +919,7 @@ GLOBAL_LIST_INIT(micro_bricks_recipes, list ( \
 	new/datum/stack_recipe("Small warehouse", /obj/structure/micro_brick/small_warehouse, 5, time = 2, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("Small museum", /obj/structure/micro_brick/small_museum, 5, time = 2, one_per_turf = TRUE, on_floor = TRUE), \
 	null, \
-	new/datum/stack_recipe("Small moon", /obj/item/micro_brick/moon, 5, time = 2), \
+	new/datum/stack_recipe("Small moon", /obj/item/moon, 5, time = 2), \
 	null, \
 	))
 
