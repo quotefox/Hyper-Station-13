@@ -1068,6 +1068,7 @@
 #include "code\game\objects\structures\manned_turret.dm"
 #include "code\game\objects\structures\medkit.dm"
 #include "code\game\objects\structures\memorial.dm"
+#include "code\game\objects\structures\micro_bricks.dm"
 #include "code\game\objects\structures\mineral_doors.dm"
 #include "code\game\objects\structures\mirror.dm"
 #include "code\game\objects\structures\mop_bucket.dm"
