@@ -8,7 +8,7 @@
 	w_class 				= 3
 	size 					= 0
 	var/statuscheck			= FALSE
-	shape					= "Pair"
+	shape					= "round"
 	masturbation_verb 		= "massage"
 	can_climax				= FALSE
 	var/sent_full_message	= TRUE //defaults to 1 since they're full to start
