@@ -719,7 +719,7 @@ GLOBAL_LIST_INIT(plastic_recipes, list(
 	new /datum/stack_recipe("large trash cart", /obj/structure/closet/crate/bin,50), \
 	new /datum/stack_recipe("wet floor sign", /obj/item/caution, 2), \
 	null, \
-	new /datum/stack_recipe("micro bricks", /obj/item/stack/sheet/micro_bricks, 5), \
+	new /datum/stack_recipe("micro bricks", /obj/item/stack/sheet/micro_bricks, 1, 5, 15,), \
 
 ))
 
