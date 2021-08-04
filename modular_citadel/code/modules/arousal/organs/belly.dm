@@ -8,7 +8,7 @@
 	w_class 				= 3
 	size 					= 0
 	var/statuscheck			= FALSE
-	shape					= "round"
+	shape					= "Pair"
 	masturbation_verb 		= "massage"
 	can_masturbate_with 	= FALSE
 	can_climax				= FALSE

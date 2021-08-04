@@ -472,7 +472,7 @@
 			if(G.slot == "anus") //we have a different size system
 				genital_overlay.icon = 'hyperstation/icons/obj/genitals/butt.dmi'
 				genital_overlay.icon_state = "butt_[size]"
-				genital_overlay.layer = -FRONT_MUTATIONS_LAYER
+				genital_overlay.layer = -ID_LAYER //in front of suit, behind bellies.
 				colourcode = "butt_color"
 				if(use_skintones) //butts are forced a colour, either skin tones, or main colour. how ever, mutants use a darker version, because of their body tone.
 					genital_overlay.color = "#[skintone2hex(H.skin_tone)]"

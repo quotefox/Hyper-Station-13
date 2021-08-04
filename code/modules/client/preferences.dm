@@ -2283,13 +2283,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
 
 				if("butt_color")
-					var/new_bellycolor = input(user, "Butt Color:", "Character Preference") as color|null
-					if(new_bellycolor)
-						var/temp_hsv = RGBtoHSV(new_bellycolor)
-						if(new_bellycolor == "#000000")
+					var/new_buttcolor = input(user, "Butt Color:", "Character Preference") as color|null
+					if(new_buttcolor)
+						var/temp_hsv = RGBtoHSV(new_buttcolor)
+						if(new_buttcolor == "#000000")
 							features["butt_color"] = pref_species.default_color
 						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3])
-							features["butt_color"] = sanitize_hexcolor(new_bellycolor)
+							features["butt_color"] = sanitize_hexcolor(new_buttcolor)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
 
