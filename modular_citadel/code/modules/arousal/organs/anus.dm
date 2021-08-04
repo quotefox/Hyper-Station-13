@@ -31,8 +31,10 @@
 		if(2)
 			size_name = "sizable"
 		if(3)
-			size_name = "hefty"
+			size_name = "squeezable"
 		if(4)
+			size_name = "hefty"
+		if(5)
 			size_name = "godly"
 		else
 			size_name = "nonexistant"

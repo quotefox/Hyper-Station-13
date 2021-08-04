@@ -2374,9 +2374,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						features["belly_size"] = clamp(new_bellysize, 1, 3)
 
 				if("butt_size")
-					var/new_buttsize = input(user, "Butt size :\n(0-4)", "Character Preference") as num|null
+					var/new_buttsize = input(user, "Butt size :\n(0-5)", "Character Preference") as num|null
 					if(new_buttsize)
-						features["butt_size"] = clamp(new_buttsize, 0, 4)
+						features["butt_size"] = clamp(new_buttsize, 0, 5)
 
 				if("vag_shape")
 					var/new_shape
