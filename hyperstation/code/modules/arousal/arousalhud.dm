@@ -44,7 +44,6 @@
 			dat	+=	"(Shrink your belly down a size)<BR>"
 
 
-
 	if(user.pulling)
 		dat	+= "<a href='byond://?src=[REF(src)];climaxover=1'>Climax over [user.pulling]</A>" //you can cum on objects if you really want...
 		dat	+=	"(Orgasm over a person or object.)<BR>"
@@ -126,6 +125,11 @@
 		var/obj/item/organ/genital/belly/E = usr.getorganslot("belly")
 		var/picked_visibility = input(usr, "Choose visibility", "Expose/Hide genitals", "Hidden by clothes") in list("Always visible", "Hidden by clothes", "Always hidden")
 		E.toggle_visibility(picked_visibility)
+
+	if(href_list["hideanus"])
+		var/obj/item/organ/genital/anus/A = usr.getorganslot("anus")
+		var/picked_visibility = input(usr, "Choose visibility", "Expose/Hide genitals", "Hidden by clothes") in list("Always visible", "Hidden by clothes", "Always hidden")
+		A.toggle_visibility(picked_visibility)
 
 	if(href_list["hidetesticles"])
 		var/obj/item/organ/genital/testicles/T = usr.getorganslot("testicles")

@@ -258,8 +258,6 @@
 			A.color = "#[skintone2hex(skin_tone)]"
 			A.update()
 
-
-
 /mob/living/carbon/human/proc/give_breasts()
 	if(!dna)
 		return FALSE
@@ -504,7 +502,8 @@
 						genital_overlay.color = "#[H.dna.features["vag_color"]]"
 					if("belly_color")
 						genital_overlay.color = "#[H.dna.features["belly_color"]]"
-
+					if("butt_color")
+						genital_overlay.color = "#[H.dna.features["butt_color"]]"
 
 			standing += genital_overlay
 
