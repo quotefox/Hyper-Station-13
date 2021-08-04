@@ -4,9 +4,44 @@
 	var/buildstacktype = /obj/item/stack/sheet/micro_bricks
 
 /obj/structure/micro_brick/ComponentInitialize()
-    . = ..()
-    AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE)
+	. = ..()
+	AddComponent(/datum/component/simple_rotation,ROTATION_ALTCLICK | ROTATION_CLOCKWISE)
 
+/obj/structure/micro_brick/Initialize()
+	. = ..()
+	RegisterSignal(src, COMSIG_PARENT_ATTACKBY, .proc/on_attackby)
+	RegisterSignal(src, COMSIG_ATOM_ATTACK_HAND, .proc/on_attack_hand)
+
+/obj/structure/micro_brick/proc/on_attackby(datum/source, obj/item/item, mob/user, params)
+	if(try_crush_microbricks(user))
+		return TRUE
+	
+	if(istype(item, /obj/item/carpentry/glue))
+		to_chat(user,"<span class='notice'>You glue the bricks to the floor.</span>")
+		anchored = TRUE
+		return TRUE
+
+	if(istype(item, /obj/item/crowbar))
+		to_chat(user,"<span class='notice'>You pry the bricks from the floor.</span>")
+		anchored = FALSE
+		return TRUE
+
+	//probably could better, but im busy playing warframe rn to help Summer lmao -Dahl
+	// Moved it to the top, MERP! Also... i CHANGED THE CODE. Side note, AAAAAAA! -Summer
+
+/obj/structure/micro_brick/proc/on_attack_hand(datum/source, mob/user, list/modifiers)
+	return try_crush_microbricks(user)
+
+/obj/structure/micro_brick/proc/try_crush_microbricks(mob/stomper)
+	if(stomper.a_intent != INTENT_HARM)
+		return FALSE
+	to_chat(stomper, "You crush the microbrick structure, what a monster!")
+
+	playsound(src, pick('sound/effects/bricks_1.ogg', 'sound/effects/bricks_2.ogg'), 30, 0)
+	//I Stepped on these legos that i bought. and it hurts :( -Summer
+	qdel(src)
+	return TRUE
+	
 /obj/structure/micro_brick/road_fourway
 	name = "Road fourway"
 	desc = "roundabouts are better!"
@@ -23,7 +58,7 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
 	integrity_failure = 30
-	var/buildstackamount = 2
+	var/buildstackamount = 1
 
 /obj/structure/micro_brick/road_straight
 	name = "Road straight"
@@ -32,7 +67,7 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
 	integrity_failure = 30
-	var/buildstackamount = 2
+	var/buildstackamount = 1
 
 /obj/structure/micro_brick/Road_turn
 	name = "Road turn"
@@ -42,7 +77,7 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
 	integrity_failure = 30
-	var/buildstackamount = 2
+	var/buildstackamount = 1
 
 /obj/structure/micro_brick/small_house
 	name = "Small houses"
@@ -51,7 +86,7 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
 	integrity_failure = 30
-	var/buildstackamount = 2
+	var/buildstackamount = 5
 
 /obj/structure/micro_brick/small_business
 	name = "Small business"
@@ -61,7 +96,7 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
 	integrity_failure = 30
-	var/buildstackamount = 2
+	var/buildstackamount = 5
 
 /obj/structure/micro_brick/small_warehouse
 	name = "Small warehouse"
@@ -71,7 +106,7 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
 	integrity_failure = 30
-	var/buildstackamount = 2
+	var/buildstackamount = 5
 
 /obj/structure/micro_brick/small_museum
 	name = "Small museum"
@@ -80,7 +115,7 @@
 	resistance_flags = FLAMMABLE
 	max_integrity = 100
 	integrity_failure = 30
-	var/buildstackamount = 2
+	var/buildstackamount = 5
 
 /obj/item/moon
 	name = "Small moon"
@@ -92,13 +127,3 @@
 	throw_range = 7
 	force = 0
 	total_mass = TOTAL_MASS_TINY_ITEM
-
-/obj/structure/micro_brick/attackby(obj/item/I, mob/user, params)
-	if(istype(I, /obj/item/carpentry/glue))
-		to_chat(user,"<span class='notice'>You glue the bricks to the floor.</span>")
-		anchored = TRUE
-	if(istype(I, /obj/item/crowbar))
-		to_chat(user,"<span class='notice'>You pry the bricks from the floor.</span>")
-		anchored = FALSE
-	//probably could better, but im busy playing warframe rn to help Summer lmao -Dahl
-	// Merp -Summer
