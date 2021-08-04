@@ -8,7 +8,7 @@ SUBSYSTEM_DEF(minor_mapping)
 	return ..()
 
 /datum/controller/subsystem/minor_mapping/proc/trigger_migration(num_mice=10)
-	var/list/exposed_wires = find_exposed_wires()
+	var/list/exposed_wires = find_exposed_wires_safetemp()
 
 	var/mob/living/simple_animal/mouse/M
 	var/turf/proposed_turf
@@ -31,6 +31,22 @@ SUBSYSTEM_DEF(minor_mapping)
 		all_turfs += block(locate(1,1,z), locate(world.maxx,world.maxy,z))
 	for(var/turf/open/floor/plating/T in all_turfs)
 		if(is_blocked_turf(T))
+			continue
+		if(locate(/obj/structure/cable) in T)
+			exposed_wires += T
+
+	return shuffle(exposed_wires)
+
+/proc/find_exposed_wires_safetemp()
+	var/list/exposed_wires = list()
+	exposed_wires.Cut()
+	var/list/all_turfs
+	for (var/z in SSmapping.levels_by_trait(ZTRAIT_STATION))
+		all_turfs += block(locate(1,1,z), locate(world.maxx,world.maxy,z))
+	for(var/turf/open/floor/plating/T in all_turfs)
+		if(is_blocked_turf(T))
+			continue
+		if(T.air?.temperature <= T0C) //Don't spawn them in an area where they'll immediately die, pretty please.
 			continue
 		if(locate(/obj/structure/cable) in T)
 			exposed_wires += T
