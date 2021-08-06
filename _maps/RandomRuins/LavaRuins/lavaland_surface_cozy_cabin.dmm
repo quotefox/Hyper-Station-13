@@ -1,0 +1,66 @@
+"a" = (/turf/closed/mineral/random/volcanic,/area/lavaland/surface/outdoors/unexplored)
+"c" = (/obj/structure/curtain{alpha = 240; color = "#454545"; icon_state = "closed"; open = 0},/obj/structure/window/reinforced/tinted{dir = 1},/turf/open/floor/plasteel/showroomfloor,/area/survivalpod)
+"d" = (/obj/structure/flora/ashtree/ashtreee,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors/unexplored)
+"g" = (/obj/structure/flora/plasmatree/plasmatreee,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors/unexplored)
+"h" = (/obj/structure/flora/rock/pile,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors/unexplored)
+"i" = (/obj/structure/flora/rock/icy,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors/unexplored)
+"k" = (/obj/structure/dresser,/turf/open/floor/carpet/royalblack,/area/survivalpod)
+"l" = (/obj/structure/fireplace,/turf/open/floor/carpet/royalblack,/area/survivalpod)
+"o" = (/obj/item/soap/deluxe,/obj/machinery/shower{dir = 1},/turf/open/floor/plasteel/showroomfloor,/area/survivalpod)
+"p" = (/obj/structure/bed,/obj/item/bedsheet/random,/obj/effect/decal/cleanable/semen,/turf/open/floor/carpet/royalblack,/area/survivalpod)
+"q" = (/obj/structure/bed/dogbed,/obj/item/toy/plush/beeplushie{pixel_y = -3},/turf/open/floor/grass,/area/survivalpod)
+"r" = (/obj/structure/window/reinforced/tinted,/turf/open/floor/wood,/area/survivalpod)
+"s" = (/obj/structure/flora/ausbushes/lavendergrass,/turf/open/floor/grass,/area/survivalpod)
+"t" = (/turf/open/lava/smooth,/area/lavaland/surface/outdoors/unexplored)
+"u" = (/obj/structure/chair/comfy/lime{dir = 1},/turf/open/floor/wood,/area/survivalpod)
+"v" = (/obj/structure/flora/ausbushes/genericbush,/obj/structure/flora/ausbushes/sparsegrass,/turf/open/floor/grass,/area/survivalpod)
+"w" = (/obj/machinery/light{dir = 8},/obj/item/twohanded/required/kirbyplants/random,/turf/open/floor/carpet/royalblack,/area/survivalpod)
+"y" = (/obj/machinery/light/small,/obj/structure/toilet{dir = 8},/obj/structure/mirror{pixel_x = 25; pixel_y = -2},/turf/open/floor/plasteel/showroomfloor,/area/survivalpod)
+"z" = (/obj/structure/grille,/obj/structure/window/reinforced/fulltile,/turf/open/floor/grass,/area/survivalpod)
+"A" = (/obj/structure/flora/ausbushes/palebush,/turf/open/floor/grass,/area/survivalpod)
+"B" = (/obj/structure/flora/tree/jungle/small,/turf/open/floor/grass,/area/survivalpod)
+"C" = (/obj/structure/fans/tiny,/obj/machinery/door/airlock/wood/glass,/turf/open/floor/wood,/area/survivalpod)
+"D" = (/obj/machinery/light/small{dir = 4},/turf/open/floor/grass,/area/survivalpod)
+"E" = (/obj/machinery/light{dir = 1},/obj/item/twohanded/required/kirbyplants/random,/turf/open/floor/wood,/area/survivalpod)
+"F" = (/turf/open/floor/grass,/area/survivalpod)
+"G" = (/obj/item/bdsm_whip,/obj/item/clothing/mask/muzzle/ballgag,/obj/structure/closet/cabinet,/obj/item/clothing/glasses/sunglasses/blindfold,/obj/item/clothing/neck/petcollar,/turf/open/floor/carpet/royalblack,/area/survivalpod)
+"H" = (/obj/structure/flora/ausbushes/fullgrass,/obj/structure/flora/ausbushes/ppflowers,/turf/open/floor/grass,/area/survivalpod)
+"I" = (/turf/template_noop,/area/template_noop)
+"J" = (/turf/open/floor/carpet/royalblack,/area/survivalpod)
+"K" = (/obj/structure/table/reinforced,/obj/item/kitchen/rollingpin,/obj/item/kitchen/knife,/turf/open/floor/wood,/area/survivalpod)
+"L" = (/obj/structure/closet/secure_closet/freezer/fridge,/obj/structure/window/reinforced/tinted,/turf/open/floor/wood,/area/survivalpod)
+"M" = (/obj/structure/sink{dir = 8; pixel_x = -12},/turf/open/floor/wood,/area/survivalpod)
+"N" = (/turf/closed/wall/mineral/wood,/area/survivalpod)
+"O" = (/obj/structure/grille,/obj/structure/window/reinforced/fulltile,/turf/open/floor/plating,/area/survivalpod)
+"P" = (/obj/effect/spawner/lootdrop/three_course_meal,/obj/structure/table/wood/fancy/monochrome,/turf/open/floor/wood,/area/survivalpod)
+"Q" = (/obj/structure/table/reinforced,/obj/machinery/microwave{pixel_y = 5},/turf/open/floor/wood,/area/survivalpod)
+"R" = (/obj/structure/flora/ausbushes/ywflowers,/turf/open/floor/grass,/area/survivalpod)
+"S" = (/obj/structure/flora/shadowtree/shadowtreee,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors/unexplored)
+"U" = (/obj/structure/flora/redgrass/redg,/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors/unexplored)
+"V" = (/obj/structure/chair/comfy/lime,/turf/open/floor/wood,/area/survivalpod)
+"W" = (/turf/open/floor/plating/asteroid/basalt/lava_land_surface,/area/lavaland/surface/outdoors/unexplored)
+"X" = (/turf/open/floor/wood,/area/survivalpod)
+"Y" = (/obj/structure/barricade/wooden,/obj/machinery/door/airlock/wood,/turf/open/floor/wood,/area/survivalpod)
+"Z" = (/obj/machinery/vending/boozeomat/all_access,/turf/closed/wall/mineral/wood,/area/survivalpod)
+
+(1,1,1) = {"
+IaaWWWWaaaaWWWWWWaa
+aaWttttdaaWtttWWWga
+aWttWWttttttttttWWW
+atttWWWttttdWhtttWW
+WttWWWiWWWWWWWWttiW
+WtttWNNNNNNNNNWtttW
+httgWNklpNqsvNUWtta
+WtttWNwJJzABDNWWtta
+WtttWNGJJNRFHNWWWta
+attWUNNYZNMXKOhWWtU
+attWWNVXXEXXQNWWgta
+atthWNPXXXrrLNWWtta
+attSWNuXXXcoyNWWtta
+atttWNNNNCNNNNWttta
+atttWUWWdWdWWWWttta
+aattttWWWWWWUWtttta
+IaWtttttWWWttttttaa
+IaSWWWttWWWtaaaaaaI
+IaaWiWWaaWaaaIIIIII
+"}
