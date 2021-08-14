@@ -5,6 +5,14 @@
 //Please be wary to not add inorganic items to the results such as generic glass bottles and metal.
 //as they kind of defeat the design of this feature.
 
+/datum/design/soymilk
+	name = "10u Soymilk"
+	id = "soymilk"
+	build_type = BIOGENERATOR
+	materials = list(MAT_BIOMASS = 20)
+	make_reagents = list(/datum/reagent/consumable/soymilk = 10)
+	category = list("initial","Food")
+
 /datum/design/milk
 	name = "10u Milk"
 	id = "milk"
@@ -13,12 +21,12 @@
 	make_reagents = list(/datum/reagent/consumable/milk = 10)
 	category = list("initial","Food")
 
-/datum/design/cream
-	name = "10u Cream"
-	id = "cream"
+/datum/design/flour
+	name = "10u Flour"
+	id = "flour"
 	build_type = BIOGENERATOR
-	materials = list(MAT_BIOMASS = 30)
-	make_reagents = list(/datum/reagent/consumable/cream = 10)
+	materials = list(MAT_BIOMASS = 20)
+	make_reagents = list(/datum/reagent/consumable/flour = 10)
 	category = list("initial","Food")
 
 /datum/design/black_pepper
@@ -50,7 +58,7 @@
 	id = "smeat"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 175)
-	build_path = /obj/item/reagent_containers/food/snacks/meat/slab/synthmeat
+	build_path = /obj/item/reagent_containers/food/snacks/meat/slab/meatproduct
 	category = list("initial", "Food")
 
 /datum/design/ez_nut
