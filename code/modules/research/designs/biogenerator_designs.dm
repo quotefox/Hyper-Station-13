@@ -58,7 +58,7 @@
 	id = "smeat"
 	build_type = BIOGENERATOR
 	materials = list(MAT_BIOMASS = 175)
-	build_path = /obj/item/reagent_containers/food/snacks/meat/slab/meatproduct
+	build_path = /obj/item/reagent_containers/food/snacks/meat/slab/synthmeat
 	category = list("initial", "Food")
 
 /datum/design/ez_nut
