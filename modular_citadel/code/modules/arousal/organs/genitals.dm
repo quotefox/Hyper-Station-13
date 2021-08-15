@@ -255,8 +255,12 @@
 			A.size = dna.features["butt_size"]
 		A.Insert(src)
 		if(A)
-			A.color = "#[skintone2hex(skin_tone)]"
+			if(dna.species.use_skintones && dna.features["genitals_use_skintone"])
+				A.color = "#[skintone2hex(skin_tone)]"
+			else
+				A.color = "#[dna.features["butt_color"]]"
 			A.update()
+
 
 /mob/living/carbon/human/proc/give_breasts()
 	if(!dna)

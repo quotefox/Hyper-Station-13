@@ -409,10 +409,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_cock_length"]			>> features["cock_length"]
 	S["feature_cock_girth"]				>> features["cock_girth"]
 	S["feature_has_sheath"]				>> features["sheath_color"]
-	//belly size
-	S["feature_belly_size"]				>> features["belly_size"]
-	//belly size
-	S["feature_butt_size"]				>> features["butt_size"]
 	//balls features
 	S["feature_has_balls"]				>> features["has_balls"]
 	S["feature_balls_color"]			>> features["balls_color"]
@@ -436,12 +432,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_can_get_preg"]			>> features["can_get_preg"] //hyperstation 13
 	//belly features
 	S["feature_has_belly"]				>> features["has_belly"]
+	S["feature_belly_size"]				>> features["belly_size"]
 	S["feature_belly_color"]			>> features["belly_color"]
 	S["feature_hide_belly"]				>> features["hide_belly"]
 	S["feature_inflatable_belly"]		>> features["inflatable_belly"]
-	//anus features
-	S["feature_has_anus"]				>> features["has_anus"]
+	//butt features
+	S["feature_butt_size"]				>> features["butt_size"]
 	S["feature_butt_color"]				>> features["butt_color"]
+	S["feature_has_anus"]				>> features["has_anus"]
 
 	//flavor text
 	//Let's make our players NOT cry desperately as we wipe their savefiles of their special snowflake texts:
