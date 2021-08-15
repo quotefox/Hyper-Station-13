@@ -148,6 +148,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"inflatable_belly" = FALSE,
 		"belly_color" = "fff",
 		"has_anus" = FALSE,
+		"butt_color" = "fff",
 		"has_balls" = FALSE,
 		"balls_internal" = FALSE,
 		"balls_color" = "fff",
@@ -932,6 +933,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_anus'>[features["has_anus"] == TRUE ? "Yes" : "No"]</a>"
 				if(features["has_anus"])
 					dat += "<b>Butt Size:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=butt_size;task=input'>[features["butt_size"]]</a>"
+					if(pref_species.use_skintones && features["genitals_use_skintone"] == TRUE)
+						dat += "<b>Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: #[skintone2hex(skin_tone)];'>&nbsp;&nbsp;&nbsp;</span>(Skin tone overriding)<br>"
+					else
+						dat += "<b>Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: #[features["butt_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=butt_color;task=input'>Change</a><br>"
+
 				dat += "</td>"
 
 			dat += "</td>"
@@ -2274,6 +2282,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
 
+				if("butt_color")
+					var/new_buttcolor = input(user, "Butt Color:", "Character Preference") as color|null
+					if(new_buttcolor)
+						var/temp_hsv = RGBtoHSV(new_buttcolor)
+						if(new_buttcolor == "#000000")
+							features["butt_color"] = pref_species.default_color
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3])
+							features["butt_color"] = sanitize_hexcolor(new_buttcolor)
+						else
+							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+
 				if("balls_shape")
 					var/new_shape
 					new_shape = input(user, "Testicle Type:", "Character Preference") as null|anything in GLOB.balls_shapes_list
@@ -2355,8 +2374,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						features["belly_size"] = clamp(new_bellysize, 1, 3)
 
 				if("butt_size")
-					var/new_buttsize = input(user, "Butt size :\n(0-4)", "Character Preference") as num|null
-					features["butt_size"] = clamp(new_buttsize, 0, 4)
+					var/new_buttsize = input(user, "Butt size :\n(0-5)", "Character Preference") as num|null
+					if(new_buttsize)
+						features["butt_size"] = clamp(new_buttsize, 0, 5)
 
 				if("vag_shape")
 					var/new_shape

@@ -434,13 +434,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//womb features
 	S["feature_has_womb"]				>> features["has_womb"]
 	S["feature_can_get_preg"]			>> features["can_get_preg"] //hyperstation 13
-		//belly features
+	//belly features
 	S["feature_has_belly"]				>> features["has_belly"]
 	S["feature_belly_color"]			>> features["belly_color"]
 	S["feature_hide_belly"]				>> features["hide_belly"]
 	S["feature_inflatable_belly"]		>> features["inflatable_belly"]
 	//anus features
 	S["feature_has_anus"]				>> features["has_anus"]
+	S["feature_butt_color"]				>> features["butt_color"]
 
 	//flavor text
 	//Let's make our players NOT cry desperately as we wipe their savefiles of their special snowflake texts:

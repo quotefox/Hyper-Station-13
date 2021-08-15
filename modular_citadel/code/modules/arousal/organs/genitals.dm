@@ -258,8 +258,6 @@
 			A.color = "#[skintone2hex(skin_tone)]"
 			A.update()
 
-
-
 /mob/living/carbon/human/proc/give_breasts()
 	if(!dna)
 		return FALSE
@@ -397,6 +395,7 @@
 			dna.features["cock_color"] = dna.features["breasts_color"]
 	return
 
+//called every time players sprite changes, ie, moves item in hands or equiped item.
 /datum/species/proc/handle_genitals(mob/living/carbon/human/H)//more like handle sadness
 	if(!H)//no args
 		CRASH("H = null")
@@ -452,6 +451,10 @@
 				continue
 
 			var/mutable_appearance/genital_overlay = mutable_appearance(S.icon, layer = -layer)
+
+			//creates another icon with mutable appearance, allows different layering depending on direction
+			var/mutable_appearance/genital_overlay_directional = mutable_appearance(S.icon, layer = -layer)
+
 			//genitals bigger than 11 inches / g-cup will appear over clothing, if accepted
 			//otherwise, appear under clothing
 			if(G.slot == "penis" || G.slot == "testicles")
@@ -471,17 +474,28 @@
 				genital_overlay.icon_state = "belly_[size]"
 				colourcode = "belly_color"
 
-			if(G.slot == "anus") //we have a different size system
+			//sizecheck added to prevent rendering blank icons
+			if(G.slot == "anus" && G.size > 0) //we have a different size system
+
 				genital_overlay.icon = 'hyperstation/icons/obj/genitals/butt.dmi'
-				genital_overlay.icon_state = "butt_[size]"
-				genital_overlay.layer = -FRONT_MUTATIONS_LAYER
+				genital_overlay.icon_state = "butt_[size]_OTHER"
+				genital_overlay.layer = -ID_LAYER //in front of suit, behind bellies.
+
+				//creates directional layering by rendering twice. North has higher layer priority to occlude hands.
+				genital_overlay_directional.icon = 'hyperstation/icons/obj/genitals/butt.dmi'
+				genital_overlay_directional.icon_state = "butt_[size]_NORTH"
+				genital_overlay_directional.layer = -NECK_LAYER
+
 				colourcode = "butt_color"
 				if(use_skintones) //butts are forced a colour, either skin tones, or main colour. how ever, mutants use a darker version, because of their body tone.
 					genital_overlay.color = "#[skintone2hex(H.skin_tone)]"
-					genital_overlay.icon_state = "butt_[size]"
+					genital_overlay.icon_state = "butt_[size]_OTHER"
+					genital_overlay_directional.icon_state = "butt_[size]_NORTH"
 				else
 					genital_overlay.color = "#[H.dna.features["mcolor"]]"
-					genital_overlay.icon_state = "butt_[size]_m"
+					genital_overlay.icon_state = "butt_[size]_OTHER_m"
+					genital_overlay_directional.icon_state = "butt_[size]_NORTH_m"
+
 
 			if(S.center)
 				genital_overlay = center_image(genital_overlay, S.dimension_x, S.dimension_y)
@@ -504,9 +518,25 @@
 						genital_overlay.color = "#[H.dna.features["vag_color"]]"
 					if("belly_color")
 						genital_overlay.color = "#[H.dna.features["belly_color"]]"
-
+					if("butt_color")
+						genital_overlay.color = "#[H.dna.features["butt_color"]]"
 
 			standing += genital_overlay
+
+			//check whether or not there is a directional overlay
+			if(genital_overlay_directional)
+				if(S.center)
+					genital_overlay_directional = center_image(genital_overlay_directional, S.dimension_x, S.dimension_y)
+
+				if(use_skintones && H.dna.features["genitals_use_skintone"])
+					genital_overlay_directional.color = "#[skintone2hex(H.skin_tone)]"
+					if (colourtint)
+						genital_overlay_directional.color = "#[colourtint]"
+				else
+					genital_overlay_directional.color = "#[H.dna.features["butt_color"]]"
+
+				standing += genital_overlay_directional
+
 
 		if(LAZYLEN(standing))
 			H.overlays_standing[layer] = standing.Copy()
