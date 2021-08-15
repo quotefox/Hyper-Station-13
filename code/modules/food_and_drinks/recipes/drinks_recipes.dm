@@ -911,3 +911,9 @@
 	id = /datum/reagent/consumable/ethanol/cum_in_a_hot_tub/semen
 	results = list(/datum/reagent/consumable/ethanol/cum_in_a_hot_tub/semen = 3)
 	required_reagents = list(/datum/reagent/consumable/ethanol/vodka = 2, /datum/reagent/consumable/semen = 1, /datum/reagent/consumable/ethanol/irish_cream = 0.1)
+
+/datum/chemical_reaction/orange_creamsicle
+    name = "Orange Creamsical"
+    id = /datum/reagent/consumable/orange_creamsicle
+    results = list(/datum/reagent/consumable/orange_creamsicle = 4)
+    required_reagents = list(/datum/reagent/consumable/vanilla = 1, /datum/reagent/consumable/milk = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/orangejuice = 1)
