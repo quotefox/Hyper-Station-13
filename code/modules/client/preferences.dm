@@ -105,6 +105,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/roleplayroles = FALSE //for the roleplay roles
 	var/importantroles = FALSE //for things that define as important.
 
+
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	var/list/features = list("mcolor" = "FFF",
 		"tail_lizard" = "Smooth",
@@ -232,6 +233,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/unlock_content = 0
 	var/vip = 0
+
+	//visable pins!
+	var/list/pins = list()
 
 	var/list/ignoring = list()
 

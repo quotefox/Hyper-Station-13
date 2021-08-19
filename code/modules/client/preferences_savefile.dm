@@ -144,6 +144,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["sillyroles"]			>> sillyroles
 	S["roleplayroles"]		>> roleplayroles
 	S["importantroles"]		>> importantroles
+	S["pins"]				>> pins
 
 	//try to fix any outdated data if necessfary
 	if(needs_update >= 0)
@@ -265,6 +266,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Hyper
 	WRITE_FILE(S["noncon"], noncon)
+	WRITE_FILE(S["pins"], pins)
 
 	return 1
 

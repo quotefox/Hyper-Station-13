@@ -99,7 +99,8 @@
 	WRITE_FILE(S["feature_has_anus"], features["has_anus"])
 	WRITE_FILE(S["feature_butt_size"], features["butt_size"])
 	WRITE_FILE(S["feature_butt_color"], features["butt_color"])
-
+	//pins
+	WRITE_FILE(S["pins"], pins)
 
 	//gear loadout
 	if(islist(chosen_gear))
