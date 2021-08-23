@@ -134,9 +134,12 @@
 	if(mess || attempting)
 		return FALSE
 
-	//only check for clone's mind if it's not experimental cloning
-	if(!experimental)
+	//runtime error protection
+	if(mindref)
 		clonemind = locate(mindref) in SSticker.minds
+
+	//only exit out of cloning with no mind if cloning is not experimental.
+	if(!experimental)
 		if(!istype(clonemind))	//not a mind
 			return FALSE
 		if(!QDELETED(clonemind.current))
@@ -216,12 +219,10 @@
 	attempting = FALSE
 
 	//sizecode stuff, check size of scanned individual to then pass in later. someone should turn size into a dna trait tbh
-	if(mindref)
-		clonemind = locate(mindref) in SSticker.minds
-		if(istype(clonemind))
-			var/mob/living/current = clonemind.current //gets body of current mind
-			if(!isnull(current))
-				size = current.size_multiplier * 100
+	if(istype(clonemind))
+		var/mob/living/current = clonemind.current //gets body of current mind
+		if(!isnull(current))
+			size = current.size_multiplier * 100
 
 	return TRUE
 

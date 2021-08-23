@@ -295,11 +295,8 @@
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 	else
 
-		//disabled vars from how cloning.dm does it
-		//var/ckey = mob_occupant.ckey
+		//put here for ease of use / ability to change, rather than in the method call to growclone
 		var/name = mob_occupant.real_name
-		//var/id = copytext_char(md5(mob_occupant.real_name), 2, 6)
-		//var/UE = dna.unique_enzymes
 		var/mind = null
 		var/UI = dna.uni_identity
 		var/SE = dna.mutation_index
