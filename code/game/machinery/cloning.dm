@@ -38,6 +38,8 @@
 	var/list/unattached_flesh
 	var/flesh_number = 0
 
+	var/size = 1
+
 /obj/machinery/clonepod/Initialize()
 	. = ..()
 
@@ -61,7 +63,7 @@
 	QDEL_LIST(unattached_flesh)
 	. = ..()
 
-/obj/machinery/clonepod/RefreshParts()	
+/obj/machinery/clonepod/RefreshParts()
 	speed_coeff = 0
 	efficiency = 0
 	for(var/obj/item/stock_parts/scanning_module/S in component_parts)
@@ -126,34 +128,37 @@
 	return examine(user)
 
 //Start growing a human clone in the pod!
-/obj/machinery/clonepod/proc/growclone(ckey, clonename, ui, mutation_index, mindref, datum/species/mrace, list/features, factions, list/quirks)
+/obj/machinery/clonepod/proc/growclone(ckey, clonename, ui, mutation_index, mindref, datum/species/mrace, list/features, factions, list/quirks, experimental = FALSE)
 	if(panel_open)
 		return FALSE
 	if(mess || attempting)
 		return FALSE
-	clonemind = locate(mindref) in SSticker.minds
-	if(!istype(clonemind))	//not a mind
-		return FALSE
-	if(!QDELETED(clonemind.current))
-		if(clonemind.current.stat != DEAD)	//mind is associated with a non-dead body
+
+	//only check for clone's mind if it's not experimental cloning
+	if(!experimental)
+		clonemind = locate(mindref) in SSticker.minds
+		if(!istype(clonemind))	//not a mind
 			return FALSE
-		if(clonemind.current.suiciding) // Mind is associated with a body that is suiciding.
+		if(!QDELETED(clonemind.current))
+			if(clonemind.current.stat != DEAD)	//mind is associated with a non-dead body
+				return FALSE
+			if(clonemind.current.suiciding) // Mind is associated with a body that is suiciding.
+				return FALSE
+		if(clonemind.active)	//somebody is using that mind
+			if( ckey(clonemind.key)!=ckey )
+				return FALSE
+		else
+			// get_ghost() will fail if they're unable to reenter their body
+			var/mob/dead/observer/G = clonemind.get_ghost()
+			if(!G)
+				return FALSE
+			if(G.suiciding) // The ghost came from a body that is suiciding.
+				return FALSE
+		if(clonemind.damnation_type) //Can't clone the damned.
+			INVOKE_ASYNC(src, .proc/horrifyingsound)
+			mess = TRUE
+			update_icon()
 			return FALSE
-	if(clonemind.active)	//somebody is using that mind
-		if( ckey(clonemind.key)!=ckey )
-			return FALSE
-	else
-		// get_ghost() will fail if they're unable to reenter their body
-		var/mob/dead/observer/G = clonemind.get_ghost()
-		if(!G)
-			return FALSE
-		if(G.suiciding) // The ghost came from a body that is suiciding.
-			return FALSE
-	if(clonemind.damnation_type) //Can't clone the damned.
-		INVOKE_ASYNC(src, .proc/horrifyingsound)
-		mess = TRUE
-		update_icon()
-		return FALSE
 
 	attempting = TRUE //One at a time!!
 	countdown.start()
@@ -180,15 +185,17 @@
 	ADD_TRAIT(H, TRAIT_NOCRITDAMAGE, CLONING_POD_TRAIT)
 	H.Unconscious(80)
 
-	clonemind.transfer_to(H)
+	//only transfer consciousness if the clone isn't experimental
+	if(!experimental)
+		clonemind.transfer_to(H)
 
-	if(grab_ghost_when == CLONER_FRESH_CLONE)
-		H.grab_ghost()
-		to_chat(H, "<span class='notice'><b>Consciousness slowly creeps over you as your body regenerates.</b><br><i>So this is what cloning feels like?</i></span>")
+		if(grab_ghost_when == CLONER_FRESH_CLONE)
+			H.grab_ghost()
+			to_chat(H, "<span class='notice'><b>Consciousness slowly creeps over you as your body regenerates.</b><br><i>So this is what cloning feels like?</i></span>")
 
-	if(grab_ghost_when == CLONER_MATURE_CLONE)
-		H.ghostize(TRUE)	//Only does anything if they were still in their old body and not already a ghost
-		to_chat(H.get_ghost(TRUE), "<span class='notice'>Your body is beginning to regenerate in a cloning pod. You will become conscious when it is complete.</span>")
+		if(grab_ghost_when == CLONER_MATURE_CLONE)
+			H.ghostize(TRUE)	//Only does anything if they were still in their old body and not already a ghost
+			to_chat(H.get_ghost(TRUE), "<span class='notice'>Your body is beginning to regenerate in a cloning pod. You will become conscious when it is complete.</span>")
 
 	if(H)
 		H.faction |= factions
@@ -202,6 +209,14 @@
 
 		H.suiciding = FALSE
 	attempting = FALSE
+
+	//sizecode stuff, check size of scanned individual to then pass in later. someone should turn size into a dna trait tbh
+	if(mindref)
+		clonemind = locate(mindref) in SSticker.minds
+		if(istype(clonemind))
+			var/mob/living/current = clonemind.current //gets body of current mind
+			if(!isnull(current))
+				size = current.size_multiplier * 100
 
 	return TRUE
 
@@ -381,7 +396,7 @@
 
 	//Do the resize on ejection. The clone pod seems to do a lot of matrix transforms the way size code does, so we will handle our resize after.
 	mob_occupant.previous_size = 1 //Set the previous size to default so the resize properly set health and speed.
-	mob_occupant.custom_body_size = mob_occupant.client.prefs.body_size
+	mob_occupant.custom_body_size = size //mob_occupant.client.prefs.body_size
 	mob_occupant.resize(mob_occupant.custom_body_size * 0.01)
 	occupant = null
 
