@@ -124,4 +124,4 @@
 	trash = /obj/item/reagent_containers/glass/bowl/mushroom_bowl
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 4)
 	tastes = list("fruity cactus" = 5, "ash" = 1, "tough meat" = 3, "your eternal damnation" = 1)
-	foodtype = FRUIT | MEAT | VEGETABLES //MUSHROOM = VEGETABLE -VladinXXV 2021
+	foodtype = FRUIT | MEAT | VEGETABLES //MUSHROOM = VEGETABLE -VivI Fanteriso: 2021. Totally didnt steal this comment form vladin.
