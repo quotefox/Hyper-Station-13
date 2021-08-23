@@ -186,16 +186,21 @@
 	H.Unconscious(80)
 
 	//only transfer consciousness if the clone isn't experimental
-	if(!experimental)
+	if(experimental)
+		var/list/candidates = pollCandidatesForMob("Do you want to play as [clonename]'s defective clone?", null, null, null, 100, H)
+		if(LAZYLEN(candidates))
+			var/mob/dead/observer/C = pick(candidates)
+			H.key = C.key
+	else
 		clonemind.transfer_to(H)
 
-		if(grab_ghost_when == CLONER_FRESH_CLONE)
-			H.grab_ghost()
-			to_chat(H, "<span class='notice'><b>Consciousness slowly creeps over you as your body regenerates.</b><br><i>So this is what cloning feels like?</i></span>")
+	if(grab_ghost_when == CLONER_FRESH_CLONE)
+		H.grab_ghost()
+		to_chat(H, "<span class='notice'><b>Consciousness slowly creeps over you as your body regenerates.</b><br><i>So this is what cloning feels like?</i></span>")
 
-		if(grab_ghost_when == CLONER_MATURE_CLONE)
-			H.ghostize(TRUE)	//Only does anything if they were still in their old body and not already a ghost
-			to_chat(H.get_ghost(TRUE), "<span class='notice'>Your body is beginning to regenerate in a cloning pod. You will become conscious when it is complete.</span>")
+	if(grab_ghost_when == CLONER_MATURE_CLONE)
+		H.ghostize(TRUE)	//Only does anything if they were still in their old body and not already a ghost
+		to_chat(H.get_ghost(TRUE), "<span class='notice'>Your body is beginning to regenerate in a cloning pod. You will become conscious when it is complete.</span>")
 
 	if(H)
 		H.faction |= factions

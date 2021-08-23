@@ -8,7 +8,7 @@
 	circuit = /obj/item/circuitboard/machine/clonepod/experimental
 	internal_radio = FALSE
 
-//Start growing a human clone in the pod!
+//Start growing a human clone in the pod! Depreciated and replaced with parent object's growclone method.
 /*
 /obj/machinery/clonepod/experimental/growclone(ckey, clonename, ui, se, datum/species/mrace, list/features, factions)
 	if(panel_open)
