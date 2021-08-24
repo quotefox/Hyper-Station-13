@@ -29,6 +29,41 @@
 	resistance_flags = NONE
 
 /*
+ * Posshim's Corpus atire 
+ */
+/obj/item/clothing/suit/hooded/corpus/
+	name = "Standard Voidsuit"
+	desc = "Tenno scum!"
+	icon_state = "corpus"
+	item_state = "armor"
+	body_parts_covered = CHEST|GROIN|LEGS
+	hoodtype = /obj/item/clothing/head/hooded/corpus
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+
+/obj/item/clothing/suit/hooded/corpus/s //sec
+	name = "Enforcer Voidsuit"
+	icon_state = "corpuss"
+	hoodtype = /obj/item/clothing/head/hooded/corpus/s
+
+/obj/item/clothing/suit/hooded/corpus/c //command
+	name = "Commander Voidsuit"
+	icon_state = "corpusc"
+	hoodtype = /obj/item/clothing/head/hooded/corpus/c
+
+/obj/item/clothing/head/hooded/corpus
+	name = "Voidsuit helmet"
+	desc = "We Are Corpus"
+	icon_state = "corpus"
+	body_parts_covered = HEAD
+	flags_inv = HIDEHAIR|HIDEEARS|HIDEFACIALHAIR|HIDEFACE|HIDEMASK|HIDESNOUT|HIDENECK
+
+/obj/item/clothing/head/hooded/corpus/s //sec
+	icon_state = "corpuss"
+
+/obj/item/clothing/head/hooded/corpus/c //command
+	icon_state = "corpusc"
+
+/*
  * Costume
  */
 /obj/item/clothing/suit/hooded/flashsuit
