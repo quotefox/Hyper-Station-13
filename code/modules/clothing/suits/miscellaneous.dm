@@ -36,9 +36,10 @@
 	desc = "Tenno scum!"
 	icon_state = "corpus"
 	item_state = "armor"
-	body_parts_covered = CHEST|GROIN|LEGS
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS|FEET|HANDS
 	hoodtype = /obj/item/clothing/head/hooded/corpus
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/hooded/corpus/s //sec
 	name = "Enforcer Voidsuit"
@@ -56,6 +57,7 @@
 	icon_state = "corpus"
 	body_parts_covered = HEAD
 	flags_inv = HIDEHAIR|HIDEEARS|HIDEFACIALHAIR|HIDEFACE|HIDEMASK|HIDESNOUT|HIDENECK
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/head/hooded/corpus/s //sec
 	icon_state = "corpuss"
