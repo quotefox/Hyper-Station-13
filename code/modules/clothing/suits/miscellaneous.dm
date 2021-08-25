@@ -38,7 +38,7 @@
 	item_state = "armor"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|FEET|HANDS
 	hoodtype = /obj/item/clothing/head/hooded/corpus
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT| //"Hide shoes" but digi shoes dont get hidden, too bad!
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT //"Hide shoes" but digi shoes dont get hidden, too bad!
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	mutantrace_variation = NO_MUTANTRACE_VARIATION //There is no need for a digi variant, it's a costume
 
