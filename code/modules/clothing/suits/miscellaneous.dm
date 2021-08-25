@@ -33,31 +33,33 @@
  */
 /obj/item/clothing/suit/hooded/corpus/
 	name = "Standard Voidsuit"
-	desc = "Tenno scum!"
+	desc = "Standard issue voidsuit in the name of Grofit!"
 	icon_state = "corpus"
 	item_state = "armor"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS|FEET|HANDS
 	hoodtype = /obj/item/clothing/head/hooded/corpus
-	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
+	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT| //"Hide shoes" but digi shoes dont get hidden, too bad!
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	mutantrace_variation = NO_MUTANTRACE_VARIATION
-	
+	mutantrace_variation = NO_MUTANTRACE_VARIATION //There is no need for a digi variant, it's a costume
+
 /obj/item/clothing/suit/hooded/corpus/s //sec
 	name = "Enforcer Voidsuit"
+	desc = "Delux issue grofit voidsuit. Let the middle class know You're in charge."
 	icon_state = "corpuss"
-	hoodtype = /obj/item/clothing/head/hooded/corpus/s
+	hoodtype = /obj/item/clothing/head/hooded/corpus/s //Enjoy this nice red outfit Kinaris! There is NO NEED for a pink one! xoxo -VivI Fanteriso
 
 /obj/item/clothing/suit/hooded/corpus/c //command
 	name = "Commander Voidsuit"
+	desc = "Premium issue correctional worker attire. Grease the gears of production."
 	icon_state = "corpusc"
 	hoodtype = /obj/item/clothing/head/hooded/corpus/c
 
 /obj/item/clothing/head/hooded/corpus
 	name = "Voidsuit helmet"
-	desc = "We Are Corpus"
+	desc = "galvanized reinforced helm to protect against the elements"
 	icon_state = "corpus"
 	body_parts_covered = HEAD
-	flags_inv = HIDEHAIR|HIDEEARS|HIDEFACIALHAIR|HIDEFACE|HIDEMASK|HIDESNOUT|HIDENECK
+	flags_inv = HIDEHAIR|HIDEEARS|HIDEFACIALHAIR|HIDEFACE|HIDEMASK|HIDESNOUT|HIDENECK //hide your ugly face with this one simple trick!
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/head/hooded/corpus/s //sec
