@@ -40,7 +40,8 @@
 	hoodtype = /obj/item/clothing/head/hooded/corpus
 	flags_inv = HIDEGLOVES|HIDESHOES|HIDEJUMPSUIT
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	
 /obj/item/clothing/suit/hooded/corpus/s //sec
 	name = "Enforcer Voidsuit"
 	icon_state = "corpuss"
