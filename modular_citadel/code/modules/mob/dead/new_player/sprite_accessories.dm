@@ -934,6 +934,10 @@ datum/sprite_accessory/ears/human/gret
 	icon_state = "roundlight"
 	color_src = MUTCOLORS
 
+/datum/sprite_accessory/mam_snouts/stubby
+	name = "Stubby"
+	icon_state = "stubby"
+
 //Synth snouts (This is the most important part)
 /datum/sprite_accessory/mam_snouts/synthliz
 	recommended_species = list("synthliz")
