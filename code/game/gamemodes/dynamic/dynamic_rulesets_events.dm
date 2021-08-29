@@ -3,7 +3,7 @@
 	var/typepath // typepath of the event
 	var/controller //round event controller for the event - Required for certain events dependendant on variables within their controllers
 	var/triggering
-	var/earliest_start = 20 MINUTES 
+	var/earliest_start = 20 MINUTES
 	var/occurances_current = 0 //Don't touch this. Skyrat Change.
 	var/occurances_max = 0 //Maximum occurances for this event. Set to 0 to allow an infinite amount of this event. Skyrat change.
 	var/needs_players = FALSE //If an event needs players, living or ghosts, set to TRUE. Bypasses the trim_candidates otherwise
@@ -497,7 +497,7 @@
 	//property_weights = list("extended" = 1)
 	occurances_max = 3
 	map_blacklist = list("LayeniaStation.dmm")
-	
+
 
 /datum/dynamic_ruleset/event/electrical_storm
 	name = "Electrical Storm"
@@ -531,15 +531,16 @@
 	name = "Radiation Storm"
 	//config_tag = "radiation_storm"
 	typepath = /datum/round_event/radiation_storm
-	cost = 3
-	weight = 2
-	repeatable_weight_decrease = 2
+	cost = 6
+	weight = 5
+	repeatable_weight_decrease = 1
 	enemy_roles = list("Chemist","Chief Medical Officer","Geneticist","Medical Doctor","AI","Captain")
 	required_enemies = list(2,2,2,2,1,1,1,1,1,0)
 	requirements = list(5,5,5,5,5,5,5,5,5,5)
 	high_population_requirement = 5
 	//property_weights = list("extended" = 1,"chaos" = 1)
 	occurances_max = 2
+
 
 /datum/dynamic_ruleset/event/portal_storm_syndicate
 	name = "Portal Storm"
