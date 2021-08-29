@@ -18,7 +18,8 @@
 					/obj/item/clothing/mask/bandana/red = 5,
 					/obj/item/clothing/under/rank/security/skirt = 5,
 					/obj/item/clothing/under/rank/security/grey = 5,
-					/obj/item/clothing/under/pants/khaki = 5)
+					/obj/item/clothing/under/pants/khaki = 5,
+					/obj/item/clothing/suit/hooded/corpus/s = 5)
 	premium = list(/obj/item/clothing/under/rank/security/navyblue = 5,
 					/obj/item/clothing/suit/security/officer = 5,
 					/obj/item/clothing/head/beret/sec/navyofficer = 5,

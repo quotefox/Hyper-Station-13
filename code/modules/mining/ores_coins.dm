@@ -438,6 +438,15 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	value = 0
 	grind_results = list(/datum/reagent/consumable/sodiumchloride = 4)
 
+/obj/item/coin/vivitoken
+	name = ".... token?"
+	icon_state = "coin_vivi_wizard"
+	cmineral = "vivi"
+	desc = "This shouldnt be here....."
+	sideslist = list("wizard", "engie")
+	value = 0
+	grind_results = list(/datum/reagent/medicine/copium = 10)
+
 /obj/item/coin/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/CC = W
