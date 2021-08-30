@@ -206,6 +206,15 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	new/datum/stack_recipe("wood floor tile", /obj/item/stack/tile/wood, 1, 4, 20), \
 	new/datum/stack_recipe("wood table frame", /obj/structure/table_frame/wood, 2, time = 10), \
 	null, \
+
+	new/datum/stack_recipe_list("bench", \
+		list( \
+		new/datum/stack_recipe("bench (middle)", /obj/structure/chair/bench, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("bench (left)", /obj/structure/chair/bench/left, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("bench (right)", /obj/structure/chair/bench/right, one_per_turf = TRUE, on_floor = TRUE), \
+		)), \
+	null, \
+
 	new/datum/stack_recipe("rifle stock", /obj/item/weaponcrafting/stock, 10, time = 40), \
 	new/datum/stack_recipe("rolling pin", /obj/item/kitchen/rollingpin, 2, time = 30), \
 	new/datum/stack_recipe("wooden buckler", /obj/item/shield/riot/buckler, 20, time = 40), \
@@ -938,7 +947,7 @@ GLOBAL_LIST_INIT(micro_bricks_recipes, list ( \
 	flags_1 = CONDUCT_1
 	resistance_flags = FIRE_PROOF
 	merge_type = /obj/item/stack/sheet/micro_bricks
-	
+
 /obj/item/stack/sheet/micro_bricks/fifty
 	amount = 50
 
