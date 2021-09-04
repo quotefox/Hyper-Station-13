@@ -532,14 +532,14 @@
 	//config_tag = "radiation_storm"
 	typepath = /datum/round_event/radiation_storm
 	cost = 6
-	weight = 5
+	weight = 1
 	repeatable_weight_decrease = 1
 	enemy_roles = list("Chemist","Chief Medical Officer","Geneticist","Medical Doctor","AI","Captain")
 	required_enemies = list(2,2,2,2,1,1,1,1,1,0)
 	requirements = list(5,5,5,5,5,5,5,5,5,5)
-	high_population_requirement = 5
+	high_population_requirement = 10
 	//property_weights = list("extended" = 1,"chaos" = 1)
-	occurances_max = 2
+	occurances_max = 1
 
 
 /datum/dynamic_ruleset/event/portal_storm_syndicate
