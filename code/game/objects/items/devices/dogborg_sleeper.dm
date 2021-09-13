@@ -245,12 +245,11 @@
 
 /obj/item/dogborg/sleeper/proc/update_gut(mob/living/silicon/robot/hound)
 	//Well, we HAD one, what happened to them?
-	var/prociconupdate = FALSE
-	var/currentenvy = hound.sleeper_nv
-
-	if(!currentenvy) //runetime error fix with dogborgs with no sleepers
+	if(!hound) //runetime error fix with dogborgs with no sleepers
 		return
 
+	var/prociconupdate = FALSE
+	var/currentenvy = hound.sleeper_nv
 	hound.sleeper_nv = FALSE
 	if(patient in contents)
 		if(patient_laststat != patient.stat)
