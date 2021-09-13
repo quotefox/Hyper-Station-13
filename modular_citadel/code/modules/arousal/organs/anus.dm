@@ -25,7 +25,7 @@
 	var/lowershape = lowertext(shape)
 
 	//Reflect the size of dat ass on examine.
-	switch(size)
+	switch(round(size))
 		if(1)
 			size_name = "average"
 		if(2)

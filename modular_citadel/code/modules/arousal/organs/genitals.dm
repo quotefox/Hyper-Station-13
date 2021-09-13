@@ -482,23 +482,23 @@
 			if(G.slot == "anus" && G.size > 0) //we have a different size system
 
 				genital_overlay.icon = 'hyperstation/icons/obj/genitals/butt.dmi'
-				genital_overlay.icon_state = "butt_[size]_OTHER"
+				genital_overlay.icon_state = "butt_[round(size)]_OTHER"
 				genital_overlay.layer = -ID_LAYER //in front of suit, behind bellies.
 
 				//creates directional layering by rendering twice. North has higher layer priority to occlude hands.
 				genital_overlay_directional.icon = 'hyperstation/icons/obj/genitals/butt.dmi'
-				genital_overlay_directional.icon_state = "butt_[size]_NORTH"
+				genital_overlay_directional.icon_state = "butt_[round(size)]_NORTH"
 				genital_overlay_directional.layer = -NECK_LAYER
 
 				colourcode = "butt_color"
 				if(use_skintones) //butts are forced a colour, either skin tones, or main colour. how ever, mutants use a darker version, because of their body tone.
 					genital_overlay.color = "#[skintone2hex(H.skin_tone)]"
-					genital_overlay.icon_state = "butt_[size]_OTHER"
-					genital_overlay_directional.icon_state = "butt_[size]_NORTH"
+					genital_overlay.icon_state = "butt_[round(size)]_OTHER"
+					genital_overlay_directional.icon_state = "butt_[round(size)]_NORTH"
 				else
 					genital_overlay.color = "#[H.dna.features["mcolor"]]"
-					genital_overlay.icon_state = "butt_[size]_OTHER_m"
-					genital_overlay_directional.icon_state = "butt_[size]_NORTH_m"
+					genital_overlay.icon_state = "butt_[round(size)]_OTHER_m"
+					genital_overlay_directional.icon_state = "butt_[round(size)]_NORTH_m"
 
 
 			if(S.center)

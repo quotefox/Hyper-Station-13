@@ -51,6 +51,7 @@
 				/obj/item/dildo/custom = 5,
 				/obj/item/reagent_containers/pill/penis_enlargement = 3,
 				/obj/item/reagent_containers/pill/breast_enlargement = 3,
+				/obj/item/reagent_containers/pill/butt_enlargement = 3,
 				/obj/item/clothing/gloves/latexsleeves = 3,
 				/obj/item/clothing/shoes/highheels = 3,
 				/obj/item/clothing/neck/stole = 2,

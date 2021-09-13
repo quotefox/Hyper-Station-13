@@ -264,8 +264,8 @@
 			nP.prev_length = 1
 			M.reagents.remove_reagent(type, 5)
 			P = nP
-	
-	if(!T)//Hyper change// Adds testicles if there are none. 
+
+	if(!T)//Hyper change// Adds testicles if there are none.
 
 		//If they have Acute hepatic pharmacokinesis, then route processing though liver.
 		if(HAS_TRAIT(M, TRAIT_PHARMA))
@@ -377,4 +377,53 @@
 	else if(P.cached_length < (M.dna.features["cock_length"]+0.1))
 		P.cached_length = P.cached_length + 0.1
 		P.update()
+	..()
+
+
+
+///Ass enhancer
+
+/datum/reagent/fermi/butt_enlarger
+	name = "Denbu Draft"
+	description = "A mixture of natural vitamins and valentines plant extract, causing butt enlargement on mammals."
+	color = "#E60584" // rgb: 96, 0, 255
+	taste_description = "butter with a sweet aftertaste" //pass me the butter, OM NOM
+	overdose_threshold = 17
+	can_synth = FALSE
+
+/datum/reagent/fermi/butt_enlarger/on_mob_add(mob/living/carbon/M)
+	. = ..()
+	if(iswendigo(M))
+		return
+	log_game("FERMICHEM: [M] ckey: [M.key] has ingested Butt enhancer")
+	var/mob/living/carbon/human/H = M
+	H.genital_override = TRUE
+	var/obj/item/organ/genital/anus/B = H.getorganslot("anus")
+	if(!B)
+		return
+
+/datum/reagent/fermi/butt_enlarger/on_mob_life(mob/living/carbon/M) //Increases butt size
+	if(!ishuman(M))//Just in case
+		return..()
+
+	var/mob/living/carbon/human/H = M
+	var/obj/item/organ/genital/anus/B = M.getorganslot("anus")
+	if(!B) //If they don't have a butt. Give them one!
+		var/obj/item/organ/genital/anus/nB = new
+		nB.Insert(M)
+		if(nB)
+			if(M.dna.species.use_skintones && M.dna.features["genitals_use_skintone"])
+				nB.color = skintone2hex(H.skin_tone)
+			else if(M.dna.features["breasts_color"])
+				nB.color = "#[M.dna.features["breasts_color"]]"
+			else
+				nB.color = skintone2hex(H.skin_tone)
+			nB.size = 1
+			to_chat(M, "<span class='warning'>Your ass cheeks bulge outwards and feel heavier.</b></span>")
+			M.reagents.remove_reagent(type, 5)
+			B = nB
+	//If they have, increase size.
+	if(B.size < 5) //just make sure you dont break sprites
+		B.size = B.size + 0.05
+		B.update()
 	..()
