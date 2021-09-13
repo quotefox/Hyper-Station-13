@@ -87,11 +87,11 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		examineTabOutput += "[L.name] "
 		examineTabOutput += "([L.dna.custom_species ? L.dna.custom_species : L.dna.species.name])"
 
-		if(L.client.prefs.pins) //character has pins
+/*		if(L.client.prefs.pins) //character has pins
 			var/P = ""
 			for(P in L.client.prefs.pins)
 				examineTabOutput += "[icon2html('hyperstation/icons/chat/pins.dmi', world, P)]" //show pins!
-
+*/
 	examineTabOutput += "</center>"
 	examineTabOutput += "<br>[url_encode(msg)]"
 	if(ismob(target))
