@@ -247,6 +247,10 @@
 	//Well, we HAD one, what happened to them?
 	var/prociconupdate = FALSE
 	var/currentenvy = hound.sleeper_nv
+
+	if(!currentenvy) //runetime error fix with dogborgs with no sleepers
+		return
+
 	hound.sleeper_nv = FALSE
 	if(patient in contents)
 		if(patient_laststat != patient.stat)
