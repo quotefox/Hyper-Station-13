@@ -177,7 +177,10 @@
 				if( (P.condom == 1) || (P.sounding == 1))  //If coundomed and/or sounded, do not fire impreg chance
 					O.mob_climax_partner(P, M, FALSE, FALSE, FALSE, TRUE)
 				else                                       //Else, fire impreg chance
-					O.mob_climax_partner(P, M, FALSE, TRUE, FALSE, TRUE) //climax with their partner remotely, and impreg because people keep asking!
+					if(G.name == "vagina") //no more spontaneous impregnations through the butt!
+						O.mob_climax_partner(P, M, FALSE, TRUE, FALSE, TRUE)
+					else
+						O.mob_climax_partner(P, M, FALSE, FALSE, FALSE, TRUE)
 
 		if(option == "Lick")
 			to_chat(M, "<span class='love'>You feel a tongue lick you through the portal against your [G.name].</span>")

@@ -415,6 +415,10 @@
 /mob/living/carbon/proc/handle_blood()
 	return
 
+/mob/living/carbon/proc/handle_creampie()
+	return
+
+
 /mob/living/carbon/proc/handle_bodyparts()
 	for(var/I in bodyparts)
 		var/obj/item/bodypart/BP = I

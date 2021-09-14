@@ -316,6 +316,7 @@
 			if(spillage)
 				if(total_fluids > 5)
 					fluid_source.reaction(src.loc, TOUCH, 1, 0)
+
 				fluid_source.clear_reagents()
 				src.visible_message("<span class='love'>[src] orgasms[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""], with [p_their()] [G.name]!</span>", \
 									"<span class='userlove'>You climax[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""] with your [G.name].</span>", \
@@ -364,6 +365,9 @@
 
 			if(total_fluids > 5)
 				fluid_source.reaction(L.loc, TOUCH, 1, 0)
+				var/mob/living/carbon/human/H = L
+				if(H)
+					H.cumdrip_rate += rand(5,10)
 			fluid_source.clear_reagents()
 			src.visible_message("<span class='love'>[src] climaxes over [L], using [p_their()] [G.name]!</span>", \
 								"<span class='userlove'>You orgasm over [L], using your [G.name].</span>", \
@@ -389,6 +393,9 @@
 			total_fluids -= total_fluids*G.fluid_transfer_factor
 			if(total_fluids > 5)
 				fluid_source.reaction(L.loc, TOUCH, 1, 0)
+				var/mob/living/carbon/human/H = L
+				if(H)
+					H.cumdrip_rate += rand(5,10)
 			fluid_source.clear_reagents()
 			src.visible_message("<span class='love'>[src] climaxes with [L][spillage ? ", overflowing and spilling":""], using [p_their()] [G.name]!</span>", \
 								"<span class='userlove'>You orgasm with [L][spillage ? ", spilling out of them":""], using your [G.name].</span>", \

@@ -55,6 +55,8 @@
 	var/blood_state = BLOOD_STATE_NOT_BLOODY
 	var/list/blood_smear = list(BLOOD_STATE_BLOOD = 0, BLOOD_STATE_OIL = 0, BLOOD_STATE_NOT_BLOODY = 0)
 
+	var/cumdrip_rate = 0 //how long are we dripping jizz for?
+
 	var/name_override //For temporary visible name changes
 	var/genital_override = FALSE //Force genitals on things incase of chems
 

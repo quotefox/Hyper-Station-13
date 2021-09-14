@@ -3110,6 +3110,7 @@
 #include "hyperstation\code\modules\antagonists\wendigo\mob\update_icons.dm"
 #include "hyperstation\code\modules\antagonists\werewolf\werewolf.dm"
 #include "hyperstation\code\modules\arousal\arousalhud.dm"
+#include "hyperstation\code\modules\arousal\creampie.dm"
 #include "hyperstation\code\modules\cargo\exports\engineering.dm"
 #include "hyperstation\code\modules\cargo\exports\sweatshop.dm"
 #include "hyperstation\code\modules\cargo\packs\misc.dm"

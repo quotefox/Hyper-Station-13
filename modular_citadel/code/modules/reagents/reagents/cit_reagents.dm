@@ -34,6 +34,16 @@
 	icon_state = "semen1"
 	random_icon_states = list("semen1", "semen2", "semen3", "semen4")
 
+/obj/effect/decal/cleanable/semendrip
+	name = "semen"
+	desc = null
+	gender = PLURAL
+	density = 0
+	layer = ABOVE_NORMAL_TURF_LAYER
+	icon = 'modular_citadel/icons/obj/genitals/effects.dmi'
+	icon_state = "drip1"
+	random_icon_states = list("drip1", "drip2", "drip3", "drip4")
+
 /obj/effect/decal/cleanable/semen/Initialize(mapload)
 	. = ..()
 	dir = GLOB.cardinals
