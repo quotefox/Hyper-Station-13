@@ -53,7 +53,9 @@
 	return TRUE
 
 /mob/camera/eminence/Login()
-	..()
+	. = ..()
+	if(!. || !client)
+		return FALSE
 	add_servant_of_ratvar(src, TRUE)
 	var/datum/antagonist/clockcult/C = mind.has_antag_datum(/datum/antagonist/clockcult,TRUE)
 	if(C && C.clock_team)

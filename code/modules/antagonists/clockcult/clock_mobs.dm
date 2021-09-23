@@ -28,7 +28,9 @@
 	update_values()
 
 /mob/living/simple_animal/hostile/clockwork/Login()
-	..()
+	. = ..()
+	if(!. || !client)
+		return FALSE
 	add_servant_of_ratvar(src, TRUE)
 	to_chat(src, playstyle_string)
 	if(GLOB.ratvar_approaches)
