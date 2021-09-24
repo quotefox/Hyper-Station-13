@@ -7,4 +7,4 @@
 		var/datum/antagonist/bloodsucker/V = mind.has_antag_datum(/datum/antagonist/bloodsucker)
 		if(V)
 			mind.remove_antag_datum(V)
-	..()
+	return ..()
