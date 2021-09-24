@@ -130,6 +130,7 @@
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
 
 //CIT ADDITIONS
+/*
 /datum/design/drone_shell
 	name = "Drone Shell"
 	desc = "A shell of a maintenance drone, an expendable robot built to perform station repairs."
@@ -140,4 +141,4 @@
 	build_path = /obj/item/drone_shell
 	category = list("Misc")
 	departmental_flags = DEPARTMENTAL_FLAG_SCIENCE
-
+*/
