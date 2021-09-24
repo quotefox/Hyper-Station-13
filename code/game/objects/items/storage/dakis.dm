@@ -9,7 +9,7 @@
 	icon_state = "daki_base"
 	slot_flags = SLOT_BACK
 	var/cooldowntime = 20
-	var/static/list/dakimakura_options = list("Callie","Casca","Chaika","Elisabeth","Foxy Grandpa","Haruko","Holo","Ian","Jolyne","Kurisu","Marie","Mugi","Nar'Sie","Patchouli","Plutia","Rei","Reisen","Naga","Squid","Squigly","Tomoko","Toriel","Umaru","Yaranaika","Yoko") //Kurisu is the ideal girl." - Me, Logos.
+	var/static/list/dakimakura_options = list("Callie","Camille","Casca","Chaika","Elisabeth","FoxyGrandpa","Haruko","Holo","Ian","Jolyne","Kurisu","Marie","Mugi","Nar'Sie","Patchouli","Plutia","Rei","Reisen","Naga","Squid","Squigly","SueBowchief","Sussy","Tomoko","Toriel","Umaru","Yaranaika","Yoko") //Kurisu is the ideal girl." - Me, Logos.
 
 /obj/item/storage/daki/ComponentInitialize()
 	. = ..()
