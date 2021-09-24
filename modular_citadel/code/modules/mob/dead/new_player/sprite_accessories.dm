@@ -1231,6 +1231,10 @@ datum/sprite_accessory/ears/human/gret
 	name = "Elephant"
 	icon_state = "elephant"
 
+/datum/sprite_accessory/mam_ears/undergoat
+	name = "Goat"
+	icon_state = "goat"
+
 /datum/sprite_accessory/mam_ears/fennec
 	name = "Fennec"
 	icon_state = "fennec"
