@@ -106,7 +106,6 @@ obj/item/clothing/neck/stole/black
 	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
 	item_state = "r_suit"
 	can_adjust = FALSE
-	mutantrace_variation = NO_MUTANTRACE_VARIATION
 	//We will never know why CC can make their skimpy outfits tough as nails
 	body_parts_covered = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
@@ -123,7 +122,6 @@ obj/item/clothing/neck/stole/black
 	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
 	item_state = "r_suit"
 	can_adjust = FALSE
-	mutantrace_variation = NO_MUTANTRACE_VARIATION
 	//We will never know why CC can make their skimpy outfits tough as nails
 	body_parts_covered = CHEST|GROIN|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
