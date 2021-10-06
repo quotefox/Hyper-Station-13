@@ -256,25 +256,26 @@
 
 /obj/item/clothing/suit/poncho
 	name = "poncho"
-	desc = "Your classic, non-racist poncho."
+	desc = "Your classic poncho."
 	icon_state = "classicponcho"
 	item_state = "classicponcho"
 
 /obj/item/clothing/suit/poncho/green
 	name = "green poncho"
-	desc = "Your classic, non-racist poncho. This one is green."
+	desc = "Your classic poncho. This one is green."
 	icon_state = "greenponcho"
 	item_state = "greenponcho"
 
 /obj/item/clothing/suit/poncho/red
 	name = "red poncho"
-	desc = "Your classic, non-racist poncho. This one is red."
+	desc = "Your classic poncho. This one is red."
 	icon_state = "redponcho"
 	item_state = "redponcho"
 
+//why the fuck does this exist
 /obj/item/clothing/suit/poncho/ponchoshame
 	name = "poncho of shame"
-	desc = "Forced to live on your shameful acting as a fake Mexican, you and your poncho have grown inseparable. Literally."
+	desc = "A poncho of shame."
 	icon_state = "ponchoshame"
 	item_state = "ponchoshame"
 
