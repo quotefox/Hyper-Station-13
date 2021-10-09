@@ -328,3 +328,65 @@
 /obj/item/paper/fluff/portallight
 	name = "Portal Fleshlight Instructions"
 	info = "Thank you for purchasing the Silver Love Portal Fleshlight!<BR>To use, simply register your new portal fleshlight with the provided underwear to link them together. The ask your lover to wear the underwear.<BR>Have fun lovers,<BR><BR>Wilhelmina Steiner."
+
+//Happy Halloween!
+//Can be crafted with a knife and a pumpkin in the crafting menu (misc category).
+//I have no regrets.
+
+/obj/item/twohanded/required/cumpkin
+
+	name = "Cumpkin"
+	desc = "A carved pumpkin with a suspicious inviting hole behind it, maybe you could 'use' it for a while..."
+	icon = 'hyperstation/icons/obj/fleshlight.dmi'
+	icon_state = "cumpkin"
+	item_state = "cumpkin"
+	lefthand_file = 'hyperstation/icons/mob/item_lefthand.dmi'
+	righthand_file = 'hyperstation/icons/mob/item_righthand.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+	price = 10
+	var/inuse = 0
+
+/obj/item/twohanded/required/cumpkin/attack(mob/living/carbon/C, mob/living/user)
+	var/obj/item/organ/genital/penis/P = C.getorganslot("penis")
+	if(inuse == 1) //just to stop stacking and causing people to cum instantly
+		return
+	if(P&&P.is_exposed())
+		inuse = 1
+		if(!(C == user)) //if we are targeting someone else.
+			C.visible_message("<span class='userlove'>[user] is trying to use [src] on [C]'s penis.</span>", "<span class='userlove'>[user] is trying to use [src] on your penis.</span>")
+
+		if(!do_mob(user, C, 3 SECONDS)) //3 second delay
+			inuse = 0
+			return
+
+		//checked if not used on yourself, if not, carry on.
+		playsound(src, 'sound/lewd/slaps.ogg', 30, 1, -1) //slapping sound
+		inuse = 0
+		if(!(C == user)) //lewd flavour text
+			C.visible_message("<span class='userlove'>[user] pumps [src] on [C]'s penis.</span>", "<span class='userlove'>[user] pumps [src] up and down on your penis.</span>")
+		else
+			user.visible_message("<span class='userlove'>[user] pumps [src] on their penis.</span>", "<span class='userlove'>You pump the cumpkin on your penis.</span>")
+
+		if(prob(30)) //30% chance to make them moan.
+			C.emote("moan")
+
+		C.do_jitter_animation()
+		C.adjustArousalLoss(20) //make the target more aroused.
+		if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
+			C.mob_climax(forced_climax=TRUE) //make them cum if they are over the edge.
+
+		return
+
+	else
+		to_chat(user, "<span class='notice'>You don't see anywhere to use this on.</span>")
+
+	inuse = 0
+	..()
+
+/datum/crafting_recipe/cumpkin
+	name = "Cumpkin"
+	time = 30
+	reqs = list(/obj/item/reagent_containers/food/snacks/grown/pumpkin = 1)
+	tools = list(/obj/item/kitchen/knife)
+	result = /obj/item/twohanded/required/cumpkin
+	category = CAT_MISC
