@@ -330,7 +330,7 @@
 	info = "Thank you for purchasing the Silver Love Portal Fleshlight!<BR>To use, simply register your new portal fleshlight with the provided underwear to link them together. The ask your lover to wear the underwear.<BR>Have fun lovers,<BR><BR>Wilhelmina Steiner."
 
 //Happy Halloween!
-//Can be crafted with a kinife and a pumpkin in the crafting menu (misc category).
+//Can be crafted with a knife and a pumpkin in the crafting menu (misc category).
 //I have no regrets.
 
 /obj/item/twohanded/required/cumpkin
