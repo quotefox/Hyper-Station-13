@@ -1156,6 +1156,10 @@ datum/sprite_accessory/ears/human/gret
 ***************** Ears ********************
 *******************************************/
 
+/datum/sprite_accessory/mam_ears/avali
+	name = "Avali"
+	icon_state = "avali"
+
 /datum/sprite_accessory/mam_ears/axolotl
 	name = "Axolotl"
 	icon_state = "axolotl"
