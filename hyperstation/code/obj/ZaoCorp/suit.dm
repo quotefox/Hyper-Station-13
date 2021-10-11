@@ -3,7 +3,7 @@
 	desc = "Zao Corps signature navy-blue overcoat with a golden highlight finish. Found among police forces as the suit was designed with riot control in mind, it also serves as modest winter coat insulated padding inside."
 	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
 	icon_state = "zaocoat"
-	item_state = "armor"
+	item_state = "zaocoat"
 	item_color = "zaocoat"
 	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
 	body_parts_covered = CHEST|ARMS|LEGS
