@@ -710,8 +710,8 @@ datum/status_effect/stabilized/blue/on_remove()
 /datum/status_effect/stabilized/cerulean
 	id = "stabilizedcerulean"
 	colour = "cerulean"
-	var/mob/living/clone
-
+	//var/mob/living/clone
+/*
 /datum/status_effect/stabilized/cerulean/on_apply()
 	var/typepath = owner.type
 	clone = new typepath(owner.loc)
@@ -743,7 +743,7 @@ datum/status_effect/stabilized/blue/on_remove()
 		clone.visible_message("<span class='warning'>[clone] dissolves into a puddle of goo!</span>")
 		clone.unequip_everything()
 		qdel(clone)
-
+*/
 /datum/status_effect/stabilized/pyrite
 	id = "stabilizedpyrite"
 	colour = "pyrite"
@@ -869,12 +869,12 @@ datum/status_effect/stabilized/blue/on_remove()
 	id = "stabilizedoil"
 	colour = "oil"
 	examine_text = "<span class='warning'>SUBJECTPRONOUN smells of sulfer and oil!</span>"
-
+/*
 /datum/status_effect/stabilized/oil/tick()
 	if(owner.stat == DEAD)
 		explosion(get_turf(owner),1,2,4,flame_range = 5)
 	return ..()
-
+*/
 /datum/status_effect/stabilized/black
 	id = "stabilizedblack"
 	colour = "black"
