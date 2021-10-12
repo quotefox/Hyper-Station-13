@@ -132,9 +132,9 @@ Chilling extracts:
 
 /obj/item/slimecross/chilling/bluespace
 	colour = "bluespace"
-	var/list/allies = list()
-	var/active = FALSE
-
+	//var/list/allies = list()
+	//var/active = FALSE
+/*
 /obj/item/slimecross/chilling/bluespace/afterattack(atom/target, mob/user, proximity)
 	if(!proximity || !isliving(target) || active)
 		return
@@ -168,7 +168,7 @@ Chilling extracts:
 				S.interrupted = TRUE
 				M.remove_status_effect(S)
 	..()
-
+*/
 /obj/item/slimecross/chilling/sepia
 	colour = "sepia"
 	var/list/allies = list()
@@ -262,7 +262,7 @@ Chilling extracts:
 
 /obj/item/slimecross/chilling/oil
 	colour = "oil"
-
+/*
 /obj/item/slimecross/chilling/oil/do_effect(mob/user)
 	user.visible_message("<span class='danger'>[src] begins to shake with muted intensity!</span>")
 	addtimer(CALLBACK(src, .proc/boom), 50)
@@ -270,7 +270,7 @@ Chilling extracts:
 /obj/item/slimecross/chilling/oil/proc/boom()
 	explosion(get_turf(src), -1, -1, 10, 0) //Large radius, but mostly light damage, and no flash.
 	qdel(src)
-
+*/
 /obj/item/slimecross/chilling/black
 	colour = "black"
 
