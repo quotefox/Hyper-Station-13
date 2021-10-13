@@ -255,3 +255,8 @@
 	path = /obj/item/toy/plush/mammal/chemlight
 	ckeywhitelist = list("chemlight")
 //Done with that.
+
+/datum/gear/waistcoat
+	name = "Waistcoat"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/accessory/waistcoat
