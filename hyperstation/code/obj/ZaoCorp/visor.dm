@@ -1,6 +1,6 @@
 /obj/item/clothing/glasses/hud/toggle/zao
-	name = "ZaoCorp security HUD"
-	desc = "A security HUD designed to deploy and retract it's visor on a whim."
+	name = "zao security visor"
+	desc = "A security visor from ZaoCorp designed to deploy and retract it's visor on a whim."
 	icon = 'hyperstation/icons/obj/clothing/glasses.dmi'
 	icon_state = "zaovisor"
 	item_state = "trayson-meson"
