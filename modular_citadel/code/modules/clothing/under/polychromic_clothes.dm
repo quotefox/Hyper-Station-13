@@ -88,7 +88,7 @@
 	primary_color = "#353535" //RGB in hexcode
 	secondary_color = "#808080"
 	tertiary_color = "#808080"
-	body_parts_covered = CHEST|GROIN|ARMS
+	body_parts_covered = CHEST|GROIN| ARMS
 
 /obj/item/clothing/under/polychromic/jumpsuit
 	name = "polychromic tri-tone jumpsuit"
@@ -237,3 +237,14 @@
 	tertiary_color = "#ffffff"
 	body_parts_covered = CHEST|GROIN
 	do_not_cover_butt = TRUE
+
+/obj/item/clothing/under/polychromic/flannel
+	name = "polychromic flannel"
+	desc = "A polychromatic 'dad shirt'."
+	icon_state = "polyflan"
+	item_color = "polyflan"
+	item_state = "rainbow"
+	primary_color = "#353535" //RGB in hexcode
+	secondary_color = "#808080"
+	tertiary_color = "#808080"
+	body_parts_covered = CHEST|GROIN|ARMS
