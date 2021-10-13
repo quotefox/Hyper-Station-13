@@ -89,6 +89,9 @@
 /datum/client_colour/glass_colour/yellow
 	colour = "#ffff66"
 
+/datum/client_colour/glass_colour/lightyellow
+	colour = "#ffffdd"
+
 /datum/client_colour/glass_colour/red
 	colour = "#ffaaaa"
 
@@ -107,6 +110,8 @@
 /datum/client_colour/glass_colour/gray
 	colour = "#cccccc"
 
+/datum/client_colour/glass_colour/white
+	colour = "#ffffff" // Just to force an action where there is no shade.
 
 /datum/client_colour/monochrome
 	colour = list(rgb(77,77,77), rgb(150,150,150), rgb(28,28,28), rgb(0,0,0))

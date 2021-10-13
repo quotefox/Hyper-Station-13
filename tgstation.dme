@@ -3174,6 +3174,7 @@
 #include "hyperstation\code\obj\ZaoCorp\hat.dm"
 #include "hyperstation\code\obj\ZaoCorp\suit.dm"
 #include "hyperstation\code\obj\ZaoCorp\uniform.dm"
+#include "hyperstation\code\obj\ZaoCorp\visor.dm"
 #include "interface\interface.dm"
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"

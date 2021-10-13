@@ -42,7 +42,7 @@
 			to_chat(user, "<span class='notice'>You toggle the hat\'s cloaking.</span>")
 		else
 			icon_state = "zaohat"
-			to_chat(user, "<span class='notice'>You toggle the hat back to it\'s original state.</span>")
+			to_chat(user, "<span class='notice'>You reveal the hat again.</span>")
 		usr.update_inv_head()	//so our mob-overlays update
 
 /obj/item/clothing/head/zao/examine(mob/user)
