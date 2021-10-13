@@ -16,6 +16,7 @@
 					/obj/item/clothing/suit/jacket/flannel/brown = 4,
 		            /obj/item/clothing/suit/jacket/puffer/vest = 4,
 		            /obj/item/clothing/suit/jacket/puffer = 4,
+					/obj/item/clothing/under/polychromic/flannel = 4,
 		            /obj/item/clothing/under/suit_jacket/navy = 3,
 		            /obj/item/clothing/under/suit_jacket/really_black = 3,
 		            /obj/item/clothing/under/suit_jacket/burgundy = 3,
