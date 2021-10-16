@@ -63,6 +63,15 @@
 	if(HAS_TRAIT(user, TRAIT_SOOTHED_THROAT))
 		return FALSE
 
+/datum/emote/living/cough/run_emote(mob/user, params)
+	. = ..()
+	if(. && ishuman(user))
+		var/mob/living/carbon/C = user
+		if(user.gender == FEMALE)
+			playsound(C, pick('hyperstation/sound/voice/emotes/female_cough1.ogg', 'hyperstation/sound/voice/emotes/female_cough2.ogg', 'hyperstation/sound/voice/emotes/female_cough3.ogg', 'hyperstation/sound/voice/emotes/female_cough4.ogg', 'hyperstation/sound/voice/emotes/female_cough5.ogg', 'hyperstation/sound/voice/emotes/female_cough6.ogg'), 50, 1)
+		else
+			playsound(C, pick('hyperstation/sound/voice/emotes/male_cough1.ogg', 'hyperstation/sound/voice/emotes/male_cough2.ogg', 'hyperstation/sound/voice/emotes/male_cough3.ogg', 'hyperstation/sound/voice/emotes/male_cough4.ogg'), 50, 1)
+
 /datum/emote/living/dance
 	key = "dance"
 	key_third_person = "dances"
@@ -151,12 +160,32 @@
 	emote_type = EMOTE_AUDIBLE
 	stat_allowed = UNCONSCIOUS
 
+/datum/emote/living/gasp/run_emote(mob/user, params)
+	. = ..()
+	if(. && ishuman(user))
+		var/mob/living/carbon/C = user
+		if(user.gender == FEMALE)
+			playsound(C, pick('hyperstation/sound/voice/emotes/gasp_female1.ogg', 'hyperstation/sound/voice/emotes/gasp_female2.ogg', 'hyperstation/sound/voice/emotes/gasp_female3.ogg', 'hyperstation/sound/voice/emotes/gasp_female4.ogg', 'hyperstation/sound/voice/emotes/gasp_female5.ogg', 'hyperstation/sound/voice/emotes/gasp_female6.ogg', 'hyperstation/sound/voice/emotes/gasp_female7.ogg'), 50, 1)
+		else
+			playsound(C, pick('hyperstation/sound/voice/emotes/gasp_male1.ogg', 'hyperstation/sound/voice/emotes/gasp_male2.ogg', 'hyperstation/sound/voice/emotes/gasp_male3.ogg', 'hyperstation/sound/voice/emotes/gasp_male4.ogg', 'hyperstation/sound/voice/emotes/gasp_male5.ogg', 'hyperstation/sound/voice/emotes/gasp_male6.ogg', 'hyperstation/sound/voice/emotes/gasp_male7.ogg'), 50, 1)
+
 /datum/emote/living/giggle
 	key = "giggle"
 	key_third_person = "giggles"
 	message = "giggles."
 	message_mime = "giggles silently!"
 	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/giggle/run_emote(mob/user, params)
+	. = ..()
+	if(. && ishuman(user))
+		var/mob/living/carbon/C = user
+		if(!C.mind || C.mind.miming)
+			return
+		if(user.gender == FEMALE)
+			playsound(C, pick('hyperstation/sound/voice/emotes/female_giggle1.ogg', 'hyperstation/sound/voice/emotes/female_giggle2.ogg'), 50, 1)
+		else
+			playsound(C, pick('hyperstation/sound/voice/emotes/male_laugh3b.ogg'), 50, 1)
 
 /datum/emote/living/glare
 	key = "glare"
@@ -222,9 +251,9 @@
 			return
 		if(ishumanbasic(C))
 			if(user.gender == FEMALE)
-				playsound(C, 'sound/voice/human/womanlaugh.ogg', 50, 1)
+				playsound(C, pick('hyperstation/sound/voice/emotes/female_laugh1.ogg', 'hyperstation/sound/voice/emotes/female_laugh2.ogg', 'hyperstation/sound/voice/emotes/female_laugh3.ogg', 'hyperstation/sound/voice/emotes/female_laugh4.ogg'), 50, 1)
 			else
-				playsound(C, pick('sound/voice/human/manlaugh1.ogg', 'sound/voice/human/manlaugh2.ogg'), 50, 1)
+				playsound(C, pick('hyperstation/sound/voice/emotes/male_laugh1.ogg', 'hyperstation/sound/voice/emotes/male_laugh1b.ogg', 'hyperstation/sound/voice/emotes/male_laugh2.ogg', 'hyperstation/sound/voice/emotes/male_laugh2b.ogg',/*'hyperstation/sound/voice/emotes/male_laugh3.ogg',*/'hyperstation/sound/voice/emotes/male_laugh3b.ogg', 'hyperstation/sound/voice/emotes/male_laugh4.ogg'), 50, 1)
 
 /datum/emote/living/look
 	key = "look"
@@ -295,6 +324,18 @@
 	message = "sighs."
 	emote_type = EMOTE_AUDIBLE
 
+/datum/emote/living/sigh/run_emote(mob/user, params)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(!C.mind || C.mind.miming)
+			return
+		if(ishumanbasic(C))
+			if(user.gender == FEMALE)
+				playsound(C, pick('hyperstation/sound/voice/emotes/sigh_female.ogg'), 50, 1)
+			else
+				playsound(C, pick('hyperstation/sound/voice/emotes/sigh_male.ogg'), 50, 1)
+
 /datum/emote/living/sit
 	key = "sit"
 	key_third_person = "sits"
@@ -311,6 +352,24 @@
 	message = "sneezes."
 	emote_type = EMOTE_AUDIBLE
 
+/datum/emote/living/sneeze/can_run_emote(mob/living/user, status_check = TRUE)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		return !C.silent
+
+/datum/emote/living/sneeze/run_emote(mob/user, params)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(!C.mind || C.mind.miming)//mimes can't sneeze because fuck you that's why
+			return
+		if(ishumanbasic(C))
+			if(user.gender == FEMALE)
+				playsound(C, pick('hyperstation/sound/voice/emotes/sneezef1.ogg', 'hyperstation/sound/voice/emotes/sneezef2.ogg'), 50, 1)
+			else
+				playsound(C, pick('hyperstation/sound/voice/emotes/sneezem1.ogg', 'hyperstation/sound/voice/emotes/sneezem2.ogg'), 50, 1)
+
 /datum/emote/living/smug
 	key = "smug"
 	key_third_person = "smugs"
@@ -321,6 +380,15 @@
 	key_third_person = "sniffs"
 	message = "sniffs."
 	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/sniff/run_emote(mob/user, params)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(!C.mind || C.mind.miming)
+			return
+		if(ishumanbasic(C))
+			playsound(C, pick('hyperstation/sound/voice/emotes/sniff.ogg'), 50, 1)
 
 /datum/emote/living/snore
 	key = "snore"
@@ -388,6 +456,18 @@
 	message = "whimpers."
 	message_mime = "appears hurt."
 
+/datum/emote/living/whimper/run_emote(mob/user, params)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(!C.mind || C.mind.miming)
+			return
+		if(ishumanbasic(C))
+			if(user.gender == FEMALE)
+				playsound(C, pick('hyperstation/sound/voice/emotes/whimper_female1.ogg', 'hyperstation/sound/voice/emotes/whimper_female2.ogg', 'hyperstation/sound/voice/emotes/whimper_female3.ogg'), 50, 1)
+			else
+				playsound(C, pick('hyperstation/sound/voice/emotes/whimper_male1.ogg', 'hyperstation/sound/voice/emotes/whimper_male2.ogg', 'hyperstation/sound/voice/emotes/whimper_male3.ogg'), 50, 1)
+
 /datum/emote/living/wsmile
 	key = "wsmile"
 	key_third_person = "wsmiles"
@@ -398,6 +478,18 @@
 	key_third_person = "yawns"
 	message = "yawns."
 	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/yawn/run_emote(mob/user, params)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(!C.mind || C.mind.miming)
+			return
+		if(ishumanbasic(C))
+			if(user.gender == FEMALE)
+				playsound(C, pick('hyperstation/sound/voice/emotes/female_yawn1.ogg', 'hyperstation/sound/voice/emotes/female_yawn2.ogg', 'hyperstation/sound/voice/emotes/female_yawn3.ogg'), 50, 1)
+			else
+				playsound(C, pick('hyperstation/sound/voice/emotes/male_yawn1.ogg', 'hyperstation/sound/voice/emotes/male_yawn2.ogg'), 50, 1)
 
 /datum/emote/living/custom
 	key = "me"
