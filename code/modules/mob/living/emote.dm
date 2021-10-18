@@ -602,3 +602,27 @@
 		to_chat(user, "<span class='notice'>You ready your slapping hand.</span>")
 	else
 		to_chat(user, "<span class='warning'>You're incapable of slapping in your current state.</span>")
+
+//Carl wuz here
+/datum/emote/living/tesh_sneeze
+	key = "tesh_sneeze"
+	key_third_person = "sneezes"
+	message = "sneezes."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/tesh_sneeze/can_run_emote(mob/living/user, status_check = TRUE)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		return !C.silent
+
+/datum/emote/living/tesh_sneeze/run_emote(mob/user, params)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(!C.mind || C.mind.miming)//no cute sneezing for you.
+			return
+		if(ishumanbasic(C))
+			playsound(C, pick('hyperstation/sound/voice/emotes/tesh_sneeze1.ogg', 'hyperstation/sound/voice/emotes/tesh_sneeze1b.ogg'), 50, 1)
+		if(is_species(user, /datum/species/avian))//This is required(related to subtypes), otherwise it doesn't play the noises. Sometimes. Always sometimes. Just how it be.
+			playsound(C, pick('hyperstation/sound/voice/emotes/tesh_sneeze1.ogg', 'hyperstation/sound/voice/emotes/tesh_sneeze1b.ogg'), 50, 1)
