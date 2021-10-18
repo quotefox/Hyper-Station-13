@@ -626,3 +626,64 @@
 			playsound(C, pick('hyperstation/sound/voice/emotes/tesh_sneeze1.ogg', 'hyperstation/sound/voice/emotes/tesh_sneeze1b.ogg'), 50, 1)
 		if(is_species(user, /datum/species/avian))//This is required(related to subtypes), otherwise it doesn't play the noises. Sometimes. Always sometimes. Just how it be.
 			playsound(C, pick('hyperstation/sound/voice/emotes/tesh_sneeze1.ogg', 'hyperstation/sound/voice/emotes/tesh_sneeze1b.ogg'), 50, 1)
+
+/datum/emote/living/racc
+	key = "racc_chitter"
+	key_third_person = "chitters"
+	message = "chitters."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/racc/can_run_emote(mob/living/user, status_check = TRUE)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		return !C.silent
+
+/datum/emote/living/racc/run_emote(mob/user, params)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(!C.mind || C.mind.miming)
+			return
+		if(ishumanbasic(C))
+			playsound(C, pick('hyperstation/sound/voice/emotes/racc_chitter_1.ogg', 'hyperstation/sound/voice/emotes/racc_chitter_2.ogg',\
+			'hyperstation/sound/voice/emotes/racc_chitter_3.ogg', 'hyperstation/sound/voice/emotes/racc_chitter_4.ogg', 'hyperstation/sound/voice/emotes/racc_chitter_5.ogg',\
+			'hyperstation/sound/voice/emotes/racc_chitter_6.ogg', 'hyperstation/sound/voice/emotes/racc_chitter_7.ogg', 'hyperstation/sound/voice/emotes/racc_chitter_8.ogg'), 50, 1)
+		if(is_species(user, /datum/species/mammal))
+			playsound(C, pick('hyperstation/sound/voice/emotes/racc_chitter_1.ogg', 'hyperstation/sound/voice/emotes/racc_chitter_2.ogg',\
+			'hyperstation/sound/voice/emotes/racc_chitter_3.ogg', 'hyperstation/sound/voice/emotes/racc_chitter_4.ogg', 'hyperstation/sound/voice/emotes/racc_chitter_5.ogg',\
+			'hyperstation/sound/voice/emotes/racc_chitter_6.ogg', 'hyperstation/sound/voice/emotes/racc_chitter_7.ogg', 'hyperstation/sound/voice/emotes/racc_chitter_8.ogg'), 50, 1)
+
+/datum/emote/living/bat
+	key = "bat_chitter"
+	key_third_person = "chitters"
+	message = "chitters."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/bat/can_run_emote(mob/living/user, status_check = TRUE)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		return !C.silent
+
+/datum/emote/living/bat/run_emote(mob/user, params)
+	. = ..()
+	if(. && iscarbon(user))
+		var/mob/living/carbon/C = user
+		if(!C.mind || C.mind.miming)
+			return
+		if(ishumanbasic(C))
+			playsound(C, pick('hyperstation/sound/voice/emotes/bat_c1.ogg', 'hyperstation/sound/voice/emotes/bat_c2.ogg', 'hyperstation/sound/voice/emotes/bat_c3.ogg',\
+			'hyperstation/sound/voice/emotes/bat_c4.ogg', 'hyperstation/sound/voice/emotes/bat_c5.ogg',\
+			 'hyperstation/sound/voice/emotes/bat_c6.ogg', 'hyperstation/sound/voice/emotes/bat_c7.ogg', 'hyperstation/sound/voice/emotes/bat_c8.ogg',\
+			 'hyperstation/sound/voice/emotes/bat_c9.ogg'), 50, 1)
+		if(is_species(user, /datum/species/mammal))
+			playsound(C, pick('hyperstation/sound/voice/emotes/bat_c1.ogg', 'hyperstation/sound/voice/emotes/bat_c2.ogg', 'hyperstation/sound/voice/emotes/bat_c3.ogg',\
+			'hyperstation/sound/voice/emotes/bat_c4.ogg', 'hyperstation/sound/voice/emotes/bat_c5.ogg',\
+			 'hyperstation/sound/voice/emotes/bat_c6.ogg', 'hyperstation/sound/voice/emotes/bat_c7.ogg', 'hyperstation/sound/voice/emotes/bat_c8.ogg',\
+			 'hyperstation/sound/voice/emotes/bat_c9.ogg'), 50, 1)
+		if(is_species(user, /datum/species/avian))//this and mammal should be considered the same AAAAAAAAAAAA
+			playsound(C, pick('hyperstation/sound/voice/emotes/bat_c1.ogg', 'hyperstation/sound/voice/emotes/bat_c2.ogg', 'hyperstation/sound/voice/emotes/bat_c3.ogg',\
+			'hyperstation/sound/voice/emotes/bat_c4.ogg', 'hyperstation/sound/voice/emotes/bat_c5.ogg',\
+			 'hyperstation/sound/voice/emotes/bat_c6.ogg', 'hyperstation/sound/voice/emotes/bat_c7.ogg', 'hyperstation/sound/voice/emotes/bat_c8.ogg',\
+			 'hyperstation/sound/voice/emotes/bat_c9.ogg'), 50, 1)
