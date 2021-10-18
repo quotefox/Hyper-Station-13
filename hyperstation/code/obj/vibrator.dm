@@ -115,12 +115,10 @@ Code:
 
 		if(G)
 			switch(G.name) //just being fancy
-				if("penis")
-					to_chat(U, "<span class='love'>[src] vibrates against your [G.name]!</span>")
 				if("breasts")
 					to_chat(U, "<span class='love'>[src] vibrates against your nipples!</span>")
-				if("vagina")
-					to_chat(U, "<span class='love'>[src] vibrates inside you!</span>")
+				else
+					to_chat(U, "<span class='love'>[src] vibrates against your [G.name]!</span>")
 
 			var/intencity = 6*mode
 			U.adjustArousalLoss(intencity) //give pleasure

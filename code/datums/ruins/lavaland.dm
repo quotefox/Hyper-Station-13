@@ -247,3 +247,11 @@
 	suffix = "lavaland_surface_lunaraltar.dmm"
 	allow_duplicates = TRUE
 	cost = 10
+
+/datum/map_template/ruin/lavaland/cozy_cabin
+	name = "Cozy Cabin"
+	id = "cozycabin"
+	description = "An wooden cabin in a hellish world and surrounded by a lava moat."
+	suffix = "lavaland_surface_cozy_cabin.dmm"
+	allow_duplicates = FALSE
+	cost = 0

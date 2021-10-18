@@ -144,6 +144,7 @@
 	primary_color = "#FFFFFF" //RGB in hexcode
 	secondary_color = "#8CC6FF"
 	body_parts_covered = GROIN
+	do_not_cover_butt = TRUE
 
 /obj/item/clothing/under/polychromic/bottomless
 	name = "polychromic bottomless shirt"
@@ -177,6 +178,7 @@
 	primary_color = "#808080" //RGB in hexcode
 	secondary_color = "#FFFFFF"
 	body_parts_covered = CHEST|GROIN
+	do_not_cover_butt = TRUE
 
 /obj/item/clothing/under/polychromic/stripper
 	name = "polychromic stripper outfit"
@@ -188,6 +190,7 @@
 	primary_color = "#808080" //RGB in hexcode
 	secondary_color = "#FFFFFF"
 	body_parts_covered = CHEST|GROIN
+	do_not_cover_butt = TRUE
 
 /obj/item/clothing/under/polychromic/bulge
 	name = "polychromic voluminous thong"
@@ -199,6 +202,7 @@
 	primary_color = "#808080" //RGB in hexcode
 	secondary_color = "#FF3535"
 	body_parts_covered = GROIN
+	do_not_cover_butt = TRUE
 
 /obj/item/clothing/under/polychromic/shortsbra
 	name = "Kromatic Shorts and Top"
@@ -232,3 +236,4 @@
 	secondary_color = "#eb7a7a"
 	tertiary_color = "#ffffff"
 	body_parts_covered = CHEST|GROIN
+	do_not_cover_butt = TRUE

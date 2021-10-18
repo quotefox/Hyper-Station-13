@@ -1,8 +1,8 @@
 //Xenobio control console
 /mob/camera/aiEye/remote/xenobio
 	visible_icon = TRUE
-	icon = 'icons/obj/abductor.dmi'
-	icon_state = "camera_target"
+	icon = 'icons/mob/cameramob.dmi'
+	icon_state = "generic_camera"
 	var/allowed_area = null
 
 /mob/camera/aiEye/remote/xenobio/Initialize()
@@ -24,8 +24,6 @@
 	circuit = /obj/item/circuitboard/computer/xenobiology
 	var/datum/action/innate/hotkey_help/hotkey_help
 
-	var/datum/component/redirect/listener
-
 	var/obj/machinery/monkey_recycler/connected_recycler
 	var/list/stored_slimes
 	var/obj/item/slimepotion/slime/current_potion
@@ -41,7 +39,7 @@
 	. = ..()
 	hotkey_help = new
 	stored_slimes = list()
-	listener = AddComponent(/datum/component/redirect, list(COMSIG_ATOM_CONTENTS_DEL = CALLBACK(src, .proc/on_contents_del)))
+	RegisterSignal(src, COMSIG_ATOM_CONTENTS_DEL, .proc/on_contents_del)
 	for(var/obj/machinery/monkey_recycler/recycler in GLOB.monkey_recyclers)
 		if(get_area(src) == get_area(recycler))
 			connected_recycler = recycler
@@ -80,8 +78,8 @@
 	eyeobj = new /mob/camera/aiEye/remote/xenobio(get_turf(src))
 	eyeobj.origin = src
 	eyeobj.visible_icon = TRUE
-	eyeobj.icon = 'icons/obj/abductor.dmi'
-	eyeobj.icon_state = "camera_target"
+	eyeobj.icon = 'icons/mob/cameramob.dmi'
+	eyeobj.icon_state = "generic_camera"
 
 /obj/machinery/computer/camera_advanced/xenobio/GrantActions(mob/living/user)
 	..()

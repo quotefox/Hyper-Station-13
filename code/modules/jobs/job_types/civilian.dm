@@ -17,6 +17,8 @@ Clown
 	access = list(ACCESS_THEATRE)
 	minimal_access = list(ACCESS_THEATRE)
 
+	whitelist_type = "silly"
+
 /datum/job/clown/after_spawn(mob/living/carbon/human/H, mob/M)
 	..()
 	H.apply_pref_name("clown", M.client)
@@ -81,6 +83,7 @@ Mime
 
 	access = list(ACCESS_THEATRE)
 	minimal_access = list(ACCESS_THEATRE)
+	whitelist_type = "silly"
 
 /datum/job/mime/after_spawn(mob/living/carbon/human/H, mob/M)
 	..()

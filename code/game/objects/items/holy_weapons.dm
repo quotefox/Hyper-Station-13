@@ -229,12 +229,12 @@
 	throwforce = 10
 	w_class = WEIGHT_CLASS_TINY
 	obj_flags = UNIQUE_RENAME
-	var/reskinned = FALSE
 	var/chaplain_spawnable = TRUE
+	total_mass = TOTAL_MASS_MEDIEVAL_WEAPON
 
 /obj/item/nullrod/Initialize()
 	. = ..()
-	AddComponent(/datum/component/anti_magic, TRUE, TRUE)
+	AddComponent(/datum/component/anti_magic, TRUE, TRUE, FALSE, null, null, FALSE)
 
 /obj/item/nullrod/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is killing [user.p_them()]self with [src]! It looks like [user.p_theyre()] trying to get closer to god!</span>")
@@ -248,7 +248,12 @@
 	if(GLOB.holy_weapon_type)
 		return
 	var/obj/item/holy_weapon
-	var/list/holy_weapons_list = subtypesof(/obj/item/nullrod)
+	var/list/holy_weapons_list = subtypesof(/obj/item/nullrod) + list(
+	/obj/item/twohanded/dualsaber/hypereutactic/chaplain,
+	/obj/item/gun/energy/laser/redtag/hitscan/chaplain,
+	/obj/item/multitool/chaplain,
+	/obj/item/melee/baseball_bat/chaplain
+	)
 	var/list/display_names = list()
 	var/list/nullrod_icons = list()
 	for(var/V in holy_weapons_list)
@@ -288,6 +293,13 @@
 	if(user.incapacitated() || !user.is_holding(src))
 		return FALSE
 	return TRUE
+
+/obj/item/nullrod/proc/jedi_spin(mob/living/user)
+	for(var/i in list(NORTH,SOUTH,EAST,WEST,EAST,SOUTH,NORTH,SOUTH,EAST,WEST,EAST,SOUTH))
+		user.setDir(i)
+		if(i == WEST)
+			user.emote("flip")
+		sleep(1)
 
 /obj/item/nullrod/godhand
 	icon_state = "disintegrate"
@@ -344,7 +356,6 @@
 	sharpness = IS_SHARP
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
-	total_mass = TOTAL_MASS_MEDIEVAL_WEAPON
 
 /obj/item/nullrod/claymore/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(attack_type == PROJECTILE_ATTACK)
@@ -541,7 +552,6 @@
 	slot_flags = ITEM_SLOT_BELT
 	w_class = WEIGHT_CLASS_HUGE
 	attack_verb = list("smashed", "bashed", "hammered", "crunched")
-	total_mass = TOTAL_MASS_MEDIEVAL_WEAPON
 
 /obj/item/nullrod/chainsaw
 	name = "chainsaw hand"
@@ -606,6 +616,7 @@
 	lefthand_file = 'icons/mob/inhands/weapons/melee_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/melee_righthand.dmi'
 	slot_flags = ITEM_SLOT_BELT
+	force = 12
 	reach = 2
 	attack_verb = list("whipped", "lashed")
 	hitsound = 'sound/weapons/chainhit.ogg'
@@ -682,6 +693,44 @@
 	lefthand_file = 'icons/mob/inhands/weapons/staves_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/staves_righthand.dmi'
 
+/obj/item/nullrod/claymore/bostaff/attack(mob/target, mob/living/user)
+	add_fingerprint(user)
+	if((HAS_TRAIT(user, TRAIT_CLUMSY)) && prob(50))
+		to_chat(user, "<span class ='warning'>You club yourself over the head with [src].</span>")
+		user.Knockdown(60)
+		if(ishuman(user))
+			var/mob/living/carbon/human/H = user
+			H.apply_damage(2*force, BRUTE, BODY_ZONE_HEAD)
+		else
+			user.take_bodypart_damage(2*force)
+		return
+	if(iscyborg(target))
+		return ..()
+	if(!isliving(target))
+		return ..()
+	var/mob/living/carbon/C = target
+	if(C.stat || C.health < 0 || C.staminaloss > 130 )
+		to_chat(user, "<span class='warning'>It would be dishonorable to attack a foe while they cannot retaliate.</span>")
+		return
+	if(user.a_intent == INTENT_DISARM)
+		if(!ishuman(target))
+			return ..()
+		var/mob/living/carbon/human/H = target
+		var/list/fluffmessages = list("[user] clubs [H] with [src]!", \
+									  "[user] smacks [H] with the butt of [src]!", \
+									  "[user] broadsides [H] with [src]!", \
+									  "[user] smashes [H]'s head with [src]!", \
+									  "[user] beats [H] with front of [src]!", \
+									  "[user] twirls and slams [H] with [src]!")
+		H.visible_message("<span class='warning'>[pick(fluffmessages)]</span>", \
+							   "<span class='userdanger'>[pick(fluffmessages)]</span>")
+		playsound(get_turf(user), 'sound/effects/woodhit.ogg', 75, 1, -1)
+		H.adjustStaminaLoss(rand(12,18))
+		if(prob(25))
+			(INVOKE_ASYNC(src, .proc/jedi_spin, user))
+	else
+		return ..()
+
 /obj/item/nullrod/tribal_knife
 	icon_state = "crysknife"
 	item_state = "crysknife"
@@ -695,7 +744,6 @@
 	hitsound = 'sound/weapons/bladeslice.ogg'
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	item_flags = SLOWS_WHILE_IN_HAND
-	total_mass = TOTAL_MASS_NORMAL_ITEM
 
 /obj/item/nullrod/tribal_knife/Initialize(mapload)
 	. = ..()

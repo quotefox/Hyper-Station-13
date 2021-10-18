@@ -78,6 +78,9 @@
 						amt_nude++
 					if(getorganslot("vagina"))
 						amt_nude++
+				if(is_butt_exposed())
+					if(getorganslot("anus"))
+						amt_nude++
 				if(amt_nude)
 					var/watchers = 0
 					for(var/mob/_M in view(world.view, src))
@@ -284,7 +287,7 @@
 			setArousalLoss(min_arousal)
 
 
-/mob/living/carbon/human/proc/mob_climax_outside(obj/item/organ/genital/G, mb_time = 30) //This is used for forced orgasms and other hands-free climaxes
+/mob/living/carbon/human/proc/mob_climax_outside(obj/item/organ/genital/G, mb_time = 30, spillage = TRUE) //This is used for forced orgasms and other hands-free climaxes
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = null
 	var/unable_to_come = FALSE
@@ -310,12 +313,19 @@
 								"<span class='userlove'>You feel yourself about to orgasm.</span>", \
 								"<span class='userlove'>You feel yourself about to orgasm.</span>")
 		if(do_after(src, mb_time, target = src))
-			if(total_fluids > 5)
-				fluid_source.reaction(src.loc, TOUCH, 1, 0)
-			fluid_source.clear_reagents()
-			src.visible_message("<span class='love'>[src] orgasms[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""], using [p_their()] [G.name]!</span>", \
-								"<span class='userlove'>You climax[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""] with your [G.name].</span>", \
-								"<span class='userlove'>You climax using your [G.name].</span>")
+			if(spillage)
+				if(total_fluids > 5)
+					fluid_source.reaction(src.loc, TOUCH, 1, 0)
+
+				fluid_source.clear_reagents()
+				src.visible_message("<span class='love'>[src] orgasms[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""], with [p_their()] [G.name]!</span>", \
+									"<span class='userlove'>You climax[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""] with your [G.name].</span>", \
+									"<span class='userlove'>You climax using your [G.name].</span>")
+			else //Else from spillage check, also note subtle text change
+				src.visible_message("<span class='love'>[src] orgasms with [p_their()] [G.name]!</span>", \
+									"<span class='userlove'>You climax with your [G.name].</span>", \
+									"<span class='userlove'>You climax using your [G.name].</span>")
+
 			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 			if(G.can_climax)
 				setArousalLoss(min_arousal)
@@ -355,6 +365,9 @@
 
 			if(total_fluids > 5)
 				fluid_source.reaction(L.loc, TOUCH, 1, 0)
+				var/mob/living/carbon/human/H = L
+				if(H)
+					H.cumdrip_rate += rand(5,10)
 			fluid_source.clear_reagents()
 			src.visible_message("<span class='love'>[src] climaxes over [L], using [p_their()] [G.name]!</span>", \
 								"<span class='userlove'>You orgasm over [L], using your [G.name].</span>", \
@@ -380,6 +393,9 @@
 			total_fluids -= total_fluids*G.fluid_transfer_factor
 			if(total_fluids > 5)
 				fluid_source.reaction(L.loc, TOUCH, 1, 0)
+				var/mob/living/carbon/human/H = L
+				if(H)
+					H.cumdrip_rate += rand(5,10)
 			fluid_source.clear_reagents()
 			src.visible_message("<span class='love'>[src] climaxes with [L][spillage ? ", overflowing and spilling":""], using [p_their()] [G.name]!</span>", \
 								"<span class='userlove'>You orgasm with [L][spillage ? ", spilling out of them":""], using your [G.name].</span>", \
@@ -420,7 +436,7 @@
 					src.visible_message("<span class='love'>[src] climaxes with someone, using [p_their()] [G.name]!</span>", \
 									"<span class='userlove'>You ejaculate with someone, using your [G.name].</span>", \
 									"<span class='userlove'>You have climaxed inside someone, using your [G.name].</span>")
-					to_chat(L, "<span class='userlove'>You feel someone ejeculate inside you.</span>")
+					to_chat(L, "<span class='userlove'>You feel someone ejaculate inside you.</span>")
 
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 				SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
@@ -516,10 +532,9 @@
 	var/list/worn_stuff = get_equipped_items()
 
 	for(var/obj/item/organ/genital/G in T.internal_organs)
-		if(G.can_climax) //filter out what you can't masturbate with
-			if(G.is_exposed(worn_stuff)) //Nude or through_clothing
-				if(!G.dontlist)
-					genitals_list += G
+		if(G.is_exposed(worn_stuff)) //Nude or through_clothing
+			if(!G.dontlist)
+				genitals_list += G
 	if(genitals_list.len)
 		ret_organ = input(src, "", "Genitals", null)  as null|obj in genitals_list
 		return ret_organ

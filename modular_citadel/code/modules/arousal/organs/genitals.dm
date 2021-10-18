@@ -25,6 +25,7 @@
 	var/mode					= "clothes"
 	var/obj/item/equipment 		//for fun stuff that goes on the gentials/maybe rings down the line
 	var/dontlist				= FALSE
+	var/nochange				= FALSE //stops people changing visablity.
 
 /obj/item/organ/genital/Initialize()
 	. = ..()
@@ -67,6 +68,8 @@
 			return owner.is_chest_exposed()
 		if("groin")
 			return owner.is_groin_exposed()
+		if("anus")
+			return owner.is_butt_exposed()
 
 	return FALSE
 
@@ -150,6 +153,8 @@
 	if (NOGENITALS in dna.species.species_traits)
 		return
 	//Order should be very important. FIRST vagina, THEN testicles, THEN penis, as this affects the order they are rendered in.
+	if(dna.features["has_anus"])
+		give_anus()
 	if(dna.features["has_vag"])
 		give_vagina()
 	if(dna.features["has_womb"])
@@ -239,6 +244,22 @@
 		if(dna.features["inflatable_belly"]) //autohide bellies if they have the option ticked.
 			B.inflatable = TRUE
 
+/mob/living/carbon/human/proc/give_anus()
+	if(!dna)
+		return FALSE
+	if(NOGENITALS in dna.species.species_traits)
+		return FALSE
+	if(!getorganslot("anus"))
+		var/obj/item/organ/genital/anus/A = new
+		if(dna.features["butt_size"])
+			A.size = dna.features["butt_size"]
+		A.Insert(src)
+		if(A)
+			if(dna.species.use_skintones && dna.features["genitals_use_skintone"])
+				A.color = "#[skintone2hex(skin_tone)]"
+			else
+				A.color = "#[dna.features["butt_color"]]"
+			A.update()
 
 
 /mob/living/carbon/human/proc/give_breasts()
@@ -378,6 +399,7 @@
 			dna.features["cock_color"] = dna.features["breasts_color"]
 	return
 
+//called every time players sprite changes, ie, moves item in hands or equiped item.
 /datum/species/proc/handle_genitals(mob/living/carbon/human/H)//more like handle sadness
 	if(!H)//no args
 		CRASH("H = null")
@@ -426,11 +448,17 @@
 					S = GLOB.breasts_shapes_list[G.shape]
 				if(/obj/item/organ/genital/belly)
 					S = GLOB.breasts_shapes_list[G.shape]
+				if(/obj/item/organ/genital/anus)
+					S = GLOB.breasts_shapes_list[G.shape]
 
 			if(!S || S.icon_state == "none")
 				continue
 
 			var/mutable_appearance/genital_overlay = mutable_appearance(S.icon, layer = -layer)
+
+			//creates another icon with mutable appearance, allows different layering depending on direction
+			var/mutable_appearance/genital_overlay_directional = mutable_appearance(S.icon, layer = -layer)
+
 			//genitals bigger than 11 inches / g-cup will appear over clothing, if accepted
 			//otherwise, appear under clothing
 			if(G.slot == "penis" || G.slot == "testicles")
@@ -444,10 +472,34 @@
 			//Get the icon
 			genital_overlay.icon_state = "[G.slot]_[S.icon_state]_[size]_[aroused_state]_[layertext]"
 			colourcode = S.color_src
+
 			if(G.slot == "belly") //we have a different size system
 				genital_overlay.icon = 'hyperstation/icons/obj/genitals/belly.dmi'
 				genital_overlay.icon_state = "belly_[size]"
 				colourcode = "belly_color"
+
+			//sizecheck added to prevent rendering blank icons
+			if(G.slot == "anus" && G.size > 0) //we have a different size system
+
+				genital_overlay.icon = 'hyperstation/icons/obj/genitals/butt.dmi'
+				genital_overlay.icon_state = "butt_[round(size)]_OTHER"
+				genital_overlay.layer = -ID_LAYER //in front of suit, behind bellies.
+
+				//creates directional layering by rendering twice. North has higher layer priority to occlude hands.
+				genital_overlay_directional.icon = 'hyperstation/icons/obj/genitals/butt.dmi'
+				genital_overlay_directional.icon_state = "butt_[round(size)]_NORTH"
+				genital_overlay_directional.layer = -NECK_LAYER
+
+				colourcode = "butt_color"
+				if(use_skintones) //butts are forced a colour, either skin tones, or main colour. how ever, mutants use a darker version, because of their body tone.
+					genital_overlay.color = "#[skintone2hex(H.skin_tone)]"
+					genital_overlay.icon_state = "butt_[round(size)]_OTHER"
+					genital_overlay_directional.icon_state = "butt_[round(size)]_NORTH"
+				else
+					genital_overlay.color = "#[H.dna.features["mcolor"]]"
+					genital_overlay.icon_state = "butt_[round(size)]_OTHER_m"
+					genital_overlay_directional.icon_state = "butt_[round(size)]_NORTH_m"
+
 
 			if(S.center)
 				genital_overlay = center_image(genital_overlay, S.dimension_x, S.dimension_y)
@@ -470,8 +522,25 @@
 						genital_overlay.color = "#[H.dna.features["vag_color"]]"
 					if("belly_color")
 						genital_overlay.color = "#[H.dna.features["belly_color"]]"
+					if("butt_color")
+						genital_overlay.color = "#[H.dna.features["butt_color"]]"
 
 			standing += genital_overlay
+
+			//check whether or not there is a directional overlay
+			if(genital_overlay_directional)
+				if(S.center)
+					genital_overlay_directional = center_image(genital_overlay_directional, S.dimension_x, S.dimension_y)
+
+				if(use_skintones && H.dna.features["genitals_use_skintone"])
+					genital_overlay_directional.color = "#[skintone2hex(H.skin_tone)]"
+					if (colourtint)
+						genital_overlay_directional.color = "#[colourtint]"
+				else
+					genital_overlay_directional.color = "#[H.dna.features["butt_color"]]"
+
+				standing += genital_overlay_directional
+
 
 		if(LAZYLEN(standing))
 			H.overlays_standing[layer] = standing.Copy()

@@ -86,6 +86,7 @@ obj/item/clothing/neck/stole/black
 	item_state = "r_suit"
 	can_adjust = FALSE
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
+	do_not_cover_butt = TRUE
 
 /obj/item/clothing/under/sexynursesuit
 	name = "Sexy nurse outfit"
@@ -96,3 +97,35 @@ obj/item/clothing/neck/stole/black
 	item_state = "r_suit"
 	can_adjust = FALSE
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/under/centcomdress
+	name = "Centcom Dress Uniform"
+	desc = "A stylish yet revealing dress uniform worn in extravagent black and gold, worthy of those who sit around and watch cameras all day in an office."
+	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
+	icon_state = "ccdress"
+	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
+	item_state = "r_suit"
+	can_adjust = FALSE
+	//We will never know why CC can make their skimpy outfits tough as nails
+	body_parts_covered = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	cold_protection = CHEST|GROIN|ARMS
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	heat_protection = CHEST|GROIN|ARMS
+	armor = list("melee" = 60, "bullet" = 80, "laser" = 80, "energy" = 90, "bomb" = 50, "bio" = 100, "rad" = 50, "fire" = 50, "acid" = 50)
+
+/obj/item/clothing/under/centcomdressvk
+	name = "Virginkiller Centcom Dress Uniform"
+	desc = "This black and gold beauty does not help paperwork get done, it seems."
+	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
+	icon_state = "ccdressvk"
+	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
+	item_state = "r_suit"
+	can_adjust = FALSE
+	//We will never know why CC can make their skimpy outfits tough as nails
+	body_parts_covered = CHEST|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	cold_protection = CHEST|GROIN|ARMS
+	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
+	heat_protection = CHEST|GROIN|ARMS
+	armor = list("melee" = 60, "bullet" = 80, "laser" = 80, "energy" = 90, "bomb" = 50, "bio" = 100, "rad" = 50, "fire" = 50, "acid" = 50)

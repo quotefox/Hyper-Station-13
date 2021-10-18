@@ -1,4 +1,6 @@
 /mob/Login()
+	if(!client)
+		return FALSE
 	GLOB.player_list |= src
 	lastKnownIP	= client.address
 	computer_id	= client.computer_id
@@ -16,6 +18,9 @@
 	next_move = 1
 
 	..()
+
+	if(!client)
+		return FALSE
 
 	reset_perspective(loc)
 
@@ -56,3 +61,4 @@
 	log_message("Client [key_name(src)] has taken ownership of mob [src]([src.type])", LOG_OWNERSHIP)
 	SEND_SIGNAL(src, COMSIG_MOB_CLIENT_LOGIN, client)
 
+	return TRUE

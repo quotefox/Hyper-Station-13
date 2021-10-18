@@ -96,9 +96,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/eye_color = "000"				//Eye color
 	var/wing_color = "fff"				//Wing color
 
-	//H13
+	//HS13
 	var/body_size = 100					//Body Size in percent
 	var/can_get_preg = 0				//if they can get preggers
+
+	//HS13 jobs
+	var/sillyroles = FALSE //for clown and mime
+	var/roleplayroles = FALSE //for the roleplay roles
+	var/importantroles = FALSE //for things that define as important.
 
 
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
@@ -134,7 +139,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"cock_shape" = "Human",
 		"cock_length" = 6,
 		"belly_size" = 1,
-		"cock_girth_ratio" = COCK_GIRTH_RATIO_DEF,
+		"butt_size" = 1,
+		"cock_girth_ratio" = 0.25,
 		"cock_color" = "fff",
 		"has_sheath" = FALSE,
 		"sheath_color" = "fff",
@@ -142,6 +148,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"hide_belly" = FALSE,
 		"inflatable_belly" = FALSE,
 		"belly_color" = "fff",
+		"has_anus" = FALSE,
+		"butt_color" = "fff",
 		"has_balls" = FALSE,
 		"balls_internal" = FALSE,
 		"balls_color" = "fff",
@@ -225,6 +233,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/unlock_content = 0
 	var/vip = 0
+
+	//visable pins!
+	var/list/pins = list()
 
 	var/list/ignoring = list()
 
@@ -423,7 +434,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Custom Species Name:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=custom_species;task=input'>[custom_species ? custom_species : "None"]</a><BR>"
 			dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=all;task=random'>Random Body</A><BR>"
 			dat += "<b>Always Random Body:</b><a href='?_src_=prefs;preference=all'>[be_random_body ? "Yes" : "No"]</A><BR>"
-			//dat += "<br><b>Cycle background:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=cycle_bg;task=input'>[bgstate]</a><BR>"
+			dat += "<br><b>Cycle background:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=cycle_bg;task=input'>[bgstate]</a><BR>"
 
 			var/use_skintones = pref_species.use_skintones
 			if(use_skintones)
@@ -834,6 +845,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "<span style='border: 1px solid #161616; background-color: #[features["cock_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=cock_color;task=input'>Change</a><br>"
 					dat += "<b>Penis Shape:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=cock_shape;task=input'>[features["cock_shape"]]</a>"
 					dat += "<b>Penis Length:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=cock_length;task=input'>[features["cock_length"]] inch(es)</a>"
+					dat += "<b>Girth Ratio:</b> <a style='display:block;width:50px' href='?_src_=prefs;preference=cock_girth_ratio;task=input'>[features["cock_girth_ratio"]]</a>"
 					dat += "<b>Has Testicles:</b><a style='display:block;width:50px' href='?_src_=prefs;preference=has_balls'>[features["has_balls"] == TRUE ? "Yes" : "No"]</a>"
 					if(features["has_balls"])
 						if(pref_species.use_skintones && features["genitals_use_skintone"] == TRUE)
@@ -920,6 +932,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					dat += "<b>Inflation (Climax With):</b><a style='display:block;width:50px' href='?_src_=prefs;preference=inflatable_belly'>[features["inflatable_belly"] == 1 ? "Yes" : "No"]</a>"
 
 				dat += "</td>"
+
+				dat += APPEARANCE_CATEGORY_COLUMN
+				dat += "<h3>Butt</h3>"
+				dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_anus'>[features["has_anus"] == TRUE ? "Yes" : "No"]</a>"
+				if(features["has_anus"])
+					dat += "<b>Butt Size:</b> <a style='display:block;width:120px' href='?_src_=prefs;preference=butt_size;task=input'>[features["butt_size"]]</a>"
+					if(pref_species.use_skintones && features["genitals_use_skintone"] == TRUE)
+						dat += "<b>Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: #[skintone2hex(skin_tone)];'>&nbsp;&nbsp;&nbsp;</span>(Skin tone overriding)<br>"
+					else
+						dat += "<b>Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: #[features["butt_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=butt_color;task=input'>Change</a><br>"
+
+				dat += "</td>"
+
 			dat += "</td>"
 			dat += "</tr></table>"
 
@@ -2227,6 +2254,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_length)
 						features["cock_length"] = max(min( round(text2num(new_length)), COCK_SIZE_MAX),COCK_SIZE_MIN)
 
+				if("cock_girth_ratio")
+					var/new_girth = input(user, "Penis to girth ratio:\n([COCK_GIRTH_RATIO_MIN]-[COCK_GIRTH_RATIO_MAX]) This will affect your girth examine text in relation to length!\n(Whole numbers become fractions 25->.25, 30->.3)", "Character Preference") as num|null
+					if(new_girth)
+						features["cock_girth_ratio"] = (max(min( round(text2num(new_girth)), 42),15))/100
+
 				if("balls_size")
 					var/new_balls_size = input(user, "Testicle circumference in inches:\n([BALLS_SIZE_MIN]-[BALLS_SIZE_MAX])", "Character Preference") as num|null
 					if(new_balls_size)
@@ -2257,6 +2289,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							features["belly_color"] = pref_species.default_color
 						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3])
 							features["belly_color"] = sanitize_hexcolor(new_bellycolor)
+						else
+							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+
+				if("butt_color")
+					var/new_buttcolor = input(user, "Butt Color:", "Character Preference") as color|null
+					if(new_buttcolor)
+						var/temp_hsv = RGBtoHSV(new_buttcolor)
+						if(new_buttcolor == "#000000")
+							features["butt_color"] = pref_species.default_color
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3])
+							features["butt_color"] = sanitize_hexcolor(new_buttcolor)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
 
@@ -2339,6 +2382,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_bellysize = input(user, "Belly size :\n(1-3)", "Character Preference") as num|null
 					if(new_bellysize)
 						features["belly_size"] = clamp(new_bellysize, 1, 3)
+
+				if("butt_size")
+					var/new_buttsize = input(user, "Butt size :\n(0-5)", "Character Preference") as num|null
+					if(new_buttsize)
+						features["butt_size"] = clamp(new_buttsize, 0, 5)
 
 				if("vag_shape")
 					var/new_shape
@@ -2502,6 +2550,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(features["has_vag"] == FALSE)
 						features["has_womb"] = FALSE
 						features["can_get_preg"] = FALSE
+				if("has_anus")
+					features["has_anus"] = !features["has_anus"]
+					if(features["has_anus"] == FALSE)
+						features["butt_size"] = 0
 				if("has_womb")
 					features["has_womb"] = !features["has_womb"]
 				if("can_get_preg")

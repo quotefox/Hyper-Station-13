@@ -120,3 +120,14 @@
 	tastes = list("charcoal" = 1, "spiciness" = 3, "soysauce" = 3)
 	foodtype = GRAIN | VEGETABLES
 	price = 3
+
+/obj/item/reagent_containers/food/snacks/bird_seed
+	name = "Sunflower Seeds"
+	desc = "An plastic bag that has a red cardinal as it's mascot on the front with ingredients of olive oil and starlight grown Sunflowers with a hint of a secret spice. "
+	icon_state = "avianseed"
+	trash = /obj/item/trash/bird_seed
+	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 4)
+	filling_color = "#b497162f"
+	tastes = list("olives" = 1, "Nuts" = 3, "spice" = 2)
+	foodtype = GRAIN | VEGETABLES
+	price = 3

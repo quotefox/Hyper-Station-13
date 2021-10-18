@@ -36,6 +36,9 @@
 			//heart attack stuff
 			handle_heart()
 
+		if(cumdrip_rate > 0 && stat != DEAD)
+			handle_creampie()
+
 		if(stat != DEAD)
 			//Stuff jammed in your limbs hurts
 			handle_embedded_objects()

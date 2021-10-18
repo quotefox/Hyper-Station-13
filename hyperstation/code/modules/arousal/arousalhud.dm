@@ -9,8 +9,9 @@
 
 	var/mob/living/carbon/U = user
 	for(var/obj/item/organ/genital/G in U.internal_organs)
-		if(!G.dontlist)
-			dat	+= "<a href='byond://?src=[REF(src)];hide[G.name]=1'>[G.mode == "hidden" ? "[G.name] <font color='red'>(Hidden)</font>" : (G.mode == "clothes" ? "[G.name] <font color='yellow'>(Hidden by Clothes)</font>" : (G.mode == "visable" ? "[G.name] <font color='green'>(Visable)</font>" : "[G.name] <font color='green'>(Visable)</font>"))]</a><BR>"
+		if(!G.nochange)
+			if(!G.dontlist)
+				dat	+= "<a href='byond://?src=[REF(src)];hide[G.name]=1'>[G.mode == "hidden" ? "[G.name] <font color='red'>(Hidden)</font>" : (G.mode == "clothes" ? "[G.name] <font color='yellow'>(Hidden by Clothes)</font>" : (G.mode == "visable" ? "[G.name] <font color='green'>(Visable)</font>" : "[G.name] <font color='green'>(Visable)</font>"))]</a><BR>"
 
 	dat	+=	{"<BR><B>Contexual Options</B><BR><HR>"}
 	var/obj/item/organ/genital/penis/P = user.getorganslot("penis")
@@ -41,7 +42,6 @@
 		if(Belly.inflatable)
 			dat	+= "<a href='byond://?src=[REF(src)];shrink_belly=1'>Deflate belly</A>"
 			dat	+=	"(Shrink your belly down a size)<BR>"
-
 
 
 	if(user.pulling)
@@ -125,6 +125,11 @@
 		var/obj/item/organ/genital/belly/E = usr.getorganslot("belly")
 		var/picked_visibility = input(usr, "Choose visibility", "Expose/Hide genitals", "Hidden by clothes") in list("Always visible", "Hidden by clothes", "Always hidden")
 		E.toggle_visibility(picked_visibility)
+
+	if(href_list["hideanus"])
+		var/obj/item/organ/genital/anus/A = usr.getorganslot("anus")
+		var/picked_visibility = input(usr, "Choose visibility", "Expose/Hide genitals", "Hidden by clothes") in list("Always visible", "Hidden by clothes", "Always hidden")
+		A.toggle_visibility(picked_visibility)
 
 	if(href_list["hidetesticles"])
 		var/obj/item/organ/genital/testicles/T = usr.getorganslot("testicles")
@@ -236,6 +241,13 @@
 		var/obj/item/I = O.equipment
 		usr.put_in_hands(I)
 		O.equipment = null
+
+	if(href_list["removeequipmentanus"])
+		var/obj/item/organ/genital/anus/O = usr.getorganslot("anus")
+		var/obj/item/I = O.equipment
+		usr.put_in_hands(I)
+		O.equipment = null
+
 
 	if(href_list["omenu"])
 		usr << browse(null, "window=arousal") //closes the window

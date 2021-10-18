@@ -934,6 +934,10 @@ datum/sprite_accessory/ears/human/gret
 	icon_state = "roundlight"
 	color_src = MUTCOLORS
 
+/datum/sprite_accessory/mam_snouts/stubby
+	name = "Stubby"
+	icon_state = "stubby"
+
 //Synth snouts (This is the most important part)
 /datum/sprite_accessory/mam_snouts/synthliz
 	recommended_species = list("synthliz")
@@ -1152,6 +1156,10 @@ datum/sprite_accessory/ears/human/gret
 ***************** Ears ********************
 *******************************************/
 
+/datum/sprite_accessory/mam_ears/avali
+	name = "Avali"
+	icon_state = "avali"
+
 /datum/sprite_accessory/mam_ears/axolotl
 	name = "Axolotl"
 	icon_state = "axolotl"
@@ -1226,6 +1234,10 @@ datum/sprite_accessory/ears/human/gret
 /datum/sprite_accessory/mam_ears/elephant
 	name = "Elephant"
 	icon_state = "elephant"
+
+/datum/sprite_accessory/mam_ears/undergoat
+	name = "Goat"
+	icon_state = "goat"
 
 /datum/sprite_accessory/mam_ears/fennec
 	name = "Fennec"

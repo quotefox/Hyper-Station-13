@@ -8,7 +8,8 @@
 	circuit = /obj/item/circuitboard/machine/clonepod/experimental
 	internal_radio = FALSE
 
-//Start growing a human clone in the pod!
+//Start growing a human clone in the pod! Depreciated and replaced with parent object's growclone method.
+/*
 /obj/machinery/clonepod/experimental/growclone(ckey, clonename, ui, se, datum/species/mrace, list/features, factions)
 	if(panel_open)
 		return FALSE
@@ -71,7 +72,7 @@
 		H.suiciding = FALSE
 	attempting = FALSE
 	return TRUE
-
+*/
 
 //Prototype cloning console, much more rudimental and lacks modern functions such as saving records, autocloning, or safety checks.
 /obj/machinery/computer/prototype_cloning
@@ -293,7 +294,26 @@
 		temp = "<font class='bad'>Cloning cycle already in progress.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_deny.ogg', 50, 0)
 	else
-		pod.growclone(null, mob_occupant.real_name, dna.uni_identity, dna.mutation_index, clone_species, dna.features, mob_occupant.faction)
+
+		//put here for ease of use / ability to change, rather than in the method call to growclone
+		var/name = mob_occupant.real_name
+		var/mind = null
+		var/UI = dna.uni_identity
+		var/SE = dna.mutation_index
+		var/features = dna.features
+		var/factions = mob_occupant.faction
+		var/list/quirks = list()
+
+		if (!isnull(mob_occupant.mind)) //Save that mind so traitors can continue traitoring after cloning.
+			mind = "[REF(mob_occupant.mind)]"
+
+		for(var/V in mob_occupant.roundstart_quirks)
+			var/datum/quirk/T = V
+			quirks[T.type] = T.clone_data()
+
+		//grows the clone, format;
+		// ckey, clonename, ui, mutation_index, mindref, datum/species/mrace, list/features, factions, list/quirks, experimental = FALSE
+		pod.growclone(null, name, UI, SE, mind, clone_species, features, factions, quirks, TRUE)
 		temp = "[mob_occupant.real_name] => <font class='good'>Cloning data sent to pod.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 

@@ -70,7 +70,9 @@
 			humanize_spider(ghost)
 
 /mob/living/simple_animal/hostile/poison/giant_spider/Login()
-	..()
+	. = ..()
+	if(!. || !client)
+		return FALSE
 	if(directive)
 		to_chat(src, "<span class='notice'>Your mother left you a directive! Follow it at all costs.</span>")
 		to_chat(src, "<span class='spider'><b>[directive]</b></span>")
@@ -490,6 +492,8 @@
 
 /mob/living/simple_animal/hostile/poison/giant_spider/Login()
 	. = ..()
+	if(!. || !client)
+		return FALSE
 	GLOB.spidermobs[src] = TRUE
 
 /mob/living/simple_animal/hostile/poison/giant_spider/Destroy()

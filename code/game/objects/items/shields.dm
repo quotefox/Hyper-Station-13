@@ -181,3 +181,11 @@
 	throwforce = 15 //Massive pice of metal
 	w_class = WEIGHT_CLASS_HUGE
 	item_flags = SLOWS_WHILE_IN_HAND
+
+obj/item/shield/riot/egyptian
+	name = "Egyptian Shield"
+	desc = "A tower shield decorated with jewelry and gold."
+	icon_state = "egyptian_shield"
+	item_state = "egyptian_shield"
+	lefthand_file = 'icons/mob/inhands/equipment/shields_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/shields_righthand.dmi'

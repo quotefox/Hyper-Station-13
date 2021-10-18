@@ -68,6 +68,8 @@
 
 	var/list/learned_recipes //List of learned recipe TYPES.
 
+	var/reEnterCooldown = 0 //This was created to prevent players from deleting their own bodies when the server can't keep up with them and they're trying to re-enter/exit their corpse too quickly.
+
 /datum/mind/New(var/key)
 	src.key = key
 	soulOwner = src

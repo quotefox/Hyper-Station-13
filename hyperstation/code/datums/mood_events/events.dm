@@ -22,3 +22,8 @@
 	description = "<span class='warning'>I feel like I'm held together by flimsy string, and could fall apart at any moment!</span>\n"
 	mood_change = -4
 	timeout = 2 MINUTES
+
+/datum/mood_event/copium
+	description = "<span class='nicegreen'>Things are going to be okay, right?</span>\n"
+	mood_change = 3
+	timeout = 3 MINUTES

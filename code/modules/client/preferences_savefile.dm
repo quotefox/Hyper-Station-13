@@ -5,7 +5,7 @@
 //	You do not need to raise this if you are adding new values that have sane defaults.
 //	Only raise this value when changing the meaning/format/name/layout of an existing value
 //	where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX	23
+#define SAVEFILE_VERSION_MAX	24
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -141,6 +141,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Hyper code
 	S["noncon"]             >> noncon
+	S["sillyroles"]			>> sillyroles
+	S["roleplayroles"]		>> roleplayroles
+	S["importantroles"]		>> importantroles
+	S["pins"]				>> pins
 
 	//try to fix any outdated data if necessfary
 	if(needs_update >= 0)
@@ -152,6 +156,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	UI_style		= sanitize_inlist(UI_style, GLOB.available_ui_styles, GLOB.available_ui_styles[1])
 	hotkeys			= sanitize_integer(hotkeys, 0, 1, initial(hotkeys))
 	autocorrect		= sanitize_integer(autocorrect, 0, 1, initial(autocorrect))
+	sillyroles		= sanitize_integer(sillyroles, 0, 1, initial(sillyroles))
+	roleplayroles	= sanitize_integer(roleplayroles, 0, 1, initial(roleplayroles))
+	importantroles	= sanitize_integer(importantroles, 0, 1, initial(importantroles))
 	chat_on_map		= sanitize_integer(chat_on_map, 0, 1, initial(chat_on_map))
 	radiosounds		= sanitize_integer(radiosounds, 0, 1, initial(radiosounds))
 	max_chat_length = sanitize_integer(max_chat_length, 1, CHAT_MESSAGE_MAX_LENGTH, initial(max_chat_length))
@@ -212,6 +219,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["hotkeys"], hotkeys)
 	WRITE_FILE(S["chat_on_map"], chat_on_map)
 	WRITE_FILE(S["autocorrect"], autocorrect)
+	WRITE_FILE(S["sillyroles"], sillyroles)
+	WRITE_FILE(S["roleplayroles"], roleplayroles)
+	WRITE_FILE(S["importantroles"], importantroles)
 	WRITE_FILE(S["radiosounds"], radiosounds)
 	WRITE_FILE(S["max_chat_length"], max_chat_length)
 	WRITE_FILE(S["see_chat_non_mob"], see_chat_non_mob)
@@ -256,6 +266,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Hyper
 	WRITE_FILE(S["noncon"], noncon)
+	WRITE_FILE(S["pins"], pins)
 
 	return 1
 
@@ -400,8 +411,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_cock_length"]			>> features["cock_length"]
 	S["feature_cock_girth"]				>> features["cock_girth"]
 	S["feature_has_sheath"]				>> features["sheath_color"]
-	//belly size
-	S["feature_belly_size"]				>> features["belly_size"]
 	//balls features
 	S["feature_has_balls"]				>> features["has_balls"]
 	S["feature_balls_color"]			>> features["balls_color"]
@@ -423,11 +432,16 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//womb features
 	S["feature_has_womb"]				>> features["has_womb"]
 	S["feature_can_get_preg"]			>> features["can_get_preg"] //hyperstation 13
-		//balls features
+	//belly features
 	S["feature_has_belly"]				>> features["has_belly"]
+	S["feature_belly_size"]				>> features["belly_size"]
 	S["feature_belly_color"]			>> features["belly_color"]
 	S["feature_hide_belly"]				>> features["hide_belly"]
 	S["feature_inflatable_belly"]		>> features["inflatable_belly"]
+	//butt features
+	S["feature_butt_size"]				>> features["butt_size"]
+	S["feature_butt_color"]				>> features["butt_color"]
+	S["feature_has_anus"]				>> features["has_anus"]
 
 	//flavor text
 	//Let's make our players NOT cry desperately as we wipe their savefiles of their special snowflake texts:

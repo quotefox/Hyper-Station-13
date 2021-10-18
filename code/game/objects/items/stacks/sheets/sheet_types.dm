@@ -206,6 +206,15 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	new/datum/stack_recipe("wood floor tile", /obj/item/stack/tile/wood, 1, 4, 20), \
 	new/datum/stack_recipe("wood table frame", /obj/structure/table_frame/wood, 2, time = 10), \
 	null, \
+
+	new/datum/stack_recipe_list("bench", \
+		list( \
+		new/datum/stack_recipe("bench (middle)", /obj/structure/chair/bench, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("bench (left)", /obj/structure/chair/bench/left, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("bench (right)", /obj/structure/chair/bench/right, one_per_turf = TRUE, on_floor = TRUE), \
+		)), \
+	null, \
+
 	new/datum/stack_recipe("rifle stock", /obj/item/weaponcrafting/stock, 10, time = 40), \
 	new/datum/stack_recipe("rolling pin", /obj/item/kitchen/rollingpin, 2, time = 30), \
 	new/datum/stack_recipe("wooden buckler", /obj/item/shield/riot/buckler, 20, time = 40), \
@@ -223,6 +232,7 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	new/datum/stack_recipe("coffin", /obj/structure/closet/crate/coffin, 5, time = 15, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("book case", /obj/structure/bookcase, 4, time = 15, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("drying rack", /obj/machinery/smartfridge/drying_rack, 10, time = 15, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("sauna oven", /obj/structure/sauna_oven, 30, time = 15, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("dog bed", /obj/structure/bed/dogbed, 10, time = 10, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("dresser", /obj/structure/dresser, 10, time = 15, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("ore box", /obj/structure/ore_box, 4, time = 50, one_per_turf = TRUE, on_floor = TRUE),\
@@ -232,6 +242,7 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	new/datum/stack_recipe("apiary", /obj/structure/beebox, 40, time = 50),\
 	null, \
 	new/datum/stack_recipe("picture frame", /obj/item/wallframe/picture, 1, time = 10),\
+	new/datum/stack_recipe("painting frame", /obj/item/wallframe/painting, 1, time = 10),\
 	new/datum/stack_recipe("honey frame", /obj/item/honey_frame, 5, time = 10),\
 	new/datum/stack_recipe("cross", /obj/structure/kitchenspike/cross, 10, time = 10),\
 	))
@@ -320,6 +331,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("grey jumpsuit", /obj/item/clothing/under/color/grey, 3), \
 	new/datum/stack_recipe("black shoes", /obj/item/clothing/shoes/sneakers/black, 2), \
 	new/datum/stack_recipe("cloth footwraps", /obj/item/clothing/shoes/footwraps, 2), \
+	new/datum/stack_recipe("tunic", /obj/item/clothing/under/tunic, 3), \
 	null, \
 	new/datum/stack_recipe("backpack", /obj/item/storage/backpack, 4), \
 	new/datum/stack_recipe("duffel bag", /obj/item/storage/backpack/duffelbag, 6), \
@@ -342,6 +354,10 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	null, \
 	new/datum/stack_recipe("blindfold", /obj/item/clothing/glasses/sunglasses/blindfold, 2), \
 	new/datum/stack_recipe("eyepatch", /obj/item/clothing/glasses/eyepatch, 2), \
+	null, \
+	new/datum/stack_recipe("19x19 canvas", /obj/item/canvas/nineteenXnineteen, 3), \
+	new/datum/stack_recipe("23x19 canvas", /obj/item/canvas/twentythreeXnineteen, 4), \
+	new/datum/stack_recipe("23x23 canvas", /obj/item/canvas/twentythreeXtwentythree, 5), \
 	))
 
 /obj/item/stack/sheet/cloth
@@ -709,8 +725,12 @@ GLOBAL_LIST_INIT(plastic_recipes, list(
 	new /datum/stack_recipe("plastic flaps", /obj/structure/plasticflaps, 5, one_per_turf = TRUE, on_floor = TRUE, time = 40), \
 	new /datum/stack_recipe("water bottle", /obj/item/reagent_containers/glass/beaker/waterbottle/empty), \
 	new /datum/stack_recipe("large water bottle", /obj/item/reagent_containers/glass/beaker/waterbottle/large/empty,3), \
-	new /datum/stack_recipe("large trash cart", /obj/structure/closet/crate/bin,50),\
-	new /datum/stack_recipe("wet floor sign", /obj/item/caution, 2)))
+	new /datum/stack_recipe("large trash cart", /obj/structure/closet/crate/bin,50), \
+	new /datum/stack_recipe("wet floor sign", /obj/item/caution, 2), \
+	null, \
+	new /datum/stack_recipe("micro bricks", /obj/item/stack/sheet/micro_bricks, 1, 5, 15,), \
+
+))
 
 /obj/item/stack/sheet/plastic
 	name = "plastic"
@@ -901,3 +921,45 @@ GLOBAL_LIST_INIT(plaswood_recipes, list ( \
 
 /obj/item/stack/sheet/mineral/plaswood/fifty
 	amount = 50
+
+GLOBAL_LIST_INIT(micro_bricks_recipes, list ( \
+	new/datum/stack_recipe("Road fourway", /obj/structure/micro_brick/road_fourway, 2, time = 2, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("Road threeway", /obj/structure/micro_brick/road_threeway, 2, time = 2, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("Road straight", /obj/structure/micro_brick/road_straight, 2, time = 2, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("Road turn", /obj/structure/micro_brick/Road_turn, 2, time = 2, one_per_turf = TRUE, on_floor = TRUE), \
+	null, \
+	new/datum/stack_recipe("Small houses", /obj/structure/micro_brick/small_house, 5, time = 2, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("Small business", /obj/structure/micro_brick/small_business, 5, time = 2, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("Small warehouse", /obj/structure/micro_brick/small_warehouse, 5, time = 2, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("Small museum", /obj/structure/micro_brick/small_museum, 5, time = 2, one_per_turf = TRUE, on_floor = TRUE), \
+	null, \
+	new/datum/stack_recipe("Small moon", /obj/item/moon, 5, time = 2), \
+	null, \
+	))
+
+/obj/item/stack/sheet/micro_bricks
+	name = "Micro Bricks"
+	desc = "an studless version of the iconic bricks for recreation use on station with big crewmembers "
+	singular_name = "Micro Brick"
+	icon_state = "SmallBucket"
+	item_state = "SmallBucket"
+	materials = list(MAT_METAL=MINERAL_MATERIAL_AMOUNT)
+	flags_1 = CONDUCT_1
+	resistance_flags = FIRE_PROOF
+	merge_type = /obj/item/stack/sheet/micro_bricks
+
+/obj/item/stack/sheet/micro_bricks/fifty
+	amount = 50
+
+/obj/item/stack/sheet/micro_bricks/twenty
+	amount = 20
+
+/obj/item/stack/sheet/micro_bricks/ten
+	amount = 10
+
+/obj/item/stack/sheet/micro_bricks/five
+	amount = 5
+
+/obj/item/stack/sheet/micro_bricks/Initialize(mapload, new_amount, merge = TRUE)
+	recipes = GLOB.micro_bricks_recipes
+	return ..()

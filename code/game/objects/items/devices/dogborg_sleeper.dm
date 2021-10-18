@@ -245,6 +245,9 @@
 
 /obj/item/dogborg/sleeper/proc/update_gut(mob/living/silicon/robot/hound)
 	//Well, we HAD one, what happened to them?
+	if(!hound) //runetime error fix with dogborgs with no sleepers
+		return
+
 	var/prociconupdate = FALSE
 	var/currentenvy = hound.sleeper_nv
 	hound.sleeper_nv = FALSE

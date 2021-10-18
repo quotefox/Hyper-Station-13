@@ -22,6 +22,16 @@
 	if(!CheckAdminHref(href, href_list))
 		return
 
+
+	if(href_list["sillyroles"]) //toggle, clown and mime.
+		togglesilly(href_list["sillyroles"])
+
+	if(href_list["roleplayroles"]) //toggle, roleplay jobs
+		toggleroleplay(href_list["roleplayroles"])
+
+	if(href_list["importantroles"]) //toggle, roleplay jobs
+		toggleimportant(href_list["importantroles"])
+
 	if(href_list["makementor"])
 		makeMentor(href_list["makementor"])
 	else if(href_list["removementor"])
@@ -1359,7 +1369,7 @@
 
 	else if(href_list["f_secret"])
 		return HandleFSecret()
-	
+
 //Dynamic mode
 	else if(href_list["f_dynamic_roundstart"])
 		if(!check_rights(R_ADMIN))
@@ -2991,3 +3001,54 @@
 		to_chat(usr, "<span class='danger'>Failed to establish database connection. The changes will last only for the current round.</span>")
 	to_chat(usr, "<span class='adminnotice'>Mentor removed.</span>")
 
+/datum/admins/proc/togglesilly(ckey)
+	if(!usr.client)
+		return
+	if (!check_rights(0))
+		return
+	if(!ckey)
+		return
+	var/client/C = GLOB.directory[ckey]
+	if(!C)
+		return
+	C.prefs.sillyroles = !C.prefs.sillyroles
+	if(C.prefs.sillyroles)
+		to_chat(usr, "<span class='adminnotice'>Silly roles have been allowed.</span>")
+	else
+		to_chat(usr, "<span class='adminnotice'>Silly roles have been disabled.</span>")
+	C.prefs.save_preferences()
+
+
+/datum/admins/proc/toggleroleplay(ckey)
+	if(!usr.client)
+		return
+	if (!check_rights(0))
+		return
+	if(!ckey)
+		return
+	var/client/C = GLOB.directory[ckey]
+	if(!C)
+		return
+	C.prefs.roleplayroles = !C.prefs.roleplayroles
+	if(C.prefs.roleplayroles)
+		to_chat(usr, "<span class='adminnotice'>Roleplay roles have been allowed.</span>")
+	else
+		to_chat(usr, "<span class='adminnotice'>Roleplay roles have been disabled.</span>")
+	C.prefs.save_preferences()
+
+/datum/admins/proc/toggleimportant(ckey)
+	if(!usr.client)
+		return
+	if (!check_rights(0))
+		return
+	if(!ckey)
+		return
+	var/client/C = GLOB.directory[ckey]
+	if(!C)
+		return
+	C.prefs.importantroles = !C.prefs.importantroles
+	if(C.prefs.importantroles)
+		to_chat(usr, "<span class='adminnotice'>Important roles have been allowed.</span>")
+	else
+		to_chat(usr, "<span class='adminnotice'>Important roles have been disabled.</span>")
+	C.prefs.save_preferences()

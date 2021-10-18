@@ -70,7 +70,7 @@
 										/datum/reagent/medicine/haloperidol, /datum/reagent/drug/aranesp, /datum/reagent/medicine/diphenhydramine
 									),
 									list(	//level 11
-										/datum/reagent/medicine/modafinil, /datum/reagent/toxin/anacea
+										/datum/reagent/medicine/modafinil, /datum/reagent/medicine/bicaridine
 									)
 								)
 

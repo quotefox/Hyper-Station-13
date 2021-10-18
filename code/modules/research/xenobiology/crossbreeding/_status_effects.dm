@@ -64,10 +64,9 @@
 	var/interrupted = FALSE
 	var/mob/target
 	var/icon/bluespace
-	var/datum/weakref/redirect_component
 
 /datum/status_effect/slimerecall/on_apply()
-	redirect_component = WEAKREF(owner.AddComponent(/datum/component/redirect, list(COMSIG_LIVING_RESIST = CALLBACK(src, .proc/resistField))))
+	RegisterSignal(owner, COMSIG_LIVING_RESIST, .proc/resistField)
 	to_chat(owner, "<span class='danger'>You feel a sudden tug from an unknown force, and feel a pull to bluespace!</span>")
 	to_chat(owner, "<span class='notice'>Resist if you wish avoid the force!</span>")
 	bluespace = icon('icons/effects/effects.dmi',"chronofield")
@@ -77,9 +76,9 @@
 /datum/status_effect/slimerecall/proc/resistField()
 	interrupted = TRUE
 	owner.remove_status_effect(src)
+
 /datum/status_effect/slimerecall/on_remove()
-	qdel(redirect_component.resolve())
-	redirect_component = null
+	UnregisterSignal(owner, COMSIG_LIVING_RESIST)
 	owner.cut_overlay(bluespace)
 	if(interrupted || !ismob(target))
 		to_chat(owner, "<span class='warning'>The bluespace tug fades away, and you feel that the force has passed you by.</span>")
@@ -98,10 +97,9 @@
 	duration = -1 //Will remove self when block breaks.
 	alert_type = /obj/screen/alert/status_effect/freon/stasis
 	var/obj/structure/ice_stasis/cube
-	var/datum/weakref/redirect_component
 
 /datum/status_effect/frozenstasis/on_apply()
-	redirect_component = WEAKREF(owner.AddComponent(/datum/component/redirect, list(COMSIG_LIVING_RESIST = CALLBACK(src, .proc/breakCube))))
+	RegisterSignal(owner, COMSIG_LIVING_RESIST, .proc/breakCube)
 	cube = new /obj/structure/ice_stasis(get_turf(owner))
 	owner.forceMove(cube)
 	owner.status_flags |= GODMODE
@@ -118,8 +116,7 @@
 	if(cube)
 		qdel(cube)
 	owner.status_flags &= ~GODMODE
-	qdel(redirect_component.resolve())
-	redirect_component = null
+	UnregisterSignal(owner, COMSIG_LIVING_RESIST)
 
 /datum/status_effect/slime_clone
 	id = "slime_cloned"
@@ -713,8 +710,8 @@ datum/status_effect/stabilized/blue/on_remove()
 /datum/status_effect/stabilized/cerulean
 	id = "stabilizedcerulean"
 	colour = "cerulean"
-	var/mob/living/clone
-
+	//var/mob/living/clone
+/*
 /datum/status_effect/stabilized/cerulean/on_apply()
 	var/typepath = owner.type
 	clone = new typepath(owner.loc)
@@ -746,7 +743,7 @@ datum/status_effect/stabilized/blue/on_remove()
 		clone.visible_message("<span class='warning'>[clone] dissolves into a puddle of goo!</span>")
 		clone.unequip_everything()
 		qdel(clone)
-
+*/
 /datum/status_effect/stabilized/pyrite
 	id = "stabilizedpyrite"
 	colour = "pyrite"
@@ -872,12 +869,12 @@ datum/status_effect/stabilized/blue/on_remove()
 	id = "stabilizedoil"
 	colour = "oil"
 	examine_text = "<span class='warning'>SUBJECTPRONOUN smells of sulfer and oil!</span>"
-
+/*
 /datum/status_effect/stabilized/oil/tick()
 	if(owner.stat == DEAD)
 		explosion(get_turf(owner),1,2,4,flame_range = 5)
 	return ..()
-
+*/
 /datum/status_effect/stabilized/black
 	id = "stabilizedblack"
 	colour = "black"
