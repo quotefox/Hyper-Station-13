@@ -28,6 +28,11 @@
 	var/storage_name = "Cryogenic Oversight Control"
 	var/allow_items = TRUE
 
+/obj/machinery/computer/cryopod/gate
+	name = "transit oversight console"
+	desc = "An interface between crew and the short-range transit storage systems."
+	storage_name = "Transit Oversight Control"
+
 /obj/machinery/computer/cryopod/ui_interact(mob/user = usr)
 	. = ..()
 
@@ -140,7 +145,9 @@
 	var/obj/machinery/computer/cryopod/control_computer
 	var/last_no_computer_message = 0
 
-	var/alert_comms = TRUE	//If we alert crew who cryo'd
+	var/alert_comms = TRUE//If we alert crew who cryo'd
+
+	var/transit_alert_comms = FALSE//Used only by the gateway.
 
 	// These items are preserved when the process() despawn proc occurs.
 	var/list/preserve_items = list(
@@ -177,6 +184,36 @@
 		/obj/item/gun/energy/kinetic_accelerator/cyborg,
 		/obj/item/gun/energy/laser/cyborg
 	)
+
+/*
+//START OF GATE\\
+//This is simply an alternative method of leaving the round. Still uses the same cryo-console.\\
+//Instead of freezing yourself, you may simply just leave the station.\\
+//Short range teleport gang.\\
+*/
+/obj/machinery/cryopod/gate
+	name = "short-range gateway"
+	desc = "A gateway that leads to a nearby location. You may use this to depart."//Not arrive, because we have the shuttle. Or something. I 'unno. It's jank.
+	icon = 'icons/obj/machines/teleporter.dmi'
+	icon_state = "tele0"
+
+	alert_comms = FALSE
+	transit_alert_comms = TRUE
+
+	time_till_despawn = 60 //1 second.
+
+	on_store_message = "has departed via the short-range gateway."
+	on_store_name = "Transit Oversight"
+
+/obj/machinery/cryopod/gate/open_machine()
+	..()
+	icon_state = "tele0"
+
+/obj/machinery/cryopod/gate/close_machine(mob/user)
+	..()
+	icon_state = "tele1"
+
+//END OF GATE
 
 /obj/machinery/cryopod/Initialize()
 	. = ..()
@@ -306,6 +343,11 @@
 		announcer.announce("CRYOSTORAGE", mob_occupant.real_name, announce_rank, announce_job_title, list())
 		visible_message("<span class='notice'>\The [src] hums and hisses as it moves [mob_occupant.real_name] into storage.</span>")
 
+	if(GLOB.announcement_systems.len && transit_alert_comms)
+		var/obj/machinery/announcement_system/announcer = pick(GLOB.announcement_systems)
+		announcer.announce("TRANSIT", mob_occupant.real_name, announce_rank, announce_job_title, list())
+		visible_message("<span class='notice'>\The [src] buzzes as it moves [mob_occupant.real_name] elsewhere.</span>")
+
 	if(iscyborg(mob_occupant))
 		var/mob/living/silicon/robot/R = occupant
 		if(!istype(R)) return ..()
@@ -397,9 +439,9 @@
 		return
 
 	if(target == user)
-		visible_message("[user] starts climbing into the cryo pod.")
+		visible_message("[user] starts climbing into \the [src].")
 	else
-		visible_message("[user] starts putting [target] into the cryo pod.")
+		visible_message("[user] starts putting [target] into \the [src].")
 
 	if(occupant)
 		to_chat(user, "<span class='boldnotice'>\The [src] is in use.</span>")
