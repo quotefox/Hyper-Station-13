@@ -626,6 +626,8 @@
 			playsound(C, pick('hyperstation/sound/voice/emotes/tesh_sneeze1.ogg', 'hyperstation/sound/voice/emotes/tesh_sneeze1b.ogg'), 50, 1)
 		if(is_species(user, /datum/species/avian))//This is required(related to subtypes), otherwise it doesn't play the noises. Sometimes. Always sometimes. Just how it be.
 			playsound(C, pick('hyperstation/sound/voice/emotes/tesh_sneeze1.ogg', 'hyperstation/sound/voice/emotes/tesh_sneeze1b.ogg'), 50, 1)
+		if(is_species(user, /datum/species/mammal))//Just because the avian subspecies doesn't have proper sprites. Some people can't use it.
+			playsound(C, pick('hyperstation/sound/voice/emotes/tesh_sneeze1.ogg', 'hyperstation/sound/voice/emotes/tesh_sneeze1b.ogg'), 50, 1)
 
 /datum/emote/living/racc
 	key = "racc_chitter"
