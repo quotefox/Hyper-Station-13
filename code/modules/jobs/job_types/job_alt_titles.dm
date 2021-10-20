@@ -14,7 +14,7 @@
 
 //Service
 /datum/job/assistant
-	alt_titles = list("Civilian", "Morale Officer", "Stripper", "Off-Duty", "Escort", "Visitor", "Businessman", "Trader", "Entertainer", "Tourist")
+	alt_titles = list("Civilian", "Morale Officer", "Stripper", "Off-Duty", "Escort", "Visitor", "Businessman", "Trader", "Entertainer", "Tourist", "Clerk")
 
 /datum/job/cook
 	alt_titles = list("Cook", "Culinary Artist", "Butcher", "Chef de partie", "Poissonier")
@@ -23,7 +23,7 @@
 	alt_titles = list("Gardener", "Herbalist", "Botanical Researcher", "Hydroponicist", "Farmer", "Beekeeper", "Vintner")
 
 /datum/job/curator
-	alt_titles = list("Journalist", "Librarian", "Keeper")
+	alt_titles = list("Journalist", "Librarian", "Keeper", "Artist") // Curator has it's own art window section
 
 /datum/job/chaplain
 	alt_titles = list("Priest", "Priestess", "Bishop", "Prior", "Monk", "Nun", "Counselor")
@@ -48,7 +48,7 @@
 	alt_titles = list("Research Manager", "Science Administrator")
 
 /datum/job/scientist
-	alt_titles = list("Circuitry Designer", "Xenobiologist", "Xenobotanist", "Xenoarcheologist", "Chemical Researcher", "Researcher", "Pyrotechnician")
+	alt_titles = list("Circuitry Designer", "Xenobiologist", "Xenobotanist", "Xenoarcheologist", "Chemical Researcher", "Researcher", "Toxins Researcher")
 
 /datum/job/roboticist
 	alt_titles = list("Biomechanical Engineer", "Mechatronic Engineer", "Mechanic")
@@ -84,7 +84,7 @@
 	alt_titles = list("Prison Chief", "Armory Manager", "Prison Administrator", "Brig Superintendent")
 	
 /datum/job/officer
-	alt_titles = list("Security Agent", "Probation Officer", "Security Peacekeeper", "Security Guard", "Guardsman", "Security Cadet")
+	alt_titles = list("Security Agent", "Probation Officer", "Security Peacekeeper", "Security Guard", "Guardsman", "Security Cadet", "Police Officer")
 
 /datum/job/detective
 	alt_titles = list("Forensics Technician", "Private Investigator", "Gumshoe")
@@ -99,7 +99,7 @@
 	alt_titles = list("Mail Man", "Mail Woman", "Mailroom Technician", "Deliveries Officer", "Logistics Technician")
 	
 /datum/job/mining
-	alt_titles = list("Exotic Ore Miner", "Fauna Hunter", "Explorer", "Digger")	//Just because you're a hunter does not excuse you from rock collecting!!!!!!!!!!!!
+	alt_titles = list("Exotic Ore Miner", "Digger")	//Fauna Hunters and Explorers have lost their privileges
 
 //Command
 /datum/job/captain
