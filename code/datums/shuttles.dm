@@ -343,6 +343,7 @@
 	Emitters spawn powered on, expect admin notices, they are harmless."
 	credit_cost = 100000
 
+/*
 /datum/map_template/shuttle/emergency/imfedupwiththisworld
 	suffix = "imfedupwiththisworld"
 	name = "Oh, Hi Daniel"
@@ -350,6 +351,7 @@
 	Aw, come space on. Why not? No, I can't. Anyway, how is your space roleplay life?"
 	admin_notes = "Tiny, with a single airlock and wooden walls. What could go wrong?"
 	credit_cost = -5000
+*/
 
 /datum/map_template/shuttle/emergency/goon
 	suffix = "goon"
