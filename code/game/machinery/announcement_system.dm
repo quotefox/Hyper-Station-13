@@ -95,10 +95,10 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	else if(message_type == "CRYOSTORAGE")
 		message = CompileText(cryostorage, user, rank, displayed_rank)
 	//END EDIT
-	//HYPER EDIT
+
 	else if(message_type == "TRANSIT")
 		message = CompileText(transit, user, rank, displayed_rank)
-	//END EDIT
+
 	else if(message_type == "ARRIVALS_BROKEN")
 		message = "The arrivals shuttle has been damaged. Docking for repairs..."
 
