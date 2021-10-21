@@ -199,7 +199,7 @@ Charged extracts:
 
 /obj/item/slimecross/charged/oil
 	colour = "oil"
-
+/*
 /obj/item/slimecross/charged/oil/do_effect(mob/user)
 	user.visible_message("<span class='danger'>[src] begins to shake with rapidly increasing force!</span>")
 	addtimer(CALLBACK(src, .proc/boom), 50)
@@ -207,7 +207,7 @@ Charged extracts:
 /obj/item/slimecross/charged/oil/proc/boom()
 	explosion(get_turf(src), 3, 2, 1) //Much smaller effect than normal oils, but devastatingly strong where it does hit.
 	qdel(src)
-
+*/
 /obj/item/slimecross/charged/black
 	colour = "black"
 

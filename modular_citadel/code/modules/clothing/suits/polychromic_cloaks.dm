@@ -13,6 +13,21 @@
 	secondary_color = "#FFFFFF"
 	tertiary_color = "#808080"
 
+/obj/item/clothing/neck/cloak/polychromic/half	//enables all three overlays to reduce copypasta and defines basic stuff
+	name = "polychromic half-cloak"
+	desc = "For when you want to show off half of your horrible colour coordination skills."
+	icon = 'modular_citadel/icons/polyclothes/item/neck.dmi'
+	alternate_worn_icon = 'modular_citadel/icons/polyclothes/mob/neck.dmi'
+	icon_state = "polyhc"
+	item_color = "polyhc"
+	item_state = "qmcloak"
+	hasprimary = TRUE
+	hassecondary = TRUE
+	hastertiary = TRUE
+	primary_color = "#FFFFFF" //RGB in hexcode
+	secondary_color = "#FFFFFF"
+	tertiary_color = "#808080"
+
 /obj/item/clothing/neck/cloak/polychromic/worn_overlays(isinhands, icon_file)	//this is where the main magic happens. Also mandates that ALL polychromic stuff MUST USE alternate_worn_icon
 	. = ..()
 	if(hasprimary | hassecondary | hastertiary)
