@@ -311,7 +311,8 @@
 				"BootyF" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootymedical"),
 				"BootyM" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootymedicalM"),
 				"BootyS" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "bootymedicalS"),
-				"Haydee" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "haydeemedical")
+				"Haydee" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "haydeemedical"),
+				"qualified_doctor" = image(icon = 'modular_citadel/icons/mob/robots.dmi', icon_state = "qualified_doctor")
 		)
 		med_models = sortList(med_models)
 	var/medi_borg_icon = show_radial_menu(R, R , med_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
@@ -350,6 +351,11 @@
 			hat_offset = 3
 		if("Haydee")
 			cyborg_base_icon = "haydeemedical"
+			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
+			hat_offset = 3
+		
+		if("qualified_doctor")
+			cyborg_base_icon = "qualified_doctor"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
 	return ..()
