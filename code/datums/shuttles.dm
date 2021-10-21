@@ -343,6 +343,7 @@
 	Emitters spawn powered on, expect admin notices, they are harmless."
 	credit_cost = 100000
 
+/*
 /datum/map_template/shuttle/emergency/imfedupwiththisworld
 	suffix = "imfedupwiththisworld"
 	name = "Oh, Hi Daniel"
@@ -350,6 +351,7 @@
 	Aw, come space on. Why not? No, I can't. Anyway, how is your space roleplay life?"
 	admin_notes = "Tiny, with a single airlock and wooden walls. What could go wrong?"
 	credit_cost = -5000
+*/
 
 /datum/map_template/shuttle/emergency/goon
 	suffix = "goon"
@@ -371,6 +373,13 @@
 	name = "Omegastation Emergency Shuttle"
 	description = "On the smaller size with a modern design, this shuttle is for the crew who like the cosier things, while still being able to stretch their legs."
 	credit_cost = 1000
+
+/datum/map_template/shuttle/emergency/cruise
+	suffix = "nature"
+	name = "Dynamic Environmental Interaction Shuttle"
+	description = "A large shuttle with a center biodome that is flourishing with life. Frolick with the monkeys! (Extra monkeys are stored on the bridge.)"
+	admin_notes = "Pretty freakin' large, almost as big as Raven or Cere. Excercise caution with it."
+	credit_cost = 8000
 
 /datum/map_template/shuttle/ferry/base
 	suffix = "base"

@@ -60,6 +60,7 @@
 	WRITE_FILE(S["feature_cock_color"], features["cock_color"])
 	WRITE_FILE(S["feature_cock_length"], features["cock_length"])
 	WRITE_FILE(S["feature_cock_girth"], features["cock_girth"])
+	WRITE_FILE(S["feature_cock_girth_ratio"], features["cock_girth_ratio"])
 	WRITE_FILE(S["feature_has_sheath"], features["sheath_color"])
 	//balls features
 	WRITE_FILE(S["feature_has_balls"], features["has_balls"])
