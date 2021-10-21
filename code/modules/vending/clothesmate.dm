@@ -38,6 +38,8 @@
 					/obj/item/clothing/under/scratch/skirt = 2,
 		            /obj/item/clothing/under/gimmick/rank/captain/suit/skirt = 2,
 		            /obj/item/clothing/under/gimmick/rank/head_of_personnel/suit/skirt = 2,
+					/obj/item/clothing/neck/cloak/polychromic/ = 5,
+					/obj/item/clothing/neck/cloak/polychromic/half = 5,
 		            /obj/item/clothing/neck/tie/blue = 3,
 		            /obj/item/clothing/neck/tie/red = 3,
 		            /obj/item/clothing/neck/tie/black = 3,
