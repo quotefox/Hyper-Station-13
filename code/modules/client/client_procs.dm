@@ -274,6 +274,17 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 						message_admins("<font color='red'><B>Notice: </B><font color='blue'>[key_name_admin(src)] has the same [matches] as [key_name_admin(C)] (no longer logged in). </font>")
 						log_access("Notice: [key_name(src)] has the same [matches] as [key_name(C)] (no longer logged in).")
 
+	for(var/client/C in GLOB.clients)
+		if( !C )
+			continue
+
+		if(C.prefs)//supposedly fixes a runtime with the following lines. Ripped from OldPollo. I miss you, Lads. :(
+			if(C.prefs.toggles & CHAT_OOC)
+				to_chat(world, "<span class='notice'><b>[src.key] has connected to the server.</b></span>")
+
+				if(C.prefs.toggles)
+					C << sound('hyperstation/sound/effects/oocjoin.ogg')
+
 	if(GLOB.player_details[ckey])
 		player_details = GLOB.player_details[ckey]
 		player_details.byond_version = full_version
