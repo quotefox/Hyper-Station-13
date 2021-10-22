@@ -318,7 +318,7 @@
 /datum/lore/organization/kinaris
 	name = "Kinaris Colonization and Conversion LLC"
 	short_name = "Kinaris"
-	desc = "Kinaris is a bleeding-edge conversion effort based in Myril within the Andromeda Galaxy, which specializes on stabilizing the rights \ 
+	desc = "Kinaris is a bleeding-edge conversion effort based in Myril within the Andromeda Galaxy, which specializes on stabilizing the rights \
 	and needs of any developing world. While many question the will and prowess in their technological religion referred to as Radiance, \
 	there is no denying how powerful they've become with Weave-Attuned gifts unique to their intergalactic megacorporation. Despite only recently \
 	setting a foothold within the Milky Way, their conversion efforts have briefly shaken the galaxy for a new light of change- one which Kinaris \
@@ -349,7 +349,7 @@
 		"Ensamble",
 		"Bravado"
 		)
-	
+
 	autogenerate_destination_names = FALSE
 	destination_names = list(
 						"KNCS Hollow Point",
