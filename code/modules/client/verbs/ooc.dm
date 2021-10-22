@@ -66,10 +66,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	//The linkify span classes and linkify=TRUE below make ooc text get clickable chat href links if you pass in something resembling a url
 	for(var/client/C in GLOB.clients)
 		if(C.prefs.chat_toggles & CHAT_OOC)
-
-			if(C.prefs.toggles)
-				C << sound('hyperstation/sound/effects/oocalert.ogg')
-
 			if(holder)
 				if(!holder.fakekey || C.holder)
 					if(check_rights_for(src, R_ADMIN))
