@@ -166,3 +166,7 @@
 /turf/open/floor/engine/vacuum
 	name = "vacuum floor"
 	initial_gas_mix = AIRLESS_ATMOS
+
+/turf/open/floor/engine/layenia
+	name = "reinforced floor"
+	initial_gas_mix = FROZEN_ATMOS
