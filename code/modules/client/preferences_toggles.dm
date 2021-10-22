@@ -365,17 +365,6 @@ GLOBAL_LIST_INIT(ghost_orbits, list(GHOST_ORBIT_CIRCLE,GHOST_ORBIT_TRIANGLE,GHOS
 		to_chat(src, "<span class='notice'>You will no longer examine things you click on.</span>")
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Ghost Inquisitiveness", "[prefs.inquisitive_ghost ? "Enabled" : "Disabled"]"))
 
-/client/proc/toggleannounceloginplayer()
-	set name = "Do/Don't Announce Player Login"
-	set category = "Preferences"
-	set desc = "Toggle if you want an announcement to the server when you login during a round"
-	if(!holder)
-		return
-	prefs.toggles ^= ANNOUNCE_LOGINP
-	prefs.save_preferences()
-	to_chat(usr, "You will [(prefs.toggles & ANNOUNCE_LOGINP) ? "now" : "no longer"] have an announcement to other players when you login.")
-	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Toggle Player Login Announcement", "[prefs.toggles & ANNOUNCE_LOGINP ? "Enabled" : "Disabled"]")) //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
 //Admin Preferences
 /client/proc/toggleadminhelpsound()
 	set name = "Hear/Silence Adminhelps"
