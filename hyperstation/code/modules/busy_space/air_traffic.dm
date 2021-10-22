@@ -63,7 +63,7 @@ var/datum/lore/atc_controller/atc = new/datum/lore/atc_controller
 
 	var/combined_name = "[owner] [prefix] [shipname]"
 	var/alt_atc_names = list("Layenia TraCon","Layenia Control","Layenia STC","Layenia Airspace")
-	var/wrong_atc_names = list("Sol Command","New Reykjavik StarCon")
+	var/wrong_atc_names = list("Hyperion Gridlock","Dzar StarCon")
 	var/mission_noun = list("flight","mission","route")
 	var/request_verb = list("requesting","calling for","asking for")
 

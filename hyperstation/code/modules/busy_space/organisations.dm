@@ -41,16 +41,19 @@
 	if(autogenerate_destination_names) // Lets pad out the destination names.
 		var/i = rand(6, 10)
 		var/list/star_names = list(
-			"Sol", "Alpha Centauri", "Sirius", "Vega", "Regulus", "Vir", "Algol", "Aldebaran",
+			/*"Sol", "Alpha Centauri", "Sirius", "Vega", "Regulus", "Vir", "Algol", "Aldebaran",
 			"Delta Doradus", "Menkar", "Geminga", "Elnath", "Gienah", "Mu Leporis", "Nyx", "Tau Ceti",
-			"Wazn", "Alphard", "Phact", "Altair")
-		var/list/destination_types = list("dockyard", "station", "vessel", "waystation", "telecommunications satellite", "spaceport", "distress beacon", "anomaly", "colony", "outpost")
+			"Wazn", "Alphard", "Phact", "Altair"*/
+			"Myril", "Hyperion", "Kestrel Ceti", "Andromeda Pass", "Alpheratz", "HH Andromedae", "Buna",
+			"Mirach", "Nembus", "Sterrennacht", "Titawin", "Veritate", "Kappa Andromedae", "Verdun", "Salis Major",
+			"Lyrisin Omega", "Incandesce Seconda", "Vivida Laetus", "Furioso", "Fanteriso")
+		var/list/destination_types = list("dockyard", "station", "vessel", "waystation", "telecommunications satellite", "spaceport", "distress beacon", "anomaly", "colony", "outpost", "city-station", "megastructure", "temple of attunement", "gridlock station", "waypoint gate", "sector command")
 		while(i)
 			destination_names.Add("a [pick(destination_types)] in [pick(star_names)]")
 			i--
 
 //////////////////////////////////////////////////////////////////////////////////
-
+/* Getting rid of non-lore appropriate stuff
 // TSCs
 /datum/lore/organization/nanotrasen
 	name = "NanoTrasen Incorporated"
@@ -81,7 +84,7 @@
 	desc = "Hephaestus Industries is the largest supplier of arms, ammunition, and small millitary vehicles in Sol space. \
 	Hephaestus products have a reputation for reliability, and the corporation itself has a noted tendency to stay removed \
 	from corporate politics. They enforce their neutrality with the help of a fairly large asset-protection contingent which \
-	prevents any contracting polities from using their own materiel against them. SolGov itself is one of Hephastus’ largest \
+	prevents any contracting polities from using their own materiel against them. SolGov itself is one of Hephastusï¿½ largest \
 	bulk contractors owing to the above factors."
 	history = ""
 	work = "arms manufacturer"
@@ -100,8 +103,8 @@
 	Despite the suspicion and prejudice leveled at them for their alien origin, Vey-Med has obtained market dominance in \
 	the sale of medical equipment-- from surgical tools to large medical devices to the Oddyseus trauma response mecha \
 	and everything in between. Their equipment tends to be top-of-the-line, most obviously shown by their incredibly \
-	human-like FBP designs. Vey’s rise to stardom came from their introduction of ressurective cloning, although in \
-	recent years they’ve been forced to diversify as their patents expired and NanoTrasen-made medications became \
+	human-like FBP designs. Veyï¿½s rise to stardom came from their introduction of ressurective cloning, although in \
+	recent years theyï¿½ve been forced to diversify as their patents expired and NanoTrasen-made medications became \
 	essential to modern cloning."
 	history = ""
 	work = "medical equipment supplier"
@@ -116,8 +119,8 @@
 	short_name = "Zeng-Hu"
 	desc = "Zeng-Hu is an old TSC, based in the Sol system. Until the discovery of Phoron, Zeng-Hu maintained a stranglehold \
 	on the market for medications, and many household names are patentted by Zeng-Hu-- Bicaridyne, Dylovene, Tricordrizine, \
-	and Dexalin all came from a Zeng-Hu medical laboratory. Zeng-Hu’s fortunes have been in decline as Nanotrasen’s near monopoly \
-	on phoron research cuts into their R&D and Vey-Med’s superior medical equipment effectively decimated their own equipment \
+	and Dexalin all came from a Zeng-Hu medical laboratory. Zeng-Huï¿½s fortunes have been in decline as Nanotrasenï¿½s near monopoly \
+	on phoron research cuts into their R&D and Vey-Medï¿½s superior medical equipment effectively decimated their own equipment \
 	interests. The three-way rivalry between these companies for dominance in the medical field is well-known and a matter of \
 	constant economic speculation."
 	history = ""
@@ -134,8 +137,8 @@
 	desc = "Ward-Takahashi focuses on the sale of small consumer electronics, with its computers, communicators, \
 	and even mid-class automobiles a fixture of many households. Less famously, Ward-Takahashi also supplies most \
 	of the AI cores on which vital control systems are mounted, and it is this branch of their industry that has \
-	led to their tertiary interest in the development and sale of high-grade AI systems. Ward-Takahashi’s economies \
-	of scale frequently steal market share from Nanotrasen’s high-price products, leading to a bitter rivalry in the \
+	led to their tertiary interest in the development and sale of high-grade AI systems. Ward-Takahashiï¿½s economies \
+	of scale frequently steal market share from Nanotrasenï¿½s high-price products, leading to a bitter rivalry in the \
 	consumer electronics market."
 	history = ""
 	work = "electronics manufacturer"
@@ -148,10 +151,10 @@
 /datum/lore/organization/bishop
 	name = "Bishop Cybernetics"
 	short_name = "Bishop"
-	desc = "Bishop’s focus is on high-class, stylish cybernetics. A favorite among transhumanists (and a bête noire for \
+	desc = "Bishopï¿½s focus is on high-class, stylish cybernetics. A favorite among transhumanists (and a bï¿½te noire for \
 	bioconservatives), Bishop manufactures not only prostheses but also brain augmentation, synthetic organ replacements, \
 	and odds and ends like implanted wrist-watches. Their business model tends towards smaller, boutique operations, giving \
-	it a reputation for high price and luxury, with Bishop cyberware often rivalling Vey-Med’s for cost. Bishop’s reputation \
+	it a reputation for high price and luxury, with Bishop cyberware often rivalling Vey-Medï¿½s for cost. Bishopï¿½s reputation \
 	for catering towards the interests of human augmentation enthusiasts instead of positronics have earned it ire from the \
 	Positronic Rights Group and puts it in ideological (but not economic) comptetition with Morpheus Cyberkinetics."
 	history = ""
@@ -311,3 +314,144 @@
 						"a wreck in SifGov territory",
 						"a military outpost",
 						)
+*/
+/datum/lore/organization/kinaris
+	name = "Kinaris Colonization and Conversion LLC"
+	short_name = "Kinaris"
+	desc = "Kinaris is a bleeding-edge conversion effort based in Myril within the Andromeda Galaxy, which specializes on stabilizing the rights \ 
+	and needs of any developing world. While many question the will and prowess in their technological religion referred to as Radiance, \
+	there is no denying how powerful they've become with Weave-Attuned gifts unique to their intergalactic megacorporation. Despite only recently \
+	setting a foothold within the Milky Way, their conversion efforts have briefly shaken the galaxy for a new light of change- one which Kinaris \
+	willingly snuffed out after seeing the disarray and sin the newly-discovered Humanity was dwelling within; waiting for them to mature firsthand. \
+	Most stable colonies, stations, civilizations, planets, or anywhere on the spectrum is often backed by the firm hand of Kinaris- underneath one rule: \
+	Be Radiant."
+	history = ""
+	work = "Weave-research, conversion, and colony management"
+	headquarters = "Holy City of Radiant Hearth, Myril"
+	motto = "Be Radiant"
+
+	ship_prefixes = list("KNS" = "freight", "KNS" = "rescue", "KNS" = "transportation", "KNCS" = "diplomatic", "KN-Star" = "research", "EKN" = "energy relay")
+	ship_names = list(
+		"Pillar of Light",
+		"Virtue",
+		"Incandescence Armara",
+		"Evorsio Majora",
+		"Constellation",
+		"Ryynthal Lucerna",
+		"Starlight",
+		"Tempest",
+		"Solar Hearth",
+		"Firefly",
+		"Evorsio",
+		"Holy Skies",
+		"Reverberation",
+		"Harmony",
+		"Ensamble",
+		"Bravado"
+		)
+	
+	autogenerate_destination_names = FALSE
+	destination_names = list(
+						"KNCS Hollow Point",
+						"a gridlock station at Kestrel Ceti",
+						"a waypoint gate at Andromeda Pass",
+						"a ringworld at Incandesce Seconda",
+						"a temple of attunement at Myril",
+						"stellar Weave at Furioso",
+						"Salis Major orbit",
+						"a megastructure at Kappa Andromedae",
+						"Radiant Hearth",
+						"sector command at Vivida Laetus",
+						"a dissonant tear at RR Lyra",
+						"a city-station at Kappa Andromedae",
+						"a city-station at Verdun",
+						"a city-station at Alpheratz",
+						"the rings of Layenia",
+						"Dzar metalworking at Loto",
+						"a classified location within the Weave",
+						"a developing colony at Timber Hearth",
+						"a distress signal in Manuel sector",//dammit what happened now
+						"a gridlock station at Hyperion"//hey, that's CC!
+						)
+
+/datum/lore/organization/dzar
+	name = "Dzar Underworks Metalworking"
+	short_name = "Dzar"
+	desc = "Dzar Underworks is a conglomerate of metalworking companies underneath the intergalactic umbrella of Kinaris, formed firstly in opposition of \
+	Radiance in the past, and an ally now. They posess the unique engram of smithing highly-sophisticated metals and impossible materials from patented forges, \
+	which is kept secret by the shareholders at Dzar. The unique way Dzar is able to manufacture metals have left them uncontested against many other companies, \
+	leading them to a divine- if not pricey- hold on anyone who is interested in making high-grade vessels, colonies, megastructures, or plain-old appliances. \
+	Dzar works side-by-side with Kinaris, where Radiant Technology is their reward in return for high-grade metals."
+	history = ""
+	work = "metalsmithing, mining, and material research"
+	headquarters = "the hollow-world of Salis Major"
+	motto = "in virtue we trust"
+
+	ship_prefixes = list("DZ" = "hauling", "DZ" = "cargo", "DZA" = "asset security")
+	ship_names = list(
+		"Workhorse",
+		"Dark Descent",
+		"Vigilance",
+		"Hellfire",
+		"Steed",
+		"Salisan",
+		"Virtue",
+		"Ram",
+		"Gabbro",
+		"Basalt",
+		"Rieback",
+		"Brimstone",
+		"Ashen Scoria",
+		"Forge-maiden",
+		"Delta"
+		)
+
+	autogenerate_destination_names = FALSE
+	destination_names = list(
+						"KNCS Hollow Point",
+						"a gridlock station at Kestrel Ceti",
+						"a waypoint gate at Andromeda Pass",
+						"a ringworld at Incandesce Seconda",
+						"Salis Major orbit",
+						"a megastructure at Kappa Andromedae",
+						"the rings of Layenia",
+						"Dzar metalworking at Loto",
+						"a metalworking site at Salis Major",
+						"a mining colony at Titawin",
+						"a slag dump at Fanteriso",
+						"the outer asteroid belt at Mirach",
+						"a gas mining site at Lyrisin Omega",
+						)
+
+/datum/lore/organization/azuregov
+	name = "Azurean Government"
+	short_name = "AzureGov"
+	desc = "The Azurean Government (also known as AzureGov, or Azurean Govern) is the leading spearhead into peace and tranquility within Andromeda; despite it's criticisms. \
+	It governs and loosely controls the various megacorporations currently operating around Andromeda, but it's no secret that their power is limited in comparison to some \
+	companies. Despite this, their operations in ensuring that the representation of anthromorphs and other sentient creatures can be seen in a better light to lesser civilizations, \
+	such as humanity, given that the correct pacts can be agreed upon."
+	history = ""
+	work = "governing and representing anthro species intergalactically"
+	headquarters = "KNCS Jul Ryynthal, Myril Majoris orbit"
+	motto = "no soul left behind"
+
+	ship_prefixes = list("AZ-T" = "transportation", "AZ-D" = "diplomatic", "AZ-F" = "freight")
+
+	autogenerate_destination_names = TRUE
+
+/datum/lore/organization/zaocorp
+	name = "Zao Security and Protection"
+	short_name = "ZaoCorp"
+	desc = "ZaoCorp is a vigilant workhorse of stabilizing colonies with quick, effective, and calm policework. Their strict neurological persuit of hiring only the most fair \
+	and levelheaded individuals leads them to establish peace among any colonies they're contracted at, making for an effective police force. Not only do they hire the best of \
+	the best through genetic selection and splicing, they also manufacture bleeding-edge Nuovo-fabric exosuits, threaded to a casual and calm trenchcoat adorned in blue and beige. \
+	This makes for an approachable, fair, and just police force that is capable of nonlethal apprehension where necessary. Trust is always locked in the hands of Zao; stifling any \
+	concerns peacefully through vigilance."
+	history = ""
+	work = "contracted policework"
+	headquarters = "Incandesce Seconda"
+	motto = "secure the people, save the future"
+
+	ship_prefixes = list("ZCO" = "transportation", "ZC" = "patrol")
+
+	autogenerate_destination_names = TRUE
