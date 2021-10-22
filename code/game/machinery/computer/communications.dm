@@ -30,6 +30,8 @@
 	var/stat_msg1
 	var/stat_msg2
 
+	var/datum/lore/atc_controller/ATC
+
 	light_color = LIGHT_COLOR_BLUE
 
 /obj/machinery/computer/communications/proc/checkCCcooldown()
@@ -40,6 +42,7 @@
 
 /obj/machinery/computer/communications/Initialize()
 	. = ..()
+	ATC = atc
 	GLOB.shuttle_caller_list += src
 
 /obj/machinery/computer/communications/process()
@@ -208,6 +211,8 @@
 		if("messagelist")
 			currmsg = 0
 			state = STATE_MESSAGELIST
+		if("toggleatc")
+			src.ATC.squelched = !src.ATC.squelched
 		if("viewmessage")
 			state = STATE_VIEWMESSAGE
 			if (!currmsg)
@@ -476,6 +481,7 @@
 				dat += "<BR>\[ <A HREF='?src=[REF(src)];operation=logout'>Log Out</A> \]<BR>"
 				dat += "<BR><B>General Functions</B>"
 				dat += "<BR>\[ <A HREF='?src=[REF(src)];operation=messagelist'>Message List</A> \]"
+				dat += "<BR>\[ <A HREF='?src=[REF(src)];operation=toggleatc'>[ATC.squelched ? "Enable" : "Disable"] ATC Relay</A> \]"
 				switch(SSshuttle.emergency.mode)
 					if(SHUTTLE_IDLE, SHUTTLE_RECALL)
 						dat += "<BR>\[ <A HREF='?src=[REF(src)];operation=callshuttle'>Call Emergency Shuttle</A> \]"
@@ -641,6 +647,7 @@
 				dat += "Current login: None"
 			dat += "<BR><BR><B>General Functions</B>"
 			dat += "<BR>\[ <A HREF='?src=[REF(src)];operation=ai-messagelist'>Message List</A> \]"
+			dat += "<BR>\[ <A HREF='?src=[REF(src)];operation=toggleatc'>[ATC.squelched ? "Enable" : "Disable"] ATC Relay</A> \]"
 			if(SSshuttle.emergency.mode == SHUTTLE_IDLE)
 				dat += "<BR>\[ <A HREF='?src=[REF(src)];operation=ai-callshuttle'>Call Emergency Shuttle</A> \]"
 			dat += "<BR>\[ <A HREF='?src=[REF(src)];operation=ai-status'>Set Status Display</A> \]"
