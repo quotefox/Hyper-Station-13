@@ -32,7 +32,7 @@
 							//IE if the turf is supposed to be water, set TRUE.
 
 	var/tiled_dirt = FALSE // use smooth tiled dirt decal
-	
+
 	vis_flags = VIS_INHERIT_PLANE|VIS_INHERIT_ID	//when this be added to vis_contents of something it inherit something.plane and be associated with something on clicking, important for visualisation of turf in openspace and interraction with openspace that show you turf.
 
 /turf/vv_edit_var(var_name, new_value)
@@ -48,7 +48,7 @@
 
 	// by default, vis_contents is inherited from the turf that was here before
 	vis_contents.Cut()
-	
+
 	if(color)
 		add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 

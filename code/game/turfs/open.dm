@@ -1,4 +1,5 @@
 /turf/open
+	icon = 'icons/turf/floors.dmi'
 	plane = FLOOR_PLANE
 	var/slowdown = 0 //negative for faster, positive for slower
 
@@ -109,6 +110,7 @@
 	name = "Lattice Crystal"
 	desc = "A glowing azure crystal, with strange properties to make things float."
 	icon = 'icons/turf/floors/crystal_floor.dmi'
+	icon_state = "mapping"
 	baseturfs = /turf/open/indestructible/layenia/crystal
 	slowdown = 1
 	light_range = 4
