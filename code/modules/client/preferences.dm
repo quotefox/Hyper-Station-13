@@ -981,6 +981,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Play Lobby Music:</b> <a href='?_src_=prefs;preference=lobby_music'>[(toggles & SOUND_LOBBY) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<b>See Pull Requests:</b> <a href='?_src_=prefs;preference=pull_requests'>[(chat_toggles & CHAT_PULLR) ? "Enabled":"Disabled"]</a><br>"
 			dat += "<br>"
+			dat += "<b>Announce Login:</b> <a href='?_src_=prefs;preference=announce_loginp'>[(toggles & ANNOUNCE_LOGINP)?"Enabled":"Disabled"]</a><br>"
+			dat += "<br>"
 			if(user.client)
 				if(unlock_content)
 					dat += "<b>BYOND Membership Publicity:</b> <a href='?_src_=prefs;preference=publicity'>[(toggles & MEMBER_PUBLIC) ? "Public" : "Hidden"]</a><br>"
@@ -2634,6 +2636,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						be_special -= list(be_special_type)
 					else
 						be_special += list(be_special_type)
+
+				if("announce_loginp")
+					toggles ^= ANNOUNCE_LOGINP
 
 				if("name")
 					be_random_name = !be_random_name

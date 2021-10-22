@@ -279,7 +279,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 			continue
 
 		if(C.prefs)//supposedly fixes a runtime with the following lines. Ripped from OldPollo. I miss you, Lads. :(
-			if(C.prefs.toggles & CHAT_OOC)
+			if(C.prefs.toggles & ANNOUNCE_LOGINP)
 				to_chat(world, "<span class='notice'><b>[src.key] has connected to the server.</b></span>")
 
 				if(C.prefs.toggles)
