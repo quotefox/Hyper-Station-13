@@ -455,3 +455,40 @@
 	ship_prefixes = list("ZCO" = "transportation", "ZC" = "patrol")
 
 	autogenerate_destination_names = TRUE
+
+/datum/lore/organization/valkyrie
+	name = "Valkyrie Industries"
+	short_name = "Valkyrie"
+	desc = "Valkyrie is one of the largest corporate concerns of the Omicron sector, fueled by a network of semi-autonomous operations that assist its \
+	exploration and expansion of the edge of the galaxy. They thrive in the tech trade, supplying the highest bidding colony or station bleeding-edge tech and weaponry, \
+	something that's become a necessity in times of uncertain alliances. Their less-than-ideal moral values associate their hands with several disasters \
+	such as the Io jumpgate incident. While other organizations may have sanctioned and fined Valkyrie Industries, even in areas where their \
+	technology is prohibited bits and pieces of their tech always finds a way in, often through the black market and pirates... \
+	Their usage of exotic semiconductors and components in their equipment is often a tell that something was made by them, which makes reverse engineering or even \
+	fixing broken equipment near impossible without substantial changes in design. This is what others call 'Redtech.'"
+	history = ""
+	work = "Robotics, research and development, arms trade, Redtech."
+	headquarters = "Planet Cyllene, Omicron-7"
+	motto = "The future is safer with us"
+
+	ship_prefixes = list("VF" = "freight", "VDS" = "rescue", "VT" = "transportation", "VC" = "diplomatic", "VV" = "research", "VM" = "miner")
+	ship_names = list(
+		"Iota",
+		"Quasar",
+		"Nebula",
+		"Kepler",
+		"Horizon",
+		"Liberty",
+		"Gemini",
+		"Bretonia",
+		"Marker",
+		"Briesen",
+		"Dromedary",
+		"Vulture",
+		"Startracker",
+		"Anubis",
+		"Sabre",
+		"Kronos"
+		)
+
+	autogenerate_destination_names = TRUE
