@@ -72,7 +72,7 @@
 #define BREASTS_SIZE_IMPOSSIBLE		30
 
 //Bodysize Limits
-#define MIN_BODYSIZE		50
+#define MIN_BODYSIZE		25
 #define MAX_BODYSIZE		200
 
 #define BREASTS_SIZE_MIN 	BREASTS_SIZE_A
