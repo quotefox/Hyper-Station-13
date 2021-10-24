@@ -1806,11 +1806,6 @@
 	},
 /turf/open/floor/plating/layenia,
 /area/layenia)
-"acE" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/trash_pile,
-/turf/open/space/basic,
-/area/layenia)
 "acF" = (
 /obj/machinery/power/tracker,
 /obj/structure/cable{
@@ -5114,14 +5109,6 @@
 	},
 /turf/open/space/basic,
 /area/layenia/cloudlayer)
-"aiE" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 19
-	},
-/turf/open/space/basic,
-/area/layenia)
 "aiF" = (
 /obj/machinery/conveyor{
 	id = "garbage"
@@ -22325,9 +22312,6 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/grass,
 /area/medical/genetics)
-"ewv" = (
-/turf/open/space/basic,
-/area/layenia/cloudlayer)
 "ewB" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/orange/visible{
@@ -117587,10 +117571,10 @@ adz
 ahn
 xej
 gTW
-ewv
-ewv
-ewv
-ewv
+gTW
+gTW
+gTW
+gTW
 gTW
 gPq
 foH
@@ -128240,7 +128224,7 @@ jAc
 hJb
 pYn
 hJI
-acE
+nFW
 wOp
 wOp
 wOp
@@ -128754,7 +128738,7 @@ wRY
 hJI
 hJI
 hJI
-aiE
+gRF
 nus
 nus
 wOp
