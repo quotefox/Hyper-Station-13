@@ -99,6 +99,9 @@
 	if(..())
 		return
 
+/turf/open/floor/grass/layenia //for exterior atmos
+	initial_gas_mix = FROZEN_ATMOS
+
 /turf/open/floor/grass/fairy //like grass but fae-er
 	name = "fairygrass patch"
 	desc = "Something about this grass makes you want to frolic. Or get high."
