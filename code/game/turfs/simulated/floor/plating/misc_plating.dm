@@ -3,6 +3,10 @@
 	icon_state = "plating"
 	initial_gas_mix = AIRLESS_ATMOS
 
+/turf/open/floor/plating/layenia
+	icon_state = "plating"
+	initial_gas_mix = FROZEN_ATMOS
+
 /turf/open/floor/plating/abductor
 	name = "alien floor"
 	icon_state = "alienpod1"
@@ -194,7 +198,7 @@
 /turf/open/floor/plating/ice/smooth
 	icon_state = "smooth"
 	smooth = SMOOTH_MORE | SMOOTH_BORDER
-	canSmoothWith = list(/turf/open/floor/plating/ice/smooth, 
+	canSmoothWith = list(/turf/open/floor/plating/ice/smooth,
 	/turf/open/floor/plating/ice,
 	/turf/open/floor/plating/ice/colder)
 

@@ -19,7 +19,8 @@
 	initial_gas_mix = AIRLESS_ATMOS
 /turf/open/floor/plasteel/telecomms
 	initial_gas_mix = TCOMMS_ATMOS
-
+/turf/open/floor/plasteel/layenia
+	initial_gas_mix = FROZEN_ATMOS
 
 /turf/open/floor/plasteel/dark
 	icon_state = "darkfull"
@@ -27,6 +28,8 @@
 	initial_gas_mix = AIRLESS_ATMOS
 /turf/open/floor/plasteel/dark/telecomms
 	initial_gas_mix = TCOMMS_ATMOS
+/turf/open/floor/plasteel/dark/layenia
+	initial_gas_mix = FROZEN_ATMOS
 /turf/open/floor/plasteel/airless/dark
 	icon_state = "darkfull"
 /turf/open/floor/plasteel/dark/side
