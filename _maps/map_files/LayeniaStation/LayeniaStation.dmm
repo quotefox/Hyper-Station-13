@@ -1180,11 +1180,6 @@
 /obj/effect/decal/cleanable/oil,
 /turf/open/floor/plasteel/layenia,
 /area/layenia/cloudlayer)
-"abE" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing,
-/turf/open/space/basic,
-/area/layenia/cloudlayer)
 "abF" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/loading_area{
@@ -1244,13 +1239,6 @@
 	},
 /turf/open/floor/plasteel/layenia,
 /area/layenia)
-"abK" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/space/basic,
-/area/layenia/cloudlayer)
 "abL" = (
 /obj/structure/fence,
 /obj/effect/turf_decal/loading_area{
@@ -1809,7 +1797,7 @@
 "acE" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/trash_pile,
-/turf/open/space/basic,
+/turf/open/chasm/cloud,
 /area/layenia)
 "acF" = (
 /obj/machinery/power/tracker,
@@ -4903,17 +4891,6 @@
 	},
 /turf/open/floor/plating/layenia,
 /area/layenia)
-"aik" = (
-/obj/structure/lattice/catwalk,
-/turf/open/space/basic,
-/area/layenia/cloudlayer)
-"ail" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/open/space/basic,
-/area/layenia/cloudlayer)
 "aim" = (
 /obj/machinery/light{
 	pixel_y = -1
@@ -4964,10 +4941,6 @@
 	},
 /turf/open/floor/plasteel/layenia,
 /area/layenia)
-"aio" = (
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/layenia/cloudlayer)
 "aip" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -5107,20 +5080,13 @@
 	},
 /turf/open/floor/plasteel/dark/layenia,
 /area/layenia)
-"aiD" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/open/space/basic,
-/area/layenia/cloudlayer)
 "aiE" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/light{
 	dir = 1;
 	pixel_y = 19
 	},
-/turf/open/space/basic,
+/turf/open/chasm/cloud,
 /area/layenia)
 "aiF" = (
 /obj/machinery/conveyor{
@@ -22325,9 +22291,6 @@
 /obj/structure/window/reinforced,
 /turf/open/floor/grass,
 /area/medical/genetics)
-"ewv" = (
-/turf/open/space/basic,
-/area/layenia/cloudlayer)
 "ewB" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/manifold/orange/visible{
@@ -112531,9 +112494,9 @@ gTW
 gTW
 gTW
 gPq
-aiD
-aik
-abE
+foH
+wOp
+xej
 gPq
 gTW
 gTW
@@ -112788,9 +112751,9 @@ gTW
 gTW
 gTW
 gPq
-aiD
-aik
-abE
+foH
+wOp
+xej
 gPq
 gTW
 gTW
@@ -113045,9 +113008,9 @@ gTW
 gTW
 gTW
 gPq
-aiD
-aik
-abE
+foH
+wOp
+xej
 gPq
 gTW
 gTW
@@ -114829,15 +114792,15 @@ qKP
 qKP
 nlk
 abo
-aik
-abE
-aio
-aio
-aio
-aio
-aio
-aio
-aio
+wOp
+xej
+gPq
+gPq
+gPq
+gPq
+gPq
+gPq
+gPq
 aim
 lKZ
 fSo
@@ -115086,15 +115049,15 @@ qKP
 qKP
 nlk
 abo
-aik
-aik
-abK
-abK
-abK
-abK
-abK
-abK
-abK
+wOp
+wOp
+iEg
+iEg
+iEg
+iEg
+iEg
+iEg
+iEg
 abF
 lnM
 whi
@@ -116114,15 +116077,15 @@ qKP
 qKP
 nlk
 abq
-aik
-aik
-ail
-ail
-ail
-ail
-ail
-ail
-ail
+wOp
+wOp
+nus
+nus
+nus
+nus
+nus
+nus
+nus
 abJ
 lnM
 tcT
@@ -116371,15 +116334,15 @@ qKP
 qKP
 nlk
 abq
-aik
-abE
-aio
-aio
-aio
-aio
-aio
-aio
-aio
+wOp
+xej
+gPq
+gPq
+gPq
+gPq
+gPq
+gPq
+gPq
 ain
 lnM
 njX
@@ -117587,10 +117550,10 @@ adz
 ahn
 xej
 gTW
-ewv
-ewv
-ewv
-ewv
+gTW
+gTW
+gTW
+gTW
 gTW
 gPq
 foH
@@ -119210,8 +119173,8 @@ abj
 abj
 abj
 abn
-aik
-aik
+wOp
+wOp
 iEg
 iEg
 iEg
@@ -119467,8 +119430,8 @@ nlk
 nlk
 nlk
 abo
-aik
-aik
+wOp
+wOp
 wOp
 wOp
 wOp
