@@ -2690,7 +2690,6 @@
 /area/layenia)
 "aeg" = (
 /obj/machinery/atmospherics/pipe/layer_manifold,
-/obj/effect/turf_decal/delivery/red,
 /turf/open/floor/plating/layenia,
 /area/layenia)
 "aeh" = (
@@ -16527,6 +16526,11 @@
 	dir = 5
 	},
 /area/bridge)
+"cVe" = (
+/obj/effect/turf_decal/delivery/red,
+/obj/machinery/atmospherics/pipe/simple/yellow/visible/layer1,
+/turf/open/floor/plating/layenia,
+/area/layenia)
 "cVj" = (
 /obj/machinery/reagentgrinder{
 	pixel_x = -4;
@@ -22092,6 +22096,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
+"euw" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible,
+/obj/machinery/atmospherics/pipe/layer_manifold{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/engine/atmos)
 "euA" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible{
 	dir = 5
@@ -25069,6 +25081,11 @@
 /obj/item/twohanded/required/kirbyplants/random,
 /turf/open/floor/wood,
 /area/library/lounge)
+"fkk" = (
+/obj/effect/turf_decal/delivery,
+/obj/machinery/atmospherics/pipe/simple/yellow/visible/layer1,
+/turf/open/floor/plating/layenia,
+/area/layenia)
 "fkl" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -42796,14 +42813,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
-"jRh" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/simple/yellow/visible,
-/obj/machinery/atmospherics/pipe/simple/orange/visible{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/engine/atmos)
 "jRt" = (
 /obj/structure/rack,
 /obj/item/clothing/suit/hooded/wintercoat/science,
@@ -46995,6 +47004,11 @@
 /obj/structure/closet,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"lcY" = (
+/obj/effect/turf_decal/delivery/white,
+/obj/machinery/atmospherics/pipe/simple/cyan/visible/layer1,
+/turf/open/floor/plating/layenia,
+/area/layenia)
 "ldJ" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/reagent_dispensers/fueltank,
@@ -50506,14 +50520,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/maintenance/port/fore)
-"mdW" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/simple/green/visible,
-/obj/machinery/atmospherics/pipe/simple/orange/visible{
-	dir = 4
-	},
-/turf/open/floor/plating,
-/area/engine/atmos)
 "mdX" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/neutral{
@@ -51505,10 +51511,10 @@
 /area/engine/break_room)
 "msk" = (
 /obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/atmospherics/pipe/simple/cyan/visible,
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/cyan,
 /turf/open/floor/plating,
 /area/engine/atmos)
 "msD" = (
@@ -67104,11 +67110,11 @@
 /turf/open/floor/engine,
 /area/science/xenobiology)
 "qqc" = (
-/obj/machinery/atmospherics/pipe/simple/yellow/visible,
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/layer_manifold,
 /turf/open/floor/plating,
 /area/engine/atmos)
 "qqi" = (
@@ -99107,11 +99113,11 @@
 /turf/open/floor/plasteel/dark,
 /area/maintenance/port)
 "yip" = (
-/obj/machinery/atmospherics/pipe/simple/green/visible,
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/green,
 /turf/open/floor/plating,
 /area/engine/atmos)
 "yiq" = (
@@ -141476,7 +141482,7 @@ nJC
 mYP
 eeI
 qqc
-aeg
+cVe
 aet
 aet
 aeT
@@ -141989,7 +141995,7 @@ vRS
 seS
 xdO
 pkC
-mdW
+yip
 aei
 aer
 aeH
@@ -142503,8 +142509,8 @@ oRf
 jVv
 mYP
 jWt
-jRh
-aei
+qqc
+fkk
 aet
 aeJ
 aeV
@@ -143531,8 +143537,8 @@ fNR
 xwc
 nJC
 mlR
-msk
-aek
+qqc
+lcY
 aez
 aeK
 aeV
@@ -143774,15 +143780,15 @@ xru
 fbO
 mVR
 fbO
-rDd
+euw
 fbO
 xru
 qHt
-rDd
+euw
 teO
 xru
 fbO
-rDd
+euw
 fbO
 xru
 ghB
