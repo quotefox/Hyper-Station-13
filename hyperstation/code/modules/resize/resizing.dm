@@ -150,13 +150,9 @@ mob/living/get_effective_size()
 
 					if(HAS_TRAIT(src, TRAIT_MICROPHILE))
 						src.adjustArousalLoss(8)
-						if (src.getArousalLoss() >= 100 && ishuman(tmob) && tmob.has_dna())
-							src.mob_climax(forced_climax=TRUE)
 
 					if(HAS_TRAIT(tmob, TRAIT_MACROPHILE))
 						tmob.adjustArousalLoss(10)
-						if (tmob.getArousalLoss() >= 100 && ishuman(tmob) && tmob.has_dna())
-							tmob.mob_climax(forced_climax=TRUE)
 
 						return 1
 
@@ -179,13 +175,9 @@ mob/living/get_effective_size()
 
 					if(HAS_TRAIT(src, TRAIT_MICROPHILE))
 						src.adjustArousalLoss((get_effective_size()/tmob.get_effective_size()*3))
-						if (src.getArousalLoss() >= 100 && ishuman(tmob) && tmob.has_dna())
-							src.mob_climax(forced_climax=TRUE)
 
 					if(HAS_TRAIT(tmob, TRAIT_MACROPHILE))
 						tmob.adjustArousalLoss((get_effective_size()/tmob.get_effective_size()*3))
-						if (tmob.getArousalLoss() >= 100 && ishuman(tmob) && tmob.has_dna())
-							tmob.mob_climax(forced_climax=TRUE)
 
 					return 1
 
