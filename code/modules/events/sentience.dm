@@ -4,7 +4,10 @@
 	/mob/living/simple_animal/hostile/blob,
 	/mob/living/simple_animal/jacq,
 	/mob/living/simple_animal/holodeck_monkey,
-	/mob/living/simple_animal/astral))
+	/mob/living/simple_animal/astral,
+	/mob/living/simple_animal/butterfly,
+	/mob/living/simple_animal/hostile/boss/paper_wizard,
+	/mob/living/simple_animal/hostile/poison/bees))
 
 /datum/round_event_control/sentience
 	name = "Random Human-level Intelligence"
