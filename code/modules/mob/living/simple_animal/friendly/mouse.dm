@@ -271,8 +271,4 @@
 /mob/living/simple_animal/hostile/bigmouse/attack_animal(mob/living/simple_animal/M)
 	. = ..()
 	faction = list("hostile", "rat")
-
-/mob/living/simple_animal/hostile/bigmouse/death(gibbed)
-	. = ..()
-	gib()
 	
