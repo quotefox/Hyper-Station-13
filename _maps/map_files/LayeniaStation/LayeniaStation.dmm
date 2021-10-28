@@ -46904,6 +46904,10 @@
 	},
 /turf/open/floor/plating,
 /area/quartermaster/miningdock)
+"lbx" = (
+/obj/effect/landmark/xmastree,
+/turf/open/floor/carpet,
+/area/chapel/main)
 "lbz" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -84562,6 +84566,10 @@
 	dir = 8
 	},
 /area/crew_quarters/heads/cmo)
+"uAx" = (
+/obj/effect/landmark/barthpot,
+/turf/open/floor/wood,
+/area/library)
 "uAA" = (
 /turf/closed/wall/r_wall,
 /area/quartermaster/storage)
@@ -125047,7 +125055,7 @@ keF
 lmO
 qfW
 qmD
-qmD
+lbx
 cqQ
 qmD
 qmD
@@ -126114,7 +126122,7 @@ oFv
 sVc
 eqT
 rwB
-kFO
+uAx
 xkP
 xtY
 xDU
