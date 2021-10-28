@@ -39,9 +39,13 @@
 	icon_living = "mouse_[body_color]"
 	icon_dead = "mouse_[body_color]_dead"
 	if(name == "mouse") // Faster than checking for mobtypes, just checks if this mouse is a generic mouse.
-		if(prob(1)) //1% chance to turn a generic mouse into a boommouse
-			new /mob/living/simple_animal/mouse/boommouse(src.loc)
-			qdel(src)
+		switch(rand(1,100))
+			if(1) //1% chance to turn a generic mouse into a boommouse
+				new /mob/living/simple_animal/mouse/boommouse(src.loc)
+				qdel(src)
+			if(2) //1% chance to turn a generic mouse into a bigmouse
+				new /mob/living/simple_animal/hostile/bigmouse(src.loc)
+				qdel(src)
 
 /mob/living/simple_animal/mouse/proc/splat()
 	src.health = 0
@@ -211,3 +215,64 @@
 	return ..()
 
 	//TODO - look into attacked_by to make this better and less shitcode
+
+/mob/living/simple_animal/hostile/bigmouse
+	name = "oversized mouse"
+	desc = "The one who makes all the rules. You should probably just let it be."
+	icon = 'icons/mob/animal.dmi'
+	icon_state = "mouse_gray"
+	icon_living = "mouse_gray"
+	icon_dead = "mouse_gray_dead"
+	speak = list("Skree!","SKREEE!","Squeak?")
+	speak_emote = list("squeaks")
+	emote_hear = list("Hisses.")
+	emote_see = list("runs in a circle.", "stands on its hind legs.")
+	melee_damage_lower = 15
+	melee_damage_upper = 5
+	response_help  = "pets"
+	obj_damage = 9
+	speak_chance = 1
+	turns_per_move = 5
+	see_in_dark = 6
+	maxHealth = 80
+	health = 80
+	butcher_results = list(/obj/item/reagent_containers/food/snacks/meat/slab = 1)
+	attack_sound = 'sound/weapons/bladeslice.ogg'
+	density = FALSE
+	ventcrawler = VENTCRAWLER_ALWAYS
+	pass_flags = PASSTABLE | PASSMOB
+	mob_size = MOB_SIZE_HUMAN
+	mob_biotypes = MOB_ORGANIC|MOB_BEAST
+	faction = list("neutral", "rat")
+	size_multiplier = 2
+	gold_core_spawnable = HOSTILE_SPAWN
+
+/mob/living/simple_animal/hostile/bigmouse/Initialize()
+	var/matrix/M = matrix()
+	M.Scale(size_multiplier)
+	M.Translate(0, 16*(size_multiplier-1)) //translate by 16 * size_multiplier - 1 on Y axis
+	src.transform = M
+	. = ..()
+
+/mob/living/simple_animal/hostile/bigmouse/attack_hand(mob/living/carbon/M)
+	..()
+	if(client)
+		return
+	if(M.a_intent == INTENT_HARM)
+		faction = list("hostile", "rat")
+	return
+
+/mob/living/simple_animal/hostile/bigmouse/attack_paw(mob/living/carbon/monkey/M)
+	return attack_hand(M)
+
+/mob/living/simple_animal/hostile/bigmouse/attack_alien(mob/living/carbon/alien/M)
+	return attack_hand(M)
+
+/mob/living/simple_animal/hostile/bigmouse/attack_animal(mob/living/simple_animal/M)
+	. = ..()
+	faction = list("hostile", "rat")
+
+/mob/living/simple_animal/hostile/bigmouse/death(gibbed)
+	. = ..()
+	gib()
+	
