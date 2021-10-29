@@ -3092,6 +3092,7 @@
 #include "hyperstation\code\datums\weather\oxygen_rain.dm"
 #include "hyperstation\code\game\machinery\lore_terminal.dm"
 #include "hyperstation\code\game\objects\railings.dm"
+#include "hyperstation\code\game\objects\items\coconutcannon.dm"
 #include "hyperstation\code\game\objects\items\cosmetics.dm"
 #include "hyperstation\code\game\objects\items\storage\big_bag.dm"
 #include "hyperstation\code\game\objects\structures\bench.dm"
