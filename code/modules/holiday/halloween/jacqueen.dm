@@ -50,6 +50,8 @@
 	/obj/singularity,
 	/obj/structure/destructible/clockwork/massive/ratvar,
 	/obj/item/projectile,
+	/obj/item/gun,
+	/obj/item/antag_spawner,
 	/obj/effect,
 	/obj/belly,
 	/obj/decal,
