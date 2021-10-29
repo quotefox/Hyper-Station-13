@@ -33,6 +33,9 @@
 		var/obj/item/organ/genital/penis/P = o.getorganslot("penis")
 		to_chat(o, "<span class='warning'>You feel your tallywacker shrinking away from your body as your groin flattens out!</b></span>")
 		P.Remove(o)
+	if(girth_ratio == null)
+		girth_ratio = COCK_GIRTH_RATIO_DEF
+		o.update_genitals()
 	switch(round(cached_length))
 		if(0 to 4) //If modest size
 			length = cached_length
