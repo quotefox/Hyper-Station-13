@@ -378,8 +378,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["job_engsec_low"]		>> job_engsec_low
 
 	//Antags
-	if(!(toggles & ANTAG_SYNC_WITH_CHARS))
-		S["special_roles"]		>> be_special
+	S["special_roles"]		>> be_special
 
 	//Quirks
 	S["all_quirks"]			>> all_quirks
@@ -638,8 +637,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["medical_records"]		, medical_records)
 
 	//Misc.
-	if(!(toggles & ANTAG_SYNC_WITH_CHARS))
-		WRITE_FILE(S["special_roles"]		, be_special)		//Preferences don't load every character change
+	WRITE_FILE(S["special_roles"]		, be_special)		//Preferences don't load every character change
 	WRITE_FILE(S["hide_ckey"]			, hide_ckey)
 	WRITE_FILE(S["all_quirks"]			, all_quirks)
 
