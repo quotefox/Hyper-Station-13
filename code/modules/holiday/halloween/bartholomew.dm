@@ -53,7 +53,7 @@
     if(!active)
         say("Meow!")
         return
-    say("Hello there, I'm Bartholomew, the pumkin witch's Familiar.")
+    say("Hello there, I'm Bartholomew, the pumpkin witch's Familiar.")
     sleep(20)
 
     say("I'm currently seeking items to put into my pot, if we get the right items, it should crystalise into a magic candy!")
