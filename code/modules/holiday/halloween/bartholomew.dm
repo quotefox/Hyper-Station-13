@@ -74,7 +74,7 @@
     say("[message]")
     sleep(15)
     if(prob(5))
-        say("Also, Jacqueen kinda got arrested for not paying taxes, if you're looking for her. But don't worry, we've plenty of candy to make.")
+        say("Also, Jacqueen kinda got arrested for committing tax fraud if you're looking for her. But don't worry, we've plenty of candy to make!")
     /*//To help people find her
     for(var/mob/living/simple_animal/jacq/J in GLOB.simple_animals[1])
         var/turf/L1 = J.loc
