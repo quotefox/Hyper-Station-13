@@ -7,7 +7,6 @@
 	/mob/living/simple_animal/hostile/boss/paper_wizard,
 	/mob/living/simple_animal/hostile/megafauna,
 	/mob/living/simple_animal/hostile/poison/bees,
-	/mob/living/simple_animal/jacq,
 	/mob/living/simple_animal/slime))
 
 /datum/round_event_control/sentience
