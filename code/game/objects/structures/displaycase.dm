@@ -90,6 +90,7 @@
 
 /obj/structure/displaycase/obj_break(damage_flag)
 	. = ..()
+	dump()
 	if(!broken && !(flags_1 & NODECONSTRUCT_1))
 		density = FALSE
 		broken = TRUE
