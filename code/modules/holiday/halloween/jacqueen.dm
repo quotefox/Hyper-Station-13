@@ -116,7 +116,7 @@
 	for(var/obj/machinery/holopad/hp in world)
 		hp_list += hp
 
-	var/allowed_areas = list("Primary Hallway")
+	var/allowed_areas = list("Primary Hallway", "Library")
 
 	for(var/i = 0, i <= 6, i+=1) //Attempts a jump 6 times.
 		var/obj/machinery/holopad/hp = pick(hp_list)
