@@ -185,14 +185,6 @@ All assets including icons and sound are under a [Creative Commons 3.0 BY-SA lic
   </div>
 Follow the README below to get started!
 
-
-# TODOs List  ✅ 
-This is the TODO list  Website 🔥   
-Happy Hacking!  😊
-
-🔗   **Link** :- https://akashmarkad.github.io/TODOs-List/
-
-
 ## The Process
 1. Fork this repository
 2. Run `git clone [your repo url goes here]`
