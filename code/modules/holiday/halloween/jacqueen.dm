@@ -118,20 +118,20 @@
 	for(var/obj/machinery/holopad/hp in world)
 		hp_list += hp
 
-	var/allowed_areas = list("Primary Hallway", "Library")
+	var/nono_areas = list("AI ")
 
 	for(var/i = 0, i <= 6, i+=1) //Attempts a jump 6 times.
 		var/obj/machinery/holopad/hp = pick(hp_list)
 		if(forceMove(pick(hp.loc)))
 
 			var/jacq_please_no = FALSE
-			for(var/allowed_area in allowed_areas)
+			for(var/no_area in nono_areas)
 				var/turf/L1 = hp.loc
 				if(!L1) //Incase the area isn't a turf (i.e. in a locker)
 					continue
 				var/area/L2 = L1.loc
 				if(L2)
-					if(!findtext(L2.name, allowed_area))
+					if(findtext(L2.name, no_area))
 						jacq_please_no = TRUE
 
 			if(jacq_please_no)
