@@ -594,8 +594,8 @@
 	name = "Sentient Disease"
 	//config_tag = "sentient_disease"
 	typepath = /datum/round_event/ghost_role/sentient_disease
-	enemy_roles = list("Virologist","Chief Medical Officer","Chemist")
-	required_enemies = list(2,2,2,1,1,1,1,0,0,0)
+	enemy_roles = list("Virologist","Chief Medical Officer")
+	required_enemies = list(2,2,2,1,1,1,1,1,1,1)
 	required_candidates = 1
 	weight = 2
 	cost = 5
