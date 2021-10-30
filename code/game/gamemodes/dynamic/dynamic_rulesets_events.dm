@@ -604,7 +604,7 @@
 	//property_weights = list("story_potential" = 1, "extended" = 1, "valid" = -2)
 	high_population_requirement = 5
 	occurances_max = 1
-	chaos_min = 2
+	chaos_min = 3
 
 /datum/dynamic_ruleset/event/revenant
 	name = "Revenant"
