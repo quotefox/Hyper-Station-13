@@ -105,12 +105,12 @@
 
 /datum/weather/lithium_aurora/proc/tick()
 	activeFor++
-	if(activeFor % 5 == 0)
-		aurora_progress++
-		if(aurora_progress > LAZYLEN(aurora_colors))
-			aurora_progress = 1
-		var/aurora_color = aurora_colors[aurora_progress]
-		for(var/turf/S in applicable_areas)
-			S.set_light(l_color = aurora_color)
 	if(!ended)
+		if(activeFor % 5 == 0)
+			aurora_progress++
+			if(aurora_progress > LAZYLEN(aurora_colors))
+				aurora_progress = 1
+			var/aurora_color = aurora_colors[aurora_progress]
+			for(var/turf/S in applicable_areas)
+				S.set_light(l_color = aurora_color)
 		addtimer(CALLBACK(src, .proc/tick), 10)
