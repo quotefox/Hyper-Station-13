@@ -42,3 +42,6 @@
 		var/obj/item/flashlight/F = I
 		F.on = TRUE
 		F.update_brightness()
+
+/obj/item/vending_refill/security
+	icon_state = "refill_games"

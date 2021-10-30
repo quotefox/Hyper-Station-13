@@ -37,7 +37,7 @@
 /obj/machinery/vending/kink
 	name = "\improper KinkMate"
 	desc = "A vending machine for all your unmentionable desires."
-	icon = 'icons/obj/citvending.dmi'
+	icon = 'icons/obj/vending.dmi'
 	icon_state = "kink"
 	product_slogans = "Kinky!;Sexy!;Check me out, big boy!"
 	vend_reply = "Have fun, you shameless pervert!"
@@ -95,7 +95,7 @@
 /obj/machinery/vending/sovietvend
 	name = "KomradeVendtink"
 	desc = "Rodina-mat' zovyot!"
-	icon = 'icons/obj/citvending.dmi'
+	icon = 'icons/obj/vending.dmi'
 	icon_state = "soviet"
 	vend_reply = "The fascist and capitalist svin'ya shall fall, komrade!"
 	product_slogans = "Quality worth waiting in line for!; Get Hammer and Sickled!; Sosvietsky soyuz above all!; With capitalist pigsky, you would have paid a fortunetink! ; Craftink in Motherland herself!"
@@ -128,7 +128,6 @@
 
 /obj/item/vending_refill/kink
 	machine_name 	= "KinkMate"
-	icon			= 'modular_citadel/icons/vending_restock.dmi'
 	icon_state 		= "refill_kink"
 
 /obj/item/vending_refill/soviet

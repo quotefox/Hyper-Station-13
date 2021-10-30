@@ -35,7 +35,7 @@ GLOBAL_VAR_INIT(vending_m_choices, list(
 	"ClothesMate"								= image(icon = 'icons/obj/vending.dmi', icon_state = "clothes"),
 	"NanoMed Plus"								= image(icon = 'icons/obj/vending.dmi', icon_state = "med"),
 	"NanoMed"									= image(icon = 'icons/obj/vending.dmi', icon_state = "wallmed"),
-	"KinkMate"									= image(icon = 'icons/obj/citvending.dmi', icon_state = "kink"),
+	"KinkMate"									= image(icon = 'icons/obj/vending.dmi', icon_state = "kink"),
 ))
 // This GLOBAL list is just here to be here.
 GLOBAL_VAR_INIT(vending_machines, list(
