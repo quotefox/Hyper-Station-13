@@ -8,6 +8,7 @@
 #define JACQ_DATE (1<<6)
 
 /////// EVENT
+/*
 /datum/round_event_control/jacqueen
 	name = "Jacqueline's visit"
 	holidayID = "jacqueen"
@@ -25,7 +26,7 @@
 	for(var/obj/effect/landmark/barthpot/bp in GLOB.landmarks_list)
 		new /obj/item/barthpot(bp.loc)
 		new /mob/living/simple_animal/jacq(bp.loc)
-
+*/
 /////// MOBS
 
 //Whacha doing in here like? Yae wan tae ruin ta magicks?
@@ -468,14 +469,3 @@
 	s.set_up(src.reagents, 3, src.loc)
 	s.start()
 	qdel(src)
-
-//Candies
-/obj/item/reagent_containers/food/snacks/special_candy
-	name = "Magic candy"
-	icon = 'icons/obj/halloween_items.dmi'
-	icon_state = "jacq_candy"
-	desc = "A candy with strange magic within. Be careful, as the magic isn't always helpful."
-
-/obj/item/reagent_containers/food/snacks/special_candy/Initialize()
-	.=..()
-	reagents.add_reagent(get_random_reagent_id(), 5)

@@ -1,3 +1,21 @@
+/datum/round_event_control/bartholomew
+	name = "Bartholomew's visit"
+	holidayID = "Bartholomew"
+	typepath = /datum/round_event/bartholomew
+	weight = -1							//forces it to be called, regardless of weight
+	max_occurrences = 1
+	earliest_start = 0 MINUTES
+
+/datum/round_event/bartholomew/start()
+	..()
+
+	for(var/mob/living/carbon/human/H in GLOB.carbon_list)
+		playsound(H, 'sound/spookoween/ahaha.ogg', 100, 0.25)
+
+	for(var/obj/effect/landmark/barthpot/bp in GLOB.landmarks_list)
+		new /obj/item/barthpot(bp.loc)
+		//new /mob/living/simple_animal/jacq(bp.loc)
+
 /obj/effect/landmark/barthpot
     name = "barthpot"
 
@@ -35,7 +53,7 @@
     if(!active)
         say("Meow!")
         return
-    say("Hello there, I'm Bartholomew, Jacqueline's Familiar.")
+    say("Hello there, I'm Bartholomew, the pumpkin witch's Familiar.")
     sleep(20)
 
     say("I'm currently seeking items to put into my pot, if we get the right items, it should crystalise into a magic candy!")
@@ -55,14 +73,16 @@
     sleep(15)
     say("[message]")
     sleep(15)
-    //To help people find her
+    if(prob(5))
+        say("Also, Jacqueen kinda got arrested for committing tax fraud if you're looking for her. But don't worry, we've plenty of candy to make!")
+    /*//To help people find her
     for(var/mob/living/simple_animal/jacq/J in GLOB.simple_animals[1])
         var/turf/L1 = J.loc
         if(!L1) //Incase someone uh.. puts her in a locker
             return
         var/area/L2 = L1.loc
         if(L2)
-            say("Also, it seems that Jacqueline is currently at the [L2], if you're looking for her too.")
+            say("Also, it seems that Jacqueline is currently at the [L2], if you're looking for her too.")*/
 
 /obj/item/barthpot/proc/generate_items()
     var/length = LAZYLEN(items_list)
@@ -148,6 +168,18 @@
         items_list += item
     return TRUE
 
+//Candies
+/obj/item/reagent_containers/food/snacks/special_candy
+	name = "Magic candy"
+	icon = 'icons/obj/halloween_items.dmi'
+	icon_state = "jacq_candy"
+	desc = "A candy with strange magic within. Be careful, as the magic isn't always helpful."
+
+/obj/item/reagent_containers/food/snacks/special_candy/Initialize()
+	.=..()
+	reagents.add_reagent(get_random_reagent_id(), 5)
+
+/*
 /obj/item/pinpointer/jacq
     name = "The Jacq-Tracq"
     desc = "A handheld tracking device that locks onto witchy signals."
@@ -156,3 +188,4 @@
 	for(var/mob/living/simple_animal/jacq/J in GLOB.simple_animals[1])
 		target = J
 	..()
+*/
