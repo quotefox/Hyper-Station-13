@@ -610,8 +610,8 @@
 	name = "Revenant"
 	//config_tag = "revenant"
 	typepath = /datum/round_event/ghost_role/revenant
-	enemy_roles = list("Chief Engineer","Station Engineer","Chaplain")
-	required_enemies = list(2,1,1,1,1,1,1,1,0,0)
+	enemy_roles = list("Security Officer","Head of Security","Chaplain")
+	required_enemies = list(2,1,1,1,1,1,1,1,1,1)
 	required_candidates = 1
 	weight = 4
 	cost = 5
@@ -619,7 +619,7 @@
 	high_population_requirement = 15
 	//property_weights = list("story_potential" = -2, "extended" = -1)
 	occurances_max = 1 //Skyrat change.
-	chaos_min = 1.9
+	chaos_min = 2
 
 /datum/dynamic_ruleset/event/immovable_rod
 	name = "Immovable Rod"
