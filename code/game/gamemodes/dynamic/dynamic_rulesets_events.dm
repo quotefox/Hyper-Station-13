@@ -594,8 +594,8 @@
 	name = "Sentient Disease"
 	//config_tag = "sentient_disease"
 	typepath = /datum/round_event/ghost_role/sentient_disease
-	enemy_roles = list("Virologist","Chief Medical Officer","Chemist")
-	required_enemies = list(2,2,2,1,1,1,1,0,0,0)
+	enemy_roles = list("Virologist","Chief Medical Officer")
+	required_enemies = list(2,2,2,1,1,1,1,1,1,1)
 	required_candidates = 1
 	weight = 2
 	cost = 5
@@ -604,7 +604,7 @@
 	//property_weights = list("story_potential" = 1, "extended" = 1, "valid" = -2)
 	high_population_requirement = 5
 	occurances_max = 1
-	chaos_min = 2
+	chaos_min = 3
 
 /datum/dynamic_ruleset/event/revenant
 	name = "Revenant"
