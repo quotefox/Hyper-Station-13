@@ -11,7 +11,7 @@
  * Pens
  */
 /obj/item/pen
-	desc = "It's a black ink pen, modified for use with both paper and Nanotransen-brand Digital-Readpads™!"
+	desc = "It's a black ink pen, modified for use with both paper and Kinaris-brand Digital-Readpads™!"
 	name = "pen"
 	icon = 'icons/obj/bureaucracy.dmi'
 	icon_state = "pen"
