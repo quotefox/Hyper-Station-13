@@ -33,12 +33,12 @@
 	return(BRUTELOSS)
 
 /obj/item/pen/blue
-	desc = "It's a blue ink pen, modified for use with both paper and Nanotransen-brand Digital-Readpads™!"
+	desc = "It's a blue ink pen, modified for use with both paper and Kinaris-brand Digital-Readpads™!"
 	icon_state = "pen_blue"
 	colour = "blue"
 
 /obj/item/pen/red
-	desc = "It's a red ink pen, modified for use with both paper and Nanotransen-brand Digital-Readpads™!"
+	desc = "It's a red ink pen, modified for use with both paper and Kinaris-brand Digital-Readpads™!"
 	icon_state = "pen_red"
 	colour = "red"
 
@@ -48,7 +48,7 @@
 	colour = "white"
 
 /obj/item/pen/fourcolor
-	desc = "It's a fancy four-color ink pen, set to black. Modified to be compatible with Nanotransen-brand Digital-Readpads™"
+	desc = "It's a fancy four-color ink pen, set to black. Modified to be compatible with Kinaris-brand Digital-Readpads™"
 	name = "four-color pen"
 	colour = "black"
 
