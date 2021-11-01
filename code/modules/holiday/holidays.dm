@@ -324,7 +324,7 @@
 	name = HALLOWEEN
 	begin_day = 28
 	begin_month = OCTOBER
-	end_day = 2
+	end_day = 1
 	end_month = NOVEMBER
 
 /datum/holiday/halloween/greet()
