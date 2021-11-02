@@ -11,10 +11,20 @@
 					/obj/item/reagent_containers/food/snacks/no_raisin = 6,
 					/obj/item/reagent_containers/food/snacks/spacetwinkie = 6,
 					/obj/item/reagent_containers/food/snacks/cheesiehonkers = 6,
-					/obj/item/reagent_containers/food/snacks/bird_seed =6,
+					/obj/item/reagent_containers/food/snacks/cornchips = 5,
+					/obj/item/reagent_containers/food/snacks/bird_seed = 6,
 					/obj/item/reagent_containers/food/snacks/soyfood = 6)
-	contraband = list(/obj/item/reagent_containers/food/snacks/syndicake = 6)
-	premium = list(/obj/item/storage/box/donkpockets = 1,
+	contraband = list(
+					/obj/item/reagent_containers/food/snacks/cracker = 10,
+					/obj/item/reagent_containers/food/snacks/honeybar = 5,
+					/obj/item/reagent_containers/food/snacks/syndicake = 5,
+					/obj/item/reagent_containers/food/snacks/beans = 2)
+	premium = list(
+					/obj/item/reagent_containers/food/snacks/lollipop = 2,
+					/obj/item/reagent_containers/food/snacks/spiderlollipop = 2,
+					/obj/item/reagent_containers/food/snacks/chococoin = 1,
+					/obj/item/storage/box/marshmallow = 1,
+					/obj/item/storage/box/donkpockets = 2,
 					/obj/item/reagent_containers/food/snacks/poppypretzel = 3,
 					/obj/item/reagent_containers/food/snacks/carbonnanotube_noodles = 4)
 
