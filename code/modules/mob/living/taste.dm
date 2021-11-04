@@ -46,10 +46,6 @@
 	if ((from.pH > 12.5) || (from.pH < 1.5))
 		to_chat(src, "<span class='warning'>You taste chemical burns!</span>")
 		T.applyOrganDamage(5)
-	if(istype(T, /obj/item/organ/tongue/cybernetic) && T.owner?.stat != DEAD)
-		to_chat(src, "<span class='notice'>Your tongue moves on it's own in response to the liquid.</span>")
-		say("The pH is appropriately [round(from.pH, 1)].")
-		return
 	if (!HAS_TRAIT(src, TRAIT_AGEUSIA)) //I'll let you get away with not having 1 damage.
 		if(last_ph_taste_time + 50 < world.time)
 			var/ph_taste_number
