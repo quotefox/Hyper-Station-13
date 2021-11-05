@@ -27,29 +27,6 @@ SUBSYSTEM_DEF(statpanels)
 			var/ETA = SSshuttle.emergency.getModeStr()
 			if(ETA)
 				global_data += "[ETA] [SSshuttle.emergency.getTimerStr()]"
-/* Please fix
-		if(SSvote.mode)
-			var/static/list/supported = list(PLURALITY_VOTING, APPROVAL_VOTING)
-			global_data += "Vote active!, There is currently a vote running. Question: [SSvote.question]"
-			if(!(SSvote.vote_system in supported))
-				global_data += "<STATPANEL VOTING DISABLED>, The current vote system is not supported by statpanel rendering. Please vote manually by opening the vote popup using the action button or chat link."
-				return
-			global_data += "Time Left:, [round(SSvote.end_time - world.time)] seconds"
-		
-			global_data += "Choices:"
-			for(var/i in 1 to SSvote.choice_statclicks.len)
-				var/choice = SSvote.choice_statclicks[i]
-				var/ivotedforthis = FALSE
-				if(usr.ckey)
-					switch(SSvote.vote_system)
-						if(APPROVAL_VOTING)
-							ivotedforthis = SSvote.voted[usr.ckey] && (i in SSvote.voted[usr.ckey])
-						if(PLURALITY_VOTING)
-							ivotedforthis = SSvote.voted[usr.ckey] == i
-					
-					global_data += (ivotedforthis? "\[X\]" : "\[ \]", SSvote.choice_statclicks[choice])
-*/
-
 		encoded_global_data = url_encode(json_encode(global_data))
 		src.currentrun = GLOB.clients.Copy()
 		mc_data_encoded = null
