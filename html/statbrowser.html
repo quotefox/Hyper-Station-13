@@ -723,12 +723,11 @@ function update_examine(html,flavour,ooc) {
 	}
 
 function draw_examine() {
-	var statcontentdiv = document.getElementById("statcontent");
 	if(!document.getElementById("Examine")) {
 		createStatusTab("Examine");
 		current_tab = "Examine";
 	}
-	statcontentdiv[textContentKey] = inner;
+	statcontentdiv[textContentKey] = "";
 	document.getElementById("statcontent").innerHTML = examine_tab_parts;
 }
 
