@@ -2,6 +2,7 @@ SUBSYSTEM_DEF(statpanels)
 	name = "Stat Panels"
 	wait = 4
 	init_order = INIT_ORDER_STATPANELS
+	priority = FIRE_PRIORITY_STATPANEL
 	runlevels = RUNLEVELS_DEFAULT | RUNLEVEL_LOBBY
 	var/list/currentrun = list()
 	var/encoded_global_data
@@ -62,13 +63,13 @@ SUBSYSTEM_DEF(statpanels)
 			var/list/ahelp_tickets = GLOB.ahelp_tickets.stat_entry()
 			target << output("[url_encode(json_encode(ahelp_tickets))];", "statbrowser:update_tickets")
 			if(!length(GLOB.sdql2_queries))
-				target << output("", "statbrowser:remove_sqdl2")
+				target << output("", "statbrowser:remove_sdql2")
 			else
-				var/list/sqdl2A = list()
-				sqdl2A[++sqdl2A.len] = list("", "Access Global SDQL2 List", REF(GLOB.sdql2_vv_statobj))
-				var/list/sqdl2B = list()
-				sqdl2A += sqdl2B
-				target << output(url_encode(json_encode(sqdl2A)), "statbrowser:update_sqdl2")
+				var/list/sdql2A = list()
+				sdql2A[++sdql2A.len] = list("", "Access Global SDQL2 List", REF(GLOB.sdql2_vv_statobj))
+				var/list/sdql2B = list()
+				sdql2A += sdql2B
+				target << output(url_encode(json_encode(sdql2A)), "statbrowser:update_sdql2")
 		var/list/proc_holders = target.mob.get_proc_holders()
 		target.spell_tabs.Cut()
 		for(var/phl in proc_holders)
@@ -116,3 +117,35 @@ SUBSYSTEM_DEF(statpanels)
 				target << output("[turfitems];", "statbrowser:update_listedturf")
 		if(MC_TICK_CHECK)
 			return
+
+/// verbs that send information from the browser UI
+/client/verb/set_tab(tab as text|null)
+	set name = "Set Tab"
+	set hidden = TRUE
+
+	stat_tab = tab
+
+/client/verb/send_tabs(tabs as text|null)
+	set name = "Send Tabs"
+	set hidden = TRUE
+
+	panel_tabs |= tabs
+
+/client/verb/remove_tabs(tabs as text|null)
+	set name = "Remove Tabs"
+	set hidden = TRUE
+
+	panel_tabs -= tabs
+
+/client/verb/reset_tabs()
+	set name = "Reset Tabs"
+	set hidden = TRUE
+
+	panel_tabs = list()
+
+/client/verb/panel_ready()
+	set name = "Panel Ready"
+	set hidden = TRUE
+
+	statbrowser_ready = TRUE
+	init_verbs()
