@@ -87,7 +87,7 @@ li a:hover:not(.active) {
 	font-size: 12px;
 	margin: 2px 2px;
 	cursor: pointer;
-	border-radius: 0%;
+	border-radius: 5%;
 	transition-duration: 0.25s;
 	order: 3;
 }
@@ -146,12 +146,10 @@ li a:hover:not(.active) {
 .link:hover {
 	text-decoration: underline;
 }
-
 img {
 	-ms-interpolation-mode: nearest-neighbor;
 	image-rendering: pixelated;
 }
-
 </style>
 </head>
 <body>
@@ -250,7 +248,6 @@ if (window.location) {
 		if(e.which) {
 			anti_spam[e.which] = false;
 			var key = String.fromCharCode(e.which);
-
 			var x = event.x || event.clientX;
 			var y = event.y || event.clientY;
 			if( x || y ) // if either of these exist this is happening after a click
@@ -282,17 +279,16 @@ var spells = [];
 var spell_tabs = [];
 var verb_tabs = [];
 var verbs = [["", ""]]; // list with a list inside
-var inner = "";
 var tickets = [];
-var sqdl2 = [];
+var sdql2 = [];
 var permanent_tabs = []; // tabs that won't be cleared by wipes
 var turfcontents = [];
 var turfname = "";
-var imageRetryDelay = 50;
+var imageRetryDelay = 500;
 var imageRetryLimit = 50;
 var menu = document.querySelector('#menu');
 var under_menu = document.querySelector('#under_menu');
-var statcontentdiv = document.getElementById('statcontent');
+var statcontentdiv = document.querySelector('#statcontent');
 var storedimages = [];
 
 function createStatusTab(name) {
@@ -318,6 +314,7 @@ function createStatusTab(name) {
 	}
 	//END ORDERING
 	menu.appendChild(B);
+	SendTabToByond(name);
 	under_menu.style.height = menu.clientHeight + 'px';
 }
 
@@ -330,9 +327,8 @@ function removeStatusTab(name) {
 		}
 	}
 	menu.removeChild(document.getElementById(name));
+	TakeTabFromByond(name);
 	under_menu.style.height = menu.clientHeight + 'px';
-	if(document.getElementById(name)) // repeat for duplicates
-		removeStatusTab(name);
 }
 
 window.onresize = function () {
@@ -357,7 +353,7 @@ function removePermanentTab(name) {
 function checkStatusTab() {
 	for(var i=0; i < menu.children.length; i++)
 		if(!verb_tabs.includes(menu.children[i].id) && !permanent_tabs.includes(menu.children[i].id))
-			removeStatusTab(menu.children[i].id);
+			menu.removeChild(menu.children[i]);
 }
 
 function remove_verb(v) {
@@ -409,7 +405,6 @@ function findVerbindex(name, verblist) {
 			return i;
 	}
 }
-
 function wipe_verbs() {
 	verbs = [["", ""]];
 	verb_tabs = [];
@@ -470,6 +465,24 @@ function init_verbs(c, v) {
 			draw_verbs(current_tab);
 		}
 	}
+	SendTabsToByond();
+}
+
+function SendTabsToByond(){
+	var tabstosend = [];
+	tabstosend = tabstosend.concat(permanent_tabs, verb_tabs);
+	for(var i=0; i < tabstosend.length; i++){
+		SendTabToByond(tabstosend[i]);
+	}
+}
+
+function SendTabToByond(tab) {
+	window.location.href = "byond://winset?command=Send-Tabs " + tab;
+}
+
+//Byond can't have this tab anymore since we're removing it
+function TakeTabFromByond(tab) {
+	window.location.href = "byond://winset?command=Remove-Tabs " + tab;
 }
 
 function update(global_data, ping_entry, other_entries) {
@@ -484,10 +497,9 @@ function update(global_data, ping_entry, other_entries) {
 		draw_debug();
 }
 
-function update_mc(global_mc_data, coords_entry, ht) {
+function update_mc(global_mc_data, coords_entry) {
 	mc_tab_parts = JSON.parse(global_mc_data);
 	mc_tab_parts.splice(0,0,["Location:",coords_entry]);
-	href_token = ht;
 	if(!verb_tabs.includes("MC"))
 		verb_tabs.push("MC");
 	createStatusTab("MC");
@@ -557,6 +569,7 @@ function tab_change(tab) {
 	if(document.getElementById(current_tab))
 		document.getElementById(current_tab).className = "button"; // disable active on last button
 	current_tab = tab;
+	set_byond_tab(tab);
 	if(document.getElementById(tab))
 		document.getElementById(tab).className = "button active"; // make current button active
 	var spell_tabs_thingy = (spell_tabs.includes(tab));
@@ -573,21 +586,23 @@ function tab_change(tab) {
 		draw_debug();
 	} else if(tab == "Tickets") {
 		draw_tickets();
-	} else if(tab == "SQDL2") {
-		draw_sqdl2();
+	} else if(tab == "SDQL2") {
+		draw_sdql2();
 	} else if(tab == "Examine") {
 		draw_examine();
 	}else if(tab == turfname) {
 		draw_listedturf();
 	} else {
-		var statcontentdiv = document.getElementById("statcontent");
-		statcontentdiv[textContentKey] = "loading...";	
+		statcontentdiv[textContentKey] = "loading...";
 	}
 	window.location.href = "byond://winset?statbrowser.is-visible=true";
 }
 
+function set_byond_tab(tab){
+	window.location.href = "byond://winset?command=Set-Tab " + tab;
+}
+
 function draw_debug() {
-	var statcontentdiv = document.getElementById("statcontent");
 	statcontentdiv[textContentKey] = "";
 	var wipeverbstabs = document.createElement("div");
 	var link = document.createElement("a");
@@ -646,12 +661,11 @@ function draw_debug() {
 
 }
 function draw_status() {
-	var statcontentdiv = document.getElementById("statcontent");
 	if(!document.getElementById("Status")) {
 		createStatusTab("Status");
 		current_tab = "Status";
 	}
-	statcontentdiv[textContentKey] = inner;
+	statcontentdiv[textContentKey] = '';
 	for(var i = 0; i < status_tab_parts.length; i++) {
 		if(status_tab_parts[i].trim() == "") {
 			document.getElementById("statcontent").appendChild(document.createElement("br"));
@@ -668,7 +682,6 @@ function draw_status() {
 }
 
 function draw_mc() {
-	var statcontentdiv = document.getElementById("statcontent");
 	statcontentdiv[textContentKey] = "";
 	var table = document.createElement("table");
 	for(var i = 0; i < mc_tab_parts.length; i++) {
@@ -692,18 +705,16 @@ function draw_mc() {
 	document.getElementById("statcontent").appendChild(table);
 }
 
-
 function update_examine(html,flavour,ooc) {
 	examine_tab_parts = html
 	}
 
 function draw_examine() {
-	var statcontentdiv = document.getElementById("statcontent");
 	if(!document.getElementById("Examine")) {
 		createStatusTab("Examine");
 		current_tab = "Examine";
 	}
-	statcontentdiv[textContentKey] = inner;
+	statcontentdiv[textContentKey] = "";
 	document.getElementById("statcontent").innerHTML = examine_tab_parts;
 }
 
@@ -716,21 +727,21 @@ function update_tickets(T){
 	if(current_tab == "Tickets")
 		draw_tickets();
 }
-function update_sqdl2(S) {
-	sqdl2 = JSON.parse(S);
-	if(sqdl2.length > 0 && !verb_tabs.includes("SQDL2")) {
-		verb_tabs.push("SQDL2");
-		addPermanentTab("SQDL2");
+function update_sdql2(S) {
+	sdql2 = JSON.parse(S);
+	if(sdql2.length > 0 && !verb_tabs.includes("SDQL2")) {
+		verb_tabs.push("SDQL2");
+		addPermanentTab("SDQL2");
 	}
-	if(current_tab == "SQDL2")
-		draw_sqdl2();
+	if(current_tab == "SDQL2")
+		draw_sdql2();
 }
 
-function remove_sqdl2() {
-	if(sqdl2) {
-		sqdl2 = [];
-		removePermanentTab("SQDL2");
-		if(current_tab == "SQDL2")
+function remove_sdql2() {
+	if(sdql2) {
+		sdql2 = [];
+		removePermanentTab("SDQL2");
+		if(current_tab == "SDQL2")
 			tab_change("Status");
 	}
 	checkStatusTab();
@@ -747,9 +758,16 @@ function remove_tickets() {
 }
 // removes MC, Tickets and MC tabs.
 function remove_admin_tabs() {
+	href_token = null;
 	remove_mc();
 	remove_tickets();
-	remove_sqdl2();
+	remove_sdql2();
+}
+
+function add_admin_tabs(ht) {
+	href_token = ht;
+	addPermanentTab("MC");
+	addPermanentTab("Tickets");
 }
 
 //mob examine
@@ -766,7 +784,6 @@ function remove_mobexamine() {
 		tab_change("Status");
 }
 
-
 //turf
 
 function create_listedturf(TN) {
@@ -781,7 +798,7 @@ function update_listedturf(TC) {
 		draw_listedturf();
 }
 
-function iconError(E) {
+function iconError() {
 	var that = this;
 	setTimeout(function() {
 		var current_attempts = that.id; // a bit of a hack, change this if we need to call on img id's later
@@ -854,12 +871,11 @@ function remove_listedturf() {
 	if(current_tab == turfname)
 		tab_change("Status");
 }
-function draw_sqdl2(){
-	var statcontentdiv = document.getElementById("statcontent");
+function draw_sdql2(){
 	statcontentdiv[textContentKey] = "";
 	var table = document.createElement("table");
-	for(var i = 0; i < sqdl2.length; i++) {
-		var part = sqdl2[i];
+	for(var i = 0; i < sdql2.length; i++) {
+		var part = sdql2[i];
 		var tr = document.createElement("tr");
 		var td1 = document.createElement("td");
 		td1[textContentKey] = part[0];
@@ -880,7 +896,6 @@ function draw_sqdl2(){
 }
 
 function draw_tickets() {
-	var statcontentdiv = document.getElementById("statcontent");
 	statcontentdiv[textContentKey] = "";
 	var table = document.createElement("table");
 	if(!tickets)
@@ -912,7 +927,6 @@ function draw_tickets() {
 }
 
 function draw_spells(cat) {
-	var statcontentdiv = document.getElementById("statcontent");
 	statcontentdiv[textContentKey] = "";
 	var table = document.createElement("table");
 	for(var i = 0; i < spells.length; i++) {
@@ -938,7 +952,6 @@ function draw_spells(cat) {
 }
 
 function draw_verbs(cat){
-	var statcontentdiv = document.getElementById("statcontent");
 	statcontentdiv[textContentKey] = "";
 	var table = document.createElement("newdiv");
 	table.className = "grid-container";
@@ -967,14 +980,10 @@ function draw_verbs(cat){
 
 function set_theme(which) {
 	if (which == "light") {
-		document.body.style.backgroundColor = "white";
-		document.body.style.color = "black";
 		document.body.className = "";
 		set_style_sheet("browserOutput_white");
 		setCookie("theme", "white", 365);
-	} else if (which == "dark") {
-		document.body.style.backgroundColor = "#171717";
-		document.body.style.color = "#a4bad6";
+	} else if (which == "dark" || which == "default") {
 		document.body.className = "dark";
 		set_style_sheet("browserOutput");
 		setCookie("theme", "dark", 365);
@@ -1011,6 +1020,15 @@ document[addEventListenerKey]("click", function(e) {
 if(!current_tab) {
 	addPermanentTab("Status");
 	tab_change("Status");
+}
+
+window.onload = function() {
+	checkCookie();
+	NotifyByondOnload();
+	};
+
+function NotifyByondOnload() {
+	window.location.href = "byond://winset?command=Panel-Ready";
 }
 
 function create_debug(){
@@ -1050,6 +1068,5 @@ function getCookie(cname) {
 	return '';
 }
 </script>
-<body onload="checkCookie()"></body>
 </body>
 </html>
