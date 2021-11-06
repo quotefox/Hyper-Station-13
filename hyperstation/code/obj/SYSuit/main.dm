@@ -8,37 +8,18 @@
 	name = "SYTech Nanoweave suit"
 	desc = "A leading-grade suit developed by SYTech, with an internal dampening field to lessen accidents at micro scales. This one seems to be more skimpy and developed for bedroom-play, though."
 	icon = 'hyperstation/icons/obj/clothing/uniforms.dmi'
-	icon_state = "sysuit"
-	item_state = "sysuit"
-	alternate_worn_icon = 'hyperstation/icons/mobs/uniforms.dmi'
+	icon_state = "syclothing"
+	item_state = "syclothing"
+	//alternate_worn_icon = 'hyperstation/icons/mobs/uniforms.dmi'
 	armor = list("melee" = 90, "bullet" = 25, "laser" = 5, "energy" = 15, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 75, "acid" = 90)
 	do_not_cover_butt = TRUE
 	can_adjust = FALSE
-
-//The overcoat
-/obj/item/clothing/suit/toggle/sysuit
-	name = "SYTech Nanoweave overcoat"
-	desc = "An overcoat complimenting a SYTech suit. Can be worn in different ways, but is required for the function of the Nanoweave tech. This one is incredibly revealing, oddly enough."
-	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
-	icon_state = "sysuit"
-	item_state = "sysuit"
-	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
-	//togglename = "toggle"
-	body_parts_covered = CHEST|ARMS|LEGS
-	cold_protection = CHEST|GROIN|LEGS|ARMS
-	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	strip_delay = 70
-	equip_delay_other = 40
-	max_integrity = 250
-	resistance_flags = FLAMMABLE
-	armor = list("melee" = 90, "bullet" = 25, "laser" = 5, "energy" = 15, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 75, "acid" = 90)
 
 	actions_types = list(/datum/action/item_action/initialize_sysuit)
 
 	//var/obj/whateverkinkyitemiputhere
 
 	//The whole getup needs to be worn! Variables referenced for later
-	var/obj/item/clothing/under/syclothing/sy_clothing
 	var/obj/item/clothing/head/sycap/sy_cap
 	var/obj/item/clothing/glasses/hud/toggle/syvisor/sy_visor
 	var/obj/item/clothing/shoes/syshoes/sy_shoes
@@ -51,18 +32,39 @@
 	var/s_busy = FALSE
 	var/mob/living/carbon/affecting //???? i hate byond
 
-/obj/item/clothing/suit/toggle/sysuit/examine(mob/user)
+/obj/item/clothing/under/syclothing/examine(mob/user)
 	. = ..()
 	if(s_initialized && user == affecting)
 		. += "All systems operational. Currently online and functioning." //Add more data to this later
+
+//The overcoat - removed cause i was a little too lazy to make a proper sprite for it lmao
+/*
+/obj/item/clothing/suit/toggle/sysuit
+	name = "SYTech Nanoweave overcoat"
+	desc = "An overcoat complimenting a SYTech suit. Can be worn in different ways, but is required for the function of the Nanoweave tech. This one is incredibly revealing, oddly enough."
+	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
+	icon_state = "sysuit"
+	item_state = "sysuit"
+	//alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
+	togglename = "zipper"
+	body_parts_covered = CHEST|ARMS|LEGS
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+	strip_delay = 70
+	equip_delay_other = 40
+	max_integrity = 250
+	resistance_flags = FLAMMABLE
+	armor = list("melee" = 90, "bullet" = 25, "laser" = 5, "energy" = 15, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 75, "acid" = 90)
+*/
+
 
 //The cap
 /obj/item/clothing/head/sycap
 	name = "SYTech Nanoweave cap"
 	desc = "A piece of clothing for a SYTech suit, allowing for extended control and breathability at micro scales via amplified hardlight respiration. This one seems to be modeled like a dominatrix cap, however."
 	icon = 'hyperstation/icons/obj/clothing/head.dmi'
-	icon_state = "syhat"
-	item_state = "syhat"
+	icon_state = "sycap"
+	item_state = "sycap"
 	alternate_worn_icon = 'hyperstation/icons/mobs/head.dmi'
 	armor = list("melee" = 90, "bullet" = 25, "laser" = 5, "energy" = 15, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 75, "acid" = 90)
 	cold_protection = HEAD
@@ -73,7 +75,7 @@
 	var/cloaked = 0
 
 /obj/item/clothing/head/sycap/dropped()
-	src.icon_state = "syhat"
+	src.icon_state = "sycap"
 	src.cloaked=0
 	..()
 
@@ -96,10 +98,10 @@
 	if(!user.incapacitated())
 		src.cloaked = !src.cloaked
 		if(src.cloaked)
-			icon_state = "syhat_active"
+			icon_state = "sycap_active"
 			to_chat(user, "<span class='notice'>You toggle the hat\'s cloaking.</span>")
 		else
-			icon_state = "syhat"
+			icon_state = "sycap"
 			to_chat(user, "<span class='notice'>You reveal the hat again.</span>")
 		usr.update_inv_head()	//so our mob-overlays update
 
@@ -160,10 +162,10 @@
 /obj/item/clothing/shoes/syshoes
 	name = "SYTech Nanoweave platform heels"
 	desc = "A complimentary piece of SYTech apparel for gravity-altering applications. It even allows you to walk up walls! This pair takes on the appearance of skimpy, thigh-high latex boots with stilletos."
-	icon_state = "sysuit"
-	item_state = "sysuit"
+	icon_state = "syshoes"
+	item_state = "syshoes"
 	icon = 'hyperstation/icons/obj/clothing/shoes.dmi'
-	alternate_worn_icon = 'hyperstation/icons/mobs/feet.dmi'
+	//alternate_worn_icon = 'hyperstation/icons/mobs/feet.dmi'
 
 /obj/item/clothing/shoes/syshoes/Initialize()
 	. = ..()
@@ -173,8 +175,8 @@
 /obj/item/clothing/gloves/sygloves
 	name = "SYTech Nanoweave sleeves"
 	desc = "A pair of enhanced sleeves, developed by SYTech. These allow remote and psionic levels of manipulation to the electrical currents inside living beings, or objects. Use with caution!"
-	icon_state = "sysuit"
-	item_state = "sysuit"
+	icon_state = "sygloves"
+	item_state = "sygloves"
 	icon = 'hyperstation/icons/obj/clothing/gloves.dmi'
 	alternate_worn_icon = 'hyperstation/icons/mobs/gloves.dmi'
 	cold_protection = HANDS
@@ -183,3 +185,4 @@
 	max_heat_protection_temperature = GLOVES_MAX_TEMP_PROTECT
 	strip_delay = 120
 	resistance_flags = LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+	mutantrace_variation = NO_MUTANTRACE_VARIATION

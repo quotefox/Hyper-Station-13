@@ -2,7 +2,7 @@
 //Lord forgive me because I'm mostly referencing the ninja suit, and it's kind of messy.
 
 
-/obj/item/clothing/suit/toggle/sysuit/proc/lock_suit(mob/living/carbon/human/H)
+/obj/item/clothing/under/syclothing/proc/lock_suit(mob/living/carbon/human/H)
     //there is certainly a better way to do this, but again, referencing ninja code for now
     //First we make the checks for correct clothing being present
 	if(!istype(H))
@@ -19,9 +19,6 @@
 	if(!istype(H.gloves, /obj/item/clothing/gloves/sygloves))
 		to_chat(H, "<span class='userdanger'>ERROR</span>: 110223 UNABLE TO LOCATE HAND GEAR\nABORTING...")
 		return FALSE
-	if(!istype(H.w_uniform, /obj/item/clothing/under/syclothing))
-		to_chat(H, "<span class='userdanger'>ERROR</span>: 140021 UNABLE TO LOCATE BASE GEAR\nABORTING...")
-		return FALSE
     //Now we prevent them from being removed
 	affecting = H
 	ADD_TRAIT(src, TRAIT_NODROP, SYTECH_SUIT_TRAIT) //apply to the suit itself
@@ -33,12 +30,10 @@
 	ADD_TRAIT(sy_shoes, TRAIT_NODROP, SYTECH_SUIT_TRAIT)
 	sy_gloves = H.gloves
 	ADD_TRAIT(sy_gloves, TRAIT_NODROP, SYTECH_SUIT_TRAIT)
-	sy_clothing = H.w_uniform
-	ADD_TRAIT(sy_clothing, TRAIT_NODROP, SYTECH_SUIT_TRAIT)
 	return TRUE
 
 //this hurts my eyes to look at
-/obj/item/clothing/suit/toggle/sysuit/proc/unlock_suit()
+/obj/item/clothing/under/syclothing/proc/unlock_suit()
     affecting = null
     REMOVE_TRAIT(src, TRAIT_NODROP, SYTECH_SUIT_TRAIT)
     if(sy_cap)
@@ -49,10 +44,8 @@
         REMOVE_TRAIT(sy_shoes, TRAIT_NODROP, SYTECH_SUIT_TRAIT)
     if(sy_gloves)
         REMOVE_TRAIT(sy_gloves, TRAIT_NODROP, SYTECH_SUIT_TRAIT)
-    if(sy_clothing)
-        REMOVE_TRAIT(sy_clothing, TRAIT_NODROP, SYTECH_SUIT_TRAIT)
 
-/obj/item/clothing/suit/toggle/sysuit/ui_action_click(mob/user, action)
+/obj/item/clothing/under/syclothing/ui_action_click(mob/user, action)
 	if(istype(action, /datum/action/item_action/initialize_sysuit))
 		toggle_on_off()
 		return TRUE
