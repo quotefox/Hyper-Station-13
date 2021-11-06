@@ -40,7 +40,7 @@
 				if("plutonium")
 					R = new /obj/item/twohanded/required/fuel_rod/plutonium(loc)
 					R.depletion = depletion
-					if(prob(10))
+					if(prob(1))
 						R.name = "Plush-239 Fuel Rod"
 						R.desc = "Kinaris would like to remind you that it is not liable for any permanent radioactive damage done to its employees."
 						R.icon = 'hyperstation/icons/obj/plushes.dmi'
