@@ -12,6 +12,8 @@
 	item_state = "sysuit"
 	alternate_worn_icon = 'hyperstation/icons/mobs/uniforms.dmi'
 	armor = list("melee" = 90, "bullet" = 25, "laser" = 5, "energy" = 15, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 75, "acid" = 90)
+	do_not_cover_butt = TRUE
+	can_adjust = FALSE
 
 //The overcoat
 /obj/item/clothing/suit/toggle/sysuit
@@ -21,7 +23,7 @@
 	icon_state = "sysuit"
 	item_state = "sysuit"
 	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
-	togglename = "toggle"
+	//togglename = "toggle"
 	body_parts_covered = CHEST|ARMS|LEGS
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
@@ -119,7 +121,7 @@
 	alternate_worn_icon =  'hyperstation/icons/mobs/eyes.dmi'
 	hud_type = DATA_HUD_DIAGNOSTIC_ADVANCED
 	actions_types = list(/datum/action/item_action/switch_hud)
-	glass_colour_type = /datum/client_colour/glass_colour/lightyellow
+	glass_colour_type = /datum/client_colour/glass_colour/purple
     //effectively the same thing as a Zao HUD, but required for SYTech to work. More or less for flavor.
 
 /obj/item/clothing/glasses/hud/toggle/syvisor/attack_self(mob/user)
@@ -134,8 +136,8 @@
 		H.remove_hud_from(user)
 
 	if (hud_type == DATA_HUD_DIAGNOSTIC_ADVANCED)
-		icon_state = "syvisor_off"
-		item_state = "syvisor_off"
+		icon_state = "zaovisor_off"
+		item_state = "zaovisor_off"
 		hud_type = null
 		flash_protect = 0
 		tint = 0
@@ -146,7 +148,7 @@
 		item_state = "syvisor"
 		flash_protect = 1
 		tint = 1
-		change_glass_color(user, /datum/client_colour/glass_colour/lightyellow)
+		change_glass_color(user, /datum/client_colour/glass_colour/purple)
 
 	if (hud_type)
 		var/datum/atom_hud/H = GLOB.huds[hud_type]
@@ -163,7 +165,7 @@
 	icon = 'hyperstation/icons/obj/clothing/shoes.dmi'
 	alternate_worn_icon = 'hyperstation/icons/mobs/feet.dmi'
 
-/obj/item/clothing/shoes/sy_shoes/Initialize()
+/obj/item/clothing/shoes/syshoes/Initialize()
 	. = ..()
 	AddComponent(/datum/component/squeak, list('sound/effects/footstep/highheel1.ogg' = 1,'sound/effects/footstep/highheel2.ogg' = 1), 20)
 
