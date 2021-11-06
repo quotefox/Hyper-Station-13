@@ -5,4 +5,3 @@
 	icon_state = "zaounder"
 	item_state = "zaounder"
 	item_color = "zaounder"
-	alternate_worn_icon = 'hyperstation/icons/mobs/uniforms.dmi'
