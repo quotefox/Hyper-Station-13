@@ -2,6 +2,7 @@
 //It will also have a charge function in the future and further balance passing.
 //SYTech, pronounced as Sigh Tech; like what am I doing with my life?
 //TO DO: make things a little more optimized and put everything under it's own "SY" obj, so we can get rid of some redundancy
+//HEAVY WIP, expect this to be done soon!
 
 //The suit itself
 /obj/item/clothing/under/syclothing
