@@ -1,0 +1,1 @@
+#define SYTECH_SUIT_TRAIT "sysuit"
