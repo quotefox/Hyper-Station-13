@@ -5,7 +5,6 @@
 	icon_state = "zaocoat"
 	item_state = "zaocoat"
 	item_color = "zaocoat"
-	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
 	togglename = "zipper"
 	body_parts_covered = CHEST|ARMS|LEGS
 	cold_protection = CHEST|GROIN|LEGS|ARMS
@@ -29,4 +28,5 @@
 	/obj/item/restraints/handcuffs,
 	/obj/item/tank/internals/emergency_oxygen,
 	/obj/item/tank/internals/plasmaman,
-	/obj/item/toy) // Will be modifying/removing/adding more at a later date.
+	/obj/item/toy,
+	/obj/item/claymore/weak) // Will be modifying/removing/adding more at a later date.
