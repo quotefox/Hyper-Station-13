@@ -7,12 +7,14 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 	icon_state = "off"
 	density = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	req_access = list(ACCESS_CENT_GENERAL) //Place holder for ID access for allowing it to be turned on.
 	var/active = 0
 	var/checkparts = TRUE
 	var/list/obj/effect/landmark/randomspawns = list()
 	var/calibrated = TRUE
 	var/list/linked = list()
 	var/can_link = FALSE	//Is this the centerpiece?
+	var/authorization = FALSE //Temporary place holder for admins to enable or disable gateway, and to be the stepping stone for a exploration department, small steps!
 
 /obj/machinery/gateway/Initialize()
 	randomspawns = GLOB.awaydestinations
@@ -123,6 +125,9 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 	if(!awaygate)
 		to_chat(user, "<span class='notice'>Error: No destination found.</span>")
 		return
+	if(!authorization)
+		to_chat(user, "<span class='notice'>Error: Authorization is required to activate the gateway, please contact Central Command for assistance.</span>")
+		return
 	if(world.time < wait)
 		to_chat(user, "<span class='notice'>Error: Warpspace triangulation in progress. Estimated time to completion: [DisplayTimeText(wait - world.time)].</span>")
 		return
@@ -166,6 +171,17 @@ GLOBAL_DATUM(the_gateway, /obj/machinery/gateway/centerstation)
 		else
 			to_chat(user, "<span class='boldnotice'>Recalibration successful!</span>: \black This gate's systems have been fine tuned.  Travel to this gate will now be on target.")
 			calibrated = TRUE
+			return
+
+/obj/machinery/gateway/centerstation/attackby(obj/item/W, mob/user, params)
+	if(istype(W,/obj/item/card/id))
+		W.GetID()
+		if(allowed(user))
+			authorization = !authorization
+			to_chat(user, "<span class='notice'>You [authorization ? "authorize" : "forbid"] activation for the gateway!</span>")
+			return
+		else
+			to_chat(user, "<span class='danger'>Access denied.</span>")
 			return
 
 /////////////////////////////////////Away////////////////////////
