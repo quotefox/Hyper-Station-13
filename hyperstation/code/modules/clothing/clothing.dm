@@ -1,4 +1,6 @@
 
+//Here comes the fetish code.
+//This stuff will definitely, absolutely, completely need to be touched up later -Dahl
 /obj/item/clothing
 	var/recent_struggle = 0
 	var/mob/M
@@ -37,13 +39,35 @@
 		else
 			var/obj/item/clothing/head/mob_holder/holder = I
 			if(holder.held_mob && (holder.held_mob in holder))
-				//var/mob/living/M = holder.held_mob
+				var/mob/living/M = holder.held_mob
 				//holder.dump_mob()
 				to_chat(M, "<span class='warning'>[user] stuffs you into \the [src]!</span>")
 				M.forceMove(src)
 				to_chat(user, "<span class='notice'>You stuff \the [M] into \the [src]!</span>")
 	else
 		..()
+
+/obj/item/clothing/shoes/assume_air(datum/gas_mixture/env)
+	var/atom/location = loc
+	if(!loc)
+		return //null
+	var/turf/T = get_turf(loc)
+	while(location != T)
+		location = location.loc
+		if(ismob(location))
+			return location.loc.assume_air(env)
+	return location.assume_air(env)
+
+/obj/item/clothing/shoes/remove_air(amount)
+	var/atom/location = loc
+	if(!loc)
+		return //null
+	var/turf/T = get_turf(loc)
+	while(location != T)
+		location = location.loc
+		if(ismob(location))
+			return location.loc.remove_air(amount)
+	return location.remove_air(amount)
 
 /obj/item/clothing/shoes/attack_self(var/mob/user)
 	for(var/mob/M in src)
@@ -52,6 +76,15 @@
 		to_chat(user, "<span class='notice'>You shake [M] out of \the [src]!</span>")
 
 	..()
+
+//Couldn't help myself but add this. Might need a balance pass later, depending on how it's inevitably abused
+/obj/item/clothing/shoes/MouseDrop(atom/over_object)
+	var/mob/living/M = usr
+	if(!ishuman(M) || !M.Adjacent(src) || M.incapacitated())
+		return FALSE
+	if(M.size_multiplier <= 0.25)
+		to_chat(M, "<span class='notice'>You crawl into \the [src]!</span>")
+		M.forceMove(src)
 
 /obj/item/clothing/shoes/container_resist(mob/living/micro)
 	var/mob/living/carbon/human/macro = loc
