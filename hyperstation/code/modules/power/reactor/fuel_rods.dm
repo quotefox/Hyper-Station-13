@@ -40,6 +40,12 @@
 				if("plutonium")
 					R = new /obj/item/twohanded/required/fuel_rod/plutonium(loc)
 					R.depletion = depletion
+					if(prob(1))
+						R.name = "Plush-239 Fuel Rod"
+						R.desc = "Kinaris would like to remind you that it is not liable for any permanent radioactive damage done to its employees."
+						R.icon = 'hyperstation/icons/obj/plushes.dmi'
+						R.icon_state = "chemlight"
+						R.fuel_power = 0.25 //Funny easter egg, slightly more powerful too.
 				if("depleted")
 					if(fuel_power < 10)
 						fuel_power = 0
