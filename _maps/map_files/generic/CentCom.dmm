@@ -5579,7 +5579,9 @@
 "nz" = (
 /obj/machinery/light/small{
 	brightness = 3;
-	dir = 8
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = -5
 	},
 /turf/open/floor/plating,
 /area/syndicate_mothership)
@@ -9296,6 +9298,9 @@
 /obj/structure/window{
 	dir = 8
 	},
+/obj/structure/sign/poster/official/high_class_martini{
+	pixel_y = 32
+	},
 /turf/open/floor/carpet/black,
 /area/centcom/ferry)
 "tU" = (
@@ -9697,7 +9702,9 @@
 /area/centcom/ferry)
 "uL" = (
 /obj/machinery/light/small{
-	dir = 1
+	dir = 1;
+	pixel_x = 0;
+	pixel_y = 14
 	},
 /turf/open/floor/carpet/black,
 /area/centcom/ferry)
@@ -9967,7 +9974,9 @@
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
 "vh" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small{
+	pixel_y = -2
+	},
 /turf/open/pool,
 /area/centcom/ferry)
 "vi" = (
@@ -10070,7 +10079,9 @@
 /turf/open/floor/plasteel,
 /area/syndicate_mothership)
 "vx" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small{
+	pixel_y = -2
+	},
 /obj/structure/dresser,
 /obj/item/toy/plush/mammal/chemlight{
 	pixel_y = 16
@@ -10480,7 +10491,9 @@
 /area/centcom/ferry)
 "wg" = (
 /obj/machinery/light/small{
-	dir = 8
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 5
 	},
 /obj/structure/toilet{
 	dir = 4
@@ -10492,11 +10505,16 @@
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/three)
 "wi" = (
-/obj/machinery/light/small{
-	dir = 1
+/obj/structure/table/shadoww/shadowwpoker,
+/obj/item/reagent_containers/food/snacks/cheesyfries{
+	pixel_x = -2;
+	pixel_y = 4
 	},
-/obj/structure/chair/sofa/right,
-/turf/open/floor/wood,
+/obj/item/reagent_containers/food/snacks/burger/baconburger{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "wj" = (
 /obj/effect/turf_decal/loading_area{
@@ -10532,7 +10550,9 @@
 /area/syndicate_mothership)
 "wn" = (
 /obj/machinery/light/small{
-	dir = 4
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 5
 	},
 /turf/open/floor/plasteel/white,
 /area/centcom/ferry)
@@ -10783,13 +10803,17 @@
 "wN" = (
 /obj/machinery/light/small{
 	brightness = 3;
-	dir = 8
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = -5
 	},
 /turf/open/floor/engine/cult,
 /area/wizard_station)
 "wO" = (
 /obj/machinery/light/small{
-	dir = 4
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 5
 	},
 /turf/open/floor/engine/cult,
 /area/wizard_station)
@@ -11105,6 +11129,16 @@
 "xB" = (
 /obj/structure/window{
 	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
 	},
 /turf/open/floor/carpet/black,
 /area/centcom/ferry)
@@ -12213,6 +12247,16 @@
 /obj/item/pizzabox/meat{
 	pixel_y = 10
 	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
 /turf/open/floor/carpet/black,
 /area/centcom/ferry)
 "zU" = (
@@ -12507,6 +12551,19 @@
 	},
 /turf/open/floor/plasteel,
 /area/syndicate_mothership)
+"AF" = (
+/obj/item/bedsheet/centcom{
+	pixel_y = 10
+	},
+/obj/structure/bed{
+	pixel_y = 10
+	},
+/obj/structure/bed{
+	layer = 3.1
+	},
+/obj/item/bedsheet/centcom,
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "AG" = (
 /obj/structure/ladder/unbreakable/binary/space,
 /turf/open/indestructible/airblock,
@@ -13643,6 +13700,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/evac)
+"CP" = (
+/obj/structure/medkit_cabinet{
+	pixel_x = -27
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "CR" = (
 /obj/machinery/light{
 	dir = 8
@@ -13665,6 +13728,40 @@
 /obj/item/pen/fountain,
 /turf/open/floor/wood,
 /area/centcom/holding)
+"CU" = (
+/obj/structure/closet/secure_closet/personal/cabinet{
+	name = "On-Duty closet"
+	},
+/obj/item/card/id/centcom{
+	assignment = "Centcom Commander";
+	name = "Winfre Ryyn-Kinar's ID Card (Centcom Commander)";
+	registered_name = "Winfre Ryyn-Kinar"
+	},
+/obj/item/clothing/glasses/thermal/eyepatch,
+/obj/item/clothing/gloves/combat,
+/obj/item/storage/backpack/satchel/leather,
+/obj/item/implanter{
+	imp_type = "/obj/item/organ/cyberimp/arm/mblade/l";
+	name = "Scytheblade activator (left-side)"
+	},
+/obj/item/implanter{
+	imp_type = "/obj/item/organ/cyberimp/arm/mblade";
+	name = "Scytheblade activator (right-side)"
+	},
+/obj/item/ammo_box/magazine/latomag,
+/obj/item/ammo_box/magazine/latomag,
+/obj/item/gun/ballistic/automatic/pistol/lato,
+/obj/item/gun/energy/e_gun/dragnet/snare,
+/obj/item/clothing/under/centcomdress,
+/obj/item/clothing/neck/cloak/centcom,
+/obj/item/clothing/suit/hooded/wintercoat/centcom,
+/obj/item/clothing/shoes/highheels,
+/obj/item/clothing/neck/stripedbluescarf,
+/obj/item/melee/classic_baton/telescopic,
+/obj/item/encryptionkey/heads/captain,
+/obj/item/radio/headset/headset_cent/alt,
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "CV" = (
 /obj/machinery/chem_master/condimaster{
 	desc = "Used to separate out liquids - useful for purifying botanical extracts. Also dispenses condiments.";
@@ -14194,7 +14291,9 @@
 "Eb" = (
 /obj/machinery/light/small{
 	brightness = 3;
-	dir = 8
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = -5
 	},
 /turf/open/floor/carpet,
 /area/wizard_station)
@@ -14205,7 +14304,9 @@
 /area/wizard_station)
 "Ed" = (
 /obj/machinery/light/small{
-	dir = 4
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 5
 	},
 /turf/open/floor/carpet,
 /area/wizard_station)
@@ -14213,13 +14314,17 @@
 /obj/item/soap/homemade,
 /obj/machinery/light/small{
 	brightness = 3;
-	dir = 8
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = -5
 	},
 /turf/open/floor/plasteel/white,
 /area/wizard_station)
 "Ef" = (
 /obj/machinery/light/small{
-	dir = 4
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 5
 	},
 /turf/open/floor/plasteel/white,
 /area/wizard_station)
@@ -14249,7 +14354,9 @@
 	icon_state = "skateboard"
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/light/small,
+/obj/machinery/light/small{
+	pixel_y = -2
+	},
 /turf/open/floor/plasteel,
 /area/wizard_station)
 "Ek" = (
@@ -17001,6 +17108,28 @@
 "JI" = (
 /turf/closed/indestructible/fakeglass,
 /area/tdome/tdomeadmin)
+"JJ" = (
+/obj/item/storage/pill_bottle/happinesspsych{
+	desc = "Contains pills used for staving off depression. Only works half the time. Be wary of addiction.";
+	name = "Antidepressants";
+	pixel_x = -7;
+	pixel_y = 13
+	},
+/obj/item/storage/pill_bottle/paxpsych{
+	desc = "Contains pills for aiding with hormone regulator implants. Usually used on the mentally unstable.";
+	name = "Hormonal Regulator Supplements";
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/obj/structure/table,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/sign/poster/official/cleanliness{
+	pixel_x = -32
+	},
+/turf/open/floor/plasteel/white/side{
+	dir = 4
+	},
+/area/centcom/ferry)
 "JK" = (
 /obj/machinery/computer/telecrystals/uplinker,
 /obj/effect/turf_decal/stripes/line{
@@ -17207,6 +17336,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/tdome/tdomeadmin)
+"Kd" = (
+/obj/structure/toilet{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white/side{
+	dir = 1
+	},
+/area/centcom/ferry)
 "Kf" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -17592,7 +17729,9 @@
 /area/centcom/evac)
 "KR" = (
 /obj/machinery/light/small{
-	dir = 4
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 5
 	},
 /turf/open/floor/plating,
 /area/centcom/evac)
@@ -17644,7 +17783,9 @@
 /area/centcom/evac)
 "KZ" = (
 /obj/machinery/light/small{
-	dir = 8
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 5
 	},
 /turf/open/floor/plating,
 /area/centcom/evac)
@@ -17721,6 +17862,32 @@
 /obj/item/pen,
 /turf/open/floor/plasteel,
 /area/centcom/control)
+"Lm" = (
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain";
+	pixel_x = -6
+	},
+/turf/open/floor/carpet/black,
+/area/centcom/ferry)
+"Ln" = (
+/obj/structure/closet/crate/bin,
+/obj/item/trash/candy,
+/obj/item/trash/sosjerky,
+/obj/item/trash/syndi_cakes,
+/obj/item/trash/boritos,
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "Lo" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/med_data/laptop,
@@ -17785,6 +17952,13 @@
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/evac)
+"Ly" = (
+/obj/machinery/door/airlock{
+	dir = 4;
+	name = "Bedroom Quarters"
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "Lz" = (
 /obj/machinery/computer/card/centcom,
 /obj/machinery/light{
@@ -18042,56 +18216,35 @@
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
-/obj/structure/dresser,
-/obj/item/toy/plush/mammal/winfre{
-	item_state = "Winfre";
-	name = "Winfre, Destroyer of Fun";
-	pixel_y = 17
+/obj/structure/table/shadoww/shadowwpoker,
+/obj/item/screwdriver{
+	pixel_y = 3
 	},
-/turf/open/floor/wood,
+/obj/item/gun/energy/laser/sizeray{
+	pixel_x = 2;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/generic,
+/obj/item/folder/paperwork{
+	layer = 2.6
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "Mm" = (
 /obj/machinery/processor,
 /turf/open/floor/plasteel/cafeteria,
 /area/centcom/holding)
 "Mq" = (
-/obj/structure/closet/crate/secure{
-	anchored = 1;
-	name = "secure gear crate";
-	req_access_txt = "101"
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/item/radio/headset/headset_cent/alt,
-/obj/item/clothing/glasses/thermal/eyepatch,
-/obj/item/implanter{
-	imp_type = "/obj/item/organ/cyberimp/arm/mblade/l";
-	name = "Scytheblade activator (left-side)"
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/item/implanter{
-	imp_type = "/obj/item/organ/cyberimp/arm/mblade";
-	name = "Scytheblade activator (right-side)"
-	},
-/obj/item/clothing/under/rank/centcom_commander,
-/obj/item/clothing/suit/hooded/wintercoat/centcom,
-/obj/item/clothing/shoes/combat/swat,
-/obj/item/clothing/gloves/combat,
-/obj/item/melee/classic_baton/telescopic,
-/obj/item/pda/lieutenant{
-	hidden = 0
-	},
-/obj/item/clothing/neck/cloak/centcom,
-/obj/item/storage/backpack/satchel/leather,
-/obj/item/card/id/centcom{
-	assignment = "Centcom Commander";
-	name = "Winfre Ryyn-Kinar's ID Card (Centcom Commander)";
-	registered_name = "Winfre Ryyn-Kinar"
-	},
-/obj/item/clothing/neck/stripedbluescarf,
-/obj/item/clothing/glasses/hud/security/sunglasses{
-	vision_correction = 1
-	},
-/obj/item/flashlight/seclite,
-/obj/item/gun/energy/e_gun/dragnet/snare,
-/turf/open/floor/plasteel/grimy,
+/turf/open/floor/grass/fairy/blue,
 /area/centcom/ferry)
 "Mr" = (
 /obj/structure/closet/cabinet,
@@ -18379,6 +18532,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/centcom/holding)
+"No" = (
+/obj/effect/decal/cleanable/semendrip,
+/obj/structure/medkit_cabinet{
+	pixel_x = 27
+	},
+/turf/open/floor/plasteel/white/side{
+	dir = 8
+	},
+/area/centcom/ferry)
 "Nq" = (
 /obj/effect/turf_decal/loading_area{
 	icon_state = "steel_panel";
@@ -18432,6 +18594,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/two)
+"NA" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/white,
+/area/centcom/ferry)
 "ND" = (
 /obj/structure/closet/secure_closet/freezer/meat{
 	locked = 0
@@ -18472,14 +18638,16 @@
 /turf/open/floor/wood,
 /area/centcom/ferry)
 "NI" = (
-/obj/structure/table/wood,
-/obj/item/trash/candy,
-/obj/item/trash/syndi_cakes{
-	pixel_x = -8;
-	pixel_y = 8
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/item/flashlight/lamp/green,
-/turf/open/floor/plasteel/grimy,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/grass/fairy/blue,
 /area/centcom/ferry)
 "NJ" = (
 /obj/structure/closet/secure_closet/freezer/fridge{
@@ -18502,6 +18670,32 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/centcom/control)
+"NN" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
+	},
+/obj/item/clothing/gloves/sygloves{
+	layer = 3.2
+	},
+/obj/item/clothing/glasses/hud/toggle/syvisor{
+	layer = 3.2
+	},
+/obj/item/clothing/head/sycap{
+	layer = 3.2
+	},
+/obj/item/clothing/shoes/syshoes{
+	layer = 3.2
+	},
+/obj/item/clothing/under/syclothing{
+	layer = 3.2
+	},
+/obj/structure/closet/crate/secure,
+/turf/open/floor/plasteel/white/side{
+	dir = 4
+	},
+/area/centcom/ferry)
 "NO" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -18586,6 +18780,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
+"NZ" = (
+/obj/structure/sign/poster/contraband/punch_shit{
+	pixel_y = 33
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "Oa" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood,
@@ -18637,7 +18837,9 @@
 /area/centcom/supplypod)
 "Oi" = (
 /obj/machinery/light/small{
-	dir = 8
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 5
 	},
 /obj/structure/toilet{
 	dir = 4
@@ -18681,6 +18883,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/three)
+"On" = (
+/turf/open/floor/plasteel/white/corner{
+	dir = 8
+	},
+/area/centcom/ferry)
 "Op" = (
 /obj/structure/table,
 /obj/item/reagent_containers/glass/beaker,
@@ -18693,19 +18900,6 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/two)
-"Os" = (
-/obj/structure/table/wood,
-/obj/item/paper_bin,
-/obj/item/pen/fountain/captain,
-/obj/item/reagent_containers/food/drinks/prospacillin{
-	pixel_x = -13;
-	pixel_y = 14
-	},
-/obj/item/reagent_containers/glass/beaker/jar{
-	pixel_x = 11
-	},
-/turf/open/floor/plasteel/grimy,
-/area/centcom/ferry)
 "Ou" = (
 /turf/closed/indestructible/fakedoor{
 	name = "Cold Storage"
@@ -18721,6 +18915,15 @@
 	},
 /turf/open/floor/plasteel/stairs,
 /area/centcom/control)
+"Oy" = (
+/obj/structure/chair/sofa/right{
+	dir = 1
+	},
+/obj/structure/sign/poster/official/ion_rifle{
+	pixel_y = -31
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "Oz" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -18734,6 +18937,19 @@
 	},
 /turf/open/floor/plasteel,
 /area/syndicate_mothership)
+"OD" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/grass/fairy/blue,
+/area/centcom/ferry)
 "OE" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
@@ -18853,6 +19069,18 @@
 /obj/structure/closet/crate,
 /turf/open/floor/plasteel/cafeteria,
 /area/centcom/holding)
+"Pb" = (
+/obj/structure/flora/crystal/small/growth,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/window/reinforced,
+/obj/structure/flora/shadowtree/shadowtreee{
+	pixel_x = -28;
+	pixel_y = 5
+	},
+/turf/open/floor/plating/asteroid/layenia/garden,
+/area/centcom/ferry)
 "Pf" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters{
@@ -18943,7 +19171,9 @@
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/four)
 "Pw" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small{
+	pixel_y = -2
+	},
 /turf/open/floor/wood,
 /area/syndicate_mothership)
 "Px" = (
@@ -18980,24 +19210,21 @@
 	},
 /area/centcom/holding)
 "PC" = (
-/obj/structure/table,
-/obj/item/razor{
-	pixel_x = 2;
-	pixel_y = 5
+/obj/structure/closet/secure_closet/personal/cabinet{
+	name = "Winfre Ryyn-Kinar's closet"
 	},
-/obj/item/storage/pill_bottle/happinesspsych{
-	desc = "Contains pills used for staving off depression. Only works half the time. Be wary of addiction.";
-	name = "Antidepressants";
-	pixel_x = -7;
-	pixel_y = 13
+/obj/item/pda/lieutenant{
+	hidden = 0
 	},
-/obj/item/storage/pill_bottle/paxpsych{
-	desc = "Contains pills for aiding with hormone regulator implants. Usually used on the mentally unstable.";
-	name = "Hormonal Regulator Supplements";
-	pixel_x = -5;
-	pixel_y = 1
-	},
-/turf/open/floor/plasteel/white,
+/obj/item/clothing/gloves/combat,
+/obj/item/clothing/glasses/regular,
+/obj/item/storage/backpack/satchel/leather,
+/obj/item/clothing/under/pants/blackjeans,
+/obj/item/clothing/suit/jacket/flannel/aqua,
+/obj/item/clothing/neck/stripedbluescarf,
+/obj/item/clothing/shoes/jackboots/tall,
+/obj/item/clothing/glasses/thermal/eyepatch,
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "PD" = (
 /turf/open/floor/plasteel/cafeteria,
@@ -19064,6 +19291,21 @@
 	},
 /turf/open/floor/plasteel,
 /area/syndicate_mothership)
+"PT" = (
+/obj/structure/window/reinforced/tinted,
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/structure/shadowwdresser{
+	pixel_x = 3;
+	pixel_y = 3
+	},
+/obj/item/toy/plush/mammal/winfre{
+	pixel_x = -2;
+	pixel_y = 19
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "PU" = (
 /obj/structure/table/reinforced,
 /obj/item/folder/white,
@@ -19111,12 +19353,15 @@
 /turf/open/ai_visible,
 /area/ai_multicam_room)
 "Qf" = (
-/obj/machinery/light/small{
-	dir = 1
+/obj/structure/table/shadoww/shadowwpoker,
+/obj/item/pizzabox/mushroom{
+	pixel_x = 2;
+	pixel_y = 10
 	},
-/obj/structure/table/wood,
-/obj/item/flashlight/lamp,
-/turf/open/floor/wood,
+/obj/structure/sign/poster/contraband/eat{
+	pixel_y = 31
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "Qk" = (
 /obj/machinery/vending/cigarette,
@@ -19133,8 +19378,13 @@
 /turf/open/floor/plasteel/freezer,
 /area/syndicate_mothership)
 "Qr" = (
-/obj/structure/chair/sofa/left,
-/turf/open/floor/wood,
+/obj/item/twohanded/required/kirbyplants/photosynthetic,
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 5
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "Qs" = (
 /obj/structure/table/plasmaglass,
@@ -19233,6 +19483,22 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/ferry)
+"QG" = (
+/obj/structure/table/shadoww/shadowwpoker,
+/obj/item/ashtray{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/reagent_containers/food/drinks/prospacillin{
+	pixel_x = null;
+	pixel_y = 14
+	},
+/obj/item/reagent_containers/food/snacks/candyheart{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "QH" = (
 /obj/structure/table/wood,
 /obj/item/instrument/piano_synth,
@@ -19255,6 +19521,29 @@
 /obj/item/reagent_containers/food/snacks/chawanmushi,
 /turf/open/floor/wood,
 /area/centcom/holding)
+"QM" = (
+/obj/structure/closet/secure_closet/personal/cabinet{
+	name = "Vivienne Hawthorne's closet"
+	},
+/obj/item/pda/heads/hos,
+/obj/item/clothing/gloves/ring/silver,
+/obj/item/clothing/glasses/orange,
+/obj/item/clothing/gloves/krav_maga/combatglovesplus,
+/obj/item/clothing/glasses/eyepatch,
+/obj/item/storage/backpack/satchel/leather/withwallet,
+/obj/item/storage/belt/holster,
+/obj/item/clothing/shoes/combat,
+/obj/item/clothing/under/pants/blackjeans,
+/obj/item/clothing/suit/jacket/flannel/red,
+/obj/item/encryptionkey/heads/hos,
+/obj/item/radio/headset/headset_cent/alt,
+/obj/item/clothing/accessory/waistcoat,
+/obj/item/clothing/under/lawyer/blacksuit,
+/obj/item/clothing/neck/tie/bloodred,
+/obj/item/gun/energy/e_gun/mini,
+/obj/item/clothing/suit/hooded/chaplain_hoodie,
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "QN" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -19635,7 +19924,9 @@
 /area/centcom/control)
 "Ss" = (
 /obj/machinery/light/small{
-	dir = 1
+	dir = 1;
+	pixel_x = 0;
+	pixel_y = 14
 	},
 /obj/structure/chair/sofa/left,
 /turf/open/floor/wood,
@@ -19677,6 +19968,19 @@
 	},
 /turf/open/floor/grass,
 /area/centcom/holding)
+"SC" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/grass/fairy/blue,
+/area/centcom/ferry)
 "SD" = (
 /obj/structure/mopbucket,
 /obj/item/mop,
@@ -19716,6 +20020,19 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/two)
+"SK" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/grass/fairy/blue,
+/area/centcom/ferry)
 "SL" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -19811,6 +20128,18 @@
 /obj/structure/window/reinforced/fulltile,
 /turf/open/floor/grass,
 /area/centcom/holding)
+"Tf" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/carpet/black,
+/area/centcom/ferry)
 "Th" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -19869,7 +20198,7 @@
 	pixel_x = 25;
 	specialfunctions = 4
 	},
-/turf/open/floor/wood,
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "Tq" = (
 /obj/machinery/light,
@@ -19908,6 +20237,19 @@
 /obj/structure/mineral_door/paperframe,
 /turf/open/floor/wood,
 /area/centcom/holding)
+"Tv" = (
+/obj/structure/flora/crystal/small/pile,
+/obj/structure/window/reinforced,
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
+	},
+/obj/structure/flora/redgrass/redg{
+	pixel_x = -12;
+	pixel_y = 5
+	},
+/turf/open/floor/plating/asteroid/layenia/garden,
+/area/centcom/ferry)
 "Tw" = (
 /obj/machinery/computer/arcade,
 /turf/open/floor/wood,
@@ -20007,7 +20349,9 @@
 	pixel_y = 32
 	},
 /obj/machinery/light/small{
-	dir = 4
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 5
 	},
 /turf/open/floor/plasteel/freezer,
 /area/syndicate_mothership)
@@ -20056,7 +20400,9 @@
 /turf/open/floor/plating,
 /area/centcom/ferry)
 "TY" = (
-/obj/machinery/light/small,
+/obj/machinery/light/small{
+	pixel_y = -2
+	},
 /turf/open/floor/wood,
 /area/centcom/ferry)
 "TZ" = (
@@ -20070,6 +20416,20 @@
 	},
 /turf/open/floor/plating,
 /area/centcom/control)
+"Ub" = (
+/obj/structure/curtain,
+/obj/machinery/door/window/brigdoor/northright,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/obj/item/soap/deluxe,
+/obj/machinery/shower{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white/corner{
+	dir = 1
+	},
+/area/centcom/ferry)
 "Ud" = (
 /obj/machinery/computer/arcade/orion_trail,
 /turf/open/floor/wood,
@@ -20151,6 +20511,17 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
+"Up" = (
+/obj/structure/mirror{
+	pixel_x = -28
+	},
+/obj/structure/sink{
+	dir = 8;
+	pixel_x = -12
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/white/corner,
+/area/centcom/ferry)
 "Uq" = (
 /obj/machinery/button/door{
 	id = "CCDorm5";
@@ -20225,6 +20596,10 @@
 /obj/machinery/vending/cola,
 /turf/open/floor/plasteel,
 /area/centcom/supplypod)
+"UD" = (
+/obj/item/twohanded/required/kirbyplants/photosynthetic,
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "UE" = (
 /obj/structure/closet{
 	anchored = 1;
@@ -20253,6 +20628,14 @@
 /obj/effect/light_emitter,
 /turf/open/floor/plating/asteroid/snow/airless,
 /area/syndicate_mothership)
+"UI" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/grass/fairy/blue,
+/area/centcom/ferry)
 "UL" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
@@ -20423,6 +20806,26 @@
 	dir = 4
 	},
 /turf/open/floor/carpet/black,
+/area/centcom/ferry)
+"Vi" = (
+/obj/structure/table/shadoww/shadowwpoker,
+/obj/item/modular_computer/laptop/preset/civillian{
+	desc = "A low-end laptop often used for personal recreation. It is an older model, and has a few stickers of various musical artists. There is a white sticker with "VIVIENNE HAWTHORNE" written on it.";
+	name = "Hawthorne's Laptop"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/item/stack/sheet/cardboard,
+/obj/item/stack/sheet/cardboard,
+/obj/structure/sign/poster/contraband/atmosia_independence{
+	desc = "A golden poster detailing bunk rules. Some lines are crossed out.";
+	name = "Golden House Rules";
+	pixel_x = -30
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "Vj" = (
 /obj/structure/toilet{
@@ -20628,7 +21031,9 @@
 /area/centcom/ferry)
 "VK" = (
 /obj/machinery/light/small{
-	dir = 1
+	dir = 1;
+	pixel_x = 0;
+	pixel_y = 14
 	},
 /obj/structure/chair/comfy/black,
 /turf/open/floor/wood,
@@ -20836,6 +21241,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/control)
+"Wv" = (
+/obj/structure/table/shadoww/shadowwpoker,
+/obj/machinery/recharger{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/food/drinks/coffee{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "Ww" = (
 /obj/machinery/icecream_vat,
 /obj/machinery/light{
@@ -20866,6 +21283,7 @@
 /obj/item/clipboard,
 /obj/item/folder/yellow,
 /obj/item/pen/fountain/captain,
+/obj/item/folder/paperwork,
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
 "WH" = (
@@ -20926,6 +21344,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/supplypod)
+"WP" = (
+/obj/machinery/door/airlock{
+	dir = 4;
+	id_tag = null;
+	name = "Bathroom"
+	},
+/obj/effect/decal/cleanable/semendrip,
+/turf/open/floor/plasteel,
+/area/centcom/ferry)
 "WQ" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/centcom{
@@ -21019,13 +21446,14 @@
 /turf/open/floor/carpet/black,
 /area/centcom/ferry)
 "Xc" = (
-/obj/structure/toilet{
-	dir = 4
+/obj/machinery/door/window/westleft{
+	name = "Bedroom"
 	},
-/obj/structure/medkit_cabinet{
-	pixel_x = -27
+/obj/machinery/computer/security/telescreen/entertainment{
+	pixel_x = 10;
+	pixel_y = 32
 	},
-/turf/open/floor/plasteel/white,
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "Xd" = (
 /obj/structure/window/reinforced{
@@ -21175,7 +21603,7 @@
 /obj/machinery/door/airlock{
 	dir = 4;
 	id_tag = "CCDorm2";
-	name = "Winfre Ryyn-Kinar's Bunk"
+	name = "Vivienne and Winfre's Bunk"
 	},
 /obj/effect/mapping_helpers/airlock/locked,
 /turf/open/floor/plasteel,
@@ -21237,6 +21665,24 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/control)
+"XC" = (
+/obj/structure/rack/shelf,
+/obj/item/melee/baton/stunsword{
+	pixel_x = -2;
+	pixel_y = 6
+	},
+/obj/item/claymore,
+/obj/item/nullrod/claymore/glowing{
+	name = "Old Iron Blade";
+	pixel_x = 6
+	},
+/obj/machinery/light/floor{
+	color = "#A8D6E3";
+	light_color = "#6EBCD1";
+	nightshift_light_color = "#6EBCD1"
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "XD" = (
 /obj/machinery/washing_machine,
 /obj/effect/turf_decal/tile/neutral{
@@ -21303,6 +21749,15 @@
 /obj/structure/dresser,
 /turf/open/floor/wood,
 /area/centcom/ferry)
+"XJ" = (
+/obj/structure/flora/crystal/medium/growth{
+	icon_state = "crystalgrowth2";
+	pixel_x = -23;
+	pixel_y = -1
+	},
+/obj/structure/window/reinforced,
+/turf/open/indestructible/layenia/crystal/garden,
+/area/centcom/ferry)
 "XK" = (
 /obj/structure/sign/directions/engineering{
 	desc = "A sign that shows there are doors here. There are doors everywhere!";
@@ -21349,7 +21804,9 @@
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp,
 /obj/machinery/light/small{
-	dir = 1
+	dir = 1;
+	pixel_x = 0;
+	pixel_y = 14
 	},
 /turf/open/floor/wood,
 /area/centcom/ferry)
@@ -21450,6 +21907,10 @@
 /obj/structure/dresser,
 /turf/open/floor/plasteel/dark,
 /area/syndicate_mothership)
+"Yj" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plasteel/white/side,
+/area/centcom/ferry)
 "Yl" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 6;
@@ -21469,15 +21930,72 @@
 /obj/item/reagent_containers/medspray/synthflesh,
 /turf/open/floor/wood,
 /area/centcom/holding)
+"Yn" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/grass/fairy/blue,
+/area/centcom/ferry)
 "Yo" = (
 /obj/machinery/vr_sleeper,
 /turf/open/floor/wood,
 /area/centcom/holding)
-"Yq" = (
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-10"
+"Yp" = (
+/obj/structure/window/reinforced/tinted,
+/obj/structure/table/shadoww/shadowwpoker{
+	pixel_y = 3
 	},
-/turf/open/floor/wood,
+/obj/machinery/light/floor{
+	color = "#A8D6E3";
+	light_color = "#6EBCD1";
+	nightshift_light_color = "#6EBCD1"
+	},
+/obj/item/restraints/handcuffs/cable/zipties/used{
+	layer = 2.6
+	},
+/obj/item/flashlight/lamp/green{
+	pixel_x = -8;
+	pixel_y = 1
+	},
+/obj/item/card/id/ert/Security{
+	assignment = "Centcomm Officer";
+	name = "Vivienne Hawthorne's ID Card";
+	registered_name = "Vivienne Hawthorne"
+	},
+/obj/item/card/id/centcom{
+	assignment = "Off-Duty Centcom Commander";
+	name = "Winfre Ryyn-Kinar's ID Card (Off-Duty Centcom Commander)";
+	pixel_x = 6;
+	registered_name = "Winfre Ryyn-Kinar"
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
+"Yq" = (
+/obj/structure/closet/crate/bin,
+/obj/item/trash/syndi_cakes,
+/obj/item/trash/can,
+/obj/item/trash/chips,
+/obj/item/trash/cheesie,
+/obj/machinery/light/small{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 5
+	},
+/obj/item/toy/crayon/spraycan,
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
+"Yr" = (
+/obj/item/twohanded/required/kirbyplants/photosynthetic,
+/turf/open/floor/plasteel/white/corner{
+	dir = 4
+	},
 /area/centcom/ferry)
 "Ys" = (
 /obj/structure/table/reinforced,
@@ -21540,6 +22058,32 @@
 /turf/open/floor/plasteel/white/corner{
 	dir = 4
 	},
+/area/centcom/ferry)
+"YD" = (
+/obj/machinery/light/floor{
+	color = "#A8D6E3";
+	light_color = "#6EBCD1";
+	nightshift_light_color = "#6EBCD1"
+	},
+/obj/item/reagent_containers/food/snacks/store/cake/pumpkinspice,
+/obj/item/reagent_containers/food/snacks/store/bread/meat,
+/obj/item/reagent_containers/food/snacks/pie/pumpkinpie,
+/obj/item/reagent_containers/food/snacks/burger/baconburger,
+/obj/item/reagent_containers/food/snacks/burger/baconburger,
+/obj/item/reagent_containers/food/snacks/bbqribs,
+/obj/item/reagent_containers/food/snacks/bbqribs,
+/obj/item/reagent_containers/food/snacks/fuegoburrito,
+/obj/item/reagent_containers/food/snacks/carneburrito,
+/obj/item/reagent_containers/food/snacks/cheesyburrito,
+/obj/item/reagent_containers/food/snacks/cheesyburrito,
+/obj/item/kitchen/knife,
+/obj/item/kitchen/fork,
+/obj/machinery/light/small{
+	dir = 8;
+	pixel_x = -10;
+	pixel_y = 5
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "YE" = (
 /obj/structure/janitorialcart,
@@ -21666,13 +22210,11 @@
 /turf/open/floor/wood,
 /area/centcom/holding)
 "Zb" = (
-/obj/structure/table/wood,
-/obj/item/screwdriver{
-	pixel_x = 15;
-	pixel_y = 4
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/item/gun/energy/laser/sizeray,
-/turf/open/floor/plasteel/grimy,
+/turf/open/floor/grass/fairy/blue,
 /area/centcom/ferry)
 "Zc" = (
 /turf/open/indestructible/binary,
@@ -21735,27 +22277,25 @@
 /turf/open/floor/carpet/black,
 /area/centcom/ferry)
 "Zo" = (
-/obj/structure/closet/cabinet,
-/obj/item/card/id/centcom{
-	assignment = "Off-Duty Centcom Commander";
-	name = "Winfre Ryyn-Kinar's ID Card (Off-Duty Centcom Commander)";
-	registered_name = "Winfre Ryyn-Kinar"
+/obj/structure/table/shadoww/shadowwpoker,
+/obj/item/reagent_containers/food/snacks/cheesyfries{
+	pixel_x = 10;
+	pixel_y = 2
 	},
-/obj/item/clothing/under/pants/blackjeans,
-/obj/item/clothing/suit/jacket/flannel/aqua,
-/obj/item/clothing/shoes/combat/swat,
-/obj/item/clothing/shoes/jackboots/tall,
-/obj/item/clothing/gloves/combat,
-/obj/item/clothing/neck/stripedbluescarf,
-/obj/item/clothing/glasses/regular,
-/obj/item/clothing/glasses/sunglasses/big,
-/obj/item/clothing/glasses/thermal/eyepatch,
-/obj/item/storage/backpack/satchel/leather,
-/obj/item/radio/headset/headset_cent/alt,
-/obj/item/pda/lieutenant{
-	hidden = 0
+/obj/item/reagent_containers/food/snacks/burger/baconburger{
+	pixel_x = 10;
+	pixel_y = 3
 	},
-/turf/open/floor/wood,
+/obj/structure/sign/poster/official/fruit_bowl{
+	pixel_y = 32
+	},
+/obj/item/instrument/guitar{
+	desc = "It's made of wood and has bronze strings. It looks old and beat up, but it has 'Old Reliable' scratched into the base.";
+	name = "Winfre's Guitar";
+	pixel_x = -8;
+	pixel_y = 3
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "Zq" = (
 /obj/structure/window{
@@ -21807,7 +22347,9 @@
 /area/centcom/ferry)
 "Zy" = (
 /obj/machinery/light/small{
-	dir = 1
+	dir = 1;
+	pixel_x = 0;
+	pixel_y = 14
 	},
 /obj/structure/closet/crate/secure{
 	anchored = 1;
@@ -21855,6 +22397,21 @@
 /obj/structure/table/wood,
 /obj/item/storage/pill_bottle/dice,
 /turf/open/floor/carpet/black,
+/area/centcom/ferry)
+"ZC" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/semendrip,
+/obj/effect/decal/cleanable/semendrip{
+	pixel_x = -4;
+	pixel_y = 12
+	},
+/obj/machinery/light{
+	dir = 4;
+	pixel_x = 7
+	},
+/turf/open/floor/plasteel/white/side{
+	dir = 8
+	},
 /area/centcom/ferry)
 "ZE" = (
 /obj/structure/reagent_dispensers/water_cooler,
@@ -50167,12 +50724,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+mD
+mD
+mD
+mD
 mD
 fR
 tn
@@ -50424,12 +50981,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+XJ
+Up
+JJ
+NN
+Yr
 mD
 tn
 tn
@@ -50681,12 +51238,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+Tv
+Yj
+NA
+TS
+Kd
 mD
 tn
 tn
@@ -50938,12 +51495,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+Pb
+On
+No
+ZC
+Ub
 mD
 tn
 tn
@@ -51195,12 +51752,12 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+WP
+mD
+mD
+mD
 mD
 tn
 tn
@@ -51453,11 +52010,11 @@ aa
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
+mD
+we
+XC
+Vi
+Ln
 mD
 tw
 tZ
@@ -51710,11 +52267,11 @@ aa
 aa
 aa
 aa
-aa
 mD
-mD
-mD
-mD
+NZ
+OD
+NI
+CU
 mD
 tT
 ui
@@ -51968,10 +52525,10 @@ mD
 mD
 mD
 mD
-mD
-Nt
-mD
-VD
+we
+SC
+Mq
+QM
 mD
 ue
 xt
@@ -52226,8 +52783,8 @@ Uz
 TQ
 mD
 Xc
-TS
-Uz
+PT
+we
 PC
 mD
 uh
@@ -52482,10 +53039,10 @@ TS
 TS
 wn
 mD
-Xz
-TS
-TS
-wn
+AF
+Yp
+we
+UD
 mD
 uL
 Oq
@@ -52741,7 +53298,7 @@ mD
 mD
 mD
 mD
-Pp
+Ly
 mD
 mD
 mD
@@ -52996,9 +53553,9 @@ Xi
 oB
 qd
 mD
-Ue
-oB
-oB
+YD
+CP
+we
 Yq
 mD
 vr
@@ -53254,13 +53811,13 @@ pg
 TY
 mD
 Qf
-pg
+Yn
 NI
-TY
+QG
 mD
 wa
 zS
-Oq
+Tf
 yO
 mD
 Ss
@@ -53511,13 +54068,13 @@ pg
 Ue
 mD
 Ml
-pg
+UI
 Zb
-XZ
+Oy
 mD
 we
-Oq
-Oq
+RU
+Sl
 ym
 mD
 XI
@@ -53768,13 +54325,13 @@ pg
 oB
 mD
 Zo
-pg
-Os
-oB
+UI
+Zb
+yL
 mD
 vq
 xB
-Oq
+Sl
 yL
 mD
 UP
@@ -54025,13 +54582,13 @@ pg
 vx
 mD
 wi
-pg
+SK
 Mq
-TY
+Wv
 mD
 we
 xC
-Oq
+Lm
 yW
 mD
 XR
@@ -54283,8 +54840,8 @@ qd
 mD
 Qr
 Tp
-oB
-Yq
+we
+Qr
 mD
 wo
 xE

@@ -42288,6 +42288,7 @@
 "jHR" = (
 /obj/structure/girder,
 /obj/structure/grille,
+/obj/effect/baseturf_helper/asteroid/layenia,
 /turf/open/floor/plating,
 /area/maintenance/central/secondary)
 "jIa" = (
