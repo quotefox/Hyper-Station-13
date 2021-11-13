@@ -20809,10 +20809,6 @@
 /area/centcom/ferry)
 "Vi" = (
 /obj/structure/table/shadoww/shadowwpoker,
-/obj/item/modular_computer/laptop/preset/civillian{
-	desc = "A low-end laptop often used for personal recreation. It is an older model, and has a few stickers of various musical artists. There is a white sticker with "VIVIENNE HAWTHORNE" written on it.";
-	name = "Hawthorne's Laptop"
-	},
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
 	icon_state = "drain";
