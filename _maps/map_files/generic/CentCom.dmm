@@ -10507,11 +10507,11 @@
 "wi" = (
 /obj/structure/table/shadoww/shadowwpoker,
 /obj/item/reagent_containers/food/snacks/cheesyfries{
-	pixel_x = -2;
+	pixel_x = 4;
 	pixel_y = 4
 	},
 /obj/item/reagent_containers/food/snacks/burger/baconburger{
-	pixel_x = -2;
+	pixel_x = 4;
 	pixel_y = 5
 	},
 /turf/open/floor/mineral/basaltstone_floor,
@@ -13758,8 +13758,8 @@
 /obj/item/clothing/shoes/highheels,
 /obj/item/clothing/neck/stripedbluescarf,
 /obj/item/melee/classic_baton/telescopic,
-/obj/item/encryptionkey/heads/captain,
 /obj/item/radio/headset/headset_cent/alt,
+/obj/item/encryptionkey/heads/captain,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "CV" = (
@@ -17126,6 +17126,14 @@
 /obj/structure/sign/poster/official/cleanliness{
 	pixel_x = -32
 	},
+/obj/item/lipstick/aqua{
+	pixel_x = 4;
+	pixel_y = 6
+	},
+/obj/item/lipstick/black{
+	pixel_x = 7;
+	pixel_y = 9
+	},
 /turf/open/floor/plasteel/white/side{
 	dir = 4
 	},
@@ -19079,6 +19087,10 @@
 	pixel_x = -28;
 	pixel_y = 5
 	},
+/obj/item/moon{
+	pixel_x = 2;
+	pixel_y = 10
+	},
 /turf/open/floor/plating/asteroid/layenia/garden,
 /area/centcom/ferry)
 "Pf" = (
@@ -19224,6 +19236,8 @@
 /obj/item/clothing/neck/stripedbluescarf,
 /obj/item/clothing/shoes/jackboots/tall,
 /obj/item/clothing/glasses/thermal/eyepatch,
+/obj/item/radio/headset/headset_cent/alt,
+/obj/item/encryptionkey/heads/captain,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "PD" = (
@@ -19529,7 +19543,6 @@
 /obj/item/clothing/gloves/ring/silver,
 /obj/item/clothing/glasses/orange,
 /obj/item/clothing/gloves/krav_maga/combatglovesplus,
-/obj/item/clothing/glasses/eyepatch,
 /obj/item/storage/backpack/satchel/leather/withwallet,
 /obj/item/storage/belt/holster,
 /obj/item/clothing/shoes/combat,
@@ -19542,6 +19555,7 @@
 /obj/item/clothing/neck/tie/bloodred,
 /obj/item/gun/energy/e_gun/mini,
 /obj/item/clothing/suit/hooded/chaplain_hoodie,
+/obj/item/clothing/glasses/hud/security/sunglasses/eyepatch,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "QN" = (
@@ -20821,6 +20835,10 @@
 	name = "Golden House Rules";
 	pixel_x = -30
 	},
+/obj/item/modular_computer/laptop/preset/civillian{
+	desc = "A low-end laptop often used for personal recreation. This one looks to be an older model, and is adorned with a few stickers of various punk music artists. There is a little white sticker that has 'Property of Vivienne Hawthorne' written on it.";
+	name = "Hawthorne's Laptop"
+	},
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "Vj" = (
@@ -22056,11 +22074,6 @@
 	},
 /area/centcom/ferry)
 "YD" = (
-/obj/machinery/light/floor{
-	color = "#A8D6E3";
-	light_color = "#6EBCD1";
-	nightshift_light_color = "#6EBCD1"
-	},
 /obj/item/reagent_containers/food/snacks/store/cake/pumpkinspice,
 /obj/item/reagent_containers/food/snacks/store/bread/meat,
 /obj/item/reagent_containers/food/snacks/pie/pumpkinpie,
@@ -22079,6 +22092,7 @@
 	pixel_x = -10;
 	pixel_y = 5
 	},
+/obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "YE" = (
@@ -22275,11 +22289,11 @@
 "Zo" = (
 /obj/structure/table/shadoww/shadowwpoker,
 /obj/item/reagent_containers/food/snacks/cheesyfries{
-	pixel_x = 10;
+	pixel_x = 18;
 	pixel_y = 2
 	},
 /obj/item/reagent_containers/food/snacks/burger/baconburger{
-	pixel_x = 10;
+	pixel_x = 16;
 	pixel_y = 3
 	},
 /obj/structure/sign/poster/official/fruit_bowl{
@@ -22288,7 +22302,7 @@
 /obj/item/instrument/guitar{
 	desc = "It's made of wood and has bronze strings. It looks old and beat up, but it has 'Old Reliable' scratched into the base.";
 	name = "Winfre's Guitar";
-	pixel_x = -8;
+	pixel_x = -1;
 	pixel_y = 3
 	},
 /turf/open/floor/mineral/basaltstone_floor,
