@@ -17990,10 +17990,6 @@
 /obj/item/storage/box/donkpockets,
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/evac)
-"LD" = (
-/obj/machinery/door/airlock/cult,
-/turf/open/space/basic,
-/area/space)
 "LE" = (
 /obj/structure/table,
 /obj/item/radio/off,
@@ -49200,7 +49196,7 @@ aa
 aa
 aa
 aa
-LD
+aa
 aa
 aa
 aa
