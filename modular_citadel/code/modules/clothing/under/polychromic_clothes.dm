@@ -248,3 +248,14 @@
 	secondary_color = "#808080"
 	tertiary_color = "#808080"
 	body_parts_covered = CHEST|GROIN|ARMS
+
+/obj/item/clothing/under/polychromic/polylewdskirt
+	name = "polychromic skirt"
+	desc = "A fancy skirt and bra made with polychromic threads."
+	icon_state = "polylewdskirt"
+	item_color = "polylewdskirt"
+	item_state = "rainbow"
+	primary_color = "#353535" //RGB in hexcode
+	secondary_color = "#808080"
+	tertiary_color = "#808080"
+	body_parts_covered = CHEST|GROIN|ARMS
