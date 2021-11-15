@@ -14,7 +14,7 @@
 	growing_icon = 'icons/obj/hydroponics/growing_flowers.dmi'
 	icon_grow = "poppy-grow"
 	icon_dead = "poppy-dead"
-	mutatelist = list(/obj/item/seeds/poppy/geranium, /obj/item/seeds/poppy/lily)
+	mutatelist = list(/obj/item/seeds/poppy/geranium, /obj/item/seeds/poppy/lily, /obj/item/seeds/cpoppy)
 	reagents_add = list(/datum/reagent/medicine/bicaridine = 0.2, /datum/reagent/consumable/nutriment = 0.05)
 
 /obj/item/reagent_containers/food/snacks/grown/poppy
@@ -46,6 +46,37 @@
 	icon_state = "lily"
 	tastes = list("pelts " = 1)
 	filling_color = "#FFA500"
+// Copium poppy
+
+/obj/item/seeds/cpoppy
+	name = "pack of Copium poppy seeds"
+	desc = "A relic from long ago... in seed form!"
+	icon_state = "seed-cpoppy"
+	species = "poppy"
+	plantname = "Copium Poppy Plants"
+	product = /obj/item/reagent_containers/food/snacks/grown/cpoppy
+	endurance = 10
+	maturation = 8
+	yield = 6
+	potency = 20
+	growthstages = 3
+	growing_icon = 'icons/obj/hydroponics/growing_flowers.dmi'
+	icon_grow = "cpoppy-grow"
+	icon_dead = "cpoppy-dead"
+	mutatelist = list(/obj/item/seeds/poppy)
+	reagents_add = list(/datum/reagent/medicine/copium = 0.5, /datum/reagent/consumable/nutriment = 0.05)
+
+/obj/item/reagent_containers/food/snacks/grown/cpoppy
+	seed = /obj/item/seeds/cpoppy
+	name = "Copium poppy"
+	desc = "cope and seethe."
+	icon_state = "cpoppy"
+	slot_flags = ITEM_SLOT_HEAD
+	filling_color = "#E664C8"
+	bitesize_mod = 3
+	tastes = list("sesame seeds" = 1)
+	foodtype = VEGETABLES | GROSS
+	distill_reagent = /datum/reagent/medicine/copium
 
 //Spacemans's Trumpet
 /obj/item/seeds/poppy/lily/trumpet
