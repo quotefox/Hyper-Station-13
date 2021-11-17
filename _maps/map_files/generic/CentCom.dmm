@@ -13760,6 +13760,10 @@
 /obj/item/melee/classic_baton/telescopic,
 /obj/item/radio/headset/headset_cent/alt,
 /obj/item/encryptionkey/heads/captain,
+/obj/item/pda/lieutenant{
+	hidden = 0
+	},
+/obj/item/clothing/glasses/hud/toggle/zao,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "CV" = (
@@ -17118,7 +17122,7 @@
 /obj/item/storage/pill_bottle/paxpsych{
 	desc = "Contains pills for aiding with hormone regulator implants. Usually used on the mentally unstable.";
 	name = "Hormonal Regulator Supplements";
-	pixel_x = -5;
+	pixel_x = -8;
 	pixel_y = 1
 	},
 /obj/structure/table,
@@ -17133,6 +17137,10 @@
 /obj/item/lipstick/black{
 	pixel_x = 7;
 	pixel_y = 9
+	},
+/obj/item/bouquet/rose{
+	pixel_x = 3;
+	pixel_y = 3
 	},
 /turf/open/floor/plasteel/white/side{
 	dir = 4
@@ -19238,6 +19246,11 @@
 /obj/item/clothing/glasses/thermal/eyepatch,
 /obj/item/radio/headset/headset_cent/alt,
 /obj/item/encryptionkey/heads/captain,
+/obj/item/grown/rose,
+/obj/item/valentine{
+	desc = "A Valentine's card! It reads, 'Winfre, Whenever you feel down, please remember that you are the light of my life. I would do anything for you and to protect you.'";
+	name = "Vivienne's Valentine"
+	},
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "PD" = (
@@ -19556,6 +19569,7 @@
 /obj/item/gun/energy/e_gun/mini,
 /obj/item/clothing/suit/hooded/chaplain_hoodie,
 /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch,
+/obj/item/grown/carbon_rose,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "QN" = (
@@ -21690,11 +21704,7 @@
 	name = "Old Iron Blade";
 	pixel_x = 6
 	},
-/obj/machinery/light/floor{
-	color = "#A8D6E3";
-	light_color = "#6EBCD1";
-	nightshift_light_color = "#6EBCD1"
-	},
+/obj/item/twohanded/vibro_weapon,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "XD" = (
@@ -22003,6 +22013,9 @@
 	pixel_y = 5
 	},
 /obj/item/toy/crayon/spraycan,
+/obj/item/ammo_casing/latob,
+/obj/item/ammo_casing/latob,
+/obj/item/ammo_casing/latob,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "Yr" = (
