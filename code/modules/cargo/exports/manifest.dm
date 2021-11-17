@@ -80,7 +80,7 @@
 // Paper work done correctly
 
 /datum/export/paperwork_correct
-	cost = 120 // finicky number 20 x 120 = 2400 per crate
+	cost = 50 // finicky number 20 x 50 = 1000 per crate, nerfed from 120 to 50 gaining 2400 versus 1000 (CC is running out of space to put all this paper somewhere)
 	k_elasticity = 0
 	unit_name = "correct paperwork"
 	export_types = list(/obj/item/folder/paperwork_correct)
