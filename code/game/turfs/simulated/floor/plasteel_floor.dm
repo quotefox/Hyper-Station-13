@@ -19,17 +19,12 @@
 	initial_gas_mix = AIRLESS_ATMOS
 /turf/open/floor/plasteel/telecomms
 	initial_gas_mix = TCOMMS_ATMOS
-/turf/open/floor/plasteel/layenia
-	initial_gas_mix = FROZEN_ATMOS
-
 /turf/open/floor/plasteel/dark
 	icon_state = "darkfull"
 /turf/open/floor/plasteel/dark/airless
 	initial_gas_mix = AIRLESS_ATMOS
 /turf/open/floor/plasteel/dark/telecomms
 	initial_gas_mix = TCOMMS_ATMOS
-/turf/open/floor/plasteel/dark/layenia
-	initial_gas_mix = FROZEN_ATMOS
 /turf/open/floor/plasteel/airless/dark
 	icon_state = "darkfull"
 /turf/open/floor/plasteel/dark/side
@@ -146,3 +141,11 @@
 
 /turf/open/floor/plasteel/sepia
 	icon_state = "sepia"
+
+//Layenia Tiles - Hyper
+/turf/open/floor/plasteel/layenia
+	initial_gas_mix = FROZEN_ATMOS
+	planetary_atmos = TRUE
+/turf/open/floor/plasteel/dark/layenia
+	initial_gas_mix = FROZEN_ATMOS
+	planetary_atmos = TRUE
