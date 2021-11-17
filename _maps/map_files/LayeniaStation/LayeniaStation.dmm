@@ -9187,6 +9187,11 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/crew_quarters/dorms)
+"bcM" = (
+/obj/structure/table/wood,
+/obj/item/book/lorebooks/engrams,
+/turf/open/floor/carpet,
+/area/crew_quarters/dorms)
 "bdd" = (
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
@@ -19946,6 +19951,9 @@
 	},
 /obj/structure/window/reinforced{
 	dir = 8
+	},
+/obj/item/book/lorebooks/engrams{
+	pixel_y = 5
 	},
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/hor)
@@ -32120,6 +32128,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
+"hcH" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/item/trash/plate{
+	pixel_y = 12
+	},
+/turf/open/floor/plasteel/white/side{
+	dir = 10
+	},
+/area/engine/break_room)
 "hcQ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -48663,6 +48682,9 @@
 /obj/structure/window{
 	dir = 4
 	},
+/obj/item/book/lorebooks/engrams{
+	pixel_x = 5
+	},
 /obj/item/folder/yellow,
 /obj/item/stamp/ce,
 /turf/open/floor/plasteel,
@@ -59467,6 +59489,9 @@
 	pixel_x = 4;
 	pixel_y = 3
 	},
+/obj/item/book/lorebooks/engrams{
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
 	},
@@ -67298,6 +67323,9 @@
 	pixel_x = 2;
 	pixel_y = 5
 	},
+/obj/item/book/lorebooks/engrams{
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel/white,
 /area/science/misc_lab)
 "qqY" = (
@@ -69505,6 +69533,9 @@
 	name = "Science Requests Console";
 	pixel_x = -30;
 	receive_ore_updates = 1
+	},
+/obj/item/book/lorebooks/engrams{
+	pixel_y = 5
 	},
 /turf/open/floor/plasteel/white,
 /area/science/lab)
@@ -74096,6 +74127,9 @@
 /obj/item/stack/sheet/metal/ten,
 /obj/item/stack/sheet/glass/fifty,
 /obj/item/stack/sheet/glass/fifty,
+/obj/item/book/lorebooks/engrams{
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
 "rSj" = (
@@ -79648,6 +79682,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
 	},
+/obj/item/book/lorebooks/engrams{
+	pixel_y = 5
+	},
 /turf/open/floor/plasteel,
 /area/engine/break_room)
 "tnl" = (
@@ -80411,7 +80448,6 @@
 /area/science/lab)
 "tzG" = (
 /obj/structure/table/reinforced,
-/obj/item/trash/plate,
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
@@ -80423,6 +80459,9 @@
 	},
 /obj/structure/sign/painting/library{
 	pixel_y = 28
+	},
+/obj/item/book/lorebooks/engrams{
+	pixel_x = 5
 	},
 /turf/open/floor/plasteel/cafeteria{
 	dir = 5
@@ -119554,7 +119593,7 @@ snf
 bqr
 ikF
 dvZ
-nhn
+bcM
 oHY
 rEj
 aSV
@@ -135727,7 +135766,7 @@ yiG
 arX
 sna
 tzG
-nPm
+hcH
 iuR
 slD
 cFN
