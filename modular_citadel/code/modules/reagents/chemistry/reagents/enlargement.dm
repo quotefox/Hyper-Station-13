@@ -240,8 +240,30 @@
 /datum/reagent/fermi/penis_enlarger/on_mob_life(mob/living/carbon/M) //Increases penis size, 5u = +1 inch.
 	if(!ishuman(M))
 		return
+	var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles") //Hyper Change, testicles come first so the dick isn't hidden behind the testicles layer
 	var/obj/item/organ/genital/penis/P = M.getorganslot("penis")
-	var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles") //Hyper Change
+	if(!T)//Hyper change// Adds testicles if there are none.
+
+		//If they have Acute hepatic pharmacokinesis, then route processing though liver.
+		if(HAS_TRAIT(M, TRAIT_PHARMA))
+			var/obj/item/organ/liver/L = M.getorganslot("liver")
+			if(L)
+				L.swelling+= 0.05
+				return..()
+			else
+				M.adjustToxLoss(1)
+				return..()
+
+		//otherwise proceed as normal
+		var/obj/item/organ/genital/testicles/nT = new
+		nT.Insert(M)
+		if(nT)
+			nT.size = BALLS_SIZE_MIN
+			to_chat(M, "<span class='warning'>Your groin feels warm, as you feel two sensitive orbs taking shape below.</b></span>")
+			nT.cached_size = 1
+			nT.sack_size = BALLS_SACK_SIZE_DEF
+			T = nT
+
 	if(!P)//They do have a preponderance for escapism, or so I've heard.
 
 		//If they have Acute hepatic pharmacokinesis, then route processing though liver.
@@ -264,28 +286,6 @@
 			nP.prev_length = 1
 			M.reagents.remove_reagent(type, 5)
 			P = nP
-
-	if(!T)//Hyper change// Adds testicles if there are none.
-
-		//If they have Acute hepatic pharmacokinesis, then route processing though liver.
-		if(HAS_TRAIT(M, TRAIT_PHARMA))
-			var/obj/item/organ/liver/L = M.getorganslot("liver")
-			if(L)
-				L.swelling+= 0.05
-				return..()
-			else
-				M.adjustToxLoss(1)
-				return..()
-
-		//otherwise proceed as normal
-		var/obj/item/organ/genital/testicles/nT = new
-		nT.Insert(M)
-		if(nT)
-			nT.size = BALLS_SIZE_MIN
-			to_chat(M, "<span class='warning'>Your groin feels warm, as you feel two sensitive orbs taking shape below.</b></span>")
-			nT.cached_size = 1
-			nT.sack_size = BALLS_SACK_SIZE_DEF
-			T = nT
 
 	P.cached_length = P.cached_length + 0.1
 	//Hyper change// Increase ball size too
