@@ -131,7 +131,9 @@
 		if(mind.martial_art && mind.martial_art.no_guns) //great dishonor to famiry
 			to_chat(src, "<span class='warning'>Use of ranged weaponry would bring dishonor to the clan.</span>")
 			return FALSE
-
+	if(HAS_TRAIT(src, TRAIT_ZAOCORP_NOGUNS))
+		to_chat(src, "<span class='warning'>Use of ranged weaponry is forbidden at this time!</span>")
+		return FALSE
 
 /mob/living/carbon/human/can_see_reagents()
 	. = ..()

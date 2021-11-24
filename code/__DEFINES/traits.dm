@@ -204,6 +204,8 @@
 #define TRAIT_NO_TELEPORT		"no-teleport" //you just can't
 #define TRAIT_NO_ALCOHOL		"alcohol_intolerance"
 
+#define TRAIT_ZAOCORP_NOGUNS	"zao_no_guns"
+
 // common trait sources
 #define TRAIT_GENERIC "generic"
 #define EYE_DAMAGE "eye_damage"
