@@ -14,7 +14,7 @@
 	desc = "Special Insulated gloves with pricy thermal shielding normally only found in combat gloves."
 	name = "Chief Engineer Insulated Gloves"
 	icon_state = "ce_insuls"
-	item_state = "combat"
+	item_state = "ygloves"
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	strip_delay = 80
