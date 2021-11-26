@@ -25,12 +25,12 @@
 	include_subtypes = TRUE
 
 /datum/export/implant/cnsreboot
-	cost = 350
+	cost = 75
 	unit_name = "anti drop implant"
 	export_types = list(/obj/item/organ/cyberimp/brain/anti_drop)
 
 /datum/export/implant/antistun
-	cost = 450
+	cost = 75
 	unit_name = "rebooter implant"
 	export_types = list(/obj/item/organ/cyberimp/brain/anti_stun)
 
@@ -41,32 +41,27 @@
 	export_types = list(/obj/item/organ/cyberimp/mouth/breathing_tube)
 
 /datum/export/implant/hungerbgone
-	cost = 200
+	cost = 50
 	unit_name = "nutriment implant"
 	export_types = list(/obj/item/organ/cyberimp/chest/nutriment)
 
 /datum/export/implant/hungerbgoneplus
-	cost = 300
+	cost = 75
 	unit_name = "upgraded nutriment implant"
 	export_types = list(/obj/item/organ/cyberimp/chest/nutriment/plus)
 
 /datum/export/implant/reviver
-	cost = 350
+	cost = 80
 	unit_name = "reviver implant"
 	export_types = list(/obj/item/organ/cyberimp/chest/reviver)
 
 /datum/export/implant/thrusters
-	cost = 150
-	unit_name = "thrusters set implant"
-	export_types = list(/obj/item/organ/cyberimp/chest/thrusters)
-
-/datum/export/implant/thrusters
-	cost = 150
+	cost = 100
 	unit_name = "thrusters set implant"
 	export_types = list(/obj/item/organ/cyberimp/chest/thrusters)
 
 /datum/export/implant/arm
-	cost = 200
+	cost = 150
 	unit_name = "arm set implant"
 	export_types = list(/obj/item/organ/cyberimp/arm/toolset, /obj/item/organ/cyberimp/arm/surgery)
 	include_subtypes = TRUE
@@ -78,47 +73,47 @@
 	include_subtypes = TRUE
 
 /datum/export/orgains/heart
-	cost = 250
+	cost = 500
 	unit_name = "heart"
 	export_types = list(/obj/item/organ/heart)
 	exclude_types = list(/obj/item/organ/heart/cursed, /obj/item/organ/heart/cybernetic)
 
 /datum/export/orgains/tongue
-	cost = 75
+	cost = 225
 	unit_name = "tongue"
 	export_types = list(/obj/item/organ/tongue)
 
 /datum/export/orgains/eyes
-	cost = 50 //So many things take your eyes out anyways
+	cost = 250 //So many things take your eyes out anyways
 	unit_name = "eyes"
 	export_types = list(/obj/item/organ/eyes)
 	exclude_types = list(/obj/item/organ/eyes/robotic)
 
 /datum/export/orgains/stomach
-	cost = 50 //can be replaced
+	cost = 250 //can be replaced
 	unit_name = "stomach"
 	export_types = list(/obj/item/organ/stomach)
 
 /datum/export/orgains/lungs
-	cost = 150
+	cost = 300
 	unit_name = "lungs"
 	export_types = list(/obj/item/organ/lungs)
 	exclude_types = list(/obj/item/organ/lungs/cybernetic, /obj/item/organ/lungs/cybernetic/upgraded)
 
 /datum/export/orgains/liver
-	cost = 175
+	cost = 325
 	unit_name = "liver"
 	export_types = list(/obj/item/organ/liver)
 	exclude_types = list(/obj/item/organ/liver/cybernetic, /obj/item/organ/liver/cybernetic/upgraded)
 
 /datum/export/organs/cybernetic
-	cost = 225
+	cost = 20
 	unit_name = "cybernetic organ"
 	export_types = list(/obj/item/organ/liver/cybernetic, /obj/item/organ/lungs/cybernetic, /obj/item/organ/eyes/robotic, /obj/item/organ/heart/cybernetic)
 	exclude_types = list(/obj/item/organ/lungs/cybernetic/upgraded, /obj/item/organ/liver/cybernetic/upgraded)
 
 /datum/export/organs/upgraded
-	cost = 275
+	cost = 40
 	unit_name = "upgraded cybernetic organ"
 	export_types = list(/obj/item/organ/lungs/cybernetic/upgraded, /obj/item/organ/liver/cybernetic/upgraded)
 
