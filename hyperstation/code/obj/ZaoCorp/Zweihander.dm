@@ -45,7 +45,7 @@
 		zwei_stun(hit_atom)
 
 /obj/item/twohanded/required/zao/zweihander/pickup(mob/user)
-	if(HAS_TRAIT(user, ZAOCORP_AUTHORIZATION)) || !on
+	if((HAS_TRAIT(user, ZAOCORP_AUTHORIZATION)) || !on)
 		return
 	if(on)
 		var/mob/living/carbon/human/L = user
