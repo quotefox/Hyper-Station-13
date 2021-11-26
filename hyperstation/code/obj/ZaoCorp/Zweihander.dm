@@ -24,7 +24,7 @@
 	var/throw_hit_chance = 40
 	var/cooldown = 0
 
-	var/stunforce = 80
+	var/stunforce = 120
 
 //Might add a powercell to this once I know more about coding, or if someone wants to help with this, who knows!
 
@@ -45,10 +45,22 @@
 		zwei_stun(hit_atom)
 
 /obj/item/twohanded/required/zao/zweihander/pickup(mob/user)
-	if(HAS_TRAIT(user, ZAOCORP_AUTHORIZATION))
+	if((HAS_TRAIT(user, ZAOCORP_AUTHORIZATION)) || !on)
 		return
-	if(!on)
-		return
+	if(on)
+		var/mob/living/carbon/human/L = user
+		if(prob(50)) //Ill advised to pick up something sparking
+			L.electrocute_act(5, src, safety = 1)
+			playsound(get_turf(L), 'sound/magic/lightningbolt.ogg', 50, 1, -1)
+			L.adjustStaminaLoss(24, STAMINA) //BAD TOUCH
+			L.visible_message("<span class='danger'>[src] electrocutes [L]!</span>","<span class='userdanger'>[src] electrocutes you!</span>")
+			return
+		else
+			on = FALSE
+			icon_state = "zaohander_off"
+			if(src == user.get_active_held_item()) //update inhands
+				user.update_inv_hands()
+			return
 	else
 		on = FALSE
 		icon_state = "zaohander_off"
@@ -112,8 +124,10 @@
 	if(user.a_intent == INTENT_DISARM)
 		if(on)
 			if(zwei_stun(M, user))
-				user.do_attack_animation(M)
+				var/mob/living/carbon/human/H = M
+				user.do_attack_animation(H)
 				user.adjustStaminaLossBuffered(getweight())
+				H.adjustStaminaLoss(8, STAMINA)
 				return
 		else
 			M.visible_message("<span class='warning'>[user] has prodded [M] with [src]. Luckily it was off.</span>", \
@@ -128,10 +142,16 @@
 			if(!M.anchored)
 				M.throw_at(throw_target, rand(2,3), 2, user)
 			cooldown = world.time + 100
+			M.dropItemToGround(M.get_active_held_item())
+			M.dropItemToGround(M.get_inactive_held_item())
+			return
+		if((on) && (cooldown > world.time))
+			user.visible_message("<span class='warning'>The [src] needs time to charge in order to use this again</span>")
 			return
 		else
 			M.visible_message("<span class='warning'>[user] has prodded [M] with [src]. Luckily it was off.</span>", \
 							"<span class='warning'>[user] has prodded you with [src]. Luckily it was off</span>")
+			return
 	else
 		..()
 
@@ -182,9 +202,9 @@
 		final_block_chance = 0
 		return
 	if(attack_type == UNARMED_ATTACK)
-		final_block_chance = 50 //How easy is it to block a hand?
+		final_block_chance = 90 //How easy is it to block a hand?
 	if(attack_type == PROJECTILE_ATTACK)
-		final_block_chance = 25 //With the suit it helps against bullets
+		final_block_chance = 50 //With the suit it helps against bullets
 	if(attack_type == THROWN_PROJECTILE_ATTACK)
 		final_block_chance = 40 //Sometimes you may be off guard
 	if(attack_type == LEAP_ATTACK)
