@@ -5,7 +5,7 @@
 	icon_state = "zaohander_off"
 	lefthand_file = 'hyperstation/icons/mob/inhands/zaohander_left.dmi'
 	righthand_file = 'hyperstation/icons/mob/inhands/zaohander_right.dmi'
-	block_chance = 70
+	block_chance = 100
 	flags_1 = CONDUCT_1
 	item_flags = NEEDS_PERMIT
 	slot_flags = ITEM_SLOT_BACK
@@ -24,7 +24,7 @@
 	var/throw_hit_chance = 40
 	var/cooldown = 0
 
-	var/stunforce = 120
+	var/stunforce = 140
 
 //Might add a powercell to this once I know more about coding, or if someone wants to help with this, who knows!
 
@@ -48,19 +48,12 @@
 	if((HAS_TRAIT(user, ZAOCORP_AUTHORIZATION)) || !on)
 		return
 	if(on)
-		var/mob/living/carbon/human/L = user
-		if(prob(50)) //Ill advised to pick up something sparking
-			L.electrocute_act(5, src, safety = 1)
-			playsound(get_turf(L), 'sound/magic/lightningbolt.ogg', 50, 1, -1)
-			L.adjustStaminaLoss(24, STAMINA) //BAD TOUCH
-			L.visible_message("<span class='danger'>[src] electrocutes [L]!</span>","<span class='userdanger'>[src] electrocutes you!</span>")
-			return
-		else
-			on = FALSE
-			icon_state = "zaohander_off"
-			if(src == user.get_active_held_item()) //update inhands
-				user.update_inv_hands()
-			return
+		var/mob/living/carbon/human/L = user //Ill advised to pick up something sparking
+		L.electrocute_act(5, src, safety = 1)
+		playsound(get_turf(L), 'sound/magic/lightningbolt.ogg', 50, 1, -1)
+		L.adjustStaminaLoss(24, STAMINA) //BAD TOUCH
+		L.visible_message("<span class='danger'>[src] electrocutes [L]!</span>","<span class='userdanger'>[src] electrocutes you!</span>")
+		return
 	else
 		on = FALSE
 		icon_state = "zaohander_off"
@@ -144,6 +137,7 @@
 			cooldown = world.time + 100
 			M.dropItemToGround(M.get_active_held_item())
 			M.dropItemToGround(M.get_inactive_held_item())
+			zwei_hardstun(M)
 			return
 		if((on) && (cooldown > world.time))
 			user.visible_message("<span class='warning'>The [src] needs time to charge in order to use this again</span>")
@@ -177,7 +171,7 @@
 		stunpwr *= round(stuncharge/hitcost, 0.1)*/
 
 
-	L.Knockdown(10)
+	L.Knockdown(80)
 	L.adjustStaminaLoss(stunpwr*0.1, affected_zone = (istype(user) ? user.zone_selected : BODY_ZONE_CHEST))//CIT CHANGE - makes stunbatons deal extra staminaloss. Todo: make this also deal pain when pain gets implemented.
 	L.apply_effect(EFFECT_STUTTER, stunforce)
 	SEND_SIGNAL(L, COMSIG_LIVING_MINOR_SHOCK)
@@ -197,16 +191,24 @@
 
 	return TRUE
 
+/obj/item/twohanded/required/zao/zweihander/proc/zwei_hardstun(mob/living/L, mob/user) //Stealing this from stun batons
+	if(L.check_shields(src, 0, "[user]'s [name]", MELEE_ATTACK)) //No message; check_shields() handles that
+		playsound(L, 'sound/weapons/genhit.ogg', 50, 1)
+		return FALSE
+	L.Stun(5)
+
+	return TRUE
+
 /obj/item/twohanded/required/zao/zweihander/hit_reaction(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(!HAS_TRAIT(owner, ZAOCORP_AUTHORIZATION) || !owner.in_throw_mode) //Throw mode only for this one
 		final_block_chance = 0
 		return
 	if(attack_type == UNARMED_ATTACK)
-		final_block_chance = 90 //How easy is it to block a hand?
+		final_block_chance = 100 //How easy is it to block a hand?
 	if(attack_type == PROJECTILE_ATTACK)
-		final_block_chance = 50 //With the suit it helps against bullets
+		final_block_chance = 80 //With the suit it helps against bullets
 	if(attack_type == THROWN_PROJECTILE_ATTACK)
-		final_block_chance = 40 //Sometimes you may be off guard
+		final_block_chance = 50 //Sometimes you may be off guard
 	if(attack_type == LEAP_ATTACK)
 		final_block_chance = 100 //BRACE
 	return ..()
