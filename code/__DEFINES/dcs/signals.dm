@@ -191,7 +191,7 @@
 #define COMSIG_CLICK_CTRL_SHIFT "ctrl_shift_click"				//from base of atom/CtrlShiftClick(/mob)
 #define COMSIG_MOUSEDROP_ONTO "mousedrop_onto"					//from base of atom/MouseDrop(): (/atom/over, /mob/user)
 	#define COMPONENT_NO_MOUSEDROP 1
-#define COMSIG_MOUSEDROPPED_ONTO "mousedropped_onto"		
+#define COMSIG_MOUSEDROPPED_ONTO "mousedropped_onto"
 
 
 #define COMSIG_MICRO_PICKUP_FEET "micro_force_grabbed"			//From /datum/element/mob_holder/micro
@@ -376,6 +376,10 @@
 ///from base of /mob/living/can_track(): (mob/user)
 #define COMSIG_LIVING_CAN_TRACK "mob_cantrack"
 	#define COMPONENT_CANT_TRACK (1<<0)
+
+// /mob/living/silicon signals
+
+#define COMSIG_SILICON_MIND_ATTACHED "silicon_mind_attached" //from /mob/living/silicon/robot/mind_initialize(): (/mob/living/silicon)
 
 // /mob/living/carbon signals
 

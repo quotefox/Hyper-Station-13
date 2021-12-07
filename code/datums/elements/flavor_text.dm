@@ -40,12 +40,17 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		LAZYOR(GLOB.mobs_with_editable_flavor_text[M], src)
 		M.verbs |= /mob/proc/manage_flavor_tests
 
-	if(save_key && ishuman(target))
-		RegisterSignal(target, COMSIG_HUMAN_PREFS_COPIED_TO, .proc/update_prefs_flavor_text)
+	if(save_key)
+		if(ishuman(target))
+			RegisterSignal(target, COMSIG_HUMAN_PREFS_COPIED_TO, .proc/update_prefs_flavor_text)
+
+		//add silicon flavor text when mind initializes.
+		else if(issilicon(target))
+			RegisterSignal(target, COMSIG_SILICON_MIND_ATTACHED, .proc/set_initial_silicon_flavor)
 
 /datum/element/flavor_text/Detach(atom/A)
 	. = ..()
-	UnregisterSignal(A, list(COMSIG_PARENT_EXAMINE, COMSIG_HUMAN_PREFS_COPIED_TO))
+	UnregisterSignal(A, list(COMSIG_PARENT_EXAMINE, COMSIG_HUMAN_PREFS_COPIED_TO, COMSIG_SILICON_MIND_ATTACHED))
 	texts_by_atom -= A
 	if(can_edit && ismob(A))
 		var/mob/M = A
@@ -150,7 +155,22 @@ GLOBAL_LIST_EMPTY(mobs_with_editable_flavor_text) //et tu, hacky code
 		return TRUE
 	return FALSE
 
+/datum/element/flavor_text/proc/set_initial_silicon_flavor(datum/source, mob/living/silicon/user)
+
+	if(!(user in texts_by_atom))
+		return FALSE
+
+	//var/new_text = user.client.prefs.features["silicon_flavor_text"]
+	var/new_text = user.client.prefs.features["silicon_flavor_text"]
+	if(!isnull(new_text) && (user in texts_by_atom))
+		texts_by_atom[user] = new_text
+		to_chat(user, "Your silicon flavor text has been updated.")
+		to_chat(user, "[new_text] is your silicon flavor text.")
+		return TRUE
+	return FALSE
+
 /datum/element/flavor_text/proc/update_prefs_flavor_text(mob/living/carbon/human/H, datum/preferences/P, icon_updates = TRUE, roundstart_checks = TRUE)
+	to_chat(src, "Update prefs flavor text triggered.")
 	if(P.features.Find(save_key))
 		texts_by_atom[H] = P.features[save_key]
 
