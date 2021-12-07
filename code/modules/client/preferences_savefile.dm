@@ -454,13 +454,21 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	else //We have no old flavortext, default to new
 		S["feature_flavor_text"]		>> features["flavor_text"]
 
-	S["feature_silicon_flavor_text"]	>> features["silicon_flavor_text"]
+
+	if((S["silicon_flavor_text"] != "") && (S["silicon_flavor_text"] != null) && S["silicon_flavor_text"])
+		S["silicon_flavor_text"]				>> features["silicon_flavor_text"]
+
+		WRITE_FILE(S["feature_silicon_flavor_text"], features["silicon_flavor_text"]) //Save it in our new type of flavor-text
+		WRITE_FILE(S["silicon_flavor_text"], "") //Remove old flavortext, completing the cut-and-paste into the new format.
+	else
+		S["feature_silicon_flavor_text"]		>> features["silicon_flavor_text"]
+
+
 	if((S["ooc_text"] != "") && (S["ooc_text"] != null) && S["ooc_text"])
 		S["ooc_text"]				>> features["ooc_text"]
 
 		WRITE_FILE(S["feature_ooc_text"], features["ooc_text"]) //Save it in our new type of flavor-text
 		WRITE_FILE(S["ooc_text"], "") //Remove old flavortext, completing the cut-and-paste into the new format.
-
 	else
 		S["feature_ooc_text"]		>> features["ooc_text"]
 
