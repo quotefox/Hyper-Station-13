@@ -192,7 +192,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"ipc_antenna" = "None",
 		"flavor_text" = "",
 		"silicon_flavor_text" = "",
-		"ooc_text" = ""
+		"ooc_text" = "",
+		"front_genitals_over_hair" = FALSE
 		)
 
 	/// Security record note section
@@ -435,6 +436,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=all;task=random'>Random Body</A><BR>"
 			dat += "<b>Always Random Body:</b><a href='?_src_=prefs;preference=all'>[be_random_body ? "Yes" : "No"]</A><BR>"
 			dat += "<br><b>Cycle background:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=cycle_bg;task=input'>[bgstate]</a><BR>"
+			dat += "<b>Render front genitals over hair:</b><a href='?_src_=prefs;task=front_genitals_over_hair'>[features["front_genitals_over_hair"] ? "Yes" : "No"]</A><BR>"
 
 			var/use_skintones = pref_species.use_skintones
 			if(use_skintones)
@@ -1681,6 +1683,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		return TRUE
 
 	switch(href_list["task"])
+		if("front_genitals_over_hair")
+			features["front_genitals_over_hair"] = !features["front_genitals_over_hair"]
 		if("random")
 			switch(href_list["preference"])
 				if("name")
