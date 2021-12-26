@@ -1259,6 +1259,9 @@ GLOBAL_LIST_EMPTY(custom_outfits) //Admin created outfits
 
 	switch(punishment)
 		if(ADMIN_PUNISHMENT_LIGHTNING)
+			if(prob(75))
+				playsound(target, 'hyperstation/sound/misc/NOW.ogg', 75, 1)
+				sleep(4)
 			var/turf/T = get_step(get_step(target, NORTH), NORTH)
 			T.Beam(target, icon_state="lightning[rand(1,12)]", time = 5)
 			target.adjustFireLoss(75)
