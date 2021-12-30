@@ -568,10 +568,8 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 		speak(slogan)
 		last_slogan = world.time
 
-	/* no freebies
 	if(shoot_inventory && prob(shoot_inventory_chance))
 		throw_item()
-	*/
 
 /obj/machinery/vending/proc/speak(message)
 	if(stat & (BROKEN|NOPOWER))
