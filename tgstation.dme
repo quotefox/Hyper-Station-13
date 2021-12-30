@@ -3159,6 +3159,7 @@
 #include "hyperstation\code\modules\mob\living\silicon\robot\robot.dm"
 #include "hyperstation\code\modules\mob\living\silicon\robot\robot_modules.dm"
 #include "hyperstation\code\modules\patreon\patreon.dm"
+#include "hyperstation\code\modules\power\lighting.dm"
 #include "hyperstation\code\modules\power\reactor\fuel_rods.dm"
 #include "hyperstation\code\modules\power\reactor\rbmk.dm"
 #include "hyperstation\code\modules\power\reactor\reactor_cargo.dm"
