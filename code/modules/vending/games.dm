@@ -7,6 +7,7 @@
 		            /obj/item/storage/pill_bottle/dice = 10,
 		            /obj/item/toy/cards/deck/cas = 3,
 		            /obj/item/toy/cards/deck/cas/black = 3,
+		            /obj/item/dyespray=3,
 					/obj/item/toy/cards/deck/unum = 3)
 	contraband = list(/obj/item/dice/fudge = 9)
 	refill_canister = /obj/item/vending_refill/games
