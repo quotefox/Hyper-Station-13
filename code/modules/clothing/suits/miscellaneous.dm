@@ -29,7 +29,7 @@
 	resistance_flags = NONE
 
 /*
- * Posshim's Corpus atire 
+ * Posshim's Corpus atire
  */
 /obj/item/clothing/suit/hooded/corpus/
 	name = "Standard Voidsuit"
@@ -1047,3 +1047,13 @@
 	icon_state = "labcoat_formal"
 	item_state = "labcoat_formal"
 	body_parts_covered = CHEST|ARMS
+
+//bathrobes ported from Citadel
+
+/obj/item/clothing/suit/bathrobe
+	name = "bathrobe"
+	desc = "A blue bathrobe."
+	icon_state = "bathrobe"
+	item_state = "bathrobe"
+	body_parts_covered = CHEST|GROIN|ARMS
+
