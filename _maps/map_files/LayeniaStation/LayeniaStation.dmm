@@ -64899,6 +64899,21 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/hallway)
+"pJd" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/closet,
+/obj/item/clothing/suit/bathrobe,
+/obj/item/clothing/suit/bathrobe,
+/obj/item/clothing/suit/bathrobe,
+/obj/item/clothing/suit/bathrobe,
+/obj/item/clothing/suit/bathrobe,
+/obj/item/clothing/suit/bathrobe,
+/turf/open/floor/plasteel/freezer,
+/area/crew_quarters/fitness)
 "pJl" = (
 /obj/structure/disposalpipe/trunk{
 	dir = 4
@@ -113312,7 +113327,7 @@ rvO
 jyQ
 izt
 eiv
-izt
+pJd
 nrE
 oco
 iCr

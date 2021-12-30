@@ -254,3 +254,8 @@
 	name = "Winter labcoat"
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/toggle/labcoat/formallab
+
+/datum/gear/uniform/bathrobe
+	name = "Bathrobe"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/bathrobe
