@@ -9,7 +9,7 @@
  * Paper Frames
  * Runed Metal (cult)
  * Brass (clockwork cult)
- * Bronze (bake brass)
+ * Bronze (fake brass)
  * Cotton/Duracotton
  * Shwadon
  *
@@ -535,7 +535,6 @@ GLOBAL_LIST_INIT(runed_metal_recipes, list ( \
 	icon = 'icons/obj/stack_objects.dmi'
 	sheettype = "runed"
 	merge_type = /obj/item/stack/sheet/runed_metal
-	novariants = TRUE
 	grind_results = list(/datum/reagent/iron = 5, /datum/reagent/blood = 15)
 
 /obj/item/stack/sheet/runed_metal/ratvar_act()
@@ -655,8 +654,8 @@ GLOBAL_LIST_INIT(bronze_recipes, list ( \
 	name = "brass"
 	desc = "On closer inspection, what appears to be wholly-unsuitable-for-building brass is actually more structurally stable bronze."
 	singular_name = "bronze sheet"
-	icon_state = "sheet-brass"
-	item_state = "sheet-brass"
+	icon_state = "sheet-bronze"
+	item_state = "sheet-bronze"
 	icon = 'icons/obj/stack_objects.dmi'
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	throwforce = 10
