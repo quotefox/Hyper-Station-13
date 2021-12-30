@@ -65,8 +65,8 @@
 
 /obj/item/stack/ore/uranium
 	name = "uranium ore"
-	icon_state = "Uranium ore"
-	item_state = "Uranium ore"
+	icon_state = "ore-uranium"
+	item_state = "ore-uranium"
 	singular_name = "uranium ore chunk"
 	points = 30
 	materials = list(MAT_URANIUM=MINERAL_MATERIAL_AMOUNT)
@@ -74,8 +74,8 @@
 
 /obj/item/stack/ore/iron
 	name = "iron ore"
-	icon_state = "Iron ore"
-	item_state = "Iron ore"
+	icon_state = "ore-iron"
+	item_state = "ore-iron"
 	singular_name = "iron ore chunk"
 	points = 1
 	materials = list(MAT_METAL=MINERAL_MATERIAL_AMOUNT)
@@ -83,8 +83,8 @@
 
 /obj/item/stack/ore/glass
 	name = "sand pile"
-	icon_state = "Glass ore"
-	item_state = "Glass ore"
+	icon_state = "ore-sand"
+	item_state = "ore-sand"
 	singular_name = "sand pile"
 	points = 1
 	materials = list(MAT_GLASS=MINERAL_MATERIAL_AMOUNT)
@@ -131,8 +131,8 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 
 /obj/item/stack/ore/plasma
 	name = "plasma ore"
-	icon_state = "Plasma ore"
-	item_state = "Plasma ore"
+	icon_state = "ore-plasma"
+	item_state = "ore-plasma"
 	singular_name = "plasma ore chunk"
 	points = 15
 	materials = list(MAT_PLASMA=MINERAL_MATERIAL_AMOUNT)
@@ -145,8 +145,8 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 
 /obj/item/stack/ore/silver
 	name = "silver ore"
-	icon_state = "Silver ore"
-	item_state = "Silver ore"
+	icon_state = "ore-silver"
+	item_state = "ore-silver"
 	singular_name = "silver ore chunk"
 	points = 16
 	materials = list(MAT_SILVER=MINERAL_MATERIAL_AMOUNT)
@@ -154,8 +154,8 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 
 /obj/item/stack/ore/gold
 	name = "gold ore"
-	icon_state = "Gold ore"
-	icon_state = "Gold ore"
+	icon_state = "ore-gold"
+	icon_state = "ore-gold"
 	singular_name = "gold ore chunk"
 	points = 18
 	materials = list(MAT_GOLD=MINERAL_MATERIAL_AMOUNT)
@@ -163,8 +163,8 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 
 /obj/item/stack/ore/diamond
 	name = "diamond ore"
-	icon_state = "Diamond ore"
-	item_state = "Diamond ore"
+	icon_state = "ore-diamond"
+	item_state = "ore-diamond"
 	singular_name = "diamond ore chunk"
 	points = 50
 	materials = list(MAT_DIAMOND=MINERAL_MATERIAL_AMOUNT)
@@ -172,8 +172,8 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 
 /obj/item/stack/ore/bananium
 	name = "bananium ore"
-	icon_state = "Bananium ore"
-	item_state = "Bananium ore"
+	icon_state = "ore-bananium"
+	item_state = "ore-bananium"
 	singular_name = "bananium ore chunk"
 	points = 60
 	materials = list(MAT_BANANIUM=MINERAL_MATERIAL_AMOUNT)
@@ -181,8 +181,8 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 
 /obj/item/stack/ore/titanium
 	name = "titanium ore"
-	icon_state = "Titanium ore"
-	item_state = "Titanium ore"
+	icon_state = "ore-titanium"
+	item_state = "ore-titanium"
 	singular_name = "titanium ore chunk"
 	points = 50
 	materials = list(MAT_TITANIUM=MINERAL_MATERIAL_AMOUNT)
@@ -199,8 +199,8 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	name = "gibtonite ore"
 	desc = "Extremely explosive if struck with mining equipment, Gibtonite is often used by miners to speed up their work by using it as a mining charge. This material is illegal to possess by unauthorized personnel under space law."
 	icon = 'icons/obj/mining.dmi'
-	icon_state = "Gibtonite ore"
-	item_state = "Gibtonite ore"
+	icon_state = "ore-gibtonite"
+	item_state = "ore-gibtonite"
 	w_class = WEIGHT_CLASS_BULKY
 	throw_range = 0
 	var/primed = FALSE
@@ -220,7 +220,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 		wires = new /datum/wires/explosive/gibtonite(src)
 		attacher = key_name(user)
 		qdel(I)
-		add_overlay("Gibtonite_igniter")
+		add_overlay("gibtonite_igniter")
 		return
 
 	if(wires && !primed)
@@ -261,7 +261,7 @@ GLOBAL_LIST_INIT(sand_recipes, list(\
 	if(!primed)
 		primed = TRUE
 		playsound(src,'sound/effects/hit_on_shattered_glass.ogg',50,1)
-		icon_state = "Gibtonite active"
+		icon_state = "ore-gibtonite_1"
 		var/turf/bombturf = get_turf(src)
 		var/notify_admins = 0
 		if(z != 5)//Only annoy the admins ingame if we're triggered off the mining zlevel
