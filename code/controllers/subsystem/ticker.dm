@@ -677,10 +677,16 @@ SUBSYSTEM_DEF(ticker)
 	update_everything_flag_in_db()
 	if(!round_end_sound)
 		round_end_sound = pick(\
-		'sound/roundend/iwishtherewassomethingmore.ogg',
-		'sound/roundend/likeisaid.ogg',
-		'sound/roundend/whatarottenwaytodie.ogg',
-		'sound/roundend/whatashame.ogg',
+		'hyperstation/sound/roundend/dotheballsgo.ogg',
+		'hyperstation/sound/roundend/filledwith.ogg',
+		'hyperstation/sound/roundend/iknowwhat.ogg',
+		'hyperstation/sound/roundend/lottawords.ogg',
+		'hyperstation/sound/roundend/pissesonme.ogg',
+		'hyperstation/sound/roundend/theballsgothard.ogg',
+		'hyperstation/sound/roundend/iwishtherewassomethingmore.ogg',
+		'hyperstation/sound/roundend/likeisaid.ogg',
+		'hyperstation/sound/roundend/whatarottenwaytodie.ogg',
+		'hyperstation/sound/roundend/whatashame.ogg',
 		'sound/roundend/newroundsexy.ogg',
 		'sound/roundend/apcdestroyed.ogg',
 		'sound/roundend/bangindonk.ogg',
