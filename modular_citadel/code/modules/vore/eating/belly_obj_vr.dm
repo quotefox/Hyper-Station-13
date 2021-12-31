@@ -202,7 +202,7 @@
 				continue
 			L.absorbed = FALSE
 			L.stop_sound_channel(CHANNEL_PREYLOOP)
-			L.cure_blind("belly_[REF(src)]")
+//			L.cure_blind("belly_[REF(src)]")	Dont need to cure if vore doesnt cause blindness.
 			SEND_SIGNAL(OW, COMSIG_CLEAR_MOOD_EVENT, "fedpred", /datum/mood_event/fedpred)
 			SEND_SIGNAL(L, COMSIG_CLEAR_MOOD_EVENT, "fedprey", /datum/mood_event/fedprey)
 			SEND_SIGNAL(OW, COMSIG_ADD_MOOD_EVENT, "emptypred", /datum/mood_event/emptypred)
@@ -245,7 +245,7 @@
 		var/mob/living/ML = M
 		var/mob/living/OW = owner
 		ML.stop_sound_channel(CHANNEL_PREYLOOP)
-		ML.cure_blind("belly_[REF(src)]")
+//		ML.cure_blind("belly_[REF(src)]")	//No need to cure if vore doesnt add blindness
 		SEND_SIGNAL(OW, COMSIG_CLEAR_MOOD_EVENT, "fedpred", /datum/mood_event/fedpred)
 		SEND_SIGNAL(ML, COMSIG_CLEAR_MOOD_EVENT, "fedprey", /datum/mood_event/fedprey)
 		SEND_SIGNAL(OW, COMSIG_ADD_MOOD_EVENT, "emptypred", /datum/mood_event/emptypred)
@@ -293,7 +293,7 @@
 
 	for(var/mob/living/M in contents)
 		M.updateVRPanel()
-		M.become_blind("belly_[REF(src)]")
+//		M.become_blind("belly_[REF(src)]")	//Forces people to have to use janky work arounds to see emotes, find a better way of doing this that doesnt prevent seeing /me emotes
 
 	// Setup the autotransfer checks if needed
 	if(transferlocation != null && autotransferchance > 0)
@@ -313,7 +313,7 @@
 	if(!(content in src) || !istype(target))
 		return
 	for(var/mob/living/M in contents)
-		M.cure_blind("belly_[REF(src)]")
+//		M.cure_blind("belly_[REF(src)]")
 	target.nom_mob(content, target.owner)
 	if(!silent)
 		var/turf/source = get_turf(owner)

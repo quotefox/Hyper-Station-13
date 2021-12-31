@@ -74,6 +74,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			to_chat(src, "<span class='danger'>Your previous action was ignored because you've done too many in a second</span>")
 			return
 
+	if(href_list["reload_statbrowser"])
+		src << browse(file('html/statbrowser.html'), "window=statbrowser")
+
 	//Logs all hrefs, except chat pings
 	if(!(href_list["_src_"] == "chat" && href_list["proc"] == "ping" && LAZYLEN(href_list) == 2))
 		log_href("[src] (usr:[usr]\[[COORD(usr)]\]) : [hsrc ? "[hsrc] " : ""][href]")
@@ -308,6 +311,7 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 
 	chatOutput.start() // Starts the chat
 	src << browse(file('html/statbrowser.html'), "window=statbrowser") //starts stats tab
+	addtimer(CALLBACK(src, .proc/check_panel_loaded), 20 SECONDS)
 
 	if(alert_mob_dupe_login)
 		spawn()
@@ -967,3 +971,9 @@ GLOBAL_LIST_EMPTY(external_rsc_urls)
 		screen -= S
 		qdel(S)
 	char_render_holders = null
+
+/client/proc/check_panel_loaded()
+	if(statbrowser_ready)
+		return
+	to_chat(src, "<span class='danger'>Statpanel failed to load, click <a href='?src=[REF(src)];reload_statbrowser=1'>here</a> to reload the panel if it doesn't reload automatically.</span>")
+	src << browse(file('html/statbrowser.html'), "window=statbrowser")

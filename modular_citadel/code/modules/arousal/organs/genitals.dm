@@ -419,6 +419,7 @@
 
 	for(var/L in relevant_layers) //Less hardcode
 		H.remove_overlay(L)
+	H.remove_overlay(GENITALS_FRONT_OVER_HAIR_LAYER)
 
 	//start scanning for genitals
 	for(var/obj/item/organ/O in H.internal_organs)
@@ -432,6 +433,8 @@
 	//start applying overlays
 	for(var/layer in relevant_layers)
 		var/layertext = genitals_layertext(layer)
+		if(layer == GENITALS_FRONT_LAYER && H.dna.features["front_genitals_over_hair"])
+			layer = GENITALS_FRONT_OVER_HAIR_LAYER
 		for(var/obj/item/organ/genital/G in genitals_to_add)
 			var/datum/sprite_accessory/S
 			size = G.size
@@ -544,7 +547,5 @@
 
 		if(LAZYLEN(standing))
 			H.overlays_standing[layer] = standing.Copy()
+			H.apply_overlay(layer)
 			standing = list()
-
-	for(var/L in relevant_layers)
-		H.apply_overlay(L)

@@ -7,7 +7,7 @@
 	slot 					= "testicles"
 	size 					= BALLS_SIZE_MIN
 	var/size_name			= "average"
-	shape					= "single"
+	shape					= "Single" //Shape name has to be capital to work
 	var/sack_size			= BALLS_SACK_SIZE_DEF
 	var/cached_size			= 6
 	//fluid_mult				= 0.133 // Set to a lower value due to production scaling with size (I.E. 6 inches the "normal" amount)

@@ -129,14 +129,6 @@
 					/obj/item/storage/pill_bottle/stimulant)
 	crate_name = "medical supplies crate"
 
-/datum/supply_pack/medical/vending
-	name = "Medical Vending Crate"
-	desc = "Contains refills for medical vending machines."
-	cost = 2000
-	contains = list(/obj/item/vending_refill/medical,
-					/obj/item/vending_refill/wallmed)
-	crate_name = "medical vending crate"
-
 /datum/supply_pack/medical/sprays
 	name = "Medical Sprays"
 	desc = "Contains two cans of Styptic Spray, Silver Sulfadiazine Spray, Synthflesh Spray and Sterilizer Compound Spray."

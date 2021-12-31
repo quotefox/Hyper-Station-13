@@ -153,3 +153,73 @@
 				</body>
 				</html>
 				"}
+
+/obj/item/book/lorebooks/engrams
+	name = "The Engram: Securing Your Technology"
+	icon_state = "bookengrams"
+	desc = "Ever wondered why technology seems locked in some places, or more modular in others? Learn about the Engram with this crash-course datapad!"
+	author = "P. LYNN"
+	title = "The Engram: Securing Your Technology"
+	dat = {"<html>
+				<head>
+				<style>
+				h1 {font-size: 18px; margin: 15px 0px 5px;}
+				h2 {font-size: 15px; margin: 15px 0px 5px;}
+				li {margin: 2px 0px 2px 15px;}
+				ul {list-style: none; margin: 5px; padding: 0px;}
+				ol {margin: 5px; padding: 0px 15px;}
+				</style>
+				</head>
+				<body>
+				<h3 style="text-align: center;">The Engram</h3>
+				<h2 style="text-align: center;">Securing Your Technology</h2>
+				<hr>
+				Have you ever looked at your workplace surroundings and wondered why it feels so modular? Ever wondered why you can't just get a screwdriver and pick apart your local armory weapons, and rebuild them? Or perhaps you're wondering why certain items simply refuse to go together? This is all thanks to the Andromeda-class Patented Engram System (APES), which is capable of modifying the physical manifestation of technology, as if it were a blueprint! This datapad will cover the basics of what an Engram actually is, and what it does for those involved.
+				<p>
+				<h2>Table of Contents...</h2>
+				<ol>
+				<li>The Engram; What Is It?
+				<li>Why Are Engrams Made?
+				<li>Why Are Engrams Necessary?
+				<li>Engrams Used Today
+				</ol>
+				<p>
+				<hr>
+                <h1><u>Chapter 1</u></h1>
+                <h2>The Engram; What Is It?</h2>
+				<p>
+				In the Eight Era of the Seventh Cycle, technology has flourished beyond the means of standard Euclidian definitions. Weave-integrated processing in conjunction with infused metals are often the specular highlight of focus for most folk willing to learn how our galaxy operates, but that is often just the tip of the iceberg for the standing Azurean scholar. Far beyond the point of quantum and bluespace, technologies had started to become too complex for any single organization to keep track of, even with the help of multidimensional-threaded computing. Thus, a standardized solution was needed: The Engram.
+				<p>
+				An Engram is more often than not an umbrella of technologies, secured beneath a data-chit for usage within a colony, region of space, or entire sector. Most brands of Engrams tend to consist of a Weave-altercated core with a deactivated shell, for usage into a type of infusion engine. Depending on the power plugged into it, it's range of influence can span very little, or very far! Most high-end Engrams tend to be galaxy-wide, and service as a focal point for editing the material blueprint of anything in real time.
+				<p>
+				The Engram itself serves the whole purpose of ensuring that a technology can become easy to contain, should it's complexity become numbing to even the most bright of minds. As a result, this can also "lock down" or change features of the technology, should it be required and programmed correctly, which is more often than not the case for companies who wish to ensure that their technologies can be distributed without illegal modifications-- after all, an Engram can be controlled only by it's main chit, so technology can be revoked or changed on the fly without any needs for recalling and redistribution!
+				<p>
+				<hr>
+				<h1><u>Chapter 2</u></h1>
+				<h2>Why Are Engrams Made?</h2>
+				<p>
+				As stated in the chapter before, Engrams were made out of the necessity of simplifying relentlessly-complex technologies, but they suffice much more purpose than just ease of access. When an Engram is successfully applied to a technology or a branch of such, it effectively can alter the material blueprint of said tech in realtime, should the correct commodoties be applied to it. This ease of updating manufactured goods in realtime can be applicable to simply updating software on one's computer, only with realtime hardware modification, for the sake of analogy. This means any issues can be ironed out post-distribution.
+				<p>
+				Not only that, but this effectively helps technology to be more free and easily accessible for those interested in purchasing. Shareholders can use and keep an Engram knowing full well that this allows their technology to be safe and secure, even if it does end up in the wrong hands! Engrams are often tied to a company's TOS, where breaking said terms can often revoke and restrain the usage of technology remotely. Even any attempts to modify technology without the correct permissions can all be result in failures, as Engrams effectively can turn technology into an encrypted blueprint in realtime-- meaning that you'll see little to no plaigiarized and ill-modified tech, without the correct permits from the user.
+				<p>
+				<hr>
+				<h1><u>Chapter 3</u></h1>
+				<h2>Why Are Engrams Necessary?</h2>
+				<p>
+				By this point in reading, it may seem obvious as to why Engrams can be necessary in this day and age, but many civilizations and societies can often reject and turn down the nature and ideals that an Engram can not only bring, but encourage as well. Many fears can be stricken across societies about how dangerous it is to put too much power in the hands of purchasable items, which is why regulation via the Azurean Engram Act of the Eighth Era was put in-place. To put it short without delving into the act's details, this allowed Engrams to be under government control and regulated to meet "humane" standards, as one would put it bluntly. This act is especially useful for any body-enhancing augments, especially for live-saving ones.
+				<p>
+				Not only for the safety of the people, Engrams can also suffice and serve the purpose of ensuring that standardized and regulated technology spread across regions as massive as an entire star cluster can be controlled and easily used, providing much more user access than a traditional tinkering mindset one may want. Of course, there is a value of wanting more skills to argue over, but that is not for this datapad.
+				<p>
+				<hr>
+				<h1><u>Chapter 4</u></h1>
+				<h2>Engrams Used Today</h2>
+				<p>
+				Engrams are used widely across the galaxy, from small startup companies to larger galactic-spanning mega-corporations like Kinaris and Dzar. Many companies patent all of their technology beneath their own Engrams, and Kinaris is prominent for mimicking technology of previous civilizations into an Engram for their conversion process; such is the example of the crew of Layenia Station at Hyperion. Just about everywhere you look in Andromeda can be using at least a dozen Engrams in day to day technologies. From things as small as coffee machines and booze dispensers, to even full-blown vessels and capital ships, Engrams can dictate the shape and function of many day-to-day things!
+				<p>
+				<hr>
+
+
+
+				</body>
+				</html>
+				"}

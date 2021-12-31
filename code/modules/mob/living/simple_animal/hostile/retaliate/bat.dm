@@ -49,3 +49,6 @@
 	emote_see = list("is ready to law down the law.", "flaps about with an air of authority.")
 	response_help = "respects the authority of"
 	gold_core_spawnable = FRIENDLY_SPAWN
+
+/mob/living/simple_animal/hostile/retaliate/bat/vampire //Too many people use this to vent into places they shouldn't, *cough cough* armory
+	ventcrawler = VENTCRAWLER_NONE

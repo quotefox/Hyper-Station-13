@@ -167,6 +167,8 @@
 	name = "vacuum floor"
 	initial_gas_mix = AIRLESS_ATMOS
 
+//Layenia Tiles - Hyper
 /turf/open/floor/engine/layenia
 	name = "reinforced floor"
 	initial_gas_mix = FROZEN_ATMOS
+	planetary_atmos = TRUE

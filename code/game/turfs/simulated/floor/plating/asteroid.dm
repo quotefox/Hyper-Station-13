@@ -379,6 +379,7 @@
 	slowdown = 1
 	environment_type = "layenia"
 	flags_1 = NONE
+	heat_capacity = INFINITY //Makes it so no matter the heat, it will not burn out.
 	planetary_atmos = TRUE
 	burnt_states = null
 	bullet_sizzle = TRUE

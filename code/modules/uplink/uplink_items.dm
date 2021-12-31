@@ -1921,6 +1921,20 @@ datum/uplink_item/stealthy_weapons/taeclowndo_shoes
 	item = /obj/item/gun/energy/emitter
 	restricted_roles = list("Chief Engineer", "Station Engineer", "Atmospheric Technician")
 
+/datum/uplink_item/role_restricted/coconut_cannon
+	name = "Coconut Cannon"
+	desc = "A coconut cannon for botanists. Doesn't need gas and can hold up to 50 coconuts."
+	cost = 5
+	item = /obj/item/pneumatic_cannon/coconut
+	restricted_roles = list("Botanist")
+
+/datum/uplink_item/role_restricted/scharge_coconut_cannon
+	name = "Self-Charging Coconut Cannon"
+	desc = "A special coconut cannon for botanists, this one can hold up to 20 coconuts and automatically fabricates one every two seconds!"
+	cost = 10
+	item = /obj/item/pneumatic_cannon/coconut/selfcharge
+	restricted_roles = list("Botanist")
+
 // Pointless
 /datum/uplink_item/badass
 	category = "(Pointless) Badassery"

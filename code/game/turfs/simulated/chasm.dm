@@ -121,7 +121,7 @@
 	gender = PLURAL
 	desc = "Clouds as far as the eye can see... Watch your step."
 	icon = 'icons/turf/space.dmi'
-	icon_state = "0"
+	icon_state = "clouds"
 	plane = PLANE_SPACE
 	tiled_dirt = FALSE
 	baseturfs = /turf/open/chasm/cloud

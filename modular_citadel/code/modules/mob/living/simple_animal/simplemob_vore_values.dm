@@ -133,3 +133,9 @@
 	vore_active = TRUE
 	isPredator = TRUE
 	vore_default_mode = DM_DIGEST
+
+/mob/living/simple_animal/hostile/bigmouse //fine.
+	feeding = TRUE
+	vore_active = TRUE
+	isPredator = TRUE
+	vore_default_mode = DM_DIGEST

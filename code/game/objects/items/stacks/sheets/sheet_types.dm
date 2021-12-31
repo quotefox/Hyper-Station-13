@@ -9,7 +9,7 @@
  * Paper Frames
  * Runed Metal (cult)
  * Brass (clockwork cult)
- * Bronze (bake brass)
+ * Bronze (fake brass)
  * Cotton/Duracotton
  * Shwadon
  *
@@ -58,6 +58,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe("closet", /obj/structure/closet, 2, time = 15, one_per_turf = TRUE, on_floor = TRUE), \
 	null, \
 	new/datum/stack_recipe("canister", /obj/machinery/portable_atmospherics/canister, 10, time = 15, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("trash bin", /obj/structure/closet/crate/bin, 10, time = 15, one_per_turf = TRUE, on_floor = TRUE),\
 	null, \
 	new/datum/stack_recipe("floor tile", /obj/item/stack/tile/plasteel, 1, 4, 20), \
 	new/datum/stack_recipe("metal rod", /obj/item/stack/rods, 1, 2, 60), \
@@ -332,6 +333,7 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("black shoes", /obj/item/clothing/shoes/sneakers/black, 2), \
 	new/datum/stack_recipe("cloth footwraps", /obj/item/clothing/shoes/footwraps, 2), \
 	new/datum/stack_recipe("tunic", /obj/item/clothing/under/tunic, 3), \
+	new/datum/stack_recipe("bathrobe", /obj/item/clothing/suit/bathrobe, 3), \
 	null, \
 	new/datum/stack_recipe("backpack", /obj/item/storage/backpack, 4), \
 	new/datum/stack_recipe("duffel bag", /obj/item/storage/backpack/duffelbag, 6), \
@@ -534,7 +536,6 @@ GLOBAL_LIST_INIT(runed_metal_recipes, list ( \
 	icon = 'icons/obj/stack_objects.dmi'
 	sheettype = "runed"
 	merge_type = /obj/item/stack/sheet/runed_metal
-	novariants = TRUE
 	grind_results = list(/datum/reagent/iron = 5, /datum/reagent/blood = 15)
 
 /obj/item/stack/sheet/runed_metal/ratvar_act()
@@ -654,8 +655,8 @@ GLOBAL_LIST_INIT(bronze_recipes, list ( \
 	name = "brass"
 	desc = "On closer inspection, what appears to be wholly-unsuitable-for-building brass is actually more structurally stable bronze."
 	singular_name = "bronze sheet"
-	icon_state = "sheet-brass"
-	item_state = "sheet-brass"
+	icon_state = "sheet-bronze"
+	item_state = "sheet-bronze"
 	icon = 'icons/obj/stack_objects.dmi'
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	throwforce = 10

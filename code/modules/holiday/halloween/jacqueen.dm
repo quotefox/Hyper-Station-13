@@ -8,6 +8,7 @@
 #define JACQ_DATE (1<<6)
 
 /////// EVENT
+/*
 /datum/round_event_control/jacqueen
 	name = "Jacqueline's visit"
 	holidayID = "jacqueen"
@@ -25,7 +26,7 @@
 	for(var/obj/effect/landmark/barthpot/bp in GLOB.landmarks_list)
 		new /obj/item/barthpot(bp.loc)
 		new /mob/living/simple_animal/jacq(bp.loc)
-
+*/
 /////// MOBS
 
 //Whacha doing in here like? Yae wan tae ruin ta magicks?
@@ -50,6 +51,8 @@
 	/obj/singularity,
 	/obj/structure/destructible/clockwork/massive/ratvar,
 	/obj/item/projectile,
+	/obj/item/gun,
+	/obj/item/antag_spawner,
 	/obj/effect,
 	/obj/belly,
 	/obj/decal,
@@ -112,38 +115,22 @@
 	canmove = TRUE
 	health = 25
 
-	var/hp_list = list()
-	for(var/obj/machinery/holopad/hp in world)
-		hp_list += hp
-
-	var/nono_areas = list("AI ")
-
-	for(var/i = 0, i <= 6, i+=1) //Attempts a jump 6 times.
-		var/obj/machinery/holopad/hp = pick(hp_list)
-		if(forceMove(pick(hp.loc)))
-
-			var/jacq_please_no = FALSE
-			for(var/no_area in nono_areas)
-				var/turf/L1 = hp.loc
-				if(!L1) //Incase the area isn't a turf (i.e. in a locker)
-					continue
-				var/area/L2 = L1.loc
-				if(L2)
-					if(findtext(L2.name, no_area))
-						jacq_please_no = TRUE
-
-			if(jacq_please_no)
-				i-=1
-				continue
-
-			//Try to go to populated areas
-			var/list/seen = viewers(8, get_turf(src))
-			for(var/victim in seen)
-				if(ishuman(victim))
-					if(z == cached_z)
-						return TRUE
-
-
+	var/list/area/areasallowed = list()
+	for(var/area/hallway/primary/A in world)
+		areasallowed += A
+	
+	var/area/picked = pick(areasallowed)
+	if(picked)
+		var/turf/pickedturf
+		var/list/turf/t = get_area_turfs(picked, SSmapping.station_start)
+		for(var/turf/thisTurf in t) // now we check if it's a closed turf, cold turf or occupied turf and yeet it
+			if(isopenturf(thisTurf))
+				var/turf/open/tempGet = thisTurf
+				if(tempGet.air.temperature >= T0C && tempGet.air.temperature <= 500)
+					pickedturf = thisTurf
+					break
+		if(pickedturf && forceMove(pickedturf))
+			return TRUE
 	return FALSE
 
 /mob/living/simple_animal/jacq/proc/gender_check(mob/living/carbon/C)
@@ -482,14 +469,3 @@
 	s.set_up(src.reagents, 3, src.loc)
 	s.start()
 	qdel(src)
-
-//Candies
-/obj/item/reagent_containers/food/snacks/special_candy
-	name = "Magic candy"
-	icon = 'icons/obj/halloween_items.dmi'
-	icon_state = "jacq_candy"
-	desc = "A candy with strange magic within. Be careful, as the magic isn't always helpful."
-
-/obj/item/reagent_containers/food/snacks/special_candy/Initialize()
-	.=..()
-	reagents.add_reagent(get_random_reagent_id(), 5)

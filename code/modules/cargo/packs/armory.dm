@@ -59,12 +59,12 @@
 					/obj/item/storage/box/lethalslugs)
 	crate_name = "combat shotguns crate"
 
-/datum/supply_pack/security/armory/dragnetgun
-	name = "DRAGnet gun Crate"
-	desc = "Contains two DRAGnet gun. A Dynamic Rapid-Apprehension of the Guilty net the revolution in law enforcement technology that YOU Want! Requires Armory access to open."
+/datum/supply_pack/security/armory/dragnetgun //Changed the contents from DRAGnet to Engery snare due to events of it accidentally clouding folks on Layenia
+	name = "Energy Snare Launcher Crate" //"DRAGnet gun Crate"
+	desc = "Contains two Energy Snare Launchers. Fires an energy snare that slows the target down, used for non-lethally apprehending individuals! Requires Armory access to open." //"Contains two DRAGnet gun. A Dynamic Rapid-Apprehension of the Guilty net the revolution in law enforcement technology that YOU Want! Requires Armory access to open."
 	cost = 3250
-	contains = list(/obj/item/gun/energy/e_gun/dragnet,
-					/obj/item/gun/energy/e_gun/dragnet)
+	contains = list(/obj/item/gun/energy/e_gun/dragnet/snare,
+					/obj/item/gun/energy/e_gun/dragnet/snare) //From Just /obj/item/gun/energy/e_gun/dragnet
 	crate_name = "anti riot net guns crate"
 
 /datum/supply_pack/security/armory/energy

@@ -96,6 +96,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/eye_color = "000"				//Eye color
 	var/wing_color = "fff"				//Wing color
 
+	var/grad_style						//Hair gradient style
+	var/grad_color = "FFFFFF"			//Hair gradient color
+
 	//HS13
 	var/body_size = 100					//Body Size in percent
 	var/can_get_preg = 0				//if they can get preggers
@@ -192,7 +195,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"ipc_antenna" = "None",
 		"flavor_text" = "",
 		"silicon_flavor_text" = "",
-		"ooc_text" = ""
+		"ooc_text" = "",
+		"front_genitals_over_hair" = FALSE
 		)
 
 	/// Security record note section
@@ -435,6 +439,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=all;task=random'>Random Body</A><BR>"
 			dat += "<b>Always Random Body:</b><a href='?_src_=prefs;preference=all'>[be_random_body ? "Yes" : "No"]</A><BR>"
 			dat += "<br><b>Cycle background:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=cycle_bg;task=input'>[bgstate]</a><BR>"
+			dat += "<b>Render front genitals over hair:</b><a href='?_src_=prefs;task=front_genitals_over_hair'>[features["front_genitals_over_hair"] ? "Yes" : "No"]</A><BR>"
 
 			var/use_skintones = pref_species.use_skintones
 			if(use_skintones)
@@ -503,6 +508,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=facial_hair_style;task=input'>[facial_hair_style]</a>"
 				dat += "<a href='?_src_=prefs;preference=previous_facehair_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_facehair_style;task=input'>&gt;</a><BR>"
 				dat += "<span style='border: 1px solid #161616; background-color: #[facial_hair_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=facial;task=input'>Change</a><BR>"
+
+
+				dat += "<h3>Hair Gradient</h3>"
+
+				dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=grad_style;task=input'>[grad_style]</a>"
+				dat += "<a href='?_src_=prefs;preference=previous_grad_style;task=input'>&lt;</a> <a href='?_src_=prefs;preference=next_grad_style;task=input'>&gt;</a><BR>"
+				dat += "<span style='border: 1px solid #161616; background-color: #[grad_color];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=grad_color;task=input'>Change</a><BR>"
+
 
 				dat += "</td>"
 			//Mutant stuff
@@ -1157,7 +1170,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "</table>"
 
 		if(4)		//Antag Preferences
-			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
 			dat += "<h1>Special Role Settings</h1>"
 			if(jobban_isbanned(user, ROLE_SYNDICATE))
 				dat += "<font color=red><h3><b>You are banned from antagonist roles.</b></h3></font>"
@@ -1178,13 +1190,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					else
 						dat += "<b>Be [capitalize(i)]:</b> <a href='?_src_=prefs;preference=be_special;be_special_type=[i]'>[(i in be_special) ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Midround Antagonist:</b> <a href='?_src_=prefs;preference=allow_midround_antag'>[(toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</a><br>"
-			dat += "</td><td width='340px' height='300px' valign='top'>"
-			dat += "<h1>Sync Settings</h1>"
-			dat += "<b>Sync</b> antag prefs. with all characters: <a href='?_src_=prefs;preference=sync_antag_with_chars'>[(toggles & ANTAG_SYNC_WITH_CHARS) ? "Yes" : "No"]</a><br>"
-			dat += "<b>Copy</b> and save antag prefs. to all characters: <a href='?_src_=prefs;preference=copy_antag_to_chars'>Copy</a><br>"
-			dat += "<b>Reset</b> antag prefs. for this character: <a href='?_src_=prefs;preference=reset_antag'>Reset</a><br>"
-			dat += "</td></tr></table>"
-
 
 	dat += "<hr><center>"
 
@@ -1689,6 +1694,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		return TRUE
 
 	switch(href_list["task"])
+		if("front_genitals_over_hair")
+			features["front_genitals_over_hair"] = !features["front_genitals_over_hair"]
 		if("random")
 			switch(href_list["preference"])
 				if("name")
@@ -1849,6 +1856,24 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("previous_facehair_style")
 					facial_hair_style = previous_list_item(facial_hair_style, GLOB.facial_hair_styles_list)
+
+				if("grad_color")
+					var/new_grad_color = input(user, "Choose your character's gradient colour:", "Character Preference","#"+grad_color) as color|null
+					if(new_grad_color)
+						grad_color = sanitize_hexcolor(new_grad_color, 6)
+
+				if("grad_style")
+					var/new_grad_style
+					new_grad_style = input(user, "Choose your character's hair gradient style:", "Character Preference") as null|anything in GLOB.hair_gradients_list
+					if(new_grad_style)
+						grad_style = new_grad_style
+
+				if("next_grad_style")
+					grad_style = next_list_item(grad_style, GLOB.hair_gradients_list)
+
+				if("previous_grad_style")
+					grad_style = previous_list_item(grad_style, GLOB.hair_gradients_list)
+
 
 				if("cycle_bg")
 					bgstate = next_list_item(bgstate, bgstate_options)
@@ -2672,30 +2697,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("allow_midround_antag")
 					toggles ^= MIDROUND_ANTAG
 
-				if("sync_antag_with_chars")
-					toggles ^= ANTAG_SYNC_WITH_CHARS
-					if(!(toggles & ANTAG_SYNC_WITH_CHARS) && path)
-						var/savefile/S = new /savefile(path)
-						if(S)
-							S["special_roles"] >> be_special
-
-				if("copy_antag_to_chars")
-					if(path)
-						var/savefile/S = new /savefile(path)
-						if(S)
-							var/initial_cd = S.cd
-							for(var/i=1, i<=max_save_slots, i++)
-								S.cd = "/character[i]"
-								if(S["real_name"])
-									WRITE_FILE(S["special_roles"], be_special)
-							S.cd = initial_cd
-							to_chat(parent, "<span class='notice'>Successfully copied antagonist preferences to all characters.</span>")
-						else
-							to_chat(parent, "<span class='notice'>Could not write to file.</span>")
-
-				if("reset_antag")
-					be_special = list()
-
 				if("parallaxup")
 					parallax = WRAP(parallax + 1, PARALLAX_INSANE, PARALLAX_DISABLE + 1)
 					if (parent && parent.mob && parent.mob.hud_used)
@@ -2829,6 +2830,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.skin_tone = skin_tone
 	character.hair_style = hair_style
 	character.facial_hair_style = facial_hair_style
+
+	character.grad_style = grad_style
+	character.grad_color = grad_color
 	character.underwear = underwear
 
 	character.saved_underwear = underwear
