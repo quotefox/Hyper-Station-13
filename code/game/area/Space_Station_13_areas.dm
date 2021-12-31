@@ -814,6 +814,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "medbay"
 	music = 'sound/ambience/signal.ogg'
 
+/area/medical/medbay/upper
+	name = "Upper Medbay"
+	icon_state = "medbay"
+	music = 'sound/ambience/signal.ogg'
+
 	//Medbay is a large area, these additional areas help level out APC load.
 
 /area/medical/medbay/zone2
@@ -1482,6 +1487,24 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/barber
 	name = "Barber's Shop"
+
+/area/medical/psych/ward
+	name = "Psychology Ward"
+
+/area/medical/psych/therapy
+	name = "Therapy Office"
+
+/area/medical/psych/rec
+	name = "Psychology Recreation"
+
+/area/medical/psych/lobby
+	name = "Psychology Lobby"
+
+/area/medical/psych/roomA
+	name = "Physchology Dorm A"
+
+/area/medical/psych/roomB
+	name = "Physchology Dorm A"
 
 //Diner
 /area/diner
