@@ -678,6 +678,7 @@ SUBSYSTEM_DEF(ticker)
 	if(!round_end_sound)
 		round_end_sound = pick(\
 		'hyperstation/sound/roundend/dotheballsgo.ogg',
+		'hyperstation/sound/roundend/filledwith.ogg',
 		'hyperstation/sound/roundend/iknowwhat.ogg',
 		'hyperstation/sound/roundend/lottawords.ogg',
 		'hyperstation/sound/roundend/pissesonme.ogg',
