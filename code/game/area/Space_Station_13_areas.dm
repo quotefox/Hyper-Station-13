@@ -259,60 +259,120 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Aft Primary Hallway"
 	icon_state = "hallA"
 
+/area/hallway/primary/aft/upper
+	name = "Upper Aft Primary Hallway"
+	icon_state = "hallA"
+
 /area/hallway/primary/fore
 	name = "Fore Primary Hallway"
+	icon_state = "hallF"
+
+/area/hallway/primary/fore/upper
+	name = "Upper Fore Primary Hallway"
 	icon_state = "hallF"
 
 /area/hallway/primary/starboard
 	name = "Starboard Primary Hallway"
 	icon_state = "hallS"
 
+/area/hallway/primary/starboard/upper
+	name = "Upper Starboard Primary Hallway"
+	icon_state = "hallS"
+
 /area/hallway/primary/starboard/aft
 	name = "Starboard Quarter Primary Hallway"
+	icon_state = "hallAS"
+
+/area/hallway/primary/starboard/aft/upper
+	name = "Upper Starboard Quarter Primary Hallway"
 	icon_state = "hallAS"
 
 /area/hallway/primary/starboard/fore
 	name = "Starboard Bow Primary Hallway"
 	icon_state = "hallFS"
 
+/area/hallway/primary/starboard/fore/upper
+	name = "Upper Starboard Bow Primary Hallway"
+	icon_state = "hallFS"
+
 /area/hallway/primary/port
 	name = "Port Primary Hallway"
+	icon_state = "hallP"
+
+/area/hallway/primary/port/upper
+	name = "Upper Port Primary Hallway"
 	icon_state = "hallP"
 
 /area/hallway/primary/port/aft
 	name = "Port Quarter Primary Hallway"
 	icon_state = "hallAP"
 
+/area/hallway/primary/port/aft/upper
+	name = "Upper Port Quarter Primary Hallway"
+	icon_state = "hallAP"
+
 /area/hallway/primary/port/fore
 	name = "Port Bow Primary Hallway"
+	icon_state = "hallFP"
+
+/area/hallway/primary/port/fore/upper
+	name = "Upper Port Bow Primary Hallway"
 	icon_state = "hallFP"
 
 /area/hallway/primary/central
 	name = "Central Primary Hallway"
 	icon_state = "hallC"
 
+/area/hallway/primary/central/upper
+	name = "Upper Central Primary Hallway"
+	icon_state = "hallC"
+
 /area/hallway/secondary/command
 	name = "Command Hallway"
+	icon_state = "bridge_hallway"
+
+/area/hallway/secondary/command/upper
+	name = "Upper Command Hallway"
 	icon_state = "bridge_hallway"
 
 /area/hallway/secondary/construction
 	name = "Construction Area"
 	icon_state = "construction"
 
+/area/hallway/secondary/construction/upper
+	name = "Upper Construction Area"
+	icon_state = "construction"
+
 /area/hallway/secondary/exit
 	name = "Escape Shuttle Hallway"
+	icon_state = "escape"
+
+/area/hallway/secondary/exit/upper
+	name = "Upper Escape Shuttle Hallway"
 	icon_state = "escape"
 
 /area/hallway/secondary/exit/departure_lounge
 	name = "Departure Lounge"
 	icon_state = "escape_lounge"
 
+/area/hallway/secondary/exit/departure_lounge/upper
+	name = "Upper Departure Lounge"
+	icon_state = "escape_lounge"
+
 /area/hallway/secondary/entry
 	name = "Arrival Shuttle Hallway"
 	icon_state = "entry"
 
+/area/hallway/secondary/entry/upper
+	name = "Upper Arrival Shuttle Hallway"
+	icon_state = "entry"
+
 /area/hallway/secondary/service
 	name = "Service Hallway"
+	icon_state = "hall_service"
+
+/area/hallway/secondary/service/upper
+	name = "Upper Service Hallway"
 	icon_state = "hall_service"
 
 //Command
@@ -400,6 +460,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	icon_state = "Sleep"
 	safe = TRUE
 
+/area/crew_quarters/dorms/upper
+	name = "Upper Dormitories"
+	icon_state = "Sleep"
+	safe = TRUE
+
 /area/crew_quarters/dorms/male
 	name = "Male Dorm"
 	icon_state = "Sleep"
@@ -414,6 +479,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/crew_quarters/toilet
 	name = "Dormitory Toilets"
+	icon_state = "toilet"
+
+/area/crew_quarters/toilet/upper
+	name = "Upper Dormitory Toilets"
 	icon_state = "toilet"
 
 /area/crew_quarters/toilet/auxiliary
@@ -1372,10 +1441,13 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Xenoarchaeology Medical"
 	icon_state = "xenomed"
 
-//Pool
+//Pool and Hyper additions
 /area/crew_quarters/fitness/pool
 	name = "Pool Area"
 	icon_state = "pool"
+
+/area/crew_quarters/sauna
+	name = "Sauna"
 
 /area/xenoarch/nothinghere
 	name = "Nothing Here"
@@ -1389,6 +1461,27 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/artatrium
 	name = "Art Atrium"
 	icon_state = "library"
+
+/area/crew_quarters/bar/cafe
+	name = "Cafe"
+	icon_state = "bar"
+
+/area/crew_quarters/bar/cafe/backroom
+	name = "Cafe Backroom"
+	icon_state = "bar"
+
+/area/crew_quarters/bar/cafe/storage
+	name = "Cafe Storage"
+	icon_state = "bar"
+
+/area/kinarisrep
+	name = "Kinaris Representative Office"
+
+/area/kinarisblueshield
+	name = "Kinaris Lambent Office"
+
+/area/barber
+	name = "Barber's Shop"
 
 //Diner
 /area/diner
