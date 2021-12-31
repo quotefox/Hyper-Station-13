@@ -6111,6 +6111,17 @@
 	},
 /turf/open/floor/plasteel,
 /area/quartermaster/miningdock)
+"ane" = (
+/obj/structure/table/wood,
+/obj/structure/window{
+	dir = 1
+	},
+/obj/structure/window{
+	dir = 8
+	},
+/obj/machinery/computer/libraryconsole/bookmanagement,
+/turf/open/floor/carpet,
+/area/layenia/powered)
 "anm" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -8085,9 +8096,7 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/central)
 "aLo" = (
-/obj/structure/stairs{
-	dir = 1
-	},
+/obj/structure/stairs,
 /turf/open/floor/plasteel,
 /area/hallway/primary/port/fore)
 "aLD" = (
@@ -9042,12 +9051,6 @@
 	},
 /turf/open/chasm/cloud,
 /area/layenia/cloudlayer)
-"ban" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
-/area/layenia/powered)
 "bau" = (
 /obj/machinery/firealarm{
 	dir = 1;
@@ -9068,6 +9071,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/break_room)
+"baw" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Cafe"
+	},
+/turf/open/floor/wood,
+/area/layenia/powered)
 "baB" = (
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
@@ -9770,12 +9779,6 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/chapel/office)
-"blw" = (
-/obj/structure/bookcase{
-	name = "Forbidden Knowledge"
-	},
-/turf/open/floor/plating,
-/area/layenia/powered)
 "blB" = (
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/turf_decal/tile/yellow{
@@ -11788,12 +11791,6 @@
 	},
 /turf/open/floor/plating,
 /area/crew_quarters/heads/hos)
-"bIO" = (
-/obj/machinery/door/airlock/public/glass{
-	name = "Cafe"
-	},
-/turf/open/floor/wood,
-/area/layenia/powered)
 "bJb" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -12463,17 +12460,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
-"bQN" = (
-/obj/structure/table/wood,
-/obj/structure/window{
-	dir = 1
-	},
-/obj/structure/window{
-	dir = 8
-	},
-/obj/machinery/computer/libraryconsole/bookmanagement,
-/turf/open/floor/carpet,
-/area/layenia/powered)
 "bRd" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood{
@@ -17028,11 +17014,6 @@
 	icon_state = "floor_whole"
 	},
 /area/science/research)
-"dcN" = (
-/obj/structure/destructible/cult/tome,
-/obj/item/book/codex_gigas,
-/turf/open/floor/plating,
-/area/layenia/powered)
 "dcS" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -19824,10 +19805,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/main)
-"dMo" = (
-/obj/machinery/vending/wardrobe/curator_wardrobe,
-/turf/open/floor/plating,
-/area/layenia/powered)
 "dMG" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -20702,6 +20679,10 @@
 	icon_state = "floor_plate"
 	},
 /area/maintenance/disposal/incinerator)
+"eau" = (
+/obj/machinery/vending/wardrobe/curator_wardrobe,
+/turf/open/floor/plating,
+/area/layenia/powered)
 "eay" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer1,
 /obj/structure/closet/secure_closet/engineering_welding,
@@ -20810,6 +20791,15 @@
 	},
 /turf/open/floor/plasteel/vaporwave,
 /area/arcade)
+"ebC" = (
+/obj/structure/table/wood,
+/obj/structure/window{
+	dir = 1
+	},
+/obj/item/book/lorebooks/welcome_to_kinaris,
+/obj/item/camera_film,
+/turf/open/floor/carpet,
+/area/layenia/powered)
 "ebX" = (
 /obj/machinery/computer/scan_consolenew{
 	dir = 8
@@ -21171,6 +21161,17 @@
 "egA" = (
 /turf/closed/wall/r_wall,
 /area/science/robotics/lab)
+"egE" = (
+/obj/structure/table/wood,
+/obj/structure/window{
+	dir = 8
+	},
+/obj/item/paper_bin{
+	pixel_x = 1;
+	pixel_y = 9
+	},
+/turf/open/floor/carpet,
+/area/layenia/powered)
 "egH" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -23820,15 +23821,6 @@
 	},
 /turf/open/floor/plating,
 /area/science/robotics/lab)
-"eQy" = (
-/obj/structure/table/wood,
-/obj/structure/window{
-	dir = 1
-	},
-/obj/item/book/lorebooks/welcome_to_kinaris,
-/obj/item/camera_film,
-/turf/open/floor/carpet,
-/area/layenia/powered)
 "eQz" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
@@ -28636,18 +28628,6 @@
 /obj/structure/sign/warning/docking,
 /turf/closed/wall/r_wall,
 /area/security/processing)
-"gjz" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 8;
-	icon_state = "drain";
-	name = "drain"
-	},
-/obj/item/twohanded/required/kirbyplants/random,
-/turf/open/floor/carpet,
-/area/layenia/powered)
 "gjN" = (
 /obj/structure/lattice/catwalk,
 /obj/effect/landmark/carpspawn,
@@ -31763,6 +31743,18 @@
 /obj/item/cultivator,
 /turf/open/floor/plating/asteroid/layenia/garden,
 /area/security/prison)
+"gWn" = (
+/obj/structure/table/wood,
+/obj/structure/window{
+	dir = 1
+	},
+/obj/item/pen/red,
+/obj/item/pen/blue{
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/turf/open/floor/carpet,
+/area/layenia/powered)
 "gWo" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 8;
@@ -31823,6 +31815,13 @@
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/visible,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/disposal/incinerator)
+"gXv" = (
+/obj/machinery/door/window/northright{
+	name = "Library Desk Door";
+	req_access_txt = "37"
+	},
+/turf/open/floor/carpet,
+/area/layenia/powered)
 "gXw" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -35362,6 +35361,13 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/chemistry)
+"hSX" = (
+/obj/structure/chair/office/dark{
+	dir = 8
+	},
+/obj/effect/landmark/start/librarian,
+/turf/open/floor/carpet,
+/area/layenia/powered)
 "hSY" = (
 /obj/effect/baseturf_helper/asteroid/layenia,
 /turf/closed/wall/r_wall,
@@ -36150,10 +36156,6 @@
 	icon_state = "floor_trim"
 	},
 /area/engine/engineering)
-"iaO" = (
-/obj/structure/bookcase/random/reference,
-/turf/open/floor/wood,
-/area/layenia/powered)
 "ibh" = (
 /obj/effect/landmark/start/ai/secondary,
 /obj/item/radio/intercom{
@@ -39313,6 +39315,12 @@
 	},
 /turf/open/floor/plating,
 /area/science/mixing)
+"iOT" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/layenia/powered)
 "iOU" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
@@ -42434,10 +42442,6 @@
 	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
-"jIK" = (
-/obj/machinery/libraryscanner,
-/turf/open/floor/carpet,
-/area/layenia/powered)
 "jIN" = (
 /obj/item/twohanded/required/kirbyplants/random,
 /turf/open/floor/wood,
@@ -43540,6 +43544,12 @@
 /obj/item/reagent_containers/food/snacks/grown/harebell,
 /turf/open/floor/plasteel/dark,
 /area/chapel/main)
+"jYW" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark,
+/area/layenia/powered)
 "jYY" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -46301,10 +46311,6 @@
 	icon_state = "floor_plate"
 	},
 /area/crew_quarters/fitness/pool)
-"kOw" = (
-/obj/structure/bookcase/random/adult,
-/turf/open/floor/wood,
-/area/layenia/powered)
 "kOA" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -46479,6 +46485,19 @@
 "kQM" = (
 /turf/open/indestructible/layenia/crystal/garden,
 /area/hallway/primary/aft)
+"kQX" = (
+/obj/item/toy/figure/curator{
+	pixel_x = 13
+	},
+/obj/structure/table/wood,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
+	},
+/obj/item/pen/invisible,
+/obj/item/camera,
+/turf/open/floor/plating,
+/area/layenia/powered)
 "kRp" = (
 /obj/machinery/atmospherics/components/binary/valve,
 /obj/machinery/button/ignition{
@@ -47234,13 +47253,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
-"leN" = (
-/obj/machinery/door/window/northright{
-	name = "Library Desk Door";
-	req_access_txt = "37"
-	},
-/turf/open/floor/carpet,
-/area/layenia/powered)
 "leP" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -50744,18 +50756,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/misc_lab)
-"mfu" = (
-/obj/structure/table/wood,
-/obj/structure/window{
-	dir = 1
-	},
-/obj/item/pen/red,
-/obj/item/pen/blue{
-	pixel_x = 5;
-	pixel_y = 5
-	},
-/turf/open/floor/carpet,
-/area/layenia/powered)
 "mfT" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -56472,6 +56472,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/research)
+"nDl" = (
+/obj/machinery/libraryscanner,
+/turf/open/floor/carpet,
+/area/layenia/powered)
 "nDp" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -61120,19 +61124,6 @@
 /obj/item/twohanded/required/fuel_rod,
 /turf/open/pool,
 /area/engine/engineering/reactor_core)
-"oPG" = (
-/obj/item/toy/figure/curator{
-	pixel_x = 13
-	},
-/obj/structure/table/wood,
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 7
-	},
-/obj/item/pen/invisible,
-/obj/item/camera,
-/turf/open/floor/plating,
-/area/layenia/powered)
 "oPK" = (
 /obj/structure/table/reinforced,
 /obj/machinery/microwave{
@@ -61921,6 +61912,10 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
 /area/maintenance/fore/secondary)
+"oZh" = (
+/obj/structure/bookcase/random/reference,
+/turf/open/floor/wood,
+/area/layenia/powered)
 "oZp" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/cyan/visible{
@@ -62051,13 +62046,6 @@
 	},
 /turf/open/floor/plating,
 /area/engine/break_room)
-"pbf" = (
-/obj/machinery/door/morgue{
-	name = "Private Study";
-	req_access_txt = "37"
-	},
-/turf/open/floor/plating,
-/area/layenia/powered)
 "pbj" = (
 /obj/effect/baseturf_helper/asteroid/layenia,
 /turf/closed/wall,
@@ -62917,6 +62905,13 @@
 	},
 /turf/open/floor/plasteel/dark/telecomms,
 /area/tcommsat/server)
+"pkt" = (
+/obj/machinery/door/morgue{
+	name = "Private Study";
+	req_access_txt = "37"
+	},
+/turf/open/floor/plating,
+/area/layenia/powered)
 "pku" = (
 /obj/machinery/atmospherics/pipe/manifold/general/visible{
 	dir = 8
@@ -68461,17 +68456,6 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/locker)
-"qDb" = (
-/obj/structure/table/wood,
-/obj/structure/window{
-	dir = 8
-	},
-/obj/item/paper_bin{
-	pixel_x = 1;
-	pixel_y = 9
-	},
-/turf/open/floor/carpet,
-/area/layenia/powered)
 "qDc" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 10;
@@ -68533,13 +68517,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
-"qDz" = (
-/obj/structure/chair/office/dark{
-	dir = 8
-	},
-/obj/effect/landmark/start/librarian,
-/turf/open/floor/carpet,
-/area/layenia/powered)
 "qDH" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
 	dir = 8;
@@ -74043,10 +74020,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
-"rQR" = (
-/obj/structure/bookcase/random/fiction,
-/turf/open/floor/wood,
-/area/layenia/powered)
 "rQW" = (
 /obj/machinery/shieldwallgen/xenobiologyaccess,
 /obj/structure/cable,
@@ -76148,6 +76121,11 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/crew_quarters/fitness)
+"sqm" = (
+/obj/structure/destructible/cult/tome,
+/obj/item/book/codex_gigas,
+/turf/open/floor/plating,
+/area/layenia/powered)
 "sqP" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -80572,6 +80550,10 @@
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/warden)
+"tAC" = (
+/obj/structure/bookcase/random/fiction,
+/turf/open/floor/wood,
+/area/layenia/powered)
 "tAF" = (
 /obj/structure/table/reinforced,
 /obj/machinery/button/door{
@@ -82303,12 +82285,6 @@
 /obj/machinery/door/firedoor,
 /turf/open/floor/plating,
 /area/medical/sleeper)
-"tYM" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/turf/open/floor/plasteel,
-/area/layenia/powered)
 "tYR" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
@@ -87169,6 +87145,12 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/fore)
+"veW" = (
+/obj/structure/bookcase{
+	name = "Forbidden Knowledge"
+	},
+/turf/open/floor/plating,
+/area/layenia/powered)
 "vfa" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -89127,6 +89109,12 @@
 /obj/structure/window/reinforced,
 /turf/open/indestructible/layenia/crystal/garden,
 /area/hallway/primary/central)
+"vFf" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel,
+/area/layenia/powered)
 "vFo" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 5;
@@ -90560,6 +90548,10 @@
 /obj/structure/rack/shelf,
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat/service)
+"vVN" = (
+/obj/structure/bookcase/random/adult,
+/turf/open/floor/wood,
+/area/layenia/powered)
 "vWc" = (
 /obj/machinery/vending/hydronutrients,
 /obj/effect/turf_decal/tile/neutral,
@@ -93520,12 +93512,6 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
-"wHR" = (
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/open/floor/plasteel/dark,
-/area/layenia/powered)
 "wHW" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -94588,6 +94574,18 @@
 /obj/effect/landmark/xeno_spawn,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/theatre)
+"wXO" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/item/twohanded/required/kirbyplants/random,
+/turf/open/floor/carpet,
+/area/layenia/powered)
 "wXS" = (
 /obj/effect/turf_decal/tile/red,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -96247,6 +96245,18 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/hallway/primary/port)
+"xvI" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/table/wood/fancy,
+/turf/open/floor/carpet,
+/area/layenia/powered)
 "xvJ" = (
 /obj/machinery/computer/aifixer{
 	dir = 1
@@ -96554,18 +96564,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/server)
-"xyG" = (
-/obj/structure/railing{
-	dir = 8
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 8;
-	icon_state = "drain";
-	name = "drain"
-	},
-/obj/structure/table/wood/fancy,
-/turf/open/floor/carpet,
-/area/layenia/powered)
 "xyJ" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
@@ -188044,7 +188042,7 @@ gVP
 gVP
 gVP
 gVP
-tYM
+vFf
 cvM
 cvM
 cvM
@@ -190352,9 +190350,9 @@ bKV
 xkY
 xFA
 xZp
-gjz
+wXO
 xkY
-xyG
+xvI
 xZp
 bKV
 csF
@@ -190614,7 +190612,7 @@ rqa
 rqa
 rqa
 bKV
-wHR
+iOT
 cvM
 cvM
 cvM
@@ -190870,7 +190868,7 @@ eyu
 eyu
 eyu
 eyu
-bIO
+baw
 nNh
 cvM
 cvM
@@ -191127,7 +191125,7 @@ xtY
 uAx
 eyu
 eyu
-bIO
+baw
 nNh
 cvM
 cvM
@@ -191384,7 +191382,7 @@ eyu
 eyu
 eyu
 eyu
-bIO
+baw
 nNh
 cvM
 cvM
@@ -191642,7 +191640,7 @@ eyu
 eyu
 eyu
 bKV
-ban
+jYW
 cvM
 cvM
 cvM
@@ -191894,10 +191892,10 @@ bKV
 xtY
 eyu
 eyu
-bQN
+ane
 fly
 fly
-qDb
+egE
 bKV
 bIf
 bIf
@@ -192151,9 +192149,9 @@ bKV
 xtY
 eyu
 eyu
-mfu
+gWn
 npR
-qDz
+hSX
 npR
 bKV
 bIf
@@ -192408,7 +192406,7 @@ bKV
 xuu
 eyu
 eyu
-eQy
+ebC
 npR
 npR
 npR
@@ -192665,10 +192663,10 @@ bKV
 eyu
 eyu
 eyu
-leN
+gXv
 npR
 npR
-jIK
+nDl
 bKV
 bIf
 bIf
@@ -192924,7 +192922,7 @@ sVc
 bKV
 bKV
 bKV
-pbf
+pkt
 bKV
 bKV
 bIf
@@ -193179,7 +193177,7 @@ bKV
 eyu
 eyu
 bKV
-dMo
+eau
 cHr
 cHr
 cHr
@@ -193436,10 +193434,10 @@ bKV
 eyu
 eyu
 bKV
-dcN
+sqm
 cHr
-oPG
-blw
+kQX
+veW
 bKV
 bIf
 bIf
@@ -193950,9 +193948,9 @@ bKV
 eyu
 eyu
 yjw
-iaO
-iaO
-iaO
+oZh
+oZh
+oZh
 bKV
 bIf
 bIf
@@ -194464,9 +194462,9 @@ xkP
 eyu
 eyu
 uAx
-rQR
-rQR
-rQR
+tAC
+tAC
+tAC
 bKV
 bIf
 bIf
@@ -194978,9 +194976,9 @@ bKV
 xDU
 xRM
 eyu
-kOw
-kOw
-kOw
+vVN
+vVN
+vVN
 bKV
 bIf
 bIf

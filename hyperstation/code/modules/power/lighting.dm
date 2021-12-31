@@ -16,7 +16,7 @@
 	fitting = "fairy"
 	brightness = 3
 	desc = "Small fairy lights."
-	light_type = /obj/item/light/fairy
+	//light_type = /obj/item/light/fairy
 
 /obj/machinery/light/fairy/broken
 	status = LIGHT_BROKEN
