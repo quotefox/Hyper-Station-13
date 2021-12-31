@@ -17,7 +17,7 @@
 		{
 			"Down": -1,
 			"Gravity":true,
-			"Baseturf":"/turf/open/chasm/cloud"
+			"Baseturf":"/turf/open/openspace"
 		}
 	]
 }
