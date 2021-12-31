@@ -10,6 +10,12 @@
     },
 	"traits":[
 		{
+			"Up": 1,
+			"Gravity":true,
+			"Baseturf":"/turf/open/chasm/cloud"
+		},
+		{
+			"Down": -1,
 			"Gravity":true,
 			"Baseturf":"/turf/open/chasm/cloud"
 		}
