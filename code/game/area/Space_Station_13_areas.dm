@@ -513,6 +513,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Locker Room"
 	icon_state = "locker"
 
+/area/crew_quarters/locker/upper
+	name = "Upper Locker Room"
+	icon_state = "locker"
+
 /area/crew_quarters/lounge
 	name = "Lounge"
 	icon_state = "yellow"
@@ -1451,7 +1455,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Pool Area"
 	icon_state = "pool"
 
-/area/crew_quarters/sauna
+/area/crew_quarters/spa
+	name = "Spa"
+
+/area/crew_quarters/spa/sauna
 	name = "Sauna"
 
 /area/xenoarch/nothinghere
