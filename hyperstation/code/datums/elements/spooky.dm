@@ -9,7 +9,7 @@
 	. = ..()
 	/*
 	if(!iscarbon(target))
-		return ELEMENT_INCOMPATIBLE //For now, let's make this incompatible with anything but carbons.
+		return ELEMENT_INCOMPATIBLE //keeping this uncommented would make it so it only works with carbons, which is not really needed unless one adds procs that require the user to be a carbon in the future.
 	*/
 	C = target
 	START_PROCESSING(SSobj, src)
