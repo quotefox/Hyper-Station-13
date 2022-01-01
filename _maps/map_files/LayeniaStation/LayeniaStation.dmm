@@ -11643,7 +11643,7 @@
 /area/ai_monitored/turret_protected/ai)
 "bEA" = (
 /turf/closed/wall/mineral/wood,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "bEH" = (
 /obj/docking_port/stationary{
 	area_type = /area/construction/mining/aux_base;
@@ -11827,7 +11827,7 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "bHp" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -11920,7 +11920,7 @@
 /area/security/detectives_office)
 "bHU" = (
 /turf/open/floor/wood,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "bIa" = (
 /obj/machinery/pipedispenser,
 /obj/machinery/light{
@@ -12906,7 +12906,7 @@
 "bTV" = (
 /obj/structure/sauna_oven,
 /turf/open/floor/wood,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "bUj" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -13283,7 +13283,7 @@
 /obj/item/stack/sheet/mineral/wood/fifty,
 /obj/item/stack/sheet/mineral/wood/fifty,
 /turf/open/floor/plating,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "bYP" = (
 /obj/structure/table/glass,
 /obj/effect/turf_decal/tile/blue,
@@ -15085,7 +15085,7 @@
 "czQ" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "czU" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/preopen{
@@ -15473,7 +15473,7 @@
 	dir = 4
 	},
 /turf/open/floor/wood,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "cEW" = (
 /obj/structure/disposalpipe/junction/yjunction{
 	dir = 4
@@ -16224,7 +16224,7 @@
 /area/engine/engineering/reactor_core)
 "cOV" = (
 /turf/open/floor/plating,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "cOZ" = (
 /mob/living/simple_animal/opossum/Trims,
 /turf/open/floor/plasteel,
@@ -19329,7 +19329,7 @@
 	pixel_y = -5
 	},
 /turf/open/floor/plating,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "dAQ" = (
 /turf/closed/wall/r_wall,
 /area/maintenance/starboard/aft)
@@ -19614,7 +19614,7 @@
 "dFv" = (
 /obj/structure/bed,
 /turf/open/floor/wood,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "dFz" = (
 /obj/structure/flora/crystal/small/growth{
 	icon_state = "crystalgrowth3"
@@ -21262,7 +21262,7 @@
 	dir = 8
 	},
 /turf/open/floor/wood,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "eco" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -21989,7 +21989,7 @@
 "elu" = (
 /obj/structure/reagent_dispensers/watertank/high,
 /turf/open/floor/plating,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "elF" = (
 /obj/machinery/camera{
 	c_tag = "Atmospherics East";
@@ -22338,7 +22338,7 @@
 	name = "Sauna B"
 	},
 /turf/open/floor/wood,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "erb" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 6
@@ -22638,7 +22638,7 @@
 	name = "Sauna A"
 	},
 /turf/open/floor/wood,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "euw" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/atmospherics/pipe/simple/cyan/visible,
@@ -23575,7 +23575,7 @@
 	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel/dark,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "eGy" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -24029,7 +24029,7 @@
 	name = "Massage Room"
 	},
 /turf/open/floor/wood,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "eNn" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -24677,7 +24677,7 @@
 	icon_state = "plant-10"
 	},
 /turf/open/floor/plasteel/freezer,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "eUN" = (
 /obj/structure/reagent_dispensers/water_cooler,
 /turf/open/floor/plasteel/dark,
@@ -25061,7 +25061,7 @@
 /area/science/research)
 "fam" = (
 /turf/open/floor/plasteel/freezer,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "fap" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -26422,7 +26422,7 @@
 	pixel_y = 14
 	},
 /turf/open/floor/plasteel/freezer,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "ftq" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -26920,7 +26920,7 @@
 "fAR" = (
 /obj/structure/table/wood,
 /turf/open/floor/plasteel/freezer,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "fAY" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
 	dir = 8;
@@ -28890,7 +28890,7 @@
 "gcX" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "gdb" = (
 /obj/effect/turf_decal/loading_area{
 	icon_state = "drain";
@@ -30053,7 +30053,7 @@
 	name = "Sauna"
 	},
 /turf/open/floor/plasteel/freezer,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "grE" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -30113,7 +30113,7 @@
 "gsi" = (
 /obj/structure/closet/secure_closet/personal,
 /turf/open/floor/plasteel,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "gsu" = (
 /obj/structure/table,
 /obj/machinery/camera{
@@ -33883,7 +33883,7 @@
 	pixel_y = 10
 	},
 /turf/open/floor/plasteel/freezer,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "hse" = (
 /obj/machinery/light/small{
 	dir = 1;
@@ -38360,7 +38360,7 @@
 /area/layenia/cloudlayer)
 "iuQ" = (
 /turf/open/floor/plasteel,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "iuR" = (
 /obj/structure/table,
 /obj/item/ashtray,
@@ -39391,7 +39391,7 @@
 	name = "Sauna Lockers"
 	},
 /turf/open/floor/plasteel/dark,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "iFa" = (
 /obj/structure/chair/stool,
 /obj/effect/turf_decal/tile/red{
@@ -39541,7 +39541,7 @@
 /area/hallway/primary/central)
 "iGQ" = (
 /turf/open/floor/carpet,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "iGU" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
@@ -39582,7 +39582,7 @@
 	name = "Sauna"
 	},
 /turf/open/floor/plasteel/dark,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "iIh" = (
 /obj/structure/closet,
 /obj/item/clothing/head/helmet/roman/legionnaire,
@@ -39861,7 +39861,7 @@
 	dir = 4
 	},
 /turf/open/floor/plasteel/freezer,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "iLj" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -40949,7 +40949,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/freezer,
-/area/crew_quarters/sauna)
+/area/crew_quarters/spa/sauna)
 "iYJ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
