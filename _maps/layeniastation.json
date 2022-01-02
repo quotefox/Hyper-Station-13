@@ -12,12 +12,14 @@
 		{
 			"Up": 1,
 			"Gravity":true,
-			"Baseturf":"/turf/open/chasm/cloud"
+			"Baseturf":"/turf/open/chasm/cloud",
+			"Linkage" : "Cross"
 		},
 		{
 			"Down": -1,
 			"Gravity":true,
-			"Baseturf":"/turf/open/openspace"
+			"Baseturf":"/turf/open/openspace",
+			"Linkage" : "Cross"
 		}
 	]
 }
