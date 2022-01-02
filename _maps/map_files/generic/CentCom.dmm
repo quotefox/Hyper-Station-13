@@ -9260,12 +9260,10 @@
 /turf/closed/indestructible/riveted,
 /area/centcom/control)
 "tQ" = (
-/obj/machinery/light/small{
-	dir = 1;
-	pixel_x = 0;
-	pixel_y = 14
+/obj/machinery/door/airlock{
+	name = "Spa & Bathhouse"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plasteel,
 /area/centcom/ferry)
 "tR" = (
 /obj/machinery/status_display/ai,
@@ -12145,6 +12143,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/item/tank/internals/anesthetic,
+/obj/item/clothing/mask/breath/medical,
+/obj/item/surgicaldrill,
+/obj/item/cautery,
 /turf/open/floor/plasteel/white,
 /area/centcom/control)
 "zI" = (
@@ -12254,6 +12256,12 @@
 	name = "drain"
 	},
 /turf/open/floor/carpet/black,
+/area/centcom/ferry)
+"zT" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 4
+	},
+/turf/open/floor/wood,
 /area/centcom/ferry)
 "zU" = (
 /obj/structure/closet/crate/freezer,
@@ -12564,6 +12572,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/syndicate_mothership)
+"AE" = (
+/obj/machinery/vending/kink{
+	free = 1
+	},
+/turf/open/floor/plasteel/freezer,
+/area/centcom/ferry)
 "AF" = (
 /obj/item/bedsheet/centcom{
 	pixel_y = 10
@@ -12772,8 +12786,29 @@
 /turf/open/floor/plasteel,
 /area/centcom/evac)
 "Ba" = (
-/obj/machinery/portable_atmospherics/scrubber,
-/turf/open/floor/wood,
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-10"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel,
 /area/centcom/ferry)
 "Bb" = (
 /obj/effect/turf_decal/stripes/line,
@@ -12820,40 +12855,25 @@
 /turf/open/floor/grass,
 /area/wizard_station)
 "Bj" = (
-/obj/structure/table/wood,
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 3
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 3
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 3
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 3
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
 	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = -1;
-	pixel_y = 7
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
 	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = -1;
-	pixel_y = 7
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = -1;
-	pixel_y = 7
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = -1;
-	pixel_y = 7
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = -1;
-	pixel_y = 7
-	},
-/turf/open/floor/wood,
 /area/centcom/ferry)
 "Bk" = (
 /obj/effect/turf_decal/loading_area{
@@ -12875,6 +12895,12 @@
 /obj/machinery/mech_bay_recharge_port,
 /turf/open/floor/plating,
 /area/syndicate_mothership)
+"Bm" = (
+/obj/machinery/atmospherics/miner/water_vapor{
+	desc = "A gas miner which appears to be getting water vapor from nowhere."
+	},
+/turf/open/floor/grass/fakebasalt,
+/area/centcom/ferry)
 "Bn" = (
 /turf/open/floor/plasteel/stairs,
 /area/centcom/ferry)
@@ -12965,6 +12991,18 @@
 /obj/item/book/manual/wiki/security_space_law,
 /obj/item/taperecorder,
 /turf/open/floor/plasteel/grimy,
+/area/centcom/ferry)
+"Bx" = (
+/obj/structure/table,
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/turf/open/floor/plasteel/freezer,
 /area/centcom/ferry)
 "By" = (
 /obj/structure/table/reinforced,
@@ -13126,6 +13164,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/vending/medical{
+	free = 1;
+	pixel_x = -2
+	},
 /turf/open/floor/plasteel,
 /area/centcom/control)
 "BJ" = (
@@ -13246,6 +13288,28 @@
 	},
 /turf/open/floor/plasteel/cafeteria,
 /area/centcom/ferry)
+"BU" = (
+/obj/structure/chair/comfy{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel,
+/area/centcom/ferry)
 "BV" = (
 /obj/structure/table/wood,
 /obj/machinery/computer/libraryconsole/bookmanagement,
@@ -13327,6 +13391,13 @@
 /obj/machinery/light,
 /turf/open/floor/grass,
 /area/centcom/evac)
+"Ce" = (
+/obj/structure/fans/tiny,
+/obj/machinery/door/airlock/hatch{
+	name = "Sauna"
+	},
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "Cf" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -13406,17 +13477,33 @@
 	},
 /area/centcom/control)
 "Cm" = (
-/obj/machinery/light{
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/structure/reagent_dispensers/watertank/high,
-/turf/open/floor/wood,
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/closet/secure_closet/personal,
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "Cn" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chem_dispenser/drinks/beer/fullupgrade,
 /obj/machinery/light{
 	dir = 1
+	},
+/turf/open/floor/wood,
+/area/centcom/ferry)
+"Co" = (
+/obj/machinery/door/airlock/hatch{
+	name = "Sauna Maint"
 	},
 /turf/open/floor/wood,
 /area/centcom/ferry)
@@ -13808,6 +13895,28 @@
 	},
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
+"CQ" = (
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-10"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel,
+/area/centcom/ferry)
 "CR" = (
 /obj/machinery/light{
 	dir = 8
@@ -13887,8 +13996,20 @@
 /turf/open/floor/plasteel/white,
 /area/centcom/holding)
 "CW" = (
-/obj/structure/table/wood,
-/turf/open/floor/wood,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "CX" = (
 /obj/structure/closet/secure_closet/security,
@@ -14050,6 +14171,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/control)
+"Dm" = (
+/obj/structure/flora/crystal/small/pile,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/indestructible/layenia/crystal/garden,
+/area/centcom/ferry)
 "Dn" = (
 /obj/machinery/light{
 	dir = 8
@@ -14151,6 +14279,23 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/evac)
+"Dy" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
 "DA" = (
 /obj/structure/sign/nanotrasen,
 /turf/closed/indestructible/riveted,
@@ -14904,6 +15049,15 @@
 	},
 /turf/open/floor/grass,
 /area/centcom/holding)
+"Fe" = (
+/obj/structure/pool/Lboard,
+/turf/open/pool,
+/area/centcom/ferry)
+"Ff" = (
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 8
+	},
+/area/centcom/ferry)
 "Fg" = (
 /obj/structure/flora/grass/brown,
 /obj/effect/light_emitter,
@@ -14963,6 +15117,13 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/plasteel/dark,
 /area/centcom/control)
+"Fl" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 4
+	},
+/obj/machinery/meter,
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "Fm" = (
 /obj/machinery/shower{
 	dir = 4
@@ -15980,6 +16141,11 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/tdome/tdomeobserve)
+"Hi" = (
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 1
+	},
+/area/centcom/ferry)
 "Hj" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -16001,11 +16167,18 @@
 /turf/open/floor/plasteel/dark,
 /area/centcom/control)
 "Hl" = (
-/obj/structure/fans/tiny,
-/obj/machinery/door/airlock/hatch{
-	name = "Sauna"
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
-/turf/open/floor/wood,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel,
 /area/centcom/ferry)
 "Hm" = (
 /obj/machinery/vending/hydroseeds,
@@ -16326,10 +16499,26 @@
 /turf/open/floor/plasteel,
 /area/tdome/tdomeobserve)
 "HL" = (
-/obj/machinery/light{
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-10"
+	},
+/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/turf/open/floor/wood,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel,
 /area/centcom/ferry)
 "HM" = (
 /obj/structure/chair,
@@ -16936,6 +17125,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/tdome/arena)
+"IO" = (
+/obj/structure/chair/bench{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "IP" = (
 /obj/structure/rack,
 /obj/item/clothing/under/color/green,
@@ -17495,11 +17690,46 @@
 /turf/open/floor/plasteel/dark,
 /area/centcom/control)
 "JW" = (
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	dir = 9
+/obj/structure/table,
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
 	},
-/obj/structure/table/wood,
-/turf/open/floor/wood,
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel{
+	dir = 4;
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "JX" = (
 /obj/machinery/door/firedoor,
@@ -17620,6 +17850,23 @@
 	},
 /turf/open/space/basic,
 /area/space)
+"Kl" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel{
+	dir = 4;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
 "Kn" = (
 /obj/structure/bookcase/random,
 /obj/effect/turf_decal/tile/neutral{
@@ -17885,6 +18132,67 @@
 /obj/machinery/status_display/ai,
 /turf/closed/indestructible/riveted,
 /area/tdome/tdomeadmin)
+"KE" = (
+/obj/structure/rack/shelf,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/obj/item/reagent_containers/glass/bucket{
+	pixel_x = -4;
+	pixel_y = -1
+	},
+/obj/item/reagent_containers/glass/bucket{
+	pixel_x = 6;
+	pixel_y = 9
+	},
+/obj/machinery/light{
+	brightness = 4
+	},
+/turf/open/floor/wood,
+/area/centcom/ferry)
+"KF" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/table,
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/machinery/light{
+	brightness = 4
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
 "KG" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -18084,6 +18392,9 @@
 /obj/item/reagent_containers/food/snacks/waffles,
 /obj/item/reagent_containers/food/snacks/waffles,
 /obj/item/reagent_containers/food/snacks/waffles,
+/obj/item/storage/box/donkpockets/donkpocketpizza,
+/obj/item/storage/box/donkpockets/donkpocketpizza,
+/obj/item/storage/box/donkpockets/donkpocketpizza,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "Lk" = (
@@ -18225,11 +18536,24 @@
 /obj/item/storage/box/donkpockets,
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/evac)
+"LD" = (
+/obj/machinery/light{
+	brightness = 4
+	},
+/turf/open/floor/plasteel/freezer,
+/area/centcom/ferry)
 "LE" = (
 /obj/structure/table,
 /obj/item/radio/off,
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/evac)
+"LF" = (
+/obj/structure/flora/crystal/small/growth,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/indestructible/layenia/crystal/garden,
+/area/centcom/ferry)
 "LG" = (
 /obj/structure/filingcabinet,
 /turf/open/floor/mineral/titanium/blue,
@@ -18450,13 +18774,43 @@
 /turf/open/floor/plasteel,
 /area/tdome/arena)
 "Mj" = (
-/obj/item/storage/secure/safe{
-	code = "0000";
-	desc = "A wall safe repurposed into a makeshift mailbox, the numbers 0000 seems to be written on the cover.";
-	name = "secure mailbox";
-	pixel_x = 6
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
-/turf/closed/indestructible/riveted,
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/table,
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "Mk" = (
 /obj/effect/turf_decal/stripes/line{
@@ -18505,13 +18859,23 @@
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "Mo" = (
-/obj/structure/fans/tiny,
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/machinery/door/airlock{
-	id_tag = "CCDormChemlight2";
-	name = "Kenshin Midori's Bunk"
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
 	},
-/turf/open/floor/wood,
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/freezer,
+/area/centcom/ferry)
+"Mp" = (
+/obj/structure/pool/ladder{
+	pixel_x = -3
+	},
+/turf/open/pool,
 /area/centcom/ferry)
 "Mq" = (
 /obj/effect/turf_decal/loading_area{
@@ -18597,6 +18961,18 @@
 	},
 /turf/open/floor/carpet/black,
 /area/centcom/ferry)
+"MA" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 4
+	},
+/obj/structure/chair/bench/left{
+	dir = 1
+	},
+/obj/machinery/light{
+	brightness = 4
+	},
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "MB" = (
 /turf/open/indestructible/binary,
 /area/fabric_of_reality)
@@ -18643,6 +19019,28 @@
 "MI" = (
 /turf/open/floor/plating,
 /area/syndicate_mothership)
+"MJ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/light{
+	brightness = 4
+	},
+/turf/open/floor/plasteel,
+/area/centcom/ferry)
 "MK" = (
 /turf/closed/indestructible/fakedoor{
 	name = "Thunderdome Admin"
@@ -18686,6 +19084,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/supplypod)
+"MQ" = (
+/obj/machinery/pool/filter{
+	pixel_y = 24
+	},
+/turf/open/pool,
+/area/centcom/ferry)
 "MR" = (
 /obj/machinery/vending/dinnerware,
 /turf/open/floor/plasteel/cafeteria,
@@ -18711,10 +19115,15 @@
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
 "MW" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/mix_output{
-	dir = 8
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
 	},
-/turf/open/floor/grass/fakebasalt,
+/obj/machinery/shower{
+	pixel_y = 16
+	},
+/turf/open/floor/plasteel/freezer,
 /area/centcom/ferry)
 "MX" = (
 /obj/structure/table/wood,
@@ -18730,6 +19139,8 @@
 /area/centcom/ferry)
 "MY" = (
 /obj/structure/table/reinforced,
+/obj/item/reagent_containers/glass/bowl,
+/obj/item/reagent_containers/glass/bowl,
 /turf/open/floor/plasteel/cafeteria,
 /area/centcom/ferry)
 "MZ" = (
@@ -18740,14 +19151,24 @@
 /obj/item/stack/sheet/micro_bricks/twenty,
 /obj/item/stack/sheet/micro_bricks/twenty,
 /obj/item/carpentry/glue,
+/obj/structure/closet/cardboard,
 /turf/open/floor/pod/light,
 /area/centcom/ferry)
+"Na" = (
+/obj/structure/flora/crystal/small/pile,
+/turf/open/floor/plating/asteroid/layenia/garden,
+/area/centcom/ferry)
 "Nb" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/heater{
-	on = 1;
-	target_temperature = 325
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
 	},
-/turf/open/floor/wood,
+/obj/machinery/shower{
+	pixel_y = 16
+	},
+/obj/item/soap,
+/turf/open/floor/plasteel/freezer,
 /area/centcom/ferry)
 "Nc" = (
 /obj/effect/turf_decal/tile/brown{
@@ -18828,6 +19249,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/tdome/tdomeobserve)
+"Nl" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 9
+	},
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "Nm" = (
 /obj/structure/mopbucket,
 /obj/item/mop,
@@ -18856,6 +19284,9 @@
 	dir = 8
 	},
 /area/centcom/ferry)
+"Np" = (
+/turf/open/floor/grass/fakebasalt,
+/area/centcom/ferry)
 "Nq" = (
 /obj/effect/turf_decal/loading_area{
 	icon_state = "steel_panel";
@@ -18865,6 +19296,24 @@
 	icon_state = "plant-10"
 	},
 /turf/open/floor/plasteel/dark,
+/area/centcom/ferry)
+"Ns" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/light{
+	brightness = 4
+	},
+/obj/structure/table/plasmaglass,
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "Nt" = (
 /obj/structure/flora/crystal/medium/growth{
@@ -18912,6 +19361,23 @@
 "NA" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/white,
+/area/centcom/ferry)
+"NB" = (
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-10"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "NC" = (
 /obj/machinery/computer/arcade/battle{
@@ -19023,6 +19489,69 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel,
+/area/centcom/ferry)
+"NP" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/table,
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = -16;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = -15;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = -16;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = -16;
+	pixel_y = 4
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = -15;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = -15;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "NQ" = (
 /obj/structure/chair/sofa{
@@ -19249,6 +19778,22 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/two)
+"Os" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 4
+	},
+/obj/structure/chair/bench{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/centcom/ferry)
+"Ot" = (
+/obj/machinery/atmospherics/pipe/manifold/general/hidden{
+	dir = 1
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/engine,
+/area/centcom/ferry)
 "Ou" = (
 /turf/closed/indestructible/fakedoor{
 	name = "Cold Storage"
@@ -19258,6 +19803,13 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plasteel/dark,
 /area/centcom/supplypod)
+"Ow" = (
+/obj/machinery/door/airlock{
+	dir = 4;
+	name = "Showers"
+	},
+/turf/open/floor/plasteel/freezer,
+/area/centcom/ferry)
 "Ox" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = 24
@@ -19322,6 +19874,10 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plasteel/dark,
 /area/centcom/supplypod)
+"OJ" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden,
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "OK" = (
 /obj/machinery/door/airlock{
 	dir = 4;
@@ -19345,6 +19901,18 @@
 /obj/item/storage/box/handcuffs,
 /turf/open/floor/mineral/plastitanium/red,
 /area/centcom/evac)
+"OP" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
 "OQ" = (
 /obj/structure/closet/crate/wooden,
 /obj/item/canvas/twentythreeXtwentythree,
@@ -19369,6 +19937,21 @@
 /obj/item/toy/crayon/spraycan,
 /obj/item/toy/crayon/spraycan,
 /turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
+"OR" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/table/plasmaglass,
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "OS" = (
 /obj/structure/mecha_wreckage/mauler,
@@ -19491,6 +20074,20 @@
 	},
 /turf/open/floor/carpet/monochrome,
 /area/centcom/ferry)
+"Pe" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
 "Pf" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters{
@@ -19542,6 +20139,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/centcom/holding)
+"Pm" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 5
+	},
+/obj/structure/chair/bench{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "Pn" = (
 /turf/closed/indestructible/fakedoor{
 	name = "Equipment Storage"
@@ -19695,6 +20301,27 @@
 "PD" = (
 /turf/open/floor/plasteel/cafeteria,
 /area/syndicate_mothership)
+"PE" = (
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 8
+	},
+/obj/structure/curtain,
+/turf/open/floor/plasteel/freezer,
+/area/centcom/ferry)
 "PF" = (
 /obj/machinery/chem_dispenser/drinks,
 /turf/closed/indestructible{
@@ -19709,13 +20336,18 @@
 /turf/open/floor/plasteel,
 /area/centcom/supplypod)
 "PH" = (
-/obj/machinery/space_heater,
-/obj/machinery/light/small{
+/obj/effect/turf_decal/loading_area{
 	dir = 1;
-	pixel_x = 0;
-	pixel_y = 14
+	icon_state = "drain";
+	name = "drain"
 	},
-/turf/open/floor/wood,
+/obj/machinery/shower{
+	pixel_y = 16
+	},
+/obj/structure/chair/stool{
+	pixel_y = 8
+	},
+/turf/open/floor/plasteel/freezer,
 /area/centcom/ferry)
 "PI" = (
 /obj/machinery/light{
@@ -19729,6 +20361,26 @@
 	},
 /turf/open/floor/plating,
 /area/syndicate_mothership)
+"PK" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-10"
+	},
+/turf/open/floor/plasteel{
+	dir = 4;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
 "PL" = (
 /turf/open/floor/plasteel/white,
 /area/centcom/holding)
@@ -19763,6 +20415,12 @@
 	},
 /turf/open/floor/plating,
 /area/syndicate_mothership)
+"PQ" = (
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/indestructible/layenia/crystal/garden,
+/area/centcom/ferry)
 "PR" = (
 /obj/machinery/door/airlock/titanium,
 /obj/machinery/door/firedoor,
@@ -19835,6 +20493,10 @@
 	},
 /turf/open/floor/mineral/titanium,
 /area/centcom/evac)
+"Qc" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/engine,
+/area/centcom/ferry)
 "Qd" = (
 /obj/effect/turf_decal/loading_area{
 	icon_state = "drain";
@@ -19878,6 +20540,26 @@
 	pixel_y = 4
 	},
 /turf/open/floor/plasteel/grimy,
+/area/centcom/ferry)
+"Qi" = (
+/obj/structure/chair/bench/left,
+/turf/open/floor/wood,
+/area/centcom/ferry)
+"Qj" = (
+/obj/structure/bed,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "Qk" = (
 /obj/machinery/vending/cigarette,
@@ -20135,23 +20817,46 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/syndicate_mothership)
 "QS" = (
-/obj/machinery/door/airlock/hatch{
-	name = "Sauna"
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/structure/fans/tiny,
-/turf/open/floor/wood,
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/freezer,
 /area/centcom/ferry)
 "QT" = (
 /obj/structure/table/wood,
 /turf/open/floor/wood,
 /area/centcom/holding)
 "QU" = (
-/obj/machinery/atmospherics/components/unary/relief_valve{
-	close_pressure = 25;
-	open_pressure = 250
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-10"
 	},
-/obj/structure/sauna_oven,
-/turf/open/floor/wood,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel,
 /area/centcom/ferry)
 "QV" = (
 /turf/closed/indestructible/riveted,
@@ -20277,10 +20982,23 @@
 /turf/open/floor/plasteel/cafeteria,
 /area/centcom/ferry)
 "Rr" = (
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	dir = 5
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
-/turf/open/floor/wood,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/chair/comfy{
+	dir = 4
+	},
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "Rs" = (
 /obj/effect/turf_decal/loading_area{
@@ -20288,6 +21006,21 @@
 	name = "drain"
 	},
 /turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
+"Ru" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "Rw" = (
 /obj/structure/table/reinforced,
@@ -20328,6 +21061,10 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
+"RB" = (
+/obj/structure/reagent_dispensers/watertank/high,
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "RD" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -20338,6 +21075,20 @@
 	},
 /turf/open/floor/holofloor,
 /area/holodeck/rec_center/basketball)
+"RE" = (
+/obj/machinery/light{
+	dir = 4;
+	pixel_x = 7
+	},
+/turf/open/floor/grass/fakebasalt,
+/area/centcom/ferry)
+"RG" = (
+/obj/structure/flora/crystal/small/pile,
+/obj/structure/window/reinforced{
+	dir = 8
+	},
+/turf/open/floor/plating/asteroid/layenia/garden,
+/area/centcom/ferry)
 "RH" = (
 /obj/structure/medkit_cabinet{
 	pixel_y = 28
@@ -20414,6 +21165,10 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/centcom/ferry)
+"RP" = (
+/obj/structure/chair/bench/right,
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "RQ" = (
 /obj/structure/chair/wood/wings{
 	dir = 3
@@ -20433,6 +21188,13 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
+"RT" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 9
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/engine,
+/area/centcom/ferry)
 "RU" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -20442,10 +21204,31 @@
 /turf/open/floor/carpet/black,
 /area/centcom/ferry)
 "RV" = (
-/obj/machinery/atmospherics/miner/water_vapor{
-	desc = "A gas miner which appears to be getting water vapor from nowhere."
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
-/turf/open/floor/grass/fakebasalt,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
+	},
+/obj/structure/table/plasmaglass,
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
+"RW" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 6
+	},
+/turf/open/floor/wood,
 /area/centcom/ferry)
 "RY" = (
 /turf/open/floor/carpet/black,
@@ -20499,12 +21282,15 @@
 /turf/open/floor/wood,
 /area/centcom/holding)
 "Se" = (
-/obj/structure/fans/tiny/invisible,
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	dir = 4
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
 	},
-/obj/effect/spawner/structure/window/plasma/reinforced,
-/turf/open/floor/engine/co2,
+/obj/structure/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "Sf" = (
 /obj/structure/chair{
@@ -20603,6 +21389,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
+"Su" = (
+/obj/machinery/atmospherics/components/unary/thermomachine/heater{
+	dir = 1;
+	on = 1;
+	target_temperature = 325
+	},
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "Sv" = (
 /turf/open/floor/grass,
 /area/centcom/ferry)
@@ -20630,10 +21424,17 @@
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/four)
 "Sz" = (
-/obj/machinery/atmospherics/components/binary/pump{
-	dir = 8;
-	target_pressure = 300
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
+/turf/open/floor/plasteel,
+/area/centcom/ferry)
+"SA" = (
+/obj/machinery/atmospherics/components/unary/relief_valve{
+	close_pressure = 25;
+	open_pressure = 250
+	},
+/obj/structure/sauna_oven,
 /turf/open/floor/wood,
 /area/centcom/ferry)
 "SB" = (
@@ -20665,6 +21466,13 @@
 /obj/item/mop,
 /turf/open/floor/plasteel/freezer,
 /area/syndicate_mothership)
+"SE" = (
+/obj/structure/pool/Rboard,
+/obj/machinery/light/floor,
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 8
+	},
+/area/centcom/ferry)
 "SF" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -20807,10 +21615,24 @@
 /turf/open/floor/grass,
 /area/centcom/holding)
 "SZ" = (
-/obj/machinery/light{
-	dir = 8
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
 	},
-/turf/open/floor/wood,
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "Ta" = (
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -20842,6 +21664,27 @@
 	name = "drain"
 	},
 /turf/open/floor/carpet/black,
+/area/centcom/ferry)
+"Tg" = (
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/window/reinforced/tinted/frosted{
+	dir = 4
+	},
+/obj/structure/curtain,
+/turf/open/floor/plasteel/freezer,
 /area/centcom/ferry)
 "Th" = (
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -20882,8 +21725,24 @@
 /turf/open/floor/plasteel/dark,
 /area/centcom/control)
 "Tm" = (
-/obj/structure/chair/bench/right,
-/turf/open/floor/wood,
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-10"
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel,
 /area/centcom/ferry)
 "Tn" = (
 /obj/structure/flora/ausbushes/fernybush,
@@ -20962,10 +21821,15 @@
 /turf/open/floor/wood,
 /area/centcom/holding)
 "Tx" = (
-/obj/structure/chair/bench/right{
-	dir = 1
+/obj/structure/window/reinforced{
+	dir = 8
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plating/asteroid/layenia/garden,
+/area/centcom/ferry)
+"Ty" = (
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 8
+	},
 /area/centcom/ferry)
 "Tz" = (
 /obj/effect/light_emitter,
@@ -21069,8 +21933,12 @@
 /turf/open/floor/plasteel/freezer,
 /area/syndicate_mothership)
 "TQ" = (
-/obj/structure/chair/bench/left,
-/turf/open/floor/wood,
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
+	},
+/obj/structure/flora/crystal/small/pile,
+/turf/open/indestructible/layenia/crystal/garden,
 /area/centcom/ferry)
 "TR" = (
 /obj/structure/chair/comfy{
@@ -21080,6 +21948,42 @@
 /area/centcom/ferry)
 "TS" = (
 /turf/open/floor/plasteel/white,
+/area/centcom/ferry)
+"TT" = (
+/obj/structure/chair/comfy{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
+"TU" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/light{
+	dir = 4;
+	pixel_x = 7
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "TV" = (
 /obj/structure/filingcabinet,
@@ -21136,6 +22040,12 @@
 	dir = 1
 	},
 /area/centcom/ferry)
+"Uc" = (
+/obj/structure/flora/crystal/small/growth{
+	icon_state = "crystalgrowth2"
+	},
+/turf/open/indestructible/layenia/crystal/garden,
+/area/centcom/ferry)
 "Ud" = (
 /obj/machinery/computer/arcade/orion_trail,
 /turf/open/floor/wood,
@@ -21144,6 +22054,11 @@
 /obj/structure/bed,
 /obj/item/bedsheet/centcom,
 /turf/open/floor/wood,
+/area/centcom/ferry)
+"Uf" = (
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 4
+	},
 /area/centcom/ferry)
 "Ug" = (
 /obj/machinery/door/poddoor/shuttledock{
@@ -21261,6 +22176,31 @@
 /obj/structure/window/reinforced/spawner/west,
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
+"Us" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel{
+	dir = 4;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
+"Ut" = (
+/obj/structure/pool/ladder{
+	dir = 1;
+	pixel_y = -21
+	},
+/turf/open/pool,
+/area/centcom/ferry)
 "Uu" = (
 /obj/machinery/light{
 	dir = 8
@@ -21277,6 +22217,12 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/centcom/evac)
+"Ux" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/siphon/atmos/mix_output{
+	dir = 8
+	},
+/turf/open/floor/grass/fakebasalt,
+/area/centcom/ferry)
 "Uy" = (
 /obj/structure/flora/bush,
 /obj/effect/light_emitter,
@@ -21351,19 +22297,16 @@
 /turf/open/floor/plating/asteroid/snow/airless,
 /area/syndicate_mothership)
 "UH" = (
-/obj/structure/rack/shelf,
-/obj/item/stack/sheet/mineral/wood/fifty,
-/obj/item/stack/sheet/mineral/wood/fifty,
-/obj/item/stack/sheet/mineral/wood/fifty,
-/obj/item/reagent_containers/glass/bucket{
-	pixel_x = -4;
-	pixel_y = -1
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
 	},
-/obj/item/reagent_containers/glass/bucket{
-	pixel_x = 6;
-	pixel_y = 9
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plasteel/freezer,
 /area/centcom/ferry)
 "UI" = (
 /obj/effect/turf_decal/loading_area{
@@ -21380,6 +22323,15 @@
 	},
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
+"UK" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
 "UL" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
@@ -21390,6 +22342,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/supplypod)
+"UM" = (
+/obj/machinery/pool/controller,
+/turf/open/floor/plasteel/yellowsiding,
+/area/centcom/ferry)
 "UN" = (
 /obj/structure/table,
 /obj/machinery/computer/secure_data{
@@ -21446,11 +22402,17 @@
 /turf/open/floor/wood,
 /area/centcom/holding)
 "UU" = (
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	dir = 6
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/structure/table/wood,
-/turf/open/floor/wood,
+/obj/machinery/shower{
+	dir = 1
+	},
+/obj/structure/chair/stool{
+	pixel_y = 8
+	},
+/turf/open/floor/plasteel/freezer,
 /area/centcom/ferry)
 "UV" = (
 /mob/living/simple_animal/bot/medbot{
@@ -21480,6 +22442,10 @@
 /area/centcom/supplypod/loading/three)
 "UY" = (
 /turf/open/floor/carpet/royalblack,
+/area/centcom/ferry)
+"UZ" = (
+/obj/machinery/pool/drain,
+/turf/open/pool,
 /area/centcom/ferry)
 "Va" = (
 /obj/effect/turf_decal/tile/red,
@@ -21622,6 +22588,8 @@
 	},
 /obj/item/clothing/suit/jacket/miljacket,
 /obj/item/clothing/under/blacktango,
+/obj/item/clothing/suit/bathrobe,
+/obj/item/clothing/shoes/jackboots/tall,
 /turf/open/floor/carpet/monochrome,
 /area/centcom/ferry)
 "Vl" = (
@@ -21770,14 +22738,6 @@
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/one)
 "VC" = (
-/obj/machinery/button/door{
-	id = "CCDormChemlight2";
-	name = "Dorm Bolt Control";
-	normaldoorcontrol = 1;
-	pixel_x = -8;
-	pixel_y = 28;
-	specialfunctions = 4
-	},
 /obj/structure/holohoop{
 	layer = 3.9
 	},
@@ -21841,10 +22801,14 @@
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
 "VK" = (
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	dir = 4
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
 	},
-/turf/open/floor/wood,
+/obj/machinery/shower{
+	dir = 1
+	},
+/turf/open/floor/plasteel/freezer,
 /area/centcom/ferry)
 "VL" = (
 /obj/structure/table/reinforced,
@@ -21903,6 +22867,13 @@
 	},
 /turf/open/floor/wood,
 /area/syndicate_mothership)
+"VU" = (
+/obj/structure/pool/ladder{
+	dir = 2;
+	pixel_y = 24
+	},
+/turf/open/pool,
+/area/centcom/ferry)
 "VW" = (
 /obj/structure/flora/grass/jungle,
 /turf/open/floor/grass,
@@ -21969,6 +22940,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/control)
+"Wf" = (
+/obj/structure/chair/bench/right{
+	dir = 1
+	},
+/obj/machinery/light{
+	brightness = 4
+	},
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "Wg" = (
 /obj/machinery/door/airlock{
 	dir = 4;
@@ -22069,6 +23049,13 @@
 	icon_state = "plant-22"
 	},
 /turf/open/floor/plasteel/dark,
+/area/centcom/ferry)
+"Wo" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 6
+	},
+/obj/item/analyzer,
+/turf/open/floor/wood,
 /area/centcom/ferry)
 "Wp" = (
 /obj/docking_port/stationary{
@@ -22180,6 +23167,10 @@
 /obj/structure/window,
 /turf/open/floor/carpet/royalblack,
 /area/centcom/ferry)
+"Wy" = (
+/obj/item/toy/poolnoodle/blue,
+/turf/open/pool,
+/area/centcom/ferry)
 "Wz" = (
 /obj/structure/chair/stool,
 /obj/effect/turf_decal/loading_area{
@@ -22189,43 +23180,49 @@
 /turf/open/floor/plasteel/grimy,
 /area/centcom/ferry)
 "WA" = (
-/obj/machinery/atmospherics/pipe/manifold/general/hidden,
-/obj/structure/table/wood,
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = 3;
-	pixel_y = 9
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = 3;
-	pixel_y = 9
+/obj/machinery/shower{
+	dir = 1
 	},
-/obj/item/reagent_containers/rag/towel,
-/obj/item/reagent_containers/rag/towel,
-/obj/item/reagent_containers/rag/towel,
-/obj/item/reagent_containers/rag/towel,
-/obj/item/reagent_containers/rag/towel,
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 3
-	},
-/turf/open/floor/wood,
+/obj/item/soap,
+/turf/open/floor/plasteel/freezer,
 /area/centcom/ferry)
 "WC" = (
 /obj/structure/table/reinforced,
 /obj/item/pen,
 /turf/open/floor/mineral/plastitanium/red,
 /area/centcom/evac)
+"WD" = (
+/obj/machinery/door/airlock{
+	name = "Changing room"
+	},
+/turf/open/floor/plasteel/freezer,
+/area/centcom/ferry)
+"WE" = (
+/obj/structure/closet/secure_closet/personal,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
+	},
+/turf/open/floor/plasteel{
+	dir = 4;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
 "WF" = (
 /obj/structure/chair/comfy/black{
 	dir = 4
@@ -22291,6 +23288,15 @@
 	},
 /turf/open/floor/carpet/black,
 /area/centcom/holding)
+"WN" = (
+/obj/structure/mirror{
+	pixel_y = 28
+	},
+/obj/structure/sink{
+	pixel_y = 20
+	},
+/turf/open/floor/plasteel/freezer,
+/area/centcom/ferry)
 "WO" = (
 /obj/effect/turf_decal/tile/brown,
 /obj/effect/turf_decal/tile/brown{
@@ -22378,6 +23384,10 @@
 /obj/machinery/processor,
 /turf/open/floor/plasteel/cafeteria,
 /area/syndicate_mothership)
+"WX" = (
+/obj/structure/flora/crystal/small/pile,
+/turf/open/indestructible/layenia/crystal/garden,
+/area/centcom/ferry)
 "WY" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -22389,6 +23399,11 @@
 /area/centcom/control)
 "WZ" = (
 /turf/open/floor/plasteel/cafeteria,
+/area/centcom/ferry)
+"Xa" = (
+/turf/open/floor/plasteel/yellowsiding{
+	dir = 4
+	},
 /area/centcom/ferry)
 "Xb" = (
 /obj/effect/turf_decal/loading_area{
@@ -22466,6 +23481,12 @@
 /obj/item/camera_film,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
+"Xj" = (
+/obj/machinery/atmospherics/pipe/simple/general/hidden{
+	dir = 4
+	},
+/turf/closed/indestructible/riveted,
+/area/centcom/ferry)
 "Xk" = (
 /obj/structure/chair/wood/wings{
 	dir = 8
@@ -22482,6 +23503,12 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/syndicate_mothership)
+"Xm" = (
+/obj/structure/closet/athletic_mixed,
+/obj/item/clothing/suit/bathrobe,
+/obj/item/clothing/suit/bathrobe,
+/turf/open/floor/plasteel/freezer,
+/area/centcom/ferry)
 "Xn" = (
 /obj/machinery/vr_sleeper{
 	dir = 4
@@ -22757,6 +23784,24 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
+"XQ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-10"
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
 "XR" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp,
@@ -22917,6 +23962,23 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/white/side,
 /area/centcom/ferry)
+"Yk" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-10"
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
 "Yl" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 6;
@@ -23028,6 +24090,26 @@
 /obj/structure/closet/crate/freezer/blood,
 /turf/open/floor/wood,
 /area/centcom/holding)
+"Yv" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/light{
+	brightness = 4
+	},
+/obj/structure/chair/comfy{
+	dir = 8
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
 "Yw" = (
 /turf/closed/indestructible/fakedoor{
 	name = "External Access"
@@ -23095,14 +24177,16 @@
 /turf/open/floor/plasteel,
 /area/centcom/ferry)
 "YF" = (
-/obj/structure/fans/tiny,
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	dir = 4
+/obj/machinery/light{
+	dir = 4;
+	pixel_x = 7
 	},
-/obj/machinery/door/airlock/hatch{
-	name = "Sauna"
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
 	},
-/turf/open/floor/wood,
+/turf/open/floor/plasteel/freezer,
 /area/centcom/ferry)
 "YG" = (
 /obj/effect/turf_decal/loading_area{
@@ -23117,8 +24201,25 @@
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
 "YH" = (
-/obj/structure/chair/bench,
-/turf/open/floor/wood,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
+	},
+/turf/open/floor/plasteel{
+	dir = 4;
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "YI" = (
 /obj/structure/flora/ausbushes/reedbush,
@@ -23235,6 +24336,18 @@
 	},
 /turf/open/floor/carpet/black,
 /area/centcom/holding)
+"YR" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/light/floor,
+/turf/open/floor/plasteel{
+	dir = 4;
+	icon_state = "floor_plate"
+	},
+/area/centcom/ferry)
 "YS" = (
 /obj/decal{
 	desc = "A drain built into the floor, perhaps for potential floods?.";
@@ -23277,10 +24390,11 @@
 /turf/open/floor/wood,
 /area/centcom/holding)
 "YW" = (
-/obj/structure/chair/bench/left{
-	dir = 1
-	},
-/turf/open/floor/wood,
+/turf/open/floor/plasteel/yellowsiding/corner,
+/area/centcom/ferry)
+"YX" = (
+/obj/structure/flora/crystal/medium/growth,
+/turf/open/indestructible/layenia/crystal/garden,
 /area/centcom/ferry)
 "YY" = (
 /obj/structure/rack/shelf,
@@ -23323,6 +24437,11 @@
 /obj/structure/bed/pod,
 /obj/item/bedsheet/black,
 /turf/open/floor/carpet/monochrome,
+/area/centcom/ferry)
+"Ze" = (
+/turf/open/floor/plasteel/yellowsiding/corner{
+	dir = 1
+	},
 /area/centcom/ferry)
 "Zf" = (
 /obj/structure/reagent_dispensers/watertank/high,
@@ -23402,6 +24521,15 @@
 	},
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
+"Zp" = (
+/obj/structure/flora/crystal/small/pile{
+	icon_state = "crystals4"
+	},
+/obj/machinery/light{
+	brightness = 4
+	},
+/turf/open/floor/plating/asteroid/layenia/garden,
+/area/centcom/ferry)
 "Zq" = (
 /obj/structure/window{
 	dir = 4
@@ -23416,6 +24544,14 @@
 /obj/machinery/light,
 /turf/open/floor/plasteel/dark,
 /area/syndicate_mothership)
+"Zs" = (
+/obj/structure/chair/bench,
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
+	},
+/turf/open/floor/wood,
+/area/centcom/ferry)
 "Zt" = (
 /obj/structure/rack,
 /obj/item/nullrod/claymore{
@@ -23425,11 +24561,7 @@
 /turf/open/floor/wood,
 /area/centcom/holding)
 "Zu" = (
-/obj/machinery/light/small{
-	dir = 4;
-	pixel_x = 7
-	},
-/turf/open/floor/grass/fakebasalt,
+/turf/open/floor/plasteel/yellowsiding,
 /area/centcom/ferry)
 "Zv" = (
 /obj/structure/window{
@@ -23458,11 +24590,13 @@
 /turf/open/floor/plasteel,
 /area/centcom/ferry)
 "Zy" = (
-/obj/machinery/atmospherics/pipe/simple/general/hidden{
-	dir = 4
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/machinery/meter,
-/turf/open/floor/wood,
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
 /area/centcom/ferry)
 "Zz" = (
 /obj/effect/landmark/start/nukeop_leader,
@@ -23552,6 +24686,14 @@
 	},
 /turf/open/floor/mineral/plastitanium/red,
 /area/syndicate_mothership)
+"ZL" = (
+/obj/structure/table/wood,
+/turf/open/floor/wood,
+/area/centcom/ferry)
+"ZN" = (
+/obj/structure/dresser,
+/turf/open/floor/plasteel/freezer,
+/area/centcom/ferry)
 "ZO" = (
 /obj/structure/flora/junglebush/large{
 	pixel_x = -17;
@@ -23572,8 +24714,13 @@
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/two)
 "ZR" = (
-/obj/structure/chair/bench{
-	dir = 1
+/obj/machinery/light/floor,
+/turf/open/floor/plasteel/yellowsiding,
+/area/centcom/ferry)
+"ZS" = (
+/obj/machinery/atmospherics/components/binary/pump{
+	dir = 8;
+	target_pressure = 400
 	},
 /turf/open/floor/wood,
 /area/centcom/ferry)
@@ -52852,7 +53999,7 @@ aa
 aa
 aa
 aa
-mD
+aa
 mD
 oB
 oB
@@ -53108,8 +54255,8 @@ aa
 aa
 aa
 aa
-mD
-mD
+aa
+aa
 mD
 ML
 Rx
@@ -53365,8 +54512,8 @@ aa
 aa
 aa
 aa
-mD
-Ba
+aa
+aa
 mD
 UJ
 Wm
@@ -53621,9 +54768,9 @@ aa
 aa
 aa
 aa
-mD
-mD
-PH
+aa
+aa
+aa
 mD
 Uk
 Pk
@@ -53878,10 +55025,10 @@ aa
 aa
 aa
 aa
+aa
+aa
+aa
 mD
-Bj
-oB
-Mo
 we
 PB
 pg
@@ -54134,10 +55281,10 @@ aa
 aa
 aa
 aa
-mD
-mD
-UP
-oB
+aa
+aa
+aa
+aa
 mD
 VC
 PB
@@ -54391,10 +55538,10 @@ aa
 aa
 aa
 aa
-mD
-tQ
-oB
-oB
+aa
+aa
+aa
+aa
 mD
 Sa
 Pc
@@ -54647,11 +55794,11 @@ aa
 aa
 aa
 aa
-mD
-mD
-Hl
-mD
-mD
+aa
+aa
+aa
+aa
+aa
 mD
 ZD
 PB
@@ -54904,11 +56051,11 @@ aa
 aa
 aa
 aa
-mD
-TQ
-oB
-SZ
-Tx
+aa
+aa
+aa
+aa
+aa
 mD
 Lj
 PB
@@ -54945,17 +56092,17 @@ TY
 mD
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
 aa
 aa
 aa
@@ -55161,11 +56308,11 @@ aa
 aa
 aa
 aa
-mD
-YH
-CW
-CW
-ZR
+aa
+aa
+aa
+aa
+aa
 mD
 WV
 PB
@@ -55202,17 +56349,17 @@ XZ
 mD
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+Mo
+UH
+PE
+Ui
+Ui
+WD
+Ui
+Ui
+AE
+mD
 aa
 aa
 aa
@@ -55418,11 +56565,11 @@ aa
 aa
 aa
 aa
-mD
-YH
-QU
-Rr
-ZR
+aa
+aa
+aa
+aa
+aa
 mD
 Td
 MX
@@ -55459,17 +56606,17 @@ oB
 mD
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+MW
+UU
+mD
+Ui
+LD
+mD
+WN
+Ui
+LD
+mD
 aa
 aa
 aa
@@ -55675,11 +56822,11 @@ aa
 aa
 aa
 aa
-mD
-YH
-UU
-JW
-ZR
+aa
+aa
+aa
+aa
+aa
 mD
 Sx
 Pt
@@ -55716,17 +56863,17 @@ TY
 mD
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+Nb
+VK
+mD
+WN
+Ui
+mD
+Bx
+ZN
+Xm
+mD
 aa
 aa
 aa
@@ -55932,11 +57079,11 @@ aa
 aa
 aa
 aa
-mD
-Tm
-VK
-HL
-YW
+aa
+aa
+aa
+aa
+aa
 mD
 NW
 Df
@@ -55973,17 +57120,17 @@ qd
 mD
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+MW
+VK
+mD
+WN
+Ui
+mD
+mD
+mD
+mD
+mD
 aa
 aa
 aa
@@ -56189,9 +57336,9 @@ aa
 aa
 aa
 aa
-mD
-mD
-YF
+aa
+aa
+aa
 mD
 mD
 mD
@@ -56201,7 +57348,7 @@ mD
 mD
 mD
 ux
-Mj
+mD
 mD
 mD
 mD
@@ -56230,17 +57377,17 @@ mD
 mD
 mD
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+MW
+WA
+mD
+WN
+Ui
+mD
+Bx
+ZN
+Xm
+mD
 aa
 aa
 aa
@@ -56446,9 +57593,9 @@ aa
 aa
 aa
 aa
-mD
-UH
-Zy
+aa
+aa
+aa
 mD
 WR
 Kf
@@ -56487,17 +57634,17 @@ ZW
 Vo
 mD
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+PH
+VK
+mD
+Ui
+LD
+mD
+WN
+Ui
+LD
+mD
 aa
 aa
 aa
@@ -56703,10 +57850,10 @@ aa
 aa
 aa
 aa
-mD
-Cm
-Sz
-QS
+aa
+aa
+aa
+oe
 Of
 ZW
 NO
@@ -56745,16 +57892,16 @@ ZW
 mD
 mD
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+QS
+YF
+Tg
+Ui
+Ui
+WD
+Ui
+Ui
+AE
+mD
 aa
 aa
 aa
@@ -56960,9 +58107,9 @@ aa
 aa
 aa
 aa
-mD
-Nb
-WA
+aa
+aa
+aa
 mD
 Ol
 Ld
@@ -57002,22 +58149,22 @@ TR
 oe
 va
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+mD
+Ow
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
 aa
 aa
 aa
@@ -57217,9 +58364,9 @@ aa
 aa
 aa
 aa
-mD
-mD
-Se
+aa
+aa
+aa
 mD
 oe
 mD
@@ -57259,22 +58406,22 @@ zY
 oe
 Pu
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+QU
+YH
+Kl
+Kl
+PK
+Us
+WE
+Kl
+CQ
+mD
+Qi
+ZL
+oB
+oB
+ZL
+mD
 aa
 aa
 aa
@@ -57475,8 +58622,8 @@ aa
 aa
 aa
 aa
-mD
-MW
+aa
+aa
 mD
 Ng
 Lq
@@ -57516,22 +58663,22 @@ Xh
 oe
 va
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Rr
+ZW
+ZW
+ZW
+ZW
+ZW
+ZW
+ZW
+KF
+mD
+Zs
+oB
+oB
+oB
+Wf
+mD
 aa
 aa
 aa
@@ -57732,8 +58879,8 @@ aa
 aa
 aa
 aa
-mD
-RV
+aa
+aa
 mD
 yi
 Sv
@@ -57773,22 +58920,22 @@ ZW
 mD
 mD
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+RV
+ZW
+ZW
+ZW
+ZW
+ZW
+ZW
+ZW
+NP
+mD
+RP
+oB
+oB
+oB
+IO
+mD
 aa
 aa
 aa
@@ -57989,8 +59136,8 @@ xb
 aa
 aa
 aa
-mD
-Zu
+aa
+aa
 mD
 YI
 vp
@@ -58028,24 +59175,24 @@ ZW
 Im
 ZW
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Ba
+JW
+Se
+YW
+Xa
+Xa
+YR
+Xa
+Xa
+Uf
+Pe
+Ce
+oB
+oB
+SA
+OJ
+Pm
+mD
 aa
 aa
 aa
@@ -58285,24 +59432,24 @@ ZW
 Im
 ZW
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Bj
+ZW
+ZW
+Zu
+MQ
+tn
+Mp
+tn
+tn
+Hi
+Dy
+mD
+Qi
+oB
+oB
+oB
+Os
+mD
 aa
 aa
 aa
@@ -58542,24 +59689,24 @@ ZW
 Im
 ZW
 mD
+Cm
+ZW
+ZW
+Zy
+VU
+tn
+tn
+tn
+tn
+Hi
+OR
 mD
+Zs
+oB
+oB
+oB
+MA
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -58797,26 +59944,26 @@ YG
 mD
 GZ
 Im
-TR
-oe
-va
+ZW
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+CW
+ZW
+ZW
+Zu
+tn
+tn
+tn
+tn
+tn
+Hi
+Yv
+mD
+RP
+ZL
+RW
+OJ
+Nl
+mD
 aa
 aa
 aa
@@ -59054,26 +60201,26 @@ VJ
 qR
 ZW
 Im
-zY
-oe
-Pu
+ZW
+tQ
+Hl
+ZW
+ZW
+ZR
+tn
+tn
+UZ
+tn
+Ut
+OP
+Yk
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+Xj
+mD
+mD
+mD
 aa
 aa
 aa
@@ -59311,26 +60458,26 @@ zA
 ZT
 ZW
 Im
-Xh
-oe
-va
+ZW
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+CW
+ZW
+ZW
+UM
+tn
+tn
+tn
+tn
+tn
+Hi
+UK
+Kl
+MJ
+mD
+zT
+oB
+RB
+mD
 aa
 aa
 aa
@@ -59570,24 +60717,24 @@ ZW
 Im
 ZW
 mD
+Cm
+ZW
+ZW
+Zy
+VU
+tn
+tn
+Wy
+tn
+Hi
+ZW
+ZW
+Pe
+Co
+Fl
+oB
+KE
 mD
-mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
 aa
 aa
 aa
@@ -59827,24 +60974,24 @@ GZ
 Im
 ZW
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Bj
+ZW
+ZW
+Zu
+tn
+tn
+Fe
+tn
+tn
+Hi
+ZW
+ZW
+NB
+mD
+ZS
+Wo
+Su
+mD
 aa
 aa
 aa
@@ -60084,24 +61231,24 @@ ZW
 Im
 ZW
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+HL
+Mj
+Sz
+Ty
+Ff
+Ff
+SE
+Ff
+Ff
+Ze
+ZW
+ZW
+TT
+mD
+Ot
+RT
+Qc
+mD
 aa
 aa
 aa
@@ -60343,22 +61490,22 @@ ZW
 mD
 mD
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+SZ
+ZW
+ZW
+ZW
+ZW
+ZW
+ZW
+ZW
+ZW
+ZW
+Ns
+mD
+Ux
+Np
+Np
+mD
 aa
 aa
 aa
@@ -60600,22 +61747,22 @@ TR
 oe
 va
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Tm
+Qj
+Qj
+Qj
+XQ
+Qj
+Qj
+Qj
+TU
+Ru
+BU
+mD
+Np
+Bm
+Np
+mD
 aa
 aa
 aa
@@ -60857,22 +62004,22 @@ zY
 oe
 Pu
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+Tx
+RG
+Tx
+LF
+Dm
+PQ
+Tx
+mD
+mD
+mD
+mD
+mD
+Np
+RE
+Np
+mD
 aa
 aa
 aa
@@ -61114,22 +62261,22 @@ Xh
 oe
 va
 mD
+TQ
+Na
+WX
+Uc
+YX
+Na
+Zp
+mD
 aa
 aa
 aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+mD
+mD
+mD
 aa
 aa
 aa
@@ -61371,14 +62518,14 @@ ZW
 mD
 mD
 mD
-aa
-aa
-aa
-aa
-aa
-aa
-aa
-aa
+mD
+mD
+mD
+mD
+mD
+mD
+mD
+mD
 aa
 aa
 aa

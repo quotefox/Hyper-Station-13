@@ -355,7 +355,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["feature_human_tail"]				>> features["tail_human"]
 	S["feature_human_ears"]				>> features["ears"]
 	S["feature_deco_wings"]				>> features["deco_wings"]
-	S["feature_front_genitals_over_hair"] >> features["feature_front_genitals_over_hair"]
+	S["feature_front_genitals_over_hair"] >> features["front_genitals_over_hair"]
 
 	S["hide_ckey"]						>> hide_ckey //saved per-character
 
