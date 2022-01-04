@@ -18,7 +18,7 @@
 		{
 			"Down": -1,
 			"Gravity":true,
-			"Baseturf":"/turf/open/openspace",
+			"Baseturf":"/turf/open/transparent/openspace",
 			"Linkage" : "Cross"
 		}
 	]
