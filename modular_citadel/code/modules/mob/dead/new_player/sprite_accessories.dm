@@ -1407,6 +1407,14 @@ datum/sprite_accessory/ears/human/gret
 /datum/sprite_accessory/mam_tails_animated/hawk
 	name = "Hawk"
 	icon_state = "hawk"
+	
+/datum/sprite_accessory/mam_tails/shorthawk
+	name = "Hawk - Short"
+	icon_state = "shorthawk"
+
+/datum/sprite_accessory/mam_tails_animated/shorthawk
+	name = "Hawk - Short"
+	icon_state = "shorthawk"
 
 /datum/sprite_accessory/mam_tails/horse
 	name = "Horse"
@@ -1481,6 +1489,22 @@ datum/sprite_accessory/mam_tails/insect
 /datum/sprite_accessory/mam_tails_animated/orca
 	name = "Orca"
 	icon_state = "orca"
+
+/datum/sprite_accessory/mam_tails/longpigeon
+	name = "Pigeon - Long"
+	icon_state = "longpigeon"
+
+/datum/sprite_accessory/mam_tails_animated/longpigeon
+	name = "Pigeon - Long"
+	icon_state = "longpigeon"
+
+/datum/sprite_accessory/mam_tails/shortpigeon
+	name = "Pigeon - Short"
+	icon_state = "shortpigeon"
+
+/datum/sprite_accessory/mam_tails_animated/shortpigeon
+	name = "Pigeon - Short"
+	icon_state = "shortpigeon"
 
 /datum/sprite_accessory/mam_tails/pede
 	name = "Scolipede"
@@ -1735,6 +1759,11 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Panther"
 	icon_state = "panther"
 
+/datum/sprite_accessory/mam_body_markings/pigeon 
+	name = "Pigeon"
+	icon_state = "pigeon"
+	recommended_species = list("avian")
+
 /datum/sprite_accessory/mam_body_markings/possum
 	name = "Possum"
 	icon_state = "possum"
@@ -1811,6 +1840,8 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Protogen-light"
 	icon_state = "protogenlight"
 	icon = 'modular_citadel/icons/mob/markings_notmammals.dmi'
+
+
 
 /******************************************
 ************ Taur Bodies ******************
