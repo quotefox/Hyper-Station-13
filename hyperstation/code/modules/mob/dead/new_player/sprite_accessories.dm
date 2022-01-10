@@ -148,3 +148,32 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 HAIRSTYLES
 ==========================================================
 */
+
+/*
+from code/modules/mob/dead/new_player/sprite_accessories/hair_head.dm:
+/datum/sprite_accessory/hair
+	icon = 'icons/mob/human_face.dmi'	  // default icon for all hairs
+
+	// please make sure they're sorted alphabetically and, where needed, categorized
+	// try to capitalize the names please~
+	// try to spell
+	// you do not need to define _s or _l sub-states, game automatically does this for you
+*/
+
+/datum/sprite_accessory/hair/aviancrest
+	name = "Avian Crest (Hyper)"
+	icon_state = "hair_aviancrest"
+	icon = 'hyperstation/icons/mob/char_hair.dmi'
+
+/datum/sprite_accessory/hair/curtains
+	name = "Curtains (Hyper)"
+	icon_state = "hair_curtains"
+
+/datum/sprite_accessory/hair/mommy
+	name = "Hairfre (Hyper)"
+	icon_state = "hair_hairfre"
+
+/datum/sprite_accessory/hair/sidehair
+	name = "Side Hair (Hyper)"
+	icon_state = "hair_tailhair2"
+	ckeys_allowed = list("quotefox")
