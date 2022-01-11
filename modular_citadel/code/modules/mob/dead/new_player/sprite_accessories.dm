@@ -1812,6 +1812,8 @@ datum/sprite_accessory/mam_tails/insect
 	icon_state = "protogenlight"
 	icon = 'modular_citadel/icons/mob/markings_notmammals.dmi'
 
+
+
 /******************************************
 ************ Taur Bodies ******************
 *******************************************/
