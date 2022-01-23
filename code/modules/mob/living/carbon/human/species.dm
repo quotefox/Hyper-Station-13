@@ -1612,6 +1612,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		user.adjustStaminaLossBuffered(3)
 		return FALSE
 	else if(aim_for_groin && (target == user || target.lying || same_dir) && (target_on_help || target_restrained || target_aiming_for_groin))
+		if(target.client?.prefs.cit_toggles & NO_ASS_SLAP)
+			to_chat(user,"A force stays your hand, preventing you from slapping \the [target]'s ass!")
+			return FALSE
 		user.do_attack_animation(target, ATTACK_EFFECT_ASS_SLAP)
 		user.adjustStaminaLossBuffered(3)
 		if(HAS_TRAIT(target, TRAIT_ASSBLASTUSA))
@@ -1625,7 +1628,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			playsound(target.loc, 'sound/weapons/tap.ogg', 50, 1, -1)
 			user.emote("scream")
 			return FALSE
-
 		playsound(target.loc, 'sound/weapons/slap.ogg', 50, 1, -1)
 		user.visible_message(\
 			"<span class='danger'>\The [user] slaps \the [target]'s ass!</span>",\

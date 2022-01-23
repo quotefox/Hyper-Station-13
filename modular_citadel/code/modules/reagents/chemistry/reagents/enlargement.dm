@@ -25,7 +25,7 @@
 	taste_description = "a milky ice cream like flavour."
 	overdose_threshold = 17
 	metabolization_rate = 0.25
-	impure_chem 			= /datum/reagent/fermi/BEsmaller //If you make an inpure chem, it stalls growth
+	impure_chem 			= /datum/reagent/fermi/BEsmaller //If you make an impure chem, it stalls growth
 	inverse_chem_val 		= 0.35
 	inverse_chem		= /datum/reagent/fermi/BEsmaller //At really impure vols, it just becomes 100% inverse
 	can_synth = FALSE
@@ -49,7 +49,7 @@
 			B.throw_at(T2, 8, 1)
 		M.reagents.del_reagent(type)
 		return
-	log_game("FERMICHEM: [M] ckey: [M.key] has ingested Sucubus milk")
+	log_game("FERMICHEM: [M] ckey: [M.key] has ingested Succubus milk")
 	var/mob/living/carbon/human/H = M
 	H.genital_override = TRUE
 	var/obj/item/organ/genital/breasts/B = H.getorganslot("breasts")
@@ -69,8 +69,8 @@
 	var/obj/item/organ/genital/breasts/B = M.getorganslot("breasts")
 	if(!B) //If they don't have breasts, give them breasts.
 
-		//If they have Acute hepatic pharmacokinesis, then route processing though liver.
-		if(HAS_TRAIT(M, TRAIT_PHARMA))
+		//If they've opted out, then route processing though liver.
+		if(!(H.client?.prefs.cit_toggles & BREAST_ENLARGEMENT))
 			var/obj/item/organ/liver/L = M.getorganslot("liver")
 			if(L)
 				L.swelling+= 0.05
@@ -101,9 +101,7 @@
 	..()
 
 /datum/reagent/fermi/breast_enlarger/overdose_process(mob/living/carbon/M) //Turns you into a female if male and ODing, doesn't touch nonbinary and object genders.
-
-	//Acute hepatic pharmacokinesis.
-	if(HAS_TRAIT(M, TRAIT_PHARMA))
+	if(!(M.client?.prefs.cit_toggles & FORCED_FEM))
 		var/obj/item/organ/liver/L = M.getorganslot("liver")
 		L.swelling+= 0.05
 		return ..()
@@ -142,15 +140,10 @@
 
 /datum/reagent/fermi/BEsmaller/on_mob_life(mob/living/carbon/M)
 	var/obj/item/organ/genital/breasts/B = M.getorganslot("breasts")
-	if(!B)
-		//Acute hepatic pharmacokinesis.
-		if(HAS_TRAIT(M, TRAIT_PHARMA))
-			var/obj/item/organ/liver/L = M.getorganslot("liver")
-			L.swelling-= 0.05
-			return ..()
-
-		//otherwise proceed as normal
-		return..()
+	if(!(M.client?.prefs.cit_toggles & BREAST_ENLARGEMENT) || !B)
+		var/obj/item/organ/liver/L = M.getorganslot(ORGAN_SLOT_LIVER)
+		L.swelling-= 0.05
+		return ..()
 	B.cached_size = B.cached_size - 0.05
 	B.update()
 	..()
@@ -240,12 +233,12 @@
 /datum/reagent/fermi/penis_enlarger/on_mob_life(mob/living/carbon/M) //Increases penis size, 5u = +1 inch.
 	if(!ishuman(M))
 		return
+
+	var/mob/living/carbon/human/H = M
 	var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles") //Hyper Change, testicles come first so the dick isn't hidden behind the testicles layer
 	var/obj/item/organ/genital/penis/P = M.getorganslot("penis")
 	if(!T)//Hyper change// Adds testicles if there are none.
-
-		//If they have Acute hepatic pharmacokinesis, then route processing though liver.
-		if(HAS_TRAIT(M, TRAIT_PHARMA))
+		if(!(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT))
 			var/obj/item/organ/liver/L = M.getorganslot("liver")
 			if(L)
 				L.swelling+= 0.05
@@ -263,11 +256,8 @@
 			nT.cached_size = 1
 			nT.sack_size = BALLS_SACK_SIZE_DEF
 			T = nT
-
-	if(!P)//They do have a preponderance for escapism, or so I've heard.
-
-		//If they have Acute hepatic pharmacokinesis, then route processing though liver.
-		if(HAS_TRAIT(M, TRAIT_PHARMA))
+	if(!P)
+		if(!(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT))
 			var/obj/item/organ/liver/L = M.getorganslot("liver")
 			if(L)
 				L.swelling+= 0.05
@@ -295,8 +285,7 @@
 	..()
 
 /datum/reagent/fermi/penis_enlarger/overdose_process(mob/living/carbon/M) //Turns you into a male if female and ODing, doesn't touch nonbinary and object genders.
-	//Acute hepatic pharmacokinesis.
-	if(HAS_TRAIT(M, TRAIT_PHARMA))
+	if(!(M.client?.prefs.cit_toggles & FORCED_MASC))
 		var/obj/item/organ/liver/L = M.getorganslot("liver")
 		L.swelling+= 0.05
 		return..()
@@ -334,14 +323,9 @@
 /datum/reagent/fermi/PEsmaller/on_mob_life(mob/living/carbon/M)
 	var/mob/living/carbon/human/H = M
 	var/obj/item/organ/genital/penis/P = H.getorganslot("penis")
-	if(!P)
-		//Acute hepatic pharmacokinesis.
-		if(HAS_TRAIT(M, TRAIT_PHARMA))
-			var/obj/item/organ/liver/L = M.getorganslot("liver")
-			L.swelling-= 0.05
-			return..()
-
-		//otherwise proceed as normal
+	if(!(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT) || !P)
+		var/obj/item/organ/liver/L = M.getorganslot(ORGAN_SLOT_LIVER)
+		L.swelling-= 0.05
 		return..()
 	P.cached_length = P.cached_length - 0.1
 	P.update()
