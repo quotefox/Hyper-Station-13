@@ -73,7 +73,7 @@
 		if(!(H.client?.prefs.cit_toggles & BREAST_ENLARGEMENT))
 			var/obj/item/organ/liver/L = M.getorganslot("liver")
 			if(L)
-				L.swelling+= 0.05
+				//L.swelling+= 0.05 HYPER CHANGE: Liver swelling is the non-lewd equivalent of large genitals impeding movement. Feature is depreciated on Hyper.
 				return..()
 			else
 				M.adjustToxLoss(1)
@@ -95,15 +95,16 @@
 			to_chat(M, "<span class='warning'>Your chest feels warm, tingling with newfound sensitivity.</b></span>")
 			M.reagents.remove_reagent(type, 5)
 			B = nB
-	//If they have them, increase size. If size is comically big, limit movement and rip clothes.
-	B.cached_size = B.cached_size + 0.05
-	B.update()
+	//If they have them, and opted in, increase size.
+	if(H.client?.prefs.cit_toggles & BREAST_ENLARGEMENT)
+		B.cached_size = B.cached_size + 0.05
+		B.update()
 	..()
 
 /datum/reagent/fermi/breast_enlarger/overdose_process(mob/living/carbon/M) //Turns you into a female if male and ODing, doesn't touch nonbinary and object genders.
 	if(!(M.client?.prefs.cit_toggles & FORCED_FEM))
 		var/obj/item/organ/liver/L = M.getorganslot("liver")
-		L.swelling+= 0.05
+		//L.swelling+= 0.05 //HYPER CHANGE: See comment in /breast_enlarger/on_mob_life()
 		return ..()
 
 	var/obj/item/organ/genital/penis/P = M.getorganslot("penis")
@@ -142,10 +143,11 @@
 	var/obj/item/organ/genital/breasts/B = M.getorganslot("breasts")
 	if(!(M.client?.prefs.cit_toggles & BREAST_ENLARGEMENT) || !B)
 		var/obj/item/organ/liver/L = M.getorganslot(ORGAN_SLOT_LIVER)
-		L.swelling-= 0.05
+		//L.swelling-= 0.05 //HYPER CHANGE: See comment in /breast_enlarger/on_mob_life()
 		return ..()
-	B.cached_size = B.cached_size - 0.05
-	B.update()
+	if(H.client?.prefs.cit_toggles & BREAST_ENLARGEMENT)
+		B.cached_size = B.cached_size - 0.05
+		B.update()
 	..()
 
 /datum/reagent/fermi/BEsmaller_hypo
@@ -241,7 +243,7 @@
 		if(!(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT))
 			var/obj/item/organ/liver/L = M.getorganslot("liver")
 			if(L)
-				L.swelling+= 0.05
+				//L.swelling+= 0.05 //HYPER CHANGE: See comment in /breast_enlarger/on_mob_life()
 				return..()
 			else
 				M.adjustToxLoss(1)
@@ -260,7 +262,7 @@
 		if(!(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT))
 			var/obj/item/organ/liver/L = M.getorganslot("liver")
 			if(L)
-				L.swelling+= 0.05
+				//L.swelling+= 0.05 //HYPER CHANGE: See comment in /breast_enlarger/on_mob_life()
 				return..()
 			else
 				M.adjustToxLoss(1)
@@ -276,18 +278,18 @@
 			nP.prev_length = 1
 			M.reagents.remove_reagent(type, 5)
 			P = nP
-
-	P.cached_length = P.cached_length + 0.1
-	//Hyper change// Increase ball size too
-	T.size = T.size + 0.1
-	T.update() //Hyper change - Make the ball size update
-	P.update()
+	if(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT)
+		P.cached_length = P.cached_length + 0.1
+		//Hyper change// Increase ball size too
+		T.size = T.size + 0.1
+		T.update() //Hyper change - Make the ball size update
+		P.update()
 	..()
 
 /datum/reagent/fermi/penis_enlarger/overdose_process(mob/living/carbon/M) //Turns you into a male if female and ODing, doesn't touch nonbinary and object genders.
 	if(!(M.client?.prefs.cit_toggles & FORCED_MASC))
 		var/obj/item/organ/liver/L = M.getorganslot("liver")
-		L.swelling+= 0.05
+		//L.swelling+= 0.05 //HYPER CHANGE: See comment in /breast_enlarger/on_mob_life()
 		return..()
 
 	var/obj/item/organ/genital/breasts/B = M.getorganslot("breasts")
@@ -325,10 +327,11 @@
 	var/obj/item/organ/genital/penis/P = H.getorganslot("penis")
 	if(!(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT) || !P)
 		var/obj/item/organ/liver/L = M.getorganslot(ORGAN_SLOT_LIVER)
-		L.swelling-= 0.05
+		//L.swelling-= 0.05 //HYPER CHANGE: See comment in /breast_enlarger/on_mob_life()
 		return..()
-	P.cached_length = P.cached_length - 0.1
-	P.update()
+	if(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT)
+		P.cached_length = P.cached_length - 0.1
+		P.update()
 	..()
 
 /datum/reagent/fermi/PEsmaller_hypo
