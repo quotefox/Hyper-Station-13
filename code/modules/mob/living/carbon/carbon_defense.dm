@@ -316,8 +316,7 @@
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "friendly_hug", /datum/mood_event/betterhug, M)
 			
 			if(H.client?.prefs.cit_toggles & NO_AUTO_WAG) //if they don't wanna wag
-				if(!(HAS_TRAIT(H, TRAIT_DISTANT))) //because distant = the pet didn't actually happen
-					playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1) //so the sound plays as expected
+				playsound(loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1) //so the sound plays as expected
 				return
 			else if(H.dna.species.can_wag_tail(H))
 				if("tail_human" in pref_species.default_features)
