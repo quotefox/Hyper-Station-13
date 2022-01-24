@@ -167,11 +167,9 @@ Creating a chem with a low purity will make you permanently fall in love with so
 
 /datum/reagent/fermi/enthrall/on_mob_add(mob/living/carbon/M)
 	. = ..()
-	/* TODO FIGURE OUT A WAY TO MAKE THIS SHIT WORK!!!
 	if(M.client?.prefs.cit_toggles & NEVER_HYPNO) // Just in case people are opting out of this
-		holder.remove_reagent(id, 10000000)
+		holder.del_reagent(type)
 		return
-	*/
 	if(!ishuman(M))//Just to make sure screwy stuff doesn't happen.
 		return
 	if(!creatorID)
@@ -207,8 +205,7 @@ Creating a chem with a low purity will make you permanently fall in love with so
 	if(purity < 0.5)//DO NOT SPLIT INTO DIFFERENT CHEM: This relies on DoNotSplit - has to be done this way.
 		if(volume < 0.5)//You don't get to escape that easily
 			//FallInLove(pick(GLOB.player_list), M) //goodbye
-			M.reagents.remove_reagent(type, volume)
-
+			M.reagents.del_reagent(type)
 		if (M.ckey == creatorID && creatorName == M.real_name)//If the creator drinks it, they fall in love randomly. If someone else drinks it, the creator falls in love with them.
 			if(M.has_status_effect(STATUS_EFFECT_INLOVE))//Can't be enthralled when enthralled, so to speak.
 				return
