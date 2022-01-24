@@ -127,14 +127,15 @@
 			. += "<span class='love'>[t_He] [t_is] currently in heat.</span>"
 
 	//CIT CHANGES START HERE - adds genital details to examine text
-	if(LAZYLEN(internal_organs))
+	if(LAZYLEN(internal_organs) && user.client?.prefs.cit_toggles & GENITAL_EXAMINE)
 		for(var/obj/item/organ/genital/dicc in internal_organs)
 			if(istype(dicc) && dicc.is_exposed())
 				. += "[dicc.desc]"
 
-	var/cursed_stuff = attempt_vr(src,"examine_bellies",args) //vore Code
-	if(!isnull(cursed_stuff))
-		. += cursed_stuff
+	if(user.client?.prefs.cit_toggles & VORE_EXAMINE)
+		var/cursed_stuff = attempt_vr(src,"examine_bellies",args) //vore Code
+		if(cursed_stuff)
+			. += cursed_stuff
 //END OF CIT CHANGES
 
 	//Jitters
