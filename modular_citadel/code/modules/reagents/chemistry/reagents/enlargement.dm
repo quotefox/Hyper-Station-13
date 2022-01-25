@@ -395,22 +395,24 @@
 
 	var/mob/living/carbon/human/H = M
 	var/obj/item/organ/genital/anus/B = M.getorganslot("anus")
-	if(!B) //If they don't have a butt. Give them one!
-		var/obj/item/organ/genital/anus/nB = new
-		nB.Insert(M)
-		if(nB)
-			if(M.dna.species.use_skintones && M.dna.features["genitals_use_skintone"])
-				nB.color = skintone2hex(H.skin_tone)
-			else if(M.dna.features["breasts_color"])
-				nB.color = "#[M.dna.features["breasts_color"]]"
-			else
-				nB.color = skintone2hex(H.skin_tone)
-			nB.size = 1
-			to_chat(M, "<span class='warning'>Your ass cheeks bulge outwards and feel heavier.</b></span>")
-			M.reagents.remove_reagent(type, 5)
-			B = nB
-	//If they have, increase size.
-	if(B.size < 5) //just make sure you dont break sprites
-		B.size = B.size + 0.05
-		B.update()
+	if(!B) //If they don't have a butt and are opted in, give them one!
+		if(H.client?.prefs.cit_toggles & ASS_ENLARGEMENT)
+			var/obj/item/organ/genital/anus/nB = new
+			nB.Insert(M)
+			if(nB)
+				if(M.dna.species.use_skintones && M.dna.features["genitals_use_skintone"])
+					nB.color = skintone2hex(H.skin_tone)
+				else if(M.dna.features["breasts_color"])
+					nB.color = "#[M.dna.features["breasts_color"]]"
+				else
+					nB.color = skintone2hex(H.skin_tone)
+				nB.size = 1
+				to_chat(M, "<span class='warning'>Your ass cheeks bulge outwards and feel heavier.</b></span>")
+				M.reagents.remove_reagent(type, 5)
+				B = nB
+	//If they have & opt in, increase size.
+	if(H.client?.prefs.cit_toggles & ASS_ENLARGEMENT)
+		if(B.size < 5) //just make sure you dont break sprites
+			B.size = B.size + 0.05
+			B.update()
 	..()

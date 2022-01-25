@@ -1204,10 +1204,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<h2>Other content prefs</h2>"
 			dat += "<b>Breast Enlargement:</b> <a href='?_src_=prefs;preference=breast_enlargement'>[(cit_toggles & BREAST_ENLARGEMENT) ? "Allowed" : "Disallowed"]</a><br>"
 			dat += "<b>Penis Enlargement:</b> <a href='?_src_=prefs;preference=penis_enlargement'>[(cit_toggles & PENIS_ENLARGEMENT) ? "Allowed" : "Disallowed"]</a><br>"
+			dat += "<b>Ass Enlargement:</b> <a href='?_src_=prefs;preference=ass_enlargement'>[(cit_toggles & ASS_ENLARGEMENT) ? "Allowed" : "Disallowed"]</a><br>"
 			dat += "<b>Hypno:</b> <a href='?_src_=prefs;preference=never_hypno'>[(cit_toggles & NEVER_HYPNO) ? "Disallowed" : "Allowed"]</a><br>"
 			dat += "<b>Aphrodisiacs:</b> <a href='?_src_=prefs;preference=aphro'>[(cit_toggles & NO_APHRO) ? "Disallowed" : "Allowed"]</a><br>"
 			dat += "<b>Ass Slapping:</b> <a href='?_src_=prefs;preference=ass_slap'>[(cit_toggles & NO_ASS_SLAP) ? "Disallowed" : "Allowed"]</a><br>"
-			dat += "<b>Automatic Wagging:</b> <a href='?_src_=prefs;preference=auto_wag'>[(cit_toggles & NO_AUTO_WAG) ? "Disabled" : "Enabled"]</a><br>"
+			dat += "<b>Automatic Wagging:</b> <a href='?_src_=prefs;preference=auto_wag'>[(cit_toggles & NO_AUTO_WAG) ? "Disallowed" : "Allowed"]</a><br>"
+			dat += "<b>Forced UwUspeak:</b> <a href='?_src_=prefs;preference=no_uwu'>[(cit_toggles & NO_UWU) ? "Disallowed" : "Allowed"]</a><br>"
 			dat += "</tr></table>"
 			dat += "<br>"
 
@@ -2747,6 +2749,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("penis_enlargement")
 					cit_toggles ^= PENIS_ENLARGEMENT
 
+				if("ass_enlargement")
+					cit_toggles ^= ASS_ENLARGEMENT
+
 				if("feminization")
 					cit_toggles ^= FORCED_FEM
 
@@ -2767,6 +2772,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("auto_wag")
 					cit_toggles ^= NO_AUTO_WAG
+
+				if("no_uwu")
+					cit_toggles ^= NO_UWU
 
 				//END CITADEL EDIT
 
