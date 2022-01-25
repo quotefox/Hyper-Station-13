@@ -492,6 +492,7 @@
 #include "code\datums\elements\mob_holder.dm"
 #include "code\datums\elements\squish.dm"
 #include "code\datums\elements\swimming.dm"
+#include "code\datums\elements\trash.dm"
 #include "code\datums\elements\wuv.dm"
 #include "code\datums\helper_datums\events.dm"
 #include "code\datums\helper_datums\getrev.dm"

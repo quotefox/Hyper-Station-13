@@ -171,3 +171,11 @@
 	var/mob/living/carbon/human/H = quirk_holder
 	SEND_SIGNAL(H.back, COMSIG_TRY_STORAGE_SHOW, H)
 	to_chat(quirk_holder, "<span class='boldnotice'>You brought some extra dye with you! It's in your bag if you forgot.</span>")
+
+/datum/quirk/trashcan
+	name = "Trashcan"
+	desc = "You are able to consume and digest trash."
+	value = 0
+	gain_text = "<span class='notice'>You feel like munching on a can of soda.</span>"
+	lose_text = "<span class='notice'>You no longer feel like you should be eating trash.</span>"
+	mob_trait = TRAIT_TRASHCAN
