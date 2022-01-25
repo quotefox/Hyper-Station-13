@@ -368,9 +368,11 @@
 	var/organCheck = FALSE
 	var/breastCheck = FALSE
 	var/willyCheck = FALSE
+	/* pharma trait deprecieated
 	if(!canbearoused)
 		ADD_TRAIT(src, TRAIT_PHARMA, "pharma")//Prefs prevent unwanted organs.
 		return
+	*/
 	for(var/obj/item/organ/O in internal_organs)
 		if(istype(O, /obj/item/organ/genital))
 			organCheck = TRUE

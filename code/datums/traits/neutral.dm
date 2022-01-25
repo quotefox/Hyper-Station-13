@@ -117,16 +117,6 @@
 	if(quirk_holder)
 		quirk_holder.remove_client_colour(/datum/client_colour/monochrome)
 
-/datum/quirk/crocrin_immunity
-	name = "Crocin Immunity"
-	desc = "You're one of the few people in the galaxy who are genetically immune to Crocin and Hexacrocin products and their addictive properties! However, you can still get brain damage from Hexacrocin addiction."
-	mob_trait = TRAIT_CROCRIN_IMMUNE
-	value = 0
-	category = CATEGORY_SEXUAL
-	gain_text = "<span class='notice'>You feel more prudish.</span>"
-	lose_text = "<span class='notice'>You don't feel as prudish as before.</span>"
-	medical_record_text = "Patient exhibits a special gene that makes them immune to Crocin and Hexacrocin."
-
 /datum/quirk/assblastusa
 	name = "Buns of Steel"
 	desc = "You've never skipped ass day. With this trait, you are completely immune to all forms of ass slapping and anyone who tries to slap your rock hard ass usually gets a broken hand."
@@ -151,7 +141,19 @@
 	mob_trait = TRAIT_DISTANT
 	value = 0
 	category = CATEGORY_SEXUAL	//Any better place to put it? Doesn't really affect gameplay
-	medical_record_text = "Patient cares little with or dislikes being touched."
+	medical_record_text = "Patient dislikes being touched."
+
+/* REPLACED WITH PREFS
+/datum/quirk/crocrin_immunity
+	name = "Crocin Immunity"
+	desc = "You're one of the few people in the galaxy who are genetically immune to Crocin and Hexacrocin products and their addictive properties! However, you can still get brain damage from Hexacrocin addiction."
+	mob_trait = TRAIT_CROCRIN_IMMUNE
+	value = 0
+	category = CATEGORY_SEXUAL
+	gain_text = "<span class='notice'>You feel more prudish.</span>"
+	lose_text = "<span class='notice'>You don't feel as prudish as before.</span>"
+	medical_record_text = "Patient exhibits a special gene that makes them immune to Crocin and Hexacrocin."
+*/
 
 /datum/quirk/colorist
 	name = "Colorist"
