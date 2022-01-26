@@ -159,6 +159,7 @@
 	name = "Colorist"
 	desc = "You like carrying around a hair dye spray to quickly apply color patterns to your hair."
 	value = 0
+	category = CATEGORY_ITEMS
 	medical_record_text = "Patient enjoys dyeing their hair with pretty colors."
 
 /datum/quirk/colorist/on_spawn()
@@ -176,6 +177,7 @@
 	name = "Trashcan"
 	desc = "You are able to consume and digest trash."
 	value = 0
+	category = CATEGORY_FOOD
 	gain_text = "<span class='notice'>You feel like munching on a can of soda.</span>"
 	lose_text = "<span class='notice'>You no longer feel like you should be eating trash.</span>"
 	mob_trait = TRAIT_TRASHCAN
