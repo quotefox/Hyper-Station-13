@@ -39,24 +39,19 @@ PROCESSING_SUBSYSTEM_DEF(quirks)
 		quirks[initial(T.name)] = T
 		quirk_points[initial(T.name)] = initial(T.value)
 		quirk_names_by_path[T] = initial(T.name)
-		if(initial(T.category) != CATEGORY_UNCATEGORIZED)	//Hyperstation Edit: Categorized quirks
+		if(initial(T.category))	//Hyperstation Edit: Categorized quirks
 			quirk_categories[initial(T.category)] = 1
 	SortQuirks()
 
 /datum/controller/subsystem/processing/quirks/proc/SortQuirks()	//Hyperstation edit: Categorized quirks
 	quirks_sorted = list()
 	quirk_categories = sortList(quirk_categories)
-	var/list/uncategorized = list()
 	for(var/C in quirk_categories)
 		quirks_sorted[C] = list()
 		for(var/V in quirks)	//These are already sorted by name and cost
 			var/datum/quirk/Q = quirks[V]
 			if(initial(Q.category) == C)
 				quirks_sorted[C] += initial(Q.name)
-			else if (initial(Q.category) == CATEGORY_UNCATEGORIZED)
-				uncategorized += initial(Q.name)
-	for(var/C in uncategorized)
-		quirks_sorted[CATEGORY_UNCATEGORIZED] += C
 
 /datum/controller/subsystem/processing/quirks/proc/AssignQuirks(mob/living/user, client/cli, spawn_effects, roundstart = FALSE, datum/job/job, silent = FALSE, mob/to_chat_target)
 	var/badquirk = FALSE
