@@ -83,7 +83,7 @@
 				owner.exposed_genitals += src
 		if("Hidden by clothes")
 			through_clothes = FALSE
-			hidden = TRUE
+			hidden = FALSE
 			mode = "clothes"
 			if(src in owner.exposed_genitals)
 				owner.exposed_genitals -= src
