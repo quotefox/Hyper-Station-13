@@ -10409,7 +10409,7 @@
 /obj/machinery/door/airlock{
 	dir = 4;
 	id_tag = "CCDorm4";
-	name = "Dorm Room 4"
+	name = "Kris Wulph's Dorm Room"
 	},
 /turf/open/floor/plasteel,
 /area/centcom/ferry)
@@ -12045,6 +12045,7 @@
 	pixel_x = -7;
 	pixel_y = 10
 	},
+/obj/item/reagent_containers/syringe/bluespace,
 /turf/open/floor/plasteel/white/side{
 	dir = 8
 	},
@@ -14128,6 +14129,39 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/control)
+"Dd" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/reagent_containers/food/snacks/grown/icepepper,
+/obj/item/reagent_containers/food/snacks/grown/icepepper,
+/obj/item/reagent_containers/food/snacks/grown/icepepper,
+/obj/item/reagent_containers/food/snacks/grown/chili,
+/obj/item/reagent_containers/food/snacks/grown/chili,
+/obj/item/reagent_containers/food/snacks/grown/chili,
+/obj/item/reagent_containers/food/snacks/grown/mushroom/amanita,
+/obj/item/reagent_containers/food/snacks/grown/mushroom/amanita,
+/obj/item/reagent_containers/food/snacks/grown/mushroom/amanita,
+/obj/item/reagent_containers/food/snacks/grown/mushroom/amanita,
+/obj/item/reagent_containers/food/snacks/grown/mushroom/amanita,
+/obj/item/reagent_containers/food/snacks/grown/mushroom/amanita,
+/obj/item/reagent_containers/food/snacks/grown/chili,
+/obj/item/reagent_containers/food/snacks/grown/chili,
+/obj/item/reagent_containers/food/snacks/grown/chili,
+/obj/item/reagent_containers/food/snacks/grown/icepepper,
+/obj/item/reagent_containers/food/snacks/grown/icepepper,
+/obj/item/reagent_containers/food/snacks/grown/icepepper,
+/obj/item/reagent_containers/food/snacks/grown/ambrosia/gaia,
+/obj/item/reagent_containers/food/snacks/grown/ambrosia/gaia,
+/obj/item/reagent_containers/food/snacks/grown/ambrosia/gaia,
+/obj/item/reagent_containers/food/snacks/grown/ambrosia/gaia,
+/obj/item/reagent_containers/food/snacks/grown/ambrosia/gaia,
+/obj/item/reagent_containers/food/snacks/grown/ambrosia/gaia,
+/obj/item/reagent_containers/food/snacks/grown/ambrosia/gaia,
+/obj/item/reagent_containers/food/snacks/grown/ambrosia/gaia,
+/obj/item/reagent_containers/food/snacks/grown/ambrosia/gaia,
+/obj/item/reagent_containers/food/snacks/grown/ambrosia/gaia,
+/obj/item/storage/bag/plants/portaseeder,
+/turf/open/floor/plasteel/vaporwave,
+/area/centcom/ferry)
 "De" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 5;
@@ -15069,8 +15103,8 @@
 /turf/open/floor/engine/cult,
 /area/wizard_station)
 "EZ" = (
-/obj/structure/medkit_cabinet{
-	pixel_x = -27
+/obj/structure/toilet{
+	dir = 8
 	},
 /turf/open/floor/plasteel/telecomms,
 /area/centcom/ferry)
@@ -19141,7 +19175,9 @@
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
 "MO" = (
-/obj/item/twohanded/required/kirbyplants,
+/obj/structure/closet/crate/bin{
+	pixel_y = 3
+	},
 /turf/open/floor/plasteel/white/side{
 	dir = 1
 	},
@@ -19374,6 +19410,10 @@
 /obj/item/storage/pill_bottle/penis_enlargement{
 	pixel_x = 6;
 	pixel_y = 4
+	},
+/obj/item/reagent_containers/spray/cleaner{
+	pixel_x = -5;
+	pixel_y = 17
 	},
 /turf/open/floor/plasteel/telecomms,
 /area/centcom/ferry)
@@ -19985,6 +20025,7 @@
 /obj/item/storage/box/syringes,
 /obj/item/reagent_containers/glass/beaker/meta,
 /obj/item/reagent_containers/glass/beaker/meta,
+/obj/item/clothing/gloves/color/latex/nitrile,
 /turf/open/floor/plasteel/white/corner,
 /area/centcom/ferry)
 "OJ" = (
@@ -20685,14 +20726,23 @@
 /area/centcom/ferry)
 "Qh" = (
 /obj/structure/closet/cabinet,
-/obj/item/clothing/under/rank/centcom_officer/skirt,
 /obj/item/clothing/shoes/jackboots/tall,
+/obj/item/clothing/under/rank/centcom_officer/skirt,
 /obj/item/card/id/centcom{
-	name = "Kris Wulph's ID Card (Off-Duty Centcom Intern)";
+	name = "Kris Wulph's ID Card (Off-Duty Medical Lead)";
 	registered_name = "Kris Wulph"
 	},
 /obj/item/clothing/under/touchinfuzzy,
 /obj/item/clothing/suit/hooded/wintercoat/centcom,
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "trim";
+	name = "trim"
+	},
+/obj/item/encryptionkey/heads/captain,
+/obj/item/clothing/gloves/color/black,
+/obj/item/storage/backpack/satchel,
+/obj/item/pda/medical,
 /turf/open/floor/carpet/purple,
 /area/centcom/ferry)
 "Qi" = (
@@ -20723,6 +20773,7 @@
 /obj/machinery/newscaster{
 	pixel_y = 32
 	},
+/obj/machinery/hydroponics/constructable,
 /turf/open/floor/plasteel/vaporwave,
 /area/centcom/ferry)
 "Qm" = (
@@ -21281,15 +21332,24 @@
 /turf/open/floor/grass/fakebasalt,
 /area/centcom/ferry)
 "RF" = (
-/obj/structure/table/glass,
-/obj/item/paper_bin{
-	pixel_x = -3;
-	pixel_y = 4
+/obj/item/gun/syringe/dart/rapiddart{
+	pixel_y = 3
 	},
-/obj/item/pen/fourcolor{
-	pixel_x = 8;
-	pixel_y = 7
+/obj/structure/closet/secure_closet/medical3,
+/obj/item/storage/belt/medolier/full,
+/obj/item/clothing/glasses/hud/health/sunglasses,
+/obj/item/clothing/suit/toggle/labcoat,
+/obj/item/card/id/centcom{
+	name = "Kris Wulph's ID Card (Medical Lead)";
+	registered_name = "Kris Wulph"
 	},
+/obj/item/clothing/under/rank/centcom_officer,
+/obj/item/clothing/shoes/combat,
+/obj/item/clothing/gloves/color/latex/nitrile,
+/obj/item/storage/briefcase/medical,
+/obj/item/storage/belt/medical/surgery_belt_adv,
+/obj/item/hypospray/mkii/CMO/combat,
+/obj/item/storage/hypospraykit/cmo,
 /turf/open/floor/plasteel/white/corner{
 	dir = 4
 	},
@@ -21443,6 +21503,7 @@
 /turf/open/floor/wood,
 /area/centcom/ferry)
 "RX" = (
+/obj/item/twohanded/required/kirbyplants,
 /turf/open/floor/plasteel/white/side{
 	dir = 1
 	},
@@ -21798,9 +21859,12 @@
 /area/centcom/ferry)
 "SQ" = (
 /obj/structure/table/glass,
-/obj/item/reagent_containers/dropper,
-/obj/structure/sign/poster/official/safety_eye_protection{
-	pixel_y = 32
+/obj/item/reagent_containers/dropper{
+	pixel_y = -10
+	},
+/obj/machinery/reagentgrinder{
+	desc = "Used to grind things up into raw materials and liquids.";
+	pixel_y = 8
 	},
 /turf/open/floor/plasteel/white/corner{
 	dir = 8
@@ -21894,6 +21958,14 @@
 /area/centcom/holding)
 "Tc" = (
 /obj/structure/table/plasmaglass,
+/obj/item/milking_machine{
+	pixel_x = -4;
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/glass/beaker/bluespace{
+	pixel_x = -6;
+	pixel_y = 3
+	},
 /turf/open/floor/carpet/purple,
 /area/centcom/ferry)
 "Td" = (
@@ -22942,6 +23014,9 @@
 "Vp" = (
 /obj/structure/table/plasmaglass,
 /obj/item/lipstick/black,
+/obj/item/clothing/mask/vape{
+	pixel_y = 10
+	},
 /turf/open/floor/carpet/purple,
 /area/centcom/ferry)
 "Vq" = (
@@ -23179,6 +23254,9 @@
 /turf/open/pool,
 /area/centcom/ferry)
 "VV" = (
+/obj/structure/medkit_cabinet{
+	pixel_x = -27
+	},
 /turf/open/floor/plasteel/white/side{
 	dir = 4
 	},
@@ -23509,6 +23587,11 @@
 "WB" = (
 /obj/structure/bed,
 /obj/item/bedsheet/centcom,
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "trim";
+	name = "trim"
+	},
 /turf/open/floor/carpet/purple,
 /area/centcom/ferry)
 "WC" = (
@@ -24104,6 +24187,9 @@
 /area/centcom/ferry)
 "XO" = (
 /obj/machinery/chem_master,
+/obj/structure/sign/poster/official/safety_eye_protection{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel/white/side,
 /area/centcom/ferry)
 "XP" = (
@@ -24450,6 +24536,13 @@
 /area/syndicate_mothership)
 "Yx" = (
 /obj/structure/dresser,
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "trim";
+	name = "trim"
+	},
+/obj/item/clothing/under/centcomdressvk,
+/obj/item/clothing/under/centcomdress,
 /turf/open/floor/carpet/purple,
 /area/centcom/ferry)
 "Yy" = (
@@ -24985,14 +25078,14 @@
 /turf/open/floor/plasteel,
 /area/centcom/supplypod/loading/four)
 "ZG" = (
-/obj/structure/toilet{
-	dir = 4
-	},
 /obj/machinery/light{
 	brightness = 4;
 	dir = 1;
 	pixel_y = 16
 	},
+/obj/structure/closet,
+/obj/item/fleshlight,
+/obj/item/reagent_containers/rag/towel,
 /turf/open/floor/plasteel/telecomms,
 /area/centcom/ferry)
 "ZH" = (
@@ -25049,7 +25142,9 @@
 	name = "drain"
 	},
 /obj/structure/table/plasmaglass,
-/obj/item/reagent_containers/food/drinks/drinkingglass,
+/obj/item/reagent_containers/food/drinks/drinkingglass{
+	pixel_x = 8
+	},
 /obj/item/export/bottle/sake{
 	pixel_x = -6;
 	pixel_y = 12
@@ -25144,10 +25239,17 @@
 /area/centcom/ferry)
 "ZZ" = (
 /obj/structure/table/glass,
-/obj/item/folder/white,
+/obj/item/clothing/glasses/hud/health{
+	pixel_x = 5;
+	pixel_y = -2
+	},
 /obj/item/reagent_containers/food/drinks/coffee{
 	pixel_x = -10;
 	pixel_y = 15
+	},
+/obj/item/healthanalyzer/advanced{
+	pixel_x = 5;
+	pixel_y = 10
 	},
 /turf/open/floor/plasteel/white/side{
 	dir = 1
@@ -54142,7 +54244,7 @@ mD
 wZ
 yT
 mD
-RC
+Dd
 Ua
 Ua
 Ua
@@ -55425,7 +55527,7 @@ xA
 wV
 mD
 ZG
-EZ
+Qy
 PW
 OC
 mD
@@ -55683,7 +55785,7 @@ Oq
 mD
 zl
 Qy
-Qy
+EZ
 Nr
 mD
 OO
