@@ -19177,6 +19177,7 @@
 /obj/structure/closet/crate/bin{
 	pixel_y = 3
 	},
+/obj/machinery/light,
 /turf/open/floor/plasteel/white/side{
 	dir = 1
 	},
@@ -21292,6 +21293,11 @@
 /area/centcom/ferry)
 "Ry" = (
 /obj/machinery/smartfridge/chemistry,
+/obj/machinery/light{
+	brightness = 4;
+	dir = 1;
+	pixel_y = 16
+	},
 /turf/open/floor/plasteel/white,
 /area/centcom/ferry)
 "Rz" = (
@@ -52965,12 +52971,12 @@ mD
 mD
 aa
 aa
-ab
-ab
-ab
-ab
-ab
-ab
+mD
+mD
+mD
+mD
+mD
+mD
 aa
 aa
 aa
