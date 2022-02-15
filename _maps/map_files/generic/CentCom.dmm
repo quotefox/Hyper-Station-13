@@ -14160,6 +14160,7 @@
 /obj/item/reagent_containers/food/snacks/grown/ambrosia/gaia,
 /obj/item/reagent_containers/food/snacks/grown/ambrosia/gaia,
 /obj/item/storage/bag/plants/portaseeder,
+/obj/item/screwdriver,
 /turf/open/floor/plasteel/vaporwave,
 /area/centcom/ferry)
 "De" = (
@@ -14366,9 +14367,7 @@
 	name = "drain"
 	},
 /obj/structure/table/plasmaglass,
-/obj/item/reagent_containers/food/snacks/cheesewedge{
-	pixel_y = 7
-	},
+/obj/item/reagent_containers/food/snacks/beefnoodle,
 /turf/open/floor/plasteel/checker,
 /area/centcom/ferry)
 "DA" = (
@@ -20743,6 +20742,10 @@
 /obj/item/clothing/gloves/color/black,
 /obj/item/storage/backpack/satchel,
 /obj/item/pda/medical,
+/obj/item/clothing/under/gear_harness,
+/obj/item/clothing/under/latexhalf,
+/obj/item/clothing/gloves/latexsleeves,
+/obj/item/clothing/suit/jacket/flannel,
 /turf/open/floor/carpet/purple,
 /area/centcom/ferry)
 "Qi" = (
@@ -21348,8 +21351,8 @@
 /obj/item/clothing/gloves/color/latex/nitrile,
 /obj/item/storage/briefcase/medical,
 /obj/item/storage/belt/medical/surgery_belt_adv,
-/obj/item/hypospray/mkii/CMO/combat,
 /obj/item/storage/hypospraykit/cmo,
+/obj/item/gun/medbeam,
 /turf/open/floor/plasteel/white/corner{
 	dir = 4
 	},
@@ -22237,6 +22240,10 @@
 	},
 /obj/structure/window/reinforced,
 /obj/structure/flora/rock/pile,
+/obj/item/reagent_containers/food/snacks/cheesewedge{
+	pixel_x = 6;
+	pixel_y = 3
+	},
 /turf/open/floor/grass/fakebasalt,
 /area/centcom/ferry)
 "TI" = (
