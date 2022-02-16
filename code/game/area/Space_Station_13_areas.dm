@@ -568,6 +568,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Theatre"
 	icon_state = "Theatre"
 
+/area/crew_quarters/theatre/main
+	name = "Entertainment Theatre"
+	icon_state = "Theatre"
+
 /area/crew_quarters/theatre/abandoned
 	name = "Abandoned Theatre"
 	icon_state = "Theatre"
