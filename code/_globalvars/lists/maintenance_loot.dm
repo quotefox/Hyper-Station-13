@@ -121,7 +121,7 @@ GLOBAL_LIST_INIT(maintenance_loot, list(
 	/obj/item/autosurgeon/womb = 1,
 	/obj/item/toy/plush/random = 1,
 	/obj/item/grenade/spawnergrenade/clustaur = 1,
-	/obj/effect/spawner/lootdrop/grille_or_trash = 5
+	/obj/effect/spawner/lootdrop/trash = 5
 	))
 
 GLOBAL_LIST_INIT(ratking_trash, list(//Garbage: used by the regal rat mob when spawning garbage.
