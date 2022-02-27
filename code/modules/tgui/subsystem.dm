@@ -128,11 +128,11 @@
   * return int The number of UIs updated.
  **/
 /datum/controller/subsystem/tgui/proc/update_user_uis(mob/user, datum/src_object = null, ui_key = null)
-	if(isnull(user.open_uis) || !istype(user.open_uis, /list) || open_uis.len == 0)
+	if(isnull(user.open_tguis) || !istype(user.open_tguis, /list) || open_uis.len == 0)
 		return 0 // Couldn't find any UIs for this user.
 
 	var/update_count = 0
-	for(var/datum/tgui/ui in user.open_uis)
+	for(var/datum/tgui/ui in user.open_tguis)
 		if((isnull(src_object) || !isnull(src_object) && ui.src_object == src_object) && (isnull(ui_key) || !isnull(ui_key) && ui.ui_key == ui_key))
 			ui.process(force = 1) // Update the UI.
 			update_count++ // Count each UI we upadte.
@@ -150,11 +150,11 @@
   * return int The number of UIs closed.
  **/
 /datum/controller/subsystem/tgui/proc/close_user_uis(mob/user, datum/src_object = null, ui_key = null)
-	if(isnull(user.open_uis) || !istype(user.open_uis, /list) || open_uis.len == 0)
+	if(isnull(user.open_tguis) || !istype(user.open_tguis, /list) || open_uis.len == 0)
 		return 0 // Couldn't find any UIs for this user.
 
 	var/close_count = 0
-	for(var/datum/tgui/ui in user.open_uis)
+	for(var/datum/tgui/ui in user.open_tguis)
 		if((isnull(src_object) || !isnull(src_object) && ui.src_object == src_object) && (isnull(ui_key) || !isnull(ui_key) && ui.ui_key == ui_key))
 			ui.close() // Close the UI.
 			close_count++ // Count each UI we close.
@@ -175,7 +175,7 @@
 		open_uis[src_object_key][ui.ui_key] = list() // Make a list for the ui_key.
 
 	// Append the UI to all the lists.
-	ui.user.open_uis |= ui
+	ui.user.open_tguis |= ui
 	var/list/uis = open_uis[src_object_key][ui.ui_key]
 	uis |= ui
 	processing_uis |= ui
@@ -198,7 +198,7 @@
 
 	processing_uis.Remove(ui) // Remove it from the list of processing UIs.
 	if(ui.user)	// If the user exists, remove it from them too.
-		ui.user.open_uis.Remove(ui)
+		ui.user.open_tguis.Remove(ui)
 	var/Ukey = ui.ui_key
 	var/list/uis = open_uis[src_object_key][Ukey] // Remove it from the list of open UIs.
 	uis.Remove(ui)
@@ -233,15 +233,15 @@
   * return bool If the UIs were transferred.
  **/
 /datum/controller/subsystem/tgui/proc/on_transfer(mob/source, mob/target)
-	if(!source || isnull(source.open_uis) || !istype(source.open_uis, /list) || open_uis.len == 0)
+	if(!source || isnull(source.open_tguis) || !istype(source.open_tguis, /list) || open_uis.len == 0)
 		return 0 // The old mob had no open UIs.
 
-	if(isnull(target.open_uis) || !istype(target.open_uis, /list))
-		target.open_uis = list() // Create a list for the new mob if needed.
+	if(isnull(target.open_tguis) || !istype(target.open_tguis, /list))
+		target.open_tguis = list() // Create a list for the new mob if needed.
 
-	for(var/datum/tgui/ui in source.open_uis)
+	for(var/datum/tgui/ui in source.open_tguis)
 		ui.user = target // Inform the UIs of their new owner.
-		target.open_uis.Add(ui) // Transfer all the UIs.
+		target.open_tguis.Add(ui) // Transfer all the UIs.
 
-	source.open_uis.Cut() // Clear the old list.
+	source.open_tguis.Cut() // Clear the old list.
 	return 1 // Let the caller know we did it.

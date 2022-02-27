@@ -29,7 +29,7 @@
 <tr><td style='width:25%'><b>Job</b></td><td style='width:25%'><b>Slots</b></td><td style='width:25%'><b>Open job</b></td><td style='width:25%'><b>Close job</b></td></tr>
 {{#each data.slots}}
 
-	<tr><td>{{title}}</td><td>{{current}}/{{total}}</td><td><ui-button action='PRG_open_job' params='{"target" : "{{title}}"}' state='{{status_open ? null : "disabled"}}'>{{desc_open}}</ui-button><br></td><td><ui-button action='PRG_close_job' params='{"target" : "{{title}}"}' state='{{status_close ? null : "disabled"}}'>{{desc_close}}</ui-button>
+	<tr><td>{{title}}</td><td>{{current}}/{{total}}</td><td><ui-button action='PRG_open_job' params='{"target" : "{{title}}"}' state='{{status_open ? null : "disabled"}}'>{{desc_open}}</ui-button><br></td><td><ui-button action='PRG_close_job' params='{"target" : "{{title}}"}' state='{{UI_CLOSE ? null : "disabled"}}'>{{desc_close}}</ui-button>
 	</td></tr>
 
 {{/each}}

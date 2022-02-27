@@ -9,8 +9,8 @@
 
 /obj/item/implant/radio/activate()
 	. = ..()
-	// needs to be GLOB.deep_inventory_state otherwise it won't open
-	radio.ui_interact(usr, "main", null, FALSE, null, GLOB.deep_inventory_state)
+	// needs to be GLOB.tgui_deep_inventory_state otherwise it won't open
+	radio.ui_interact(usr, "main", null, FALSE, null, GLOB.tgui_deep_inventory_state)
 
 /obj/item/implant/radio/implant(mob/living/target, mob/user, silent = FALSE)
 	. = ..()

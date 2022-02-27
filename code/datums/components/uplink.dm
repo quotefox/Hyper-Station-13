@@ -24,11 +24,11 @@ GLOBAL_LIST_EMPTY(uplinks)
 	var/unlock_note
 	var/unlock_code
 	var/failsafe_code
-	var/datum/ui_state/checkstate
+	var/datum/tgui_state/checkstate
 	var/compact_mode = FALSE
 	var/debug = FALSE
 
-/datum/component/uplink/Initialize(_owner, _lockable = TRUE, _enabled = FALSE, datum/game_mode/_gamemode, starting_tc = 20, datum/ui_state/_checkstate)
+/datum/component/uplink/Initialize(_owner, _lockable = TRUE, _enabled = FALSE, datum/game_mode/_gamemode, starting_tc = 20, datum/tgui_state/_checkstate)
 	if(!isitem(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -118,14 +118,14 @@ GLOBAL_LIST_EMPTY(uplinks)
 	return COMPONENT_NO_INTERACT
 
 /datum/component/uplink/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
-									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.inventory_state)
+									datum/tgui/master_ui = null, datum/tgui_state/state = GLOB.tgui_inventory_state)
 	state = checkstate ? checkstate : state
 	active = TRUE
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "uplink", name, 620, 580, master_ui, state)
+		ui = new(user, src, ui_key, "Uplink", name, 620, 580, master_ui, state)
 		ui.set_autoupdate(FALSE) // This UI is only ever opened by one person, and never is updated outside of user input.
-		ui.set_style("syndicate")
+		// ui.set_style("syndicate")
 		ui.open()
 
 /datum/component/uplink/ui_host(mob/user)

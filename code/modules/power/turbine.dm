@@ -306,10 +306,10 @@
 		compressor = locate(/obj/machinery/power/compressor) in range(7, src)
 
 /obj/machinery/computer/turbine_computer/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
-									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
+									datum/tgui/master_ui = null, datum/tgui_state/state = GLOB.tgui_default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "turbine_computer", name, 300, 200, master_ui, state)
+		ui = new(user, src, ui_key, "TurbineComputer", name, 300, 200, master_ui, state)
 		ui.open()
 
 /obj/machinery/computer/turbine_computer/ui_data(mob/user)

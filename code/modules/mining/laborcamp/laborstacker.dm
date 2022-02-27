@@ -33,10 +33,10 @@ GLOBAL_LIST(labor_sheet_values)
 	return a["value"] - b["value"]
 
 /obj/machinery/mineral/labor_claim_console/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
-									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
+									datum/tgui/master_ui = null, datum/tgui_state/state = GLOB.tgui_default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "labor_claim_console", name, 315, 430, master_ui, state)
+		ui = new(user, src, ui_key, "LaborClaimConsole", name, 315, 430, master_ui, state)
 		ui.open()
 
 /obj/machinery/mineral/labor_claim_console/ui_data(mob/user)
