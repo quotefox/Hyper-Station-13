@@ -25,6 +25,9 @@
 	dat	+= "<a href='byond://?src=[REF(src)];container=1'>Fill container</A>"
 	dat	+=	"(Use a container in your hand to collect your seminal fluid.)<BR>"
 
+	dat	+= "<a href='byond://?src=[REF(src)];climaxself=1'>Climax on self</A>"
+	dat	+=	"(Stimulate a sexual organ to climax onto yourself.)<BR>"
+
 	var/mob/living/carbon/human/C = usr
 	if(C && C.w_uniform || C.wear_suit) //if they are wearing cloths
 		dat += "<a href='byond://?src=[REF(src)];clothesplosion=1'>Explode out of clothes</A>"
@@ -155,6 +158,14 @@
 	if(href_list["clothesplosion"])
 		if (H.arousalloss >= (H.max_arousal / 100) * 33) //Requires 33% arousal.
 			H.clothesplosion()
+			return
+		else
+			to_chat(usr, "<span class='warning'>You aren't aroused enough for that! </span>")
+		return
+
+	if(href_list["climaxself"])
+		if (H.arousalloss >= (H.max_arousal / 100) * 33) //requires 33% arousal.
+			H.climaxself()
 			return
 		else
 			to_chat(usr, "<span class='warning'>You aren't aroused enough for that! </span>")
@@ -504,3 +515,28 @@ obj/screen/arousal/proc/kiss()
 	if(cum_splatter_icon)
 		cut_overlay(cum_splatter_icon)
 	return TRUE
+
+/mob/living/carbon/human/proc/climaxself()
+	if(restrained(TRUE))
+		to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
+		return
+	var/free_hands = get_num_arms()
+	if(!free_hands)
+		to_chat(src, "<span class='warning'>You need at least one free arm.</span>")
+		return
+	for(var/helditem in held_items)
+		if(isobj(helditem))
+			free_hands--
+	if(free_hands <= 0)
+		to_chat(src, "<span class='warning'>You're holding too many things.</span>")
+		return
+	//We got hands, let's pick an organ
+	var/obj/item/organ/genital/picked_organ
+	picked_organ = pick_masturbate_genitals()
+	if(picked_organ)
+		src << browse(null, "window=arousal") //closes the window
+		mob_masturbate(picked_organ, cover = TRUE)
+		return
+	else //They either lack organs that can masturbate, or they didn't pick one.
+		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
+		return

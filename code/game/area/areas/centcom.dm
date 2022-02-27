@@ -61,6 +61,29 @@
 
 /area/centcom/supplypod/loading/four
 	name = "Supplypod Loading Bay #4"
+
+/area/centcom/bunk
+	hidden = TRUE
+
+/area/centcom/bunk/one
+	name = "Centcom Bunk #1"
+
+/area/centcom/bunk/two
+	name = "Centcom Bunk #2"
+
+/area/centcom/bunk/three
+	name = "Centcom Bunk #3"
+
+/area/centcom/bunk/four
+	name = "Centcom Bunk #4"
+
+/area/centcom/bunk/five
+	name = "Centcom Bunk #5"
+
+/area/centcom/bunk/six
+	name = "Centcom Bunk #6"
+
+
 //THUNDERDOME
 
 /area/tdome

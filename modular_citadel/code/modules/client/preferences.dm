@@ -28,7 +28,7 @@
 	var/noncon = FALSE  //Definitely want this off by default
 
 	// stuff that was in base
-	max_save_slots = 20
+	max_save_slots = 30
 
 
 /datum/preferences/New(client/C)
