@@ -4,7 +4,7 @@ import { act as _act } from '../byond';
 import { Button, LabeledList, NoticeBox, Section, Tabs, Input } from '../components';
 import { Window } from '../layouts';
 
-export const TelePDALog = (props, context) => {
+export const TelecommsPDALog = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     network,

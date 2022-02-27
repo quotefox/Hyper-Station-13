@@ -1,6 +1,5 @@
 import { useBackend } from '../backend';
-import { Fragment } from 'inferno';
-import { AnimatedNumber, Box, Button, LabeledList, ProgressBar, NoticeBox, Section } from '../components';
+import { AnimatedNumber, Box, Button, LabeledList, ProgressBar, Section } from '../components';
 import { Window } from '../layouts';
 
 export const SmokeMachine = (props, context) => {

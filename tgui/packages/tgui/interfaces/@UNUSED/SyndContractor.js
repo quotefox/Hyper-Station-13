@@ -1,7 +1,7 @@
-import { Box, Button, Section, Dimmer, Table, Icon, NoticeBox, Tabs, Grid, LabeledList } from "../components";
-import { useBackend } from "../backend";
+import { Box, Button, Section, Dimmer, Table, Icon, NoticeBox, Tabs, Grid, LabeledList } from "../../components";
+import { useBackend } from "../../backend";
 import { Fragment, Component } from "inferno";
-import { Window } from "../layouts";
+import { Window } from "../../layouts";
 
 export const SyndContractor = (props, context) => {
   const { data, act } = useBackend(context);

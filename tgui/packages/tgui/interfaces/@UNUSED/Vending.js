@@ -1,7 +1,7 @@
-import { Section, Box, Button, Table } from '../components';
+import { Section, Box, Button, Table } from '../../components';
 import { classes } from 'common/react';
-import { Window } from '../layouts';
-import { useBackend } from '../backend';
+import { Window } from '../../layouts';
+import { useBackend } from '../../backend';
 
 export const Vending = (props, context) => {
   const { config, data, act } = useBackend(context);

@@ -1,6 +1,6 @@
 import { Component, Fragment } from 'inferno';
-import { useBackend } from '../backend';
-import { Button, Grid, Section, Input } from '../components';
+import { useBackend } from '../../backend';
+import { Button, Grid, Section, Input } from '../../components';
 
 export class ChemFilter extends Component {
   constructor() {

@@ -1,12 +1,12 @@
-import { useBackend } from '../backend';
-import { AnimatedNumber, Box, Button, Grid, LabeledList, ProgressBar, Section } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from '../../backend';
+import { AnimatedNumber, Box, Button, Grid, LabeledList, ProgressBar, Section } from '../../components';
+import { NtosWindow, Window } from '../../layouts';
 
 export const NtosArcade = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    <Window>
-      <Window.Content>
+    <NtosWindow>
+      <NtosWindow.Content>
         <Section
           title="Outbomb Cuban Pete Ultra"
           textAlign="center">
@@ -55,8 +55,8 @@ export const NtosArcade = (props, context) => {
             Earned Tickets: {data.TicketCount}
           </Box>
         </Section>
-      </Window.Content>
-    </Window>
+      </NtosWindow.Content>
+    </NtosWindow>
   );
 };
 

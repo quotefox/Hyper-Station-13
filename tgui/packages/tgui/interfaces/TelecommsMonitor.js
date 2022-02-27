@@ -5,7 +5,7 @@ import { Box, Button, LabeledList, NoticeBox, Section, Tabs, Input } from '../co
 import { Window } from '../layouts';
 
 
-export const Telemonitor = (props, context) => {
+export const TelecommsMonitor = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     notice,

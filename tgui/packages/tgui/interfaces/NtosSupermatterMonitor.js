@@ -4,7 +4,7 @@ import { toFixed } from 'common/math';
 import { useBackend } from '../backend';
 import { Box, Button, Flex, LabeledList, ProgressBar, Section, Table } from '../components';
 import { getGasColor, getGasLabel } from '../constants';
-import { Window } from '../layouts';
+import { NtosWindow, Window } from '../layouts';
 
 const logScale = value => Math.log2(16 + Math.max(0, value)) - 4;
 
@@ -25,8 +25,8 @@ export const NtosSupermatterMonitor = (props, context) => {
   ])(data.gases || []);
   const gasMaxAmount = Math.max(1, ...gases.map(gas => gas.amount));
   return (
-    <Window>
-      <Window.Content>
+    <NtosWindow>
+      <NtosWindow.Content>
         <Flex spacing={1}>
           <Flex.Item width="270px">
             <Section title="Metrics">
@@ -62,8 +62,8 @@ export const NtosSupermatterMonitor = (props, context) => {
             </Section>
           </Flex.Item>
         </Flex>
-      </Window.Content>
-    </Window>
+      </NtosWindow.Content>
+    </NtosWindow>
   );
 };
 

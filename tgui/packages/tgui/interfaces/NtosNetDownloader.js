@@ -1,6 +1,6 @@
 import { useBackend } from '../backend';
 import { Box, Button, Flex, Icon, LabeledList, NoticeBox, ProgressBar, Section } from '../components';
-import { Window } from '../layouts';
+import { NtosWindow, Window } from '../layouts';
 
 export const NtosNetDownloader = (props, context) => {
   const { state } = props;
@@ -14,8 +14,8 @@ export const NtosNetDownloader = (props, context) => {
     hackedavailable,
   } = data;
   return (
-    <Window>
-      <Window.Content>
+    <NtosWindow>
+      <NtosWindow.Content>
         {!!error && (
           <NoticeBox>
             <Box mb={1}>
@@ -60,8 +60,8 @@ export const NtosNetDownloader = (props, context) => {
             ))}
           </Section>
         )}
-      </Window.Content>
-    </Window>
+      </NtosWindow.Content>
+    </NtosWindow>
   );
 };
 

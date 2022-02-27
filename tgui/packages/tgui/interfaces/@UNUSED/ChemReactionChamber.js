@@ -1,8 +1,8 @@
 import { Component } from 'inferno';
-import { Box, Button, LabeledList, NumberInput, Section, Input } from '../components';
+import { Box, Button, LabeledList, NumberInput, Section, Input } from '../../components';
 import { map } from 'common/collections';
 import { classes } from 'common/react';
-import { useBackend } from '../backend';
+import { useBackend } from '../../backend';
 
 
 export class ChemReactionChamber extends Component {

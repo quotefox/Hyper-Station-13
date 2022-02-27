@@ -1,7 +1,7 @@
 import { toFixed } from 'common/math';
-import { useBackend } from '../backend';
-import { Button, LabeledList, ProgressBar, Section } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from '../../backend';
+import { Button, LabeledList, ProgressBar, Section } from '../../components';
+import { Window } from '../../layouts';
 
 export const VaultController = (props, context) => {
   const { act, data } = useBackend(context);

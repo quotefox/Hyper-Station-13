@@ -5,7 +5,7 @@ import { RADIO_CHANNELS } from '../constants';
 import { Button, LabeledList, NumberInput, NoticeBox, Section, Input } from '../components';
 import { Window } from '../layouts';
 
-export const TeleInteract = (props, context) => {
+export const TelecommsInteraction = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     notice = "",

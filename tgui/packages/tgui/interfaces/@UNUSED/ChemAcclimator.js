@@ -1,7 +1,6 @@
-import { Fragment } from 'inferno';
-import { useBackend } from '../backend';
-import { Button, LabeledList, NumberInput, Section } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from '../../backend';
+import { Button, LabeledList, NumberInput, Section } from '../../components';
+import { Window } from '../../layouts';
 
 export const ChemAcclimator = (props, context) => {
   const { act, data } = useBackend(context);

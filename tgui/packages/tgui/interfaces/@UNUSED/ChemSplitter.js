@@ -1,7 +1,7 @@
 import { toFixed } from 'common/math';
-import { useBackend } from '../backend';
-import { LabeledList, NumberInput, Section } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from '../../backend';
+import { LabeledList, NumberInput, Section } from '../../components';
+import { Window } from '../../layouts';
 
 export const ChemSplitter = (props, context) => {
   const { act, data } = useBackend(context);

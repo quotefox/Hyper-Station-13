@@ -4,7 +4,7 @@ import { toFixed } from 'common/math';
 import { pureComponentHooks } from 'common/react';
 import { Component, Fragment } from 'inferno';
 import { Box, Button, Chart, ColorBox, Flex, Icon, LabeledList, ProgressBar, Section, Table } from '../components';
-import { Window } from '../layouts';
+import { NtosWindow, Window } from '../layouts';
 
 const PEAK_DRAW = 500000;
 
@@ -46,8 +46,8 @@ export class PowerMonitor extends Component {
         area => -parseFloat(area.load)),
     ])(data.areas);
     return (
-      <Window>
-        <Window.Content>
+      <NtosWindow>
+        <NtosWindow.Content>
           <Flex spacing={1}>
             <Flex.Item width="200px">
               <Section>
@@ -146,8 +146,8 @@ export class PowerMonitor extends Component {
               ))}
             </Table>
           </Section>
-        </Window.Content>
-      </Window>
+        </NtosWindow.Content>
+      </NtosWindow>
     );
   }
 }

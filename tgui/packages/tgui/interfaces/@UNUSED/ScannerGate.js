@@ -1,7 +1,7 @@
 import { Fragment } from 'inferno';
-import { useBackend } from '../backend';
-import { Box, Button, LabeledList, NumberInput, Section } from '../components';
-import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
+import { useBackend } from '../../backend';
+import { Box, Button, LabeledList, NumberInput, Section } from '../../components';
+import { InterfaceLockNoticeBox } from '../common/InterfaceLockNoticeBox';
 
 const DISEASE_THEASHOLD_LIST = [
   'Positive',

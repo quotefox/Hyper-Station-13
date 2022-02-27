@@ -1,6 +1,6 @@
-import { useBackend } from '../backend';
-import { Box, Button, Grid, LabeledList, NumberInput, Section } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from '../../backend';
+import { Box, Button, Grid, LabeledList, NumberInput, Section } from '../../components';
+import { Window } from '../../layouts';
 
 export const Bepis = (props, context) => {
   const { config, data, act } = useBackend(context);

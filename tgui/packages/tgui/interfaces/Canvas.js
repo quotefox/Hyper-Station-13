@@ -4,6 +4,23 @@ import { Box } from '../components';
 import { Window } from '../layouts';
 
 
+export const Canvas = (props, context) => {
+  const { act, data } = useBackend(context);
+  return (
+    <Window>
+      <Window.Content>
+        <Box textAlign="center">
+          <PaintCanvas
+            value={data.grid}
+            onCanvasClick={(x, y) => act("paint", { x, y })} />
+          <Box>{data.name}</Box>
+        </Box>
+      </Window.Content>
+    </Window>
+  );
+};
+
+
 class PaintCanvas extends Component {
   constructor(props) {
     super(props);
@@ -77,18 +94,3 @@ class PaintCanvas extends Component {
     );
   }
 }
-export const Canvas = (props, context) => {
-  const { act, data } = useBackend(context);
-  return (
-    <Window>
-      <Window.Content>
-        <Box textAlign="center">
-          <PaintCanvas
-            value={data.grid}
-            onCanvasClick={(x, y) => act("paint", { x, y })} />
-          <Box>{data.name}</Box>
-        </Box>
-      </Window.Content>
-    </Window>
-  );
-};

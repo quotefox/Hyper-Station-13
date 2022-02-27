@@ -1,7 +1,7 @@
 import { multiline } from 'common/string';
-import { useBackend } from '../backend';
-import { AnimatedNumber, Box, Button, LabeledList, ProgressBar, Section, Tabs } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from '../../backend';
+import { AnimatedNumber, Box, Button, LabeledList, ProgressBar, Section, Tabs } from '../../components';
+import { Window } from '../../layouts';
 
 export const MedicalKiosk = (props, context) => {
   const { act, data } = useBackend(context);

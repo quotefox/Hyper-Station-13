@@ -1,7 +1,7 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, ProgressBar, Section } from '../components';
-import { Window } from '../layouts';
+import { NtosWindow, Window } from '../layouts';
 
 export const NtosConfiguration = (props, context) => {
   const { act, data } = useBackend(context);
@@ -16,8 +16,8 @@ export const NtosConfiguration = (props, context) => {
   } = data;
 
   return (
-    <Window>
-      <Window.Content>
+    <NtosWindow>
+      <NtosWindow.Content>
         <Section
           title="Power Supply"
           buttons={(
@@ -87,7 +87,7 @@ export const NtosConfiguration = (props, context) => {
             </Section>
           ))}
         </Section>
-      </Window.Content>
-    </Window>
+      </NtosWindow.Content>
+    </NtosWindow>
   );
 };

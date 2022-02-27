@@ -1,6 +1,6 @@
 import { useBackend } from '../backend';
 import { Button, ColorBox, Section, Table } from '../components';
-import { Window } from '../layouts';
+import { NtosWindow, Window } from '../layouts';
 
 const PROGRAM_ICONS = {
   compconfig: 'cog',
@@ -24,8 +24,8 @@ export const NtosMain = (props, context) => {
     comp_light_color,
   } = data;
   return (
-    <Window>
-      <Window.Content>
+    <NtosWindow>
+      <NtosWindow.Content>
         {!!has_light && (
           <Section>
             <Button
@@ -75,7 +75,7 @@ export const NtosMain = (props, context) => {
             ))}
           </Table>
         </Section>
-      </Window.Content>
-    </Window>
+      </NtosWindow.Content>
+    </NtosWindow>
   );
 };

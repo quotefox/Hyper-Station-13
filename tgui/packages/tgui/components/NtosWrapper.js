@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, Button } from '../components';
+import { Box, Button } from '.';
 import { refocusLayout } from '../refocus';
 
 export const NtosWrapper = (props, context) => {

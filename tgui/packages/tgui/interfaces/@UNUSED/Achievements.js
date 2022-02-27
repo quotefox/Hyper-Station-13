@@ -1,5 +1,5 @@
-import { useBackend } from '../backend';
-import { Box, Icon, Table, Tabs } from '../components';
+import { useBackend } from '../../backend';
+import { Box, Icon, Table, Tabs } from '../../components';
 
 export const Achievements = (props, context) => {
   const { data } = useBackend(context);

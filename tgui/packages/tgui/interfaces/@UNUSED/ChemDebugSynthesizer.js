@@ -1,7 +1,7 @@
 import { Fragment } from 'inferno';
-import { useBackend } from '../backend';
-import { AnimatedNumber, Box, Button, LabeledList, NumberInput, Section } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from '../../backend';
+import { AnimatedNumber, Box, Button, LabeledList, NumberInput, Section } from '../../components';
+import { Window } from '../../layouts';
 
 export const ChemDebugSynthesizer = (props, context) => {
   const { act, data } = useBackend(context);

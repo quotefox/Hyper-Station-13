@@ -3,7 +3,7 @@ import { useBackend } from '../backend';
 import { Button, LabeledList, NoticeBox, Section, Tabs, Input } from '../components';
 import { Window } from '../layouts';
 
-export const TeleLogBrowser = (props, context) => {
+export const TelecommsLogBrowser = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     notice,

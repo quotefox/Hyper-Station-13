@@ -1,7 +1,7 @@
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Box, Button, Icon, Input, Section, Table } from '../components';
-import { Window } from '../layouts';
+import { NtosWindow, Window } from '../layouts';
 import { createLogger } from '../logging';
 
 const logger = createLogger('ntos chat');
@@ -24,8 +24,8 @@ export const NtosNetChat = (props, context) => {
   const authorized = (authed || adminmode);
 
   return (
-    <Window>
-      <Window.Content>
+    <NtosWindow>
+      <NtosWindow.Content>
         <Section
           height="600px">
           <Table
@@ -148,8 +148,8 @@ export const NtosNetChat = (props, context) => {
             </Table.Row>
           </Table>
         </Section>
-      </Window.Content>
-    </Window>
+      </NtosWindow.Content>
+    </NtosWindow>
   );
 };
 

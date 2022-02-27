@@ -1,6 +1,6 @@
 import { useBackend } from '../backend';
 import { Button, Chart, ProgressBar, Section } from '../components';
-import { Window } from '../layouts';
+import { NtosWindow, Window } from '../layouts';
 
 
 export const NtosRbmkStats = (props, context) => {
@@ -11,8 +11,8 @@ export const NtosRbmkStats = (props, context) => {
   const tempInputData = data.tempInputData.map((value, i) => [i, value]);
   const tempOutputdata = data.tempOutputdata.map((value, i) => [i, value]);
   return (
-    <Window>
-      <Window.Content>
+    <NtosWindow>
+      <NtosWindow.Content>
         <Section title="Reactor Management">
           <Section title="Legend:" buttons={
             <Button
@@ -83,7 +83,7 @@ export const NtosRbmkStats = (props, context) => {
               fillColor="rgba(255, 0, 0 , 0.1)" />
           </Section>
         </Section>
-      </Window.Content>
-    </Window>
+      </NtosWindow.Content>
+    </NtosWindow>
   );
 };

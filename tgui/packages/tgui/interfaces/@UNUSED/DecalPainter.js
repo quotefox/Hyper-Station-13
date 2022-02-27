@@ -1,6 +1,6 @@
-import { useBackend } from '../backend';
-import { Button, Section } from '../components';
-import { Window } from '../layouts';
+import { useBackend } from '../../backend';
+import { Button, Section } from '../../components';
+import { Window } from '../../layouts';
 
 export const DecalPainter = (props, context) => {
   const { act, data } = useBackend(context);
