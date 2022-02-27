@@ -1,8 +1,7 @@
-import { Fragment } from 'inferno';
+import { Component, createRef } from 'inferno';
 import { useBackend } from '../backend';
 import { Box } from '../components';
-import { Component, createRef } from 'inferno';
-import { pureComponentHooks } from 'common/react';
+import { Window } from '../layouts';
 
 
 class PaintCanvas extends Component {
@@ -78,13 +77,18 @@ class PaintCanvas extends Component {
     );
   }
 }
-export const Canvas = props => {
-  const { act, data } = useBackend(props);
+export const Canvas = (props, context) => {
+  const { act, data } = useBackend(context);
   return (
-    <Box textAlign="center">
-      <PaintCanvas
-        value={data.grid}
-        onCanvasClick={(x, y) => act("paint", { x, y })} />
-      <Box>{data.name}</Box>
-    </Box>);
+    <Window>
+      <Window.Content>
+        <Box textAlign="center">
+          <PaintCanvas
+            value={data.grid}
+            onCanvasClick={(x, y) => act("paint", { x, y })} />
+          <Box>{data.name}</Box>
+        </Box>
+      </Window.Content>
+    </Window>
+  );
 };

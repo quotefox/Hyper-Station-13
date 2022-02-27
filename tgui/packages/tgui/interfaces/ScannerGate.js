@@ -67,9 +67,9 @@ const TARGET_NUTRITION_LIST = [
   },
 ];
 
-export const ScannerGate = props => {
+export const ScannerGate = (props, context) => {
   const { state } = props;
-  const { act, data } = useBackend(props);
+  const { act, data } = useBackend(context);
   return (
     <Fragment>
       <InterfaceLockNoticeBox
@@ -117,9 +117,9 @@ const SCANNER_GATE_ROUTES = {
   },
 };
 
-const ScannerGateControl = props => {
+const ScannerGateControl = (props, context) => {
   const { state } = props;
-  const { act, data } = useBackend(props);
+  const { act, data } = useBackend(context);
   const { scan_mode } = data;
   const route = SCANNER_GATE_ROUTES[scan_mode]
     || SCANNER_GATE_ROUTES.off;
@@ -138,8 +138,8 @@ const ScannerGateControl = props => {
   );
 };
 
-const ScannerGateOff = props => {
-  const { act } = useBackend(props);
+const ScannerGateOff = (props, context) => {
+  const { act } = useBackend(context);
   return (
     <Fragment>
       <Box mb={2}>
@@ -172,9 +172,9 @@ const ScannerGateOff = props => {
   );
 };
 
-const ScannerGateWanted = props => {
+const ScannerGateWanted = (props, context) => {
   const { state } = props;
-  const { data } = useBackend(props);
+  const { data } = useBackend(context);
   const { reverse } = data;
   return (
     <Fragment>
@@ -187,9 +187,9 @@ const ScannerGateWanted = props => {
   );
 };
 
-const ScannerGateGuns = props => {
+const ScannerGateGuns = (props, context) => {
   const { state } = props;
-  const { data } = useBackend(props);
+  const { data } = useBackend(context);
   const { reverse } = data;
   return (
     <Fragment>
@@ -202,9 +202,9 @@ const ScannerGateGuns = props => {
   );
 };
 
-const ScannerGateMindshield = props => {
+const ScannerGateMindshield = (props, context) => {
   const { state } = props;
-  const { data } = useBackend(props);
+  const { data } = useBackend(context);
   const { reverse } = data;
   return (
     <Fragment>
@@ -217,9 +217,9 @@ const ScannerGateMindshield = props => {
   );
 };
 
-const ScannerGateDisease = props => {
+const ScannerGateDisease = (props, context) => {
   const { state } = props;
-  const { act, data } = useBackend(props);
+  const { act, data } = useBackend(context);
   const { reverse, disease_threshold } = data;
   return (
     <Fragment>
@@ -243,9 +243,9 @@ const ScannerGateDisease = props => {
   );
 };
 
-const ScannerGateSpecies = props => {
+const ScannerGateSpecies = (props, context) => {
   const { state } = props;
-  const { act, data } = useBackend(props);
+  const { act, data } = useBackend(context);
   const { reverse, target_species } = data;
   const species = TARGET_SPECIES_LIST.find(species => {
     return species.value === target_species;
@@ -275,9 +275,9 @@ const ScannerGateSpecies = props => {
   );
 };
 
-const ScannerGateNutrition = props => {
+const ScannerGateNutrition = (props, context) => {
   const { state } = props;
-  const { act, data } = useBackend(props);
+  const { act, data } = useBackend(context);
   const { reverse, target_nutrition } = data;
   const nutrition = TARGET_NUTRITION_LIST.find(nutrition => {
     return nutrition.value === target_nutrition;
@@ -304,9 +304,9 @@ const ScannerGateNutrition = props => {
   );
 };
 
-const ScannerGateNanites = props => {
+const ScannerGateNanites = (props, context) => {
   const { state } = props;
-  const { act, data } = useBackend(props);
+  const { act, data } = useBackend(context);
   const { reverse, nanite_cloud } = data;
   return (
     <Fragment>
@@ -334,8 +334,8 @@ const ScannerGateNanites = props => {
   );
 };
 
-const ScannerGateMode = props => {
-  const { act, data } = useBackend(props);
+const ScannerGateMode = (props, context) => {
+  const { act, data } = useBackend(context);
   const { reverse } = data;
   return (
     <LabeledList>

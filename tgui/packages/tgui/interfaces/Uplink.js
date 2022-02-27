@@ -1,7 +1,8 @@
 import { decodeHtmlEntities } from 'common/string';
 import { Component, Fragment } from 'inferno';
-import { act } from '../byond';
+import { useBackend } from '../backend';
 import { Box, Button, Input, Section, Table, Tabs } from '../components';
+import { Window } from '../layouts';
 
 // It's a class because we need to store state in the form of the current
 // hovered item, and current search terms
@@ -27,8 +28,7 @@ export class Uplink extends Component {
   }
 
   render() {
-    const { state } = this.props;
-    const { config, data } = state;
+    const { config, data, act } = useBackend(this.context);
     const { ref } = config;
     const {
       compact_mode,
@@ -37,90 +37,95 @@ export class Uplink extends Component {
       categories = [],
     } = data;
     const { hoveredItem, currentSearch } = this.state;
+
     return (
-      <Section
-        title={(
-          <Box
-            inline
-            color={telecrystals > 0 ? 'good' : 'bad'}>
-            {telecrystals} TC
-          </Box>
-        )}
-        buttons={(
-          <Fragment>
-            Search
-            <Input
-              value={currentSearch}
-              onInput={(e, value) => this.setSearchText(value)}
-              ml={1}
-              mr={1} />
-            <Button
-              icon={compact_mode ? 'list' : 'info'}
-              content={compact_mode ? 'Compact' : 'Detailed'}
-              onClick={() => act(ref, 'compact_toggle')} />
-            {!!lockable && (
-              <Button
-                icon="lock"
-                content="Lock"
-                onClick={() => act(ref, 'lock')} />
+      <Window>
+        <Window.Content>
+          <Section
+            title={(
+              <Box
+                inline
+                color={telecrystals > 0 ? 'good' : 'bad'}>
+                {telecrystals} TC
+              </Box>
             )}
-          </Fragment>
-        )}>
-        {currentSearch.length > 0 ? (
-          <table className="Table">
-            <ItemList
-              compact
-              items={categories
-                .flatMap(category => {
-                  return category.items || [];
-                })
-                .filter(item => {
-                  const searchTerm = currentSearch.toLowerCase();
-                  const searchableString = String(item.name + item.desc)
-                    .toLowerCase();
-                  return searchableString.includes(searchTerm);
+            buttons={(
+              <Fragment>
+                Search
+                <Input
+                  value={currentSearch}
+                  onInput={(e, value) => this.setSearchText(value)}
+                  ml={1}
+                  mr={1} />
+                <Button
+                  icon={compact_mode ? 'list' : 'info'}
+                  content={compact_mode ? 'Compact' : 'Detailed'}
+                  onClick={() => act(ref, 'compact_toggle')} />
+                {!!lockable && (
+                  <Button
+                    icon="lock"
+                    content="Lock"
+                    onClick={() => act(ref, 'lock')} />
+                )}
+              </Fragment>
+            )}>
+            {currentSearch.length > 0 ? (
+              <table className="Table">
+                <ItemList
+                  compact
+                  items={categories
+                    .flatMap(category => {
+                      return category.items || [];
+                    })
+                    .filter(item => {
+                      const searchTerm = currentSearch.toLowerCase();
+                      const searchableString = String(item.name + item.desc)
+                        .toLowerCase();
+                      return searchableString.includes(searchTerm);
+                    })}
+                  hoveredItem={hoveredItem}
+                  onBuyMouseOver={item => this.setHoveredItem(item)}
+                  onBuyMouseOut={item => this.setHoveredItem({})}
+                  onBuy={item => act(ref, 'buy', {
+                    item: item.name,
+                  })} />
+              </table>
+            ) : (
+              <Tabs vertical>
+                {categories.map(category => {
+                  const { name, items } = category;
+                  if (items === null) {
+                    return;
+                  }
+                  return (
+                    <Tabs.Tab
+                      key={name}
+                      label={`${name} (${items.length})`}>
+                      {() => (
+                        <ItemList
+                          compact={compact_mode}
+                          items={items}
+                          hoveredItem={hoveredItem}
+                          telecrystals={telecrystals}
+                          onBuyMouseOver={item => this.setHoveredItem(item)}
+                          onBuyMouseOut={item => this.setHoveredItem({})}
+                          onBuy={item => act(ref, 'buy', {
+                            item: item.name,
+                          })} />
+                      )}
+                    </Tabs.Tab>
+                  );
                 })}
-              hoveredItem={hoveredItem}
-              onBuyMouseOver={item => this.setHoveredItem(item)}
-              onBuyMouseOut={item => this.setHoveredItem({})}
-              onBuy={item => act(ref, 'buy', {
-                item: item.name,
-              })} />
-          </table>
-        ) : (
-          <Tabs vertical>
-            {categories.map(category => {
-              const { name, items } = category;
-              if (items === null) {
-                return;
-              }
-              return (
-                <Tabs.Tab
-                  key={name}
-                  label={`${name} (${items.length})`}>
-                  {() => (
-                    <ItemList
-                      compact={compact_mode}
-                      items={items}
-                      hoveredItem={hoveredItem}
-                      telecrystals={telecrystals}
-                      onBuyMouseOver={item => this.setHoveredItem(item)}
-                      onBuyMouseOut={item => this.setHoveredItem({})}
-                      onBuy={item => act(ref, 'buy', {
-                        item: item.name,
-                      })} />
-                  )}
-                </Tabs.Tab>
-              );
-            })}
-          </Tabs>
-        )}
-      </Section>
+              </Tabs>
+            )}
+          </Section>
+        </Window.Content>
+      </Window>
     );
   }
 }
 
-const ItemList = props => {
+const ItemList = (props, context) => {
   const {
     items,
     hoveredItem,

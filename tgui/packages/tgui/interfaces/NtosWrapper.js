@@ -2,9 +2,9 @@ import { useBackend } from '../backend';
 import { Box, Button } from '../components';
 import { refocusLayout } from '../refocus';
 
-export const NtosWrapper = props => {
+export const NtosWrapper = (props, context) => {
   const { children } = props;
-  const { act, data } = useBackend(props);
+  const { act, data } = useBackend(context);
   const {
     PC_batteryicon,
     PC_showbatteryicon,

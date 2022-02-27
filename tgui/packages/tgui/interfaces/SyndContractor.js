@@ -1,60 +1,10 @@
 import { Box, Button, Section, Dimmer, Table, Icon, NoticeBox, Tabs, Grid, LabeledList } from "../components";
 import { useBackend } from "../backend";
 import { Fragment, Component } from "inferno";
+import { Window } from "../layouts";
 
-export class FakeTerminal extends Component {
-  constructor(props) {
-    super(props);
-    this.timer = null;
-    this.state = {
-      currentIndex: 0,
-      currentDisplay: [],
-    };
-  }
-
-  tick() {
-    const { props, state } = this;
-    if (state.currentIndex <= props.allMessages.length) {
-      this.setState(prevState => {
-        return ({
-          currentIndex: prevState.currentIndex + 1,
-        });
-      });
-      const { currentDisplay } = state;
-      currentDisplay.push(props.allMessages[state.currentIndex]);
-    } else {
-      clearTimeout(this.timer);
-      setTimeout(props.onFinished, props.finishedTimeout);
-    }
-  }
-
-  componentDidMount() {
-    const {
-      linesPerSecond = 2.5,
-    } = this.props;
-    this.timer = setInterval(() => this.tick(), 1000 / linesPerSecond);
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.timer);
-  }
-
-  render() {
-    return (
-      <Box m={1}>
-        {this.state.currentDisplay.map(value => (
-          <Fragment key={value}>
-            {value}
-            <br />
-          </Fragment>
-        ))}
-      </Box>
-    );
-  }
-}
-
-export const SyndContractor = props => {
-  const { data, act } = useBackend(props);
+export const SyndContractor = (props, context) => {
+  const { data, act } = useBackend(context);
 
   const terminalMessages = [
     "Recording biometric data...",
@@ -199,15 +149,68 @@ export const SyndContractor = props => {
   }
 
   return (
-    <Fragment>
-      {errorPane}
-      <SyndPane state={props.state} />
-    </Fragment>
+    <Window>
+      <Window.Content>
+        {errorPane}
+        <SyndPane state={props.state} />
+      </Window.Content>
+    </Window>
   );
 };
 
-export const StatusPane = props => {
-  const { act, data } = useBackend(props);
+export class FakeTerminal extends Component {
+  constructor(props) {
+    super(props);
+    this.timer = null;
+    this.state = {
+      currentIndex: 0,
+      currentDisplay: [],
+    };
+  }
+
+  tick() {
+    const { props, state } = this;
+    if (state.currentIndex <= props.allMessages.length) {
+      this.setState(prevState => {
+        return ({
+          currentIndex: prevState.currentIndex + 1,
+        });
+      });
+      const { currentDisplay } = state;
+      currentDisplay.push(props.allMessages[state.currentIndex]);
+    } else {
+      clearTimeout(this.timer);
+      setTimeout(props.onFinished, props.finishedTimeout);
+    }
+  }
+
+  componentDidMount() {
+    const {
+      linesPerSecond = 2.5,
+    } = this.props;
+    this.timer = setInterval(() => this.tick(), 1000 / linesPerSecond);
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timer);
+  }
+
+  render() {
+    return (
+      <Box m={1}>
+        {this.state.currentDisplay.map(value => (
+          <Fragment key={value}>
+            {value}
+            <br />
+          </Fragment>
+        ))}
+      </Box>
+    );
+  }
+}
+
+export const StatusPane = (props, context) => {
+  const { act, data } = useBackend(context);
 
   return (
     <Section
@@ -260,8 +263,8 @@ export const StatusPane = props => {
   );
 };
 
-export const SyndPane = props => {
-  const { act, data } = useBackend(props);
+export const SyndPane = (props, context) => {
+  const { act, data } = useBackend(context);
 
   const contractor_hub_items = data.contractor_hub_items || [];
   const contracts = data.contracts || [];

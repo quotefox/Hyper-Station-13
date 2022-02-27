@@ -2,46 +2,6 @@ import { Component, Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Button, Grid, Section, Input } from '../components';
 
-export const ChemFilterPane = props => {
-  const { act } = useBackend(props);
-  const { title, list, reagentName, onReagentInput } = props;
-  const titleKey = title.toLowerCase();
-  return (
-    <Section
-      title={title}
-      minHeight={40}
-      ml={0.5}
-      mr={0.5}
-      buttons={(
-        <Fragment>
-          <Input
-            placeholder="Reagent"
-            width="140px"
-            onInput={(e, value) => onReagentInput(value)} />
-          <Button
-            icon="plus"
-            onClick={() => act('add', {
-              which: titleKey,
-              name: reagentName,
-            })} />
-        </Fragment>
-      )}>
-      {list.map(filter => (
-        <Fragment key={filter}>
-          <Button
-            fluid
-            icon="minus"
-            content={filter}
-            onClick={() => act('remove', {
-              which: titleKey,
-              reagent: filter,
-            })} />
-        </Fragment>
-      ))}
-    </Section>
-  );
-};
-
 export class ChemFilter extends Component {
   constructor() {
     super();
@@ -92,3 +52,43 @@ export class ChemFilter extends Component {
     );
   }
 }
+
+const ChemFilterPane = (props, context) => {
+  const { act } = useBackend(context);
+  const { title, list, reagentName, onReagentInput } = props;
+  const titleKey = title.toLowerCase();
+  return (
+    <Section
+      title={title}
+      minHeight={40}
+      ml={0.5}
+      mr={0.5}
+      buttons={(
+        <Fragment>
+          <Input
+            placeholder="Reagent"
+            width="140px"
+            onInput={(e, value) => onReagentInput(value)} />
+          <Button
+            icon="plus"
+            onClick={() => act('add', {
+              which: titleKey,
+              name: reagentName,
+            })} />
+        </Fragment>
+      )}>
+      {list.map(filter => (
+        <Fragment key={filter}>
+          <Button
+            fluid
+            icon="minus"
+            content={filter}
+            onClick={() => act('remove', {
+              which: titleKey,
+              reagent: filter,
+            })} />
+        </Fragment>
+      ))}
+    </Section>
+  );
+};

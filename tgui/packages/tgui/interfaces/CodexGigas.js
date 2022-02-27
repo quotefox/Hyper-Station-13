@@ -1,9 +1,10 @@
 import { useBackend } from '../backend';
 import { Button, LabeledList, Section } from '../components';
+import { Window } from '../layouts';
 
 // TODO: refactor the backend of this it's a trainwreck
-export const CodexGigas = props => {
-  const { act, data } = useBackend(props);
+export const CodexGigas = (props, context) => {
+  const { act, data } = useBackend(context);
   const prefixes = [
     "Dark",
     "Hellish",
@@ -47,52 +48,56 @@ export const CodexGigas = props => {
     "Jr.",
   ];
   return (
-    <Section>
-      {data.name}
-      <LabeledList>
-        <LabeledList.Item label="Prefix">
-          {prefixes.map(prefix => (
-            <Button
-              key={prefix.toLowerCase()}
-              content={prefix}
-              disabled={data.currentSection !== 1}
-              onClick={() => act(prefix + ' ')} />
-          ))}
-        </LabeledList.Item>
-        <LabeledList.Item label="Title">
-          {titles.map(title => (
-            <Button
-              key={title.toLowerCase()}
-              content={title}
-              disabled={data.currentSection > 2}
-              onClick={() => act(title + ' ')} />
-          ))}
-        </LabeledList.Item>
-        <LabeledList.Item label="Name">
-          {names.map(name => (
-            <Button
-              key={name.toLowerCase()}
-              content={name}
-              disabled={data.currentSection > 4}
-              onClick={() => act(name)} />
-          ))}
-        </LabeledList.Item>
-        <LabeledList.Item label="Suffix">
-          {suffixes.map(suffix => (
-            <Button
-              key={suffix.toLowerCase()}
-              content={suffix}
-              disabled={data.currentSection !== 4}
-              onClick={() => act(' ' + suffix)} />
-          ))}
-        </LabeledList.Item>
-        <LabeledList.Item label="Submit">
-          <Button
-            content="Search"
-            disabled={data.currentSection < 4}
-            onClick={() => act('search')} />
-        </LabeledList.Item>
-      </LabeledList>
-    </Section>
+    <Window>
+      <Window.Content>
+        <Section>
+          {data.name}
+          <LabeledList>
+            <LabeledList.Item label="Prefix">
+              {prefixes.map(prefix => (
+                <Button
+                  key={prefix.toLowerCase()}
+                  content={prefix}
+                  disabled={data.currentSection !== 1}
+                  onClick={() => act(prefix + ' ')} />
+              ))}
+            </LabeledList.Item>
+            <LabeledList.Item label="Title">
+              {titles.map(title => (
+                <Button
+                  key={title.toLowerCase()}
+                  content={title}
+                  disabled={data.currentSection > 2}
+                  onClick={() => act(title + ' ')} />
+              ))}
+            </LabeledList.Item>
+            <LabeledList.Item label="Name">
+              {names.map(name => (
+                <Button
+                  key={name.toLowerCase()}
+                  content={name}
+                  disabled={data.currentSection > 4}
+                  onClick={() => act(name)} />
+              ))}
+            </LabeledList.Item>
+            <LabeledList.Item label="Suffix">
+              {suffixes.map(suffix => (
+                <Button
+                  key={suffix.toLowerCase()}
+                  content={suffix}
+                  disabled={data.currentSection !== 4}
+                  onClick={() => act(' ' + suffix)} />
+              ))}
+            </LabeledList.Item>
+            <LabeledList.Item label="Submit">
+              <Button
+                content="Search"
+                disabled={data.currentSection < 4}
+                onClick={() => act('search')} />
+            </LabeledList.Item>
+          </LabeledList>
+        </Section>
+      </Window.Content>
+    </Window>
   );
 };

@@ -4,6 +4,7 @@ import { toFixed } from 'common/math';
 import { pureComponentHooks } from 'common/react';
 import { Component, Fragment } from 'inferno';
 import { Box, Button, Chart, ColorBox, Flex, Icon, LabeledList, ProgressBar, Section, Table } from '../components';
+import { Window } from '../layouts';
 
 const PEAK_DRAW = 500000;
 
@@ -25,8 +26,6 @@ export class PowerMonitor extends Component {
     const { data } = state;
     const { history } = data;
     const { sortByField } = this.state;
-    const supply = history.supply[history.supply.length - 1] || 0;
-    const demand = history.demand[history.demand.length - 1] || 0;
     const supplyData = history.supply.map((value, i) => [i, value]);
     const demandData = history.demand.map((value, i) => [i, value]);
     const maxValue = Math.max(
@@ -47,128 +46,143 @@ export class PowerMonitor extends Component {
         area => -parseFloat(area.load)),
     ])(data.areas);
     return (
-      <Fragment>
-        <Flex spacing={1}>
-          <Flex.Item width="200px">
-            <Section>
-              <LabeledList>
-                <LabeledList.Item label="Supply">
-                  <ProgressBar
-                    value={supply}
-                    minValue={0}
-                    maxValue={maxValue}
-                    color="teal"
-                    content={toFixed(supply / 1000) + ' kW'} />
-                </LabeledList.Item>
-                <LabeledList.Item label="Draw">
-                  <ProgressBar
-                    value={demand}
-                    minValue={0}
-                    maxValue={maxValue}
-                    color="pink"
-                    content={toFixed(demand / 1000) + ' kW'} />
-                </LabeledList.Item>
-              </LabeledList>
-            </Section>
-          </Flex.Item>
-          <Flex.Item grow={1}>
-            <Section position="relative" height="100%">
-              <Chart.Line
-                fillPositionedParent
-                data={supplyData}
-                rangeX={[0, supplyData.length - 1]}
-                rangeY={[0, maxValue]}
-                strokeColor="rgba(0, 181, 173, 1)"
-                fillColor="rgba(0, 181, 173, 0.25)" />
-              <Chart.Line
-                fillPositionedParent
-                data={demandData}
-                rangeX={[0, demandData.length - 1]}
-                rangeY={[0, maxValue]}
-                strokeColor="rgba(224, 57, 151, 1)"
-                fillColor="rgba(224, 57, 151, 0.25)" />
-            </Section>
-          </Flex.Item>
-        </Flex>
-        <Section>
-          <Box mb={1}>
-            <Box inline mr={2} color="label">
-              Sort by:
+      <Window>
+        <Window.Content>
+          <Flex spacing={1}>
+            <Flex.Item width="200px">
+              <Section>
+                <SupplyDraw history={history} />
+              </Section>
+            </Flex.Item>
+            <Flex.Item grow={1}>
+              <Section position="relative" height="100%">
+                <Chart.Line
+                  fillPositionedParent
+                  data={supplyData}
+                  rangeX={[0, supplyData.length - 1]}
+                  rangeY={[0, maxValue]}
+                  strokeColor="rgba(0, 181, 173, 1)"
+                  fillColor="rgba(0, 181, 173, 0.25)" />
+                <Chart.Line
+                  fillPositionedParent
+                  data={demandData}
+                  rangeX={[0, demandData.length - 1]}
+                  rangeY={[0, maxValue]}
+                  strokeColor="rgba(224, 57, 151, 1)"
+                  fillColor="rgba(224, 57, 151, 0.25)" />
+              </Section>
+            </Flex.Item>
+          </Flex>
+          <Section>
+            <Box mb={1}>
+              <Box inline mr={2} color="label">
+                Sort by:
+              </Box>
+              <Button.Checkbox
+                checked={sortByField === 'name'}
+                content="Name"
+                onClick={() => this.setState({
+                  sortByField: sortByField !== 'name' && 'name',
+                })} />
+              <Button.Checkbox
+                checked={sortByField === 'charge'}
+                content="Charge"
+                onClick={() => this.setState({
+                  sortByField: sortByField !== 'charge' && 'charge',
+                })} />
+              <Button.Checkbox
+                checked={sortByField === 'draw'}
+                content="Draw"
+                onClick={() => this.setState({
+                  sortByField: sortByField !== 'draw' && 'draw',
+                })} />
             </Box>
-            <Button.Checkbox
-              checked={sortByField === 'name'}
-              content="Name"
-              onClick={() => this.setState({
-                sortByField: sortByField !== 'name' && 'name',
-              })} />
-            <Button.Checkbox
-              checked={sortByField === 'charge'}
-              content="Charge"
-              onClick={() => this.setState({
-                sortByField: sortByField !== 'charge' && 'charge',
-              })} />
-            <Button.Checkbox
-              checked={sortByField === 'draw'}
-              content="Draw"
-              onClick={() => this.setState({
-                sortByField: sortByField !== 'draw' && 'draw',
-              })} />
-          </Box>
-          <Table>
-            <Table.Row header>
-              <Table.Cell>
-                Area
-              </Table.Cell>
-              <Table.Cell collapsing>
-                Charge
-              </Table.Cell>
-              <Table.Cell textAlign="right">
-                Draw
-              </Table.Cell>
-              <Table.Cell collapsing title="Equipment">
-                Eqp
-              </Table.Cell>
-              <Table.Cell collapsing title="Lighting">
-                Lgt
-              </Table.Cell>
-              <Table.Cell collapsing title="Environment">
-                Env
-              </Table.Cell>
-            </Table.Row>
-            {areas.map((area, i) => (
-              <tr
-                key={area.id}
-                className="Table__row candystripe">
-                <td>
-                  {area.name}
-                </td>
-                <td className="Table__cell text-right text-nowrap">
-                  <AreaCharge
-                    charging={area.charging}
-                    charge={area.charge} />
-                </td>
-                <td className="Table__cell text-right text-nowrap">
-                  {area.load}
-                </td>
-                <td className="Table__cell text-center text-nowrap">
-                  <AreaStatusColorBox status={area.eqp} />
-                </td>
-                <td className="Table__cell text-center text-nowrap">
-                  <AreaStatusColorBox status={area.lgt} />
-                </td>
-                <td className="Table__cell text-center text-nowrap">
-                  <AreaStatusColorBox status={area.env} />
-                </td>
-              </tr>
-            ))}
-          </Table>
-        </Section>
-      </Fragment>
+            <Table>
+              <Table.Row header>
+                <Table.Cell>
+                  Area
+                </Table.Cell>
+                <Table.Cell collapsing>
+                  Charge
+                </Table.Cell>
+                <Table.Cell textAlign="right">
+                  Draw
+                </Table.Cell>
+                <Table.Cell collapsing title="Equipment">
+                  Eqp
+                </Table.Cell>
+                <Table.Cell collapsing title="Lighting">
+                  Lgt
+                </Table.Cell>
+                <Table.Cell collapsing title="Environment">
+                  Env
+                </Table.Cell>
+              </Table.Row>
+              {areas.map((area, i) => (
+                <tr
+                  key={area.id}
+                  className="Table__row candystripe">
+                  <td>
+                    {area.name}
+                  </td>
+                  <td className="Table__cell text-right text-nowrap">
+                    <AreaCharge
+                      charging={area.charging}
+                      charge={area.charge} />
+                  </td>
+                  <td className="Table__cell text-right text-nowrap">
+                    {area.load}
+                  </td>
+                  <td className="Table__cell text-center text-nowrap">
+                    <AreaStatusColorBox status={area.eqp} />
+                  </td>
+                  <td className="Table__cell text-center text-nowrap">
+                    <AreaStatusColorBox status={area.lgt} />
+                  </td>
+                  <td className="Table__cell text-center text-nowrap">
+                    <AreaStatusColorBox status={area.env} />
+                  </td>
+                </tr>
+              ))}
+            </Table>
+          </Section>
+        </Window.Content>
+      </Window>
     );
   }
 }
 
-const AreaCharge = props => {
+const SupplyDraw = history => {
+  const supply = history.supply[history.supply.length - 1] || 0;
+  const demand = history.demand[history.demand.length - 1] || 0;
+  const maxValue = Math.max(
+    PEAK_DRAW,
+    ...history.supply,
+    ...history.demand);
+
+  return (
+    <LabeledList>
+      <LabeledList.Item label="Supply">
+        <ProgressBar
+          value={supply}
+          minValue={0}
+          maxValue={maxValue}
+          color="teal"
+          content={toFixed(supply / 1000) + ' kW'} />
+      </LabeledList.Item>
+      <LabeledList.Item label="Draw">
+        <ProgressBar
+          value={demand}
+          minValue={0}
+          maxValue={maxValue}
+          color="pink"
+          content={toFixed(demand / 1000) + ' kW'} />
+      </LabeledList.Item>
+    </LabeledList>
+  );
+};
+
+const AreaCharge = (props, context) => {
   const { charging, charge } = props;
   return (
     <Fragment>
@@ -205,7 +219,7 @@ const AreaCharge = props => {
 
 AreaCharge.defaultHooks = pureComponentHooks;
 
-const AreaStatusColorBox = props => {
+const AreaStatusColorBox = (props, context) => {
   const { status } = props;
   const power = Boolean(status & 2);
   const mode = Boolean(status & 1);

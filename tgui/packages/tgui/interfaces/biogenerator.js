@@ -37,7 +37,8 @@ export const Biogenerator = (props, context) => {
   );
 };
 
-export const BiogeneratorContent = (props, context) => {
+
+const BiogeneratorContent = (props, context) => {
   const { act, data } = useBackend(context);
   const {
     biomass,

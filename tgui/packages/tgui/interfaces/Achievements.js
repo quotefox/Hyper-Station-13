@@ -1,54 +1,8 @@
 import { useBackend } from '../backend';
 import { Box, Icon, Table, Tabs } from '../components';
 
-export const Achievement = props => {
-  const {
-    name,
-    desc,
-    icon_class,
-    value,
-  } = props;
-  return (
-    <tr key={name}>
-      <td style={{ 'padding': '6px' }}>
-        <Box className={icon_class} />
-      </td>
-      <td style={{ 'vertical-align': 'top' }}>
-        <h1>{name}</h1>
-        {desc}
-        <Box
-          color={value ? 'good' : 'bad'}
-          content={value ? 'Unlocked' : 'Locked'} />
-      </td>
-    </tr>
-  );
-};
-
-export const Score = props => {
-  const {
-    name,
-    desc,
-    icon_class,
-    value,
-  } = props;
-  return (
-    <tr key={name}>
-      <td style={{ 'padding': '6px' }}>
-        <Box className={icon_class} />
-      </td>
-      <td style={{ 'vertical-align': 'top' }}>
-        <h1>{name}</h1>
-        {desc}
-        <Box
-          color={value > 0 ? 'good' : 'bad'}
-          content={value > 0 ? `Earned ${value} times` : 'Locked'} />
-      </td>
-    </tr>
-  );
-};
-
-export const Achievements = props => {
-  const { data } = useBackend(props);
+export const Achievements = (props, context) => {
+  const { data } = useBackend(context);
   return (
     <Tabs>
       {data.categories.map(category => (
@@ -130,5 +84,51 @@ export const Achievements = props => {
         </Tabs>
       </Tabs.Tab>
     </Tabs>
+  );
+};
+
+const Achievement = (props, context) => {
+  const {
+    name,
+    desc,
+    icon_class,
+    value,
+  } = props;
+  return (
+    <tr key={name}>
+      <td style={{ 'padding': '6px' }}>
+        <Box className={icon_class} />
+      </td>
+      <td style={{ 'vertical-align': 'top' }}>
+        <h1>{name}</h1>
+        {desc}
+        <Box
+          color={value ? 'good' : 'bad'}
+          content={value ? 'Unlocked' : 'Locked'} />
+      </td>
+    </tr>
+  );
+};
+
+const Score = (props, context) => {
+  const {
+    name,
+    desc,
+    icon_class,
+    value,
+  } = props;
+  return (
+    <tr key={name}>
+      <td style={{ 'padding': '6px' }}>
+        <Box className={icon_class} />
+      </td>
+      <td style={{ 'vertical-align': 'top' }}>
+        <h1>{name}</h1>
+        {desc}
+        <Box
+          color={value > 0 ? 'good' : 'bad'}
+          content={value > 0 ? `Earned ${value} times` : 'Locked'} />
+      </td>
+    </tr>
   );
 };

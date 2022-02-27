@@ -1,6 +1,6 @@
 import { Box } from '../../components';
 
-export const BeakerContents = props => {
+export const BeakerContents = (props, context) => {
   const { beakerLoaded, beakerContents } = props;
   return (
     <Box>

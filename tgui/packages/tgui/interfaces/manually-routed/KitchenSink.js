@@ -103,7 +103,7 @@ export const KitchenSink = (props, context) => {
   );
 };
 
-const KitchenSinkButton = props => {
+const KitchenSinkButton = (props, context) => {
   return (
     <Box>
       <Box mb={1}>
@@ -150,7 +150,7 @@ const KitchenSinkButton = props => {
   );
 };
 
-const KitchenSinkBox = props => {
+const KitchenSinkBox = (props, context) => {
   return (
     <Box>
       <Box bold>
@@ -246,7 +246,7 @@ const KitchenSinkTabs = (props, context) => {
   );
 };
 
-const KitchenSinkTooltip = props => {
+const KitchenSinkTooltip = (props, context) => {
   const positions = [
     'top',
     'left',
@@ -385,7 +385,7 @@ const KitchenSinkInput = (props, context) => {
   );
 };
 
-const KitchenSinkCollapsible = props => {
+const KitchenSinkCollapsible = (props, context) => {
   return (
     <Collapsible
       title="Collapsible Demo"
@@ -399,7 +399,7 @@ const KitchenSinkCollapsible = props => {
   );
 };
 
-const BoxWithSampleText = props => {
+const BoxWithSampleText = (props, context) => {
   return (
     <Box {...props}>
       <Box italic>
@@ -414,7 +414,7 @@ const BoxWithSampleText = props => {
   );
 };
 
-const KitchenSinkBlockQuote = props => {
+const KitchenSinkBlockQuote = (props, context) => {
   return (
     <BlockQuote>
       <BoxWithSampleText />

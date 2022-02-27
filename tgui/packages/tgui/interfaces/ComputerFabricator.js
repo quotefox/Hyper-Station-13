@@ -2,32 +2,35 @@ import { multiline } from 'common/string';
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Box, Button, Grid, Section, Table, Tooltip } from '../components';
+import { Window } from '../layouts';
 
-export const ComputerFabricator = props => {
+export const ComputerFabricator = (props, context) => {
   const { state } = props;
-  const { act, data } = useBackend(props);
+  const { act, data } = useBackend(context);
   return (
-    <Fragment>
-      <Section italic fontSize="20px">
-        Your perfect device, only three steps away...
-      </Section>
-      {data.state !== 0 && (
-        <Button
-          fluid
-          mb={1}
-          icon="circle"
-          content="Clear Order"
-          onClick={() => act('clean_order')} />
-      )}
-      <CFScreen state={state} />
-    </Fragment>
+    <Window>
+      <Window.Content>
+        <Section italic fontSize="20px">
+          Your perfect device, only three steps away...
+        </Section>
+        {data.state !== 0 && (
+          <Button
+            fluid
+            mb={1}
+            icon="circle"
+            content="Clear Order"
+            onClick={() => act('clean_order')} />
+        )}
+        <CFScreen state={state} />
+      </Window.Content>
+    </Window>
   );
 };
 
 // This had a pretty gross backend so this was unfortunately one of the
 // best ways of doing it.
-const CFScreen = props => {
-  const { act, data } = useBackend(props);
+const CFScreen = (props, context) => {
+  const { act, data } = useBackend(context);
   if (data.state === 0) {
     return (
       <Section

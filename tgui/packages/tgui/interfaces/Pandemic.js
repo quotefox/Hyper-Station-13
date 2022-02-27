@@ -2,9 +2,28 @@ import { map } from 'common/collections';
 import { Fragment } from 'inferno';
 import { useBackend } from '../backend';
 import { Box, Button, Collapsible, Grid, Input, LabeledList, NoticeBox, Section } from '../components';
+import { Window } from '../layouts';
 
-export const PandemicBeakerDisplay = props => {
-  const { act, data } = useBackend(props);
+export const Pandemic = (props, context) => {
+  const { data } = useBackend(context);
+
+  return (
+    <Window>
+      <Window.Content>
+        <PandemicBeakerDisplay state={props.state} />
+        {!!data.has_blood && (
+          <Fragment>
+            <PandemicDiseaseDisplay state={props.state} />
+            <PandemicAntibodyDisplay state={props.state} />
+          </Fragment>
+        )}
+      </Window.Content>
+    </Window>
+  );
+};
+
+const PandemicBeakerDisplay = (props, context) => {
+  const { act, data } = useBackend(context);
 
   const {
     has_beaker,
@@ -68,8 +87,8 @@ export const PandemicBeakerDisplay = props => {
   );
 };
 
-export const PandemicDiseaseDisplay = props => {
-  const { act, data } = useBackend(props);
+const PandemicDiseaseDisplay = (props, context) => {
+  const { act, data } = useBackend(context);
 
   const {
     is_ready,
@@ -169,7 +188,7 @@ export const PandemicDiseaseDisplay = props => {
   );
 };
 
-export const PandemicSymptomDisplay = props => {
+const PandemicSymptomDisplay = (props, context) => {
   const { symptom } = props;
   const {
     name,
@@ -242,8 +261,8 @@ export const PandemicSymptomDisplay = props => {
 
 };
 
-export const PandemicAntibodyDisplay = props => {
-  const { act, data } = useBackend(props);
+const PandemicAntibodyDisplay = (props, context) => {
+  const { act, data } = useBackend(context);
 
   const resistances = data.resistances || [];
 
@@ -274,21 +293,5 @@ export const PandemicAntibodyDisplay = props => {
         </Box>
       )}
     </Section>
-  );
-};
-
-export const Pandemic = props => {
-  const { data } = useBackend(props);
-
-  return (
-    <Fragment>
-      <PandemicBeakerDisplay state={props.state} />
-      {!!data.has_blood && (
-        <Fragment>
-          <PandemicDiseaseDisplay state={props.state} />
-          <PandemicAntibodyDisplay state={props.state} />
-        </Fragment>
-      )}
-    </Fragment>
   );
 };

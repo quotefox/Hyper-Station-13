@@ -1,7 +1,33 @@
 import { useBackend } from '../backend';
-import { Section, LabeledList, ProgressBar, Button, BlockQuote, Grid, Box } from '../components';
+import { Box, Button, LabeledList, Section } from '../components';
+import { Window } from '../layouts';
 
-export const BodyEntry = props => {
+
+export const SlimeBodySwapper = (props, context) => {
+  const { act, data } = useBackend(context);
+
+  const {
+    bodies = [],
+  } = data;
+
+  return (
+    <Window>
+      <Window.Content>
+        <Section>
+          {bodies.map(body => (
+            <BodyEntry
+              key={body.name}
+              body={body}
+              swapFunc={() => act('swap', { ref: body.ref })} />
+          ))}
+        </Section>
+      </Window.Content>
+    </Window>
+  );
+};
+
+
+export const BodyEntry = (props, context) => {
   const { body, swapFunc } = props;
 
   const statusMap = {
@@ -46,25 +72,6 @@ export const BodyEntry = props => {
           {body.area}
         </LabeledList.Item>
       </LabeledList>
-    </Section>
-  );
-};
-
-export const SlimeBodySwapper = props => {
-  const { act, data } = useBackend(props);
-
-  const {
-    bodies = [],
-  } = data;
-
-  return (
-    <Section>
-      {bodies.map(body => (
-        <BodyEntry
-          key={body.name}
-          body={body}
-          swapFunc={() => act('swap', { ref: body.ref })} />
-      ))}
     </Section>
   );
 };

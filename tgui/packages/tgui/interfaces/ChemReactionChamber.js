@@ -1,8 +1,8 @@
 import { Component } from 'inferno';
-import { act } from '../byond';
 import { Box, Button, LabeledList, NumberInput, Section, Input } from '../components';
 import { map } from 'common/collections';
 import { classes } from 'common/react';
+import { useBackend } from '../backend';
 
 
 export class ChemReactionChamber extends Component {
@@ -27,8 +27,7 @@ export class ChemReactionChamber extends Component {
   }
 
   render() {
-    const { state } = this.props;
-    const { config, data } = state;
+    const { config, data, act } = useBackend(this.context);
     const { ref } = config;
     const emptying = data.emptying;
     const reagents = data.reagents || [];
