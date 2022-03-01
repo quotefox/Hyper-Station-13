@@ -19,7 +19,7 @@
 	var/record_interval = 50
 	var/next_record = 0
 	var/is_secret_monitor = FALSE
-	tgui_id = "power_monitor"
+	tgui_id = "PowerMonitor"
 	ui_style = "ntos"
 
 /obj/machinery/computer/monitor/secret //Hides the power monitor (such as ones on ruins & CentCom) from PDA's to prevent metagaming.

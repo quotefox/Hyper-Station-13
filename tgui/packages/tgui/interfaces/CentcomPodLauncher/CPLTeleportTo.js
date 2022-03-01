@@ -1,6 +1,8 @@
 import { Button, LabeledList } from '../../components';
+import { useBackend } from '../../backend';
 
-export const CPLTeleportTo = (data, act) => {
+export const CPLTeleportTo = (props, context) => {
+  const { act, data } = useBackend(context);
   return (
     <LabeledList.Item label="Teleport to">
       <Button

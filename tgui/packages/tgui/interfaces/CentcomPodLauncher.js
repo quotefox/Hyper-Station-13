@@ -33,18 +33,18 @@ export const CentcomPodLauncher = (props, context) => {
           // eslint-disable-next-line max-len
           title="Centcom Pod Customization (To be used against Helen Weinstein)">
           <LabeledList>
-            <CPLSupplyBay data={data} act={act} />
-            <CPLTeleportTo data={data} act={act} />
-            <CPLCloneMode data={data} act={act} />
-            <CPLLaunchStyle data={data} act={act} />
-            <CPLExplosion data={data} act={act} />
-            <CPLDamage data={data} act={act} />
-            <CPLEffects data={data} act={act} />
-            <CPLMovement data={data} act={act} />
-            <CPLNameAndDescription data={data} act={act} />
-            <CPLSound data={data} act={act} />
-            <CPLTimers data={data} act={act} />
-            <CPLStyle data={data} act={act} />
+            <CPLSupplyBay />
+            <CPLTeleportTo />
+            <CPLCloneMode />
+            <CPLLaunchStyle />
+            <CPLExplosion />
+            <CPLDamage />
+            <CPLEffects />
+            <CPLMovement />
+            <CPLNameAndDescription />
+            <CPLSound />
+            <CPLTimers />
+            <CPLStyle />
           </LabeledList>
         </Section>
         <Section>

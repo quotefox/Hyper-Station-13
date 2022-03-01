@@ -171,7 +171,6 @@
 				return
 			if((pack.hidden && !(obj_flags & EMAGGED)) || (pack.contraband && !contraband) || pack.DropPodOnly)
 				return
-
 			var/name = "*None Provided*"
 			var/rank = "*None Provided*"
 			var/ckey = usr.ckey

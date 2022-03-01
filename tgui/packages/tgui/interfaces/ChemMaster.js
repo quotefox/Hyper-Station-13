@@ -21,7 +21,7 @@ export const ChemMaster = (props, context) => {
     pillBottleMaxAmount,
   } = data;
   if (screen === "analyze") {
-    return <AnalysisResults props={props} context={context} />;
+    return <AnalysisResults />;
   }
   return (
     <Window>

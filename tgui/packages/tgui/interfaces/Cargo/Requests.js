@@ -3,9 +3,12 @@ import { useBackend } from '../../backend';
 import { Box, Button } from '../../components';
 
 export const Requests = (props, context) => {
-  const { requests } = props;
-  const { config, data, act } = useBackend(context);
-  const { ref } = config;
+  const { data, act } = useBackend(context);
+  const { 
+    requestonly, 
+  } = data;
+  const requests = data.requests || [];
+
   if (requests.length === 0) {
     return (
       <Box color="good">
@@ -13,6 +16,7 @@ export const Requests = (props, context) => {
       </Box>
     );
   }
+  
   // Labeled list reimplementation to squeeze extra columns out of it
   return (
     <table className="LabeledList">
@@ -34,18 +38,18 @@ export const Requests = (props, context) => {
             <td className="LabeledList__cell LabeledList__buttons">
               {request.cost} credits
               {' '}
-              {!data.requestonly && (
+              {!requestonly && (
                 <Fragment>
                   <Button
                     icon="check"
                     color="good"
-                    onClick={() => act(ref, 'approve', {
+                    onClick={() => act('approve', {
                       id: request.id,
                     })} />
                   <Button
                     icon="times"
                     color="bad"
-                    onClick={() => act(ref, 'deny', {
+                    onClick={() => act('deny', {
                       id: request.id,
                     })} />
                 </Fragment>

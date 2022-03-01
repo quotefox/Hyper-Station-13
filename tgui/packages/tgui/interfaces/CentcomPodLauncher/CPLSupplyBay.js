@@ -1,7 +1,9 @@
 import { multiline } from 'common/string';
 import { Button, LabeledList } from '../../components';
+import { useBackend } from '../../backend';
 
-export const CPLSupplyBay = (data, act) => {
+export const CPLSupplyBay = (props, context) => {
+  const { act, data } = useBackend(context);
   return (
     <LabeledList.Item label="Supply Bay">
       <Button

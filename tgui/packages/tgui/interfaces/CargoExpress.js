@@ -16,7 +16,7 @@ export const CargoExpress = (props, context) => {
         <InterfaceLockNoticeBox
           siliconUser={data.siliconUser}
           locked={data.locked}
-          onLockStatusChange={() => act(ref, 'lock')}
+          onLockStatusChange={() => act('lock')}
           accessText="a QM-level ID card" />
         {!data.locked && (
           <Fragment>
@@ -32,17 +32,17 @@ export const CargoExpress = (props, context) => {
                   <Button
                     content="Cargo Bay"
                     selected={!data.usingBeacon}
-                    onClick={() => act(ref, 'LZCargo')} />
+                    onClick={() => act('LZCargo')} />
                   <Button
                     selected={data.usingBeacon}
                     disabled={!data.hasBeacon}
-                    onClick={() => act(ref, 'LZBeacon')}>
+                    onClick={() => act('LZBeacon')}>
                     {data.beaconzone} ({data.beaconName})
                   </Button>
                   <Button
                     content={data.printMsg}
                     disabled={!data.canBuyBeacon}
-                    onClick={() => act(ref, 'printBeacon')} />
+                    onClick={() => act('printBeacon')} />
                 </LabeledList.Item>
                 <LabeledList.Item label="Notice">
                   {data.message}

@@ -1,5 +1,5 @@
 import { Fragment } from 'inferno';
-import { useBackend } from '../backend';
+import { useBackend, useLocalState } from '../backend';
 import { AnimatedNumber, Box, Button, LabeledList, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 import { Cart } from './Cargo/Cart';
@@ -9,14 +9,26 @@ import { Requests } from './Cargo/Requests';
 export const Cargo = (props, context) => {
   const { config, data, act } = useBackend(context);
   const { ref } = config;
-  const supplies = data.supplies || {};
-  const requests = data.requests || [];
+  const {
+    requestonly,
+    points,
+    docked,
+    location,
+    message,
+    loan,
+    loan_dispatched,
+    away,
+  } = data;
   const cart = data.cart || [];
+  const requests = data.requests || [];
+  const supplies = Object.values(data.supplies);
+
+  const [tab, setTab] = useLocalState(context, 'tab', 'catalog');
 
   const cartTotalAmount = cart
     .reduce((total, entry) => total + entry.cost, 0);
 
-  const cartButtons = !data.requestonly && (
+  const cartButtons = requestonly && (
     <Fragment>
       <Box inline mx={1}>
         {cart.length === 0 && 'Cart is empty'}
@@ -29,7 +41,7 @@ export const Cargo = (props, context) => {
         icon="times"
         color="transparent"
         content="Clear"
-        onClick={() => act(ref, 'clear')} />
+        onClick={() => act('clear')} />
     </Fragment>
   );
 
@@ -40,27 +52,27 @@ export const Cargo = (props, context) => {
           title="Cargo"
           buttons={(
             <Box inline bold>
-              <AnimatedNumber value={Math.round(data.points)} /> credits
+              <AnimatedNumber value={Math.round(points)} /> credits
             </Box>
           )}>
           <LabeledList>
             <LabeledList.Item label="Shuttle">
-              {data.docked && !data.requestonly && (
+              {docked && !requestonly && (
                 <Button
-                  content={data.location}
-                  onClick={() => act(ref, 'send')} />
-              ) || data.location}
+                  content={location}
+                  onClick={() => act('send')} />
+              ) || location}
             </LabeledList.Item>
             <LabeledList.Item label="CentCom Message">
-              {data.message}
+              {message}
             </LabeledList.Item>
-            {(data.loan && !data.requestonly) ? (
+            {(loan && !requestonly) ? (
               <LabeledList.Item label="Loan">
-                {!data.loan_dispatched ? (
+                {!loan_dispatched ? (
                   <Button
                     content="Loan Shuttle"
-                    disabled={!(data.away && data.docked)}
-                    onClick={() => act(ref, 'loan')} />
+                    disabled={!(away && docked)}
+                    onClick={() => act('loan')} />
                 ) : (
                   <Box color="bad">Loaned to Centcom</Box>
                 )}
@@ -70,55 +82,58 @@ export const Cargo = (props, context) => {
         </Section>
         <Tabs mt={2}>
           <Tabs.Tab
-            key="catalog"
-            label="Catalog"
             icon="list"
-            lineHeight="23px">
-            {() => (
-              <Section
-                title="Catalog"
-                buttons={cartButtons}>
-                <Catalog supplies={supplies} />
-              </Section>
-            )}
+            lineHeight="23px"
+            selected={tab === 'catalog'}
+            onClick={() => setTab('catalog')}>
+            Catalog
           </Tabs.Tab>
           <Tabs.Tab
-            key="requests"
-            label={`Requests (${requests.length})`}
             icon="envelope"
-            highlight={requests.length > 0}
-            lineHeight="23px">
-            {() => (
-              <Section
-                title="Active Requests"
-                buttons={!data.requestonly && (
-                  <Button
-                    icon="times"
-                    content="Clear"
-                    color="transparent"
-                    onClick={() => act(ref, 'denyall')} />
-                )}>
-                <Requests requests={requests} />
-              </Section>
-            )}
+            className={requests.length > 0 && tab !== 'requests' && 'color-yellow'}
+            lineHeight="23px"
+            selected={tab === 'requests'}
+            onClick={() => setTab('requests')}>
+            Requests ({requests.length})
           </Tabs.Tab>
-          {!data.requestonly && (
+          {!requestonly && (
             <Tabs.Tab
-              key="cart"
-              label={`Checkout (${cart.length})`}
               icon="shopping-cart"
-              highlight={cart.length > 0}
-              lineHeight="23px">
-              {() => (
-                <Section
-                  title="Current Cart"
-                  buttons={cartButtons}>
-                  <Cart cart={cart} />
-                </Section>
-              )}
+              className={cart.length > 0 && tab !== 'cart' && 'color-yellow'}
+              lineHeight="23px"
+              selected={tab === 'cart'}
+              onClick={() => setTab('cart')}>
+              Checkout ({cart.length})
             </Tabs.Tab>
           )}
         </Tabs>
+        {tab === 'catalog' && (
+          <Section
+            title="Catalog"
+            buttons={cartButtons}>
+            <Catalog supplies={supplies} />
+          </Section>
+        )}
+        {tab === 'requests' && (
+          <Section
+            title="Active Requests"
+            buttons={!requestonly && (
+              <Button
+                icon="times"
+                content="Clear"
+                color="transparent"
+                onClick={() => act('denyall')} />
+            )}>
+            <Requests />
+          </Section>
+        )}
+        {tab === 'cart' && (
+          <Section
+            title="Current Cart"
+            buttons={cartButtons}>
+            <Cart />
+          </Section>
+        )}
       </Window.Content>
     </Window>
   );

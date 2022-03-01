@@ -1,10 +1,15 @@
-import { useBackend } from '../backend';
-import { Box, Button, LabeledList, Section, Tabs } from '../components';
+import { useBackend, useLocalState } from '../backend';
+import { Box, Button, Flex, LabeledList, Section, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const AirlockElectronics = (props, context) => {
   const { act, data } = useBackend(context);
   const regions = data.regions || [];
+
+  const [tab, setTab] = useLocalState(context, 'tab', regions[0].name);
+  const activeRegion = regions.find(region => {
+    return region.name === tab;
+  });
 
   const diffMap = {
     0: {
@@ -106,33 +111,39 @@ export const AirlockElectronics = (props, context) => {
           </LabeledList>
         </Section>
         <Section title="Access">
-          <Box height="261px">
-            <Tabs vertical>
-              {regions.map(region => {
-                const { name } = region;
-                const accesses = region.accesses || [];
-                const icon = diffMap[checkAccessIcon(accesses)].icon;
-                return (
-                  <Tabs.Tab
-                    key={name}
-                    icon={icon}
-                    label={name}>
-                    {() => accesses.map(access => (
-                      <Box key={access.id}>
-                        <Button
-                          icon={access.req ? 'check-square-o' : 'square-o'}
-                          content={access.name}
-                          selected={access.req}
-                          onClick={() => act('set', {
-                            access: access.id,
-                          })} />
-                      </Box>
-                    ))}
-                  </Tabs.Tab>
-                );
-              })}
-            </Tabs>
-          </Box>
+          <Flex direction="row">
+            <Flex.Item>
+              <Tabs vertical>
+                {regions.map(region => {
+                  const { name } = region;
+                  const accesses = region.accesses || [];
+                  const icon = diffMap[checkAccessIcon(accesses)].icon;
+                  return (
+                    <Tabs.Tab
+                      key={name}
+                      icon={icon}
+                      selected={tab===name}
+                      onClick={() => setTab(name)}>
+                      {name}
+                    </Tabs.Tab>
+                  );
+                })}
+              </Tabs>
+            </Flex.Item>
+            <Flex.Item grow={1} basis={0}>
+              {activeRegion.accesses.map(access => (
+                <Box key={access.id}>
+                  <Button
+                    icon={access.req ? 'check-square-o' : 'square-o'}
+                    content={access.name}
+                    selected={access.req}
+                    onClick={() => act('set', {
+                      access: access.id,
+                    })} />
+                </Box>
+              ))}
+            </Flex.Item>
+          </Flex>
         </Section>
       </Window.Content>
     </Window>

@@ -1,7 +1,9 @@
 import { multiline } from 'common/string';
 import { Button, LabeledList } from '../../components';
+import { useBackend } from '../../backend';
 
-export const CPLCloneMode = (data, act) => {
+export const CPLCloneMode = (props, context) => {
+  const { act, data } = useBackend(context);
   return (
     <LabeledList.Item label="Clone Mode">
       <Button

@@ -1,11 +1,12 @@
 import { Fragment } from 'inferno';
-import { useBackend } from '../../backend';
+import { useBackend, useLocalState } from '../../backend';
 import { Box, Button } from '../../components';
 
 //  Home screen
 // --------------------------------------------------------
 export const AirAlarmControlHome = (props, context) => {
   const { act, data } = useBackend(context);
+  const [currentPage, setCurrentPage] = useLocalState(context, "AirAlarmPage", "home");
   const {
     mode, atmos_alarm,
   } = data;
@@ -32,30 +33,22 @@ export const AirAlarmControlHome = (props, context) => {
       <Button
         icon="sign-out-alt"
         content="Vent Controls"
-        onClick={() => act('tgui:view', {
-          screen: 'vents',
-        })} />
+        onClick={() => setCurrentPage("vents")} />
       <Box mt={1} />
       <Button
         icon="filter"
         content="Scrubber Controls"
-        onClick={() => act('tgui:view', {
-          screen: 'scrubbers',
-        })} />
+        onClick={() => setCurrentPage("scrubbers")} />
       <Box mt={1} />
       <Button
         icon="cog"
         content="Operating Mode"
-        onClick={() => act('tgui:view', {
-          screen: 'modes',
-        })} />
+        onClick={() => setCurrentPage("modes")} />
       <Box mt={1} />
       <Button
         icon="chart-bar"
         content="Alarm Thresholds"
-        onClick={() => act('tgui:view', {
-          screen: 'thresholds',
-        })} />
+        onClick={() => setCurrentPage("thresholds")} />
     </Fragment>
   );
 };

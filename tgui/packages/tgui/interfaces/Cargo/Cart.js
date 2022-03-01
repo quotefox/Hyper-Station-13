@@ -3,9 +3,16 @@ import { useBackend } from '../../backend';
 import { Box, Button, LabeledList } from '../../components';
 
 export const Cart = (props, context) => {
-  const { cart } = props;
-  const { config, data, act } = useBackend(context);
-  const { ref } = config;
+  const { data, act } = useBackend(context);
+  const {
+    requestonly,
+    docked,
+    location,
+    away,
+  } = data;
+  const cart = data.cart || [];
+
+  
   return (
     <Fragment>
       {cart.length === 0 && 'Nothing in cart'}
@@ -25,7 +32,7 @@ export const Cart = (props, context) => {
                   </Box>
                   <Button
                     icon="minus"
-                    onClick={() => act(ref, 'remove', {
+                    onClick={() => act('remove', {
                       id: entry.id,
                     })} />
                 </Fragment>
@@ -35,9 +42,9 @@ export const Cart = (props, context) => {
           ))}
         </LabeledList>
       )}
-      {cart.length > 0 && !data.requestonly && (
+      {cart.length > 0 && !requestonly && (
         <Box mt={2}>
-          {data.away === 1 && data.docked === 1 && (
+          {away === 1 && docked === 1 && (
             <Button
               color="green"
               style={{
@@ -45,10 +52,10 @@ export const Cart = (props, context) => {
                 'padding': '0 12px',
               }}
               content="Confirm the order"
-              onClick={() => act(ref, 'send')} />
+              onClick={() => act('send')} />
           ) || (
             <Box opacity={0.5}>
-              Shuttle in {data.location}.
+              Shuttle in {location}.
             </Box>
           )}
         </Box>

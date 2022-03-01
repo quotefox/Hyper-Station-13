@@ -1,13 +1,13 @@
-import { useBackend } from '../backend';
+import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
 import { AirAlarmControl } from './AirAlarm/AirAlarmControl';
 import { AirAlarmStatus } from './AirAlarm/AirAlarmStatus';
 import { InterfaceLockNoticeBox } from './common/InterfaceLockNoticeBox';
 
 export const AirAlarm = (props, context) => {
-  const { state } = props;
   const { act, data } = useBackend(context);
   const locked = data.locked && !data.siliconUser;
+
   return (
     <Window>
       <Window.Content>
@@ -15,9 +15,9 @@ export const AirAlarm = (props, context) => {
           siliconUser={data.siliconUser}
           locked={data.locked}
           onLockStatusChange={() => act('lock')} />
-        <AirAlarmStatus state={state} />
+        <AirAlarmStatus />
         {!locked && (
-          <AirAlarmControl state={state} />
+          <AirAlarmControl />
         )}
       </Window.Content>
     </Window>

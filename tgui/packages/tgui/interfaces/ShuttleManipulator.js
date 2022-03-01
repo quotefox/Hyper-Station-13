@@ -17,114 +17,110 @@ export const ShuttleManipulator = (props, context) => {
           <Tabs.Tab
             key="status"
             label="Status">
-            {() => (
-              <Section>
-                <Table>
-                  {shuttles.map(shuttle => (
-                    <Table.Row key={shuttle.id}>
-                      <Table.Cell>
-                        <Button
-                          content="JMP"
-                          key={shuttle.id}
-                          onClick={() => act('jump_to', {
-                            type: 'mobile',
-                            id: shuttle.id,
-                          })} />
-                      </Table.Cell>
-                      <Table.Cell>
-                        <Button
-                          content="Fly"
-                          key={shuttle.id}
-                          disabled={!shuttle.can_fly}
-                          onClick={() => act('fly', {
-                            id: shuttle.id,
-                          })} />
-                      </Table.Cell>
-                      <Table.Cell>
-                        {shuttle.name}
-                      </Table.Cell>
-                      <Table.Cell>
-                        {shuttle.id}
-                      </Table.Cell>
-                      <Table.Cell>
-                        {shuttle.status}
-                      </Table.Cell>
-                      <Table.Cell>
-                        {shuttle.mode}
-                        {!!shuttle.timer && (
-                          <Fragment>
-                            ({shuttle.timeleft})
-                            <Button
-                              content="Fast Travel"
-                              key={shuttle.id}
-                              disabled={!shuttle.can_fast_travel}
-                              onClick={() => act('fast_travel', {
-                                id: shuttle.id,
-                              })} />
-                          </Fragment>
-                        )}
-                      </Table.Cell>
-                    </Table.Row>
-                  ))}
-                </Table>
-              </Section>
-            )}
+            <Section>
+              <Table>
+                {shuttles.map(shuttle => (
+                  <Table.Row key={shuttle.id}>
+                    <Table.Cell>
+                      <Button
+                        content="JMP"
+                        key={shuttle.id}
+                        onClick={() => act('jump_to', {
+                          type: 'mobile',
+                          id: shuttle.id,
+                        })} />
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Button
+                        content="Fly"
+                        key={shuttle.id}
+                        disabled={!shuttle.can_fly}
+                        onClick={() => act('fly', {
+                          id: shuttle.id,
+                        })} />
+                    </Table.Cell>
+                    <Table.Cell>
+                      {shuttle.name}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {shuttle.id}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {shuttle.status}
+                    </Table.Cell>
+                    <Table.Cell>
+                      {shuttle.mode}
+                      {!!shuttle.timer && (
+                        <Fragment>
+                          ({shuttle.timeleft})
+                          <Button
+                            content="Fast Travel"
+                            key={shuttle.id}
+                            disabled={!shuttle.can_fast_travel}
+                            onClick={() => act('fast_travel', {
+                              id: shuttle.id,
+                            })} />
+                        </Fragment>
+                      )}
+                    </Table.Cell>
+                  </Table.Row>
+                ))}
+              </Table>
+            </Section>
           </Tabs.Tab>
           <Tabs.Tab
             key="templates"
             label="Templates">
-            {() => (
-              <Section>
-                <Tabs>
-                  {map((template, templateId) => {
-                    const templates = template.templates || [];
-                    return (
-                      <Tabs.Tab
-                        key={templateId}
-                        label={template.port_id}>
-                        {templates.map(actualTemplate => {
-                          const isSelected = (
-                            actualTemplate.shuttle_id === selected.shuttle_id
-                          );
+            <Section>
+              <Tabs>
+                {map((template, templateId) => {
+                  const templates = template.templates || [];
+                  return (
+                    <Tabs.Tab
+                      key={templateId}
+                      label={template.port_id}>
+                      {templates.map(actualTemplate => {
+                        const isSelected = (
+                          actualTemplate.shuttle_id === selected.shuttle_id
+                        );
                           // Whoever made the structure being sent is an asshole
-                          return (
-                            <Section
-                              title={actualTemplate.name}
-                              level={2}
-                              key={actualTemplate.shuttle_id}
-                              buttons={(
-                                <Button
-                                  content={isSelected ? 'Selected' : 'Select'}
-                                  selected={isSelected}
-                                  onClick={() => act('select_template', {
-                                    shuttle_id: actualTemplate.shuttle_id,
-                                  })} />
-                              )}>
-                              {(!!actualTemplate.description
+                        return (
+                          <Section
+                            title={actualTemplate.name}
+                            level={2}
+                            key={actualTemplate.shuttle_id}
+                            buttons={(
+                              <Button
+                                content={isSelected ? 'Selected' : 'Select'}
+                                selected={isSelected}
+                                onClick={() => act('select_template', {
+                                  shuttle_id: actualTemplate.shuttle_id,
+                                })} />
+                            )}>
+                            {(!!actualTemplate.description
                             || !!actualTemplate.admin_notes
-                              ) && (
-                                <LabeledList>
-                                  {!!actualTemplate.description && (
-                                    <LabeledList.Item label="Description">
-                                      {actualTemplate.description}
-                                    </LabeledList.Item>
-                                  )}
-                                  {!!actualTemplate.admin_notes && (
-                                    <LabeledList.Item label="Admin Notes">
-                                      {actualTemplate.admin_notes}
-                                    </LabeledList.Item>
-                                  )}
-                                </LabeledList>
-                              )}
-                            </Section>
-                          );
-                        })}
-                      </Tabs.Tab>
-                    );
-                  })(templateObject)}
-                </Tabs>
-              </Section>
-            )}
+                            ) && (
+                              <LabeledList>
+                                {!!actualTemplate.description && (
+                                  <LabeledList.Item label="Description">
+                                    {actualTemplate.description}
+                                  </LabeledList.Item>
+                                )}
+                                {!!actualTemplate.admin_notes && (
+                                  <LabeledList.Item label="Admin Notes">
+                                    {actualTemplate.admin_notes}
+                                  </LabeledList.Item>
+                                )}
+                              </LabeledList>
+                            )}
+                          </Section>
+                        );
+                      })}
+                    </Tabs.Tab>
+                  );
+                })(templateObject)}
+              </Tabs>
+            </Section>
           </Tabs.Tab>
           <Tabs.Tab
             key="modification"

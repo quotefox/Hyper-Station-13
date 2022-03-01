@@ -1,4 +1,4 @@
-import { useBackend } from '../../backend';
+import { useBackend, useLocalState } from '../../backend';
 import { Button, Section } from '../../components';
 import { AirAlarmControlHome } from './AirAlarmControlHome';
 import { AirAlarmControlModes } from './AirAlarmControlModes';
@@ -7,21 +7,20 @@ import { AirAlarmControlThresholds } from './AirAlarmControlThresholds';
 import { AirAlarmControlVents } from './AirAlarmControlVents';
 
 export const AirAlarmControl = (props, context) => {
-  const { config, data, act } = useBackend(context);
-  const route = AIR_ALARM_ROUTES[config.screen] || AIR_ALARM_ROUTES.home;
+  const { config, data } = useBackend(context);
+  const [currentPage, setCurrentPage] = useLocalState(context, "AirAlarmPage", "home");
+  const route = AIR_ALARM_ROUTES[currentPage] || AIR_ALARM_ROUTES.home;
   const Component = route.component();
   return (
     <Section
       title={route.title}
-      buttons={config.screen !== 'home' && (
+      buttons={data.screen !== 'home' && (
         <Button
           icon="arrow-left"
           content="Back"
-          onClick={() => act('tgui:view', {
-            screen: 'home',
-          })} />
+          onClick={() => setCurrentPage("home")} />
       )}>
-      <Component {...props} {...context} />
+      <Component />
     </Section>
   );
 };
