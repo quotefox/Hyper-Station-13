@@ -1,7 +1,10 @@
+import { useBackend } from '../../backend';
 import { Box, NumberInput, Section } from '../../components';
 
-export const LaunchTarget = (data, act) => {
+export const LaunchTarget = (props, context) => {
+  const { act, data } = useBackend(context);
   const { x, y, range } = data;
+
   return (
     <Section title="Target" level={2}>
       <Box fontSize="26px">

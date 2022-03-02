@@ -7,8 +7,7 @@ import { PackagingControls } from './ChemMaster/PackagingControls';
 import { useBackend } from '../backend';
 
 export const ChemMaster = (props, context) => {
-  const { config, data, act } = useBackend(context);
-  const { ref } = config;
+  const { data, act } = useBackend(context);
   const {
     screen,
     beakerContents = [],
@@ -19,7 +18,9 @@ export const ChemMaster = (props, context) => {
     isPillBottleLoaded,
     pillBottleCurrentAmount,
     pillBottleMaxAmount,
+    mode,
   } = data;
+
   if (screen === "analyze") {
     return <AnalysisResults />;
   }
@@ -28,7 +29,7 @@ export const ChemMaster = (props, context) => {
       <Window.Content>
         <Section
           title="Beaker"
-          buttons={!!data.isBeakerLoaded && (
+          buttons={!!isBeakerLoaded && (
             <Fragment>
               <Box inline color="label" mr={2}>
                 <AnimatedNumber
@@ -39,7 +40,7 @@ export const ChemMaster = (props, context) => {
               <Button
                 icon="eject"
                 content="Eject"
-                onClick={() => act(ref, 'eject')} />
+                onClick={() => act('eject')} />
             </Fragment>
           )}>
           {!isBeakerLoaded && (
@@ -69,10 +70,10 @@ export const ChemMaster = (props, context) => {
                 Mode:
               </Box>
               <Button
-                color={data.mode ? 'good' : 'bad'}
-                icon={data.mode ? 'exchange-alt' : 'times'}
-                content={data.mode ? 'Transfer' : 'Destroy'}
-                onClick={() => act(ref, 'toggleMode')} />
+                color={mode ? 'good' : 'bad'}
+                icon={mode ? 'exchange-alt' : 'times'}
+                content={mode ? 'Transfer' : 'Destroy'}
+                onClick={() => act('toggleMode')} />
             </Fragment>
           )}>
           {bufferContents.length === 0 && (
@@ -104,7 +105,7 @@ export const ChemMaster = (props, context) => {
                 <Button
                   icon="eject"
                   content="Eject"
-                  onClick={() => act(ref, 'ejectPillBottle')} />
+                  onClick={() => act('ejectPillBottle')} />
               </Fragment>
             )} />
         )}

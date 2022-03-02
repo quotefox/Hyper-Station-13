@@ -1,7 +1,7 @@
 import { map } from 'common/collections';
 import { Fragment } from 'inferno';
-import { useBackend } from '../backend';
-import { Button, LabeledList, NoticeBox, Section, Tabs } from '../components';
+import { useBackend, useLocalState } from '../backend';
+import { Button, Flex, LabeledList, NoticeBox, Section, Table, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const NaniteProgramHub = (props, context) => {
@@ -13,6 +13,12 @@ export const NaniteProgramHub = (props, context) => {
     has_program,
     programs = {},
   } = data;
+
+  const [activeCategoryKey, setActiveCategoryKey] 
+    = useLocalState(context, 'category', Object.keys(programs)[0]);
+  
+  const activeCategory = programs[activeCategoryKey];
+
   return (
     <Window>
       <Window.Content>
@@ -66,56 +72,62 @@ export const NaniteProgramHub = (props, context) => {
             </Fragment>
           )}>
           {programs !== null ? (
-            <Tabs vertical>
-              {map((cat_contents, category) => {
-                const progs = cat_contents || [];
-                // Backend was sending stupid data that would have been
-                // annoying to fix
-                const tabLabel = category.substring(0, category.length - 8);
-                return (
-                  <Tabs.Tab
-                    key={category}
-                    label={tabLabel}>
-                    {detail_view ? (
-                      progs.map(program => (
-                        <Section
-                          key={program.id}
-                          title={program.name}
-                          level={2}
-                          buttons={(
-                            <Button
-                              icon="download"
-                              content="Download"
-                              disabled={!has_disk}
-                              onClick={() => act('download', {
-                                program_id: program.id,
-                              })} />
-                          )}>
-                          {program.desc}
-                        </Section>
-                      ))
-                    ) : (
-                      <LabeledList>
-                        {progs.map(program => (
-                          <LabeledList.Item
-                            key={program.id}
-                            label={program.name}
-                            buttons={(
-                              <Button
-                                icon="download"
-                                content="Download"
-                                disabled={!has_disk}
-                                onClick={() => act('download', {
-                                  program_id: program.id,
-                                })} />
-                            )} />
-                        ))}
-                      </LabeledList>
-                    )}
-                  </Tabs.Tab>
-                );
-              })(programs)}
-            </Tabs>
+            <Flex direction="row">
+              <Flex.Item>
+                <Tabs vertical>
+                  {map((cat_contents, category) => {
+                    const progs = cat_contents || [];
+                    const tabLabel = category.substring(0, category.length - 8);
+                    return (
+                      <Tabs.Tab
+                        key={category}
+                        selected={activeCategoryKey===category}
+                        onClick={() => setActiveCategoryKey(category)}>
+                        {tabLabel}
+                      </Tabs.Tab>
+                    );
+                  })(programs)}
+                </Tabs>
+              </Flex.Item>
+              <Flex.Item grow={1} basis={0}>
+                {detail_view ? (
+                  activeCategory.map(program => (
+                    <Section
+                      key={program.id}
+                      title={program.name}
+                      level={2}
+                      buttons={(
+                        <Button
+                          icon="download"
+                          content="Download"
+                          disabled={!has_disk}
+                          onClick={() => act('download', {
+                            program_id: program.id,
+                          })} />
+                      )}>
+                      {program.desc}
+                    </Section>
+                  ))
+                ) : (
+                  <LabeledList>
+                    {activeCategory.map(program => (
+                      <LabeledList.Item
+                        key={program.id}
+                        label={program.name}
+                        buttons={(
+                          <Button
+                            icon="download"
+                            content="Download"
+                            disabled={!has_disk}
+                            onClick={() => act('download', {
+                              program_id: program.id,
+                            })} />
+                        )} />
+                    ))}
+                  </LabeledList>
+                )}
+              </Flex.Item>
+            </Flex>
           ) : (
             <NoticeBox>
               No nanite programs are currently researched.

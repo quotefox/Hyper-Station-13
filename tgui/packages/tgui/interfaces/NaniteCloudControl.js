@@ -7,7 +7,6 @@ import { NaniteCloudBackupList } from './NaniteCloudControl/NaniteCloudBackupLis
 import { NaniteDiskBox } from './NaniteCloudControl/NaniteDiskBox';
 
 export const NaniteCloudControl = (props, context) => {
-  const { state } = props;
   const { act, data } = useBackend(context);
   const {
     has_disk,
@@ -27,7 +26,7 @@ export const NaniteCloudControl = (props, context) => {
               disabled={!has_disk}
               onClick={() => act('eject')} />
           )}>
-          <NaniteDiskBox state={state} />
+          <NaniteDiskBox />
         </Section>
         <Section
           title="Cloud Storage"
@@ -57,11 +56,11 @@ export const NaniteCloudControl = (props, context) => {
               </Fragment>
             )
           )}>
-          {!data.current_view ? (
-            <NaniteCloudBackupList state={state} />
+          {/* {!data.current_view ? (
+            <NaniteCloudBackupList />
           ) : (
-            <NaniteCloudBackupDetails state={state} />
-          )}
+            <NaniteCloudBackupDetails />
+          )} */}
         </Section>
       </Window.Content>
     </Window>

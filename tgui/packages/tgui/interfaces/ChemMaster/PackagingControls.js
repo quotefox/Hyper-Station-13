@@ -1,4 +1,5 @@
 import { Component } from 'inferno';
+import { useBackend } from '../../backend';
 import { act } from '../../byond';
 import { Box, Button, LabeledList, NumberInput } from '../../components';
 
@@ -16,14 +17,14 @@ export class PackagingControls extends Component {
   }
 
   render() {
-    const { state, props } = this;
-    const { ref } = props.state.config;
+    const { props, context } = this;
+    const { data, act } = useBackend(context);
     const {
       pillAmount, patchAmount, bottleAmount, packAmount, vialAmount, dartAmount,
     } = this.state;
     const {
       condi, chosenPillStyle, pillStyles = [],
-    } = props.state.data;
+    } = data;
     return (
       <LabeledList>
         {!condi && (
@@ -35,7 +36,7 @@ export class PackagingControls extends Component {
                 selected={pill.id === chosenPillStyle}
                 textAlign="center"
                 color="transparent"
-                onClick={() => act(ref, 'pillStyle', { id: pill.id })}>
+                onClick={() => act('pillStyle', { id: pill.id })}>
                 <Box mx={-1} className={pill.className} />
               </Button>
             ))}
@@ -50,7 +51,7 @@ export class PackagingControls extends Component {
             onChangeAmount={(e, value) => this.setState({
               pillAmount: value,
             })}
-            onCreate={() => act(ref, 'create', {
+            onCreate={() => act('create', {
               type: 'pill',
               amount: pillAmount,
               volume: 'auto',
@@ -65,7 +66,7 @@ export class PackagingControls extends Component {
             onChangeAmount={(e, value) => this.setState({
               patchAmount: value,
             })}
-            onCreate={() => act(ref, 'create', {
+            onCreate={() => act('create', {
               type: 'patch',
               amount: patchAmount,
               volume: 'auto',
@@ -80,7 +81,7 @@ export class PackagingControls extends Component {
             onChangeAmount={(e, value) => this.setState({
               bottleAmount: value,
             })}
-            onCreate={() => act(ref, 'create', {
+            onCreate={() => act('create', {
               type: 'bottle',
               amount: bottleAmount,
               volume: 'auto',
@@ -95,7 +96,7 @@ export class PackagingControls extends Component {
             onChangeAmount={(e, value) => this.setState({
               vialAmount: value,
             })}
-            onCreate={() => act(ref, 'create', {
+            onCreate={() => act('create', {
               type: 'hypoVial',
               amount: vialAmount,
               volume: 'auto',
@@ -110,7 +111,7 @@ export class PackagingControls extends Component {
             onChangeAmount={(e, value) => this.setState({
               dartAmount: value,
             })}
-            onCreate={() => act(ref, 'create', {
+            onCreate={() => act('create', {
               type: 'smartDart',
               amount: dartAmount,
               volume: 'auto',
@@ -125,7 +126,7 @@ export class PackagingControls extends Component {
             onChangeAmount={(e, value) => this.setState({
               packAmount: value,
             })}
-            onCreate={() => act(ref, 'create', {
+            onCreate={() => act('create', {
               type: 'condimentPack',
               amount: packAmount,
               volume: 'auto',
@@ -140,7 +141,7 @@ export class PackagingControls extends Component {
             onChangeAmount={(e, value) => this.setState({
               bottleAmount: value,
             })}
-            onCreate={() => act(ref, 'create', {
+            onCreate={() => act('create', {
               type: 'condimentBottle',
               amount: bottleAmount,
               volume: 'auto',

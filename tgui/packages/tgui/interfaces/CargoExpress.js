@@ -7,45 +7,58 @@ import { useBackend } from '../backend';
 
 
 export const CargoExpress = (props, context) => {
-  const { config, data, act } = useBackend(context);
-  const { ref } = config;
-  const supplies = data.supplies || {};
+  const { data, act } = useBackend(context);
+  const {
+    siliconUser,
+    locked,
+    points,
+    usingBeacon,
+    hasBeacon,
+    beaconName,
+    beaconzone,
+    printMsg,
+    canBuyBeacon,
+    message,
+  } = data;
+
+  const supplies = Object.values(data.supplies);
+
   return (
     <Window>
       <Window.Content>
         <InterfaceLockNoticeBox
-          siliconUser={data.siliconUser}
-          locked={data.locked}
+          siliconUser={siliconUser}
+          locked={locked}
           onLockStatusChange={() => act('lock')}
           accessText="a QM-level ID card" />
-        {!data.locked && (
+        {!locked && (
           <Fragment>
             <Section
               title="Cargo Express"
               buttons={(
                 <Box inline bold>
-                  <AnimatedNumber value={Math.round(data.points)} /> credits
+                  <AnimatedNumber value={Math.round(points)} /> credits
                 </Box>
               )}>
               <LabeledList>
                 <LabeledList.Item label="Landing Location">
                   <Button
                     content="Cargo Bay"
-                    selected={!data.usingBeacon}
+                    selected={!usingBeacon}
                     onClick={() => act('LZCargo')} />
                   <Button
-                    selected={data.usingBeacon}
-                    disabled={!data.hasBeacon}
+                    selected={usingBeacon}
+                    disabled={!hasBeacon}
                     onClick={() => act('LZBeacon')}>
-                    {data.beaconzone} ({data.beaconName})
+                    {beaconzone} ({beaconName})
                   </Button>
                   <Button
-                    content={data.printMsg}
-                    disabled={!data.canBuyBeacon}
+                    content={printMsg}
+                    disabled={!canBuyBeacon}
                     onClick={() => act('printBeacon')} />
                 </LabeledList.Item>
                 <LabeledList.Item label="Notice">
-                  {data.message}
+                  {message}
                 </LabeledList.Item>
               </LabeledList>
             </Section>

@@ -14,9 +14,13 @@ export const EightBallVote = (props, context) => {
 
   if (!shaking) {
     return (
-      <NoticeBox>
-        No question is currently being asked.
-      </NoticeBox>
+      <Window>
+        <Window.Content>
+          <NoticeBox>
+            No question is currently being asked.
+          </NoticeBox>
+        </Window.Content>
+      </Window>
     );
   }
 

@@ -19,9 +19,13 @@ export const NaniteChamberControl = (props, context) => {
 
   if (status_msg) {
     return (
-      <NoticeBox textAlign="center">
-        {status_msg}
-      </NoticeBox>
+      <Window>
+        <Window.Content>
+          <NoticeBox textAlign="center">
+            {status_msg}
+          </NoticeBox>
+        </Window.Content>
+      </Window>
     );
   }
 

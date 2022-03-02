@@ -2,8 +2,7 @@ import { useBackend } from '../../backend';
 import { Button, ColorBox, LabeledList, Section } from '../../components';
 
 export const AnalysisResults = (props, context) => {
-  const { config, data, act } = useBackend(context);
-  const { ref } = config;
+  const { data, act } = useBackend(context);
   const { analyzeVars, fermianalyze } = data;
   return (
     <Section
@@ -12,7 +11,7 @@ export const AnalysisResults = (props, context) => {
         <Button
           icon="arrow-left"
           content="Back"
-          onClick={() => act(ref, 'goScreen', {
+          onClick={() => act('goScreen', {
             screen: 'home',
           })} />
       )}>

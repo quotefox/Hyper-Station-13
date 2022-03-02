@@ -25,9 +25,13 @@ export const NaniteRemote = (props, context) => {
 
   if (locked) {
     return (
-      <NoticeBox>
-        This interface is locked.
-      </NoticeBox>
+      <Window>
+        <Window.Content>
+          <NoticeBox>
+            This interface is locked.
+          </NoticeBox>
+        </Window.Content>
+      </Window>
     );
   }
 

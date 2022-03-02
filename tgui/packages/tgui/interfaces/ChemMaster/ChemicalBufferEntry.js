@@ -1,9 +1,10 @@
-import { act } from '../../byond';
+import { useBackend } from '../../backend';
 import { AnimatedNumber, Button, Table } from '../../components';
 
 export const ChemicalBufferEntry = (props, context) => {
-  const { state, chemical, transferTo } = props;
-  const { ref } = state.config;
+  const { act } = useBackend(context);
+  const { chemical, transferTo } = props;
+  
   return (
     <Table.Row key={chemical.id}>
       <Table.Cell color="label">
@@ -15,28 +16,28 @@ export const ChemicalBufferEntry = (props, context) => {
       <Table.Cell collapsing>
         <Button
           content="1"
-          onClick={() => act(ref, 'transfer', {
+          onClick={() => act('transfer', {
             id: chemical.id,
             amount: 1,
             to: transferTo,
           })} />
         <Button
           content="5"
-          onClick={() => act(ref, 'transfer', {
+          onClick={() => act('transfer', {
             id: chemical.id,
             amount: 5,
             to: transferTo,
           })} />
         <Button
           content="10"
-          onClick={() => act(ref, 'transfer', {
+          onClick={() => act('transfer', {
             id: chemical.id,
             amount: 10,
             to: transferTo,
           })} />
         <Button
           content="All"
-          onClick={() => act(ref, 'transfer', {
+          onClick={() => act('transfer', {
             id: chemical.id,
             amount: 1000,
             to: transferTo,
@@ -44,7 +45,7 @@ export const ChemicalBufferEntry = (props, context) => {
         <Button
           icon="ellipsis-h"
           title="Custom amount"
-          onClick={() => act(ref, 'transfer', {
+          onClick={() => act('transfer', {
             id: chemical.id,
             amount: -1,
             to: transferTo,
@@ -52,7 +53,7 @@ export const ChemicalBufferEntry = (props, context) => {
         <Button
           icon="question"
           title="Analyze"
-          onClick={() => act(ref, 'analyze', {
+          onClick={() => act('analyze', {
             id: chemical.id,
           })} />
       </Table.Cell>
