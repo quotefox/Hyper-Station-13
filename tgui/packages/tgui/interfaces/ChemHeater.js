@@ -19,7 +19,7 @@ export const ChemHeater = (props, context) => {
   } = data;
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section
           title="Thermostat"
           buttons={(

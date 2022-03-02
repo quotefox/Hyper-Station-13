@@ -34,7 +34,7 @@ export const OperatingComputer = (props, context) => {
 
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Tabs>
           <Tabs.Tab
             key="state"
@@ -161,95 +161,3 @@ export const OperatingComputer = (props, context) => {
     </Window>
   );
 };
-
-/*
-
-{!table && (
-  <NoticeBox>
-    No Table Detected
-  </NoticeBox>
-)}
-<Section>
-  <Section
-    title="Patient State"
-    level={2}>
-    {patient ? (
-      <LabeledList>
-        <LabeledList.Item
-          label="State"
-          color={patient.statstate}>
-          {patient.stat}
-        </LabeledList.Item>
-        <LabeledList.Item label="Blood Type">
-          {patient.blood_type}
-        </LabeledList.Item>
-        <LabeledList.Item label="Health">
-          <ProgressBar
-            value={patient.health}
-            minValue={patient.minHealth}
-            maxValue={patient.maxHealth}
-            color={patient.health >= 0 ? 'good' : 'average'}
-            content={(
-              <AnimatedNumber value={patient.health} />
-            )} />
-        </LabeledList.Item>
-        {damageTypes.map(type => (
-          <LabeledList.Item key={type.type} label={type.label}>
-            <ProgressBar
-              value={patient[type.type] / patient.maxHealth}
-              color="bad"
-              content={(
-                <AnimatedNumber value={patient[type.type]} />
-              )} />
-          </LabeledList.Item>
-        ))}
-      </LabeledList>
-    ) : (
-      'No Patient Detected'
-    )}
-  </Section>
-  <Section
-    title="Initiated Procedures"
-    level={2}>
-    {procedures.length ? (
-      procedures.map(procedure => (
-        <Section
-          key={procedure.name}
-          title={procedure.name}
-          level={3}>
-          <LabeledList>
-            <LabeledList.Item label="Next Step">
-              {procedure.next_step}
-              {procedure.chems_needed && (
-                <Fragment>
-                  <b>
-                    Required Chemicals:
-                  </b>
-                  <br />
-                  {procedure.chems_needed}
-                </Fragment>
-              )}
-            </LabeledList.Item>
-            {!!data.alternative_step && (
-              <LabeledList.Item label="Alternative Step">
-                {procedure.alternative_step}
-                {procedure.alt_chems_needed && (
-                  <Fragment>
-                    <b>
-                      Required Chemicals:
-                    </b>
-                    <br />
-                    {procedure.alt_chems_needed}
-                  </Fragment>
-                )}
-              </LabeledList.Item>
-            )}
-          </LabeledList>
-        </Section>
-      ))
-    ) : (
-      'No Active Procedures'
-    )}
-  </Section>
-</Section>
-*/

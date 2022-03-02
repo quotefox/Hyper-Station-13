@@ -1,7 +1,7 @@
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
 import { Button, LabeledList, NoticeBox, Section, Tabs, Input } from '../components';
-import { Window } from '../layouts';
+import { NtosWindow, Window } from '../layouts';
 
 export const TelecommsLogBrowser = (props, context) => {
   const { act, data } = useBackend(context);
@@ -16,8 +16,8 @@ export const TelecommsLogBrowser = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 'servers');
 
   return (
-    <Window>
-      <Window.Content>
+    <NtosWindow>
+      <NtosWindow.Content scrollable>
         {!!notice && (
           <NoticeBox>
             {notice}
@@ -181,7 +181,7 @@ export const TelecommsLogBrowser = (props, context) => {
             )}
           </Section>
         )}
-      </Window.Content>
-    </Window>
+      </NtosWindow.Content>
+    </NtosWindow>
   );
 };

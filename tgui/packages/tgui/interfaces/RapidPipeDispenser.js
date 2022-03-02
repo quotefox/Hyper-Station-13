@@ -71,7 +71,7 @@ export const RapidPipeDispenser = (props, context) => {
 
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section>
           <LabeledList>
             <LabeledList.Item

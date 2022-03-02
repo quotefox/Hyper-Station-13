@@ -8,7 +8,7 @@ export const CellularEmporium = (props, context) => {
   const { abilities } = data;
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section>
           <LabeledList>
             <LabeledList.Item

@@ -38,7 +38,7 @@ export const Gps = (props, context) => {
   ])(data.signals || []);
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section
           title="Control"
           buttons={(

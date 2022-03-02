@@ -7,8 +7,7 @@ import { Catalog } from './Cargo/Catalog';
 import { Requests } from './Cargo/Requests';
 
 export const Cargo = (props, context) => {
-  const { config, data, act } = useBackend(context);
-  const { ref } = config;
+  const { data, act } = useBackend(context);
   const {
     requestonly,
     points,
@@ -47,7 +46,7 @@ export const Cargo = (props, context) => {
 
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section
           title="Cargo"
           buttons={(

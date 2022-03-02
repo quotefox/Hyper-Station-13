@@ -14,7 +14,7 @@ export const NtnetRelay = (props, context) => {
 
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section
           title="Network Buffer"
           buttons={(

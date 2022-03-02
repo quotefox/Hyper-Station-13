@@ -8,7 +8,7 @@ export const CrewConsole = (props, context) => {
   const sensors = data.sensors || [];
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section minHeight={90}>
           <Table>
             <Table.Row>

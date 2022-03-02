@@ -27,7 +27,7 @@ export const ChemDispenser = (props, context) => {
     || [];
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section
           title="Status"
           buttons={recording && (

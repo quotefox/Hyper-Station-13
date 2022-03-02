@@ -7,6 +7,7 @@ import { Window } from '../layouts';
 
 export const TelecommsInteraction = (props, context) => {
   const { act, data } = useBackend(context);
+  
   const {
     notice = "",
     multitool = false,
@@ -15,6 +16,7 @@ export const TelecommsInteraction = (props, context) => {
     links = [],
     freq_listening = [],
   } = data;
+
   const {
     power = false,
     id = "NULL",
@@ -24,9 +26,11 @@ export const TelecommsInteraction = (props, context) => {
     isrelay = false,
     isbus = false,
   } = machine;
+
+
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         {!!notice && (
           <NoticeBox>
             {notice}

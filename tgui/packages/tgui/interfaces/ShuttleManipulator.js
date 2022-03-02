@@ -1,22 +1,22 @@
 import { map } from 'common/collections';
 import { Fragment } from 'inferno';
 import { useBackend, useLocalState } from '../backend';
-import { Button, LabeledList, Section, Table, Tabs } from '../components';
+import { Button, Flex, LabeledList, Section, Table, Tabs } from '../components';
 import { Window } from '../layouts';
 
 export const ShuttleManipulator = (props, context) => {
   const { act, data } = useBackend(context);
-  const shuttles = data.shuttles || [];
-  const templateObject = data.templates || {};
-  const selected = data.selected || {};
-  const existingShuttle = data.existing_shuttle || {};
+  const {
+    shuttles = [],
+    selected = {},
+    existingShuttle = {},
+  } = data;
+
   const [tab, setTab] = useLocalState(context, 'tab', 'status');
-  const [activeTemplate, setActiveTemplate] 
-    = useLocalState(context, 'template', Object.keys(templateObject)[0]);
 
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Tabs>
           <Tabs.Tab
             key="status"
@@ -90,58 +90,7 @@ export const ShuttleManipulator = (props, context) => {
           </Section>
         )}
         {tab === 'templates' && (
-          <Section>
-            <Tabs>
-              {map((template, templateId) => {
-                const templates = template.templates || [];
-                return (
-                  <Tabs.Tab
-                    key={templateId}
-                    selected={activeTemplate===templateId}
-                    onClick={() => setActiveTemplate(templateId)}>
-                    {template.port_id}
-                  </Tabs.Tab>
-                );
-              })(templateObject)}
-            </Tabs>
-            {() => {
-              const actualTemplate = templateObject[activeTemplate];
-              const isSelected = (
-                actualTemplate.shuttle_id === selected.shuttle_id
-              );
-              return (
-                <Section
-                  title={actualTemplate.name}
-                  level={2}
-                  key={actualTemplate.shuttle_id}
-                  buttons={(
-                    <Button
-                      content={isSelected ? 'Selected' : 'Select'}
-                      selected={isSelected}
-                      onClick={() => act('select_template', {
-                        shuttle_id: actualTemplate.shuttle_id,
-                      })} />
-                  )}>
-                  {(!!actualTemplate.description
-                          || !!actualTemplate.admin_notes
-                  ) && (
-                    <LabeledList>
-                      {!!actualTemplate.description && (
-                        <LabeledList.Item label="Description">
-                          {actualTemplate.description}
-                        </LabeledList.Item>
-                      )}
-                      {!!actualTemplate.admin_notes && (
-                        <LabeledList.Item label="Admin Notes">
-                          {actualTemplate.admin_notes}
-                        </LabeledList.Item>
-                      )}
-                    </LabeledList>
-                  )}
-                </Section>
-              );
-            }}
-          </Section>
+          <ShuttleManipulatorTemplates />
         )}
         {tab === 'modification' && (
           <Section>
@@ -217,3 +166,145 @@ export const ShuttleManipulator = (props, context) => {
     </Window>
   );
 };
+
+
+export const ShuttleManipulatorTemplates = (props, context) => {
+  const { act, data } = useBackend(context);
+  const templateObject = data.templates || {};
+  const selected = data.selected || {};
+  const [
+    selectedTemplateId,
+    setSelectedTemplateId,
+  ] = useLocalState(context, 'templateId', Object.keys(templateObject)[0]);
+  const actualTemplates = templateObject[selectedTemplateId]?.templates || [];
+  return (
+    <Section>
+      <Flex>
+        <Flex.Item>
+          <Tabs vertical>
+            {map((template, templateId) => (
+              <Tabs.Tab
+                key={templateId}
+                selected={selectedTemplateId === templateId}
+                onClick={() => setSelectedTemplateId(templateId)}>
+                {template.port_id}
+              </Tabs.Tab>
+            ))(templateObject)}
+          </Tabs>
+        </Flex.Item>
+        <Flex.Item grow={1} basis={0}>
+          {actualTemplates.map(actualTemplate => {
+            const isSelected = (
+              actualTemplate.shuttle_id === selected.shuttle_id
+            );
+            // Whoever made the structure being sent is an asshole
+            return (
+              <Section
+                title={actualTemplate.name}
+                level={2}
+                key={actualTemplate.shuttle_id}
+                buttons={(
+                  <Button
+                    content={isSelected ? 'Selected' : 'Select'}
+                    selected={isSelected}
+                    onClick={() => act('select_template', {
+                      shuttle_id: actualTemplate.shuttle_id,
+                    })} />
+                )}>
+                {(!!actualTemplate.description
+                  || !!actualTemplate.admin_notes
+                ) && (
+                  <LabeledList>
+                    {!!actualTemplate.description && (
+                      <LabeledList.Item label="Description">
+                        {actualTemplate.description}
+                      </LabeledList.Item>
+                    )}
+                    {!!actualTemplate.admin_notes && (
+                      <LabeledList.Item label="Admin Notes">
+                        {actualTemplate.admin_notes}
+                      </LabeledList.Item>
+                    )}
+                  </LabeledList>
+                )}
+              </Section>
+            );
+          })}
+        </Flex.Item>
+      </Flex>
+    </Section>
+  );
+};
+
+
+
+// const TemplatesTab = (props, context) => {
+//   const { act, data } = useBackend(context);
+//   const {
+//     templates = {},
+//     templates_tabs = [],
+//     selected = {},
+//   } = data;
+  
+//   const [templateTab, setTemplateTab] = useLocalState(context, 'templateTab', 'arrival');
+
+//   return (
+//     <Section>
+//       <Tabs>
+//         {templates_tabs.map(tempTab => (
+//           <Tabs.Tab
+//             key={tempTab}
+//             selected={templateTab === tempTab}
+//             onClick={() => setTemplateTab(tempTab)}>
+//             {tempTab}
+//           </Tabs.Tab>
+//         ))}
+//       </Tabs>
+//       {JSON.stringify(templates)}
+//       {/* {() => {
+//         const tab = templates[templateTab];
+//         return (
+//           <Section
+//             title={templateTab}>
+            
+//             {tab.templates.map(template => {
+//               const isSelected = (
+//                 template.shuttle_id === selected.shuttle_id
+//               );
+//               return (
+//                 <Section
+//                   title={template.name}
+//                   level={2}
+//                   key={template.shuttle_id}
+//                   buttons={(
+//                     <Button
+//                       content={isSelected ? 'Selected' : 'Select'}
+//                       selected={isSelected}
+//                       onClick={() => act('select_template', {
+//                         shuttle_id: template.shuttle_id,
+//                       })} />
+//                   )}>
+//                   {(!!template.description || !!template.admin_notes) && (
+//                     <LabeledList>
+//                       {!!template.description && (
+//                         <LabeledList.Item label="Description">
+//                           {template.description}
+//                         </LabeledList.Item>
+//                       )}
+//                       {!!template.admin_notes && (
+//                         <LabeledList.Item label="Admin Notes">
+//                           {template.admin_notes}
+//                         </LabeledList.Item>
+//                       )}
+//                     </LabeledList>
+//                   )}
+//                 </Section>
+//               );
+//             })}
+//           </Section>
+//         );
+//       } } */}
+//     </Section>
+//   );
+// };
+

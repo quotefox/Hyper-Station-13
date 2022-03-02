@@ -8,7 +8,7 @@ export const AtmosAlertConsole = (props, context) => {
   const minorAlerts = data.minor || [];
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section title="Alarms">
           <ul>
             {priorityAlerts.length > 0 ? (

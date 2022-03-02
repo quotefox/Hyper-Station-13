@@ -13,7 +13,7 @@ export const LaunchpadRemote = (props, context) => {
 
   if (!has_pad) {
     return (
-      <Window>
+      <Window theme="syndicate">
         <Window.Content>
           <NoticeBox>
             No Launchpad Connected
@@ -25,7 +25,7 @@ export const LaunchpadRemote = (props, context) => {
 
   if (pad_closed) {
     return (
-      <Window>
+      <Window theme="syndicate">
         <Window.Content>
           <NoticeBox>
             Launchpad Closed
@@ -36,6 +36,10 @@ export const LaunchpadRemote = (props, context) => {
   }
 
   return (
-    <LaunchpadControl topLevel />
+    <Window theme="syndicate">
+      <Window.Content>
+        <LaunchpadControl topLevel />
+      </Window.Content>
+    </Window>
   );
 };

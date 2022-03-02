@@ -7,7 +7,7 @@ export const SmartVend = (props, context) => {
   const { act, data } = useBackend(context);
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section
           title="Storage"
           buttons={!!data.isdryer && (

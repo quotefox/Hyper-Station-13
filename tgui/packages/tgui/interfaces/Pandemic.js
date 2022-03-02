@@ -9,7 +9,7 @@ export const Pandemic = (props, context) => {
 
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <PandemicBeakerDisplay state={props.state} />
         {!!data.has_blood && (
           <Fragment>

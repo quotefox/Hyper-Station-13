@@ -8,7 +8,7 @@ export const SpawnersMenu = (props, context) => {
   const spawners = data.spawners || [];
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section>
           {spawners.map(spawner => (
             <Section

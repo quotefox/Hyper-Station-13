@@ -9,7 +9,7 @@ export const AtmosControlConsole = (props, context) => {
   const sensors = data.sensors || [];
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section
           title={!!data.tank && sensors[0].long_name}>
           {sensors.map(sensor => {

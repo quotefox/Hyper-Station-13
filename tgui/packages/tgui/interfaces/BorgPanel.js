@@ -14,7 +14,7 @@ export const BorgPanel = (props, context) => {
   const laws = data.laws || [];
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section
           title={borg.name}
           buttons={(

@@ -8,7 +8,7 @@ export const Crayon = (props, context) => {
   const drawables = data.drawables || [];
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         {!!capOrChanges && (
           <Section title="Basic">
             <LabeledList>

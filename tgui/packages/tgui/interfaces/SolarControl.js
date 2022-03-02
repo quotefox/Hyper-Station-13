@@ -4,8 +4,7 @@ import { Box, Button, Grid, LabeledList, NumberInput, ProgressBar, Section } fro
 import { Window } from '../layouts';
 
 export const SolarControl = (props, context) => {
-  const { config, data, act } = useBackend(context);
-  const { ref } = config;
+  const { data, act } = useBackend(context);
   const {
     generated,
     angle,
@@ -23,7 +22,7 @@ export const SolarControl = (props, context) => {
             <Button
               icon="sync"
               content="Scan for new hardware"
-              onClick={() => act(ref, 'refresh')} />
+              onClick={() => act('refresh')} />
           )}>
           <Grid>
             <Grid.Column>
@@ -52,18 +51,18 @@ export const SolarControl = (props, context) => {
                 icon="times"
                 content="Off"
                 selected={tracking_state === 0}
-                onClick={() => act(ref, 'tracking', { mode: 0 })} />
+                onClick={() => act('tracking', { mode: 0 })} />
               <Button
                 icon="clock-o"
                 content="Timed"
                 selected={tracking_state === 1}
-                onClick={() => act(ref, 'tracking', { mode: 1 })} />
+                onClick={() => act('tracking', { mode: 1 })} />
               <Button
                 icon="sync"
                 content="Auto"
                 selected={tracking_state === 2}
                 disabled={!connected_tracker}
-                onClick={() => act(ref, 'tracking', { mode: 2 })} />
+                onClick={() => act('tracking', { mode: 2 })} />
             </LabeledList.Item>
             <LabeledList.Item label="Angle">
               {(tracking_state === 0 || tracking_state === 1) && (
@@ -76,7 +75,7 @@ export const SolarControl = (props, context) => {
                   maxValue={+720}
                   value={angle}
                   format={angle => Math.round(360 + angle) % 360}
-                  onDrag={(e, value) => act(ref, 'angle', { value })} />
+                  onDrag={(e, value) => act('angle', { value })} />
               )}
               {tracking_state === 1 && (
                 <NumberInput
@@ -91,7 +90,7 @@ export const SolarControl = (props, context) => {
                     const sign = Math.sign(rate) > 0 ? '+' : '-';
                     return sign + toFixed(Math.abs(rate));
                   }}
-                  onDrag={(e, value) => act(ref, 'rate', { value })} />
+                  onDrag={(e, value) => act('rate', { value })} />
               )}
               {tracking_state === 2 && (
                 <Box inline color="label" mt="3px">
@@ -106,7 +105,9 @@ export const SolarControl = (props, context) => {
   );
 };
 
-const PowerOutput = generated => {
+const PowerOutput = (props, context) => {
+  const { generated } = props;
+  
   return (
     <LabeledList>
       <LabeledList.Item label="Power output">

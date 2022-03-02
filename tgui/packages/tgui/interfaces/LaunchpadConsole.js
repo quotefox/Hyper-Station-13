@@ -13,7 +13,7 @@ export const LaunchpadConsole = (props, context) => {
   if (launchpads.length <= 0) {
     return (
       <Window>
-        <Window.Content>
+        <Window.Content scrollable>
           <NoticeBox>
             No Pads Connected
           </NoticeBox>
@@ -24,7 +24,7 @@ export const LaunchpadConsole = (props, context) => {
 
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section>
           <Grid>
             <Grid.Column size={0.6}>

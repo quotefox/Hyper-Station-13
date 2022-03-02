@@ -26,7 +26,7 @@ export const ChemMaster = (props, context) => {
   }
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section
           title="Beaker"
           buttons={!!isBeakerLoaded && (

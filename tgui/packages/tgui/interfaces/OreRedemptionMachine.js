@@ -15,7 +15,7 @@ export const OreRedemptionMachine = (props, context) => {
   } = data;
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section>
           <BlockQuote mb={1}>
             This machine only accepts ore.<br />

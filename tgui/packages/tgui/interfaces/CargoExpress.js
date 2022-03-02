@@ -25,7 +25,7 @@ export const CargoExpress = (props, context) => {
 
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <InterfaceLockNoticeBox
           siliconUser={siliconUser}
           locked={locked}

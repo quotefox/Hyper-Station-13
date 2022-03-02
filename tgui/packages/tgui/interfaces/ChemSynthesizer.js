@@ -13,7 +13,7 @@ export const ChemSynthesizer = (props, context) => {
   } = data;
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section>
           <Box>
             {possible_amounts.map(possible_amount => (

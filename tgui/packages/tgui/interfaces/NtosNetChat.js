@@ -36,7 +36,7 @@ export const NtosNetChat = (props, context) => {
                 style={{
                   width: '200px',
                 }}>
-                <Channels {...data} act={act} />
+                <Channels />
                 <Button.Input
                   fluid
                   mt={1}
@@ -154,7 +154,8 @@ export const NtosNetChat = (props, context) => {
 };
 
 
-const Channels = (data, act) => {
+const Channels = (props, context) => {
+  const { act, data } = useBackend(context);
   const {
     active_channel,
     all_channels = [],

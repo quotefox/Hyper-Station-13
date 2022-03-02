@@ -10,7 +10,7 @@ export const StationAlertConsole = (props, context) => {
   const power = categories['Power'] || [];
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section title="Fire Alarms">
           <ul>
             {fire.length === 0 && (

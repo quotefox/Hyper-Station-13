@@ -4,18 +4,17 @@ import { Box, Button, Section, Table } from '../components';
 import { Window } from '../layouts';
 
 export const OreBox = (props, context) => {
-  const { config, data, act } = useBackend(context);
-  const { ref } = config;
+  const { data, act } = useBackend(context);
   const { materials } = data;
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section
           title="Ores"
           buttons={(
             <Button
               content="Empty"
-              onClick={() => act(ref, 'removeall')} />
+              onClick={() => act('removeall')} />
           )}>
           <Table>
             <Table.Row header>

@@ -15,7 +15,7 @@ export const NtosNetDownloader = (props, context) => {
   } = data;
   return (
     <NtosWindow>
-      <NtosWindow.Content>
+      <NtosWindow.Content scrollable>
         {!!error && (
           <NoticeBox>
             <Box mb={1}>

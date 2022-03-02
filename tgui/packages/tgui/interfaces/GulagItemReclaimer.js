@@ -7,7 +7,7 @@ export const GulagItemReclaimer = (props, context) => {
   const mobs = data.mobs || [];
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section title="Stored Items">
           <Table>
             {mobs.map(mob => (

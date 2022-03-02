@@ -15,13 +15,14 @@ export const NaniteProgramHub = (props, context) => {
   } = data;
 
   const [activeCategoryKey, setActiveCategoryKey] 
-    = useLocalState(context, 'category', Object.keys(programs)[0]);
+    = useLocalState(context, 'category', 
+      programs !== null ? Object.keys(programs)[0] : null);
   
-  const activeCategory = programs[activeCategoryKey];
+  const activeCategory = programs !== null ? programs[activeCategoryKey] : null;
 
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section
           title="Program Disk"
           buttons={(
@@ -68,7 +69,11 @@ export const NaniteProgramHub = (props, context) => {
               <Button
                 icon="sync"
                 content="Sync Research"
-                onClick={() => act('refresh')} />
+                onClick={() => {
+                  act('refresh');
+                  (programs !== null && activeCategoryKey === null 
+                    && setActiveCategoryKey(Object.keys(programs)[0]));
+                }} />
             </Fragment>
           )}>
           {programs !== null ? (

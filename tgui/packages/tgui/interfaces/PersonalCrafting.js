@@ -45,7 +45,7 @@ export const PersonalCrafting = (props, context) => {
 
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         {busyBox}
         <Section
           title="Personal Crafting"

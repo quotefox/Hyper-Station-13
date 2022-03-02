@@ -14,7 +14,7 @@ export const LanguageMenu = (props, context) => {
   } = data;
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section title="Known Languages">
           <LabeledList>
             {languages.map(language => (

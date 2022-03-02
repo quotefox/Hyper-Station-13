@@ -25,7 +25,7 @@ export const NtosMain = (props, context) => {
   } = data;
   return (
     <NtosWindow>
-      <NtosWindow.Content>
+      <NtosWindow.Content scrollable>
         {!!has_light && (
           <Section>
             <Button

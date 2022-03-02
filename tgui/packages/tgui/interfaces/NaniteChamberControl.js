@@ -20,7 +20,7 @@ export const NaniteChamberControl = (props, context) => {
   if (status_msg) {
     return (
       <Window>
-        <Window.Content>
+        <Window.Content scrollable>
           <NoticeBox textAlign="center">
             {status_msg}
           </NoticeBox>
@@ -33,7 +33,7 @@ export const NaniteChamberControl = (props, context) => {
 
   return (
     <Window>
-      <Window.Content>
+      <Window.Content scrollable>
         <Section
           title={'Chamber: ' + occupant_name}
           buttons={(

@@ -12,7 +12,7 @@ export const NtosRbmkStats = (props, context) => {
   const tempOutputdata = data.tempOutputdata.map((value, i) => [i, value]);
   return (
     <NtosWindow>
-      <NtosWindow.Content>
+      <NtosWindow.Content scrollable>
         <Section title="Reactor Management">
           <Section title="Legend:" buttons={
             <Button

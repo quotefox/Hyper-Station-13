@@ -16,7 +16,11 @@ export const NtosSupermatterMonitor = (props, context) => {
   } = data;
   if (!active) {
     return (
-      <SupermatterList state={state} />
+      <NtosWindow>
+        <NtosWindow.Content>
+          <SupermatterList />
+        </NtosWindow.Content>
+      </NtosWindow>
     );
   }
   const gases = flow([
@@ -26,7 +30,7 @@ export const NtosSupermatterMonitor = (props, context) => {
   const gasMaxAmount = Math.max(1, ...gases.map(gas => gas.amount));
   return (
     <NtosWindow>
-      <NtosWindow.Content>
+      <NtosWindow.Content scrollable>
         <Flex spacing={1}>
           <Flex.Item width="270px">
             <Section title="Metrics">
