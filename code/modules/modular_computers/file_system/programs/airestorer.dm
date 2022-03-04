@@ -8,7 +8,7 @@
 	usage_flags = PROGRAM_CONSOLE
 	transfer_access = ACCESS_HEADS
 	available_on_ntnet = 1
-	tgui_id = "ntos_ai_restorer"
+	tgui_id = "NtosAiRestorer"
 	ui_x = 600
 	ui_y = 400
 
