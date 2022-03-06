@@ -1629,11 +1629,6 @@ datum/sprite_accessory/mam_tails/insect
 	name = "Abdominals Three-Tones"
 	icon_state = "absarms"
 
-/datum/sprite_accessory/mam_body_markings/bee
-	name = "Bee"
-	icon_state = "bee"
-	icon = 'modular_citadel/icons/mob/markings_notmammals.dmi'
-
 /datum/sprite_accessory/mam_body_markings/belly
 	name = "Belly"
 	icon_state = "belly"
@@ -1713,11 +1708,6 @@ datum/sprite_accessory/mam_tails/insect
 /datum/sprite_accessory/mam_body_markings/lab
 	name = "Lab"
 	icon_state = "lab"
-
-/datum/sprite_accessory/mam_body_markings/moth
-	name = "Moth"
-	icon_state = "moth"
-	icon = 'modular_citadel/icons/mob/markings_notmammals.dmi'
 
 /datum/sprite_accessory/mam_body_markings/otie
 	name = "Otie"

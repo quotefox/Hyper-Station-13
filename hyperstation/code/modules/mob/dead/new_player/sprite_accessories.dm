@@ -16,7 +16,6 @@ of the code are from TG, don't use those.
 keep everything in alphabetical order, please!
 */
 
-
 // TODO: code it so that we don't have to type in "icon = 'hyperstation/icons/mob/etc'"
 // manually for hyperstation parts
 
@@ -184,10 +183,23 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	recommended_species = list("mammal", "xeno", "slimeperson", "podweak", "avian", "aquatic")
 */
 
-// /datum/sprite_accessory/mam_body_markings/empty
-// 	name = "None (Hyper)"
-// 	icon_state = "empty"
-// 	icon = 'modular_citadel/icons/mob/markings_notmammals.dmi'
+/datum/sprite_accessory/mam_body_markings/bee
+	name = "Bee (Hyper)"
+	icon_state = "bee"
+	icon = 'hyperstation/icons/mob/char_markings.dmi'
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/mam_body_markings/moth // sarcoph @ hyperstation, jan 2022
+	name = "Moth (Hyper)"
+	icon_state = "moth"
+	icon = 'hyperstation/icons/mob/char_markings.dmi'
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/mam_body_markings/empty
+	name = "None (Hyper)"
+	icon_state = "empty"
+	recommended_species = list("podweak", /*"mammal",*/ "avian", "aquatic", "insect", "xeno", "synthliz", "slimeperson")
+	// mammals are cursed to no empty markings until they get their heads fixed.
 
 /datum/sprite_accessory/mam_body_markings/pigeon // sarcoph @ hyperstation, jan 2022
 	name = "Pigeon (Hyper)"
