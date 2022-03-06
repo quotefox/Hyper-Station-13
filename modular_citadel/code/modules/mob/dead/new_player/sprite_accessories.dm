@@ -1326,14 +1326,6 @@ datum/sprite_accessory/ears/human/gret
 	name = "Axolotl"
 	icon_state = "axolotl"
 
-/datum/sprite_accessory/mam_tails/bee
-	name = "Bee"
-	icon_state = "bee"
-
-/datum/sprite_accessory/mam_tails_animated/bee
-	name = "Bee"
-	icon_state = "bee"
-
 /datum/sprite_accessory/mam_tails/cat
 	name = "Cat"
 	icon_state = "cat"
@@ -1425,14 +1417,6 @@ datum/sprite_accessory/ears/human/gret
 /datum/sprite_accessory/mam_tails_animated/husky
 	name = "Husky"
 	icon_state = "husky"
-
-datum/sprite_accessory/mam_tails/insect
-	name = "Insect"
-	icon_state = "insect"
-
-/datum/sprite_accessory/mam_tails_animated/insect
-	name = "Insect"
-	icon_state = "insect"
 
 /datum/sprite_accessory/mam_tails/kangaroo
 	name = "kangaroo"
