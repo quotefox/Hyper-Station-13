@@ -26,11 +26,85 @@ SNOUTS
 ==========================================================
 */
 
+/datum/sprite_accessory/mam_snouts/bigmandible // sarcoph @ hyperstation, march 2022
+	name = "Big Mandibles (Hyper)"
+	icon_state = "bigmandible"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/mam_snouts/proboscis // sarcoph @ hyperstation, march 2022
+	name = "Proboscis (Hyper)"
+	icon_state = "proboscis"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/mam_snouts/rhinobeetle // sarcoph @ hyperstation, march 2022
+	name = "Rhino Beetle (Hyper)"
+	icon_state = "rhinobeetle"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/mam_snouts/scarab // sarcoph @ hyperstation, march 2022
+	name = "Scarab Beetle (Hyper)"
+	icon_state = "scarab"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/mam_snouts/smallmandible // sarcoph @ hyperstation, march 2022
+	name = "Small Mandibles (Hyper)"
+	icon_state = "smallmandible"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/mam_snouts/spider // sarcoph @ hyperstation, march 2022
+	name = "Spider (Hyper)"
+	icon_state = "spider"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+	recommended_species = list("insect")
+
+/datum/sprite_accessory/mam_snouts/tarantula // sarcoph @ hyperstation, march 2022
+	name = "Tarantula (Hyper)"
+	icon_state = "tarantula"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+	recommended_species = list("insect")
+
 
 /*
 EARS
 ==========================================================
 */
+
+/datum/sprite_accessory/mam_ears/moth
+	name = "Moth (Hyper)"
+	icon_state = "moth"
+	icon = 'hyperstation/icons/mob/char_ears.dmi'
+	recommended_species = list("insect")
+
+
+/*
+WINGS
+==========================================================
+*/
+
+/datum/sprite_accessory/deco_wings/minibat // sarcoph @ hyperstation, march 2022
+	name = "Mini Bat (Hyper)"
+	icon_state = "minibat"
+	icon = 'hyperstation/icons/mob/char_wings.dmi'
+
+/datum/sprite_accessory/deco_wings/minifeather // sarcoph @ hyperstation, march 2022
+	name = "Mini Feather (Hyper)"
+	icon_state = "minifeather"
+	icon = 'hyperstation/icons/mob/char_wings.dmi'
+
+/datum/sprite_accessory/deco_wings/tinybat // sarcoph @ hyperstation, march 2022
+	name = "Tiny Bat (Hyper)"
+	icon_state = "tinybat"
+	icon = 'hyperstation/icons/mob/char_wings.dmi'
+
+/datum/sprite_accessory/deco_wings/tinyfeather // sarcoph @ hyperstation, march 2022
+	name = "Tiny Feather (Hyper)"
+	icon_state = "tinyfeather"
+	icon = 'hyperstation/icons/mob/char_wings.dmi'
 
 
 /*
@@ -39,57 +113,57 @@ TAILS + ANIMATED TAILS
 */
 
 // "fan" bird tail, short
-/datum/sprite_accessory/mam_tails/shorthawk
-	name = "Hawk - Short"
+/datum/sprite_accessory/mam_tails/shorthawk // sarcoph @ hyperstation, jan 2022
+	name = "Hawk - Short (Hyper)"
 	icon_state = "shorthawk"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
-/datum/sprite_accessory/mam_tails_animated/shorthawk
-	name = "Hawk - Short"
+/datum/sprite_accessory/mam_tails_animated/shorthawk // sarcoph @ hyperstation, jan 2022
+	name = "Hawk - Short (Hyper)"
 	icon_state = "shorthawk"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
 // "narrow" bird tail, long
-/datum/sprite_accessory/mam_tails/longpigeon
-	name = "Pigeon - Long"
+/datum/sprite_accessory/mam_tails/longpigeon // sarcoph @ hyperstation, jan 2022
+	name = "Pigeon - Long (Hyper)"
 	icon_state = "longpigeon"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
-/datum/sprite_accessory/mam_tails_animated/longpigeon
-	name = "Pigeon - Long"
+/datum/sprite_accessory/mam_tails_animated/longpigeon // sarcoph @ hyperstation, jan 2022
+	name = "Pigeon - Long (Hyper)"
 	icon_state = "longpigeon"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
 // "narrow" bird tail, short
-/datum/sprite_accessory/mam_tails/shortpigeon
-	name = "Pigeon - Short"
+/datum/sprite_accessory/mam_tails/shortpigeon // sarcoph @ hyperstation, jan 2022
+	name = "Pigeon - Short (Hyper)"
 	icon_state = "shortpigeon"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
-/datum/sprite_accessory/mam_tails_animated/shortpigeon
-	name = "Pigeon - Short"
+/datum/sprite_accessory/mam_tails_animated/shortpigeon // sarcoph @ hyperstation, jan 2022
+	name = "Pigeon - Short (Hyper)"
 	icon_state = "shortpigeon"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
 // "forked" bird tail, long
-/datum/sprite_accessory/mam_tails/swallow
-	name = "Swallow"
+/datum/sprite_accessory/mam_tails/swallow // sarcoph @ hyperstation, jan 2022
+	name = "Swallow (Hyper)"
 	icon_state = "swallow"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
-/datum/sprite_accessory/mam_tails_animated/swallow
-	name = "Swallow"
+/datum/sprite_accessory/mam_tails_animated/swallow // sarcoph @ hyperstation, jan 2022
+	name = "Swallow (Hyper)"
 	icon_state = "swallow"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
 // forked bird tail, long; special stripe markings
-/datum/sprite_accessory/mam_tails/swallowstriped
-	name = "Swallow - Striped"
+/datum/sprite_accessory/mam_tails/swallowstriped // sarcoph @ hyperstation, jan 2022
+	name = "Swallow - Striped (Hyper)"
 	icon_state = "swallowstriped"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
-/datum/sprite_accessory/mam_tails_animated/swallowstriped
-	name = "Swallow - Striped"
+/datum/sprite_accessory/mam_tails_animated/swallowstriped // sarcoph @ hyperstation, jan 2022
+	name = "Swallow - Striped (Hyper)"
 	icon_state = "swallowstriped"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
@@ -110,14 +184,19 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	recommended_species = list("mammal", "xeno", "slimeperson", "podweak", "avian", "aquatic")
 */
 
-/datum/sprite_accessory/mam_body_markings/pigeon
-	name = "Pigeon"
+// /datum/sprite_accessory/mam_body_markings/empty
+// 	name = "None (Hyper)"
+// 	icon_state = "empty"
+// 	icon = 'modular_citadel/icons/mob/markings_notmammals.dmi'
+
+/datum/sprite_accessory/mam_body_markings/pigeon // sarcoph @ hyperstation, jan 2022
+	name = "Pigeon (Hyper)"
 	icon_state = "pigeon"
 	icon = 'hyperstation/icons/mob/char_markings.dmi'
 	recommended_species = list("avian")
 
-/datum/sprite_accessory/mam_body_markings/shrike
-	name = "Shrike"
+/datum/sprite_accessory/mam_body_markings/shrike // sarcoph @ hyperstation, jan 2022
+	name = "Shrike (Hyper)"
 	icon_state = "shrike"
 	icon = 'hyperstation/icons/mob/char_markings.dmi'
 	recommended_species = list("avian")
