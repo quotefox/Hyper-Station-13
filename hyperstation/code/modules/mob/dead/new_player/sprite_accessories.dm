@@ -115,6 +115,28 @@ WINGS
 ==========================================================
 */
 
+/datum/sprite_accessory/deco_wings/beetle // sarcoph @ hyperstation, march 2022
+	name = "Beetle (Hyper)"
+	icon_state = "beetle"
+	icon = 'hyperstation/icons/mob/char_wings.dmi'
+
+/datum/sprite_accessory/moth_wings/beetle
+	name = "Beetle (Hyper)"
+	icon_state = "beetle"
+	icon = 'hyperstation/icons/mob/char_wings.dmi'
+
+/datum/sprite_accessory/deco_wings/beetle // sarcoph @ hyperstation, march 2022
+	name = "Beetle - 2-toned (Hyper)"
+	icon_state = "beetle2"
+	icon = 'hyperstation/icons/mob/char_wings.dmi'
+	color_src = MATRIXED
+
+/datum/sprite_accessory/moth_wings/beetle
+	name = "Beetle - 2-toned (Hyper)"
+	icon_state = "beetle2"
+	icon = 'hyperstation/icons/mob/char_wings.dmi'
+	color_src = MATRIXED
+
 /datum/sprite_accessory/deco_wings/insect // sarcoph @ hyperstation, march 2022
 	name = "Insect (Hyper)"
 	icon_state = "insect"
