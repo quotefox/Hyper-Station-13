@@ -166,6 +166,27 @@
 	occurances_max = 2
 	chaos_min = 2
 
+
+//////////////////////////////////////////////
+//                                          //
+//                CRY-STALS                 //
+//                                          //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/event/crystals
+	name = "Crystal Invasion"
+	/datum/round_event/crystalloid_entities
+	weight = 4
+	repeatable_weight_decrease = 2
+	cost = 4
+	requirements = list(5,5,5,5,5,5,0,0,0,0)
+	high_population_requirement = 5
+	earliest_start = 30 MINUTES
+	repeatable = TRUE
+	occurances_max = 2
+	chaos_min = 1.0
+	map_whitelist = list("LayeniaStation.dmm")
+
 //////////////////////////////////////////////
 //                                          //
 //              CLOGGED VENTS               //
