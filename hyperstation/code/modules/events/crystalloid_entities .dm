@@ -29,6 +29,6 @@
 
 /datum/round_event/crystalloid_entities/start()
 	for(var/obj/effect/landmark/carpspawn/C in GLOB.landmarks_list)
-		if(prob(70)) //dont spawn them EVERYWHERE, they are tougher than carps.
+		if(prob(60)) //dont spawn them EVERYWHERE, they are tougher than carps.
 			new /mob/living/simple_animal/hostile/crystal(C.loc)
 
