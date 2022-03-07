@@ -16,8 +16,8 @@
 	emote_taunt = list("sings")
 	taunt_chance = 20
 	speed = 0
-	maxHealth = 50
-	health = 50
+	maxHealth = 40
+	health = 40
 	spacewalk = TRUE
 	harm_intent_damage = 8
 	obj_damage = 50
@@ -58,3 +58,8 @@
 	if(. && ishuman(target))
 		var/mob/living/carbon/human/H = target
 		H.adjustStaminaLoss(8)
+
+/mob/living/simple_animal/hostile/crystal/Destroy()
+	playsound(src, 'sound/creatures/crystal_death.ogg', 100)
+	new /obj/effect/decal/cleanable/glass(src.loc)
+	return ..()

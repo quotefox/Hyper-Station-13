@@ -3155,7 +3155,7 @@
 #include "hyperstation\code\modules\clothing\under\under.dm"
 #include "hyperstation\code\modules\economy\account.dm"
 #include "hyperstation\code\modules\events\crystalline_reentry.dm"
-#include "hyperstation\code\modules\events\crystalloid_entities .dm"
+#include "hyperstation\code\modules\events\crystalloid_entities.dm"
 #include "hyperstation\code\modules\food_and_drinks\recipes\drinks_recipes.dm"
 #include "hyperstation\code\modules\integrated_electronics\input.dm"
 #include "hyperstation\code\modules\jobs\job_types\roleplay.dm"
