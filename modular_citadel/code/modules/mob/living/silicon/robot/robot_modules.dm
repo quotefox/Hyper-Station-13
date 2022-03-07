@@ -615,7 +615,7 @@
 		if("Heavy")
 			cyborg_base_icon = "heavyeng"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
-		if("Pup Dozer")
+		if("Pupdozer")
 			cyborg_base_icon = "pupdozer"
 			can_be_pushed = FALSE
 			hat_offset = INFINITY
