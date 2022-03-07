@@ -1,7 +1,7 @@
 #define REGENERATION_DELAY 60  // After taking damage, how long it takes for automatic regeneration to begin for megacarps (ty robustin!)
 
 /mob/living/simple_animal/hostile/crystal
-	name = "Pellucyte"
+	name = "pellucyte"
 	desc = "A floating crystal with orbiting smaller crystals."
 	icon = 'hyperstation/icons/mob/crystal.dmi'
 	icon_state = "crystal"
