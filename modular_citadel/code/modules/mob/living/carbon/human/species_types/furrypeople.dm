@@ -149,8 +149,8 @@
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
-	mutant_bodyparts = list("mam_ears", "mam_body_markings", "mam_tail", "taur", "moth_wings","moth_markings", "mam_snouts", "moth_fluff")
-	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_tail" = "None", "mam_ears" = "None", "moth_wings" = "Plain","moth_markings" = "None", "mam_snouts" = "Bug", "mam_body_markings" = "Moth", "taur" = "None", "moth_fluff" = "Plain")
+	mutant_bodyparts = list("mam_ears", "mam_body_markings", "mam_tail", "taur", "moth_wings","moth_markings", "mam_snouts", "moth_fluff", "legs")
+	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_tail" = "None", "mam_ears" = "None", "moth_wings" = "Plain","moth_markings" = "None", "mam_snouts" = "Bug", "mam_body_markings" = "Moth", "taur" = "None", "moth_fluff" = "Plain", "legs" = "Normal Legs")
 	attack_verb = "flutter" //wat?
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
