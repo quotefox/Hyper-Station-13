@@ -113,7 +113,6 @@
 /mob/proc/is_holding(obj/item/I)
 	return get_held_index_of_item(I)
 
-
 //Checks if we're holding an item of type: typepath
 /mob/proc/is_holding_item_of_type(typepath)
 	for(var/obj/item/I in held_items)

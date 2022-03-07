@@ -195,14 +195,14 @@
 	. += "<span class='notice'>Alt-click [src] to [state_open ? "close" : "open"] it.</span>"
 
 /obj/machinery/sleeper/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
-									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.notcontained_state)
+									datum/tgui/master_ui = null, datum/tgui_state/state = GLOB.tgui_notcontained_state)
 
-	if(controls_inside && state == GLOB.notcontained_state)
-		state = GLOB.default_state // If it has a set of controls on the inside, make it actually controllable by the mob in it.
+	if(controls_inside && state == GLOB.tgui_notcontained_state)
+		state = GLOB.tgui_default_state // If it has a set of controls on the inside, make it actually controllable by the mob in it.
 
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "sleeper", name, 550, 700, master_ui, state)
+		ui = new(user, src, ui_key, "Sleeper", name, 550, 700, master_ui, state)
 		ui.open()
 
 /obj/machinery/sleeper/ui_data()

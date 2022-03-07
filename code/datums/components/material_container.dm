@@ -91,7 +91,7 @@
 		requested_amount = input(user, "How much do you want to insert?", "Inserting [S.singular_name]s") as num|null
 		if(isnull(requested_amount) || (requested_amount <= 0))
 			return
-		if(QDELETED(I) || QDELETED(user) || QDELETED(src) || parent != current_parent || user.physical_can_use_topic(current_parent) < UI_INTERACTIVE || user.get_active_held_item() != active_held)
+		if(QDELETED(I) || QDELETED(user) || QDELETED(src) || parent != current_parent || user.physical_can_use_tgui_topic(current_parent) < UI_INTERACTIVE || user.get_active_held_item() != active_held)
 			return
 	if(!user.temporarilyRemoveItemFromInventory(I))
 		to_chat(user, "<span class='warning'>[I] is stuck to you and cannot be placed into [parent].</span>")

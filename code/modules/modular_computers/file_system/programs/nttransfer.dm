@@ -8,7 +8,7 @@
 	requires_ntnet_feature = NTNET_PEERTOPEER
 	network_destination = "other device via P2P tunnel"
 	available_on_ntnet = 1
-	tgui_id = "ntos_net_transfer"
+	tgui_id = "NtosNetTransfer"
 
 	var/error = ""										// Error screen
 	var/server_password = ""							// Optional password to download the file.

@@ -7,7 +7,7 @@
 	requires_ntnet = 1
 	available_on_ntnet = 0
 	available_on_syndinet = 1
-	tgui_id = "ntos_net_dos"
+	tgui_id = "NtosNetDos"
 	ui_style = "syndicate"
 	ui_x = 400
 	ui_y = 250
@@ -80,17 +80,8 @@
 	else if(target && executed)
 		data["target"] = 1
 		data["speed"] = dos_speed
-
-		// This is mostly visual, generate some strings of 1s and 0s
-		// Probability of 1 is equal of completion percentage of DoS attack on this relay.
-		// Combined with UI updates this adds quite nice effect to the UI
-		var/percentage = target.dos_overload * 100 / target.dos_capacity
-		data["dos_strings"] = list()
-		for(var/j, j<10, j++)
-			var/string = ""
-			for(var/i, i<20, i++)
-				string = "[string][prob(percentage)]"
-			data["dos_strings"] += list(list("nums" = string))
+		data["overload"] = target.dos_overload
+		data["capacity"] = target.dos_capacity
 	else
 		data["relays"] = list()
 		for(var/obj/machinery/ntnet_relay/R in SSnetworks.station_network.relays)
