@@ -16,7 +16,7 @@ export const NtosConfiguration = (props, context) => {
   } = data;
 
   return (
-    <NtosWindow>
+    <NtosWindow resizable>
       <NtosWindow.Content scrollable>
         <Section
           title="Power Supply"

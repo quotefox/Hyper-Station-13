@@ -24,7 +24,7 @@ export const NtosMain = (props, context) => {
     comp_light_color,
   } = data;
   return (
-    <NtosWindow>
+    <NtosWindow resizable>
       <NtosWindow.Content scrollable>
         {!!has_light && (
           <Section>

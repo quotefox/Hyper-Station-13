@@ -13,7 +13,7 @@ export const Signaler = (props, context) => {
   } = data;
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Grid>
           <Grid.Column size={1.4} color="label">

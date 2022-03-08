@@ -13,7 +13,7 @@ export const NtosFileManager = (props, context) => {
 
   if (error) {
     return (
-      <NtosWindow>
+      <NtosWindow resizable>
         <NtosWindow.Content scrollable>
           <NoticeBox danger>
             {error}
@@ -26,7 +26,7 @@ export const NtosFileManager = (props, context) => {
   }
 
   return (
-    <NtosWindow>
+    <NtosWindow resizable>
       <NtosWindow.Content scrollable>
         <Section title="Available files (local)">
           <Table>

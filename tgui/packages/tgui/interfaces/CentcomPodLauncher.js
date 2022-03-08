@@ -21,7 +21,7 @@ import { CPLTimers } from './CentcomPodLauncher/CPLTimers';
 export const CentcomPodLauncher = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <NoticeBox>
           To use this, simply spawn the atoms you want in one of the five

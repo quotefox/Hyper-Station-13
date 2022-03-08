@@ -13,7 +13,7 @@ export const NtnetRelay = (props, context) => {
   } = data;
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section
           title="Network Buffer"

@@ -14,7 +14,7 @@ export const EightBallVote = (props, context) => {
 
   if (!shaking) {
     return (
-      <Window>
+      <Window resizable>
         <Window.Content>
           <NoticeBox>
             No question is currently being asked.
@@ -25,7 +25,7 @@ export const EightBallVote = (props, context) => {
   }
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section>
           <Box

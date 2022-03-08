@@ -13,7 +13,7 @@ export const PortablePump = (props, context) => {
   } = data;
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <PortableBasicInfo state={props.state} />
         <Section

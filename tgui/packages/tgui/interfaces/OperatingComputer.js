@@ -33,7 +33,7 @@ export const OperatingComputer = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 'state');
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Tabs>
           <Tabs.Tab

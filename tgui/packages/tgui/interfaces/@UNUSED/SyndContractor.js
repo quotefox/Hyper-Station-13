@@ -149,7 +149,7 @@ export const SyndContractor = (props, context) => {
   }
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         {errorPane}
         <SyndPane state={props.state} />

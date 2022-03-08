@@ -12,7 +12,7 @@ export const PortableScrubber = (props, context) => {
   const filter_types = data.filter_types || [];
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <PortableBasicInfo state={props.state} />
         <Section title="Filters">

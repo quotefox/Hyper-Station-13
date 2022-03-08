@@ -21,7 +21,7 @@ export const GulagTeleporterConsole = (props, context) => {
   } = data;
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section
           title="Teleporter Console"

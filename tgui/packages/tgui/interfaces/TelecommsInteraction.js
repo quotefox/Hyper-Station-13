@@ -29,7 +29,7 @@ export const TelecommsInteraction = (props, context) => {
 
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         {!!notice && (
           <NoticeBox>

@@ -7,7 +7,7 @@ export const SatelliteControl = (props, context) => {
   const { act, data } = useBackend(context);
   const satellites = data.satellites || [];
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         {data.meteor_shield && (
           <Section>

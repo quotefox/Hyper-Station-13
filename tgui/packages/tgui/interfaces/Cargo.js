@@ -45,7 +45,7 @@ export const Cargo = (props, context) => {
   );
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section
           title="Cargo"

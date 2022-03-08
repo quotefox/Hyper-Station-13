@@ -27,7 +27,7 @@ export const Smes = (props, context) => {
   }
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section title="Stored Energy">
           <ProgressBar

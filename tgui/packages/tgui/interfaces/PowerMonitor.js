@@ -44,7 +44,7 @@ export const PowerMonitor = (props, context) => {
 
   
   return (
-    <NtosWindow>
+    <NtosWindow resizable>
       <NtosWindow.Content scrollable>
         <Flex spacing={1}>
           <Flex.Item width="200px">

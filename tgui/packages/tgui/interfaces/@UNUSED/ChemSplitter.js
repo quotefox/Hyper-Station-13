@@ -11,7 +11,7 @@ export const ChemSplitter = (props, context) => {
     max_transfer,
   } = data;
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section>
           <LabeledList>

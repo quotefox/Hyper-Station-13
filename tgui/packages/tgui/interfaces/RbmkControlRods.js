@@ -9,7 +9,7 @@ export const RbmkControlRods = (props, context) => {
   const k = data.k;
   const desiredK = data.desiredK;
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section title="Control Rod Management:">
           Control Rod Insertion:

@@ -14,7 +14,7 @@ export const SolarControl = (props, context) => {
     connected_tracker,
   } = data;
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section
           title="Status"

@@ -19,7 +19,7 @@ export const Intellicard = (props, context) => {
   } = data;
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section
           title={name || "Empty Card"}

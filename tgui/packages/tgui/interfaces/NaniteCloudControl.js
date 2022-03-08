@@ -15,7 +15,7 @@ export const NaniteCloudControl = (props, context) => {
   } = data;
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section
           title="Program Disk"

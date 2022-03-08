@@ -11,7 +11,7 @@ export const SlimeBodySwapper = (props, context) => {
   } = data;
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section>
           {bodies.map(body => (

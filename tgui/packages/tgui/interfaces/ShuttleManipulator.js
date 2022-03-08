@@ -15,7 +15,7 @@ export const ShuttleManipulator = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 'status');
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Tabs>
           <Tabs.Tab
