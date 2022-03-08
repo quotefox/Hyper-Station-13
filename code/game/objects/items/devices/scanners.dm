@@ -135,6 +135,8 @@ GENE SCANNER
 
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
+		H.scan_animation()
+
 		if(H.undergoing_cardiac_arrest() && H.stat != DEAD)
 			to_chat(user, "<span class='danger'>Subject suffering from heart attack: Apply defibrillation or other electric shock immediately!</span>")
 		if(H.undergoing_liver_failure() && H.stat != DEAD) //might be depreciated BUG_PROBABLE_CAUSE
