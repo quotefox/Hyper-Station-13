@@ -156,3 +156,7 @@
 
 //belly sound pref things
 #define NORMIE_HEARCHECK 4
+
+#define BORGBELLY_NONE 0
+#define BORGBELLY_RED 1
+#define BORGBELLY_GREEN 2
