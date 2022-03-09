@@ -13,7 +13,7 @@ export const BorgPanel = (props, context) => {
   const ais = data.ais || [];
   const laws = data.laws || [];
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section
           title={borg.name}
@@ -44,8 +44,9 @@ export const BorgPanel = (props, context) => {
             <LabeledList.Item label="Charge">
               {!cell.missing ? (
                 <ProgressBar
-                  value={cellPercent}
-                  content={cell.charge + ' / ' + cell.maxcharge} />
+                  value={cellPercent}>
+                  {cell.charge} / {cell.maxcharge}
+                </ProgressBar>
               ) : (
                 <span className="color-bad">No cell installed</span>
               ) }

@@ -8,7 +8,7 @@ export const MechBayPowerConsole = (props, context) => {
   const mech = recharge_port && recharge_port.mech;
   const cell = mech && mech.cell;
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section
           title="Mech status"

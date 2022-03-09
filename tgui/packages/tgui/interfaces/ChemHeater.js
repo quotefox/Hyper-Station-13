@@ -18,7 +18,7 @@ export const ChemHeater = (props, context) => {
     beakerContents = [],
   } = data;
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section
           title="Thermostat"

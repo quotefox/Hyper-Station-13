@@ -6,7 +6,7 @@ export const GulagItemReclaimer = (props, context) => {
   const { act, data } = useBackend(context);
   const mobs = data.mobs || [];
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section title="Stored Items">
           <Table>

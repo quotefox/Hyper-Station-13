@@ -5,7 +5,7 @@ import { Window } from '../layouts';
 export const Canister = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <NoticeBox>
           The regulator {data.hasHoldingTank ? 'is' : 'is not'} connected

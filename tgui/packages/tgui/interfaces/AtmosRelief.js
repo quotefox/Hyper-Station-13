@@ -5,7 +5,7 @@ import { Window } from '../layouts';
 export const AtmosRelief = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section>
           <LabeledList>

@@ -25,7 +25,7 @@ export const NtosCard = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 0);
 
   return (
-    <NtosWindow>
+    <NtosWindow resizable>
       <NtosWindow.Content scrollable>
         <Tabs>
           {!!have_id_slot && (

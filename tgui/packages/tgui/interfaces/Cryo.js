@@ -25,7 +25,7 @@ export const Cryo = (props, context) => {
     },
   ];
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section title="Occupant">
           <LabeledList>

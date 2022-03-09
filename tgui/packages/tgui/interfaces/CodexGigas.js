@@ -48,7 +48,7 @@ export const CodexGigas = (props, context) => {
     "Jr.",
   ];
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section>
           {data.name}

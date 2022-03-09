@@ -19,7 +19,7 @@ export const NtosNetMonitor = (props, context) => {
     ntnetmaxlogs,
   } = data;
   return (
-    <NtosWindow>
+    <NtosWindow resizable>
       <NtosWindow.Content scrollable>
         <NoticeBox>
           WARNING: Disabling wireless transmitters when using

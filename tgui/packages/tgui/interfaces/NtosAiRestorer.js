@@ -16,7 +16,7 @@ export const NtosAiRestorer = (props, context) => {
   } = data;
 
   return (
-    <NtosWindow>
+    <NtosWindow resizable>
       <NtosWindow.Content scrollable>
         <Section title="Insert AI">
           <Box>

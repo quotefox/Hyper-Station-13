@@ -8,7 +8,7 @@ export const ComputerFabricator = (props, context) => {
   const { state } = props;
   const { act, data } = useBackend(context);
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section italic fontSize="20px">
           Your perfect device, only three steps away...

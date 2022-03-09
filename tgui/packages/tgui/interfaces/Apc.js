@@ -73,7 +73,7 @@ export const Apc = (props, context) => {
   }
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <InterfaceLockNoticeBox
           siliconUser={data.siliconUser}

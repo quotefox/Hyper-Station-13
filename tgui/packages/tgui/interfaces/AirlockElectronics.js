@@ -48,7 +48,7 @@ export const AirlockElectronics = (props, context) => {
   };
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section title="Main">
           <LabeledList>

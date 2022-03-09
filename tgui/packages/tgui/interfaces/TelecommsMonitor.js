@@ -18,7 +18,7 @@ export const TelecommsMonitor = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 'network_entities');
 
   return (
-    <NtosWindow>
+    <NtosWindow resizable>
       <NtosWindow.Content scrollable>
         {!!notice && (
           <NoticeBox>

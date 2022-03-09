@@ -12,7 +12,7 @@ export const GravityGenerator = (props, context) => {
     operational,
   } = data;
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section>
           {!operational && (

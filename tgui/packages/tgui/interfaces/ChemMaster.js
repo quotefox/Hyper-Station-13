@@ -25,7 +25,7 @@ export const ChemMaster = (props, context) => {
     return <AnalysisResults />;
   }
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section
           title="Beaker"

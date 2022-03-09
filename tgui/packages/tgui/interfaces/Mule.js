@@ -28,7 +28,7 @@ export const Mule = (props, context) => {
   } = data;
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <InterfaceLockNoticeBox
           siliconUser={siliconUser}

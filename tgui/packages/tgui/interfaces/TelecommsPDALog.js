@@ -66,7 +66,7 @@ export const TelecommsPDALog = (props, context) => {
   }
 
   return (
-    <NtosWindow>
+    <NtosWindow resizable>
       <NtosWindow.Content scrollable>
         {!!notice && (
           <NoticeBox>
