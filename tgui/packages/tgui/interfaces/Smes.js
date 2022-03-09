@@ -60,8 +60,9 @@ export const Smes = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item label="Target Input">
               <ProgressBar
-                value={data.inputLevel/data.inputLevelMax}
-                content={data.inputLevel_text} />
+                value={data.inputLevel/data.inputLevelMax}>
+                {data.inputLevel_text}
+              </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item label="Adjust Input">
               <Button
@@ -127,8 +128,9 @@ export const Smes = (props, context) => {
             </LabeledList.Item>
             <LabeledList.Item label="Target Output">
               <ProgressBar
-                value={data.outputLevel/data.outputLevelMax}
-                content={data.outputLevel_text} />
+                value={data.outputLevel/data.outputLevelMax}>
+                {data.outputLevel_text}
+              </ProgressBar>
             </LabeledList.Item>
             <LabeledList.Item label="Adjust Output">
               <Button

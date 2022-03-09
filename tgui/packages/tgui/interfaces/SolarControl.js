@@ -119,8 +119,9 @@ const PowerOutput = (props, context) => {
           }}
           minValue={0}
           maxValue={90000}
-          value={generated}
-          content={generated + ' W'} />
+          value={generated}>
+          {generated} W
+        </ProgressBar>
       </LabeledList.Item>
     </LabeledList>
   );
