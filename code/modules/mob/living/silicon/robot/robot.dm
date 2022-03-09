@@ -654,10 +654,14 @@
 	if(disabler)
 		add_overlay("disabler")//ditto
 
-	if(sleeper_g && module.sleeper_overlay)
-		add_overlay("[module.sleeper_overlay]_g[sleeper_nv ? "_nv" : ""]")
-	if(sleeper_r && module.sleeper_overlay)
-		add_overlay("[module.sleeper_overlay]_r[sleeper_nv ? "_nv" : ""]")
+	if(module.sleeper_overlay)
+		var/sleeper_overlay_state = ""
+		switch(sleeper_state)
+			if(BORGBELLY_NONE) sleeper_overlay_state = ""
+			if(BORGBELLY_GREEN) sleeper_overlay_state = "_g"
+			if(BORGBELLY_RED) sleeper_overlay_state = "_r"
+		add_overlay("[module.sleeper_overlay][sleeper_overlay_state]")
+	
 	if(module.dogborg == TRUE)
 		if(resting)
 			cut_overlays()
