@@ -44,7 +44,7 @@ export const PowerMonitor = (props, context) => {
 
   
   return (
-    <NtosWindow>
+    <NtosWindow resizable>
       <NtosWindow.Content scrollable>
         <Flex spacing={1}>
           <Flex.Item width="200px">
@@ -161,8 +161,9 @@ const SupplyDraw = (props, context) => {
           value={supply}
           minValue={0}
           maxValue={maxValue}
-          color="teal"
-          content={toFixed(supply / 1000) + ' kW'} />
+          color="teal">
+          {toFixed(supply / 1000)} kW
+        </ProgressBar>
       </LabeledList.Item>
       <LabeledList.Item label="Draw">
         <ProgressBar
@@ -170,7 +171,9 @@ const SupplyDraw = (props, context) => {
           minValue={0}
           maxValue={maxValue}
           color="pink"
-          content={toFixed(demand / 1000) + ' kW'} />
+          content>
+          {toFixed(demand / 1000)} kW
+        </ProgressBar>
       </LabeledList.Item>
     </LabeledList>
   );

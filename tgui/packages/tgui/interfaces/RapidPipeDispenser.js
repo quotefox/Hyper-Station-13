@@ -70,7 +70,7 @@ export const RapidPipeDispenser = (props, context) => {
   });
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section>
           <LabeledList>

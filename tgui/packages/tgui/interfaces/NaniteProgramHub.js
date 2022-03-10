@@ -21,7 +21,7 @@ export const NaniteProgramHub = (props, context) => {
   const activeCategory = programs !== null ? programs[activeCategoryKey] : null;
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section
           title="Program Disk"

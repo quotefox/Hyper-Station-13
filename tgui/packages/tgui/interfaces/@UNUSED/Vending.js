@@ -24,7 +24,7 @@ export const Vending = (props, context) => {
     ];
   }
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         {data.onstation && (
           <Section title="User">

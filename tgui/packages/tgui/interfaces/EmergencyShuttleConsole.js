@@ -15,7 +15,7 @@ export const EmergencyShuttleConsole = (props, context) => {
   } = data;
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section>
           <Box

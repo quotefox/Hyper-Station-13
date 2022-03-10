@@ -25,7 +25,7 @@ export const NaniteRemote = (props, context) => {
 
   if (locked) {
     return (
-      <Window>
+      <Window resizable>
         <Window.Content scrollable>
           <NoticeBox>
             This interface is locked.
@@ -36,7 +36,7 @@ export const NaniteRemote = (props, context) => {
   }
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section
           title="Nanite Control"

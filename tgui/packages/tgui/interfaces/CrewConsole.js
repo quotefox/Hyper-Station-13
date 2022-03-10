@@ -7,7 +7,7 @@ export const CrewConsole = (props, context) => {
   const { act, data } = useBackend(context);
   const sensors = data.sensors || [];
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section minHeight={90}>
           <Table>

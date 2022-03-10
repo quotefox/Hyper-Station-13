@@ -13,7 +13,7 @@ export const LaborClaimConsole = (props, context) => {
     unclaimed_points,
   } = data;
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section>
           <LabeledList>

@@ -15,7 +15,7 @@ export const PortableGenerator = (props, context) => {
     stackPercentState = 'bad';
   }
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         {!data.anchored && (
           <NoticeBox>Generator not anchored.</NoticeBox>

@@ -7,7 +7,7 @@ export const SatelliteControl = (props, context) => {
   const { act, data } = useBackend(context);
   const satellites = data.satellites || [];
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         {data.meteor_shield && (
           <Section>
@@ -16,13 +16,14 @@ export const SatelliteControl = (props, context) => {
                 <ProgressBar
                   value={data.meteor_shield_coverage
                   / data.meteor_shield_coverage_max}
-                  content={100 * data.meteor_shield_coverage
-                  / data.meteor_shield_coverage_max + '%'}
                   ranges={{
                     good: [1, Infinity],
                     average: [0.30, 1],
                     bad: [-Infinity, 0.30],
-                  }} />
+                  }}>
+                  {100 * data.meteor_shield_coverage
+                  / data.meteor_shield_coverage_max}%
+                </ProgressBar>
               </LabeledListItem>
             </LabeledList>
           </Section>

@@ -14,7 +14,7 @@ export const OreRedemptionMachine = (props, context) => {
     hasDisk,
   } = data;
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section>
           <BlockQuote mb={1}>

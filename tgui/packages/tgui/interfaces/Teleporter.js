@@ -13,7 +13,7 @@ export const Teleporter = (props, context) => {
     target,
   } = data;
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section>
           {!power_station && (

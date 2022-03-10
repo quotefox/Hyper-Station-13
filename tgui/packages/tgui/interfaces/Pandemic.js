@@ -8,7 +8,7 @@ export const Pandemic = (props, context) => {
   const { data } = useBackend(context);
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <PandemicBeakerDisplay state={props.state} />
         {!!data.has_blood && (
