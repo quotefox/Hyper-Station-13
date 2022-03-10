@@ -176,7 +176,7 @@
 /datum/dynamic_ruleset/event/crystals
 	name = "Crystal Invasion"
 	typepath = /datum/round_event/crystalloid_entities
-	weight = 4
+	weight = 5
 	repeatable_weight_decrease = 1
 	cost = 3
 	enemy_roles = list("AI","Security Officer","Head of Security","Captain","Assistant","Scientist","Station Engineer")
