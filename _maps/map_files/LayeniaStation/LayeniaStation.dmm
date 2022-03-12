@@ -14436,6 +14436,13 @@
 /obj/machinery/recharger,
 /turf/open/floor/plasteel/dark,
 /area/security/range)
+"cmr" = (
+/obj/structure/sign/logo/cpr{
+	icon_state = "CPR_sign3";
+	pixel_y = 33
+	},
+/turf/open/transparent/openspace,
+/area/hallway/primary/fore/upper)
 "cmz" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -55278,6 +55285,12 @@
 	},
 /turf/open/floor/plasteel/freezer,
 /area/medical/surgery)
+"lWK" = (
+/obj/structure/sign/logo/cpr{
+	pixel_y = 33
+	},
+/turf/open/transparent/openspace,
+/area/hallway/primary/fore/upper)
 "lWR" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/loading_area{
@@ -69057,9 +69070,9 @@
 /turf/open/floor/plating,
 /area/maintenance/port)
 "pbk" = (
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 16
+/obj/structure/sign/logo/cpr{
+	icon_state = "CPR_sign2";
+	pixel_y = 33
 	},
 /turf/open/transparent/openspace,
 /area/hallway/primary/fore/upper)
@@ -74924,6 +74937,13 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/science/robotics/lab)
+"qsK" = (
+/obj/structure/sign/logo/cpr{
+	icon_state = "CPR_sign4";
+	pixel_y = 33
+	},
+/turf/open/transparent/openspace,
+/area/hallway/primary/fore/upper)
 "qsN" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/preopen{
@@ -208024,7 +208044,7 @@ yjw
 yjw
 yjw
 lFy
-lRR
+lWK
 lRR
 lRR
 nBH
@@ -208538,7 +208558,7 @@ yjw
 yjw
 yjw
 lFy
-lRR
+cmr
 lRR
 lRR
 uUZ
@@ -208795,7 +208815,7 @@ yjw
 yjw
 yjw
 lFy
-lRR
+qsK
 nSu
 lRR
 ihC

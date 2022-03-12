@@ -134,3 +134,8 @@
 	name = "kinaris logo"
 	desc = "The Kinaris corprate logo. Radiant."
 	icon_state = "kinaris_sign1"
+
+/obj/structure/sign/logo/cpr
+	name = "Challenge Pissing Room"
+	desc = "The league of challenge pissing"
+	icon_state = "CPR_sign1"
