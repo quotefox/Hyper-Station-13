@@ -952,6 +952,10 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Private Investigator's Office"
 	icon_state = "detective"
 
+/area/security/lambent
+	name = "Lambent's Quarters"
+	icon_state = "detective"
+
 /area/security/range
 	name = "Firing Range"
 	icon_state = "firingrange"

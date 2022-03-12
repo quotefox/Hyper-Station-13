@@ -14,6 +14,7 @@
 #define CYBORG			(1<<10)
 #define JR_OFFICER      (1<<11)
 #define JR_ENGINEER     (1<<12)
+#define LAMBENT			(1<<13)
 
 
 #define MEDSCI			(1<<1)
