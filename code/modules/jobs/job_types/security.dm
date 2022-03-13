@@ -125,7 +125,7 @@ Lambent
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced = 1)
 
 	backpack = /obj/item/storage/backpack/captain
-	satchel = /obj/item/storage/backpack/satchel/cap
+	satchel = /obj/item/storage/backpack/satchel/lambent
 	duffelbag = /obj/item/storage/backpack/duffelbag/captain
 	box = /obj/item/storage/box/security
 

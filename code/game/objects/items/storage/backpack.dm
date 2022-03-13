@@ -195,6 +195,22 @@
 /obj/item/storage/backpack/satchel/leather/withwallet/PopulateContents()
 	new /obj/item/storage/wallet/random(src)
 
+/obj/item/storage/backpack/satchel/lambent
+	name = "holostorage drone"
+	desc = "A smaller type of drone used for storing items within a localized pocket in the Weave, making them capable of storing much more than Bluespace bags. They tend to follow their owners closeby."
+	icon_state = "lambentsatchel"
+	item_state = "lambentsatchel"
+	//component_type
+	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE
+
+/obj/item/storage/backpack/satchel/lambent/dropped(mob/user)
+	src.icon_state = "lambentsatchel_off"
+	playsound(user, 'sound/items/fulext_deploy.wav', 50, 1)
+
+/obj/item/storage/backpack/satchel/lambent/pickup(mob/living/user)
+	src.icon_state = "lambentsatchel"
+	playsound(user, 'sound/items/dronedeploy.ogg', 50, 1)
+
 /obj/item/storage/backpack/satchel/eng
 	name = "industrial satchel"
 	desc = "A tough satchel with extra pockets."
