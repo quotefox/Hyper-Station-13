@@ -124,9 +124,9 @@ Lambent
 	shoes = /obj/item/clothing/shoes/lambent
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced = 1)
 
-	backpack = /obj/item/storage/backpack/captain
+	backpack = /obj/item/storage/backpack/lambent
 	satchel = /obj/item/storage/backpack/satchel/lambent
-	duffelbag = /obj/item/storage/backpack/duffelbag/captain
+	duffelbag = /obj/item/storage/backpack/duffelbag/lambent
 	box = /obj/item/storage/box/security
 
 	implants = list(/obj/item/implant/mindshield)

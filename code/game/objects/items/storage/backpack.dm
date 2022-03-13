@@ -177,6 +177,24 @@
 	icon_state = "cheeseburgerbackpack"
 	item_state = "cheeseburgerbackpack"
 
+/obj/item/storage/backpack/lambent
+	name = "holostorage drone"
+	desc = "A small drone capable of digitizing matter and remaking it on the fly for incredibly-compressed storage, beyond the limits of Bluespace. It follows it's owner closeby."
+	icon_state = "lambentbackpack"
+	item_state = "lambentbackpack"
+	//component_type
+	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE
+	alternate_worn_layer = BODY_BEHIND_LAYER //So the drone appears behind the wearer
+
+/obj/item/storage/backpack/lambent/dropped(mob/user)
+	src.icon_state = "lambentbackpack_off"
+	playsound(user, 'sound/items/fulext_deploy.wav', 50, 1)
+
+/obj/item/storage/backpack/lambent/pickup(mob/living/user)
+	src.icon_state = "lambentbackpack"
+	playsound(user, 'sound/items/dronedeploy.ogg', 50, 1)
+
+
 /*
  * Satchel Types
  */
@@ -202,6 +220,7 @@
 	item_state = "lambentsatchel"
 	//component_type
 	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE
+	alternate_worn_layer = BODY_BEHIND_LAYER //So the drone appears behind the wearer
 
 /obj/item/storage/backpack/satchel/lambent/dropped(mob/user)
 	src.icon_state = "lambentsatchel_off"
@@ -355,6 +374,23 @@
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 	STR.max_combined_w_class = 30
+
+/obj/item/storage/backpack/duffelbag/lambent
+	name = "holostorage drone"
+	desc = "A small drone capable of digitizing matter and remaking it on the fly for incredibly-compressed storage, beyond the limits of Bluespace. It follows it's owner closeby."
+	icon_state = "lambentduffel"
+	item_state = "lambentduffel"
+	//component_type
+	resistance_flags = LAVA_PROOF|FIRE_PROOF|UNACIDABLE
+	alternate_worn_layer = BODY_BEHIND_LAYER //So the drone appears behind the wearer
+
+/obj/item/storage/backpack/duffelbag/lambent/dropped(mob/user)
+	src.icon_state = "lambentduffel_off"
+	playsound(user, 'sound/items/fulext_deploy.wav', 50, 1)
+
+/obj/item/storage/backpack/duffelbag/lambent/pickup(mob/living/user)
+	src.icon_state = "lambentduffel"
+	playsound(user, 'sound/items/dronedeploy.ogg', 50, 1)
 
 /obj/item/storage/backpack/duffelbag/captain
 	name = "captain's duffel bag"
