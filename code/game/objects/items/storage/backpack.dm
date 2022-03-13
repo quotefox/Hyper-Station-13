@@ -197,7 +197,7 @@
 
 /obj/item/storage/backpack/satchel/lambent
 	name = "holostorage drone"
-	desc = "A smaller type of drone used for storing items within a localized pocket in the Weave, making them capable of storing much more than Bluespace bags. They tend to follow their owners closeby."
+	desc = "A small drone capable of digitizing matter and remaking it on the fly for incredibly-compressed storage, beyond the limits of Bluespace. It follows it's owner closeby."
 	icon_state = "lambentsatchel"
 	item_state = "lambentsatchel"
 	//component_type
