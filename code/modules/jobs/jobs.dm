@@ -61,6 +61,9 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"Cyborg",
 	ROLE_PAI))
 
+GLOBAL_LIST_INIT(important_positions, list(
+	"Lambent"))
+
 GLOBAL_LIST_INIT(silly_positions, list(
 	"Clown",
 	"Mime"))

@@ -92,6 +92,8 @@ Lambent
 	exp_requirements = 9000
 	exp_type = EXP_TYPE_COMMAND
 	exp_type_department = EXP_TYPE_COMMAND
+	whitelist_type = "important"
+	custom_spawn_text = "You are a Kinaris Lambent; a person hired directly by Kinaris who has a high interest in asset security and the protection of the station. Unlike the station, your gear is official Kinaris items, not replicated Milky-Way Engrams. As such, you should keep them safe due to the power they hold. You answer directly to Central Command and Kinaris, and security matters should not involve you for the most part, unless staffing is low or there is a problem with securing assets. Thankfully, Layenia Station is one of Kinaris's most low-tech stations with hardly anything important to secure; not even the items in the vault are noteworthy due to the falsified, low-tech Engram they're under. Just ensure peace is kept and the station is functioning in a calm manner."
 
 	outfit = /datum/outfit/job/lambent
 
@@ -114,13 +116,12 @@ Lambent
 
 	id = /obj/item/card/id/silver
 	belt = /obj/item/pda/captain
-	glasses = /obj/item/clothing/glasses/sunglasses
+	glasses = /obj/item/clothing/glasses/hud/toggle/zao
 	ears = /obj/item/radio/headset/heads/captain/alt
-	gloves = /obj/item/clothing/gloves/color/captain
-	uniform =  /obj/item/clothing/under/rank/captain
-	suit = /obj/item/clothing/suit/armor/vest/capcarapace
-	shoes = /obj/item/clothing/shoes/sneakers/brown
-	head = /obj/item/clothing/head/caphat
+	gloves = /obj/item/clothing/gloves/lambent
+	uniform =  /obj/item/clothing/under/rank/lambent
+	suit = /obj/item/clothing/suit/lambent
+	shoes = /obj/item/clothing/shoes/lambent
 	backpack_contents = list(/obj/item/melee/classic_baton/telescopic=1, /obj/item/modular_computer/tablet/preset/advanced = 1)
 
 	backpack = /obj/item/storage/backpack/captain
