@@ -56,19 +56,23 @@ export const Apc = (props, context) => {
 
   if (data.failTime > 0) {
     return (
-      <NoticeBox>
-        <b><h3>SYSTEM FAILURE</h3></b>
-        <i>
-          I/O regulators malfunction detected!
-          Waiting for system reboot...
-        </i>
-        <br />
-        Automatic reboot in {data.failTime} seconds...
-        <Button
-          icon="sync"
-          content="Reboot Now"
-          onClick={() => act('reboot')} />
-      </NoticeBox>
+      <Window resizable>
+        <Window.Content>
+          <NoticeBox>
+            <b><h3>SYSTEM FAILURE</h3></b>
+            <i>
+              I/O regulators malfunction detected!
+              Waiting for system reboot...
+            </i>
+            <br />
+            Automatic reboot in {data.failTime} seconds...
+            <Button
+              icon="sync"
+              content="Reboot Now"
+              onClick={() => act('reboot')} />
+          </NoticeBox>
+        </Window.Content>
+      </Window>
     );
   }
 
