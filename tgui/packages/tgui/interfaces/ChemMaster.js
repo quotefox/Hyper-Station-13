@@ -24,6 +24,7 @@ export const ChemMaster = (props, context) => {
   if (screen === "analyze") {
     return <AnalysisResults />;
   }
+  
   return (
     <Window resizable>
       <Window.Content scrollable>
