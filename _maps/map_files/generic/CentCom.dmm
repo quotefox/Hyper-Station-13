@@ -256,6 +256,24 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/supply)
+"akw" = (
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "akG" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
@@ -747,6 +765,27 @@
 /obj/item/reagent_containers/medspray/synthflesh,
 /turf/open/floor/wood,
 /area/centcom/holding)
+"aFM" = (
+/obj/structure/chair/sofa/left{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 1
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "aFS" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/lavendergrass,
@@ -897,12 +936,16 @@
 /turf/open/floor/plasteel/dark,
 /area/tdome/tdomeobserve)
 "aNV" = (
-/obj/machinery/newscaster{
-	pixel_y = 32
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
 	},
-/obj/structure/table/plasmaglass,
-/obj/item/paper,
-/turf/open/floor/carpet/black,
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/structure/chair/sofa/left,
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "aOi" = (
 /turf/open/floor/holofloor{
@@ -943,6 +986,23 @@
 /obj/structure/chair/stool/bar,
 /turf/open/floor/plasteel/dark,
 /area/centcom/control)
+"aSo" = (
+/obj/structure/rack/shelf,
+/obj/item/reagent_containers/food/drinks/bottle/vodka,
+/obj/item/reagent_containers/food/drinks/bottle/vodka{
+	pixel_x = 7
+	},
+/obj/item/reagent_containers/food/drinks/bottle/vodka{
+	pixel_x = -7
+	},
+/obj/structure/curtain{
+	alpha = 240;
+	color = "#c72222";
+	icon_state = "closed";
+	open = 0
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "aSW" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -1088,6 +1148,12 @@
 /obj/item/banner/command/mundane,
 /turf/open/floor/plasteel,
 /area/centcom/control)
+"baC" = (
+/obj/machinery/door/airlock{
+	name = "Storage"
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "bbn" = (
 /obj/structure/table/reinforced,
 /obj/item/book/manual/wiki/security_space_law,
@@ -1126,6 +1192,16 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/supplypod)
+"bdo" = (
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "bek" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
@@ -1729,21 +1805,9 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/control)
-"bIC" = (
-/obj/machinery/light,
-/obj/effect/turf_decal/loading_area{
-	dir = 9;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/turf/open/floor/mineral/basaltstone_floor,
-/area/centcom/ferry)
 "bIJ" = (
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 16
-	},
-/turf/open/pool,
+/obj/structure/noticeboard,
+/turf/closed/indestructible/riveted,
 /area/centcom/ferry)
 "bIO" = (
 /obj/effect/turf_decal/stripes/line{
@@ -2298,8 +2362,8 @@
 /turf/open/floor/pod/light,
 /area/centcom/bunk/one)
 "civ" = (
-/obj/machinery/light,
-/turf/open/pool,
+/obj/structure/sign/poster/contraband/smoke,
+/turf/closed/indestructible/riveted,
 /area/centcom/ferry)
 "ciK" = (
 /obj/structure/rack/shelf,
@@ -3091,11 +3155,9 @@
 	},
 /area/syndicate_mothership)
 "dbL" = (
-/obj/structure/window,
-/obj/structure/table/plasmaglass,
-/obj/item/reagent_containers/food/drinks/drinkingglass,
-/obj/item/reagent_containers/food/drinks/drinkingglass,
-/obj/item/storage/box/matches,
+/obj/structure/chair/sofa/left{
+	dir = 1
+	},
 /turf/open/floor/carpet/black,
 /area/centcom/ferry)
 "dcC" = (
@@ -3454,6 +3516,7 @@
 "dqT" = (
 /obj/item/cigbutt,
 /obj/machinery/light,
+/obj/machinery/space_heater,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "drb" = (
@@ -3819,7 +3882,12 @@
 /area/centcom/ferry)
 "dGI" = (
 /obj/structure/table/plasmaglass,
-/obj/item/nailpolish,
+/obj/item/clothing/mask/cigarette/dromedary,
+/obj/item/storage/fancy/cigarettes/smokekins,
+/obj/item/toy/cards/deck{
+	pixel_x = 7;
+	pixel_y = 10
+	},
 /turf/open/floor/carpet/black,
 /area/centcom/ferry)
 "dGP" = (
@@ -4001,6 +4069,24 @@
 	},
 /turf/open/floor/wood,
 /area/centcom/holding)
+"dNw" = (
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000"
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "dNQ" = (
 /obj/structure/table,
 /obj/machinery/computer/station_alert{
@@ -4073,15 +4159,22 @@
 	},
 /area/centcom/ferry)
 "dQA" = (
-/obj/structure/flora/crystal/medium/growth{
-	icon_state = "crystalgrowth3";
-	pixel_x = -24;
-	pixel_y = -1
-	},
-/obj/structure/window/reinforced{
+/obj/effect/turf_decal/tile{
+	color = "#630000";
 	dir = 4
 	},
-/turf/open/indestructible/layenia/crystal/garden,
+/obj/effect/turf_decal/tile{
+	color = "#630000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 1
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "dQN" = (
 /obj/item/twohanded/required/kirbyplants{
@@ -4551,12 +4644,18 @@
 /turf/open/floor/plasteel/white,
 /area/centcom/ferry)
 "ejW" = (
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 16
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
 	},
-/obj/structure/chair/stool/bar,
-/turf/open/floor/carpet/black,
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-10"
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "eks" = (
 /turf/closed/indestructible/fakedoor{
@@ -4757,6 +4856,19 @@
 	dir = 1
 	},
 /turf/open/floor/plasteel/grimy,
+/area/centcom/ferry)
+"evP" = (
+/obj/structure/closet,
+/obj/item/condom/filled{
+	icon_state = "b_condom_inflated_huge"
+	},
+/obj/item/condom/filled{
+	icon_state = "b_condom_inflated_huge"
+	},
+/obj/item/condom/filled,
+/obj/effect/decal/cleanable/semen,
+/obj/item/milking_machine/penis,
+/turf/open/floor/plating,
 /area/centcom/ferry)
 "evX" = (
 /obj/structure/table/reinforced,
@@ -5829,13 +5941,23 @@
 /turf/open/floor/plasteel,
 /area/tdome/tdomeobserve)
 "foE" = (
-/obj/machinery/door/airlock{
-	dir = 4;
-	id_tag = null;
-	name = "Bathroom"
+/obj/machinery/light,
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/locked,
-/turf/open/floor/plasteel/white,
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "fpf" = (
 /obj/machinery/photocopier,
@@ -6313,6 +6435,21 @@
 "fPN" = (
 /turf/open/floor/plating/abductor,
 /area/abductor_ship)
+"fQb" = (
+/obj/structure/chair/stool/bar,
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "fQF" = (
 /turf/open/floor/plasteel/freezer,
 /area/centcom/ferry)
@@ -6507,16 +6644,12 @@
 /turf/open/floor/plasteel,
 /area/centcom/supply)
 "fYD" = (
-/obj/structure/sink{
-	dir = 8;
-	pixel_x = -12
+/obj/machinery/light{
+	bulb_colour = "#e37ef2";
+	bulb_emergency_colour = "#e37ef2";
+	light_color = "#e37ef2"
 	},
-/obj/structure/mirror{
-	pixel_x = -28
-	},
-/obj/item/lipstick,
-/obj/effect/decal/cleanable/glass,
-/turf/open/floor/mineral/basaltstone_floor,
+/turf/open/floor/carpet/black,
 /area/centcom/ferry)
 "fYL" = (
 /obj/structure/table,
@@ -7499,6 +7632,19 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/tdome/tdomeobserve)
+"gXf" = (
+/obj/structure/table/plasmaglass,
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/item/stack/credits{
+	amount = 100;
+	pixel_x = 7
+	},
+/turf/open/floor/carpet/black,
+/area/centcom/ferry)
 "gXK" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -8254,15 +8400,26 @@
 /turf/open/floor/plasteel/dark,
 /area/ctf)
 "hHg" = (
-/obj/structure/flora/crystal/medium/growth{
-	icon_state = "crystalgrowth2";
-	pixel_x = -23;
-	pixel_y = -1
+/obj/structure/chair/sofa/corner,
+/obj/machinery/light{
+	bulb_colour = "#e37ef2";
+	bulb_emergency_colour = "#e37ef2";
+	dir = 1;
+	light_color = "#e37ef2";
+	pixel_y = 16
 	},
-/obj/structure/window/reinforced{
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
 	dir = 4
 	},
-/turf/open/indestructible/layenia/crystal/garden,
+/obj/effect/turf_decal/tile{
+	color = "#630000"
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "hHj" = (
 /obj/structure/speaking_tile,
@@ -8997,6 +9154,10 @@
 	icon_state = "trim";
 	name = "trim"
 	},
+/obj/item/reagent_containers/food/snacks/burger/baconburger,
+/obj/item/reagent_containers/food/snacks/burger/baconburger,
+/obj/item/reagent_containers/food/snacks/burger/baconburger,
+/obj/item/reagent_containers/food/snacks/store/cake/chocolate,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "iuN" = (
@@ -9404,10 +9565,15 @@
 /turf/open/floor/plasteel,
 /area/centcom/control)
 "iSu" = (
-/obj/structure/pool/ladder{
+/obj/effect/turf_decal/tile{
+	color = "#000000";
 	dir = 8
 	},
-/turf/open/pool,
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "iTr" = (
 /obj/structure/window/reinforced,
@@ -9483,8 +9649,21 @@
 /turf/open/floor/plasteel,
 /area/centcom/control)
 "iXi" = (
-/obj/structure/chair/stool/bar,
-/turf/open/floor/carpet/black,
+/obj/item/storage/fancy/heart_box,
+/obj/structure/table/plasmaglass,
+/obj/item/reagent_containers/food/snacks/candyheart{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/storage/fancy/candle_box{
+	pixel_x = -9;
+	pixel_y = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 1
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "iXQ" = (
 /obj/item/twohanded/required/kirbyplants{
@@ -10155,10 +10334,15 @@
 "jDL" = (
 /obj/machinery/door/airlock{
 	dir = 4;
-	id_tag = null;
-	name = "Pool"
+	name = "Marilyns Backroom"
 	},
-/turf/open/floor/plasteel/white,
+/obj/structure/curtain{
+	alpha = 240;
+	color = "#c72222";
+	icon_state = "closed";
+	open = 0
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "jDR" = (
 /obj/item/twohanded/ctf/blue,
@@ -10367,8 +10551,11 @@
 /turf/open/floor/plating/asteroid,
 /area/tdome/tdomeadmin)
 "jQP" = (
-/obj/structure/window{
-	dir = 8
+/obj/structure/table/plasmaglass,
+/obj/item/ashtray,
+/obj/item/cigbutt{
+	pixel_x = 5;
+	pixel_y = 11
 	},
 /turf/open/floor/carpet/black,
 /area/centcom/ferry)
@@ -10767,6 +10954,27 @@
 	},
 /turf/open/floor/plasteel,
 /area/tdome/arena)
+"kjW" = (
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-22"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000"
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "kke" = (
 /obj/structure/table/wood,
 /obj/effect/turf_decal/loading_area{
@@ -11586,6 +11794,29 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/control)
+"kVN" = (
+/obj/machinery/light{
+	bulb_colour = "#e37ef2";
+	bulb_emergency_colour = "#e37ef2";
+	light_color = "#e37ef2"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 8
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "kWl" = (
 /obj/structure/table/reinforced,
 /obj/item/restraints/handcuffs/cable/zipties,
@@ -12169,10 +12400,23 @@
 /turf/open/floor/plasteel,
 /area/centcom/ferry)
 "lzn" = (
-/obj/machinery/light/small{
-	pixel_y = -2
+/obj/structure/chair/stool/bar,
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
 	},
-/turf/open/pool,
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "lAp" = (
 /obj/effect/turf_decal/stripes/line{
@@ -12194,6 +12438,24 @@
 	},
 /turf/open/floor/mineral/titanium/blue,
 /area/centcom/evac)
+"lCy" = (
+/obj/machinery/light,
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-10"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "lCG" = (
 /obj/structure/table,
 /obj/item/storage/box/handcuffs,
@@ -13369,18 +13631,22 @@
 /turf/open/floor/carpet/purple,
 /area/centcom/ferry)
 "mKw" = (
-/obj/structure/curtain,
-/obj/structure/window/reinforced{
-	dir = 8
+/obj/item/reagent_containers/food/drinks/drinkingglass{
+	pixel_x = 7;
+	pixel_y = 14
 	},
-/obj/machinery/door/window/brigdoor/southleft{
-	name = "Shower"
+/obj/structure/table/plasmaglass,
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/machinery/shower{
-	pixel_y = 16
+/obj/item/reagent_containers/food/snacks/cakeslice/chocolate,
+/obj/item/reagent_containers/food/snacks/chocolatebar{
+	pixel_x = -5;
+	pixel_y = 13
 	},
-/obj/item/soap/deluxe,
-/turf/open/floor/mineral/basaltstone_floor,
+/turf/open/floor/carpet/black,
 /area/centcom/ferry)
 "mLp" = (
 /obj/structure/table/wood,
@@ -13400,6 +13666,24 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
+/area/centcom/ferry)
+"mLK" = (
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000"
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "mMO" = (
 /obj/machinery/computer/arcade/battle,
@@ -13559,21 +13843,43 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/supply)
+"mTH" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/jukebox,
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "mTT" = (
 /obj/effect/turf_decal/tile/green,
 /turf/open/floor/plasteel,
 /area/centcom/ferry)
 "mUa" = (
-/obj/structure/bed{
-	layer = 3.1
+/obj/structure/chair/sofa/right,
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 1
 	},
-/obj/structure/bed{
-	pixel_y = 10
-	},
-/obj/machinery/light{
-	brightness = 4;
-	dir = 1;
-	pixel_y = 16
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 4
 	},
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
@@ -13848,21 +14154,27 @@
 /turf/open/floor/plasteel/white,
 /area/tdome/tdomeobserve)
 "ndJ" = (
-/obj/structure/rack/shelf,
-/obj/item/export/bottle/vodka{
-	pixel_x = -8
+/obj/machinery/light{
+	brightness = 4;
+	dir = 1;
+	pixel_y = 16
 	},
-/obj/item/export/bottle/whiskey,
-/obj/item/export/bottle/wine{
-	pixel_x = 8
+/obj/structure/chair/sofa/right,
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
 	},
-/obj/structure/window{
-	dir = 8
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
 	},
-/obj/structure/sign/poster/official/high_class_martini{
-	pixel_y = 32
+/obj/item/instrument/guitar{
+	desc = "It's made of wood and has bronze strings. It looks old and beat up, but it has 'Old Reliable' scratched into the base.";
+	name = "Winfre's Guitar";
+	pixel_x = -1;
+	pixel_y = 3
 	},
-/turf/open/floor/carpet/black,
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "ndY" = (
 /turf/closed/indestructible/abductor,
@@ -14731,6 +15043,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/evac)
+"nRs" = (
+/obj/machinery/light,
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "nRI" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -15040,19 +15363,6 @@
 	icon_state = "white"
 	},
 /area/holodeck/rec_center/medical)
-"ola" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 4;
-	icon_state = "drain";
-	name = "drain"
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 4;
-	icon_state = "drain";
-	name = "drain"
-	},
-/turf/open/floor/mineral/basaltstone_floor,
-/area/centcom/ferry)
 "olg" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -15108,6 +15418,14 @@
 /turf/open/floor/plasteel/white/corner{
 	dir = 4
 	},
+/area/centcom/ferry)
+"opi" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/carpet/black,
 /area/centcom/ferry)
 "opn" = (
 /obj/machinery/door/airlock/centcom{
@@ -15465,6 +15783,25 @@
 /obj/structure/sign/departments/custodian,
 /turf/closed/indestructible/riveted,
 /area/centcom/ferry)
+"oGR" = (
+/obj/structure/chair/stool/bar,
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "oHO" = (
 /obj/structure/flora/ausbushes/lavendergrass,
 /obj/structure/flora/ausbushes/fullgrass,
@@ -15802,6 +16139,23 @@
 /obj/machinery/chem_dispenser/drinks,
 /turf/open/floor/plasteel/dark,
 /area/centcom/control)
+"oVx" = (
+/obj/structure/table/plasmaglass,
+/obj/item/modular_computer/laptop{
+	pixel_x = 16;
+	pixel_y = 4
+	},
+/obj/machinery/recharger{
+	pixel_x = -4;
+	pixel_y = 3
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/carpet/black,
+/area/centcom/ferry)
 "oWt" = (
 /obj/structure/rack,
 /obj/item/clothing/under/trek/engsec,
@@ -15961,6 +16315,25 @@
 	},
 /turf/open/floor/plating/abductor,
 /area/abductor_ship)
+"pga" = (
+/obj/structure/chair/stool/bar,
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "pgr" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
@@ -16865,13 +17238,25 @@
 /turf/open/floor/plasteel/dark,
 /area/tdome/tdomeadmin)
 "pVQ" = (
-/obj/machinery/light/small{
-	dir = 8;
-	pixel_x = -10;
-	pixel_y = 5
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
 	},
-/obj/structure/toilet{
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
 	dir = 4
+	},
+/obj/structure/gmushroomdresser,
+/obj/item/toy/plush/mammal/marilyn{
+	pixel_x = -7;
+	pixel_y = 16
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000"
 	},
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
@@ -16904,10 +17289,37 @@
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
 "pWz" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 9;
-	icon_state = "steel_panel";
-	name = "steel pannel"
+/obj/machinery/light{
+	brightness = 4;
+	dir = 1;
+	pixel_y = 16
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/obj/structure/closet/secure_closet/personal/cabinet{
+	name = "Winfre Ryyn-Kinar's closet"
+	},
+/obj/item/grown/rose,
+/obj/item/clothing/suit/fluffyhalfcrop,
+/obj/item/clothing/under/pants/white,
+/obj/item/clothing/shoes/highheels,
+/obj/item/clothing/neck/petcollar/choker,
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
 	},
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
@@ -16981,12 +17393,33 @@
 /turf/open/floor/plasteel,
 /area/centcom/supply)
 "qcL" = (
-/obj/machinery/light/small{
+/obj/machinery/light{
+	brightness = 4;
 	dir = 1;
-	pixel_x = 0;
-	pixel_y = 14
+	pixel_y = 16
 	},
-/turf/open/floor/carpet/black,
+/obj/structure/table/plasmaglass,
+/obj/item/storage/pill_bottle/penis_enlargement{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/bouquet/poppy,
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/item/reagent_containers/food/snacks/candyheart{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "qcU" = (
 /obj/structure/table/reinforced,
@@ -17087,6 +17520,25 @@
 /obj/item/soap/deluxe,
 /obj/structure/curtain,
 /turf/open/floor/plasteel/white,
+/area/centcom/ferry)
+"qip" = (
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
+/obj/machinery/light,
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "qiQ" = (
 /obj/effect/landmark/thunderdome/one,
@@ -17813,6 +18265,24 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/control)
+"qTH" = (
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#630000";
+	dir = 4
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "qTJ" = (
 /obj/structure/sink{
 	dir = 4;
@@ -18261,6 +18731,24 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
+/area/centcom/ferry)
+"rlX" = (
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "rmh" = (
 /obj/machinery/door/airlock/centcom{
@@ -18739,6 +19227,23 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/wizard_station)
+"rIg" = (
+/obj/effect/decal/cleanable/semendrip,
+/obj/effect/decal/cleanable/semendrip,
+/obj/effect/decal/cleanable/semendrip{
+	pixel_x = 10;
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/semendrip{
+	pixel_x = -7;
+	pixel_y = -7
+	},
+/obj/item/caution,
+/obj/item/polepack,
+/obj/item/wrench,
+/obj/item/toy/crayon/spraycan/infinite,
+/turf/open/floor/plating,
+/area/centcom/ferry)
 "rIk" = (
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/red{
@@ -18970,16 +19475,14 @@
 /turf/open/floor/plasteel,
 /area/tdome/tdomeobserve)
 "rTE" = (
-/obj/structure/chair/stool,
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 16
+/obj/structure/fireplace,
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
 	},
-/obj/item/reagent_containers/rag/towel,
-/obj/effect/turf_decal/loading_area{
-	dir = 9;
-	icon_state = "steel_panel";
-	name = "steel pannel"
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
 	},
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
@@ -18996,6 +19499,10 @@
 "rUG" = (
 /obj/structure/flora/crystal/small/pile,
 /turf/open/indestructible/layenia/crystal/garden,
+/area/centcom/ferry)
+"rVg" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "rVs" = (
 /obj/machinery/computer/card/centcom{
@@ -19781,8 +20288,14 @@
 /turf/open/floor/plasteel,
 /area/centcom/control)
 "sGu" = (
-/obj/machinery/light,
-/turf/open/floor/carpet/black,
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "sGE" = (
 /obj/structure/chair/office/dark{
@@ -21857,11 +22370,23 @@
 	},
 /area/centcom/ferry)
 "uIe" = (
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 16
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
 	},
-/obj/item/cigbutt,
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
+/obj/structure/rack/shelf,
+/obj/item/seeds/starthistle/valentines,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "uIu" = (
@@ -21938,6 +22463,23 @@
 	},
 /turf/open/floor/plasteel,
 /area/centcom/control)
+"uLr" = (
+/obj/structure/table/plasmaglass,
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/item/paper{
+	text = "Remember our deal... 100u's by the end of the week."
+	},
+/turf/open/floor/carpet/black,
+/area/centcom/ferry)
 "uLI" = (
 /obj/structure/table,
 /obj/item/clipboard,
@@ -22128,6 +22670,32 @@
 	dir = 8
 	},
 /turf/open/floor/plating/asteroid/layenia/garden,
+/area/centcom/ferry)
+"uUC" = (
+/obj/structure/rack/shelf,
+/obj/item/reagent_containers/food/drinks/drinkingglass{
+	pixel_x = -6;
+	pixel_y = -3
+	},
+/obj/item/reagent_containers/food/drinks/drinkingglass{
+	pixel_x = 2;
+	pixel_y = -3
+	},
+/obj/item/reagent_containers/food/drinks/drinkingglass{
+	pixel_x = 3;
+	pixel_y = 6
+	},
+/obj/item/reagent_containers/food/drinks/drinkingglass{
+	pixel_x = -6;
+	pixel_y = 6
+	},
+/obj/structure/curtain{
+	alpha = 240;
+	color = "#c72222";
+	icon_state = "closed";
+	open = 0
+	},
+/turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "uUK" = (
 /obj/machinery/shower{
@@ -22752,8 +23320,15 @@
 /area/centcom/ferry)
 "vCU" = (
 /obj/structure/table/plasmaglass,
-/obj/item/modular_computer/laptop,
 /obj/machinery/light,
+/obj/item/reagent_containers/food/snacks/candyheart{
+	pixel_x = 6;
+	pixel_y = -2
+	},
+/obj/item/ashtray{
+	pixel_x = -5;
+	pixel_y = -3
+	},
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "vCY" = (
@@ -23052,6 +23627,21 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/centcom/supply)
+"vQL" = (
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_x = 10;
+	pixel_y = 5
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000"
+	},
+/turf/open/floor/mineral/basaltstone_floor,
+/area/centcom/ferry)
 "vRv" = (
 /obj/structure/rack,
 /obj/item/nullrod/claymore{
@@ -24077,10 +24667,9 @@
 /turf/open/floor/wood,
 /area/centcom/holding)
 "wWs" = (
-/obj/structure/window{
-	dir = 8
+/obj/structure/chair/sofa/right{
+	dir = 1
 	},
-/obj/structure/window,
 /turf/open/floor/carpet/black,
 /area/centcom/ferry)
 "wWW" = (
@@ -24145,6 +24734,21 @@
 	dir = 4;
 	icon_state = "drain";
 	name = "drain"
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000"
 	},
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
@@ -24759,7 +25363,18 @@
 /turf/open/floor/holofloor,
 /area/holodeck/rec_center/dodgeball)
 "xKU" = (
-/obj/effect/decal/cleanable/semen,
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 4
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 1
+	},
+/obj/effect/turf_decal/tile{
+	color = "#000000";
+	dir = 8
+	},
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "xLa" = (
@@ -52471,12 +53086,12 @@ fWS
 fWS
 fWS
 fWS
-fWS
-fWS
-fWS
-fWS
-fWS
-fWS
+eRA
+eRA
+eRA
+eRA
+eRA
+eRA
 fWS
 fWS
 fWS
@@ -52728,12 +53343,12 @@ fWS
 fWS
 fWS
 fWS
-fWS
-fWS
-fWS
-fWS
-fWS
-fWS
+eRA
+iXi
+qTH
+mLK
+kjW
+rVg
 fWS
 fWS
 fWS
@@ -52985,14 +53600,14 @@ fWS
 fWS
 fWS
 fWS
+eRA
+mUa
+vaX
+vaX
+kVN
 eDP
 eDP
 eDP
-eDP
-eDP
-eDP
-fWS
-fWS
 eDP
 eDP
 eDP
@@ -53244,12 +53859,12 @@ fWS
 fWS
 eDP
 hHg
-eDP
-eDP
+aFM
+dNw
 dQA
-eDP
-fWS
-fWS
+baC
+rIg
+evP
 eDP
 vIX
 mKu
@@ -53500,13 +54115,13 @@ eDP
 eDP
 eDP
 eDP
-bIJ
-uKo
-uKo
-civ
 eDP
-fWS
-fWS
+eDP
+jDL
+eDP
+eDP
+eDP
+eDP
 eDP
 ozX
 hbu
@@ -53757,13 +54372,13 @@ tXZ
 hnc
 idP
 eDP
-uKo
-uKo
-uKo
-uKo
+pVQ
+akw
+akw
+qip
 eDP
-eDP
-eDP
+aSo
+uUC
 eDP
 vFs
 lwo
@@ -54014,12 +54629,12 @@ xxX
 eDW
 dQv
 eDP
-uKo
-uKo
-uKo
+pWz
+rlX
+rlX
 lzn
-eDP
-pVQ
+oVx
+vaX
 fYD
 eDP
 tuz
@@ -54270,14 +54885,14 @@ hqE
 ebE
 llj
 kqQ
-eDP
-uKo
-uKo
-uKo
-uKo
-eDP
+bIJ
 uIe
-xKU
+rlX
+rlX
+pga
+gXf
+vaX
+vaX
 eDP
 mBI
 kNj
@@ -54528,13 +55143,13 @@ eDP
 eDP
 eDP
 eDP
-uKo
-uKo
+xKU
 iSu
-uKo
-eDP
+iSu
+fQb
+uLr
 mKw
-gkp
+opi
 eDP
 xfe
 pFo
@@ -54786,11 +55401,11 @@ rOT
 aeD
 eDP
 rTE
-pWz
-pWz
-bIC
-eDP
-eDP
+vaX
+vaX
+sGu
+oGR
+oGR
 foE
 eDP
 mvA
@@ -55045,10 +55660,10 @@ eDP
 ndJ
 jQP
 wWs
-ola
+sGu
 wYv
 wYv
-wYv
+mTH
 eDP
 dEt
 fUm
@@ -55302,7 +55917,7 @@ eDP
 aNV
 dGI
 dbL
-ohE
+nRs
 eDP
 eDP
 eDP
@@ -55555,10 +56170,10 @@ iVH
 nPU
 gkp
 abt
-eDP
+civ
 ejW
-iXi
-iXi
+vaX
+vaX
 sGu
 eDP
 gvm
@@ -55814,9 +56429,9 @@ gkp
 eqI
 eDP
 qcL
-vaX
-vaX
-vaX
+vQL
+bdo
+lCy
 eDP
 hMV
 dHs
@@ -57612,7 +58227,7 @@ bvj
 gkp
 jVH
 eDP
-mUa
+tfE
 fJy
 gkp
 eDK
