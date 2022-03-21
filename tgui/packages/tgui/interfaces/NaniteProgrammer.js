@@ -31,14 +31,18 @@ export const NaniteProgrammer = (props, context) => {
 
   if (!has_program) {
     return (
-      <Section
-        title="Blank Disk"
-        buttons={(
-          <Button
-            icon="eject"
-            content="Eject"
-            onClick={() => act('eject')} />
-        )} />
+      <Window>
+        <Window.Content>
+          <Section
+            title="Blank Disk"
+            buttons={(
+              <Button
+                icon="eject"
+                content="Eject"
+                onClick={() => act('eject')} />
+            )} />
+        </Window.Content>
+      </Window>
     );
   }
 
