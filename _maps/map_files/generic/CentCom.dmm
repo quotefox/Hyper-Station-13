@@ -14169,8 +14169,8 @@
 	dir = 1
 	},
 /obj/item/instrument/guitar{
-	desc = "It's made of wood and has bronze strings. It looks old and beat up, but it has 'Old Reliable' scratched into the base.";
-	name = "Winfre's Guitar";
+	color = "#c72222";
+	name = "Marilyn's Guitar";
 	pixel_x = -1;
 	pixel_y = 3
 	},
@@ -17307,7 +17307,7 @@
 	dir = 4
 	},
 /obj/structure/closet/secure_closet/personal/cabinet{
-	name = "Winfre Ryyn-Kinar's closet"
+	name = "Marilyn's closet"
 	},
 /obj/item/grown/rose,
 /obj/item/clothing/suit/fluffyhalfcrop,
