@@ -1086,7 +1086,11 @@
 		lying = 90*buckle_lying
 	else if(!lying)
 		if(resting)
-			lying = pick(90, 270) // Cit change - makes resting not force you to drop your held items
+			if(dir == 2 || dir == 4)
+				lying = 90
+			else
+				lying = 270
+
 			if(has_gravity()) // Cit change - Ditto
 				playsound(src, "bodyfall", 50, 1) // Cit change - Ditto!
 		else if(ko || move_and_fall || (!has_legs && !ignore_legs) || chokehold)
