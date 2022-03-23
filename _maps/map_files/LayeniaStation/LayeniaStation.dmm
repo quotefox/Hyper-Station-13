@@ -25890,6 +25890,12 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/fore)
+"ftI" = (
+/obj/item/reagent_containers/food/snacks/hotdog{
+	name = "glizzie"
+	},
+/turf/open/floor/plating,
+/area/hallway/primary/fore/upper)
 "ftQ" = (
 /turf/open/floor/plasteel{
 	icon_plating = "floor";
@@ -216363,7 +216369,7 @@ qbA
 dvK
 fZN
 lFy
-yjw
+ftI
 lFy
 ydX
 ydX
