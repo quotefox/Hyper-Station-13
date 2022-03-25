@@ -949,11 +949,11 @@
 	item_state = "marisol"
 
 /obj/item/toy/plush/mammal/freddy
-	name = "Felix Fastbear plushie"
+	name = "felix fastbear plushie"
 	desc = "An adorable stuffed plushie that resembles a bear with a bow tie and a top hat with buttons for eyes."
 	icon_state = "freddy"
 	item_state = "freddy"
-	squeak_override = list('modular_citadel/sound/voice/merp.ogg' = 1)
+	squeak_override = list('sound/items/toysqueak1.ogg' = 1)
 
 /obj/item/toy/plush/catgirl
 	name = "feline plushie"
