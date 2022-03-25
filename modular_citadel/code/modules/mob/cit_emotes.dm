@@ -46,9 +46,9 @@
 			sound = 'sound/creatures/gorilla.ogg'
 		if(ishuman(user))
 			user.adjustOxyLoss(5)
-			sound = pick('modular_citadel/sound/voice/scream_m1.ogg', 'modular_citadel/sound/voice/scream_m2.ogg')
+			sound = pick('hyperstation/sound/voice/emotes/male_scream1.ogg', 'hyperstation/sound/voice/emotes/male_scream2.ogg', 'hyperstation/sound/voice/emotes/male_scream3.ogg')
 			if(user.gender == FEMALE)
-				sound = pick('modular_citadel/sound/voice/scream_f1.ogg', 'modular_citadel/sound/voice/scream_f2.ogg')
+				sound = pick('hyperstation/sound/voice/emotes/female_scream1.ogg', 'hyperstation/sound/voice/emotes/female_scream1b.ogg')
 			if(is_species(user, /datum/species/android) || is_species(user, /datum/species/synth) || is_species(user, /datum/species/ipc) || is_species(user, /datum/species/synthliz))
 				sound = 'modular_citadel/sound/voice/scream_silicon.ogg'
 			if(is_species(user, /datum/species/lizard))
@@ -279,7 +279,7 @@
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	restraint_check = FALSE
-	
+
 /datum/emote/living/cackle
 	key = "cackle"
 	key_third_person = "cackles"
