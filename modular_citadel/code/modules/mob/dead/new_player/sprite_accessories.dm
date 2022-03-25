@@ -832,6 +832,14 @@ datum/sprite_accessory/ears/human/gret
 	name = "Panda"
 	icon_state = "hpanda"
 
+/datum/sprite_accessory/mam_snouts/vulp
+	name = "Vulp"
+	icon_state = "vulp"
+
+/datum/sprite_accessory/mam_snouts/vulpalt
+	name = "Vulp Alt"
+	icon_state = "vulp2"
+
 /datum/sprite_accessory/mam_snouts/skulldog
 	name = "Skulldog"
 	icon_state = "skulldog"
