@@ -389,4 +389,7 @@ from code/modules/mob/dead/new_player/sprite_accessories/hair_head.dm:
 /datum/sprite_accessory/hair/sidehair
 	name = "Side Hair (Hyper)"
 	icon_state = "hair_tailhair2"
-	ckeys_allowed = list("quotefox")
+
+/datum/sprite_accessory/hair/hsglamour
+	name = "Glamour (Hyper)"
+	icon_state = "hair_glamourh"
