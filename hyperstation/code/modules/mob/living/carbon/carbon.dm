@@ -63,7 +63,7 @@
 
 	if (pain_effect > 10)
 		pain_effect = 0 //reset the timer 10 seconds.
-		if(stat != DEAD)
+		if(stat == 0) //awake, not dead or asleep
 			//status effects for pain..
 			var/mob/living/H = src
 			if (total_pain > 50 && total_pain < 80)
@@ -89,7 +89,8 @@
 				jitteriness += 3 //shake
 				stuttering += 3	 //stutter words
 
-	if (total_pain > 110 && stat != DEAD) //taking 77 all damage at once from full health, will put you into shock and kill you. This cant be achived with chip damage (or fist fights), because youll die before you reach this pain level.
+	//if they are asleep, this wont trigger.
+	if (total_pain > 110 && stat == 0) //taking 77 all damage at once from full health, will put you into shock and kill you. This cant be achived with chip damage (or fist fights), because youll die before you reach this pain level.
 		to_chat(src, "<span class='warning'>You give into the pain...</span>")
 		visible_message("<span class='danger'>[src] goes into shock!</span>")
 		death() // kill.
