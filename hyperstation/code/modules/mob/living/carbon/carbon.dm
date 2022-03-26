@@ -16,6 +16,7 @@
 /mob/living/carbon/proc/handle_pain()
 	var/pain_amount = 0
 	pain_effect += 1
+
 	//build up pain in the system from all your limbs and natrually heal pain if its attached to a live body.
 	for(var/X in bodyparts)
 		var/obj/item/bodypart/BP = X
@@ -55,6 +56,16 @@
 
 	total_pain = pain_amount
 
+	//handle onscreen alert
+	if (pain_effect == 5) //alittle early to give you a 5 second warning
+		switch(total_pain)
+			if(-100 to 29)
+				clear_alert("pain")
+			if(30 to 79)
+				throw_alert("pain", /obj/screen/alert/pain)
+			if(80 to 200)
+				throw_alert("pain", /obj/screen/alert/painmajor)
+
 	if (pain_effect > 10)
 		pain_effect = 0 //reset the timer 10 seconds.
 		if(stat != DEAD)
@@ -78,6 +89,8 @@
 		to_chat(src, "<span class='warning'>You give into the pain...</span>")
 		visible_message("<span class='danger'>[src] goes into shock!</span>")
 		death() // kill.
+
+
 
 //HS Pain heal
 /mob/living/carbon/adjustPainLoss(amount, updating_health = TRUE, forced = FALSE)

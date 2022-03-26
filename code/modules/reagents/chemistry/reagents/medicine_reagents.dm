@@ -391,7 +391,7 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 /datum/reagent/medicine/mine_salve/on_mob_life(mob/living/carbon/C)
 	C.hal_screwyhud = SCREWYHUD_HEALTHY
 	C.adjustBruteLoss(-0.25*REM, 0)
-	M.adjustPainLoss(-1*REM, 0)
+	C.adjustPainLoss(-1*REM, 0)
 	C.adjustFireLoss(-0.25*REM, 0)
 	C.adjustStaminaLoss(-0.5*REM, 0)
 	..()

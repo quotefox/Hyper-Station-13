@@ -177,6 +177,16 @@
 	desc = "You're severely dehydrated."
 	icon_state = "dehydrated"
 
+/obj/screen/alert/pain
+	name = "Pain"
+	desc = "You're in pain!"
+	icon_state = "pain"
+
+/obj/screen/alert/painmajor
+	name = "Major Pain"
+	desc = "You're in major pain!"
+	icon_state = "pain_major"
+
 /obj/screen/alert/gross
 	name = "Grossed out."
 	desc = "That was kind of gross..."
