@@ -34,7 +34,7 @@
 			BP.pain_dam = 0
 			continue //dont need to do the rest, your fine.
 
-		if (BP.pain_dam && pain_effect > 10 && (stat != DEAD))
+		if (BP.pain_dam && pain_effect > 10 && (stat == 0))
 			var pain_level = (round(BP.pain_dam / 10))
 			switch(pain_level) //for every 10 points of damage minor -> major
 				if(1)//start at 10 just so it doesnt get annoying with micro damage
