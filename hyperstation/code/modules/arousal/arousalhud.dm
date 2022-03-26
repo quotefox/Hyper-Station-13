@@ -351,16 +351,13 @@ obj/screen/arousal/proc/kiss()
 /mob/living/carbon/human/proc/kisstarget(mob/living/L)
 
 	src << browse(null, "window=arousal") //closes the arousal window, if its open, mainly to stop spam
-	if(isliving(L)) //is your target living? Living people can resist your advances if they want to via moving.
-		if(iscarbon(L))
-			src.visible_message("<span class='notice'>[src] is about to kiss [L]!</span>", \
-								"<span class='notice'>You're attempting to kiss [L]!</span>", \
-								"<span class='notice'>You're attempting to kiss with something!</span>")
-			SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "kissed", /datum/mood_event/kiss) //how cute, affection is nice.
-	//Well done you kissed it/them!
+
+	M.adjustPainLoss(-5, 0) //mommas kisses always stop alittle pain..
+	SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "kissed", /datum/mood_event/kiss) //how cute, affection is nice.
 	src.visible_message("<span class='notice'>[src] kisses [L]!</span>", \
 						"<span class='notice'>You kiss [L]!</span>", \
 						"<span class='notice'>You kiss something!</span>")
+
 
 /mob/living/carbon/human/proc/climaxalone()
 	//we dont need hands to climax alone, its hands free!

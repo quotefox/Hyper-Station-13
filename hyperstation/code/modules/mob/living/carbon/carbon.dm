@@ -36,23 +36,18 @@
 
 		if (BP.pain_dam && pain_effect > 10 && (stat != DEAD))
 			var pain_level = (round(BP.pain_dam / 10))
-			if (pain_level <= 4)
-				switch(pain_level) //for every 10 points of damage minor -> major
-					if(1)//start at 10 just so it doesnt get annoying with micro damage
-						to_chat(src, "<span class='warning'>You feel minor pain in your [BP.name].</span>")
-					if(2)
-						to_chat(src, "<span class='warning'>You feel pain in your [BP.name].</span>")
-					if(3)
-						to_chat(src, "<span class='warning'>You feel severe pain in your [BP.name].</span>")
-					if(4)
-						to_chat(src, "<span class='warning'>You feel overwhelming pain in your [BP.name].</span>")
-						jitteriness += 2
-						stuttering += 2
+			switch(pain_level) //for every 10 points of damage minor -> major
+				if(1)//start at 10 just so it doesnt get annoying with micro damage
+					to_chat(src, "<span class='warning'>You feel minor pain in your [BP.name].</span>")
+				if(2)
+					to_chat(src, "<span class='warning'>You feel pain in your [BP.name].</span>")
+				if(3)
+					to_chat(src, "<span class='warning'>You feel severe pain in your [BP.name].</span>")
+				if(4 to 99)
+					to_chat(src, "<span class='warning'>You feel overwhelming pain in your [BP.name].</span>")
+					jitteriness += 2
+					stuttering += 2
 
-			else //god damn.. thats alot of pain owe.
-				to_chat(src, "<span class='warning'>You cant handle the pain in your [BP.name].</span>")
-				jitteriness += 2
-				stuttering += 2
 
 	total_pain = pain_amount
 
@@ -70,15 +65,24 @@
 		pain_effect = 0 //reset the timer 10 seconds.
 		if(stat != DEAD)
 			//status effects for pain..
+			var/mob/living/H = src
 			if (total_pain > 50 && total_pain < 80)
-				to_chat(src, "<span class='warning'>You cant handle the pain...</span>")
+				if(HAS_TRAIT(H, TRAIT_MASO)) //just because your into it doesnt give you a advantage..
+					to_chat(src, "<span class='love'>You love this pain, it excites you...</span>")
+					H.adjustArousalLoss(6)
+				else
+					to_chat(src, "<span class='warning'>You cant handle the pain...</span>")
 				if(prob(20))
 					emote("scream")
 				jitteriness += 3 //shake
 				stuttering += 3	 //stutter words, your in pain bro.
 
 			if (total_pain > 80) //your in trouble. fainting..
-				to_chat(src, "<span class='warning'>You cant handle the intense pain...</span>")
+				if(HAS_TRAIT(H, TRAIT_MASO))
+					to_chat(src, "<span class='love'>You love this intense pain, it excites you...</span>")
+					H.adjustArousalLoss(12)
+				else
+					to_chat(src, "<span class='warning'>You cant handle the intense pain...</span>")
 				if(prob(20)) //chance of fainting..
 					visible_message("<span class='danger'>[src] collapses!</span>")
 					Unconscious(100)
