@@ -107,21 +107,21 @@
 
 /datum/bounty/item/medical/advhealthscaner
 	name = "Advanced Health Analyzer"
-	description = "A ERT Medical unit needs the new 'advanced health analyzer', for a mission at a Station 4. Can you send some?."
+	description = "An ERT Medical unit needs the new 'advanced health analyzer' for a mission at a Station 4. Can you send some?."
 	reward = 3000
 	required_count = 5
 	wanted_types = list(/obj/item/healthanalyzer/advanced)
 
 /datum/bounty/item/medical/wallmounts
 	name = "Defibrillator wall mounts"
-	description = "New Space OSHA regulation state that are new cloning medical wing needs a few 'Easy to access defibrillartors'. Can you send a few before we get a lawsuit?"
+	description = "New Safety Review Board regulations state that our new medical wing needs 'easy to access defibrillators'. Can you send a few before we get a lawsuit?"
 	reward = 2000
 	required_count = 3
 	wanted_types = list(/obj/machinery/defibrillator_mount)
 
 /datum/bounty/item/medical/defibrillator
-	name = "New defibillators"
-	description = "After years of storage are defibrillator units have become more liabilities then we want. Please send us some new ones to replace these old ones."
+	name = "New defibrillators"
+	description = "After years of storage our defibrillator units have become more of a liability then we want. Please send us some new ones to replace them."
 	reward = 2250
 	required_count = 5
 	wanted_types = list(/obj/item/defibrillator)
