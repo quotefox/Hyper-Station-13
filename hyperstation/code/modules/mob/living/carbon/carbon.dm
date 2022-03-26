@@ -75,7 +75,7 @@
 				if(prob(20))
 					emote("scream")
 				jitteriness += 3 //shake
-				stuttering += 35	 //stutter words, your in pain bro.
+				stuttering += 3	 //stutter words, your in pain bro.
 
 			if (total_pain > 80) //your in trouble. fainting..
 				to_chat(src, "<span class='warning'>You cant handle the intense pain...</span>")
