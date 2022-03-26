@@ -3164,6 +3164,7 @@
 #include "hyperstation\code\modules\mob\mob_helpers.dm"
 #include "hyperstation\code\modules\mob\dead\new_player\sprite_accessories.dm"
 #include "hyperstation\code\modules\mob\living\status_indicators.dm"
+#include "hyperstation\code\modules\mob\living\carbon\carbon.dm"
 #include "hyperstation\code\modules\mob\living\silicon\robot\robot.dm"
 #include "hyperstation\code\modules\mob\living\silicon\robot\robot_modules.dm"
 #include "hyperstation\code\modules\patreon\patreon.dm"

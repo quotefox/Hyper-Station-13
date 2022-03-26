@@ -10,6 +10,7 @@
 #define CLONE		"clone"
 #define STAMINA 	"stamina"
 #define BRAIN		"brain"
+#define PAIN		"pain"
 
 //bitflag damage defines used for suicide_act
 #define BRUTELOSS 		(1<<0)

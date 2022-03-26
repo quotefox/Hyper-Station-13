@@ -391,6 +391,7 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 /datum/reagent/medicine/mine_salve/on_mob_life(mob/living/carbon/C)
 	C.hal_screwyhud = SCREWYHUD_HEALTHY
 	C.adjustBruteLoss(-0.25*REM, 0)
+	M.adjustPainLoss(-1*REM, 0)
 	C.adjustFireLoss(-0.25*REM, 0)
 	C.adjustStaminaLoss(-0.5*REM, 0)
 	..()
@@ -698,7 +699,7 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 
 /datum/reagent/medicine/morphine
 	name = "Morphine"
-	description = "A painkiller that allows the patient to move at full speed even in bulky objects. Causes drowsiness and eventually unconsciousness in high doses. Overdose will cause a variety of effects, ranging from minor to lethal."
+	description = "A painkiller. Causes drowsiness and eventually unconsciousness in high doses. Overdose will cause a variety of effects, ranging from minor to lethal."
 	reagent_state = LIQUID
 	color = "#A9FBFB"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
@@ -706,23 +707,8 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 	addiction_threshold = 25
 	pH = 8.96
 
-/datum/reagent/medicine/morphine/on_mob_metabolize(mob/living/L)
-	..()
-	L.ignore_slowdown(type)
-
-/datum/reagent/medicine/morphine/on_mob_end_metabolize(mob/living/L)
-	L.unignore_slowdown(type)
-	..()
-
 /datum/reagent/medicine/morphine/on_mob_life(mob/living/carbon/M)
-	switch(current_cycle)
-		if(11)
-			to_chat(M, "<span class='warning'>You start to feel tired...</span>" )
-		if(12 to 24)
-			M.drowsyness += 1
-		if(24 to INFINITY)
-			M.Sleeping(40, 0)
-			. = 1
+	M.adjustPainLoss(-3*REM, 0)// very good pain killer.
 	..()
 
 /datum/reagent/medicine/morphine/overdose_process(mob/living/M)
@@ -1022,6 +1008,7 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 
 /datum/reagent/medicine/bicaridine/on_mob_life(mob/living/carbon/M)
 	M.adjustBruteLoss(-2*REM, 0)
+	M.adjustPainLoss(-1*REM, 0) //stabilize pain at threshold. and bring it down faster if above.
 	..()
 	. = 1
 
