@@ -352,7 +352,7 @@ obj/screen/arousal/proc/kiss()
 
 	src << browse(null, "window=arousal") //closes the arousal window, if its open, mainly to stop spam
 
-	M.adjustPainLoss(-5, 0) //mommas kisses always stop alittle pain..
+	L.adjustPainLoss(-5, 0) //mommas kisses always stop alittle pain..
 	SEND_SIGNAL(L, COMSIG_ADD_MOOD_EVENT, "kissed", /datum/mood_event/kiss) //how cute, affection is nice.
 	src.visible_message("<span class='notice'>[src] kisses [L]!</span>", \
 						"<span class='notice'>You kiss [L]!</span>", \
