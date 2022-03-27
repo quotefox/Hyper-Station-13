@@ -502,6 +502,10 @@
 				var/obj/effect/proc_holder/spell/spell = S
 				spell.updateButtonIcon()
 
+		if(iscarbon(src)) //pain cooldown
+			var/mob/living/carbon/C = src
+			C.pain_cooldown = 20
+
 //proc used to completely heal a mob.
 /mob/living/proc/fully_heal(admin_revive = 0)
 	restore_blood()
@@ -542,6 +546,13 @@
 			for(var/organ in C.internal_organs)
 				var/obj/item/organ/O = organ
 				O.setOrganDamage(0)
+	//Heal pain
+	if(iscarbon(src))
+		var/mob/living/carbon/C = src
+		for(var/obj/item/bodypart/X in C.bodyparts)
+			X.pain_dam = 0
+
+
 	SEND_SIGNAL(src, COMSIG_LIVING_FULLY_HEAL, admin_revive)
 
 //fuck shitcode I hate shitcode

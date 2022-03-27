@@ -1,6 +1,7 @@
 /mob/living/carbon
 	var/total_pain = 0
 	var/pain_effect = 0
+	var/pain_cooldown = 0 //for defibs/surgry!
 
 //pain
 /mob/living/carbon/adjustPainLoss(amount, updating_health = TRUE, forced = FALSE, affected_zone = BODY_ZONE_CHEST)
@@ -15,11 +16,15 @@
 
 /mob/living/carbon/proc/handle_pain()
 	var/pain_amount = 0
+
 	pain_effect += 1
 
+	if (pain_cooldown)
+		pain_cooldown -= 1
+		pain_effect = 0 //ignore pain for now, you got adrenaline running through your body.
+
 	//build up pain in the system from all your limbs and natrually heal pain if its attached to a live body.
-	for(var/X in bodyparts)
-		var/obj/item/bodypart/BP = X
+	for(var/obj/item/bodypart/BP  in bodyparts)
 		pain_amount += BP.pain_dam
 
 		var/pain_target = (BP.brute_dam + BP.burn_dam)*0.8
@@ -34,7 +39,7 @@
 			BP.pain_dam = 0
 			continue //dont need to do the rest, your fine.
 
-		if (BP.pain_dam && pain_effect > 10 && (stat == 0))
+		if (BP.pain_dam && pain_effect > 5 && (stat == 0))
 			var pain_level = (round(BP.pain_dam / 10))
 			switch(pain_level) //for every 10 points of damage minor -> major
 				if(1)//start at 10 just so it doesnt get annoying with micro damage
@@ -52,17 +57,19 @@
 	total_pain = pain_amount
 
 	//handle onscreen alert
-	if (pain_effect == 5) //alittle early to give you a 5 second warning
+	if (pain_effect > 5)
 		switch(total_pain)
-			if(-100 to 29)
+			if(-100 to 25)
 				clear_alert("pain")
-			if(30 to 79)
+			if(25 to 69)
 				throw_alert("pain", /obj/screen/alert/pain)
-			if(80 to 200)
+			if(70 to 99)
 				throw_alert("pain", /obj/screen/alert/painmajor)
+			if(100 to 999)
+				throw_alert("pain", /obj/screen/alert/painshock)
 
-	if (pain_effect > 10)
-		pain_effect = 0 //reset the timer 10 seconds.
+	if (pain_effect > 5)
+		pain_effect = 0 //reset the timer 5 seconds.
 		if(stat == 0) //awake, not dead or asleep
 			//status effects for pain..
 			var/mob/living/H = src
@@ -82,7 +89,7 @@
 					to_chat(src, "<span class='love'>You love this intense pain, it excites you...</span>")
 					H.adjustArousalLoss(12)
 				else
-					to_chat(src, "<span class='warning'>You cant handle the intense pain...</span>")
+					to_chat(src, "<span class='big warning'>You cant handle the intense pain...</span>")
 				if(prob(20)) //chance of fainting..
 					visible_message("<span class='danger'>[src] collapses!</span>")
 					Unconscious(100)
@@ -91,10 +98,13 @@
 
 	//if they are asleep, this wont trigger.
 	if (total_pain > 110 && stat == 0) //taking 77 all damage at once from full health, will put you into shock and kill you. This cant be achived with chip damage (or fist fights), because youll die before you reach this pain level.
-		to_chat(src, "<span class='warning'>You give into the pain...</span>")
-		visible_message("<span class='danger'>[src] goes into shock!</span>")
-		death() // kill.
-
+		if(prob(50))
+			emote("scream")//scream
+		to_chat(src, "<span class='big warning'>You give into the pain...</span>")
+		visible_message("<span class='danger'>[src] goes into neurogenic shock!</span>")
+		Unconscious(100)
+		if (can_heartattack())//check if they can
+			set_heartattack(1)//heart stopped!
 
 
 //HS Pain heal

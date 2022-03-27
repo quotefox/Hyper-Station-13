@@ -187,6 +187,11 @@
 	desc = "You're in major pain!"
 	icon_state = "pain_major"
 
+/obj/screen/alert/painshock
+	name = "Neurogenic Shock"
+	desc = "You are in so much pain, you risk going into shock!"
+	icon_state = "pain_shock"
+
 /obj/screen/alert/gross
 	name = "Grossed out."
 	desc = "That was kind of gross..."
