@@ -393,3 +393,7 @@ from code/modules/mob/dead/new_player/sprite_accessories/hair_head.dm:
 /datum/sprite_accessory/hair/hsglamour
 	name = "Glamour (Hyper)"
 	icon_state = "hair_glamourh"
+
+/datum/sprite_accessory/hair/emoh
+	name = "Emo (Hyper)"
+	icon_state = "hair_emoh"
