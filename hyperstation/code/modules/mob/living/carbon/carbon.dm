@@ -81,7 +81,7 @@
 					to_chat(src, "<span class='warning'>You cant handle the pain...</span>")
 				if(prob(20))
 					emote("scream")
-				jitteriness += 3 //shake
+				do_jitter_animation() //basic shake.
 				stuttering += 3	 //stutter words, your in pain bro.
 
 			if (total_pain > 80) //your in trouble. fainting..
@@ -102,9 +102,9 @@
 			emote("scream")//scream
 		to_chat(src, "<span class='big warning'>You give into the pain...</span>")
 		visible_message("<span class='danger'>[src] goes into neurogenic shock!</span>")
-		Unconscious(100)
-		if (can_heartattack())//check if they can
-			set_heartattack(1)//heart stopped!
+		Unconscious(200)
+		if (can_heartattack()) //check if they can
+			set_heartattack(1) //heart stopped!
 
 
 //HS Pain heal
