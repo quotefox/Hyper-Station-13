@@ -326,7 +326,7 @@
 	Most stable colonies, stations, civilizations, planets, or anywhere on the spectrum is often backed by the firm hand of Kinaris- underneath one rule: \
 	Be Radiant."
 	history = ""
-	work = "Weave-research, conversion, and colony management"
+	work = "Weave-research, conversion, uplifting, and colony management"
 	headquarters = "Holy City of Radiant Hearth, Myril"
 	motto = "Be Radiant"
 
@@ -361,6 +361,7 @@
 						"Salis Major orbit",
 						"a megastructure at Kappa Andromedae",
 						"Radiant Hearth",
+						"a dockyard at Procella, Tremora",
 						"sector command at Vivida Laetus",
 						"a dissonant tear at RR Lyra",
 						"a city-station at Kappa Andromedae",
@@ -414,6 +415,7 @@
 						"a ringworld at Incandesce Seconda",
 						"Salis Major orbit",
 						"a megastructure at Kappa Andromedae",
+						"a dockyard at Procella, Tremora",
 						"the rings of Layenia",
 						"Dzar metalworking at Loto",
 						"a metalworking site at Salis Major",
@@ -453,5 +455,57 @@
 	motto = "secure the people, save the future"
 
 	ship_prefixes = list("ZCO" = "transportation", "ZC" = "patrol")
+
+	autogenerate_destination_names = TRUE
+
+//Thanks Hellcelot for this one!
+/datum/lore/organization/titanceramics
+	name = "Titan Piezoelectrics and Ceramics"
+	short_name = "Titan Ceramics"
+	desc = "Titan Ceramics was the primary source of prominent electrical power on Tremora for it's lifespan, with extravagent materials and unique ceramic mixes that supported \
+	incredibly efficient production of energy in bulk. Not only did they provide energy for a once-struggling civilization, they brought upon artistic desire and talent for those \
+	who would seek their ceramics. Value in energy is equal to value in art in their eyes, with only the finest materials and expertly-tested conditions to meet the quality of \
+	their work. Despite the overwhelming size difference of the housing species, value is still sought from both sides, resulting in multi-size accomodations for their ceramics. \
+	When cheap yet efficient power is required without the Weave, Titan Ceramics is there."
+	history = ""
+	work = "Production of power-efficient piezoelectric ceramics and craft"
+	headquarters = "The Storm Capitol of Procella, Tremora"
+	motto = ""
+
+	ship_prefixes = list("TC" = "transportation", "TCF" = "freight", "TCR" = "research")
+	ship_names = list(
+		"Noki",
+		"Moyai",
+		"Megalodon",
+		"Mako",
+		"Minnow",
+		"Tsunami",
+		"North Star",
+		"Tempest",
+		"Eye of the Storm",
+		"Aquarius",
+		"Marinia",
+		"Thalassus",
+		"Stormwind"
+		)
+
+	autogenerate_destination_names = TRUE
+
+/datum/lore/organization/syntech
+	name = "Synergized Technology"
+	short_name = "SynTech"
+	desc = "Synergized Technology- commonly known as SynTech- is a company which leads the complex solutions in any galaxy's biggest problem: accomodating for the size of life. \
+	As civilization grew more welcoming to different ideals and lifestyles, it became more difficult and disasterous to deal with the extreme size difference from one alien \
+	species to the other. Not only did this spark an incredible amount of regulations from AzureGov, but Kinaris's interest was piqued to keep peace over all; and that included \
+	accomodating for any species, whether or not they stood above a mountain, or below an ant hill. The high demand of multi-size rights and technology was driven into SynTech's \
+	hands, where they would provide and assist in regulating consistent and meaningful products to ease interaction from one to the next. Not only do they supply incredibly \
+	advanced, highly-regulated technology, they also help in consistent planning and regulation in most cities to keep traffic from most differently-sized species without \
+	havoc. Without SynTech, galaxies would look like a fairly bland place, where one size rules above all."
+	history = ""
+	work = "Production and selling of size-altering technology, as well as accomodating the planning of infrastructure to support many sizes."
+	headquarters = "The City-Planet of Jovias, Nembus"
+	motto = "Modern solutions, big and small"
+
+	ship_prefixes = list("SYT" = "transportation", "SYTF" = "freight", "XSYT" = "scaler", "SYT-I" = "constructor")
 
 	autogenerate_destination_names = TRUE
