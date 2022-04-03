@@ -3182,6 +3182,7 @@
 #include "hyperstation\code\modules\resize\sizegun.dm"
 #include "hyperstation\code\modules\surgery\organs\augments_arms.dm"
 #include "hyperstation\code\modules\uplink\uplink_items.dm"
+#include "hyperstation\code\modules\vending\teavendomatic.dm"
 #include "hyperstation\code\obj\ashtray.dm"
 #include "hyperstation\code\obj\bluespace sewing kit.dm"
 #include "hyperstation\code\obj\condom.dm"
