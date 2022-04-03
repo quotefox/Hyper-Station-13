@@ -373,10 +373,10 @@
 	return ..()
 
 /obj/machinery/suit_storage_unit/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
-										datum/tgui/master_ui = null, datum/ui_state/state = GLOB.notcontained_state)
+										datum/tgui/master_ui = null, datum/tgui_state/state = GLOB.tgui_notcontained_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "suit_storage_unit", name, 400, 305, master_ui, state)
+		ui = new(user, src, ui_key, "SuitStorageUnit", name, 400, 305, master_ui, state)
 		ui.open()
 
 /obj/machinery/suit_storage_unit/ui_data()

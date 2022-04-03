@@ -48,10 +48,10 @@
 		icon_state = initial(icon_state)
 
 /obj/item/aicard/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
-									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.hands_state)
+									datum/tgui/master_ui = null, datum/tgui_state/state = GLOB.tgui_hands_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "intellicard", name, 500, 500, master_ui, state)
+		ui = new(user, src, ui_key, "Intellicard", name, 500, 500, master_ui, state)
 		ui.open()
 
 /obj/item/aicard/ui_data()

@@ -25,7 +25,7 @@
 	taste_description = "a milky ice cream like flavour."
 	overdose_threshold = 17
 	metabolization_rate = 0.25
-	impure_chem 			= /datum/reagent/fermi/BEsmaller //If you make an inpure chem, it stalls growth
+	impure_chem 			= /datum/reagent/fermi/BEsmaller //If you make an impure chem, it stalls growth
 	inverse_chem_val 		= 0.35
 	inverse_chem		= /datum/reagent/fermi/BEsmaller //At really impure vols, it just becomes 100% inverse
 	can_synth = FALSE
@@ -49,7 +49,7 @@
 			B.throw_at(T2, 8, 1)
 		M.reagents.del_reagent(type)
 		return
-	log_game("FERMICHEM: [M] ckey: [M.key] has ingested Sucubus milk")
+	log_game("FERMICHEM: [M] ckey: [M.key] has ingested Succubus milk")
 	var/mob/living/carbon/human/H = M
 	H.genital_override = TRUE
 	var/obj/item/organ/genital/breasts/B = H.getorganslot("breasts")
@@ -69,11 +69,11 @@
 	var/obj/item/organ/genital/breasts/B = M.getorganslot("breasts")
 	if(!B) //If they don't have breasts, give them breasts.
 
-		//If they have Acute hepatic pharmacokinesis, then route processing though liver.
-		if(HAS_TRAIT(M, TRAIT_PHARMA))
+		//If they've opted out, then route processing though liver.
+		if(!(H.client?.prefs.cit_toggles & BREAST_ENLARGEMENT))
 			var/obj/item/organ/liver/L = M.getorganslot("liver")
 			if(L)
-				L.swelling+= 0.05
+				//L.swelling+= 0.05 HYPER CHANGE: Liver swelling is the non-lewd equivalent of large genitals impeding movement. Feature is depreciated on Hyper.
 				return..()
 			else
 				M.adjustToxLoss(1)
@@ -95,17 +95,16 @@
 			to_chat(M, "<span class='warning'>Your chest feels warm, tingling with newfound sensitivity.</b></span>")
 			M.reagents.remove_reagent(type, 5)
 			B = nB
-	//If they have them, increase size. If size is comically big, limit movement and rip clothes.
-	B.cached_size = B.cached_size + 0.05
-	B.update()
+	//If they have them, and opted in, increase size.
+	if(H.client?.prefs.cit_toggles & BREAST_ENLARGEMENT)
+		B.cached_size = B.cached_size + 0.05
+		B.update()
 	..()
 
 /datum/reagent/fermi/breast_enlarger/overdose_process(mob/living/carbon/M) //Turns you into a female if male and ODing, doesn't touch nonbinary and object genders.
-
-	//Acute hepatic pharmacokinesis.
-	if(HAS_TRAIT(M, TRAIT_PHARMA))
-		var/obj/item/organ/liver/L = M.getorganslot("liver")
-		L.swelling+= 0.05
+	if(!(M.client?.prefs.cit_toggles & FORCED_FEM))
+		//var/obj/item/organ/liver/L = M.getorganslot("liver")
+		//L.swelling+= 0.05 //HYPER CHANGE: See comment in /breast_enlarger/on_mob_life()
 		return ..()
 
 	var/obj/item/organ/genital/penis/P = M.getorganslot("penis")
@@ -142,17 +141,13 @@
 
 /datum/reagent/fermi/BEsmaller/on_mob_life(mob/living/carbon/M)
 	var/obj/item/organ/genital/breasts/B = M.getorganslot("breasts")
-	if(!B)
-		//Acute hepatic pharmacokinesis.
-		if(HAS_TRAIT(M, TRAIT_PHARMA))
-			var/obj/item/organ/liver/L = M.getorganslot("liver")
-			L.swelling-= 0.05
-			return ..()
-
-		//otherwise proceed as normal
-		return..()
-	B.cached_size = B.cached_size - 0.05
-	B.update()
+	if(!(M.client?.prefs.cit_toggles & BREAST_ENLARGEMENT) || !B)
+		//var/obj/item/organ/liver/L = M.getorganslot(ORGAN_SLOT_LIVER)
+		//L.swelling-= 0.05 //HYPER CHANGE: See comment in /breast_enlarger/on_mob_life()
+		return ..()
+	if(M.client?.prefs.cit_toggles & BREAST_ENLARGEMENT)
+		B.cached_size = B.cached_size - 0.05
+		B.update()
 	..()
 
 /datum/reagent/fermi/BEsmaller_hypo
@@ -240,15 +235,15 @@
 /datum/reagent/fermi/penis_enlarger/on_mob_life(mob/living/carbon/M) //Increases penis size, 5u = +1 inch.
 	if(!ishuman(M))
 		return
+
+	var/mob/living/carbon/human/H = M
 	var/obj/item/organ/genital/testicles/T = M.getorganslot("testicles") //Hyper Change, testicles come first so the dick isn't hidden behind the testicles layer
 	var/obj/item/organ/genital/penis/P = M.getorganslot("penis")
 	if(!T)//Hyper change// Adds testicles if there are none.
-
-		//If they have Acute hepatic pharmacokinesis, then route processing though liver.
-		if(HAS_TRAIT(M, TRAIT_PHARMA))
+		if(!(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT))
 			var/obj/item/organ/liver/L = M.getorganslot("liver")
 			if(L)
-				L.swelling+= 0.05
+				//L.swelling+= 0.05 //HYPER CHANGE: See comment in /breast_enlarger/on_mob_life()
 				return..()
 			else
 				M.adjustToxLoss(1)
@@ -263,14 +258,11 @@
 			nT.cached_size = 1
 			nT.sack_size = BALLS_SACK_SIZE_DEF
 			T = nT
-
-	if(!P)//They do have a preponderance for escapism, or so I've heard.
-
-		//If they have Acute hepatic pharmacokinesis, then route processing though liver.
-		if(HAS_TRAIT(M, TRAIT_PHARMA))
+	if(!P)
+		if(!(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT))
 			var/obj/item/organ/liver/L = M.getorganslot("liver")
 			if(L)
-				L.swelling+= 0.05
+				//L.swelling+= 0.05 //HYPER CHANGE: See comment in /breast_enlarger/on_mob_life()
 				return..()
 			else
 				M.adjustToxLoss(1)
@@ -286,19 +278,18 @@
 			nP.prev_length = 1
 			M.reagents.remove_reagent(type, 5)
 			P = nP
-
-	P.cached_length = P.cached_length + 0.1
-	//Hyper change// Increase ball size too
-	T.size = T.size + 0.1
-	T.update() //Hyper change - Make the ball size update
-	P.update()
+	if(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT)
+		P.cached_length = P.cached_length + 0.1
+		//Hyper change// Increase ball size too
+		T.size = T.size + 0.1
+		T.update() //Hyper change - Make the ball size update
+		P.update()
 	..()
 
 /datum/reagent/fermi/penis_enlarger/overdose_process(mob/living/carbon/M) //Turns you into a male if female and ODing, doesn't touch nonbinary and object genders.
-	//Acute hepatic pharmacokinesis.
-	if(HAS_TRAIT(M, TRAIT_PHARMA))
-		var/obj/item/organ/liver/L = M.getorganslot("liver")
-		L.swelling+= 0.05
+	if(!(M.client?.prefs.cit_toggles & FORCED_MASC))
+		//var/obj/item/organ/liver/L = M.getorganslot("liver")
+		//L.swelling+= 0.05 //HYPER CHANGE: See comment in /breast_enlarger/on_mob_life()
 		return..()
 
 	var/obj/item/organ/genital/breasts/B = M.getorganslot("breasts")
@@ -334,17 +325,13 @@
 /datum/reagent/fermi/PEsmaller/on_mob_life(mob/living/carbon/M)
 	var/mob/living/carbon/human/H = M
 	var/obj/item/organ/genital/penis/P = H.getorganslot("penis")
-	if(!P)
-		//Acute hepatic pharmacokinesis.
-		if(HAS_TRAIT(M, TRAIT_PHARMA))
-			var/obj/item/organ/liver/L = M.getorganslot("liver")
-			L.swelling-= 0.05
-			return..()
-
-		//otherwise proceed as normal
+	if(!(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT) || !P)
+		//var/obj/item/organ/liver/L = M.getorganslot(ORGAN_SLOT_LIVER)
+		//L.swelling-= 0.05 //HYPER CHANGE: See comment in /breast_enlarger/on_mob_life()
 		return..()
-	P.cached_length = P.cached_length - 0.1
-	P.update()
+	if(H.client?.prefs.cit_toggles & PENIS_ENLARGEMENT)
+		P.cached_length = P.cached_length - 0.1
+		P.update()
 	..()
 
 /datum/reagent/fermi/PEsmaller_hypo
@@ -408,22 +395,24 @@
 
 	var/mob/living/carbon/human/H = M
 	var/obj/item/organ/genital/anus/B = M.getorganslot("anus")
-	if(!B) //If they don't have a butt. Give them one!
-		var/obj/item/organ/genital/anus/nB = new
-		nB.Insert(M)
-		if(nB)
-			if(M.dna.species.use_skintones && M.dna.features["genitals_use_skintone"])
-				nB.color = skintone2hex(H.skin_tone)
-			else if(M.dna.features["breasts_color"])
-				nB.color = "#[M.dna.features["breasts_color"]]"
-			else
-				nB.color = skintone2hex(H.skin_tone)
-			nB.size = 1
-			to_chat(M, "<span class='warning'>Your ass cheeks bulge outwards and feel heavier.</b></span>")
-			M.reagents.remove_reagent(type, 5)
-			B = nB
-	//If they have, increase size.
-	if(B.size < 5) //just make sure you dont break sprites
-		B.size = B.size + 0.05
-		B.update()
+	if(!B) //If they don't have a butt and are opted in, give them one!
+		if(H.client?.prefs.cit_toggles & ASS_ENLARGEMENT)
+			var/obj/item/organ/genital/anus/nB = new
+			nB.Insert(M)
+			if(nB)
+				if(M.dna.species.use_skintones && M.dna.features["genitals_use_skintone"])
+					nB.color = skintone2hex(H.skin_tone)
+				else if(M.dna.features["breasts_color"])
+					nB.color = "#[M.dna.features["breasts_color"]]"
+				else
+					nB.color = skintone2hex(H.skin_tone)
+				nB.size = 1
+				to_chat(M, "<span class='warning'>Your ass cheeks bulge outwards and feel heavier.</b></span>")
+				M.reagents.remove_reagent(type, 5)
+				B = nB
+	//If they have & opt in, increase size.
+	if(H.client?.prefs.cit_toggles & ASS_ENLARGEMENT)
+		if(B.size < 5) //just make sure you dont break sprites
+			B.size = B.size + 0.05
+			B.update()
 	..()

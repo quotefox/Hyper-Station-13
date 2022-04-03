@@ -9,6 +9,7 @@
 	var/list/chems_needed = list()  //list of chems needed to complete the step. Even on success, the step will have no effect if there aren't the chems required in the mob.
 	var/require_all_chems = TRUE    //any on the list or all on the list?
 	var/silicons_obey_prob = FALSE
+	var/pain_failure = 10 //how painful it is if you fail.
 
 /datum/surgery_step/proc/try_op(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery, try_to_fail = FALSE)
 	var/success = FALSE
@@ -62,14 +63,21 @@
 		var/prob_chance = 100
 		if(implement_type)	//this means it isn't a require hand or any item step.
 			prob_chance = implements[implement_type]
+
 		prob_chance *= surgery.get_propability_multiplier()
+
+		//if human and awake
+		if (ishuman(target))
+			var/mob/living/carbon/human/H = target
+			if(H.stat == 0) //victorian surgery
+				prob_chance = prob_chance *0.65 //deminish your chances, they are awake!
 
 		if((prob(prob_chance) || (iscyborg(user) && !silicons_obey_prob)) && chem_check(target) && !try_to_fail)
 			if(success(user, target, target_zone, tool, surgery))
 				advance = TRUE
 		else
 			if(failure(user, target, target_zone, tool, surgery))
-				advance = TRUE
+				advance = FALSE
 		if(advance && !repeatable)
 			surgery.status++
 			if(surgery.status > surgery.steps.len)
@@ -83,15 +91,18 @@
 		"[user] begins to perform surgery on [target].")
 
 /datum/surgery_step/proc/success(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='notice'>You succeed.</span>",
-		"[user] succeeds!",
+	display_results(user, target, "<span class='notice'>You complete the procedure.</span>",
+		"[user] completes the procedure!",
 		"[user] finishes.")
 	return TRUE
 
 /datum/surgery_step/proc/failure(mob/user, mob/living/target, target_zone, obj/item/tool, datum/surgery/surgery)
-	display_results(user, target, "<span class='warning'>You screw up!</span>",
-		"<span class='warning'>[user] screws up!</span>",
+	display_results(user, target, "<span class='warning'>You failed the procedure!</span>",
+		"<span class='warning'>[user] failed the procedure!</span>",
 		"[user] finishes.", TRUE) //By default the patient will notice if the wrong thing has been cut
+	if (ishuman(target)) //pain on humans for messing up.
+		var/obj/item/bodypart/L = target.get_bodypart(target_zone)
+		L.pain_dam += pain_failure
 	return FALSE
 
 /datum/surgery_step/proc/tool_check(mob/user, obj/item/tool)

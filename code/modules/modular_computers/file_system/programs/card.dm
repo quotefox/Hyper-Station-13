@@ -6,7 +6,7 @@
 	transfer_access = ACCESS_HEADS
 	requires_ntnet = 0
 	size = 8
-	tgui_id = "ntos_card"
+	tgui_id = "NtosCard"
 	ui_x = 600
 	ui_y = 700
 
@@ -15,7 +15,7 @@
 	var/show_assignments = 0
 	var/minor = 0
 	var/authenticated = 0
-	var/list/reg_ids = list()
+	var/reg_ids = 1
 	var/list/region_access = null
 	var/list/head_subordinates = null
 	var/target_dept = 0 //Which department this computer has access to. 0=all departments
@@ -94,6 +94,134 @@
 
 	return formatted
 
+
+/datum/computer_file/program/card_mod/ui_data(mob/user)
+	var/list/data = get_header_data()
+
+	var/obj/item/computer_hardware/card_slot/card_slot
+	var/obj/item/computer_hardware/printer/printer
+
+	if(computer)
+		card_slot = computer.all_components[MC_CARD]
+		printer = computer.all_components[MC_PRINT]
+
+	data["mmode"] = mod_mode
+
+	var/authed = 0
+	if(computer)
+		if(card_slot)
+			var/obj/item/card/id/auth_card = card_slot.stored_card2
+			data["auth_name"] = auth_card ? strip_html_simple(auth_card.name) : "-----"
+			authed = authorized()
+
+
+	if(mod_mode == 2)
+		data["slots"] = list()
+		var/list/pos = list()
+		for(var/datum/job/job in SSjob.occupations)
+			if(job.title in blacklisted)
+				continue
+
+			var/list/status_open = build_manage(job,1)
+			var/list/status_close = build_manage(job,0)
+
+			pos.Add(list(list(
+				"title" = job.title,
+				"current" = job.current_positions,
+				"total" = job.total_positions,
+				"status_open" = (authed && !minor) ? status_open["enable"]: 0,
+				"status_close" = (authed && !minor) ? status_close["enable"] : 0,
+				"desc_open" = status_open["desc"],
+				"desc_close" = status_close["desc"])))
+		data["slots"] = pos
+
+	data["src"] = "[REF(src)]"
+
+
+	if(!mod_mode)
+		data["manifest"] = list()
+		var/list/crew = list()
+		for(var/datum/data/record/t in sortRecord(GLOB.data_core.general))
+			crew.Add(list(list(
+				"name" = t.fields["name"],
+				"rank" = t.fields["rank"])))
+
+		data["manifest"] = crew
+	data["assignments"] = show_assignments
+	if(computer)
+		data["have_id_slot"] = !!card_slot
+		data["have_printer"] = !!printer
+		if(!card_slot && mod_mode == 1)
+			mod_mode = 0 //We can't modify IDs when there is no card reader
+	else
+		data["have_id_slot"] = 0
+		data["have_printer"] = 0
+	
+	data["authenticated"] = authed
+
+	if(mod_mode == 1 && computer)
+		if(card_slot)
+			var/obj/item/card/id/id_card = card_slot.stored_card
+
+			data["has_id"] = !!id_card
+			data["id_rank"] = id_card && id_card.assignment ? html_encode(id_card.assignment) : "Unassigned"
+			data["id_owner"] = id_card && id_card.registered_name ? html_encode(id_card.registered_name) : "-----"
+			data["id_name"] = id_card ? strip_html_simple(id_card.name) : "-----"
+
+		if(card_slot.stored_card)
+			var/obj/item/card/id/id_card = card_slot.stored_card
+					
+			if(is_centcom)
+				var/list/all_centcom_access = list()
+				for(var/access in get_all_centcom_access())
+					all_centcom_access.Add(list(list(
+						"desc" = replacetext(get_centcom_access_desc(access), "&nbsp", " "),
+						"ref" = access,
+						"allowed" = (access in id_card.access) ? 1 : 0)))
+				data["all_centcom_access"] = all_centcom_access
+			else
+				var/list/accesses = list()
+				for(var/access in get_region_accesses(reg_ids))
+					if (get_access_desc(access))
+						accesses.Add(list(list(
+						"desc" = replacetext(get_access_desc(access), "&nbsp", " "),
+						"ref" = access,
+						"allowed" = (access in id_card.access) ? 1 : 0)))
+
+				var/list/regions = list()
+				for(var/i = 1; i <= 7; i++)
+					if((minor || target_dept) && !(i in region_access))
+						continue
+
+					regions.Add(list(list(
+						"name" = get_region_accesses_name(i),
+						"regid" = i,
+						"selected" = (reg_ids == i) ? 1 : null,
+						"accesses" = (reg_ids == i) ? accesses : null)))
+				data["regions"] = regions
+
+	return data
+
+
+/datum/computer_file/program/card_mod/ui_static_data(mob/user)
+	var/list/data = list()
+
+	data["station_name"] = station_name()
+	data["centcom_access"] = is_centcom
+	data["minor"] = target_dept || minor ? TRUE : FALSE
+
+	if(authenticated)
+		data["engineering_jobs"] = format_jobs(GLOB.engineering_positions)
+		data["medical_jobs"] = format_jobs(GLOB.medical_positions)
+		data["science_jobs"] = format_jobs(GLOB.science_positions)
+		data["security_jobs"] = format_jobs(GLOB.security_positions)
+		data["cargo_jobs"] = format_jobs(GLOB.supply_positions)
+		data["civilian_jobs"] = format_jobs(GLOB.civilian_positions)
+		data["centcom_jobs"] = format_jobs(get_all_centcom_jobs())
+
+	return data
+
+
 /datum/computer_file/program/card_mod/ui_act(action, params)
 	if(..())
 		return 1
@@ -127,11 +255,6 @@
 				mod_mode = 0
 			else if (params["target"] == "manage")
 				mod_mode = 2
-		if("PRG_togglea")
-			if(show_assignments)
-				show_assignments = 0
-			else
-				show_assignments = 1
 		if("PRG_print")
 			if(computer && printer) //This option should never be called if there is no printer
 				if(mod_mode)
@@ -270,13 +393,8 @@
 			j.total_positions--
 			opened_positions[edit_job_target]--
 		if("PRG_regsel")
-			if(!reg_ids)
-				reg_ids = list()
 			var/regsel = text2num(params["region"])
-			if(regsel in reg_ids)
-				reg_ids -= regsel
-			else
-				reg_ids += regsel
+			reg_ids = regsel
 
 	if(id_card)
 		id_card.name = text("[id_card.registered_name]'s ID Card ([id_card.assignment])")
@@ -289,133 +407,6 @@
 
 /datum/computer_file/program/card_mod/proc/apply_access(obj/item/card/id/id_card, list/accesses)
 	id_card.access |= accesses
-
-/datum/computer_file/program/card_mod/ui_data(mob/user)
-
-	var/list/data = get_header_data()
-
-	var/obj/item/computer_hardware/card_slot/card_slot
-	var/obj/item/computer_hardware/printer/printer
-
-	if(computer)
-		card_slot = computer.all_components[MC_CARD]
-		printer = computer.all_components[MC_PRINT]
-
-	data["mmode"] = mod_mode
-
-	var/authed = 0
-	if(computer)
-		if(card_slot)
-			var/obj/item/card/id/auth_card = card_slot.stored_card2
-			data["auth_name"] = auth_card ? strip_html_simple(auth_card.name) : "-----"
-			authed = authorized()
-
-
-	if(mod_mode == 2)
-		data["slots"] = list()
-		var/list/pos = list()
-		for(var/datum/job/job in SSjob.occupations)
-			if(job.title in blacklisted)
-				continue
-
-			var/list/status_open = build_manage(job,1)
-			var/list/status_close = build_manage(job,0)
-
-			pos.Add(list(list(
-				"title" = job.title,
-				"current" = job.current_positions,
-				"total" = job.total_positions,
-				"status_open" = (authed && !minor) ? status_open["enable"]: 0,
-				"status_close" = (authed && !minor) ? status_close["enable"] : 0,
-				"desc_open" = status_open["desc"],
-				"desc_close" = status_close["desc"])))
-		data["slots"] = pos
-
-	data["src"] = "[REF(src)]"
-	data["station_name"] = station_name()
-
-
-	if(!mod_mode)
-		data["manifest"] = list()
-		var/list/crew = list()
-		for(var/datum/data/record/t in sortRecord(GLOB.data_core.general))
-			crew.Add(list(list(
-				"name" = t.fields["name"],
-				"rank" = t.fields["rank"])))
-
-		data["manifest"] = crew
-	data["assignments"] = show_assignments
-	if(computer)
-		data["have_id_slot"] = !!card_slot
-		data["have_printer"] = !!printer
-		if(!card_slot && mod_mode == 1)
-			mod_mode = 0 //We can't modify IDs when there is no card reader
-	else
-		data["have_id_slot"] = 0
-		data["have_printer"] = 0
-
-	data["centcom_access"] = is_centcom
-
-
-	data["authenticated"] = authed
-
-
-	if(mod_mode == 1 && computer)
-		if(card_slot)
-			var/obj/item/card/id/id_card = card_slot.stored_card
-
-			data["has_id"] = !!id_card
-			data["id_rank"] = id_card && id_card.assignment ? html_encode(id_card.assignment) : "Unassigned"
-			data["id_owner"] = id_card && id_card.registered_name ? html_encode(id_card.registered_name) : "-----"
-			data["id_name"] = id_card ? strip_html_simple(id_card.name) : "-----"
-
-			if(show_assignments)
-				data["engineering_jobs"] = format_jobs(GLOB.engineering_positions)
-				data["medical_jobs"] = format_jobs(GLOB.medical_positions)
-				data["science_jobs"] = format_jobs(GLOB.science_positions)
-				data["security_jobs"] = format_jobs(GLOB.security_positions)
-				data["cargo_jobs"] = format_jobs(GLOB.supply_positions)
-				data["civilian_jobs"] = format_jobs(GLOB.civilian_positions)
-				data["centcom_jobs"] = format_jobs(get_all_centcom_jobs())
-
-
-		if(card_slot.stored_card)
-			var/obj/item/card/id/id_card = card_slot.stored_card
-			if(is_centcom)
-				var/list/all_centcom_access = list()
-				for(var/access in get_all_centcom_access())
-					all_centcom_access.Add(list(list(
-						"desc" = replacetext(get_centcom_access_desc(access), "&nbsp", " "),
-						"ref" = access,
-						"allowed" = (access in id_card.access) ? 1 : 0)))
-				data["all_centcom_access"] = all_centcom_access
-			else
-				var/list/regions = list()
-				for(var/i = 1; i <= 7; i++)
-					if((minor || target_dept) && !(i in region_access))
-						continue
-
-					var/list/accesses = list()
-					if(i in reg_ids)
-						for(var/access in get_region_accesses(i))
-							if (get_access_desc(access))
-								accesses.Add(list(list(
-								"desc" = replacetext(get_access_desc(access), "&nbsp", " "),
-								"ref" = access,
-								"allowed" = (access in id_card.access) ? 1 : 0)))
-
-					regions.Add(list(list(
-						"name" = get_region_accesses_name(i),
-						"regid" = i,
-						"selected" = (i in reg_ids) ? 1 : null,
-						"accesses" = accesses)))
-				data["regions"] = regions
-
-	data["minor"] = target_dept || minor ? 1 : 0
-
-
-	return data
-
 
 /datum/computer_file/program/card_mod/proc/build_manage(datum/job,open = FALSE)
 	var/out = "Denied"

@@ -41,7 +41,7 @@
 	mob_trait = TRAIT_CHOKE_SLUT
 	gain_text = "<span class='notice'>You feel like you want to feel fingers around your neck, choking you until you pass out or make a mess... Maybe both.</span>"
 	lose_text = "<span class='notice'>Seems you don't have a kink for suffocation anymore.</span>"
-
+/*
 /datum/quirk/pharmacokinesis //Prevents unwanted organ additions.
 	name = "Acute hepatic pharmacokinesis"
 	desc = "You've a rare genetic disorder that causes Incubus draft and Sucubus milk to be absorbed by your liver instead."
@@ -52,7 +52,7 @@
 	var/active = FALSE
 	var/power = 0
 	var/cachedmoveCalc = 1
-/*
+
 /datum/quirk/fluid_leak
 	name = "Leaky breasts"
 	desc = "You don't stop making milk, and you have a habit of leaking everywhere when your breasts are full"

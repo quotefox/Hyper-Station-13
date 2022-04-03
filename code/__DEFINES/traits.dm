@@ -170,14 +170,14 @@
 #define	TRAIT_TAGGER			"tagger"
 #define	TRAIT_PHOTOGRAPHER		"photographer"
 #define	TRAIT_MUSICIAN			"musician"
-#define	TRAIT_CROCRIN_IMMUNE    "crocin_immune"
+//#define	TRAIT_CROCRIN_IMMUNE    "crocin_immune" replaced with pref
 #define TRAIT_NYMPHO			"nymphomania"
 #define TRAIT_DISTANT			"headpat_hater"
 //#define TRAIT_FLUID_LEAK	"leaky_fluids" removed because milk snail trails are not okay
 #define TRAIT_MASO              "masochism"
 #define TRAIT_CHOKE_SLUT		"choke_slut"
 #define	TRAIT_HIGH_BLOOD        "high_blood"
-#define TRAIT_PHARMA            "hepatic_pharmacokinesis"
+//#define TRAIT_PHARMA            "hepatic_pharmacokinesis" replaced with pref
 #define TRAIT_PARA              "paraplegic"
 #define TRAIT_EMPATH			"empath"
 #define TRAIT_FRIENDLY			"friendly"
@@ -188,8 +188,8 @@
 #define TRAIT_CUM_PLUS			"cum_plus"
 #define TRAIT_NEVER_CLONE       "donotclone"
 #define TRAIT_COLDBLOODED		"coldblooded"	// Your body is literal room temperature. Does not make you immune to the temp.
-#define TRAIT_FLIMSY		"flimsy" //you have 20% less maxhealth
-
+#define TRAIT_FLIMSY			"flimsy" //you have 20% less maxhealth
+#define TRAIT_TRASHCAN			"trashcan"
 
 //Hyper
 #define TRAIT_VIRILE		"virile" //you have 20% more chance of impreg

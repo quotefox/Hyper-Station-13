@@ -93,7 +93,7 @@
 
 /obj/item/radio/intercom/interact(mob/user)
 	..()
-	ui_interact(user, state = GLOB.default_state)
+	ui_interact(user, state = GLOB.tgui_default_state)
 
 /obj/item/radio/intercom/can_receive(freq, level)
 	if(!on)

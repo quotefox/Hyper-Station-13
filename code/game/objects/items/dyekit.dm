@@ -35,7 +35,7 @@
 	if(!new_grad_color)
 		return
 
-	human_target.hair_color = new_hair_color
+	human_target.hair_color = sanitize_hexcolor(new_hair_color)
 	human_target.grad_style = new_grad_style
 	human_target.grad_color = sanitize_hexcolor(new_grad_color)
 	to_chat(human_target, "<span class='notice'>You start applying the hair dye...</span>")
