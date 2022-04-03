@@ -12771,7 +12771,8 @@
 /turf/open/floor/plating,
 /area/layenia/cloudlayer)
 "cmM" = (
-/obj/structure/table/plasmaglass,
+/obj/structure/table/reinforced,
+/obj/machinery/chem_dispenser/drinks,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/bar/cafe)
 "cmQ" = (
@@ -16437,6 +16438,12 @@
 	dir = 8
 	},
 /area/hallway/primary/aft/upper)
+"dhQ" = (
+/obj/structure/sink/kitchen{
+	pixel_y = 30
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/crew_quarters/bar/cafe/backroom)
 "dhY" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/neutral{
@@ -21518,6 +21525,11 @@
 	icon_state = "darkfull_plate"
 	},
 /area/layenia/cloudlayer)
+"enf" = (
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/crew_quarters/bar/cafe/storage)
 "eni" = (
 /obj/structure/closet/emcloset,
 /obj/effect/turf_decal/stripes/line{
@@ -25220,11 +25232,16 @@
 /turf/open/floor/plating,
 /area/maintenance/solars/port/fore)
 "eZL" = (
-/turf/open/floor/plasteel{
+/obj/effect/turf_decal/loading_area{
 	dir = 1;
-	icon_state = "floor_plate"
+	icon_state = "drain";
+	name = "drain"
 	},
-/area/crew_quarters/bar/cafe/backroom)
+/turf/open/floor/plasteel/grimy{
+	icon_state = "eighties";
+	name = "retro floor"
+	},
+/area/arcade)
 "eZM" = (
 /obj/effect/turf_decal/delivery,
 /obj/structure/railing{
@@ -27215,6 +27232,10 @@
 	icon_state = "floor_plate"
 	},
 /area/security/main)
+"fvj" = (
+/obj/machinery/vending/dinnerware,
+/turf/open/floor/plasteel/cafeteria,
+/area/crew_quarters/bar/cafe/backroom)
 "fvk" = (
 /obj/structure/chair/wood{
 	dir = 1
@@ -27837,6 +27858,13 @@
 	},
 /turf/open/floor/plasteel/grimy,
 /area/chapel/office)
+"fCH" = (
+/obj/structure/table/reinforced,
+/obj/machinery/reagentgrinder{
+	pixel_y = 9
+	},
+/turf/open/floor/plasteel/cafeteria,
+/area/crew_quarters/bar/cafe/backroom)
 "fDf" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -40388,6 +40416,10 @@
 "itf" = (
 /turf/open/floor/plating/layenia,
 /area/ai_monitored/storage/satellite)
+"itl" = (
+/obj/structure/closet/secure_closet/freezer/fridge,
+/turf/open/floor/plasteel/cafeteria,
+/area/crew_quarters/bar/cafe/backroom)
 "itn" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -45471,6 +45503,12 @@
 	},
 /turf/open/transparent/openspace,
 /area/layenia/cloudlayer)
+"juE" = (
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/crew_quarters/bar/cafe/backroom)
 "jva" = (
 /obj/structure/table/wood,
 /obj/item/lipstick/random{
@@ -57151,6 +57189,13 @@
 	dir = 1;
 	pixel_y = 16
 	},
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/food/condiment/peppermill{
+	pixel_x = 3
+	},
+/obj/item/reagent_containers/food/condiment/saltshaker{
+	pixel_x = -3
+	},
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/bar/cafe/backroom)
 "maF" = (
@@ -58957,6 +59002,10 @@
 /obj/structure/chair/sofa/right{
 	dir = 1
 	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
 /turf/open/floor/plasteel/grimy{
 	icon_state = "eighties";
 	name = "retro floor"
@@ -59526,6 +59575,10 @@
 	dir = 1;
 	pixel_y = -24
 	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
 /turf/open/floor/plasteel/grimy{
 	icon_state = "eighties";
 	name = "retro floor"
@@ -59739,6 +59792,19 @@
 "mBz" = (
 /obj/structure/chair/sofa/left{
 	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain_corner";
+	name = "drain"
 	},
 /turf/open/floor/plasteel/grimy{
 	icon_state = "eighties";
@@ -60657,10 +60723,26 @@
 	},
 /area/hallway/primary/aft/upper)
 "mMm" = (
-/obj/structure/table/reinforced,
-/obj/machinery/chem_dispenser/drinks,
-/turf/open/floor/plasteel/cafeteria,
-/area/crew_quarters/bar/cafe)
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain_corner";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/grimy{
+	icon_state = "eighties";
+	name = "retro floor"
+	},
+/area/arcade)
 "mMn" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -64123,16 +64205,18 @@
 /turf/closed/wall,
 /area/hallway/primary/port)
 "nul" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 9;
-	icon_state = "steel_panel";
-	name = "steel pannel"
+/obj/machinery/computer/arcade/orion_trail{
+	dir = 4
 	},
 /obj/effect/turf_decal/loading_area{
+	dir = 8;
 	icon_state = "drain";
 	name = "drain"
 	},
-/turf/open/floor/plasteel/vaporwave,
+/turf/open/floor/plasteel/grimy{
+	icon_state = "eighties";
+	name = "retro floor"
+	},
 /area/arcade)
 "nun" = (
 /obj/effect/turf_decal/loading_area{
@@ -64213,16 +64297,16 @@
 /turf/open/floor/plasteel/dark,
 /area/security/warden)
 "nvf" = (
+/obj/structure/chair/stool,
 /obj/effect/turf_decal/loading_area{
-	dir = 6;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/obj/effect/turf_decal/loading_area{
+	dir = 4;
 	icon_state = "drain";
 	name = "drain"
 	},
-/turf/open/floor/plasteel/vaporwave,
+/turf/open/floor/plasteel/grimy{
+	icon_state = "eighties";
+	name = "retro floor"
+	},
 /area/arcade)
 "nvs" = (
 /obj/machinery/light{
@@ -64995,6 +65079,21 @@
 /obj/structure/sign/poster/random{
 	pixel_y = 32
 	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain_corner";
+	name = "drain"
+	},
 /turf/open/floor/plasteel/grimy{
 	icon_state = "eighties";
 	name = "retro floor"
@@ -65021,6 +65120,11 @@
 /obj/machinery/light{
 	dir = 1;
 	pixel_y = 16
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
 	},
 /turf/open/floor/plasteel/grimy{
 	icon_state = "eighties";
@@ -65063,11 +65167,6 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "nFW" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 8;
-	icon_state = "drain";
-	name = "drain"
-	},
 /obj/machinery/light{
 	dir = 1;
 	pixel_y = 16
@@ -66028,11 +66127,6 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/hallway/primary/fore/upper)
 "nRg" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 8;
-	icon_state = "drain";
-	name = "drain"
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	dir = 4;
 	name = "air scrubber"
@@ -67040,6 +67134,11 @@
 	c_tag = "Arcade West";
 	dir = 5
 	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
 /turf/open/floor/plasteel/grimy{
 	icon_state = "eighties";
 	name = "retro floor"
@@ -67134,11 +67233,6 @@
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
 "ocj" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 8;
-	icon_state = "drain";
-	name = "drain"
-	},
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/plasteel/vaporwave,
 /area/arcade)
@@ -67960,11 +68054,6 @@
 /turf/open/floor/plasteel,
 /area/engine/break_room)
 "okS" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 8;
-	icon_state = "drain";
-	name = "drain"
-	},
 /turf/open/floor/plasteel/vaporwave,
 /area/arcade)
 "okV" = (
@@ -68917,17 +69006,17 @@
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -27
 	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
 /turf/open/floor/plasteel/grimy{
 	icon_state = "eighties";
 	name = "retro floor"
 	},
 /area/arcade)
 "osW" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 8;
-	icon_state = "drain";
-	name = "drain"
-	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
 	dir = 4;
 	name = "air vent"
@@ -69659,6 +69748,20 @@
 /obj/machinery/newscaster{
 	pixel_x = -32
 	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain_corner";
+	name = "drain"
+	},
 /turf/open/floor/plasteel/grimy{
 	icon_state = "eighties";
 	name = "retro floor"
@@ -69667,6 +69770,10 @@
 "oBz" = (
 /obj/structure/chair/sofa{
 	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
 	},
 /turf/open/floor/plasteel/grimy{
 	icon_state = "eighties";
@@ -69679,6 +69786,10 @@
 	},
 /obj/machinery/light{
 	pixel_y = -1
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
 	},
 /turf/open/floor/plasteel/grimy{
 	icon_state = "eighties";
@@ -69722,6 +69833,10 @@
 /obj/structure/sign/poster/random{
 	pixel_y = -32
 	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
 /turf/open/floor/plasteel/grimy{
 	icon_state = "eighties";
 	name = "retro floor"
@@ -69759,11 +69874,6 @@
 /obj/item/ashtray,
 /obj/structure/sign/poster/random{
 	pixel_y = -32
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 8;
-	icon_state = "drain";
-	name = "drain"
 	},
 /turf/open/floor/plasteel/vaporwave,
 /area/arcade)
@@ -70875,6 +70985,16 @@
 	icon_state = "floor_trim"
 	},
 /area/security/brig)
+"oKi" = (
+/obj/structure/table/reinforced,
+/obj/item/reagent_containers/food/condiment/enzyme{
+	layer = 5;
+	pixel_x = -5;
+	pixel_y = 6
+	},
+/obj/item/kitchen/rollingpin,
+/turf/open/floor/plasteel/cafeteria,
+/area/crew_quarters/bar/cafe/backroom)
 "oKk" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Entertainment Theatre"
@@ -78256,7 +78376,7 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
 "qlb" = (
-/turf/open/floor/plasteel/freezer,
+/turf/open/floor/plating,
 /area/crew_quarters/bar/cafe/storage)
 "qlg" = (
 /obj/structure/flora/ausbushes/fullgrass,
@@ -104742,7 +104862,8 @@
 /turf/open/floor/plating/asteroid/layenia,
 /area/layenia)
 "vdQ" = (
-/turf/open/floor/carpet/orange,
+/obj/structure/closet/secure_closet/freezer/kitchen,
+/turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/bar/cafe/backroom)
 "vel" = (
 /obj/effect/turf_decal/loading_area{
@@ -107859,6 +107980,17 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
+"vJs" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/grimy{
+	icon_state = "eighties";
+	name = "retro floor"
+	},
+/area/arcade)
 "vJB" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Maintenance Access";
@@ -116438,6 +116570,14 @@
 "xnW" = (
 /turf/open/floor/carpet,
 /area/artatrium)
+"xnY" = (
+/obj/structure/table/reinforced,
+/obj/item/storage/fancy/donut_box,
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/crew_quarters/bar/cafe/backroom)
 "xoa" = (
 /obj/structure/chair/office/light,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -121773,15 +121913,19 @@
 /turf/closed/mineral/layenia,
 /area/layenia)
 "yfn" = (
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
+/obj/machinery/computer/arcade/minesweeper{
+	dir = 4
 	},
-/obj/effect/turf_decal/arrows{
-	pixel_y = 7
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
 	},
-/turf/open/floor/plating/layenia,
-/area/layenia/cloudlayer)
+/turf/open/floor/plasteel/grimy{
+	icon_state = "eighties";
+	name = "retro floor"
+	},
+/area/arcade)
 "yfo" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -149169,9 +149313,9 @@ ngW
 noM
 ngW
 nFh
-nQa
+nul
 obr
-nQB
+yfn
 osR
 oBy
 ngW
@@ -149425,7 +149569,7 @@ fTZ
 kBa
 kdy
 kBa
-kVR
+eZL
 mdx
 mdx
 mdx
@@ -149682,7 +149826,7 @@ naj
 kBa
 kul
 kBa
-kVR
+eZL
 kVR
 obA
 kVR
@@ -149939,7 +150083,7 @@ jHn
 kBa
 kAG
 kBa
-kVR
+eZL
 mdx
 mdx
 mdx
@@ -150452,8 +150596,8 @@ vDP
 dKx
 nhw
 noU
-nul
-kVR
+noU
+eZL
 nQB
 nQa
 oka
@@ -150709,12 +150853,12 @@ vDP
 dKx
 nhI
 npc
+npc
+mMm
 nvf
-kVR
-mdx
-mdx
-mdx
-kVR
+nvf
+nvf
+vJs
 mBz
 ngW
 nhl
@@ -216477,8 +216621,8 @@ lFy
 lFy
 aLx
 vdQ
-vdQ
-vdQ
+itl
+nia
 aLx
 cmM
 mNG
@@ -216733,10 +216877,10 @@ dEt
 xMh
 rqH
 aLx
-vdQ
-vdQ
-vdQ
-aLx
+dhQ
+nia
+nia
+juE
 mNG
 mNG
 aLK
@@ -216993,7 +217137,7 @@ aLx
 maz
 nia
 nia
-eZL
+aLx
 mNG
 mNG
 aLK
@@ -217247,11 +217391,11 @@ yjw
 yjw
 yjw
 aLx
+oKi
 nia
 nia
-nia
-aLx
-mMm
+xnY
+mNG
 mNG
 aLK
 fjc
@@ -217504,9 +217648,9 @@ yjw
 yjw
 yjw
 aLx
+fCH
 nia
-nia
-nia
+fvj
 aLx
 xVu
 mNG
@@ -217762,7 +217906,7 @@ yjw
 nBH
 nBH
 nBH
-qlb
+enf
 nBH
 aLx
 bKV
@@ -219302,7 +219446,7 @@ lFy
 aXG
 yjw
 nBH
-fZN
+yjw
 nBH
 nBH
 nBH
@@ -230906,7 +231050,7 @@ xnL
 ePF
 ePF
 ePF
-yfn
+ygY
 ePF
 ePF
 ePF
