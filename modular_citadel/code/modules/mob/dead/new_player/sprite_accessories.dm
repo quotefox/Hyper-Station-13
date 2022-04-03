@@ -2304,33 +2304,28 @@ datum/sprite_accessory/ears/human/gret
 
 //doged was here
 /datum/sprite_accessory/mam_body_markings/chemlight
-	name = "chemlight"
+	name = "RadDog"
 	icon_state = "chemlight"
-	ckeys_allowed = list("chemlight")
 
 /datum/sprite_accessory/mam_tails/chemlight
-	name = "chemlight"
+	name = "RadDog"
 	icon_state = "chemlight"
-	ckeys_allowed = list("chemlight")
 
 /datum/sprite_accessory/mam_tails_animated/chemlight
-	name = "chemlight"
+	name = "RadDog"
 	icon_state = "chemlight"
 
 /datum/sprite_accessory/mam_ears/chemlight
-	name = "chemlight"
+	name = "RadDog"
 	icon_state = "chemlight"
-	ckeys_allowed = list("chemlight")
 
 /datum/sprite_accessory/mam_snouts/fchemlight
-	name = "chemlight (Top)"
+	name = "RadDog (Top)"
 	icon_state = "fchemlight"
-	ckeys_allowed = list("chemlight")
 
 /datum/sprite_accessory/mam_snouts/chemlight
-	name = "chemlight"
+	name = "RadDog"
 	icon_state = "chemlight"
-	ckeys_allowed = list("chemlight")
 
 /datum/sprite_accessory/taur/chemnaga
 	name = "Naga Chemlight"
