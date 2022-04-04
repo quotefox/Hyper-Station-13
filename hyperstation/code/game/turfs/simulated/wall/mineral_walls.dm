@@ -15,7 +15,7 @@
 	desc = "A low tech hull for Layenia flight."
 	icon_state = "ferry"
 
-/obj/structure/window/shuttle/custom/window/ferry
+/turf/closed/wall/mineral/titanium/custom/window/ferry
 	name = "\improper ferry wall"
 	desc = "A low tech hull for Layenia flight."
 	icon_state = "ferry"
