@@ -1,162 +1,143 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "bx" = (
-/turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry14"
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
+	dir = 1;
+	icon_state = "ferry41"
 	},
 /area/shuttle/transport)
 "bF" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry31"
-	},
-/turf/template_noop,
-/area/shuttle/transport)
-"bY" = (
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 4;
-	icon_state = "siding_wood_corner";
-	name = "wood corner"
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark{
+/turf/closed/wall/mineral/titanium/custom/ferry{
 	dir = 1;
-	icon_state = "darkfull_plate"
+	icon_state = "ferry17"
 	},
 /area/shuttle/transport)
 "cB" = (
-/turf/template_noop,
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
+	dir = 1;
+	icon_state = "ferry2"
+	},
 /area/shuttle/transport)
 "fd" = (
-/turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry12"
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
+	dir = 1;
+	icon_state = "ferry29"
+	},
+/area/shuttle/transport)
+"gv" = (
+/obj/effect/turf_decal/loading_area/white{
+	dir = 4;
+	icon_state = "loadingarea_white_flip"
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_plate"
 	},
 /area/shuttle/transport)
 "hh" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry10"
-	},
-/area/shuttle/transport)
-"hC" = (
-/turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry26"
+	dir = 1;
+	icon_state = "ferry37"
 	},
 /area/shuttle/transport)
 "hF" = (
-/obj/structure/chair/comfy/shuttle,
-/obj/structure/window/reinforced/tinted{
+/obj/structure/chair/comfy/shuttle{
 	dir = 4
 	},
 /obj/effect/turf_decal/loading_area{
-	dir = 5;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 6
-	},
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 4;
-	icon_state = "siding_wood_line";
-	name = "wood"
+	icon_state = "drain";
+	name = "drain"
 	},
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
-	icon_state = "steel_decals_central5";
-	name = "maintenance hatch"
+	icon_state = "drain";
+	name = "drain"
 	},
-/turf/open/floor/plasteel/dark,
+/obj/structure/window/reinforced/survival_pod,
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole_alt"
+	},
 /area/shuttle/transport)
 "hP" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry6"
+	dir = 1;
+	icon_state = "ferry32"
 	},
 /area/shuttle/transport)
 "iS" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry5"
+	dir = 1;
+	icon_state = "ferry28"
 	},
 /area/shuttle/transport)
 "jH" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry36"
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
+	dir = 1;
+	icon_state = "ferry3"
 	},
-/turf/template_noop,
 /area/shuttle/transport)
 "jI" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry24"
-	},
-/area/shuttle/transport)
-"li" = (
-/obj/machinery/door/airlock/shuttle{
-	name = "ferry storage";
-	req_access_txt = "101"
-	},
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
 	dir = 1;
-	icon_state = "siding_wood_corner";
-	name = "wood corner"
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 4;
-	icon_state = "steel_decals_central5";
-	name = "maintenance hatch"
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 8;
-	icon_state = "steel_decals_central5";
-	name = "maintenance hatch"
-	},
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
+	icon_state = "ferry19"
 	},
 /area/shuttle/transport)
-"lr" = (
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 4;
-	icon_state = "siding_wood_line";
-	name = "wood"
-	},
-/obj/structure/railing{
-	dir = 4
-	},
-/turf/open/floor/mineral/titanium,
-/area/shuttle/transport)
-"mn" = (
+"kh" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/structure/window/reinforced/tinted{
-	dir = 1
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 5;
+	icon_state = "siding_wood_line";
+	name = "wood"
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 9
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/transport)
+"kD" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
 	},
 /obj/effect/turf_decal/loading_area{
-	icon_state = "steel_decals_central5";
-	name = "maintenance hatch"
+	color = "#55391A";
+	dir = 5;
+	icon_state = "siding_wood_line";
+	name = "wood"
 	},
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
 /area/shuttle/transport)
 "mw" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry35"
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
+	dir = 1;
+	icon_state = "ferry33"
 	},
-/turf/template_noop,
 /area/shuttle/transport)
 "mA" = (
-/turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry15"
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
+	dir = 1;
+	icon_state = "ferry34"
 	},
 /area/shuttle/transport)
 "oc" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry40"
+	dir = 1;
+	icon_state = "ferry7"
+	},
+/area/shuttle/transport)
+"of" = (
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
+	dir = 1;
+	icon_state = "ferry1"
 	},
 /area/shuttle/transport)
 "oN" = (
@@ -164,418 +145,422 @@
 /area/template_noop)
 "oZ" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry19"
+	dir = 1;
+	icon_state = "ferry24"
 	},
 /area/shuttle/transport)
 "pc" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry3"
-	},
-/turf/template_noop,
-/area/shuttle/transport)
-"po" = (
-/turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry20"
-	},
-/area/shuttle/transport)
-"qw" = (
-/turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry27"
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
+	dir = 1;
+	icon_state = "ferry36"
 	},
 /area/shuttle/transport)
 "qx" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry39"
+	dir = 1;
+	icon_state = "ferry8"
 	},
 /area/shuttle/transport)
 "qC" = (
-/obj/effect/turf_decal/loading_area{
+/turf/closed/wall/mineral/titanium/custom/ferry{
 	dir = 1;
-	icon_state = "trim";
-	name = "trim"
+	icon_state = "ferry22"
 	},
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	icon_state = "siding_wood_corner";
-	name = "wood corner"
-	},
-/turf/open/floor/mineral/titanium,
 /area/shuttle/transport)
 "qE" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry4"
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
+	dir = 1;
+	icon_state = "ferry35"
 	},
-/turf/template_noop,
 /area/shuttle/transport)
 "qF" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry11"
+	dir = 1;
+	icon_state = "ferry20"
 	},
 /area/shuttle/transport)
 "ry" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry0"
-	},
-/turf/template_noop,
-/area/shuttle/transport)
-"rK" = (
-/obj/effect/turf_decal/arrows/white{
+/obj/machinery/computer/shuttle/ferry/request{
 	dir = 8
 	},
 /obj/effect/turf_decal/loading_area{
-	color = "#55391A";
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
 	dir = 1;
-	icon_state = "siding_wood_line";
-	name = "wood"
-	},
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole"
-	},
-/area/shuttle/transport)
-"rU" = (
-/obj/effect/turf_decal/loading_area{
-	icon_state = "trim";
-	name = "trim"
+	icon_state = "drain";
+	name = "drain"
 	},
 /obj/effect/turf_decal/loading_area{
-	color = "#55391A";
 	dir = 4;
-	icon_state = "siding_wood_corner";
-	name = "wood corner"
+	icon_state = "drain";
+	name = "drain"
 	},
-/turf/open/floor/mineral/titanium,
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain_corner";
+	name = "drain"
+	},
+/obj/structure/window/reinforced/survival_pod,
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole_alt"
+	},
 /area/shuttle/transport)
 "uw" = (
-/turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry13"
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
+	dir = 1;
+	icon_state = "ferry21"
 	},
-/area/shuttle/transport)
-"uV" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 9
-	},
-/obj/effect/turf_decal/loading_area{
-	icon_state = "half_stairs";
-	name = "steps"
-	},
-/obj/effect/turf_decal/loading_area{
-	icon_state = "steel_decals_central5";
-	name = "maintenance hatch"
-	},
-/turf/open/floor/mineral/titanium,
 /area/shuttle/transport)
 "vp" = (
-/obj/effect/turf_decal/loading_area{
+/turf/closed/wall/mineral/titanium/custom/ferry{
 	dir = 1;
-	icon_state = "trim";
-	name = "trim"
+	icon_state = "ferry23"
 	},
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	icon_state = "siding_wood_line";
-	name = "wood"
-	},
-/obj/structure/railing,
-/turf/open/floor/mineral/titanium,
 /area/shuttle/transport)
 "vy" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry33"
-	},
-/turf/template_noop,
-/area/shuttle/transport)
-"wO" = (
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkfull_plate"
-	},
-/area/shuttle/transport)
-"wR" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
+	dir = 1;
 	icon_state = "ferry25"
 	},
 /area/shuttle/transport)
-"xZ" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry21"
-	},
-/turf/template_noop,
-/area/shuttle/transport)
-"yR" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry2"
-	},
-/turf/template_noop,
-/area/shuttle/transport)
-"Ax" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry1"
-	},
-/turf/template_noop,
-/area/shuttle/transport)
-"AD" = (
-/turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry7"
-	},
-/area/shuttle/transport)
-"AS" = (
-/obj/effect/turf_decal/loading_area{
-	icon_state = "half_stairs";
-	name = "steps"
-	},
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole"
-	},
-/area/shuttle/transport)
-"Fr" = (
-/obj/docking_port/mobile{
-	dir = 4;
-	dwidth = 2;
-	height = 13;
-	id = "ferry";
-	name = "ferry shuttle";
-	preferred_direction = 8;
-	width = 7
-	},
+"wR" = (
 /obj/machinery/door/airlock/shuttle{
 	name = "ferry airlock";
 	req_access_txt = "101"
 	},
 /obj/structure/fans/tiny,
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 4;
-	icon_state = "siding_wood_corner";
-	name = "wood corner"
-	},
-/obj/effect/turf_decal/loading_area{
+/obj/docking_port/mobile{
 	dir = 8;
-	icon_state = "steel_decals_central5";
-	name = "maintenance hatch"
+	dwidth = 2;
+	height = 13;
+	id = "ferry";
+	name = "ferry shuttle";
+	preferred_direction = 8;
+	width = 5
 	},
-/obj/effect/turf_decal/loading_area{
-	dir = 4;
-	icon_state = "steel_decals_central5";
-	name = "maintenance hatch"
-	},
+/obj/effect/turf_decal/delivery/white,
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
 /area/shuttle/transport)
-"FQ" = (
-/obj/structure/flora/crystal/medium/growth{
-	icon_state = "crystalgrowth2"
+"xZ" = (
+/turf/closed/wall/mineral/titanium/custom/ferry{
+	dir = 1;
+	icon_state = "ferry13"
 	},
-/turf/open/floor/plating/asteroid/layenia/garden,
+/area/shuttle/transport)
+"yR" = (
+/turf/closed/wall/mineral/titanium/custom/ferry{
+	dir = 1;
+	icon_state = "ferry14"
+	},
+/area/shuttle/transport)
+"zV" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/ausbushes/palebush,
+/obj/structure/window/reinforced/fulltile,
+/turf/open/floor/grass,
+/area/shuttle/transport)
+"Ax" = (
+/turf/closed/wall/mineral/titanium/custom/ferry{
+	dir = 1;
+	icon_state = "ferry15"
+	},
+/area/shuttle/transport)
+"AD" = (
+/turf/closed/wall/mineral/titanium/custom/ferry{
+	dir = 1;
+	icon_state = "ferry40"
+	},
+/area/shuttle/transport)
+"AS" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "ferry storage";
+	req_access_txt = "101"
+	},
+/obj/effect/turf_decal/delivery/white,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/transport)
+"CX" = (
+/obj/structure/shuttle/engine/heater{
+	dir = 8
+	},
+/obj/structure/flora/crystal/medium/growth{
+	icon_state = "crystalgrowth2";
+	pixel_y = 1
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 1
+	},
+/obj/structure/window/reinforced/survival_pod,
+/obj/structure/window/reinforced/survival_pod{
+	dir = 4
+	},
+/turf/open/floor/pod/dark,
+/area/shuttle/transport)
+"Fq" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/machinery/light{
+	pixel_y = -1
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/transport)
+"Fr" = (
+/turf/closed/wall/mineral/titanium/custom/ferry{
+	dir = 1;
+	icon_state = "ferry16"
+	},
 /area/shuttle/transport)
 "GK" = (
-/turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry18"
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
+	dir = 1;
+	icon_state = "ferry30"
 	},
 /area/shuttle/transport)
 "GN" = (
-/turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry17"
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
+	dir = 1;
+	icon_state = "ferry31"
 	},
 /area/shuttle/transport)
 "IB" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry29"
-	},
-/turf/template_noop,
-/area/shuttle/transport)
-"Je" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry22"
+	dir = 1;
+	icon_state = "ferry12"
+	},
+/area/shuttle/transport)
+"IR" = (
+/obj/effect/turf_decal/bot,
+/obj/structure/closet/crate,
+/obj/item/storage/toolbox/mechanical,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/transport)
+"LT" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/transport)
+"Mu" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/structure/window/reinforced/survival_pod{
+	dir = 8
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 9;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
 	},
 /area/shuttle/transport)
 "MI" = (
-/obj/structure/chair/comfy/shuttle,
 /obj/effect/turf_decal/loading_area{
-	dir = 5;
-	icon_state = "steel_panel";
-	name = "steel pannel"
+	dir = 8;
+	icon_state = "trim";
+	name = "trim"
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 6
+/obj/machinery/light{
+	dir = 1
 	},
-/obj/effect/turf_decal/loading_area{
-	dir = 1;
-	icon_state = "steel_decals_central5";
-	name = "maintenance hatch"
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
 	},
-/turf/open/floor/plasteel/dark,
 /area/shuttle/transport)
 "MY" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry16"
+	dir = 1;
+	icon_state = "ferry11"
 	},
 /area/shuttle/transport)
 "Na" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry28"
+	dir = 1;
+	icon_state = "ferry5"
 	},
 /area/shuttle/transport)
-"Qd" = (
-/turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry23"
+"OB" = (
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_trim"
 	},
 /area/shuttle/transport)
 "Qx" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry34"
-	},
-/turf/template_noop,
-/area/shuttle/transport)
-"Rp" = (
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
 	dir = 1;
-	icon_state = "siding_wood_corner";
-	name = "wood corner"
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark{
-	dir = 1;
-	icon_state = "darkfull_plate"
+	icon_state = "ferry4"
 	},
 /area/shuttle/transport)
 "Rt" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry9"
-	},
-/area/shuttle/transport)
-"SB" = (
-/obj/effect/turf_decal/arrows/white{
-	dir = 8
-	},
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
 	dir = 1;
-	icon_state = "siding_wood_line";
-	name = "wood"
-	},
-/turf/open/floor/plasteel/dark{
-	dir = 8;
-	icon_state = "darkfull_whole"
-	},
-/area/shuttle/transport)
-"Tb" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry41"
-	},
-/turf/template_noop,
-/area/shuttle/transport)
-"Tr" = (
-/obj/effect/turf_decal/loading_area{
-	icon_state = "trim";
-	name = "trim"
-	},
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 1;
-	icon_state = "siding_wood_line";
-	name = "wood"
-	},
-/obj/structure/railing{
-	dir = 1
-	},
-/turf/open/floor/mineral/titanium,
-/area/shuttle/transport)
-"TT" = (
-/turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry37"
-	},
-/area/shuttle/transport)
-"Uu" = (
-/obj/structure/chair/comfy/shuttle,
-/obj/structure/window/reinforced/tinted{
-	dir = 8
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 5;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 6
-	},
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 8;
-	icon_state = "siding_wood_line";
-	name = "wood"
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 1;
-	icon_state = "steel_decals_central5";
-	name = "maintenance hatch"
-	},
-/turf/open/floor/plasteel/dark,
-/area/shuttle/transport)
-"UV" = (
-/turf/closed/wall/mineral/titanium/custom/ferry{
 	icon_state = "ferry38"
 	},
 /area/shuttle/transport)
-"Vq" = (
-/obj/structure/window/shuttle/custom/ferry{
-	icon_state = "ferry30"
-	},
-/turf/template_noop,
-/area/shuttle/transport)
-"VV" = (
-/obj/machinery/computer/shuttle/ferry/request{
-	dir = 4
-	},
-/obj/structure/window/reinforced/tinted{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 9
-	},
+"Sg" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
-	icon_state = "steel_decals_central5";
-	name = "maintenance hatch"
+	icon_state = "drain";
+	name = "drain"
 	},
 /obj/effect/turf_decal/loading_area{
-	icon_state = "steel_decals_central5";
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "half_stairs";
+	name = "steps"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain_corner";
+	name = "drain"
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "steel_decals_central6_corner";
 	name = "maintenance hatch"
 	},
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/shuttle/transport)
+"SB" = (
+/turf/closed/wall/mineral/titanium/custom/ferry{
+	dir = 1;
+	icon_state = "ferry26"
+	},
+/area/shuttle/transport)
+"Tb" = (
+/turf/closed/wall/mineral/titanium/custom/window/ferry{
+	dir = 1;
+	icon_state = "ferry0"
+	},
+/area/shuttle/transport)
+"Tr" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "trim";
+	name = "trim"
+	},
+/obj/machinery/light{
+	pixel_y = -1
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/transport)
+"TT" = (
+/turf/closed/wall/mineral/titanium/custom/ferry{
+	dir = 1;
+	icon_state = "ferry10"
+	},
+/area/shuttle/transport)
+"Uu" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "trim";
+	name = "trim"
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/transport)
+"UV" = (
+/turf/closed/wall/mineral/titanium/custom/ferry{
+	dir = 1;
+	icon_state = "ferry9"
+	},
+/area/shuttle/transport)
+"Vq" = (
+/turf/closed/wall/mineral/titanium/custom/ferry{
+	dir = 1;
+	icon_state = "ferry18"
+	},
+/area/shuttle/transport)
+"VV" = (
+/obj/machinery/computer{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_whole"
+	},
 /area/shuttle/transport)
 "WS" = (
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/window/reinforced/fulltile{
-	max_integrity = 5000;
-	name = "hardened window";
-	obj_integrity = 5000
+/turf/closed/wall/mineral/titanium/custom/ferry{
+	dir = 1;
+	icon_state = "ferry27"
 	},
-/turf/open/floor/grass,
 /area/shuttle/transport)
 "Yi" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry32"
+	dir = 1;
+	icon_state = "ferry6"
+	},
+/area/shuttle/transport)
+"Zj" = (
+/obj/item/radio/intercom{
+	freerange = 1;
+	listening = 0;
+	name = "Custom Channel";
+	pixel_y = 19
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_trim"
 	},
 /area/shuttle/transport)
 "ZJ" = (
 /turf/closed/wall/mineral/titanium/custom/ferry{
-	icon_state = "ferry8"
+	dir = 1;
+	icon_state = "ferry39"
 	},
 /area/shuttle/transport)
 
 (1,1,1) = {"
 oN
-qF
-bx
-Fr
-wR
+oN
+oN
+oN
+oN
 oN
 oN
 "}
@@ -585,42 +570,42 @@ hh
 WS
 SB
 jI
-oN
+Ax
 oN
 "}
 (3,1,1) = {"
-oN
+bx
 Rt
-Uu
-Rp
-Qd
-oN
-oN
+VV
+CX
+IR
+Fr
+Qx
 "}
 (4,1,1) = {"
-oN
+mw
 ZJ
 MI
-wO
-Je
+Uu
+Tr
 bF
-oN
+Tb
 "}
 (5,1,1) = {"
-oN
+mA
 AD
-MI
+qF
 AS
 xZ
 Vq
-oN
+of
 "}
 (6,1,1) = {"
-oN
+qE
 hP
-MI
-wO
-VV
+Sg
+OB
+LT
 IB
 cB
 "}
@@ -628,62 +613,62 @@ cB
 pc
 iS
 hF
-bY
-mn
+OB
+Fq
 Na
 jH
 "}
 (8,1,1) = {"
-yR
+oN
 fd
-WS
-rK
-uV
+ry
+OB
+kD
 Yi
-mw
+oN
 "}
 (9,1,1) = {"
-Ax
+oN
 GK
 uw
-li
-po
+OB
+Mu
 oc
-Qx
+oN
 "}
 (10,1,1) = {"
-ry
+oN
 GN
 qC
-lr
-rU
+OB
+Fq
 qx
-vy
+oN
 "}
 (11,1,1) = {"
-qE
-MY
+oN
+oN
 vp
-FQ
-Tr
+Zj
+kh
 UV
-Tb
+oN
 "}
 (12,1,1) = {"
-cB
-mA
+oN
+oN
 oZ
-hC
-qw
+gv
+zV
 TT
-cB
+oN
 "}
 (13,1,1) = {"
 oN
 oN
-oN
-oN
-oN
-oN
+vy
+wR
+yR
+MY
 oN
 "}
