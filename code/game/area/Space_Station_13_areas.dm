@@ -952,10 +952,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Private Investigator's Office"
 	icon_state = "detective"
 
-/area/security/lambent
-	name = "Lambent's Quarters"
-	icon_state = "detective"
-
 /area/security/range
 	name = "Firing Range"
 	icon_state = "firingrange"
@@ -1463,12 +1459,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Pool Area"
 	icon_state = "pool"
 
-/area/crew_quarters/spa
-	name = "Spa"
-
-/area/crew_quarters/spa/sauna
-	name = "Sauna"
-
 /area/xenoarch/nothinghere
 	name = "Nothing Here"
 	icon_state = "yellow"
@@ -1477,31 +1467,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/arcade
 	name = "Arcade"
 	icon_state = "yellow"
-
-/area/artatrium
-	name = "Art Atrium"
-	icon_state = "library"
-
-/area/crew_quarters/bar/cafe
-	name = "Cafe"
-	icon_state = "bar"
-
-/area/crew_quarters/bar/cafe/backroom
-	name = "Cafe Backroom"
-	icon_state = "bar"
-
-/area/crew_quarters/bar/cafe/storage
-	name = "Cafe Storage"
-	icon_state = "bar"
-
-/area/kinarisrep
-	name = "Kinaris Representative Office"
-
-/area/kinarisblueshield
-	name = "Kinaris Lambent Office"
-
-/area/barber
-	name = "Barber's Shop"
 
 /area/medical/psych/ward
 	name = "Psychology Ward"

@@ -89,9 +89,6 @@
 /datum/job/detective
 	alt_titles = list("Forensics Technician", "Private Investigator", "Gumshoe")
 
-/datum/job/lambent
-	alt_titles = list("Kinaris Protectorate", "Hardshield", "Asset Specialist", "Luminal")
-
 /datum/job/junior_officer
 
 //Supply

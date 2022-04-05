@@ -68,6 +68,9 @@
 #define ACCESS_LEAVE_GENPOP 70
 #define ACCESS_PSYCH 71
 #define ACCESS_LAMBENT 72
+#define ACCESS_BARBER 73
+#define ACCESS_BARISTA 74
+
 
 	//BEGIN CENTCOM ACCESS
 	/*Should leave plenty of room if we need to add more access levels.
