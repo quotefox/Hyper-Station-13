@@ -235,12 +235,12 @@
 /obj/structure/fans/tiny,
 /obj/docking_port/mobile{
 	dir = 8;
-	dwidth = 2;
+	dwidth = 3;
 	height = 13;
 	id = "ferry";
 	name = "ferry shuttle";
 	preferred_direction = 8;
-	width = 5
+	width = 7
 	},
 /obj/effect/turf_decal/delivery/white,
 /turf/open/floor/plasteel/dark{
