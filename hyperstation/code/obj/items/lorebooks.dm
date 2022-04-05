@@ -6,7 +6,7 @@
 /obj/item/book/lorebooks/welcome_to_kinaris
 	name = "Welcome to Kinaris!"
 	icon_state = "bookwelcometokinaris"
-	desc = "An introductory book given to immigrants of people who changed their Nanotrasen ways, and accepted the light of Kinaris, Radiance, and the Azurean Government."
+	desc = "A humanitarian guide to Andromeda."
 	author = "V. Kinaris"
 	title = "Welcome to Kinaris!"
 	dat = {"<html>
@@ -21,63 +21,152 @@
 				</head>
 				<body>
 				<h3 style="text-align: center;">Welcome to Kinaris!</h3>
+				<h2 style="text-align: center;">A humanitarian guide to Andromeda</h2>
 				<hr>
-				If you're reading this datapad, you probably have gained an interest in what the daily commodities and rights of a Kinaris worker may be, or you have recently been employed and are looking for further information. Under the latter's case; welcome! It's not an easy transition to working under a larger corporation for any Azurean, and we are here to alleviate that stress. Whether or not you fall under any of these categories, or are clueless at all to who we are, please do take a read!
+				Hello reader! If your eyes find themselves upon this datapad, then you’re surely interested in finding out what your new employers are all about. If not, Kinaris would highly recommend a thorough read regardless; Azurean culture tends to be a shock for outsiders!
 				<p>
 				<h2>Table of Contents...</h2>
 				<ol>
-				<li>What is Kinaris?
-				<li>How Kinaris Came to be
-				<li>How Kinaris Operates Today
-				<li>Workers' Rights
-				<li>Usage of Radiance
+				<li>Kinaris; Who Are We?
+				<li>Andromeda and the Current Era
+				<li>Others Under Kinaris
+				<li>About Layenia Station
 				</ol>
 				<p>
 				<hr>
-                <h1><u>Chapter 1</u></h1>
-                <h2>What is Kinaris? </h2>
+				<h1><u>Chapter 1</u></h1>
+				<h2>Kinaris, Who Are We?</h2>
 				<p>
-				If you are unfamiliar to Azurean space, then you are most definitely unfamiliar with the entirety of Kinaris itself. Kinaris is the primary company under the rule of Azurea, who not only manufactures goods, but is a forefront of Radiant Technology, space exploration, exo-colony development, and asset protection. As such, it is a very expensive operation that almost entirely depends on it's own manufactured goods- and selling of such- towards it's own colonies, which is an extent of colony taxation and revenue collection after they've initially been set up. The sheer stability of it's exponential growth and safety has piqued the interest from other regions and promising even more imports and exports between Kinaris and other affiliates (including but not limited to; Lancaster Industries, CorpraTek, Grinlok Conglomerate, <s>and Nanotrasen</s>). The dependable and and noble nature of the heads at Kinaris had inevitably led to constant backing by the Azurean Government, and increased fortitude in asset protection. This ultimately ended up in Kinaris being the leading, and most-trusted government under Azurea law.
+				There are many misconceptions and illusions regarding Kinaris and what we are all about. This of course is coming with no surprise, thanks to our heavily-regulated uplifting guidelines and processes. Kinaris (otherwise known as Kinaris Colonization and Conversion LLC) is not what can be defined as a company or organization; we do not require the 9-5 wage-slave worklife that is requested from many capitalistic-leaning organizations in places such as the Milky Way. We are a firm believer that happiness and self-worth is as important as being part of a bigger picture in this Universe. Nobody asked to be born, but every soul has an opportunity to thrive. Such is the way of a progressive, forward-thinking power like us.
 				<p>
-				The word Kinaris means "of kin", which translates to "of family", and that is the intent of Kinaris. A family nourishes  you and helps you grow, through hardship and every step of the way along the road of becoming an individual. With every lesson learned, you grow. With every riddled situation, you learn anew. Kinaris is no different from that of the teachings of a mother or a father; intent to ensure that you can be a successor, and be better than your previous self. You are as important as everyone else in the world, yet you are unique. These rights are protected under Kinaris.
+				Every soul should have a taste of comfort and happiness, be it in the mindscape of neurological implants, or in the warm breeze of a familiar home. Nobody should be robbed of their desires as long as it leads to happiness for everyone involved. Life should lead to a fulfilling sense of accomplishment after discovering a true passion- this is reflected true for every soul under our wing. Be it a synthetic being manufactured for a reason, or a born individual who grew up looking at the stars. At the end of it all, we are one and the same. To live and to thrive.
+				<p>
+				The technological elegance and prowess we at Kinaris possess is equally important as it is fickle. We live in an age where death is long behind us; starvation and the crushing weight of reality itself can be washed away with an implant, or the golden towers of our civilization. But this means no room for breeding irresponsibility and disrespecting our reason in the Universe in the first place. To live is to die, to flourish is to wither. There is a forbidden fruit in this mindset we can land ourselves in; that of immortality and escaping the inevitable end of everything. This fruit leads to arrogance and a blind lack of care for the balance of the greater good. The truth of the matter is you cannot have your greatest achievements without wallowing in failure. We live our greatest lives for our inevitable death. This is Radiance.
+				<p>
+				As such, we have witnessed the greater illusions that developing civilizations like Humanity surround themselves in. Where death is simply another part of everyday life, and to be born again into a hysteria that asks more labor from their living cells ad infinitum. This is a blatant disrespect of our Radiance, but more on this concept later. Know vehemently that while Kinaris can save you from your death in the blink of an eye, that day we’re done with this Universe comes for us all. We never forget our reason for this reality in the first place.
 				<p>
 				<hr>
 				<h1><u>Chapter 2</u></h1>
-				<h2>How Kinaris Came to be</h2>
+				<h2>Andromeda and the Current Era</h2>
 				<p>
-				Rising up to mega-corporation status and being backed as the most trustable force within several sectors is not a simple task whatsoever. There are mistakes along the road, and there are plenty of issues forthwrought with even considering such a task. Kinaris begun as nothing more than a simple cargo company nearly two centuries from the date of March 5th, 2560. Initially, the company began as nothing more than a delivery service by none other than Centurian Kinaris, within a low-tech sector out of Azurean Gov's grasp. Due to the unfortunate events of resistance against The Phoenix at the time, most sectors like this were outright ravaged and decimated into a smoldering pulp of mud and ash, where individuals kept to themselves and were cut-throat towards one another. This led to imports and exports often being outright mistrusted due to one scandallous event of poisoned rations after another. This was an opportunity for Centurian, who was one of the most trusted individuals within the sector, and opened up his shipping goods company after months of hauling for others. This in time spread word and opened further opportunities for Centurian himself, who saw these as nothing more than help to give towards those who needed it. Kinaris outright spent a good portion of it's early life as another small company with a few workers trickling in every now and then, indifferent to the thousands of others littering the frontier. 
+				The chances are, you’re probably a long way away from home if you’re reading this datapad. The greater galaxy of Andromeda is an incredibly complex place compared to other galaxies; and even if you’re a newly-uplifted species who has been brought to safety only-recently, we know the stresses and struggles that this may bring. Know that you are not alone in this, and Kinaris solely lives for bringing everyone to an even playing field.
 				<p>
-				What eventually settled Kinaris off from the norm of other companies was nothing more than the surge of artificial interest in becoming Radiant across Azurean space. Unlike most companies who resisted and fought against The Phoenix, Kinaris heeded it's will. It was said that Centurian himself was a vissionare in his early days, led by the golden light, as he called it. In most frontier sectors, this was appalled and shunned by most communties, who aimed to flee as far as they could from Azurea itself, to escape Radiance. This was a short downfall in Kinaris's momentum, as it's trust rapidly decimated into nothing in due time, and prompted anger within it's customers. However, Centurian prevailed, and in a simple matter of days, sectors begun following in Radiance in the bulk, and as a result, formed a bond with the company. It is unclear how exactly Centurian managed to pull off such a dangerous feat, but that is just more evidence towards his Radiance.
+				Andromeda as a whole lives in a state of high peace and tranquility. The teachings of Radiance and steady Uplifting have brought upon a level-headed sense of understanding from one civilization to the next. Coexistence is the key to a Utopian society, which is something we all strive for. When you live without respect for those who share the stars with you, you will only fall flat on your face in an endeavor to chase one light of many. This applies even more vehemently for those civilizations who are warring with themselves. Know words prior to violence.
 				<p>
-				As the interest in Radiance surged across Azurean space, so did the success of Kinaris. One sector converted, one sector gained trust. More trust, more revenue. More revenue, more improvements. Rinse and repeat, for a hundred years. For a while, Radiance was nothing more than a melody that went with the chorus of Kinaris; a simple cargo company turned head over heels into a Pristine Zealot of Light, converting those within it's path instead of decimating it to smoldering ash, feeding back into the acceptance of Radiance as a whole for the people of Azurean Space. Centurian was nothing more than the leader of peace and safety, giving to those who needed help the most, branching off far beyond that of simple freight shipments. With trust, he smote down those who did not heed to peace, rather violence. Some did not believe in his ways. This led to his death after a Nanotrasen Assault on his capital freighter.
+				Approximately 90% of the galaxy is under complete Kinaris control, be it from colonies and worlds who wish independence, or those who depend on us for resources and aid. Andromeda’s history was not a quiet and relaxed one however; the streaks of distant war and conflict bear from star to star, be it from one torn megastructure to ripped-apart dyson spheres. Our teachings are to be gentle, but not all species were raised and born equally. War was once a flame we were quick to snuff out, as our technological advances outpace many by the thousands of years.
 				<p>
-				Today, his tomb drifts within the gas clouds of Myril Majoris, Azurea's gas giant. In memoriam of the one person who heeded unity with individualism into Azurea's people. He was nothing more than Radiant, nothing less. 
+				As of the current encryption of this datapad, the current date is 9E80C, which approximately translates to 4/4/2561 in Milky-Way-approved calendars. Kinaris’s regulatory Era-Cycle calendar supports the vagueness of one star to the next; be it a common binary, or the endless wandering of a rogue planet. The Era and Cycle is the same for everyone across the galaxy, with their own local orbits and patterns added on top. For example, while it is universally the 80th Cycle of the 9th Era, it may be the Fourth of April in sol time on top. A cycle tends to be one complete orbit of the two primary Binary Stars in Radiant Hearth, while an Era usually is a realized event of unprecedented advancement. The current Era is known sometimes as The Era of the Wing, where intergalactic travel has become near-instantaneous due to progressions in Radiant Technology.
+				<p>
+				Shortly after the birth of this Era, humanity and the Milky Way were discovered. Not only that, but their cultures, other species, and general society beneath their control. This was an exciting time to bring new mindsets to the table. Primarily at the forefront, we found what they classified as a “Megacorporation” known as “Nanotrasen”. To put it lightly, their abhorrent misuse of technologies for the sake of profit and lack of rights’ for the very lives they carelessly endanger put us at odds immediately. Complete uplifting and conversion of people under Nanotrasen has yet to happen, but after a peace-talk gone into a full-blown propaganda-fueled attack, we have decided to step out of the Milky Way entirely, and lock our borders to them. It is not unusual for us at Kinaris to wait for a civilization to mature, and humanity is one of many on that list.
+				<p>
+				Despite this, there are a few locations across the Andromeda that allow access from the Milky Way. Thankfully, they have a much lower technological understanding than we do, so getting from one galaxy to the next is nigh-impossible for them. As it is now, this is completely under our control.
 				<p>
 				<hr>
-                <h1><u>Chapter 3</u></h1>
-                <h2>How Kinaris Operates Today</h2>
+				<h1><u>Chapter 3</u></h1>
+				<h2>Others Under Kinaris</h2>
 				<p>
-				Modern-day Kinaris is a different story than that of previous-century Kinaris, with less aggression and more protection, yet it is the other side of one coin. Having gone past the days of aggression and forthright domination, KN's goal these days is that of a stalwart. Reliable, hardworking, and most of all: loyal. Having gone far from it's roots of zealot-like exports, imports, and radical conversion, Kinaris is that of an expanded mindset and reach, especially due to the usage of Radiant Technology. Today, Kinaris offers not only jobs in freight, but that of common commodities such as food growth and production, alongside processing. Further down the line includes industrial production and that of factory-assisted work, robotics, research, asset protection, and more. When a new sector, area or ship is attained, it is assigned a Commander, in which they ensure it is secured with it's own technological advances and supplies, to ensure the working condition of any outpost, station, or ship that KN may claim ownership of. After initial supplying and resource distribution, workers are given a period of time to get set up before sending shipments out for Kinaris to collect and maintain as exports elsewhere, ultimately with profit in mind. This may not be the case for every new sector attained, but it is often standard protocol, with more upgrades to the sector coming forth as a the Commander may see fit; and often times, Commanders are rotated in and out from the sector.
+				While this datapad has certainly fed you a lot of information on Kinaris, know that not everything is just about us, as per our priority of coexistence. Below are some of our primary partners and civilizations that we refer to quite frequently. You may even see them around Layenia!
 				<p>
-                Kinaris Officials and Commanders are often protected by a multitude of laws that allow them to display their power and ensure that workers are making profits, and may even be escorted by KN Elites and Zealots, if suspected threats are within the area. Usage of force is often permitted in the instance of non-compliance with a Commander, who is above any captain or high-ranking individual in control of that sector, and is more often than not, above KN Law, but below Radiance Protocol. Kinaris Officials do not get this benefit.
-				<p>Above Commanders, there may be a regional director who controls and permits what Commanders do in their sectors, and above that, there will be a member of the board who represents certain regions. There is no distinct "CEO" of Kinaris, rather a board of directors who have fully committed to Radiance, and have the near-full extent of Radiant Technology within their system. The closest personnel to a higher rank above that would be Valarie Kinaris, the daughter of the founder. She still answers to other board members, as they answer to her, however.
+				<h1><u>Dzar Underworks</u></h1>
 				<p>
-                <hr>
-                <h1><u>Chapter 4</u></h1>
-                <h2>Workers' Rights</h2>
+				<b>Homeworld:</b> Salis Primary A-4
+				<br>
+				<b>Home Star:</b> Salis Major
+				<br>
+				<b>Primary Species:</b> Vitruvian
+				<br>
+				<b>Primary Language:</b> Natrul
+				<br>
+				<b>Primary Work:</b> Metalsmithing, mining, and material research
+				<br>
+				<b>Motto:</b> In virtue we trust
 				<p>
-				Please refer to Kinaris Law for a full extent of these rights.
+				<i>“Dzar Underworks is a conglomerate of metalworking companies underneath the intergalactic umbrella of Kinaris, formed firstly in opposition of Radiance in the past, and an ally now. They possess the unique engram of smithing highly-sophisticated metals and impossible materials from patented forges, which is kept secret by shareholders at Dzar. The unique way Dzar is able to manufacture metals has left them uncontested against many other companies, leading them to a divine- if not pricey- hold on anyone who is interested in making high-grade vessels, colonies, megastructures, or plain-old appliances. Dzar works side-by-side with Kinaris, where Radiant Technology is their reward in return for high-grade metals.”</i>
+				<p>-
 				<p>
-                <hr>
-                <h1><u>Chapter 5</u></h1>
-                <h2>Usage of Radiance</h2>
+				<h1><u>The Azurean Government</u></h1>
 				<p>
-				If you've been blessed by The Phoenix's light, then we commend you for such a noble hierarchy to achieve! As Radiance Protocol is rather straightforward in the eyes of Kinaris and we do not doubt the usage of the beholder, it is permitted to use Radiant Technology within Kinaris-owned space, so as long as it involves a more efficient workflow. Usage of smiting should be used with caution.
+				<b>Homeworld:</b> KNCS Jul Ryynthal, Myril Majoris orbit
+				<br>
+				<b>Home Star:</b> Dissona / Radia (binary)
+				<br>
+				<b>Primary Species:</b> Hyenidae
+				<br>
+				<b>Primary Language:</b> Fornaux
+				<br>
+				<b>Primary Work:</b> governing and representing anthro species intergalactically
+				<br>
+				<b>Motto:</b> No soul left behind
 				<p>
-                <hr>
-                  
+				<i>“The Azurean Government (also known as AzureGov, or Azurean Govern) is the leading spearhead into peace and tranquility within Andromeda when Kinaris has its back turned; despite their criticisms. It governs and loosely controls the various organizations currently operating around Andromeda, but it’s not secret their power is limited in comparison to the other powers in the galaxy. Despite this, their operations in ensuring that the representation of anthromorphs and other sentient creatures can be seen in a better light to lesser civilizations such as humanity, given that the correct pacts can be agreed upon.”</i>
+				<p>-
+				<p>
+				<h1><u>Zao Security and Protection</u></h1>
+				<p>
+				<b>Homeworld:</b> the Ringworld of Incandesce Primara
+				<br>
+				<b>Home Star:</b> Incandesce Seconda
+				<br>
+				<b>Primary Species:</b> Primaris Unit
+				<br>
+				<b>Primary Language:</b> Binary
+				<br>
+				<b>Primary Work:</b> Contracted Policework
+				<br>
+				<b>Motto:</b> Secure the people, save the future
+				<p>
+				<i>“ZaoCorp is a vigilant workhorse of stabilizing colonies with quick, effective, and calm policework. Their strict neurological pursuit of hiring only the most fair and level-headed individuals leads them to establish peace among any colonies they’re contracted at, making for an effective police force. Not only do they hire the best of the best through genetic selection and splicing, they also manufacture bleeding-edge Nuovo-fabric exosuits, threaded to a casual and calm trench coat adorned in a blue and beige. This makes for an approachable, fair, and just visage that is capable of nonlethal apprehension where necessary. Trust is always locked in the hands of Zao; stifling any concerns peacefully through vigilance.”</i>
+				<p>-
+				<p>
+				<h1><u>Synergized Technology</u></h1>
+				<p>
+				<b>Homeworld:</b> the City-Planet of Jovias
+				<br>
+				<b>Home Star:</b> Nembus
+				<br>
+				<b>Primary Species:</b> Anthromorph
+				<br>
+				<b>Primary Language:</b> Fornaux
+				<br>
+				<b>Primary Work:</b> Production and selling of size-altering technology, including infrastructure
+				<br>
+				<b>Motto:</b> Modern solutions, big and small
+				<p>
+				<i>“Synergized Technology- commonly known as SynTech- is a company which leads the complex solutions in any galaxy’s biggest problem: accommodating for the size of life. As civilizations grew more welcoming to different ideals and lifestyles, it became more difficult and disastrous to deal with extreme size differences from one alien species to the other. Not only did this spark an incredible amount of regulations from AzureGov, but Kinaris’s interest was piqued to keep peace over all; and that included accommodating for any species, whether or not they stood over a mountain, or below an ant hill. The high demand of multi-size rights and technology was driven into SynTech’s hands, where they would provide and assist in regulating consistent and meaningful products to ease interaction from one to the next. Not only do they supply incredibly advanced, highly-regulated technology, they also help in consistent planning and moderation in most cities to keep traffic from most differently-sized species without havoc. Without SynTech, galaxies would look like a fairly bland place, where one size rules above all.”</i>
+				<p>-
+				<p>
+				<h1><u>Titan Piezoelectrics and Ceramics</u></h1>
+				<p>
+				<b>Homeworld:</b> Tremora
+				<br>
+				<b>Home Star:</b> Titawin
+				<br>
+				<b>Primary Species:</b> Megalithian
+				<br>
+				<b>Primary Language:</b> Aquarian
+				<br>
+				<b>Primary Work:</b> Production of power-efficient piezoelectric ceramics and craft
+				<br>
+				<b>Motto:</b> n/a
+				<p>
+				<i>“Titan Ceramics was the primary source of prominent electrical power on Tremora for its lifespan, with extravagant materials and unique ceramic mixes that supported incredibly efficient production of energy in bulk. Not only did they provide energy for a once-struggling civilization, they brought upon artistic desire and talent for those who would seek their ceramics. Value in energy is equal to value in art in their eyes, with only the finest materials and expertly-tested conditions to meet the quality of their work. Despite the overwhelming size difference of the housing species, value is still sought from both sides, resulting in multi-size accommodations for their ceramics. When cheap yet efficient power is required without the Weave, Titan Ceramics is there.”</i>
+				<p>-
+				<p>
+				<hr>
+				<h1><u>Chapter 4</u></h1>
+				<h2>About Layenia Station</h2>
+				<p>
+				After reading this far in, it may become apparent that Layenia does not reflect the values of Kinaris in many ways. From the technological progress to the surroundings, it may seem like Layenia Station is far behind its time. And that’s an entirely correct notion, all thanks to the standards of Kinaris Uplifting. 
+				<p>
+				As it stands right now, Layenia Station uses a fabricated Engram to replicate that of its former employers and owners. The star was previously given to humanity prior to the first attempt at Uplifting, but it was taken back shortly after things went south, and given open borders to the Milky Way. The Engram in particular mimics a lot of Nanotrasen-esque technology, which makes Layenia Station one of the most low-tech Kinaris stations to exist out there to date!
+				<p>
+				When it comes down to standards of Uplifting, change is one thing that many species cannot deal with easily. As such, the golden standard of Uplifting is to start from the technology they know, and slowly introduce new concepts and realizations after time. Layenia Station is currently in its early phases of conversion, but in time, it too will reach heightened technological elegance like the rest of the galaxy.
+				<p>
+				If you wish to learn more about Engrams, please locate a datapad on the subject!
+				<p>
+				<hr>
 
-
+				
 				</body>
 				</html>
 				"}
