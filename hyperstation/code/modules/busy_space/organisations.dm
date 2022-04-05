@@ -385,7 +385,7 @@
 	Dzar works side-by-side with Kinaris, where Radiant Technology is their reward in return for high-grade metals."
 	history = ""
 	work = "metalsmithing, mining, and material research"
-	headquarters = "the hollow-world of Salis Major"
+	headquarters = "the hollow-world of Salis Primary A-4"
 	motto = "in virtue we trust"
 
 	ship_prefixes = list("DZ" = "hauling", "DZ" = "cargo", "DZA" = "asset security")
@@ -451,7 +451,7 @@
 	concerns peacefully through vigilance."
 	history = ""
 	work = "contracted policework"
-	headquarters = "Incandesce Seconda"
+	headquarters = "the ringworld of Incandesce Primara"
 	motto = "secure the people, save the future"
 
 	ship_prefixes = list("ZCO" = "transportation", "ZC" = "patrol")
