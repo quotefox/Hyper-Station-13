@@ -156,7 +156,7 @@
 				<h1><u>Chapter 4</u></h1>
 				<h2>About Layenia Station</h2>
 				<p>
-				After reading this far in, it may become apparent that Layenia does not reflect the values of Kinaris in many ways. From the technological progress to the surroundings, it may seem like Layenia Station is far behind its time. And that’s an entirely correct notion, all thanks to the standards of Kinaris Uplifting. 
+				After reading this far in, it may become apparent that Layenia does not reflect the values of Kinaris in many ways. From the technological progress to the surroundings, it may seem like Layenia Station is far behind its time. And that’s an entirely correct notion, all thanks to the standards of Kinaris Uplifting.
 				<p>
 				As it stands right now, Layenia Station uses a fabricated Engram to replicate that of its former employers and owners. The star was previously given to humanity prior to the first attempt at Uplifting, but it was taken back shortly after things went south, and given open borders to the Milky Way. The Engram in particular mimics a lot of Nanotrasen-esque technology, which makes Layenia Station one of the most low-tech Kinaris stations to exist out there to date!
 				<p>
@@ -166,7 +166,7 @@
 				<p>
 				<hr>
 
-				
+
 				</body>
 				</html>
 				"}
