@@ -126,7 +126,7 @@
 					H.update_body()
 	else
 		..()
-
+/* SKYRAT EDIT REMOVAL
 /obj/item/razor
 	name = "electric razor"
 	desc = "The latest and greatest power razor born from the science of shaving."
@@ -217,3 +217,4 @@
 			..()
 	else
 		..()
+*/

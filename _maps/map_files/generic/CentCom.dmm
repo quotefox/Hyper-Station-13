@@ -4634,10 +4634,6 @@
 /area/abductor_ship)
 "ejO" = (
 /obj/structure/table,
-/obj/item/razor{
-	pixel_x = 2;
-	pixel_y = 5
-	},
 /turf/open/floor/plasteel/white,
 /area/centcom/ferry)
 "ejW" = (
@@ -13075,9 +13071,6 @@
 /obj/item/storage/pill_bottle/mutarad{
 	pixel_x = -7
 	},
-/obj/item/razor{
-	pixel_y = 12
-	},
 /obj/machinery/light/small{
 	dir = 4;
 	pixel_x = 10;
@@ -16868,7 +16861,6 @@
 "pFm" = (
 /obj/structure/table/glass,
 /obj/item/surgical_drapes,
-/obj/item/razor,
 /turf/open/floor/holofloor{
 	icon_state = "white"
 	},
