@@ -13157,6 +13157,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/break_room)
+"cqF" = (
+/turf/open/floor/plating{
+	icon_state = "platingdmg1"
+	},
+/area/space)
 "cqJ" = (
 /obj/machinery/door/airlock/mining{
 	name = "Quartermaster";
@@ -17130,6 +17135,14 @@
 	icon_state = "floor_plate"
 	},
 /area/security/prison)
+"dpW" = (
+/obj/item/toy/plush/bird/kenk{
+	desc = "An adorable Overstuffed plushie that resembles a kenku";
+	icon_state = "kenk_fat";
+	name = "overstuffed kenku plushie"
+	},
+/turf/open/floor/plating,
+/area/space)
 "dqo" = (
 /obj/machinery/door/airlock/command/glass{
 	dir = 4;
@@ -18564,6 +18577,10 @@
 	icon_state = "floor_plate"
 	},
 /area/security/courtroom)
+"dIC" = (
+/obj/item/trash/semki,
+/turf/open/floor/plating/asteroid/layenia/garden,
+/area/space)
 "dIH" = (
 /obj/effect/turf_decal/loading_area/white{
 	dir = 8
@@ -22433,6 +22450,10 @@
 /obj/machinery/atmospherics/pipe/simple/purple/visible,
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
+"eBs" = (
+/obj/item/trash/bird_seed,
+/turf/open/floor/plating/asteroid/layenia/garden,
+/area/space)
 "eBt" = (
 /obj/structure/table,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -40551,6 +40572,10 @@
 	icon_state = "floor_plate"
 	},
 /area/crew_quarters/locker)
+"ina" = (
+/obj/item/trash/popcorn,
+/turf/open/floor/plating,
+/area/space)
 "ing" = (
 /obj/structure/window,
 /obj/structure/window{
@@ -45588,6 +45613,10 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/ai_monitored/turret_protected/aisat_interior)
+"jjJ" = (
+/obj/structure/falsewall,
+/turf/open/floor/plating,
+/area/space)
 "jjN" = (
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -46192,6 +46221,10 @@
 	icon_state = "floor_plate"
 	},
 /area/storage/primary)
+"jqy" = (
+/obj/item/trash/candy,
+/turf/open/floor/plating,
+/area/space)
 "jqF" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 6;
@@ -54049,6 +54082,12 @@
 	dir = 5
 	},
 /area/engine/break_room)
+"kRW" = (
+/obj/structure/girder,
+/turf/open/floor/plating{
+	icon_state = "panelscorched"
+	},
+/area/space)
 "kRY" = (
 /obj/effect/turf_decal/loading_area{
 	icon_state = "drain";
@@ -68657,6 +68696,11 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/fore)
+"nNd" = (
+/obj/item/trash/cheesie,
+/obj/item/trash/can,
+/turf/open/floor/plating,
+/area/space)
 "nNh" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 5;
@@ -80426,6 +80470,12 @@
 /obj/structure/table,
 /turf/open/floor/plasteel,
 /area/crew_quarters/locker)
+"pUS" = (
+/obj/item/trash/carbonnanotube_noodles,
+/turf/open/floor/plating{
+	icon_state = "platingdmg3"
+	},
+/area/space)
 "pUX" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -81152,6 +81202,14 @@
 /obj/item/radio/off,
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/auxiliary)
+"qat" = (
+/obj/machinery/light/small{
+	dir = 1;
+	pixel_y = 16
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/space)
 "qau" = (
 /obj/machinery/conveyor{
 	id = "packageSort2"
@@ -117653,6 +117711,12 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/hallway/primary/fore)
+"wxa" = (
+/obj/item/reagent_containers/food/snacks/grilledcheese{
+	name = "idiot sandwich"
+	},
+/turf/open/floor/plating,
+/area/space)
 "wxc" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -230466,13 +230530,13 @@ ePF
 ePF
 ePF
 ePF
-xwJ
-xwJ
-xwJ
-xwJ
-xwJ
-xwJ
-xwJ
+tYi
+tYi
+tYi
+tYi
+tYi
+tYi
+tYi
 yfm
 yfm
 yfm
@@ -230722,18 +230786,18 @@ ePF
 ePF
 ePF
 ePF
-xwJ
-xwJ
+tYi
+tYi
 dZa
 wMj
 kxl
 dAG
 lAq
-xwJ
-xwJ
-xwJ
-xwJ
-xwJ
+tYi
+tYi
+tYi
+tYi
+tYi
 yfm
 tLq
 tLq
@@ -230979,7 +231043,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 xYJ
 flW
 fym
@@ -230990,7 +231054,7 @@ xwJ
 cqk
 sGa
 kKA
-xwJ
+tYi
 yfm
 tLq
 tLq
@@ -231236,7 +231300,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 yit
 qiE
 nhv
@@ -231247,9 +231311,9 @@ xwJ
 iSq
 xRg
 vuz
-xwJ
-xwJ
-xwJ
+tYi
+tYi
+tYi
 tLq
 tLq
 tLq
@@ -231492,8 +231556,8 @@ ePF
 ePF
 ePF
 ePF
-xwJ
-xwJ
+tYi
+tYi
 xwJ
 xQM
 xwJ
@@ -231506,7 +231570,7 @@ xQF
 xQF
 dDq
 oYK
-xwJ
+tYi
 yfm
 yfm
 yfm
@@ -231749,7 +231813,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 xOI
 yiB
 xQF
@@ -231763,7 +231827,7 @@ rxL
 rxL
 rxL
 avd
-xwJ
+tYi
 yfm
 yfm
 yfm
@@ -232006,7 +232070,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 xQP
 yiK
 tMo
@@ -232020,7 +232084,7 @@ lFN
 bIf
 lFN
 okg
-xwJ
+tYi
 yfm
 yfm
 yfm
@@ -232263,7 +232327,7 @@ djH
 ePF
 ePF
 ePF
-xwJ
+tYi
 xVi
 yjs
 uVA
@@ -232277,7 +232341,7 @@ gOu
 kqS
 gSr
 knM
-xwJ
+tYi
 yfm
 yfm
 yfm
@@ -232520,21 +232584,21 @@ ePF
 ePF
 ePF
 afy
-xwJ
-xwJ
+tYi
+tYi
 tUG
 oWN
 gcN
-xwJ
-xwJ
-xwJ
+tYi
+tYi
+tYi
 fIH
 xwJ
 xwJ
+jjJ
 xwJ
 xwJ
-xwJ
-xwJ
+tYi
 yfm
 yfm
 oBT
@@ -232787,11 +232851,11 @@ yfm
 tYi
 bIf
 bIf
+xwJ
+nNd
+flW
+pUS
 tYi
-wnQ
-wnQ
-wnQ
-wnQ
 yfm
 yfm
 oBT
@@ -233044,11 +233108,11 @@ icM
 tYi
 bIf
 bIf
+xwJ
+wxa
+dpW
+flW
 tYi
-wnQ
-wnQ
-wnQ
-wnQ
 yfm
 yfm
 oBT
@@ -233301,10 +233365,10 @@ rEz
 tYi
 tYi
 bIf
-tYi
-wnQ
-wnQ
-wnQ
+xwJ
+qat
+jqy
+bIf
 wnQ
 yfm
 yfm
@@ -233558,11 +233622,11 @@ rEz
 rEz
 tYi
 bIf
-tYi
-wnQ
-wnQ
-wnQ
-wnQ
+xwJ
+ina
+cqF
+bIf
+eBs
 yfm
 yfm
 oBT
@@ -233816,10 +233880,10 @@ rEz
 gQT
 bIf
 tYi
-wnQ
-wnQ
-wnQ
-wnQ
+tYi
+kRW
+mSK
+mSK
 yfm
 yfm
 oBT
@@ -234075,8 +234139,8 @@ bIf
 tYi
 wnQ
 wnQ
-wnQ
-wnQ
+dIC
+mSK
 yfm
 oBT
 oBT
@@ -236113,10 +236177,10 @@ yfm
 yfm
 yfm
 yfm
-xwJ
-xwJ
-xwJ
-xwJ
+tYi
+tYi
+tYi
+tYi
 tYi
 gQT
 gQT
@@ -236124,7 +236188,7 @@ tYi
 xOD
 yfm
 yfm
-xwJ
+tYi
 tYi
 gZp
 tYi
@@ -236370,18 +236434,18 @@ yfm
 yfm
 yfm
 yfm
-xwJ
+tYi
 xNK
 xOr
 xUL
 xwJ
 fFh
 gTJ
-xwJ
+tYi
 yfm
 yfm
 yfm
-xwJ
+tYi
 rAZ
 bIf
 bIf
@@ -236627,18 +236691,18 @@ yfm
 yfm
 yfm
 yfm
-xwJ
+tYi
 xNS
 xQF
 xRg
 xwJ
 bIf
 bIf
-xwJ
-xwJ
-xwJ
-xwJ
-xwJ
+tYi
+tYi
+tYi
+tYi
+tYi
 xwJ
 xwJ
 bIf
@@ -236884,7 +236948,7 @@ yfm
 yfm
 yfm
 yfm
-xwJ
+tYi
 xNY
 xQF
 xUT
@@ -237141,7 +237205,7 @@ yfm
 yfm
 yfm
 yfm
-xwJ
+tYi
 xwJ
 xQM
 xwJ
@@ -237398,7 +237462,7 @@ yfm
 yfm
 yfm
 yfm
-xwJ
+tYi
 xOa
 bIf
 wXH
@@ -237655,7 +237719,7 @@ yfm
 yfm
 yfm
 yfm
-xwJ
+tYi
 xOr
 xQF
 bIf
@@ -237912,7 +237976,7 @@ yfm
 yfm
 yfm
 yfm
-xwJ
+tYi
 wDQ
 xQF
 xOC
@@ -238169,7 +238233,7 @@ yfm
 yfm
 yfm
 yfm
-xwJ
+tYi
 wGq
 xRg
 xQF
@@ -238426,7 +238490,7 @@ ePF
 ePF
 yfm
 yfm
-xwJ
+tYi
 xOo
 bIf
 xVe
@@ -238683,11 +238747,11 @@ ePF
 ePF
 ePF
 ePF
-xwJ
-xwJ
-xwJ
-xwJ
-xwJ
+tYi
+tYi
+tYi
+tYi
+tYi
 fXt
 bIf
 xwJ
@@ -239458,7 +239522,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 xwJ
 xwJ
 gQT
@@ -239714,8 +239778,8 @@ ePF
 ePF
 ePF
 ePF
-xwJ
-xwJ
+tYi
+tYi
 yeO
 yjt
 aMn
@@ -239971,7 +240035,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 xYZ
 yfG
 yjv
@@ -240228,7 +240292,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 xZq
 yfP
 yjz
@@ -240485,7 +240549,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 xZC
 yfQ
 yjF
@@ -240742,7 +240806,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 xZT
 yfQ
 yka
@@ -240999,7 +241063,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 yaE
 yfQ
 ykg
@@ -241256,7 +241320,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 yaJ
 yfS
 ykE
@@ -241513,7 +241577,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 xZT
 yfQ
 yjF
@@ -241770,7 +241834,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 xZq
 yfP
 ykZ
@@ -242027,7 +242091,7 @@ ePF
 ePF
 ePF
 ePF
-xwJ
+tYi
 ybk
 yfT
 ylw
@@ -242284,8 +242348,8 @@ ePF
 ePF
 ePF
 ePF
-xwJ
-xwJ
+tYi
+tYi
 yfW
 ylC
 uLq
