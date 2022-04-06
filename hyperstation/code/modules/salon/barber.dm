@@ -1,7 +1,7 @@
 /obj/structure/chair/barber_chair
 	name = "barbers chair"
 	desc = "You sit in this, and your hair shall be cut."
-	icon = 'hyperstation/icons/obj/chairs.dmi'
+	icon = 'icons/obj/chairs.dmi'
 	icon_state = "barber_chair"
 
 //Brush
@@ -59,7 +59,6 @@
 
 
 //fur dyer
-/* Gotta port/workaround a lot of things to make do
 #define COLOR_MODE_SPECIFIC "Specific Marking"
 #define COLOR_MODE_GENERAL "General Color"
 
@@ -70,12 +69,12 @@
 	icon_state = "fur_sprayer"
 	w_class = WEIGHT_CLASS_TINY
 
-	var/mode = COLOR_MODE_SPECIFIC
-
+	var/mode = COLOR_MODE_GENERAL
+/*
 /obj/item/fur_dyer/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/cell)
-
+*/
 /obj/item/fur_dyer/attack_self(mob/user, modifiers)
 	. = ..()
 	if(mode == COLOR_MODE_SPECIFIC)
@@ -93,25 +92,22 @@
 
 	switch(mode)
 		if(COLOR_MODE_SPECIFIC)
-			dye_marking(target_human, user)
+			to_chat(user, "The device resonates ominously, and stops. It seems to be interfered by an Engram.")
+			//dye_marking(target_human, user)
 		if(COLOR_MODE_GENERAL)
 			dye_general(target_human, user)
 
 /obj/item/fur_dyer/proc/dye_general(mob/living/carbon/human/target_human, mob/living/user)
-	var/selected_mutant_color = tgui_alert(user, "Please select which mutant color you'd like to change", "Select Color", list("One", "Two", "Three"))
+	var/selected_mutant_color = tgalert(user, "Please select which mutant color you'd like to change", "Select Color", "One", "Two", "Three")
 
 	if(!selected_mutant_color)
-		return
-
-	if(!(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
-		to_chat(user, "<span class='danger'>A red light blinks!</span>")
 		return
 
 	var/selected_color = input(
 			user,
 			"Select marking color",
 			null,
-			COLOR_WHITE,
+			"#FFFFFF"
 		) as color | null
 
 	if(!selected_color)
@@ -131,12 +127,14 @@
 				target_human.dna.features["mcolor2"] = selected_color
 
 		target_human.regenerate_icons()
-		item_use_power(power_use_amount, user)
+		//use power
 
-		visible_message("<span class='notice'>[user] finishes painting [target_human]!</span>"))
+		visible_message("<span class='notice'>[user] finishes painting [target_human]!</span>")
 
 		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE)
 
+
+/* We don't have markings that can be colored separately yet, so this is not needed
 /obj/item/fur_dyer/proc/dye_marking(mob/living/carbon/human/target_human, mob/living/user)
 
 	var/list/list/current_markings = target_human.dna.body_markings.Copy()
@@ -145,17 +143,15 @@
 		to_chat(user, "<span class='warning'>[target_human] has no markings!</span>")
 		return
 
-	if(!(item_use_power(power_use_amount, user, TRUE) & COMPONENT_POWER_SUCCESS))
-		to_chat(user, "<span class='warning'>A red light blinks!</span>")
-		return
+	//power stuff here
 
-	var/selected_marking_area = user.zone_selected
+	/var/selected_marking_area = user.zone_selected
 
 	if(!current_markings[selected_marking_area])
 		to_chat(user, "<span class='danger'>[target_human] has no bodymarkings on this limb!</span>")
 		return
 
-	var/selected_marking_id = tgui_input_list(user, "Please select which marking you'd like to color!", "Select marking", current_markings[selected_marking_area])
+	var/selected_marking_id = input(user, "Please select which marking you'd like to color!", "Select marking", current_markings[selected_marking_area])
 
 	if(!selected_marking_id)
 		return
@@ -164,7 +160,7 @@
 			user,
 			"Select marking color",
 			null,
-			COLOR_WHITE,
+			"#FFFFFF"
 		) as color | null
 
 	if(!selected_color)
@@ -181,9 +177,49 @@
 
 		target_human.regenerate_icons()
 
-		item_use_power(power_use_amount, user)
+		//item_use_power(power_use_amount, user)
 
 		visible_message("<span class='notice'>[user] finishes painting [target_human]!</span>")
 
 		playsound(src.loc, 'sound/effects/spray2.ogg', 50, TRUE)
 */
+
+/obj/machinery/dryer
+	name = "hand dryer"
+	desc = "The Breath Of Lizads-3000, an experimental dryer."
+	icon = 'hyperstation/icons/obj/dryer.dmi'
+	icon_state = "dryer"
+	density = FALSE
+	anchored = TRUE
+	var/busy = FALSE
+
+/obj/machinery/dryer/attack_hand(mob/user)
+	if(iscyborg(user) || isAI(user))
+		return
+
+	if(!can_interact(user))
+		return
+
+	if(busy)
+		to_chat(user, "<span class='warning'>Someone is already drying here.</span>")
+		return
+
+	to_chat(user, "<span class='notice'>You start drying your hands.</span>")
+	playsound(src, 'hyperstation/sound/salon/drying.ogg', 50)
+	add_fingerprint(user)
+	busy = TRUE
+	if(do_after(user, 4 SECONDS, src))
+		busy = FALSE
+		user.visible_message("[user] dried their hands using \the [src].")
+	else
+		busy = FALSE
+
+/obj/item/reagent_containers/dropper/precision
+	name = "pipette"
+	desc = "A high precision pippette. Holds 1 unit."
+	icon = 'hyperstation/icons/obj/barber.dmi'
+	icon_state = "pipette1"
+	amount_per_transfer_from_this = 1
+	possible_transfer_amounts = list(0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1)
+	volume = 1
+	w_class = WEIGHT_CLASS_TINY
