@@ -82569,6 +82569,7 @@
 	pixel_x = -4;
 	pixel_y = 14
 	},
+/obj/item/toy/plush/enchanted,
 /turf/open/floor/wood{
 	icon_state = "wood_tile";
 	name = "tile"

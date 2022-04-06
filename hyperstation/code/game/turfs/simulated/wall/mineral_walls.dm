@@ -40,3 +40,15 @@
 	name = "\improper ferry wall"
 	desc = "A low tech hull for Layenia flight."
 	icon_state = "ferry"
+
+/turf/closed/wall/mineral/titanium/custom/arrivals
+	name = "\improper shuttle wall"
+	desc = "A low tech hull for Layenia and space-flight"
+	icon = 'hyperstation/icons/turf/walls/customarrivals.dmi'
+	icon_state = "amogus"
+
+/turf/closed/wall/mineral/titanium/custom/window/arrivals
+	name = "\improper shuttle wall"
+	desc = "A low tech hull for Layenia and space-flight"
+	icon = 'hyperstation/icons/turf/walls/customarrivals.dmi'
+	icon_state = "amogus"

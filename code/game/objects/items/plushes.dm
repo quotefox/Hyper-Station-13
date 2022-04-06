@@ -766,6 +766,15 @@
 	item_state = "kenk"
 	squeak_override = list('modular_citadel/sound/voice/merp.ogg' = 1)
 
+/obj/item/toy/plush/enchanted
+	name = "glowing book plushie"
+	desc = "This book is so powerful, you can't open it."
+	young = TRUE
+	icon_state = "bookenchanted"
+	item_state = "bookenchanted"
+	squeak_override = list('hyperstation/sound/effects/enchant.ogg' = 1)
+	attack_verb = list("enchants", "mystifies", "disenchants", "fails to enchant", "doesn't have enough XP to enchant", "bonks")
+
 /obj/item/toy/plush/sergal
 	name = "sergal plushie"
 	desc = "An adorable stuffed plushie that resembles a sagaru."
