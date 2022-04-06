@@ -1393,7 +1393,7 @@ datum/sprite_accessory/ears/human/gret
 	name = "Cow"
 	icon_state = "cow"
 
-/datum/sprite_accessory/mam_tails/easterndragon
+/datum/sprite_accessory/mam_tails/easterndragon //Pulled base from Virgo, seriously love the server and love you guys, stay lovely.
 	name = "Eastern Dragon"
 	icon_state = "easternd"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
