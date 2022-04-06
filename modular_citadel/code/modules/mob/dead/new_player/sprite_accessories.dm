@@ -778,6 +778,16 @@ datum/sprite_accessory/ears/human/gret
 	name = "Deer"
 	icon_state = "deer"
 
+/datum/sprite_accessory/mam_snouts/easterndragon
+	name = "Eastern Dragon"
+	icon_state = "easterndw"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
+/datum/sprite_accessory/mam_snouts/easterndragonnowhiskers
+	name = "Eastern Dragon - No Whiskers"
+	icon_state = "easterndnw"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
 /datum/sprite_accessory/mam_snouts/elephant
 	name = "Elephant"
 	icon_state = "elephant"
@@ -1078,6 +1088,16 @@ datum/sprite_accessory/ears/human/gret
 	extra = TRUE
 	extra_color_src = MUTCOLORS3
 
+/datum/sprite_accessory/mam_snouts/feasterndragon
+	name = "Eastern Dragon (Top)"
+	icon_state = "feasterndw"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
+/datum/sprite_accessory/mam_snouts/feasterndragonnowhiskers
+	name = "Eastern Dragon - No Whiskers (Top)"
+	icon_state = "feasterndnw"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
 /datum/sprite_accessory/mam_snouts/flcanid
 	name = "Mammal, Long (Top)"
 	icon_state = "flcanid"
@@ -1225,6 +1245,11 @@ datum/sprite_accessory/ears/human/gret
 	name = "Deer Ears"
 	icon_state = "deerears"
 
+/datum/sprite_accessory/mam_ears/easterndragon
+	name = "Dragon Eastern"
+	icon_state = "easternd"
+	icon = 'hyperstation/icons/mob/char_ears.dmi'
+
 /datum/sprite_accessory/mam_ears/eevee
 	name = "Eevee"
 	icon_state = "eevee"
@@ -1367,6 +1392,16 @@ datum/sprite_accessory/ears/human/gret
 /datum/sprite_accessory/mam_tails_animated/cow
 	name = "Cow"
 	icon_state = "cow"
+
+/datum/sprite_accessory/mam_tails/easterndragon
+	name = "Eastern Dragon"
+	icon_state = "easternd"
+	icon = 'hyperstation/icons/mob/char_tails.dmi'
+
+/datum/sprite_accessory/mam_tails_animated/easterndragon
+	name = "Eastern Dragon"
+	icon_state = "easternd"
+	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
 /datum/sprite_accessory/mam_tails/eevee
 	name = "Eevee"
@@ -1654,6 +1689,11 @@ datum/sprite_accessory/ears/human/gret
 /datum/sprite_accessory/mam_body_markings/dog
 	name = "Dog"
 	icon_state = "dog"
+
+/datum/sprite_accessory/mam_body_markings/easterndragon
+	name = "Eastern Dragon"
+	icon_state = "easternd"
+	icon = 'hyperstation/icons/mob/char_markings.dmi'
 
 /datum/sprite_accessory/mam_body_markings/eevee
 	name = "Eevee"
