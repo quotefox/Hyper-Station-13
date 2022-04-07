@@ -187,9 +187,9 @@
 			if("One")
 				target_human.dna.features["mcolor"] = selected_color
 			if("Two")
-				target_human.dna.features["mcolor1"] = selected_color
-			if("Three")
 				target_human.dna.features["mcolor2"] = selected_color
+			if("Three")
+				target_human.dna.features["mcolor3	"] = selected_color
 
 		target_human.regenerate_icons()
 		//use power
@@ -450,7 +450,7 @@
 	if(user.zone_selected != BODY_ZONE_HEAD)
 		return ..()
 
-	var/selected_part = tgalert(user, "Please select which part of [target_human] you would like to sculpt!", "It's sculpting time!", list("Hair", "Facial Hair", "Cancel"))
+	var/selected_part = tgalert(user, "Please select which part of [target_human] you would like to sculpt!", "It's sculpting time!", "Hair", "Facial Hair", "Cancel")
 
 	if(!selected_part || selected_part == "Cancel")
 		return
