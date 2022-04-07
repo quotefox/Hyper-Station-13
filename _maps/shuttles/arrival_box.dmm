@@ -96,9 +96,12 @@
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/item/radio/intercom{
+	pixel_x = -30
+	},
 /turf/open/floor/plasteel/dark{
 	dir = 1;
-	icon_state = "darkfull_plate"
+	icon_state = "darkfull_trim"
 	},
 /area/shuttle/arrival)
 "lo" = (
@@ -185,6 +188,20 @@
 	icon_state = "arrivals26"
 	},
 /area/shuttle/arrival)
+"qw" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/arrival)
 "qz" = (
 /turf/closed/wall/mineral/titanium/custom/window/arrivals{
 	icon_state = "arrivals53"
@@ -210,8 +227,11 @@
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/item/radio/intercom{
+	pixel_x = -30
+	},
 /turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_plate"
+	icon_state = "darkfull_trim"
 	},
 /area/shuttle/arrival)
 "sk" = (
@@ -336,7 +356,7 @@
 	},
 /area/shuttle/arrival)
 "KB" = (
-/turf/open/space/basic,
+/turf/template_noop,
 /area/template_noop)
 "KN" = (
 /turf/closed/wall/mineral/titanium/custom/window/arrivals{
@@ -426,6 +446,18 @@
 /turf/open/floor/wood{
 	icon_state = "wood_tile";
 	name = "tile"
+	},
+/area/shuttle/arrival)
+"QK" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_trim"
 	},
 /area/shuttle/arrival)
 "Sb" = (
@@ -673,11 +705,11 @@ yl
 "}
 (11,1,1) = {"
 oD
-kF
+qw
 ZZ
 UU
 Zm
-sd
+QK
 HU
 "}
 (12,1,1) = {"
