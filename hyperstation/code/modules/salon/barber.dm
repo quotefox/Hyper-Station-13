@@ -5,6 +5,70 @@
 	icon = 'icons/obj/chairs.dmi'
 	icon_state = "barber_chair"
 
+/obj/structure/closet/secure_closet/barber
+	name = "Barber's locker"
+	icon_state = "cabinet"
+	icon = 'icons/obj/closet.dmi'
+	req_access = list(ACCESS_BARBER)
+
+/obj/structure/closet/secure_closet/barber/PopulateContents()
+	new /obj/item/clothing/mask/surgical(src) // These three are here, so the barber can pick and choose what he's painting.
+	new /obj/item/clothing/under/rank/medical/blue(src)
+	new /obj/item/clothing/suit/apron/surgical(src)
+	new /obj/item/clothing/accessory/waistcoat(src)
+	//new /obj/item/clothing/under/rank/civilian/lawyer/purpsuit(src)
+	new /obj/item/clothing/suit/toggle/lawyer/purple(src)
+	new /obj/item/razor(src)
+	//new /obj/item/straight_razor(src)
+	new /obj/item/hairbrush/comb(src)
+	new /obj/item/scissors(src)
+	new /obj/item/fur_dyer(src)
+	new /obj/item/dyespray(src)
+	new /obj/item/storage/box/lipsticks(src)
+	new /obj/item/reagent_containers/spray/quantum_hair_dye(src)
+	new /obj/item/reagent_containers/spray/barbers_aid(src)
+	new /obj/item/reagent_containers/spray/cleaner(src)
+	new /obj/item/reagent_containers/rag(src)
+	new /obj/item/storage/firstaid/regular(src)
+
+/obj/machinery/vending/barbervend
+	name = "Fab-O-Vend"
+	desc = "It would seem it vends dyes, and other stuff to make you pretty."
+	icon = 'hyperstation/icons/obj/barber.dmi'
+	icon_state = "barbervend"
+	product_slogans = "Spread the colour, like butter, onto toast... Onto their hair.; Sometimes, I dream about dyes...; Paint 'em up and call me Mr. Painter.; Look brother, I'm a vendomat, I solve practical problems."
+	product_ads = "Cut 'em all!; To sheds!; Hair be gone!; Prettify!; Beautify!"
+	vend_reply = "Come again!; Buy another!; Dont you love your new look?"
+	req_access = list(ACCESS_BARBER)
+	refill_canister = /obj/item/vending_refill/barbervend
+	products = list(
+		/obj/item/reagent_containers/spray/quantum_hair_dye = 3,
+		// /obj/item/reagent_containers/spray/baldium = 3,
+		/obj/item/reagent_containers/spray/barbers_aid = 3,
+		/obj/item/dyespray = 5,
+		/obj/item/hairbrush = 3,
+		/obj/item/hairbrush/comb = 3,
+		/obj/item/fur_dyer = 1,
+	)
+	premium = list(
+		/obj/item/scissors = 3,
+		/obj/item/reagent_containers/spray/super_barbers_aid = 3,
+		/obj/item/storage/box/lipsticks = 3,
+		/obj/item/lipstick/quantum = 1,
+		/obj/item/razor = 1,
+		// /obj/item/storage/box/perfume = 1,
+	)
+	refill_canister = /obj/item/vending_refill/barbervend
+
+/obj/item/vending_refill/barbervend
+	machine_name = "barber vend resupply"
+	icon_state = "refill_snack" //generic item refill because there isnt one sprited yet.
+
+/obj/effect/landmark/start/barber
+	name = "Barber"
+	icon_state = "Barber"
+	//icon = 'modular_skyrat/master_files/icons/mob/landmarks.dmi'
+
 //Brush
 /obj/item/hairbrush
 	name = "hairbrush"
@@ -356,3 +420,122 @@
 	icon_state = "barber"
 	buildable_sign = FALSE // Don't want them removed, they look too jank.
 
+/obj/item/scissors
+	name = "barber's scissors"
+	desc = "Some say a barbers best tool is his electric razor, that is not the case. These are used to cut hair in a professional way!"
+	icon = 'hyperstation/icons/obj/barber.dmi'
+	icon_state = "scissors"
+	w_class = WEIGHT_CLASS_TINY
+	sharpness = TRUE
+	// How long does it take to change someone's hairstyle?
+	var/haircut_duration = 1 MINUTES
+	// How long does it take to change someone's facial hair style?
+	var/facial_haircut_duration = 20 SECONDS
+
+/obj/item/scissors/attack(mob/living/attacked_mob, mob/living/user, params)
+	if(!ishuman(attacked_mob))
+		return
+
+	var/mob/living/carbon/human/target_human = attacked_mob
+
+	var/location = user.zone_selected
+	if(!(location in list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)))
+		to_chat(user, "<span class='warning'>You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their hair or their facial hair.\"</span>")
+		return
+
+	if(target_human.hair_style == "Bald" && target_human.facial_hair_style == "Shaved")
+		to_chat(user, "<span class='warning'>What hair? They have none!</span>")
+		return
+
+	if(user.zone_selected != BODY_ZONE_HEAD)
+		return ..()
+
+	var/selected_part = tgalert(user, "Please select which part of [target_human] you would like to sculpt!", "It's sculpting time!", list("Hair", "Facial Hair", "Cancel"))
+
+	if(!selected_part || selected_part == "Cancel")
+		return
+
+	if(selected_part == "Hair")
+		if(!target_human.hair_style == "Bald" && target_human.head)
+			to_chat(user, "<span class='warning'>There is no hair to cut!</span>")
+			return
+
+		var/hair_id = input(user, "Please select what hairstyle you'd like to sculpt!", "Select masterpiece") as null|anything in GLOB.hair_styles_list //dear god help me please
+		if(!hair_id)
+			return
+
+		if(hair_id == "Bald")
+			to_chat(target_human, "<span class='warning'>[user] seems to be cutting all your hair off!</span>")
+
+		to_chat(user, "<span class='notice'>You begin to masterfully sculpt [target_human]'s hair!</span>")
+
+		playsound(target_human, 'hyperstation/sound/salon/haircut.ogg', 100)
+
+		if(do_after(user, haircut_duration, target_human))
+			target_human.hair_style = hair_id
+			target_human.update_hair()
+			visible_message("<span class='notice'>[user] successfully cuts [target_human]'s hair!</span>","<span class='notice'>You successfully cut [target_human]'s hair!</span>")
+			new /obj/effect/decal/cleanable/hair(get_turf(src))
+	else
+		if(!target_human.facial_hair_style == "Shaved" && target_human.wear_mask)
+			to_chat(user, "<span class='warning'>There is no hair to cut!</span>")
+			return
+
+		var/facial_hair_id = input(user, "Please select what facial hairstyle you'd like to sculpt!", "Select masterpiece")  as null|anything in GLOB.facial_hair_styles_list
+		if(!facial_hair_id)
+			return
+
+		if(facial_hair_id == "Shaved")
+			to_chat(target_human, "<span class='warning'>[user] seems to be cutting all your facial hair off!</span>")
+
+		to_chat(user, "<span class='notice'>You begin to masterfully sculpt [target_human]'s facial hair!</span>")
+
+		playsound(target_human, 'hyperstation/sound/salon/haircut.ogg', 100)
+
+		if(do_after(user, facial_haircut_duration, target_human))
+			target_human.facial_hair_style = facial_hair_id
+			target_human.update_hair()
+			visible_message("<span class='notice'>[user] successfully cuts [target_human]'s facial hair!</span>","<span class='notice'>You successfully cut [target_human]'s facial hair!</span>")
+			new /obj/effect/decal/cleanable/hair(get_turf(src))
+
+
+//reagents
+/obj/item/reagent_containers/spray/quantum_hair_dye
+	name = "quantum hair dye"
+	desc = "Changes hair colour RANDOMLY! Don't forget to read the label!"
+	icon = 'hyperstation/icons/obj/barber.dmi'
+	icon_state = "hairspraywhite"
+	amount_per_transfer_from_this = 1
+	possible_transfer_amounts = list(5,10)
+	list_reagents = list(/datum/reagent/hair_dye = 30)
+	volume = 50
+/*
+/obj/item/reagent_containers/spray/baldium
+	name = "baldium spray"
+	desc = "Causes baldness, exessive use may cause customer disatisfaction."
+	icon = 'hyperstation/icons/obj/barber.dmi'
+	icon_state = "hairremoval"
+	amount_per_transfer_from_this = 1
+	possible_transfer_amounts = list(5,10)
+	list_reagents = list(/datum/reagent/baldium = 30)
+	volume = 50
+*/
+/obj/item/reagent_containers/spray/barbers_aid
+	name = "barber's aid"
+	desc = "Causes rapid hair and facial hair growth!"
+	icon = 'hyperstation/icons/obj/barber.dmi'
+	icon_state = "hairaccelerator"
+	amount_per_transfer_from_this = 1
+	possible_transfer_amounts = list(5,10)
+	list_reagents = list(/datum/reagent/barbers_aid = 50)
+	volume = 50
+
+/obj/item/reagent_containers/spray/super_barbers_aid
+	name = "super barber's aid"
+	desc = "Causes SUPER rapid hair and facial hair growth!"
+	icon = 'hyperstation/icons/obj/barber.dmi'
+	icon_state = "hairaccelerator"
+	amount_per_transfer_from_this = 1
+	possible_transfer_amounts = list(5,10)
+	list_reagents = list(/datum/reagent/concentrated_barbers_aid = 30)
+	volume = 50
