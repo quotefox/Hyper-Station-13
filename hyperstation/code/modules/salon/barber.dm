@@ -189,7 +189,7 @@
 			if("Two")
 				target_human.dna.features["mcolor2"] = selected_color
 			if("Three")
-				target_human.dna.features["mcolor3	"] = selected_color
+				target_human.dna.features["mcolor3"] = selected_color
 
 		target_human.regenerate_icons()
 		//use power
