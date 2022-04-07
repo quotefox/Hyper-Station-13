@@ -52,3 +52,15 @@
 	desc = "A low tech hull for Layenia and space-flight"
 	icon = 'hyperstation/icons/turf/walls/customarrivals.dmi'
 	icon_state = "amogus"
+
+/turf/closed/wall/mineral/titanium/custom/pod
+	name = "\improper pod wall"
+	desc = "A low tech hull for Layenia and space-flight"
+	icon = 'hyperstation/icons/turf/walls/custompod.dmi'
+	icon_state = "amogus"
+
+/turf/closed/wall/mineral/titanium/custom/window/pod
+	name = "\improper pod wall"
+	desc = "A low tech hull for Layenia and space-flight"
+	icon = 'hyperstation/icons/turf/walls/custompod.dmi'
+	icon_state = "amogus"

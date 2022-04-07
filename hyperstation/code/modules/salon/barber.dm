@@ -1,3 +1,4 @@
+//Proper modularity to come at a later date
 /obj/structure/chair/barber_chair
 	name = "barbers chair"
 	desc = "You sit in this, and your hair shall be cut."
@@ -186,7 +187,7 @@
 
 /obj/machinery/dryer
 	name = "hand dryer"
-	desc = "The Breath Of Lizads-3000, an experimental dryer."
+	desc = "The Breath Of Lizards-3000, an experimental dryer."
 	icon = 'hyperstation/icons/obj/dryer.dmi'
 	icon_state = "dryer"
 	density = FALSE
@@ -223,3 +224,135 @@
 	possible_transfer_amounts = list(0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1)
 	volume = 1
 	w_class = WEIGHT_CLASS_TINY
+
+/obj/item/storage/box/lipsticks
+	name = "lipstick box"
+
+/obj/item/storage/box/lipsticks/PopulateContents()
+	..()
+	new /obj/item/lipstick(src)
+	new /obj/item/lipstick/purple(src)
+	new /obj/item/lipstick/jade(src)
+	new /obj/item/lipstick/black(src)
+
+/obj/item/lipstick/quantum
+	name = "quantum lipstick"
+
+/obj/item/lipstick/quantum/attack(mob/attacked_mob, mob/user)
+	if(!open || !ismob(attacked_mob))
+		return
+
+	if(!ishuman(attacked_mob))
+		to_chat(user, "<span class='warning'>Where are the lips on that?</span>")
+		return
+
+	var/new_color = input(
+			user,
+			"Select lipstick color",
+			null,
+			"#FFFFFF"
+		) as color | null
+
+	var/mob/living/carbon/human/target = attacked_mob
+	if(target.is_mouth_covered())
+		to_chat(user, "<span class='warning'>Remove [ target == user ? "your" : "[target.p_their()]" ] mask!</span>")
+		return
+	if(target.lip_style) //if they already have lipstick on
+		to_chat(user, "<span class'warning'>You need to wipe off the old lipstick first!</span>")
+		return
+
+	if(target == user)
+		visible_message("<span class='notice'>[user] does [user.p_their()] lips with \the [src].</span>","<span class='notice'>You take a moment to apply \the [src]. Perfect!</span>")
+		target.lip_style = "lipstick"
+		target.lip_color = new_color
+		target.update_body()
+		return
+
+	visible_message("<span class='warning'>[user] begins to do [target]'s lips with \the [src].</span>","<span class='notice'>You begin to apply \the [src] on [target]'s lips...</span>")
+	if(!do_after(user, 2 SECONDS, target = target))
+		return
+	visible_message("<span class='notice'>[user] does [target]'s lips with \the [src].</span>","<span class='notice'>You apply \the [src] on [target]'s lips.</span>")
+	target.lip_style = "lipstick"
+	target.lip_color = new_color
+	target.update_body()
+
+/obj/effect/decal/cleanable/hair
+	name = "hair cuttings"
+	icon = 'hyperstation/icons/obj/barber.dmi'
+	icon_state = "cut_hair"
+
+/obj/item/razor
+	name = "electric razor"
+	desc = "The latest and greatest power razor born from the science of shaving."
+	icon = 'hyperstation/icons/obj/barber.dmi'
+	icon_state = "razor"
+	flags_1 = CONDUCT_1
+	w_class = WEIGHT_CLASS_TINY
+	// How long do we take to shave someone's (facial) hair?
+	var/shaving_time = 10 SECONDS
+
+/obj/item/razor/proc/shave(mob/living/carbon/human/target_human, location = BODY_ZONE_PRECISE_MOUTH)
+	if(location == BODY_ZONE_PRECISE_MOUTH)
+		target_human.facial_hair_style = "Shaved"
+	else
+		target_human.hair_style = "Bald"
+
+	target_human.update_hair()
+	playsound(loc, 'sound/items/unsheath.ogg', 20, TRUE)
+
+/obj/item/razor/attack(mob/attacked_mob, mob/living/user)
+	if(ishuman(attacked_mob))
+		var/mob/living/carbon/human/target_human = attacked_mob
+		var/location = user.zone_selected
+		if(!(location in list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)))
+			to_chat(user, "<span class='warning'>You stop, look down at what you're currently holding and ponder to yourself, \"This is probably to be used on their hair or their facial hair.\"</span>")
+			return
+		if((location in list(BODY_ZONE_PRECISE_MOUTH, BODY_ZONE_HEAD)) && !target_human.get_bodypart(BODY_ZONE_HEAD))
+			to_chat(user, "<span class='warning'>[target_human] doesn't have a head!</span>")
+			return
+
+		if(location == BODY_ZONE_PRECISE_MOUTH)
+			if(!(FACEHAIR in target_human.dna.species.species_traits))
+				to_chat(user, "<span class='warning'>There is no facial hair to shave!</span>")
+				return
+			if(!get_location_accessible(target_human, location))
+				to_chat(user, "<span class'warning'>The mask is in the way!</span>")
+				return
+			if(target_human.facial_hair_style == "Shaved")
+				to_chat(user, "<span class='warning'>Already clean-shaven!</span>")
+				return
+
+			var/self_shaving = target_human == user // Shaving yourself?
+			visible_message("<span class='notice'>[user] starts to shave [self_shaving ? user.p_their() : "[target_human]'s"] hair with [src].</span>","<span class='notice'>You take a moment to shave [self_shaving ? "your" : "[target_human]'s" ] hair with [src]...</span>")
+			if(do_after(user, shaving_time, target = target_human))
+				visible_message("<span class='notice'>[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] hair clean with [src].</span>","<span class='notice'>You finish shaving [self_shaving ? "your" : " [target_human]'s"] hair with [src]. Fast and clean!</span>")
+				shave(target_human, location)
+
+		else if(location == BODY_ZONE_HEAD)
+			if(!(HAIR in target_human.dna.species.species_traits))
+				to_chat(user, "<span class='warning'>There is no hair to shave!</span>")
+				return
+			if(!get_location_accessible(target_human, location))
+				to_chat(user, "<span class='warning'>Their headgear is in the way!</span>")
+				return
+			if(target_human.hair_style == "Bald" || target_human.hair_style == "Balding Hair" || target_human.hair_style == "Skinhead")
+				to_chat(user, "<span class='warning'>There is not enough hair left to shave!</span>")
+				return
+
+			var/self_shaving = target_human == user // Shaving yourself?
+			visible_message("<span class='notice'>[user] starts to shave [self_shaving ? user.p_their() : "[target_human]'s"] hair with [src].</span>","<span class='notice'>You take a moment to shave [self_shaving ? "your" : "[target_human]'s" ] hair with [src]...</span>")
+			if(do_after(user, shaving_time, target = target_human))
+				visible_message("<span class='notice'>[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] hair clean with [src].</span>","<span class='notice'>You finish shaving [self_shaving ? "your" : " [target_human]'s"] hair with [src]. Fast and clean!</span>")
+				shave(target_human, location)
+		else
+			..()
+	else
+		..()
+
+/obj/structure/sign/barber
+	name = "barbershop sign"
+	desc = "A glowing red-blue-white stripe you won't mistake for any other!"
+	icon = 'hyperstation/icons/obj/barber.dmi'
+	icon_state = "barber"
+	buildable_sign = FALSE // Don't want them removed, they look too jank.
+
