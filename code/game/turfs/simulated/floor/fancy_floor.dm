@@ -86,7 +86,7 @@
 	var/turfverb = "uproot"
 	tiled_dirt = FALSE
 	var/floor_variance = 50
-	var/quantity_of_available_tiles = 3
+	var/quantity_of_available_tiles = 2
 	var/environment_type = "grass"
 
 /turf/open/floor/grass/Initialize()
