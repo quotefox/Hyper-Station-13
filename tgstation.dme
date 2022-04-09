@@ -3215,6 +3215,7 @@
 #include "hyperstation\code\obj\Lambent\shoes.dm"
 #include "hyperstation\code\obj\Lambent\suit.dm"
 #include "hyperstation\code\obj\Lambent\uniform.dm"
+#include "hyperstation\code\obj\structures\beacons.dm"
 #include "hyperstation\code\obj\SYSuit\abilities.dm"
 #include "hyperstation\code\obj\SYSuit\main.dm"
 #include "hyperstation\code\obj\SYSuit\suit_initialize.dm"
