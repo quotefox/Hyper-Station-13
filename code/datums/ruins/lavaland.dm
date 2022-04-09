@@ -255,3 +255,11 @@
 	suffix = "lavaland_surface_cozy_cabin.dmm"
 	allow_duplicates = FALSE
 	cost = 0
+
+/datum/map_template/ruin/lavaland/jettisoned_reactor
+	name = "Jettisoned Reactor"
+	id = "jettreactor"
+	description = "An incredibly dangerous ruin, filled with radiation and unknown lifeforms."
+	suffix = "lavaland_surface_jettisoned_reactor.dmm"
+	allow_duplicates = FALSE
+	cost = 15//Not too important, if you disregard the rads and facehugger.
