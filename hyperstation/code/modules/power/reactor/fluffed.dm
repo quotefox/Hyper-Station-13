@@ -17,7 +17,7 @@ Nowhere else to really put this.
 	light_color = LIGHT_COLOR_CYAN
 	dir = 8 //Less headache inducing :))
 
-/obj/machinery/atmospherics/components/trinary/nuclear_reactor/Initialize()
+/obj/structure/fluff/destroyed_nuclear_reactor/Initialize()
 	. = ..()
 	set_light(3)
 	AddComponent(/datum/component/radioactive, 15000 , src)
