@@ -778,16 +778,6 @@ datum/sprite_accessory/ears/human/gret
 	name = "Deer"
 	icon_state = "deer"
 
-/datum/sprite_accessory/mam_snouts/easterndragon
-	name = "Eastern Dragon"
-	icon_state = "easterndw"
-	icon = 'hyperstation/icons/mob/char_snouts.dmi'
-
-/datum/sprite_accessory/mam_snouts/easterndragonnowhiskers
-	name = "Eastern Dragon - No Whiskers"
-	icon_state = "easterndnw"
-	icon = 'hyperstation/icons/mob/char_snouts.dmi'
-
 /datum/sprite_accessory/mam_snouts/elephant
 	name = "Elephant"
 	icon_state = "elephant"
@@ -1088,16 +1078,6 @@ datum/sprite_accessory/ears/human/gret
 	extra = TRUE
 	extra_color_src = MUTCOLORS3
 
-/datum/sprite_accessory/mam_snouts/feasterndragon
-	name = "Eastern Dragon (Top)"
-	icon_state = "feasterndw"
-	icon = 'hyperstation/icons/mob/char_snouts.dmi'
-
-/datum/sprite_accessory/mam_snouts/feasterndragonnowhiskers
-	name = "Eastern Dragon - No Whiskers (Top)"
-	icon_state = "feasterndnw"
-	icon = 'hyperstation/icons/mob/char_snouts.dmi'
-
 /datum/sprite_accessory/mam_snouts/flcanid
 	name = "Mammal, Long (Top)"
 	icon_state = "flcanid"
@@ -1245,11 +1225,6 @@ datum/sprite_accessory/ears/human/gret
 	name = "Deer Ears"
 	icon_state = "deerears"
 
-/datum/sprite_accessory/mam_ears/easterndragon
-	name = "Dragon Eastern"
-	icon_state = "easternd"
-	icon = 'hyperstation/icons/mob/char_ears.dmi'
-
 /datum/sprite_accessory/mam_ears/eevee
 	name = "Eevee"
 	icon_state = "eevee"
@@ -1392,16 +1367,6 @@ datum/sprite_accessory/ears/human/gret
 /datum/sprite_accessory/mam_tails_animated/cow
 	name = "Cow"
 	icon_state = "cow"
-
-/datum/sprite_accessory/mam_tails/easterndragon //Pulled base from Virgo, seriously love the server and love you guys, stay lovely.
-	name = "Eastern Dragon"
-	icon_state = "easternd"
-	icon = 'hyperstation/icons/mob/char_tails.dmi'
-
-/datum/sprite_accessory/mam_tails_animated/easterndragon
-	name = "Eastern Dragon"
-	icon_state = "easternd"
-	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
 /datum/sprite_accessory/mam_tails/eevee
 	name = "Eevee"
@@ -1690,10 +1655,6 @@ datum/sprite_accessory/ears/human/gret
 	name = "Dog"
 	icon_state = "dog"
 
-/datum/sprite_accessory/mam_body_markings/easterndragon
-	name = "Eastern Dragon"
-	icon_state = "easternd"
-	icon = 'hyperstation/icons/mob/char_markings.dmi'
 
 /datum/sprite_accessory/mam_body_markings/eevee
 	name = "Eevee"
@@ -2341,44 +2302,6 @@ datum/sprite_accessory/ears/human/gret
 	name = "Sabresune"
 	icon_state = "sabresune"
 	ckeys_allowed = list("poojawa")
-
-//doged was here
-/datum/sprite_accessory/mam_body_markings/chemlight
-	name = "RadDog"
-	icon_state = "chemlight"
-
-/datum/sprite_accessory/mam_tails/chemlight
-	name = "RadDog"
-	icon_state = "chemlight"
-
-/datum/sprite_accessory/mam_tails_animated/chemlight
-	name = "RadDog"
-	icon_state = "chemlight"
-
-/datum/sprite_accessory/mam_ears/chemlight
-	name = "RadDog"
-	icon_state = "chemlight"
-
-/datum/sprite_accessory/mam_snouts/fchemlight
-	name = "RadDog (Top)"
-	icon_state = "fchemlight"
-
-/datum/sprite_accessory/mam_snouts/chemlight
-	name = "RadDog"
-	icon_state = "chemlight"
-
-/datum/sprite_accessory/taur/chemnaga
-	name = "Naga Chemlight"
-	icon_state = "chemnaga"
-	taur_mode = SNEK_TAURIC
-	ckeys_allowed = list("chemlight")
-
-/datum/sprite_accessory/taur/chemlight
-	name = "Chem taur"
-	icon_state = "chemlight"
-	taur_mode = PAW_TAURIC
-	ckeys_allowed = list("chemlight")
-
 
 //Lunasune
 /datum/sprite_accessory/mam_ears/lunasune

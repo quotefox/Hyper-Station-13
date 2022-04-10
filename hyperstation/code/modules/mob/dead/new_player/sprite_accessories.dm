@@ -67,6 +67,35 @@ SNOUTS
 	icon = 'hyperstation/icons/mob/char_snouts.dmi'
 	recommended_species = list("insect")
 
+/datum/sprite_accessory/mam_snouts/easterndragon
+	name = "Eastern Dragon (Hyper)"
+	icon_state = "easterndw"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
+/datum/sprite_accessory/mam_snouts/feasterndragon
+	name = "Eastern Dragon (Top) (Hyper)"
+	icon_state = "feasterndw"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
+/datum/sprite_accessory/mam_snouts/easterndragonnowhiskers
+	name = "Eastern Dragon - No Whiskers (Hyper)"
+	icon_state = "easterndnw"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
+/datum/sprite_accessory/mam_snouts/feasterndragonnowhiskers
+	name = "Eastern Dragon - No Whiskers (Top) (Hyper)"
+	icon_state = "feasterndnw"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
+/datum/sprite_accessory/mam_snouts/fchemlight
+	name = "RadDog (Top) (Hyper)"
+	icon_state = "fchemlight"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
+/datum/sprite_accessory/mam_snouts/chemlight
+	name = "RadDog (Hyper)"
+	icon_state = "chemlight"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
 
 /*
 EARS
@@ -109,6 +138,15 @@ EARS
 	icon = 'hyperstation/icons/mob/char_ears.dmi'
 	recommended_species = list("insect")
 
+/datum/sprite_accessory/mam_ears/easterndragon
+	name = "Eastern Dragon (Hyper)"
+	icon_state = "easternd"
+	icon = 'hyperstation/icons/mob/char_ears.dmi'
+
+/datum/sprite_accessory/mam_ears/chemlight
+	name = "RadDog (Hyper)"
+	icon_state = "chemlight"
+	icon = 'hyperstation/icons/mob/char_ears.dmi'
 
 /*
 WINGS
@@ -276,6 +314,26 @@ TAILS + ANIMATED TAILS
 	icon_state = "swallowstriped"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
+/datum/sprite_accessory/mam_tails/easterndragon //Pulled base from Virgo, seriously love the server and love you guys, stay lovely.
+	name = "Eastern Dragon (Hyper)"
+	icon_state = "easternd"
+	icon = 'hyperstation/icons/mob/char_tails.dmi'
+
+/datum/sprite_accessory/mam_tails_animated/easterndragon
+	name = "Eastern Dragon (Hyper)"
+	icon_state = "easternd"
+	icon = 'hyperstation/icons/mob/char_tails.dmi'
+
+/datum/sprite_accessory/mam_tails/chemlight
+	name = "RadDog (Hyper)"
+	icon_state = "chemlight"
+	icon = 'hyperstation/icons/mob/char_tails.dmi'
+
+/datum/sprite_accessory/mam_tails_animated/chemlight
+	name = "RadDog (Hyper)"
+	icon_state = "chemlight"
+	icon = 'hyperstation/icons/mob/char_tails.dmi'
+
 
 /*
 BODY MARKINGS
@@ -335,6 +393,16 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	icon = 'hyperstation/icons/mob/char_markings.dmi'
 	recommended_species = list("avian")
 
+/datum/sprite_accessory/mam_body_markings/easterndragon
+	name = "Eastern Dragon (Hyper)"
+	icon_state = "easternd"
+	icon = 'hyperstation/icons/mob/char_markings.dmi'
+
+//doged was here
+/datum/sprite_accessory/mam_body_markings/chemlight
+	name = "RadDog (Hyper)"
+	icon_state = "chemlight"
+	icon = 'hyperstation/icons/mob/char_markings.dmi'
 
 /*
 TAUR BODIES
@@ -355,7 +423,17 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	color_src = MATRIXED
 	recommended_species = list("human", "lizard", "insect", "mammal", "xeno", "jelly", "slimeperson", "podweak", "avian", "aquatic")
 */
+/datum/sprite_accessory/taur/chemnaga //Chemlight experimental sprites for future spriting
+	name = "RadDog Naga (Hyper)"
+	icon_state = "chemnaga"
+	taur_mode = SNEK_TAURIC
+	ckeys_allowed = list("chemlight")
 
+/datum/sprite_accessory/taur/chemlight
+	name = "RadDog Taur (Hyper)"
+	icon_state = "chemlight"
+	taur_mode = PAW_TAURIC
+	ckeys_allowed = list("chemlight")
 
 /*
 HAIRSTYLES
