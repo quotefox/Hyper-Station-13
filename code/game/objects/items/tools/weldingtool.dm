@@ -299,6 +299,7 @@
 	name = "industrial welding tool"
 	desc = "A slightly larger welder with a larger tank."
 	icon_state = "indwelder"
+	item_state = "indwelder"
 	max_fuel = 40
 	materials = list(MAT_GLASS=60)
 
@@ -315,6 +316,7 @@
 	name = "emergency welding tool"
 	desc = "A miniature welder used during emergencies."
 	icon_state = "miniwelder"
+	item_state = "miniwelder"
 	max_fuel = 10
 	w_class = WEIGHT_CLASS_TINY
 	materials = list(MAT_METAL=30, MAT_GLASS=10)

@@ -3211,6 +3211,7 @@
 #include "hyperstation\code\obj\stargate_clothing.dm"
 #include "hyperstation\code\obj\vibrator.dm"
 #include "hyperstation\code\obj\items\lorebooks.dm"
+#include "hyperstation\code\obj\Kitchen compliances\reagentblender.dm"
 #include "hyperstation\code\obj\Lambent\gloves.dm"
 #include "hyperstation\code\obj\Lambent\shoes.dm"
 #include "hyperstation\code\obj\Lambent\suit.dm"
