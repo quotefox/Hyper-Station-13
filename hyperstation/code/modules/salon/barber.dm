@@ -7,7 +7,7 @@
 
 /obj/structure/closet/secure_closet/barber
 	name = "Barber's locker"
-	icon_state = "cabinet"
+	icon_state = "barber"
 	icon = 'icons/obj/closet.dmi'
 	req_access = list(ACCESS_BARBER)
 
