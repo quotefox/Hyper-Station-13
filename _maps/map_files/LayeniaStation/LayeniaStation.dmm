@@ -3776,11 +3776,11 @@
 	},
 /area/hallway/primary/port)
 "avC" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 9
 	},
-/turf/closed/wall/r_wall,
-/area/medical/virology)
+/turf/open/floor/plating/asteroid/layenia/garden,
+/area/security/prison)
 "avJ" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -3907,6 +3907,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/nuke_storage)
+"awS" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
+	},
+/turf/open/transparent/openspace,
+/area/layenia/cloudlayer)
 "awU" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,
@@ -4584,19 +4592,15 @@
 /turf/open/floor/plasteel/white,
 /area/maintenance/fore)
 "aCs" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 9
 	},
-/obj/structure/sign/poster/random{
-	pixel_y = -32
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 6
-	},
-/turf/open/floor/plasteel/white{
-	icon_state = "plaswhite_plate"
-	},
-/area/medical/psych/ward)
+/turf/open/floor/plating/asteroid/layenia/garden,
+/area/security/prison)
 "aCt" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -4664,10 +4668,11 @@
 /turf/open/transparent/glass/reinforced,
 /area/hallway/primary/central/upper)
 "aDn" = (
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-27"
+/obj/structure/chair,
+/turf/open/floor/plasteel/white{
+	dir = 1;
+	icon_state = "plaswhite_plate"
 	},
-/turf/open/floor/plasteel/white,
 /area/medical/psych/rec)
 "aDq" = (
 /obj/effect/turf_decal/stripes/line{
@@ -4902,6 +4907,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/maintenance/disposal/incinerator)
+"aGq" = (
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/medical/psych/rec)
 "aGQ" = (
 /obj/item/twohanded/required/kirbyplants/random,
 /obj/machinery/light{
@@ -5929,15 +5940,6 @@
 	},
 /turf/open/floor/engine,
 /area/maintenance/disposal/incinerator)
-"aSe" = (
-/obj/structure/fence/corner{
-	dir = 9
-	},
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 9
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "aSj" = (
 /obj/structure/flora/crystal/small/pile,
 /obj/effect/turf_decal/weather/grass/surround,
@@ -6616,15 +6618,6 @@
 /obj/structure/railing,
 /turf/open/floor/plating/layenia,
 /area/layenia)
-"aZK" = (
-/obj/structure/chair/foldingchair{
-	dir = 4
-	},
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 8
-	},
-/turf/open/indestructible/concrete,
-/area/layenia)
 "aZL" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -6882,10 +6875,21 @@
 	},
 /area/medical/medbay/upper)
 "bdh" = (
-/obj/structure/weightmachine/stacklifter,
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
+/obj/structure/flora/junglebush,
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
 	},
+/obj/structure/flora/tree/jungle/small{
+	pixel_x = -20;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/grass,
 /area/medical/psych/rec)
 "bdo" = (
 /obj/machinery/door/airlock/external{
@@ -7093,16 +7097,6 @@
 /obj/structure/cable/yellow,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/disposal/incinerator)
-"bfG" = (
-/obj/structure/flora/junglebush,
-/obj/structure/flora/ausbushes/brflowers,
-/obj/structure/window/reinforced,
-/obj/effect/turf_decal/loading_area{
-	icon_state = "drain";
-	name = "drain"
-	},
-/turf/open/floor/grass,
-/area/medical/psych/ward)
 "bfJ" = (
 /obj/effect/turf_decal/loading_area{
 	color = "#55391A";
@@ -7473,7 +7467,10 @@
 /obj/machinery/newscaster{
 	pixel_y = 28
 	},
-/turf/open/floor/plasteel/white,
+/turf/open/floor/plasteel/white{
+	dir = 1;
+	icon_state = "plaswhite_plate"
+	},
 /area/medical/psych/rec)
 "bjx" = (
 /obj/effect/turf_decal/tile/brown{
@@ -8202,6 +8199,13 @@
 	icon_state = "floor_plate"
 	},
 /area/security/main)
+"bqC" = (
+/obj/structure/sink/kitchen{
+	pixel_y = 28
+	},
+/obj/item/reagent_containers/glass/bucket,
+/turf/open/floor/plasteel,
+/area/medical/psych/ward)
 "bqD" = (
 /obj/machinery/light{
 	dir = 1;
@@ -9067,12 +9071,6 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
-"bzc" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 8
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "bzr" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 10;
@@ -9421,11 +9419,24 @@
 /turf/open/floor/plasteel/dark,
 /area/security/courtroom)
 "bEf" = (
-/obj/structure/cable{
-	icon_state = "0-4"
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
 	},
-/turf/open/floor/plasteel/white,
-/area/medical/psych/roomA)
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 1
+	},
+/turf/open/floor/plating/asteroid/layenia/garden,
+/area/security/prison)
+"bEl" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 8
+	},
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "bEt" = (
 /obj/item/reagent_containers/food/condiment/peppermill{
 	pixel_x = 3;
@@ -10099,12 +10110,6 @@
 	},
 /turf/open/floor/plating/layenia,
 /area/layenia)
-"bND" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 10
-	},
-/turf/open/water/jungle,
-/area/crew_quarters/dorms/upper)
 "bNG" = (
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 4
@@ -10148,20 +10153,16 @@
 /turf/open/floor/carpet,
 /area/library)
 "bNZ" = (
-/obj/machinery/firealarm{
-	pixel_y = 24
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 9
 	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 10
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/turf/open/floor/plasteel/white{
-	dir = 8;
-	icon_state = "plaswhite_trim"
-	},
-/area/medical/psych/ward)
+/turf/open/floor/plating/asteroid/layenia/garden,
+/area/security/prison)
 "bOo" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/yellow{
@@ -10302,6 +10303,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft/upper)
+"bPR" = (
+/obj/structure/weightmachine/stacklifter,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/medical/psych/rec)
 "bPU" = (
 /obj/machinery/atmospherics/components/binary/circulator/cold{
 	dir = 4
@@ -10390,6 +10397,12 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/space)
+"bRy" = (
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_traction_whole"
+	},
+/area/medical/psych/rec)
 "bRX" = (
 /obj/structure/railing{
 	dir = 8
@@ -10787,16 +10800,6 @@
 /obj/structure/railing/handrail,
 /turf/open/floor/carpet,
 /area/crew_quarters/bar/cafe)
-"bWZ" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public,
-/turf/open/floor/plasteel/white{
-	icon_state = "plaswhite_traction_whole"
-	},
-/area/medical/psych/roomB)
 "bXu" = (
 /obj/machinery/photocopier,
 /turf/open/floor/plasteel{
@@ -11552,6 +11555,9 @@
 	},
 /turf/open/floor/carpet,
 /area/library)
+"cfq" = (
+/turf/closed/wall/r_wall,
+/area/medical/psych/roomB)
 "cft" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 10
@@ -11652,17 +11658,6 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/hallway/primary/aft/upper)
-"cgR" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 6
-	},
-/turf/open/floor/plasteel/white{
-	icon_state = "plaswhite_trim"
-	},
-/area/medical/psych/ward)
 "cgT" = (
 /obj/machinery/atmospherics/pipe/simple/purple/visible{
 	dir = 1
@@ -11770,16 +11765,6 @@
 	dir = 5
 	},
 /area/medical/medbay/central)
-"cif" = (
-/obj/structure/chair/stool{
-	dir = 8
-	},
-/obj/machinery/light/small{
-	dir = 1;
-	pixel_y = 16
-	},
-/turf/open/floor/carpet/black,
-/area/crew_quarters/bar)
 "ciu" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -13161,6 +13146,19 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/medical/glass{
+	basecolor = "";
+	bound_width = 64;
+	divide_file = 'icons/obj/doors/airlocks/station/medbaydouble.dmi';
+	doorOpen = 'sound/machines/bigairlockopen.ogg';
+	icon = 'icons/obj/doors/airlocks/station/medbaydouble.dmi';
+	id_tag = "MedbayFoyer";
+	name = "Medbay";
+	note_overlay_file = 'icons/obj/doors/airlocks/station/overlaysdouble.dmi';
+	overlays_file = 'icons/obj/doors/airlocks/station/overlaysdouble.dmi';
+	req_access_txt = "71";
+	stripcolor = ""
+	},
 /turf/open/floor/plasteel/white{
 	icon_state = "plaswhite_traction_whole"
 	},
@@ -13555,9 +13553,6 @@
 "cFe" = (
 /turf/closed/wall/r_wall,
 /area/tcommsat/server)
-"cFw" = (
-/turf/closed/wall,
-/area/medical/psych/roomB)
 "cFN" = (
 /obj/machinery/light{
 	dir = 8;
@@ -14026,8 +14021,11 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-28"
+	},
 /turf/open/floor/plasteel/white{
-	icon_state = "plaswhite_trim"
+	icon_state = "plaswhite_plate"
 	},
 /area/medical/psych/ward)
 "cLy" = (
@@ -14061,12 +14059,6 @@
 /obj/item/toy/figure/lawyer,
 /turf/open/floor/carpet,
 /area/lawoffice)
-"cLR" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 1
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "cLW" = (
 /obj/machinery/light_switch{
 	pixel_y = 28
@@ -14429,18 +14421,6 @@
 	},
 /turf/open/floor/circuit,
 /area/engine/engineering)
-"cQh" = (
-/obj/structure/table/wood,
-/obj/item/toy/crayon/spraycan{
-	pixel_x = 5;
-	pixel_y = 4
-	},
-/obj/item/toy/crayon/spraycan,
-/turf/open/floor/wood{
-	icon_state = "wood_parquet";
-	name = "parquet"
-	},
-/area/medical/psych/rec)
 "cQp" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -14482,11 +14462,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/security/range)
-"cRh" = (
-/obj/effect/landmark/carpspawn,
-/obj/effect/turf_decal/weather/grass/line,
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "cRo" = (
 /obj/machinery/light{
 	dir = 8;
@@ -16115,6 +16090,12 @@
 	icon_state = "darkfull_plate"
 	},
 /area/security/brig)
+"dmh" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/white,
+/area/medical/psych/rec)
 "dmu" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 8
@@ -16357,6 +16338,10 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plating/layenia,
 /area/layenia)
+"dow" = (
+/obj/machinery/space_heater,
+/turf/open/floor/plasteel,
+/area/medical/psych/ward)
 "doy" = (
 /obj/machinery/atmospherics/pipe/simple{
 	dir = 4
@@ -16891,6 +16876,21 @@
 /obj/structure/sign/warning/nosmoking,
 /turf/closed/wall,
 /area/engine/atmos)
+"dul" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-28"
+	},
+/turf/open/floor/plasteel/white{
+	dir = 4;
+	icon_state = "plaswhite_plate"
+	},
+/area/medical/psych/ward)
 "duq" = (
 /obj/structure/table,
 /obj/item/clothing/glasses/hud/health,
@@ -17913,16 +17913,6 @@
 	icon_state = "darkfull_plate"
 	},
 /area/hallway/primary/port)
-"dJt" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 4;
-	icon_state = "drain";
-	name = "drain"
-	},
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
-	},
-/area/medical/psych/rec)
 "dJB" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/toxin_input{
 	dir = 8
@@ -18433,15 +18423,6 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/hallway/primary/aft/upper)
-"dQm" = (
-/obj/structure/fence{
-	dir = 4
-	},
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 6
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "dQp" = (
 /obj/effect/turf_decal/arrows,
 /turf/open/floor/plasteel,
@@ -18805,6 +18786,10 @@
 "dTB" = (
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/port/upper)
+"dTJ" = (
+/obj/structure/flora/crystal/small/pile,
+/turf/open/indestructible/layenia/crystal/garden,
+/area/bridge)
 "dTK" = (
 /obj/effect/turf_decal/loading_area{
 	color = "#55391A";
@@ -18831,17 +18816,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ai_monitored/turret_protected/aisat/hallway)
-"dTO" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 9
-	},
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 9
-	},
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "dTP" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 6
@@ -19691,6 +19665,16 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
+"efn" = (
+/obj/structure/flora/crystal/small/pile,
+/obj/structure/flora/crystal/medium/growth{
+	icon_state = "crystalgrowth2"
+	},
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/indestructible/layenia/crystal/garden,
+/area/medical/psych/rec)
 "efo" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/loading_area{
@@ -20627,13 +20611,6 @@
 	icon_state = "plaswhite_plate"
 	},
 /area/medical/medbay/upper)
-"eqM" = (
-/obj/structure/flora/crystal/medium/growth,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 4
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "eqO" = (
 /obj/effect/turf_decal/loading_area{
 	color = "#55391A";
@@ -20713,12 +20690,6 @@
 	icon_state = "plaswhite_traction_plate"
 	},
 /area/medical/storage)
-"erp" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 4
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "erz" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -20797,6 +20768,15 @@
 	},
 /turf/closed/wall/r_wall,
 /area/engine/atmos)
+"esz" = (
+/obj/effect/turf_decal/loading_area{
+	icon_state = "half_stairs";
+	name = "steps"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_trim"
+	},
+/area/hallway/primary/aft/upper)
 "esD" = (
 /obj/structure/table,
 /obj/item/reagent_containers/rag/towel{
@@ -20987,6 +20967,20 @@
 	},
 /turf/open/floor/plating,
 /area/hallway/primary/aft/upper)
+"etT" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/medical/psych/rec)
 "etU" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/visible/layer1{
 	dir = 1;
@@ -21323,6 +21317,18 @@
 	},
 /turf/open/floor/plating/asteroid/layenia,
 /area/layenia)
+"ewN" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 4;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/medical/psych/rec)
 "ewP" = (
 /obj/effect/turf_decal/stripes/end{
 	dir = 1
@@ -21770,15 +21776,16 @@
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai)
 "eAr" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/public,
-/turf/open/floor/plasteel/white{
-	icon_state = "plaswhite_traction_whole"
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 8
 	},
-/area/medical/psych/roomA)
+/turf/open/floor/plating/asteroid/layenia/garden,
+/area/security/prison)
 "eAt" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
@@ -22779,13 +22786,18 @@
 	},
 /area/crew_quarters/heads/captain)
 "eKe" = (
+/obj/structure/flora/junglebush,
+/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
 /obj/effect/turf_decal/loading_area{
+	dir = 8;
 	icon_state = "drain";
 	name = "drain"
 	},
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
-	},
+/turf/open/floor/grass,
 /area/medical/psych/rec)
 "eKp" = (
 /obj/structure/filingcabinet,
@@ -22846,12 +22858,6 @@
 	},
 /turf/open/floor/plating/asteroid/layenia,
 /area/layenia)
-"eKR" = (
-/obj/structure/cable{
-	icon_state = "0-4"
-	},
-/turf/open/floor/plasteel/white,
-/area/medical/psych/rec)
 "eKV" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -23634,17 +23640,14 @@
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
 "eSs" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/machinery/hydroponics/soil,
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 4
 	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 10
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
 	},
-/turf/open/floor/plasteel/white{
-	dir = 8;
-	icon_state = "plaswhite_trim"
-	},
-/area/medical/psych/ward)
+/area/security/prison)
 "eSu" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -23730,6 +23733,12 @@
 	},
 /turf/open/floor/plasteel/dark/layenia,
 /area/layenia/cloudlayer)
+"eTm" = (
+/obj/effect/turf_decal/weather/grass/surround{
+	dir = 4
+	},
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "eTq" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 4;
@@ -27588,12 +27597,6 @@
 	},
 /turf/open/floor/plating,
 /area/layenia/cloudlayer)
-"fHm" = (
-/obj/machinery/hydroponics/soil,
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "fHu" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 5;
@@ -28503,8 +28506,17 @@
 	},
 /area/engine/break_room)
 "fQl" = (
-/turf/closed/wall,
-/area/medical/psych/roomA)
+/obj/machinery/door/airlock/maintenance{
+	dir = 1;
+	name = "Medbay Maintenance";
+	req_access_txt = "45"
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole_alt"
+	},
+/area/medical/psych/ward)
 "fQw" = (
 /obj/effect/turf_decal/loading_area{
 	color = "#55391A";
@@ -28611,12 +28623,6 @@
 /mob/living/simple_animal/butterfly,
 /turf/open/floor/grass,
 /area/security/prison)
-"fRV" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 8
-	},
-/turf/open/indestructible/concrete,
-/area/layenia)
 "fSi" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 5;
@@ -29180,10 +29186,6 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/fore)
-"fXJ" = (
-/obj/effect/turf_decal/weather/grass/line,
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "fXP" = (
 /obj/machinery/airalarm{
 	pixel_y = 22
@@ -29291,10 +29293,17 @@
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering/reactor_control)
 "fZR" = (
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/structure/cable{
+	icon_state = "1-4"
 	},
-/turf/open/indestructible/layenia/crystal/garden,
+/obj/machinery/airalarm{
+	dir = 4;
+	pixel_x = -22
+	},
+/turf/open/floor/plasteel/white{
+	dir = 8;
+	icon_state = "plaswhite_plate"
+	},
 /area/medical/psych/rec)
 "gab" = (
 /obj/effect/turf_decal/stripes/line{
@@ -29458,6 +29467,12 @@
 	icon_state = "floor_plate"
 	},
 /area/security/brig)
+"gbF" = (
+/obj/machinery/light{
+	pixel_y = -1
+	},
+/turf/open/transparent/openspace,
+/area/layenia/cloudlayer)
 "gbH" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 10
@@ -29549,6 +29564,10 @@
 "gcj" = (
 /turf/open/indestructible/layenia/crystal,
 /area/layenia/cave)
+"gck" = (
+/obj/effect/turf_decal/weather/grass/line,
+/turf/open/indestructible/concrete,
+/area/layenia)
 "gcr" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/poddoor/preopen{
@@ -29868,6 +29887,19 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/engine/engineering/reactor_control)
+"ggg" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 8;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/structure/easel,
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/medical/psych/rec)
 "ggn" = (
 /obj/structure/table,
 /obj/effect/turf_decal/tile/neutral{
@@ -30394,12 +30426,6 @@
 	},
 /turf/open/floor/carpet/black,
 /area/crew_quarters/fitness)
-"glJ" = (
-/obj/structure/flora/junglebush/b,
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "glW" = (
 /obj/structure/flora/crystal/medium/growth{
 	icon_state = "crystalgrowth2"
@@ -30561,6 +30587,17 @@
 /mob/living/simple_animal/parrot/Poly,
 /turf/open/floor/wood,
 /area/crew_quarters/heads/chief)
+"gnH" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_trim"
+	},
+/area/medical/psych/ward)
 "gnT" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -31936,12 +31973,6 @@
 "gAN" = (
 /turf/closed/wall,
 /area/security/processing)
-"gAP" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 6
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "gAS" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Reactor Core";
@@ -32356,10 +32387,13 @@
 /turf/open/floor/plating/layenia,
 /area/layenia/cloudlayer)
 "gFj" = (
+/obj/machinery/hydroponics/soil,
 /obj/effect/turf_decal/weather/grass/line{
-	dir = 9
+	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layenia/garden,
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
 /area/security/prison)
 "gFG" = (
 /obj/machinery/suit_storage_unit/ce,
@@ -32836,10 +32870,9 @@
 	},
 /area/bridge)
 "gIR" = (
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/plasteel/white,
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
 /area/medical/psych/ward)
 "gIX" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
@@ -33552,13 +33585,6 @@
 	},
 /turf/open/floor/plating/layenia,
 /area/layenia/cloudlayer)
-"gRJ" = (
-/obj/structure/flora/crystal/small/growth,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 1
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "gSc" = (
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/turf_decal/stripes/red/corner,
@@ -34747,6 +34773,11 @@
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/structure/flora/junglebush/large{
+	icon_state = "bush3";
+	pixel_x = -25;
+	pixel_y = 0
+	},
 /turf/open/floor/grass,
 /area/medical/psych/ward)
 "hdP" = (
@@ -35264,6 +35295,13 @@
 	icon_state = "darkfull_plate"
 	},
 /area/hallway/primary/port/upper)
+"hjx" = (
+/obj/structure/flora/crystal/small/growth,
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 1
+	},
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "hjz" = (
 /obj/item/shovel,
 /turf/open/floor/plating/asteroid/layenia,
@@ -36368,13 +36406,6 @@
 /obj/structure/disposalpipe/trunk,
 /turf/open/floor/plasteel,
 /area/janitor)
-"hsX" = (
-/obj/structure/flora/crystal/small/pile,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 4
-	},
-/turf/open/indestructible/layenia/crystal,
-/area/layenia)
 "hsZ" = (
 /obj/machinery/door/airlock/external{
 	dir = 8;
@@ -36878,14 +36909,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/mixing)
-"hxQ" = (
-/obj/structure/table/wood,
-/obj/item/stack/sheet/micro_bricks/twenty,
-/turf/open/floor/wood{
-	icon_state = "wood_parquet";
-	name = "parquet"
-	},
-/area/medical/psych/rec)
 "hxR" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -37482,11 +37505,17 @@
 /turf/open/floor/plating,
 /area/security/warden)
 "hDC" = (
-/obj/structure/cable{
-	icon_state = "1-4"
+/obj/machinery/hydroponics/soil,
+/obj/machinery/light{
+	pixel_y = -1
 	},
-/turf/open/floor/plasteel/white,
-/area/medical/psych/roomB)
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 8
+	},
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/security/prison)
 "hDG" = (
 /obj/machinery/camera{
 	c_tag = "Toxins Storage";
@@ -38335,6 +38364,10 @@
 	icon_state = "whitehall_plate"
 	},
 /area/hallway/primary/port)
+"hLn" = (
+/obj/structure/bed,
+/turf/open/floor/plasteel/white,
+/area/medical/psych/roomA)
 "hLx" = (
 /obj/effect/baseturf_helper/asteroid/layenia,
 /turf/closed/wall,
@@ -38919,6 +38952,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/break_room)
+"hPM" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/medical/psych/rec)
 "hPO" = (
 /obj/structure/grille,
 /obj/machinery/door/firedoor,
@@ -39138,21 +39176,6 @@
 	icon_state = "plaswhite_traction"
 	},
 /area/medical/chemistry)
-"hSk" = (
-/obj/structure/chair/sofa/corner{
-	dir = 1
-	},
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 9;
-	icon_state = "siding_wood_line";
-	name = "wood"
-	},
-/turf/open/floor/wood{
-	icon_state = "wood_parquet";
-	name = "parquet"
-	},
-/area/medical/psych/rec)
 "hSn" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -39654,12 +39677,6 @@
 	icon_state = "floor_plate"
 	},
 /area/engine/break_room)
-"hWd" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 1
-	},
-/turf/open/indestructible/layenia/crystal,
-/area/layenia)
 "hWf" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/tile/neutral{
@@ -39967,17 +39984,12 @@
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "hZO" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 5
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
 	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/turf/open/floor/plasteel/white{
-	dir = 4;
-	icon_state = "plaswhite_plate"
-	},
-/area/medical/psych/ward)
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia/cave)
 "iah" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -40119,6 +40131,12 @@
 	},
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms)
+"icz" = (
+/obj/effect/turf_decal/weather/grass,
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "icM" = (
 /obj/structure/flora/crystal/small/pile,
 /turf/open/floor/plating/asteroid/layenia/garden,
@@ -40154,7 +40172,7 @@
 "idj" = (
 /turf/open/floor/plasteel/white{
 	dir = 1;
-	icon_state = "plaswhite_trim"
+	icon_state = "plaswhite_plate"
 	},
 /area/medical/psych/rec)
 "idt" = (
@@ -40414,6 +40432,15 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plating/layenia,
 /area/layenia)
+"igY" = (
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 9
+	},
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "ihh" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 4;
@@ -40572,11 +40599,15 @@
 	},
 /area/crew_quarters/dorms/upper)
 "iip" = (
-/obj/structure/cable{
-	icon_state = "0-8"
+/obj/machinery/hydroponics/constructable,
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
 	},
-/turf/open/floor/plasteel/white,
-/area/medical/psych/roomB)
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/hydroponics)
 "iis" = (
 /obj/machinery/power/apc{
 	areastring = "/area/ai_monitored/turret_protected/ai_upload";
@@ -40867,8 +40898,11 @@
 	},
 /area/crew_quarters/dorms)
 "ilN" = (
-/turf/open/floor/plasteel/white,
-/area/medical/psych/roomA)
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_trim"
+	},
+/area/medical/psych/ward)
 "ilP" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -40887,18 +40921,11 @@
 	},
 /area/hallway/primary/fore)
 "ilZ" = (
-/obj/structure/chair/sofa/right{
-	dir = 4
+/obj/structure/chair{
+	dir = 1
 	},
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 8;
-	icon_state = "siding_wood_line";
-	name = "wood"
-	},
-/turf/open/floor/wood{
-	icon_state = "wood_parquet";
-	name = "parquet"
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_plate"
 	},
 /area/medical/psych/rec)
 "imc" = (
@@ -42186,15 +42213,6 @@
 	icon_state = "floor_plate"
 	},
 /area/engine/atmos)
-"ixS" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 8
-	},
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "ixU" = (
 /obj/machinery/power/deck_relay,
 /obj/structure/cable,
@@ -42357,11 +42375,15 @@
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/engineering)
 "izk" = (
-/obj/structure/cable{
-	icon_state = "1-8"
+/obj/structure/chair/stool{
+	dir = 8
 	},
-/turf/open/floor/plasteel/white,
-/area/medical/psych/rec)
+/obj/machinery/light/small{
+	dir = 1;
+	pixel_y = 16
+	},
+/turf/open/floor/carpet/black,
+/area/crew_quarters/bar)
 "izq" = (
 /obj/structure/chair/bench/metal/left{
 	dir = 8
@@ -43218,12 +43240,9 @@
 /turf/open/floor/plasteel/dark/telecomms,
 /area/tcommsat/server)
 "iFT" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/chair,
-/turf/open/floor/plasteel{
-	dir = 8;
-	icon_plating = "floor";
-	icon_state = "floor_whole_alt"
+/turf/open/floor/plasteel/white{
+	dir = 1;
+	icon_state = "plaswhite_trim"
 	},
 /area/medical/psych/rec)
 "iFY" = (
@@ -44967,12 +44986,6 @@
 	icon_state = "floor_plate"
 	},
 /area/maintenance/fore)
-"iYT" = (
-/obj/structure/cable{
-	icon_state = "1-8"
-	},
-/turf/open/floor/plasteel/white,
-/area/medical/psych/roomA)
 "iZh" = (
 /obj/structure/table/wood,
 /obj/item/book/lorebooks/layenia_crystals,
@@ -45908,6 +45921,15 @@
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/security/brig)
+"jgR" = (
+/obj/structure/mopbucket,
+/obj/item/mop,
+/obj/machinery/light/small{
+	dir = 4;
+	pixel_x = 7
+	},
+/turf/open/floor/plasteel,
+/area/medical/psych/ward)
 "jhe" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
@@ -46081,13 +46103,9 @@
 /turf/open/floor/plasteel/white,
 /area/medical/medbay/upper)
 "jiW" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 1;
-	icon_state = "drain";
-	name = "drain"
-	},
-/turf/open/floor/plasteel,
-/area/medical/psych/rec)
+/obj/effect/turf_decal/weather/grass/line,
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "jja" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -46866,6 +46884,13 @@
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central/upper)
+"jpz" = (
+/obj/machinery/door/airlock/public,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_traction_whole"
+	},
+/area/medical/psych/roomB)
 "jpA" = (
 /obj/structure/chair/office/dark{
 	dir = 8
@@ -46900,15 +46925,10 @@
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
 "jpZ" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 9
-	},
-/obj/effect/turf_decal/loading_area{
-	icon_state = "drain";
-	name = "drain"
-	},
-/turf/open/floor/plating/asteroid/layenia/garden,
-/area/security/prison)
+/obj/structure/flora/crystal/small/growth,
+/obj/effect/turf_decal/weather/grass/line,
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "jqa" = (
 /obj/structure/closet,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -47321,9 +47341,10 @@
 	},
 /area/crew_quarters/heads/hop)
 "juf" = (
-/obj/structure/bed,
-/turf/open/floor/plasteel/white,
-/area/medical/psych/roomB)
+/obj/effect/landmark/carpspawn,
+/obj/effect/turf_decal/weather/grass/line,
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "jug" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -48207,6 +48228,14 @@
 	dir = 1
 	},
 /area/bridge)
+"jDH" = (
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 10
+	},
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "jDL" = (
 /obj/machinery/door/airlock{
 	name = "Clown Room";
@@ -49799,6 +49828,15 @@
 /obj/item/hand_labeler,
 /turf/open/floor/plasteel,
 /area/crew_quarters/locker)
+"jTF" = (
+/obj/machinery/hydroponics/soil,
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 8
+	},
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "jTJ" = (
 /obj/structure/lattice/catwalk,
 /turf/closed/wall/r_wall,
@@ -50742,9 +50780,11 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/bar)
 "kck" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/medical/psych/roomA)
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 6
+	},
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "kco" = (
 /obj/machinery/camera{
 	c_tag = "Dorms South Entrance Hallway";
@@ -50767,23 +50807,9 @@
 /turf/open/floor/plating,
 /area/storage/tech)
 "kcw" = (
+/obj/effect/spawner/structure/window,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/medical/glass{
-	basecolor = "";
-	bound_width = 64;
-	divide_file = 'icons/obj/doors/airlocks/station/medbaydouble.dmi';
-	doorOpen = 'sound/machines/bigairlockopen.ogg';
-	icon = 'icons/obj/doors/airlocks/station/medbaydouble.dmi';
-	id_tag = "MedbayFoyer";
-	name = "Medbay";
-	note_overlay_file = 'icons/obj/doors/airlocks/station/overlaysdouble.dmi';
-	overlays_file = 'icons/obj/doors/airlocks/station/overlaysdouble.dmi';
-	req_access_txt = "71";
-	stripcolor = ""
-	},
-/turf/open/floor/plasteel/white{
-	icon_state = "plaswhite_traction_whole"
-	},
+/turf/open/floor/plating,
 /area/medical/psych/rec)
 "kcY" = (
 /obj/structure/cable{
@@ -51750,6 +51776,10 @@
 	},
 /turf/open/floor/plating,
 /area/security/brig)
+"kmG" = (
+/obj/structure/bed,
+/turf/open/floor/plasteel/white,
+/area/medical/psych/roomB)
 "kmS" = (
 /obj/structure/table/wood,
 /obj/item/pen,
@@ -52986,16 +53016,6 @@
 	icon_state = "floor_trim"
 	},
 /area/crew_quarters/locker)
-"kxA" = (
-/obj/machinery/hydroponics/constructable,
-/obj/machinery/light{
-	dir = 8;
-	pixel_x = -7
-	},
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
-	},
-/area/hydroponics)
 "kxF" = (
 /obj/structure/fence{
 	dir = 4
@@ -53139,12 +53159,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/pool)
-"kyf" = (
-/obj/effect/turf_decal/weather/grass,
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "kyi" = (
 /obj/structure/chair/stool{
 	dir = 1
@@ -53313,8 +53327,11 @@
 	},
 /area/maintenance/fore)
 "kzO" = (
-/turf/closed/wall/r_wall,
-/area/medical/psych/roomB)
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 10
+	},
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "kzP" = (
 /obj/machinery/airalarm{
 	pixel_y = 24
@@ -54328,6 +54345,9 @@
 	icon_state = "floor_whole_alt"
 	},
 /area/crew_quarters/kitchen)
+"kKn" = (
+/turf/closed/wall,
+/area/medical/psych/roomA)
 "kKp" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -54509,6 +54529,12 @@
 	},
 /turf/open/floor/grass,
 /area/security/prison)
+"kMo" = (
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 9
+	},
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "kMs" = (
 /obj/machinery/door/airlock{
 	dir = 8;
@@ -54721,6 +54747,9 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/port/upper)
+"kOS" = (
+/turf/open/floor/plasteel/white,
+/area/medical/psych/roomA)
 "kOV" = (
 /obj/machinery/hydroponics/soil,
 /obj/machinery/light{
@@ -55085,13 +55114,6 @@
 	icon_state = "floor_plate"
 	},
 /area/crew_quarters/locker)
-"kTc" = (
-/obj/structure/fence{
-	dir = 4
-	},
-/obj/effect/turf_decal/weather/grass/line,
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "kTh" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/light{
@@ -56562,15 +56584,6 @@
 /obj/item/pen,
 /turf/open/floor/wood,
 /area/library)
-"ljS" = (
-/obj/structure/cable{
-	icon_state = "1-2"
-	},
-/turf/open/floor/plasteel/white{
-	dir = 1;
-	icon_state = "plaswhite_trim"
-	},
-/area/medical/psych/roomA)
 "lkd" = (
 /obj/structure/rack,
 /obj/effect/spawner/lootdrop/maintenance{
@@ -57790,14 +57803,6 @@
 	icon_state = "plaswhite_traction"
 	},
 /area/medical/virology)
-"lza" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 5
-	},
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "lze" = (
 /obj/structure/flora/crystal/small/pile,
 /obj/machinery/light{
@@ -58088,15 +58093,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/crew_quarters/kitchen)
-"lBN" = (
-/obj/structure/fence{
-	dir = 4
-	},
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 1
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "lBO" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -58358,6 +58354,12 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/solars/port/aft)
+"lEt" = (
+/obj/machinery/hydroponics/soil,
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "lEv" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
@@ -58553,6 +58555,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
+"lFZ" = (
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 1
+	},
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "lGd" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
@@ -59322,20 +59330,8 @@
 /turf/open/floor/plasteel/dark,
 /area/maintenance/starboard/central)
 "lOu" = (
-/obj/structure/sign/poster/random{
-	pixel_y = -32
-	},
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-26"
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 10
-	},
 /obj/effect/turf_decal/tile/blue,
-/turf/open/floor/plasteel/white{
-	dir = 8;
-	icon_state = "plaswhite_plate"
-	},
+/turf/open/floor/plasteel/white,
 /area/medical/psych/ward)
 "lOx" = (
 /obj/machinery/door/airlock/public/glass{
@@ -59615,6 +59611,26 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
+"lRL" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain_corner";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/medical/psych/rec)
 "lRQ" = (
 /obj/machinery/door/airlock/external{
 	name = "Solar Maintenance";
@@ -60370,14 +60386,11 @@
 /turf/closed/wall/r_wall,
 /area/security/processing)
 "lYC" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 4
 	},
-/obj/structure/cable{
-	icon_state = "2-8"
-	},
-/turf/open/floor/plasteel/white,
-/area/medical/psych/ward)
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "lYK" = (
 /turf/open/floor/plasteel{
 	icon_state = "floor_trim"
@@ -61811,12 +61824,12 @@
 	},
 /area/hallway/secondary/exit)
 "mpc" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable{
-	icon_state = "0-2"
+/obj/structure/flora/crystal/small/growth,
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 4
 	},
-/turf/open/floor/plating,
-/area/medical/virology)
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "mph" = (
 /turf/open/floor/plating/asteroid/layenia/garden,
 /area/hallway/secondary/exit)
@@ -62208,7 +62221,13 @@
 /turf/open/floor/wood,
 /area/science/research)
 "mtk" = (
-/turf/open/floor/plasteel,
+/obj/machinery/light{
+	dir = 4;
+	pixel_x = 7
+	},
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_plate"
+	},
 /area/medical/psych/rec)
 "mtl" = (
 /obj/effect/turf_decal/tile/yellow{
@@ -62570,12 +62589,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/construction/mining/aux_base)
-"mvT" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 10
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "mwe" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -62727,6 +62740,18 @@
 	},
 /turf/open/floor/plasteel/stairs/medium,
 /area/hallway/primary/port)
+"mxi" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/turf/open/floor/plasteel/white{
+	dir = 4;
+	icon_state = "plaswhite_trim"
+	},
+/area/medical/psych/ward)
 "mxu" = (
 /turf/open/floor/plating/layenia,
 /area/layenia/cave)
@@ -62923,15 +62948,6 @@
 	icon_state = "floor_plate"
 	},
 /area/security/brig)
-"myD" = (
-/obj/machinery/hydroponics/soil,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 8
-	},
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "myF" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
@@ -63003,6 +63019,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
+"mzf" = (
+/obj/structure/flora/crystal/small/pile,
+/obj/structure/flora/crystal/small/growth,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/turf/open/indestructible/layenia/crystal/garden,
+/area/medical/psych/rec)
 "mzi" = (
 /obj/machinery/light{
 	pixel_y = -1
@@ -63697,6 +63721,17 @@
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/dorms/upper)
+"mFT" = (
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 9
+	},
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "mFV" = (
 /obj/item/twohanded/required/kirbyplants/random,
 /obj/machinery/airalarm{
@@ -64242,15 +64277,6 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/central)
-"mKH" = (
-/obj/machinery/hydroponics/soil,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 8
-	},
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/security/prison)
 "mKW" = (
 /obj/structure/flora/tree/jungle/small{
 	icon_state = "tree6"
@@ -64820,25 +64846,14 @@
 /turf/open/chasm/cloud,
 /area/layenia/cloudlayer)
 "mPy" = (
-/obj/structure/flora/ausbushes/lavendergrass,
-/obj/structure/flora/ausbushes/sparsegrass,
-/obj/structure/flora/ausbushes/fullgrass,
-/obj/structure/flora/ausbushes/grassybush,
-/obj/structure/flora/ausbushes/ppflowers,
-/obj/structure/flora/ausbushes/pointybush,
-/obj/structure/flora/junglebush,
-/obj/structure/flora/junglebush/large{
-	icon_state = "bush3";
-	pixel_x = -25;
-	pixel_y = 0
+/obj/structure/fence{
+	dir = 4
 	},
-/obj/structure/window/reinforced,
-/obj/effect/turf_decal/loading_area{
-	icon_state = "drain";
-	name = "drain"
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 10
 	},
-/turf/open/floor/grass,
-/area/medical/psych/ward)
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "mPC" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -65100,11 +65115,13 @@
 	},
 /area/medical/medbay/upper)
 "mSl" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/structure/rack/shelf,
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole_alt"
 	},
-/turf/open/floor/plasteel/white,
-/area/medical/psych/roomA)
+/area/medical/psych/ward)
 "mSn" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /obj/structure/flora/ausbushes/stalkybush,
@@ -66126,6 +66143,21 @@
 	},
 /turf/open/floor/plasteel/dark/side,
 /area/bridge)
+"naS" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-26"
+	},
+/turf/open/floor/plasteel/white{
+	dir = 4;
+	icon_state = "plaswhite_plate"
+	},
+/area/medical/psych/ward)
 "naY" = (
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
@@ -66244,9 +66276,18 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "ncu" = (
-/obj/machinery/door/firedoor,
+/obj/machinery/firealarm{
+	pixel_y = 24
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
 /turf/open/floor/plasteel/white{
-	icon_state = "plaswhite_traction_whole"
+	dir = 8;
+	icon_state = "plaswhite_trim"
 	},
 /area/medical/psych/ward)
 "ncv" = (
@@ -67676,14 +67717,6 @@
 /obj/effect/spawner/lootdrop/techstorage/tcomms,
 /turf/open/floor/plating,
 /area/storage/tech)
-"nph" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/light{
-	dir = 8;
-	pixel_x = -7
-	},
-/turf/open/transparent/openspace,
-/area/layenia/cloudlayer)
 "npq" = (
 /turf/open/floor/plasteel/dark/layenia{
 	dir = 4;
@@ -68242,17 +68275,11 @@
 	},
 /area/maintenance/fore)
 "ntM" = (
-/obj/structure/chair/sofa,
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 1;
-	icon_state = "siding_wood_line";
-	name = "wood"
+/obj/structure/table,
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
-/turf/open/floor/wood{
-	icon_state = "wood_parquet";
-	name = "parquet"
-	},
+/turf/open/floor/plasteel/white,
 /area/medical/psych/rec)
 "nug" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -68327,11 +68354,12 @@
 	},
 /area/crew_quarters/spa/sauna)
 "nuH" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/structure/fence{
+	dir = 4
 	},
-/turf/open/floor/plasteel/white,
-/area/medical/psych/ward)
+/obj/effect/turf_decal/weather/grass/line,
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "nuJ" = (
 /obj/machinery/door/firedoor,
 /obj/structure/cable{
@@ -68685,15 +68713,9 @@
 /turf/open/floor/plasteel/white,
 /area/crew_quarters/heads/hor)
 "nyu" = (
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 5
-	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/white{
-	dir = 4;
-	icon_state = "plaswhite_trim"
+	icon_state = "plaswhite_traction_whole"
 	},
 /area/medical/psych/ward)
 "nyG" = (
@@ -69159,8 +69181,11 @@
 	},
 /area/science/misc_lab)
 "nEz" = (
-/turf/closed/wall/r_wall,
-/area/medical/psych/ward)
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 9
+	},
+/turf/open/indestructible/concrete,
+/area/layenia)
 "nEC" = (
 /obj/machinery/door/airlock/command{
 	dir = 4;
@@ -70183,6 +70208,15 @@
 /obj/effect/landmark/start/depsec/supply,
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/supply)
+"nPe" = (
+/obj/structure/flora/junglebush/b,
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain_corner";
+	name = "drain"
+	},
+/turf/open/floor/grass,
+/area/hallway/primary/fore/upper)
 "nPg" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -70746,17 +70780,10 @@
 /turf/open/floor/plasteel,
 /area/engine/break_room)
 "nVp" = (
-/obj/structure/chair/sofa/left,
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 5;
-	icon_state = "siding_wood_line";
-	name = "wood"
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
-/turf/open/floor/wood{
-	icon_state = "wood_parquet";
-	name = "parquet"
-	},
+/turf/open/floor/plasteel/white,
 /area/medical/psych/rec)
 "nVw" = (
 /obj/structure/closet/crate{
@@ -71088,6 +71115,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/layenia)
+"nYs" = (
+/turf/open/floor/plasteel/white{
+	dir = 1;
+	icon_state = "plaswhite_trim"
+	},
+/area/medical/psych/roomA)
 "nYy" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 6
@@ -71217,12 +71250,6 @@
 	icon_state = "floor_plate"
 	},
 /area/crew_quarters/fitness/pool)
-"oaA" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 1
-	},
-/turf/open/indestructible/concrete,
-/area/layenia)
 "oaJ" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -71435,13 +71462,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering)
-"occ" = (
-/obj/structure/flora/crystal/small/pile,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 5
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "och" = (
 /obj/machinery/power/apc{
 	areastring = "/area/security/main";
@@ -71848,6 +71868,13 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/xenobiology)
+"oel" = (
+/obj/structure/flora/crystal/small/growth,
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 5
+	},
+/turf/open/indestructible/layenia/crystal,
+/area/layenia)
 "oex" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -72438,15 +72465,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/break_room)
-"okO" = (
-/obj/structure/fence/corner{
-	dir = 10
-	},
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 5
-	},
-/turf/open/indestructible/layenia/crystal,
-/area/layenia)
 "okS" = (
 /turf/open/floor/plasteel/vaporwave,
 /area/arcade)
@@ -73341,6 +73359,14 @@
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating,
 /area/maintenance/port)
+"orZ" = (
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 5
+	},
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "osa" = (
 /obj/effect/baseturf_helper/asteroid/layenia,
 /turf/closed/wall,
@@ -73930,12 +73956,6 @@
 	icon_state = "darkfull_trim"
 	},
 /area/storage/primary)
-"oxr" = (
-/obj/effect/turf_decal/weather/grass/surround{
-	dir = 4
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "oxv" = (
 /obj/item/twohanded/required/kirbyplants/random,
 /obj/machinery/light{
@@ -75066,13 +75086,23 @@
 /turf/open/floor/plasteel/white,
 /area/science/research)
 "oGG" = (
-/obj/structure/closet/secure_closet/personal,
 /obj/effect/turf_decal/loading_area{
-	dir = 1;
+	dir = 8;
 	icon_state = "drain";
 	name = "drain"
 	},
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain_corner";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
 /area/medical/psych/rec)
 "oGR" = (
 /obj/machinery/atmospherics/pipe/simple/cyan/hidden{
@@ -75714,16 +75744,8 @@
 /turf/open/floor/wood,
 /area/hallway/primary/aft/upper)
 "oKc" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 8;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 1
-	},
-/turf/open/floor/plasteel/dark/layenia,
-/area/layenia/cloudlayer)
+/turf/closed/wall,
+/area/medical/psych/roomB)
 "oKe" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	dir = 1;
@@ -75763,6 +75785,28 @@
 	icon_state = "floor_plate"
 	},
 /area/security/prison)
+"oKC" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/closet/secure_closet/personal,
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/sign/poster/random{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/medical/psych/rec)
 "oKG" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -76269,13 +76313,6 @@
 	icon_state = "floor_trim"
 	},
 /area/engine/engineering)
-"oPm" = (
-/obj/structure/flora/crystal/small/growth,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 9
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "oPo" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -77327,6 +77364,13 @@
 /turf/open/floor/plasteel,
 /area/engine/engineering)
 "oXv" = (
+/obj/structure/chair/sofa,
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
 	name = "parquet"
@@ -78015,9 +78059,8 @@
 /turf/open/floor/plasteel/white,
 /area/science/research)
 "per" = (
-/obj/structure/bed,
-/turf/open/floor/plasteel/white,
-/area/medical/psych/roomA)
+/turf/open/floor/plasteel,
+/area/medical/psych/ward)
 "peB" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -78082,6 +78125,15 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/lab)
+"pfl" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole_alt"
+	},
+/area/medical/psych/ward)
 "pfo" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
@@ -79450,10 +79502,11 @@
 	},
 /area/security/brig)
 "pry" = (
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
 	},
-/area/layenia/cloudlayer)
+/turf/open/floor/plasteel/white,
+/area/medical/psych/ward)
 "prE" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -79619,11 +79672,6 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/dorms/upper)
-"ptt" = (
-/obj/structure/flora/crystal/small/growth,
-/obj/effect/turf_decal/weather/grass/line,
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "ptz" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -79857,6 +79905,15 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit)
+"pww" = (
+/obj/structure/fence/corner{
+	dir = 10
+	},
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 5
+	},
+/turf/open/indestructible/layenia/crystal,
+/area/layenia)
 "pwx" = (
 /obj/machinery/firealarm{
 	pixel_y = -28
@@ -80004,17 +80061,11 @@
 /turf/open/floor/plasteel/white,
 /area/science/robotics/lab)
 "pxh" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 10;
-	icon_state = "steel_panel";
-	name = "steel pannel"
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 1
 	},
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/railing,
-/turf/open/floor/plasteel/dark/layenia{
-	icon_state = "darkfull_whole_alt"
-	},
-/area/layenia/cloudlayer)
+/turf/open/indestructible/concrete,
+/area/layenia)
 "pxq" = (
 /obj/structure/chair/bench/left,
 /obj/machinery/light{
@@ -81227,10 +81278,12 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "pHj" = (
-/obj/structure/flora/crystal/small/pile,
-/obj/structure/flora/crystal/small/growth,
 /obj/structure/window/reinforced{
 	dir = 4
+	},
+/obj/structure/window/reinforced{
+	dir = 1;
+	layer = 2.9
 	},
 /turf/open/indestructible/layenia/crystal/garden,
 /area/medical/psych/rec)
@@ -81275,6 +81328,17 @@
 	},
 /turf/open/floor/plating,
 /area/layenia/cave)
+"pHW" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_plate"
+	},
+/area/medical/psych/ward)
 "pHY" = (
 /obj/structure/chair/comfy/brown,
 /obj/effect/landmark/start/psychologist,
@@ -81879,6 +81943,17 @@
 	dir = 8
 	},
 /area/science/research)
+"pOa" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "half_stairs";
+	name = "steps"
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_trim"
+	},
+/area/hallway/primary/aft/upper)
 "pOd" = (
 /obj/structure/cable{
 	icon_state = "1-4"
@@ -82468,6 +82543,16 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/fore)
+"pVf" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/medical/psych/rec)
 "pVk" = (
 /obj/structure/barricade/wooden,
 /obj/machinery/door/poddoor/shutters/preopen,
@@ -82544,9 +82629,11 @@
 	},
 /area/crew_quarters/dorms/upper)
 "pVE" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/medical/psych/ward)
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 8
+	},
+/turf/open/indestructible/concrete,
+/area/layenia)
 "pVG" = (
 /obj/effect/baseturf_helper/asteroid/layenia,
 /turf/open/floor/plating,
@@ -83033,6 +83120,14 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/quartermaster/qm)
+"pYM" = (
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 6
+	},
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "pYU" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
@@ -83055,6 +83150,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/quartermaster/qm)
+"pZe" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
+	},
+/turf/open/transparent/openspace,
+/area/layenia/cloudlayer)
 "pZh" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
@@ -84334,18 +84440,6 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/aft)
-"qmI" = (
-/obj/machinery/hydroponics/soil,
-/obj/machinery/light{
-	pixel_y = -1
-	},
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 8
-	},
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/security/prison)
 "qmO" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
@@ -85240,6 +85334,15 @@
 	},
 /turf/open/floor/plating,
 /area/quartermaster/storage)
+"que" = (
+/obj/machinery/hydroponics/soil,
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 4
+	},
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "qug" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 6;
@@ -85644,9 +85747,6 @@
 	},
 /turf/open/floor/grass/layenia,
 /area/layenia)
-"qxm" = (
-/turf/open/floor/plasteel/white,
-/area/medical/psych/roomB)
 "qxp" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Maintenance Access";
@@ -86321,6 +86421,16 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/security/checkpoint/supply)
+"qDO" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plasteel/white{
+	dir = 1;
+	icon_state = "plaswhite_plate"
+	},
+/area/medical/psych/ward)
 "qDP" = (
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -86725,19 +86835,8 @@
 	},
 /area/engine/break_room)
 "qIo" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 9;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark/layenia,
-/area/layenia/cloudlayer)
+/turf/open/floor/plasteel/white,
+/area/medical/psych/roomB)
 "qIr" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 10
@@ -86804,11 +86903,6 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/aft)
-"qIO" = (
-/obj/structure/fence,
-/obj/effect/turf_decal/weather/grass/line,
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "qIT" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 9
@@ -87280,9 +87374,19 @@
 /turf/open/floor/plasteel/dark,
 /area/medical/medbay/upper)
 "qLO" = (
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
 	},
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/water/jungle,
 /area/medical/psych/rec)
 "qLQ" = (
 /obj/structure/closet/bombcloset,
@@ -88073,12 +88177,14 @@
 	},
 /area/hallway/primary/fore/upper)
 "qRZ" = (
-/obj/machinery/airalarm{
-	dir = 4;
-	pixel_x = -22
+/obj/structure/fence{
+	dir = 4
 	},
-/turf/open/floor/plasteel/white,
-/area/medical/psych/roomA)
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 6
+	},
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "qSf" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "bridge blast";
@@ -89699,6 +89805,11 @@
 	icon_state = "floor_whole_alt"
 	},
 /area/quartermaster/office)
+"reI" = (
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/medical/psych/rec)
 "reJ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
@@ -89967,13 +90078,6 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/aft)
-"rhe" = (
-/obj/structure/closet/emcloset,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 10
-	},
-/turf/open/indestructible/concrete,
-/area/layenia)
 "rhB" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -90900,6 +91004,13 @@
 	icon_state = "floor_plate"
 	},
 /area/science/misc_lab)
+"roI" = (
+/obj/structure/closet/emcloset,
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 10
+	},
+/turf/open/indestructible/concrete,
+/area/layenia)
 "roP" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 9;
@@ -91191,6 +91302,12 @@
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/crew_quarters/toilet/locker)
+"rrO" = (
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 10
+	},
+/turf/open/water/jungle,
+/area/crew_quarters/dorms/upper)
 "rrR" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -92388,15 +92505,14 @@
 	},
 /area/crew_quarters/fitness/pool)
 "rCE" = (
-/obj/effect/turf_decal/loading_area{
-	icon_state = "drain";
-	name = "drain"
+/obj/structure/chair/foldingchair{
+	dir = 4
 	},
 /obj/effect/turf_decal/weather/grass/line{
-	dir = 1
+	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layenia/garden,
-/area/security/prison)
+/turf/open/indestructible/concrete,
+/area/layenia)
 "rCF" = (
 /obj/machinery/light/small{
 	dir = 4;
@@ -93117,10 +93233,6 @@
 /obj/item/canvas,
 /turf/open/floor/plasteel/dark,
 /area/artatrium)
-"rIH" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/medical/psych/roomB)
 "rIU" = (
 /obj/structure/table/reinforced,
 /obj/machinery/chem_dispenser/drinks,
@@ -93178,8 +93290,16 @@
 	},
 /area/science/misc_lab)
 "rJm" = (
-/obj/structure/easel,
-/turf/open/floor/plasteel,
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 5;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
 /area/medical/psych/rec)
 "rJn" = (
 /obj/machinery/vending/boozeomat,
@@ -94823,10 +94943,6 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/starboard/upper)
-"rXs" = (
-/obj/structure/flora/crystal/small/pile,
-/turf/open/indestructible/layenia/crystal/garden,
-/area/bridge)
 "rXw" = (
 /obj/effect/turf_decal/loading_area{
 	icon_state = "drain";
@@ -95032,6 +95148,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"rZk" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/light{
+	pixel_y = -1
+	},
+/turf/open/transparent/openspace,
+/area/layenia/cloudlayer)
 "rZl" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -96897,16 +97020,14 @@
 /turf/open/floor/plasteel/dark,
 /area/science/mixing)
 "soj" = (
+/obj/structure/fence/corner{
+	dir = 9
+	},
 /obj/effect/turf_decal/weather/grass/line{
 	dir = 9
 	},
-/obj/effect/turf_decal/loading_area{
-	dir = 4;
-	icon_state = "drain";
-	name = "drain"
-	},
-/turf/open/floor/plating/asteroid/layenia/garden,
-/area/security/prison)
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "sol" = (
 /obj/machinery/light/small{
 	dir = 1;
@@ -97058,11 +97179,6 @@
 	icon_state = "plaswhite_traction_whole"
 	},
 /area/medical/medbay/aft)
-"spu" = (
-/obj/structure/closet/emcloset,
-/obj/effect/turf_decal/weather/grass/line,
-/turf/open/indestructible/concrete,
-/area/layenia)
 "spv" = (
 /obj/machinery/airalarm{
 	pixel_y = 22
@@ -97347,14 +97463,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel,
 /area/quartermaster/miningdock)
-"srw" = (
-/obj/structure/table/wood,
-/obj/item/canvas/twentythreeXtwentythree,
-/turf/open/floor/wood{
-	icon_state = "wood_parquet";
-	name = "parquet"
-	},
-/area/medical/psych/rec)
 "srz" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 5;
@@ -97481,12 +97589,6 @@
 	icon_state = "floor_whole_alt"
 	},
 /area/science/research)
-"stb" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 9
-	},
-/turf/open/water/jungle,
-/area/crew_quarters/dorms/upper)
 "stc" = (
 /obj/machinery/light{
 	dir = 1;
@@ -97707,15 +97809,6 @@
 "suW" = (
 /turf/open/indestructible/layenia/crystal/garden,
 /area/security/brig)
-"svf" = (
-/obj/structure/fence{
-	dir = 4
-	},
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 10
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "svr" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -98574,10 +98667,6 @@
 	icon_state = "plaswhite_plate"
 	},
 /area/medical/psych/ward)
-"sAG" = (
-/obj/effect/turf_decal/weather/grass/line,
-/turf/open/indestructible/concrete,
-/area/layenia)
 "sAH" = (
 /obj/structure/bookcase/random/fiction,
 /turf/open/floor/plasteel/dark{
@@ -98851,13 +98940,6 @@
 	name = "parquet"
 	},
 /area/crew_quarters/dorms/upper)
-"sDg" = (
-/obj/structure/flora/crystal/small/growth,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 4
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "sDl" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
@@ -98899,14 +98981,19 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft/upper)
 "sDA" = (
+/obj/structure/flora/grass/jungle,
+/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
 /obj/effect/turf_decal/loading_area{
-	dir = 1;
+	dir = 8;
 	icon_state = "drain";
 	name = "drain"
 	},
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
-	},
+/turf/open/floor/grass,
 /area/medical/psych/rec)
 "sDL" = (
 /obj/effect/turf_decal/tile/purple,
@@ -99895,15 +99982,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/science/mixing)
-"sMD" = (
-/obj/machinery/hydroponics/soil,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 4
-	},
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "sME" = (
 /turf/open/floor/plasteel/stairs/medium{
 	dir = 1;
@@ -100136,13 +100214,6 @@
 	icon_state = "floor_plate"
 	},
 /area/maintenance/starboard/central)
-"sPz" = (
-/obj/structure/lattice/catwalk,
-/obj/machinery/light{
-	pixel_y = -1
-	},
-/turf/open/transparent/openspace,
-/area/layenia/cloudlayer)
 "sPD" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden,
 /obj/structure/cable/yellow{
@@ -100497,6 +100568,18 @@
 	icon_state = "plaswhite_traction"
 	},
 /area/medical/surgery)
+"sSW" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/plasteel/white{
+	dir = 1;
+	icon_state = "plaswhite_plate"
+	},
+/area/medical/psych/ward)
 "sSY" = (
 /turf/open/floor/plating{
 	icon_state = "platingdmg1"
@@ -100544,11 +100627,14 @@
 	},
 /area/maintenance/solars/port/aft)
 "sTs" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/structure/fence{
+	dir = 4
 	},
-/turf/open/floor/plasteel/white,
-/area/medical/psych/roomA)
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 1
+	},
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "sTy" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -100570,12 +100656,6 @@
 	icon_state = "floor_plate"
 	},
 /area/security/prison)
-"sTD" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 4
-	},
-/turf/open/indestructible/concrete,
-/area/layenia)
 "sTF" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -100935,11 +101015,16 @@
 /turf/open/floor/plating,
 /area/engine/engineering)
 "sWu" = (
-/obj/structure/window/reinforced{
-	dir = 4
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-27"
 	},
-/obj/structure/flora/crystal/small/growth,
-/turf/open/floor/plating/asteroid/layenia/garden,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/turf/open/floor/plasteel/white{
+	dir = 4;
+	icon_state = "plaswhite_whole"
+	},
 /area/medical/psych/rec)
 "sWv" = (
 /obj/item/twohanded/required/kirbyplants/random,
@@ -101306,18 +101391,10 @@
 /turf/open/floor/plating,
 /area/maintenance/starboard)
 "sZz" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 10;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/obj/effect/turf_decal/stripes/line,
-/obj/structure/railing,
-/turf/open/floor/plasteel/dark/layenia{
-	dir = 1;
-	icon_state = "darkfull_plate"
-	},
-/area/layenia/cloudlayer)
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/medical/psych/roomB)
 "sZC" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
@@ -101398,7 +101475,11 @@
 	layer = 4;
 	pixel_y = 26
 	},
-/turf/open/floor/plasteel/white,
+/obj/structure/chair,
+/turf/open/floor/plasteel/white{
+	dir = 1;
+	icon_state = "plaswhite_plate"
+	},
 /area/medical/psych/rec)
 "taq" = (
 /obj/effect/turf_decal/tile/green{
@@ -102312,12 +102393,6 @@
 	dir = 1
 	},
 /area/bridge)
-"thZ" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 9
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "tih" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -102966,16 +103041,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/bar)
-"tnq" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/weather/grass/line,
-/obj/structure/flora/ausbushes/ppflowers,
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "tnt" = (
 /obj/structure/closet/emcloset,
 /obj/effect/turf_decal/tile/neutral{
@@ -103919,8 +103984,10 @@
 /turf/open/floor/plating,
 /area/maintenance/fore)
 "twb" = (
-/turf/closed/wall/r_wall,
-/area/medical/psych/roomA)
+/obj/structure/fence,
+/obj/effect/turf_decal/weather/grass/line,
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "twc" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/effect/turf_decal/tile/blue{
@@ -104447,14 +104514,6 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/bridge)
-"tAz" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 6
-	},
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "tAF" = (
 /obj/structure/table,
 /obj/item/cartridge/medical{
@@ -105439,15 +105498,6 @@
 	icon_state = "plaswhite_traction"
 	},
 /area/medical/sleeper)
-"tJz" = (
-/obj/structure/flora/ausbushes/ywflowers,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 9
-	},
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "tJB" = (
 /obj/item/twohanded/required/kirbyplants{
 	icon_state = "plant-28"
@@ -105536,6 +105586,11 @@
 "tJZ" = (
 /turf/closed/wall,
 /area/crew_quarters/heads/cmo)
+"tKf" = (
+/obj/structure/closet/emcloset,
+/obj/effect/turf_decal/weather/grass/line,
+/turf/open/indestructible/concrete,
+/area/layenia)
 "tKh" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -105997,6 +106052,16 @@
 "tNB" = (
 /turf/closed/wall/r_wall,
 /area/construction/mining/aux_base)
+"tNF" = (
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/weather/grass/line,
+/obj/structure/flora/ausbushes/ppflowers,
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "tNL" = (
 /obj/structure/sign/warning/fire,
 /turf/closed/wall/r_wall,
@@ -106491,8 +106556,19 @@
 	},
 /area/hallway/primary/fore)
 "tRb" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
+/obj/structure/chair/sofa/right{
+	dir = 4
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 8;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
 /area/medical/psych/rec)
 "tRj" = (
 /obj/machinery/door/airlock/external{
@@ -106541,6 +106617,14 @@
 	icon_state = "plaswhite_traction_trimcorner"
 	},
 /area/medical/medbay/aft)
+"tRC" = (
+/obj/structure/table/wood,
+/obj/item/stack/sheet/micro_bricks/twenty,
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/medical/psych/rec)
 "tRG" = (
 /obj/structure/closet/secure_closet/personal/patient,
 /obj/machinery/button/door{
@@ -106621,6 +106705,18 @@
 	icon_state = "floor_plate"
 	},
 /area/maintenance/fore)
+"tSK" = (
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/light{
+	pixel_y = -1
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/medical/psych/rec)
 "tSQ" = (
 /obj/machinery/door/airlock/medical/glass{
 	basecolor = "";
@@ -107030,6 +107126,18 @@
 /obj/structure/railing,
 /turf/open/floor/plating/layenia,
 /area/layenia/cloudlayer)
+"tWf" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/medical/psych/rec)
 "tWg" = (
 /obj/machinery/light,
 /obj/effect/turf_decal/tile/neutral{
@@ -110221,6 +110329,14 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore/upper)
+"uyX" = (
+/obj/structure/table/wood,
+/obj/item/canvas/twentythreeXtwentythree,
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/medical/psych/rec)
 "uzc" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
@@ -110355,24 +110471,12 @@
 	},
 /area/medical/medbay/zone2)
 "uzO" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 9;
-	icon_state = "steel_panel";
-	name = "steel pannel"
+/obj/machinery/door/airlock/public,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_traction_whole"
 	},
-/obj/effect/turf_decal/loading_area{
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark/layenia,
-/area/layenia/cloudlayer)
+/area/medical/psych/roomA)
 "uzT" = (
 /obj/machinery/light{
 	dir = 8;
@@ -110784,13 +110888,6 @@
 	name = "parquet"
 	},
 /area/hallway/primary/fore/upper)
-"uEb" = (
-/obj/structure/flora/crystal/small/growth,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 5
-	},
-/turf/open/indestructible/layenia/crystal,
-/area/layenia)
 "uEx" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/food/drinks/drinkingglass{
@@ -110923,6 +111020,9 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
+"uFw" = (
+/turf/open/indestructible/layenia/crystal/garden,
+/area/bridge)
 "uFB" = (
 /obj/structure/railing{
 	dir = 1
@@ -111234,15 +111334,6 @@
 	icon_state = "plaswhite_traction_plate"
 	},
 /area/medical/storage)
-"uJa" = (
-/obj/structure/flora/junglebush/b,
-/obj/effect/turf_decal/loading_area{
-	dir = 1;
-	icon_state = "drain_corner";
-	name = "drain"
-	},
-/turf/open/floor/grass,
-/area/hallway/primary/fore/upper)
 "uJc" = (
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
@@ -111816,23 +111907,11 @@
 /turf/open/floor/plasteel/dark/layenia,
 /area/layenia)
 "uOy" = (
-/obj/structure/sign/poster/random{
-	pixel_x = 32
-	},
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-28"
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 5
-	},
-/obj/effect/turf_decal/tile/blue{
+/obj/effect/turf_decal/weather/grass/line{
 	dir = 8
 	},
-/turf/open/floor/plasteel/white{
-	dir = 4;
-	icon_state = "plaswhite_plate"
-	},
-/area/medical/psych/ward)
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "uOB" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 9
@@ -112293,7 +112372,7 @@
 /area/medical/medbay/zone2)
 "uSy" = (
 /obj/effect/turf_decal/loading_area{
-	dir = 8;
+	dir = 4;
 	icon_state = "drain";
 	name = "drain"
 	},
@@ -113359,12 +113438,6 @@
 	icon_state = "floor_plate"
 	},
 /area/engine/break_room)
-"vbc" = (
-/obj/machinery/light{
-	pixel_y = -1
-	},
-/turf/open/transparent/openspace,
-/area/layenia/cloudlayer)
 "vbd" = (
 /obj/machinery/suit_storage_unit/cmo,
 /obj/machinery/airalarm{
@@ -113441,11 +113514,11 @@
 /turf/closed/wall,
 /area/crew_quarters/kitchen)
 "vbx" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 4
 	},
-/turf/open/floor/plasteel/white,
-/area/medical/psych/roomB)
+/turf/open/indestructible/concrete,
+/area/layenia)
 "vby" = (
 /obj/structure/chair/stool/bar{
 	dir = 1
@@ -113502,6 +113575,14 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/hallway/secondary/entry/upper)
+"vbG" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_trim"
+	},
+/area/medical/psych/ward)
 "vbN" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -113652,15 +113733,8 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig)
 "vdm" = (
-/obj/effect/turf_decal/loading_area{
-	color = "#55391A";
-	dir = 4;
-	icon_state = "siding_wood_line";
-	name = "wood"
-	},
-/turf/open/floor/wood{
-	icon_state = "wood_parquet";
-	name = "parquet"
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_plate"
 	},
 /area/medical/psych/rec)
 "vdv" = (
@@ -114124,6 +114198,23 @@
 /obj/structure/table/wood/fancy,
 /turf/open/floor/plasteel/grimy,
 /area/chapel/office)
+"vig" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/effect/turf_decal/weather/grass/surround,
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/flora/ausbushes/reedbush{
+	pixel_x = 3;
+	pixel_y = -1
+	},
+/turf/open/water/jungle,
+/area/medical/psych/rec)
 "vip" = (
 /obj/machinery/light{
 	dir = 1;
@@ -114897,6 +114988,13 @@
 	icon_state = "floor_trim"
 	},
 /area/engine/break_room)
+"voQ" = (
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/medical/virology)
 "voR" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -115103,15 +115201,6 @@
 	},
 /turf/open/floor/grass/layenia,
 /area/layenia)
-"vqO" = (
-/obj/structure/flora/junglebush/c,
-/obj/effect/turf_decal/weather/grass/surround{
-	dir = 4
-	},
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "vqQ" = (
 /obj/structure/table,
 /obj/machinery/reagentgrinder{
@@ -115303,6 +115392,15 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
+"vts" = (
+/obj/structure/flora/junglebush/c,
+/obj/effect/turf_decal/weather/grass/surround{
+	dir = 4
+	},
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "vtu" = (
 /obj/machinery/light/broken{
 	pixel_y = -1
@@ -115319,24 +115417,17 @@
 /turf/open/floor/plating,
 /area/maintenance/aft)
 "vtD" = (
+/obj/structure/flora/junglebush,
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/effect/turf_decal/loading_area{
-	dir = 1;
-	icon_state = "drain";
-	name = "drain"
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 8;
-	icon_state = "drain_corner";
-	name = "drain"
-	},
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
-	},
+/turf/open/floor/grass,
 /area/medical/psych/rec)
 "vtE" = (
 /obj/effect/turf_decal/tile/yellow{
@@ -115783,6 +115874,13 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft)
+"vza" = (
+/obj/structure/flora/crystal/small/pile,
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 5
+	},
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "vze" = (
 /obj/structure/chair/sofa/left{
 	desc = "More inviting than the average couch.";
@@ -116132,18 +116230,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/obj/machinery/firealarm{
-	pixel_y = -28
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 5
-	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/white{
-	dir = 4;
-	icon_state = "plaswhite_trim"
+	icon_state = "plaswhite_traction_whole"
 	},
 /area/medical/psych/ward)
 "vBR" = (
@@ -116534,6 +116623,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/processing)
+"vEl" = (
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 9
+	},
+/turf/open/water/jungle,
+/area/crew_quarters/dorms/upper)
 "vEF" = (
 /obj/effect/turf_decal/loading_area{
 	color = "#55391A";
@@ -117025,14 +117120,13 @@
 	},
 /area/security/prison)
 "vIo" = (
-/obj/structure/flora/crystal/small/pile,
-/obj/structure/flora/crystal/medium/growth{
-	icon_state = "crystalgrowth2"
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
 	},
-/obj/structure/window/reinforced{
-	dir = 4
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_plate"
 	},
-/turf/open/indestructible/layenia/crystal/garden,
 /area/medical/psych/rec)
 "vIp" = (
 /obj/machinery/door/airlock/maintenance{
@@ -118137,12 +118231,12 @@
 	},
 /area/security/brig)
 "vQR" = (
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
 	},
-/obj/machinery/door/firedoor,
 /turf/open/floor/plasteel/white{
-	icon_state = "plaswhite_traction_whole"
+	dir = 8;
+	icon_state = "plaswhite_trim"
 	},
 /area/medical/psych/ward)
 "vQX" = (
@@ -118851,13 +118945,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/maintenance/disposal)
-"vXJ" = (
-/obj/machinery/light{
-	dir = 8;
-	pixel_x = -7
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia/cave)
 "vXK" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -119262,6 +119349,24 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/disposal)
+"wcD" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/machinery/firealarm{
+	pixel_y = -28
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/turf/open/floor/plasteel/white{
+	dir = 4;
+	icon_state = "plaswhite_trim"
+	},
+/area/medical/psych/ward)
 "wcI" = (
 /obj/machinery/door/airlock/external{
 	dir = 1;
@@ -119932,16 +120037,12 @@
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "wjg" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 4;
-	icon_state = "drain";
-	name = "drain"
-	},
+/obj/structure/flora/crystal/small/growth,
 /obj/effect/turf_decal/weather/grass/line{
 	dir = 8
 	},
-/turf/open/floor/plating/asteroid/layenia/garden,
-/area/security/prison)
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "wjj" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -120692,7 +120793,7 @@
 /area/crew_quarters/locker)
 "wpS" = (
 /obj/effect/turf_decal/loading_area{
-	dir = 8;
+	dir = 4;
 	icon_state = "drain";
 	name = "drain"
 	},
@@ -120702,7 +120803,7 @@
 	name = "drain"
 	},
 /obj/effect/turf_decal/loading_area{
-	dir = 4;
+	dir = 8;
 	icon_state = "drain_corner";
 	name = "drain"
 	},
@@ -120855,6 +120956,19 @@
 /obj/item/healthanalyzer,
 /turf/open/floor/plasteel/dark,
 /area/storage/tech)
+"wqB" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/structure/chair/sofa/left,
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/medical/psych/rec)
 "wqD" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -121135,13 +121249,6 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/security/prison)
-"wtX" = (
-/obj/structure/flora/crystal/small/growth,
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 8
-	},
-/turf/open/floor/plating/asteroid/layenia,
-/area/layenia)
 "wuc" = (
 /obj/structure/table/wood,
 /obj/item/candle{
@@ -121533,14 +121640,12 @@
 	},
 /area/hallway/primary/fore)
 "wxa" = (
-/obj/machinery/hydroponics/soil,
+/obj/structure/flora/crystal/medium/growth,
 /obj/effect/turf_decal/weather/grass/line{
 	dir = 4
 	},
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/security/prison)
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "wxc" = (
 /obj/structure/table,
 /obj/item/paper_bin{
@@ -121806,14 +121911,12 @@
 	},
 /area/barber)
 "wAe" = (
-/obj/structure/cable{
-	icon_state = "1-2"
+/obj/structure/flora/crystal/small/growth,
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 9
 	},
-/turf/open/floor/plasteel/white{
-	dir = 1;
-	icon_state = "plaswhite_trim"
-	},
-/area/medical/psych/roomB)
+/turf/open/floor/plating/asteroid/layenia,
+/area/layenia)
 "wAm" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
@@ -122094,6 +122197,12 @@
 /obj/structure/flora/crystal/small/pile,
 /turf/open/floor/plating/asteroid/layenia,
 /area/layenia)
+"wCV" = (
+/obj/structure/flora/junglebush/b,
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "wDc" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Maintenance Access";
@@ -123064,12 +123173,8 @@
 	},
 /area/maintenance/port)
 "wLs" = (
-/obj/machinery/airalarm{
-	dir = 4;
-	pixel_x = -22
-	},
-/turf/open/floor/plasteel/white,
-/area/medical/psych/roomB)
+/turf/closed/wall/r_wall,
+/area/medical/psych/ward)
 "wLy" = (
 /turf/closed/wall,
 /area/hallway/primary/fore)
@@ -123409,14 +123514,6 @@
 	},
 /turf/closed/wall/r_wall,
 /area/security/main)
-"wNL" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 1
-	},
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "wNM" = (
 /obj/structure/railing{
 	dir = 8
@@ -124000,11 +124097,10 @@
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/ai)
 "wSC" = (
-/obj/machinery/airalarm{
-	dir = 4;
-	pixel_x = -22
+/turf/open/floor/plasteel/white{
+	dir = 8;
+	icon_state = "plaswhite_plate"
 	},
-/turf/open/floor/plasteel/white,
 /area/medical/psych/rec)
 "wSF" = (
 /obj/structure/railing/handrail{
@@ -125007,9 +125103,6 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/crew_quarters/dorms/upper)
-"xdT" = (
-/turf/open/indestructible/layenia/crystal/garden,
-/area/bridge)
 "xee" = (
 /turf/closed/wall,
 /area/crew_quarters/toilet)
@@ -125064,6 +125157,11 @@
 	},
 /turf/open/floor/plating,
 /area/crew_quarters/dorms)
+"xeE" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/firedoor,
+/turf/open/floor/plating,
+/area/medical/psych/roomA)
 "xeG" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
@@ -125686,6 +125784,12 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"xnk" = (
+/turf/open/floor/plasteel/white{
+	dir = 1;
+	icon_state = "plaswhite_trim"
+	},
+/area/medical/psych/roomB)
 "xnv" = (
 /obj/machinery/light{
 	dir = 1;
@@ -126242,6 +126346,13 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/plating,
 /area/quartermaster/storage)
+"xrZ" = (
+/obj/structure/flora/crystal/small/pile,
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 4
+	},
+/turf/open/indestructible/layenia/crystal,
+/area/layenia)
 "xsa" = (
 /obj/structure/flora/rock,
 /turf/open/floor/grass,
@@ -127090,22 +127201,22 @@
 /turf/open/floor/grass/fairy/pink,
 /area/maintenance/fore)
 "xBh" = (
+/obj/structure/flora/ausbushes/lavendergrass,
+/obj/structure/flora/ausbushes/sparsegrass,
+/obj/structure/flora/ausbushes/fullgrass,
+/obj/structure/flora/ausbushes/grassybush,
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/ausbushes/pointybush,
+/obj/structure/flora/junglebush,
+/obj/structure/window/reinforced{
+	dir = 4
+	},
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/effect/turf_decal/loading_area{
-	icon_state = "drain";
-	name = "drain"
-	},
-/obj/effect/turf_decal/loading_area{
-	icon_state = "drain_corner";
-	name = "drain"
-	},
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
-	},
+/turf/open/floor/grass,
 /area/medical/psych/rec)
 "xBq" = (
 /obj/structure/window/reinforced{
@@ -127510,6 +127621,24 @@
 "xFo" = (
 /turf/open/indestructible/concrete,
 /area/layenia/cloudlayer)
+"xFr" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/effect/turf_decal/weather/grass/surround{
+	dir = 4
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/flora/ausbushes/reedbush{
+	pixel_x = -14;
+	pixel_y = -7
+	},
+/turf/open/water/jungle,
+/area/medical/psych/rec)
 "xFt" = (
 /obj/structure/flora/ausbushes/sparsegrass,
 /mob/living/carbon/monkey,
@@ -127706,6 +127835,25 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/secondary/entry/upper)
+"xHj" = (
+/obj/structure/window/reinforced/tinted{
+	dir = 8
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/closet/secure_closet/personal,
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/medical/psych/rec)
 "xHr" = (
 /turf/open/floor/plasteel/stairs{
 	icon_state = "stairs_wood";
@@ -127737,6 +127885,9 @@
 	icon_state = "plaswhite_traction"
 	},
 /area/medical/chemistry)
+"xHy" = (
+/turf/closed/wall/r_wall,
+/area/medical/psych/roomA)
 "xHA" = (
 /obj/machinery/doorButtons/access_button{
 	idDoor = "xeno_airlock_interior";
@@ -129028,14 +129179,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft/upper)
-"xUy" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 10
-	},
-/turf/open/floor/plating/dirt{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
-	},
-/area/hallway/primary/fore/upper)
 "xUA" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -129146,17 +129289,6 @@
 	icon_state = "wood-broken4"
 	},
 /area/maintenance/fore)
-"xVg" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/railing{
-	dir = 4
-	},
-/obj/machinery/light{
-	dir = 8;
-	pixel_x = -7
-	},
-/turf/open/transparent/openspace,
-/area/layenia/cloudlayer)
 "xVi" = (
 /obj/structure/closet/crate/coffin,
 /obj/effect/decal/cleanable/dirt,
@@ -129198,6 +129330,17 @@
 /obj/structure/railing,
 /turf/open/transparent/openspace,
 /area/security/brig)
+"xVF" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_plate"
+	},
+/area/medical/psych/ward)
 "xVW" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -129852,6 +129995,18 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/central/upper)
+"ybT" = (
+/obj/structure/table/wood,
+/obj/item/toy/crayon/spraycan{
+	pixel_x = 5;
+	pixel_y = 4
+	},
+/obj/item/toy/crayon/spraycan,
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/medical/psych/rec)
 "ybU" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 9
@@ -130273,6 +130428,12 @@
 "yeY" = (
 /turf/open/floor/plating,
 /area/maintenance/starboard/central)
+"yeZ" = (
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 1
+	},
+/turf/open/indestructible/layenia/crystal,
+/area/layenia)
 "yfa" = (
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -130418,12 +130579,6 @@
 	icon_state = "floor_plate"
 	},
 /area/maintenance/fore)
-"ygb" = (
-/obj/effect/turf_decal/weather/grass/line{
-	dir = 9
-	},
-/turf/open/indestructible/concrete,
-/area/layenia)
 "ygj" = (
 /obj/machinery/light{
 	dir = 8;
@@ -130602,9 +130757,12 @@
 /turf/closed/wall,
 /area/crew_quarters/theatre)
 "yie" = (
+/obj/structure/chair/sofa/corner{
+	dir = 1
+	},
 /obj/effect/turf_decal/loading_area{
 	color = "#55391A";
-	dir = 8;
+	dir = 9;
 	icon_state = "siding_wood_line";
 	name = "wood"
 	},
@@ -130613,6 +130771,14 @@
 	name = "parquet"
 	},
 /area/medical/psych/rec)
+"yij" = (
+/obj/effect/turf_decal/weather/grass/line{
+	dir = 1
+	},
+/turf/open/floor/plating/dirt{
+	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+	},
+/area/hallway/primary/fore/upper)
 "yim" = (
 /turf/open/floor/plasteel{
 	icon_state = "floor_trim"
@@ -130841,7 +131007,7 @@
 /area/maintenance/fore)
 "ykb" = (
 /obj/effect/turf_decal/loading_area{
-	dir = 8;
+	dir = 4;
 	icon_state = "drain";
 	name = "drain"
 	},
@@ -130850,7 +131016,6 @@
 	name = "drain"
 	},
 /obj/effect/turf_decal/loading_area{
-	dir = 1;
 	icon_state = "drain_corner";
 	name = "drain"
 	},
@@ -142098,12 +142263,12 @@ tBc
 tBc
 tBc
 tBc
-erp
-erp
-erp
-erp
-erp
-eqM
+lYC
+lYC
+lYC
+lYC
+lYC
+wxa
 tBc
 tBc
 tBc
@@ -142348,20 +142513,20 @@ tBc
 tBc
 tBc
 wsU
-erp
-erp
-erp
-erp
-erp
-erp
-gAP
+lYC
+lYC
+lYC
+lYC
+lYC
+lYC
+kck
 tfE
 xMC
 oeJ
 xMC
 xMC
 xMC
-cLR
+lFZ
 tBc
 wCU
 wCU
@@ -142602,9 +142767,9 @@ tBc
 tBc
 tBc
 tBc
-erp
-erp
-gAP
+lYC
+lYC
+kck
 xMC
 oeJ
 thb
@@ -142618,7 +142783,7 @@ xMC
 xMC
 ufl
 vKP
-hWd
+yeZ
 tZC
 xMM
 xMM
@@ -142856,9 +143021,9 @@ gTW
 gTW
 tBc
 tBc
-erp
-sDg
-gAP
+lYC
+mpc
+kck
 xMC
 xMC
 xMC
@@ -142874,7 +143039,7 @@ oyf
 xMC
 xMC
 xMC
-oPm
+wAe
 xMM
 xMM
 xMM
@@ -143112,7 +143277,7 @@ gTW
 gTW
 gTW
 tBc
-gAP
+kck
 taj
 xMC
 xMC
@@ -143131,7 +143296,7 @@ xMC
 taj
 tfE
 xMC
-occ
+vza
 xMM
 wpF
 vlJ
@@ -143368,7 +143533,7 @@ gTW
 gTW
 gTW
 tBc
-fXJ
+jiW
 tad
 xMC
 xMC
@@ -143389,7 +143554,7 @@ xMC
 xMC
 tfE
 tad
-gRJ
+hjx
 wpF
 wCU
 wpF
@@ -143625,7 +143790,7 @@ gTW
 gTW
 gTW
 tBc
-fXJ
+jiW
 mcB
 xMC
 tqX
@@ -143646,7 +143811,7 @@ aiU
 aiU
 aiU
 aiU
-okO
+pww
 wCU
 vlJ
 wpF
@@ -143886,28 +144051,28 @@ sSc
 oeJ
 xMC
 tVV
-ygb
-fRV
-aZK
+nEz
+pVE
+rCE
 lfX
 lfX
 lfX
 lfX
 prt
 joG
-fRV
+pVE
 lfX
 lfX
 lfX
 lfX
-aZK
-fRV
-rhe
+rCE
+pVE
+roI
 tVV
-uEb
+oel
 xMM
-hsX
-erp
+xrZ
+lYC
 tBc
 tBc
 gTW
@@ -144139,7 +144304,7 @@ gTW
 gTW
 gTW
 tBc
-ptt
+jpZ
 taj
 tfE
 trm
@@ -144159,13 +144324,13 @@ prt
 prt
 prt
 prt
-spu
+tKf
 tVV
 xMC
-oxr
+eTm
 tfE
 vOe
-cLR
+lFZ
 tBc
 gTW
 gTW
@@ -144396,7 +144561,7 @@ gTW
 gTW
 gTW
 sHA
-cRh
+juf
 xMC
 dOx
 tVV
@@ -144421,7 +144586,7 @@ tVV
 xMC
 tfE
 xMC
-thZ
+kMo
 tBc
 tBc
 gTW
@@ -144653,7 +144818,7 @@ gTW
 gTW
 gTW
 tBc
-fXJ
+jiW
 xMC
 tfV
 tVV
@@ -144678,7 +144843,7 @@ tVV
 xMC
 ufl
 qxk
-cLR
+lFZ
 tBc
 gTW
 gTW
@@ -144911,10 +145076,10 @@ gTW
 gTW
 gTW
 tBc
-mvT
+kzO
 thb
 tVV
-oaA
+pxh
 prt
 tWV
 vka
@@ -144935,7 +145100,7 @@ tVV
 xMC
 uNp
 vOa
-cLR
+lFZ
 tBc
 gTW
 gTW
@@ -145168,7 +145333,7 @@ gTW
 gTW
 gTW
 tBc
-fXJ
+jiW
 taj
 tVV
 prt
@@ -145187,12 +145352,12 @@ aiA
 vzh
 vka
 prt
-sAG
+gck
 tVV
 xMC
 tad
 oeJ
-cLR
+lFZ
 tBc
 gTW
 gTW
@@ -145426,9 +145591,9 @@ gTW
 gTW
 gTW
 tBc
-mvT
+kzO
 tVV
-oaA
+pxh
 prt
 vka
 dna
@@ -145448,7 +145613,7 @@ joG
 tVV
 uNp
 xMC
-thZ
+kMo
 tBc
 tBc
 gTW
@@ -145683,9 +145848,9 @@ gTW
 gTW
 gTW
 tBc
-fXJ
+jiW
 tVV
-oaA
+pxh
 prt
 vka
 ufK
@@ -145705,7 +145870,7 @@ prt
 tVV
 xMC
 xMC
-cLR
+lFZ
 tBc
 tBc
 gTW
@@ -145940,9 +146105,9 @@ gTW
 gTW
 gTW
 gTW
-fXJ
+jiW
 tVV
-oaA
+pxh
 prt
 vka
 ugj
@@ -145962,7 +146127,7 @@ prt
 tVV
 oeJ
 xMC
-cLR
+lFZ
 tBc
 tBc
 gTW
@@ -146197,7 +146362,7 @@ iEg
 iEg
 lZj
 gTW
-fXJ
+jiW
 tVV
 prt
 joG
@@ -146219,7 +146384,7 @@ prt
 tVV
 xMC
 tya
-cLR
+lFZ
 tBc
 gTW
 gTW
@@ -146455,7 +146620,7 @@ nfY
 xej
 gTW
 tBc
-svf
+mPy
 prt
 prt
 vka
@@ -146475,7 +146640,7 @@ prt
 prt
 tVV
 vqJ
-oPm
+wAe
 tBc
 tBc
 gTW
@@ -146712,7 +146877,7 @@ lJV
 xej
 gPq
 woj
-kTc
+nuH
 prt
 prt
 vka
@@ -146732,7 +146897,7 @@ prt
 prt
 tVV
 taj
-cLR
+lFZ
 tBc
 tBc
 gTW
@@ -146989,7 +147154,7 @@ prt
 prt
 tVV
 xMC
-cLR
+lFZ
 tBc
 gTW
 gTW
@@ -147243,10 +147408,10 @@ joG
 prt
 prt
 prt
-sAG
+gck
 tVV
 xMC
-cLR
+lFZ
 tBc
 gTW
 gTW
@@ -147483,7 +147648,7 @@ gTW
 gTW
 gTW
 gTW
-kTc
+nuH
 nVw
 prt
 prt
@@ -147492,18 +147657,18 @@ prt
 prt
 prt
 prt
-sTD
-sTD
+vbx
+vbx
 prt
 prt
 prt
 prt
 prt
-sTD
-sAG
+vbx
+gck
 tVV
 xMC
-cLR
+lFZ
 tBc
 gTW
 gTW
@@ -147746,8 +147911,8 @@ hFN
 wvd
 prt
 prt
-aSe
-qIO
+soj
+twb
 aiU
 aiU
 aiU
@@ -147760,7 +147925,7 @@ aiU
 aiU
 vLT
 uNp
-cLR
+lFZ
 tBc
 gTW
 gTW
@@ -147999,16 +148164,16 @@ gTW
 gTW
 gTW
 tBc
-dQm
+qRZ
 wvd
 prt
 joG
-lBN
+sTs
 tBc
-bzc
-wtX
-bzc
-mvT
+uOy
+wjg
+uOy
+kzO
 xMC
 mKW
 xMC
@@ -148016,7 +148181,7 @@ xMC
 vIA
 xDC
 tfE
-thZ
+kMo
 tBc
 tBc
 gTW
@@ -148266,14 +148431,14 @@ tBc
 tBc
 tBc
 tBc
-bzc
-wtX
-mvT
+uOy
+wjg
+kzO
 xMC
 kjv
 xMC
 taj
-cLR
+lFZ
 tBc
 gTW
 gTW
@@ -148527,9 +148692,9 @@ tBc
 tBc
 tBc
 hqF
-bzc
-bzc
-bzc
+uOy
+uOy
+uOy
 tBc
 tBc
 gTW
@@ -155915,7 +156080,7 @@ jRw
 qRW
 kJg
 spR
-cif
+izk
 lTI
 tMc
 tMc
@@ -163617,7 +163782,7 @@ jOY
 jSA
 pLz
 pLz
-kxA
+iip
 pLz
 jYA
 frk
@@ -165638,7 +165803,7 @@ nKw
 ejE
 rSg
 cmn
-wxa
+eSs
 pKw
 kMY
 kMY
@@ -166666,8 +166831,8 @@ nKw
 ejE
 epo
 euT
-mKH
-qmI
+gFj
+hDC
 kMY
 kMY
 jMD
@@ -169992,8 +170157,8 @@ xWI
 hbh
 fPe
 fpA
-soj
-wjg
+bNZ
+eAr
 tRV
 wnB
 hck
@@ -170248,7 +170413,7 @@ tLq
 neA
 bYY
 bYY
-jpZ
+aCs
 iPK
 iPK
 iPK
@@ -170505,7 +170670,7 @@ tLq
 xOC
 bYY
 bYY
-rCE
+bEf
 dlS
 iPK
 iPK
@@ -170761,7 +170926,7 @@ xTZ
 tLq
 vhI
 bYY
-gFj
+avC
 bMo
 iPK
 mHG
@@ -176442,7 +176607,7 @@ iVx
 iVx
 iVx
 iVx
-vXJ
+hZO
 iVx
 gcj
 gHp
@@ -217590,7 +217755,7 @@ cob
 exj
 qlg
 apI
-bND
+rrO
 qju
 gER
 wvh
@@ -217845,7 +218010,7 @@ scK
 oxU
 cob
 csF
-stb
+vEl
 mzc
 xPh
 ifY
@@ -230673,7 +230838,7 @@ umk
 nFb
 xQg
 vBU
-kyf
+icz
 myP
 xPX
 xPX
@@ -230934,9 +231099,9 @@ eUM
 xPX
 xPX
 xPX
-dTO
-ixS
-xUy
+mFT
+bEl
+jDH
 lFy
 lFy
 yjw
@@ -231186,15 +231351,15 @@ wak
 umk
 nFb
 xQg
-glJ
+wCV
 oAP
 xPX
 xPX
 xPX
 xmQ
-fHm
-fHm
-myD
+lEt
+lEt
+jTF
 lFy
 yjw
 xQg
@@ -231443,7 +231608,7 @@ wak
 umk
 nFb
 xQg
-wNL
+yij
 aWA
 xPX
 hWT
@@ -231701,7 +231866,7 @@ umk
 nQy
 lFy
 xnv
-tAz
+pYM
 xPX
 xPX
 xPX
@@ -231957,15 +232122,15 @@ mvv
 obq
 lFy
 lFy
-tAz
+pYM
 qRz
 xPX
 xPX
 xPX
 xPX
 xmQ
-fHm
-sMD
+lEt
+que
 lFy
 yjw
 lFy
@@ -232216,7 +232381,7 @@ xQg
 qPb
 qWY
 vYp
-tJz
+igY
 uDA
 cSg
 wfc
@@ -232992,7 +233157,7 @@ xEA
 pvv
 vOn
 iFL
-tnq
+tNF
 lFy
 yjw
 yjw
@@ -233249,7 +233414,7 @@ fJl
 qYf
 uVZ
 iFL
-vqO
+vts
 lFy
 yjw
 yjw
@@ -233335,9 +233500,9 @@ wsF
 wsF
 wsF
 wsF
-mpc
-avC
-vUU
+wsF
+wsF
+voQ
 vUU
 mmH
 xnL
@@ -233591,13 +233756,13 @@ sWu
 fZR
 vIo
 pHj
+efn
+mzf
 nRV
-xnL
-xnL
-xnL
-xnL
-xnL
-xnL
+yhk
+yhk
+yhk
+ajF
 cKO
 yhk
 ePF
@@ -233757,7 +233922,7 @@ umk
 xQg
 xPX
 tzG
-lza
+orZ
 nbH
 tQh
 uqX
@@ -233845,17 +234010,17 @@ wpc
 wpc
 rcw
 aDn
-hSk
+ntM
 ilZ
 yie
 tRb
-xnL
-xnL
-vQg
-vQg
-vQg
-vQg
-mzB
+ggg
+hPM
+ePF
+ePF
+ePF
+ajF
+cKO
 yhk
 ePF
 ePF
@@ -234103,16 +234268,16 @@ wpc
 rcw
 tap
 ntM
-hxQ
+ilZ
 oXv
-tRb
-xnL
+tRC
+aGq
+hPM
+ePF
+ePF
+ePF
+ajF
 cKO
-yhk
-yhk
-yhk
-yhk
-yhk
 xnL
 yhk
 yhk
@@ -234355,21 +234520,21 @@ len
 kVl
 kVl
 rcw
-rcw
-rcw
+oKC
+xHj
 rcw
 bjs
-ntM
-cQh
+dmh
+vdm
 oXv
-tRb
-xnL
+ybT
+aGq
+hPM
+ePF
+ePF
+ePF
+ajF
 cKO
-yhk
-ePF
-ePF
-ePF
-ePF
 yhk
 ePF
 ePF
@@ -234614,19 +234779,19 @@ cLq
 kcw
 idj
 wSC
-eKR
+wSC
 kiG
-ntM
-srw
-oXv
-tRb
-xnL
+dmh
+vdm
+wqB
+uyX
+aGq
+hPM
+ePF
+ePF
+ePF
+ajF
 cKO
-yhk
-ePF
-ePF
-ePF
-ePF
 yhk
 ePF
 ePF
@@ -234871,19 +235036,19 @@ jgz
 czn
 uTQ
 ujN
-izk
-kiG
+ujN
+ujN
 nVp
 vdm
-vdm
-tRb
-xnL
+tWf
+aGq
+aGq
+hPM
+ePF
+ePF
+ePF
+ajF
 cKO
-yhk
-ePF
-ePF
-ePF
-ePF
 yhk
 ePF
 ePF
@@ -235124,23 +235289,23 @@ uqG
 ely
 ely
 jMK
-bGQ
-rcw
+gnH
+bRy
 iFT
 kiG
 kiG
 kiG
-jiW
+kiG
 mtk
 rJm
-nRV
-xnL
+ewN
+ewN
+hPM
+ePF
+ePF
+ePF
+ajF
 cKO
-yhk
-ePF
-ePF
-ePF
-ePF
 yhk
 ePF
 ePF
@@ -235381,23 +235546,23 @@ wUG
 eOa
 eOa
 sAz
-aCs
-rcw
-iFT
-kiG
-kiG
-kiG
+bGQ
+kcw
+lRL
+pVf
+pVf
+pVf
 oGG
 nRV
+hPM
+hPM
+hPM
 nRV
-nRV
-xnL
-cKO
 yhk
-ePF
-ePF
-ePF
-ePF
+yhk
+yhk
+ajF
+cKO
 yhk
 ePF
 ePF
@@ -235639,22 +235804,22 @@ oZy
 eOa
 oNm
 bGQ
-rcw
-iFT
-kiG
-kiG
-kiG
-oGG
+kcw
+etT
+bPR
+reI
+bPR
+tSK
 nRV
-xnL
-xnL
-xnL
-cKO
+ePF
+ePF
+ePF
 yhk
 ePF
 ePF
 ePF
-ePF
+ajF
+cKO
 yhk
 ePF
 ePF
@@ -235875,7 +236040,7 @@ vor
 hPl
 jes
 pLP
-xdT
+uFw
 kOI
 iMc
 gSu
@@ -235896,22 +236061,22 @@ oZy
 eOa
 fnE
 bGQ
-rcw
+kcw
 wpS
 uSy
 uSy
 uSy
 ykb
 nRV
-xnL
-xnL
-vQg
-mzB
+ePF
+ePF
+ePF
 yhk
 ePF
 ePF
 ePF
-ePF
+ajF
+cKO
 yhk
 ePF
 ePF
@@ -236131,7 +236296,7 @@ ylV
 aAg
 skM
 jes
-rXs
+dTJ
 uUT
 bAD
 iMc
@@ -236151,24 +236316,24 @@ xjw
 beS
 oZy
 eOa
-sAz
-bGQ
+mxi
+wcD
 rcw
 sDA
 bdh
 qLO
-bdh
+vig
 eKe
 nRV
+gIR
+gIR
+xHy
+xHy
+xHy
+xHy
+xHy
 xnL
 cKO
-yhk
-yhk
-xnL
-yhk
-yhk
-yhk
-yhk
 xnL
 yhk
 yhk
@@ -236412,20 +236577,20 @@ nyu
 vBO
 rcw
 vtD
-dJt
-dJt
-dJt
 xBh
-nRV
+xFr
+vtD
+xBh
+rcw
+sSW
+pHW
+kKn
+kOS
+kOS
+kOS
+xeE
 xnL
 cKO
-yhk
-ePF
-yhk
-ePF
-ePF
-ePF
-ePF
 ePF
 ePF
 ePF
@@ -236667,22 +236832,22 @@ vsY
 eOa
 ncu
 vQR
-rcw
-rcw
-fQl
-fQl
-twb
-twb
-twb
+lqZ
+lqZ
+lqZ
+lqZ
+lqZ
+lqZ
+lqZ
 pry
-pry
+vbG
 uzO
-ePF
-yhk
-ePF
-ePF
-ePF
-ePF
+nYs
+kOS
+kOS
+xeE
+xnL
+cKO
 ePF
 ePF
 ePF
@@ -236922,24 +237087,24 @@ eOa
 eOa
 eOa
 eOa
-bNZ
-eSs
-lqZ
+sAz
+mPL
+mPL
 lOu
-fQl
-qRZ
-ilN
-bEf
-kck
-cda
-kmZ
-jHF
-ePF
-yhk
-ePF
-ePF
-ePF
-ePF
+ely
+ely
+ely
+ely
+ely
+jMK
+qns
+kKn
+kOS
+kOS
+hLn
+xeE
+xnL
+cKO
 ePF
 ePF
 ePF
@@ -237180,23 +237345,23 @@ eYs
 kVl
 drQ
 sAz
-nuH
+mPL
 mPL
 qns
-fQl
-ilN
-ilN
-sTs
-kck
-kmZ
-xAr
-jHF
-ePF
-yhk
-ePF
-ePF
-ePF
-ePF
+kVl
+kVl
+kVl
+kVl
+kVl
+sAz
+qns
+kKn
+kKn
+kKn
+kKn
+xHy
+xnL
+cKO
 ePF
 ePF
 ePF
@@ -237376,7 +237541,7 @@ eLT
 mCr
 bIf
 wHW
-uJa
+nPe
 wLc
 lFy
 wPb
@@ -237437,23 +237602,23 @@ eYs
 kVl
 hdK
 sAz
-lYC
-vat
-cgR
-eAr
-ljS
+mPL
+mPL
+qns
+kVl
 mSl
-iYT
-kck
-kmZ
-cda
+mSl
+mSl
+kVl
+sAz
+qns
 oKc
 qIo
 qIo
 qIo
-uzO
-ePF
-ePF
+sZz
+xnL
+cKO
 ePF
 ePF
 ePF
@@ -237694,23 +237859,23 @@ wNm
 kVl
 kVl
 sAz
-nuH
 mPL
-qns
+mPL
+vbG
 fQl
 ilN
 per
-ilN
-kck
-kmZ
-xAr
-xAr
-xAr
-xAr
-cda
+dow
+kVl
+sAz
+vbG
+jpz
+xnk
+qIo
+qIo
 sZz
-ePF
-ePF
+xnL
+cKO
 ePF
 ePF
 ePF
@@ -237951,23 +238116,23 @@ eYs
 eYs
 ooN
 jrb
-nuH
+mPL
 mPL
 qns
-fQl
-fQl
-fQl
-fQl
-twb
-kmZ
-npq
-xAr
-xAr
-npq
-cda
-jHF
-ePF
-ePF
+kVl
+bqC
+jgR
+pfl
+kVl
+qDO
+xVF
+oKc
+qIo
+qIo
+kmG
+sZz
+xnL
+cKO
 ePF
 ePF
 ePF
@@ -238205,26 +238370,26 @@ hsZ
 wNm
 wNm
 gOG
+eYs
 kVl
-kVl
-sAz
-nuH
-mPL
-qns
-cFw
+dul
+ely
+ely
+naS
 wLs
-qxm
-qxm
-rIH
-cda
-xAr
-xAr
-cda
-xAr
-xAr
-jHF
-ePF
-ePF
+wLs
+wLs
+wLs
+wLs
+gIR
+gIR
+cfq
+cfq
+cfq
+cfq
+cfq
+xnL
+cKO
 ePF
 ePF
 ePF
@@ -238462,26 +238627,26 @@ wBX
 wBX
 wNm
 wNm
-kVl
-bfG
-sAz
+xep
+wLs
+wLs
 gIR
-vat
-cgR
-bWZ
-wAe
-vbx
-hDC
-rIH
-cda
+gIR
+wLs
+wLs
 kmZ
 xAr
-qTp
 xAr
 xAr
-jHF
-ePF
-ePF
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
+cda
+xnL
+cKO
 ePF
 ePF
 ePF
@@ -238719,26 +238884,26 @@ iVz
 xep
 xep
 eYs
-kVl
-mPy
-hZO
-ely
-ely
-uOy
-cFw
-qxm
-juf
-iip
-rIH
+xep
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
 kmZ
+xAr
+kmZ
+kmZ
+xAr
 xAr
 cda
-kmZ
-xAr
-xAr
-pxh
-ePF
-ePF
+vQg
+mzB
 ePF
 ePF
 ePF
@@ -238976,20 +239141,20 @@ cda
 cda
 xep
 xep
-nEz
-nEz
-nEz
-pVE
-pVE
-nEz
-kzO
-kzO
-kzO
-kzO
-kzO
+xep
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
+xAr
 kmZ
 xAr
-xAr
+kmZ
 xAr
 xAr
 npq
@@ -241925,7 +242090,7 @@ ePF
 ePF
 ePF
 ePF
-vbc
+gbF
 aEL
 xYZ
 yfG
@@ -242575,11 +242740,11 @@ wNm
 eYs
 eYs
 xep
-xep
-xep
 wPM
 wPM
 xep
+wPM
+wPM
 xep
 eYs
 eYs
@@ -242833,11 +242998,11 @@ eYs
 eYs
 eYs
 eYs
-msC
-sIg
-sIg
-msC
 eYs
+pOa
+sIg
+sIg
+esz
 eYs
 eYs
 wNm
@@ -242953,7 +243118,7 @@ ePF
 ePF
 ePF
 ePF
-vbc
+gbF
 aEL
 yaE
 yfQ
@@ -243091,9 +243256,9 @@ rpN
 rpN
 rpN
 xep
-wPM
-wPM
 xep
+wPM
+wPM
 xep
 xep
 xep
@@ -243487,7 +243652,7 @@ lIQ
 lJV
 vQg
 vQg
-sPz
+rZk
 aAx
 rBo
 rBo
@@ -243981,7 +244146,7 @@ ePF
 ePF
 ePF
 ePF
-vbc
+gbF
 aEL
 ybk
 yfT
@@ -245287,26 +245452,26 @@ ePF
 ePF
 ePF
 sBM
-xVg
+pZe
 xnL
 xnL
 xnL
 xnL
-nph
+awS
 xnL
 xnL
 xnL
 xnL
-nph
+awS
 xnL
 xnL
 xnL
 xnL
-nph
+awS
 xnL
 xnL
 xnL
-nph
+awS
 kzX
 lIQ
 lIQ
