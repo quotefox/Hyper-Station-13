@@ -3750,6 +3750,23 @@
 /obj/machinery/power/terminal,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
+"avt" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 9
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/airalarm{
+	pixel_y = 25
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/hallway/primary/port)
 "avC" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -8490,6 +8507,9 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/port)
 "buo" = (
@@ -10517,6 +10537,16 @@
 /obj/effect/landmark/start/atmospheric_technician,
 /turf/open/floor/plasteel,
 /area/engine/atmos)
+"bUo" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/turf/open/floor/plasteel,
+/area/hallway/primary/port)
 "bUp" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -13737,6 +13767,22 @@
 	},
 /turf/open/floor/plating/layenia,
 /area/layenia/cloudlayer)
+"cIR" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/port)
 "cJb" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 9
@@ -16287,6 +16333,13 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 1;
+	name = "air supply pipe"
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/port)
@@ -29275,6 +29328,22 @@
 	},
 /turf/open/floor/wood,
 /area/crew_quarters/heads/chief)
+"gbZ" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
+	name = "air scrubber"
+	},
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/port)
 "gca" = (
 /obj/structure/railing,
 /obj/structure/railing{
@@ -29789,15 +29858,16 @@
 /turf/closed/wall,
 /area/security/prison)
 "ghX" = (
-/obj/structure/disposalpipe/segment{
-	dir = 5
-	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 6
 	},
 /obj/effect/turf_decal/loading_area{
 	icon_state = "drain";
 	name = "drain"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -30665,6 +30735,13 @@
 	},
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -25
+	},
+/obj/machinery/button/door{
+	id = "nukereactor";
+	name = "Emergency Shutters Control";
+	pixel_x = -23;
+	pixel_y = -23;
+	req_access_txt = "10;24"
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engineering/reactor_control)
@@ -31627,6 +31704,9 @@
 	icon_state = "4-8"
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = nukereactor
+	},
 /turf/open/floor/plating,
 /area/engine/engineering/reactor_control)
 "gAi" = (
@@ -31682,6 +31762,9 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = nukereactor
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -31733,6 +31816,9 @@
 	dir = 1
 	},
 /obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = nukereactor
+	},
 /turf/open/floor/plating,
 /area/engine/engineering/reactor_control)
 "gBJ" = (
@@ -31794,6 +31880,9 @@
 "gCw" = (
 /obj/effect/spawner/structure/window/plasma/reinforced,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = nukereactor
+	},
 /turf/open/floor/plating,
 /area/engine/engineering/reactor_control)
 "gCx" = (
@@ -32577,9 +32666,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/airalarm{
-	pixel_y = 22
-	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "gJn" = (
@@ -32620,6 +32706,13 @@
 "gJw" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
+	},
+/obj/machinery/button/door{
+	id = "nukereactor";
+	name = "Emergency Shutters Control";
+	pixel_x = -23;
+	pixel_y = 26;
+	req_access_txt = "10;24"
 	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
@@ -34920,6 +35013,10 @@
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
+	},
+/obj/machinery/airalarm{
+	dir = 8;
+	pixel_x = 24
 	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
@@ -43118,6 +43215,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/port)
 "iIl" = (
@@ -45943,6 +46044,26 @@
 /obj/item/toy/figure/mime,
 /turf/open/floor/plasteel/cafeteria,
 /area/crew_quarters/theatre)
+"jkC" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
+	dir = 1;
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/port)
 "jkG" = (
 /obj/structure/table/reinforced,
 /obj/item/aicard,
@@ -64176,6 +64297,14 @@
 	codes_txt = "patrol;next_patrol=ArrivalsCentral";
 	location = "ArrivalsCorner"
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 5;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 1;
+	name = "air supply pipe"
+	},
 /turf/open/floor/plasteel/dark{
 	dir = 4;
 	icon_state = "darkfull_whole"
@@ -64195,6 +64324,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+/obj/structure/disposalpipe/junction/yjunction,
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/port)
 "mPw" = (
@@ -64838,9 +64968,6 @@
 /turf/open/floor/plasteel/grimy,
 /area/chapel/office)
 "mVm" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
 	name = "air supply pipe"
@@ -64867,9 +64994,6 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
 	name = "air supply pipe"
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 4
 	},
 /obj/effect/turf_decal/loading_area{
 	icon_state = "drain";
@@ -64899,9 +65023,6 @@
 	dir = 8;
 	name = "air supply pipe"
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 10
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 6
 	},
@@ -64915,6 +65036,7 @@
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
 	},
@@ -77769,6 +77891,12 @@
 	dir = 4;
 	pixel_x = 7
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/port)
 "pjc" = (
@@ -81663,6 +81791,25 @@
 	},
 /turf/open/floor/wood,
 /area/security/detectives_office)
+"pUF" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
+	name = "air vent"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/port)
 "pUH" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 6;
@@ -83473,6 +83620,26 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/quartermaster/qm)
+"qlF" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
+	dir = 8;
+	name = "air scrubber"
+	},
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/port)
 "qlI" = (
 /obj/structure/rack/shelf,
 /obj/effect/turf_decal/tile/red{
@@ -85296,6 +85463,15 @@
 "qCq" = (
 /turf/open/floor/plasteel/stairs,
 /area/layenia)
+"qCs" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/port)
 "qCu" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 9
@@ -89625,9 +89801,6 @@
 	},
 /area/medical/chemistry)
 "rkg" = (
-/obj/structure/disposalpipe/junction{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 6
 	},
@@ -89635,6 +89808,7 @@
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_trim"
 	},
@@ -96984,6 +97158,21 @@
 	name = "dark medium"
 	},
 /area/maintenance/starboard/aft)
+"swg" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 6
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
+/area/hallway/primary/port)
 "swk" = (
 /obj/structure/window{
 	dir = 8
@@ -99392,6 +99581,26 @@
 /obj/item/clothing/head/cone,
 /turf/open/chasm/cloud,
 /area/layenia/cloudlayer)
+"sRM" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/port)
 "sRX" = (
 /obj/machinery/atmospherics/pipe/layer_manifold,
 /turf/open/floor/plating,
@@ -99893,6 +100102,26 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/starboard/aft)
+"sWa" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 1;
+	name = "air supply pipe"
+	},
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/port)
 "sWg" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
@@ -106781,15 +107010,19 @@
 	},
 /area/crew_quarters/dorms/upper)
 "udP" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/brown{
 	dir = 6
 	},
 /obj/effect/turf_decal/loading_area{
 	icon_state = "drain";
 	name = "drain"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 10;
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -108608,6 +108841,26 @@
 	},
 /turf/open/floor/plasteel/white/side,
 /area/crew_quarters/heads/cmo)
+"utz" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/port)
 "utK" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
 	dir = 8;
@@ -111350,6 +111603,9 @@
 	dir = 4;
 	name = "Central Access"
 	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -112223,6 +112479,26 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/secondary/exit/upper)
+"vaz" = (
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
+	name = "air vent"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/turf/open/floor/plasteel/dark,
+/area/hallway/primary/port)
 "vaC" = (
 /obj/effect/spawner/lootdrop/maintenance{
 	lootcount = 2;
@@ -115115,6 +115391,10 @@
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 5;
+	name = "air supply pipe"
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
 	},
@@ -115194,6 +115474,18 @@
 	},
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
+	},
+/area/hallway/primary/port)
+"vCX" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 6
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
 	},
 /area/hallway/primary/port)
 "vCY" = (
@@ -116114,9 +116406,6 @@
 	},
 /area/crew_quarters/dorms)
 "vKD" = (
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
 /obj/structure/sign/warning/nosmoking{
 	pixel_y = -32
 	},
@@ -125235,7 +125524,6 @@
 	},
 /area/crew_quarters/heads/hop)
 "xvi" = (
-/obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -125245,6 +125533,13 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/port)
@@ -129739,7 +130034,6 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
-/obj/structure/disposalpipe/junction/yjunction,
 /obj/effect/turf_decal/tile/brown{
 	dir = 6
 	},
@@ -129747,6 +130041,7 @@
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
 	},
@@ -152509,17 +152804,17 @@ nzF
 irH
 tbp
 bmB
-bmB
-bmB
-bmB
-bmB
-bmB
-bmB
-bmB
-bmB
-bmB
-bmB
-bmB
+gbZ
+cIR
+cIR
+cIR
+cIR
+cIR
+cIR
+cIR
+cIR
+pUF
+sWa
 doR
 mPr
 vCu
@@ -152779,7 +153074,7 @@ wqT
 wqT
 kob
 iIk
-vCu
+ghX
 wlg
 wlg
 wlg
@@ -153035,8 +153330,8 @@ mqF
 cJr
 cJr
 pKl
-bmB
-vCu
+vaz
+swg
 wlg
 wlg
 wlg
@@ -153549,11 +153844,11 @@ mqM
 mxg
 mwV
 qXO
-bmB
+jkC
 udP
-wlg
+qCs
 pjb
-wlg
+qCs
 uCb
 wLp
 sLM
@@ -153806,8 +154101,8 @@ mqT
 vib
 mAd
 qXO
-bmB
-udP
+sRM
+vCX
 cQY
 xqj
 xqj
@@ -154063,8 +154358,8 @@ cUV
 cUV
 cUV
 pKl
-bmB
-udP
+sRM
+vCX
 iZv
 lGf
 bNV
@@ -154320,8 +154615,8 @@ vun
 uGA
 cUV
 pKl
-bmB
-udP
+sRM
+vCX
 iZv
 xpR
 rpR
@@ -154577,7 +154872,7 @@ xBR
 uGA
 dEw
 smw
-bmB
+sRM
 vKD
 iZv
 dTv
@@ -154834,7 +155129,7 @@ xIc
 wlg
 cUV
 rJA
-bmB
+utz
 rkg
 lOx
 loV
@@ -155090,9 +155385,9 @@ hcU
 cUV
 cUV
 cUV
-pKl
-bmB
-udP
+avt
+sRM
+vCX
 iZv
 eFQ
 rhR
@@ -155348,8 +155643,8 @@ mrb
 uSj
 mAh
 pKl
-bmB
-udP
+qlF
+vCX
 xqj
 xqj
 xqj
@@ -156376,7 +156671,7 @@ uzT
 hcU
 mBH
 yeS
-dMk
+bUo
 mVC
 oFv
 ngW
