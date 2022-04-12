@@ -70,3 +70,7 @@
 /obj/machinery/door/poddoor/shutters/window/preopen
 	icon_state = "open"
 	density = FALSE
+
+/obj/machinery/door/poddoor/shutters/preopen/alt
+	icon_state = "open_alt"
+	density = FALSE
