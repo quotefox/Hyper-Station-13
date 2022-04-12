@@ -708,7 +708,6 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/structure/closet/crate,
 /obj/machinery/power/apc{
 	areastring = "/area/quartermaster/miningdock";
 	dir = 1;
@@ -718,6 +717,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
+/obj/structure/closet/crate/large,
 /turf/open/floor/plating,
 /area/quartermaster/miningdock)
 "acd" = (
@@ -12862,6 +12862,9 @@
 	pixel_y = 5
 	},
 /obj/item/stock_parts/cell/high/plus,
+/obj/structure/sign/poster/official/moth_piping{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel,
 /area/engine/break_room)
 "cuQ" = (
@@ -58534,6 +58537,9 @@
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/structure/sign/poster/official/moth_hardhat{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel{
 	dir = 4;
 	icon_state = "floor_trim"
@@ -69539,6 +69545,26 @@
 	},
 /turf/open/floor/plasteel,
 /area/bridge)
+"nES" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/sign/poster/official/moth_hardhat{
+	pixel_y = 32
+	},
+/turf/open/floor/plating,
+/area/maintenance/fore)
 "nEY" = (
 /obj/effect/spawner/structure/window,
 /obj/machinery/door/firedoor,
@@ -76698,6 +76724,9 @@
 /obj/structure/chair/bench/metal/left,
 /obj/effect/turf_decal/tile/blue{
 	dir = 9
+	},
+/obj/structure/sign/poster/official/moth_epi{
+	pixel_y = 32
 	},
 /turf/open/floor/plasteel/white{
 	dir = 1;
@@ -89142,6 +89171,9 @@
 /area/security/main)
 "qWr" = (
 /obj/structure/closet/crate,
+/obj/structure/sign/poster/official/moth_piping{
+	pixel_y = 32
+	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
 "qWz" = (
@@ -99109,6 +99141,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
+"sBz" = (
+/obj/structure/sign/poster/official/moth_piping{
+	pixel_y = 32
+	},
+/turf/open/floor/plasteel,
+/area/engine/break_room)
 "sBA" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
@@ -104753,6 +104791,13 @@
 	icon_state = "plaswhite_traction"
 	},
 /area/medical/sleeper)
+"tze" = (
+/obj/structure/railing,
+/obj/structure/sign/poster/ripped{
+	pixel_y = 32
+	},
+/turf/open/floor/plating,
+/area/maintenance/starboard/central)
 "tzi" = (
 /obj/structure/table/glass,
 /obj/item/reagent_containers/glass/beaker/cryoxadone{
@@ -115058,7 +115103,7 @@
 	},
 /area/crew_quarters/dorms/upper)
 "vlt" = (
-/obj/structure/ore_box,
+/obj/structure/closet/crate/large,
 /turf/open/floor/plating,
 /area/maintenance/port/aft)
 "vlB" = (
@@ -117271,6 +117316,9 @@
 	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
+	},
+/obj/structure/sign/poster/official/moth_meth{
+	pixel_y = 32
 	},
 /turf/open/floor/plasteel/white{
 	icon_state = "plaswhite_traction"
@@ -167628,7 +167676,7 @@ qcr
 qcr
 qcr
 xwc
-ydD
+nES
 qcr
 xwc
 xwc
@@ -172792,7 +172840,7 @@ jjS
 jtD
 jCE
 iiy
-jRM
+tze
 yeY
 xXB
 xXB
@@ -175850,7 +175898,7 @@ sna
 tEK
 tEK
 sna
-fcd
+sBz
 fcd
 vaV
 tEK
