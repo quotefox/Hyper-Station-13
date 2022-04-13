@@ -657,6 +657,34 @@
 	item_state = "moffplush"
 	squeak_override = list('modular_citadel/sound/voice/scream_moth.ogg' = 1)
 
+/obj/item/toy/plush/mothplushie/moffplush/safetymoth
+	name = "Safety Moth"
+	desc = "A limited edition Safety Moth™ plush, Can you collect them all?"
+	icon_state = "safetymoth"
+	item_state = "safetymoth"
+	squeak_override = list('modular_citadel/sound/voice/scream_moth.ogg' = 1)
+
+/obj/item/toy/plush/mothplushie/moffplush/safetymoth_engineer
+	name = "Engineer Safety Moth"
+	desc = "A limited edition Engineer Safety Moth™ plush, Can you collect them all?"
+	icon_state = "safetymoth_engineer"
+	item_state = "safetymoth_engineer"
+	squeak_override = list('modular_citadel/sound/voice/scream_moth.ogg' = 1)
+
+/obj/item/toy/plush/mothplushie/moffplush/safetymoth_doctor
+	name = "Doctor Safety Moth"
+	desc = "A limited edition Doctor Safety Moth™ plush, Can you collect them all?"
+	icon_state = "safetymoth_doctor"
+	item_state = "safetymoth_doctor"
+	squeak_override = list('modular_citadel/sound/voice/scream_moth.ogg' = 1)
+
+/obj/item/toy/plush/mothplushie/moffplush/Moffy
+	name = "Chef Moffy plushie"
+	desc = "A rebranded Safety Moth™ plush by there sister company Moffy's Pizzeria Entertainment™"
+	icon_state = "Moffy"
+	item_state = "Moffy"
+	squeak_override = list('modular_citadel/sound/voice/scream_moth.ogg' = 1)
+
 /obj/item/toy/plush/xeno
 	name = "xenohybrid plushie"
 	desc = "An adorable stuffed toy that resmembles a xenomorphic crewmember."
@@ -959,7 +987,7 @@
 
 /obj/item/toy/plush/mammal/freddy
 	name = "felix fastbear plushie"
-	desc = "An adorable stuffed plushie that resembles a bear with a bow tie and a top hat with buttons for eyes."
+	desc = "An adorable bear plushie that resembles felix fastbear from Moffy's Pizzeria Entertainment™"
 	icon_state = "freddy"
 	item_state = "freddy"
 	squeak_override = list('sound/items/toysqueak1.ogg' = 1)
