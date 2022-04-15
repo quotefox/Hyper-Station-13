@@ -15740,7 +15740,7 @@
 /area/engine/break_room)
 "dbl" = (
 /obj/structure/flora/tree/jungle{
-	icon_state = "tree6"
+	icon_state = "tree"
 	},
 /turf/open/floor/grass,
 /area/hallway/primary/fore/upper)
@@ -17362,7 +17362,7 @@
 /area/crew_quarters/dorms)
 "dts" = (
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush3";
+	icon_state = "bush";
 	pixel_x = -25
 	},
 /turf/open/floor/grass,
@@ -19145,12 +19145,6 @@
 	icon_state = "darkfull_plate"
 	},
 /area/hallway/primary/fore/upper)
-"dQR" = (
-/obj/structure/flora/tree/jungle{
-	icon_state = "tree2"
-	},
-/turf/open/floor/grass/layenia,
-/area/layenia)
 "dQS" = (
 /obj/machinery/requests_console{
 	department = "Atmospherics";
@@ -27222,22 +27216,6 @@
 /obj/structure/closet/crate,
 /turf/open/floor/plasteel,
 /area/engine/break_room)
-"frB" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 1;
-	icon_state = "drain";
-	name = "drain"
-	},
-/obj/machinery/firealarm{
-	layer = 4;
-	pixel_y = 24
-	},
-/turf/open/floor/plasteel{
-	dir = 8;
-	icon_plating = "floor";
-	icon_state = "floor_whole_alt"
-	},
-/area/science/research)
 "frD" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 5;
@@ -28160,6 +28138,10 @@
 /obj/item/paper_bin{
 	pixel_x = 1;
 	pixel_y = 8
+	},
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
 	},
 /turf/open/floor/plasteel/white{
 	dir = 1;
@@ -29371,7 +29353,7 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/flora/tree/jungle{
-	icon_state = "tree3";
+	icon_state = "tree";
 	pixel_y = -37
 	},
 /obj/effect/turf_decal/weather/grass/line{
@@ -32462,7 +32444,7 @@
 /area/security/checkpoint/supply)
 "gtc" = (
 /obj/structure/flora/tree/jungle/small{
-	icon_state = "tree2";
+	icon_state = "tree";
 	pixel_x = -22
 	},
 /turf/open/floor/grass,
@@ -36198,7 +36180,7 @@
 	name = "drain"
 	},
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush3";
+	icon_state = "bush";
 	pixel_x = -25;
 	pixel_y = 0
 	},
@@ -36433,7 +36415,7 @@
 /obj/structure/flora/junglebush,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush2";
+	icon_state = "bush";
 	pixel_y = 7
 	},
 /obj/structure/window/reinforced,
@@ -37068,7 +37050,7 @@
 /obj/structure/flora/ausbushes/pointybush,
 /obj/structure/flora/junglebush,
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush3"
+	icon_state = "bush"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
@@ -47663,7 +47645,7 @@
 /obj/structure/flora/junglebush,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush3";
+	icon_state = "bush";
 	pixel_y = -24
 	},
 /obj/structure/window/reinforced{
@@ -53655,12 +53637,6 @@
 	icon_state = "darkfull_plate"
 	},
 /area/science/xenobiology)
-"kjv" = (
-/obj/structure/flora/junglebush/large{
-	icon_state = "bush3"
-	},
-/turf/open/floor/grass/layenia,
-/area/layenia)
 "kjF" = (
 /obj/structure/grille,
 /turf/open/floor/plating,
@@ -53795,7 +53771,7 @@
 "klb" = (
 /obj/structure/flora/junglebush,
 /obj/structure/flora/tree/jungle/small{
-	icon_state = "tree6";
+	icon_state = "tree";
 	pixel_x = -12
 	},
 /turf/open/floor/grass,
@@ -63262,7 +63238,7 @@
 /area/layenia)
 "mcb" = (
 /obj/structure/flora/tree/jungle/small{
-	icon_state = "tree4";
+	icon_state = "tree";
 	pixel_x = -12;
 	pixel_y = 14
 	},
@@ -63309,12 +63285,6 @@
 	},
 /turf/open/floor/plating/asteroid/layenia/garden,
 /area/layenia/cave)
-"mcB" = (
-/obj/structure/flora/tree/jungle/small{
-	icon_state = "tree5"
-	},
-/turf/open/floor/grass/layenia,
-/area/layenia)
 "mcC" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -67044,12 +67014,6 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/central)
-"mKW" = (
-/obj/structure/flora/tree/jungle/small{
-	icon_state = "tree6"
-	},
-/turf/open/floor/grass/layenia,
-/area/layenia)
 "mKX" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=FP1";
@@ -71506,6 +71470,22 @@
 	icon_state = "floor_plate"
 	},
 /area/crew_quarters/dorms)
+"nxC" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/firealarm{
+	layer = 4;
+	pixel_y = 24
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole_alt"
+	},
+/area/science/research)
 "nxD" = (
 /obj/machinery/holopad,
 /obj/effect/turf_decal/box,
@@ -75150,7 +75130,7 @@
 "ohe" = (
 /obj/structure/flora/junglebush,
 /obj/structure/flora/tree/jungle/small{
-	icon_state = "tree5";
+	icon_state = "tree";
 	pixel_x = -20;
 	pixel_y = 2
 	},
@@ -77139,12 +77119,6 @@
 	icon_state = "plaswhite_plate"
 	},
 /area/medical/sleeper)
-"oyf" = (
-/obj/structure/flora/tree/jungle/small{
-	icon_state = "tree3"
-	},
-/turf/open/floor/grass/layenia,
-/area/layenia)
 "oyg" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
 	dir = 4;
@@ -79482,6 +79456,17 @@
 	},
 /turf/open/floor/plasteel/white/side{
 	dir = 1
+	},
+/area/science/research)
+"oPC" = (
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole_alt"
 	},
 /area/science/research)
 "oPK" = (
@@ -83048,7 +83033,7 @@
 /area/chapel/main)
 "pvv" = (
 /obj/structure/flora/tree/jungle{
-	icon_state = "tree5";
+	icon_state = "tree";
 	pixel_y = -13
 	},
 /obj/effect/turf_decal/weather/grass,
@@ -87664,7 +87649,7 @@
 "qlg" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/tree/jungle/small{
-	icon_state = "tree2";
+	icon_state = "tree";
 	pixel_x = -20;
 	pixel_y = -9
 	},
@@ -89179,12 +89164,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/locker)
-"qxk" = (
-/obj/structure/flora/tree/jungle{
-	icon_state = "tree3"
-	},
-/turf/open/floor/grass/layenia,
-/area/layenia)
 "qxp" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Maintenance Access";
@@ -91258,7 +91237,7 @@
 /area/medical/medbay/zone2)
 "qPb" = (
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush2";
+	icon_state = "bush";
 	pixel_x = -3;
 	pixel_y = -5
 	},
@@ -91639,7 +91618,7 @@
 /area/bridge)
 "qRz" = (
 /obj/structure/flora/tree/jungle/small{
-	icon_state = "tree5"
+	icon_state = "tree"
 	},
 /turf/open/floor/grass,
 /area/hallway/primary/fore/upper)
@@ -106236,7 +106215,7 @@
 /area/security/prison)
 "tfV" = (
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush2";
+	icon_state = "bush";
 	pixel_y = 7
 	},
 /turf/open/floor/grass/layenia,
@@ -108239,7 +108218,7 @@
 /area/security/prison)
 "tya" = (
 /obj/structure/flora/tree/jungle/small{
-	icon_state = "tree2"
+	icon_state = "tree"
 	},
 /turf/open/floor/grass/layenia,
 /area/layenia)
@@ -112982,6 +112961,10 @@
 	dir = 9
 	},
 /obj/effect/turf_decal/tile/blue,
+/obj/machinery/light{
+	dir = 4;
+	pixel_x = 7
+	},
 /turf/open/floor/plasteel/white{
 	dir = 1;
 	icon_state = "plaswhite_plate"
@@ -119668,7 +119651,7 @@
 /area/layenia/cloudlayer)
 "vqJ" = (
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush2"
+	icon_state = "bush"
 	},
 /turf/open/floor/grass/layenia,
 /area/layenia)
@@ -123587,17 +123570,6 @@
 	icon_state = "platingdmg3"
 	},
 /area/crew_quarters/dorms/upper)
-"vYz" = (
-/obj/effect/turf_decal/loading_area{
-	icon_state = "drain";
-	name = "drain"
-	},
-/turf/open/floor/plasteel{
-	dir = 8;
-	icon_plating = "floor";
-	icon_state = "floor_whole_alt"
-	},
-/area/science/research)
 "vYB" = (
 /obj/machinery/light{
 	dir = 8;
@@ -127601,7 +127573,7 @@
 /obj/structure/flora/junglebush,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush2";
+	icon_state = "bush";
 	pixel_y = -24
 	},
 /obj/structure/window/reinforced{
@@ -127919,7 +127891,7 @@
 /area/medical/chemistry)
 "wLm" = (
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush3";
+	icon_state = "bush";
 	pixel_x = -25;
 	pixel_y = -4
 	},
@@ -132435,7 +132407,7 @@
 /area/engine/break_room)
 "xDC" = (
 /obj/structure/flora/tree/jungle{
-	icon_state = "tree4"
+	icon_state = "tree"
 	},
 /turf/open/floor/grass/layenia,
 /area/layenia)
@@ -148169,7 +148141,7 @@ xMC
 xMC
 xMC
 xMC
-oyf
+tya
 xMC
 xMC
 xMC
@@ -148418,7 +148390,7 @@ xMC
 tNU
 xMC
 ufl
-dQR
+xDC
 xMC
 xMC
 oeJ
@@ -148925,7 +148897,7 @@ gTW
 gTW
 tBc
 jiW
-mcB
+tya
 xMC
 tqX
 aiU
@@ -149976,7 +149948,7 @@ prt
 tVV
 xMC
 ufl
-qxk
+xDC
 lFZ
 tBc
 gTW
@@ -153309,7 +153281,7 @@ wjg
 uOy
 kzO
 xMC
-mKW
+tya
 xMC
 xMC
 vIA
@@ -153569,7 +153541,7 @@ uOy
 wjg
 kzO
 xMC
-kjv
+vqJ
 xMC
 taj
 lFZ
@@ -180269,8 +180241,8 @@ iEg
 iEg
 iEg
 dxf
-frB
-vYz
+nxC
+oPC
 dxf
 iEg
 iEg
