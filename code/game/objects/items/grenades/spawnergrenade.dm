@@ -43,7 +43,7 @@
 	deliveryamt = 10
 
 /obj/item/grenade/spawnergrenade/clustaur
-	desc = "A very strange grenade often found in maintanance. Use of this may constitute a war crime in your area, consult your local captain."
+	desc = "A very strange grenade often found in maintenance. Use of this may constitute a war crime in your area, consult your local captain."
 	name = "clustaur grenade"
 	icon_state = "clustaur"
 	item_state = "clustaur"

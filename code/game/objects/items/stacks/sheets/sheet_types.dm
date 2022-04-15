@@ -106,6 +106,7 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 	new/datum/stack_recipe("button frame", /obj/item/wallframe/button, 1), \
 	null, \
 	new/datum/stack_recipe("iron door", /obj/structure/mineral_door/iron, 20, one_per_turf = TRUE, on_floor = TRUE), \
+	new/datum/stack_recipe("pestle", /obj/item/pestle, 1, time = 50), \
 	new/datum/stack_recipe("floodlight frame", /obj/structure/floodlight_frame, 5, one_per_turf = TRUE, on_floor = TRUE), \
 	new/datum/stack_recipe("micro powered fan assembly", /obj/machinery/fan_assembly, 10, time = 50, one_per_turf = TRUE, on_floor = TRUE), \
 ))
@@ -243,6 +244,7 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	new/datum/stack_recipe("apiary", /obj/structure/beebox, 40, time = 50),\
 	null, \
 	new/datum/stack_recipe("picture frame", /obj/item/wallframe/picture, 1, time = 10),\
+	new/datum/stack_recipe("mortar", /obj/item/reagent_containers/glass/mortar, 3), \
 	new/datum/stack_recipe("painting frame", /obj/item/wallframe/painting, 1, time = 10),\
 	new/datum/stack_recipe("honey frame", /obj/item/honey_frame, 5, time = 10),\
 	new/datum/stack_recipe("cross", /obj/structure/kitchenspike/cross, 10, time = 10),\
@@ -476,8 +478,8 @@ GLOBAL_LIST_INIT(cardboard_recipes, list ( \
 	null, \
 	new/datum/stack_recipe("colored brown", /obj/item/storage/box/brown), \
 	new/datum/stack_recipe("colored green", /obj/item/storage/box/green), \
-	new/datum/stack_recipe("colored red", /obj/item/storage/box/blue), \
-	new/datum/stack_recipe("colored blue", /obj/item/storage/box/red), \
+	new/datum/stack_recipe("colored red", /obj/item/storage/box/red), \
+	new/datum/stack_recipe("colored blue", /obj/item/storage/box/blue), \
 	new/datum/stack_recipe("colored yellow", /obj/item/storage/box/yellow), \
 	new/datum/stack_recipe("colored pink", /obj/item/storage/box/pink), \
 	new/datum/stack_recipe("colored purple", /obj/item/storage/box/purple), \

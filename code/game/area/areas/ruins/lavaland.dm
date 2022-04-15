@@ -81,7 +81,6 @@
 	icon_state = "red"
 
 //Xeno Nest
-
 /area/ruin/unpowered/xenonest
 	name = "The Hive"
 	always_unpowered = TRUE
@@ -90,6 +89,10 @@
 	power_light = FALSE
 	poweralm = FALSE
 
-//ash walker nest
+//Ash Walker Nest
 /area/ruin/unpowered/ash_walkers
+	icon_state = "red"
+
+//Jettisoned Reactor
+/area/ruin/unpowered/reactor
 	icon_state = "red"

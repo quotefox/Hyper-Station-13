@@ -44,7 +44,7 @@ SUBSYSTEM_DEF(ticker)
 	var/start_at
 
 	var/gametime_offset = 432000		//Deciseconds to add to world.time for station time.
-	var/station_time_rate_multiplier = 12		//factor of station time progressal vs real time.
+	var/station_time_rate_multiplier = 20		//factor of station time progressal vs real time.
 
 	var/totalPlayers = 0					//used for pregame stats on statpanel
 	var/totalPlayersReady = 0				//used for pregame stats on statpanel
@@ -677,10 +677,16 @@ SUBSYSTEM_DEF(ticker)
 	update_everything_flag_in_db()
 	if(!round_end_sound)
 		round_end_sound = pick(\
-		'sound/roundend/iwishtherewassomethingmore.ogg',
-		'sound/roundend/likeisaid.ogg',
-		'sound/roundend/whatarottenwaytodie.ogg',
-		'sound/roundend/whatashame.ogg',
+		'hyperstation/sound/roundend/dotheballsgo.ogg',
+		'hyperstation/sound/roundend/filledwith.ogg',
+		'hyperstation/sound/roundend/iknowwhat.ogg',
+		'hyperstation/sound/roundend/lottawords.ogg',
+		'hyperstation/sound/roundend/pissesonme.ogg',
+		'hyperstation/sound/roundend/theballsgothard.ogg',
+		'hyperstation/sound/roundend/iwishtherewassomethingmore.ogg',
+		'hyperstation/sound/roundend/likeisaid.ogg',
+		'hyperstation/sound/roundend/whatarottenwaytodie.ogg',
+		'hyperstation/sound/roundend/whatashame.ogg',
 		'sound/roundend/newroundsexy.ogg',
 		'sound/roundend/apcdestroyed.ogg',
 		'sound/roundend/bangindonk.ogg',

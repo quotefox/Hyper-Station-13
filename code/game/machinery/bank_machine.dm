@@ -53,10 +53,10 @@
 			next_warning = world.time + minimum_time_between_warnings
 
 /obj/machinery/computer/bank_machine/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
-									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
+									datum/tgui/master_ui = null, datum/tgui_state/state = GLOB.tgui_default_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "bank_machine", name, 320, 165, master_ui, state)
+		ui = new(user, src, ui_key, "BankMachine", name, 320, 165, master_ui, state)
 		ui.open()
 
 /obj/machinery/computer/bank_machine/ui_data(mob/user)

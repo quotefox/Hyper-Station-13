@@ -1,8 +1,14 @@
+ /**
+  * tgui subsystem
+  *
+  * Contains all tgui state and subsystem code.
+ **/
+
+
 SUBSYSTEM_DEF(tgui)
 	name = "tgui"
 	wait = 9
 	flags = SS_NO_INIT
-	priority = FIRE_PRIORITY_TGUI
 	runlevels = RUNLEVEL_LOBBY | RUNLEVELS_DEFAULT
 
 	var/list/currentrun = list()
@@ -11,14 +17,13 @@ SUBSYSTEM_DEF(tgui)
 	var/basehtml // The HTML base used for all UIs.
 
 /datum/controller/subsystem/tgui/PreInit()
-	basehtml = file2text('tgui-next/packages/tgui/public/tgui-main.html')
+	basehtml = file2text('tgui/packages/tgui/public/tgui.html')
 
 /datum/controller/subsystem/tgui/Shutdown()
 	close_all_uis()
 
-/datum/controller/subsystem/tgui/stat_entry(msg)
-	msg = "P:[length(open_uis)]"
-	return ..()
+/datum/controller/subsystem/tgui/stat_entry()
+	..("P:[processing_uis.len]")
 
 /datum/controller/subsystem/tgui/fire(resumed = 0)
 	if (!resumed)
@@ -35,4 +40,3 @@ SUBSYSTEM_DEF(tgui)
 			processing_uis.Remove(ui)
 		if (MC_TICK_CHECK)
 			return
-

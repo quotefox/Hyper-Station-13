@@ -108,7 +108,9 @@
 	..()
 
 /datum/reagent/fermi/furranium/on_mob_life(mob/living/carbon/M)
-
+	if(M.client?.prefs.cit_toggles & NO_UWU) //if opted out of uwuspeak
+		holder.del_reagent(type)
+		return
 	switch(current_cycle)
 		if(1 to 9)
 			if(prob(20))

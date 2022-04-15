@@ -6,7 +6,7 @@
 
 //The suit itself
 /obj/item/clothing/under/syclothing
-	name = "SYTech Nanoweave suit"
+	name = "SynTech Nanoweave suit"
 	desc = "A leading-grade suit developed by SYTech, with an internal dampening field to lessen accidents at micro scales. This one seems to be more skimpy and developed for bedroom-play, though."
 	icon = 'hyperstation/icons/obj/clothing/uniforms.dmi'
 	icon_state = "syclothing"
@@ -61,7 +61,7 @@
 
 //The cap
 /obj/item/clothing/head/sycap
-	name = "SYTech Nanoweave cap"
+	name = "SynTech Nanoweave cap"
 	desc = "A piece of clothing for a SYTech suit, allowing for extended control and breathability at micro scales via amplified hardlight respiration. This one seems to be modeled like a dominatrix cap, however."
 	icon = 'hyperstation/icons/obj/clothing/head.dmi'
 	icon_state = "sycap"
@@ -112,7 +112,7 @@
 
 //The visor
 /obj/item/clothing/glasses/hud/toggle/syvisor
-	name = "SYTech Analysis Visor"
+	name = "SynTech Analysis Visor"
 	desc = "A high-tech visor developed for SYTech suits, for helping internal processes lead augment decisions. This one looks like a pair of darkened sunglasses."
 	icon = 'hyperstation/icons/obj/clothing/glasses.dmi'
 	icon_state = "syvisor"
@@ -161,7 +161,7 @@
 
 //Shoes
 /obj/item/clothing/shoes/syshoes
-	name = "SYTech Nanoweave platform heels"
+	name = "SynTech Nanoweave platform heels"
 	desc = "A complimentary piece of SYTech apparel for gravity-altering applications. It even allows you to walk up walls! This pair takes on the appearance of skimpy, thigh-high latex boots with stilletos."
 	icon_state = "syshoes"
 	item_state = "syshoes"
@@ -174,7 +174,7 @@
 
 //Gloves
 /obj/item/clothing/gloves/sygloves
-	name = "SYTech Nanoweave sleeves"
+	name = "SynTech Nanoweave sleeves"
 	desc = "A pair of enhanced sleeves, developed by SYTech. These allow remote and psionic levels of manipulation to the electrical currents inside living beings, or objects. Use with caution!"
 	icon_state = "sygloves"
 	item_state = "sygloves"

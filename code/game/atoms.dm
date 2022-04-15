@@ -342,6 +342,25 @@
 				. += "<span class='danger'>It's empty.</span>"
 	SEND_SIGNAL(src, COMSIG_PARENT_EXAMINE, user, .)
 
+
+
+//////////////////////////////////////////////////////////////
+	//Examine Tab stuff - Hyperstation
+	var/examineTabOutput = ""
+	examineTabOutput = "<center>"
+	examineTabOutput += "[icon2html(icon, world, icon_state)]"
+	examineTabOutput += " [url_encode(name)]" //url_encode for safty!
+	examineTabOutput += "</center>"
+	examineTabOutput += "<br>[url_encode(desc)]"
+	user.client << output(examineTabOutput, "statbrowser:update_examine") //open the examine window
+	user.client << output(null, "statbrowser:create_mobexamine") //open the examine window
+
+
+
+
+
+
+//////////////////////////////////////////////////////////
 /// Updates the icon of the atom
 /atom/proc/update_icon()
 	// I expect we're going to need more return flags and options in this proc

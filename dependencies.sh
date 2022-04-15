@@ -16,5 +16,5 @@ export RUST_G_VERSION=0.4.2
 #bsql git tag
 export BSQL_VERSION=v1.4.0.0
 
-#node version
-export NODE_VERSION=8
+#node version (for tgui)
+export NODE_VERSION=12

@@ -47,14 +47,14 @@
 		holder.update_icon()
 	return
 
-/obj/item/assembly/signaler/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/ui_state/state = GLOB.default_state)
+/obj/item/assembly/signaler/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = 0, datum/tgui/master_ui = null, datum/tgui_state/state = GLOB.tgui_default_state)
 	if(!is_secured(user))
 		return
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		var/ui_width = 280
 		var/ui_height = 132
-		ui = new(user, src, ui_key, "signaler", name, ui_width, ui_height, master_ui, state)
+		ui = new(user, src, ui_key, "Signaler", name, ui_width, ui_height, master_ui, state)
 		ui.open()
 
 /obj/item/assembly/signaler/ui_data(mob/user)

@@ -285,3 +285,7 @@
 #define HUMAN_CARRY_SLOWDOWN 0
 
 #define TYPING_INDICATOR_TIMEOUT 10 MINUTES
+
+//Gremlins
+#define NPC_TAMPER_ACT_FORGET 1 //Don't try to tamper with this again
+#define NPC_TAMPER_ACT_NOMSG  2 //Don't produce a visible message

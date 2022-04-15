@@ -213,10 +213,10 @@
 	return UI_CLOSE
 
 /datum/wires/ui_interact(mob/user, ui_key = "wires", datum/tgui/ui = null, force_open = FALSE, \
-							datum/tgui/master_ui = null, datum/ui_state/state = GLOB.physical_state)
+							datum/tgui/master_ui = null, datum/tgui_state/state = GLOB.tgui_physical_state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "wires", "[holder.name] Wires", 350, 150 + wires.len * 30, master_ui, state)
+		ui = new(user, src, ui_key, "Wires", "[holder.name] Wires", 350, 150 + wires.len * 30, master_ui, state)
 		ui.open()
 
 /datum/wires/ui_data(mob/user)
@@ -295,3 +295,15 @@
 						to_chat(L, "<span class='warning'>You need an attachable assembly!</span>")
 
 #undef MAXIMUM_EMP_WIRES
+
+//gremlins
+/datum/wires/proc/npc_tamper(mob/living/L)
+	if(!wires.len)
+		return
+
+	var/wire_to_screw = pick(wires)
+
+	if(is_color_cut(wire_to_screw) || prob(50)) //CutWireColour() proc handles both cutting and mending wires. If the wire is already cut, always mend it back. Otherwise, 50% to cut it and 50% to pulse it
+		cut(wire_to_screw)
+	else
+		pulse(wire_to_screw, L)
