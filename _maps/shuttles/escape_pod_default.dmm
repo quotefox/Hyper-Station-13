@@ -44,7 +44,8 @@
 	dir = 1
 	},
 /obj/machinery/computer/shuttle/pod{
-	pixel_x = -32
+	dir = 4;
+	pixel_x = -19
 	},
 /obj/item/radio/intercom{
 	pixel_x = 26
@@ -68,7 +69,8 @@
 	dir = 1
 	},
 /obj/item/storage/pod{
-	pixel_x = 31
+	dir = 8;
+	pixel_x = 30
 	},
 /obj/machinery/light{
 	dir = 8

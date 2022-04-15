@@ -3321,6 +3321,10 @@
 	icon_state = "floor_trim"
 	},
 /area/engine/atmos)
+"aoU" = (
+/obj/item/clothing/head/cone,
+/turf/open/floor/plasteel/dark/layenia,
+/area/layenia/cloudlayer)
 "apl" = (
 /turf/open/floor/plasteel/stairs/left,
 /area/security/prison)
@@ -5015,10 +5019,7 @@
 /turf/open/floor/plasteel/dark,
 /area/maintenance/disposal/incinerator)
 "aGq" = (
-/turf/open/floor/wood{
-	icon_state = "wood_parquet";
-	name = "parquet"
-	},
+/turf/open/floor/carpet/blue,
 /area/medical/psych/rec)
 "aGQ" = (
 /obj/item/twohanded/required/kirbyplants/random,
@@ -6656,25 +6657,12 @@
 /turf/open/floor/plating,
 /area/chapel/main)
 "aYF" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 4
+/turf/open/floor/plasteel{
+	dir = 4;
+	icon_plating = "floor";
+	icon_state = "floor_whole"
 	},
-/obj/effect/turf_decal/loading_area{
-	dir = 6;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/obj/effect/turf_decal/loading_area{
-	dir = 8;
-	icon_state = "steel_panel";
-	name = "steel pannel"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 6
-	},
-/turf/open/floor/plasteel/dark/layenia,
-/area/layenia/cloudlayer)
+/area/engine/break_room)
 "aYP" = (
 /obj/machinery/light{
 	dir = 8;
@@ -7325,6 +7313,14 @@
 /obj/machinery/atmospherics/pipe/manifold/general/hidden,
 /turf/closed/wall/r_wall,
 /area/maintenance/disposal/incinerator)
+"bgn" = (
+/obj/structure/chair/sofachair{
+	dir = 4
+	},
+/turf/open/floor/carpet/blue,
+/area/medical/psych/roomA{
+	name = "Psychology Dorm A"
+	})
 "bgo" = (
 /obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plating/asteroid/layenia,
@@ -9908,6 +9904,25 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/fore)
+"bFI" = (
+/obj/structure/railing,
+/obj/structure/railing{
+	dir = 8
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 9;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark/layenia,
+/area/layenia/cloudlayer)
 "bFS" = (
 /obj/structure/chair/sofa{
 	dir = 4
@@ -10261,6 +10276,10 @@
 	dir = 1;
 	icon_state = "drain";
 	name = "drain"
+	},
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-26";
+	pixel_y = 20
 	},
 /turf/open/floor/plasteel,
 /area/artatrium)
@@ -11601,13 +11620,12 @@
 /area/maintenance/fore)
 "ccE" = (
 /obj/effect/turf_decal/stripes/line{
-	dir = 4
+	dir = 1
 	},
-/obj/effect/turf_decal/loading_area{
-	dir = 1;
-	icon_state = "trim";
-	name = "trim"
+/obj/effect/turf_decal/stripes/red/line{
+	dir = 1
 	},
+/obj/effect/turf_decal/caution,
 /turf/open/floor/plating/layenia,
 /area/layenia/cloudlayer)
 "cda" = (
@@ -11912,7 +11930,9 @@
 /area/library)
 "cfq" = (
 /turf/closed/wall/r_wall,
-/area/medical/psych/roomB)
+/area/medical/psych/roomB{
+	name = "Psychology Dorm B"
+	})
 "cft" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 10
@@ -15521,7 +15541,9 @@
 	icon_state = "wood_parquet";
 	name = "parquet"
 	},
-/area/medical/psych/roomA)
+/area/medical/psych/roomA{
+	name = "Psychology Dorm A"
+	})
 "cYg" = (
 /obj/machinery/vending/kink,
 /turf/open/floor/plasteel{
@@ -15924,8 +15946,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/loading_area{
-	icon_state = "trim";
-	name = "trim"
+	dir = 4;
+	icon_state = "ledge_alt";
+	name = "ledge"
 	},
 /turf/open/floor/carpet/black,
 /area/crew_quarters/fitness)
@@ -16024,24 +16047,17 @@
 /turf/open/floor/plasteel,
 /area/engine/atmos)
 "dfC" = (
-/obj/structure/railing,
-/obj/structure/railing{
-	dir = 8
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
 	},
-/obj/effect/turf_decal/loading_area{
-	dir = 9;
-	icon_state = "steel_panel";
-	name = "steel pannel"
+/obj/structure/extinguisher_cabinet{
+	pixel_y = 30
 	},
-/obj/effect/turf_decal/loading_area{
-	icon_state = "steel_panel";
-	name = "steel pannel"
+/turf/open/floor/plasteel/white{
+	dir = 1;
+	icon_state = "plaswhite_plate"
 	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 10
-	},
-/turf/open/floor/plasteel/dark/layenia,
-/area/layenia/cloudlayer)
+/area/medical/psych/ward)
 "dfF" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible,
 /obj/machinery/atmospherics/components/binary/pump{
@@ -19870,6 +19886,19 @@
 	},
 /turf/open/floor/engine/n2,
 /area/engine/atmos)
+"dZR" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
+	},
+/turf/open/floor/wood,
+/area/hallway/primary/aft/upper)
 "dZW" = (
 /obj/structure/ladder,
 /turf/open/floor/plating,
@@ -20368,11 +20397,6 @@
 /area/medical/psych/rec)
 "efo" = (
 /obj/structure/disposalpipe/segment,
-/obj/effect/turf_decal/loading_area{
-	dir = 1;
-	icon_state = "trim";
-	name = "trim"
-	},
 /turf/open/floor/plating/layenia,
 /area/layenia/cloudlayer)
 "efA" = (
@@ -25453,6 +25477,14 @@
 	icon_state = "floor_plate"
 	},
 /area/engine/break_room)
+"fcp" = (
+/obj/structure/chair/sofachair{
+	dir = 4
+	},
+/turf/open/floor/carpet/blue,
+/area/medical/psych/roomB{
+	name = "Psychology Dorm B"
+	})
 "fcz" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -27190,6 +27222,22 @@
 /obj/structure/closet/crate,
 /turf/open/floor/plasteel,
 /area/engine/break_room)
+"frB" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/firealarm{
+	layer = 4;
+	pixel_y = 24
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole_alt"
+	},
+/area/science/research)
 "frD" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 5;
@@ -31615,8 +31663,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/loading_area{
-	icon_state = "trim";
-	name = "trim"
+	dir = 8;
+	icon_state = "ledge_alt";
+	name = "ledge"
 	},
 /turf/open/floor/carpet/black,
 /area/crew_quarters/fitness)
@@ -36002,7 +36051,9 @@
 	icon_state = "wood_parquet";
 	name = "parquet"
 	},
-/area/medical/psych/roomB)
+/area/medical/psych/roomB{
+	name = "Psychology Dorm B"
+	})
 "hcI" = (
 /obj/structure/chair/sofachair{
 	dir = 8
@@ -39784,7 +39835,11 @@
 /obj/machinery/airalarm{
 	pixel_y = 23
 	},
-/turf/open/floor/plasteel,
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole"
+	},
 /area/engine/break_room)
 "hKh" = (
 /obj/effect/turf_decal/tile/red{
@@ -39916,8 +39971,16 @@
 "hLn" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
+/obj/machinery/button/door{
+	id = "psychologydorm1";
+	name = "Dorm A Shutters Control";
+	pixel_x = 25;
+	req_access_txt = "26"
+	},
 /turf/open/floor/carpet/blue,
-/area/medical/psych/roomA)
+/area/medical/psych/roomA{
+	name = "Psychology Dorm A"
+	})
 "hLx" = (
 /obj/effect/baseturf_helper/asteroid/layenia,
 /turf/closed/wall,
@@ -42567,7 +42630,9 @@
 	pixel_y = -1
 	},
 /turf/open/floor/carpet/blue,
-/area/medical/psych/roomA)
+/area/medical/psych/roomA{
+	name = "Psychology Dorm A"
+	})
 "ily" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
@@ -48810,7 +48875,9 @@
 /turf/open/floor/plasteel/white{
 	icon_state = "plaswhite_traction_whole"
 	},
-/area/medical/psych/roomB)
+/area/medical/psych/roomB{
+	name = "Psychology Dorm B"
+	})
 "jpA" = (
 /obj/structure/chair/office/dark{
 	dir = 8
@@ -49149,6 +49216,14 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/genetics)
+"jsF" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/red/line,
+/obj/effect/turf_decal/caution{
+	dir = 1
+	},
+/turf/open/floor/plating/layenia,
+/area/layenia/cloudlayer)
 "jsM" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable{
@@ -51160,7 +51235,9 @@
 	dir = 8
 	},
 /obj/structure/table,
-/obj/structure/bedsheetbin,
+/obj/structure/bedsheetbin{
+	pixel_y = 2
+	},
 /obj/machinery/status_display{
 	pixel_y = 26
 	},
@@ -53938,8 +54015,16 @@
 "kmG" = (
 /obj/structure/bed,
 /obj/item/bedsheet/medical,
+/obj/machinery/button/door{
+	id = "psychologydorm2";
+	name = "Dorm B Shutters Control";
+	pixel_x = 25;
+	req_access_txt = "26"
+	},
 /turf/open/floor/carpet/blue,
-/area/medical/psych/roomB)
+/area/medical/psych/roomB{
+	name = "Psychology Dorm B"
+	})
 "kmS" = (
 /obj/structure/table/wood,
 /obj/item/pen,
@@ -56591,7 +56676,9 @@
 /area/crew_quarters/kitchen)
 "kKn" = (
 /turf/closed/wall,
-/area/medical/psych/roomA)
+/area/medical/psych/roomA{
+	name = "Psychology Dorm A"
+	})
 "kKp" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -57035,7 +57122,9 @@
 	icon_state = "wood_parquet";
 	name = "parquet"
 	},
-/area/medical/psych/roomA)
+/area/medical/psych/roomA{
+	name = "Psychology Dorm A"
+	})
 "kOV" = (
 /obj/machinery/hydroponics/soil,
 /obj/machinery/light{
@@ -57719,7 +57808,9 @@
 	pixel_x = -22
 	},
 /turf/open/floor/carpet/blue,
-/area/medical/psych/roomA)
+/area/medical/psych/roomA{
+	name = "Psychology Dorm A"
+	})
 "kWe" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plating/asteroid/layenia/garden,
@@ -57987,7 +58078,9 @@
 /area/security/brig)
 "kYq" = (
 /turf/open/floor/carpet/blue,
-/area/medical/psych/roomB)
+/area/medical/psych/roomB{
+	name = "Psychology Dorm B"
+	})
 "kYv" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -67549,7 +67642,7 @@
 /turf/open/floor/plating,
 /area/maintenance/department/security)
 "mPL" = (
-/turf/open/floor/plasteel/white,
+/turf/open/floor/carpet/blue,
 /area/medical/psych/ward)
 "mPV" = (
 /obj/structure/ladder,
@@ -70510,6 +70603,10 @@
 	icon_state = "drain_corner";
 	name = "drain"
 	},
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-30";
+	pixel_y = 20
+	},
 /turf/open/floor/plasteel,
 /area/artatrium)
 "npM" = (
@@ -72419,6 +72516,10 @@
 	icon_state = "drain_corner";
 	name = "drain"
 	},
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-18";
+	pixel_y = 10
+	},
 /turf/open/floor/plasteel,
 /area/artatrium)
 "nHM" = (
@@ -72469,6 +72570,10 @@
 /obj/effect/turf_decal/loading_area{
 	icon_state = "drain";
 	name = "drain"
+	},
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-29";
+	pixel_y = 10
 	},
 /turf/open/floor/plasteel,
 /area/artatrium)
@@ -73989,7 +74094,9 @@
 	icon_state = "wood_parquet";
 	name = "parquet"
 	},
-/area/medical/psych/roomA)
+/area/medical/psych/roomA{
+	name = "Psychology Dorm A"
+	})
 "nYy" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 6
@@ -77856,6 +77963,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark/layenia{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -78761,7 +78871,9 @@
 /area/hallway/primary/aft/upper)
 "oKc" = (
 /turf/closed/wall,
-/area/medical/psych/roomB)
+/area/medical/psych/roomB{
+	name = "Psychology Dorm B"
+	})
 "oKe" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	dir = 1;
@@ -86921,12 +87033,17 @@
 	},
 /area/quartermaster/miningdock)
 "qdd" = (
-/obj/effect/turf_decal/loading_area{
-	icon_state = "steel_panel";
-	name = "steel pannel"
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
 	},
-/obj/effect/turf_decal/stripes/corner,
-/turf/open/floor/plasteel/dark/layenia,
+/obj/structure/railing{
+	dir = 4
+	},
+/obj/item/clothing/head/cone,
+/turf/open/floor/plasteel/dark/layenia{
+	dir = 4;
+	icon_state = "darkfull_plate"
+	},
 /area/layenia/cloudlayer)
 "qdf" = (
 /obj/effect/turf_decal/loading_area{
@@ -90198,7 +90315,9 @@
 	icon_state = "wood_parquet";
 	name = "parquet"
 	},
-/area/medical/psych/roomB)
+/area/medical/psych/roomB{
+	name = "Psychology Dorm B"
+	})
 "qIr" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 10
@@ -92937,6 +93056,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
+/obj/item/clothing/head/cone,
 /turf/open/floor/plasteel/dark/layenia{
 	dir = 8;
 	icon_state = "darkfull_plate"
@@ -96248,8 +96368,8 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
+/obj/machinery/firealarm{
+	pixel_y = -28
 	},
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -101311,9 +101431,6 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/machinery/door/firedoor{
-	dir = 8
-	},
 /turf/open/floor/plasteel{
 	dir = 8;
 	icon_plating = "floor";
@@ -103923,8 +104040,9 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/loading_area{
-	icon_state = "trim";
-	name = "trim"
+	dir = 1;
+	icon_state = "ledge_alt";
+	name = "ledge"
 	},
 /turf/open/floor/carpet/black,
 /area/crew_quarters/fitness)
@@ -104499,17 +104617,13 @@
 	},
 /area/security/prison)
 "sTE" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 1;
-	icon_state = "drain";
-	name = "drain"
+/obj/structure/table/wood,
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-18";
+	pixel_y = 10
 	},
-/obj/machinery/firealarm{
-	layer = 4;
-	pixel_y = 24
-	},
-/turf/open/floor/plasteel/white/corner,
-/area/science/research)
+/turf/open/floor/carpet,
+/area/artatrium)
 "sTF" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -105266,8 +105380,13 @@
 "sZz" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "psychologydorm2"
+	},
 /turf/open/floor/plating,
-/area/medical/psych/roomB)
+/area/medical/psych/roomB{
+	name = "Psychology Dorm B"
+	})
 "sZC" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
@@ -110636,10 +110755,7 @@
 "tRC" = (
 /obj/structure/table/wood,
 /obj/item/stack/sheet/micro_bricks/twenty,
-/turf/open/floor/wood{
-	icon_state = "wood_parquet";
-	name = "parquet"
-	},
+/turf/open/floor/carpet/blue,
 /area/medical/psych/rec)
 "tRG" = (
 /obj/structure/closet/secure_closet/personal/patient,
@@ -114436,7 +114552,9 @@
 	pixel_x = -22
 	},
 /turf/open/floor/carpet/blue,
-/area/medical/psych/roomB)
+/area/medical/psych/roomB{
+	name = "Psychology Dorm B"
+	})
 "uyk" = (
 /obj/structure/cable{
 	icon_state = "1-2"
@@ -114524,10 +114642,7 @@
 "uyX" = (
 /obj/structure/table/wood,
 /obj/item/canvas/twentythreeXtwentythree,
-/turf/open/floor/wood{
-	icon_state = "wood_parquet";
-	name = "parquet"
-	},
+/turf/open/floor/carpet/blue,
 /area/medical/psych/rec)
 "uzc" = (
 /obj/effect/turf_decal/loading_area{
@@ -114671,7 +114786,9 @@
 /turf/open/floor/plasteel/white{
 	icon_state = "plaswhite_traction_whole"
 	},
-/area/medical/psych/roomA)
+/area/medical/psych/roomA{
+	name = "Psychology Dorm A"
+	})
 "uzT" = (
 /obj/machinery/light{
 	dir = 8;
@@ -116469,8 +116586,8 @@
 /area/maintenance/port/aft)
 "uRr" = (
 /obj/item/storage/secure/safe{
-	pixel_x = 35;
-	pixel_y = 5
+	dir = 8;
+	pixel_x = 32
 	},
 /obj/effect/turf_decal/loading_area{
 	color = "#55391A";
@@ -118388,10 +118505,8 @@
 	},
 /area/medical/medbay/aft)
 "vhq" = (
-/obj/effect/turf_decal/loading_area{
-	dir = 1;
-	icon_state = "trim";
-	name = "trim"
+/obj/effect/turf_decal/stripes/corner{
+	dir = 2
 	},
 /turf/open/floor/plating/layenia,
 /area/layenia/cloudlayer)
@@ -119133,7 +119248,9 @@
 	pixel_y = -1
 	},
 /turf/open/floor/carpet/blue,
-/area/medical/psych/roomB)
+/area/medical/psych/roomB{
+	name = "Psychology Dorm B"
+	})
 "vnK" = (
 /obj/structure/girder,
 /obj/structure/lattice/catwalk,
@@ -123470,6 +123587,17 @@
 	icon_state = "platingdmg3"
 	},
 /area/crew_quarters/dorms/upper)
+"vYz" = (
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole_alt"
+	},
+/area/science/research)
 "vYB" = (
 /obj/machinery/light{
 	dir = 8;
@@ -124452,10 +124580,6 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/aft/upper)
 "whR" = (
-/obj/machinery/light{
-	dir = 8;
-	pixel_x = -7
-	},
 /turf/open/floor/wood{
 	icon_state = "wood-broken"
 	},
@@ -125588,6 +125712,9 @@
 "wro" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
+	},
+/obj/effect/turf_decal/caution/stand_clear{
+	dir = 4
 	},
 /turf/open/floor/plasteel/dark/layenia{
 	icon_state = "darkfull_whole_alt"
@@ -126919,7 +127046,9 @@
 /area/security/processing)
 "wDy" = (
 /turf/open/floor/carpet/blue,
-/area/medical/psych/roomA)
+/area/medical/psych/roomA{
+	name = "Psychology Dorm A"
+	})
 "wDD" = (
 /obj/machinery/atmospherics/pipe/manifold/yellow/visible{
 	dir = 8
@@ -129846,8 +129975,13 @@
 "xeE" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "psychologydorm1"
+	},
 /turf/open/floor/plating,
-/area/medical/psych/roomA)
+/area/medical/psych/roomA{
+	name = "Psychology Dorm A"
+	})
 "xeG" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
@@ -130515,7 +130649,9 @@
 	icon_state = "wood_parquet";
 	name = "parquet"
 	},
-/area/medical/psych/roomB)
+/area/medical/psych/roomB{
+	name = "Psychology Dorm B"
+	})
 "xnv" = (
 /obj/machinery/light{
 	dir = 1;
@@ -132764,7 +132900,9 @@
 /area/medical/chemistry)
 "xHy" = (
 /turf/closed/wall/r_wall,
-/area/medical/psych/roomA)
+/area/medical/psych/roomA{
+	name = "Psychology Dorm A"
+	})
 "xHA" = (
 /obj/machinery/doorButtons/access_button{
 	idDoor = "xeno_airlock_interior";
@@ -133384,7 +133522,9 @@
 /area/security/courtroom)
 "xNY" = (
 /obj/structure/table/wood,
-/obj/structure/bedsheetbin,
+/obj/structure/bedsheetbin{
+	pixel_y = 2
+	},
 /obj/structure/mirror{
 	pixel_y = 30
 	},
@@ -134972,10 +135112,7 @@
 	pixel_y = 4
 	},
 /obj/item/toy/crayon/spraycan,
-/turf/open/floor/wood{
-	icon_state = "wood_parquet";
-	name = "parquet"
-	},
+/turf/open/floor/carpet/blue,
 /area/medical/psych/rec)
 "ybU" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -169325,7 +169462,7 @@ tBc
 ann
 ydt
 ykC
-ykC
+sTE
 ykC
 rDk
 iMm
@@ -179806,7 +179943,7 @@ eNV
 tEK
 fxS
 fAx
-fcd
+aYF
 dsZ
 tEK
 tEK
@@ -179875,7 +180012,7 @@ gPq
 gTW
 gPq
 xfU
-sTE
+xUX
 wdg
 xfU
 gPq
@@ -180132,8 +180269,8 @@ iEg
 iEg
 iEg
 dxf
-ssP
-rDH
+frB
+vYz
 dxf
 iEg
 iEg
@@ -234147,9 +234284,9 @@ dJi
 dJi
 xbo
 dJi
-dJi
-dfC
-vhq
+bFI
+pqe
+dKM
 lIQ
 lJV
 ePF
@@ -234404,9 +234541,9 @@ xAr
 xAr
 xAr
 cda
-qTp
 wIl
-vhq
+lIQ
+lIQ
 lIQ
 lJV
 ePF
@@ -234661,8 +234798,8 @@ xAr
 npq
 xAr
 qTp
-qdd
-aYF
+wIl
+lIQ
 vhq
 pJd
 esY
@@ -234919,7 +235056,7 @@ ejo
 qTp
 ejo
 wIl
-vhq
+lIQ
 lJV
 ePF
 ePF
@@ -235433,7 +235570,7 @@ mKt
 xAr
 mKt
 pAu
-ccE
+pJd
 esY
 ePF
 ePF
@@ -241584,7 +241721,7 @@ pHW
 kKn
 kOS
 kWa
-wDy
+bgn
 xeE
 xnL
 cKO
@@ -242084,7 +242221,7 @@ eOa
 eOa
 eOa
 eOa
-sAz
+dfC
 xSz
 vat
 lOu
@@ -242612,7 +242749,7 @@ qns
 oKc
 qIo
 uyc
-kYq
+fcp
 sZz
 xnL
 cKO
@@ -243632,13 +243769,13 @@ gIR
 wLs
 wLs
 kmZ
+npq
 xAr
 xAr
 xAr
 xAr
 xAr
-xAr
-xAr
+npq
 xAr
 xAr
 cda
@@ -243882,20 +244019,20 @@ xep
 xep
 eYs
 xep
+cda
 xAr
 xAr
 xAr
+npq
 xAr
-xAr
-xAr
-xAr
-xAr
+cda
 xAr
 xAr
 kmZ
 xAr
-kmZ
-kmZ
+xAr
+xAr
+xAr
 xAr
 xAr
 cda
@@ -244140,15 +244277,15 @@ xep
 xep
 xep
 xAr
+npq
+cda
 xAr
 xAr
 xAr
 xAr
+npq
 xAr
-xAr
-xAr
-xAr
-xAr
+aoU
 kmZ
 xAr
 kmZ
@@ -244397,7 +244534,7 @@ shy
 shy
 shy
 oEZ
-shy
+qdd
 shy
 shy
 shy
@@ -244410,7 +244547,7 @@ oEZ
 shy
 shy
 shy
-shy
+qdd
 oEZ
 seK
 yhk
@@ -244904,7 +245041,7 @@ ePF
 ePF
 ePF
 ePF
-lqA
+ccE
 xDq
 lIQ
 lIQ
@@ -244926,7 +245063,7 @@ lIQ
 lIQ
 lIQ
 xDq
-fMI
+jsF
 ePF
 ePF
 ePF
@@ -245692,10 +245829,10 @@ xep
 xep
 xep
 xep
-xep
-xep
-xep
-xep
+wPM
+wPM
+wPM
+wPM
 xep
 mVW
 ePF
@@ -245948,7 +246085,7 @@ eYs
 wNm
 tTI
 pCa
-oTO
+dZR
 whR
 ruB
 ruB
