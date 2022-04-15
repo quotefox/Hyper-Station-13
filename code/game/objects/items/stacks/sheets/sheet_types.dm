@@ -478,8 +478,8 @@ GLOBAL_LIST_INIT(cardboard_recipes, list ( \
 	null, \
 	new/datum/stack_recipe("colored brown", /obj/item/storage/box/brown), \
 	new/datum/stack_recipe("colored green", /obj/item/storage/box/green), \
-	new/datum/stack_recipe("colored red", /obj/item/storage/box/blue), \
-	new/datum/stack_recipe("colored blue", /obj/item/storage/box/red), \
+	new/datum/stack_recipe("colored red", /obj/item/storage/box/red), \
+	new/datum/stack_recipe("colored blue", /obj/item/storage/box/blue), \
 	new/datum/stack_recipe("colored yellow", /obj/item/storage/box/yellow), \
 	new/datum/stack_recipe("colored pink", /obj/item/storage/box/pink), \
 	new/datum/stack_recipe("colored purple", /obj/item/storage/box/purple), \
