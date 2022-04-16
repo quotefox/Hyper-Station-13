@@ -64,3 +64,15 @@
 	desc = "A low tech hull for Layenia and space-flight"
 	icon = 'hyperstation/icons/turf/walls/custompod.dmi'
 	icon_state = "amogus"
+
+/turf/closed/wall/mineral/titanium/custom/departures
+	name = "\improper pod wall"
+	desc = "A low tech hull for Layenia and space-flight"
+	icon = 'hyperstation/icons/turf/walls/customdepartures.dmi'
+	icon_state = "amogus"
+
+/turf/closed/wall/mineral/titanium/custom/window/departures
+	name = "\improper pod wall"
+	desc = "A low tech hull for Layenia and space-flight"
+	icon = 'hyperstation/icons/turf/walls/customdepartures.dmi'
+	icon_state = "amogus"
