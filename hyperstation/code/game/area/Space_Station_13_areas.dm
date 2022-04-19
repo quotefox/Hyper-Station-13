@@ -352,7 +352,7 @@
 	icon_state = "armory"
 
 /area/security/detectives_office/upper
-	name = Upper "Detective's Office"
+	name = "Detective's Office"
 	icon_state = "detective"
 	ambientsounds = list('sound/ambience/ambidet1.ogg','sound/ambience/ambidet2.ogg')
 
@@ -428,7 +428,7 @@
 /area/storage/B
 	name = "Storage Office B"
 	icon_state = "storage"
-	
+
 /area/storage/C
 	name = "Storage Office C"
 	icon_state = "storage"
