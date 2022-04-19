@@ -264,6 +264,10 @@
 	name = "Theatre Maintenance"
 	icon_state = "maintcentral"
 
+/area/maintenance/theatre/upper
+	name = "Upper Theatre Maintenance"
+	icon_state = "maintcentral"
+
 //Solar Maint
 
 /area/maintenance/solars/upper
