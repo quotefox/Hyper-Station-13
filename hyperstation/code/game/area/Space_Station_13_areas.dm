@@ -259,6 +259,11 @@
 	name = "Upper Incinerator"
 	icon_state = "disposal"
 
+//Misc Maint
+/area/maintenance/theatre
+	name = "Theatre Maintenance"
+	icon_state = "maintcentral"
+
 //Solar Maint
 
 /area/maintenance/solars/upper
