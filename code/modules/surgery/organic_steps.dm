@@ -1,8 +1,8 @@
 //make incision
 /datum/surgery_step/incise
 	name = "make incision"
-	implements = list(TOOL_SCALPEL = 100, /obj/item/melee/transforming/energy/sword = 75, /obj/item/kitchen/knife = 65,
-		/obj/item/shard = 45, /obj/item = 30) // 30% success with any sharp item.
+	implements = list(TOOL_SCALPEL = 100, /obj/item/melee/transforming/energy/sword = 85, /obj/item/kitchen/knife = 75,
+		/obj/item/shard = 65, /obj/item = 40) // 40% success with any sharp item. (Hyper change, raised chances with basic items, because if user is awake it has a higher chance to fail)
 	time = 16
 
 /datum/surgery_step/incise/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)

@@ -16,7 +16,7 @@
 	var/widescreenpref = TRUE
 	var/autostand = TRUE
 	var/auto_ooc = FALSE
-	var/lewdchem = TRUE
+	//var/lewdchem = TRUE replaced with new prefs
 
 	//vore prefs
 	var/toggleeatingnoise = TRUE
@@ -28,7 +28,7 @@
 	var/noncon = FALSE  //Definitely want this off by default
 
 	// stuff that was in base
-	max_save_slots = 20
+	max_save_slots = 30
 
 
 /datum/preferences/New(client/C)
@@ -58,6 +58,6 @@ datum/preferences/copy_to(mob/living/carbon/human/character, icon_updates = 1)
 	character.give_genitals(TRUE)
 	character.ooc_text = features["ooc_text"] //Let's update their flavor_text at least initially
 	character.canbearoused = arousable
-	character.client?.prefs.lewdchem = lewdchem
+	//character.client?.prefs.lewdchem = lewdchem
 	if(icon_updates)
 		character.update_genitals()

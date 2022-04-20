@@ -23,6 +23,10 @@
 		return
 	var/mob/living/carbon/human/human_target = target
 
+	var/new_hair_color = input(usr, "Choose a base hair color:", "Character Preference","#"+human_target.hair_color) as color|null
+	if(!new_hair_color)
+		return
+
 	var/new_grad_style = input(usr, "Choose a color pattern:", "Character Preference")  as null|anything in GLOB.hair_gradients_list
 	if(!new_grad_style)
 		return
@@ -31,6 +35,7 @@
 	if(!new_grad_color)
 		return
 
+	human_target.hair_color = sanitize_hexcolor(new_hair_color)
 	human_target.grad_style = new_grad_style
 	human_target.grad_color = sanitize_hexcolor(new_grad_color)
 	to_chat(human_target, "<span class='notice'>You start applying the hair dye...</span>")

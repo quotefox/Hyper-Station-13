@@ -12,17 +12,18 @@
 	glass_name = "chalice of semen"
 	glass_desc = "In the Sumerian mythology, Enki - the God of water, was believed to have created the Tigris and Euphrates rivers by masturbating and ejaculating into their empty riverbeds."
 
-/datum/reagent/consumable/semen/reaction_turf(turf/T, reac_volume)
+/datum/reagent/consumable/semen/reaction_turf(turf/open/T, reac_volume)
 	if(!istype(T))
 		return
 	if(reac_volume < 3)
 		return
-
 	var/obj/effect/decal/cleanable/semen/S = locate() in T
 	if(!S)
 		S = new(T)
 	if(data["blood_DNA"])
 		S.add_blood_DNA(list(data["blood_DNA"] = data["blood_type"]))
+	if(SSevents.holidays && SSevents.holidays[APRIL_FOOLS])
+		T.MakeSlippery(TURF_WET_LUBE, 15 SECONDS, min(reac_volume * 2 SECONDS, 120))
 
 /obj/effect/decal/cleanable/semen
 	name = "semen"
@@ -87,17 +88,18 @@
 		blood_DNA |= F.blood_DNA
 	return ..()
 
-/datum/reagent/consumable/femcum/reaction_turf(turf/T, reac_volume)
+/datum/reagent/consumable/femcum/reaction_turf(turf/open/T, reac_volume)
 	if(!istype(T))
 		return
 	if(reac_volume < 3)
 		return
-
 	var/obj/effect/decal/cleanable/femcum/S = locate() in T
 	if(!S)
 		S = new(T)
 	if(data["blood_DNA"])
 		S.add_blood_DNA(list(data["blood_DNA"] = data["blood_type"]))
+	if(SSevents.holidays && SSevents.holidays[APRIL_FOOLS])
+		T.MakeSlippery(TURF_WET_LUBE, 15 SECONDS, min(reac_volume * 2 SECONDS, 120))
 
 /datum/reagent/consumable/milk/reaction_turf(turf/T, reac_volume)
 	if(!istype(T))
@@ -141,7 +143,7 @@
 	color = "#FFADFF"//PINK, rgb(255, 173, 255)
 
 /datum/reagent/drug/aphrodisiac/on_mob_life(mob/living/M)
-	if(M && M.canbearoused && !HAS_TRAIT(M, TRAIT_CROCRIN_IMMUNE))
+	if(M && M.canbearoused && !(M.client?.prefs.cit_toggles & NO_APHRO))
 		if(prob(33))
 			M.adjustArousalLoss(2)
 		if(prob(5))
@@ -162,7 +164,7 @@
 	overdose_threshold = 20
 
 /datum/reagent/drug/aphrodisiacplus/on_mob_life(mob/living/M)
-	if(M && M.canbearoused && !HAS_TRAIT(M, TRAIT_CROCRIN_IMMUNE))
+	if(M && M.canbearoused && !(M.client?.prefs.cit_toggles & NO_APHRO))
 		if(prob(33))
 			M.adjustArousalLoss(6)//not quite six times as powerful, but still considerably more powerful.
 		if(prob(5))
@@ -194,7 +196,7 @@
 	..()
 
 /datum/reagent/drug/aphrodisiacplus/overdose_process(mob/living/M)
-	if(M && M.canbearoused && !HAS_TRAIT(M, TRAIT_CROCRIN_IMMUNE) && prob(33))
+	if(M && M.canbearoused && !(M.client?.prefs.cit_toggles & NO_APHRO) && prob(33))
 		if(prob(5) && M.getArousalLoss() >= 100 && ishuman(M) && M.has_dna())
 			if(prob(5)) //Less spam
 				to_chat(M, "<span class='love'>Your libido is going haywire!</span>")

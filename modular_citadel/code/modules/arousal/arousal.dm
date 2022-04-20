@@ -238,7 +238,7 @@
 
 //These are various procs that we'll use later, split up for readability instead of having one, huge proc.
 //For all of these, we assume the arguments given are proper and have been checked beforehand.
-/mob/living/carbon/human/proc/mob_masturbate(obj/item/organ/genital/G, mb_time = 30) //Masturbation, keep it gender-neutral
+/mob/living/carbon/human/proc/mob_masturbate(obj/item/organ/genital/G, cover = FALSE, mb_time = 30) //Masturbation, keep it gender-neutral
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = null
 	var/condomed = 0
@@ -267,10 +267,36 @@
 		if(total_fluids > 5 &&!condomed &&!sounded)
 			fluid_source.reaction(src.loc, TOUCH, 1, 0)
 			fluid_source.clear_reagents()
-		if(!condomed &&!sounded)
+		if(!condomed && !sounded && !cover)
 			src.visible_message("<span class='love'>[src] orgasms, cumming[istype(src.loc, /turf/open/floor) ? " onto [src.loc]" : ""]!</span>", \
-							"<span class='userlove'>You cum[istype(src.loc, /turf/open/floor) ? " onto [src.loc]" : ""].</span>", \
-							"<span class='userlove'>You have relieved yourself.</span>")
+								"<span class='userlove'>You cum[istype(src.loc, /turf/open/floor) ? " onto [src.loc]" : ""].</span>", \
+								"<span class='userlove'>You have relieved yourself.</span>")
+
+		if(!condomed &&!sounded && cover)//For when you want to make a mess of yourself.
+			fluid_source.trans_to(src, total_fluids*G.fluid_transfer_factor)
+			total_fluids -= total_fluids*G.fluid_transfer_factor
+			if(total_fluids > 80) // now thats a big cum!
+				if(isliving(src))
+					var/mutable_appearance/cumoverlaylarge = mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi')
+					cumoverlaylarge.icon_state = "cum_large"
+					src.add_overlay(cumoverlaylarge)
+
+			if(total_fluids > 5)
+				fluid_source.reaction(src.loc, TOUCH, 1, 0)
+				var/mob/living/carbon/human/H = src
+				if(H && G.name == "penis")
+					H.cumdrip_rate += rand(5,10)
+			fluid_source.clear_reagents()
+			src.visible_message("<span class='love'>[src] climaxes over [p_their()] self, using [p_their()] [G.name]!</span>", \
+								"<span class='userlove'>You orgasm over yourself, using your [G.name].</span>", \
+								"<span class='userlove'>You have climaxed over something, using your [G.name].</span>")
+			if(isliving(src))
+				var/mutable_appearance/cumoverlay = mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi')
+				cumoverlay.icon_state = "cum_normal"
+				src.add_overlay(cumoverlay)
+			else
+				src.add_cum_overlay()
+		
 		if(condomed) //condomed
 			src.visible_message("<span class='love'>[src] orgasms, climaxing into [p_their()] condom </span>", \
 							"<span class='userlove'>You cum into your condom.</span>", \
@@ -611,6 +637,8 @@
 
 //Here's the main proc itself
 /mob/living/carbon/human/mob_climax(forced_climax=FALSE) //Forced is instead of the other proc, makes you cum if you have the tools for it, ignoring restraints
+	if(stat == DEAD) //corpses can't cum
+		return
 	if(mb_cd_timer > world.time)
 		if(!forced_climax) //Don't spam the message to the victim if forced to come too fast
 			to_chat(src, "<span class='warning'>You need to wait [DisplayTimeText((mb_cd_timer - world.time), TRUE)] before you can do that again!</span>")

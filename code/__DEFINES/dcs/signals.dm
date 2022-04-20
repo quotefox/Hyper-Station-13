@@ -736,6 +736,9 @@
 ///from datum/action/cyborg_small_sprite and sends when a cyborg changes modules
 #define COMSIG_CYBORG_MODULE_CHANGE "cyborg_module_change"
 
+// /datum/element/ventcrawling signals
+#define COMSIG_HANDLE_VENTCRAWL "handle_ventcrawl"							//when atom with ventcrawling element attempts to ventcrawl
+#define COMSIG_CHECK_VENTCRAWL "check_ventcrawl"							//to check an atom's ventcrawling element tier (if applicable)
 
 /* Attack signals. They should share the returned flags, to standardize the attack chain. */
 /// tool_act -> pre_attack -> target.attackby (item.attack) -> afterattack

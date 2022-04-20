@@ -558,9 +558,52 @@
 	item_state = "stoolbrass_bar"
 	origin_type = /obj/structure/chair/stool/bar/bronze
 
-/////////////////////////////////
-//End of Brass & Bronze stools!//
-/////////////////////////////////
+////////////////////////////////////////////////////
+
+//////////////////////////
+//	   Golden Seats  	//
+//////////////////////////
+/obj/structure/chair/throne
+	name = "throne"
+	desc = "A magnificent chair for the most magnificent people."
+	icon_state = "throne"
+	max_integrity = 250
+	buildstacktype = /obj/item/stack/sheet/mineral/gold
+	buildstackamount = 5
+	item_chair = null
+	color = "#ffffff"
+	var/mutable_appearance/armrest
+
+/obj/structure/chair/throne/proc/GetArmrest()
+	return mutable_appearance('icons/obj/chairs.dmi', "throne-arm")
+
+/obj/structure/chair/throne/Destroy()
+	QDEL_NULL(armrest)
+	return ..()
+
+/obj/structure/chair/throne/post_buckle_mob(mob/living/M)
+	. = ..()
+	update_armrest()
+
+/obj/structure/chair/throne/proc/update_armrest()
+	if(has_buckled_mobs())
+		add_overlay(armrest)
+	else
+		cut_overlay(armrest)
+
+/obj/structure/chair/throne/post_unbuckle_mob()
+	. = ..()
+	update_armrest()
+
+/obj/structure/chair/throne/Initialize()
+
+	armrest = GetArmrest()
+	armrest.layer = ABOVE_MOB_LAYER
+	return ..()
+
+
+////////////////////////////////////////////////////
+
 
 /obj/item/chair/stool/narsie_act()
 	return //sturdy enough to ignore a god

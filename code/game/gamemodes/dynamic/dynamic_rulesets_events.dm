@@ -166,6 +166,29 @@
 	occurances_max = 2
 	chaos_min = 2
 
+
+//////////////////////////////////////////////
+//                                          //
+//                CRY-STALS                 //
+//                                          //
+//////////////////////////////////////////////
+
+/datum/dynamic_ruleset/event/crystals
+	name = "Crystal Invasion"
+	typepath = /datum/round_event/crystalloid_entities
+	weight = 5
+	repeatable_weight_decrease = 1
+	cost = 3
+	enemy_roles = list("AI","Security Officer","Head of Security","Captain","Assistant","Scientist","Station Engineer")
+	required_enemies = list(3,2,2,2,2,1,1,1,0,0)
+	requirements = list(101,20,15,10,10,10,10,10,10,10)
+	high_population_requirement = 5
+	earliest_start = 30 MINUTES
+	repeatable = TRUE
+	occurances_max = 3
+	chaos_min = 1.0
+	map_whitelist = list("LayeniaStation.dmm")
+
 //////////////////////////////////////////////
 //                                          //
 //              CLOGGED VENTS               //
@@ -185,7 +208,7 @@
 	high_population_requirement = 5
 	repeatable = TRUE
 	//property_weights = list("chaos" = 1, "extended" = 2)
-	occurances_max = 2
+	occurances_max = 1
 	chaos_min = 1.2
 
 /datum/dynamic_ruleset/event/ventclog/ready()
@@ -705,9 +728,9 @@
 	high_population_requirement = 0
 	weight = 100
 	cost = 2
-	repeatable_weight_decrease = 1 //Slightly drop the weight each time it is called to keep the pool from getting too diluted as the round goes on.
+	repeatable_weight_decrease = 2 //Slightly drop the weight each time it is called to keep the pool from getting too diluted as the round goes on.
 	repeatable = TRUE
-	occurances_max = 200 //Our rounds can go for a WHILE
+	occurances_max = 100 //Our rounds can go for a WHILE
 
 /datum/dynamic_ruleset/event/disease_outbreak
 	name = "Disease Outbreak"
@@ -821,7 +844,7 @@
 	typepath = /datum/round_event/spontaneous_appendicitis
 	enemy_roles = list("Medical Doctor","Chief Medical Officer")
 	required_enemies = list(2,2,2,2,2,2,2,1,1,1)
-	requirements = list(5,5,5,5,5,5,5,5,0,0)
+	requirements = list(101,101,20,18,16,14,12,10,8,6)
 	high_population_requirement = 10
 	weight = 5
 	cost = 6

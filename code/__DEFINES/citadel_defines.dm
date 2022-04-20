@@ -132,7 +132,22 @@
 #define EATING_NOISES		(1<<1)
 #define DIGESTION_NOISES	(1<<2)
 
-#define TOGGLES_CITADEL (EATING_NOISES|DIGESTION_NOISES)
+#define BREAST_ENLARGEMENT	(1<<3)
+#define PENIS_ENLARGEMENT	(1<<4)
+#define ASS_ENLARGEMENT		(1<<5)
+#define FORCED_FEM			(1<<6)
+#define FORCED_MASC			(1<<7)
+#define HYPNO				(1<<8)
+#define NEVER_HYPNO			(1<<9)
+#define NO_APHRO			(1<<10)
+#define NO_ASS_SLAP			(1<<11)
+#define NO_AUTO_WAG			(1<<12)
+#define GENITAL_EXAMINE		(1<<13)
+#define VORE_EXAMINE		(1<<14)
+#define TRASH_FORCEFEED		(1<<15)
+#define NO_UWU				(1<<16)
+
+#define TOGGLES_CITADEL (EATING_NOISES|DIGESTION_NOISES|BREAST_ENLARGEMENT|PENIS_ENLARGEMENT)
 
 //component stuff
 #define COMSIG_COMBAT_TOGGLED "combatmode_toggled" //called by combat mode toggle on all equipped items. args: (mob/user, combatmode)
@@ -141,3 +156,7 @@
 
 //belly sound pref things
 #define NORMIE_HEARCHECK 4
+
+#define BORGBELLY_NONE 0
+#define BORGBELLY_RED 1
+#define BORGBELLY_GREEN 2

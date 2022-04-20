@@ -57,7 +57,6 @@
 		if(STAMINA)
 			return getStaminaLoss()
 
-
 /mob/living/proc/apply_damages(brute = 0, burn = 0, tox = 0, oxy = 0, clone = 0, def_zone = null, blocked = FALSE, stamina = 0, brain = 0)
 	if(blocked >= 100)
 		return 0
@@ -228,6 +227,9 @@
 	return
 
 /mob/living/proc/setStaminaLoss(amount, updating_stamina = TRUE, forced = FALSE)
+	return
+
+/mob/living/proc/adjustPainLoss(amount, updating_health = TRUE, forced = FALSE)
 	return
 
 // heal ONE external organ, organ gets randomly selected from damaged ones.

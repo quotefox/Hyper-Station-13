@@ -7,7 +7,7 @@
 	requires_ntnet = 0
 	available_on_ntnet = 0
 	available_on_syndinet = 1
-	tgui_id = "ntos_revelation"
+	tgui_id = "NtosRevelation"
 	ui_style = "syndicate"
 	ui_x = 400
 	ui_y = 250

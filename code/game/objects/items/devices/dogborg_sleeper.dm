@@ -11,7 +11,6 @@
 	var/min_health = -100
 	var/cleaning = FALSE
 	var/cleaning_cycles = 10
-	var/patient_laststat = null
 	var/list/injection_chems = list(/datum/reagent/medicine/antitoxin, /datum/reagent/medicine/epinephrine,
 								/datum/reagent/medicine/salbutamol, /datum/reagent/medicine/bicaridine, /datum/reagent/medicine/kelotane)
 	var/eject_port = "ingestion"
@@ -86,16 +85,16 @@
 	if(patient)
 		to_chat(user, "<span class='warning'>Your [src] is already occupied.</span>")
 		return
-	user.visible_message("<span class='warning'>[hound.name] is carefully inserting [target.name] into their [src].</span>", "<span class='notice'>You start placing [target] into your [src]...</span>")
+
+	user.visible_message("<span class='warning'>[hound.name] is carefully inserting [target.name] into their [src].</span>", 
+	"<span class='notice'>You start placing [target] into your [src]...</span>")
+
 	if(!patient && iscarbon(target) && !target.buckled && do_after (user, 100, target = target))
-
-		if(!in_range(src, target)) //Proximity is probably old news by now, do a new check.
-			return //If they moved away, you can't eat them.
-
+		if(!in_range(src, target)) 
+			return
 		if(patient)
-			return //If you try to eat two people at once, you can only eat one.
-
-		else //If you don't have someone in you, proceed.
+			return
+		else
 			if(!isjellyperson(target) && ("toxin" in injection_chems))
 				injection_chems -= "toxin"
 				injection_chems += "antitoxin"
@@ -104,8 +103,8 @@
 				injection_chems += "toxin"
 			target.forceMove(src)
 			target.reset_perspective(src)
-			target.ExtinguishMob() //The tongue already puts out fire stacks but being put into the sleeper shouldn't allow you to keep burning.
-			update_gut(hound)
+			target.ExtinguishMob()
+			UpdateGut(hound)
 			user.visible_message("<span class='warning'>[voracious ? "[hound]'s [src.name] lights up and expands as [target] slips inside into their [src.name]." : "[hound]'s sleeper indicator lights up as [target] is scooped up into [hound.p_their()] [src]."]</span>", \
 				"<span class='notice'>Your [voracious ? "[src.name] lights up as [target] slips into" : "sleeper indicator light shines brightly as [target] is scooped inside"] your [src]. Life support functions engaged.</span>")
 			message_admins("[key_name(hound)] has sleeper'd [key_name(patient)] as a dogborg. [ADMIN_JMP(src)]")
@@ -156,7 +155,7 @@
 	items_preserved.Cut()
 	cleaning = FALSE
 	if(hound)
-		update_gut(hound)
+		UpdateGut(hound)
 
 
 /obj/item/dogborg/sleeper/attack_self(mob/user)
@@ -166,16 +165,22 @@
 	ui_interact(user)
 
 /obj/item/dogborg/sleeper/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE, \
-									datum/tgui/master_ui = null, datum/ui_state/state = GLOB.notcontained_state)
+									datum/tgui/master_ui = null, datum/tgui_state/state = GLOB.tgui_notcontained_state)
 
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "dogborg_sleeper", name, 375, 550, master_ui, state)
+		ui = new(user, src, ui_key, "DogborgSleeper", name, 375, 550, master_ui, state)
 		ui.open()
 
 /obj/item/dogborg/sleeper/ui_data()
 	var/list/data = list()
+	var/chemical_list = list()
+	var/blood_percent = 0
+
 	data["occupied"] = patient ? 1 : 0
+	data["blood_levels"] = blood_percent
+	data["blood_status"] = "Patient either has no blood, or does not require it to function."
+	data["chemical_list"] = chemical_list
 
 	if(cleaning && length(contents - items_preserved))
 		data["items"] = "Self-cleaning mode active: [length(contents - items_preserved)] object(s) remaining."
@@ -184,7 +189,7 @@
 		data["chem"] = list()
 		for(var/chem in injection_chems)
 			var/datum/reagent/R = GLOB.chemical_reagents_list[chem]
-			data["chem"] += list(list("name" = R.name, "id" = R.type))
+			data["chem"] += list(list("name" = R.name, "id" = R.type, "allowed" = TRUE))
 
 	data["occupant"] = list()
 	var/mob/living/mob_occupant = patient
@@ -212,10 +217,41 @@
 		data["occupant"]["fireLoss"] = mob_occupant.getFireLoss()
 		data["occupant"]["cloneLoss"] = mob_occupant.getCloneLoss()
 		data["occupant"]["brainLoss"] = mob_occupant.getOrganLoss(ORGAN_SLOT_BRAIN)
-		data["occupant"]["reagents"] = list()
+		
 		if(mob_occupant.reagents.reagent_list.len)
 			for(var/datum/reagent/R in mob_occupant.reagents.reagent_list)
-				data["occupant"]["reagents"] += list(list("name" = R.name, "volume" = R.volume))
+				chemical_list += list(list("name" = R.name, "volume" = R.volume))
+		else
+			chemical_list = "Patient has no reagents."
+
+		data["occupant"]["failing_organs"] = list()
+		var/mob/living/carbon/C = mob_occupant
+		if(C)
+			for(var/obj/item/organ/Or in C.getFailingOrgans())
+				if(istype(Or, /obj/item/organ/brain))
+					continue
+				data["occupant"]["failing_organs"] += list(list("name" = Or.name))
+
+		if(istype(C)) //Non-carbons shouldn't be able to enter sleepers, but this is to prevent runtimes if something ever breaks
+			if(mob_occupant.has_dna()) // Blood-stuff is mostly a copy-paste from the healthscanner.
+				blood_percent = round((C.blood_volume / BLOOD_VOLUME_NORMAL)*100)
+				var/blood_id = C.get_blood_id()
+				var/blood_warning = ""
+				if(blood_percent < 80)
+					blood_warning = "Patient has low blood levels."
+				if(blood_percent < 60)
+					blood_warning = "Patient has DANGEROUSLY low blood levels."
+				if(blood_id)
+					var/blood_type = C.dna.blood_type
+					if(!(blood_id in GLOB.blood_reagent_types)) // special blood substance
+						var/datum/reagent/R = GLOB.chemical_reagents_list[blood_id]
+						if(R)
+							blood_type = R.name
+						else
+							blood_type = blood_id
+					data["blood_status"] = "Patient has [blood_type] type blood. [blood_warning]"
+				data["blood_levels"] = blood_percent
+
 	return data
 
 /obj/item/dogborg/sleeper/ui_act(action, params)
@@ -238,81 +274,42 @@
 				to_chat(src, "Your [src] is already cleaned.")
 				return
 			if(patient)
-				to_chat(patient, "<span class='danger'>[usr.name]'s [src] fills with caustic enzymes around you!</span>")
+				to_chat(patient, "<span class='userdanger'>[usr.name]'s [src] fills with caustic enzymes around you!</span>")
 			to_chat(src, "<span class='danger'>Cleaning process enabled.</span>")
 			clean_cycle(usr)
 			. = TRUE
 
-/obj/item/dogborg/sleeper/proc/update_gut(mob/living/silicon/robot/hound)
-	//Well, we HAD one, what happened to them?
-	if(!hound) //runetime error fix with dogborgs with no sleepers
-		return
-
-	var/prociconupdate = FALSE
-	var/currentenvy = hound.sleeper_nv
-	hound.sleeper_nv = FALSE
-	if(patient in contents)
-		if(patient_laststat != patient.stat)
-			if(patient.stat & DEAD)
-				hound.sleeper_r = 1
-				hound.sleeper_g = 0
-				patient_laststat = patient.stat
-			else
-				hound.sleeper_r = 0
-				hound.sleeper_g = 1
-				patient_laststat = patient.stat
-			prociconupdate = TRUE
-
-		if(!patient.client || !(patient.client.prefs.cit_toggles & MEDIHOUND_SLEEPER) || !hound.client || !(hound.client.prefs.cit_toggles & MEDIHOUND_SLEEPER))
-			hound.sleeper_nv = TRUE
-		else
-			hound.sleeper_nv = FALSE
-		if(hound.sleeper_nv != currentenvy)
-			prociconupdate = TRUE
-
-		//Update icon
-		if(prociconupdate)
-			hound.update_icons()
-		//Return original patient
-		return(patient)
-	//Check for a new patient
-	else
-		for(var/mob/living/carbon/human/C in contents)
-			patient = C
-			if(patient.stat & DEAD)
-				hound.sleeper_r = 1
-				hound.sleeper_g = 0
-				patient_laststat = patient.stat
-			else
-				hound.sleeper_r = 0
-				hound.sleeper_g = 1
-				patient_laststat = patient.stat
-
-			if(!patient.client || !(patient.client.prefs.cit_toggles & MEDIHOUND_SLEEPER) || !hound.client || !(hound.client.prefs.cit_toggles & MEDIHOUND_SLEEPER))
-				hound.sleeper_nv = TRUE
-			else
-				hound.sleeper_nv = FALSE
-
-			//Update icon and return new patient
-			hound.update_icons()
-			return
-
-	//Cleaning looks better with red on, even with nobody in it
-	if(cleaning && !patient)
-		hound.sleeper_r = 1
-		hound.sleeper_g = 0
-	//Couldn't find anyone, and not cleaning
-	else if(!cleaning && !patient)
-		hound.sleeper_r = 0
-		hound.sleeper_g = 0
-
-	patient_laststat = null
+/obj/item/dogborg/sleeper/proc/UpdatePatient(mob/living/silicon/robot/hound)
 	patient = null
-	hound.update_icons()
+	for(var/mob/living/carbon/human/C in contents)
+		patient = C
+		break
+	return patient
 
-//Gurgleborg process
+/obj/item/dogborg/sleeper/proc/CheckNeedsGutUpdate(mob/living/silicon/robot/hound)
+	if(!hound) return
+	var/current_belly = BORGBELLY_NONE
+	UpdatePatient(hound)
+	if(patient)
+		var/patient_vore_enabled = patient.client?.prefs?.cit_toggles & MEDIHOUND_SLEEPER
+		var/hound_vore_enabled = hound.client?.prefs?.cit_toggles & MEDIHOUND_SLEEPER
+		if(patient_vore_enabled && hound_vore_enabled)
+			if(patient.stat & DEAD)
+				current_belly = BORGBELLY_RED
+			else
+				current_belly = BORGBELLY_GREEN
+	else
+		if(cleaning)
+			current_belly = BORGBELLY_RED
+	return current_belly
+
+/obj/item/dogborg/sleeper/proc/UpdateGut(mob/living/silicon/robot/hound)
+	var/new_belly = CheckNeedsGutUpdate(hound)
+	if(hound.sleeper_state != new_belly)
+		hound.sleeper_state = new_belly
+		hound.update_icons()
+
 /obj/item/dogborg/sleeper/proc/clean_cycle(mob/living/silicon/robot/hound)
-	//Sanity
 	if(!hound)
 		return
 	for(var/I in items_preserved)
@@ -364,15 +361,13 @@
 						if(!T.dropItemToGround(W))
 							qdel(W)
 					qdel(T)
-		//Handle the target being anything but a mob
 			else if(isobj(target))
 				var/obj/T = target
 				if(T.type in important_items) //If the object is in the items_preserved global list
 					items_preserved += T
-				//If the object is not one to preserve
 				else
 					qdel(T)
-					update_gut()
+					UpdateGut(hound)
 					hound.cell.give(10)
 	else
 		cleaning_cycles = initial(cleaning_cycles)
@@ -398,9 +393,8 @@
 					H.playsound_local(source, null, 45, falloff = 0, S = pred_digest)
 				else if(H in contents)
 					H.playsound_local(source, null, 65, falloff = 0, S = prey_digest)
-
-	update_gut(hound)
-
+	
+	UpdateGut(hound)
 	if(cleaning)
 		addtimer(CALLBACK(src, .proc/clean_cycle, hound), 50)
 
@@ -461,7 +455,7 @@
 	if(do_after(user, 30, target = target) && !patient && !target.buckled)
 		target.forceMove(src)
 		target.reset_perspective(src)
-		update_gut(hound)
+		UpdateGut(hound)
 		user.visible_message("<span class='warning'>[hound.name]'s mobile brig clunks in series as [target] slips inside.</span>", "<span class='notice'>Your mobile brig groans lightly as [target] slips inside.</span>")
 		playsound(hound, 'sound/effects/bin_close.ogg', 80, 1) // Really don't need ERP sound effects for robots
 
@@ -489,31 +483,25 @@
 	if(length(contents) > (max_item_count - 1))
 		to_chat(user,"<span class='warning'>Your [src] is full. Eject or process contents to continue.</span>")
 		return
+
 	if(isitem(target))
 		var/obj/item/I = target
 		if(CheckAccepted(I))
-			to_chat(user,"<span class='warning'>[I] registers an error code to your [src]</span>")
+			to_chat(user,"<span class='warning'>[I] registers an error code to your [src].</span>")
 			return
 		if(I.w_class > WEIGHT_CLASS_NORMAL)
-			to_chat(user,"<span class='warning'>[I] is too large to fit into your [src]</span>")
+			to_chat(user,"<span class='warning'>[I] is too large to fit into your [src].</span>")
 			return
 		user.visible_message("<span class='warning'>[hound.name] is ingesting [I] into their [src.name].</span>", "<span class='notice'>You start ingesting [target] into your [src.name]...</span>")
 		if(do_after(user, 15, target = target) && length(contents) < max_item_count)
 			I.forceMove(src)
 			I.visible_message("<span class='warning'>[hound.name]'s garbage processor groans lightly as [I] slips inside.</span>", "<span class='notice'>Your garbage compactor groans lightly as [I] slips inside.</span>")
 			playsound(hound, 'sound/machines/disposalflush.ogg', 50, 1)
-			if(length(contents) > 11) //grow that tum after a certain junk amount
-				hound.sleeper_r = 1
-				hound.update_icons()
-			else
-				hound.sleeper_r = 0
-				hound.update_icons()
-		return
 
-	if(iscarbon(target) || issilicon(target))
+	else if(iscarbon(target) || issilicon(target))
 		var/mob/living/trashman = target
 		if(!trashman.devourable)
-			to_chat(user, "<span class='warning'>[target] registers an error code to your [src]</span>")
+			to_chat(user, "<span class='warning'>[target] registers an error code to your [src].</span>")
 			return
 		if(patient)
 			to_chat(user,"<span class='warning'>Your [src] is already occupied.</span>")
@@ -525,6 +513,14 @@
 		if(do_after(user, 30, target = trashman) && !patient && !trashman.buckled && length(contents) < max_item_count)
 			trashman.forceMove(src)
 			trashman.reset_perspective(src)
-			update_gut()
 			user.visible_message("<span class='warning'>[hound.name]'s garbage processor groans lightly as [trashman] slips inside.</span>", "<span class='notice'>Your garbage compactor groans lightly as [trashman] slips inside.</span>")
 			playsound(hound, 'sound/effects/bin_close.ogg', 80, 1)
+	
+	UpdateGut(hound)
+
+
+/obj/item/dogborg/sleeper/compactor/CheckNeedsGutUpdate(mob/living/silicon/robot/hound)
+	var/current_belly = ..()
+	if(length(contents) > 11)
+		current_belly = BORGBELLY_RED
+	return current_belly

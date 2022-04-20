@@ -607,10 +607,10 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	. = ..()
 	ui_interact(user)
 
-/obj/machinery/computer/reactor/control_rods/ui_interact(mob/user, ui_key, datum/tgui/ui, force_open, datum/tgui/master_ui, datum/ui_state/state)
+/obj/machinery/computer/reactor/control_rods/ui_interact(mob/user, ui_key, datum/tgui/ui, force_open, datum/tgui/master_ui, datum/tgui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "rbmkcontrolrods", name, 300, 300, master_ui, state)
+		ui = new(user, src, ui_key, "RbmkControlRods", name, 300, 300, master_ui, state)
 		ui.open()
 
 /obj/machinery/computer/reactor/control_rods/ui_act(action, params)
@@ -648,7 +648,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	. = ..()
 	ui_interact(user)
 
-/obj/machinery/computer/reactor/stats/ui_interact(mob/user, ui_key, datum/tgui/ui, force_open, datum/tgui/master_ui, datum/ui_state/state)
+/obj/machinery/computer/reactor/stats/ui_interact(mob/user, ui_key, datum/tgui/ui, force_open, datum/tgui/master_ui, datum/tgui_state/state)
 	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
 	if(!ui)
 		ui = new(user, src, ui_key, "RbmkStats", name, 350, 500, master_ui, state)
@@ -803,7 +803,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	transfer_access = ACCESS_CONSTRUCTION
 	network_destination = "rbmk monitoring system"
 	size = 2
-	tgui_id = "ntosrbmkstats"
+	tgui_id = "NtosRbmkStats"
 	ui_x = 350
 	ui_y = 550
 	var/active = TRUE //Easy process throttle
