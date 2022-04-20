@@ -30,7 +30,7 @@
 //For storing normalization on mobs
 /mob/living
 	var/normalized = FALSE
-	//normalized is a check for instances where more than one accessory of jewelry is worn. For all intensive purposes, only the first worn accessory stores the user's size. \
+	//normalized is a check for instances where more than one accessory of jewelry is worn. For all intensive purposes, only the first worn accessory stores the user's size.
 	//Anything else is just extra.
 
 //Clothing below. Code could be compressed more, but until I make jewelry slots, this will do. -Dahl
