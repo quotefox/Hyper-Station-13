@@ -446,7 +446,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/crew_quarters/lounge
 	name = "Lounge"
-	icon_state = "yellow"
+	icon_state = "lounge"
 
 /area/crew_quarters/fitness
 	name = "Fitness Room"
@@ -1388,7 +1388,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/arcade
 	name = "Arcade"
-	icon_state = "yellow"
+	icon_state = "arcade"
 
 /area/medical/psych/ward
 	name = "Psychology Ward"

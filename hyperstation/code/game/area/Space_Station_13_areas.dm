@@ -1,12 +1,13 @@
 /area/barber
 	name = "Barber's Shop"
+	icon_state = "barber"
 
 /area/kinarisrep
 	name = "Kinaris Representative Office"
 
 /area/crew_quarters/bar/cafe
 	name = "Cafe"
-	icon_state = "bar"
+	icon_state = "cafe"
 
 /area/crew_quarters/bar/cafe/backroom
 	name = "Cafe Backroom"
@@ -22,6 +23,7 @@
 
 /area/crew_quarters/spa
 	name = "Spa"
+	icon_state = "sauna"
 
 /area/crew_quarters/spa/sauna
 	name = "Sauna"
@@ -425,7 +427,7 @@
 
 /area/crew_quarters/park
 	name = "Park"
-	icon_state = "yellow"
+	icon_state = "park"
 
 /area/janitor/upper
 	name = "Upper Custodial Closet"
@@ -453,5 +455,5 @@
 //Misc cargo
 /area/quartermaster/mail
 	name = "Mail Office"
-	icon_state = "cargo_delivery"
+	icon_state = "cargo_mail"
 
