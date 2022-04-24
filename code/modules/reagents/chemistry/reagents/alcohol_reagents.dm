@@ -2439,15 +2439,3 @@ datum/reagent/consumable/ethanol/creme_de_coconut
 	boozepwr = 65
 	taste_description = "viscous cream"
 	glass_desc = "The name is probably exactly what it is."
-
-//Hope you're not a Russian T-90
-/datum/reagent/consumable/ethanol/javelin
-	name = "Javelin Cocktail"
-	boozepwr = 80
-	color = "#F54F10"
-	quality = DRINK_FANTASTIC
-	taste_description = "explosive fireballs"
-	glass_icon_state = "javelin"
-	shot_glass_icon_state = "javelin_warhead"
-	glass_name = "Javelin Cocktail"
-	glass_desc = "A man-portable, delicious glass of justice."

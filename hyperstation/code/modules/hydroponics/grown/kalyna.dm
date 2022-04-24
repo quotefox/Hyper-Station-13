@@ -2,6 +2,7 @@
 /obj/item/seeds/kalyna
 	name = "pack of kalyna berry seeds"
 	desc = "Seeds that grow into Kalyna plants. Take that Red Kalyna and rise it up."
+	icon = 'hyperstation/icons/obj/hydroponics/seeds.dmi'
 	icon_state = "seed-kalyna"
 	species = "kalyna"
 	plantname = "Kalyna Shrub Tree"
@@ -11,7 +12,7 @@
 	production = 5
 	growthstages = 5
 	yield = 4
-	growing_icon = 'icons/obj/hydroponics/growing_fruits.dmi'
+	growing_icon = 'hyperstation/icons/obj/hydroponics/growing_fruits.dmi'
 	icon_grow = "kalyna-grow"
 	icon_dead = "kalyna-dead"
 	genes = list(/datum/plant_gene/trait/repeated_harvest)
@@ -21,6 +22,7 @@
 	seed = /obj/item/seeds/kalyna
 	name = "branch of kalyna"
 	desc = "Red berries, attached to a branch. Just looking at it makes you feel an aura of unity."
+	icon = 'hyperstation/icons/obj/hydroponics/harvest.dmi'
 	icon_state = "kalynaberries"
 	gender = PLURAL
 	filling_color = "#FF0000"
