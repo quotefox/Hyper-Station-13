@@ -73,7 +73,7 @@ GLOBAL_LIST(bad_gremlin_items)
 	var/datum/job/captain/C = new /datum/job/captain
 	access_card.access = C.get_access()
 	if(!body_color)
-		body_color = pick(list("orange","blue","purple", "green"))
+		body_color = pick(list("orange","blue","purple", "green", "crystal"))
 	AddElement(/datum/element/mob_holder, "gremlin_[body_color]")
 	icon_state = "gremlin_[body_color]"
 	icon_living = "gremlin_[body_color]"
