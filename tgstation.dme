@@ -3097,6 +3097,7 @@
 #include "hyperstation\code\datums\components\crafting\bounties.dm"
 #include "hyperstation\code\datums\components\crafting\recipes.dm"
 #include "hyperstation\code\datums\elements\holder_micro.dm"
+#include "hyperstation\code\datums\elements\spooky.dm"
 #include "hyperstation\code\datums\mood_events\events.dm"
 #include "hyperstation\code\datums\ruins\lavaland.dm"
 #include "hyperstation\code\datums\traits\good.dm"
