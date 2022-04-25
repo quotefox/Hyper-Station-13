@@ -129,3 +129,12 @@ obj/item/clothing/neck/stole/black
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	heat_protection = CHEST|GROIN|ARMS
 	armor = list("melee" = 60, "bullet" = 80, "laser" = 80, "energy" = 90, "bomb" = 50, "bio" = 100, "rad" = 50, "fire" = 50, "acid" = 50)
+
+/obj/item/clothing/under/raccveralls
+	name = "form fitting overalls"
+	desc = "A tight form fitting pair of overalls."
+	icon = 'hyperstation/icons/obj/clothing/uniforms.dmi'
+	icon_state = "raccveralls"
+	alternate_worn_icon = 'hyperstation/icons/mobs/uniforms.dmi'
+	item_state = "raccveralls"
+	can_adjust = FALSE
