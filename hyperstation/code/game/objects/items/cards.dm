@@ -58,11 +58,11 @@
 	* was actually attempted.
 	*/
 /obj/item/toy/cards/proc/MergeInto(obj/item/toy/cards/target, mob/living/user)
-	if(!user.temporarilyRemoveItemFromInventory(src))
-		to_chat(user, "<span class='warning'>\The [src] is stuck to your hand, you can't add it to \the [target]!</span>")
-		return TRUE
 	if(target.parentdeck != src && src.parentdeck != target && src.parentdeck != target.parentdeck)
 		to_chat(user, "<span class='warning'>You can't mix cards from other decks!</span>")
+		return TRUE
+	if(!user.temporarilyRemoveItemFromInventory(src))
+		to_chat(user, "<span class='warning'>\The [src] is stuck to your hand, you can't add it to \the [target]!</span>")
 		return TRUE
 	return FALSE
 	// unimplemented
