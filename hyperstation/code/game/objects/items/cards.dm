@@ -27,19 +27,24 @@
 			_angle = 180
 	return _angle
 
-/obj/item/toy/cards/proc/RotateCards(angle)
+/obj/item/toy/cards/proc/GetNextAngle(angle)
 	var/list/_rotations = list(CARD_ROTATION_UP, CARD_ROTATION_SIDE, CARD_ROTATION_DOWN)
 	var/list/_indexof = _rotations.Find(rotation)
+	return _rotations[_indexof%3 + 1]
+	
+
+/obj/item/toy/cards/proc/RotateCards(angle)
 	if(angle)
 		rotation = angle
 	else 
-		rotation = _rotations[_indexof%3 + 1]
+		rotation = GetNextAngle(angle)
 	update_icon()
 
 /obj/item/toy/cards/proc/FlipCards(side)
 	if(side != null) face_up = side
 	else face_up = !face_up
 	update_icon()
+
 
 /**
 	* Handles functionality for merging different types of cards.
@@ -128,18 +133,17 @@
 	return H
 
 /obj/item/toy/cards/deck/proc/DrawOneCard(list/card_indices)
-		var/obj/item/toy/cards/singlecard/S = new/obj/item/toy/cards/singlecard(usr.loc)
-		var/_card = cards[card_indices[1]]
-		_card["rotation"] = rotation
-		_card["face_up"] = face_up
-		S.card = _card
-		S.rotation = _card["rotation"]
-		S.face_up = _card["face_up"]
-		S.parentdeck = src
-		S.apply_card_vars(S,src)
-		cards -= list(_card)
-		update_icon()
-		return S
+	var/obj/item/toy/cards/singlecard/S = new/obj/item/toy/cards/singlecard(usr.loc)
+	var/_card = cards[card_indices[1]]
+	_card["rotation"] = rotation
+	_card["face_up"] = face_up
+	S.card = _card
+	S.rotation = _card["rotation"]
+	S.face_up = _card["face_up"]
+	S.parentdeck = src
+	S.apply_card_vars(S,src)
+	cards -= list(_card)
+	return S
 
 /obj/item/toy/cards/deck/FinishMergingCards(obj/item/toy/cards/target, mob/living/user)
 	var/message = "[user] adds \the [target] to the bottom of \the [src]."
@@ -284,6 +288,18 @@
 		if(_rotation != compare_orient) return FALSE
 	return TRUE
 
+/obj/item/toy/cards/cardhand/proc/DrawOneCard(list/card_indices)
+	var/obj/item/toy/cards/singlecard/S = new/obj/item/toy/cards/singlecard(usr.loc)
+	var/_card = currenthand[card_indices[1]]
+	S.card = _card
+	S.rotation = _card["rotation"]
+	S.face_up = _card["face_up"]
+	S.parentdeck = src
+	S.apply_card_vars(S,src)
+	currenthand -= list(_card)
+	update_icon()
+	return S
+
 /obj/item/toy/cards/cardhand/MergeInto(obj/item/toy/cards/target, mob/living/user)
 	if(..())
 		return TRUE
@@ -320,6 +336,48 @@
 
 // =================== TGUI stuff ===================
 
+/obj/item/toy/cards/cardhand/ui_interact(mob/user, ui_key, datum/tgui/ui, force_open, datum/tgui/master_ui, datum/tgui_state/state)
+	ui = SStgui.try_update_ui(user, src, ui_key, ui, force_open)
+	if(!ui)
+		ui = new(user, src, ui_key, "CardsHand", name, 300, 400, master_ui, state)
+		ui.open()
+	
+/obj/item/toy/cards/cardhand/ui_act(action, params)
+	if(..())
+		return
+	switch(action)
+		if("draw")
+			if(!params["cards"]) return FALSE
+			var/list/P = splittext(params["cards"], ",")
+			var/list/P_cards = list()
+			for(var/T in P) 
+				P_cards += text2num(T) + 1
+			var/obj/item/toy/cards/H = DrawOneCard(P_cards)
+			H.pickup(usr)
+			usr.put_in_hands(H)
+		if("flip")
+			if(!params["card"]) return FALSE
+			var/card = currenthand[text2num(params["card"]) + 1]
+			card["face_up"] = !card["face_up"]
+		if("rotate")
+			if(!params["card"]) return FALSE
+			var/card = currenthand[text2num(params["card"]) + 1]
+			if(params["angle"])
+				card["rotation"] = params["angle"]
+	update_icon()
+	return TRUE
+	
+/obj/item/toy/cards/cardhand/ui_data(mob/user)
+	var/list/data = list()
+	data["cards"] = currenthand
+	data["name"] = name
+	return data
+
+/obj/item/toy/cards/cardhand/ui_static_data(mob/user)
+	var/list/data = list()
+	data["possible_rotations"] = list(CARD_ROTATION_UP, CARD_ROTATION_SIDE, CARD_ROTATION_DOWN)
+	return data
+
 
 // ================================= SINGLE CARDS =================================
 
@@ -353,6 +411,19 @@
 		return FALSE
 	return TRUE
 
+/obj/item/toy/cards/singlecard/proc/FlipCard(mob/user)
+	if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
+		return
+	FlipCards()
+	to_chat(user, "<span class='notice'>You flip \the [src] [(face_up ? "face-up" : "face-down")]</span>.")
+	
+/obj/item/toy/cards/singlecard/proc/RotateCard(mob/user, var/rotation_angle)
+	if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
+		return
+	to_chat(user, "<span class='notice'>You turn \the [src] to \a [rotation_angle] position.</span>")
+	RotateCards(rotation_angle)
+	
+
 /obj/item/toy/cards/singlecard/FinishMergingCards(obj/item/toy/cards/singlecard/target, mob/living/user)
 	to_chat(user, "<span class='notice'>You combine the [target.card["name"]] and the [src.card["name"]] into a hand.</span>")
 	qdel(target)
@@ -363,38 +434,30 @@
 	. = ..()
 	. += "<span class='notice'>Click to flip. Alt-Click to rotate.</span>"
 
-/obj/item/toy/cards/singlecard/CtrlClick(mob/user)
-	. = ..()
-	if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
-		return
-	RotateCards()
-	to_chat(user, "<span class='notice'>You turn \the [src] to \a [rotation] position.</span>")
-
 /obj/item/toy/cards/singlecard/attack_self(mob/user)
 	. = ..()
-	if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
-		return
-	FlipCards()
-	to_chat(user, "<span class='notice'>You flip \the [src] [(face_up ? "face-up" : "face-down")]</span>.")
+	FlipCard(user)
+
+/obj/item/toy/cards/singlecard/AltClick(mob/user)
+	. = ..()
+	RotateCard(user, GetNextAngle(rotation))
 
 /obj/item/toy/cards/singlecard/update_icon()
 	. = ..()
 	var/matrix/rot_matrix = matrix()
 	rot_matrix.Turn(GetAngle(rotation))
 	transform = rot_matrix
+
+	var/rotation_name = (rotation == CARD_ROTATION_UP ? "" : rotation + " ") 
 	if(face_up)
 		if(card)
 			src.icon_state = "sc_[card["icon_state"] || card["name"]]_[deckstyle]"
-			src.name = src.card["name"]
+			src.name = rotation_name + src.card["name"]
 		else
 			src.icon_state = "sc_aceofspades_[deckstyle]"
 			src.name = "What Card"
 		src.pixel_x = 5
 	else
 		src.icon_state = "singlecard_down_[deckstyle]"
-		src.name = "card"
+		src.name = rotation_name + "card"
 		src.pixel_x = -5
-
-
-
-// =================== TGUI stuff ===================

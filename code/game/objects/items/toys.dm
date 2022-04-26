@@ -697,48 +697,9 @@
 	var/list/currenthand = list()
 	var/choice = null
 
-/obj/item/toy/cards/cardhand/attack_self(mob/user)
-	var/list/handradial = list()
-	interact(user)
-
-	for(var/t in currenthand)
-		handradial[t] = image(icon = src.icon, icon_state = "sc_[t["icon_state"] || t["name"]]_[deckstyle]")
-
-	if(usr.stat || !ishuman(usr))
-		return
-	var/mob/living/carbon/human/cardUser = usr
-	var/O = src
-	var/choice = show_radial_menu(usr,src, handradial, custom_check = CALLBACK(src, .proc/check_menu, user), radius = 36, require_near = TRUE)
-	if(!choice)
-		return FALSE
-	var/obj/item/toy/cards/singlecard/C = new/obj/item/toy/cards/singlecard(cardUser.loc)
-	choice["rotation"] = null
-	choice["face_up"] = null
-	currenthand -= choice
-	handradial -= choice
-	C.parentdeck = parentdeck
-	C.card = choice
-	C.apply_card_vars(C,O)
-	C.pickup(cardUser)
-	cardUser.put_in_hands(C)
-	cardUser.visible_message("<span class='notice'>[cardUser] draws a card from [cardUser.p_their()] hand.</span>", "<span class='notice'>You take the [C.card["name"]] from your hand.</span>")
-
-	interact(cardUser)
-	update_sprite()
-	if(length(currenthand) == 1)
-		var/obj/item/toy/cards/singlecard/N = new/obj/item/toy/cards/singlecard(loc)
-		N.parentdeck = parentdeck
-		N.card = currenthand[1]
-		N.apply_card_vars(N,O)
-		qdel(src)
-		N.pickup(cardUser)
-		cardUser.put_in_hands(N)
-		to_chat(cardUser, "<span class='notice'>You also take [currenthand[1]] and hold it.</span>")
-
 /obj/item/toy/cards/cardhand/apply_card_vars(obj/item/toy/cards/newobj,obj/item/toy/cards/sourceobj)
 	..()
 	newobj.deckstyle = sourceobj.deckstyle
-	update_sprite()
 	newobj.card_hitsound = sourceobj.card_hitsound
 	newobj.card_force = sourceobj.card_force
 	newobj.card_throwforce = sourceobj.card_throwforce
@@ -746,6 +707,7 @@
 	newobj.card_throw_range = sourceobj.card_throw_range
 	newobj.card_attack_verb = sourceobj.card_attack_verb
 	newobj.resistance_flags = sourceobj.resistance_flags
+	update_icon()
 
 /**
   * check_menu: Checks if we are allowed to interact with a radial menu
@@ -763,7 +725,7 @@
 /**
   * This proc updates the sprite for when you create a hand of cards
   */
-/obj/item/toy/cards/cardhand/proc/update_sprite()
+/obj/item/toy/cards/cardhand/update_icon()
 	cut_overlays()
 	var/overlay_cards = currenthand.len
 	if(overlay_cards)
@@ -771,18 +733,15 @@
 		for(var/i = k; i <= overlay_cards; i++)
 			var/_card = currenthand[i]
 			var/_angle = _card["rotation"] || rotation
-			var/_dir = GetAngle(_angle)
-			var/card_overlay = image(
+			var/matrix/rot_matrix = matrix()
+			rot_matrix.Turn(GetAngle(_angle))
+			var/image/card_overlay = image(
 				icon = src.icon,
 				icon_state = "sc_[_card["icon_state"] || _card["name"]]_[deckstyle]",
 				pixel_x = (1 - i + k)*3,
 				pixel_y = (1 - i + k)*3,
-				dir = (
-					_dir == 90 ? EAST :
-					_dir == 180 ? SOUTH :
-					NORTH
-				)
 			)
+			card_overlay.transform = rot_matrix
 			add_overlay(card_overlay)
 
 /obj/item/toy/cards/singlecard
@@ -812,7 +771,7 @@
 	set src in range(1)
 	if(!ishuman(usr) || !usr.canUseTopic(src, BE_CLOSE))
 		return
-	FlipCards()
+	FlipCard()
 
 /obj/item/toy/cards/singlecard/apply_card_vars(obj/item/toy/cards/singlecard/newobj,obj/item/toy/cards/sourceobj)
 	..()
