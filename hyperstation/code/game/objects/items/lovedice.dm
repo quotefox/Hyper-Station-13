@@ -41,6 +41,7 @@ sarcoph mar 2022
 
 /obj/item/dice/lover/d6_gesture
 	name = "lover's d6 (v1)"
+	desc = "A die with six sides to inspire some bedroom action. This one has intimate gestures."
 	icon_state = "loved6_1"
 	special_faces = list(
 		"Let's hug",
@@ -53,6 +54,7 @@ sarcoph mar 2022
 
 /obj/item/dice/lover/d6_location
 	name = "lover's d6 (v2)"
+	desc = "A die with six sides to inspire some bedroom action. This one has different locations."
 	icon_state = "loved6_2"
 	special_faces = list(
 		"On a chair",
@@ -65,6 +67,7 @@ sarcoph mar 2022
 
 /obj/item/dice/lover/d6_action
 	name = "lover's d6 (v3)"
+	desc = "A die with six sides to inspire some bedroom action. This one has different actions."
 	icon_state = "loved6_3"
 	special_faces = list(
 		"Caress my",
@@ -77,6 +80,7 @@ sarcoph mar 2022
 
 /obj/item/dice/lover/d6_bodypart
 	name = "lover's d6 (v4)"
+	desc = "A die with six sides to inspire some bedroom action. This one has body parts."
 	icon_state = "loved6_4"
 	special_faces = list(
 		"Back",
