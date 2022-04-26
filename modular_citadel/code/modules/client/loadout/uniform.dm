@@ -524,3 +524,9 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/tunic
 	cost = 1
+
+/datum/gear/overalls
+	name = "form fitting overalls"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/raccveralls
+	cost = 1
