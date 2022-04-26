@@ -10,7 +10,7 @@ export const RbmkStats = (props, context) => {
   const tempInputData = data.tempInputData.map((value, i) => [i, value]);
   const tempOutputdata = data.tempOutputdata.map((value, i) => [i, value]);
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section title="RBMK Stats:">
           <Section title="Legend:">

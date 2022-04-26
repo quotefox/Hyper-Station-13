@@ -31,18 +31,21 @@
 /area/survivalpod)
 "f" = (
 /obj/machinery/chem_dispenser/drinks/beer{
+	density = 0;
 	pixel_y = 24
 	},
 /turf/open/floor/carpet/black,
 /area/survivalpod)
 "g" = (
 /obj/machinery/chem_dispenser/drinks{
+	density = 0;
 	pixel_y = 24
 	},
 /turf/open/floor/carpet/black,
 /area/survivalpod)
 "h" = (
 /obj/machinery/vending/boozeomat/all_access{
+	density = 0;
 	pixel_y = 32
 	},
 /turf/open/floor/carpet/black,

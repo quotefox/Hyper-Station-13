@@ -832,6 +832,14 @@ datum/sprite_accessory/ears/human/gret
 	name = "Panda"
 	icon_state = "hpanda"
 
+/datum/sprite_accessory/mam_snouts/vulp
+	name = "Vulp"
+	icon_state = "vulp"
+
+/datum/sprite_accessory/mam_snouts/vulpalt
+	name = "Vulp Alt"
+	icon_state = "vulp2"
+
 /datum/sprite_accessory/mam_snouts/skulldog
 	name = "Skulldog"
 	icon_state = "skulldog"
@@ -1647,6 +1655,7 @@ datum/sprite_accessory/ears/human/gret
 	name = "Dog"
 	icon_state = "dog"
 
+
 /datum/sprite_accessory/mam_body_markings/eevee
 	name = "Eevee"
 	icon_state = "eevee"
@@ -2293,49 +2302,6 @@ datum/sprite_accessory/ears/human/gret
 	name = "Sabresune"
 	icon_state = "sabresune"
 	ckeys_allowed = list("poojawa")
-
-//doged was here
-/datum/sprite_accessory/mam_body_markings/chemlight
-	name = "chemlight"
-	icon_state = "chemlight"
-	ckeys_allowed = list("chemlight")
-
-/datum/sprite_accessory/mam_tails/chemlight
-	name = "chemlight"
-	icon_state = "chemlight"
-	ckeys_allowed = list("chemlight")
-
-/datum/sprite_accessory/mam_tails_animated/chemlight
-	name = "chemlight"
-	icon_state = "chemlight"
-
-/datum/sprite_accessory/mam_ears/chemlight
-	name = "chemlight"
-	icon_state = "chemlight"
-	ckeys_allowed = list("chemlight")
-
-/datum/sprite_accessory/mam_snouts/fchemlight
-	name = "chemlight (Top)"
-	icon_state = "fchemlight"
-	ckeys_allowed = list("chemlight")
-
-/datum/sprite_accessory/mam_snouts/chemlight
-	name = "chemlight"
-	icon_state = "chemlight"
-	ckeys_allowed = list("chemlight")
-
-/datum/sprite_accessory/taur/chemnaga
-	name = "Naga Chemlight"
-	icon_state = "chemnaga"
-	taur_mode = SNEK_TAURIC
-	ckeys_allowed = list("chemlight")
-
-/datum/sprite_accessory/taur/chemlight
-	name = "Chem taur"
-	icon_state = "chemlight"
-	taur_mode = PAW_TAURIC
-	ckeys_allowed = list("chemlight")
-
 
 //Lunasune
 /datum/sprite_accessory/mam_ears/lunasune

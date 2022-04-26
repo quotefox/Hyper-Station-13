@@ -40,7 +40,6 @@
 					update_damage_overlays()
 			else
 				adjustStaminaLoss(damage * hit_percent)
-		//citadel code
 		if(AROUSAL)
 			adjustArousalLoss(damage * hit_percent)
 	return TRUE
@@ -61,7 +60,6 @@
 		var/obj/item/bodypart/BP = X
 		amount += BP.burn_dam
 	return amount
-
 
 /mob/living/carbon/adjustBruteLoss(amount, updating_health = TRUE, forced = FALSE)
 	if (!forced && amount < 0 && HAS_TRAIT(src,TRAIT_NONATURALHEAL))

@@ -23,7 +23,7 @@ export const AiAirlock = (props, context) => {
   const statusBackup = dangerMap[data.power.backup] || dangerMap[0];
   const statusElectrify = dangerMap[data.shock] || dangerMap[0];
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section title="Power Status">
           <LabeledList>

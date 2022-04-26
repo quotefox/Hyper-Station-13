@@ -206,6 +206,8 @@
 
 #define TRAIT_ZAOCORP_NOGUNS	"zao_no_guns"
 
+#define INNATE_TRAIT "innate"
+
 // common trait sources
 #define TRAIT_GENERIC "generic"
 #define EYE_DAMAGE "eye_damage"

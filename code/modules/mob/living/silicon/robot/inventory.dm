@@ -25,8 +25,7 @@
 		disabler = FALSE
 		update_icons() //PUT THE GUN AWAY
 	else if(istype(O,/obj/item/dogborg/sleeper))
-		sleeper_g = FALSE
-		sleeper_r = FALSE
+		sleeper_state = BORGBELLY_NONE
 		update_icons()
 		var/obj/item/dogborg/sleeper/S = O
 		S.go_out() //this should stop edgecase deletions

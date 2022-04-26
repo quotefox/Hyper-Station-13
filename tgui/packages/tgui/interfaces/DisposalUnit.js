@@ -23,7 +23,7 @@ export const DisposalUnit = (props, context) => {
     stateText = 'Off';
   }
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section>
           <LabeledList>

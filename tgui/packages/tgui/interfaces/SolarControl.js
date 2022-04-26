@@ -14,7 +14,7 @@ export const SolarControl = (props, context) => {
     connected_tracker,
   } = data;
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Section
           title="Status"
@@ -119,8 +119,9 @@ const PowerOutput = (props, context) => {
           }}
           minValue={0}
           maxValue={90000}
-          value={generated}
-          content={generated + ' W'} />
+          value={generated}>
+          {generated} W
+        </ProgressBar>
       </LabeledList.Item>
     </LabeledList>
   );

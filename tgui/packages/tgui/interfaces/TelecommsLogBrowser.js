@@ -16,7 +16,7 @@ export const TelecommsLogBrowser = (props, context) => {
   const [tab, setTab] = useLocalState(context, 'tab', 'servers');
 
   return (
-    <NtosWindow>
+    <NtosWindow resizable>
       <NtosWindow.Content scrollable>
         {!!notice && (
           <NoticeBox>

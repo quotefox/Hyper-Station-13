@@ -7,7 +7,7 @@ import { Window } from '../layouts';
 export const Canvas = (props, context) => {
   const { act, data } = useBackend(context);
   return (
-    <Window>
+    <Window resizable>
       <Window.Content>
         <Box textAlign="center">
           <PaintCanvas

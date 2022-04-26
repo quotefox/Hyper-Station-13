@@ -24,7 +24,7 @@ export const CargoExpress = (props, context) => {
   const supplies = Object.values(data.supplies);
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <InterfaceLockNoticeBox
           siliconUser={siliconUser}

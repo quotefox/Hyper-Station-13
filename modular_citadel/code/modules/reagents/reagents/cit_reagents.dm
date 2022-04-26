@@ -12,17 +12,18 @@
 	glass_name = "chalice of semen"
 	glass_desc = "In the Sumerian mythology, Enki - the God of water, was believed to have created the Tigris and Euphrates rivers by masturbating and ejaculating into their empty riverbeds."
 
-/datum/reagent/consumable/semen/reaction_turf(turf/T, reac_volume)
+/datum/reagent/consumable/semen/reaction_turf(turf/open/T, reac_volume)
 	if(!istype(T))
 		return
 	if(reac_volume < 3)
 		return
-
 	var/obj/effect/decal/cleanable/semen/S = locate() in T
 	if(!S)
 		S = new(T)
 	if(data["blood_DNA"])
 		S.add_blood_DNA(list(data["blood_DNA"] = data["blood_type"]))
+	if(SSevents.holidays && SSevents.holidays[APRIL_FOOLS])
+		T.MakeSlippery(TURF_WET_LUBE, 15 SECONDS, min(reac_volume * 2 SECONDS, 120))
 
 /obj/effect/decal/cleanable/semen
 	name = "semen"
@@ -87,17 +88,18 @@
 		blood_DNA |= F.blood_DNA
 	return ..()
 
-/datum/reagent/consumable/femcum/reaction_turf(turf/T, reac_volume)
+/datum/reagent/consumable/femcum/reaction_turf(turf/open/T, reac_volume)
 	if(!istype(T))
 		return
 	if(reac_volume < 3)
 		return
-
 	var/obj/effect/decal/cleanable/femcum/S = locate() in T
 	if(!S)
 		S = new(T)
 	if(data["blood_DNA"])
 		S.add_blood_DNA(list(data["blood_DNA"] = data["blood_type"]))
+	if(SSevents.holidays && SSevents.holidays[APRIL_FOOLS])
+		T.MakeSlippery(TURF_WET_LUBE, 15 SECONDS, min(reac_volume * 2 SECONDS, 120))
 
 /datum/reagent/consumable/milk/reaction_turf(turf/T, reac_volume)
 	if(!istype(T))

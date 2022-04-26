@@ -9,32 +9,33 @@ import { NtosWindow, Window } from '../layouts';
 const logScale = value => Math.log2(16 + Math.max(0, value)) - 4;
 
 export const NtosSupermatterMonitor = (props, context) => {
-  const { state } = props;
   const { act, data } = useBackend(context);
   const {
     active,
   } = data;
+  const gases = flow([
+    gases => gases.filter(gas => gas.amount >= 0.01),
+    sortBy(gas => -gas.amount),
+  ])(data.gases || []);
+  const gasMaxAmount = Math.max(1, ...gases.map(gas => gas.amount));
+
   if (!active) {
     return (
-      <NtosWindow>
+      <NtosWindow resizable>
         <NtosWindow.Content>
           <SupermatterList />
         </NtosWindow.Content>
       </NtosWindow>
     );
   }
-  const gases = flow([
-    gases => gases.filter(gas => gas.amount >= 0.01),
-    sortBy(gas => -gas.amount),
-  ])(data.gases || []);
-  const gasMaxAmount = Math.max(1, ...gases.map(gas => gas.amount));
+
   return (
-    <NtosWindow>
+    <NtosWindow resizable>
       <NtosWindow.Content scrollable>
         <Flex spacing={1}>
           <Flex.Item width="270px">
             <Section title="Metrics">
-              <NtosSmMetrics {...data} />
+              <NtosSmMetrics />
             </Section>
           </Flex.Item>
           <Flex.Item grow={1}>
@@ -71,7 +72,8 @@ export const NtosSupermatterMonitor = (props, context) => {
   );
 };
 
-const NtosSmMetrics = data => {
+const NtosSmMetrics = (props, context) => {
+  const { data } = useBackend(context);
   const {
     SM_integrity,
     SM_power,

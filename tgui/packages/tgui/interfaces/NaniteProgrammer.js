@@ -19,7 +19,7 @@ export const NaniteProgrammer = (props, context) => {
 
   if (!has_disk) {
     return (
-      <Window>
+      <Window resizable>
         <Window.Content scrollable>
           <NoticeBox textAlign="center">
             Insert a nanite program disk
@@ -31,19 +31,23 @@ export const NaniteProgrammer = (props, context) => {
 
   if (!has_program) {
     return (
-      <Section
-        title="Blank Disk"
-        buttons={(
-          <Button
-            icon="eject"
-            content="Eject"
-            onClick={() => act('eject')} />
-        )} />
+      <Window>
+        <Window.Content>
+          <Section
+            title="Blank Disk"
+            buttons={(
+              <Button
+                icon="eject"
+                content="Eject"
+                onClick={() => act('eject')} />
+            )} />
+        </Window.Content>
+      </Window>
     );
   }
 
   return (
-    <Window>
+    <Window resizable>
       <Window.Content scrollable>
         <Section
           title={name}
