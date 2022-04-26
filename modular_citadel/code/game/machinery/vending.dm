@@ -63,6 +63,7 @@
 				/obj/item/clothing/under/polychromic/bulge = 3,
 				/obj/item/clothing/under/latexhalf = 3,
 				/obj/item/clothing/under/latexfull = 3,
+				/obj/item/clothing/under/raccveralls = 3,
 				/obj/item/clothing/suit/maidapron = 3,
 				/obj/item/clothing/under/corset = 3,
 				/obj/item/clothing/under/jabroni = 3,
