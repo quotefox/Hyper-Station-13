@@ -297,6 +297,7 @@
 	S.parentdeck = src
 	S.apply_card_vars(S,src)
 	currenthand -= list(_card)
+	S.update_icon()
 	update_icon()
 	return S
 

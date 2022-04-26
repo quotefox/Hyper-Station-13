@@ -10,8 +10,8 @@
 	desc = "A deck for the game Cards Against Spess, still popular after all these centuries. Warning: may include traces of broken fourth wall. This is the white deck."
 	icon = 'icons/obj/toy.dmi'
 	icon_state = "deck_caswhite_full"
-	deckstyle = "caswhite"
-	var/card_face = "cas_white"
+	deckstyle = "cas"
+	var/card_face = "white"
 	var/blanks = 25
 	var/decksize = 150
 	var/card_text_file = "strings/cas_white.txt"
@@ -20,19 +20,18 @@
 	name = "\improper CAS deck (black)"
 	desc = "A deck for the game Cards Against Spess, still popular after all these centuries. Warning: may include traces of broken fourth wall. This is the black deck."
 	icon_state = "deck_casblack_full"
-	deckstyle = "casblack"
-	card_face = "cas_black"
+	card_face = "black"
 	blanks = 0
 	decksize = 50
 	card_text_file = "strings/cas_black.txt"
 
 /obj/item/toy/cards/deck/cas/populate_deck()
 	var/static/list/cards_against_space = list(
-		"cas_white" = world.file2list("strings/cas_white.txt"),
-		"cas_black" = world.file2list("strings/cas_black.txt")
+		"white" = world.file2list("strings/cas_white.txt"),
+		"black" = world.file2list("strings/cas_black.txt")
 	)
-	cards = cards_against_space[card_face]
-	var/list/possiblecards = cards.Copy()
+	var/list/_cards = cards_against_space[card_face]
+	var/list/possiblecards = _cards.Copy()
 	if(possiblecards.len < decksize) // sanity check
 		decksize = (possiblecards.len - 1)
 	var/list/randomcards = list()
@@ -47,38 +46,45 @@
 			"face_up" = null
 		))
 	if(!blanks)
-		cards = shuffle(cards) 
 		return
 	for(var/x in 1 to blanks)
 		cards += list(list(
 			"name" = "Blank Card",
-			"icon_state" = "cas_white",
+			"icon_state" = "white",
 			"rotation" = null,
 			"face_up" = null
 		))
-	cards = shuffle(cards) // distribute blank cards throughout deck
 
 /obj/item/toy/cards/deck/cas/DrawOneCard(list/card_indices)
 	var/obj/item/toy/cards/singlecard/cas/S = new/obj/item/toy/cards/singlecard/cas(usr.loc)
 	var/_card = cards[card_indices[1]]
+	_card["rotation"] = rotation
+	_card["face_up"] = face_up
 	if(_card["name"] == "Blank Card")
 		S.blank = TRUE
-	S.name = _card["name"]
-	S.icon_state = _card["icon_state"]
+	S.card = _card
+	S.card_face = card_face
+	S.rotation = _card["rotation"]
+	S.face_up = _card["face_up"]
 	S.parentdeck = src
+	S.apply_card_vars(S,src)
 	cards -= list(_card)
 	update_icon()
 	return S
 
 /obj/item/toy/cards/deck/cas/update_icon()
 	if(cards.len < 26)
-		icon_state = "deck_[deckstyle]_low"
+		icon_state = "deck_[deckstyle][card_face]_low"
+
+
+
+// ----------- SINGLE CARD -----------
 
 /obj/item/toy/cards/singlecard/cas
 	name = "CAS card"
 	desc = "A CAS card."
-	icon_state = "cas_white"
-	var/card_face = "cas_white"
+	icon_state = "sc_cas_white"
+	var/card_face = "white"
 	var/blank = 0
 	var/buffertext = "A funny bit of text."
 
@@ -92,11 +98,15 @@
 		. += "<span class='notice'>The card reads: [name]</span>"
 
 /obj/item/toy/cards/singlecard/cas/update_icon()
+	var/matrix/rot_matrix = matrix()
+	rot_matrix.Turn(GetAngle(rotation))
+	transform = rot_matrix
 	if(face_up)
-		icon_state = "[card_face]_flipped"
+		icon_state = "sc_[deckstyle]_[card_face]"
 		name = card["name"]
 	else
-		icon_state = "[card_face]"
+		icon_state = "sc_[deckstyle]_[card_face]_flipped"
+		name = "CAS card"
 
 /obj/item/toy/cards/singlecard/cas/attackby(obj/item/I, mob/living/user, params)
 	if(istype(I, /obj/item/pen))
