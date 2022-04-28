@@ -149,4 +149,11 @@ obj/item/clothing/neck/stole/black
 	can_adjust = FALSE
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
 
-
+/obj/item/clothing/under/vaultsuit
+	name = "vault suit"
+	desc = "A tight form fitting Vault-Tec standard issue Vault Jumpsuit! Snazzy!"
+	icon = 'hyperstation/icons/obj/clothing/uniforms.dmi'
+	icon_state = "vaultsuit"
+	alternate_worn_icon = 'hyperstation/icons/mobs/uniforms.dmi'
+	item_state = "b_suit"
+	can_adjust = FALSE

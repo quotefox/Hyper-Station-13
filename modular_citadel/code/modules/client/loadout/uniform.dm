@@ -536,3 +536,9 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/officesexy
 	cost = 1
+
+/datum/gear/overalls
+	name = "vaultsuit"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/vaultsuit
+	cost = 1
