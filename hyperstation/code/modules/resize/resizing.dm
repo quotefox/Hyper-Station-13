@@ -12,6 +12,7 @@ var/const/RESIZE_MICRO = 0.25
 /mob/living
 	var/size_multiplier = 1 //multiplier for the mob's icon size atm
 	var/previous_size = 1
+	var/small_speech = FALSE
 
 //Cyanosis - Action that resizes the sprite for the client but nobody else. Say goodbye to attacking yourself when someone's above you lmao
 	var/datum/action/sizecode_resize/small_sprite
@@ -237,14 +238,23 @@ mob/living/get_effective_size()
 
 //Proc for changing mob_size to be grabbed for item weight classes
 /mob/living/proc/update_mobsize(var/mob/living/tmob)
+	if(small_speech == TRUE) //if they have small speech reset it.
+		small_speech = FALSE
+		UnregisterSignal(src, COMSIG_MOB_SAY)
+
 	if(size_multiplier <= 0.50)
 		mob_size = 0
+		RegisterSignal(src, COMSIG_MOB_SAY, .proc/handle_small_speech)
+		small_speech = TRUE
 	if(size_multiplier < 1)
 		mob_size = 1
 	if(size_multiplier == 1)
 		mob_size = 2 //the default human size
 	if(size_multiplier > 1)
 		mob_size = 3
+
+/mob/living/proc/handle_small_speech(owner, list/speech_args) //for making peoples text small
+	speech_args[SPEECH_SPANS] |= SPAN_SMALL
 
 //Proc for instantly grabbing valid size difference. Code optimizations soon(TM)
 /*
