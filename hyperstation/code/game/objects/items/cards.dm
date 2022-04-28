@@ -294,7 +294,7 @@
 	S.card = _card
 	S.rotation = _card["rotation"]
 	S.face_up = _card["face_up"]
-	S.parentdeck = src
+	S.parentdeck = src.parentdeck
 	S.apply_card_vars(S,src)
 	currenthand -= list(_card)
 	S.update_icon()
