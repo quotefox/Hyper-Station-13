@@ -138,3 +138,15 @@ obj/item/clothing/neck/stole/black
 	alternate_worn_icon = 'hyperstation/icons/mobs/uniforms.dmi'
 	item_state = "raccveralls"
 	can_adjust = FALSE
+
+/obj/item/clothing/under/officesexy
+	name = "Revealing office uniform"
+	desc = "A sexy office uniform, that has a low cropped front to show off some chest, or bra. And a tall dress that covers the stomach, complete with a set of buttons."
+	icon = 'hyperstation/icons/obj/clothing/uniforms.dmi'
+	icon_state = "office_revealing"
+	alternate_worn_icon = 'hyperstation/icons/mobs/uniforms.dmi'
+	item_state = "office_revealing"
+	can_adjust = FALSE
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+

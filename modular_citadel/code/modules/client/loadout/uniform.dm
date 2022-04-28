@@ -530,3 +530,9 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/raccveralls
 	cost = 1
+
+/datum/gear/sexyoffice
+	name = "Revealing office uniform"
+	category = SLOT_W_UNIFORM
+	path = /obj/item/clothing/under/officesexy
+	cost = 1

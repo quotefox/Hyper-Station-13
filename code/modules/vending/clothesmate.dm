@@ -111,6 +111,7 @@
 		            /obj/item/clothing/suit/toggle/jacket_white = 3,
 		            /obj/item/clothing/suit/jacket/letterman_red = 3,
 		            /obj/item/clothing/suit/fluffyhalfcrop = 3,
+		            /obj/item/clothing/under/officesexy = 3,
 		            /obj/item/clothing/ears/headphones = 10,
 		            /obj/item/clothing/suit/apron/purple_bartender = 4,
 		            /obj/item/clothing/under/rank/bartender/purple = 4,
