@@ -331,6 +331,18 @@ TAILS + ANIMATED TAILS
 	icon_state = "easternd"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
+/datum/sprite_accessory_/mam_tails/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
+	name = "Kinaris - Shuttle (Hyper)"
+	icon_state = "knshuttle"
+	icon = 'hyperstation/icons/mob/char_tails.dmi'
+	recommended_species = list("synthliz")
+
+/datum/sprite_accessory_/mam_tails_animated/knshuttle
+	name = "Kinaris - Shuttle (Hyper)"
+	icon_state = "knshuttle"
+	icon = 'hyperstation/icons/mob/char_tails.dmi'
+	recommended_species = list("synthliz")
+
 /datum/sprite_accessory/mam_tails/chemlight
 	name = "RadDog (Hyper)"
 	icon_state = "chemlight"
