@@ -185,6 +185,13 @@ WINGS
 	icon_state = "insect"
 	icon = 'hyperstation/icons/mob/char_wings.dmi'
 
+/datum/sprite_accessory/deco_wings/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
+	name = "Kinaris - Shuttle (Hyper)"
+	icon_state = "knshuttle"
+	icon = 'hyperstation/icons/mob/char_wings.dmi'
+	//recommended_species = list("synthliz") need to give synths a deco wing slot
+	color_src = MATRIXED
+
 /datum/sprite_accessory/deco_wings/minibat // sarcoph @ hyperstation, march 2022
 	name = "Mini Bat (Hyper)"
 	icon_state = "minibat"
