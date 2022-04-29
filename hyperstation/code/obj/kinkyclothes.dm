@@ -157,3 +157,23 @@ obj/item/clothing/neck/stole/black
 	alternate_worn_icon = 'hyperstation/icons/mobs/uniforms.dmi'
 	item_state = "b_suit"
 	can_adjust = FALSE
+	var/firstpickup = TRUE
+	var/pickupsound = TRUE
+
+/obj/item/clothing/under/vaultsuit/no_sound
+	pickupsound = FALSE
+
+/obj/item/clothing/under/vaultsuit/equipped(mob/user, slot)
+	. = ..()
+	if(!pickupsound)
+		return
+	if(!ishuman(user))
+		return
+	if(slot == SLOT_W_UNIFORM)
+		if(!firstpickup)
+			SEND_SOUND(user, sound('hyperstation/sound/effects/vaultsuit/FalloutEXPUp.ogg', volume = 50))
+		else
+			firstpickup = FALSE
+			SEND_SOUND(user, sound('hyperstation/sound/effects/vaultsuit/FalloutLevelUp.ogg', volume = 50))
+			SEND_SOUND(user, sound('hyperstation/sound/effects/vaultsuit/InkSpotsSting.ogg', volume = 50))
+	return
