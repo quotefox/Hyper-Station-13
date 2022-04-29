@@ -457,3 +457,11 @@
 	name = "Mail Office"
 	icon_state = "cargo_mail"
 
+//Misc Engineering
+/area/engine/custom
+	name = "Custom Engine Room"
+	icon_state = "engine"
+
+/area/engine/tether
+	name = "Sky Tether Control"
+	icon_state = "engine"
