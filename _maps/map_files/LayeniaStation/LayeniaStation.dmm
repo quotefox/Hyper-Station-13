@@ -18305,6 +18305,23 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engine_smes)
+"dou" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/table/glass,
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
+/area/crew_quarters/fitness/pool)
 "dov" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -28883,19 +28900,26 @@
 /turf/closed/wall/r_wall,
 /area/maintenance/port/aft)
 "gkz" = (
-/obj/structure/closet/secure_closet/personal,
-/obj/item/toy/poolnoodle/blue,
-/obj/item/toy/poolnoodle/red,
-/obj/item/toy/poolnoodle/yellow,
+/obj/structure/table,
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = -2;
+	pixel_y = 18
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_y = 22
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = -1;
+	pixel_y = 7
+	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
-	},
-/obj/machinery/light{
-	dir = 8;
-	pixel_x = -7
 	},
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
@@ -29661,6 +29685,22 @@
 	icon_state = "floor_trim"
 	},
 /area/engine/engineering)
+"gsf" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
+/area/crew_quarters/fitness/pool)
 "gsh" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -31743,18 +31783,21 @@
 /area/medical/sleeper)
 "gTx" = (
 /obj/effect/turf_decal/tile/neutral{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
-	dir = 8
+	dir = 1
 	},
 /obj/effect/turf_decal/loading_area{
-	dir = 8;
+	dir = 1;
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
 /turf/open/floor/plasteel{
-	dir = 4;
 	icon_state = "floor_plate"
 	},
 /area/crew_quarters/fitness/pool)
@@ -53966,21 +54009,6 @@
 	},
 /area/science/misc_lab)
 "mUr" = (
-/obj/structure/table,
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = -2;
-	pixel_y = 18
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 22
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = -1;
-	pixel_y = 7
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -53992,6 +54020,7 @@
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/structure/jacuzzi,
 /turf/open/floor/plasteel{
 	dir = 4;
 	icon_state = "floor_plate"
@@ -85468,6 +85497,32 @@
 /obj/structure/railing,
 /turf/open/floor/plating/asteroid/layenia,
 /area/layenia)
+"uHP" = (
+/obj/structure/table,
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/fitness/pool)
 "uId" = (
 /obj/structure/sign/logo/kinaris{
 	icon_state = "kinaris_sign3";
@@ -91737,15 +91792,6 @@
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
 "wkf" = (
-/obj/structure/table,
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = 2;
-	pixel_y = 5
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = 3;
-	pixel_y = 9
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -91765,8 +91811,9 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/machinery/newscaster{
-	pixel_y = 32
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/pool)
@@ -113886,10 +113933,10 @@ wkf
 mUr
 rbJ
 vrd
-nBK
+uHP
 gkz
 nBK
-gTx
+nBK
 cnB
 wwE
 pfI
@@ -114139,7 +114186,7 @@ tBc
 yfm
 wcK
 yeA
-sks
+gTx
 xDB
 xDB
 sPO
@@ -114396,7 +114443,7 @@ acP
 tEk
 ylM
 yeA
-nLu
+dou
 xDB
 kMH
 fLo
@@ -114653,7 +114700,7 @@ xej
 gTW
 gTW
 yeA
-rfR
+gsf
 xDB
 sXB
 nss
