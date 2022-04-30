@@ -97,7 +97,7 @@
 				stuttering += 3	 //stutter words
 
 	//if they are asleep, this wont trigger.
-	if (total_pain > 110 && stat == 0) //taking 77 all damage at once from full health, will put you into shock and kill you. This cant be achived with chip damage (or fist fights), because youll die before you reach this pain level.
+	if (total_pain > 120 && stat == 0) //taking 130 all damage at once from full health, will put you into shock and kill you. This cant be achived with chip damage (or fist fights), because youll die before you reach this pain level.
 		if(prob(50))
 			emote("scream")//scream
 		to_chat(src, "<span class='big warning'>You give into the pain...</span>")
