@@ -175,5 +175,26 @@ obj/item/clothing/neck/stole/black
 		else
 			firstpickup = FALSE
 			SEND_SOUND(user, sound('hyperstation/sound/effects/vaultsuit/FalloutLevelUp.ogg', volume = 50))
-			SEND_SOUND(user, sound('hyperstation/sound/effects/vaultsuit/InkSpotsSting.ogg', volume = 50))
+			SEND_SOUND(user, sound('hyperstation/sound/effects/vaultsuit/InkSpotsSting.ogg', volume = 60))
 	return
+
+/obj/item/clothing/suit/tunnelfox
+	name = "tunnel fox jacket"
+	desc = "Tunnel Foxes Rule!"
+	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
+	icon_state = "tunnelfox"
+	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
+	item_state = "tunnelfox"
+	body_parts_covered = CHEST|LEGS|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
+/obj/item/clothing/suit/tunnelfox_t
+	name = "opened tunnel fox jacket"
+	desc = "Tunnel Foxes Rule!"
+	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
+	icon_state = "tunnelfox_t"
+	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
+	item_state = "tunnelfox_t"
+	body_parts_covered = CHEST|LEGS|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
