@@ -478,10 +478,17 @@
 			genital_overlay.icon_state = "[G.slot]_[S.icon_state]_[size]_[aroused_state]_[layertext]"
 			colourcode = S.color_src
 
-			if(G.slot == "belly") //we have a different size system
+			//sizecheck added to prevent rendering blank icons
+			if(G.slot == "belly" && G.size > 0) //we have a different size system
+
 				genital_overlay.icon = 'hyperstation/icons/obj/genitals/belly.dmi'
-				genital_overlay.icon_state = "belly_[size]"
+				genital_overlay.icon_state = "belly_[round(size)]_OTHER"
 				colourcode = "belly_color"
+
+				//creates directional layering by rendering twice.
+				genital_overlay_directional.icon = 'hyperstation/icons/obj/genitals/belly.dmi' //Added directionals for larger bellies!
+				genital_overlay_directional.icon_state = "belly_[round(size)]_NORTH"
+				genital_overlay_directional.layer = -GENITALS_BEHIND_LAYER
 
 			//sizecheck added to prevent rendering blank icons
 			if(G.slot == "anus" && G.size > 0) //we have a different size system
