@@ -8,6 +8,7 @@
               /////////////
 
 /mob/living/simple_animal/chick
+	icon = 'hyperstation/icons/mob/chickens.dmi'
 	name = "\improper chick"
 	desc = "Adorable! They make such a racket though."
 	icon_state = "chick"
