@@ -211,13 +211,7 @@
 		return
 
 	if(href_list["shrink_belly"])
-		var/obj/item/organ/genital/belly/E = usr.getorganslot("belly")
-		if(E.size > 0)
-			to_chat(usr, "<span class='userlove'>You feel your belly diminish.</span>")
-			E.size -= 1
-			H.update_genitals()
-		else
-			to_chat(usr, "<span class='warning'>Your belly is already at the minimum size! </span>")
+		H.shrink_belly(1)
 
 	if(href_list["removecondom"])
 		H.menuremovecondom()
