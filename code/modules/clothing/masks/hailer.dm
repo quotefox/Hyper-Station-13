@@ -27,7 +27,7 @@
 	icon_state = "swat"
 	item_state = "swat"
 	aggressiveness = 3
-	flags_inv = HIDEFACIALHAIR|HIDEFACE|HIDEEYES|HIDEEARS|HIDEHAIR
+	flags_inv = HIDEFACIALHAIR|HIDEFACE|HIDEEYES|HIDEHAIR
 	visor_flags_inv = 0
 
 /obj/item/clothing/mask/gas/sechailer/cyborg

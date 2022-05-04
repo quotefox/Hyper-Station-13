@@ -195,7 +195,7 @@
 	burn_dam += burn
 
 	if(status == BODYPART_ORGANIC) //pain is only applied to organic organs, because nerves.
-		pain_dam += (brute+burn)*1.2 //add the total damage applied to the limb as pain damage, build pain quicker, because sudden pain is more.. painful.
+		pain_dam += (brute+burn)*1.05 //add the total damage applied to the limb as pain damage, build pain quicker, because sudden pain is more.. painful.
 
 	//We've dealt the physical damages, if there's room lets apply the stamina damage.
 	var/current_damage = get_damage(TRUE)		//This time around, count stamina loss too.

@@ -15,6 +15,8 @@ GLOBAL_LIST(bad_gremlin_items)
 	icon_living = "gremlin"
 	icon_dead = "gremlin_dead"
 
+	var/body_color
+
 	var/in_vent = FALSE
 
 	health = 20
@@ -70,6 +72,12 @@ GLOBAL_LIST(bad_gremlin_items)
 	access_card = new /obj/item/card/id(src)
 	var/datum/job/captain/C = new /datum/job/captain
 	access_card.access = C.get_access()
+	if(!body_color)
+		body_color = pick(list("orange","blue","purple", "green", "crystal"))
+	AddElement(/datum/element/mob_holder, "gremlin_[body_color]")
+	icon_state = "gremlin_[body_color]"
+	icon_living = "gremlin_[body_color]"
+	icon_dead = "gremlin_[body_color]_dead"
 
 /mob/living/simple_animal/hostile/gremlin/AttackingTarget()
 	var/is_hungry = world.time >= next_eat || prob(25)

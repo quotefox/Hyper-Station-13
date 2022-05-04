@@ -229,7 +229,7 @@
 	if(!getorganslot("belly"))
 		var/obj/item/organ/genital/belly/B = new
 		if(dna.features["belly_size"])
-			B.size = dna.features["belly_size"]-1
+			B.size = dna.features["belly_size"]
 		B.Insert(src)
 		if(B)
 			if(dna.species.use_skintones && dna.features["genitals_use_skintone"])
@@ -478,32 +478,39 @@
 			genital_overlay.icon_state = "[G.slot]_[S.icon_state]_[size]_[aroused_state]_[layertext]"
 			colourcode = S.color_src
 
-			if(G.slot == "belly") //we have a different size system
+			if(G.slot == "belly")
+				size = round(size)
 				genital_overlay.icon = 'hyperstation/icons/obj/genitals/belly.dmi'
-				genital_overlay.icon_state = "belly_[size]"
+				genital_overlay.icon_state = "belly_[size]_OTHER"
 				colourcode = "belly_color"
 
-			//sizecheck added to prevent rendering blank icons
-			if(G.slot == "anus" && G.size > 0) //we have a different size system
+				//creates directional layering by rendering twice.
+				genital_overlay_directional.icon = 'hyperstation/icons/obj/genitals/belly.dmi' //Added directionals for larger bellies!
+				genital_overlay_directional.icon_state = "belly_[size]_NORTH"
+				genital_overlay_directional.layer = -GENITALS_BEHIND_LAYER
 
+			if(G.slot == "anus")
+				size = round(size)
 				genital_overlay.icon = 'hyperstation/icons/obj/genitals/butt.dmi'
-				genital_overlay.icon_state = "butt_[round(size)]_OTHER"
+				genital_overlay.icon_state = "butt_[size]_OTHER"
 				genital_overlay.layer = -ID_LAYER //in front of suit, behind bellies.
 
 				//creates directional layering by rendering twice. North has higher layer priority to occlude hands.
 				genital_overlay_directional.icon = 'hyperstation/icons/obj/genitals/butt.dmi'
-				genital_overlay_directional.icon_state = "butt_[round(size)]_NORTH"
+				genital_overlay_directional.icon_state = "butt_[size]_NORTH"
 				genital_overlay_directional.layer = -NECK_LAYER
 
 				colourcode = "butt_color"
-				if(use_skintones) //butts are forced a colour, either skin tones, or main colour. how ever, mutants use a darker version, because of their body tone.
+				if(use_skintones && H.dna.features["genitals_use_skintone"]) 
+				//butts are forced a colour, either skin tones, or main colour.
+				//how ever, mutants use a darker version, because of their body tone.
 					genital_overlay.color = "#[skintone2hex(H.skin_tone)]"
-					genital_overlay.icon_state = "butt_[round(size)]_OTHER"
-					genital_overlay_directional.icon_state = "butt_[round(size)]_NORTH"
+					genital_overlay.icon_state = "butt_[size]_OTHER"
+					genital_overlay_directional.icon_state = "butt_[size]_NORTH"
 				else
 					genital_overlay.color = "#[H.dna.features["mcolor"]]"
-					genital_overlay.icon_state = "butt_[round(size)]_OTHER_m"
-					genital_overlay_directional.icon_state = "butt_[round(size)]_NORTH_m"
+					genital_overlay.icon_state = "butt_[size]_OTHER_m"
+					genital_overlay_directional.icon_state = "butt_[size]_NORTH_m"
 
 
 			if(S.center)
@@ -514,21 +521,10 @@
 				if (colourtint)
 					genital_overlay.color = "#[colourtint]"
 			else
-				switch(colourcode)
-					if("cock_color")
-						genital_overlay.color = "#[H.dna.features["cock_color"]]"
-						if (colourtint)
-							genital_overlay.color = "#[colourtint]"
-					if("balls_color")
-						genital_overlay.color = "#[H.dna.features["balls_color"]]"
-					if("breasts_color")
-						genital_overlay.color = "#[H.dna.features["breasts_color"]]"
-					if("vag_color")
-						genital_overlay.color = "#[H.dna.features["vag_color"]]"
-					if("belly_color")
-						genital_overlay.color = "#[H.dna.features["belly_color"]]"
-					if("butt_color")
-						genital_overlay.color = "#[H.dna.features["butt_color"]]"
+				if(colourcode != MUTCOLORS)
+					genital_overlay.color = "#[H.dna.features[colourcode]]"
+					if(colourcode == "cock_color" && colourtint)
+						genital_overlay.color = "#[colourtint]"
 
 			standing += genital_overlay
 
@@ -542,7 +538,7 @@
 					if (colourtint)
 						genital_overlay_directional.color = "#[colourtint]"
 				else
-					genital_overlay_directional.color = "#[H.dna.features["butt_color"]]"
+					genital_overlay_directional.color = "#[H.dna.features[colourcode]]"
 
 				standing += genital_overlay_directional
 

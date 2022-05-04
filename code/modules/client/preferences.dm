@@ -2430,14 +2430,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
 
 				if("belly_size")
-					var/new_bellysize = input(user, "Belly size :\n(1-3)", "Character Preference") as num|null
-					if(new_bellysize)
-						features["belly_size"] = clamp(new_bellysize, 1, 3)
+					var/new_bellysize = input(user, "Belly size :\n([BELLY_MIN_SIZE]-[BELLY_MAX_SIZE])", "Character Preference") as num|null
+					if(new_bellysize != null)
+						features["belly_size"] = clamp(new_bellysize, BELLY_MIN_SIZE, BELLY_MAX_SIZE)
 
 				if("butt_size")
-					var/new_buttsize = input(user, "Butt size :\n(0-5)", "Character Preference") as num|null
-					if(new_buttsize)
-						features["butt_size"] = clamp(new_buttsize, 0, 5)
+					var/new_buttsize = input(user, "Butt size :\n([BUTT_MIN_SIZE]-[BUTT_MAX_SIZE])", "Character Preference") as num|null
+					if(new_buttsize != null)
+						features["butt_size"] = clamp(new_buttsize, BUTT_MIN_SIZE, BUTT_MAX_SIZE)
 
 				if("vag_shape")
 					var/new_shape
@@ -2572,7 +2572,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(features["has_belly"] == FALSE)
 						features["hide_belly"] = FALSE
 						features["inflatable_belly"] = FALSE
-						features["belly_size"] = 1
+						features["belly_size"] = 0
 
 				if("inflatable_belly")
 					features["inflatable_belly"] = !features["inflatable_belly"]

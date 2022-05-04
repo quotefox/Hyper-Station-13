@@ -844,7 +844,7 @@
 	typepath = /datum/round_event/spontaneous_appendicitis
 	enemy_roles = list("Medical Doctor","Chief Medical Officer")
 	required_enemies = list(2,2,2,2,2,2,2,1,1,1)
-	requirements = list(5,5,5,5,5,5,5,5,0,0)
+	requirements = list(101,101,20,18,16,14,12,10,8,6)
 	high_population_requirement = 10
 	weight = 5
 	cost = 6

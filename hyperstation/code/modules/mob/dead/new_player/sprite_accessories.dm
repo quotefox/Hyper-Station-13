@@ -403,6 +403,12 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	name = "RadDog (Hyper)"
 	icon_state = "chemlight"
 	icon = 'hyperstation/icons/mob/char_markings.dmi'
+	
+//racc do a code maybe it won't explode
+/datum/sprite_accessory/mam_body_markings/raccalt
+	name = "RaccAlt (Hyper)"
+	icon_state = "raccalt"
+	icon = 'hyperstation/icons/mob/char_markings.dmi'
 
 /*
 TAUR BODIES

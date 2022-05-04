@@ -9396,6 +9396,12 @@
 	dir = 1
 	},
 /area/science/misc_lab)
+"bbY" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/turf/closed/wall,
+/area/hydroponics)
 "bcb" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -10909,8 +10915,8 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/open/floor/plating,
-/area/maintenance/fore/secondary)
+/turf/closed/wall,
+/area/hydroponics)
 "bwq" = (
 /obj/effect/spawner/lootdrop/maintenance{
 	lootcount = 2;
@@ -18305,6 +18311,23 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/engine_smes)
+"dou" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/structure/table/glass,
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
+/area/crew_quarters/fitness/pool)
 "dov" = (
 /obj/structure/cable{
 	icon_state = "0-8"
@@ -28883,19 +28906,26 @@
 /turf/closed/wall/r_wall,
 /area/maintenance/port/aft)
 "gkz" = (
-/obj/structure/closet/secure_closet/personal,
-/obj/item/toy/poolnoodle/blue,
-/obj/item/toy/poolnoodle/red,
-/obj/item/toy/poolnoodle/yellow,
+/obj/structure/table,
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = -2;
+	pixel_y = 18
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_y = 22
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = -1;
+	pixel_y = 7
+	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
-	},
-/obj/machinery/light{
-	dir = 8;
-	pixel_x = -7
 	},
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
@@ -29661,6 +29691,22 @@
 	icon_state = "floor_trim"
 	},
 /area/engine/engineering)
+"gsf" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
+/area/crew_quarters/fitness/pool)
 "gsh" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -30915,6 +30961,17 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/aft)
+"gHS" = (
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
+	dir = 4;
+	name = "air vent"
+	},
+/turf/open/floor/grass,
+/area/hydroponics)
 "gIv" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
@@ -31724,8 +31781,7 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
-	dir = 4;
+/obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
 /turf/open/floor/plasteel/dark,
@@ -31743,18 +31799,21 @@
 /area/medical/sleeper)
 "gTx" = (
 /obj/effect/turf_decal/tile/neutral{
-	dir = 1
+	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral{
-	dir = 8
+	dir = 1
 	},
 /obj/effect/turf_decal/loading_area{
-	dir = 8;
+	dir = 1;
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
 /turf/open/floor/plasteel{
-	dir = 4;
 	icon_state = "floor_plate"
 	},
 /area/crew_quarters/fitness/pool)
@@ -34164,6 +34223,19 @@
 /obj/machinery/airalarm{
 	dir = 8;
 	pixel_x = 24
+	},
+/obj/structure/table,
+/obj/item/watertank,
+/obj/item/reagent_containers/spray/plantbgone{
+	pixel_x = 13;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/spray/plantbgone{
+	pixel_y = 3
+	},
+/obj/item/reagent_containers/spray/plantbgone{
+	pixel_x = 8;
+	pixel_y = 8
 	},
 /turf/open/floor/plasteel/dark,
 /area/hydroponics)
@@ -39990,30 +40062,10 @@
 /turf/open/floor/plasteel/dark,
 /area/chapel/main)
 "iWa" = (
-/obj/structure/table,
-/obj/item/reagent_containers/spray/plantbgone{
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/spray/plantbgone{
-	pixel_x = 8;
-	pixel_y = 8
-	},
-/obj/item/reagent_containers/spray/plantbgone{
-	pixel_x = 13;
-	pixel_y = 5
-	},
-/obj/item/watertank,
-/obj/effect/turf_decal/tile/neutral{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
+/turf/open/floor/grass,
 /area/hydroponics)
 "iWe" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
@@ -43172,6 +43224,14 @@
 	},
 /turf/open/floor/plating,
 /area/chapel/main)
+"jRW" = (
+/obj/machinery/door/airlock/maintenance{
+	dir = 1;
+	name = "Hydroponics Maintenance";
+	req_access_txt = "35"
+	},
+/turf/open/floor/plasteel/dark,
+/area/hydroponics)
 "jSj" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
 	dir = 8;
@@ -44607,12 +44667,13 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
-	name = "air supply pipe"
-	},
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
+	dir = 4;
+	name = "air supply pipe"
 	},
 /turf/open/floor/plasteel/dark,
 /area/hydroponics)
@@ -48493,9 +48554,12 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/fitness)
 "lvD" = (
-/obj/structure/kitchenspike,
 /obj/machinery/camera{
 	c_tag = "Kitchen Cold Room"
+	},
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
 	},
 /turf/open/floor/plasteel/showroomfloor,
 /area/crew_quarters/kitchen)
@@ -49885,7 +49949,6 @@
 /area/maintenance/fore)
 "lSg" = (
 /obj/structure/table,
-/obj/item/book/manual/hydroponics_pod_people,
 /obj/item/paper/guides/jobs/hydroponics,
 /obj/item/reagent_containers/glass/bottle/mutagen,
 /obj/item/reagent_containers/glass/bottle/mutagen,
@@ -49904,6 +49967,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
 	dir = 8;
 	name = "air vent"
+	},
+/obj/machinery/reagentgrinder{
+	pixel_y = 8
 	},
 /turf/open/floor/plasteel/dark,
 /area/hydroponics)
@@ -53966,21 +54032,6 @@
 	},
 /area/science/misc_lab)
 "mUr" = (
-/obj/structure/table,
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = -2;
-	pixel_y = 18
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 22
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = -1;
-	pixel_y = 7
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -53992,6 +54043,7 @@
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/structure/jacuzzi,
 /turf/open/floor/plasteel{
 	dir = 4;
 	icon_state = "floor_plate"
@@ -54696,6 +54748,9 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/break_room)
+"nfw" = (
+/turf/open/floor/grass,
+/area/hydroponics)
 "nfB" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -66155,11 +66210,6 @@
 	},
 /area/bridge)
 "pYk" = (
-/obj/machinery/door/airlock/maintenance{
-	dir = 4;
-	name = "Hydroponics Maintenance";
-	req_access_txt = "35"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 4;
 	name = "scrubbers pipe"
@@ -66171,8 +66221,8 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plasteel/dark,
-/area/maintenance/fore/secondary)
+/turf/closed/wall,
+/area/hydroponics)
 "pYn" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -66983,26 +67033,17 @@
 	},
 /area/medical/virology)
 "qlS" = (
-/obj/structure/closet/crate/hydroponics,
-/obj/item/shovel/spade,
-/obj/item/wrench,
-/obj/item/reagent_containers/glass/bucket,
-/obj/item/wirecutters,
-/obj/item/screwdriver,
-/obj/item/crowbar,
-/obj/effect/turf_decal/loading_area{
-	icon_state = "drain";
-	name = "drain"
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
 	},
-/obj/effect/turf_decal/loading_area{
+/obj/machinery/door/window/northleft{
 	dir = 4;
-	icon_state = "drain";
-	name = "drain"
+	icon_state = "right";
+	name = "Chicken Coop";
+	req_access_txt = "35"
 	},
-/obj/machinery/light_switch{
-	pixel_x = -23
-	},
-/turf/open/floor/plasteel,
+/turf/open/floor/grass,
 /area/hydroponics)
 "qlU" = (
 /obj/structure/sign/logo/kinaris{
@@ -67059,7 +67100,6 @@
 	},
 /area/science/research)
 "qmq" = (
-/obj/machinery/hydroponics/constructable,
 /obj/effect/turf_decal/tile/green{
 	dir = 4
 	},
@@ -67567,21 +67607,11 @@
 /turf/open/floor/plasteel/dark,
 /area/tcommsat/computer)
 "qsc" = (
-/obj/structure/table,
-/obj/machinery/reagentgrinder{
-	pixel_y = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
+/obj/structure/window/reinforced{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/turf/open/floor/plasteel/dark,
+/obj/item/reagent_containers/food/snacks/grown/wheat,
+/turf/open/floor/grass,
 /area/hydroponics)
 "qsj" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
@@ -69747,10 +69777,16 @@
 	},
 /area/engine/break_room)
 "qRW" = (
-/obj/item/toy/beach_ball/holoball{
-	name = "baskingball"
+/obj/structure/closet/crate/wooden,
+/obj/item/stack/sheet/mineral/wood,
+/obj/item/stack/sheet/mineral/wood,
+/obj/item/stack/sheet/mineral/wood,
+/obj/item/stack/sheet/mineral/wood,
+/obj/item/paper/guides/jobs/hydroponics{
+	info = "Chickens love their wheat, if you feed it to them, they will be encouraged to lay eggs early. But make sure they have somewhere to nest, or they wont lay! Make sure they have soft grass, or hay to walk on, otherwise they will be unhappy. If a chickens unhappy, then you are unhappy.";
+	name = "paper- 'Chicken Keeping!'"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/grass,
 /area/hydroponics)
 "qSg" = (
 /obj/effect/turf_decal/loading_area{
@@ -71943,6 +71979,9 @@
 	},
 /obj/effect/turf_decal/tile/green{
 	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
 	},
 /turf/open/floor/plasteel/dark/side,
 /area/hydroponics)
@@ -85468,6 +85507,32 @@
 /obj/structure/railing,
 /turf/open/floor/plating/asteroid/layenia,
 /area/layenia)
+"uHP" = (
+/obj/structure/table,
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel,
+/area/crew_quarters/fitness/pool)
 "uId" = (
 /obj/structure/sign/logo/kinaris{
 	icon_state = "kinaris_sign3";
@@ -88438,7 +88503,6 @@
 /turf/open/floor/plasteel/dark,
 /area/quartermaster/miningdock)
 "vuZ" = (
-/obj/machinery/hydroponics/constructable,
 /obj/effect/turf_decal/tile/green{
 	dir = 4
 	},
@@ -90447,6 +90511,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hallway/primary/port)
+"vTc" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
+	name = "air scrubber"
+	},
+/turf/open/floor/grass,
+/area/hydroponics)
 "vTh" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -91737,15 +91807,6 @@
 /turf/open/floor/plasteel/white,
 /area/science/circuit)
 "wkf" = (
-/obj/structure/table,
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = 2;
-	pixel_y = 5
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = 3;
-	pixel_y = 9
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -91765,8 +91826,9 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/machinery/newscaster{
-	pixel_y = 32
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/pool)
@@ -95052,14 +95114,21 @@
 /turf/open/floor/plasteel,
 /area/engine/atmos)
 "xee" = (
+/obj/structure/closet/crate/hydroponics,
+/obj/item/shovel/spade,
+/obj/item/wrench,
+/obj/item/reagent_containers/glass/bucket,
+/obj/item/wirecutters,
+/obj/item/screwdriver,
+/obj/item/crowbar,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
 	icon_state = "drain";
 	name = "drain"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
-	dir = 4;
-	name = "scrubbers pipe"
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
@@ -95068,6 +95137,11 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/structure/window/reinforced,
 /turf/open/floor/plasteel,
 /area/hydroponics)
 "xej" = (
@@ -95973,9 +96047,12 @@
 /turf/open/floor/plasteel/dark,
 /area/arcade)
 "xqk" = (
-/obj/machinery/space_heater,
-/turf/open/floor/plating,
-/area/maintenance/fore/secondary)
+/mob/living/simple_animal/chicken{
+	force_gender = male;
+	name = "rooster"
+	},
+/turf/open/floor/grass,
+/area/hydroponics)
 "xql" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -97809,6 +97886,19 @@
 	planetary_atmos = 1
 	},
 /area/layenia/cloudlayer)
+"xNj" = (
+/mob/living/simple_animal/chicken{
+	force_gender = female;
+	name = "chicken"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/machinery/light{
+	pixel_y = -1
+	},
+/turf/open/floor/grass,
+/area/hydroponics)
 "xNp" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
@@ -113886,10 +113976,10 @@ wkf
 mUr
 rbJ
 vrd
-nBK
+uHP
 gkz
 nBK
-gTx
+nBK
 cnB
 wwE
 pfI
@@ -114139,7 +114229,7 @@ tBc
 yfm
 wcK
 yeA
-sks
+gTx
 xDB
 xDB
 sPO
@@ -114396,7 +114486,7 @@ acP
 tEk
 ylM
 yeA
-nLu
+dou
 xDB
 kMH
 fLo
@@ -114653,7 +114743,7 @@ xej
 gTW
 gTW
 yeA
-rfR
+gsf
 xDB
 sXB
 nss
@@ -126488,11 +126578,11 @@ tti
 aoE
 tti
 ksw
-cHs
-cHs
-cHs
-cHs
-cHs
+vxc
+vxc
+vxc
+vxc
+vxc
 cHs
 cHs
 cHs
@@ -126747,7 +126837,7 @@ pWH
 rDw
 bwp
 xqk
-vxc
+nfw
 qRW
 vxc
 rrL
@@ -127003,10 +127093,10 @@ aNI
 pre
 vxc
 pYk
-vxc
-vxc
-vxc
-vxc
+gHS
+vTc
+xNj
+bbY
 rrR
 gTc
 uJs
@@ -127770,7 +127860,7 @@ kXX
 oog
 eLb
 aJe
-vxc
+jRW
 qmq
 hDa
 lSg

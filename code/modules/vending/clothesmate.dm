@@ -111,6 +111,7 @@
 		            /obj/item/clothing/suit/toggle/jacket_white = 3,
 		            /obj/item/clothing/suit/jacket/letterman_red = 3,
 		            /obj/item/clothing/suit/fluffyhalfcrop = 3,
+		            /obj/item/clothing/under/officesexy = 3,
 		            /obj/item/clothing/ears/headphones = 10,
 		            /obj/item/clothing/suit/apron/purple_bartender = 4,
 		            /obj/item/clothing/under/rank/bartender/purple = 4,
@@ -133,6 +134,7 @@
 					/obj/item/clothing/head/cowboyhat/pink = 3,
 					/obj/item/clothing/shoes/cowboyboots = 3,
 					/obj/item/clothing/shoes/cowboyboots/black = 3,
+					/obj/item/clothing/under/raccveralls = 3,
 					/obj/item/clothing/under/polychromic/vsweater = 3)
 	contraband = list(/obj/item/clothing/under/syndicate/tacticool = 3,
 					  /obj/item/clothing/under/syndicate/tacticool/skirt = 3,

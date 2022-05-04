@@ -70,6 +70,7 @@
 				/obj/item/electropack/vibrator = 2,
 				/obj/item/fleshlight = 2,
 				/obj/item/storage/box/portallight = 1,
+				/obj/item/storage/pill_bottle/lovedice = 5,
 				)
 	contraband = list(
 				/obj/item/clothing/under/gear_harness = 3,
