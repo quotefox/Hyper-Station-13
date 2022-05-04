@@ -288,7 +288,7 @@
 	if(user.getArousalLoss() < 100)
 		to_chat(user, "<i>You hear a voice in your head... <b>\"You are not horny enough to receive my blessing, dear~\"</i></b>")
 		return
-	if (user.can_climax(0))
+	if(user.can_climax())
 		user.mob_climax(forced_climax=TRUE)
 		to_chat(user, "<i>You hear a voice in your head... <b>\"You are worth of my blessing dear~\"</i></b>")
 		to_chat(user, "<span class='userdanger'>You feel overpowering pleasure surge through your entire body.</span>")
