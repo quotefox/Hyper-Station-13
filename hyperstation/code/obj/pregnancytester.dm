@@ -36,4 +36,5 @@
 	icon_state = result_text
 	name = "[results] preganancy test"
 	status = TRUE
-	to_chat(user, "<span class='notice'>You use the pregnancy test, the display reads [results]!</span>")	
+	if(user)
+		to_chat(user, "<span class='notice'>You use the pregnancy test, the display reads [results]!</span>")	
