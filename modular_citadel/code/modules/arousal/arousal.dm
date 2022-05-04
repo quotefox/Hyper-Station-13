@@ -217,8 +217,8 @@
 	if(M.canbearoused)
 		ui_interact(usr)
 
-/mob/living/proc/can_climax(_arousal = 100)
-	return src.getArousalLoss() >= _arousal && ishuman(src) && src.has_dna()
+/mob/living/proc/can_orgasm(arousal = 100)
+	return src.getArousalLoss() >= arousal && ishuman(src) && src.has_dna()
 
 /mob/living/proc/mob_climax()//This is just so I can test this shit without being forced to add actual content to get rid of arousal. Will be a very basic proc for a while.
 	set name = "Masturbate"

@@ -22,17 +22,17 @@
 /obj/item/pregnancytest/proc/Test(mob/living/user)
 	if(status)
 		return
-	var/_result = FALSE
+	var/_results = FALSE
 	var/obj/item/organ/genital/womb/W = user.getorganslot("womb")
 	if(!W)
 		return // no reason to waste the single-use on them
 	if(W.pregnant)
-		_result = TRUE
-	UpdateResult(user, _result)
+		_results = TRUE
+	UpdateResult(user, _results)
 
-/obj/item/pregnancytest/proc/UpdateResult(mob/living/user, _result)
-	var/result_text = _result ? "positive" : "negative"
-	results = result_text
+/obj/item/pregnancytest/proc/UpdateResult(mob/living/user, results)
+	var/result_text = results ? "positive" : "negative"
+	src.results = result_text
 	icon_state = result_text
 	name = "[results] preganancy test"
 	status = TRUE

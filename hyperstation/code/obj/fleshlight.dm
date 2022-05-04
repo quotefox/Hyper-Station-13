@@ -63,7 +63,7 @@
 
 		C.do_jitter_animation()
 		C.adjustArousalLoss(20) //make the target more aroused.
-		if (C.can_climax())
+		if (C.can_orgasm())
 			C.mob_climax(forced_climax=TRUE) //make them cum if they are over the edge.
 
 		return
@@ -155,10 +155,10 @@
 			target.adjustArousalLoss(20)
 			target.do_jitter_animation() //make your partner shake too!
 			// Why not have a probability to cum when someone's getting nailed with max arousal?~
-			if (target.can_climax() && prob(5)) 
+			if (target.can_orgasm() && prob(5)) 
 				// if vagina is not exposed, the climax will not cause a spill
 				target.mob_climax_outside(target_genital, target_genital.is_exposed())
-			if (holder.can_climax())
+			if (holder.can_orgasm())
 				var/mob/living/carbon/human/O = holder
 				var/impreg_chance = target_genital.name == "vagina" && !P.condom && !P.sounding
 				O.mob_climax_partner(P, target, FALSE, impreg_chance, FALSE, TRUE)
