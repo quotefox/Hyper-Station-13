@@ -25,7 +25,7 @@
 	if(ismob(M) && M.canbearoused && arousal_gain != 0)
 		var/orgasm = FALSE
 		if(arousal_gain > 0)
-			if(M.getArousalLoss() >= 100 && ishuman(M) && M.has_dna())
+			if(M.can_climax())
 				var/mob/living/carbon/human/H = M
 				var/orgasm_message = pick("A sharp pulse of electricity pushes you to orgasm!", "You feel a jolt of electricity force you into orgasm!")
 				H.visible_message("<span class='warning'>\The [assembly] electrodes shock [H]!</span>", "<span class='warning'>[orgasm_message]</span>")

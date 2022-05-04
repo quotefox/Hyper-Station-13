@@ -63,7 +63,7 @@
 
 		C.do_jitter_animation()
 		C.adjustArousalLoss(20) //make the target more aroused.
-		if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
+		if (C.can_climax())
 			C.mob_climax(forced_climax=TRUE) //make them cum if they are over the edge.
 
 		return

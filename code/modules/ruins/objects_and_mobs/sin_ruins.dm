@@ -282,13 +282,13 @@
 	. = ..()
 	if(.)
 		return
-	if(chalice_taken == 1)
+	if(chalice_taken)
 		to_chat(user, "<i>You hear a voice in your head... <b>\"My chalice has already been taken, dear. I cannot give you another...\"</i></b>")
 		return
 	if(user.getArousalLoss() < 100)
 		to_chat(user, "<i>You hear a voice in your head... <b>\"You are not horny enough to receive my blessing, dear~\"</i></b>")
 		return
-	if (ishuman(user) && user.has_dna())
+	if (user.can_climax(0))
 		user.mob_climax(forced_climax=TRUE)
 		to_chat(user, "<i>You hear a voice in your head... <b>\"You are worth of my blessing dear~\"</i></b>")
 		to_chat(user, "<span class='userdanger'>You feel overpowering pleasure surge through your entire body.</span>")
