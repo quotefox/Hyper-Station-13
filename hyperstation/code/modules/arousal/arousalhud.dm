@@ -380,12 +380,11 @@ obj/screen/arousal/proc/kiss()
 
 
 /mob/living/carbon/human/proc/climaxover(mob/living/T)
-	var/mob/living/carbon/human/L = T
+	var/mob/living/carbon/human/partner = T
 	var/obj/item/organ/genital/picked_organ
 	picked_organ = pick_climax_genitals()
 	if(picked_organ)
 		src << browse(null, "window=arousal") //alls fine, we can close the window now.
-		var/mob/living/partner = L
 		if(partner)
 			var/obj/item/organ/genital/penis/P = picked_organ
 			if(P.condom == 1)
