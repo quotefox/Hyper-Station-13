@@ -158,7 +158,7 @@
 		var/altered_height
 		altered_height = input(user, "Choose your desired sprite size:\n([MIN_BODYSIZE]-400%)", "Height Alteration") as num|null
 		if(altered_height)
-			H.size_multiplier = (max(min( round(text2num(altered_height)),400),MIN_BODYSIZE))/100
+			H.size_multiplier = (max(min( round(text2num(altered_height)),1000),MIN_BODYSIZE))/100
 			playsound(user.loc, pshoom_or_beepboopblorpzingshadashwoosh, 40, 1)
 			do_sparks(5, FALSE, user.loc)
 			H.visible_message("<span class='danger'>[pick("[H] shifts in size!", "[H] alters in height!", "[H] reshapes into a new stature!")]</span>")

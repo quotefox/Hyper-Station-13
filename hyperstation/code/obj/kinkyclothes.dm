@@ -129,3 +129,72 @@ obj/item/clothing/neck/stole/black
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	heat_protection = CHEST|GROIN|ARMS
 	armor = list("melee" = 60, "bullet" = 80, "laser" = 80, "energy" = 90, "bomb" = 50, "bio" = 100, "rad" = 50, "fire" = 50, "acid" = 50)
+
+/obj/item/clothing/under/raccveralls
+	name = "form fitting overalls"
+	desc = "A tight form fitting pair of overalls."
+	icon = 'hyperstation/icons/obj/clothing/uniforms.dmi'
+	icon_state = "raccveralls"
+	alternate_worn_icon = 'hyperstation/icons/mobs/uniforms.dmi'
+	item_state = "raccveralls"
+	can_adjust = FALSE
+
+/obj/item/clothing/under/officesexy
+	name = "Revealing office uniform"
+	desc = "A sexy office uniform, that has a low cropped front to show off some chest, or bra. And a tall dress that covers the stomach, complete with a set of buttons."
+	icon = 'hyperstation/icons/obj/clothing/uniforms.dmi'
+	icon_state = "office_revealing"
+	alternate_worn_icon = 'hyperstation/icons/mobs/uniforms.dmi'
+	item_state = "office_revealing"
+	can_adjust = FALSE
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/under/vaultsuit
+	name = "vault suit"
+	desc = "A tight form fitting Vault-Tec standard issue Vault Jumpsuit! Snazzy!"
+	icon = 'hyperstation/icons/obj/clothing/uniforms.dmi'
+	icon_state = "vaultsuit"
+	alternate_worn_icon = 'hyperstation/icons/mobs/uniforms.dmi'
+	item_state = "b_suit"
+	can_adjust = FALSE
+	var/firstpickup = TRUE
+	var/pickupsound = TRUE
+
+/obj/item/clothing/under/vaultsuit/no_sound
+	pickupsound = FALSE
+
+/obj/item/clothing/under/vaultsuit/equipped(mob/user, slot)
+	. = ..()
+	if(!pickupsound)
+		return
+	if(!ishuman(user))
+		return
+	if(slot == SLOT_W_UNIFORM)
+		if(!firstpickup)
+			SEND_SOUND(user, sound('hyperstation/sound/effects/vaultsuit/FalloutEXPUp.ogg', volume = 50))
+		else
+			firstpickup = FALSE
+			SEND_SOUND(user, sound('hyperstation/sound/effects/vaultsuit/FalloutLevelUp.ogg', volume = 50))
+			SEND_SOUND(user, sound('hyperstation/sound/effects/vaultsuit/InkSpotsSting.ogg', volume = 60))
+	return
+
+/obj/item/clothing/suit/tunnelfox
+	name = "tunnel fox jacket"
+	desc = "Tunnel Foxes Rule!"
+	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
+	icon_state = "tunnelfox"
+	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
+	item_state = "tunnelfox"
+	body_parts_covered = CHEST|LEGS|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+
+/obj/item/clothing/suit/tunnelfox_t
+	name = "opened tunnel fox jacket"
+	desc = "Tunnel Foxes Rule!"
+	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
+	icon_state = "tunnelfox_t"
+	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
+	item_state = "tunnelfox_t"
+	body_parts_covered = CHEST|LEGS|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
+

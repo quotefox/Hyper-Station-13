@@ -7,7 +7,8 @@
 	icon_state = "crystal"
 	icon_living = "crystal"
 	icon_dead = "crystal"
-	mob_biotypes = MOB_BEAST
+	gender = NEUTER
+	mob_biotypes = MOB_INORGANIC
 	speak_chance = 0
 	turns_per_move = 10
 	response_help = "touches"
@@ -29,6 +30,7 @@
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
 	maxbodytemp = 3500
+	blood_volume = 0 //It's a fucking rock
 	faction = list("carp")
 	movement_type = FLYING
 	pressure_resistance = 500

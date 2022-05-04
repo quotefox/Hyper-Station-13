@@ -151,15 +151,18 @@
 
 	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
 
-	if(!do_after(user, 20))
+	if(!do_after(user, 15, src))
 		return
 
 	if(get_turf(user) == get_turf(src))
+		usr.dir = get_dir(usr.loc, get_step(src, src.dir))//turn and face railing
 		usr.forceMove(get_step(src, src.dir))
 	else
+		usr.dir = get_dir(usr.loc, loc)//turn and face railing
 		usr.forceMove(get_turf(src))
 
 	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
+	usr.do_twist(targetangle = 45, timer = 8)
 
 /obj/structure/railing/handrail
 	name = "handrail"

@@ -437,17 +437,9 @@
 			if(!remote && !in_range(src, L))
 				return
 			if(do_after(src, mb_time, target = src))
-
-				if(!spillage) //hyper inflation
-					var/obj/item/organ/genital/belly/B = L.getorganslot("belly")
-					if(B)
-						if(B.inflatable && total_fluids > 80) //requires a big cumshot to expand.
-							if(B.size < 3)
-								B.size += 1
-								to_chat(L, "<span class='userlove'>You feel your belly expand.</span>")
-							else
-								to_chat(L, "<span class='userlove'>You feel your belly strain.</span>")
-
+				var/mob/living/carbon/H = L
+				if(!spillage && total_fluids > 80) //hyper inflation; requires a big cumshot to expand
+					H.expand_belly(1)
 				var/obj/item/organ/genital/penis/P = G
 				if (P.condom)//condomed.
 					src.condomclimax()
@@ -673,8 +665,6 @@
 								var/mob/living/carbon/C = check_target
 								if(C.exposed_genitals.len || C.is_groin_exposed() || C.is_chest_exposed()) //Are they naked enough?
 									partner = C
-							else //A cat is fine too
-								partner = check_target
 						if(partner) //Did they pass the clothing checks?
 							mob_climax_partner(G, partner, mb_time = 0) //Instant climax due to forced
 							continue //You've climaxed once with this organ, continue on
