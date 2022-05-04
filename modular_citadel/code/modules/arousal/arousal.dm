@@ -168,7 +168,7 @@
 	else
 		if(hud_used.arousal)
 			var/arousal_state = "arousal0"
-			if(!stat == DEAD)
+			if(stat != DEAD)
 				var/arousal_percent = getPercentAroused()
 				var/arousal_rounded = FLOOR(arousal_percent, 10)
 				arousal_state = "arousal[arousal_rounded]"
