@@ -140,7 +140,7 @@
 		T.toggle_visibility(picked_visibility)
 
 	if(href_list["masturbate"])
-		if (H.arousalloss >= (H.max_arousal / 100) * 33) //requires 33% arousal.
+		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
 			H.solomasturbate()
 			return
 		else
@@ -148,7 +148,7 @@
 		return
 
 	if(href_list["container"])
-		if (H.arousalloss >= (H.max_arousal / 100) * 33) //requires 33% arousal.
+		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
 			H.cumcontainer()
 			return
 		else
@@ -156,7 +156,7 @@
 		return
 
 	if(href_list["clothesplosion"])
-		if (H.arousalloss >= (H.max_arousal / 100) * 33) //Requires 33% arousal.
+		if (H.arousalloss >= H.isPercentAroused(33)) //Requires 33% arousal.
 			H.clothesplosion()
 			return
 		else
@@ -164,7 +164,7 @@
 		return
 
 	if(href_list["climaxself"])
-		if (H.arousalloss >= (H.max_arousal / 100) * 33) //requires 33% arousal.
+		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
 			H.climaxself()
 			return
 		else
@@ -172,7 +172,7 @@
 		return
 
 	if(href_list["climax"])
-		if (H.arousalloss >= (H.max_arousal / 100) * 33) //requires 33% arousal.
+		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
 			H.climaxalone(FALSE)
 			return
 		else
@@ -180,7 +180,7 @@
 		return
 
 	if(href_list["climaxover"])
-		if (H.arousalloss >= (H.max_arousal / 100) * 33) //requires 33% arousal.
+		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
 			H.climaxover(usr.pulling)
 			return
 		else
@@ -188,7 +188,7 @@
 		return
 
 	if(href_list["climaxwith"])
-		if (H.arousalloss >= (H.max_arousal / 100) * 33) //requires 33% arousal.
+		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
 			H.climaxwith(usr.pulling)
 			return
 		else
@@ -196,7 +196,7 @@
 		return
 
 	if(href_list["impreg"])
-		if (H.arousalloss >= (H.max_arousal / 100) * 33) //requires 33% arousal.
+		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
 			H.impregwith(usr.pulling)
 			return
 		else

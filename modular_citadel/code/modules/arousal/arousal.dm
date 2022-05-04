@@ -62,7 +62,6 @@
 
 /mob/living/proc/handle_arousal()
 
-
 /mob/living/carbon/handle_arousal()
 	if(canbearoused && dna)
 		var/datum/species/S
@@ -110,6 +109,9 @@
 	if(updating_arousal)
 		updatearousal()
 
+/**
+	* despite the name of this, it actually returns a number between 0 and 100
+  */
 /mob/living/proc/getPercentAroused()
 	var/percentage = ((100 / max_arousal) * arousalloss)
 	return percentage
@@ -127,7 +129,6 @@
 
 /mob/living/carbon/updatearousal()
 	. = ..()
-
 	for(var/obj/item/organ/genital/G in internal_organs)
 		if(istype(G))
 			var/datum/sprite_accessory/S
@@ -142,7 +143,7 @@
 					S = GLOB.breasts_shapes_list[G.shape]
 			if(S?.alt_aroused)
 				G.aroused_state = isPercentAroused(G.aroused_amount)
-			if(getArousalLoss() >= ((max_arousal / 100) * 33))
+			if(getArousalLoss() >= isPercentAroused(33))
 				G.aroused_state = TRUE
 			else
 				G.aroused_state = FALSE
@@ -166,41 +167,13 @@
 		return FALSE
 	else
 		if(hud_used.arousal)
-			if(stat == DEAD)
-				hud_used.arousal.icon_state = "arousal0"
-				return TRUE
-			if(getArousalLoss() == max_arousal)
-				hud_used.arousal.icon_state = "arousal100"
-				return TRUE
-			if(getArousalLoss() >= (max_arousal / 100) * 90)//M O D U L A R ,   W O W
-				hud_used.arousal.icon_state = "arousal90"
-				return TRUE
-			if(getArousalLoss() >= (max_arousal / 100) * 80)//M O D U L A R ,   W O W
-				hud_used.arousal.icon_state = "arousal80"
-				return TRUE
-			if(getArousalLoss() >= (max_arousal / 100) * 70)//M O D U L A R ,   W O W
-				hud_used.arousal.icon_state = "arousal70"
-				return TRUE
-			if(getArousalLoss() >= (max_arousal / 100) * 60)//M O D U L A R ,   W O W
-				hud_used.arousal.icon_state = "arousal60"
-				return TRUE
-			if(getArousalLoss() >= (max_arousal / 100) * 50)//M O D U L A R ,   W O W
-				hud_used.arousal.icon_state = "arousal50"
-				return TRUE
-			if(getArousalLoss() >= (max_arousal / 100) * 40)//M O D U L A R ,   W O W
-				hud_used.arousal.icon_state = "arousal40"
-				return TRUE
-			if(getArousalLoss() >= (max_arousal / 100) * 30)//M O D U L A R ,   W O W
-				hud_used.arousal.icon_state = "arousal30"
-				return TRUE
-			if(getArousalLoss() >= (max_arousal / 100) * 20)//M O D U L A R ,   W O W
-				hud_used.arousal.icon_state = "arousal10"
-				return TRUE
-			if(getArousalLoss() >= (max_arousal / 100) * 10)//M O D U L A R ,   W O W
-				hud_used.arousal.icon_state = "arousal10"
-				return TRUE
-			else
-				hud_used.arousal.icon_state = "arousal0"
+			var/arousal_state = "arousal0"
+			if(!stat == DEAD)
+				var/arousal_percent = getPercentAroused()
+				var/arousal_rounded = FLOOR(arousal_percent, 10)
+				arousal_state = "arousal[arousal_rounded]"
+			hud_used.arousal.icon_state = arousal_state
+			return TRUE
 
 /obj/screen/arousal
 	name = "arousal"
@@ -227,12 +200,12 @@
 		if(mb_cd_timer <= world.time)
 			//start the cooldown even if it fails
 			mb_cd_timer = world.time + mb_cd_length
-			if(getArousalLoss() >= ((max_arousal / 100) * 33))//33% arousal or greater required
+			if(getArousalLoss() >= isPercentAroused(33))//33% arousal or greater required
 				src.visible_message("<span class='danger'>[src] starts masturbating!</span>", \
-								"<span class='userdanger'>You start masturbating.</span>")
+					"<span class='userdanger'>You start masturbating.</span>")
 				if(do_after(src, 30, target = src))
 					src.visible_message("<span class='danger'>[src] relieves [p_them()]self!</span>", \
-								"<span class='userdanger'>You have relieved yourself.</span>")
+						"<span class='userdanger'>You have relieved yourself.</span>")
 					SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 					setArousalLoss(min_arousal)
 			else
