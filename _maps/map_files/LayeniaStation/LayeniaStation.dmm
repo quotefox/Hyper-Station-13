@@ -3538,13 +3538,17 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-10"
-	},
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
 	icon_state = "drain_corner";
 	name = "drain"
+	},
+/obj/structure/closet/secure_closet/personal,
+/obj/item/toy/poolnoodle/blue,
+/obj/item/toy/poolnoodle/red,
+/obj/item/toy/poolnoodle/yellow,
+/obj/machinery/airalarm{
+	pixel_y = 22
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/pool)
@@ -21046,7 +21050,6 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
-/obj/item/twohanded/required/kirbyplants/random,
 /obj/effect/turf_decal/loading_area{
 	icon_state = "drain";
 	name = "drain"
@@ -21061,6 +21064,13 @@
 	icon_state = "drain_corner";
 	name = "drain"
 	},
+/obj/structure/closet/athletic_mixed,
+/obj/item/clothing/under/shorts/pinkwshort,
+/obj/item/clothing/under/shorts/pinkwshort,
+/obj/item/clothing/under/shorts/yellowwshort,
+/obj/item/clothing/under/shorts/yellowwshort,
+/obj/item/clothing/under/shorts/redwshort,
+/obj/item/clothing/under/shorts/redwshort,
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
 	},
@@ -25366,15 +25376,27 @@
 "eml" = (
 /obj/effect/turf_decal/loading_area{
 	color = "#55391A";
-	dir = 1;
+	dir = 9;
 	icon_state = "siding_wood_line";
 	name = "wood"
 	},
-/obj/machinery/firealarm{
-	pixel_y = -28
+/obj/structure/table/wood,
+/obj/item/reagent_containers/rag/towel{
+	pixel_y = 3
 	},
-/turf/open/floor/wood,
-/area/crew_quarters/spa/sauna)
+/obj/item/candle{
+	pixel_x = 8;
+	pixel_y = 14
+	},
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/crew_quarters/fitness/pool)
 "emp" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
@@ -25960,21 +25982,6 @@
 	},
 /area/maintenance/starboard/aft/upper)
 "esD" = (
-/obj/structure/table,
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = -2;
-	pixel_y = 18
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 22
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_y = 3
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = -1;
-	pixel_y = 7
-	},
 /obj/machinery/light{
 	dir = 8;
 	pixel_x = -7
@@ -25990,6 +25997,10 @@
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/structure/closet/secure_closet/personal,
+/obj/item/toy/poolnoodle/blue,
+/obj/item/toy/poolnoodle/red,
+/obj/item/toy/poolnoodle/yellow,
 /turf/open/floor/plasteel{
 	dir = 4;
 	icon_state = "floor_plate"
@@ -39941,12 +39952,6 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 16
-	},
-/obj/structure/closet/boxinggloves,
-/obj/item/clothing/shoes/jackboots,
 /obj/machinery/camera{
 	c_tag = "Pool North"
 	},
@@ -46829,6 +46834,10 @@
 	},
 /obj/item/twohanded/required/kirbyplants{
 	icon_state = "plant-10"
+	},
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
 	},
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
@@ -72948,6 +72957,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/science/xenobiology)
+"lIf" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 10;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/crew_quarters/fitness/pool)
 "lIh" = (
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/maintenance,
@@ -86798,7 +86819,6 @@
 	pixel_x = -27;
 	pixel_y = 4
 	},
-/obj/item/reagent_containers/food/snacks/grown/carrot,
 /turf/open/floor/grass,
 /area/hydroponics)
 "nNN" = (
@@ -86864,6 +86884,8 @@
 	dir = 5;
 	name = "scrubbers pipe"
 	},
+/obj/structure/closet/boxinggloves,
+/obj/item/clothing/shoes/jackboots,
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
 	},
@@ -94316,6 +94338,9 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
+/obj/machinery/firealarm{
+	pixel_y = -28
+	},
 /turf/open/floor/wood,
 /area/crew_quarters/spa/sauna)
 "oQf" = (
@@ -98159,7 +98184,6 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/structure/flora/grass/jungle/b,
 /turf/open/floor/grass,
 /area/hydroponics)
 "pqQ" = (
@@ -100296,23 +100320,15 @@
 /turf/open/floor/engine,
 /area/layenia/cave)
 "pGt" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
 /obj/effect/turf_decal/loading_area{
+	color = "#55391A";
 	dir = 1;
-	icon_state = "drain";
-	name = "drain"
+	icon_state = "siding_wood_line";
+	name = "wood"
 	},
-/obj/structure/closet/secure_closet/personal,
-/obj/item/toy/poolnoodle/yellow,
-/obj/item/toy/poolnoodle/red,
-/obj/item/toy/poolnoodle/blue,
-/turf/open/floor/plasteel{
-	icon_state = "floor_plate"
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
 	},
 /area/crew_quarters/fitness/pool)
 "pGv" = (
@@ -101318,7 +101334,12 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/structure/flora/grass/jungle,
+/obj/structure/closet/crate/wooden,
+/obj/item/stack/sheet/mineral/wood,
+/obj/item/stack/sheet/mineral/wood,
+/obj/item/stack/sheet/mineral/wood,
+/obj/item/stack/sheet/mineral/wood,
+/obj/item/paper/guides/jobs/hydroponics,
 /turf/open/floor/grass,
 /area/hydroponics)
 "pNR" = (
@@ -109095,6 +109116,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
+/obj/item/reagent_containers/food/snacks/grown/wheat,
 /turf/open/floor/grass,
 /area/hydroponics)
 "qTM" = (
@@ -125669,15 +125691,6 @@
 	},
 /area/medical/genetics/cloning)
 "tle" = (
-/obj/structure/table,
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = 2;
-	pixel_y = 5
-	},
-/obj/item/reagent_containers/rag/towel{
-	pixel_x = 3;
-	pixel_y = 9
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -125689,6 +125702,10 @@
 	icon_state = "drain";
 	name = "drain"
 	},
+/obj/structure/closet/secure_closet/personal,
+/obj/item/toy/poolnoodle/blue,
+/obj/item/toy/poolnoodle/red,
+/obj/item/toy/poolnoodle/yellow,
 /turf/open/floor/plasteel,
 /area/crew_quarters/fitness/pool)
 "tlj" = (
@@ -126004,24 +126021,28 @@
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/bar)
 "tnt" = (
-/obj/structure/closet/emcloset,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
 /obj/effect/turf_decal/loading_area{
-	dir = 8;
-	icon_state = "drain";
-	name = "drain"
+	color = "#55391A";
+	dir = 5;
+	icon_state = "siding_wood_line";
+	name = "wood"
 	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 1
+/obj/structure/table/wood,
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 2;
+	pixel_y = 5
 	},
-/turf/open/floor/plasteel{
-	dir = 4;
-	icon_state = "floor_plate"
+/obj/item/reagent_containers/rag/towel{
+	pixel_x = 3;
+	pixel_y = 9
+	},
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
 	},
 /area/crew_quarters/fitness/pool)
 "tnu" = (
@@ -128009,6 +128030,18 @@
 	dir = 1
 	},
 /area/crew_quarters/heads/cmo)
+"tCc" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/structure/jacuzzi,
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/crew_quarters/fitness/pool)
 "tCg" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
@@ -141125,13 +141158,6 @@
 /turf/open/floor/plating,
 /area/maintenance/port/aft/upper)
 "vvL" = (
-/obj/structure/closet/athletic_mixed,
-/obj/item/clothing/under/shorts/redwshort,
-/obj/item/clothing/under/shorts/redwshort,
-/obj/item/clothing/under/shorts/yellowwshort,
-/obj/item/clothing/under/shorts/yellowwshort,
-/obj/item/clothing/under/shorts/pinkwshort,
-/obj/item/clothing/under/shorts/pinkwshort,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
 	},
@@ -141142,9 +141168,6 @@
 	dir = 1;
 	icon_state = "drain";
 	name = "drain"
-	},
-/obj/machinery/airalarm{
-	pixel_y = 22
 	},
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
@@ -145624,6 +145647,17 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/maintenance/disposal)
+"wbY" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/crew_quarters/fitness/pool)
 "wcf" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/public/glass{
@@ -158913,6 +158947,18 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/central/upper)
+"ybS" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 6;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/crew_quarters/fitness/pool)
 "ybT" = (
 /obj/structure/table/wood,
 /obj/item/toy/crayon/spraycan{
@@ -240231,13 +240277,13 @@ mYf
 kMs
 mYf
 mYf
-mYf
-lwh
+xZt
+xZt
 xZt
 aoe
 tle
 esD
-tnt
+tTm
 jvf
 tOT
 tTm
@@ -240488,10 +240534,10 @@ mOF
 hDY
 nig
 rbu
-mYf
-lwh
 xZt
-pGt
+eml
+lIf
+oar
 vCa
 vCa
 vCa
@@ -240745,10 +240791,10 @@ vzx
 qUl
 qNL
 hvg
-mYf
-lwh
 xZt
 pGt
+tCc
+oar
 vCa
 uyz
 iXE
@@ -241001,11 +241047,11 @@ vAa
 nHp
 wXf
 qNL
-eml
-mYf
-lwh
+hvg
 xZt
 pGt
+wbY
+oar
 vCa
 wYU
 cMm
@@ -241259,9 +241305,9 @@ mcq
 gzq
 qNL
 hvg
-mYf
-lwh
 xZt
+tnt
+ybS
 vvL
 vCa
 bsu
