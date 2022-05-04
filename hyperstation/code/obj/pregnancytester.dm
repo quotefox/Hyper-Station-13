@@ -31,8 +31,9 @@
 
 
 /obj/item/pregnancytest/proc/test(mob/living/user)
-
 	var/obj/item/organ/genital/womb/W = user.getorganslot("womb")
+	if(!W)
+		return
 	if(W.pregnant == 1)
 		results = "positive"
 		icon_state 	= "positive"

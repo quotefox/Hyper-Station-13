@@ -217,6 +217,9 @@
 	if(M.canbearoused)
 		ui_interact(usr)
 
+/mob/living/proc/can_climax(_arousal = 100)
+	return src.getArousalLoss() >= _arousal && ishuman(src) && src.has_dna()
+
 /mob/living/proc/mob_climax()//This is just so I can test this shit without being forced to add actual content to get rid of arousal. Will be a very basic proc for a while.
 	set name = "Masturbate"
 	set category = "IC"
@@ -475,7 +478,7 @@
 		if(prob(L.impregchance))
 			var/obj/item/organ/genital/womb/W = L.getorganslot("womb")
 			if(W) //check if they have a womb.
-				if (L.breedable == 1 && W.pregnant == 0) //Dont get pregnant again, if you are pregnant.
+				if (L.breedable && !W.pregnant) //Dont get pregnant again, if you are pregnant.
 					log_game("Debug: [L] has been impregnated by [src]")
 					to_chat(L, "<span class='userlove'>You feel your hormones change, and a motherly instinct take over.</span>") //leting them know magic has happened.
 					W.pregnant = 1
@@ -488,12 +491,19 @@
 					if (B.fluid_mult < 0.5 && B)
 						B.fluid_mult = 0.5
 
+/mob/living/carbon/human/proc/mob_climax_partner_spillage(obj/item/organ/genital/picked_organ, mob/living/carbon/partner, impreg = FALSE)
+	var/obj/item/organ/genital/penis/_penis = picked_organ
+	if(picked_organ.name != "penis" || _penis.sounding || _penis.condom)
+		mob_climax_partner(picked_organ, partner, FALSE, FALSE, FALSE)
+		return
+	var/_question = "Would your fluids spill outside?"
+	var/_title = "Choose overflowing option"
+	var/spillage = input(src, _question, _title, "Yes") as anything in list("Yes", "No")
+	mob_climax_partner(picked_organ, partner, spillage == "Yes", impreg, FALSE)
 
 /mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time = 30) //For beaker-filling, beware the bartender
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = null
-
-
 	if(G.name == "penis")//if the select organ is a penis
 		var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
 		if(P.condom) //if the penis is condomed
@@ -573,43 +583,22 @@
 		return ret_organ
 	return null //error stuff
 
-/mob/living/carbon/human/proc/pick_partner_overide() //used for cumming on people without genitals exposed
-	var/list/partners = list()
-	if(src.pulling)
-		partners += src.pulling //Yes, even objects for now
-	if(src.pulledby)
-		partners += src.pulledby
-	//Now we got both of them, let's check if they're proper
-	for(var/I in partners)
-		if(isliving(I))
-		else
-			partners -= I //No fucking objects
-	//NOW the list should only contain correct partners
-	if(!partners.len)
-		return null //No one left.
-	return input(src, "With whom?", "Sexual partner", null) in partners //pick one, default to null
 
-/mob/living/carbon/human/proc/pick_partner()
-	var/list/partners = list()
-	if(src.pulling)
-		partners += src.pulling //Yes, even objects for now
-	if(src.pulledby)
-		partners += src.pulledby
-	//Now we got both of them, let's check if they're proper
+/mob/living/carbon/human/proc/pick_partner(needs_exposed = TRUE)
+	var/list/partners = list(src.pulling, src.pulledby)
 	for(var/I in partners)
-		if(isliving(I))
-			if(iscarbon(I))
-				var/mob/living/carbon/C = I
-				if(!C.exposed_genitals.len) //Nothing through_clothing
-					if(!C.is_groin_exposed()) //No pants undone
-						if(!C.is_chest_exposed()) //No chest exposed
-							partners -= I //Then not proper, remove them
-		else
-			partners -= I //No fucking objects
-	//NOW the list should only contain correct partners
+		if(!iscarbon(I))
+			partners -= I
+			continue
+		if(!needs_exposed) 
+			continue
+		var/mob/living/carbon/C = I
+		if(!C.exposed_genitals.len && !C.is_groin_exposed() && !C.is_chest_exposed())
+			partners -= I
 	if(!partners.len)
-		return null //No one left.
-	return input(src, "With whom?", "Sexual partner", null) in partners //pick one, default to null
+		return null
+	return input(src, "With whom?", "Sexual partner", null) as null|anything in partners
+
 
 /mob/living/carbon/human/proc/pick_climax_container()
 	var/obj/item/reagent_containers/SC = null
@@ -774,45 +763,26 @@
 				//We need no hands, we can be restrained and so on, so let's pick an organ
 				var/obj/item/organ/genital/picked_organ
 				picked_organ = pick_climax_genitals()
-				if(picked_organ)
-					var/mob/living/partner = pick_partner() //Get someone
-					if(partner)
-						var/obj/item/organ/genital/penis/P = picked_organ
-						if(partner.breedable == 1 && picked_organ.name == "penis"&&!P.condom == 1&&!P.sounding == 1)
-							var/impreg = input(src, "Would this action carry the risk of pregnancy?", "Choose a option", "Yes") as anything in list("Yes", "No")
-							if(impreg == "Yes") //If we are impregging
-								var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as anything in list("Yes", "No")
-								if(spillage == "Yes")
-									mob_climax_partner(picked_organ, partner, TRUE, TRUE, FALSE)
-								else
-									mob_climax_partner(picked_organ, partner, FALSE, TRUE, FALSE)
-							else
-								var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as anything in list("Yes", "No")
-								if(spillage == "Yes")
-									mob_climax_partner(picked_organ, partner, TRUE, FALSE, FALSE)
-								else
-									mob_climax_partner(picked_organ, partner, FALSE, FALSE, FALSE) //Wow, im trash at coding, I need to find a better way of coding this, ill rewrite it later.-quote
-								return
-
-						else //If we arent impregging
-							var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as anything in list("Yes", "No")
-							if(spillage == "Yes")
-								mob_climax_partner(picked_organ, partner, TRUE, FALSE, FALSE)
-							else
-								mob_climax_partner(picked_organ, partner, FALSE, FALSE, FALSE)
-							return
-
-					else
-						to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
-						return
-				else //They either lack organs that can masturbate, or they didn't pick one.
+				if(!picked_organ)
 					to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 					return
+				var/mob/living/carbon/partner = pick_partner() //Get someone
+				if(!partner)
+					to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
+					return
+				var/obj/item/organ/genital/penis/P = picked_organ
+				var/impreg = "No"
+				if(partner.breedable && picked_organ.name == "penis" && !P.condom && !P.sounding)
+					var/impreg_question = "Would this action carry the risk of pregnancy?"
+					var/impreg_title = "Choose a option"
+					impreg = input(src, impreg_question, impreg_title, "Yes") as anything in list("Yes", "No")
+				mob_climax_partner_spillage(picked_organ, partner, impreg == "Yes")
+
 			if("Climax over partner")
 				var/obj/item/organ/genital/picked_organ
 				picked_organ = pick_climax_genitals()
 				if(picked_organ)
-					var/mob/living/partner = pick_partner_overide() //Get your partner, clothed or not.
+					var/mob/living/partner = pick_partner(FALSE) //Get your partner, clothed or not.
 					if(partner)
 						mob_climax_partner(picked_organ, partner, FALSE, FALSE, TRUE)
 					else

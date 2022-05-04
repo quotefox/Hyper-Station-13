@@ -165,22 +165,14 @@
 			M.adjustArousalLoss(20)
 			M.do_jitter_animation() //make your partner shake too!
 
-			if (M.getArousalLoss() >= 100 && ishuman(M) && prob(5))//Why not have a probability to cum when someone's getting nailed with max arousal?~
-				if(G.is_exposed())	//Oh yea, if vagina is not exposed, the climax will not cause a spill
-					M.mob_climax_outside(G, spillage = TRUE)
-				else
-					M.mob_climax_outside(G, spillage = FALSE)
-
-			if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
+			// Why not have a probability to cum when someone's getting nailed with max arousal?~
+			if (M.can_climax() && prob(5)) 
+				// if vagina is not exposed, the climax will not cause a spill
+				M.mob_climax_outside(G, G.is_exposed())
+			if (C.can_climax())
 				var/mob/living/carbon/human/O = C
-
-				if( (P.condom == 1) || (P.sounding == 1))  //If coundomed and/or sounded, do not fire impreg chance
-					O.mob_climax_partner(P, M, FALSE, FALSE, FALSE, TRUE)
-				else                                       //Else, fire impreg chance
-					if(G.name == "vagina") //no more spontaneous impregnations through the butt!
-						O.mob_climax_partner(P, M, FALSE, TRUE, FALSE, TRUE)
-					else
-						O.mob_climax_partner(P, M, FALSE, FALSE, FALSE, TRUE)
+				var/impreg_chance = G.name == "vagina" && !P.condom && !P.sounding
+				O.mob_climax_partner(P, M, FALSE, impreg_chance, FALSE, TRUE)
 
 		if(option == "Lick")
 			to_chat(M, "<span class='love'>You feel a tongue lick you through the portal against your [G.name].</span>")

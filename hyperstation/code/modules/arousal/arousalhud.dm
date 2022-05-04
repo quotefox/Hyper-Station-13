@@ -11,7 +11,7 @@
 	for(var/obj/item/organ/genital/G in U.internal_organs)
 		if(!G.nochange)
 			if(!G.dontlist)
-				dat	+= "<a href='byond://?src=[REF(src)];hide[G.name]=1'>[G.mode == "hidden" ? "[G.name] <font color='red'>(Hidden)</font>" : (G.mode == "clothes" ? "[G.name] <font color='yellow'>(Hidden by Clothes)</font>" : (G.mode == "visable" ? "[G.name] <font color='green'>(Visable)</font>" : "[G.name] <font color='green'>(Visable)</font>"))]</a><BR>"
+				dat	+= "<a href='byond://?src=[REF(src)];hide[G.name]=1'>[G.mode == "hidden" ? "[G.name] <font color='red'>(Hidden)</font>" : (G.mode == "clothes" ? "[G.name] <font color='yellow'>(Hidden by Clothes)</font>" : (G.mode == "visable" ? "[G.name] <font color='green'>(Visible)</font>" : "[G.name] <font color='green'>(Visible)</font>"))]</a><BR>"
 
 	dat	+=	{"<BR><B>Contexual Options</B><BR><HR>"}
 	var/obj/item/organ/genital/penis/P = user.getorganslot("penis")
@@ -366,33 +366,20 @@ obj/screen/arousal/proc/kiss()
 		return
 
 /mob/living/carbon/human/proc/climaxwith(mob/living/T)
-
-	var/mob/living/carbon/human/L = pick_partner()
 	var/obj/item/organ/genital/picked_organ
 	picked_organ = pick_climax_genitals()
-	if(picked_organ)
-		var/mob/living/partner = L
-		if(partner)
-			src << browse(null, "window=arousal") //alls fine, we can close the window now.
-			var/obj/item/organ/genital/penis/P = picked_organ
-			var/spillage = "No" //default to no, just incase player has items on to prevent climax
-			if(!P.condom == 1&&!P.sounding == 1) //you cant climax with a condom on or sounding in.
-				spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as anything in list("Yes", "No")
-			if(spillage == "Yes")
-				mob_climax_partner(picked_organ, partner, TRUE, FALSE, FALSE)
-			else
-				mob_climax_partner(picked_organ, partner, FALSE, FALSE, FALSE)
-		else
-			to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
-			return
-	else //They either lack organs that can masturbate, or they didn't pick one.
+	if(!picked_organ)
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
-
+	var/mob/living/carbon/human/partner = pick_partner()
+	if(!partner)
+		to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
+		return
+	src << browse(null, "window=arousal") // close arousal window
+	mob_climax_partner_spillage(picked_organ, partner, FALSE)
 
 
 /mob/living/carbon/human/proc/climaxover(mob/living/T)
-
 	var/mob/living/carbon/human/L = T
 	var/obj/item/organ/genital/picked_organ
 	picked_organ = pick_climax_genitals()
@@ -428,39 +415,29 @@ obj/screen/arousal/proc/kiss()
 	H.visible_message("<span class='boldnotice'>[H] explodes out of their clothes!'</span>")
 
 
-
-/mob/living/carbon/human/proc/impregwith(mob/living/T)
-
-	var/mob/living/carbon/human/L = pick_partner()
-	var/obj/item/organ/genital/picked_organ
-	picked_organ = src.getorganslot("penis") //Impregnation must be done with a penis.
-	if(picked_organ)
-		var/mob/living/partner = L
-		if(partner)
-			if(!partner.breedable)//check if impregable.
-				to_chat(src, "<span class='warning'>Your partner cannot be impregnated.</span>")//some fuckary happening, you shouldnt even get to this point tbh.
-				return
-			var/obj/item/organ/genital/penis/P = picked_organ
-			 //you cant impreg with a condom on or sounding in.
-			if(P.condom == 1)
-				to_chat(src, "<span class='warning'>You cannot do this action with a condom on.</span>")
-				return
-			if(P.sounding == 1)
-				to_chat(src, "<span class='warning'>You cannot do this action with a sounding in.</span>")
-				return
-			src << browse(null, "window=arousal") //alls fine, we can close the window now.
-			//Keeping this for messy fun
-			var/spillage = input(src, "Would your fluids spill outside?", "Choose overflowing option", "Yes") as anything in list("Yes", "No")
-			if(spillage == "Yes")
-				mob_climax_partner(picked_organ, partner, TRUE, TRUE, FALSE)
-			else
-				mob_climax_partner(picked_organ, partner, FALSE, TRUE, FALSE)
-		else
-			to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
-			return
-	else //no penis :(
-		to_chat(src, "<span class='warning'>You cannot impregnate without a penis.</span>")
+/mob/living/carbon/human/proc/impregwith(mob/living/carbon/T)
+	var/mob/living/carbon/human/partner = pick_partner()
+	var/obj/item/organ/genital/penis/picked_organ = src.getorganslot("penis")
+	// wow that is a lot of conditionals huh
+	if(!picked_organ) // no penis :(
+		to_chat(src, "<span class='warning'>You cannot impregnate someone without a penis.</span>")
 		return
+	if(!partner)
+		to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
+		return
+	if(!partner.breedable) //check if impregable.
+		to_chat(src, "<span class='warning'>Your partner cannot be impregnated.</span>")
+		//some fuckery happening, you shouldnt even get to this point tbh.
+		return
+	if(picked_organ.condom)
+		to_chat(src, "<span class='warning'>You cannot impregnate someone with a condom on.</span>")
+		return
+	if(picked_organ.sounding)
+		to_chat(src, "<span class='warning'>You cannot impregnate someone with a sounding rod in.</span>")
+		return
+	src << browse(null, "window=arousal") //alls fine, we can close the window now.
+	mob_climax_partner_spillage(picked_organ, partner, TRUE)
+
 
 /mob/living/carbon/human/proc/cumcontainer(mob/living/T)
 	//We'll need hands and no restraints.
