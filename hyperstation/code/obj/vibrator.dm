@@ -133,13 +133,13 @@ Code:
 					to_chat(U, "<span class='love'>You feel intense pleasure surge through your [G.name]</span>")
 					U.do_jitter_animation()
 					if (U.can_orgasm())
-						U.mob_climax_forced()
+						U.mob_climax_instant()
 				if(3) //high, makes you stun
 					to_chat(U, "<span class='userdanger'>You feel overpowering pleasure surge through your [G.name]</span>")
 					U.Jitter(3)
 					U.Stun(30)
 					if (U.can_orgasm())
-						U.mob_climax_forced()
+						U.mob_climax_instant()
 					if(prob(50))
 						U.emote("moan")
 

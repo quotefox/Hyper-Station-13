@@ -64,7 +64,7 @@
 		C.do_jitter_animation()
 		C.adjustArousalLoss(20) //make the target more aroused.
 		if (C.can_orgasm())
-			C.mob_climax_forced() //make them cum if they are over the edge.
+			C.mob_climax_instant() //make them cum if they are over the edge.
 
 		return
 

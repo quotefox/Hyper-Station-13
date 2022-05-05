@@ -30,7 +30,7 @@
 				var/orgasm_message = pick("A sharp pulse of electricity pushes you to orgasm!", "You feel a jolt of electricity force you into orgasm!")
 				H.visible_message("<span class='warning'>\The [assembly] electrodes shock [H]!</span>", "<span class='warning'>[orgasm_message]</span>")
 				playsound(src, "sound/effects/light_flicker.ogg", 30, 1)
-				H.mob_climax_forced()
+				H.mob_climax_instant()
 				orgasm = TRUE
 			else
 				M.adjustArousalLoss(arousal_gain)

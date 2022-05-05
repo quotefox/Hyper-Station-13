@@ -722,7 +722,7 @@
 			return //Just end it in that case.
 
 
-/mob/living/carbon/proc/mob_climax_forced()
+/mob/living/carbon/proc/mob_climax_instant()
 	if(stat == DEAD) //corpses can't cum
 		to_chat(src, "<span class='warning'>You can't do that while dead!</span>")
 		return

@@ -1648,7 +1648,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		if (target.canbearoused)
 			target.adjustArousalLoss(5)
 		if (target.can_orgasm() && HAS_TRAIT(target, TRAIT_MASO))
-			target.mob_climax_forced()
+			target.mob_climax_instant()
 		if (!HAS_TRAIT(target, TRAIT_NYMPHO))
 			stop_wagging_tail(target)
 
@@ -2006,7 +2006,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					if(HAS_TRAIT(H, TRAIT_MASO))
 						H.adjustArousalLoss(damage * brutemod * H.physiology.brute_mod)
 						if (H.can_orgasm())
-							H.mob_climax_forced()
+							H.mob_climax_instant()
 
 			else//no bodypart, we deal damage with a more general method.
 				H.adjustBruteLoss(damage * hit_percent * brutemod * H.physiology.brute_mod)
