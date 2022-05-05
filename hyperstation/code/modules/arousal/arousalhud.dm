@@ -384,7 +384,7 @@ obj/screen/arousal/proc/kiss()
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
 	src << browse(null, "window=arousal") //alls fine, we can close the window now.
-	if(!partner || !iscarbon(partner))
+	if(!partner || (isliving(partner) !iscarbon(partner)))
 		to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
 		return
 	var/obj/item/organ/genital/penis/P = picked_organ
