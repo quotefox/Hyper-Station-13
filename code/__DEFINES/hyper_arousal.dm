@@ -5,4 +5,4 @@
 #define BELLY_STRETCH_SIZE 6 // for flavor text
 
 #define BUTT_MIN_SIZE 0
-#define BUTT_MAX_SIZE 5
+#define BUTT_MAX_SIZE 8
