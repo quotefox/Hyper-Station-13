@@ -102,29 +102,29 @@
 	else
 		. += "<span class='notice'>The device is paired, and awaiting input. </span>"
 
-/obj/item/portallight/attack(mob/living/carbon/holder, mob/living/user) 
+/obj/item/portallight/attack(mob/living/carbon/user, mob/living/holder) 
 	if(inuse) //just to stop stacking and causing people to cum instantly
 		return
 	if(!UpdateUsability())
-		to_chat(user, "<span class='notice'>\The [src] appears to be currently unusable.</span>")
+		to_chat(holder, "<span class='notice'>\The [src] appears to be currently unusable.</span>")
 		return
 	var/option = "Fuck"
-	if(holder == user)
+	if(user == holder)
 		option = input(usr, "Choose action", "Portal Fleshlight", "Fuck") in list("Fuck", "Lick", "Touch")
 	var/obj/item/organ/genital/target_genital = portalunderwear.loc
 	var/mob/living/carbon/human/target = target_genital.owner
-	var/obj/item/organ/genital/penis/P = holder.getorganslot("penis")
+	var/obj/item/organ/genital/penis/P = user.getorganslot("penis")
 	if(option == "Fuck" && !P.is_exposed())
-		to_chat(user, "<span class='notice'>You don't see anywhere to use this on.</span>")
+		to_chat(holder, "<span class='notice'>You don't see anywhere to use this on.</span>")
 		return
 	/* 
 	WARMUP START - prevents spam/instant climax 
 	*/
 	inuse = TRUE
-	if(holder != user)
-		holder.visible_message("<span class='userlove'>[user] is trying to use [src] on [holder]'s penis.</span>",\
-			"<span class='userlove'>[user] is trying to use [src] on your penis.</span>")
-	if(!do_mob(user, holder, 3 SECONDS))
+	if(user != holder)
+		user.visible_message("<span class='userlove'>[holder] is trying to use [src] on [user]'s penis.</span>",\
+			"<span class='userlove'>[holder] is trying to use [src] on your penis.</span>")
+	if(!do_mob(holder, user, 3 SECONDS))
 		inuse = FALSE
 		return
 	inuse = FALSE
@@ -134,31 +134,32 @@
 	switch(option)
 		if("Fuck")
 			playsound(src, 'sound/lewd/slaps.ogg', 30, 1, -1)
-			if(holder == user)
-				user.visible_message("<span class='userlove'>[user] pumps [src] on their penis.</span>",
+			if(user == holder)
+				holder.visible_message("<span class='userlove'>[holder] pumps [src] on their penis.</span>",
 					"<span class='userlove'>You pump the fleshlight on your penis.</span>")
 			else
-				holder.visible_message("<span class='userlove'>[user] pumps [src] on [holder]'s penis.</span>",\
-					"<span class='userlove'>[user] pumps [src] up and down on your penis.</span>")
+				user.visible_message("<span class='userlove'>[holder] pumps [src] on [user]'s penis.</span>",\
+					"<span class='userlove'>[holder] pumps [src] up and down on your penis.</span>")
 			to_chat(target, "<span class='love'>You feel a [P.length] inch, [P.shape] shaped penis pumping through the portal into your [target_genital.name].</span>")
 			if(prob(30))
-				holder.emote("moan")
-			holder.adjustArousalLoss(20)
+				user.emote("moan")
+			user.adjustArousalLoss(20)
 			target.adjustArousalLoss(20)
 			target.do_jitter_animation()
 			if(target.can_orgasm() && prob(5)) 
 				target.mob_climax_outside(target_genital, spillage = target_genital.is_exposed())
-			if(holder.can_orgasm())
-				var/mob/living/carbon/human/O = holder
+			if(user.can_orgasm())
+				var/mob/living/carbon/human/O = user
 				var/impreg_chance = target_genital.name == "vagina" && !P.condom && !P.sounding
-				O.mob_climax_partner(P, target, FALSE, impreg_chance, FALSE, TRUE)
+				if(O.mob_climax_partner(P, target, spillage=FALSE, remote=TRUE) && impreg_chance)
+					target.impregnate(by=O)
 		if("Lick")
-			user.visible_message("<span class='userlove'>[user] licks into [src].</span>",\
+			holder.visible_message("<span class='userlove'>[holder] licks into [src].</span>",\
 				"<span class='userlove'>You lick into [src].</span>")
 			to_chat(target, "<span class='love'>You feel a tongue lick you through the portal against your [target_genital.name].</span>")
 			target.adjustArousalLoss(10)
 		if("Touch")
-			user.visible_message("<span class='userlove'>[user] touches softly against [src].</span>",\
+			holder.visible_message("<span class='userlove'>[holder] touches softly against [src].</span>",\
 				"<span class='userlove'>You touch softly on [src].</span>")
 			to_chat(target, "<span class='love'>You feel someone touching your [target_genital.name] through the portal.</span>")
 			target.adjustArousalLoss(5)

@@ -334,7 +334,7 @@ obj/screen/arousal/proc/kiss()
 		return
 	//We got hands, let's pick an organ
 	var/obj/item/organ/genital/picked_organ
-	picked_organ = pick_masturbate_genitals()
+	picked_organ = pick_climax_genitals(masturbation=TRUE, title="Masturbation")
 	if(picked_organ)
 		src << browse(null, "window=arousal") //closes the window
 		mob_masturbate(picked_organ)
@@ -378,7 +378,7 @@ obj/screen/arousal/proc/kiss()
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
 	src << browse(null, "window=arousal") // close arousal window
-	mob_climax_partner_spillage(picked_organ, partner, FALSE)
+	mob_climax_partner_spillage(picked_organ, partner, impreg=FALSE)
 
 
 /mob/living/carbon/human/proc/climaxover(mob/living/carbon/human/partner)
@@ -398,7 +398,7 @@ obj/screen/arousal/proc/kiss()
 	if(P.sounding)
 		to_chat(src, "<span class='warning'>You cannot do this action with a sounding in.</span>")
 		return
-	mob_climax_partner(picked_organ, partner, FALSE, FALSE, TRUE)
+	mob_climax_cover(picked_organ, partner)
 
 
 /mob/living/carbon/human/proc/clothesplosion()
@@ -435,7 +435,7 @@ obj/screen/arousal/proc/kiss()
 		to_chat(src, "<span class='warning'>You cannot impregnate someone with a sounding rod in.</span>")
 		return
 	src << browse(null, "window=arousal") //alls fine, we can close the window now.
-	mob_climax_partner_spillage(picked_organ, partner, TRUE)
+	mob_climax_partner_spillage(picked_organ, partner, impreg=TRUE)
 
 
 /mob/living/carbon/human/proc/cumcontainer(mob/living/T)
@@ -476,6 +476,11 @@ obj/screen/arousal/proc/kiss()
 	cum_splatter_icon.Blend(icon('hyperstation/icons/effects/cumoverlay.dmi', "cum_obj"), ICON_MULTIPLY)
 	add_overlay(cum_splatter_icon)
 
+/mob/living/carbon/add_cum_overlay(type="normal")
+	var/mutable_appearance/cumoverlay = mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi')
+	cumoverlay.icon_state = "cum_[type]"
+	add_overlay(cumoverlay)
+
 /atom/proc/wash_cum()
 	cut_overlay(mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi', "cum_normal"))
 	cut_overlay(mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi', "cum_large"))
@@ -499,7 +504,7 @@ obj/screen/arousal/proc/kiss()
 		return
 	//We got hands, let's pick an organ
 	var/obj/item/organ/genital/picked_organ
-	picked_organ = pick_masturbate_genitals()
+	picked_organ = pick_climax_genitals(masturbation=TRUE, title="Masturbation")
 	if(picked_organ)
 		src << browse(null, "window=arousal") //closes the window
 		mob_masturbate(picked_organ, cover = TRUE)
