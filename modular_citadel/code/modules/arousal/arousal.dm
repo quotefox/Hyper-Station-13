@@ -489,11 +489,9 @@
 /mob/living/carbon/human/proc/pick_masturbate_genitals()
 	var/obj/item/organ/genital/ret_organ
 	var/list/genitals_list = list()
-	var/list/worn_stuff = get_equipped_items()
-
 	for(var/obj/item/organ/genital/G in internal_organs)
 		if(G.can_masturbate_with) //filter out what you can't masturbate with
-			if(G.is_exposed(worn_stuff)) //Nude or through_clothing
+			if(G.is_exposed()) //Nude or through_clothing
 				if(!G.dontlist)
 					genitals_list += G
 	if(genitals_list.len)
@@ -504,10 +502,8 @@
 /mob/living/carbon/human/proc/target_genitals(mob/living/carbon/human/T) //used for targeting others
 	var/obj/item/organ/genital/ret_organ
 	var/list/genitals_list = list()
-	var/list/worn_stuff = get_equipped_items()
-
 	for(var/obj/item/organ/genital/G in T.internal_organs)
-		if(G.is_exposed(worn_stuff)) //Nude or through_clothing
+		if(G.is_exposed()) //Nude or through_clothing
 			if(!G.dontlist)
 				genitals_list += G
 	if(genitals_list.len)
@@ -518,13 +514,9 @@
 /mob/living/carbon/human/proc/pick_climax_genitals()
 	var/obj/item/organ/genital/ret_organ
 	var/list/genitals_list = list()
-	var/list/worn_stuff = get_equipped_items()
-
 	for(var/obj/item/organ/genital/G in internal_organs)
-		if(G.can_climax) //filter out what you can't masturbate with
-			if(G.is_exposed(worn_stuff)) //Nude or through_clothing
-				if(!G.dontlist)
-					genitals_list += G
+		if(G.can_climax && G.is_exposed() && !G.dontlist)
+			genitals_list += G
 	if(genitals_list.len)
 		ret_organ = input(src, "with what?", "Climax", null)  as null|obj in genitals_list
 		return ret_organ
@@ -744,8 +736,7 @@
 			continue // no wombs or testicles
 		var/mob/living/carbon/partner
 		var/check_target
-		var/list/worn_stuff = get_equipped_items()
-		if(current_genital.is_exposed(worn_stuff))
+		if(current_genital.is_exposed())
 			if(src.pulling)
 				if(iscarbon(src.pulling))
 					check_target = src.pulling
