@@ -365,41 +365,37 @@ obj/screen/arousal/proc/kiss()
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
 
-/mob/living/carbon/human/proc/climaxwith(mob/living/T)
+/mob/living/carbon/human/proc/climaxwith(mob/living/carbon/human/partner)
+	if(!partner)
+		to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
+		return
 	var/obj/item/organ/genital/picked_organ
 	picked_organ = pick_climax_genitals()
 	if(!picked_organ)
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
-	var/mob/living/carbon/human/partner = pick_partner()
-	if(!partner)
-		to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
-		return
 	src << browse(null, "window=arousal") // close arousal window
 	mob_climax_partner_spillage(picked_organ, partner, FALSE)
 
 
-/mob/living/carbon/human/proc/climaxover(mob/living/T)
-	var/mob/living/carbon/human/partner = T
+/mob/living/carbon/human/proc/climaxover(mob/living/carbon/human/partner)
 	var/obj/item/organ/genital/picked_organ
 	picked_organ = pick_climax_genitals()
-	if(picked_organ)
-		src << browse(null, "window=arousal") //alls fine, we can close the window now.
-		if(partner)
-			var/obj/item/organ/genital/penis/P = picked_organ
-			if(P.condom == 1)
-				to_chat(src, "<span class='warning'>You cannot do this action with a condom on.</span>")
-				return
-			if(P.sounding == 1)
-				to_chat(src, "<span class='warning'>You cannot do this action with a sounding in.</span>")
-				return
-			mob_climax_partner(picked_organ, partner, FALSE, FALSE, TRUE)
-		else
-			to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
-			return
-	else //They either lack organs that can masturbate, or they didn't pick one.
+	if(!picked_organ)
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
+	src << browse(null, "window=arousal") //alls fine, we can close the window now.
+	if(!partner)
+		to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
+		return
+	var/obj/item/organ/genital/penis/P = picked_organ
+	if(P.condom)
+		to_chat(src, "<span class='warning'>You cannot do this action with a condom on.</span>")
+		return
+	if(P.sounding)
+		to_chat(src, "<span class='warning'>You cannot do this action with a sounding in.</span>")
+		return
+	mob_climax_partner(picked_organ, partner, FALSE, FALSE, TRUE)
 
 /mob/living/carbon/human/proc/clothesplosion()
 	if(usr.restrained(TRUE))
