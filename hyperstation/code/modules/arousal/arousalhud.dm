@@ -48,15 +48,14 @@
 
 
 	if(user.pulling)
-		dat	+= "<a href='byond://?src=[REF(src)];climaxover=1'>Climax over [user.pulling]</A>" //you can cum on objects if you really want...
-		dat	+=	"(Orgasm over a person or object.)<BR>"
-		if(isliving(user.pulling))
+		if(!(isliving(user.pulling) && !iscarbon(user.pulling))) // do not fuck animals
+			dat	+= "<a href='byond://?src=[REF(src)];climaxover=1'>Climax over [user.pulling]</A>" //you can cum on objects if you really want...
+			dat	+=	"(Orgasm over a person or object.)<BR>"
 			if(iscarbon(user.pulling))
 				dat	+= "<a href='byond://?src=[REF(src)];climaxwith=1'>Climax with [user.pulling]</A>"
 				dat	+=	{"(Orgasm with another person.)<BR>"}
-
 				var/mob/living/carbon/human/H = user.pulling
-				if(H.breedable && P && H)
+				if(H && H.breedable && P)
 					dat	+= "<a href='byond://?src=[REF(src)];impreg=1'>Impregnate [U.pulling] ([clamp(U.impregchance,0,100)]%)</A>"
 					dat	+=	"(Climax inside another person, and attempt to knock them up.)<BR>"
 	else
@@ -140,7 +139,7 @@
 		T.toggle_visibility(picked_visibility)
 
 	if(href_list["masturbate"])
-		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
+		if (H.isPercentAroused(33)) //requires 33% arousal.
 			H.solomasturbate()
 			return
 		else
@@ -148,7 +147,7 @@
 		return
 
 	if(href_list["container"])
-		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
+		if (H.isPercentAroused(33)) //requires 33% arousal.
 			H.cumcontainer()
 			return
 		else
@@ -156,7 +155,7 @@
 		return
 
 	if(href_list["clothesplosion"])
-		if (H.arousalloss >= H.isPercentAroused(33)) //Requires 33% arousal.
+		if (H.isPercentAroused(33)) //Requires 33% arousal.
 			H.clothesplosion()
 			return
 		else
@@ -164,7 +163,7 @@
 		return
 
 	if(href_list["climaxself"])
-		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
+		if (H.isPercentAroused(33)) //requires 33% arousal.
 			H.climaxself()
 			return
 		else
@@ -172,7 +171,7 @@
 		return
 
 	if(href_list["climax"])
-		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
+		if (H.isPercentAroused(33)) //requires 33% arousal.
 			H.climaxalone(FALSE)
 			return
 		else
@@ -180,7 +179,7 @@
 		return
 
 	if(href_list["climaxover"])
-		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
+		if (H.isPercentAroused(33)) //requires 33% arousal.
 			H.climaxover(usr.pulling)
 			return
 		else
@@ -188,7 +187,7 @@
 		return
 
 	if(href_list["climaxwith"])
-		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
+		if (H.isPercentAroused(33)) //requires 33% arousal.
 			H.climaxwith(usr.pulling)
 			return
 		else
@@ -196,7 +195,7 @@
 		return
 
 	if(href_list["impreg"])
-		if (H.arousalloss >= H.isPercentAroused(33)) //requires 33% arousal.
+		if (H.isPercentAroused(33)) //requires 33% arousal.
 			H.impregwith(usr.pulling)
 			return
 		else
@@ -385,7 +384,7 @@ obj/screen/arousal/proc/kiss()
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
 	src << browse(null, "window=arousal") //alls fine, we can close the window now.
-	if(!partner)
+	if(!partner || !iscarbon(partner))
 		to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
 		return
 	var/obj/item/organ/genital/penis/P = picked_organ
@@ -396,6 +395,7 @@ obj/screen/arousal/proc/kiss()
 		to_chat(src, "<span class='warning'>You cannot do this action with a sounding in.</span>")
 		return
 	mob_climax_partner(picked_organ, partner, FALSE, FALSE, TRUE)
+
 
 /mob/living/carbon/human/proc/clothesplosion()
 	if(usr.restrained(TRUE))
