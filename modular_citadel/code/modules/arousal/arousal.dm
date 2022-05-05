@@ -285,7 +285,8 @@
 			setArousalLoss(min_arousal)
 
 
-/mob/living/carbon/human/proc/mob_climax_outside(obj/item/organ/genital/G, mb_time = 30, spillage = TRUE) //This is used for forced orgasms and other hands-free climaxes
+/mob/living/carbon/human/proc/mob_climax_outside(obj/item/organ/genital/G, mb_time = 30, spillage = TRUE) 
+//This is used for forced orgasms and other hands-free climaxes
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = null
 	var/unable_to_come = FALSE
@@ -736,21 +737,22 @@
 			continue // no wombs or testicles
 		var/mob/living/carbon/partner
 		var/check_target
-		if(current_genital.is_exposed())
-			if(src.pulling)
-				if(iscarbon(src.pulling))
-					check_target = src.pulling
-			else if(src.pulledby)
-				if(iscarbon(src.pulledby))
-					check_target = src.pulledby
-			if(check_target)
-				var/mob/living/carbon/C = check_target
-				if(C.exposed_genitals.len || C.is_groin_exposed() || C.is_chest_exposed())
-					partner = C
-			if(partner)
-				user_human.mob_climax_partner(current_genital, partner, mb_time = 0)
-				continue
-		user_human.mob_climax_outside(current_genital, mb_time = 0)
+		if(!current_genital.is_exposed())
+			user_human.mob_climax_outside(current_genital, mb_time = 0)
+			continue
+		if(src.pulling)
+			if(iscarbon(src.pulling))
+				check_target = src.pulling
+		else if(src.pulledby)
+			if(iscarbon(src.pulledby))
+				check_target = src.pulledby
+		if(check_target)
+			var/mob/living/carbon/C = check_target
+			if(C.exposed_genitals.len || C.is_groin_exposed() || C.is_chest_exposed())
+				partner = C
+		if(partner)
+			user_human.mob_climax_partner(current_genital, partner, mb_time = 0)
+			continue
 	return
 
 
