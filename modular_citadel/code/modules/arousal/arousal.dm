@@ -256,7 +256,6 @@
 				var/mutable_appearance/cumoverlaylarge = mutable_appearance('hyperstation/icons/effects/cumoverlay.dmi')
 				cumoverlaylarge.icon_state = "cum_large"
 				src.add_overlay(cumoverlaylarge)
-
 			if(total_fluids > 5)
 				fluid_source.reaction(src.loc, TOUCH, 1, 0)
 				var/mob/living/carbon/human/H = src
@@ -271,13 +270,13 @@
 			src.add_overlay(cumoverlay)
 		
 		if(condomed) //condomed
-			src.visible_message("<span class='love'>[src] orgasms, climaxing into [p_their()] condom </span>", \
-							"<span class='userlove'>You cum into your condom.</span>", \
-							"<span class='userlove'>You have relieved yourself.</span>")
+			src.visible_message("<span class='love'>[src] orgasms, climaxing into [p_their()] condom!</span>", \
+				"<span class='userlove'>You cum into your condom.</span>", \
+				"<span class='userlove'>You have relieved yourself.</span>")
 		if(sounded) //sounded
 			src.visible_message("<span class='love'>[src] orgasms, but the rod blocks anything from leaking out!</span>", \
-							"<span class='userlove'>You cum with the rod inside.</span>", \
-							"<span class='userlove'>You don't quite feel totally relieved.</span>")
+				"<span class='userlove'>You cum with the rod inside.</span>", \
+				"<span class='userlove'>You don't quite feel totally relieved.</span>")
 		if(total_fluids > 0 &&condomed &&!sounded)
 			src.condomclimax()
 
@@ -303,31 +302,30 @@
 
 	if(unable_to_come)
 		src.visible_message("<span class='danger'>[src] shudders, their [G.name] unable to cum.</span>", \
-							"<span class='userdanger'>Your [G.name] cannot cum, giving no relief.</span>", \
-							"<span class='userdanger'>Your [G.name] cannot cum, giving no relief.</span>")
-	else
-		total_fluids = fluid_source.total_volume
-		if(mb_time) //as long as it's not instant, give a warning
-			src.visible_message("<span class='love'>[src] looks like they're about to cum.</span>", \
-								"<span class='userlove'>You feel yourself about to orgasm.</span>", \
-								"<span class='userlove'>You feel yourself about to orgasm.</span>")
-		if(do_after(src, mb_time, target = src))
-			if(spillage)
-				if(total_fluids > 5)
-					fluid_source.reaction(src.loc, TOUCH, 1, 0)
+			"<span class='userdanger'>Your [G.name] cannot cum, giving no relief.</span>", \
+			"<span class='userdanger'>Your [G.name] cannot cum, giving no relief.</span>")
+		return
+	total_fluids = fluid_source.total_volume
+	if(mb_time) //as long as it's not instant, give a warning
+		src.visible_message("<span class='love'>[src] looks like they're about to cum.</span>", \
+			"<span class='userlove'>You feel yourself about to orgasm.</span>", \
+			"<span class='userlove'>You feel yourself about to orgasm.</span>")
+	if(do_after(src, mb_time, target = src))
+		if(spillage)
+			if(total_fluids > 5)
+				fluid_source.reaction(src.loc, TOUCH, 1, 0)
+			fluid_source.clear_reagents()
+			src.visible_message("<span class='love'>[src] orgasms[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""], with [p_their()] [G.name]!</span>", \
+				"<span class='userlove'>You climax[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""] with your [G.name].</span>", \
+				"<span class='userlove'>You climax using your [G.name].</span>")
+		else
+			src.visible_message("<span class='love'>[src] orgasms with [p_their()] [G.name]!</span>", \
+				"<span class='userlove'>You climax with your [G.name].</span>", \
+				"<span class='userlove'>You climax using your [G.name].</span>")
 
-				fluid_source.clear_reagents()
-				src.visible_message("<span class='love'>[src] orgasms[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""], with [p_their()] [G.name]!</span>", \
-									"<span class='userlove'>You climax[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""] with your [G.name].</span>", \
-									"<span class='userlove'>You climax using your [G.name].</span>")
-			else //Else from spillage check, also note subtle text change
-				src.visible_message("<span class='love'>[src] orgasms with [p_their()] [G.name]!</span>", \
-									"<span class='userlove'>You climax with your [G.name].</span>", \
-									"<span class='userlove'>You climax using your [G.name].</span>")
-
-			SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
-			if(G.can_climax)
-				setArousalLoss(min_arousal)
+		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
+		if(G.can_climax)
+			setArousalLoss(min_arousal)
 
 
 /mob/living/carbon/human/proc/mob_climax_partner(obj/item/organ/genital/G, atom/partner, spillage = TRUE, impreg = FALSE,cover = FALSE,remote = FALSE, mb_time = 30) //Used for climaxing with any person
@@ -435,21 +433,8 @@
 				to_chat(src, "<span class='userlove'>You feel deep satisfaction with yourself.</span>")
 	//Hyper - impreg
 	if(impreg)
-		//Role them odds, only people with the dicks can send the chance to the person with the settings enabled at the momment.
-		if(prob(partner_carbon.impregchance))
-			var/obj/item/organ/genital/womb/W = partner_carbon.getorganslot("womb")
-			if(W) //check if they have a womb.
-				if (partner_carbon.breedable && !W.pregnant) //Dont get pregnant again, if you are pregnant.
-					log_game("Debug: [partner] has been impregnated by [src]")
-					to_chat(partner, "<span class='userlove'>You feel your hormones change, and a motherly instinct take over.</span>") //leting them know magic has happened.
-					W.pregnant = 1
-					if (HAS_TRAIT(partner, TRAIT_HEAT))
-						SEND_SIGNAL(partner, COMSIG_ADD_MOOD_EVENT, "heat", /datum/mood_event/heat) //well done you perv.
-						REMOVE_TRAIT(partner, TRAIT_HEAT, ROUNDSTART_TRAIT) //take the heat away, you satisfied it!
-			 		//Make breasts produce quicker.
-					var/obj/item/organ/genital/breasts/B = partner_carbon.getorganslot("breasts")
-					if (B.fluid_mult < 0.5 && B)
-						B.fluid_mult = 0.5
+		partner_carbon.impregnate(by = src)
+
 
 /mob/living/carbon/human/proc/mob_climax_partner_spillage(obj/item/organ/genital/picked_organ, mob/living/carbon/partner, impreg = FALSE)
 	var/obj/item/organ/genital/penis/_penis = picked_organ
@@ -461,15 +446,17 @@
 	var/spillage = input(src, _question, _title, "Yes") as anything in list("Yes", "No")
 	mob_climax_partner(picked_organ, partner, spillage == "Yes", impreg, FALSE)
 
-/mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time = 30) //For beaker-filling, beware the bartender
+
+/mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/G, obj/item/reagent_containers/container, mb_time = 30) 
+// For beaker-filling, beware the bartender
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = null
-	if(G.name == "penis")//if the select organ is a penis
+	if(G.name == "penis")
 		var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
-		if(P.condom) //if the penis is condomed
+		if(P.condom)
 			to_chat(src, "<span class='warning'>You cannot fill containers when there is a condom over your [G.name].</span>")
 			return
-		if(P.sounding) //if the penis is sounded
+		if(P.sounding)
 			to_chat(src, "<span class='warning'>You cannot fill containers when there is a rod inside your [G.name].</span>")
 			return
 	if(G.producing) //Can it produce its own fluids, such as breasts?
@@ -563,13 +550,11 @@
 /mob/living/carbon/human/proc/pick_climax_container()
 	var/obj/item/reagent_containers/SC = null
 	var/list/containers_list = list()
-
 	for(var/obj/item/reagent_containers/container in held_items)
 		if(container.is_open_container() || istype(container, /obj/item/reagent_containers/food/snacks))
 			containers_list += container
-
 	if(containers_list.len)
-		SC = input(src, "Into or onto what?(Cancel for nowhere)", null)  as null|obj in containers_list
+		SC = input(src, "Into or onto what? (Cancel for nowhere)", null)  as null|obj in containers_list
 		if(SC)
 			if(in_range(src, SC))
 				return SC
@@ -594,7 +579,8 @@
 	if(getArousalLoss() < 33)
 		to_chat(src, "<span class='warning'>You aren't aroused enough for that!</span>")
 		return
-	var/choice = input(src, "Select sexual activity", "Sexual activity:") in list("Masturbate", "Climax alone", "Climax with partner","Climax over partner", "Fill container", "Remove condom", "Remove sounding rod")
+	var/list/choices = list("Masturbate", "Climax alone", "Climax with partner","Climax over partner", "Fill container", "Remove condom", "Remove sounding rod")
+	var/choice = input(src, "Select sexual activity", "Sexual activity:") as null|anything in choices 
 	switch(choice)
 		if("Remove sounding rod")
 			if(restrained(TRUE)) //TRUE ignores grabs
@@ -775,3 +761,20 @@
 				continue
 		user_human.mob_climax_outside(current_genital, mb_time = 0)
 	return
+
+
+/mob/living/carbon/proc/impregnate(mob/living/carbon/by)
+	var/obj/item/organ/genital/womb/W = getorganslot("womb")
+	if(!W || W.pregnant || !breedable)
+		return
+	if(!prob(impregchance))
+		return
+	W.pregnant = TRUE
+	log_game("DEBUG: [src] has been impregnated by [by]")
+	to_chat(src, "<span class='userlove'>You feel your hormones change, and a motherly instinct take over.</span>")
+	if(HAS_TRAIT(src, TRAIT_HEAT))
+		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "heat", /datum/mood_event/heat)
+		REMOVE_TRAIT(src, TRAIT_HEAT, ROUNDSTART_TRAIT)
+	var/obj/item/organ/genital/breasts/B = src.getorganslot("breasts")
+	if (B && B.fluid_mult < 0.5)
+		B.fluid_mult = 0.5
