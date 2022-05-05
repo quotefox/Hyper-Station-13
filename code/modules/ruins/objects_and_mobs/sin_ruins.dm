@@ -289,7 +289,7 @@
 		to_chat(user, "<i>You hear a voice in your head... <b>\"You are not horny enough to receive my blessing, dear~\"</i></b>")
 		return
 	if(user.can_orgasm())
-		user.mob_climax(forced_climax=TRUE)
+		user.mob_climax_forced()
 		to_chat(user, "<i>You hear a voice in your head... <b>\"You are worth of my blessing dear~\"</i></b>")
 		to_chat(user, "<span class='userdanger'>You feel overpowering pleasure surge through your entire body.</span>")
 		var/A = new /obj/item/reagent_containers/chalice/lust

@@ -11,7 +11,6 @@
 
 /mob/living/carbon/human
 	canbearoused = TRUE
-
 	var/saved_underwear = ""//saves their underwear so it can be toggled later
 	var/saved_undershirt = ""
 	var/saved_socks = ""
@@ -193,7 +192,9 @@
 /mob/living/proc/can_orgasm(arousal = 100)
 	return src.getArousalLoss() >= arousal && ishuman(src) && src.has_dna()
 
-/mob/living/proc/mob_climax()//This is just so I can test this shit without being forced to add actual content to get rid of arousal. Will be a very basic proc for a while.
+/mob/living/proc/mob_climax()
+// This is just so I can test this shit without being forced to add actual content
+// to get rid of arousal. Will be a very basic proc for a while.
 	set name = "Masturbate"
 	set category = "IC"
 	if(canbearoused && !restrained() && !stat)
@@ -575,57 +576,23 @@
 	return null //If nothing correct, give null.
 
 
-//Here's the main proc itself
-/mob/living/carbon/human/mob_climax(forced_climax=FALSE) //Forced is instead of the other proc, makes you cum if you have the tools for it, ignoring restraints
+/mob/living/carbon/human/mob_climax()
 	if(stat == DEAD) //corpses can't cum
 		return
 	if(mb_cd_timer > world.time)
-		if(!forced_climax) //Don't spam the message to the victim if forced to come too fast
-			to_chat(src, "<span class='warning'>You need to wait [DisplayTimeText((mb_cd_timer - world.time), TRUE)] before you can do that again!</span>")
+		to_chat(src, "<span class='warning'>You need to wait [DisplayTimeText((mb_cd_timer - world.time), TRUE)] before you can do that again!</span>")
 		return
 	mb_cd_timer = (world.time + mb_cd_length)
 	if(canbearoused && has_dna())
-		if(stat==2)
+		if(stat == DEAD)
 			to_chat(src, "<span class='warning'>You can't do that while dead!</span>")
 			return
-		if(forced_climax) //Something forced us to cum, this is not a masturbation thing and does not progress to the other checks
-			for(var/obj/item/organ/O in internal_organs)
-				if(istype(O, /obj/item/organ/genital))
-					var/obj/item/organ/genital/G = O
-					if(!G.can_climax) //Skip things like wombs and testicles
-						continue
-					var/mob/living/carbon/partner
-					var/check_target
-					var/list/worn_stuff = get_equipped_items()
-
-					if(G.is_exposed(worn_stuff))
-						if(src.pulling) //Are we pulling someone? Priority target, we can't be making option menus for this, has to be quick
-							if(iscarbon(src.pulling)) //Don't fuck objects
-								check_target = src.pulling
-						else if(src.pulledby) //prioritise pulled over pulledby
-							if(iscarbon(src.pulledby))
-								check_target = src.pulledby
-						//Now we should have a partner, or else we have to come alone
-						if(check_target)
-							var/mob/living/carbon/C = check_target
-							if(C.exposed_genitals.len || C.is_groin_exposed() || C.is_chest_exposed()) //Are they naked enough?
-								partner = C
-						if(partner) //Did they pass the clothing checks?
-							mob_climax_partner(G, partner, mb_time = 0) //Instant climax due to forced
-							continue //You've climaxed once with this organ, continue on
-					//not exposed OR if no partner was found while exposed, climax alone
-					mob_climax_outside(G, mb_time = 0) //removed climax timer for sudden, forced orgasms
-			//Now all genitals that could climax, have.
-			//Since this was a forced climax, we do not need to continue with the other stuff
-			return
-		//If we get here, then this is not a forced climax and we gotta check a few things.
-		if(stat==1) //No sleep-masturbation, you're unconscious.
+		if(stat == UNCONSCIOUS)
 			to_chat(src, "<span class='warning'>You must be conscious to do that!</span>")
 			return
-		if(getArousalLoss() < 33) //flat number instead of percentage
+		if(getArousalLoss() < 33)
 			to_chat(src, "<span class='warning'>You aren't aroused enough for that!</span>")
 			return
-		//Ok, now we check what they want to do.
 		var/choice = input(src, "Select sexual activity", "Sexual activity:") in list("Masturbate", "Climax alone", "Climax with partner","Climax over partner", "Fill container", "Remove condom", "Remove sounding rod")
 		switch(choice)
 			if("Remove sounding rod")
@@ -774,3 +741,33 @@
 			else //Somehow another option was taken, maybe something interrupted the selection or it was cancelled
 				return //Just end it in that case.
 
+
+/mob/living/carbon/human/proc/mob_climax_forced()
+	for(var/obj/item/organ/O in internal_organs)
+		if(istype(O, /obj/item/organ/genital))
+			var/obj/item/organ/genital/G = O
+			if(!G.can_climax) //Skip things like wombs and testicles
+				continue
+			var/mob/living/carbon/partner
+			var/check_target
+			var/list/worn_stuff = get_equipped_items()
+			if(G.is_exposed(worn_stuff))
+				if(src.pulling) //Are we pulling someone? Priority target, we can't be making option menus for this, has to be quick
+					if(iscarbon(src.pulling)) //Don't fuck objects
+						check_target = src.pulling
+				else if(src.pulledby) //prioritise pulled over pulledby
+					if(iscarbon(src.pulledby))
+						check_target = src.pulledby
+				//Now we should have a partner, or else we have to come alone
+				if(check_target)
+					var/mob/living/carbon/C = check_target
+					if(C.exposed_genitals.len || C.is_groin_exposed() || C.is_chest_exposed()) //Are they naked enough?
+						partner = C
+				if(partner) //Did they pass the clothing checks?
+					mob_climax_partner(G, partner, mb_time = 0) //Instant climax due to forced
+					continue //You've climaxed once with this organ, continue on
+			//not exposed OR if no partner was found while exposed, climax alone
+			mob_climax_outside(G, mb_time = 0) //removed climax timer for sudden, forced orgasms
+	//Now all genitals that could climax, have.
+	//Since this was a forced climax, we do not need to continue with the other stuff
+	return
