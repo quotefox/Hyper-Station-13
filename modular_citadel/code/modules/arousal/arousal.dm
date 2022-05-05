@@ -190,7 +190,7 @@
 		ui_interact(usr)
 
 /mob/living/proc/can_orgasm(arousal = 100)
-	return src.getArousalLoss() >= arousal && ishuman(src) && src.has_dna()
+	return src.canbearoused && src.getArousalLoss() >= arousal && ishuman(src) && src.has_dna()
 
 /mob/living/proc/mob_climax()
 // This is just so I can test this shit without being forced to add actual content
@@ -579,195 +579,199 @@
 /mob/living/carbon/human/mob_climax()
 	if(stat == DEAD) //corpses can't cum
 		return
+	if(!canbearoused || !has_dna())
+		return
 	if(mb_cd_timer > world.time)
 		to_chat(src, "<span class='warning'>You need to wait [DisplayTimeText((mb_cd_timer - world.time), TRUE)] before you can do that again!</span>")
 		return
 	mb_cd_timer = (world.time + mb_cd_length)
-	if(canbearoused && has_dna())
-		if(stat == DEAD)
-			to_chat(src, "<span class='warning'>You can't do that while dead!</span>")
+	if(stat == DEAD)
+		to_chat(src, "<span class='warning'>You can't do that while dead!</span>")
+		return
+	if(stat == UNCONSCIOUS)
+		to_chat(src, "<span class='warning'>You must be conscious to do that!</span>")
+		return
+	if(getArousalLoss() < 33)
+		to_chat(src, "<span class='warning'>You aren't aroused enough for that!</span>")
+		return
+	var/choice = input(src, "Select sexual activity", "Sexual activity:") in list("Masturbate", "Climax alone", "Climax with partner","Climax over partner", "Fill container", "Remove condom", "Remove sounding rod")
+	switch(choice)
+		if("Remove sounding rod")
+			if(restrained(TRUE)) //TRUE ignores grabs
+				to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
+				return
+			var/free_hands = get_num_arms()
+			if(!free_hands)
+				to_chat(src, "<span class='warning'>You need at least one free arm.</span>")
+				return
+			var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
+			if(!P.sounding)
+				to_chat(src, "<span class='warning'>You don't have a rod inside!</span>")
+				return
+			if(P.sounding)
+				to_chat(src, "<span class='warning'>You pull the rod off from the tip of your penis!</span>")
+				src.removesounding()
+				return
 			return
-		if(stat == UNCONSCIOUS)
-			to_chat(src, "<span class='warning'>You must be conscious to do that!</span>")
+
+		if("Remove condom")
+			if(restrained(TRUE)) //TRUE ignores grabs
+				to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
+				return
+			var/free_hands = get_num_arms()
+			if(!free_hands)
+				to_chat(src, "<span class='warning'>You need at least one free arm.</span>")
+				return
+			var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
+			if(!P.condom)
+				to_chat(src, "<span class='warning'>You don't have a condom on!</span>")
+				return
+			if(P.condom)
+				to_chat(src, "<span class='warning'>You tug the condom off the end of your penis!</span>")
+				src.removecondom()
+				return
 			return
-		if(getArousalLoss() < 33)
-			to_chat(src, "<span class='warning'>You aren't aroused enough for that!</span>")
-			return
-		var/choice = input(src, "Select sexual activity", "Sexual activity:") in list("Masturbate", "Climax alone", "Climax with partner","Climax over partner", "Fill container", "Remove condom", "Remove sounding rod")
-		switch(choice)
-			if("Remove sounding rod")
-				if(restrained(TRUE)) //TRUE ignores grabs
-					to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
-					return
-				var/free_hands = get_num_arms()
-				if(!free_hands)
-					to_chat(src, "<span class='warning'>You need at least one free arm.</span>")
-					return
-				var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
-				if(!P.sounding)
-					to_chat(src, "<span class='warning'>You don't have a rod inside!</span>")
-					return
-				if(P.sounding)
-					to_chat(src, "<span class='warning'>You pull the rod off from the tip of your penis!</span>")
-					src.removesounding()
-					return
+
+		if("Masturbate")
+			if(restrained(TRUE)) //TRUE ignores grabs
+				to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
+				return
+			var/free_hands = get_num_arms()
+			if(!free_hands)
+				to_chat(src, "<span class='warning'>You need at least one free arm.</span>")
+				return
+			for(var/helditem in held_items)//how many hands are free
+				if(isobj(helditem))
+					free_hands--
+			if(free_hands <= 0)
+				to_chat(src, "<span class='warning'>You're holding too many things.</span>")
+				return
+			//We got hands, let's pick an organ
+			var/obj/item/organ/genital/picked_organ
+			picked_organ = pick_masturbate_genitals()
+			if(picked_organ)
+				mob_masturbate(picked_organ)
+				return
+			else //They either lack organs that can masturbate, or they didn't pick one.
+				to_chat(src, "<span class='warning'>You cannot masturbate without choosing genitals.</span>")
 				return
 
-			if("Remove condom")
-				if(restrained(TRUE)) //TRUE ignores grabs
-					to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
-					return
-				var/free_hands = get_num_arms()
-				if(!free_hands)
-					to_chat(src, "<span class='warning'>You need at least one free arm.</span>")
-					return
-				var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
-				if(!P.condom)
-					to_chat(src, "<span class='warning'>You don't have a condom on!</span>")
-					return
-				if(P.condom)
-					to_chat(src, "<span class='warning'>You tug the condom off the end of your penis!</span>")
-					src.removecondom()
-					return
+		if("Climax alone")
+			if(restrained(TRUE)) //TRUE ignores grabs
+				to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
+				return
+			var/free_hands = get_num_arms()
+			if(!free_hands)
+				to_chat(src, "<span class='warning'>You need at least one free arm.</span>")
+				return
+			for(var/helditem in held_items)//how many hands are free
+				if(isobj(helditem))
+					free_hands--
+			if(free_hands <= 0)
+				to_chat(src, "<span class='warning'>You're holding too many things.</span>")
+				return
+			//We got hands, let's pick an organ
+			var/obj/item/organ/genital/picked_organ
+			picked_organ = pick_climax_genitals()
+			if(picked_organ)
+				mob_climax_outside(picked_organ)
+				return
+			else //They either lack organs that can masturbate, or they didn't pick one.
+				to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 				return
 
-			if("Masturbate")
-				if(restrained(TRUE)) //TRUE ignores grabs
-					to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
-					return
-				var/free_hands = get_num_arms()
-				if(!free_hands)
-					to_chat(src, "<span class='warning'>You need at least one free arm.</span>")
-					return
-				for(var/helditem in held_items)//how many hands are free
-					if(isobj(helditem))
-						free_hands--
-				if(free_hands <= 0)
-					to_chat(src, "<span class='warning'>You're holding too many things.</span>")
-					return
-				//We got hands, let's pick an organ
-				var/obj/item/organ/genital/picked_organ
-				picked_organ = pick_masturbate_genitals()
-				if(picked_organ)
-					mob_masturbate(picked_organ)
-					return
-				else //They either lack organs that can masturbate, or they didn't pick one.
-					to_chat(src, "<span class='warning'>You cannot masturbate without choosing genitals.</span>")
-					return
+		if("Climax with partner")
+			//We need no hands, we can be restrained and so on, so let's pick an organ
+			var/obj/item/organ/genital/picked_organ
+			picked_organ = pick_climax_genitals()
+			if(!picked_organ)
+				to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
+				return
+			var/mob/living/carbon/partner = pick_partner() //Get someone
+			if(!partner)
+				to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
+				return
+			var/obj/item/organ/genital/penis/P = picked_organ
+			var/impreg = "No"
+			if(partner.breedable && picked_organ.name == "penis" && !P.condom && !P.sounding)
+				var/impreg_question = "Would this action carry the risk of pregnancy?"
+				var/impreg_title = "Choose a option"
+				impreg = input(src, impreg_question, impreg_title, "Yes") as anything in list("Yes", "No")
+			mob_climax_partner_spillage(picked_organ, partner, impreg == "Yes")
 
-			if("Climax alone")
-				if(restrained(TRUE)) //TRUE ignores grabs
-					to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
-					return
-				var/free_hands = get_num_arms()
-				if(!free_hands)
-					to_chat(src, "<span class='warning'>You need at least one free arm.</span>")
-					return
-				for(var/helditem in held_items)//how many hands are free
-					if(isobj(helditem))
-						free_hands--
-				if(free_hands <= 0)
-					to_chat(src, "<span class='warning'>You're holding too many things.</span>")
-					return
-				//We got hands, let's pick an organ
-				var/obj/item/organ/genital/picked_organ
-				picked_organ = pick_climax_genitals()
-				if(picked_organ)
-					mob_climax_outside(picked_organ)
-					return
-				else //They either lack organs that can masturbate, or they didn't pick one.
-					to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
-					return
-
-			if("Climax with partner")
-				//We need no hands, we can be restrained and so on, so let's pick an organ
-				var/obj/item/organ/genital/picked_organ
-				picked_organ = pick_climax_genitals()
-				if(!picked_organ)
-					to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
-					return
-				var/mob/living/carbon/partner = pick_partner() //Get someone
-				if(!partner)
+		if("Climax over partner")
+			var/obj/item/organ/genital/picked_organ
+			picked_organ = pick_climax_genitals()
+			if(picked_organ)
+				var/mob/living/carbon/partner = pick_partner(FALSE) //Get your partner, clothed or not.
+				if(partner)
+					mob_climax_partner(picked_organ, partner, FALSE, FALSE, TRUE)
+				else
 					to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
-					return
-				var/obj/item/organ/genital/penis/P = picked_organ
-				var/impreg = "No"
-				if(partner.breedable && picked_organ.name == "penis" && !P.condom && !P.sounding)
-					var/impreg_question = "Would this action carry the risk of pregnancy?"
-					var/impreg_title = "Choose a option"
-					impreg = input(src, impreg_question, impreg_title, "Yes") as anything in list("Yes", "No")
-				mob_climax_partner_spillage(picked_organ, partner, impreg == "Yes")
 
-			if("Climax over partner")
-				var/obj/item/organ/genital/picked_organ
-				picked_organ = pick_climax_genitals()
-				if(picked_organ)
-					var/mob/living/carbon/partner = pick_partner(FALSE) //Get your partner, clothed or not.
-					if(partner)
-						mob_climax_partner(picked_organ, partner, FALSE, FALSE, TRUE)
-					else
-						to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
-
-			if("Fill container")
-				//We'll need hands and no restraints.
-				if(restrained(TRUE)) //TRUE ignores grabs
-					to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
+		if("Fill container")
+			//We'll need hands and no restraints.
+			if(restrained(TRUE)) //TRUE ignores grabs
+				to_chat(src, "<span class='warning'>You can't do that while restrained!</span>")
+				return
+			var/free_hands = get_num_arms()
+			if(!free_hands)
+				to_chat(src, "<span class='warning'>You need at least one free arm.</span>")
+				return
+			for(var/helditem in held_items)//how many hands are free
+				if(isobj(helditem))
+					free_hands--
+			if(free_hands <= 0)
+				to_chat(src, "<span class='warning'>You're holding too many things.</span>")
+				return
+			//We got hands, let's pick an organ
+			var/obj/item/organ/genital/picked_organ
+			picked_organ = pick_climax_genitals() //Gotta be climaxable, not just masturbation, to fill with fluids.
+			if(picked_organ)
+				//Good, got an organ, time to pick a container
+				var/obj/item/reagent_containers/fluid_container = pick_climax_container()
+				if(fluid_container)
+					mob_fill_container(picked_organ, fluid_container)
 					return
-				var/free_hands = get_num_arms()
-				if(!free_hands)
-					to_chat(src, "<span class='warning'>You need at least one free arm.</span>")
+				else
+					to_chat(src, "<span class='warning'>You cannot do this without anything to fill.</span>")
 					return
-				for(var/helditem in held_items)//how many hands are free
-					if(isobj(helditem))
-						free_hands--
-				if(free_hands <= 0)
-					to_chat(src, "<span class='warning'>You're holding too many things.</span>")
-					return
-				//We got hands, let's pick an organ
-				var/obj/item/organ/genital/picked_organ
-				picked_organ = pick_climax_genitals() //Gotta be climaxable, not just masturbation, to fill with fluids.
-				if(picked_organ)
-					//Good, got an organ, time to pick a container
-					var/obj/item/reagent_containers/fluid_container = pick_climax_container()
-					if(fluid_container)
-						mob_fill_container(picked_organ, fluid_container)
-						return
-					else
-						to_chat(src, "<span class='warning'>You cannot do this without anything to fill.</span>")
-						return
-				else //They either lack organs that can climax, or they didn't pick one.
-					to_chat(src, "<span class='warning'>You cannot fill anything without choosing genitals.</span>")
-					return
-			else //Somehow another option was taken, maybe something interrupted the selection or it was cancelled
-				return //Just end it in that case.
+			else //They either lack organs that can climax, or they didn't pick one.
+				to_chat(src, "<span class='warning'>You cannot fill anything without choosing genitals.</span>")
+				return
+		else //Somehow another option was taken, maybe something interrupted the selection or it was cancelled
+			return //Just end it in that case.
 
 
-/mob/living/carbon/human/proc/mob_climax_forced()
+/mob/living/carbon/proc/mob_climax_forced()
+	if(stat == DEAD) //corpses can't cum
+		to_chat(src, "<span class='warning'>You can't do that while dead!</span>")
+		return
+	if(!canbearoused || !has_dna())
+		return
+	var/mob/living/carbon/human/user_human = src
 	for(var/obj/item/organ/O in internal_organs)
-		if(istype(O, /obj/item/organ/genital))
-			var/obj/item/organ/genital/G = O
-			if(!G.can_climax) //Skip things like wombs and testicles
+		if(!istype(O, /obj/item/organ/genital))
+			return
+		var/obj/item/organ/genital/current_genital = O
+		if(!current_genital.can_climax)
+			continue // no wombs or testicles
+		var/mob/living/carbon/partner
+		var/check_target
+		var/list/worn_stuff = get_equipped_items()
+		if(current_genital.is_exposed(worn_stuff))
+			if(src.pulling)
+				if(iscarbon(src.pulling))
+					check_target = src.pulling
+			else if(src.pulledby)
+				if(iscarbon(src.pulledby))
+					check_target = src.pulledby
+			if(check_target)
+				var/mob/living/carbon/C = check_target
+				if(C.exposed_genitals.len || C.is_groin_exposed() || C.is_chest_exposed())
+					partner = C
+			if(partner)
+				user_human.mob_climax_partner(current_genital, partner, mb_time = 0)
 				continue
-			var/mob/living/carbon/partner
-			var/check_target
-			var/list/worn_stuff = get_equipped_items()
-			if(G.is_exposed(worn_stuff))
-				if(src.pulling) //Are we pulling someone? Priority target, we can't be making option menus for this, has to be quick
-					if(iscarbon(src.pulling)) //Don't fuck objects
-						check_target = src.pulling
-				else if(src.pulledby) //prioritise pulled over pulledby
-					if(iscarbon(src.pulledby))
-						check_target = src.pulledby
-				//Now we should have a partner, or else we have to come alone
-				if(check_target)
-					var/mob/living/carbon/C = check_target
-					if(C.exposed_genitals.len || C.is_groin_exposed() || C.is_chest_exposed()) //Are they naked enough?
-						partner = C
-				if(partner) //Did they pass the clothing checks?
-					mob_climax_partner(G, partner, mb_time = 0) //Instant climax due to forced
-					continue //You've climaxed once with this organ, continue on
-			//not exposed OR if no partner was found while exposed, climax alone
-			mob_climax_outside(G, mb_time = 0) //removed climax timer for sudden, forced orgasms
-	//Now all genitals that could climax, have.
-	//Since this was a forced climax, we do not need to continue with the other stuff
+		user_human.mob_climax_outside(current_genital, mb_time = 0)
 	return
