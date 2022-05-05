@@ -45,19 +45,17 @@
 		if(Belly.inflatable)
 			dat	+= "<a href='byond://?src=[REF(src)];shrink_belly=1'>Deflate belly</A>"
 			dat	+=	"(Shrink your belly down a size)<BR>"
-
-
-	if(user.pulling)
-		if(!(isliving(user.pulling) && !iscarbon(user.pulling))) // do not fuck animals
-			dat	+= "<a href='byond://?src=[REF(src)];climaxover=1'>Climax over [user.pulling]</A>" //you can cum on objects if you really want...
-			dat	+=	"(Orgasm over a person or object.)<BR>"
-			if(iscarbon(user.pulling))
-				dat	+= "<a href='byond://?src=[REF(src)];climaxwith=1'>Climax with [user.pulling]</A>"
-				dat	+=	{"(Orgasm with another person.)<BR>"}
-				var/mob/living/carbon/human/H = user.pulling
-				if(H && H.breedable && P)
-					dat	+= "<a href='byond://?src=[REF(src)];impreg=1'>Impregnate [U.pulling] ([clamp(U.impregchance,0,100)]%)</A>"
-					dat	+=	"(Climax inside another person, and attempt to knock them up.)<BR>"
+			
+	if(user.pulling && !isnoncarbon(user.pulling)) // do not fuck animals
+		dat	+= "<a href='byond://?src=[REF(src)];climaxover=1'>Climax over [user.pulling]</A>" //you can cum on objects if you really want...
+		dat	+=	"(Orgasm over a person or object.)<BR>"
+		if(iscarbon(user.pulling))
+			dat	+= "<a href='byond://?src=[REF(src)];climaxwith=1'>Climax with [user.pulling]</A>"
+			dat	+=	{"(Orgasm with another person.)<BR>"}
+			var/mob/living/carbon/human/H = user.pulling
+			if(H && H.breedable && P)
+				dat	+= "<a href='byond://?src=[REF(src)];impreg=1'>Impregnate [U.pulling] ([clamp(U.impregchance,0,100)]%)</A>"
+				dat	+=	"(Climax inside another person, and attempt to knock them up.)<BR>"
 	else
 		dat	+= "<span class='linkOff'>Climax over</span></A>"
 		dat	+=	"(Requires a partner)<BR>"
@@ -80,11 +78,9 @@
 	dat	+= "<a href='byond://?src=[REF(src)];omenu=1'>Old Menu</A>"
 	dat	+= "<a href='byond://?src=[REF(src)];underwear=1'>Toggle Undergarments </A>"
 	dat	+= "<BR>"
-
 	var/datum/browser/popup = new(user, "arousal", "Arousal Panel")
 	popup.set_content(dat)
 	popup.set_title_image(user.browse_rsc_icon(icon, icon_state), 500,600)
-
 	popup.open()
 
 
@@ -384,7 +380,7 @@ obj/screen/arousal/proc/kiss()
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
 	src << browse(null, "window=arousal") //alls fine, we can close the window now.
-	if(!partner || (isliving(partner) !iscarbon(partner)))
+	if(!partner || isnoncarbon(partner))
 		to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
 		return
 	var/obj/item/organ/genital/penis/P = picked_organ
