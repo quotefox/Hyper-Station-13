@@ -112,7 +112,7 @@
 	* despite the name of this, it actually returns a number between 0 and 100
   */
 /mob/living/proc/getPercentAroused()
-	var/percentage = ((100 / max_arousal) * arousalloss)
+	var/percentage = ((arousalloss / max_arousal) * 100)
 	return percentage
 
 /mob/living/proc/isPercentAroused(percentage)//returns true if the mob's arousal (measured in a percent of 100) is greater than the arg percentage.
