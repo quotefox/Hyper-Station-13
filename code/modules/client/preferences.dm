@@ -2435,9 +2435,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						features["belly_size"] = clamp(new_bellysize, BELLY_MIN_SIZE, BELLY_MAX_SIZE)
 
 				if("butt_size")
-					var/new_buttsize = input(user, "Butt size :\n([BUTT_MIN_SIZE]-5)", "Character Preference") as num|null
+					var/new_buttsize = input(user, "Butt size :\n([BUTT_MIN_SIZE]-[BUTT_MAX_SIZE_SELECTABLE])", "Character Preference") as num|null
 					if(new_buttsize != null)
-						features["butt_size"] = clamp(new_buttsize, BUTT_MIN_SIZE, 5) //Restricted to 5 in menu, because we have chems to make them big IC, like with breasts and what not.
+						features["butt_size"] = clamp(new_buttsize, BUTT_MIN_SIZE, BUTT_MAX_SIZE_SELECTABLE) 
+						//Restricted to 5 in menu, because we have chems to make them big IC, like with breasts and what not.
 
 				if("vag_shape")
 					var/new_shape
