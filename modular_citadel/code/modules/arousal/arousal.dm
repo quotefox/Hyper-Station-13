@@ -201,7 +201,7 @@
 	*
 	* Returns: `TRUE`/`FALSE` - Whether or not the mob passes all of the above checks.
 	*/
-/mob/living/proc/can_orgasm(arousal = 100)
+/mob/living/proc/can_orgasm(arousal=100)
 	if(src.canbearoused && src.getArousalLoss() >= arousal && ishuman(src) && src.has_dna())
 		return TRUE
 	return FALSE
@@ -232,7 +232,7 @@
 	* - `cover`: Whether or not the mob is climaxing over themselves.
 	* - `mb_time`: Warm-up time for this interaction.
 	*/
-/mob/living/carbon/human/proc/mob_masturbate(obj/item/organ/genital/genital, cover = FALSE, mb_time = 30) 
+/mob/living/carbon/human/proc/mob_masturbate(obj/item/organ/genital/genital, cover=FALSE, mb_time=3 SECONDS) 
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = genital.get_fluid_source()
 	var/condomed = FALSE
@@ -297,7 +297,7 @@
 	* - `mb_time`: The warm-up time for this interaction.
 	* - `spillage`: Whether or not climaxing causes this mob to spill fluids on the floor.
 	*/
-/mob/living/carbon/human/proc/mob_climax_outside(obj/item/organ/genital/genital, spillage = TRUE, mb_time = 30) 
+/mob/living/carbon/human/proc/mob_climax_outside(obj/item/organ/genital/genital, spillage=TRUE, mb_time=3 SECONDS) 
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = genital.get_fluid_source()
 	var/unable_to_come = FALSE
@@ -475,7 +475,7 @@
 	* - `partner`: This mob's partner for the interaction.
 	* - `impreg`: Whether or not this interaction has a chance to impregnate.
 	*/
-/mob/living/carbon/human/proc/mob_climax_inside_spillage(obj/item/organ/genital/picked_organ, mob/living/carbon/partner, impreg = FALSE)
+/mob/living/carbon/human/proc/mob_climax_inside_spillage(obj/item/organ/genital/picked_organ, mob/living/carbon/partner, impreg=FALSE)
 	var/obj/item/organ/genital/penis/_penis = picked_organ
 	if(picked_organ.name != "penis" || _penis.sounding || _penis.condom)
 		mob_climax_in_partner(picked_organ, partner, spillage=FALSE)
@@ -496,7 +496,7 @@
 	* - `container`: The container being targeted.
 	* - `mb_time`: The warm-up time for this interaction.
 	*/
-/mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/genital, obj/item/reagent_containers/container, mb_time = 30) 
+/mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/genital, obj/item/reagent_containers/container, mb_time=3 SECONDS) 
 	if(!container) //Something weird happened
 		to_chat(src, "<span class='warning'>You need a container to do this!</span>")
 		return
@@ -813,9 +813,9 @@
 				if(C.exposed_genitals.len || C.is_groin_exposed() || C.is_chest_exposed())
 					partner = C
 			if(partner)
-				user_human.mob_climax_in_partner(current_genital, partner, mb_time = 0)
+				user_human.mob_climax_in_partner(current_genital, partner, mb_time=0)
 				continue
-		user_human.mob_climax_outside(current_genital, mb_time = 0)
+		user_human.mob_climax_outside(current_genital, mb_time=0)
 	return
 
 

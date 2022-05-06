@@ -3,7 +3,7 @@
 	pressure_resistance = 8
 	max_integrity = 300
 	interaction_flags_atom = INTERACT_ATOM_ATTACK_HAND | INTERACT_ATOM_UI_INTERACT
-	var/climb_time = 20
+	var/climb_time=20
 	var/climb_stun = 20
 	var/climbable = FALSE
 	var/mob/living/structureclimber
@@ -66,7 +66,7 @@
 	src.add_fingerprint(user)
 	user.visible_message("<span class='warning'>[user] starts climbing onto [src].</span>", \
 								"<span class='notice'>You start climbing onto [src]...</span>")
-	var/adjusted_climb_time = climb_time
+	var/adjusted_climb_time=climb_time
 	if(user.restrained()) //climbing takes twice as long when restrained.
 		adjusted_climb_time *= 2
 	if(isalien(user))
