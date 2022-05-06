@@ -128,25 +128,25 @@
 
 /mob/living/carbon/updatearousal()
 	. = ..()
-	for(var/obj/item/organ/genital/G in internal_organs)
-		if(istype(G))
+	for(var/obj/item/organ/genital/genital in internal_organs)
+		if(istype(genital))
 			var/datum/sprite_accessory/S
-			switch(G.type)
+			switch(genital.type)
 				if(/obj/item/organ/genital/penis)
-					S = GLOB.cock_shapes_list[G.shape]
+					S = GLOB.cock_shapes_list[genital.shape]
 				if(/obj/item/organ/genital/testicles)
-					S = GLOB.balls_shapes_list[G.shape]
+					S = GLOB.balls_shapes_list[genital.shape]
 				if(/obj/item/organ/genital/vagina)
-					S = GLOB.vagina_shapes_list[G.shape]
+					S = GLOB.vagina_shapes_list[genital.shape]
 				if(/obj/item/organ/genital/breasts)
-					S = GLOB.breasts_shapes_list[G.shape]
+					S = GLOB.breasts_shapes_list[genital.shape]
 			if(S?.alt_aroused)
-				G.aroused_state = isPercentAroused(G.aroused_amount)
+				genital.aroused_state = isPercentAroused(genital.aroused_amount)
 			if(getArousalLoss() >= isPercentAroused(33))
-				G.aroused_state = TRUE
+				genital.aroused_state = TRUE
 			else
-				G.aroused_state = FALSE
-			G.update_appearance()
+				genital.aroused_state = FALSE
+			genital.update_appearance()
 
 
 
@@ -199,7 +199,7 @@
 	* Arguments:
 	* - `arousal` - The minimum arousal needed to pass the check. Default is `100`.
 	*
-	* Returns: `TRUE/FALSE` - Whether or not the mob passes all of the above checks.
+	* Returns: `TRUE`/`FALSE` - Whether or not the mob passes all of the above checks.
 	*/
 /mob/living/proc/can_orgasm(arousal = 100)
 	if(src.canbearoused && src.getArousalLoss() >= arousal && ishuman(src) && src.has_dna())
@@ -226,47 +226,53 @@
 				to_chat(src, "<span class='notice'>You aren't aroused enough for that.</span>")
 
 
-
-/mob/living/carbon/human/proc/mob_masturbate(obj/item/organ/genital/G, cover = FALSE, mb_time = 30) 
+/**
+	*	Arguments:
+	* - `genital`: Genitals being used for this interaction.
+	* - `cover`: Whether or not the mob is climaxing over themselves.
+	* - `mb_time`: Warm-up time for this interaction.
+	*/
+/mob/living/carbon/human/proc/mob_masturbate(obj/item/organ/genital/genital, cover = FALSE, mb_time = 30) 
 	var/total_fluids = 0
-	var/datum/reagents/fluid_source = G.get_fluid_source()
+	var/datum/reagents/fluid_source = genital.get_fluid_source()
 	var/condomed = FALSE
 	var/sounded = FALSE
-	if(G.name == "penis")
+	if(genital.name == "penis")
 		var/obj/item/organ/genital/penis/P = src.getorganslot("penis")
 		condomed = P.condom
 		sounded = P.sounding
 	if(!fluid_source)
-		to_chat(src, "<span class='warning'>Your [G.name] is unable to produce it's own fluids, it's missing the organs for it.</span>")
+		to_chat(src, "<span class='warning'>Your [genital.name] is unable to produce it's own fluids, it's missing the organs for it.</span>")
 		return
 	total_fluids = fluid_source.total_volume
 	if(mb_time)
-		src.visible_message("<span class='love'>[src] starts to [G.masturbation_verb] [p_their()] [G.name].</span>", \
-			"<span class='userlove'>You start to [G.masturbation_verb] your [G.name].</span>", \
-			"<span class='userlove'>You start to [G.masturbation_verb] your [G.name].</span>")
+		src.visible_message("<span class='love'>[src] starts to [genital.masturbation_verb] [p_their()] [genital.name].</span>", \
+			"<span class='userlove'>You start to [genital.masturbation_verb] your [genital.name].</span>", \
+			"<span class='userlove'>You start to [genital.masturbation_verb] your [genital.name].</span>")
 	if(do_after(src, mb_time, target = src))
 		if(total_fluids > 5 &&!condomed &&!sounded)
 			fluid_source.reaction(src.loc, TOUCH, 1, 0)
 			fluid_source.clear_reagents()
-		if(!condomed && !sounded && !cover)
-			src.visible_message("<span class='love'>[src] orgasms, cumming[istype(src.loc, /turf/open/floor) ? " onto [src.loc]" : ""]!</span>", \
-				"<span class='userlove'>You cum[istype(src.loc, /turf/open/floor) ? " onto [src.loc]" : ""].</span>", \
-				"<span class='userlove'>You have relieved yourself.</span>")
-		if(!condomed &&!sounded && cover)//For when you want to make a mess of yourself.
-			fluid_source.trans_to(src, total_fluids*G.fluid_transfer_factor)
-			total_fluids -= total_fluids*G.fluid_transfer_factor
-			if(total_fluids > 80) // now thats a big cum!
-				src.add_cum_overlay("large")
-			if(total_fluids > 5)
-				fluid_source.reaction(src.loc, TOUCH, 1, 0)
-				var/mob/living/carbon/human/H = src
-				if(H && G.name == "penis")
-					H.cumdrip_rate += rand(5,10)
-			fluid_source.clear_reagents()
-			src.visible_message("<span class='love'>[src] climaxes over [p_their()] self, using [p_their()] [G.name]!</span>", \
-				"<span class='userlove'>You orgasm over yourself, using your [G.name].</span>", \
-				"<span class='userlove'>You have climaxed over something, using your [G.name].</span>")
-			src.add_cum_overlay()
+		if(!condomed && !sounded)//For when you want to make a mess of yourself.
+			if(cover)
+				fluid_source.trans_to(src, total_fluids*genital.fluid_transfer_factor)
+				total_fluids -= total_fluids*genital.fluid_transfer_factor
+				if(total_fluids > 80) // now thats a big cum!
+					src.add_cum_overlay("large")
+				if(total_fluids > 5)
+					fluid_source.reaction(src.loc, TOUCH, 1, 0)
+					var/mob/living/carbon/human/H = src
+					if(H && genital.name == "penis")
+						H.cumdrip_rate += rand(5,10)
+				fluid_source.clear_reagents()
+				src.visible_message("<span class='love'>[src] climaxes over [p_their()] self, using [p_their()] [genital.name]!</span>", \
+					"<span class='userlove'>You orgasm over yourself, using your [genital.name].</span>", \
+					"<span class='userlove'>You have climaxed over something, using your [genital.name].</span>")
+				src.add_cum_overlay()
+			else
+				src.visible_message("<span class='love'>[src] orgasms, cumming[istype(src.loc, /turf/open/floor) ? " onto [src.loc]" : ""]!</span>", \
+					"<span class='userlove'>You cum[istype(src.loc, /turf/open/floor) ? " onto [src.loc]" : ""].</span>", \
+					"<span class='userlove'>You have relieved yourself.</span>")
 		if(condomed) //condomed
 			src.visible_message("<span class='love'>[src] orgasms, climaxing into [p_their()] condom!</span>", \
 				"<span class='userlove'>You cum into your condom.</span>", \
@@ -275,26 +281,34 @@
 			src.visible_message("<span class='love'>[src] orgasms, but the rod blocks anything from leaking out!</span>", \
 				"<span class='userlove'>You cum with the rod inside.</span>", \
 				"<span class='userlove'>You don't quite feel totally relieved.</span>")
-		if(total_fluids > 0 &&condomed &&!sounded)
+		if(total_fluids > 0 && condomed && !sounded)
 			src.condomclimax()
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
-		if(G.can_climax)
+		if(genital.can_climax)
 			setArousalLoss(min_arousal)
 
 
-/mob/living/carbon/human/proc/mob_climax_outside(obj/item/organ/genital/G, mb_time = 30, spillage = TRUE) 
-//This is used for forced orgasms and other hands-free climaxes
+/** 
+	* Mob climaxes using provided genitals without a partner. This is in contrast with `mob_climax_instant()`,
+	* which does not have a warm-up time and uses all genitals at once to climax.
+	*
+	* Arguments:
+	* - `genital`: The selected genitals for this interaction. Determines fluid type.
+	* - `mb_time`: The warm-up time for this interaction.
+	* - `spillage`: Whether or not climaxing causes this mob to spill fluids on the floor.
+	*/
+/mob/living/carbon/human/proc/mob_climax_outside(obj/item/organ/genital/genital, spillage = TRUE, mb_time = 30) 
 	var/total_fluids = 0
-	var/datum/reagents/fluid_source = G.get_fluid_source()
+	var/datum/reagents/fluid_source = genital.get_fluid_source()
 	var/unable_to_come = FALSE
 	if(fluid_source)
 		total_fluids = fluid_source.total_volume
 	else
 		unable_to_come = TRUE
 	if(unable_to_come)
-		src.visible_message("<span class='danger'>[src] shudders, their [G.name] unable to cum.</span>", \
-			"<span class='userdanger'>Your [G.name] cannot cum, giving no relief.</span>", \
-			"<span class='userdanger'>Your [G.name] cannot cum, giving no relief.</span>")
+		src.visible_message("<span class='danger'>[src] shudders, their [genital.name] unable to cum.</span>", \
+			"<span class='userdanger'>Your [genital.name] cannot cum, giving no relief.</span>", \
+			"<span class='userdanger'>Your [genital.name] cannot cum, giving no relief.</span>")
 		return
 	total_fluids = fluid_source.total_volume
 	if(mb_time) //as long as it's not instant, give a warning
@@ -306,19 +320,31 @@
 			if(total_fluids > 5)
 				fluid_source.reaction(src.loc, TOUCH, 1, 0)
 			fluid_source.clear_reagents()
-			src.visible_message("<span class='love'>[src] orgasms[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""], with [p_their()] [G.name]!</span>", \
-				"<span class='userlove'>You climax[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""] with your [G.name].</span>", \
-				"<span class='userlove'>You climax using your [G.name].</span>")
+			src.visible_message("<span class='love'>[src] orgasms[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""], with [p_their()] [genital.name]!</span>", \
+				"<span class='userlove'>You climax[istype(src.loc, /turf/open/floor) ? ", spilling onto [src.loc]" : ""] with your [genital.name].</span>", \
+				"<span class='userlove'>You climax using your [genital.name].</span>")
 		else
-			src.visible_message("<span class='love'>[src] orgasms with [p_their()] [G.name]!</span>", \
-				"<span class='userlove'>You climax with your [G.name].</span>", \
-				"<span class='userlove'>You climax using your [G.name].</span>")
+			src.visible_message("<span class='love'>[src] orgasms with [p_their()] [genital.name]!</span>", \
+				"<span class='userlove'>You climax with your [genital.name].</span>", \
+				"<span class='userlove'>You climax using your [genital.name].</span>")
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
-		if(G.can_climax)
+		if(genital.can_climax)
 			setArousalLoss(min_arousal)
 
 
+/**
+	* Climax over a partner with a selected organ. This is external and creates spills on the partner/floor,
+	* and does not have a chance to impregnate. For this interaction, the partner may be an object instead of
+	* a person (but it cannot be an animal).
+	*
+	* Arguments:
+	* - `genital`: The genital being used for this interaction. Determines fluid type and volume.
+	* - `partner`: The thing being used as a partner. Generally an object or a person.
+	* - `mb_time`: The warm-up time for this interaction. Default is 3 seconds
+	*/
 /mob/living/carbon/human/proc/mob_climax_cover(obj/item/organ/genital/genital, atom/partner, mb_time=3 SECONDS)
+	if(isnoncarbon(partner)) // deny animals
+		return FALSE
 	if(istype(genital, /obj/item/organ/genital/penis))
 		var/obj/item/organ/genital/penis/P = genital
 		if(P.condom)
@@ -366,13 +392,25 @@
 	setArousalLoss(min_arousal)
 
 
-/mob/living/carbon/human/proc/mob_climax_in_partner(obj/item/organ/genital/G, mob/living/carbon/partner, spillage=TRUE, remote=FALSE, mb_time=3 SECONDS)
+/**
+	* Climax inside a partner using a selected organ.
+	*
+	* Arguments:
+	* - `genital`: The genital being used for this interaction. Determines type/volume of fluids.
+	* - `partner`: The person that this mob is climaxing in.
+	* - `spillage`: Whether or not the fluids will spill on the ground.
+	* - `remote`: Whether or not this interaction is being triggered long-distance.
+	* - `mb_time`: Warm-up time for this interaction.
+	*
+	* Returns: `TRUE`/`FALSE` - whether or not this interaction succeeded.
+	*/
+/mob/living/carbon/human/proc/mob_climax_in_partner(obj/item/organ/genital/genital, mob/living/carbon/partner, spillage=TRUE, remote=FALSE, mb_time=3 SECONDS)
 	if(isnoncarbon(partner)) // deny animals
 		return FALSE
 	var/total_fluids = 0
-	var/datum/reagents/fluid_source = G.get_fluid_source()
+	var/datum/reagents/fluid_source = genital.get_fluid_source()
 	if(!fluid_source)
-		to_chat(src, "<span class='warning'>Your [G.name] is unable to produce it's own fluids, it's missing the organs for it.</span>")
+		to_chat(src, "<span class='warning'>Your [genital.name] is unable to produce it's own fluids, it's missing the organs for it.</span>")
 		return FALSE
 	total_fluids = fluid_source.total_volume
 	var/partner_text = partner
@@ -386,23 +424,23 @@
 	if(!remote && !in_range(src, partner))
 		return FALSE
 	if(spillage)
-		fluid_source.trans_to(partner, total_fluids*G.fluid_transfer_factor)
-		total_fluids -= total_fluids*G.fluid_transfer_factor
+		fluid_source.trans_to(partner, total_fluids*genital.fluid_transfer_factor)
+		total_fluids -= total_fluids*genital.fluid_transfer_factor
 		if(total_fluids > 5)
 			fluid_source.reaction(partner.loc, TOUCH, 1, 0)
 			var/mob/living/carbon/human/H = partner
 			if(H)
 				H.cumdrip_rate += rand(5,10)
 		fluid_source.clear_reagents()
-		src.visible_message("<span class='love'>[src] climaxes with [partner], overflowing and spilling, using [p_their()] [G.name]!</span>",\
-			"<span class='userlove'>You orgasm with [partner], spilling out of them, using your [G.name].</span>",\
-			"<span class='userlove'>You have climaxed with someone, spilling out of them, using your [G.name].</span>")
+		src.visible_message("<span class='love'>[src] climaxes with [partner], overflowing and spilling, using [p_their()] [genital.name]!</span>",\
+			"<span class='userlove'>You orgasm with [partner], spilling out of them, using your [genital.name].</span>",\
+			"<span class='userlove'>You have climaxed with someone, spilling out of them, using your [genital.name].</span>")
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 		SEND_SIGNAL(partner, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 	else //knots, portal fleshlights, and other non-spilling orgasms
 		var/can_inflate = TRUE
-		if(istype(G, /obj/item/organ/genital/penis))
-			var/obj/item/organ/genital/penis/P = G
+		if(istype(genital, /obj/item/organ/genital/penis))
+			var/obj/item/organ/genital/penis/P = genital
 			if(P.condom)//condomed.
 				can_inflate = FALSE
 				src.condomclimax()
@@ -410,14 +448,14 @@
 			fluid_source.trans_to(partner, total_fluids)
 			if(!spillage && total_fluids > 80) // hyper - cum inflation, ONLY if not wearing a condom 
 				partner.expand_belly(1)
-		src.visible_message("<span class='love'>[src] climaxes with [partner_text], [p_their()] [G.name] spilling nothing!</span>", \
-			"<span class='userlove'>You ejaculate with [partner_text], your [G.name] spilling nothing.</span>", \
-			"<span class='userlove'>You have climaxed inside someone, your [G.name] spilling nothing.</span>")
+		src.visible_message("<span class='love'>[src] climaxes with [partner_text], [p_their()] [genital.name] spilling nothing!</span>", \
+			"<span class='userlove'>You ejaculate with [partner_text], your [genital.name] spilling nothing.</span>", \
+			"<span class='userlove'>You have climaxed inside someone, your [genital.name] spilling nothing.</span>")
 		if(remote)
 			to_chat(partner, "<span class='userlove'>You feel someone ejaculate inside you.</span>")
 		SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
 		SEND_SIGNAL(partner, COMSIG_ADD_MOOD_EVENT, "orgasm", /datum/mood_event/orgasm)
-	if(G.can_climax)
+	if(genital.can_climax)
 		setArousalLoss(min_arousal)
 	//Hyper - antag code
 	var/mob/living/carbon/partner_carbon = partner
@@ -499,9 +537,9 @@
 /mob/living/carbon/human/proc/target_genitals(mob/living/carbon/human/T)
 	var/obj/item/organ/genital/ret_organ
 	var/list/genitals_list = list()
-	for(var/obj/item/organ/genital/G in T.internal_organs)
-		if(G.is_exposed() && !G.dontlist)
-			genitals_list += G
+	for(var/obj/item/organ/genital/genital in T.internal_organs)
+		if(genital.is_exposed() && !genital.dontlist)
+			genitals_list += genital
 	if(genitals_list.len)
 		ret_organ = input(src, "", "Genitals", null)  as null|obj in genitals_list
 		return ret_organ
@@ -520,10 +558,10 @@
 /mob/living/carbon/human/proc/pick_climax_genitals(masturbation=FALSE, title="Climax")
 	var/obj/item/organ/genital/ret_organ
 	var/list/genitals_list = list()
-	for(var/obj/item/organ/genital/G in internal_organs)
-		if(G.can_climax && G.is_exposed() && !G.dontlist)
-			if(!masturbation || G.can_masturbate_with)
-				genitals_list += G
+	for(var/obj/item/organ/genital/genital in internal_organs)
+		if(genital.can_climax && genital.is_exposed() && !genital.dontlist)
+			if(!masturbation || genital.can_masturbate_with)
+				genitals_list += genital
 	if(genitals_list.len)
 		ret_organ = input(src, "with what?", title, null)  as null|obj in genitals_list
 		return ret_organ
@@ -533,9 +571,11 @@
 /**
 	* Prompts the user to select a mob that they are either pulling or being pulled by.
 	*
+	* Arguments:
+	* - `needs_exposed`: Whether or not the partner must have exposed genitals.
 	* Returns: `null`|`mob/living/carbon`: The selected mob.
 	*/
-/mob/living/carbon/human/proc/pick_partner(needs_exposed = TRUE)
+/mob/living/carbon/human/proc/pick_partner(needs_exposed=TRUE)
 	var/list/partners = list(src.pulling, src.pulledby)
 	for(var/I in partners)
 		if(!iscarbon(I))
@@ -700,7 +740,7 @@
 			var/obj/item/organ/genital/picked_organ
 			picked_organ = pick_climax_genitals()
 			if(picked_organ)	
-				var/mob/living/carbon/partner = pick_partner(FALSE) //Get your partner, clothed or not.
+				var/mob/living/carbon/partner = pick_partner(needs_exposed=FALSE) //Get your partner, clothed or not.
 				if(partner)
 					mob_climax_cover(picked_organ, partner)
 				else

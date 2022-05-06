@@ -59,7 +59,9 @@
 			C.emote("moan")
 		C.do_jitter_animation()
 		C.adjustArousalLoss(20) //make the target more aroused.
-		C.mob_climax_instant() //make them cum if they are over the edge.
+		if(C.can_orgasm() && ishuman(C))
+			var/mob/living/carbon/human/user_human = C
+			user_human.mob_climax_outside(P, mb_time=0) // instant, because we already did a warmup
 		return
 	else
 		to_chat(user, "<span class='notice'>You don't see anywhere to use this on.</span>")
@@ -139,7 +141,7 @@
 			target.adjustArousalLoss(20)
 			target.do_jitter_animation()
 			if(target.can_orgasm() && prob(5)) 
-				target.mob_climax_outside(target_genital, spillage = target_genital.is_exposed())
+				target.mob_climax_outside(target_genital, spillage=target_genital.is_exposed())
 			if(user.can_orgasm())
 				var/mob/living/carbon/human/O = user
 				var/impreg_chance = target_genital.name == "vagina" && !P.condom && !P.sounding
