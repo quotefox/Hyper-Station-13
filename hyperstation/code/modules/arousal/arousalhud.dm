@@ -378,10 +378,10 @@ obj/screen/arousal/proc/kiss()
 		to_chat(src, "<span class='warning'>You cannot climax without choosing genitals.</span>")
 		return
 	src << browse(null, "window=arousal") // close arousal window
-	mob_climax_partner_spillage(picked_organ, partner, impreg=FALSE)
+	mob_climax_inside_spillage(picked_organ, partner, impreg=FALSE)
 
 
-/mob/living/carbon/human/proc/climaxover(mob/living/carbon/human/partner)
+/mob/living/carbon/human/proc/climaxover(atom/partner)
 	var/obj/item/organ/genital/picked_organ
 	picked_organ = pick_climax_genitals()
 	if(!picked_organ)
@@ -390,13 +390,6 @@ obj/screen/arousal/proc/kiss()
 	src << browse(null, "window=arousal") //alls fine, we can close the window now.
 	if(!partner || isnoncarbon(partner))
 		to_chat(src, "<span class='warning'>You cannot do this alone.</span>")
-		return
-	var/obj/item/organ/genital/penis/P = picked_organ
-	if(P.condom)
-		to_chat(src, "<span class='warning'>You cannot do this action with a condom on.</span>")
-		return
-	if(P.sounding)
-		to_chat(src, "<span class='warning'>You cannot do this action with a sounding in.</span>")
 		return
 	mob_climax_cover(picked_organ, partner)
 
@@ -435,7 +428,7 @@ obj/screen/arousal/proc/kiss()
 		to_chat(src, "<span class='warning'>You cannot impregnate someone with a sounding rod in.</span>")
 		return
 	src << browse(null, "window=arousal") //alls fine, we can close the window now.
-	mob_climax_partner_spillage(picked_organ, partner, impreg=TRUE)
+	mob_climax_inside_spillage(picked_organ, partner, impreg=TRUE)
 
 
 /mob/living/carbon/human/proc/cumcontainer(mob/living/T)

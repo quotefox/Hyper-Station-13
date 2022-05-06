@@ -151,7 +151,7 @@
 			if(user.can_orgasm())
 				var/mob/living/carbon/human/O = user
 				var/impreg_chance = target_genital.name == "vagina" && !P.condom && !P.sounding
-				if(O.mob_climax_partner(P, target, spillage=FALSE, remote=TRUE) && impreg_chance)
+				if(O.mob_climax_in_partner(P, target, spillage=FALSE, remote=TRUE) && impreg_chance)
 					target.impregnate(by=O)
 		if("Lick")
 			holder.visible_message("<span class='userlove'>[holder] licks into [src].</span>",\
