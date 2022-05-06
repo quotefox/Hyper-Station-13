@@ -45,11 +45,9 @@
 		inuse = 1
 		if(!(C == user)) //if we are targeting someone else.
 			C.visible_message("<span class='userlove'>[user] is trying to use [src] on [C]'s penis.</span>", "<span class='userlove'>[user] is trying to use [src] on your penis.</span>")
-
 		if(!do_mob(user, C, 3 SECONDS)) //3 second delay
 			inuse = 0
 			return
-
 		//checked if not used on yourself, if not, carry on.
 		playsound(src, 'sound/lewd/slaps.ogg', 30, 1, -1) //slapping sound
 		inuse = 0
@@ -57,20 +55,14 @@
 			C.visible_message("<span class='userlove'>[user] pumps [src] on [C]'s penis.</span>", "<span class='userlove'>[user] pumps [src] up and down on your penis.</span>")
 		else
 			user.visible_message("<span class='userlove'>[user] pumps [src] on their penis.</span>", "<span class='userlove'>You pump the fleshlight on your penis.</span>")
-
 		if(prob(30)) //30% chance to make them moan.
 			C.emote("moan")
-
 		C.do_jitter_animation()
 		C.adjustArousalLoss(20) //make the target more aroused.
-		if (C.can_orgasm())
-			C.mob_climax_instant() //make them cum if they are over the edge.
-
+		C.mob_climax_instant() //make them cum if they are over the edge.
 		return
-
 	else
 		to_chat(user, "<span class='notice'>You don't see anywhere to use this on.</span>")
-
 	inuse = 0
 	..()
 

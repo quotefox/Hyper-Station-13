@@ -202,7 +202,9 @@
 	* Returns: `TRUE/FALSE` - Whether or not the mob passes all of the above checks.
 	*/
 /mob/living/proc/can_orgasm(arousal = 100)
-	return src.canbearoused && src.getArousalLoss() >= arousal && ishuman(src) && src.has_dna()
+	if(src.canbearoused && src.getArousalLoss() >= arousal && ishuman(src) && src.has_dna())
+		return TRUE
+	return FALSE
 
 
 /mob/living/proc/mob_climax()
@@ -744,37 +746,36 @@
   * climaxable genitals, either onto their location (floor) or on whatever 
   * is pulling/being pulled by them.
 	*/
-/mob/living/carbon/proc/mob_climax_instant()
+/mob/living/carbon/proc/mob_climax_instant(arousal=100)
 	if(stat == DEAD) //corpses can't cum
 		to_chat(src, "<span class='warning'>You can't do that while dead!</span>")
 		return
-	if(!canbearoused || !has_dna())
+	if(!can_orgasm(arousal))
 		return
 	var/mob/living/carbon/human/user_human = src
 	for(var/obj/item/organ/O in internal_organs)
 		if(!istype(O, /obj/item/organ/genital))
-			return
+			continue
 		var/obj/item/organ/genital/current_genital = O
 		if(!current_genital.can_climax)
 			continue // no wombs or testicles
 		var/mob/living/carbon/partner
 		var/check_target
-		if(!current_genital.is_exposed())
-			user_human.mob_climax_outside(current_genital, mb_time = 0)
-			continue
-		if(src.pulling)
-			if(iscarbon(src.pulling))
-				check_target = src.pulling
-		else if(src.pulledby)
-			if(iscarbon(src.pulledby))
-				check_target = src.pulledby
-		if(check_target)
-			var/mob/living/carbon/C = check_target
-			if(C.exposed_genitals.len || C.is_groin_exposed() || C.is_chest_exposed())
-				partner = C
-		if(partner)
-			user_human.mob_climax_in_partner(current_genital, partner, mb_time = 0)
-			continue
+		if(current_genital.is_exposed())
+			if(src.pulling)
+				if(iscarbon(src.pulling))
+					check_target = src.pulling
+			else if(src.pulledby)
+				if(iscarbon(src.pulledby))
+					check_target = src.pulledby
+			if(check_target)
+				var/mob/living/carbon/C = check_target
+				if(C.exposed_genitals.len || C.is_groin_exposed() || C.is_chest_exposed())
+					partner = C
+			if(partner)
+				user_human.mob_climax_in_partner(current_genital, partner, mb_time = 0)
+				continue
+		user_human.mob_climax_outside(current_genital, mb_time = 0)
 	return
 
 

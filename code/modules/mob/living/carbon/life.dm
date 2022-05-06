@@ -77,8 +77,7 @@
 			var/mob/living/carbon/human/B = src
 			if(HAS_TRAIT(B, TRAIT_CHOKE_SLUT))
 				B.adjustArousalLoss(7)
-				if (B.can_orgasm())
-					B.mob_climax_instant()
+				B.mob_climax_instant()
 			else
 				SEND_SIGNAL(src, COMSIG_ADD_MOOD_EVENT, "suffocation", /datum/mood_event/suffocation)
 		else

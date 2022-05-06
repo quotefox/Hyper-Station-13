@@ -288,11 +288,10 @@
 	if(user.getArousalLoss() < 100)
 		to_chat(user, "<i>You hear a voice in your head... <b>\"You are not horny enough to receive my blessing, dear~\"</i></b>")
 		return
-	if(user.can_orgasm())
-		var/mob/living/carbon/user_carbon = user
-		user_carbon.mob_climax_instant()
-		to_chat(user, "<i>You hear a voice in your head... <b>\"You are worthy of my blessing, dear~\"</i></b>")
-		to_chat(user, "<span class='userdanger'>You feel overpowering pleasure surge through your entire body.</span>")
-		var/A = new /obj/item/reagent_containers/chalice/lust
-		user.put_in_hands(A)
-		chalice_taken = TRUE
+	var/mob/living/carbon/user_carbon = user
+	user_carbon.mob_climax_instant()
+	to_chat(user, "<i>You hear a voice in your head... <b>\"You are worthy of my blessing, dear~\"</i></b>")
+	to_chat(user, "<span class='userdanger'>You feel overpowering pleasure surge through your entire body.</span>")
+	var/A = new /obj/item/reagent_containers/chalice/lust
+	user.put_in_hands(A)
+	chalice_taken = TRUE
