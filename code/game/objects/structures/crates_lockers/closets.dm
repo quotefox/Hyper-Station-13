@@ -243,7 +243,7 @@
 		return FALSE
 	take_contents()
 	playsound(loc, close_sound, 15, 1, -3)
-	climb_time=initial(climb_time)
+	climb_time = initial(climb_time)
 	opened = FALSE
 	density = TRUE
 	update_icon()
