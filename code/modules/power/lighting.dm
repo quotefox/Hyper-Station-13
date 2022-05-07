@@ -299,8 +299,9 @@
 	return ..()
 
 /obj/machinery/light/update_icon()
-	if(lighteffect)
-		lighteffect.Del()
+	if(!lighteffect) //dont have a light bloom, make it.
+		lighteffect = new/obj/effect/light/large
+		lighteffect.loc = src.loc
 	cut_overlays()
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
@@ -310,19 +311,20 @@
 			else
 				icon_state = "[base_state]"
 				if(on)
-					lighteffect = new/obj/effect/light/large
-					lighteffect.loc = src.loc
-					lighteffect.alpha = CLAMP(light_power*33, 5, 100)
+					lighteffect.alpha = CLAMP(light_power*35, 5, 100)
 					lighteffect.color = light_color
 					var/mutable_appearance/glowybit = mutable_appearance(overlayicon, base_state, ABOVE_LIGHTING_LAYER, ABOVE_LIGHTING_PLANE)
 					glowybit.alpha = CLAMP(light_power*250, 30, 200)
 					add_overlay(glowybit)
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
+			lighteffect.alpha = 0
 		if(LIGHT_BURNED)
 			icon_state = "[base_state]-burned"
+			lighteffect.alpha = 0
 		if(LIGHT_BROKEN)
 			icon_state = "[base_state]-broken"
+			lighteffect.alpha = 0
 	return
 
 // update the icon_state and luminosity of the light depending on its state
