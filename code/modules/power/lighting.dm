@@ -308,6 +308,7 @@
 			var/area/A = get_area(src)
 			if(emergency_mode || (A && A.fire))
 				icon_state = "[base_state]_emergency"
+				lighteffect.alpha = 0
 			else
 				icon_state = "[base_state]"
 				if(on)
@@ -325,6 +326,8 @@
 		if(LIGHT_BROKEN)
 			icon_state = "[base_state]-broken"
 			lighteffect.alpha = 0
+	if(!on)
+		lighteffect.alpha = 0
 	return
 
 // update the icon_state and luminosity of the light depending on its state
