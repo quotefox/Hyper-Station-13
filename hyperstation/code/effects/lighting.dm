@@ -5,6 +5,7 @@
 	plane = ABOVE_LIGHTING_PLANE
 	blend_mode = BLEND_ADD
 	mouse_opacity = 0
+	anchored = TRUE //no more flying around.
 
 /obj/effect/light/medium
 	icon = 'hyperstation/icons/effects/lightingmed.dmi'
