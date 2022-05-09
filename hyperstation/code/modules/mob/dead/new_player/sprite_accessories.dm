@@ -87,6 +87,11 @@ SNOUTS
 	icon_state = "feasterndnw"
 	icon = 'hyperstation/icons/mob/char_snouts.dmi'
 
+/datum/sprite_accessory/mam_snouts/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
+	name = "Kinaris - Shuttle (Hyper)"
+	icon_state = "knshuttle"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
 /datum/sprite_accessory/mam_snouts/fchemlight
 	name = "RadDog (Top) (Hyper)"
 	icon_state = "fchemlight"
@@ -141,6 +146,11 @@ EARS
 /datum/sprite_accessory/mam_ears/easterndragon
 	name = "Eastern Dragon (Hyper)"
 	icon_state = "easternd"
+	icon = 'hyperstation/icons/mob/char_ears.dmi'
+
+/datum/sprite_accessory/mam_ears/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
+	name = "Kinaris - Shuttle (Hyper)"
+	icon_state = "knshuttle"
 	icon = 'hyperstation/icons/mob/char_ears.dmi'
 
 /datum/sprite_accessory/mam_ears/chemlight
@@ -415,6 +425,11 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 /datum/sprite_accessory/mam_body_markings/easterndragon
 	name = "Eastern Dragon (Hyper)"
 	icon_state = "easternd"
+	icon = 'hyperstation/icons/mob/char_markings.dmi'
+
+/datum/sprite_accessory/mam_body_markings/knshuttle
+	name = "Kinaris - Shuttle (Hyper)"
+	icon_state = "knshuttle"
 	icon = 'hyperstation/icons/mob/char_markings.dmi'
 
 //doged was here
