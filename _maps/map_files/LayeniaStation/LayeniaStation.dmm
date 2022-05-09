@@ -26358,7 +26358,7 @@
 	},
 /area/security/main)
 "euO" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_control)
 "euR" = (
 /obj/effect/turf_decal/loading_area{
@@ -35614,13 +35614,13 @@
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
 	dir = 8
 	},
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_control)
 "fSo" = (
 /obj/machinery/atmospherics/pipe/manifold/purple/hidden{
 	dir = 1
 	},
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_control)
 "fSr" = (
 /obj/machinery/atmospherics/pipe/simple/purple/hidden{
@@ -36050,7 +36050,7 @@
 /area/engine/custom)
 "fVV" = (
 /obj/effect/baseturf_helper/asteroid/layenia,
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_control)
 "fVZ" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -36162,7 +36162,7 @@
 /obj/machinery/atmospherics/pipe/layer_manifold{
 	dir = 4
 	},
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_control)
 "fWV" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -39690,7 +39690,7 @@
 /obj/structure/cable/white{
 	icon_state = "2-4"
 	},
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_control)
 "gzb" = (
 /obj/effect/landmark/start/cargo_technician,
@@ -39769,7 +39769,7 @@
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_control)
 "gzL" = (
 /obj/effect/turf_decal/loading_area{
@@ -39792,7 +39792,7 @@
 /obj/structure/cable/white{
 	icon_state = "4-8"
 	},
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_control)
 "gzW" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -39970,7 +39970,7 @@
 "gCb" = (
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/simple/brown/visible,
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_control)
 "gCe" = (
 /obj/effect/turf_decal/stripes/end{
@@ -40689,7 +40689,7 @@
 /area/science/server)
 "gHN" = (
 /obj/effect/baseturf_helper/asteroid/layenia,
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_core)
 "gHZ" = (
 /obj/effect/turf_decal/stripes/line,
@@ -41286,7 +41286,7 @@
 /turf/open/floor/plasteel/white,
 /area/medical/psych)
 "gMT" = (
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_core)
 "gMW" = (
 /obj/structure/sign/warning/securearea{
@@ -47247,10 +47247,6 @@
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
 "hIj" = (
-/obj/machinery/door/poddoor{
-	dir = 4;
-	id = "au_nuclear_vent"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -50781,7 +50777,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 9
 	},
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/break_room)
 "ijA" = (
 /obj/effect/turf_decal/loading_area{
@@ -50816,7 +50812,7 @@
 /area/crew_quarters/fitness/pool)
 "ijQ" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_core)
 "ijS" = (
 /obj/structure/rack,
@@ -50871,7 +50867,7 @@
 /area/bridge)
 "ikx" = (
 /obj/structure/sign/warning/docking,
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_core)
 "ikz" = (
 /obj/machinery/light{
@@ -66118,7 +66114,7 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction{
 	dir = 4
 	},
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering)
 "kzX" = (
 /obj/effect/turf_decal/stripes/line{
@@ -73421,6 +73417,15 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hydroponics)
+"lMm" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/door/poddoor/multi_tile/three_tile_ver{
+	id = "au_nuclear_vent"
+	},
+/turf/open/floor/engine,
+/area/engine/engineering/reactor_core)
 "lMs" = (
 /obj/structure/cable{
 	icon_state = "2-8"
@@ -83934,7 +83939,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 6
 	},
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_core)
 "nqO" = (
 /obj/machinery/gateway/centerstation,
@@ -91900,6 +91905,13 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
+"oBp" = (
+/obj/effect/turf_decal/delivery/red,
+/obj/machinery/door/poddoor/multi_tile/three_tile_ver{
+	id = "TEG_Vent"
+	},
+/turf/open/floor/engine/vacuum,
+/area/engine/engineering)
 "oBw" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 5;
@@ -98024,7 +98036,7 @@
 /area/science/circuit)
 "ppE" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden,
-/turf/closed/wall/r_wall,
+/turf/closed/wall/mineral/lead,
 /area/engine/break_room)
 "ppJ" = (
 /obj/structure/disposalpipe/segment,
@@ -114974,10 +114986,6 @@
 /turf/closed/wall/r_wall,
 /area/crew_quarters/heads/hop)
 "rLg" = (
-/obj/machinery/door/poddoor{
-	dir = 4;
-	id = "TEG_Vent"
-	},
 /obj/effect/turf_decal/delivery/red,
 /turf/open/floor/engine/vacuum,
 /area/engine/engineering)
@@ -117341,6 +117349,9 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/medical/chemistry)
+"sbM" = (
+/turf/closed/wall/mineral/lead,
+/area/engine/engineering)
 "sbN" = (
 /obj/structure/flora/junglebush,
 /obj/structure/flora/ausbushes/sparsegrass,
@@ -138087,10 +138098,6 @@
 "uZn" = (
 /obj/machinery/atmospherics/pipe/layer_manifold{
 	dir = 4
-	},
-/obj/machinery/door/poddoor{
-	dir = 4;
-	id = "TEG_Vent"
 	},
 /obj/effect/turf_decal/delivery/red,
 /turf/open/floor/engine/vacuum,
@@ -203009,10 +203016,10 @@ ire
 ire
 ire
 iWu
-wGN
-wGN
-wGN
-wGN
+tMj
+tMj
+tMj
+tMj
 xXB
 xXB
 jZW
@@ -205064,7 +205071,7 @@ wpF
 xMM
 tBc
 xfV
-yia
+hvP
 yia
 yia
 yia
@@ -210198,7 +210205,7 @@ hqP
 gMT
 hIj
 hIj
-hIj
+lMm
 gMT
 tBc
 iAv
@@ -273408,11 +273415,11 @@ ePF
 ePF
 ePF
 ePF
-hWC
+sbM
 kzS
 sdu
 kzS
-hWC
+sbM
 lMY
 xAr
 lxX
@@ -273665,11 +273672,11 @@ ePF
 ePF
 ePF
 ePF
-hWC
+sbM
 ncR
 glg
 gtx
-hWC
+sbM
 xAr
 cda
 lxX
@@ -273922,11 +273929,11 @@ ePF
 ePF
 ePF
 ePF
-hWC
+sbM
 gtx
 keK
 gtx
-hWC
+sbM
 dMR
 xAr
 lxX
@@ -274179,11 +274186,11 @@ ePF
 ePF
 ePF
 ePF
-hWC
+sbM
 gtx
 tvu
 gtx
-hWC
+sbM
 idJ
 xAr
 lxX
@@ -274436,11 +274443,11 @@ ePF
 ePF
 ePF
 ePF
-hWC
+sbM
 vPH
 wLV
 mBU
-hWC
+sbM
 xAr
 qTp
 lxX
@@ -274693,11 +274700,11 @@ ePF
 ePF
 ePF
 ePF
-hWC
+sbM
 rLg
 uZn
-rLg
-hWC
+oBp
+sbM
 cda
 xAr
 lxX
