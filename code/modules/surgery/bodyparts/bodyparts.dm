@@ -347,11 +347,6 @@
 		base_bp_icon = S?.icon_limbs || DEFAULT_BODYPART_ICON
 		species_id = S.limbs_id
 
-		if(cosmetic_icon && is_organic_limb())
-			if(cosmetic_icon.icon)
-				base_bp_icon = cosmetic_icon.icon
-				use_digitigrade = cosmetic_icon.support_digitigrade ? use_digitigrade : NOT_DIGITIGRADE
-
 		species_flags_list = H.dna.species.species_traits
 
 		//body marking memes
@@ -391,6 +386,11 @@
 					digitigrade_type = lowertext(H.dna.features["legs"])
 			else
 				digitigrade_type = null
+
+		if(cosmetic_icon && is_organic_limb())
+			if(cosmetic_icon.icon)
+				base_bp_icon = cosmetic_icon.icon
+				use_digitigrade = cosmetic_icon.support_digitigrade ? use_digitigrade : NOT_DIGITIGRADE
 
 		if("mam_body_markings" in S.default_features)
 			var/datum/sprite_accessory/Smark

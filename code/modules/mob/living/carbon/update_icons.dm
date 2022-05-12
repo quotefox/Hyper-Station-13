@@ -339,8 +339,6 @@
 			. += "-digitigrade[BP.use_digitigrade]"
 		if(BP.animal_origin)
 			. += "-[BP.animal_origin]"
-		if(BP.cosmetic_icon)
-			. += "-cosm[BP.cosmetic_icon]"
 		if(BP.status == BODYPART_ORGANIC)
 			. += "-organic"
 		else
