@@ -238,12 +238,12 @@
 		"flavor_text"		= "",
 		"silicon_flavor_text"		= "",
 		"ooc_text"			= "",
-		"cosmetic_head" = /datum/cosmetic_part/head/default,
-		"cosmetic_chest" = /datum/cosmetic_part/chest/default,
-		"cosmetic_l_arm" = /datum/cosmetic_part/arms/default,
-		"cosmetic_r_arm" = /datum/cosmetic_part/arms/default,
-		"cosmetic_l_leg" = /datum/cosmetic_part/legs/default,
-		"cosmetic_r_leg" = /datum/cosmetic_part/legs/default))
+		"cosmetic_head" = GLOB.cosmetic_heads["default"],
+		"cosmetic_chest" = GLOB.cosmetic_chests["default"],
+		"cosmetic_l_arm" = GLOB.cosmetic_arms["default"],
+		"cosmetic_r_arm" = GLOB.cosmetic_arms["default"],
+		"cosmetic_l_leg" = GLOB.cosmetic_legs["default"],
+		"cosmetic_r_leg" = GLOB.cosmetic_legs["default"]))
 
 /proc/random_hair_style(gender)
 	switch(gender)
