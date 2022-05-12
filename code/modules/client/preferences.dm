@@ -444,7 +444,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Custom Species Name:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=custom_species;task=input'>[custom_species ? custom_species : "None"]</a><BR>"
 			dat += "<a style='display:block;width:100px' href='?_src_=prefs;preference=all;task=random'>Random Body</A><BR>"
 			dat += "<b>Always Random Body:</b><a href='?_src_=prefs;preference=all'>[be_random_body ? "Yes" : "No"]</A><BR>"
-			dat += "<br><b>Cycle background:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=cycle_bg;task=input'>[bgstate]</a><BR>"
+			dat += "<br><b>Select background:</b><a style='display:block;width:100px' href='?_src_=prefs;preference=select_bg;task=input'>[bgstate]</a><BR>"
 			dat += "<b>Render front genitals over hair:</b><a href='?_src_=prefs;task=front_genitals_over_hair'>[features["front_genitals_over_hair"] ? "Yes" : "No"]</A><BR>"
 
 			var/use_skintones = pref_species.use_skintones
@@ -1948,8 +1948,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					grad_style = previous_list_item(grad_style, GLOB.hair_gradients_list)
 
 
-				if("cycle_bg")
-					bgstate = next_list_item(bgstate, bgstate_options)
+				if("select_bg")
+					var/new_bg = input(user, "Select a background:", "Character Preference") as null|anything in bgstate_options
+					if(new_bg)
+						bgstate = new_bg
 
 				if("underwear")
 					var/new_underwear = input(user, "Choose your character's underwear:", "Character Preference")  as null|anything in GLOB.underwear_list
