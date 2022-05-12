@@ -391,6 +391,7 @@
 			if(cosmetic_icon.icon)
 				base_bp_icon = cosmetic_icon.icon
 				use_digitigrade = cosmetic_icon.support_digitigrade ? use_digitigrade : NOT_DIGITIGRADE
+				color_src = cosmetic_icon.color_src ? cosmetic_icon.color_src : MUTCOLORS
 
 		if("mam_body_markings" in S.default_features)
 			var/datum/sprite_accessory/Smark
@@ -403,11 +404,12 @@
 			else
 				body_markings = "plain"
 				auxmarking = "plain"
-			markings_color = list(colorlist)
-
 		else
 			body_markings = null
 			auxmarking = null
+	
+		if((MUTCOLORS in S.species_traits) || (MUTCOLORS_PARTSONLY in S.species_traits))
+			markings_color = list(colorlist)
 
 		if(!dropping_limb && H.dna.check_mutation(HULK))
 			mutation_color = "00aa00"
@@ -567,20 +569,28 @@
 			. += marking
 		return
 
-	if(color_src) //TODO - add color matrix support for base species limbs
-		var/draw_color = mutation_color || species_color || (skin_tone && skintone2hex(skin_tone))
-		if(draw_color)
-			limb.color = "#[draw_color]"
+	if(!color_src)
+		return 
+	switch(color_src)
+		if(MUTCOLORS)
+			var/draw_color = mutation_color || species_color || (skin_tone && skintone2hex(skin_tone))
+			if(draw_color)
+				limb.color = "#[draw_color]"
+				if(aux_zone)
+					aux.color = "#[draw_color]"
+		if(MATRIXED)
+			limb.color = list(markings_color)
 			if(aux_zone)
-				aux.color = "#[draw_color]"
-				if(!isnull(auxmarking) && !has_cosmetic_state)
-					auxmarking.color = list(markings_color)
-
-			if(!isnull(body_markings) && !has_cosmetic_state)
-				if(is_husk)
-					marking.color = "#141414"
-				else
-					marking.color = list(markings_color)
+				aux.color = list(markings_color)
+	if(has_cosmetic_state)
+		return
+	if(!isnull(auxmarking))
+		auxmarking.color = list(markings_color)
+	if(!isnull(body_markings))
+		if(is_husk)
+			marking.color = "#141414"
+		else
+			marking.color = list(markings_color)
 
 
 /obj/item/bodypart/deconstruct(disassembled = TRUE)
