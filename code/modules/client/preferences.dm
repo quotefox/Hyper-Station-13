@@ -2350,12 +2350,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						selectable_parts[path] = possible_part
 					if(!selectable_parts.len)
 						to_chat(user, "<span class='warning'>There are no valid alt heads for this species!</span>")
-					
 					var/new_cosmetic_part
 					var/question = "Choose your character's alt head style:"
 					new_cosmetic_part = input(user, question, "Character Preference") as null|anything in selectable_parts
 					if(new_cosmetic_part)
 						features["cosmetic_head"] =  GLOB.cosmetic_heads[new_cosmetic_part]
+						update_preview_icon()
 
 				if("cosmetic_chest")
 					var/list/selectable_parts = list()
@@ -2367,12 +2367,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						selectable_parts[path] = possible_part
 					if(!selectable_parts.len)
 						to_chat(user, "<span class='warning'>There are no valid alt chests for this species!</span>")
-					
 					var/new_cosmetic_part
 					var/question = "Choose your character's alt chest style:"
 					new_cosmetic_part = input(user, question, "Character Preference") as null|anything in selectable_parts
 					if(new_cosmetic_part)
 						features["cosmetic_chest"] =  GLOB.cosmetic_chests[new_cosmetic_part]
+						update_preview_icon()
 				
 				// currently symmetrical
 				if("cosmetic_arms")
@@ -2385,13 +2385,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						selectable_parts[path] = possible_part
 					if(!selectable_parts.len)
 						to_chat(user, "<span class='warning'>There are no valid alt arms for this species!</span>")
-					
 					var/new_cosmetic_part
 					var/question = "Choose your character's alt arms style:"
 					new_cosmetic_part = input(user, question, "Character Preference") as null|anything in selectable_parts
 					if(new_cosmetic_part)
 						features["cosmetic_l_arm"] =  GLOB.cosmetic_arms[new_cosmetic_part]
 						features["cosmetic_r_arm"] =  GLOB.cosmetic_arms[new_cosmetic_part]
+						update_preview_icon()
 
 				if("cosmetic_legs")
 					var/list/selectable_parts = list()
@@ -2403,13 +2403,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						selectable_parts[path] = possible_part
 					if(!selectable_parts.len)
 						to_chat(user, "<span class='warning'>There are no valid alt legs for this species!</span>")
-					
 					var/new_cosmetic_part
 					var/question = "Choose your character's alt legs style:"
 					new_cosmetic_part = input(user, question, "Character Preference") as null|anything in selectable_parts
 					if(new_cosmetic_part)
 						features["cosmetic_l_leg"] = GLOB.cosmetic_legs[new_cosmetic_part]
 						features["cosmetic_r_leg"] = GLOB.cosmetic_legs[new_cosmetic_part]
+						update_preview_icon()
 
 				// End hyper edit
 
