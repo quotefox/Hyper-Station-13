@@ -12,9 +12,6 @@ fails and the part is rejected. so you can't attach mammal-bird legs to avians
 safely.
 */
 
-#define COSMETIC_BASIC_SPECIES = list("mammal", "avian", "aquatic", "insect", "xeno", "synthliz")
-
-
 /datum/cosmetic_part
 	var/name
 	var/icon = 'hyperstation/icons/mob/char_parts.dmi'
@@ -47,5 +44,5 @@ safely.
 	name = "avian"
 	icon = 'modular_citadel/icons/mob/mutant_bodyparts.dmi'
 	icon_state = "avian"
-	supported_species = COSMETIC_BASIC_SPECIES
+	supported_species = list("mammal", "avian", "aquatic", "insect", "xeno", "synthliz")
 	support_digitigrade = FALSE
