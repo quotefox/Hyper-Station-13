@@ -840,7 +840,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<div style='width:100%;display:block;'>"
 			dat +=   "<h2>Cosmetic Parts</h2>"
-			dat +=   "<div style='display:flex; align-items:stretch; justify-content:space-between;'>"
+			dat +=   "<div style='display:flex; align-items:stretch; justify-content:space-around;'>"
 			dat +=     "<div style='flex: 1 1 0;'>"
 			dat +=       "<h3 style='text-align:center;'>Head</h3>"
 			dat +=       "<a style='display:block; width:100px'" 

@@ -350,7 +350,7 @@
 		if(cosmetic_icon && is_organic_limb())
 			if(cosmetic_icon.icon)
 				base_bp_icon = cosmetic_icon.icon
-			use_digitigrade = cosmetic_icon.support_digitigrade ? use_digitigrade : NOT_DIGITIGRADE
+				use_digitigrade = cosmetic_icon.support_digitigrade ? use_digitigrade : NOT_DIGITIGRADE
 
 		species_flags_list = H.dna.species.species_traits
 
