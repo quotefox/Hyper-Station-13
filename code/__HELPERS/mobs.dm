@@ -237,7 +237,13 @@
 		"ipc_antenna" = "None",
 		"flavor_text"		= "",
 		"silicon_flavor_text"		= "",
-		"ooc_text"			= ""))
+		"ooc_text"			= "",
+		"cosmetic_head" = "default",
+		"cosmetic_chest" = "default",
+		"cosmetic_l_arm" = "default",
+		"cosmetic_r_arm" = "default",
+		"cosmetic_l_leg" = "default",
+		"cosmetic_r_leg" = "default"))
 
 /proc/random_hair_style(gender)
 	switch(gender)

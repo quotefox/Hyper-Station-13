@@ -102,6 +102,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//HS13
 	var/body_size = 100					//Body Size in percent
 	var/can_get_preg = 0				//if they can get preggers
+	var/list/cosmetic_parts = list(
+		BODY_ZONE_L_ARM
+	)
 
 	//HS13 jobs
 	var/sillyroles = FALSE //for clown and mime
@@ -196,7 +199,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"flavor_text" = "",
 		"silicon_flavor_text" = "",
 		"ooc_text" = "",
-		"front_genitals_over_hair" = FALSE
+		"front_genitals_over_hair" = FALSE,
+		"cosmetic_head" = "default",
+		"cosmetic_chest" = "default",
+		"cosmetic_l_arm" = "default",
+		"cosmetic_r_arm" = "default",
+		"cosmetic_l_leg" = "default",
+		"cosmetic_r_leg" = "default"
 		)
 
 	/// Security record note section

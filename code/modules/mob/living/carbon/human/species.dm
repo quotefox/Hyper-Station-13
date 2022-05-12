@@ -503,6 +503,9 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
 
+	// hyper edit: updates cosmetic part graphics
+	H.handle_cosmetic_parts()
+
 	if(HD && !(HAS_TRAIT(H, TRAIT_HUSK)))
 		// lipstick
 		if(H.lip_style && (LIPS in species_traits))
@@ -678,21 +681,17 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if("mam_tail" in mutant_bodyparts)
 		if(H.wear_suit && (H.wear_suit.flags_inv & HIDETAUR) || (!H.dna.features["taur"] == "None"))
 			bodyparts_to_add -= "mam_tail"
-
 	if("mam_waggingtail" in mutant_bodyparts)
 		if(H.wear_suit && (H.wear_suit.flags_inv & HIDETAUR) || (!H.dna.features["taur"] == "None"))
 			bodyparts_to_add -= "mam_waggingtail"
 		else if ("mam_tail" in mutant_bodyparts)
 			bodyparts_to_add -= "mam_waggingtail"
-
 	if("mam_ears" in mutant_bodyparts)
 		if(!H.dna.features["mam_ears"] || H.dna.features["mam_ears"] == "None" || H.head && (H.head.flags_inv & HIDEEARS) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEARS)) || !HD || HD.status == BODYPART_ROBOTIC)
 			bodyparts_to_add -= "mam_ears"
-
 	if("mam_snouts" in mutant_bodyparts) //Take a closer look at that snout!
 		if((H.wear_mask && (H.wear_mask.flags_inv & HIDESNOUT)) || (H.head && (H.head.flags_inv & HIDESNOUT)) || !HD || HD.status == BODYPART_ROBOTIC)
 			bodyparts_to_add -= "mam_snouts"
-
 	if("taur" in mutant_bodyparts)
 		if(!H.dna.features["taur"] || H.dna.features["taur"] == "None" || (H.wear_suit && (H.wear_suit.flags_inv & HIDETAUR)))
 			bodyparts_to_add -= "taur"

@@ -44,6 +44,13 @@
 	var/skin_tone = ""
 	var/body_gender = ""
 	var/species_id = ""
+	/**
+		* HYPER: when getting the appearance of a limb, the game will check 
+		* for `cosmetic_icon` first. if there is none, it will default back
+		* to `species_id`. this allows us to use custom body part types for
+		* each limb in character customization.
+		*/
+	var/cosmetic_icon
 	var/color_src
 	var/base_bp_icon //Overrides the icon being used for this limb. This is mainly for downstreams, implemented and maintained as a favor in return for implementing synths. And also because should_draw_* for icon overrides was pretty messy. You're welcome.
 	var/should_draw_gender = FALSE
@@ -436,6 +443,7 @@
 
 	var/image_dir = 0
 	var/icon_gender = (body_gender == FEMALE) ? "f" : "m" //gender of the icon, if applicable
+	var/is_husk = species_id == "husk"
 
 	if(dropped)
 		image_dir = SOUTH
@@ -464,7 +472,7 @@
 	if(animal_origin)
 		if(is_organic_limb())
 			limb.icon = 'icons/mob/animal_parts.dmi'
-			if(species_id == "husk")
+			if(is_husk)
 				limb.icon_state = "[animal_origin]_husk_[body_zone]"
 			else
 				limb.icon_state = "[animal_origin]_[body_zone]"
@@ -476,24 +484,27 @@
 	if((body_zone != BODY_ZONE_HEAD && body_zone != BODY_ZONE_CHEST))
 		should_draw_gender = FALSE
 
+	/// HYPER: allow for custom limb icons in character customization
+	var/limb_style = !isnull(cosmetic_icon) ? cosmetic_icon : species_id
+
 	if(is_organic_limb())
 		limb.icon = base_bp_icon || 'icons/mob/human_parts.dmi'
 		if(should_draw_gender)
-			limb.icon_state = "[species_id]_[body_zone]_[icon_gender]"
+			limb.icon_state = "[limb_style]_[body_zone]_[icon_gender]"
 		else if (use_digitigrade)
 			if(base_bp_icon == DEFAULT_BODYPART_ICON_ORGANIC) //Compatibility hack for the current iconset.
 				limb.icon_state = "digitigrade_[use_digitigrade]_[body_zone]"
 			else
-				limb.icon_state = "[species_id]_digitigrade_[use_digitigrade]_[body_zone]"
+				limb.icon_state = "[limb_style]_digitigrade_[use_digitigrade]_[body_zone]"
 
 		else
-			limb.icon_state = "[species_id]_[body_zone]"
+			limb.icon_state = "[limb_style]_[body_zone]"
 
 		// Body markings
 		if(body_markings)
-			if(species_id == "husk")
+			if(is_husk)
 				marking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[body_zone]", -MARKING_LAYER, image_dir)
-			else if(species_id == "husk" && use_digitigrade)
+			else if(is_husk && use_digitigrade)
 				marking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_digitigrade_[use_digitigrade]_[body_zone]", -MARKING_LAYER, image_dir)
 
 			else if(!use_digitigrade)
@@ -508,10 +519,10 @@
 		// Citadel End
 
 		if(aux_zone)
-			aux = image(limb.icon, "[species_id]_[aux_zone]", -aux_layer, image_dir)
+			aux = image(limb.icon, "[limb_style]_[aux_zone]", -aux_layer, image_dir)
 			. += aux
 			if(body_markings)
-				if(species_id == "husk")
+				if(is_husk)
 					auxmarking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[aux_zone]", -aux_layer, image_dir)
 				else
 					auxmarking = image(body_markings_icon, "[body_markings]_[aux_zone]", -aux_layer, image_dir)
@@ -528,16 +539,16 @@
 			aux = image(limb.icon, "[aux_zone]", -aux_layer, image_dir)
 			. += aux
 			if(!isnull(auxmarking))
-				if(species_id == "husk")
+				if(is_husk)
 					auxmarking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[aux_zone]", -aux_layer, image_dir)
 				else
 					auxmarking = image(body_markings_icon, "[body_markings]_[aux_zone]", -aux_layer, image_dir)
 				. += auxmarking
 
 		if(!isnull(body_markings))
-			if(species_id == "husk")
+			if(is_husk)
 				marking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[body_zone]", -MARKING_LAYER, image_dir)
-			else if(species_id == "husk" && use_digitigrade)
+			else if(is_husk && use_digitigrade)
 				marking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_digitigrade_[use_digitigrade]_[body_zone]", -MARKING_LAYER, image_dir)
 
 			else if(!use_digitigrade)
@@ -560,7 +571,7 @@
 					auxmarking.color = list(markings_color)
 
 			if(!isnull(body_markings))
-				if(species_id == "husk")
+				if(is_husk)
 					marking.color = "#141414"
 				else
 					marking.color = list(markings_color)
