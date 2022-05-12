@@ -56,8 +56,8 @@
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/breasts, GLOB.breasts_shapes_list)
 
 	// hyper: cosmetic parts
-	init_cosmetic_parts(/datum/cosmetic_part/head, GLOB.cosmetic_head)
-	init_cosmetic_parts(/datum/cosmetic_part/chest, GLOB.cosmetic_chest)
+	init_cosmetic_parts(/datum/cosmetic_part/head, GLOB.cosmetic_heads)
+	init_cosmetic_parts(/datum/cosmetic_part/chest, GLOB.cosmetic_chests)
 	init_cosmetic_parts(/datum/cosmetic_part/arms, GLOB.cosmetic_arms)
 	init_cosmetic_parts(/datum/cosmetic_part/legs, GLOB.cosmetic_legs)
 	// end cosmetic parts

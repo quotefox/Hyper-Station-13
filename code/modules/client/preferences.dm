@@ -102,15 +102,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//HS13
 	var/body_size = 100					//Body Size in percent
 	var/can_get_preg = 0				//if they can get preggers
-	var/list/cosmetic_parts = list(
-		BODY_ZONE_L_ARM
-	)
 
 	//HS13 jobs
 	var/sillyroles = FALSE //for clown and mime
 	var/roleplayroles = FALSE //for the roleplay roles
 	var/importantroles = FALSE //for things that define as important.
-
 
 	var/datum/species/pref_species = new /datum/species/human()	//Mutant race
 	var/list/features = list("mcolor" = "FFF",
@@ -200,12 +196,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"silicon_flavor_text" = "",
 		"ooc_text" = "",
 		"front_genitals_over_hair" = FALSE,
-		"cosmetic_head" = "default",
-		"cosmetic_chest" = "default",
-		"cosmetic_l_arm" = "default",
-		"cosmetic_r_arm" = "default",
-		"cosmetic_l_leg" = "default",
-		"cosmetic_r_leg" = "default"
+		"cosmetic_head" = /datum/cosmetic_part/head/default,
+		"cosmetic_chest" = /datum/cosmetic_part/chest/default,
+		"cosmetic_l_arm" = /datum/cosmetic_part/arms/default,
+		"cosmetic_r_arm" = /datum/cosmetic_part/arms/default,
+		"cosmetic_l_leg" = /datum/cosmetic_part/legs/default,
+		"cosmetic_r_leg" = /datum/cosmetic_part/legs/default
 		)
 
 	/// Security record note section
@@ -833,8 +829,53 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				mutant_category = 0
 
 			dat += "</tr></table>"
-
 			dat += "</td>"
+
+			// HYPER EDIT: Cosmetic body parts
+
+			var/datum/cosmetic_part/cosmetic_head = features["cosmetic_head"]
+			var/datum/cosmetic_part/cosmetic_chest = features["cosmetic_chest"]
+			var/datum/cosmetic_part/cosmetic_arms = features["cosmetic_l_arm"]
+			var/datum/cosmetic_part/cosmetic_legs = features["cosmetic_l_leg"]
+
+			dat += "<div style='width:100%;display:block;'>"
+			dat +=   "<h2>Cosmetic Parts</h2>"
+			dat +=   "<div style='display:flex; align-items:stretch; justify-content:space-between;'>"
+			dat +=     "<div style='flex: 1 1 0;'>"
+			dat +=       "<h3 style='text-align:center;'>Head</h3>"
+			dat +=       "<a style='display:block; width:100px'" 
+			dat +=         "href='?_src_=prefs;preference=cosmetic_head;task=input'>"
+			dat +=         cosmetic_head.name
+			dat +=       "</a>"
+			dat +=     "</div>"
+			dat +=     "<div style='flex: 1 1 0;'>"
+			dat +=       "<h3 style='text-align:center;'>Chest</h3>"
+			dat +=       "<a style='display:block; width:100px'" 
+			dat +=         "href='?_src_=prefs;preference=cosmetic_chest;task=input'>"
+			dat +=         cosmetic_chest.name
+			dat +=       "</a>"
+			dat +=     "</div>"
+			dat +=     "<div style='flex: 1 1 0;'>"
+			dat +=       "<h3 style='text-align:center;'>Arms</h3>"
+			dat +=       "<a style='display:block; width:100px'" 
+			dat +=         "href='?_src_=prefs;preference=cosmetic_arms;task=input'>"
+			dat +=         cosmetic_arms.name
+			dat +=       "</a>"
+			dat +=     "</div>"
+			dat +=     "<div style='flex: 1 1 0;'>"
+			dat +=       "<h3 style='text-align:center;'>Legs</h3>"
+			dat +=       "<a style='display:block; width:100px'" 
+			dat +=         "href='?_src_=prefs;preference=cosmetic_legs;task=input'>"
+			dat +=         cosmetic_legs.name
+			dat +=       "</a>"
+			dat +=     "</div>"
+			dat +=   "</div>"
+			dat += "</div>"
+
+			
+
+			// End hyper edit
+
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
 			dat += "<h2>Clothing & Equipment</h2>"
 			dat += "<b>Underwear:</b><a style='display:block;width:100px' href ='?_src_=prefs;preference=underwear;task=input'>[underwear]</a>"
@@ -2297,6 +2338,81 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					new_dors = input(user, "Choose your character's dorsal tube type:", "Character Preference") as null|anything in GLOB.xeno_dorsal_list
 					if(new_dors)
 						features["xenodorsal"] = new_dors
+
+				// HYPER EDIT: Cosmetic body parts
+				if("cosmetic_head")
+					var/list/selectable_parts = list()
+					for(var/path in GLOB.cosmetic_heads)
+						var/datum/cosmetic_part/possible_part = GLOB.cosmetic_heads[path]
+						var/list/supported_species = possible_part.supported_species
+						if(!show_mismatched_markings && supported_species && !supported_species.Find(pref_species.id))
+							continue
+						selectable_parts[path] = possible_part
+					if(!selectable_parts.len)
+						to_chat(user, "<span class='warning'>There are no valid alt heads for this species!</span>")
+					
+					var/new_cosmetic_part
+					var/question = "Choose your character's alt head style:"
+					new_cosmetic_part = input(user, question, "Character Preference") as null|anything in selectable_parts
+					if(new_cosmetic_part)
+						features["cosmetic_head"] =  GLOB.cosmetic_heads[new_cosmetic_part]
+
+				if("cosmetic_chest")
+					var/list/selectable_parts = list()
+					for(var/path in GLOB.cosmetic_chests)
+						var/datum/cosmetic_part/possible_part = GLOB.cosmetic_chests[path]
+						var/list/supported_species = possible_part.supported_species
+						if(!show_mismatched_markings && supported_species && !supported_species.Find(pref_species.id))
+							continue
+						selectable_parts[path] = possible_part
+					if(!selectable_parts.len)
+						to_chat(user, "<span class='warning'>There are no valid alt chests for this species!</span>")
+					
+					var/new_cosmetic_part
+					var/question = "Choose your character's alt chest style:"
+					new_cosmetic_part = input(user, question, "Character Preference") as null|anything in selectable_parts
+					if(new_cosmetic_part)
+						features["cosmetic_chest"] =  GLOB.cosmetic_chests[new_cosmetic_part]
+				
+				// currently symmetrical
+				if("cosmetic_arms")
+					var/list/selectable_parts = list()
+					for(var/path in GLOB.cosmetic_arms)
+						var/datum/cosmetic_part/possible_part = GLOB.cosmetic_arms[path]
+						var/list/supported_species = possible_part.supported_species
+						if(!show_mismatched_markings && supported_species && !supported_species.Find(pref_species.id))
+							continue
+						selectable_parts[path] = possible_part
+					if(!selectable_parts.len)
+						to_chat(user, "<span class='warning'>There are no valid alt arms for this species!</span>")
+					
+					var/new_cosmetic_part
+					var/question = "Choose your character's alt arms style:"
+					new_cosmetic_part = input(user, question, "Character Preference") as null|anything in selectable_parts
+					if(new_cosmetic_part)
+						features["cosmetic_l_arm"] =  GLOB.cosmetic_arms[new_cosmetic_part]
+						features["cosmetic_r_arm"] =  GLOB.cosmetic_arms[new_cosmetic_part]
+
+				if("cosmetic_legs")
+					var/list/selectable_parts = list()
+					for(var/path in GLOB.cosmetic_legs)
+						var/datum/cosmetic_part/possible_part = GLOB.cosmetic_legs[path]
+						var/list/supported_species = possible_part.supported_species
+						if(!show_mismatched_markings && supported_species && !supported_species.Find(pref_species.id))
+							continue
+						selectable_parts[path] = possible_part
+					if(!selectable_parts.len)
+						to_chat(user, "<span class='warning'>There are no valid alt legs for this species!</span>")
+					
+					var/new_cosmetic_part
+					var/question = "Choose your character's alt legs style:"
+					new_cosmetic_part = input(user, question, "Character Preference") as null|anything in selectable_parts
+					if(new_cosmetic_part)
+						features["cosmetic_l_leg"] = GLOB.cosmetic_legs[new_cosmetic_part]
+						features["cosmetic_r_leg"] = GLOB.cosmetic_legs[new_cosmetic_part]
+
+				// End hyper edit
+
 				//Genital code
 				if("cock_color")
 					var/new_cockcolor = input(user, "Penis color:", "Character Preference") as color|null

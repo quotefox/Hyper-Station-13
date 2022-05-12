@@ -502,8 +502,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/standing = list()
 
 	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
-
-	// hyper edit: updates cosmetic part graphics
 	H.handle_cosmetic_parts()
 
 	if(HD && !(HAS_TRAIT(H, TRAIT_HUSK)))
@@ -597,6 +595,7 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	//CITADEL EDIT - Do not forget to add this to relevent_layers list just above too!
 	H.remove_overlay(BODY_TAUR_LAYER)
 	//END EDIT
+	H.handle_cosmetic_parts()
 
 	if(!mutant_bodyparts)
 		return

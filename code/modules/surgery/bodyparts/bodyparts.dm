@@ -50,7 +50,7 @@
 		* to `species_id`. this allows us to use custom body part types for
 		* each limb in character customization.
 		*/
-	var/cosmetic_icon
+	var/datum/cosmetic_part/cosmetic_icon
 	var/color_src
 	var/base_bp_icon //Overrides the icon being used for this limb. This is mainly for downstreams, implemented and maintained as a favor in return for implementing synths. And also because should_draw_* for icon overrides was pretty messy. You're welcome.
 	var/should_draw_gender = FALSE
@@ -326,6 +326,11 @@
 		C = owner
 		no_update = FALSE
 
+	if(cosmetic_icon)
+		if(cosmetic_icon.icon)
+			base_bp_icon = cosmetic_icon.icon
+		use_digitigrade = cosmetic_icon.support_digitigrade ? use_digitigrade : NOT_DIGITIGRADE
+
 	if(HAS_TRAIT(C, TRAIT_HUSK) && is_organic_limb())
 		species_id = "husk" //overrides species_id
 		dmg_overlay_type = "" //no damage overlay shown when husked
@@ -445,6 +450,10 @@
 	var/icon_gender = (body_gender == FEMALE) ? "f" : "m" //gender of the icon, if applicable
 	var/is_husk = species_id == "husk"
 
+	/// HYPER: allow for custom limb icons in character customization
+	var/has_cosmetic_state = !isnull(cosmetic_icon) && !isnull(cosmetic_icon.icon_state)
+	var/limb_style = has_cosmetic_state ? cosmetic_icon.icon_state : species_id
+
 	if(dropped)
 		image_dir = SOUTH
 		if(dmg_overlay_type)
@@ -453,7 +462,7 @@
 			if(burnstate)
 				. += image('icons/mob/dam_mob.dmi', "[dmg_overlay_type]_[body_zone]_0[burnstate]", -DAMAGE_LAYER, image_dir)
 
-		if(!isnull(body_markings) && status == BODYPART_ORGANIC)
+		if(!isnull(body_markings) && status == BODYPART_ORGANIC && !has_cosmetic_state)
 			if(!use_digitigrade)
 				if(BODY_ZONE_CHEST)
 					. += image(body_markings_icon, "[body_markings]_[body_zone]_[icon_gender]", -MARKING_LAYER, image_dir)
@@ -484,9 +493,6 @@
 	if((body_zone != BODY_ZONE_HEAD && body_zone != BODY_ZONE_CHEST))
 		should_draw_gender = FALSE
 
-	/// HYPER: allow for custom limb icons in character customization
-	var/limb_style = !isnull(cosmetic_icon) ? cosmetic_icon : species_id
-
 	if(is_organic_limb())
 		limb.icon = base_bp_icon || 'icons/mob/human_parts.dmi'
 		if(should_draw_gender)
@@ -501,7 +507,7 @@
 			limb.icon_state = "[limb_style]_[body_zone]"
 
 		// Body markings
-		if(body_markings)
+		if(body_markings && !has_cosmetic_state)
 			if(is_husk)
 				marking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[body_zone]", -MARKING_LAYER, image_dir)
 			else if(is_husk && use_digitigrade)
@@ -521,7 +527,7 @@
 		if(aux_zone)
 			aux = image(limb.icon, "[limb_style]_[aux_zone]", -aux_layer, image_dir)
 			. += aux
-			if(body_markings)
+			if(body_markings && !has_cosmetic_state)
 				if(is_husk)
 					auxmarking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[aux_zone]", -aux_layer, image_dir)
 				else
@@ -538,14 +544,14 @@
 		if(aux_zone)
 			aux = image(limb.icon, "[aux_zone]", -aux_layer, image_dir)
 			. += aux
-			if(!isnull(auxmarking))
+			if(!isnull(auxmarking) && !has_cosmetic_state)
 				if(is_husk)
 					auxmarking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[aux_zone]", -aux_layer, image_dir)
 				else
 					auxmarking = image(body_markings_icon, "[body_markings]_[aux_zone]", -aux_layer, image_dir)
 				. += auxmarking
 
-		if(!isnull(body_markings))
+		if(!isnull(body_markings) && !has_cosmetic_state)
 			if(is_husk)
 				marking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[body_zone]", -MARKING_LAYER, image_dir)
 			else if(is_husk && use_digitigrade)
@@ -567,10 +573,10 @@
 			limb.color = "#[draw_color]"
 			if(aux_zone)
 				aux.color = "#[draw_color]"
-				if(!isnull(auxmarking))
+				if(!isnull(auxmarking) && !has_cosmetic_state)
 					auxmarking.color = list(markings_color)
 
-			if(!isnull(body_markings))
+			if(!isnull(body_markings) && !has_cosmetic_state)
 				if(is_husk)
 					marking.color = "#141414"
 				else
