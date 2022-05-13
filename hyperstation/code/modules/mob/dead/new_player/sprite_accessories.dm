@@ -464,7 +464,7 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	icon_state = "idog_up"
 	color_src = MATRIXED
 
-/datum/sprite_accessory/antenna/idog_up
+/datum/sprite_accessory/antenna/idog_down
 	name = "Dog, down (Hyper)"
 	icon_state = "idog_down"
 	color_src = MATRIXED
