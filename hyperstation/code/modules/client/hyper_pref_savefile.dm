@@ -26,9 +26,9 @@
 	var/datum/cosmetic_part/r_arm = features["cosmetic_r_arm"]
 	var/datum/cosmetic_part/l_leg = features["cosmetic_l_leg"]
 	var/datum/cosmetic_part/r_leg = features["cosmetic_r_leg"]
-	WRITE_FILE(S["feature_cosmetic_head"], head.name)
-	WRITE_FILE(S["feature_cosmetic_chest"], chest.name)
-	WRITE_FILE(S["feature_cosmetic_l_arm"], l_arm.name)
-	WRITE_FILE(S["feature_cosmetic_r_arm"], r_arm.name)
-	WRITE_FILE(S["feature_cosmetic_l_leg"], l_leg.name)
-	WRITE_FILE(S["feature_cosmetic_r_leg"], r_leg.name)
+	WRITE_FILE(S["feature_cosmetic_head"], head.id)
+	WRITE_FILE(S["feature_cosmetic_chest"], chest.id)
+	WRITE_FILE(S["feature_cosmetic_l_arm"], l_arm.id)
+	WRITE_FILE(S["feature_cosmetic_r_arm"], r_arm.id)
+	WRITE_FILE(S["feature_cosmetic_l_leg"], l_leg.id)
+	WRITE_FILE(S["feature_cosmetic_r_leg"], r_leg.id)

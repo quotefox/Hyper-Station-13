@@ -13,6 +13,8 @@ safely.
 */
 
 /datum/cosmetic_part
+	/** A unique string that is used to identify this part for save files. Allows name changes without breaking saves */
+	var/id
 	/** The name of the cosmetic part. This shows up in the preferences dropdown. */
 	var/name
 	var/icon = 'hyperstation/icons/mob/char_parts.dmi'
@@ -33,20 +35,36 @@ safely.
 // =========================================
 
 /datum/cosmetic_part/head/default
+	id = "default"
 	name = "default"
 	icon = null
+
+/datum/cosmetic_part/head/ipc_round
+	id = "ipc_round"
+	name = "round ipc head"
+	icon_state = "ipc_round"
+	supported_species = list("ipc")
 
 
 // CHESTS
 // =========================================
 
 /datum/cosmetic_part/chest/default
+	id = "default"
 	name = "default"
 	icon = null
 
 /datum/cosmetic_part/chest/ipc_sleek
+	id = "ipc_sleek"
 	name = "sleek ipc chest"
 	icon_state = "ipc_sleek"
+	supported_species = list("ipc")
+	color_src = MATRIXED
+
+/datum/cosmetic_part/chest/ipc_jointed
+	id = "ipc_jointed"
+	name = "jointed ipc chest"
+	icon_state = "ipc_jointed"
 	supported_species = list("ipc")
 	color_src = MATRIXED
 
@@ -55,23 +73,34 @@ safely.
 // =========================================
 
 /datum/cosmetic_part/arms/default
+	id = "default"
 	name = "default"
 	icon = null
 
 /datum/cosmetic_part/arms/avian_alt
+	id = "avian_alt"
 	name = "avian claws"
 	icon_state = "avian_alt"
 	supported_species = list("mammal", "avian", "aquatic", "insect", "xeno", "synthliz")
 
 /datum/cosmetic_part/arms/insect
+	id = "insect"
 	name = "insect arms"
 	icon = 'modular_citadel/icons/mob/mutant_bodyparts.dmi'
 	icon_state = "insect"
 	supported_species = list("mammal", "avian", "aquatic", "insect", "xeno", "synthliz")
 
 /datum/cosmetic_part/arms/ipc_sleek
+	id = "ipc_sleek"
 	name = "sleek ipc arms"
 	icon_state = "ipc_sleek"
+	supported_species = list("ipc")
+	color_src = MATRIXED
+
+/datum/cosmetic_part/arms/ipc_jointed
+	id = "ipc_jointed"
+	name = "jointed ipc arms"
+	icon_state = "ipc_jointed"
 	supported_species = list("ipc")
 	color_src = MATRIXED
 
@@ -80,10 +109,12 @@ safely.
 // =========================================
 
 /datum/cosmetic_part/legs/default
+	id = "default"
 	name = "default"
 	icon = null
 
 /datum/cosmetic_part/legs/avian
+	id = "avian"
 	name = "avian legs"
 	icon = 'modular_citadel/icons/mob/mutant_bodyparts.dmi'
 	icon_state = "avian"
@@ -91,6 +122,7 @@ safely.
 	support_digitigrade = FALSE
 
 /datum/cosmetic_part/legs/mammal
+	id = "mammal"
 	name = "mammal legs"
 	icon = 'modular_citadel/icons/mob/mutant_bodyparts.dmi'
 	icon_state = "mammal"
@@ -98,6 +130,7 @@ safely.
 	support_digitigrade = TRUE
 
 /datum/cosmetic_part/legs/insect
+	id = "insect"
 	name = "insect legs"
 	icon = 'modular_citadel/icons/mob/mutant_bodyparts.dmi'
 	icon_state = "insect"
@@ -105,8 +138,17 @@ safely.
 	support_digitigrade = TRUE
 
 /datum/cosmetic_part/legs/ipc_sleek
+	id = "ipc_sleek"
 	name = "sleek ipc legs"
 	icon_state = "ipc_sleek"
+	supported_species = list("ipc")
+	color_src = MATRIXED
+	support_digitigrade = FALSE
+
+/datum/cosmetic_part/legs/ipc_jointed
+	id = "ipc_jointed"
+	name = "jointed ipc legs"
+	icon_state = "ipc_jointed"
 	supported_species = list("ipc")
 	color_src = MATRIXED
 	support_digitigrade = FALSE

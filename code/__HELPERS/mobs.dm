@@ -149,11 +149,6 @@
 	var/color2 = random_short_color()
 	var/color3 = random_short_color()
 
-	var/cosmetic_head = pick(GLOB.cosmetic_heads)
-	var/cosmetic_chest = pick(GLOB.cosmetic_chests)
-	var/cosmetic_arms = pick(GLOB.cosmetic_arms)
-	var/cosmetic_legs = pick(GLOB.cosmetic_legs)
-
 	//CIT CHANGE - changes this entire return to support cit's snowflake parts
 	return(list(
 		"mcolor" = color1,
@@ -243,12 +238,12 @@
 		"flavor_text"		= "",
 		"silicon_flavor_text"		= "",
 		"ooc_text"			= "",
-		"cosmetic_head" = GLOB.cosmetic_heads[cosmetic_head],
-		"cosmetic_chest" = GLOB.cosmetic_chests[cosmetic_chest],
-		"cosmetic_l_arm" = GLOB.cosmetic_arms[cosmetic_arms],
-		"cosmetic_r_arm" = GLOB.cosmetic_arms[cosmetic_arms],
-		"cosmetic_l_leg" = GLOB.cosmetic_legs[cosmetic_legs],
-		"cosmetic_r_leg" = GLOB.cosmetic_legs[cosmetic_legs]))
+		"cosmetic_head" = GLOB.cosmetic_heads["default"],
+		"cosmetic_chest" = GLOB.cosmetic_chests["default"],
+		"cosmetic_l_arm" = GLOB.cosmetic_arms["default"],
+		"cosmetic_r_arm" = GLOB.cosmetic_arms["default"],
+		"cosmetic_l_leg" = GLOB.cosmetic_legs["default"],
+		"cosmetic_r_leg" = GLOB.cosmetic_legs["default"]))
 
 /proc/random_hair_style(gender)
 	switch(gender)
