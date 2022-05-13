@@ -441,6 +441,7 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	taur_mode = PAW_TAURIC
 	ckeys_allowed = list("chemlight")
 
+
 /*
 IPCS
 ==========================================================

@@ -201,7 +201,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"cosmetic_l_arm" = /datum/cosmetic_part/arms/default,
 		"cosmetic_r_arm" = /datum/cosmetic_part/arms/default,
 		"cosmetic_l_leg" = /datum/cosmetic_part/legs/default,
-		"cosmetic_r_leg" = /datum/cosmetic_part/legs/default
+		"cosmetic_r_leg" = /datum/cosmetic_part/legs/default,
+		"cosmetic_markings" = FALSE
 		)
 
 	/// Security record note section
@@ -840,6 +841,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<div style='width:100%;display:block;'>"
 			dat +=   "<h2>Cosmetic Parts</h2>"
+			dat +=   "<b>Use markings on cosmetic parts?</b> "
+			dat +=   "<a href='?_src_=prefs;preference=cosmetic_markings'>[features["cosmetic_markings"] ? "Yes" : "No"]</a>"
 			dat +=   "<div style='display:flex; align-items:stretch; justify-content:space-around;'>"
 			dat +=     "<div style='flex: 1 1 0;'>"
 			dat +=       "<h3 style='text-align:center;'>Head</h3>"
@@ -2814,6 +2817,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("all")
 					be_random_body = !be_random_body
+
+				if("cosmetic_markings")
+					features["cosmetic_markings"] = !features["cosmetic_markings"]
 
 				if("hear_midis")
 					toggles ^= SOUND_MIDI

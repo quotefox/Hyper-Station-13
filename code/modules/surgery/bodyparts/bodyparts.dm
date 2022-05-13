@@ -387,12 +387,6 @@
 			else
 				digitigrade_type = null
 
-		if(cosmetic_icon && is_organic_limb())
-			if(cosmetic_icon.icon)
-				base_bp_icon = cosmetic_icon.icon
-				use_digitigrade = cosmetic_icon.support_digitigrade ? use_digitigrade : NOT_DIGITIGRADE
-				color_src = cosmetic_icon.color_src ? cosmetic_icon.color_src : MUTCOLORS
-
 		if("mam_body_markings" in S.default_features)
 			var/datum/sprite_accessory/Smark
 			Smark = GLOB.mam_body_markings_list[H.dna.features["mam_body_markings"]]
@@ -407,6 +401,15 @@
 		else
 			body_markings = null
 			auxmarking = null
+
+		if(cosmetic_icon && is_organic_limb())
+			if(cosmetic_icon.icon)
+				base_bp_icon = cosmetic_icon.icon
+				use_digitigrade = cosmetic_icon.support_digitigrade ? use_digitigrade : NOT_DIGITIGRADE
+				color_src = cosmetic_icon.color_src ? cosmetic_icon.color_src : MUTCOLORS
+				if(!H.dna.features["cosmetic_markings"])
+					body_markings = null
+					auxmarking = null
 	
 		if((MUTCOLORS in S.species_traits) || (MUTCOLORS_PARTSONLY in S.species_traits))
 			markings_color = list(colorlist)
@@ -464,7 +467,7 @@
 			if(burnstate)
 				. += image('icons/mob/dam_mob.dmi', "[dmg_overlay_type]_[body_zone]_0[burnstate]", -DAMAGE_LAYER, image_dir)
 
-		if(!isnull(body_markings) && status == BODYPART_ORGANIC && !has_cosmetic_state)
+		if(!isnull(body_markings) && status == BODYPART_ORGANIC)
 			if(!use_digitigrade)
 				if(BODY_ZONE_CHEST)
 					. += image(body_markings_icon, "[body_markings]_[body_zone]_[icon_gender]", -MARKING_LAYER, image_dir)
@@ -509,7 +512,7 @@
 			limb.icon_state = "[limb_style]_[body_zone]"
 
 		// Body markings
-		if(body_markings && !has_cosmetic_state)
+		if(body_markings)
 			if(is_husk)
 				marking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[body_zone]", -MARKING_LAYER, image_dir)
 			else if(is_husk && use_digitigrade)
@@ -529,7 +532,7 @@
 		if(aux_zone)
 			aux = image(limb.icon, "[limb_style]_[aux_zone]", -aux_layer, image_dir)
 			. += aux
-			if(body_markings && !has_cosmetic_state)
+			if(body_markings)
 				if(is_husk)
 					auxmarking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[aux_zone]", -aux_layer, image_dir)
 				else
@@ -546,14 +549,14 @@
 		if(aux_zone)
 			aux = image(limb.icon, "[aux_zone]", -aux_layer, image_dir)
 			. += aux
-			if(!isnull(auxmarking) && !has_cosmetic_state)
+			if(!isnull(auxmarking))
 				if(is_husk)
 					auxmarking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[aux_zone]", -aux_layer, image_dir)
 				else
 					auxmarking = image(body_markings_icon, "[body_markings]_[aux_zone]", -aux_layer, image_dir)
 				. += auxmarking
 
-		if(!isnull(body_markings) && !has_cosmetic_state)
+		if(!isnull(body_markings))
 			if(is_husk)
 				marking = image('modular_citadel/icons/mob/markings_notmammals.dmi', "husk_[body_zone]", -MARKING_LAYER, image_dir)
 			else if(is_husk && use_digitigrade)
@@ -582,8 +585,7 @@
 			limb.color = list(markings_color)
 			if(aux_zone)
 				aux.color = list(markings_color)
-	if(has_cosmetic_state)
-		return
+
 	if(!isnull(auxmarking))
 		auxmarking.color = list(markings_color)
 	if(!isnull(body_markings))

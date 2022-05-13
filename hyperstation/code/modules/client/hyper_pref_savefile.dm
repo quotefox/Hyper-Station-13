@@ -5,6 +5,7 @@
 	S["feature_cosmetic_r_arm"] >> features["cosmetic_r_arm"]
 	S["feature_cosmetic_l_leg"] >> features["cosmetic_l_leg"]
 	S["feature_cosmetic_r_leg"] >> features["cosmetic_r_leg"]
+	S["cosmetic_markings"] >> features["cosmetic_markings"]
 	var/cosmetic_head = sanitize_inlist(features["cosmetic_head"], GLOB.cosmetic_heads, "default")
 	var/cosmetic_chest = sanitize_inlist(features["cosmetic_chest"], GLOB.cosmetic_chests, "default")
 	var/cosmetic_l_arm = sanitize_inlist(features["cosmetic_l_arm"], GLOB.cosmetic_arms, "default")
@@ -32,3 +33,4 @@
 	WRITE_FILE(S["feature_cosmetic_r_arm"], r_arm.id)
 	WRITE_FILE(S["feature_cosmetic_l_leg"], l_leg.id)
 	WRITE_FILE(S["feature_cosmetic_r_leg"], r_leg.id)
+	WRITE_FILE(S["cosmetic_markings"], features["cosmetic_markings"])
