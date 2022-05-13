@@ -484,6 +484,22 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	icon_state = "aquatic"
 	color_src = MATRIXED
 
+/datum/sprite_accessory/screen/ghost
+	name = "Ghost (Hyper)"
+	icon_state = "ghost"
+	
+/datum/sprite_accessory/screen/heartbeat
+	name = "Heartbeat (Hyper)"
+	icon_state = "heartbeat"
+
+/datum/sprite_accessory/screen/valley
+	name = "Valley (Hyper)"
+	icon_state = "valley"
+
+/datum/sprite_accessory/screen/ocean
+	name = "Ocean (Hyper)"
+	icon_state = "ocean"
+
 
 /*
 HAIRSTYLES

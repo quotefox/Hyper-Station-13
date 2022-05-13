@@ -68,7 +68,6 @@ safely.
 	icon = 'modular_citadel/icons/mob/mutant_bodyparts.dmi'
 	icon_state = "insect"
 	supported_species = list("mammal", "avian", "aquatic", "insect", "xeno", "synthliz")
-	support_digitigrade = TRUE
 
 /datum/cosmetic_part/arms/ipc_sleek
 	name = "sleek ipc arms"
@@ -110,3 +109,4 @@ safely.
 	icon_state = "ipc_sleek"
 	supported_species = list("ipc")
 	color_src = MATRIXED
+	support_digitigrade = FALSE
