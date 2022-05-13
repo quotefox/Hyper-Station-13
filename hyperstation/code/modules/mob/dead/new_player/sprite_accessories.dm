@@ -442,6 +442,50 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	ckeys_allowed = list("chemlight")
 
 /*
+IPCS
+==========================================================
+*/
+
+/*
+from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
+
+/datum/sprite_accessory/antenna
+	icon = 'modular_citadel/icons/mob/ipc_antennas.dmi'
+	color_src = MUTCOLORS3
+	recommended_species = list("ipc")
+
+/datum/sprite_accessory/screen
+	icon = 'modular_citadel/icons/mob/ipc_screens.dmi'
+	color_src = null
+*/
+
+/datum/sprite_accessory/antenna/idog_up
+	name = "Dog, up (Hyper)"
+	icon_state = "idog_up"
+	color_src = MATRIXED
+
+/datum/sprite_accessory/antenna/idog_up
+	name = "Dog, down (Hyper)"
+	icon_state = "idog_down"
+	color_src = MATRIXED
+
+/datum/sprite_accessory/antenna/headset
+	name = "Headphones (Hyper)"
+	icon_state = "headset"
+	color_src = MATRIXED
+
+/datum/sprite_accessory/antenna/catears
+	name = "Pointy Ears (Hyper)"
+	icon_state = "catears"
+	color_src = MATRIXED
+
+/datum/sprite_accessory/antenna/aquatic
+	name = "Fins (Hyper)"
+	icon_state = "aquatic"
+	color_src = MATRIXED
+
+
+/*
 HAIRSTYLES
 ==========================================================
 */
