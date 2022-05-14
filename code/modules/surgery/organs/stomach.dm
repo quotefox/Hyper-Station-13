@@ -122,7 +122,7 @@
 
 
 /obj/item/organ/stomach/synthliz
-	name = "synthetic lizardperson stomach"
+	name = "synthliz stomach"
 	icon_state = "stomach-ipc"
 
 // ipc power cell from oracle
