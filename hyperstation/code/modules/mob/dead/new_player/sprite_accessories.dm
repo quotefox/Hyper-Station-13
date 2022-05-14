@@ -501,8 +501,9 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	name = "Valley (Hyper)"
 	icon_state = "valley"
 
-/datum/sprite_accessory/screen/visor/black
+/datum/sprite_accessory/screen/visor
 	name = "Black Visor (Hyper)"
+	icon = 'hyperstation/icons/mob/ipc_screen_visor.dmi'
 	icon_state = "visor_black"
 
 /datum/sprite_accessory/screen/visor/blue
@@ -513,9 +514,8 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	name = "Green Visor (Hyper)"
 	icon_state = "visor_green"
 
-/datum/sprite_accessory/screen/visor
+/datum/sprite_accessory/screen/visor/red
 	name = "Red Visor (Hyper)"
-	icon = 'hyperstation/icons/mob/ipc_screen_visor.dmi'
 	icon_state = "visor_red"
 
 /datum/sprite_accessory/screen/visor/white
