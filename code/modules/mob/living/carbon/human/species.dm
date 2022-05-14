@@ -318,8 +318,12 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		var/mob/living/carbon/human/H = C
 		if(NOGENITALS in H.dna.species.species_traits)
 			H.give_genitals(TRUE) //call the clean up proc to delete anything on the mob then return.
-
 // EDIT ENDS
+
+	if(NOMOUTH in species_traits)
+		for(var/obj/item/bodypart/head/head in C.bodyparts)
+			head.mouth = FALSE
+
 
 /datum/species/proc/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	if(C.dna.species.exotic_bloodtype)
@@ -327,6 +331,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			C.dna.blood_type = random_blood_type()
 		else
 			C.dna.blood_type = new_species.exotic_bloodtype
+
+	if(NOMOUTH in species_traits)
+		for(var/obj/item/bodypart/head/head in C.bodyparts)
+			head.mouth = TRUE
+
 	if(DIGITIGRADE in species_traits)
 		C.Digitigrade_Leg_Swap(TRUE)
 	for(var/X in inherent_traits)

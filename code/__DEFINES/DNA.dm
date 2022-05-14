@@ -126,6 +126,9 @@
 #define MARKINGS		17
 #define WINGCOLOR		18
 
+#define NOMOUTH 19
+
+
 //organ slots
 #define ORGAN_SLOT_BRAIN "brain"
 #define ORGAN_SLOT_APPENDIX "appendix"
