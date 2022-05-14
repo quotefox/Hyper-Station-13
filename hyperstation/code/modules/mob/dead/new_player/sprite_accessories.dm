@@ -518,6 +518,14 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	name = "Blue Visor (Hyper)"
 	icon_state = "visor_blue"
 
+/datum/sprite_accessory/screen/visor/white
+	name = "White Visor (Hyper)"
+	icon_state = "visor_white"
+
+/datum/sprite_accessory/screen/visor/black
+	name = "Black Visor (Hyper)"
+	icon_state = "visor_black"
+
 /*
 HAIRSTYLES
 ==========================================================
