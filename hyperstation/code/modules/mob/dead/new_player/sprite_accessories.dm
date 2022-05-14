@@ -501,6 +501,22 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	name = "Ocean (Hyper)"
 	icon_state = "ocean"
 
+/datum/sprite_accessory/screen/visor
+	name = "Red Visor (Hyper)"
+	icon = 'hyperstation/icons/mob/ipc_screen_visor.dmi'
+	icon_state = "visor_red"
+	
+/datum/sprite_accessory/screen/visor/yellow
+	name = "Yellow Visor (Hyper)"
+	icon_state = "visor_yellow"
+	
+/datum/sprite_accessory/screen/visor/green
+	name = "Green Visor (Hyper)"
+	icon_state = "visor_green"
+	
+/datum/sprite_accessory/screen/visor/blue
+	name = "Blue Visor (Hyper)"
+	icon_state = "visor_blue"
 
 /*
 HAIRSTYLES
