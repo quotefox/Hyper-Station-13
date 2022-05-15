@@ -106,6 +106,33 @@
 		return FALSE
 	return TRUE
 
+/datum/martial_art/kinaris/harm_act(mob/living/carbon/human/A, mob/living/carbon/human/D)
+	if(!can_use(A))
+		return FALSE
+	log_combat(A, D, "attacked (KNS CQC)")
+	A.do_attack_animation(D)
+	var/picked_hit_type = pick("CQC'd", "Big Bossed")
+	var/bonus_damage = 13
+	if(D.IsKnockdown() || D.resting || D.lying)
+		bonus_damage += 5
+		picked_hit_type = "stomps on"
+	D.apply_damage(bonus_damage, PAIN)
+	if(picked_hit_type == "kicks" || picked_hit_type == "stomps on")
+		playsound(get_turf(D), 'sound/weapons/cqchit2.ogg', 50, 1, -1)
+	else
+		playsound(get_turf(D), 'sound/weapons/cqchit1.ogg', 50, 1, -1)
+	D.visible_message("<span class='danger'>[A] [picked_hit_type] [D]!</span>", \
+					  "<span class='userdanger'>[A] [picked_hit_type] you!</span>")
+	log_combat(A, D, "[picked_hit_type] (KNS CQC)")
+	if(A.resting && !D.stat && !D.IsKnockdown())
+		D.visible_message("<span class='warning'>[A] leg sweeps [D]!", \
+							"<span class='userdanger'>[A] leg sweeps you!</span>")
+		playsound(get_turf(A), 'sound/effects/hit_kick.ogg', 50, 1, -1)
+		D.apply_damage(10, PAIN)
+		D.Knockdown(60)
+		log_combat(A, D, "sweeped (KNS CQC)")
+	return TRUE
+
 /mob/living/carbon/human/proc/KNS_CQC_help()
 	set name = "Remember The Basics"
 	set desc = "You try to remember some of the basics of training."
