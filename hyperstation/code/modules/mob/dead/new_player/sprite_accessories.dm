@@ -87,6 +87,11 @@ SNOUTS
 	icon_state = "feasterndnw"
 	icon = 'hyperstation/icons/mob/char_snouts.dmi'
 
+/datum/sprite_accessory/mam_snouts/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
+	name = "Kinaris - Shuttle (Hyper)"
+	icon_state = "knshuttle"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
 /datum/sprite_accessory/mam_snouts/fchemlight
 	name = "RadDog (Top) (Hyper)"
 	icon_state = "fchemlight"
@@ -143,6 +148,11 @@ EARS
 	icon_state = "easternd"
 	icon = 'hyperstation/icons/mob/char_ears.dmi'
 
+/datum/sprite_accessory/mam_ears/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
+	name = "Kinaris - Shuttle (Hyper)"
+	icon_state = "knshuttle"
+	icon = 'hyperstation/icons/mob/char_ears.dmi'
+
 /datum/sprite_accessory/mam_ears/chemlight
 	name = "RadDog (Hyper)"
 	icon_state = "chemlight"
@@ -184,6 +194,13 @@ WINGS
 	name = "Insect (Hyper)"
 	icon_state = "insect"
 	icon = 'hyperstation/icons/mob/char_wings.dmi'
+
+/datum/sprite_accessory/deco_wings/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
+	name = "Kinaris - Shuttle (Hyper)"
+	icon_state = "knshuttle"
+	icon = 'hyperstation/icons/mob/char_wings.dmi'
+	//recommended_species = list("synthliz") need to give synths a deco wing slot
+	color_src = MATRIXED
 
 /datum/sprite_accessory/deco_wings/minibat // sarcoph @ hyperstation, march 2022
 	name = "Mini Bat (Hyper)"
@@ -324,6 +341,18 @@ TAILS + ANIMATED TAILS
 	icon_state = "easternd"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
+/datum/sprite_accessory/mam_tails/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
+	name = "Kinaris - Shuttle (Hyper)"
+	icon_state = "knshuttle"
+	icon = 'hyperstation/icons/mob/char_tails.dmi'
+	recommended_species = list("synthliz")
+
+/datum/sprite_accessory/mam_tails_animated/knshuttle
+	name = "Kinaris - Shuttle (Hyper)"
+	icon_state = "knshuttle"
+	icon = 'hyperstation/icons/mob/char_tails.dmi'
+	recommended_species = list("synthliz")
+
 /datum/sprite_accessory/mam_tails/chemlight
 	name = "RadDog (Hyper)"
 	icon_state = "chemlight"
@@ -396,6 +425,11 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 /datum/sprite_accessory/mam_body_markings/easterndragon
 	name = "Eastern Dragon (Hyper)"
 	icon_state = "easternd"
+	icon = 'hyperstation/icons/mob/char_markings.dmi'
+
+/datum/sprite_accessory/mam_body_markings/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
+	name = "Kinaris - Shuttle (Hyper)"
+	icon_state = "knshuttle"
 	icon = 'hyperstation/icons/mob/char_markings.dmi'
 
 //doged was here
