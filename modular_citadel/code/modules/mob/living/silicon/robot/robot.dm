@@ -1,7 +1,5 @@
 mob/living/silicon
-//Commented out, as you can utilise both sleepers /and/ the menu. This stops others from actually doing anything of the latter, AI or otherwise.
-// Even more interestingly, there's stuff /for/ them doing the act, so this is vestigial. If I'm not mistaken, anyhow.
-//	no_vore = TRUE
+	no_vore = TRUE
 
 /mob/living/silicon/robot
 	var/dogborg = FALSE
