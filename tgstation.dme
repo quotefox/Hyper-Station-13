@@ -3189,6 +3189,7 @@
 #include "hyperstation\code\modules\mob\living\carbon\carbon.dm"
 #include "hyperstation\code\modules\mob\living\carbon\human\cosmetic_part_handler.dm"
 #include "hyperstation\code\modules\mob\living\carbon\human\species_types\ipc.dm"
+#include "hyperstation\code\modules\mob\living\silicon\robot\examine_vr.dm"
 #include "hyperstation\code\modules\mob\living\silicon\robot\robot.dm"
 #include "hyperstation\code\modules\mob\living\silicon\robot\robot_modules.dm"
 #include "hyperstation\code\modules\mob\living\simple_animal\friendly\chicken_types.dm"

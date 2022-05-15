@@ -261,14 +261,13 @@
 	cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 	has_snowflake_deadsprite = TRUE
 
-/*
 /obj/item/robot_module/orepup
 	name = "Ore Pup"
 	basic_modules = list(
 		/obj/item/storage/bag/ore/cyborg,
 		/obj/item/analyzer/nose,
 		/obj/item/storage/bag/borgdelivery,
-		/obj/item/dogborg/sleeper/ore,
+		/obj/item/dogborg/sleeper/compactor/ore,
 		/obj/item/pickaxe/drill/cyborg,
 		/obj/item/shovel,
 		/obj/item/crowbar/cyborg,
@@ -282,20 +281,40 @@
 		/obj/item/clockwork/slab/cyborg/miner,
 		/obj/item/clockwork/weapon/ratvarian_spear,
 		/obj/item/borg/sight/xray/truesight_lens)
-	cyborg_base_icon = "orepup"
-	moduleselect_icon = "orepup"
-	sleeper_overlay = "osleeper"
+	cyborg_base_icon = "blade"
+	moduleselect_icon = "blade"
+	sleeper_overlay = "bladesleeper"
 	cyborg_icon_override = 'modular_citadel/icons/mob/widerobot.dmi'
 	has_snowflake_deadsprite = TRUE
 	cyborg_pixel_offset = -16
-/obj/item/robot_module/miner/do_transform_animation()
+
+/obj/item/robot_module/orepup/be_transformed_to(obj/item/robot_module/old_module)
+	var/mob/living/silicon/robot/R = loc
+	var/static/list/orepup_models
+	if(!orepup_models)
+		orepup_models = list(
+		"blade" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "medihound"),
+		"vale" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "valemine")
+		)
+		orepup_models = sortList(orepup_models)
+	var/orepup_borg_icon = show_radial_menu(R, R , orepup_models, custom_check = CALLBACK(src, .proc/check_menu, R), radius = 42, require_near = TRUE, tooltips = TRUE)
+	if(!orepup_borg_icon)
+		return
+	switch(orepup_borg_icon)
+		if("blade")
+			cyborg_base_icon = "blade"
+		if("vale")
+			cyborg_base_icon = "valemine"
+			sleeper_overlay = "valeminesleeper"
+			has_snowflake_deadsprite = TRUE
+	return ..()
+
+/obj/item/robot_module/orepup/do_transform_animation()
 	var/mob/living/silicon/robot/R = loc
 	R.cut_overlays()
 	R.setDir(SOUTH)
-	flick("orepup_transform", R)
 	do_transform_delay()
 	R.update_headlamp()
-*/
 
 /obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
@@ -353,7 +372,7 @@
 			cyborg_base_icon = "haydeemedical"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
 			hat_offset = 3
-		
+
 		if("qualified_doctor")
 			cyborg_base_icon = "qualified_doctor"
 			cyborg_icon_override = 'modular_citadel/icons/mob/robots.dmi'
