@@ -427,7 +427,7 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	icon_state = "easternd"
 	icon = 'hyperstation/icons/mob/char_markings.dmi'
 
-/datum/sprite_accessory/mam_body_markings/knshuttle
+/datum/sprite_accessory/mam_body_markings/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
 	name = "Kinaris - Shuttle (Hyper)"
 	icon_state = "knshuttle"
 	icon = 'hyperstation/icons/mob/char_markings.dmi'
