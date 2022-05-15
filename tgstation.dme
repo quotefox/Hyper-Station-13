@@ -3115,6 +3115,7 @@
 #include "hyperstation\code\game\objects\items\coconutcannon.dm"
 #include "hyperstation\code\game\objects\items\cosmetics.dm"
 #include "hyperstation\code\game\objects\items\lovedice.dm"
+#include "hyperstation\code\game\objects\items\devices\radio\radio.dm"
 #include "hyperstation\code\game\objects\items\stacks\tiles\tile_types.dm"
 #include "hyperstation\code\game\objects\items\storage\big_bag.dm"
 #include "hyperstation\code\game\objects\structures\bench.dm"

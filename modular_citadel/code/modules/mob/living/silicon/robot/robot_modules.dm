@@ -10,6 +10,9 @@
 /mob/living/silicon/robot/modules/borgi
 	set_module = /obj/item/robot_module/borgi
 
+/mob/living/silicon/robot/modules/orepup
+	set_module = /obj/item/robot_module/orepup
+
 /mob/living/silicon/robot/proc/get_cit_modules()
 	var/list/modulelist = list()
 	modulelist["MediHound"] = /obj/item/robot_module/medihound
@@ -17,6 +20,7 @@
 		modulelist["Security K-9"] = /obj/item/robot_module/k9
 	modulelist["Scrub Puppy"] = /obj/item/robot_module/scrubpup
 	modulelist["Borgi"] = /obj/item/robot_module/borgi
+	modulelist["Orepup"] = /obj/item/robot_module/orepup
 	return modulelist
 
 /obj/item/robot_module
@@ -282,7 +286,7 @@
 		/obj/item/clockwork/weapon/ratvarian_spear,
 		/obj/item/borg/sight/xray/truesight_lens)
 	cyborg_base_icon = "blade"
-	moduleselect_icon = "blade"
+	moduleselect_icon = "miner"
 	sleeper_overlay = "bladesleeper"
 	cyborg_icon_override = 'modular_citadel/icons/mob/widerobot.dmi'
 	has_snowflake_deadsprite = TRUE
@@ -293,7 +297,7 @@
 	var/static/list/orepup_models
 	if(!orepup_models)
 		orepup_models = list(
-		"blade" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "medihound"),
+		"blade" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "blade"),
 		"vale" = image(icon = 'modular_citadel/icons/mob/widerobot.dmi', icon_state = "valemine")
 		)
 		orepup_models = sortList(orepup_models)
@@ -308,13 +312,6 @@
 			sleeper_overlay = "valeminesleeper"
 			has_snowflake_deadsprite = TRUE
 	return ..()
-
-/obj/item/robot_module/orepup/do_transform_animation()
-	var/mob/living/silicon/robot/R = loc
-	R.cut_overlays()
-	R.setDir(SOUTH)
-	do_transform_delay()
-	R.update_headlamp()
 
 /obj/item/robot_module/medical/be_transformed_to(obj/item/robot_module/old_module)
 	var/mob/living/silicon/robot/R = loc
