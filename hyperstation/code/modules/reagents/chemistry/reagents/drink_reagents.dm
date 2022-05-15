@@ -21,3 +21,13 @@
 	if(holder.has_reagent(/datum/reagent/consumable/capsaicin))
 		holder.remove_reagent(/datum/reagent/consumable/capsaicin, 1)
 	..()
+
+/datum/reagent/consumable/kalynajuice
+	name = "Red Kalyna Juice"
+	description = "Juice from Kalyna plants."
+	color = "#E90501" // rgb: 233, 5, 1
+	taste_description = "sweet cranberries"
+	glass_icon_state = "kalyna"
+	glass_name = "glass of red kalyna juice"
+	glass_desc = "A vibrantly red juice!"
+	hydration = 4

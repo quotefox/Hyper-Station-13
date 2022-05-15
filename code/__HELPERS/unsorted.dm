@@ -1109,7 +1109,7 @@ B --><-- A
 
 /proc/get_random_station_turf()
 	return safepick(get_area_turfs(pick(GLOB.the_station_areas)))
-	
+
 /proc/get_safe_random_station_turf()
 	for (var/i in 1 to 5)
 		var/list/L = get_area_turfs(pick(GLOB.the_station_areas))
@@ -1272,6 +1272,14 @@ GLOBAL_REAL_VAR(list/stack_trace_storage)
 	M.Turn(pick(-targetangle, targetangle))
 	animate(src, transform = M, time = halftime, easing = ELASTIC_EASING)
 	animate(src, transform = OM, time = halftime, easing = ELASTIC_EASING)
+
+/atom/proc/do_twist(targetangle = 45, timer = 20)
+	var/matrix/OM = matrix(transform)
+	var/matrix/M = matrix(transform)
+	var/halftime = timer * 0.5
+	M.Turn(pick(-targetangle, targetangle))
+	animate(src, transform = M, time = halftime, easing = ELASTIC_EASING)
+	animate(src, transform = OM, time = halftime, easing = QUAD_EASING)
 
 /atom/proc/do_squish(squishx = 1.2, squishy = 0.6, timer = 20)
 	var/matrix/OM = matrix(transform)
@@ -1526,7 +1534,7 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 	blocked |= typesof(/obj/item/reagent_containers/food/drinks/prospacillin,
 		/obj/item/reagent_containers/food/drinks/diminicillin
 		)
-	
+
 	return pick(subtypesof(/obj/item/reagent_containers/food/drinks) - blocked)
 
 //For these two procs refs MUST be ref = TRUE format like typecaches!

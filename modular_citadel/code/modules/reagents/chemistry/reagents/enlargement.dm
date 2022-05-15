@@ -412,7 +412,7 @@
 				B = nB
 	//If they have & opt in, increase size.
 	if(H.client?.prefs.cit_toggles & ASS_ENLARGEMENT)
-		if(B.size < 5) //just make sure you dont break sprites
+		if(B.size < BUTT_MAX_SIZE) //just make sure you dont break sprites
 			B.size = B.size + 0.05
 			B.update()
 	..()

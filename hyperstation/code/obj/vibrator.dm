@@ -132,14 +132,13 @@ Code:
 				if(2) //med, can make you cum
 					to_chat(U, "<span class='love'>You feel intense pleasure surge through your [G.name]</span>")
 					U.do_jitter_animation()
-					if (U.getArousalLoss() >= 100 && ishuman(U) && U.has_dna())
-						U.mob_climax(forced_climax=TRUE)
+					U.mob_climax_instant()
 				if(3) //high, makes you stun
 					to_chat(U, "<span class='userdanger'>You feel overpowering pleasure surge through your [G.name]</span>")
 					U.Jitter(3)
 					U.Stun(30)
-					if (U.getArousalLoss() >= 100 && ishuman(U) && U.has_dna())
-						U.mob_climax(forced_climax=TRUE)
+					if (U.can_orgasm())
+						U.mob_climax_instant()
 					if(prob(50))
 						U.emote("moan")
 

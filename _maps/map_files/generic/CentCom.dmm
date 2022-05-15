@@ -10955,9 +10955,6 @@
 /turf/open/floor/plasteel,
 /area/tdome/arena)
 "kjW" = (
-/obj/item/twohanded/required/kirbyplants{
-	icon_state = "plant-22"
-	},
 /obj/effect/turf_decal/tile{
 	color = "#630000";
 	dir = 1
@@ -10973,6 +10970,7 @@
 /obj/effect/turf_decal/tile{
 	color = "#630000"
 	},
+/obj/structure/jacuzzi,
 /turf/open/floor/mineral/basaltstone_floor,
 /area/centcom/ferry)
 "kke" = (
