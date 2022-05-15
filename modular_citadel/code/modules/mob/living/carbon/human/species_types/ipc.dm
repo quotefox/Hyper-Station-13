@@ -6,7 +6,7 @@
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	blacklisted = 0
 	sexes = 0
-	species_traits = list(MUTCOLORS,NOEYES,NOTRANSSTING,NOMOUTH)
+	species_traits = list(MUTCOLORS,NOEYES,NOTRANSSTING,NOMOUTH,TRAIT_NOTHIRST)
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna")
 	default_features = list("ipc_screen" = "Blank", "ipc_antenna" = "None")
