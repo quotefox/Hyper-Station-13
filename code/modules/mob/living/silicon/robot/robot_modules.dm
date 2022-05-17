@@ -200,6 +200,10 @@
 	INVOKE_ASYNC(RM, .proc/do_transform_animation)
 	SEND_SIGNAL(R, COMSIG_CYBORG_MODULE_CHANGE)	//hyperstation edit
 	qdel(src)
+	//Skyrat change start
+	R.radio.extra_channels = RM.added_channels
+	R.radio.recalculateChannels()
+	//Skyrat change stop
 	return RM
 
 /obj/item/robot_module/proc/be_transformed_to(obj/item/robot_module/old_module)
