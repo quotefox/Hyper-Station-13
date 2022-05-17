@@ -6138,12 +6138,28 @@
 /obj/structure/sign/warning/docking,
 /turf/closed/wall/mineral/lead,
 /area/engine/engineering/reactor_core)
+"akt" = (
+/mob/living/simple_animal/chicken{
+	name = "\improper hen"
+	},
+/turf/open/floor/grass,
+/area/hydroponics)
 "aku" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
+"akv" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/mob/living/simple_animal/chicken{
+	gender = "male";
+	name = "\improper rooster"
+	},
+/turf/open/floor/grass,
+/area/hydroponics)
 "aky" = (
 /obj/machinery/power/apc{
 	areastring = "/area/medical/genetics/cloning";
@@ -40061,12 +40077,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/chapel/main)
-"iWa" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/turf/open/floor/grass,
-/area/hydroponics)
 "iWe" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 4
@@ -96046,13 +96056,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/arcade)
-"xqk" = (
-/mob/living/simple_animal/chicken{
-	force_gender = male;
-	name = "rooster"
-	},
-/turf/open/floor/grass,
-/area/hydroponics)
 "xql" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -97887,10 +97890,6 @@
 	},
 /area/layenia/cloudlayer)
 "xNj" = (
-/mob/living/simple_animal/chicken{
-	force_gender = female;
-	name = "chicken"
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
@@ -126836,8 +126835,8 @@ kpp
 pWH
 rDw
 bwp
-xqk
 nfw
+akt
 qRW
 vxc
 rrL
@@ -127351,7 +127350,7 @@ prr
 pFB
 xee
 qlS
-iWa
+akv
 qsc
 vxc
 akC
