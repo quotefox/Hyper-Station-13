@@ -111,4 +111,9 @@
 /datum/gear/cowboyboots/black
 	name = "Cowboy Boots, Black"
 	category = SLOT_SHOES
-	path = /obj/item/clothing/shoes/cowboyboots/black 
+	path = /obj/item/clothing/shoes/cowboyboots/black
+
+/datum/gear/threepwoodboots
+	name = "theepwood's boots"
+	category = SLOT_SHOES
+	path = /obj/item/clothing/shoes/threepwoodboots
