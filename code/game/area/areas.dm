@@ -73,6 +73,10 @@
 	/// Color on minimaps, if it's null (which is default) it makes one at random.
 	var/minimap_color
 
+	var/minimap_color2 // if this isn't null, then this will show as a checkerboard pattern mixed in with the above. works even if the above is null (for better or worse)
+
+	var/minimap_show_walls = TRUE
+
 /*Adding a wizard area teleport list because motherfucking lag -- Urist*/
 /*I am far too lazy to make it a proper list of areas so I'll just make it run the usual telepot routine at the start of the game*/
 GLOBAL_LIST_EMPTY(teleportlocs)

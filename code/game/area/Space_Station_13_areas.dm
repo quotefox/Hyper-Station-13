@@ -103,7 +103,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/maintenance
 	ambientsounds = MAINTENANCE
 	valid_territory = FALSE
-
+	minimap_color = "#454545"
 
 //Departments
 
@@ -255,6 +255,12 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 //Hallway
 
+/area/hallway
+	minimap_color = "#aaaaaa"
+
+/area/hallway/primary
+	name = "Primary Hallway"
+
 /area/hallway/primary/aft
 	name = "Aft Primary Hallway"
 	icon_state = "hallA"
@@ -302,6 +308,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway/secondary/exit
 	name = "Escape Shuttle Hallway"
 	icon_state = "escape"
+	minimap_color = "#baa0a0"
 
 /area/hallway/secondary/exit/departure_lounge
 	name = "Departure Lounge"
@@ -310,6 +317,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 /area/hallway/secondary/entry
 	name = "Arrival Shuttle Hallway"
 	icon_state = "entry"
+	minimap_color = "#a0a0ba"
 
 /area/hallway/secondary/service
 	name = "Service Hallway"
