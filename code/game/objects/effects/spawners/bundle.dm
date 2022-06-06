@@ -2,7 +2,7 @@
 	name = "bundle spawner"
 	icon = 'icons/mob/screen_gen.dmi'
 	icon_state = "x2"
-	color = "#00FF00"
+	color = COLOR_GREEN
 
 	var/list/items
 

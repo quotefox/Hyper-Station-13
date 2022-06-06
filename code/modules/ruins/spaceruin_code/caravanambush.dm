@@ -1,27 +1,27 @@
 //caravan ambush
 
 /obj/item/wrench/caravan
-	color = "#ff0000"
+	color = COLOR_RED
 	desc = "A prototype of a new wrench design, allegedly the red color scheme makes it go faster."
 	name = "experimental wrench"
 	toolspeed = 0.3
 
 /obj/item/screwdriver/caravan
-	color = "#ff0000"
+	color = COLOR_RED
 	desc = "A prototype of a new screwdriver design, allegedly the red color scheme makes it go faster."
 	name = "experimental screwdriver"
 	toolspeed = 0.3
 	random_color = FALSE
 
 /obj/item/wirecutters/caravan
-	color = "#ff0000"
+	color = COLOR_RED
 	desc = "A prototype of a new wirecutter design, allegedly the red color scheme makes it go faster."
 	name = "experimental wirecutters"
 	toolspeed = 0.3
 	random_color = FALSE
 
 /obj/item/crowbar/red/caravan
-	color = "#ff0000"
+	color = COLOR_RED
 	desc = "A prototype of a new crowbar design, allegedly the red color scheme makes it go faster."
 	name = "experimental crowbar"
 	toolspeed = 0.3
@@ -78,7 +78,7 @@
 	desc = "Used to control the Pirate Cutter."
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
-	light_color = LIGHT_COLOR_RED
+	light_color = COLOR_SOFT_RED
 	circuit = /obj/item/circuitboard/computer/caravan/pirate
 	shuttleId = "caravanpirate"
 	possible_destinations = "caravanpirate_custom;caravanpirate_ambush"
@@ -101,7 +101,7 @@
 	desc = "Used to control the Syndicate Fighter."
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
-	light_color = LIGHT_COLOR_RED
+	light_color = COLOR_SOFT_RED
 	req_access = list(ACCESS_SYNDICATE)
 	circuit = /obj/item/circuitboard/computer/caravan/syndicate1
 	shuttleId = "caravansyndicate1"
@@ -126,7 +126,7 @@
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
 	req_access = list(ACCESS_SYNDICATE)
-	light_color = LIGHT_COLOR_RED
+	light_color = COLOR_SOFT_RED
 	circuit = /obj/item/circuitboard/computer/caravan/syndicate2
 	shuttleId = "caravansyndicate2"
 	possible_destinations = "caravansyndicate2_custom;caravansyndicate2_ambush;caravansyndicate1_listeningpost"
@@ -150,7 +150,7 @@
 	icon_screen = "syndishuttle"
 	icon_keyboard = "syndie_key"
 	req_access = list(ACCESS_SYNDICATE)
-	light_color = LIGHT_COLOR_RED
+	light_color = COLOR_SOFT_RED
 	circuit = /obj/item/circuitboard/computer/caravan/syndicate3
 	shuttleId = "caravansyndicate3"
 	possible_destinations = "caravansyndicate3_custom;caravansyndicate3_ambush;caravansyndicate3_listeningpost"

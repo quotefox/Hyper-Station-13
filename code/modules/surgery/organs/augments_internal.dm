@@ -98,7 +98,7 @@
 /obj/item/organ/cyberimp/brain/anti_stun
 	name = "CNS Rebooter implant"
 	desc = "This implant will automatically give you back control over your central nervous system, reducing downtime when stunned."
-	implant_color = "#FFFF00"
+	implant_color = COLOR_YELLOW
 	slot = ORGAN_SLOT_BRAIN_ANTISTUN
 
 /obj/item/organ/cyberimp/brain/anti_stun/on_life()

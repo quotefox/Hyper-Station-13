@@ -145,13 +145,13 @@
 	alpha = 80
 
 /obj/screen/fullscreen/color_vision/green
-	color = "#00ff00"
+	color = COLOR_GREEN
 
 /obj/screen/fullscreen/color_vision/red
-	color = "#ff0000"
+	color = COLOR_RED
 
 /obj/screen/fullscreen/color_vision/blue
-	color = "#0000ff"
+	color = COLOR_BLUE
 
 /obj/screen/fullscreen/lighting_backdrop
 	icon = 'icons/mob/screen_gen.dmi'

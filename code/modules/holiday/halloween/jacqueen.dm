@@ -48,17 +48,18 @@
 	var/active = TRUE //Turn this to false to keep normal mob behavour
 	var/cached_z
 	var/static/blacklisted_items = typecacheof(list(
-	/obj/singularity,
-	/obj/structure/destructible/clockwork/massive/ratvar,
-	/obj/item/projectile,
-	/obj/item/gun,
-	/obj/item/antag_spawner,
-	/obj/effect,
-	/obj/belly,
-	/obj/decal,
-	/obj/docking_port,
-	/obj/shapeshift_holder,
-	/obj/screen))
+		/obj/singularity,
+		/obj/structure/destructible/clockwork/massive/ratvar,
+		/obj/item/projectile,
+		/obj/item/gun,
+		/obj/item/antag_spawner,
+		/obj/effect,
+		/obj/belly,
+		/obj/decal,
+		/obj/docking_port,
+		/obj/shapeshift_holder,
+		/obj/screen,
+		))
 
 /mob/living/simple_animal/jacq/Initialize()
 	..()

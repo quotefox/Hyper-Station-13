@@ -298,11 +298,11 @@
 	outputs = list()
 	activators = list()
 	inputs_default = list(
-		"2" = "#FF0000"
+		"2" = COLOR_RED
 	)
 	power_draw_idle = 0 // Raises to 1 when lit.
 	spawn_flags = IC_SPAWN_DEFAULT|IC_SPAWN_RESEARCH
-	var/led_color = "#FF0000"
+	var/led_color = COLOR_RED
 
 /obj/item/integrated_circuit/output/led/on_data_written()
 	power_draw_idle = get_pin_data(IC_INPUT, 1) ? 1 : 0

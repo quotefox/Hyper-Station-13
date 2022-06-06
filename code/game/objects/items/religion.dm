@@ -249,11 +249,11 @@
 
 /obj/item/godstaff/red
 	icon_state = "godstaff-red"
-	conversion_color = "#ff0000"
+	conversion_color = COLOR_RED
 
 /obj/item/godstaff/blue
 	icon_state = "godstaff-blue"
-	conversion_color = "#0000ff"
+	conversion_color = COLOR_BLUE
 
 /obj/item/clothing/gloves/plate
 	name = "Plate Gauntlets"

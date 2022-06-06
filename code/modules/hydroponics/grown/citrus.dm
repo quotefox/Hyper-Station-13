@@ -31,7 +31,7 @@
 	desc = "It's so sour, your face will twist."
 	foodtype = FRUIT | ANTITOXIC
 	icon_state = "lime"
-	filling_color = "#00FF00"
+	filling_color = COLOR_GREEN
 	juice_results = list(/datum/reagent/consumable/limejuice = 0)
 
 // Orange

@@ -174,11 +174,11 @@
 		var/obj/item/pen/P = I
 		switch(P.colour)
 			if("black")
-				return "#000000"
+				return COLOR_BLACK
 			if("blue")
-				return "#0000ff"
+				return COLOR_BLUE
 			if("red")
-				return "#ff0000"
+				return COLOR_RED
 		return P.colour
 	else if(istype(I, /obj/item/soap) || istype(I, /obj/item/reagent_containers/rag))
 		return canvas_color

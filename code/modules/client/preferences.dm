@@ -65,7 +65,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/allow_midround_antag = 1
 	var/preferred_map = null
 	var/pda_style = MONO
-	var/pda_color = "#808000"
+	var/pda_color = COLOR_OLIVE
 	var/pda_skin = PDA_SKIN_ALT
 
 	var/list/alt_titles_preferences = list()
@@ -2013,11 +2013,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 						//Now that we changed our species, we must verify that the mutant colour is still allowed.
 						var/temp_hsv = RGBtoHSV(features["mcolor"])
-						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#202020")[3]))
+						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV(COLOR_NEARLY_BLACK)[3]))
 							features["mcolor"] = pref_species.default_color
-						if(features["mcolor2"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#202020")[3]))
+						if(features["mcolor2"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV(COLOR_NEARLY_BLACK)[3]))
 							features["mcolor2"] = pref_species.default_color
-						if(features["mcolor3"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#202020")[3]))
+						if(features["mcolor3"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV(COLOR_NEARLY_BLACK)[3]))
 							features["mcolor3"] = pref_species.default_color
 
 				if("custom_species")
@@ -2031,10 +2031,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant color:", "Character Preference","#"+features["mcolor"]) as color|null
 					if(new_mutantcolor)
 						var/temp_hsv = RGBtoHSV(new_mutantcolor)
-						if(new_mutantcolor == "#000000")
+						if(new_mutantcolor == COLOR_BLACK)
 							features["mcolor"] = pref_species.default_color
 							update_preview_icon()
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3]) // mutantcolors must be bright, but only if they affect the skin
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(COLOR_NEARLY_BLACK)[3]) // mutantcolors must be bright, but only if they affect the skin
 							features["mcolor"] = sanitize_hexcolor(new_mutantcolor)
 							update_preview_icon()
 						else
@@ -2044,10 +2044,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_mutantcolor = input(user, "Choose your character's secondary alien/mutant color:", "Character Preference") as color|null
 					if(new_mutantcolor)
 						var/temp_hsv = RGBtoHSV(new_mutantcolor)
-						if(new_mutantcolor == "#000000")
+						if(new_mutantcolor == COLOR_BLACK)
 							features["mcolor2"] = pref_species.default_color
 							update_preview_icon()
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3]) // mutantcolors must be bright, but only if they affect the skin
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(COLOR_NEARLY_BLACK)[3]) // mutantcolors must be bright, but only if they affect the skin
 							features["mcolor2"] = sanitize_hexcolor(new_mutantcolor)
 							update_preview_icon()
 						else
@@ -2057,10 +2057,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_mutantcolor = input(user, "Choose your character's tertiary alien/mutant color:", "Character Preference") as color|null
 					if(new_mutantcolor)
 						var/temp_hsv = RGBtoHSV(new_mutantcolor)
-						if(new_mutantcolor == "#000000")
+						if(new_mutantcolor == COLOR_BLACK)
 							features["mcolor3"] = pref_species.default_color
 							update_preview_icon()
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3]) // mutantcolors must be bright, but only if they affect the skin
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(COLOR_NEARLY_BLACK)[3]) // mutantcolors must be bright, but only if they affect the skin
 							features["mcolor3"] = sanitize_hexcolor(new_mutantcolor)
 							update_preview_icon()
 						else
@@ -2187,7 +2187,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("wings_color")
 					var/new_wing_color = input(user, "Choose your character's wing colour:", "Character Preference","#"+wing_color) as color|null
 					if(new_wing_color)
-						if (new_wing_color == "#000000")
+						if (new_wing_color == COLOR_BLACK)
 							wing_color = "#FFFFFF"
 						else
 							wing_color = sanitize_hexcolor(new_wing_color)
@@ -2423,9 +2423,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_cockcolor = input(user, "Penis color:", "Character Preference") as color|null
 					if(new_cockcolor)
 						var/temp_hsv = RGBtoHSV(new_cockcolor)
-						if(new_cockcolor == "#000000")
+						if(new_cockcolor == COLOR_BLACK)
 							features["cock_color"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3])
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(COLOR_NEARLY_BLACK)[3])
 							features["cock_color"] = sanitize_hexcolor(new_cockcolor)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2455,9 +2455,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_ballscolor = input(user, "Testicle Color:", "Character Preference") as color|null
 					if(new_ballscolor)
 						var/temp_hsv = RGBtoHSV(new_ballscolor)
-						if(new_ballscolor == "#000000")
+						if(new_ballscolor == COLOR_BLACK)
 							features["balls_color"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3])
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(COLOR_NEARLY_BLACK)[3])
 							features["balls_color"] = sanitize_hexcolor(new_ballscolor)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2466,9 +2466,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_bellycolor = input(user, "Belly Color:", "Character Preference") as color|null
 					if(new_bellycolor)
 						var/temp_hsv = RGBtoHSV(new_bellycolor)
-						if(new_bellycolor == "#000000")
+						if(new_bellycolor == COLOR_BLACK)
 							features["belly_color"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3])
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(COLOR_NEARLY_BLACK)[3])
 							features["belly_color"] = sanitize_hexcolor(new_bellycolor)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2477,9 +2477,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_buttcolor = input(user, "Butt Color:", "Character Preference") as color|null
 					if(new_buttcolor)
 						var/temp_hsv = RGBtoHSV(new_buttcolor)
-						if(new_buttcolor == "#000000")
+						if(new_buttcolor == COLOR_BLACK)
 							features["butt_color"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3])
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(COLOR_NEARLY_BLACK)[3])
 							features["butt_color"] = sanitize_hexcolor(new_buttcolor)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2516,7 +2516,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_egg_color = input(user, "Egg Color:", "Character Preference") as color|null
 					if(new_egg_color)
 						var/temp_hsv = RGBtoHSV(new_egg_color)
-						if(ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3])
+						if(ReadHSV(temp_hsv)[3] >= ReadHSV(COLOR_NEARLY_BLACK)[3])
 							features["eggsack_egg_color"] = sanitize_hexcolor(new_egg_color)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2552,9 +2552,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_breasts_color = input(user, "Breast Color:", "Character Preference") as color|null
 					if(new_breasts_color)
 						var/temp_hsv = RGBtoHSV(new_breasts_color)
-						if(new_breasts_color == "#000000")
+						if(new_breasts_color == COLOR_BLACK)
 							features["breasts_color"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3])
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(COLOR_NEARLY_BLACK)[3])
 							features["breasts_color"] = sanitize_hexcolor(new_breasts_color)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
@@ -2580,9 +2580,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/new_vagcolor = input(user, "Vagina color:", "Character Preference") as color|null
 					if(new_vagcolor)
 						var/temp_hsv = RGBtoHSV(new_vagcolor)
-						if(new_vagcolor == "#000000")
+						if(new_vagcolor == COLOR_BLACK)
 							features["vag_color"] = pref_species.default_color
-						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3])
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV(COLOR_NEARLY_BLACK)[3])
 							features["vag_color"] = sanitize_hexcolor(new_vagcolor)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")

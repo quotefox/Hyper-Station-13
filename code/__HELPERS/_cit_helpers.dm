@@ -90,9 +90,9 @@ GLOBAL_LIST_INIT(dildo_colors, list(//mostly neon colors
 		"Blue"		= "#00d2ff",//blue
 		"Lime"		= "#89ff00",//lime
 		"Black"		= "#101010",//black
-		"Red"		= "#ff0000",//red
+		"Red"		= "#FF0000",//red
 		"Orange"	= "#ff9a00",//orange
-		"Purple"	= "#e300ff"//purple
+		"Purple"	= "#e300ff",//purple
 		))
 
 //Crew objective and miscreants stuff

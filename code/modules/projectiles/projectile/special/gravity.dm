@@ -6,7 +6,7 @@
 	damage = 0
 	damage_type = BRUTE
 	nodamage = 1
-	color = "#33CCFF"
+	color = COLOR_BLUE_LIGHT
 	var/turf/T
 	var/power = 4
 	var/list/thrown_items = list()

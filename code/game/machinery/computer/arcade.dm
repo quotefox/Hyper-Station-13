@@ -11,6 +11,7 @@
 	icon_keyboard = null
 	icon_screen = "invaders"
 	clockwork = TRUE //it'd look weird
+	light_color = LIGHT_COLOR_GREEN
 	var/list/prizes = list(
 		/obj/item/toy/balloon = ARCADE_WEIGHT_USELESS,
 		/obj/item/toy/beach_ball = ARCADE_WEIGHT_USELESS,
@@ -71,8 +72,6 @@
 
 		/obj/item/clothing/mask/fakemoustache/italian = ARCADE_WEIGHT_RARE
 	)
-
-	light_color = LIGHT_COLOR_GREEN
 
 /obj/machinery/computer/arcade/proc/Reset()
 	return
