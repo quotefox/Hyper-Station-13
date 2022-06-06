@@ -52,4 +52,4 @@
 					S["new_differences_notification"] >> differing_version_notification
 					if(!differing_version_notification || differing_version_notification <= slot_version)
 						S["new_differences_notification"] << slot_version
-						to_chat(src, "<span class='danger'><B>There were recent changes with characters, and your savefiles are outdated.</B></span>")
+						to_chat(src, "<span class='danger'><B>There were recent changes with characters, and your savefiles are outdated. You are still able to play, but your characters may not look the same.</B></span>")
