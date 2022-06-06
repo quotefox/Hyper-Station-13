@@ -46,8 +46,9 @@
 			var/differing_version_notification = 0
 			if(slot)
 				S.cd = "/character[slot]"
-				var/slot_version = S["version"]
-				if(slot_version < SAVEFILE_VERSION_MAX)
+				var/slot_version = 0
+				S["version"] >> slot_version
+				if(slot_version && slot_version < SAVEFILE_VERSION_MAX)
 					S.cd = "/"
 					S["new_differences_notification"] >> differing_version_notification
 					if(!differing_version_notification || differing_version_notification <= slot_version)
