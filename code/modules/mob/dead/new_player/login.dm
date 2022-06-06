@@ -43,7 +43,13 @@
 			S.cd = "/"
 			var/slot
 			S["default_slot"] >> slot
+			var/differing_version_notification = 0
 			if(slot)
 				S.cd = "/character[slot]"
-				if(S["version"] < SAVEFILE_VERSION_MAX)
-					to_chat(src, "<span class='redtext'>Your characters are outdated from recent updates. Please make sure if everything is within reasonable levels.</span>")
+				var/slot_version = S["version"]
+				if(slot_version < SAVEFILE_VERSION_MAX)
+					S.cd = "/"
+					S["new_differences_notification"] >> differing_version_notification
+					if(!differing_version_notification || differing_version_notification <= slot_version)
+						S["new_differences_notification"] << slot_version
+						to_chat(src, "<span class='danger'>There were recent changes with characters, and your savefiles are outdated.</span>")
