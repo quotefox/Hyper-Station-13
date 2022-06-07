@@ -16,6 +16,9 @@
 	. = ..()
 	if(!isatom(target))
 		return ELEMENT_INCOMPATIBLE
+
+	src.overworld_scaling = overworld_scaling
+	src.storage_scaling = storage_scaling
 	
 	scale(target, overworld_scaling)
 
