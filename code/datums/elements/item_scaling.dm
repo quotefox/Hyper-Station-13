@@ -25,6 +25,7 @@
 	RegisterSignal(target, list(COMSIG_ITEM_DROPPED, COMSIG_STORAGE_EXITED), .proc/scale_overworld)
 	RegisterSignal(target, list(COMSIG_ITEM_EQUIPPED, COMSIG_STORAGE_ENTERED), .proc/scale_storage)
 
+//scale :)
 /datum/element/item_scaling/proc/scale(atom/source, scaling)
 	var/matrix/M = matrix()
 	source.transform = M.Scale(scaling)
