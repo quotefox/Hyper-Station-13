@@ -260,7 +260,7 @@
 	name = "security's bitch beret"
 	desc = "A softer beret with the word 'BITCH' embroidered on it in pink thread."
 	icon_state = "bitchberet"
-	price = 5
+	price = PRICE_LOW * 1.5
 
 //Curator
 /obj/item/clothing/head/fedora/curator

@@ -11,7 +11,7 @@
 	strip_delay = 60
 	equip_delay_other = 60
 	materials = list(MAT_METAL=5000, MAT_GLASS=2000)
-	price = 5
+	price = PRICE_HIGH
 	var/tagname = null
 
 /datum/design/electropack/shockcollar

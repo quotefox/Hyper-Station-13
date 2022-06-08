@@ -13,7 +13,7 @@
 	var/style = "long"
 	var/inside = FALSE
 	var/last = 0
-	price = 3
+	price = PRICE_LOW * 1.2
 
 /obj/item/electropack/vibrator/Initialize() //give the device its own code
 	. = ..()

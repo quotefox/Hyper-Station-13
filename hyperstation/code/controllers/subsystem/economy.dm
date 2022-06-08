@@ -20,4 +20,4 @@ SUBSYSTEM_DEF(economy)
  * job datums if the respective one is null. You can pass zero arguments here and you'd get the "default" amount of a paycheck.
  */
 /datum/controller/subsystem/economy/proc/GetPaycheck(datum/bank_account/account, datum/job/job, multiplier=1)
-	return account:base_pay * job:base_paycheck_multiplier * multiplier
+	return FLOOR(account:base_pay * job:base_paycheck_multiplier * multiplier, 1)

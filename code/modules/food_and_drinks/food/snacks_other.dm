@@ -59,7 +59,7 @@
 	tastes = list("chocolate" = 1)
 	foodtype = JUNKFOOD | SUGAR
 	dunkable = TRUE
-	price = 2
+	price = PRICE_LOW * 0.5
 
 
 /obj/item/reagent_containers/food/snacks/hugemushroomslice
@@ -663,4 +663,4 @@
 	else if (icon_state != "marshmallowrburned")
 		icon_state = "marshmallowburned"
 		desc = "[initial(desc)] It looks just right for eating!"
-		tastes = list("marshmallow" = 1, "cream" = 1) 
+		tastes = list("marshmallow" = 1, "cream" = 1)

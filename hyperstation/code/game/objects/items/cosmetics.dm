@@ -8,7 +8,7 @@
 	item_state = "nailpolish"
 	w_class = WEIGHT_CLASS_SMALL
 	var/paint = "black"
-	price = 5
+	price = PRICE_LOW * 0.5
 	var/mutable_appearance/bottle //show the colour on the bottle.
 
 /obj/item/nailpolish/red

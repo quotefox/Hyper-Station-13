@@ -93,7 +93,7 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/filled/nuka_cola
 	name = "Nuka Cola"
 	list_reagents = list(/datum/reagent/consumable/nuka_cola = 50)
-	price = 7
+	price = PRICE_BASE * 1.1
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/filled/syndicatebomb
 	name = "Syndicat Bomb"

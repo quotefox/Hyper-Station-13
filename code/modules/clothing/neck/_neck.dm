@@ -302,4 +302,4 @@
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "bling"
 	item_color = "bling"
-	price = 30
+	price = PRICE_EXPENSIVE

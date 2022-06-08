@@ -45,7 +45,7 @@
 	item_state = "sluthailer"
 	aggressiveness = 0 //can't have your pets being mean!
 	actions_types = list(/datum/action/item_action/halt)
-	price = 5
+	price = PRICE_EROTICA
 
 /obj/item/clothing/mask/gas/sechailer/slut/attack_hand(mob/user)
 	if(iscarbon(user))

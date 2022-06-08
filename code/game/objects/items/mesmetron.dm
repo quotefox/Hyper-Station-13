@@ -9,7 +9,7 @@
 	throw_speed = 3
 	var/mob/living/carbon/subject = null
 	var/closed = FALSE
-	price = 10
+	price = PRICE_EROTICA
 
 
 //Hypnotize someone

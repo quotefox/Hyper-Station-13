@@ -710,7 +710,7 @@
 	icon_state = "coatsecuritypink"
 	item_state = "coatsecuritypink"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/pink
-	price = 5
+	price = PRICE_LOW
 
 /obj/item/clothing/suit/hooded/wintercoat/security/Initialize()
 	. = ..()

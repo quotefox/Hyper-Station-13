@@ -240,7 +240,7 @@
 	desc = "Holds a variety of gear for \"alternative\" peacekeeping."
 	icon_state = "slutbelt"
 	item_state = "slut"
-	price = 5
+	price = PRICE_EROTICA
 
 obj/item/storage/belt/slut/ComponentInitialize()
 	. = ..()
