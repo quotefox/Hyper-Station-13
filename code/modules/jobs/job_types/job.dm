@@ -61,6 +61,9 @@
 
 	var/list/alt_titles = list()
 
+	/// A multiplier for how much a person gets each paycheck
+	var/base_paycheck_multiplier = 0.7
+
 	var/override_roundstart_spawn = null		//Where the player spawns at roundstart if defined
 
 	//whitelisting
@@ -95,15 +98,6 @@
 	if(!H)
 		return FALSE
 
-	if(!visualsOnly)
-		var/datum/bank_account/bank_account = new(H.real_name, src)
-		bank_account.account_holder = H.real_name
-		bank_account.account_job = src
-		bank_account.account_id = rand(111111,999999) //give account ID!
-		//bank_account.account_pin = rand(1000,9999) //give random pin!
-		bank_account.account_balance = 80
-		H.account_id = bank_account.account_id
-
 	if(CONFIG_GET(flag/enforce_human_authority) && (title in GLOB.command_positions))
 		if(H.dna.species.id != "human")
 			H.set_species(/datum/species/human)
@@ -118,7 +112,14 @@
 	H.dna.species.after_equip_job(src, H, visualsOnly)
 
 	if(!visualsOnly && announce)
-		announce(H)
+		generate_bank_account()
+		if(announce)
+			announce(H)
+
+/// Generates a bank account for the person who's getting this job datum
+/datum/job/proc/generate_bank_account(mob/living/carbon/human/reciever)
+	var/datum/bank_account/bank_account = new(H.real_name, src)
+	return bank_account
 
 /datum/job/proc/get_access()
 	if(!config)	//Needed for robots.

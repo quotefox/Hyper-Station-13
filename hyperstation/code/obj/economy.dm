@@ -39,7 +39,7 @@
 
 		if(idcard.registered_account)
 			if(!idcard.registered_account.account_pin || pin == idcard.registered_account.account_pin)
-				dat += "<p>Balance: <b>$[idcard.registered_account.account_balance]</b>"
+				dat += "<p>Balance: <b>$[idcard.registered_account.balance]</b>"
 				//dat += "<p>Offstation Balance: <b()</b>"
 				dat += "<p>"
 				dat	+= "<a href='byond://?src=[REF(src)];withdraw=1'>Withdraw</A>"
@@ -78,7 +78,7 @@
 		if(held_card)
 			var/obj/item/stack/credits/cred = I
 			var/obj/item/card/id/idcard = held_card
-			idcard.registered_account.account_balance = (idcard.registered_account.account_balance+cred.amount)
+			idcard.registered_account.balance = (idcard.registered_account.balance+cred.amount)
 			to_chat(usr, "<span class='notice'>You insert [cred] into the ATM.</span>")
 			src.ui_interact(usr)
 			del(cred)
@@ -138,9 +138,9 @@
 			if(idcard.registered_account)
 				var/amount = input(user, "Choose amount", "Withdraw") as num|null
 				if(amount>0)
-					amount = max(min( round(text2num(amount)), idcard.registered_account.account_balance),0) //make sure they aint taking out more then what they have
+					amount = max(min( round(text2num(amount)), idcard.registered_account.balance),0) //make sure they aint taking out more then what they have
 					to_chat(usr, "<span class='notice'>The machine prints out [amount] credits.</span>")
-					idcard.registered_account.account_balance = (idcard.registered_account.account_balance-amount) //subtract the amount they took out.
+					idcard.registered_account.balance = (idcard.registered_account.balance-amount) //subtract the amount they took out.
 					var/obj/item/stack/credits/C = new /obj/item/stack/credits/(loc)
 					C.amount = amount
 					if(usr.put_in_hands(C))

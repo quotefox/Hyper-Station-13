@@ -497,8 +497,8 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 			updateUsrDialog()
 			vend_ready = 1
 			if(bankid && R == buying) //if we have a bank id, and we are trying to buy the same thing!
-				if(bankid.account_balance >= R.price)
-					bankid.account_balance -= R.price //take the money from the account.
+				if(bankid.balance >= R.price)
+					bankid.balance -= R.price //take the money from the account.
 					menu = 1
 					to_chat(usr, "<span class='notice'>You [R.name] via the provided bank account!</span>")
 					bankid = null //so noone can buy from your account after youve purchased stuff
