@@ -119,7 +119,7 @@
 
 /// Generates a bank account for the person who's getting this job datum
 /datum/job/proc/generate_bank_account(mob/living/carbon/human/reciever)
-	return new/datum/bank_account(reciever, src)
+	return
 
 /datum/job/proc/get_access()
 	if(!config)	//Needed for robots.
@@ -246,15 +246,8 @@
 		else
 			C.update_label()
 
-		for(var/datum/bank_account/account as anything in SSeconomy.bank_accounts)
-			if(account.account_id == H.account_id)
-				C.registered_account = account
-				account.bank_cards += C
-									//Todo: remove bank_cards, have accounts for everyone who knows the pin to an ID. monkey go ook ook (he's rich)
-									//one card should have one account, sorta like how real cards work
-									//ping cyanosis if bank_cards is still here
-				account.associated_id = C	//Also make this better to work with
-				break
+		C.create_bank_account(H, J)
+
 		H.sec_hud_set_ID()
 
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)

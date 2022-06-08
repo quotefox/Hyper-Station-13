@@ -171,10 +171,10 @@
 	var/registered_name = null // The name registered_name on the card
 	var/assignment = null
 	var/access_txt // mapping aid
-	var/datum/bank_account/registered_account
 	var/uses_overlays = TRUE
 	var/uses_assignment = TRUE
 	var/icon/cached_flat_icon
+	var/datum/bank_account/registered_account
 
 /obj/item/card/id/Initialize(mapload)
 	. = ..()
@@ -199,6 +199,9 @@
 	. = ..()
 	if(mining_points)
 		. += "There's [mining_points] mining equipment redemption point\s loaded onto this card."
+
+/obj/item/card/id/proc/create_bank_account(owner, job_assignment)
+	registered_account = new/datum/bank_account(owner, job_assignment, src)
 
 /obj/item/card/id/GetAccess()
 	return access
@@ -643,7 +646,7 @@
 	icon_state = "retrosci"
 	uses_overlays = FALSE
 	uses_assignment = FALSE
-	
+
 /obj/item/card/id/away/snowdin/med
 	name = "Arctic Station Doctor's ID card"
 	desc = "A faded Arctic Station ID card. You can make out the rank \"Doctor\"."

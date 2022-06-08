@@ -331,7 +331,7 @@ SUBSYSTEM_DEF(job)
 
 				if((job.title in GLOB.silly_positions) && (player.client.prefs.sillyroles == FALSE))
 					JobDebug("DO is not whitelisted, Player: [player], Job:[job.title]")
-					continue	
+					continue
 
 				if(!job.player_old_enough(player.client))
 					JobDebug("DO player not old enough, Player: [player], Job:[job.title]")
@@ -473,10 +473,10 @@ SUBSYSTEM_DEF(job)
 	//Account ID. ID is handled by human initialization
 	if(ishuman(H))
 		var/mob/living/carbon/human/wageslave = H
-		to_chat(M, "<b><span class='big'>Your account ID is [wageslave.account_id]</span></b>")
-		to_chat(M, "<b><span class='notice'>You do not have a pin, can set your pin at an ATM.</b>")
-		if(H.mind)
-			H.mind.memory += "Your account ID is [wageslave.account_id].<BR>"
+		if(wageslave.wear_id)
+			var/obj/item/card/id/id_card = wageslave.wear_id
+			to_chat(M, "<b><span class='big'>Your account ID is [id_card.registered_account.account_id]</span></b>")
+			to_chat(M, "<b><span class='notice'>You do not have a pin, can set your pin at an ATM.</b>")
 
 	return H
 

@@ -15,9 +15,6 @@
 	resistance_flags = FIRE_PROOF
 	var/obj/item/card/held_card
 	var/user = ""
-	light_power = 0
-	light_range = 7
-	light_color = "#ff3232"
 	var/pin = 0
 
 /obj/machinery/atm/ui_interact(mob/user)

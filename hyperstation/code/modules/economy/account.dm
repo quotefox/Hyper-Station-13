@@ -1,17 +1,24 @@
 /datum/bank_account
+	/// The name of whoever owns this account
 	var/account_holder = "Some pleboid"
+	/// The balance, in credits!
 	var/balance = 0
-	var/account_pin = 0
-	var/datum/job/account_job
-	var/obj/item/card/id/associated_id
-	var/list/bank_cards = list()
-	var/account_id = 1
+	/// Fluff for the ID of this card. Purely cosmetic, but unique for every account
+	var/account_id = 0
+	/// The pin number that the owner wanted. Not set by default, so anyone can just steal your ID if you don't remember to set it
+	var/account_pin
+	/// The base amount of pay you get per paycheck
 	var/base_pay = 60
+	/// The linked job datum for this bank account, for calculating unique base payment for each job
+	var/datum/job/account_job
+	/// The associated ID, for letting the card-holder know when a paycheck is processed
+	var/obj/item/card/id/associated_id
 
-/datum/bank_account/New(mob/living/carbon/human/new_holder, datum/job/job)
+/datum/bank_account/New(mob/living/carbon/human/new_holder, datum/job/job, obj/item/card/id/id_card)
 	account_holder = new_holder.real_name
 	account_job = job
-	new_holder.account_id = account_id = rand(111111,999999)
+	associated_id = id_card
+	account_id = rand(111111,999999)
 
 	if(!SSeconomy || !SSeconomy.initialized)
 		stack_trace("A new bank account was made without the economy subsystem being initialized first. If this is an issue, change the subsystem's init_order.")
