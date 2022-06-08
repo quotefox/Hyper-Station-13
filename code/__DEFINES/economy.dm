@@ -1,8 +1,8 @@
 #define BASEPAY_ASSISTANT 1
-#define BASEPAY_ROOKIE 1
+#define BASEPAY_ROOKIE 1.05	//rookies, chaplain, clown, curator, lawyer, etc that dont take much effort to be good in
 #define BASEPAY_DEFAULT 1.1
-#define BASEPAY_COMMAND 1.25
-#define BASEPAY_CAPTAIN 1.5
+#define BASEPAY_COMMAND 1.3
+#define BASEPAY_CAPTAIN 1.65
 
 
 #define PRICE_BASE		(FLOOR(BASEPAY_ASSISTANT * 16, 1))

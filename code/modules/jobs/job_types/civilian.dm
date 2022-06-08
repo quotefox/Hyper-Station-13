@@ -11,6 +11,7 @@ Clown
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
+	base_paycheck_multiplier = BASEPAY_ROOKIE
 
 	outfit = /datum/outfit/job/clown
 
@@ -78,6 +79,7 @@ Mime
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
+	base_paycheck_multiplier = BASEPAY_ROOKIE
 
 	outfit = /datum/outfit/job/mime
 
@@ -130,6 +132,7 @@ Curator
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
+	base_paycheck_multiplier = BASEPAY_ROOKIE
 
 	outfit = /datum/outfit/job/curator
 
@@ -173,6 +176,7 @@ Lawyer
 	spawn_positions = 2
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
+	base_paycheck_multiplier = BASEPAY_ROOKIE
 	var/lawyers = 0 //Counts lawyer amount
 
 	outfit = /datum/outfit/job/lawyer

@@ -23,6 +23,7 @@ Head of Security
 	exp_requirements = 2000
 	exp_type = EXP_TYPE_SECURITY
 	exp_type_department = EXP_TYPE_SECURITY
+	base_paycheck_multiplier = BASEPAY_COMMAND
 
 	outfit = /datum/outfit/job/hos
 
@@ -367,6 +368,7 @@ Junior Security Officer
 	minimal_player_age = 3
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
+	base_paycheck_multiplier = BASEPAY_ROOKIE
 
 	outfit = /datum/outfit/job/security/junior
 

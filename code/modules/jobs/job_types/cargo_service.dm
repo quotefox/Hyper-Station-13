@@ -15,6 +15,7 @@ Quartermaster is a real head fuck you
 	minimal_player_age = 7
 	exp_type = EXP_TYPE_SUPPLY
 	exp_type_department = EXP_TYPE_SUPPLY
+	base_paycheck_multiplier = BASEPAY_COMMAND
 	exp_requirements = 1200
 
 	outfit = /datum/outfit/job/quartermaster
@@ -88,6 +89,7 @@ Shaft Miner
 	exp_requirements = 600
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SUPPLY
+	base_paycheck_multiplier = BASEPAY_DEFAULT * 1.2 //Just a teeny tiny bit more because they dangerous bro
 
 
 	outfit = /datum/outfit/job/miner
@@ -167,6 +169,7 @@ Bartender
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
+	base_paycheck_multiplier = BASEPAY_ROOKIE
 
 	outfit = /datum/outfit/job/bartender
 
@@ -199,6 +202,7 @@ Cook
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
+	base_paycheck_multiplier = BASEPAY_ROOKIE
 	var/cooks = 0 //Counts cooks amount
 
 	outfit = /datum/outfit/job/cook
@@ -252,6 +256,7 @@ Botanist
 	spawn_positions = 2
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
+	base_paycheck_multiplier = BASEPAY_ROOKIE
 
 	outfit = /datum/outfit/job/botanist
 
@@ -290,6 +295,7 @@ Janitor
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
+	base_paycheck_multiplier = BASEPAY_ROOKIE
 	var/global/janitors = 0
 
 	outfit = /datum/outfit/job/janitor

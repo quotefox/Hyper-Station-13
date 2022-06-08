@@ -17,6 +17,7 @@ Research Director
 	exp_requirements = 1500
 	exp_type = EXP_TYPE_SCIENCE
 	exp_type_department = EXP_TYPE_SCIENCE
+	base_paycheck_multiplier = BASEPAY_COMMAND
 
 	outfit = /datum/outfit/job/rd
 
@@ -154,6 +155,7 @@ Junior Scientist
 	selection_color = "#ffeeff"
 	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW
+	base_paycheck_multiplier = BASEPAY_ROOKIE
 
 
 	outfit = /datum/outfit/job/scientist/junior

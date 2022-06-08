@@ -62,7 +62,7 @@
 	var/list/alt_titles = list()
 
 	/// A multiplier for how much a person gets each paycheck
-	var/base_paycheck_multiplier = 1
+	var/base_paycheck_multiplier = BASEPAY_DEFAULT
 
 	var/override_roundstart_spawn = null		//Where the player spawns at roundstart if defined
 

@@ -13,6 +13,7 @@ Chaplain
 	supervisors = "the head of personnel"
 	selection_color = "#dddddd"
 	custom_spawn_text = "You're playing a job that is essential for when the station deals with paranormal threats. While you have access to weapons, armor and tools such as your nullrod and bible, this does not mean you should hunt those threats unless warranted. If you have any questions, don't hesitate to ask mentors."
+	base_paycheck_multiplier = BASEPAY_ROOKIE
 
 	outfit = /datum/outfit/job/chaplain
 
