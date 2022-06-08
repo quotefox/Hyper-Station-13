@@ -118,19 +118,19 @@
 
 /// Generates a bank account for the person who's getting this job datum
 /datum/job/proc/generate_bank_account(mob/living/carbon/human/reciever)
-	var/datum/bank_account/bank_account = new(H.real_name, src)
+	var/datum/bank_account/bank_account = new(reciever.real_name, src)
 	return bank_account
 
 /datum/job/proc/get_access()
 	if(!config)	//Needed for robots.
-		return src.minimal_access.Copy()
+		return minimal_access.Copy()
 
 	. = list()
 
 	if(CONFIG_GET(flag/jobs_have_minimal_access))
-		. = src.minimal_access.Copy()
+		. = minimal_access.Copy()
 	else
-		. = src.access.Copy()
+		. = access.Copy()
 
 	if(CONFIG_GET(flag/everyone_has_maint_access)) //Config has global maint access set
 		. |= list(ACCESS_MAINT_TUNNELS)

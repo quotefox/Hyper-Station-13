@@ -15,9 +15,9 @@ SUBSYSTEM_DEF(economy)
 /**
  * Returns a value of the amount of money a bank account would be getting. It's just some simple multiplication.
  * Both the bank account and job is allowed to be null here.
- * 
- * Thanks to the ultimate nature of byond, double-colon accessors, ::, get the default values of the bank account and
+ *
+ * Thanks to the ultimate nature of byond, colon accessors, :, get the default values of the bank account and
  * job datums if the respective one is null. You can pass zero arguments here and you'd get the "default" amount of a paycheck.
  */
 /datum/controller/subsystem/economy/proc/GetPaycheck(datum/bank_account/account, datum/job/job, multiplier=1)
-	return account::base_pay * job::base_paycheck_multiplier * multiplier
+	return account:base_pay * job:base_paycheck_multiplier * multiplier
