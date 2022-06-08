@@ -12,7 +12,7 @@
 	filling_color = "#D2691E"
 	tastes = list("candy" = 1)
 	foodtype = JUNKFOOD | SUGAR
-	price = PRICE_LOW * 0.5
+	price = PRICE_LOW
 
 /obj/item/reagent_containers/food/snacks/sosjerky
 	name = "\improper Scaredy's Private Reserve Beef Jerky"
@@ -24,7 +24,7 @@
 	filling_color = "#8B0000"
 	tastes = list("dried meat" = 1)
 	foodtype = JUNKFOOD | MEAT | SUGAR
-	price = PRICE_LOW * 0.75
+	price = PRICE_LOW
 
 /obj/item/reagent_containers/food/snacks/sosjerky/healthy
 	name = "homemade beef jerky"
@@ -43,7 +43,7 @@
 	filling_color = "#FFD700"
 	tastes = list("salt" = 1, "crisps" = 1)
 	foodtype = JUNKFOOD | FRIED
-	price = PRICE_LOW * 0.5
+	price = PRICE_LOW
 
 /obj/item/reagent_containers/food/snacks/no_raisin
 	name = "4no raisins"
@@ -55,7 +55,7 @@
 	filling_color = "#8B0000"
 	tastes = list("dried raisins" = 1)
 	foodtype = JUNKFOOD | FRUIT | SUGAR
-	price = PRICE_LOW * 0.5
+	price = PRICE_LOW
 
 /obj/item/reagent_containers/food/snacks/no_raisin/healthy
 	name = "homemade raisins"
@@ -84,7 +84,7 @@
 	filling_color = "#FFD700"
 	tastes = list("cheese" = 5, "crisps" = 2)
 	foodtype = JUNKFOOD | DAIRY | SUGAR
-	price = PRICE_LOW * 0.5
+	price = PRICE_LOW
 
 /obj/item/reagent_containers/food/snacks/soyfood
 	name = "Soyfood"
@@ -96,7 +96,7 @@
 	filling_color = "#FFD700"
 	tastes = list("nanomachines" = 2, "soybeans" = 5)
 	foodtype = JUNKFOOD | DAIRY | GRAIN
-	price = PRICE_LOW * 1.25
+	price = PRICE_LOW
 
 /obj/item/reagent_containers/food/snacks/syndicake
 	name = "syndi-cakes"
@@ -107,7 +107,7 @@
 	filling_color = "#F5F5DC"
 	tastes = list("sweetness" = 3, "cake" = 1)
 	foodtype = GRAIN | FRUIT | VEGETABLES | ANTITOXIC
-	price = PRICE_LOW * 1.75
+	price = PRICE_LOW
 
 /obj/item/reagent_containers/food/snacks/carbonnanotube_noodles
 	name = "carbon nanotube noodles"
@@ -119,7 +119,7 @@
 	filling_color = "#FFD700"
 	tastes = list("charcoal" = 1, "spiciness" = 3, "soysauce" = 3)
 	foodtype = GRAIN | VEGETABLES
-	price = PRICE_LOW * 1.75
+	price = PRICE_LOW
 
 /obj/item/reagent_containers/food/snacks/bird_seed
 	name = "Sunflower Seeds"

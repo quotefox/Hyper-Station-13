@@ -170,7 +170,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 		R.price = baseprice
 		if(product) //its a item!
 			if((initial(product.price)))
-				R.price = initial(product.price)
+				R.price = FLOOR(initial(product.price), 1)
 			else
 				R.price = baseprice
 		if(free)

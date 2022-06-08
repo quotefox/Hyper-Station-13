@@ -231,7 +231,7 @@
 	desc = "Smoked by the truly robust."
 	icon_state = "robustg"
 	spawn_type = /obj/item/clothing/mask/cigarette/robustgold
-	price = PRICE_LOW * 0.75
+	price = PRICE_LOW * 1.25
 
 /obj/item/storage/fancy/cigarettes/cigpack_carp
 	name = "\improper Carp Classic packet"

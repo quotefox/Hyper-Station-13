@@ -47,7 +47,7 @@
 	item_state = "secslutskirt"
 	item_color = null //i dont understand what item_color even is, apparently setting it to null means it won't change color in a washing machine?
 	mutantrace_variation = NO_MUTANTRACE_VARIATION //look at the first two comments in vg_under.dm
-	price = PRICE_LOW
+	price = PRICE_EROTICA
 /obj/item/clothing/under/rank/security/skirt/slut/pink
 	desc = "A \"\"\"tactical\"\"\" security jumpsuit with the legs replaced by a skirt. No matter how you adjust it, it always feels a little too small. This one seems to have an experimental color scheme."
 	icon_state = "secslutskirtpink"

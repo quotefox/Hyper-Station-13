@@ -59,7 +59,7 @@
 	tastes = list("chocolate" = 1)
 	foodtype = JUNKFOOD | SUGAR
 	dunkable = TRUE
-	price = PRICE_LOW * 0.5
+	price = PRICE_LOW
 
 
 /obj/item/reagent_containers/food/snacks/hugemushroomslice
