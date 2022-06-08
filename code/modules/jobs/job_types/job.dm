@@ -106,20 +106,13 @@
 	//Equip the rest of the gear
 	H.dna.species.before_equip_job(src, H, visualsOnly)
 
-	if(!visualsOnly)
-		generate_bank_account(H) //TODO: accounts assigned to IDs. makes this less ugly
-
 	if(outfit_override || outfit)
 		H.equipOutfit(outfit_override ? outfit_override : outfit, visualsOnly)
 
-	if(!visualsOnly && announce)
-		announce(H)
-
 	H.dna.species.after_equip_job(src, H, visualsOnly)
 
-/// Generates a bank account for the person who's getting this job datum
-/datum/job/proc/generate_bank_account(mob/living/carbon/human/reciever)
-	return
+	if(!visualsOnly && announce)
+		announce(H)
 
 /datum/job/proc/get_access()
 	if(!config)	//Needed for robots.

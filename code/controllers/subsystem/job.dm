@@ -470,7 +470,7 @@ SUBSYSTEM_DEF(job)
 
 		job.after_spawn(H, M, joined_late)
 
-	//Account ID. ID is handled by human initialization
+	//Account ID. ID is handled by outfit initialization
 	if(ishuman(H))
 		var/mob/living/carbon/human/wageslave = H
 		if(wageslave.wear_id)
