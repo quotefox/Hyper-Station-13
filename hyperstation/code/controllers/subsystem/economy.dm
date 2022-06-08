@@ -3,14 +3,14 @@ SUBSYSTEM_DEF(economy)
 	wait = 5 MINUTES
 	priority = FIRE_PRIORITY_ECONOMY
 	init_order = INIT_ORDER_ECONOMY
-	runlevels = RUNLEVEL_GAME
+	runlevels = RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 	/// How many "paychecks" someone gets at the creation of the bank account
 	var/roundstart_paychecks = 5
 	var/list/bank_accounts = list() //List of normal accounts (not department accounts)
 
 /datum/controller/subsystem/economy/fire()
 	for(var/datum/bank_account/account as anything in bank_accounts)
-		account.AddPaycheck(GetPaycheck(account, account.account_job))
+		account.GivePaycheck(GetPaycheck(account, account.account_job))
 
 /**
  * Returns a value of the amount of money a bank account would be getting. It's just some simple multiplication.

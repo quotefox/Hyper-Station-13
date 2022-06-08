@@ -106,20 +106,20 @@
 	//Equip the rest of the gear
 	H.dna.species.before_equip_job(src, H, visualsOnly)
 
+	if(!visualsOnly)
+		generate_bank_account(H) //TODO: accounts assigned to IDs. makes this less ugly
+
 	if(outfit_override || outfit)
 		H.equipOutfit(outfit_override ? outfit_override : outfit, visualsOnly)
 
-	H.dna.species.after_equip_job(src, H, visualsOnly)
-
 	if(!visualsOnly && announce)
-		generate_bank_account()
-		if(announce)
-			announce(H)
+		announce(H)
+
+	H.dna.species.after_equip_job(src, H, visualsOnly)
 
 /// Generates a bank account for the person who's getting this job datum
 /datum/job/proc/generate_bank_account(mob/living/carbon/human/reciever)
-	var/datum/bank_account/bank_account = new(reciever.real_name, src)
-	return bank_account
+	return new/datum/bank_account(reciever, src)
 
 /datum/job/proc/get_access()
 	if(!config)	//Needed for robots.
@@ -234,8 +234,8 @@
 		else
 			H.real_name = "[J.title] #[rand(10000, 99999)]"
 
-	var/obj/item/card/id/C = H.wear_id
 	var/client/preference_source = H.client
+	var/obj/item/card/id/C = H.wear_id
 	if(istype(C))
 		C.access = J.get_access()
 		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
@@ -246,11 +246,14 @@
 		else
 			C.update_label()
 
-		for(var/A in SSeconomy.bank_accounts)
-			var/datum/bank_account/B = A
-			if(B.account_id == H.account_id)
-				C.registered_account = B
-				B.bank_cards += C
+		for(var/datum/bank_account/account as anything in SSeconomy.bank_accounts)
+			if(account.account_id == H.account_id)
+				C.registered_account = account
+				account.bank_cards += C
+									//Todo: remove bank_cards, have accounts for everyone who knows the pin to an ID. monkey go ook ook (he's rich)
+									//one card should have one account, sorta like how real cards work
+									//ping cyanosis if bank_cards is still here
+				account.associated_id = C	//Also make this better to work with
 				break
 		H.sec_hud_set_ID()
 

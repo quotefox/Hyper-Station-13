@@ -1,5 +1,3 @@
-#define DUMPTIME 3000
-
 /datum/bank_account
 	var/account_holder = "Some pleboid"
 	var/balance = 0
@@ -10,10 +8,10 @@
 	var/account_id = 1
 	var/base_pay = 60
 
-/datum/bank_account/New(newname="Some plebith", datum/job/job)
-	account_holder = newname
+/datum/bank_account/New(mob/living/carbon/human/new_holder, datum/job/job)
+	account_holder = new_holder.real_name
 	account_job = job
-	account_id = rand(111111,999999)
+	new_holder.account_id = account_id = rand(111111,999999)
 
 	if(!SSeconomy || !SSeconomy.initialized)
 		stack_trace("A new bank account was made without the economy subsystem being initialized first. If this is an issue, change the subsystem's init_order.")
@@ -23,14 +21,13 @@
 	balance += SSeconomy.GetPaycheck(src, job, SSeconomy.roundstart_paychecks)
 
 /// Helper for whenever a paycheck gets processed into this account from the economy SS. Simply adds an amount to the account balance and notifies the user.
-/datum/bank_account/proc/AddPaycheck(amount, silent=FALSE)
+/datum/bank_account/proc/GivePaycheck(amount, silent=FALSE)
 	balance += amount
 	if(associated_id && !silent)
 		var/local_turf = get_turf(associated_id)
-		var/hearers = ohearers(1, local_turf)
-		for(var/mob/M in hearers)
+		for(var/mob/M in get_hearers_in_view(1, local_turf))
 			M.playsound_local(local_turf, 'sound/machines/twobeep_high.ogg', 50, vary = TRUE)
-			to_chat(M, "[icon2html(src, associated_id.loc)] <span class='notice>Paycheck processed, your account now holds [balance] credits.</span>")
+			to_chat(M, "<span class='notice'>[icon2html(associated_id, M)] Paycheck processed, your account now holds [balance] credits.</span>")
 
 /datum/bank_account/Destroy()
 	if(SSeconomy)
