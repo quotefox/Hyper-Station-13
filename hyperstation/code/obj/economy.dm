@@ -72,7 +72,7 @@
 			user = idcard.registered_name
 			pin = ""
 			playsound(src, 'sound/machines/button.ogg', 50, FALSE)
-			src.ui_interact(usr)
+			ui_interact(usr)
 
 	if(istype(I, /obj/item/stack/credits)) //feed money back into the machine! dont need a pin to donate stuff.
 		if(held_card)
@@ -80,7 +80,7 @@
 			var/obj/item/card/id/idcard = held_card
 			idcard.registered_account.balance = (idcard.registered_account.balance+cred.amount)
 			to_chat(usr, "<span class='notice'>You insert [cred] into the ATM.</span>")
-			src.ui_interact(usr)
+			ui_interact(usr)
 			del(cred)
 
 /obj/machinery/atm/Topic(href, href_list)
@@ -106,29 +106,29 @@
 		var/pininput = input(user, "Input pin", "Pin Number") as num|null
 		if(pininput)
 			if(pininput > 9999 || pininput < 1000)
-				to_chat(usr, "<span class='notice'>[src.name] buzzes, you must input a 4 digit number between 1000 and 9999.</span>")
+				to_chat(usr, "<span class='notice'>[name] buzzes, you must input a 4 digit number between 1000 and 9999.</span>")
 				return
 			pin = max(min( round(text2num(pininput)), 9999),1000) //4 numbers or less.
 			var/obj/item/card/id/idcard = held_card
 			if(pin == idcard.registered_account.account_pin)
-				to_chat(usr, "<span class='notice'>[src.name] beeps, accepting the pin.</span>")
+				to_chat(usr, "<span class='notice'>[name] beeps, accepting the pin.</span>")
 			else
-				to_chat(usr, "<span class='notice'>[src.name] buzzes, denying the pin.</span>")
+				to_chat(usr, "<span class='notice'>[name] buzzes, denying the pin.</span>")
 
 	if(href_list["changepin"])
 		playsound(src, get_sfx("terminal_type"), 25, 1)
 		var/pinchange = input(user, "Input pin", "Pin Number") as num|null
 		if(pinchange > 9999 || pinchange < 1000)
-			to_chat(usr, "<span class='warning'>[src.name], you must have a 4 digit number for a pin and be between 1000 and 9999.</span>")
+			to_chat(usr, "<span class='warning'>[name], you must have a 4 digit number for a pin and be between 1000 and 9999.</span>")
 			return
 		if(pinchange)
 			var/pinchange2 = input(user, "Confirm pin", "Confirm pin") as num|null //time to confirm!
 			if(pinchange == pinchange2)
 				var/obj/item/card/id/idcard = held_card
 				idcard.registered_account.account_pin = pinchange
-				to_chat(usr, "<span class='notice'>[src.name] beeps, your pin has been changed to [pinchange]!.</span>")
+				to_chat(usr, "<span class='notice'>[name] beeps, your pin has been changed to [pinchange]!.</span>")
 			else
-				to_chat(usr, "<span class='warning'>[src.name] buzzes, your pins did not match!</span>")
+				to_chat(usr, "<span class='warning'>[name] buzzes, your pins did not match!</span>")
 		pin = ""
 
 	if(href_list["withdraw"])
