@@ -10,10 +10,11 @@
 	icon_state = "fleshlight_base"
 	item_state = "fleshlight"
 	w_class = WEIGHT_CLASS_SMALL
-	var/sleevecolor = "#ffcbd4" //pink
-	price = PRICE_EROTICA * 0.75
-	var/mutable_appearance/sleeve
+	economy_type = ECONOMY_PRICE_EROTIC
+	economy_price_mul = 0.95
 	var/inuse = 0
+	var/sleevecolor = "#ffcbd4" //pink
+	var/mutable_appearance/sleeve
 
 /obj/item/fleshlight/examine(mob/user)
 	. = ..()
@@ -78,10 +79,11 @@
 	icon_state = "unpaired"
 	item_state = "fleshlight"
 	w_class = WEIGHT_CLASS_SMALL
+	economy_type = ECONOMY_PRICE_EROTIC
+	economy_price_mul = 1.2
 	var/partnercolor = "#ffcbd4"
 	var/partnerbase = "normal"
 	var/partnerorgan = "portal_vag"
-	price = PRICE_EROTICA
 	var/mutable_appearance/sleeve
 	var/mutable_appearance/organ
 	var/inuse = 0
@@ -276,7 +278,8 @@
 	icon = 'hyperstation/icons/obj/fleshlight.dmi'
 	desc = "A small silver box with Silver Love Co embossed."
 	icon_state = "box"
-	price = PRICE_EROTICA * 1.15
+	economy_type = ECONOMY_PRICE_EROTIC
+	economy_price_mul = 1.5
 
 // portal fleshlight box
 /obj/item/storage/box/portallight/PopulateContents()

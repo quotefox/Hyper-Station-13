@@ -17,7 +17,7 @@ Chief Medical Officer
 	exp_requirements = 1500
 	exp_type = EXP_TYPE_MEDICAL
 	exp_type_department = EXP_TYPE_MEDICAL
-	base_paycheck_multiplier = BASEPAY_COMMAND
+	economy_type = ECONOMY_TYPE_COMMAND
 
 	outfit = /datum/outfit/job/cmo
 
@@ -238,7 +238,7 @@ Junior Doctor
 	selection_color = "#ffeef0"
 	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW
-	base_paycheck_multiplier = BASEPAY_ROOKIE
+	economy_type = ECONOMY_TYPE_ROOKIE
 
 	outfit = /datum/outfit/job/doctor/junior
 
@@ -280,7 +280,7 @@ Psychologist
 	selection_color = "#ffeef0"
 	exp_requirements = 240
 	exp_type = EXP_TYPE_CREW
-	base_paycheck_multiplier = BASEPAY_ROOKIE
+	economy_type = ECONOMY_TYPE_ROOKIE
 
 	outfit = /datum/outfit/job/doctor/psychologist
 

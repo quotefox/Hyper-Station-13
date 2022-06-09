@@ -30,7 +30,8 @@
 	icon_state = "rsecuritypink"
 	item_state = "r_suit"
 	item_color = "rsecuritypink"
-	price = PRICE_LOW
+	economy_type = ECONOMY_PRICE_DEFAULT
+	economy_price_mul = 1.35
 /obj/item/clothing/under/rank/security/skirt
 	name = "security jumpskirt"
 	desc = "A \"tactical\" security jumpsuit with the legs replaced by a skirt."
@@ -47,7 +48,8 @@
 	item_state = "secslutskirt"
 	item_color = null //i dont understand what item_color even is, apparently setting it to null means it won't change color in a washing machine?
 	mutantrace_variation = NO_MUTANTRACE_VARIATION //look at the first two comments in vg_under.dm
-	price = PRICE_EROTICA
+	economy_type = ECONOMY_PRICE_EROTIC
+	economy_price_mul = 0.75
 /obj/item/clothing/under/rank/security/skirt/slut/pink
 	desc = "A \"\"\"tactical\"\"\" security jumpsuit with the legs replaced by a skirt. No matter how you adjust it, it always feels a little too small. This one seems to have an experimental color scheme."
 	icon_state = "secslutskirtpink"
@@ -61,7 +63,7 @@
 	can_adjust = FALSE
 	body_parts_covered = CHEST|GROIN
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
-	price = PRICE_EROTICA
+	economy_type = ECONOMY_PRICE_EROTIC
 
 
 /obj/item/clothing/under/rank/warden

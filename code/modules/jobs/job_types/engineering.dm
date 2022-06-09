@@ -17,7 +17,7 @@ Chief Engineer
 	exp_requirements = 1500
 	exp_type = EXP_TYPE_ENGINEERING
 	exp_type_department = EXP_TYPE_ENGINEERING
-	base_paycheck_multiplier = BASEPAY_COMMAND
+	economy_type = ECONOMY_TYPE_COMMAND
 
 	outfit = /datum/outfit/job/ce
 
@@ -190,7 +190,7 @@ Junior Engineer
 	selection_color = "#fff5cc"
 	exp_requirements = 120
 	exp_type = EXP_TYPE_CREW
-	base_paycheck_multiplier = BASEPAY_ROOKIE
+	economy_type = ECONOMY_TYPE_ROOKIE
 
 	outfit = /datum/outfit/job/engineer/junior
 

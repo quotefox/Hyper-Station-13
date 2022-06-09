@@ -63,6 +63,8 @@
 
 	/// A multiplier for how much a person gets each paycheck
 	var/base_paycheck_multiplier = 1.2
+	/// The "type" of economy this job falls under
+	var/economy_type
 
 	var/override_roundstart_spawn = null		//Where the player spawns at roundstart if defined
 
@@ -71,6 +73,10 @@
 
 /datum/job/New()
 	base_paycheck_multiplier = CONFIG_GET(number/economy_job_rate_default)
+	if(SSjob.economy_multipliers_by_job[title])
+		base_paycheck_multiplier *= SSjob.economy_multipliers_by_job[title]
+	if(SSjob.economy_multipliers_by_type[economy_type])
+		base_paycheck_multiplier *= SSjob.economy_multipliers_by_type[economy_type]
 
 //Only override this proc
 //H is usually a human unless an /equip override transformed it

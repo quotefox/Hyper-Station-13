@@ -59,7 +59,8 @@
 	tastes = list("chocolate" = 1)
 	foodtype = JUNKFOOD | SUGAR
 	dunkable = TRUE
-	price = PRICE_LOW
+	economy_type = ECONOMY_PRICE_LOW
+	economy_price_mul = 1.5
 
 
 /obj/item/reagent_containers/food/snacks/hugemushroomslice

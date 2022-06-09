@@ -8,7 +8,8 @@
 	item_color="yellow"
 	resistance_flags = NONE
 	var/can_be_cut = 1
-	price = PRICE_EXPENSIVE
+	economy_type = ECONOMY_PRICE_EXPENSIVE_AF
+	economy_price_mul = 0.85
 
 /obj/item/clothing/gloves/color/yellow/ce //funky looking, basically combat gloves
 	desc = "Special Insulated gloves with pricy thermal shielding normally only found in combat gloves."
@@ -34,7 +35,8 @@
 	item_color="yellow"
 	resistance_flags = NONE
 	var/can_be_cut = 1
-	price = PRICE_LOW * 0.5
+	economy_type = ECONOMY_PRICE_LOW
+	economy_price_mul = 1.2
 
 /obj/item/clothing/gloves/color/fyellow/New()
 	..()
@@ -129,7 +131,8 @@
 	siemens_coefficient = 0
 	permeability_coefficient = 0.05
 	resistance_flags = NONE
-	price = PRICE_EXPENSIVE
+	economy_type = ECONOMY_PRICE_EXPENSIVE_AF
+	economy_price_mul = 0.85
 
 /obj/item/clothing/gloves/color/rainbow
 	name = "rainbow gloves"

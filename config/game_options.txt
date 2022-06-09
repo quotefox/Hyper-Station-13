@@ -608,11 +608,13 @@ ECONOMY_JOB_RATE_AREA Dangerous, 1.3
 # The multiplier that Command roles get, including QM because they're a head :)
 ECONOMY_JOB_RATE_AREA Command, 1.4
 # The multiplier for payment that the Captain gets. He controls the station, logically it's harder to do than all of the other jobs.
-ECONOMY_JOB_RATE captain, 1.65
+ECONOMY_JOB_RATE Captain, 1.5
 
-# Example for adding a single job datum. This basically adds /job/datum/ to what you put here. The value will be included if it falls in a category from ECONOMY_JOB_RATE
-# This is a multiplier that Assistants get for their paycheck.
-ECONOMY_JOB_RATE assistant, 1
+# Examples for adding a single job datum. The value will be included if it falls in a category from ECONOMY_JOB_RATE
+# This is a multiplier that Assistants get for their paycheck. This is less than 1 because assistants get the default multiplier added to them
+ECONOMY_JOB_RATE Assistant, 0.83
+# This is a multiplier that Shaft Miners get for their paycheck. They count as a dangerous job, but they shouldn't get the same as security
+ECONOMY_JOB_RATE Shaft Miner, 0.9
 
 
 # Default price for items that use these values
@@ -623,5 +625,6 @@ ECONOMY_PRICE_EROTIC 25
 ECONOMY_PRICE_EXPENSIVE 60
 ECONOMY_PRICE_EXPENSIVE_AF 90
 
-# A multiplier to the prices of items inside vendors. Avoid setting this lower than the Assistant's paycheck multiplier if possible
+# A multiplier to the prices of items inside vendors. Avoid setting this higher than the Assistant's paycheck multiplier if possible
+# This scales every item found in vendors. If you want to change an individual item, you have to change it through code
 ECONOMY_PRICE_MULTIPLIER 1

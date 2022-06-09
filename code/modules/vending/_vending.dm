@@ -167,14 +167,12 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 		var/datum/data/vending_product/R = new /datum/data/vending_product()
 		R.name = initial(temp.name)
 		R.product_path = typepath
-		R.price = baseprice
-		if(product) //its a item!
-			if((initial(product.price)))
-				R.price = FLOOR(initial(product.price), 1)
-			else
-				R.price = baseprice
-		if(free)
-			R.price = 0
+		if(!free)
+			R.price = baseprice
+			if(product) //its a item!
+				var/product_price = SSeconomy.GetPrice(product)
+				if(!isnull(product_price))
+					R.price = product_price
 		if(!start_empty)
 			R.amount = amount
 		R.max_amount = amount

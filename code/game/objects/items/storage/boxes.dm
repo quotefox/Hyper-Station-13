@@ -418,7 +418,8 @@
 	desc = "<B>Instructions:</B> <I>Heat in microwave. Product will cool if not eaten within seven minutes.</I>"
 	icon_state = "donkpocketbox"
 	illustration=null
-	price = PRICE_EXPENSIVE * 0.85
+	economy_type = ECONOMY_PRICE_EXPENSIVE_AF
+	economy_price_mul = 0.85
 	var/donktype = /obj/item/reagent_containers/food/snacks/donkpocket
 	var/warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm
 
@@ -675,9 +676,10 @@
 	item_state = "zippo"
 	w_class = WEIGHT_CLASS_TINY
 	slot_flags = ITEM_SLOT_BELT
-	price = PRICE_LOW * 0.5
 	drop_sound = 'sound/items/handling/matchbox_drop.ogg'
 	pickup_sound =  'sound/items/handling/matchbox_pickup.ogg'
+	economy_type = ECONOMY_PRICE_LOW
+	economy_price_mul = 0.5
 
 /obj/item/storage/box/matches/ComponentInitialize()
 	. = ..()

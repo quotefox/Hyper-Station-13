@@ -269,17 +269,20 @@
 /obj/item/reagent_containers/pill/penis_enlargement
 	name = "penis enlargement pill"
 	list_reagents = list(/datum/reagent/fermi/penis_enlarger = 10)
-	price = PRICE_LOW
 	icon_state = "pill_lewd"
+	economy_type = ECONOMY_PRICE_EROTIC
+	economy_price_mul = 0.25
 
 /obj/item/reagent_containers/pill/breast_enlargement
 	name = "breast enlargement pill"
 	list_reagents = list(/datum/reagent/fermi/breast_enlarger = 10)
-	price = PRICE_LOW
 	icon_state = "pill_lewd"
+	economy_type = ECONOMY_PRICE_EROTIC
+	economy_price_mul = 0.25
 
 /obj/item/reagent_containers/pill/butt_enlargement
 	name = "butt enlargement pill"
 	list_reagents = list(/datum/reagent/fermi/butt_enlarger = 10)
-	price = PRICE_LOW
 	icon_state = "pill_lewd"
+	economy_type = ECONOMY_PRICE_EROTIC
+	economy_price_mul = 0.25

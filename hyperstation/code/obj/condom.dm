@@ -9,7 +9,7 @@
 	icon_state 			= "b_condom_wrapped"
 	var/unwrapped		= 0
 	w_class = WEIGHT_CLASS_TINY
-	price = PRICE_LOW * 0.5
+	economy_type = ECONOMY_PRICE_LOW
 
 obj/item/condom/Initialize()
 	create_reagents(300, DRAWABLE|NO_REACT)

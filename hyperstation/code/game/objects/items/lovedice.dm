@@ -12,7 +12,8 @@ sarcoph mar 2022
 	desc = "Contains all the intimate ideas you'll ever need. A game that everyone wins!"
 	icon = 'hyperstation/icons/obj/toy.dmi'
 	icon_state = "lovedicebag"
-	price = PRICE_LOW * 1.25
+	economy_type = ECONOMY_PRICE_EROTIC
+	economy_price_mul = 0.5
 
 /obj/item/storage/pill_bottle/lovedice/Initialize()
 	. = ..()

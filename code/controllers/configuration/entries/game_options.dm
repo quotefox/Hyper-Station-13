@@ -393,6 +393,10 @@
 	config_entry_value = 3
 	min_val = 1
 
+/datum/config_entry/number/economy_price_multiplier
+	config_entry_value = 1
+	min_val = 0
+
 /datum/config_entry/number/economy_price_low
 	config_entry_value = 8
 	min_val = 0

@@ -169,7 +169,7 @@
 	cold_protection = CHEST|LEGS|ARMS
 	heat_protection = CHEST|LEGS|ARMS
 	mutantrace_variation = NO_MUTANTRACE_VARIATION //you don't need it
-	price = PRICE_HIGH
+	economy_type = ECONOMY_PRICE_EXPENSIVE
 
 //Surgeon
 /obj/item/clothing/suit/apron/surgical

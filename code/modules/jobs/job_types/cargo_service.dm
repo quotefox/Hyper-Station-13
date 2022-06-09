@@ -15,7 +15,7 @@ Quartermaster is a real head fuck you
 	minimal_player_age = 7
 	exp_type = EXP_TYPE_SUPPLY
 	exp_type_department = EXP_TYPE_SUPPLY
-	base_paycheck_multiplier = BASEPAY_COMMAND
+	economy_type = ECONOMY_TYPE_COMMAND
 	exp_requirements = 1200
 
 	outfit = /datum/outfit/job/quartermaster
@@ -89,7 +89,7 @@ Shaft Miner
 	exp_requirements = 600
 	exp_type = EXP_TYPE_CREW
 	exp_type_department = EXP_TYPE_SUPPLY
-	base_paycheck_multiplier = BASEPAY_DEFAULT * 1.2 //Just a teeny tiny bit more because they dangerous bro
+	economy_type = ECONOMY_TYPE_DANGEROUS
 
 
 	outfit = /datum/outfit/job/miner
@@ -169,7 +169,7 @@ Bartender
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
-	base_paycheck_multiplier = BASEPAY_ROOKIE
+	economy_type = ECONOMY_TYPE_ROOKIE
 
 	outfit = /datum/outfit/job/bartender
 
@@ -202,13 +202,14 @@ Cook
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
-	base_paycheck_multiplier = BASEPAY_ROOKIE
-	var/cooks = 0 //Counts cooks amount
+	economy_type = ECONOMY_TYPE_ROOKIE
 
 	outfit = /datum/outfit/job/cook
 
 	access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_MINERAL_STOREROOM)
+
+	var/cooks = 0 //Counts cooks amount
 
 /datum/outfit/job/cook
 	name = "Cook"
@@ -256,7 +257,7 @@ Botanist
 	spawn_positions = 2
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
-	base_paycheck_multiplier = BASEPAY_ROOKIE
+	economy_type = ECONOMY_TYPE_ROOKIE
 
 	outfit = /datum/outfit/job/botanist
 
@@ -295,13 +296,14 @@ Janitor
 	spawn_positions = 1
 	supervisors = "the head of personnel"
 	selection_color = "#bbe291"
-	base_paycheck_multiplier = BASEPAY_ROOKIE
-	var/global/janitors = 0
+	economy_type = ECONOMY_TYPE_ROOKIE
 
 	outfit = /datum/outfit/job/janitor
 
 	access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_MINERAL_STOREROOM)
 	minimal_access = list(ACCESS_JANITOR, ACCESS_MAINT_TUNNELS, ACCESS_MINERAL_STOREROOM)
+
+	var/global/janitors = 0
 
 /datum/outfit/job/janitor
 	name = "Janitor"

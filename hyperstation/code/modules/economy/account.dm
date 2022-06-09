@@ -8,8 +8,7 @@
 	/// The pin number that the owner wanted. Not set by default, so anyone can just steal your ID if you don't remember to set it
 	var/account_pin
 	/// The base amount of pay you get per paycheck
-	/// At the moment of documenting this, the base pay is 80
-	var/base_pay = PRICE_BASE * 5
+	var/base_pay = 80
 	/// The linked job datum for this bank account, for calculating unique base payment for each job
 	var/datum/job/account_job
 	/// The associated ID, for letting the card-holder know when a paycheck is processed
@@ -24,6 +23,8 @@
 	if(!SSeconomy || !SSeconomy.initialized)
 		stack_trace("A new bank account was made without the economy subsystem being initialized first. If this is an issue, change the subsystem's init_order.")
 		return
+
+	base_pay = CONFIG_GET(number/economy_base_payment)
 
 	SSeconomy.bank_accounts += src
 	balance += SSeconomy.GetPaycheck(src, job, SSeconomy.roundstart_paychecks)

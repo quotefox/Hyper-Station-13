@@ -344,7 +344,8 @@
 	item_state = "upindwelder"
 	max_fuel = 80
 	materials = list(MAT_METAL=70, MAT_GLASS=120)
-	price = PRICE_EXPENSIVE * 1.5
+	economy_type = ECONOMY_PRICE_EXPENSIVE_AF
+	economy_price_mul = 1.5
 
 /obj/item/weldingtool/experimental
 	name = "experimental welding tool"
