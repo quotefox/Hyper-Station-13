@@ -390,7 +390,7 @@
 	min_val = 0
 
 /datum/config_entry/number/economy_base_pay_ratio
-	config_entry_value = 3
+	config_entry_value = 6
 	min_val = 1
 
 /datum/config_entry/number/economy_price_multiplier

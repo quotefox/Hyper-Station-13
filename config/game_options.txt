@@ -595,8 +595,8 @@ BOX_RANDOM_ENGINE Box P.A.C.M.A.N,0
 # The base amount of credits, before any math whatsoever gets involved, that paychecks give
 ECONOMY_BASE_PAYMENT 60
 
-# The base pay for paychecks get divided by this amount. Useful for slowing down the rate of payment.
-ECONOMY_BASE_PAY_RATIO 3
+# How many paychecks the crew gets when first joining the station. Adds 1 if this is the start of the round, because of how subsystems work
+ECONOMY_BASE_PAY_RATIO 6
 
 # The default multiplier for a paycheck if nothing is assigned to a specific job.
 # You're allowed to set specific jobs a specific type of pay multiplier with ECONOMY_JOB_RATE
@@ -627,4 +627,4 @@ ECONOMY_PRICE_EXPENSIVE_AF 90
 
 # A multiplier to the prices of items inside vendors. Avoid setting this higher than the Assistant's paycheck multiplier if possible
 # This scales every item found in vendors. If you want to change an individual item, you have to change it through code
-ECONOMY_PRICE_MULTIPLIER 1.25
+ECONOMY_PRICE_MULTIPLIER 1.35

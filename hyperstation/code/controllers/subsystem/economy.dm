@@ -12,6 +12,7 @@ SUBSYSTEM_DEF(economy)
 /// Updates the prices from the config. Assorted into this individual proc instead of Initialize() so testers can change the config mid-round
 /// without having to initialize the economy SS again
 /datum/controller/subsystem/economy/proc/UpdatePrices()
+	roundstart_paychecks
 	prices_by_type = list()
 	prices_by_type += CONFIG_GET(number/economy_price_default)	//ECONOMY_PRICE_DEFAULT.. 1
 	prices_by_type += CONFIG_GET(number/economy_price_low)		//ECONOMY_PRICE_LOW.. 2
@@ -22,7 +23,9 @@ SUBSYSTEM_DEF(economy)
 	prices_by_type += 0 //ECONOMY_PRICE_FORCED_FREE.. 7
 
 /datum/controller/subsystem/economy/Initialize()
-	UpdatePrices()
+	roundstart_paychecks = CONFIG_GET(number/economy_base_pay_ratio)
+	if(!prices_by_type)
+		UpdatePrices()
 	return ..()
 
 /datum/controller/subsystem/economy/fire()
