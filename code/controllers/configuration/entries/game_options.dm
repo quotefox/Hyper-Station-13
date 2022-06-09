@@ -386,7 +386,7 @@
 /datum/config_entry/flag/dynamic_mode
 
 /datum/config_entry/number/economy_base_payment
-	config_entry_value = 80
+	config_entry_value = 60
 	min_val = 0
 
 /datum/config_entry/number/economy_base_pay_ratio

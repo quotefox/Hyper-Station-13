@@ -37,13 +37,23 @@ SUBSYSTEM_DEF(economy)
  * job datums if the respective one is null. You can pass zero arguments here and you'd get the "default" amount of a paycheck.
  */
 /datum/controller/subsystem/economy/proc/GetPaycheck(datum/bank_account/account, datum/job/job, multiplier=1)
-	return FLOOR((account:base_pay * job:base_paycheck_multiplier * multiplier) / 3, 1)
+	return FLOOR(account:base_pay * job:base_paycheck_multiplier * multiplier, 1)
 
 /**
  * Returns a price value from a subtype of an /obj/item, assuming it was compiled to use money.
  * Otherwise, returns null if it does not use economy
  */
 /datum/controller/subsystem/economy/proc/GetPrice(obj/item/costly_item)
-	if(!costly_item.economy_type)
+	var/economy_type
+	var/price_multiplier
+
+	if(istype(costly_item))
+		economy_type = costly_item.economy_type
+		price_multiplier = costly_item.economy_price_mul
+	else
+		economy_type = initial(costly_item.economy_type)
+		price_multiplier = initial(costly_item.economy_price_mul)
+
+	if(!economy_type)
 		return
-	return FLOOR(prices_by_type[costly_item.economy_type] * costly_item.economy_price_mul, 1)
+	return FLOOR(prices_by_type[economy_type] * price_multiplier, 1)

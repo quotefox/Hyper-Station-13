@@ -593,7 +593,7 @@ BOX_RANDOM_ENGINE Box P.A.C.M.A.N,0
 # Bank Accounts are tied to the ID cards that players spawn with. If you have an unset pin, then that means anyone that gets the ID card has access to your money
 
 # The base amount of credits, before any math whatsoever gets involved, that paychecks give
-ECONOMY_BASE_PAYMENT 40
+ECONOMY_BASE_PAYMENT 60
 
 # The base pay for paychecks get divided by this amount. Useful for slowing down the rate of payment.
 ECONOMY_BASE_PAY_RATIO 3
@@ -627,4 +627,4 @@ ECONOMY_PRICE_EXPENSIVE_AF 90
 
 # A multiplier to the prices of items inside vendors. Avoid setting this higher than the Assistant's paycheck multiplier if possible
 # This scales every item found in vendors. If you want to change an individual item, you have to change it through code
-ECONOMY_PRICE_MULTIPLIER 1
+ECONOMY_PRICE_MULTIPLIER 1.25

@@ -168,7 +168,7 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 		R.name = initial(temp.name)
 		R.product_path = typepath
 		if(!free)
-			R.price = baseprice
+			R.price = FLOOR(baseprice * CONFIG_GET(number/economy_price_multiplier), 1)
 			if(product) //its a item!
 				var/product_price = SSeconomy.GetPrice(product)
 				if(!isnull(product_price))

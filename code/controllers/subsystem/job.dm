@@ -14,20 +14,22 @@ SUBSYSTEM_DEF(job)
 
 	var/overflow_role = "Assistant"
 
-	var/list/economy_multipliers_by_job
-	var/list/economy_multipliers_by_type
+	var/static/list/economy_multipliers_by_job
+	var/static/list/economy_multipliers_by_type
 
 
 /datum/controller/subsystem/job/Initialize(timeofday)
 	SSmapping.HACK_LoadMapConfig()
+	if(!economy_multipliers_by_job)
+		economy_multipliers_by_job = CONFIG_GET(keyed_list/economy_job_rate)
+	if(!economy_multipliers_by_type)
+		economy_multipliers_by_type = CONFIG_GET(keyed_list/economy_job_rate_area)
 	if(!occupations.len)
 		SetupOccupations()
 	if(CONFIG_GET(flag/load_jobs_from_txt))
 		LoadJobs()
 	generate_selectable_species()
 	set_overflow_role(CONFIG_GET(string/overflow_job))
-	economy_multipliers_by_job = CONFIG_GET(keyed_list/economy_job_rate)
-	economy_multipliers_by_type = CONFIG_GET(keyed_list/economy_job_rate_area)
 	return ..()
 
 /datum/controller/subsystem/job/proc/set_overflow_role(new_overflow_role)
