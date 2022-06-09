@@ -62,12 +62,15 @@
 	var/list/alt_titles = list()
 
 	/// A multiplier for how much a person gets each paycheck
-	var/base_paycheck_multiplier = BASEPAY_DEFAULT
+	var/base_paycheck_multiplier = 1.2
 
 	var/override_roundstart_spawn = null		//Where the player spawns at roundstart if defined
 
 	//whitelisting
 	var/whitelist_type = ""
+
+/datum/job/New()
+	base_paycheck_multiplier = CONFIG_GET(number/economy_job_rate_default)
 
 //Only override this proc
 //H is usually a human unless an /equip override transformed it
