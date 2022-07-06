@@ -185,12 +185,12 @@
 	desc = "A heated storage unit."
 	icon_state = "donkvendor"
 	icon = 'icons/obj/lavaland/donkvendor.dmi'
-	pixel_y = -4
-	max_n_of_items = 10
-	flags_1 = NODECONSTRUCT_1
 	light_range = 5
 	light_power = 1.2
-	light_color = COLOR_VERY_PALE_LIME_GREEN
+	light_color = "#DDFFD3"
+	max_n_of_items = 10
+	pixel_y = -4
+	flags_1 = NODECONSTRUCT_1
 	var/empty = FALSE
 
 /obj/machinery/smartfridge/survival_pod/update_icon()

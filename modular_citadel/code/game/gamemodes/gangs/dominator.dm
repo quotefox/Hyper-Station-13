@@ -192,7 +192,8 @@
 		countdown.start()
 		countdown.color = gang.color
 
-		set_light(l_range = 3, l_power = 0.9, l_color=gang.color)
+		set_light(l_range = 3, l_power = 0.9)
+		light_color = gang.color
 		START_PROCESSING(SSmachines, src)
 
 		gang.message_gangtools("Hostile takeover in progress: Estimated [time] minutes until victory.[gang.dom_attempts ? "" : " This is your final attempt."]")

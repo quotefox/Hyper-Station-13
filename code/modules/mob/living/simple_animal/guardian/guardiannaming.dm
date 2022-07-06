@@ -55,7 +55,7 @@
 
 /datum/guardianname/carp/aqua
 	suffixcolour = "Aqua"
-	colour = COLOR_CYAN
+	colour = "#00FFFF"
 
 /datum/guardianname/carp/paleaqua
 	suffixcolour = "Pale Aqua"

@@ -24,9 +24,10 @@
 	active_power_usage = 6
 	power_channel = ENVIRON
 	resistance_flags = FIRE_PROOF
+
 	light_power = 0
 	light_range = 7
-	light_color = COLOR_VIVID_RED
+	light_color = "#ff3232"
 
 	var/detecting = 1
 	var/buildstage = 2 // 2 = complete, 1 = no wires, 0 = circuit gone

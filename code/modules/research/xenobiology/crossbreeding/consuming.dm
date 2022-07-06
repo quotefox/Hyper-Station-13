@@ -283,25 +283,25 @@ Consuming extracts:
 	switch(rand(1,7))
 		if(1)
 			tastemessage = "red dye"
-			colour = COLOR_RED
+			colour = "#FF0000"
 		if(2)
 			tastemessage = "orange dye"
 			colour = "#FFA500"
 		if(3)
 			tastemessage = "yellow dye"
-			colour = COLOR_YELLOW
+			colour = "#FFFF00"
 		if(4)
 			tastemessage = "green dye"
-			colour = COLOR_GREEN
+			colour = "#00FF00"
 		if(5)
 			tastemessage = "blue dye"
-			colour = COLOR_BLUE
+			colour = "#0000FF"
 		if(6)
 			tastemessage = "indigo dye"
 			colour = "#4B0082"
 		if(7)
 			tastemessage = "violet dye"
-			colour = COLOR_MAGENTA
+			colour = "#FF00FF"
 	taste += tastemessage
 
 /obj/item/slime_cookie/pyrite/do_effect(mob/living/M, mob/user)

@@ -721,7 +721,7 @@ datum/antagonist/bloodsucker/proc/SpendRank()
 
 	// Update Rank Counter
 	if(owner.current.hud_used.vamprank_display)
-		var/valuecolor = vamplevel_unspent ? COLOR_YELLOW : COLOR_RED
+		var/valuecolor = vamplevel_unspent ? "#FFFF00" : "#FF0000"
 		owner.current.hud_used.vamprank_display.update_counter(vamplevel, valuecolor)
 		if(updateRank) // Only change icon on special request.
 			owner.current.hud_used.vamprank_display.icon_state = (vamplevel_unspent > 0) ? "rank_up" : "rank"

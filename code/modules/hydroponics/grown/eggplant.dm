@@ -20,7 +20,7 @@
 	name = "eggplant"
 	desc = "Maybe there's a chicken inside?"
 	icon_state = "eggplant"
-	filling_color = COLOR_PURPLE
+	filling_color = "#800080"
 	bitesize_mod = 2
 	foodtype = FRUIT
 	wine_power = 20

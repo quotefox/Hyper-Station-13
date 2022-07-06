@@ -502,7 +502,7 @@ datum/status_effect/rebreathing/tick()
 		is_healing = TRUE
 	if(is_healing)
 		examine_text = "<span class='warning'>SUBJECTPRONOUN is regenerating slowly, purplish goo filling in small injuries!</span>"
-		new /obj/effect/temp_visual/heal(get_turf(owner), COLOR_RED)
+		new /obj/effect/temp_visual/heal(get_turf(owner), "#FF0000")
 	else
 		examine_text = null
 	..()

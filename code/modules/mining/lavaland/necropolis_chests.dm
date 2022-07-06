@@ -991,7 +991,7 @@
 	name = "blood contract"
 	icon = 'icons/obj/wizard.dmi'
 	icon_state = "scroll2"
-	color = COLOR_RED
+	color = "#FF0000"
 	desc = "Mark your target for death."
 	var/used = FALSE
 
@@ -1030,7 +1030,7 @@
 	L.mind.objectives += survive
 	log_combat(user, L, "took out a blood contract on", src)
 	to_chat(L, "<span class='userdanger'>You've been marked for death! Don't let the demons get you! KILL THEM ALL!</span>")
-	L.add_atom_colour(COLOR_RED, ADMIN_COLOUR_PRIORITY)
+	L.add_atom_colour("#FF0000", ADMIN_COLOUR_PRIORITY)
 	var/obj/effect/mine/pickup/bloodbath/B = new(L)
 	INVOKE_ASYNC(B, /obj/effect/mine/pickup/bloodbath/.proc/mineEffect, L)
 

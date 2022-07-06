@@ -43,7 +43,7 @@
 	var/obj/item/card/id/knight/W = H.wear_id
 	W.assignment = "Knight"
 	W.registered_name = H.real_name
-	W.id_color = COLOR_BLUE //Regular knights get simple blue. Doesn't matter much because it's variable anyway
+	W.id_color = "#0000FF" //Regular knights get simple blue. Doesn't matter much because it's variable anyway
 	W.update_label(H.real_name)
 	W.update_icon()
 

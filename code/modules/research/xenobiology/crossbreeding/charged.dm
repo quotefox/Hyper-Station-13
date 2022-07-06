@@ -329,7 +329,7 @@ Charged extracts:
 	to_chat(user, "<span class='notice'>You slather the blue gunk over the [C], making it airtight.</span>")
 	C.name = "pressure-resistant [C.name]"
 	C.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-	C.add_atom_colour(COLOR_NAVY, FIXED_COLOUR_PRIORITY)
+	C.add_atom_colour("#000080", FIXED_COLOUR_PRIORITY)
 	C.min_cold_protection_temperature = SPACE_SUIT_MIN_TEMP_PROTECT
 	C.cold_protection = C.body_parts_covered
 	C.clothing_flags |= STOPSPRESSUREDAMAGE
@@ -363,7 +363,7 @@ Charged extracts:
 	to_chat(user, "<span class='notice'>You slather the red gunk over the [C], making it lavaproof.</span>")
 	C.name = "lavaproof [C.name]"
 	C.remove_atom_colour(WASHABLE_COLOUR_PRIORITY)
-	C.add_atom_colour(COLOR_RED, FIXED_COLOUR_PRIORITY)
+	C.add_atom_colour("#800000", FIXED_COLOUR_PRIORITY)
 	C.resistance_flags |= LAVA_PROOF
 	if (istype(C, /obj/item/clothing))
 		var/obj/item/clothing/CL = C

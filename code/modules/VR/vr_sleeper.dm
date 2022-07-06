@@ -216,7 +216,7 @@
 /obj/effect/vr_clean_master // Will keep VR areas that have this relatively clean.
 	icon = 'icons/mob/screen_gen.dmi'
 	icon_state = "x2"
-	color = COLOR_GREEN
+	color = "#00FF00"
 	invisibility = INVISIBILITY_ABSTRACT
 	var/area/vr_area
 

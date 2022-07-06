@@ -47,14 +47,14 @@
 		last_holder = user
 	if(!(user in color_altered_mobs))
 		color_altered_mobs += user
-	user.add_atom_colour(COLOR_GREEN, ADMIN_COLOUR_PRIORITY)
+	user.add_atom_colour("#00FF00", ADMIN_COLOUR_PRIORITY)
 	START_PROCESSING(SSobj, src)
 	..()
 
 /obj/item/greentext/dropped(mob/living/user as mob)
 	if(user in color_altered_mobs)
 		to_chat(user, "<span class='warning'>A sudden wave of failure washes over you...</span>")
-		user.add_atom_colour(COLOR_RED, ADMIN_COLOUR_PRIORITY) //ya blew it
+		user.add_atom_colour("#FF0000", ADMIN_COLOUR_PRIORITY) //ya blew it
 	last_holder 	= null
 	new_holder 		= null
 	STOP_PROCESSING(SSobj, src)
@@ -75,7 +75,7 @@
 /obj/item/greentext/process()
 	if(last_holder && last_holder != new_holder) //Somehow it was swiped without ever getting dropped
 		to_chat(last_holder, "<span class='warning'>A sudden wave of failure washes over you...</span>")
-		last_holder.add_atom_colour(COLOR_RED, ADMIN_COLOUR_PRIORITY)
+		last_holder.add_atom_colour("#FF0000", ADMIN_COLOUR_PRIORITY)
 		last_holder = new_holder //long live the king
 
 /obj/item/greentext/Destroy(force)
@@ -89,7 +89,7 @@
 		var/message = "<span class='warning'>A dark temptation has passed from this world"
 		if(M in color_altered_mobs)
 			message += " and you're finally able to forgive yourself"
-			if(M.color == COLOR_RED || M.color == COLOR_GREEN)
+			if(M.color == "#FF0000" || M.color == "#00FF00")
 				M.remove_atom_colour(ADMIN_COLOUR_PRIORITY)
 		message += "...</span>"
 		// can't skip the mob check as it also does the decolouring

@@ -671,9 +671,9 @@
 	else
 		if(lights && hasPower())
 			if(locked)
-				set_light(1, 0.1, COLOR_BLUE)
+				set_light(1, 0.1, "#0000FF")
 			else if(emergency)
-				set_light(1, 0.1, COLOR_YELLOW)
+				set_light(1, 0.1, "#FFFF00")
 			else
 				set_light(0)
 		else

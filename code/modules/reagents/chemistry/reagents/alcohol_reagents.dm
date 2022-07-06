@@ -1514,7 +1514,7 @@ All effects don't start immediately, but rather get worse over time; the rate is
 /datum/reagent/consumable/ethanol/triple_sec
 	name = "Triple Sec"
 	description = "A sweet and vibrant orange liqueur."
-	color = COLOR_CREAMY_ORANGE
+	color = "#ffcc66"
 	boozepwr = 30
 	taste_description = "a warm flowery orange taste which recalls the ocean air and summer wind of the caribbean"
 	glass_icon_state = "glass_orange"
@@ -1576,7 +1576,7 @@ datum/reagent/consumable/ethanol/creme_de_coconut
 /datum/reagent/consumable/ethanol/quintuple_sec
 	name = "Quintuple Sec"
 	description = "Law, Order, Alcohol, and Police Brutality distilled into one single elixir of JUSTICE."
-	color = COLOR_MOSTLY_PURE_RED
+	color = "#ff3300"
 	boozepwr = 80
 	quality = DRINK_FANTASTIC
 	taste_description = "THE LAW"
@@ -1622,7 +1622,7 @@ datum/reagent/consumable/ethanol/creme_de_coconut
 /datum/reagent/consumable/ethanol/bastion_bourbon
 	name = "Bastion Bourbon"
 	description = "Soothing hot herbal brew with restorative properties. Hints of citrus and berry flavors."
-	color = COLOR_CYAN
+	color = "#00FFFF"
 	boozepwr = 30
 	quality = DRINK_FANTASTIC
 	taste_description = "hot herbal brew with a hint of fruit"
@@ -1661,7 +1661,7 @@ datum/reagent/consumable/ethanol/creme_de_coconut
 /datum/reagent/consumable/ethanol/squirt_cider
 	name = "Squirt Cider"
 	description = "Fermented squirt extract with a nose of stale bread and ocean water. Whatever a squirt is."
-	color = COLOR_RED
+	color = "#FF0000"
 	boozepwr = 40
 	taste_description = "stale bread with a staler aftertaste"
 	nutriment_factor = 2 * REAGENTS_METABOLISM

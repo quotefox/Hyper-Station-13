@@ -7,7 +7,7 @@
 	name = "power line autobuilder"
 	icon_state = "powerlinebuilder"
 
-	color = COLOR_RED
+	color = "#ff0000"
 
 	/// Whether or not we forcefully make a knot
 	var/knot = NO_KNOT
@@ -82,7 +82,7 @@
 
 // Red
 /obj/effect/mapping_helpers/network_builder/power_cable/red
-	color = COLOR_RED
+	color = "#ff0000"
 	cable_color = "red"
 
 /obj/effect/mapping_helpers/network_builder/power_cable/red/knot
@@ -108,7 +108,7 @@
 
 // Cyan
 /obj/effect/mapping_helpers/network_builder/power_cable/cyan
-	color = COLOR_CYAN
+	color = "#00ffff"
 	cable_color = "cyan"
 
 /obj/effect/mapping_helpers/network_builder/power_cable/cyan/knot
@@ -173,7 +173,7 @@
 
 // Yellow
 /obj/effect/mapping_helpers/network_builder/power_cable/yellow
-	color = COLOR_YELLOW
+	color = "#ffff00"
 	cable_color = "yellow"
 
 /obj/effect/mapping_helpers/network_builder/power_cable/yellow/knot

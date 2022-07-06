@@ -436,7 +436,9 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		if(!alert) //Congrats! You stopped the meltdown / blowout.
 			stop_relay(CHANNEL_REACTOR_ALERT)
 			warning = FALSE
-			set_light(l_range=10, l_color=LIGHT_COLOR_CYAN)
+			set_light(0)
+			light_color = LIGHT_COLOR_CYAN
+			set_light(10)
 	else
 		if(!alert)
 			return
@@ -445,7 +447,9 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 		next_warning = world.time + 30 SECONDS //To avoid engis pissing people off when reaaaally trying to stop the meltdown or whatever.
 		warning = TRUE //Start warning the crew of the imminent danger.
 		relay('hyperstation/sound/effects/rbmk/alarm.ogg', null, loop=TRUE, channel = CHANNEL_REACTOR_ALERT)
-		set_light(l_range=10, l_color=COLOR_SOFT_RED)
+		set_light(0)
+		light_color = LIGHT_COLOR_RED
+		set_light(10)
 
 //Failure condition 1: Meltdown. Achieved by having heat go over tolerances. This is less devastating because it's easier to achieve.
 //Results: Engineering becomes unusable and your engine irreparable

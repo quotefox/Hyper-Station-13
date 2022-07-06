@@ -1,7 +1,7 @@
 /obj/item/projectile/energy/electrode
 	name = "electrode"
 	icon_state = "spark"
-	color = COLOR_YELLOW
+	color = "#FFFF00"
 	nodamage = 1
 	knockdown = 60
 	knockdown_stamoverride = 36

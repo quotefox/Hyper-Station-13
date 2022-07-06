@@ -449,7 +449,7 @@
 	name = "luminescent glow"
 	desc = "Tell a coder if you're seeing this."
 	icon_state = "nothing"
-	light_color = COLOR_WHITE
+	light_color = "#FFFFFF"
 	light_range = LUMINESCENT_DEFAULT_GLOW
 
 /obj/effect/dummy/luminescent_glow/Initialize()

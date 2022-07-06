@@ -23,7 +23,7 @@
 	name = "chili"
 	desc = "It's spicy! Wait... IT'S BURNING ME!!"
 	icon_state = "chilipepper"
-	filling_color = COLOR_RED
+	filling_color = "#FF0000"
 	bitesize_mod = 2
 	foodtype = FRUIT
 	wine_power = 20

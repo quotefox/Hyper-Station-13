@@ -108,7 +108,7 @@
 	icon_state = "spiderleg"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin = 2)
 	cooked_type = /obj/item/reagent_containers/food/snacks/boiledspiderleg
-	filling_color = COLOR_BLACK
+	filling_color = "#000000"
 	tastes = list("cobwebs" = 1)
 	foodtype = MEAT | TOXIC
 
@@ -137,7 +137,7 @@
 	desc = "A ball of meat."
 	icon_state = "meatball"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 1)
-	filling_color = COLOR_RED
+	filling_color = "#800000"
 	tastes = list("meat" = 1)
 	foodtype = MEAT
 
@@ -207,7 +207,7 @@
 	icon_state = "khinkali"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 4, /datum/reagent/consumable/nutriment/vitamin = 2)
 	bitesize = 3
-	filling_color = COLOR_VERY_VERY_LIGHT_GRAY
+	filling_color = "#F0F0F0"
 	tastes = list("meat" = 1, "onions" = 1, "garlic" = 1)
 	foodtype = MEAT
 
@@ -274,7 +274,7 @@
 	trash = /obj/item/trash/plate
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/capsaicin = 2, /datum/reagent/consumable/nutriment/vitamin = 2)
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/capsaicin = 2)
-	filling_color = COLOR_BLACK
+	filling_color = "#000000"
 	tastes = list("hot peppers" = 1, "cobwebs" = 1)
 	foodtype = MEAT
 
@@ -320,7 +320,7 @@
 	icon_state = "pigblanket"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 1)
 	bonus_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/vitamin = 1)
-	filling_color = COLOR_RED
+	filling_color = "#800000"
 	tastes = list("meat" = 1, "butter" = 1)
 
 /obj/item/reagent_containers/food/snacks/kebab/rat

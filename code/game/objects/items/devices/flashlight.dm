@@ -11,10 +11,10 @@
 	slot_flags = ITEM_SLOT_BELT
 	materials = list(MAT_METAL=50, MAT_GLASS=20)
 	actions_types = list(/datum/action/item_action/toggle_light)
-	light_color = COLOR_CREAMY_ORANGE
 	var/on = FALSE
 	var/brightness_on = 4 //range of light when on
 	var/flashlight_power = 0.8 //strength of the light when on
+	light_color = "#FFCC66"
 
 /obj/item/flashlight/Initialize()
 	. = ..()
@@ -26,10 +26,9 @@
 	if(on)
 		icon_state = "[initial(icon_state)]-on"
 		if(flashlight_power)
-			set_light_range(brightness_on)
-			set_light_power(flashlight_power)
+			set_light(l_range = brightness_on, l_power = flashlight_power)
 		else
-			set_light_range(brightness_on)
+			set_light(brightness_on)
 	else
 		icon_state = initial(icon_state)
 		set_light(0)
@@ -259,15 +258,16 @@
 	desc = "A red Kinaris issued flare. There are instructions on the side, it reads 'pull cord, make light'."
 	w_class = WEIGHT_CLASS_SMALL
 	brightness_on = 7 // Pretty bright.
+	light_color = "#FA421A"
 	icon_state = "flare"
 	item_state = "flare"
 	actions_types = list()
-	heat = 1000
-	light_color = LIGHT_COLOR_FLARE
-	grind_results = list(/datum/reagent/sulfur = 15)
 	var/fuel = 0
 	var/on_damage = 7
 	var/produce_heat = 1500
+	heat = 1000
+	light_color = LIGHT_COLOR_FLARE
+	grind_results = list(/datum/reagent/sulfur = 15)
 
 /obj/item/flashlight/flare/New()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
@@ -332,13 +332,14 @@
 	desc = "A torch fashioned from some leaves and a log."
 	w_class = WEIGHT_CLASS_BULKY
 	brightness_on = 4
+	light_color = "#FAA44B"
 	icon_state = "torch"
 	item_state = "torch"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'
+	light_color = LIGHT_COLOR_ORANGE
 	on_damage = 10
 	slot_flags = null
-	light_color = LIGHT_COLOR_FIRE
 
 /obj/item/flashlight/lantern
 	name = "lantern"
@@ -348,8 +349,8 @@
 	righthand_file = 'icons/mob/inhands/equipment/mining_righthand.dmi'
 	desc = "A mining lantern."
 	brightness_on = 6			// luminosity when on
+	light_color = "#FFAA44"
 	flashlight_power = 0.75
-	light_color = LIGHT_COLOR_FIRE
 
 
 /obj/item/flashlight/slime
@@ -490,7 +491,7 @@
 
 /obj/item/flashlight/glowstick/red
 	name = "red glowstick"
-	color = COLOR_SOFT_RED
+	color = LIGHT_COLOR_RED
 
 /obj/item/flashlight/glowstick/blue
 	name = "blue glowstick"
@@ -516,7 +517,7 @@
 	name = "disco light"
 	desc = "Groovy..."
 	icon_state = null
-	light_color = COLOR_WHITE
+	light_color = null
 	brightness_on = 0
 	flashlight_power = 1
 	light_range = 0

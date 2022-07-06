@@ -7,7 +7,7 @@
 	icon_state = "mflash1"
 	max_integrity = 250
 	integrity_failure = 100
-	light_color = COLOR_WHITE
+	light_color = LIGHT_COLOR_WHITE
 	light_power = FLASH_LIGHT_POWER
 	var/obj/item/assembly/flash/handheld/bulb
 	var/id = null

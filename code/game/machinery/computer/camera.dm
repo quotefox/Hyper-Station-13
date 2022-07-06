@@ -4,10 +4,11 @@
 	icon_screen = "cameras"
 	icon_keyboard = "security_key"
 	circuit = /obj/item/circuitboard/computer/security
-	light_color = COLOR_SOFT_RED
 	var/last_pic = 1
 	var/list/network = list("ss13")
 	var/list/watchers = list() //who's using the console, associated with the camera they're on.
+
+	light_color = LIGHT_COLOR_RED
 
 /obj/machinery/computer/security/Initialize()
 	. = ..()

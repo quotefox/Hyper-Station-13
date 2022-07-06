@@ -110,7 +110,7 @@
 	throw_speed = 1
 	throw_range = 3
 	sharpness = IS_SHARP
-	light_color = COLOR_RED
+	light_color = "#ff0000"
 	attack_verb = list("cleaved", "slashed", "torn", "hacked", "ripped", "diced", "carved")
 	icon_state = "cultbastard"
 	item_state = "cultbastard"
@@ -625,7 +625,7 @@
 	brightness_on = 1
 	icon_state = "torch"
 	item_state = "torch"
-	color = COLOR_RED
+	color = "#ff0000"
 	on_damage = 15
 	slot_flags = null
 	on = TRUE
@@ -783,7 +783,7 @@
 /obj/item/gun/ballistic/shotgun/boltaction/enchanted/arcane_barrage/blood
 	name = "blood bolt barrage"
 	desc = "Blood for blood."
-	color = COLOR_RED
+	color = "#ff0000"
 	guns_left = 24
 	mag_type = /obj/item/ammo_box/magazine/internal/boltaction/enchanted/arcane_barrage/blood
 	fire_sound = 'sound/magic/wand_teleport.ogg'
@@ -872,9 +872,9 @@
 		if(i > 1)
 			sleep(15)
 		if(i < 4)
-			O = new /obj/effect/temp_visual/cult/rune_spawn/rune1/inner(user.loc, 30, COLOR_RED)
+			O = new /obj/effect/temp_visual/cult/rune_spawn/rune1/inner(user.loc, 30, "#ff0000")
 		else
-			O = new /obj/effect/temp_visual/cult/rune_spawn/rune5(user.loc, 30, COLOR_RED)
+			O = new /obj/effect/temp_visual/cult/rune_spawn/rune5(user.loc, 30, "#ff0000")
 			new /obj/effect/temp_visual/dir_setting/cult/phase/out(user.loc, user.dir)
 	if(O)
 		qdel(O)

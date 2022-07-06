@@ -503,7 +503,7 @@
 	name = "Binding Aura"
 	desc = "Allows you to bind a victim and temporarily silence them."
 	invocation = "In'totum Lig'abis."
-	color = COLOR_BLACK
+	color = "#000000" // black
 
 /obj/item/melee/blood_magic/shackles/afterattack(atom/target, mob/living/carbon/user, proximity)
 	if(iscultist(user) && iscarbon(target) && proximity)
@@ -553,7 +553,7 @@
 	name = "Corrupting Aura"
 	desc = "Corrupts metal and plasteel into more sinister forms."
 	invocation = "Ethra p'ni dedol."
-	color = COLOR_BLACK
+	color = "#000000" // black
 
 /obj/item/melee/blood_magic/construction/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	if(proximity_flag && iscultist(user))

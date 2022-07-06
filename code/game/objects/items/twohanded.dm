@@ -284,7 +284,7 @@
 	var/hitsound_on = 'sound/weapons/blade1.ogg'
 	armour_penetration = 35
 	item_color = "green"
-	light_color = COLOR_GREEN
+	light_color = "#00ff00"//green
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	block_chance = 75
 	max_integrity = 200
@@ -293,7 +293,7 @@
 	var/hacked = FALSE
 	var/brightness_on = 6 //TWICE AS BRIGHT AS A REGULAR ESWORD
 	var/list/possible_colors = list("red", "blue", "green", "purple")
-	var/list/rainbow_colors = list(COLOR_SOFT_RED, LIGHT_COLOR_GREEN, LIGHT_COLOR_LIGHT_CYAN, LIGHT_COLOR_LAVENDER)
+	var/list/rainbow_colors = list(LIGHT_COLOR_RED, LIGHT_COLOR_GREEN, LIGHT_COLOR_LIGHT_CYAN, LIGHT_COLOR_LAVENDER)
 	var/spinnable = TRUE
 	total_mass = 0.4 //Survival flashlights typically weigh around 5 ounces.
 	var/total_mass_on = 3.4
@@ -329,7 +329,7 @@
 		item_color = pick(possible_colors)
 		switch(item_color)
 			if("red")
-				light_color = COLOR_SOFT_RED
+				light_color = LIGHT_COLOR_RED
 			if("green")
 				light_color = LIGHT_COLOR_GREEN
 			if("blue")
@@ -711,7 +711,7 @@
 
 /obj/item/twohanded/pitchfork/demonic/Initialize()
 	. = ..()
-	set_light(3,6,COLOR_SOFT_RED)
+	set_light(3,6,LIGHT_COLOR_RED)
 
 /obj/item/twohanded/pitchfork/demonic/greater
 	force = 24

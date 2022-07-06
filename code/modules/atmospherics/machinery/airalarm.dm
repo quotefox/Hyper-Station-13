@@ -652,17 +652,17 @@
 		if(0)
 			add_overlay(AALARM_OVERLAY_GREEN)
 			overlay_state = AALARM_OVERLAY_GREEN
-			set_light_color(LIGHT_COLOR_GREEN)
+			light_color = LIGHT_COLOR_GREEN
 			set_light(brightness_on)
 		if(1)
 			add_overlay(AALARM_OVERLAY_WARN)
 			overlay_state = AALARM_OVERLAY_WARN
-			set_light_color(LIGHT_COLOR_LAVA)
+			light_color = LIGHT_COLOR_LAVA
 			set_light(brightness_on)
 		if(2)
 			add_overlay(AALARM_OVERLAY_DANGER)
 			overlay_state = AALARM_OVERLAY_DANGER
-			set_light_color(COLOR_SOFT_RED)
+			light_color = LIGHT_COLOR_RED
 			set_light(brightness_on)
 
 	SSvis_overlays.add_vis_overlay(src, icon, overlay_state, ABOVE_LIGHTING_LAYER, ABOVE_LIGHTING_PLANE, dir)

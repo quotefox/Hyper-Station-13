@@ -436,7 +436,7 @@
 	icon_state = "surgicaldrill_a"
 	hitsound = 'sound/items/welder.ogg'
 	toolspeed = 0.7
-	light_color = COLOR_SOFT_RED
+	light_color = LIGHT_COLOR_RED
 
 /obj/item/surgicaldrill/advanced/Initialize()
 	. = ..()
@@ -457,7 +457,7 @@
 	hitsound = 'sound/items/welder2.ogg'
 	force = 15
 	toolspeed = 0.7
-	light_color = COLOR_SOFT_RED
+	light_color = LIGHT_COLOR_RED
 
 /obj/item/cautery/advanced/Initialize()
 	. = ..()

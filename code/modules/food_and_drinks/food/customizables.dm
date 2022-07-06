@@ -103,8 +103,8 @@
 
 /obj/item/reagent_containers/food/snacks/customizable/update_snack_overlays(obj/item/reagent_containers/food/snacks/S)
 	var/mutable_appearance/filling = mutable_appearance(icon, "[initial(icon_state)]_filling")
-	if(S.filling_color == COLOR_WHITE)
-		filling.color = pick(COLOR_RED, COLOR_BLUE, COLOR_DARK_GREEN, COLOR_YELLOW)
+	if(S.filling_color == "#FFFFFF")
+		filling.color = pick("#FF0000","#0000FF","#008000","#FFFF00")
 	else
 		filling.color = S.filling_color
 

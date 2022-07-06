@@ -502,14 +502,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "zippo"
 	item_state = "zippo"
-	heat = 1500
-	grind_results = list(/datum/reagent/iron = 1, /datum/reagent/fuel = 5, /datum/reagent/oil = 5)
 	w_class = WEIGHT_CLASS_TINY
 	flags_1 = CONDUCT_1
 	slot_flags = ITEM_SLOT_BELT
-	resistance_flags = FIRE_PROOF
 	price = 1
-	light_color = LIGHT_COLOR_FIRE
 	var/lit = 0
 	var/fancy = TRUE
 	var/overlay_state
@@ -519,6 +515,10 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		"thirteen",
 		"snake"
 		)
+	heat = 1500
+	resistance_flags = FIRE_PROOF
+	light_color = LIGHT_COLOR_FIRE
+	grind_results = list(/datum/reagent/iron = 1, /datum/reagent/fuel = 5, /datum/reagent/oil = 5)
 
 /obj/item/lighter/Initialize()
 	. = ..()
@@ -907,7 +907,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = null
 	item_state = null
 	w_class = WEIGHT_CLASS_NORMAL
-	light_color = COLOR_CREAMY_ORANGE
+	light_color = "#FFCC66"
 	var/icon_off = "bong"
 	var/icon_on = "bong_lit"
 	var/chem_volume = 100

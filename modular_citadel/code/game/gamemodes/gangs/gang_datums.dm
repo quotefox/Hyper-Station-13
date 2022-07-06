@@ -8,13 +8,13 @@
 
 /datum/team/gang/clandestine
 	name = "Clandestine"
-	color = COLOR_RED
+	color = "#FF0000"
 	inner_outfits = list(/obj/item/clothing/under/syndicate/combat)
 	outer_outfits = list(/obj/item/clothing/suit/jacket)
 
 /datum/team/gang/prima
 	name = "Prima"
-	color = COLOR_YELLOW
+	color = "#FFFF00"
 	inner_outfits = list(/obj/item/clothing/under/color/yellow)
 	outer_outfits = list(/obj/item/clothing/suit/hastur)
 
@@ -26,31 +26,31 @@
 
 /datum/team/gang/max
 	name = "Max"
-	color = COLOR_RED
+	color = "#800000"
 	inner_outfits = list(/obj/item/clothing/under/color/maroon)
 	outer_outfits = list(/obj/item/clothing/suit/poncho/red)
 
 /datum/team/gang/blasto
 	name = "Blasto"
-	color = COLOR_NAVY
+	color = "#000080"
 	inner_outfits = list(/obj/item/clothing/under/suit_jacket/navy)
 	outer_outfits = list(/obj/item/clothing/suit/jacket/miljacket)
 
 /datum/team/gang/waffle
 	name = "Waffle"
-	color = COLOR_OLIVE //shared color with cyber, but they can keep brown cause waffles.
+	color = "#808000" //shared color with cyber, but they can keep brown cause waffles.
 	inner_outfits = list(/obj/item/clothing/under/suit_jacket/green)
 	outer_outfits = list(/obj/item/clothing/suit/poncho)
 
 /datum/team/gang/north
 	name = "North"
-	color = COLOR_GREEN
+	color = "#00FF00"
 	inner_outfits = list(/obj/item/clothing/under/color/green)
 	outer_outfits = list(/obj/item/clothing/suit/poncho/green)
 
 /datum/team/gang/omni
 	name = "Omni"
-	color = COLOR_TEAL
+	color = "#008080"
 	inner_outfits = list(/obj/item/clothing/under/color/teal)
 	outer_outfits = list(/obj/item/clothing/suit/studentuni)
 
@@ -68,13 +68,13 @@
 
 /datum/team/gang/donk
 	name = "Donk"
-	color = COLOR_BLUE
+	color = "#0000FF"
 	inner_outfits = list(/obj/item/clothing/under/color/darkblue)
 	outer_outfits = list(/obj/item/clothing/suit/apron/overalls)
 
 /datum/team/gang/gene
 	name = "Gene"
-	color = COLOR_CYAN
+	color = "#00FFFF"
 	inner_outfits = list(/obj/item/clothing/under/color/blue)
 	outer_outfits = list(/obj/item/clothing/suit/apron)
 
@@ -86,13 +86,13 @@
 
 /datum/team/gang/tunnel
 	name = "Tunnel"
-	color = COLOR_MAGENTA //Gave the leather jacket to the tunnel gang over diablo.
+	color = "#FF00FF" //Gave the leather jacket to the tunnel gang over diablo.
 	inner_outfits = list(/obj/item/clothing/under/villain)
 	outer_outfits = list(/obj/item/clothing/suit/jacket/leather)
 
 /datum/team/gang/diablo
 	name = "Diablo"
-	color = COLOR_RED   //literal early 90s skinhead regalia.
+	color = "#FF0000"   //literal early 90s skinhead regalia.
 	inner_outfits = list(/obj/item/clothing/under/pants/classicjeans)
 	outer_outfits = list(/obj/item/clothing/suit/suspenders)
 
@@ -110,13 +110,13 @@
 
 /datum/team/gang/sirius
 	name = "Sirius"
-	color = COLOR_PINK
+	color = "#FFC0CB"
 	inner_outfits = list(/obj/item/clothing/under/color/pink)
 	outer_outfits = list(/obj/item/clothing/suit/jacket/puffer/vest)
 
 /datum/team/gang/sleepingcarp
 	name = "Sleeping Carp"
-	color = COLOR_PURPLE
+	color = "#800080"
 	inner_outfits = list(/obj/item/clothing/under/color/lightpurple)
 	outer_outfits = list(/obj/item/clothing/suit/hooded/carp_costume)
 

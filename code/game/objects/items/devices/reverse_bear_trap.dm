@@ -112,7 +112,7 @@
 		playsound(src, 'sound/effects/splat.ogg', 50, TRUE, frequency = 0.5)
 		jill.apply_damage(9999, BRUTE, BODY_ZONE_HEAD)
 		jill.death() //just in case, for some reason, they're still alive
-		flash_color(jill, flash_color = COLOR_RED, flash_time = 100)
+		flash_color(jill, flash_color = "#FF0000", flash_time = 100)
 
 /obj/item/reverse_bear_trap/proc/reset()
 	ticking = FALSE

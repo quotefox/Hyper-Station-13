@@ -451,19 +451,19 @@
 
 /proc/color2hex(color)	//web colors
 	if(!color)
-		return COLOR_BLACK
+		return "#000000"
 
 	switch(color)
 		if("white")
-			return COLOR_WHITE
+			return "#FFFFFF"
 		if("black")
-			return COLOR_BLACK
+			return "#000000"
 		if("gray")
 			return "#808080"
 		if("brown")
 			return "#A52A2A"
 		if("red")
-			return COLOR_RED
+			return "#FF0000"
 		if("darkred")
 			return "#8B0000"
 		if("crimson")
@@ -471,23 +471,23 @@
 		if("orange")
 			return "#FFA500"
 		if("yellow")
-			return COLOR_YELLOW
+			return "#FFFF00"
 		if("green")
-			return COLOR_DARK_GREEN
+			return "#008000"
 		if("lime")
-			return COLOR_GREEN
+			return "#00FF00"
 		if("darkgreen")
 			return "#006400"
 		if("cyan")
-			return COLOR_CYAN
+			return "#00FFFF"
 		if("blue")
-			return COLOR_BLUE
+			return "#0000FF"
 		if("navy")
-			return COLOR_NAVY
+			return "#000080"
 		if("teal")
-			return COLOR_TEAL
+			return "#008080"
 		if("purple")
-			return COLOR_PURPLE
+			return "#800080"
 		if("indigo")
 			return "#4B0082"
 		else

@@ -30,7 +30,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	attack_verb = list("attacked", "coloured")
 	grind_results = list()
-	var/paint_color = COLOR_RED
+	var/paint_color = "#FF0000" //RGB
 
 	var/drawtype
 	var/text_buffer = ""
@@ -791,7 +791,7 @@
 	charges = 100
 	reagent_contents = list(/datum/reagent/clf3 = 1)
 	actually_paints = FALSE
-	paint_color = COLOR_BLACK
+	paint_color = "#000000"
 
 /obj/item/toy/crayon/spraycan/lubecan
 	name = "slippery spraycan"

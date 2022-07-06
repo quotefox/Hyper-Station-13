@@ -23,7 +23,7 @@
 
 /turf/open/floor/light/break_tile()
 	..()
-	set_light_range(0)
+	light_range = 0
 	update_light()
 
 /turf/open/floor/light/update_icon()
