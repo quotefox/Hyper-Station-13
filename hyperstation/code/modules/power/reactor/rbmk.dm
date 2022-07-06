@@ -435,7 +435,7 @@ The reactor CHEWS through moderator. It does not do this slowly. Be very careful
 	if(warning)
 		if(!alert) //Congrats! You stopped the meltdown / blowout.
 			stop_relay(CHANNEL_REACTOR_ALERT)
-			warning = FAILED_UNFASTEN
+			warning = FALSE
 			set_light(l_range=10, l_color=LIGHT_COLOR_CYAN)
 	else
 		if(!alert)
