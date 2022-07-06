@@ -23,7 +23,7 @@
 	desc = "Nutritious!"
 	icon_state = "berrypile"
 	gender = PLURAL
-	filling_color = COLOR_MAGENTA
+	filling_color = "#FF00FF"
 	bitesize_mod = 2
 	foodtype = FRUIT
 	juice_results = list(/datum/reagent/consumable/berryjuice = 0)
@@ -132,7 +132,7 @@
 	desc = "Great for toppings!"
 	icon_state = "cherry"
 	gender = PLURAL
-	filling_color = COLOR_RED
+	filling_color = "#FF0000"
 	bitesize_mod = 2
 	foodtype = FRUIT
 	grind_results = list(/datum/reagent/consumable/cherryjelly = 0)
@@ -181,7 +181,7 @@
 	name = "cherry bulbs"
 	desc = "They're like little Space Christmas lights!"
 	icon_state = "cherry_bulb"
-	filling_color = COLOR_RED
+	filling_color = "#FF0000"
 	bitesize_mod = 2
 	foodtype = FRUIT
 	grind_results = list(/datum/reagent/consumable/cherryjelly = 0)

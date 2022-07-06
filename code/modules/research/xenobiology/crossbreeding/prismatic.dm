@@ -46,7 +46,7 @@ Prismatic extracts:
 	colour = "metal"
 
 /obj/item/slimecross/prismatic/yellow
-	paintcolor = COLOR_YELLOW
+	paintcolor = "#FFFF00"
 	colour = "yellow"
 
 /obj/item/slimecross/prismatic/darkpurple
@@ -54,7 +54,7 @@ Prismatic extracts:
 	colour = "dark purple"
 
 /obj/item/slimecross/prismatic/darkblue
-	paintcolor = COLOR_BLUE
+	paintcolor = "#0000FF"
 	colour = "dark blue"
 
 /obj/item/slimecross/prismatic/silver
@@ -62,7 +62,7 @@ Prismatic extracts:
 	colour = "silver"
 
 /obj/item/slimecross/prismatic/bluespace
-	paintcolor = COLOR_LIME
+	paintcolor = "#32CD32"
 	colour = "bluespace"
 
 /obj/item/slimecross/prismatic/sepia
@@ -78,11 +78,11 @@ Prismatic extracts:
 	colour = "pyrite"
 
 /obj/item/slimecross/prismatic/red
-	paintcolor = COLOR_RED
+	paintcolor = "#FF0000"
 	colour = "red"
 
 /obj/item/slimecross/prismatic/green
-	paintcolor = COLOR_GREEN
+	paintcolor = "#00FF00"
 	colour = "green"
 
 /obj/item/slimecross/prismatic/pink
@@ -98,7 +98,7 @@ Prismatic extracts:
 	colour = "oil"
 
 /obj/item/slimecross/prismatic/black
-	paintcolor = COLOR_BLACK
+	paintcolor = "#000000"
 	colour = "black"
 
 /obj/item/slimecross/prismatic/lightpink

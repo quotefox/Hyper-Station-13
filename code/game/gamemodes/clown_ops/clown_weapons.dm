@@ -67,7 +67,7 @@
 	sharpness = IS_BLUNT
 	item_color = "yellow"
 	heat = 0
-	light_color = COLOR_YELLOW
+	light_color = "#ffff00"
 	var/next_trombone_allowed = 0
 
 /obj/item/melee/transforming/energy/sword/bananium/Initialize()

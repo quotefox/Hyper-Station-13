@@ -1,12 +1,12 @@
 GLOBAL_LIST_INIT(cable_colors, list(
-	"yellow" = COLOR_YELLOW,
+	"yellow" = "#ffff00",
 	"green" = "#00aa00",
 	"blue" = "#1919c8",
 	"pink" = "#ff3cc8",
 	"orange" = "#ff8000",
-	"cyan" = COLOR_CYAN,
+	"cyan" = "#00ffff",
 	"white" = "#ffffff",
-	"red" = COLOR_RED
+	"red" = "#ff0000"
 	))
 
 ///////////////////////////////
@@ -48,11 +48,11 @@ By design, d1 is the smallest direction and d2 is the highest
 	var/obj/item/stack/cable_coil/stored
 
 	var/cable_color = "red"
-	color = COLOR_RED
+	color = "#ff0000"
 
 /obj/structure/cable/yellow
 	cable_color = "yellow"
-	color = COLOR_YELLOW
+	color = "#ffff00"
 
 /obj/structure/cable/green
 	cable_color = "green"
@@ -72,7 +72,7 @@ By design, d1 is the smallest direction and d2 is the highest
 
 /obj/structure/cable/cyan
 	cable_color = "cyan"
-	color = COLOR_CYAN
+	color = "#00ffff"
 
 /obj/structure/cable/white
 	cable_color = "white"
@@ -770,11 +770,11 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe("cable restrai
 
 /obj/item/stack/cable_coil/red
 	item_color = "red"
-	color = COLOR_RED
+	color = "#ff0000"
 
 /obj/item/stack/cable_coil/yellow
 	item_color = "yellow"
-	color = COLOR_YELLOW
+	color = "#ffff00"
 
 /obj/item/stack/cable_coil/blue
 	item_color = "blue"
@@ -794,7 +794,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe("cable restrai
 
 /obj/item/stack/cable_coil/cyan
 	item_color = "cyan"
-	color = COLOR_CYAN
+	color = "#00ffff"
 
 /obj/item/stack/cable_coil/white
 	item_color = "white"
@@ -821,11 +821,11 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe("cable restrai
 
 /obj/item/stack/cable_coil/cut/red
 	item_color = "red"
-	color = COLOR_RED
+	color = "#ff0000"
 
 /obj/item/stack/cable_coil/cut/yellow
 	item_color = "yellow"
-	color = COLOR_YELLOW
+	color = "#ffff00"
 
 /obj/item/stack/cable_coil/cut/blue
 	item_color = "blue"
@@ -845,7 +845,7 @@ GLOBAL_LIST_INIT(cable_coil_recipes, list (new/datum/stack_recipe("cable restrai
 
 /obj/item/stack/cable_coil/cut/cyan
 	item_color = "cyan"
-	color = COLOR_CYAN
+	color = "#00ffff"
 
 /obj/item/stack/cable_coil/cut/white
 	item_color = "white"

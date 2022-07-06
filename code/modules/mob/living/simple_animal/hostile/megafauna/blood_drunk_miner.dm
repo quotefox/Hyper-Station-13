@@ -29,7 +29,7 @@ Difficulty: Medium
 	icon_living = "miner"
 	icon = 'icons/mob/broadMobs.dmi'
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	light_color = COLOR_LIGHT_GRAYISH_RED
+	light_color = "#E4C7C5"
 	movement_type = GROUND
 	speak_emote = list("roars")
 	speed = 1

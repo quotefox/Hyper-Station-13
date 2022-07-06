@@ -96,7 +96,7 @@
 	if(alert("Are you sure you want to recolor your blade?", "Confirm Repaint", "Yes", "No") == "Yes")
 		var/energy_color_input = input(usr,"","Choose Energy Color",light_color) as color|null
 		if(energy_color_input)
-			set_light_color(sanitize_hexcolor(energy_color_input, desired_format=6, include_crunch=1))
+			light_color = sanitize_hexcolor(energy_color_input, desired_format=6, include_crunch=1)
 		update_icon()
 		update_light()
 
@@ -205,7 +205,7 @@
 	if(alert("Are you sure you want to recolor your blade?", "Confirm Repaint", "Yes", "No") == "Yes")
 		var/energy_color_input = input(usr,"","Choose Energy Color",light_color) as color|null
 		if(energy_color_input)
-			set_light_color(sanitize_hexcolor(energy_color_input, desired_format=6, include_crunch=1))
+			light_color = sanitize_hexcolor(energy_color_input, desired_format=6, include_crunch=1)
 		update_icon()
 		update_light()
 
@@ -257,7 +257,7 @@
 	slowdown_wielded = 1
 	armour_penetration = 60
 	light_color = "#37FFF7"
-	rainbow_colors = list(COLOR_RED, COLOR_YELLOW, COLOR_GREEN, COLOR_CYAN, COLOR_BLUE,COLOR_MAGENTA, "#3399ff", COLOR_ORANGE, "#fb008b", "#9800ff", "#00ffa3", "#ccff00")
+	rainbow_colors = list("#FF0000", "#FFFF00", "#00FF00", "#00FFFF", "#0000FF","#FF00FF", "#3399ff", "#ff9900", "#fb008b", "#9800ff", "#00ffa3", "#ccff00")
 	attack_verb = list("attacked", "slashed", "stabbed", "sliced", "destroyed", "ripped", "devastated", "shredded")
 	spinnable = FALSE
 	total_mass_on = 4
@@ -319,7 +319,7 @@
 		var/energy_color_input = input(usr,"","Choose Energy Color",light_color) as color|null
 		if(!energy_color_input || !user.canUseTopic(src, BE_CLOSE, FALSE) || hacked)
 			return
-		set_light_color(sanitize_hexcolor(energy_color_input, desired_format=6, include_crunch=1))
+		light_color = sanitize_hexcolor(energy_color_input, desired_format=6, include_crunch=1)
 		update_icon()
 		update_light()
 

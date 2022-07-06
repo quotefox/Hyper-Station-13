@@ -50,7 +50,7 @@
 	light_range = 2
 	speed = 0.6
 	range = 25
-	light_color = COLOR_SOFT_RED
+	light_color = LIGHT_COLOR_RED
 
 /obj/item/projectile/bullet/nlmags //non-lethal boolets
 	icon = 'modular_citadel/icons/obj/guns/cit_guns.dmi'
@@ -204,7 +204,7 @@
 	light_range = 3
 	speed = 0.6
 	range = 35
-	light_color = COLOR_SOFT_RED
+	light_color = LIGHT_COLOR_RED
 
 /obj/item/projectile/bullet/nlmagrifle //non-lethal boolets
 	icon = 'modular_citadel/icons/obj/guns/cit_guns.dmi'
@@ -358,7 +358,7 @@
 	forcedodge = TRUE
 	range = 6
 	light_range = 1
-	light_color = COLOR_SOFT_RED
+	light_color = LIGHT_COLOR_RED
 
 /obj/item/projectile/bullet/mags/hyper/inferno
 	icon_state = "magjectile-large"

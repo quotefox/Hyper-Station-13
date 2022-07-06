@@ -25,7 +25,7 @@
 	icon = 'hyperstation/icons/obj/hydroponics/harvest.dmi'
 	icon_state = "kalynaberries"
 	gender = PLURAL
-	filling_color = COLOR_RED
+	filling_color = "#FF0000"
 	bitesize_mod = 2
 	foodtype = FRUIT
 	juice_results = list(/datum/reagent/consumable/kalynajuice = 1)

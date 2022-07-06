@@ -121,7 +121,7 @@
 /obj/item/firing_pin/clown
 	name = "hilarious firing pin"
 	desc = "Advanced clowntech that can convert any firearm into a far more useful object."
-	color = COLOR_YELLOW
+	color = "#FFFF00"
 	fail_message = "<span class='warning'>HONK!</span>"
 	force_replace = TRUE
 

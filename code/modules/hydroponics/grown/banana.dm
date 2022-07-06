@@ -21,7 +21,7 @@
 	icon_state = "banana"
 	item_state = "banana"
 	trash = /obj/item/grown/bananapeel
-	filling_color = COLOR_YELLOW
+	filling_color = "#FFFF00"
 	bitesize = 5
 	foodtype = FRUIT
 	juice_results = list(/datum/reagent/consumable/banana = 0)
@@ -115,7 +115,7 @@
 	icon_state = "banana_blue"
 	item_state = "bluespace_peel"
 	trash = /obj/item/grown/bananapeel/bluespace
-	filling_color = COLOR_BLUE
+	filling_color = "#0000FF"
 	tastes = list("banana" = 1)
 	wine_power = 60
 	wine_flavor = "slippery hypercubes"

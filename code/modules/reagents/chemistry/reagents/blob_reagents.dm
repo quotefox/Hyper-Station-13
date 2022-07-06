@@ -4,7 +4,7 @@
 	description = "shouldn't exist and you should adminhelp immediately."
 	color = "#FFFFFF"
 	taste_description = "bad code and slime"
-	var/complementary_color = COLOR_BLACK //a color that's complementary to the normal blob color
+	var/complementary_color = "#000000" //a color that's complementary to the normal blob color
 	var/shortdesc = null //just damage and on_mob effects, doesn't include special, blob-tile only effects
 	var/effectdesc = null //any long, blob-tile specific effects
 	var/analyzerdescdamage = "Unknown. Report this bug to a coder, or just adminhelp."

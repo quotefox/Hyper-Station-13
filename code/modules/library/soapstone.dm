@@ -152,7 +152,9 @@
 	var/hash = md5(hidden_message)
 	var/newcolor = copytext_char(hash, 1, 7)
 	add_atom_colour("#[newcolor]", FIXED_COLOUR_PRIORITY)
-	set_light(1, 0.3, "#[newcolor]")
+	light_color = "#[newcolor]"
+	light_power = 0.3
+	set_light(1)
 
 /obj/structure/chisel_message/proc/pack()
 	var/list/data = list()

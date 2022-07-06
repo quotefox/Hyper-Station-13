@@ -21,7 +21,7 @@
 	desc = "Needs some butter!"
 	icon_state = "corn"
 	cooked_type = /obj/item/reagent_containers/food/snacks/popcorn
-	filling_color = COLOR_YELLOW
+	filling_color = "#FFFF00"
 	trash = /obj/item/grown/corncob
 	bitesize_mod = 2
 	foodtype = VEGETABLES

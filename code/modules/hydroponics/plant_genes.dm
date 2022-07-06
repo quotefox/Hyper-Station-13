@@ -329,7 +329,7 @@ datum/plant_gene/trait/glow/white
 
 /datum/plant_gene/trait/glow/red
 	name = "Red Bioluminescence"
-	glow_color = COLOR_RED_LIGHT
+	glow_color = "#FF3333"
 
 /datum/plant_gene/trait/glow/yellow
 	//not the disgusting glowshroom yellow hopefully

@@ -16,7 +16,6 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	icon_keyboard = "id_key"
 	req_one_access = list(ACCESS_HEADS, ACCESS_CHANGE_IDS)
 	circuit = /obj/item/circuitboard/computer/card
-	light_color = LIGHT_COLOR_BLUE
 	var/mode = 0
 	var/printing = null
 	var/target_dept = 0 //Which department this computer has access to. 0=all departments
@@ -49,6 +48,8 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	var/obj/item/card/id/inserted_modify_id
 	var/list/region_access = null
 	var/list/head_subordinates = null
+
+	light_color = LIGHT_COLOR_BLUE
 
 /obj/machinery/computer/card/proc/get_jobs()
 	return get_all_jobs()
@@ -620,7 +621,8 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 /obj/machinery/computer/card/minor/hos
 	target_dept = 2
 	icon_screen = "idhos"
-	light_color = COLOR_SOFT_RED
+
+	light_color = LIGHT_COLOR_RED
 
 /obj/machinery/computer/card/minor/cmo
 	target_dept = 3
@@ -629,16 +631,19 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 /obj/machinery/computer/card/minor/rd
 	target_dept = 4
 	icon_screen = "idrd"
+
 	light_color = LIGHT_COLOR_PINK
 
 /obj/machinery/computer/card/minor/ce
 	target_dept = 5
 	icon_screen = "idce"
+
 	light_color = LIGHT_COLOR_YELLOW
 
 /obj/machinery/computer/card/minor/qm
 	target_dept = 6
 	icon_screen = "idqm"
+
 	light_color = LIGHT_COLOR_ORANGE
 
 #undef JOB_ALLOWED

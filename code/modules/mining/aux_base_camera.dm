@@ -29,14 +29,11 @@
 /obj/machinery/computer/camera_advanced/base_construction
 	name = "base construction console"
 	desc = "An industrial computer integrated with a camera-assisted rapid construction drone."
-	icon_screen = "mining"
-	icon_keyboard = "rd_key"
 	networks = list("ss13")
-	jump_action = null
-	off_action = new/datum/action/innate/camera_off/base_construction
-	circuit = /obj/item/circuitboard/computer/base_construction
-	light_color = LIGHT_COLOR_PINK
 	var/obj/item/construction/rcd/internal/RCD //Internal RCD. The computer passes user commands to this in order to avoid massive copypaste.
+	circuit = /obj/item/circuitboard/computer/base_construction
+	off_action = new/datum/action/innate/camera_off/base_construction
+	jump_action = null
 	var/datum/action/innate/aux_base/switch_mode/switch_mode_action = new //Action for switching the RCD's build modes
 	var/datum/action/innate/aux_base/build/build_action = new //Action for using the RCD
 	var/datum/action/innate/aux_base/airlock_type/airlock_mode_action = new //Action for setting the airlock type
@@ -46,6 +43,11 @@
 	var/datum/action/innate/aux_base/install_turret/turret_action = new //Action for spawning turrets
 	var/turret_stock = 0 //Turrets in stock
 	var/obj/machinery/computer/auxillary_base/found_aux_console //Tracker for the Aux base console, so the eye can always find it.
+
+	icon_screen = "mining"
+	icon_keyboard = "rd_key"
+
+	light_color = LIGHT_COLOR_PINK
 
 /obj/machinery/computer/camera_advanced/base_construction/Initialize()
 	. = ..()

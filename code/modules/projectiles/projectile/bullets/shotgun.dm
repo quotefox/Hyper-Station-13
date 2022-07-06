@@ -24,7 +24,7 @@
 	jitter = 20
 	range = 7
 	icon_state = "spark"
-	color = COLOR_YELLOW
+	color = "#FFFF00"
 
 /obj/item/projectile/bullet/shotgun_meteorslug
 	name = "meteorslug"

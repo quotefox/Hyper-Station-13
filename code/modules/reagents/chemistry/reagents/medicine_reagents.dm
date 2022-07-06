@@ -82,7 +82,7 @@
 /datum/reagent/medicine/synaptizine
 	name = "Synaptizine"
 	description = "Increases resistance to stuns as well as reducing drowsiness and hallucinations."
-	color = COLOR_MAGENTA
+	color = "#FF00FF"
 	pH = 4
 
 /datum/reagent/medicine/synaptizine/on_mob_life(mob/living/carbon/M)
@@ -458,7 +458,7 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 	name = "Charcoal"
 	description = "Heals toxin damage as well as slowly removing any other chemicals the patient has in their bloodstream."
 	reagent_state = LIQUID
-	color = COLOR_BLACK
+	color = "#000000"
 	metabolization_rate = 0.5 * REAGENTS_METABOLISM
 	taste_description = "ash"
 	pH = 5
@@ -598,7 +598,7 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 	name = "Salbutamol"
 	description = "Rapidly restores oxygen deprivation as well as preventing more of it to an extent."
 	reagent_state = LIQUID
-	color = COLOR_CYAN
+	color = "#00FFFF"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	pH = 2
 
@@ -786,7 +786,7 @@ datum/reagent/medicine/styptic_powder/overdose_start(mob/living/M)
 	name = "Atropine"
 	description = "If a patient is in critical condition, rapidly heals all damage types as well as regulating oxygen in the body. Excellent for stabilizing wounded patients."
 	reagent_state = LIQUID
-	color = COLOR_BLACK
+	color = "#000000"
 	metabolization_rate = 0.25 * REAGENTS_METABOLISM
 	overdose_threshold = 35
 	pH = 12

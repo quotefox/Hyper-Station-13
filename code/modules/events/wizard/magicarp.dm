@@ -47,7 +47,7 @@
 /mob/living/simple_animal/hostile/carp/ranged/chaos
 	name = "chaos magicarp"
 	desc = "50% carp, 100% magic, 150% horrible."
-	color = COLOR_CYAN
+	color = "#00FFFF"
 	maxHealth = 75
 	health = 75
 

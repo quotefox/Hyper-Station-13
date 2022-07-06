@@ -12,11 +12,11 @@
 
 /obj/item/projectile/bullet/reusable/foam_dart/tag/red
 	name = "lastag red foam dart"
-	color = COLOR_RED
+	color = "#FF0000"
 	suit_types = list(/obj/item/clothing/suit/bluetag)
 	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/tag/red
 /obj/item/projectile/bullet/reusable/foam_dart/tag/blue
-	color = COLOR_BLUE
+	color = "#0000FF"
 	name = "lastag blue foam dart"
 	suit_types = list(/obj/item/clothing/suit/redtag)
 	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/tag/blue

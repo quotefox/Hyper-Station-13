@@ -244,7 +244,7 @@ SUBSYSTEM_DEF(air)
 	active_turfs -= T
 	SSair_turfs.currentrun -= T
 	#ifdef VISUALIZE_ACTIVE_TURFS
-	T.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, COLOR_GREEN)
+	T.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY, "#00ff00")
 	#endif
 	if(istype(T))
 		T.excited = 0
@@ -255,7 +255,7 @@ SUBSYSTEM_DEF(air)
 /datum/controller/subsystem/air/proc/add_to_active(turf/open/T, blockchanges = 1)
 	if(istype(T) && T.air)
 		#ifdef VISUALIZE_ACTIVE_TURFS
-		T.add_atom_colour(COLOR_GREEN, TEMPORARY_COLOUR_PRIORITY)
+		T.add_atom_colour("#00ff00", TEMPORARY_COLOUR_PRIORITY)
 		#endif
 		T.excited = TRUE
 		active_turfs[T] = SSair_turfs.currentrun[T] = TRUE

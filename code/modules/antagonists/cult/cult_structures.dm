@@ -12,8 +12,8 @@
 	visible_message("<span class='danger'>[src] fades away.</span>")
 	invisibility = INVISIBILITY_OBSERVER
 	alpha = 100 //To help ghosts distinguish hidden runes
-	set_light_range(0)
-	set_light_range(0)
+	light_range = 0
+	light_power = 0
 	update_light()
 	STOP_PROCESSING(SSfastprocess, src)
 
@@ -22,8 +22,8 @@
 	invisibility = 0
 	visible_message("<span class='danger'>[src] suddenly appears!</span>")
 	alpha = initial(alpha)
-	set_light_range(initial(light_range))
-	set_light_power(initial(light_power))
+	light_range = initial(light_range)
+	light_power = initial(light_power)
 	update_light()
 	START_PROCESSING(SSfastprocess, src)
 
@@ -180,7 +180,7 @@
 	desc = "A floating crystal that slowly heals those faithful to Nar'Sie."
 	icon_state = "pylon"
 	light_range = 1.5
-	light_color = COLOR_SOFT_RED
+	light_color = LIGHT_COLOR_RED
 	break_sound = 'sound/effects/glassbr2.ogg'
 	break_message = "<span class='warning'>The blood-red crystal falls to the floor and shatters!</span>"
 	var/heal_delay = 25

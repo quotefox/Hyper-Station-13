@@ -44,7 +44,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/current_overlays = PDA_STANDARD_OVERLAYS
 	var/font_index = 0 //This int tells DM which font is currently selected and lets DM know when the last font has been selected so that it can cycle back to the first font when "toggle font" is pressed again.
 	var/font_mode = "font-family:monospace;" //The currently selected font.
-	var/background_color = COLOR_OLIVE //The currently selected background color.
+	var/background_color = "#808000" //The currently selected background color.
 
 	#define FONT_MONO "font-family:monospace;"
 	#define FONT_SHARE "font-family:\"Share Tech Mono\", monospace;letter-spacing:0px;"
@@ -60,7 +60,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 	var/fon = FALSE //Is the flashlight function on?
 	var/f_lum = 2.3 //Luminosity for the flashlight function
 	var/f_pow = 0.6 //Power for the flashlight function
-	var/f_col = COLOR_CREAMY_ORANGE //Color for the flashlight function
+	var/f_col = "#FFCC66" //Color for the flashlight function
 	var/silent = FALSE //To beep or not to beep, that is the question
 	var/toff = FALSE //If TRUE, messenger disabled
 	var/tnote = null //Current Texts

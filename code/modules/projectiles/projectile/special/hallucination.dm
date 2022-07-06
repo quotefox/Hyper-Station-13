@@ -158,7 +158,7 @@
 	name = "electrode"
 	damage_type = BURN
 	hal_icon_state = "spark"
-	color = COLOR_YELLOW
+	color = "#FFFF00"
 	hal_fire_sound = 'sound/weapons/taser.ogg'
 	hal_hitsound = 'sound/weapons/taserhit.ogg'
 	hal_hitsound_wall = null

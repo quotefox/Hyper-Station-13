@@ -6,7 +6,6 @@
 	icon_keyboard = "security_key"
 	req_access = list(ACCESS_ARMORY)
 	circuit = /obj/item/circuitboard/computer/gulag_teleporter_console
-	light_color = COLOR_SOFT_RED
 	ui_x = 350
 	ui_y = 295
 
@@ -15,6 +14,8 @@
 	var/obj/structure/gulag_beacon/beacon = null
 	var/mob/living/carbon/human/prisoner = null
 	var/datum/data/record/temporary_record = null
+
+	light_color = LIGHT_COLOR_RED
 
 /obj/machinery/computer/prisoner/gulag_teleporter_computer/Initialize()
 	. = ..()

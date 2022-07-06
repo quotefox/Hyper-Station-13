@@ -5,14 +5,15 @@
 	icon_screen = "explosive"
 	icon_keyboard = "security_key"
 	req_access = list(ACCESS_BRIG)
-	circuit = /obj/item/circuitboard/computer/prisoner
-	light_color = COLOR_SOFT_RED
 	var/id = 0
 	var/temp = null
 	var/status = 0
 	var/timeleft = 60
 	var/stop = 0
 	var/screen = 0 // 0 - No Access Denied, 1 - Access allowed
+	circuit = /obj/item/circuitboard/computer/prisoner
+
+	light_color = LIGHT_COLOR_RED
 
 /obj/machinery/computer/prisoner/management/ui_interact(mob/user)
 	. = ..()

@@ -571,7 +571,7 @@
 //Polychromatic Knight Badge
 
 /obj/item/card/id/knight
-	var/id_color = COLOR_GREEN //defaults to green
+	var/id_color = "#00FF00" //defaults to green
 	name = "knight badge"
 	icon_state = "knight"
 	desc = "A badge denoting the owner as a knight! It has a strip for swiping like an ID"
@@ -621,7 +621,7 @@
 	. += "<span class='notice'>Alt-click to recolor it.</span>"
 
 /obj/item/card/id/knight/blue
-	id_color = COLOR_BLUE
+	id_color = "#0000FF"
 
 /obj/item/card/id/knight/captain
 	id_color = "#FFD700"

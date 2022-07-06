@@ -428,14 +428,14 @@ structure_check() searches for nearby cultist structures required for the invoca
 	playsound(T, pick('sound/effects/sparks1.ogg', 'sound/effects/sparks2.ogg', 'sound/effects/sparks3.ogg', 'sound/effects/sparks4.ogg'), 100, TRUE, 14)
 	inner_portal = new /obj/effect/temp_visual/cult/portal(T)
 	if(portal_type == "space")
-		set_light_color(color)
+		light_color = color
 		desc += "<br><b>A tear in reality reveals a black void interspersed with dots of light... something recently teleported here from space.<br><u>The void feels like it's trying to pull you to the [dir2text(get_dir(T, origin))]!</u></b>"
 	else
 		inner_portal.icon_state = "lava"
-		set_light_color(LIGHT_COLOR_FIRE)
+		light_color = LIGHT_COLOR_FIRE
 		desc += "<br><b>A tear in reality reveals a coursing river of lava... something recently teleported here from the Lavaland Mines!</b>"
 	outer_portal = new(T, 600, color)
-	set_light_range(4)
+	light_range = 4
 	update_light()
 	addtimer(CALLBACK(src, .proc/close_portal), 600, TIMER_UNIQUE)
 
@@ -443,7 +443,7 @@ structure_check() searches for nearby cultist structures required for the invoca
 	qdel(inner_portal)
 	qdel(outer_portal)
 	desc = initial(desc)
-	set_light_range(0)
+	light_range = 0
 	update_light()
 
 //Ritual of Dimensional Rending: Calls forth the avatar of Nar'Sie upon the station.

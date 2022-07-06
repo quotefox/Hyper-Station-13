@@ -74,7 +74,7 @@
 
 /datum/spacevine_mutation/light
 	name = "light"
-	hue = COLOR_YELLOW
+	hue = "#ffff00"
 	quality = POSITIVE
 	severity = 4
 
@@ -84,7 +84,7 @@
 
 /datum/spacevine_mutation/toxicity
 	name = "toxic"
-	hue = COLOR_MAGENTA
+	hue = "#ff00ff"
 	severity = 10
 	quality = NEGATIVE
 
@@ -101,7 +101,7 @@
 
 /datum/spacevine_mutation/explosive  //OH SHIT IT CAN CHAINREACT RUN!!!
 	name = "explosive"
-	hue = COLOR_RED
+	hue = "#ff0000"
 	quality = NEGATIVE
 	severity = 2
 
@@ -192,7 +192,7 @@
 
 /datum/spacevine_mutation/carbondioxide_eater
 	name = "CO2 consuming"
-	hue = COLOR_CYAN
+	hue = "#00ffff"
 	severity = 3
 	quality = POSITIVE
 

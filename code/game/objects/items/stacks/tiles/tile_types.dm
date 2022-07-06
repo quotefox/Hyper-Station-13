@@ -82,21 +82,21 @@
 	item_state = "tile-fairygrass"
 	turf_type = /turf/open/floor/grass/fairy
 	resistance_flags = FLAMMABLE
-	color = COLOR_BLUE_LIGHT
+	color = "#33CCFF"
 
 /obj/item/stack/tile/fairygrass/white
 	name = "white fairygrass tile"
 	singular_name = "white fairygrass floor tile"
 	desc = "A patch of odd, glowing white grass."
 	turf_type = /turf/open/floor/grass/fairy/white
-	color = COLOR_WHITE
+	color = "#FFFFFF"
 
 /obj/item/stack/tile/fairygrass/red
 	name = "red fairygrass tile"
 	singular_name = "red fairygrass floor tile"
 	desc = "A patch of odd, glowing red grass."
 	turf_type = /turf/open/floor/grass/fairy/red
-	color = COLOR_RED_LIGHT
+	color = "#FF3333"
 
 /obj/item/stack/tile/fairygrass/yellow
 	name = "yellow fairygrass tile"

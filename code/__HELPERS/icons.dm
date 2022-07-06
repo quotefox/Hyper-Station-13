@@ -256,8 +256,8 @@ world
 	else
 		// solid color
 		I = new(src)
-		I.Blend(COLOR_BLACK, ICON_OVERLAY)
-		I.SwapColor(COLOR_BLACK, null)
+		I.Blend("#000000", ICON_OVERLAY)
+		I.SwapColor("#000000", null)
 		I.Blend(icon, ICON_OVERLAY)
 	var/icon/J = new(src)
 	J.Opaque()
@@ -265,7 +265,7 @@ world
 	Blend(I, ICON_OR)
 
 // make this icon fully opaque--transparent pixels become black
-/icon/proc/Opaque(background = COLOR_BLACK)
+/icon/proc/Opaque(background = "#000000")
 	SwapColor(null, background)
 	MapColors(1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,0, 0,0,0,1)
 
@@ -427,10 +427,10 @@ world
 
 /proc/HSVtoRGB(hsv)
 	if(!hsv)
-		return COLOR_BLACK
+		return "#000000"
 	var/list/HSV = ReadHSV(hsv)
 	if(!HSV)
-		return COLOR_BLACK
+		return "#000000"
 
 	var/hue = HSV[1]
 	var/sat = HSV[2]
@@ -682,9 +682,9 @@ world
 	var/tone_gray = TONE[1]*0.3 + TONE[2]*0.59 + TONE[3]*0.11
 
 	if(gray <= tone_gray)
-		return BlendRGB(COLOR_BLACK, tone, gray/(tone_gray || 1))
+		return BlendRGB("#000000", tone, gray/(tone_gray || 1))
 	else
-		return BlendRGB(tone, COLOR_WHITE, (gray-tone_gray)/((255-tone_gray) || 1))
+		return BlendRGB(tone, "#ffffff", (gray-tone_gray)/((255-tone_gray) || 1))
 
 
 //Used in the OLD chem colour mixing algorithm

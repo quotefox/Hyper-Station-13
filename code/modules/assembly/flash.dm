@@ -10,6 +10,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	materials = list(MAT_METAL = 300, MAT_GLASS = 300)
 	crit_fail = FALSE     //Is the flash burnt out?
+	light_color = LIGHT_COLOR_WHITE
 	light_power = FLASH_LIGHT_POWER
 	var/flashing_overlay = "flash-f"
 	var/times_used = 0 //Number of times it's been used.

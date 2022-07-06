@@ -1,5 +1,5 @@
 //rune colors, for easy reference
-#define RUNE_COLOR_TALISMAN COLOR_BLUE
+#define RUNE_COLOR_TALISMAN "#0000FF"
 #define RUNE_COLOR_TELEPORT "#551A8B"
 #define RUNE_COLOR_OFFER "#FFFFFF"
 #define RUNE_COLOR_DARKRED "#7D1717"

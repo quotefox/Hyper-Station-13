@@ -168,7 +168,7 @@
 	icon_state = null
 	item_state = null
 	w_class = WEIGHT_CLASS_NORMAL
-	light_color = COLOR_CREAMY_ORANGE
+	light_color = "#FFCC66"
 	icon_off = "pipe"
 	icon_on = "pipe_lit"
 

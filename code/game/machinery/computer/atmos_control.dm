@@ -91,7 +91,6 @@ GLOBAL_LIST_EMPTY(atmos_air_controllers)
 	icon_screen = "tank"
 	icon_keyboard = "atmos_key"
 	circuit = /obj/item/circuitboard/computer/atmos_control
-	light_color = LIGHT_COLOR_CYAN
 	ui_x = 400
 	ui_y = 925
 
@@ -111,6 +110,8 @@ GLOBAL_LIST_EMPTY(atmos_air_controllers)
 	)
 	var/list/sensor_information = list()
 	var/datum/radio_frequency/radio_connection
+
+	light_color = LIGHT_COLOR_CYAN
 
 /obj/machinery/computer/atmos_control/Initialize()
 	. = ..()

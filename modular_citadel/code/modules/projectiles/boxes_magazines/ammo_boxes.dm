@@ -4,7 +4,7 @@
 	icon_state = "foambox"
 	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/tag
 	max_ammo = 40
-	color = COLOR_MAGENTA
+	color = "#FF00FF"
 
 /obj/item/ammo_box/foambox/tag/red
 	name = "ammo box (Lastag Red Foam Darts)"
@@ -12,7 +12,7 @@
 	icon_state = "foambox"
 	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/tag/red
 	max_ammo = 40
-	color = COLOR_RED
+	color = "#FF0000"
 
 /obj/item/ammo_box/foambox/tag/blue
 	name = "ammo box (Lastag Blue Foam Darts)"
@@ -20,4 +20,4 @@
 	icon_state = "foambox"
 	ammo_type = /obj/item/ammo_casing/caseless/foam_dart/tag/blue
 	max_ammo = 40
-	color = COLOR_BLUE
+	color = "#0000FF"

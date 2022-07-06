@@ -13,14 +13,14 @@
 	throwforce = 5
 	hitsound = "swing_hit"
 	usesound = list('sound/items/welder.ogg', 'sound/items/welder2.ogg')
+	var/acti_sound = 'sound/items/welderactivate.ogg'
+	var/deac_sound = 'sound/items/welderdeactivate.ogg'
 	throw_speed = 3
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
 	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 100, "acid" = 30)
 	resistance_flags = FIRE_PROOF
-	heat = 3800
-	tool_behaviour = TOOL_WELDER
-	toolspeed = 1
+
 	materials = list(MAT_METAL=70, MAT_GLASS=30)
 	var/welding = 0 	//Whether or not the welding tool is off(0), on(1) or currently welding(2)
 	var/status = TRUE 		//Whether the welder is secured or unsecured (able to attach rods to it to make a flamethrower)
@@ -30,8 +30,9 @@
 	var/light_intensity = 2 //how powerful the emitted light is when used.
 	var/progress_flash_divisor = 10
 	var/burned_fuel_for = 0	//when fuel was last removed
-	var/acti_sound = 'sound/items/welderactivate.ogg'
-	var/deac_sound = 'sound/items/welderdeactivate.ogg'
+	heat = 3800
+	tool_behaviour = TOOL_WELDER
+	toolspeed = 1
 
 	drop_sound = 'sound/items/handling/weldingtool_drop.ogg'
 	pickup_sound =  'sound/items/handling/weldingtool_pickup.ogg'
@@ -352,12 +353,12 @@
 	item_state = "exwelder"
 	max_fuel = 40
 	materials = list(MAT_METAL=70, MAT_GLASS=120)
+	var/last_gen = 0
 	change_icons = 0
 	can_off_process = 1
 	light_intensity = 1
 	toolspeed = 0.5
 	var/nextrefueltick = 0
-	var/last_gen = 0
 
 /obj/item/weldingtool/experimental/brass
 	name = "brass welding tool"

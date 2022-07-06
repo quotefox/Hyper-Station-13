@@ -27,7 +27,7 @@
 /datum/reagent/toxin/mutagen
 	name = "Unstable mutagen"
 	description = "Might cause unpredictable mutations. Keep away from children."
-	color = COLOR_GREEN
+	color = "#00FF00"
 	toxpwr = 0
 	taste_description = "slime"
 	taste_mult = 0.9
@@ -562,7 +562,7 @@
 	name = "Sodium Thiopental"
 	description = "Sodium Thiopental induces heavy weakness in its target as well as unconsciousness."
 	reagent_state = LIQUID
-	color = LIGHT_COLOR_BLUE
+	color = "#6496FA"
 	metabolization_rate = 0.75 * REAGENTS_METABOLISM
 	toxpwr = 0
 
