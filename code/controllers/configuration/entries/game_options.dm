@@ -384,3 +384,55 @@
 	min_val = 0
 
 /datum/config_entry/flag/dynamic_mode
+
+/datum/config_entry/number/economy_base_payment
+	config_entry_value = 60
+	min_val = 0
+
+/datum/config_entry/number/economy_base_pay_ratio
+	config_entry_value = 6
+	min_val = 1
+
+/datum/config_entry/number/economy_price_multiplier
+	config_entry_value = 1
+	min_val = 0
+
+/datum/config_entry/number/economy_price_low
+	config_entry_value = 8
+	min_val = 0
+
+/datum/config_entry/number/economy_price_default
+	config_entry_value = 15
+	min_val = 0
+
+/datum/config_entry/number/economy_price_high
+	config_entry_value = 30
+	min_val = 0
+
+/datum/config_entry/number/economy_price_erotic
+	config_entry_value = 25
+	min_val = 0
+
+/datum/config_entry/number/economy_price_expensive
+	config_entry_value = 60
+	min_val = 0
+
+/datum/config_entry/number/economy_price_expensive_af
+	config_entry_value = 90
+	min_val = 0
+
+/datum/config_entry/number/economy_job_rate_default
+	config_entry_value = 1.2
+	min_val = 0
+
+/datum/config_entry/keyed_list/economy_job_rate
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_NUM
+	lowercase = FALSE
+	splitter = ","
+
+/datum/config_entry/keyed_list/economy_job_rate_area
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_NUM
+	lowercase = FALSE
+	splitter = ","

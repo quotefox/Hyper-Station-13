@@ -35,6 +35,8 @@ All foods are distributed among various categories. Use common sense.
 	righthand_file = 'icons/mob/inhands/misc/food_righthand.dmi'
 	obj_flags = UNIQUE_RENAME
 	grind_results = list() //To let them be ground up to transfer their reagents
+	economy_type = ECONOMY_PRICE_LOW
+	economy_price_mul = 1.5
 	var/bitesize = 2
 	var/bitecount = 0
 	var/trash = null

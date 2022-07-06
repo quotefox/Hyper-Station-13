@@ -18,6 +18,7 @@
 	light_power = 0
 	light_range = 7
 	light_color = COLOR_VIVID_RED
+
 	var/pin = 0
 
 /obj/machinery/atm/ui_interact(mob/user)
@@ -39,7 +40,7 @@
 
 		if(idcard.registered_account)
 			if(!idcard.registered_account.account_pin || pin == idcard.registered_account.account_pin)
-				dat += "<p>Balance: <b>$[idcard.registered_account.account_balance]</b>"
+				dat += "<p>Balance: <b>$[idcard.registered_account.balance]</b>"
 				//dat += "<p>Offstation Balance: <b()</b>"
 				dat += "<p>"
 				dat	+= "<a href='byond://?src=[REF(src)];withdraw=1'>Withdraw</A>"
@@ -72,15 +73,15 @@
 			user = idcard.registered_name
 			pin = ""
 			playsound(src, 'sound/machines/button.ogg', 50, FALSE)
-			src.ui_interact(usr)
+			ui_interact(usr)
 
 	if(istype(I, /obj/item/stack/credits)) //feed money back into the machine! dont need a pin to donate stuff.
 		if(held_card)
 			var/obj/item/stack/credits/cred = I
 			var/obj/item/card/id/idcard = held_card
-			idcard.registered_account.account_balance = (idcard.registered_account.account_balance+cred.amount)
+			idcard.registered_account.balance = (idcard.registered_account.balance+cred.amount)
 			to_chat(usr, "<span class='notice'>You insert [cred] into the ATM.</span>")
-			src.ui_interact(usr)
+			ui_interact(usr)
 			del(cred)
 
 /obj/machinery/atm/Topic(href, href_list)
@@ -106,29 +107,29 @@
 		var/pininput = input(user, "Input pin", "Pin Number") as num|null
 		if(pininput)
 			if(pininput > 9999 || pininput < 1000)
-				to_chat(usr, "<span class='notice'>[src.name] buzzes, you must input a 4 digit number between 1000 and 9999.</span>")
+				to_chat(usr, "<span class='notice'>[src] buzzes, you must input a 4 digit number between 1000 and 9999.</span>")
 				return
 			pin = max(min( round(text2num(pininput)), 9999),1000) //4 numbers or less.
 			var/obj/item/card/id/idcard = held_card
 			if(pin == idcard.registered_account.account_pin)
-				to_chat(usr, "<span class='notice'>[src.name] beeps, accepting the pin.</span>")
+				to_chat(usr, "<span class='notice'>[src] beeps, accepting the pin.</span>")
 			else
-				to_chat(usr, "<span class='notice'>[src.name] buzzes, denying the pin.</span>")
+				to_chat(usr, "<span class='notice'>[src] buzzes, denying the pin.</span>")
 
 	if(href_list["changepin"])
 		playsound(src, get_sfx("terminal_type"), 25, 1)
 		var/pinchange = input(user, "Input pin", "Pin Number") as num|null
 		if(pinchange > 9999 || pinchange < 1000)
-			to_chat(usr, "<span class='warning'>[src.name], you must have a 4 digit number for a pin and be between 1000 and 9999.</span>")
+			to_chat(usr, "<span class='warning'>[src], you must have a 4 digit number for a pin and be between 1000 and 9999.</span>")
 			return
 		if(pinchange)
 			var/pinchange2 = input(user, "Confirm pin", "Confirm pin") as num|null //time to confirm!
 			if(pinchange == pinchange2)
 				var/obj/item/card/id/idcard = held_card
 				idcard.registered_account.account_pin = pinchange
-				to_chat(usr, "<span class='notice'>[src.name] beeps, your pin has been changed to [pinchange]!.</span>")
+				to_chat(usr, "<span class='notice'>[src] beeps, your pin has been changed to [pinchange]!.</span>")
 			else
-				to_chat(usr, "<span class='warning'>[src.name] buzzes, your pins did not match!</span>")
+				to_chat(usr, "<span class='warning'>[src] buzzes, your pins did not match!</span>")
 		pin = ""
 
 	if(href_list["withdraw"])
@@ -138,9 +139,9 @@
 			if(idcard.registered_account)
 				var/amount = input(user, "Choose amount", "Withdraw") as num|null
 				if(amount>0)
-					amount = max(min( round(text2num(amount)), idcard.registered_account.account_balance),0) //make sure they aint taking out more then what they have
+					amount = max(min( round(text2num(amount)), idcard.registered_account.balance),0) //make sure they aint taking out more then what they have
 					to_chat(usr, "<span class='notice'>The machine prints out [amount] credits.</span>")
-					idcard.registered_account.account_balance = (idcard.registered_account.account_balance-amount) //subtract the amount they took out.
+					idcard.registered_account.balance = (idcard.registered_account.balance-amount) //subtract the amount they took out.
 					var/obj/item/stack/credits/C = new /obj/item/stack/credits/(loc)
 					C.amount = amount
 					if(usr.put_in_hands(C))

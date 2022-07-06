@@ -23,6 +23,7 @@ Head of Security
 	exp_requirements = 2000
 	exp_type = EXP_TYPE_SECURITY
 	exp_type_department = EXP_TYPE_SECURITY
+	economy_type = ECONOMY_TYPE_COMMAND
 
 	outfit = /datum/outfit/job/hos
 
@@ -91,6 +92,7 @@ Warden
 	exp_requirements = 720
 	exp_type = EXP_TYPE_SECURITY
 	exp_type_department = EXP_TYPE_SECURITY
+	economy_type = ECONOMY_TYPE_DANGEROUS
 
 	outfit = /datum/outfit/job/warden
 
@@ -150,6 +152,7 @@ Detective
 	exp_requirements = 300
 	exp_type = EXP_TYPE_SECURITY
 	exp_type_department = EXP_TYPE_SECURITY
+	economy_type = ECONOMY_TYPE_DANGEROUS
 
 	outfit = /datum/outfit/job/detective
 
@@ -207,6 +210,7 @@ Security Officer
 	exp_requirements = 420
 	exp_type = EXP_TYPE_SECURITY
 	exp_type_department = EXP_TYPE_SECURITY
+	economy_type = ECONOMY_TYPE_DANGEROUS
 
 	outfit = /datum/outfit/job/security
 
@@ -367,6 +371,7 @@ Junior Security Officer
 	minimal_player_age = 3
 	exp_requirements = 300
 	exp_type = EXP_TYPE_CREW
+	economy_type = ECONOMY_TYPE_ROOKIE
 
 	outfit = /datum/outfit/job/security/junior
 

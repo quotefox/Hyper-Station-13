@@ -302,4 +302,5 @@
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "bling"
 	item_color = "bling"
-	price = 30
+	economy_type = ECONOMY_PRICE_EXPENSIVE
+	economy_price_mul = 1.25

@@ -510,6 +510,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	resistance_flags = FIRE_PROOF
 	price = 1
 	light_color = LIGHT_COLOR_FIRE
+
 	var/lit = 0
 	var/fancy = TRUE
 	var/overlay_state

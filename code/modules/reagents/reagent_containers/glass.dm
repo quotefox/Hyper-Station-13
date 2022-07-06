@@ -336,7 +336,7 @@
 	volume = 50
 	amount_per_transfer_from_this = 10
 	container_HP = 1
-	price = 1
+	economy_type = ECONOMY_PRICE_LOW
 
 /obj/item/reagent_containers/glass/beaker/waterbottle/Initialize()
 	beaker_weakness_bitflag |= TEMP_WEAK

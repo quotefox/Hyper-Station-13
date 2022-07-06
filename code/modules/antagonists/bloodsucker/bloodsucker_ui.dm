@@ -93,7 +93,7 @@
 		dat += "</table>"
 	dat += "</div>"
 	if(onstation && C && C.registered_account)
-		dat += "<b>Balance: $[account.account_balance]</b>"
+		dat += "<b>Balance: $[account.balance]</b>"
 	if(istype(src, /obj/machinery/vending/snack))
 		dat += "<h3>Chef's Food Selection</h3>"
 		dat += "<div class='statusDisplay'>"
