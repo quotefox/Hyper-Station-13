@@ -71,7 +71,7 @@
 	icon = 'modular_citadel/icons/obj/food/food.dmi'
 	icon_state = "sushie_egg"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 2)
-	filling_color = "#FF3333" // R225 G051 B051
+	filling_color = COLOR_RED_LIGHT // R225 G051 B051
 	tastes = list("seaweed" = 1, "salty" = 2)
 	foodtype = MEAT | VEGETABLES
 

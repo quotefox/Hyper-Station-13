@@ -5,7 +5,7 @@
 	desc = "This is a plant."
 	icon_state = "ambrosiavulgaris"
 	slot_flags = ITEM_SLOT_HEAD
-	filling_color = "#008000"
+	filling_color = COLOR_DARK_GREEN
 	bitesize_mod = 2
 	foodtype = VEGETABLES
 	tastes = list("ambrosia" = 1)

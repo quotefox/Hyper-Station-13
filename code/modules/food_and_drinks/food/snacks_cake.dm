@@ -125,7 +125,7 @@
 	name = "lime cake slice"
 	desc = "Just a slice of cake, it is enough for everyone."
 	icon_state = "limecake_slice"
-	filling_color = "#00FF00"
+	filling_color = COLOR_GREEN
 	tastes = list("cake" = 5, "sweetness" = 2, "unbearable sourness" = 2)
 	foodtype = GRAIN | DAIRY | FRUIT | SUGAR | ANTITOXIC
 
@@ -222,7 +222,7 @@
 	name = "slime cake slice"
 	desc = "A slice of slime cake."
 	icon_state = "slimecake_slice"
-	filling_color = "#00FFFF"
+	filling_color = COLOR_CYAN
 	tastes = list("cake" = 5, "sweetness" = 1, "slime" = 1)
 	foodtype = GRAIN | DAIRY | SUGAR
 
@@ -290,7 +290,7 @@
 	name = "angel food cake slice"
 	desc = "A slice of heavenly cake."
 	icon_state = "holy_cake_slice"
-	filling_color = "#00FFFF"
+	filling_color = COLOR_CYAN
 	tastes = list("cake" = 5, "sweetness" = 1, "clouds" = 1)
 	foodtype = GRAIN | DAIRY | SUGAR
 
@@ -308,7 +308,7 @@ obj/item/reagent_containers/food/snacks/store/cake/pound_cake
 	name = "pound cake slice"
 	desc = "A slice of condensed cake made for filling people up quickly."
 	icon_state = "pound_cake_slice"
-	filling_color = "#00FFFF"
+	filling_color = COLOR_CYAN
 	tastes = list("cake" = 5, "sweetness" = 5, "batter" = 1)
 	foodtype = GRAIN | DAIRY | SUGAR | JUNKFOOD
 
@@ -325,7 +325,7 @@ obj/item/reagent_containers/food/snacks/store/cake/pound_cake
 	name = "hardware cake slice"
 	desc = "A slice of electronic boards and some acid."
 	icon_state = "hardware_cake_slice"
-	filling_color = "#00FFFF"
+	filling_color = COLOR_CYAN
 	tastes = list("acid" = 1, "metal" = 1, "regret" = 10)
 	foodtype = GRAIN | GROSS
 
@@ -342,7 +342,7 @@ obj/item/reagent_containers/food/snacks/store/cake/pound_cake
 	name = "vanilla cake slice"
 	desc = "A slice of vanilla frosted cake."
 	icon_state = "vanillacake_slice"
-	filling_color = "#00FFFF"
+	filling_color = COLOR_CYAN
 	tastes = list("cake" = 1, "sugar" = 1, "vanilla" = 10)
 	foodtype = GRAIN | SUGAR | DAIRY
 
@@ -359,7 +359,7 @@ obj/item/reagent_containers/food/snacks/store/cake/pound_cake
 	name = "clown cake slice"
 	desc = "A slice of bad jokes, and silly props."
 	icon_state = "clowncake_slice"
-	filling_color = "#00FFFF"
+	filling_color = COLOR_CYAN
 	tastes = list("cake" = 1, "sugar" = 1, "joy" = 10)
 	foodtype = GRAIN | SUGAR | DAIRY
 
@@ -376,7 +376,7 @@ obj/item/reagent_containers/food/snacks/store/cake/pound_cake
 	name = "peach cake slice"
 	desc = "A slice of peach cake."
 	icon_state = "peach_slice"
-	filling_color = "#00FFFF"
+	filling_color = COLOR_CYAN
 	tastes = list("cake" = 1, "sugar" = 1, "peachjuice" = 10)
 	foodtype = GRAIN | SUGAR | DAIRY
 

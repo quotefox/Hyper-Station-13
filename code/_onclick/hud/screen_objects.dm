@@ -154,9 +154,9 @@
 	item_overlay.alpha = 92
 
 	if(!user.can_equip(holding, slot_id, TRUE))
-		item_overlay.color = "#FF0000"
+		item_overlay.color = COLOR_RED
 	else
-		item_overlay.color = "#00ff00"
+		item_overlay.color = COLOR_GREEN
 
 	object_overlays += item_overlay
 	add_overlay(object_overlays)

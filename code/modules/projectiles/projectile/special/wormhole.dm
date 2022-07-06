@@ -6,7 +6,7 @@
 	nodamage = TRUE
 	pass_flags = PASSGLASS | PASSTABLE | PASSGRILLE | PASSMOB
 	var/obj/item/gun/energy/wormhole_projector/gun
-	color = "#33CCFF"
+	color = COLOR_BLUE_LIGHT
 	tracer_type = /obj/effect/projectile/tracer/wormhole
 	impact_type = /obj/effect/projectile/impact/wormhole
 	muzzle_type = /obj/effect/projectile/muzzle/wormhole

@@ -26,7 +26,7 @@
 	name = "Stabilizing Agent"
 	description = "Keeps unstable chemicals stable. This does not work on everything."
 	reagent_state = LIQUID
-	color = "#FFFF00"
+	color = COLOR_YELLOW
 	value = 3
 	taste_description = "metal"
 
@@ -92,7 +92,7 @@
 	name = "Black Powder"
 	description = "Explodes. Violently."
 	reagent_state = LIQUID
-	color = "#000000"
+	color = COLOR_BLACK
 	value = 5
 	metabolization_rate = 0.05
 	taste_description = "salt"

@@ -27,7 +27,7 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	var/list/data
 	var/current_cycle = 0
 	var/volume = 0									//pretend this is moles
-	var/color = "#000000" // rgb: 0, 0, 0
+	var/color = COLOR_BLACK
 	var/can_synth = TRUE // can this reagent be synthesized? (for example: odysseus syringe gun)
 	var/metabolization_rate = REAGENTS_METABOLISM //how fast the reagent is metabolized by the mob
 	var/overrides_metab = 0

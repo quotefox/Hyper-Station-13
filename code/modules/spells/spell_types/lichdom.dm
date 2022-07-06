@@ -52,7 +52,7 @@
 
 		marked_item.name = "ensouled [marked_item.name]"
 		marked_item.desc += "\nA terrible aura surrounds this item, its very existence is offensive to life itself..."
-		marked_item.add_atom_colour("#003300", ADMIN_COLOUR_PRIORITY)
+		marked_item.add_atom_colour(COLOR_VERY_DARK_LIME_GREEN, ADMIN_COLOUR_PRIORITY)
 
 		new /obj/item/phylactery(marked_item, M.mind)
 
@@ -76,8 +76,8 @@
 	desc = "Stores souls. Revives liches. Also repels mosquitos."
 	icon = 'icons/obj/projectiles.dmi'
 	icon_state = "bluespace"
-	color = "#003300"
-	light_color = "#003300"
+	color = COLOR_VERY_DARK_LIME_GREEN
+	light_color = COLOR_VERY_DARK_LIME_GREEN
 	var/lon_range = 3
 	var/resurrections = 0
 	var/datum/mind/mind

@@ -6,7 +6,7 @@
 	name = "pool noodle"
 	desc = "A strange, bulky, bendable toy that can annoy people."
 	force = 0
-	color = "#000000"
+	color = COLOR_BLACK
 	w_class = WEIGHT_CLASS_SMALL
 	throwforce = 1
 	throw_speed = 10 //weeee

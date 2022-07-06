@@ -174,7 +174,7 @@
 	force = initial(force) + round(reagents.total_volume * 0.5)
 
 /obj/item/reagent_containers/rag/towel/random
-	possible_colors = list("#FF0000","#FF7F00","#FFFF00","#00FF00","#0000FF","#4B0082","#8F00FF")
+	possible_colors = list(COLOR_RED,"#FF7F00",COLOR_YELLOW,COLOR_GREEN,COLOR_BLUE,"#4B0082","#8F00FF")
 
 /obj/item/reagent_containers/rag/towel/syndicate
 	name = "syndicate towel"

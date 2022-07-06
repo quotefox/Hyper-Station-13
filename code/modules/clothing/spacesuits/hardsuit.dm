@@ -939,9 +939,8 @@
 	var/energy_color = "#35FFF0"
 
 /obj/item/clothing/suit/space/hardsuit/lavaknight/Initialize()
-	..()
-	light_color = energy_color
-	set_light(1)
+	. = ..()
+	set_light(l_range=1, l_color = energy_color)
 	update_icon()
 
 /obj/item/clothing/suit/space/hardsuit/lavaknight/update_icon()

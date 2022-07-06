@@ -86,7 +86,7 @@
 	name = "fly amanita"
 	desc = "<I>Amanita Muscaria</I>: Learn poisonous mushrooms by heart. Only pick mushrooms you know."
 	icon_state = "amanita"
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 
 // Destroying Angel
 /obj/item/seeds/angel

@@ -30,7 +30,7 @@
 	slices_num = 5
 	dried_type = null
 	w_class = WEIGHT_CLASS_NORMAL
-	filling_color = "#008000"
+	filling_color = COLOR_DARK_GREEN
 	bitesize_mod = 3
 	foodtype = FRUIT
 	juice_results = list(/datum/reagent/consumable/watermelonjuice = 0)

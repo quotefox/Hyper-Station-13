@@ -114,7 +114,7 @@
 	icon_state = "cuff"
 	item_state = "coil"
 	item_color = "red"
-	color = "#ff0000"
+	color = COLOR_RED
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
 	materials = list(MAT_METAL=150, MAT_GLASS=75)
@@ -136,11 +136,11 @@
 
 /obj/item/restraints/handcuffs/cable/red
 	item_color = "red"
-	color = "#ff0000"
+	color = COLOR_RED
 
 /obj/item/restraints/handcuffs/cable/yellow
 	item_color = "yellow"
-	color = "#ffff00"
+	color = COLOR_YELLOW
 
 /obj/item/restraints/handcuffs/cable/blue
 	item_color = "blue"
@@ -160,7 +160,7 @@
 
 /obj/item/restraints/handcuffs/cable/cyan
 	item_color = "cyan"
-	color = "#00ffff"
+	color = COLOR_CYAN
 
 /obj/item/restraints/handcuffs/cable/white
 	item_color = "white"

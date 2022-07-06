@@ -12,7 +12,7 @@
 	cooked_type = /obj/item/reagent_containers/food/snacks/meat/steak/plain
 	slice_path = /obj/item/reagent_containers/food/snacks/meat/rawcutlet/plain
 	slices_num = 3
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	tastes = list("meat" = 1)
 	foodtype = MEAT | RAW
 
@@ -90,7 +90,7 @@
 	icon_state = "slimemeat"
 	desc = "Because jello wasn't offensive enough to vegans."
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/toxin/slimejelly = 3)
-	filling_color = "#00FFFF"
+	filling_color = COLOR_CYAN
 	tastes = list("slime" = 1, "jelly" = 1)
 	foodtype = MEAT | RAW | TOXIC
 
@@ -125,7 +125,7 @@
 /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/shadow
 	icon_state = "shadowmeat"
 	desc = "Ow, the edge."
-	filling_color = "#202020"
+	filling_color = COLOR_NEARLY_BLACK
 	tastes = list("darkness" = 1, "meat" = 1)
 	foodtype = MEAT | RAW
 
@@ -147,7 +147,7 @@
 	name = "bone"
 	icon_state = "skeletonmeat"
 	desc = "There's a point where this needs to stop, and clearly we have passed it."
-	filling_color = "#F0F0F0"
+	filling_color = COLOR_VERY_VERY_LIGHT_GRAY
 	tastes = list("bone" = 1)
 	slice_path = null  //can't slice a bone into cutlets
 	foodtype = GROSS
@@ -167,7 +167,7 @@
 /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/ipc
 	icon_state = "ipcmeat"
 	desc = "Gross robot meat."
-	filling_color = "#000000"
+	filling_color = COLOR_BLACK
 	tastes = list("metal" = 1)
 
 /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/avian
@@ -218,7 +218,7 @@
 	desc = "A slice from a huge tomato."
 	icon_state = "tomatomeat"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2)
-	filling_color = "#FF0000"
+	filling_color = COLOR_RED
 	cooked_type = /obj/item/reagent_containers/food/snacks/meat/steak/killertomato
 	slice_path = /obj/item/reagent_containers/food/snacks/meat/rawcutlet/killertomato
 	tastes = list("tomato" = 1)
@@ -241,7 +241,7 @@
 	icon_state = "xenomeat"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 3, /datum/reagent/consumable/nutriment/vitamin = 1)
 	bitesize = 4
-	filling_color = "#32CD32"
+	filling_color = COLOR_LIME
 	cooked_type = /obj/item/reagent_containers/food/snacks/meat/steak/xeno
 	slice_path = /obj/item/reagent_containers/food/snacks/meat/rawcutlet/xeno
 	tastes = list("meat" = 1, "acid" = 1)

@@ -81,13 +81,12 @@
 	icon_screen = "dna"
 	icon_keyboard = "med_key"
 	circuit = /obj/item/circuitboard/computer/prototype_cloning
+	light_color = LIGHT_COLOR_BLUE
 	var/obj/machinery/dna_scannernew/scanner = null //Linked scanner. For scanning.
 	var/list/pods //Linked experimental cloning pods
 	var/temp = "Inactive"
 	var/scantemp = "Ready to Scan"
 	var/loading = FALSE // Nice loading text
-
-	light_color = LIGHT_COLOR_BLUE
 
 /obj/machinery/computer/prototype_cloning/Initialize()
 	. = ..()

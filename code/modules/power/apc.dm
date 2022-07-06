@@ -333,16 +333,15 @@
 
 		switch(charging)
 			if(APC_NOT_CHARGING)
-				light_color = LIGHT_COLOR_RED
+				set_light_color(COLOR_SOFT_RED)
 			if(APC_CHARGING)
-				light_color = LIGHT_COLOR_BLUE
+				set_light_color(LIGHT_COLOR_BLUE)
 			if(APC_FULLY_CHARGED)
-				light_color = LIGHT_COLOR_GREEN
-		set_light(lon_range)
+				set_light_color(LIGHT_COLOR_GREEN)
+		set_light(l_range=lon_range)
 		lighteffect.color = light_color
 	else if(update_state & UPSTATE_BLUESCREEN)
-		light_color = LIGHT_COLOR_BLUE
-		set_light(lon_range)
+		set_light(l_range=lon_range, l_color=LIGHT_COLOR_BLUE)
 	else
 		set_light(0)
 

@@ -9,6 +9,7 @@
 	desc = "Used to monitor the crew's PDA messages, as well as request console messages."
 	icon_screen = "comm_logs"
 	circuit = /obj/item/circuitboard/computer/message_monitor
+	light_color = LIGHT_COLOR_GREEN
 
 	//Servers, and server linked to.
 	var/network = "tcommsat"		// the network to probe
@@ -33,8 +34,6 @@
 	var/customsender = "System Administrator"
 	var/customjob		= "Admin"
 	var/custommessage 	= "This is a test, please ignore."
-
-	light_color = LIGHT_COLOR_GREEN
 
 /obj/machinery/computer/message_monitor/ui_interact(mob/user, ui_key = "main", datum/tgui/ui = null, force_open = FALSE,\
 														datum/tgui/master_ui = null, datum/tgui_state/state = GLOB.tgui_default_state)

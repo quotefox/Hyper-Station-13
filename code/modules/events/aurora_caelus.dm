@@ -15,7 +15,7 @@
 	announceWhen = 1
 	startWhen = 8	//Delayed with sleep()
 	endWhen = 50
-	var/list/aurora_colors = list("#ffd980", "#eaff80", "#eaff80", "#ffd980", "#eaff80", "#A2FFC7", "#9400D3", "#FFC0CB")
+	var/list/aurora_colors = list("#ffd980", "#eaff80", "#eaff80", "#ffd980", "#eaff80", "#A2FFC7", "#9400D3", COLOR_PINK)
 	var/aurora_progress = 0 //this cycles from 1 to 8, slowly changing colors from gentle green to gentle blue
 	var/list/applicable_areas = list()
 
