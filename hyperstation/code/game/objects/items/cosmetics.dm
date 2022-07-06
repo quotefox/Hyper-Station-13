@@ -7,9 +7,8 @@
 	icon_state = "nailcap"
 	item_state = "nailpolish"
 	w_class = WEIGHT_CLASS_SMALL
-	economy_type = ECONOMY_PRICE_LOW
-	economy_price_mul = 1.25
 	var/paint = "black"
+	price = 5
 	var/mutable_appearance/bottle //show the colour on the bottle.
 
 /obj/item/nailpolish/red

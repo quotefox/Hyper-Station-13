@@ -93,11 +93,10 @@
 /obj/item/reagent_containers/food/drinks/drinkingglass/filled/nuka_cola
 	name = "Nuka Cola"
 	list_reagents = list(/datum/reagent/consumable/nuka_cola = 50)
-	economy_type = ECONOMY_PRICE_DEFAULT
-	economy_price_mul = 1.5
+	price = 7
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/filled/syndicatebomb
-	name = "Syndicate Bomb"
+	name = "Syndicat Bomb"
 	list_reagents = list(/datum/reagent/consumable/ethanol/syndicatebomb = 50)
 
 /obj/item/reagent_containers/food/drinks/drinkingglass/attackby(obj/item/I, mob/user, params)

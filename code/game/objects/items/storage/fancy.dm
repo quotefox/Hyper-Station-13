@@ -136,7 +136,7 @@
 	slot_flags = ITEM_SLOT_BELT
 	icon_type = "cigarette"
 	spawn_type = /obj/item/clothing/mask/cigarette/space_cigarette
-	economy_type = ECONOMY_PRICE_LOW
+	price = 5
 
 /obj/item/storage/fancy/cigarettes/ComponentInitialize()
 	. = ..()
@@ -231,7 +231,7 @@
 	desc = "Smoked by the truly robust."
 	icon_state = "robustg"
 	spawn_type = /obj/item/clothing/mask/cigarette/robustgold
-	economy_price_mul = 1.5
+	price = 6
 
 /obj/item/storage/fancy/cigarettes/cigpack_carp
 	name = "\improper Carp Classic packet"
@@ -283,7 +283,7 @@
 	icon_state = "cig_paper_pack"
 	icon_type = "rolling paper"
 	spawn_type = /obj/item/rollingpaper
-	economy_price_mul = 0.25
+	price = 2
 
 /obj/item/storage/fancy/rollingpapers/ComponentInitialize()
 	. = ..()
@@ -308,8 +308,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	icon_type = "premium cigar"
 	spawn_type = /obj/item/clothing/mask/cigarette/cigar
-	economy_type = ECONOMY_PRICE_EXPENSIVE
-	economy_price_mul = 0.75
+	price = 8
 
 /obj/item/storage/fancy/cigarettes/cigars/ComponentInitialize()
 	. = ..()

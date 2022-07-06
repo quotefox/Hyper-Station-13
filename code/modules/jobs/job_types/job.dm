@@ -61,22 +61,10 @@
 
 	var/list/alt_titles = list()
 
-	/// A multiplier for how much a person gets each paycheck
-	var/base_paycheck_multiplier = 1.2
-	/// The "type" of economy this job falls under
-	var/economy_type
-
 	var/override_roundstart_spawn = null		//Where the player spawns at roundstart if defined
 
 	//whitelisting
 	var/whitelist_type = ""
-
-/datum/job/New()
-	base_paycheck_multiplier = CONFIG_GET(number/economy_job_rate_default)
-	if(SSjob.economy_multipliers_by_job[title])
-		base_paycheck_multiplier *= SSjob.economy_multipliers_by_job[title]
-	if(SSjob.economy_multipliers_by_type[economy_type])
-		base_paycheck_multiplier *= SSjob.economy_multipliers_by_type[economy_type]
 
 //Only override this proc
 //H is usually a human unless an /equip override transformed it
@@ -107,6 +95,15 @@
 	if(!H)
 		return FALSE
 
+	if(!visualsOnly)
+		var/datum/bank_account/bank_account = new(H.real_name, src)
+		bank_account.account_holder = H.real_name
+		bank_account.account_job = src
+		bank_account.account_id = rand(111111,999999) //give account ID!
+		//bank_account.account_pin = rand(1000,9999) //give random pin!
+		bank_account.account_balance = 80
+		H.account_id = bank_account.account_id
+
 	if(CONFIG_GET(flag/enforce_human_authority) && (title in GLOB.command_positions))
 		if(H.dna.species.id != "human")
 			H.set_species(/datum/species/human)
@@ -125,14 +122,14 @@
 
 /datum/job/proc/get_access()
 	if(!config)	//Needed for robots.
-		return minimal_access.Copy()
+		return src.minimal_access.Copy()
 
 	. = list()
 
 	if(CONFIG_GET(flag/jobs_have_minimal_access))
-		. = minimal_access.Copy()
+		. = src.minimal_access.Copy()
 	else
-		. = access.Copy()
+		. = src.access.Copy()
 
 	if(CONFIG_GET(flag/everyone_has_maint_access)) //Config has global maint access set
 		. |= list(ACCESS_MAINT_TUNNELS)
@@ -236,8 +233,8 @@
 		else
 			H.real_name = "[J.title] #[rand(10000, 99999)]"
 
-	var/client/preference_source = H.client
 	var/obj/item/card/id/C = H.wear_id
+	var/client/preference_source = H.client
 	if(istype(C))
 		C.access = J.get_access()
 		shuffle_inplace(C.access) // Shuffle access list to make NTNet passkeys less predictable
@@ -248,8 +245,12 @@
 		else
 			C.update_label()
 
-		C.create_bank_account(H, J)
-
+		for(var/A in SSeconomy.bank_accounts)
+			var/datum/bank_account/B = A
+			if(B.account_id == H.account_id)
+				C.registered_account = B
+				B.bank_cards += C
+				break
 		H.sec_hud_set_ID()
 
 	var/obj/item/pda/PDA = H.get_item_by_slot(pda_slot)

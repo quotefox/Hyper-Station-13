@@ -11,8 +11,7 @@
 	strip_delay = 60
 	equip_delay_other = 60
 	materials = list(MAT_METAL=5000, MAT_GLASS=2000)
-	economy_type = ECONOMY_PRICE_EXPENSIVE
-	economy_price_mul = 0.75
+	price = 5
 	var/tagname = null
 
 /datum/design/electropack/shockcollar

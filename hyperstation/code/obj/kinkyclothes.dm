@@ -6,16 +6,14 @@
 	icon = 'hyperstation/icons/obj/clothing/gloves.dmi'
 	alternate_worn_icon = 'hyperstation/icons/mobs/gloves.dmi'
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
-	economy_type = ECONOMY_PRICE_EROTIC
-	economy_price_mul = 0.75
+	price = 5
 
 /obj/item/clothing/gloves/latexsleeves/security
 	name = "security sleeves"
 	desc = "A pair of latex sleeves, with a band of red above the elbows denoting that the wearer is part of the security team."
 	icon_state = "latexsec"
 	item_state = "latexsec"
-	economy_type = ECONOMY_PRICE_EROTIC
-	economy_price_mul = 0.75
+	price = 5
 
 /obj/item/clothing/head/dominatrixcap
 	name = "dominatrix cap"
@@ -47,8 +45,7 @@ obj/item/clothing/neck/stole
 	w_class = WEIGHT_CLASS_SMALL
 	icon_state = "stole"
 	item_state = ""	//no inhands
-	economy_type = ECONOMY_PRICE_EXPENSIVE
-	economy_price_mul = 0.75
+	price = 3
 
 obj/item/clothing/neck/stole/black
 	name = "black boa"
@@ -58,8 +55,7 @@ obj/item/clothing/neck/stole/black
 	icon_state = "stole"
 	item_state = ""	//no inhands
 	color = "#3d3d3d"
-	economy_type = ECONOMY_PRICE_EXPENSIVE
-	economy_price_mul = 0.75
+	price = 3
 
 /obj/item/clothing/suit/fluffyhalfcrop
 	name = "fluffy half-crop jacket"
