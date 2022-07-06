@@ -75,7 +75,7 @@
 	name = "lighting fx obj"
 	desc = "Tell a coder if you're seeing this."
 	icon_state = "nothing"
-	light_color = "#FFFFFF"
+	light_color = COLOR_WHITE
 	light_range = MINIMUM_USEFUL_LIGHT_RANGE
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 

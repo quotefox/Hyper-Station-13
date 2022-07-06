@@ -52,7 +52,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(current_version < 19)
 		pda_style = "mono"
 	if(current_version < 20)
-		pda_color = "#808000"
+		pda_color = COLOR_OLIVE
 	if(current_version < 22)
 		if(features["balls_fluid"])
 			features["balls_fluid"] = /datum/reagent/consumable/semen

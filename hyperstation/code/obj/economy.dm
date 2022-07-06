@@ -17,7 +17,7 @@
 	var/user = ""
 	light_power = 0
 	light_range = 7
-	light_color = "#ff3232"
+	light_color = COLOR_VIVID_RED
 	var/pin = 0
 
 /obj/machinery/atm/ui_interact(mob/user)

@@ -175,7 +175,7 @@
 	bitesize = 1
 	trash = /obj/item/trash/plate
 	list_reagents = list(/datum/reagent/toxin/minttoxin = 2)
-	filling_color = "#800000"
+	filling_color = COLOR_RED
 	foodtype = TOXIC | SUGAR
 
 /obj/item/reagent_containers/food/snacks/eggwrap
@@ -203,7 +203,7 @@
 	desc = "A cluster of juicy spider eggs. A great side dish for when you care not for your health."
 	icon_state = "spidereggs"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 2, /datum/reagent/toxin = 2)
-	filling_color = "#008000"
+	filling_color = COLOR_DARK_GREEN
 	tastes = list("cobwebs" = 1)
 	foodtype = MEAT | TOXIC
 
@@ -231,7 +231,7 @@
 	icon = 'modular_citadel/icons/obj/food/food.dmi'
 	icon_state = "sushie_egg"
 	list_reagents = list(/datum/reagent/consumable/nutriment = 6, /datum/reagent/consumable/nutriment/vitamin = 2)
-	filling_color = "#FF3333" // R225 G051 B051
+	filling_color = COLOR_RED_LIGHT // R225 G051 B051
 	tastes = list("seaweed" = 1, "cobwebs" = 1, "salty" = 2)
 	foodtype = MEAT | VEGETABLES
 

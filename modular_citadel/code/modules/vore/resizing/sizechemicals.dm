@@ -7,7 +7,7 @@
 	name = "Macrocillin"
 	description = "Glowing yellow liquid."
 	reagent_state = LIQUID
-	color = "#FFFF00" // rgb: 255, 255, 0
+	color = COLOR_YELLOW // rgb: 255, 255, 0
 	overdose_threshold = 20
 
 /datum/reagent/medicine/macrocillin/on_mob_life(mob/living/M, method=INGEST)
@@ -24,7 +24,7 @@
 	name = "Microcillin"
 	description = "Murky purple liquid."
 	reagent_state = LIQUID
-	color = "#800080"
+	color = COLOR_PURPLE
 	overdose_threshold = 20
 
 /datum/reagent/microcillin/on_mob_life(mob/living/M, method=INGEST)
@@ -42,7 +42,7 @@
 	name = "Normalcillin"
 	description = "Translucent cyan liquid."
 	reagent_state = LIQUID
-	color = "#00FFFF"
+	color = COLOR_CYAN
 	overdose_threshold = 20
 
 /datum/reagent/medicine/normalcillin/on_mob_life(mob/living/M, method=INGEST)

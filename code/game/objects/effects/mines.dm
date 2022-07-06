@@ -115,7 +115,7 @@
 	name = "Red Orb"
 	desc = "You feel angry just looking at it."
 	duration = 1200 //2min
-	color = "#FF0000"
+	color = COLOR_RED
 
 /obj/effect/mine/pickup/bloodbath/mineEffect(mob/living/carbon/victim)
 	if(!victim.client || !istype(victim))
@@ -152,7 +152,7 @@
 /obj/effect/mine/pickup/healing
 	name = "Blue Orb"
 	desc = "You feel better just looking at it."
-	color = "#0000FF"
+	color = COLOR_BLUE
 
 /obj/effect/mine/pickup/healing/mineEffect(mob/living/carbon/victim)
 	if(!victim.client || !istype(victim))
@@ -163,7 +163,7 @@
 /obj/effect/mine/pickup/speed
 	name = "Yellow Orb"
 	desc = "You feel faster just looking at it."
-	color = "#FFFF00"
+	color = COLOR_YELLOW
 	duration = 300
 
 /obj/effect/mine/pickup/speed/mineEffect(mob/living/carbon/victim)

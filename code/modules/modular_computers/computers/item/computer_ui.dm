@@ -155,7 +155,7 @@
 					to_chat(user, "<span class='warning'>That color is too dark! Choose a lighter one.</span>")
 					new_color = null
 			comp_light_color = new_color
-			light_color = new_color
+			set_light_color(new_color)
 			update_light()
 			return TRUE
 		else

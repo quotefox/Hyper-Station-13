@@ -77,7 +77,7 @@
 	STOP_PROCESSING(SSobj, src)
 
 /obj/item/clothing/head/hardhat/cakehat/is_hot()
-	return on * heat
+	return light_on * heat
 /*
  * Ushanka
  */

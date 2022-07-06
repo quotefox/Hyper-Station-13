@@ -338,7 +338,7 @@ Difficulty: Medium
 	layer = BELOW_MOB_LAYER
 	pixel_x = -32
 	pixel_y = -32
-	color = "#FF0000"
+	color = COLOR_RED
 	duration = 5
 
 /obj/effect/temp_visual/dragon_flight

@@ -14,7 +14,7 @@
 	announceWhen = 30
 	startWhen = 1
 	endWhen = 115
-	var/list/aurora_colors = list("#ffc8bc", "#ed927f", "#d5745f", "#bf3a1d", "#c71414", "#FF3131", "#ee0808", "#ff0000")
+	var/list/aurora_colors = list("#ffc8bc", "#ed927f", "#d5745f", "#bf3a1d", "#c71414", "#FF3131", "#ee0808", COLOR_RED)
 	var/aurora_progress = 0 //this cycles from 1 to 8, slowly grading towards a bright red
 	var/list/areasToFlicker = list(/area/hallway,
 									/area/security,

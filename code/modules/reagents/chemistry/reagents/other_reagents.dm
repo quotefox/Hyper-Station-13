@@ -1584,7 +1584,7 @@
 /datum/reagent/plantnutriment
 	name = "Generic nutriment"
 	description = "Some kind of nutriment. You can't really tell what it is. You should probably report it, along with how you obtained it."
-	color = "#000000" // RBG: 0, 0, 0
+	color = COLOR_BLACK
 	var/tox_prob = 0
 	taste_description = "plant food"
 	pH = 3
@@ -1694,7 +1694,7 @@
 	name = "Colorful Reagent"
 	description = "Thoroughly sample the rainbow."
 	reagent_state = LIQUID
-	color = "#FFFF00"
+	color = COLOR_YELLOW
 	var/list/random_color_list = list("#00aedb","#a200ff","#f47835","#d41243","#d11141","#00b159","#00aedb","#f37735","#ffc425","#008744","#0057e7","#d62d20","#ffa700")
 	taste_description = "rainbows"
 	var/no_mob_color = FALSE
@@ -2020,7 +2020,7 @@
 /datum/reagent/growthserum //neutered to use as a chemical base for sizecode shit
 	name = "Growth Serum"
 	description = "A commercial chemical designed to help older men in the bedroom."//not really it just makes you a giant
-	color = "#ff0000"//strong red. rgb 255, 0, 0
+	color = COLOR_RED//strong red. rgb 255, 0, 0
 	taste_description = "bitterness" // apparently what viagra tastes like
 
 /datum/reagent/plastic_polymers
@@ -2176,7 +2176,7 @@
 	name = "UNKNOWN"
 	description = "404: Chemical not found."
 	metabolization_rate = REAGENTS_METABOLISM
-	color = "#0000FF"
+	color = COLOR_BLUE
 	can_synth = FALSE
 	var/datum/dna/original_dna
 	var/reagent_ticks = 0

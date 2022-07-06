@@ -271,7 +271,7 @@ All foods are distributed among various categories. Use common sense.
 	cut_overlays()
 	var/mutable_appearance/filling = mutable_appearance(icon, "[initial(icon_state)]_filling")
 	if(S.filling_color == "#FFFFFF")
-		filling.color = pick("#FF0000","#0000FF","#008000","#FFFF00")
+		filling.color = pick(COLOR_RED, COLOR_BLUE, COLOR_DARK_GREEN, COLOR_YELLOW)
 	else
 		filling.color = S.filling_color
 
