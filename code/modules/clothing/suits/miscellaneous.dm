@@ -670,8 +670,7 @@
 	icon_state = "coatsecuritypink"
 	item_state = "coatsecuritypink"
 	hoodtype = /obj/item/clothing/head/hooded/winterhood/security/pink
-	economy_type = ECONOMY_PRICE_EXPENSIVE
-	economy_price_mul = 0.85
+	price = 5
 
 /obj/item/clothing/suit/hooded/wintercoat/security/Initialize()
 	. = ..()

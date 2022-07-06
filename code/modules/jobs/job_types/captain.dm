@@ -16,7 +16,6 @@ Captain
 	exp_requirements = 3000
 	exp_type = EXP_TYPE_COMMAND
 	exp_type_department = EXP_TYPE_COMMAND
-	economy_type = ECONOMY_TYPE_COMMAND
 
 	outfit = /datum/outfit/job/captain
 
@@ -97,7 +96,6 @@ Head of Personnel
 	exp_requirements = 1500
 	exp_type = EXP_TYPE_SERVICE
 	exp_type_department = EXP_TYPE_SERVICE
-	economy_type = ECONOMY_TYPE_COMMAND
 
 	outfit = /datum/outfit/job/hop
 

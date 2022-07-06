@@ -7,9 +7,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	throw_range = 7
 	throw_speed = 3
-	economy_type = ECONOMY_PRICE_EROTIC
 	var/mob/living/carbon/subject = null
 	var/closed = FALSE
+	price = 10
 
 
 //Hypnotize someone

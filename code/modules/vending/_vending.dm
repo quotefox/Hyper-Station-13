@@ -167,12 +167,14 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 		var/datum/data/vending_product/R = new /datum/data/vending_product()
 		R.name = initial(temp.name)
 		R.product_path = typepath
-		if(!free)
-			R.price = FLOOR(baseprice * CONFIG_GET(number/economy_price_multiplier), 1)
-			if(product) //its a item!
-				var/product_price = SSeconomy.GetPrice(product)
-				if(!isnull(product_price))
-					R.price = product_price
+		R.price = baseprice
+		if(product) //its a item!
+			if((initial(product.price)))
+				R.price = initial(product.price)
+			else
+				R.price = baseprice
+		if(free)
+			R.price = 0
 		if(!start_empty)
 			R.amount = amount
 		R.max_amount = amount
@@ -495,8 +497,8 @@ IF YOU MODIFY THE PRODUCTS LIST OF A MACHINE, MAKE SURE TO UPDATE ITS RESUPPLY C
 			updateUsrDialog()
 			vend_ready = 1
 			if(bankid && R == buying) //if we have a bank id, and we are trying to buy the same thing!
-				if(bankid.balance >= R.price)
-					bankid.balance -= R.price //take the money from the account.
+				if(bankid.account_balance >= R.price)
+					bankid.account_balance -= R.price //take the money from the account.
 					menu = 1
 					to_chat(usr, "<span class='notice'>You [R.name] via the provided bank account!</span>")
 					bankid = null //so noone can buy from your account after youve purchased stuff

@@ -217,7 +217,7 @@
 	resistance_flags = FREEZE_PROOF
 	isGlass = FALSE
 	foodtype = BREAKFAST
-	economy_type = ECONOMY_PRICE_LOW
+	price = 2
 
 //Used by MREs
 /obj/item/reagent_containers/food/drinks/coffee/type2
@@ -241,7 +241,7 @@
 	icon_state = "tea"
 	item_state = "coffee"
 	spillable = TRUE
-	economy_type = ECONOMY_PRICE_LOW
+	price = 2
 
 /* Doesn't exist lol
 /datum/chemical_reaction/catnip_tea
@@ -252,7 +252,7 @@
 */
 
 /obj/item/reagent_containers/food/drinks/mug/on_reagent_change(changetype)
-	cut_overlays()
+	cut_overlays()    
 	if(reagents.total_volume)
 		var/mutable_appearance/MA = mutable_appearance(icon,"mugoverlay")
 		MA.color = mix_color_from_reagents(reagents.reagent_list)
@@ -265,7 +265,7 @@
 	icon_state = "tea"
 	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
 	list_reagents = list(/datum/reagent/consumable/tea = 30)
-	economy_type = ECONOMY_PRICE_LOW
+	price = 2
 
 /obj/item/reagent_containers/food/drinks/mug/coco
 	name = "Dutch hot coco"
@@ -284,8 +284,7 @@
 	list_reagents = list(/datum/reagent/consumable/dry_ramen = 30)
 	foodtype = GRAIN
 	isGlass = FALSE
-	economy_type = ECONOMY_PRICE_DEFAULT
-	economy_price_mul = 1.5
+	price = 3
 
 /obj/item/reagent_containers/food/drinks/beer
 	name = "space beer"
@@ -424,8 +423,7 @@
 	reagent_flags = NONE
 	spillable = FALSE
 	isGlass = FALSE
-	economy_type = ECONOMY_PRICE_LOW
-	economy_price_mul = 0.8
+	price = 2
 
 /obj/item/reagent_containers/food/drinks/soda_cans/suicide_act(mob/living/carbon/user)
 	user.visible_message("<span class='suicide'>[user] is trying to eat \the [src]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
@@ -550,5 +548,4 @@
 	icon_state = "menergy"
 	list_reagents = list(/datum/reagent/consumable/monkey_energy = 50)
 	foodtype = SUGAR
-	economy_type = ECONOMY_PRICE_EXPENSIVE //same as insulated gloves but slightly cheaper given the nature of these
-	economy_price_mul = 0.75
+	price = 3

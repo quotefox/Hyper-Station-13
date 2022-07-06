@@ -260,8 +260,7 @@
 	name = "security's bitch beret"
 	desc = "A softer beret with the word 'BITCH' embroidered on it in pink thread."
 	icon_state = "bitchberet"
-	economy_type = ECONOMY_PRICE_EROTIC
-	economy_price_mul = 0.85
+	price = 5
 
 //Curator
 /obj/item/clothing/head/fedora/curator

@@ -14,16 +14,9 @@ SUBSYSTEM_DEF(job)
 
 	var/overflow_role = "Assistant"
 
-	var/static/list/economy_multipliers_by_job
-	var/static/list/economy_multipliers_by_type
-
 
 /datum/controller/subsystem/job/Initialize(timeofday)
 	SSmapping.HACK_LoadMapConfig()
-	if(!economy_multipliers_by_job)
-		economy_multipliers_by_job = CONFIG_GET(keyed_list/economy_job_rate)
-	if(!economy_multipliers_by_type)
-		economy_multipliers_by_type = CONFIG_GET(keyed_list/economy_job_rate_area)
 	if(!occupations.len)
 		SetupOccupations()
 	if(CONFIG_GET(flag/load_jobs_from_txt))
@@ -338,7 +331,7 @@ SUBSYSTEM_DEF(job)
 
 				if((job.title in GLOB.silly_positions) && (player.client.prefs.sillyroles == FALSE))
 					JobDebug("DO is not whitelisted, Player: [player], Job:[job.title]")
-					continue
+					continue	
 
 				if(!job.player_old_enough(player.client))
 					JobDebug("DO player not old enough, Player: [player], Job:[job.title]")
@@ -477,13 +470,13 @@ SUBSYSTEM_DEF(job)
 
 		job.after_spawn(H, M, joined_late)
 
-	//Account ID. ID is handled by outfit initialization
+	//Account ID. ID is handled by human initialization
 	if(ishuman(H))
 		var/mob/living/carbon/human/wageslave = H
-		if(wageslave.wear_id)
-			var/obj/item/card/id/id_card = wageslave.wear_id
-			to_chat(M, "<b><span class='big'>Your account ID is [id_card.registered_account.account_id]</span></b>")
-			to_chat(M, "<b><span class='notice'>You do not have a pin, can set your pin at an ATM.</b>")
+		to_chat(M, "<b><span class='big'>Your account ID is [wageslave.account_id]</span></b>")
+		to_chat(M, "<b><span class='notice'>You do not have a pin, can set your pin at an ATM.</b>")
+		if(H.mind)
+			H.mind.memory += "Your account ID is [wageslave.account_id].<BR>"
 
 	return H
 

@@ -45,8 +45,7 @@
 	item_state = "sluthailer"
 	aggressiveness = 0 //can't have your pets being mean!
 	actions_types = list(/datum/action/item_action/halt)
-	economy_type = ECONOMY_PRICE_EXPENSIVE
-	economy_price_mul = 0.85
+	price = 5
 
 /obj/item/clothing/mask/gas/sechailer/slut/attack_hand(mob/user)
 	if(iscarbon(user))

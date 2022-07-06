@@ -10,11 +10,10 @@
 	icon_state = "fleshlight_base"
 	item_state = "fleshlight"
 	w_class = WEIGHT_CLASS_SMALL
-	economy_type = ECONOMY_PRICE_EROTIC
-	economy_price_mul = 0.95
-	var/inuse = 0
 	var/sleevecolor = "#ffcbd4" //pink
+	price = 8
 	var/mutable_appearance/sleeve
+	var/inuse = 0
 
 /obj/item/fleshlight/examine(mob/user)
 	. = ..()
@@ -79,11 +78,10 @@
 	icon_state = "unpaired"
 	item_state = "fleshlight"
 	w_class = WEIGHT_CLASS_SMALL
-	economy_type = ECONOMY_PRICE_EROTIC
-	economy_price_mul = 1.2
 	var/partnercolor = "#ffcbd4"
 	var/partnerbase = "normal"
 	var/partnerorgan = "portal_vag"
+	price = 20
 	var/mutable_appearance/sleeve
 	var/mutable_appearance/organ
 	var/inuse = 0
@@ -98,7 +96,7 @@
 	else
 		. += "<span class='notice'>The device is paired, and awaiting input. </span>"
 
-/obj/item/portallight/attack(mob/living/carbon/user, mob/living/holder)
+/obj/item/portallight/attack(mob/living/carbon/user, mob/living/holder) 
 	if(inuse) //just to stop stacking and causing people to cum instantly
 		return
 	if(!UpdateUsability())
@@ -113,8 +111,8 @@
 	if(option == "Fuck" && !P.is_exposed())
 		to_chat(holder, "<span class='notice'>You don't see anywhere to use this on.</span>")
 		return
-	/*
-	WARMUP START - prevents spam/instant climax
+	/* 
+	WARMUP START - prevents spam/instant climax 
 	*/
 	inuse = TRUE
 	if(user != holder)
@@ -124,8 +122,8 @@
 		inuse = FALSE
 		return
 	inuse = FALSE
-	/*
-	WARMUP END -	proceed with the action
+	/* 
+	WARMUP END -	proceed with the action 
 	*/
 	switch(option)
 		if("Fuck")
@@ -142,7 +140,7 @@
 			user.adjustArousalLoss(20)
 			target.adjustArousalLoss(20)
 			target.do_jitter_animation()
-			if(target.can_orgasm() && prob(5))
+			if(target.can_orgasm() && prob(5)) 
 				target.mob_climax_outside(target_genital, spillage=target_genital.is_exposed())
 			if(user.can_orgasm())
 				var/mob/living/carbon/human/O = user
@@ -278,8 +276,7 @@
 	icon = 'hyperstation/icons/obj/fleshlight.dmi'
 	desc = "A small silver box with Silver Love Co embossed."
 	icon_state = "box"
-	economy_type = ECONOMY_PRICE_EROTIC
-	economy_price_mul = 1.5
+	price = 15
 
 // portal fleshlight box
 /obj/item/storage/box/portallight/PopulateContents()

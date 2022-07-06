@@ -137,8 +137,7 @@
 	desc = "A pair of knee-high jackboots, complete with heels. All style, all the time."
 	icon_state = "jackboots-tall"
 	item_state = "jackboots-tall"
-	economy_type = ECONOMY_PRICE_DEFAULT
-	economy_price_mul = 0.75
+	price = 5
 
 /obj/item/clothing/shoes/jackboots/fast
 	slowdown = -1

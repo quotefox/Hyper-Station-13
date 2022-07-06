@@ -1,4 +1,4 @@
-/*
+/* 
 lover's dice: based off a really funny yakuza gif i saw on tumblr years ago
 these give suggestions for sex acts to perform. it's stupid but fun.
 
@@ -12,8 +12,7 @@ sarcoph mar 2022
 	desc = "Contains all the intimate ideas you'll ever need. A game that everyone wins!"
 	icon = 'hyperstation/icons/obj/toy.dmi'
 	icon_state = "lovedicebag"
-	economy_type = ECONOMY_PRICE_EROTIC
-	economy_price_mul = 0.5
+	price = 1
 
 /obj/item/storage/pill_bottle/lovedice/Initialize()
 	. = ..()

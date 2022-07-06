@@ -186,8 +186,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/kitchen_righthand.dmi'
 	list_reagents = list(/datum/reagent/consumable/milk = 50)
 	possible_states = list()
-	economy_type = ECONOMY_PRICE_LOW
-	economy_price_mul = 1.5
+	price = 5
 
 /obj/item/reagent_containers/food/condiment/flour
 	name = "flour sack"

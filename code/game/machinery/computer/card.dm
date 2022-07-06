@@ -254,7 +254,7 @@ GLOBAL_VAR_INIT(time_last_changed_position, 0)
 	else if(mode == 4)
 		dat += {"<a href='?src=[REF(src)];choice=return'>Return</a>
 		<table><tr><td style='width:25%'><b>Bank Accounts</b></td><td style='width:25%'></td></tr>"}
-		for(var/datum/bank_account/account as anything in SSeconomy.bank_accounts)
+		for(var/datum/bank_account/account in SSeconomy.bank_accounts)
 			dat += {"<td>[account.account_holder] - [account.account_id]"}
 			dat += "<a href='?src=[REF(src)];choice=bankassign;assign_bank=[REF(account)]'>Assign to ID</a></td>"
 			dat += "</td><tr>"
