@@ -15717,7 +15717,7 @@
 /obj/item/folder/white,
 /obj/item/clothing/neck/stethoscope,
 /obj/machinery/power/apc{
-	areastring = "/area/medical/patints_rooms/room_b";
+	areastring = "/area/medical/patients_rooms/room_b";
 	dir = 1;
 	name = "Patients Room B APC";
 	pixel_y = 26
@@ -30341,7 +30341,7 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/power/apc{
-	areastring = "/area/crew_quarters/toiler/upper";
+	areastring = "/area/crew_quarters/toilet/upper";
 	dir = 8;
 	name = "Upper Dormitory Toilets APC";
 	pixel_x = -25
@@ -31757,7 +31757,7 @@
 /area/crew_quarters/spa/sauna)
 "fjv" = (
 /obj/machinery/power/apc{
-	areastring = "/area/hallway/secondary/entry";
+	areastring = "/area/hallway/secondary/entry/upper";
 	dir = 4;
 	name = "Entry Hall APC";
 	pixel_x = 24
@@ -33155,7 +33155,7 @@
 	pixel_x = 7
 	},
 /turf/open/floor/circuit,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "ftn" = (
 /obj/structure/table,
 /obj/item/book/manual/wiki/security_space_law{
@@ -41320,7 +41320,7 @@
 /turf/open/floor/plasteel/dark/corner{
 	dir = 8
 	},
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "gIR" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/firedoor,
@@ -48917,7 +48917,7 @@
 	},
 /obj/effect/turf_decal/tile/blue,
 /turf/open/floor/plasteel,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "hOQ" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -50361,7 +50361,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark/corner,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "hZA" = (
 /obj/machinery/light{
 	pixel_y = -1
@@ -51013,7 +51013,7 @@
 	name = "air scrubber"
 	},
 /turf/open/floor/plasteel/dark,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "igS" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plating/layenia,
@@ -51222,7 +51222,7 @@
 	pixel_y = 35
 	},
 /turf/open/floor/circuit,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "iiu" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Engineering Maintenance";
@@ -54727,7 +54727,7 @@
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "iHg" = (
 /obj/machinery/power/apc{
 	areastring = "/area/security/detectives_office";
@@ -54891,7 +54891,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/plasteel,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "iIr" = (
 /obj/structure/chair/sofa/right{
 	dir = 8
@@ -58815,7 +58815,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc{
-	areastring = "/area/maintenance/security";
+	areastring = "/area/maintenance/department/security";
 	dir = 1;
 	name = "Security Maintenance APC";
 	pixel_y = 26
@@ -60539,7 +60539,7 @@
 /turf/open/floor/plasteel/dark/side{
 	dir = 1
 	},
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "jDH" = (
 /obj/effect/turf_decal/weather/grass/line{
 	dir = 10
@@ -64388,7 +64388,7 @@
 	network = list("aiupload")
 	},
 /turf/open/floor/plasteel,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "khL" = (
 /obj/structure/chair/sofa/corner,
 /obj/machinery/button/door{
@@ -67686,7 +67686,7 @@
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "kGm" = (
 /obj/machinery/light{
 	dir = 1;
@@ -78252,6 +78252,9 @@
 	},
 /turf/open/floor/plasteel,
 /area/bridge)
+"mty" = (
+/turf/closed/wall/r_wall,
+/area/ai_monitored/turret_protected/ai_upload)
 "mtA" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 6
@@ -94945,7 +94948,7 @@
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "oLt" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 9;
@@ -98044,7 +98047,7 @@
 	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/dark/side,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "pgJ" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plasteel{
@@ -102838,7 +102841,7 @@
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "pPm" = (
 /turf/open/floor/plasteel{
 	icon_state = "floor_trim"
@@ -103681,7 +103684,7 @@
 /turf/open/floor/plasteel/dark/corner{
 	dir = 4
 	},
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "pVW" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing{
@@ -105157,7 +105160,7 @@
 	dir = 8
 	},
 /turf/open/floor/circuit,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "qhF" = (
 /obj/structure/table/wood,
 /turf/open/floor/plasteel/dark{
@@ -105885,7 +105888,7 @@
 	pixel_y = 16
 	},
 /turf/open/floor/plasteel,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "qoi" = (
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/effect/turf_decal/bot,
@@ -112602,6 +112605,11 @@
 	dir = 8;
 	pixel_x = -7
 	},
+/obj/machinery/turretid{
+	control_area = "/area/ai_monitored/turret_protected/ai_upload";
+	name = "AI Upload turret control";
+	pixel_y = 29
+	},
 /turf/open/floor/plasteel/dark/side,
 /area/bridge)
 "riv" = (
@@ -112943,7 +112951,7 @@
 	dir = 8
 	},
 /turf/open/floor/circuit,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "rkd" = (
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -114539,7 +114547,7 @@
 /area/ai_monitored/storage/eva)
 "rvE" = (
 /obj/machinery/power/apc{
-	areastring = "/area/maintenance/starboard/central";
+	areastring = "/area/maintenance/theatre";
 	dir = 4;
 	name = "Starboard Maintenance APC";
 	pixel_x = 26
@@ -122773,7 +122781,7 @@
 /obj/item/folder/white,
 /obj/item/clothing/neck/stethoscope,
 /obj/machinery/power/apc{
-	areastring = "/area/medical/patints_rooms/room_a";
+	areastring = "/area/medical/patients_rooms/room_a";
 	dir = 1;
 	name = "Patients Room A APC";
 	pixel_y = 26
@@ -124924,7 +124932,7 @@
 "sUf" = (
 /obj/machinery/computer/upload/ai,
 /turf/open/floor/circuit,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "sUm" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 5;
@@ -125345,7 +125353,7 @@
 	icon_state = "0-2"
 	},
 /obj/machinery/power/apc/highcap/five_k{
-	areastring = "/area/medical/pstch/rec";
+	areastring = "/area/medical/psych/rec";
 	dir = 1;
 	name = "Psychologist's RecRoom APC";
 	pixel_y = 24
@@ -132180,7 +132188,7 @@
 	name = "air vent"
 	},
 /turf/open/floor/plasteel/dark,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "tSA" = (
 /obj/item/reagent_containers/food/snacks/grown/harebell,
 /turf/open/floor/carpet,
@@ -153016,7 +153024,7 @@
 /turf/open/floor/plasteel/dark/corner{
 	dir = 1
 	},
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "wPb" = (
 /obj/item/twohanded/required/kirbyplants/random,
 /turf/open/floor/plasteel/dark{
@@ -153493,7 +153501,7 @@
 	pixel_x = 29
 	},
 /turf/open/floor/plasteel,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "wSi" = (
 /obj/structure/chair/sofa{
 	dir = 1
@@ -154530,7 +154538,7 @@
 	pixel_x = -7
 	},
 /turf/open/floor/circuit,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "xaK" = (
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/bar)
@@ -155916,7 +155924,7 @@
 "xog" = (
 /obj/machinery/computer/upload/borg,
 /turf/open/floor/circuit,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "xoi" = (
 /obj/machinery/door/airlock/research{
 	dir = 1;
@@ -160517,7 +160525,7 @@
 	},
 /obj/effect/turf_decal/tile/blue,
 /turf/open/floor/plasteel,
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "xXn" = (
 /obj/effect/baseturf_helper/asteroid/layenia,
 /turf/closed/wall/r_wall,
@@ -161553,7 +161561,7 @@
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
-/area/bridge)
+/area/ai_monitored/turret_protected/ai_upload)
 "yfi" = (
 /obj/structure/piano,
 /obj/effect/turf_decal/loading_area{
@@ -258300,14 +258308,14 @@ wod
 gxI
 qlK
 fJT
-dsv
-dsv
-dsv
-dsv
-dsv
-dsv
-dsv
-dsv
+mty
+mty
+mty
+mty
+mty
+mty
+mty
+mty
 nrh
 tjo
 ujl
@@ -258557,14 +258565,14 @@ wod
 gxI
 qlK
 dHE
-dsv
+mty
 iIq
 khK
 xaI
 hOP
-dsv
+mty
 rkc
-dsv
+mty
 dsv
 dqo
 dsv
@@ -258814,14 +258822,14 @@ dBC
 pMf
 qlK
 qKd
-dsv
+mty
 xog
 hZy
 tSu
 pVT
-dsv
+mty
 oLp
-dsv
+mty
 riq
 xhM
 azg
@@ -259071,14 +259079,14 @@ wod
 lCm
 qlK
 smU
-dsv
+mty
 iis
 pgI
 kFX
 jDB
 pPj
 yfh
-dsv
+mty
 ujI
 xhM
 skM
@@ -259328,12 +259336,12 @@ wod
 lCm
 qlK
 pfr
-dsv
+mty
 sUf
 gIQ
 igN
 wOZ
-dsv
+mty
 iHe
 pPj
 wqg
@@ -259585,14 +259593,14 @@ rLv
 mNp
 qlK
 gel
-dsv
+mty
 qof
 wSg
 ftf
 xXm
-dsv
+mty
 oLp
-dsv
+mty
 xJc
 fFc
 skM
@@ -259842,14 +259850,14 @@ poS
 rRE
 jRW
 rDp
-dsv
-dsv
-dsv
-dsv
-dsv
-dsv
+mty
+mty
+mty
+mty
+mty
+mty
 qhD
-dsv
+mty
 cxE
 fFc
 kGO
@@ -260104,9 +260112,9 @@ ePF
 ePF
 ePF
 ePF
-dsv
-dsv
-dsv
+mty
+mty
+mty
 dsv
 nLd
 dsv

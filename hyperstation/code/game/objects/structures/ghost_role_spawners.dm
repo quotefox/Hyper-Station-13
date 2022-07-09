@@ -185,6 +185,7 @@
 	important_info = "Do NOT attempt to break out, antagonize, or otherwise treat your role as anything to grief with. Should you find a scenario where you want to, AHELP."
 	objectives = "Do NOT attempt to break out or act like an antag. Serve your time until end of shift."
 	mirrorcanloadappearance = TRUE
+	roundstart = FALSE
 	death = FALSE
 
 /datum/outfit/prisoner
