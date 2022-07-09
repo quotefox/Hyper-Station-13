@@ -241,6 +241,6 @@
 
 /mob/living/simple_animal/chicken/examine()
 	. = ..()
-	. += "this one is [gender]."
+	. += "<span class='notice'>This one is [gender].</span>"
 	if(happiness<20)
 		. += "<span class='warning'>It looks stressed.</span>"

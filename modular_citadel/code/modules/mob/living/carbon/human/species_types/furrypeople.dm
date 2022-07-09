@@ -261,7 +261,7 @@
 	mutant_heart = /obj/item/organ/heart/ipc
 	mutantlungs = /obj/item/organ/lungs/ipc
 	mutantliver = /obj/item/organ/liver/ipc
-	mutantstomach = /obj/item/organ/stomach/ipc
+	mutantstomach = /obj/item/organ/stomach/synthliz
 	mutanteyes = /obj/item/organ/eyes/ipc
 
 	exotic_bloodtype = "SY"

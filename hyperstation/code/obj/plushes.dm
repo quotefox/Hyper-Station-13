@@ -74,11 +74,4 @@
 	item_state = "enzor"
 	attack_verb = list("tail bapped", "whomped", "squeaked")
 	squeak_override = list('sound/effects/mousesqueek.ogg'= 1)
-
-//Arc is amazing and has helped Hyper in terms of spriting a ton. They deserve this
-/obj/item/toy/plush/lizardplushie/arctaisia
-	name = "fat lizard plushie"
-	desc = "This lizard is a heckin' chonker!"
-	icon = 'hyperstation/icons/obj/plushes.dmi'
-	icon_state = "arc"
-	squeak_override = list('modular_citadel/sound/voice/weh.ogg' = 1)
+//End
