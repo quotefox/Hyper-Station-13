@@ -58,15 +58,12 @@
 	reward = 3000
 	wanted_types = list(/obj/item/organ/tail/cat)
 
-
-/*
 /datum/bounty/item/medical/blood
 	name = "Generic Blood"
 	description = "The Kinaris annual blood drive is back up to full speed, following the garlic incident. Good blood in good volumes accepted for Credit returns."
 	reward = 3500
 	required_count = 600
 	wanted_types = list(/datum/reagent/blood)
-*/
 
 /* If anyone wants to try and fix/work, go for it
 /datum/bounty/item/medical/medibot // Mob so this dosn't work yet*

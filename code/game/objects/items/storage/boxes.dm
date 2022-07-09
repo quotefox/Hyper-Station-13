@@ -437,36 +437,6 @@
 	donktype = /obj/item/reagent_containers/food/snacks/donkpocket/spicy
 	warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm/spicy
 
-/obj/item/storage/box/donkpockets/donkpockettaco //Property of Angel's Donk Co. subsidary Not'cho Corp. "They're mine! Not yo's."
-	name = "box of taco-flavoured donk-pockets"
-	icon_state = "donkpocketboxtaco"
-	donktype = /obj/item/reagent_containers/food/snacks/donkpocket/taco
-	warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm/taco
-
-/obj/item/storage/box/donkpockets/donkpocketplasma
-	name = "box of toxic-flavoured donk-pockets"
-	icon_state = "donkpocketboxplasma"
-	donktype = /obj/item/reagent_containers/food/snacks/donkpocket/plasma
-	warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm/plasma
-
-/obj/item/storage/box/donkpockets/donkpocketbreakfast
-	name = "box of breakfast-flavoured donk-pockets"
-	icon_state = "donkpocketboxbreakfast"
-	donktype = /obj/item/reagent_containers/food/snacks/donkpocket/breakfast
-	warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm/breakfast
-
-/obj/item/storage/box/donkpockets/donkpocketmoth
-	name = "box of cloth-flavoured donk-pockets"
-	icon_state = "donkpocketboxmoth"
-	donktype = /obj/item/reagent_containers/food/snacks/donkpocket/moth
-	warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm/moth
-
-/obj/item/storage/box/donkpockets/donkpocketvegan
-	name = "box of veggie-flavoured donk-pockets"
-	icon_state = "donkpocketboxvegan"
-	donktype = /obj/item/reagent_containers/food/snacks/donkpocket/vegan
-	warmtype = /obj/item/reagent_containers/food/snacks/donkpocket/warm/vegan
-
 /obj/item/storage/box/donkpockets/donkpocketteriyaki
 	name = "box of teriyaki-flavoured donk-pockets"
 	icon_state = "donkpocketboxteriyaki"
@@ -1355,4 +1325,4 @@
 
 /obj/item/storage/box/marshmallow/PopulateContents()
 	for (var/i in 1 to 5)
-		new /obj/item/reagent_containers/food/snacks/marshmallow(src)
+		new /obj/item/reagent_containers/food/snacks/marshmallow(src) 

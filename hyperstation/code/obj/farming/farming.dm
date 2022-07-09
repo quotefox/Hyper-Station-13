@@ -1,5 +1,5 @@
-/obj/item/reagent_containers/food/snacks/grown/wheat
-	var/stacktype = /obj/item/stack/tile/hay
+/obj/item/reagent_containers/food/snacks/grown/wheat/
+	var stacktype = /obj/item/stack/tile/hay
 	var/tile_coefficient = 0.02 // same as grass
 
 /obj/item/reagent_containers/food/snacks/grown/wheat/attack_self(mob/user)

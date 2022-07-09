@@ -8,6 +8,7 @@
 	var/results 		= "null"
 	w_class = WEIGHT_CLASS_TINY
 
+
 /obj/item/pregnancytest/attack_self(mob/user)
 	if(QDELETED(src))
 		return
@@ -15,26 +16,28 @@
 		return
 	if(isAI(user))
 		return
-	if(user.stat > CONSCIOUS)//unconscious or dead
+	if(user.stat > 0)//unconscious or dead
 		return
-	Test(user)
+	if(status == 1)
+		return //Already been used once, pregnancy tests only work once.
+	test(user)
 
-/obj/item/pregnancytest/proc/Test(mob/living/user)
-	if(status)
-		return
-	var/_results = FALSE
+/obj/item/pregnancytest/proc/force(mob/living/user)
+	//Force it negative
+	icon_state 	= "negative"
+	name = "[results] pregnancy test"
+	status = 1
+	to_chat(user, "<span class='notice'>You use the pregnancy test, the display reads negative!</span>")
+
+
+/obj/item/pregnancytest/proc/test(mob/living/user)
+
 	var/obj/item/organ/genital/womb/W = user.getorganslot("womb")
-	if(!W)
-		return // no reason to waste the single-use on them
-	if(W.pregnant)
-		_results = TRUE
-	UpdateResult(user, _results)
-
-/obj/item/pregnancytest/proc/UpdateResult(mob/living/user, results)
-	var/result_text = results ? "positive" : "negative"
-	src.results = result_text
-	icon_state = result_text
-	name = "[results] preganancy test"
-	status = TRUE
-	if(user)
-		to_chat(user, "<span class='notice'>You use the pregnancy test, the display reads [results]!</span>")	
+	if(W.pregnant == 1)
+		results = "positive"
+		icon_state 	= "positive"
+		name = "[results] pregnancy test"
+		status = 1
+		to_chat(user, "<span class='notice'>You use the pregnancy test, the display reads positive!</span>")
+	else
+		force(user)

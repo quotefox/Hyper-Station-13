@@ -65,7 +65,7 @@ Captain
 	satchel = /obj/item/storage/backpack/satchel/cap
 	duffelbag = /obj/item/storage/backpack/duffelbag/captain
 
-	implants = list(/obj/item/implant/mindshield, /obj/item/implant/kinaris)
+	implants = list(/obj/item/implant/mindshield)
 	accessory = /obj/item/clothing/accessory/medal/gold/captain
 
 	chameleon_extras = list(/obj/item/gun/energy/e_gun, /obj/item/stamp/captain)

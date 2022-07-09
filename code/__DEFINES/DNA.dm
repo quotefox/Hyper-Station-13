@@ -64,7 +64,7 @@
 //DNA - Because fuck you and your magic numbers being all over the codebase.
 #define DNA_BLOCK_SIZE				3
 
-#define DNA_UNI_IDENTITY_BLOCKS		20
+#define DNA_UNI_IDENTITY_BLOCKS		14
 #define DNA_HAIR_COLOR_BLOCK		1
 #define DNA_FACIAL_HAIR_COLOR_BLOCK	2
 #define DNA_SKIN_TONE_BLOCK			3
@@ -79,14 +79,6 @@
 #define DNA_MUTANTEAR_BLOCK			12
 #define DNA_MUTANTMARKING_BLOCK		13
 #define DNA_TAUR_BLOCK 				14
-
-// hyper edit 
-#define DNA_COSMETIC_HEAD_BLOCK 15
-#define DNA_COSMETIC_CHEST_BLOCK 16
-#define DNA_COSMETIC_L_ARM_BLOCK 17
-#define DNA_COSMETIC_R_ARM_BLOCK 18
-#define DNA_COSMETIC_L_LEG_BLOCK 19
-#define DNA_COSMETIC_R_LEG_BLOCK 20
 
 #define DNA_SEQUENCE_LENGTH			4
 #define DNA_MUTATION_BLOCKS			8
@@ -125,9 +117,6 @@
 #define NOEYES			16
 #define MARKINGS		17
 #define WINGCOLOR		18
-
-#define NOMOUTH 19
-
 
 //organ slots
 #define ORGAN_SLOT_BRAIN "brain"

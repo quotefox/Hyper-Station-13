@@ -86,11 +86,11 @@
 		to_chat(user, "<span class='warning'>Your [src] is already occupied.</span>")
 		return
 
-	user.visible_message("<span class='warning'>[hound.name] is carefully inserting [target.name] into their [src].</span>",
+	user.visible_message("<span class='warning'>[hound.name] is carefully inserting [target.name] into their [src].</span>", 
 	"<span class='notice'>You start placing [target] into your [src]...</span>")
 
 	if(!patient && iscarbon(target) && !target.buckled && do_after (user, 100, target = target))
-		if(!in_range(src, target))
+		if(!in_range(src, target)) 
 			return
 		if(patient)
 			return
@@ -217,7 +217,7 @@
 		data["occupant"]["fireLoss"] = mob_occupant.getFireLoss()
 		data["occupant"]["cloneLoss"] = mob_occupant.getCloneLoss()
 		data["occupant"]["brainLoss"] = mob_occupant.getOrganLoss(ORGAN_SLOT_BRAIN)
-
+		
 		if(mob_occupant.reagents.reagent_list.len)
 			for(var/datum/reagent/R in mob_occupant.reagents.reagent_list)
 				chemical_list += list(list("name" = R.name, "volume" = R.volume))
@@ -393,7 +393,7 @@
 					H.playsound_local(source, null, 45, falloff = 0, S = pred_digest)
 				else if(H in contents)
 					H.playsound_local(source, null, 65, falloff = 0, S = prey_digest)
-
+	
 	UpdateGut(hound)
 	if(cleaning)
 		addtimer(CALLBACK(src, .proc/clean_cycle, hound), 50)
@@ -515,7 +515,7 @@
 			trashman.reset_perspective(src)
 			user.visible_message("<span class='warning'>[hound.name]'s garbage processor groans lightly as [trashman] slips inside.</span>", "<span class='notice'>Your garbage compactor groans lightly as [trashman] slips inside.</span>")
 			playsound(hound, 'sound/effects/bin_close.ogg', 80, 1)
-
+	
 	UpdateGut(hound)
 
 
@@ -524,10 +524,3 @@
 	if(length(contents) > 11)
 		current_belly = BORGBELLY_RED
 	return current_belly
-
-
-/obj/item/dogborg/sleeper/compactor/ore//identical to janihound for moment
-	name = "ore processor"
-	desc = "A mounted compactor unit with fuel processor."
-	icon = 'icons/mob/dogborg.dmi'
-	icon_state = "compactorb"//needs its own icon

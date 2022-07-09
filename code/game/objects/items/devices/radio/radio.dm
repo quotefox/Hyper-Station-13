@@ -67,12 +67,6 @@
 			syndie = TRUE
 		if(keyslot.independent)
 			independent = TRUE
-	//Skyrat edit start
-	if(extra_channels)
-		for(var/ch_name in extra_channels)
-			if(!(ch_name in channels))
-				channels[ch_name] = extra_channels[ch_name]
-	//Skyrat edit end
 
 	for(var/ch_name in channels)
 		secure_radio_connections[ch_name] = add_radio(src, GLOB.radiochannels[ch_name])

@@ -282,16 +282,16 @@
 	. = ..()
 	if(.)
 		return
-	if(chalice_taken)
+	if(chalice_taken == 1)
 		to_chat(user, "<i>You hear a voice in your head... <b>\"My chalice has already been taken, dear. I cannot give you another...\"</i></b>")
 		return
 	if(user.getArousalLoss() < 100)
 		to_chat(user, "<i>You hear a voice in your head... <b>\"You are not horny enough to receive my blessing, dear~\"</i></b>")
 		return
-	var/mob/living/carbon/user_carbon = user
-	user_carbon.mob_climax_instant()
-	to_chat(user, "<i>You hear a voice in your head... <b>\"You are worthy of my blessing, dear~\"</i></b>")
-	to_chat(user, "<span class='userdanger'>You feel overpowering pleasure surge through your entire body.</span>")
-	var/A = new /obj/item/reagent_containers/chalice/lust
-	user.put_in_hands(A)
-	chalice_taken = TRUE
+	if (ishuman(user) && user.has_dna())
+		user.mob_climax(forced_climax=TRUE)
+		to_chat(user, "<i>You hear a voice in your head... <b>\"You are worth of my blessing dear~\"</i></b>")
+		to_chat(user, "<span class='userdanger'>You feel overpowering pleasure surge through your entire body.</span>")
+		var/A = new /obj/item/reagent_containers/chalice/lust
+		user.put_in_hands(A)
+		chalice_taken = 1

@@ -13,11 +13,6 @@
 /mob/living/carbon/handle_status_effects()
 	..()
 	handle_pain()
-	
-/mob/living/carbon/has_mouth()
-	var/obj/item/bodypart/head/head = get_bodypart(BODY_ZONE_HEAD)
-	if(head && head.mouth)
-		return TRUE
 
 /mob/living/carbon/proc/handle_pain()
 	var/pain_amount = 0

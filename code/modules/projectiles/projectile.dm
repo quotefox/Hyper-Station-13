@@ -197,10 +197,7 @@
 			L.visible_message("<span class='danger'>[L] is hit by \a [src][organ_hit_text]!</span>", \
 					"<span class='userdanger'>[L] is hit by \a [src][organ_hit_text]!</span>", null, COMBAT_MESSAGE_RANGE)
 		if(candink && def_zone == BODY_ZONE_HEAD)
-			if(prob(2))
-				playsound(src, 'hyperstation/sound/weapons/dinkalternate.ogg', 30, 0)
-			else
-				playsound(src, 'sound/weapons/dink.ogg', 30, 1)
+			playsound(src, 'sound/weapons/dink.ogg', 30, 1)
 		L.on_hit(src)
 
 	var/reagent_note

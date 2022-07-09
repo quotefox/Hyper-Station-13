@@ -54,14 +54,6 @@
 
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/vagina, GLOB.vagina_shapes_list)
 	init_sprite_accessory_subtypes(/datum/sprite_accessory/breasts, GLOB.breasts_shapes_list)
-
-	// hyper: cosmetic parts
-	init_cosmetic_parts(/datum/cosmetic_part/head, GLOB.cosmetic_heads)
-	init_cosmetic_parts(/datum/cosmetic_part/chest, GLOB.cosmetic_chests)
-	init_cosmetic_parts(/datum/cosmetic_part/arms, GLOB.cosmetic_arms)
-	init_cosmetic_parts(/datum/cosmetic_part/legs, GLOB.cosmetic_legs)
-	// end cosmetic parts
-
 	GLOB.breasts_size_list = list ("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o") //We need the list to choose from initialized, but it's no longer a sprite_accessory thing.
 	GLOB.genital_fluids_list = list ("Milk", "Water", "Semen", "Femcum", "Honey")
 	GLOB.gentlemans_organ_names = list("phallus", "willy", "dick", "prick", "member", "tool", "gentleman's organ", "cock", "wang", "knob", "dong", "joystick", "pecker", "johnson", "weenie", "tadger", "schlong", "thirsty ferret", "baloney pony", "schlanger")

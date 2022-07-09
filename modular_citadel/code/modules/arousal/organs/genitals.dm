@@ -78,21 +78,22 @@
 		if("Always visible")
 			through_clothes = TRUE
 			hidden = FALSE
-			mode = GENITALS_VISIBLE
+			mode = "visible"
 			if(!(src in owner.exposed_genitals))
 				owner.exposed_genitals += src
 		if("Hidden by clothes")
 			through_clothes = FALSE
 			hidden = FALSE
-			mode = GENITALS_CLOTHES
+			mode = "clothes"
 			if(src in owner.exposed_genitals)
 				owner.exposed_genitals -= src
 		if("Always hidden")
 			through_clothes = FALSE
 			hidden = TRUE
-			mode = GENITALS_HIDDEN
+			mode = "hidden"
 			if(src in owner.exposed_genitals)
 				owner.exposed_genitals -= src
+
 	if(ishuman(owner)) //recast to use update genitals proc
 		var/mob/living/carbon/human/H = owner
 		H.update_genitals()

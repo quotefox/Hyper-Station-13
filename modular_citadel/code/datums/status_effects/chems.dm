@@ -620,7 +620,7 @@
 			else if (lowertext(customTriggers[trigger]) == "cum")//aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 				if (HAS_TRAIT(C, TRAIT_NYMPHO) && lewd)
 					if (C.getArousalLoss() > 80)
-						C.mob_climax_instant()
+						C.mob_climax(forced_climax=TRUE)
 						C.SetStun(10)//We got your stun effects in somewhere, Kev.
 					else
 						C.adjustArousalLoss(10)

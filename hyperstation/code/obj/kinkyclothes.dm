@@ -160,6 +160,9 @@ obj/item/clothing/neck/stole/black
 	var/firstpickup = TRUE
 	var/pickupsound = TRUE
 
+/obj/item/clothing/under/vaultsuit/no_sound
+	pickupsound = FALSE
+
 /obj/item/clothing/under/vaultsuit/equipped(mob/user, slot)
 	. = ..()
 	if(!pickupsound)
@@ -195,44 +198,3 @@ obj/item/clothing/neck/stole/black
 	body_parts_covered = CHEST|LEGS|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
-/obj/item/clothing/suit/threepwoodjacket
-	name = "threepwood's jacket"
-	desc = "A jacket fit for a Mighty Pirate!"
-	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
-	icon_state = "threepwoodjacket"
-	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
-	item_state = "b_suit"
-	var/firstpickup = TRUE
-	var/pickupsound = TRUE
-
-/obj/item/clothing/suit/threepwoodjacket/equipped(mob/user, slot)
-	. = ..()
-	if(!pickupsound)
-		return
-	if(!ishuman(user))
-		return
-	if(slot == SLOT_WEAR_SUIT)
-		if(!firstpickup)
-			SEND_SOUND(user, sound('hyperstation/sound/effects/vaultsuit/FalloutEXPUp.ogg', volume = 00))
-		else
-			firstpickup = FALSE
-			SEND_SOUND(user, sound('hyperstation/sound/effects/vaultsuit/bartandfink.ogg', volume = 60))
-	return
-
-/obj/item/clothing/under/threepwood
-	name = "threepwood's outfit"
-	desc = "An outfit fit for a Mighty Pirate!."
-	icon = 'hyperstation/icons/obj/clothing/uniforms.dmi'
-	icon_state = "threepwood"
-	alternate_worn_icon = 'hyperstation/icons/mobs/uniforms.dmi'
-	item_state = "w_suit"
-	can_adjust = FALSE
-
-/obj/item/clothing/shoes/threepwoodboots
-	name = "threepwood's boots"
-	desc = "A pair of boots fit for a Mighty Pirate!."
-	icon = 'hyperstation/icons/obj/clothing/shoes.dmi'
-	icon_state = "threepwoodboots"
-	alternate_worn_icon = 'hyperstation/icons/obj/clothing/shoes.dmi'
-	item_state = "threepwoodboots"
-	alternate_worn_icon = 'hyperstation/icons/mobs/feet.dmi'

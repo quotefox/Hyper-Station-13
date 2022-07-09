@@ -105,6 +105,7 @@ datum/bounty/reagent/complex_drink/New()
 		/datum/reagent/consumable/ethanol/hearty_punch,\
 		/datum/reagent/consumable/ethanol/manhattan_proj,\
 		/datum/reagent/consumable/ethanol/narsour,\
+		/datum/reagent/consumable/ethanol/neurotoxin,\
 		/datum/reagent/consumable/ethanol/patron,\
 		/datum/reagent/consumable/ethanol/quadruple_sec,\
 		/datum/reagent/consumable/ethanol/quintuple_sec,\
@@ -169,15 +170,3 @@ datum/bounty/reagent/chemical/New()
 	description = "CentCom is in desperate need of the chemical [name]. Ship a container of it to be rewarded."
 	reward += rand(0, 4) * 500
 
-/datum/bounty/reagent/blood
-	name = "Blood Drive"
-	reward = 3500
-	required_volume = 600
-
-/datum/bounty/reagent/blood/New()
-
-	var/reagent_type = /datum/reagent/blood
-	wanted_reagent = new reagent_type
-	name = wanted_reagent.name
-	description = "The Kinaris annual blood drive is back up to full speed, following the garlic incident. Good blood in good volumes accepted for Credit returns."
-	reward += rand(0, 2) * 300

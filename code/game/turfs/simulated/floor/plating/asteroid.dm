@@ -123,9 +123,8 @@
 	planetary_atmos = TRUE
 	baseturfs = /turf/open/lava/smooth/lava_land_surface
 
-/turf/open/floor/plating/asteroid/spacehermit
-	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	baseturfs = /turf/open/floor/plating/asteroid/spacehermit
+
+
 
 /turf/open/floor/plating/asteroid/airless
 	initial_gas_mix = AIRLESS_ATMOS

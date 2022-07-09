@@ -481,11 +481,6 @@ GLOBAL_LIST_INIT(cardboard_recipes, list ( \
 	new /datum/stack_recipe("donk-pockets teriyaki box", /obj/item/storage/box/donkpockets/donkpocketteriyaki),		\
 	new /datum/stack_recipe("donk-pockets pizza box", /obj/item/storage/box/donkpockets/donkpocketpizza),			\
 	new /datum/stack_recipe("donk-pockets berry box", /obj/item/storage/box/donkpockets/donkpocketberry),			\
-	new /datum/stack_recipe("donk-pockets taco box", /obj/item/storage/box/donkpockets/donkpockettaco),				\
-	new /datum/stack_recipe("donk-pockets plasma box", /obj/item/storage/box/donkpockets/donkpocketplasma),			\
-	new /datum/stack_recipe("donk-pockets breakfast box", /obj/item/storage/box/donkpockets/donkpocketbreakfast),	\
-	new /datum/stack_recipe("donk-pockets moth box", /obj/item/storage/box/donkpockets/donkpocketmoth),				\
-	new /datum/stack_recipe("donk-pockets vegan box", /obj/item/storage/box/donkpockets/donkpocketvegan),			\
 	new /datum/stack_recipe("donk-pockets honk box", /obj/item/storage/box/donkpockets/donkpockethonk),				\
 	new /datum/stack_recipe("monkey cube box", /obj/item/storage/box/monkeycubes),
 	null, \

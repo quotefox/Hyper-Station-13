@@ -104,8 +104,6 @@
 	var/icon_update_needed = FALSE
 	var/obj/machinery/computer/apc_control/remote_control = null
 
-	var/obj/effect/light/lighteffect //light effect
-
 /obj/machinery/power/apc/unlocked
 	locked = FALSE
 
@@ -187,8 +185,6 @@
 		addtimer(CALLBACK(src, .proc/update), 5)
 
 /obj/machinery/power/apc/Destroy()
-	if(lighteffect)
-		lighteffect.Del()
 	GLOB.apcs_list -= src
 
 	if(malfai && operating)
@@ -324,13 +320,6 @@
 
 	// And now, separately for cleanness, the lighting changing
 	if(update_state & UPSTATE_ALLGOOD)
-		if(!lighteffect)//make the light
-			lighteffect = new/obj/effect/light
-			lighteffect.loc = src.loc
-			lighteffect.alpha = 50
-			lighteffect.pixel_x = pixel_x
-			lighteffect.pixel_y = pixel_y
-
 		switch(charging)
 			if(APC_NOT_CHARGING)
 				light_color = LIGHT_COLOR_RED
@@ -339,7 +328,6 @@
 			if(APC_FULLY_CHARGED)
 				light_color = LIGHT_COLOR_GREEN
 		set_light(lon_range)
-		lighteffect.color = light_color
 	else if(update_state & UPSTATE_BLUESCREEN)
 		light_color = LIGHT_COLOR_BLUE
 		set_light(lon_range)
@@ -347,10 +335,6 @@
 		set_light(0)
 
 	icon_update_needed = FALSE
-
-/obj/machinery/power/apc/Move()
-	if(lighteffect)
-		lighteffect.loc = src.loc //move the light overlay
 
 /obj/machinery/power/apc/proc/check_updates()
 	var/last_update_state = update_state
