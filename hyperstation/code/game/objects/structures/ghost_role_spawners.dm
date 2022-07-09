@@ -171,6 +171,8 @@
 /obj/effect/mob_spawn/human/prisoner
 	name = "prisoner transfer cryoteleporter"
 	mob_name = "prisoner transfer"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
 	job_description = "Prisoner Transfer"
 	outfit = /datum/outfit/prisoner
 	id_job = "Prisoner Transfer"
@@ -178,12 +180,12 @@
 	short_desc = "You are a transferred prisoner to Layenia. Don't break out or otherwise act like an antag."
 	flavour_text = "For one reason or another, you are a prisoner. Kinaris has chosen to temporarily hold you within Layenia Station's holding area, \
 	until the end of the shift. You do not permanently reside here, but you may end up in this place from shift to shift. It is highly recommended to \
-	make a unique character slot for this role."
+	make a unique character slot for this role. Kinaris would not neuter or otherwise remove identifying features that make you who you are; such as \
+	altering your name, features, or physical appearance. As a prisoner, you still uphold a decent amount of rights."
 	important_info = "Do NOT attempt to break out, antagonize, or otherwise treat your role as anything to grief with. Should you find a scenario where you want to, AHELP."
 	objectives = "Do NOT attempt to break out or act like an antag. Serve your time until end of shift."
 	mirrorcanloadappearance = TRUE
 	death = FALSE
-	roundstart = TRUE
 
 /datum/outfit/prisoner
 	name = "Prisoner"
