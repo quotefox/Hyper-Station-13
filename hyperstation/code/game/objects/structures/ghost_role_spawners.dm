@@ -165,3 +165,32 @@
 
 /obj/effect/mob_spawn/human/villager/special(mob/living/carbon/human/new_spawn)
 	ADD_TRAIT(new_spawn,TRAIT_EXEMPT_HEALTH_EVENTS,GHOSTROLE_TRAIT)
+
+
+//Prisoner
+/obj/effect/mob_spawn/human/prisoner
+	name = "prisoner transfer cryoteleporter"
+	mob_name = "prisoner transfer"
+	job_description = "Prisoner Transfer"
+	outfit = /datum/outfit/prisoner
+	id_job = "Prisoner Transfer"
+	assignedrole = "Prisoner Transfer"
+	short_desc = "You are a transferred prisoner to Layenia. Don't break out or otherwise act like an antag."
+	flavour_text = "For one reason or another, you are a prisoner. Kinaris has chosen to temporarily hold you within Layenia Station's holding area, \
+	until the end of the shift. You do not permanently reside here, but you may end up in this place from shift to shift. It is highly recommended to \
+	make a unique character slot for this role."
+	important_info = "Do NOT attempt to break out, antagonize, or otherwise treat your role as anything to grief with. Should you find a scenario where you want to, AHELP."
+	objectives = "Do NOT attempt to break out or act like an antag. Serve your time until end of shift."
+	mirrorcanloadappearance = TRUE
+	death = FALSE
+	roundstart = TRUE
+
+/datum/outfit/prisoner
+	name = "Prisoner"
+	uniform = /obj/item/clothing/under/rank/prisoner
+	shoes = /obj/item/clothing/shoes/sneakers/orange
+	id = /obj/item/card/id/prisoner
+	implants = list(/obj/item/implant/exile, /obj/item/implant/tracking)
+
+/obj/effect/mob_spawn/human/prisoner/special(mob/living/carbon/human/new_spawn)
+	ADD_TRAIT(new_spawn,TRAIT_EXEMPT_HEALTH_EVENTS,GHOSTROLE_TRAIT)
