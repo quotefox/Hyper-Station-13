@@ -76,23 +76,11 @@
 
 			if(!calibrated && iscarbon(M) && prob(30 - ((accuracy) * 10))) //oh dear a problem
 				var/mob/living/carbon/C = M
-
-				//Rework to teleporter mishap
-				log_game("[C] ([key_name(C)]) had a teleporter mishap")
-
-
-				to_chat(C, "<span class='italics'>You feel the world contort and twist....</span>")	//idk a good line
-				C.adjustCloneLoss( rand(40,75) )
-				C.apply_effect((rand(120 - accuracy * 40, 180 - accuracy * 60)), EFFECT_IRRADIATE, 0)	//recycling this for some extra spice
-
-				//Oh yea, random limb removal, adjust/comment out if too harsh a punishment
-
-				for( var/obj/item/bodypart/BP in C.bodyparts )
-					if( BP.body_part != CHEST ) 								//I am not ready to find out what happens if your chest is missing
-						if(prob(50))
-							
-							BP.dismember()
-
+				if(C.dna?.species && C.dna.species.id != "fly" && !HAS_TRAIT(C, TRAIT_RADIMMUNE))
+					to_chat(C, "<span class='italics'>You hear a buzzing in your ears.</span>")
+					C.set_species(/datum/species/fly)
+					log_game("[C] ([key_name(C)]) was turned into a fly person")
+					C.apply_effect((rand(120 - accuracy * 40, 180 - accuracy * 60)), EFFECT_IRRADIATE, 0)
 
 			calibrated = FALSE
 	return

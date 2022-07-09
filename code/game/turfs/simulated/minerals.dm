@@ -221,22 +221,6 @@
 		/turf/closed/mineral/iron/volcanic = 95)
 
 
-//For spacehermit stuff
-
-
-/turf/closed/mineral/random/spacehermit
-	icon_state = "rock"
-	turf_type = /turf/open/floor/plating/asteroid/spacehermit
-	baseturfs = /turf/open/floor/plating/asteroid/spacehermit
-	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	defer_change = 1
-	mineralChance = 6
-	mineralSpawnChanceList = list(
-		/turf/closed/mineral/uranium = 2, /turf/closed/mineral/diamond = 1, /turf/closed/mineral/gold = 4, /turf/closed/mineral/titanium = 4,
-		/turf/closed/mineral/silver = 6, /turf/closed/mineral/plasma = 15, /turf/closed/mineral/iron = 40,
-		/turf/closed/mineral/gibtonite = 2, /turf/closed/mineral/bscrystal = 1)
-
-//end of spacehermit stuff
 
 /turf/closed/mineral/iron
 	mineralType = /obj/item/stack/ore/iron

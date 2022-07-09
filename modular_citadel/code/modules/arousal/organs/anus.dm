@@ -36,12 +36,6 @@
 			size_name = "hefty"
 		if(5)
 			size_name = "godly"
-		if(6)
-			size_name = "gigantic"
-		if(7)
-			size_name = "unfathomably large"
-		if(8)
-			size_name = "absolute dumptruck"
 		else
 			size_name = "nonexistant"
 

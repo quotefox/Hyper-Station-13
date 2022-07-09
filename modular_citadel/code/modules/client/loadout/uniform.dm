@@ -542,9 +542,3 @@
 	category = SLOT_W_UNIFORM
 	path = /obj/item/clothing/under/vaultsuit
 	cost = 1
-
-/datum/gear/threepwood
-	name = "threepwood's outfit"
-	category = SLOT_W_UNIFORM
-	path = /obj/item/clothing/under/threepwood
-	cost = 1

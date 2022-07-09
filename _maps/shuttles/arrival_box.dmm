@@ -1,292 +1,750 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (
+"cn" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals22"
+	},
+/area/shuttle/arrival)
+"cw" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals38"
+	},
+/area/shuttle/arrival)
+"cO" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals29"
+	},
+/area/shuttle/arrival)
+"de" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals33"
+	},
+/area/shuttle/arrival)
+"dO" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals42"
+	},
+/area/shuttle/arrival)
+"eb" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals45"
+	},
+/area/shuttle/arrival)
+"fF" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/arrival)
+"fS" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals1"
+	},
+/area/shuttle/arrival)
+"gu" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals15"
+	},
+/area/shuttle/arrival)
+"gC" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals35"
+	},
+/area/shuttle/arrival)
+"gK" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/ausbushes/grassybush,
+/obj/machinery/light{
+	pixel_y = -1
+	},
+/turf/open/floor/grass,
+/area/shuttle/arrival)
+"gN" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals20"
+	},
+/area/shuttle/arrival)
+"jg" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals52"
+	},
+/area/shuttle/arrival)
+"kq" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals10"
+	},
+/area/shuttle/arrival)
+"ks" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals25"
+	},
+/area/shuttle/arrival)
+"kF" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/item/radio/intercom{
+	pixel_x = -30
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/arrival)
+"lo" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals46"
+	},
+/area/shuttle/arrival)
+"lt" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals49"
+	},
+/area/shuttle/arrival)
+"lE" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals44"
+	},
+/area/shuttle/arrival)
+"mi" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals2"
+	},
+/area/shuttle/arrival)
+"mA" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/shuttle/arrival)
+"nC" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals41"
+	},
+/area/shuttle/arrival)
+"nO" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals4"
+	},
+/area/shuttle/arrival)
+"ov" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals48"
+	},
+/area/shuttle/arrival)
+"oD" = (
+/obj/structure/fans/tiny,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/door/airlock/titanium{
+	name = "Arrivals Shuttle Airlock"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/arrival)
+"ph" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals3"
+	},
+/area/shuttle/arrival)
+"pB" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals37"
+	},
+/area/shuttle/arrival)
+"pZ" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals9"
+	},
+/area/shuttle/arrival)
+"qa" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals26"
+	},
+/area/shuttle/arrival)
+"qw" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/arrival)
+"qz" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals53"
+	},
+/area/shuttle/arrival)
+"qS" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals21"
+	},
+/area/shuttle/arrival)
+"rC" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/ausbushes/ppflowers,
+/obj/structure/flora/ausbushes/sparsegrass,
+/turf/open/floor/grass,
+/area/shuttle/arrival)
+"sd" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/item/radio/intercom{
+	pixel_x = -30
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/arrival)
+"sk" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals39"
+	},
+/area/shuttle/arrival)
+"uf" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/structure/chair/comfy/shuttle,
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/arrival)
+"uC" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals13"
+	},
+/area/shuttle/arrival)
+"vk" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/arrival)
+"xW" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals27"
+	},
+/area/shuttle/arrival)
+"yl" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals51"
+	},
+/area/shuttle/arrival)
+"yU" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals28"
+	},
+/area/shuttle/arrival)
+"ze" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals31"
+	},
+/area/shuttle/arrival)
+"zV" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals40"
+	},
+/area/shuttle/arrival)
+"Al" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals32"
+	},
+/area/shuttle/arrival)
+"CA" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals12"
+	},
+/area/shuttle/arrival)
+"Dm" = (
+/obj/machinery/light{
+	pixel_y = -1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/obj/structure/closet/emcloset{
+	anchored = 1
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/arrival)
+"EA" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals6"
+	},
+/area/shuttle/arrival)
+"HU" = (
+/obj/structure/fans/tiny,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/door/airlock/titanium{
+	name = "Arrivals Shuttle Airlock"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/arrival)
+"Il" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals18"
+	},
+/area/shuttle/arrival)
+"JU" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/arrival)
+"Kb" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals47"
+	},
+/area/shuttle/arrival)
+"KB" = (
 /turf/template_noop,
 /area/template_noop)
-"b" = (
-/turf/closed/wall/mineral/titanium,
+"KN" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals16"
+	},
 /area/shuttle/arrival)
-"c" = (
+"Lv" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals19"
+	},
+/area/shuttle/arrival)
+"My" = (
 /obj/machinery/door/airlock/titanium{
 	name = "Arrivals Shuttle Airlock"
 	},
-/obj/structure/fans/tiny,
-/turf/open/floor/plating,
+/obj/effect/turf_decal/delivery/white,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
 /area/shuttle/arrival)
-"d" = (
-/obj/effect/spawner/structure/window/shuttle,
-/turf/open/floor/plating,
+"Ov" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals7"
+	},
 /area/shuttle/arrival)
-"e" = (
+"OQ" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/flora/ausbushes/ywflowers,
+/obj/structure/flora/ausbushes/brflowers,
+/obj/structure/flora/ausbushes/leafybush,
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/grass,
+/area/shuttle/arrival)
+"OT" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals50"
+	},
+/area/shuttle/arrival)
+"Pb" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
 /obj/structure/table,
 /obj/item/storage/firstaid/regular,
-/turf/open/floor/mineral/titanium/blue,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
 /area/shuttle/arrival)
-"f" = (
-/turf/open/floor/mineral/titanium/blue,
+"Pr" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals24"
+	},
 /area/shuttle/arrival)
-"g" = (
-/obj/machinery/computer/arcade,
+"PR" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals23"
+	},
+/area/shuttle/arrival)
+"Qd" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals34"
+	},
+/area/shuttle/arrival)
+"QB" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 8;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
+/area/shuttle/arrival)
+"QK" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/arrival)
+"Sb" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals0"
+	},
+/area/shuttle/arrival)
+"Sp" = (
 /obj/machinery/light{
-	dir = 1
+	pixel_y = -1
 	},
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"h" = (
-/obj/structure/closet/wardrobe/green,
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"i" = (
-/obj/structure/closet/wardrobe/black,
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"j" = (
-/obj/structure/closet/wardrobe/mixed,
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"k" = (
-/obj/structure/closet/wardrobe/grey,
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"l" = (
-/obj/machinery/requests_console{
-	department = "Arrival shuttle";
-	name = "Arrivals Shuttle console";
-	pixel_y = 30
-	},
-/obj/machinery/light{
-	dir = 1
-	},
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"m" = (
-/obj/structure/shuttle/engine/heater{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/arrival)
-"n" = (
-/obj/structure/shuttle/engine/propulsion/burst/right{
-	dir = 4
-	},
-/turf/open/floor/plating/airless,
-/area/shuttle/arrival)
-"o" = (
-/obj/structure/window/shuttle,
-/obj/structure/grille,
-/turf/open/floor/plating,
-/area/shuttle/arrival)
-"p" = (
-/obj/structure/chair/comfy/shuttle,
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"q" = (
-/obj/structure/chair/comfy/shuttle,
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"r" = (
 /obj/structure/chair/comfy/shuttle{
-	dir = 8
+	dir = 1
 	},
-/turf/open/floor/mineral/titanium,
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
 /area/shuttle/arrival)
-"s" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 4
+"TW" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals11"
 	},
-/turf/open/floor/plating/airless,
 /area/shuttle/arrival)
-"t" = (
-/obj/machinery/door/airlock/titanium{
-	name = "Arrivals Shuttle Airlock"
+"UU" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 4;
+	icon_state = "siding_wood_line";
+	name = "wood"
 	},
-/turf/open/floor/mineral/titanium,
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_tile";
+	name = "tile"
+	},
 /area/shuttle/arrival)
-"u" = (
-/obj/structure/shuttle/engine/propulsion{
-	dir = 4
+"VR" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals17"
 	},
+/area/shuttle/arrival)
+"We" = (
 /obj/docking_port/mobile/arrivals,
-/turf/open/floor/plating/airless,
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals30"
+	},
 /area/shuttle/arrival)
-"v" = (
+"Wi" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals14"
+	},
+/area/shuttle/arrival)
+"WM" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals8"
+	},
+/area/shuttle/arrival)
+"WO" = (
 /obj/structure/chair/comfy/shuttle{
-	dir = 1
+	dir = 8
 	},
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
 /area/shuttle/arrival)
-"w" = (
+"YZ" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/arrival)
+"Zg" = (
+/turf/closed/wall/mineral/titanium/custom/arrivals{
+	icon_state = "arrivals36"
+	},
+/area/shuttle/arrival)
+"Zm" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/arrival)
+"Zu" = (
 /obj/structure/chair/comfy/shuttle{
-	dir = 1
+	dir = 8
 	},
-/obj/machinery/light/small{
-	dir = 4
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
 	},
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"x" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"y" = (
-/obj/machinery/light,
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"z" = (
-/obj/item/radio/intercom{
-	name = "Station Intercom (General)";
-	pixel_y = -29
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "drain";
+	name = "drain"
 	},
-/obj/machinery/light,
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/arrival)
-"A" = (
-/obj/structure/shuttle/engine/propulsion/burst/left{
-	dir = 4
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
 	},
-/turf/open/floor/plating/airless,
 /area/shuttle/arrival)
-"S" = (
-/turf/open/floor/mineral/titanium,
+"Zw" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/arrival)
+"ZT" = (
+/turf/closed/wall/mineral/titanium/custom/window/arrivals{
+	icon_state = "arrivals43"
+	},
+/area/shuttle/arrival)
+"ZZ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
 /area/shuttle/arrival)
 
 (1,1,1) = {"
-a
-b
-o
-d
-d
-b
-a
+KB
+TW
+cn
+ks
+cO
+Al
+KB
 "}
 (2,1,1) = {"
-a
-b
-p
-S
-v
-b
-a
+KB
+Wi
+YZ
+vk
+fF
+gC
+KB
 "}
 (3,1,1) = {"
-a
-b
-q
-S
-w
-b
-a
+mi
+uC
+uf
+vk
+Sp
+cw
+ZT
 "}
 (4,1,1) = {"
-b
-b
-b
-t
-b
-b
-b
+fS
+CA
+qS
+My
+yU
+pB
+lo
 "}
 (5,1,1) = {"
-b
-e
-S
-S
-S
-x
-b
+Sb
+gu
+Pb
+QB
+Dm
+Zg
+eb
 "}
 (6,1,1) = {"
-c
-f
-r
-r
-r
-f
-c
+oD
+kF
+ZZ
+mA
+Zm
+sd
+HU
 "}
 (7,1,1) = {"
-b
-g
-f
-f
-f
-y
-b
+ph
+Zu
+JU
+mA
+Zw
+WO
+lE
 "}
 (8,1,1) = {"
-d
-h
-r
-r
-r
-f
-d
+EA
+Zu
+JU
+mA
+Zw
+WO
+jg
 "}
 (9,1,1) = {"
-d
-i
-f
-f
-f
-f
-d
+EA
+Zu
+JU
+mA
+Zw
+WO
+Kb
 "}
 (10,1,1) = {"
-d
-j
-r
-r
-r
-f
-d
+nO
+Zu
+JU
+mA
+Zw
+WO
+yl
 "}
 (11,1,1) = {"
-d
-k
-f
-f
-f
-f
-d
+oD
+qw
+ZZ
+UU
+Zm
+QK
+HU
 "}
 (12,1,1) = {"
-b
-l
-r
-r
-r
-z
-b
+Ov
+Il
+OQ
+rC
+gK
+sk
+OT
 "}
 (13,1,1) = {"
-c
-f
-S
-S
-S
-f
-c
+kq
+VR
+gN
+Pr
+ze
+dO
+lt
 "}
 (14,1,1) = {"
-b
-m
-m
-m
-m
-m
-b
+pZ
+KN
+PR
+xW
+Qd
+nC
+ov
 "}
 (15,1,1) = {"
-b
-n
-s
-u
-s
-A
-b
+WM
+Lv
+qa
+We
+de
+zV
+qz
 "}

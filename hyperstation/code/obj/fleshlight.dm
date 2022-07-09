@@ -45,9 +45,11 @@
 		inuse = 1
 		if(!(C == user)) //if we are targeting someone else.
 			C.visible_message("<span class='userlove'>[user] is trying to use [src] on [C]'s penis.</span>", "<span class='userlove'>[user] is trying to use [src] on your penis.</span>")
+
 		if(!do_mob(user, C, 3 SECONDS)) //3 second delay
 			inuse = 0
 			return
+
 		//checked if not used on yourself, if not, carry on.
 		playsound(src, 'sound/lewd/slaps.ogg', 30, 1, -1) //slapping sound
 		inuse = 0
@@ -55,22 +57,27 @@
 			C.visible_message("<span class='userlove'>[user] pumps [src] on [C]'s penis.</span>", "<span class='userlove'>[user] pumps [src] up and down on your penis.</span>")
 		else
 			user.visible_message("<span class='userlove'>[user] pumps [src] on their penis.</span>", "<span class='userlove'>You pump the fleshlight on your penis.</span>")
+
 		if(prob(30)) //30% chance to make them moan.
 			C.emote("moan")
+
 		C.do_jitter_animation()
 		C.adjustArousalLoss(20) //make the target more aroused.
-		if(C.can_orgasm() && ishuman(C))
-			var/mob/living/carbon/human/user_human = C
-			user_human.mob_climax_outside(P, mb_time=0) // instant, because we already did a warmup
+		if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
+			C.mob_climax(forced_climax=TRUE) //make them cum if they are over the edge.
+
 		return
+
 	else
 		to_chat(user, "<span class='notice'>You don't see anywhere to use this on.</span>")
+
 	inuse = 0
 	..()
 
 
 //Hyperstation 13 portal fleshlight
 //kinky!
+
 /obj/item/portallight
 	name = "portal fleshlight"
 	desc = "A silver love(TM) fleshlight, used to stimulate someones penis, with bluespace tech that allows lovers to hump at a distance."
@@ -88,6 +95,7 @@
 	var/paired = 0
 	var/obj/item/portalunderwear
 	var/useable = FALSE
+	var/option = ""
 
 /obj/item/portallight/examine(mob/user)
 	. = ..()
@@ -96,109 +104,136 @@
 	else
 		. += "<span class='notice'>The device is paired, and awaiting input. </span>"
 
-/obj/item/portallight/attack(mob/living/carbon/user, mob/living/holder) 
+/obj/item/portallight/attack(mob/living/carbon/C, mob/living/user) //use portallight! nearly the same as the fleshlight apart from you have a buddy!
+	var/obj/item/organ/genital/penis/P = C.getorganslot("penis")
+
 	if(inuse) //just to stop stacking and causing people to cum instantly
 		return
-	if(!UpdateUsability())
-		to_chat(holder, "<span class='notice'>\The [src] appears to be currently unusable.</span>")
-		return
-	var/option = "Fuck"
-	if(user == holder)
+	if(!useable)
+		to_chat(user, "<span class='notice'>It seems the device has failed or your partner is not wearing their device.</span>")
+
+	if(C == user)//if your using it on yourself, more options! otherwise, just fuck.
 		option = input(usr, "Choose action", "Portal Fleshlight", "Fuck") in list("Fuck", "Lick", "Touch")
-	var/obj/item/organ/genital/target_genital = portalunderwear.loc
-	var/mob/living/carbon/human/target = target_genital.owner
-	var/obj/item/organ/genital/penis/P = user.getorganslot("penis")
-	if(option == "Fuck" && !P.is_exposed())
-		to_chat(holder, "<span class='notice'>You don't see anywhere to use this on.</span>")
+	else
+		option = "Fuck"
+
+	var/obj/item/organ/genital/G
+	if(istype(portalunderwear.loc, /obj/item/organ/genital)) //Sanity check. Without this it will runtime error.
+		G = portalunderwear.loc
+	if(!G)
 		return
-	/* 
-	WARMUP START - prevents spam/instant climax 
-	*/
-	inuse = TRUE
-	if(user != holder)
-		user.visible_message("<span class='userlove'>[holder] is trying to use [src] on [user]'s penis.</span>",\
-			"<span class='userlove'>[holder] is trying to use [src] on your penis.</span>")
-	if(!do_mob(holder, user, 3 SECONDS))
-		inuse = FALSE
+	var/mob/living/carbon/human/M = G.owner
+
+	if(option == "Fuck"&&!P.is_exposed()) //we are trying to fuck with no penis!
+		to_chat(user, "<span class='notice'>You don't see anywhere to use this on.</span>")
 		return
-	inuse = FALSE
-	/* 
-	WARMUP END -	proceed with the action 
-	*/
-	switch(option)
-		if("Fuck")
-			playsound(src, 'sound/lewd/slaps.ogg', 30, 1, -1)
-			if(user == holder)
-				holder.visible_message("<span class='userlove'>[holder] pumps [src] on their penis.</span>",
-					"<span class='userlove'>You pump the fleshlight on your penis.</span>")
-			else
-				user.visible_message("<span class='userlove'>[holder] pumps [src] on [user]'s penis.</span>",\
-					"<span class='userlove'>[holder] pumps [src] up and down on your penis.</span>")
-			to_chat(target, "<span class='love'>You feel a [P.length] inch, [P.shape] shaped penis pumping through the portal into your [target_genital.name].</span>")
-			if(prob(30))
-				user.emote("moan")
-			user.adjustArousalLoss(20)
-			target.adjustArousalLoss(20)
-			target.do_jitter_animation()
-			if(target.can_orgasm() && prob(5)) 
-				target.mob_climax_outside(target_genital, spillage=target_genital.is_exposed())
-			if(user.can_orgasm())
-				var/mob/living/carbon/human/O = user
-				var/impreg_chance = target_genital.name == "vagina" && !P.condom && !P.sounding
-				if(O.mob_climax_in_partner(P, target, spillage=FALSE, remote=TRUE) && impreg_chance)
-					target.impregnate(by=O)
-		if("Lick")
-			holder.visible_message("<span class='userlove'>[holder] licks into [src].</span>",\
-				"<span class='userlove'>You lick into [src].</span>")
-			to_chat(target, "<span class='love'>You feel a tongue lick you through the portal against your [target_genital.name].</span>")
-			target.adjustArousalLoss(10)
-		if("Touch")
-			holder.visible_message("<span class='userlove'>[holder] touches softly against [src].</span>",\
-				"<span class='userlove'>You touch softly on [src].</span>")
-			to_chat(target, "<span class='love'>You feel someone touching your [target_genital.name] through the portal.</span>")
-			target.adjustArousalLoss(5)
-	if(prob(30))
-		target.emote("moan")
+	else //other options dont need checks
+		inuse = 1
+		if(!(C == user)) //if we are targeting someone else.
+			C.visible_message("<span class='userlove'>[user] is trying to use [src] on [C]'s penis.</span>", "<span class='userlove'>[user] is trying to use [src] on your penis.</span>")
+
+		if(!do_mob(user, C, 3 SECONDS)) //3 second delay
+			inuse = 0
+			return
+
+		//checked if not used on yourself, if not, carry on.
+		if(option == "Fuck")
+			playsound(src, 'sound/lewd/slaps.ogg', 30, 1, -1) //slapping sound for fuck.
+
+		inuse = 0
+		if(!(C == user))
+			C.visible_message("<span class='userlove'>[user] pumps [src] on [C]'s penis.</span>", "<span class='userlove'>[user] pumps [src] up and down on your penis.</span>")
+		else
+			if(option == "Fuck")
+				user.visible_message("<span class='userlove'>[user] pumps [src] on their penis.</span>", "<span class='userlove'>You pump the fleshlight on your penis.</span>")
+			if(option == "Lick")
+				user.visible_message("<span class='userlove'>[user] licks into [src].</span>", "<span class='userlove'>You lick into [src].</span>")
+			if(option == "Touch")
+				user.visible_message("<span class='userlove'>[user] touches softly against [src].</span>", "<span class='userlove'>You touch softly on [src].</span>")
+
+
+		if(prob(30)) //30% chance to make your partner moan.
+			M.emote("moan")
+
+		if(option == "Fuck")// normal fuck
+			to_chat(M, "<span class='love'>You feel a [P.length] inch, [P.shape] shaped penis pumping through the portal into your [G.name].</span>")//message your partner, and kinky!
+			if(prob(30)) //30% chance to make them moan.
+				C.emote("moan")
+			if(prob(30)) //30% chance to make your partner moan.
+				M.emote("moan")
+			C.adjustArousalLoss(20)
+			M.adjustArousalLoss(20)
+			M.do_jitter_animation() //make your partner shake too!
+
+			if (M.getArousalLoss() >= 100 && ishuman(M) && prob(5))//Why not have a probability to cum when someone's getting nailed with max arousal?~
+				if(G.is_exposed())	//Oh yea, if vagina is not exposed, the climax will not cause a spill
+					M.mob_climax_outside(G, spillage = TRUE)
+				else
+					M.mob_climax_outside(G, spillage = FALSE)
+
+			if (C.getArousalLoss() >= 100 && ishuman(C) && C.has_dna())
+				var/mob/living/carbon/human/O = C
+
+				if( (P.condom == 1) || (P.sounding == 1))  //If coundomed and/or sounded, do not fire impreg chance
+					O.mob_climax_partner(P, M, FALSE, FALSE, FALSE, TRUE)
+				else                                       //Else, fire impreg chance
+					if(G.name == "vagina") //no more spontaneous impregnations through the butt!
+						O.mob_climax_partner(P, M, FALSE, TRUE, FALSE, TRUE)
+					else
+						O.mob_climax_partner(P, M, FALSE, FALSE, FALSE, TRUE)
+
+		if(option == "Lick")
+			to_chat(M, "<span class='love'>You feel a tongue lick you through the portal against your [G.name].</span>")
+			M.adjustArousalLoss(10)
+		if(option == "Touch")
+			to_chat(M, "<span class='love'>You feel someone touching your [G.name] through the portal.</span>")
+			M.adjustArousalLoss(5)
+
+		return
 	..()
 
 /obj/item/portallight/proc/updatesleeve()
 	//get their looks and vagina colour!
-	cut_overlays()
-	if(!UpdateUsability())
+	cut_overlays()//remove current overlays
+
+	var/obj/item/organ/genital/G
+	if(istype(portalunderwear.loc, /obj/item/organ/genital)) //Sanity check. Without this it will runtime.
+		G = portalunderwear.loc
+	if(!G)
+		useable = FALSE
 		return
-	var/obj/item/organ/genital/G = portalunderwear.loc
-	var/mob/living/carbon/human/H = G.owner // H is verified by UpdateUsability()
-	var/sleeve_species = "normal"
-	switch(H.dna.species.name)
-		if("Lizardperson")
-			sleeve_species = "lizard"
-		if("Slimeperson")
-			sleeve_species = "slime"
-		if("Avian")
-			sleeve_species = "avian"
-	sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_[sleeve_species]")
-	sleeve.color = "#" + H.dna.features["mcolor"]
-	add_overlay(sleeve)
-	if(G.name == "vagina")
-		organ = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_vag")
-		organ.color = portalunderwear.loc.color
-	if(G.name == "anus")
-		organ = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_anus")
-		organ.color = "#" + H.dna.features["mcolor"]
-	add_overlay(organ)
 
-/obj/item/portallight/proc/UpdateUsability()
-	var/useable = FALSE
-	if(portalunderwear && istype(portalunderwear.loc, /obj/item/organ/genital))
-		var/obj/item/organ/genital/loc_genitals = portalunderwear.loc
-		if(loc_genitals.owner && ishuman(loc_genitals.owner))
-			useable = TRUE
-	src.useable = useable
-	return useable
+	var/mob/living/carbon/human/H = G.owner
 
+	if(H) //if the portal panties are on someone.
+		sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_normal")
+		if(H.dna.species.name == "Lizardperson") // lizard nerd
+			sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_lizard")
+
+		if(H.dna.species.name == "Slimeperson") // slime nerd
+			sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_slime")
+
+		if(H.dna.species.name == "Avian") // bird nerd
+			sleeve = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_sleeve_avian")
+
+		sleeve.color = "#" + H.dna.features["mcolor"]
+		add_overlay(sleeve)
+
+		if(G.name == "vagina")
+			organ = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_vag")
+			organ.color = portalunderwear.loc.color
+		if(G.name == "anus")
+			organ = mutable_appearance('hyperstation/icons/obj/fleshlight.dmi', "portal_anus")
+			organ.color = "#" + H.dna.features["mcolor"]
+
+		useable = TRUE
+		add_overlay(organ)
+	else
+		useable = FALSE
 
 //Hyperstation 13 portal underwear
 //can be attached to vagina or anus, just like the vibrator, still requires pairing with the portallight
+
 /obj/item/portalpanties
 	name = "portal panties"
 	desc = "A silver love(TM) pair of portal underwear, with bluespace tech allows lovers to hump at a distance. Needs to be paired with a portal fleshlight before use."
@@ -217,6 +252,7 @@
 	else
 		. += "<span class='notice'>The device is paired, and awaiting attachment. </span>"
 
+
 /obj/item/portalpanties/attackby(obj/item/I, mob/living/user) //pairing
 	if(istype(I, /obj/item/portallight))
 		var/obj/item/portallight/P = I
@@ -232,9 +268,11 @@
 		..() //just allows people to hit it with other objects, if they so wished.
 
 /obj/item/portalpanties/attack(mob/living/carbon/C, mob/living/user)
+
 	if(!portallight) //we arent paired yet! noobie trap, let them know.
 		to_chat(user, "<span class='warning'>[src] can only be attached once paired with a portal fleshlight.</span>")
 		return
+
 	var/obj/item/organ/genital/picked_organ
 	var/mob/living/carbon/human/S = user
 	var/mob/living/carbon/human/T = C
@@ -244,17 +282,21 @@
 						"<span class='warning'>[user] is trying to put [src] on you!</span>")
 		if(!do_mob(user, C, 3 SECONDS))//warn them and have a delay of 5 seconds to apply.
 			return
+
 		if((picked_organ.name == "vagina")||(picked_organ.name == "anus")) //only fits on a vagina or anus
+
 			src.shapetype = picked_organ.name
 			if(!picked_organ.equipment)
 				to_chat(user, "<span class='love'>You wrap [src] around [T]'s [picked_organ.name].</span>")
 			else
 				to_chat(user, "<span class='notice'>They already have [picked_organ.equipment.name] there.</span>")
 				return
+
 			if(!user.transferItemToLoc(src, picked_organ)) //check if you can put it in
 				return
 			src.attached = TRUE
 			picked_organ.equipment = src
+
 			var/obj/item/portallight/P = portallight
 			//now we need to send what they look like, but saddly if the person changes colour for what ever reason, it wont update. but dont tell people shh.
 			if(P) //just to make sure
@@ -269,7 +311,6 @@
 	if(portallight)
 		var/obj/item/portallight/P = portallight
 		P.updatesleeve()
-
 
 /obj/item/storage/box/portallight
 	name =  "Portal Fleshlight and Underwear"

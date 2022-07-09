@@ -1,5 +1,6 @@
 GLOBAL_LIST_INIT(command_positions, list(
 	"Captain",
+	"Lambent",
 	"Head of Personnel",
 	"Head of Security",
 	"Chief Engineer",
@@ -37,6 +38,8 @@ GLOBAL_LIST_INIT(supply_positions, list(
 
 GLOBAL_LIST_INIT(civilian_positions, list(
 	"Head of Personnel",
+	"Barista",
+	"Barber",
 	"Bartender",
 	"Botanist",
 	"Cook",
@@ -59,6 +62,9 @@ GLOBAL_LIST_INIT(nonhuman_positions, list(
 	"AI",
 	"Cyborg",
 	ROLE_PAI))
+
+GLOBAL_LIST_INIT(important_positions, list(
+	"Lambent"))
 
 GLOBAL_LIST_INIT(silly_positions, list(
 	"Clown",

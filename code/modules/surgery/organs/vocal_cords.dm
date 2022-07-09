@@ -581,7 +581,7 @@
 		for(var/V in listeners)
 			var/mob/living/carbon/human/H = V
 			if(H.canbearoused && H.has_dna() && HAS_TRAIT(H, TRAIT_NYMPHO)) // probably a redundant check but for good measure
-				H.mob_climax_instant()
+				H.mob_climax(forced_climax=TRUE)
 	*/
 	else if((findtext(message, family_friendly_words)))
 		cooldown = COOLDOWN_MEME
@@ -1123,7 +1123,7 @@
 			if(E.phase > 1)
 				if(HAS_TRAIT(H, TRAIT_NYMPHO) && H.canbearoused && E.lewd) // probably a redundant check but for good measure
 					addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, H, "<span class='love'>Your [E.enthrallGender] pushes you over the limit, overwhelming your body with pleasure.</b></span>"), 5)
-					H.mob_climax_instant()
+					H.mob_climax(forced_climax=TRUE)
 					H.SetStun(20)
 					H.setArousalLoss(H.min_arousal)
 					E.resistanceTally = 0 //makes resistance 0, but resets arousal, resistance buildup is faster unaroused (massively so).

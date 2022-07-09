@@ -5,7 +5,5 @@
 
 	"workbench.editorAssociations": {
 		"*.dmi": "imagePreview.previewEditor"
-	},
-	"files.eol": "\n",
-	"files.insertFinalNewline": true,
+	}
 }

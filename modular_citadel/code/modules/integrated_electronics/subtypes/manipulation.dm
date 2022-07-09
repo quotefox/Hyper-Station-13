@@ -25,12 +25,12 @@
 	if(ismob(M) && M.canbearoused && arousal_gain != 0)
 		var/orgasm = FALSE
 		if(arousal_gain > 0)
-			if(M.can_orgasm())
+			if(M.getArousalLoss() >= 100 && ishuman(M) && M.has_dna())
 				var/mob/living/carbon/human/H = M
 				var/orgasm_message = pick("A sharp pulse of electricity pushes you to orgasm!", "You feel a jolt of electricity force you into orgasm!")
 				H.visible_message("<span class='warning'>\The [assembly] electrodes shock [H]!</span>", "<span class='warning'>[orgasm_message]</span>")
 				playsound(src, "sound/effects/light_flicker.ogg", 30, 1)
-				H.mob_climax_instant()
+				H.mob_climax(forced_climax=TRUE)
 				orgasm = TRUE
 			else
 				M.adjustArousalLoss(arousal_gain)

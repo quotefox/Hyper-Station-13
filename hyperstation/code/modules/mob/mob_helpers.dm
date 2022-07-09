@@ -27,7 +27,3 @@ mob/proc/checkloadappearance()
 			else
 				to_chat(H, "<span class='boldannounce'>You either took too long or chose not to change. Alrighty. Remember, you have 90 seconds from spawn to get to a mirror and still do it if you wish.</span>")
 				return
-
-// oracle port
-/mob/proc/has_mouth()
-	return FALSE

@@ -16,7 +16,6 @@
 	var/heat_resistance = 800
 	var/health = 70
 	var/maxhealth = 70
-	layer = BELOW_MOB_LAYER
 
 
 	resistance_flags = ACID_PROOF
@@ -164,14 +163,6 @@
 
 	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
 	usr.do_twist(targetangle = 45, timer = 8)
-
-/obj/structure/railing/Initialize(mapload) //mobs will show under the south railing sprite, thanks Cyanosis for helping with the fix
-  . = ..()
-  if(!mapload)
-    return
-  if(!(dir & SOUTH))
-    return
-  layer = ABOVE_MOB_LAYER
 
 /obj/structure/railing/handrail
 	name = "handrail"

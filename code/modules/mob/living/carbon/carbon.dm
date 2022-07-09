@@ -487,9 +487,6 @@
 	if(HAS_TRAIT(src, TRAIT_NOHUNGER))
 		return 1
 
-	if(!has_mouth())
-		return 1
-
 	if(nutrition < 100 && !blood)
 		if(message)
 			visible_message("<span class='warning'>[src] dry heaves!</span>", \

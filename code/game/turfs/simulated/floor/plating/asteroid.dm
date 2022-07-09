@@ -123,9 +123,8 @@
 	planetary_atmos = TRUE
 	baseturfs = /turf/open/lava/smooth/lava_land_surface
 
-/turf/open/floor/plating/asteroid/spacehermit
-	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
-	baseturfs = /turf/open/floor/plating/asteroid/spacehermit
+
+
 
 /turf/open/floor/plating/asteroid/airless
 	initial_gas_mix = AIRLESS_ATMOS
@@ -387,7 +386,7 @@
 	bullet_bounce_sound = null
 	digResult = /obj/item/stack/ore/glass/basalt
 	floor_variance = 50 //This means 50% chance of variating from the default tile.
-	quantity_of_available_tiles = 4
+	quantity_of_available_tiles = 5
 	//light_range = 2
 	//light_power = 0.15
 	//light_color = LIGHT_COLOR_WHITE

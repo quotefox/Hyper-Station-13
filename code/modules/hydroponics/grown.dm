@@ -33,9 +33,6 @@
 		// This is for adminspawn or map-placed growns. They get the default stats of their seed type.
 		seed = new seed()
 		seed.adjust_potency(50-seed.potency)
-	else if(!seed)
-		stack_trace("Grown initialized without seed. Okay.")
-		return INITIALIZE_HINT_QDEL
 
 	pixel_x = rand(-5, 5)
 	pixel_y = rand(-5, 5)
@@ -43,11 +40,13 @@
 	if(dried_type == -1)
 		dried_type = src.type
 
-	for(var/datum/plant_gene/trait/T in seed.genes)
-		T.on_new(src, loc)
-	seed.prepare_result(src)
-	AddElement(/datum/element/item_scaling, TRANSFORM_USING_VARIABLE(seed.potency, 100) + 0.5, 1)	//Makes the resulting produce's sprite larger or smaller based on potency!
-	add_juice()
+	if(seed)
+		for(var/datum/plant_gene/trait/T in seed.genes)
+			T.on_new(src, loc)
+		seed.prepare_result(src)
+		transform *= TRANSFORM_USING_VARIABLE(seed.potency, 100) + 0.5 //Makes the resulting produce's sprite larger or smaller based on potency!
+		add_juice()
+
 
 
 /obj/item/reagent_containers/food/snacks/grown/proc/add_juice()

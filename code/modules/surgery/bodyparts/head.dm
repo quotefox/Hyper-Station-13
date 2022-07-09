@@ -34,9 +34,6 @@
 	var/lip_color = "white"
 	//If the head is a special sprite
 	var/custom_head
-	
-	// if head has mouth; may depend on species
-	var/mouth = TRUE
 
 /obj/item/bodypart/head/can_dismember(obj/item/I)
 	if(!((owner.stat == DEAD) || owner.InFullCritical()))

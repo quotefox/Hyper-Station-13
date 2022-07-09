@@ -4,6 +4,8 @@
 	icon = 'icons/obj/dyespray.dmi'
 	icon_state = "dyespray"
 
+	var/uses = 10 //SKYRAT EDIT ADDITION
+
 /obj/item/dyespray/attack_self(mob/user)
 	dye(user)
 
@@ -21,6 +23,10 @@
 /obj/item/dyespray/proc/dye(mob/target)
 	if(!ishuman(target))
 		return
+
+	if(!uses) //SKYRAT EDIT ADDITION
+		return //SKYRAT EDIT ADDITION
+	
 	var/mob/living/carbon/human/human_target = target
 
 	var/new_hair_color = input(usr, "Choose a base hair color:", "Character Preference","#"+human_target.hair_color) as color|null
@@ -43,3 +49,12 @@
 		return
 	playsound(src, 'sound/effects/spray.ogg', 5, TRUE, 5)
 	human_target.update_hair()
+
+	//SKYRAT EDIT ADDITION
+	uses--
+
+/obj/item/dyespray/examine(mob/user)
+	. = ..()
+	. += "It has [uses] uses left."
+
+	//SKYRAT EDIT END

@@ -49,6 +49,13 @@ GLOBAL_LIST_INIT(metal_recipes, list ( \
 		new/datum/stack_recipe("sofa (corner)", /obj/structure/chair/sofa/corner, one_per_turf = TRUE, on_floor = TRUE) \
 		)), \
 	//END OF CIT CHANGES
+	new/datum/stack_recipe_list("bench", \
+		list( \
+		new/datum/stack_recipe("bench (middle)", /obj/structure/chair/bench/metal, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("bench (left)", /obj/structure/chair/bench/metal/left, one_per_turf = TRUE, on_floor = TRUE), \
+		new/datum/stack_recipe("bench (right)", /obj/structure/chair/bench/metal/right, one_per_turf = TRUE, on_floor = TRUE), \
+		)), \
+	null, \
 	new/datum/stack_recipe("bed", /obj/structure/bed, 2, one_per_turf = TRUE, on_floor = TRUE), \
 	null, \
 	//add this when I can find a way to make them easily constructible > new/datum/stack_recipe("sink", /obj/structure/sink, 2, one_per_turf = TRUE, on_floor = TRUE),
@@ -474,11 +481,6 @@ GLOBAL_LIST_INIT(cardboard_recipes, list ( \
 	new /datum/stack_recipe("donk-pockets teriyaki box", /obj/item/storage/box/donkpockets/donkpocketteriyaki),		\
 	new /datum/stack_recipe("donk-pockets pizza box", /obj/item/storage/box/donkpockets/donkpocketpizza),			\
 	new /datum/stack_recipe("donk-pockets berry box", /obj/item/storage/box/donkpockets/donkpocketberry),			\
-	new /datum/stack_recipe("donk-pockets taco box", /obj/item/storage/box/donkpockets/donkpockettaco),				\
-	new /datum/stack_recipe("donk-pockets plasma box", /obj/item/storage/box/donkpockets/donkpocketplasma),			\
-	new /datum/stack_recipe("donk-pockets breakfast box", /obj/item/storage/box/donkpockets/donkpocketbreakfast),	\
-	new /datum/stack_recipe("donk-pockets moth box", /obj/item/storage/box/donkpockets/donkpocketmoth),				\
-	new /datum/stack_recipe("donk-pockets vegan box", /obj/item/storage/box/donkpockets/donkpocketvegan),			\
 	new /datum/stack_recipe("donk-pockets honk box", /obj/item/storage/box/donkpockets/donkpockethonk),				\
 	new /datum/stack_recipe("monkey cube box", /obj/item/storage/box/monkeycubes),
 	null, \

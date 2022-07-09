@@ -87,11 +87,6 @@ SNOUTS
 	icon_state = "feasterndnw"
 	icon = 'hyperstation/icons/mob/char_snouts.dmi'
 
-/datum/sprite_accessory/mam_snouts/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
-	name = "Kinaris - Shuttle (Hyper)"
-	icon_state = "knshuttle"
-	icon = 'hyperstation/icons/mob/char_snouts.dmi'
-
 /datum/sprite_accessory/mam_snouts/fchemlight
 	name = "RadDog (Top) (Hyper)"
 	icon_state = "fchemlight"
@@ -148,11 +143,6 @@ EARS
 	icon_state = "easternd"
 	icon = 'hyperstation/icons/mob/char_ears.dmi'
 
-/datum/sprite_accessory/mam_ears/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
-	name = "Kinaris - Shuttle (Hyper)"
-	icon_state = "knshuttle"
-	icon = 'hyperstation/icons/mob/char_ears.dmi'
-
 /datum/sprite_accessory/mam_ears/chemlight
 	name = "RadDog (Hyper)"
 	icon_state = "chemlight"
@@ -194,13 +184,6 @@ WINGS
 	name = "Insect (Hyper)"
 	icon_state = "insect"
 	icon = 'hyperstation/icons/mob/char_wings.dmi'
-
-/datum/sprite_accessory/deco_wings/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
-	name = "Kinaris - Shuttle (Hyper)"
-	icon_state = "knshuttle"
-	icon = 'hyperstation/icons/mob/char_wings.dmi'
-	//recommended_species = list("synthliz") need to give synths a deco wing slot
-	color_src = MATRIXED
 
 /datum/sprite_accessory/deco_wings/minibat // sarcoph @ hyperstation, march 2022
 	name = "Mini Bat (Hyper)"
@@ -341,18 +324,6 @@ TAILS + ANIMATED TAILS
 	icon_state = "easternd"
 	icon = 'hyperstation/icons/mob/char_tails.dmi'
 
-/datum/sprite_accessory/mam_tails/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
-	name = "Kinaris - Shuttle (Hyper)"
-	icon_state = "knshuttle"
-	icon = 'hyperstation/icons/mob/char_tails.dmi'
-	recommended_species = list("synthliz")
-
-/datum/sprite_accessory/mam_tails_animated/knshuttle
-	name = "Kinaris - Shuttle (Hyper)"
-	icon_state = "knshuttle"
-	icon = 'hyperstation/icons/mob/char_tails.dmi'
-	recommended_species = list("synthliz")
-
 /datum/sprite_accessory/mam_tails/chemlight
 	name = "RadDog (Hyper)"
 	icon_state = "chemlight"
@@ -427,11 +398,6 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	icon_state = "easternd"
 	icon = 'hyperstation/icons/mob/char_markings.dmi'
 
-/datum/sprite_accessory/mam_body_markings/knshuttle // Dahlular and Arcstaisia @ hyperstation, april 2022. Feel free to remove comment. Just remember this is snowflakey Kinaris stuff.
-	name = "Kinaris - Shuttle (Hyper)"
-	icon_state = "knshuttle"
-	icon = 'hyperstation/icons/mob/char_markings.dmi'
-
 //doged was here
 /datum/sprite_accessory/mam_body_markings/chemlight
 	name = "RadDog (Hyper)"
@@ -474,92 +440,6 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	icon_state = "chemlight"
 	taur_mode = PAW_TAURIC
 	ckeys_allowed = list("chemlight")
-
-
-/*
-IPCS
-==========================================================
-*/
-
-/*
-from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
-
-/datum/sprite_accessory/antenna
-	icon = 'modular_citadel/icons/mob/ipc_antennas.dmi'
-	color_src = MUTCOLORS3
-	recommended_species = list("ipc")
-
-/datum/sprite_accessory/screen
-	icon = 'modular_citadel/icons/mob/ipc_screens.dmi'
-	color_src = null
-*/
-
-/datum/sprite_accessory/antenna/idog_down
-	name = "Dog, down (Hyper)"
-	icon_state = "idog_down"
-	color_src = MATRIXED
-
-/datum/sprite_accessory/antenna/idog_up
-	name = "Dog, up (Hyper)"
-	icon_state = "idog_up"
-	color_src = MATRIXED
-
-/datum/sprite_accessory/antenna/headset
-	name = "Headphones (Hyper)"
-	icon_state = "headset"
-	color_src = MATRIXED
-
-/datum/sprite_accessory/antenna/aquatic
-	name = "Fins (Hyper)"
-	icon_state = "aquatic"
-	color_src = MATRIXED
-
-/datum/sprite_accessory/screen/ghost
-	name = "Ghost (Hyper)"
-	icon_state = "ghost"
-
-/datum/sprite_accessory/screen/heartbeat
-	name = "Heartbeat (Hyper)"
-	icon_state = "heartbeat"
-
-/datum/sprite_accessory/screen/ocean
-	name = "Ocean (Hyper)"
-	icon_state = "ocean"
-
-/datum/sprite_accessory/antenna/catears
-	name = "Pointy Ears (Hyper)"
-	icon_state = "catears"
-	color_src = MATRIXED
-
-/datum/sprite_accessory/screen/valley
-	name = "Valley (Hyper)"
-	icon_state = "valley"
-
-/datum/sprite_accessory/screen/visor
-	name = "Black Visor (Hyper)"
-	icon = 'hyperstation/icons/mob/ipc_screen_visor.dmi'
-	icon_state = "visor_black"
-
-/datum/sprite_accessory/screen/visor/blue
-	name = "Blue Visor (Hyper)"
-	icon_state = "visor_blue"
-	
-/datum/sprite_accessory/screen/visor/green
-	name = "Green Visor (Hyper)"
-	icon_state = "visor_green"
-
-/datum/sprite_accessory/screen/visor/red
-	name = "Red Visor (Hyper)"
-	icon_state = "visor_red"
-
-/datum/sprite_accessory/screen/visor/white
-	name = "White Visor (Hyper)"
-	icon_state = "visor_white"
-
-/datum/sprite_accessory/screen/visor/yellow
-	name = "Yellow Visor (Hyper)"
-	icon_state = "visor_yellow"
-	
 
 /*
 HAIRSTYLES

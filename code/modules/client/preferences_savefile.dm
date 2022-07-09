@@ -576,7 +576,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 				all_quirks -= V
 
 	cit_character_pref_load(S)
-	hyper_character_pref_load(S)
 
 	return 1
 
@@ -672,7 +671,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["all_quirks"]			, all_quirks)
 
 	cit_character_pref_save(S)
-	hyper_character_pref_save(S)
 
 	return 1
 

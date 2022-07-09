@@ -2,9 +2,9 @@
 	//ipcs
 	S["feature_ipc_screen"] >> features["ipc_screen"]
 	S["feature_ipc_antenna"] >> features["ipc_antenna"]
+
 	features["ipc_screen"] 	= sanitize_inlist(features["ipc_screen"], GLOB.ipc_screens_list)
 	features["ipc_antenna"] 	= sanitize_inlist(features["ipc_antenna"], GLOB.ipc_antennas_list)
-
 	//Citadel
 	features["flavor_text"]		= sanitize_text(features["flavor_text"], initial(features["flavor_text"]))
 	features["ooc_text"]		= sanitize_text(features["ooc_text"], initial(features["ooc_text"]))
@@ -34,7 +34,6 @@
 		if(path)
 			LAZYADD(chosen_gear, path)
 			gear_points -= initial(path.cost)
-
 
 /datum/preferences/proc/cit_character_pref_save(savefile/S)
 	//ipcs

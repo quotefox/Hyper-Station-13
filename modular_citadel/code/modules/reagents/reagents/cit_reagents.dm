@@ -197,7 +197,7 @@
 
 /datum/reagent/drug/aphrodisiacplus/overdose_process(mob/living/M)
 	if(M && M.canbearoused && !(M.client?.prefs.cit_toggles & NO_APHRO) && prob(33))
-		if(prob(5) && M.can_orgasm())
+		if(prob(5) && M.getArousalLoss() >= 100 && ishuman(M) && M.has_dna())
 			if(prob(5)) //Less spam
 				to_chat(M, "<span class='love'>Your libido is going haywire!</span>")
 		if(M.min_arousal < 50)

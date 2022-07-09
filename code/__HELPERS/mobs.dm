@@ -136,27 +136,15 @@
 			var/datum/sprite_accessory/S = instance
 			if(!S.ckeys_allowed)
 				snowflake_mam_snouts_list[S.name] = mspath
-
 	var/list/snowflake_ipc_antenna_list = list()
 	for(var/mspath in GLOB.ipc_antennas_list)
-		var/datum/sprite_accessory/antenna/instance = GLOB.ipc_antennas_list[mspath]
+		var/datum/sprite_accessory/mam_snouts/instance = GLOB.ipc_antennas_list[mspath]
 		if(istype(instance, /datum/sprite_accessory))
 			var/datum/sprite_accessory/S = instance
 			if(intendedspecies && S.recommended_species && !S.recommended_species.Find(intendedspecies))
 				continue
 			if(!S.ckeys_allowed)
 				snowflake_ipc_antenna_list[S.name] = mspath
-				
-	var/list/snowflake_ipc_screen_list = list()
-	for(var/mspath in GLOB.ipc_screens_list)
-		var/datum/sprite_accessory/screen/instance = GLOB.ipc_screens_list[mspath]
-		if(istype(instance, /datum/sprite_accessory))
-			var/datum/sprite_accessory/S = instance
-			if(intendedspecies && S.recommended_species && !S.recommended_species.Find(intendedspecies))
-				continue
-			if(!S.ckeys_allowed)
-				snowflake_ipc_screen_list[S.name] = mspath
-
 	var/color1 = random_short_color()
 	var/color2 = random_short_color()
 	var/color3 = random_short_color()
@@ -245,17 +233,11 @@
 		"womb_cum_mult"		= CUM_RATE_MULT,
 		"womb_efficiency"	= CUM_EFFICIENCY,
 		"womb_fluid" 		= "femcum",
-		"ipc_screen" = snowflake_ipc_screen_list ? pick(snowflake_ipc_screen_list) : "None",
-		"ipc_antenna" = snowflake_ipc_antenna_list ? pick(snowflake_ipc_antenna_list) : "None",
+		"ipc_screen"		= snowflake_ipc_antenna_list ? pick(snowflake_ipc_antenna_list) : "None",
+		"ipc_antenna" = "None",
 		"flavor_text"		= "",
 		"silicon_flavor_text"		= "",
-		"ooc_text"			= "",
-		"cosmetic_head" = GLOB.cosmetic_heads["default"],
-		"cosmetic_chest" = GLOB.cosmetic_chests["default"],
-		"cosmetic_l_arm" = GLOB.cosmetic_arms["default"],
-		"cosmetic_r_arm" = GLOB.cosmetic_arms["default"],
-		"cosmetic_l_leg" = GLOB.cosmetic_legs["default"],
-		"cosmetic_r_leg" = GLOB.cosmetic_legs["default"]))
+		"ooc_text"			= ""))
 
 /proc/random_hair_style(gender)
 	switch(gender)

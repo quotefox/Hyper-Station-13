@@ -690,8 +690,6 @@ generate/load female uniform sprites matching all previously decided variables
 				. += "-[BP.digitigrade_type]"
 		if(BP.dmg_overlay_type)
 			. += "-[BP.dmg_overlay_type]"
-		if(BP.cosmetic_icon)
-			. += "-cosm[BP.cosmetic_icon]"
 		if(BP.body_markings)
 			. += "-[BP.body_markings]"
 		else

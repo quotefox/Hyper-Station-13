@@ -6,8 +6,7 @@
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	blacklisted = 0
 	sexes = 0
-	species_traits = list(MUTCOLORS,NOEYES,NOTRANSSTING,NOMOUTH)
-	inherent_traits = list(TRAIT_NOTHIRST)
+	species_traits = list(MUTCOLORS,NOEYES,NOTRANSSTING)
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	mutant_bodyparts = list("ipc_screen", "ipc_antenna")
 	default_features = list("ipc_screen" = "Blank", "ipc_antenna" = "None")
@@ -17,9 +16,8 @@
 	mutant_heart = /obj/item/organ/heart/ipc
 	mutantlungs = /obj/item/organ/lungs/ipc
 	mutantliver = /obj/item/organ/liver/ipc
-	mutantstomach = /obj/item/organ/stomach/cell
+	mutantstomach = /obj/item/organ/stomach/ipc
 	mutanteyes = /obj/item/organ/eyes/ipc
-	mutant_organs = list(/obj/item/organ/cyberimp/arm/power_cord) // oracle port
 
 	exotic_bloodtype = "HF"
 

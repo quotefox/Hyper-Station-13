@@ -2121,7 +2121,7 @@ datum/sprite_accessory/ears/human/gret
 
 /datum/sprite_accessory/antenna
 	icon = 'modular_citadel/icons/mob/ipc_antennas.dmi'
-	color_src = MUTCOLORS3
+	color_src = MUTCOLORS2
 	recommended_species = list("ipc")
 
 /datum/sprite_accessory/antenna/none

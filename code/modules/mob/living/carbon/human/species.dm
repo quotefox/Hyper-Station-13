@@ -318,12 +318,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		var/mob/living/carbon/human/H = C
 		if(NOGENITALS in H.dna.species.species_traits)
 			H.give_genitals(TRUE) //call the clean up proc to delete anything on the mob then return.
+
 // EDIT ENDS
-
-	if(NOMOUTH in species_traits)
-		for(var/obj/item/bodypart/head/head in C.bodyparts)
-			head.mouth = FALSE
-
 
 /datum/species/proc/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	if(C.dna.species.exotic_bloodtype)
@@ -331,11 +327,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 			C.dna.blood_type = random_blood_type()
 		else
 			C.dna.blood_type = new_species.exotic_bloodtype
-
-	if(NOMOUTH in species_traits)
-		for(var/obj/item/bodypart/head/head in C.bodyparts)
-			head.mouth = TRUE
-
 	if(DIGITIGRADE in species_traits)
 		C.Digitigrade_Leg_Swap(TRUE)
 	for(var/X in inherent_traits)
@@ -511,7 +502,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	var/list/standing = list()
 
 	var/obj/item/bodypart/head/HD = H.get_bodypart(BODY_ZONE_HEAD)
-	H.handle_cosmetic_parts()
 
 	if(HD && !(HAS_TRAIT(H, TRAIT_HUSK)))
 		// lipstick
@@ -604,7 +594,6 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	//CITADEL EDIT - Do not forget to add this to relevent_layers list just above too!
 	H.remove_overlay(BODY_TAUR_LAYER)
 	//END EDIT
-	H.handle_cosmetic_parts()
 
 	if(!mutant_bodyparts)
 		return
@@ -689,17 +678,21 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 	if("mam_tail" in mutant_bodyparts)
 		if(H.wear_suit && (H.wear_suit.flags_inv & HIDETAUR) || (!H.dna.features["taur"] == "None"))
 			bodyparts_to_add -= "mam_tail"
+
 	if("mam_waggingtail" in mutant_bodyparts)
 		if(H.wear_suit && (H.wear_suit.flags_inv & HIDETAUR) || (!H.dna.features["taur"] == "None"))
 			bodyparts_to_add -= "mam_waggingtail"
 		else if ("mam_tail" in mutant_bodyparts)
 			bodyparts_to_add -= "mam_waggingtail"
+
 	if("mam_ears" in mutant_bodyparts)
 		if(!H.dna.features["mam_ears"] || H.dna.features["mam_ears"] == "None" || H.head && (H.head.flags_inv & HIDEEARS) || (H.wear_mask && (H.wear_mask.flags_inv & HIDEEARS)) || !HD || HD.status == BODYPART_ROBOTIC)
 			bodyparts_to_add -= "mam_ears"
+
 	if("mam_snouts" in mutant_bodyparts) //Take a closer look at that snout!
 		if((H.wear_mask && (H.wear_mask.flags_inv & HIDESNOUT)) || (H.head && (H.head.flags_inv & HIDESNOUT)) || !HD || HD.status == BODYPART_ROBOTIC)
 			bodyparts_to_add -= "mam_snouts"
+
 	if("taur" in mutant_bodyparts)
 		if(!H.dna.features["taur"] || H.dna.features["taur"] == "None" || (H.wear_suit && (H.wear_suit.flags_inv & HIDETAUR)))
 			bodyparts_to_add -= "taur"
@@ -1654,8 +1647,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 		)
 		if (target.canbearoused)
 			target.adjustArousalLoss(5)
-		if (HAS_TRAIT(target, TRAIT_MASO))
-			target.mob_climax_instant()
+		if (target.getArousalLoss() >= 100 && ishuman(target) && HAS_TRAIT(target, TRAIT_MASO) && target.has_dna())
+			target.mob_climax(forced_climax=TRUE)
 		if (!HAS_TRAIT(target, TRAIT_NYMPHO))
 			stop_wagging_tail(target)
 
@@ -2012,7 +2005,8 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 					H.update_damage_overlays()
 					if(HAS_TRAIT(H, TRAIT_MASO))
 						H.adjustArousalLoss(damage * brutemod * H.physiology.brute_mod)
-						H.mob_climax_instant()
+						if (H.getArousalLoss() >= 100 && ishuman(H) && H.has_dna())
+							H.mob_climax(forced_climax=TRUE)
 
 			else//no bodypart, we deal damage with a more general method.
 				H.adjustBruteLoss(damage * hit_percent * brutemod * H.physiology.brute_mod)

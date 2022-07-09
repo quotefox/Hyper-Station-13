@@ -223,9 +223,6 @@
 	var/bulb_emergency_pow_mul = 0.75	// the multiplier for determining the light's power in emergency mode
 	var/bulb_emergency_pow_min = 0.5	// the minimum value for the light's power in emergency mode
 
-	var/obj/effect/light/lighteffect //light effect
-
-
 /obj/machinery/light/broken
 	status = LIGHT_BROKEN
 	icon_state = "tube-broken"
@@ -245,8 +242,6 @@
 	icon_state = "bulb-broken"
 
 /obj/machinery/light/Move()
-	if(lighteffect)
-		lighteffect.loc = src.loc
 	if(status != LIGHT_BROKEN)
 		break_light_tube(1)
 	return ..()
@@ -290,8 +285,6 @@
 
 /obj/machinery/light/Destroy()
 	var/area/A = get_area(src)
-	if(lighteffect)
-		lighteffect.Del()
 	if(A)
 		on = FALSE
 //		A.update_lights()
@@ -299,35 +292,24 @@
 	return ..()
 
 /obj/machinery/light/update_icon()
-	if(!lighteffect) //dont have a light bloom, make it.
-		lighteffect = new/obj/effect/light/large
-		lighteffect.loc = src.loc
 	cut_overlays()
 	switch(status)		// set icon_states
 		if(LIGHT_OK)
 			var/area/A = get_area(src)
 			if(emergency_mode || (A && A.fire))
 				icon_state = "[base_state]_emergency"
-				lighteffect.alpha = 0
 			else
 				icon_state = "[base_state]"
 				if(on)
-					lighteffect.alpha = CLAMP(light_power*35, 5, 100)
-					lighteffect.color = light_color
 					var/mutable_appearance/glowybit = mutable_appearance(overlayicon, base_state, ABOVE_LIGHTING_LAYER, ABOVE_LIGHTING_PLANE)
 					glowybit.alpha = CLAMP(light_power*250, 30, 200)
 					add_overlay(glowybit)
 		if(LIGHT_EMPTY)
 			icon_state = "[base_state]-empty"
-			lighteffect.alpha = 0
 		if(LIGHT_BURNED)
 			icon_state = "[base_state]-burned"
-			lighteffect.alpha = 0
 		if(LIGHT_BROKEN)
 			icon_state = "[base_state]-broken"
-			lighteffect.alpha = 0
-	if(!on)
-		lighteffect.alpha = 0
 	return
 
 // update the icon_state and luminosity of the light depending on its state
