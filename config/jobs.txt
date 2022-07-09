@@ -3,7 +3,6 @@
 #Job names must be identical to the title var of each job datum
 #Positions can be set to -1 to allow unlimited slots
 Captain=1,1
-Lambent=1,1
 Head of Personnel=1,1
 Head of Security=1,1
 Chief Engineer=1,1
@@ -17,9 +16,7 @@ Cargo Technician=3,2
 Shaft Miner=3,3
 
 Bartender=1,1
-Barista=1,1
-Barber=2,1
-Cook=1,1
+Cook=2,1
 Botanist=3,2
 Janitor=2,1
 

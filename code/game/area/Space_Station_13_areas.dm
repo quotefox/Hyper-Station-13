@@ -446,7 +446,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/crew_quarters/lounge
 	name = "Lounge"
-	icon_state = "lounge"
+	icon_state = "yellow"
 
 /area/crew_quarters/fitness
 	name = "Fitness Room"
@@ -493,10 +493,6 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/crew_quarters/theatre
 	name = "Theatre"
-	icon_state = "Theatre"
-
-/area/crew_quarters/theatre/main
-	name = "Entertainment Theatre"
 	icon_state = "Theatre"
 
 /area/crew_quarters/theatre/abandoned
@@ -1376,7 +1372,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	name = "Xenoarchaeology Medical"
 	icon_state = "xenomed"
 
-//Pool and Hyper additions
+//Pool
 /area/crew_quarters/fitness/pool
 	name = "Pool Area"
 	icon_state = "pool"
@@ -1388,25 +1384,11 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 
 /area/arcade
 	name = "Arcade"
-	icon_state = "arcade"
+	icon_state = "yellow"
 
-/area/medical/psych/ward
-	name = "Psychology Ward"
-
-/area/medical/psych/therapy
-	name = "Therapy Office"
-
-/area/medical/psych/rec
-	name = "Psychology Recreation"
-
-/area/medical/psych/lobby
-	name = "Psychology Lobby"
-
-/area/medical/psych/roomA
-	name = "Physchology Dorm A"
-
-/area/medical/psych/roomB
-	name = "Physchology Dorm A"
+/area/artatrium
+	name = "Art Atrium"
+	icon_state = "library"
 
 //Diner
 /area/diner
