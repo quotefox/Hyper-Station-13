@@ -115,7 +115,6 @@ obj/item/condom/update_icon()
 		return
 	if(!P.condom)
 		return
-
 	var/obj/item/condom/filled/C = new
 	P.linked_organ.reagents.trans_to(C, P.linked_organ.reagents.total_volume)
 	C.loc = loc
