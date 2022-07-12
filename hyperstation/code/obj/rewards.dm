@@ -198,3 +198,18 @@
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	flags_inv = HIDEHAIR|HIDEFACE|HIDEEARS
 	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/mask/lamask
+	name = "sheep mask"
+	desc = "A mask with a spiral pattern."
+	icon = 'hyperstation/icons/obj/rewards.dmi'
+	alternate_worn_icon = 'hyperstation/icons/mobs/rewards.dmi'
+	icon_state = "lamask"
+	flags_inv = HIDEFACE|HIDEFACIALHAIR
+	w_class = WEIGHT_CLASS_SMALL
+	mutantrace_variation = NO_MUTANTRACE_VARIATION
+
+/obj/item/clothing/mask/lamask/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_MASK_TRAIT)
+	playsound(get_turf(src), 'sound/magic/horsehead_curse.ogg', 50, 1)
