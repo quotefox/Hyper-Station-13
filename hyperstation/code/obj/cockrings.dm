@@ -54,7 +54,7 @@
 
 /obj/item/equipment/penis/ring/limiter
 	name = "normalizer cock ring"
-	desc = "An expensive technological cock ring cast in SynTech purples with shimmering Kinaris golds. It will peoples penis size to 5 inches."
+	desc = "An expensive technological cock ring cast in SynTech purples with shimmering Kinaris golds. It will peoples penis size to a third."
 	icon_state = "cockring_limit"
 	price = 12
 
