@@ -26,6 +26,7 @@
 	var/obj/item/equipment 		//for fun stuff that goes on the gentials/maybe rings down the line
 	var/dontlist				= FALSE
 	var/nochange				= FALSE //stops people changing visablity.
+	var/limited				= FALSE
 
 /obj/item/organ/genital/Initialize()
 	. = ..()
@@ -463,11 +464,20 @@
 			//creates another icon with mutable appearance, allows different layering depending on direction
 			var/mutable_appearance/genital_overlay_directional = mutable_appearance(S.icon, layer = -layer)
 
+			if(G.limited) //limiter
+				if(G.size > 3)
+					size = 3
+				if(G.size == 3)
+					size = 2
+				if(G.size == 2)
+					size = 1
+
 			//genitals bigger than 11 inches / g-cup will appear over clothing, if accepted
 			//otherwise, appear under clothing
 			if(G.slot == "penis" || G.slot == "testicles")
 				if(G.size < 3)		//is actually "less than 11 inches"
 					genital_overlay.layer = -GENITALS_UNDER_LAYER
+
 			if(G.slot == "breasts")
 				var/obj/item/organ/genital/breasts/B = G
 				if(B.cached_size < 8)	//anything smaller than a g-cup
@@ -500,7 +510,7 @@
 				genital_overlay_directional.layer = -NECK_LAYER
 
 				colourcode = "butt_color"
-				if(use_skintones && H.dna.features["genitals_use_skintone"]) 
+				if(use_skintones && H.dna.features["genitals_use_skintone"])
 				//butts are forced a colour, either skin tones, or main colour.
 				//how ever, mutants use a darker version, because of their body tone.
 					genital_overlay.color = "#[skintone2hex(H.skin_tone)]"

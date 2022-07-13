@@ -53,7 +53,7 @@
 		if(Belly.inflatable)
 			dat	+= "<a href='byond://?src=[REF(src)];shrink_belly=1'>Deflate belly</A>"
 			dat	+=	"(Shrink your belly down a size)<BR>"
-			
+
 	if(user.pulling && !isnoncarbon(user.pulling)) // do not fuck animals
 		dat	+= "<a href='byond://?src=[REF(src)];climaxover=1'>Climax over [user.pulling]</A>" //you can cum on objects if you really want...
 		dat	+=	"(Orgasm over a person or object.)<BR>"
@@ -226,12 +226,14 @@
 		var/obj/item/organ/genital/penis/O = usr.getorganslot("penis")
 		var/obj/item/I = O.equipment
 		usr.put_in_hands(I)
+		SEND_SIGNAL(I, "detach_genital_equipment",usr)
 		O.equipment = null
 
 	if(href_list["removeequipmentbreasts"])
 		var/obj/item/organ/genital/breasts/O = usr.getorganslot("breasts")
 		var/obj/item/I = O.equipment
 		usr.put_in_hands(I)
+		SEND_SIGNAL(I, "detach_genital_equipment",usr)
 		O.equipment = null
 
 
@@ -242,18 +244,21 @@
 		if(istype(I, /obj/item/portalpanties))
 			var/obj/item/portalpanties/P = I
 			P.remove()
+		SEND_SIGNAL(I, "detach_genital_equipment",usr)
 		O.equipment = null
 
 	if(href_list["removeequipmentbelly"])
 		var/obj/item/organ/genital/belly/O = usr.getorganslot("belly")
 		var/obj/item/I = O.equipment
 		usr.put_in_hands(I)
+		SEND_SIGNAL(I, "detach_genital_equipment",usr)
 		O.equipment = null
 
 	if(href_list["removeequipmentanus"])
 		var/obj/item/organ/genital/anus/O = usr.getorganslot("anus")
 		var/obj/item/I = O.equipment
 		usr.put_in_hands(I)
+		SEND_SIGNAL(I, "detach_genital_equipment",usr)
 		O.equipment = null
 
 

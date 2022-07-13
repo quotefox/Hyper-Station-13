@@ -3216,6 +3216,7 @@
 #include "hyperstation\code\modules\uplink\uplink_items.dm"
 #include "hyperstation\code\obj\ashtray.dm"
 #include "hyperstation\code\obj\bluespace sewing kit.dm"
+#include "hyperstation\code\obj\cockrings.dm"
 #include "hyperstation\code\obj\condom.dm"
 #include "hyperstation\code\obj\decal.dm"
 #include "hyperstation\code\obj\economy.dm"

@@ -25,7 +25,7 @@
 
 	var/list/obscured = check_obscured_slots()
 	var/skipface = (wear_mask && (wear_mask.flags_inv & HIDEFACE)) || (head && (head.flags_inv & HIDEFACE))
-	
+
 	if(skipface || get_visible_name() == "Unknown")
 		. += "You can't make out what species they are."
 	else
@@ -127,10 +127,15 @@
 			. += "<span class='love'>[t_He] [t_is] currently in heat.</span>"
 
 	//CIT CHANGES START HERE - adds genital details to examine text
-	if(LAZYLEN(internal_organs) && user.client?.prefs.cit_toggles & GENITAL_EXAMINE)
+	if(LAZYLEN(internal_organs) && user.client?.prefs.cit_toggles)
 		for(var/obj/item/organ/genital/dicc in internal_organs)
 			if(istype(dicc) && dicc.is_exposed())
-				. += "[dicc.desc]"
+				if(!dicc.limited)
+					if(!dicc.equipment)
+						. += "[dicc.desc]"
+					else
+						. += "[dicc.desc] <span class='love'>Equipt with a [dicc.equipment.name]</span>"
+
 
 	if(user.client?.prefs.cit_toggles & VORE_EXAMINE)
 		var/cursed_stuff = attempt_vr(src,"examine_bellies",args) //vore Code
