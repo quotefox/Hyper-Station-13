@@ -225,40 +225,40 @@
 	if(href_list["removeequipmentpenis"])
 		var/obj/item/organ/genital/penis/O = usr.getorganslot("penis")
 		var/obj/item/I = O.equipment
-		usr.put_in_hands(I)
 		SEND_SIGNAL(I, "detach_genital_equipment",usr)
+		usr.put_in_hands(I)
 		O.equipment = null
 
 	if(href_list["removeequipmentbreasts"])
 		var/obj/item/organ/genital/breasts/O = usr.getorganslot("breasts")
 		var/obj/item/I = O.equipment
-		usr.put_in_hands(I)
 		SEND_SIGNAL(I, "detach_genital_equipment",usr)
+		usr.put_in_hands(I)
 		O.equipment = null
 
 
 	if(href_list["removeequipmentvagina"])
 		var/obj/item/organ/genital/vagina/O = usr.getorganslot("vagina")
 		var/obj/item/I = O.equipment
+		SEND_SIGNAL(I, "detach_genital_equipment",usr)
 		usr.put_in_hands(I)
 		if(istype(I, /obj/item/portalpanties))
 			var/obj/item/portalpanties/P = I
 			P.remove()
-		SEND_SIGNAL(I, "detach_genital_equipment",usr)
 		O.equipment = null
 
 	if(href_list["removeequipmentbelly"])
 		var/obj/item/organ/genital/belly/O = usr.getorganslot("belly")
 		var/obj/item/I = O.equipment
-		usr.put_in_hands(I)
 		SEND_SIGNAL(I, "detach_genital_equipment",usr)
+		usr.put_in_hands(I)
 		O.equipment = null
 
 	if(href_list["removeequipmentanus"])
 		var/obj/item/organ/genital/anus/O = usr.getorganslot("anus")
 		var/obj/item/I = O.equipment
-		usr.put_in_hands(I)
 		SEND_SIGNAL(I, "detach_genital_equipment",usr)
+		usr.put_in_hands(I)
 		O.equipment = null
 
 
