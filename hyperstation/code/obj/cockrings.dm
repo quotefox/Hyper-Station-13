@@ -68,6 +68,7 @@
 	var/mob/living/carbon/human/H = usr
 	var/obj/item/organ/genital/penis/P = H.getorganslot("penis")
 	P.limited = TRUE
+	P.update_appearance()
 	H.update_genitals()
 
 /obj/item/equipment/penis/ring/limiter/proc/detach(mob/living/user)
@@ -75,4 +76,5 @@
 	var/mob/living/carbon/human/H = usr
 	var/obj/item/organ/genital/penis/P = H.getorganslot("penis")
 	P.limited = FALSE
+	P.update_appearance()
 	H.update_genitals()

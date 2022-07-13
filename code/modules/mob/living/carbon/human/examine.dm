@@ -130,11 +130,10 @@
 	if(LAZYLEN(internal_organs) && user.client?.prefs.cit_toggles)
 		for(var/obj/item/organ/genital/dicc in internal_organs)
 			if(istype(dicc) && dicc.is_exposed())
-				if(!dicc.limited)
-					if(!dicc.equipment)
-						. += "[dicc.desc]"
-					else
-						. += "[dicc.desc] <span class='love'>Equipt with a [dicc.equipment.name]</span>"
+				if(!dicc.equipment)
+					. += "[dicc.desc]"
+				else
+					. += "[dicc.desc] <span class='love'>Equipt with a [dicc.equipment.name]</span>"
 
 
 	if(user.client?.prefs.cit_toggles & VORE_EXAMINE)
