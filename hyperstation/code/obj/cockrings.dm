@@ -65,7 +65,6 @@
 
 /obj/item/equipment/penis/ring/limiter/proc/attach(mob/living/carbon/human/U)
 	playsound(usr, 'sound/effects/magic.ogg', 100, 1)
-	to_chat(usr, "<span class='notice'>[U]</span>")
 	var/obj/item/organ/genital/penis/P = loc
 	if(P)
 		P.limited = TRUE
@@ -74,7 +73,6 @@
 
 /obj/item/equipment/penis/ring/limiter/proc/detach(mob/living/carbon/human/U)
 	playsound(usr, 'sound/effects/magic.ogg', 100, 1)
-	to_chat(usr, "<span class='notice'>[U]</span>")
 	var/obj/item/organ/genital/penis/P = loc
 	if(P)
 		P.limited = FALSE
