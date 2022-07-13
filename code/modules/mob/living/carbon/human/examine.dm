@@ -134,7 +134,7 @@
 					if(!dicc.equipment)
 						. += "[dicc.desc]"
 					else
-						. += "[dicc.desc] <span class='love'>Equipt with a [dicc.equipment.name]</span>"
+						. += "[dicc.desc] <span class='love'>It's equipped with a [dicc.equipment.name].</span>"
 
 
 	if(user.client?.prefs.cit_toggles & VORE_EXAMINE)

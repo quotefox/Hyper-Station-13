@@ -26,7 +26,7 @@
 	var/obj/item/equipment 		//for fun stuff that goes on the gentials/maybe rings down the line
 	var/dontlist				= FALSE
 	var/nochange				= FALSE //stops people changing visablity.
-	var/limited				= FALSE
+	var/limited					= FALSE
 
 /obj/item/organ/genital/Initialize()
 	. = ..()
