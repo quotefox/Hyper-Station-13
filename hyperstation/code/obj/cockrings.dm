@@ -16,7 +16,7 @@
 		if(P.equipment)
 			to_chat(user, "<span class='notice'>There is already a [P.equipment.name] attached.</span>")
 		else
-			if(S!=T)//if your not targeting yourself
+			if(S!=T)//if you're not targeting yourself
 				C.visible_message("<span class='warning'>[user] is trying to attach [src] to [T]!</span>",\
 						"<span class='warning'>[user] is trying to put [src] on you!</span>")
 				if(!do_mob(user, C, 4 SECONDS))//warn them and have a delay of 5 seconds to apply.
@@ -36,7 +36,7 @@
 
 /obj/item/equipment/penis/ring
 	name = "cock ring"
-	desc = "why dont you marry it already?"
+	desc = "Why don't you marry it already?"
 	icon_state = "cockring"
 
 /obj/item/equipment/penis/ring/metal
@@ -45,8 +45,9 @@
 
 
 /obj/item/equipment/penis/ring/fancy
+
 	name = "fancy ribboned cock ring"
-	desc = "a cock ring with a white bowtie, how cute."
+	desc = "A cock ring with a white bowtie, how cute."
 	icon_state = "cockring_fancy"
 
 
