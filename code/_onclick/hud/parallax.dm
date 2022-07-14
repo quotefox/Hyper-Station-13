@@ -170,12 +170,13 @@
 
 		L.transform = newtransform
 
-		animate(L, transform = matrix(), time = T, loop = -1, flags = ANIMATION_END_NOW)
+		animate(L, transform = L.transform, time = 0, loop = -1, flags = ANIMATION_END_NOW)
+		animate(transform = matrix(), time = T)
 
 /datum/hud/proc/update_parallax()
 	var/client/C = mymob.client
 	var/turf/posobj = get_turf(C.eye)
-	if(!posobj)	
+	if(!posobj)
 		return
 	var/area/areaobj = posobj.loc
 
@@ -341,7 +342,7 @@
 //Layenia parallaxes
 
 /obj/screen/parallax_layer/layenia
-	icon_state = null 
+	icon_state = null
 	blend_mode = BLEND_OVERLAY
 	absolute = TRUE
 	speed = 0.6

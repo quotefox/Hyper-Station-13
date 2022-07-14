@@ -21,9 +21,9 @@
 						"<span class='warning'>[user] is trying to put [src] on you!</span>")
 				if(!do_mob(user, C, 4 SECONDS))//warn them and have a delay of 5 seconds to apply.
 					return
-			SEND_SIGNAL(src, "attach_genital_equipment",S)
 			if(!user.transferItemToLoc(src, P)) //check if you can put it on
 				return
+			SEND_SIGNAL(src, "attach_genital_equipment",T)
 			P.equipment = src
 			to_chat(user, "<span class='love'>You attach [src] to [T]'s [P.name].</span>")
 
@@ -45,7 +45,8 @@
 
 
 /obj/item/equipment/penis/ring/fancy
-	name = "fancy cock ring"
+
+	name = "fancy ribboned cock ring"
 	desc = "A cock ring with a white bowtie, how cute."
 	icon_state = "cockring_fancy"
 
@@ -54,7 +55,7 @@
 
 /obj/item/equipment/penis/ring/limiter
 	name = "normalizer cock ring"
-	desc = "An expensive technological cock ring cast in SynTech purples with shimmering Kinaris golds. It will shrink a penis to a more reasonable size."
+	desc = "An expensive technological cock ring cast in SynTech purples with shimmering Kinaris golds. It will limit the wearers penis size to a third."
 	icon_state = "cockring_limit"
 	price = 12
 
@@ -63,16 +64,18 @@
 	RegisterSignal(src, "attach_genital_equipment", .proc/attach)
 	RegisterSignal(src, "detach_genital_equipment", .proc/detach)
 
-/obj/item/equipment/penis/ring/limiter/proc/attach(mob/living/user)
+/obj/item/equipment/penis/ring/limiter/proc/attach(mob/living/carbon/human/U)
 	playsound(usr, 'sound/effects/magic.ogg', 100, 1)
-	var/mob/living/carbon/human/H = usr
-	var/obj/item/organ/genital/penis/P = H.getorganslot("penis")
-	P.limited = TRUE
-	H.update_genitals()
+	var/obj/item/organ/genital/penis/P = loc
+	if(P)
+		P.limited = TRUE
+		P.update_appearance()
+		U.update_genitals()
 
-/obj/item/equipment/penis/ring/limiter/proc/detach(mob/living/user)
+/obj/item/equipment/penis/ring/limiter/proc/detach(mob/living/carbon/human/U)
 	playsound(usr, 'sound/effects/magic.ogg', 100, 1)
-	var/mob/living/carbon/human/H = usr
-	var/obj/item/organ/genital/penis/P = H.getorganslot("penis")
-	P.limited = FALSE
-	H.update_genitals()
+	var/obj/item/organ/genital/penis/P = loc
+	if(P)
+		P.limited = FALSE
+		P.update_appearance()
+		U.update_genitals()
