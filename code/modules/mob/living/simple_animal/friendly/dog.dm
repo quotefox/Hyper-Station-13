@@ -132,7 +132,7 @@
 		if(inventory_back)
 			armorval += inventory_back.armor.getRating(type)
 	return armorval*0.5
-
+/*
 /mob/living/simple_animal/pet/dog/corgi/attackby(obj/item/O, mob/user, params)
 	if (istype(O, /obj/item/razor))
 		if (shaved)
@@ -155,7 +155,7 @@
 		return
 	..()
 	update_corgi_fluff()
-
+*/
 /mob/living/simple_animal/pet/dog/corgi/Topic(href, href_list)
 	if(!(iscarbon(usr) || iscyborg(usr)) || !usr.canUseTopic(src, BE_CLOSE, FALSE, NO_TK))
 		usr << browse(null, "window=mob[REF(src)]")

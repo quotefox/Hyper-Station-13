@@ -11,8 +11,9 @@
 	openSound = 'hyperstation/sound/machines/shutter.ogg'
 	closeSound = 'hyperstation/sound/machines/shutter.ogg'
 
+// temporarily changing it to open alt so you can see things on tables that also have shutters above them until I can figure some alternatives out.
 /obj/machinery/door/poddoor/shutters/preopen
-	icon_state = "open"
+	icon_state = "open_alt"
 	density = FALSE
 	opacity = 0
 
@@ -67,4 +68,9 @@
 
 /obj/machinery/door/poddoor/shutters/window/preopen
 	icon_state = "open"
+	density = FALSE
+
+//my not so successful attempt to make the new shutters let you see what's under them when above tables.
+/obj/machinery/door/poddoor/shutters/preopen/alt
+	icon_state = "open_alt"
 	density = FALSE

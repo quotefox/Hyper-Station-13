@@ -2482,11 +2482,6 @@
 	name = "Bartenders Back Room"
 	},
 /area/centcom/control)
-"cnW" = (
-/obj/structure/fans/tiny,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/plasteel,
-/area/centcom/ferry)
 "coE" = (
 /obj/machinery/light{
 	dir = 4
@@ -3701,6 +3696,20 @@
 /obj/item/stack/packageWrap,
 /turf/open/floor/plasteel/cafeteria,
 /area/centcom/holding)
+"dzb" = (
+/obj/machinery/door/airlock/external{
+	name = "Ferry Airlock"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
+	},
+/obj/structure/fans/tiny,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel,
+/area/centcom/ferry)
 "dzX" = (
 /obj/item/twohanded/required/kirbyplants{
 	icon_state = "plant-21"
@@ -4251,18 +4260,6 @@
 	},
 /turf/closed/indestructible/riveted,
 /area/space)
-"dUw" = (
-/obj/machinery/door/airlock/external{
-	name = "Ferry Airlock"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
-/turf/open/floor/plasteel,
-/area/centcom/ferry)
 "dUD" = (
 /obj/structure/chair{
 	dir = 1
@@ -4637,10 +4634,6 @@
 /area/abductor_ship)
 "ejO" = (
 /obj/structure/table,
-/obj/item/razor{
-	pixel_x = 2;
-	pixel_y = 5
-	},
 /turf/open/floor/plasteel/white,
 /area/centcom/ferry)
 "ejW" = (
@@ -9340,17 +9333,12 @@
 /turf/open/floor/plasteel/dark,
 /area/centcom/ferry)
 "iFk" = (
-/obj/docking_port/stationary{
-	dir = 8;
-	dwidth = 2;
-	height = 13;
-	id = "ferry_away";
-	json_key = "ferry";
-	name = "CentCom Ferry Dock";
-	width = 5
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
 	},
-/turf/open/space,
-/area/space)
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plasteel,
+/area/centcom/ferry)
 "iFv" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 8
@@ -12939,6 +12927,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel,
 /area/centcom/ferry)
 "mei" = (
@@ -13079,9 +13068,6 @@
 /obj/structure/table,
 /obj/item/storage/pill_bottle/mutarad{
 	pixel_x = -7
-	},
-/obj/item/razor{
-	pixel_y = 12
 	},
 /obj/machinery/light/small{
 	dir = 4;
@@ -16184,6 +16170,18 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ctf)
+"oXv" = (
+/obj/docking_port/stationary{
+	dir = 8;
+	dwidth = 5;
+	height = 13;
+	id = "ferry_away";
+	json_key = "ferry";
+	name = "CentCom Ferry Dock";
+	width = 11
+	},
+/turf/open/space,
+/area/space)
 "oXF" = (
 /obj/structure/table/wood/fancy,
 /obj/item/camera/spooky,
@@ -16861,7 +16859,6 @@
 "pFm" = (
 /obj/structure/table/glass,
 /obj/item/surgical_drapes,
-/obj/item/razor,
 /turf/open/floor/holofloor{
 	icon_state = "white"
 	},
@@ -59745,7 +59742,7 @@ fWS
 fWS
 fWS
 fWS
-fWS
+oXv
 fWS
 fWS
 fWS
@@ -60001,9 +59998,9 @@ cJc
 eRA
 eRA
 fWS
-fWS
-fWS
-fWS
+eRA
+dzb
+eRA
 fWS
 fWS
 fWS
@@ -60258,9 +60255,9 @@ txL
 iyB
 eRA
 fWS
-fWS
+eRA
 iFk
-fWS
+eRA
 fWS
 fWS
 fWS
@@ -60516,7 +60513,7 @@ hFM
 eDP
 fWS
 eRA
-dUw
+iFk
 eRA
 fWS
 eDP
@@ -60773,7 +60770,7 @@ uYp
 eDP
 cQu
 eRA
-cnW
+iFk
 eRA
 pMV
 eDP

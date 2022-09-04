@@ -463,7 +463,7 @@
 		/obj/item/paint/anycolor,
 		/obj/item/cookiesynth,
 		/obj/item/pneumatic_cannon/pie/selfcharge/cyborg,
-		/obj/item/razor,					//killbait material
+		///obj/item/razor,					//killbait material
 		/obj/item/lipstick/purple,
 		/obj/item/soap/nanotrasen,
 		/obj/item/reagent_containers/spray/waterflower/cyborg,
@@ -497,7 +497,7 @@
 		/obj/item/toy/crayon/spraycan/borg,
 		/obj/item/extinguisher/mini,
 		/obj/item/hand_labeler/borg,
-		/obj/item/razor,
+		///obj/item/razor,
 		/obj/item/crowbar/cyborg,
 		/obj/item/instrument/violin,
 		/obj/item/soap/nanotrasen,

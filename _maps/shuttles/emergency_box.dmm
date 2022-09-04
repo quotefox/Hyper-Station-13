@@ -1,165 +1,1409 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "aa" = (
-/turf/template_noop,
-/area/template_noop)
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures39"
+	},
+/area/shuttle/escape)
 "ab" = (
 /obj/machinery/door/airlock/titanium{
 	name = "Emergency Shuttle Airlock";
 	req_access_txt = "2"
 	},
 /obj/structure/fans/tiny,
-/turf/open/floor/mineral/plastitanium/red/brig,
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
 /area/shuttle/escape)
 "ac" = (
-/obj/effect/spawner/structure/window/shuttle,
-/turf/open/floor/plating,
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures48"
+	},
 /area/shuttle/escape)
 "ad" = (
-/turf/closed/wall/mineral/titanium,
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures49"
+	},
 /area/shuttle/escape)
 "ae" = (
-/turf/closed/wall/mineral/titanium/interior,
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures53"
+	},
 /area/shuttle/escape)
 "af" = (
-/obj/structure/table,
-/obj/machinery/recharger,
-/turf/open/floor/mineral/titanium/blue,
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures52"
+	},
 /area/shuttle/escape)
 "ag" = (
 /obj/structure/chair/comfy/shuttle{
-	dir = 1
+	dir = 4
 	},
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/turf_decal/tile/red{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
 /area/shuttle/escape)
 "ah" = (
-/obj/machinery/computer/emergency_shuttle,
-/turf/open/floor/mineral/titanium/blue,
+/obj/machinery/flasher{
+	id = "shuttle_flasher";
+	pixel_x = 24;
+	pixel_y = 6
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
 /area/shuttle/escape)
 "ai" = (
-/obj/structure/table,
-/obj/item/storage/firstaid/regular{
-	pixel_x = 2;
-	pixel_y = 3
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
 	},
-/obj/item/crowbar,
-/obj/item/storage/firstaid/fire,
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_trim"
+	},
 /area/shuttle/escape)
 "aj" = (
-/obj/machinery/door/airlock/titanium{
-	name = "Emergency Shuttle Airlock"
-	},
 /obj/docking_port/mobile/emergency{
 	name = "Box emergency shuttle"
 	},
+/obj/machinery/door/airlock/titanium{
+	name = "Emergency Shuttle Airlock"
+	},
 /obj/structure/fans/tiny,
-/turf/open/floor/plating,
+/obj/effect/turf_decal/delivery/white,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
 /area/shuttle/escape)
 "ak" = (
 /obj/machinery/door/airlock/titanium{
 	name = "Emergency Shuttle Airlock"
 	},
 /obj/structure/fans/tiny,
-/turf/open/floor/plating,
+/obj/effect/turf_decal/delivery/white,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
 /area/shuttle/escape)
 "al" = (
-/obj/machinery/computer/atmos_alert{
-	dir = 4
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures66"
 	},
-/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "am" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 8
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures65"
 	},
-/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "an" = (
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/escape)
-"ao" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
-	},
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/escape)
-"ap" = (
-/obj/machinery/computer/security{
+/obj/structure/closet/emcloset,
+/obj/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"ao" = (
+/obj/machinery/door/airlock/public/glass{
+	dir = 1;
+	name = "Emergency Shuttle bar"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"ap" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures67"
+	},
 /area/shuttle/escape)
 "aq" = (
-/obj/machinery/computer/crew{
-	dir = 4
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures128"
 	},
-/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
 "ar" = (
 /obj/structure/chair/comfy/shuttle{
-	dir = 8
+	dir = 4
 	},
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -30
+/obj/effect/turf_decal/tile/red{
+	dir = 10
 	},
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
 /area/shuttle/escape)
 "as" = (
-/obj/item/radio/intercom{
-	name = "Station Intercom (General)";
-	pixel_y = -29
-	},
-/turf/open/floor/mineral/titanium,
-/area/shuttle/escape)
-"at" = (
 /obj/machinery/button/flasher{
-	id = "cockpit_flasher";
-	pixel_x = 6;
-	pixel_y = -24
-	},
-/obj/machinery/light,
-/turf/open/floor/mineral/titanium,
-/area/shuttle/escape)
-"au" = (
-/obj/machinery/computer/communications{
-	dir = 8
-	},
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/escape)
-"ay" = (
-/obj/machinery/door/airlock/public/glass{
-	name = "Emergency Shuttle Cockpit";
-	req_access_txt = "19"
-	},
-/turf/open/floor/mineral/titanium,
-/area/shuttle/escape)
-"az" = (
-/obj/machinery/status_display/evac,
-/turf/closed/wall/mineral/titanium,
-/area/shuttle/escape)
-"aA" = (
-/obj/structure/chair/comfy/shuttle,
-/turf/open/floor/mineral/plastitanium/red/brig,
-/area/shuttle/escape)
-"aB" = (
-/obj/machinery/flasher{
-	id = "cockpit_flasher";
-	pixel_x = 6;
+	id = "shuttle_flasher";
 	pixel_y = 24
 	},
 /obj/machinery/light{
 	dir = 1
 	},
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/turf_decal/tile/red{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"at" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"au" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"ay" = (
+/obj/machinery/door/airlock/public/glass{
+	dir = 8;
+	name = "Emergency Shuttle Brig";
+	req_access_txt = "2"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"az" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"aA" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures88"
+	},
+/area/shuttle/escape)
+"aB" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_plate"
+	},
 /area/shuttle/escape)
 "aC" = (
-/turf/open/floor/mineral/titanium,
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures64"
+	},
 /area/shuttle/escape)
-"aD" = (
+"aF" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures93"
+	},
+/area/shuttle/escape)
+"aG" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures92"
+	},
+/area/shuttle/escape)
+"aH" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/escape)
+"aJ" = (
+/obj/machinery/door/airlock/titanium{
+	name = "Emergency Shuttle Airlock";
+	req_access_txt = "2"
+	},
+/obj/effect/turf_decal/delivery/red,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"aK" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 5
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"aM" = (
+/obj/structure/table,
+/obj/item/storage/box/donkpockets{
+	pixel_x = 3;
+	pixel_y = 13
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"aR" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"aS" = (
+/obj/machinery/light{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"aT" = (
+/obj/structure/window/reinforced{
+	dir = 4
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"aW" = (
+/obj/machinery/door/airlock/titanium{
+	name = "Emergency Shuttle Airlock"
+	},
+/obj/effect/turf_decal/delivery/white,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"aZ" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures153"
+	},
+/area/shuttle/escape)
+"bb" = (
+/obj/machinery/light,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole_alt"
+	},
+/area/shuttle/escape)
+"bc" = (
+/obj/machinery/status_display/evac{
+	pixel_y = 32
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 9
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/shuttle/escape)
+"bd" = (
+/turf/open/floor/plasteel/checker,
+/area/shuttle/escape)
+"be" = (
+/obj/structure/table/wood/fancy/kinaris,
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-30";
+	pixel_y = 16
+	},
+/obj/machinery/light,
+/turf/open/floor/plasteel/checker,
+/area/shuttle/escape)
+"bf" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures171"
+	},
+/area/shuttle/escape)
+"bg" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures169"
+	},
+/area/shuttle/escape)
+"bh" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures15"
+	},
+/area/shuttle/escape)
+"bi" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures189"
+	},
+/area/shuttle/escape)
+"bk" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures208"
+	},
+/area/shuttle/escape)
+"bl" = (
+/turf/open/floor/plasteel/dark,
+/area/shuttle/escape)
+"bm" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures109"
+	},
+/area/shuttle/escape)
+"bn" = (
+/obj/machinery/light,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"bo" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"bp" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"bq" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures166"
+	},
+/area/shuttle/escape)
+"br" = (
+/obj/structure/closet,
+/obj/effect/turf_decal/tile/brown{
+	dir = 6
+	},
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
+/area/shuttle/escape)
+"bs" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 6
+	},
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
+/area/shuttle/escape)
+"bK" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures111"
+	},
+/area/shuttle/escape)
+"cf" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures60"
+	},
+/area/shuttle/escape)
+"ci" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures69"
+	},
+/area/shuttle/escape)
+"cj" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"cl" = (
+/obj/structure/chair/sofa/right,
+/turf/open/floor/carpet/kinaris,
+/area/shuttle/escape)
+"cK" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures187"
+	},
+/area/shuttle/escape)
+"cN" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures31"
+	},
+/area/shuttle/escape)
+"cQ" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures206"
+	},
+/area/shuttle/escape)
+"cS" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures197"
+	},
+/area/shuttle/escape)
+"cZ" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures20"
+	},
+/area/shuttle/escape)
+"dq" = (
+/obj/effect/turf_decal/tile/blue,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/escape)
+"dC" = (
+/obj/structure/chair/sofa,
+/turf/open/floor/carpet/kinaris,
+/area/shuttle/escape)
+"dJ" = (
+/obj/structure/table/wood/fancy/kinaris,
+/obj/item/storage/box/drinkingglasses{
+	pixel_x = 5;
+	pixel_y = 8
+	},
+/obj/item/storage/fancy/cigarettes/cigars/havana{
+	pixel_x = -16;
+	pixel_y = 7
+	},
+/turf/open/floor/plasteel/checker,
+/area/shuttle/escape)
+"dV" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures209"
+	},
+/area/shuttle/escape)
+"ed" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/structure/sign/barsign{
+	pixel_y = 32
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/escape)
+"eF" = (
+/obj/structure/window/reinforced{
+	dir = 8;
+	layer = 2.9
+	},
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"eH" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures217"
+	},
+/area/shuttle/escape)
+"eI" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures182"
+	},
+/area/shuttle/escape)
+"eW" = (
+/obj/structure/chair/sofa/right{
+	dir = 1
+	},
+/turf/open/floor/carpet/kinaris,
+/area/shuttle/escape)
+"fc" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures164"
+	},
+/area/shuttle/escape)
+"fo" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/structure/window/reinforced,
+/obj/effect/turf_decal/tile/red{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"fM" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"fV" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures7"
+	},
+/area/shuttle/escape)
+"fW" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures21"
+	},
+/area/shuttle/escape)
+"ga" = (
+/obj/structure/closet/crate,
+/turf/open/floor/plasteel{
+	icon_plating = "floor";
+	icon_state = "floor_whole"
+	},
+/area/shuttle/escape)
+"gb" = (
+/obj/structure/table/reinforced,
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-30";
+	pixel_x = -7;
+	pixel_y = 21
+	},
+/obj/machinery/recharger,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"ge" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures211"
+	},
+/area/shuttle/escape)
+"gk" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures47"
+	},
+/area/shuttle/escape)
+"gy" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Emergency Shuttle Cockpit Hallway";
+	req_access_txt = "19"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"gE" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures30"
+	},
+/area/shuttle/escape)
+"gV" = (
+/obj/machinery/computer/security{
+	dir = 8
+	},
+/obj/item/radio/intercom{
+	name = "Station Intercom (General)";
+	pixel_y = -29
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"he" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures178"
+	},
+/area/shuttle/escape)
+"hf" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"hg" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures108"
+	},
+/area/shuttle/escape)
+"ho" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	icon_state = "siding_wood_corner";
+	name = "wood corner"
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 8;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/escape)
+"hG" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures191"
+	},
+/area/shuttle/escape)
+"hQ" = (
+/obj/machinery/computer/security,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"ib" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"ip" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures68"
+	},
+/area/shuttle/escape)
+"ir" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures215"
+	},
+/area/shuttle/escape)
+"ix" = (
+/obj/item/radio/intercom{
+	dir = 4;
+	name = "Station Intercom (General)";
+	pixel_y = 21
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"iC" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures125"
+	},
+/area/shuttle/escape)
+"iD" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 4;
+	icon_state = "siding_wood_corner";
+	name = "wood corner"
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 8;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/item/radio/intercom{
+	dir = 4;
+	name = "Station Intercom (General)";
+	pixel_x = -27
+	},
+/obj/machinery/light{
+	dir = 8
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/escape)
+"iE" = (
+/obj/machinery/chem_dispenser/drinks/beer{
+	dir = 8
+	},
+/obj/structure/table/wood/fancy/kinaris,
+/obj/item/reagent_containers/food/drinks/shaker{
+	pixel_x = -6;
+	pixel_y = 23
+	},
+/turf/open/floor/plasteel/checker,
+/area/shuttle/escape)
+"iO" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures117"
+	},
+/area/shuttle/escape)
+"iS" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"ja" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures174"
+	},
+/area/shuttle/escape)
+"jt" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures75"
+	},
+/area/shuttle/escape)
+"jH" = (
+/obj/structure/chair/stool/bar,
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 8;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/escape)
+"jI" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"jK" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"kX" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures198"
+	},
+/area/shuttle/escape)
+"li" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures205"
+	},
+/area/shuttle/escape)
+"lo" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures144"
+	},
+/area/shuttle/escape)
+"ls" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures57"
+	},
+/area/shuttle/escape)
+"lu" = (
+/obj/machinery/door/airlock/titanium{
+	name = "Emergency Shuttle Airlock"
+	},
+/obj/structure/fans/tiny,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole_alt"
+	},
+/area/shuttle/escape)
+"lM" = (
 /obj/structure/closet/emcloset,
-/turf/open/floor/mineral/titanium/blue,
+/obj/effect/turf_decal/tile/brown{
+	dir = 6
+	},
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
 /area/shuttle/escape)
-"aE" = (
+"lO" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures220"
+	},
+/area/shuttle/escape)
+"lS" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/escape)
+"lX" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures14"
+	},
+/area/shuttle/escape)
+"mv" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures82"
+	},
+/area/shuttle/escape)
+"mw" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures218"
+	},
+/area/shuttle/escape)
+"mB" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures173"
+	},
+/area/shuttle/escape)
+"mS" = (
+/obj/machinery/status_display/evac{
+	pixel_y = -32
+	},
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/red{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"na" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures130"
+	},
+/area/shuttle/escape)
+"nr" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures113"
+	},
+/area/shuttle/escape)
+"ny" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"nC" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures100"
+	},
+/area/shuttle/escape)
+"nN" = (
+/obj/structure/window/reinforced,
+/obj/structure/table/wood/fancy/kinaris,
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 4;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/item/storage/fancy/donut_box{
+	pixel_y = 8
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/escape)
+"nY" = (
+/obj/machinery/computer/crew{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"oc" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures204"
+	},
+/area/shuttle/escape)
+"oi" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures157"
+	},
+/area/shuttle/escape)
+"oH" = (
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"oU" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures139"
+	},
+/area/shuttle/escape)
+"oW" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"pi" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures43"
+	},
+/area/shuttle/escape)
+"pl" = (
+/obj/structure/table/reinforced,
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-30";
+	pixel_x = 7;
+	pixel_y = 21
+	},
+/obj/machinery/recharger,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"pq" = (
+/obj/machinery/door/airlock/mining/glass{
+	dir = 1;
+	name = "Emergency Shuttle Cargo"
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole_alt"
+	},
+/area/shuttle/escape)
+"pB" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures94"
+	},
+/area/shuttle/escape)
+"pP" = (
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"pV" = (
+/obj/machinery/door/airlock/public/glass{
+	dir = 8;
+	name = "Emergency Shuttle Infirmary"
+	},
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_traction_whole"
+	},
+/area/shuttle/escape)
+"qd" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures210"
+	},
+/area/shuttle/escape)
+"qf" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_traction"
+	},
+/area/shuttle/escape)
+"qj" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Emergency Shuttle Infirmary"
+	},
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_traction_whole"
+	},
+/area/shuttle/escape)
+"qp" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures72"
+	},
+/area/shuttle/escape)
+"qB" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures120"
+	},
+/area/shuttle/escape)
+"qD" = (
+/turf/template_noop,
+/area/template_noop)
+"qJ" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures162"
+	},
+/area/shuttle/escape)
+"qZ" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures55"
+	},
+/area/shuttle/escape)
+"rN" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures190"
+	},
+/area/shuttle/escape)
+"rY" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark,
+/area/shuttle/escape)
+"rZ" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"sg" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures158"
+	},
+/area/shuttle/escape)
+"st" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_traction"
+	},
+/area/shuttle/escape)
+"sv" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures25"
+	},
+/area/shuttle/escape)
+"sx" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"sz" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures168"
+	},
+/area/shuttle/escape)
+"sB" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures216"
+	},
+/area/shuttle/escape)
+"sL" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures5"
+	},
+/area/shuttle/escape)
+"sM" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures143"
+	},
+/area/shuttle/escape)
+"sX" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures110"
+	},
+/area/shuttle/escape)
+"to" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures10"
+	},
+/area/shuttle/escape)
+"tZ" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures140"
+	},
+/area/shuttle/escape)
+"ug" = (
+/obj/structure/closet,
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/brown{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/brown,
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_plate"
+	},
+/area/shuttle/escape)
+"uk" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures28"
+	},
+/area/shuttle/escape)
+"us" = (
+/obj/machinery/light,
+/obj/machinery/button/flasher{
+	id = "cockpit_flasher";
+	pixel_x = 6;
+	pixel_y = -24
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"uD" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures62"
+	},
+/area/shuttle/escape)
+"uP" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures127"
+	},
+/area/shuttle/escape)
+"uT" = (
+/obj/structure/table/wood/fancy/kinaris,
+/obj/item/ashtray{
+	pixel_x = -16;
+	pixel_y = 4
+	},
+/turf/open/floor/carpet/kinaris,
+/area/shuttle/escape)
+"vj" = (
+/obj/structure/table/wood/fancy/kinaris,
+/obj/item/twohanded/required/kirbyplants{
+	icon_state = "plant-30";
+	pixel_y = 20
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 5;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/escape)
+"vA" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures42"
+	},
+/area/shuttle/escape)
+"vR" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures83"
+	},
+/area/shuttle/escape)
+"vU" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures1"
+	},
+/area/shuttle/escape)
+"wd" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures132"
+	},
+/area/shuttle/escape)
+"wo" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures196"
+	},
+/area/shuttle/escape)
+"wp" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures203"
+	},
+/area/shuttle/escape)
+"wt" = (
+/obj/machinery/door/airlock/public/glass{
+	dir = 4;
+	name = "Emergency Shuttle bar"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"wP" = (
+/obj/machinery/vending/boozeomat,
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures151"
+	},
+/area/shuttle/escape)
+"wQ" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures59"
+	},
+/area/shuttle/escape)
+"xd" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures213"
+	},
+/area/shuttle/escape)
+"xn" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures148"
+	},
+/area/shuttle/escape)
+"xo" = (
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = 1;
+	pixel_y = 8
+	},
+/obj/item/pen,
+/obj/machinery/light{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"xC" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures219"
+	},
+/area/shuttle/escape)
+"xK" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures102"
+	},
+/area/shuttle/escape)
+"xT" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures86"
+	},
+/area/shuttle/escape)
+"yb" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures184"
+	},
+/area/shuttle/escape)
+"yc" = (
+/obj/machinery/door/airlock{
+	name = "Bar Backroom";
+	req_access_txt = "25"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"yn" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures96"
+	},
+/area/shuttle/escape)
+"yp" = (
 /obj/structure/table,
 /obj/item/storage/firstaid/fire,
 /obj/item/storage/firstaid/regular{
@@ -167,470 +1411,1680 @@
 	pixel_y = 3
 	},
 /obj/item/crowbar,
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/escape)
-"aF" = (
-/obj/machinery/flasher{
-	id = "shuttle_flasher";
-	pixel_x = -24;
-	pixel_y = 6
-	},
-/obj/machinery/button/flasher{
-	id = "shuttle_flasher";
-	pixel_x = -24;
-	pixel_y = -6
-	},
-/obj/machinery/light/small{
-	brightness = 3;
+/obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
-/turf/open/floor/mineral/plastitanium/red/brig,
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_traction"
+	},
 /area/shuttle/escape)
-"aG" = (
-/turf/open/floor/mineral/plastitanium/red/brig,
+"ys" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/machinery/status_display/evac{
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
 /area/shuttle/escape)
-"aH" = (
+"yu" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"yx" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures24"
+	},
+/area/shuttle/escape)
+"yM" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures172"
+	},
+/area/shuttle/escape)
+"za" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures9"
+	},
+/area/shuttle/escape)
+"zm" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures180"
+	},
+/area/shuttle/escape)
+"zo" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures12"
+	},
+/area/shuttle/escape)
+"Ad" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures77"
+	},
+/area/shuttle/escape)
+"As" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures200"
+	},
+/area/shuttle/escape)
+"AC" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 9
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_trim"
+	},
+/area/shuttle/escape)
+"AM" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures165"
+	},
+/area/shuttle/escape)
+"AV" = (
+/obj/structure/chair/stool/bar,
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/escape)
+"AZ" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures207"
+	},
+/area/shuttle/escape)
+"Bc" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures104"
+	},
+/area/shuttle/escape)
+"Bh" = (
+/obj/structure/table/wood/fancy/kinaris,
+/obj/machinery/chem_dispenser/drinks{
+	dir = 8
+	},
+/obj/machinery/light,
+/turf/open/floor/plasteel/checker,
+/area/shuttle/escape)
+"Bj" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures170"
+	},
+/area/shuttle/escape)
+"BZ" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures186"
+	},
+/area/shuttle/escape)
+"Cd" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures195"
+	},
+/area/shuttle/escape)
+"Cl" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"Cn" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 5;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/escape)
+"CF" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures70"
+	},
+/area/shuttle/escape)
+"CM" = (
+/obj/structure/chair/stool/bar,
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 4;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/escape)
+"CR" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures167"
+	},
+/area/shuttle/escape)
+"CZ" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures32"
+	},
+/area/shuttle/escape)
+"Db" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures116"
+	},
+/area/shuttle/escape)
+"Du" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/machinery/status_display/evac{
+	pixel_y = -32
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"Dx" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures11"
+	},
+/area/shuttle/escape)
+"DA" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures105"
+	},
+/area/shuttle/escape)
+"DQ" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures18"
+	},
+/area/shuttle/escape)
+"DY" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures124"
+	},
+/area/shuttle/escape)
+"Eg" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures50"
+	},
+/area/shuttle/escape)
+"Er" = (
+/obj/machinery/computer/emergency_shuttle,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"Eu" = (
+/obj/machinery/computer/atmos_alert{
+	dir = 4
+	},
+/obj/item/radio/intercom{
+	name = "Station Intercom (General)";
+	pixel_y = -29
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"Ev" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures179"
+	},
+/area/shuttle/escape)
+"Ez" = (
+/obj/effect/turf_decal/tile/red{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/red,
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"EK" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures26"
+	},
+/area/shuttle/escape)
+"EL" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures152"
+	},
+/area/shuttle/escape)
+"Ff" = (
+/obj/machinery/door/airlock/public/glass{
+	name = "Emergency Shuttle Cockpit";
+	req_access_txt = "19"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"Fg" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures115"
+	},
+/area/shuttle/escape)
+"Fk" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures149"
+	},
+/area/shuttle/escape)
+"Fo" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures141"
+	},
+/area/shuttle/escape)
+"FR" = (
+/obj/structure/closet/crate,
+/obj/machinery/light,
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_plating = "floor";
+	icon_state = "floor_whole"
+	},
+/area/shuttle/escape)
+"Gk" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures119"
+	},
+/area/shuttle/escape)
+"GJ" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures90"
+	},
+/area/shuttle/escape)
+"Hp" = (
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/machinery/flasher{
+	id = "cockpit_flasher";
+	pixel_x = 6;
+	pixel_y = 27
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"Hv" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures154"
+	},
+/area/shuttle/escape)
+"HD" = (
+/obj/machinery/computer/atmos_alert,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"HG" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures3"
+	},
+/area/shuttle/escape)
+"HO" = (
+/obj/machinery/sleeper{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_traction"
+	},
+/area/shuttle/escape)
+"HR" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"HT" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures40"
+	},
+/area/shuttle/escape)
+"Ie" = (
+/obj/structure/closet/emcloset,
+/mob/living/simple_animal/bot/medbot{
+	name = "Speedy* Recovery"
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_traction"
+	},
+/area/shuttle/escape)
+"Il" = (
+/obj/item/radio/intercom{
+	dir = 4;
+	name = "Station Intercom (General)";
+	pixel_x = -27
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"Ip" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures181"
+	},
+/area/shuttle/escape)
+"It" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"IC" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"IF" = (
+/obj/machinery/status_display/evac{
+	pixel_y = 32
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"IG" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures183"
+	},
+/area/shuttle/escape)
+"IH" = (
 /obj/machinery/door/airlock/public/glass{
 	name = "Emergency Shuttle Brig";
 	req_access_txt = "2"
 	},
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
 /area/shuttle/escape)
-"aJ" = (
-/obj/structure/chair/comfy/shuttle{
+"IK" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures97"
+	},
+/area/shuttle/escape)
+"IL" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures19"
+	},
+/area/shuttle/escape)
+"JG" = (
+/obj/structure/table/wood/fancy/kinaris,
+/turf/open/floor/carpet/kinaris,
+/area/shuttle/escape)
+"JI" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures78"
+	},
+/area/shuttle/escape)
+"JP" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures27"
+	},
+/area/shuttle/escape)
+"JQ" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"Ke" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"Kg" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures201"
+	},
+/area/shuttle/escape)
+"Kq" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures133"
+	},
+/area/shuttle/escape)
+"KD" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures129"
+	},
+/area/shuttle/escape)
+"KL" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures63"
+	},
+/area/shuttle/escape)
+"KT" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures4"
+	},
+/area/shuttle/escape)
+"KV" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 4
+	},
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_state = "floor_trim"
+	},
+/area/shuttle/escape)
+"Ls" = (
+/obj/structure/table,
+/obj/machinery/microwave{
+	pixel_x = -2;
+	pixel_y = 5
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"Lx" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures99"
+	},
+/area/shuttle/escape)
+"Ly" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures156"
+	},
+/area/shuttle/escape)
+"LC" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures194"
+	},
+/area/shuttle/escape)
+"LF" = (
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel/dark,
+/area/shuttle/escape)
+"LJ" = (
+/obj/item/radio/intercom{
+	frequency = 1485;
+	name = "Station Intercom (Medbay)";
+	pixel_x = -27
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/white{
+	icon_state = "plaswhite_traction"
+	},
+/area/shuttle/escape)
+"LK" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures185"
+	},
+/area/shuttle/escape)
+"LR" = (
+/obj/structure/chair/sofa{
 	dir = 1
 	},
-/turf/open/floor/mineral/plastitanium/red/brig,
+/turf/open/floor/carpet/kinaris,
 /area/shuttle/escape)
-"aK" = (
-/obj/structure/chair/comfy/shuttle,
-/turf/open/floor/mineral/titanium/blue,
+"LY" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures137"
+	},
 /area/shuttle/escape)
-"aM" = (
-/obj/structure/table,
-/turf/open/floor/mineral/titanium/blue,
+"Mm" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures177"
+	},
 /area/shuttle/escape)
-"aQ" = (
+"Mo" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures101"
+	},
+/area/shuttle/escape)
+"MQ" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures6"
+	},
+/area/shuttle/escape)
+"MT" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures73"
+	},
+/area/shuttle/escape)
+"MZ" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures22"
+	},
+/area/shuttle/escape)
+"Na" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures212"
+	},
+/area/shuttle/escape)
+"Nb" = (
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"Nv" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 9;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/escape)
+"Nz" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures121"
+	},
+/area/shuttle/escape)
+"NK" = (
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 4;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 8;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/escape)
+"NO" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 5
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"NR" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures8"
+	},
+/area/shuttle/escape)
+"NS" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures192"
+	},
+/area/shuttle/escape)
+"OO" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures176"
+	},
+/area/shuttle/escape)
+"Pf" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"Ps" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures17"
+	},
+/area/shuttle/escape)
+"PG" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures46"
+	},
+/area/shuttle/escape)
+"PH" = (
+/obj/machinery/status_display/evac,
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures71"
+	},
+/area/shuttle/escape)
+"Qv" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures214"
+	},
+/area/shuttle/escape)
+"Qy" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures163"
+	},
+/area/shuttle/escape)
+"QE" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures36"
+	},
+/area/shuttle/escape)
+"Ro" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures134"
+	},
+/area/shuttle/escape)
+"Rs" = (
+/obj/machinery/door/airlock/titanium{
+	name = "Emergency Shuttle Airlock"
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plasteel{
+	dir = 8;
+	icon_plating = "floor";
+	icon_state = "floor_whole_alt"
+	},
+/area/shuttle/escape)
+"Ru" = (
+/obj/structure/reagent_dispensers/water_cooler,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"RD" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures193"
+	},
+/area/shuttle/escape)
+"RF" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures138"
+	},
+/area/shuttle/escape)
+"RI" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures16"
+	},
+/area/shuttle/escape)
+"RK" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures175"
+	},
+/area/shuttle/escape)
+"Se" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures37"
+	},
+/area/shuttle/escape)
+"SB" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures41"
+	},
+/area/shuttle/escape)
+"SC" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures126"
+	},
+/area/shuttle/escape)
+"SP" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures45"
+	},
+/area/shuttle/escape)
+"Tt" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures160"
+	},
+/area/shuttle/escape)
+"Tv" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures35"
+	},
+/area/shuttle/escape)
+"Tw" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures107"
+	},
+/area/shuttle/escape)
+"TA" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/neutral,
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"TG" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures13"
+	},
+/area/shuttle/escape)
+"TJ" = (
+/obj/structure/extinguisher_cabinet{
+	pixel_x = 27
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_trim"
+	},
+/area/shuttle/escape)
+"TN" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures54"
+	},
+/area/shuttle/escape)
+"TU" = (
+/obj/machinery/computer/communications{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/escape)
+"TV" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures161"
+	},
+/area/shuttle/escape)
+"Ua" = (
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/escape)
+"Ub" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"Uc" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures33"
+	},
+/area/shuttle/escape)
+"Uk" = (
+/obj/structure/table/wood/fancy/kinaris,
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	dir = 1;
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/plasteel/checker,
+/area/shuttle/escape)
+"Up" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures2"
+	},
+/area/shuttle/escape)
+"Uy" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures112"
+	},
+/area/shuttle/escape)
+"UI" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures159"
+	},
+/area/shuttle/escape)
+"Vf" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures188"
+	},
+/area/shuttle/escape)
+"Vk" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures79"
+	},
+/area/shuttle/escape)
+"Vw" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures122"
+	},
+/area/shuttle/escape)
+"VE" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures199"
+	},
+/area/shuttle/escape)
+"VH" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures89"
+	},
+/area/shuttle/escape)
+"VJ" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures84"
+	},
+/area/shuttle/escape)
+"We" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures58"
+	},
+/area/shuttle/escape)
+"Wh" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures202"
+	},
+/area/shuttle/escape)
+"Wy" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures56"
+	},
+/area/shuttle/escape)
+"WJ" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures61"
+	},
+/area/shuttle/escape)
+"WK" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures95"
+	},
+/area/shuttle/escape)
+"WL" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures103"
+	},
+/area/shuttle/escape)
+"Xc" = (
+/obj/structure/window/reinforced,
+/obj/effect/turf_decal/loading_area{
+	color = "#55391A";
+	icon_state = "siding_wood_line";
+	name = "wood"
+	},
+/turf/open/floor/wood{
+	icon_state = "wood_parquet";
+	name = "parquet"
+	},
+/area/shuttle/escape)
+"Xn" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures98"
+	},
+/area/shuttle/escape)
+"Xv" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/blue,
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"XC" = (
+/obj/item/radio/intercom{
+	dir = 4;
+	name = "Station Intercom (General)";
+	pixel_y = 21
+	},
+/obj/effect/turf_decal/tile/brown{
+	dir = 9
+	},
+/turf/open/floor/plasteel{
+	dir = 1;
+	icon_state = "floor_plate"
+	},
+/area/shuttle/escape)
+"XM" = (
 /obj/structure/extinguisher_cabinet{
 	pixel_x = -5;
 	pixel_y = 30
 	},
-/turf/open/floor/mineral/titanium,
-/area/shuttle/escape)
-"aR" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 27
+/obj/effect/turf_decal/tile/neutral{
+	dir = 10
 	},
-/obj/machinery/light/small{
+/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/turf/open/floor/mineral/titanium,
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_trim"
+	},
 /area/shuttle/escape)
-"aS" = (
+"XN" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 6
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"Ya" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures85"
+	},
+/area/shuttle/escape)
+"Yo" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures23"
+	},
+/area/shuttle/escape)
+"Yp" = (
+/turf/closed/wall/mineral/titanium/custom/window/departures{
+	icon_state = "departures44"
+	},
+/area/shuttle/escape)
+"Yx" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures29"
+	},
+/area/shuttle/escape)
+"Yy" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 9
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 1;
+	icon_state = "darkfull_plate"
+	},
+/area/shuttle/escape)
+"YT" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures34"
+	},
+/area/shuttle/escape)
+"Ze" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/obj/structure/window/reinforced{
+/obj/machinery/light,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 6
+	},
+/obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/escape)
-"aT" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_plate"
 	},
-/obj/structure/window/reinforced{
-	dir = 8
+/area/shuttle/escape)
+"Zj" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures38"
 	},
-/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/escape)
-"aW" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_y = -30
-	},
-/turf/open/floor/mineral/titanium,
-/area/shuttle/escape)
-"aX" = (
-/obj/machinery/door/airlock/titanium{
-	name = "Emergency Shuttle Cargo"
-	},
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/escape)
-"aZ" = (
-/obj/machinery/door/airlock/public/glass{
-	name = "Emergency Shuttle Infirmary"
-	},
-/turf/open/floor/mineral/titanium/white,
-/area/shuttle/escape)
-"bb" = (
-/turf/open/floor/mineral/titanium/yellow,
-/area/shuttle/escape)
-"bc" = (
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 27
-	},
-/turf/open/floor/mineral/titanium/yellow,
-/area/shuttle/escape)
-"bd" = (
-/obj/machinery/sleeper{
-	dir = 8
-	},
-/turf/open/floor/mineral/titanium/white,
-/area/shuttle/escape)
-"be" = (
-/obj/structure/table,
-/obj/item/storage/firstaid/fire,
+"Zx" = (
+/obj/structure/table/reinforced,
 /obj/item/storage/firstaid/regular{
 	pixel_x = 2;
 	pixel_y = 3
 	},
 /obj/item/crowbar,
-/obj/structure/extinguisher_cabinet{
-	pixel_x = 27
-	},
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/mineral/titanium/white,
-/area/shuttle/escape)
-"bf" = (
-/obj/structure/closet,
-/turf/open/floor/mineral/titanium/yellow,
-/area/shuttle/escape)
-"bg" = (
-/obj/structure/closet/crate,
-/turf/open/floor/mineral/titanium/yellow,
-/area/shuttle/escape)
-"bi" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/shuttle/engine/heater,
-/turf/open/floor/plating/airless,
-/area/shuttle/escape)
-"bj" = (
-/turf/closed/wall/mineral/titanium/nodiagonal,
-/area/shuttle/escape)
-"bk" = (
-/obj/structure/shuttle/engine/propulsion,
-/turf/open/floor/plating/airless,
-/area/shuttle/escape)
-"bl" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/escape)
-"bm" = (
-/obj/structure/table,
+/obj/item/storage/firstaid/fire,
 /obj/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/mineral/titanium/blue,
-/area/shuttle/escape)
-"bn" = (
-/obj/machinery/light/small{
-	dir = 1
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
 	},
-/turf/open/floor/mineral/titanium,
 /area/shuttle/escape)
-"bo" = (
-/obj/machinery/light/small,
-/turf/open/floor/mineral/titanium,
-/area/shuttle/escape)
-"bp" = (
-/obj/machinery/light,
-/turf/open/floor/mineral/titanium,
-/area/shuttle/escape)
-"bq" = (
-/obj/machinery/light/small{
-	brightness = 3;
-	dir = 8
+"ZN" = (
+/turf/closed/wall/mineral/titanium/custom/departures{
+	icon_state = "departures142"
 	},
-/turf/open/floor/mineral/titanium/yellow,
-/area/shuttle/escape)
-"br" = (
-/obj/machinery/light/small{
-	dir = 4
-	},
-/turf/open/floor/mineral/titanium/yellow,
-/area/shuttle/escape)
-"bs" = (
-/obj/machinery/light/small{
-	brightness = 3;
-	dir = 8
-	},
-/turf/open/floor/mineral/titanium/white,
-/area/shuttle/escape)
-"ga" = (
-/turf/open/floor/mineral/titanium/white,
-/area/shuttle/escape)
-"XC" = (
-/obj/structure/closet/emcloset,
-/turf/open/floor/mineral/titanium/white,
 /area/shuttle/escape)
 
 (1,1,1) = {"
+qD
+qD
+qD
+qD
+qD
+qD
+qD
+qD
 aa
-aa
-aa
-aa
-ad
-ad
-ad
+qZ
+ls
+JI
+vR
+VH
+pB
 ab
-ad
+Tw
 aj
-ad
-ac
-ac
-ac
-ad
+SC
+qD
+qD
+qD
+RF
 ak
-ad
-ak
-ad
-ad
-ad
-aa
+Tw
+lu
+CR
+yM
+hG
+oc
 "}
 (2,1,1) = {"
-aa
-ad
-ad
-ad
-ad
+qD
+qD
+qD
+qD
+qD
+qD
+qD
+qD
+Yp
+TN
+uD
+Ad
+mv
 aA
 aF
-aG
-ad
-bn
-ao
-ao
-ao
-ao
-ao
 bo
-ad
+bm
+bn
+iC
+qD
+qD
+qD
+sM
+bo
+bm
 bb
 bq
 bf
-ad
-ad
+rN
+dV
 "}
 (3,1,1) = {"
+qD
+qD
+qD
+qD
+qD
+qD
+qD
+Uc
 ad
 ae
 al
 aq
-ad
-aA
+aq
+aq
 aG
 aJ
-ad
-aQ
-aC
-aC
-aC
-aC
-aC
+DA
 aW
-ad
-bb
-bb
-bf
+DY
+aq
+aq
+aq
+ZN
+aW
+DA
+Rs
+AM
+Bj
 bi
 bk
 "}
 (4,1,1) = {"
+qD
+qD
+qD
+qD
+qD
+yx
+cN
+Zj
 ac
 af
 am
 ar
-ad
-aA
-aG
-aJ
-ad
-aC
+jI
+jI
+fo
+Ez
+bm
+XM
 aS
+IC
+IC
+IC
 aS
-aS
-aS
-aS
-aC
-aX
-bb
-bb
+rZ
+bm
+KV
+ug
 bg
-bi
-bk
+Vf
+AZ
 "}
 (5,1,1) = {"
-ac
+qD
+to
+cZ
+fW
+EK
+Yo
+gE
+ag
+ag
 ag
 aC
 as
-ad
-ac
 aH
-ac
-bj
-aC
+aH
+aH
+mS
+bm
+Yy
 aT
 aT
 aT
 aT
 aT
-aC
-ad
+ny
+bK
 bc
 br
-bg
-bi
-bk
+ja
+cK
+cQ
 "}
 (6,1,1) = {"
-ac
+fV
+za
+IL
+nY
+Zx
+Eu
+Yx
+yu
+oH
 ah
-aC
+IH
 at
-ad
+fM
 aB
-aC
+aB
 aK
 bm
-aC
-aC
-aC
-aC
-aC
-aC
+ix
+eF
+eF
+eF
+eF
+eF
 bp
-az
-ad
-ad
-ad
-bi
-bk
+pq
+AC
+lM
+Ev
+NS
+li
 "}
 (7,1,1) = {"
-ac
-ag
-aC
-aC
+MQ
+NR
+gb
+iS
+Ke
+Du
+uk
+vA
 ay
-aC
-aC
-ao
-aM
-aC
-aS
-aS
-aS
-aS
-aS
-aC
-ac
+Wy
+KL
+jt
+ay
+xT
+IK
+Lx
+nr
+IF
+bl
+bl
+bl
+bl
+bl
+Nb
+Hv
 XC
 bs
-XC
-bi
-bk
+he
+cS
+qd
 "}
 (8,1,1) = {"
-ac
+sL
+Dx
+HD
+Ub
+rY
+HR
+Ff
+Il
+oW
 ai
 ao
-ao
+hf
 az
 an
-aC
+Ls
 aM
-aM
-aC
+Ru
+lS
 aT
 aT
 aT
 aT
 aT
-aC
+ny
 aZ
 ga
-ga
-ga
-bi
-bk
+FR
+Mm
+wo
+ir
 "}
 (9,1,1) = {"
-ad
-ae
+KT
+bh
+Er
+It
+rY
+us
+CZ
+Hp
+dq
+XN
 ap
 au
-ad
-aD
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-aC
-ac
-ga
-ga
-ga
-bi
-bk
+bl
+bl
+bl
+bl
+bl
+bl
+eF
+eF
+eF
+eF
+eF
+ny
+EL
+UI
+fc
+OO
+Cd
+Qv
 "}
 (10,1,1) = {"
-aa
-ad
-ad
-ad
-ad
-aE
+HG
+lX
+hQ
+Ub
+rY
+HR
+gy
+Pf
+NO
+TJ
+ao
+cj
 bl
-an
-an
+bl
+bl
+LF
+ib
 aR
-am
-am
-am
-am
-am
+pP
+Cl
 aR
-ac
+Cl
+pP
+jK
+yc
 bd
 be
-bd
-ad
-ad
+RK
+LC
+xd
 "}
 (11,1,1) = {"
-aa
-aa
-aa
-aa
-ad
-ac
-ad
-ac
-ad
-ad
-ad
-ac
-ac
-ac
-ad
-ad
-ad
-ac
-ad
-ac
-ad
-aa
+Up
+TG
+pl
+Xv
+JQ
+ys
+Se
+pi
+pV
+Wy
+qp
+ix
+aT
+aT
+aT
+ny
+Uy
+Kq
+jt
+wt
+Kq
+wt
+na
+Kq
+wP
+bd
+dJ
+zm
+RD
+Na
+"}
+(12,1,1) = {"
+vU
+zo
+DQ
+TU
+xo
+gV
+QE
+Ie
+st
+LJ
+qj
+cj
+eF
+eF
+eF
+bp
+ao
+Nv
+ho
+NK
+NK
+NK
+iD
+jH
+Uk
+bd
+bd
+LK
+kX
+ge
+"}
+(13,1,1) = {"
+qD
+RI
+Ps
+Bc
+sv
+MZ
+Tv
+yp
+HO
+qf
+PH
+Yy
+bl
+bl
+bl
+ny
+sX
+ed
+Xc
+cl
+JG
+eW
+Ua
+AV
+Uk
+bd
+bd
+yb
+wp
+sB
+"}
+(14,1,1) = {"
+qD
+qD
+qD
+qD
+qD
+JP
+YT
+SB
+gk
+WJ
+CF
+TA
+sx
+sx
+sx
+Ze
+bm
+vj
+nN
+dC
+uT
+LR
+Cn
+CM
+Uk
+iE
+Bh
+IG
+Wh
+xC
+"}
+(15,1,1) = {"
+qD
+qD
+qD
+qD
+qD
+qD
+qD
+HT
+PG
+cf
+ci
+KD
+KD
+KD
+xK
+lo
+Fg
+iO
+Vw
+KD
+Ro
+LY
+Fo
+Xn
+Ly
+sg
+Qy
+eI
+Kg
+mw
+"}
+(16,1,1) = {"
+qD
+qD
+qD
+qD
+qD
+qD
+qD
+qD
+SP
+wQ
+ip
+Vk
+Ya
+yn
+Mo
+WL
+qB
+Db
+uP
+qD
+qD
+qD
+tZ
+Fk
+TV
+oi
+sz
+Ip
+As
+eH
+"}
+(17,1,1) = {"
+qD
+qD
+qD
+qD
+qD
+qD
+qD
+qD
+Eg
+We
+MT
+VJ
+GJ
+WK
+nC
+hg
+Gk
+Nz
+wd
+qD
+qD
+qD
+oU
+xn
+Tt
+qJ
+mB
+BZ
+VE
+lO
 "}

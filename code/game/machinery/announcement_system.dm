@@ -102,6 +102,13 @@ GLOBAL_LIST_EMPTY(announcement_systems)
 	else if(message_type == "ARRIVALS_BROKEN")
 		message = "The arrivals shuttle has been damaged. Docking for repairs..."
 
+	//Hyper edit
+	else if (message_type == "ONDUTY")
+		message = CompileText(onduty, user, rank)
+	else if (message_type == "OFFDUTY")
+		message = CompileText(offduty, user, rank)
+	//Hyper edit end
+
 	if(channels.len == 0)
 		radio.talk_into(src, message, null)
 	else

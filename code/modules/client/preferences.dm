@@ -1336,9 +1336,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if(jobban_isbanned(user, rank))
 				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;jobbancheck=[rank]'> BANNED</a></td></tr>"
 				continue
+			//Hyperstation Edit - Whitelisted roles
 			if((rank in GLOB.silly_positions) && (!sillyroles))
 				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;jobbancheck=[rank]'> WHITELIST</a></td></tr>"
 				continue
+			if((rank in GLOB.important_positions) && (!importantroles)) //TODO: make whitelists a bit more accurate than "silly" and "important"
+				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;jobbancheck=[rank]'> WHITELIST</a></td></tr>"
+				continue
+			//Hyperstation Edit end
 			var/required_playtime_remaining = job.required_playtime_remaining(user.client)
 			if(required_playtime_remaining)
 				HTML += "<font color=red>[rank]</font></td><td><font color=red> \[ [get_exp_format(required_playtime_remaining)] as [job.get_exp_req_type()] \] </font></td></tr>"
