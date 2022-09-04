@@ -129,6 +129,7 @@
 	planetary_atmos = TRUE
 	initial_gas_mix = FROZEN_ATMOS
 	density = FALSE
+	vis_flags = 8
 
 /turf/open/chasm/cloud/Initialize()
 	. = ..()

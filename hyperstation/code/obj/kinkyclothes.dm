@@ -160,6 +160,9 @@ obj/item/clothing/neck/stole/black
 	var/firstpickup = TRUE
 	var/pickupsound = TRUE
 
+/obj/item/clothing/under/vaultsuit/no_sound
+	pickupsound = FALSE
+
 /obj/item/clothing/under/vaultsuit/equipped(mob/user, slot)
 	. = ..()
 	if(!pickupsound)

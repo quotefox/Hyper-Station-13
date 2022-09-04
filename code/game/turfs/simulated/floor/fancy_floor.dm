@@ -85,10 +85,16 @@
 	var/ore_type = /obj/item/stack/ore/glass
 	var/turfverb = "uproot"
 	tiled_dirt = FALSE
+	var/floor_variance = 50
+	var/quantity_of_available_tiles = 2
+	var/environment_type = "grass"
 
 /turf/open/floor/grass/Initialize()
+	var/proper_name = name
 	. = ..()
-	update_icon()
+	name = proper_name
+	if(prob(floor_variance))
+		icon_state = "[environment_type][rand(0,quantity_of_available_tiles)]"
 
 /turf/open/floor/grass/attackby(obj/item/C, mob/user, params)
 	if((C.tool_behaviour == TOOL_SHOVEL) && params)

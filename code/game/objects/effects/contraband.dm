@@ -408,6 +408,21 @@
 	desc = "A poster advertising a movie about some masked men."
 	icon_state = "poster44"
 
+/obj/structure/sign/poster/contraband/moffuchis_pizza
+	name = "Moffy's Pizzeria"
+	desc = "Moffy's Pizzeria™: family style pizza for 2 centuries."
+	icon_state = "poster45"
+
+/obj/structure/sign/poster/contraband/donk_co
+	name = "DONK CO. BRAND MICROWAVEABLE FOOD"
+	desc = "DONK CO. BRAND MICROWAVABLE FOOD: MADE BY STARVING COLLEGE STUDENTS, FOR STARVING COLLEGE STUDENTS."
+	icon_state = "poster46"
+
+/obj/structure/sign/poster/contraband/cybersun_six_hundred
+	name = "Saibāsan: 600 Years Commemorative Poster"
+	desc = "An artistic poster commemorating 600 years of continual business for Cybersun Industries."
+	icon_state = "poster47"
+
 /obj/structure/sign/poster/official
 	poster_item_name = "motivational poster"
 	poster_item_desc = "An official Nanotrasen-issued poster to foster a compliant and obedient workforce. It comes with state-of-the-art adhesive backing, for easy pinning to any vertical surface."
@@ -593,5 +608,30 @@
 	name = "Carbon Dioxide"
 	desc = "This informational poster teaches the viewer what carbon dioxide is."
 	icon_state = "poster35_legit"
+
+/obj/structure/sign/poster/official/moth_hardhat
+	name = "Safety Moth - Hardhats"
+	desc = "This informational poster uses Safety Moth™ to tell the viewer to wear hardhats in cautious areas. \"It's like a lamp for your head!\""
+	icon_state = "poster36_legit"
+
+/obj/structure/sign/poster/official/moth_piping
+	name = "Safety Moth - Piping"
+	desc = "This informational poster uses Safety Moth™ to tell atmospheric technicians correct types of piping to be used. \"Pipes, not Pumps! Proper pipe placement prevents poor performance!\""
+	icon_state = "poster37_legit"
+
+/obj/structure/sign/poster/official/moth_meth
+	name = "Safety Moth - Methamphetamine"
+	desc = "This informational poster uses Safety Moth™ to tell the viewer to seek CMO approval before cooking methamphetamine. \"Stay close to the target temperature, and never go over!\" ...You shouldn't ever be making this."
+	icon_state = "poster38_legit"
+
+/obj/structure/sign/poster/official/moth_epi
+	name = "Safety Moth - Epinephrine"
+	desc = "This informational poster uses Safety Moth™ to inform the viewer to help injured/deceased crewmen with their epinephrine injectors. \"Prevent organ rot with this one simple trick!\""
+	icon_state = "poster39_legit"
+
+/obj/structure/sign/poster/official/corporate_perks_vacation
+	name = "Nanotrasen Corporate Perks: Vacation"
+	desc = "You wish you were here? You can be, Plan today and get 10% off your next vacation on us."
+	icon_state = "poster40_legit"
 
 #undef PLACE_SPEED

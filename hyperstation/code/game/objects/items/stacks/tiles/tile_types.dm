@@ -1,3 +1,4 @@
+//Farm things
 /turf/open/floor/
 	var/farm_quality = 0 //all tiles have a farm quality, which is for farm animals to enjoy. 0 = worse 100 = best!
 
@@ -26,3 +27,11 @@
 	icon_state = "hay"
 	farm_quality = 100 //the best for farming!
 	floor_tile = /obj/item/stack/tile/hay
+
+//Carpets
+/obj/item/stack/tile/carpet/kinaris
+	name = "gilded carpet"
+	icon = 'hyperstation/icons/obj/tiles.dmi'
+	icon_state = "tile-carpet-kinaris"
+	turf_type = /turf/open/floor/carpet/kinaris
+	tableVariant = /obj/structure/table/wood/fancy/kinaris
