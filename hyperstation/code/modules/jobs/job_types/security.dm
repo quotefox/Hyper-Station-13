@@ -1,9 +1,10 @@
 /*
 Lambent
 */
+/*
 /datum/job/lambent/New()
 	var/datum/action/innate/lambent/dash/dash = new
-
+*/ //we dont need this -V
 /datum/job/lambent
 	title = "Lambent"
 	flag = LAMBENT
@@ -58,10 +59,11 @@ Lambent
 
 	implants = list(/obj/item/implant/mindshield)
 
-/*
-/datum/job/lambent/after_spawn(mob/living/H, mob/M)
-	apply_innate_effects()
 
+/datum/job/lambent/after_spawn(mob/living/H, mob/M)
+	var/datum/action/innate/lambent/dash/dash = new
+	dash.Grant(H)
+/*
 /datum/job/lambent/proc/on_body_transfer(mob/living/old_body, mob/living/new_body)
 	remove_innate_effects(old_body)
 	apply_innate_effects(new_body)
@@ -76,3 +78,4 @@ Lambent
 	. = ..()
 	dash.Remove(H)
 */
+//these are for antagonist -V

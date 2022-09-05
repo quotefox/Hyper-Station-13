@@ -52,7 +52,7 @@
 	else
 		return FALSE
 
-/datum/action/innate/lambent/dash/proc/Teleport(mob/user, atom/target)
+/datum/action/innate/lambent/dash/proc/Teleport(mob/user, atom/target) //Mordecai and Rigby get this code working or you are FIRED!
 	if(!IsAvailable())
 		return
 	var/turf/T = get_turf(target)
