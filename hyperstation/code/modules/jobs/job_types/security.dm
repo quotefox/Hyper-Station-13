@@ -21,6 +21,8 @@ Lambent
 
 	outfit = /datum/outfit/job/lambent
 
+	//var/datum/action/innate/lambent/dash = new
+
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP, ACCESS_LAMBENT,
 			            ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_BARISTA, ACCESS_BARBER,
 			            ACCESS_RESEARCH, ACCESS_ENGINE, ACCESS_MINING, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING,
@@ -54,3 +56,22 @@ Lambent
 	box = /obj/item/storage/box/security
 
 	implants = list(/obj/item/implant/mindshield)
+
+/*
+/datum/job/lambent/after_spawn(mob/living/H, mob/M)
+	apply_innate_effects()
+
+/datum/job/lambent/proc/on_body_transfer(mob/living/old_body, mob/living/new_body)
+	remove_innate_effects(old_body)
+	apply_innate_effects(new_body)
+
+//This handles the application of antag huds/special abilities
+/datum/job/lambent/proc/apply_innate_effects(mob/living/H)
+	. = ..()
+	dash.Grant()
+
+//This handles the removal of antag huds/special abilities
+/datum/job/lambent/proc/remove_innate_effects(mob/living/H)
+	. = ..()
+	dash.Remove(H)
+*/
