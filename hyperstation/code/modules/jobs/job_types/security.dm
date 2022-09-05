@@ -1,6 +1,9 @@
 /*
 Lambent
 */
+/datum/job/lambent/New()
+	var/datum/action/innate/lambent/dash/dash = new
+
 /datum/job/lambent
 	title = "Lambent"
 	flag = LAMBENT
@@ -20,8 +23,6 @@ Lambent
 	custom_spawn_text = "You are a Kinaris Lambent; a person hired directly by Kinaris who has a high interest in asset security and the protection of the station. Unlike the station, your gear is official Kinaris items, not replicated Milky-Way Engrams. As such, you should keep them safe due to the power they hold. You answer directly to Central Command and Kinaris, and security matters should not involve you for the most part, unless staffing is low or there is a problem with securing assets. Thankfully, Layenia Station is one of Kinaris's most low-tech stations with hardly anything important to secure; not even the items in the vault are noteworthy due to the falsified, low-tech Engram they're under. Just ensure peace is kept and the station is functioning in a calm manner."
 
 	outfit = /datum/outfit/job/lambent
-
-	//var/datum/action/innate/lambent/dash = new
 
 	access = list(ACCESS_SECURITY, ACCESS_SEC_DOORS, ACCESS_BRIG, ACCESS_ARMORY, ACCESS_COURT, ACCESS_WEAPONS, ACCESS_ENTER_GENPOP, ACCESS_LEAVE_GENPOP, ACCESS_LAMBENT,
 			            ACCESS_FORENSICS_LOCKERS, ACCESS_MORGUE, ACCESS_MAINT_TUNNELS, ACCESS_ALL_PERSONAL_LOCKERS, ACCESS_BARISTA, ACCESS_BARBER,

@@ -24,6 +24,7 @@
 	cooldown_time = 120
 
 	/var/mob/living/carbon/human/target_human = target
+*/
 
 /datum/action/innate/lambent/dash
 	name = "Surge Dash"
@@ -71,4 +72,4 @@
 	if(recharge_sound)
 		playsound(src, recharge_sound, 50, 1)
 	to_chat(holder, "<span class='notice'>[src] now has [current_charges]/[max_charges] charges.</span>")
-*/
+
