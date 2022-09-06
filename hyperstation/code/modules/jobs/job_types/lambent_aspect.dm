@@ -20,6 +20,40 @@
 /datum/action/innate/lambent/Grant(mob/user)
 	. = ..()
 	holder = user
+/*
+//FLIGHT
+/datum/action/innate/lambent/flight(mob/user)
+	name = "Toggle free-flight"
+	desc = "Displace the weave locally to propell yourself in any direction."
+	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_STUN
+
+	icon_icon = 'icons/mob/actions/actions_items.dmi'
+	button_icon_state = "flight"
+
+
+/datum/action/innate/lambent/flight/Trigger()
+	switch(active)
+		if(0) //Start off
+			Activate()
+			active = 1
+			return
+		if(1)
+			Deactivate()
+			active = 0
+			return  //can't help but feel like I'm doing things terribly wrong.
+
+/datum/action/innate/lambent/flight/Activate()
+	holder.movement_type |= FLYING
+	holder.override_float = TRUE
+	holder.pass_flags |= PASSTABLE
+	holder.visible_message("Reality begins to distort around [holder], bringing them into the air!")
+
+/datum/action/innate/lambent/flight/Deactivate()
+	holder.movement_type &= ~FLYING
+	holder.override_float = FALSE
+	holder.pass_flags &= ~PASSTABLE
+	holder.visible_message("Flickering reality fades as [holder] settles to the ground.")
+*/
 
 /* Finish this when I understand the code a bit more
 /datum/action/cooldown/lambent/locate
