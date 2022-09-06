@@ -12,9 +12,15 @@
 	icon_icon = 'icons/mob/actions/actions_spells.dmi' //Using this for now until I sprite some action buttons
 	button_icon_state = "spell_default"
 
-	check_flags = AB_CHECK_STUN|AB_CHECK_CONSCIOUS
+	var/mob/living/carbon/human/holder
+
+	//check_flags = AB_CHECK_STUN|AB_CHECK_CONSCIOUS
 
 	//cooldown_time = 10
+
+/datum/action/innate/lambent/Grant(mob/user)
+	. = ..()
+	holder = user
 
 /* Finish this when I understand the code a bit more
 /datum/action/cooldown/lambent/locate
@@ -33,7 +39,6 @@
 	var/current_charges = 3
 	var/max_charges = 3
 	var/charge_rate = 250
-	var/mob/living/carbon/human/holder
 
 	var/dash_sound = 'sound/magic/blink.ogg'
 	var/recharge_sound = 'sound/magic/charge.ogg'
@@ -42,16 +47,43 @@
 	var/phaseout = /obj/effect/temp_visual/dir_setting/ninja/phase/out
 	var/beam_effect = "blur"
 
-/datum/action/innate/lambent/dash/Grant(mob/user)
-	. = ..()
-	holder = user
+/* Potentially not needed
+/obj/item/dash_energy
+	name = "Weave Energy"
+	desc = "A buzzing centerpiece of Weave falloff, unstable and ready to manifest itself."
+*/
+/*
+/obj/effect/proc_holder/lambent/dash
+	name = "Lambent Dash"
+*/
+/datum/action/innate/lambent/dash/Trigger()
+	holder.visible_message("PH Trigger Initial")
+	switch(active)
+		if(0) //Start off
+			holder.visible_message("PH Trigger to Activate")
+			Activate()
+			active = 1 //set to 1 so we can toggle off
+		if(1)
+			holder.visible_message("PH Trigger to Deactivate")
+			Deactivate()
+			active = 0 //set to 0 so we can toggle on
 
+/datum/action/innate/lambent/dash/Activate()
+	holder.visible_message("PH Activation")
+
+/datum/action/innate/lambent/dash/Deactivate()
+	holder.visible_message("PH Deactivation")
+
+/*
 /datum/action/innate/lambent/dash/IsAvailable()
 	if(current_charges > 0)
 		return TRUE
 	else
 		return FALSE
+*/
 
+//something something dash.Teleport(user,)
+/*
 /datum/action/innate/lambent/dash/proc/Teleport(mob/user, atom/target) //Mordecai and Rigby get this code working or you are FIRED!
 	if(!IsAvailable())
 		return
@@ -72,4 +104,4 @@
 	if(recharge_sound)
 		playsound(src, recharge_sound, 50, 1)
 	to_chat(holder, "<span class='notice'>[src] now has [current_charges]/[max_charges] charges.</span>")
-
+*/
