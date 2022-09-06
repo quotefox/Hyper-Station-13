@@ -57,7 +57,8 @@ Lambent
 	implants = list(/obj/item/implant/mindshield)
 
 //innate abilities will go here
+/*
 /datum/job/lambent/after_spawn(mob/living/H, mob/M)
 	var/datum/action/innate/lambent/dash/dash = new
 	dash.Grant(H)
-
+*/

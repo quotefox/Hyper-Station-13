@@ -18482,6 +18482,7 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/wood{
 	icon_state = "wood_tile";
 	name = "tile"
@@ -20028,6 +20029,7 @@
 /obj/machinery/status_display{
 	pixel_x = -32
 	},
+/obj/structure/dresser,
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
 	name = "parquet"
@@ -32035,6 +32037,7 @@
 /obj/machinery/airalarm{
 	pixel_y = 22
 	},
+/obj/structure/dresser,
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
 	name = "parquet"
@@ -50321,6 +50324,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/wood{
 	icon_state = "wood_tile";
 	name = "tile"
@@ -52219,6 +52223,7 @@
 /obj/machinery/airalarm{
 	pixel_y = 22
 	},
+/obj/structure/dresser,
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
 	name = "parquet"
@@ -71636,6 +71641,7 @@
 /obj/machinery/airalarm{
 	pixel_y = 22
 	},
+/obj/structure/dresser,
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
 	name = "parquet"
@@ -73542,20 +73548,6 @@
 	},
 /turf/open/indestructible/layenia/crystal,
 /area/layenia/cave)
-"lzh" = (
-/obj/structure/disposalpipe/segment{
-	dir = 9
-	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
-	dir = 9;
-	name = "air supply pipe"
-	},
-/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
-	dir = 9;
-	name = "scrubbers pipe"
-	},
-/turf/open/floor/plating,
-/area/maintenance/starboard/central/upper)
 "lzj" = (
 /obj/structure/window/reinforced/tinted{
 	dir = 8
@@ -83584,6 +83576,7 @@
 /obj/machinery/status_display{
 	pixel_x = -32
 	},
+/obj/structure/dresser,
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
 	name = "parquet"
@@ -134989,6 +134982,7 @@
 /obj/machinery/airalarm{
 	pixel_y = 22
 	},
+/obj/structure/dresser,
 /turf/open/floor/wood{
 	icon_state = "wood_parquet";
 	name = "parquet"
@@ -261678,7 +261672,7 @@ xrc
 xrc
 xrc
 xrc
-lzh
+aGg
 qMG
 qzm
 qMG

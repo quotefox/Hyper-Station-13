@@ -1,6 +1,5 @@
 //I'll be honest I have no clue where to put lambent aspects, so this will just be here for now. I'm not the best at modularization, nor coding.
-//This will be mostly commented out until I can sort out how this works. I preferably want to use an innate action, not a spell or anything attached to items.
-//But it's proving to be difficult.
+//This will be finished lader.
 
 //Innate powers, without attuning to a specific aspect
 /datum/action/innate/lambent
@@ -31,7 +30,7 @@
 
 	/var/mob/living/carbon/human/target_human = target
 */
-
+/*
 /datum/action/innate/lambent/dash
 	name = "Surge Dash"
 	desc = "Imbue yourself with weave energy to dash forwards."
@@ -47,15 +46,77 @@
 	var/phaseout = /obj/effect/temp_visual/dir_setting/ninja/phase/out
 	var/beam_effect = "blur"
 
-/* Potentially not needed
-/obj/item/dash_energy
-	name = "Weave Energy"
-	desc = "A buzzing centerpiece of Weave falloff, unstable and ready to manifest itself."
-*/
-/*
-/obj/effect/proc_holder/lambent/dash
-	name = "Lambent Dash"
-*/
+	var/obj/item/lambent/dash
+
+/obj/item/lambent/dash
+	name = "condensed Weave energy"
+	desc = "Bundling energy straight from the Weave. It hurts your head just to comprehend."
+	block_chance = 50
+	w_class = WEIGHT_CLASS_HUGE
+	force = 0 
+	throwforce = 0
+	attack_verb = list("resonated", "harmonized")
+	var/datum/action/innate/lambent/dash/ability
+
+	icon_state = "energy_katana" //PH
+
+	interaction_flags_item = 0 //Prevent it from being clicked on, just in case.
+	//item_flags = DROPDEL //Deletes itself when dropped, but I may need to call some code and qdel instead.
+
+/obj/item/lambent/dash/Initialize()
+	. = ..()
+	ability = new(src)
+
+/obj/item/lambent/dash/attack_self(mob/user)
+	visible_message("<span class='notice'>[user] dissipates a flickering energy in their palm.</span>")
+	src.dropped()
+
+/obj/item/lambent/dash/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
+	. = ..()
+	ability.Teleport(user, target)
+
+/obj/item/lambent/dash/pickup(mob/living/user)
+	. = ..()
+	ability.Grant(user)
+	user.update_icons()
+
+/obj/item/lambent/dash/dropped(mob/user)
+	. = ..()
+	ability.Remove(user)
+	user.update_icons()
+	QDEL_IN(src, 1)
+
+//datum/action/innate/lambent/dash/ability //This is what poor planning with code gets you. Use a proc_holder next time -Dahl
+
+/datum/action/innate/lambent/dash/Trigger()
+	//This is effectively an on/off state of the ability.
+	holder.visible_message("PH Trigger Initial")
+	if(holder.get_active_held_item() == null)
+		if(var/active == 0) //Start off
+			holder.visible_message("PH Trigger to Activate")
+			Activate()
+			active = 1 //set to 1 so we can toggle off
+			return
+		if(var/active == 1)
+			holder.visible_message("PH Trigger to Deactivate")
+			Deactivate()
+			active = 0 //set to 0 so we can toggle on
+			return
+	holder.visible_message("PH active held item return")
+	return
+
+
+/datum/action/innate/lambent/dash/Activate()
+	holder.visible_message("PH Activation")
+	holder.equip_to_slot_if_possible(new/obj/item/lambent/dash(null), SLOT_HANDS)
+
+/datum/action/innate/lambent/dash/Deactivate()
+	holder.visible_message("PH Deactivation")
+	if(holder.get_item_by_slot(SLOT_HANDS) == /obj/item/lambent/dash)
+		holder.dropItemToGround(/obj/item/lambent/dash)
+
+
+/* Leaving this here as a toggled ability to reference later.
 /datum/action/innate/lambent/dash/Trigger()
 	holder.visible_message("PH Trigger Initial")
 	switch(active)
@@ -73,6 +134,7 @@
 
 /datum/action/innate/lambent/dash/Deactivate()
 	holder.visible_message("PH Deactivation")
+*/
 
 /*
 /datum/action/innate/lambent/dash/IsAvailable()
@@ -83,8 +145,9 @@
 */
 
 //something something dash.Teleport(user,)
-/*
-/datum/action/innate/lambent/dash/proc/Teleport(mob/user, atom/target) //Mordecai and Rigby get this code working or you are FIRED!
+
+
+/datum/action/innate/lambent/dash/proc/Teleport(mob/user, atom/target)
 	if(!IsAvailable())
 		return
 	var/turf/T = get_turf(target)
@@ -102,6 +165,6 @@
 	current_charges = CLAMP(current_charges + 1, 0, max_charges)
 	holder.update_action_buttons_icon()
 	if(recharge_sound)
-		playsound(src, recharge_sound, 50, 1)
+		playsound(holder, recharge_sound, 50, 1)
 	to_chat(holder, "<span class='notice'>[src] now has [current_charges]/[max_charges] charges.</span>")
 */
