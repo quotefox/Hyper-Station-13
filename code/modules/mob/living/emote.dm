@@ -229,6 +229,10 @@
 			'sound/voice/catpeople/nyahehe.ogg'),
 			50, 1)
 			return
+		if(isinsect(C))
+			playsound(C, pick('sound/voice/mothlaugh.ogg'),
+			50, 1)
+			return
 
 /datum/emote/living/look
 	key = "look"
