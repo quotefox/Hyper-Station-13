@@ -437,7 +437,7 @@
 	repeatable = TRUE
 	//property_weights = list("extended" = -1, "chaos" = 1)
 	occurances_max = 1
-	chaos_min = 1.8
+	chaos_min = 2.5 //Increased due to how big the station is
 
 /datum/dynamic_ruleset/event/carp_migration
 	name = "Carp Migration"

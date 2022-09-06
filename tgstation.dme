@@ -3198,6 +3198,7 @@
 #include "hyperstation\code\modules\jobs\job_types\_job.dm"
 #include "hyperstation\code\modules\jobs\job_types\civilian.dm"
 #include "hyperstation\code\modules\jobs\job_types\job_alt_titles.dm"
+#include "hyperstation\code\modules\jobs\job_types\lambent_aspect.dm"
 #include "hyperstation\code\modules\jobs\job_types\roleplay.dm"
 #include "hyperstation\code\modules\jobs\job_types\security.dm"
 #include "hyperstation\code\modules\mining\shelters.dm"

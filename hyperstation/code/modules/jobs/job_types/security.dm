@@ -1,6 +1,7 @@
 /*
 Lambent
 */
+
 /datum/job/lambent
 	title = "Lambent"
 	flag = LAMBENT
@@ -30,9 +31,9 @@ Lambent
 			            ACCESS_RESEARCH, ACCESS_ENGINE, ACCESS_MINING, ACCESS_MEDICAL, ACCESS_CONSTRUCTION, ACCESS_MAILSORTING,
 			            ACCESS_HEADS, ACCESS_HOS, ACCESS_RC_ANNOUNCE, ACCESS_KEYCARD_AUTH, ACCESS_GATEWAY, ACCESS_MAINT_TUNNELS, ACCESS_MINERAL_STOREROOM)
 
-	mind_traits = list(TRAIT_CAPTAIN_METABOLISM)
+	mind_traits = list(TRAIT_CAPTAIN_METABOLISM, TRAIT_AUTO_CATCH_ITEM, TRAIT_DISK_VERIFIER, TRAIT_NOSLIPALL)
 
-	blacklisted_quirks = list(/datum/quirk/brainproblems, /datum/quirk/insanity, /datum/quirk/nonviolent)
+	blacklisted_quirks = list(/datum/quirk/brainproblems, /datum/quirk/insanity)
 
 /datum/outfit/job/lambent
 	name = "Lambent"
@@ -54,3 +55,12 @@ Lambent
 	box = /obj/item/storage/box/security
 
 	implants = list(/obj/item/implant/mindshield)
+
+//innate abilities will go here
+
+/datum/job/lambent/after_spawn(mob/living/H, mob/M)
+	//var/datum/action/innate/lambent/dash/dash = new
+	//dash.Grant(H)
+	//var/datum/action/innate/lambent/flight/flight = new
+	//flight.Grant(H)
+
