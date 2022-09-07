@@ -47,16 +47,42 @@
 /obj/structure/railing/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGLASS) || is_type_in_typecache(mover, freepass))
 		return 1
+
+	if(get_dir(loc, target) != dir)
+		return 1
+
+	if(mover.throwing && !mover.floating)
+		if(prob(75))
+			visible_message("<span class='notice'>[mover] sails over the [src].</span>")
+			return 1 //Flies right over the railing
+
+		else
+			visible_message("<span class='notice'>[mover] bounces off of the [src]'s rods!</span>")
+			return 0 //Bounces off railing's bulk
+
+	if(ismob(mover))
+		var/mob/M = mover
+		if(M.is_flying())
+			visible_message("<span class='notice'>[mover] soars over the [src].</span>")
+			return 1
+
+	if(mover.floating)
+		visible_message("<span class='notice'>[mover] floats over the [src].</span>")
+		return 1
+
 	if(get_dir(loc, target) == dir)
 		return 0
-	return 1
 
 /obj/structure/railing/CheckExit(atom/movable/O, turf/target)
-	if(istype(O) && (O.pass_flags & PASSGLASS) || is_type_in_typecache(O, freepass))
+
+	if(istype(O) && ((O.pass_flags & PASSGLASS) || is_type_in_typecache(O, freepass)) || CanPass(O, target) == 1)
 		return 1
+
+	if(get_dir(O.loc, target) != dir)
+		return 1
+
 	if(get_dir(O.loc, target) == dir)
 		return 0
-	return 1
 
 /obj/structure/railing/Initialize()
 	. = ..()
