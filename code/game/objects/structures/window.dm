@@ -485,65 +485,6 @@
 	/obj/structure/window/fulltile,
 	/obj/structure/window/reinforced/fulltile,
 	/obj/structure/window/reinforced/tinted/fulltile,
-	/obj/machinery/door,
-	/obj/machinery/door/airlock/,
-	/obj/machinery/door/airlock/mining,
-	/obj/machinery/door/airlock/mining/glass,
-	/obj/machinery/door/airlock/medical,
-	/obj/machinery/door/airlock/medical/glass,
-	/obj/machinery/door/airlock/public,
-	/obj/machinery/door/airlock/public/glass,
-	/obj/machinery/door/airlock/research,
-	/obj/machinery/door/airlock/research/glass,
-	/obj/machinery/door/airlock/maintenance,
-	/obj/machinery/door/airlock/maintenance/glass,
-	/obj/machinery/door/airlock/command/,
-	/obj/machinery/door/airlock/command/glass,
-	/obj/machinery/door/airlock/engineering,
-	/obj/machinery/door/airlock/engineering/glass,
-	/obj/machinery/door/airlock/engineering/abandoned,
-	/obj/machinery/door/airlock/security,
-	/obj/machinery/door/airlock/security/glass,
-	/obj/machinery/door/airlock/maintenance/abandoned,
-	/obj/machinery/door/poddoor/shutters/preopen,
-	/obj/machinery/door/poddoor/shutters,
-	/obj/machinery/door/window/eastright,
-	/obj/machinery/door/window/eastleft,
-	/obj/machinery/door/window/northleft,
-	/obj/machinery/door/window/northright,
-	/obj/machinery/door/airlock/external,
-	/obj/machinery/door/airlock,
-	/obj/machinery/door/airlock/hatch,
-	/obj/machinery/door/airlock/engineering/glass/critical,
-	/obj/machinery/door/airlock/atmos,
-	/obj/machinery/door/airlock/highsecurity,
-	/turf/closed/wall/mineral/sandstone,
-	/obj/structure/falsewall/sandstone,)
-//	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
-	glass_amount = 2
-
-/obj/structure/window/fulltile/unanchored
-	anchored = FALSE
-
-/obj/structure/window/plasma/fulltile
-	icon = 'icons/obj/smooth_structures/plasma_window.dmi'
-	icon_state = "plasmawindow"
-	dir = FULLTILE_WINDOW_DIR
-	max_integrity = 300
-	fulltile = TRUE
-	flags_1 = PREVENT_CLICK_UNDER_1
-	smooth = SMOOTH_TRUE
-	//canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
-
-	canSmoothWith = list(
-	/turf/closed/wall,
-	/turf/closed/wall/r_wall,
-	/obj/structure/falsewall,
-	/obj/structure/falsewall/brass,
-	/obj/structure/falsewall/reinforced,
-	/turf/closed/wall/rust,
-	/turf/closed/wall/r_wall/rust,
-	/turf/closed/wall/clockwork,
 	/obj/structure/window/plasma/fulltile,
 	/obj/structure/window/plasma/reinforced/fulltile,
 	/obj/machinery/door,
@@ -578,6 +519,76 @@
 	/obj/machinery/door/airlock/engineering/glass/critical,
 	/obj/machinery/door/airlock/atmos,
 	/obj/machinery/door/airlock/highsecurity,
+	/obj/machinery/door/firedoor,
+	/turf/closed/wall/mineral/lead,
+	/turf/closed/wall/mineral/sandstone,
+	/obj/structure/falsewall/sandstone)
+//	canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
+	glass_amount = 2
+
+/obj/structure/window/fulltile/unanchored
+	anchored = FALSE
+
+/obj/structure/window/plasma/fulltile
+	icon = 'icons/obj/smooth_structures/plasma_window.dmi'
+	icon_state = "plasmawindow"
+	dir = FULLTILE_WINDOW_DIR
+	max_integrity = 300
+	fulltile = TRUE
+	flags_1 = PREVENT_CLICK_UNDER_1
+	smooth = SMOOTH_TRUE
+	//canSmoothWith = list(/obj/structure/window/fulltile, /obj/structure/window/reinforced/fulltile, /obj/structure/window/reinforced/tinted/fulltile, /obj/structure/window/plasma/fulltile, /obj/structure/window/plasma/reinforced/fulltile)
+
+	canSmoothWith = list(
+	/turf/closed/wall,
+	/turf/closed/wall/r_wall,
+	/obj/structure/falsewall,
+	/obj/structure/falsewall/brass,
+	/obj/structure/falsewall/reinforced,
+	/turf/closed/wall/rust,
+	/turf/closed/wall/r_wall/rust,
+	/turf/closed/wall/clockwork,
+	/turf/closed/indestructible/riveted/,
+	/turf/closed/indestructible/riveted/uranium,
+	/obj/structure/window/fulltile,
+	/obj/structure/window/reinforced/fulltile,
+	/obj/structure/window/reinforced/tinted/fulltile,
+	/obj/structure/window/plasma/fulltile,
+	/obj/structure/window/plasma/reinforced/fulltile,
+	/obj/machinery/door,
+	/obj/machinery/door/airlock/,
+	/obj/machinery/door/airlock/mining,
+	/obj/machinery/door/airlock/mining/glass,
+	/obj/machinery/door/airlock/medical,
+	/obj/machinery/door/airlock/medical/glass,
+	/obj/machinery/door/airlock/public,
+	/obj/machinery/door/airlock/public/glass,
+	/obj/machinery/door/airlock/research,
+	/obj/machinery/door/airlock/research/glass,
+	/obj/machinery/door/airlock/maintenance,
+	/obj/machinery/door/airlock/maintenance/glass,
+	/obj/machinery/door/airlock/command/,
+	/obj/machinery/door/airlock/command/glass,
+	/obj/machinery/door/airlock/engineering,
+	/obj/machinery/door/airlock/engineering/glass,
+	/obj/machinery/door/airlock/engineering/abandoned,
+	/obj/machinery/door/airlock/security,
+	/obj/machinery/door/airlock/security/glass,
+	/obj/machinery/door/airlock/maintenance/abandoned,
+	/obj/machinery/door/poddoor/shutters/preopen,
+	/obj/machinery/door/poddoor/shutters,
+	/obj/machinery/door/window/eastright,
+	/obj/machinery/door/window/eastleft,
+	/obj/machinery/door/window/northleft,
+	/obj/machinery/door/window/northright,
+	/obj/machinery/door/airlock/external,
+	/obj/machinery/door/airlock,
+	/obj/machinery/door/airlock/hatch,
+	/obj/machinery/door/airlock/engineering/glass/critical,
+	/obj/machinery/door/airlock/atmos,
+	/obj/machinery/door/airlock/highsecurity,
+	/obj/machinery/door/firedoor,
+	/turf/closed/wall/mineral/lead,
 	/turf/closed/indestructible/,
 	/turf/closed/indestructible/riveted,
 	/turf/closed/indestructible/fakeglass)

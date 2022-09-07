@@ -5,7 +5,7 @@
 //CROWBAR
 
 /obj/item/crowbar
-	icon = 'modular_citadel/icons/obj/tools.dmi'
+	icon = 'icons/obj/tools.dmi'
 
 //WIRECUTTERS	disabled pending better sprites
 /*
@@ -15,4 +15,4 @@
 //WRENCH
 
 /obj/item/wrench
-	icon = 'modular_citadel/icons/obj/tools.dmi'
+	icon = 'icons/obj/tools.dmi'

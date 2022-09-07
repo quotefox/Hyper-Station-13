@@ -259,3 +259,8 @@
 	name = "Bathrobe"
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/bathrobe
+
+/datum/gear/uniform/threepwoodjacket
+	name = "threepwood's jacket"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/threepwoodjacket

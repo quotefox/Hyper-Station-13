@@ -4,57 +4,96 @@
 	name = "Escape Pod Airlock"
 	},
 /obj/docking_port/mobile/pod{
-	port_direction = 2;
 	dwidth = 1;
-	width = 3;
-	height = 4
+	height = 4;
+	port_direction = 2;
+	width = 3
 	},
 /obj/structure/fans/tiny,
-/turf/open/floor/mineral/titanium/blue,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/pod_1)
+"d" = (
+/turf/closed/wall/mineral/titanium/custom/pod{
+	icon_state = "pod6"
+	},
+/area/shuttle/pod_1)
+"f" = (
+/turf/closed/wall/mineral/titanium/custom/pod{
+	icon_state = "pod8"
+	},
+/area/shuttle/pod_1)
+"g" = (
+/turf/closed/wall/mineral/titanium/custom/pod{
+	icon_state = "pod3"
+	},
+/area/shuttle/pod_1)
+"j" = (
+/turf/closed/wall/mineral/titanium/custom/pod{
+	icon_state = "pod4"
+	},
 /area/shuttle/pod_1)
 "B" = (
-/turf/closed/wall/mineral/titanium,
+/turf/closed/wall/mineral/titanium/custom/pod{
+	icon_state = "pod2"
+	},
 /area/shuttle/pod_1)
 "G" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/machinery/status_display/evac{
-	pixel_x = 32
-	},
 /obj/machinery/computer/shuttle/pod{
-	pixel_x = -32
+	dir = 4;
+	pixel_x = -19
 	},
-/turf/open/floor/mineral/titanium/blue,
+/obj/item/radio/intercom{
+	pixel_x = 26
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/pod_1)
+"J" = (
+/turf/closed/wall/mineral/titanium/custom/pod{
+	icon_state = "pod0"
+	},
 /area/shuttle/pod_1)
 "Q" = (
-/obj/effect/spawner/structure/window/shuttle,
-/turf/open/floor/plating,
+/turf/closed/wall/mineral/titanium/custom/window/pod{
+	icon_state = "pod1"
+	},
 /area/shuttle/pod_1)
 "U" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 1
 	},
-/obj/item/radio/intercom{
-	pixel_x = 25
-	},
 /obj/item/storage/pod{
-	pixel_x = -26
+	dir = 8;
+	pixel_x = 30
 	},
-/obj/machinery/light/small{
+/obj/machinery/light{
 	dir = 8
 	},
-/turf/open/floor/mineral/titanium/blue,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/shuttle/pod_1)
+"W" = (
+/turf/closed/wall/mineral/titanium/custom/pod{
+	icon_state = "pod5"
+	},
 /area/shuttle/pod_1)
 "Z" = (
-/obj/structure/shuttle/engine/propulsion/burst,
-/turf/closed/wall/mineral/titanium,
+/turf/closed/wall/mineral/titanium/custom/pod{
+	icon_state = "pod7"
+	},
 /area/shuttle/pod_1)
 
 (1,1,1) = {"
 B
-B
-B
+g
+W
 Z
 "}
 (2,1,1) = {"
@@ -64,8 +103,8 @@ U
 a
 "}
 (3,1,1) = {"
-B
-B
-B
-Z
+J
+d
+j
+f
 "}

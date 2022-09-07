@@ -14,6 +14,7 @@
 #define CYBORG			(1<<10)
 #define JR_OFFICER      (1<<11)
 #define JR_ENGINEER     (1<<12)
+#define LAMBENT			(1<<13)
 
 
 #define MEDSCI			(1<<1)
@@ -46,6 +47,8 @@
 #define CLOWN			(1<<11)
 #define MIME			(1<<12)
 #define ASSISTANT		(1<<13)
+#define BARBER			(1<<14)
+#define BARISTA			(1<<15)
 
 #define JOB_AVAILABLE 0
 #define JOB_UNAVAILABLE_GENERIC 1

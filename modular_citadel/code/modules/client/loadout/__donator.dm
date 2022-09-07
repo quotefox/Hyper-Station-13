@@ -167,4 +167,10 @@ datum/gear/lyricalpawsring
 	name = "Occult Robes"
 	category = SLOT_IN_BACKPACK
 	path = /obj/item/clothing/suit/hooded/occultrobes
+
+	ckeywhitelist = list("relquen")
+/datum/gear/relquenmask
+	name = "Lamask"
+	category = SLOT_IN_BACKPACK
+	path = /obj/item/clothing/mask/lamask
 	ckeywhitelist = list("relquen")

@@ -14,6 +14,7 @@
 	if(icon_state == "mirror_broke" && !broken)
 		obj_break(null, mapload)
 
+/* SKYRAT EDIT REMOVAL
 /obj/structure/mirror/attack_hand(mob/user)
 	. = ..()
 	if(.)
@@ -44,7 +45,7 @@
 			H.hair_style = new_style
 
 		H.update_hair()
-
+*/
 /obj/structure/mirror/examine_status(mob/user)
 	if(broken)
 		return // no message spam

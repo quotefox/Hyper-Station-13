@@ -10,13 +10,27 @@
 //Populate the deck.
 /obj/item/toy/cards/deck/unum/populate_deck()
 	for(var/colour in list("Red","Yellow","Green","Blue"))
-		cards += "[colour] 0" //Uno, i mean, cough cough, Unum decks have only one colour of each 0, weird huh?
+		cards += new_card("[colour] 0") //Uno, i mean, cough cough, Unum decks have only one colour of each 0, weird huh?
 		for(var/k in 0 to 1) //two of each colour of number
-			cards += "[colour] skip"
-			cards += "[colour] reverse"
-			cards += "[colour] draw 2"
+			cards += new_card("[colour] skip")
+			cards += new_card("[colour] reverse")
+			cards += new_card("[colour] draw 2")
 			for(var/i in 1 to 9)
-				cards += "[colour] [i]"
+				cards += new_card("[colour] [i]")
 	for(var/k in 0 to 3) //4 wilds and draw 4s
-		cards += "Wildcard"
-		cards += "Draw 4"
+		cards += new_card("Wildcard")
+		cards += new_card("Draw 4")
+
+
+//
+// hyperstation edits below
+// -- sarcoph (july 2022)
+//
+
+/obj/item/toy/cards/deck/unum/proc/new_card(name)
+	return list(list(
+		"name" = name,
+		"icon_state" = name,
+		"rotation" = null,
+		"face_up" = null
+	))

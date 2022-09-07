@@ -151,6 +151,7 @@
 //Nutrition levels for humans
 #define NUTRITION_LEVEL_FAT 600
 #define NUTRITION_LEVEL_FULL 550
+#define NUTRITION_LEVEL_ALMOST_FULL 535
 #define NUTRITION_LEVEL_WELL_FED 450
 #define NUTRITION_LEVEL_FED 350
 #define NUTRITION_LEVEL_HUNGRY 250
@@ -289,3 +290,6 @@
 //Gremlins
 #define NPC_TAMPER_ACT_FORGET 1 //Don't try to tamper with this again
 #define NPC_TAMPER_ACT_NOMSG  2 //Don't produce a visible message
+
+//Upstream stuff
+#define SLEEP_CHECK_DEATH(X) sleep(X); if(QDELETED(src) || stat == DEAD) return;

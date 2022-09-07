@@ -65,7 +65,9 @@
 	/obj/machinery/door/airlock/hatch,
 	/obj/machinery/door/airlock/engineering/glass/critical,
 	/obj/machinery/door/airlock/atmos,
-	/obj/machinery/door/airlock/highsecurity)
+	/obj/machinery/door/airlock/highsecurity,
+	/obj/machinery/door/firedoor,
+	/turf/closed/wall/mineral/lead)
 
 
 	smooth = SMOOTH_TRUE
