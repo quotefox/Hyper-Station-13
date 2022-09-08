@@ -6848,15 +6848,6 @@
 	dir = 1
 	},
 /area/engine/atmos)
-"aPS" = (
-/obj/machinery/power/apc{
-	areastring = "/area/medical/medbay/upper";
-	name = "Upper Medbay APC";
-	pixel_y = -24
-	},
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/maintenance/port/aft/upper)
 "aPX" = (
 /obj/structure/table/wood/fancy/kinaris,
 /obj/item/twohanded/required/kirbyplants{
@@ -7624,9 +7615,6 @@
 "aXg" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/structure/cable{
-	icon_state = "2-8"
 	},
 /obj/structure/cable{
 	icon_state = "4-8"
@@ -53681,13 +53669,6 @@
 	icon_state = "floor_plate"
 	},
 /area/storage/primary)
-"itv" = (
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 16
-	},
-/turf/closed/wall/r_wall,
-/area/ai_monitored/storage/satellite)
 "itw" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -131110,7 +131091,7 @@
 /obj/machinery/power/apc{
 	areastring = "/area/janitor/upper";
 	dir = 4;
-	name = "uppreCustodial Closet APC";
+	name = "Upper Custodial Closet APC";
 	pixel_x = 26
 	},
 /obj/structure/cable{
@@ -216089,7 +216070,7 @@ gTW
 gPq
 obM
 ikZ
-itv
+ikZ
 ikZ
 ikZ
 iOp
@@ -255716,7 +255697,7 @@ ssB
 mMx
 isA
 aXg
-aPS
+eZR
 aPK
 sUY
 exQ
