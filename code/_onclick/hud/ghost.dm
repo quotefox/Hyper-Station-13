@@ -4,6 +4,21 @@
 /obj/screen/ghost/MouseEntered()
 	flick(icon_state + "_anim", src)
 
+
+/obj/screen/ghost/moveup
+	name = "Ascend"
+	icon_state = "up"
+
+/obj/screen/ghost/moveup/Click()
+	usr.zMove(UP, TRUE)
+
+/obj/screen/ghost/movedown
+	name = "Descend"
+	icon_state = "down"
+
+/obj/screen/ghost/movedown/Click()
+	usr.zMove(DOWN, TRUE)
+
 /obj/screen/ghost/jumptomob
 	name = "Jump to mob"
 	icon_state = "jumptomob"
@@ -70,6 +85,16 @@
 
 	using = new /obj/screen/ghost/pai()
 	using.screen_loc = ui_ghost_pai
+	using.hud = src
+	static_inventory += using
+
+	using = new /obj/screen/ghost/moveup
+	using.screen_loc = ui_ghost_up
+	using.hud = src
+	static_inventory += using
+
+	using = new /obj/screen/ghost/movedown
+	using.screen_loc = ui_ghost_down
 	using.hud = src
 	static_inventory += using
 
