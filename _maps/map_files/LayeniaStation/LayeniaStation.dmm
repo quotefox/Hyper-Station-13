@@ -74107,10 +74107,6 @@
 	icon_state = "darkfull_plate"
 	},
 /area/crew_quarters/bar)
-"lAu" = (
-/obj/machinery/pool/drain,
-/turf/open/floor/plasteel/showroomfloor,
-/area/crew_quarters/toilet/locker)
 "lAv" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 5;
@@ -184995,7 +184991,7 @@ wqX
 qCR
 rfW
 rmj
-lAu
+rmj
 rVT
 wqX
 uSz
@@ -186023,7 +186019,7 @@ wqX
 qUZ
 rfW
 rmj
-lAu
+rmj
 rVT
 wqX
 tUA
