@@ -10,6 +10,10 @@
 	flags_1 = CONDUCT_1
 
 	density = FALSE
+	climbable = TRUE
+	rail_climbing = TRUE
+	climb_time = 15
+	//var/passable = FALSE // Equivalent of density check for other structures like tables, has to be different due to different collision
 	layer = 4
 	anchored = TRUE
 	flags_1 = ON_BORDER_1
@@ -63,6 +67,9 @@
 
 /obj/structure/railing/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGLASS) || is_type_in_typecache(mover, freepass))
+		return 1
+
+	if(passable)
 		return 1
 
 	if(get_dir(loc, target) != dir)
@@ -203,7 +210,6 @@
 		if(RCD_DECONSTRUCT)
 			to_chat(user, "<span class='notice'>You deconstruct the [src].</span>")
 			qdel(src)
-			NeighborsCheck()
 			return TRUE
 	return FALSE
 
@@ -306,32 +312,6 @@
 		else
 			return FALSE
 	return FALSE
-
-/obj/structure/railing/MouseDrop_T(mob/living/M, mob/living/user)
-	if(!istype(user))
-		return
-	if(!isliving(user))
-		return
-
-	//Sanity check so players can't climb over railings into occupied spaces.
-	var/turf/T = get_step(src, src.dir)
-	if(CanPass(user, T) == 0)
-		return FALSE
-
-	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
-
-	if(!do_after(user, 15, src))
-		return
-
-	if(get_turf(user) == get_turf(src))
-		usr.dir = get_dir(usr.loc, get_step(src, src.dir))//turn and face railing
-		usr.forceMove(T)
-	else
-		usr.dir = get_dir(usr.loc, loc)//turn and face railing
-		usr.forceMove(get_turf(src))
-
-	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
-	usr.do_twist(targetangle = 45, timer = 8)
 
 /obj/structure/railing/proc/can_be_rotated(mob/user,rotation_type)
 	if(anchored)
