@@ -11,8 +11,8 @@
 	armor = list("melee" = 50, "bullet" = 70, "laser" = 70, "energy" = 100, "bomb" = 10, "bio" = 100, "rad" = 100, "fire" = 0, "acid" = 0)
 	max_integrity = 50
 	integrity_failure = 20
-	var/rods_type = /obj/item/stack/rods
-	var/rods_amount = 2
+	var/buildstacktype = /obj/item/stack/rods
+	var/buildstackamount = 2
 	var/rods_broken = TRUE
 	var/grille_type = null
 	var/broken_type = /obj/structure/grille/broken
@@ -84,7 +84,7 @@
 
 /obj/structure/grille/attack_animal(mob/user)
 	. = ..()
-	if(!shock(user, 70) && !QDELETED(src)) //Last hit still shocks but shouldn't deal damage to the grille)
+	if(!shock(user, 70) && !QDELETED(src)) //Last hit still shocks but shouldn't deal damage to the grille.
 		take_damage(rand(5,10), BRUTE, "melee", 1)
 
 /obj/structure/grille/attack_paw(mob/user)
@@ -217,7 +217,7 @@
 	if(!loc) //if already qdel'd somehow, we do nothing
 		return
 	if(!(flags_1&NODECONSTRUCT_1))
-		var/obj/R = new rods_type(drop_location(), rods_amount)
+		var/obj/R = new buildstacktype(drop_location(), buildstackamount)
 		transfer_fingerprints_to(R)
 		qdel(src)
 	..()
@@ -225,7 +225,7 @@
 /obj/structure/grille/obj_break()
 	if(!broken && !(flags_1 & NODECONSTRUCT_1))
 		new broken_type(src.loc)
-		var/obj/R = new rods_type(drop_location(), rods_broken)
+		var/obj/R = new buildstacktype(drop_location(), rods_broken)
 		transfer_fingerprints_to(R)
 		qdel(src)
 
@@ -279,7 +279,7 @@
 	density = FALSE
 	obj_integrity = 20
 	broken = TRUE
-	rods_amount = 1
+	buildstackamount = 1
 	rods_broken = FALSE
 	grille_type = /obj/structure/grille
 	broken_type = null
@@ -315,7 +315,7 @@
 	density = FALSE
 	obj_integrity = 20
 	broken = TRUE
-	rods_amount = 1
+	buildstackamount = 1
 	rods_broken = FALSE
 	grille_type = /obj/structure/grille/ratvar
 	broken_type = null
