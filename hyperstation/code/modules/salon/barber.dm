@@ -432,7 +432,7 @@
 	// How long does it take to change someone's facial hair style?
 	var/facial_haircut_duration = 20 SECONDS
 
-/obj/item/scissors/attack(mob/living/attacked_mob, mob/living/user, params)
+/obj/item/scissors/attack(mob/living/carbon/attacked_mob, mob/living/user, params)
 	if(!ishuman(attacked_mob))
 		return
 
@@ -471,11 +471,12 @@
 
 		playsound(target_human, 'hyperstation/sound/salon/haircut.ogg', 100)
 
-		if(do_after(user, haircut_duration, target_human))
-			target_human.hair_style = hair_id
-			target_human.update_hair()
-			visible_message("<span class='notice'>[user] successfully cuts [target_human]'s hair!</span>","<span class='notice'>You successfully cut [target_human]'s hair!</span>")
-			new /obj/effect/decal/cleanable/hair(get_turf(src))
+		if(!do_mob(user, attacked_mob, haircut_duration))
+			return
+		target_human.hair_style = hair_id
+		target_human.update_hair()
+		visible_message("<span class='notice'>[user] successfully cuts [target_human]'s hair!</span>","<span class='notice'>You successfully cut [target_human]'s hair!</span>")
+		new /obj/effect/decal/cleanable/hair(get_turf(src))
 	else
 		if(!target_human.facial_hair_style == "Shaved" && target_human.wear_mask)
 			to_chat(user, "<span class='warning'>There is no hair to cut!</span>")
@@ -492,11 +493,13 @@
 
 		playsound(target_human, 'hyperstation/sound/salon/haircut.ogg', 100)
 
-		if(do_after(user, facial_haircut_duration, target_human))
-			target_human.facial_hair_style = facial_hair_id
-			target_human.update_hair()
-			visible_message("<span class='notice'>[user] successfully cuts [target_human]'s facial hair!</span>","<span class='notice'>You successfully cut [target_human]'s facial hair!</span>")
-			new /obj/effect/decal/cleanable/hair(get_turf(src))
+		if(!do_mob(user, attacked_mob, facial_haircut_duration))
+			return
+
+		target_human.facial_hair_style = facial_hair_id
+		target_human.update_hair()
+		visible_message("<span class='notice'>[user] successfully cuts [target_human]'s facial hair!</span>","<span class='notice'>You successfully cut [target_human]'s facial hair!</span>")
+		new /obj/effect/decal/cleanable/hair(get_turf(src))
 
 
 //reagents
