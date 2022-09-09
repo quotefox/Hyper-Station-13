@@ -303,7 +303,8 @@
 	if(user.nextsoundemote >= world.time)
 		return
 	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_citadel/sound/voice/meow1.ogg', 50, 1, -1)
+	var/path = pick(list('modular_citadel/sound/voice/merowr.ogg', 'modular_citadel/sound/voice/meow1.ogg', 'modular_citadel/sound/voice/meow2.ogg', 'modular_citadel/sound/voice/meow3.ogg', 'modular_citadel/sound/voice/meow4.ogg'))
+	playsound(user, path, 50, 1, -1)
 
 /datum/emote/living/purr
 	key = "purr"
@@ -321,15 +322,15 @@
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_citadel/sound/voice/purr.ogg', 50, 1, -1)
 
-/datum/emote/living/chime
-	key = "chime"
+/datum/emote/living/xpchime
+	key = "xpchime"
 	key_third_person = "emits a soft chime."
 	message = "emits a soft chime."
 	emote_type = EMOTE_AUDIBLE
 	muzzle_ignore = FALSE
 	restraint_check = FALSE
 
-/datum/emote/living/chime/run_emote(mob/living/user, params)
+/datum/emote/living/xpchime/run_emote(mob/living/user, params)
 	if(!(. = ..()))
 		return
 	if(user.nextsoundemote >= world.time)
@@ -417,22 +418,6 @@
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_citadel/sound/voice/synth_yes.ogg', 50, 1, -1)
 
-/datum/emote/living/marmeow
-	key = "marmeow"
-	key_third_person = "meows."
-	message = "meows."
-	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	restraint_check = FALSE
-
-/datum/emote/living/marmeow/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_citadel/sound/voice/marmeow.ogg', 50, 1, -1)
-
 /datum/emote/living/merowr
 	key = "merowr"
 	key_third_person = "merowrs!"
@@ -449,22 +434,6 @@
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_citadel/sound/voice/merowr.ogg', 50, 1, -1)
 
-/datum/emote/living/baranyuu
-	key = "baranyuu"
-	key_third_person = "meows..?"
-	message = "meows..?"
-	emote_type = EMOTE_AUDIBLE
-	muzzle_ignore = FALSE
-	restraint_check = FALSE
-
-/datum/emote/living/baranyuu/run_emote(mob/living/user, params)
-	if(!(. = ..()))
-		return
-	if(user.nextsoundemote >= world.time)
-		return
-	user.nextsoundemote = world.time + 7
-	playsound(user, 'modular_citadel/sound/voice/baranyuu.ogg', 50, 1, -1)
-
 /datum/emote/living/mothchitter
 	key = "mchitter"
 	key_third_person = "chitters!"
@@ -480,3 +449,19 @@
 		return
 	user.nextsoundemote = world.time + 7
 	playsound(user, 'modular_citadel/sound/voice/mothchitter.ogg', 50, 1, -1)
+
+/datum/emote/living/sping
+	key = "sping"
+	key_third_person = "pings!"
+	message = "pings!"
+	emote_type = EMOTE_AUDIBLE
+	muzzle_ignore = FALSE
+	restraint_check = FALSE
+
+/datum/emote/living/sping/run_emote(mob/living/user, params)
+	if(!(. = ..()))
+		return
+	if(user.nextsoundemote >= world.time)
+		return
+	user.nextsoundemote = world.time + 7
+	playsound(user, 'modular_citadel/sound/voice/ping.ogg', 50, 1, -1)
