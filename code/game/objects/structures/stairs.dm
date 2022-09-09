@@ -11,7 +11,7 @@
 	icon = 'icons/obj/stairs.dmi'
 	icon_state = "stairs"
 	anchored = TRUE
-
+	layer = 2.1
 	var/force_open_above = FALSE // replaces the turf above this stair obj with /turf/open/transparent/openspace
 	var/terminator_mode = STAIR_TERMINATOR_AUTOMATIC
 	var/turf/listeningTo
