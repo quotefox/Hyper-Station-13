@@ -84,6 +84,17 @@
 	else
 		user.visible_message("<span class='warning'>[user] starts climbing over [src].</span>", \
 								"<span class='notice'>You start climbing over [src]...</span>")
+
+		var/obj/structure/railing/target = src
+
+		if(target.shock(user, 100))
+			return
+
+		// Ensures player is in the proper place for climbing.
+		if(user.loc != src.loc)
+			if(user.loc == (get_step(src, get_dir(src.loc, user))))
+				step(user, get_dir(user.loc,src.loc))
+
 	var/adjusted_climb_time = climb_time
 	if(user.restrained()) //climbing takes twice as long when restrained.
 		adjusted_climb_time *= 2

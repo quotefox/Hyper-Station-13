@@ -234,27 +234,36 @@
 	else if(istype(W, /obj/item/shard) || !shock(user, 70))
 		return ..()
 
-/obj/structure/grille/attack_paw(mob/user)
+/obj/structure/railing/attack_paw(mob/user)
 	return attack_hand(user)
 
-/obj/structure/grille/hulk_damage()
-	return 60
+/obj/structure/railing/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+	if(isobj(AM))
+		if(prob(50) && anchored && !broken)
+			var/obj/O = AM
+			if(O.throwforce != 0 && O.damtype != STAMINA)//don't want to let people spam tesla bolts, this way it will break after time
+				var/turf/T = get_turf(src)
+				var/obj/structure/cable/C = T.get_cable_node()
+				if(C)
+					playsound(src, 'sound/magic/lightningshock.ogg', 100, 1, extrarange = 5)
+					tesla_zap(src, 3, C.newavail() * 0.01, TESLA_MOB_DAMAGE | TESLA_OBJ_DAMAGE | TESLA_MOB_STUN | TESLA_ALLOW_DUPLICATES) //Zap for 1/100 of the amount of power. At a million watts in the grid, it will be as powerful as a tesla revolver shot.
+					C.add_delayedload(C.newavail() * 0.0375) // you can gain up to 3.5 via the 4x upgrades power is halved by the pole so thats 2x then 1X then .5X for 3.5x the 3 bounces shock.
+	return ..()
 
-/obj/structure/grille/attack_hulk(mob/living/carbon/human/user, does_attack_animation = 0)
+/obj/structure/railing/attack_hulk(mob/living/carbon/human/user, does_attack_animation = 0)
 	if(user.a_intent == INTENT_HARM)
 		if(!shock(user, 70))
 			..(user, 1)
 		return TRUE
 
-/obj/structure/grille/attack_hand(mob/living/user)
+/obj/structure/railing/attack_hand(mob/living/user)
 	. = ..()
 	if(.)
 		return
 	if(!shock(user, 70))
 		user.visible_message("<span class='warning'>[user] gets shocked by [src]!</span>", null, null, COMBAT_MESSAGE_RANGE)
-		take_damage(rand(5,10), BRUTE, "melee", 1)
 
-/obj/structure/grille/attack_alien(mob/living/user)
+/obj/structure/railing/attack_alien(mob/living/user)
 	user.do_attack_animation(src)
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.visible_message("<span class='warning'>[user] mangles [src].</span>", null, null, COMBAT_MESSAGE_RANGE)
