@@ -104,7 +104,7 @@
 		if(human_target.is_mouth_covered(head_only = 1))
 			to_chat(usr, "<span class='warning'>You can't brush [human_target]'s hair while [human_target.p_their()] head is covered!</span>")
 			return
-		if(!do_after(user, brush_speed, human_target))
+		if(!do_mob(user, human_target,brush_speed))
 			return
 
 		// Do 1 brute to their head if they're bald. Should've been more careful.
@@ -182,7 +182,7 @@
 
 	visible_message("<span class='notice'>[user] starts to masterfully paint [target_human]!</span>")
 
-	if(do_after(user, 20 SECONDS, target_human))
+	if(do_mob(user, target_human,20 SECONDS))
 		switch(selected_mutant_color)
 			if("One")
 				target_human.dna.features["mcolor"] = selected_color
@@ -235,7 +235,7 @@
 
 	visible_message("<span class='notice'>[user] starts to masterfully paint [target_human]!</span>")
 
-	if(do_after(user, 20 SECONDS, target_human))
+	if(do_mob(user, target_human,20 SECONDS))
 		current_markings[selected_marking_area][selected_marking_id] = selected_color
 
 		target_human.dna.body_markings = current_markings.Copy()
@@ -273,7 +273,7 @@
 	playsound(src, 'hyperstation/sound/salon/drying.ogg', 50)
 	add_fingerprint(user)
 	busy = TRUE
-	if(do_after(user, 4 SECONDS, src))
+	if(do_mob(user, src,4 SECONDS))
 		busy = FALSE
 		user.visible_message("[user] dried their hands using \the [src].")
 	else
@@ -333,7 +333,7 @@
 		return
 
 	visible_message("<span class='warning'>[user] begins to do [target]'s lips with \the [src].</span>","<span class='notice'>You begin to apply \the [src] on [target]'s lips...</span>")
-	if(!do_after(user, 2 SECONDS, target = target))
+	if(!do_mob(user, target = target,2 SECONDS))
 		return
 	visible_message("<span class='notice'>[user] does [target]'s lips with \the [src].</span>","<span class='notice'>You apply \the [src] on [target]'s lips.</span>")
 	target.lip_style = "lipstick"
@@ -388,7 +388,7 @@
 
 			var/self_shaving = target_human == user // Shaving yourself?
 			visible_message("<span class='notice'>[user] starts to shave [self_shaving ? user.p_their() : "[target_human]'s"] hair with [src].</span>","<span class='notice'>You take a moment to shave [self_shaving ? "your" : "[target_human]'s" ] hair with [src]...</span>")
-			if(do_after(user, shaving_time, target = target_human))
+			if(do_mob(user, target = target_human,shaving_time))
 				visible_message("<span class='notice'>[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] hair clean with [src].</span>","<span class='notice'>You finish shaving [self_shaving ? "your" : " [target_human]'s"] hair with [src]. Fast and clean!</span>")
 				shave(target_human, location)
 
@@ -405,7 +405,7 @@
 
 			var/self_shaving = target_human == user // Shaving yourself?
 			visible_message("<span class='notice'>[user] starts to shave [self_shaving ? user.p_their() : "[target_human]'s"] hair with [src].</span>","<span class='notice'>You take a moment to shave [self_shaving ? "your" : "[target_human]'s" ] hair with [src]...</span>")
-			if(do_after(user, shaving_time, target = target_human))
+			if(do_mob(user, target = target_human,shaving_time))
 				visible_message("<span class='notice'>[user] shaves [self_shaving ? user.p_their() : "[target_human]'s"] hair clean with [src].</span>","<span class='notice'>You finish shaving [self_shaving ? "your" : " [target_human]'s"] hair with [src]. Fast and clean!</span>")
 				shave(target_human, location)
 		else
