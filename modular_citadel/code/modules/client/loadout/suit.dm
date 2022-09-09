@@ -250,6 +250,11 @@
 	category = SLOT_WEAR_SUIT
 	path =	/obj/item/clothing/suit/nemes
 
+/datum/gear/uniform/labcoat
+	name = "Labcoat"
+	category = SLOT_WEAR_SUIT
+	path = /obj/item/clothing/suit/toggle/labcoat
+
 /datum/gear/fluffcoat
 	name = "Winter labcoat"
 	category = SLOT_WEAR_SUIT
@@ -264,3 +269,4 @@
 	name = "threepwood's jacket"
 	category = SLOT_WEAR_SUIT
 	path = /obj/item/clothing/suit/threepwoodjacket
+
