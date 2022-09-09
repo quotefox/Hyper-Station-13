@@ -101,6 +101,12 @@
 	WRITE_FILE(S["feature_has_anus"], features["has_anus"])
 	WRITE_FILE(S["feature_butt_size"], features["butt_size"])
 	WRITE_FILE(S["feature_butt_color"], features["butt_color"])
+
+	//lips features
+	WRITE_FILE(S["feature_has_lips"], features["has_lips"])
+	WRITE_FILE(S["feature_lips_color"], features["lips_color"])
+	WRITE_FILE(S["feature_lips_shape"], features["lips_shape"])
+
 	//pins
 	WRITE_FILE(S["pins"], pins)
 

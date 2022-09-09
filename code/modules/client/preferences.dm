@@ -152,6 +152,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		"belly_color" = "fff",
 		"has_anus" = FALSE,
 		"butt_color" = "fff",
+		"has_lips" = FALSE,
+		"lips_shape" = "nonexistant",
+		"lips_color" = "fff",
 		"has_balls" = FALSE,
 		"balls_internal" = FALSE,
 		"balls_color" = "fff",
@@ -845,28 +848,28 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat +=   "<div style='display:flex; align-items:stretch; justify-content:space-around;'>"
 			dat +=     "<div style='flex: 1 1 0;'>"
 			dat +=       "<h3 style='text-align:center;'>Head</h3>"
-			dat +=       "<a style='display:block; width:100px'" 
+			dat +=       "<a style='display:block; width:100px'"
 			dat +=         "href='?_src_=prefs;preference=cosmetic_head;task=input'>"
 			dat +=         cosmetic_head.name
 			dat +=       "</a>"
 			dat +=     "</div>"
 			dat +=     "<div style='flex: 1 1 0;'>"
 			dat +=       "<h3 style='text-align:center;'>Chest</h3>"
-			dat +=       "<a style='display:block; width:100px'" 
+			dat +=       "<a style='display:block; width:100px'"
 			dat +=         "href='?_src_=prefs;preference=cosmetic_chest;task=input'>"
 			dat +=         cosmetic_chest.name
 			dat +=       "</a>"
 			dat +=     "</div>"
 			dat +=     "<div style='flex: 1 1 0;'>"
 			dat +=       "<h3 style='text-align:center;'>Arms</h3>"
-			dat +=       "<a style='display:block; width:100px'" 
+			dat +=       "<a style='display:block; width:100px'"
 			dat +=         "href='?_src_=prefs;preference=cosmetic_arms;task=input'>"
 			dat +=         cosmetic_arms.name
 			dat +=       "</a>"
 			dat +=     "</div>"
 			dat +=     "<div style='flex: 1 1 0;'>"
 			dat +=       "<h3 style='text-align:center;'>Legs</h3>"
-			dat +=       "<a style='display:block; width:100px'" 
+			dat +=       "<a style='display:block; width:100px'"
 			dat +=         "href='?_src_=prefs;preference=cosmetic_legs;task=input'>"
 			dat +=         cosmetic_legs.name
 			dat +=       "</a>"
@@ -874,7 +877,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat +=   "</div>"
 			dat += "</div>"
 
-			
+
 
 			// End hyper edit
 
@@ -1011,6 +1014,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "<b>Color:</b></a><BR>"
 						dat += "<span style='border: 1px solid #161616; background-color: #[features["butt_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=butt_color;task=input'>Change</a><br>"
 
+				dat += "</td>"
+
+				dat += APPEARANCE_CATEGORY_COLUMN
+				dat += "<h3>Lips</h3>"
+				dat += "<a style='display:block;width:50px' href='?_src_=prefs;preference=has_lips'>[features["has_lips"] == TRUE ? "Yes" : "No"]</a>"
+				if(features["has_lips"])
+					dat += "<b>Lips Type:</b> <a style='display:block;width:100px' href='?_src_=prefs;preference=lips_shape;task=input'>[features["lips_shape"]]</a>"
+					if(pref_species.use_skintones && features["genitals_use_skintone"] == TRUE)
+						dat += "<b>Lips Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: #[skintone2hex(skin_tone)];'>&nbsp;&nbsp;&nbsp;</span>(Skin tone overriding)<br>"
+					else
+						dat += "<b>Lips Color:</b></a><BR>"
+						dat += "<span style='border: 1px solid #161616; background-color: #[features["lips_color"]];'>&nbsp;&nbsp;&nbsp;</span> <a href='?_src_=prefs;preference=lips_color;task=input'>Change</a><br>"
 				dat += "</td>"
 
 			dat += "</td>"
@@ -2382,7 +2398,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_cosmetic_part)
 						features["cosmetic_chest"] =  GLOB.cosmetic_chests[selectable_parts[new_cosmetic_part]]
 						update_preview_icon()
-				
+
 				// currently symmetrical
 				if("cosmetic_arms")
 					var/list/selectable_parts = list()
@@ -2431,6 +2447,22 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							features["cock_color"] = pref_species.default_color
 						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3])
 							features["cock_color"] = sanitize_hexcolor(new_cockcolor)
+						else
+							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
+
+				if("lips_shape")
+					var/new_shape
+					new_shape = input(user, "Lips Type", "Character Preference") as null|anything in GLOB.lips_shapes_list
+					if(new_shape)
+						features["lips_shape"] = new_shape
+				if("lips_color")
+					var/new_lipscolor = input(user, "Lips Color:", "Character Preference") as color|null
+					if(new_lipscolor)
+						var/temp_hsv = RGBtoHSV(new_lipscolor)
+						if(new_lipscolor == "#000000")
+							features["lips_color"] = pref_species.default_color
+						else if((MUTCOLORS_PARTSONLY in pref_species.species_traits) || ReadHSV(temp_hsv)[3] >= ReadHSV("#202020")[3])
+							features["lips_color"] = sanitize_hexcolor(new_lipscolor)
 						else
 							to_chat(user,"<span class='danger'>Invalid color. Your color is not bright enough.</span>")
 
@@ -2571,7 +2603,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("butt_size")
 					var/new_buttsize = input(user, "Butt size :\n([BUTT_MIN_SIZE]-[BUTT_MAX_SIZE_SELECTABLE])", "Character Preference") as num|null
 					if(new_buttsize != null)
-						features["butt_size"] = clamp(new_buttsize, BUTT_MIN_SIZE, BUTT_MAX_SIZE_SELECTABLE) 
+						features["butt_size"] = clamp(new_buttsize, BUTT_MIN_SIZE, BUTT_MAX_SIZE_SELECTABLE)
 						//Restricted to 5 in menu, because we have chems to make them big IC, like with breasts and what not.
 
 				if("vag_shape")
@@ -2738,6 +2770,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					features["has_anus"] = !features["has_anus"]
 					if(features["has_anus"] == FALSE)
 						features["butt_size"] = 0
+
+				if("has_lips")
+					features["has_lips"] = !features["has_lips"]
+
 				if("has_womb")
 					features["has_womb"] = !features["has_womb"]
 				if("can_get_preg")

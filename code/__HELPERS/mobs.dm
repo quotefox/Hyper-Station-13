@@ -146,7 +146,7 @@
 				continue
 			if(!S.ckeys_allowed)
 				snowflake_ipc_antenna_list[S.name] = mspath
-				
+
 	var/list/snowflake_ipc_screen_list = list()
 	for(var/mspath in GLOB.ipc_screens_list)
 		var/datum/sprite_accessory/screen/instance = GLOB.ipc_screens_list[mspath]
@@ -196,6 +196,8 @@
 		"cock_length"		= 6,
 		"belly_size"		= 1,
 		"butt_size"			= 1,
+		"has_lips"			= FALSE,
+		"lips_shape"		= pick(GLOB.lips_shapes_list),
 		"cock_girth_ratio"	= COCK_GIRTH_RATIO_DEF,
 		"cock_color"		= pick("FFFFFF","7F7F7F", "7FFF7F", "7F7FFF", "FF7F7F", "7FFFFF", "FF7FFF", "FFFF7F"),
 		"has_sheath"		= FALSE,

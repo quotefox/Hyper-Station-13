@@ -140,6 +140,8 @@
 					S = GLOB.vagina_shapes_list[genital.shape]
 				if(/obj/item/organ/genital/breasts)
 					S = GLOB.breasts_shapes_list[genital.shape]
+				if(/obj/item/organ/genital/lips)
+					S = GLOB.lips_shapes_list[genital.shape]
 			if(S?.alt_aroused)
 				genital.aroused_state = isPercentAroused(genital.aroused_amount)
 			if(getArousalLoss() >= isPercentAroused(33))
@@ -232,7 +234,7 @@
 	* - `cover`: Whether or not the mob is climaxing over themselves.
 	* - `mb_time`: Warm-up time for this interaction.
 	*/
-/mob/living/carbon/human/proc/mob_masturbate(obj/item/organ/genital/genital, cover=FALSE, mb_time=3 SECONDS) 
+/mob/living/carbon/human/proc/mob_masturbate(obj/item/organ/genital/genital, cover=FALSE, mb_time=3 SECONDS)
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = genital.get_fluid_source()
 	var/condomed = FALSE
@@ -288,7 +290,7 @@
 			setArousalLoss(min_arousal)
 
 
-/** 
+/**
 	* Mob climaxes using provided genitals without a partner. This is in contrast with `mob_climax_instant()`,
 	* which does not have a warm-up time and uses all genitals at once to climax.
 	*
@@ -297,7 +299,7 @@
 	* - `mb_time`: The warm-up time for this interaction.
 	* - `spillage`: Whether or not climaxing causes this mob to spill fluids on the floor.
 	*/
-/mob/living/carbon/human/proc/mob_climax_outside(obj/item/organ/genital/genital, spillage=TRUE, mb_time=3 SECONDS) 
+/mob/living/carbon/human/proc/mob_climax_outside(obj/item/organ/genital/genital, spillage=TRUE, mb_time=3 SECONDS)
 	var/total_fluids = 0
 	var/datum/reagents/fluid_source = genital.get_fluid_source()
 	var/unable_to_come = FALSE
@@ -382,7 +384,7 @@
 			partner_carbon.add_cum_overlay(cum_overlay)
 			var/mob/living/carbon/human/partner_human = partner_carbon
 			if(partner_human)
-				partner_human.cumdrip_rate += rand(5,10)	
+				partner_human.cumdrip_rate += rand(5,10)
 	else
 		partner.add_cum_overlay()
 	src.visible_message("<span class='love'>[src] climaxes over [partner], using [p_their()] [genital.name]!</span>", \
@@ -446,7 +448,7 @@
 				src.condomclimax()
 		if(can_inflate)
 			fluid_source.trans_to(partner, total_fluids)
-			if(!spillage && total_fluids > 80) // hyper - cum inflation, ONLY if not wearing a condom 
+			if(!spillage && total_fluids > 80) // hyper - cum inflation, ONLY if not wearing a condom
 				partner.expand_belly(1)
 		src.visible_message("<span class='love'>[src] climaxes with [partner_text], [p_their()] [genital.name] spilling nothing!</span>", \
 			"<span class='userlove'>You ejaculate with [partner_text], your [genital.name] spilling nothing.</span>", \
@@ -490,13 +492,13 @@
 /**
 	* Attempt to climax into a container it, filling it with whatever fluids are
 	* associated to the selected genitals.
-	* 
+	*
 	* Arguments:
 	* - `genital`: The genital being used for climax.
 	* - `container`: The container being targeted.
 	* - `mb_time`: The warm-up time for this interaction.
 	*/
-/mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/genital, obj/item/reagent_containers/container, mb_time=3 SECONDS) 
+/mob/living/carbon/human/proc/mob_fill_container(obj/item/organ/genital/genital, obj/item/reagent_containers/container, mb_time=3 SECONDS)
 	if(!container) //Something weird happened
 		to_chat(src, "<span class='warning'>You need a container to do this!</span>")
 		return
@@ -581,7 +583,7 @@
 		if(!iscarbon(I))
 			partners -= I
 			continue
-		if(!needs_exposed) 
+		if(!needs_exposed)
 			continue
 		var/mob/living/carbon/C = I
 		if(!C.exposed_genitals.len && !C.is_groin_exposed() && !C.is_chest_exposed())
@@ -631,7 +633,7 @@
 		to_chat(src, "<span class='warning'>You aren't aroused enough for that!</span>")
 		return
 	var/list/choices = list("Masturbate", "Climax alone", "Climax with partner","Climax over partner", "Fill container", "Remove condom", "Remove sounding rod")
-	var/choice = input(src, "Select sexual activity", "Sexual activity:") as null|anything in choices 
+	var/choice = input(src, "Select sexual activity", "Sexual activity:") as null|anything in choices
 	switch(choice)
 		if("Remove sounding rod")
 			if(restrained(TRUE)) //TRUE ignores grabs
@@ -739,7 +741,7 @@
 		if("Climax over partner")
 			var/obj/item/organ/genital/picked_organ
 			picked_organ = pick_climax_genitals()
-			if(picked_organ)	
+			if(picked_organ)
 				var/mob/living/carbon/partner = pick_partner(needs_exposed=FALSE) //Get your partner, clothed or not.
 				if(partner)
 					mob_climax_cover(picked_organ, partner)
@@ -780,10 +782,10 @@
 			return //Just end it in that case.
 
 
-/** 
-  * Causes a mob to climax on the spot. There is no warmup time, nor a 
-  * menu for selecting genitals. Instead, the mob will climax using all 
-  * climaxable genitals, either onto their location (floor) or on whatever 
+/**
+  * Causes a mob to climax on the spot. There is no warmup time, nor a
+  * menu for selecting genitals. Instead, the mob will climax using all
+  * climaxable genitals, either onto their location (floor) or on whatever
   * is pulling/being pulled by them.
 	*/
 /mob/living/carbon/proc/mob_climax_instant(arousal=100)

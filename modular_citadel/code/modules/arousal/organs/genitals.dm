@@ -71,7 +71,8 @@
 			return owner.is_groin_exposed()
 		if("anus")
 			return owner.is_butt_exposed()
-
+		if("lips")
+			return owner.is_lips_exposed()
 	return FALSE
 
 /obj/item/organ/genital/proc/toggle_visibility(visibility)
@@ -173,7 +174,8 @@
 		give_ovipositor()
 	if(dna.features["has_eggsack"])
 		give_eggsack()
-
+	if(dna.features["has_lips"])
+		give_lips()
 
 /mob/living/carbon/human/proc/give_penis()
 	if(!dna)
@@ -220,6 +222,23 @@
 			T.fluid_mult = dna.features["balls_cum_mult"]
 			T.fluid_efficiency = dna.features["balls_efficiency"]
 			T.update()
+
+/mob/living/carbon/human/proc/give_lips()
+	if(!dna)
+		return FALSE
+	if(NOGENITALS in dna.species.species_traits)
+		return FALSE
+	if(!getorganslot("lips"))
+		var/obj/item/organ/genital/lips/L = new
+		L.Insert(src)
+		if(L)
+			if(dna.species.use_skintones && dna.features["genitals_use_skintone"])
+				L.color = "#[skintone2hex(skin_tone)]"
+			else
+				L.color = "[dna.features["lips_color"]]"
+			L.shape = "[dna.features["lips_shape"]]"
+			L.update()
+
 
 /mob/living/carbon/human/proc/give_belly()
 	if(!dna)
@@ -455,6 +474,8 @@
 					S = GLOB.breasts_shapes_list[G.shape]
 				if(/obj/item/organ/genital/anus)
 					S = GLOB.breasts_shapes_list[G.shape]
+				if(/obj/item/organ/genital/lips)
+					S = GLOB.lips_shapes_list[G.shape]
 
 			if(!S || S.icon_state == "none")
 				continue

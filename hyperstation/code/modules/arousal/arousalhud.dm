@@ -261,6 +261,12 @@
 		usr.put_in_hands(I)
 		O.equipment = null
 
+	if(href_list["removeequipmentlips"])
+		var/obj/item/organ/genital/lips/L = usr.getorganslot("lips")
+		var/obj/item/I = L.equipment
+		SEND_SIGNAL(I, "detach_genital_equipment",usr)
+		usr.put_in_hands(I)
+		L.equipment = null
 
 	if(href_list["omenu"])
 		usr << browse(null, "window=arousal") //closes the window
