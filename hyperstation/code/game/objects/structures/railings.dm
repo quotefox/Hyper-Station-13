@@ -10,6 +10,10 @@
 	flags_1 = CONDUCT_1
 
 	density = FALSE
+	climbable = TRUE
+	rail_climbing = TRUE
+	climb_time = 15
+	//var/passable = FALSE // Equivalent of density check for other structures like tables, has to be different due to different collision
 	layer = 4
 	anchored = TRUE
 	flags_1 = ON_BORDER_1
@@ -63,6 +67,9 @@
 
 /obj/structure/railing/CanPass(atom/movable/mover, turf/target)
 	if(istype(mover) && (mover.pass_flags & PASSGLASS) || is_type_in_typecache(mover, freepass))
+		return 1
+
+	if(passable)
 		return 1
 
 	if(get_dir(loc, target) != dir)
@@ -203,7 +210,6 @@
 		if(RCD_DECONSTRUCT)
 			to_chat(user, "<span class='notice'>You deconstruct the [src].</span>")
 			qdel(src)
-			NeighborsCheck()
 			return TRUE
 	return FALSE
 
@@ -228,27 +234,39 @@
 	else if(istype(W, /obj/item/shard) || !shock(user, 70))
 		return ..()
 
-/obj/structure/grille/attack_paw(mob/user)
+/obj/structure/railing/attack_paw(mob/user)
 	return attack_hand(user)
 
 /obj/structure/grille/hulk_damage()
 	return 60
 
-/obj/structure/grille/attack_hulk(mob/living/carbon/human/user, does_attack_animation = 0)
+/obj/structure/railing/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
+	if(isobj(AM))
+		if(prob(50) && anchored && !broken)
+			var/obj/O = AM
+			if(O.throwforce != 0 && O.damtype != STAMINA)//don't want to let people spam tesla bolts, this way it will break after time
+				var/turf/T = get_turf(src)
+				var/obj/structure/cable/C = T.get_cable_node()
+				if(C)
+					playsound(src, 'sound/magic/lightningshock.ogg', 100, 1, extrarange = 5)
+					tesla_zap(src, 3, C.newavail() * 0.01, TESLA_MOB_DAMAGE | TESLA_OBJ_DAMAGE | TESLA_MOB_STUN | TESLA_ALLOW_DUPLICATES) //Zap for 1/100 of the amount of power. At a million watts in the grid, it will be as powerful as a tesla revolver shot.
+					C.add_delayedload(C.newavail() * 0.0375) // you can gain up to 3.5 via the 4x upgrades power is halved by the pole so thats 2x then 1X then .5X for 3.5x the 3 bounces shock.
+	return ..()
+
+/obj/structure/railing/attack_hulk(mob/living/carbon/human/user, does_attack_animation = 0)
 	if(user.a_intent == INTENT_HARM)
 		if(!shock(user, 70))
 			..(user, 1)
 		return TRUE
 
-/obj/structure/grille/attack_hand(mob/living/user)
+/obj/structure/railing/attack_hand(mob/living/user)
 	. = ..()
 	if(.)
 		return
 	if(!shock(user, 70))
 		user.visible_message("<span class='warning'>[user] gets shocked by [src]!</span>", null, null, COMBAT_MESSAGE_RANGE)
-		take_damage(rand(5,10), BRUTE, "melee", 1)
 
-/obj/structure/grille/attack_alien(mob/living/user)
+/obj/structure/railing/attack_alien(mob/living/user)
 	user.do_attack_animation(src)
 	user.changeNext_move(CLICK_CD_MELEE)
 	user.visible_message("<span class='warning'>[user] mangles [src].</span>", null, null, COMBAT_MESSAGE_RANGE)
@@ -306,32 +324,6 @@
 		else
 			return FALSE
 	return FALSE
-
-/obj/structure/railing/MouseDrop_T(mob/living/M, mob/living/user)
-	if(!istype(user))
-		return
-	if(!isliving(user))
-		return
-
-	//Sanity check so players can't climb over railings into occupied spaces.
-	var/turf/T = get_step(src, src.dir)
-	if(CanPass(user, T) == 0)
-		return FALSE
-
-	usr.visible_message("<span class='warning'>[user] starts climbing onto \the [src]!</span>")
-
-	if(!do_after(user, 15, src))
-		return
-
-	if(get_turf(user) == get_turf(src))
-		usr.dir = get_dir(usr.loc, get_step(src, src.dir))//turn and face railing
-		usr.forceMove(T)
-	else
-		usr.dir = get_dir(usr.loc, loc)//turn and face railing
-		usr.forceMove(get_turf(src))
-
-	usr.visible_message("<span class='warning'>[user] climbed over \the [src]!</span>")
-	usr.do_twist(targetangle = 45, timer = 8)
 
 /obj/structure/railing/proc/can_be_rotated(mob/user,rotation_type)
 	if(anchored)

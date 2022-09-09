@@ -6,6 +6,8 @@
 	var/climb_time = 20
 	var/climb_stun = 20
 	var/climbable = FALSE
+	var/rail_climbing = FALSE
+	var/passable = FALSE
 	var/mob/living/structureclimber
 	var/broken = 0 //similar to machinery's stat BROKEN
 
@@ -58,14 +60,41 @@
 
 /obj/structure/proc/do_climb(atom/movable/A)
 	if(climbable)
-		density = FALSE
-		. = step(A,get_dir(A,src.loc))
-		density = TRUE
+		if(rail_climbing == FALSE)
+			density = FALSE
+			. = step(A,get_dir(A,src.loc))
+			density = TRUE
+		else
+			//We're dealing with something like a railing with similar collision to glass and a false density.
+			passable = TRUE //Passable flag overrites CheckExit and CanPass procs to return true.
+
+			if(A.loc == src.loc)
+				//Step one further than just onto the object, we want to step over it to the next tile if possible.
+				. = step(A, get_dir(A, get_step(src, src.dir)))
+			else
+				. = step(A,get_dir(A,src.loc))
+			passable = FALSE
+			A.do_twist(targetangle = 45, timer = 8)
 
 /obj/structure/proc/climb_structure(mob/living/user)
 	src.add_fingerprint(user)
-	user.visible_message("<span class='warning'>[user] starts climbing onto [src].</span>", \
+	if(rail_climbing == FALSE)
+		user.visible_message("<span class='warning'>[user] starts climbing onto [src].</span>", \
 								"<span class='notice'>You start climbing onto [src]...</span>")
+	else
+		user.visible_message("<span class='warning'>[user] starts climbing over [src].</span>", \
+								"<span class='notice'>You start climbing over [src]...</span>")
+
+		var/obj/structure/railing/target = src
+
+		if(target.shock(user, 100))
+			return
+
+		// Ensures player is in the proper place for climbing.
+		if(user.loc != src.loc)
+			if(user.loc == (get_step(src, get_dir(src.loc, user))))
+				step(user, get_dir(user.loc,src.loc))
+
 	var/adjusted_climb_time = climb_time
 	if(user.restrained()) //climbing takes twice as long when restrained.
 		adjusted_climb_time *= 2
@@ -77,14 +106,22 @@
 	if(do_mob(user, user, adjusted_climb_time))
 		if(src.loc) //Checking if structure has been destroyed
 			if(do_climb(user))
-				user.visible_message("<span class='warning'>[user] climbs onto [src].</span>", \
-									"<span class='notice'>You climb onto [src].</span>")
-				log_combat(user, src, "climbed onto")
+				if(rail_climbing == FALSE)
+					user.visible_message("<span class='warning'>[user] climbs onto [src].</span>", \
+										"<span class='notice'>You climb onto [src].</span>")
+					log_combat(user, src, "climbed onto")
+				else
+					user.visible_message("<span class='warning'>[user] climbs over [src].</span>", \
+										"<span class='notice'>You climb over [src].</span>")
+					log_combat(user, src, "climbed over")
 				if(climb_stun)
 					user.Stun(climb_stun)
 				. = 1
 			else
-				to_chat(user, "<span class='warning'>You fail to climb onto [src].</span>")
+				if(rail_climbing == FALSE)
+					to_chat(user, "<span class='warning'>You fail to climb onto [src].</span>")
+				else
+					to_chat(user, "<span class='warning'>You fail to climb over [src].</span>")
 	structureclimber = null
 
 /obj/structure/examine(mob/user)
