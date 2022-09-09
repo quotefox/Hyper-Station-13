@@ -250,6 +250,8 @@
 		if(istype(AM, /obj/item/shard))
 			AM.throw_impact(L)
 	L.Knockdown(100)
+	if(prob(1))
+		playsound(T, "hyperstation/sound/misc/ourtableitsbroken.ogg", 100, 0)
 	qdel(src)
 
 /obj/structure/table/glass/deconstruct(disassembled = TRUE, wrench_disassembly = 0)
