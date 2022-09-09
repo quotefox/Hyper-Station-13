@@ -4224,6 +4224,9 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/science/misc_lab)
+"atE" = (
+/turf/open/floor/plasteel/dark,
+/area/maintenance/theatre/upper)
 "atN" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -14720,6 +14723,14 @@
 /obj/item/bedsheet/orange,
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
+"ciT" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "ledge_short";
+	name = "short ledge"
+	},
+/turf/open/floor/plating,
+/area/maintenance/theatre/upper)
 "cjn" = (
 /obj/machinery/door/airlock/security{
 	basecolor = "#F5FCFF";
@@ -22488,16 +22499,21 @@
 /area/engine/engineering)
 "dDb" = (
 /obj/structure/table/wood,
-/obj/machinery/computer/libraryconsole/bookmanagement{
-	layer = 4;
-	pixel_y = 7
-	},
 /obj/effect/turf_decal/loading_area{
-	dir = 1;
 	icon_state = "ledge_short";
 	name = "short ledge"
 	},
+/obj/item/flashlight/lamp/green{
+	layer = 4;
+	pixel_x = -7;
+	pixel_y = 14
+	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/paper_bin{
+	pixel_x = 6;
+	pixel_y = 3
+	},
+/obj/item/pen,
 /turf/open/floor/wood,
 /area/security/prison)
 "dDg" = (
@@ -23206,6 +23222,10 @@
 	},
 /turf/open/floor/plating/layenia,
 /area/layenia)
+"dJQ" = (
+/obj/structure/railing,
+/turf/open/floor/plasteel/dark,
+/area/maintenance/theatre/upper)
 "dJS" = (
 /obj/machinery/atmospherics/pipe/simple/yellow/visible/layer1{
 	dir = 1;
@@ -35958,6 +35978,13 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/bridge)
+"fLY" = (
+/obj/structure/closet/crate{
+	icon_state = "crateopen"
+	},
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/plasteel/dark,
+/area/maintenance/theatre/upper)
 "fLZ" = (
 /obj/structure/railing,
 /obj/effect/turf_decal/tile/neutral{
@@ -36324,6 +36351,10 @@
 /obj/effect/turf_decal/weather/grass/line{
 	dir = 6
 	},
+/obj/item/toy/plush/bird/kenk{
+	pixel_x = -8;
+	pixel_y = -13
+	},
 /turf/open/water/jungle,
 /area/crew_quarters/dorms/upper)
 "fOH" = (
@@ -36582,7 +36613,7 @@
 /obj/machinery/door/airlock/maintenance{
 	dir = 1;
 	name = "Psychology Maintenance";
-	req_access_txt = "45"
+	req_access_txt = "71"
 	},
 /turf/open/floor/plasteel{
 	dir = 1;
@@ -40070,6 +40101,13 @@
 	},
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
+"gsL" = (
+/obj/effect/turf_decal/loading_area{
+	icon_state = "half_stairs_darkfull";
+	name = "dark steps"
+	},
+/turf/open/floor/plating,
+/area/maintenance/theatre/upper)
 "gsT" = (
 /turf/open/floor/plasteel/dark,
 /area/security/courtroom)
@@ -41761,6 +41799,7 @@
 /area/security/locker)
 "gGs" = (
 /obj/item/twohanded/binoculars,
+/obj/structure/table,
 /turf/open/floor/plasteel/dark,
 /area/layenia/cave)
 "gGH" = (
@@ -52877,7 +52916,6 @@
 	desc = "A remote control switch for the medbay foyer.";
 	id = "storageB";
 	name = "Storage Office B Shutter Controls";
-	normaldoorcontrol = 1;
 	pixel_x = 24
 	},
 /obj/effect/spawner/lootdrop/maintenance,
@@ -53474,6 +53512,9 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	dir = 8;
 	name = "air scrubber"
+	},
+/obj/structure/chair/office/light{
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/security/prison)
@@ -63689,15 +63730,10 @@
 /turf/open/floor/plating,
 /area/crew_quarters/dorms/upper)
 "jTg" = (
-/obj/effect/turf_decal/sand{
-	icon_state = "sandyfloor_red";
-	name = "crimson sand"
-	},
-/turf/open/floor/plasteel/airless/solarpanel{
-	initial_gas_mix = "o2=22;n2=82;TEMP=180";
-	planetary_atmos = 1
-	},
-/area/layenia)
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/ladder,
+/turf/open/floor/plating,
+/area/maintenance/theatre)
 "jTi" = (
 /obj/structure/railing{
 	dir = 1
@@ -68945,6 +68981,10 @@
 	icon_state = "floor_whole"
 	},
 /area/crew_quarters/locker)
+"kGH" = (
+/obj/structure/filingcabinet/chestdrawer,
+/turf/open/floor/plasteel/dark,
+/area/layenia/cave)
 "kGI" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 9;
@@ -72266,13 +72306,13 @@
 	},
 /area/medical/medbay/central)
 "ljw" = (
-/obj/machinery/door/airlock/medical{
-	dir = 4;
-	name = "Operating Theatre";
-	req_access_txt = "45"
-	},
 /obj/machinery/door/firedoor{
 	dir = 8
+	},
+/obj/machinery/door/airlock/medical/glass{
+	dir = 8;
+	name = "Medbay Storage";
+	req_access_txt = "5"
 	},
 /turf/open/floor/plasteel/white{
 	icon_state = "plaswhite_traction_whole"
@@ -73674,6 +73714,7 @@
 	req_access_txt = "10; 13"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/crew_quarters/dorms/upper)
 "lwE" = (
@@ -92963,7 +93004,7 @@
 /obj/machinery/door/airlock/maintenance{
 	dir = 1;
 	name = "Psychology Maintenance";
-	req_access_txt = "45"
+	req_access_txt = "71;45"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
@@ -94944,9 +94985,6 @@
 /area/arcade)
 "oCN" = (
 /obj/structure/table/reinforced,
-/obj/item/toy/plush/bird/kenk{
-	desc = "An adorable stuffed plushie that resembles a kenku"
-	},
 /obj/structure/window{
 	dir = 8
 	},
@@ -94965,6 +95003,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/item/toy/plush/bird/kenku,
 /turf/open/floor/plasteel/dark,
 /area/arcade)
 "oCQ" = (
@@ -97001,6 +97040,15 @@
 /obj/machinery/holopad,
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/bar)
+"oOG" = (
+/obj/machinery/door/airlock/maintenance{
+	name = "Maintenance Access";
+	req_access_txt = "12"
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/maintenance/theatre/upper)
 "oOV" = (
 /obj/structure/window{
 	dir = 4
@@ -98100,7 +98148,7 @@
 	},
 /obj/machinery/power/apc{
 	areastring = "/area/artatrium";
-	dir = 1;
+	dir = 4;
 	name = "Art Atrium APC";
 	pixel_x = 24
 	},
@@ -118020,6 +118068,10 @@
 /obj/effect/turf_decal/tile/purple,
 /turf/open/floor/plasteel,
 /area/maintenance/starboard)
+"rHZ" = (
+/obj/structure/ladder,
+/turf/open/floor/plating,
+/area/maintenance/theatre/upper)
 "rId" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 9
@@ -119844,6 +119896,10 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/maintenance/starboard/central/upper)
+"rVp" = (
+/obj/effect/spawner/lootdrop/maintenance,
+/turf/open/floor/plasteel/dark,
+/area/maintenance/theatre/upper)
 "rVr" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 4;
@@ -123847,9 +123903,6 @@
 	},
 /area/hallway/primary/aft/upper)
 "swv" = (
-/obj/structure/chair/office/light{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 6;
 	name = "scrubbers pipe"
@@ -124424,6 +124477,10 @@
 	},
 /turf/open/floor/plating,
 /area/maintenance/fore/upper)
+"szv" = (
+/obj/structure/table,
+/turf/open/floor/plasteel/dark,
+/area/layenia/cave)
 "szx" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
@@ -127800,7 +127857,6 @@
 	desc = "A remote control switch for the medbay foyer.";
 	id = "storageA";
 	name = "Storage Office A Shutter Controls";
-	normaldoorcontrol = 1;
 	pixel_y = 26
 	},
 /obj/effect/spawner/lootdrop/maintenance{
@@ -131751,6 +131807,11 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/neutral,
+/obj/item/wirecutters,
+/obj/item/wirecutters{
+	pixel_x = 4;
+	pixel_y = 3
+	},
 /turf/open/floor/plasteel/dark,
 /area/artatrium)
 "tBb" = (
@@ -136627,6 +136688,11 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/aft/upper)
+"uiM" = (
+/obj/structure/bed,
+/obj/item/bedsheet/red,
+/turf/open/floor/plasteel/dark,
+/area/layenia/cave)
 "uiN" = (
 /obj/effect/landmark/start/assistant,
 /obj/effect/turf_decal/loading_area{
@@ -139135,7 +139201,7 @@
 /area/medical/medbay/aft)
 "uAL" = (
 /turf/open/floor/plating,
-/area/hallway/primary/fore)
+/area/maintenance/port/fore)
 "uAM" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -140589,6 +140655,9 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 10
+	},
+/obj/structure/railing{
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark{
 	dir = 4;
@@ -151137,7 +151206,7 @@
 	areastring = "/area/medical/sleeper";
 	dir = 4;
 	name = "Treatment Center APC";
-	pixel_x = 26
+	pixel_x = 24
 	},
 /obj/structure/cable{
 	icon_state = "0-2"
@@ -152471,6 +152540,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
+/obj/structure/table,
 /turf/open/floor/plasteel/dark,
 /area/layenia/cave)
 "wuF" = (
@@ -152939,8 +153009,9 @@
 /turf/open/floor/plating/snowed/smoothed,
 /area/layenia/cloudlayer)
 "wxz" = (
-/obj/structure/bed,
-/obj/item/bedsheet/red,
+/obj/structure/chair/office/dark{
+	dir = 8
+	},
 /turf/open/floor/plasteel/dark,
 /area/layenia/cave)
 "wxC" = (
@@ -154306,7 +154377,7 @@
 	req_access = null
 	},
 /turf/open/floor/plating,
-/area/hallway/primary/fore)
+/area/maintenance/port/fore)
 "wHq" = (
 /obj/machinery/firealarm{
 	dir = 2;
@@ -155615,7 +155686,6 @@
 	desc = "A remote control switch for the medbay foyer.";
 	id = "cargoshut2";
 	name = "Mailroom Shutter Controls";
-	normaldoorcontrol = 1;
 	pixel_y = 26
 	},
 /turf/open/floor/plasteel{
@@ -155852,7 +155922,7 @@
 /obj/item/clothing/head/kitty,
 /obj/item/clothing/under/maid,
 /turf/open/floor/plating,
-/area/hallway/primary/fore)
+/area/maintenance/port/fore)
 "wQJ" = (
 /obj/machinery/firealarm{
 	pixel_y = -28
@@ -156141,7 +156211,7 @@
 "wTr" = (
 /obj/machinery/vending/kink,
 /turf/open/floor/plating,
-/area/hallway/primary/fore)
+/area/maintenance/port/fore)
 "wTv" = (
 /obj/machinery/door/poddoor/preopen{
 	dir = 8;
@@ -156164,21 +156234,16 @@
 /area/hallway/primary/starboard/upper)
 "wTG" = (
 /obj/structure/table/wood,
+/obj/machinery/computer/libraryconsole/bookmanagement{
+	layer = 4;
+	pixel_y = 7
+	},
 /obj/effect/turf_decal/loading_area{
+	dir = 1;
 	icon_state = "ledge_short";
 	name = "short ledge"
 	},
-/obj/item/flashlight/lamp/green{
-	layer = 4;
-	pixel_x = -7;
-	pixel_y = 14
-	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/paper_bin{
-	pixel_x = 6;
-	pixel_y = 3
-	},
-/obj/item/pen,
 /turf/open/floor/wood,
 /area/security/prison)
 "wTH" = (
@@ -156258,7 +156323,7 @@
 	},
 /obj/item/restraints/handcuffs/fake,
 /turf/open/floor/plating,
-/area/hallway/primary/fore)
+/area/maintenance/port/fore)
 "wUk" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -158711,6 +158776,9 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 9;
 	name = "scrubbers pipe"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /turf/open/floor/plating,
 /area/maintenance/port)
@@ -182369,9 +182437,9 @@ bDa
 fxA
 tBc
 tBc
-jTg
+aav
 ahb
-jTg
+aaY
 tBc
 tBc
 tBc
@@ -182626,9 +182694,9 @@ fxA
 fxA
 fxA
 tBc
-jTg
+aav
 chL
-jTg
+aaY
 tBc
 tBc
 tBc
@@ -182879,13 +182947,13 @@ yex
 bDa
 tBc
 fxA
-jTg
+aav
 ahb
-jTg
+aaY
 tBc
-jTg
+aav
 chL
-jTg
+aaY
 tBc
 tBc
 tBc
@@ -183136,13 +183204,13 @@ tBc
 tBc
 fxA
 fxA
-jTg
+aav
 chL
-jTg
+aaY
 fxA
-jTg
+aav
 chL
-jTg
+aaY
 tBc
 fxA
 fxA
@@ -183389,17 +183457,17 @@ yex
 bDa
 wpF
 xMM
-jTg
+aav
 ahb
-jTg
+aaY
 fxA
-jTg
+aav
 chL
-jTg
+aaY
 fxA
-jTg
+aav
 ciu
-jTg
+aaY
 tBc
 fxA
 fxA
@@ -183646,13 +183714,13 @@ tBc
 tBc
 xMM
 vpI
-jTg
+aav
 chL
-jTg
+aaY
 tBc
-jTg
+aav
 chL
-jTg
+aaY
 khn
 tyz
 cjX
@@ -183899,17 +183967,17 @@ gTW
 aha
 bDa
 tBc
-jTg
+aav
 ahb
-jTg
+aaY
 xMM
-jTg
+aav
 chL
-jTg
+aaY
 tBc
-jTg
+aav
 ciu
-jTg
+aaY
 tBc
 tyz
 cjX
@@ -184156,13 +184224,13 @@ gTW
 uXI
 tBc
 tBc
-jTg
+aav
 chL
-jTg
+aaY
 wpF
-jTg
+aav
 chL
-jTg
+aaY
 tBc
 tyz
 cjX
@@ -184413,13 +184481,13 @@ aha
 bDa
 tBc
 tBc
-jTg
+aav
 chL
-jTg
+aaY
 tBc
-jTg
+aav
 ciu
-jTg
+aaY
 tBc
 tyz
 cjX
@@ -184670,9 +184738,9 @@ uXI
 tBc
 tBc
 tBc
-jTg
+aav
 chL
-jTg
+aaY
 tBc
 tyz
 cjX
@@ -184927,9 +184995,9 @@ bDa
 tBc
 tBc
 tBc
-jTg
+aav
 ciu
-jTg
+aaY
 tBc
 tyz
 cjX
@@ -186224,9 +186292,9 @@ tyz
 cjX
 dsb
 tBc
-jTg
+aav
 emp
-jTg
+aaY
 tBc
 tBc
 fxA
@@ -186477,13 +186545,13 @@ dsb
 cjX
 tyz
 tBc
-jTg
+aav
 emp
-jTg
+aaY
 tBc
-jTg
+aav
 chL
-jTg
+aaY
 tBc
 tBc
 fxA
@@ -186730,17 +186798,17 @@ tyz
 cAL
 tyz
 tBc
-jTg
+aav
 emp
-jTg
+aaY
 tBc
-jTg
+aav
 chL
-jTg
+aaY
 fxA
-jTg
+aav
 chL
-jTg
+aaY
 tBc
 tBc
 tBc
@@ -186985,19 +187053,19 @@ tBc
 fxA
 aav
 ckz
-jTg
+aaY
 tBc
-jTg
+aav
 chL
-jTg
+aaY
 tBc
-jTg
+aav
 chL
-jTg
+aaY
 fxA
-jTg
+aav
 chL
-jTg
+aaY
 tBc
 tBc
 tBc
@@ -187240,21 +187308,21 @@ abR
 hFN
 tBc
 fxA
-jTg
+aav
 ckC
 aaY
 tBc
-jTg
+aav
 chL
-jTg
+aaY
 tBc
-jTg
+aav
 chL
-jTg
+aaY
 fxA
-jTg
+aav
 aaG
-jTg
+aaY
 tBc
 tBc
 tBc
@@ -187497,17 +187565,17 @@ gTW
 uXI
 fxA
 fxA
-jTg
+aav
 chL
-jTg
+aaY
 tBc
-jTg
+aav
 chL
-jTg
+aaY
 tBc
-jTg
+aav
 aaG
-jTg
+aaY
 fxA
 fxA
 fxA
@@ -187754,13 +187822,13 @@ gTW
 uXI
 fxA
 fxA
-jTg
+aav
 chL
-jTg
+aaY
 tBc
-jTg
+aav
 aaG
-jTg
+aaY
 tBc
 tBc
 fxA
@@ -188011,9 +188079,9 @@ gTW
 uXI
 fxA
 fxA
-jTg
+aav
 aaG
-jTg
+aaY
 tBc
 tBc
 tBc
@@ -191133,7 +191201,7 @@ koy
 iVx
 epc
 swP
-eAU
+hkb
 eAU
 eAU
 eAU
@@ -191390,10 +191458,10 @@ iVx
 iVx
 epc
 hsm
-wLy
+hkb
 wHn
 wTr
-wLy
+hkb
 nxI
 ivm
 iCQ
@@ -191647,10 +191715,10 @@ wWc
 gHp
 epc
 vCc
-wLy
+hkb
 uAL
 uAL
-wLy
+hkb
 gAs
 uSp
 tNY
@@ -191907,7 +191975,7 @@ swP
 uAL
 uAL
 uAL
-wLy
+hkb
 qdv
 fXt
 gai
@@ -192161,10 +192229,10 @@ wWc
 upx
 hkb
 swP
-wLy
+hkb
 wQI
 wUj
-wLy
+hkb
 tWg
 uSp
 iDp
@@ -192418,10 +192486,10 @@ gQy
 uRM
 hkb
 hsz
-wLy
-wLy
-wLy
-wLy
+hkb
+hkb
+hkb
+hkb
 hTk
 uSp
 vjw
@@ -210164,7 +210232,7 @@ ukY
 yeY
 eBY
 eBY
-eBY
+jTg
 yeY
 tHW
 xXB
@@ -234848,8 +234916,8 @@ ePF
 yfm
 aJr
 gGs
-wrb
-wrb
+szv
+szv
 aJr
 yfm
 yfm
@@ -235361,7 +235429,7 @@ ePF
 ePF
 yfm
 aJr
-wrb
+kGH
 wrb
 wrb
 wqp
@@ -235622,7 +235690,7 @@ wuE
 wrb
 wrb
 wrb
-wrb
+uiM
 wuv
 ePF
 ePF
@@ -235875,11 +235943,11 @@ yfm
 yfm
 lwh
 aJr
+szv
 wrb
 wrb
 wrb
-wrb
-wrb
+szv
 wuv
 ePF
 ePF
@@ -274925,9 +274993,9 @@ ePF
 ePF
 ePF
 tYi
-dgB
-dgB
-dgB
+fLY
+atE
+atE
 xwJ
 qgz
 xwJ
@@ -275182,10 +275250,10 @@ ePF
 ePF
 ePF
 tYi
-dgB
-dgB
-dgB
-oNw
+atE
+atE
+atE
+oOG
 lnc
 aKu
 aKu
@@ -275439,9 +275507,9 @@ ePF
 ePF
 nla
 gQT
-dgB
-dgB
-dgB
+atE
+atE
+atE
 xwJ
 xwJ
 xwJ
@@ -275696,11 +275764,11 @@ ePF
 ePF
 kzX
 gQT
-dgB
-dgB
-dgB
-dgB
-wpj
+atE
+rVp
+atE
+gsL
+rHZ
 xwJ
 dgB
 lnc
@@ -275953,11 +276021,11 @@ ePF
 ePF
 kzX
 tYi
+atE
+atE
+dJQ
+ciT
 wpj
-dgB
-dgB
-dgB
-dgB
 xwJ
 dgB
 dgB

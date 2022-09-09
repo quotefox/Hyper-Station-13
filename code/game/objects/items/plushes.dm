@@ -787,12 +787,20 @@
 	item_state = "jewel"
 
 /obj/item/toy/plush/bird/kenk
-	name = "kenku plushie"
-	desc = "An adorable stuffed plushie that resembles a kenku, perfect to sit on."
+	name = "kenk plushie"
+	desc = "An adorable stuffed plushie that resembles kenk."
 	young = TRUE
 	icon_state = "kenk"
 	item_state = "kenk"
 	squeak_override = list('modular_citadel/sound/voice/merp.ogg' = 1)
+
+/obj/item/toy/plush/bird/kenku
+	name = "kenku plushie"
+	desc = "An adorable stuffed plushie that resembles a kenku."
+	young = TRUE
+	icon_state = "kenku"
+	item_state = "kenku"
+	squeak_override = list('modular_citadel/sound/voice/peep.ogg' = 1)
 
 /obj/item/toy/plush/enchanted
 	name = "glowing book plushie"
