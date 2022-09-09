@@ -70,7 +70,7 @@
 /obj/machinery/camera/autoname{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/medical/medbay/upper)
 "aak" = (
 /obj/effect/turf_decal/stripes/line{
@@ -3132,7 +3132,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "ajI" = (
 /obj/structure/lattice,
@@ -3140,7 +3140,7 @@
 	dir = 1;
 	pixel_y = 19
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "ajO" = (
 /obj/structure/cable{
@@ -3767,7 +3767,7 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/table,
 /obj/effect/spawner/lootdrop/maintenance,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "aqb" = (
 /turf/open/floor/plasteel/yellowsiding{
@@ -4572,7 +4572,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "awU" = (
 /obj/effect/turf_decal/stripes/line,
@@ -12975,7 +12975,7 @@
 	dir = 1
 	},
 /obj/item/clothing/head/cone,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "bSS" = (
 /obj/structure/lattice/catwalk,
@@ -13305,7 +13305,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cave)
 "bWE" = (
 /obj/effect/turf_decal/stripes/line{
@@ -14100,7 +14100,7 @@
 "cdv" = (
 /obj/structure/lattice/catwalk,
 /obj/item/clothing/head/cone,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "cdy" = (
 /obj/structure/railing{
@@ -15452,7 +15452,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/space)
 "col" = (
 /obj/structure/cable{
@@ -16385,7 +16385,7 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
 /obj/effect/spawner/lootdrop/maintenance,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "cwZ" = (
 /obj/machinery/rnd/production/protolathe/department/engineering,
@@ -17694,7 +17694,7 @@
 "cKO" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "cKQ" = (
 /obj/effect/decal/cleanable/dirt,
@@ -18542,7 +18542,7 @@
 /obj/machinery/camera/autoname{
 	dir = 6
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "cSZ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -18985,7 +18985,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "cWU" = (
 /obj/structure/extinguisher_cabinet{
@@ -23474,7 +23474,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "dMc" = (
 /obj/machinery/door/airlock/research{
@@ -23996,7 +23996,7 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "dRT" = (
 /obj/effect/turf_decal/loading_area{
@@ -24512,7 +24512,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/hallway/secondary/exit/upper)
 "dWr" = (
 /obj/item/reagent_containers/food/snacks/grown/mushroom/amanita,
@@ -25222,7 +25222,7 @@
 	dir = 4
 	},
 /obj/structure/railing,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "eep" = (
 /obj/effect/turf_decal/tile/yellow{
@@ -25234,7 +25234,7 @@
 	},
 /area/engine/break_room)
 "eer" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "eet" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/visible,
@@ -26244,7 +26244,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "emH" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
@@ -26578,7 +26578,7 @@
 /obj/machinery/camera/autoname{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "epU" = (
 /obj/structure/sink/kitchen{
@@ -27829,7 +27829,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "eyD" = (
 /obj/machinery/computer/atmos_control/tank/air_tank{
@@ -27909,7 +27909,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/ai_monitored/turret_protected/aisat/hallway)
 "ezk" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
@@ -29933,7 +29933,7 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/bar)
 "ePF" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "ePH" = (
 /obj/structure/cable{
@@ -30633,7 +30633,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/medical/medbay/upper)
 "eUF" = (
 /obj/machinery/atmospherics/pipe/simple/multiz,
@@ -30925,7 +30925,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "eWy" = (
 /obj/structure/cable{
@@ -30937,7 +30937,7 @@
 /area/layenia)
 "eWJ" = (
 /obj/structure/lattice,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/port/aft/upper)
 "eWP" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -32771,7 +32771,7 @@
 	},
 /area/hallway/primary/port/upper)
 "fmB" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/engine/engineering)
 "fmC" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -32824,7 +32824,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "fmL" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -33071,7 +33071,7 @@
 	dir = 4
 	},
 /obj/item/clothing/head/cone,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "foe" = (
 /obj/effect/turf_decal/delivery,
@@ -34462,7 +34462,7 @@
 /area/hallway/primary/port/upper)
 "fyU" = (
 /obj/structure/lattice,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "fyY" = (
 /obj/effect/baseturf_helper/asteroid/layenia,
@@ -34729,7 +34729,7 @@
 /obj/machinery/camera/autoname{
 	dir = 9
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "fBm" = (
 /obj/structure/table,
@@ -35691,7 +35691,7 @@
 	dir = 1;
 	pixel_y = 19
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "fJo" = (
 /obj/structure/railing,
@@ -35737,7 +35737,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/medical/medbay/upper)
 "fJP" = (
 /obj/structure/disposalpipe/segment,
@@ -36307,7 +36307,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "fOy" = (
 /turf/open/floor/plasteel/cafeteria{
@@ -37141,7 +37141,7 @@
 	dir = 1;
 	pixel_y = 19
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "fVI" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -37861,7 +37861,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "gbH" = (
 /obj/effect/turf_decal/tile/red{
@@ -38806,7 +38806,7 @@
 "gix" = (
 /obj/structure/ladder,
 /obj/structure/lattice/catwalk,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cave)
 "giD" = (
 /obj/machinery/light/broken{
@@ -39239,7 +39239,7 @@
 /area/chapel/main)
 "gmw" = (
 /obj/structure/lattice/catwalk,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "gmx" = (
 /obj/structure/disposalpipe/segment{
@@ -42305,7 +42305,7 @@
 	dir = 1;
 	layer = 2.9
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/hallway/primary/central/upper)
 "gKQ" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
@@ -42819,7 +42819,7 @@
 /turf/open/chasm/cloud,
 /area/layenia/cloudlayer)
 "gPC" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/hallway/primary/port/upper)
 "gPE" = (
 /obj/structure/chair/office/dark{
@@ -45777,7 +45777,7 @@
 "hmz" = (
 /obj/structure/lattice/catwalk,
 /obj/item/stack/cable_coil,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "hmC" = (
 /obj/effect/turf_decal/tile/brown{
@@ -47557,7 +47557,7 @@
 	icon_state = "CPR_sign3";
 	pixel_y = 33
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "hzt" = (
 /obj/effect/turf_decal/tile/purple{
@@ -48237,7 +48237,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "hEO" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -48771,7 +48771,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "hIG" = (
 /obj/machinery/holopad,
@@ -50207,7 +50207,7 @@
 /obj/structure/chair/foldingchair{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "hRG" = (
 /obj/structure/railing/handrail{
@@ -50707,7 +50707,7 @@
 "hVg" = (
 /obj/structure/lattice,
 /obj/structure/railing,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "hVi" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -56722,7 +56722,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/hallway/secondary/exit/upper)
 "iQg" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -56963,7 +56963,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "iSE" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
@@ -57588,7 +57588,7 @@
 /area/crew_quarters/heads/hos)
 "iXV" = (
 /obj/structure/lattice/catwalk,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "iXZ" = (
 /obj/machinery/button/door{
@@ -58514,7 +58514,7 @@
 	dir = 1;
 	pixel_y = 19
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "jer" = (
 /obj/item/twohanded/required/kirbyplants/random,
@@ -59130,7 +59130,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/hallway/secondary/exit/upper)
 "jjh" = (
 /obj/machinery/processor,
@@ -59760,7 +59760,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "jnD" = (
 /obj/structure/table,
@@ -60606,7 +60606,7 @@
 	dir = 1
 	},
 /obj/structure/lattice,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "juw" = (
 /obj/effect/turf_decal/loading_area{
@@ -62507,7 +62507,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "jJv" = (
 /obj/effect/turf_decal/loading_area{
@@ -63313,7 +63313,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "jQb" = (
 /obj/effect/turf_decal/tile/red{
@@ -65605,7 +65605,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/quartermaster/mail)
 "kiu" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -66208,7 +66208,7 @@
 "kmT" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cave)
 "kmZ" = (
 /turf/open/floor/plasteel/dark/layenia{
@@ -67142,7 +67142,7 @@
 	},
 /obj/structure/lattice/catwalk,
 /obj/structure/ladder,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "kts" = (
 /obj/structure/flora/crystal/small/growth,
@@ -69270,7 +69270,7 @@
 	dir = 1
 	},
 /obj/structure/railing,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "kJg" = (
 /obj/structure/stairs,
@@ -69322,7 +69322,7 @@
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "kJZ" = (
 /obj/structure/extinguisher_cabinet{
@@ -69665,7 +69665,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "kNl" = (
 /obj/structure/lattice/catwalk,
@@ -69675,7 +69675,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "kNp" = (
 /obj/machinery/atmospherics/pipe/simple/multiz,
@@ -70442,7 +70442,7 @@
 	dir = 1
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "kUn" = (
 /obj/machinery/door/airlock/security{
@@ -75680,7 +75680,7 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
 /obj/machinery/camera/autoname,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "lMW" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -76172,7 +76172,7 @@
 /area/crew_quarters/fitness/pool)
 "lQP" = (
 /obj/structure/lattice,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/department/engine/upper)
 "lQY" = (
 /obj/machinery/door/firedoor,
@@ -76946,7 +76946,7 @@
 /area/library)
 "lWf" = (
 /obj/structure/lattice/catwalk,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cave)
 "lWl" = (
 /obj/structure/cable{
@@ -77396,7 +77396,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/dorms/upper)
 "map" = (
 /obj/structure/lattice/catwalk,
@@ -78103,7 +78103,7 @@
 "mih" = (
 /obj/structure/railing/handrail,
 /obj/structure/lattice/catwalk,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "mij" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -79374,7 +79374,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/hallway/primary/central/upper)
 "mrL" = (
 /obj/effect/turf_decal/bot,
@@ -80552,7 +80552,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "mzI" = (
 /obj/effect/turf_decal/loading_area{
@@ -81898,7 +81898,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/space)
 "mJv" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
@@ -82776,7 +82776,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/starboard/central/upper)
 "mPW" = (
 /turf/open/floor/plasteel/dark{
@@ -83748,7 +83748,7 @@
 /turf/open/indestructible/layenia/crystal/garden,
 /area/hallway/primary/central)
 "mWQ" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/engine/break_room)
 "mWS" = (
 /obj/structure/table,
@@ -85121,7 +85121,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "nhe" = (
 /obj/effect/spawner/structure/window,
@@ -85142,7 +85142,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "nhl" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -89429,7 +89429,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "nNw" = (
 /obj/effect/turf_decal/stripes/line,
@@ -91973,7 +91973,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "ohJ" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -93111,7 +93111,7 @@
 	dir = 1
 	},
 /obj/structure/lattice,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "opB" = (
 /obj/machinery/light{
@@ -94624,7 +94624,7 @@
 	},
 /area/security/prison)
 "oAz" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/ai_monitored/turret_protected/aisat/hallway)
 "oAE" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -95022,7 +95022,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "oDl" = (
 /obj/machinery/light{
@@ -96285,7 +96285,7 @@
 /area/maintenance/starboard)
 "oJz" = (
 /obj/structure/lattice,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/theatre/upper)
 "oJF" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -97105,7 +97105,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cave)
 "oPB" = (
 /obj/effect/turf_decal/loading_area{
@@ -97932,7 +97932,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "oTk" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
@@ -100325,7 +100325,7 @@
 	dir = 1;
 	layer = 2.9
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "pkQ" = (
 /obj/structure/disposalpipe/segment{
@@ -100375,7 +100375,7 @@
 	icon_state = "CPR_sign4";
 	pixel_y = 33
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "plt" = (
 /obj/machinery/disposal/bin,
@@ -100665,7 +100665,7 @@
 "pnw" = (
 /obj/structure/lattice/catwalk,
 /obj/item/stack/cable_coil/random,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "pnI" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -102374,7 +102374,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "pzI" = (
 /obj/structure/window/reinforced,
@@ -105474,7 +105474,7 @@
 	dir = 8
 	},
 /obj/structure/railing,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "pWa" = (
 /obj/effect/decal/cleanable/dirt,
@@ -105522,7 +105522,7 @@
 /obj/structure/railing/handrail,
 /obj/structure/lattice/catwalk,
 /obj/machinery/light/floor,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "pWq" = (
 /obj/effect/turf_decal/stripes/white/line,
@@ -105733,7 +105733,7 @@
 	},
 /area/medical/medbay/upper)
 "pXv" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "pXw" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -105992,7 +105992,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "pZg" = (
 /obj/effect/turf_decal/weather/grass/line{
@@ -106605,7 +106605,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/crew_quarters/toilet/locker)
 "qdi" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/science/xenobiology)
 "qdv" = (
 /obj/structure/sign/poster/random{
@@ -108115,7 +108115,7 @@
 /area/medical/genetics)
 "qrx" = (
 /obj/structure/lattice,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "qrA" = (
 /obj/effect/turf_decal/loading_area{
@@ -109293,7 +109293,7 @@
 /turf/open/floor/plasteel/layenia,
 /area/layenia)
 "qAe" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/main/upper)
 "qAh" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -110025,7 +110025,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "qFB" = (
 /obj/effect/turf_decal/stripes/line{
@@ -110591,7 +110591,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cave)
 "qJv" = (
 /obj/structure/window/reinforced{
@@ -111473,7 +111473,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/ai_monitored/turret_protected/aisat/hallway)
 "qOP" = (
 /obj/machinery/airalarm{
@@ -111643,7 +111643,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "qQe" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -112595,7 +112595,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/medical/medbay/upper)
 "qVl" = (
 /obj/machinery/atmospherics/pipe/simple/orange/visible{
@@ -116538,7 +116538,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "rwc" = (
 /obj/effect/turf_decal/delivery,
@@ -116764,7 +116764,7 @@
 	},
 /obj/structure/railing,
 /obj/effect/landmark/carpspawn,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "ryk" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -116856,7 +116856,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "rzc" = (
 /obj/effect/turf_decal/stripes/end{
@@ -117582,7 +117582,7 @@
 /turf/open/floor/plasteel/stairs/medium,
 /area/medical/medbay/zone2)
 "rEz" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/space)
 "rEA" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -118424,7 +118424,7 @@
 /turf/open/floor/plasteel,
 /area/quartermaster/storage)
 "rKJ" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/starboard/central/upper)
 "rKP" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -120611,7 +120611,7 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "rZl" = (
 /obj/effect/turf_decal/stripes/line{
@@ -121310,7 +121310,7 @@
 	dir = 8
 	},
 /obj/item/clothing/head/cone,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "seg" = (
 /obj/machinery/disposal/bin,
@@ -121516,7 +121516,7 @@
 /turf/open/floor/plating/asteroid/layenia,
 /area/layenia/cave)
 "sgz" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "sgO" = (
 /obj/structure/tank_dispenser,
@@ -121627,7 +121627,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "shC" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
@@ -121937,7 +121937,7 @@
 	},
 /area/medical/chemistry)
 "sjC" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/quartermaster/mail)
 "sjM" = (
 /obj/machinery/light{
@@ -122003,7 +122003,7 @@
 	},
 /area/medical/chemistry)
 "skl" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cave)
 "sks" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
@@ -122047,7 +122047,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "skG" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
@@ -122764,7 +122764,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "soq" = (
 /obj/effect/turf_decal/stripes/line{
@@ -123336,7 +123336,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "ssG" = (
 /obj/machinery/requests_console{
@@ -124357,7 +124357,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "szh" = (
 /obj/effect/turf_decal/tile/brown{
@@ -124758,7 +124758,7 @@
 /obj/structure/sign/logo/cpr{
 	pixel_y = 33
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "sBG" = (
 /obj/structure/lattice/catwalk,
@@ -124766,7 +124766,7 @@
 	dir = 1;
 	pixel_y = 19
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "sBM" = (
 /obj/structure/lattice/catwalk,
@@ -124776,7 +124776,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "sBR" = (
 /obj/effect/turf_decal/tile/brown{
@@ -126338,7 +126338,7 @@
 /area/crew_quarters/fitness)
 "sOm" = (
 /obj/structure/lattice,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "sOv" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -128629,7 +128629,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "tew" = (
 /obj/machinery/computer/crew{
@@ -130247,7 +130247,7 @@
 /turf/open/floor/plasteel/white,
 /area/medical/psych)
 "tqT" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/port/aft/upper)
 "tqX" = (
 /obj/structure/fence/corner{
@@ -130634,7 +130634,7 @@
 	dir = 4
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "ttG" = (
 /obj/effect/turf_decal/tile/blue{
@@ -130955,7 +130955,7 @@
 	name = "Blast Door Control B";
 	pixel_y = 28
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "tvT" = (
 /obj/structure/table,
@@ -132973,7 +132973,7 @@
 /area/medical/sleeper)
 "tJf" = (
 /obj/structure/lattice/catwalk,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "tJk" = (
 /obj/effect/turf_decal/loading_area{
@@ -133093,7 +133093,7 @@
 	dir = 8
 	},
 /obj/structure/lattice/catwalk,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "tJT" = (
 /obj/structure/railing{
@@ -133854,7 +133854,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "tOO" = (
 /obj/machinery/door/poddoor/preopen{
@@ -134184,7 +134184,7 @@
 "tQS" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "tQT" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
@@ -136472,7 +136472,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "uhK" = (
 /obj/structure/cable{
@@ -136881,7 +136881,7 @@
 "ujO" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "ujR" = (
 /obj/machinery/light/small{
@@ -137652,7 +137652,7 @@
 /area/layenia/cave)
 "uqk" = (
 /obj/structure/lattice,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/starboard/central/upper)
 "uql" = (
 /turf/open/floor/wood{
@@ -141740,7 +141740,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/quartermaster/mail)
 "uWm" = (
 /obj/item/cigbutt,
@@ -143827,7 +143827,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/dorms/upper)
 "vjY" = (
 /obj/effect/turf_decal/tile/red{
@@ -148524,7 +148524,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "vQm" = (
 /obj/structure/disposalpipe/segment{
@@ -148933,7 +148933,7 @@
 /turf/open/floor/plasteel/showroomfloor,
 /area/crew_quarters/spa/sauna)
 "vTE" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/dorms/upper)
 "vTJ" = (
 /obj/machinery/conveyor{
@@ -150784,7 +150784,7 @@
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
 "wiq" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/hallway/primary/aft/upper)
 "wiI" = (
 /obj/machinery/door/airlock/maintenance{
@@ -151757,7 +151757,7 @@
 /turf/open/floor/plasteel/white,
 /area/medical/sleeper)
 "wpc" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/medical/medbay/upper)
 "wpj" = (
 /obj/effect/spawner/lootdrop/maintenance,
@@ -151936,7 +151936,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "wqm" = (
 /obj/structure/disposalpipe/segment{
@@ -152338,7 +152338,7 @@
 /obj/structure/window/reinforced{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "wtr" = (
 /obj/machinery/power/terminal{
@@ -152357,7 +152357,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "wtE" = (
 /obj/machinery/teleport/hub,
@@ -152370,7 +152370,7 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
 /obj/structure/ladder,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "wtN" = (
 /obj/structure/table,
@@ -153321,7 +153321,7 @@
 /obj/structure/window/reinforced{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "wAH" = (
 /obj/effect/turf_decal/stripes/line{
@@ -154827,7 +154827,7 @@
 	},
 /obj/structure/railing,
 /obj/effect/landmark/carpspawn,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "wKX" = (
 /obj/machinery/button/door{
@@ -155765,7 +155765,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "wQe" = (
 /obj/structure/table,
@@ -156864,7 +156864,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "wXQ" = (
 /obj/structure/table/reinforced,
@@ -157046,7 +157046,7 @@
 /obj/structure/railing{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/starboard/central/upper)
 "xat" = (
 /obj/structure/disposalpipe/segment{
@@ -157846,7 +157846,7 @@
 /obj/structure/lattice/catwalk,
 /obj/structure/table,
 /obj/item/ashtray,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "xiJ" = (
 /turf/closed/wall,
@@ -158448,7 +158448,7 @@
 /area/engine/break_room)
 "xnL" = (
 /obj/structure/lattice/catwalk,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "xnN" = (
 /obj/effect/turf_decal/tile/yellow{
@@ -159056,7 +159056,7 @@
 	},
 /area/engine/atmos)
 "xrw" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/solars/port/aft)
 "xrz" = (
 /obj/effect/turf_decal/bot,
@@ -159706,7 +159706,7 @@
 	dir = 1
 	},
 /obj/structure/window/reinforced,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "xwJ" = (
 /turf/closed/wall,
@@ -160640,7 +160640,7 @@
 /turf/open/floor/plating/asteroid/layenia,
 /area/layenia)
 "xDU" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/bar/cafe)
 "xEe" = (
 /obj/structure/closet/emcloset,
@@ -161015,7 +161015,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "xGS" = (
 /obj/structure/window/reinforced{
@@ -161794,7 +161794,7 @@
 	icon_state = "CPR_sign2";
 	pixel_y = 33
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/maintenance/fore/upper)
 "xND" = (
 /obj/structure/cable{
@@ -163009,7 +163009,7 @@
 "xVB" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/railing,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/security/brig/upper)
 "xVF" = (
 /obj/effect/turf_decal/tile/blue{
@@ -163103,7 +163103,7 @@
 	layer = 2.9
 	},
 /obj/structure/railing,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "xWA" = (
 /turf/open/floor/plasteel,
@@ -163335,7 +163335,7 @@
 	},
 /area/crew_quarters/theatre)
 "xXW" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/hallway/secondary/exit/upper)
 "xYe" = (
 /obj/structure/table/reinforced,
@@ -164129,7 +164129,7 @@
 /turf/open/floor/plasteel/dark,
 /area/storage/A)
 "ydX" = (
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/hallway/primary/fore/upper)
 "yea" = (
 /obj/structure/disposalpipe/segment,
@@ -164467,7 +164467,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "ygm" = (
 /turf/open/floor/plasteel,
@@ -164478,7 +164478,7 @@
 	dir = 8
 	},
 /obj/structure/trash_pile,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/crew_quarters/theatre)
 "ygC" = (
 /obj/effect/turf_decal/tile/red{
@@ -164627,7 +164627,7 @@
 /area/crew_quarters/park)
 "yhk" = (
 /obj/structure/lattice,
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/layenia/cloudlayer)
 "yhl" = (
 /turf/closed/wall,
@@ -164643,7 +164643,7 @@
 /obj/structure/window/reinforced{
 	dir = 1
 	},
-/turf/open/transparent/openspace,
+/turf/open/transparent/openspace/layenia,
 /area/hallway/primary/central/upper)
 "yhp" = (
 /obj/structure/table,

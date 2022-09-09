@@ -128,6 +128,11 @@ GLOBAL_DATUM_INIT(openspace_backdrop_one_for_all, /atom/movable/openspace_backdr
 			return TRUE
 	return FALSE
 
+/turf/open/transparent/openspace/layenia/Initialize()
+	var/area/A = get_area(src)
+	if(A?.outdoors)
+		initial_gas_mix = FROZEN_ATMOS
+	. = ..()
 /* We don't have the icemoon framework yet.
 /turf/open/transparent/openspace/icemoon
 	name = "ice chasm"
