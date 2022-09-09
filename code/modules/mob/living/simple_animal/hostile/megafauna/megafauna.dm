@@ -36,6 +36,11 @@
 	var/obj/item/gps/internal
 	var/recovery_time = 0
 
+	var/chosen_attack = 1
+	/// Attack actions, sets chosen_attack to the number in the action
+	var/list/attack_action_types = list()
+	/// If there is a small sprite icon for players controlling the megafauna to use
+
 /mob/living/simple_animal/hostile/megafauna/Initialize(mapload)
 	. = ..()
 	apply_status_effect(STATUS_EFFECT_CRUSHERDAMAGETRACKING)
@@ -134,3 +139,21 @@
 		SSmedals.SetScore(BOSS_SCORE, C, 1)
 		SSmedals.SetScore(score_type, C, 1)
 	return TRUE
+
+/datum/action/innate/megafauna_attack
+	name = "Megafauna Attack"
+	icon_icon = 'icons/mob/actions/actions_animal.dmi'
+	button_icon_state = ""
+	var/mob/living/simple_animal/hostile/megafauna/M
+	var/chosen_message
+	var/chosen_attack_num = 0
+
+/datum/action/innate/megafauna_attack/Grant(mob/living/L)
+	if(istype(L, /mob/living/simple_animal/hostile/megafauna))
+		M = L
+		return ..()
+	return FALSE
+
+/datum/action/innate/megafauna_attack/Activate()
+	M.chosen_attack = chosen_attack_num
+	to_chat(M, chosen_message)
