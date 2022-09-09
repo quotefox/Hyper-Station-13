@@ -70,6 +70,7 @@ GLOBAL_LIST_INIT(cum_into_containers_list, list(/obj/item/reagent_containers/foo
 GLOBAL_LIST_INIT(dick_nouns, list("dick","cock","member","shaft"))
 GLOBAL_LIST_INIT(cum_id_list, /datum/reagent/consumable/semen)
 GLOBAL_LIST_INIT(milk_id_list, /datum/reagent/consumable/milk)
+GLOBAL_LIST_INIT(lips_shapes_list, list("nonexistant","average","puffy","hyper"))
 
 GLOBAL_LIST_INIT(dildo_shapes, list(
 		"Human"		= "human",
@@ -167,6 +168,15 @@ GLOBAL_VAR_INIT(miscreants_allowed, FALSE)
 				return FALSE
 			else
 				return TRUE
+	return TRUE
+
+/mob/living/carbon/proc/is_lips_exposed(var/list/L)
+	if (wear_mask && (wear_mask.flags_inv & HIDEFACIALHAIR))
+		return FALSE
+	if (wear_mask && (wear_mask.flags_inv & HIDEFACE))
+		return FALSE
+	if (head && (head.flags_inv & HIDEMASK))
+		return FALSE
 	return TRUE
 
 /mob/living/carbon/proc/is_chest_exposed(var/list/L)
