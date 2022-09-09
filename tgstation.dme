@@ -3141,6 +3141,7 @@
 #include "hyperstation\code\gamemode\werewolf\werewolf.dm"
 #include "hyperstation\code\hyperbot\hyperbot.dm"
 #include "hyperstation\code\mobs\carrion.dm"
+#include "hyperstation\code\mobs\claw.dm"
 #include "hyperstation\code\mobs\crystal.dm"
 #include "hyperstation\code\mobs\dancer.dm"
 #include "hyperstation\code\mobs\emote.dm"
