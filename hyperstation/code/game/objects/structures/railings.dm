@@ -237,6 +237,9 @@
 /obj/structure/railing/attack_paw(mob/user)
 	return attack_hand(user)
 
+/obj/structure/grille/hulk_damage()
+	return 60
+
 /obj/structure/railing/hitby(atom/movable/AM, skipcatch, hitpush, blocked, datum/thrownthing/throwingdatum)
 	if(isobj(AM))
 		if(prob(50) && anchored && !broken)
