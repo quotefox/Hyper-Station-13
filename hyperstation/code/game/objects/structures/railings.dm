@@ -275,8 +275,8 @@
 	. = ..()
 	if(.)
 		return
-	if(shock(user, 70))
-		user.visible_message("<span class='warning'>[user] gets shocked by [src]!</span>", null, null, COMBAT_MESSAGE_RANGE)
+	shock(user, 70)
+
 
 /obj/structure/railing/attack_alien(mob/living/user)
 	user.do_attack_animation(src)
@@ -332,6 +332,7 @@
 			var/datum/effect_system/spark_spread/s = new /datum/effect_system/spark_spread
 			s.set_up(3, 1, src)
 			s.start()
+			user.visible_message("<span class='warning'>[user] gets shocked by [src]!</span>", null, null, COMBAT_MESSAGE_RANGE)
 			return TRUE
 		else
 			return FALSE
