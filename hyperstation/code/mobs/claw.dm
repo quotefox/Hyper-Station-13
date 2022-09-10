@@ -1,11 +1,13 @@
 //Ported from LC13, for literally no other purpose than "Dahl was feeling sadistic today"
-//Damage numbers adjusted
+//Damage numbers adjusted, and extensive nerfs have been made.
+//apply_damage procs in this currently ignores armor in our code, and even if I SHOULD be making that work, I'm doing roundabout methods that are objectively bad.
+//I am not smart.
 
 /mob/living/simple_animal/hostile/megafauna/claw
 	name = "Claw"
 	desc = "A strange humanoid creature with several gadgets attached to it."
-	health = 7000
-	maxHealth = 7000
+	health = 750 //Original is 7000
+	maxHealth = 750
 	damage_coeff = list(BRUTE = 1)
 	attacktext = "slices"
 	attack_sound = 'hyperstation/sound/claw/attack.ogg'
@@ -20,8 +22,8 @@
 	movement_type = FLYING //Just so they dont fucking cloud themselves
 	speak_emote = list("says")
 	melee_damage_type = BRUTE
-	melee_damage_lower = 15
-	melee_damage_upper = 40
+	melee_damage_lower = 5
+	melee_damage_upper = 10
 	stat_attack = CONSCIOUS
 	rapid_melee = 2
 	ranged = TRUE
@@ -214,7 +216,7 @@
 		if(faction_check_mob(L))
 			continue
 		to_chat(target, "<span class='userdanger'>\The [src] eviscerates you!</span>")
-		L.apply_damage(50, BRUTE, null, L.run_armor_check(null, BRUTE))
+		L.apply_damage(5, BRUTE, null, L.run_armor_check(null, BRUTE))
 		new /obj/effect/temp_visual/saw_effect(get_turf(L))
 
 // I hate how it's just a copy-paste of serum W, but oh well
@@ -272,7 +274,7 @@
 			continue
 		been_hit |= L
 		to_chat(target, "<span class='userdanger'>\The [src] eviscerates you!</span>")
-		L.apply_damage(45, BRUTE, null, L.run_armor_check(null, BRUTE))
+		L.apply_damage(10, BRUTE, null, L.run_armor_check(null, BRUTE))
 		new /obj/effect/temp_visual/saw_effect(get_turf(L))
 	for(var/turf/B in getline(prev_loc, tp_loc))
 		for(var/mob/living/L in range(1, B)) // Attacks everyone in line
@@ -282,7 +284,7 @@
 				continue
 			been_hit |= L
 			to_chat(L, "<span class='userdanger'>\The [src] slashes you!</span>")
-			L.apply_damage(25, BRUTE, null, L.run_armor_check(null, BRUTE))
+			L.apply_damage(8, BRUTE, null, L.run_armor_check(null, BRUTE))
 			playsound(L, 'hyperstation/sound/claw/attack.ogg', 35, 1)
 			new /obj/effect/temp_visual/saw_effect(get_turf(L))
 
@@ -318,7 +320,7 @@
 	for(var/mob/living/L in T.contents)
 		if(faction_check_mob(L))
 			continue
-		L.apply_damage(60, BRUTE, null, L.run_armor_check(null, BRUTE))
+		L.apply_damage(10, BRUTE, null, L.run_armor_check(null, BRUTE))
 		new /obj/effect/temp_visual/saw_effect(L.loc)
 	addtimer(CALLBACK(src, .proc/swift_dash2, move_dir, (times_ran + 1), distance_run), 0.5)
 
@@ -361,6 +363,6 @@
 			if(faction_check_mob(victim))
 				continue
 			to_chat(victim, "<span class='userdanger'>\The [src] slashes you!</span>")
-			victim.apply_damage(25, BRUTE, null, victim.run_armor_check(null, BRUTE))
+			victim.apply_damage(10, BRUTE, null, victim.run_armor_check(null, BRUTE))
 			new /obj/effect/temp_visual/saw_effect(victim.loc)
 			playsound(victim, 'hyperstation/sound/claw/attack.ogg', 35, 1)
