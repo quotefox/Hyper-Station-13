@@ -155,6 +155,18 @@
 	NeighborsCheck(UpdateNeighgors)
 
 	overlays.Cut()
+
+	//Ensure layering is appropriate to direction.
+	switch (src.dir)
+		if (NORTH)
+			layer = BELOW_MOB_LAYER
+		if (SOUTH)
+			layer = ABOVE_MOB_LAYER
+		if (EAST)
+			layer = BELOW_MOB_LAYER
+		if (WEST)
+			layer = BELOW_MOB_LAYER
+
 	if (!check || !anchored)//|| !anchored
 		icon_state = "[icon_modifier]railing0"
 	else
@@ -263,7 +275,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!shock(user, 70))
+	if(shock(user, 70))
 		user.visible_message("<span class='warning'>[user] gets shocked by [src]!</span>", null, null, COMBAT_MESSAGE_RANGE)
 
 /obj/structure/railing/attack_alien(mob/living/user)
@@ -359,26 +371,3 @@
 /obj/structure/railing/handrail/unachored
 	anchored = FALSE
 
-/obj/structure/railing/handrail/update_icon(var/UpdateNeighbors = 1)
-	overlays.Cut()
-	if (!check || !anchored)//|| !anchored
-		icon_state = "[icon_modifier]railing0"
-	else
-		icon_state = "[icon_modifier]railing1"
-		if (check & 32)
-			overlays += image ('hyperstation/icons/obj/railings.dmi', src, "[icon_modifier]corneroverlay")
-		if ((check & 16) || !(check & 32) || (check & 64))
-			overlays += image ('hyperstation/icons/obj/railings.dmi', src, "[icon_modifier]frontoverlay_l")
-		if (!(check & 2) || (check & 1) || (check & 4))
-			overlays += image ('hyperstation/icons/obj/railings.dmi', src, "[icon_modifier]frontoverlay_r")
-			if(check & 4)
-				switch (src.dir)
-					if (NORTH)
-						overlays += image ('hyperstation/icons/obj/railings.dmi', src, "[icon_modifier]mcorneroverlay", pixel_x = 32)
-					if (SOUTH)
-						overlays += image ('hyperstation/icons/obj/railings.dmi', src, "[icon_modifier]mcorneroverlay", pixel_x = -32)
-						layer = ABOVE_MOB_LAYER
-					if (EAST)
-						overlays += image ('hyperstation/icons/obj/railings.dmi', src, "[icon_modifier]mcorneroverlay", pixel_y = -32)
-					if (WEST)
-						overlays += image ('hyperstation/icons/obj/railings.dmi', src, "[icon_modifier]mcorneroverlay", pixel_y = 32)
