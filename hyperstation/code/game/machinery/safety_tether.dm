@@ -37,9 +37,17 @@
 	var/cloneloss_min = 45
 	var/cloneloss_max = 70
 
-	//Max and min amounts of burn damage for silicates
-	var/silicon_burn_min = 60
-	var/silicon_burn_max = 80
+	//Max and min amounts of burn damage for silicates.
+	/*
+	Cyborg health guide
+	100;   max health
+	<50;   module 3 offline
+	<0;    module 2 offline
+	<-50;  module 3 offline
+	-100+; death
+	*/
+	var/silicon_burn_min = 120
+	var/silicon_burn_max = 140
 
 	var/internal_radio = TRUE
 	var/obj/item/radio/radio
@@ -66,6 +74,9 @@
 		radio.subspace_transmission = TRUE
 		radio.canhear_range = 0
 		radio.recalculateChannels()
+
+	var/matrix/M = src.transform
+	src.transform = M.Translate(-32,-32)
 
 	update_icon()
 
@@ -111,6 +122,7 @@
 		M.emote("scream")
 
 		if(iscarbon(M))
+
 			var/mob/living/carbon/Carbon = M
 
 			//Rework to teleporter mishap
@@ -162,24 +174,25 @@
 
 			//animate(M, transform = oldtransform, alpha = oldalpha, color = oldcolor, time = 10)
 
-			M.transform = oldtransform
-			M.alpha = oldalpha
-			M.color = oldcolor
+			//M.transform = oldtransform
+			//M.alpha = oldalpha
+			//M.color = oldcolor
+		else
+			if(issilicon(M))
+				var/mob/living/silicon/S = M
+				//Rework to teleporter mishap
+				priority_announce("[S] ([key_name(S)]) had a tether mishap")
+				to_chat(S, "<span class='italics'>Your circuits spark, slag, and pop as overwhelming white noise crackles and YANKS...</span>")
+				S.apply_damage_type(damage = rand(silicon_burn_min, silicon_burn_max), damagetype = BURN)
 
-			return TRUE
-		if(issilicon(M))
-			var/mob/living/silicon/S = M
-			//Rework to teleporter mishap
-			priority_announce("[S] ([key_name(S)]) had a tether mishap")
-			to_chat(S, "<span class='italics'>Your circuits spark, slag, and pop as overwhelming white noise crackles and YANKS...</span>")
-			S.apply_damage_type(damage = rand(silicon_burn_min, silicon_burn_max), damagetype = BURN)
+				if(internal_radio)
 
-			if(internal_radio)
+					//Area name gotten just in case the locale of it's moved from engineering when mapmaking.
+					var/area/A = get_area(get_turf(src))
+					var/area_name = A.name
+					SPEAKSCIENCE("The safety tether's caught the would-be crater [M] at the [area_name].")
 
-				//Area name gotten just in case the locale of it's moved from engineering when mapmaking.
-				var/area/A = get_area(get_turf(src))
-				var/area_name = A.name
-				SPEAKSCIENCE("The safety tether's caught the would-be crater [M] at the [area_name].")
+		return TRUE
 
 	else
 		//drop them to their doom

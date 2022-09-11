@@ -123,7 +123,8 @@
 			var/mob/living/L = AM
 			L.notransform = TRUE
 			L.Stun(200)
-			L.resting = TRUE
+			if(!issilicon(AM))
+				L.resting = TRUE
 			if(L.client && check_rights_for(L.client, R_FUN))
 				playsound(AM, pick('hyperstation/sound/misc/yodadeath.ogg', 'hyperstation/sound/misc/fallingthroughclouds.ogg', 'hyperstation/sound/misc/goofy.ogg', 'hyperstation/sound/misc/wilhelm.ogg'), 100, 0)
 
@@ -173,6 +174,8 @@
 					L.notransform = FALSE
 			else
 				finishdrop(AM, oldtransform, oldcolor, oldalpha)
+		else
+			finishdrop(AM, oldtransform, oldcolor, oldalpha)
 
 
 /datum/component/chasm/proc/finishdrop(atom/movable/AM, oldalpha = "", oldcolor = "", oldtransform = "")
