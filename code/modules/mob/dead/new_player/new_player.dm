@@ -80,9 +80,9 @@
 					newpoll = 1
 
 				if(newpoll)
-					output += "<p><b><a href='byond://?src=[rs];showpoll=1'>Show Player Polls</A> (NEW!)</b></p>"
+					output += "<p><b><a href='byond://?src=[rs];showpoll=1'>[icon2html('hyperstation/icons/menu/menu_large.dmi', world, "manifest")]Show Player Polls</A> (NEW!)</b></p>"
 				else
-					output += "<p><a href='byond://?src=[rs];showpoll=1'>Show Player Polls</A></p>"
+					output += "<p><a href='byond://?src=[rs];showpoll=1'>[icon2html('hyperstation/icons/menu/menu_large.dmi', world, "manifest")]Show Player Polls</A></p>"
 			qdel(query_get_new_polls)
 			if(QDELETED(src))
 				return
@@ -91,9 +91,9 @@
 
 	var/datum/browser/popup
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
-		popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 268, 212)
+		popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 268, 302)
 	else
-		popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 268, 452)
+		popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 268, 542)
 	popup.set_window_options("can_close=0")
 
 	popup.add_stylesheet("playersetup", 'html/browser/mainmenu.css')
@@ -217,9 +217,6 @@
 		return
 
 	if(href_list["SelectedRoleplayJob"])
-		if(!client.prefs.roleplayroles)
-			to_chat(usr, "<span class='notice'>To access roleplay jobs you are required to be whitelisted! Please ask an administrator if you wish to take on more story-based roles.</span>")
-			return
 		if(!SSticker || !SSticker.IsRoundInProgress())
 			var/msg = "[key_name(usr)] attempted to join the round using a href that shouldn't be available at this moment!"
 			log_admin(msg)
@@ -267,9 +264,10 @@
 		if (length(job.falure_info) > 0)
 			dat	+=	{"<B>Role Falure</B><BR><HR>"}
 			dat	+=	"[job.falure_info]<BR><BR>"
-
-		dat	+=  "<center><p><a href='byond://?src=[REF(src)];SelectedJob=[job.title]'>Play!</a></p></center>"
-
+		if(client.prefs.roleplayroles)
+			dat	+=  "<center><p><a href='byond://?src=[REF(src)];SelectedJob=[job.title]'>Play!</a></p></center>"
+		else
+			dat	+=  "<center><p><span class='linkOff'>Whitelist Required</span></p></center>"
 		var/datum/browser/popup = new(usr, "roleplay", "Roleplay Panel")
 		popup.set_content(dat)
 		popup.set_title_image(usr.browse_rsc_icon(icon, icon_state), 500,600)
