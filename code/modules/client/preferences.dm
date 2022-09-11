@@ -1354,10 +1354,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				continue
 			//Hyperstation Edit - Whitelisted roles
 			if((rank in GLOB.silly_positions) && (!sillyroles))
-				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;jobbancheck=[rank]'> WHITELIST</a></td></tr>"
+				HTML += "<font color=red>[rank]</font></td><td><font color=orange> \[WHITELIST]</font></td></tr>"
 				continue
-			if((rank in GLOB.important_positions) && (!importantroles)) //TODO: make whitelists a bit more accurate than "silly" and "important"
-				HTML += "<font color=red>[rank]</font></td><td><a href='?_src_=prefs;jobbancheck=[rank]'> WHITELIST</a></td></tr>"
+			if((rank in GLOB.important_positions) && (!importantroles))
+				HTML += "<font color=red>[rank]</font></td><td><font color=orange> \[WHITELIST]</font></td></tr>"
+				continue
+			if((rank in GLOB.roleplay_positions) && (!roleplayroles))
+				HTML += "<font color=red>[rank]</font></td><td><font color=orange> \[WHITELIST]</font></td></tr>"
 				continue
 			//Hyperstation Edit end
 			var/required_playtime_remaining = job.required_playtime_remaining(user.client)
@@ -2976,6 +2979,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("save")
 					save_preferences()
 					save_character()
+					if(istype(user,/mob/dead/new_player)) //if the player is a new player at the menu.
+						var/mob/dead/new_player/np = user
+						np.refresh_player_panel() //update their player icons
 
 				if("load")
 					load_preferences()

@@ -31,22 +31,41 @@
 /mob/dead/new_player/prepare_huds()
 	return
 
-/mob/dead/new_player/proc/new_player_panel()
-	var/output = "<center><p>Welcome, <b>[client ? client.prefs.real_name : "Unknown User"]</b></p>"
-	output += "<p><a href='byond://?src=[REF(src)];show_preferences=1'>Setup Character</a></p>"
+/mob/dead/new_player/proc/refresh_player_panel()
+	new_player_panel()
 
+/mob/dead/new_player/proc/new_player_panel()
+	src << browse(null, "window=playersetup") //closes the player setup window if its already open.
+	var/output = ""
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		switch(ready)
 			if(PLAYER_NOT_READY)
-				output += "<p>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | <b>Not Ready</b> | [LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)] \]</p>"
+				output += "<p><a style='background:#912c24;' href='byond://?src=[REF(src)];ready=[PLAYER_READY_TO_PLAY]'>[icon2html('hyperstation/icons/menu/menu_large.dmi', world, "notready")]Not Ready</a></p>"
 			if(PLAYER_READY_TO_PLAY)
-				output += "<p>\[ <b>Ready</b> | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | [LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)] \]</p>"
+				output += "<p><a style='background:#4CAF50;'  href='byond://?src=[REF(src)];ready=[PLAYER_NOT_READY]'>[icon2html('hyperstation/icons/menu/menu_large.dmi', world, "ready")]Ready</a></p>"
 			if(PLAYER_READY_TO_OBSERVE)
 				output += "<p>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | <b> Observe </b> \]</p>"
+		output += "<p><a href='byond://?src=[REF(src)];show_preferences=1'>[icon2html('hyperstation/icons/menu/menu_large.dmi', world, "settings")]Setup Character</a></p>"
 	else
-		output += "<p><a href='byond://?src=[REF(src)];manifest=1'>View the Crew Manifest</a></p>"
-		output += "<p><a href='byond://?src=[REF(src)];late_join=1'>Join Game!</a></p>"
-		output += "<p>[LINKIFY_READY("Observe", PLAYER_READY_TO_OBSERVE)]</p>"
+		//make menu preview
+		var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_ROLEPLAY)
+		var/icon/preview_icon = icon('icons/effects/effects.dmi', "nothing")
+		client.prefs.copy_to(mannequin)
+		COMPILE_OVERLAYS(mannequin)
+		var/icon/stamp = getFlatIcon(mannequin)
+		mannequin.setDir(SOUTH)
+		stamp = getFlatIcon(mannequin)
+		CHECK_TICK
+		preview_icon.Blend(stamp, ICON_OVERLAY, 0, 0)
+		CHECK_TICK
+		preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2)
+		CHECK_TICK
+		unset_busy_human_dummy(DUMMY_HUMAN_SLOT_ROLEPLAY)
+		output += "<p><a href='byond://?src=[REF(src)];late_join=1'>[icon2html(preview_icon, world, "preview")]Join Game >></a></p>"
+		output += "<p><a href='byond://?src=[REF(src)];roleplay_join=1'>[icon2html('hyperstation/icons/menu/menu_large.dmi', world, "roleplay")]Roleplay Roles</a></p>"
+		output += "<p><a href='byond://?src=[REF(src)];show_preferences=1'>[icon2html('hyperstation/icons/menu/menu_large.dmi', world, "settings")]Setup Character</a></p>"
+		output += "<p><a href='byond://?src=[REF(src)];manifest=1'>[icon2html('hyperstation/icons/menu/menu_large.dmi', world, "manifest")]View the Crew Manifest</a></p>"
+		output += "<p><a href='byond://?src=[REF(src)];ready=[PLAYER_READY_TO_OBSERVE]'>[icon2html('hyperstation/icons/menu/menu_large.dmi', world, "ghost")]Observe</a></p>"
 
 	if(!IsGuestKey(src.key))
 		if (SSdbcore.Connect())
@@ -70,9 +89,14 @@
 
 	output += "</center>"
 
-	//src << browse(output,"window=playersetup;size=210x240;can_close=0")
-	var/datum/browser/popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 250, 265)
+	var/datum/browser/popup
+	if(SSticker.current_state <= GAME_STATE_PREGAME)
+		popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 268, 212)
+	else
+		popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 268, 452)
 	popup.set_window_options("can_close=0")
+
+	popup.add_stylesheet("playersetup", 'html/browser/mainmenu.css')
 	popup.set_content(output)
 	popup.open(0)
 
@@ -140,10 +164,38 @@
 			return
 		LateChoices()
 
+	if(href_list["roleplay_join"])
+		if(!SSticker || !SSticker.IsRoundInProgress())
+			to_chat(usr, "<span class='danger'>The round is either not ready, or has already finished...</span>")
+			return
+
+		if(href_list["late_join"] == "override")
+			LateChoices(TRUE)
+			return
+
+		if(client.prefs.real_name in client.pastcharacters) //if character has been spawned before
+			to_chat(usr, "<span class='notice'>You have played that character before this round, please select a new one!</span>")
+			return
+
+		if(SSticker.queued_players.len || (relevant_cap && living_player_count() >= relevant_cap && !(ckey(key) in GLOB.admin_datums)))
+			to_chat(usr, "<span class='danger'>[CONFIG_GET(string/hard_popcap_message)]</span>")
+
+			var/queue_position = SSticker.queued_players.Find(usr)
+			if(queue_position == 1)
+				to_chat(usr, "<span class='notice'>You are next in line to join the game. You will be notified when a slot opens up.</span>")
+			else if(queue_position)
+				to_chat(usr, "<span class='notice'>There are [queue_position-1] players in front of you in the queue to join the game.</span>")
+			else
+				SSticker.queued_players += usr
+				to_chat(usr, "<span class='notice'>You have been added to the queue to join the game. Your position in queue is [SSticker.queued_players.len].</span>")
+			return
+		LateChoices(TRUE)
+
 	if(href_list["manifest"])
 		ViewManifest()
 
 	if(href_list["SelectedJob"])
+		usr << browse(null, "window=roleplay") //closes the window
 		if(!SSticker || !SSticker.IsRoundInProgress())
 			var/msg = "[key_name(usr)] attempted to join the round using a href that shouldn't be available at this moment!"
 			log_admin(msg)
@@ -163,6 +215,65 @@
 
 		AttemptLateSpawn(href_list["SelectedJob"])
 		return
+
+	if(href_list["SelectedRoleplayJob"])
+		if(!client.prefs.roleplayroles)
+			to_chat(usr, "<span class='notice'>To access roleplay jobs you are required to be whitelisted! Please ask an administrator if you wish to take on more story-based roles.</span>")
+			return
+		if(!SSticker || !SSticker.IsRoundInProgress())
+			var/msg = "[key_name(usr)] attempted to join the round using a href that shouldn't be available at this moment!"
+			log_admin(msg)
+			message_admins(msg)
+			to_chat(usr, "<span class='danger'>The round is either not ready, or has already finished...</span>")
+			return
+
+
+		if(!GLOB.enter_allowed)
+			to_chat(usr, "<span class='notice'>There is an administrative lock on entering the game!</span>")
+			return
+
+		if(SSticker.queued_players.len && !(ckey(key) in GLOB.admin_datums))
+			if((living_player_count() >= relevant_cap) || (src != SSticker.queued_players[1]))
+				to_chat(usr, "<span class='warning'>Server is full.</span>")
+				return
+		//make preview
+		var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_ROLEPLAY)
+		var/datum/job/roleplay/job = SSjob.GetJob(href_list["SelectedRoleplayJob"])
+		var/icon/preview_icon = icon('icons/effects/effects.dmi', "nothing")
+		job.equip(mannequin, TRUE)
+		client.prefs.copy_to(mannequin)
+		COMPILE_OVERLAYS(mannequin)
+		var/icon/stamp = getFlatIcon(mannequin)
+		mannequin.setDir(SOUTH)
+		stamp = getFlatIcon(mannequin)
+		CHECK_TICK
+		preview_icon.Blend(stamp, ICON_OVERLAY, 0, 0)
+		CHECK_TICK
+		preview_icon.Scale(preview_icon.Width() * 2, preview_icon.Height() * 2)
+		CHECK_TICK
+		unset_busy_human_dummy(DUMMY_HUMAN_SLOT_ROLEPLAY)
+
+
+		//make menu
+		var/dat	=	{"<B>[href_list["SelectedRoleplayJob"]]</B><BR><HR>"}
+		dat	+=	"<center>[icon2html(preview_icon, world, "preview")]</center><BR><BR>"
+		if (length(job.info_text) > 0)
+			dat	+=	"[job.info_text]<BR><BR>"
+
+		if (length(job.quest_info) > 0)
+			dat	+=		{"<B>Role Job</B><BR><HR>"}
+			dat	+=	"[job.quest_info]<BR><BR>"
+
+		if (length(job.falure_info) > 0)
+			dat	+=	{"<B>Role Falure</B><BR><HR>"}
+			dat	+=	"[job.falure_info]<BR><BR>"
+
+		dat	+=  "<center><p><a href='byond://?src=[REF(src)];SelectedJob=[job.title]'>Play!</a></p></center>"
+
+		var/datum/browser/popup = new(usr, "roleplay", "Roleplay Panel")
+		popup.set_content(dat)
+		popup.set_title_image(usr.browse_rsc_icon(icon, icon_state), 500,600)
+		popup.open()
 
 	if(href_list["JoinAsGhostRole"])
 		if(!GLOB.enter_allowed)
@@ -361,6 +472,7 @@
 	return JOB_AVAILABLE
 
 /mob/dead/new_player/proc/AttemptLateSpawn(rank)
+	var/datum/job/job = SSjob.GetJob(rank)
 	var/error = IsJobUnavailable(rank)
 	if(error != JOB_AVAILABLE)
 		alert(src, get_job_unavailable_error_message(error, rank))
@@ -388,11 +500,10 @@
 	SSjob.AssignRole(src, rank, 1)
 
 	var/mob/living/character = create_character(TRUE)	//creates the human and transfers vars and mind
-	var/equip = SSjob.EquipRank(character, rank, TRUE)
+	var/equip = SSjob.EquipRank(character, rank, TRUE,job.loadout)
+
 	if(isliving(equip))	//Borgs get borged in the equip, so we need to make sure we handle the new mob.
 		character = equip
-
-	var/datum/job/job = SSjob.GetJob(rank)
 
 	if(job && !job.override_latejoin_spawn(character))
 		SSjob.SendToLateJoin(character)
@@ -454,7 +565,7 @@
 			employmentCabinet.addFile(employee)
 
 
-/mob/dead/new_player/proc/LateChoices()
+/mob/dead/new_player/proc/LateChoices(roleplayonly)
 
 	var/level = "green"
 	switch(GLOB.security_level)
@@ -479,8 +590,13 @@
 
 	var/available_job_count = 0
 	for(var/datum/job/job in SSjob.occupations)
-		if(job && IsJobUnavailable(job.title, TRUE) == JOB_AVAILABLE)
-			available_job_count++
+		if(!roleplayonly)
+			if(job && IsJobUnavailable(job.title, TRUE) == JOB_AVAILABLE)
+				available_job_count++
+		else
+			if(job && IsJobUnavailable(job.title, TRUE) == JOB_AVAILABLE)
+				if(job.department_flag == ROLEPLAY)
+					available_job_count++
 	for(var/spawner in GLOB.mob_spawners)
 		if(!LAZYLEN(spawner))
 			continue
@@ -494,26 +610,33 @@
 		dat += "<div class='notice red'>There are currently no open positions!</div>"
 
 	else
-		dat += "<div class='clearBoth'>Choose from the following open positions:</div><br>"
-		var/list/categorizedJobs = list(
-			"Command" = list(jobs = list(), titles = GLOB.command_positions, color = "#aac1ee"),
-			"Engineering" = list(jobs = list(), titles = GLOB.engineering_positions, color = "#ffd699"),
-			"Supply" = list(jobs = list(), titles = GLOB.supply_positions, color = "#ead4ae"),
-			"Miscellaneous" = list(jobs = list(), titles = list(), color = "#ffffff", colBreak = TRUE),
-			"Ghost Role" = list(jobs = list(), titles = GLOB.mob_spawners, color = "#ffffff"),
-			"Synthetic" = list(jobs = list(), titles = GLOB.nonhuman_positions, color = "#ccffcc"),
-			"Service" = list(jobs = list(), titles = GLOB.civilian_positions, color = "#cccccc"),
-			"Medical" = list(jobs = list(), titles = GLOB.medical_positions, color = "#99ffe6", colBreak = TRUE),
-			"Science" = list(jobs = list(), titles = GLOB.science_positions, color = "#e6b3e6"),
-			"Security" = list(jobs = list(), titles = GLOB.security_positions, color = "#ff9999"),
-		)
-		for(var/spawner in GLOB.mob_spawners)
-			if(!LAZYLEN(spawner))
-				continue
-			var/obj/effect/mob_spawn/S = pick(GLOB.mob_spawners[spawner])
-			if(!istype(S) || !S.can_latejoin())
-				continue
-			categorizedJobs["Ghost Role"]["jobs"] += spawner
+		var/list/categorizedJobs
+		if(!roleplayonly)
+			dat += "<div class='clearBoth'>Choose from the following open positions:</div><br>"
+			categorizedJobs = list(
+				"Command" = list(jobs = list(), titles = GLOB.command_positions, color = "#aac1ee"),
+				"Roleplay" = list(jobs = list(), titles = GLOB.roleplay_positions, color = "#aac1ee"),
+				"Engineering" = list(jobs = list(), titles = GLOB.engineering_positions, color = "#ffd699"),
+				"Supply" = list(jobs = list(), titles = GLOB.supply_positions, color = "#ead4ae"),
+				"Miscellaneous" = list(jobs = list(), titles = list(), color = "#ffffff", colBreak = TRUE),
+				"Ghost Role" = list(jobs = list(), titles = GLOB.mob_spawners, color = "#ffffff"),
+				"Synthetic" = list(jobs = list(), titles = GLOB.nonhuman_positions, color = "#ccffcc"),
+				"Service" = list(jobs = list(), titles = GLOB.civilian_positions, color = "#cccccc"),
+				"Medical" = list(jobs = list(), titles = GLOB.medical_positions, color = "#99ffe6", colBreak = TRUE),
+				"Science" = list(jobs = list(), titles = GLOB.science_positions, color = "#e6b3e6"),
+				"Security" = list(jobs = list(), titles = GLOB.security_positions, color = "#ff9999"),
+			)
+		else
+			dat += "<div class='clearBoth'>Choose from the following open positions:</div><br>"
+			categorizedJobs = list("Roleplay" = list(jobs = list(), titles = GLOB.roleplay_positions, color = "#aac1ee"))
+		if(!roleplayonly)
+			for(var/spawner in GLOB.mob_spawners)
+				if(!LAZYLEN(spawner))
+					continue
+				var/obj/effect/mob_spawn/S = pick(GLOB.mob_spawners[spawner])
+				if(!istype(S) || !S.can_latejoin())
+					continue
+				categorizedJobs["Ghost Role"]["jobs"] += spawner
 
 		for(var/datum/job/job in SSjob.occupations)
 			if(job && IsJobUnavailable(job.title, TRUE) == JOB_AVAILABLE)
@@ -522,6 +645,8 @@
 					var/list/jobs = categorizedJobs[jobcat]["jobs"]
 					if(job.title in categorizedJobs[jobcat]["titles"])
 						categorized = TRUE
+						if(jobcat == "Roleplay" && !roleplayonly)
+							continue //dont put roleplay jobs here
 						if(jobcat == "Command")
 
 							if(job.title == "Captain") // Put captain at top of command jobs
@@ -534,7 +659,8 @@
 							else
 								jobs += job
 				if(!categorized)
-					categorizedJobs["Miscellaneous"]["jobs"] += job
+					if(!roleplayonly)
+						categorizedJobs["Miscellaneous"]["jobs"] += job
 
 
 		dat += "<table><tr><td valign='top'>"
@@ -551,12 +677,15 @@
 				if(job.title in GLOB.command_positions)
 					position_class = "commandPosition"
 				var/jobline = ""
-				if(job in SSjob.prioritized_jobs)
-					jobline += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'><font color='lime'><b>[job.title] ([job.current_positions])</b></font></a>"
+				if(!roleplayonly)
+					if(job in SSjob.prioritized_jobs)
+						jobline += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'><font color='lime'><b>[job.title] ([job.current_positions])</b></font></a>"
+					else
+						jobline += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a>"
+					if(client && client.prefs && client.prefs.alt_titles_preferences[job.title])
+						jobline += "<br><span style='color:#BBBBBB; font-style: italic;'>(as [client.prefs.alt_titles_preferences[job.title]])</span>"
 				else
-					jobline += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedJob=[job.title]'>[job.title] ([job.current_positions])</a>"
-				if(client && client.prefs && client.prefs.alt_titles_preferences[job.title])
-					jobline += "<br><span style='color:#BBBBBB; font-style: italic;'>(as [client.prefs.alt_titles_preferences[job.title]])</span>"
+					jobline += "<a class='[position_class]' style='display:block;width:170px' href='byond://?src=[REF(src)];SelectedRoleplayJob=[job.title]'><font color='lime'><b>[job.title] ([job.current_positions])</b></font></a>"
 				dat += jobline
 				categorizedJobs[jobcat]["jobs"] -= job
 
@@ -638,3 +767,4 @@
 	src << browse(null, "window=preferences") //closes job selection
 	src << browse(null, "window=mob_occupation")
 	src << browse(null, "window=latechoices") //closes late job selection
+

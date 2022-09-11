@@ -331,7 +331,7 @@ SUBSYSTEM_DEF(job)
 
 				if((job.title in GLOB.silly_positions) && (player.client.prefs.sillyroles == FALSE))
 					JobDebug("DO is not whitelisted, Player: [player], Job:[job.title]")
-					continue	
+					continue
 
 				if(!job.player_old_enough(player.client))
 					JobDebug("DO player not old enough, Player: [player], Job:[job.title]")
@@ -392,7 +392,7 @@ SUBSYSTEM_DEF(job)
 		message_admins(message)
 		RejectPlayer(player)
 //Gives the player the stuff he should have with his rank
-/datum/controller/subsystem/job/proc/EquipRank(mob/M, rank, joined_late = FALSE)
+/datum/controller/subsystem/job/proc/EquipRank(mob/M, rank, joined_late = FALSE,loadout = TRUE)
 	var/mob/dead/new_player/N
 	var/mob/living/H
 	if(!joined_late)
@@ -431,7 +431,9 @@ SUBSYSTEM_DEF(job)
 
 	//Job loadout, equipping, and flavortext when spawning
 	if(job)
-		var/list/handle_storage = equip_loadout(N, H)	//Loadout gear
+		var/list/handle_storage
+		if(loadout)
+			handle_storage = equip_loadout(N, H)	//Loadout gear
 		var/new_mob = job.equip(H, null, null, joined_late)	//Job gear
 
 		if(ismob(new_mob))	//The above doesnt return a value, but we check this anyways or else everything breaks!
@@ -440,17 +442,17 @@ SUBSYSTEM_DEF(job)
 				N.new_character = H
 			else
 				M = H
-
-		if(LAZYLEN(handle_storage))	//equip_loadout returned a list. This list is backpack contents we should store, as by now we should have a backpack and a single reference mob
-			if(ishuman(H))
-				var/mob/living/carbon/human/_H = H
-				if(_H.back)
-					for(var/atom/movable/A in handle_storage)
-						if(!SEND_SIGNAL(_H.back, COMSIG_TRY_STORAGE_INSERT, A, null, TRUE, TRUE))
-							A.forceMove(get_turf(H))	//Try and store into the backpack. If the backpack is full, drop it to the ground
-				else //No backpack
-					for(var/atom/movable/A in handle_storage)
-						A.forceMove(get_turf(H))
+		if(loadout)
+			if(LAZYLEN(handle_storage))	//equip_loadout returned a list. This list is backpack contents we should store, as by now we should have a backpack and a single reference mob
+				if(ishuman(H))
+					var/mob/living/carbon/human/_H = H
+					if(_H.back)
+						for(var/atom/movable/A in handle_storage)
+							if(!SEND_SIGNAL(_H.back, COMSIG_TRY_STORAGE_INSERT, A, null, TRUE, TRUE))
+								A.forceMove(get_turf(H))	//Try and store into the backpack. If the backpack is full, drop it to the ground
+					else //No backpack
+						for(var/atom/movable/A in handle_storage)
+							A.forceMove(get_turf(H))
 
 		//Flavortext
 		var/display_rank = rank

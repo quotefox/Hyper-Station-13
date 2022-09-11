@@ -1,0 +1,33 @@
+a, button, a:link, a:visited, a:active, .linkOn, .linkOff
+{
+text-align: center;
+text-decoration: none;
+display: inline-block;
+vertical-align: middle;
+align-items:center;
+width: 95%;
+border: 1px solid #161616;
+}
+
+.icon 
+{
+    width: 32px;
+    height: 32px;
+	vertical-align: middle;
+}
+
+.p {
+  margin-bottom: -10px; /* between paragraphs */
+  padding: -10px; 
+  margin: 0px;
+  }
+
+body
+{
+	padding: 0;
+	margin: 0;
+	background-color: #272727;
+	font-size: 12px;
+	color: #ffffff;
+	line-height: 0%;
+}
