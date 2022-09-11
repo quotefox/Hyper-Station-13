@@ -18,9 +18,24 @@
 	var/datum/component/chasm/chasm_component = GetComponent(/datum/component/chasm)
 	chasm_component.target_turf = target
 
+// Only runs in the case of things like pride's mirror who are just using the turf as an easy reference
+
 /turf/open/chasm/proc/drop(atom/movable/AM)
+
 	var/datum/component/chasm/chasm_component = GetComponent(/datum/component/chasm)
+	/*
+	//if(baseturfs == /turf/open/chasm/cloud)
+	if(iscyborg(AM) || iscarbon(AM))
+		var/mob/victim = AM
+		priority_announce("Signal sending!")
+		//Sends the signal that a carbon or silicon mob's been clouded
+		SEND_SIGNAL(src, COMSIG_GLOB_MOB_CLOUDED, victim)
+		priority_announce("Signal sent!")
+		chasm_component.drop(AM, TRUE)
+	//else
+	*/
 	chasm_component.drop(AM)
+
 
 /turf/open/chasm/MakeSlippery(wet_setting, min_wet_time, wet_time_to_add, max_wet_time, permanent)
 	return

@@ -94,6 +94,9 @@
 	return TRUE
 
 /datum/component/chasm/proc/drop(atom/movable/AM)
+
+	//priority_announce("Chasm_component-side drop triggered!")
+
 	//Make sure the item is still there after our sleep
 	if(!AM || QDELETED(AM))
 		return
@@ -112,8 +115,10 @@
 		falling_atoms -= AM
 
 	else
+
 		// send to oblivion
 		AM.visible_message("<span class='boldwarning'>[AM] falls into [parent]!</span>", "<span class='userdanger'>[oblivion_message]</span>")
+
 		if (isliving(AM))
 			var/mob/living/L = AM
 			L.notransform = TRUE
@@ -125,10 +130,13 @@
 			else if(prob(5))
 				playsound(AM, pick('hyperstation/sound/misc/yodadeath.ogg', 'hyperstation/sound/misc/fallingthroughclouds.ogg', 'hyperstation/sound/misc/goofy.ogg', 'hyperstation/sound/misc/wilhelm.ogg'), 100, 0)
 
-		var/oldtransform = AM.transform
-		var/oldcolor = AM.color
 		var/oldalpha = AM.alpha
-		animate(AM, transform = matrix() - matrix(), alpha = 0, color = rgb(0, 0, 0), time = 10)
+		var/oldcolor = AM.color
+		var/oldtransform = AM.transform
+
+		//
+
+		/*
 		for(var/i in 1 to 5)
 			//Make sure the item is still there after our sleep
 			if(!AM || QDELETED(AM))
@@ -139,17 +147,59 @@
 		//Make sure the item is still there after our sleep
 		if(!AM || QDELETED(AM))
 			return
+		*/
 
-		if(iscyborg(AM))
-			var/mob/living/silicon/robot/S = AM
-			qdel(S.mmi)
+		if(iscyborg(AM) || iscarbon(AM))
+			var/mob/living/victim = AM
 
-		falling_atoms -= AM
-		qdel(AM)
-		if(AM && !QDELETED(AM))	//It's indestructible
-			var/atom/parent = src.parent
-			parent.visible_message("<span class='boldwarning'>[parent] spits out [AM]!</span>")
-			AM.alpha = oldalpha
-			AM.color = oldcolor
-			AM.transform = oldtransform
-			AM.throw_at(get_edge_target_turf(parent,pick(GLOB.alldirs)),rand(1, 10),rand(1, 10))
+			var/tether_number = GLOB.safety_tethers_list.len
+
+			priority_announce("[tether_number] tethers present.")
+
+			//If safety tethers are present, get one from the global list to teleport the body to if operational
+			if(tether_number > 0)
+				if(tether_number == 1)
+
+					// If teleportation fails
+					if(!GLOB.safety_tethers_list[1].bungee_teleport(src, victim, oldalpha, oldcolor, oldtransform))
+						finishdrop(AM, oldalpha, oldcolor, oldtransform)
+				else
+
+					//Just in case multiple safety tethers are present
+					if(!GLOB.safety_tethers_list[rand(1,GLOB.safety_tethers_list.len)].bungee_teleport(src, victim, oldalpha, oldcolor, oldtransform))
+						finishdrop(AM, oldalpha, oldcolor, oldtransform)
+				if(isliving(AM))
+					var/mob/living/L = AM
+					L.notransform = FALSE
+			else
+				finishdrop(AM, oldtransform, oldcolor, oldalpha)
+
+
+/datum/component/chasm/proc/finishdrop(atom/movable/AM, oldalpha = "", oldcolor = "", oldtransform = "")
+
+	animate(AM, transform = matrix() - matrix(), alpha = 0, color = rgb(0, 0, 0), time = 10)
+
+	for(var/i in 1 to 5)
+		//Make sure the item is still there after our sleep
+		if(!AM || QDELETED(AM))
+			return
+		AM.pixel_y--
+		sleep(2)
+
+	//Make sure the item is still there after our sleep
+	if(!AM || QDELETED(AM))
+		return
+
+	if(iscyborg(AM))
+		var/mob/living/silicon/robot/S = AM
+		qdel(S.mmi)
+
+	falling_atoms -= AM
+	qdel(AM)
+	if(AM && !QDELETED(AM))	//It's indestructible
+		var/atom/parent = src.parent
+		parent.visible_message("<span class='boldwarning'>[parent] spits out [AM]!</span>")
+		AM.alpha = oldalpha
+		AM.color = oldcolor
+		AM.transform = oldtransform
+		AM.throw_at(get_edge_target_turf(parent,pick(GLOB.alldirs)),rand(1, 10),rand(1, 10))
