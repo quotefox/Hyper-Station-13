@@ -157,8 +157,13 @@ Class Procs:
 /obj/machinery/proc/locate_machinery()
 	return
 
-/obj/machinery/process()//If you dont use process or power why are you here
-	return PROCESS_KILL
+/obj/machinery/process()
+
+	//Here because if the machine doesn't have a process code attached to it or if PROCESS_KILL is returned it will no longer draw power.
+	if(is_operational())
+		return 1
+	else
+		return 0
 
 /obj/machinery/proc/process_atmos()//If you dont use process why are you here
 	return PROCESS_KILL

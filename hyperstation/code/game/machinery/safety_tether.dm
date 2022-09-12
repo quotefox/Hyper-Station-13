@@ -72,10 +72,10 @@
 
 	use_power = IDLE_POWER_USE
 	power_channel = EQUIP
-	idle_power_usage = 500
-	var/teleport_power_usage = 10000
+	idle_power_usage = 1000
+	var/teleport_power_usage = 1000000 //Uses about a fourth of the upgraded power cell plus default in APCs
 
-	var/critical_machine = FALSE //If this machine is critical to station operation and should have the area be excempted from power failures.
+	critical_machine = FALSE //If this machine is critical to station operation and should have the area be excempted from power failures.
 
 	var/internal_radio = TRUE
 	var/obj/item/radio/radio
@@ -101,31 +101,24 @@
 	//ensures light is properly centered around the tether. Removes lighting system's pixel approximation that breaks it.
 	light_source = get_turf(src)
 	update_icon()
+	power_change() //Here to start lights on ititialization.
+
+/obj/machinery/safety_tether/Destroy()
+	QDEL_NULL(radio)
+	GLOB.safety_tethers_list -= src
+	. = ..()
 
 /obj/machinery/safety_tether/doMove(atom/destination)
 	. = ..()
 	//ensures light is properly centered around the tether. Removes lighting system's pixel approximation that breaks it.
 	light_source = get_turf(src)
-
 	return .
-
-/obj/machinery/safety_tether/Destroy()
-	QDEL_NULL(radio)
-
-	GLOB.safety_tethers_list -= src
-
-	//if made into connected machine later, like gravgen
-	//if(connected)
-	//	connected.DetachCloner(src)
-
-	. = ..()
 
 /obj/machinery/safety_tether/update_icon()
 	cut_overlays()
 	if(is_operational())
 		add_overlay("operational_overlay")
 
-//Clonepod
 
 /obj/machinery/safety_tether/examine(mob/user)
 	. = ..()
@@ -141,20 +134,17 @@
 //Returns true if teleport is successful, false otherwise
 /obj/machinery/safety_tether/proc/bungee_teleport(mob/living/M)
 
-	priority_announce("Tether bungee activated!")
-
 	if(ismovableatom(M) && is_operational() != 0 && do_teleport(M, get_turf(src), channel = TELEPORT_CHANNEL_BLUESPACE))
 		use_power(teleport_power_usage)
 
 		M.spawn_gibs()
 		M.emote("scream")
 
+		//priority_announce("[M] ([key_name(M)]) had a tether mishap")
+
 		if(iscarbon(M))
 
 			var/mob/living/carbon/Carbon = M
-
-			//Rework to teleporter mishap
-			priority_announce("[Carbon] ([key_name(Carbon)]) had a tether mishap")
 
 			to_chat(Carbon, "<span class='italics'>Buzzing static snaps taut on your chest....</span>")
 			Carbon.adjustCloneLoss(rand(40,75))
@@ -209,8 +199,6 @@
 		else
 			if(issilicon(M))
 				var/mob/living/silicon/S = M
-				//Rework to teleporter mishap
-				priority_announce("[S] ([key_name(S)]) had a tether mishap")
 				to_chat(S, "<span class='italics'>Your circuits spark, slag, and pop as overwhelming white noise crackles and YANKS...</span>")
 				S.apply_damage_type(damage = rand(silicon_burn_min, silicon_burn_max), damagetype = BURN)
 
@@ -229,10 +217,11 @@
 //Updates machine icon and lighting every time power in the area changes
 /obj/machinery/safety_tether/power_change()
 	. = ..()
-	if(stat & NOPOWER)
-		light_source.set_light(0)
-	else
-		light_source.set_light(brightness_on, light_power, light_color)
+	if(light_source)
+		if(stat & NOPOWER)
+			light_source.set_light(0)
+		else
+			light_source.set_light(brightness_on, light_power, light_color)
 	update_icon()
 
 //possible emagging or other interactions later, like EMPs
@@ -317,4 +306,3 @@
 //#undef SPEAK
 #undef SPEAKMEDICAL
 #undef SPEAKSCIENCE
-

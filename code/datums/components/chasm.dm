@@ -137,8 +137,6 @@
 
 			var/tether_number = GLOB.safety_tethers_list.len
 
-			priority_announce("[tether_number] tethers present.")
-
 			//If safety tethers are present, get one from the global list to teleport the body to if operational
 			if(tether_number > 0)
 				if(tether_number == 1)
