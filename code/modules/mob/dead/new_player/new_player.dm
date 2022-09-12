@@ -41,11 +41,16 @@
 		switch(ready)
 			if(PLAYER_NOT_READY)
 				output += "<p><a style='background:#912c24;' href='byond://?src=[REF(src)];ready=[PLAYER_READY_TO_PLAY]'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "notready")]Not Ready</a></p>"
+			if(PLAYER_READY_TO_OBSERVE)
+				output += "<p><a style='background:#912c24;' href='byond://?src=[REF(src)];ready=[PLAYER_READY_TO_PLAY]'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "notready")]Not Ready</a></p>"
 			if(PLAYER_READY_TO_PLAY)
 				output += "<p><a style='background:#4CAF50;'  href='byond://?src=[REF(src)];ready=[PLAYER_NOT_READY]'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "ready")]Ready</a></p>"
-			if(PLAYER_READY_TO_OBSERVE)
-				output += "<p>\[ [LINKIFY_READY("Ready", PLAYER_READY_TO_PLAY)] | [LINKIFY_READY("Not Ready", PLAYER_NOT_READY)] | <b> Observe </b> \]</p>"
 		output += "<p><a href='byond://?src=[REF(src)];show_preferences=1'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "settings")]Setup Character</a></p>"
+		if(ready == PLAYER_READY_TO_OBSERVE)
+			output += "<p><a style='background:#4CAF50;' href='byond://?src=[REF(src)];ready=[PLAYER_READY_TO_OBSERVE]'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "ghost")]Observe</a></p>"
+		else
+			output += "<p><a style='background:#912c24;' href='byond://?src=[REF(src)];ready=[PLAYER_READY_TO_OBSERVE]'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "ghost")]Observe</a></p>"
+
 	else
 		//make menu preview
 		var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_ROLEPLAY)
@@ -67,7 +72,7 @@
 		output += "<p><a href='byond://?src=[REF(src)];manifest=1'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "manifest")]View the Crew Manifest</a></p>"
 		output += "<p><a href='byond://?src=[REF(src)];ready=[PLAYER_READY_TO_OBSERVE]'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "ghost")]Observe</a></p>"
 
-	if(!IsGuestKey(src.key))
+	if(!IsGuestKey(src.key) && SSticker.current_state >= GAME_STATE_PREGAME)
 		if (SSdbcore.Connect())
 			var/isadmin = 0
 			if(src.client && src.client.holder)
@@ -120,6 +125,15 @@
 		client.prefs.ShowChoices(src)
 		return 1
 
+	if(href_list["observe"])
+		if(!SSticker.current_state > GAME_STATE_PREGAME)
+			make_me_an_observer()
+			return
+		else
+			to_chat(usr, "<span class='notice'>The game is still loading...</span>")
+			return
+
+
 	if(href_list["ready"])
 		var/tready = text2num(href_list["ready"])
 		//Avoid updating ready if we're after PREGAME (they should use latejoin instead)
@@ -127,6 +141,10 @@
 		//no longer is required
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
 			ready = tready
+
+		if (tready == PLAYER_READY_TO_OBSERVE && ready == PLAYER_READY_TO_OBSERVE)
+			ready = PLAYER_NOT_READY
+			return
 		//if it's post initialisation and they're trying to observe we do the needful
 		if(!SSticker.current_state < GAME_STATE_PREGAME && tready == PLAYER_READY_TO_OBSERVE)
 			ready = tready
