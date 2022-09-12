@@ -146,7 +146,7 @@
 		M.spawn_gibs()
 		M.emote("scream")
 
-		//priority_announce("[M] ([key_name(M)]) had a tether mishap")
+		log_admin("[M] ([key_name(M)]) was saved by the Safety Tether.")
 
 		if(iscarbon(M))
 
@@ -219,6 +219,7 @@
 		return TRUE
 
 	else
+		log_admin("[M] ([key_name(M)]) was failed by the Safety Tether and fell into the clouds.")
 		return FALSE
 
 //Updates machine icon and lighting every time power in the area changes
