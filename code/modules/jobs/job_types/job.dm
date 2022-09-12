@@ -66,6 +66,9 @@
 	//whitelisting
 	var/whitelist_type = ""
 
+	//load characters loadout on spawn
+	var loadout = TRUE
+
 //Only override this proc
 //H is usually a human unless an /equip override transformed it
 /datum/job/proc/after_spawn(mob/living/H, mob/M, latejoin = FALSE)
