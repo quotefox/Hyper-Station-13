@@ -47,7 +47,7 @@
 				output += "<p><a style='background:#4CAF50;'  href='byond://?src=[REF(src)];ready=[PLAYER_NOT_READY]'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "ready")]Ready</a></p>"
 		output += "<p><a href='byond://?src=[REF(src)];show_preferences=1'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "settings")]Setup Character</a></p>"
 		if(ready == PLAYER_READY_TO_OBSERVE)
-			output += "<p><a style='background:#4CAF50;' href='byond://?src=[REF(src)];ready=[PLAYER_READY_TO_OBSERVE]'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "ghost")]Observe</a></p>"
+			output += "<p><a style='background:#4CAF50;' href='byond://?src=[REF(src)];ready=[PLAYER_NOT_READY]'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "ghost")]Observe</a></p>"
 		else
 			output += "<p><a style='background:#912c24;' href='byond://?src=[REF(src)];ready=[PLAYER_READY_TO_OBSERVE]'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "ghost")]Observe</a></p>"
 
@@ -142,9 +142,6 @@
 		if(SSticker.current_state <= GAME_STATE_PREGAME)
 			ready = tready
 
-		if (tready == PLAYER_READY_TO_OBSERVE && ready == PLAYER_READY_TO_OBSERVE)
-			ready = PLAYER_NOT_READY
-			return
 		//if it's post initialisation and they're trying to observe we do the needful
 		if(!SSticker.current_state < GAME_STATE_PREGAME && tready == PLAYER_READY_TO_OBSERVE)
 			ready = tready
