@@ -4,6 +4,12 @@
 //Potential replacement for genetics revives or something I dunno (?)
 
 
+//bugs; power draw not working
+//		mapmaker bug, either is centered in map editor or lighting is centered, not both
+
+//		Maybe if separating into multiple objects like with the grav gen, have it arc tesla lightning to each corner upon teleport?
+
+
 // Have it pull back all player mobs, and all borgs if possible
 // have chasm tiles, when something falls in send a signal that the safety tether catches, containing the chasm turf and the mob
 // then the tether can either report it's inactive to the tile so that it then deletes the entity, or teeleport the player
@@ -23,6 +29,15 @@
 	icon_state = "safety_tether"
 	verb_say = "states"
 
+	//'Center' of machine is the bottom left corner. Since whole machine is walkable, it's fine and looks better for mapping
+	//Translates whole machine to center it up properly, since the actual center is the bottom left corner.
+	transform = matrix(1, 0, -32, 0, 1, -32)
+
+	//Set width and height in case we make this dense
+	bound_width = 96
+	bound_height = 96
+
+	//We don't want this getting destroyed since it cannot be remade.
 	move_resist = INFINITY
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
@@ -37,6 +52,9 @@
 	var/cloneloss_min = 45
 	var/cloneloss_max = 70
 
+	//Amount of subject's blood to keep on successful teleport
+	var/bleed_ratio = 0.75
+
 	//Max and min amounts of burn damage for silicates.
 	/*
 	Cyborg health guide
@@ -49,6 +67,16 @@
 	var/silicon_burn_min = 120
 	var/silicon_burn_max = 140
 
+	var/brightness_on = 4 //range of light when on
+	light_power = 1.5 //strength of the light when on
+	light_color = LIGHT_COLOR_CYAN
+
+	use_power = IDLE_POWER_USE
+	power_channel = EQUIP
+	idle_power_usage = 500
+	active_power_usage = 500
+	var/teleport_power_usage = 10000
+
 	var/internal_radio = TRUE
 	var/obj/item/radio/radio
 
@@ -56,11 +84,6 @@
 	var/radio_key = /obj/item/encryptionkey/headset_medsci
 
 	//var/radio_channel = RADIO_CHANNEL_MEDICAL
-
-	//var/list/unattached_flesh
-	//var/flesh_number = 0
-
-	//var/size = 1
 
 /obj/machinery/safety_tether/Initialize()
 	. = ..()
@@ -75,18 +98,16 @@
 		radio.canhear_range = 0
 		radio.recalculateChannels()
 
-	var/matrix/M = src.transform
-	src.transform = M.Translate(-32,-32)
-
 	update_icon()
 
 /obj/machinery/safety_tether/Destroy()
 	QDEL_NULL(radio)
 
 	GLOB.safety_tethers_list -= src
+
+	//if made into connected machine later, like gravgen
 	//if(connected)
 	//	connected.DetachCloner(src)
-	//QDEL_LIST(unattached_flesh)
 
 	. = ..()
 
@@ -109,14 +130,12 @@
 	return examine(user)
 
 //Returns true if teleport is successful, false otherwise
-/obj/machinery/safety_tether/proc/bungee_teleport(datum/component/chasm/C, mob/living/M, oldalpha, oldcolor, oldtransform)
+/obj/machinery/safety_tether/proc/bungee_teleport(mob/living/M)
 
 	priority_announce("Tether bungee activated!")
 
 	if(ismovableatom(M) && is_operational() != 0 && do_teleport(M, get_turf(src), channel = TELEPORT_CHANNEL_BLUESPACE))
-		use_power(5000)
-
-		priority_announce("Do teleport worked!")
+		use_power(teleport_power_usage)
 
 		M.spawn_gibs()
 		M.emote("scream")
@@ -162,7 +181,7 @@
 						break
 
 			//Bleed our pal a little
-			M.blood_volume = BLOOD_VOLUME_NORMAL * M.blood_ratio * 0.8
+			M.blood_volume = BLOOD_VOLUME_NORMAL * M.blood_ratio * bleed_ratio
 
 			src.visible_message("<span class='boldwarning'>[src] spits out [M] and viscera!</span>")
 			if(internal_radio)
@@ -172,6 +191,7 @@
 				var/area_name = A.name
 				SPEAKMEDICAL("The safety tether's caught the would-be crater [M] at the [area_name].")
 
+			//All this ended up causing issues by canting the player 90 degrees due to the player having enforced rest at the time of teleportation
 			//animate(M, transform = oldtransform, alpha = oldalpha, color = oldcolor, time = 10)
 
 			//M.transform = oldtransform
@@ -195,10 +215,20 @@
 		return TRUE
 
 	else
-		//drop them to their doom
 		return FALSE
-		var/atom/movable/AM = M
-		C.finishdrop(AM, oldalpha, oldcolor, oldtransform)
+
+//Updates machine icon and lighting depending on whether or not it's being powered
+
+/obj/machinery/safety_tether/power_change()
+	..()
+	if(stat & NOPOWER)
+		set_light(0)
+	else
+		set_light(brightness_on)
+	update_icon()
+	return
+
+//possible emagging or other interactions later, like EMPs
 /*
 /obj/machinery/safety_tether/emag_act(mob/user)
 	if(!occupant)
@@ -246,54 +276,8 @@
 		go_out()
 	..()
 */
-//#define CRYOMOBS 'icons/obj/cryo_mobs.dmi'
-/*
-/obj/machinery/clonepod/update_icon()
-	cut_overlays()
 
-	if(mess)
-		icon_state = "pod_g"
-		var/image/gib1 = image(CRYOMOBS, "gibup")
-		var/image/gib2 = image(CRYOMOBS, "gibdown")
-		gib1.pixel_y = 27 + round(sin(world.time) * 3)
-		gib1.pixel_x = round(sin(world.time * 3))
-		gib2.pixel_y = 27 + round(cos(world.time) * 3)
-		gib2.pixel_x = round(cos(world.time * 3))
-		add_overlay(gib2)
-		add_overlay(gib1)
-		add_overlay("cover-on")
-
-	else if(occupant)
-		icon_state = "pod_1"
-
-		var/image/occupant_overlay
-		var/completion = (flesh_number - unattached_flesh.len) / flesh_number
-
-		if(unattached_flesh.len <= 0)
-			occupant_overlay = image(occupant.icon, occupant.icon_state)
-			occupant_overlay.copy_overlays(occupant)
-		else
-			occupant_overlay = image(CRYOMOBS, "clone_meat")
-			var/matrix/tform = matrix()
-			tform.Scale(completion)
-			tform.Turn(cos(world.time * 2) * 3)
-			occupant_overlay.transform = tform
-			occupant_overlay.appearance_flags = 0
-
-		occupant_overlay.dir = SOUTH
-		occupant_overlay.pixel_y = 27 + round(sin(world.time) * 3)
-		occupant_overlay.pixel_x = round(sin(world.time * 3))
-
-		add_overlay(occupant_overlay)
-		add_overlay("cover-on")
-	else
-		icon_state = "pod_0"
-
-	if(panel_open)
-		icon_state = "pod_0_maintenance"
-
-	add_overlay("panel")
-*/
+// Write up a manual maybe?
 /*
  *	Manual -- A big ol' manual.
  */

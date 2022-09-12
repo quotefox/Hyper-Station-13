@@ -12615,6 +12615,9 @@
 	icon_state = "sandyfloor_red";
 	name = "crimson sand"
 	},
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
 /turf/open/floor/plasteel/airless/solarpanel{
 	initial_gas_mix = "o2=22;n2=82;TEMP=180";
 	planetary_atmos = 1
@@ -42969,6 +42972,10 @@
 	name = "parquet"
 	},
 /area/chapel/main)
+"gQR" = (
+/obj/machinery/safety_tether,
+/turf/open/floor/engine,
+/area/engine/tether)
 "gQT" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -207374,7 +207381,7 @@ ykt
 wWR
 woc
 jgm
-jgm
+gQR
 jgm
 pLi
 pIP

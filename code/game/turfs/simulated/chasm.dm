@@ -12,7 +12,7 @@
 
 /turf/open/chasm/Initialize()
 	. = ..()
-	AddComponent(/datum/component/chasm, SSmapping.get_turf_below(src))
+	AddComponent(/datum/component/chasm, SSmapping.get_turf_below(src), src)
 
 /turf/open/chasm/proc/set_target(turf/target)
 	var/datum/component/chasm/chasm_component = GetComponent(/datum/component/chasm)
@@ -23,17 +23,6 @@
 /turf/open/chasm/proc/drop(atom/movable/AM)
 
 	var/datum/component/chasm/chasm_component = GetComponent(/datum/component/chasm)
-	/*
-	//if(baseturfs == /turf/open/chasm/cloud)
-	if(iscyborg(AM) || iscarbon(AM))
-		var/mob/victim = AM
-		priority_announce("Signal sending!")
-		//Sends the signal that a carbon or silicon mob's been clouded
-		SEND_SIGNAL(src, COMSIG_GLOB_MOB_CLOUDED, victim)
-		priority_announce("Signal sent!")
-		chasm_component.drop(AM, TRUE)
-	//else
-	*/
 	chasm_component.drop(AM)
 
 
