@@ -3,7 +3,7 @@
 /////////////////////////////
 /datum/sprite_accessory/facial_hair
 	icon = 'icons/mob/human_face.dmi'
-	gender = MALE // barf (unless you're a dorf, dorfs dig chix w/ beards :P)
+	gender = NEUTER // barf (unless you're a dorf, dorfs dig chix w/ beards :P)
 
 // please make sure they're sorted alphabetically and categorized
 
@@ -86,4 +86,3 @@
 
 /datum/sprite_accessory/facial_hair/elvis
 	name = "Sideburns (Elvis)"
-	icon_state = "facial_elvis"

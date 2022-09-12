@@ -437,7 +437,7 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	name = "RadDog (Hyper)"
 	icon_state = "chemlight"
 	icon = 'hyperstation/icons/mob/char_markings.dmi'
-	
+
 //racc do a code maybe it won't explode
 /datum/sprite_accessory/mam_body_markings/raccalt
 	name = "RaccAlt (Hyper)"
@@ -543,7 +543,7 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 /datum/sprite_accessory/screen/visor/blue
 	name = "Blue Visor (Hyper)"
 	icon_state = "visor_blue"
-	
+
 /datum/sprite_accessory/screen/visor/green
 	name = "Green Visor (Hyper)"
 	icon_state = "visor_green"
@@ -559,7 +559,7 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 /datum/sprite_accessory/screen/visor/yellow
 	name = "Yellow Visor (Hyper)"
 	icon_state = "visor_yellow"
-	
+
 
 /*
 HAIRSTYLES
@@ -601,3 +601,18 @@ from code/modules/mob/dead/new_player/sprite_accessories/hair_head.dm:
 /datum/sprite_accessory/hair/emoh
 	name = "Emo (Hyper)"
 	icon_state = "hair_emoh"
+
+/*
+BEARDS
+==========================================================
+*/
+
+/*
+/datum/sprite_accessory/facial_hair
+	icon = 'icons/mob/human_face.dmi'
+	gender = MALE // barf (unless you're a dorf, dorfs dig chix w/ beards :P)
+*/
+
+/datum/sprite_accessory/facial_hair/mane
+	name = "Neckfluff (Hyper)"
+	icon_state = "facial_neckfluff"

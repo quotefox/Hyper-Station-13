@@ -49,6 +49,7 @@
 #define ASSISTANT		(1<<13)
 #define BARBER			(1<<14)
 #define BARISTA			(1<<15)
+#define ROLEPLAY		(1<<16)
 
 #define JOB_AVAILABLE 0
 #define JOB_UNAVAILABLE_GENERIC 1
