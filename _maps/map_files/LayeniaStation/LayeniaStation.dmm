@@ -8904,9 +8904,12 @@
 /turf/open/floor/plating/asteroid/layenia,
 /area/layenia/cave)
 "biu" = (
-/obj/structure/flora/crystal/small/growth,
-/turf/open/indestructible/layenia/sand{
-	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
+/obj/structure/railing{
+	dir = 1
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_plate"
 	},
 /area/hallway/primary/aft/upper)
 "biA" = (
@@ -21066,6 +21069,9 @@
 	name = "scrubbers pipe"
 	},
 /obj/machinery/door/firedoor/heavy,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -29935,6 +29941,19 @@
 "ePg" = (
 /turf/closed/wall/r_wall,
 /area/maintenance/solars/port/fore)
+"ePs" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/obj/machinery/door/poddoor/preopen{
+	dir = 8;
+	id = "bridgespace";
+	name = "bridge external shutters"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/hallway/primary/aft/upper)
 "ePt" = (
 /obj/effect/turf_decal/loading_area{
 	color = "#55391A";
@@ -38227,6 +38246,10 @@
 	},
 /area/crew_quarters/dorms/upper)
 "gdN" = (
+/obj/structure/flora/crystal/small/growth,
+/obj/structure/sign/poster/random{
+	pixel_x = 32
+	},
 /turf/open/indestructible/layenia/sand{
 	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
 	},
@@ -46439,6 +46462,15 @@
 	},
 /turf/open/floor/engine,
 /area/engine/engineering/reactor_core)
+"hqM" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_trim"
+	},
+/area/bridge)
 "hqO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
@@ -47883,6 +47915,12 @@
 	name = "parquet"
 	},
 /area/crew_quarters/bar/cafe)
+"hBJ" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/dark,
+/area/bridge)
 "hBM" = (
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
@@ -63127,6 +63165,21 @@
 	},
 /turf/open/floor/circuit/telecomms,
 /area/science/xenobiology)
+"jNZ" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable{
+	icon_state = "0-2"
+	},
+/obj/machinery/door/poddoor/preopen{
+	dir = 8;
+	id = "bridgespace";
+	name = "bridge external shutters"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/hallway/primary/aft/upper)
 "jOa" = (
 /obj/structure/table,
 /obj/item/stock_parts/subspace/filter,
@@ -74614,8 +74667,9 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plasteel/dark/side{
-	dir = 4
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_trim"
 	},
 /area/bridge)
 "lDk" = (
@@ -77960,6 +78014,12 @@
 	icon_state = "darkfull_plate"
 	},
 /area/security/checkpoint/science)
+"mfV" = (
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_trim"
+	},
+/area/hallway/primary/aft/upper)
 "mge" = (
 /obj/structure/chair{
 	dir = 8
@@ -82446,6 +82506,9 @@
 /obj/machinery/atmospherics/pipe/manifold4w/supply/hidden/layer3{
 	name = "air supply pipe"
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "mNt" = (
@@ -83344,6 +83407,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 8
@@ -92697,6 +92763,9 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	name = "air scrubber"
 	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /turf/open/floor/plasteel/dark,
 /area/bridge)
 "omB" = (
@@ -92984,6 +93053,9 @@
 "oou" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
 	name = "air vent"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /turf/open/floor/plasteel/dark,
 /area/bridge)
@@ -100980,13 +101052,7 @@
 	},
 /area/science/circuit)
 "ppi" = (
-/obj/structure/railing{
-	dir = 1
-	},
 /obj/item/twohanded/required/kirbyplants/random,
-/obj/structure/sign/poster/random{
-	pixel_x = 32
-	},
 /turf/open/floor/plasteel/dark{
 	dir = 4;
 	icon_state = "darkfull_plate"
@@ -108623,10 +108689,21 @@
 /turf/open/floor/plasteel/white,
 /area/medical/virology)
 "qun" = (
-/obj/structure/sign/nanotrasen{
-	pixel_y = 31
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
 	},
-/turf/open/floor/plasteel/dark/corner,
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_trim"
+	},
 /area/bridge)
 "quv" = (
 /obj/structure/cable{
@@ -117768,8 +117845,8 @@
 	pixel_y = -1
 	},
 /obj/item/twohanded/required/kirbyplants/random,
-/turf/open/floor/plasteel/dark/corner{
-	dir = 4
+/turf/open/floor/plasteel/dark/side{
+	dir = 1
 	},
 /area/bridge)
 "rFz" = (
@@ -122018,6 +122095,9 @@
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
 	},
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 8
 	},
@@ -123558,6 +123638,30 @@
 	icon_state = "floor_plate"
 	},
 /area/crew_quarters/dorms/upper)
+"stF" = (
+/obj/machinery/door/airlock/command/glass{
+	dir = 4;
+	name = "Ferry Docking Airlock";
+	req_access_txt = "19"
+	},
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/obj/machinery/door/poddoor/preopen{
+	dir = 8;
+	id = "bridgespace";
+	name = "bridge external shutters"
+	},
+/obj/machinery/door/firedoor{
+	dir = 8
+	},
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/hallway/primary/aft/upper)
 "stI" = (
 /obj/structure/ladder,
 /turf/open/floor/plating,
@@ -129263,7 +129367,13 @@
 	dir = 1;
 	name = "air supply pipe"
 	},
-/turf/open/floor/plasteel/dark,
+/obj/structure/cable{
+	icon_state = "2-4"
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 4;
+	icon_state = "darkfull_trim"
+	},
 /area/bridge)
 "tju" = (
 /obj/structure/cable{
@@ -136853,6 +136963,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/dark,
 /area/bridge)
@@ -146619,6 +146732,9 @@
 	},
 /obj/machinery/camera/autoname{
 	dir = 8
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
 	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 8
@@ -157864,7 +157980,13 @@
 	dir = 4;
 	name = "scrubbers pipe"
 	},
-/turf/open/floor/plasteel/dark,
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/dark{
+	dir = 8;
+	icon_state = "darkfull_trim"
+	},
 /area/bridge)
 "xhO" = (
 /obj/structure/trash_pile,
@@ -163194,6 +163316,9 @@
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
+	},
+/obj/structure/cable{
+	icon_state = "1-2"
 	},
 /turf/open/floor/plasteel/dark/side{
 	dir = 8
@@ -257052,7 +257177,7 @@ jcF
 kcC
 bHk
 kFC
-bhk
+kFC
 bhk
 qZk
 bca
@@ -257824,8 +257949,8 @@ ydu
 dgu
 dgu
 dgu
-dgu
-dgu
+ydu
+ydu
 ydu
 ydu
 xFG
@@ -258082,7 +258207,7 @@ fSd
 pxr
 gdN
 biu
-fSd
+mfV
 ppi
 wNm
 beE
@@ -258338,9 +258463,9 @@ xep
 xep
 xep
 xep
-xep
-xep
-xep
+jNZ
+stF
+ePs
 xep
 bQr
 ojU
@@ -258595,8 +258720,8 @@ uMt
 sVQ
 jUY
 dsv
-qun
-xYB
+lzr
+hqM
 rFs
 xep
 xIn
@@ -258853,7 +258978,7 @@ xFo
 xFo
 vAh
 wPH
-vor
+hBJ
 sGW
 xep
 rLw
@@ -259110,7 +259235,7 @@ wZA
 xFo
 vAh
 wPH
-vor
+hBJ
 sGW
 xep
 jPA
@@ -259624,7 +259749,7 @@ wZA
 nRt
 rHk
 wPH
-vor
+hBJ
 iuc
 xep
 xQy
@@ -260138,7 +260263,7 @@ wZA
 xFo
 vAh
 wPH
-vor
+hBJ
 dqp
 xep
 bfa
@@ -260395,7 +260520,7 @@ xFo
 xFo
 vAh
 wPH
-vor
+hBJ
 dqp
 xep
 aXf
@@ -260652,7 +260777,7 @@ vAh
 vAh
 dsv
 lzr
-vor
+hBJ
 ozL
 xep
 oFj
@@ -260909,7 +261034,7 @@ xYB
 xOb
 xYB
 xfx
-vor
+hBJ
 oAY
 xep
 xQy
@@ -261930,7 +262055,7 @@ pPj
 yfh
 eic
 ujI
-xhM
+fFc
 skM
 wKH
 wYk
@@ -262701,7 +262826,7 @@ eic
 qhD
 eic
 lBm
-fFc
+qun
 kGO
 wKH
 uyq
