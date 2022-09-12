@@ -1,13 +1,8 @@
-//Cloning revival method.
-//The pod handles the actual cloning while the computer manages the clone profiles
-
-//Potential replacement for genetics revives or something I dunno (?)
-
+//Teleports players who fall off cloud chasm tiles to itself, drawing power in the process.
 
 //bugs; power draw not working
-//		mapmaker bug, either is centered in map editor or lighting is centered, not both
 
-//		Maybe if separating into multiple objects like with the grav gen, have it arc tesla lightning to each corner upon teleport?
+//Maybe if separating into multiple objects like with the grav gen, have it arc tesla lightning to each corner upon teleport?
 
 
 // Have it pull back all player mobs, and all borgs if possible
@@ -16,6 +11,7 @@
 
 // create global list of safety tethers in the world to then process
 
+//Easy definitions to have the machine talk on the appropriate frequencies.
 //#define SPEAK(message) radio.talk_into(src, message, radio_channel)
 
 #define SPEAKMEDICAL(message) radio.talk_into(src, message, RADIO_CHANNEL_MEDICAL)
@@ -29,9 +25,9 @@
 	icon_state = "safety_tether"
 	verb_say = "states"
 
-	//'Center' of machine is the bottom left corner. Since whole machine is walkable, it's fine and looks better for mapping
-	//Translates whole machine to center it up properly, since the actual center is the bottom left corner.
-	transform = matrix(1, 0, -32, 0, 1, -32)
+	//Shifts the starting location so as to center the machine
+	pixel_x = -32
+	pixel_y = -32
 
 	//Set width and height in case we make this dense
 	bound_width = 96
@@ -41,8 +37,7 @@
 	move_resist = INFINITY
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
 
-	//var/obj/machinery/computer/cloning/connected = null //So we remember the connected clone machine.
-
+	//var/obj/machinery/computer/tether_computer/connected = null //So we remember the connected clone machine.
 
 	//Here for easy balancing and possibly changing it between different tether objects or if upgrades occur.
 
@@ -67,15 +62,20 @@
 	var/silicon_burn_min = 120
 	var/silicon_burn_max = 140
 
-	var/brightness_on = 4 //range of light when on
-	light_power = 1.5 //strength of the light when on
+	var/brightness_on = 4 //Range of light when on
+	light_power = 1.5 //Strength of the light when on
 	light_color = LIGHT_COLOR_CYAN
+
+	//Defines the center point around which lighting is located
+	var/atom/light_source
+	//_mask = matrix(1, 0, 32, 0, 1, 32)
 
 	use_power = IDLE_POWER_USE
 	power_channel = EQUIP
 	idle_power_usage = 500
-	active_power_usage = 500
 	var/teleport_power_usage = 10000
+
+	var/critical_machine = FALSE //If this machine is critical to station operation and should have the area be excempted from power failures.
 
 	var/internal_radio = TRUE
 	var/obj/item/radio/radio
@@ -98,7 +98,16 @@
 		radio.canhear_range = 0
 		radio.recalculateChannels()
 
+	//ensures light is properly centered around the tether. Removes lighting system's pixel approximation that breaks it.
+	light_source = get_turf(src)
 	update_icon()
+
+/obj/machinery/safety_tether/doMove(atom/destination)
+	. = ..()
+	//ensures light is properly centered around the tether. Removes lighting system's pixel approximation that breaks it.
+	light_source = get_turf(src)
+
+	return .
 
 /obj/machinery/safety_tether/Destroy()
 	QDEL_NULL(radio)
@@ -217,16 +226,14 @@
 	else
 		return FALSE
 
-//Updates machine icon and lighting depending on whether or not it's being powered
-
+//Updates machine icon and lighting every time power in the area changes
 /obj/machinery/safety_tether/power_change()
-	..()
+	. = ..()
 	if(stat & NOPOWER)
-		set_light(0)
+		light_source.set_light(0)
 	else
-		set_light(brightness_on)
+		light_source.set_light(brightness_on, light_power, light_color)
 	update_icon()
-	return
 
 //possible emagging or other interactions later, like EMPs
 /*
