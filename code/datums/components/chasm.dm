@@ -132,7 +132,7 @@
 				playsound(AM, pick('hyperstation/sound/misc/yodadeath.ogg', 'hyperstation/sound/misc/fallingthroughclouds.ogg', 'hyperstation/sound/misc/goofy.ogg', 'hyperstation/sound/misc/wilhelm.ogg'), 100, 0)
 
 
-		if(linked_turf.name == "clouds" && iscyborg(AM) || iscarbon(AM))
+		if(linked_turf.name == "clouds" && (iscyborg(AM) || iscarbon(AM)))
 			var/mob/living/victim = AM
 
 			var/tether_number = GLOB.safety_tethers_list.len

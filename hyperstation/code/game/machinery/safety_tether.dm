@@ -47,8 +47,8 @@
 	var/cloneloss_min = 45
 	var/cloneloss_max = 70
 
-	//Amount of subject's blood to keep on successful teleport
-	var/bleed_ratio = 0.75
+	//Amount of subject's blood to remove on successful teleport
+	var/bleed_ratio = 0.25
 
 	//Max and min amounts of burn damage for silicates.
 	/*
@@ -74,9 +74,9 @@
 	power_channel = EQUIP
 	idle_power_usage = 1000
 	var/teleport_power_draw = 900000 //Uses about a fourth of the upgraded power cell plus default in APCs
-	var/tesla_power_ratio = 0.01 //ratio of its actual power draw to the tesla it creates, 9000 total looks decent
+	var/tesla_power_ratio = 0.75 //ratio of its actual power draw to the tesla it creates
 
-	critical_machine = FALSE //If this machine is critical to station operation and should have the area be excempted from power failures.
+	critical_machine = TRUE //If this machine is critical to station operation and should have the area be excempted from power failures.
 
 	var/internal_radio = TRUE
 	var/obj/item/radio/radio
@@ -153,7 +153,7 @@
 			var/mob/living/carbon/Carbon = M
 
 			to_chat(Carbon, "<span class='italics'>Buzzing static snaps taut on your chest....</span>")
-			Carbon.adjustCloneLoss(rand(40,75))
+			Carbon.adjustCloneLoss(rand(cloneloss_min, cloneloss_max))
 
 			//Random limb removal
 			var/dismember_num = 1
@@ -186,7 +186,7 @@
 						break
 
 			//Bleed our pal a little
-			M.blood_volume = BLOOD_VOLUME_NORMAL * M.blood_ratio * bleed_ratio
+			M.blood_volume -= BLOOD_VOLUME_NORMAL * M.blood_ratio * bleed_ratio
 
 			src.visible_message("<span class='boldwarning'>[src] spits out [M] and viscera!</span>")
 			if(internal_radio)
@@ -208,6 +208,7 @@
 				to_chat(S, "<span class='italics'>Your circuits spark, slag, and pop as overwhelming white noise crackles and YANKS...</span>")
 				S.apply_damage_type(damage = rand(silicon_burn_min, silicon_burn_max), damagetype = BURN)
 
+				src.visible_message("<span class='boldwarning'>[src] spits out [M] and oily, smoking circuits!</span>")
 				if(internal_radio)
 
 					//Area name gotten just in case the locale of it's moved from engineering when mapmaking.
@@ -230,84 +231,21 @@
 			light_source.set_light(brightness_on, light_power, light_color)
 	update_icon()
 
-//possible emagging or other interactions later, like EMPs
-/*
-/obj/machinery/safety_tether/emag_act(mob/user)
-	if(!occupant)
-		return
-	to_chat(user, "<span class='warning'>You corrupt the genetic compiler.</span>")
-	malfunction()
-
-/obj/machinery/clonepod/proc/malfunction()
-	var/mob/living/mob_occupant = occupant
-	if(mob_occupant)
-		connected_message("Critical Error!")
-		SPEAK("Critical error! Please contact a Thinktronic Systems \
-			technician, as your warranty may be affected.")
-		mess = TRUE
-		maim_clone(mob_occupant)	//Remove every bit that's grown back so far to drop later, also destroys bits that haven't grown yet
-		update_icon()
-		if(mob_occupant.mind != clonemind)
-			clonemind.transfer_to(mob_occupant)
-		mob_occupant.grab_ghost() // We really just want to make you suffer.
-		flash_color(mob_occupant, flash_color="#960000", flash_time=100)
-		to_chat(mob_occupant, "<span class='warning'><b>Agony blazes across your consciousness as your body is torn apart.</b><br><i>Is this what dying is like? Yes it is.</i></span>")
-		playsound(src.loc, 'sound/machines/warning-buzzer.ogg', 50, 0)
-		SEND_SOUND(mob_occupant, sound('sound/hallucinations/veryfar_noise.ogg',0,1,50))
-		QDEL_IN(mob_occupant, 40)
-
-/obj/machinery/clonepod/emp_act(severity)
-	. = ..()
-	if (!(. & EMP_PROTECT_SELF))
-		var/mob/living/mob_occupant = occupant
-		if(mob_occupant && prob(100/(severity*efficiency)))
-			connected_message(Gibberish("EMP-caused Accidental Ejection", 0))
-			SPEAK(Gibberish("Exposure to electromagnetic fields has caused the ejection of, ERROR: John Doe, prematurely." ,0))
-			mob_occupant.apply_vore_prefs()
-			go_out()
-
-/obj/machinery/clonepod/proc/horrifyingsound()
-	for(var/i in 1 to 5)
-		playsound(loc,pick('sound/hallucinations/growl1.ogg','sound/hallucinations/growl2.ogg','sound/hallucinations/growl3.ogg'), 100, rand(0.95,1.05))
-		sleep(1)
-	sleep(10)
-	playsound(loc,'sound/hallucinations/wail.ogg',100,1)
-
-/obj/machinery/clonepod/deconstruct(disassembled = TRUE)
-	if(occupant)
-		go_out()
-	..()
-*/
-
-// Write up a manual maybe?
 /*
  *	Manual -- A big ol' manual.
  */
-/*
-/obj/item/paper/guides/jobs/medical/cloning
-	name = "paper - 'H-87 Cloning Apparatus Manual"
-	info = {"<h4>Getting Started</h4>
-	Congratulations, your station has purchased the H-87 industrial cloning device!<br>
-	Using the H-87 is almost as simple as brain surgery! Simply insert the target humanoid into the scanning chamber and select the scan option to create a new profile!<br>
-	<b>That's all there is to it!</b><br>
-	<i>Notice, cloning system cannot scan inorganic life or small primates.  Scan may fail if subject has suffered extreme brain damage.</i><br>
-	<p>Clone profiles may be viewed through the profiles menu. Scanning implants a complementary HEALTH MONITOR IMPLANT into the subject, which may be viewed from each profile.
-	Profile Deletion has been restricted to \[Station Head\] level access.</p>
-	<h4>Cloning from a profile</h4>
-	Cloning is as simple as pressing the CLONE option at the bottom of the desired profile.<br>
-	Per your company's EMPLOYEE PRIVACY RIGHTS agreement, the H-87 has been blocked from cloning crewmembers while they are still alive.<br>
-	<br>
-	<p>The provided CLONEPOD SYSTEM will produce the desired clone.  Standard clone maturation times (With SPEEDCLONE technology) are roughly 90 seconds.
-	The cloning pod may be unlocked early with any \[Medical Researcher\] ID after initial maturation is complete.</p><br>
-	<i>Please note that resulting clones may have a small DEVELOPMENTAL DEFECT as a result of genetic drift.</i><br>
-	<h4>Profile Management</h4>
-	<p>The H-87 (as well as your station's standard genetics machine) can accept STANDARD DATA DISKETTES.
-	These diskettes are used to transfer genetic information between machines and profiles.
-	A load/save dialog will become available in each profile if a disk is inserted.</p><br>
-	<i>A good diskette is a great way to counter aforementioned genetic drift!</i><br>
-	<br>
-	<font size=1>This technology produced under license from Thinktronic Systems, LTD.</font>"}
-*/
+
+/obj/item/paper/fluff/safety_tether
+	name = "paper - 'Safety Tether Introduction"
+	info = {"<center><h4>Kinaris IVA Safety Tether</h4></center>
+	Hello, if you’re reading this note, that means you’ve been selected to work in our Retrograde Tether Program. Few portions of Andromeda have such outdated engrams as Layenia does, so getting a proper Tether raised quite a lot of pushback. However, working in a gas giant has been deemed hazardous enough to warrant the allowance of a Safety Tether.<br><br>
+	For those unfamiliar with the technology of a Safety Tether;
+	<b>First</b> and foremost; Understand that it needs to be powered <b>at all times</b>. Failure to supply constant energy to the tether can and will prevent its function, and doom personnel to the clouds beneath if any are so unlucky as to fall in the interim. <br>
+	<b>Secondly</b>; Speaking of clouds. when powered, the tether will rescue any humanoid beings or borgs who would slip into them.<br>
+	<b>Thirdly</b>; Large amounts of electricity are siphoned upon any and every use of the Safety Tether, enough so to arc through the air and <i>hopefully</i> into the grounding rods supplied nearby. The transit of matter instantaneously and unplanned to one location from anywhere on the planet is, understandably, enough to drain a fourth of the APCs energy or so when activated.<br><br>
+
+	<i>However</i>, the old engram Layenia works under is faulty <i>at best</i>, resulting in <u>blood loss, loss of limbs, and painful cellular damages or burns to personnel and cyborgs respectively</u> when falling into the clouds. Because of this, caution is still highly advised when working on the exterior of Layenia. A radio has been retrofitted to the device to call appropriate medical or scientific services onscene as an added precaution.<br><br>
+	Should any more information be needed on the tether, please contact your local sector executive."}
 
 //#undef SPEAK
 #undef SPEAKMEDICAL

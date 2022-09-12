@@ -7018,6 +7018,12 @@
 /obj/effect/landmark/nuclear_waste_spawner,
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
+"aRt" = (
+/obj/machinery/power/grounding_rod{
+	anchored = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/engine/tether)
 "aRw" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden{
 	dir = 4
@@ -29554,12 +29560,6 @@
 	name = "large"
 	},
 /area/crew_quarters/dorms/upper)
-"eLZ" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1
-	},
-/turf/open/floor/plasteel/dark,
-/area/engine/tether)
 "eMc" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	name = "air supply pipe"
@@ -43154,16 +43154,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/bridge)
-"gSH" = (
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 16
-	},
-/obj/machinery/power/grounding_rod{
-	anchored = 1
-	},
-/turf/open/floor/plasteel/dark,
-/area/engine/tether)
 "gSQ" = (
 /obj/machinery/door/airlock/public/glass,
 /turf/open/floor/wood{
@@ -131214,6 +131204,16 @@
 /obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/plasteel/dark,
 /area/quartermaster/miningdock)
+"txg" = (
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
+	},
+/obj/machinery/power/grounding_rod{
+	anchored = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/engine/tether)
 "txl" = (
 /obj/structure/closet/secure_closet/personal,
 /obj/machinery/power/apc{
@@ -158918,7 +158918,6 @@
 /obj/machinery/power/apc/highcap/five_k{
 	areastring = "/area/engine/tether";
 	dir = 4;
-	equipment = 2;
 	name = "Tether APC";
 	pixel_x = 24
 	},
@@ -206891,7 +206890,7 @@ yip
 woc
 bxU
 pLi
-eLZ
+aRt
 lgU
 qTO
 woc
@@ -207917,9 +207916,9 @@ xdO
 ykt
 wWR
 woc
-gSH
+txg
 pLi
-eLZ
+aRt
 uPI
 xqo
 woc
