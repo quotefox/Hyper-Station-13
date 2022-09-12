@@ -62506,6 +62506,7 @@
 	dir = 10;
 	name = "air supply pipe"
 	},
+/obj/item/paper/fluff/safety_tether,
 /turf/open/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "darkfull_plate"
@@ -100324,6 +100325,10 @@
 	},
 /turf/open/floor/plating/layenia,
 /area/layenia/cloudlayer)
+"pkn" = (
+/obj/item/paper/fluff/safety_tether,
+/turf/open/floor/plasteel/dark,
+/area/engine/tether)
 "pko" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
@@ -207142,7 +207147,7 @@ woc
 jgm
 jgm
 jgm
-pLi
+pkn
 cZp
 woc
 tgZ
