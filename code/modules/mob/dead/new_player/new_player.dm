@@ -261,9 +261,9 @@
 			dat	+=		{"<B>Role Job</B><BR><HR>"}
 			dat	+=	"[job.quest_info]<BR><BR>"
 
-		if (length(job.falure_info) > 0)
-			dat	+=	{"<B>Role Falure</B><BR><HR>"}
-			dat	+=	"[job.falure_info]<BR><BR>"
+		if (length(job.failure_info) > 0)
+			dat	+=	{"<B>Role Failure</B><BR><HR>"}
+			dat	+=	"[job.failure_info]<BR><BR>"
 		if(client.prefs.roleplayroles)
 			dat	+=  "<center><p><a href='byond://?src=[REF(src)];SelectedJob=[job.title]'>Play!</a></p></center>"
 		else
