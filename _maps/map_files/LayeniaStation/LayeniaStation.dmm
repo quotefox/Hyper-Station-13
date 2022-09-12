@@ -10925,6 +10925,7 @@
 	dir = 1;
 	pixel_y = 16
 	},
+/obj/machinery/power/grounding_rod,
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
 "bxV" = (
@@ -136035,6 +136036,10 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/science/xenobiology)
+"ueq" = (
+/obj/machinery/power/grounding_rod,
+/turf/open/floor/plasteel/dark,
+/area/engine/tether)
 "uer" = (
 /obj/machinery/atmospherics/components/unary/outlet_injector/atmos/engine_waste{
 	dir = 1
@@ -206868,7 +206873,7 @@ yip
 woc
 bxU
 pLi
-pLi
+ueq
 lgU
 qTO
 woc
@@ -207896,7 +207901,7 @@ wWR
 woc
 bxU
 pLi
-pLi
+ueq
 uPI
 xqo
 woc

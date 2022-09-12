@@ -73,7 +73,8 @@
 	use_power = IDLE_POWER_USE
 	power_channel = EQUIP
 	idle_power_usage = 1000
-	var/teleport_power_usage = 1000000 //Uses about a fourth of the upgraded power cell plus default in APCs
+	var/teleport_power_draw = 900000 //Uses about a fourth of the upgraded power cell plus default in APCs
+	var/tesla_power_ratio = 0.01 //ratio of its actual power draw to the tesla it creates, 9000 total looks decent
 
 	critical_machine = FALSE //If this machine is critical to station operation and should have the area be excempted from power failures.
 
@@ -135,7 +136,12 @@
 /obj/machinery/safety_tether/proc/bungee_teleport(mob/living/M)
 
 	if(ismovableatom(M) && is_operational() != 0 && do_teleport(M, get_turf(src), channel = TELEPORT_CHANNEL_BLUESPACE))
-		use_power(teleport_power_usage)
+		use_power(teleport_power_draw)
+
+		//Style points
+		playsound(src, 'sound/magic/lightningbolt.ogg', 100, 1, extrarange = 5)
+		// TESLA_MOB_DAMAGE | TESLA_OBJ_DAMAGE  | TESLA_MOB_STUN | TESLA_ALLOW_DUPLICATES
+		tesla_zap(src, 3, teleport_power_draw * tesla_power_ratio, TESLA_MOB_DAMAGE | FALSE  | TESLA_MOB_STUN | FALSE) //Set to zap harmlessly but in a way that looks cool
 
 		M.spawn_gibs()
 		M.emote("scream")
