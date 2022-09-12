@@ -12,8 +12,7 @@
 // create global list of safety tethers in the world to then process
 
 //Easy definitions to have the machine talk on the appropriate frequencies.
-//#define SPEAK(message) radio.talk_into(src, message, radio_channel)
-
+#define SPEAKCOMMON(message) radio.talk_into(src, message, null)
 #define SPEAKMEDICAL(message) radio.talk_into(src, message, RADIO_CHANNEL_MEDICAL)
 #define SPEAKSCIENCE(message) radio.talk_into(src, message, RADIO_CHANNEL_SCIENCE)
 
@@ -68,7 +67,6 @@
 
 	//Defines the center point around which lighting is located
 	var/atom/light_source
-	//_mask = matrix(1, 0, 32, 0, 1, 32)
 
 	use_power = IDLE_POWER_USE
 	power_channel = EQUIP
@@ -83,8 +81,6 @@
 
 	//Give it permission to talk on both medical and science frequencies, as with geneticists
 	var/radio_key = /obj/item/encryptionkey/headset_medsci
-
-	//var/radio_channel = RADIO_CHANNEL_MEDICAL
 
 /obj/machinery/safety_tether/Initialize()
 	. = ..()
@@ -227,8 +223,10 @@
 	. = ..()
 	if(light_source)
 		if(stat & NOPOWER)
+			SPEAKCOMMON("The Safety Tether's shut down from a lack of power.")
 			light_source.set_light(0)
 		else
+			SPEAKCOMMON("The Safety Tether is back online.")
 			light_source.set_light(brightness_on, light_power, light_color)
 	update_icon()
 
@@ -249,5 +247,6 @@
 	Should any more information be needed on the tether, please contact your local sector executive."}
 
 //#undef SPEAK
+#undef SPEAKCOMMON
 #undef SPEAKMEDICAL
 #undef SPEAKSCIENCE
