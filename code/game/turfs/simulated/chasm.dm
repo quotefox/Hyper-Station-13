@@ -12,15 +12,19 @@
 
 /turf/open/chasm/Initialize()
 	. = ..()
-	AddComponent(/datum/component/chasm, SSmapping.get_turf_below(src))
+	AddComponent(/datum/component/chasm, SSmapping.get_turf_below(src), src)
 
 /turf/open/chasm/proc/set_target(turf/target)
 	var/datum/component/chasm/chasm_component = GetComponent(/datum/component/chasm)
 	chasm_component.target_turf = target
 
+// Only runs in the case of things like pride's mirror who are just using the turf as an easy reference
+
 /turf/open/chasm/proc/drop(atom/movable/AM)
+
 	var/datum/component/chasm/chasm_component = GetComponent(/datum/component/chasm)
 	chasm_component.drop(AM)
+
 
 /turf/open/chasm/MakeSlippery(wet_setting, min_wet_time, wet_time_to_add, max_wet_time, permanent)
 	return

@@ -3116,6 +3116,7 @@
 #include "hyperstation\code\game\area\Space_Station_13_areas.dm"
 #include "hyperstation\code\game\machinery\announcement_system.dm"
 #include "hyperstation\code\game\machinery\lore_terminal.dm"
+#include "hyperstation\code\game\machinery\safety_tether.dm"
 #include "hyperstation\code\game\machinery\computer\timeclock.dm"
 #include "hyperstation\code\game\objects\effects\landmarks.dm"
 #include "hyperstation\code\game\objects\effects\temporary_visuals\miscellaneous.dm"
