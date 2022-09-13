@@ -50,6 +50,7 @@
 		radio.keyslot = new radio_key
 		radio.subspace_transmission = TRUE
 		radio.canhear_range = 0
+		radio.listening = FALSE
 		radio.recalculateChannels()
 
 	update_icon()

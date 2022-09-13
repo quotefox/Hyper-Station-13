@@ -131,8 +131,8 @@
 			else if(prob(5))
 				playsound(AM, pick('hyperstation/sound/misc/yodadeath.ogg', 'hyperstation/sound/misc/fallingthroughclouds.ogg', 'hyperstation/sound/misc/goofy.ogg', 'hyperstation/sound/misc/wilhelm.ogg'), 100, 0)
 
-
-		if(linked_turf.name == "clouds" && (iscyborg(AM) || iscarbon(AM)))
+		//Mob types that could be protected by a tether
+		if(iscyborg(AM) || iscarbon(AM))
 			var/mob/living/victim = AM
 
 			var/tether_number = GLOB.safety_tethers_list.len
@@ -142,12 +142,12 @@
 				if(tether_number == 1)
 
 					// If teleportation fails
-					if(!GLOB.safety_tethers_list[1].bungee_teleport(victim))
+					if(!GLOB.safety_tethers_list[1].bungee_teleport(victim, linked_turf))
 						finishdrop(AM)
 				else
 
 					//Just in case multiple safety tethers are present
-					if(!GLOB.safety_tethers_list[rand(1,GLOB.safety_tethers_list.len)].bungee_teleport(victim))
+					if(!GLOB.safety_tethers_list[rand(1,GLOB.safety_tethers_list.len)].bungee_teleport(victim, linked_turf))
 						finishdrop(AM)
 				if(isliving(AM))
 					var/mob/living/L = AM

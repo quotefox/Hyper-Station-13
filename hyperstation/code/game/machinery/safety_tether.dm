@@ -88,6 +88,9 @@
 	var/list/turf/disallowed_turf_types
 	var/list/allowed_turfs
 
+	//What types of chasms are protected by this tether
+	var/protected_chasm_type = /turf/open/chasm/cloud
+
 	var/internal_radio = TRUE
 	var/obj/item/radio/radio
 
@@ -105,6 +108,7 @@
 		radio.keyslot = new radio_key
 		radio.subspace_transmission = TRUE
 		radio.canhear_range = 0
+		radio.listening = FALSE
 		radio.recalculateChannels()
 
 	//Setting up the lists for valid teleportation areas
@@ -124,7 +128,7 @@
 	//ensures light is properly centered around the tether. Removes lighting system's pixel approximation that breaks it.
 	light_source = get_turf(src)
 	update_icon()
-	power_change(TRUE) //Here to start lights on ititialization.
+	power_change() //Here to start lights on ititialization.
 
 /obj/machinery/safety_tether/Destroy()
 	QDEL_NULL(radio)
@@ -174,14 +178,14 @@
 
 
 //Returns true if teleport is successful, false otherwise
-/obj/machinery/safety_tether/proc/bungee_teleport(mob/living/M)
+/obj/machinery/safety_tether/proc/bungee_teleport(mob/living/M, turf/chasm_turf)
 
 	//Teleports the player to a random safe location
 	var/turf/Target_Turf = findRandomTurf() //
 	if(!Target_Turf)
 		Target_Turf = get_turf(src)
 
-	if(ismovableatom(M) && is_operational() != 0 && do_teleport(M, Target_Turf, channel = TELEPORT_CHANNEL_BLUESPACE))
+	if(ismovableatom(M) && istype(chasm_turf, protected_chasm_type) && is_operational() != 0 && do_teleport(M, Target_Turf, channel = TELEPORT_CHANNEL_BLUESPACE))
 		use_power(teleport_power_draw)
 
 		//Style points
@@ -278,15 +282,15 @@
 		return FALSE
 
 //Updates machine icon and lighting every time power in the area changes
-/obj/machinery/safety_tether/power_change(var/initializing = FALSE)
+/obj/machinery/safety_tether/power_change()
 	. = ..()
 	if(light_source)
 		if(stat & NOPOWER)
-			if(!initializing && radio && internal_radio) //If called while initializing results in a null error.
+			if(radio && internal_radio) //If called while initializing results in a null error.
 				SPEAKCOMMON("The Safety Tether's shut down from a lack of power.")
 			light_source.set_light(0)
 		else
-			if(!initializing && radio && internal_radio)
+			if(radio && internal_radio)
 				SPEAKCOMMON("The Safety Tether is back online.")
 			light_source.set_light(brightness_on, light_power, light_color)
 	update_icon()
