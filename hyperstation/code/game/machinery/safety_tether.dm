@@ -83,6 +83,8 @@
 	var/radio_key = /obj/item/encryptionkey/headset_medsci
 
 /obj/machinery/safety_tether/Initialize()
+	//ensures light is properly centered around the tether. Removes lighting system's pixel approximation that breaks it.
+	light_source = get_turf(src)
 	. = ..()
 
 	//Adds this to the global list of safety tethers in the world to pull from when chasms attempt to drop mobs
@@ -95,10 +97,7 @@
 		radio.canhear_range = 0
 		radio.recalculateChannels()
 
-	//ensures light is properly centered around the tether. Removes lighting system's pixel approximation that breaks it.
-	light_source = get_turf(src)
 	update_icon()
-	power_change() //Here to start lights on ititialization.
 
 /obj/machinery/safety_tether/Destroy()
 	QDEL_NULL(radio)
@@ -228,7 +227,8 @@
 			SPEAKCOMMON("The Safety Tether's shut down from a lack of power.")
 			light_source.set_light(0)
 		else
-			SPEAKCOMMON("The Safety Tether is back online.")
+			if(SSticker.HasRoundStarted())
+				SPEAKCOMMON("The Safety Tether is back online.")
 			light_source.set_light(brightness_on, light_power, light_color)
 	update_icon()
 
