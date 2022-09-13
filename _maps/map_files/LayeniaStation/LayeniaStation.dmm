@@ -2941,7 +2941,6 @@
 	icon_state = "1-2"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
 "aiI" = (
@@ -7020,8 +7019,8 @@
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
 "aRt" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
+	name = "air scrubber"
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
@@ -10933,15 +10932,11 @@
 /turf/open/floor/plating/layenia,
 /area/layenia/cloudlayer)
 "bxU" = (
-/obj/machinery/light{
-	dir = 1;
-	pixel_y = 16
-	},
-/obj/machinery/power/grounding_rod{
-	anchored = 1
-	},
-/obj/machinery/power/grounding_rod{
-	anchored = 1
+/obj/effect/decal/cleanable/cobweb,
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "half_stairs_darkfull";
+	name = "dark steps"
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
@@ -19216,6 +19211,11 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 4;
 	name = "scrubbers pipe"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 5;
+	icon_state = "steel_panel";
+	name = "steel pannel"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -42989,8 +42989,7 @@
 	},
 /area/chapel/main)
 "gQR" = (
-/obj/machinery/safety_tether,
-/turf/open/floor/engine,
+/turf/open/floor/carpet/kinaris,
 /area/engine/tether)
 "gQT" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -58849,7 +58848,13 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms)
 "jgm" = (
-/turf/open/floor/engine,
+/obj/structure/railing/handrail,
+/obj/effect/turf_decal/loading_area{
+	dir = 10;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/turf/open/floor/plasteel/dark,
 /area/engine/tether)
 "jgz" = (
 /obj/structure/cable{
@@ -59817,7 +59822,6 @@
 	name = "Atmospherics External Access";
 	req_access_txt = "24"
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/theatre)
 "jnp" = (
@@ -62508,7 +62512,6 @@
 	dir = 10;
 	name = "air supply pipe"
 	},
-/obj/item/paper/fluff/safety_tether,
 /turf/open/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "darkfull_plate"
@@ -72108,9 +72111,13 @@
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/aisat_interior)
 "lgU" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
-	name = "air scrubber"
+/obj/machinery/power/grounding_rod{
+	anchored = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
 "lgW" = (
@@ -80162,6 +80169,11 @@
 /obj/effect/turf_decal/arrows,
 /turf/open/floor/plasteel,
 /area/hallway/primary/port/fore)
+"mwH" = (
+/obj/structure/grille,
+/obj/structure/window/plasma/fulltile,
+/turf/open/floor/plating,
+/area/engine/tether)
 "mwM" = (
 /obj/structure/flora/crystal/small/pile{
 	icon_state = "crystals4"
@@ -87827,6 +87839,10 @@
 	},
 /turf/open/floor/plasteel/layenia,
 /area/layenia)
+"nAF" = (
+/obj/item/paper/fluff/safety_tether,
+/turf/open/floor/carpet/kinaris,
+/area/engine/tether)
 "nAJ" = (
 /obj/machinery/light{
 	dir = 8;
@@ -91780,17 +91796,6 @@
 "ofn" = (
 /turf/closed/wall,
 /area/storage/D)
-"ofu" = (
-/obj/machinery/door/airlock/external{
-	name = "Port Docking Bay 1"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
-/obj/effect/turf_decal/delivery,
-/obj/structure/fans/tiny,
-/turf/open/floor/plasteel/dark{
-	icon_state = "darkfull_whole_alt"
-	},
-/area/hallway/secondary/entry/upper)
 "ofE" = (
 /obj/structure/closet/l3closet/scientist,
 /obj/effect/turf_decal/stripes/line{
@@ -100338,10 +100343,6 @@
 	},
 /turf/open/floor/plating/layenia,
 /area/layenia/cloudlayer)
-"pkn" = (
-/obj/item/paper/fluff/safety_tether,
-/turf/open/floor/plasteel/dark,
-/area/engine/tether)
 "pko" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
@@ -101582,6 +101583,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/main/upper)
+"ptb" = (
+/obj/machinery/safety_tether,
+/turf/open/floor/carpet/kinaris,
+/area/engine/tether)
 "ptc" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -103854,6 +103859,12 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
+/obj/effect/turf_decal/loading_area{
+	dir = 5;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/effect/turf_decal/caution/stand_clear,
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_trim"
 	},
@@ -104159,6 +104170,10 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig/upper)
 "pLi" = (
+/obj/machinery/power/grounding_rod{
+	anchored = 1
+	},
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
 "pLj" = (
@@ -109018,6 +109033,12 @@
 	name = "tile"
 	},
 /area/hallway/primary/aft)
+"qwN" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
+	name = "air vent"
+	},
+/turf/open/floor/plasteel/dark,
+/area/engine/tether)
 "qwP" = (
 /obj/machinery/power/apc{
 	areastring = "/area/security/checkpoint/auxiliary";
@@ -129644,12 +129665,17 @@
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
 "tlH" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
 	name = "air supply pipe"
 	},
-/obj/structure/cable{
-	icon_state = "4-8"
+/obj/effect/turf_decal/loading_area{
+	dir = 5;
+	icon_state = "steel_panel";
+	name = "steel pannel"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -131230,8 +131256,10 @@
 	dir = 1;
 	pixel_y = 16
 	},
-/obj/machinery/power/grounding_rod{
-	anchored = 1
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "half_stairs_darkfull";
+	name = "dark steps"
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
@@ -140981,9 +141009,13 @@
 /turf/closed/wall,
 /area/medical/genetics)
 "uPI" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
-	name = "air vent"
+/obj/machinery/power/grounding_rod{
+	anchored = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
 "uPP" = (
@@ -144746,7 +144778,6 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 1
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -153466,7 +153497,6 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
-/obj/structure/fans/tiny,
 /turf/open/floor/plating/layenia,
 /area/maintenance/department/engine/upper)
 "wAM" = (
@@ -158924,10 +158954,6 @@
 /obj/machinery/light{
 	pixel_y = -1
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
-	dir = 9;
-	name = "air supply pipe"
-	},
 /obj/machinery/power/apc/highcap/five_k{
 	areastring = "/area/engine/tether";
 	dir = 4;
@@ -158936,6 +158962,10 @@
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 9;
+	name = "air supply pipe"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -206646,9 +206676,9 @@ ykt
 wWR
 woc
 woc
-woc
-woc
-woc
+mwH
+mwH
+mwH
 woc
 woc
 wAU
@@ -207158,11 +207188,11 @@ ejD
 xdO
 ykt
 wWR
-woc
+mwH
 jgm
-jgm
-jgm
-pkn
+gQR
+gQR
+nAF
 cZp
 woc
 tgZ
@@ -207415,11 +207445,11 @@ ejD
 xdO
 ykt
 wWR
-woc
+mwH
 jgm
 gQR
-jgm
-pLi
+ptb
+gQR
 pIP
 vct
 fJb
@@ -207672,11 +207702,11 @@ ejD
 xdO
 ykt
 wWR
-woc
+mwH
 jgm
-jgm
-jgm
-pLi
+gQR
+gQR
+gQR
 tlH
 woc
 jJn
@@ -207932,7 +207962,7 @@ wWR
 woc
 txg
 pLi
-aRt
+qwN
 uPI
 xqo
 woc
@@ -252198,7 +252228,7 @@ vka
 vka
 vka
 prt
-ofu
+dvT
 rFp
 vKI
 tGx

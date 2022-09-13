@@ -72,9 +72,21 @@
 	power_channel = EQUIP
 	idle_power_usage = 1000
 	var/teleport_power_draw = 900000 //Uses about a fourth of the upgraded power cell plus default in APCs
-	var/tesla_power_ratio = 0.75 //ratio of its actual power draw to the tesla it creates
+	var/tesla_power_ratio = 0.75 //Ratio of its actual power draw to the tesla it creates
 
 	critical_machine = TRUE //If this machine is critical to station operation and should have the area be excempted from power failures.
+
+	//Area types we're allowed to teleport players to. Set up in initialize.
+	var/list/allowed_area_types/*= typecacheof(list(/area/maintenance)) */
+	var/list/blacklisted_areas /*= typecacheof(list(/area)) */
+	var/list/whitelisted_areas /*= typecacheof(list(/area)) */
+	var/list/allowed_areas
+
+	//Whitelist and blacklist of types to not dump players into walls or chasms. Set up in initialize.
+	//Separate check each time for dense objects in way when getRandomTurf called, since no GLOB list of unblocked turfs maintained
+	var/list/turf/allowed_turf_types
+	var/list/turf/disallowed_turf_types
+	var/list/allowed_turfs
 
 	var/internal_radio = TRUE
 	var/obj/item/radio/radio
@@ -95,10 +107,24 @@
 		radio.canhear_range = 0
 		radio.recalculateChannels()
 
+	//Setting up the lists for valid teleportation areas
+	allowed_area_types = typecacheof(list(/area/maintenance))
+	//blacklisted_areas = typecacheof(list(/area/))
+	//whitelisted_areas = typecacheof(list(/area/))
+
+	//Set up the list of allowed areas based on our three categories
+	allowed_areas = make_associative(allowed_area_types - blacklisted_areas + whitelisted_areas)
+
+	//Don't dump players into walls or chasms
+	allowed_turf_types = typecacheof(list(/turf/open))
+	disallowed_turf_types = typecacheof(list(/turf/open/chasm))
+
+	allowed_turfs = make_associative(allowed_turf_types - disallowed_turf_types)
+
 	//ensures light is properly centered around the tether. Removes lighting system's pixel approximation that breaks it.
 	light_source = get_turf(src)
 	update_icon()
-	power_change() //Here to start lights on ititialization.
+	power_change(TRUE) //Here to start lights on ititialization.
 
 /obj/machinery/safety_tether/Destroy()
 	QDEL_NULL(radio)
@@ -121,23 +147,50 @@
 
 /obj/machinery/safety_tether/examine(mob/user)
 	. = ..()
-	if(is_operational())
-		. += "The safety tether's currently protecting the station."
-	else
-		. += "The safety tether's offline."
+	var/operating = is_operational()
+	. += "The safety tether's [operating ? "on" : "off"]line."
 
 
 /obj/machinery/safety_tether/attack_ai(mob/user)
 	return examine(user)
 
+
+//Procedure to find a random area to teleport a mob to
+/obj/machinery/safety_tether/proc/findRandomTurf()
+
+	//Pick an area
+	var/area/selected_area = safepick(typecache_filter_list(GLOB.sortedAreas,allowed_areas))
+
+	//Compile a list of turfs to pick from
+	var/list/unblocked_turfs = typecache_filter_list(get_area_turfs(selected_area),allowed_turfs)
+
+	//Check if there's objects with density like machines, doors, or windows in the way, removed from pick list if so
+	for(var/turf/T in unblocked_turfs)
+		if(is_blocked_turf(T))
+			unblocked_turfs -= T
+
+	//Pick a specific turf from our list and return it
+	return safepick(unblocked_turfs)
+
+
 //Returns true if teleport is successful, false otherwise
 /obj/machinery/safety_tether/proc/bungee_teleport(mob/living/M)
 
-	if(ismovableatom(M) && is_operational() != 0 && do_teleport(M, get_turf(src), channel = TELEPORT_CHANNEL_BLUESPACE))
+	//Teleports the player to a random safe location
+	var/turf/Target_Turf = findRandomTurf() //
+	if(!Target_Turf)
+		Target_Turf = get_turf(src)
+
+	if(ismovableatom(M) && is_operational() != 0 && do_teleport(M, Target_Turf, channel = TELEPORT_CHANNEL_BLUESPACE))
 		use_power(teleport_power_draw)
 
 		//Style points
 		playsound(src, 'sound/magic/lightningbolt.ogg', 100, 1, extrarange = 5)
+
+		//For if the player is teleported to maintenance or wherever else
+		if(get_turf(src) != Target_Turf)
+			playsound(M, 'sound/magic/lightningbolt.ogg', 100, 1, extrarange = 5)
+
 		// TESLA_MOB_DAMAGE | TESLA_OBJ_DAMAGE  | TESLA_MOB_STUN | TESLA_ALLOW_DUPLICATES
 		tesla_zap(src, 3, teleport_power_draw * tesla_power_ratio, TESLA_MOB_DAMAGE | FALSE  | TESLA_MOB_STUN | FALSE) //Set to zap harmlessly but in a way that looks cool
 
@@ -187,10 +240,12 @@
 			M.blood_volume -= BLOOD_VOLUME_NORMAL * M.blood_ratio * bleed_ratio
 
 			src.visible_message("<span class='boldwarning'>[src] spits out [M] and viscera!</span>")
-			if(internal_radio)
 
-				//Area name gotten just in case the locale of it's moved from engineering when mapmaking.
-				var/area/A = get_area(get_turf(src))
+			//Radio in the teleportation
+			if(radio && internal_radio)
+
+				//Get the name of the area we teleported the player to
+				var/area/A = get_area(Target_Turf)
 				var/area_name = A.name
 				SPEAKMEDICAL("The safety tether's caught the would-be crater [M] at the [area_name].")
 
@@ -207,10 +262,12 @@
 				S.apply_damage_type(damage = rand(silicon_burn_min, silicon_burn_max), damagetype = BURN)
 
 				src.visible_message("<span class='boldwarning'>[src] spits out [M] and oily, smoking circuits!</span>")
-				if(internal_radio)
 
-					//Area name gotten just in case the locale of it's moved from engineering when mapmaking.
-					var/area/A = get_area(get_turf(src))
+				//Radio in the teleportation
+				if(radio && internal_radio)
+
+					//Get the name of the area we teleported the player to
+					var/area/A = get_area(Target_Turf)
 					var/area_name = A.name
 					SPEAKSCIENCE("The safety tether's caught the would-be crater [M] at the [area_name].")
 
@@ -221,14 +278,16 @@
 		return FALSE
 
 //Updates machine icon and lighting every time power in the area changes
-/obj/machinery/safety_tether/power_change()
+/obj/machinery/safety_tether/power_change(var/initializing = FALSE)
 	. = ..()
 	if(light_source)
 		if(stat & NOPOWER)
-			SPEAKCOMMON("The Safety Tether's shut down from a lack of power.")
+			if(!initializing && radio && internal_radio) //If called while initializing results in a null error.
+				SPEAKCOMMON("The Safety Tether's shut down from a lack of power.")
 			light_source.set_light(0)
 		else
-			SPEAKCOMMON("The Safety Tether is back online.")
+			if(!initializing && radio && internal_radio)
+				SPEAKCOMMON("The Safety Tether is back online.")
 			light_source.set_light(brightness_on, light_power, light_color)
 	update_icon()
 
