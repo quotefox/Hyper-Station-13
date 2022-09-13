@@ -1,5 +1,5 @@
 // This list was originally created to narrow the list of safe areas for mobs to spawn in the station. If an area is considered too dangerous for something to spawn in, kindly add it to this list.
-GLOBAL_LIST_INIT(basic_safe_area_list, typecacheof(list(
+GLOBAL_LIST_INIT(basic_blacklisted_area_list, typecacheof(list(
 	/area/space, 
 	/area/shuttle,
 	/area/mine, 
@@ -30,14 +30,14 @@ GLOBAL_LIST_INIT(basic_safe_area_list, typecacheof(list(
 	var/list/turf/validTurfs = list()
 	var/area/pickedArea
 	if(!blacklisted_areas.len)
-		blacklisted_areas = GLOB.basic_safe_area_list
+		blacklisted_areas = GLOB.basic_blacklisted_area_list
 	for(var/area/A in world) // Get the areas in the Z level
 		if(A.z == SSmapping.station_start)
 			stationAreas += A
 	for(var/area/place in stationAreas) // first we check if it's a valid area
 		if(place.outdoors)
 			continue
-		if(place.areasize < 16)
+		if(place.areasize < spawncount * 2)
 			continue
 		if(is_type_in_typecache(place, blacklisted_areas))
 			continue
