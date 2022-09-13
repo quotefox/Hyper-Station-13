@@ -103,11 +103,13 @@
 /obj/machinery/safety_tether/Destroy()
 	QDEL_NULL(radio)
 	GLOB.safety_tethers_list -= src
+	light_source.set_light(0)
 	. = ..()
 
 /obj/machinery/safety_tether/doMove(atom/destination)
 	. = ..()
 	//ensures light is properly centered around the tether. Removes lighting system's pixel approximation that breaks it.
+	light_source.set_light(0)
 	light_source = get_turf(src)
 	return .
 
