@@ -75,13 +75,13 @@
 //christ this was a mistake, but it's here just in case someone wants to selectively fix
 /************* Lizard compatable snoots ***********
 /datum/sprite_accessory/snouts/bird
-	name = "Beak"
+	name = "Beak (Hyper)"
 	icon_state = "bird"
 	icon = 'modular_citadel/icons/mob/mam_snouts.dmi'
 	color_src = MATRIXED
 
 /datum/sprite_accessory/snouts/bigbeak
-	name = "Big Beak"
+	name = "Big Beak (Hyper)"
 	icon_state = "bigbeak"
 	icon = 'modular_citadel/icons/mob/mam_snouts.dmi'
 	color_src = MATRIXED
@@ -163,6 +163,12 @@
 	icon = 'modular_citadel/icons/mob/mam_snouts.dmi'
 	color_src = MATRIXED
 
+/datum/sprite_accessory/snouts/owlbird
+	name = "Owl (Hyper)"
+	icon_state = "owlbird"
+	icon = 'modular_citadel/icons/mob/mam_snouts.dmi'
+	color_src = MATRIXED
+
 /datum/sprite_accessory/snouts/otie
 	name = "Otie"
 	icon_state = "otie"
@@ -187,8 +193,14 @@
 	color_src = MATRIXED
 	icon = 'modular_citadel/icons/mob/mam_snouts.dmi'
 
+/datum/sprite_accessory/snouts/sharpebird
+	name = "Sharpened, beak (Hyper)"
+	icon_state = "sharpebird"
+	icon = 'modular_citadel/icons/mob/mam_snouts.dmi'
+	color_src = MATRIXED
+
 /datum/sprite_accessory/snouts/toucan
-	name = "Toucan"
+	name = "Toucan (Hyper)"
 	icon_state = "toucan"
 	icon = 'modular_citadel/icons/mob/mam_snouts.dmi'
 	color_src = MATRIXED
@@ -760,11 +772,11 @@ datum/sprite_accessory/ears/human/gret
 *******************************************/
 
 /datum/sprite_accessory/mam_snouts/bird
-	name = "Beak"
+	name = "Beak (Hyper)"
 	icon_state = "bird"
 
 /datum/sprite_accessory/mam_snouts/bigbeak
-	name = "Big Beak"
+	name = "Big Beak (Hyper)"
 	icon_state = "bigbeak"
 
 /datum/sprite_accessory/mam_snouts/bug
@@ -906,6 +918,10 @@ datum/sprite_accessory/ears/human/gret
 	name = "Orca"
 	icon_state = "orca"
 
+/datum/sprite_accessory/mam_snouts/owlbird
+	name = "Owl (Hyper)"
+	icon_state = "owlbird"
+
 /datum/sprite_accessory/mam_snouts/pede
 	name = "Scolipede"
 	icon_state = "pede"
@@ -918,8 +934,12 @@ datum/sprite_accessory/ears/human/gret
 	name = "Shark"
 	icon_state = "shark"
 
+/datum/sprite_accessory/mam_snouts/sharpebird
+	name = "Sharpened, beak (Hyper)"
+	icon_state = "sharpebird"
+
 /datum/sprite_accessory/mam_snouts/toucan
-	name = "Toucan"
+	name = "Toucan (Hyper)"
 	icon_state = "toucan"
 
 /datum/sprite_accessory/mam_snouts/sharp
@@ -1058,11 +1078,11 @@ datum/sprite_accessory/ears/human/gret
 *************but higher up*****************/
 
 /datum/sprite_accessory/mam_snouts/fbird
-	name = "Beak (Top)"
+	name = "Beak (Top) (Hyper)"
 	icon_state = "fbird"
 
 /datum/sprite_accessory/mam_snouts/fbigbeak
-	name = "Big Beak (Top)"
+	name = "Big Beak (Top) (Hyper)"
 	icon_state = "fbigbeak"
 
 /datum/sprite_accessory/mam_snouts/fbug
@@ -1137,7 +1157,7 @@ datum/sprite_accessory/ears/human/gret
 	icon_state = "fshark"
 
 /datum/sprite_accessory/mam_snouts/ftoucan
-	name = "Toucan (Top)"
+	name = "Toucan (Top) (Hyper)"
 	icon_state = "ftoucan"
 
 /datum/sprite_accessory/mam_snouts/fsharp
