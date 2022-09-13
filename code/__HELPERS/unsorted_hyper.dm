@@ -23,7 +23,7 @@ GLOBAL_LIST_INIT(basic_blacklisted_area_list, typecacheof(list(
 
 // Performance intensive check for picking an area with turfs that are considered the safest possible to spawn something in.
 //Only use this for creatures, as it considers people around, temperature, area size and more.
-/proc/get_safest_possible_turfs(list/blacklisted_areas, spawncount) 
+/proc/get_safest_spawn_turfs(list/blacklisted_areas, spawncount) 
 	var/list/area/stationAreas = list()
 	var/list/area/eligible_areas = list()
 	var/validFound = FALSE

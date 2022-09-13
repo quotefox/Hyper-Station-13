@@ -333,7 +333,7 @@
 	priority_announce("Unidentified lifesigns detected aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", 'sound/ai/aliens.ogg')
 
 /datum/round_event/mimic_infestation/start()
-	var/list/turf/validTurfs = get_safest_possible_turfs(GLOB.basic_blacklisted_area_list, spawncount)
+	var/list/turf/validTurfs = get_safest_spawn_turfs(GLOB.basic_blacklisted_area_list, spawncount)
 	if(!validTurfs.len)
 		message_admins("No eligible areas for spawning mimics.")
 		return WAITING_FOR_SOMETHING
