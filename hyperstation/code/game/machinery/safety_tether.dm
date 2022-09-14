@@ -15,6 +15,7 @@
 #define SPEAKCOMMON(message) radio.talk_into(src, message, null)
 #define SPEAKMEDICAL(message) radio.talk_into(src, message, RADIO_CHANNEL_MEDICAL)
 #define SPEAKSCIENCE(message) radio.talk_into(src, message, RADIO_CHANNEL_SCIENCE)
+#define CENTER_TURF get_turf(get_step(src, NORTHEAST))
 
 /obj/machinery/safety_tether
 	name = "safety tether"
@@ -23,10 +24,6 @@
 	icon = 'hyperstation/icons/obj/machinery/safety_tether.dmi'
 	icon_state = "safety_tether"
 	verb_say = "states"
-
-	//Shifts the starting location so as to center the machine
-	pixel_x = -32
-	pixel_y = -32
 
 	//Set width and height in case we make this dense
 	bound_width = 96
@@ -43,8 +40,11 @@
 	var/dismember_prob = 50 //Probability of dismembering 2 limbs rather than 1
 
 	//Max and min amounts of clone damage for organics
-	var/cloneloss_min = 45
-	var/cloneloss_max = 70
+	var/cloneloss_min = 90
+	var/cloneloss_max = 95
+
+	//Final health a mob should end up at, later adjusted for max health
+	var/carbon_final_health = -20
 
 	//Amount of subject's blood to remove on successful teleport
 	var/bleed_ratio = 0.25
@@ -58,8 +58,8 @@
 	<-50;  module 3 offline
 	-100+; death
 	*/
-	var/silicon_burn_min = 120
-	var/silicon_burn_max = 140
+	var/silicon_burn_min = 160
+	var/silicon_burn_max = 180
 
 	var/brightness_on = 4 //Range of light when on
 	light_power = 1.5 //Strength of the light when on
@@ -126,9 +126,8 @@
 	allowed_turfs = make_associative(allowed_turf_types - disallowed_turf_types)
 
 	//ensures light is properly centered around the tether. Removes lighting system's pixel approximation that breaks it.
-	light_source = get_turf(src)
+	light_source = CENTER_TURF
 	update_icon()
-	power_change() //Here to start lights on ititialization.
 
 /obj/machinery/safety_tether/Destroy()
 	QDEL_NULL(radio)
@@ -140,14 +139,18 @@
 	. = ..()
 	//ensures light is properly centered around the tether. Removes lighting system's pixel approximation that breaks it.
 	light_source.set_light(0)
-	light_source = get_turf(src)
+	light_source = CENTER_TURF
 	return .
 
 /obj/machinery/safety_tether/update_icon()
 	cut_overlays()
 	if(is_operational())
 		add_overlay("operational_overlay")
-
+		if(light_source)
+			light_source.set_light(brightness_on, light_power, light_color)
+	else
+		if(light_source)
+			light_source.set_light(0)
 
 /obj/machinery/safety_tether/examine(mob/user)
 	. = ..()
@@ -166,10 +169,10 @@
 	var/area/selected_area = safepick(typecache_filter_list(GLOB.sortedAreas,allowed_areas))
 
 	//Compile a list of turfs to pick from
-	var/list/unblocked_turfs = typecache_filter_list(get_area_turfs(selected_area),allowed_turfs)
+	var/list/turf/open/unblocked_turfs = typecache_filter_list(get_area_turfs(selected_area),allowed_turfs)
 
 	//Check if there's objects with density like machines, doors, or windows in the way, removed from pick list if so
-	for(var/turf/T in unblocked_turfs)
+	for(var/turf/open/T in unblocked_turfs)
 		if(is_blocked_turf(T))
 			unblocked_turfs -= T
 
@@ -178,72 +181,127 @@
 
 
 //Returns true if teleport is successful, false otherwise
-/obj/machinery/safety_tether/proc/bungee_teleport(mob/living/M, turf/chasm_turf)
+/obj/machinery/safety_tether/proc/attempt_teleport(mob/living/M, turf/chasm_turf, oldalpha, oldcolor, oldtransform)
 
-	//Teleports the player to a random safe location
-	var/turf/Target_Turf = findRandomTurf() //
+	//sleep(20)
+
+	//Gets a random safe location to teleport the mob to. Here because do_teleport can't run without it
+	var/turf/open/Target_Turf = findRandomTurf()
 	if(!Target_Turf)
 		Target_Turf = get_turf(src)
 
 	if(ismovableatom(M) && istype(chasm_turf, protected_chasm_type) && is_operational() != 0 && do_teleport(M, Target_Turf, channel = TELEPORT_CHANNEL_BLUESPACE))
-		use_power(teleport_power_draw)
-
-		//Style points
-		playsound(src, 'sound/magic/lightningbolt.ogg', 100, 1, extrarange = 5)
-
-		//For if the player is teleported to maintenance or wherever else
-		if(get_turf(src) != Target_Turf)
-			playsound(M, 'sound/magic/lightningbolt.ogg', 100, 1, extrarange = 5)
-
-		// TESLA_MOB_DAMAGE | TESLA_OBJ_DAMAGE  | TESLA_MOB_STUN | TESLA_ALLOW_DUPLICATES
-		tesla_zap(src, 3, teleport_power_draw * tesla_power_ratio, TESLA_MOB_DAMAGE | FALSE  | TESLA_MOB_STUN | FALSE) //Set to zap harmlessly but in a way that looks cool
-
-		M.spawn_gibs()
-		M.emote("scream")
-
 		log_admin("[M] ([key_name(M)]) was saved by the Safety Tether.")
+		INVOKE_ASYNC(src, .proc/bungee_teleport, M, Target_Turf, oldalpha, oldcolor, oldtransform) //Don't hold up the callstack, this can be done separately.
+																//Doubles as failsafe in case any runtimes are encountered. Mob won't be clouded.
+		return TRUE
 
-		if(iscarbon(M))
+	log_admin("[M] ([key_name(M)]) was failed by the Safety Tether and fell into the clouds.")
+	return FALSE
 
-			var/mob/living/carbon/Carbon = M
+/obj/machinery/safety_tether/proc/bungee_teleport(mob/living/M, turf/open/Target_Turf, oldalpha, oldcolor, oldtransform)
 
-			to_chat(Carbon, "<span class='italics'>Buzzing static snaps taut on your chest....</span>")
-			Carbon.adjustCloneLoss(rand(cloneloss_min, cloneloss_max))
+	//Fun sound bites as the machine gears up to teleport
+	M.density = FALSE //Prevents a very unlikely issue where players can move around an invisible but not-yet-teleported tether victim
+	playsound(CENTER_TURF, 'sound/magic/charge.ogg', 100, 1, extrarange = 5)
 
-			//Random limb removal
-			var/dismember_num = 1
+	//For if the player is teleported to maintenance or wherever else
+	if(CENTER_TURF != Target_Turf)
+		playsound(M, 'sound/magic/charge.ogg', 100, 1, extrarange = 2)
+	sleep(20)
+	M.density = initial(M.density)
 
-			//Dismember two limbs
-			if(prob(dismember_prob))
-				dismember_num = 2
+	use_power(teleport_power_draw)
 
-			var/dismembered_arm = FALSE
-			var/dismembered_leg = FALSE
+	M.alpha = oldalpha
+	M.color = oldcolor
+	M.transform = oldtransform
 
-			for(var/obj/item/bodypart/BP in Carbon.bodyparts)
-				if(BP.body_part != CHEST && BP.body_part != HEAD) //I am not ready to find out what happens if your chest is missing
-					var/zone = BP.body_zone
-					//Checks to ensure that only one arm and one leg each are dismembered, to prevent severe disabling like 2 arms being removed.
-					if(zone == BODY_ZONE_L_ARM || zone == BODY_ZONE_R_ARM)
-						if(!dismembered_arm)
-							dismembered_arm = TRUE
-							BP.dismember()
+	//Style points
+	playsound(src, 'sound/magic/lightningbolt.ogg', 100, 1, extrarange = 5)
 
-					if(zone == BODY_ZONE_L_LEG || zone == BODY_ZONE_R_LEG)
-						if(!dismembered_leg)
-							dismembered_leg = TRUE
-							BP.dismember()
+	//For if the player is teleported to maintenance or wherever else
+	if(CENTER_TURF != Target_Turf)
+		playsound(M, 'sound/magic/lightningbolt.ogg', 100, 1, extrarange = 5)
 
-					dismember_num -= 1
+	// TESLA_MOB_DAMAGE | TESLA_OBJ_DAMAGE  | TESLA_MOB_STUN | TESLA_ALLOW_DUPLICATES
+	tesla_zap(CENTER_TURF, 3, teleport_power_draw * tesla_power_ratio, TESLA_MOB_DAMAGE | FALSE  | TESLA_MOB_STUN | FALSE) //Set to zap harmlessly but in a way that looks cool
+	tesla_zap(M, 3, 9000, FALSE | FALSE  | TESLA_MOB_STUN | FALSE) //Set to zap harmlessly but in a way that looks cool
 
-					//We've dismembered enough limbs.
-					if(dismember_num <= 0)
-						break
+	M.spawn_gibs()
+	M.emote("scream")
 
-			//Bleed our pal a little
-			M.blood_volume -= BLOOD_VOLUME_NORMAL * M.blood_ratio * bleed_ratio
+	if(iscarbon(M))
 
-			src.visible_message("<span class='boldwarning'>[src] spits out [M] and viscera!</span>")
+		var/mob/living/carbon/Carbon = M
+
+		to_chat(Carbon, "<span class='italics'>Buzzing static snaps taut on your chest....</span>")
+
+		//Random limb removal
+		var/dismember_num = 1
+
+		//Dismember two limbs
+		if(prob(dismember_prob))
+			dismember_num = 2
+
+		var/dismembered_arm = FALSE
+		var/dismembered_leg = FALSE
+
+		var/total_loss = Carbon.health + Carbon.maxHealth //Get the player's current absolute nonnegative health
+
+		for(var/obj/item/bodypart/BP in Carbon.bodyparts)
+			if(BP.body_part != CHEST && BP.body_part != HEAD) //I am not ready to find out what happens if your chest is missing
+				var/zone = BP.body_zone
+				//Checks to ensure that only one arm and one leg each are dismembered, to prevent severe disabling like 2 arms being removed.
+				if(zone == BODY_ZONE_L_ARM || zone == BODY_ZONE_R_ARM)
+					if(!dismembered_arm)
+						dismembered_arm = TRUE
+						BP.dismember(BURN)
+
+				if(zone == BODY_ZONE_L_LEG || zone == BODY_ZONE_R_LEG)
+					if(!dismembered_leg)
+						dismembered_leg = TRUE
+						BP.dismember(BURN)
+
+				dismember_num -= 1
+
+				//We've dismembered enough limbs.
+				if(dismember_num <= 0)
+					break
+
+		//Bleed our pal a little
+		M.blood_volume -= BLOOD_VOLUME_NORMAL * M.blood_ratio * bleed_ratio
+
+		src.visible_message("<span class='boldwarning'>[src] spits out [M] and viscera!</span>")
+
+		//Radio in the teleportation
+		if(radio && internal_radio)
+
+			//Get the name of the area we teleported the player to
+			var/area/A = get_area(Target_Turf)
+			var/area_name = A.name
+			SPEAKMEDICAL("The safety tether's caught the would-be crater [M] at the [area_name].")
+
+		//Lotsa damage. Enough cloneloss to keep them on the very edge of crit, especially with suffocation
+		//Then burn damage to bring them to the -20 health threshold for docs to later stabalize
+		Carbon.adjustCloneLoss(rand(cloneloss_min, cloneloss_max)*(Carbon.maxHealth/100))
+
+		total_loss -= Carbon.health + Carbon.maxHealth //Find the total amount of health lost from when damage started to now
+		Carbon.adjustFireLoss(Carbon.maxHealth-carbon_final_health*(Carbon.maxHealth/100) - total_loss)
+
+		//Kill the player at a delay, done asynchronously in case we want to apply animations while sleep() call is occuring
+		INVOKE_ASYNC(src, .proc/delayed_kill, Carbon)
+
+		//All this ended up causing issues by canting the player 90 degrees due to the player having enforced rest at the time of teleportation
+		//animate(M, transform = oldtransform, alpha = oldalpha, color = oldcolor, time = 10)
+
+	else
+		if(issilicon(M))
+			var/mob/living/silicon/S = M
+			to_chat(S, "<span class='italics'>Your circuits spark, slag, and pop as overwhelming white noise crackles and YANKS...</span>")
+			S.apply_damage_type(damage = rand(silicon_burn_min, silicon_burn_max), damagetype = BURN)
+
+			src.visible_message("<span class='boldwarning'>[src] spits out [M] and oily, smoking circuits!</span>")
 
 			//Radio in the teleportation
 			if(radio && internal_radio)
@@ -251,48 +309,26 @@
 				//Get the name of the area we teleported the player to
 				var/area/A = get_area(Target_Turf)
 				var/area_name = A.name
-				SPEAKMEDICAL("The safety tether's caught the would-be crater [M] at the [area_name].")
+				SPEAKSCIENCE("The safety tether's caught the would-be crater [M] at the [area_name].")
 
-			//All this ended up causing issues by canting the player 90 degrees due to the player having enforced rest at the time of teleportation
-			//animate(M, transform = oldtransform, alpha = oldalpha, color = oldcolor, time = 10)
+/obj/machinery/safety_tether/proc/delayed_kill(mob/living/carbon/Carbon)
+	//Wait just long enough for them to realize their mistake, then kill them.
+	sleep(20)
+	Carbon.succumb()
 
-			//M.transform = oldtransform
-			//M.alpha = oldalpha
-			//M.color = oldcolor
-		else
-			if(issilicon(M))
-				var/mob/living/silicon/S = M
-				to_chat(S, "<span class='italics'>Your circuits spark, slag, and pop as overwhelming white noise crackles and YANKS...</span>")
-				S.apply_damage_type(damage = rand(silicon_burn_min, silicon_burn_max), damagetype = BURN)
-
-				src.visible_message("<span class='boldwarning'>[src] spits out [M] and oily, smoking circuits!</span>")
-
-				//Radio in the teleportation
-				if(radio && internal_radio)
-
-					//Get the name of the area we teleported the player to
-					var/area/A = get_area(Target_Turf)
-					var/area_name = A.name
-					SPEAKSCIENCE("The safety tether's caught the would-be crater [M] at the [area_name].")
-
-		return TRUE
-
-	else
-		log_admin("[M] ([key_name(M)]) was failed by the Safety Tether and fell into the clouds.")
-		return FALSE
+	//Thankfully method of application doesn't matter, because otherwise this simple idea would need like, 15 different method calls, including creating a reagent holder for this machine. Chemistry code is a MESS
+	Carbon.reagents.add_reagent(/datum/reagent/toxin/formaldehyde, 1)
 
 //Updates machine icon and lighting every time power in the area changes
 /obj/machinery/safety_tether/power_change()
 	. = ..()
-	if(light_source)
-		if(stat & NOPOWER)
-			if(radio && internal_radio) //If called while initializing results in a null error.
-				SPEAKCOMMON("The Safety Tether's shut down from a lack of power.")
-			light_source.set_light(0)
-		else
-			if(radio && internal_radio)
-				SPEAKCOMMON("The Safety Tether is back online.")
-			light_source.set_light(brightness_on, light_power, light_color)
+
+	if(stat & NOPOWER)
+		if(radio && internal_radio) //If called while initializing results in a null error.
+			SPEAKCOMMON("The Safety Tether's shut down from a lack of power.")
+	else
+		if(radio && internal_radio)
+			SPEAKCOMMON("The Safety Tether is back online.")
 	update_icon()
 
 /*
@@ -306,9 +342,9 @@
 	For those unfamiliar with the technology of a Safety Tether;
 	<b>First</b> and foremost; Understand that it needs to be powered <b>at all times</b>. Failure to supply constant energy to the tether can and will prevent its function, and doom personnel to the clouds beneath if any are so unlucky as to fall in the interim. <br>
 	<b>Secondly</b>; Speaking of clouds. when powered, the tether will rescue any humanoid beings or borgs who would slip into them.<br>
-	<b>Thirdly</b>; Large amounts of electricity are siphoned upon any and every use of the Safety Tether, enough so to arc through the air and <i>hopefully</i> into the grounding rods supplied nearby. The transit of matter instantaneously and unplanned to one location from anywhere on the planet is, understandably, enough to drain a fourth of the APCs energy or so when activated.<br><br>
+	<b>Thirdly</b>; Large amounts of electricity are siphoned upon any and every use of the Safety Tether, enough so to arc through the air and <i>hopefully</i> into the grounding rods supplied nearby. The transit of matter near-instantaneously and unplanned to one location from anywhere on the planet is, understandably, enough to drain a fourth of the APCs energy or so when activated.<br><br>
 
-	<i>However</i>, the old engram Layenia works under is faulty <i>at best</i>, resulting in <u>blood loss, loss of limbs, and painful cellular damages or burns to personnel and cyborgs respectively</u> when falling into the clouds. Because of this, caution is still highly advised when working on the exterior of Layenia. A radio has been retrofitted to the device to call appropriate medical or scientific services onscene as an added precaution.<br><br>
+	<i>However</i>, the old engram Layenia works under is faulty <i>at best</i>, resulting in <u><font color=red>blood loss, loss of limbs, painful cellular damages and burns to personnel and cyborgs respectively <font size=1>followed by death via cardiac arrest</font></u></font> when falling into the clouds. Because of this, caution is still highly advised when working on the exterior of Layenia. A radio has been retrofitted to the device to call appropriate medical or scientific services onscene as an added precaution.<br><br>
 	Should any more information be needed on the tether, please contact your local sector executive."}
 
 //#undef SPEAK

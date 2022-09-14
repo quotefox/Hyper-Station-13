@@ -19223,6 +19223,12 @@
 	icon_state = "steel_panel";
 	name = "steel pannel"
 	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/item/paper/fluff/safety_tether,
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
 	},
@@ -87850,7 +87856,10 @@
 /turf/open/floor/plasteel/layenia,
 /area/layenia)
 "nAF" = (
-/obj/item/paper/fluff/safety_tether,
+/obj/machinery/safety_tether{
+	pixel_x = 0;
+	pixel_y = 0
+	},
 /turf/open/floor/carpet/kinaris,
 /area/engine/tether)
 "nAJ" = (
@@ -101605,10 +101614,6 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/main/upper)
-"ptb" = (
-/obj/machinery/safety_tether,
-/turf/open/floor/carpet/kinaris,
-/area/engine/tether)
 "ptc" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -112572,10 +112577,9 @@
 	name = "scrubbers pipe"
 	},
 /obj/effect/turf_decal/loading_area{
-	dir = 1;
+	dir = 8;
 	icon_state = "half_stairs_darkfull";
-	name = "dark steps";
-	pixel_y = 16
+	name = "dark steps"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -129712,6 +129716,10 @@
 /obj/structure/railing/handrail{
 	dir = 1;
 	pixel_y = 13
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "steel_panel";
+	name = "steel pannel"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -159007,10 +159015,9 @@
 	name = "air supply pipe"
 	},
 /obj/effect/turf_decal/loading_area{
-	dir = 1;
+	dir = 4;
 	icon_state = "half_stairs_darkfull";
-	name = "dark steps";
-	pixel_y = 16
+	name = "dark steps"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -207493,7 +207500,7 @@ wWR
 mwH
 nPr
 gQR
-ptb
+gQR
 gQR
 pIP
 vct

@@ -121,15 +121,33 @@
 
 		if (isliving(AM))
 			var/mob/living/L = AM
-			L.notransform = TRUE
+			//L.notransform = TRUE
 			L.Stun(200)
-			if(!issilicon(AM))
-				L.resting = TRUE
+			//if(!issilicon(AM))
+				//L.resting = TRUE
 			if(L.client && check_rights_for(L.client, R_FUN))
 				playsound(AM, pick('hyperstation/sound/misc/yodadeath.ogg', 'hyperstation/sound/misc/fallingthroughclouds.ogg', 'hyperstation/sound/misc/goofy.ogg', 'hyperstation/sound/misc/wilhelm.ogg'), 100, 0)
 
 			else if(prob(5))
 				playsound(AM, pick('hyperstation/sound/misc/yodadeath.ogg', 'hyperstation/sound/misc/fallingthroughclouds.ogg', 'hyperstation/sound/misc/goofy.ogg', 'hyperstation/sound/misc/wilhelm.ogg'), 100, 0)
+
+		var/oldalpha = AM.alpha
+		var/oldcolor = AM.color
+		var/oldtransform = AM.transform
+
+		//Animate our falling items
+		animate(AM, transform = matrix(0,0,0,0,0,0), alpha = 0, color = rgb(0, 0, 0), time = 10)
+
+		for(var/i in 1 to 5)
+			//Make sure the item is still there after our sleep
+			if(!AM || QDELETED(AM))
+				return
+			AM.pixel_y--
+			sleep(2)
+
+		//Make sure the item is still there after our sleep
+		if(!AM || QDELETED(AM))
+			return
 
 		//Mob types that could be protected by a tether
 		if(iscyborg(AM) || iscarbon(AM))
@@ -142,41 +160,23 @@
 				if(tether_number == 1)
 
 					// If teleportation fails
-					if(!GLOB.safety_tethers_list[1].bungee_teleport(victim, linked_turf))
+					if(!GLOB.safety_tethers_list[1].attempt_teleport(victim, linked_turf, oldalpha, oldcolor, oldtransform))
 						finishdrop(AM)
 				else
 
 					//Just in case multiple safety tethers are present
-					if(!GLOB.safety_tethers_list[rand(1,GLOB.safety_tethers_list.len)].bungee_teleport(victim, linked_turf))
+					if(!GLOB.safety_tethers_list[rand(1,GLOB.safety_tethers_list.len)].attempt_teleport(victim, linked_turf, oldalpha, oldcolor, oldtransform))
 						finishdrop(AM)
 				if(isliving(AM))
 					var/mob/living/L = AM
 					L.notransform = FALSE
 			else
-				finishdrop(AM)
+				finishdrop(AM, oldalpha, oldcolor, oldtransform)
 		else
-			finishdrop(AM)
+			finishdrop(AM, oldalpha, oldcolor, oldtransform)
 
 
-/datum/component/chasm/proc/finishdrop(atom/movable/AM)
-
-	var/oldalpha = AM.alpha
-	var/oldcolor = AM.color
-	var/oldtransform = AM.transform
-
-	//Animate our falling items, then delete them.
-	animate(AM, transform = matrix() - matrix(), alpha = 0, color = rgb(0, 0, 0), time = 10)
-
-	for(var/i in 1 to 5)
-		//Make sure the item is still there after our sleep
-		if(!AM || QDELETED(AM))
-			return
-		AM.pixel_y--
-		sleep(2)
-
-	//Make sure the item is still there after our sleep
-	if(!AM || QDELETED(AM))
-		return
+/datum/component/chasm/proc/finishdrop(atom/movable/AM, oldalpha, oldcolor, oldtransform)
 
 	if(iscyborg(AM))
 		var/mob/living/silicon/robot/S = AM
