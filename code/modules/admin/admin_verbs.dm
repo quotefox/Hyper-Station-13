@@ -58,6 +58,7 @@ GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 	/client/proc/cmd_admin_man_up, //CIT CHANGE - adds man up verb
 	/client/proc/cmd_admin_man_up_global, //CIT CHANGE - ditto
 	/client/proc/cmd_admin_preload_resource,
+	/client/proc/cmd_admin_preload_sound,
 	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/cmd_change_command_name,
 	/client/proc/cmd_admin_check_player_exp, /* shows players by playtime */
