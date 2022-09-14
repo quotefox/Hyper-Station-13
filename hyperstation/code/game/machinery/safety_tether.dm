@@ -98,6 +98,8 @@
 	var/radio_key = /obj/item/encryptionkey/headset_medsci
 
 /obj/machinery/safety_tether/Initialize()
+	//ensures light is properly centered around the tether. Removes lighting system's pixel approximation that breaks it.
+	light_source = CENTER_TURF
 	. = ..()
 
 	//Adds this to the global list of safety tethers in the world to pull from when chasms attempt to drop mobs
@@ -125,8 +127,6 @@
 
 	allowed_turfs = make_associative(allowed_turf_types - disallowed_turf_types)
 
-	//ensures light is properly centered around the tether. Removes lighting system's pixel approximation that breaks it.
-	light_source = CENTER_TURF
 	update_icon()
 
 /obj/machinery/safety_tether/Destroy()
@@ -324,7 +324,7 @@
 	. = ..()
 
 	if(stat & NOPOWER)
-		if(radio && internal_radio) //If called while initializing results in a null error.
+		if(SSticker.HasRoundStarted()&& radio && internal_radio) //If called while initializing results in a null error.
 			SPEAKCOMMON("The Safety Tether's shut down from a lack of power.")
 	else
 		if(radio && internal_radio)
@@ -351,3 +351,4 @@
 #undef SPEAKCOMMON
 #undef SPEAKMEDICAL
 #undef SPEAKSCIENCE
+#undef CENTER_TURF
