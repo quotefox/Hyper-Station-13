@@ -2809,7 +2809,7 @@
 /area/security/range)
 "ahY" = (
 /obj/effect/landmark/carpspawn,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia)
 "ahZ" = (
 /obj/structure/railing{
@@ -6734,7 +6734,7 @@
 /area/crew_quarters/theatre)
 "aOX" = (
 /obj/structure/ore_box,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "aPc" = (
 /obj/effect/turf_decal/stripes/line{
@@ -19035,7 +19035,7 @@
 /obj/effect/turf_decal/weather/grass/line{
 	dir = 6
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cloudlayer)
 "cXg" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -19353,7 +19353,7 @@
 /area/ai_monitored/turret_protected/ai)
 "daS" = (
 /obj/effect/turf_decal/stripes/line,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "daT" = (
 /obj/structure/chair/office/dark{
@@ -27494,7 +27494,7 @@
 	dir = 1;
 	name = "visible"
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia)
 "ewF" = (
 /obj/machinery/space_heater,
@@ -27516,7 +27516,7 @@
 	dir = 1;
 	name = "visible"
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia)
 "ewN" = (
 /obj/effect/turf_decal/loading_area{
@@ -27905,7 +27905,7 @@
 /area/quartermaster/miningdock)
 "eyS" = (
 /obj/structure/fence,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia)
 "eyW" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -28714,7 +28714,7 @@
 /obj/structure/fence/door{
 	dir = 4
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia)
 "eGn" = (
 /obj/effect/turf_decal/loading_area{
@@ -31524,7 +31524,7 @@
 	icon_state = "drain_corner";
 	name = "drain"
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "fbB" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
@@ -34346,7 +34346,7 @@
 	},
 /area/engine/atmos)
 "fxA" = (
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia)
 "fxC" = (
 /obj/machinery/power/apc{
@@ -38265,7 +38265,7 @@
 /obj/structure/sign/poster/random{
 	pixel_x = 32
 	},
-/turf/open/indestructible/layenia/sand{
+/turf/open/floor/plating/asteroid/layenia/sand{
 	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
 	},
 /area/hallway/primary/aft/upper)
@@ -44648,7 +44648,7 @@
 	dir = 1
 	},
 /obj/structure/flora/crystal/small/growth,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "hdo" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -45422,7 +45422,7 @@
 /area/layenia)
 "hjz" = (
 /obj/item/shovel,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "hjD" = (
 /obj/effect/turf_decal/stripes/line{
@@ -45712,7 +45712,7 @@
 /area/quartermaster/sorting)
 "hlA" = (
 /obj/effect/decal/cleanable/vomit,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "hlB" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -46075,7 +46075,7 @@
 /area/crew_quarters/heads/chief)
 "hny" = (
 /obj/structure/bonfire,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "hnA" = (
 /obj/structure/closet,
@@ -51414,7 +51414,7 @@
 	dir = 8;
 	pixel_x = -7
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "iah" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -63415,13 +63415,13 @@
 /area/security/locker)
 "jPP" = (
 /obj/structure/flora/crystal/small/pile,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia)
 "jPU" = (
 /obj/effect/turf_decal/weather/grass/line{
 	dir = 10
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cloudlayer)
 "jQa" = (
 /obj/structure/lattice/catwalk,
@@ -65617,7 +65617,7 @@
 /area/security/locker)
 "khn" = (
 /obj/structure/flora/crystal/small/growth,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia)
 "khp" = (
 /obj/machinery/door/firedoor{
@@ -69666,7 +69666,7 @@
 /area/hallway/primary/fore/upper)
 "kLI" = (
 /obj/effect/turf_decal/stripes/corner,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "kLQ" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -70544,7 +70544,7 @@
 	icon_state = "drain_corner";
 	name = "drain"
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "kUe" = (
 /obj/effect/decal/cleanable/oil{
@@ -71184,7 +71184,7 @@
 /obj/effect/turf_decal/weather/grass/line{
 	dir = 4
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cloudlayer)
 "kZl" = (
 /obj/machinery/light{
@@ -73939,7 +73939,7 @@
 /obj/effect/turf_decal/weather/grass/line{
 	dir = 1
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cloudlayer)
 "lyu" = (
 /obj/structure/closet/secure_closet/personal,
@@ -75519,7 +75519,7 @@
 /obj/effect/turf_decal/weather/grass/line{
 	dir = 5
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cloudlayer)
 "lJV" = (
 /obj/effect/turf_decal/stripes/line,
@@ -76321,7 +76321,7 @@
 /obj/effect/turf_decal/weather/grass/line{
 	dir = 8
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cloudlayer)
 "lRm" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -76540,7 +76540,7 @@
 	dir = 4
 	},
 /obj/structure/flora/tree/jungle/small,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cloudlayer)
 "lTe" = (
 /obj/effect/turf_decal/loading_area{
@@ -81055,7 +81055,7 @@
 /area/hallway/primary/port/upper)
 "mBS" = (
 /obj/effect/turf_decal/weather/grass/line,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cloudlayer)
 "mBU" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
@@ -82442,7 +82442,7 @@
 	icon_state = "drain_corner";
 	name = "drain"
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "mNh" = (
 /obj/structure/cable{
@@ -82566,7 +82566,7 @@
 /turf/open/floor/plasteel/white,
 /area/medical/psych/ward)
 "mNC" = (
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "mNF" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -93566,7 +93566,7 @@
 	},
 /area/construction/mining/aux_base)
 "orv" = (
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cloudlayer)
 "orw" = (
 /obj/structure/table,
@@ -95135,7 +95135,7 @@
 	icon_state = "drain_corner";
 	name = "drain"
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "oDa" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -102220,7 +102220,7 @@
 	pixel_x = 7
 	},
 /obj/structure/flora/crystal/small/pile,
-/turf/open/indestructible/layenia/sand{
+/turf/open/floor/plating/asteroid/layenia/sand{
 	initial_gas_mix = "o2=22;n2=82;TEMP=293.15"
 	},
 /area/hallway/primary/aft/upper)
@@ -110889,7 +110889,7 @@
 /area/hallway/primary/aft)
 "qKb" = (
 /obj/effect/decal/cleanable/oil,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "qKd" = (
 /obj/structure/chair/comfy/black{
@@ -115006,7 +115006,7 @@
 	dir = 8;
 	name = "visible"
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia)
 "rkc" = (
 /obj/machinery/light{
@@ -125837,7 +125837,7 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "sIe" = (
 /obj/machinery/button/door{
@@ -126243,7 +126243,7 @@
 /obj/structure/fence/corner{
 	dir = 6
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia)
 "sKU" = (
 /obj/structure/railing{
@@ -129981,7 +129981,7 @@
 /area/crew_quarters/heads/cmo)
 "tmZ" = (
 /obj/item/picket_sign,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "tnl" = (
 /obj/effect/turf_decal/tile/blue{
@@ -138191,7 +138191,7 @@
 	dir = 4;
 	pixel_x = 7
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cave)
 "usj" = (
 /obj/effect/decal/cleanable/cobweb{
@@ -141771,7 +141771,7 @@
 /obj/effect/turf_decal/weather/grass/line{
 	dir = 9
 	},
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cloudlayer)
 "uUm" = (
 /obj/structure/chair/bench/metal/right{
@@ -160135,7 +160135,7 @@
 /area/science/research)
 "xyC" = (
 /obj/structure/flora/tree/jungle/small,
-/turf/open/indestructible/layenia/sand,
+/turf/open/floor/plating/asteroid/layenia/sand,
 /area/layenia/cloudlayer)
 "xyH" = (
 /obj/machinery/light{
