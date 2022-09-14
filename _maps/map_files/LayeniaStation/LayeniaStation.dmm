@@ -2941,6 +2941,7 @@
 	icon_state = "1-2"
 	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/structure/fans/tiny,
 /turf/open/floor/plating,
 /area/maintenance/solars/starboard/fore)
 "aiI" = (
@@ -10940,6 +10941,10 @@
 /obj/effect/decal/cleanable/cobweb,
 /obj/structure/mopbucket,
 /obj/item/mop,
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
+	},
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
 "bxV" = (
@@ -91827,6 +91832,16 @@
 "ofn" = (
 /turf/closed/wall,
 /area/storage/D)
+"ofu" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/obj/effect/turf_decal/delivery,
+/obj/machinery/power/grounding_rod{
+	anchored = 1
+	},
+/turf/open/floor/plasteel/dark,
+/area/engine/tether)
 "ofE" = (
 /obj/structure/closet/l3closet/scientist,
 /obj/effect/turf_decal/stripes/line{
@@ -101614,6 +101629,17 @@
 	},
 /turf/open/floor/plasteel,
 /area/security/main/upper)
+"ptb" = (
+/obj/machinery/door/airlock/external{
+	name = "Port Docking Bay 1"
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
+/obj/effect/turf_decal/delivery,
+/obj/structure/fans/tiny,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
+/area/hallway/secondary/entry/upper)
 "ptc" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -109064,12 +109090,6 @@
 	name = "tile"
 	},
 /area/hallway/primary/aft)
-"qwN" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
-	name = "air vent"
-	},
-/turf/open/floor/plasteel/dark,
-/area/engine/tether)
 "qwP" = (
 /obj/machinery/power/apc{
 	areastring = "/area/security/checkpoint/auxiliary";
@@ -129701,12 +129721,12 @@
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/tcommsat/server)
 "tlH" = (
-/obj/structure/cable{
-	icon_state = "4-8"
-	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
 	dir = 8;
 	name = "air supply pipe"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
 	},
 /obj/effect/turf_decal/loading_area{
 	dir = 5;
@@ -141056,13 +141076,9 @@
 /turf/closed/wall,
 /area/medical/genetics)
 "uPI" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
+	name = "air vent"
 	},
-/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
-	name = "air supply pipe"
-	},
-/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
 "uPP" = (
@@ -153544,6 +153560,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
+/obj/structure/fans/tiny,
 /turf/open/floor/plating/layenia,
 /area/maintenance/department/engine/upper)
 "wAM" = (
@@ -208014,8 +208031,8 @@ wWR
 woc
 txg
 pLi
-qwN
 uPI
+ofu
 xqo
 woc
 qMc
@@ -252280,7 +252297,7 @@ vka
 vka
 vka
 prt
-dvT
+ptb
 rFp
 vKI
 tGx

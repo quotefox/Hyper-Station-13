@@ -123,8 +123,6 @@
 			var/mob/living/L = AM
 			//L.notransform = TRUE
 			L.Stun(200)
-			//if(!issilicon(AM))
-				//L.resting = TRUE
 			if(L.client && check_rights_for(L.client, R_FUN))
 				playsound(AM, pick('hyperstation/sound/misc/yodadeath.ogg', 'hyperstation/sound/misc/fallingthroughclouds.ogg', 'hyperstation/sound/misc/goofy.ogg', 'hyperstation/sound/misc/wilhelm.ogg'), 100, 0)
 
