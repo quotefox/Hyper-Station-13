@@ -113,8 +113,8 @@
 /obj/screen/ai/pda_msg_send/Click()
 	if(..())
 		return
-	var/mob/living/silicon/ai/AI = usr
-	AI.cmd_send_pdamesg(usr)
+	var/mob/living/silicon/S = usr
+	S.cmd_send_pdamesg(usr, TRUE)
 
 /obj/screen/ai/pda_msg_show
 	name = "PDA - Show Message Log"
@@ -123,8 +123,8 @@
 /obj/screen/ai/pda_msg_show/Click()
 	if(..())
 		return
-	var/mob/living/silicon/ai/AI = usr
-	AI.cmd_show_message_log(usr)
+	var/mob/living/silicon/S = usr
+	S.cmd_show_message_log(usr)
 
 /obj/screen/ai/image_take
 	name = "Take Image"

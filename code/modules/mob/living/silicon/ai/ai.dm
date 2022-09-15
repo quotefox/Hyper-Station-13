@@ -141,7 +141,7 @@
 	builtInPDA = new/obj/item/pda/ai(src)
 	builtInPDA.owner = name
 	builtInPDA.ownjob = "AI"
-	builtInPDA.name = name + " (" + builtInPDA.ownjob + ")"
+	builtInPDA.update_label()
 
 	aiMulti = new(src)
 	radio = new /obj/item/radio/headset/ai(src)
@@ -799,7 +799,7 @@
 	if(control_disabled || incapacitated())
 		to_chat(src, "<span class='warning'>You can't do that right now!</span>")
 		return FALSE
-	if(be_close && !in_range(M, src))
+	if(be_close && !in_range(M, src) && M != builtInPDA) //Makes sure AIs in shells can always use their PDA. This one probably unnecessary since it's called from robot.dm, but just in case.
 		to_chat(src, "<span class='warning'>You are too far away!</span>")
 		return FALSE
 	return can_see(M) //stop AIs from leaving windows open and using then after they lose vision

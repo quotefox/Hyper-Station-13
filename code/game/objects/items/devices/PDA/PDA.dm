@@ -738,8 +738,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if((last_text && world.time < last_text + 10) || (everyone && last_everyone && world.time < last_everyone + PDA_SPAM_DELAY))
 		return
 	var/emoji_message = emoji_parse(message)
-	if(prob(1))
-		message += "\nSent from my PDA"
+	//Bad for RP
+	//if(prob(1))
+	//	message += "\nSent from my PDA"
 	// Send the signal
 	var/list/string_targets = list()
 	for (var/obj/item/pda/P in targets)
@@ -796,7 +797,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 	if (!silent)
 		if(prob(0.1))
-			playsound(src, 'sound/machines/youve_got_mail.ogg', 50, 1)
+			playsound(src, 'sound/machines/youve_got_mail.ogg', 50, 0)
 			audible_message("[icon2html(src, hearers(src))] *You've got mail!*", null, 3)
 		else
 			playsound(src, 'sound/machines/twobeep.ogg', 50, 1)
@@ -1071,8 +1072,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 		QDEL_NULL(inserted_item)
 	return ..()
 
-//AI verb and proc for sending PDA messages.
-
+//Silicon verb and proc for sending PDA messages.
 /mob/living/silicon/proc/cmd_send_pdamesg(mob/user)
 	var/list/plist = list()
 	var/list/namecounts = list()
@@ -1082,11 +1082,8 @@ GLOBAL_LIST_EMPTY(PDAs)
 		return
 
 	for (var/obj/item/pda/P in get_viewable_pdas())
-		if (P == src)
+		if (P == builtInPDA)//Don't want to send messages to yourself
 			continue
-		else if (P == builtInPDA)
-			continue
-
 		plist[avoid_assoc_duplicate_keys(P.owner, namecounts)+" ("+P.ownjob+")"] = P
 
 	var/c = input(user, "Please select a PDA") as null|anything in sortList(plist)
@@ -1134,6 +1131,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 /mob/living/silicon/proc/cmd_show_message_log(mob/user)
 	if(incapacitated())
 		return
+
 	if(!isnull(builtInPDA))
 		var/HTML = "<html><head><title>PDA Message Log</title></head><body>[builtInPDA.tnote]</body></html>"
 		user << browse(HTML, "window=log;size=400x444;border=1;can_resize=1;can_close=1;can_minimize=0")
@@ -1154,6 +1152,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /proc/get_viewable_pdas()
 	. = list()
+
 	// Returns a list of PDAs which can be viewed from another PDA/message monitor.
 	for(var/obj/item/pda/P in GLOB.PDAs)
 		if(!P.owner || P.toff || P.hidden)

@@ -143,6 +143,11 @@
 		if(wires.is_cut(WIRE_CAMERA))
 			builtInCamera.status = 0
 
+	module = new /obj/item/robot_module(src)
+	module.rebuild_modules()
+	update_icons()
+	. = ..()
+
 	//If this body is meant to be a borg controlled by the AI player
 	if(shell)
 		make_shell()
@@ -161,17 +166,12 @@
 
 	updatename()
 
-	//Name updated, can build PDA data now
-	if(!builtInPDA)
+	//Name updated, can build PDA data now. Checks for if AI is meant to control.
+	if(!builtInPDA && !shell)
 		builtInPDA = new/obj/item/pda/ai(src)
 		builtInPDA.owner = name
 		builtInPDA.ownjob = "Station Cyborg"
-		builtInPDA.name = name + " (" + builtInPDA.ownjob + ")"
-
-	module = new /obj/item/robot_module(src)
-	module.rebuild_modules()
-	update_icons()
-	. = ..()
+		builtInPDA.update_label()
 
 	equippable_hats = typecacheof(equippable_hats)
 
@@ -939,7 +939,7 @@
 	if(stat || lockcharge || low_power_mode)
 		to_chat(src, "<span class='warning'>You can't do that right now!</span>")
 		return FALSE
-	if(be_close && !in_range(M, src))
+	if(be_close && !in_range(M, src) && M != builtInPDA) //Makes sure AIs in shells can always use their PDA
 		to_chat(src, "<span class='warning'>You are too far away!</span>")
 		return FALSE
 	return TRUE
@@ -1149,6 +1149,10 @@
 	mainframe.connected_robots |= src
 	lawupdate = TRUE
 	lawsync()
+
+	//Ensures AI shells have the same PDA as their mainframe AI
+	builtInPDA = AI.builtInPDA
+
 	if(radio && AI.radio) //AI keeps all channels, including Syndie if it is a Traitor
 		if(AI.radio.syndie)
 			radio.make_syndie()
