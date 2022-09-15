@@ -313,7 +313,7 @@
 			quirks[T.type] = T.clone_data()
 
 		//grows the clone, format;
-		// ckey, clonename, ui, mutation_index, mindref, datum/species/mrace, list/featuresm custom_body_size, factions, list/quirks, experimental = FALSE
+		// ckey, clonename, ui, mutation_index, mindref, datum/species/mrace, list/features, custom_body_size, factions, list/quirks, experimental = FALSE
 		pod.growclone(null, name, UI, SE, mind, clone_species, features, size, factions, quirks, TRUE)
 		temp = "[mob_occupant.real_name] => <font class='good'>Cloning data sent to pod.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
