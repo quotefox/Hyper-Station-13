@@ -69,7 +69,7 @@
 		output += "<p><a href='byond://?src=[REF(src)];late_join=1'>[icon2html(preview_icon, world, "preview")]Join Game!</a></p>"
 		output += "<p><a href='byond://?src=[REF(src)];roleplay_join=1'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "roleplay")]Roleplay Roles!</a></p>"
 		output += "<p><a href='byond://?src=[REF(src)];show_preferences=1'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "settings")]Setup Character</a></p>"
-		output += "<p><a href='byond://?src=[REF(src)];manifest=1'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "manifest")]View the Crew Manifest</a></p>"
+		output += "<p><a href='byond://?src=[REF(src)];manifest=1'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "manifest")]View the Game Manifest</a></p>"
 		output += "<p><a href='byond://?src=[REF(src)];ready=[PLAYER_READY_TO_OBSERVE]'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "ghost")]Observe</a></p>"
 
 	if(!IsGuestKey(src.key) && SSticker.current_state >= GAME_STATE_PREGAME)
@@ -764,8 +764,8 @@
 
 /mob/dead/new_player/proc/ViewManifest()
 	var/dat = "<html><body>"
-	dat += "<h4>Crew Manifest</h4>"
-	dat += GLOB.data_core.get_manifest(OOC = 1)
+	dat += "<h4>Game Manifest</h4>"
+	dat += GLOB.data_core.get_manifest(OOC = TRUE)
 
 	src << browse(dat, "window=manifest;size=387x420;can_close=1")
 
