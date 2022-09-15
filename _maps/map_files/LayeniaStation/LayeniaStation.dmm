@@ -7020,8 +7020,8 @@
 /turf/open/floor/plasteel,
 /area/maintenance/disposal/incinerator)
 "aRt" = (
-/obj/machinery/power/grounding_rod{
-	anchored = 1
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
+	name = "air scrubber"
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
@@ -10940,12 +10940,14 @@
 	dir = 1;
 	pixel_y = 16
 	},
-/obj/machinery/power/grounding_rod{
-	anchored = 1
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "ledge_short";
+	name = "short ledge"
 	},
-/obj/machinery/power/grounding_rod{
-	anchored = 1
-	},
+/obj/structure/mopbucket,
+/obj/item/mop,
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
 "bxV" = (
@@ -19219,6 +19221,20 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 4;
 	name = "scrubbers pipe"
+	},
+/obj/item/paper/fluff/safety_tether,
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 5;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/structure/fence/handrail{
+	pixel_y = 15
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -43012,8 +43028,7 @@
 	},
 /area/chapel/main)
 "gQR" = (
-/obj/machinery/safety_tether,
-/turf/open/floor/engine,
+/turf/open/floor/carpet/kinaris,
 /area/engine/tether)
 "gQT" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -58887,7 +58902,17 @@
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms)
 "jgm" = (
-/turf/open/floor/engine,
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "ledge_short";
+	name = "short ledge"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 10;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/turf/open/floor/plasteel/dark,
 /area/engine/tether)
 "jgz" = (
 /obj/structure/cable{
@@ -72161,9 +72186,13 @@
 /turf/closed/wall/r_wall,
 /area/ai_monitored/turret_protected/aisat_interior)
 "lgU" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
-	name = "air scrubber"
+/obj/machinery/power/grounding_rod{
+	anchored = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	name = "scrubbers pipe"
+	},
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
 "lgW" = (
@@ -72938,6 +72967,11 @@
 	},
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
+"lpz" = (
+/obj/structure/grille,
+/obj/effect/spawner/structure/window/plasma,
+/turf/open/floor/plating,
+/area/engine/tether)
 "lpA" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -93587,6 +93621,12 @@
 	icon_state = "plaswhite_traction"
 	},
 /area/medical/chemistry)
+"orz" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
+	name = "air vent"
+	},
+/turf/open/floor/plasteel/dark,
+/area/engine/tether)
 "orD" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
@@ -100411,8 +100451,8 @@
 /turf/open/floor/plating/layenia,
 /area/layenia/cloudlayer)
 "pkn" = (
-/obj/item/paper/fluff/safety_tether,
-/turf/open/floor/plasteel/dark,
+/obj/machinery/safety_tether,
+/turf/open/floor/carpet/kinaris,
 /area/engine/tether)
 "pko" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -103920,6 +103960,15 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
+/obj/effect/turf_decal/loading_area{
+	dir = 5;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/effect/turf_decal/caution/stand_clear,
+/obj/structure/fence/handrail{
+	pixel_y = 15
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_trim"
 	},
@@ -104225,6 +104274,10 @@
 /turf/open/floor/plasteel/dark,
 /area/security/brig/upper)
 "pLi" = (
+/obj/machinery/power/grounding_rod{
+	anchored = 1
+	},
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
 "pLj" = (
@@ -107500,6 +107553,18 @@
 	},
 /turf/open/floor/plating,
 /area/quartermaster/qm)
+"qly" = (
+/obj/effect/turf_decal/loading_area{
+	icon_state = "ledge_short";
+	name = "short ledge"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 10;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/turf/open/floor/plasteel/dark,
+/area/engine/tether)
 "qlF" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -112600,6 +112665,11 @@
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 5;
 	name = "scrubbers pipe"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "half_stairs_darkfull";
+	name = "dark steps"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -129761,6 +129831,18 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 5;
+	icon_state = "steel_panel";
+	name = "steel pannel"
+	},
+/obj/structure/fence/handrail{
+	pixel_y = 15
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
 	},
@@ -131340,8 +131422,14 @@
 	dir = 1;
 	pixel_y = 16
 	},
-/obj/machinery/power/grounding_rod{
-	anchored = 1
+/obj/effect/turf_decal/loading_area{
+	dir = 1;
+	icon_state = "ledge_short";
+	name = "short ledge"
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "steel_decals_central6_corner";
+	name = "maintenance hatch"
 	},
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
@@ -141094,9 +141182,13 @@
 /turf/closed/wall,
 /area/medical/genetics)
 "uPI" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
-	name = "air vent"
+/obj/machinery/power/grounding_rod{
+	anchored = 1
 	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/obj/effect/turf_decal/delivery,
 /turf/open/floor/plasteel/dark,
 /area/engine/tether)
 "uPP" = (
@@ -159058,6 +159150,11 @@
 	},
 /obj/structure/cable{
 	icon_state = "0-8"
+	},
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "half_stairs_darkfull";
+	name = "dark steps"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -206771,9 +206868,9 @@ ykt
 wWR
 woc
 woc
-woc
-woc
-woc
+lpz
+lpz
+lpz
 woc
 woc
 wAU
@@ -207283,10 +207380,10 @@ ejD
 xdO
 ykt
 wWR
-woc
+lpz
 jgm
-jgm
-jgm
+gQR
+gQR
 pkn
 cZp
 woc
@@ -207540,11 +207637,11 @@ ejD
 xdO
 ykt
 wWR
-woc
-jgm
+lpz
+qly
 gQR
-jgm
-pLi
+gQR
+gQR
 pIP
 vct
 fJb
@@ -207797,11 +207894,11 @@ ejD
 xdO
 ykt
 wWR
-woc
+lpz
 jgm
-jgm
-jgm
-pLi
+gQR
+gQR
+gQR
 tlH
 woc
 jJn
@@ -208057,7 +208154,7 @@ wWR
 woc
 txg
 pLi
-aRt
+orz
 uPI
 xqo
 woc
