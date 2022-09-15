@@ -97,8 +97,8 @@
 
 /datum/component/chasm/proc/drop(atom/movable/AM)
 
-	//Make sure the item is still there after our sleep
-	if(!AM || QDELETED(AM))
+	//Make sure we have an item
+	if(!AM)
 		return
 	falling_atoms[AM] = (falling_atoms[AM] || 0) + 1
 	var/turf/T = target_turf
@@ -116,23 +116,42 @@
 
 	else
 
+		//We don't want to drop the same object more than once, so we make it float for the duration of animations, etc
+		AM.floating = TRUE
+
 		// send to oblivion
 		AM.visible_message("<span class='boldwarning'>[AM] falls into [parent]!</span>", "<span class='userdanger'>[oblivion_message]</span>")
 
 		if (isliving(AM))
 			var/mob/living/L = AM
-			L.notransform = TRUE
+			//L.notransform = TRUE
 			L.Stun(200)
-			if(!issilicon(AM))
-				L.resting = TRUE
 			if(L.client && check_rights_for(L.client, R_FUN))
 				playsound(AM, pick('hyperstation/sound/misc/yodadeath.ogg', 'hyperstation/sound/misc/fallingthroughclouds.ogg', 'hyperstation/sound/misc/goofy.ogg', 'hyperstation/sound/misc/wilhelm.ogg'), 100, 0)
 
 			else if(prob(5))
 				playsound(AM, pick('hyperstation/sound/misc/yodadeath.ogg', 'hyperstation/sound/misc/fallingthroughclouds.ogg', 'hyperstation/sound/misc/goofy.ogg', 'hyperstation/sound/misc/wilhelm.ogg'), 100, 0)
 
+		var/oldalpha = AM.alpha
+		var/oldcolor = AM.color
+		var/oldtransform = AM.transform
 
-		if(linked_turf.name == "clouds" && (iscyborg(AM) || iscarbon(AM)))
+		//Animate our falling items
+		animate(AM, transform = matrix(0,0,0,0,0,0), alpha = 0, color = rgb(0, 0, 0), time = 10)
+
+		for(var/i in 1 to 5)
+			//Make sure the item is still there after our sleep
+			if(!AM || QDELETED(AM))
+				return
+			AM.pixel_y--
+			sleep(2)
+
+		//Make sure the item is still there after our sleep
+		if(!AM || QDELETED(AM))
+			return
+
+		//Mob types that could be protected by a tether
+		if(iscyborg(AM) || iscarbon(AM))
 			var/mob/living/victim = AM
 
 			var/tether_number = GLOB.safety_tethers_list.len
@@ -142,41 +161,23 @@
 				if(tether_number == 1)
 
 					// If teleportation fails
-					if(!GLOB.safety_tethers_list[1].bungee_teleport(victim))
+					if(!GLOB.safety_tethers_list[1].attempt_teleport(victim, linked_turf, oldalpha, oldcolor, oldtransform))
 						finishdrop(AM)
 				else
 
 					//Just in case multiple safety tethers are present
-					if(!GLOB.safety_tethers_list[rand(1,GLOB.safety_tethers_list.len)].bungee_teleport(victim))
+					if(!GLOB.safety_tethers_list[rand(1,GLOB.safety_tethers_list.len)].attempt_teleport(victim, linked_turf, oldalpha, oldcolor, oldtransform))
 						finishdrop(AM)
 				if(isliving(AM))
 					var/mob/living/L = AM
 					L.notransform = FALSE
 			else
-				finishdrop(AM)
+				finishdrop(AM, oldalpha, oldcolor, oldtransform)
 		else
-			finishdrop(AM)
+			finishdrop(AM, oldalpha, oldcolor, oldtransform)
 
 
-/datum/component/chasm/proc/finishdrop(atom/movable/AM)
-
-	var/oldalpha = AM.alpha
-	var/oldcolor = AM.color
-	var/oldtransform = AM.transform
-
-	//Animate our falling items, then delete them.
-	animate(AM, transform = matrix() - matrix(), alpha = 0, color = rgb(0, 0, 0), time = 10)
-
-	for(var/i in 1 to 5)
-		//Make sure the item is still there after our sleep
-		if(!AM || QDELETED(AM))
-			return
-		AM.pixel_y--
-		sleep(2)
-
-	//Make sure the item is still there after our sleep
-	if(!AM || QDELETED(AM))
-		return
+/datum/component/chasm/proc/finishdrop(atom/movable/AM, oldalpha, oldcolor, oldtransform)
 
 	if(iscyborg(AM))
 		var/mob/living/silicon/robot/S = AM
@@ -187,6 +188,7 @@
 	if(AM && !QDELETED(AM))	//It's indestructible
 		var/atom/parent = src.parent
 		parent.visible_message("<span class='boldwarning'>[parent] spits out [AM]!</span>")
+		AM.floating = FALSE //Stop the thing floating for now
 		AM.alpha = oldalpha
 		AM.color = oldcolor
 		AM.transform = oldtransform
