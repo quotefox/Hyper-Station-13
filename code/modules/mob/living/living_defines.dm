@@ -56,7 +56,7 @@
 	var/mob_size = MOB_SIZE_HUMAN
 
 //H13 custom body size and impregnation
-	var/custom_body_size = 100
+	var/custom_body_size = 100 //Do not change this variable in round! It's their 'natural' roundstart size.
 	var/breedable = 0
 	var/impregchance = 30
 //h13 settings

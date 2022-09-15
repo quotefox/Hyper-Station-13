@@ -38,7 +38,7 @@
 	var/list/unattached_flesh
 	var/flesh_number = 0
 
-	var/size = 1
+	var/size = 100
 
 /obj/machinery/clonepod/Initialize()
 	. = ..()
@@ -129,7 +129,7 @@
 	return examine(user)
 
 //Start growing a human clone in the pod!
-/obj/machinery/clonepod/proc/growclone(ckey, clonename, ui, mutation_index, mindref, datum/species/mrace, list/features, factions, list/quirks, experimental = FALSE)
+/obj/machinery/clonepod/proc/growclone(ckey, clonename, ui, mutation_index, mindref, datum/species/mrace, list/features, custom_size, factions, list/quirks, experimental = FALSE)
 	if(panel_open)
 		return FALSE
 	if(mess || attempting)
@@ -220,10 +220,12 @@
 	attempting = FALSE
 
 	//sizecode stuff, check size of scanned individual to then pass in later. someone should turn size into a dna trait tbh
-	if(istype(clonemind))
-		var/mob/living/current = clonemind.current //gets body of current mind
-		if(!isnull(current))
-			size = current.size_multiplier * 100
+	//if(istype(clonemind))
+	//	var/mob/living/current = clonemind.current //gets body of current mind
+		//if(!isnull(current))
+			//size = current.client.preferences.body_size * 100
+
+	size = custom_size
 
 	return TRUE
 
@@ -401,10 +403,9 @@
 		qdel(fl)
 	unattached_flesh.Cut()
 
-	//Do the resize on ejection. The clone pod seems to do a lot of matrix transforms the way size code does, so we will handle our resize after.
-	mob_occupant.previous_size = 1 //Set the previous size to default so the resize properly set health and speed.
-	mob_occupant.custom_body_size = size //mob_occupant.client.prefs.body_size
-	mob_occupant.resize(mob_occupant.custom_body_size * 0.01)
+
+	//The size to resize to here is custom_body_size var for living mobs. Do not change that variable in round!
+	mob_occupant.resize(size / 100)//Do the resize on ejection. The clone pod seems to do a lot of matrix transforms the way size code does, so we will handle our resize after.
 	occupant = null
 
 /obj/machinery/clonepod/proc/malfunction()
