@@ -43,6 +43,8 @@
 	var/obj/machinery/camera/builtInCamera = null
 	var/updating = FALSE //portable camera camerachunk update
 
+	var/obj/item/pda/ai/builtInPDA = null
+
 	var/hack_software = FALSE //Will be able to use hacking actions
 	var/interaction_range = 7			//wireless control range
 
@@ -70,6 +72,7 @@
 	radio = null
 	aicamera = null
 	QDEL_NULL(builtInCamera)
+	QDEL_NULL(builtInPDA)
 	GLOB.silicon_mobs -= src
 	return ..()
 

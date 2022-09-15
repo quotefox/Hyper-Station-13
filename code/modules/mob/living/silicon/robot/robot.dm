@@ -142,10 +142,6 @@
 		builtInCamera.internal_light = FALSE
 		if(wires.is_cut(WIRE_CAMERA))
 			builtInCamera.status = 0
-	module = new /obj/item/robot_module(src)
-	module.rebuild_modules()
-	update_icons()
-	. = ..()
 
 	//If this body is meant to be a borg controlled by the AI player
 	if(shell)
@@ -164,6 +160,18 @@
 		mmi.brainmob.container = mmi
 
 	updatename()
+
+	//Name updated, can build PDA data now
+	if(!builtInPDA)
+		builtInPDA = new/obj/item/pda/ai(src)
+		builtInPDA.owner = name
+		builtInPDA.ownjob = "Station Cyborg"
+		builtInPDA.name = name + " (" + builtInPDA.ownjob + ")"
+
+	module = new /obj/item/robot_module(src)
+	module.rebuild_modules()
+	update_icons()
+	. = ..()
 
 	equippable_hats = typecacheof(equippable_hats)
 
@@ -661,7 +669,7 @@
 			if(BORGBELLY_GREEN) sleeper_overlay_state = "_g"
 			if(BORGBELLY_RED) sleeper_overlay_state = "_r"
 		add_overlay("[module.sleeper_overlay][sleeper_overlay_state]")
-	
+
 	if(module.dogborg == TRUE)
 		if(resting)
 			cut_overlays()
