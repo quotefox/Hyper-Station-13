@@ -201,6 +201,9 @@
 
 /obj/machinery/safety_tether/proc/bungee_teleport(mob/living/M, turf/open/Target_Turf, oldalpha, oldcolor, oldtransform)
 
+	//Give 'em gravity again, was only there to prevent multiple chasm drops
+	M.floating = FALSE
+
 	//Fun sound bites as the machine gears up to teleport
 	M.density = FALSE //Prevents a very unlikely issue where players can move around an invisible but not-yet-teleported tether victim
 	playsound(CENTER_TURF, 'sound/magic/charge.ogg', 100, 1, extrarange = 5)

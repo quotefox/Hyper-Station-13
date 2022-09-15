@@ -97,8 +97,8 @@
 
 /datum/component/chasm/proc/drop(atom/movable/AM)
 
-	//Make sure the item is still there after our sleep
-	if(!AM || QDELETED(AM))
+	//Make sure we have an item
+	if(!AM)
 		return
 	falling_atoms[AM] = (falling_atoms[AM] || 0) + 1
 	var/turf/T = target_turf
@@ -115,6 +115,9 @@
 		falling_atoms -= AM
 
 	else
+
+		//We don't want to drop the same object more than once, so we make it float for the duration of animations, etc
+		AM.floating = TRUE
 
 		// send to oblivion
 		AM.visible_message("<span class='boldwarning'>[AM] falls into [parent]!</span>", "<span class='userdanger'>[oblivion_message]</span>")
@@ -185,6 +188,7 @@
 	if(AM && !QDELETED(AM))	//It's indestructible
 		var/atom/parent = src.parent
 		parent.visible_message("<span class='boldwarning'>[parent] spits out [AM]!</span>")
+		AM.floating = FALSE //Stop the thing floating for now
 		AM.alpha = oldalpha
 		AM.color = oldcolor
 		AM.transform = oldtransform
