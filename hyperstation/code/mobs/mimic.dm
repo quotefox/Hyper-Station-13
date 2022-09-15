@@ -322,26 +322,6 @@
 
 /datum/round_event/mimic_infestation
 	announceWhen = 200
-	var/static/list/mimic_station_areas_blacklist = typecacheof(/area/space, 
-	/area/shuttle,
-	/area/mine, 
-	/area/holodeck, 
-	/area/ruin, 
-	/area/hallway, 
-	/area/hallway/primary, 
-	/area/hallway/secondary, 
-	/area/hallway/secondary/entry,
-	/area/engine/supermatter, 
-	/area/engine/atmospherics_engine, 
-	/area/engine/engineering/reactor_core, 
-	/area/engine/engineering/reactor_control, 
-	/area/ai_monitored/turret_protected,
-	/area/layenia/cloudlayer, 
-	/area/asteroid/nearstation, 
-	/area/science/server, 
-	/area/science/explab, 
-	/area/science/xenobiology,
-	/area/security/processing)
 	var/spawncount = 1
 	fakeable = FALSE
 
@@ -353,54 +333,11 @@
 	priority_announce("Unidentified lifesigns detected aboard [station_name()]. Secure any exterior access, including ducting and ventilation.", "Lifesign Alert", 'sound/ai/aliens.ogg')
 
 /datum/round_event/mimic_infestation/start()
-	var/list/area/stationAreas = list()
-	var/list/area/eligible_areas = list()
-	for(var/area/A in world) // Get the areas in the Z level
-		if(A.z == SSmapping.station_start)
-			stationAreas += A
-	for(var/area/place in stationAreas) // first we check if it's a valid area
-		if(place.outdoors)
-			continue
-		if(place.areasize < 16)
-			continue
-		if(is_type_in_typecache(place, mimic_station_areas_blacklist))
-			continue
-		eligible_areas += place
-	for(var/area/place in eligible_areas) // now we check if there are people in that area
-		var/numOfPeople
-		for(var/mob/living/carbon/H in place)
-			numOfPeople++
-			break
-		if(numOfPeople > 0)
-			eligible_areas -= place
-
-	var/validFound = FALSE
-	var/list/turf/validTurfs = list()
-	var/area/pickedArea
-	while(!validFound || !eligible_areas.len)
-		pickedArea = pick_n_take(eligible_areas)
-		var/list/turf/t = get_area_turfs(pickedArea, SSmapping.station_start)
-		for(var/turf/thisTurf in t) // now we check if it's a closed turf, cold turf or occupied turf and yeet it
-			if(isopenturf(thisTurf))
-				var/turf/open/tempGet = thisTurf
-				if(tempGet.air.temperature <= T0C)
-					t -= thisTurf
-					continue
-			if(isclosedturf(thisTurf))
-				t -= thisTurf
-			else
-				for(var/obj/O in thisTurf)
-					if(O.density && !(istype(O, /obj/structure/table)))
-						t -= thisTurf
-						break
-		if(t.len >= spawncount) //Is the number of available turfs equal or bigger than spawncount?
-			validFound = TRUE
-			validTurfs = t
-
-	if(!eligible_areas.len)
+	var/list/turf/validTurfs = get_safest_spawn_turfs(GLOB.basic_blacklisted_area_list, spawncount)
+	if(!validTurfs.len)
 		message_admins("No eligible areas for spawning mimics.")
 		return WAITING_FOR_SOMETHING
-
+	var/area/pickedArea = get_area(pick(validTurfs))
 	notify_ghosts("A group of mimics has spawned in [pickedArea]!", source=pickedArea, action=NOTIFY_ATTACK, flashwindow = FALSE)
 	while(spawncount > 0 && validTurfs.len)
 		spawncount--

@@ -212,7 +212,7 @@
 
 	var/nightshift_enabled = FALSE	//Currently in night shift mode?
 	var/nightshift_allowed = TRUE	//Set to FALSE to never let this light get switched to night mode.
-	var/nightshift_brightness = 7
+	var/nightshift_brightness = 8
 	var/nightshift_light_power = 0.45
 	var/nightshift_light_color = "#dafcff"
 

@@ -67,7 +67,7 @@
 	var/whitelist_type = ""
 
 	//load characters loadout on spawn
-	var loadout = TRUE
+	var/loadout = TRUE
 
 //Only override this proc
 //H is usually a human unless an /equip override transformed it
