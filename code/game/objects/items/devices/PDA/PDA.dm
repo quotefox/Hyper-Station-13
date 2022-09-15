@@ -738,8 +738,9 @@ GLOBAL_LIST_EMPTY(PDAs)
 	if((last_text && world.time < last_text + 10) || (everyone && last_everyone && world.time < last_everyone + PDA_SPAM_DELAY))
 		return
 	var/emoji_message = emoji_parse(message)
-	if(prob(1))
-		message += "\nSent from my PDA"
+	//Bad for RP
+	//if(prob(1))
+	//	message += "\nSent from my PDA"
 	// Send the signal
 	var/list/string_targets = list()
 	for (var/obj/item/pda/P in targets)
@@ -795,8 +796,12 @@ GLOBAL_LIST_EMPTY(PDAs)
 	tnote += "<i><b>&larr; From <a href='byond://?src=[REF(src)];choice=Message;target=[REF(signal.source)]'>[signal.data["name"]]</a> ([signal.data["job"]]):</b></i><br>[signal.format_message()]<br>"
 
 	if (!silent)
-		playsound(src, 'sound/machines/twobeep.ogg', 50, 1)
-		audible_message("[icon2html(src, hearers(src))] *[ttone]*", null, 3)
+		if(prob(0.1))
+			playsound(src, 'sound/machines/youve_got_mail.ogg', 50, 0)
+			audible_message("[icon2html(src, hearers(src))] *You've got mail!*", null, 3)
+		else
+			playsound(src, 'sound/machines/twobeep.ogg', 50, 1)
+			audible_message("[icon2html(src, hearers(src))] *[ttone]*", null, 3)
 	//Search for holder of the PDA.
 	var/mob/living/L = null
 	if(loc && isliving(loc))
@@ -1067,23 +1072,19 @@ GLOBAL_LIST_EMPTY(PDAs)
 		QDEL_NULL(inserted_item)
 	return ..()
 
-//AI verb and proc for sending PDA messages.
-
-/mob/living/silicon/ai/proc/cmd_send_pdamesg(mob/user)
+//Silicon verb and proc for sending PDA messages.
+/mob/living/silicon/proc/cmd_send_pdamesg(mob/user)
 	var/list/plist = list()
 	var/list/namecounts = list()
 
-	if(aiPDA.toff)
+	if(builtInPDA.toff)
 		to_chat(user, "Turn on your receiver in order to send messages.")
 		return
 
 	for (var/obj/item/pda/P in get_viewable_pdas())
-		if (P == src)
+		if (P == builtInPDA)//Don't want to send messages to yourself
 			continue
-		else if (P == aiPDA)
-			continue
-
-		plist[avoid_assoc_duplicate_keys(P.owner, namecounts)] = P
+		plist[avoid_assoc_duplicate_keys(P.owner, namecounts)+" ("+P.ownjob+")"] = P
 
 	var/c = input(user, "Please select a PDA") as null|anything in sortList(plist)
 
@@ -1096,42 +1097,43 @@ GLOBAL_LIST_EMPTY(PDAs)
 		var/add_photo = input(user,"Do you want to attach a photo?","Photo","No") as null|anything in list("Yes","No")
 		if(add_photo=="Yes")
 			var/datum/picture/Pic = aicamera.selectpicture(user)
-			aiPDA.picture = Pic
+			builtInPDA.picture = Pic
 
 	if(incapacitated())
 		return
 
-	aiPDA.create_message(src, selected)
+	builtInPDA.create_message(src, selected)
 
 
-/mob/living/silicon/ai/verb/cmd_toggle_pda_receiver()
+/mob/living/silicon/verb/cmd_toggle_pda_receiver()
 	set category = "AI Commands"
 	set name = "PDA - Toggle Sender/Receiver"
 	if(usr.stat == DEAD)
 		return //won't work if dead
-	if(!isnull(aiPDA))
-		aiPDA.toff = !aiPDA.toff
-		to_chat(usr, "<span class='notice'>PDA sender/receiver toggled [(aiPDA.toff ? "Off" : "On")]!</span>")
+	if(!isnull(builtInPDA))
+		builtInPDA.toff = !builtInPDA.toff
+		to_chat(usr, "<span class='notice'>PDA sender/receiver toggled [(builtInPDA.toff ? "Off" : "On")]!</span>")
 	else
 		to_chat(usr, "You do not have a PDA. You should make an issue report about this.")
 
-/mob/living/silicon/ai/verb/cmd_toggle_pda_silent()
+/mob/living/silicon/verb/cmd_toggle_pda_silent()
 	set category = "AI Commands"
 	set name = "PDA - Toggle Ringer"
 	if(usr.stat == DEAD)
 		return //won't work if dead
-	if(!isnull(aiPDA))
+	if(!isnull(builtInPDA))
 		//0
-		aiPDA.silent = !aiPDA.silent
-		to_chat(usr, "<span class='notice'>PDA ringer toggled [(aiPDA.silent ? "Off" : "On")]!</span>")
+		builtInPDA.silent = !builtInPDA.silent
+		to_chat(usr, "<span class='notice'>PDA ringer toggled [(builtInPDA.silent ? "Off" : "On")]!</span>")
 	else
 		to_chat(usr, "You do not have a PDA. You should make an issue report about this.")
 
-/mob/living/silicon/ai/proc/cmd_show_message_log(mob/user)
+/mob/living/silicon/proc/cmd_show_message_log(mob/user)
 	if(incapacitated())
 		return
-	if(!isnull(aiPDA))
-		var/HTML = "<html><head><title>AI PDA Message Log</title></head><body>[aiPDA.tnote]</body></html>"
+
+	if(!isnull(builtInPDA))
+		var/HTML = "<html><head><title>PDA Message Log</title></head><body>[builtInPDA.tnote]</body></html>"
 		user << browse(HTML, "window=log;size=400x444;border=1;can_resize=1;can_close=1;can_minimize=0")
 	else
 		to_chat(user, "You do not have a PDA. You should make an issue report about this.")
@@ -1150,6 +1152,7 @@ GLOBAL_LIST_EMPTY(PDAs)
 
 /proc/get_viewable_pdas()
 	. = list()
+
 	// Returns a list of PDAs which can be viewed from another PDA/message monitor.
 	for(var/obj/item/pda/P in GLOB.PDAs)
 		if(!P.owner || P.toff || P.hidden)

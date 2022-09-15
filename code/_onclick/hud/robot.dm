@@ -128,6 +128,17 @@
 
 //End of module select
 
+//PDA stuff
+	using = new /obj/screen/ai/pda_msg_send
+	using.screen_loc = ui_borg_pda_send
+	using.hud = src
+	static_inventory += using
+
+	using = new/obj/screen/ai/pda_msg_show
+	using.screen_loc = ui_borg_pda_log
+	using.hud = src
+	static_inventory += using
+
 //Photography stuff
 	using = new /obj/screen/ai/image_take()
 	using.screen_loc = ui_borg_camera
