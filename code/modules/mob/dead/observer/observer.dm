@@ -653,12 +653,12 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	return 1
 
 /mob/dead/observer/verb/view_manifest()
-	set name = "View Crew Manifest"
+	set name = "View Game Manifest"
 	set category = "Ghost"
 
 	var/dat
-	dat += "<h4>Crew Manifest</h4>"
-	dat += GLOB.data_core.get_manifest()
+	dat += "<h4>Game Manifest</h4>"
+	dat += GLOB.data_core.get_manifest(FALSE,TRUE) //Gets a more complete crew manifest
 
 	src << browse(dat, "window=manifest;size=387x420;can_close=1")
 
