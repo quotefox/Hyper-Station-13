@@ -1,6 +1,6 @@
 /turf/open/indestructible/concrete
 	name = "concrete"
-	icon = 'icons/turf/floors.dmi'
+	icon = 'hyperstation/icons/turf/floors/layenia.dmi'
 	icon_state = "concrete"
 	baseturfs = /turf/open/floor/plating/asteroid/layenia
 	initial_gas_mix = FROZEN_ATMOS
