@@ -327,10 +327,10 @@
 	. = ..()
 
 	if(stat & NOPOWER)
-		if(SSticker.HasRoundStarted()&& radio && internal_radio) //If called while initializing results in a null error.
+		if(radio && internal_radio) //If called while initializing results in a null error.
 			SPEAKCOMMON("The Safety Tether's shut down from a lack of power.")
 	else
-		if(radio && internal_radio)
+		if(SSticker.HasRoundStarted() && radio && internal_radio)
 			SPEAKCOMMON("The Safety Tether is back online.")
 	update_icon()
 

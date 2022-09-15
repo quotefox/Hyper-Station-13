@@ -301,6 +301,7 @@
 		var/UI = dna.uni_identity
 		var/SE = dna.mutation_index
 		var/features = dna.features
+		var/size = mob_occupant.custom_body_size
 		var/factions = mob_occupant.faction
 		var/list/quirks = list()
 
@@ -312,8 +313,8 @@
 			quirks[T.type] = T.clone_data()
 
 		//grows the clone, format;
-		// ckey, clonename, ui, mutation_index, mindref, datum/species/mrace, list/features, factions, list/quirks, experimental = FALSE
-		pod.growclone(null, name, UI, SE, mind, clone_species, features, factions, quirks, TRUE)
+		// ckey, clonename, ui, mutation_index, mindref, datum/species/mrace, list/features, custom_body_size, factions, list/quirks, experimental = FALSE
+		pod.growclone(null, name, UI, SE, mind, clone_species, features, size, factions, quirks, TRUE)
 		temp = "[mob_occupant.real_name] => <font class='good'>Cloning data sent to pod.</font>"
 		playsound(src, 'sound/machines/terminal_prompt_confirm.ogg', 50, 0)
 
