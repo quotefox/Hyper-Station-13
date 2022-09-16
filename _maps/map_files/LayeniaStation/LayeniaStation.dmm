@@ -1964,7 +1964,7 @@
 /obj/structure/cable{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark,
 /area/engine/break_room)
 "aeW" = (
 /obj/structure/ladder,
@@ -3574,7 +3574,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "2-4"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark,
 /area/engine/custom)
 "aoa" = (
 /obj/structure/table,
@@ -5793,7 +5793,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark,
 /area/maintenance/department/engine/upper)
 "aGg" = (
 /obj/structure/disposalpipe/segment{
@@ -13841,6 +13841,12 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
+"car" = (
+/obj/structure/cable{
+	icon_state = "1-4"
+	},
+/turf/open/floor/plasteel/dark,
+/area/maintenance/department/engine/upper)
 "cat" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -16013,7 +16019,9 @@
 	name = "SMES Room";
 	req_access_txt = "32"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
 /area/engine/custom)
 "ctB" = (
 /obj/structure/table,
@@ -20632,6 +20640,10 @@
 "dlW" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/white/line,
+/obj/machinery/light{
+	dir = 1;
+	pixel_y = 16
+	},
 /turf/open/floor/plasteel/dark{
 	dir = 1;
 	icon_state = "darkfull_plate"
@@ -22831,7 +22843,7 @@
 	pixel_x = 2;
 	pixel_y = -3
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark,
 /area/engine/break_room)
 "dGF" = (
 /obj/structure/cable{
@@ -24996,6 +25008,12 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/hydroponics)
+"ebd" = (
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/dark,
+/area/engine/custom)
 "ebg" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	dir = 8;
@@ -25468,7 +25486,7 @@
 /obj/structure/cable{
 	icon_state = "2-8"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark,
 /area/maintenance/department/engine/upper)
 "efS" = (
 /obj/structure/lattice/catwalk,
@@ -29767,7 +29785,7 @@
 /obj/structure/cable{
 	icon_state = "1-4"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark,
 /area/engine/custom)
 "eOa" = (
 /turf/closed/wall,
@@ -34420,7 +34438,7 @@
 /obj/structure/cable/yellow{
 	icon_state = "4-8"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark,
 /area/engine/custom)
 "fyk" = (
 /obj/structure/table,
@@ -43494,6 +43512,20 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/crew_quarters/heads/chief)
+"gUF" = (
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 8;
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 4;
+	name = "scrubbers pipe"
+	},
+/obj/structure/cable{
+	icon_state = "4-8"
+	},
+/turf/open/floor/plasteel/dark,
+/area/maintenance/department/engine/upper)
 "gUL" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/preopen{
@@ -50179,7 +50211,9 @@
 	name = "SMES Room";
 	req_access_txt = "32"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
 /area/engine/custom)
 "hQH" = (
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -53672,7 +53706,7 @@
 /obj/structure/cable{
 	icon_state = "2-4"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark,
 /area/engine/custom)
 "isL" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/junction,
@@ -65120,7 +65154,7 @@
 	pixel_x = -4;
 	pixel_y = 5
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark,
 /area/engine/break_room)
 "kcP" = (
 /obj/effect/turf_decal/loading_area{
@@ -68120,7 +68154,7 @@
 	dir = 8;
 	icon_state = "darkfull_trim"
 	},
-/area/maintenance/port)
+/area/hallway/primary/port)
 "kzL" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -68148,7 +68182,7 @@
 	dir = 4;
 	icon_state = "darkfull_trim"
 	},
-/area/maintenance/port)
+/area/hallway/primary/port)
 "kzO" = (
 /obj/effect/turf_decal/weather/grass/line{
 	dir = 10
@@ -96816,7 +96850,7 @@
 /obj/structure/cable{
 	icon_state = "0-2"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark,
 /area/engine/break_room)
 "oLQ" = (
 /obj/effect/landmark/xeno_spawn,
@@ -99764,7 +99798,7 @@
 /obj/structure/sign/warning/electricshock{
 	pixel_x = 32
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark,
 /area/engine/custom)
 "pfw" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
@@ -113516,7 +113550,7 @@
 /obj/structure/cable{
 	icon_state = "1-8"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark,
 /area/engine/break_room)
 "qZa" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -114900,7 +114934,9 @@
 	name = "air supply pipe"
 	},
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
 /area/maintenance/department/engine/upper)
 "rji" = (
 /obj/machinery/door/firedoor{
@@ -115610,7 +115646,9 @@
 	name = "Engineering Maintenance";
 	req_access_txt = "10"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark{
+	icon_state = "darkfull_whole_alt"
+	},
 /area/engine/custom)
 "rov" = (
 /obj/structure/bonfire,
@@ -115867,6 +115905,9 @@
 	},
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms/F)
+"rqF" = (
+/turf/open/floor/plasteel/dark,
+/area/engine/custom)
 "rqG" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 5
@@ -120079,6 +120120,20 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/maintenance/starboard/central/upper)
+"rVm" = (
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
+	dir = 9;
+	name = "scrubbers pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	dir = 9;
+	name = "air supply pipe"
+	},
+/obj/structure/cable{
+	icon_state = "1-8"
+	},
+/turf/open/floor/plasteel/dark,
+/area/maintenance/department/engine/upper)
 "rVp" = (
 /obj/effect/spawner/lootdrop/maintenance,
 /turf/open/floor/plasteel/dark,
@@ -121077,6 +121132,16 @@
 "sba" = (
 /turf/closed/wall,
 /area/medical/genetics/cloning)
+"sbd" = (
+/obj/structure/cable{
+	icon_state = "1-2"
+	},
+/obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
+	name = "air supply pipe"
+	},
+/obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1,
+/turf/open/floor/plasteel/dark,
+/area/maintenance/department/engine/upper)
 "sbf" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 8;
@@ -128391,7 +128456,7 @@
 	dir = 8
 	},
 /turf/open/floor/plasteel/dark,
-/area/maintenance/port)
+/area/hallway/primary/port)
 "tbu" = (
 /obj/structure/railing,
 /obj/effect/decal/cleanable/dirt,
@@ -157779,7 +157844,7 @@
 /obj/structure/cable{
 	icon_state = "1-2"
 	},
-/turf/open/floor/plating,
+/turf/open/floor/plasteel/dark,
 /area/engine/custom)
 "xee" = (
 /turf/closed/wall,
@@ -208927,8 +208992,8 @@ oTY
 oTY
 dyp
 hVd
-hVd
-hVd
+rqF
+rqF
 anU
 jhb
 cAm
@@ -209185,7 +209250,7 @@ xdR
 xdR
 xdR
 eNV
-hVd
+rqF
 fxS
 oTY
 aYF
@@ -209437,11 +209502,11 @@ wgz
 hgP
 hee
 oTY
-oez
-hVd
-hVd
-hVd
-oez
+ebd
+rqF
+rqF
+rqF
+ebd
 pfu
 fxS
 oTY
@@ -275741,8 +275806,8 @@ rBo
 rBo
 aAx
 aGc
-uiq
-wBy
+car
+gUF
 aAx
 fmB
 fmB
@@ -275997,9 +276062,9 @@ yil
 pVc
 pVc
 riX
-pVc
+sbd
 efR
-wBP
+rVm
 aAx
 fmB
 fmB
