@@ -185,7 +185,8 @@ obj/item/clothing/neck/stole/black
 	icon_state = "tunnelfox"
 	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
 	item_state = "tunnelfox"
-	body_parts_covered = CHEST|LEGS|ARMS
+	body_parts_covered = CHEST|ARMS
+	cold_protection = CHEST|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/tunnelfox_t
@@ -195,7 +196,8 @@ obj/item/clothing/neck/stole/black
 	icon_state = "tunnelfox_t"
 	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
 	item_state = "tunnelfox_t"
-	body_parts_covered = CHEST|LEGS|ARMS
+	body_parts_covered = CHEST|ARMS
+	cold_protection = CHEST|ARMS
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 
 /obj/item/clothing/suit/threepwoodjacket
@@ -204,6 +206,9 @@ obj/item/clothing/neck/stole/black
 	icon = 'hyperstation/icons/obj/clothing/suits.dmi'
 	icon_state = "threepwoodjacket"
 	alternate_worn_icon = 'hyperstation/icons/mobs/suits.dmi'
+	body_parts_covered = CHEST|LEGS|GROIN|ARMS
+	cold_protection = CHEST|LEGS|GROIN|ARMS
+	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	item_state = "b_suit"
 	var/firstpickup = TRUE
 	var/pickupsound = TRUE
@@ -239,3 +244,4 @@ obj/item/clothing/neck/stole/black
 	alternate_worn_icon = 'hyperstation/icons/obj/clothing/shoes.dmi'
 	item_state = "threepwoodboots"
 	alternate_worn_icon = 'hyperstation/icons/mobs/feet.dmi'
+	pocket_storage_component_path = /datum/component/storage/concrete/pockets/shoes
