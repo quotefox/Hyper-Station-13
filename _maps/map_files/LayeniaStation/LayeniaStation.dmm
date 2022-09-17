@@ -104509,7 +104509,6 @@
 /obj/item/canvas/twentythreeXtwentythree,
 /obj/item/canvas/twentythreeXnineteen,
 /obj/item/canvas/nineteenXnineteen,
-/obj/item/canvas/nineteenXtwentythree,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -118413,7 +118412,6 @@
 /obj/item/canvas/twentythreeXtwentythree,
 /obj/item/canvas/twentythreeXnineteen,
 /obj/item/canvas/nineteenXnineteen,
-/obj/item/canvas/nineteenXtwentythree,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
