@@ -104507,18 +104507,19 @@
 	dir = 8
 	},
 /obj/item/canvas/twentythreeXtwentythree,
-/obj/item/canvas/twentythreeXnineteen,
-/obj/item/canvas/nineteenXnineteen,
 /obj/effect/turf_decal/tile/neutral,
+/obj/item/canvas/nineteenXnineteen,
+/obj/item/canvas/twentythreeXnineteen,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
 /obj/item/canvas/nineteenXnineteen,
-/obj/item/canvas,
-/obj/item/canvas,
 /obj/machinery/light{
 	pixel_y = -1
 	},
+/obj/item/canvas,
+/obj/item/canvas/nineteenXtwentythree,
+/obj/item/canvas,
 /turf/open/floor/plasteel/dark,
 /area/artatrium)
 "pMc" = (
@@ -118411,13 +118412,13 @@
 /obj/structure/table/wood,
 /obj/item/canvas/twentythreeXtwentythree,
 /obj/item/canvas/twentythreeXnineteen,
-/obj/item/canvas/nineteenXnineteen,
 /obj/effect/turf_decal/tile/neutral,
+/obj/item/canvas/nineteenXnineteen,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
 /obj/item/canvas/nineteenXnineteen,
-/obj/item/canvas,
+/obj/item/canvas/nineteenXtwentythree,
 /obj/item/canvas,
 /turf/open/floor/plasteel/dark,
 /area/artatrium)

@@ -200,6 +200,17 @@
 	framed_offset_x = 8
 	framed_offset_y = 9
 
+/obj/item/canvas/nineteenXtwentythree
+	icon_state = "19x23"
+	width = 19
+	height = 23
+	ui_x = 600
+	ui_y = 800
+	pixel_x = 6
+	pixel_y = 9
+	framed_offset_x = 7
+	framed_offset_y = 5
+
 /obj/item/canvas/twentythreeXnineteen
 	icon_state = "23x19"
 	width = 23
