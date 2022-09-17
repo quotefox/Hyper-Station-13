@@ -32,6 +32,10 @@
 	name = "Lambent's Quarters"
 	icon_state = "detective"
 
+/area/ranch
+	name = "Livestock"
+	icon_state = "ranch"
+
 //In hindsight a lot of how this set up was stupid and I should probably redo it -Dahl
 //Upper Hallways
 /area/hallway/primary/aft/upper
