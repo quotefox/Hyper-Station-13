@@ -50,7 +50,7 @@ safely.
 	name = "round ipc head"
 	icon_state = "ipc_round"
 	supported_species = list("ipc")
-	support_gender = null
+	support_gender = FALSE
 
 
 // CHESTS
@@ -67,7 +67,7 @@ safely.
 	icon_state = "ipc_sleek"
 	supported_species = list("ipc")
 	color_src = MATRIXED
-	support_gender = null
+	support_gender = FALSE
 
 /datum/cosmetic_part/chest/ipc_jointed
 	id = "ipc_jointed"
@@ -75,7 +75,7 @@ safely.
 	icon_state = "ipc_jointed"
 	supported_species = list("ipc")
 	color_src = MATRIXED
-	support_gender = null
+	support_gender = FALSE
 
 
 // ARMS
