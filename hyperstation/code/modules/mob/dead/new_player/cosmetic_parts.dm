@@ -28,16 +28,14 @@ safely.
 		HATE
 		GENDER!!!!!!!!!!
 	*/
-	var/support_gender = FALSE
+	var/support_gender = null
 	/** Species IDs that support this cosmetic part. Bypassed with "show mismatched markings" option. */
 	var/list/supported_species
 
 /datum/cosmetic_part/head
 /datum/cosmetic_part/chest
 /datum/cosmetic_part/arms
-	support_gender = null
 /datum/cosmetic_part/legs
-	support_gender = null
 
 // HEADS
 // =========================================
@@ -52,6 +50,7 @@ safely.
 	name = "round ipc head"
 	icon_state = "ipc_round"
 	supported_species = list("ipc")
+	support_gender = null
 
 
 // CHESTS
@@ -68,6 +67,7 @@ safely.
 	icon_state = "ipc_sleek"
 	supported_species = list("ipc")
 	color_src = MATRIXED
+	support_gender = null
 
 /datum/cosmetic_part/chest/ipc_jointed
 	id = "ipc_jointed"
@@ -75,6 +75,7 @@ safely.
 	icon_state = "ipc_jointed"
 	supported_species = list("ipc")
 	color_src = MATRIXED
+	support_gender = null
 
 
 // ARMS
