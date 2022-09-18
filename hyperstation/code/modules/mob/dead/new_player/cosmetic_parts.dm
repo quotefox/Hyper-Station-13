@@ -23,6 +23,12 @@ safely.
 	var/color_src = MUTCOLORS
 	/** Whether or not this cosmetic part has an alternate form for digitigrade legs. */
 	var/support_digitigrade = TRUE
+	/** 
+		WE
+		HATE
+		GENDER!!!!!!!!!!
+	*/
+	var/support_gender = FALSE
 	/** Species IDs that support this cosmetic part. Bypassed with "show mismatched markings" option. */
 	var/list/supported_species
 
