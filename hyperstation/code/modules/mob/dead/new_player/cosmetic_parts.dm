@@ -35,7 +35,9 @@ safely.
 /datum/cosmetic_part/head
 /datum/cosmetic_part/chest
 /datum/cosmetic_part/arms
+	support_gender = null
 /datum/cosmetic_part/legs
+	support_gender = null
 
 // HEADS
 // =========================================
