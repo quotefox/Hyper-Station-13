@@ -8385,6 +8385,10 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/maintenance/fore)
+"bdu" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall,
+/area/crew_quarters/dorms/F)
 "bdA" = (
 /obj/machinery/light/small{
 	dir = 8;
@@ -12546,6 +12550,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
+"bMe" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall/r_wall,
+/area/ai_monitored/storage/satellite)
 "bMh" = (
 /obj/structure/table/glass,
 /obj/item/folder/white,
@@ -14145,6 +14153,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/atmos)
+"cbh" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall,
+/area/janitor)
 "cbl" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	dir = 4;
@@ -23046,6 +23058,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/bridge)
+"dFK" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall,
+/area/crew_quarters/dorms/E)
 "dFL" = (
 /obj/machinery/light/small{
 	dir = 1;
@@ -31308,6 +31324,10 @@
 	icon_state = "darkfull_plate"
 	},
 /area/crew_quarters/dorms/upper)
+"eVy" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall/r_wall,
+/area/engine/tether)
 "eVz" = (
 /obj/structure/table,
 /obj/item/crowbar/large,
@@ -32745,6 +32765,10 @@
 /obj/structure/chair/comfy,
 /turf/open/floor/plasteel/dark/layenia,
 /area/layenia/cloudlayer)
+"fiP" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall,
+/area/security/vacantoffice/a)
 "fiY" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -52954,6 +52978,10 @@
 	},
 /turf/open/floor/circuit,
 /area/ai_monitored/turret_protected/ai_upload)
+"iit" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall/r_wall,
+/area/crew_quarters/theatre/clown)
 "iiu" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Engineering Maintenance";
@@ -90399,6 +90427,10 @@
 	},
 /turf/open/floor/carpet,
 /area/crew_quarters/dorms/C)
+"nKb" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall,
+/area/crew_quarters/dorms/D)
 "nKc" = (
 /obj/machinery/door/poddoor/preopen{
 	dir = 8;
@@ -103270,6 +103302,10 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/gateway)
+"pvc" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall/r_wall,
+/area/crew_quarters/dorms)
 "pve" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -104312,6 +104348,7 @@
 	dir = 8
 	},
 /obj/effect/spawner/structure/window,
+/obj/effect/baseturf_helper/asteroid/layenia,
 /turf/open/floor/plating,
 /area/medical/sleeper)
 "pCL" = (
@@ -109880,6 +109917,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/central/upper)
+"qrX" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall,
+/area/crew_quarters/toilet/restrooms)
 "qsc" = (
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
 	dir = 1;
@@ -115029,6 +115070,10 @@
 	},
 /turf/open/floor/plasteel/checker,
 /area/artatrium)
+"qZm" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall/r_wall,
+/area/maintenance/solars/starboard/fore)
 "qZo" = (
 /obj/effect/turf_decal/caution/stand_clear{
 	dir = 8
@@ -118612,6 +118657,12 @@
 	icon_state = "floor_plate"
 	},
 /area/hallway/primary/fore/upper)
+"ryQ" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/firedoor,
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/open/floor/plating,
+/area/medical/storage)
 "ryU" = (
 /obj/structure/lattice,
 /obj/machinery/light{
@@ -120854,6 +120905,10 @@
 	},
 /turf/open/floor/plasteel,
 /area/engine/custom)
+"rPC" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall,
+/area/crew_quarters/dorms/C)
 "rPE" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 1;
@@ -138512,6 +138567,10 @@
 	dir = 5
 	},
 /area/security/main/upper)
+"uhG" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall,
+/area/medical/patients_rooms/room_a)
 "uhH" = (
 /obj/machinery/light{
 	dir = 4;
@@ -139140,6 +139199,10 @@
 /obj/structure/railing,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"ulz" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall/r_wall,
+/area/ai_monitored/turret_protected/aisat/hallway)
 "ulF" = (
 /obj/machinery/computer/monitor{
 	name = "bridge power monitoring console"
@@ -140101,6 +140164,10 @@
 	icon_state = "darkfull_plate"
 	},
 /area/ranch)
+"usK" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall,
+/area/crew_quarters/theatre)
 "usQ" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -151671,6 +151738,7 @@
 /turf/open/floor/engine,
 /area/science/misc_lab)
 "vXA" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
 /turf/closed/wall/r_wall,
 /area/crew_quarters/dorms/A)
 "vXD" = (
@@ -151756,6 +151824,10 @@
 	icon_state = "platingdmg3"
 	},
 /area/crew_quarters/dorms/upper)
+"vYv" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall,
+/area/medical/medbay/zone2)
 "vYB" = (
 /obj/machinery/light{
 	dir = 8;
@@ -153562,6 +153634,10 @@
 	},
 /turf/open/floor/wood,
 /area/lawoffice)
+"wmH" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall,
+/area/medical/surgery)
 "wmJ" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -156635,6 +156711,10 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/maintenance/starboard/upper)
+"wHA" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall,
+/area/construction/mining/aux_base)
 "wHC" = (
 /obj/machinery/light{
 	dir = 8;
@@ -158399,6 +158479,10 @@
 	dir = 4
 	},
 /area/maintenance/port/fore)
+"wSP" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/mineral/layenia,
+/area/layenia/cave)
 "wSR" = (
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	dir = 4;
@@ -167513,6 +167597,10 @@
 	dir = 8
 	},
 /area/maintenance/fore/upper)
+"ylg" = (
+/obj/effect/baseturf_helper/asteroid/layenia,
+/turf/closed/wall/r_wall,
+/area/engine/custom)
 "ylh" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	dir = 8;
@@ -184777,7 +184865,7 @@ lwh
 lwh
 lwh
 lwh
-lwh
+wSP
 xsA
 qLt
 iBk
@@ -185545,7 +185633,7 @@ mNC
 hdl
 mEi
 lwh
-mGZ
+pvc
 sTF
 sTF
 sTF
@@ -187119,7 +187207,7 @@ wqX
 uSz
 uPV
 uSz
-yhl
+wHA
 yhl
 yhl
 yhl
@@ -187347,12 +187435,12 @@ gPq
 mGZ
 xux
 qWv
-bNF
+nKb
 bNF
 oSW
 bNF
 bNF
-bXO
+rPC
 bXO
 jhk
 bXO
@@ -189918,11 +190006,11 @@ hAT
 xux
 qWv
 mGB
-uDB
+bdu
 uhC
 oJk
 prb
-wOs
+dFK
 bzM
 oTk
 xJr
@@ -192205,7 +192293,7 @@ lwh
 lwh
 lwh
 lwh
-eEo
+nSf
 eEo
 eEo
 eEo
@@ -199411,7 +199499,7 @@ kOL
 lam
 vjw
 epJ
-jPy
+fiP
 jPy
 jPy
 jPy
@@ -199933,7 +200021,7 @@ jPy
 jPy
 ozy
 qPV
-uOO
+cbh
 uOO
 uOO
 uOO
@@ -201810,7 +201898,7 @@ reJ
 tIZ
 tlW
 drg
-iUa
+ryQ
 mgo
 hUi
 xES
@@ -203544,7 +203632,7 @@ kgq
 iFk
 dzZ
 fvA
-cvm
+ulz
 cvm
 cvm
 cvm
@@ -203866,7 +203954,7 @@ wHq
 usW
 vWZ
 vWZ
-jzc
+vYv
 unW
 usV
 uzI
@@ -205094,7 +205182,7 @@ cvm
 rhQ
 xXB
 bqo
-cLc
+usK
 cLc
 cLc
 cLc
@@ -206436,7 +206524,7 @@ bgO
 uiB
 mCS
 wvm
-nKU
+wmH
 nKU
 nKU
 uKn
@@ -206899,7 +206987,7 @@ oVz
 vKX
 boh
 nrx
-wwp
+qrX
 lLN
 wwp
 mhI
@@ -208912,14 +209000,14 @@ toK
 xdO
 ykt
 wWR
-woc
+eVy
 woc
 lpz
 lpz
 lpz
 woc
 woc
-wAU
+ylg
 wAU
 jxW
 ril
@@ -209135,7 +209223,7 @@ ltj
 ltj
 ltj
 ltj
-ltj
+qZm
 axW
 xwc
 qcr
@@ -209260,7 +209348,7 @@ sVZ
 usW
 tnZ
 tCn
-wJD
+uhG
 agd
 ucM
 wJD
@@ -211510,7 +211598,7 @@ tBc
 wCU
 tBc
 tBc
-hvP
+iit
 jdR
 jma
 jvS
@@ -217673,7 +217761,7 @@ nus
 nus
 nus
 wOp
-ikZ
+bMe
 ikZ
 ikZ
 ikZ
