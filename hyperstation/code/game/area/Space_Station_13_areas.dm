@@ -108,6 +108,10 @@
 	name = "Upper Dormitory Toilets"
 	icon_state = "toilet"
 
+/area/crew_quarters/toilet/upper/departure
+	name = "Upper departure Toilets"
+	icon_state = "toilet"
+
 /area/crew_quarters/locker/upper
 	name = "Upper Locker Room"
 	icon_state = "locker"
