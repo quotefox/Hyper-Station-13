@@ -14353,6 +14353,21 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/engine/break_room)
+"cde" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 4;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/shower{
+	dir = 8
+	},
+/obj/machinery/light{
+	dir = 4;
+	pixel_x = 7
+	},
+/turf/open/floor/plasteel/showroomfloor,
+/area/crew_quarters/fitness/pool)
 "cdf" = (
 /obj/machinery/atmospherics/pipe/simple/green/visible{
 	dir = 5
@@ -137090,6 +137105,21 @@
 	},
 /turf/open/floor/plating/asteroid/layenia/garden,
 /area/security/prison)
+"tRY" = (
+/obj/effect/turf_decal/loading_area{
+	dir = 8;
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/shower{
+	dir = 4
+	},
+/obj/machinery/light{
+	dir = 8;
+	pixel_x = -7
+	},
+/turf/open/floor/plasteel/showroomfloor,
+/area/crew_quarters/fitness/pool)
 "tRZ" = (
 /obj/structure/closet/secure_closet/brig{
 	id = "Cell 1";
@@ -251975,7 +252005,7 @@ fmi
 fmi
 xZt
 jGU
-jGU
+tRY
 jGU
 vyr
 xSh
@@ -253260,7 +253290,7 @@ fmi
 fmi
 xZt
 exg
-exg
+cde
 exg
 vyr
 wbq
