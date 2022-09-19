@@ -406,7 +406,8 @@
 			if(cosmetic_icon.icon)
 				base_bp_icon = cosmetic_icon.icon
 				use_digitigrade = cosmetic_icon.support_digitigrade ? use_digitigrade : NOT_DIGITIGRADE
-				color_src = cosmetic_icon.color_src ? cosmetic_icon.color_src : MUTCOLORS
+				color_src = cosmetic_icon.color_src != null ? cosmetic_icon.color_src : MUTCOLORS
+				should_draw_gender = cosmetic_icon.support_gender != null ? cosmetic_icon.support_gender : should_draw_gender
 				if(!H.dna.features["cosmetic_markings"])
 					body_markings = null
 					auxmarking = null

@@ -23,6 +23,12 @@ safely.
 	var/color_src = MUTCOLORS
 	/** Whether or not this cosmetic part has an alternate form for digitigrade legs. */
 	var/support_digitigrade = TRUE
+	/** 
+		WE
+		HATE
+		GENDER!!!!!!!!!!
+	*/
+	var/support_gender = null
 	/** Species IDs that support this cosmetic part. Bypassed with "show mismatched markings" option. */
 	var/list/supported_species
 
@@ -44,6 +50,7 @@ safely.
 	name = "round ipc head"
 	icon_state = "ipc_round"
 	supported_species = list("ipc")
+	support_gender = FALSE
 
 
 // CHESTS
@@ -60,6 +67,7 @@ safely.
 	icon_state = "ipc_sleek"
 	supported_species = list("ipc")
 	color_src = MATRIXED
+	support_gender = FALSE
 
 /datum/cosmetic_part/chest/ipc_jointed
 	id = "ipc_jointed"
@@ -67,6 +75,7 @@ safely.
 	icon_state = "ipc_jointed"
 	supported_species = list("ipc")
 	color_src = MATRIXED
+	support_gender = FALSE
 
 
 // ARMS
