@@ -50,6 +50,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/radiosounds = TRUE
 	var/max_chat_length = CHAT_MESSAGE_MAX_LENGTH
 	var/see_chat_non_mob = TRUE
+	var/see_rc_emotes = TRUE
 	var/tgui_fancy = TRUE
 	var/tgui_lock = TRUE
 	var/windowflashing = TRUE
@@ -1041,6 +1042,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Chat Bubbles:</b> <a href='?_src_=prefs;preference=chat_on_map'>[chat_on_map ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Chat Bubbles message char limit:</b> <a href='?_src_=prefs;preference=max_chat_length;task=input'>[max_chat_length]</a><br>"
 			dat += "<b>Chat Bubbles for non-mobs:</b> <a href='?_src_=prefs;preference=see_chat_non_mob'>[see_chat_non_mob ? "Enabled" : "Disabled"]</a><br>"
+			dat += "<b>Chat Bubbles emotes:</b> <a href='?_src_=prefs;preference=see_rc_emotes'>[see_rc_emotes ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<br>"
 			dat += "<b>Autocorrect:</b> <a href='?_src_=prefs;preference=autocorrect'>[(autocorrect) ? "On" : "Off"]</a><br>"
 			dat += "<b>Radio Sounds:</b> <a href='?_src_=prefs;preference=radiosounds'>[radiosounds ? "Enabled" : "Disabled"]</a><br>"
@@ -2835,6 +2837,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					radiosounds = !radiosounds
 				if("see_chat_non_mob")
 					see_chat_non_mob = !see_chat_non_mob
+				if("see_rc_emotes")
+					see_rc_emotes = !see_rc_emotes
 				if("tgui_fancy")
 					tgui_fancy = !tgui_fancy
 				if("tgui_lock")
