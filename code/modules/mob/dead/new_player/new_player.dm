@@ -35,7 +35,6 @@
 	new_player_panel()
 
 /mob/dead/new_player/proc/new_player_panel()
-	src << browse(null, "window=playersetup") //closes the player setup window if its already open.
 	var/output = ""
 	if(SSticker.current_state <= GAME_STATE_PREGAME)
 		switch(ready)
@@ -95,10 +94,7 @@
 	output += "</center>"
 
 	var/datum/browser/popup
-	if(SSticker.current_state <= GAME_STATE_PREGAME)
-		popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 268, 202)
-	else
-		popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 268, 342)
+	popup = new(src, "playersetup", "<div align='center'>New Player Options</div>", 268, 342)
 	popup.set_window_options("can_close=0")
 
 	popup.add_stylesheet("playersetup", 'html/browser/mainmenu.css')
