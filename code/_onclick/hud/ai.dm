@@ -164,6 +164,36 @@
 	var/mob/living/silicon/S = usr
 	S.toggle_sensors()
 
+/obj/screen/ai/z_level_up
+	name = "Look up"
+	icon_state = "z_level_up"
+
+/obj/screen/ai/z_level_up/Click()
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+
+	//var/turf/T = get_step_multiz(AI.eyeobj, UP) Alternative
+	var/turf/T = SSmapping.get_turf_above(get_turf(AI.eyeobj)) // Gets the turf above the AI's eye object
+
+	if(!AI.setEyeLoc(T)) // Checks for turf existing and onstation and teleports AI's eye there. If unsuccessful, notify AI
+		to_chat(AI, "<span class='warning'>The area above is offstation!</span>")
+
+/obj/screen/ai/z_level_down
+	name = "Look down"
+	icon_state = "z_level_down"
+
+/obj/screen/ai/z_level_down/Click()
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+
+	//var/turf/T = get_step_multiz(AI.eyeobj, DOWN) Alternative
+	var/turf/T = SSmapping.get_turf_below(get_turf(AI.eyeobj)) // Gets the turf below the AI's eye object
+
+	if(!AI.setEyeLoc(T)) // Checks for turf existing and onstation and teleports AI's eye there. If unsuccessful, notify AI
+		to_chat(AI, "<span class='warning'>The area below is offstation!</span>")
+
 /obj/screen/ai/multicam
 	name = "Multicamera Mode"
 	icon_state = "multicam"
@@ -285,6 +315,18 @@
 //Medical/Security sensors
 	using = new /obj/screen/ai/sensors()
 	using.screen_loc = ui_ai_sensor
+	using.hud = src
+	static_inventory += using
+
+//Z level up
+	using = new /obj/screen/ai/z_level_up()
+	using.screen_loc = ui_z_level_up
+	using.hud = src
+	static_inventory += using
+
+//Z level down
+	using = new /obj/screen/ai/z_level_down()
+	using.screen_loc = ui_z_level_down
 	using.hud = src
 	static_inventory += using
 
