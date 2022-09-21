@@ -146,10 +146,15 @@
 
 	//If we're getting the manifest from out of the round, add borgs to it
 	if(OOC)
-		for(var/mob/living/silicon/robot/R in GLOB.silicon_mobs)
-			if(!R.hack_software || R.emagged) //If they're not hacked except via emag
-				var name = R.name
-				bot[name] = "Station Cyborg"
+		for(var/mob/living/silicon/S in GLOB.silicon_mobs)
+			var name = S.name
+			if(istype(S, /mob/living/silicon/robot))
+				var/mob/living/silicon/robot/R = S
+				if(!R.shell && (!R.hack_software || R.emagged)) //If they're not hacked except via emag. Also ensures no duplicates due to shells
+					bot[name] = "Station Cyborg"
+			else
+				if(istype(S, /mob/living/silicon/ai))
+					bot[name] = "Station AI"
 
 	if(heads.len > 0)
 		dat += "<tr><th colspan=3>Heads</th></tr>"
