@@ -50,15 +50,14 @@
 		else
 			output += "<p><a style='background:#912c24;' href='byond://?src=[REF(src)];ready=[PLAYER_READY_TO_OBSERVE]'>[icon2html('hyperstation/icons/menu/menu.dmi', world, "ghost")]Observe</a></p>"
 
-	else
+	else if(client)
 		//make menu preview
 		var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_ROLEPLAY)
 		var/icon/preview_icon = icon('icons/effects/effects.dmi', "nothing")
-		client.prefs.copy_to(mannequin)
+		client?.prefs?.copy_to(mannequin)
 		COMPILE_OVERLAYS(mannequin)
-		var/icon/stamp = getFlatIcon(mannequin)
 		mannequin.setDir(SOUTH)
-		stamp = getFlatIcon(mannequin)
+		var/icon/stamp = getFlatIcon(mannequin)
 		CHECK_TICK
 		preview_icon.Blend(stamp, ICON_OVERLAY, 0, 0)
 		CHECK_TICK
