@@ -116,6 +116,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	S["radiosounds"]		>> radiosounds
 	S["max_chat_length"]	>> max_chat_length
 	S["see_chat_non_mob"] 	>> see_chat_non_mob
+	S["see_rc_emotes"] 		>> see_rc_emotes
 
 
 	S["parallax"]			>> parallax
@@ -224,6 +225,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["radiosounds"], radiosounds)
 	WRITE_FILE(S["max_chat_length"], max_chat_length)
 	WRITE_FILE(S["see_chat_non_mob"], see_chat_non_mob)
+	WRITE_FILE(S["see_rc_emotes"], see_rc_emotes)
 	WRITE_FILE(S["tgui_fancy"], tgui_fancy)
 	WRITE_FILE(S["tgui_lock"], tgui_lock)
 	WRITE_FILE(S["buttons_locked"], buttons_locked)
