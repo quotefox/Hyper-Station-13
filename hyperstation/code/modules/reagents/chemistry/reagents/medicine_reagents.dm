@@ -39,7 +39,7 @@
 	pH = 4
 
 /datum/reagent/medicine/ibuprofen/on_mob_life(mob/living/carbon/M)
-	M.adjustPainLoss(-2*REM, 0)// mild painkiller. Better than bicardine, worse than morphine.
+	M.adjustPainLoss(-1.5*REM, 0)// mild painkiller. Better than bicardine, worse than morphine.
 	..()
 
 /datum/reagent/medicine/ibuprofen/overdose_process(mob/living/M)
