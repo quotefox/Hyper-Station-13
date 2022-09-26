@@ -691,7 +691,9 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		for(var/mob/living/carbon/human/H in GLOB.alive_mob_list)
 			humans += H
 		person = pick(humans)
-		// Generate message
+
+
+	// Generate message
 	var/spans = list(person.speech_span)
 	var/chosen = !specific_message ? capitalize(pick(is_radio ? speak_messages : radio_messages)) : specific_message
 	chosen = replacetext(chosen, "%TARGETNAME%", target_name)
@@ -702,7 +704,10 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	if (!is_radio && !target.client?.prefs.chat_on_map)
 		var/image/speech_overlay = image('icons/mob/talk.dmi', person, "default0", layer = ABOVE_MOB_LAYER)
 		INVOKE_ASYNC(GLOBAL_PROC, /proc/flick_overlay, speech_overlay, list(target.client), 30)
+	if (target.client?.prefs.chat_on_map)
+		target.create_chat_message(person, understood_language, chosen, spans, 0)
 	to_chat(target, message)
+
 	qdel(src)
 
 /datum/hallucination/message

@@ -55,11 +55,11 @@
 	message = null
 	return ..()
 
+
 /**
   * Calls qdel on the chatmessage when its parent is deleted, used to register qdel signal
   */
 /datum/chatmessage/proc/on_parent_qdel()
-	UnregisterSignal(src, COMSIG_PARENT_QDELETING)
 	qdel(src)
 
 
@@ -107,10 +107,11 @@
 	// Append radio icon if from a virtual speaker
 	if (extra_classes.Find("virtual-speaker"))
 		var/image/r_icon = image('icons/UI_Icons/chat/chat_icons.dmi', icon_state = "radio")
-		text =  "\icon[r_icon]&nbsp;" + text
+		text =  "\icon[r_icon]&nbsp;[text]"
+
 	else if (extra_classes.Find("emote"))
-		var/image/r_icon = image('icons/ui_icons/chat/chat_icons.dmi', icon_state = "emote")
-		text =  "\icon[r_icon]&nbsp;" + text
+		var/image/r_icon = image('icons/UI_Icons/chat/chat_icons.dmi', icon_state = "emote")
+		text =  "\icon[r_icon]&nbsp;[text]"
 
 	// We dim italicized text to make it more distinguishable from regular text
 	var/tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
@@ -120,7 +121,7 @@
 	// BYOND Bug #2563917
 	// Construct text
 	var/static/regex/html_metachars = new(@"&[A-Za-z]{1,7};", "g")
-	var/complete_text = "<span class='center maptext [extra_classes.Join(" ")]' style='color: [tgt_color]'>[owner.say_emphasis(text)]</span>"
+	var/complete_text = "<span class='center maptext [extra_classes.Join(" ")]' style='color: [tgt_color]'>[text]</span>"
 	var/mheight = WXH_TO_HEIGHT(owned_by.MeasureText(replacetext(complete_text, html_metachars, "m"), null, CHAT_MESSAGE_WIDTH))
 	approx_lines = max(1, mheight / CHAT_MESSAGE_APPROX_LHEIGHT)
 
@@ -176,7 +177,7 @@
   * * spans - Additional classes to be added to the message
   * * message_mode - Bitflags relating to the mode of the message
   */
-/mob/proc/create_chat_message(atom/movable/speaker, datum/language/message_language, raw_message, list/spans, message_mode)
+/mob/proc/create_chat_message(atom/movable/speaker, datum/language/message_language, raw_message, list/spans, message_mode, runechat_flags = NONE)
 	// Ensure the list we are using, if present, is a copy so we don't modify the list provided to us
 	spans = spans ? spans.Copy() : list()
 
@@ -192,7 +193,10 @@
 		return
 
 	// Display visual above source
-	new /datum/chatmessage(lang_treat(speaker, message_language, raw_message, spans, null, TRUE), speaker, src, spans)
+	if(runechat_flags & EMOTE_MESSAGE)
+		new /datum/chatmessage(raw_message, speaker, src, list("emote", "italics"))
+	else
+		new /datum/chatmessage(lang_treat(speaker, message_language, raw_message, spans, null, TRUE), speaker, src, spans)
 
 
 // Tweak these defines to change the available color ranges

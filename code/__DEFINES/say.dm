@@ -61,9 +61,9 @@
 #define SPAN_SMALL "small"
 
 //bitflag #defines for return value of the radio() proc.
-#define ITALICS 1
-#define REDUCE_RANGE 2
-#define NOPASS 4
+#define ITALICS			(1<<0)
+#define REDUCE_RANGE	(1<<1)
+#define NOPASS			(1<<2)
 
 //Eavesdropping
 #define EAVESDROP_EXTRA_RANGE 1 //how much past the specified message_range does the message get starred, whispering only
@@ -88,3 +88,10 @@
 // Audio/Visual Flags. Used to determine what sense are required to notice a message.
 #define MSG_VISUAL (1<<0)
 #define MSG_AUDIBLE (1<<1)
+
+// Is something in the IC chat filter? This is config dependent.
+#define CHAT_FILTER_CHECK(T) (config.ic_filter_regex && findtext(T, config.ic_filter_regex))
+
+
+//Used in visible_message_flags, audible_message_flags and runechat_flags
+#define EMOTE_MESSAGE (1<<0)
