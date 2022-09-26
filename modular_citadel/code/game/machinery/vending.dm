@@ -6,6 +6,7 @@
 					/obj/item/pinpointer/crew = 2,
 					/obj/item/reagent_containers/medspray/sterilizine = 1,
 					/obj/item/stack/medical/gauze = 8,
+					/obj/item/reagent_containers/pill/ibuprofen = 5,
 					/obj/item/reagent_containers/pill/patch/styptic = 5,
 					/obj/item/reagent_containers/medspray/styptic = 2,
 					/obj/item/reagent_containers/pill/patch/silver_sulf = 5,

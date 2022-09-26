@@ -27,3 +27,23 @@
 		M.Knockdown(40)
 
 //To-do: /datum/reagent/medicine/seethium
+
+/datum/reagent/medicine/ibuprofen
+	name = "Ibuprofen"
+	description = "A milder painkiller with a higher overdose threshold than morphine and fewer ill effects."
+	reagent_state = LIQUID
+	color = "#E6E6E6"
+	metabolization_rate = 0.5 * REAGENTS_METABOLISM
+	overdose_threshold = 60
+	//addiction_threshold = 25
+	pH = 4
+
+/datum/reagent/medicine/ibuprofen/on_mob_life(mob/living/carbon/M)
+	M.adjustPainLoss(-1.5*REM, 0)// mild painkiller. Better than bicardine, worse than morphine.
+	..()
+
+/datum/reagent/medicine/ibuprofen/overdose_process(mob/living/M)
+	if(prob(15))
+		//M.drop_all_held_items()
+		M.Dizzy(3)
+	..()

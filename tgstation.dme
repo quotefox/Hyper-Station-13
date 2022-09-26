@@ -3230,6 +3230,7 @@
 #include "hyperstation\code\modules\power\reactor\fuel_rods.dm"
 #include "hyperstation\code\modules\power\reactor\rbmk.dm"
 #include "hyperstation\code\modules\power\reactor\reactor_cargo.dm"
+#include "hyperstation\code\modules\reagents\chemistry\reagent_containers\pill.dm"
 #include "hyperstation\code\modules\reagents\chemistry\reagents\alcohol_reagents.dm"
 #include "hyperstation\code\modules\reagents\chemistry\reagents\drink_reagents.dm"
 #include "hyperstation\code\modules\reagents\chemistry\reagents\food_reagents.dm"
