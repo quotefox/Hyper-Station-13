@@ -917,3 +917,10 @@
     id = /datum/reagent/consumable/orange_creamsicle
     results = list(/datum/reagent/consumable/orange_creamsicle = 4)
     required_reagents = list(/datum/reagent/consumable/vanilla = 1, /datum/reagent/consumable/milk = 1, /datum/reagent/consumable/ice = 1, /datum/reagent/consumable/orangejuice = 1)
+
+/datum/chemical_reaction/criticality_coffee
+	name = "1964 Criticality Accident Leftover Coffee"
+	id = /datum/reagent/consumable/criticality_coffee
+	results = list(/datum/reagent/consumable/criticality_coffee = 4)
+	required_reagents = list(/datum/reagent/consumable/coffee = 1, /datum/reagent/radium = 1, /datum/reagent/iron = 1, /datum/reagent/uranium = 1)
+	mix_message = "All drinks inevitably come at a cost."

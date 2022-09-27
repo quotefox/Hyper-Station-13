@@ -3103,6 +3103,7 @@
 #include "hyperstation\code\datums\ert_hazard_cleanup.dm"
 #include "hyperstation\code\datums\actions\sysuit.dm"
 #include "hyperstation\code\datums\actions\zaocorp.dm"
+#include "hyperstation\code\datums\components\glow_harmless.dm"
 #include "hyperstation\code\datums\components\crafting\bounties.dm"
 #include "hyperstation\code\datums\components\crafting\recipes.dm"
 #include "hyperstation\code\datums\elements\holder_micro.dm"
