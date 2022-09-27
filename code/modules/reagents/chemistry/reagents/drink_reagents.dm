@@ -1002,4 +1002,28 @@
 	glass_name = "Orange Creamsicle"
 	hydration = 4
 
+/datum/reagent/consumable/criticality_coffee
+	name = "1964 Criticality Accident Leftover Coffee"
+	description = "Vyx's special blend. In some other stations it is known as The Dyatlov Special. 'Two grains is all you need to see the thin fabric of reality.'"
+	color = "#4dc4be"
+	quality = DRINK_VERYGOOD
+	taste_description = "like graphite, but there's none there"
+	glass_icon_state = "1964"
+	glass_name = "1964 Criticality Accident Leftover Coffee"
+	glass_desc = "Vyx's special blend. In some other stations it is known as The Dyatlov Special. 'Two grains is all you need to see the thin fabric of reality.'"
+	hydration = 4
 
+/datum/reagent/consumable/criticality_coffee/on_mob_life(mob/living/carbon/M)
+	M.dizziness = max(0,M.dizziness-5)
+	M.drowsyness = 0
+	M.AdjustSleeping(-40, FALSE)
+	M.Jitter(2)
+	//310.15 is the normal bodytemp.
+	M.adjust_bodytemperature(25 * TEMPERATURE_DAMAGE_COEFFICIENT, 0, BODYTEMP_NORMAL)
+	var/datum/component/glow_harmless/gl = M.GetComponent(/datum/component/glow_harmless)
+	if(!gl)
+		M.AddComponent(/datum/component/glow_harmless, "#39ff1430")
+	if(holder.has_reagent(/datum/reagent/consumable/frostoil))
+		holder.remove_reagent(/datum/reagent/consumable/frostoil, 5)
+	..()
+	. = 1
