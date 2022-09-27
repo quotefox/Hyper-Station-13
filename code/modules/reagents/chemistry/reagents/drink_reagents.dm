@@ -1004,7 +1004,7 @@
 
 /datum/reagent/consumable/criticality_coffee
 	name = "1964 Criticality Accident Leftover Coffee"
-	description = "That thang bleedin' to the-... ya know I mean?"
+	description = "Vyx's special blend. In some other stations it is known as The Dyatlov Special. 'Two grains is all you need to see the thin fabric of reality.'"
 	color = "#4dc4be"
 	quality = DRINK_VERYGOOD
 	taste_description = "like graphite, but there's none there"
