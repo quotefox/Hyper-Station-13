@@ -1022,7 +1022,7 @@
 	M.adjust_bodytemperature(25 * TEMPERATURE_DAMAGE_COEFFICIENT, 0, BODYTEMP_NORMAL)
 	var/datum/component/glow_harmless/gl = M.GetComponent(/datum/component/glow_harmless)
 	if(!gl)
-		M.AddComponent(/datum/component/glow_harmless, "#37ff1438")
+		M.AddComponent(/datum/component/glow_harmless, "#39ff1430")
 	if(holder.has_reagent(/datum/reagent/consumable/frostoil))
 		holder.remove_reagent(/datum/reagent/consumable/frostoil, 5)
 	..()
