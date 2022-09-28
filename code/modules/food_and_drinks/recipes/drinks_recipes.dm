@@ -922,5 +922,5 @@
 	name = "1964 Criticality Accident Leftover Coffee"
 	id = /datum/reagent/consumable/criticality_coffee
 	results = list(/datum/reagent/consumable/criticality_coffee = 4)
-	required_reagents = list(/datum/reagent/consumable/coffee = 1, /datum/reagent/radium = 1, /datum/reagent/iron = 1, /datum/reagent/uranium = 1)
+	required_reagents = list(/datum/reagent/consumable/coffee = 1, /datum/reagent/radium = 1, /datum/reagent/copper = 1, /datum/reagent/uranium = 1)
 	mix_message = "All drinks inevitably come at a cost."
