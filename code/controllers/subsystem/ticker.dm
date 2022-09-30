@@ -686,16 +686,18 @@ SUBSYSTEM_DEF(ticker)
 		'hyperstation/sound/roundend/iwishtherewassomethingmore.ogg',
 		'hyperstation/sound/roundend/likeisaid.ogg',
 		'hyperstation/sound/roundend/whatarottenwaytodie.ogg',
-		'hyperstation/sound/roundend/whatashame.ogg',
-		'sound/roundend/newroundsexy.ogg',
-		'sound/roundend/apcdestroyed.ogg',
-		'sound/roundend/bangindonk.ogg',
-		'sound/roundend/leavingtg.ogg',
-		'sound/roundend/its_only_game.ogg',
-		'sound/roundend/yeehaw.ogg',
-		'sound/roundend/disappointed.ogg',
-		'sound/roundend/gondolabridge.ogg',
-		'sound/roundend/haveabeautifultime.ogg'\
+		'hyperstation/sound/roundend/whatashame.ogg'
+		'hyperstation/sound/roundend/babybird.ogg'
+		'hyperstation/sound/roundend/masterhalo.ogg'
+		'hyperstation/sound/roundend/missionary.ogg'
+		'hyperstation/sound/roundend/monogamy.ogg'
+		'hyperstation/sound/roundend/propergum.ogg'
+		'hyperstation/sound/roundend/replenishing.ogg'
+		'hyperstation/sound/roundend/seat.ogg'
+		'hyperstation/sound/roundend/starbucks.ogg'
+		'hyperstation/sound/roundend/tired.ogg'
+		'hyperstation/sound/roundend/toys.ogg'
+		'hyperstation/sound/roundend/water.ogg'\
 		)
 
 	SEND_SOUND(world, sound(round_end_sound))
