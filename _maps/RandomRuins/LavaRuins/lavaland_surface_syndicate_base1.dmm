@@ -5,12 +5,6 @@
 "ab" = (
 /turf/open/lava/smooth/lava_land_surface,
 /area/ruin/unpowered/syndicate_lava_base/outdoors)
-"ac" = (
-/obj/machinery/porta_turret/syndicate{
-	dir = 5
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/unpowered/syndicate_lava_base/outdoors)
 "ad" = (
 /obj/machinery/camera{
 	c_tag = "Xenobiology Inner South";
@@ -2422,12 +2416,6 @@
 	},
 /turf/open/floor/plasteel/dark,
 /area/ruin/unpowered/syndicate_lava_base/outdoors)
-"gm" = (
-/obj/machinery/porta_turret/syndicate{
-	dir = 10
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/unpowered/syndicate_lava_base/outdoors)
 "gr" = (
 /obj/machinery/door/airlock/virology/glass{
 	name = "Monkey Pen";
@@ -2806,12 +2794,6 @@
 	icon_state = "panelscorched"
 	},
 /area/ruin/unpowered/syndicate_lava_base/outdoors)
-"hB" = (
-/obj/machinery/porta_turret/syndicate{
-	dir = 6
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/unpowered/syndicate_lava_base/outdoors)
 "hF" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 5;
@@ -2956,24 +2938,7 @@
 /obj/machinery/light/small{
 	dir = 1
 	},
-/obj/machinery/turretid{
-	ailock = 1;
-	control_area = "/area/ruin/unpowered/syndicate_lava_base/main";
-	dir = 1;
-	icon_state = "control_kill";
-	lethal = 1;
-	name = "Base turret controls";
-	pixel_y = 30;
-	req_access = null;
-	req_access_txt = "150"
-	},
 /turf/open/floor/circuit/red,
-/area/ruin/unpowered/syndicate_lava_base/outdoors)
-"ii" = (
-/obj/machinery/porta_turret/syndicate{
-	dir = 9
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ruin/unpowered/syndicate_lava_base/outdoors)
 "ij" = (
 /obj/effect/decal/cleanable/dirt,
@@ -4160,12 +4125,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plasteel/dark,
 /area/ruin/unpowered/syndicate_lava_base/outdoors)
-"md" = (
-/obj/machinery/porta_turret/syndicate{
-	dir = 8
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
-/area/ruin/unpowered/syndicate_lava_base/outdoors)
 "mh" = (
 /obj/structure/chair/stool,
 /obj/effect/decal/cleanable/dirt,
@@ -4879,12 +4838,6 @@
 "ok" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/plasteel/dark,
-/area/ruin/unpowered/syndicate_lava_base/outdoors)
-"ol" = (
-/obj/machinery/porta_turret/syndicate{
-	dir = 4
-	},
-/turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/ruin/unpowered/syndicate_lava_base/outdoors)
 "op" = (
 /obj/effect/turf_decal/stripes/line,
@@ -6076,7 +6029,7 @@ ab
 ab
 ab
 ab
-ii
+Pa
 Pa
 Pa
 Pa
@@ -6264,7 +6217,6 @@ ab
 ab
 ab
 ab
-ii
 Pa
 Pa
 Pa
@@ -6272,13 +6224,14 @@ Pa
 Pa
 Pa
 Pa
-gm
+Pa
+Pa
 ab
 ab
 ab
 ab
 dG
-md
+Pa
 dG
 ab
 ab
@@ -6408,7 +6361,7 @@ aa
 aa
 ab
 ab
-ii
+Pa
 Pa
 Pa
 Pa
@@ -6445,7 +6398,7 @@ Wt
 mo
 nL
 Pa
-hB
+Pa
 dG
 dG
 ab
@@ -6655,7 +6608,7 @@ Pa
 Pa
 Pa
 Pa
-gm
+Pa
 ab
 ab
 ab
@@ -7021,7 +6974,7 @@ Pa
 Pa
 Pa
 Pa
-gm
+Pa
 ab
 ab
 ab
@@ -7084,7 +7037,7 @@ aa
 aa
 ab
 ab
-ac
+Pa
 Pa
 Pa
 Pa
@@ -7453,7 +7406,7 @@ ab
 ab
 ab
 ab
-ac
+Pa
 Pa
 Pa
 Pa
@@ -7697,7 +7650,7 @@ Pa
 Pa
 Pa
 Pa
-hB
+Pa
 ab
 ab
 ab
@@ -7976,7 +7929,7 @@ ab
 ab
 ab
 ab
-ac
+Pa
 cF
 cF
 Pa
@@ -7984,7 +7937,7 @@ eO
 Pa
 cF
 cF
-hB
+Pa
 ab
 ab
 ab
@@ -7992,7 +7945,7 @@ ab
 ab
 ab
 ab
-ac
+Pa
 Pa
 ni
 kD
@@ -8055,7 +8008,7 @@ oC
 Pa
 Pa
 Pa
-hB
+Pa
 ab
 ab
 ab
@@ -8204,7 +8157,7 @@ ab
 Pa
 Pa
 Pa
-ol
+Pa
 Pa
 Pa
 Pa
