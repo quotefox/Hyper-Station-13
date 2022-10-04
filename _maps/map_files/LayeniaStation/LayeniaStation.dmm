@@ -2555,7 +2555,7 @@
 	},
 /obj/machinery/door/airlock/maintenance{
 	dir = 8;
-	name = "Art Atrium Maintenance;
+	name = "Art Atrium Maintenance";
 	req_access_txt = "12"
 	},
 /turf/open/floor/plasteel/dark{
@@ -16094,8 +16094,8 @@
 	pixel_y = 14
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/item/toy/figure{
-	pixel_x = 4;
+/obj/item/toy/nuke{
+	pixel_x = 3;
 	pixel_y = 4
 	},
 /turf/open/floor/plating{
@@ -22582,6 +22582,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/power/rad_collector,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/plating,
 /area/engine/custom)
 "dyy" = (
@@ -79458,7 +79460,6 @@
 /turf/open/floor/plating/asteroid/layenia,
 /area/layenia)
 "mey" = (
-/obj/item/ashtray,
 /obj/structure/chair/comfy/black{
 	dir = 4
 	},
@@ -79995,6 +79996,15 @@
 	pixel_y = 32
 	},
 /obj/structure/table,
+/obj/item/stack/rods/fifty{
+	pixel_x = -8;
+	pixel_y = 5
+	},
+/obj/item/stack/rods/fifty{
+	pixel_x = 7;
+	pixel_y = -4
+	},
+/obj/item/stack/rods/fifty,
 /turf/open/floor/plasteel,
 /area/engine/custom)
 "mjB" = (
@@ -81774,6 +81784,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/power/rad_collector,
+/obj/effect/turf_decal/bot,
 /turf/open/floor/plating,
 /area/engine/custom)
 "mwm" = (
@@ -144576,6 +144588,11 @@
 /obj/structure/flora/crystal/small/growth,
 /turf/open/floor/plating/asteroid/layenia/garden,
 /area/crew_quarters/dorms/upper)
+"uVJ" = (
+/obj/effect/turf_decal/bot,
+/obj/machinery/power/rad_collector,
+/turf/open/floor/plating,
+/area/engine/custom)
 "uVM" = (
 /obj/machinery/camera/motion{
 	c_tag = "MiniSat AI Chamber Observation";
@@ -166895,6 +166912,11 @@
 	icon_state = "floor_plate"
 	},
 /area/maintenance/fore/upper)
+"yaG" = (
+/obj/machinery/power/rad_collector,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plating,
+/area/engine/custom)
 "yaH" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
@@ -211612,8 +211634,8 @@ oTY
 hIo
 rZe
 mwk
-hVd
-oTY
+yaG
+uVJ
 qwQ
 qwQ
 oTY
@@ -211869,8 +211891,8 @@ oTY
 oTY
 oTY
 dyp
-hVd
-rqF
+yaG
+yaG
 rqF
 anU
 jhb
