@@ -15574,7 +15574,7 @@
 /obj/structure/table/wood,
 /obj/item/taperecorder,
 /obj/item/cartridge/lawyer,
-/obj/machinery/computer/lore_terminal/security,
+/obj/machinery/computer/lore_terminal,
 /turf/open/floor/wood,
 /area/lawoffice)
 "cmz" = (
@@ -21661,6 +21661,7 @@
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "drb" = (
+/obj/effect/landmark/start/lawyer,
 /turf/open/floor/carpet,
 /area/lawoffice)
 "drd" = (
