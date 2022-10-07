@@ -65,7 +65,11 @@
 		. += "<span class='notice'>The status display reads: Efficiency <b>[(heat_capacity/5000)*100]%</b>.</span>"
 		. += "<span class='notice'>Temperature range <b>[min_temperature]K - [max_temperature]K ([(T0C-min_temperature)*-1]C - [(T0C-max_temperature)*-1]C)</b>.</span>"
 
+//I have never coded in byond before lmao but it somehow works
 /obj/machinery/atmospherics/components/unary/thermomachine/process_atmos()
+	var/B
+	for(var/obj/item/stock_parts/matter_bin/M in component_parts)
+		B += M.rating
 	..()
 	if(!on || !nodes[1])
 		return
@@ -81,7 +85,7 @@
 
 	var/temperature_delta= abs(old_temperature - air_contents.temperature)
 	if(temperature_delta > 1)
-		active_power_usage = (heat_capacity * temperature_delta) / 10 + idle_power_usage
+		active_power_usage = ((((heat_capacity * temperature_delta) * (2 * (10 ** 9))) ** 0.19) / 0.3) * (1 + (B / 2000)) + idle_power_usage
 		update_parents()
 	else
 		active_power_usage = idle_power_usage
