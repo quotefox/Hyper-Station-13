@@ -22,7 +22,7 @@ GLOBAL_DATUM_INIT(lore_terminal_controller, /datum/lore_controller, new)
 /obj/machinery/computer/lore_terminal/security
 	name = "Security info-link terminal"
 	access_tag = "knsecurity"
-	req_access = list(ACCESS_SECURITY)
+	req_access = list(ACCESS_SEC_DOORS)
 
 /obj/machinery/computer/lore_terminal/awaymission //Example for having a terminal preloaded with only a set list of files.
 	access_tag = "awaymission_default"

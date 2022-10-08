@@ -15574,7 +15574,7 @@
 /obj/structure/table/wood,
 /obj/item/taperecorder,
 /obj/item/cartridge/lawyer,
-/obj/machinery/computer/lore_terminal,
+/obj/machinery/computer/lore_terminal/security,
 /turf/open/floor/wood,
 /area/lawoffice)
 "cmz" = (
