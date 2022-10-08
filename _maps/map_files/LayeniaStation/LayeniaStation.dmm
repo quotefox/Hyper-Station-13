@@ -21661,6 +21661,7 @@
 /turf/open/floor/plasteel/dark,
 /area/security/prison)
 "drb" = (
+/obj/effect/landmark/start/lawyer,
 /turf/open/floor/carpet,
 /area/lawoffice)
 "drd" = (
