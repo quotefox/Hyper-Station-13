@@ -6,7 +6,7 @@ You can drag other players onto yourself to open the strip menu, letting you rem
 Clicking on a windoor rather then bumping into it will keep it open, you can click it again to close it.
 You can spray a fire extinguisher, throw items or fire a gun while floating through space to change your direction. Simply fire opposite to where you want to go.
 You can change the control scheme by pressing tab. One is WASD, the other is the arrow keys. Keep in mind that hotkeys are also changed with this.
-All vending machines can be hacked to obtain some contraband items from them, and many can be fed with coins to gain access to premium items.
+Some vending machines can be hacked to obtain contraband items from them. They can also be hacked to expell their contents at a high velocity!
 Firesuits and winter coats offer mild protection from the cold, allowing you to spend longer periods of time near breaches and space than if wearing nothing at all.
 Glass shards can be welded to make glass, and metal rods can be welded to make metal. Ores can be welded too, but this takes a lot of fuel.
 If you need to drag multiple people either to safety or to space, bring a locker or crate over and stuff them all in before hauling them off.
@@ -17,7 +17,7 @@ You can move an item out of the way by dragging it and then clicking on an adjac
 You can recolor certain items like jumpsuits and gloves in washing machines by also throwing in a crayon.
 Maintenance is full of equipment that is randomized every round. Look around and see if anything is worth using.
 Some roles cannot be antagonists by default, but antag selection is decided first. For instance, you can set Security Officer to High without affecting your chances of becoming an antag -- the game will just select a different role.
-There are many places around the station to hide contraband. A few for starters: linen boxes, toilet cisterns, body bags. Experiment to find more!
+There are many places around the station to hide contraband. A few for starters: linen boxes, toilet cisterns, body bags, even trash piles! Experiment to find more!
 On all maps, you can use a machine in the vault to deposit space cash for cargo points. Otherwise, use it to steal the station's cash and get out before the alarm goes off.
 As the Captain, you are one of the highest priority targets on the station. Everything from revolutions, to nuclear operatives, to traitors that need to rob you of your unique lasgun or your life are things to worry about.
 As the Captain, always take the nuclear disk and pinpointer with you every shift. It's a good idea to give one of these to another head you can trust with keeping it safe, such as the Head of Security.
@@ -49,7 +49,7 @@ As the Research Director, you can take AIs out of their cores by loading them in
 As the Research Director, you can lock down cyborgs instead of blowing them up. Then you can have their laws reset or if that doesn't work, safely dismantled.
 As the Research Director, you can upgrade your modular console with better computer parts to speed up its functions. This can be useful when using the AI system integrity restorer.
 As the Research Director, your console's NTnet monitoring tool can be used to retrieve airlock passkeys, provided that someone used a door remote.
-As a Scientist, you can use the mutation toxin obtained from green slimes to turn yourself into a jelly mutant. Each subspecies has unique features - for example telepathic powers, duplicating bodies or integrating slime extracts!
+As a Scientist, you can use the mutation toxin obtained from green slimes to turn yourself into a jelly person. Each subspecies has unique features - for example telepathic powers, duplicating bodies or integrating slime extracts!
 As a Scientist, you can maximize the number of uses you get out of a slime by feeding it slime steroid, created from purple slimes, while alive. You can then apply extract enhancer, created from cerulean slimes, on each extract.
 As a Scientist, you can disable anomalies by scanning them with an analyzer, then send a signal on the frequency it gives you with a remote signalling device. This will leave behind an anomaly core, which can be used to construct a Phazon mech, or be used in the destructive analyzer for a 10,000 point bonus!
 As a Scientist, researchable stock parts can seriously improve the efficiency and speed of machines around the station. In some cases, it can even unlock new functions.
@@ -266,3 +266,7 @@ Suit storage units not only remove blood and dirt from clothing, but also radiat
 Remote devices will work when used through cameras. For example: Bluespace RPEDs and door remotes.
 Laser pointers can be upgraded by replacing its micro laser with a better one from RnD! Use a screwdriver on it to remove the old laser. Upgrading the laser pointer gives you better odds of stunning a cyborg, and even blinding people with sunglasses.
 The nuclear reactor blew up and now there's plutonium everywhere? Shovels and radsuits will do the trick. Just... Make sure to decontaminate or get rid of that gear afterwards.
+By default, holding Ctrl + Shift and using your directional keys allows you to move one pixel at a time.
+Certain verbs have sounds or animations attached to them! Try *bark, *meow, or many more.
+Check the crafting menu (small hammer next to the combat mode button) for anything from cool clothing, foods, or even makeshift weapons.
+You too can publish books for all others to read! Ask the Curator for more information.
