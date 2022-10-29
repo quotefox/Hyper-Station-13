@@ -732,6 +732,16 @@
 	repeatable = TRUE
 	occurances_max = 100 //Our rounds can go for a WHILE
 
+/datum/dynamic_ruleset/event/filler
+	name = "Filler"
+	typepath = /datum/round_event/filler
+	chaos_max = 3
+	cost = 1
+	weight = 100
+	repeatable_weight_decrease = 0
+	repeatable = TRUE
+	occurances_max = 50
+
 /datum/dynamic_ruleset/event/disease_outbreak
 	name = "Disease Outbreak"
 	enemy_roles = list("Virologist","Chief Medical Officer","Chemist")
