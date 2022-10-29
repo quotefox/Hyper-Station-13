@@ -180,6 +180,19 @@
 /obj/item/storage/secure/briefcase/hos/multiphase_box/PopulateContents()
 	new /obj/item/gun/energy/e_gun/hos(src)
 
+/obj/item/storage/secure/briefcase/hos/zaocorp
+	name = "\improper ZaoCorp Contractor Kit"
+	desc = "A storage case for a temporary ZaoCorp Contract."
+
+/obj/item/storage/secure/briefcase/hos/zaocorp/PopulateContents()
+	new /obj/item/clothing/suit/toggle/zao(src)
+	new /obj/item/clothing/under/rank/security/zao(src)
+	new /obj/item/clothing/head/zao(src)
+	new /obj/item/clothing/glasses/hud/toggle/zao(src)
+	new /obj/item/clothing/shoes/jackboots(src)
+	new /obj/item/clothing/gloves/color/black(src)
+	new /obj/item/clothing/accessory/waistcoat(src)
+	new /obj/item/twohanded/required/zao/zweihander(src)
 
 // -----------------------------
 //        Secure Safe

@@ -3200,6 +3200,7 @@
 #include "hyperstation\code\modules\economy\account.dm"
 #include "hyperstation\code\modules\events\crystalline_reentry.dm"
 #include "hyperstation\code\modules\events\crystalloid_entities.dm"
+#include "hyperstation\code\modules\events\filler.dm"
 #include "hyperstation\code\modules\food_and_drinks\food\snacks_vend.dm"
 #include "hyperstation\code\modules\food_and_drinks\recipes\drinks_recipes.dm"
 #include "hyperstation\code\modules\hydroponics\grown\kalyna.dm"
