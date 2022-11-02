@@ -5,8 +5,8 @@
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,WINGCOLOR,FACEHAIR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutant_bodyparts = list("mam_tail", "mam_ears", "mam_body_markings", "mam_snouts", "taur", "legs", "deco_wings")
-	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_snouts" = "Husky", "mam_tail" = "Husky", "mam_ears" = "Husky", "mam_body_markings" = "Husky", "taur" = "None", "legs" = "Normal Legs", "deco_wings" = "None")
+	mutant_bodyparts = list("mam_tail", "mam_ears", "mam_body_markings", "mam_snouts", "taur", "legs", "deco_wings", "horns")
+	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_snouts" = "Husky", "mam_tail" = "Husky", "mam_ears" = "Husky", "mam_body_markings" = "Husky", "taur" = "None", "legs" = "Normal Legs", "deco_wings" = "None", "horns" = "None")
 	attack_verb = "claw"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -56,8 +56,8 @@
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,WINGCOLOR,FACEHAIR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutant_bodyparts = list("mam_snouts", "wings", "taur", "mam_tail", "mam_body_markings", "taur", "deco_wings")
-	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_snouts" = "Beak", "mam_body_markings" = "Hawk", "wings" = "None", "taur" = "None", "mam_tail" = "Hawk", "deco_wings" = "None")
+	mutant_bodyparts = list("mam_snouts", "wings", "taur", "mam_tail", "mam_body_markings", "taur", "deco_wings", "horns")
+	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_snouts" = "Beak", "mam_body_markings" = "Hawk", "wings" = "None", "taur" = "None", "mam_tail" = "Hawk", "deco_wings" = "None", "horns" = "None")
 	attack_verb = "peck"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -102,8 +102,8 @@
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,WINGCOLOR,FACEHAIR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutant_bodyparts = list("mam_tail", "mam_ears","mam_body_markings", "taur", "mam_snouts", "deco_wings", "legs")
-	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_tail" = "Shark", "mam_ears" = "None", "mam_body_markings" = "Shark", "mam_snouts" = "Round", "taur" = "None", "legs" = "Normal Legs", "deco_wings" = "None")
+	mutant_bodyparts = list("mam_tail", "mam_ears","mam_body_markings", "taur", "mam_snouts", "deco_wings", "legs", "horns")
+	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_tail" = "Shark", "mam_ears" = "None", "mam_body_markings" = "Shark", "mam_snouts" = "Round", "taur" = "None", "legs" = "Normal Legs", "deco_wings" = "None", "horns" = "None")
 	attack_verb = "bite"
 	attack_sound = 'sound/weapons/bite.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -149,8 +149,8 @@
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,FACEHAIR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
-	mutant_bodyparts = list("mam_ears", "mam_body_markings", "mam_tail", "taur", "moth_wings","moth_markings", "mam_snouts", "moth_fluff", "legs")
-	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_tail" = "None", "mam_ears" = "None", "moth_wings" = "Plain","moth_markings" = "None", "mam_snouts" = "Bug", "mam_body_markings" = "Moth", "taur" = "None", "moth_fluff" = "Plain", "legs" = "Normal Legs")
+	mutant_bodyparts = list("mam_ears", "mam_body_markings", "mam_tail", "taur", "moth_wings","moth_markings", "mam_snouts", "moth_fluff", "legs", "horns")
+	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_tail" = "None", "mam_ears" = "None", "moth_wings" = "Plain","moth_markings" = "None", "mam_snouts" = "Bug", "mam_body_markings" = "Moth", "taur" = "None", "moth_fluff" = "Plain", "legs" = "Normal Legs", "horns" = "None")
 	attack_verb = "flutter" //wat?
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -215,8 +215,8 @@
 	icon_limbs = DEFAULT_BODYPART_ICON_CITADEL
 	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,WINGCOLOR)
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID
-	mutant_bodyparts = list("xenotail", "xenohead", "xenodorsal", "mam_body_markings", "taur", "legs", "deco_wings")
-	default_features = list("xenotail"="Xenomorph Tail","xenohead"="Standard","xenodorsal"="Standard", "mam_body_markings" = "Xeno","mcolor" = "0F0","mcolor2" = "0F0","mcolor3" = "0F0","taur" = "None", "legs" = "Digitigrade Legs", "deco_wings" = "None")
+	mutant_bodyparts = list("xenotail", "xenohead", "xenodorsal", "mam_body_markings", "taur", "legs", "deco_wings", "horns")
+	default_features = list("xenotail"="Xenomorph Tail","xenohead"="Standard","xenodorsal"="Standard", "mam_body_markings" = "Xeno","mcolor" = "0F0","mcolor2" = "0F0","mcolor3" = "0F0","taur" = "None", "legs" = "Digitigrade Legs", "deco_wings" = "None", "horns" = "None")
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -252,8 +252,8 @@
 	default_color = "00FF00"
 	species_traits = list(MUTCOLORS,NOTRANSSTING,EYECOLOR,LIPS,HAIR,FACEHAIR)
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
-	mutant_bodyparts = list("ipc_antenna", "mam_tail", "mam_snouts", "legs", "mam_body_markings", "taur")
-	default_features = list("ipc_antenna" = "Synthetic Lizard - Antennae","mam_tail" = "Synthetic Lizard", "mam_snouts" = "Synthetic Lizard - Snout", "legs" = "Digitigrade Legs", "mam_body_markings" = "Synthetic Lizard - Plates", "taur" = "None")
+	mutant_bodyparts = list("ipc_antenna", "mam_tail", "mam_snouts", "legs", "mam_body_markings", "taur", "horns")
+	default_features = list("ipc_antenna" = "Synthetic Lizard - Antennae","mam_tail" = "Synthetic Lizard", "mam_snouts" = "Synthetic Lizard - Snout", "legs" = "Digitigrade Legs", "mam_body_markings" = "Synthetic Lizard - Plates", "taur" = "None", "horns" = "None")
 	meat = /obj/item/reagent_containers/food/snacks/meat/slab/human/mutant/ipc
 	//gib_types = list(/obj/effect/gibspawner/ipc, /obj/effect/gibspawner/ipc/bodypartless)
 	mutanttongue = /obj/item/organ/tongue/robot/ipc

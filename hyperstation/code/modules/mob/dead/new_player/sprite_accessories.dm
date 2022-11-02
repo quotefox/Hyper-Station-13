@@ -222,6 +222,17 @@ WINGS
 	icon_state = "tinyfeather"
 	icon = 'hyperstation/icons/mob/char_wings.dmi'
 
+/datum/sprite_accessory/deco_wings/sylveon // Aphast @ hyperstation, november 2022
+	name = "Sylveon Ribbons"
+	icon_state = "sylveon_bow"
+	icon = 'hyperstation/icons/mob/char_wings.dmi'
+	color_src = MATRIXED
+
+/datum/sprite_accessory/horns/sylveon  // Aphast @ hyperstation, november 2022, best place to put this due to being a pair and no horn slots here
+	name = "Sylveon Bow"
+	icon = 'modular_citadel/icons/mob/mutant_bodyparts.dmi'
+	icon_state = "sylveon_bow"
+	color_src = MATRIXED
 
 /*
 TAILS + ANIMATED TAILS

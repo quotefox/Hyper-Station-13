@@ -4,8 +4,8 @@
 	id = "felinid"
 	limbs_id = "human"
 
-	mutant_bodyparts = list("mam_ears", "mam_tail", "deco_wings")
-	default_features = list("mcolor" = "FFF", "mam_tail" = "Cat", "mam_ears" = "Cat", "wings" = "None", "deco_wings" = "None")
+	mutant_bodyparts = list("mam_ears", "mam_tail", "deco_wings", "horns")
+	default_features = list("mcolor" = "FFF", "mam_tail" = "Cat", "mam_ears" = "Cat", "wings" = "None", "deco_wings" = "None", "horns" = "None")
 
 	mutantears = /obj/item/organ/ears/cat
 	mutanttail = /obj/item/organ/tail/cat
