@@ -7196,6 +7196,21 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/layenia/cave)
+"aRT" = (
+/obj/effect/turf_decal/tile/brown{
+	dir = 6
+	},
+/obj/effect/turf_decal/loading_area{
+	icon_state = "drain";
+	name = "drain"
+	},
+/obj/machinery/firealarm{
+	pixel_y = -28
+	},
+/turf/open/floor/plasteel{
+	icon_state = "floor_plate"
+	},
+/area/hallway/primary/aft/upper)
 "aRV" = (
 /obj/machinery/atmospherics/pipe/simple/general/visible{
 	dir = 5
@@ -33611,6 +33626,18 @@
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore)
+"fne" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	icon_state = "0-8"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "bridge blast";
+	name = "bridge blast door"
+	},
+/turf/open/floor/plating,
+/area/bridge)
 "fnk" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
 	dir = 8;
@@ -48174,6 +48201,10 @@
 	dir = 4;
 	name = "air supply pipe"
 	},
+/obj/machinery/door/poddoor/preopen{
+	id = "ceprivacy";
+	name = "privacy shutter"
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -59185,8 +59216,16 @@
 /area/layenia/cloudlayer)
 "jaB" = (
 /obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/firedoor,
+/obj/structure/cable{
+	icon_state = "0-4"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "bridge blast";
+	name = "bridge blast door"
+	},
 /turf/open/floor/plating,
-/area/medical/medbay/zone2)
+/area/bridge)
 "jaF" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 6;
@@ -74381,7 +74420,6 @@
 /turf/open/floor/plasteel,
 /area/crew_quarters/bar)
 "lpz" = (
-/obj/structure/grille,
 /obj/effect/spawner/structure/window/plasma,
 /turf/open/floor/plating,
 /area/engine/tether)
@@ -83686,6 +83724,9 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable{
 	icon_state = "1-2"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "hos"
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
@@ -94165,6 +94206,10 @@
 	name = "scrubbers pipe"
 	},
 /obj/structure/disposalpipe/segment,
+/obj/machinery/door/poddoor/preopen{
+	id = "bridge blast";
+	name = "bridge blast door"
+	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
 	},
@@ -103349,14 +103394,14 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/structure/disposalpipe/junction/flip{
-	dir = 4
-	},
 /obj/machinery/atmospherics/pipe/manifold/supply/hidden/layer3{
 	name = "air supply pipe"
 	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 8
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore/upper)
@@ -120800,8 +120845,11 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/machinery/firealarm{
-	pixel_y = -28
+/obj/machinery/button/door{
+	desc = "A remote control switch for the medbay foyer.";
+	id = "cargoshut2";
+	name = "Mailroom Shutter Controls";
+	pixel_y = -22
 	},
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
@@ -133746,9 +133794,6 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral,
-/obj/structure/disposalpipe/junction/flip{
-	dir = 2
-	},
 /obj/machinery/atmospherics/pipe/manifold/scrubbers/hidden/layer1{
 	dir = 8;
 	name = "scrubbers pipe"
@@ -133762,6 +133807,9 @@
 	},
 /obj/structure/cable{
 	icon_state = "2-4"
+	},
+/obj/structure/disposalpipe/junction{
+	dir = 1
 	},
 /turf/open/floor/plasteel,
 /area/hallway/primary/fore/upper)
@@ -135992,6 +136040,10 @@
 /obj/machinery/door/airlock/command/glass{
 	name = "Chief Medical Officer";
 	req_access_txt = "40"
+	},
+/obj/machinery/door/poddoor/preopen{
+	id = "medshut2";
+	name = "shutters"
 	},
 /turf/open/floor/plasteel{
 	dir = 8;
@@ -205822,7 +205874,7 @@ uSC
 uSC
 uSC
 bYX
-jaB
+ohl
 voR
 kCS
 kCS
@@ -264394,7 +264446,7 @@ gCx
 xep
 oFj
 jFa
-xzV
+aRT
 gah
 bMI
 loW
@@ -274139,7 +274191,7 @@ sFV
 fjA
 sQm
 kDI
-tIS
+jaB
 cDJ
 pKx
 tIS
@@ -274653,7 +274705,7 @@ kLQ
 awu
 oUV
 kDI
-qWc
+fne
 oDt
 pUH
 qWc
