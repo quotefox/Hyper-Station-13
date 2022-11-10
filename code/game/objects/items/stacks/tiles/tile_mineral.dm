@@ -105,3 +105,57 @@
 	turf_type = /turf/open/floor/mineral/basaltstone_floor
 	mineralType = "sandstone"
 	materials = list(MAT_SANDSTONE=500)
+
+/obj/item/stack/tile/mineral/running_bond_stone
+	name = "running bond stone tile"
+	singular_name = "running bond floor tile"
+	desc = "A tile made out of layenia's local stone."
+	icon_state = "tile_running_bond_stone"
+	turf_type = /turf/open/floor/mineral/running_bond_stone
+	mineralType = "sandstone"
+	materials = list(MAT_SANDSTONE=500)
+
+/obj/item/stack/tile/mineral/herringbone_stone
+	name = "herringbone stone tile"
+	singular_name = "herringbone floor tile"
+	desc = "A tile made out of layenia's local stone."
+	icon_state = "tile_herringbone_stone"
+	turf_type = /turf/open/floor/mineral/herringbone_stone
+	mineralType = "sandstone"
+	materials = list(MAT_SANDSTONE=500)
+
+/obj/item/stack/tile/mineral/large_stone
+	name = "large stone tile"
+	singular_name = "large stone floor tile"
+	desc = "A tile made out of layenia's local stone."
+	icon_state = "tile_large_stone"
+	turf_type = /turf/open/floor/mineral/large_stone
+	mineralType = "sandstone"
+	materials = list(MAT_SANDSTONE=500)
+
+/obj/item/stack/tile/mineral/blueslate
+	name = "blueslate tile"
+	singular_name = "blueslate floor tile"
+	desc = "A tile made out of layenia's local stone."
+	icon_state = "tile_blueslate"
+	turf_type = /turf/open/floor/mineral/blueslate
+	mineralType = "sandstone"
+	materials = list(MAT_SANDSTONE=500)
+
+/obj/item/stack/tile/mineral/sandstone_rough
+	name = "rough sandstone tile"
+	singular_name = "rough sandstone floor tile"
+	desc = "A very rough sandstone tile."
+	icon_state = "tile_sandstone_rough"
+	turf_type = /turf/open/floor/mineral/sandstone_rough
+	mineralType = "sandstone"
+	materials = list(MAT_SANDSTONE=500)
+
+/obj/item/stack/tile/mineral/concrete
+	name = "concrete tile"
+	singular_name = "concrete floor tile"
+	desc = "A fairly smooth concrete surface."
+	icon_state = "tile_concrete"
+	turf_type = /turf/open/floor/mineral/concrete
+	mineralType = "sandstone"
+	materials = list(MAT_SANDSTONE=500)
