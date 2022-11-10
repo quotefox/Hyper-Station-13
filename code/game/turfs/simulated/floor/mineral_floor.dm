@@ -291,3 +291,39 @@
 	icon_state = "basaltstone"
 	floor_tile = /obj/item/stack/tile/mineral/basaltstone
 	icons = list("basaltstone","basaltstone_dam")
+
+/turf/open/floor/mineral/running_bond_stone
+	name = "running bond stone floor"
+	icon_state = "running_bond_stone"
+	floor_tile = /obj/item/stack/tile/mineral/running_bond_stone
+	icons = list("running_bond_stone","running_bond_stone_dam")
+
+/turf/open/floor/mineral/herringbone_stone
+	name = "herringbone stone floor"
+	icon_state = "herringbone_stone"
+	floor_tile = /obj/item/stack/tile/mineral/herringbone_stone
+	icons = list("herringbone_stone","herringbone_stone_dam")
+
+/turf/open/floor/mineral/large_stone
+	name = "large stone floor"
+	icon_state = "large_stone"
+	floor_tile = /obj/item/stack/tile/mineral/large_stone
+	icons = list("large_stone","large_stone_dam")
+
+/turf/open/floor/mineral/blueslate
+	name = "blueslate floor"
+	icon_state = "blueslate"
+	floor_tile = /obj/item/stack/tile/mineral/blueslate
+	icons = list("blueslate","blueslate_dam")
+
+/turf/open/floor/mineral/sandstone_rough
+	name = "rough sandstone floor"
+	icon_state = "sandstone_rough"
+	floor_tile = /obj/item/stack/tile/mineral/sandstone_rough
+	icons = list("sandstone_rough","sandstone_rough_dam")
+
+/turf/open/floor/mineral/concrete
+	name = "concrete floor"
+	icon_state = "concrete"
+	floor_tile = /obj/item/stack/tile/mineral/concrete
+	icons = list("concrete","concrete_dam")
