@@ -58,6 +58,7 @@
 	name = "plastic fork"
 	desc = "Really takes you back to highschool lunch."
 	icon_state = "plastic_fork"
+	flags_1 = null
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 0
@@ -110,6 +111,7 @@
 	icon_state = "plastic_knife"
 	item_state = "knife"
 	desc = "A very safe, barely sharp knife made of plastic. Good for cutting food and not much else."
+	flags_1 = null
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 0
@@ -216,6 +218,7 @@
 	name = "plastic spoon"
 	desc = "Just be careful your food doesn't melt the spoon first."
 	icon_state = "plastic_spoon"
+	flags_1 = null
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 0
