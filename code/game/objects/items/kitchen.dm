@@ -58,9 +58,11 @@
 	name = "plastic fork"
 	desc = "Really takes you back to highschool lunch."
 	icon_state = "plastic_fork"
+	flags_1 = null
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 0
+	materials = list(MAT_PLASTIC=80)
 	grind_results = list(/datum/material/plastic=80)
 	var/break_chance = 25
 
@@ -109,10 +111,12 @@
 	icon_state = "plastic_knife"
 	item_state = "knife"
 	desc = "A very safe, barely sharp knife made of plastic. Good for cutting food and not much else."
+	flags_1 = null
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 0
 	throw_range = 5
+	materials = list(MAT_PLASTIC=100)
 	grind_results = list(/datum/material/plastic = 100)
 	attack_verb = list("prodded", "whiffed","scratched", "poked")
 	sharpness = IS_SHARP
@@ -214,9 +218,11 @@
 	name = "plastic spoon"
 	desc = "Just be careful your food doesn't melt the spoon first."
 	icon_state = "plastic_spoon"
+	flags_1 = null
 	force = 0
 	w_class = WEIGHT_CLASS_TINY
 	throwforce = 0
+	materials = list(MAT_PLASTIC=120)
 	grind_results = list(/datum/material/plastic=120)
 	var/break_chance = 25
 
