@@ -106,9 +106,6 @@ SUBSYSTEM_DEF(timer)
 		clienttime_timers.Cut(1, next_clienttime_timer_index+1)
 		next_clienttime_timer_index = 0
 
-	if (MC_TICK_CHECK)
-		return
-
 	if (practical_offset > BUCKET_LEN)
 		head_offset += TICKS2DS(BUCKET_LEN)
 		practical_offset = 1
