@@ -319,19 +319,21 @@ SUBSYSTEM_DEF(timer)
 	var/wait
 	var/hash
 	var/list/flags
+	var/source
 	var/spent = 0 //time we ran the timer.
 	var/name //for easy debugging.
 	//cicular doublely linked list
 	var/datum/timedevent/next
 	var/datum/timedevent/prev
 
-/datum/timedevent/New(datum/callback/callBack, wait, flags, hash)
+/datum/timedevent/New(datum/callback/callBack, wait, flags, hash, source)
 	var/static/nextid = 1
 	id = TIMER_ID_NULL
 	src.callBack = callBack
 	src.wait = wait
 	src.flags = flags
 	src.hash = hash
+	src.source = source
 
 	if (flags & TIMER_CLIENT_TIME)
 		timeToRun = REALTIMEOFDAY + wait
@@ -456,7 +458,10 @@ SUBSYSTEM_DEF(timer)
 	else
 		. = "[callBack.object.type]"
 
-/proc/addtimer(datum/callback/callback, wait = 0, flags = 0)
+/*
+ * Do not call this directly. Instead, use the addtimer() macro, which includes source information
+ */
+/proc/_addtimer(datum/callback/callback, wait = 0, flags = 0, file, line)
 	if (!callback)
 		CRASH("addtimer called without a callback")
 
@@ -497,7 +502,7 @@ SUBSYSTEM_DEF(timer)
 	else if(flags & TIMER_OVERRIDE)
 		stack_trace("TIMER_OVERRIDE used without TIMER_UNIQUE")
 
-	var/datum/timedevent/timer = new(callback, wait, flags, hash)
+	var/datum/timedevent/timer = new(callback, wait, flags, hash, file && "[file]:[line]")
 	return timer.id
 
 /proc/deltimer(id)

@@ -155,3 +155,11 @@
 		}\
 		A.flags_1 &= ~OVERLAY_QUEUED_1;\
 	}
+
+/* Creates a new timer and adds it to the queue.
+ * Arguments:
+ * * callback the callback to call on timer finish
+ * * wait deciseconds to run the timer for
+ * * flags flags for the timer, see: code\__DEFINES\subsystems.dm
+ */
+#define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)
