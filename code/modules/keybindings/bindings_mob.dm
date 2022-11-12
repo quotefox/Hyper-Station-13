@@ -84,10 +84,11 @@
 
 /// Mostly used for pixel shift right now
 /mob/keyLoop(client/user)
-	var/direction = NONE
-	for(var/_key in user.keys_held)
-		direction = direction | SSinput.movement_keys[_key]
+	..()	//Oops! You need this to move, don't you?
 	if(user.keys_held["Ctrl"] && user.keys_held["Shift"])
+		var/direction = NONE
+		for(var/_key in user.keys_held)
+			direction = direction | SSinput.movement_keys[_key]
 		switch(direction)
 			if(NORTH)
 				northshift()
