@@ -70,6 +70,7 @@ other types of metals and chemistry for reagents).
 	name = "Component Design Disk"
 	desc = "A disk for storing device design data for construction in lathes."
 	icon_state = "datadisk1"
+	obj_flags = UNIQUE_RENAME
 	materials = list(MAT_METAL=300, MAT_GLASS=100)
 	var/list/blueprints = list()
 	var/max_blueprints = 1

@@ -3,6 +3,7 @@
 	name = "technology disk"
 	desc = "A disk for storing technology data for further research."
 	icon_state = "datadisk0"
+	obj_flags = UNIQUE_RENAME
 	materials = list(MAT_METAL=300, MAT_GLASS=100)
 	var/datum/techweb/stored_research
 
