@@ -1,5 +1,5 @@
 GLOBAL_LIST_INIT(roleplay_positions, list(
-	"Central Command Inspector",
+	//"Central Command Inspector", // CC Inspector Disabled
 	"Prisoner"))
 
 /datum/job/roleplay/
@@ -8,6 +8,15 @@ GLOBAL_LIST_INIT(roleplay_positions, list(
 	var/failure_info = "To suck."
 	department_flag = ROLEPLAY
 	loadout = FALSE
+/*
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Central Command Inspector Disabled
+removed spawn locations used by this datum object - /obj/effect/landmark/start/rpcentral
+_Maps\map_files\generic\CentCom.dmm - Coordinate 135,88,1
+_Maps\map_files\generic\CentCom.dmm - Coordinate 136,87,1
+_Maps\map_files\generic\CentCom.dmm - Coordinate 137,88,1
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
 //Central Command Inspector
 ////////////////////////////////////////////
@@ -43,6 +52,7 @@ GLOBAL_LIST_EMPTY(rpcentralspawn) //required for late game spawning
 	..()
 	GLOB.rpcentralspawn += loc
 	return INITIALIZE_HINT_QDEL
+*/ // CC Inspector Disabled
 
 //Prisoner
 ////////////////////////////////////////////
@@ -73,7 +83,7 @@ GLOBAL_LIST_EMPTY(prisionspawn)
 	H.forceMove(pick(GLOB.prisionspawn))
 
 /obj/effect/landmark/start/prisoner
-	name = "Central Command Inspector"
+	name = "Prisoner"
 	icon = 'icons/effects/landmarks_static.dmi'
 	icon_state = "snukeop_leader_spawn"
 
