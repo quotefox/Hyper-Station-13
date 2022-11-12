@@ -20,4 +20,4 @@
 /obj/item/projectile/crystal_slash/Initialize()
 	. = ..()
 	hitsound = "hyperstation/sound/weapons/rapier[pick(1,2)].ogg"
-	animate(src, alpha = 255, time = 3)
+	animate(src, alpha = 255, time = 5)
