@@ -73,12 +73,10 @@ SUBSYSTEM_DEF(timer)
 		for(var/I in second_queue)
 			log_world(get_timer_debug_string(I))
 
-	var/static/next_clienttime_timer_index = 0
-	if (next_clienttime_timer_index)
-		clienttime_timers.Cut(1, next_clienttime_timer_index+1)
-		next_clienttime_timer_index = 0
+	var/next_clienttime_timer_index = 0
+	var/len = length(clienttime_timers)
 
-	for (next_clienttime_timer_index in 1 to length(clienttime_timers))
+	for (next_clienttime_timer_index in 1 to len)
 		if (MC_TICK_CHECK)
 			next_clienttime_timer_index--
 			break
@@ -89,6 +87,7 @@ SUBSYSTEM_DEF(timer)
 
 		var/datum/callback/callBack = ctime_timer.callBack
 		if (!callBack)
+			clienttime_timers.Cut(next_clienttime_timer_index,next_clienttime_timer_index+1)
 			CRASH("Invalid timer: [get_timer_debug_string(ctime_timer)] world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset], REALTIMEOFDAY: [REALTIMEOFDAY]")
 
 		ctime_timer.spent = REALTIMEOFDAY
@@ -104,7 +103,6 @@ SUBSYSTEM_DEF(timer)
 
 	if (next_clienttime_timer_index)
 		clienttime_timers.Cut(1, next_clienttime_timer_index+1)
-		next_clienttime_timer_index = 0
 
 	if (MC_TICK_CHECK)
 		return
