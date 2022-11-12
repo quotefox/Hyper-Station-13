@@ -1,8 +1,11 @@
 ###Files and folders specified here will never be tracked.
 
-#Ignore everything in datafolder and subdirectories
+#Ignore everything in data folder and subdirectories
 /data/**/*
 /tmp/**/*
+
+#Ignore the messages generated at the end of the round
+/Hyperbot/**/*
 
 #Ignore byond config folder.
 /cfg/**/*
