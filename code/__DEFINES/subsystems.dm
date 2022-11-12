@@ -121,6 +121,7 @@
 #define FIRE_PRIORITY_CHAT			400
 #define FIRE_PRIORITY_RUNECHAT		410
 #define FIRE_PRIORITY_OVERLAYS		500
+#define FIRE_PRIORITY_TIMER			900
 #define FIRE_PRIORITY_INPUT			1000 // This must always always be the max highest priority. Player input must never be lost.
 
 // SS runlevels
@@ -154,3 +155,12 @@
 		}\
 		A.flags_1 &= ~OVERLAY_QUEUED_1;\
 	}
+
+/*
+ * Creates a new timer and adds it to the queue.
+ * Arguments:
+ * * callback The callback to call once the timer finishes.
+ * * wait Deciseconds to run the timer for, or the delay before the callback gets invoked.
+ * * flags Flags for the timer, see code\__DEFINES\subsystems.dm
+ */
+#define addtimer(args...) _addtimer(args, file = __FILE__, line = __LINE__)
