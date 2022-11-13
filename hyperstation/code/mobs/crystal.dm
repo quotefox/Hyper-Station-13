@@ -8,6 +8,7 @@
 	icon_state = "crystal"
 	icon_living = "crystal"
 	icon_dead = "crystal"
+	mob_size = 4
 	gender = NEUTER
 	mob_biotypes = MOB_INORGANIC
 	speak_chance = 0
