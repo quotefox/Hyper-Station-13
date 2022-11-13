@@ -223,6 +223,9 @@
 	var/bulb_emergency_pow_mul = 0.75	// the multiplier for determining the light's power in emergency mode
 	var/bulb_emergency_pow_min = 0.5	// the minimum value for the light's power in emergency mode
 
+	var/glow_layer = ABOVE_LIGHTING_LAYER	//The layer the glow effect is on
+	var/glow_plane = ABOVE_LIGHTING_PLANE	//The plane for the glow effect
+
 	var/obj/effect/light/lighteffect //light effect
 
 
@@ -314,7 +317,7 @@
 				if(on)
 					lighteffect.alpha = CLAMP(light_power*35, 5, 100)
 					lighteffect.color = light_color
-					var/mutable_appearance/glowybit = mutable_appearance(overlayicon, base_state, ABOVE_LIGHTING_LAYER, ABOVE_LIGHTING_PLANE)
+					var/mutable_appearance/glowybit = mutable_appearance(overlayicon, base_state, glow_layer, glow_plane)
 					glowybit.alpha = CLAMP(light_power*250, 30, 200)
 					add_overlay(glowybit)
 		if(LIGHT_EMPTY)
@@ -837,9 +840,11 @@
 /obj/machinery/light/floor
 	name = "floor light"
 	icon = 'icons/obj/lighting.dmi'
-	base_state = "floor"		// base description and icon_state
+	base_state = "floor"
 	icon_state = "floor"
 	brightness = 4
-	layer = 2.5
+	layer = LOW_OBJ_LAYER
+	glow_layer = LOW_SIGIL_LAYER
+	glow_plane = GAME_PLANE
 	light_type = /obj/item/light/bulb
 	fitting = "bulb"
