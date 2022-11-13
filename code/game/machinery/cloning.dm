@@ -75,10 +75,10 @@
 	heal_level = CLAMP((efficiency * 10) + 10, MINIMUM_HEAL_LEVEL, 100)
 
 //The return of data disks?? Just for transferring between genetics machine/cloning machine.
-//TO-DO: Make the genetics machine accept them.
 /obj/item/disk/data
 	name = "cloning data disk"
 	icon_state = "datadisk0" //Gosh I hope syndies don't mistake them for the nuke disk.
+	obj_flags = UNIQUE_RENAME
 	var/list/fields = list()
 	var/list/mutations = list()
 	var/max_mutations = 6
