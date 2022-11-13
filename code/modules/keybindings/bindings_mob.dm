@@ -58,31 +58,20 @@
 			user.body_l_leg()
 			return
 
-	if(client.keys_held["Ctrl"])
+	//!shift for pixel shifting
+	if(client.keys_held["Ctrl"] && !client.keys_held["Shift"])
 		switch(SSinput.movement_keys[_key])
 			if(NORTH)
-				if(client.keys_held["Shift"])
-					northshift()
-				else
-					northface()
+				northface()
 				return
 			if(SOUTH)
-				if(client.keys_held["Shift"])
-					southshift()
-				else
-					southface()
+				southface()
 				return
 			if(WEST)
-				if(client.keys_held["Shift"])
-					westshift()
-				else
-					westface()
+				westface()
 				return
 			if(EAST)
-				if(client.keys_held["Shift"])
-					eastshift()
-				else
-					eastface()
+				eastface()
 				return
 	return ..()
 
@@ -92,3 +81,20 @@
 			toggle_move_intent()
 			return
 	return ..()
+
+/// Mostly used for pixel shift right now
+/mob/keyLoop(client/user)
+	..()	//Oops! You need this to move, don't you?
+	if(user.keys_held["Ctrl"] && user.keys_held["Shift"])
+		var/direction = NONE
+		for(var/_key in user.keys_held)
+			direction = direction | SSinput.movement_keys[_key]
+		switch(direction)
+			if(NORTH)
+				northshift()
+			if(SOUTH)
+				southshift()
+			if(WEST)
+				westshift()
+			if(EAST)
+				eastshift()
