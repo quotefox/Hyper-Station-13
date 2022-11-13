@@ -28,6 +28,7 @@ SUBSYSTEM_DEF(timer)
 	var/last_invoke_tick = 0
 	var/static/last_invoke_warning = 0
 	var/static/bucket_auto_reset = TRUE
+	var/bucket_total_resets = 0
 
 /datum/controller/subsystem/timer/PreInit()
 	bucket_list.len = BUCKET_LEN
@@ -73,12 +74,10 @@ SUBSYSTEM_DEF(timer)
 		for(var/I in second_queue)
 			log_world(get_timer_debug_string(I))
 
-	var/static/next_clienttime_timer_index = 0
-	if (next_clienttime_timer_index)
-		clienttime_timers.Cut(1, next_clienttime_timer_index+1)
-		next_clienttime_timer_index = 0
+	var/next_clienttime_timer_index = 0
+	var/len = length(clienttime_timers)
 
-	for (next_clienttime_timer_index in 1 to length(clienttime_timers))
+	for (next_clienttime_timer_index in 1 to len)
 		if (MC_TICK_CHECK)
 			next_clienttime_timer_index--
 			break
@@ -89,6 +88,7 @@ SUBSYSTEM_DEF(timer)
 
 		var/datum/callback/callBack = ctime_timer.callBack
 		if (!callBack)
+			clienttime_timers.Cut(next_clienttime_timer_index,next_clienttime_timer_index+1)
 			CRASH("Invalid timer: [get_timer_debug_string(ctime_timer)] world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset], REALTIMEOFDAY: [REALTIMEOFDAY]")
 
 		ctime_timer.spent = REALTIMEOFDAY
@@ -104,8 +104,12 @@ SUBSYSTEM_DEF(timer)
 
 	if (next_clienttime_timer_index)
 		clienttime_timers.Cut(1, next_clienttime_timer_index+1)
-		next_clienttime_timer_index = 0
 
+	if (MC_TICK_CHECK)
+		return
+
+	var/static/list/spent = list()
+	var/static/datum/timedevent/timer
 	if (practical_offset > BUCKET_LEN)
 		head_offset += TICKS2DS(BUCKET_LEN)
 		practical_offset = 1
@@ -116,59 +120,110 @@ SUBSYSTEM_DEF(timer)
 		bucket_list = src.bucket_list
 		resumed = FALSE
 
+
+	if (!resumed)
+		timer = null
+
 	while (practical_offset <= BUCKET_LEN && head_offset + (practical_offset*world.tick_lag) <= world.time)
-		var/datum/timedevent/timer
-		while ((timer = bucket_list[practical_offset]))
+		var/datum/timedevent/head = bucket_list[practical_offset]
+		if (!timer || !head || timer == head)
+			head = bucket_list[practical_offset]
+			timer = head
+		while (timer)
 			var/datum/callback/callBack = timer.callBack
 			if (!callBack)
 				bucket_resolution = null //force bucket recreation
 				CRASH("Invalid timer: [get_timer_debug_string(timer)] world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset]")
 
-			timer.bucketEject()	//pop the stack
-
 			if (!timer.spent)
+				spent += timer
 				timer.spent = world.time
 				callBack.InvokeAsync()
 				last_invoke_tick = world.time
 
-			if (timer.flags & TIMER_LOOP)
-				timer.spent = 0
-				timer.timeToRun = world.time + timer.wait
-				timer.bucketJoin() //push the stack
-
 			if (MC_TICK_CHECK)
+				return
+
+			timer = timer.next
+			if (timer == head)
 				break
 
-		//Empty the bucket, check if anything in the secondary queue should be shifted to this bucket
-		if (!bucket_list[practical_offset])
-			bucket_list[practical_offset++] = null
-			var/i = 0
-			for(i in 1 to length(second_queue))
-				timer = second_queue[i]
-				if(timer.timeToRun >= TIMER_MAX)	//Invalid timer
-					i--
-					break
 
-				//Check for timers that were scheduled to run in the past
-				if (timer.timeToRun < head_offset)
-					bucket_resolution = null //force bucket recreation
-					stack_trace("[i] Invalid timer state: Timer in long run queue with a time to run less then head_offset. \
-						[get_timer_debug_string(timer)] world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset]")
-					break
+		bucket_list[practical_offset++] = null
 
-				//Check for timers that are not capable of being scheduled to run without rebuilding buckets
-				if (timer.timeToRun < head_offset + TICKS2DS(practical_offset - 1))
-					bucket_resolution = null // force bucket recreation
-					stack_trace("[i] Invalid timer state: Timer in long run queue that would require a backtrack to transfer to short run queue. \
-						[get_timer_debug_string(timer)] world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset]")
-					break
+		//we freed up a bucket, lets see if anything in second_queue needs to be shifted to that bucket.
+		var/i = 0
+		var/L = length(second_queue)
+		for (i in 1 to L)
+			timer = second_queue[i]
+			if (timer.timeToRun >= TIMER_MAX)
+				i--
+				break
 
-					timer.bucketJoin()
-				if (i)
-					second_queue.Cut(1, i+1)
+			if (timer.timeToRun < head_offset)
+				bucket_resolution = null //force bucket recreation
+				CRASH("[i] Invalid timer state: Timer in long run queue with a time to run less then head_offset. [get_timer_debug_string(timer)] world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset]")
 
-		if (MC_TICK_CHECK)
-			break
+				if (timer.callBack && !timer.spent)
+					timer.callBack.InvokeAsync()
+					spent += timer
+					bucket_count++
+				else if(!QDELETED(timer))
+					qdel(timer)
+				continue
+
+			if (timer.timeToRun < head_offset + TICKS2DS(practical_offset))
+				bucket_resolution = null //force bucket recreation
+				CRASH("[i] Invalid timer state: Timer in long run queue that would require a backtrack to transfer to short run queue. [get_timer_debug_string(timer)] world.time: [world.time], head_offset: [head_offset], practical_offset: [practical_offset]")
+				if (timer.callBack && !timer.spent)
+					timer.callBack.InvokeAsync()
+					spent += timer
+					bucket_count++
+				else if(!QDELETED(timer))
+					qdel(timer)
+				continue
+
+			bucket_count++
+			var/bucket_pos = max(1, BUCKET_POS(timer))
+
+			var/datum/timedevent/bucket_head = bucket_list[bucket_pos]
+			if (!bucket_head)
+				bucket_list[bucket_pos] = timer
+				timer.next = null
+				timer.prev = null
+				continue
+
+			if (!bucket_head.prev)
+				bucket_head.prev = bucket_head
+			timer.next = bucket_head
+			timer.prev = bucket_head.prev
+			timer.next.prev = timer
+			timer.prev.next = timer
+		if (i)
+			second_queue.Cut(1, i+1)
+
+		timer = null
+
+	bucket_count -= length(spent)
+
+	for (var/i in spent)
+		var/datum/timedevent/qtimer = i
+		if(QDELETED(qtimer))
+			bucket_count++
+			continue
+		if(!(qtimer.flags & TIMER_LOOP))
+			qdel(qtimer)
+		else
+			bucket_count++
+			qtimer.spent = 0
+			qtimer.bucketEject()
+			if(qtimer.flags & TIMER_CLIENT_TIME)
+				qtimer.timeToRun = REALTIMEOFDAY + qtimer.wait
+			else
+				qtimer.timeToRun = world.time + qtimer.wait
+			qtimer.bucketJoin()
+
+	spent.len = 0
 
 //formated this way to be runtime resistant
 /datum/controller/subsystem/timer/proc/get_timer_debug_string(datum/timedevent/TE)
@@ -182,6 +237,7 @@ SUBSYSTEM_DEF(timer)
 		. += ", NO CALLBACK"
 
 /datum/controller/subsystem/timer/proc/reset_buckets()
+	bucket_total_resets++
 	var/list/bucket_list = src.bucket_list
 	var/list/alltimers = list()
 	//collect the timers currently in the bucket
@@ -264,8 +320,8 @@ SUBSYSTEM_DEF(timer)
 	var/timeToRun
 	var/wait
 	var/hash
-	var/list/flags
 	var/source
+	var/list/flags
 	var/spent = 0 //time we ran the timer.
 	var/name //for easy debugging.
 	//cicular doublely linked list
@@ -404,9 +460,7 @@ SUBSYSTEM_DEF(timer)
 	else
 		. = "[callBack.object.type]"
 
-/*
- * Do not call this directly. Instead, use the addtimer() macro, which includes source information
- */
+/// Do not call this directly. Instead, use addtimer(callback, wait, flags), which includes source information
 /proc/_addtimer(datum/callback/callback, wait = 0, flags = 0, file, line)
 	if (!callback)
 		CRASH("addtimer called without a callback")

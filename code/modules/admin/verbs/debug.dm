@@ -835,14 +835,17 @@
 	var/second_queue = generate_timer_source_output(SStimer.second_queue)
 
 	usr << browse({"
-		<h3>bucket_list</h3>
+		<b>Bucket: [SStimer.bucket_count]</b> | <b>Secondary: [length(SStimer.second_queue)]</b> | <b>Resets: [SStimer.bucket_total_resets]</b>
+		<br>
+		<h3>Bucket List</h3>
 		[bucket_list_output]
-		<h3>second_queue</h3>
+		<h3>Second Queue</h3>
 		[second_queue]
 	"}, "window=check_timer_sources;size=700x700")
 
 /proc/generate_timer_source_output(list/datum/timedevent/events)
 	var/list/per_source = list()
+	var/list/per_source_min_time = list()
 
 	// Collate all events and figure out what sources are creating the most
 	for (var/_event in events)
@@ -851,27 +854,44 @@
 		var/datum/timedevent/event = _event
 
 		do
+			var/source = "NO SOURCE"
 			if (event.source)
-				if (per_source[event.source] == null)
-					per_source[event.source] = 1
-				else
-					per_source[event.source] += 1
+				source = event.source
+
+			if (per_source[source] == null)
+				per_source[source] = 1
+			else
+				per_source[source]++
+
+			if(per_source_min_time[source] == null)
+				per_source_min_time[source] = event.timeToRun + event.wait - world.time
+			else
+				per_source_min_time[source] = min(per_source_min_time[source], event.timeToRun + event.wait - world.time)
+
 			event = event.next
 		while (event && event != _event)
 
 	// Now, sort them in order
 	var/list/sorted = list()
 	for (var/source in per_source)
-		sorted += list(list("source" = source, "count" = per_source[source]))
+		sorted += list(list("source" = source, "count" = per_source[source], "time" = per_source_min_time[source]))
 	sorted = sortTim(sorted, .proc/cmp_timer_data)
 
 	// Now that everything is sorted, compile them into an HTML output
-	var/output = "<table border='1'>"
+	var/output = {"
+		<table border='1'>
+		<tr width='100%'>
+			<td width='80%'><b>File Source && Line</b></td>
+			<td width='20%'>Min TimeToFire</td>
+			<td>C</td>
+		</tr>
+	"}
 
 	for (var/_timer_data in sorted)
 		var/list/timer_data = _timer_data
 		output += {"<tr>
 			<td><b>[timer_data["source"]]</b></td>
+			<td>[timer_data["time"]]</td>
 			<td>[timer_data["count"]]</td>
 		</tr>"}
 
