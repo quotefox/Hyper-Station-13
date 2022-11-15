@@ -736,6 +736,7 @@
 	name = "Filler"
 	typepath = /datum/round_event/filler
 	chaos_max = 3
+	requirements = list(101,101,0,0,0,0,0,0,0,0)
 	cost = 1
 	weight = 200
 	repeatable_weight_decrease = 0
