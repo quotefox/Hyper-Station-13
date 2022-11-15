@@ -206,9 +206,9 @@
 	if(attack_type == UNARMED_ATTACK)
 		final_block_chance = 100 //How easy is it to block a hand?
 	if(attack_type == PROJECTILE_ATTACK)
-		final_block_chance = 80 //With the suit it helps against bullets
+		final_block_chance = 95 //With the suit it helps against bullets
 	if(attack_type == THROWN_PROJECTILE_ATTACK)
-		final_block_chance = 50 //Sometimes you may be off guard
+		final_block_chance = 100 //Sometimes you may be off guard
 	if(attack_type == LEAP_ATTACK)
 		final_block_chance = 100 //BRACE
 	return ..()
