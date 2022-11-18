@@ -697,7 +697,8 @@ SUBSYSTEM_DEF(ticker)
 		'hyperstation/sound/roundend/starbucks.ogg',
 		'hyperstation/sound/roundend/tired.ogg',
 		'hyperstation/sound/roundend/toys.ogg',
-		'hyperstation/sound/roundend/water.ogg'\
+		'hyperstation/sound/roundend/water.ogg',
+		'hyperstation/sound/roundend/whatiswrong.ogg'\
 		)
 
 	SEND_SOUND(world, sound(round_end_sound))
