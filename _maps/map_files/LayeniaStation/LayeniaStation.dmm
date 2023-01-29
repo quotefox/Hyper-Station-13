@@ -18246,7 +18246,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/poddoor/shutters{
-	id = "cargoshut2";
+	id = "cargoshut3";
 	name = "mailroom shutters"
 	},
 /turf/open/floor/plasteel/dark{
@@ -101221,7 +101221,7 @@
 /obj/machinery/door/firedoor,
 /obj/effect/spawner/structure/window,
 /obj/machinery/door/poddoor/shutters{
-	id = "cargoshut2";
+	id = "cargoshut3";
 	name = "mailroom shutters"
 	},
 /turf/open/floor/plating,
@@ -120855,7 +120855,7 @@
 	},
 /obj/machinery/button/door{
 	desc = "A remote control switch for the medbay foyer.";
-	id = "cargoshut2";
+	id = "cargoshut3";
 	name = "Mailroom Shutter Controls";
 	pixel_y = -22
 	},
@@ -158873,7 +158873,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/button/door{
 	desc = "A remote control switch for the medbay foyer.";
-	id = "cargoshut2";
+	id = "cargoshut3";
 	name = "Mailroom Shutter Controls";
 	pixel_y = 26
 	},
