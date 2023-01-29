@@ -3,7 +3,10 @@
 	name = "Podperson"
 	id = "pod"
 	default_color = "59CE00"
-	species_traits = list(MUTCOLORS,EYECOLOR)
+	species_traits = list(MUTCOLORS,EYECOLOR,LIPS,HAIR,FACEHAIR,WINGCOLOR)
+	inherent_biotypes = list(MOB_ORGANIC, MOB_HUMANOID)
+	mutant_bodyparts = list("mam_tail", "mam_ears", "mam_body_markings", "mam_snouts", "legs", "deco_wings")
+	default_features = list("mcolor" = "FFF","mcolor2" = "FFF","mcolor3" = "FFF", "mam_snouts" = "None", "mam_tail" = "None", "mam_ears" = "None", "mam_body_markings" = "None", "legs" = "Normal Legs" , "deco_wings" = "None" )
 	attack_verb = "slash"
 	attack_sound = 'sound/weapons/slice.ogg'
 	miss_sound = 'sound/weapons/slashmiss.ogg'
@@ -67,6 +70,37 @@
 				H.show_message("<span class='userdanger'>The radiation beam singes you!</span>")
 		if(/obj/item/projectile/energy/florayield)
 			H.nutrition = min(H.nutrition+30, NUTRITION_LEVEL_FULL)
+
+/datum/species/pod/spec_death(gibbed, mob/living/carbon/human/H)
+	if(H)
+		stop_wagging_tail(H)
+
+/datum/species/pod/spec_stun(mob/living/carbon/human/H,amount)
+	if(H)
+		stop_wagging_tail(H)
+	. = ..()
+
+/datum/species/pod/can_wag_tail(mob/living/carbon/human/H)
+	return ("mam_tail" in mutant_bodyparts) || ("mam_waggingtail" in mutant_bodyparts)
+
+/datum/species/pod/is_wagging_tail(mob/living/carbon/human/H)
+	return ("mam_waggingtail" in mutant_bodyparts)
+
+/datum/species/pod/start_wagging_tail(mob/living/carbon/human/H)
+	if("mam_tail" in mutant_bodyparts)
+		mutant_bodyparts -= "mam_tail"
+		mutant_bodyparts |= "mam_waggingtail"
+	H.update_body()
+
+/datum/species/pod/stop_wagging_tail(mob/living/carbon/human/H)
+	if("mam_waggingtail" in mutant_bodyparts)
+		mutant_bodyparts -= "mam_waggingtail"
+		mutant_bodyparts |= "mam_tail"
+	H.update_body()
+
+
+/datum/species/pod/qualifies_for_rank(rank, list/features)
+	return TRUE
 
 /datum/species/pod/pseudo_weak
 	id = "podweak"
