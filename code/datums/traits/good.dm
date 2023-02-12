@@ -279,11 +279,27 @@
 	lose_text = "<span class='notice'>You feel like the air is not as plentiful.</span>"
 	medical_record_text = "During physical examination, patient was found to have lungs adapted to low pressure environments."
 
+/datum/quirk/low_pressure_lungs/add() //*Edits your lungs*
+	var/obj/item/organ/lungs/lungs = quirk_holder.getorgan(/obj/item/organ/lungs)
+	
+	lungs.safe_oxygen_min = 3
+	lungs.safe_oxygen_max = 18
+
+
+	lungs.cold_level_1_threshold = 280
+	lungs.cold_level_2_threshold = 240
+	lungs.cold_level_3_threshold = 200
+
+	lungs.heat_level_1_threshold = 400
+	lungs.heat_level_2_threshold = 600
+	
 /datum/quirk/low_puressure_lungs/post_add()
 	to_chat(quirk_holder, "<span class='boldannounce'>Your [slot_string] feel the heavy pressure of the air.</span>")
 
 /datum/quirk/low_puressure_lungs/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
+	
+	//Adding Breath Mask and Emergency Tank
 	var/obj/item/clothing/mask/breath/breath = new(get_turf(H))
 	var/list/breth = list ( //shu-ut up, Brethyyyy.
 		"face" = SLOT_WEAR_MASK
