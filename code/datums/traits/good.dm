@@ -267,6 +267,41 @@
 	if(quirk_holder)
 		quirk_holder.blood_ratio = 1
 
+/datum/quirk/lavalandian_lungs
+	name = "Lavalandian"
+	desc = "You're not quite used to the high air pressure!"
+	value = -1
+	category = CATEGORY_BODY
+	mob_trait = TRAIT_LAVALAND_LUNGS
+	var/slot_string = "lungs"
+	var/specific = null
+	gain_text = "<span class='notice'>You feel your lungs taking in more air.</span>"
+	lose_text = "<span class='notice'>You feel like the air is not as plentiful.</span>"
+	medical_record_text = "During physical examination, patient was found to have lungs adapted to lavaland."
+
+/datum/quirk/lavalandian_lungs/post_add()
+	to_chat(quirk_holder, "<span class='boldannounce'>Your [slot_string] feel the heavy pressure of the air.</span>")
+
+/datum/quirk/lavalandian_lungs/on_spawn()
+	var/mob/living/carbon/human/H = quirk_holder
+	var/obj/item/clothing/mask/breath/breath = new(get_turf(H))
+	var/list/breth = list ( //shu-ut up, Brethyyyy.
+		"face" = SLOT_WEAR_MASK
+	)
+	H.equip_in_one_of_slots(breath, breth, qdel_on_fail = FALSE)
+	
+	var/obj/item/tank/internals/emergency_oxygen/emergency_oxygen = new(get_turf(H))
+	var/list/oxy_tank = list (
+		"left pocket" = SLOT_L_STORE,
+		"right pocket" = SLOT_R_STORE,
+		"hands" = SLOT_HANDS
+	)
+	emergency_oxygen.air_contents.gases[/datum/gas/oxygen] = (6*ONE_ATMOSPHERE)*6/(R_IDEAL_GAS_EQUATION*T20C)
+	H.equip_in_one_of_slots(emergency_oxygen, oxy_tank, qdel_on_fail = FALSE)
+	H.internal = H.get_item_for_held_index(2)
+	H.update_internals_hud_icon(1)
+	H.regenerate_icons()
+
 /datum/quirk/tough
 	name = "Tough"
 	desc = "Your body is abnormally enduring and can take 10% more damage."
