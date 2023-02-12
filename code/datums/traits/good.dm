@@ -305,7 +305,7 @@
 		"face" = SLOT_WEAR_MASK
 	)
 	H.equip_in_one_of_slots(breath, breth, qdel_on_fail = FALSE)
-	
+
 	var/obj/item/tank/internals/emergency_oxygen/emergency_oxygen = new(get_turf(H))
 	var/list/oxy_tank = list (
 		"left pocket" = SLOT_L_STORE,
@@ -314,7 +314,7 @@
 	)
 	emergency_oxygen.air_contents.gases[/datum/gas/oxygen] = (6*ONE_ATMOSPHERE)*6/(R_IDEAL_GAS_EQUATION*T20C)
 	H.equip_in_one_of_slots(emergency_oxygen, oxy_tank, qdel_on_fail = FALSE)
-	H.internal = H.get_item_for_held_index(2)
+	H.internal = emergency_oxygen
 	H.update_internals_hud_icon(1)
 	H.regenerate_icons()
 
