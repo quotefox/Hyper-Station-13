@@ -107,6 +107,17 @@
 		return
 	if(HAS_TRAIT(H, TRAIT_NOBREATH))
 		return
+	if(HAS_TRAIT(H, TRAIT_LAVALAND_LUNGS)) //Simple addon to test for the Lavalandian trait. Probably doesn't need to be done every check, but oh well.
+		src.safe_oxygen_min = 3
+		src.safe_oxygen_max = 18
+
+
+		src.cold_level_1_threshold = 280
+		src.cold_level_2_threshold = 240
+		src.cold_level_3_threshold = 200
+
+		src.heat_level_1_threshold = 400
+		src.heat_level_2_threshold = 600
 
 	if(!breath || (breath.total_moles() == 0))
 		if(H.reagents.has_reagent(crit_stabilizing_reagent))
