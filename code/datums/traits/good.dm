@@ -267,22 +267,22 @@
 	if(quirk_holder)
 		quirk_holder.blood_ratio = 1
 
-/datum/quirk/lavalandian_lungs
-	name = "Lavalandian"
-	desc = "You're not quite used to the high air pressure!"
+/datum/quirk/low_puressure_lungs
+	name = "Low Pressure Lungs"
+	desc = "You're not quite used to the high air pressure! Perfect for characters who are used to the atmosphere of Lavaland or Asteroids!"
 	value = -1
 	category = CATEGORY_BODY
-	mob_trait = TRAIT_LAVALAND_LUNGS
+	mob_trait = TRAIT_LOW_PRESSURE_LUNGS
 	var/slot_string = "lungs"
 	var/specific = null
 	gain_text = "<span class='notice'>You feel your lungs taking in more air.</span>"
 	lose_text = "<span class='notice'>You feel like the air is not as plentiful.</span>"
-	medical_record_text = "During physical examination, patient was found to have lungs adapted to lavaland."
+	medical_record_text = "During physical examination, patient was found to have lungs adapted to low pressure environments."
 
-/datum/quirk/lavalandian_lungs/post_add()
+/datum/quirk/low_puressure_lungs/post_add()
 	to_chat(quirk_holder, "<span class='boldannounce'>Your [slot_string] feel the heavy pressure of the air.</span>")
 
-/datum/quirk/lavalandian_lungs/on_spawn()
+/datum/quirk/low_puressure_lungs/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	var/obj/item/clothing/mask/breath/breath = new(get_turf(H))
 	var/list/breth = list ( //shu-ut up, Brethyyyy.
