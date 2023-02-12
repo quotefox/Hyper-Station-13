@@ -107,7 +107,7 @@
 		return
 	if(HAS_TRAIT(H, TRAIT_NOBREATH))
 		return
-	if(HAS_TRAIT(H, TRAIT_LAVALAND_LUNGS)) //Simple addon to test for the Lavalandian trait. Probably doesn't need to be done every check, but oh well.
+	if(HAS_TRAIT(H, TRAIT_LOW_PRESSURE_LUNGS)) //Simple addon to test for the Lavalandian trait. Probably doesn't need to be done every check, but oh well.
 		src.safe_oxygen_min = 3
 		src.safe_oxygen_max = 18
 
