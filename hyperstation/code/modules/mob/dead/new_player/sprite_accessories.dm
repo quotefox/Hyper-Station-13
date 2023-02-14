@@ -102,6 +102,16 @@ SNOUTS
 	icon_state = "chemlight"
 	icon = 'hyperstation/icons/mob/char_snouts.dmi'
 
+/datum/sprite_accessory/mam_snouts/pinata
+	name = "pinata (Hyper)"
+	icon_state = "pinata"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
+/datum/sprite_accessory/mam_snouts/pinatasmile
+	name = "pinata Smile (Hyper)"
+	icon_state = "pinatasmile"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
 /*
 EARS
 ==========================================================
@@ -453,6 +463,11 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 /datum/sprite_accessory/mam_body_markings/raccalt
 	name = "RaccAlt (Hyper)"
 	icon_state = "raccalt"
+	icon = 'hyperstation/icons/mob/char_markings.dmi'
+
+/datum/sprite_accessory/mam_body_markings/pinata
+	name = "pinata (Hyper)"
+	icon_state = "pinata"
 	icon = 'hyperstation/icons/mob/char_markings.dmi'
 
 /*
