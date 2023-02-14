@@ -298,3 +298,49 @@
 	if(istype(I, /obj/item/grenade))
 		var/obj/item/grenade/G = I
 		G.preprime(null, gtimer)
+
+/obj/item/pneumatic_cannon/winfricator
+	name = "winfricator"
+	desc = "A specialized Centcom designated device to apply rapid justic."
+	w_class = WEIGHT_CLASS_BULKY
+	force = 8
+	attack_verb = list("bludgeoned", "smashed", "beaten")
+	icon = 'icons/obj/pneumaticCannon.dmi'
+	icon_state = "pneumaticCannon"
+	item_state = "bulldog"
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
+	armor = list("melee" = 0, "bullet" = 0, "laser" = 0, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 60, "acid" = 50)
+	checktank = FALSE
+
+	
+/obj/item/pneumatic_cannon/winfricator/afterattack(atom/target, mob/living/user, flag, params)
+	. = ..()
+	if(flag && user.a_intent == INTENT_HARM) //melee attack
+		return
+	if(!istype(user))
+		return
+	Firefre(user, target)
+
+/obj/item/pneumatic_cannon/winfricator/proc/Firefre(mob/living/user, var/atom/target)
+	user.visible_message("<span class='danger'>[user] fires \the [src]!</span>", \
+			    		 "<span class='danger'>You fire \the [src]!</span>")
+	log_combat(user, target, "fired at", src)
+	var/turf/T = get_target(target, get_turf(src))
+	playsound(src, 'sound/weapons/sonic_jackhammer.ogg', 50, 1)
+	fire_itemsfre(T, user)
+
+/obj/item/pneumatic_cannon/winfricator/proc/fire_itemsfre(turf/target, mob/user)
+	var/list/loadedItems = list(new /obj/item/toy/plush/mammal/winfre = 1)
+	
+	for(var/obj/item/ITD in loadedItems) //Item To Discharge
+		throw_itemfre(target, ITD, user)
+
+/obj/item/pneumatic_cannon/proc/throw_itemfre(turf/target, obj/item/I, mob/user)
+	if(!istype(I))
+		return FALSE
+	loadedItems -= I
+	loadedWeightClass -= I.w_class
+	I.forceMove(get_turf(src))
+	I.throw_at(target, 100, 50, user)
+	return TRUE
