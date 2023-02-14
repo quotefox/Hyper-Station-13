@@ -292,6 +292,20 @@
 
 	lungs.heat_level_1_threshold = 400
 	lungs.heat_level_2_threshold = 600
+
+/datum/quirk/low_pressure_lungs/remove() //*Unedits your lungs*
+	var/obj/item/organ/lungs/lungs = quirk_holder.getorgan(/obj/item/organ/lungs)
+	
+	lungs.safe_oxygen_min = 16
+	lungs.safe_oxygen_max = 50
+
+
+	lungs.cold_level_1_threshold = 260
+	lungs.cold_level_2_threshold = 200
+	lungs.cold_level_3_threshold = 120
+
+	lungs.heat_level_1_threshold = 360
+	lungs.heat_level_2_threshold = 400
 	
 /datum/quirk/low_puressure_lungs/post_add()
 	to_chat(quirk_holder, "<span class='boldannounce'>Your [slot_string] feel the heavy pressure of the air.</span>")
