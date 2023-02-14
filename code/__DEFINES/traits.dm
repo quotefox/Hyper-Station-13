@@ -196,6 +196,7 @@
 #define TRAIT_MACROPHILE		"macrophile" //likes the big
 #define TRAIT_MICROPHILE		"microphile" //likes the small
 #define TRAIT_APATHETIC			"apathetic" //doesn't care
+#define TRAIT_LOW_PRESSURE_LUNGS	"low_puressure_lungs" //used to lower kPa of Lavaland and other low kPa Atmos.
 
 #define TRAIT_TOUGH		"tough" //you have 10% more maxhealth
 #define TRAIT_AUTO_CATCH_ITEM	"auto_catch_item"
