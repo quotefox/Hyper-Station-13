@@ -267,7 +267,7 @@
 	if(quirk_holder)
 		quirk_holder.blood_ratio = 1
 
-/datum/quirk/low_puressure_lungs
+/datum/quirk/low_pressure_lungs
 	name = "Low Pressure Lungs"
 	desc = "You're not quite used to the high air pressure! Perfect for characters who are used to the atmosphere of Lavaland or Asteroids!"
 	value = -1
@@ -307,10 +307,10 @@
 	lungs.heat_level_1_threshold = 360
 	lungs.heat_level_2_threshold = 400
 	
-/datum/quirk/low_puressure_lungs/post_add()
+/datum/quirk/low_pressure_lungs/post_add()
 	to_chat(quirk_holder, "<span class='boldannounce'>Your [slot_string] feel the heavy pressure of the air.</span>")
 
-/datum/quirk/low_puressure_lungs/on_spawn()
+/datum/quirk/low_pressure_lungs/on_spawn()
 	var/mob/living/carbon/human/H = quirk_holder
 	
 	//Adding Breath Mask and Emergency Tank
