@@ -49,6 +49,15 @@
 	result = /obj/item/reagent_containers/food/snacks/chocoorange
 	subcategory = CAT_MISCFOOD
 
+/datum/crafting_recipe/food/choccogun
+	name = "Choco gun"
+	reqs = list(
+		/datum/reagent/iron = 1,
+		/obj/item/reagent_containers/food/snacks/chocolatebar = 1,
+	)
+	result = /obj/item/reagent_containers/food/snacks/choccogun
+	subcategory = CAT_MISCFOOD
+
 /datum/crafting_recipe/food/loadedbakedpotato
 	name = "Loaded baked potato"
 	time = 40
