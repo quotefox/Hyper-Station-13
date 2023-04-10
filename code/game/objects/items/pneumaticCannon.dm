@@ -300,7 +300,7 @@
 		G.preprime(null, gtimer)
 
 /obj/item/pneumatic_cannon/winfricator
-	name = "winfricator"
+	name = "Winfricator"
 	desc = "A specialized device, designed to rapidly apply justice."
 	w_class = WEIGHT_CLASS_BULKY
 	force = 8
