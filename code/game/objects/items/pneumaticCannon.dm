@@ -336,7 +336,7 @@
 	for(var/obj/item/ITD in loadedItems) //Item To Discharge
 		throw_itemfre(target, ITD, user)
 
-/obj/item/pneumatic_cannon/proc/throw_itemfre(turf/target, obj/item/I, mob/user)
+/obj/item/pneumatic_cannon/winfricator/proc/throw_itemfre(turf/target, obj/item/I, mob/user)
 	if(!istype(I))
 		return FALSE
 	loadedItems -= I
