@@ -5006,7 +5006,6 @@
 	name = "steel pannel"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/item/twohanded/required/kirbyplants{
@@ -5061,40 +5060,20 @@
 	},
 /area/security/brig/upper)
 "azJ" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/red{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/red{
+	dir = 8
+	},
 /turf/open/floor/plasteel/white,
 /area/maintenance/fore)
 "azK" = (
 /obj/effect/turf_decal/tile/red{
-	dir = 1
+	dir = 9
 	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
+/obj/effect/turf_decal/arrows/red,
 /turf/open/floor/plasteel/white,
 /area/maintenance/fore)
 "azM" = (
@@ -5336,7 +5315,6 @@
 /area/science/xenobiology)
 "aBw" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/effect/turf_decal/tile/blue{
@@ -5465,16 +5443,10 @@
 /area/maintenance/solars/starboard/fore)
 "aCk" = (
 /obj/effect/turf_decal/tile/red{
-	dir = 1
+	dir = 10
 	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
+/obj/effect/turf_decal/arrows/red{
+	dir = 4
 	},
 /turf/open/floor/plasteel/white,
 /area/maintenance/fore)
@@ -5487,28 +5459,9 @@
 /turf/open/pool,
 /area/security/prison)
 "aCr" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
 /obj/structure/toilet,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/box/red,
 /turf/open/floor/plasteel/white,
 /area/maintenance/fore)
 "aCs" = (
@@ -5680,21 +5633,11 @@
 	},
 /area/crew_quarters/dorms/upper)
 "aEu" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/red{
+	dir = 10
+	},
+/obj/effect/turf_decal/tile/red,
 /turf/open/floor/plasteel/white,
 /area/maintenance/fore)
 "aEx" = (
@@ -5718,31 +5661,21 @@
 	},
 /area/quartermaster/sorting)
 "aET" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/red{
+	dir = 6
+	},
+/obj/effect/turf_decal/arrows/red{
+	dir = 1
+	},
 /turf/open/floor/plasteel/white,
 /area/maintenance/fore)
 "aEV" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
-	dir = 4
+	dir = 5
 	},
 /obj/effect/turf_decal/tile/red{
 	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
 	},
 /turf/open/floor/plasteel/white,
 /area/maintenance/fore)
@@ -9457,7 +9390,6 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel/showroomfloor,
@@ -9769,7 +9701,6 @@
 /area/maintenance/fore)
 "bnx" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -14496,13 +14427,11 @@
 /turf/open/floor/carpet/kinaris,
 /area/security/lambent)
 "cec" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
-	dir = 4
+	dir = 5
 	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
+/obj/effect/turf_decal/arrows/red{
+	dir = 8
 	},
 /turf/open/floor/plasteel/white,
 /area/maintenance/fore)
@@ -16823,7 +16752,6 @@
 	name = "steel pannel"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel/dark/side,
@@ -19796,9 +19724,7 @@
 	},
 /area/engine/break_room)
 "dbl" = (
-/obj/structure/flora/tree/jungle{
-	icon_state = "tree"
-	},
+/obj/structure/flora/tree/jungle,
 /turf/open/floor/grass,
 /area/crew_quarters/park)
 "dbm" = (
@@ -20858,7 +20784,6 @@
 "dkq" = (
 /obj/machinery/pdapainter,
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/effect/turf_decal/loading_area{
@@ -21665,7 +21590,6 @@
 /area/medical/sleeper)
 "dqV" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
@@ -21931,7 +21855,6 @@
 /area/crew_quarters/dorms)
 "dts" = (
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush";
 	pixel_x = -25
 	},
 /turf/open/floor/grass,
@@ -24411,7 +24334,6 @@
 	name = "drain"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel,
@@ -24851,7 +24773,6 @@
 /area/security/brig/upper)
 "dUl" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/stairs/left{
@@ -25933,7 +25854,6 @@
 /area/maintenance/fore/upper)
 "efH" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 28
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -27577,7 +27497,6 @@
 	name = "steel pannel"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/dark/corner,
@@ -29844,7 +29763,6 @@
 /area/layenia)
 "eJu" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel/dark,
@@ -30250,8 +30168,7 @@
 /area/maintenance/port)
 "eMT" = (
 /obj/structure/disposalpipe/trunk{
-	dir = 1;
-	icon_state = "pipe-t"
+	dir = 1
 	},
 /obj/structure/disposaloutlet,
 /obj/effect/turf_decal/stripes/line,
@@ -33136,9 +33053,7 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 2
-	},
+/obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/plasteel{
 	icon_state = "floor_plate"
 	},
@@ -34972,7 +34887,6 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/item/twohanded/required/kirbyplants/random,
@@ -35092,7 +35006,6 @@
 	pixel_y = 24
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/structure/cable{
@@ -37126,7 +37039,6 @@
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/flora/tree/jungle{
-	icon_state = "tree";
 	pixel_y = -37
 	},
 /obj/effect/turf_decal/weather/grass/line{
@@ -38192,7 +38104,6 @@
 /area/engine/engineering/reactor_control)
 "fXj" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
@@ -40476,7 +40387,6 @@
 	dir = 8
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel{
@@ -40592,7 +40502,6 @@
 	dir = 4
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -41019,7 +40928,6 @@
 /area/security/checkpoint/supply)
 "gtc" = (
 /obj/structure/flora/tree/jungle/small{
-	icon_state = "tree";
 	pixel_x = -22
 	},
 /turf/open/floor/grass,
@@ -42812,7 +42720,6 @@
 	name = "air vent"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel{
@@ -45648,7 +45555,6 @@
 	name = "drain"
 	},
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush";
 	pixel_x = -25;
 	pixel_y = 0
 	},
@@ -45901,7 +45807,6 @@
 	pixel_y = 16
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel/dark,
@@ -45933,7 +45838,6 @@
 /obj/structure/flora/junglebush,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush";
 	pixel_y = 7
 	},
 /obj/structure/window/reinforced,
@@ -46706,9 +46610,7 @@
 /obj/structure/flora/ausbushes/ppflowers,
 /obj/structure/flora/ausbushes/pointybush,
 /obj/structure/flora/junglebush,
-/obj/structure/flora/junglebush/large{
-	icon_state = "bush"
-	},
+/obj/structure/flora/junglebush/large,
 /obj/machinery/atmospherics/pipe/simple/scrubbers/hidden/layer1{
 	name = "scrubbers pipe"
 	},
@@ -48355,7 +48257,6 @@
 /area/engine/break_room)
 "hxL" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/dark,
@@ -49399,7 +49300,6 @@
 /area/hallway/primary/fore/upper)
 "hEV" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/machinery/light{
@@ -50099,7 +49999,6 @@
 	pixel_x = 23
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/effect/turf_decal/tile/red{
@@ -50375,7 +50274,6 @@
 "hLE" = (
 /obj/machinery/hydroponics/constructable,
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel/dark{
@@ -52873,8 +52771,7 @@
 	},
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
-	dir = 1;
-	icon_state = "pipe-t"
+	dir = 1
 	},
 /turf/open/floor/wood,
 /area/security/detectives_office)
@@ -53622,7 +53519,7 @@
 /area/ai_monitored/storage/satellite)
 "ila" = (
 /obj/machinery/door/airlock/external{
-	name = ""MiniSat Catwalk Access"";
+	name = "MiniSat Catwalk Access";
 	req_access_txt = "65"
 	},
 /turf/open/floor/plating/layenia,
@@ -56363,7 +56260,6 @@
 /area/hallway/primary/fore)
 "iDI" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/structure/closet/secure_closet/engineering_electrical,
@@ -56884,7 +56780,6 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel,
@@ -59410,7 +59305,6 @@
 /turf/open/floor/plating,
 /area/maintenance/fore/secondary/upper)
 "jbV" = (
-/obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
 /obj/machinery/door/window/northleft{
 	dir = 2;
@@ -59896,7 +59790,6 @@
 /obj/structure/flora/junglebush,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush";
 	pixel_y = -24
 	},
 /obj/structure/window/reinforced{
@@ -59931,7 +59824,6 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/dark{
@@ -60999,7 +60891,6 @@
 	name = "wood"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 28
 	},
 /turf/open/floor/wood{
@@ -63314,7 +63205,6 @@
 	pixel_y = 16
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel,
@@ -64340,7 +64230,6 @@
 /area/engine/custom)
 "jNm" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/structure/plasticflaps/opaque,
@@ -67279,7 +67168,6 @@
 "klb" = (
 /obj/structure/flora/junglebush,
 /obj/structure/flora/tree/jungle/small{
-	icon_state = "tree";
 	pixel_x = -12
 	},
 /turf/open/floor/grass,
@@ -70647,7 +70535,6 @@
 "kIL" = (
 /obj/item/twohanded/required/kirbyplants/random,
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/structure/sign/warning/electricshock{
@@ -70899,7 +70786,6 @@
 "kLk" = (
 /obj/structure/chair/sofa/right,
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/effect/turf_decal/loading_area{
@@ -72659,7 +72545,6 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/machinery/power/apc{
@@ -74085,7 +73970,6 @@
 /obj/structure/flora/grass/jungle,
 /obj/structure/flora/junglebush,
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush";
 	pixel_y = -24
 	},
 /turf/open/floor/grass,
@@ -74409,7 +74293,6 @@
 	},
 /obj/structure/flora/ausbushes/ywflowers,
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush";
 	pixel_y = -24
 	},
 /turf/open/floor/grass,
@@ -75883,7 +75766,6 @@
 	name = "steel pannel"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/machinery/camera/autoname,
@@ -77067,7 +76949,6 @@
 	dir = 4
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel/dark,
@@ -79248,7 +79129,6 @@
 /area/layenia)
 "mcb" = (
 /obj/structure/flora/tree/jungle/small{
-	icon_state = "tree";
 	pixel_x = -12;
 	pixel_y = 14
 	},
@@ -82191,7 +82071,6 @@
 	dir = 5
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel{
@@ -82629,7 +82508,6 @@
 	dir = 5
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/effect/turf_decal/loading_area{
@@ -83514,7 +83392,6 @@
 /area/arcade)
 "mHF" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/effect/turf_decal/tile/blue{
@@ -88522,7 +88399,6 @@
 	pixel_y = 24
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel/dark/side,
@@ -89770,9 +89646,7 @@
 	layer = 4;
 	pixel_y = 15
 	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 2
-	},
+/obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/plasteel/layenia,
 /area/layenia)
 "nAJ" = (
@@ -93231,7 +93105,6 @@
 	network = list("ss13","engine")
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/dark,
@@ -94033,7 +93906,6 @@
 "ohe" = (
 /obj/structure/flora/junglebush,
 /obj/structure/flora/tree/jungle/small{
-	icon_state = "tree";
 	pixel_x = -20;
 	pixel_y = 2
 	},
@@ -97849,9 +97721,7 @@
 /area/science/research)
 "oHc" = (
 /obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/stripes/corner{
-	dir = 2
-	},
+/obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/plasteel,
 /area/hallway/primary/central)
 "oHd" = (
@@ -101486,7 +101356,6 @@
 /area/quartermaster/mail)
 "pcZ" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/effect/turf_decal/tile/blue,
@@ -101827,7 +101696,6 @@
 	pixel_y = 28
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel/white,
@@ -103527,7 +103395,6 @@
 	name = "drain"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/white/corner,
@@ -104040,7 +103907,6 @@
 /area/chapel/main)
 "pvv" = (
 /obj/structure/flora/tree/jungle{
-	icon_state = "tree";
 	pixel_y = -13
 	},
 /obj/effect/turf_decal/weather/grass,
@@ -106337,7 +106203,6 @@
 	name = "steel pannel"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/dark/side{
@@ -109712,7 +109577,6 @@
 "qlg" = (
 /obj/structure/flora/ausbushes/fullgrass,
 /obj/structure/flora/tree/jungle/small{
-	icon_state = "tree";
 	pixel_x = -20;
 	pixel_y = -9
 	},
@@ -110869,9 +110733,7 @@
 	icon_state = "drain";
 	name = "drain"
 	},
-/obj/effect/turf_decal/stripes/corner{
-	dir = 2
-	},
+/obj/effect/turf_decal/stripes/corner,
 /turf/open/floor/plasteel{
 	icon_state = "floor_trim"
 	},
@@ -111399,7 +111261,6 @@
 	dir = 1
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/structure/cable,
@@ -111596,7 +111457,6 @@
 /obj/effect/turf_decal/tile/blue,
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/effect/turf_decal/tile/blue{
@@ -112379,7 +112239,6 @@
 	dir = 8
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/item/twohanded/required/kirbyplants/random,
@@ -113952,7 +113811,6 @@
 "qOW" = (
 /obj/item/twohanded/required/kirbyplants/random,
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/effect/turf_decal/loading_area{
@@ -113969,7 +113827,6 @@
 /area/medical/medbay/zone2)
 "qPb" = (
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush";
 	pixel_x = -3;
 	pixel_y = -5
 	},
@@ -114417,9 +114274,7 @@
 	},
 /area/bridge)
 "qRz" = (
-/obj/structure/flora/tree/jungle/small{
-	icon_state = "tree"
-	},
+/obj/structure/flora/tree/jungle/small,
 /turf/open/floor/grass,
 /area/crew_quarters/park)
 "qRA" = (
@@ -115898,21 +115753,11 @@
 /turf/open/floor/plating/layenia,
 /area/layenia)
 "ram" = (
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/red{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/red,
 /turf/open/floor/plasteel/white,
 /area/maintenance/fore)
 "raq" = (
@@ -118961,8 +118806,7 @@
 "rvc" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
-	dir = 1;
-	icon_state = "pipe-t"
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_plate"
@@ -119482,8 +119326,7 @@
 	},
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
-	dir = 1;
-	icon_state = "pipe-t"
+	dir = 1
 	},
 /turf/open/floor/plasteel/dark{
 	icon_state = "darkfull_whole_alt"
@@ -120179,7 +120022,6 @@
 	name = "steel pannel"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/effect/turf_decal/tile/blue{
@@ -126809,7 +126651,6 @@
 	dir = 4
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/effect/turf_decal/stripes/line{
@@ -127241,7 +127082,6 @@
 	pixel_y = 19
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -129162,7 +129002,6 @@
 /area/chapel/main)
 "sPm" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/cafeteria,
@@ -131579,7 +131418,6 @@
 /area/security/prison)
 "tfV" = (
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush";
 	pixel_y = 7
 	},
 /turf/open/floor/grass/layenia,
@@ -134046,12 +133884,6 @@
 	icon_state = "darkfull_whole_alt"
 	},
 /area/security/prison)
-"tya" = (
-/obj/structure/flora/tree/jungle/small{
-	icon_state = "tree"
-	},
-/turf/open/floor/grass/layenia,
-/area/layenia)
 "tyg" = (
 /obj/structure/closet/crate,
 /turf/open/floor/plating,
@@ -138101,7 +137933,6 @@
 	dir = 5
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 28
 	},
 /turf/open/floor/plasteel{
@@ -139950,7 +139781,6 @@
 	name = "steps"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/pipe/simple/supply/hidden/layer3{
@@ -141685,7 +141515,6 @@
 	icon_state = "1-2"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel{
@@ -141795,7 +141624,6 @@
 	name = "drain"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel{
@@ -141972,7 +141800,6 @@
 /area/quartermaster/storage)
 "uzW" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel/white/side{
@@ -142776,7 +142603,6 @@
 /area/engine/engineering)
 "uGO" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/machinery/camera{
@@ -142839,7 +142665,6 @@
 /area/maintenance/port/aft)
 "uHp" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/effect/decal/cleanable/dirt,
@@ -143706,7 +143531,6 @@
 /area/hallway/primary/port)
 "uPc" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/effect/turf_decal/tile/green{
@@ -145300,7 +145124,6 @@
 /area/hydroponics/garden)
 "vae" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /obj/machinery/light{
@@ -146357,12 +146180,6 @@
 /obj/structure/chair/office/dark,
 /turf/open/floor/plasteel/dark,
 /area/hallway/secondary/service)
-"vhq" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 2
-	},
-/turf/open/floor/plating/layenia,
-/area/layenia/cloudlayer)
 "vhs" = (
 /obj/effect/turf_decal/loading_area{
 	dir = 4;
@@ -147847,12 +147664,6 @@
 	},
 /turf/open/floor/grass/layenia,
 /area/layenia/cloudlayer)
-"vqJ" = (
-/obj/structure/flora/junglebush/large{
-	icon_state = "bush"
-	},
-/turf/open/floor/grass/layenia,
-/area/layenia)
 "vqP" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 6
@@ -150023,7 +149834,6 @@
 "vGx" = (
 /obj/effect/landmark/secequipment,
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/effect/turf_decal/bot,
@@ -152899,7 +152709,6 @@
 	name = "drain"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel{
@@ -155427,7 +155236,6 @@
 	name = "air vent"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel{
@@ -157540,7 +157348,6 @@
 /area/maintenance/port/fore)
 "wHq" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer{
@@ -157676,7 +157483,6 @@
 /obj/structure/flora/junglebush,
 /obj/structure/flora/ausbushes/brflowers,
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush";
 	pixel_y = -24
 	},
 /obj/effect/turf_decal/loading_area{
@@ -158137,7 +157943,6 @@
 /area/medical/chemistry)
 "wLm" = (
 /obj/structure/flora/junglebush/large{
-	icon_state = "bush";
 	pixel_x = -25;
 	pixel_y = -4
 	},
@@ -158988,7 +158793,6 @@
 	name = "drain"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel{
@@ -159246,8 +159050,7 @@
 /area/engine/engineering)
 "wRM" = (
 /obj/structure/disposalpipe/trunk/multiz/down{
-	dir = 1;
-	icon_state = "pipe-down"
+	dir = 1
 	},
 /turf/open/floor/plating,
 /area/hallway/primary/aft/upper)
@@ -159758,7 +159561,6 @@
 /area/ai_monitored/storage/eva)
 "wVi" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/effect/turf_decal/tile/purple{
@@ -162357,7 +162159,6 @@
 	pixel_y = 30
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = 24
 	},
 /turf/open/floor/plasteel/dark{
@@ -162531,7 +162332,6 @@
 	name = "drain"
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /turf/open/floor/plasteel/white/corner{
@@ -163373,7 +163173,6 @@
 	pixel_y = 16
 	},
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/structure/sign/directions/security{
@@ -163858,7 +163657,6 @@
 /area/security/brig/upper)
 "xDz" = (
 /obj/machinery/firealarm{
-	dir = 2;
 	pixel_x = -24
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer3{
@@ -163888,9 +163686,7 @@
 	},
 /area/engine/custom)
 "xDC" = (
-/obj/structure/flora/tree/jungle{
-	icon_state = "tree"
-	},
+/obj/structure/flora/tree/jungle,
 /turf/open/floor/grass/layenia,
 /area/layenia)
 "xDD" = (
@@ -180441,7 +180237,7 @@ xMC
 xMC
 xMC
 xMC
-tya
+taf
 xMC
 xMC
 xMC
@@ -181197,7 +180993,7 @@ gTW
 gTW
 tBc
 jiW
-tya
+taf
 xMC
 tqX
 aiU
@@ -183789,7 +183585,7 @@ prt
 prt
 tVV
 xMC
-tya
+taf
 lFZ
 tBc
 gTW
@@ -184045,7 +183841,7 @@ pEE
 prt
 prt
 tVV
-vqJ
+tad
 wAe
 tBc
 tBc
@@ -185581,7 +185377,7 @@ wjg
 uOy
 kzO
 xMC
-tya
+taf
 xMC
 xMC
 vIA
@@ -185841,7 +185637,7 @@ uOy
 wjg
 kzO
 xMC
-vqJ
+tad
 xMC
 taj
 lFZ
@@ -267072,7 +266868,7 @@ xAr
 qTp
 wIl
 lIQ
-vhq
+fPn
 pJd
 esY
 ePF

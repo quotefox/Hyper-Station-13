@@ -610,6 +610,7 @@
 	canSmoothWith = list(
 	/turf/closed/wall,
 	/turf/closed/wall/r_wall,
+	/turf/closed/wall/mineral/lead,
 	/obj/structure/window/plasma/fulltile,
 	/obj/structure/window/plasma/reinforced/fulltile,
 	/obj/machinery/door,
@@ -669,6 +670,7 @@
 	/turf/closed/wall/clockwork,
 	/turf/closed/indestructible/riveted/,
 	/turf/closed/indestructible/riveted/uranium,
+	/turf/closed/wall/mineral/lead,
 	/obj/structure/window/fulltile,
 	/obj/structure/window/reinforced/fulltile,
 	/obj/structure/window/reinforced/tinted/fulltile,
@@ -730,6 +732,7 @@
 	/turf/closed/wall/clockwork,
 	/turf/closed/indestructible/riveted/,
 	/turf/closed/indestructible/riveted/uranium,
+	/turf/closed/wall/mineral/lead,
 	/obj/structure/window/fulltile,
 	/obj/structure/window/reinforced/fulltile,
 	/obj/structure/window/reinforced/tinted/fulltile,

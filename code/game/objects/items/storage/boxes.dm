@@ -425,7 +425,7 @@
 /obj/item/storage/box/donkpockets/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.can_hold = typecacheof(list(donktype, warmtype), TRUE)
+	STR.can_hold = typecacheof(list(/obj/item/reagent_containers/food/snacks/donkpocket))//Should be capable of holding subtypes, no?
 
 /obj/item/storage/box/donkpockets/PopulateContents()
 	for(var/i in 1 to 6)
