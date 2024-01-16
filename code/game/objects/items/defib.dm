@@ -673,7 +673,7 @@
 		primetime = 10
 		return TRUE
 	if(istype(I, /obj/item/disk/medical/defib_decay))
-		if(!timedeath == initial(timedeath))
+		if(timedeath != initial(timedeath))
 			to_chat(user, "<span class='notice'>This unit is already upgraded with this disk!</span>")
 			return TRUE
 		to_chat(user, "<span class='notice'>You upgrade the unit with Longer Decay upgrade disk!</span>")
