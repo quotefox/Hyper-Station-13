@@ -102,6 +102,16 @@ SNOUTS
 	icon_state = "chemlight"
 	icon = 'hyperstation/icons/mob/char_snouts.dmi'
 
+/datum/sprite_accessory/mam_snouts/pinata
+	name = "pinata (Hyper)"
+	icon_state = "pinata"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
+/datum/sprite_accessory/mam_snouts/pinatasmile
+	name = "pinata Smile (Hyper)"
+	icon_state = "pinatasmile"
+	icon = 'hyperstation/icons/mob/char_snouts.dmi'
+
 /*
 EARS
 ==========================================================
@@ -455,6 +465,11 @@ from modular_citadel/code/modules/mob/dead/new_player/sprite_accessories.dm:
 	icon_state = "raccalt"
 	icon = 'hyperstation/icons/mob/char_markings.dmi'
 
+/datum/sprite_accessory/mam_body_markings/pinata
+	name = "pinata (Hyper)"
+	icon_state = "pinata"
+	icon = 'hyperstation/icons/mob/char_markings.dmi'
+
 /*
 TAUR BODIES
 ==========================================================
@@ -612,6 +627,56 @@ from code/modules/mob/dead/new_player/sprite_accessories/hair_head.dm:
 /datum/sprite_accessory/hair/emoh
 	name = "Emo (Hyper)"
 	icon_state = "hair_emoh"
+
+/datum/sprite_accessory/hair/espada
+	name = "Espada  (Plant) (Hyper)"
+	icon_state = "hair_espada"
+	icon = 'hyperstation/icons/mob/char_hair.dmi'
+
+/datum/sprite_accessory/hair/guarana
+	name = "Guarana (Plant) (Hyper)"
+	icon_state = "hair_guarana"
+	icon = 'hyperstation/icons/mob/char_hair_big.dmi'
+	center = TRUE
+	dimension_y = 38
+
+/datum/sprite_accessory/hair/ipe
+	name = "Ipe (Plant) (Hyper)"
+	icon_state = "hair_ipe"
+	icon = 'hyperstation/icons/mob/char_hair_big.dmi'
+	center = TRUE
+	dimension_y = 38
+
+/datum/sprite_accessory/hair/narciso
+	name = "Narciso  (Plant) (Hyper)"
+	icon_state = "hair_narciso"
+	icon = 'hyperstation/icons/mob/char_hair.dmi'
+
+/datum/sprite_accessory/hair/ninfeia
+	name = "Ninfeia (Plant) (Hyper)"
+	icon_state = "hair_ninfeia"
+	icon = 'hyperstation/icons/mob/char_hair_big.dmi'
+	center = TRUE
+	dimension_y = 38
+
+/datum/sprite_accessory/hair/paubrasil
+	name = "Pau-Brasil (Plant) (Hyper)"
+	icon_state = "hair_paubrasil"
+	icon = 'hyperstation/icons/mob/char_hair_big.dmi'
+	center = TRUE
+	dimension_y = 38
+
+/datum/sprite_accessory/hair/roseira
+	name = "Roseira  (Plant) (Hyper)"
+	icon_state = "hair_roseira"
+	icon = 'hyperstation/icons/mob/char_hair_big.dmi'
+	center = TRUE
+	dimension_y = 38
+
+/datum/sprite_accessory/hair/samambaia
+	name = "Samambaia  (Plant) (Hyper)"
+	icon_state = "hair_samambaia"
+	icon = 'hyperstation/icons/mob/char_hair.dmi'
 
 /*
 BEARDS

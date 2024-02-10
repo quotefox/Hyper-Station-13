@@ -233,12 +233,9 @@
 					/obj/item/clothing/head/soft/black = 4,
 					/obj/item/clothing/shoes/sneakers/black = 4,
 					/obj/item/reagent_containers/rag = 4,
-					/obj/item/storage/box/beanbag = 1,
-					/obj/item/clothing/suit/armor/vest/alt = 1,
 					/obj/item/circuitboard/machine/dish_drive = 1,
 					/obj/item/clothing/glasses/sunglasses/reagent = 1,
-					/obj/item/clothing/neck/petcollar = 3,
-					/obj/item/storage/belt/bandolier = 1)
+					/obj/item/clothing/neck/petcollar = 3)
 	refill_canister = /obj/item/vending_refill/wardrobe/bar_wardrobe
 
 /obj/item/vending_refill/wardrobe/bar_wardrobe

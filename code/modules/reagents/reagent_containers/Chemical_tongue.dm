@@ -57,7 +57,7 @@
 	if(user.a_intent == INTENT_DISARM && user.zone_selected == BODY_ZONE_PRECISE_MOUTH)
 		if(M != user)
 			M.visible_message("<span class='warning'>[user] attempts nuzzles into [M]'s.</span>", \
-						"<span class='userwarning'>[user] attempts to bump his snout against yours.</span>")
+						"<span class='userwarning'>[user] attempts to bump their snout against yours.</span>")
 			if(!do_mob(user, M, 10))
 				return
 			playsound(M.loc,'sound/effects/attackblob.ogg', rand(10,50), 1)

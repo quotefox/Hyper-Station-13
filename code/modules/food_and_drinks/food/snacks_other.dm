@@ -256,6 +256,45 @@
 	tastes = list("fudge" = 1)
 	foodtype = JUNKFOOD | SUGAR
 
+/obj/item/reagent_containers/food/snacks/choccogun
+	name = "golden gun"
+	desc = "It's a golden gun! Probably will instantly kill who ever is hit."
+	icon_state = "pyritegun"
+	w_class = WEIGHT_CLASS_SMALL
+	attack_verb = list("pistol whipped")
+	bonus_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/sugar = 5, /datum/reagent/iron = 1)
+	list_reagents = list(/datum/reagent/consumable/nutriment = 15, /datum/reagent/consumable/coco = 5)
+	filling_color = "#A0522D"
+	tastes = list("fudge" = 1, "metal" = 1)
+	bitesize = 0.1
+	foodtype = JUNKFOOD | SUGAR
+	
+	var is_wrapped = 1
+
+/obj/item/reagent_containers/food/snacks/choccogun/afterattack(user)
+	if (is_wrapped == 1)
+		to_chat(user, "<span class='danger'>*click*</span>")
+		playsound(src, "gun_dry_fire", 30, 1)
+	else //no more clicking chocolate for you. <3
+		return
+
+/obj/item/reagent_containers/food/snacks/choccogun/attack_self(mob/user)
+	if (is_wrapped == 1)
+		to_chat(user, "You look at the gun and find it's made of chocolate, unwrapping it.")
+		
+		name = "chocolate gun"
+		desc = "This explains why it wasn't firing at all.."
+		icon_state = "choccogun"
+		bonus_reagents = list(/datum/reagent/consumable/nutriment = 5, /datum/reagent/consumable/sugar = 5, /datum/reagent/gold = 1)
+		list_reagents = list(/datum/reagent/consumable/nutriment = 15, /datum/reagent/consumable/coco = 5)
+		filling_color = "#A0522D"
+		tastes = list("fudge" = 1)
+		foodtype = JUNKFOOD | SUGAR
+	
+		is_wrapped = 0
+	else
+		return
+
 /obj/item/reagent_containers/food/snacks/chocoorange
 	name = "chocolate orange"
 	desc = "A festive chocolate orange."

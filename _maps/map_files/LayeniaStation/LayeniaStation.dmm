@@ -15566,6 +15566,7 @@
 /obj/effect/turf_decal/tile/green{
 	dir = 4
 	},
+/obj/effect/landmark/start/virologist,
 /turf/open/floor/plasteel/white/side{
 	dir = 10
 	},
@@ -18245,7 +18246,7 @@
 	},
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/poddoor/shutters{
-	id = "cargoshut2";
+	id = "cargoshut3";
 	name = "mailroom shutters"
 	},
 /turf/open/floor/plasteel/dark{
@@ -22431,6 +22432,13 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/plating,
 /area/maintenance/fore)
+"dwt" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer1{
+	name = "air scrubber"
+	},
+/obj/effect/landmark/start/virologist,
+/turf/open/floor/plasteel/white,
+/area/medical/virology)
 "dwF" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Engineering Maintenance";
@@ -101213,7 +101221,7 @@
 /obj/machinery/door/firedoor,
 /obj/effect/spawner/structure/window,
 /obj/machinery/door/poddoor/shutters{
-	id = "cargoshut2";
+	id = "cargoshut3";
 	name = "mailroom shutters"
 	},
 /turf/open/floor/plating,
@@ -120847,7 +120855,7 @@
 	},
 /obj/machinery/button/door{
 	desc = "A remote control switch for the medbay foyer.";
-	id = "cargoshut2";
+	id = "cargoshut3";
 	name = "Mailroom Shutter Controls";
 	pixel_y = -22
 	},
@@ -158865,7 +158873,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/button/door{
 	desc = "A remote control switch for the medbay foyer.";
-	id = "cargoshut2";
+	id = "cargoshut3";
 	name = "Mailroom Shutter Controls";
 	pixel_y = 26
 	},
@@ -268328,7 +268336,7 @@ ecI
 jZa
 wsF
 teT
-wGF
+dwt
 vWw
 kVA
 eRT
