@@ -712,15 +712,6 @@
 	repeatable = TRUE
 	occurances_max = 3
 
-/datum/dynamic_ruleset/event/bureaucratic_error
-	name = "Bureaucratic Error"
-	requirements = list(0,0,0,0,0,0,0,0,0,0)
-	high_population_requirement = 0
-	typepath = /datum/round_event/bureaucratic_error
-	occurances_max = 1
-	weight = 5
-	cost = 3
-
 /datum/dynamic_ruleset/event/camera_failure
 	name = "Camera Failure"
 	typepath = /datum/round_event/camera_failure
