@@ -280,18 +280,22 @@
 	medical_record_text = "During physical examination, patient was found to have lungs adapted to low pressure environments."
 
 /datum/quirk/low_pressure_lungs/add() //*Edits your lungs*
-	var/obj/item/organ/lungs/lungs = quirk_holder.getorgan(/obj/item/organ/lungs)
-	
-	lungs.safe_oxygen_min = 3
-	lungs.safe_oxygen_max = 18
+	if (!quirk_holder.getorgan(/obj/item/organ/lungs))
+		sleep(10)
+		add()
+	else
+		var/obj/item/organ/lungs/lungs = quirk_holder.getorgan(/obj/item/organ/lungs)
+
+		lungs.safe_oxygen_min = 3
+		lungs.safe_oxygen_max = 18
 
 
-	lungs.cold_level_1_threshold = 280
-	lungs.cold_level_2_threshold = 240
-	lungs.cold_level_3_threshold = 200
+		lungs.cold_level_1_threshold = 280
+		lungs.cold_level_2_threshold = 240
+		lungs.cold_level_3_threshold = 200
 
-	lungs.heat_level_1_threshold = 400
-	lungs.heat_level_2_threshold = 600
+		lungs.heat_level_1_threshold = 400
+		lungs.heat_level_2_threshold = 600
 
 /datum/quirk/low_pressure_lungs/remove() //*Unedits your lungs*
 	var/obj/item/organ/lungs/lungs = quirk_holder.getorgan(/obj/item/organ/lungs)
