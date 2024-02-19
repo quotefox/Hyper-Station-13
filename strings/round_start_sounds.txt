@@ -29,3 +29,4 @@ sound/music/thewizard.ogg
 sound/music/thesettler.ogg
 sound/music/thelessImichael.ogg
 sound/music/sacredgeometry.ogg
+sound/music/shootingpuffs.ogg
